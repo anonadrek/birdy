@@ -1,6 +1,6 @@
 # Artsidor på birdy.community: design
 
-> **Datum:** 2026-09-25 (Windows). **Reviderad 2026-10-01** med Albin i ett nytt brainstorm-pass (se "Revision 2026-10-01" nedan). Första versionen beslutades med mockups i webbläsaren.
+> **Datum:** 2026-09-25 (Windows). **Reviderad 2026-10-01** med Albin i ett nytt brainstorm-pass (se "Revision 2026-10-01" nedan), och **2026-10-05** med ett beslut om hur faktabladen kontrolleras (se "Revision 2026-10-05" nedan). Första versionen beslutades med mockups i webbläsaren.
 > **Mål:** Organisk söktrafik till birdy.community genom sidor för varje art, grupp och förväxlingspar, byggda ur flera källor och egen data. Sidorna ska svara på det folk söker ("talgoxe", "talgoxe eller blåmes", "hur låter en koltrast"), ge något som Wikipedia inte har, leda vidare till appen och samtidigt bli AlbIT:s eget bevis för SEO Pro.
 > **Mockups (godkända 2026-09-25):** `docs/superpowers/specs/assets/2026-09-25-artsidor/`. `helheten.html` visar sidhuvud, kategorirad, ingångssida, artsida och sidfot på dator och i mobil. De nya modulerna (diagram, karta, inspelning, förväxlingsarter) och jämförelsesidan har ingen mockup; de godkänns i våg 1:s förhandsvisning (avsnitt 14).
 > **Hör ihop med:** `2026-09-24-website-1-3-lyft-design.md` och `2026-09-28-webb-faltboksfarger-design.md` (sajtens look), valvets regel `seo-och-ton-vid-nya-sidor` (checklistan som avsnitt 12 gör till kod) och baslinjen `docs/superpowers/research/2026-09-30-artsidor-baslinje.md`.
@@ -12,16 +12,37 @@
 Albin ville lösa risken för massproducerat innehåll innan den uppstår och hellre göra det ordentligt en gång än göra om det. Kostnaden får öka, det är en investering. Ändringar mot första versionen:
 
 1. **Fler källor:** tyska Wikipedia, rapportdata från Artportalen via GBIF, Svenska rödlistan 2025 och inspelningar från Wikimedia Commons (avsnitt 9.1).
-2. **Faktablad först, skrivande sedan:** modellen tar ut citerade fakta ur artiklarna, kod kontrollerar citaten, Albin granskar faktabladet, och texten skrivs bara ur godkända fakta. En andra modell kontrollerar varje mening (avsnitt 9).
+2. **Faktablad först, skrivande sedan:** modellen tar ut citerade fakta ur artiklarna, kod kontrollerar citaten, en automatisk kontroll granskar varje faktum mot sitt citat (ersatte Albins manuella granskning 2026-10-05, se nedan), och texten skrivs bara ur godkända fakta. En andra modell kontrollerar varje mening (avsnitt 9).
 3. **Egen data på sidan:** månadsdiagram och länskarta ur Artportalen, svensk rödlistestatus, inspelning (avsnitt 5).
 4. **Förväxlingsarter:** en sektion på varje artsida och cirka 30 jämförelsesidor för de mest sökta paren (avsnitt 7).
-5. **Granskning:** Albin granskar varje arts faktablad, och sidan visar "Faktagranskad av Albin Abrahamsson" med datum. (En anlitad fågelkunnig granskare övervägdes och valdes bort.)
+5. **Kontroll:** en automatisk kontroll av varje arts faktablad plus ett undantagsark per våg som Albin beslutar om (ändrat 2026-10-05, se nedan), och sidan visar "Kontrollerad mot källorna" med datum. (En anlitad fågelkunnig granskare övervägdes och valdes bort.)
 6. **Öppenhet:** en ny sida "Så gör vi artsidorna" (avsnitt 8).
 7. **Publicering i vågor:** en sida publiceras bara när den är färdig och granskad. Våg 1 (vinter- och trädgårdsfåglar) ska vara live i början av december (avsnitt 14).
 8. **Licensreglerna** samlade i ett eget avsnitt (avsnitt 10).
 9. **Appaningen per art:** approtan säger bara det appen faktiskt klarar för arten (foto, läte, båda eller ingen), läst ur appens modellmappningar.
 
 Fas 1-koden som redan finns (`birdy-fetcher web`, 2026-09-26) återanvänds: Wikipediacachen, bildskalningen, licenstabellen, slugs, rapporten och kontrollerna. Det enda skrivpasset ersätts av stegen i avsnitt 9. Inga pengar har lagts på texter än, så inget behöver göras om.
+
+## Revision 2026-10-05
+
+Albin slutade granska varje arts faktablad för hand. I stället: automatisk kontroll av varje faktum, plus granskning bara av det som sticker ut. Anledningen är tiden: hans manuella granskning var beräknad till 10 till 15 timmar för 180 arter, det nya flödet ska kosta honom cirka 15 till 30 minuter per våg (1 till 2 timmar totalt).
+
+Flödet (ersätter avsnitt 9.4 "Albins granskning", nu "Automatisk kontroll och undantagsgranskning"):
+
+1. **Faktakontroll med en andra modell (V1):** en annan modell än skribenten (Sonnet-klass; skribenten är Opus-klass) får varje faktum med sitt citat och det omgivande stycket ur den cachade artikeln, och svarar per faktum `supported`, `partial` eller `unsupported` med en kort motivering, som JSON. Fakta med `partial` eller `unsupported` stryks automatiskt och loggas i rapporten. Blir ett obligatoriskt ämne (utseende, läte, miljö) tomt körs det befintliga omförsöket för faktabladet med felen; failar det igen får arten `status: "failed"`.
+2. **Siffror mellan artiklarna (V2, kod, ingen modell):** för fakta med tal (storlek, vikt, vingbredd, kullstorlek och liknande) tar koden ut tal och enhet och jämför med de andra artiklarna (sv/en/de) som anger samma mått. Intervallen måste överlappa (toleransen bestäms i planen, med tester). Skiljer de sig åt blir det en flagga.
+3. **Förekomst (V3, kod):** den befintliga statussignalen mot Artportalens data kompletteras med en kontroll mot Svenska rödlistan 2025: status `absent` eller `rare_visitor` för en art som har en bedömd rödlistekategori (inte NA/NE) ger en flagga.
+4. **Inspelningen (V4):** Birdys egen BirdNET-modell körs på den klippta inspelningen (skrivbordsreferensen finns redan i `tools/ml-eval/flexref/`; planen utformar anropet, till exempel ett litet script där som pipelinen anropar via `uv run --project ...` och som svarar med JSON top-3 per 3-sekundersfönster). Arten måste ligga i top-3 med minst 0,10 i konfidens i minst ett fönster, annars tas inspelningen bort automatiskt (sidan visar ingen inspelning). Arter som ljudmodellen inte täcker (174 av 180, avsnitt 1) ger i stället en flagga så att Albin kan lyssna.
+5. **Undantagsark per våg:** ett Google-ark per våg (samma uppbyggnad och kolumner som tidigare, bilaga E, justerad) men med bara: alla flaggor från V2 till V4 och de befintliga statusflaggorna, och ett **stickprov** på 2 arter per våg draget med ett sparat frö, visade med hela faktabladet. Albins beslut som förut (`behåll`, `stryk`, `ändra`); flaggor kräver ett beslut. Hittar stickprovet ett fel som V1 till V4 missade dras två nya arter och missen loggas i rapporten.
+6. **Import:** artens fält `review.facts = { by, at }` ersätts av `verification = { method: "auto", at: "<datum>", model: "<modell-id>", spotChecked: true|false }`. Ingen text skrivs för en art utan `verification` eller med en öppen flagga.
+
+Konsekvenser för sidorna och metadatan (ska alltid vara sant):
+
+- Raden "Faktagranskad av Albin Abrahamsson {datum}" på artsidor och jämförelsesidor blir **"Kontrollerad mot källorna {datum}"** (EN: "Checked against sources {date}"), fortfarande länkad till "Så gör vi artsidorna".
+- JSON-LD: `reviewedBy` tas bort. `lastReviewed` behålls, satt till kontrolldatumet (samma datum som raden på sidan). `check-seo.mjs` kontrollerar datumet och kontrollerar inte längre en granskare.
+- "Så gör vi artsidorna" (avsnitt 8): granskningspunkten blir en beskrivning av de automatiska kontrollerna (en andra modell kontrollerar varje faktum mot sitt citat, siffror jämförs mellan artiklarna, förekomst jämförs med Artportalen och rödlistan, inspelningen kontrolleras med Birdys egen ljudmodell) och att det som inte går att avgöra automatiskt, plus ett stickprov per våg, granskas av Albin Abrahamsson. Påståenden om att Albin granskar varje art tas bort.
+- Jämförelsesidorna behåller "Albin läser varje jämförelsesida i förhandsvisningen" oförändrat (ingår inte i detta beslut).
+- Kostnad: V1 lägger uppskattningsvis 10 till 20 USD till (uppskattning, provkörningen avgör), fortfarande inom de 200 USD Albin fyller på.
 
 ## 1. Utgångsläge (verifierat 2026-09-25, källorna 2026-09-30 och 2026-10-01)
 
@@ -52,20 +73,20 @@ Fas 1-koden som redan finns (`birdy-fetcher web`, 2026-09-26) återanvänds: Wik
 |---|---|---|
 | 1 | Språk | **Svenska och engelska från start.** |
 | 2 | Omfång | **De 180 granskade arterna**, publicerade i vågor (rad 15). |
-| 3 | Texter | **Ny webbtext per art**, skriven ur ett granskat faktablad (rad 10). Appens texter rörs inte. |
+| 3 | Texter | **Ny webbtext per art**, skriven ur ett kontrollerat faktablad (rad 10). Appens texter rörs inte. |
 | 4 | Artsidans layout | **B "Uppslaget"**, utökad med nya moduler (avsnitt 5). |
 | 5 | Navigering | Kategoriraden med sökfält, "Arter" först i menyn, kolumnen Arter och raden Vanliga arter i sidfoten. Ingen utfällbar meny. |
 | 6 | Teknik | Pipelinesteget `web` skriver data, texter och media till `website/`. Vercel bygger bara `website/`. |
 | 7 | Grupper | Appens 15 grupper, med egna sidor. |
-| 8 | Publicering | Fas 2-koden byggs nu. Sidorna publiceras i vågor när de är granskade (avsnitt 14). |
+| 8 | Publicering | Fas 2-koden byggs nu. Sidorna publiceras i vågor när de är kontrollerade (avsnitt 14). |
 | 9 | Källor | **Wikipedia på svenska, engelska och tyska**, **Artportalen via GBIF** (CC0), **Svenska rödlistan 2025** (CC0), **inspelningar från Commons** (fria licenser). |
-| 10 | Pipeline | **Faktablad först:** citerade fakta, kodkontroll av citaten, Albins granskning, skrivande bara ur godkända fakta, kontroll av varje mening med en andra modell. |
-| 11 | Granskning | **Albin granskar varje arts faktablad** och läser varje jämförelsesida i förhandsvisningen. Sidan visar "Faktagranskad av Albin Abrahamsson" med datum. |
+| 10 | Pipeline | **Faktablad först:** citerade fakta, kodkontroll av citaten, automatisk kontroll av varje faktum mot sitt citat, skrivande bara ur godkända fakta, kontroll av varje mening med en andra modell. |
+| 11 | Kontroll | **Automatisk kontroll plus undantagsgranskning** (ändrat 2026-10-05): en andra modell kontrollerar varje faktum, kod jämför siffror mellan artiklarna och förekomst mot Artportalen och rödlistan, Birdys egen ljudmodell kontrollerar inspelningen. Albin beslutar bara om flaggorna och ett stickprov per våg, och läser varje jämförelsesida i förhandsvisningen. Sidan visar "Kontrollerad mot källorna" med datum. |
 | 12 | Förväxlingsarter | **Sektion på varje artsida plus egna jämförelsesidor** för de cirka 30 mest sökta paren. |
 | 13 | Datamoduler | **Månadsdiagram och länskarta** ur Artportalen, **svensk rödlistestatus** i faktalistan. |
 | 14 | Ljud | **En inspelning per art** när en fri inspelning finns, högst 20 sekunder. |
 | 15 | Vågor | **Våg 1 i början av december** (de tolv vanliga arterna plus vinter- och trädgårdsfåglar), våg 2 i mitten av januari, våg 3 (flyttfåglar) i slutet av februari. |
-| 16 | Öppenhet | **Sidan "Så gör vi artsidorna"** om källor, AI, granskning, licenser och rättelser. |
+| 16 | Öppenhet | **Sidan "Så gör vi artsidorna"** om källor, AI, kontroll, licenser och rättelser. |
 
 **Saker specen bestämmer utöver mockupen** (ändra i granskningen om du vill något annat):
 
@@ -79,7 +100,7 @@ Fas 1-koden som redan finns (`birdy-fetcher web`, 2026-09-26) återanvänds: Wik
 
 **Ingår:**
 
-- Pipelinesteget `web`: källor, datamoduler, faktablad, granskningsark, skrivande, kontroll, jämförelsetexter, nedskalade foton, klippta inspelningar och licensdata för de 180 arterna, samt ingresser för de 15 grupperna.
+- Pipelinesteget `web`: källor, datamoduler, faktablad, automatisk kontroll, undantagsark, skrivande, kontroll, jämförelsetexter, nedskalade foton, klippta inspelningar och licensdata för de 180 arterna, samt ingresser för de 15 grupperna.
 - Sidorna: 180 artsidor, 15 gruppsidor, en ingångssida, cirka 30 jämförelsesidor och sidan "Så gör vi artsidorna", på två språk (cirka 454 sidor).
 - Kategorirad, sökfält, ändringar i meny, sidfot och startsidans uppslagsverkssektion.
 - `Layout` får ett uttryckligt språkpar.
@@ -162,7 +183,7 @@ Utseendet följer fältbokens färger: inget grönt, espresso för mörka ytor, 
   8. Extrafoto i planschram ("Pl. 2"), bara om arten har ett.
   9. h2 "Kan förväxlas med": 1 till 3 arter, var och en med litet foto (om arten har sida), namn och 1 till 2 meningar om hur man skiljer dem åt. Namnet länkar till artens sida om den är publicerad. Finns en publicerad jämförelsesida för paret visas länken "Jämför {art} och {art}". Sektionen döljs när arten saknar förväxlingsarter.
   10. h2 "Fler {familj}": upp till fyra andra publicerade arter i samma familj, annars från samma grupp.
-  11. Credits (avsnitt 10), raden "Faktagranskad av Albin Abrahamsson {datum}" med länk till "Så gör vi artsidorna", och raden "Hittade du ett fel? Skriv till oss" (mejllänk med ämnet "Fel på artsidan: {Art}").
+  11. Credits (avsnitt 10), raden "Kontrollerad mot källorna {datum}" med länk till "Så gör vi artsidorna", och raden "Hittade du ett fel? Skriv till oss" (mejllänk med ämnet "Fel på artsidan: {Art}").
 
 **Mobil (under 1024 px):** en spalt i ordningen brödsmulor, kicker, h1, huvudfoto, faktalista, ingress, kännetecken, läte med spelare, var och när med diagram och karta, föda och beteende, extrafoto, förväxlingsarter, appruta, marginalanteckning, fler arter och credits. Ingen sticky. Ingen sidledsscroll i 360 till 430 px.
 
@@ -214,7 +235,7 @@ Paren sorteras på summan av de svenska volymerna, med den engelska summan som s
 4. h2 "Så skiljer du dem åt": en tabell med 3 till 5 rader (kännetecken, art A, art B).
 5. h2 "När ses de?": båda arternas månadsprofiler i samma diagram, två färger ur paletten, med förklaring och en mening per art skriven av kod.
 6. Appruta "Fortfarande osäker?" med Play-märket.
-7. Credits för alla foton, inspelningar, data och båda arternas Wikipediaartiklar, plus raden "Faktagranskad av Albin Abrahamsson {datum}" (det senare av de två arternas granskningsdatum).
+7. Credits för alla foton, inspelningar, data och båda arternas Wikipediaartiklar, plus raden "Kontrollerad mot källorna {datum}" (det senare av de två arternas kontrolldatum).
 
 **Skrivs och kontrolleras** bara ur de två arternas godkända faktablad, med samma kontroller som artsidorna (avsnitt 9.7). Albin läser varje jämförelsesida i förhandsvisningen innan vågen går live.
 
@@ -226,9 +247,9 @@ En sida per språk som förklarar, i sajtens ton och utan tankstreck:
 
 - **Källorna:** Wikipedia på tre språk, Artportalen via GBIF, Svenska rödlistan 2025, foton och inspelningar från Wikimedia Commons.
 - **Hur AI används:** en modell tar ut fakta med citat ur artiklarna, kod kontrollerar citaten, en modell skriver texten bara ur godkända fakta, en annan modell kontrollerar varje mening. Diagram, karta och rödlistestatus kommer direkt ur datan, utan modell.
-- **Granskningen:** Albin Abrahamsson går igenom varje arts faktablad före publicering. Datumet står på varje sida.
+- **Kontrollen:** en andra modell kontrollerar varje faktum mot sitt citat ur artikeln, kod jämför siffror mellan artiklarna, förekomst jämförs med Artportalen och den svenska rödlistan, och inspelningen kontrolleras med Birdys egen ljudmodell. Det som inte går att avgöra automatiskt, plus ett stickprov varje våg, granskas av Albin Abrahamsson. Datumet för den senaste kontrollen står på varje sida.
 - **Licenserna:** texterna får delas under CC BY-SA 4.0, foton och inspelningar under sina egna licenser.
-- **Rättelser:** mejladressen och att rättade sidor får nytt granskningsdatum.
+- **Rättelser:** mejladressen och att rättade sidor får nytt kontrolldatum.
 
 Texten skrivs i planen och godkänns av Albin. Sidan länkas från alla artsidor, jämförelsesidor och ingångssidan. JSON-LD som blogginläggen: `author` Person Albin Abrahamsson, `publisher` AlbIT AB.
 
@@ -269,7 +290,7 @@ Räknas av kod, aldrig av en modell.
 ### 9.3 Faktabladet
 
 - **Prompt:** `prompts/facts-v1.md`. Underlag: de tre artiklarna, namn och familj. Modell i Opus-klass med hög tankenivå.
-- **Status i Sverige** tas också fram här, inte av skribenten: modellen anger en av `resident`, `breeding_migrant`, `passage`, `winter_visitor`, `rare_visitor` eller `absent` med citat, och den sparas som faktumet `s01` (`topic: "status"`). Statussignalen (9.2) jämförs med den direkt, så att en motsägelse blir en flagga i Albins granskningsark.
+- **Status i Sverige** tas också fram här, inte av skribenten: modellen anger en av `resident`, `breeding_migrant`, `passage`, `winter_visitor`, `rare_visitor` eller `absent` med citat, och den sparas som faktumet `s01` (`topic: "status"`). Statussignalen (9.2) jämförs med den direkt, så att en motsägelse blir en flagga i undantagsarket (9.4).
 - **Ett faktum** har:
   - `id` (`f01`, `f02` …)
   - `topic`: en av `appearance`, `sex_age`, `size`, `voice`, `habitat`, `sweden`, `breeding`, `food`, `behaviour`, `lookalike`
@@ -280,12 +301,18 @@ Räknas av kod, aldrig av en modell.
 - **Kontroller i kod:** varje citat måste finnas ordagrant i den angivna artikeln efter samma normalisering som i fas 1 (blanksteg, skiftläge, citattecken, streck). Fakta utan giltigt citat stryks och loggas. `other` slås upp bland de 839 arterna och får QID om arten finns. Saknas ett obligatoriskt ämne efter kontrollen görs ett nytt försök med felen. Failar det igen får arten `status: "failed"`.
 - **Datafakta** läggs till av koden (`d01` …, `topic: "data"`, källa `artportalen` eller `rodlistan`): meningarna om månader och län, rödlistekategorin, och en flagga om statussignalen motsäger fakta om förekomst i Sverige.
 
-### 9.4 Albins granskning
+### 9.4 Automatisk kontroll och undantagsgranskning
 
-- **Ett Google-ark per våg** i Albins Drive, skapat av agenten. Kolumnerna står i bilaga E. En rad per faktum, en rad för inspelningen (med länk till filsidan, så att Albin kan lyssna) och en rad per flagga.
-- **Beslut:** `behåll` (standard), `stryk` eller `ändra` (Albin skriver den nya texten i faktumkolumnen). Flaggor kräver ett beslut.
-- **Import:** arket exporteras till `tools/content-pipeline/review/wave-<n>.csv` och committas. Strukna fakta tas bort, ändrade fakta ersätts och märks `edited: true` (citatet behålls som källa; ändringen är Albins ansvar), strukna inspelningar tas bort. Arten får `review.facts = { by: "Albin Abrahamsson", at: "<datum>" }`.
-- **Ingen text skrivs** för en art utan `review.facts`.
+Ersätter Albins manuella granskning av varje faktablad (Revision 2026-10-05). En automatisk kontroll (`birdy-fetcher web verify`) körs på alla 180 arters faktablad direkt efter faktabladen, utan Albin. Bara det kontrollen inte kan avgöra går vidare till Albin, våg för våg.
+
+- **V1, faktakontroll mot citaten:** en annan modell än den som skrev faktabladet (Sonnet-klass, mot skribentens Opus-klass) får varje faktum med sitt citat och det omgivande stycket ur den cachade artikeln, och svarar `supported`, `partial` eller `unsupported` med en kort motivering, som JSON. Fakta med `partial` eller `unsupported` stryks automatiskt och loggas i rapporten. Blir ett obligatoriskt ämne (utseende, läte, miljö) tomt efter detta körs det befintliga omförsöket (9.3) med felen; failar det igen får arten `status: "failed"`.
+- **V2, siffror mellan artiklarna** (kod, ingen modell): för fakta med tal (storlek, vikt, vingbredd, kullstorlek och liknande) tar koden ut tal och enhet och jämför med de andra artiklarna (sv/en/de) som anger samma mått. Intervallen måste överlappa (toleransen ges i planen, med tester). Skiljer de sig åt blir det en flagga.
+- **V3, förekomst** (kod): den befintliga statussignalen mot Artportalens data (9.2) kompletteras med en kontroll mot Svenska rödlistan 2025: status `absent` eller `rare_visitor` för en art som har en bedömd rödlistekategori (inte NA/NE) ger en flagga.
+- **V4, inspelningen:** Birdys egen BirdNET-modell körs på den klippta inspelningen (skrivbordsreferensen finns i `tools/ml-eval/flexref/`; planen anropar den, till exempel via ett litet script som pipelinen kör med `uv run --project ...` och som svarar med JSON top-3 per 3-sekundersfönster). Arten måste ligga i top-3 med minst 0,10 i konfidens i minst ett fönster, annars tas inspelningen bort automatiskt (sidan visar ingen inspelning). Arter som ljudmodellen inte täcker (174 av 180, avsnitt 1) ger i stället en flagga så att Albin kan lyssna.
+- **Undantagsark per våg:** ett Google-ark per våg i Albins Drive, skapat av agenten. Kolumnerna står i bilaga E. Arket innehåller bara: alla flaggor från V2 till V4 och de befintliga statusflaggorna, och ett **stickprov** på 2 arter per våg draget med ett sparat frö, visade med hela faktabladet så att Albin kan stämma av kontrollens arbete.
+- **Beslut:** `behåll` (standard), `stryk` eller `ändra` (Albin skriver den nya texten i faktumkolumnen). Flaggor kräver ett beslut. Hittar stickprovet ett fel som V1 till V4 missade dras två nya arter till stickprovet och missen loggas i rapporten.
+- **Import:** arket exporteras till `tools/content-pipeline/review/wave-<n>.csv` och committas. Strukna fakta tas bort, ändrade fakta ersätts och märks `edited: true` (citatet behålls som källa; ändringen är Albins ansvar), strukna inspelningar tas bort. Artens fält `review.facts = { by, at }` ersätts av `verification = { method: "auto", at: "<datum>", model: "<modell-id>", spotChecked: true|false }`.
+- **Ingen text skrivs** för en art utan `verification`, eller med en öppen flagga.
 
 ### 9.5 Skrivandet
 
@@ -302,7 +329,7 @@ Räknas av kod, aldrig av en modell.
   | `lookAlikes` | 0 till 3 poster med `other` och text | högst 35 ord per post |
   | `metaDescription` | för sökresultatet | 120 till 155 tecken |
   | `facts.size` | "Cirka 14 cm" eller "13 till 15 cm" | med fakta-id, eller `null` |
-  | `facts.swedenStatus` | fylls av koden ur det granskade statusfaktumet `s01`, samma på båda språken | `{ value, factIds: ["s01"] }`, eller `null` |
+  | `facts.swedenStatus` | fylls av koden ur det kontrollerade statusfaktumet `s01`, samma på båda språken | `{ value, factIds: ["s01"] }`, eller `null` |
 
 - **Varje mening och punkt** sparas som `{ "text": "…", "factIds": ["f03", "d01"] }`. Sajten fogar ihop meningarna.
 - **Skrivregler** som i fas 1: kort och konkret, inga streck, inga utropstecken, ingen första person, inga frågor till läsaren, inga förbjudna fraser (bilaga B), nämn inte Birdy, appar, foton eller Wikipedia.
@@ -331,15 +358,15 @@ Räknas av kod, aldrig av en modell.
 
 ### 9.8 Körning, kostnad och rapport
 
-- Stegen går att köra var för sig och per art: källor, faktablad, granskningsark för en våg, import av en våg, skrivande, jämförelser. Exakta kommandon står i planen.
+- Stegen går att köra var för sig och per art: källor, faktablad, kontroll, undantagsark för en våg, import av en våg, skrivande, jämförelser. Exakta kommandon står i planen.
 - **Provkörning först:** samma fyra arter som i fas 1 (talgoxe Q25485, Q25383, Q25386 och Q10546857) med `--max-cost 5`. Kostnaden per art räknas om och Albin godkänner modell och tankenivå innan resten körs.
-- **Uppskattning (räknad 2026-10-01 med Opus 5 för faktablad och text och Sonnet 5 för kontrollen):** cirka 145 USD för 180 arter och 30 jämförelser, med marginal för omförsök. Albin fyller på 200 USD. Provkörningen avgör.
+- **Uppskattning (räknad 2026-10-01 med Opus 5 för faktablad och text och Sonnet 5 för kontrollen):** cirka 145 USD för 180 arter och 30 jämförelser, med marginal för omförsök. **Tillägg 2026-10-05:** den automatiska faktakontrollen (V1) lägger uppskattningsvis 10 till 20 USD till (uppskattning, provkörningen avgör). Albin fyller på 200 USD, vilket täcker båda. Provkörningen avgör.
 - **Rapport per körning** i `tools/content-pipeline/reports/`: kostnad, arter per status, strukna fakta och citat som inte hittades, borttagna meningar, flaggor, arter utan datamoduler eller inspelning.
 
 ### 9.9 Utdata
 
 - Artfiler `website/src/data/species/<QID>.json` (bilaga C), jämförelsefiler `website/src/data/comparisons/<QID-A>_<QID-B>.json` med QID i bokstavsordning (bilaga D), foton och inspelningar i `website/src/assets/species/<QID>/`.
-- Pipelinen skriver aldrig över granskade fakta (`review.facts` satt) utan `--force`. Texten skrivs bara om när faktabladet har ändrats.
+- Pipelinen skriver aldrig över kontrollerade fakta (`verification` satt) utan `--force`. Texten skrivs bara om när faktabladet har ändrats.
 
 ## 10. Media, data och licenser
 
@@ -357,11 +384,11 @@ Räknas av kod, aldrig av en modell.
   - `about`: `Taxon` med `name`, `alternateName`, `taxonRank: species` och `sameAs` till Wikidata
   - `primaryImageOfPage`: `ImageObject` med `contentUrl`, `license`, `acquireLicensePage`, `creator` och `creditText`
   - `associatedMedia`: `AudioObject` med samma licensfält, när en inspelning visas
-  - `reviewedBy`: `Person` Albin Abrahamsson, och `lastReviewed` med granskningsdatumet
-- **Jämförelsesida:** `BreadcrumbList` plus `WebPage` med `about` som lista över båda `Taxon`, `reviewedBy` och `lastReviewed`.
+  - `lastReviewed`: kontrolldatumet (`verification.at`), samma datum som raden på sidan. Ingen `reviewedBy` (borttagen 2026-10-05, kontrollen är inte längre en enskild granskare).
+- **Jämförelsesida:** `BreadcrumbList` plus `WebPage` med `about` som lista över båda `Taxon` och `lastReviewed`.
 - **Gruppsida och ingångssida:** `BreadcrumbList` plus `CollectionPage` med `ItemList`.
 - **Om-sidan:** `WebPage` med `author` och `publisher` som blogginläggen.
-- Inget i JSON-LD får säga mer än sidan visar. `check-seo.mjs` kontrollerar namn, brödsmulor, antal, granskare och datum.
+- Inget i JSON-LD får säga mer än sidan visar. `check-seo.mjs` kontrollerar namn, brödsmulor, antal och datum.
 
 ## 12. SEO-reglerna som kod
 
@@ -392,7 +419,7 @@ En reservmall för jämförelser som blir under 40 tecken godtas (korta artnamn)
 4. Canonical pekar på sidan själv, hreflang åt båda hållen till sidor som finns, x-default på den engelska.
 5. Sidan finns i sitemapen med `lastmod` om den inte har `noindex`; sidor med `noindex` finns inte där.
 6. Alla `<img>` har `alt`, `width` och `height`. Alla diagram har sin mening som text.
-7. JSON-LD går att tolka och matchar sidan (brödsmulor, antal, granskare, datum).
+7. JSON-LD går att tolka och matchar sidan (brödsmulor, antal, datum).
 8. Varje foto och inspelning som visas har en creditrad; sidor med diagram eller karta har datakällan; sidan har Wikipediaraden med alla artiklar som använts.
 
 För alla sidor: inga interna länkar till sidor som saknas, exakt en h1, `alt` på alla bilder.
@@ -409,11 +436,16 @@ För alla sidor: inga interna länkar till sidor som saknas, exakt en h1, `alt` 
 - Rödlistans översättning och `not_listed`.
 - Ljudfiltret: uttalsfiler och licenser utanför tabellen avvisas, xeno-canto-import godkänns.
 - Citatkontrollen för fakta på tre språk, obligatoriska ämnen, `other`-uppslag.
-- Granskningsimporten: behåll, stryk, ändra, inspelning struken, flagga utan beslut stoppar importen.
+- Faktakontrollen (V1) med en låtsasmodell: `supported`/`partial`/`unsupported`, strukna fakta loggas, omförsök vid tomt obligatoriskt ämne.
+- Siffermatchningen (V2): tal och enhet ur fakta, överlapp mellan artiklarna, toleransen, flagga vid motsägelse.
+- Rödlistekontrollen (V3): flagga när statusen är `absent` eller `rare_visitor` men arten har en bedömd rödlistekategori.
+- Ljudmodellkontrollen (V4) med en fixturinspelning: top-3 och tröskeln 0,10, borttagen inspelning under tröskeln, flagga för arter modellen inte täcker.
+- Stickprovsdragningen: samma frö ger samma två arter, en ny dragning vid ett missat fel.
+- Undantagsarkets import: behåll, stryk, ändra, inspelning struken, flagga utan beslut stoppar importen.
 - Fakta-id- och talkontrollen, `lookAlikes` mot fakta, statusregeln.
 - Kontrollflödet med en låtsasmodell: omskrivning en gång, borttagna meningar, `failed` när obligatoriska fält blir för korta.
 - Jämförelser: urval ur volymfilen, slug-ordning, minst tre rader.
-- Att granskade fakta inte skrivs över utan `--force`.
+- Att kontrollerade fakta inte skrivs över utan `--force`.
 
 **Webben:**
 
@@ -429,7 +461,7 @@ För alla sidor: inga interna länkar till sidor som saknas, exakt en h1, `alt` 
 
 ## 14. Publicering i vågor
 
-- **Fältet `publish`** i artens och jämförelsens JSON avgör. Produktionsbygget gör sidor bara för `publish: true`. Förhandsbygget på Vercel (`SPECIES_PREVIEW=1` i miljön Preview) gör även sidor för arter med `review.facts` och `status: "ok"`, med `noindex` och en banderoll "Förhandsvisning".
+- **Fältet `publish`** i artens och jämförelsens JSON avgör. Produktionsbygget gör sidor bara för `publish: true`. Förhandsbygget på Vercel (`SPECIES_PREVIEW=1` i miljön Preview) gör även sidor för arter med `verification` och `status: "ok"`, med `noindex` och en banderoll "Förhandsvisning".
 - Gruppsidor, ingångssidan, kategoriraden, sidfoten, "Fler {familj}" och förväxlingslänkar räknar bara publicerade sidor. Sitemapen har bara publicerade sidor.
 
 | Våg | Innehåll | Live senast | Varför |
@@ -438,11 +470,11 @@ För alla sidor: inga interna länkar till sidor som saknas, exakt en h1, `alt` 
 | 2 | Övriga stannfåglar och vanliga arter | 15 januari 2027 | Vintersäsongen |
 | 3 | Flyttfåglar | 26 februari 2027 | Före vårens sökningar i april och maj |
 
-Listorna tas fram ur datan (`birdy-fetcher web waves`) och Albin justerar dem i chatten innan första granskningsarket skapas.
+Listorna tas fram ur datan (`birdy-fetcher web waves`) och Albin justerar dem i chatten innan första undantagsarket skapas.
 
-**Varje våg:** granskningsark → Albins granskning → import → skrivande och kontroll → jämförelser → förhandsvisning → Albin läser jämförelsesidorna och skummar artsidorna → `publish: true` → sammanslagning → sitemapen skickas in och indexering begärs för vågens viktigaste sidor.
+**Varje våg:** undantagsark → Albins beslut om flaggor och stickprov → import → skrivande och kontroll → jämförelser → förhandsvisning → Albin läser jämförelsesidorna och skummar artsidorna → `publish: true` → sammanslagning → sitemapen skickas in och indexering begärs för vågens viktigaste sidor.
 
-Faktabladen tas fram för alla 180 arter direkt efter provkörningen. Bara granskningen och skrivandet sker våg för våg.
+Faktabladen tas fram och kontrolleras automatiskt (V1 till V4) för alla 180 arter direkt efter provkörningen. Bara undantagsarket, Albins beslut och skrivandet sker våg för våg.
 
 ## 15. Mätning, triggrar och länkar
 
@@ -457,20 +489,20 @@ Faktabladen tas fram för alla 180 arter direkt efter provkörningen. Bara grans
 
 ## 16. Faser och beroenden
 
-1. **Fas 1b, pipelinen** (på `main`, rör ingen befintlig webbkod): källor, datamoduler, faktablad, granskningsark och import, skrivande, kontroll, jämförelser, provkörning, körning av faktabladen för alla 180. Ny plan. Kodarbetet startar direkt, parallellt med 1.3.0. **Den betalda körningen väntar på API-kredit** i Anthropic Console.
+1. **Fas 1b, pipelinen** (på `main`, rör ingen befintlig webbkod): källor, datamoduler, faktablad, automatisk kontroll, undantagsark och import, skrivande, kontroll, jämförelser, provkörning, körning och kontroll av faktabladen för alla 180. Ny plan. Kodarbetet startar direkt, parallellt med 1.3.0. **Den betalda körningen väntar på API-kredit** i Anthropic Console.
 2. **Fas 2, sidorna** (grenen `website/artsidor` i worktree `C:/w/birdy-artsidor`): byggs mot testdata tills riktiga filer finns. Reviderad plan. Slås ihop våg för våg enligt avsnitt 14.
 3. **Fas 3, mätning:** baslinjen tas om vid våg 1, triggrarna följs per våg.
 
-**Albins uppmärksamhet går till 1.3.0 först** (brytpunkten och vC129). Agentens arbete med fas 1b och fas 2 kräver honom bara vid provkörningens modellval, granskningsarken och förhandsvisningarna.
+**Albins uppmärksamhet går till 1.3.0 först** (brytpunkten och vC129). Agentens arbete med fas 1b och fas 2 kräver honom bara vid provkörningens modellval, undantagsarken och förhandsvisningarna.
 
 ## 17. Risker
 
-- **Google kan se sidorna som massproducerat innehåll.** Hundratals AI-skrivna sidor som bygger på Wikipedia är just det mönster Googles regler mot massproducerat innehåll riktar sig mot. Motmedlen är inbyggda från start: texten skrivs ur citerade fakta från tre språkversioner, varje sida har egen data som Wikipedia saknar (månadsdiagram, länskarta, svensk rödlista, inspelning, förväxlingsarter), jämförelsesidorna svarar på frågor som ingen uppslagssida svarar på, Albin granskar varje faktablad och sidan säger det, om-sidan redovisar hur sidorna görs, och publiceringen sker i vågor med triggrar innan nästa våg.
-- **Faktafel från modellen.** Motmedel: citat som kontrolleras i kod, Albins granskning, fakta-id och talkontroll på varje mening, en andra modell som kontrollerar, statussignalen ur datan och "Hittade du ett fel?" på varje sida.
+- **Google kan se sidorna som massproducerat innehåll.** Hundratals AI-skrivna sidor som bygger på Wikipedia är just det mönster Googles regler mot massproducerat innehåll riktar sig mot. Motmedlen är inbyggda från start: texten skrivs ur citerade fakta från tre språkversioner, varje sida har egen data som Wikipedia saknar (månadsdiagram, länskarta, svensk rödlista, inspelning, förväxlingsarter), jämförelsesidorna svarar på frågor som ingen uppslagssida svarar på, en andra modell kontrollerar varje faktablad och Albin beslutar om undantagen, sidan säger det, om-sidan redovisar hur sidorna görs, och publiceringen sker i vågor med triggrar innan nästa våg.
+- **Faktafel från modellen.** Motmedel: citat som kontrolleras i kod, den automatiska faktakontrollen (V1), fakta-id och talkontroll på varje mening, en andra modell som kontrollerar texten, statussignalen ur datan och "Hittade du ett fel?" på varje sida.
 - **Snedvriden rapportdata.** Fler rapporterar i maj och nära städer. Motmedel: andelar av alla fågelrapporter i stället för antal, bildtext som säger vad diagrammet visar, gräns för för lite data.
-- **Fel inspelning.** Motmedel: filtret i 9.1, Albin lyssnar i granskningsarket.
+- **Fel inspelning.** Motmedel: filtret i 9.1, Birdys egen ljudmodell (V4), Albin lyssnar på flaggade inspelningar i undantagsarket.
 - **Licenser.** Motmedel: avsnitt 10 och byggkontrollen.
-- **Albins tid.** Cirka 9 timmar granskning fördelat på tre vågor. Motmedel: faktablad i stället för prosa, ark där bara avvikelser behöver markeras.
+- **Albins tid.** Cirka 15 till 30 minuter granskning per våg (ändrat 2026-10-05, se Revision 2026-10-05; tidigare uppskattning var cirka 10 till 15 timmar manuell granskning totalt). Motmedel: automatisk kontroll av varje faktablad, ett undantagsark där bara flaggor och ett litet stickprov behöver beslut.
 - **Kostnad.** Motmedel: provkörning på fyra arter, `--max-cost` på varje körning, cache så att inget hämtas eller skrivs två gånger.
 - **Repots och byggets storlek.** Foton cirka 39 MB och inspelningar cirka 30 MB. Motmedel: nedskalning och klippning i pipelinen. Blir bygget för långsamt sänks antalet bildstorlekar.
 - **Låga sökvolymer i sökordsplaneraren.** Motmedel: par utan volym får ingen sida men behåller sektionen på artsidan.
@@ -542,7 +574,7 @@ Faktabladen tas fram för alla 180 arter direkt efter provkörningen. Bara grans
 | Datacredit | Rapportdata: Artportalen (SLU Artdatabanken) via GBIF.org, 2016 till 2025. Rödlista: Rödlistade arter i Sverige 2025, SLU Artdatabanken. | Report data: Artportalen (SLU Swedish Species Information Centre) via GBIF.org, 2016 to 2025. Red list: The Swedish Red List 2025, SLU Swedish Species Information Centre. |
 | Textcredit | Texten bygger på artiklarna om {art i gemener} på {språk} Wikipedia och får delas under CC BY-SA 4.0. | The text is based on the articles about the {name} on {languages} Wikipedia and may be shared under CC BY-SA 4.0. |
 | Textcredit, språk | svenska, engelska och tyska (eller de som använts) | Swedish, English and German (or those used) |
-| Granskning | Faktagranskad av Albin Abrahamsson {datum}. | Facts reviewed by Albin Abrahamsson on {date}. |
+| Kontroll | Kontrollerad mot källorna {datum}. | Checked against sources on {date}. |
 | Fel i texten | Hittade du ett fel? Skriv till oss. | Found a mistake? Write to us. |
 | Förhandsvisning, banderoll | Förhandsvisning, inte publicerad | Preview, not published |
 | Sidfot, kolumn | Arter | Species |
@@ -558,7 +590,7 @@ Gruppnamnen är appens (`archive_chip_*`). Accentord i rubriker står inom `*…
 
 **Engelska:** remarkable, fascinating, stunning, breathtaking, magnificent, boasts, nestled, a true, a testament to, not only, but also, in the heart of, it is worth noting, delve, tapestry, vibrant, iconic, truly.
 
-Listan ligger i `prompts/web-banned-phrases.txt` (med böjningsformer sedan fas 1) och får växa när granskningen hittar nya mönster.
+Listan ligger i `prompts/web-banned-phrases.txt` (med böjningsformer sedan fas 1) och får växa när kontrollen hittar nya mönster.
 
 ## Bilaga C: schema för `website/src/data/species/<QID>.json`
 
@@ -617,9 +649,11 @@ Listan ligger i `prompts/web-banned-phrases.txt` (med böjningsformer sedan fas 
     { "id": "d01", "topic": "data", "source": "artportalen", "sv": "Rapporteras året runt." }
   ],
   "review": {
-    "facts": { "by": "Albin Abrahamsson", "at": "2026-11-…" },
     "wave": 1,
     "statusConfirmed": false
+  },
+  "verification": {
+    "method": "auto", "at": "2026-11-…", "model": "…", "spotChecked": false
   },
   "text": {
     "sv": {
@@ -647,11 +681,12 @@ Listan ligger i `prompts/web-banned-phrases.txt` (med böjningsformer sedan fas 
 
 - `status` är `pending` (källor och faktablad finns men ingen text än), `ok` eller `failed`. `pending` och `failed` har `"text": null`; en `failed`-post har texten som inte klarade sig under `rejectedText`. Bara `ok` kan ge en sida.
 - `review` är alltid ett objekt. `review.statusConfirmed` är sant när Albin har behållit statusen trots en flagga.
+- `verification` finns bara för en art som har klarat den automatiska kontrollen (9.4) och, om den hade flaggor, fått Albins beslut. `verification.model` är kontrollmodellens id, `verification.spotChecked` är sant om arten ingick i vågens stickprov. Ingen text skrivs för en art utan `verification`.
 - `publish` styr produktionsbygget (avsnitt 14).
 - `audio`, `marginalia`, `data` och `wikipedia.de` kan saknas. `data.months` och `data.counties` saknas när arten har färre än 200 rapporter.
 - `swedishRedList` är `RE`, `CR`, `EN`, `VU`, `NT`, `DD` eller `not_listed`, eller saknas om matchningen mot listan misslyckades.
 - `lookAlikes[].other` och `facts[].other.qid` är QID när den andra arten finns bland de 839, annars saknas `qid` och `lookAlikes[].other` är det vetenskapliga namnet. Bara arter med publicerad sida länkas.
-- Sajtens zod-schema läser bara de fält sidorna behöver och görs inte `.strict()`. Av `facts` läser sajten bara `id`, `topic` och `other` (namnet på en förväxlingsart som inte har egen sida). `raw`, `generated` och `rejectedText` läses inte av sajten.
+- Sajtens zod-schema läser bara de fält sidorna behöver och görs inte `.strict()`. Av `facts` läser sajten bara `id`, `topic` och `other` (namnet på en förväxlingsart som inte har egen sida). Av `verification` läser sajten bara `at` (till creditraden och `lastReviewed`). `raw`, `generated` och `rejectedText` läses inte av sajten.
 - `publish` sätts bara av pipelinen (`birdy-fetcher web publish --wave N`), aldrig för hand och aldrig av sajtens skript.
 
 ## Bilaga D: schema för `website/src/data/comparisons/<QID-A>_<QID-B>.json`
@@ -681,16 +716,18 @@ Listan ligger i `prompts/web-banned-phrases.txt` (med böjningsformer sedan fas 
 
 Fakta-id har prefixet `a:` eller `b:` för att visa vilken arts faktablad de kommer från. `a` och `b` följer slug-ordningen på svenska.
 
-## Bilaga E: granskningsarket
+## Bilaga E: undantagsarket
 
-En flik per våg, en rad per faktum, inspelning eller flagga, sorterat på art och ämne.
+En flik per våg (ändrat 2026-10-05, se Revision 2026-10-05). Innehåller bara det den automatiska kontrollen inte kan avgöra: alla flaggor från V2 till V4 och statussignalen, plus hela faktabladet för de 2 arter som vågens stickprov drar. En rad per faktum, inspelning, datarad eller flagga, sorterat på art och ämne.
 
 | Kolumn | Innehåll |
 |---|---|
 | Art | Svenskt namn |
 | QID | Wikidata-id |
+| Rad | `stickprov` eller `flagga` |
+| Kontroll | Vilken kontroll som gav flaggan: `V1`, `V2`, `V3`, `V4` eller `statussignalen`. Tomt för en stickprovsrad. |
 | Typ | `faktum`, `data`, `inspelning` eller `flagga` |
-| Id | Fakta-id (`f03`, `d01`) |
+| Id | Fakta-id (`f03`, `d01`), eller tomt för en inspelningsflagga |
 | Ämne | Ämnet på svenska |
 | Faktum | Faktumet på svenska. Albin skriver här när beslutet är `ändra`. |
 | Källa | `sv`, `en` eller `de` med länk till artikeln på rätt revision, eller `Artportalen` / `Rödlistan` / länk till inspelningens filsida |
