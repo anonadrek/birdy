@@ -4,6 +4,7 @@ own quote. V2 and V3 (added in Task 14c) are code, no model."""
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Literal
@@ -12,8 +13,9 @@ from pydantic import BaseModel
 
 from ..claude_summarizer import _split_prompt
 from ..cost import CostTracker
-from .facts import REQUIRED_TOPICS, TOPIC_SV
+from .facts import REQUIRED_TOPICS, STATUS_SV, TOPIC_SV
 from .llm import MODELS, JsonModelClient, record_cost
+from .record import Record
 from .wiki_full import WikiArticle
 
 PROMPT_VERSION = "verify-v1"
@@ -21,6 +23,113 @@ Verdict = Literal["supported", "partial", "unsupported"]
 
 # Severity order: unsupported > partial > supported (highest to lowest)
 VERDICT_SEVERITY = {"unsupported": 3, "partial": 2, "supported": 1}
+
+NUMBER_RE = re.compile(
+    r"(\d+(?:[.,]\d+)?)\s*(?:till|-|–)\s*(\d+(?:[.,]\d+)?)\s*(cm|mm|g|kg)\b"  # noqa: RUF001
+    r"|(\d+(?:[.,]\d+)?)\s*(cm|mm|g|kg)\b",
+    re.IGNORECASE,
+)
+UNITS = ("cm", "mm", "g", "kg")
+NUMBER_TOLERANCE = 0.15  # 15 %, a startvärde (se tasktexten)
+RED_LIST_ASSESSED_NONE = (None, "not_listed")
+
+
+@dataclass(frozen=True)
+class Measurement:
+    low: float
+    high: float
+    unit: str
+
+
+def _num(text: str) -> float:
+    return float(text.replace(",", "."))
+
+
+def extract_measurements(text: str, unit: str) -> list[Measurement]:
+    """Every "<number> <unit>" or "<number> till <number> <unit>" in the text, for one unit."""
+    found: list[Measurement] = []
+    for match in NUMBER_RE.finditer(text):
+        if match.group(3) and match.group(3).lower() == unit:
+            found.append(Measurement(_num(match.group(1)), _num(match.group(2)), unit))
+        elif match.group(5) and match.group(5).lower() == unit:
+            value = _num(match.group(4))
+            found.append(Measurement(value, value, unit))
+    return found
+
+
+def _padded(m: Measurement, tolerance: float) -> tuple[float, float]:
+    margin = max(m.high, m.low, 1.0) * tolerance
+    return m.low - margin, m.high + margin
+
+
+def _overlaps(a: Measurement, b: Measurement, tolerance: float) -> bool:
+    a_lo, a_hi = _padded(a, tolerance)
+    b_lo, b_hi = _padded(b, tolerance)
+    return a_lo <= b_hi and b_lo <= a_hi
+
+
+def number_flag(
+    fact: dict[str, Any], articles: dict[str, WikiArticle], *, tolerance: float = NUMBER_TOLERANCE
+) -> str | None:
+    """None when the fact's own numbers agree with at least one measurement of the same unit
+    in another cached article, or when no other article states that unit at all (spec V2)."""
+    if fact["topic"] == "data":
+        return None
+    own_article = fact["sources"][0]["article"] if fact.get("sources") else None
+    for unit in UNITS:
+        own = extract_measurements(fact["sv"], unit)
+        if not own:
+            continue
+        others: list[Measurement] = []
+        for lang, article in articles.items():
+            if lang == own_article:
+                continue
+            others += extract_measurements(article.text, unit)
+        if not others:
+            continue
+        if not any(_overlaps(m, o, tolerance) for m in own for o in others):
+            low, high = min(o.low for o in others), max(o.high for o in others)
+            return (
+                f"{fact['id']} anger ett tal i {unit} som inte stämmer med de andra "
+                f"artiklarna ({low:g} till {high:g} {unit})"
+            )
+    return None
+
+
+def number_flags(record: Record, articles: dict[str, WikiArticle]) -> list[dict[str, Any]]:
+    flags = []
+    for fact in record.get("facts", []):
+        message = number_flag(fact, articles)
+        if message:
+            flags.append({"check": "V2", "factId": fact["id"], "message": message})
+    return flags
+
+
+def redlist_occurrence_flag(status_value: str, red_list: str | None) -> str | None:
+    """None unless the status says the species is absent or a rare visitor while the red
+    list has actually assessed it (spec V3: not `not_listed`, Sweden's stand-in for NA/NE)."""
+    if status_value not in ("absent", "rare_visitor") or red_list in RED_LIST_ASSESSED_NONE:
+        return None
+    return (
+        f"Statusen säger {STATUS_SV[status_value].lower()}, men arten har kategorin "
+        f"{red_list} i Svenska rödlistan 2025."
+    )
+
+
+def status_flags(record: Record) -> list[dict[str, Any]]:
+    """V3: the existing status-vs-Artportalen contradiction (spec 9.2) and the red list
+    check above, both about the status fact s01."""
+    status_fact = next((f for f in record.get("facts", []) if f.get("id") == "s01"), None)
+    if status_fact is None:
+        return []
+    flags = []
+    contradicts = (record.get("data") or {}).get("statusSignal", {}).get("contradicts")
+    if contradicts:
+        flags.append({"check": "V3", "factId": "s01", "message": contradicts})
+    red_flag = redlist_occurrence_flag(status_fact["value"], record.get("swedishRedList"))
+    if red_flag:
+        flags.append({"check": "V3", "factId": "s01", "message": red_flag})
+    return flags
 
 
 class FactVerdict(BaseModel):
