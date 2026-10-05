@@ -9,6 +9,7 @@ from birdy_fetcher.web.datamod import (
     county_profile,
     county_sentence,
     data_sentences,
+    join_list,
     month_profile,
     month_runs,
     month_sentences,
@@ -113,3 +114,24 @@ def test_data_sentences_put_months_first() -> None:
         "Nästan aldrig i oktober till mars.",
         "Vanligast i rapporterna från Gotland.",
     ]
+
+
+def test_join_list_empty_is_empty_string() -> None:
+    assert join_list([], "sv") == ""
+
+
+def test_no_peak_month_gives_no_most_sentence() -> None:
+    assert month_sentences([15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70], "sv") == []
+
+
+def test_no_peak_but_low_months_gives_only_never_sentence() -> None:
+    # Profile: January and February at 5 (low), rest at 50 (not peak, not low)
+    profile = [5, 5, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]
+    result = month_sentences(profile, "sv")
+    assert len(result) == 1
+    expected = "Nästan aldrig i januari och februari."
+    assert result[0] == expected
+
+
+def test_all_zero_profile_gives_no_month_sentences() -> None:
+    assert month_sentences([0] * 12, "sv") == []

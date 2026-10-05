@@ -74,6 +74,8 @@ ALL_YEAR_MIN = 30
 
 
 def join_list(items: list[str], lang: str) -> str:
+    if not items:
+        return ""
     if len(items) == 1:
         return items[0]
     return ", ".join(items[:-1]) + f" {_AND[lang]} " + items[-1]
@@ -111,8 +113,12 @@ def months_text(selected: set[int], lang: str) -> str:
 def month_sentences(profile: list[int], lang: str) -> list[str]:
     if min(profile) >= ALL_YEAR_MIN:
         return [ALL_YEAR[lang]]
+    if max(profile, default=0) <= 0:
+        return []
     peak = {i for i, value in enumerate(profile) if value >= PEAK}
-    sentences = [MOST[lang].format(months=months_text(peak, lang))]
+    sentences: list[str] = []
+    if peak:
+        sentences.append(MOST[lang].format(months=months_text(peak, lang)))
     low = {i for i, value in enumerate(profile) if value <= LOW}
     if low:
         sentences.append(NEVER[lang].format(months=months_text(low, lang)))
