@@ -15,6 +15,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavDestination.Companion.hasRoute
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -47,9 +48,18 @@ import se.birdy.app.ui.scan.ScanScreenHost
 import se.birdy.content.SpeciesId
 import se.birdy.domain.premium.PremiumState
 
+// Pre-existing debt, unchanged by Plan 3 Task 1's navController seam: detekt's baseline IDs are
+// keyed by the literal signature text, so adding the test-only navController parameter re-keys
+// both findings away from the committed detekt-baseline.xml entries without changing the
+// function's actual length/complexity. Suppressed here instead of touching the baseline (repo
+// convention: extend a baseline only for genuinely new debt).
+@Suppress("LongMethod", "CyclomaticComplexMethod")
 @Composable
-fun AppScaffold(graph: AppGraph) {
-    val navController = rememberNavController()
+fun AppScaffold(
+    graph: AppGraph,
+    // Tests pass their own controller to open a route directly (Plan 3 Task 1); the app uses the default.
+    navController: NavHostController = rememberNavController(),
+) {
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     val dismissToast = stringResource(Res.string.premium_dismiss_toast)
