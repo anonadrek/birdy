@@ -68,6 +68,15 @@ class AudioScanViewModel(
     @Volatile private var finalizeJob: Job? = null
     private var handle: RecorderHandle? = null
 
+    /**
+     * Set before [cancelRecording] touches [handle], so an in-flight [AudioRecorderApi.start]
+     * (not a cancellation point — AudioRecord init / AVAudioEngine.startAndReturnError) still
+     * tears the session down after it returns. Same start/stop hole as the camera sources:
+     * Back during init runs [cancelRecording] while [handle] is still null, so a bare
+     * `handle?.cancel()` there is a no-op and the live session keeps the mic on.
+     */
+    @Volatile private var stopRequested = false
+
     // Streaming-state, owned by sessionJob coroutine
     @Volatile private var fullBuffer = ShortArray(0)
 
@@ -115,6 +124,7 @@ class AudioScanViewModel(
     fun startRecording() {
         val initial = AudioScanState.Recording(rms = 0f, elapsedMs = 0L)
         if (!_state.compareAndSet(AudioScanState.Idle, initial)) return
+        stopRequested = false
         sessionJob?.cancel()
         inferenceJob?.cancel()
         inferenceJob = Job(viewModelScope.coroutineContext[Job])
@@ -142,7 +152,7 @@ class AudioScanViewModel(
                     classifierInstance = clf
                     _demoMode.value = mode == AudioClassifierMode.DEMO
 
-                    handle =
+                    val started =
                         recorder.start(
                             onChunk = { samples, rms, totalSoFar ->
                                 onChunkReceived(samples, rms, totalSoFar)
@@ -153,6 +163,15 @@ class AudioScanViewModel(
                             onError = { t -> onRecorderError(t) },
                             maxDurationMs = MAX_RECORD_MS,
                         )
+                    handle = started
+                    // Back during start(): cancelRecording() ran with a still-null handle.
+                    // start() is not cancellable, so the live session would otherwise keep
+                    // the mic indicator on until the 60s cap.
+                    if (stopRequested) {
+                        started.cancel()
+                        handle = null
+                        return@launch
+                    }
                 } catch (t: CancellationException) {
                     throw t
                 } catch (t: Throwable) {
@@ -375,6 +394,7 @@ class AudioScanViewModel(
     }
 
     fun cancelRecording() {
+        stopRequested = true
         sessionJob?.cancel()
         sessionJob = null
         inferenceJob?.cancel()
