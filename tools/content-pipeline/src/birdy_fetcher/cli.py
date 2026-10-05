@@ -347,6 +347,41 @@ def web_waves(size: int, recompute: bool) -> None:
     click.echo(f"Listan finns i {paths.review / 'waves.json'}.")
 
 
+@web.command("sheet")
+@click.option("--wave", type=click.IntRange(1, 3), required=True)
+def web_sheet(wave: int) -> None:
+    """Skriver undantagsarkets flaggor till review/undantag.csv. Gratis."""
+    from .web.review_sheet import export_wave
+
+    result = export_wave(_web_paths(), wave)
+    click.echo(f"{len(result.flagged)} flaggade arter. Ladda upp {result.path} till Drive.")
+
+
+@web.command("spot-check")
+@click.option("--seed", type=int, default=None, help="Frö för stickprovet. Standard: 2000.")
+@click.option(
+    "--extra", multiple=True, help="Extra Q-ID(er) till stickprovet efter ett bekräftat missat fel."
+)
+@click.option(
+    "--force",
+    is_flag=True,
+    help="Dra direkt, utan att vänta på SPOT_CHECK_BATCH fler publicerade arter.",
+)
+def web_spot_check(seed: int | None, extra: tuple[str, ...], force: bool) -> None:
+    """Stickprov efter publicering (spec Revision 2026-10-05 (b)). Körs av fas 2:s
+    publiceringsloop efter varje publicerad art; skriver bara när något faktiskt drogs."""
+    from .web.review_sheet import export_spot_check
+
+    result = export_spot_check(_web_paths(), seed=seed, extra_species=extra, force=force)
+    if result is None:
+        click.echo("Inget drogs än (för få nypublicerade arter sedan sist).")
+        return
+    click.echo(
+        f"Stickprov (frö {result.seed}): {', '.join(result.species)}. "
+        f"Ladda upp {result.path} till Drive som Google-kalkylark."
+    )
+
+
 @web.command("v1")
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
 @click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
