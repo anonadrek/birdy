@@ -6288,7 +6288,10 @@ def reviewed_record(qid: str = "Q25485") -> Record:
     record["group"] = "songbirds"
     record["facts"] = [dict(f) for f in FACTS]
     record["data"] = {"statusSignal": {"contradicts": None}}
-    record["review"] = {"facts": {"by": "Albin Abrahamsson", "at": "2026-11-20"}, "wave": 1}
+    record["review"] = {"wave": 1}
+    record["verification"] = {
+        "method": "auto", "at": "2026-11-20", "model": "claude-sonnet-5", "spotChecked": False,
+    }
     return record
 ```
 
@@ -7101,7 +7104,7 @@ async def test_an_unsupported_sentence_is_rewritten_then_removed(tmp_path: Path)
 async def test_an_unreviewed_fact_sheet_is_only_written_when_allowed(tmp_path: Path) -> None:
     paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
     record = reviewed_record()
-    record["review"] = {"wave": 1}
+    del record["verification"]
     save_record(record_path(paths.data_out, "Q25485"), record)
     skipped = await run_write(paths, WriteOptions(wave=1), client=FakeJsonClient([]), now=NOW)
     assert [o.status for o in skipped] == ["skipped"]
@@ -7397,7 +7400,7 @@ def _skip_reason(record: Record, options: WriteOptions) -> str | None:
         return "faktabladet saknas eller misslyckades: kör web facts"
     reviewed = is_reviewed(record)
     if not reviewed and not options.allow_unreviewed:
-        return "faktabladet är inte granskat"
+        return "faktabladet är inte kontrollerat"
     generated = record.get("generated", {}).get("text") or {}
     current = (
         record.get("status") == "ok"
@@ -7513,7 +7516,7 @@ async def run_write(
 @click.option("--regenerate", is_flag=True, help="Skriv om även texter som är aktuella.")
 @click.option(
     "--allow-unreviewed", is_flag=True,
-    help="Skriv även ur ogranskade faktablad (bara provkörning, publiceras aldrig).",
+    help="Skriv även ur okontrollerade faktablad (bara provkörning, publiceras aldrig).",
 )
 @click.option("--workers", type=click.IntRange(min=1), default=4)
 def web_write(
@@ -7527,7 +7530,7 @@ def web_write(
     allow_unreviewed: bool,
     workers: int,
 ) -> None:
-    """Steg 3: text ur det granskade faktabladet, kontrollerad mening för mening. Kostar pengar."""
+    """Steg 3: text ur det kontrollerade faktabladet, kontrollerad mening för mening. Kostar pengar."""
     from .web.text_step import WriteOptions, run_write
 
     if wave is None and not species:
@@ -8115,7 +8118,7 @@ def test_a_cell_may_only_cite_its_own_species() -> None:
 async def test_a_pair_waits_until_both_fact_sheets_are_reviewed(tmp_path: Path) -> None:
     paths = _repo_with_pair(tmp_path)
     blue = _blue_tit()
-    blue["review"] = {"wave": 2}
+    del blue["verification"]
     save_record(record_path(paths.data_out, "Q25404"), blue)
     outcomes = await run_compare(paths, CompareOptions(), client=FakeJsonClient([]), now=NOW)
     assert [o.status for o in outcomes] == ["skipped"]
@@ -8417,7 +8420,7 @@ async def run_compare(
             a, b = records[pair.a], records[pair.b]
             name = f"{a['names']['sv']} eller {b['names']['sv']}"
             if not (is_reviewed(a) and is_reviewed(b)):
-                return StepOutcome(label, name, "skipped", ["väntar på att båda faktabladen granskas"])
+                return StepOutcome(label, name, "skipped", ["väntar på att båda faktabladen kontrolleras"])
             path = comparison_path(paths.comparisons_out, pair)
             existing = load_record(path)
             both = facts_hash(a) + facts_hash(b)
@@ -8574,7 +8577,7 @@ git commit -m "feat(pipeline): delad skrivslinga och jämförelsetexter för fö
 - Modify: `src/birdy_fetcher/web/waves.py` (lägg till), `src/birdy_fetcher/cli.py`
 - Test: `tests/test_web_waves.py` (lägg till)
 
-En art publiceras när den hör till vågen, har `status: "ok"`, ett granskat faktablad och en text som inte skrevs med `--allow-unreviewed`. En jämförelse publiceras när den är `ok` och båda arterna är publicerade.
+En art publiceras när den hör till vågen, har `status: "ok"`, ett kontrollerat faktablad (`verification` satt) och en text som inte skrevs med `--allow-unreviewed`. En jämförelse publiceras när den är `ok` och båda arterna är publicerade.
 
 - [ ] **Step 1: Skriv de fallerande testerna**
 
@@ -8584,7 +8587,10 @@ Lägg till i `tests/test_web_waves.py` (och `publish_wave` i importen från `bir
 def _ready(qid: str, name: str, wave: int) -> Record:
     record = _record(qid, name, RESIDENT, 0)
     record["status"] = "ok"
-    record["review"] = {"facts": {"by": "Albin Abrahamsson", "at": "2026-11-20"}, "wave": wave}
+    record["review"] = {"wave": wave}
+    record["verification"] = {
+        "method": "auto", "at": "2026-11-20", "model": "claude-sonnet-5", "spotChecked": False,
+    }
     record["generated"] = {"text": {"factsHash": "x"}}
     return record
 
@@ -8646,7 +8652,7 @@ def publish_wave(paths: WebPaths, wave: int) -> list[StepOutcome]:
             save_record(record_path(paths.data_out, qid), record)
             outcomes.append(StepOutcome(qid, name, "ok"))
         else:
-            reason = f"inte klar: status {record.get('status')}, granskad {is_reviewed(record)}"
+            reason = f"inte klar: status {record.get('status')}, kontrollerad {is_reviewed(record)}"
             outcomes.append(StepOutcome(qid, name, "skipped", [reason]))
     published = {qid for qid, record in records.items() if record.get("publish")}
     for path in sorted(paths.comparisons_out.glob("Q*_Q*.json")):
@@ -8761,7 +8767,7 @@ def test_web_lists_every_step() -> None:
     result = CliRunner().invoke(main, ["web", "--help"])
     assert result.exit_code == 0
     for step in (
-        "sources", "facts", "waves", "sheet", "import", "write",
+        "sources", "facts", "verify", "waves", "sheet", "import", "write",
         "compare-candidates", "compare", "publish",
     ):  # fmt: skip
         assert step in result.output
