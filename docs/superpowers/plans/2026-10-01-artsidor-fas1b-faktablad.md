@@ -8795,7 +8795,7 @@ Kör dem i ordning. Varje körtask slutar med commit och push av data och rappor
 
 ### R1: Före första betalda körningen
 
-- [ ] Albin fyller på **200 USD** i Anthropic Console för nyckeln i `ANTHROPIC_API_KEY` (räknat 2026-10-01: cirka 145 USD för hela körningen, resten är marginal för provkörning och omkörningar).
+- [ ] Albin fyller på **200 USD** i Anthropic Console för nyckeln i `ANTHROPIC_API_KEY` (räknat 2026-10-01: cirka 145 USD för hela körningen plus, tillagt 2026-10-05, cirka 10 till 20 USD för den automatiska faktakontrollen V1, resten är marginal för provkörning och omkörningar).
 - [ ] Kontrollera att nyckeln syns: `uv run python -c "import os; print(bool(os.environ.get('ANTHROPIC_API_KEY')))"` ska skriva `True`. Annars läggs nyckeln i `tools/content-pipeline/.env` och alla betalda kommandon körs som `uv run --env-file .env birdy-fetcher web ...`.
 
 ### R2: Källor för alla 180 och kalibrering av statussignalen (gratis)
@@ -8832,9 +8832,10 @@ git push
 ### R3: Provkörning på fyra arter (cirka 5 USD)
 
 - [ ] `uv run birdy-fetcher web facts --species Q25485 --species Q25383 --species Q25386 --species Q10546857 --max-cost 5`
+- [ ] `uv run birdy-fetcher web verify --species Q25485 --species Q25383 --species Q25386 --species Q10546857 --max-cost 5`
 - [ ] `uv run birdy-fetcher web write --species Q25485 --species Q25383 --species Q25386 --species Q10546857 --allow-unreviewed --max-cost 5`
-- [ ] Läs rapporterna `reports/web-facts-*.md` och `reports/web-text-*.md`. Räkna ut kostnad per art för faktablad och text. Visa Albin i chatten: talgoxens faktablad (fakta med citat), talgoxens text på svenska och engelska, borttagna meningar och kostnaden per art omräknad till 180 arter.
-- [ ] **Albin väljer** modell och tankenivå för faktablad, text och kontroll (standard: Opus 5 `high` för faktablad och text, Sonnet 5 för kontrollen). Ändras något: ändra standardvärdena i `cli.py` och prompterna innan R4, och kör om provkörningen.
+- [ ] Läs rapporterna `reports/web-facts-*.md`, `reports/web-verify-*.md` och `reports/web-text-*.md`. Räkna ut kostnad per art för faktablad, V1-kontrollen och text. Visa Albin i chatten: talgoxens faktablad (fakta med citat), vilka fakta V1 strök och varför, talgoxens text på svenska och engelska, borttagna meningar och kostnaden per art omräknad till 180 arter.
+- [ ] **Albin väljer** modell och tankenivå för faktablad, V1-kontrollen, text och textkontrollen (standard: Opus 5 `high` för faktablad och text, Sonnet 5 för V1 och textkontrollen). Ändras något: ändra standardvärdena i `cli.py` och prompterna innan R4, och kör om provkörningen.
 - [ ] Commit och push (texterna från provkörningen är märkta `unreviewed` och kan aldrig publiceras).
 
 ### R4: Faktablad för alla 180 (cirka 75 USD)
@@ -8843,12 +8844,24 @@ git push
 - [ ] Läs rapporten. Arter med `failed`: kör om en gång med `--regenerate --species ...`. Arter som fortfarande misslyckas listas för Albin.
 - [ ] Commit och push.
 
-### R5: Vågor och granskning av våg 1 (Albin, cirka 2 timmar)
+### R4b: Automatisk kontroll av alla 180 (cirka 10 till 20 USD)
+
+Ny körtask 2026-10-05: ersätter Albins manuella faktabladsgranskning. Ingen Albin-tid här, bara agenten.
+
+- [ ] Kontrollera att `classify_clip.py` fungerar mot en riktig inspelning: `uv run --project tools/ml-eval/flexref python classify_clip.py <sökväg till en 20 s-inspelning från R2>` och läs av att JSON-svaret har flera fönster med rimliga värden.
+- [ ] `uv run birdy-fetcher web verify --max-cost 25`
+- [ ] Läs rapporten `reports/web-verify-*.md`. Räkna flaggor per kontroll (V2, V3, V4) och arter med `failed` (saknar fortfarande ett obligatoriskt ämne efter V1-omförsöket). Kör om misslyckade arter en gång med `--regenerate --species ...` i `web facts` först, sedan `web verify --force --species ...`.
+- [ ] Commit och push.
+
+### R5: Vågor och undantagsgranskning av våg 1 (Albin, cirka 15 till 30 minuter)
+
+Ändrad 2026-10-05: Albin granskar bara flaggorna och vågens stickprov, inte varje arts faktablad (se CLAUDE.md-beslutet och spec Revision 2026-10-05).
 
 - [ ] `uv run birdy-fetcher web waves` och visa Albin våg 1:s 40 arter i chatten. Albin byter arter om han vill; ändra `review/waves.json` och kör `uv run birdy-fetcher web waves` igen.
 - [ ] `uv run birdy-fetcher web sheet --wave 1`
-- [ ] Ladda upp `review/wave-1-ark.csv` till Albins Google Drive som Google-kalkylark med Google Drive-verktyget, och ge Albin länken med en kort instruktion: ändra bara kolumnen Beslut (och Faktum vid `ändra`), fyll i alla flaggor, lyssna på inspelningarna.
-- [ ] När Albin säger att han är klar: exportera kalkylarket som CSV till `review/wave-1.csv`, kör `uv run birdy-fetcher web import --wave 1`. Rättar Albin fel som importen hittar, kör om.
+- [ ] Ladda upp `review/wave-1-ark.csv` till Albins Google Drive som Google-kalkylark med Google Drive-verktyget, och ge Albin länken med en kort instruktion: fatta beslut (`behåll`/`stryk`, eller `ändra` med ny text) på varje flagga, gå igenom stickprovets båda arters hela faktablad som förut, och lyssna på eventuella flaggade inspelningar.
+- [ ] Hittar Albin i stickprovet ett fel som kontrollen borde ha fångat: dra två fler arter med `uv run birdy-fetcher web sheet --wave 1 --redraw <QID> --redraw <QID>` och notera missen i nästa `reports/web-verify-*.md`-körning (vilken kontroll missade, varför), så att prompten eller trösklarna kan justeras innan nästa våg.
+- [ ] När Albin säger att han är klar: exportera kalkylarket som CSV till `review/wave-1.csv`, kör `uv run birdy-fetcher web import --wave 1`. Detta sätter `verification` på hela vågen, inte bara de arter som stod i arket. Rättar Albin fel som importen hittar, kör om.
 - [ ] Commit och push.
 
 ### R6: Text för våg 1 (cirka 25 USD)
@@ -8861,7 +8874,7 @@ git push
 
 - [ ] `uv run birdy-fetcher web compare-candidates`
 - [ ] **Fråga Albin innan** sökordsplaneraren används i hans Google Ads-konto. Fyll sedan i `sv_volume` (Sverige, svenska) och `en_volume` (Storbritannien, engelska) i `review/comparison-volumes.csv`: summan av de genomsnittliga månadssökningarna för parets fyra svenska respektive tre engelska sökningar. Ger planeraren ett intervall, använd mitten.
-- [ ] `uv run birdy-fetcher web compare --top 30 --max-cost 15` (par där båda arterna inte är granskade hoppas över och skrivs i en senare våg).
+- [ ] `uv run birdy-fetcher web compare --top 30 --max-cost 15` (par där båda arterna inte är kontrollerade hoppas över och skrivs i en senare våg).
 - [ ] Commit och push.
 
 ### R8: Överlämning till sidorna och go-live för våg 1
@@ -8887,16 +8900,17 @@ Upprepa R5 till R8 för våg 2 (mål 15 januari 2027) och våg 3 (mål 26 februa
 | §9.1 Appens modeller | Task 9, 12 |
 | §9.2 Andelar, meningar, statussignal, för lite data | Task 3, 4, 5, R2 (kalibrering) |
 | §9.3 Faktablad med citat, status s01, datafakta | Task 13, 14 |
-| §9.4 Granskningsark, import, `review.facts` | Task 16, 17, R5 |
+| Revision 2026-10-05, V1 till V4: automatisk kontroll | Task 14b, 14c, 14d, 14e, R3, R4b |
+| §9.4 (Revision 2026-10-05) Undantagsark, import, `verification` | Task 16, 17, R5 |
 | §9.5 Text ur godkända fakta, fakta-id per mening | Task 18, 19, 20 |
 | §9.6 Kodkontroller och andra modellen, omskrivning, borttagning | Task 18, 19, 20, 22 |
 | §9.7 Jämförelsetexter | Task 21, 22 |
-| §9.8 Provkörning, kostnadstak, rapport | Task 11, 14, 20, 22, R3 |
-| §9.9 Utdata, skriv aldrig över granskat | Task 11, 14, 20 |
+| §9.8 Provkörning, kostnadstak, rapport | Task 11, 14, 14e, 20, 22, R3 |
+| §9.9 Utdata, skriv aldrig över kontrollerat | Task 11, 14, 14e, 20 |
 | §10 Licenser (CC BY-SA, LICENSE.md, CC0-filter, licenstabell, credits) | Task 6, 7, 11 (byggkontrollen av credits ligger i fas 2) |
-| §14 Vågor, `publish`, granskad text | Task 15, 23, R5 till R9 |
+| §14 Vågor, `publish`, kontrollerad text | Task 15, 23, R5 till R9 |
 | §15 Baslinje, UTM, egna besök, länkutskick | Fas 2-planen och R8 |
-| Bilaga C och D (schema) | Task 11, 12, 13, 20, 22 |
-| Bilaga E (granskningsarket) | Task 16 |
+| Bilaga C och D (schema) | Task 11, 12, 13, 14e, 17, 20, 22 |
+| Bilaga E (undantagsarket) | Task 16 |
 
-Det som avviker från specens ord, och varför (redan infört i specen 2026-10-01): statusen tas fram i faktabladet i stället för av skribenten, så att Albin granskar den och flaggan syns i arket; inspelningar ligger i `website/src/assets/species/` och inte i `public/`; en sökträff måste nämna arten (ett xeno-canto-nummer räcker inte); våglistan justeras i chatten innan första arket.
+Det som avviker från specens ord, och varför (redan infört i specen 2026-10-01): statusen tas fram i faktabladet i stället för av skribenten, så att den automatiska kontrollen kan jämföra den direkt och flaggan syns i undantagsarket; inspelningar ligger i `website/src/assets/species/` och inte i `public/`; en sökträff måste nämna arten (ett xeno-canto-nummer räcker inte); våglistan justeras i chatten innan första arket. Tillagt 2026-10-05: faktabladens automatiska kontroll (V1 till V4) körs för alla 180 på en gång direkt efter faktabladen (som faktabladen själva), inte våg för våg som undantagsarket och skrivandet; `verify.py`:s nummertolerans (V2) är ett startvärde som kalibreras i R4b, spegel av statussignalens trösklar i Task 5.
