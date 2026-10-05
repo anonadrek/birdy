@@ -5519,74 +5519,74 @@ git commit -m "feat(pipeline): web waves delar in arterna i tre publiceringsvåg
 
 ---
 
-### Task 16: Granskningsarket ut, `web sheet`
+### Task 16: Undantagsarket ut, `web sheet`
 
 **Files:**
 - Create: `src/birdy_fetcher/web/review_sheet.py`
 - Modify: `src/birdy_fetcher/cli.py`
 - Test: `tests/test_web_review_sheet.py`
 
-Arket följer bilaga E. Förväxlingsartens vetenskapliga namn står i kolumnen Ämne, så att Faktum bara innehåller själva faktumet och kan ändras fritt.
+Spec Revision 2026-10-05 (ersätter bilaga E:s tidigare form). Arket visar bara det den automatiska kontrollen (Task 14e) inte kunde avgöra: en rad per flagga, plus hela faktabladet för ett stickprov på `SPOT_CHECK_SIZE` (2) arter per våg, draget med ett sparat frö så att samma frö alltid ger samma arter. Förväxlingsartens vetenskapliga namn står i kolumnen Ämne, så att Faktum bara innehåller själva faktumet och kan ändras fritt.
 
 - [ ] **Step 1: Skriv de fallerande testerna**
 
 `tests/test_web_review_sheet.py`:
 
 ```python
-"""Tests for web/review_sheet.py: the review sheet out and Albin's decisions in."""
+"""Tests for web/review_sheet.py: the exception sheet out and Albin's decisions in."""
 
 from __future__ import annotations
 
 import csv
 from pathlib import Path
 
-from birdy_fetcher.web.record import Record, new_record
-from birdy_fetcher.web.review_sheet import COLUMNS, sheet_rows, write_sheet
+from birdy_fetcher.web.record import Record, new_record, record_path, save_record
+from birdy_fetcher.web.review_sheet import COLUMNS, export_wave, flag_rows, full_sheet_rows, write_sheet
+
+from .web_repo import make_repo
 
 
-def _record() -> Record:
-    record = new_record("Q25485")
+def _record(qid: str = "Q25485") -> Record:
+    record = new_record(qid)
     record["names"] = {"sv": "Talgoxe", "en": "Great Tit", "scientific": "Parus major"}
     record["wikipedia"] = {"sv": {"title": "Talgoxe", "revision": "111"}}
+    record["review"] = {"wave": 1}
     record["facts"] = [
         {
-            "id": "f01",
-            "topic": "appearance",
-            "sv": "Svart huvud med vita kinder.",
+            "id": "f01", "topic": "appearance", "sv": "Svart huvud med vita kinder.",
             "sources": [{"article": "sv", "quote": "svart huvud med vita kinder"}],
         },
         {
-            "id": "f02",
-            "topic": "lookalike",
-            "sv": "Kan förväxlas med blåmesen.",
+            "id": "f02", "topic": "lookalike", "sv": "Kan förväxlas med blåmesen.",
             "sources": [{"article": "sv", "quote": "kan förväxlas med blåmes"}],
             "other": {"scientific": "Cyanistes caeruleus", "qid": "Q25404"},
         },
         {
-            "id": "s01",
-            "topic": "status",
-            "value": "resident",
-            "sv": "Stannfågel",
+            "id": "s01", "topic": "status", "value": "resident", "sv": "Stannfågel",
             "sources": [{"article": "sv", "quote": "Den är stannfågel i hela Sverige"}],
         },
         {"id": "d01", "topic": "data", "source": "artportalen", "sv": "Rapporteras året runt."},
     ]
     record["audio"] = {
-        "file": "Q25485/voice.mp3",
-        "durationSec": 20,
-        "trimmed": True,
-        "author": "Anna",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "file": f"{qid}/voice.mp3", "durationSec": 20, "trimmed": True, "author": "Anna",
+        "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:x.ogg",
     }
-    record["data"] = {"statusSignal": {"contradicts": "Statusen säger stannfågel, men ..."}}
+    record["flags"] = []
+    record["generated"] = {"verify": {"model": "claude-sonnet-5"}}
     return record
 
 
-def test_rows_cover_facts_status_data_recording_and_flag() -> None:
-    rows = sheet_rows(_record())
-    assert [r["Typ"] for r in rows] == ["faktum", "faktum", "status", "data", "inspelning", "flagga"]
+def _flagged(qid: str = "Q25485") -> Record:
+    record = _record(qid)
+    record["flags"] = [{"check": "V3", "factId": "s01", "message": "Statusen säger stannfågel, men ..."}]
+    return record
+
+
+def test_full_sheet_rows_cover_facts_status_data_and_recording() -> None:
+    rows = full_sheet_rows(_record())
+    assert [r["Typ"] for r in rows] == ["faktum", "faktum", "status", "data", "inspelning"]
+    assert all(r["Rad"] == "stickprov" and r["Kontroll"] == "" for r in rows)
     first = rows[0]
     assert first["Art"] == "Talgoxe"
     assert first["Id"] == "f01"
@@ -5598,16 +5598,51 @@ def test_rows_cover_facts_status_data_recording_and_flag() -> None:
     assert rows[1]["Faktum"] == "Kan förväxlas med blåmesen."
     assert rows[3]["Beslut"] == "(data)"
     assert rows[4]["Faktum"] == "Anna, CC BY-SA 4.0, 20 s"
-    assert rows[5]["Beslut"] == ""
+
+
+def test_flag_rows_cover_v2_v3_and_v4() -> None:
+    record = _record()
+    record["flags"] = [
+        {"check": "V2", "factId": "f01", "message": "f01 anger ett tal som inte stämmer"},
+        {"check": "V3", "factId": "s01", "message": "Statusen säger stannfågel, men ..."},
+        {"check": "V4", "factId": None, "message": "ljudmodellen hittade inte arten"},
+    ]
+    rows = flag_rows(record)
+    assert [r["Kontroll"] for r in rows] == ["V2", "V3", "V4"]
+    assert all(r["Typ"] == "flagga" and r["Rad"] == "flagga" and r["Beslut"] == "" for r in rows)
+    assert rows[0]["Id"] == "f01" and rows[0]["Ämne"] == "utseende"
+    assert rows[2]["Id"] == "" and rows[2]["Källa"] == "https://commons.wikimedia.org/wiki/File:x.ogg"
 
 
 def test_write_sheet_has_the_columns(tmp_path: Path) -> None:
     path = tmp_path / "wave-1-ark.csv"
-    write_sheet(path, sheet_rows(_record()))
+    write_sheet(path, full_sheet_rows(_record()))
     with path.open(encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
         assert reader.fieldnames == COLUMNS
-        assert len(list(reader)) == 6
+        assert len(list(reader)) == 5
+
+
+def test_export_wave_picks_flagged_species_and_a_seeded_spot_check(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    flagged = _flagged("Q1")
+    clean = [_record(f"Q{i}") for i in range(2, 7)]
+    for r in (flagged, *clean):
+        save_record(record_path(paths.data_out, r["qid"]), r)
+    result = export_wave(paths, 1, seed=42)
+    assert result.flagged == ["Q1"]
+    assert len(result.spot_checked) == 2
+    assert "Q1" not in result.spot_checked
+    again = export_wave(paths, 1, seed=42)
+    assert again.spot_checked == result.spot_checked
+
+
+def test_export_wave_redraw_adds_named_species(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    for r in (_record(f"Q{i}") for i in range(1, 6)):
+        save_record(record_path(paths.data_out, r["qid"]), r)
+    result = export_wave(paths, 1, seed=1, extra_spot_check=("Q5",))
+    assert "Q5" in result.spot_checked
 ```
 
 - [ ] **Step 2: Kör och se dem falla**
@@ -5618,12 +5653,15 @@ Expected: FAIL med `ModuleNotFoundError`.
 - [ ] **Step 3: Skriv `review_sheet.py`**
 
 ```python
-"""Albin's review sheet (spec 2026-09-25 §9.4 and appendix E): one CSV per wave, uploaded
-to his Drive as a Google Sheet, exported back as CSV and imported."""
+"""The exception sheet (spec 2026-09-25 Revision 2026-10-05, §9.4 and appendix E): one CSV
+per wave, uploaded to Albin's Drive as a Google Sheet, exported back as CSV and imported.
+Only what the automatic kontroll (V1 to V4, Task 14e) flagged, plus a seeded spot check."""
 
 from __future__ import annotations
 
 import csv
+import random
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -5631,11 +5669,14 @@ from .facts import TOPIC_SV
 from .paths import WebPaths
 from .record import Record, is_reviewed, load_all
 
-COLUMNS = ["Art", "QID", "Typ", "Id", "Ämne", "Faktum", "Källa", "Citat", "Beslut", "Kommentar"]
+COLUMNS = [
+    "Art", "QID", "Rad", "Kontroll", "Typ", "Id", "Ämne", "Faktum", "Källa", "Citat", "Beslut", "Kommentar",
+]  # fmt: skip
 KEEP = "behåll"
 STRIKE = "stryk"
 CHANGE = "ändra"
 DATA_SOURCES = {"artportalen": "Artportalen via GBIF", "rodlistan": "Svenska rödlistan 2025"}
+SPOT_CHECK_SIZE = 2
 
 
 def revision_url(lang: str, revision: str) -> str:
@@ -5652,44 +5693,87 @@ def _sources(record: Record, sources: list[dict[str, str]]) -> tuple[str, str]:
     return " | ".join(links), " | ".join(s["quote"] for s in sources)
 
 
-def sheet_rows(record: Record) -> list[dict[str, str]]:
-    name = str(record["names"]["sv"])
-    qid = str(record["qid"])
+def _row(
+    record: Record,
+    *,
+    rad: str,
+    typ: str,
+    fid: str,
+    topic: str,
+    fact: str,
+    source: str,
+    quote: str,
+    decision: str,
+    kontroll: str = "",
+) -> dict[str, str]:
+    return {
+        "Art": str(record["names"]["sv"]),
+        "QID": str(record["qid"]),
+        "Rad": rad,
+        "Kontroll": kontroll,
+        "Typ": typ,
+        "Id": fid,
+        "Ämne": topic,
+        "Faktum": fact,
+        "Källa": source,
+        "Citat": quote,
+        "Beslut": decision,
+        "Kommentar": "",
+    }
 
-    def row(typ: str, fid: str, topic: str, fact: str, source: str, quote: str, decision: str) -> dict[str, str]:
-        return {
-            "Art": name,
-            "QID": qid,
-            "Typ": typ,
-            "Id": fid,
-            "Ämne": topic,
-            "Faktum": fact,
-            "Källa": source,
-            "Citat": quote,
-            "Beslut": decision,
-            "Kommentar": "",
-        }
 
+def full_sheet_rows(record: Record) -> list[dict[str, str]]:
+    """Every fact, status, data fact and the recording, for a spot-checked species (spec
+    point 5: "visade med hela faktabladet")."""
     rows: list[dict[str, str]] = []
     for fact in record.get("facts", []):
         topic = fact["topic"]
         if topic == "data":
             source = DATA_SOURCES[fact["source"]]
-            rows.append(row("data", fact["id"], TOPIC_SV["data"], fact["sv"], source, "", "(data)"))
+            rows.append(
+                _row(record, rad="stickprov", typ="data", fid=fact["id"], topic=TOPIC_SV["data"],
+                     fact=fact["sv"], source=source, quote="", decision="(data)")
+            )
             continue
         source, quote = _sources(record, fact["sources"])
         label = TOPIC_SV[topic]
         if topic == "lookalike":
             label = f"förväxling med {fact['other']['scientific']}"
         typ = "status" if topic == "status" else "faktum"
-        rows.append(row(typ, fact["id"], label, fact["sv"], source, quote, KEEP))
+        rows.append(
+            _row(record, rad="stickprov", typ=typ, fid=fact["id"], topic=label, fact=fact["sv"],
+                 source=source, quote=quote, decision=KEEP)
+        )
     audio: dict[str, Any] | None = record.get("audio")
     if audio:
         summary = f"{audio.get('author') or 'okänd'}, {audio['license']}, {audio['durationSec']} s"
-        rows.append(row("inspelning", "a01", "inspelning", summary, audio["sourceUrl"], "", KEEP))
-    reason = (record.get("data") or {}).get("statusSignal", {}).get("contradicts")
-    if reason:
-        rows.append(row("flagga", "s01", "status mot data", reason, DATA_SOURCES["artportalen"], "", ""))
+        rows.append(
+            _row(record, rad="stickprov", typ="inspelning", fid="a01", topic="inspelning",
+                 fact=summary, source=audio["sourceUrl"], quote="", decision=KEEP)
+        )
+    return rows
+
+
+def flag_rows(record: Record) -> list[dict[str, str]]:
+    """One row per flag the automatic kontroll raised (spec V2 to V4). A V4 (recording)
+    flag has no fact id; everything else points at the fact it is about."""
+    facts_by_id = {f["id"]: f for f in record.get("facts", [])}
+    rows: list[dict[str, str]] = []
+    for flag in record.get("flags", []):
+        fid = flag.get("factId") or ""
+        fact = facts_by_id.get(fid)
+        if fact is not None:
+            source, quote = _sources(record, fact.get("sources", []))
+            topic = TOPIC_SV.get(fact["topic"], fact["topic"])
+        elif flag["check"] == "V4":
+            audio = record.get("audio") or {}
+            source, quote, topic = audio.get("sourceUrl", ""), "", "inspelning"
+        else:
+            source, quote, topic = "", "", ""
+        rows.append(
+            _row(record, rad="flagga", typ="flagga", fid=fid, topic=topic, fact=flag["message"],
+                 source=source, quote=quote, decision="", kontroll=flag["check"])
+        )
     return rows
 
 
@@ -5701,20 +5785,52 @@ def write_sheet(path: Path, rows: list[dict[str, str]]) -> None:
         writer.writerows(rows)
 
 
-def export_wave(paths: WebPaths, wave: int) -> tuple[Path, int]:
-    """Species in the wave that have facts and are not reviewed yet."""
-    records = load_all(paths.data_out)
-    chosen = [
+@dataclass
+class ExportResult:
+    path: Path
+    flagged: list[str] = field(default_factory=list)
+    spot_checked: list[str] = field(default_factory=list)
+    seed: int = 0
+
+
+def _eligible(records: dict[str, Record], wave: int) -> list[Record]:
+    return [
         r
         for r in records.values()
         if r.get("review", {}).get("wave") == wave
         and not is_reviewed(r)
         and any(f["topic"] != "data" for f in r.get("facts", []))
     ]
-    chosen.sort(key=lambda r: str(r["names"]["sv"]))
+
+
+def export_wave(
+    paths: WebPaths, wave: int, *, seed: int | None = None, extra_spot_check: tuple[str, ...] = ()
+) -> ExportResult:
+    """Flagged species plus a seeded spot check of SPOT_CHECK_SIZE clean species (spec point
+    5). `extra_spot_check` adds named species on top, for a redraw after the spot check
+    catches something V1 to V4 missed (the agent logs the miss in the report by hand)."""
+    records = load_all(paths.data_out)
+    eligible = _eligible(records, wave)
+    flagged = sorted((r for r in eligible if r.get("flags")), key=lambda r: str(r["names"]["sv"]))
+    unflagged = {str(r["qid"]): r for r in eligible if not r.get("flags")}
+    used_seed = seed if seed is not None else 1000 + wave
+    ordered = sorted(unflagged.values(), key=lambda r: str(r["names"]["sv"]))
+    drawn = random.Random(used_seed).sample(ordered, k=min(SPOT_CHECK_SIZE, len(ordered)))
+    spot = {str(r["qid"]): r for r in drawn}
+    for qid in extra_spot_check:
+        if qid in unflagged:
+            spot[qid] = unflagged[qid]
+    spot_list = sorted(spot.values(), key=lambda r: str(r["names"]["sv"]))
+    rows = [row for r in flagged for row in flag_rows(r)]
+    rows += [row for r in spot_list for row in full_sheet_rows(r)]
     path = paths.review / f"wave-{wave}-ark.csv"
-    write_sheet(path, [row for r in chosen for row in sheet_rows(r)])
-    return path, len(chosen)
+    write_sheet(path, rows)
+    return ExportResult(
+        path=path,
+        flagged=[str(r["qid"]) for r in flagged],
+        spot_checked=[str(r["qid"]) for r in spot_list],
+        seed=used_seed,
+    )
 ```
 
 - [ ] **Step 4: Kommandot i `cli.py`**
@@ -5722,12 +5838,17 @@ def export_wave(paths: WebPaths, wave: int) -> tuple[Path, int]:
 ```python
 @web.command("sheet")
 @click.option("--wave", type=click.IntRange(1, 3), required=True)
-def web_sheet(wave: int) -> None:
-    """Skriver granskningsarket för en våg till review/wave-<n>-ark.csv. Gratis."""
+@click.option("--seed", type=int, default=None, help="Frö för stickprovet. Standard: 1000 + våg.")
+@click.option("--redraw", multiple=True, help="Extra Q-ID(er) till stickprovet efter ett missat fel.")
+def web_sheet(wave: int, seed: int | None, redraw: tuple[str, ...]) -> None:
+    """Skriver undantagsarket för en våg till review/wave-<n>-ark.csv. Gratis."""
     from .web.review_sheet import export_wave
 
-    path, count = export_wave(_web_paths(), wave)
-    click.echo(f"{count} arter i {path}. Ladda upp filen till Drive som Google-kalkylark.")
+    result = export_wave(_web_paths(), wave, seed=seed, extra_spot_check=redraw)
+    click.echo(
+        f"{len(result.flagged)} flaggade arter. Stickprov (frö {result.seed}): "
+        f"{', '.join(result.spot_checked)}. Ladda upp {result.path} till Drive som Google-kalkylark."
+    )
 ```
 
 - [ ] **Step 5: Kör testerna**
@@ -5741,7 +5862,7 @@ Run: `uv run ruff check --fix . && uv run ruff format . && uv run mypy`
 
 ```bash
 git add src/birdy_fetcher/web/review_sheet.py src/birdy_fetcher/cli.py tests/test_web_review_sheet.py
-git commit -m "feat(pipeline): web sheet skriver granskningsarket för en våg"
+git commit -m "feat(pipeline): web sheet skriver undantagsarket, flaggor plus ett seedat stickprov"
 ```
 
 ---
@@ -5752,19 +5873,19 @@ git commit -m "feat(pipeline): web sheet skriver granskningsarket för en våg"
 - Modify: `src/birdy_fetcher/web/review_sheet.py` (lägg till), `src/birdy_fetcher/cli.py`
 - Test: `tests/test_web_review_sheet.py` (lägg till)
 
-Importen kontrollerar hela arket först och ändrar ingenting om något är fel: en rad som saknas för ett faktum, ett okänt beslut, `ändra` utan ny text, en status som inte är en av de sex etiketterna, eller en flagga utan `behåll` eller `stryk`.
+Spec Revision 2026-10-05. Importen kontrollerar hela arket först och ändrar ingenting om något är fel: en rad som saknas för ett stickprov-faktum, ett okänt beslut, `ändra` utan ny text, en status som inte är en av de sex etiketterna, eller en flagga utan `behåll` eller `stryk`. En art som inte stod i arket alls (inga flaggor, inget stickprov) får `verification` direkt, utan beslut. Fältet `review.facts = { by, at }` finns inte längre: `verification = { method, at, model, spotChecked }` är den nya sanningskällan för "är den här artens faktablad klar att skriva text ur".
 
 - [ ] **Step 1: Skriv de fallerande testerna**
 
-Lägg till i `tests/test_web_review_sheet.py` (importera `ReviewImportError`, `apply_review`, `read_sheet` från `birdy_fetcher.web.review_sheet` och `pytest`):
+Lägg till i `tests/test_web_review_sheet.py` (importera `ReviewImportError`, `apply_review`, `import_wave`, `read_sheet` från `birdy_fetcher.web.review_sheet`, `load_record` från `birdy_fetcher.web.record`, samt `pytest`):
 
 ```python
 def _decide(rows: list[dict[str, str]], **changes: tuple[str, str]) -> list[dict[str, str]]:
-    """changes: Id -> (Beslut, Faktum)."""
+    """changes: Id -> (Beslut, Faktum), for faktum/status rows."""
     out = []
     for row in rows:
         row = dict(row)
-        if row["Id"] in changes and row["Typ"] != "data":
+        if row["Id"] in changes and row["Typ"] not in ("data", "flagga"):
             row["Beslut"], new_text = changes[row["Id"]]
             if new_text:
                 row["Faktum"] = new_text
@@ -5772,63 +5893,97 @@ def _decide(rows: list[dict[str, str]], **changes: tuple[str, str]) -> list[dict
     return out
 
 
-def test_keep_strike_change_and_flag() -> None:
-    record = _record()
-    rows = sheet_rows(record)
-    rows = _decide(rows, f01=("ändra", "Svart huvud och vita kinder."), f02=("stryk", ""))
-    rows = [r if r["Typ"] != "flagga" else {**r, "Beslut": "behåll"} for r in rows]
-    result = apply_review({"Q25485": record}, rows, reviewer="Albin Abrahamsson", date="2026-11-20")
+def _flag_decisions(rows: list[dict[str, str]], **decisions: str) -> list[dict[str, str]]:
+    """decisions: fact id (or "" for a V4 flag) -> Beslut, for flagga rows."""
+    out = []
+    for row in rows:
+        row = dict(row)
+        if row["Typ"] == "flagga" and row["Id"] in decisions:
+            row["Beslut"] = decisions[row["Id"]]
+        out.append(row)
+    return out
+
+
+def test_a_flagged_species_only_needs_its_flags_decided() -> None:
+    record = _flagged()
+    rows = _flag_decisions(flag_rows(record), s01=KEEP)
+    result = apply_review({"Q25485": record}, rows, date="2026-11-20")
     assert result.changed == ["Q25485"]
-    ids = [f["id"] for f in record["facts"]]
-    assert ids == ["f01", "s01", "d01"]
-    assert record["facts"][0]["sv"] == "Svart huvud och vita kinder."
-    assert record["facts"][0]["edited"] is True
+    assert any(f["id"] == "s01" for f in record["facts"])
     assert record["review"]["statusConfirmed"] is True
-    assert record["review"]["facts"] == {"by": "Albin Abrahamsson", "at": "2026-11-20"}
+    assert record["verification"] == {
+        "method": "auto", "at": "2026-11-20", "model": "claude-sonnet-5", "spotChecked": False,
+    }
 
 
-def test_status_can_be_changed_to_another_label() -> None:
-    record = _record()
-    rows = _decide(sheet_rows(record), s01=("ändra", "Vintergäst"))
-    rows = [r if r["Typ"] != "flagga" else {**r, "Beslut": "behåll"} for r in rows]
-    apply_review({"Q25485": record}, rows, reviewer="A", date="2026-11-20")
-    status = next(f for f in record["facts"] if f["id"] == "s01")
-    assert status["value"] == "winter_visitor"
-    assert status["sv"] == "Vintergäst"
-
-
-def test_striking_the_flag_removes_the_status_and_striking_audio_removes_it() -> None:
-    record = _record()
-    rows = sheet_rows(record)
-    rows = [
-        {**r, "Beslut": "stryk"} if r["Typ"] in ("flagga", "inspelning") else r for r in rows
-    ]
-    result = apply_review({"Q25485": record}, rows, reviewer="A", date="2026-11-20")
+def test_striking_a_v3_flag_removes_the_status() -> None:
+    record = _flagged()
+    rows = _flag_decisions(flag_rows(record), s01=STRIKE)
+    apply_review({"Q25485": record}, rows, date="2026-11-20")
     assert all(f["id"] != "s01" for f in record["facts"])
     assert record["review"]["statusConfirmed"] is False
+
+
+def test_striking_a_v4_flag_removes_the_recording() -> None:
+    record = _record()
+    record["flags"] = [{"check": "V4", "factId": None, "message": "ljudmodellen täcker inte arten"}]
+    rows = _flag_decisions(flag_rows(record), **{"": STRIKE})
+    result = apply_review({"Q25485": record}, rows, date="2026-11-20")
     assert "audio" not in record
     assert record["review"]["audioStruck"] is True
     assert result.removed_audio == ["Q25485"]
 
 
+def test_spot_checked_species_keep_strike_and_change_like_before() -> None:
+    record = _record()
+    rows = _decide(full_sheet_rows(record), f01=(CHANGE, "Svart huvud och vita kinder."), f02=(STRIKE, ""))
+    result = apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert result.changed == ["Q25485"]
+    ids = [f["id"] for f in record["facts"]]
+    assert ids == ["f01", "s01", "d01"]
+    assert record["facts"][0]["sv"] == "Svart huvud och vita kinder."
+    assert record["facts"][0]["edited"] is True
+    assert record["verification"]["spotChecked"] is True
+
+
 def test_errors_stop_the_whole_import() -> None:
     record = _record()
-    rows = [r for r in sheet_rows(record) if r["Id"] != "f02"]
+    rows = [r for r in full_sheet_rows(record) if r["Id"] != "f02"]
     rows = [{**r, "Beslut": "kanske"} if r["Id"] == "f01" else r for r in rows]
     with pytest.raises(ReviewImportError) as error:
-        apply_review({"Q25485": record}, rows, reviewer="A", date="2026-11-20")
+        apply_review({"Q25485": record}, rows, date="2026-11-20")
     message = str(error.value)
     assert "f02" in message
     assert "kanske" in message
-    assert "flaggan" in message
-    assert "review" not in record or "facts" not in record["review"]
+    assert "verification" not in record
+
+
+def test_a_flag_without_a_decision_stops_the_import() -> None:
+    record = _flagged()
+    with pytest.raises(ReviewImportError) as error:
+        apply_review({"Q25485": record}, flag_rows(record), date="2026-11-20")
+    assert "flaggan" in str(error.value)
 
 
 def test_read_sheet_accepts_a_bom(tmp_path: Path) -> None:
     path = tmp_path / "wave-1.csv"
-    write_sheet(path, sheet_rows(_record()))
+    write_sheet(path, full_sheet_rows(_record()))
     path.write_bytes(b"\xef\xbb\xbf" + path.read_bytes())
     assert read_sheet(path)[0]["Art"] == "Talgoxe"
+
+
+def test_import_wave_also_verifies_species_without_a_sheet_row(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    flagged, clean = _flagged("Q1"), _record("Q2")
+    save_record(record_path(paths.data_out, "Q1"), flagged)
+    save_record(record_path(paths.data_out, "Q2"), clean)
+    sheet = tmp_path / "wave-1.csv"
+    write_sheet(sheet, _flag_decisions(flag_rows(flagged), s01=KEEP))
+    result = import_wave(paths, 1, sheet, date="2026-11-20")
+    assert set(result.changed) == {"Q1", "Q2"}
+    cleared = load_record(record_path(paths.data_out, "Q2"))
+    assert cleared is not None
+    assert cleared["verification"]["spotChecked"] is False
 ```
 
 - [ ] **Step 2: Kör och se dem falla**
@@ -5838,7 +5993,7 @@ Expected: FAIL med `ImportError`.
 
 - [ ] **Step 3: Implementera**
 
-Lägg till i `review_sheet.py` (och `from dataclasses import dataclass, field` samt `from .facts import STATUS_BY_SV, STATUS_SV, TOPIC_SV` och `from .record import record_path, save_record` bland importerna):
+Lägg till i `review_sheet.py` (och `from .facts import STATUS_BY_SV, STATUS_SV` samt `from .record import record_path, save_record` bland importerna):
 
 ```python
 class ReviewImportError(ValueError):
@@ -5867,11 +6022,13 @@ def _validate(records: dict[str, Record], by_qid: dict[str, list[dict[str, str]]
         if record is None:
             errors.append(f"{qid}: arten finns inte bland artfilerna")
             continue
-        expected = {f["id"] for f in record.get("facts", []) if f["topic"] != "data"}
-        seen = {r["Id"].strip() for r in rows if r["Typ"].strip() in ("faktum", "status")}
-        missing = sorted(expected - seen)
-        if missing:
-            errors.append(f"{qid}: raderna {', '.join(missing)} saknas i arket")
+        full_sheet = any(r["Typ"].strip() in ("faktum", "status") for r in rows)
+        if full_sheet:
+            expected = {f["id"] for f in record.get("facts", []) if f["topic"] != "data"}
+            seen = {r["Id"].strip() for r in rows if r["Typ"].strip() in ("faktum", "status")}
+            missing = sorted(expected - seen)
+            if missing:
+                errors.append(f"{qid}: raderna {', '.join(missing)} saknas i stickprovet")
         for r in rows:
             typ, decision, fid = r["Typ"].strip(), _decision(r), r["Id"].strip()
             if typ == "data":
@@ -5897,7 +6054,10 @@ def _apply_one(record: Record, rows: list[dict[str, str]], result: ImportResult)
         if fact["topic"] == "data":
             facts.append(fact)
             continue
-        row = decisions[fact["id"]]
+        row = decisions.get(fact["id"])
+        if row is None:  # not in the sheet: not flagged, kept exactly as the kontroll left it
+            facts.append(fact)
+            continue
         decision = _decision(row)
         if decision == STRIKE:
             continue
@@ -5911,20 +6071,23 @@ def _apply_one(record: Record, rows: list[dict[str, str]], result: ImportResult)
     review = record.setdefault("review", {})
     for row in rows:
         typ, decision = row["Typ"].strip(), _decision(row)
-        if typ == "flagga":
+        if typ != "flagga":
+            continue
+        check, fid = row["Kontroll"].strip(), row["Id"].strip()
+        if check == "V3":
             review["statusConfirmed"] = decision == KEEP
             if decision == STRIKE:
                 facts = [f for f in facts if f["topic"] != "status"]
-        elif typ == "inspelning" and decision == STRIKE:
+        elif check == "V4" and decision == STRIKE:
             record.pop("audio", None)
             review["audioStruck"] = True
             result.removed_audio.append(str(record["qid"]))
+        elif check == "V2" and decision == STRIKE:
+            facts = [f for f in facts if f["id"] != fid]
     record["facts"] = facts
 
 
-def apply_review(
-    records: dict[str, Record], rows: list[dict[str, str]], *, reviewer: str, date: str
-) -> ImportResult:
+def apply_review(records: dict[str, Record], rows: list[dict[str, str]], *, date: str) -> ImportResult:
     by_qid: dict[str, list[dict[str, str]]] = {}
     for row in rows:
         by_qid.setdefault(row["QID"].strip(), []).append(row)
@@ -5935,14 +6098,41 @@ def apply_review(
     for qid, qrows in by_qid.items():
         record = records[qid]
         _apply_one(record, qrows, result)
-        record["review"]["facts"] = {"by": reviewer, "at": date}
+        spot_checked = any(r["Typ"].strip() in ("faktum", "status") for r in qrows)
+        record["verification"] = {
+            "method": "auto",
+            "at": date,
+            "model": record.get("generated", {}).get("verify", {}).get("model", "unknown"),
+            "spotChecked": spot_checked,
+        }
         result.changed.append(qid)
     return result
 
 
-def import_wave(paths: WebPaths, sheet: Path, *, reviewer: str, date: str) -> ImportResult:
+def _auto_clear(record: Record) -> bool:
+    """A species that was verified, had no flags and was never drawn for the spot check
+    needs no decision: it never got a sheet row at all (spec point 6)."""
+    return (
+        bool(record.get("generated", {}).get("verify"))
+        and not record.get("flags")
+        and not is_reviewed(record)
+    )
+
+
+def import_wave(paths: WebPaths, wave: int, sheet: Path, *, date: str) -> ImportResult:
     records = load_all(paths.data_out)
-    result = apply_review(records, read_sheet(sheet), reviewer=reviewer, date=date)
+    result = apply_review(records, read_sheet(sheet), date=date)
+    for qid, record in records.items():
+        if qid in result.changed or record.get("review", {}).get("wave") != wave:
+            continue
+        if _auto_clear(record):
+            record["verification"] = {
+                "method": "auto",
+                "at": date,
+                "model": record["generated"]["verify"]["model"],
+                "spotChecked": False,
+            }
+            result.changed.append(qid)
     for qid in result.changed:
         save_record(record_path(paths.data_out, qid), records[qid])
     for qid in result.removed_audio:
@@ -5959,10 +6149,9 @@ def import_wave(paths: WebPaths, sheet: Path, *, reviewer: str, date: str) -> Im
     "--file", "sheet", type=click.Path(exists=True, dir_okay=False, path_type=Path), default=None,
     help="Exporterad CSV. Standard: review/wave-<n>.csv.",
 )
-@click.option("--reviewer", default="Albin Abrahamsson", show_default=True)
-@click.option("--date", "review_date", default=None, help="Granskningsdatum, YYYY-MM-DD. Standard: i dag.")
-def web_import(wave: int, sheet: Path | None, reviewer: str, review_date: str | None) -> None:
-    """Läser in Albins beslut ur granskningsarket. Ändrar ingenting om något är fel."""
+@click.option("--date", "review_date", default=None, help="Kontrolldatum, YYYY-MM-DD. Standard: i dag.")
+def web_import(wave: int, sheet: Path | None, review_date: str | None) -> None:
+    """Läser in Albins beslut ur undantagsarket och sätter verification på hela vågen. Ändrar ingenting om något är fel."""
     from datetime import date
 
     from .web.review_sheet import ReviewImportError, import_wave
@@ -5971,10 +6160,10 @@ def web_import(wave: int, sheet: Path | None, reviewer: str, review_date: str | 
     path = sheet or paths.review / f"wave-{wave}.csv"
     when = review_date or date.today().isoformat()
     try:
-        result = import_wave(paths, path, reviewer=reviewer, date=when)
+        result = import_wave(paths, wave, path, date=when)
     except ReviewImportError as exc:
         raise click.ClickException(f"Arket har fel, inget ändrades:\n{exc}") from exc
-    click.echo(f"{len(result.changed)} arter granskade {when}. Inspelningar strukna: {len(result.removed_audio)}.")
+    click.echo(f"{len(result.changed)} arter kontrollerade {when}. Inspelningar strukna: {len(result.removed_audio)}.")
 ```
 
 - [ ] **Step 5: Kör testerna**
@@ -5988,7 +6177,7 @@ Run: `uv run ruff check --fix . && uv run ruff format . && uv run mypy`
 
 ```bash
 git add src/birdy_fetcher/web/review_sheet.py src/birdy_fetcher/cli.py tests/test_web_review_sheet.py
-git commit -m "feat(pipeline): web import läser in Albins beslut ur granskningsarket"
+git commit -m "feat(pipeline): web import skriver verification, bara undantagen behöver ett beslut"
 ```
 
 ---
