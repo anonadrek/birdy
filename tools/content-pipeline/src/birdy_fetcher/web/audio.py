@@ -5,11 +5,22 @@ never used."""
 
 from __future__ import annotations
 
+import hashlib
+import json
 import re
+import shutil
+import subprocess
+import tempfile
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any
+from urllib.parse import quote
 
-from .licenses import LICENSE_URLS
+import imageio_ffmpeg
+
+from ..cache import Cache
+from .http import ThrottledHttp
+from .licenses import LICENSE_URLS, clean_author
 
 MIN_SECONDS = 3.0
 MAX_SECONDS = 20
@@ -106,3 +117,120 @@ def audio_record(candidate: AudioCandidate, qid: str) -> dict[str, Any]:
         "licenseUrl": LICENSE_URLS[candidate.license],
         "sourceUrl": candidate.page_url,
     }
+
+
+COMMONS_API = "https://commons.wikimedia.org/w/api.php"
+WIKIDATA_API = "https://www.wikidata.org/w/api.php"
+MAX_TITLES = 20
+BITRATE = "64k"
+
+
+def parse_candidate(page: dict[str, Any], *, from_wikidata: bool) -> AudioCandidate:
+    info = page["imageinfo"][0]
+    meta = info.get("extmetadata", {})
+    duration = info.get("duration")
+    return AudioCandidate(
+        title=page["title"],
+        url=info["url"],
+        page_url=info.get("descriptionurl", ""),
+        mime=info.get("mime", ""),
+        duration=float(duration) if duration is not None else None,
+        license=normalize_license(meta.get("LicenseShortName", {}).get("value")),
+        author=clean_author(meta.get("Artist", {}).get("value")),
+        categories=tuple(c["title"] for c in page.get("categories", [])),
+        from_wikidata=from_wikidata,
+    )
+
+
+class CommonsAudioClient:
+    def __init__(self, *, cache: Cache, http: ThrottledHttp | None = None) -> None:
+        self.cache = cache
+        self._http = http or ThrottledHttp(min_interval=1.0)
+
+    async def _json(self, qid: str, name: str, url: str, refresh: bool) -> Any:
+        raw = None if refresh else self.cache.get(qid, name)
+        if raw is None:
+            raw = await self._http.fetch_text(url)
+            self.cache.put(qid, name, raw)
+        return json.loads(raw)
+
+    async def candidates(
+        self, qid: str, scientific: str, *, refresh: bool = False
+    ) -> list[AudioCandidate]:
+        """Wikidata's own recordings (P51) first, then a Commons search for the name."""
+        claims_url = f"{WIKIDATA_API}?action=wbgetclaims&format=json&entity={qid}&property=P51"
+        claims = await self._json(qid, "audio-p51.json", claims_url, refresh)
+        p51 = [
+            "File:" + claim["mainsnak"]["datavalue"]["value"]
+            for claim in claims.get("claims", {}).get("P51", [])
+            if "datavalue" in claim.get("mainsnak", {})
+        ]
+        search = quote(f'"{scientific}" filetype:audio')
+        search_url = (
+            f"{COMMONS_API}?action=query&format=json&formatversion=2&list=search"
+            f"&srnamespace=6&srlimit=10&srsearch={search}"
+        )
+        found = await self._json(qid, "audio-search.json", search_url, refresh)
+        hits = [hit["title"] for hit in found.get("query", {}).get("search", [])]
+        titles = (p51 + [t for t in hits if t not in p51])[:MAX_TITLES]
+        if not titles:
+            return []
+        info_url = (
+            f"{COMMONS_API}?action=query&format=json&formatversion=2"
+            "&prop=imageinfo%7Ccategories&clshow=!hidden&cllimit=max"
+            "&iiprop=url%7Cextmetadata%7Cmime%7Csize"
+            "&iiextmetadatafilter=LicenseShortName%7CArtist"
+            f"&titles={quote('|'.join(titles))}"
+        )
+        info = await self._json(qid, "audio-info.json", info_url, refresh)
+        query = info.get("query", {})
+        normalized = {n["from"]: n["to"] for n in query.get("normalized", [])}
+        pages = {page["title"]: page for page in query.get("pages", [])}
+        result: list[AudioCandidate] = []
+        for title in titles:
+            page = pages.get(normalized.get(title, title))
+            if page is None or not page.get("imageinfo"):
+                continue
+            result.append(parse_candidate(page, from_wikidata=title in p51))
+        return result
+
+    async def download(
+        self, qid: str, candidate: AudioCandidate, *, refresh: bool = False
+    ) -> bytes:
+        digest = hashlib.sha256(candidate.title.encode("utf-8")).hexdigest()[:12]
+        name = f"audio-{digest}.bin"
+        raw = None if refresh else self.cache.get_bytes(qid, name)
+        if raw is None:
+            raw = await self._http.fetch_bytes(candidate.url)
+            self.cache.put_bytes(qid, name, raw)
+        return raw
+
+
+def convert_to_mp3(raw: bytes, out_path: Path) -> None:
+    """The first 20 s, mono, loudness-normalised, MP3 at 64 kbit/s (about 160 kB)."""
+    exe = imageio_ffmpeg.get_ffmpeg_exe()
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory() as tmp:
+        src = Path(tmp) / "in.bin"
+        dst = Path(tmp) / "out.mp3"
+        src.write_bytes(raw)
+        command = [exe, "-hide_banner", "-loglevel", "error", "-y", "-i", str(src)]
+        command += ["-t", str(MAX_SECONDS), "-ac", "1", "-af", "loudnorm=I=-16:TP=-1.5:LRA=11"]
+        command += ["-codec:a", "libmp3lame", "-b:a", BITRATE, str(dst)]
+        subprocess.run(command, check=True, capture_output=True)
+        shutil.copyfile(dst, out_path)
+
+
+_DURATION = re.compile(r"Duration: (\d+):(\d+):(\d+(?:\.\d+)?)")
+
+
+def probe_seconds(path: Path) -> float:
+    exe = imageio_ffmpeg.get_ffmpeg_exe()
+    result = subprocess.run(
+        [exe, "-hide_banner", "-i", str(path)], capture_output=True, text=True, check=False
+    )
+    match = _DURATION.search(result.stderr)
+    if match is None:
+        raise ValueError(f"Hittar ingen längd för {path}")
+    hours, minutes, seconds = match.groups()
+    return int(hours) * 3600 + int(minutes) * 60 + float(seconds)

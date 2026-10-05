@@ -2,15 +2,29 @@
 
 from __future__ import annotations
 
+import io
+import json
+import math
+import struct
+import subprocess
+import wave
 from dataclasses import replace
+from pathlib import Path
 
+import imageio_ffmpeg
+
+from birdy_fetcher.cache import Cache
 from birdy_fetcher.web.audio import (
     AudioCandidate,
+    CommonsAudioClient,
     audio_record,
     choose,
+    convert_to_mp3,
     normalize_license,
+    probe_seconds,
     rejection,
 )
+from birdy_fetcher.web.http import ThrottledHttp
 
 BASE = AudioCandidate(
     title="File:Parus major song.ogg",
@@ -111,3 +125,134 @@ def test_search_hit_with_name_in_category_is_accepted() -> None:
         from_wikidata=False,
     )
     assert rejection(candidate, "Parus major") is None
+
+
+P51 = {"claims": {"P51": [{"mainsnak": {"datavalue": {"value": "Parus_major_song.ogg"}}}]}}
+SEARCH = {
+    "query": {
+        "search": [{"title": "File:De-Kohlmeise.ogg"}, {"title": "File:Parus_major_song.ogg"}]
+    }
+}
+INFO = {
+    "query": {
+        "normalized": [{"from": "File:Parus_major_song.ogg", "to": "File:Parus major song.ogg"}],
+        "pages": [
+            {
+                "title": "File:Parus major song.ogg",
+                "imageinfo": [
+                    {
+                        "url": "https://upload.wikimedia.org/a.ogg",
+                        "descriptionurl": (
+                            "https://commons.wikimedia.org/wiki/File:Parus_major_song.ogg"
+                        ),
+                        "mime": "application/ogg",
+                        "duration": 31.5,
+                        "extmetadata": {
+                            "LicenseShortName": {"value": "CC BY-SA 4.0"},
+                            "Artist": {"value": '<a href="//commons.wikimedia.org/x">Anna</a>'},
+                        },
+                    }
+                ],
+                "categories": [{"title": "Category:Parus major"}],
+            },
+            {
+                "title": "File:De-Kohlmeise.ogg",
+                "imageinfo": [
+                    {
+                        "url": "https://upload.wikimedia.org/b.ogg",
+                        "descriptionurl": "https://commons.wikimedia.org/wiki/File:De-Kohlmeise.ogg",
+                        "mime": "application/ogg",
+                        "duration": 1.2,
+                        "extmetadata": {"LicenseShortName": {"value": "CC BY-SA 4.0"}},
+                    }
+                ],
+                "categories": [{"title": "Category:German pronunciation of nouns"}],
+            },
+        ],
+    }
+}
+
+
+class Routed:
+    def __init__(self, routes: dict[str, object]) -> None:
+        self.routes = routes
+        self.urls: list[str] = []
+
+    async def __call__(self, url: str) -> str:
+        self.urls.append(url)
+        for key, body in self.routes.items():
+            if key in url:
+                return json.dumps(body)
+        raise FileNotFoundError(url)
+
+
+def _wav(seconds: int) -> bytes:
+    buf = io.BytesIO()
+    with wave.open(buf, "wb") as w:
+        w.setnchannels(2)
+        w.setsampwidth(2)
+        w.setframerate(22050)
+        frames = b"".join(
+            struct.pack("<hh", int(8000 * math.sin(2 * math.pi * 440 * i / 22050)), 0)
+            for i in range(22050 * seconds)
+        )
+        w.writeframes(frames)
+    return buf.getvalue()
+
+
+async def test_candidates_put_wikidata_first_and_parse_metadata(tmp_path: Path) -> None:
+    http = Routed({"wbgetclaims": P51, "list=search": SEARCH, "prop=imageinfo": INFO})
+    client = CommonsAudioClient(
+        cache=Cache(tmp_path), http=ThrottledHttp(get_text=http, min_interval=0)
+    )
+    candidates = await client.candidates("Q25485", "Parus major")
+    assert [c.title for c in candidates] == ["File:Parus major song.ogg", "File:De-Kohlmeise.ogg"]
+    first = candidates[0]
+    assert first.from_wikidata is True
+    assert first.duration == 31.5
+    assert first.author == "Anna"
+    assert first.license == "CC BY-SA 4.0"
+    assert first.categories == ("Category:Parus major",)
+    assert candidates[1].from_wikidata is False
+    await client.candidates("Q25485", "Parus major")
+    assert len(http.urls) == 3
+
+
+async def test_no_candidates_means_no_info_request(tmp_path: Path) -> None:
+    http = Routed({"wbgetclaims": {"claims": {}}, "list=search": {"query": {"search": []}}})
+    client = CommonsAudioClient(
+        cache=Cache(tmp_path), http=ThrottledHttp(get_text=http, min_interval=0)
+    )
+    assert await client.candidates("Q1", "Parus major") == []
+    assert len(http.urls) == 2
+
+
+async def test_download_is_cached(tmp_path: Path) -> None:
+    calls = 0
+
+    async def get_bytes(url: str) -> bytes:
+        nonlocal calls
+        calls += 1
+        return b"OggS"
+
+    client = CommonsAudioClient(
+        cache=Cache(tmp_path), http=ThrottledHttp(get_bytes=get_bytes, min_interval=0)
+    )
+    assert await client.download("Q25485", BASE) == b"OggS"
+    assert await client.download("Q25485", BASE) == b"OggS"
+    assert calls == 1
+
+
+def test_convert_trims_to_20_seconds_mono_mp3(tmp_path: Path) -> None:
+    out = tmp_path / "Q1" / "voice.mp3"
+    convert_to_mp3(_wav(25), out)
+    assert out.exists()
+    assert 19.5 <= probe_seconds(out) <= 20.5
+    assert out.stat().st_size < 250_000
+    info = subprocess.run(
+        [imageio_ffmpeg.get_ffmpeg_exe(), "-hide_banner", "-i", str(out)],
+        capture_output=True,
+        text=True,
+        check=False,
+    ).stderr
+    assert "mono" in info
