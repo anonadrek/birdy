@@ -36,7 +36,7 @@ class BirdClassifierFactory(
                 if (t is CancellationException) throw t
                 onCrashlytics(t)
                 // Produktion (allowFallback=false): propagera ärligt fel istället för
-                // att tyst svara "Blåmes 87%" på allt via FakeBirdClassifier.
+                // att tyst svara "Talgoxe 87%" på allt via FakeBirdClassifier.
                 if (!allowFallback) throw t
                 return createFallback() to ClassifierMode.DEMO
             }
