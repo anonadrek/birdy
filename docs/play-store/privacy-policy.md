@@ -1,10 +1,13 @@
 # Birdy — Privacy Policy
 
-_Last updated: 2026-09-28_
+_Last updated: 2026-10-05_
 
 Birdy is built and operated by **AlbIT AB** (org. no. 559593-7607,
-Solna, Sweden), which is responsible for the app. This policy explains what data the app handles and how. Birdy is designed to
-work fully offline. We do not collect, transmit, or sell personal data.
+Solna, Sweden), which is responsible for the app. This policy explains what data the app handles and how. Bird identification,
+the encyclopedia and your field journal work offline. The personal
+finds map needs an internet connection to load map imagery, and
+purchases go through Google Play. We do not collect, transmit, or
+sell personal data.
 
 ## 1. What data does Birdy handle?
 
@@ -16,12 +19,14 @@ Birdy stores the following data **locally on your device**:
   optional GPS coordinates (see section 2a below).
 - **Photos** you choose to associate with an observation. Stored in the
   app's private files directory (`filesDir/observations/`).
-- **Audio recordings** (3-second clips) captured for bird-call ID.
-  Stored in the app's private files directory
-  (`filesDir/observations/`) when you save the resulting observation;
-  otherwise discarded after classification.
+- **Audio recordings** of up to 60 seconds, captured when you use
+  bird-call ID. They are kept only in the app's private storage on
+  your device, are never uploaded, and are removed when you uninstall
+  the app.
 - **App preferences**: your display name (optional), preferred language,
-  premium state.
+  premium state, and when you first installed and first opened Birdy
+  (used only on your device, to recognise early users who keep Premium
+  for free).
 - **Badge unlocks** and progress counters.
 
 This data **never leaves your device** unless:
@@ -38,10 +43,10 @@ This data **never leaves your device** unless:
   model and discarded after classification. No frame is uploaded.
   Camera permission is foreground-only.
 - **Microphone** (`android.permission.RECORD_AUDIO`) — required to
-  identify birds by their call. Audio is captured in 3-second clips,
-  processed on-device by the BirdNET-Lite model, and either saved to
-  your observation (if you tap save) or discarded immediately after
-  classification. No audio is uploaded.
+  identify birds by their call. Birdy listens for up to 60 seconds
+  and stops earlier once it is confident. The audio is processed
+  on-device by the BirdNET-Lite model and kept only in the app's
+  private storage. No audio is uploaded.
 - **Photo picker** (Android 13+ `PickVisualMedia`) — no permission
   required; you choose which photo to share with Birdy per pick.
 - **Location** (`ACCESS_FINE_LOCATION` + `ACCESS_COARSE_LOCATION`) —
@@ -104,11 +109,15 @@ for details on how MapTiler handles tile requests.
 
 ## 5. Premium purchases
 
-If you purchase a premium subscription, the transaction is handled by
-**Google Play Billing**. Birdy receives only the purchase token from
-Google — not your name, email, or payment details. See
-[Google Play's Privacy Policy](https://policies.google.com/privacy)
+Premium is sold as a yearly subscription or as a one-time lifetime
+purchase. Both are handled by **Google Play Billing**. Birdy receives
+only the purchase token from Google, not your name, email, or payment
+details. See [Google Play's Privacy Policy](https://policies.google.com/privacy)
 for details on how Google handles billing data.
+
+If you installed Birdy before paid Premium launched, Premium is
+unlocked for free. The app decides this on your device from the time
+you first installed it, and nothing is sent anywhere.
 
 ## 6. Children
 

@@ -1,6 +1,6 @@
 # Birdy — Terms of Use
 
-_Last updated: 2026-09-28_
+_Last updated: 2026-10-05_
 
 These terms govern your use of the **Birdy** Android application
 ("the App") provided by **AlbIT AB** (org. no. 559593-7607, Solna,
@@ -48,8 +48,9 @@ Machine-learning models bundled with the app:
 
 ## 5. Premium purchases
 
-Premium features (PDF export, season statistics, premium field
-badges) are sold via Google Play Billing as either:
+Premium features (the personal finds map, PDF export of your field
+journal, season statistics and seven premium field badges) are sold
+via Google Play Billing as either:
 
 - An **annual subscription**, which auto-renews unless cancelled at
   least 24 hours before the end of the current period, per Google

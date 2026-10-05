@@ -6,7 +6,7 @@ Console **Data Safety** section. Keep in sync with code reality.
 Birdy is developed and operated by **AlbIT AB** (org. no. 559593-7607,
 Solna, Sweden).
 
-_Last reviewed: 2026-06-06 (v1.2, personal-finds-map) — opt-in on-device location for personal map + MapTiler tile fetching; location data never leaves the device; INTERNET + location permissions added. See Diff log entry 2026-06-06._
+_Last reviewed: 2026-10-05 (v1.3.0): Premium sold through Google Play Billing (yearly subscription or lifetime purchase), sound ID records up to 60 seconds, early users recognised on the device from the install time. No form answer changes. See Diff log entry 2026-10-05._
 
 ## Data collection and security
 
@@ -61,9 +61,9 @@ in the form:
 - Messages: **No**
 - Photos and videos: **No** (user-supplied photos stay in app-private
   storage; not "collected" per Play Console definition)
-- Audio files: **No** (user-recorded 3-second audio clips stay in
-  app-private storage when attached to an observation; otherwise
-  discarded after on-device classification; never transmitted)
+- Audio files: **No** (user-recorded audio of up to 60 seconds is
+  classified on-device and kept only in app-private storage; never
+  transmitted)
 - **Location: No** — the app reads the device location (approximate +
   precise) only when the user has enabled "Save location with my finds"
   (Settings toggle, **off by default**). When enabled, the coordinates
@@ -100,9 +100,9 @@ in the form:
 - `android.permission.CAMERA` (foreground only) — used for
   on-device bird ID; frames discarded after classification.
 - `android.permission.RECORD_AUDIO` (foreground only) — used for
-  on-device bird-call ID (BirdNET-Lite, 3-second clips); audio is
-  saved to your observation only if you tap save, otherwise discarded
-  after classification. Never uploaded.
+  on-device bird-call ID (BirdNET-Lite, recordings of up to 60
+  seconds); audio is kept only in app-private storage and never
+  uploaded.
 - `android.permission.INTERNET` (new in v1.2) — used to fetch map
   tile imagery from MapTiler when the user views the personal finds
   map. No user data is transmitted; tile requests carry only the map
@@ -159,3 +159,11 @@ features, provide:
 - **2026-09-28** — developer changed from a private person to
   **AlbIT AB** (the Play Console account moved to the company). No
   change to any form answer.
+- **2026-10-05**: re-reviewed for v1.3.0 (vC129). Premium is now sold
+  through Google Play Billing as a yearly subscription or a one-time
+  lifetime purchase; Birdy still only sees purchase state, never
+  payment details. Sound ID now records for up to 60 seconds instead
+  of fixed short clips; recordings stay in app-private storage and are
+  never uploaded. Early users are recognised on the device from the install
+  time an earlier version stored and from the phone's network time at the
+  first start; nothing is transmitted. No change to any form answer.
