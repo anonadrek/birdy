@@ -21,12 +21,14 @@ class TrophyProgressWorker(
 ) : CoroutineWorker(context, params) {
     override suspend fun doWork(): Result {
         return try {
-            val payloads =
-                NotificationPayloads.fromGraphOr(AndroidAppGraphHolder.current) {
-                    AndroidNotificationPayloads.fromContext(applicationContext)
-                }
             val forceForDev = inputData.getBoolean(KEY_FORCE_FOR_DEV, false)
-            val content = payloads.trophyProgress(forceForDev) ?: return Result.success()
+            val graph = AndroidAppGraphHolder.current
+            val content =
+                if (graph != null) {
+                    NotificationPayloads.from(graph).trophyProgress(forceForDev)
+                } else {
+                    AndroidNotificationPayloads.fromContext(applicationContext) { it.trophyProgress(forceForDev) }
+                } ?: return Result.success()
 
             NotificationChannels.ensureCreated(applicationContext)
 

@@ -21,12 +21,14 @@ class WeeklyRecapWorker(
 ) : CoroutineWorker(context, params) {
     override suspend fun doWork(): Result {
         return try {
-            val payloads =
-                NotificationPayloads.fromGraphOr(AndroidAppGraphHolder.current) {
-                    AndroidNotificationPayloads.fromContext(applicationContext)
-                }
             val forceForDev = inputData.getBoolean(KEY_FORCE_FOR_DEV, false)
-            val content = payloads.weeklyRecap(forceForDev) ?: return Result.success()
+            val graph = AndroidAppGraphHolder.current
+            val content =
+                if (graph != null) {
+                    NotificationPayloads.from(graph).weeklyRecap(forceForDev)
+                } else {
+                    AndroidNotificationPayloads.fromContext(applicationContext) { it.weeklyRecap(forceForDev) }
+                } ?: return Result.success()
 
             NotificationChannels.ensureCreated(applicationContext)
 

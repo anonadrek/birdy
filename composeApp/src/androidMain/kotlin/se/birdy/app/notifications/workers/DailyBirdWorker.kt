@@ -24,16 +24,18 @@ class DailyBirdWorker(
 ) : CoroutineWorker(context, params) {
     override suspend fun doWork(): Result {
         return try {
-            val payloads =
-                NotificationPayloads.fromGraphOr(AndroidAppGraphHolder.current) {
-                    AndroidNotificationPayloads.fromContext(applicationContext)
-                }
             val today =
                 Clock.System
                     .now()
                     .toLocalDateTime(TimeZone.currentSystemDefault())
                     .date
-            val content = payloads.dailyBird(today) ?: return Result.success()
+            val graph = AndroidAppGraphHolder.current
+            val content =
+                if (graph != null) {
+                    NotificationPayloads.from(graph).dailyBird(today)
+                } else {
+                    AndroidNotificationPayloads.fromContext(applicationContext) { it.dailyBird(today) }
+                } ?: return Result.success()
 
             NotificationChannels.ensureCreated(applicationContext)
 
