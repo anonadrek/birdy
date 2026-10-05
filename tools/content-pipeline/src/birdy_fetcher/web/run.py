@@ -4,8 +4,6 @@ from __future__ import annotations
 
 import asyncio
 import json
-from collections import Counter
-from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -19,14 +17,11 @@ from .images import prepare_images
 from .output import build_record, is_approved, write_record
 from .paths import WebPaths as WebPaths
 from .report import SpeciesOutcome, render_report
-from .slugs import slugify
 from .source import SpeciesSource, load_approved
+from .sources_step import SlugCollisionError as SlugCollisionError
+from .sources_step import check_slug_collisions
 from .wiki_full import FullWikiClient, WikiArticle
 from .writer import WEB_MODELS, AnthropicStructuredClient, StructuredClient, WebTextWriter
-
-
-class SlugCollisionError(ValueError):
-    pass
 
 
 class ArticleSource(Protocol):
@@ -44,15 +39,6 @@ class WebRunOptions:
     regenerate: bool
     workers: int
     dry_run: bool
-
-
-def check_slug_collisions(sources: Sequence[SpeciesSource], groups: GroupTable) -> None:
-    for lang in ("sv", "en"):
-        slugs = [slugify(s.name_sv if lang == "sv" else s.name_en, lang) for s in sources]
-        slugs += [g.slug_sv if lang == "sv" else g.slug_en for g in groups.groups]
-        dupes = sorted(slug for slug, n in Counter(slugs).items() if n > 1)
-        if dupes:
-            raise SlugCollisionError(f"Samma adress används två gånger ({lang}): {dupes}")
 
 
 async def run_web(

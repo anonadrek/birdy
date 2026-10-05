@@ -36,7 +36,7 @@ def test_refresh_dry_run_flag_exists() -> None:
 
 def test_web_help_lists_all_flags() -> None:
     runner = CliRunner()
-    result = runner.invoke(main, ["web", "--help"])
+    result = runner.invoke(main, ["web", "v1", "--help"])
     assert result.exit_code == 0
     for flag in (
         "--species",
@@ -58,7 +58,7 @@ def test_web_workers_must_be_at_least_one() -> None:
     runner = CliRunner()
     # --species Q1 is a second guard: should IntRange ever be loosened, the unknown QID
     # fails in load_approved before any Wikipedia request.
-    result = runner.invoke(main, ["web", "--dry-run", "--workers", "0", "--species", "Q1"])
+    result = runner.invoke(main, ["web", "v1", "--dry-run", "--workers", "0", "--species", "Q1"])
     assert result.exit_code != 0
 
 
@@ -68,6 +68,14 @@ def test_web_requires_an_api_key_unless_dry_run(monkeypatch: pytest.MonkeyPatch)
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
     monkeypatch.delenv("ANTHROPIC_AUTH_TOKEN", raising=False)
     runner = CliRunner()
-    result = runner.invoke(main, ["web", "--species", "Q1", "--max-cost", "1"])
+    result = runner.invoke(main, ["web", "v1", "--species", "Q1", "--max-cost", "1"])
     assert result.exit_code != 0
     assert "ANTHROPIC_API_KEY" in str(result.output)
+
+
+def test_web_sources_help_lists_its_flags() -> None:
+    runner = CliRunner()
+    result = runner.invoke(main, ["web", "sources", "--help"])
+    assert result.exit_code == 0
+    for flag in ("--species", "--refresh", "--force", "--workers", "--dry-run"):
+        assert flag in result.output

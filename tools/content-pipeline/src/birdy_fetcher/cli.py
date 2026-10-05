@@ -3,11 +3,18 @@
 from __future__ import annotations
 
 import asyncio
+import os
+import sys
+from collections import Counter
+from collections.abc import Sequence
 from pathlib import Path
 
 import click
+from rich.console import Console
 
 from . import __version__
+from .web.paths import WebPaths
+from .web.report import StepOutcome
 
 
 @click.group()
@@ -206,7 +213,59 @@ def build_mapping(labelmap: Path, model_version: str, out: Path) -> None:
     )
 
 
-@main.command()
+@main.group()
+def web() -> None:
+    """Artsidorna på birdy.community: källor, faktablad, granskning, text och jämförelser."""
+
+
+def _web_paths() -> WebPaths:
+    pipeline_root = Path(__file__).resolve().parent.parent.parent
+    return WebPaths(repo_root=pipeline_root.parent.parent)
+
+
+def _require_api_key() -> None:
+    # The locked anthropic 0.97 SDK only reads ANTHROPIC_API_KEY / ANTHROPIC_AUTH_TOKEN, so
+    # fail fast with a clear message instead of an opaque SDK error partway through a run.
+    if not (os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN")):
+        raise click.ClickException(
+            "ANTHROPIC_API_KEY saknas. Lägg den i miljön eller i "
+            "tools/content-pipeline/.env och kör med uv run --env-file .env ..."
+        )
+
+
+def _print_outcomes(outcomes: Sequence[StepOutcome], reports: Path) -> None:
+    # Swedish and Polish author names and error text can contain characters or literal
+    # `[...]` that would crash or mangle on a Windows console.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    console = Console(markup=False, highlight=False)
+    for o in outcomes:
+        if o.status not in ("ok", "pending"):
+            console.print(f"{o.status:8} {o.name} ({o.qid}): {'; '.join(o.errors)}")
+    counts = Counter(o.status for o in outcomes)
+    console.print(f"Klart: {dict(counts)}. Rapporter i {reports}.")
+
+
+@web.command("sources")
+@click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
+@click.option("--refresh", is_flag=True, help="Hämta alla källor på nytt i stället för från cache.")
+@click.option("--force", is_flag=True, help="Hämta om källor även för granskade faktablad.")
+@click.option("--workers", type=click.IntRange(min=1), default=4)
+@click.option("--dry-run", is_flag=True, help="Hämta och visa, men skriv inga filer.")
+def web_sources(
+    species: tuple[str, ...], refresh: bool, force: bool, workers: int, dry_run: bool
+) -> None:
+    """Steg 1: Wikipedia, Artportalen, rödlistan, inspelning och foton. Gratis."""
+    from .web.sources_step import SourcesOptions, run_sources
+
+    paths = _web_paths()
+    options = SourcesOptions(
+        qids=species, refresh=refresh, force=force, workers=workers, dry_run=dry_run
+    )
+    _print_outcomes(asyncio.run(run_sources(paths, options)), paths.reports)
+
+
+@web.command("v1")
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
 @click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
 @click.option(
@@ -221,7 +280,7 @@ def build_mapping(labelmap: Path, model_version: str, out: Path) -> None:
 @click.option("--regenerate", is_flag=True, help="Fråga modellen igen trots cachat svar.")
 @click.option("--workers", type=click.IntRange(min=1), default=4)
 @click.option("--dry-run", is_flag=True, help="Hämta källor och visa artikelstorlek, inget anrop.")
-def web(
+def web_v1(
     species: tuple[str, ...],
     model_key: str,
     effort: str,
@@ -233,28 +292,13 @@ def web(
     dry_run: bool,
 ) -> None:
     """Webbtexter, foton och licensdata för artsidorna på birdy.community."""
-    import os
-    import sys
-    from collections import Counter
+    from .web.run import WebRunOptions, run_web
 
-    from rich.console import Console
+    # --dry-run never calls the model, so it doesn't need a key.
+    if not dry_run:
+        _require_api_key()
 
-    from .web.run import WebPaths, WebRunOptions, run_web
-
-    # The locked anthropic 0.97 SDK only reads ANTHROPIC_API_KEY / ANTHROPIC_AUTH_TOKEN from
-    # the environment (no `ant auth login` profile support) -- fail fast with a clear message
-    # instead of getting an opaque SDK error partway through a 180-species run. --dry-run
-    # never calls the model, so it doesn't need a key.
-    if not dry_run and not (
-        os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN")
-    ):
-        raise click.ClickException(
-            "ANTHROPIC_API_KEY saknas. Lägg den i miljön eller i "
-            "tools/content-pipeline/.env och kör med uv run --env-file .env ..."
-        )
-
-    pipeline_root = Path(__file__).resolve().parent.parent.parent
-    paths = WebPaths(repo_root=pipeline_root.parent.parent)
+    paths = _web_paths()
     options = WebRunOptions(
         qids=species,
         model_key=model_key,
