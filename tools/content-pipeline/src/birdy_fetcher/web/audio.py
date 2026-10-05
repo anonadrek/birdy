@@ -123,6 +123,7 @@ COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 WIKIDATA_API = "https://www.wikidata.org/w/api.php"
 MAX_TITLES = 20
 BITRATE = "64k"
+FFMPEG_TIMEOUT = 120
 
 
 def parse_candidate(page: dict[str, Any], *, from_wikidata: bool) -> AudioCandidate:
@@ -161,7 +162,7 @@ class CommonsAudioClient:
         claims_url = f"{WIKIDATA_API}?action=wbgetclaims&format=json&entity={qid}&property=P51"
         claims = await self._json(qid, "audio-p51.json", claims_url, refresh)
         p51 = [
-            "File:" + claim["mainsnak"]["datavalue"]["value"]
+            "File:" + claim["mainsnak"]["datavalue"]["value"].replace("_", " ")
             for claim in claims.get("claims", {}).get("P51", [])
             if "datavalue" in claim.get("mainsnak", {})
         ]
@@ -172,7 +173,12 @@ class CommonsAudioClient:
         )
         found = await self._json(qid, "audio-search.json", search_url, refresh)
         hits = [hit["title"] for hit in found.get("query", {}).get("search", [])]
-        titles = (p51 + [t for t in hits if t not in p51])[:MAX_TITLES]
+        seen: set[str] = set()
+        titles: list[str] = []
+        for title in p51 + hits:
+            if title not in seen and len(titles) < MAX_TITLES:
+                seen.add(title)
+                titles.append(title)
         if not titles:
             return []
         info_url = (
@@ -188,7 +194,8 @@ class CommonsAudioClient:
         pages = {page["title"]: page for page in query.get("pages", [])}
         result: list[AudioCandidate] = []
         for title in titles:
-            page = pages.get(normalized.get(title, title))
+            resolved_title = normalized.get(title, title)
+            page = pages.get(resolved_title)
             if page is None or not page.get("imageinfo"):
                 continue
             result.append(parse_candidate(page, from_wikidata=title in p51))
@@ -217,7 +224,11 @@ def convert_to_mp3(raw: bytes, out_path: Path) -> None:
         command = [exe, "-hide_banner", "-loglevel", "error", "-y", "-i", str(src)]
         command += ["-t", str(MAX_SECONDS), "-ac", "1", "-af", "loudnorm=I=-16:TP=-1.5:LRA=11"]
         command += ["-codec:a", "libmp3lame", "-b:a", BITRATE, str(dst)]
-        subprocess.run(command, check=True, capture_output=True)
+        result = subprocess.run(command, check=False, capture_output=True, timeout=FFMPEG_TIMEOUT)
+        if result.returncode != 0:
+            stderr_text = result.stderr.decode("utf-8", errors="replace")
+            stderr_tail = stderr_text[-500:].strip() if stderr_text else ""
+            raise RuntimeError(f"ffmpeg misslyckades med kod {result.returncode}: {stderr_tail}")
         shutil.copyfile(dst, out_path)
 
 
@@ -227,7 +238,11 @@ _DURATION = re.compile(r"Duration: (\d+):(\d+):(\d+(?:\.\d+)?)")
 def probe_seconds(path: Path) -> float:
     exe = imageio_ffmpeg.get_ffmpeg_exe()
     result = subprocess.run(
-        [exe, "-hide_banner", "-i", str(path)], capture_output=True, text=True, check=False
+        [exe, "-hide_banner", "-i", str(path)],
+        capture_output=True,
+        text=True,
+        check=False,
+        timeout=FFMPEG_TIMEOUT,
     )
     match = _DURATION.search(result.stderr)
     if match is None:

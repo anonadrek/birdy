@@ -130,7 +130,7 @@ def test_search_hit_with_name_in_category_is_accepted() -> None:
 P51 = {"claims": {"P51": [{"mainsnak": {"datavalue": {"value": "Parus_major_song.ogg"}}}]}}
 SEARCH = {
     "query": {
-        "search": [{"title": "File:De-Kohlmeise.ogg"}, {"title": "File:Parus_major_song.ogg"}]
+        "search": [{"title": "File:De-Kohlmeise.ogg"}, {"title": "File:Parus major song.ogg"}]
     }
 }
 INFO = {
@@ -200,6 +200,54 @@ def _wav(seconds: int) -> bytes:
     return buf.getvalue()
 
 
+async def test_p51_with_underscores_is_not_duplicated_by_search(tmp_path: Path) -> None:
+    """P51 with underscores; search returns spaces; should deduplicate."""
+    p51_val = "Parus_major_song.ogg"
+    p51_underscore = {"claims": {"P51": [{"mainsnak": {"datavalue": {"value": p51_val}}}]}}
+    search_with_spaces = {"query": {"search": [{"title": "File:Parus major song.ogg"}]}}
+    info_normalized = {
+        "query": {
+            "normalized": [
+                {"from": "File:Parus_major_song.ogg", "to": "File:Parus major song.ogg"}
+            ],
+            "pages": [
+                {
+                    "title": "File:Parus major song.ogg",
+                    "imageinfo": [
+                        {
+                            "url": "https://upload.wikimedia.org/a.ogg",
+                            "descriptionurl": (
+                                "https://commons.wikimedia.org/wiki/File:Parus_major_song.ogg"
+                            ),
+                            "mime": "application/ogg",
+                            "duration": 25.0,
+                            "extmetadata": {
+                                "LicenseShortName": {"value": "CC BY-SA 4.0"},
+                                "Artist": {"value": "Anna"},
+                            },
+                        }
+                    ],
+                    "categories": [{"title": "Category:Parus major"}],
+                }
+            ],
+        }
+    }
+    http = Routed(
+        {
+            "wbgetclaims": p51_underscore,
+            "list=search": search_with_spaces,
+            "prop=imageinfo": info_normalized,
+        }
+    )
+    client = CommonsAudioClient(
+        cache=Cache(tmp_path), http=ThrottledHttp(get_text=http, min_interval=0)
+    )
+    candidates = await client.candidates("Q25485", "Parus major")
+    assert len(candidates) == 1
+    assert candidates[0].from_wikidata is True
+    assert candidates[0].title == "File:Parus major song.ogg"
+
+
 async def test_candidates_put_wikidata_first_and_parse_metadata(tmp_path: Path) -> None:
     http = Routed({"wbgetclaims": P51, "list=search": SEARCH, "prop=imageinfo": INFO})
     client = CommonsAudioClient(
@@ -256,3 +304,13 @@ def test_convert_trims_to_20_seconds_mono_mp3(tmp_path: Path) -> None:
         check=False,
     ).stderr
     assert "mono" in info
+
+
+def test_convert_raises_readable_error_on_bad_input(tmp_path: Path) -> None:
+    """convert_to_mp3 with invalid audio should raise RuntimeError with 'ffmpeg' in message."""
+    out = tmp_path / "Q1" / "voice.mp3"
+    try:
+        convert_to_mp3(b"not audio at all", out)
+        raise AssertionError("Should have raised RuntimeError")
+    except RuntimeError as e:
+        assert "ffmpeg" in str(e).lower()
