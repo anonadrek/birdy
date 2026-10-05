@@ -129,3 +129,42 @@ async def test_a_species_without_sources_fails(tmp_path: Path) -> None:
     )
     assert outcomes[0].status == "failed"
     assert "web sources" in outcomes[0].errors[0]
+
+
+async def test_reply_is_costed_even_if_the_check_raises(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths.data_out, "Q1")
+    client = FakeJsonClient([reply(FULL)])
+
+    # Track record_cost calls to verify cost is recorded despite check failure
+    record_cost_calls: list[tuple[object, ...]] = []
+    import birdy_fetcher.web.facts_step as facts_step_module
+
+    original_record_cost = facts_step_module.record_cost  # type: ignore[attr-defined]
+    original_check = facts_step_module.check_fact_sheet  # type: ignore[attr-defined]
+
+    def mock_record_cost(cost, model_key, reply_obj):  # type: ignore[no-untyped-def]
+        record_cost_calls.append((cost, model_key, reply_obj))
+        original_record_cost(cost, model_key, reply_obj)
+
+    def mock_check(*args: object, **kwargs: object) -> None:
+        raise RuntimeError("boom")
+
+    facts_step_module.record_cost = mock_record_cost  # type: ignore[attr-defined]
+    facts_step_module.check_fact_sheet = mock_check  # type: ignore[attr-defined,assignment]
+
+    try:
+        outcomes = await run_facts(paths, FactsOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    finally:
+        facts_step_module.record_cost = original_record_cost  # type: ignore[attr-defined]
+        facts_step_module.check_fact_sheet = original_check  # type: ignore[attr-defined]
+
+    # The species should fail due to the exception
+    assert [o.status for o in outcomes] == ["failed"]
+    assert "boom" in outcomes[0].errors[0]
+
+    # But record_cost should have been called before the check
+    assert len(record_cost_calls) == 1
+    cost_tracker, _model_key, _reply_obj = record_cost_calls[0]
+    assert cost_tracker.call_count == 1  # type: ignore[attr-defined]
+    assert cost_tracker.total_usd > 0  # type: ignore[attr-defined]

@@ -112,13 +112,15 @@ class FactExtractor:
                 effort=self.effort,
                 schema=FactSheetOutput,
             )
-            check = self._check(reply.parsed, articles) if reply.parsed is not None else None
             try:
                 record_cost(self.cost, self.model_key, reply)
             except MaxCostExceeded:
-                if reply.parsed is not None and check is not None and not check.retry:
-                    self.cache.put(source.qid, name, reply.parsed.model_dump_json(indent=2))
+                if reply.parsed is not None:
+                    capped = self._check(reply.parsed, articles)
+                    if not capped.retry:
+                        self.cache.put(source.qid, name, reply.parsed.model_dump_json(indent=2))
                 raise
+            check = self._check(reply.parsed, articles) if reply.parsed is not None else None
             if reply.parsed is None or check is None:
                 reason = f"modellen gav inget giltigt svar (stop_reason={reply.stop_reason})"
                 if reply.stop_reason in ("max_tokens", "refusal"):
