@@ -15,7 +15,7 @@ own and want to flip back to.
 
 **SCAN — properly simple**
 Point your camera at the bird, pick a photo from your gallery, or
-record a 3-second clip to identify birds from their call. Birdy is a
+record its song or call to identify it by sound. Birdy is a
 bird sound identifier and photo bird species identifier in one,
 running on-device with local AI (Google AIY Birds V1 for images,
 BirdNET-Lite for audio) — no internet needed, no accounts. Photo and
@@ -61,13 +61,12 @@ account required.
 beginners learning to identify birds, and anyone who thinks a songbird
 in a tree deserves a moment of attention.
 
-## What's new (v1.2)
-- NEW — Map: see your finds on a private, on-device map (Premium). Opt-in location capture is free and never leaves your phone.
-- Reworked achievement stamps: a red-listed track, a life list up to 500 species, audio + seasonal stamps now free (34 total: 27 free + 7 premium).
-- Encyclopedia reorganised by ecological group (auks, woodpeckers, doves, cranes & rails, and more).
-- Weekly Recap shows every find of the week; chase the Bird of the Day for a free stamp; weekly badge-progress reminder.
-- Redesigned Premium screen: a clear free-vs-Premium breakdown, plus a one-time look at what Premium offers right after onboarding.
-- Search now finds species with apostrophes and accents. Sharper app icon, single-bird splash, smoother cards.
+## What's new (v1.3.0)
+- A new look with calmer colours, bigger photos and cleaner pages.
+- Premium can now be bought in Google Play, yearly or once for life: the finds map, your journal as a PDF, season statistics and 7 extra stamps.
+- Installed Birdy before this update? You keep Premium for free as long as you have the app.
+- Sound ID listens for up to 60 seconds, stops when it is sure and shows what it hears.
+- Language choice in the intro, Android 16 support, and photo ID now works on the first try.
 
 ## Keywords (for ASO copy — internal only; Google Play has no keyword field, everything indexes from title + short + long desc)
 bird id, bird identifier, bird sound identifier, bird song identifier,

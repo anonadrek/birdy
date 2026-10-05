@@ -15,7 +15,7 @@ uppslag du äger och vill bläddra tillbaka till.
 
 **SKANNA — riktigt enkelt**
 Rikta kameran mot fågeln, välj ett foto från galleriet eller spela in
-ett 3-sekunders klipp för att känna igen fågeln på ljud. Birdy är en
+sång eller läte för att känna igen fågeln på ljud. Birdy är en
 fågelsång-igenkänning och artbestämning på foto i ett — allt sker
 direkt på enheten med lokal AI (Google AIY Birds V1 för bild,
 BirdNET-Lite för ljud) — inget internet behövs, inga konton. Foto- och
@@ -60,13 +60,12 @@ konto.
 nybörjare som vill lära sig känna igen fåglar, och alla som tycker en
 sångfågel i ett träd förtjänar en stund av uppmärksamhet.
 
-## Nyheter (v1.2)
-- NYTT — Karta: se dina fynd på en privat karta som lever på enheten (Premium). Att fånga platsen är gratis och lämnar aldrig telefonen.
-- Omgjorda prestationsmärken: ett rödlistat-spår, en livslista upp till 500 arter, ljud- + säsongsmärken nu gratis (34 totalt: 27 gratis + 7 premium).
-- Uppslagsverket omorganiserat i ekologiska grupper (alkor, hackspettar, duvor, tranor & rallar, m.fl.).
-- Veckans uppslag visar veckans alla fynd; jaga Dagens fågel för ett gratis märke; veckovis märkesprogression-notis.
-- Omgjord Premium-skärm: en tydlig gratis-vs-Premium-översikt, plus en titt på vad Premium erbjuder direkt efter introduktionen.
-- Sök hittar nu arter med apostrofer och diakriter. Skarpare app-ikon, en-fågels-splash, mjukare kort.
+## Nyheter (v1.3.0)
+- Nytt utseende med lugnare färger, större foton och renare sidor.
+- Premium kan nu köpas i Google Play, per år eller en gång för alltid: Fynd-kartan, fältdagboken som PDF, säsongsstatistik och 7 extra märken.
+- Installerade du Birdy före den här uppdateringen? Då behåller du Premium gratis så länge du har appen.
+- Ljud-ID lyssnar i upp till 60 sekunder, slutar när det är säkert och visar vad det hör.
+- Språkval i introt, stöd för Android 16 och foto-ID fungerar nu redan första gången.
 
 ## Nyckelord (för ASO-text — internt; Google Play har inget nyckelordsfält, allt indexeras från titel + kort + lång beskrivning)
 artbestämning fåglar, fågelsång igenkänning, fågelläten app, känna igen
