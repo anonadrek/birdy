@@ -33,6 +33,8 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BirdyPremiumButton
 import se.birdy.app.ui.components.HeadlineSegment
+import se.birdy.app.ui.components.PaperSheetOverlap
+import se.birdy.app.ui.components.PaperSheetTop
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.PlatformBackHandler
 import se.birdy.app.ui.components.ReportStatusBarBackdrop
@@ -69,13 +71,16 @@ fun PremiumThankYouScreen(onClose: () -> Unit) {
                 accent = accent,
             )
         }
+        // The photo ends under the moss page's rounded edge, not on a hard line (2026-10-06).
+        // The edge itself leaves 24dp above the body, like a PaperSheet's padding.
+        item { PaperSheetTop(color = HeroMossDeep) }
         item {
             Text(
                 text = stringResource(Res.string.premium_thanks_body),
                 color = TextOnHero.copy(alpha = PREMIUM_THANKS_BODY_ALPHA),
                 fontSize = 14.sp,
                 lineHeight = 21.sp,
-                modifier = Modifier.padding(horizontal = 22.dp, vertical = 16.dp),
+                modifier = Modifier.padding(start = 22.dp, end = 22.dp, bottom = 16.dp),
             )
         }
         items(premiumFeatures) { feature -> ThanksFeatureRow(feature.title) }
@@ -115,6 +120,7 @@ private fun ThanksHero(
         title = plain,
         titleAccent = accent,
         height = 280.dp,
+        bottomPadding = PaperSheetOverlap + 18.dp,
         drawBehindStatusBar = true,
         image = { PremiumHeroPhoto() },
     )

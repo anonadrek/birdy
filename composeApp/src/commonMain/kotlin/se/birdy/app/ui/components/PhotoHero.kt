@@ -470,6 +470,29 @@ fun PaperSheet(
 }
 
 /**
+ * Just the rounded top edge of a [PaperSheet], for a screen whose content after the [PhotoHero]
+ * is a LazyColumn of separate items rather than one sheet (Premium and the thank-you screen):
+ * it rides up over the hero by [overlap] exactly like a sheet does, so the photo ends under a
+ * rounded edge instead of on a hard line, and it takes no height of its own, so the items below
+ * keep their places. Nothing is drawn over the photo outside the edge itself. The hero above
+ * needs `bottomPadding = PaperSheetOverlap + 18.dp`, and the screen behind must be [color].
+ */
+@Composable
+fun PaperSheetTop(
+    color: Color,
+    modifier: Modifier = Modifier,
+    overlap: Dp = PaperSheetOverlap,
+) {
+    Box(
+        modifier
+            .fillMaxWidth()
+            .overlapUpward(overlap)
+            .height(overlap)
+            .background(color, RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)),
+    )
+}
+
+/**
  * Pulls the content up by [overlap] without leaving a gap the size of [overlap] in the
  * parent's layout. A plain `Modifier.offset(y = -overlap)` moves the drawing but not the
  * measured size, so the parent still reserves the un-overlapped height and a strip of
