@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -39,6 +40,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
@@ -48,6 +51,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
@@ -68,10 +72,21 @@ import se.birdy.app.ui.theme.InkMuted
 import se.birdy.app.ui.theme.PaperBottomBar
 import kotlin.reflect.KClass
 
+/** Test tag on each tab's selection-dot slot (BottomNavLabelFitTest). */
+internal const val SELECTED_DOT_TAG = "tab-selected-dot"
+
 private val LABEL_MAX_FONT_SIZE = 10.sp
 
-// Low enough that every label still fits its tab at a 2.0 system text size on a 411dp phone.
-private val LABEL_MIN_FONT_SIZE = 6.sp
+// Low enough that every label still fits its tab at a 2.0 system text size on a 360dp phone.
+private val LABEL_MIN_FONT_SIZE = 4.sp
+
+private val LABEL_LINE_HEIGHT = 1.2.em
+
+// The label's share of the tab's 48dp column: 48 − icon 24 − spacers 2 + 3 − dot 4.
+private val LABEL_MAX_HEIGHT = 15.dp
+
+// Largest label font whose 1.2em line still fits LABEL_MAX_HEIGHT (15 / 1.2 = 12.5, rounded down).
+private val LABEL_MAX_FONT_HEIGHT = 12.dp
 
 private data class TabSpec(
     val route: AppRoute,
@@ -178,6 +193,11 @@ private fun TabCell(
 ) {
     val color = if (selected) AccentCopper else InkMuted
     val interactionSource = remember { MutableInteractionSource() }
+    // The label follows the system text size up to what its share of the 48dp column can hold:
+    // TextAutoSize only shrinks for width, so the height cap is applied to the font size itself.
+    val density = LocalDensity.current
+    val labelMaxFontSize = with(density) { minOf(LABEL_MAX_FONT_SIZE.toDp(), LABEL_MAX_FONT_HEIGHT).toSp() }
+    val labelMinFontSize = with(density) { minOf(LABEL_MIN_FONT_SIZE.toDp(), LABEL_MAX_FONT_HEIGHT).toSp() }
     val dotDescription = stringResource(Res.string.tab_listen_daily_bird_new)
     Box(
         modifier =
@@ -215,20 +235,23 @@ private fun TabCell(
                 style =
                     TextStyle(
                         color = color,
-                        fontSize = LABEL_MAX_FONT_SIZE,
-                        // Explicit, tight line height: this cell's budget is 72dp (bar) − 12dp
-                        // (bar's own vertical padding) − 12dp (this Column's vertical padding) =
-                        // 48dp for icon(24) + spacer(2) + label + spacer(3) + dot(4) — the
-                        // inherited bodyLarge 22sp line height blew that budget and squeezed the
-                        // selected-tab dot to nothing.
-                        lineHeight = 12.sp,
+                        fontSize = labelMaxFontSize,
+                        // Line height in em, so it follows the (auto-sized) font instead of the
+                        // system text size: this cell's budget is 72dp (bar) − 12dp (bar's own
+                        // vertical padding) − 12dp (this Column's vertical padding) = 48dp for
+                        // icon(24) + spacer(2) + label + spacer(3) + dot(4). An sp line height
+                        // grew past it at text size 1.5+ and squeezed the selected-tab dot away
+                        // (Plan 3 Task 7 review; before that, the inherited 22sp did the same).
+                        lineHeight = LABEL_LINE_HEIGHT,
                         fontWeight = if (selected) FontWeight.W700 else FontWeight.W500,
                     ),
-                // One line, shrunk to fit: at a 1.3 system text size the selected "Uppslagsverk"
-                // was wider than its fifth of the bar. Release 1.3.0 Plan 3 Task 7.
+                // One line, shrunk to fit the tab's width and the label's share of the column's
+                // height: at a 1.3 system text size the selected "Uppslagsverk" was wider than its
+                // fifth of the bar (Plan 3 Task 7, BottomNavLabelFitTest).
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                autoSize = TextAutoSize.StepBased(minFontSize = LABEL_MIN_FONT_SIZE, maxFontSize = LABEL_MAX_FONT_SIZE),
+                autoSize = TextAutoSize.StepBased(minFontSize = labelMinFontSize, maxFontSize = labelMaxFontSize),
+                modifier = Modifier.heightIn(max = LABEL_MAX_HEIGHT),
             )
             Spacer(Modifier.height(3.dp))
             // Reserve the dot's footprint on every tab (selected or not) so the row of
@@ -237,6 +260,7 @@ private fun TabCell(
                 modifier =
                     Modifier
                         .size(4.dp)
+                        .testTag(SELECTED_DOT_TAG)
                         .let { m -> if (selected) m.clip(CircleShape).background(AccentCopper) else m },
             )
         }
