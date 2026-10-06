@@ -15,7 +15,6 @@ import se.birdy.content.SpeciesId
 import se.birdy.content.SpeciesRepository
 import se.birdy.content.model.Species
 import se.birdy.domain.badge.BadgeSeason
-import se.birdy.domain.badge.seasonOf
 import se.birdy.domain.observation.Observation
 import se.birdy.domain.observation.ObservationRepository
 import se.birdy.domain.stats.YearSummary
@@ -23,9 +22,9 @@ import se.birdy.domain.stats.summarizeYear
 
 /**
  * Plan 6b3 T9: aggregates the user's observations for the current calendar year into what
- * [SeasonStatsScreen] draws. Release 1.3.0 Task 7c: finds per month, the best month and each
- * species' first find of the year come from the domain's [summarizeYear]; the season sums and the
- * top three species are computed here as before.
+ * [SeasonStatsScreen] draws. Release 1.3.0 Task 7c: finds per month, the season sums, the best
+ * month and each species' first find of the year come from the domain's [summarizeYear]; the top
+ * three species are computed here as before.
  *
  * Aggregation runs lazily via [onEnter]; the screen calls it once from a
  * LaunchedEffect, the ViewModel snapshots `observationRepo.observeAll().first()`
@@ -75,10 +74,10 @@ class SeasonStatsViewModel(
             }
         val seasons =
             SeasonStatsUiState.SeasonBreakdown(
-                winter = thisYear.count { seasonOf(it.capturedAt, zone) == BadgeSeason.WINTER },
-                spring = thisYear.count { seasonOf(it.capturedAt, zone) == BadgeSeason.SPRING },
-                summer = thisYear.count { seasonOf(it.capturedAt, zone) == BadgeSeason.SUMMER },
-                autumn = thisYear.count { seasonOf(it.capturedAt, zone) == BadgeSeason.AUTUMN },
+                winter = summary.findsIn(BadgeSeason.WINTER),
+                spring = summary.findsIn(BadgeSeason.SPRING),
+                summer = summary.findsIn(BadgeSeason.SUMMER),
+                autumn = summary.findsIn(BadgeSeason.AUTUMN),
             )
         val topSpecies =
             thisYear

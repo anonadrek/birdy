@@ -48,8 +48,10 @@ import kotlin.math.hypot
  * Colors: rust for every month, brass ONLY for [currentMonth] (seasons are named in the line under
  * the ring, never colored). A brass fill alone is ≈2.6:1 on paper, below WCAG 1.4.11's 3:1 for
  * graphics, so the current month's segment gets a [BrassText] edge (≥4.6:1). A month without
- * finds is a short hairline tick: lighter for months still to come. Only the best month and the
- * current month carry their count, because a ring compares months less exactly than bars.
+ * finds is a short hairline tick: lighter for months still to come. Only the best month (every
+ * month sharing the top count when they tie) and the current month carry their count, because a
+ * ring compares months less exactly than bars ([YearRingGeometry.labeledMonths]); a count sits on
+ * its segment or just past it, never across it ([YearRingGeometry.numberPlacement]).
  *
  * Text drawn on a canvas never reaches the semantics tree, so the whole ring carries one
  * [contentDescription] with every month's count in plain words (built by the caller from string
@@ -105,11 +107,9 @@ internal fun YearRing(
             val at = YearRingGeometry.pointAt(YearRingGeometry.centerAngle(index + 1), radii.letter, center)
             drawCentered(layout, at)
         }
-        listOfNotNull(bestMonth, currentMonth).distinct().forEach { month ->
-            val count = monthCounts.getOrNull(month - 1) ?: 0
-            if (count > 0) {
-                drawMonthCount(measurer, MonthCount(month, count, outers[month - 1], month == currentMonth), radii)
-            }
+        YearRingGeometry.labeledMonths(monthCounts, bestMonth, currentMonth).forEach { month ->
+            val count = monthCounts[month - 1]
+            drawMonthCount(measurer, MonthCount(month, count, outers[month - 1], month == currentMonth), radii)
         }
         drawCenterText(measurer, fonts, radii.inner, centerText)
     }
@@ -202,7 +202,7 @@ private fun DrawScope.drawMonthCount(
             maxOuter = radii.maxOuter,
             numberExtent = measurer.measure(text, tight(numberStyle)).extent(),
             paddingPx = NUMBER_PADDING.toPx(),
-        )
+        ) ?: return
     val color =
         when {
             placement.inside && month.isCurrent -> BrassInk
@@ -210,7 +210,8 @@ private fun DrawScope.drawMonthCount(
             month.isCurrent -> BrassText
             else -> AccentCopper
         }
-    val layout = measurer.measure(text, tight(numberStyle.copy(color = color)))
+    val style = numberStyle.copy(color = color, fontSize = numberStyle.fontSize * placement.scale)
+    val layout = measurer.measure(text, tight(style))
     drawCentered(layout, YearRingGeometry.pointAt(YearRingGeometry.centerAngle(month.month), placement.radius, center))
 }
 

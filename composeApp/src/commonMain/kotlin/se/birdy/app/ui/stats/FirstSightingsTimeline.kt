@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -52,6 +51,8 @@ private val CardPadding = 14.dp
 private val CardCorner = 16.dp
 private val PhotoSize = 42.dp
 private val RowPadding = 5.dp
+private val PhotoRing = 1.dp
+private val PhotoGap = 1.5.dp
 
 /**
  * "Nya arter i år" (release 1.3.0 Task 7c, design option B): this year's first find of each
@@ -150,12 +151,12 @@ private fun RingedPhoto(
                 .size(size)
                 .clip(CircleShape)
                 .background(Hairline)
-                .padding(1.dp)
+                .padding(PhotoRing)
                 .clip(CircleShape)
                 .background(CardPaper)
-                .padding(1.5.dp),
+                .padding(PhotoGap),
     ) {
-        StatsSpeciesPhoto(name = name, heroImagePath = heroImagePath, modifier = Modifier.fillMaxSize())
+        StatsSpeciesPhoto(name = name, heroImagePath = heroImagePath, size = size - (PhotoRing + PhotoGap) * 2)
     }
 }
 

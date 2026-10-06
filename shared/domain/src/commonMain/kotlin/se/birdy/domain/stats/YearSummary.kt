@@ -3,6 +3,8 @@ package se.birdy.domain.stats
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import se.birdy.domain.badge.BadgeSeason
+import se.birdy.domain.badge.seasonOfMonth
 import se.birdy.domain.observation.Observation
 
 private const val MONTHS_IN_YEAR = 12
@@ -41,6 +43,10 @@ data class YearSummary(
             if (top == 0 || findsPerMonth.count { it == top } > 1) return null
             return findsPerMonth.indexOf(top) + 1
         }
+
+    /** Finds in the months of [season] this year (meteorological: December counts toward this year's winter). */
+    fun findsIn(season: BadgeSeason): Int =
+        findsPerMonth.withIndex().filter { (index, _) -> seasonOfMonth(index + 1) == season }.sumOf { it.value }
 }
 
 /**

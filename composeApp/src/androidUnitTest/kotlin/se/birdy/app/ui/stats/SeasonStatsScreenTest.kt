@@ -144,7 +144,10 @@ class SeasonStatsScreenTest {
         compose
             .onNodeWithText("Inga fynd i år ännu. Spara ditt första så börjar årsringen fyllas.")
             .assertExists()
-        compose.onNodeWithContentDescription("0 fynd totalt", substring = true).assertExists()
+        // An empty year: the total and the current month, not twelve times "0 fynd".
+        compose
+            .onNodeWithContentDescription("Årsring för 2026 med fynd per månad, januari överst. 0 fynd totalt. oktober, pågår")
+            .assertExists()
         compose.onNodeWithText("oktober, pågår").assertExists()
         compose.onNodeWithText("MEST SEDDA").assertDoesNotExist()
     }

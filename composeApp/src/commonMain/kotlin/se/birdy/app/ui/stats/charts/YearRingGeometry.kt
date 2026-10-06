@@ -33,6 +33,9 @@ internal object YearRingGeometry {
     private const val MIN_CENTER_TEXT_SCALE = 0.4f
     private const val CENTER_TEXT_SCALE_STEP = 0.05f
 
+    /** Smallest a month count may shrink to on its segment before it is left to the description. */
+    private const val MIN_NUMBER_SCALE = 0.5f
+
     fun segmentStartAngle(month: Int): Float = (month - 1) * DEGREES_PER_MONTH + SEGMENT_GAP_DEGREES
 
     fun centerAngle(month: Int): Float = (month - 1) * DEGREES_PER_MONTH + DEGREES_PER_MONTH / 2
@@ -92,15 +95,22 @@ internal object YearRingGeometry {
     }
 
     data class NumberPlacement(
+        /** On the segment (drawn in the on-fill color) or just past its tip (drawn on paper). */
         val inside: Boolean,
         /** Distance of the number's center from the ring's center. */
         val radius: Float,
+        /** Below 1 when the number had to shrink to fit on its segment. */
+        val scale: Float = 1f,
     )
 
     /**
-     * Where a month's count goes: inside the segment near its tip when the segment is long enough
-     * to hold it, otherwise just past the tip, but never beyond the busiest month's reach (the
-     * month letters live out there).
+     * Where a month's count goes, so it never overlaps its own segment in the wrong color:
+     * 1. on the segment near its tip when the segment holds it at full size;
+     * 2. else just past the tip, when there is room before the busiest month's reach (the month
+     *    letters live beyond it);
+     * 3. else (a long segment at a large font, e.g. the busiest month itself) shrunk to fit in the
+     *    middle of the segment, down to [MIN_NUMBER_SCALE];
+     * 4. else null: the count is left to the ring's content description.
      */
     fun numberPlacement(
         inner: Float,
@@ -108,11 +118,39 @@ internal object YearRingGeometry {
         maxOuter: Float,
         numberExtent: Float,
         paddingPx: Float,
-    ): NumberPlacement {
-        val fitsInside = outer - inner >= 2 * (numberExtent + paddingPx)
-        if (fitsInside) return NumberPlacement(inside = true, radius = outer - paddingPx - numberExtent)
+    ): NumberPlacement? {
+        val length = outer - inner
         val justOutside = outer + paddingPx + numberExtent
-        return NumberPlacement(inside = false, radius = justOutside.coerceAtMost(maxOuter - numberExtent))
+        val shrunk = (length / 2 - paddingPx) / numberExtent
+        return when {
+            length >= 2 * (numberExtent + paddingPx) ->
+                NumberPlacement(inside = true, radius = outer - paddingPx - numberExtent)
+            justOutside + numberExtent <= maxOuter -> NumberPlacement(inside = false, radius = justOutside)
+            shrunk >= MIN_NUMBER_SCALE -> NumberPlacement(inside = true, radius = (inner + outer) / 2, scale = shrunk)
+            else -> null
+        }
+    }
+
+    /**
+     * Which months show their count on the ring: the best month (or, when months tie for the most
+     * finds, every month sharing the top count) and the current month, if they have finds.
+     */
+    fun labeledMonths(
+        monthCounts: List<Int>,
+        bestMonth: Int?,
+        currentMonth: Int?,
+    ): List<Int> {
+        val top = monthCounts.maxOrNull() ?: 0
+        val best =
+            when {
+                bestMonth != null -> listOf(bestMonth)
+                top > 0 -> monthCounts.indices.filter { monthCounts[it] == top }.map { it + 1 }
+                else -> emptyList()
+            }
+        return (best + listOfNotNull(currentMonth))
+            .distinct()
+            .filter { (monthCounts.getOrNull(it - 1) ?: 0) > 0 }
+            .sorted()
     }
 
     /**

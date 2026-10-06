@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -24,11 +23,9 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
@@ -102,16 +99,7 @@ internal fun TopSpeciesSeals(
 private fun sealNameSize(
     names: List<String>,
     maxWidth: Dp,
-): TextUnit? {
-    val measurer = rememberTextMeasurer()
-    val serif = rememberDmSerifDisplay()
-    val maxWidthPx = with(LocalDensity.current) { maxWidth.toPx() }
-    val words = names.flatMap { it.split(' ') }.filter { it.isNotEmpty() }
-    return SealNameSizes.firstOrNull { size ->
-        val style = TextStyle(fontFamily = serif, fontSize = size)
-        words.all { word -> measurer.measure(word, style, maxLines = 1, softWrap = false).size.width <= maxWidthPx }
-    }
-}
+): TextUnit? = wordFitFontSize(names, TextStyle(fontFamily = rememberDmSerifDisplay()), SealNameSizes, maxWidth)
 
 @Composable
 private fun SealColumn(
@@ -204,7 +192,7 @@ private fun PhotoSeal(
         StatsSpeciesPhoto(
             name = row.nameLocalized,
             heroImagePath = row.heroImagePath,
-            modifier = Modifier.fillMaxSize(),
+            size = size - (SealRing + SealGap) * 2,
         )
     }
 }

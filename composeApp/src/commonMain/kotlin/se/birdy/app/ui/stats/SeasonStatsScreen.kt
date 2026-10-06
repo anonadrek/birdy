@@ -345,7 +345,8 @@ private fun YearRingBlock(
 
 /**
  * The ring's text for TalkBack, everything it shows in plain words: "Årsring för 2026 med fynd per
- * månad, januari överst. 15 fynd totalt. 5 arter. januari: 1 fynd. … oktober, pågår: 2 fynd. …"
+ * månad, januari överst. 15 fynd totalt. 5 arter. januari: 1 fynd. … oktober, pågår: 2 fynd. …".
+ * An empty year stops after the total and the current month.
  */
 @Composable
 private fun ringDescription(
@@ -360,6 +361,8 @@ private fun ringDescription(
     parts += pluralStringResource(Res.plurals.stats_ring_total_description, total, total)
     if (speciesCount > 0) parts += pluralStringResource(Res.plurals.stats_ring_species, speciesCount, speciesCount)
     val currentLabel = currentMonth?.let { stringResource(Res.string.stats_current_month_legend, monthNames[it - 1]) }
+    // An empty year: the total and the current month say it all, not twelve times "0 fynd".
+    if (total == 0) return (parts + listOfNotNull(currentLabel)).joinToString(separator = ". ")
     monthCounts.forEachIndexed { index, count ->
         val name = if (index + 1 == currentMonth && currentLabel != null) currentLabel else monthNames[index]
         parts += pluralStringResource(Res.plurals.stats_label_finds_description, count, name, count)

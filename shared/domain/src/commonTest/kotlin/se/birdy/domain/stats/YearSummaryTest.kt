@@ -2,6 +2,7 @@ package se.birdy.domain.stats
 
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
+import se.birdy.domain.badge.BadgeSeason
 import se.birdy.domain.observation.Observation
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -191,11 +192,35 @@ class YearSummaryTest {
     }
 
     @Test
+    fun `season sums add up the months of each meteorological season`() {
+        val summary =
+            summarizeYear(
+                listOf(
+                    find("Q1", "2026-01-10T08:00:00Z"),
+                    find("Q1", "2026-02-10T08:00:00Z"),
+                    find("Q1", "2026-03-10T08:00:00Z"),
+                    find("Q1", "2026-06-10T08:00:00Z"),
+                    find("Q1", "2026-08-31T08:00:00Z"),
+                    find("Q1", "2026-11-30T08:00:00Z"),
+                    // December counts toward this year's winter, like January and February.
+                    find(null, "2026-12-24T08:00:00Z"),
+                ),
+                year = 2026,
+                zone = utc,
+            )
+        assertEquals(3, summary.findsIn(BadgeSeason.WINTER))
+        assertEquals(1, summary.findsIn(BadgeSeason.SPRING))
+        assertEquals(2, summary.findsIn(BadgeSeason.SUMMER))
+        assertEquals(1, summary.findsIn(BadgeSeason.AUTUMN))
+    }
+
+    @Test
     fun `an empty year has twelve empty months and nothing else`() {
         val summary = summarizeYear(emptyList(), year = 2026, zone = utc)
         assertEquals(List(12) { 0 }, summary.findsPerMonth)
         assertEquals(0, summary.totalFinds)
         assertTrue(summary.firstSightings.isEmpty())
         assertNull(summary.bestMonth)
+        assertEquals(0, summary.findsIn(BadgeSeason.WINTER))
     }
 }

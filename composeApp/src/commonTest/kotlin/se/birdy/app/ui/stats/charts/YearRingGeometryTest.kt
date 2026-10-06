@@ -4,6 +4,8 @@ import androidx.compose.ui.geometry.Offset
 import kotlin.math.abs
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 class YearRingGeometryTest {
@@ -76,28 +78,68 @@ class YearRingGeometryTest {
 
     @Test
     fun `a month number goes inside its segment when there is room`() {
-        val placement =
-            YearRingGeometry.numberPlacement(inner = 60f, outer = 120f, maxOuter = 120f, numberExtent = 10f, paddingPx = 4f)
+        val placement = numberAt(inner = 60f, outer = 120f, maxOuter = 120f, extent = 10f, padding = 4f)
         assertTrue(placement.inside)
         assertNear(106f, placement.radius)
+        assertEquals(1f, placement.scale)
         assertTrue(placement.radius - 10f >= 60f && placement.radius + 10f <= 120f)
     }
 
     @Test
     fun `a month number goes just outside a short segment`() {
-        val placement =
-            YearRingGeometry.numberPlacement(inner = 60f, outer = 70f, maxOuter = 120f, numberExtent = 10f, paddingPx = 4f)
+        val placement = numberAt(inner = 60f, outer = 70f, maxOuter = 120f, extent = 10f, padding = 4f)
         assertTrue(!placement.inside)
         assertNear(84f, placement.radius)
+        assertEquals(1f, placement.scale)
+        // Clear of its own segment and still inside the busiest month's reach.
+        assertTrue(placement.radius - 10f >= 70f)
+        assertTrue(placement.radius + 10f <= 120f)
     }
 
     @Test
-    fun `a number outside a segment never reaches past the busiest month`() {
-        val placement =
-            YearRingGeometry.numberPlacement(inner = 60f, outer = 75f, maxOuter = 90f, numberExtent = 10f, paddingPx = 4f)
-        assertTrue(!placement.inside)
-        assertNear(80f, placement.radius)
+    fun `a number with no room outside shrinks to fit on its segment`() {
+        // The busiest month at a large font: its segment reaches the guide circle, so there is no
+        // "outside" left, and the number at full size is too big for the segment.
+        val placement = numberAt(inner = 60f, outer = 80f, maxOuter = 80f, extent = 12f, padding = 3f)
+        assertTrue(placement.inside)
+        assertNear(70f, placement.radius)
+        assertTrue(placement.scale < 1f)
+        val scaledExtent = 12f * placement.scale
+        assertTrue(placement.radius - scaledExtent >= 60f + 3f - 0.01f)
+        assertTrue(placement.radius + scaledExtent <= 80f - 3f + 0.01f)
     }
+
+    @Test
+    fun `a number that fits nowhere is left out of the drawing`() {
+        assertNull(YearRingGeometry.numberPlacement(inner = 60f, outer = 66f, maxOuter = 70f, numberExtent = 10f, paddingPx = 3f))
+    }
+
+    @Test
+    fun `the best month and the current month carry their counts`() {
+        val counts = listOf(1, 1, 2, 1, 4, 2, 1, 1, 0, 2, 0, 0)
+        assertEquals(listOf(5, 10), YearRingGeometry.labeledMonths(counts, bestMonth = 5, currentMonth = 10))
+    }
+
+    @Test
+    fun `when months tie for the most finds every one of them carries its count`() {
+        val counts = listOf(2, 0, 1, 0, 2, 0, 0, 0, 2, 1, 0, 0)
+        assertEquals(listOf(1, 5, 9, 10), YearRingGeometry.labeledMonths(counts, bestMonth = null, currentMonth = 10))
+    }
+
+    @Test
+    fun `a month without finds carries no count`() {
+        assertEquals(emptyList(), YearRingGeometry.labeledMonths(List(12) { 0 }, bestMonth = null, currentMonth = 10))
+        assertEquals(listOf(3), YearRingGeometry.labeledMonths(listOf(0, 0, 1) + List(9) { 0 }, bestMonth = 3, currentMonth = 10))
+    }
+
+    private fun numberAt(
+        inner: Float,
+        outer: Float,
+        maxOuter: Float,
+        extent: Float,
+        padding: Float,
+    ): YearRingGeometry.NumberPlacement =
+        assertNotNull(YearRingGeometry.numberPlacement(inner, outer, maxOuter, numberExtent = extent, paddingPx = padding))
 
     @Test
     fun `the center text keeps its size when it fits`() {
