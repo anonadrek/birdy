@@ -5,7 +5,7 @@ in the exception sheet at all (Task 16)."""
 from __future__ import annotations
 
 import asyncio
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -13,14 +13,13 @@ from typing import Any
 from ..cache import Cache
 from ..cost import CostTracker, MaxCostExceeded
 from .audio_check import AudioCheckFailed, AudioVerdict, audio_verdict, classify_clip
+from .defaults import EFFORTS, FACTS_EFFORT, FACTS_MODEL_KEY
 from .facts import apply_facts
-from .facts_step import DEFAULT_EFFORT as FACTS_DEFAULT_EFFORT
-from .facts_step import DEFAULT_MODEL_KEY as FACTS_DEFAULT_MODEL_KEY
 from .facts_step import PROMPT_VERSION as FACTS_PROMPT_VERSION
 from .facts_step import FactExtractor, facts_generated
 from .llm import MODELS, AnthropicJsonClient, JsonModelClient
 from .paths import WebPaths
-from .record import Record, facts_hash, load_record, record_path, save_record
+from .record import Record, audio_id, facts_hash, load_record, record_path, save_record
 from .report import StepOutcome, render_step_report, write_step_report
 from .source import SpeciesSource, load_approved, load_scientific_index
 from .sources_step import ArticleSource
@@ -35,6 +34,14 @@ from .verify import (
 from .wiki_full import FullWikiClient
 
 PROMPT_VERSION = "verify-v1"
+# A short tracked clip the audio model is run on once before any species (follow-up 3, wave
+# A review): it proves ffmpeg, uv and TensorFlow work, and does the first `uv sync`.
+PREFLIGHT_CLIP = Path("fixtures") / "chirp_3s_48k.wav"
+
+
+class AudioPreflightFailed(RuntimeError):  # noqa: N818
+    """The audio model cannot run at all, so the whole run stops before any paid call
+    and before anything is written."""
 
 
 @dataclass(frozen=True)
@@ -45,10 +52,65 @@ class VerifyOptions:
     max_cost: float | None = None
     force: bool = False
     workers: int = 4
-    # The V1 retry writes a new fact sheet: same model and effort as `web facts` (Minor 3,
-    # final review 2026-10-06). Change both together if R3 picks something else.
-    facts_model_key: str = FACTS_DEFAULT_MODEL_KEY
-    facts_effort: str = FACTS_DEFAULT_EFFORT
+    # The V1 retry writes a new fact sheet. None (the default) means the record's own
+    # `generated.facts` model and effort, else defaults.FACTS_* (Minor 3 + follow-up 7);
+    # a value overrides it for every species.
+    facts_model_key: str | None = None
+    facts_effort: str | None = None
+
+
+def retry_settings(record: Record, options: VerifyOptions) -> tuple[str, str]:
+    """(model key, effort) for this species' V1 retry."""
+    generated = record.get("generated", {}).get("facts") or {}
+    by_id = {model_id: key for key, model_id in MODELS.items()}
+    own_model = by_id.get(str(generated.get("model")), FACTS_MODEL_KEY)
+    model_key = options.facts_model_key or own_model
+    own_effort = generated.get("effort")
+    effort = options.facts_effort or (own_effort if own_effort in EFFORTS else FACTS_EFFORT)
+    return model_key, effort
+
+
+def _skip(record: Record | None, options: VerifyOptions) -> tuple[str, str] | None:
+    """(status, reason) for a species that does not run; the preflight asks the same."""
+    if record is None or not record.get("facts"):
+        return "failed", "faktabladet saknas: kör web facts först"
+    if record.get("status") == "failed":
+        return "skipped", "faktabladet är failed: ingenting att kontrollera"
+    if _current(record) and not options.force:
+        return "skipped", "redan kontrollerat ur samma faktablad"
+    if record.get("publish"):
+        # N5 (review fix 2026-10-06): the V1-retry path below (and --force) would
+        # otherwise null the text and set status pending while publish stays true,
+        # breaking the fas 2 build.
+        return "failed", "publicerad: sätt publish: false först"
+    return None
+
+
+def _audio_kept(record: Record) -> bool:
+    """Albin kept this exact recording on an earlier V4 flag (follow-up 2)."""
+    audio = record.get("audio")
+    if not audio:
+        return False
+    return bool(record.get("review", {}).get("audioKept") == audio_id(audio))
+
+
+def _needs_audio_model(record: Record) -> bool:
+    """A species the sound model does not cover gets a flag whatever the model says, and a
+    kept recording is not checked again: neither needs the model (follow-up 3)."""
+    return (
+        bool(record.get("audio"))
+        and bool(record.get("identifiable", {}).get("sound"))
+        and not _audio_kept(record)
+    )
+
+
+async def _preflight_audio_model(paths: WebPaths) -> None:
+    try:
+        await asyncio.to_thread(classify_clip, paths.flexref / PREFLIGHT_CLIP, paths.flexref)
+    except AudioCheckFailed as exc:
+        raise AudioPreflightFailed(
+            f"Ljudmodellen kunde inte köras: {exc}; inga anrop gjordes"
+        ) from exc
 
 
 def species_about(source: SpeciesSource) -> str:
@@ -72,6 +134,11 @@ async def run_verify(
     now = now or datetime.now(UTC)
     cache = Cache(paths.pipeline_root / ".cache")
     sources = load_approved(paths.species_root, options.qids)
+    records = [load_record(record_path(paths.data_out, s.qid)) for s in sources]
+    if any(r is not None and _skip(r, options) is None and _needs_audio_model(r) for r in records):
+        # Before the client exists and before anything is written (follow-up 3): a broken
+        # audio setup stops the run at $0 instead of flagging every species.
+        await _preflight_audio_model(paths)
     wiki = wiki or FullWikiClient(cache=cache)
     owned = client is None
     model_client: JsonModelClient = client or AnthropicJsonClient()
@@ -89,8 +156,6 @@ async def run_verify(
         client=model_client,
         prompt_path=paths.prompt_file(FACTS_PROMPT_VERSION),
         scientific_index=load_scientific_index(paths.species_root),
-        model_key=options.facts_model_key,
-        effort=options.facts_effort,
     )
     stop = asyncio.Event()
     semaphore = asyncio.Semaphore(options.workers)
@@ -111,7 +176,12 @@ async def run_verify(
         cost_usd=cost.total_usd,
         model_line=(
             f"Kontroll: `{MODELS[options.model_key]}`. Omförsök av faktabladet: "
-            f"`{MODELS[options.facts_model_key]}` (effort: {options.facts_effort})."
+            + (
+                f"`{MODELS[options.facts_model_key]}`"
+                if options.facts_model_key
+                else "faktabladets egen modell"
+            )
+            + f" (effort: {options.facts_effort or 'faktabladets egen'})."
         ),
     )
     write_step_report(paths.reports, "verify", now, report)
@@ -123,18 +193,21 @@ async def _audio_check(
 ) -> AudioVerdict | str | None:
     """V4, run before the paid V1 call (I4, final review 2026-10-06) so an audio problem
     never wastes V1 work, and in a thread so the subprocess does not block the other
-    workers. None without a recording, the verdict, or the reason the model could not run.
+    workers. None without a recording or for one Albin kept, the verdict, or the reason the
+    model could not run.
     Only the verdict is computed here; the record is changed after V1, as before."""
-    if not record.get("audio"):
+    if not record.get("audio") or _audio_kept(record):
         return None
-    identifiable = bool(record.get("identifiable", {}).get("sound"))
+    if not record.get("identifiable", {}).get("sound"):
+        # Not covered: the verdict is a flag whatever the model says (follow-up 3).
+        return audio_verdict(None, source.qid, identifiable_sound=False)
     try:
         result = await asyncio.to_thread(
             classify_clip, paths.images_out / source.qid / "voice.mp3", paths.flexref
         )
     except AudioCheckFailed as exc:
         return str(exc)
-    return audio_verdict(result, source.qid, identifiable_sound=identifiable)
+    return audio_verdict(result, source.qid, identifiable_sound=True)
 
 
 def _apply_audio(
@@ -204,17 +277,10 @@ async def _one(
     path = record_path(paths.data_out, source.qid)
     try:
         record = load_record(path)
-        if record is None or not record.get("facts"):
-            return out("failed", ["faktabladet saknas: kör web facts först"])
-        if record.get("status") == "failed":
-            return out("skipped", ["faktabladet är failed: ingenting att kontrollera"])
-        if _current(record) and not options.force:
-            return out("skipped", ["redan kontrollerat ur samma faktablad"])
-        if record.get("publish"):
-            # N5 (review fix 2026-10-06): the V1-retry path below (and --force) would
-            # otherwise null the text and set status pending while publish stays true,
-            # breaking the fas 2 build.
-            return out("failed", ["publicerad: sätt publish: false först"])
+        skip = _skip(record, options)
+        if skip is not None:
+            return out(skip[0], [skip[1]])
+        assert record is not None  # _skip gives a reason for a missing record
         if stop.is_set():
             return out("skipped", ["kostnadstaket nåddes: körs vid nästa körning"])
         articles = await wiki.articles(source.qid)
@@ -235,6 +301,8 @@ async def _one(
         status_flag = status_strike_flag(verdicts)
         missing = missing_required_topics(kept)
         if missing and strike_notes:
+            model_key, effort = retry_settings(record, options)
+            extractor = replace(extractor, model_key=model_key, effort=effort)
             try:
                 check, _, _ = await extractor.extract(
                     source, articles, extra_feedback=_retry_feedback(strike_notes, missing)

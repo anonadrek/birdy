@@ -17,6 +17,7 @@ from typing import Literal
 CONFIDENCE_THRESHOLD = 0.10
 FFMPEG_TIMEOUT = 120  # seconds; MP3 to WAV conversion should complete quickly
 CLASSIFY_TIMEOUT = 900  # seconds; first run may install TensorFlow via uv sync
+STDERR_TAIL = 500
 ToWavFn = Callable[[Path, Path], None]
 RunFn = Callable[..., "CompletedProcess[str]"]
 
@@ -150,5 +151,8 @@ def classify_clip(
         except OSError as e:  # uv missing or not runnable
             raise AudioCheckFailed(f"ljudmodellen kunde inte startas ({e})") from e
     if completed.returncode != 0:
-        raise AudioCheckFailed(completed.stderr.strip() or "ljudmodellen gav inget svar")
+        # The end of a TensorFlow traceback is the actual error; the flag message keeps the
+        # last 500 characters, like convert_to_mp3 does (follow-up 4, wave A review).
+        tail = (completed.stderr or "").strip()[-STDERR_TAIL:].strip()
+        raise AudioCheckFailed(tail or "ljudmodellen gav inget svar")
     return AudioCheckResult(windows=_windows(completed.stdout))

@@ -10,6 +10,7 @@ import pytest
 
 from birdy_fetcher.web.record import (
     Record,
+    audio_id,
     facts_hash,
     load_record,
     new_record,
@@ -688,3 +689,27 @@ def test_a_semicolon_separated_export_is_a_clear_import_error(tmp_path: Path) ->
     sheet.write_text(buffer.getvalue(), encoding="utf-8")
     with pytest.raises(ReviewImportError, match="semikolon"):
         import_wave(paths, sheet, date="2026-11-20")
+
+
+def test_keeping_a_v4_flag_remembers_that_recording() -> None:
+    """Follow-up 2 (wave A review): a forced re-verify must not bring back a V4 flag Albin
+    already kept; the decision is stored against this exact recording."""
+    record = _record()
+    record["flags"] = [{"check": "V4", "factId": None, "message": "ljudmodellen täcker inte arten"}]
+    rows = _flag_decisions(flag_rows(record), **{"": KEEP})
+    apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert record["review"]["audioKept"] == audio_id(record["audio"])
+    assert record["verification"] is not None
+
+
+def test_a_status_set_with_andra_is_rechecked_even_after_an_older_confirmation() -> None:
+    """`status_flags` now honours `statusConfirmed`; a confirmation of an earlier status
+    must not wave through a new one Albin just set (it has never been checked)."""
+    record = _v1_flagged()
+    record["review"]["statusConfirmed"] = True
+    record["data"] = {"months": [0, *([50] * 11)], "totalReports": 1000}
+    rows = _decide_flag(flag_rows(record), s01=(CHANGE, "Stannfågel"))
+    apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert "statusConfirmed" not in record["review"]
+    assert [f["check"] for f in record["flags"]] == ["V3"]
+    assert "verification" not in record

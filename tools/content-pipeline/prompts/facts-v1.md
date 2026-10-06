@@ -10,7 +10,7 @@ Rules:
 - Topics: appearance (plumage, bill, legs, shape), sex_age (differences between male, female and young birds), size (length, wingspan or weight with the numbers), voice (song and calls described so people can recognise them), habitat, sweden (occurrence, numbers, migration and time of year in Sweden or the Nordic countries), breeding, food, behaviour, lookalike (another species it can be confused with and what tells them apart).
 - For lookalike, set other_scientific to the scientific name of the other species exactly as an article gives it. Only use lookalike when an article names the other species. For every other topic, set other_scientific to null.
 - Give 10 to 30 facts, at least one each about appearance, voice and habitat. Prefer facts that help someone recognise the bird in Sweden.
-- sweden_status: exactly one of resident, breeding_migrant, passage, winter_visitor, rare_visitor or absent, with a quote that supports it. Use resident only when an article says the bird stays in Sweden or the Nordic countries all year. If the articles do not support a status for Sweden, set sweden_status to null.
+- sweden_status: exactly one of resident, breeding_migrant, passage, winter_visitor, rare_visitor or absent, with a quote that supports it. The quote must be about Sweden or a region that includes it: the Nordic countries, Scandinavia or Fennoscandia (Norden, Skandinavien, Fennoskandien); prefer a quote from the Swedish article. Use resident only when an article says the bird stays there all year. If the articles do not support a status for Sweden, set sweden_status to null.
 
 User: Species: {name_sv} (Swedish), {name_en} (English), scientific name {scientific_name}. Family: {family_sv} ({family}).
 

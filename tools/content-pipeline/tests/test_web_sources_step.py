@@ -12,9 +12,9 @@ from pathlib import Path
 
 import pytest
 
-from birdy_fetcher.web.audio import AudioCandidate
+from birdy_fetcher.web.audio import AudioCandidate, audio_record
 from birdy_fetcher.web.datamod import Counts
-from birdy_fetcher.web.record import load_record, new_record, record_path, save_record
+from birdy_fetcher.web.record import audio_id, load_record, new_record, record_path, save_record
 from birdy_fetcher.web.sources_step import (
     SlugCollisionError,
     SourceClients,
@@ -234,3 +234,55 @@ async def test_slug_collision_stops_before_any_request(tmp_path: Path) -> None:
     paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit"), ("Q2", "Talgoxe", "Tit")])
     with pytest.raises(SlugCollisionError):
         await run_sources(paths, SourcesOptions(), clients=_clients(), now=NOW)
+
+
+async def test_a_forced_rerun_refuses_a_published_species(tmp_path: Path) -> None:
+    """Follow-up 6 (wave A review): new sources under a live page would publish quotes,
+    data and a recording nothing has checked; unpublish first, like facts and verify."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    seeded = new_record("Q1")
+    seeded["facts"] = [{"id": "f01"}]
+    seeded["publish"] = True
+    path = record_path(paths.data_out, "Q1")
+    save_record(path, seeded)
+    before = path.read_bytes()
+    audio = FakeAudio()
+    outcomes = await run_sources(
+        paths, SourcesOptions(force=True), clients=_clients(audio), now=NOW
+    )
+    assert [o.status for o in outcomes] == ["failed"]
+    assert outcomes[0].errors == ["publicerad: sätt publish: false först"]
+    assert path.read_bytes() == before
+    assert audio.asked == []
+
+
+async def test_a_forced_rerun_drops_the_verification_of_the_old_sources(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    seeded = new_record("Q1")
+    seeded["facts"] = [{"id": "f01"}]
+    seeded["verification"] = {"method": "auto", "at": "2026-11-01", "model": "x"}
+    seeded["generated"] = {"facts": {"model": "m"}, "verify": {"factsHash": "abc"}}
+    save_record(record_path(paths.data_out, "Q1"), seeded)
+    await run_sources(paths, SourcesOptions(force=True), clients=_clients(), now=NOW)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert "verification" not in record
+    assert record["generated"] == {"facts": {"model": "m"}}
+
+
+async def test_a_forced_rerun_keeps_a_kept_recording_only_if_it_is_the_same(
+    tmp_path: Path,
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit"), ("Q2", "Gök", "Cuckoo")])
+    same = audio_record(RECORDING, "Q1")
+    for qid, kept in (("Q1", audio_id(same)), ("Q2", "an-older-recording")):
+        seeded = new_record(qid)
+        seeded["facts"] = [{"id": "f01"}]
+        seeded["review"] = {"audioKept": kept}
+        save_record(record_path(paths.data_out, qid), seeded)
+    await run_sources(paths, SourcesOptions(force=True), clients=_clients(), now=NOW)
+    q1 = load_record(record_path(paths.data_out, "Q1"))
+    q2 = load_record(record_path(paths.data_out, "Q2"))
+    assert q1 is not None and q2 is not None
+    assert q1["review"]["audioKept"] == audio_id(same)
+    assert "audioKept" not in q2["review"]

@@ -9039,7 +9039,7 @@ git push
 - [ ] `uv run birdy-fetcher web verify --species Q25485 --species Q25383 --species Q25386 --species Q10546857 --max-cost 5`
 - [ ] `uv run birdy-fetcher web write --species Q25485 --species Q25383 --species Q25386 --species Q10546857 --allow-unreviewed --max-cost 5`
 - [ ] Läs rapporterna `reports/web-facts-*.md`, `reports/web-verify-*.md` och `reports/web-text-*.md`. Räkna ut kostnad per art för faktablad, V1-kontrollen och text. Visa Albin i chatten: talgoxens faktablad (fakta med citat), vilka fakta V1 strök och varför, talgoxens text på svenska och engelska, borttagna meningar och kostnaden per art omräknad till 180 arter.
-- [ ] **Albin väljer** modell och tankenivå för faktablad, V1-kontrollen, text och textkontrollen (standard: Opus 5 `high` för faktablad och text, Sonnet 5 för V1 och textkontrollen). Ändras något: ändra standardvärdena i `cli.py` och prompterna innan R4, och kör om provkörningen. Faktabladets val gäller också V1-omförsöket i `web verify` (tillägg 2026-10-06, slutgranskningen Minor 3): ändra då både `web facts --model/--effort` och `web verify --facts-model/--facts-effort` i `cli.py` och `DEFAULT_MODEL_KEY`/`DEFAULT_EFFORT` i `facts_step.py`.
+- [ ] **Albin väljer** modell och tankenivå för faktablad, V1-kontrollen, text och textkontrollen (standard: Opus 5 `high` för faktablad och text, Sonnet 5 för V1 och textkontrollen). Ändras något: ändra standardvärdena i `cli.py` och prompterna innan R4, och kör om provkörningen. Faktabladets val gäller också V1-omförsöket i `web verify` (tillägg 2026-10-06, slutgranskningen Minor 3 och uppföljning 7): omförsöket använder artens egen `generated.facts`-modell och effort, annars `FACTS_MODEL_KEY`/`FACTS_EFFORT` i `src/birdy_fetcher/web/defaults.py`, som också är standard för `web facts --model/--effort`. Ändra alltså bara konstanterna där; `web verify --facts-model/--facts-effort` behövs bara för att tvinga fram något annat.
 - [ ] Commit och push (texterna från provkörningen är märkta `unreviewed` och kan aldrig publiceras).
 
 ### R4: Faktablad för alla 180 (cirka 75 USD)
@@ -9052,7 +9052,7 @@ git push
 
 Ny körtask 2026-10-05: ersätter Albins manuella faktabladsgranskning. Ingen Albin-tid här, bara agenten.
 
-- [ ] Kontrollera att `classify_clip.py` fungerar mot en riktig inspelning: `uv run --project tools/ml-eval/flexref python classify_clip.py <sökväg till en 20 s-inspelning från R2>` och läs av att JSON-svaret har flera fönster med rimliga värden.
+- [ ] Kontrollera att `classify_clip.py` fungerar mot en riktig inspelning: `uv run --project tools/ml-eval/flexref python classify_clip.py <sökväg till en 20 s-inspelning från R2>` och läs av att JSON-svaret har flera fönster med rimliga värden. (Tillägg 2026-10-06: `web verify` kör dessutom själv ljudmodellen en gång på `tools/ml-eval/flexref/fixtures/chirp_3s_48k.wav` innan första arten och avbryter hela körningen utan anrop och utan att skriva något om modellen inte går att köra.)
 - [ ] `uv run birdy-fetcher web verify --max-cost 25`
 - [ ] Läs rapporten `reports/web-verify-*.md`. Räkna flaggor per kontroll (V2, V3, V4) och arter med `failed` (saknar fortfarande ett obligatoriskt ämne efter V1-omförsöket). Kör om misslyckade arter en gång med `--regenerate --max-cost 5 --species ...` i `web facts` först, sedan `web verify --force --max-cost 5 --species ...`.
 - [ ] Commit och push.

@@ -70,10 +70,10 @@ def test_web_facts_requires_an_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
 def test_web_verify_passes_the_facts_settings_for_the_v1_retry(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """Minor 3 (final review 2026-10-06): the V1 retry writes a fact sheet with the model and
-    effort chosen for `web facts`; both commands default to the same values."""
+    """Minor 3 + follow-up 7 (final review 2026-10-06): explicit --facts-model/--facts-effort
+    reach the retry; without them the options are None, which means "the record's own
+    generated.facts, else the facts defaults" (resolved per species in verify_step)."""
     from birdy_fetcher.web import verify_step
-    from birdy_fetcher.web.facts_step import FactsOptions
     from birdy_fetcher.web.verify_step import VerifyOptions
 
     seen: list[VerifyOptions] = []
@@ -90,11 +90,44 @@ def test_web_verify_passes_the_facts_settings_for_the_v1_retry(
     assert (seen[0].facts_model_key, seen[0].facts_effort) == ("sonnet", "low")
     result = CliRunner().invoke(main, base)
     assert result.exit_code == 0, result.output
+    assert (seen[1].facts_model_key, seen[1].facts_effort) == (None, None)
+
+
+def test_web_facts_defaults_are_the_shared_constants(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Follow-up 7: the CLI default and FactsOptions' default are one constant."""
+    from birdy_fetcher.web import facts_step
+    from birdy_fetcher.web.facts_step import FactsOptions
+
+    seen: list[FactsOptions] = []
+
+    async def fake_run_facts(paths: object, options: FactsOptions) -> list[object]:
+        seen.append(options)
+        return []
+
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key-not-used")
+    monkeypatch.setattr(facts_step, "run_facts", fake_run_facts)
+    result = CliRunner().invoke(main, ["web", "facts", "--species", "Q1", "--max-cost", "1"])
+    assert result.exit_code == 0, result.output
     defaults = FactsOptions()
-    assert (seen[1].facts_model_key, seen[1].facts_effort) == (
-        defaults.model_key,
-        defaults.effort,
-    )
+    assert (seen[0].model_key, seen[0].effort) == (defaults.model_key, defaults.effort)
+
+
+def test_web_verify_reports_a_failed_audio_preflight_without_a_traceback(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Follow-up 3: the whole run stops when the audio model cannot run at all."""
+    from birdy_fetcher.web import verify_step
+    from birdy_fetcher.web.verify_step import AudioPreflightFailed, VerifyOptions
+
+    async def fake_run_verify(paths: object, options: VerifyOptions) -> list[object]:
+        raise AudioPreflightFailed("Ljudmodellen kunde inte köras: uv saknas; inga anrop gjordes")
+
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key-not-used")
+    monkeypatch.setattr(verify_step, "run_verify", fake_run_verify)
+    result = CliRunner().invoke(main, ["web", "verify", "--species", "Q1", "--max-cost", "1"])
+    assert result.exit_code == 1
+    assert "inga anrop gjordes" in result.output
+    assert "Traceback" not in result.output
 
 
 def test_web_import_rejects_a_malformed_date(tmp_path: Path) -> None:

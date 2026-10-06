@@ -14,6 +14,7 @@ from anthropic.types import MessageParam
 from ..cache import Cache
 from ..claude_summarizer import _split_prompt
 from ..cost import CostTracker, MaxCostExceeded
+from .defaults import FACTS_EFFORT, FACTS_MODEL_KEY
 from .facts import FactCheck, FactSheetOutput, apply_facts, check_fact_sheet
 from .llm import MODELS, AnthropicJsonClient, JsonModelClient, record_cost
 from .paths import WebPaths
@@ -25,10 +26,6 @@ from .wiki_full import FullWikiClient, WikiArticle
 
 PROMPT_VERSION = "facts-v1"
 ATTEMPTS = 2
-# The fact sheet's model and effort (R3 chooses them). `web verify`'s V1 retry writes a fact
-# sheet too and defaults to the same values (Minor 3, final review 2026-10-06).
-DEFAULT_MODEL_KEY = "opus"
-DEFAULT_EFFORT = "high"
 
 
 class FactsFailed(RuntimeError):  # noqa: N818
@@ -79,8 +76,8 @@ class FactExtractor:
     client: JsonModelClient
     prompt_path: Path
     scientific_index: dict[str, str]
-    model_key: str = DEFAULT_MODEL_KEY
-    effort: str = DEFAULT_EFFORT
+    model_key: str = FACTS_MODEL_KEY
+    effort: str = FACTS_EFFORT
     regenerate: bool = False
 
     def _cache_name(
@@ -175,8 +172,8 @@ def facts_generated(extractor: FactExtractor, now: datetime) -> dict[str, str]:
 @dataclass(frozen=True)
 class FactsOptions:
     qids: tuple[str, ...] = ()
-    model_key: str = DEFAULT_MODEL_KEY
-    effort: str = DEFAULT_EFFORT
+    model_key: str = FACTS_MODEL_KEY
+    effort: str = FACTS_EFFORT
     max_cost: float | None = None
     force: bool = False
     regenerate: bool = False

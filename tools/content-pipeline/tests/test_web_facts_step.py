@@ -222,3 +222,15 @@ def test_the_facts_prompt_describes_the_automatic_verification() -> None:
     )
     assert "person reviews every fact" not in template
     assert "checks every fact against its quote" in template
+
+
+def test_the_facts_prompt_prefers_a_status_quote_about_sweden_or_the_nordics() -> None:
+    """Follow-up 5 (wave A review): the extractor's status rule matches V1's, so a quote
+    V1 will accept is the one it picks."""
+    template = (Path(__file__).resolve().parents[1] / "prompts/facts-v1.md").read_text(
+        encoding="utf-8"
+    )
+    line = next(x for x in template.splitlines() if x.startswith("- sweden_status:"))
+    for place in ("Sweden", "Scandinavia", "Fennoscandia", "Nordic"):
+        assert place in line
+    assert "Swedish article" in line

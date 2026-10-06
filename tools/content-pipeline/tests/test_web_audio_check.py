@@ -204,3 +204,21 @@ def test_a_missing_program_raises_audio_check_failed(tmp_path: Path) -> None:
         classify_clip(
             tmp_path / "voice.mp3", tmp_path / "flexref", to_wav=missing_ffmpeg, run=fake_run
         )
+
+
+def test_a_long_error_from_the_model_is_cut_to_its_end(tmp_path: Path) -> None:
+    """Follow-up 4: a TensorFlow traceback is thousands of characters; the flag message
+    keeps the last ~500, where the actual error is."""
+
+    def fake_run(cmd: list[str], **kwargs: object) -> CompletedProcess[str]:
+        return _completed(returncode=1, stderr="x" * 3000 + "ValueError: the real error")
+
+    def fake_to_wav(mp3_path: Path, wav_path: Path) -> None:
+        wav_path.write_bytes(b"x")
+
+    with pytest.raises(AudioCheckFailed) as info:
+        classify_clip(
+            tmp_path / "voice.mp3", tmp_path / "flexref", to_wav=fake_to_wav, run=fake_run
+        )
+    assert len(str(info.value)) <= 500
+    assert str(info.value).endswith("ValueError: the real error")

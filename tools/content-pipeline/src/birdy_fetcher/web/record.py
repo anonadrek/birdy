@@ -112,6 +112,13 @@ def is_reviewed(record: Record) -> bool:
     return bool(record.get("verification"))
 
 
+def audio_id(audio: dict[str, Any]) -> str:
+    """Identifies one recording (its whole `audio` object: source page, author, length), so
+    a decision about it (`review.audioKept`) never carries over to a different one."""
+    payload = json.dumps(audio, ensure_ascii=False, sort_keys=True)
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:16]
+
+
 def facts_hash(record: Record) -> str:
     payload = json.dumps(record.get("facts", []), ensure_ascii=False, sort_keys=True)
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:16]

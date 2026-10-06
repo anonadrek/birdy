@@ -20,6 +20,7 @@ from .images import ImageOut, prepare_images
 from .paths import WebPaths
 from .record import (
     Record,
+    audio_id,
     image_dict,
     is_reviewed,
     load_record,
@@ -201,6 +202,18 @@ def _frozen(record: Record) -> bool:
     return bool(record.get("facts")) or is_reviewed(record)
 
 
+def _forget_checks_of_old_sources(record: Record) -> None:
+    """After `--force` the facts sit on new sources nothing has checked: the species
+    must go through `web verify` again (follow-up 6, wave A review). Albin's `behåll` on a
+    recording only stands while it is the same recording."""
+    record.pop("verification", None)
+    record.get("generated", {}).pop("verify", None)
+    review = record.get("review", {})
+    audio = record.get("audio")
+    if "audioKept" in review and (not audio or review["audioKept"] != audio_id(audio)):
+        review.pop("audioKept")
+
+
 async def run_sources(
     paths: WebPaths,
     options: SourcesOptions,
@@ -230,12 +243,22 @@ async def run_sources(
             path = record_path(paths.data_out, source.qid)
             try:
                 existing = load_record(path)
-                if existing and _frozen(existing) and not options.force:
+                forced = bool(existing and _frozen(existing))
+                if forced and not options.force:
                     return StepOutcome(
                         source.qid,
                         source.name_sv,
                         "skipped",
                         ["faktabladet finns: källorna hämtas inte om utan --force"],
+                    )
+                if forced and existing is not None and existing.get("publish"):
+                    # Follow-up 6 (wave A review): new sources under a live page would publish
+                    # quotes, data and a recording nothing has checked; like facts/verify.
+                    return StepOutcome(
+                        source.qid,
+                        source.name_sv,
+                        "failed",
+                        ["publicerad: sätt publish: false först"],
                     )
                 skip_audio = bool(existing and existing.get("review", {}).get("audioStruck"))
                 collected, notes = await _collect(source, ctx, skip_audio=skip_audio)
@@ -247,6 +270,8 @@ async def run_sources(
                     record["data"]["statusSignal"] = {
                         "contradicts": record_status_contradiction(record)
                     }
+                if forced:
+                    _forget_checks_of_old_sources(record)
                 save_record(path, record)
                 return StepOutcome(source.qid, source.name_sv, "ok", notes=notes)
             except Exception as exc:  # one species' error must not stop the run

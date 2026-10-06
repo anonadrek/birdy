@@ -175,7 +175,9 @@ def number_flag(
     """None when the fact's own numbers agree with at least one measurement of the same kind
     (length/wingspan/weight/clutch size) in another cached article, or when no other article
     states that kind at all — that article then gives no evidence either way (spec V2)."""
-    if fact["topic"] == "data":
+    if fact["topic"] == "data" or fact.get("edited"):
+        # An edited fact is Albin's own text (web import); its quote predates the edit
+        # (follow-up 1, wave A review).
         return None
     own_article = fact["sources"][0]["article"] if fact.get("sources") else None
     own_all = extract_measurements(fact["sv"])
@@ -221,9 +223,12 @@ def redlist_occurrence_flag(status_value: str, red_list: str | None) -> str | No
 
 def status_flags(record: Record) -> list[dict[str, Any]]:
     """V3: the existing status-vs-Artportalen contradiction (spec 9.2) and the red list
-    check above, both about the status fact s01."""
+    check above, both about the status fact s01. None once Albin kept the status on a V3
+    flag (`review.statusConfirmed`): a forced re-verify after the import must not ask him
+    again (follow-up 2, wave A review). `apply_facts` clears the confirmation whenever the
+    facts change, and a status he sets with `ändra` clears it too (review_sheet)."""
     status_fact = next((f for f in record.get("facts", []) if f.get("id") == "s01"), None)
-    if status_fact is None:
+    if status_fact is None or record.get("review", {}).get("statusConfirmed"):
         return []
     flags = []
     # From the current data, never the stored statusSignal (I3, final review 2026-10-06).
@@ -310,7 +315,10 @@ class FactChecker:
         that is not a data fact. A fact the model did not answer for counts as unsupported.
         `about` names the species ("Talgoxe / Great Tit (Parus major)"): the prompt only
         counts a quote that describes this species (C1, final review 2026-10-06)."""
-        checkable = [f for f in facts if f["topic"] != "data"]
+        # Edited facts are Albin's decisions from the sheet: their quote predates the edit
+        # (an edited s01 has none at all), so V1 has nothing to judge them by (follow-up 1,
+        # wave A review). They are never in `verdicts`, so they are always kept.
+        checkable = [f for f in facts if f["topic"] != "data" and not f.get("edited")]
         if not checkable:
             return {}
         template = self.prompt_path.read_text(encoding="utf-8")

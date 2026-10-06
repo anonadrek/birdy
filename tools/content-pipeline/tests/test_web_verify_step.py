@@ -12,10 +12,17 @@ import pytest
 from birdy_fetcher.web.audio_check import AudioCheckFailed, AudioCheckResult
 from birdy_fetcher.web.facts import FactSheetOutput
 from birdy_fetcher.web.facts_step import FactsOptions
+from birdy_fetcher.web.llm import MODELS
 from birdy_fetcher.web.paths import WebPaths
-from birdy_fetcher.web.record import load_record, merge_sources, record_path, save_record
+from birdy_fetcher.web.record import (
+    audio_id,
+    load_record,
+    merge_sources,
+    record_path,
+    save_record,
+)
 from birdy_fetcher.web.verify import FactVerdict, FactVerifyOutput
-from birdy_fetcher.web.verify_step import VerifyOptions, run_verify
+from birdy_fetcher.web.verify_step import AudioPreflightFailed, VerifyOptions, run_verify
 from birdy_fetcher.web.wiki_full import WikiArticle
 
 from .test_web_facts import ARTICLES, GOOD, STATUS, _fact
@@ -23,6 +30,7 @@ from .web_fakes import FakeJsonClient, reply
 from .web_repo import make_repo
 
 NOW = datetime(2026, 11, 10, tzinfo=UTC)
+OK_PREFLIGHT = AudioCheckResult(windows=[{"startSec": 0.0, "top": []}])
 
 
 @dataclass
@@ -310,6 +318,8 @@ async def test_an_audio_check_failure_is_a_distinct_v4_flag_and_keeps_the_record
     _seed(paths, "Q1", with_audio=True, identifiable_sound=True)
 
     def failing_classify_clip(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        if mp3_path.name != "voice.mp3":
+            return OK_PREFLIGHT  # the model itself runs; only this file fails
         raise AudioCheckFailed("ljudmodellen kraschade")
 
     monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", failing_classify_clip)
@@ -562,10 +572,46 @@ async def test_the_v1_retry_uses_the_facts_model_and_effort(tmp_path: Path) -> N
     }
 
 
-def test_the_v1_retry_defaults_to_the_facts_step_defaults() -> None:
-    facts = FactsOptions()
-    verify = VerifyOptions()
-    assert (verify.facts_model_key, verify.facts_effort) == (facts.model_key, facts.effort)
+async def test_the_v1_retry_defaults_to_the_records_own_facts_settings(tmp_path: Path) -> None:
+    """Follow-up 7 (wave A review): without --facts-model/--facts-effort the retry writes
+    with whatever wrote the sheet it replaces."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    record["generated"]["facts"] = {"model": "claude-sonnet-5", "effort": "medium"}
+    save_record(record_path(paths.data_out, "Q1"), record)
+    client = FakeJsonClient(
+        [
+            reply(_verdicts(f04="citatet nämner inget avstånd")),
+            reply(_retry_sheet()),
+            reply(_all_supported(*RETRIED_IDS)),
+        ]
+    )
+    await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    retry = client.schemas.index("FactSheetOutput")
+    assert (client.models[retry], client.efforts[retry]) == ("claude-sonnet-5", "medium")
+
+
+async def test_the_v1_retry_falls_back_to_the_facts_defaults(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    record["generated"]["facts"] = {"model": "a-model-we-no-longer-have"}
+    save_record(record_path(paths.data_out, "Q1"), record)
+    client = FakeJsonClient(
+        [
+            reply(_verdicts(f04="citatet nämner inget avstånd")),
+            reply(_retry_sheet()),
+            reply(_all_supported(*RETRIED_IDS)),
+        ]
+    )
+    await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    retry = client.schemas.index("FactSheetOutput")
+    defaults = FactsOptions()
+    assert client.models[retry] == MODELS[defaults.model_key]
+    assert client.efforts[retry] == defaults.effort
 
 
 async def test_the_v1_retry_does_not_overwrite_the_plain_facts_cache_entry(
@@ -670,6 +716,8 @@ async def test_an_unexpected_audio_error_fails_the_species_before_any_v1_call(
     _seed(paths, "Q1", with_audio=True, identifiable_sound=True)
 
     def broken_classify_clip(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        if mp3_path.name != "voice.mp3":
+            return OK_PREFLIGHT
         raise RuntimeError("ett fel i koden")
 
     monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", broken_classify_clip)
@@ -698,6 +746,8 @@ async def test_v1_strikes_survive_an_audio_check_that_could_not_run(
     save_record(record_path(paths.data_out, "Q1"), record)
 
     def failing_classify_clip(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        if mp3_path.name != "voice.mp3":
+            return OK_PREFLIGHT
         raise AudioCheckFailed("ljudmodellen gav ett oläsbart svar")
 
     monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", failing_classify_clip)
@@ -709,3 +759,176 @@ async def test_v1_strikes_survive_an_audio_check_that_could_not_run(
     assert not any(f["id"] == "f06" for f in record["facts"])
     assert [f["check"] for f in record["flags"]] == ["V4"]
     assert record["generated"]["verify"]["factsHash"]
+
+
+async def test_a_forced_reverify_after_an_import_leaves_an_edited_status_alone(
+    tmp_path: Path,
+) -> None:
+    """Follow-up 1 (wave A review): an s01 Albin set with `ändra` has `sources: []`; it
+    crashed V1's rendering (IndexError) on every forced verify, and V1 must not judge it."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    record["facts"] = [f for f in record["facts"] if f["id"] != "s01"]
+    record["facts"].append(
+        {
+            "id": "s01",
+            "topic": "status",
+            "value": "resident",
+            "sv": "Stannfågel",
+            "sources": [],
+            "edited": True,
+        }
+    )
+    save_record(record_path(paths.data_out, "Q1"), record)
+    client = FakeJsonClient([reply(_all_supported("f01", "f04", "f05"))])
+    outcomes = await run_verify(
+        paths, VerifyOptions(force=True), client=client, wiki=FakeWiki(), now=NOW
+    )
+    assert [o.status for o in outcomes] == ["ok"]
+    user = client.calls[0][0]["content"]
+    assert isinstance(user, str) and 'id="s01"' not in user
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert any(f["id"] == "s01" and f.get("edited") for f in record["facts"])
+
+
+async def test_a_confirmed_status_is_not_flagged_again_on_a_forced_reverify(
+    tmp_path: Path,
+) -> None:
+    """Follow-up 2: Albin kept the status despite the V3 flag; a forced rerun honours it."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    record["data"] = {"months": [100] * 11 + [1], "totalReports": 900}
+    record["review"]["statusConfirmed"] = True
+    save_record(record_path(paths.data_out, "Q1"), record)
+    client = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(
+        paths, VerifyOptions(force=True), client=client, wiki=FakeWiki(), now=NOW
+    )
+    assert [o.status for o in outcomes] == ["ok"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["flags"] == []
+    assert record.get("verification")
+
+
+async def test_a_recording_albin_kept_is_not_checked_or_flagged_again(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Follow-up 2: a `behåll` on a V4 flag is remembered for that recording."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True, identifiable_sound=False)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    record["review"]["audioKept"] = audio_id(record["audio"])
+    save_record(record_path(paths.data_out, "Q1"), record)
+
+    def no_classify(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        raise AssertionError("the audio model must not run for a kept recording")
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", no_classify)
+    client = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["flags"] == []
+    assert "audio" in record
+
+
+async def test_a_kept_decision_does_not_cover_a_different_recording(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True, identifiable_sound=False)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    record["review"]["audioKept"] = "an-older-recording"
+    save_record(record_path(paths.data_out, "Q1"), record)
+    client = FakeJsonClient([reply(_verdicts())])
+    await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert [f["check"] for f in record["flags"]] == ["V4"]
+
+
+async def test_a_species_the_sound_model_does_not_cover_never_runs_the_model(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Follow-up 3: the verdict for an uncovered species is a flag whatever the model says,
+    so neither the preflight nor the clip check runs."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True, identifiable_sound=False)
+
+    def no_classify(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        raise AssertionError("the audio model must not run for an uncovered species")
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", no_classify)
+    client = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert [f["check"] for f in record["flags"]] == ["V4"]
+    assert "täcker inte" in record["flags"][0]["message"]
+
+
+async def test_the_audio_model_is_preflighted_once_on_the_fixture(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit"), ("Q2", "Blåmes", "Blue Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _seed(paths, "Q2", with_audio=True)
+    seen: list[Path] = []
+
+    def fake_classify_clip(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        seen.append(mp3_path)
+        return OK_PREFLIGHT
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", fake_classify_clip)
+    client = FakeJsonClient([reply(_verdicts()), reply(_verdicts())])
+    await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert seen[0] == paths.flexref / "fixtures" / "chirp_3s_48k.wav"
+    assert [p.name for p in seen[1:]] == ["voice.mp3", "voice.mp3"]
+
+
+async def test_a_failing_preflight_aborts_the_run_before_anything_is_paid_or_written(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    path = record_path(paths.data_out, "Q1")
+    before = path.read_bytes()
+
+    def broken_model(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        raise AudioCheckFailed("uv hittades inte")
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", broken_model)
+    client = FakeJsonClient([])
+    with pytest.raises(AudioPreflightFailed, match="inga anrop gjordes"):
+        await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert client.calls == []
+    assert path.read_bytes() == before
+    assert not paths.reports.exists() or not any(paths.reports.glob("web-verify-*"))
+
+
+async def test_no_preflight_when_no_species_to_run_has_a_recording(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit"), ("Q2", "Blåmes", "Blue Tit")])
+    _seed(paths, "Q1")
+    _seed(paths, "Q2", with_audio=True)
+    record = load_record(record_path(paths.data_out, "Q2"))
+    assert record is not None
+    record["publish"] = True  # refused before V4, so it does not need the model
+    save_record(record_path(paths.data_out, "Q2"), record)
+
+    def no_classify(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        raise AssertionError("nothing to check, the model must not run")
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", no_classify)
+    client = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert {o.qid: o.status for o in outcomes} == {"Q1": "ok", "Q2": "failed"}

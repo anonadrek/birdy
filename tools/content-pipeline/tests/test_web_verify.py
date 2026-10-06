@@ -415,3 +415,81 @@ def test_status_flags_derives_the_contradiction_from_the_data_not_the_stored_sig
 
 def test_status_flags_is_empty_without_a_status_fact() -> None:
     assert status_flags({"facts": []}) == []
+
+
+EDITED_STATUS = {
+    "id": "s01",
+    "topic": "status",
+    "value": "breeding_migrant",
+    "sv": "Flyttfågel, häckar här",
+    "sources": [],
+    "edited": True,
+}
+EDITED_FACT = {
+    "id": "f03",
+    "topic": "appearance",
+    "sv": "Gul buk med ett brett svart band.",
+    "sources": [{"article": "sv", "quote": "gul buk"}],
+    "edited": True,
+}
+
+
+async def test_edited_facts_are_not_sent_to_the_fact_checker() -> None:
+    """Follow-up 1 (wave A review): a fact Albin changed in the sheet has no quote that
+    backs it (an edited s01 has none at all, which crashed the rendering with an
+    IndexError); V1 must leave his decisions alone."""
+    client = FakeJsonClient([reply(FactVerifyOutput(verdicts=[]))])
+    facts = [*FACTS, EDITED_STATUS, EDITED_FACT]
+    result = await _checker(client, PIPELINE / "prompts/verify-v1.md").check(
+        facts, {"sv": ARTICLE}, about=ABOUT
+    )
+    user = client.calls[0][0]["content"]
+    assert isinstance(user, str)
+    assert 'id="s01"' not in user
+    assert 'id="f03"' not in user
+    assert set(result) == {"f01", "f02"}
+
+
+async def test_only_edited_facts_means_no_call() -> None:
+    client = FakeJsonClient([])
+    checker = _checker(client, PIPELINE / "prompts/verify-v1.md")
+    assert await checker.check([EDITED_STATUS, FACTS[2]], {"sv": ARTICLE}, about=ABOUT) == {}
+    assert client.calls == []
+
+
+def test_number_flag_skips_an_edited_fact() -> None:
+    fact = {
+        "id": "f06",
+        "topic": "size",
+        "sv": "Cirka 25 cm lång.",
+        "sources": [{"article": "sv", "quote": "cirka 25 cm lång"}],
+        "edited": True,
+    }
+    articles = {"en": WikiArticle("en", "x", "1", "About 14 cm long.")}
+    assert number_flag(fact, articles) is None
+
+
+def test_status_flags_honours_a_status_albin_confirmed() -> None:
+    """Follow-up 2: a forced re-verify after an import must not bring back a V3 flag Albin
+    already kept (`review.statusConfirmed`; apply_facts clears it when the facts change)."""
+    review: dict[str, Any] = {"statusConfirmed": True}
+    record = {
+        "facts": [{"id": "s01", "topic": "status", "value": "absent", "sv": "Förekommer inte"}],
+        "data": {"totalReports": 5000},
+        "swedishRedList": "VU",
+        "review": review,
+    }
+    assert status_flags(record) == []
+    review["statusConfirmed"] = False
+    assert [f["check"] for f in status_flags(record)] == ["V3", "V3"]
+
+
+def test_the_verify_prompt_accepts_scandinavia_and_translated_names_and_units() -> None:
+    """Follow-up 5: status quotes about Scandinavia/Fennoscandia/Norden count, and a bird
+    name or unit written differently in the quote is not a mismatch."""
+    template = (PIPELINE / "prompts/verify-v1.md").read_text(encoding="utf-8")
+    system, _ = _split_prompt(template, about=ABOUT, facts="")
+    for place in ("Scandinavia", "Fennoscandia", "Skandinavien", "Norden"):
+        assert place in system
+    assert '"blue tit"' in system
+    assert '"14 cm"' in system

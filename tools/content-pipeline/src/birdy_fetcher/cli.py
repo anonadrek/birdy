@@ -13,6 +13,7 @@ import click
 from rich.console import Console
 
 from . import __version__
+from .web.defaults import EFFORTS, FACTS_EFFORT, FACTS_MODEL_KEY
 from .web.paths import WebPaths
 from .web.report import StepOutcome
 
@@ -274,8 +275,10 @@ def web_sources(
 
 @web.command("facts")
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
-@click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
-@click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
+@click.option(
+    "--model", "model_key", type=click.Choice(["opus", "sonnet"]), default=FACTS_MODEL_KEY
+)
+@click.option("--effort", type=click.Choice(EFFORTS), default=FACTS_EFFORT)
 @click.option(
     "--max-cost",
     type=click.FloatRange(min=0, min_open=True),
@@ -327,14 +330,19 @@ def web_facts(
     "--facts-model",
     "facts_model_key",
     type=click.Choice(["opus", "sonnet"]),
-    default="opus",
-    help="Modell för V1-omförsökets nya faktablad. Samma som web facts --model.",
+    default=None,
+    help=(
+        "Modell för V1-omförsökets nya faktablad. Standard: samma som artens faktablad, "
+        f"annars {FACTS_MODEL_KEY}."
+    ),
 )
 @click.option(
     "--facts-effort",
-    type=click.Choice(["low", "medium", "high"]),
-    default="high",
-    help="Tankenivå för V1-omförsöket. Samma som web facts --effort.",
+    type=click.Choice(EFFORTS),
+    default=None,
+    help=(
+        f"Tankenivå för V1-omförsöket. Standard: samma som artens faktablad, annars {FACTS_EFFORT}."
+    ),
 )
 def web_verify(
     species: tuple[str, ...],
@@ -343,11 +351,11 @@ def web_verify(
     max_cost: float,
     force: bool,
     workers: int,
-    facts_model_key: str,
-    facts_effort: str,
+    facts_model_key: str | None,
+    facts_effort: str | None,
 ) -> None:
     """Automatisk kontroll (V1 till V4) av faktabladet. Kostar pengar (V1)."""
-    from .web.verify_step import VerifyOptions, run_verify
+    from .web.verify_step import AudioPreflightFailed, VerifyOptions, run_verify
 
     _require_api_key()
     paths = _web_paths()
@@ -361,7 +369,13 @@ def web_verify(
         facts_model_key=facts_model_key,
         facts_effort=facts_effort,
     )
-    _print_outcomes(asyncio.run(run_verify(paths, options)), paths.reports)
+    try:
+        outcomes = asyncio.run(run_verify(paths, options))
+    except AudioPreflightFailed as exc:
+        # Follow-up 3 (wave A review): the audio model cannot run at all; nothing was paid
+        # or written.
+        raise click.ClickException(str(exc)) from exc
+    _print_outcomes(outcomes, paths.reports)
 
 
 @web.command("write")

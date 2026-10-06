@@ -17,7 +17,15 @@ from typing import Any
 from .datamod import status_contradiction
 from .facts import STATUS_BY_SV, STATUS_SV, TOPIC_SV
 from .paths import WebPaths
-from .record import Record, facts_hash, is_reviewed, load_all, record_path, save_record
+from .record import (
+    Record,
+    audio_id,
+    facts_hash,
+    is_reviewed,
+    load_all,
+    record_path,
+    save_record,
+)
 from .sheet_csv import read_sheet as _sheet_csv_read_sheet
 from .sheet_csv import write_sheet as _sheet_csv_write_sheet
 from .verify import status_flags
@@ -445,6 +453,10 @@ def _apply_one(
             record.pop("audio", None)
             review["audioStruck"] = True
             result.removed_audio.append(str(record["qid"]))
+        elif check == "V4" and decision == KEEP and record.get("audio"):
+            # Remembered for this exact recording, so a forced re-verify does not ask again
+            # (follow-up 2, wave A review); a different recording is checked as usual.
+            review["audioKept"] = audio_id(record["audio"])
         elif check == "V2" and decision == STRIKE:
             facts = [f for f in facts if f["id"] != fid]
         elif check == "V1" and fid == "s01" and decision == CHANGE:
@@ -464,6 +476,9 @@ def _apply_one(
     # `facts`, struck by the fact checker before the flag was written) -- only ändra needs
     # this recreate-and-recheck path.
     record["facts"] = [*(f for f in facts if f["id"] != "s01"), new_status]
+    # A confirmation belonged to an earlier status; this new one has never been checked
+    # against the data, and status_flags honours a confirmation (follow-up 2).
+    review.pop("statusConfirmed", None)
     data = record.get("data")
     if data is not None:
         reason = status_contradiction(
