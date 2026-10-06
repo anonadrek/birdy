@@ -159,6 +159,9 @@ async def _one(
                 record["facts"] = kept
                 record["status"] = "failed"
                 record["errors"] = [f"saknas efter V1-omförsöket: {', '.join(missing)}"]
+                # A verification left over from an earlier, better-looking run must not
+                # survive this failure (review fix 2026-10-06, C1).
+                record.pop("verification", None)
                 save_record(path, record)
                 return out("failed", record["errors"], notes)
             apply_facts(record, check, generated=record["generated"]["facts"])
@@ -179,6 +182,7 @@ async def _one(
                 record["facts"] = kept
                 record["status"] = "failed"
                 record["errors"] = [f"saknas efter V1-omförsöket: {', '.join(missing)}"]
+                record.pop("verification", None)
                 save_record(path, record)
                 return out("failed", record["errors"], notes)
         record["facts"] = kept
@@ -219,7 +223,12 @@ async def _one(
             "at": now.isoformat(),
             "factsHash": facts_hash(record),
         }
-        if not flags:
+        if flags:
+            # A `verification` from an earlier, cleaner run must not survive once this
+            # rerun finds something to flag (review fix 2026-10-06, C1): otherwise `web
+            # write` would trust a decision that no longer matches these facts.
+            record.pop("verification", None)
+        else:
             # Ändrat 2026-10-05 (b): inga flaggor betyder inget att vänta på. Arten
             # behöver aldrig gå via undantagsarket eller `web import` (Task 17).
             record["verification"] = {

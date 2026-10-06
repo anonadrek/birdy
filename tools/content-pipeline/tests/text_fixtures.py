@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from birdy_fetcher.web.record import Record, new_record
+from birdy_fetcher.web.record import Record, facts_hash, new_record
 from birdy_fetcher.web.text_model import LangTextV2, LookAlikeText, Sentence, SizeText, WebTextV2
 
 
@@ -108,5 +108,15 @@ def reviewed_record(qid: str = "Q25485") -> Record:
         "at": "2026-11-20",
         "model": "claude-sonnet-5",
         "spotChecked": False,
+    }
+    # A realistic reviewed record has already been through `web verify`, which refreshes
+    # this hash to match the facts it just checked (review fix 2026-10-06, C1).
+    record["generated"] = {
+        "verify": {
+            "model": "claude-sonnet-5",
+            "prompt": "verify-v1",
+            "at": "2026-11-20",
+            "factsHash": facts_hash(record),
+        }
     }
     return record

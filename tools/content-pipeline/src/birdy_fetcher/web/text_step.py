@@ -4,6 +4,7 @@ check it in code, check it with a second model, rewrite once, remove what still 
 from __future__ import annotations
 
 import asyncio
+import hashlib
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
@@ -22,8 +23,9 @@ from .llm import MODELS, AnthropicJsonClient, JsonModelClient, ModelReply, recor
 from .paths import WebPaths
 from .record import Record, facts_hash, is_reviewed, load_all, record_path, save_record
 from .report import StepOutcome, render_step_report, write_step_report
-from .text_checks import TextContext, TextIssue, check_text, minimum_problems, settle
+from .text_checks import TextContext, TextIssue, check_text, minimum_problems, path_texts, settle
 from .text_model import WebTextV2, remove_paths, status_for_site, to_site
+from .verify import missing_required_topics
 
 PROMPT_VERSION = "web-v2"
 RULE_ATTEMPTS = 2
@@ -136,8 +138,12 @@ class SpeciesTextWriter:
         base: list[MessageParam] = [{"role": "user", "content": user}]
         result = TextResult(None, None)
         messages = list(base)
-        text: WebTextV2 | None = None
         last_stop: str | None = None
+        # (I2, review fix 2026-10-06) Track the attempt with the fewest hard problems after
+        # settling, not just whichever attempt happened to parse last: a later retry can come
+        # back worse than an earlier one, and the earlier one must still win. Ties favour the
+        # later attempt (it saw the retry feedback).
+        best: tuple[int, int, WebTextV2, list[str], list[str]] | None = None
         for attempt in range(1, RULE_ATTEMPTS + 1):
             result.attempts = attempt
             reply = await self._ask(system, messages)
@@ -146,8 +152,11 @@ class SpeciesTextWriter:
                 if reply.stop_reason in ("max_tokens", "refusal"):
                     break
                 continue
-            text = reply.parsed
-            issues = check_text(text, ctx, self.banned)
+            candidate = reply.parsed
+            issues = check_text(candidate, ctx, self.banned)
+            settled, removed, hard = settle(candidate, ctx, self.banned)
+            if best is None or len(hard) <= best[0]:
+                best = (len(hard), attempt, settled, removed, hard)
             if not issues:
                 break
             if attempt < RULE_ATTEMPTS:
@@ -156,10 +165,10 @@ class SpeciesTextWriter:
                     {"role": "assistant", "content": reply.raw_text},
                     {"role": "user", "content": rules_feedback(issues)},
                 ]
-        if text is None:
+        if best is None:
             result.errors = [f"modellen gav inget giltigt svar (stop_reason={last_stop})"]
             return result
-        text, removed, hard = settle(text, ctx, self.banned)
+        _, _, text, removed, hard = best
         result.notes += removed
         if hard:
             result.rejected, result.errors = text, hard
@@ -167,6 +176,7 @@ class SpeciesTextWriter:
 
         unsupported = await self.checker.check(check_items(text, ctx), about=about)
         if unsupported:
+            original = text
             result.attempts += 1
             retry: list[MessageParam] = [
                 *base,
@@ -174,15 +184,43 @@ class SpeciesTextWriter:
                 {"role": "user", "content": support_feedback(unsupported)},
             ]
             reply = await self._ask(system, retry)
+            # (I2, review fix 2026-10-06) A rewrite that fixes the cited problems can still
+            # introduce a new one (e.g. striking the only sentence in a required field).
+            # Build both candidates and prefer the rewrite only when it actually passes the
+            # minimum requirements; otherwise fall back to removing from the original, which
+            # is always at least as safe since it already passed the rule checks.
+            fixed_candidate: WebTextV2 | None = None
+            candidate_removed: list[str] = []
+            candidate_unsupported: dict[str, str] = {}
+            candidate_texts: dict[str, str] = {}
             if reply.parsed is not None:
-                candidate, removed_again, hard_again = settle(reply.parsed, ctx, self.banned)
+                settled_candidate, candidate_removed, hard_again = settle(
+                    reply.parsed, ctx, self.banned
+                )
                 if not hard_again:
-                    text = candidate
-                    result.notes += removed_again
-                    unsupported = await self.checker.check(check_items(text, ctx), about=about)
-            if unsupported:
-                result.notes += [f"{path} togs bort: {p}" for path, p in unsupported.items()]
-                text = remove_paths(text, set(unsupported))
+                    candidate_unsupported = await self.checker.check(
+                        check_items(settled_candidate, ctx), about=about
+                    )
+                    candidate_texts = path_texts(settled_candidate)
+                    fixed_candidate = remove_paths(settled_candidate, set(candidate_unsupported))
+            if fixed_candidate is not None and not minimum_problems(fixed_candidate):
+                text = fixed_candidate
+                result.notes += candidate_removed
+                result.notes += [
+                    f'{path} togs bort ("{candidate_texts.get(path, "")}"): {problem}'
+                    for path, problem in candidate_unsupported.items()
+                ]
+            else:
+                result.notes.append(
+                    "omskrivningen för de fakta som inte stöds förkastades, den ursprungliga "
+                    "texten användes i stället"
+                )
+                original_texts = path_texts(original)
+                text = remove_paths(original, set(unsupported))
+                result.notes += [
+                    f'{path} togs bort ("{original_texts.get(path, "")}"): {problem}'
+                    for path, problem in unsupported.items()
+                ]
         problems = minimum_problems(text)
         if problems:
             result.rejected, result.errors = text, problems
@@ -191,12 +229,41 @@ class SpeciesTextWriter:
         return result
 
 
+def _lookalike_qid_map(record: Record) -> dict[str, str]:
+    """Scientific name to QID for every look-alike fact that has one (M5, review fix
+    2026-10-06): the writer is told to use the QID when the fact's label has one, but a
+    rewrite can still echo back the scientific name instead -- map it before it reaches
+    the site."""
+    mapping: dict[str, str] = {}
+    for fact in record.get("facts", []):
+        if fact.get("topic") != "lookalike":
+            continue
+        other = fact.get("other") or {}
+        qid, scientific = other.get("qid"), other.get("scientific")
+        if qid and scientific:
+            mapping[scientific] = qid
+    return mapping
+
+
+def _resolve_lookalikes(text: WebTextV2, qid_map: dict[str, str]) -> WebTextV2:
+    if not qid_map:
+        return text
+    data = text.model_dump()
+    changed = False
+    for lang in ("sv", "en"):
+        for look_alike in data[lang]["look_alikes"]:
+            if look_alike["other"] in qid_map:
+                look_alike["other"] = qid_map[look_alike["other"]]
+                changed = True
+    return WebTextV2.model_validate(data) if changed else text
+
+
 def apply_text(record: Record, result: TextResult, generated: dict[str, Any]) -> None:
     status = status_for_site(record)
+    qid_map = _lookalike_qid_map(record)
     if result.text is not None:
-        record["text"] = {
-            lang: to_site(getattr(result.text, lang), status) for lang in ("sv", "en")
-        }
+        resolved = _resolve_lookalikes(result.text, qid_map)
+        record["text"] = {lang: to_site(getattr(resolved, lang), status) for lang in ("sv", "en")}
         record["status"] = "ok"
         record["errors"] = []
         record.pop("rejectedText", None)
@@ -205,9 +272,10 @@ def apply_text(record: Record, result: TextResult, generated: dict[str, Any]) ->
         record["status"] = "failed"
         record["errors"] = list(result.errors)
         rejected = result.rejected
+        resolved_rejected = _resolve_lookalikes(rejected, qid_map) if rejected is not None else None
         record["rejectedText"] = (
-            {lang: to_site(getattr(rejected, lang), status) for lang in ("sv", "en")}
-            if rejected is not None
+            {lang: to_site(getattr(resolved_rejected, lang), status) for lang in ("sv", "en")}
+            if resolved_rejected is not None
             else None
         )
     record.setdefault("generated", {})["text"] = generated
@@ -227,9 +295,19 @@ class WriteOptions:
 
 
 def _skip_reason(record: Record, options: WriteOptions) -> str | None:
-    if not any(f["topic"] == "appearance" for f in record.get("facts", [])):
+    if missing_required_topics(record.get("facts", [])):
+        # (C1, review fix 2026-10-06) The appearance-only proxy missed a sheet that still
+        # has appearance but lost voice or habitat to a V1 strike -- use the same check V1
+        # itself uses, so a failed sheet is skipped even under --allow-unreviewed.
         return "faktabladet saknas eller misslyckades: kör web facts"
     reviewed = is_reviewed(record)
+    if reviewed:
+        verify_hash = (record.get("generated", {}).get("verify") or {}).get("factsHash")
+        if verify_hash != facts_hash(record):
+            # Defence in depth (C1): if some other code path ever forgets to clear
+            # `verification` when the facts move on, a verify hash that no longer matches
+            # the current facts is treated as not reviewed instead of trusted blindly.
+            reviewed = False
     if not reviewed and not options.allow_unreviewed:
         return "faktabladet är inte kontrollerat"
     generated = record.get("generated", {}).get("text") or {}
@@ -243,6 +321,23 @@ def _skip_reason(record: Record, options: WriteOptions) -> str | None:
     return None
 
 
+def _keep_old_text(record: Record) -> bool:
+    """A failed rewrite must never destroy a text the site may still depend on (I1, review
+    fix 2026-10-06): a published page (the Astro build needs status == ok, spec §9.7) or a
+    text that is still current for these facts (a flaky retry must not wipe a good
+    answer). Only a stale, unpublished text may be nulled out."""
+    if record.get("publish"):
+        return True
+    if record.get("status") != "ok":
+        return False
+    text_generated = record.get("generated", {}).get("text") or {}
+    return bool(text_generated.get("factsHash") == facts_hash(record))
+
+
+def _prompt_hash(path: Path) -> str:
+    return hashlib.sha256(path.read_text(encoding="utf-8").encode("utf-8")).hexdigest()[:8]
+
+
 async def run_write(
     paths: WebPaths,
     options: WriteOptions,
@@ -250,15 +345,28 @@ async def run_write(
     client: JsonModelClient | None = None,
     now: datetime | None = None,
 ) -> list[StepOutcome]:
+    if options.model_key == options.checker_key:
+        # I3 (review fix 2026-10-06, spec §9.6): the checker must be a different model than
+        # the writer, in a fresh context.
+        raise ValueError("Skribenten och kontrollen måste vara olika modeller.")
     if options.wave is None and not options.qids:
         raise ValueError("Ange en våg eller arter")
     now = now or datetime.now(UTC)
     records = load_all(paths.data_out)
-    chosen = (
-        [records[q] for q in options.qids if q in records]
-        if options.qids
-        else [r for r in records.values() if r.get("review", {}).get("wave") == options.wave]
-    )
+    missing_outcomes: list[StepOutcome] = []
+    if options.qids:
+        # M1 (review fix 2026-10-06): dedupe --species, and report an unknown QID as a
+        # failed outcome instead of silently dropping it.
+        chosen = []
+        for qid in dict.fromkeys(options.qids):
+            if qid in records:
+                chosen.append(records[qid])
+            else:
+                missing_outcomes.append(
+                    StepOutcome(qid, qid, "failed", ["artposten saknas: kör web sources först"])
+                )
+    else:
+        chosen = [r for r in records.values() if r.get("review", {}).get("wave") == options.wave]
     groups = GroupTable(paths.family_groups, paths.web_groups)
     owned = client is None
     model_client: JsonModelClient = client or AnthropicJsonClient()
@@ -278,13 +386,18 @@ async def run_write(
         model_key=options.model_key,
         effort=options.effort,
     )
+    prompt_hash = _prompt_hash(paths.prompt_file(PROMPT_VERSION))
     stop = asyncio.Event()
     semaphore = asyncio.Semaphore(options.workers)
 
     async def one(record: Record) -> StepOutcome:
-        qid, name = str(record["qid"]), str(record["names"]["sv"])
+        # M2 (review fix 2026-10-06): qid alone is safe before the try; a malformed
+        # record (e.g. missing "names") must fail on its own, not abort the whole run.
+        qid = str(record.get("qid", "?"))
+        name = qid
         async with semaphore:
             try:
+                name = str(record["names"]["sv"])
                 reason = _skip_reason(record, options)
                 if reason is not None:
                     return StepOutcome(qid, name, "skipped", [reason])
@@ -298,11 +411,26 @@ async def run_write(
                     return StepOutcome(qid, name, "skipped", [f"kostnadstaket nåddes: {exc}"])
                 except CheckerFailed as exc:
                     return StepOutcome(qid, name, "failed", [str(exc)])
+                if result.text is None and _keep_old_text(record):
+                    # I1 (review fix 2026-10-06): a failed rewrite must not destroy a text
+                    # the record still depends on.
+                    notes = [*result.notes, "den tidigare texten behölls"]
+                    text_generated = record.get("generated", {}).get("text") or {}
+                    if record.get("publish") and text_generated.get("factsHash") != facts_hash(
+                        record
+                    ):
+                        notes.append(
+                            "arten är publicerad och faktabladet har ändrats sedan texten "
+                            "skrevs: sätt publish: false om den gamla texten nu är fel"
+                        )
+                    return StepOutcome(qid, name, "failed", result.errors, notes)
                 generated: dict[str, Any] = {
                     "model": MODELS[options.model_key],
                     "prompt": PROMPT_VERSION,
+                    "promptHash": prompt_hash,
                     "effort": options.effort,
                     "checker": MODELS[options.checker_key],
+                    "checkerPrompt": CHECK_PROMPT_VERSION,
                     "at": now.isoformat(),
                     "factsHash": facts_hash(record),
                 }
@@ -315,7 +443,7 @@ async def run_write(
                 return StepOutcome(qid, name, "failed", [f"{type(exc).__name__}: {exc}"])
 
     try:
-        outcomes = list(await asyncio.gather(*(one(r) for r in chosen)))
+        outcomes = missing_outcomes + list(await asyncio.gather(*(one(r) for r in chosen)))
     finally:
         if owned and isinstance(model_client, AnthropicJsonClient):
             await model_client.aclose()

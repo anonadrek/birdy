@@ -187,11 +187,28 @@ def check_lang(lang: str, text: LangTextV2, ctx: TextContext, banned: list[str])
     ]
     if not META_MIN <= len(text.meta_description) <= META_MAX:
         field("meta_description", f"ska vara 120 till 155 tecken (är {len(text.meta_description)})")
+    if any(ch.isdigit() for ch in text.meta_description):
+        # M8 (review fix 2026-10-06): backs the prompt's own "no numbers" rule with code.
+        field("meta_description", "innehåller siffror")
     return issues + _size_issues(lang, text, ctx)
 
 
 def check_text(text: WebTextV2, ctx: TextContext, banned: list[str]) -> list[TextIssue]:
     return check_lang("sv", text.sv, ctx, banned) + check_lang("en", text.en, ctx, banned)
+
+
+def path_texts(text: WebTextV2) -> dict[str, str]:
+    """Every removable path to the sentence or size text it currently holds (M4, review fix
+    2026-10-06), so a removal note can show Albin what was actually dropped, not just which
+    rule it broke."""
+    mapping: dict[str, str] = {}
+    for lang in ("sv", "en"):
+        t: LangTextV2 = getattr(text, lang)
+        for suffix, sentence in iter_sentences(t):
+            mapping[f"{lang}.{suffix}"] = sentence.text
+        if t.size is not None:
+            mapping[f"{lang}.size"] = t.size.value
+    return mapping
 
 
 def settle(
@@ -201,7 +218,12 @@ def settle(
     notes about what was removed, and the problems that remain (they fail the species)."""
     issues = check_text(text, ctx, banned)
     removable = {i.path for i in issues if i.removable}
-    notes = [f"{i.path} togs bort: {i.message}" for i in issues if i.removable]
+    texts = path_texts(text)
+    notes = [
+        f'{i.path} togs bort ("{texts.get(i.path, "")}"): {i.message}'
+        for i in issues
+        if i.removable
+    ]
     if removable:
         text = remove_paths(text, removable)
         issues = check_text(text, ctx, banned)

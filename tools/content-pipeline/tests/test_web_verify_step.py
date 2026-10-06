@@ -402,6 +402,74 @@ async def test_audio_the_model_does_not_cover_becomes_a_v4_flag_and_is_kept(
     assert [f["check"] for f in record["flags"]] == ["V4"]
 
 
+async def test_a_rerun_that_now_has_flags_clears_a_stale_verification(tmp_path: Path) -> None:
+    """C1 (review fix 2026-10-06): a species that auto-passed before must not keep that
+    `verification` once a rerun finds something to flag -- otherwise `web write` would
+    trust a verification that no longer matches what V2/V3 just found."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    clean = FakeJsonClient([reply(_verdicts())])
+    await run_verify(paths, VerifyOptions(), client=clean, wiki=FakeWiki(), now=NOW)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record.get("verification") is not None
+
+    record["facts"].append(
+        {
+            "id": "f06",
+            "topic": "size",
+            "sv": "Cirka 25 cm lång.",
+            "sources": [{"article": "sv", "quote": "cirka 25 cm lång"}],
+        }
+    )
+    save_record(record_path(paths.data_out, "Q1"), record)
+    articles_with_conflict = {**ARTICLES, "en": WikiArticle("en", "x", "1", "About 14 cm long.")}
+
+    @dataclass
+    class ConflictingWiki:
+        async def articles(self, qid: str, *, refresh: bool = False) -> dict[str, WikiArticle]:
+            return articles_with_conflict
+
+    flagged = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(
+        paths, VerifyOptions(), client=flagged, wiki=ConflictingWiki(), now=NOW
+    )
+    assert [o.status for o in outcomes] == ["ok"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["flags"] != []
+    assert "verification" not in record
+
+
+async def test_a_fatal_v1_retry_clears_a_stale_verification(tmp_path: Path) -> None:
+    """C1 (review fix 2026-10-06): the failure paths must also clear a `verification` that
+    was left over from before this rerun."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    record["verification"] = {
+        "method": "auto",
+        "at": "2026-11-01",
+        "model": "claude-sonnet-5",
+        "spotChecked": False,
+    }
+    save_record(record_path(paths.data_out, "Q1"), record)
+    fatal_retry_sheet = FactSheetOutput(facts=GOOD[:2], sweden_status=None)
+    client = FakeJsonClient(
+        [
+            reply(_verdicts(f04="citatet nämner inget avstånd")),
+            reply(fatal_retry_sheet),
+            reply(fatal_retry_sheet),
+        ]
+    )
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert "verification" not in record
+
+
 async def test_a_current_verification_is_skipped_unless_forced(tmp_path: Path) -> None:
     paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
     _seed(paths, "Q1")

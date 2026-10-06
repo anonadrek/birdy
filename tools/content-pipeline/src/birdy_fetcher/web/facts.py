@@ -191,7 +191,11 @@ def data_facts(record: Record) -> list[dict[str, Any]]:
 
 
 def apply_facts(record: Record, check: FactCheck, *, generated: dict[str, Any]) -> None:
-    """New facts make any earlier text stale: it is removed and the species is pending."""
+    """New facts make any earlier text stale: it is removed and the species is pending. Any
+    earlier automatic verification is stale too (fix 2026-10-06, C1): new facts have never
+    been through V1, so `verification`, `flags` and `generated.verify` are cleared here --
+    otherwise a stale `verification` would let `web write` write from a sheet nothing has
+    checked."""
     facts = list(check.facts)
     if check.status is not None:
         facts.append(check.status)
@@ -205,7 +209,11 @@ def apply_facts(record: Record, check: FactCheck, *, generated: dict[str, Any]) 
                 check.status["value"], data.get("months"), int(data.get("totalReports", 0))
             )
         data["statusSignal"] = {"contradicts": reason}
-    record.setdefault("generated", {})["facts"] = generated
+    generated_dict = record.setdefault("generated", {})
+    generated_dict["facts"] = generated
+    generated_dict.pop("verify", None)
+    record.pop("verification", None)
+    record.pop("flags", None)
     record["text"] = None
     record.pop("rejectedText", None)
     record["status"] = "failed" if check.fatal else "pending"

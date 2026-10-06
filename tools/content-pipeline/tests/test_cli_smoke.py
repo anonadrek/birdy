@@ -87,3 +87,37 @@ def test_web_facts_requires_an_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
     result = CliRunner().invoke(main, ["web", "facts", "--species", "Q1", "--max-cost", "1"])
     assert result.exit_code != 0
     assert "ANTHROPIC_API_KEY" in str(result.output)
+
+
+def test_web_write_help_lists_its_flags() -> None:
+    runner = CliRunner()
+    result = runner.invoke(main, ["web", "write", "--help"])
+    assert result.exit_code == 0
+    for flag in (
+        "--wave",
+        "--species",
+        "--model",
+        "--effort",
+        "--checker-model",
+        "--max-cost",
+        "--regenerate",
+        "--allow-unreviewed",
+        "--workers",
+    ):
+        assert flag in result.output
+
+
+def test_web_write_requires_wave_or_species() -> None:
+    result = CliRunner().invoke(main, ["web", "write"])
+    assert result.exit_code != 0
+
+
+def test_web_write_rejects_the_same_model_for_writer_and_checker() -> None:
+    # I3 (review fix 2026-10-06, spec §9.6): the checker must be a different model than
+    # the writer. This check runs before the API key check, so no key is needed here.
+    result = CliRunner().invoke(
+        main,
+        ["web", "write", "--species", "Q1", "--model", "sonnet", "--checker-model", "sonnet"],
+    )
+    assert result.exit_code != 0
+    assert "olika modeller" in result.output

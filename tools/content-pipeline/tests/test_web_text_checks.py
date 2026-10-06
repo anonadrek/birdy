@@ -8,6 +8,7 @@ from birdy_fetcher.web.text_checks import (
     fact_corpus,
     minimum_problems,
     numbers,
+    path_texts,
     settle,
 )
 from birdy_fetcher.web.text_model import WebTextV2, remove_paths, status_for_site, to_site
@@ -131,6 +132,31 @@ def test_settle_removes_what_it_can_and_reports_the_rest() -> None:
     assert len(settled.sv.lead) == 1
     assert notes and "sv.lead[1]" in notes[0]
     assert hard == []
+
+
+def test_settle_notes_include_the_removed_sentence_text() -> None:
+    """M4 (review fix 2026-10-06): Albin must be able to judge a removal from the note
+    alone, without having to find the sentence some other way."""
+    text = _with_sv(lead=[*SV.lead[:1], S("Den väger 99 gram.", "f01")])
+    _settled, notes, _hard = settle(text, CTX, BANNED)
+    assert any("Den väger 99 gram." in n for n in notes)
+
+
+def test_path_texts_maps_sentences_and_size() -> None:
+    texts = path_texts(VALID)
+    assert texts["sv.lead[1]"] == "Den har svart huvud med vita kinder."
+    assert texts["sv.size"] == "Cirka 14 cm"
+
+
+def test_meta_description_with_digits_is_a_hard_issue() -> None:
+    """M8 (review fix 2026-10-06): the prompt already tells the writer not to put numbers
+    in meta_description; this backs that with a code check."""
+    text = _with_sv(meta_description="Talgoxen: 14 cm lång fågel med svart huvud och gul buk.")
+    issues = check_text(text, CTX, BANNED)
+    assert any(
+        i.path == "sv.meta_description" and not i.removable and "siffror" in i.message
+        for i in issues
+    )
 
 
 def test_remove_paths_and_the_minimum() -> None:

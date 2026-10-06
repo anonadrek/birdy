@@ -363,6 +363,10 @@ def web_write(
 
     if wave is None and not species:
         raise click.UsageError("Ange --wave eller --species.")
+    if model_key == checker_key:
+        # I3 (review fix 2026-10-06, spec §9.6): the checker must be a different model
+        # than the writer, in a fresh context.
+        raise click.UsageError("Skribent och kontroll måste vara olika modeller.")
     _require_api_key()
     paths = _web_paths()
     options = WriteOptions(

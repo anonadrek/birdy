@@ -122,6 +122,27 @@ def test_data_facts_come_from_the_record() -> None:
     assert data_facts(record)[-1]["sv"] == "Inte rödlistad i Svenska rödlistan 2025."
 
 
+def test_apply_facts_clears_a_stale_verification_flags_and_verify_hash() -> None:
+    """C1 (review fix 2026-10-06): new facts have never been through V1, so an earlier
+    `verification`/`flags`/`generated.verify` must not survive -- otherwise `web write`
+    could write from a sheet nothing has checked."""
+    record = new_record("Q25485")
+    record["verification"] = {
+        "method": "auto",
+        "at": "2026-11-01",
+        "model": "claude-sonnet-5",
+        "spotChecked": False,
+    }
+    record["flags"] = [{"check": "V2", "factId": "f03", "message": "x"}]
+    record["generated"] = {"verify": {"model": "claude-sonnet-5", "factsHash": "deadbeef"}}
+    check = check_fact_sheet(FactSheetOutput(facts=GOOD, sweden_status=STATUS), ARTICLES, INDEX)
+    apply_facts(record, check, generated={"model": "claude-opus-5"})
+    assert "verification" not in record
+    assert "flags" not in record
+    assert "verify" not in record["generated"]
+    assert record["generated"]["facts"] == {"model": "claude-opus-5"}
+
+
 def test_apply_facts_orders_facts_and_flags_a_status_contradiction() -> None:
     record = new_record("Q25485")
     record["text"] = {"sv": {}}
