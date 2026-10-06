@@ -18,6 +18,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
+import se.birdy.app.testing.StatusBarInset
 import se.birdy.app.testing.attachComposeResourcesContext
 import se.birdy.app.ui.theme.BirdyTheme
 import kotlin.math.abs
@@ -27,9 +28,8 @@ import kotlin.test.assertTrue
  * Where the photo sits relative to the text block in [PhotoHero] (2026-10-06, Albin: the species
  * must be clearly visible). By default the photo fills the whole hero behind the text (the
  * Identify tab's daily bird). With `textBelowPhoto` (Match, species profile) the photo keeps its
- * own [PhotoHero] `height` at the top and the text block starts under it, overlapping only the
- * photo's faded bottom [TEXT_OVER_PHOTO], so the bird in the middle of the frame is never under
- * the text.
+ * own [PhotoHero] `height` at the top (plus the status bar when the hero is drawn behind it) and
+ * the text block starts at the photo's bottom edge, so no part of the photo is under the text.
  */
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [35], qualifiers = "sv-w411dp-h891dp-xxhdpi")
@@ -48,6 +48,7 @@ class PhotoHeroLayoutTest {
         kicker: String,
         textBelowPhoto: Boolean,
         withPhoto: Boolean,
+        drawBehindStatusBar: Boolean = false,
     ) = PhotoHero(
         kicker = kicker,
         title = "Talgoxe",
@@ -55,6 +56,7 @@ class PhotoHeroLayoutTest {
         height = 280.dp,
         bottomPadding = PaperSheetOverlap + 18.dp,
         textBelowPhoto = textBelowPhoto,
+        drawBehindStatusBar = drawBehindStatusBar,
         modifier = Modifier.testTag(tag),
         image =
             if (withPhoto) {
@@ -85,17 +87,30 @@ class PhotoHeroLayoutTest {
     }
 
     @Test
-    fun `with the text below the photo only the faded bottom edge of the photo is under the text`() {
+    fun `with the text below the photo no part of the photo is under the text`() {
         show { Hero("hero", "Mesar", textBelowPhoto = true, withPhoto = true) }
         val hero = compose.onNodeWithTag("hero").getUnclippedBoundsInRoot()
         val photo = compose.onNodeWithTag("hero-photo").getUnclippedBoundsInRoot()
         val kicker = compose.onNodeWithText("Mesar", ignoreCase = true).getUnclippedBoundsInRoot()
         assertClose(280.dp, photo.bottom - photo.top, "photo height")
-        assertTrue(
-            kicker.top >= photo.bottom - TEXT_OVER_PHOTO - 1.dp,
-            "the text starts ${photo.bottom - kicker.top} above the photo's bottom, more than $TEXT_OVER_PHOTO",
-        )
+        assertTrue(kicker.top >= photo.bottom - 1.dp, "the text starts ${photo.bottom - kicker.top} above the photo's bottom")
         assertTrue(hero.bottom > photo.bottom, "the text block should extend the hero below the photo")
+    }
+
+    @Test
+    fun `behind the status bar the photo grows by the status bar and the text still starts below it`() {
+        val inset = StatusBarInset(topPx = 96) // 32dp at xxhdpi
+        compose.setContent {
+            inset.Capture()
+            BirdyTheme { Column { Hero("hero", "Mesar", textBelowPhoto = true, withPhoto = true, drawBehindStatusBar = true) } }
+        }
+        compose.waitForIdle()
+        compose.runOnIdle { inset.apply() }
+        compose.waitForIdle()
+        val photo = compose.onNodeWithTag("hero-photo").getUnclippedBoundsInRoot()
+        val kicker = compose.onNodeWithText("Mesar", ignoreCase = true).getUnclippedBoundsInRoot()
+        assertClose(280.dp + 32.dp, photo.bottom - photo.top, "photo height with a 32dp status bar")
+        assertTrue(kicker.top >= photo.bottom - 1.dp, "the text starts ${photo.bottom - kicker.top} above the photo's bottom")
     }
 
     @Test

@@ -3,6 +3,7 @@ package se.birdy.app.ui.components
 import androidx.compose.ui.graphics.Color
 import se.birdy.app.ui.theme.AccentCopperLight
 import se.birdy.app.ui.theme.HeroMossLight
+import se.birdy.app.ui.theme.PhotoBand
 import se.birdy.app.ui.theme.PhotoLoading
 import se.birdy.app.ui.theme.PhotoScrim
 import se.birdy.app.ui.theme.TextOnHero
@@ -22,7 +23,8 @@ import kotlin.test.assertTrue
  * edge, then FLAT at [TEXT_SCRIM_ALPHA] all the way to the bottom. Because it is flat, the same
  * single backdrop color covers every line (kicker, latinName, subtitle, meta and title all sit
  * on it), wherever the text block starts. The thin status-bar scrim at the very top never
- * reaches the text and is not counted.
+ * reaches the text and is not counted. With `textBelowPhoto` (Match, species profile) there is
+ * no scrim at all: the text starts below the photo, on the plain [PhotoBand].
  *
  * The reference photo is pure white (fix wave A2c, 2026-09-27), not an overcast-sky gray: a
  * blown-out sky or snow is a realistic bird photo, and for light text over a darkening scrim,
@@ -69,10 +71,18 @@ class PhotoHeroContrastTest {
 
     @Test
     fun `nothing over or behind a bird photo has a hue`() {
-        for ((name, color) in listOf("PhotoScrim" to PhotoScrim, "PhotoLoading" to PhotoLoading)) {
+        for ((name, color) in listOf("PhotoScrim" to PhotoScrim, "PhotoLoading" to PhotoLoading, "PhotoBand" to PhotoBand)) {
             assertEquals(color.red, color.green, "$name has a hue: $color")
             assertEquals(color.green, color.blue, "$name has a hue: $color")
         }
+    }
+
+    // textBelowPhoto (Match, species profile): the text starts at the photo's bottom edge and
+    // sits on the plain PhotoBand, with no scrim and no photo under it at all.
+    @Test
+    fun `hero text clears AA on the band below the photo without any scrim`() {
+        val failures = failuresOn(PhotoBand)
+        assertTrue(failures.isEmpty(), "on PhotoBand: " + failures.joinToString("; "))
     }
 
     // No photo (a species without one): the hero is the moss gradient and draws no scrim at all,

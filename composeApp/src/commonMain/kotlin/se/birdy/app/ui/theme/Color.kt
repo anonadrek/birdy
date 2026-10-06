@@ -50,6 +50,11 @@ val GlassOnPhoto = Color.Black.copy(alpha = 0.45f)
 val PhotoScrim = Color(0xFF000000)
 val PhotoLoading = Color(0xFF1E1E1E)
 
+// The band the name sits on when the text is below the photo (PhotoHero's textBelowPhoto: Match,
+// species profile). The same neutral gray the photo fades out into, so the photo needs no scrim
+// at all there. PhotoHeroContrastTest proves every hero text line on it (kicker ≈ 9.1:1).
+val PhotoBand = PhotoLoading
+
 // ===== Rust = "do something" (CTA, active tab, stat numbers, stamps) =====
 val AccentCopper = Color(0xFF9A4526)
 val AccentCopperDeep = Color(0xFF72301A) // end of the primary-button gradient

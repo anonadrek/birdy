@@ -1,14 +1,9 @@
 package se.birdy.app.screenshots
 
 import android.graphics.BitmapFactory
-import android.view.View
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalInspectionMode
-import androidx.compose.ui.platform.LocalView
-import androidx.core.graphics.Insets
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import coil3.annotation.ExperimentalCoilApi
 import coil3.asImage
@@ -68,31 +63,3 @@ private const val FIND_PREFIX = "file:///fake/"
 private const val PREMIUM_PHOTO = "files/premium/great-tit-hero.jpg"
 private const val ASSET_PACK_IMAGES = "../asset-pack/src/main/assets/images"
 private const val BENCHMARK_PHOTOS = "src/androidMain/assets/benchmark"
-
-/**
- * Robolectric gives the window no status bar, so a hero drawn behind it never shows what sits
- * under the status-bar icons. [Capture] remembers the compose view; [apply] (call it from
- * `captureScreen`'s `settle`, after a first idle so the root's own zero-inset pass is done)
- * hands that view a status-bar inset of `topPx`. Compose's WindowInsets listen to the view's
- * applied insets, so the hero then lays out exactly as on a phone with that status bar.
- */
-internal class StatusBarInset(
-    private val topPx: Int,
-) {
-    private var view: View? = null
-
-    @Composable
-    fun Capture() {
-        view = LocalView.current
-    }
-
-    fun apply() {
-        val target = checkNotNull(view) { "Capture() was never composed" }
-        val insets =
-            WindowInsetsCompat
-                .Builder()
-                .setInsets(WindowInsetsCompat.Type.statusBars(), Insets.of(0, topPx, 0, 0))
-                .build()
-        ViewCompat.dispatchApplyWindowInsets(target, insets)
-    }
-}

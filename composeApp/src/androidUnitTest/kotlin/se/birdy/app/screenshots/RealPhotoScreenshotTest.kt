@@ -21,6 +21,7 @@ import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.app.testing.FakePremiumRepository
 import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.testing.FakeUserPreferences
+import se.birdy.app.testing.StatusBarInset
 import se.birdy.app.ui.diary.LifelistScreen
 import se.birdy.app.ui.diary.LifelistViewModel
 import se.birdy.app.ui.listen.ListenLauncherScreen

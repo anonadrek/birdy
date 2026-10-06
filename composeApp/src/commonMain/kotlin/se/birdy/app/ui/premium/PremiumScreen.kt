@@ -255,7 +255,8 @@ private fun PremiumHero() {
         kicker = stringResource(Res.string.premium_kicker),
         title = stringResource(Res.string.premium_headline_plain),
         titleAccent = stringResource(Res.string.premium_headline_accent),
-        height = 280.dp,
+        // 280dp + the 24dp the moss page's rounded edge (PaperSheetTop) rides up over the photo.
+        height = 304.dp,
         bottomPadding = PaperSheetOverlap + 18.dp,
         drawBehindStatusBar = true,
         image = { PremiumHeroPhoto() },

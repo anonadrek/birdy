@@ -64,6 +64,7 @@ import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.HeroMossMid
 import se.birdy.app.ui.theme.MossCreme
+import se.birdy.app.ui.theme.PhotoBand
 import se.birdy.app.ui.theme.PhotoLoading
 import se.birdy.app.ui.theme.PhotoScrim
 import se.birdy.app.ui.theme.TextOnHero
@@ -104,9 +105,9 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
  * @param textBelowPhoto false (default) = the photo fills the whole hero behind the text (the
  *   Identify tab's daily bird). true (Match, species profile; 2026-10-06, Albin: the species
  *   must be clearly visible) = the photo keeps [height] at the top (plus the status bar) and the
- *   text block starts under it, overlapping only the photo's bottom [TEXT_OVER_PHOTO], where the
- *   photo fades out into the neutral backdrop. The bird, usually in the middle of the frame, is
- *   then never under the text; the hero grows to photo + text. No effect without a photo.
+ *   text block starts at its bottom edge, on the plain [PhotoBand] with no scrim. The photo's
+ *   last [PHOTO_FADE_OUT] fades out into the band (opacity only), so nothing at all is drawn
+ *   over the bird; the hero grows to photo + text. No effect without a photo.
  * @param bottomContent extra content under the meta row, drawn over the same text-following
  *   scrim as the rest of the text block — it must be light-on-dark, like the rest of this
  *   header. A translucent LIGHT fill (e.g. a glass pill in `White.copy(alpha = 0.16f)`)
@@ -144,7 +145,7 @@ fun PhotoHero(
                 .fillMaxWidth()
                 .heightIn(min = photoHeight)
                 .then(statusBarTracking)
-                .heroBackdrop(hasPhoto = image != null),
+                .heroBackdrop(hasPhoto = image != null, band = photoAbove),
     ) {
         // A caller's image uses fillMaxSize(), which can't size this (possibly taller
         // than `height`) Box by itself — matchParentSize() defers it until this Box's size is
@@ -159,10 +160,11 @@ fun PhotoHero(
             modifier =
                 Modifier
                     .align(Alignment.BottomStart)
-                    // Text below the photo: start where only the photo's faded edge is left.
-                    .padding(top = if (photoAbove) photoHeight - TEXT_OVER_PHOTO else 0.dp)
+                    // Text below the photo: it starts at the photo's bottom edge, on the band.
+                    .padding(top = if (photoAbove) photoHeight else 0.dp)
                     .fillMaxWidth()
-                    .drawTextFollowingScrim(enabled = image != null) // before padding: see its KDoc.
+                    // Only text drawn over the photo needs the scrim; on the band it has none.
+                    .drawTextFollowingScrim(enabled = image != null && !photoAbove) // before padding: see its KDoc.
                     .padding(start = 22.dp, end = 22.dp, bottom = bottomPadding),
         ) {
             MicroLabel(kicker, color = AccentCopperLight)
@@ -263,22 +265,22 @@ private const val TEXT_SCRIM_FADE_STEPS = 8
 
 private fun smoothstep(t: Float): Float = t * t * (1 + 2 * (1 - t))
 
-// How much of the photo's bottom edge the text block may overlap when the text sits below the
-// photo (PhotoHero's textBelowPhoto), and how long the photo takes to fade out into the backdrop
-// there, so the photo has no hard bottom edge behind the kicker.
-internal val TEXT_OVER_PHOTO = 32.dp
+// When the text sits below the photo (PhotoHero's textBelowPhoto): how far up from its bottom
+// edge the photo fades out into the band, so it has no hard edge against the kicker below it.
+private val PHOTO_FADE_OUT = 32.dp
 
 /**
  * Where the photo is drawn: behind the whole hero, or (photoAbove) at the top in its own
- * [height], fading out over its last [TEXT_OVER_PHOTO] into the backdrop. The fade only lowers
- * the photo's own opacity, so what the text sits on there is the neutral backdrop, never a tint.
+ * [height], with the text block starting below it. In that case the photo's last
+ * [PHOTO_FADE_OUT] fades out into the [PhotoBand] behind it; the fade only lowers the photo's own
+ * opacity (no color is added), and no text or scrim is ever drawn over the photo.
  */
 private fun BoxScope.photoArea(
     photoAbove: Boolean,
     height: Dp,
 ): Modifier =
     if (photoAbove) {
-        Modifier.fillMaxWidth().height(height).fadeOutBottom(TEXT_OVER_PHOTO)
+        Modifier.fillMaxWidth().height(height).fadeOutBottom(PHOTO_FADE_OUT)
     } else {
         Modifier.matchParentSize()
     }
@@ -301,11 +303,17 @@ private fun Modifier.fadeOutBottom(fade: Dp): Modifier =
         }
 
 /**
- * What shows behind the photo: a neutral [PhotoLoading] gray while a photo loads (never a green
- * flash before the bird), or the designed moss gradient when there is no photo at all.
+ * What shows behind the photo: the [PhotoBand] the name sits on when the text is below the photo
+ * ([band]), a neutral [PhotoLoading] gray while a full-hero photo loads (never a green flash
+ * before the bird), or the designed moss gradient when there is no photo at all.
  */
-private fun Modifier.heroBackdrop(hasPhoto: Boolean): Modifier =
-    if (hasPhoto) {
+private fun Modifier.heroBackdrop(
+    hasPhoto: Boolean,
+    band: Boolean,
+): Modifier =
+    if (band) {
+        background(PhotoBand)
+    } else if (hasPhoto) {
         background(PhotoLoading)
     } else {
         background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid, HeroMossDeep)))

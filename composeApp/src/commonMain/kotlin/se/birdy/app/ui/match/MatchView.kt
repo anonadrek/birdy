@@ -5,14 +5,18 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
@@ -40,6 +44,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -100,6 +105,41 @@ import se.birdy.ml.ScanSource
 // unweighted children — this Box — before it hands the rest of the width to weight(1f)).
 private val StampColumnMaxWidth = 104.dp
 
+// The Match photo sits above the name (PhotoHero's textBelowPhoto), which makes the hero taller,
+// and "Spara observation" below it is this screen's main action: it must be in view without
+// scrolling, also with larger text (2026-10-06). So the photo takes the room that is left above
+// everything that follows it, between MATCH_PHOTO_MIN and MATCH_PHOTO_MAX. MATCH_BELOW_PHOTO is
+// what follows the photo down to the bottom of the save button (name, latin name, match bar,
+// paper sheet with stamp, note field, button) at 100% text on a 360dp-wide phone, and it grows by
+// MATCH_BELOW_PHOTO_PER_FONT_SCALE per +1.0 of font scale (measured 2026-10-06: 379dp, +88.5dp).
+// MatchSaveButtonFoldTest checks the result on a 360x800dp phone at 100%, 130% and 200% text;
+// re-measure there if the content below the photo changes.
+internal val MATCH_PHOTO_MAX = 260.dp
+internal val MATCH_PHOTO_MIN = 160.dp
+private val MATCH_BELOW_PHOTO = 380.dp
+private val MATCH_BELOW_PHOTO_PER_FONT_SCALE = 90.dp
+private val MATCH_FOLD_MARGIN = 8.dp
+
+/**
+ * The Match photo's height for a screen whose visible area is [viewportHeight] tall (the hero
+ * draws behind the [statusBar], so that height comes off the top) at [fontScale].
+ */
+internal fun matchPhotoHeight(
+    viewportHeight: Dp,
+    statusBar: Dp,
+    fontScale: Float,
+): Dp {
+    val belowPhoto = MATCH_BELOW_PHOTO + MATCH_BELOW_PHOTO_PER_FONT_SCALE * (fontScale - 1f).coerceAtLeast(0f)
+    return (viewportHeight - statusBar - belowPhoto - MATCH_FOLD_MARGIN).coerceIn(MATCH_PHOTO_MIN, MATCH_PHOTO_MAX)
+}
+
+@Composable
+private fun rememberMatchPhotoHeight(viewportHeight: Dp): Dp {
+    val statusBar = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
+    val fontScale = LocalDensity.current.fontScale
+    return remember(viewportHeight, statusBar, fontScale) { matchPhotoHeight(viewportHeight, statusBar, fontScale) }
+}
+
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 internal fun MatchView(
@@ -143,7 +183,8 @@ internal fun MatchView(
     val isSaved = state.saveStatus == MatchResultUiState.SaveStatus.Saved
     val isSaving = state.saveStatus == MatchResultUiState.SaveStatus.Saving
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+        val photoHeight = rememberMatchPhotoHeight(viewportHeight = maxHeight)
         Column(
             modifier =
                 Modifier
@@ -164,10 +205,9 @@ internal fun MatchView(
                 kicker = stringResource(Res.string.match_eyebrow, state.stampNumber),
                 title = state.species.name,
                 latinName = state.species.scientificName,
-                // The photo keeps the top 260dp and the name sits below it, so the whole bird
-                // is in view (2026-10-06). 20dp less than the species profile: the save button
-                // below is this screen's main action and should stay high on short phones.
-                height = 260.dp,
+                // The photo sits above the name, so the whole bird is in view (2026-10-06); its
+                // height gives way so the save button stays in view (see matchPhotoHeight).
+                height = photoHeight,
                 bottomPadding = PaperSheetOverlap + 18.dp,
                 drawBehindStatusBar = true,
                 textBelowPhoto = true,
