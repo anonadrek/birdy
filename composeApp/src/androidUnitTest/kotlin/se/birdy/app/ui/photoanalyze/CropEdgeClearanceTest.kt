@@ -48,22 +48,42 @@ class CropEdgeClearanceTest {
         attachComposeResourcesContext()
     }
 
-    /** A wide (it fills the width) solid red photo. */
-    private fun redWidePhoto(): ImageBitmap {
-        val photo = ImageBitmap(800, 400)
-        Canvas(photo).drawRect(Rect(0f, 0f, 800f, 400f), Paint().apply { color = Color.Red })
+    /** A solid red photo of the given size. */
+    private fun redPhoto(
+        width: Int,
+        height: Int,
+    ): ImageBitmap {
+        val photo = ImageBitmap(width, height)
+        Canvas(photo).drawRect(Rect(0f, 0f, width.toFloat(), height.toFloat()), Paint().apply { color = Color.Red })
         return photo
     }
 
-    /** Shows the crop screen with a wide photo and returns the host view. */
-    private fun showWideCrop(): View {
+    /** Shows the crop screen with a wide photo (it fills the width) and returns the host view. */
+    private fun showWideCrop(): View = showCrop(redPhoto(800, 400))
+
+    private fun showCrop(photo: ImageBitmap): View {
         lateinit var view: View
         compose.setContent {
             view = LocalView.current
-            CropAdjustScreen(image = redWidePhoto(), onRotate = {}, onConfirm = {}, onCancel = {})
+            CropAdjustScreen(image = photo, onRotate = {}, onConfirm = {}, onCancel = {})
         }
         compose.waitForIdle()
         return view
+    }
+
+    private fun drawn(view: View): android.graphics.Bitmap =
+        compose.runOnIdle {
+            android.graphics.Bitmap.createBitmap(view.width, view.height, android.graphics.Bitmap.Config.ARGB_8888).also {
+                view.draw(android.graphics.Canvas(it))
+            }
+        }
+
+    private fun android.graphics.Bitmap.isRedAt(
+        x: Int,
+        y: Int,
+    ): Boolean {
+        val pixel = getPixel(x, y)
+        return android.graphics.Color.red(pixel) > 200 && android.graphics.Color.green(pixel) < 60
     }
 
     private fun assertCropAreaClearOfEdges(minClearance: Dp) {
@@ -112,5 +132,26 @@ class CropEdgeClearanceTest {
         assertTrue(!isRed(pixels.width - 2), "the photo ends at the right screen edge")
         assertTrue(isRed(margin * 3), "the photo should be drawn just inside the left margin")
         assertTrue(isRed(pixels.width - margin * 3), "the photo should be drawn just inside the right margin")
+    }
+
+    /**
+     * Plan 3 Task 7 review: a tall photo fills the crop area's height, which put its top
+     * handles half outside the area (and out of its touch area). The margin applies vertically too.
+     */
+    @Test
+    fun `a tall photo is drawn clear of the top and bottom of the crop area`() {
+        val view = showCrop(redPhoto(300, 900))
+        val pixels = drawn(view)
+        val crop = compose.onNodeWithContentDescription(cropHintSv).getUnclippedBoundsInRoot()
+        val (top, bottom, midX) =
+            with(compose.density) {
+                Triple(crop.top.roundToPx(), crop.bottom.roundToPx(), ((crop.left + crop.right) / 2).roundToPx())
+            }
+        val margin = with(compose.density) { 8.dp.roundToPx() }
+
+        assertTrue(!pixels.isRedAt(midX, top + 1), "the photo starts at the top of the crop area")
+        assertTrue(!pixels.isRedAt(midX, bottom - 2), "the photo ends at the bottom of the crop area")
+        assertTrue(pixels.isRedAt(midX, top + margin * 3), "the photo should be drawn just inside the top margin")
+        assertTrue(pixels.isRedAt(midX, bottom - margin * 3), "the photo should be drawn just inside the bottom margin")
     }
 }

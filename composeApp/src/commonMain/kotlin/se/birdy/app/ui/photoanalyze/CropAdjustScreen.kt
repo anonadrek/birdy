@@ -98,8 +98,8 @@ fun CropAdjustScreen(
                     // gesture: dragging a corner inward closed the crop screen instead of cropping
                     // (Release 1.3.0 Plan 3 Task 7, API 36 emulator). Keep clear of the gesture
                     // zones (zero with button navigation). The photo itself is drawn a further
-                    // CROP_EDGE_MARGIN inside the canvas (see fitMapping), so the handles show
-                    // whole and their outer half still sits inside the canvas's touch area.
+                    // CROP_EDGE_MARGIN inside the canvas on every side (see fitMapping), so the
+                    // handles show whole and their outer half still sits inside the touch area.
                     .windowInsetsPadding(WindowInsets.systemGestures.only(WindowInsetsSides.Horizontal)),
             contentAlignment = Alignment.Center,
         ) {
@@ -212,16 +212,21 @@ private data class FitMapping(
     val dispHeight: Float,
 )
 
-/** ContentScale.Fit of the photo into [box], keeping [insetX] free at the left and right. */
+/**
+ * ContentScale.Fit of the photo into [box], keeping [inset] free on every side: a wide photo used
+ * to touch the left and right edges, a tall one the top and bottom, with the corner handles half
+ * outside the canvas and its touch area (Plan 3 Task 7 and its review).
+ */
 private fun fitMapping(
     box: IntSize,
     srcWidth: Int,
     srcHeight: Int,
-    insetX: Float,
+    inset: Float,
 ): FitMapping {
-    val availWidth = box.width - 2f * insetX
-    if (availWidth <= 0f || box.height == 0) return FitMapping(1f, 0f, 0f, srcWidth.toFloat(), srcHeight.toFloat())
-    val scale = minOf(availWidth / srcWidth, box.height.toFloat() / srcHeight)
+    val availWidth = box.width - 2f * inset
+    val availHeight = box.height - 2f * inset
+    if (availWidth <= 0f || availHeight <= 0f) return FitMapping(1f, 0f, 0f, srcWidth.toFloat(), srcHeight.toFloat())
+    val scale = minOf(availWidth / srcWidth, availHeight / srcHeight)
     val dispW = srcWidth * scale
     val dispH = srcHeight * scale
     return FitMapping(
