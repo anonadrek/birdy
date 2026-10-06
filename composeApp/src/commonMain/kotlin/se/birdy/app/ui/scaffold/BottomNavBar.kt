@@ -1,6 +1,7 @@
 package se.birdy.app.ui.scaffold
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -36,6 +38,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,6 +51,7 @@ import birdy_bird_scanner.composeapp.generated.resources.tab_archive
 import birdy_bird_scanner.composeapp.generated.resources.tab_badges
 import birdy_bird_scanner.composeapp.generated.resources.tab_lifelist
 import birdy_bird_scanner.composeapp.generated.resources.tab_listen
+import birdy_bird_scanner.composeapp.generated.resources.tab_listen_daily_bird_new
 import birdy_bird_scanner.composeapp.generated.resources.tab_map
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
@@ -90,8 +94,15 @@ private val tabs =
         TabSpec(AppRoute.Map, Res.string.tab_map, Icons.Outlined.Map),
     )
 
+/**
+ * [dailyBirdDot]: a rust dot on the Identify tab while today's Dagens fågel hasn't been opened
+ * (release 1.3.0 Task 7d; AppScaffold passes DailyBirdTracker.showTabDot).
+ */
 @Composable
-fun BottomNavBar(navController: NavHostController) {
+fun BottomNavBar(
+    navController: NavHostController,
+    dailyBirdDot: Boolean = false,
+) {
     val backStackEntry by navController.currentBackStackEntryAsState()
     Row(
         modifier =
@@ -122,6 +133,7 @@ fun BottomNavBar(navController: NavHostController) {
             TabCell(
                 tab = tab,
                 selected = selected,
+                showDot = dailyBirdDot && tab.route == AppRoute.Listen,
                 onClick = {
                     // If already inside this tab but on a sub-screen, pop back to the tab root
                     // so tapping the Identify tab from Scan/PhotoAnalyze/AudioScan returns to
@@ -148,10 +160,12 @@ fun BottomNavBar(navController: NavHostController) {
 private fun TabCell(
     tab: TabSpec,
     selected: Boolean,
+    showDot: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val color = if (selected) AccentCopper else InkMuted
+    val dotDescription = stringResource(Res.string.tab_listen_daily_bird_new)
     Column(
         modifier =
             modifier
@@ -161,12 +175,16 @@ private fun TabCell(
                 .semantics(mergeDescendants = true) {
                     this.selected = selected
                     role = Role.Tab
+                    if (showDot) stateDescription = dotDescription
                 },
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         // contentDescription = null: the Text label below is merged via mergeDescendants
         // and serves as the announcement for TalkBack.
-        Icon(tab.icon, contentDescription = null, tint = color)
+        Box {
+            Icon(tab.icon, contentDescription = null, tint = color)
+            if (showDot) NewDot(Modifier.align(Alignment.TopEnd))
+        }
         Spacer(Modifier.height(2.dp))
         Text(
             text = stringResource(tab.label),
@@ -189,6 +207,20 @@ private fun TabCell(
                     .let { m -> if (selected) m.clip(CircleShape).background(AccentCopper) else m },
         )
     }
+}
+
+/** Mockup: an 8px rust dot at the icon's top right, ringed in the bar's own colour. */
+@Composable
+private fun NewDot(modifier: Modifier = Modifier) {
+    Box(
+        modifier =
+            modifier
+                .offset(x = 4.dp, y = (-2).dp)
+                .size(10.dp)
+                .clip(CircleShape)
+                .background(AccentCopper)
+                .border(2.dp, PaperBottomBar, CircleShape),
+    )
 }
 
 private fun NavDestination.parentChain(): Sequence<NavDestination> = generateSequence(this) { it.parent }

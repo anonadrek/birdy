@@ -38,19 +38,16 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
-import birdy_bird_scanner.composeapp.generated.resources.daily_bird_card_a11y
-import birdy_bird_scanner.composeapp.generated.resources.daily_bird_card_eyebrow
-import birdy_bird_scanner.composeapp.generated.resources.daily_bird_caught_today
-import birdy_bird_scanner.composeapp.generated.resources.daily_bird_eyebrow_breeding
-import birdy_bird_scanner.composeapp.generated.resources.daily_bird_eyebrow_migrating
-import birdy_bird_scanner.composeapp.generated.resources.daily_bird_eyebrow_present
-import birdy_bird_scanner.composeapp.generated.resources.daily_bird_not_caught
+import birdy_bird_scanner.composeapp.generated.resources.daily_bird_hero_a11y
+import birdy_bird_scanner.composeapp.generated.resources.daily_bird_kicker_fmt
+import birdy_bird_scanner.composeapp.generated.resources.daily_bird_read_more
 import birdy_bird_scanner.composeapp.generated.resources.gear_content_description
 import birdy_bird_scanner.composeapp.generated.resources.listen_card_audio_body
 import birdy_bird_scanner.composeapp.generated.resources.listen_card_audio_title
@@ -63,10 +60,15 @@ import birdy_bird_scanner.composeapp.generated.resources.listen_journal_label
 import birdy_bird_scanner.composeapp.generated.resources.listen_journal_sub
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.dailybird.DailyBirdToday
+import se.birdy.app.dailybird.challenge
 import se.birdy.app.ui.components.GearButton
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.hairlineBottom
+import se.birdy.app.ui.dailybird.DailyBirdHeroActions
+import se.birdy.app.ui.dailybird.DailyBirdHeroChallengeRow
+import se.birdy.app.ui.dailybird.dailyBirdDateLabel
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.AccentCopperDeep
 import se.birdy.app.ui.theme.CardPaper
@@ -77,7 +79,6 @@ import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.paperBackground
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.app.util.speciesImageUri
-import se.birdy.domain.dailybird.SeasonTag
 
 @Composable
 fun ListenLauncherScreen(
@@ -124,9 +125,14 @@ fun ListenLauncherScreen(
                     )
                 }
             }
-            val ui = dailyBirdState
-            if (ui != null) {
-                DailyBirdHero(ui = ui, onClick = { onSpeciesProfileClick(ui.speciesId) }, topBar = gearOnHero)
+            val bird = dailyBirdState
+            if (bird != null) {
+                DailyBirdHero(
+                    bird = bird,
+                    onReadMore = { onSpeciesProfileClick(bird.speciesId) },
+                    onListen = viewModel::onAudioCardTap,
+                    topBar = gearOnHero,
+                )
             } else {
                 Box(Modifier.fillMaxWidth().statusBarsPadding().padding(top = 8.dp), content = gearOnPaper)
             }
@@ -165,48 +171,42 @@ fun ListenLauncherScreen(
 }
 
 /**
- * Today's bird as the screen's [PhotoHero]: species name as the title, the season line as the
- * subtitle, caught-today status + progress ("x / target") as the meta row. Replaces the old
- * moss-card `DailyBirdCard` (spec 2026-09-24 §4.4.1). [topBar] renders the gear button so it
- * still reaches its own, independently focusable semantics node (see mergeDescendants note
- * below) even though it's drawn over the hero.
+ * Today's bird as the screen's [PhotoHero] (release 1.3.0 Task 7d, design option B): the date in
+ * the kicker, the species name, the scientific name where the season line used to be ("Här just
+ * nu" read the same nearly every day), two actions and the challenge row toward Dagens
+ * fågel-jägare. Everything new sits in PhotoHero's own bottomContent slot, on the hero's existing
+ * text area: no overlay of its own.
+ *
+ * The whole photo still opens the profile, as before; the hero is one merged TalkBack node (date,
+ * names and the challenge sentence), while the two buttons and [topBar]'s gear stay separately
+ * focusable because clickable() makes each its own merge boundary.
  */
 @Composable
 private fun DailyBirdHero(
-    ui: ListenLauncherViewModel.DailyBirdUi,
-    onClick: () -> Unit,
+    bird: DailyBirdToday,
+    onReadMore: () -> Unit,
+    onListen: () -> Unit,
     topBar: @Composable BoxScope.() -> Unit,
 ) {
-    val seasonText =
-        stringResource(
-            when (ui.seasonTag) {
-                SeasonTag.BREEDING -> Res.string.daily_bird_eyebrow_breeding
-                SeasonTag.PRESENT -> Res.string.daily_bird_eyebrow_present
-                SeasonTag.MIGRATING -> Res.string.daily_bird_eyebrow_migrating
-            },
-        )
-    val a11y = stringResource(Res.string.daily_bird_card_a11y, ui.name, seasonText)
-    val caught =
-        stringResource(if (ui.caughtToday) Res.string.daily_bird_caught_today else Res.string.daily_bird_not_caught)
+    val date = dailyBirdDateLabel(bird.date)
+    val a11y = stringResource(Res.string.daily_bird_hero_a11y, date, bird.name, bird.scientificName)
+    // PhotoHero grows to fit its text block, but the block doesn't keep clear of the gear row: with
+    // the buttons and the challenge row at large font scales it reached the top and drew the kicker
+    // under the gear (identify_sv_200). The minimum height grows with the font scale instead, which
+    // leaves the gear row free up to 2.0 even with a two-line name, scientific name and buttons.
+    val fontScale = LocalDensity.current.fontScale.coerceAtLeast(1f)
     PhotoHero(
-        kicker = stringResource(Res.string.daily_bird_card_eyebrow),
-        title = ui.name,
-        subtitle = seasonText,
-        metaStart = caught,
-        metaEnd = "${ui.matchCount} / ${ui.huntTarget}",
-        height = 300.dp,
+        kicker = stringResource(Res.string.daily_bird_kicker_fmt, date),
+        title = bird.name,
+        subtitle = bird.scientificName,
+        height = HeroMinHeight + HeroGrowthPerFontScale * (fontScale - 1f),
         drawBehindStatusBar = true,
-        // mergeDescendants collapses PhotoHero's own kicker/title/subtitle/meta text nodes into
-        // this one contentDescription — but it does NOT swallow topBar's GearButton: clickable()
-        // makes the gear its own merge boundary, so it stays independently focusable (verified
-        // in IdentifyScreenshotTest via onNodeWithContentDescription + assertHasClickAction on
-        // both nodes).
         modifier =
             Modifier
-                .clickable(onClick = onClick)
+                .clickable(onClickLabel = stringResource(Res.string.daily_bird_read_more), onClick = onReadMore)
                 .semantics(mergeDescendants = true) { contentDescription = a11y },
         image =
-            ui.heroImagePath?.let { path ->
+            bird.heroImagePath?.let { path ->
                 {
                     AsyncImage(
                         model = speciesImageUri(path),
@@ -217,8 +217,22 @@ private fun DailyBirdHero(
                 }
             },
         topBar = topBar,
+        bottomContent = {
+            DailyBirdHeroActions(
+                onReadMore = onReadMore,
+                onListen = onListen,
+                modifier = Modifier.padding(top = 6.dp),
+            )
+            DailyBirdHeroChallengeRow(
+                challenge = bird.challenge(),
+                modifier = Modifier.padding(top = 6.dp),
+            )
+        },
     )
 }
+
+private val HeroMinHeight = 380.dp
+private val HeroGrowthPerFontScale = 230.dp
 
 private enum class LaunchCardVariant { Primary, Secondary }
 

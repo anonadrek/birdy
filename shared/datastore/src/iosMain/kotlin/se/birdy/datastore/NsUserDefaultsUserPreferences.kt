@@ -42,6 +42,7 @@ internal class NsUserDefaultsUserPreferences(
         const val GRANDFATHER_LEGACY_CAPTURED = "grandfather_legacy_captured"
         const val GRANDFATHER_LEGACY_INSTALL_MS = "grandfather_legacy_install_ms"
         const val GRANDFATHER_TRUSTED_FIRST_SEEN_MS = "grandfather_trusted_first_seen_ms"
+        const val DAILY_BIRD_OPENED_DATE = "daily_bird_opened_date"
     }
 
     // ---- NSUserDefaults primitives ----
@@ -115,6 +116,7 @@ internal class NsUserDefaultsUserPreferences(
     private val _grandfatherLegacyInstallMs = MutableStateFlow(getLongOrNull(Keys.GRANDFATHER_LEGACY_INSTALL_MS))
     private val _grandfatherTrustedFirstSeenMs =
         MutableStateFlow(getLongOrNull(Keys.GRANDFATHER_TRUSTED_FIRST_SEEN_MS))
+    private val _dailyBirdOpenedDate = MutableStateFlow(defaults.stringForKey(Keys.DAILY_BIRD_OPENED_DATE))
 
     override val userName: Flow<String> = _userName.asStateFlow()
     override val hasSeenOnboarding: Flow<Boolean> = _hasSeenOnboarding.asStateFlow()
@@ -139,6 +141,7 @@ internal class NsUserDefaultsUserPreferences(
     override val grandfatherLegacyCaptured: Flow<Boolean> = _grandfatherLegacyCaptured.asStateFlow()
     override val grandfatherLegacyInstallMs: Flow<Long?> = _grandfatherLegacyInstallMs.asStateFlow()
     override val grandfatherTrustedFirstSeenMs: Flow<Long?> = _grandfatherTrustedFirstSeenMs.asStateFlow()
+    override val dailyBirdOpenedDate: Flow<String?> = _dailyBirdOpenedDate.asStateFlow()
 
     override suspend fun setUserName(name: String) {
         putString(Keys.USER_NAME, name)
@@ -255,5 +258,10 @@ internal class NsUserDefaultsUserPreferences(
     override suspend fun setGrandfatherTrustedFirstSeenMs(ms: Long) {
         putLong(Keys.GRANDFATHER_TRUSTED_FIRST_SEEN_MS, ms)
         _grandfatherTrustedFirstSeenMs.value = ms
+    }
+
+    override suspend fun setDailyBirdOpenedDate(date: String) {
+        putString(Keys.DAILY_BIRD_OPENED_DATE, date)
+        _dailyBirdOpenedDate.value = date
     }
 }

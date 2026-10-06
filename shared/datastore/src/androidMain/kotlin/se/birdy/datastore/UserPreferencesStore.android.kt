@@ -58,6 +58,7 @@ private class AndroidUserPreferences(
         val GRANDFATHER_LEGACY_CAPTURED = booleanPreferencesKey("grandfather_legacy_captured")
         val GRANDFATHER_LEGACY_INSTALL_MS = longPreferencesKey("grandfather_legacy_install_ms")
         val GRANDFATHER_TRUSTED_FIRST_SEEN_MS = longPreferencesKey("grandfather_trusted_first_seen_ms")
+        val DAILY_BIRD_OPENED_DATE = stringPreferencesKey("daily_bird_opened_date")
     }
 
     override val userName: Flow<String> = safeData.map { it[Keys.USER_NAME] ?: "" }
@@ -113,6 +114,7 @@ private class AndroidUserPreferences(
         safeData.map { it[Keys.GRANDFATHER_LEGACY_INSTALL_MS]?.takeIf { ms -> ms > 0L } }
     override val grandfatherTrustedFirstSeenMs: Flow<Long?> =
         safeData.map { it[Keys.GRANDFATHER_TRUSTED_FIRST_SEEN_MS]?.takeIf { ms -> ms > 0L } }
+    override val dailyBirdOpenedDate: Flow<String?> = safeData.map { it[Keys.DAILY_BIRD_OPENED_DATE] }
 
     override suspend fun setUserName(name: String) {
         store.edit { it[Keys.USER_NAME] = name }
@@ -208,5 +210,9 @@ private class AndroidUserPreferences(
 
     override suspend fun setGrandfatherTrustedFirstSeenMs(ms: Long) {
         store.edit { it[Keys.GRANDFATHER_TRUSTED_FIRST_SEEN_MS] = ms }
+    }
+
+    override suspend fun setDailyBirdOpenedDate(date: String) {
+        store.edit { it[Keys.DAILY_BIRD_OPENED_DATE] = date }
     }
 }

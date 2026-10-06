@@ -1,9 +1,9 @@
 package se.birdy.app.notifications
 
 import birdy_bird_scanner.composeapp.generated.resources.Res
-import birdy_bird_scanner.composeapp.generated.resources.notification_daily_bird_body_breeding
-import birdy_bird_scanner.composeapp.generated.resources.notification_daily_bird_body_migrating
-import birdy_bird_scanner.composeapp.generated.resources.notification_daily_bird_body_present
+import birdy_bird_scanner.composeapp.generated.resources.daily_bird_listen_for_it
+import birdy_bird_scanner.composeapp.generated.resources.daily_bird_read_more
+import birdy_bird_scanner.composeapp.generated.resources.notification_daily_bird_body
 import birdy_bird_scanner.composeapp.generated.resources.notification_daily_bird_title_fmt
 import birdy_bird_scanner.composeapp.generated.resources.notification_recap_active_body_fmt
 import birdy_bird_scanner.composeapp.generated.resources.notification_recap_active_title
@@ -28,17 +28,36 @@ import se.birdy.datastore.UserPreferences
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeRepository
 import se.birdy.domain.dailybird.DailyBird
-import se.birdy.domain.dailybird.SeasonTag
 import se.birdy.domain.observation.ObservationRepository
+
+/** `birdy://` deep links that AppScaffold routes. */
+object BirdyDeepLinks {
+    fun species(speciesId: String): String = "birdy://species/$speciesId"
+
+    /** Audio ID (the Lyssna screen); added for the daily-bird notification in release 1.3.0. */
+    const val AUDIO = "birdy://audio"
+}
+
+/** A notification button: its label and the deep link it opens. */
+data class NotificationAction(
+    val label: String,
+    val deepLink: String,
+)
 
 /**
  * Platform-agnostic content for a single push notification. Android turns this
  * into a `NotificationCompat` build; iOS (i4) into a `UNMutableNotificationContent`.
+ *
+ * [imagePath] (relative to the bundled species images, see `speciesImageUri`) and [actions] are
+ * the daily-bird notification's photo and buttons (release 1.3.0 Task 7d). Android shows them;
+ * iOS still shows title and body only (a follow-up).
  */
 data class NotificationContent(
     val title: String,
     val body: String,
     val deepLink: String,
+    val imagePath: String? = null,
+    val actions: List<NotificationAction> = emptyList(),
 )
 
 /**
@@ -66,15 +85,31 @@ class NotificationPayloads(
     private val timeZone: TimeZone,
     private val clock: Clock,
 ) {
+    /**
+     * 08:00 "Dagens fågel: Sävsångare". Release 1.3.0 Task 7d: the body invites a catch instead of
+     * the season line ("Här just nu." read the same nearly every day) and the notification carries
+     * the species photo plus "Läs om arten" and "Lyssna efter den". A find saved from the camera, a
+     * photo or a recording all count: every save goes through SaveObservationUseCase, which marks
+     * the catch when the saved species is that day's bird.
+     */
     suspend fun dailyBird(date: LocalDate): NotificationContent? {
         if (!prefs.dailyBirdPushEnabled.first()) return null
         val selector = selectDailyBird ?: return null
         val bird = selector(date) ?: return null
         val displayName = speciesNameFor(bird.speciesId) ?: bird.speciesId
+        val speciesLink = BirdyDeepLinks.species(bird.speciesId)
         return NotificationContent(
             title = getString(Res.string.notification_daily_bird_title_fmt, displayName),
-            body = getString(seasonBodyRes(bird.seasonTag)),
-            deepLink = "birdy://species/${bird.speciesId}",
+            body = getString(Res.string.notification_daily_bird_body),
+            deepLink = speciesLink,
+            // Through speciesByQid (memoised on iOS) rather than a new constructor parameter, so the
+            // three platform wirings of this class stay as they are.
+            imagePath = heroPathOf(speciesByQid()[SpeciesId(bird.speciesId)]),
+            actions =
+                listOf(
+                    NotificationAction(getString(Res.string.daily_bird_read_more), speciesLink),
+                    NotificationAction(getString(Res.string.daily_bird_listen_for_it), BirdyDeepLinks.AUDIO),
+                ),
         )
     }
 
@@ -150,13 +185,6 @@ class NotificationPayloads(
         )
     }
 
-    private fun seasonBodyRes(tag: SeasonTag) =
-        when (tag) {
-            SeasonTag.BREEDING -> Res.string.notification_daily_bird_body_breeding
-            SeasonTag.PRESENT -> Res.string.notification_daily_bird_body_present
-            SeasonTag.MIGRATING -> Res.string.notification_daily_bird_body_migrating
-        }
-
     companion object {
         fun from(graph: AppGraph): NotificationPayloads =
             NotificationPayloads(
@@ -176,5 +204,8 @@ class NotificationPayloads(
                 timeZone = graph.timeZone,
                 clock = graph.clock,
             )
+
+        /** The species' hero photo path, as the hero and the strips use it. */
+        fun heroPathOf(species: Species?): String? = species?.images?.firstOrNull { it.role == "hero" }?.path
     }
 }

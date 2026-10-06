@@ -140,6 +140,10 @@ import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
 import se.birdy.datastore.ArchiveSort
 
+// Pre-existing debt (LongParameterList/LongMethod/CyclomaticComplexMethod in detekt-baseline.xml): detekt keys
+// baseline entries by the signature text, so Task 7d's two daily-bird parameters re-key them without
+// changing the function's real size. Suppressed here instead of growing the baseline (AppScaffold precedent).
+@Suppress("LongParameterList", "LongMethod", "CyclomaticComplexMethod")
 @OptIn(ExperimentalMaterial3Api::class, androidx.compose.foundation.ExperimentalFoundationApi::class)
 @Composable
 fun ArchiveScreen(
@@ -155,6 +159,8 @@ fun ArchiveScreen(
     showDebugDiagnostics: Boolean = false,
     onDebugDiagnosticsClick: () -> Unit = {},
     onSettingsClick: () -> Unit = {},
+    dailyBird: se.birdy.app.dailybird.DailyBirdToday? = null,
+    onDailyBirdClick: (speciesId: String) -> Unit = {},
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val query by viewModel.query.collectAsStateWithLifecycle()
@@ -230,6 +236,17 @@ fun ArchiveScreen(
                             }
                         }
                     }
+                }
+            }
+
+            // Release 1.3.0 Task 7d (design option B): the Dagens fågel strip, above the search field.
+            if (dailyBird != null) {
+                item(key = "daily-bird") {
+                    se.birdy.app.ui.dailybird.DailyBirdStrip(
+                        bird = dailyBird,
+                        onClick = { onDailyBirdClick(dailyBird.speciesId) },
+                        modifier = Modifier.padding(bottom = 12.dp),
+                    )
                 }
             }
 
