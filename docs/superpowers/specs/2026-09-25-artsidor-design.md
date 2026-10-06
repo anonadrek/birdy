@@ -535,6 +535,8 @@ Faktabladen tas fram och kontrolleras automatiskt (V1 till V4) för alla 180 art
 - **Bildlicenser:** bara CC0, public domain, CC BY och CC BY-SA, aldrig NC eller ND; beskärning och text runt bilden räknas som bearbetning; krediten skrivs i bildtexten ("Foto: X, licens, via Wikimedia Commons, beskuren"). Filtret ligger i koden som väljer bild, inte i manuell kontroll.
 - **Senare:** en kort video med artens läte ("vems sång är det här?") som andra mall för Reels och TikTok.
 
+**Samlad lansering (Albins idé 2026-10-06):** inläggen följer artsidorna sida för sida, och starten samordnas: appen 1.3.0 ligger redan ute (med nya butiksbilder), artsidornas första publiceringar, de första inläggen och utskicken i §15 sker samma vecka, så att webben, SEO, sociala medier och den nya appen drar åt samma håll. Agenten tar fram en lanseringskalender när fas 2:s publiceringsloop är klar.
+
 **Språk (Albins beslut 2026-10-06): alla sociala kanaler är på engelska.** Bildtext och text i bilden på engelska, länken går till den engelska artsidan (`/species/<slug>/`), det svenska namnet kan stå inom parentes.
 
 **Inläggens struktur (förslag 2026-10-06, Albin väljer mall; texterna nedan blir engelska):** allt text- och bildinnehåll fylls i av kod ur den kontrollerade artposten (inga nya påståenden, inga modellanrop, ingen kostnad).
