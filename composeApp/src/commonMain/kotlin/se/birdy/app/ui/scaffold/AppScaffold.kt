@@ -23,6 +23,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.LifecycleStartEffect
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavGraphBuilder
@@ -48,6 +49,7 @@ import se.birdy.app.premium.awaitBillingAnswer
 import se.birdy.app.ui.audio.AudioScanScreenHost
 import se.birdy.app.ui.components.CaveatToast
 import se.birdy.app.ui.components.LocalStatusBarBackdrop
+import se.birdy.app.ui.components.PlatformNavigationBarIcons
 import se.birdy.app.ui.components.PlatformStatusBarIcons
 import se.birdy.app.ui.components.StatusBarBackdrop
 import se.birdy.app.ui.diary.LifelistScreen
@@ -245,6 +247,10 @@ fun AppScaffold(
     val heroRoute = bottomBarEntry?.destination?.isHeroRoute() == true
     val statusBarBackdrop = remember { StatusBarBackdrop() }
     StatusBarIcons(heroRoute = heroRoute, backdrop = statusBarBackdrop)
+    // Release 1.3.0 Task 7g: the Premium screens (purchase and thank-you) are dark moss down to
+    // the bottom edge, where three-button navigation draws its buttons; everywhere else that edge
+    // is the paper bottom bar (or the paper intro replay).
+    PlatformNavigationBarIcons(lightIcons = bottomBarEntry?.destination?.hasRoute(AppRoute.Premium::class) == true)
     // The bottom bar already pads the navigation bar; with it hidden the screen pads it itself.
     val navBarsHandledByBottomBar = if (hideBottomBar) WindowInsets(0, 0, 0, 0) else WindowInsets.navigationBars
     Scaffold(
@@ -376,7 +382,13 @@ private fun NavGraphBuilder.appDestinations(
             BelowStatusBar {
                 val dailyBird by graph.dailyBirdTracker.state.collectAsState()
                 ArchiveScreen(
-                    viewModel = remember(graph) { graph.archiveViewModel() },
+                    // Scoped to this NavHost entry (release 1.3.0 Task 7g), not a `remember`: the
+                    // entry stays on the back stack while a species profile covers it, so the search
+                    // text, results and scroll position are still there on the way back. Keyed on
+                    // the graph: a language switch recreates the activity with a new AppGraph (new
+                    // locale, new billing client) while the entry's ViewModels survive, and the
+                    // list must then come from the new graph (review fix I1).
+                    viewModel = viewModel(key = "archive-${graph.hashCode()}") { graph.archiveViewModel() },
                     locale = graph.defaultLocale,
                     onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id.raw)) },
                     onPremiumClick = { navController.navigate(AppRoute.Premium) },

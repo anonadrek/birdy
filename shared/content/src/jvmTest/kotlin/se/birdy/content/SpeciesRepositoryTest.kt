@@ -1,6 +1,7 @@
 package se.birdy.content
 
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
+import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -402,4 +403,100 @@ class SpeciesRepositoryTest {
             // genuinely isolates family-blob matching.
             assertEquals(1, repo.search("falconidae", Locale.EN, SpeciesFilter()).first().size)
         }
+
+    // Release 1.3.0 Task 7g item 3: SQLite ordered these Bläsand, Blåhake, Blåmes, Koltrast
+    // (prefix first, then by the name's bytes, where ä sorts before å).
+    @Test
+    fun `search puts the best matches first`() =
+        runTest {
+            val db = newInMemoryDb()
+            db.seedSpecies(
+                "Q28106837",
+                "Mareca penelope",
+                "Anatidae",
+                "Andfåglar",
+                "Mareca",
+                sv = "Bläsand",
+                en = "Eurasian Wigeon",
+                abundance = "allmän",
+            )
+            db.seedSpecies(
+                "Q26578",
+                "Luscinia svecica",
+                "Muscicapidae",
+                "Flugsnappare",
+                "Luscinia",
+                sv = "Blåhake",
+                en = "Bluethroat",
+                abundance = "allmän",
+            )
+            db.seedSpecies(
+                "Q25404",
+                "Cyanistes caeruleus",
+                "Paridae",
+                "Mesar",
+                "Cyanistes",
+                sv = "Blåmes",
+                en = "Eurasian Blue Tit",
+                abundance = "allmän",
+            )
+            db.seedSpecies(
+                "Q25234",
+                "Turdus merula",
+                "Turdidae",
+                "Trastar",
+                "Turdus",
+                sv = "Koltrast",
+                en = "Common Blackbird",
+                abundance = "allmän",
+            )
+            val repo = SqlDelightSpeciesRepository(db)
+            assertEquals(
+                listOf("Blåmes", "Blåhake", "Bläsand", "Koltrast"),
+                repo.search("blå", Locale.SV, SpeciesFilter()).first().map { it.name },
+            )
+        }
+
+    // Review fix I3: the per-hit queries and the ranking ran on the collector's thread, which for
+    // the encyclopedia is the main thread, on every debounced keystroke.
+    @Test
+    fun `search reads and ranks its hits off the collecting thread`() {
+        val driver = RecordingDriver(JdbcSqliteDriver(JdbcSqliteDriver.IN_MEMORY))
+        BirdyContent.Schema.create(driver)
+        val db = BirdyContent(driver)
+        db.seedTalgoxe()
+        val repo = SqlDelightSpeciesRepository(db)
+        driver.threads.clear()
+        val caller =
+            java.util.concurrent.Executors
+                .newSingleThreadExecutor { Thread(it, "test-caller") }
+        try {
+            kotlinx.coroutines.runBlocking(caller.asCoroutineDispatcher()) {
+                assertEquals(listOf("Talgoxe"), repo.search("tal", Locale.SV, SpeciesFilter()).first().map { it.name })
+            }
+        } finally {
+            caller.shutdown()
+        }
+        assertTrue(driver.threads.isNotEmpty())
+        // Thread names carry " @coroutine#N" when coroutine debugging is on.
+        assertTrue(driver.threads.none { it.startsWith("test-caller") }, driver.threads.toString())
+    }
+
+    /** Remembers the thread every query runs on. */
+    private class RecordingDriver(
+        private val delegate: app.cash.sqldelight.db.SqlDriver,
+    ) : app.cash.sqldelight.db.SqlDriver by delegate {
+        val threads: MutableSet<String> = java.util.Collections.synchronizedSet(mutableSetOf())
+
+        override fun <R> executeQuery(
+            identifier: Int?,
+            sql: String,
+            mapper: (app.cash.sqldelight.db.SqlCursor) -> app.cash.sqldelight.db.QueryResult<R>,
+            parameters: Int,
+            binders: (app.cash.sqldelight.db.SqlPreparedStatement.() -> Unit)?,
+        ): app.cash.sqldelight.db.QueryResult<R> {
+            threads += Thread.currentThread().name
+            return delegate.executeQuery(identifier, sql, mapper, parameters, binders)
+        }
+    }
 }

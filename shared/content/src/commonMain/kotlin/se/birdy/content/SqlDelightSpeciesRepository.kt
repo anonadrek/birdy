@@ -6,6 +6,7 @@ import app.cash.sqldelight.coroutines.mapToOne
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import se.birdy.content.db.BirdyContent
@@ -13,6 +14,8 @@ import se.birdy.content.model.Species
 import se.birdy.content.model.SpeciesImage
 import se.birdy.content.model.SpeciesSummary
 import se.birdy.content.model.SpeciesTaxonomy
+import se.birdy.content.search.SearchNames
+import se.birdy.content.search.SearchRanking
 import se.birdy.content.search.normalizeSearch
 
 @Suppress("LongMethod")
@@ -102,66 +105,88 @@ class SqlDelightSpeciesRepository(
             .asFlow()
             .mapToList(Dispatchers.Default)
             .map { rows ->
-                rows
-                    .distinctBy { it.species_id }
-                    .mapNotNull { row ->
-                        val sp =
-                            db.speciesQueries
-                                .selectById(row.species_id)
-                                .executeAsOneOrNull() ?: return@mapNotNull null
-                        val abundance =
-                            Abundance.fromCode(sp.abundance) ?: Abundance.OVANLIG
-                        if (filters.abundance.isNotEmpty() && abundance !in filters.abundance) {
-                            return@mapNotNull null
-                        }
-                        if (filters.regions.isNotEmpty()) {
-                            val speciesRegions =
-                                db.speciesRegionQueries
-                                    .selectBySpecies(sp.id)
-                                    .executeAsList()
-                                    .toSet()
-                            if (filters.regions.intersect(speciesRegions).isEmpty()) {
-                                return@mapNotNull null
-                            }
-                        }
-                        if (filters.activeInMonth != null) {
-                            val seasons =
-                                db.speciesSeasonQueries.selectBySpecies(sp.id).executeAsList()
-                            val month = seasons.firstOrNull { it.month == filters.activeInMonth }
-                            if (month == null || month.status == "absent") {
-                                return@mapNotNull null
-                            }
-                        }
-                        val taxonomy =
-                            db.speciesTaxonomyQueries
-                                .selectBySpecies(sp.id)
-                                .executeAsOneOrNull()
-                        // Search rows only carry the matched locale; fetch all to resolve the
-                        // display name in the user's locale (EN fallback matches getById/summaryFor).
-                        val nameRows = db.speciesNameQueries.selectBySpecies(sp.id).executeAsList()
-                        val displayName =
-                            nameRows.firstOrNull { it.locale == locale.code }?.name
-                                ?: nameRows.firstOrNull { it.locale == Locale.EN.code }?.name
-                                ?: sp.scientific_name
-                        SpeciesSummary(
-                            id = SpeciesId(sp.id),
-                            name = displayName,
-                            scientificName = sp.scientific_name,
-                            abundance = abundance,
-                            heroImagePath =
-                                db.speciesImageQueries
-                                    .selectBySpecies(sp.id)
-                                    .executeAsList()
-                                    .firstOrNull { it.role == "hero" }
-                                    ?.path,
-                            iocOrder = taxonomy?.ioc_order ?: "",
-                            family = taxonomy?.family ?: "",
-                            familySv = taxonomy?.family_sv ?: "",
-                            group = taxonomy?.group_id ?: "",
-                            iucnStatus = sp.iucn_status,
-                        )
-                    }
+                val hits =
+                    rows
+                        .distinctBy { it.species_id }
+                        .mapNotNull { row -> searchHit(row.species_id, locale, filters) }
+                // Release 1.3.0 Task 7g: best matches first (see SearchRanking), not the SQL's
+                // prefix-then-name order, which the screen re-sorted alphabetically anyway.
+                SearchRanking
+                    .rank(query = query, items = hits, names = { it.second }, abundance = { it.first.abundance })
+                    .map { it.first }
             }
+            // The per-hit queries and the ranking above run off the collector's (main) thread.
+            .flowOn(Dispatchers.Default)
+
+    /** One search result and the names it can be ranked by, or null when [filters] rule it out. */
+    private fun searchHit(
+        speciesId: String,
+        locale: Locale,
+        filters: SpeciesFilter,
+    ): Pair<SpeciesSummary, SearchNames>? {
+        val sp =
+            db.speciesQueries
+                .selectById(speciesId)
+                .executeAsOneOrNull()
+                ?.takeIf { passesFilters(it.id, Abundance.fromCode(it.abundance) ?: Abundance.OVANLIG, filters) }
+                ?: return null
+        val abundance = Abundance.fromCode(sp.abundance) ?: Abundance.OVANLIG
+        val taxonomy =
+            db.speciesTaxonomyQueries
+                .selectBySpecies(sp.id)
+                .executeAsOneOrNull()
+        // Search rows only carry the matched locale; fetch all to resolve the
+        // display name in the user's locale (EN fallback matches getById/summaryFor).
+        val nameRows = db.speciesNameQueries.selectBySpecies(sp.id).executeAsList()
+        val displayName =
+            nameRows.firstOrNull { it.locale == locale.code }?.name
+                ?: nameRows.firstOrNull { it.locale == Locale.EN.code }?.name
+                ?: sp.scientific_name
+        val summary =
+            SpeciesSummary(
+                id = SpeciesId(sp.id),
+                name = displayName,
+                scientificName = sp.scientific_name,
+                abundance = abundance,
+                heroImagePath =
+                    db.speciesImageQueries
+                        .selectBySpecies(sp.id)
+                        .executeAsList()
+                        .firstOrNull { it.role == "hero" }
+                        ?.path,
+                iocOrder = taxonomy?.ioc_order ?: "",
+                family = taxonomy?.family ?: "",
+                familySv = taxonomy?.family_sv ?: "",
+                group = taxonomy?.group_id ?: "",
+                iucnStatus = sp.iucn_status,
+            )
+        val otherName = nameRows.firstOrNull { it.locale != locale.code }?.name
+        return summary to SearchNames(primary = displayName, other = otherName, scientific = sp.scientific_name)
+    }
+
+    private fun passesFilters(
+        speciesId: String,
+        abundance: Abundance,
+        filters: SpeciesFilter,
+    ): Boolean {
+        val abundanceOk = filters.abundance.isEmpty() || abundance in filters.abundance
+        val regionOk =
+            filters.regions.isEmpty() ||
+                db.speciesRegionQueries
+                    .selectBySpecies(speciesId)
+                    .executeAsList()
+                    .toSet()
+                    .intersect(filters.regions)
+                    .isNotEmpty()
+        val monthOk =
+            filters.activeInMonth == null ||
+                db.speciesSeasonQueries
+                    .selectBySpecies(speciesId)
+                    .executeAsList()
+                    .firstOrNull { it.month == filters.activeInMonth }
+                    .let { month -> month != null && month.status != "absent" }
+        return abundanceOk && regionOk && monthOk
+    }
 
     override fun listByFamily(
         familyKey: String,

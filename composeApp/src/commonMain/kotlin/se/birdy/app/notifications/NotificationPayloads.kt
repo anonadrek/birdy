@@ -11,10 +11,13 @@ import birdy_bird_scanner.composeapp.generated.resources.notification_recap_stre
 import birdy_bird_scanner.composeapp.generated.resources.notification_recap_streak_title
 import birdy_bird_scanner.composeapp.generated.resources.notification_trophy_body_fmt
 import birdy_bird_scanner.composeapp.generated.resources.notification_trophy_title
+import birdy_bird_scanner.composeapp.generated.resources.recap_stats_finds
+import birdy_bird_scanner.composeapp.generated.resources.recap_stats_new_species
 import kotlinx.coroutines.flow.first
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
+import org.jetbrains.compose.resources.getPluralString
 import org.jetbrains.compose.resources.getString
 import se.birdy.app.badges.BadgeProgressItem
 import se.birdy.app.badges.RecalculateBadgesUseCase
@@ -123,10 +126,9 @@ class NotificationPayloads(
                 NotificationContent(
                     title = getString(Res.string.notification_recap_active_title),
                     body =
-                        getString(
-                            Res.string.notification_recap_active_body_fmt,
-                            summary.observationCount.toString(),
-                            summary.newSpeciesCount.toString(),
+                        recapNotificationBody(
+                            finds = summary.observationCount,
+                            newSpecies = summary.newSpeciesCount,
                         ),
                     deepLink = "birdy://recap",
                 )
@@ -209,3 +211,17 @@ class NotificationPayloads(
         fun heroPathOf(species: Species?): String? = species?.images?.firstOrNull { it.role == "hero" }?.path
     }
 }
+
+/**
+ * "3 fynd, 1 ny art. Se veckans uppslag." for the weekly recap push, with a plural per count
+ * (release 1.3.0 Task 7g; the old text said "2 ny art" and "1 sightings").
+ */
+internal suspend fun recapNotificationBody(
+    finds: Int,
+    newSpecies: Int,
+): String =
+    getString(
+        Res.string.notification_recap_active_body_fmt,
+        getPluralString(Res.plurals.recap_stats_finds, finds, finds),
+        getPluralString(Res.plurals.recap_stats_new_species, newSpecies, newSpecies),
+    )

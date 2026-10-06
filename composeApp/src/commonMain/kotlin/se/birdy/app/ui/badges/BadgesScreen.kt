@@ -54,6 +54,7 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_badges_section
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
+import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.GearButton
 import se.birdy.app.ui.components.JournalIntro
@@ -158,7 +159,12 @@ private fun LoadedContent(
             Column {
                 JournalIntro(
                     label = stringResource(Res.string.badges_journal_label, state.unlockedCount.toString()),
-                    headline = stringResource(Res.string.badges_journal_headline, state.unlockedCount.toString()),
+                    headline =
+                        pluralStringResource(
+                            Res.plurals.badges_journal_headline,
+                            state.unlockedCount,
+                            state.unlockedCount,
+                        ),
                     sub = stringResource(Res.string.badges_journal_sub, (state.totalBadges - state.unlockedCount).toString()),
                     horizontalPadding = 0,
                     topPadding = 0,

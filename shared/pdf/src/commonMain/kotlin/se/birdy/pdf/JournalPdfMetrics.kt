@@ -57,7 +57,9 @@ object JournalPdfMetrics {
     // ----- Strängar (svenska, avsiktligt olokaliserade) ------------------------
     const val TITLE = "Fältdagbok"
     const val BY_FMT = "av %s"
-    const val TEASER_FMT = "%s arter sedda • %s fynd"
+    const val TEASER_FMT = "%s • %s fynd"
+    const val TEASER_SPECIES_ONE = "art sedd"
+    const val TEASER_SPECIES_OTHER = "arter sedda"
     const val STATS_EYEBROW = "Säsongens räkning"
     const val STATS_TITLE_FMT = "%s i siffror"
     const val STAT_SPECIES = "Arter i år"
@@ -105,6 +107,18 @@ object JournalPdfMetrics {
         val hh = ldt.hour.toString().padStart(2, '0')
         val mi = ldt.minute.toString().padStart(2, '0')
         return "${ldt.year}-$mm-$dd $hh:$mi"
+    }
+
+    /**
+     * Titelsidans rad, "3 arter sedda • 7 fynd". En art blir "1 art sedd" (release 1.3.0 Task 7g;
+     * förut "1 arter sedda"). "fynd" är samma ord i singular och plural.
+     */
+    fun teaser(
+        speciesSeen: Int,
+        finds: Int,
+    ): String {
+        val species = if (speciesSeen == 1) TEASER_SPECIES_ONE else TEASER_SPECIES_OTHER
+        return fmt(TEASER_FMT, "$speciesSeen $species", "$finds")
     }
 
     /** Ersätter `%s` i [pattern] med [args] i ordning. Enda platshållaren som stöds är `%s`. */

@@ -441,10 +441,12 @@
   abundance: allmän
 - wikidata_id: Q117253126
   scientific_name: Ortygornis pondicerianus
+  common_sv: Grå frankolin  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Phasianidae
   ioc_order: Galliformes
   common_en: Grey Francolin
   vp_status: H
+  iucn_status: LC  # IUCN Red List: Francolinus pondicerianus, e.T22678728A131904182 (2018); Wikidata has no P141
 - wikidata_id: Q285165
   scientific_name: Francolinus francolinus
   family: Phasianidae
@@ -823,6 +825,7 @@
   ioc_order: Gruiformes
   common_en: Demoiselle Crane
   vp_status: H
+  iucn_status: LC  # IUCN Red List: Anthropoides virgo, e.T22692081A131927771 (2018); Wikidata has no P141
 - wikidata_id: Q4764
   scientific_name: Grus grus
   family: Gruidae
@@ -1029,24 +1032,29 @@
   ioc_order: Charadriiformes
   common_en: Tibetan Sand Plover
   vp_status: F
+  iucn_status: LC  # IUCN Red List: Charadrius atrifrons, e.T230026276A154673176 (2023); Wikidata has no P141
 - wikidata_id: Q137159050
   scientific_name: Anarhynchus leschenaultii
+  common_sv: Ökenpipare  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Charadriidae
   ioc_order: Charadriiformes
   common_en: Greater Sand Plover
   vp_status: H
 - wikidata_id: Q137162124
   scientific_name: Anarhynchus pecuarius
+  common_sv: Herdepipare  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Charadriidae
   ioc_order: Charadriiformes
   common_en: Kittlitz’s Plover
   vp_status: H
 - wikidata_id: Q137156829
   scientific_name: Anarhynchus alexandrinus
+  common_sv: Svartbent strandpipare  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Charadriidae
   ioc_order: Charadriiformes
   common_en: Kentish Plover
   vp_status: H
+  iucn_status: LC  # IUCN Red List: Charadrius alexandrinus, e.T22727487A155485165 (2019); Wikidata has no P141
 - wikidata_id: Q31617
   scientific_name: Rostratula benghalensis
   family: Rostratulidae
@@ -1530,6 +1538,7 @@
   ioc_order: Charadriiformes
   common_en: Slender-billed Gull
   vp_status: H
+  iucn_status: LC  # IUCN Red List: Larus genei, e.T22694428A154570382 (2019); Wikidata has no P141
 - wikidata_id: Q25634
   scientific_name: Chroicocephalus ridibundus
   family: Laridae
@@ -1543,30 +1552,35 @@
   ioc_order: Charadriiformes
   common_en: Grey-headed Gull
   vp_status: H
+  iucn_status: LC  # IUCN Red List: Larus cirrocephalus, e.T22694387A93451041 (2016); Wikidata has no P141
 - wikidata_id: Q476356
   scientific_name: Ichthyaetus ichthyaetus
   family: Laridae
   ioc_order: Charadriiformes
   common_en: Pallas’s Gull
   vp_status: H
+  iucn_status: LC  # IUCN Red List: Larus ichthyaetus, e.T22694379A38839205 (2012); Wikidata has no P141
 - wikidata_id: Q519583
   scientific_name: Ichthyaetus audouinii
   family: Laridae
   ioc_order: Charadriiformes
   common_en: Audouin’s Gull
   vp_status: H
+  iucn_status: VU  # IUCN Red List: Larus audouinii, e.T22694313A183584708 (2020); Wikidata has no P141
 - wikidata_id: Q276189
   scientific_name: Ichthyaetus melanocephalus
   family: Laridae
   ioc_order: Charadriiformes
   common_en: Mediterranean Gull
   vp_status: H
+  iucn_status: LC  # IUCN Red List: Larus melanocephalus, e.T22694443A85050054 (2015); Wikidata has no P141
 - wikidata_id: Q912041
   scientific_name: Ichthyaetus leucophthalmus
   family: Laridae
   ioc_order: Charadriiformes
   common_en: White-eyed Gull
   vp_status: H
+  iucn_status: LC  # IUCN Red List: Larus leucophthalmus, e.T22694299A132335382 (2018); Wikidata has no P141
 - wikidata_id: Q589869
   scientific_name: Ichthyaetus hemprichii
   family: Laridae
@@ -1646,6 +1660,7 @@
   vp_status: H
 - wikidata_id: Q208328
   scientific_name: Gavia adamsii
+  common_sv: Vitnäbbad islom  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Gaviidae
   ioc_order: Gaviiformes
   common_en: Yellow-billed Loon
@@ -1677,24 +1692,28 @@
   vp_status: H
 - wikidata_id: Q60895939
   scientific_name: Hydrobates jabejabe
+  common_sv: Kapverdestormsvala  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Hydrobatidae
   ioc_order: Procellariiformes
   common_en: Cape Verde Storm Petrel
   vp_status: H
 - wikidata_id: Q28114472
   scientific_name: Hydrobates castro
+  common_sv: Oceanstormsvala  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Hydrobatidae
   ioc_order: Procellariiformes
   common_en: Band-rumped Storm Petrel
   vp_status: H
 - wikidata_id: Q28122611
   scientific_name: Hydrobates monteiroi
+  common_sv: Azorstormsvala  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Hydrobatidae
   ioc_order: Procellariiformes
   common_en: Monteiro’s Storm Petrel
   vp_status: H
 - wikidata_id: Q28122606
   scientific_name: Hydrobates monorhis
+  common_sv: Koreastormsvala  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Hydrobatidae
   ioc_order: Procellariiformes
   common_en: Swinhoe’s Storm Petrel
@@ -1881,6 +1900,7 @@
   vp_status: H
 - wikidata_id: Q83020448
   scientific_name: Gulosus aristotelis
+  common_sv: Toppskarv  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Phalacrocoracidae
   ioc_order: Suliformes
   common_en: European Shag
@@ -2441,10 +2461,12 @@
   vp_status: H
 - wikidata_id: Q137397344
   scientific_name: Tachyspiza badia
+  common_sv: Shikra  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Accipitridae
   ioc_order: Accipitriformes
   common_en: Shikra
   vp_status: H
+  iucn_status: LC  # IUCN Red List: Accipiter badius, e.T22695490A197951702 (2021); Wikidata has no P141
 - wikidata_id: Q25380
   scientific_name: Accipiter nisus
   family: Accipitridae
@@ -2454,11 +2476,13 @@
   abundance: allmän
 - wikidata_id: Q137474876
   scientific_name: Astur gentilis
+  common_sv: Duvhök  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Accipitridae
   ioc_order: Accipitriformes
   common_en: Eurasian Goshawk
   vp_status: H
   commons_search_name: Accipiter gentilis
+  iucn_status: LC  # IUCN Red List: Accipiter gentilis, e.T22695683A93522852 (2016); Wikidata has no P141
 - wikidata_id: Q230837
   scientific_name: Circus macrourus
   family: Accipitridae
@@ -2490,6 +2514,7 @@
   ioc_order: Accipitriformes
   common_en: Red Kite
   vp_status: H
+  iucn_status: LC  # IUCN Red List: Milvus milvus, e.T22695072A181651010 (2020); Wikidata has no P141
 - wikidata_id: Q80362
   scientific_name: Milvus migrans
   family: Accipitridae
@@ -2677,12 +2702,14 @@
   ioc_order: Piciformes
   common_en: Middle Spotted Woodpecker
   vp_status: H
+  iucn_status: LC  # IUCN Red List: Leiopicus medius, e.T22681114A87306174 (2016); Wikidata has no P141
 - wikidata_id: Q27074884
   scientific_name: Dendrocoptes dorae
   family: Picidae
   ioc_order: Piciformes
   common_en: Arabian Woodpecker
   vp_status: H
+  iucn_status: NT  # IUCN Red List: Dendropicos dorae, e.T22681095A119106114 (2017); Wikidata has no P141
 - wikidata_id: Q946681
   scientific_name: Dendropicos goertae
   family: Picidae
@@ -2823,6 +2850,7 @@
   ioc_order: Psittaciformes
   common_en: Blue-crowned Parakeet
   vp_status: H
+  iucn_status: LC  # IUCN Red List: Psittacara acuticaudatus, e.T22685648A132058639 (2018); Wikidata has no P141
 - wikidata_id: Q27074997
   scientific_name: Psittacara mitratus
   family: Psittacidae
@@ -2841,6 +2869,7 @@
   ioc_order: Psittaciformes
   common_en: Alexandrine Parakeet
   vp_status: H
+  iucn_status: LC  # IUCN Red List: Psittacula eupatria, e.T22685434A241494588 (2025); Wikidata has no P141
 - wikidata_id: Q208060
   scientific_name: Psittacula krameri
   family: Psittaculidae
@@ -2998,6 +3027,7 @@
   common_en: Western Jackdaw
   vp_status: H
   abundance: allmän
+  iucn_status: LC  # IUCN Red List: Corvus monedula, e.T22705929A131943991 (2018); Wikidata has no P141
 - wikidata_id: Q25386
   scientific_name: Corvus frugilegus
   family: Corvidae
@@ -4022,6 +4052,7 @@
   vp_status: H
 - wikidata_id: Q31874135
   scientific_name: Acridotheres leucocephalus
+  common_sv: Vinmajna  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Sturnidae
   ioc_order: Passeriformes
   common_en: Vinous-breasted Myna
@@ -4835,6 +4866,7 @@
   vp_status: H
 - wikidata_id: Q22704092
   scientific_name: Fringilla polatzeki
+  common_sv: Grancanariablåfink  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Fringillidae
   ioc_order: Passeriformes
   common_en: Gran Canaria Blue Chaffinch
@@ -5038,6 +5070,7 @@
   vp_status: H
 - wikidata_id: Q606679
   scientific_name: Carduelis caniceps
+  common_sv: Grå steglits  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Fringillidae
   ioc_order: Passeriformes
   common_en: Grey-crowned Goldfinch

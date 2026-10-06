@@ -260,3 +260,88 @@ async def test_run_refresh_returns_nonzero_when_species_fail(
     )
     exit_code = await run_refresh(ctx)
     assert exit_code == 1
+
+
+async def _refresh_without_wikidata_status(
+    fixtures_dir: Path, tmp_path: Path, listed_extra: dict[str, str]
+):  # type: ignore[no-untyped-def]
+    """refresh_one for a species whose Wikidata item has no IUCN status (P141)."""
+    pipeline_root = tmp_path / "pipeline"
+    content_root = tmp_path / "content"
+    (pipeline_root / "prompts").mkdir(parents=True)
+    for name in ("description-v1.md", "migration-v1.md"):
+        (pipeline_root / "prompts" / name).write_text(
+            "System: ...\nUser: {scientific_name}\n", encoding="utf-8"
+        )
+    cache = Cache(pipeline_root / ".cache")
+    cost = CostTracker(max_usd=None)
+    wd_fixture = (fixtures_dir / "wikidata_no_sv_label.json").read_text()
+    wp_fixture = (fixtures_dir / "wikipedia_sv_parus_major.json").read_text()
+    img_fixture = (fixtures_dir / "commons_imageinfo_q25372.json").read_text()
+
+    async def fake_sparql(query: str) -> str:
+        return wd_fixture
+
+    async def fake_wp(url: str) -> str:
+        return wp_fixture
+
+    async def fake_commons(url: str) -> str:
+        return img_fixture
+
+    async def fake_get_bytes(url: str) -> bytes:
+        return (fixtures_dir / "sample_image.jpg").read_bytes()
+
+    ctx = RefreshContext(
+        pipeline_root=pipeline_root,
+        content_root=content_root,
+        cache=cache,
+        cost=cost,
+        wikidata=WikidataClient(cache=cache, run_sparql=fake_sparql),
+        wikipedia=WikipediaClient(cache=cache, http_get=fake_wp),
+        images=ImageSelector(cache=cache, http_get=fake_commons),
+        image_processor=ImageProcessor(http_get_bytes=fake_get_bytes),
+        claude=ClaudeSummarizer(
+            cache=cache,
+            cost=cost,
+            client=FakeClaudeClient(
+                default=type("M", (), {"text": "x", "input_tokens": 0, "output_tokens": 0})()
+            ),
+            prompt_dir=pipeline_root / "prompts",
+            prompt_version="v1",
+        ),
+        options=RefreshOptions(
+            species_filter=["Q999"],
+            field="all",
+            force=False,
+            dry_run=False,
+            workers=1,
+            model="haiku",
+            max_cost=None,
+        ),
+    )
+    listed = {
+        "wikidata_id": "Q999",
+        "scientific_name": "Mystery bird",
+        "common_en": "Mystery Bird",
+        "family": "Mysteriidae",
+        **listed_extra,
+    }
+    return await refresh_one(ctx, listed)
+
+
+@pytest.mark.asyncio
+async def test_iucn_status_from_species_list_wins_when_wikidata_has_none(
+    fixtures_dir: Path, tmp_path: Path
+) -> None:
+    # Release 1.3.0 Task 7g: 36 species have no P141 on Wikidata; the status looked up on the
+    # IUCN Red List is kept in species_list.yaml so a refresh does not turn it back into NE.
+    data = await _refresh_without_wikidata_status(fixtures_dir, tmp_path, {"iucn_status": "VU"})
+    assert data.iucn_status == "VU"
+
+
+@pytest.mark.asyncio
+async def test_without_any_iucn_status_the_species_is_not_evaluated(
+    fixtures_dir: Path, tmp_path: Path
+) -> None:
+    data = await _refresh_without_wikidata_status(fixtures_dir, tmp_path, {})
+    assert data.iucn_status == "NE"

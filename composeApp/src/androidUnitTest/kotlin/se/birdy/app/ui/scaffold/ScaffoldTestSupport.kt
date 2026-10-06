@@ -26,6 +26,8 @@ import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.testing.FakeUserPreferences
 import se.birdy.app.testing.attachComposeResourcesContext
 import se.birdy.app.ui.theme.BirdyTheme
+import se.birdy.content.Locale
+import se.birdy.content.SpeciesRepository
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.premium.PremiumState
 import se.birdy.ml.ClassifierBootstrap
@@ -61,6 +63,9 @@ internal fun testAppGraph(
     // always-succeeds default below.
     classifierBootstrap: ClassifierBootstrap =
         ClassifierBootstrap(buildClassifier = { Triple(FakeBirdClassifier(), ClassifierMode.DEMO, null) }),
+    // Release 1.3.0 Task 7g: the encyclopedia test feeds its own search results.
+    repository: SpeciesRepository = FakeSpeciesRepository(),
+    defaultLocale: Locale = Locale.SV,
 ): AppGraph {
     val grandfathered =
         GrandfatherPolicy.isGrandfathered(
@@ -69,7 +74,7 @@ internal fun testAppGraph(
             cutoffMs = RoutingFixture.cutoffMs,
         )
     return AppGraph(
-        repository = FakeSpeciesRepository(),
+        repository = repository,
         classifierBootstrap = classifierBootstrap,
         cameraSourceFactory = { FakeCameraSource() },
         observationRepository = FakeObservationRepository(),
@@ -96,6 +101,7 @@ internal fun testAppGraph(
         // mark the fake repository as purchased.
         launchPurchase = { PurchaseResult.UserCancelled },
         formattedPricesFlow = MutableStateFlow(prices),
+        defaultLocale = defaultLocale,
     )
 }
 

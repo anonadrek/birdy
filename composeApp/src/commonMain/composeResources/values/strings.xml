@@ -53,6 +53,9 @@
     <string name="iucn_en">Starkt hotad</string>
     <string name="iucn_cr">Akut hotad</string>
     <string name="iucn_dd">Kunskapsbrist</string>
+    <string name="iucn_ne">Ej bedömd</string>
+    <string name="iucn_ex">Utdöd</string>
+    <string name="iucn_ew">Utdöd i vilt tillstånd</string>
 
     <!-- Onboarding extracted literals -->
     <string name="onboarding_s2_plate_caption">%1$s, i naturen</string>
@@ -397,6 +400,7 @@
     <string name="archive_sort_alpha">A–Ö</string>
     <string name="archive_sort_family">Familj</string>
     <string name="archive_sort_recent">Senast tillagd</string>
+    <string name="archive_sort_relevance">Relevans</string>
     <string name="archive_pill_stamped">STÄMPLAD</string>
     <plurals name="archive_section_count">
         <item quantity="one">%1$d art</item>
@@ -408,6 +412,7 @@
         <item quantity="other">%1$s, %2$d arter</item>
     </plurals>
     <string name="archive_red_listed_tag">Rödlistad</string>
+    <string name="archive_extinct_tag">Utdöd</string>
     <string name="archive_search_clear">Rensa sökning</string>
     <string name="archive_error_title">Fältboken kunde inte öppnas</string>
     <string name="archive_error_body">Något gick fel när artlistan lästes in.</string>
@@ -415,7 +420,11 @@
 
     <!-- ===== Plan 7b: BadgesScreen redesign ===== -->
     <string name="badges_journal_label">UPPTÄCKTER · NO %1$s</string>
-    <string name="badges_journal_headline">*%1$s* funna.</string>
+    <!-- "funnen" agrees with "upptäckt" in the label above (en upptäckt, flera upptäckter). -->
+    <plurals name="badges_journal_headline">
+        <item quantity="one">*%1$d* funnen.</item>
+        <item quantity="other">*%1$d* funna.</item>
+    </plurals>
     <string name="badges_journal_sub">%1$s väntar därute.</string>
     <!-- Plan 6a Task 10.4: locked-badge progress bottom-sheet -->
     <string name="badge_sheet_close">Stäng</string>
@@ -429,7 +438,10 @@
     <string name="lifelist_stat_year">ARTER I ÅR</string>
     <string name="lifelist_stat_month">ARTER DENNA MÅNAD</string>
     <string name="lifelist_stat_longest">LÄNGSTA SVIT</string>
-    <string name="lifelist_section_recent">Senaste · %1$s stämplar</string>
+    <plurals name="lifelist_section_recent">
+        <item quantity="one">Senaste · %1$d stämpel</item>
+        <item quantity="other">Senaste · %1$d stämplar</item>
+    </plurals>
     <string name="lifelist_sort_recent">Senaste</string>
     <string name="lifelist_sort_stamp">Stämpel #</string>
     <string name="lifelist_sort_species">Art</string>
@@ -449,7 +461,16 @@
     <string name="possessive_suffix">s</string>
     <string name="possessive_suffix_sibilant"></string>
     <string name="possessive_sibilant_endings">sxz</string>
-    <string name="lifelist_journal_sub">%1$s dagar. %2$s funna.</string>
+    <!-- %1$s = lifelist_journal_days, %2$s = lifelist_journal_species_found: each count gets its own plural. -->
+    <string name="lifelist_journal_sub">%1$s. %2$s.</string>
+    <plurals name="lifelist_journal_days">
+        <item quantity="one">%1$d dag</item>
+        <item quantity="other">%1$d dagar</item>
+    </plurals>
+    <plurals name="lifelist_journal_species_found">
+        <item quantity="one">%1$d art funnen</item>
+        <item quantity="other">%1$d arter funna</item>
+    </plurals>
     <string name="lifelist_journal_headline_anonymous">*Min* samling.</string>
     <string name="lifelist_journal_sub_empty">En tom sida, för nu.</string>
     <string name="lifelist_empty_caveat_cta">*Skanna* första fågeln</string>
@@ -762,11 +783,35 @@
     <string name="recap_eyebrow_fmt">Fältrapport · Vecka %1$s</string>
     <string name="recap_headline_active">En vecka i *fält*.</string>
     <string name="recap_headline_quiet">En *lugn* vecka.</string>
-    <string name="recap_summary_active_fmt">%1$s fynd den här veckan.</string>
-    <string name="recap_summary_active_new">%1$s fynd den här veckan — och en ny bekantskap.</string>
-    <string name="recap_stats_fmt">%1$s fynd · %2$s ny art · %3$s v streak</string>
+    <!-- "fynd" is the same word for 1 and many; English needs both forms. -->
+    <plurals name="recap_summary_active_fmt">
+        <item quantity="one">%1$d fynd den här veckan.</item>
+        <item quantity="other">%1$d fynd den här veckan.</item>
+    </plurals>
+    <plurals name="recap_summary_active_new">
+        <item quantity="one">%1$d fynd den här veckan, och en ny bekantskap.</item>
+        <item quantity="other">%1$d fynd den här veckan, och en ny bekantskap.</item>
+    </plurals>
+    <!-- %1$s = recap_stats_finds, %2$s = recap_stats_new_species, %3$s = recap_stats_week_streak. -->
+    <string name="recap_stats_fmt">%1$s · %2$s · %3$s</string>
+    <plurals name="recap_stats_finds">
+        <item quantity="one">%1$d fynd</item>
+        <item quantity="other">%1$d fynd</item>
+    </plurals>
+    <plurals name="recap_stats_new_species">
+        <item quantity="one">%1$d ny art</item>
+        <item quantity="other">%1$d nya arter</item>
+    </plurals>
+    <plurals name="recap_stats_week_streak">
+        <item quantity="one">%1$d vecka i rad</item>
+        <item quantity="other">%1$d veckor i rad</item>
+    </plurals>
     <string name="recap_new_badge_fmt">Ny stämpel: %1$s</string>
-    <string name="recap_delta_fmt">vs förra veckan: %1$s fynd</string>
+    <!-- %1$s is the signed difference ("+2", "-1"); the quantity is its size. -->
+    <plurals name="recap_delta_fmt">
+        <item quantity="one">vs förra veckan: %1$s fynd</item>
+        <item quantity="other">vs förra veckan: %1$s fynd</item>
+    </plurals>
     <string name="recap_empty_plate">Sidan är tom — inga fynd ännu.</string>
     <string name="recap_new_species_tag">Ny art</string>
     <string name="recap_quiet_encouragement">Ingen brådska. Tio minuter i parken räcker för veckans första rad.</string>
@@ -777,7 +822,8 @@
     <string name="recap_lifelist_entry_title">Veckans uppslag</string>
     <string name="recap_a11y_fmt">Veckans uppslag, vecka %1$s</string>
     <string name="notification_recap_active_title">Veckan i fält</string>
-    <string name="notification_recap_active_body_fmt">%1$s fynd, %2$s ny art — se veckans uppslag.</string>
+    <!-- %1$s = recap_stats_finds, %2$s = recap_stats_new_species. -->
+    <string name="notification_recap_active_body_fmt">%1$s, %2$s. Se veckans uppslag.</string>
     <string name="notification_recap_streak_title">Bara kvällen kvar</string>
     <string name="notification_recap_streak_body">En talgoxe i parken räcker — fortsätt din streak.</string>
     <string name="settings_toggle_weekly_recap">Veckans recap — söndag kväll</string>
@@ -836,6 +882,9 @@
     <string name="map_attribution_osm">© OpenStreetMap contributors</string>
     <string name="map_teaser_title">Din fågelkarta</string>
     <string name="map_teaser_caption">Se var du har sett dina fåglar.</string>
-    <string name="map_teaser_count">%1$s fynd med plats väntar på kartan</string>
+    <plurals name="map_teaser_count">
+        <item quantity="one">%1$d fynd med plats väntar på kartan</item>
+        <item quantity="other">%1$d fynd med plats väntar på kartan</item>
+    </plurals>
     <string name="map_teaser_cta">Lås upp med Premium</string>
 </resources>

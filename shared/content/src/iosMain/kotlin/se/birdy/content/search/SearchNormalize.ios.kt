@@ -5,6 +5,10 @@ import platform.Foundation.NSString
 import platform.Foundation.create
 import platform.Foundation.decomposedStringWithCanonicalMapping
 
+// Compiled once, not on every keystroke.
+private val APOSTROPHES = Regex("['’ʼ`]")
+private val WHITESPACE = Regex("\\s+")
+
 /**
  * iOS actual. Mirrors the JVM actual exactly: NFD-decompose (Foundation),
  * strip combining marks (Kotlin CharCategory = JVM \p{Mn}), strip apostrophes,
@@ -16,8 +20,8 @@ actual fun normalizeSearch(input: String): String {
     val decomposed = (NSString.create(string = input) as NSString).decomposedStringWithCanonicalMapping
     return decomposed
         .filterNot { it.category == CharCategory.NON_SPACING_MARK }
-        .replace(Regex("['’ʼ`]"), "")
+        .replace(APOSTROPHES, "")
         .lowercase()
-        .replace(Regex("\\s+"), " ")
+        .replace(WHITESPACE, " ")
         .trim()
 }

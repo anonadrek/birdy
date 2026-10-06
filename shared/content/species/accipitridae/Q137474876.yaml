@@ -6,10 +6,10 @@ taxonomy:
   genus: Astur
   ioc_order: Accipitriformes
 names:
-  sv: null
+  sv: Duvhök
   en: Eurasian Goshawk
 abundance: ovanlig
-iucn_status: NE
+iucn_status: LC
 season:
   jan: present
   feb: present

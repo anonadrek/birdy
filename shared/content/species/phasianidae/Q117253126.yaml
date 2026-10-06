@@ -6,10 +6,10 @@ taxonomy:
   genus: Ortygornis
   ioc_order: Galliformes
 names:
-  sv: null
+  sv: Grå frankolin
   en: Grey Francolin
 abundance: ovanlig
-iucn_status: NE
+iucn_status: LC
 season:
   jan: present
   feb: present

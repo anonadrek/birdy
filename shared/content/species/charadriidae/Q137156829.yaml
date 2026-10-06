@@ -6,10 +6,10 @@ taxonomy:
   genus: Anarhynchus
   ioc_order: Charadriiformes
 names:
-  sv: null
+  sv: Svartbent strandpipare
   en: Kentish Plover
 abundance: ovanlig
-iucn_status: NE
+iucn_status: LC
 season:
   jan: present
   feb: present

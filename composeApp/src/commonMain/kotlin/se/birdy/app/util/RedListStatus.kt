@@ -14,3 +14,10 @@ private val RED_LISTED_STATUSES = setOf("NT", "VU", "EN", "CR")
  * both consumers at once instead of fixing it in one place and leaving the other stale.
  */
 fun isRedListed(iucnStatus: String?): Boolean = iucnStatus != null && iucnStatus in RED_LISTED_STATUSES
+
+/**
+ * Extinct (EX) or extinct in the wild (EW). Not red-listed in the app's sense (the badge rule and
+ * the Rödlistad tag are about species you can still find); the encyclopedia tags them "Utdöd"
+ * instead (release 1.3.0 Task 7g: Garfågel, Kanariestrandskata, Smalnäbbad spov).
+ */
+fun isExtinct(iucnStatus: String?): Boolean = iucnStatus == "EX" || iucnStatus == "EW"

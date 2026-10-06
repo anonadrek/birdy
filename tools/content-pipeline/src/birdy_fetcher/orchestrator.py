@@ -271,7 +271,9 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
         common_sv=common_sv,
         common_en=listed.get("common_en") or "",
         abundance=abundance,
-        iucn_status=wd.iucn_status,
+        # species_list.yaml may set iucn_status for a species whose Wikidata item has no P141
+        # (looked up on the IUCN Red List; release 1.3.0 Task 7g). Otherwise Wikidata decides.
+        iucn_status=listed.get("iucn_status") or wd.iucn_status,
         regions=regions,
         season=season,
         description=description,
