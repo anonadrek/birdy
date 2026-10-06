@@ -36,6 +36,7 @@ import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.a11y_stamp_number
 import birdy_bird_scanner.composeapp.generated.resources.stamp_in_progress_label
 import birdy_bird_scanner.composeapp.generated.resources.stamp_locked_label
+import birdy_bird_scanner.composeapp.generated.resources.stamp_locked_unnamed_label
 import birdy_bird_scanner.composeapp.generated.resources.stamp_unlocked_label
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
@@ -129,6 +130,9 @@ fun StampSeal(
                 stringResource(Res.string.a11y_stamp_number, state.number)
             badgeName.isBlank() && state is StampSealState.Unlocked ->
                 stringResource(Res.string.a11y_stamp_number, state.number)
+            // A locked stamp has no number to fall back on (onboarding, hidden grid badges).
+            badgeName.isBlank() && state is StampSealState.Locked ->
+                stringResource(Res.string.stamp_locked_unnamed_label)
             state is StampSealState.Locked ->
                 stringResource(Res.string.stamp_locked_label, badgeName)
             state is StampSealState.InProgress ->

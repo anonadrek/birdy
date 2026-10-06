@@ -620,6 +620,7 @@
     <string name="premium_hero_photo_label">Talgoxe, illustrationsfoto för Premium</string>
     <!-- StampSeal semantics -->
     <string name="stamp_locked_label">%1$s, låst märke. Tryck för mer info.</string>
+    <string name="stamp_locked_unnamed_label">Låst märke.</string>
     <string name="stamp_in_progress_label">%1$s, %2$s klart.</string>
     <string name="stamp_unlocked_label">%1$s, upplåst märke.</string>
 

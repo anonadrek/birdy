@@ -606,6 +606,7 @@
     <string name="premium_hero_photo_label">Great tit, illustrative photo for Premium</string>
     <!-- StampSeal semantics -->
     <string name="stamp_locked_label">%1$s, locked stamp. Tap for details.</string>
+    <string name="stamp_locked_unnamed_label">Locked stamp.</string>
     <string name="stamp_in_progress_label">%1$s, %2$s complete.</string>
     <string name="stamp_unlocked_label">%1$s, unlocked stamp.</string>
 

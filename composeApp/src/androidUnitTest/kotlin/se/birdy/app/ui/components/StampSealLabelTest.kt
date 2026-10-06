@@ -58,4 +58,24 @@ class StampSealLabelTest {
     fun `a named unlocked stamp keeps its name`() {
         assertEquals("Talgoxe, upplåst märke.", labelOf(StampSealState.Unlocked(number = 3, glyph = null, name = "Talgoxe")))
     }
+
+    /**
+     * Plan 3 Task 7 review: a locked stamp without a name (onboarding's badge scene, hidden badges
+     * in the grid) read ", låst märke. Tryck för mer info." with nothing before the comma.
+     */
+    @Test
+    fun `an unnamed locked stamp is announced without an empty name`() {
+        assertEquals("Låst märke.", labelOf(StampSealState.Locked(name = null)))
+    }
+
+    @Test
+    @Config(qualifiers = "+en")
+    fun `an unnamed locked stamp is announced without an empty name in English`() {
+        assertEquals("Locked stamp.", labelOf(StampSealState.Locked(name = null)))
+    }
+
+    @Test
+    fun `a named locked stamp keeps its name`() {
+        assertEquals("Talgoxe, låst märke. Tryck för mer info.", labelOf(StampSealState.Locked(name = "Talgoxe")))
+    }
 }
