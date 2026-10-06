@@ -122,6 +122,7 @@
     <string name="disambig_eyebrow_three">TRE KANDIDATER · NO %1$d</string>
     <string name="disambig_eyebrow_two">TVÅ KANDIDATER · NO %1$d</string>
     <string name="disambig_headline">*Vilken matchar?*</string>
+    <string name="disambig_headline_one">*Är det den här?*</string>
     <string name="disambig_sub">Modellen är inte säker.</string>
     <string name="disambig_frame_caption">vad du såg</string>
     <string name="disambig_candidate_confidence">%1$s · %2$s match</string>

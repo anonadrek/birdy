@@ -46,6 +46,7 @@ import birdy_bird_scanner.composeapp.generated.resources.disambig_eyebrow_three
 import birdy_bird_scanner.composeapp.generated.resources.disambig_eyebrow_two
 import birdy_bird_scanner.composeapp.generated.resources.disambig_frame_caption
 import birdy_bird_scanner.composeapp.generated.resources.disambig_headline
+import birdy_bird_scanner.composeapp.generated.resources.disambig_headline_one
 import birdy_bird_scanner.composeapp.generated.resources.disambig_pick_hint
 import birdy_bird_scanner.composeapp.generated.resources.disambig_save_unknown
 import birdy_bird_scanner.composeapp.generated.resources.disambig_sub
@@ -93,7 +94,7 @@ internal fun DisambigView(
         Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
             JournalIntro(
                 label = stringResource(eyebrowRes, state.stampNumber),
-                headline = stringResource(Res.string.disambig_headline),
+                headline = stringResource(disambigHeadlineRes(state.candidates.size)),
                 sub = stringResource(Res.string.disambig_sub),
                 headlineFontSize = 30.sp,
             )
@@ -288,3 +289,10 @@ internal fun disambigEyebrowRes(candidateCount: Int): StringResource =
         candidateCount == 2 -> Res.string.disambig_eyebrow_two
         else -> Res.string.disambig_eyebrow_one
     }
+
+/**
+ * "Vilken matchar?" (which one matches?) reads oddly above a single card, so one candidate asks
+ * "Är det den här?" / "Is it this one?" (Plan 3 Task 7 review).
+ */
+internal fun disambigHeadlineRes(candidateCount: Int): StringResource =
+    if (candidateCount == 1) Res.string.disambig_headline_one else Res.string.disambig_headline

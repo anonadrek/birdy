@@ -4,6 +4,8 @@ import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.disambig_eyebrow_one
 import birdy_bird_scanner.composeapp.generated.resources.disambig_eyebrow_three
 import birdy_bird_scanner.composeapp.generated.resources.disambig_eyebrow_two
+import birdy_bird_scanner.composeapp.generated.resources.disambig_headline
+import birdy_bird_scanner.composeapp.generated.resources.disambig_headline_one
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -26,5 +28,20 @@ class DisambigEyebrowTest {
     @Test
     fun `three candidates are called three candidates`() {
         assertEquals(Res.string.disambig_eyebrow_three, disambigEyebrowRes(candidateCount = 3))
+    }
+
+    /**
+     * Plan 3 Task 7 review: above a single candidate the headline "Vilken matchar?" (which one
+     * matches?) reads oddly. One candidate asks "Är det den här?" / "Is it this one?".
+     */
+    @Test
+    fun `one candidate gets the singular headline`() {
+        assertEquals(Res.string.disambig_headline_one, disambigHeadlineRes(candidateCount = 1))
+    }
+
+    @Test
+    fun `several candidates keep the which-one headline`() {
+        assertEquals(Res.string.disambig_headline, disambigHeadlineRes(candidateCount = 2))
+        assertEquals(Res.string.disambig_headline, disambigHeadlineRes(candidateCount = 3))
     }
 }

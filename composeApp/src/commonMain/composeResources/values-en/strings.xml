@@ -111,6 +111,7 @@
     <string name="disambig_eyebrow_three">THREE CANDIDATES · NO %1$d</string>
     <string name="disambig_eyebrow_two">TWO CANDIDATES · NO %1$d</string>
     <string name="disambig_headline">*Which one matches?*</string>
+    <string name="disambig_headline_one">*Is it this one?*</string>
     <string name="disambig_sub">The model is uncertain.</string>
     <string name="disambig_frame_caption">what you saw</string>
     <string name="disambig_candidate_confidence">%1$s · %2$s match</string>
