@@ -80,8 +80,9 @@ class ArchiveViewModel(
             .flatMapLatest { (q, c, s, stamped) ->
                 repo
                     .search(q, locale, SpeciesFilter())
-                    .map<List<SpeciesSummary>, ArchiveUiState> { list -> toUiState(list, c, s, stamped) }
-                    .catch { e -> emit(ArchiveUiState.Error(e.message)) }
+                    .map<List<SpeciesSummary>, ArchiveUiState> { list ->
+                        toUiState(list, c, s, stamped, searching = q.isNotBlank())
+                    }.catch { e -> emit(ArchiveUiState.Error(e.message)) }
             }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), ArchiveUiState.Loading)
 
     fun onQueryChanged(q: String) {
@@ -113,25 +114,35 @@ class ArchiveViewModel(
         }
     }
 
+    /**
+     * [searching]: the repository returns search hits best match first (release 1.3.0 Task 7g,
+     * SearchRanking). Then the name no longer breaks ties; the sorts below are stable, so within the
+     * same family (FAMILY) or the same collection position (RECENT) and for A-Ö as a whole the
+     * best matches stay on top. Without a query every sort falls back to the name, as before.
+     */
     private fun toUiState(
         list: List<SpeciesSummary>,
         c: ArchiveChip,
         s: ArchiveSort,
         stamped: Map<String, Int>,
+        searching: Boolean,
     ): ArchiveUiState {
         val filtered = list.filter { c.matches(it.group) }
         if (filtered.isEmpty()) return ArchiveUiState.Empty
+        val byName: Comparator<SpeciesSummary> =
+            if (searching) compareBy { 0 } else compareBy { it.name.lowercase() }
         val sorted =
             when (s) {
-                ArchiveSort.ALPHA -> filtered.sortedBy { it.name.lowercase() }
-                ArchiveSort.FAMILY -> filtered.sortedWith(compareBy({ it.family }, { it.name.lowercase() }))
+                ArchiveSort.ALPHA -> filtered.sortedWith(byName)
+                ArchiveSort.FAMILY -> filtered.sortedWith(compareBy<SpeciesSummary> { it.family }.then(byName))
                 // "Recently added" = species most recently added to the user's collection first.
                 // stamped[qid] holds the first stamp number for a species; higher = newer addition.
-                // Unstamped species (not yet in the collection) sort last, alphabetically.
+                // Unstamped species (not yet in the collection) sort last, alphabetically (best match
+                // first while searching).
                 ArchiveSort.RECENT ->
                     filtered.sortedWith(
                         compareByDescending<SpeciesSummary> { stamped[it.id.raw] ?: Int.MIN_VALUE }
-                            .thenBy { it.name.lowercase() },
+                            .then(byName),
                     )
             }
         val rows =

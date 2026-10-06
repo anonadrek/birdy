@@ -402,4 +402,57 @@ class SpeciesRepositoryTest {
             // genuinely isolates family-blob matching.
             assertEquals(1, repo.search("falconidae", Locale.EN, SpeciesFilter()).first().size)
         }
+
+    // Release 1.3.0 Task 7g item 3: SQLite ordered these Bläsand, Blåhake, Blåmes, Koltrast
+    // (prefix first, then by the name's bytes, where ä sorts before å).
+    @Test
+    fun `search puts the best matches first`() =
+        runTest {
+            val db = newInMemoryDb()
+            db.seedSpecies(
+                "Q28106837",
+                "Mareca penelope",
+                "Anatidae",
+                "Andfåglar",
+                "Mareca",
+                sv = "Bläsand",
+                en = "Eurasian Wigeon",
+                abundance = "allmän",
+            )
+            db.seedSpecies(
+                "Q26578",
+                "Luscinia svecica",
+                "Muscicapidae",
+                "Flugsnappare",
+                "Luscinia",
+                sv = "Blåhake",
+                en = "Bluethroat",
+                abundance = "allmän",
+            )
+            db.seedSpecies(
+                "Q25404",
+                "Cyanistes caeruleus",
+                "Paridae",
+                "Mesar",
+                "Cyanistes",
+                sv = "Blåmes",
+                en = "Eurasian Blue Tit",
+                abundance = "allmän",
+            )
+            db.seedSpecies(
+                "Q25234",
+                "Turdus merula",
+                "Turdidae",
+                "Trastar",
+                "Turdus",
+                sv = "Koltrast",
+                en = "Common Blackbird",
+                abundance = "allmän",
+            )
+            val repo = SqlDelightSpeciesRepository(db)
+            assertEquals(
+                listOf("Blåmes", "Blåhake", "Bläsand", "Koltrast"),
+                repo.search("blå", Locale.SV, SpeciesFilter()).first().map { it.name },
+            )
+        }
 }
