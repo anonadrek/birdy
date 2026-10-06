@@ -9,7 +9,6 @@ open with `encoding="utf-8-sig"` too, including the future Task 17 import step."
 from __future__ import annotations
 
 import csv
-import io
 import random
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -19,6 +18,8 @@ from .datamod import status_contradiction
 from .facts import STATUS_BY_SV, STATUS_SV, TOPIC_SV
 from .paths import WebPaths
 from .record import Record, facts_hash, is_reviewed, load_all, record_path, save_record
+from .sheet_csv import read_sheet as _sheet_csv_read_sheet
+from .sheet_csv import write_sheet as _sheet_csv_write_sheet
 from .verify import status_flags
 from .waves import WAVES_FILE, read_waves
 
@@ -45,25 +46,6 @@ DATA_SOURCES = {"artportalen": "Artportalen via GBIF", "rodlistan": "Svenska rö
 # Stickprovet efter publicering (ändrat 2026-10-05 (b)): 2 arter per 40 publicerade.
 SPOT_CHECK_BATCH = 40
 SPOT_CHECK_DRAW = 2
-# Formula-injection-skydd (review fix 2026-10-06): en cell som börjar med något av dessa
-# tecken tolkas som en formel av Sheets/Excel om den inte neutraliseras på väg ut.
-_FORMULA_PREFIXES = ("=", "+", "-", "@", "\t", "\r")
-
-
-def _escape_formula(value: str) -> str:
-    return f"'{value}" if value.startswith(_FORMULA_PREFIXES) else value
-
-
-def _unescape_formula(value: str) -> str:
-    """Reverses `_escape_formula` (Task 17 requirement 2): a cell `write_sheet` protected
-    with a leading `'` because its real content starts with `=`, `+`, `-`, `@`, tab or CR
-    must have exactly that one apostrophe stripped back off on import, before the value is
-    used (otherwise Albin's edited "-5 cm" or "=..." facts would keep a stray apostrophe).
-    An apostrophe that is not followed by one of those characters is left alone: it is real
-    content, not our escaping."""
-    if len(value) >= 2 and value[0] == "'" and value[1] in _FORMULA_PREFIXES:
-        return value[1:]
-    return value
 
 
 def revision_url(lang: str, revision: str) -> str:
@@ -211,18 +193,13 @@ def flag_rows(record: Record) -> list[dict[str, str]]:
 
 
 def write_sheet(path: Path, rows: list[dict[str, str]], columns: list[str] | None = None) -> None:
-    """Writes the CSV as UTF-8 with a BOM (`utf-8-sig`) so Excel shows åäö, and neutralises
-    every text cell that could be read as a formula by Sheets/Excel (review fix
-    2026-10-06). `columns` defaults to the undantag sheet's `COLUMNS`; pass
+    """Writes the CSV as UTF-8 with a BOM (`utf-8-sig`) so Excel shows åäö, neutralises
+    every text cell that could be read as a formula by Sheets/Excel, and writes
+    atomically (`sheet_csv.write_sheet`, moved out 2026-10-06 so `compare.py` shares the
+    same hardening). `columns` defaults to the undantag sheet's `COLUMNS`; pass
     `SPOT_CHECK_COLUMNS` for the stickprov sheet. `extrasaction="ignore"` lets `_row()`
     stay a single shared row-builder even though `Publicerad` is only used by one sheet."""
-    cols = COLUMNS if columns is None else columns
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8-sig", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")
-        writer.writeheader()
-        for row in rows:
-            writer.writerow({key: _escape_formula(value) for key, value in row.items()})
+    _sheet_csv_write_sheet(path, rows, COLUMNS if columns is None else columns)
 
 
 @dataclass
@@ -364,16 +341,9 @@ def read_sheet(path: Path) -> list[dict[str, str]]:
     on every cell. Strips every leading UTF-8 BOM, not just the one `encoding="utf-8-sig"`
     would strip on its own: a Google Sheet re-exported on top of an already BOM'd file can
     end up with more than one, and a bare `utf-8-sig` open only removes the first, leaving
-    a stray U+FEFF glued onto the header's first column name (Task 17 requirement 1)."""
-    raw = path.read_bytes()
-    bom = b"\xef\xbb\xbf"
-    while raw.startswith(bom):
-        raw = raw[len(bom) :]
-    text = raw.decode("utf-8")
-    return [
-        {k: _unescape_formula(v or "") for k, v in row.items()}
-        for row in csv.DictReader(io.StringIO(text, newline=""))
-    ]
+    a stray U+FEFF glued onto the header's first column name (Task 17 requirement 1).
+    Delegates to `sheet_csv.read_sheet` (moved out 2026-10-06)."""
+    return _sheet_csv_read_sheet(path)
 
 
 def _decision(row: dict[str, str]) -> str:

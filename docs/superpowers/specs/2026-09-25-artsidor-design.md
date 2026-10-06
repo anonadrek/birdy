@@ -140,12 +140,12 @@ Avsnitt 2 (rad 2, 8, 11, 15), 7, 8, 9.4, 9.8, 14, 15, 16, 17 och bilaga E är ä
 | Ingångssida | `/sv/arter/` | `/species/` |
 | Grupp | `/sv/arter/ugglor/` | `/species/owls/` |
 | Art | `/sv/arter/talgoxe/` | `/species/great-tit/` |
-| Jämförelse | `/sv/arter/blames-eller-talgoxe/` | `/species/blue-tit-vs-great-tit/` |
+| Jämförelse | `/sv/arter/blames-eller-talgoxe/` | `/species/eurasian-blue-tit-vs-great-tit/` |
 | Om sidorna | `/sv/arter/om-artsidorna/` | `/species/about-these-pages/` |
 
 - **Alla sidtyper delar mapp.** En dynamisk route per språk (`src/pages/species/[slug].astro` och `src/pages/sv/arter/[slug].astro`) renderar art, grupp eller jämförelse. Om-sidan är en egen fil i samma mapp.
 - **Slug-regler för arter:** artens namn på språket, gemener, `å ä` → `a`, `ö` → `o`, `é è` → `e`, `ü` → `u`, mellanslag och apostrofer → `-`, `&` → `och`/`and`, övriga tecken bort.
-- **Slug-regler för jämförelser:** de två arternas slugs i bokstavsordning efter slug, sammanfogade med `-eller-` (SV) eller `-vs-` (EN). Varje par får exakt en sida per språk. Rubriken på sidan följer samma ordning.
+- **Slug-regler för jämförelser:** de två arternas slugs i bokstavsordning efter slug, sammanfogade med `-eller-` (SV) eller `-vs-` (EN). Varje par får exakt en sida per språk. Rubriken på sidan följer samma ordning. **EN-slugen är artens egen slug** ur `names.en` (t.ex. "Eurasian Blue Tit" → `eurasian-blue-tit`), inte ett förkortat visningsnamn -- exemplet i tabellen ovan rättat 2026-10-06 (Task 21-granskningen), som tidigare visade `blue-tit-vs-great-tit`.
 - **Gruppernas slugs** (fasta):
 
   | Grupp | SV | EN |
@@ -732,7 +732,7 @@ Listan ligger i `prompts/web-banned-phrases.txt` (med böjningsformer sedan fas 
   "b": "Q25485",
   "status": "ok",
   "publish": false,
-  "slug": { "sv": "blames-eller-talgoxe", "en": "blue-tit-vs-great-tit" },
+  "slug": { "sv": "blames-eller-talgoxe", "en": "eurasian-blue-tit-vs-great-tit" },
   "volumes": { "sv": 1300, "en": 880 },
   "text": {
     "sv": {

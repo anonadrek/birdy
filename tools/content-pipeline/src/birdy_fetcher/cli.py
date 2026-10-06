@@ -489,8 +489,16 @@ def web_compare_candidates() -> None:
     paths = _web_paths()
     records = load_all(paths.data_out)
     pairs = candidate_pairs(records)
-    write_candidates(paths.review / VOLUMES_FILE, pairs, records)
-    click.echo(f"{len(pairs)} par i {paths.review / VOLUMES_FILE}. Fyll i sv_volume och en_volume.")
+    result = write_candidates(paths.review / VOLUMES_FILE, pairs, records)
+    click.echo(
+        f"{len(pairs)} par i {result.path}. {result.missing_volumes} saknar volym "
+        "(tom cell, skilt från en ifylld nolla). Fyll i sv_volume och en_volume."
+    )
+    if result.cleared_sv or result.cleared_en:
+        click.echo(
+            f"Namnbyte rensade {result.cleared_sv} sv_volume och {result.cleared_en} "
+            "en_volume (fyll i på nytt)."
+        )
 
 
 @web.command("v1")
