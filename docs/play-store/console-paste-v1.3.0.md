@@ -1,12 +1,13 @@
-# Play Console: What's new för vC129 (1.3.0)
+# Play Console: What's new för vC130 (1.3.0)
 
-Klistras in vid uploaden av **vC129** (produktion). Play tillåter högst 500 tecken per språk;
+Klistras in vid uploaden av **vC130** (produktion). Play tillåter högst 500 tecken per språk;
 blocken nedan är räknade med skriptet längst ned (EN 485, SV 490). Inga tankstreck, inga
 utropstecken.
 
-Uppladdningen följer runbookens checklista för vC129:
+Uppladdningen följer runbookens checklista för vC130:
 `docs/superpowers/runbooks/2026-05-26-billing-verify-and-go-live.md` (uppdateringen överst).
-vC128 (`1.3.0-koptest`) får aldrig befordras till produktion.
+Köptestbyggena vC128 och vC129 (`1.3.0-koptest`) får aldrig befordras till produktion. vC128 kraschar
+dessutom vid start på Android 12 och senare (temat, rättat i `dbdd0148`).
 
 Vid uploaden: bekräfta att Privacy policy-fältet pekar på `https://birdy.community/legal/privacy/`,
 och att Data safety-formuläret fortfarande stämmer med `docs/play-store/data-safety-form.md`
