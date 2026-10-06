@@ -330,6 +330,55 @@ def web_verify(
     _print_outcomes(asyncio.run(run_verify(paths, options)), paths.reports)
 
 
+@web.command("write")
+@click.option("--wave", type=click.IntRange(1, 3), default=None)
+@click.option("--species", multiple=True, help="Q-ID(s) i stället för en våg.")
+@click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
+@click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
+@click.option(
+    "--checker-model", "checker_key", type=click.Choice(["opus", "sonnet"]), default="sonnet"
+)
+@click.option("--max-cost", type=float, default=None, help="Kostnadstak i USD för körningen.")
+@click.option("--regenerate", is_flag=True, help="Skriv om även texter som är aktuella.")
+@click.option(
+    "--allow-unreviewed",
+    is_flag=True,
+    help="Skriv även ur okontrollerade faktablad (bara provkörning, publiceras aldrig).",
+)
+@click.option("--workers", type=click.IntRange(min=1), default=4)
+def web_write(
+    wave: int | None,
+    species: tuple[str, ...],
+    model_key: str,
+    effort: str,
+    checker_key: str,
+    max_cost: float | None,
+    regenerate: bool,
+    allow_unreviewed: bool,
+    workers: int,
+) -> None:
+    """Steg 3: text ur det kontrollerade faktabladet, kontrollerad mening för mening. Kostar
+    pengar."""
+    from .web.text_step import WriteOptions, run_write
+
+    if wave is None and not species:
+        raise click.UsageError("Ange --wave eller --species.")
+    _require_api_key()
+    paths = _web_paths()
+    options = WriteOptions(
+        wave=wave,
+        qids=species,
+        model_key=model_key,
+        effort=effort,
+        checker_key=checker_key,
+        max_cost=max_cost,
+        regenerate=regenerate,
+        allow_unreviewed=allow_unreviewed,
+        workers=workers,
+    )
+    _print_outcomes(asyncio.run(run_write(paths, options)), paths.reports)
+
+
 @web.command("waves")
 @click.option("--size", type=click.IntRange(min=12), default=40, help="Antal arter i våg 1.")
 @click.option(
