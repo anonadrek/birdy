@@ -110,7 +110,6 @@ import se.birdy.app.ui.dailybird.DailyBirdStrip
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.AccentCopperLight
 import se.birdy.app.ui.theme.Hairline
-import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.HeroMossMid
 import se.birdy.app.ui.theme.InkMuted
@@ -119,6 +118,8 @@ import se.birdy.app.ui.theme.MatchHigh
 import se.birdy.app.ui.theme.MatchLow
 import se.birdy.app.ui.theme.MatchMid
 import se.birdy.app.ui.theme.MossCreme
+import se.birdy.app.ui.theme.PhotoLoading
+import se.birdy.app.ui.theme.PhotoScrim
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberCaveat
@@ -432,19 +433,14 @@ private fun SectionLabel(
 
 // ─── Recap entry card ─────────────────────────────────────────────────────────
 
-// The photo overlay (HeroMossDeep at three stops, left to right) exists so the kicker/title/sub
-// text block — which sits in the card's left ~75%, after the week-number circle — clears WCAG
-// AA even over a blown-out (near-white) photo, while the far-right edge (behind only the
-// decorative chevron, hidden from screen readers) can fade further since a graphical object only
-// needs 3:1. Review fix wave T8c, 2026-09-27; proof in RecapEntryCardContrastTest.
-// FAR_ALPHA: review's own suggested literal value was 0.5f — RecapEntryCardContrastTest's exact
-// edge-of-gradient case (x=1.0, the true worst position, not a specific screen width) measured
-// only 2.91:1 there, just under the 3:1 floor. Bumped to 0.55f for a real margin (≈3.36:1 at the
-// same worst case) rather than relying on the chevron's 14dp inset keeping it off the true edge.
-internal const val RECAP_OVERLAY_NEAR_ALPHA = 0.92f
-internal const val RECAP_OVERLAY_MID_ALPHA = 0.85f
-internal const val RECAP_OVERLAY_FAR_ALPHA = 0.55f
-internal const val RECAP_OVERLAY_MID_STOP = 0.75f
+// The photo overlay exists so the kicker/title/sub text and the chevron clear WCAG AA even over
+// a blown-out (near-white) find photo. Review fix wave T8c, 2026-09-27; proof in
+// RecapEntryCardContrastTest. Neutral and flat since 2026-10-06 (was HeroMossDeep fading
+// 0.92 -> 0.85 -> 0.55 left to right): the photos keep their own colors, darkened only as far as
+// the text needs, and the darkening no longer assumes where the weight(1f) text column ends
+// (anywhere from ~89% to over 95% of the card width). 0.70 is the lightest 0.05 step that clears
+// AA (the apricot kicker, 4.64:1 over pure white).
+internal const val RECAP_OVERLAY_ALPHA = 0.70f
 
 @Composable
 private fun RecapEntryCard(
@@ -469,8 +465,15 @@ private fun RecapEntryCard(
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp, vertical = 8.dp)
                 .clip(RoundedCornerShape(18.dp))
-                .background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid)))
-                .clickable(onClick = onClick),
+                // Behind the find photos: neutral while they load, never a green flash. No
+                // photos yet: the moss card, as designed.
+                .then(
+                    if (photos.isNotEmpty()) {
+                        Modifier.background(PhotoLoading)
+                    } else {
+                        Modifier.background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid)))
+                    },
+                ).clickable(onClick = onClick),
     ) {
         if (photos.isNotEmpty()) {
             Crossfade(
@@ -490,13 +493,7 @@ private fun RecapEntryCard(
                 modifier =
                     Modifier
                         .matchParentSize()
-                        .background(
-                            Brush.horizontalGradient(
-                                0f to HeroMossDeep.copy(alpha = RECAP_OVERLAY_NEAR_ALPHA),
-                                RECAP_OVERLAY_MID_STOP to HeroMossDeep.copy(alpha = RECAP_OVERLAY_MID_ALPHA),
-                                1f to HeroMossDeep.copy(alpha = RECAP_OVERLAY_FAR_ALPHA),
-                            ),
-                        ),
+                        .background(PhotoScrim.copy(alpha = RECAP_OVERLAY_ALPHA)),
             )
         }
         Row(

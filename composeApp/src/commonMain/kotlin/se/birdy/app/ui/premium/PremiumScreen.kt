@@ -86,6 +86,8 @@ import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BirdyPremiumButton
 import se.birdy.app.ui.components.GlassIconButton
 import se.birdy.app.ui.components.MicroLabel
+import se.birdy.app.ui.components.PaperSheetOverlap
+import se.birdy.app.ui.components.PaperSheetTop
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.ReportStatusBarBackdrop
 import se.birdy.app.ui.theme.BrassLight
@@ -137,7 +139,9 @@ fun PremiumScreen(
                 ),
         ) {
             item { PremiumHero() }
-            item { Spacer(Modifier.height(20.dp)) }
+            // The photo ends under the moss page's rounded edge, not on a hard line (2026-10-06).
+            // The edge itself leaves 24dp above the first section, like a PaperSheet's padding.
+            item { PaperSheetTop(color = HeroMossDeep) }
             item { FreeSummarySection() }
             item { Spacer(Modifier.height(6.dp)) }
             item { PremiumDivider() }
@@ -251,7 +255,9 @@ private fun PremiumHero() {
         kicker = stringResource(Res.string.premium_kicker),
         title = stringResource(Res.string.premium_headline_plain),
         titleAccent = stringResource(Res.string.premium_headline_accent),
-        height = 280.dp,
+        // 280dp + the 24dp the moss page's rounded edge (PaperSheetTop) rides up over the photo.
+        height = 304.dp,
+        bottomPadding = PaperSheetOverlap + 18.dp,
         drawBehindStatusBar = true,
         image = { PremiumHeroPhoto() },
     )

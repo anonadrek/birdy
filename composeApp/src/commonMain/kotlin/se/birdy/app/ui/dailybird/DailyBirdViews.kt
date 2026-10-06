@@ -88,6 +88,7 @@ import se.birdy.app.ui.theme.HeroMossMid
 import se.birdy.app.ui.theme.InkMuted
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.MossCreme
+import se.birdy.app.ui.theme.PhotoLoading
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberCaveat
@@ -101,8 +102,9 @@ private const val HERO_LABEL_ALPHA = 0.9f
 private const val HERO_COUNT_ALPHA = 0.88f
 private const val HERO_RULE_ALPHA = 0.28f
 
-// The outlined hero button's border: a graphical boundary, 3:1 is enough (≈3.8:1 over the scrim).
-private const val HERO_OUTLINE_ALPHA = 0.55f
+// The outlined hero button's border: a graphical boundary, 3:1 is enough. ≈3.72:1 over PhotoHero's
+// neutral text scrim (black 0.70 over a pure-white photo), pinned by DailyBirdHeroOutlineContrastTest.
+internal const val HERO_OUTLINE_ALPHA = 0.55f
 
 private val PillShape = RoundedCornerShape(percent = 50)
 private val StripShape = RoundedCornerShape(16.dp)
@@ -439,7 +441,15 @@ private fun StripAvatar(heroImagePath: String?) {
                 .border(1.5.dp, AccentCopperLight, CircleShape)
                 .padding(3.5.dp)
                 .clip(CircleShape)
-                .background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid, HeroMossDeep))),
+                // Behind the photo: neutral while it loads, never a green flash (2026-10-06).
+                // No photo: the moss placeholder, as designed.
+                .then(
+                    if (heroImagePath != null) {
+                        Modifier.background(PhotoLoading)
+                    } else {
+                        Modifier.background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid, HeroMossDeep)))
+                    },
+                ),
     ) {
         if (heroImagePath != null) {
             AsyncImage(

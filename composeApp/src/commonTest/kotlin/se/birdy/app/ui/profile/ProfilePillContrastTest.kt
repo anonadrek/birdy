@@ -3,7 +3,8 @@ package se.birdy.app.ui.profile
 import androidx.compose.ui.graphics.Color
 import se.birdy.app.ui.components.TEXT_SCRIM_ALPHA
 import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.HeroMossDeep
+import se.birdy.app.ui.theme.PhotoBand
+import se.birdy.app.ui.theme.PhotoScrim
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.compositeOver
 import se.birdy.app.ui.theme.contrastRatio
@@ -29,7 +30,7 @@ class ProfilePillContrastTest {
 
     @Test
     fun `pill text clears AA on both the glass fill and the filled abundance pill`() {
-        val textScrimBackdrop = compositeOver(HeroMossDeep, TEXT_SCRIM_ALPHA, worstCasePhoto)
+        val textScrimBackdrop = compositeOver(PhotoScrim, TEXT_SCRIM_ALPHA, worstCasePhoto)
         val glassPillFill = compositeOver(Color.White, PROFILE_PILL_GLASS_ALPHA, textScrimBackdrop)
 
         val glass = contrastRatio(TextOnHero, glassPillFill)
@@ -41,5 +42,13 @@ class ProfilePillContrastTest {
                 "filled pill $filled < 4.5".takeIf { filled < 4.5 },
             )
         assertTrue(failures.isEmpty(), failures.joinToString("; "))
+    }
+
+    // Since 2026-10-06 the species profile puts its text below the photo (PhotoHero's
+    // textBelowPhoto), so the pill row actually sits on the plain PhotoBand.
+    @Test
+    fun `glass pill text clears AA on the band below the photo`() {
+        val glass = contrastRatio(TextOnHero, compositeOver(Color.White, PROFILE_PILL_GLASS_ALPHA, PhotoBand))
+        assertTrue(glass >= 4.5, "glass pill on PhotoBand $glass < 4.5")
     }
 }
