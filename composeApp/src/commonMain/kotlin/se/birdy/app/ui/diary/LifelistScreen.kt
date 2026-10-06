@@ -673,18 +673,20 @@ private fun LifelistRowComposable(
                 fontSize = 17.sp,
             )
             Text(
-                text = "${row.species?.scientificName ?: ""} · ${relativeTime(row.observation.savedAt, now)}",
+                text = lifelistMetaLine(row.species?.scientificName, relativeTime(row.observation.savedAt, now)),
                 color = InkMuted,
                 fontSize = 12.sp,
             )
         }
-        Text(
-            text = "$confidencePct%",
-            color = matchColor,
-            fontFamily = caveat,
-            fontWeight = FontWeight.Bold,
-            fontSize = 16.sp,
-        )
+        if (showsConfidence(row.observation)) {
+            Text(
+                text = "$confidencePct%",
+                color = matchColor,
+                fontFamily = caveat,
+                fontWeight = FontWeight.Bold,
+                fontSize = 16.sp,
+            )
+        }
     }
 }
 
