@@ -1507,3 +1507,60 @@ async def test_a_flipped_orientation_alone_does_not_warn_about_changed_facts(
     assert saved is not None
     assert saved["publish"] is True
     assert saved["status"] == "ok"
+
+
+# I5 and I6 (final review 2026-10-06).
+
+
+def test_the_meta_description_is_a_checker_item_with_every_cited_fact() -> None:
+    items = {i.id: i for i in compare_items(COMPARE, CTX)}
+    meta = items["sv.meta_description"]
+    assert meta.text == SV_COMPARE.meta_description
+    assert [f["id"] for f in meta.facts] == ["a:f01", "b:f01", "a:f02", "b:f02", "a:f04", "b:f04"]
+    assert "en.meta_description" in items
+
+
+async def test_an_unsupported_meta_description_that_stays_unsupported_gives_no_page(
+    tmp_path: Path,
+) -> None:
+    bad = {"en.meta_description": "says the blue tit is smaller"}
+    paths = _repo_with_pair(tmp_path)
+    client = FakeJsonClient(
+        [
+            reply(COMPARE),
+            reply(_verdicts(COMPARE, bad)),
+            reply(COMPARE),
+            reply(_verdicts(COMPARE, bad)),
+        ]
+    )
+    outcomes = await run_compare(paths, CompareOptions(), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    assert any("meta_description" in e for e in outcomes[0].errors)
+
+
+async def test_a_failed_comparison_is_not_paid_for_again_unless_regenerated(
+    tmp_path: Path,
+) -> None:
+    bad = {"sv.rows[2].b": "sången stöds inte"}
+    paths = _repo_with_pair(tmp_path)
+    first = FakeJsonClient(
+        [
+            reply(COMPARE),
+            reply(_verdicts(COMPARE, bad)),
+            reply(COMPARE),
+            reply(_verdicts(COMPARE, bad)),
+        ]
+    )
+    await run_compare(paths, CompareOptions(), client=first, now=NOW)
+    again = FakeJsonClient([])
+    outcomes = await run_compare(paths, CompareOptions(), client=again, now=NOW)
+    assert [o.status for o in outcomes] == ["skipped"]
+    assert "--retry-failed" in outcomes[0].errors[0]
+    assert again.calls == []
+    redo = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
+    outcomes = await run_compare(paths, CompareOptions(retry_failed=True), client=redo, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    # --retry-failed never rewrites a comparison that is already fine.
+    quiet = FakeJsonClient([])
+    outcomes = await run_compare(paths, CompareOptions(retry_failed=True), client=quiet, now=NOW)
+    assert [o.status for o in outcomes] == ["skipped"]

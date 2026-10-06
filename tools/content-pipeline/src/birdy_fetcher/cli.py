@@ -394,6 +394,11 @@ def web_verify(
 )
 @click.option("--regenerate", is_flag=True, help="Skriv om även texter som är aktuella.")
 @click.option(
+    "--retry-failed",
+    is_flag=True,
+    help="Försök igen med texter som misslyckades förra gången med samma indata.",
+)
+@click.option(
     "--allow-unreviewed",
     is_flag=True,
     help="Skriv även ur okontrollerade faktablad (bara provkörning, publiceras aldrig).",
@@ -407,6 +412,7 @@ def web_write(
     checker_key: str,
     max_cost: float,
     regenerate: bool,
+    retry_failed: bool,
     allow_unreviewed: bool,
     workers: int,
 ) -> None:
@@ -432,6 +438,7 @@ def web_write(
         regenerate=regenerate,
         allow_unreviewed=allow_unreviewed,
         workers=workers,
+        retry_failed=retry_failed,
     )
     _print_outcomes(asyncio.run(run_write(paths, options)), paths.reports)
 
@@ -602,6 +609,11 @@ def web_compare_candidates() -> None:
     help="Kostnadstak i USD för körningen (krävs).",
 )
 @click.option("--regenerate", is_flag=True, help="Skriv om även jämförelser som är aktuella.")
+@click.option(
+    "--retry-failed",
+    is_flag=True,
+    help="Försök igen med jämförelser som misslyckades förra gången med samma indata.",
+)
 @click.option("--workers", type=click.IntRange(min=1), default=4)
 def web_compare(
     top: int,
@@ -610,6 +622,7 @@ def web_compare(
     checker_key: str,
     max_cost: float,
     regenerate: bool,
+    retry_failed: bool,
     workers: int,
 ) -> None:
     """Jämförelsetexter för de mest sökta förväxlingsparen, ur två kontrollerade faktablad.
@@ -629,6 +642,7 @@ def web_compare(
         max_cost=max_cost,
         regenerate=regenerate,
         workers=workers,
+        retry_failed=retry_failed,
     )
     try:
         outcomes = asyncio.run(run_compare(paths, options))

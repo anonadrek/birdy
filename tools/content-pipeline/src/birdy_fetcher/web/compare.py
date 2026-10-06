@@ -29,7 +29,7 @@ from ..claude_summarizer import _split_prompt
 from ..cost import CostTracker, MaxCostExceeded
 from .checked_writer import Checks, Written, write_checked
 from .checker import PROMPT_VERSION as CHECK_PROMPT_VERSION
-from .checker import CheckerFailed, CheckItem, SentenceChecker
+from .checker import CheckerFailed, CheckItem, SentenceChecker, meta_item
 from .checks import _style, load_banned, sentence_count
 from .llm import MODELS, AnthropicJsonClient, JsonModelClient, ModelReply, record_cost
 from .paths import WebPaths
@@ -38,7 +38,15 @@ from .report import StepOutcome, render_step_report, write_step_report
 from .sheet_csv import read_sheet, write_sheet
 from .text_checks import TextContext, TextIssue, sentence_issues
 from .text_model import Sentence
-from .text_step import facts_verified, prompt_file_hash, render_facts, writer_facts
+from .text_step import (
+    FAILED_BEFORE,
+    attempt_settings,
+    facts_verified,
+    prompt_file_hash,
+    render_facts,
+    same_attempt,
+    writer_facts,
+)
 from .verify import missing_required_topics
 
 VOLUMES_FILE = "comparison-volumes.csv"
@@ -497,18 +505,25 @@ def compare_path_texts(text: CompareOutput) -> dict[str, str]:
             mapping[f"{lang}.rows[{i}]"] = f"{row.feature}: {row.a.text} / {row.b.text}"
             for side in SIDES:
                 mapping[f"{lang}.rows[{i}].{side}"] = getattr(row, side).text
+        mapping[f"{lang}.meta_description"] = t.meta_description
     return mapping
 
 
 _COMPARE_PATH = re.compile(r"^(sv|en)\.(short_answer|rows)\[(\d+)\]")
+_COMPARE_META = re.compile(r"^(sv|en)\.meta_description$")
 
 
 def remove_compare_paths(text: CompareOutput, paths: set[str]) -> CompareOutput:
     """A copy without the short-answer sentences and rows named by `paths`. A cell path
-    (`sv.rows[2].a`) removes its whole row."""
+    (`sv.rows[2].a`) removes its whole row. A rejected meta description is emptied (I5),
+    which `compare_minimum` then refuses."""
     data = text.model_dump()
     drops: dict[tuple[str, str], set[int]] = {}
     for path in paths:
+        meta = _COMPARE_META.match(path)
+        if meta is not None:
+            data[meta.group(1)]["meta_description"] = ""
+            continue
         match = _COMPARE_PATH.match(path)
         if match is not None:
             lang, name, index = match.groups()
@@ -554,10 +569,12 @@ def compare_items(
     items: list[CheckItem] = []
     for lang in ("sv", "en"):
         t: CompareLang = getattr(text, lang)
+        cited: list[str] = []
         for i, sentence in enumerate(t.short_answer):
             items.append(
                 CheckItem(f"{lang}.short_answer[{i}]", sentence.text, facts(sentence.fact_ids))
             )
+            cited += sentence.fact_ids
         for i, row in enumerate(t.rows):
             for side, index in zip(SIDES, (0, 1), strict=True):
                 cell: Cell = getattr(row, side)
@@ -569,6 +586,8 @@ def compare_items(
                         f"{lang}.rows[{i}].{side}", f"{label}: {cell.text}", facts(cell.fact_ids)
                     )
                 )
+                cited += cell.fact_ids
+        items.append(meta_item(lang, t.meta_description, cited, ctx))
     return items
 
 
@@ -582,7 +601,9 @@ def compare_minimum(text: CompareOutput) -> list[str]:
             problems.append(f"{lang}.short_answer saknas")
         if len(t.rows) < ROWS_MIN:
             problems.append(f"{lang}.rows har färre än 3 rader")
-        if not META_MIN <= len(t.meta_description) <= META_MAX:
+        if not t.meta_description:
+            problems.append(f"{lang}.meta_description saknas (stöds inte av fakta)")
+        elif not META_MIN <= len(t.meta_description) <= META_MAX:
             problems.append(f"{lang}.meta_description har fel längd")
     return problems
 
@@ -687,6 +708,9 @@ class CompareOptions:
     max_cost: float | None = None
     regenerate: bool = False
     workers: int = 4
+    # I6: try a comparison that failed with the same inputs once more, without
+    # --regenerate's rewrite of every current comparison in the top list.
+    retry_failed: bool = False
 
 
 def _candidate_volumes(
@@ -923,7 +947,13 @@ async def run_compare(
     # Everything that reads a file comes before the client exists (review fix 2026-10-06,
     # M7), so an early error cannot leave an Anthropic client open.
     banned = load_banned(paths.banned)
-    prompt_hash = prompt_file_hash(paths.prompt_file(PROMPT_VERSION))
+    settings = attempt_settings(
+        model_key=options.model_key,
+        effort=options.effort,
+        checker_key=options.checker_key,
+        prompt_hash=prompt_file_hash(paths.prompt_file(PROMPT_VERSION)),
+        checker_prompt_hash=prompt_file_hash(paths.prompt_file(CHECK_PROMPT_VERSION)),
+    )
     owned = client is None
     model_client: JsonModelClient = client or AnthropicJsonClient()
     cost = CostTracker(max_usd=options.max_cost)
@@ -975,6 +1005,15 @@ async def run_compare(
                 )
                 if current and not options.regenerate:
                     return leave("skipped", ["jämförelsen är redan skriven ur samma faktablad"])
+                failed_before = (
+                    existing is not None
+                    and existing.get("status") == "failed"
+                    and comparison_is_current(existing, records)
+                    and same_attempt(existing.get("generated") or {}, settings)
+                )
+                if failed_before and not (options.regenerate or options.retry_failed):
+                    # I6 (final review 2026-10-06): not paid for again on every rerun.
+                    return leave("skipped", [f"jämförelsen {FAILED_BEFORE}"])
                 if stop.is_set():
                     return leave("skipped", ["kostnadstaket nåddes"])
                 try:
@@ -1014,11 +1053,8 @@ async def run_compare(
                             else None
                         ),
                         "generated": {
-                            "model": MODELS[options.model_key],
+                            **settings,
                             "prompt": PROMPT_VERSION,
-                            "promptHash": prompt_hash,
-                            "effort": options.effort,
-                            "checker": MODELS[options.checker_key],
                             "checkerPrompt": CHECK_PROMPT_VERSION,
                             "at": now.isoformat(),
                             "factsHash": both_hash,

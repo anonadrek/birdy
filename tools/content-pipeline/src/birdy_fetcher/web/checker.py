@@ -39,12 +39,26 @@ class CheckItem:
     facts: tuple[dict[str, Any], ...]
 
 
+def meta_item(lang: str, meta_description: str, cited: list[str], ctx: TextContext) -> CheckItem:
+    """The meta description cites no facts of its own; it may only say what the text it
+    sums up says, so it is checked against every fact that text cites (I5, final review
+    2026-10-06: it used to reach the search results unchecked)."""
+    facts = tuple(ctx.facts_by_id[f] for f in dict.fromkeys(cited) if f in ctx.facts_by_id)
+    return CheckItem(f"{lang}.meta_description", meta_description, facts)
+
+
 def check_items(text: WebTextV2, ctx: TextContext) -> list[CheckItem]:
     items: list[CheckItem] = []
     for lang in ("sv", "en"):
-        for suffix, sentence in iter_sentences(getattr(text, lang)):
+        lang_text = getattr(text, lang)
+        cited: list[str] = []
+        for suffix, sentence in iter_sentences(lang_text):
             facts = tuple(ctx.facts_by_id[f] for f in sentence.fact_ids if f in ctx.facts_by_id)
             items.append(CheckItem(f"{lang}.{suffix}", sentence.text, facts))
+            cited += sentence.fact_ids
+        if lang_text.size is not None:
+            cited += lang_text.size.fact_ids
+        items.append(meta_item(lang, lang_text.meta_description, cited, ctx))
     return items
 
 

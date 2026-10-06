@@ -241,6 +241,9 @@ class WriteOptions:
     regenerate: bool = False
     allow_unreviewed: bool = False
     workers: int = 4
+    # I6: try a text that failed with the same inputs once more, without --regenerate's
+    # rewrite of every current text.
+    retry_failed: bool = False
 
 
 def facts_verified(record: Record) -> bool:
@@ -264,7 +267,33 @@ def text_is_current(record: Record) -> bool:
     return bool(generated.get("factsHash") == facts_hash(record))
 
 
-def _skip_reason(record: Record, options: WriteOptions) -> str | None:
+def attempt_settings(
+    *, model_key: str, effort: str, checker_key: str, prompt_hash: str, checker_prompt_hash: str
+) -> dict[str, str]:
+    """What decides a written (or failed) text besides the facts: the writer, its effort,
+    the checker and both prompts. Stored in `generated` and compared by `same_attempt`."""
+    return {
+        "model": MODELS[model_key],
+        "effort": effort,
+        "checker": MODELS[checker_key],
+        "promptHash": prompt_hash,
+        "checkerPromptHash": checker_prompt_hash,
+    }
+
+
+def same_attempt(generated: dict[str, Any], settings: dict[str, str]) -> bool:
+    return all(generated.get(key) == value for key, value in settings.items())
+
+
+FAILED_BEFORE = (
+    "misslyckades förra gången med samma faktablad, prompter och modeller: "
+    "kör med --retry-failed (eller --regenerate) för att betala för ett nytt försök"
+)
+
+
+def _skip_reason(
+    record: Record, options: WriteOptions, settings: dict[str, str] | None = None
+) -> str | None:
     if missing_required_topics(record.get("facts", [])):
         # (C1, review fix 2026-10-06) The appearance-only proxy missed a sheet that still
         # has appearance but lost voice or habitat to a V1 strike -- use the same check V1
@@ -281,6 +310,17 @@ def _skip_reason(record: Record, options: WriteOptions) -> str | None:
     )
     if current and not options.regenerate:
         return "texten är redan skriven ur samma faktablad"
+    failed_before = (
+        record.get("status") == "failed"
+        and text_is_current(record)
+        and bool(generated.get("unreviewed")) == (not reviewed)
+        and settings is not None
+        and same_attempt(generated, settings)
+    )
+    if failed_before and not (options.regenerate or options.retry_failed):
+        # I6 (final review 2026-10-06): the same inputs again would most likely fail again,
+        # and every rerun paid for it.
+        return f"texten {FAILED_BEFORE}"
     return None
 
 
@@ -334,6 +374,13 @@ async def run_write(
     # M7), so an early error cannot leave an Anthropic client open.
     banned = load_banned(paths.banned)
     prompt_hash = prompt_file_hash(paths.prompt_file(PROMPT_VERSION))
+    settings = attempt_settings(
+        model_key=options.model_key,
+        effort=options.effort,
+        checker_key=options.checker_key,
+        prompt_hash=prompt_hash,
+        checker_prompt_hash=prompt_file_hash(paths.prompt_file(CHECK_PROMPT_VERSION)),
+    )
     owned = client is None
     model_client: JsonModelClient = client or AnthropicJsonClient()
     cost = CostTracker(max_usd=options.max_cost)
@@ -368,7 +415,7 @@ async def run_write(
                 # strike) must fail loudly, not quietly skip or hide the warning in a note
                 # `_print_outcomes` never shows.
                 stale = _stale_published_fact_ids(record)
-                reason = _skip_reason(record, options)
+                reason = _skip_reason(record, options, settings)
                 if reason is not None:
                     if stale:
                         return StepOutcome(qid, name, "failed", [_stale_published_error(stale)])
@@ -403,11 +450,8 @@ async def run_write(
                             )
                     return StepOutcome(qid, name, "failed", errors, notes)
                 generated: dict[str, Any] = {
-                    "model": MODELS[options.model_key],
+                    **settings,
                     "prompt": PROMPT_VERSION,
-                    "promptHash": prompt_hash,
-                    "effort": options.effort,
-                    "checker": MODELS[options.checker_key],
                     "checkerPrompt": CHECK_PROMPT_VERSION,
                     "at": now.isoformat(),
                     "factsHash": facts_hash(record),

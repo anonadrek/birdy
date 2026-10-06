@@ -208,6 +208,7 @@ def path_texts(text: WebTextV2) -> dict[str, str]:
             mapping[f"{lang}.{suffix}"] = sentence.text
         if t.size is not None:
             mapping[f"{lang}.size"] = t.size.value
+        mapping[f"{lang}.meta_description"] = t.meta_description
     return mapping
 
 
@@ -242,6 +243,8 @@ def minimum_problems(text: WebTextV2) -> list[str]:
             problems.append(f"{lang}.voice saknas")
         if not t.where_when:
             problems.append(f"{lang}.where_when saknas")
-        if not META_MIN <= len(t.meta_description) <= META_MAX:
+        if not t.meta_description:
+            problems.append(f"{lang}.meta_description saknas (stöds inte av fakta)")
+        elif not META_MIN <= len(t.meta_description) <= META_MAX:
             problems.append(f"{lang}.meta_description har fel längd")
     return problems

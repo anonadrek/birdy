@@ -9071,14 +9071,14 @@ Ny körtask 2026-10-05: ersätter Albins manuella faktabladsgranskning. Ingen Al
 ### R6: Text (cirka 25 USD för våg 1, mindre för senare vågor)
 
 - [ ] `uv run birdy-fetcher web write --wave 1 --max-cost 40`
-- [ ] Läs rapporten. Visa Albin tre slumpvisa texter och alla arter med `failed`. Kör om misslyckade arter en gång med `--regenerate --max-cost 5 --species ...`.
+- [ ] Läs rapporten. Visa Albin tre slumpvisa texter och alla arter med `failed`. Kör om misslyckade arter en gång med `--regenerate --max-cost 5 --species ...`. **(Tillägg 2026-10-06, slutgranskningen I6 och I5:** en text som misslyckades körs inte om av en vanlig omkörning så länge faktabladet, båda prompterna och modellerna är desamma; den rapporteras som `skipped` med "misslyckades förra gången". Kör om med `--retry-failed` (bara misslyckade) eller `--regenerate --species ...`. Meta-beskrivningen kontrolleras nu också av textkontrollen mot alla fakta texten anger; stöds den inte ens efter omskrivningen får arten `failed`.)
 - [ ] Commit och push.
 
 ### R7: Jämförelser (cirka 5 USD för våg 1, mindre för senare vågor)
 
 - [ ] `uv run birdy-fetcher web compare-candidates`
 - [ ] **Fråga Albin innan** sökordsplaneraren används i hans Google Ads-konto. Fyll sedan i `sv_volume` (Sverige, svenska) i `review/comparison-volumes.csv`: summan av de genomsnittliga månadssökningarna för parets fyra svenska sökningar. **`en_volume`: det högsta värdet bland parets engelska sökningar** (ändrat 2026-10-06, Task 21-granskningen) -- inte en summa. `sv_queries`/`en_queries`-kolumnerna listar nu upp till sex engelska sökningar i stället för tre: 78 av 180 arter har ett IOC-prefix (Eurasian/Common/Northern/Western/European) som sällan skrivs i en sökruta ("eurasian blue tit vs great tit" läser nära noll i planeraren), så `queries()` lägger till samma fraser utan prefixet när ett namn har ett. De fraserna mäter delvis överlappande sökintresse, därför max och inte summa. Ger planeraren ett intervall, använd mitten. **Visar planeraren "<10" för alla fraser i ett språk, skriv "<10"** i den kolumnen i stället för att gissa ett tal (ändrat 2026-10-06, Task 21-granskningen; `_number` tolkar "<10" och "< 10" som samma sak).
-- [ ] `uv run birdy-fetcher web compare --top 30 --max-cost 15` (par där båda arterna inte är kontrollerade hoppas över och skrivs när den andra arten blir klar).
+- [ ] `uv run birdy-fetcher web compare --top 30 --max-cost 15` (par där båda arterna inte är kontrollerade hoppas över och skrivs när den andra arten blir klar). **(Tillägg 2026-10-06, slutgranskningen I6:** en misslyckad jämförelse betalas inte igen vid nästa körning; försök igen med `--retry-failed`, som inte rör aktuella jämförelser. `--regenerate` skriver om alla par i topplistan och kostar därefter.)
 - [ ] Commit och push.
 
 ### R8: Överlämning till sidorna, art för art (ändrat 2026-10-05 (b), var tidigare go-live för en hel våg)

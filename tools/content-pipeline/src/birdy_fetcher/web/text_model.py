@@ -58,14 +58,15 @@ def iter_sentences(text: LangTextV2) -> Iterator[tuple[str, Sentence]]:
 
 
 _PATH = re.compile(
-    r"^(sv|en)\.(lead|field_marks|voice|where_when|behaviour|look_alikes|size)"
+    r"^(sv|en)\.(lead|field_marks|voice|where_when|behaviour|look_alikes|size|meta_description)"
     r"(?:\[(\d+)\])?(?:\.sentences\[(\d+)\])?$"
 )
 
 
 def remove_paths(text: WebTextV2, paths: set[str]) -> WebTextV2:
     """A copy without the sentences, items, look-alikes or sizes named by `paths`. A
-    look-alike that loses all its sentences is dropped too."""
+    look-alike that loses all its sentences is dropped too. A meta description the checker
+    rejected is emptied (I5), which the minimum requirements then refuse."""
     data = text.model_dump()
     drops: dict[tuple[str, str], set[int]] = {}
     nested: dict[tuple[str, int], set[int]] = {}
@@ -76,6 +77,8 @@ def remove_paths(text: WebTextV2, paths: set[str]) -> WebTextV2:
         lang, name, index, inner = match.groups()
         if name == "size":
             data[lang]["size"] = None
+        elif name == "meta_description":
+            data[lang]["meta_description"] = ""
         elif name == "look_alikes" and inner is not None:
             nested.setdefault((lang, int(index)), set()).add(int(inner))
         elif index is not None:

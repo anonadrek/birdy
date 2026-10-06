@@ -46,7 +46,8 @@ def test_items_cover_every_sentence_in_both_languages() -> None:
     ids = [i.id for i in items]
     assert "sv.lead[0]" in ids
     assert "en.look_alikes[0].sentences[0]" in ids
-    assert len(ids) == 2 * 8  # lead 2, field_marks 3, voice 1, where_when 1, look-alike 1
+    # lead 2, field_marks 3, voice 1, where_when 1, look-alike 1, meta_description 1
+    assert len(ids) == 2 * 9
     where = next(i for i in items if i.id == "sv.where_when[0]")
     assert [f["id"] for f in where.facts] == ["s01", "d01", "f05"]
 
@@ -161,3 +162,24 @@ async def test_whitespace_around_a_returned_id_does_not_break_the_match() -> Non
     client = FakeJsonClient([reply(CheckOutput(verdicts=verdicts))])
     result = await _checker(client).check(items, about=ABOUT)
     assert result == {items[0].id: "med mellanslag"}
+
+
+def test_the_meta_description_is_checked_against_every_fact_the_text_cites() -> None:
+    """I5 (final review 2026-10-06): the meta description reached the search results
+    without the second model ever reading it."""
+    items = {i.id: i for i in check_items(VALID, CTX)}
+    meta = items["sv.meta_description"]
+    assert meta.text == VALID.sv.meta_description
+    cited: list[str] = []
+    for item in check_items(VALID, CTX):
+        if item.id.startswith("sv.") and item.id != "sv.meta_description":
+            cited += [f["id"] for f in item.facts]
+    if VALID.sv.size is not None:
+        cited += VALID.sv.size.fact_ids
+    assert [f["id"] for f in meta.facts] == list(dict.fromkeys(cited))
+    assert "en.meta_description" in items
+
+
+def test_the_prompt_explains_the_meta_description_item() -> None:
+    prompt = (PIPELINE / "prompts/check-v1.md").read_text(encoding="utf-8")
+    assert "meta_description" in prompt
