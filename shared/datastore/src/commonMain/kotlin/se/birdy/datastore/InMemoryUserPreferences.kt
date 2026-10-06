@@ -33,6 +33,7 @@ class InMemoryUserPreferences : UserPreferences {
     private val _grandfatherLegacyCaptured = MutableStateFlow(false)
     private val _grandfatherLegacyInstallMs = MutableStateFlow<Long?>(null)
     private val _grandfatherTrustedFirstSeenMs = MutableStateFlow<Long?>(null)
+    private val _dailyBirdOpenedDate = MutableStateFlow<String?>(null)
 
     override val userName: Flow<String> = _userName.asStateFlow()
     override val hasSeenOnboarding: Flow<Boolean> = _hasSeenOnboarding.asStateFlow()
@@ -57,6 +58,7 @@ class InMemoryUserPreferences : UserPreferences {
     override val grandfatherLegacyCaptured: Flow<Boolean> = _grandfatherLegacyCaptured.asStateFlow()
     override val grandfatherLegacyInstallMs: Flow<Long?> = _grandfatherLegacyInstallMs.asStateFlow()
     override val grandfatherTrustedFirstSeenMs: Flow<Long?> = _grandfatherTrustedFirstSeenMs.asStateFlow()
+    override val dailyBirdOpenedDate: Flow<String?> = _dailyBirdOpenedDate.asStateFlow()
 
     override suspend fun setUserName(name: String) {
         _userName.value = name
@@ -145,5 +147,9 @@ class InMemoryUserPreferences : UserPreferences {
 
     override suspend fun setGrandfatherTrustedFirstSeenMs(ms: Long) {
         _grandfatherTrustedFirstSeenMs.value = ms
+    }
+
+    override suspend fun setDailyBirdOpenedDate(date: String) {
+        _dailyBirdOpenedDate.value = date
     }
 }

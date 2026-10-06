@@ -354,14 +354,17 @@ private fun DetailsSection(state: ObservationDetailUiState.Loaded) {
             label = stringResource(Res.string.diary_detail_label_date),
             value = formatFullDate(state.observation.capturedAt, tz),
         )
-        DetailRow(
-            label = stringResource(Res.string.diary_detail_label_confidence),
-            value =
-                stringResource(
-                    Res.string.diary_confidence_format,
-                    "${(state.observation.confidence * 100f).toInt()}%",
-                ),
-        )
+        // A find saved as unknown was never scored as a species: no "0% säkerhet" row.
+        if (showsConfidence(state.observation)) {
+            DetailRow(
+                label = stringResource(Res.string.diary_detail_label_confidence),
+                value =
+                    stringResource(
+                        Res.string.diary_confidence_format,
+                        "${(state.observation.confidence * 100f).toInt()}%",
+                    ),
+            )
+        }
         DetailRow(
             label = stringResource(Res.string.diary_detail_label_saved),
             value = formatFullDate(state.observation.savedAt, tz),

@@ -6,6 +6,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import org.junit.Rule
 import org.junit.Test
@@ -13,6 +14,7 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
+import se.birdy.app.dailybird.DailyBirdToday
 import se.birdy.app.data.premium.FormattedPrices
 import se.birdy.app.data.premium.PurchaseResult
 import se.birdy.app.testing.FakeObservationRepository
@@ -38,8 +40,6 @@ import se.birdy.content.model.SpeciesImage
 import se.birdy.content.model.SpeciesTaxonomy
 import se.birdy.datastore.LifelistSort
 import se.birdy.datastore.LifelistStat3Choice
-import se.birdy.domain.dailybird.DailyBird
-import se.birdy.domain.dailybird.SeasonTag
 import se.birdy.domain.observation.Observation
 import se.birdy.ml.Classification
 import se.birdy.ml.ClassificationResult
@@ -157,13 +157,18 @@ class RealPhotoScreenshotTest {
         val vm =
             remember {
                 ListenLauncherViewModel(
-                    selectDailyBird = { DailyBird(speciesId = "Q27236", seasonTag = SeasonTag.PRESENT) },
-                    getSpeciesName = { "Sävsångare" },
-                    getSpeciesHeroPath = { "Q27236/hero.webp" },
-                    recordDailyBirdShown = { _, _ -> },
-                    dailyBirdMatchCount = { 0 },
-                    isDailyBirdCaught = { false },
-                    huntTarget = 3,
+                    dailyBird =
+                        MutableStateFlow(
+                            DailyBirdToday(
+                                date = LocalDate(2026, 10, 6),
+                                speciesId = "Q27236",
+                                name = "Sävsångare",
+                                scientificName = "Acrocephalus schoenobaenus",
+                                heroImagePath = "Q27236/hero.webp",
+                                caughtToday = false,
+                                daysCaught = 0,
+                            ),
+                        ),
                 )
             }
         ListenLauncherScreen(

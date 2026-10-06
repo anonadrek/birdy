@@ -101,4 +101,12 @@ class NsUserDefaultsUserPreferencesTest {
             store().setGrandfatherTrustedFirstSeenMs(1_790_000_000_000L)
             assertEquals(1_790_000_000_000L, store().grandfatherTrustedFirstSeenMs.first())
         }
+
+    @Test
+    fun daily_bird_opened_date_is_null_until_set_and_persists_across_instances() =
+        runTest {
+            assertNull(store().dailyBirdOpenedDate.first())
+            store().setDailyBirdOpenedDate("2026-10-06")
+            assertEquals("2026-10-06", store().dailyBirdOpenedDate.first())
+        }
 }

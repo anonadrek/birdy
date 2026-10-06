@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="tab_listen">Identify</string>
+    <string name="tab_listen_daily_bird_new">Bird of the day waiting</string>
     <string name="tab_archive">Archive</string>
     <string name="tab_lifelist">Lifelist</string>
     <string name="tab_badges">Badges</string>
@@ -538,20 +539,57 @@
          reused elsewhere) so that key's wording can change without touching this badge. -->
     <string name="premium_badge">PREMIUM</string>
     <string name="stats_title">Season statistics</string>
-    <string name="stats_intro_eyebrow">SEASON</string>
+    <!-- 1.3.0 Task 7c: the year ring and the timeline of this year's first finds (design option B). -->
+    <string name="stats_intro_eyebrow_year">Season %1$d</string>
     <string name="stats_intro_headline">A *year* in the field.</string>
-    <string name="stats_intro_sub">Patterns from your observations.</string>
-    <string name="stats_section_months">Observations by month</string>
-    <string name="stats_section_seasons">By season</string>
-    <string name="stats_section_top">Most-seen species</string>
-    <string name="stats_section_cumulative">New species over time</string>
-    <string name="stats_total_species">Species</string>
-    <string name="stats_total_observations">Observations</string>
-    <string name="stats_empty_eyebrow">SEASON</string>
+    <string name="stats_summary_first_find">Your first find this year came in %1$s.</string>
+    <plurals name="stats_summary_best_month">
+        <item quantity="one">%1$d find. %2$s was your best month.</item>
+        <item quantity="other">%1$d finds. %2$s was your best month.</item>
+    </plurals>
+    <plurals name="stats_summary_best_month_current">
+        <item quantity="one">%1$d find. %2$s is your best month so far.</item>
+        <item quantity="other">%1$d finds. %2$s is your best month so far.</item>
+    </plurals>
+    <plurals name="stats_summary_total">
+        <item quantity="one">%1$d find so far this year.</item>
+        <item quantity="other">%1$d finds so far this year.</item>
+    </plurals>
+    <string-array name="stats_months_full">
+        <item>January</item><item>February</item><item>March</item><item>April</item>
+        <item>May</item><item>June</item><item>July</item><item>August</item>
+        <item>September</item><item>October</item><item>November</item><item>December</item>
+    </string-array>
+    <plurals name="stats_ring_finds_label">
+        <item quantity="one">find</item>
+        <item quantity="other">finds</item>
+    </plurals>
+    <plurals name="stats_ring_species">
+        <item quantity="one">%1$d species</item>
+        <item quantity="other">%1$d species</item>
+    </plurals>
+    <string name="stats_ring_description">Year ring for %1$d with finds per month, January at the top</string>
+    <plurals name="stats_ring_total_description">
+        <item quantity="one">%1$d find in total</item>
+        <item quantity="other">%1$d finds in total</item>
+    </plurals>
+    <plurals name="stats_label_finds_description">
+        <item quantity="one">%1$s: %2$d find</item>
+        <item quantity="other">%1$s: %2$d finds</item>
+    </plurals>
+    <string name="stats_current_month_legend">%1$s, in progress</string>
+    <string name="stats_section_firsts">New species this year</string>
+    <string name="stats_first_seen_date">%2$s %1$d</string>
+    <string name="stats_first_sighting_number">№%1$d</string>
+    <string name="stats_first_sighting_description">%1$s, species number %2$d this year, first seen %3$s</string>
+    <string name="stats_section_top">Most seen</string>
+    <plurals name="stats_seal_count">
+        <item quantity="one">%1$d find</item>
+        <item quantity="other">%1$d finds</item>
+    </plurals>
     <string name="stats_empty_headline">Nothing to *chart* yet.</string>
-    <string name="stats_empty_sub">No finds yet this year — save one to unlock your yearly overview.</string>
+    <string name="stats_empty_sub">No finds this year yet. Save your first and the year ring starts to fill.</string>
     <string name="stats_back">Back</string>
-    <string name="stats_count_format">%1$d obs</string>
     <string name="stats_winter">Winter</string>
     <string name="stats_spring">Spring</string>
     <string name="stats_summer">Summer</string>
@@ -617,12 +655,61 @@
 
     <!-- ===== v1.1 Phase A: Daily Bird + Streak Risk + 3 badges ===== -->
 
-    <!-- Daily Bird card -->
-    <string name="daily_bird_card_eyebrow">BIRD OF THE DAY</string>
-    <string name="daily_bird_eyebrow_breeding">Breeding in Sweden now</string>
-    <string name="daily_bird_eyebrow_present">Here right now</string>
-    <string name="daily_bird_eyebrow_migrating">On migration</string>
-    <string name="daily_bird_card_a11y">Bird of the day: %1$s. %2$s. Tap to read more.</string>
+    <!-- Daily Bird: Identify hero, strips on My species/Encyclopedia, tab dot (release 1.3.0 Task 7d).
+         The day count is distinct days on which that day's bird was saved (all time, not in a row);
+         the target is the Daily bird hunter badge. -->
+    <string name="daily_bird_card_eyebrow">Bird of the day</string>
+    <string name="daily_bird_kicker_fmt">Bird of the day · %1$s</string>
+    <string name="daily_bird_date_fmt">%1$s %2$d %3$s</string>
+    <string name="daily_bird_weekday_mon">Mon</string>
+    <string name="daily_bird_weekday_tue">Tue</string>
+    <string name="daily_bird_weekday_wed">Wed</string>
+    <string name="daily_bird_weekday_thu">Thu</string>
+    <string name="daily_bird_weekday_fri">Fri</string>
+    <string name="daily_bird_weekday_sat">Sat</string>
+    <string name="daily_bird_weekday_sun">Sun</string>
+    <string name="daily_bird_date_full_fmt">%1$s %2$d %3$s</string>
+    <string name="daily_bird_weekday_full_mon">Monday</string>
+    <string name="daily_bird_weekday_full_tue">Tuesday</string>
+    <string name="daily_bird_weekday_full_wed">Wednesday</string>
+    <string name="daily_bird_weekday_full_thu">Thursday</string>
+    <string name="daily_bird_weekday_full_fri">Friday</string>
+    <string name="daily_bird_weekday_full_sat">Saturday</string>
+    <string name="daily_bird_weekday_full_sun">Sunday</string>
+    <string name="daily_bird_month_full_jan">January</string>
+    <string name="daily_bird_month_full_feb">February</string>
+    <string name="daily_bird_month_full_mar">March</string>
+    <string name="daily_bird_month_full_apr">April</string>
+    <string name="daily_bird_month_full_may">May</string>
+    <string name="daily_bird_month_full_jun">June</string>
+    <string name="daily_bird_month_full_jul">July</string>
+    <string name="daily_bird_month_full_aug">August</string>
+    <string name="daily_bird_month_full_sep">September</string>
+    <string name="daily_bird_month_full_oct">October</string>
+    <string name="daily_bird_month_full_nov">November</string>
+    <string name="daily_bird_month_full_dec">December</string>
+    <string name="daily_bird_hero_a11y">Bird of the day, %1$s: %2$s, %3$s.</string>
+    <string name="daily_bird_read_more">Read about it</string>
+    <string name="daily_bird_listen_for_it">Listen for it</string>
+    <string name="daily_bird_save_a_find_today">Save a find of it today.</string>
+    <string name="daily_bird_badge_complete">Badge complete.</string>
+    <string name="daily_bird_one_day_left">One more day to the badge.</string>
+    <string name="daily_bird_two_days_left">Two more days to the badge.</string>
+    <plurals name="daily_bird_days_left">
+        <item quantity="one">One more day to the badge.</item>
+        <item quantity="other">%1$d more days to the badge.</item>
+    </plurals>
+    <plurals name="daily_bird_days_of_target">
+        <item quantity="one">%1$d of %2$d day</item>
+        <item quantity="other">%1$d of %2$d days</item>
+    </plurals>
+    <plurals name="daily_bird_days_total">
+        <item quantity="one">%1$d day</item>
+        <item quantity="other">%1$d days</item>
+    </plurals>
+    <string name="daily_bird_challenge_a11y">%1$s. %2$s %3$s.</string>
+    <string name="daily_bird_strip_status_fmt">%1$s · %2$s</string>
+    <string name="daily_bird_strip_a11y">Bird of the day: %1$s. %2$s, %3$s.</string>
 
     <!-- Permission prompt sheet -->
     <string name="permission_prompt_eyebrow">NOTIFICATIONS</string>
@@ -638,11 +725,9 @@
 
     <!-- Notifications -->
     <string name="notification_daily_bird_title_fmt">Bird of the day: %1$s</string>
-    <string name="notification_daily_bird_body_breeding">Breeding in Sweden right now.</string>
-    <string name="notification_daily_bird_body_present">Here right now.</string>
-    <string name="notification_daily_bird_body_migrating">Migrating right now.</string>
-    <string name="daily_bird_caught_today">Caught today ✓</string>
-    <string name="daily_bird_not_caught">Not caught yet</string>
+    <string name="notification_daily_bird_body">Can you catch it today? Camera, photo or call all count.</string>
+    <string name="daily_bird_caught_today">Caught today</string>
+    <string name="daily_bird_not_caught">Not caught today</string>
     <string name="settings_toggle_trophy">Badge progress — weekly</string>
     <string name="notification_trophy_title">Toward your next badge</string>
     <string name="notification_trophy_body_fmt">%1$s of %2$s badges unlocked. Closest: %3$s (%4$s/%5$s).</string>

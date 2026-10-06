@@ -303,6 +303,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleDeepLink(intent: Intent) {
+        // A notification button (Dagens fågel's "Läs om arten" / "Lyssna efter den") doesn't
+        // auto-cancel its notification the way a tap on the notification itself does.
+        val dismissId =
+            intent.getIntExtra(se.birdy.app.notifications.DailyBirdNotification.EXTRA_DISMISS_NOTIFICATION_ID, 0)
+        if (dismissId != 0) NotificationManagerCompat.from(this).cancel(dismissId)
         val uri = intent.data ?: return
         if (uri.scheme != "birdy") return
         val uriString = uri.toString()
