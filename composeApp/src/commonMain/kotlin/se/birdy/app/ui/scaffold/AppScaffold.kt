@@ -384,8 +384,11 @@ private fun NavGraphBuilder.appDestinations(
                 ArchiveScreen(
                     // Scoped to this NavHost entry (release 1.3.0 Task 7g), not a `remember`: the
                     // entry stays on the back stack while a species profile covers it, so the search
-                    // text, results and scroll position are still there on the way back.
-                    viewModel = viewModel { graph.archiveViewModel() },
+                    // text, results and scroll position are still there on the way back. Keyed on
+                    // the graph: a language switch recreates the activity with a new AppGraph (new
+                    // locale, new billing client) while the entry's ViewModels survive, and the
+                    // list must then come from the new graph (review fix I1).
+                    viewModel = viewModel(key = "archive-${graph.hashCode()}") { graph.archiveViewModel() },
                     locale = graph.defaultLocale,
                     onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id.raw)) },
                     onPremiumClick = { navController.navigate(AppRoute.Premium) },
