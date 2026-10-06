@@ -71,6 +71,24 @@ def _style(path: str, lang: str, text: str, banned: list[str]) -> list[Issue]:
     return issues
 
 
+_NUMBER_DASH = re.compile(r"(\d)\s*[\u2013\u2014]\s*(\d)")
+_DASH_BREAK = re.compile(r"\s*(?:\u2014|--)\s*|\s+\u2013\s+")
+_COMMA_BEFORE_STOP = re.compile(r",\s*([,.;:!?])")
+
+
+def without_dashes(text: str) -> str:
+    """Text the pipeline copies onto a page without a model writing it (the app's
+    marginalia, photographers and recordists) and the flag messages, which hold the
+    checking model's own reasons: the site's dash guard refuses an em dash, an en dash
+    with spaces around it and `--` (spec §9.6 rule 1), so they become a comma. A dash
+    between two numbers becomes a hyphen ("13-15"); an en dash between two words is
+    left alone, like the guard does (I7, final review 2026-10-06)."""
+    out = _NUMBER_DASH.sub(r"\1-\2", text)
+    out = _DASH_BREAK.sub(", ", out)
+    out = _COMMA_BEFORE_STOP.sub(r"\1", out)
+    return out.strip(" ,")
+
+
 MIN_QUOTE_CHARS = 20
 _QUOTE_CHARS = {
     "’": "'",  # noqa: RUF001

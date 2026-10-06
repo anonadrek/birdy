@@ -965,3 +965,16 @@ async def test_a_record_that_is_not_an_object_does_not_abort_the_preflight(
     client = FakeJsonClient([reply(_verdicts())])
     outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
     assert {o.qid: o.status for o in outcomes} == {"Q1": "ok", "Q2": "failed"}
+
+
+async def test_a_flag_message_never_carries_a_dash_the_site_refuses(tmp_path: Path) -> None:
+    """I7: V1's English reason often has an em dash, and it lands in `flags[].message`."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    client = FakeJsonClient([reply(_verdicts(s01="The quote is about Norway \u2014 not Sweden."))])
+    await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    message = record["flags"][0]["message"]
+    assert "about Norway, not Sweden" in message
+    assert "\u2014" not in message

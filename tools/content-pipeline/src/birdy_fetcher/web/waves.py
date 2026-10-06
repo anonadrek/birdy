@@ -95,7 +95,7 @@ def run_waves(paths: WebPaths, *, size: int, recompute: bool) -> dict[int, list[
 # -- publishing (Task 23, spec Revision 2026-10-05 (b)) ---------------------------------
 
 
-def _unready_reasons(record: Record) -> list[str]:
+def unready_reasons(record: Record) -> list[str]:
     """Every reason `record` is not ready to publish. The plan's original predicate
     (status "ok" + a verification set + a text not written with --allow-unreviewed) was
     too weak after the Task 20 reviews: it must also have every required topic, a
@@ -132,7 +132,7 @@ def _live_set(records: dict[str, Record]) -> set[str]:
     """QIDs that are published AND still satisfy the predicate right now (I2, review fix
     2026-10-06): a species whose `publish` flag is stuck `True` only because this step
     never unpublishes anything must not count as a usable side of a comparison."""
-    return {q for q, r in records.items() if r.get("publish") and not _unready_reasons(r)}
+    return {q for q, r in records.items() if r.get("publish") and not unready_reasons(r)}
 
 
 def _comparison_name(comparison: Record, records: dict[str, Record], fallback: str) -> str:
@@ -280,7 +280,7 @@ def publish_wave(
                 outcomes.append(StepOutcome(qid, _name(record), "skipped", [f"inte i våg {wave}"]))
             continue
         name = _name(record)
-        reasons = _unready_reasons(record)
+        reasons = unready_reasons(record)
         if not reasons:
             changed = not record.get("publish")
             if not record.get("publishedAt"):
@@ -360,7 +360,7 @@ def publish_next(
     continuous publishing loop. The loop's own candidate picker uses a weaker predicate
     than this module's `publish_wave`, so an item it thinks is ready can still turn out
     not to be once checked here, head-of-line-blocking the whole wave behind it. `--next`
-    instead asks `_unready_reasons`/`comparison_is_current` directly and simply skips
+    instead asks `unready_reasons`/`comparison_is_current` directly and simply skips
     anything not ready, or named in `exclude` (e.g. a page that has already failed
     repeatedly this loop session, so one stuck page never blocks the others) -- never
     raising a skip as a failure the way `publish_wave` does for an explicitly named
@@ -370,7 +370,7 @@ def publish_next(
     positions = _wave_positions(paths)
     for qid in _queue_order(records, positions):
         record = records[qid]
-        if qid in exclude or record.get("publish") or _unready_reasons(record):
+        if qid in exclude or record.get("publish") or unready_reasons(record):
             continue
         if not record.get("publishedAt"):
             record["publishedAt"] = when

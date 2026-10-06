@@ -32,6 +32,7 @@ from birdy_fetcher.web.sources_step import (
 )
 from birdy_fetcher.web.wiki_full import WikiArticle
 
+from .test_web_source import _write
 from .web_repo import make_repo
 
 NOW = datetime(2026, 10, 2, tzinfo=UTC)
@@ -370,3 +371,21 @@ async def test_a_forced_rerun_rebuilds_the_data_facts_from_the_new_data(tmp_path
     assert record["facts"][-1]["sv"] == "Svenska rödlistan 2025: Sårbar (VU)."
     assert all(f["sv"] != "Gammal mening." for f in record["facts"])
     assert facts_hash(record) != old_hash
+
+
+async def test_marginalia_are_written_without_dashes(tmp_path: Path) -> None:
+    """I7: the app's approved marginalia for koboltmes have em dashes, which fail fas 2's
+    dash guard for every page."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _write(
+        paths.species_root,
+        "Q1",
+        "Talgoxe",
+        "Great Tit",
+        "approved",
+        marginalia='marginalia:\n  sv: "Liten \\u2014 kvick."\n  en: "Small \\u2013 quick."\n',
+    )
+    await run_sources(paths, SourcesOptions(), clients=_clients(), now=NOW)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["marginalia"] == {"sv": "Liten, kvick.", "en": "Small, quick."}

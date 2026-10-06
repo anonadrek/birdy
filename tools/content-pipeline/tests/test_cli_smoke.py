@@ -442,3 +442,33 @@ def test_web_publish_species_pair_with_a_not_current_comparison_exits_nonzero(
     monkeypatch.setattr(cli_module, "_web_paths", lambda: paths)
     result = CliRunner().invoke(main, ["web", "publish", "--species", "Q1", "--species", "Q2"])
     assert result.exit_code == 1
+
+
+def test_web_import_exits_non_zero_and_names_pages_to_republish(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """I8 (final review 2026-10-06)."""
+    from birdy_fetcher.web import review_sheet
+
+    def fake_import_wave(
+        paths: object, path: Path, *, wave: int | None, date: str
+    ) -> review_sheet.ImportResult:
+        return review_sheet.ImportResult(
+            changed=["Q1"],
+            republish=[
+                review_sheet.Republish(
+                    "Q1",
+                    "Talgoxe",
+                    ["texten är inte skriven ur det nuvarande faktabladet"],
+                    ["uv run birdy-fetcher web write --species Q1 --max-cost 2"],
+                )
+            ],
+        )
+
+    monkeypatch.setattr(review_sheet, "import_wave", fake_import_wave)
+    sheet = tmp_path / "stickprov.csv"
+    sheet.write_text("x", encoding="utf-8")
+    result = CliRunner().invoke(main, ["web", "import", "--file", str(sheet)])
+    assert result.exit_code == 1
+    assert "Talgoxe" in result.output
+    assert "web write --species Q1" in result.output

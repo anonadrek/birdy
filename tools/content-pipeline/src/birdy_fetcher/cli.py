@@ -570,6 +570,15 @@ def web_import(wave: int | None, sheet: Path | None, review_date: str | None) ->
         click.echo(f"Väntar på beslut: {line}")
     for line in result.ignored:
         click.echo(f"Hoppade över: {line}")
+    for qid in result.changed_published:
+        click.echo(f"Publicerad sida ändrad men klar: {qid}. Bygg, testa och pusha om den.")
+    for item in result.republish:
+        click.echo(f"Publicerad men inte längre klar: {item.name} ({item.qid}): ")
+        click.echo(f"  {'; '.join(item.reasons)}")
+        for command in item.commands:
+            click.echo(f"  {command}")
+    if result.republish:
+        raise click.exceptions.Exit(1)
 
 
 @web.command("compare-candidates")

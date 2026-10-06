@@ -17,6 +17,7 @@ from datetime import date as _date
 from pathlib import Path
 from typing import Any
 
+from .checks import without_dashes
 from .datamod import status_contradiction
 from .facts import STATUS_BY_SV, STATUS_SV, TOPIC_SV
 from .paths import WebPaths
@@ -31,8 +32,9 @@ from .record import (
 )
 from .sheet_csv import read_sheet as _sheet_csv_read_sheet
 from .sheet_csv import write_sheet as _sheet_csv_write_sheet
-from .verify import status_flags
-from .waves import WAVES_FILE, read_waves
+from .text_step import facts_verified
+from .verify import missing_required_topics, status_flags
+from .waves import WAVES_FILE, read_waves, unready_reasons
 
 COLUMNS = [
     "Art",
@@ -449,6 +451,17 @@ class ReviewImportError(ValueError):
 
 
 @dataclass
+class Republish:
+    """A published page that is no longer ready after an import, why, and the exact
+    commands that bring it back (I8, final review 2026-10-06)."""
+
+    qid: str
+    name: str
+    reasons: list[str]
+    commands: list[str]
+
+
+@dataclass
 class ImportResult:
     changed: list[str] = field(default_factory=list)
     removed_audio: list[str] = field(default_factory=list)
@@ -456,6 +469,10 @@ class ImportResult:
     waiting: list[str] = field(default_factory=list)
     # Rows that no longer apply (an older or already decided draw, a changed fact sheet).
     ignored: list[str] = field(default_factory=list)
+    # Every published page that is not ready any more (I8): `web import` exits non-zero.
+    republish: list[Republish] = field(default_factory=list)
+    # Published pages this import changed that are still ready: rebuild and push them.
+    changed_published: list[str] = field(default_factory=list)
 
 
 def read_sheet(path: Path, *, required_columns: Sequence[str] = ()) -> list[dict[str, str]]:
@@ -513,7 +530,7 @@ def _recheck_status(record: Record) -> list[dict[str, Any]]:
                 status["value"], data.get("months"), int(data.get("totalReports", 0))
             )
         data["statusSignal"] = {"contradicts": reason}
-    return status_flags(record)
+    return [{**f, "message": without_dashes(str(f["message"]))} for f in status_flags(record)]
 
 
 # -- the spot check (stickprov.csv) -------------------------------------------------------
@@ -898,6 +915,23 @@ def apply_review(
     return result
 
 
+def republish_commands(qid: str, record: Record) -> list[str]:
+    """What brings a published page back to ready: the text and comparisons rewritten
+    from the facts as they are now, then `web publish` for the page (fas 2 Task 16 Step 4).
+    A page whose facts wait for a decision, or lack a required topic, goes offline first."""
+    rewrite = [
+        f"uv run birdy-fetcher web write --species {qid} --max-cost 2",
+        "uv run birdy-fetcher web compare --max-cost 5",
+        f"uv run birdy-fetcher web publish --species {qid}",
+    ]
+    unpublish = f'sätt "publish": false i website/src/data/species/{qid}.json, bygg och pusha'
+    if missing_required_topics(record.get("facts", [])):
+        return [unpublish, f"uv run birdy-fetcher web facts --species {qid} --force --max-cost 5"]
+    if not facts_verified(record):
+        return [unpublish, "uv run birdy-fetcher web sheet, Albin beslutar, web import", *rewrite]
+    return rewrite
+
+
 def _auto_clear(record: Record) -> bool:
     """A species that was verified, had no flags and was never drawn for the spot check
     needs no decision: it never got a sheet row at all (spec point 6)."""
@@ -941,4 +975,15 @@ def import_wave(
         save_record(record_path(paths.data_out, qid), records[qid])
     for qid in result.removed_audio:
         (paths.images_out / qid / "voice.mp3").unlink(missing_ok=True)
+    # I8 (final review 2026-10-06): every live page that is not ready any more after this
+    # import (not just the ones it changed), and the ones it changed that still are.
+    for qid, record in sorted(records.items()):
+        if not record.get("publish"):
+            continue
+        reasons = unready_reasons(record)
+        if reasons:
+            name = str(record.get("names", {}).get("sv", qid))
+            result.republish.append(Republish(qid, name, reasons, republish_commands(qid, record)))
+        elif qid in result.changed:
+            result.changed_published.append(qid)
     return result

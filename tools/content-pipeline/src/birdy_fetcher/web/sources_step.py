@@ -13,6 +13,7 @@ from typing import Any, Protocol
 
 from ..cache import Cache
 from .audio import AudioCandidate, CommonsAudioClient, audio_record, choose, convert_to_mp3
+from .checks import without_dashes
 from .datamod import MIN_REPORTS, Counts, build_data, record_status_contradiction
 from .facts import data_facts
 from .gbif import GbifClient
@@ -187,8 +188,14 @@ async def _collect(
         "iucn": source.iucn,
         "swedishRedList": red,
         "identifiable": ctx.coverage.for_qid(source.qid),
+        # The app's approved marginalia can hold dashes the site refuses (koboltmes, I7).
         "marginalia": (
-            {"sv": source.marginalia_sv, "en": source.marginalia_en} if has_marginalia else None
+            {
+                lang: without_dashes(text) if text else text
+                for lang, text in (("sv", source.marginalia_sv), ("en", source.marginalia_en))
+            }
+            if has_marginalia
+            else None
         ),
         "images": [image_dict(i) for i in images],
         "audio": audio,

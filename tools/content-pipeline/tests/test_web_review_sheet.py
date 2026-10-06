@@ -1058,3 +1058,85 @@ def test_a_status_set_with_andra_is_rechecked_even_after_an_older_confirmation()
     assert "statusConfirmed" not in record["review"]
     assert [f["check"] for f in record["flags"]] == ["V3"]
     assert "verification" not in record
+
+
+# I8 (final review 2026-10-06): `web import` says which published pages need republishing.
+
+
+def _with_text(record: Record) -> Record:
+    """A published page whose text was written from the facts as they are now, with every
+    required topic."""
+    ids = {f["id"] for f in record["facts"]}
+    for fid, topic, text in (("f08", "voice", "Sjunger ti-ta."), ("f09", "habitat", "I skog.")):
+        if fid not in ids:
+            record["facts"].insert(0, {"id": fid, "topic": topic, "sv": text, "sources": []})
+    record["status"] = "ok"
+    record["text"] = {"sv": {}, "en": {}}
+    record["generated"]["text"] = {"factsHash": facts_hash(record)}
+    record["generated"]["verify"]["factsHash"] = facts_hash(record)
+    return record
+
+
+def test_import_lists_every_published_page_that_needs_rewriting(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    record = _with_text(_drawn("Q1"))
+    mark_drawn(record, 1)
+    save_record(record_path(paths.data_out, "Q1"), record)
+    sheet = tmp_path / "stickprov.csv"
+    write_sheet(
+        sheet,
+        _decide(full_sheet_rows(record, draw=1), f02=(STRIKE, "")),
+        columns=SPOT_CHECK_COLUMNS,
+    )
+    result = import_wave(paths, sheet, date="2026-12-01")
+    assert [r.qid for r in result.republish] == ["Q1"]
+    item = result.republish[0]
+    assert any("texten" in reason for reason in item.reasons)
+    assert item.commands == [
+        "uv run birdy-fetcher web write --species Q1 --max-cost 2",
+        "uv run birdy-fetcher web compare --max-cost 5",
+        "uv run birdy-fetcher web publish --species Q1",
+    ]
+
+
+def test_a_published_page_held_back_by_a_new_flag_is_told_to_unpublish_first(
+    tmp_path: Path,
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    record = _with_text(_drawn("Q1"))
+    record["data"] = {"months": [0, *([50] * 11)], "totalReports": 1000}
+    record["facts"] = [
+        {**f, "value": "breeding_migrant", "sv": "Flyttfågel, häckar här"}
+        if f["id"] == "s01"
+        else f
+        for f in record["facts"]
+    ]
+    record = _with_text(record)
+    mark_drawn(record, 1)
+    save_record(record_path(paths.data_out, "Q1"), record)
+    sheet = tmp_path / "stickprov.csv"
+    write_sheet(
+        sheet,
+        _decide(full_sheet_rows(record, draw=1), s01=(CHANGE, "Stannfågel")),
+        columns=SPOT_CHECK_COLUMNS,
+    )
+    result = import_wave(paths, sheet, date="2026-12-01")
+    item = result.republish[0]
+    assert "publish" in item.commands[0] and "false" in item.commands[0]
+    assert any("web sheet" in c for c in item.commands)
+
+
+def test_a_changed_page_that_is_still_ready_is_listed_for_a_rebuild(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    record = _with_text(_drawn("Q1"))
+    mark_drawn(record, 1)
+    save_record(record_path(paths.data_out, "Q1"), record)
+    sheet = tmp_path / "stickprov.csv"
+    write_sheet(
+        sheet,
+        _decide(full_sheet_rows(record, draw=1), a01=(STRIKE, "")),
+        columns=SPOT_CHECK_COLUMNS,
+    )
+    result = import_wave(paths, sheet, date="2026-12-01")
+    assert result.republish == []
+    assert result.changed_published == ["Q1"]

@@ -13,6 +13,7 @@ from typing import Any
 from ..cache import Cache
 from ..cost import CostTracker, MaxCostExceeded
 from .audio_check import AudioCheckFailed, AudioVerdict, audio_verdict, classify_clip
+from .checks import without_dashes
 from .defaults import EFFORTS, FACTS_EFFORT, FACTS_MODEL_KEY
 from .facts import apply_facts
 from .facts_step import PROMPT_VERSION as FACTS_PROMPT_VERSION
@@ -352,7 +353,9 @@ async def _one(
 
         _apply_audio(record, audio, flags, notes)
 
-        record["flags"] = flags
+        # V1's reason and an audio error are free text; fas 2's dash guard reads the
+        # record (I7, final review 2026-10-06).
+        record["flags"] = [{**f, "message": without_dashes(str(f["message"]))} for f in flags]
         record.setdefault("generated", {})["verify"] = {
             "model": MODELS[options.model_key],
             "prompt": PROMPT_VERSION,
