@@ -1401,3 +1401,27 @@ def test_web_sheet_does_not_carry_a_decision_to_a_different_flag(tmp_path: Path)
     result = export_wave(paths)
     assert result.carried == 0
     assert read_sheet(paths.review / "undantag.csv")[0]["Beslut"] == ""
+
+
+# Follow-up 6 (wave B review): the recording flag's row names the file's content.
+
+
+def _v4(record: Record, sha: str) -> Record:
+    record["audio"] = {**record["audio"], "sha256": sha}
+    record["flags"] = [{"check": "V4", "factId": None, "message": "ljudmodellen täcker inte arten"}]
+    return record
+
+
+def test_the_recording_flag_row_carries_the_files_hash() -> None:
+    record = _v4(_record(), "ab" * 32)
+    assert flag_rows(record)[0]["Citat"] == "ab" * 6
+
+
+def test_a_recording_row_for_another_file_is_not_applied() -> None:
+    old = _v4(_record(), "ab" * 32)
+    rows = _flag_decisions(flag_rows(old), **{"": STRIKE})
+    record = _v4(_record(), "cd" * 32)
+    result = apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert result.changed == []
+    assert "audio" in record
+    assert any("inaktuell" in note for note in result.ignored)

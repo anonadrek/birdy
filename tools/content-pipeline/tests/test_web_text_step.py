@@ -648,3 +648,19 @@ async def test_a_failed_text_is_tried_again_when_the_facts_change(tmp_path: Path
     redo = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
     outcomes = await run_write(paths, WriteOptions(wave=1), client=redo, now=NOW)
     assert [o.status for o in outcomes] == ["ok"]
+
+
+async def test_a_failed_text_is_tried_again_after_the_banned_list_changes(
+    tmp_path: Path,
+) -> None:
+    """Follow-up 6 (wave B review): the banned phrases are part of the writer's prompt and
+    of the code checks, so a changed list is a different attempt."""
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    two_marks = WebTextV2(sv=SV.model_copy(update={"field_marks": SV.field_marks[:2]}), en=EN)
+    first = FakeJsonClient([reply(two_marks), reply(two_marks)])
+    await run_write(paths, WriteOptions(wave=1), client=first, now=NOW)
+    paths.banned.write_text("fascinerande\nmagnifik\n", encoding="utf-8")
+    redo = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=redo, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]

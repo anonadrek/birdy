@@ -215,6 +215,10 @@ def full_sheet_rows(record: Record, *, draw: int | None = None) -> list[dict[str
     return rows
 
 
+def _audio_tag(audio: dict[str, Any]) -> str:
+    return str(audio.get("sha256") or "")[:12]
+
+
 def flag_rows(record: Record) -> list[dict[str, str]]:
     """One row per flag the automatic kontroll raised (spec V2 to V4). A V4 (recording)
     flag has no fact id; everything else points at the fact it is about."""
@@ -228,7 +232,9 @@ def flag_rows(record: Record) -> list[dict[str, str]]:
             topic = TOPIC_SV.get(fact["topic"], fact["topic"])
         elif flag["check"] == "V4":
             audio = record.get("audio") or {}
-            source, quote, topic = audio.get("sourceUrl", ""), "", "inspelning"
+            # The file's content (follow-up 6, wave B review): a new upload under the same
+            # file page is a different recording, and the import must see that.
+            source, quote, topic = audio.get("sourceUrl", ""), _audio_tag(audio), "inspelning"
         else:
             source, quote, topic = "", "", ""
         rows.append(
@@ -834,7 +840,9 @@ def _row_matches(record: Record, row: dict[str, str], flag: dict[str, Any]) -> b
         return _same(row.get("Citat", ""), _sources(record, fact.get("sources", []))[1])
     if check == "V4":
         audio = record.get("audio") or {}
-        return _same(row.get("Källa", ""), str(audio.get("sourceUrl", "")))
+        return _same(row.get("Källa", ""), str(audio.get("sourceUrl", ""))) and _same(
+            row.get("Citat", ""), _audio_tag(audio)
+        )
     return True
 
 

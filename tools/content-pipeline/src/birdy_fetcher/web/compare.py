@@ -953,6 +953,7 @@ async def run_compare(
         checker_key=options.checker_key,
         prompt_hash=prompt_file_hash(paths.prompt_file(PROMPT_VERSION)),
         checker_prompt_hash=prompt_file_hash(paths.prompt_file(CHECK_PROMPT_VERSION)),
+        banned=banned,
     )
     owned = client is None
     model_client: JsonModelClient = client or AnthropicJsonClient()

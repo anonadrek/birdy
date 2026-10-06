@@ -110,7 +110,7 @@ Avsnitt 2 (rad 2, 8, 11, 15), 7, 8, 9.4, 9.8, 14, 15, 16, 17 och bilaga E är ä
 2. **Ingångssidans rubrik är "Fåglar i Sverige och Europa".** Bland de 180 finns arter som inte förekommer i Sverige.
 3. **Brödsmulorna hoppar över familjen** (Birdy › Arter › Tättingar › Talgoxe).
 4. **Grupper med färre än tre publicerade arter får `noindex`** och ligger utanför sitemapen tills de växer.
-5. **Inspelningen klipps till högst 20 sekunder** för att hålla nere storleken. Creditraden säger att den är klippt.
+5. **Inspelningen klipps till högst 20 sekunder** för att hålla nere storleken. ~~Creditraden säger att den är klippt.~~ **Ändrat 2026-10-06 (godkänt av Albin):** varje inspelning bearbetas (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), så creditraden säger alltid att den är bearbetad: "bearbetad", eller "klippt och bearbetad" när den kortats.
 
 ## 3. Omfång
 
@@ -266,7 +266,7 @@ En sida per språk som förklarar, i sajtens ton och utan tankstreck:
 - **Källorna:** Wikipedia på tre språk, Artportalen via GBIF, Svenska rödlistan 2025, foton och inspelningar från Wikimedia Commons.
 - **Hur AI används:** en modell tar ut fakta med citat ur artiklarna, kod kontrollerar citaten, en modell skriver texten bara ur godkända fakta, en annan modell kontrollerar varje mening. Diagram, karta och rödlistestatus kommer direkt ur datan, utan modell.
 - **Kontrollen:** en andra modell kontrollerar varje faktum mot sitt citat ur artikeln, kod jämför siffror mellan artiklarna, förekomst jämförs med Artportalen och den svenska rödlistan, och inspelningen kontrolleras med Birdys egen ljudmodell. Det som inte går att avgöra automatiskt granskas av Albin Abrahamsson innan sidan publiceras. Efter publicering granskar han dessutom ett löpande stickprov av redan publicerade sidor (ändrat 2026-10-05 (b)). Datumet för den senaste kontrollen står på varje sida.
-- **Licenserna:** texterna får delas under CC BY-SA 4.0, foton och inspelningar under sina egna licenser.
+- **Licenserna:** texterna får delas under CC BY-SA 4.0, foton och inspelningar under sina egna licenser. Inspelningarna är bearbetade (tillägg 2026-10-06, godkänt av Albin): högst 20 sekunder, mono, utjämnad ljudnivå och MP3, och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet. Foton visas oförändrade, bara nedskalade.
 - **Rättelser:** mejladressen och att rättade sidor får nytt kontrolldatum.
 
 Texten skrivs i planen och godkänns av Albin. Sidan länkas från alla artsidor, jämförelsesidor och ingångssidan. JSON-LD som blogginläggen: `author` Person Albin Abrahamsson, `publisher` AlbIT AB.
@@ -391,7 +391,7 @@ Ersätter Albins manuella granskning av varje faktablad (Revision 2026-10-05). E
 
 1. **Texten** behandlas som en bearbetning av Wikipedia och delas under **CC BY-SA 4.0**. Varje sida anger de artiklar som använts (svenska, engelska och tyska, länkade till revisionen) och att texten bygger på dem. Repots LICENSE är proprietär, så mapparna `website/src/data/species/` och `website/src/data/comparisons/` får varsin `LICENSE.md` som säger att texterna där är CC BY-SA 4.0, och rotens LICENSE får en rad om undantaget.
 2. **Rapportdata och rödlista** hämtas bara med licensen CC0. Inga villkor följer med, men källan anges ändå: "Artportalen (SLU Artdatabanken) via GBIF.org" och "Rödlistade arter i Sverige 2025 (SLU Artdatabanken)".
-3. **Foton och inspelningar** används bara med licenser ur en fast tabell: CC0, public domain, CC BY 2.0, 3.0 och 4.0, CC BY-SA 2.0, 3.0 och 4.0. En creditrad per fil med upphovsperson (HTML tvättad), licens (länkad) och källsida på Commons. Foton visas oförändrade (bara nedskalade). En klippt inspelning har "klippt" i creditraden och samma licens som originalet.
+3. **Foton och inspelningar** används bara med licenser ur en fast tabell: CC0, public domain, CC BY 2.0, 3.0 och 4.0, CC BY-SA 2.0, 3.0 och 4.0. En creditrad per fil med upphovsperson (HTML tvättad), licens (länkad) och källsida på Commons. Foton visas oförändrade (bara nedskalade). ~~En klippt inspelning har "klippt" i creditraden och samma licens som originalet.~~ **Ändrat 2026-10-06 (godkänt av Albin):** varje inspelning är bearbetad (högst 20 sekunder, mono, utjämnad ljudnivå, MP3) och har "bearbetad" i creditraden, "klippt och bearbetad" när den kortats, och samma licens som originalet. En inspelning under CC BY eller CC BY-SA utan upphovsperson används inte.
 4. **Används aldrig:** xeno-cantos NonCommercial-inspelningar, Artdatabankens egna arttexter och text ur fälthandböcker.
 5. **Bygget failar** om ett foto, en inspelning, en artikel eller en datakälla som visas på en sida saknar sin creditrad (`check-seo.mjs`).
 
@@ -606,8 +606,8 @@ Faktabladen tas fram och kontrolleras automatiskt (V1 till V4) för alla 180 art
 | Jämförelse, diagram | När ses de? | When are they seen? |
 | Jämförelse, appruta | Fortfarande osäker? | Still not sure? |
 | Fotocredit | Foto: {fotograf}, {licens}, via Wikimedia Commons | Photo: {photographer}, {license}, via Wikimedia Commons |
-| Inspelningscredit | Inspelning: {upphov}, {licens}, via Wikimedia Commons, klippt | Recording: {recordist}, {license}, via Wikimedia Commons, trimmed |
-| Inspelningscredit (inte klippt) | Inspelning: {upphov}, {licens}, via Wikimedia Commons | Recording: {recordist}, {license}, via Wikimedia Commons |
+| Inspelningscredit (klippt, ändrat 2026-10-06) | Inspelning: {upphov}, {licens}, via Wikimedia Commons, klippt och bearbetad | Recording: {recordist}, {license}, via Wikimedia Commons, trimmed and edited |
+| Inspelningscredit (inte klippt, ändrat 2026-10-06) | Inspelning: {upphov}, {licens}, via Wikimedia Commons, bearbetad | Recording: {recordist}, {license}, via Wikimedia Commons, edited |
 | Datacredit | Rapportdata: Artportalen (SLU Artdatabanken) via GBIF.org, 2016 till 2025. Rödlista: Rödlistade arter i Sverige 2025, SLU Artdatabanken. | Report data: Artportalen (SLU Swedish Species Information Centre) via GBIF.org, 2016 to 2025. Red list: The Swedish Red List 2025, SLU Swedish Species Information Centre. |
 | Textcredit | Texten bygger på artiklarna om {art i gemener} på {språk} Wikipedia och får delas under CC BY-SA 4.0. | The text is based on the articles about the {name} on {languages} Wikipedia and may be shared under CC BY-SA 4.0. |
 | Textcredit, språk | svenska, engelska och tyska (eller de som använts) | Swedish, English and German (or those used) |

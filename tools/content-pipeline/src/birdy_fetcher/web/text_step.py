@@ -268,16 +268,25 @@ def text_is_current(record: Record) -> bool:
 
 
 def attempt_settings(
-    *, model_key: str, effort: str, checker_key: str, prompt_hash: str, checker_prompt_hash: str
+    *,
+    model_key: str,
+    effort: str,
+    checker_key: str,
+    prompt_hash: str,
+    checker_prompt_hash: str,
+    banned: list[str],
 ) -> dict[str, str]:
     """What decides a written (or failed) text besides the facts: the writer, its effort,
-    the checker and both prompts. Stored in `generated` and compared by `same_attempt`."""
+    the checker, both prompts and the banned phrases (in the prompt and the code checks,
+    follow-up 6 of the wave B review). Stored in `generated`, compared by `same_attempt`."""
+    banned_hash = hashlib.sha256("\n".join(banned).encode("utf-8")).hexdigest()[:8]
     return {
         "model": MODELS[model_key],
         "effort": effort,
         "checker": MODELS[checker_key],
         "promptHash": prompt_hash,
         "checkerPromptHash": checker_prompt_hash,
+        "bannedHash": banned_hash,
     }
 
 
@@ -380,6 +389,7 @@ async def run_write(
         checker_key=options.checker_key,
         prompt_hash=prompt_hash,
         checker_prompt_hash=prompt_file_hash(paths.prompt_file(CHECK_PROMPT_VERSION)),
+        banned=banned,
     )
     owned = client is None
     model_client: JsonModelClient = client or AnthropicJsonClient()
