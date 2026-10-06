@@ -106,6 +106,7 @@
     <string name="match_saved_text">Saved to the field journal — go back</string>
 
     <!-- Disambig screen (top-1 0.35–0.50) -->
+    <string name="disambig_eyebrow_one">ONE CANDIDATE · NO %1$d</string>
     <string name="disambig_eyebrow_three">THREE CANDIDATES · NO %1$d</string>
     <string name="disambig_eyebrow_two">TWO CANDIDATES · NO %1$d</string>
     <string name="disambig_headline">*Which one matches?*</string>

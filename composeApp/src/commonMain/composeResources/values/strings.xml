@@ -117,6 +117,7 @@
     <string name="match_saved_text">Sparad i fältdagboken — gå tillbaka</string>
 
     <!-- Disambig-skärm (top-1 0.35–0.50) -->
+    <string name="disambig_eyebrow_one">EN KANDIDAT · NO %1$d</string>
     <string name="disambig_eyebrow_three">TRE KANDIDATER · NO %1$d</string>
     <string name="disambig_eyebrow_two">TVÅ KANDIDATER · NO %1$d</string>
     <string name="disambig_headline">*Vilken matchar?*</string>
