@@ -470,7 +470,12 @@ def web_sheet(wave: int | None) -> None:
 
 
 @web.command("spot-check")
-@click.option("--seed", type=int, default=None, help="Frö för stickprovet. Standard: 2000.")
+@click.option(
+    "--seed",
+    type=int,
+    default=None,
+    help="Frö för dragningen. Standard: slumpas och sparas i review/stickprov-state.json.",
+)
 @click.option(
     "--extra", multiple=True, help="Extra Q-ID(er) till stickprovet efter ett bekräftat missat fel."
 )
@@ -480,8 +485,10 @@ def web_sheet(wave: int | None) -> None:
     help="Dra direkt, utan att vänta på SPOT_CHECK_BATCH fler publicerade arter.",
 )
 def web_spot_check(seed: int | None, extra: tuple[str, ...], force: bool) -> None:
-    """Stickprov efter publicering (spec Revision 2026-10-05 (b)). Körs av fas 2:s
-    publiceringsloop efter varje publicerad art; skriver bara när något faktiskt drogs."""
+    """Stickprov efter publicering (spec Revision 2026-10-05 (b)): 2 arter per 40
+    publicerade, räknat sedan förra dragningen (review/stickprov-state.json). Körs av fas
+    2:s publiceringsloop efter varje publicerad art; skriver bara när något faktiskt
+    drogs."""
     from .web.review_sheet import export_spot_check
 
     result = export_spot_check(_web_paths(), seed=seed, extra_species=extra, force=force)
@@ -489,8 +496,9 @@ def web_spot_check(seed: int | None, extra: tuple[str, ...], force: bool) -> Non
         click.echo("Inget drogs än (för få nypublicerade arter sedan sist).")
         return
     click.echo(
-        f"Stickprov (frö {result.seed}): {', '.join(result.species)}. "
-        f"Ladda upp {result.path} till Drive som Google-kalkylark."
+        f"Stickprov, dragning {result.draw} (frö {result.seed}): {', '.join(result.species)}. "
+        f"Ladda upp {result.path} till Drive som Google-kalkylark; Albin fyller i Beslut "
+        "på varje rad."
     )
 
 
@@ -545,10 +553,16 @@ def web_import(wave: int | None, sheet: Path | None, review_date: str | None) ->
         result = import_wave(paths, path, wave=wave, date=when)
     except ReviewImportError as exc:
         raise click.ClickException(f"Arket har fel, inget ändrades:\n{exc}") from exc
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     click.echo(
-        f"{len(result.changed)} arter kontrollerade {when}. "
+        f"{len(result.changed)} arter uppdaterade {when}. "
         f"Inspelningar strukna: {len(result.removed_audio)}."
     )
+    for line in result.waiting:
+        click.echo(f"Väntar på beslut: {line}")
+    for line in result.ignored:
+        click.echo(f"Hoppade över: {line}")
 
 
 @web.command("compare-candidates")

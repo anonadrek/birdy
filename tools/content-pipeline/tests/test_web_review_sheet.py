@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import copy
 import csv
 import io
 from pathlib import Path
@@ -30,7 +31,9 @@ from birdy_fetcher.web.review_sheet import (
     flag_rows,
     full_sheet_rows,
     import_wave,
+    mark_drawn,
     read_sheet,
+    read_spot_check_state,
     write_sheet,
 )
 from birdy_fetcher.web.waves import write_waves
@@ -100,7 +103,10 @@ def test_full_sheet_rows_cover_facts_status_data_and_recording() -> None:
     assert first["Ämne"] == "utseende"
     assert first["Källa"] == "sv: https://sv.wikipedia.org/w/index.php?oldid=111"
     assert first["Citat"] == "svart huvud med vita kinder"
-    assert first["Beslut"] == "behåll"
+    # I1 (final review 2026-10-06): no decision is pre-filled; an import before Albin has
+    # looked must not count the species as checked.
+    assert first["Beslut"] == ""
+    assert rows[4]["Beslut"] == ""
     assert rows[1]["Ämne"] == "förväxling med Cyanistes caeruleus"
     assert rows[1]["Faktum"] == "Kan förväxlas med blåmesen."
     assert rows[2]["Ämne"] == "status i Sverige"
@@ -273,6 +279,99 @@ def test_spot_check_draws_two_once_the_batch_is_full(tmp_path: Path) -> None:
     assert again is None
 
 
+def test_publishing_one_at_a_time_draws_two_per_forty(tmp_path: Path) -> None:
+    """C2 (final review 2026-10-06): the old trigger counted every published-but-undrawn
+    species, so after the first 40 every two publications drew again (142 of 180). Run the
+    way fas 2's loop runs it, after each publication: 81 publications give two draws."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    for i in range(1, 82):
+        record = _published(f"Q{i}")
+        record["publish"] = False
+        save_record(record_path(paths.data_out, f"Q{i}"), record)
+    drawn: list[str] = []
+    for i in range(1, 82):
+        loaded = load_record(record_path(paths.data_out, f"Q{i}"))
+        assert loaded is not None
+        loaded["publish"] = True
+        loaded["publishedAt"] = f"2026-11-{1 + i // 10:02d}"
+        save_record(record_path(paths.data_out, f"Q{i}"), loaded)
+        result = export_spot_check(paths, seed=i, today="2026-11-30")
+        if result is not None:
+            drawn += result.species
+    assert len(drawn) == 4
+    state = read_spot_check_state(paths.review / "stickprov-state.json")
+    assert [d["id"] for d in state["draws"]] == [1, 2]
+    assert state["publishedAtLastDraw"] == 80
+    assert [d["seed"] for d in state["draws"]] == [40, 80]
+
+
+def test_a_late_run_draws_two_per_whole_batch_and_keeps_the_rest(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    for i in range(1, 86):
+        save_record(record_path(paths.data_out, f"Q{i}"), _published(f"Q{i}"))
+    result = export_spot_check(paths, seed=7)
+    assert result is not None and len(result.species) == 4
+    state = read_spot_check_state(paths.review / "stickprov-state.json")
+    assert len(state["counted"]) == 80
+    assert state["draws"][0]["batches"] == 2
+    # Five left over; 35 more make the next batch.
+    assert export_spot_check(paths, seed=7) is None
+    for i in range(86, 121):
+        save_record(record_path(paths.data_out, f"Q{i}"), _published(f"Q{i}"))
+    again = export_spot_check(paths, seed=8)
+    assert again is not None and len(again.species) == 2
+    assert again.draw == 2
+
+
+def test_the_seed_of_every_draw_is_saved(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    for i in range(1, 41):
+        save_record(record_path(paths.data_out, f"Q{i}"), _published(f"Q{i}"))
+    result = export_spot_check(paths, today="2026-11-30")
+    assert result is not None
+    state = read_spot_check_state(paths.review / "stickprov-state.json")
+    assert state["draws"] == [
+        {
+            "id": 1,
+            "seed": result.seed,
+            "at": "2026-11-30",
+            "batches": 1,
+            "forced": False,
+            "extra": [],
+            "species": result.species,
+        }
+    ]
+
+
+def test_a_forced_draw_counts_nothing(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    for r in (_published(f"Q{i}") for i in range(1, 6)):
+        save_record(record_path(paths.data_out, r["qid"]), r)
+    result = export_spot_check(paths, seed=1, force=True)
+    assert result is not None and len(result.species) == 2
+    state = read_spot_check_state(paths.review / "stickprov-state.json")
+    assert state["counted"] == []
+    assert state["draws"][0]["forced"] is True
+
+
+def test_drawn_rows_carry_their_draw_and_no_decision(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    for r in (_published(f"Q{i}") for i in range(1, 6)):
+        save_record(record_path(paths.data_out, r["qid"]), r)
+    result = export_spot_check(paths, seed=1, force=True)
+    assert result is not None
+    rows = read_sheet(paths.review / "stickprov.csv")
+    assert {r["Dragning"] for r in rows} == {"1"}
+    assert {r["Beslut"] for r in rows if r["Typ"] != "data"} == {""}
+    record = load_record(record_path(paths.data_out, result.species[0]))
+    assert record is not None
+    assert record["review"]["spotCheck"] == {
+        "draw": 1,
+        "factsHash": facts_hash(record),
+        "audio": audio_id(record["audio"]),
+    }
+
+
 def test_spot_check_force_draws_regardless_of_batch_size(tmp_path: Path) -> None:
     paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
     for r in (_published(f"Q{i}") for i in range(1, 6)):
@@ -346,17 +445,32 @@ def test_spot_check_keeps_the_art_column_when_the_old_sheet_has_a_double_bom(
 # -- Task 17: Albin's decisions in, `web import` ------------------------------------------
 
 
-def _decide(rows: list[dict[str, str]], **changes: tuple[str, str]) -> list[dict[str, str]]:
-    """changes: Id -> (Beslut, Faktum), for faktum/status rows."""
+def _decide(
+    rows: list[dict[str, str]], fill: str = KEEP, **changes: tuple[str, str]
+) -> list[dict[str, str]]:
+    """changes: Id -> (Beslut, Faktum), for faktum/status/inspelning rows; every other such
+    row gets `fill` (behåll by default, "" to leave it undecided)."""
     out = []
     for row in rows:
         row = dict(row)
-        if row["Id"] in changes and row["Typ"] not in ("data", "flagga"):
+        if row["Typ"] in ("data", "flagga"):
+            out.append(row)
+            continue
+        if row["Id"] in changes:
             row["Beslut"], new_text = changes[row["Id"]]
             if new_text:
                 row["Faktum"] = new_text
+        else:
+            row["Beslut"] = fill
         out.append(row)
     return out
+
+
+def _drawn(qid: str = "Q25485", draw: int = 1) -> Record:
+    """A published, verified species drawn for the spot check in draw `draw`."""
+    record = _published(qid)
+    mark_drawn(record, draw)
+    return record
 
 
 def _flag_decisions(rows: list[dict[str, str]], **decisions: str) -> list[dict[str, str]]:
@@ -417,29 +531,158 @@ def test_striking_a_v4_flag_removes_the_recording() -> None:
 
 
 def test_spot_checked_species_keep_strike_and_change_like_before() -> None:
-    record = _record()
+    record = _drawn()
     rows = _decide(
-        full_sheet_rows(record), f01=(CHANGE, "Svart huvud och vita kinder."), f02=(STRIKE, "")
+        full_sheet_rows(record, draw=1),
+        f01=(CHANGE, "Svart huvud och vita kinder."),
+        f02=(STRIKE, ""),
     )
-    result = apply_review({"Q25485": record}, rows, date="2026-11-20")
+    result = apply_review({"Q25485": record}, rows, date="2026-12-01")
     assert result.changed == ["Q25485"]
     ids = [f["id"] for f in record["facts"]]
     assert ids == ["f01", "s01", "d01"]
     assert record["facts"][0]["sv"] == "Svart huvud och vita kinder."
     assert record["facts"][0]["edited"] is True
     assert record["verification"]["spotChecked"] is True
+    assert record["verification"]["at"] == "2026-12-01"
+    assert record["review"]["spotCheck"]["decidedAt"] == "2026-12-01"
+
+
+def test_a_spot_check_without_decisions_waits_and_changes_nothing() -> None:
+    """I1: the rows are written with an empty Beslut; importing before Albin has decided
+    must neither mark the species checked nor re-date it."""
+    record = _drawn()
+    before = copy.deepcopy(record)
+    rows = _decide(full_sheet_rows(record, draw=1), fill="", f01=(KEEP, ""))
+    result = apply_review({"Q25485": record}, rows, date="2026-12-01")
+    assert result.changed == []
+    assert result.waiting and "Q25485" in result.waiting[0]
+    assert record == before
+
+
+def test_an_all_keep_spot_check_is_decided_without_a_new_date() -> None:
+    """Nothing changed, so the page keeps its "Kontrollerad mot källorna" date and needs no
+    republishing; the draw is marked decided so a re-import does not apply it again."""
+    record = _drawn()
+    rows = _decide(full_sheet_rows(record, draw=1))
+    result = apply_review({"Q25485": record}, rows, date="2026-12-01")
+    assert result.changed == ["Q25485"]
+    assert record["verification"]["at"] == "2026-11-20"
+    assert record["review"]["spotCheck"]["decidedAt"] == "2026-12-01"
+
+
+def test_reimporting_the_cumulative_sheet_never_redates_an_old_draw() -> None:
+    """I1: stickprov.csv keeps every earlier draw. Importing it again (with a later draw's
+    rows added) must apply only the open draw and leave the decided one exactly as it was."""
+    first, second = _drawn("Q1", draw=1), _drawn("Q2", draw=2)
+    first_rows = _decide(full_sheet_rows(first, draw=1), f02=(STRIKE, ""))
+    apply_review({"Q1": first}, first_rows, date="2026-12-01")
+    assert first["verification"]["at"] == "2026-12-01"
+    decided = copy.deepcopy(first)
+    sheet = [*first_rows, *_decide(full_sheet_rows(second, draw=2), f01=(STRIKE, ""))]
+    result = apply_review({"Q1": first, "Q2": second}, sheet, date="2026-12-15")
+    assert result.changed == ["Q2"]
+    assert first == decided
+    assert any("redan avgjord" in note for note in result.ignored)
+    assert second["verification"]["at"] == "2026-12-15"
+
+
+def test_rows_from_an_older_draw_are_ignored() -> None:
+    record = _drawn(draw=1)
+    old_rows = _decide(full_sheet_rows(record, draw=1), f02=(STRIKE, ""))
+    record["review"]["spotCheck"]["draw"] = 3  # drawn again since (web spot-check --extra)
+    result = apply_review({"Q25485": record}, old_rows, date="2026-12-01")
+    assert result.changed == []
+    assert any("dragning 1" in note for note in result.ignored)
+    assert any(f["id"] == "f02" for f in record["facts"])
+
+
+def test_rows_drawn_from_an_older_fact_sheet_are_not_applied() -> None:
+    record = _drawn()
+    rows = _decide(full_sheet_rows(record, draw=1), f02=(STRIKE, ""))
+    record["facts"][0]["sv"] = "Ett nytt faktum."
+    result = apply_review({"Q25485": record}, rows, date="2026-12-01")
+    assert result.changed == []
+    assert result.waiting and "--extra Q25485" in result.waiting[0]
+    assert any(f["id"] == "f02" for f in record["facts"])
+
+
+def test_a_spot_check_never_verifies_a_species_with_open_flags() -> None:
+    record = _drawn()
+    rows = _decide(full_sheet_rows(record, draw=1), f02=(STRIKE, ""))
+    record.pop("verification")
+    record["flags"] = [{"check": "V2", "factId": "f01", "message": "x"}]
+    result = apply_review({"Q25485": record}, rows, date="2026-12-01")
+    assert result.changed == []
+    assert "verification" not in record
+    assert result.waiting and "undantagsarket" in result.waiting[0]
+
+
+def test_striking_the_recording_in_the_spot_check_removes_it() -> None:
+    """I1: the `inspelning` row was never read; a stryk on it left the recording live."""
+    record = _drawn()
+    rows = _decide(full_sheet_rows(record, draw=1), a01=(STRIKE, ""))
+    result = apply_review({"Q25485": record}, rows, date="2026-12-01")
+    assert "audio" not in record
+    assert record["review"]["audioStruck"] is True
+    assert result.removed_audio == ["Q25485"]
+    assert record["verification"]["at"] == "2026-12-01"
+
+
+def test_changing_the_recording_is_an_error() -> None:
+    record = _drawn()
+    rows = _decide(full_sheet_rows(record, draw=1), a01=(CHANGE, "annan fil"))
+    with pytest.raises(ReviewImportError, match="inspelning"):
+        apply_review({"Q25485": record}, rows, date="2026-12-01")
+
+
+def test_a_spot_check_row_without_its_draw_is_an_error() -> None:
+    record = _drawn()
+    rows = [{**r, "Dragning": ""} for r in _decide(full_sheet_rows(record, draw=1))]
+    with pytest.raises(ReviewImportError, match="Dragning"):
+        apply_review({"Q25485": record}, rows, date="2026-12-01")
+
+
+def test_a_status_changed_in_the_spot_check_is_rechecked_against_the_data() -> None:
+    """Minor 9: an `ändra` on s01 in the spot check recomputes the signal and runs V3 on
+    the new status, like the exception sheet's V1 `ändra`; a contradiction holds the
+    species back (and `web import` lists the published page)."""
+    record = _drawn()
+    record["review"]["statusConfirmed"] = True
+    record["data"] = {
+        "months": [0, *([50] * 11)],
+        "totalReports": 1000,
+        "statusSignal": {"contradicts": None},
+    }
+    record["facts"] = [
+        {**f, "value": "breeding_migrant", "sv": "Flyttfågel, häckar här"}
+        if f["id"] == "s01"
+        else f
+        for f in record["facts"]
+    ]
+    mark_drawn(record, 1)
+    rows = _decide(full_sheet_rows(record, draw=1), s01=(CHANGE, "Stannfågel"))
+    apply_review({"Q25485": record}, rows, date="2026-12-01")
+    assert "statusConfirmed" not in record["review"]
+    assert record["data"]["statusSignal"]["contradicts"] is not None
+    assert [f["check"] for f in record["flags"]] == ["V3"]
+    assert "verification" not in record
 
 
 def test_errors_stop_the_whole_import() -> None:
-    record = _record()
-    rows = [r for r in full_sheet_rows(record) if r["Id"] != "f02"]
+    record = _drawn()
+    other = _flagged("Q2")
+    before = copy.deepcopy([record, other])
+    rows = [r for r in _decide(full_sheet_rows(record, draw=1)) if r["Id"] != "f02"]
     rows = [{**r, "Beslut": "kanske"} if r["Id"] == "f01" else r for r in rows]
+    # A valid decision on another species is not applied either: nothing changes.
+    rows += _flag_decisions(flag_rows(other), s01=KEEP)
     with pytest.raises(ReviewImportError) as error:
-        apply_review({"Q25485": record}, rows, date="2026-11-20")
+        apply_review({"Q25485": record, "Q2": other}, rows, date="2026-11-20")
     message = str(error.value)
     assert "f02" in message
     assert "kanske" in message
-    assert "verification" not in record
+    assert [record, other] == before
 
 
 def test_a_flag_without_a_decision_stops_the_import() -> None:
@@ -454,8 +697,8 @@ def test_an_invalid_status_label_stops_the_import() -> None:
     import, not just silently keep the old status. The status fact's row has Typ "faktum"
     (bilaga E), not "faktum"/"status" split by row -- the check must key off the fact's own
     topic, not the row's Typ, or this validation would never fire."""
-    record = _record()
-    rows = _decide(full_sheet_rows(record), s01=(CHANGE, "kanske"))
+    record = _drawn()
+    rows = _decide(full_sheet_rows(record, draw=1), s01=(CHANGE, "kanske"))
     with pytest.raises(ReviewImportError) as error:
         apply_review({"Q25485": record}, rows, date="2026-11-20")
     message = str(error.value)
@@ -464,8 +707,8 @@ def test_an_invalid_status_label_stops_the_import() -> None:
 
 
 def test_changing_the_status_via_andra_updates_value_and_sv() -> None:
-    record = _record()
-    rows = _decide(full_sheet_rows(record), s01=(CHANGE, "Flyttfågel, häckar här"))
+    record = _drawn()
+    rows = _decide(full_sheet_rows(record, draw=1), s01=(CHANGE, "Flyttfågel, häckar här"))
     apply_review({"Q25485": record}, rows, date="2026-11-20")
     status = next(f for f in record["facts"] if f["id"] == "s01")
     assert status["value"] == "breeding_migrant"
@@ -477,9 +720,9 @@ def test_apply_review_refreshes_facts_hash_so_verify_does_not_rerun() -> None:
     """Requirement 4: once Albin's edit is in, `generated.verify.factsHash` must match the
     new facts so a later `web verify` run treats the species as already current instead of
     re-running V1 on text Albin just hand-corrected."""
-    record = _record()
+    record = _drawn()
     record["generated"]["verify"]["factsHash"] = "stale-hash-from-before-the-edit"
-    rows = _decide(full_sheet_rows(record), f01=(CHANGE, "Svart huvud och vita kinder."))
+    rows = _decide(full_sheet_rows(record, draw=1), f01=(CHANGE, "Svart huvud och vita kinder."))
     apply_review({"Q25485": record}, rows, date="2026-11-20")
     assert record["generated"]["verify"]["factsHash"] == facts_hash(record)
 
@@ -526,20 +769,15 @@ def test_import_without_a_wave_only_touches_the_sheets_species(tmp_path: Path) -
     """Ändrat 2026-10-05 (b): samma kommando importerar stickprovet efter publicering,
     utan --wave och utan att röra arter som inte stod i arket."""
     paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
-    spot_checked = _record("Q1")
-    spot_checked["publish"] = True
-    spot_checked["verification"] = {
-        "method": "auto",
-        "at": "2026-11-10",
-        "model": "claude-sonnet-5",
-        "spotChecked": True,
-    }
+    spot_checked = _drawn("Q1")
     untouched = _record("Q2")
     save_record(record_path(paths.data_out, "Q1"), spot_checked)
     save_record(record_path(paths.data_out, "Q2"), untouched)
     sheet = tmp_path / "stickprov.csv"
-    rows = _decide(full_sheet_rows(spot_checked), f01=(CHANGE, "Svart huvud och vita kinder."))
-    write_sheet(sheet, rows)
+    rows = _decide(
+        full_sheet_rows(spot_checked, draw=1), f01=(CHANGE, "Svart huvud och vita kinder.")
+    )
+    write_sheet(sheet, rows, columns=SPOT_CHECK_COLUMNS)
     result = import_wave(paths, sheet, date="2026-12-01")
     assert result.changed == ["Q1"]
     fixed = load_record(record_path(paths.data_out, "Q1"))
@@ -561,6 +799,24 @@ def test_import_wave_removes_the_struck_audio_file(tmp_path: Path) -> None:
     sheet = tmp_path / "undantag.csv"
     write_sheet(sheet, _flag_decisions(flag_rows(record), **{"": STRIKE}))
     result = import_wave(paths, sheet, date="2026-11-20")
+    assert result.removed_audio == ["Q1"]
+    assert not voice.exists()
+
+
+def test_import_wave_deletes_a_recording_struck_in_the_spot_check(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    record = _drawn("Q1")
+    save_record(record_path(paths.data_out, "Q1"), record)
+    voice = paths.images_out / "Q1" / "voice.mp3"
+    voice.parent.mkdir(parents=True, exist_ok=True)
+    voice.write_bytes(b"fake-mp3")
+    sheet = tmp_path / "stickprov.csv"
+    write_sheet(
+        sheet,
+        _decide(full_sheet_rows(record, draw=1), a01=(STRIKE, "")),
+        columns=SPOT_CHECK_COLUMNS,
+    )
+    result = import_wave(paths, sheet, date="2026-12-01")
     assert result.removed_audio == ["Q1"]
     assert not voice.exists()
 

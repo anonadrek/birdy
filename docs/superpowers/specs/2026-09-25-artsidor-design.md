@@ -773,6 +773,7 @@ Kolumnerna är samma i båda flikarna:
 | Faktum | Faktumet på svenska. Albin skriver här när beslutet är `ändra`. |
 | Källa | `sv`, `en` eller `de` med länk till artikeln på rätt revision, eller `Artportalen` / `Rödlistan` / länk till inspelningens filsida |
 | Citat | Citatet ur artikeln |
-| Beslut | `behåll` (förifyllt), `stryk` eller `ändra`. Flaggor är tomma och måste fyllas i. Datarader är låsta. |
+| Beslut | `behåll` (förifyllt), `stryk` eller `ändra`. Flaggor är tomma och måste fyllas i. Datarader är låsta. **Ändrat 2026-10-06 (fas 1b:s slutgranskning I1):** inget är förifyllt i stickprovet heller; en rad utan beslut gör att arten väntar, så en import innan Albin tittat räknas aldrig som kontrollerad. Inspelningsraden tar `behåll` eller `stryk`. |
 | Kommentar | Fri text |
 | Publicerad | Bara i stickprovsfliken (2026-10-05 (b)): datumet sidan publicerades |
+| Dragning | Bara i stickprovsfliken (2026-10-06, slutgranskningen C2 och I1): vilken dragning raden hör till (`review/stickprov-state.json`). Importen tillämpar bara artens öppna dragning. |

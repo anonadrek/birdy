@@ -5928,7 +5928,7 @@ def export_spot_check(
     )
 ```
 
-**Jämförelsernas stickprov** (1 av 10 publicerade jämförelser) är inte kodat här: en jämförelse har inget eget faktablad, bara en text byggd ur de två arternas fakta, så raden i arket blir annorlunda (hela jämförelsetexten, inte fakta-rad för fakta-rad) och fältet den sätter (`spotChecked` på jämförelsens post, `false` som standard, finns inte i specens bilaga D ännu) hör hemma i `compare.py` (Task 22). Läggs till av fas 2:s publiceringsloop (`docs/superpowers/plans/2026-09-25-artsidor-fas2-sidor.md` Task 17) när den byggs, med samma `SPOT_CHECK_BATCH`-mönster men batch 10 och drag 1.
+**Jämförelsernas stickprov** (1 av 10 publicerade jämförelser) är inte kodat här: en jämförelse har inget eget faktablad, bara en text byggd ur de två arternas fakta, så raden i arket blir annorlunda (hela jämförelsetexten, inte fakta-rad för fakta-rad) och fältet den sätter (`spotChecked` på jämförelsens post, `false` som standard, finns inte i specens bilaga D ännu) hör hemma i `compare.py` (Task 22). Läggs till av fas 2:s publiceringsloop (`docs/superpowers/plans/2026-09-25-artsidor-fas2-sidor.md` Task 17) när den byggs, ~~med samma `SPOT_CHECK_BATCH`-mönster men batch 10 och drag 1~~ **(ersatt 2026-10-06, slutgranskningen C2: mönstret ovan drog om efter varannan publicering när de första 40 väl var nådda, 142 av 180 arter i stället för 8. Koden använder nu tillståndsfilen `review/stickprov-state.json`, se fas 2-planens Task 16 Step 4 Tillägg; jämförelsernas stickprov ska byggas på samma sätt, batch 10 och drag 1.)**
 
 - [ ] **Step 4: Kommandona i `cli.py`**
 
@@ -9086,6 +9086,7 @@ Det finns ingen gemensam förhandsvisning och inget Albin läser igenom före pu
 
 - [ ] Starta loopen (fas 2 Task 17) och låt den gå. Den rapporterar varje push och stoppar aldrig helt på en enskild sidas fel (nödstoppet `--max-publish` och stoppet vid flera fel i rad gäller bara systematiska problem).
 - [ ] Var 40:e publicerade art (och var 10:e publicerade jämförelse) drar loopen automatiskt ett stickprov (`uv run birdy-fetcher web spot-check`) och lägger det i Albins ark (`review/stickprov.csv`). Albin beslutar som i R5; ett bekräftat fel importeras (`uv run birdy-fetcher web import --file review/stickprov.csv`) och den sidan republiceras av loopen med nytt datum, och missen loggas i rapporten.
+  **Tillägg (2026-10-06, slutgranskningen C2 och I1):** dragningen räknas i `review/stickprov-state.json` (2 arter per 40 publicerade sedan förra dragningen, fröet sparas per dragning); committa filen, `review/stickprov.csv` och de dragna arternas JSON direkt efter dragningen. Arkets rader har kolumnen `Dragning` och ett tomt Beslut: Albin skriver `behåll`, `stryk` eller `ändra` på varje faktarad och `behåll` eller `stryk` på inspelningsraden. Importen tar bara artens öppna dragning (arket är löpande och kan importeras om utan att något äldre ändras), låter en art med tomma beslut vänta, och ger nytt kontrolldatum bara när något ströks eller ändrades.
 - [ ] CLAUDE.md: status uppdaterad löpande (antal publicerade sidor, kostnad), inte bara vid en vågs slut.
 
 ### R9: Våg 2 och 3

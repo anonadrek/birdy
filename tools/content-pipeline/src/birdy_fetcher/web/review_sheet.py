@@ -8,9 +8,12 @@ open with `encoding="utf-8-sig"` too, including the future Task 17 import step."
 
 from __future__ import annotations
 
+import copy
+import json
 import random
 from collections.abc import Sequence
 from dataclasses import dataclass, field
+from datetime import date as _date
 from pathlib import Path
 from typing import Any
 
@@ -45,8 +48,10 @@ COLUMNS = [
     "Beslut",
     "Kommentar",
 ]
-# Bilaga E (ändrat 2026-10-05 (b)): "Publicerad" finns bara i stickprovsfliken.
-SPOT_CHECK_COLUMNS = [*COLUMNS, "Publicerad"]
+# Bilaga E (ändrat 2026-10-05 (b)): "Publicerad" finns bara i stickprovsfliken. "Dragning"
+# (C2/I1, final review 2026-10-06) says which draw a row belongs to: the sheet is
+# cumulative, and only the rows of a species' current, undecided draw are ever applied.
+SPOT_CHECK_COLUMNS = [*COLUMNS, "Publicerad", "Dragning"]
 # The columns `apply_review` reads; both sheets have them (Minor 8, final review 2026-10-06).
 IMPORT_COLUMNS = ("QID", "Kontroll", "Typ", "Id", "Faktum", "Beslut")
 KEEP = "behåll"
@@ -56,6 +61,8 @@ DATA_SOURCES = {"artportalen": "Artportalen via GBIF", "rodlistan": "Svenska rö
 # Stickprovet efter publicering (ändrat 2026-10-05 (b)): 2 arter per 40 publicerade.
 SPOT_CHECK_BATCH = 40
 SPOT_CHECK_DRAW = 2
+# Which species have been counted toward a draw, and every draw with its seed (C2).
+SPOT_CHECK_STATE = "stickprov-state.json"
 
 
 def revision_url(lang: str, revision: str) -> str:
@@ -85,6 +92,7 @@ def _row(
     decision: str,
     kontroll: str = "",
     publicerad: str = "",
+    dragning: str = "",
 ) -> dict[str, str]:
     return {
         "Art": str(record["names"]["sv"]),
@@ -100,15 +108,21 @@ def _row(
         "Beslut": decision,
         "Kommentar": "",
         "Publicerad": publicerad,
+        "Dragning": dragning,
     }
 
 
-def full_sheet_rows(record: Record) -> list[dict[str, str]]:
+def full_sheet_rows(record: Record, *, draw: int | None = None) -> list[dict[str, str]]:
     """Every fact, status, data fact and the recording, for a spot-checked species (spec
     point 5: "visade med hela faktabladet"). `Publicerad` (bilaga E, stickprovsfliken) is
     filled from `record["publishedAt"]`, set by the publish step (Task 23) alongside
-    `publish: true`; empty for a species that has not gone through that step."""
+    `publish: true`; empty for a species that has not gone through that step. `Dragning`
+    is the draw the rows belong to (C2/I1, final review 2026-10-06).
+
+    Beslut is left empty on every fact and on the recording (I1): a sheet imported before
+    Albin has looked at it must not count as checked. Data rows stay locked ("(data)")."""
     published_at = str(record.get("publishedAt") or "")
+    dragning = "" if draw is None else str(draw)
     rows: list[dict[str, str]] = []
     for fact in record.get("facts", []):
         topic = fact["topic"]
@@ -126,6 +140,7 @@ def full_sheet_rows(record: Record) -> list[dict[str, str]]:
                     quote="",
                     decision="(data)",
                     publicerad=published_at,
+                    dragning=dragning,
                 )
             )
             continue
@@ -133,7 +148,7 @@ def full_sheet_rows(record: Record) -> list[dict[str, str]]:
         label = TOPIC_SV[topic]
         if topic == "lookalike":
             label = f"förväxling med {fact['other']['scientific']}"
-        # Bilaga E: Typ is only faktum/data/inspelning/flagga — the status fact (s01) is a
+        # Bilaga E: Typ is only faktum/data/inspelning/flagga; the status fact (s01) is a
         # faktum too, its Ämne column ("status i Sverige") already says what it is about.
         rows.append(
             _row(
@@ -145,8 +160,9 @@ def full_sheet_rows(record: Record) -> list[dict[str, str]]:
                 fact=fact["sv"],
                 source=source,
                 quote=quote,
-                decision=KEEP,
+                decision="",
                 publicerad=published_at,
+                dragning=dragning,
             )
         )
     audio: dict[str, Any] | None = record.get("audio")
@@ -162,8 +178,9 @@ def full_sheet_rows(record: Record) -> list[dict[str, str]]:
                 fact=summary,
                 source=audio["sourceUrl"],
                 quote="",
-                decision=KEEP,
+                decision="",
                 publicerad=published_at,
+                dragning=dragning,
             )
         )
     return rows
@@ -277,14 +294,64 @@ class SpotCheckResult:
     path: Path
     species: list[str] = field(default_factory=list)
     seed: int = 0
+    draw: int = 0
 
 
-def _unspotchecked_published(records: dict[str, Record]) -> list[Record]:
-    return [
-        r
-        for r in records.values()
-        if r.get("publish") and r.get("verification") and not r["verification"].get("spotChecked")
-    ]
+def _empty_state() -> dict[str, Any]:
+    return {"publishedAtLastDraw": 0, "counted": [], "draws": []}
+
+
+def read_spot_check_state(path: Path) -> dict[str, Any]:
+    """`review/stickprov-state.json` (C2, final review 2026-10-06): `counted` is every
+    species already counted toward a draw (published at some point), so a draw only ever
+    samples among species published since the last one; `draws` lists every draw with its
+    id, seed, date and species, so each one can be re-run from the file."""
+    if not path.exists():
+        return _empty_state()
+    data: dict[str, Any] = {**_empty_state(), **json.loads(path.read_text(encoding="utf-8"))}
+    return data
+
+
+def _write_state(path: Path, state: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    tmp.replace(path)
+
+
+def _drawable(record: Record) -> bool:
+    """Live, verified and not drawn before."""
+    verification = record.get("verification") or {}
+    return bool(record.get("publish") and verification and not verification.get("spotChecked"))
+
+
+def _published_ever(record: Record) -> bool:
+    return bool(record.get("publish") or record.get("publishedAt"))
+
+
+def _publish_order(record: Record) -> tuple[str, str, str]:
+    return (
+        str(record.get("publishedAt") or "9999"),
+        str(record["names"]["sv"]),
+        str(record["qid"]),
+    )
+
+
+def _by_name(record: Record) -> tuple[str, str]:
+    return (str(record["names"]["sv"]), str(record["qid"]))
+
+
+def mark_drawn(record: Record, draw: int) -> None:
+    """What a draw writes on the species: `verification.spotChecked` (spec: set at the draw,
+    not at the import) and `review.spotCheck`, which ties the sheet's rows to this draw and
+    to the fact sheet and recording they were drawn from (I1, final review 2026-10-06)."""
+    record["verification"]["spotChecked"] = True
+    audio = record.get("audio")
+    record.setdefault("review", {})["spotCheck"] = {
+        "draw": draw,
+        "factsHash": facts_hash(record),
+        "audio": audio_id(audio) if audio else None,
+    }
 
 
 def export_spot_check(
@@ -293,22 +360,40 @@ def export_spot_check(
     seed: int | None = None,
     extra_species: tuple[str, ...] = (),
     force: bool = False,
+    today: str | None = None,
 ) -> SpotCheckResult | None:
-    """Stickprovet efter publicering (spec Revision 2026-10-05 (b), ersätter export_wave:s
-    tidigare stickprov före publicering). Drar SPOT_CHECK_DRAW arter först när
-    SPOT_CHECK_BATCH fler publicerade-men-inte-stickprovade arter har samlats sedan
-    senaste dragningen; returnerar None annars. `force` drar direkt oavsett antal, för en
-    redragning efter ett bekräftat fel (`extra_species` lägger till namngivna arter på
-    samma dragning — varje Q-ID måste finnas, vara publicerad och verifierad, annars ett
-    tydligt `ValueError`, review fix 2026-10-06). Dragna arter får
-    `verification.spotChecked = true` direkt; Albins beslut (behåll/stryk/ändra)
-    importeras separat, som för undantagsarkets flaggor."""
+    """Stickprovet efter publicering (spec Revision 2026-10-05 (b)): SPOT_CHECK_DRAW arter
+    per SPOT_CHECK_BATCH publicerade. Rewritten for C2 (final review 2026-10-06): the old
+    trigger counted every published-but-undrawn species, so after the first 40 every two
+    further publications drew again (142 of 180). Now `review/stickprov-state.json` keeps
+    the species already counted; a draw takes the next whole batches of species published
+    since then (in publish order), samples 2 per batch among those still live and verified,
+    and counts the batch. A remainder waits for the next batch.
+
+    `force` draws SPOT_CHECK_DRAW among every live, verified, undrawn species without
+    counting anything (a redraw after a confirmed miss); `extra_species` adds named species
+    to this draw (each must exist, be published and verified, review fix 2026-10-06).
+    The seed is random unless given, and saved with the draw, so the draw can be re-run.
+    Drawn rows are appended to `review/stickprov.csv` with an empty Beslut (I1)."""
     records = load_all(paths.data_out)
-    pending = sorted(_unspotchecked_published(records), key=lambda r: str(r["names"]["sv"]))
-    used_seed = seed if seed is not None else 2000
+    state_path = paths.review / SPOT_CHECK_STATE
+    state = read_spot_check_state(state_path)
+    counted = set(state["counted"])
+    new = sorted(
+        (r for q, r in records.items() if _published_ever(r) and q not in counted),
+        key=_publish_order,
+    )
+    batches = len(new) // SPOT_CHECK_BATCH
+    pool = new[: batches * SPOT_CHECK_BATCH]
+    used_seed = seed if seed is not None else random.SystemRandom().randrange(1, 1_000_000)
+    rng = random.Random(used_seed)
     drawn: list[Record] = []
-    if force or len(pending) >= SPOT_CHECK_BATCH:
-        drawn = random.Random(used_seed).sample(pending, k=min(SPOT_CHECK_DRAW, len(pending)))
+    if pool:
+        candidates = sorted((r for r in pool if _drawable(r)), key=_by_name)
+        drawn = rng.sample(candidates, k=min(batches * SPOT_CHECK_DRAW, len(candidates)))
+    elif force:
+        candidates = sorted((r for r in records.values() if _drawable(r)), key=_by_name)
+        drawn = rng.sample(candidates, k=min(SPOT_CHECK_DRAW, len(candidates)))
     drawn_by_qid = {str(r["qid"]): r for r in drawn}
     for qid in extra_species:
         record = records.get(qid)
@@ -319,21 +404,41 @@ def export_spot_check(
         if not record.get("verification"):
             raise ValueError(f"--extra {qid}: arten är inte verifierad (verification saknas)")
         drawn_by_qid.setdefault(qid, record)
-    if not drawn_by_qid:
+    if not drawn_by_qid and not pool:
         return None
-    drawn_list = sorted(drawn_by_qid.values(), key=lambda r: str(r["names"]["sv"]))
-    rows = [row for r in drawn_list for row in full_sheet_rows(r)]
+    draw_id = len(state["draws"]) + 1
+    drawn_list = sorted(drawn_by_qid.values(), key=_by_name)
     path = paths.review / "stickprov.csv"
-    # (review fix 2026-10-06) `read_sheet`, not a plain `csv.DictReader`: a Sheets
-    # re-export can carry more than one BOM, and a bare `encoding="utf-8-sig"` only
-    # strips the first one, leaving "\ufeffArt" as the real key -- `write_sheet`'s
-    # `extrasaction="ignore"` then silently emptied every existing row's Art column.
-    existing_rows = read_sheet(path) if path.exists() else []
-    write_sheet(path, [*existing_rows, *rows], columns=SPOT_CHECK_COLUMNS)
-    for record in drawn_list:
-        record["verification"]["spotChecked"] = True
-        save_record(record_path(paths.data_out, str(record["qid"])), record)
-    return SpotCheckResult(path=path, species=[str(r["qid"]) for r in drawn_list], seed=used_seed)
+    if drawn_list:
+        rows = [row for r in drawn_list for row in full_sheet_rows(r, draw=draw_id)]
+        # (review fix 2026-10-06) `read_sheet`, not a plain `csv.DictReader`: a Sheets
+        # re-export can carry more than one BOM, and a bare `encoding="utf-8-sig"` only
+        # strips the first one, leaving "﻿Art" as the real key -- `write_sheet`'s
+        # `extrasaction="ignore"` then silently emptied every existing row's Art column.
+        existing_rows = read_sheet(path) if path.exists() else []
+        write_sheet(path, [*existing_rows, *rows], columns=SPOT_CHECK_COLUMNS)
+        for record in drawn_list:
+            mark_drawn(record, draw_id)
+            save_record(record_path(paths.data_out, str(record["qid"])), record)
+    state["counted"] = sorted(counted | {str(r["qid"]) for r in pool})
+    state["publishedAtLastDraw"] = len(state["counted"])
+    state["draws"].append(
+        {
+            "id": draw_id,
+            "seed": used_seed,
+            "at": today or _date.today().isoformat(),
+            "batches": batches,
+            "forced": bool(force and not pool),
+            "extra": list(extra_species),
+            "species": [str(r["qid"]) for r in drawn_list],
+        }
+    )
+    _write_state(state_path, state)
+    if not drawn_list:
+        return None
+    return SpotCheckResult(
+        path=path, species=[str(r["qid"]) for r in drawn_list], seed=used_seed, draw=draw_id
+    )
 
 
 class ReviewImportError(ValueError):
@@ -345,6 +450,10 @@ class ReviewImportError(ValueError):
 class ImportResult:
     changed: list[str] = field(default_factory=list)
     removed_audio: list[str] = field(default_factory=list)
+    # Species whose rows are not all decided yet: nothing applied, they wait (I1, I2).
+    waiting: list[str] = field(default_factory=list)
+    # Rows that no longer apply (an older or already decided draw, a changed fact sheet).
+    ignored: list[str] = field(default_factory=list)
 
 
 def read_sheet(path: Path, *, required_columns: Sequence[str] = ()) -> list[dict[str, str]]:
@@ -361,71 +470,167 @@ def _decision(row: dict[str, str]) -> str:
     return row.get("Beslut", "").strip().lower()
 
 
-def _validate(records: dict[str, Record], by_qid: dict[str, list[dict[str, str]]]) -> list[str]:
-    errors: list[str] = []
-    for qid, rows in by_qid.items():
-        record = records.get(qid)
-        if record is None:
-            errors.append(f"{qid}: arten finns inte bland artfilerna")
+def _typ(row: dict[str, str]) -> str:
+    return row.get("Typ", "").strip()
+
+
+def _name(record: Record) -> str:
+    return f"{record['qid']} {record.get('names', {}).get('sv', '')}".strip()
+
+
+@dataclass
+class _Plan:
+    """What one species' rows would do, worked out on a copy (nothing is changed until the
+    whole sheet has passed): `record` is the species after the decisions, or None when
+    nothing is applied."""
+
+    errors: list[str] = field(default_factory=list)
+    ignored: list[str] = field(default_factory=list)
+    waiting: str | None = None
+    record: Record | None = None
+    removed_audio: bool = False
+
+
+def _status_label_error(qid: str, fid: str, text: str) -> str | None:
+    if text in STATUS_BY_SV:
+        return None
+    return f"{qid} {fid}: skriv en av {', '.join(STATUS_SV.values())}"
+
+
+def _recheck_status(record: Record) -> list[dict[str, Any]]:
+    """A status Albin just set has never been checked against the report data: a
+    confirmation of an earlier status does not cover it (follow-up 2), the stored signal is
+    recomputed, and V3 runs on it. Returns the new flags (empty when it agrees)."""
+    record.setdefault("review", {}).pop("statusConfirmed", None)
+    status = next((f for f in record.get("facts", []) if f.get("topic") == "status"), None)
+    data = record.get("data")
+    if data is not None:
+        reason = None
+        if status is not None:
+            reason = status_contradiction(
+                status["value"], data.get("months"), int(data.get("totalReports", 0))
+            )
+        data["statusSignal"] = {"contradicts": reason}
+    return status_flags(record)
+
+
+# -- the spot check (stickprov.csv) -------------------------------------------------------
+
+
+def _spot_rows_for_current_draw(
+    record: Record, rows: list[dict[str, str]], plan: _Plan
+) -> list[dict[str, str]]:
+    """The rows of the species' current draw, if it is still open and the fact sheet and
+    recording are the ones it was drawn from. Every other row is reported and left out:
+    the sheet is cumulative, so a re-import must never re-apply (or re-date) an old draw."""
+    qid = str(record["qid"])
+    spot = record.get("review", {}).get("spotCheck") or {}
+    current = spot.get("draw")
+    by_draw: dict[str, list[dict[str, str]]] = {}
+    for row in rows:
+        by_draw.setdefault(row.get("Dragning", "").strip(), []).append(row)
+    if "" in by_draw:
+        plan.errors.append(f"{qid}: stickprovsrader utan Dragning (kolumnen saknas eller är tom)")
+        return []
+    selected: list[dict[str, str]] = []
+    for draw, draw_rows in by_draw.items():
+        if current is None or draw != str(current):
+            plan.ignored.append(
+                f"{_name(record)}: raderna från dragning {draw} gäller inte (artens dragning "
+                f"är {current if current is not None else 'ingen'})"
+            )
+        elif spot.get("decidedAt"):
+            plan.ignored.append(
+                f"{_name(record)}: dragning {draw} är redan avgjord {spot['decidedAt']}"
+            )
+        else:
+            selected = draw_rows
+    if not selected:
+        return []
+    if not record.get("verification"):
+        # Open flags from a later `web verify` (the species was unpublished and re-run):
+        # those come first, in the exception sheet; the spot check never verifies by itself.
+        plan.waiting = f"{_name(record)}: arten har öppna flaggor, besluta dem i undantagsarket"
+        return []
+    audio = record.get("audio")
+    if spot.get("factsHash") != facts_hash(record) or spot.get("audio") != (
+        audio_id(audio) if audio else None
+    ):
+        plan.waiting = (
+            f"{_name(record)}: faktabladet eller inspelningen har ändrats sedan dragning "
+            f"{current}, raderna gäller inte längre (dra om: web spot-check --extra {qid})"
+        )
+        return []
+    return selected
+
+
+def _validate_spot_rows(record: Record, rows: list[dict[str, str]], plan: _Plan) -> bool:
+    """Errors for anything Albin wrote that cannot be applied; True when every row has a
+    decision (an empty Beslut means he has not decided yet, I1)."""
+    qid = str(record["qid"])
+    facts_by_id = {f["id"]: f for f in record.get("facts", []) if f["topic"] != "data"}
+    seen: dict[str, int] = {}
+    audio_rows = 0
+    undecided = 0
+    for row in rows:
+        typ, decision, fid = _typ(row), _decision(row), row["Id"].strip()
+        if typ == "data":
             continue
-        facts_by_id = {f["id"]: f for f in record.get("facts", [])}
-        full_sheet = any(r["Typ"].strip() in ("faktum", "status") for r in rows)
-        if full_sheet:
-            expected = {f["id"] for f in record.get("facts", []) if f["topic"] != "data"}
-            seen = {r["Id"].strip() for r in rows if r["Typ"].strip() in ("faktum", "status")}
-            missing = sorted(expected - seen)
-            if missing:
-                errors.append(f"{qid}: raderna {', '.join(missing)} saknas i stickprovet")
-        for r in rows:
-            typ, decision, fid = r["Typ"].strip(), _decision(r), r["Id"].strip()
-            if typ == "data":
-                continue
-            if typ == "flagga":
-                # V1 on s01 (review fix 2026-10-06): the fact checker struck the status
-                # fact, so Albin can set one from the sheet instead of only keeping it
-                # empty -- same six labels as an `ändra` on a status row elsewhere.
-                check = r["Kontroll"].strip()
-                if check == "V1" and fid == "s01":
-                    if decision not in (KEEP, STRIKE, CHANGE):
-                        errors.append(f"{qid}: skriv behåll, stryk eller ändra på flaggan")
-                    elif decision == CHANGE and r["Faktum"].strip() not in STATUS_BY_SV:
-                        labels = ", ".join(STATUS_SV.values())
-                        errors.append(f"{qid} {fid}: skriv en av {labels}")
-                elif decision not in (KEEP, STRIKE):
-                    errors.append(f"{qid}: skriv behåll eller stryk på flaggan")
-                continue
-            if decision not in (KEEP, STRIKE, CHANGE):
-                errors.append(f"{qid} {fid}: okänt beslut {r['Beslut']!r}")
-            elif decision == CHANGE and not r["Faktum"].strip():
-                errors.append(f"{qid} {fid}: ändra kräver en ny text i Faktum")
-            elif (
-                decision == CHANGE
-                and facts_by_id.get(fid, {}).get("topic") == "status"
-                and r["Faktum"].strip() not in STATUS_BY_SV
-            ):
-                # Typ is "faktum" for the status fact too (bilaga E), never "status" — the
-                # fact's own topic, not the row's Typ, is what marks this as the status row.
-                labels = ", ".join(STATUS_SV.values())
-                errors.append(f"{qid} {fid}: skriv en av {labels}")
-    return errors
+        if typ == "inspelning":
+            audio_rows += 1
+            if decision == CHANGE:
+                plan.errors.append(f"{qid} inspelning: skriv behåll eller stryk")
+            elif decision and decision not in (KEEP, STRIKE):
+                plan.errors.append(f"{qid} inspelning: okänt beslut {row['Beslut']!r}")
+            undecided += not decision
+            continue
+        if typ not in ("faktum", "status"):
+            plan.errors.append(f"{qid} {fid}: okänd Typ {typ!r} i stickprovet")
+            continue
+        seen[fid] = seen.get(fid, 0) + 1
+        if fid not in facts_by_id:
+            plan.errors.append(f"{qid} {fid}: faktumet finns inte i artens faktablad")
+            continue
+        if not decision:
+            undecided += 1
+        elif decision not in (KEEP, STRIKE, CHANGE):
+            plan.errors.append(f"{qid} {fid}: okänt beslut {row['Beslut']!r}")
+        elif decision == CHANGE and not row["Faktum"].strip():
+            plan.errors.append(f"{qid} {fid}: ändra kräver en ny text i Faktum")
+        elif decision == CHANGE and facts_by_id[fid]["topic"] == "status":
+            # Typ is "faktum" for the status fact too (bilaga E): the fact's own topic is
+            # what marks this as the status row.
+            error = _status_label_error(qid, fid, row["Faktum"].strip())
+            if error:
+                plan.errors.append(error)
+    missing = sorted(set(facts_by_id) - set(seen))
+    if missing:
+        plan.errors.append(f"{qid}: raderna {', '.join(missing)} saknas i stickprovet")
+    twice = sorted(fid for fid, n in seen.items() if n > 1)
+    if twice:
+        plan.errors.append(f"{qid}: raderna {', '.join(twice)} står flera gånger")
+    if bool(record.get("audio")) != bool(audio_rows) or audio_rows > 1:
+        plan.errors.append(f"{qid}: stickprovet ska ha en inspelningsrad om arten har en")
+    return undecided == 0
 
 
-def _apply_one(
-    record: Record, rows: list[dict[str, str]], result: ImportResult
-) -> list[dict[str, Any]]:
-    """Applies Albin's decisions to one species' facts and flags. Returns any new V3 flags
-    produced by re-checking a status Albin just set via a V1 `ändra` on the struck status
-    fact (review fix 2026-10-06; empty otherwise). `apply_review` uses a non-empty return to
-    hold the species back from `verification` instead of marking it reviewed with a fresh,
-    unchecked status."""
-    decisions = {r["Id"].strip(): r for r in rows if r["Typ"].strip() in ("faktum", "status")}
+def _plan_spot_check(record: Record, rows: list[dict[str, str]], date: str) -> _Plan:
+    plan = _Plan()
+    rows = _spot_rows_for_current_draw(record, rows, plan)
+    if not rows or plan.errors:
+        return plan
+    decided = _validate_spot_rows(record, rows, plan)
+    if plan.errors:
+        return plan
+    if not decided:
+        plan.waiting = f"{_name(record)}: stickprovet har rader utan beslut"
+        return plan
+    new = copy.deepcopy(record)
+    decisions = {r["Id"].strip(): r for r in rows if _typ(r) in ("faktum", "status")}
     facts: list[dict[str, Any]] = []
-    for fact in record.get("facts", []):
-        if fact["topic"] == "data":
-            facts.append(fact)
-            continue
+    for fact in new.get("facts", []):
         row = decisions.get(fact["id"])
-        if row is None:  # not in the sheet: not flagged, kept exactly as the kontroll left it
+        if fact["topic"] == "data" or row is None:
             facts.append(fact)
             continue
         decision = _decision(row)
@@ -434,29 +639,86 @@ def _apply_one(
         if decision == CHANGE:
             text = row["Faktum"].strip()
             if fact["topic"] == "status":
-                fact = {**fact, "value": STATUS_BY_SV[text], "sv": text, "edited": True}
+                if text != fact["sv"]:
+                    fact = {**fact, "value": STATUS_BY_SV[text], "sv": text, "edited": True}
             elif text != fact["sv"]:
                 fact = {**fact, "sv": text, "edited": True}
         facts.append(fact)
-    review = record.setdefault("review", {})
+    status_before = next((f for f in record["facts"] if f["topic"] == "status"), None)
+    status_after = next((f for f in facts if f["topic"] == "status"), None)
+    new["facts"] = facts
+    audio_struck = any(_typ(r) == "inspelning" and _decision(r) == STRIKE for r in rows)
+    if audio_struck:
+        new.pop("audio", None)
+        new.setdefault("review", {})["audioStruck"] = True
+        plan.removed_audio = True
+    new["review"]["spotCheck"]["decidedAt"] = date
+    changed = facts != record["facts"] or audio_struck
+    if changed:
+        # A confirmed error: the page gets a new "Kontrollerad mot källorna" date and is
+        # published again (spec). An all-`behåll` draw changes nothing and keeps its date.
+        verify_meta = new.setdefault("generated", {}).setdefault("verify", {})
+        verify_meta["factsHash"] = facts_hash(new)
+        new["verification"] = {**new["verification"], "at": date, "spotChecked": True}
+        if status_after is not None and status_after != status_before:
+            new_flags = _recheck_status(new)
+            if new_flags:
+                new["flags"] = new_flags
+                new.pop("verification", None)
+    plan.record = new
+    return plan
+
+
+# -- the exception sheet (undantag.csv) ---------------------------------------------------
+
+
+def _validate_flag_rows(record: Record, rows: list[dict[str, str]], plan: _Plan) -> None:
+    qid = str(record["qid"])
+    for r in rows:
+        decision, fid = _decision(r), r["Id"].strip()
+        # V1 on s01 (review fix 2026-10-06): the fact checker struck the status fact, so
+        # Albin can set one from the sheet instead of only keeping it empty -- same six
+        # labels as an `ändra` on a status row elsewhere.
+        check = r["Kontroll"].strip()
+        if check == "V1" and fid == "s01":
+            if decision not in (KEEP, STRIKE, CHANGE):
+                plan.errors.append(f"{qid}: skriv behåll, stryk eller ändra på flaggan")
+            elif decision == CHANGE:
+                error = _status_label_error(qid, fid, r["Faktum"].strip())
+                if error:
+                    plan.errors.append(error)
+        elif decision not in (KEEP, STRIKE):
+            plan.errors.append(f"{qid}: skriv behåll eller stryk på flaggan")
+
+
+def _plan_flags(record: Record, rows: list[dict[str, str]], date: str) -> _Plan:
+    """Applies Albin's decisions on one species' flags (Task 17). A V1 `ändra` on the struck
+    status fact recreates it and re-runs V3 on it (review fix 2026-10-06); new V3 flags hold
+    the species back from `verification` instead of marking it checked with a fresh,
+    unchecked status."""
+    plan = _Plan()
+    _validate_flag_rows(record, rows, plan)
+    if plan.errors:
+        return plan
+    new = copy.deepcopy(record)
+    facts = list(new.get("facts", []))
+    review = new.setdefault("review", {})
     new_status: dict[str, Any] | None = None
     for row in rows:
-        typ, decision = row["Typ"].strip(), _decision(row)
-        if typ != "flagga":
-            continue
+        decision = _decision(row)
         check, fid = row["Kontroll"].strip(), row["Id"].strip()
         if check == "V3":
             review["statusConfirmed"] = decision == KEEP
             if decision == STRIKE:
                 facts = [f for f in facts if f["topic"] != "status"]
         elif check == "V4" and decision == STRIKE:
-            record.pop("audio", None)
+            new.pop("audio", None)
             review["audioStruck"] = True
-            result.removed_audio.append(str(record["qid"]))
-        elif check == "V4" and decision == KEEP and record.get("audio"):
+            plan.removed_audio = True
+        elif check == "V4" and decision == KEEP and new.get("audio"):
             # Remembered for this exact recording, so a forced re-verify does not ask again
             # (follow-up 2, wave A review); a different recording is checked as usual.
-            review["audioKept"] = audio_id(record["audio"])
+            review["audioKept"] = audio_id(new["audio"])
         elif check == "V2" and decision == STRIKE:
             facts = [f for f in facts if f["id"] != fid]
         elif check == "V1" and fid == "s01" and decision == CHANGE:
@@ -469,65 +731,76 @@ def _apply_one(
                 "sources": [],
                 "edited": True,
             }
+    new_flags: list[dict[str, Any]] = []
     if new_status is None:
-        record["facts"] = facts
-        return []
-    # behåll/stryk on the V1 flag both just leave the status empty (it is already gone from
-    # `facts`, struck by the fact checker before the flag was written) -- only ändra needs
-    # this recreate-and-recheck path.
-    record["facts"] = [*(f for f in facts if f["id"] != "s01"), new_status]
-    # A confirmation belonged to an earlier status; this new one has never been checked
-    # against the data, and status_flags honours a confirmation (follow-up 2).
-    review.pop("statusConfirmed", None)
-    data = record.get("data")
-    if data is not None:
-        reason = status_contradiction(
-            new_status["value"], data.get("months"), int(data.get("totalReports", 0))
-        )
-        data["statusSignal"] = {"contradicts": reason}
-    return status_flags(record)
+        new["facts"] = facts
+    else:
+        # behåll/stryk on the V1 flag both just leave the status empty (it is already gone
+        # from `facts`, struck by the fact checker before the flag was written) -- only
+        # ändra needs this recreate-and-recheck path.
+        new["facts"] = [*(f for f in facts if f["id"] != "s01"), new_status]
+        new_flags = _recheck_status(new)
+    verify_meta = new.setdefault("generated", {}).setdefault("verify", {})
+    verify_meta["factsHash"] = facts_hash(new)
+    if new_flags:
+        new["flags"] = new_flags
+        # N3 (review fix 2026-10-06): a `verification` left over from before this import
+        # must not survive a brand new flag -- it would otherwise still look reviewed.
+        new.pop("verification", None)
+    else:
+        new["verification"] = {
+            "method": "auto",
+            "at": date,
+            "model": verify_meta.get("model", "unknown"),
+            "spotChecked": False,
+        }
+    plan.record = new
+    return plan
 
 
 def apply_review(
     records: dict[str, Record], rows: list[dict[str, str]], *, date: str
 ) -> ImportResult:
     """Validates the whole sheet first (spec Revision 2026-10-05); changes nothing if any
-    row is wrong. For every affected species, applies Albin's decisions and refreshes
-    `generated.verify.factsHash` to match the edited facts (Task 17 requirement 4) so a
-    later `web verify` run sees its own facts as already current and does not re-run V1 on
-    text Albin just hand-corrected. `verification` (the sole "is this species' facts ready
-    to write text from" flag now that `review.facts` is gone) is then set as usual -- unless
-    Albin just set a status via a V1 `ändra` and the V3 recheck found it contradicts the
-    report data or the red list (review fix 2026-10-06): the species then keeps that new
-    flag instead and stays pending for another round."""
+    row is wrong. Each species' decisions are worked out on a copy, and only swapped in
+    once every species has passed. Flag rows (Typ `flagga`, the exception sheet) set
+    `verification` and refresh `generated.verify.factsHash` to match the edited facts (Task
+    17 requirement 4). Spot-check rows (the other Typ values, `stickprov.csv`) apply only
+    for the species' current, undecided draw (I1, final review 2026-10-06), re-date
+    `verification.at` only when a decision changed something, and a species with an empty
+    Beslut waits instead of counting as checked."""
     by_qid: dict[str, list[dict[str, str]]] = {}
     for row in rows:
         by_qid.setdefault(row["QID"].strip(), []).append(row)
-    errors = _validate(records, by_qid)
+    result = ImportResult()
+    errors: list[str] = []
+    plans: dict[str, _Plan] = {}
+    for qid, qrows in by_qid.items():
+        record = records.get(qid)
+        if record is None:
+            errors.append(f"{qid}: arten finns inte bland artfilerna")
+            continue
+        flagged = [r for r in qrows if _typ(r) == "flagga"]
+        spot = [r for r in qrows if _typ(r) != "flagga"]
+        if flagged and spot:
+            errors.append(f"{qid}: flaggor och stickprovsrader i samma ark, importera var för sig")
+            continue
+        plan = _plan_spot_check(record, spot, date) if spot else _plan_flags(record, flagged, date)
+        errors += plan.errors
+        plans[qid] = plan
     if errors:
         raise ReviewImportError("\n".join(errors))
-    result = ImportResult()
-    for qid, qrows in by_qid.items():
-        record = records[qid]
-        new_flags = _apply_one(record, qrows, result)
-        spot_checked = any(r["Typ"].strip() in ("faktum", "status") for r in qrows)
-        verify_meta = record.setdefault("generated", {}).setdefault("verify", {})
-        verify_meta["factsHash"] = facts_hash(record)
-        if new_flags:
-            record["flags"] = new_flags
-            # N3 (review fix 2026-10-06): the hash above is already refreshed, but a
-            # `verification` left over from before this import must not survive a brand
-            # new flag -- it would otherwise still look reviewed.
-            record.pop("verification", None)
-            result.changed.append(qid)
+    for qid, plan in plans.items():
+        result.ignored += plan.ignored
+        if plan.waiting:
+            result.waiting.append(plan.waiting)
+        if plan.record is None:
             continue
-        record["verification"] = {
-            "method": "auto",
-            "at": date,
-            "model": verify_meta.get("model", "unknown"),
-            "spotChecked": spot_checked,
-        }
+        records[qid].clear()
+        records[qid].update(plan.record)
         result.changed.append(qid)
+        if plan.removed_audio:
+            result.removed_audio.append(qid)
     return result
 
 
@@ -548,8 +821,8 @@ def import_wave(
     säkerhetsnätet som letar upp opåverkade arter i en bestämd våg (`_auto_clear` behövs
     sällan längre, se Task 17, men är kvar för äldre data). Samma funktion importerar både
     det löpande undantagsarket och stickprovet efter publicering (`review/stickprov.csv`):
-    en `ändra` på en stickprovsrad sätter `verification.at` till importdatumet, vilket är
-    det nya datumet på "Kontrollerad mot källorna"."""
+    ett stickprov där Albin stryker eller ändrar något sätter `verification.at` till
+    importdatumet, vilket är det nya datumet på "Kontrollerad mot källorna"."""
     records = load_all(paths.data_out)
     try:
         rows = read_sheet(sheet, required_columns=IMPORT_COLUMNS)
