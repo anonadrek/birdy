@@ -49,6 +49,9 @@
     <string name="iucn_en">Endangered</string>
     <string name="iucn_cr">Critically endangered</string>
     <string name="iucn_dd">Data deficient</string>
+    <string name="iucn_ne">Not evaluated</string>
+    <string name="iucn_ex">Extinct</string>
+    <string name="iucn_ew">Extinct in the wild</string>
 
     <!-- Onboarding extracted literals -->
     <string name="onboarding_s2_plate_caption">%1$s, in nature</string>
@@ -394,6 +397,7 @@
         <item quantity="other">%1$s, %2$d species</item>
     </plurals>
     <string name="archive_red_listed_tag">Red-listed</string>
+    <string name="archive_extinct_tag">Extinct</string>
     <string name="archive_search_clear">Clear search</string>
     <string name="archive_error_title">Couldn’t open the field journal</string>
     <string name="archive_error_body">Something went wrong while loading the species list.</string>

@@ -1,6 +1,7 @@
 package se.birdy.content.build
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.nio.file.Path
 
@@ -26,5 +27,41 @@ class SpeciesContentCorrectionsTest {
     @Test
     fun `acridotheres leucocephalus is called vinmajna in swedish`() {
         assertEquals("Vinmajna", species("sturnidae/Q31874135.yaml").names.sv)
+    }
+
+    // The pipeline read IUCN categories by their English Wikidata label; in May 2026 those were
+    // "endangered status" and "extinct species", so 12 endangered and 3 extinct species came out
+    // as NE. Another 18 have no IUCN status on Wikidata at all; their IUCN Red List assessments
+    // are now in tools/content-pipeline/species_list.yaml (source cited per species).
+    @Test
+    fun `endangered and extinct species are no longer written as not evaluated`() {
+        assertEquals("EN", species("accipitridae/Q33504.yaml").iucn_status) // Smutsgam
+        assertEquals("EN", species("threskiornithidae/Q245414.yaml").iucn_status) // Eremitibis
+        assertEquals("EX", species("alcidae/Q189193.yaml").iucn_status) // Garfågel
+        assertEquals("EX", species("haematopodidae/Q619728.yaml").iucn_status) // Kanariestrandskata
+        assertEquals("EX", species("scolopacidae/Q76411.yaml").iucn_status) // Smalnäbbad spov
+    }
+
+    @Test
+    fun `species without a status on wikidata carry the iucn red list one`() {
+        assertEquals("LC", species("corvidae/Q25345384.yaml").iucn_status) // Kaja (Corvus monedula)
+        assertEquals("LC", species("accipitridae/Q156250.yaml").iucn_status) // Röd glada
+        assertEquals("VU", species("laridae/Q519583.yaml").iucn_status) // Rödnäbbad trut (Larus audouinii)
+        assertEquals("NT", species("picidae/Q27074884.yaml").iucn_status) // Arabspett (Dendropicos dorae)
+    }
+
+    // What is left as NE: taxa IUCN has not assessed as species of their own (splits it still
+    // lumps, such as Gråkråka, the chaffinches of the Atlantic islands and Siberian stonechat).
+    @Test
+    fun `only species iucn has not assessed on their own stay not evaluated`() {
+        val notEvaluated =
+            parser
+                .parseAll(Path.of("species"))
+                .map { it.second }
+                .filter { it.iucn_status == "NE" }
+                .map { it.id }
+                .toSet()
+        assertEquals(18, notEvaluated.size, notEvaluated.sorted().toString())
+        assertTrue("Q25405" in notEvaluated) // Gråkråka
     }
 }

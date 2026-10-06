@@ -53,6 +53,9 @@
     <string name="iucn_en">Starkt hotad</string>
     <string name="iucn_cr">Akut hotad</string>
     <string name="iucn_dd">Kunskapsbrist</string>
+    <string name="iucn_ne">Ej bedömd</string>
+    <string name="iucn_ex">Utdöd</string>
+    <string name="iucn_ew">Utdöd i vilt tillstånd</string>
 
     <!-- Onboarding extracted literals -->
     <string name="onboarding_s2_plate_caption">%1$s, i naturen</string>
@@ -407,6 +410,7 @@
         <item quantity="other">%1$s, %2$d arter</item>
     </plurals>
     <string name="archive_red_listed_tag">Rödlistad</string>
+    <string name="archive_extinct_tag">Utdöd</string>
     <string name="archive_search_clear">Rensa sökning</string>
     <string name="archive_error_title">Fältboken kunde inte öppnas</string>
     <string name="archive_error_body">Något gick fel när artlistan lästes in.</string>

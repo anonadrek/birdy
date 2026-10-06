@@ -14,6 +14,23 @@ from .cache import Cache
 WIKIDATA_SPARQL = "https://query.wikidata.org/sparql"
 USER_AGENT = "birdy-fetcher/0.1.0 (https://github.com/anonadrek/birdy)"
 
+# The IUCN category items P141 points to, by Q-ID (stable). The English labels are not: in May
+# 2026 Q96377276 was labelled "endangered status" and Q237350 "extinct species" (both renamed
+# 2026-08-07), so the label table below missed them and 12 endangered and 3 extinct species were
+# written out as NE (release 1.3.0 Task 7g). The labels are only a fallback for an item not here.
+IUCN_QID_TO_CODE = {
+    "Q211005": "LC",
+    "Q719675": "NT",
+    "Q278113": "VU",
+    "Q96377276": "EN",
+    "Q11394": "EN",  # "endangered species", the older item some taxa still point to
+    "Q219127": "CR",
+    "Q3245245": "DD",
+    "Q3350324": "NE",
+    "Q237350": "EX",
+    "Q239509": "EW",
+}
+
 IUCN_LABEL_TO_CODE = {
     "least concern": "LC",
     "near threatened": "NT",
@@ -25,6 +42,20 @@ IUCN_LABEL_TO_CODE = {
     "extinct": "EX",
     "extinct in the wild": "EW",
 }
+
+_LABEL_SUFFIXES = (" species", " status")
+
+
+def iucn_code(status_uri: str, label: str) -> str:
+    """The IUCN code for a P141 value: by its item, else by its label ("... species/status"
+    suffixes ignored), else NE."""
+    qid = status_uri.rsplit("/", 1)[-1]
+    if qid in IUCN_QID_TO_CODE:
+        return IUCN_QID_TO_CODE[qid]
+    key = label.strip().lower()
+    for suffix in _LABEL_SUFFIXES:
+        key = key.removesuffix(suffix)
+    return IUCN_LABEL_TO_CODE.get(key, "NE")
 
 
 @dataclass(frozen=True)
@@ -119,8 +150,10 @@ class WikidataClient:
         if not bindings:
             raise ValueError(f"No Wikidata structured data for {q_id}")
         b = bindings[0]
-        iucn_label = b.get("iucnStatusLabel", {}).get("value", "").lower()
-        iucn_code = IUCN_LABEL_TO_CODE.get(iucn_label, "NE")
+        iucn_status = iucn_code(
+            b.get("iucnStatus", {}).get("value", ""),
+            b.get("iucnStatusLabel", {}).get("value", ""),
+        )
         image_uri = b.get("image", {}).get("value", "")
         image_filename: str | None = None
         if image_uri:
@@ -135,7 +168,7 @@ class WikidataClient:
             family_sv=family_sv,
             genus=b["genusLabel"]["value"],
             ioc_order=b["ordoLabel"]["value"],
-            iucn_status=iucn_code,
+            iucn_status=iucn_status,
             image_filename=image_filename,
             common_sv=common_sv,
         )

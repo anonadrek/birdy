@@ -110,3 +110,86 @@ async def test_force_bypasses_cache(
     await client.fetch_structured("Q25485")
     await client.fetch_structured("Q25485", force=True)
     assert call_count["n"] == 2
+
+
+# --- Release 1.3.0 Task 7g: IUCN status by item, Swedish names after genus renames ---
+
+
+def _sparql_response(**extra: dict[str, str]) -> str:
+    """One SPARQL row like the real query returns, plus the given extra bindings."""
+    import json
+
+    binding: dict[str, dict[str, str]] = {
+        "taxonName": {"type": "literal", "value": "Testus testus"},
+        "familyLabel": {"type": "literal", "value": "Testidae"},
+        "genusLabel": {"type": "literal", "value": "Testus"},
+        "ordoLabel": {"type": "literal", "value": "Passeriformes"},
+    }
+    binding.update(extra)
+    return json.dumps({"head": {"vars": list(binding)}, "results": {"bindings": [binding]}})
+
+
+def _uri(qid: str) -> dict[str, str]:
+    return {"type": "uri", "value": f"http://www.wikidata.org/entity/{qid}"}
+
+
+def _lit(value: str) -> dict[str, str]:
+    return {"type": "literal", "value": value}
+
+
+async def _structured(tmp_path: Path, response: str):  # type: ignore[no-untyped-def]
+    async def fake_sparql(query: str) -> str:
+        return response
+
+    return await WikidataClient(cache=Cache(tmp_path), run_sparql=fake_sparql).fetch_structured(
+        "Q1"
+    )
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("status_qid", "label", "expected"),
+    [
+        # The English labels in May 2026, when the committed YAML was generated: neither was in
+        # the label table, so 12 endangered and 3 extinct species were written as NE.
+        ("Q96377276", "endangered status", "EN"),
+        ("Q237350", "extinct species", "EX"),
+        ("Q211005", "least concern", "LC"),
+        ("Q719675", "near threatened", "NT"),
+        ("Q278113", "vulnerable", "VU"),
+        ("Q219127", "critically endangered", "CR"),
+        ("Q3245245", "Data Deficient", "DD"),
+        ("Q239509", "extinct in the wild", "EW"),
+        ("Q3350324", "not evaluated", "NE"),
+    ],
+)
+async def test_iucn_status_is_read_from_the_status_item_not_its_label(
+    tmp_path: Path, status_qid: str, label: str, expected: str
+) -> None:
+    response = _sparql_response(iucnStatus=_uri(status_qid), iucnStatusLabel=_lit(label))
+    assert (await _structured(tmp_path, response)).iucn_status == expected
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("label", "expected"),
+    [
+        ("endangered species", "EN"),
+        ("Endangered status", "EN"),
+        ("extinct species", "EX"),
+        ("least concern species", "LC"),
+    ],
+)
+async def test_an_unknown_status_item_falls_back_to_its_label_without_suffix(
+    tmp_path: Path, label: str, expected: str
+) -> None:
+    response = _sparql_response(iucnStatus=_uri("Q123456789"), iucnStatusLabel=_lit(label))
+    assert (await _structured(tmp_path, response)).iucn_status == expected
+
+
+@pytest.mark.asyncio
+async def test_a_status_nobody_knows_is_not_evaluated(tmp_path: Path) -> None:
+    response = _sparql_response(
+        iucnStatus=_uri("Q123456789"), iucnStatusLabel=_lit("something new")
+    )
+    assert (await _structured(tmp_path, response)).iucn_status == "NE"
