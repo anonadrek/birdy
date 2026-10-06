@@ -480,6 +480,19 @@ def web_import(wave: int | None, sheet: Path | None, review_date: str | None) ->
     )
 
 
+@web.command("compare-candidates")
+def web_compare_candidates() -> None:
+    """Skriver förväxlingsparen till review/comparison-volumes.csv. Gratis."""
+    from .web.compare import VOLUMES_FILE, candidate_pairs, write_candidates
+    from .web.record import load_all
+
+    paths = _web_paths()
+    records = load_all(paths.data_out)
+    pairs = candidate_pairs(records)
+    write_candidates(paths.review / VOLUMES_FILE, pairs, records)
+    click.echo(f"{len(pairs)} par i {paths.review / VOLUMES_FILE}. Fyll i sv_volume och en_volume.")
+
+
 @web.command("v1")
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
 @click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
