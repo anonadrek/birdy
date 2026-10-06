@@ -1369,3 +1369,69 @@ async def test_write_creates_no_client_before_its_setup_succeeds(
     with pytest.raises(FileNotFoundError):
         await run_write(paths, WriteOptions(wave=1), now=NOW)
     assert _CountingClient.created == 0
+
+
+# Follow-up 2026-10-06: the opening tolerates curly apostrophes and a leading space, and
+# the keep-old path judges a comparison in the orientation it was stored in.
+
+
+def _montagus_harrier() -> Record:
+    """Ängshök / Montagu's Harrier: first in Swedish slug order (angshok < talgoxe),
+    second in English (great-tit < montagus-harrier), with an apostrophe in the name."""
+    record = _blue_tit()
+    record["names"] = {"sv": "Ängshök", "en": "Montagu's Harrier", "scientific": "Circus pygargus"}
+    record["slug"] = {"sv": "angshok", "en": "montagus-harrier"}
+    return record
+
+
+def test_the_meta_opening_tolerates_a_curly_apostrophe_and_a_leading_space() -> None:
+    a, b = _montagus_harrier(), _great_tit()
+    openings = meta_openings(a, b)
+    assert openings["en"] == "Great Tit or Montagu's Harrier?"
+    sv_rest = SV_COMPARE.meta_description.removeprefix("Blåmes eller talgoxe?")
+    en_rest = EN_COMPARE.meta_description.removeprefix("Eurasian Blue Tit or Great Tit?")
+    text = CompareOutput(
+        sv=SV_COMPARE.model_copy(update={"meta_description": " Ängshök eller talgoxe?" + sv_rest}),
+        en=EN_COMPARE.model_copy(
+            update={"meta_description": " Great Tit or Montagu\u2019s Harrier?" + en_rest}
+        ),
+    )
+    assert check_compare(text, pair_context(a, b), BANNED, openings=openings) == []
+
+
+async def test_a_failed_rewrite_keeps_a_current_comparison_stored_in_the_old_orientation(
+    tmp_path: Path,
+) -> None:
+    paths = _repo_with_pair(tmp_path)
+    first = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
+    await run_compare(paths, CompareOptions(), client=first, now=NOW)
+    path = paths.comparisons_out / "Q25404_Q25485.json"
+    before = path.read_bytes()
+    # A Swedish slug rename flips the pair: the great tit now comes first, while the
+    # stored comparison (and its facts hash) still has the blue tit as side a.
+    blue = _blue_tit()
+    blue["slug"] = {"sv": "ublames", "en": "eurasian-blue-tit"}
+    save_record(record_path(paths.data_out, "Q25404"), blue)
+    bad = FakeJsonClient([reply(None, stop="max_tokens")])
+    outcomes = await run_compare(paths, CompareOptions(regenerate=True), client=bad, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    assert any("den tidigare jämförelsen behölls" in n for n in outcomes[0].notes)
+    assert path.read_bytes() == before
+
+
+async def test_a_flipped_orientation_alone_does_not_warn_about_changed_facts(
+    tmp_path: Path,
+) -> None:
+    paths, path = await _written_and_published(tmp_path)
+    blue = _blue_tit()
+    blue["slug"] = {"sv": "ublames", "en": "eurasian-blue-tit"}
+    save_record(record_path(paths.data_out, "Q25404"), blue)
+    bad = FakeJsonClient([reply(None, stop="max_tokens")])
+    outcomes = await run_compare(paths, CompareOptions(regenerate=True), client=bad, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    assert not any("faktabladen har ändrats" in e for e in outcomes[0].errors), outcomes[0].errors
+    assert not any("sätt publish: false" in e for e in outcomes[0].errors)
+    saved = load_record(path)
+    assert saved is not None
+    assert saved["publish"] is True
+    assert saved["status"] == "ok"

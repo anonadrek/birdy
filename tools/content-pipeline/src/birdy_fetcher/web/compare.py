@@ -450,11 +450,23 @@ def _check_lang(
         # Same rule as the species texts (M8): the meta description cites no facts, so a
         # number in it could never be checked.
         issues.append(TextIssue(meta_path, "innehåller siffror", False))
-    if opening is not None and not t.meta_description.casefold().startswith(opening.casefold()):
-        # Case-insensitive: the second Swedish name is written as in the middle of a
-        # sentence ("Blåmes eller talgoxe?").
+    if opening is not None and not _opening_key(t.meta_description).startswith(
+        _opening_key(opening)
+    ):
         issues.append(TextIssue(meta_path, f'ska börja med frågan "{opening}"', False))
     return issues
+
+
+_CURLY_APOSTROPHES = str.maketrans({"\u2019": "'", "\u2018": "'"})
+
+
+def _opening_key(text: str) -> str:
+    """How a meta description's opening question is compared: case-insensitive (the
+    second Swedish name is written as in the middle of a sentence, "Blåmes eller
+    talgoxe?"), without leading or trailing space, and with curly apostrophes (U+2019,
+    U+2018) read as straight ones, so a model writing "Montagu's Harrier" with a curly
+    apostrophe still matches (follow-up 2026-10-06)."""
+    return text.strip().translate(_CURLY_APOSTROPHES).casefold()
 
 
 def check_compare(
@@ -789,17 +801,19 @@ STALE_HASH_ERROR = (
 )
 
 
-def _keep_old_comparison(existing: Record, both_hash: str) -> bool:
+def _keep_old_comparison(existing: Record, records: dict[str, Record]) -> bool:
     """Mirrors `text_step._keep_old_text`: a failed rewrite never destroys a comparison the
     site may still use (a published one) or one that is still current for these facts.
     A stale, unpublished comparison is replaced by the failed result. That alone does not
     keep stale text off the site (a comparison this run never rewrites stays `ok`), so
-    `web publish` is only safe because it also requires `comparison_is_current`."""
+    `web publish` is only safe because it also requires `comparison_is_current`. Judged
+    in the orientation the comparison was stored in (follow-up 2026-10-06): a Swedish
+    slug rename that flips the pair does not make its facts stale."""
     if existing.get("publish"):
         return True
     if existing.get("status") != "ok":
         return False
-    return bool((existing.get("generated") or {}).get("factsHash") == both_hash)
+    return comparison_is_current(existing, records)
 
 
 def _sweep_published(
@@ -919,14 +933,13 @@ async def run_compare(
                 if (
                     result.text is None
                     and existing is not None
-                    and _keep_old_comparison(existing, both_hash)
+                    and _keep_old_comparison(existing, records)
                 ):
                     notes = [*result.notes, "den tidigare jämförelsen behölls"]
                     errors = list(result.errors)
-                    old_hash = (existing.get("generated") or {}).get("factsHash")
                     if stale_error is not None:
                         errors.append(stale_error)
-                    elif existing.get("publish") and old_hash != both_hash:
+                    elif existing.get("publish") and not comparison_is_current(existing, records):
                         errors.append(STALE_HASH_ERROR)
                     return StepOutcome(label, name, "failed", errors, notes)
                 sv_volume, en_volume = volumes[frozenset((pair.a, pair.b))]
