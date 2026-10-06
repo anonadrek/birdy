@@ -139,9 +139,12 @@ private fun ProfileContent(
                 kicker = kicker,
                 title = species.name,
                 latinName = species.scientificName,
-                height = 320.dp,
+                // The photo keeps the top 280dp and the name sits below it, so the whole bird
+                // is in view (2026-10-06): a 3:2 photo is ~274dp tall on a 411dp-wide phone.
+                height = 280.dp,
                 bottomPadding = PaperSheetOverlap + 18.dp,
                 drawBehindStatusBar = true,
+                textBelowPhoto = true,
                 image =
                     heroImage?.let { img ->
                         {

@@ -34,9 +34,12 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.onGloballyPositioned
@@ -98,6 +101,12 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
  * @param bottomPadding extra space under the text, e.g. for a [PaperSheet] overlapping it —
  *   when this hero is followed by one, use `PaperSheetOverlap + 18.dp` so the sheet's rounded
  *   top doesn't sit flush against the last line of text.
+ * @param textBelowPhoto false (default) = the photo fills the whole hero behind the text (the
+ *   Identify tab's daily bird). true (Match, species profile; 2026-10-06, Albin: the species
+ *   must be clearly visible) = the photo keeps [height] at the top (plus the status bar) and the
+ *   text block starts under it, overlapping only the photo's bottom [TEXT_OVER_PHOTO], where the
+ *   photo fades out into the neutral backdrop. The bird, usually in the middle of the frame, is
+ *   then never under the text; the hero grows to photo + text. No effect without a photo.
  * @param bottomContent extra content under the meta row, drawn over the same text-following
  *   scrim as the rest of the text block — it must be light-on-dark, like the rest of this
  *   header. A translucent LIGHT fill (e.g. a glass pill in `White.copy(alpha = 0.16f)`)
@@ -118,6 +127,7 @@ fun PhotoHero(
     height: Dp = 300.dp,
     bottomPadding: Dp = 18.dp,
     drawBehindStatusBar: Boolean = false,
+    textBelowPhoto: Boolean = false,
     image: (@Composable BoxScope.() -> Unit)? = null,
     topBar: (@Composable BoxScope.() -> Unit)? = null,
     bottomContent: (@Composable ColumnScope.() -> Unit)? = null,
@@ -125,19 +135,21 @@ fun PhotoHero(
     val serif = rememberDmSerifDisplay()
     val statusBarTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
     val statusBarTracking = rememberStatusBarTracking(enabled = drawBehindStatusBar)
+    // Behind the status bar the photo grows by its height, so the part below it keeps `height`.
+    val photoHeight = if (drawBehindStatusBar) height + statusBarTop else height
+    val photoAbove = textBelowPhoto && image != null
     Box(
         modifier =
             modifier
                 .fillMaxWidth()
-                // Behind the status bar the photo grows by its height, so the part below it keeps `height`.
-                .heightIn(min = if (drawBehindStatusBar) height + statusBarTop else height)
+                .heightIn(min = photoHeight)
                 .then(statusBarTracking)
                 .heroBackdrop(hasPhoto = image != null),
     ) {
         // A caller's image uses fillMaxSize(), which can't size this (possibly taller
-        // than `height`) Box by itself — matchParentSize() defers them until this Box's size is
-        // resolved from the Column below, then stretches them to match it.
-        Box(Modifier.matchParentSize()) {
+        // than `height`) Box by itself — matchParentSize() defers it until this Box's size is
+        // resolved from the Column below, then stretches it to match (see photoArea).
+        Box(photoArea(photoAbove, photoHeight)) {
             if (image != null) {
                 image()
                 if (drawBehindStatusBar) StatusBarScrim(statusBarTop)
@@ -147,6 +159,8 @@ fun PhotoHero(
             modifier =
                 Modifier
                     .align(Alignment.BottomStart)
+                    // Text below the photo: start where only the photo's faded edge is left.
+                    .padding(top = if (photoAbove) photoHeight - TEXT_OVER_PHOTO else 0.dp)
                     .fillMaxWidth()
                     .drawTextFollowingScrim(enabled = image != null) // before padding: see its KDoc.
                     .padding(start = 22.dp, end = 22.dp, bottom = bottomPadding),
@@ -248,6 +262,43 @@ internal const val TEXT_SCRIM_ALPHA = 0.70f
 private const val TEXT_SCRIM_FADE_STEPS = 8
 
 private fun smoothstep(t: Float): Float = t * t * (1 + 2 * (1 - t))
+
+// How much of the photo's bottom edge the text block may overlap when the text sits below the
+// photo (PhotoHero's textBelowPhoto), and how long the photo takes to fade out into the backdrop
+// there, so the photo has no hard bottom edge behind the kicker.
+internal val TEXT_OVER_PHOTO = 32.dp
+
+/**
+ * Where the photo is drawn: behind the whole hero, or (photoAbove) at the top in its own
+ * [height], fading out over its last [TEXT_OVER_PHOTO] into the backdrop. The fade only lowers
+ * the photo's own opacity, so what the text sits on there is the neutral backdrop, never a tint.
+ */
+private fun BoxScope.photoArea(
+    photoAbove: Boolean,
+    height: Dp,
+): Modifier =
+    if (photoAbove) {
+        Modifier.fillMaxWidth().height(height).fadeOutBottom(TEXT_OVER_PHOTO)
+    } else {
+        Modifier.matchParentSize()
+    }
+
+private fun Modifier.fadeOutBottom(fade: Dp): Modifier =
+    graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
+        .drawWithCache {
+            val fadePx = fade.toPx()
+            val mask =
+                Brush.verticalGradient(
+                    0f to Color.Black,
+                    1f to Color.Transparent,
+                    startY = size.height - fadePx,
+                    endY = size.height,
+                )
+            onDrawWithContent {
+                drawContent()
+                drawRect(brush = mask, blendMode = BlendMode.DstIn)
+            }
+        }
 
 /**
  * What shows behind the photo: a neutral [PhotoLoading] gray while a photo loads (never a green

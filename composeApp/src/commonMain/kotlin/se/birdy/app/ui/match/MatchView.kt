@@ -164,9 +164,13 @@ internal fun MatchView(
                 kicker = stringResource(Res.string.match_eyebrow, state.stampNumber),
                 title = state.species.name,
                 latinName = state.species.scientificName,
-                height = 340.dp,
+                // The photo keeps the top 260dp and the name sits below it, so the whole bird
+                // is in view (2026-10-06). 20dp less than the species profile: the save button
+                // below is this screen's main action and should stay high on short phones.
+                height = 260.dp,
                 bottomPadding = PaperSheetOverlap + 18.dp,
                 drawBehindStatusBar = true,
+                textBelowPhoto = true,
                 image =
                     heroPath?.let { path ->
                         {
