@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -62,15 +61,19 @@ import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.HeroMossMid
 import se.birdy.app.ui.theme.MossCreme
+import se.birdy.app.ui.theme.PhotoLoading
+import se.birdy.app.ui.theme.PhotoScrim
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 
 /**
- * Full-bleed photo header (spec 2026-09-24 §4.3): photo, a light full-photo moss scrim (the
- * approved mockup gradient — see [HeroScrim]) plus a second, stronger scrim that follows the
+ * Full-bleed photo header (spec 2026-09-24 §4.3): photo, a neutral dark scrim that follows the
  * bottom-aligned text block itself (a modifier on the text Column, [drawTextFollowingScrim]),
  * kicker + serif title (+ optional italic latin name, apricot subtitle and a hairline meta
- * row).
+ * row). Since 2026-10-06 nothing with a hue is drawn over the photo (Albin: the moss green over
+ * the bird made the species hard to see): the bird shows in its true colors, darkened only
+ * right behind the text and, when the hero sits behind the status bar, in a thin strip under
+ * the status-bar icons ([StatusBarScrim]).
  *
  * [drawBehindStatusBar]: false (default) = the hero starts below the status bar (AppScaffold's
  * BelowStatusBar or the screen's own padding). true = the route draws behind the status bar
@@ -79,7 +82,7 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
  * under the status bar.
  *
  * [topBar] is drawn LAST (declared after the text Column below), so the gear/back button it
- * hosts is never dimmed by either scrim (fix wave A2c, finding 1: the text-following scrim's
+ * hosts is never dimmed by any scrim (fix wave A2c, finding 1: the text-following scrim's
  * fade used to paint over it whenever the text block started high enough to reach the topBar's
  * row).
  *
@@ -88,7 +91,8 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
  * to fit the text block instead of clipping the meta row / [bottomContent] to nothing.
  *
  * @param image caller-supplied photo (e.g. an AsyncImage with ContentScale.Crop and
- *   Modifier.fillMaxSize()). Null → moss gradient only.
+ *   Modifier.fillMaxSize()); a neutral [PhotoLoading] gray shows behind it while it loads.
+ *   Null → the moss gradient only, with no scrims (the text clears AA on it by itself).
  * @param latinName optional scientific name, set in italic serif (NOT uppercased, unlike
  *   [metaStart]/[metaEnd] — binomial names must keep their case). Renders under the title.
  * @param bottomPadding extra space under the text, e.g. for a [PaperSheet] overlapping it —
@@ -128,21 +132,23 @@ fun PhotoHero(
                 // Behind the status bar the photo grows by its height, so the part below it keeps `height`.
                 .heightIn(min = if (drawBehindStatusBar) height + statusBarTop else height)
                 .then(statusBarTracking)
-                .background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid, HeroMossDeep))),
+                .heroBackdrop(hasPhoto = image != null),
     ) {
-        // A caller's image/HeroScrim use fillMaxSize(), which can't size this (possibly taller
+        // A caller's image uses fillMaxSize(), which can't size this (possibly taller
         // than `height`) Box by itself — matchParentSize() defers them until this Box's size is
         // resolved from the Column below, then stretches them to match it.
         Box(Modifier.matchParentSize()) {
-            image?.invoke(this)
-            HeroScrim()
+            if (image != null) {
+                image()
+                if (drawBehindStatusBar) StatusBarScrim(statusBarTop)
+            }
         }
         Column(
             modifier =
                 Modifier
                     .align(Alignment.BottomStart)
                     .fillMaxWidth()
-                    .drawTextFollowingScrim() // before padding: see its KDoc.
+                    .drawTextFollowingScrim(enabled = image != null) // before padding: see its KDoc.
                     .padding(start = 22.dp, end = 22.dp, bottom = bottomPadding),
         ) {
             MicroLabel(kicker, color = AccentCopperLight)
@@ -200,47 +206,59 @@ private fun rememberStatusBarTracking(enabled: Boolean): Modifier {
 internal const val LATIN_NAME_TEXT_ALPHA = 0.85f
 internal const val META_TEXT_ALPHA = 0.75f
 
-// Global scrim (spec 2026-09-24 §4.3 mockups): the approved mockup's light gradient, ported
-// directly — CSS `linear-gradient(0deg, rgba(31,42,25,.96) 0%, rgba(31,42,25,.55) 38%,
-// rgba(31,42,25,0) 70%, rgba(0,0,0,.25) 100%)` (rgb(31,42,25) = HeroMossDeep). CSS "0deg" runs
-// bottom→top; Compose's Brush.verticalGradient runs top→bottom, so the CSS 0%/38%/70%/100%
-// stops become the 1f/0.62f/0.30f/0f fractions below. Black at the very top helps the gear/
-// status icons read over a bright sky. The transparent band around 30% is what keeps the photo
-// itself visible. Fix wave A2 (2026-09-26)
-// had strengthened this ramp so much the photo nearly disappeared (finding I3) — fix wave A2b
-// moved WCAG AA coverage to the text-following scrim below instead, so this one could go back
-// to the light mockup look. This scrim alone is NOT relied on for text contrast — see
-// PhotoHeroContrastTest.
-private const val GLOBAL_SCRIM_TOP_ALPHA = 0.25f
-private const val GLOBAL_SCRIM_FADE_OUT_FRACTION = 0.30f
-private const val GLOBAL_SCRIM_RAMP_FRACTION = 0.62f
-private const val GLOBAL_SCRIM_RAMP_ALPHA = 0.55f
-private const val GLOBAL_SCRIM_BOTTOM_ALPHA = 0.96f
+// Status-bar scrim (2026-10-06, replaces the full-photo moss ramp of the 2026-09-24 mockups,
+// which tinted the whole lower half of the photo green and hid the bird). Only for a hero drawn
+// behind the status bar: the system draws light icons there (see rememberStatusBarTracking),
+// and over a bright sky or snow they need a little darkening. Flat STATUS_BAR_SCRIM_ALPHA black
+// under the icons, fading to nothing STATUS_BAR_SCRIM_TAIL below them, so the bird itself is
+// untouched. The back/gear buttons don't rely on it: they have their own GlassOnPhoto discs
+// (GlassOnPhotoContrastTest).
+private const val STATUS_BAR_SCRIM_ALPHA = 0.25f
+private val STATUS_BAR_SCRIM_TAIL = 24.dp
 
 @Composable
-private fun HeroScrim() {
+private fun StatusBarScrim(statusBarTop: Dp) {
+    if (statusBarTop <= 0.dp) return
+    val total = statusBarTop + STATUS_BAR_SCRIM_TAIL
     Box(
-        Modifier.fillMaxSize().background(
+        Modifier.fillMaxWidth().height(total).background(
             Brush.verticalGradient(
-                0f to Color.Black.copy(alpha = GLOBAL_SCRIM_TOP_ALPHA),
-                GLOBAL_SCRIM_FADE_OUT_FRACTION to HeroMossDeep.copy(alpha = 0f),
-                GLOBAL_SCRIM_RAMP_FRACTION to HeroMossDeep.copy(alpha = GLOBAL_SCRIM_RAMP_ALPHA),
-                1f to HeroMossDeep.copy(alpha = GLOBAL_SCRIM_BOTTOM_ALPHA),
+                0f to PhotoScrim.copy(alpha = STATUS_BAR_SCRIM_ALPHA),
+                (statusBarTop / total) to PhotoScrim.copy(alpha = STATUS_BAR_SCRIM_ALPHA),
+                1f to PhotoScrim.copy(alpha = 0f),
             ),
         ),
     )
 }
 
-// Text-following scrim (fix wave A2b, 2026-09-27): painted behind the bottom-aligned text
-// Column itself (see PhotoHero), not tied to a fraction of the hero's own height like the old
-// ramp was. It fades in over TEXT_SCRIM_FADE above the column's top edge (alpha 0 ->
-// TEXT_SCRIM_ALPHA), then stays FLAT at TEXT_SCRIM_ALPHA down to the column's bottom — so it
-// follows the text block whatever its height (1- or 2-line title, font scale) instead of
-// covering a fixed band of the photo regardless of where the text actually starts. This is
-// what carries WCAG AA now (not the global scrim above). TEXT_SCRIM_ALPHA is the smallest value
-// (steps of 0.05) that clears WCAG AA in PhotoHeroContrastTest — change both together.
-private val TEXT_SCRIM_FADE = 64.dp
-internal const val TEXT_SCRIM_ALPHA = 0.85f
+// Text-following scrim (fix wave A2b, 2026-09-27; neutral since 2026-10-06): painted behind the
+// bottom-aligned text Column itself (see PhotoHero), so it covers only the part of the photo the
+// text actually sits on, whatever the block's height (1- or 2-line title, font scale). It fades
+// in over TEXT_SCRIM_FADE above the column's top edge (eased, so the edge doesn't read as a band),
+// then stays FLAT at TEXT_SCRIM_ALPHA down to the column's bottom. It is PhotoScrim (black), not
+// moss: the photo under the text is darkened, never tinted. This is what carries WCAG AA.
+// TEXT_SCRIM_ALPHA is the smallest value (steps of 0.05) that clears WCAG AA in
+// PhotoHeroContrastTest (the apricot kicker is the limiting line, 4.64:1 over pure white) —
+// change both together.
+private val TEXT_SCRIM_FADE = 48.dp
+internal const val TEXT_SCRIM_ALPHA = 0.70f
+
+// The fade is eased (smoothstep, sampled in TEXT_SCRIM_FADE_STEPS even steps): it starts and
+// ends flat, so neither the top of the fade nor the start of the flat part shows an edge.
+private const val TEXT_SCRIM_FADE_STEPS = 8
+
+private fun smoothstep(t: Float): Float = t * t * (1 + 2 * (1 - t))
+
+/**
+ * What shows behind the photo: a neutral [PhotoLoading] gray while a photo loads (never a green
+ * flash before the bird), or the designed moss gradient when there is no photo at all.
+ */
+private fun Modifier.heroBackdrop(hasPhoto: Boolean): Modifier =
+    if (hasPhoto) {
+        background(PhotoLoading)
+    } else {
+        background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid, HeroMossDeep)))
+    }
 
 /**
  * Must be applied BEFORE any `.padding(...)` on the text Column: `DrawScope.size` here needs to
@@ -248,23 +266,28 @@ internal const val TEXT_SCRIM_ALPHA = 0.85f
  * box, and the fade drawn above y=0 relies on Compose not clipping drawBehind to its own
  * bounds. Uses [drawWithCache] so the [Brush] is rebuilt only when the column's size actually
  * changes (relayout), not on every frame the way a plain `drawBehind` block would.
+ * [enabled] false (no photo) → draws nothing.
  */
-private fun Modifier.drawTextFollowingScrim(): Modifier =
-    drawWithCache {
+private fun Modifier.drawTextFollowingScrim(enabled: Boolean): Modifier {
+    if (!enabled) return this
+    return drawWithCache {
         val fadePx = TEXT_SCRIM_FADE.toPx()
-        val totalPx = fadePx + size.height
-        val brush =
+        val fade =
             Brush.verticalGradient(
-                0f to HeroMossDeep.copy(alpha = 0f),
-                (fadePx / totalPx) to HeroMossDeep.copy(alpha = TEXT_SCRIM_ALPHA),
-                1f to HeroMossDeep.copy(alpha = TEXT_SCRIM_ALPHA),
+                colors =
+                    (0..TEXT_SCRIM_FADE_STEPS).map { step ->
+                        PhotoScrim.copy(alpha = TEXT_SCRIM_ALPHA * smoothstep(step.toFloat() / TEXT_SCRIM_FADE_STEPS))
+                    },
                 startY = -fadePx,
-                endY = size.height,
+                endY = 0f,
             )
+        val flat = PhotoScrim.copy(alpha = TEXT_SCRIM_ALPHA)
         onDrawBehind {
-            drawRect(brush = brush, topLeft = Offset(0f, -fadePx), size = Size(size.width, totalPx))
+            drawRect(brush = fade, topLeft = Offset(0f, -fadePx), size = Size(size.width, fadePx))
+            drawRect(color = flat, size = size)
         }
     }
+}
 
 // A practical legibility aid on top of the scrim, not counted in PhotoHeroContrastTest.
 private val HeroTextShadow = Shadow(color = Color.Black.copy(alpha = 0.35f), offset = Offset(0f, 1f), blurRadius = 6f)

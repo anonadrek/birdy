@@ -41,6 +41,15 @@ val HeroMossDeep = Color(0xFF1F2A19)
 // ≈2.85:1 with it — both below AA. 0.45 clears ≈3.2:1 with no scrim credit at all.
 val GlassOnPhoto = Color.Black.copy(alpha = 0.45f)
 
+// ===== Over and behind bird photos: neutral only (2026-10-06) =====
+// Albin: "the green over the bird takes away from it, you can't see the species clearly". The
+// moss scrims over the photos are gone; a bird photo now shows in its true colors. What text
+// over a photo still needs is a NEUTRAL darkening (PhotoScrim at a partial alpha, confined to
+// the text — see PhotoHero and the Mina arter recap card), and what shows behind a photo while
+// it loads is a neutral dark gray, not a green flash. PhotoHeroContrastTest pins both as hue-free.
+val PhotoScrim = Color(0xFF000000)
+val PhotoLoading = Color(0xFF1E1E1E)
+
 // ===== Rust = "do something" (CTA, active tab, stat numbers, stamps) =====
 val AccentCopper = Color(0xFF9A4526)
 val AccentCopperDeep = Color(0xFF72301A) // end of the primary-button gradient
