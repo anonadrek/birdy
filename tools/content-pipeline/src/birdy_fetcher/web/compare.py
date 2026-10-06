@@ -95,7 +95,9 @@ def queries(pair: Pair, records: dict[str, Record]) -> dict[str, list[str]]:
 _PLAIN = re.compile(r"\d+")
 _GROUPED = re.compile(r"\d{1,3}([ \u00a0,.]\d{3})+")
 _THOUSANDS_K = re.compile(r"\d+[kK]")
-BELOW_THRESHOLD = "<10"
+# Keyword Planner (and a hand-edit) can write "<10" with or without a space inside
+# (review fix 2026-10-06, item 3).
+_BELOW_THRESHOLD = re.compile(r"<\s*10")
 # Keyword Planner's "<10" bucket is a real, nonzero volume it will not show precisely.
 # Documented choice (item 1): map it to 5, the bucket's midpoint, not 0 -- 0 would be
 # indistinguishable from a cell nobody has filled in yet, and would let `select_pairs`
@@ -112,7 +114,7 @@ def _number(value: str, *, lang: str, a_qid: str, b_qid: str) -> int:
     text = value.strip()
     if not text:
         return 0
-    if text == BELOW_THRESHOLD:
+    if _BELOW_THRESHOLD.fullmatch(text):
         return BELOW_THRESHOLD_VALUE
     if _PLAIN.fullmatch(text):
         return int(text)
@@ -128,14 +130,17 @@ def _number(value: str, *, lang: str, a_qid: str, b_qid: str) -> int:
 def read_volumes(path: Path) -> dict[Pair, tuple[int, int]]:
     """Current candidates only (fix 2026-10-06, item 5): a row an earlier `write_candidates`
     marked `aktuell: nej` (no longer a look-alike pair, kept only because it had a volume)
-    is skipped, so `select_pairs` never ranks a stale pair."""
+    is skipped, so `select_pairs` never ranks a stale pair. A row missing a_qid or b_qid
+    is skipped too (fix 2026-10-06, item 2), consistent with `_load_old` below."""
     if not path.exists():
         return {}
     volumes: dict[Pair, tuple[int, int]] = {}
-    for row in read_sheet(path, required_columns=("a_qid",)):
+    for row in read_sheet(path, required_columns=("a_qid", "b_qid")):
         if row.get("aktuell", "ja").strip().lower() == "nej":
             continue
-        a_qid, b_qid = row["a_qid"].strip(), row["b_qid"].strip()
+        a_qid, b_qid = row.get("a_qid", "").strip(), row.get("b_qid", "").strip()
+        if not a_qid or not b_qid:
+            continue
         sv = _number(row.get("sv_volume", ""), lang="sv", a_qid=a_qid, b_qid=b_qid)
         en = _number(row.get("en_volume", ""), lang="en", a_qid=a_qid, b_qid=b_qid)
         volumes[Pair(a_qid, b_qid)] = (sv, en)

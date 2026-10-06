@@ -8,7 +8,6 @@ open with `encoding="utf-8-sig"` too, including the future Task 17 import step."
 
 from __future__ import annotations
 
-import csv
 import random
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -314,10 +313,11 @@ def export_spot_check(
     drawn_list = sorted(drawn_by_qid.values(), key=lambda r: str(r["names"]["sv"]))
     rows = [row for r in drawn_list for row in full_sheet_rows(r)]
     path = paths.review / "stickprov.csv"
-    existing_rows: list[dict[str, str]] = []
-    if path.exists():
-        with path.open(encoding="utf-8-sig", newline="") as f:
-            existing_rows = list(csv.DictReader(f))
+    # (review fix 2026-10-06) `read_sheet`, not a plain `csv.DictReader`: a Sheets
+    # re-export can carry more than one BOM, and a bare `encoding="utf-8-sig"` only
+    # strips the first one, leaving "\ufeffArt" as the real key -- `write_sheet`'s
+    # `extrasaction="ignore"` then silently emptied every existing row's Art column.
+    existing_rows = read_sheet(path) if path.exists() else []
     write_sheet(path, [*existing_rows, *rows], columns=SPOT_CHECK_COLUMNS)
     for record in drawn_list:
         record["verification"]["spotChecked"] = True

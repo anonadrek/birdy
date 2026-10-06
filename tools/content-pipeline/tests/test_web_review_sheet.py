@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import io
 from pathlib import Path
 
 import pytest
@@ -315,6 +316,30 @@ def test_spot_check_extra_species_rejects_an_unverified_qid(tmp_path: Path) -> N
     save_record(record_path(paths.data_out, "Q8"), published_but_unverified)
     with pytest.raises(ValueError, match="Q8"):
         export_spot_check(paths, seed=1, extra_species=("Q8",))
+
+
+def test_spot_check_keeps_the_art_column_when_the_old_sheet_has_a_double_bom(
+    tmp_path: Path,
+) -> None:
+    """Review fix 2026-10-06: a plain `encoding="utf-8-sig"` `csv.DictReader` only strips
+    ONE BOM, so a Sheets re-export with two BOMs left "Art" glued to the leftover one;
+    `write_sheet`'s `extrasaction="ignore"` then silently emptied every existing row's Art
+    column (the dict key "\ufeffArt" is missing from `fieldnames`, so `DictWriter` fills
+    the real "Art" column with its default `restval`, "")."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    for r in (_published(f"Q{i}") for i in range(1, 6)):
+        save_record(record_path(paths.data_out, r["qid"]), r)
+    path = paths.review / "stickprov.csv"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    buf = io.StringIO()
+    writer = csv.DictWriter(buf, fieldnames=SPOT_CHECK_COLUMNS)
+    writer.writeheader()
+    writer.writerow({"Art": "Blåmes", "QID": "Q25404"})
+    path.write_bytes("\ufeff\ufeff".encode() + buf.getvalue().encode("utf-8"))
+    result = export_spot_check(paths, seed=1, force=True)
+    assert result is not None
+    rows = read_sheet(path)
+    assert rows[0]["Art"] == "Blåmes"
 
 
 # -- Task 17: Albin's decisions in, `web import` ------------------------------------------

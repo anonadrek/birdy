@@ -166,6 +166,12 @@ def test_number_below_threshold_marker() -> None:
     assert BELOW_THRESHOLD_VALUE != 0
 
 
+def test_number_below_threshold_marker_with_a_space() -> None:
+    # (review fix 2026-10-06, item 3) Keyword Planner (or a hand-edit) can write "< 10"
+    # with a space; it means the same thing as "<10".
+    assert _number("< 10", lang="sv", a_qid="Q1", b_qid="Q2") == BELOW_THRESHOLD_VALUE
+
+
 @pytest.mark.parametrize("value", ["1K - 10K", "55.5", "=1+2", "abc", "-5", "1300 880"])
 def test_number_rejects_invalid_formats(value: str) -> None:
     with pytest.raises(ValueError, match="Q25404/Q25485"):
@@ -201,7 +207,7 @@ def test_comparison_slugs_sorts_sv_like_en_regardless_of_pair_orientation() -> N
 def test_candidates_file_keeps_volumes_that_are_filled_in(tmp_path: Path) -> None:
     path = tmp_path / "comparison-volumes.csv"
     write_candidates(path, [Pair("Q25404", "Q25485")], RECORDS)
-    with path.open(encoding="utf-8", newline="") as f:
+    with path.open(encoding="utf-8-sig", newline="") as f:
         rows = list(csv.DictReader(f))
     rows[0]["sv_volume"] = "1 300"
     rows[0]["en_volume"] = "880"
@@ -235,6 +241,45 @@ def test_read_volumes_strips_whitespace_around_qids(tmp_path: Path) -> None:
         COLUMNS,
     )
     assert read_volumes(path) == {Pair("Q25404", "Q25485"): (500, 300)}
+
+
+def test_read_volumes_skips_a_row_with_an_empty_qid(tmp_path: Path) -> None:
+    # Consistent with `_load_old` (review fix 2026-10-06, item 2): a row missing a_qid or
+    # b_qid is skipped, not crashed on or counted.
+    path = tmp_path / "comparison-volumes.csv"
+    write_sheet(
+        path,
+        [
+            {
+                "a_qid": "",
+                "b_qid": "Q25485",
+                "a_sv": "",
+                "b_sv": "Talgoxe",
+                "a_en": "",
+                "b_en": "Great Tit",
+                "sv_queries": "",
+                "en_queries": "",
+                "sv_volume": "500",
+                "en_volume": "300",
+                "aktuell": "ja",
+            },
+            {
+                "a_qid": "Q25404",
+                "b_qid": "",
+                "a_sv": "Blåmes",
+                "b_sv": "",
+                "a_en": "Eurasian Blue Tit",
+                "b_en": "",
+                "sv_queries": "",
+                "en_queries": "",
+                "sv_volume": "500",
+                "en_volume": "300",
+                "aktuell": "ja",
+            },
+        ],
+        COLUMNS,
+    )
+    assert read_volumes(path) == {}
 
 
 # -- write_candidates: orientation and whitespace survive hand editing -----------------

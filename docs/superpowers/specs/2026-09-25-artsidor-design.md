@@ -243,6 +243,8 @@ Utseendet följer fältbokens färger: inget grönt, espresso för mörka ytor, 
 
 Paren sorteras på summan av de svenska volymerna, med den engelska summan som skiljelinje. De 30 bästa får en sida. Ett par där båda summorna är noll får ingen sida. Volymerna sparas i `tools/content-pipeline/review/comparison-volumes.csv`.
 
+**Rättat 2026-10-06 (Task 21-granskningen):** den engelska skiljelinjen är **det högsta enskilda engelska sökvärdet**, inte en summa (matchar R7 i fas 1b-planen). 78 av 180 arter har ett IOC-prefix (Eurasian/Common/Northern/Western/European) som sällan skrivs i en sökruta ("eurasian blue tit vs great tit" läser nära noll i planeraren), så `queries()` mäter upp till sex engelska fraser per par -- de tre ovan plus samma fraser utan prefixet när ett namn har ett -- och skiljelinjen är den högsta av alla uppmätta.
+
 **Innehåll, uppifrån och ned:**
 
 1. Brödsmulor: Birdy › Arter › {A} eller {B}?
