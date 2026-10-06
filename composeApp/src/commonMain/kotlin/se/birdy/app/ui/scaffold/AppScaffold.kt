@@ -23,6 +23,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.LifecycleStartEffect
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavGraphBuilder
@@ -376,7 +377,10 @@ private fun NavGraphBuilder.appDestinations(
             BelowStatusBar {
                 val dailyBird by graph.dailyBirdTracker.state.collectAsState()
                 ArchiveScreen(
-                    viewModel = remember(graph) { graph.archiveViewModel() },
+                    // Scoped to this NavHost entry (release 1.3.0 Task 7g), not a `remember`: the
+                    // entry stays on the back stack while a species profile covers it, so the search
+                    // text, results and scroll position are still there on the way back.
+                    viewModel = viewModel { graph.archiveViewModel() },
                     locale = graph.defaultLocale,
                     onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id.raw)) },
                     onPremiumClick = { navController.navigate(AppRoute.Premium) },
