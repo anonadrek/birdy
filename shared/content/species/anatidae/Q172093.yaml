@@ -90,7 +90,7 @@ image_refs:
   width: 1600
   height: 2400
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Greater white-fronted goose
     (Anser albifrons).jpg
   commons_filename: Greater white-fronted goose (Anser albifrons).jpg
@@ -108,8 +108,7 @@ image_refs:
   width: 1800
   height: 1185
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Greater white-fronted goose
     (Anser albifrons) 2020.jpg
   commons_filename: Greater white-fronted goose (Anser albifrons) 2020.jpg

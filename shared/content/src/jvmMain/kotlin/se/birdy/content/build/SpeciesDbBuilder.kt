@@ -49,6 +49,34 @@ class SpeciesDbBuilder(
                 source.copyTo(target, overwrite = true)
             }
         }
+        pruneUnreferencedImages(items, targetImageRoot)
+    }
+
+    /**
+     * The target folder is the asset pack: a photo removed from the YAML must
+     * leave the app too, not linger from an earlier build (release 1.3.0
+     * dropped maps, eggs and a pamphlet page that had shipped as photos).
+     */
+    private fun pruneUnreferencedImages(
+        items: List<Pair<Path, SpeciesYaml>>,
+        targetImageRoot: Path,
+    ) {
+        val referenced = items.flatMap { (_, yaml) -> yaml.image_refs.map { it.path } }.toSet()
+        val files =
+            Files.walk(targetImageRoot).use { stream ->
+                stream.filter { Files.isRegularFile(it) && !isDesktopJunk(it) }.toList()
+            }
+        for (file in files) {
+            if (targetImageRoot.relativize(file).joinToString("/") !in referenced) Files.delete(file)
+        }
+        val dirs =
+            Files.walk(targetImageRoot).use { stream ->
+                stream.filter { Files.isDirectory(it) && it != targetImageRoot }.toList()
+            }
+        for (dir in dirs.sortedByDescending { it.nameCount }) {
+            val empty = Files.list(dir).use { !it.findAny().isPresent }
+            if (empty) Files.delete(dir)
+        }
     }
 
     private fun insertSpecies(

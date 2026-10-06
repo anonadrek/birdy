@@ -102,8 +102,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Stephan_Sprinz" title="User:Stephan
-    Sprinz">Stephan Sprinz</a>
+  author: Stephan Sprinz
   source_url: https://commons.wikimedia.org/wiki/File:Kleiber (Sitta europaea) im
     Garten.jpg
   commons_filename: Kleiber (Sitta europaea) im Garten.jpg
@@ -112,8 +111,7 @@ image_refs:
   width: 1350
   height: 1800
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Mr._Lv%C3%AD%C4%8D%C3%A1tko"
-    title="User:Mr. Lvíčátko">Mr. Lvíčátko</a>
+  author: Mr. Lvíčátko
   source_url: https://commons.wikimedia.org/wiki/File:Sitta europaea building nest.jpg
   commons_filename: Sitta europaea building nest.jpg
 - role: secondary
@@ -121,8 +119,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
-    legg</a>
+  author: caroline legg
   source_url: https://commons.wikimedia.org/wiki/File:Nuthatch - Sitta europaea (50408619696).jpg
   commons_filename: Nuthatch - Sitta europaea (50408619696).jpg
 review_status: approved

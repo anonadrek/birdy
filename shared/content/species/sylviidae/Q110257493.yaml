@@ -59,20 +59,17 @@ image_refs:
 - role: hero
   path: Q110257493/hero.webp
   width: 2400
-  height: 1800
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:YedidyaPopper&amp;action=edit&amp;redlink=1"
-    class="new" title="User:YedidyaPopper (page does not exist)">YedidyaPopper</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Twitching an African desert
-    warbler (Curruca deserti) in Israel.jpg
-  commons_filename: Twitching an African desert warbler (Curruca deserti) in Israel.jpg
+  height: 1600
+  license: CC BY-SA 4.0
+  author: El Golli Mohamed
+  source_url: https://commons.wikimedia.org/wiki/File:Fauvette du désert Jebil NP.jpg
+  commons_filename: Fauvette du désert Jebil NP.jpg
 - role: secondary
   path: Q110257493/secondary-1.webp
   width: 1800
   height: 1199
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:YedidyaPopper&amp;action=edit&amp;redlink=1"
-    class="new" title="User:YedidyaPopper (page does not exist)">YedidyaPopper</a>
+  author: YedidyaPopper
   source_url: https://commons.wikimedia.org/wiki/File:African desert warbler (Curruca
     deserti), Israel.jpg
   commons_filename: African desert warbler (Curruca deserti), Israel.jpg
@@ -81,8 +78,7 @@ image_refs:
   width: 1800
   height: 1477
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">Mourad
-    Harzallah</a>
+  author: Mourad Harzallah
   source_url: https://commons.wikimedia.org/wiki/File:Curruca deserti 200051668.jpg
   commons_filename: Curruca deserti 200051668.jpg
 review_status: auto

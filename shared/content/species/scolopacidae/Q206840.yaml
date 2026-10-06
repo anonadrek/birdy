@@ -100,7 +100,7 @@ image_refs:
   width: 2400
   height: 1600
   license: Public domain
-  author: U.S. Fish &amp; Wildlife Service
+  author: U.S. Fish & Wildlife Service
   source_url: https://commons.wikimedia.org/wiki/File:Phalaropus lobatus.jpg
   commons_filename: Phalaropus lobatus.jpg
 - role: secondary
@@ -108,8 +108,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Christoph_Sager" title="User:Christoph
-    Sager">Christoph Sager</a>
+  author: Christoph Sager
   source_url: https://commons.wikimedia.org/wiki/File:Phalaropus lobatus Cadiz CS01.jpg
   commons_filename: Phalaropus lobatus Cadiz CS01.jpg
 - role: secondary
@@ -117,8 +116,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104269801@N02">Andrew
-    C</a>
+  author: Andrew C
   source_url: https://commons.wikimedia.org/wiki/File:Red-necked Phalarope (Phalaropus
     lobatus) (15202634526).jpg
   commons_filename: Red-necked Phalarope (Phalaropus lobatus) (15202634526).jpg

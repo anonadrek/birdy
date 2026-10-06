@@ -90,7 +90,7 @@ image_refs:
   width: 2400
   height: 1596
   license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Los688" title="User:Los688">Los688</a>
+  author: Los688
   source_url: https://commons.wikimedia.org/wiki/File:Ardea intermedia, Katsushika,
     Tokyo 20080914-01.jpg
   commons_filename: Ardea intermedia, Katsushika, Tokyo 20080914-01.jpg
@@ -99,7 +99,7 @@ image_refs:
   width: 1800
   height: 1197
   license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Los688" title="User:Los688">Los688</a>
+  author: Los688
   source_url: https://commons.wikimedia.org/wiki/File:Ardea intermedia, Katsushika,
     Tokyo 20080914-02.jpg
   commons_filename: Ardea intermedia, Katsushika, Tokyo 20080914-02.jpg
@@ -108,8 +108,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Ardea intermedia (6368102465).jpg
   commons_filename: Ardea intermedia (6368102465).jpg
 review_status: auto

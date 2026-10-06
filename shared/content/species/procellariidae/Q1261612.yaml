@@ -57,8 +57,7 @@ image_refs:
   width: 2048
   height: 1282
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Pterodroma feae deserta 92954534.jpg
   commons_filename: Pterodroma feae deserta 92954534.jpg
 - role: secondary
@@ -66,8 +65,7 @@ image_refs:
   width: 1800
   height: 1126
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Pterodroma feae deserta 92954523.jpg
   commons_filename: Pterodroma feae deserta 92954523.jpg
 review_status: auto

@@ -72,22 +72,21 @@ image_refs:
 - role: hero
   path: Q499568/hero.webp
   width: 2400
-  height: 1600
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Drow_male" title="User:Drow male">Fernando
-    Losada Rodríguez</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Aquila adalberti.001 - Avifauna.jpg
-  commons_filename: Aquila adalberti.001 - Avifauna.jpg
-- role: secondary
-  path: Q499568/secondary-1.webp
-  width: 1800
-  height: 1012
+  height: 1350
   license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Juan_lacruz" class="mw-redirect"
-    title="User:Juan lacruz">Juan Lacruz</a>
+  author: Juan Lacruz
   source_url: https://commons.wikimedia.org/wiki/File:Aquila adalberti 2014-02-08
     2.jpg
   commons_filename: Aquila adalberti 2014-02-08 2.jpg
+- role: secondary
+  path: Q499568/secondary-1.webp
+  width: 1467
+  height: 1100
+  license: CC BY-SA 2.0
+  author: Francesco Veronesi
+  source_url: https://commons.wikimedia.org/wiki/File:Spanish Eagle - Monfrague -
+    Spain 3882 (15340566397).jpg
+  commons_filename: Spanish Eagle - Monfrague - Spain 3882 (15340566397).jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-04T12:14:52.949685+00:00'

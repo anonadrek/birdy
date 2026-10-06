@@ -96,19 +96,18 @@ image_refs:
 - role: hero
   path: Q26490/hero.webp
   width: 2400
-  height: 1602
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
-    Nivis</a>
-  source_url: https://commons.wikimedia.org/wiki/File:20210930 Falco tinnunculus.jpg
-  commons_filename: 20210930 Falco tinnunculus.jpg
+  height: 2141
+  license: CC BY-SA 4.0
+  author: Alexey V. Kurochkin
+  source_url: https://commons.wikimedia.org/wiki/File:Common kestrel (Falco tinnunculus)
+    female (IMGP1648r2-DNA).jpg
+  commons_filename: Common kestrel (Falco tinnunculus) female (IMGP1648r2-DNA).jpg
 - role: secondary
   path: Q26490/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
-    Lours">Alexis Lours</a>
+  author: Alexis Lours
   source_url: https://commons.wikimedia.org/wiki/File:Falco tinnunculus 2022 04 17.jpg
   commons_filename: Falco tinnunculus 2022 04 17.jpg
 - role: secondary
@@ -116,12 +115,15 @@ image_refs:
   width: 1800
   height: 1800
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
-    Nivis</a>
+  author: Flocci Nivis
   source_url: https://commons.wikimedia.org/wiki/File:20240815 Falco tinnunculus.jpg
   commons_filename: 20240815 Falco tinnunculus.jpg
 review_status: approved
-review_notes: "Hero = Falco tinnunculus foto, matchar art. Tornfalk vanlig SE-häckare i öppna jordbrukslandskap, ofta sittande på stolpar."
+review_notes: 'Hero = Falco tinnunculus foto, matchar art. Tornfalk vanlig SE-häckare i öppna jordbrukslandskap,
+  ofta sittande på stolpar.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T19:00:01.105680+00:00'
 sources:
   wikipedia_sv_revision: '59171082'

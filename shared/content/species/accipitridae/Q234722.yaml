@@ -62,9 +62,7 @@ image_refs:
   width: 2048
   height: 1405
   license: CC BY 3.0
-  author: '<div class="fn value">
-
-    <a rel="nofollow" class="external text" href="https://500px.com/wildmishra">Wildmishra</a></div>'
+  author: Wildmishra
   source_url: https://commons.wikimedia.org/wiki/File:Aquila fasciata taking flight
     (106032339).jpg
   commons_filename: Aquila fasciata taking flight (106032339).jpg
@@ -73,9 +71,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Leonardo_FL&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Leonardo FL (page does not exist)">Leonardo Fernández
-    Lázaro</a>
+  author: Leonardo Fernández Lázaro
   source_url: https://commons.wikimedia.org/wiki/File:Aquila fasciata.JPG
   commons_filename: Aquila fasciata.JPG
 - role: secondary
@@ -83,8 +79,7 @@ image_refs:
   width: 1800
   height: 673
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Bonelli's eagle (Aquila fasciata)
     mating composite.jpg
   commons_filename: Bonelli's eagle (Aquila fasciata) mating composite.jpg

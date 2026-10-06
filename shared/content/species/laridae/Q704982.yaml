@@ -94,7 +94,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Yellow-legged gull (Larus michahellis
     ), Algarve.jpg
   commons_filename: Yellow-legged gull (Larus michahellis ), Algarve.jpg
@@ -103,7 +103,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Western yellow-legged gull (Larus
     michahellis), juvenile.jpg
   commons_filename: Western yellow-legged gull (Larus michahellis), juvenile.jpg
@@ -112,8 +112,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
-    Lours">Alexis Lours</a>
+  author: Alexis Lours
   source_url: https://commons.wikimedia.org/wiki/File:Juvenile Yellow-legged Gull
     (Larus michahellis).jpg
   commons_filename: Juvenile Yellow-legged Gull (Larus michahellis).jpg

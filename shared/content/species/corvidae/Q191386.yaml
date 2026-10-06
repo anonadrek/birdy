@@ -88,19 +88,17 @@ image_refs:
 - role: hero
   path: Q191386/hero.webp
   width: 2400
-  height: 1590
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Vassil" title="User:Vassil">Vassil</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Pyrrhocorax graculus Les Grands
-    Montets 15072015.jpg
-  commons_filename: Pyrrhocorax graculus Les Grands Montets 15072015.jpg
+  height: 1800
+  license: CC BY 4.0
+  author: Rosa-Maria Rinkl
+  source_url: https://commons.wikimedia.org/wiki/File:Alpendohle, Karkopf.jpg
+  commons_filename: Alpendohle, Karkopf.jpg
 - role: secondary
   path: Q191386/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
+  author: Nicolas Weghaupt
   source_url: https://commons.wikimedia.org/wiki/File:Pyrrhocorax graculus (3).JPG
   commons_filename: Pyrrhocorax graculus (3).JPG
 - role: secondary
@@ -108,8 +106,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
+  author: Nicolas Weghaupt
   source_url: https://commons.wikimedia.org/wiki/File:Pyrrhocorax graculus (4).JPG
   commons_filename: Pyrrhocorax graculus (4).JPG
 review_status: auto

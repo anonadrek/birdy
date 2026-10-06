@@ -108,7 +108,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Musicaline" title="User:Musicaline">Musicaline</a>
+  author: Musicaline
   source_url: https://commons.wikimedia.org/wiki/File:Turdus merula 1294.jpg
   commons_filename: Turdus merula 1294.jpg
 - role: secondary
@@ -116,7 +116,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Musicaline" title="User:Musicaline">Musicaline</a>
+  author: Musicaline
   source_url: https://commons.wikimedia.org/wiki/File:Turdus merula 1308.jpg
   commons_filename: Turdus merula 1308.jpg
 - role: secondary
@@ -124,7 +124,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Musicaline" title="User:Musicaline">Musicaline</a>
+  author: Musicaline
   source_url: https://commons.wikimedia.org/wiki/File:Turdus merula 1321.jpg
   commons_filename: Turdus merula 1321.jpg
 review_status: approved

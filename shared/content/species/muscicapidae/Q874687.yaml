@@ -82,8 +82,7 @@ image_refs:
   width: 2048
   height: 1367
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1476120">Jan
-    Ebr</a>
+  author: Jan Ebr
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe monacha 120956079.jpg
   commons_filename: Oenanthe monacha 120956079.jpg
 - role: secondary
@@ -91,8 +90,7 @@ image_refs:
   width: 1800
   height: 1201
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe monacha 93093564.jpg
   commons_filename: Oenanthe monacha 93093564.jpg
 review_status: auto

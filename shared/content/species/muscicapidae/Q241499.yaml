@@ -93,8 +93,7 @@ image_refs:
   width: 2048
   height: 1540
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/3160036">Александр
-    Чегодаев</a>
+  author: Александр Чегодаев
   source_url: https://commons.wikimedia.org/wiki/File:Ficedula parva - Zwergschnäpper
     128458411.jpg
   commons_filename: Ficedula parva - Zwergschnäpper 128458411.jpg
@@ -103,8 +102,7 @@ image_refs:
   width: 1800
   height: 1201
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
-    Kansara</a>
+  author: Parth Kansara
   source_url: https://commons.wikimedia.org/wiki/File:Ficedula parva 233716274.jpg
   commons_filename: Ficedula parva 233716274.jpg
 - role: secondary
@@ -112,7 +110,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:PJeganathan" title="User:PJeganathan">PJeganathan</a>
+  author: PJeganathan
   source_url: https://commons.wikimedia.org/wiki/File:Red-breasted Flycatcher Ficedula
     parva from keoladeo national park JEG3015.jpg
   commons_filename: Red-breasted Flycatcher Ficedula parva from keoladeo national

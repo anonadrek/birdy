@@ -101,9 +101,7 @@ image_refs:
   width: 2400
   height: 1800
   license: Public domain
-  author: '<a href="//commons.wikimedia.org/w/index.php?title=User:Rob_Hille/Rob_Hille&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Rob Hille/Rob Hille (page does not exist)">User: Rob Hille/Rob
-    Hille</a>'
+  author: Rob Hille
   source_url: https://commons.wikimedia.org/wiki/File:Robin - Erithacus rubecula 1.jpg
   commons_filename: Robin - Erithacus rubecula 1.jpg
 - role: secondary
@@ -111,8 +109,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:European robin (Erithacus rubecula)
     2024.jpg
   commons_filename: European robin (Erithacus rubecula) 2024.jpg
@@ -121,7 +118,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Chme82" title="User:Chme82">Chme82</a>
+  author: Chme82
   source_url: https://commons.wikimedia.org/wiki/File:Erithacus rubecula 2026-01-02.jpg
   commons_filename: Erithacus rubecula 2026-01-02.jpg
 review_status: approved

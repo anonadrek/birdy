@@ -72,20 +72,18 @@ image_refs:
 - role: hero
   path: Q749701/hero.webp
   width: 2400
-  height: 1600
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
-    ten Cate</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Rotsklever - western rock nuthatch
-    - Sitta neumayer 06.jpg
-  commons_filename: Rotsklever - western rock nuthatch - Sitta neumayer 06.jpg
+  height: 1603
+  license: CC BY 2.0
+  author: Greg Schechter
+  source_url: https://commons.wikimedia.org/wiki/File:Rock Nuthatch - Flickr - GregTheBusker
+    (1).jpg
+  commons_filename: Rock Nuthatch - Flickr - GregTheBusker (1).jpg
 - role: secondary
   path: Q749701/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
-    ten Cate</a>
+  author: Bouke ten Cate
   source_url: https://commons.wikimedia.org/wiki/File:Rotsklever - western rock nuthatch
     - Sitta neumayer.tif
   commons_filename: Rotsklever - western rock nuthatch - Sitta neumayer.tif
@@ -94,8 +92,7 @@ image_refs:
   width: 1800
   height: 1294
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
-    ten Cate</a>
+  author: Bouke ten Cate
   source_url: https://commons.wikimedia.org/wiki/File:Rotsklever - western rock nuthatch
     - Sitta neumayer 02.tif
   commons_filename: Rotsklever - western rock nuthatch - Sitta neumayer 02.tif

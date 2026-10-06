@@ -103,32 +103,25 @@ image_refs:
   width: 2400
   height: 1625
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Sanjeev_Kumar_Goyal&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Sanjeev Kumar Goyal (page does not exist)">Sanjeev Kumar
-    Goyal</a>
+  author: Sanjeev Kumar Goyal
   source_url: https://commons.wikimedia.org/wiki/File:Sociable Lapwing(Vanellus gregarius).jpg
   commons_filename: Sociable Lapwing(Vanellus gregarius).jpg
 - role: secondary
   path: Q279307/secondary-1.webp
   width: 1800
-  height: 1189
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:The_Great_Mule_of_Eupatoria&amp;action=edit&amp;redlink=1"
-    class="new" title="User:The Great Mule of Eupatoria (page does not exist)">The
-    Great Mule of Eupatoria</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Vanellus gregarius range map
-    2.png
-  commons_filename: Vanellus gregarius range map 2.png
+  height: 1178
+  license: CC BY-SA 3.0
+  author: Dûrzan
+  source_url: https://commons.wikimedia.org/wiki/File:Pîwîya bikil.jpg
+  commons_filename: Pîwîya bikil.jpg
 - role: secondary
   path: Q279307/secondary-2.webp
-  width: 1800
-  height: 1350
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:The_Great_Mule_of_Eupatoria&amp;action=edit&amp;redlink=1"
-    class="new" title="User:The Great Mule of Eupatoria (page does not exist)">The
-    Great Mule of Eupatoria</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Vanellus gregarius range map.png
-  commons_filename: Vanellus gregarius range map.png
+  width: 1260
+  height: 945
+  license: CC BY-SA 2.0
+  author: Alastair Rae
+  source_url: https://commons.wikimedia.org/wiki/File:Sociable Lapwing.jpg
+  commons_filename: Sociable Lapwing.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-07T23:57:33.715849+00:00'

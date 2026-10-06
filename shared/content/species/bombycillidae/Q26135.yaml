@@ -103,8 +103,7 @@ image_refs:
   width: 2400
   height: 2237
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:%D0%90%D0%B8%D0%BC%D0%B0%D0%B8%D0%BD%D0%B0_%D1%85%D0%B8%D0%BA%D0%B0%D1%80%D0%B8"
-    title="User:Аимаина хикари">Аимаина хикари</a>
+  author: Аимаина хикари
   source_url: https://commons.wikimedia.org/wiki/File:Bombycilla garrulus Kiev1.jpg
   commons_filename: Bombycilla garrulus Kiev1.jpg
 - role: secondary
@@ -112,8 +111,7 @@ image_refs:
   width: 1800
   height: 1348
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:%D0%90%D0%B8%D0%BC%D0%B0%D0%B8%D0%BD%D0%B0_%D1%85%D0%B8%D0%BA%D0%B0%D1%80%D0%B8"
-    title="User:Аимаина хикари">Аимаина хикари</a>
+  author: Аимаина хикари
   source_url: https://commons.wikimedia.org/wiki/File:Bombycilla garrulus Kiev3.jpg
   commons_filename: Bombycilla garrulus Kiev3.jpg
 - role: secondary
@@ -121,8 +119,7 @@ image_refs:
   width: 1800
   height: 1448
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:%D0%90%D0%B8%D0%BC%D0%B0%D0%B8%D0%BD%D0%B0_%D1%85%D0%B8%D0%BA%D0%B0%D1%80%D0%B8"
-    title="User:Аимаина хикари">Аимаина хикари</a>
+  author: Аимаина хикари
   source_url: https://commons.wikimedia.org/wiki/File:Bombycilla garrulus Kiev6.jpg
   commons_filename: Bombycilla garrulus Kiev6.jpg
 review_status: approved

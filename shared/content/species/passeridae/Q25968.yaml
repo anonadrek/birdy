@@ -97,22 +97,18 @@ migration:
 image_refs:
 - role: hero
   path: Q25968/hero.webp
-  width: 2400
-  height: 1800
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:JFVelasquez_Floro" title="User:JFVelasquez
-    Floro">JFVelasquez Floro</a>
-  source_url: https://commons.wikimedia.org/wiki/File:9729Close-up photographs of
-    Passer montanus in the Philippines 02.jpg
-  commons_filename: 9729Close-up photographs of Passer montanus in the Philippines
-    02.jpg
+  width: 2048
+  height: 2048
+  license: CC BY 2.0
+  author: Mike Prince
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian Tree Sparrow (14181664512).jpg
+  commons_filename: Eurasian Tree Sparrow (14181664512).jpg
 - role: secondary
   path: Q25968/secondary-1.webp
   width: 1800
   height: 1178
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/36381291@N04">Joe
-    Pell</a>
+  author: Joe Pell
   source_url: https://commons.wikimedia.org/wiki/File:Passer montanus (7).jpg
   commons_filename: Passer montanus (7).jpg
 - role: secondary
@@ -120,12 +116,15 @@ image_refs:
   width: 1800
   height: 1086
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/36381291@N04">Joe
-    Pell</a>
+  author: Joe Pell
   source_url: https://commons.wikimedia.org/wiki/File:Passer montanus (8), Lincolnshire.jpg
   commons_filename: Passer montanus (8), Lincolnshire.jpg
 review_status: approved
-review_notes: "Hero = Passer montanus (Eurasian Tree Sparrow / Pilfink); allmän vid byggnader och trädgårdar i hela SE."
+review_notes: 'Hero = Passer montanus (Eurasian Tree Sparrow / Pilfink); allmän vid byggnader och trädgårdar
+  i hela SE.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T21:28:34.993877+00:00'
 sources:
   wikipedia_sv_revision: '58649491'

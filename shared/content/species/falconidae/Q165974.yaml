@@ -93,8 +93,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/stuutje/">Tim
-    Sträter</a>
+  author: Tim Sträter
   source_url: https://commons.wikimedia.org/wiki/File:Falco cherrug aka Sakervalk.jpg
   commons_filename: Falco cherrug aka Sakervalk.jpg
 - role: secondary
@@ -102,8 +101,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/stuutje/">Tim
-    Sträter</a>
+  author: Tim Sträter
   source_url: https://commons.wikimedia.org/wiki/File:Saker Falcon (Falco cherrug)
     image.jpg
   commons_filename: Saker Falcon (Falco cherrug) image.jpg
@@ -112,7 +110,7 @@ image_refs:
   width: 1281
   height: 1800
   license: CC BY 2.0
-  author: Flickr user <a rel="nofollow" class="external text" href="https://www.flickr.com/people/q6r/">Qatari</a>
+  author: Flickr user Qatari
   source_url: https://commons.wikimedia.org/wiki/File:Falco cherrug Qatar.jpg
   commons_filename: Falco cherrug Qatar.jpg
 review_status: auto

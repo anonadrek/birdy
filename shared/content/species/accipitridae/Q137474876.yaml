@@ -96,8 +96,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/101181388@N07">Jevgenijs
-    Slihto</a> from Riga, Latvia
+  author: Jevgenijs Slihto
   source_url: https://commons.wikimedia.org/wiki/File:Accipiter gentilis, Kronvalda
     Park, Riga, Latvia.jpg
   commons_filename: Accipiter gentilis, Kronvalda Park, Riga, Latvia.jpg
@@ -106,8 +105,7 @@ image_refs:
   width: 1563
   height: 1800
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2124083">Олег
-    Юмашев</a>
+  author: Олег Юмашев
   source_url: https://commons.wikimedia.org/wiki/File:Accipiter gentilis 250245803.jpg
   commons_filename: Accipiter gentilis 250245803.jpg
 - role: secondary
@@ -115,7 +113,7 @@ image_refs:
   width: 1440
   height: 1800
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/6284859">Рамзан</a>
+  author: Рамзан
   source_url: https://commons.wikimedia.org/wiki/File:Accipiter gentilis 248241022.jpg
   commons_filename: Accipiter gentilis 248241022.jpg
 review_status: auto

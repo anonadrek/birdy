@@ -98,32 +98,26 @@ migration:
 image_refs:
 - role: hero
   path: Q170466/hero.webp
-  width: 1601
-  height: 2400
-  license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Retired_electrician&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Retired electrician (page does not exist)">Retired electrician</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Moscow, Beloboka-2025 fundraiser
-    fair 2025-12-20, Pernis apivorus.jpg
-  commons_filename: Moscow, Beloboka-2025 fundraiser fair 2025-12-20, Pernis apivorus.jpg
+  width: 2400
+  height: 1920
+  license: CC BY 2.0
+  author: Andy Morffew
+  source_url: https://commons.wikimedia.org/wiki/File:Honey Buzzard (53927091886).jpg
+  commons_filename: Honey Buzzard (53927091886).jpg
 - role: secondary
   path: Q170466/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Pernis apivorus, Bresničićka
-    slatina.jpg
-  commons_filename: Pernis apivorus, Bresničićka slatina.jpg
+  author: Ralf Hüsges
+  source_url: https://commons.wikimedia.org/wiki/File:Wespenbussard Pernis apivorus.jpg
+  commons_filename: Wespenbussard Pernis apivorus.jpg
 - role: secondary
   path: Q170466/secondary-2.webp
   width: 1800
   height: 1197
   license: CC BY 3.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Accipiter&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Accipiter (page does not exist)">Accipiter</a> (Rainer
-    Altenkamp, Berlin)
+  author: Accipiter (Rainer Altenkamp, Berlin)
   source_url: https://commons.wikimedia.org/wiki/File:Pernis apivorus i080515 w ad
     080519.jpg
   commons_filename: Pernis apivorus i080515 w ad 080519.jpg

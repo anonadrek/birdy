@@ -66,21 +66,18 @@ migration:
 image_refs:
 - role: hero
   path: Q928415/hero.webp
-  width: 1536
-  height: 2048
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/32005048@N06">Arthur
-    Chapman</a> from Australia
-  source_url: https://commons.wikimedia.org/wiki/File:Eastern Rock Nuthatch nest (Sitta
-    tephronota.jpg
-  commons_filename: Eastern Rock Nuthatch nest (Sitta tephronota.jpg
+  width: 2400
+  height: 1590
+  license: CC0
+  author: Dûrzan
+  source_url: https://commons.wikimedia.org/wiki/File:Berkuteyê girs.jpg
+  commons_filename: Berkuteyê girs.jpg
 - role: secondary
   path: Q928415/secondary-1.webp
   width: 1800
   height: 1137
   license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:D%C3%BBrzan_c%C3%AErano" title="User:Dûrzan
-    cîrano">Dûrzan cîrano</a>
+  author: Dûrzan cîrano
   source_url: https://commons.wikimedia.org/wiki/File:Sitta tephronota (2).jpg
   commons_filename: Sitta tephronota (2).jpg
 review_status: auto

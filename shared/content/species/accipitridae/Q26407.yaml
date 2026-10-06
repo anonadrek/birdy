@@ -72,8 +72,7 @@ image_refs:
   width: 2400
   height: 1601
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/70957937@N00">David
-    A Mitchell</a> from Calgary, Canada
+  author: David A Mitchell
   source_url: https://commons.wikimedia.org/wiki/File:Buteo lagopus (45356696964).jpg
   commons_filename: Buteo lagopus (45356696964).jpg
 - role: secondary
@@ -81,8 +80,7 @@ image_refs:
   width: 1800
   height: 1199
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/70957937@N00">David
-    A Mitchell</a> from Calgary, Canada
+  author: David A Mitchell
   source_url: https://commons.wikimedia.org/wiki/File:Buteo lagopus (46030903972).jpg
   commons_filename: Buteo lagopus (46030903972).jpg
 - role: secondary
@@ -90,8 +88,7 @@ image_refs:
   width: 1800
   height: 1199
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/70957937@N00">David
-    A Mitchell</a> from Calgary, Canada
+  author: David A Mitchell
   source_url: https://commons.wikimedia.org/wiki/File:Buteo lagopus (45356682994).jpg
   commons_filename: Buteo lagopus (45356682994).jpg
 review_status: approved

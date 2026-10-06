@@ -110,7 +110,7 @@ image_refs:
   width: 2400
   height: 1596
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Water rail (Rallus aquaticus).jpg
   commons_filename: Water rail (Rallus aquaticus).jpg
 - role: secondary
@@ -118,8 +118,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/119630347@N06">keith
-    gallie</a> from Warrington, UK
+  author: keith gallie
   source_url: https://commons.wikimedia.org/wiki/File:Water rail Rallus aquaticus
     (37337411980).jpg
   commons_filename: Water rail Rallus aquaticus (37337411980).jpg
@@ -128,8 +127,7 @@ image_refs:
   width: 1800
   height: 1287
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Rallus aquaticus. Water Rail
     (33187617930).jpg
   commons_filename: Rallus aquaticus. Water Rail (33187617930).jpg

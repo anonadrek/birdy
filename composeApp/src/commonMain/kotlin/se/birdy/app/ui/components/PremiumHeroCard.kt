@@ -36,6 +36,7 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.AccentCopperLight
+import se.birdy.app.ui.theme.PhotoScrim
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
@@ -46,10 +47,10 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
 // white backdrop under the scrim, the brightest the photo or the glow's peak can make it.
 // Review fix I2: the scrim is neutral black, not moss (Albin 2026-10-06: green over the bird takes
 // away from it), at the lightest alpha that keeps every line at 4.5:1 (apricot ≈ 4.6:1 at 0.70).
-// Same value as PhotoScrim on feature/1.3-foto-klar; switch to that token once it is merged here.
+// Uses the shared PhotoScrim token (neutral only over bird photos).
 internal const val PREMIUM_HERO_TEXT_SCRIM_ALPHA = 0.70f
 internal const val PREMIUM_HERO_SUBLINE_ALPHA = 0.9f
-internal val PremiumHeroScrimColor = Color.Black
+internal val PremiumHeroScrimColor = PhotoScrim
 internal val PremiumHeroTextColor = TextOnHero
 internal val PremiumHeroAccentColor = AccentCopperLight
 

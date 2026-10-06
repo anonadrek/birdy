@@ -68,7 +68,7 @@ image_refs:
   width: 2400
   height: 1596
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Redshank (Tringa totanus).jpg
   commons_filename: Redshank (Tringa totanus).jpg
 - role: secondary
@@ -76,7 +76,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/185252831@N05">HLI-Photography</a>
+  author: HLI-Photography
   source_url: https://commons.wikimedia.org/wiki/File:Rotschenkel (Tringa totanus)
     (53633851007).jpg
   commons_filename: Rotschenkel (Tringa totanus) (53633851007).jpg
@@ -85,7 +85,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  author: Afsarnayakkan
   source_url: https://commons.wikimedia.org/wiki/File:Common redshank 6 (Tringa totanus)
     ചോരക്കാലി .jpg
   commons_filename: Common redshank 6 (Tringa totanus) ചോരക്കാലി .jpg

@@ -88,7 +88,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:0x010C" title="User:0x010C">0x010C</a>
+  author: '0x010C'
   source_url: https://commons.wikimedia.org/wiki/File:2016-09 zoo sauvage de Saint-Félicien
     - Grus virgo 03.jpg
   commons_filename: 2016-09 zoo sauvage de Saint-Félicien - Grus virgo 03.jpg
@@ -97,7 +97,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:FakirNL" title="User:FakirNL">FakirNL</a>
+  author: FakirNL
   source_url: https://commons.wikimedia.org/wiki/File:Grus virgo in Dierenpark Zie-ZOO.jpg
   commons_filename: Grus virgo in Dierenpark Zie-ZOO.jpg
 - role: secondary
@@ -105,7 +105,7 @@ image_refs:
   width: 1800
   height: 1301
   license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Llez" title="User:Llez">H. Zell</a>
+  author: H. Zell
   source_url: https://commons.wikimedia.org/wiki/File:Grus virgo - Vogelpark Steinen
     01.jpg
   commons_filename: Grus virgo - Vogelpark Steinen 01.jpg

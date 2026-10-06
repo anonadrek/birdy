@@ -105,33 +105,30 @@ image_refs:
   path: Q25404/hero.webp
   width: 2400
   height: 1800
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jojovavasasa" title="User:Jojovavasasa">Jojovavasasa</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Blue Tit (Cyanistes caeruleus)
-    on bird feeder 06.jpg
-  commons_filename: Blue Tit (Cyanistes caeruleus) on bird feeder 06.jpg
+  license: CC BY 2.0
+  author: Kathy Büscher
+  source_url: https://commons.wikimedia.org/wiki/File:Blaumeise (64) (34633517080).jpg
+  commons_filename: Blaumeise (64) (34633517080).jpg
 - role: secondary
   path: Q25404/secondary-1.webp
   width: 1800
-  height: 1200
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
-    Taÿ Pamart</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Cyanistes caeruleus ringing
-    SPOL mangeoire 20250220 n03.jpg
-  commons_filename: Cyanistes caeruleus ringing SPOL mangeoire 20250220 n03.jpg
+  height: 1350
+  license: CC BY 2.0
+  author: Kathy Büscher
+  source_url: https://commons.wikimedia.org/wiki/File:Blaumeise (67) (35020838535).jpg
+  commons_filename: Blaumeise (67) (35020838535).jpg
 - role: secondary
   path: Q25404/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
-    Lours">Alexis Lours</a>
+  author: Alexis Lours
   source_url: https://commons.wikimedia.org/wiki/File:Cyanistes caeruleus 2022 03
     18 01.jpg
   commons_filename: Cyanistes caeruleus 2022 03 18 01.jpg
 review_status: approved
-review_notes: ''
+review_notes: '2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller
+  tidigare bilder.'
 generated_at: '2026-05-03T21:30:18.779472+00:00'
 sources:
   wikipedia_sv_revision: '59235443'

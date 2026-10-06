@@ -96,7 +96,7 @@ image_refs:
   width: 2400
   height: 1375
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Apinanaivot" title="User:Apinanaivot">Apinanaivot</a>
+  author: Apinanaivot
   source_url: https://commons.wikimedia.org/wiki/File:Falco vespertinus on a cable.png
   commons_filename: Falco vespertinus on a cable.png
 - role: secondary
@@ -104,8 +104,7 @@ image_refs:
   width: 1800
   height: 1068
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Red-footed falcon (Falco vespertinus)
     2020.jpg
   commons_filename: Red-footed falcon (Falco vespertinus) 2020.jpg
@@ -114,8 +113,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/60740813@N04">Michele
-    Lamberti</a>
+  author: Michele Lamberti
   source_url: https://commons.wikimedia.org/wiki/File:Falco vespertinus Falco cuculo.jpg
   commons_filename: Falco vespertinus Falco cuculo.jpg
 review_status: auto

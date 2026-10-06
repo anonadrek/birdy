@@ -58,8 +58,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
-  author: <a rel="nofollow" class="external text" href="http://photo-natur.de">Andreas
-    Trepte</a>
+  author: Andreas Trepte
   source_url: https://commons.wikimedia.org/wiki/File:Pterocles orientalis in flight.jpg
   commons_filename: Pterocles orientalis in flight.jpg
 - role: secondary
@@ -67,8 +66,7 @@ image_refs:
   width: 1800
   height: 1201
   license: CC BY-SA 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/628259">Kudaibergen
-    Amirekul</a>
+  author: Kudaibergen Amirekul
   source_url: https://commons.wikimedia.org/wiki/File:Pterocles orientalis 160906512.jpg
   commons_filename: Pterocles orientalis 160906512.jpg
 - role: secondary
@@ -76,8 +74,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/628259">Kudaibergen
-    Amirekul</a>
+  author: Kudaibergen Amirekul
   source_url: https://commons.wikimedia.org/wiki/File:Pterocles orientalis arenarius
     304552958.jpg
   commons_filename: Pterocles orientalis arenarius 304552958.jpg

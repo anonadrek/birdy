@@ -89,7 +89,7 @@ image_refs:
   width: 2400
   height: 1602
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Northern fulmar (Fulmarus glacialis)
     in flight.jpg
   commons_filename: Northern fulmar (Fulmarus glacialis) in flight.jpg
@@ -98,8 +98,7 @@ image_refs:
   width: 1800
   height: 1250
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
-    legg</a>
+  author: caroline legg
   source_url: https://commons.wikimedia.org/wiki/File:Northern Fulmar - Fulmarus glacialis
     (52977897012).jpg
   commons_filename: Northern Fulmar - Fulmarus glacialis (52977897012).jpg
@@ -108,8 +107,7 @@ image_refs:
   width: 1800
   height: 1198
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jakubhal" title="User:Jakubhal">Jakub
-    Hałun</a>
+  author: Jakub Hałun
   source_url: https://commons.wikimedia.org/wiki/File:Fulmarus glacialis near Hvítserkur
     Sea Stack, Northwestern Region, Iceland, 20240715 1130 1102.jpg
   commons_filename: Fulmarus glacialis near Hvítserkur Sea Stack, Northwestern Region,

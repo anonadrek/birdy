@@ -63,8 +63,7 @@ image_refs:
   width: 2048
   height: 1465
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Corvus rhipidurus 91598565.jpg
   commons_filename: Corvus rhipidurus 91598565.jpg
 - role: secondary
@@ -72,8 +71,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1682329">Claude
-    Kolwelter</a>
+  author: Claude Kolwelter
   source_url: https://commons.wikimedia.org/wiki/File:Corvus rhipidurus 155958810.jpg
   commons_filename: Corvus rhipidurus 155958810.jpg
 - role: secondary
@@ -81,8 +79,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1682329">Claude
-    Kolwelter</a>
+  author: Claude Kolwelter
   source_url: https://commons.wikimedia.org/wiki/File:Corvus rhipidurus 155958862.jpg
   commons_filename: Corvus rhipidurus 155958862.jpg
 review_status: auto

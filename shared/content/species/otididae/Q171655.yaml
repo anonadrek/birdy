@@ -104,8 +104,7 @@ image_refs:
   width: 2400
   height: 1443
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
+  author: Nicolas Weghaupt
   source_url: https://commons.wikimedia.org/wiki/File:Otis tarda 01.jpg
   commons_filename: Otis tarda 01.jpg
 - role: secondary
@@ -113,8 +112,7 @@ image_refs:
   width: 1800
   height: 636
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
+  author: Nicolas Weghaupt
   source_url: https://commons.wikimedia.org/wiki/File:Otis tarda flight.jpg
   commons_filename: Otis tarda flight.jpg
 - role: secondary
@@ -122,8 +120,7 @@ image_refs:
   width: 1800
   height: 1166
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
+  author: Nicolas Weghaupt
   source_url: https://commons.wikimedia.org/wiki/File:Otis tarda 02.jpg
   commons_filename: Otis tarda 02.jpg
 review_status: auto

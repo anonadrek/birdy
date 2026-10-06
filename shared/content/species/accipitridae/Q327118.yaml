@@ -95,29 +95,25 @@ image_refs:
   width: 1604
   height: 2400
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Ravi.sangeetha&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Ravi.sangeetha (page does not exist)">Ravi.sangeetha</a>
+  author: Ravi.sangeetha
   source_url: https://commons.wikimedia.org/wiki/File:Gyps bengalensis by Ravi Sangeetha
     (cropped).jpg
   commons_filename: Gyps bengalensis by Ravi Sangeetha (cropped).jpg
 - role: secondary
   path: Q327118/secondary-1.webp
   width: 1800
-  height: 1182
-  license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
-    DUPONT</a> from FRANCE
-  source_url: https://commons.wikimedia.org/wiki/File:Me and Indian White-backed Vultures
-    (Gyps bengalensis) - you can get very close when they eat ... (20012612580).jpg
-  commons_filename: Me and Indian White-backed Vultures (Gyps bengalensis) - you can
-    get very close when they eat ... (20012612580).jpg
+  height: 1012
+  license: CC BY-SA 4.0
+  author: Prasan Shrestha
+  source_url: https://commons.wikimedia.org/wiki/File:White rumped vulture flexing
+    its wings.jpg
+  commons_filename: White rumped vulture flexing its wings.jpg
 - role: secondary
   path: Q327118/secondary-2.webp
   width: 1800
   height: 1235
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
-    DUPONT</a> from FRANCE
+  author: Bernard DUPONT
   source_url: https://commons.wikimedia.org/wiki/File:Indian White-backed Vultures
     (Gyps bengalensis) feeding on a dead cow (19579562073).jpg
   commons_filename: Indian White-backed Vultures (Gyps bengalensis) feeding on a dead

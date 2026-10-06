@@ -93,14 +93,16 @@ image_refs:
   path: Q27674/hero.webp
   width: 2400
   height: 1800
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Nikola_Veljkovi%C4%87&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Nikola Veljković (page does not exist)">Nikola Veljković</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Žuti voljić (Hippolais icterina)
-    Icterine Warbler.jpg
-  commons_filename: Žuti voljić (Hippolais icterina) Icterine Warbler.jpg
+  license: CC BY 2.0
+  author: Jevgenijs Slihto
+  source_url: https://commons.wikimedia.org/wiki/File:Hippolais icterina, Riga, Latvia
+    1.jpg
+  commons_filename: Hippolais icterina, Riga, Latvia 1.jpg
 review_status: approved
-review_notes: Hero approved 2026-05-04 via hero_review HTML.
+review_notes: 'Hero approved 2026-05-04 via hero_review HTML.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-04T12:39:28.779840+00:00'
 sources:
   wikipedia_sv_revision: '58889842'

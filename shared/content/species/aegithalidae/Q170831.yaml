@@ -102,8 +102,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Membeth&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Membeth (page does not exist)">Membeth</a>
+  author: Membeth
   source_url: https://commons.wikimedia.org/wiki/File:Parks.Range.Aegithalos.caudatus.caudatus.jpg
   commons_filename: Parks.Range.Aegithalos.caudatus.caudatus.jpg
 - role: secondary
@@ -111,8 +110,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
-    Lours">Alexis Lours</a>
+  author: Alexis Lours
   source_url: https://commons.wikimedia.org/wiki/File:Long-tailed tit (Aegithalos
     caudatus) on a twig.jpg
   commons_filename: Long-tailed tit (Aegithalos caudatus) on a twig.jpg

@@ -97,8 +97,7 @@ image_refs:
   width: 2048
   height: 1536
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/5080645">Ollie
-    Davis</a>
+  author: Ollie Davis
   source_url: https://commons.wikimedia.org/wiki/File:Ichthyaetus melanocephalus 467454654.jpg
   commons_filename: Ichthyaetus melanocephalus 467454654.jpg
 - role: secondary
@@ -106,7 +105,7 @@ image_refs:
   width: 1800
   height: 1273
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/stonescottages">stonescottages</a>
+  author: stonescottages
   source_url: https://commons.wikimedia.org/wiki/File:Ichthyaetus melanocephalus,
     Fishguard, Pembrokeshire, Wales 2.jpg
   commons_filename: Ichthyaetus melanocephalus, Fishguard, Pembrokeshire, Wales 2.jpg
@@ -115,7 +114,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/alexis_lours">alexis_lours</a>
+  author: Alexis Lours
   source_url: https://commons.wikimedia.org/wiki/File:Ichthyaetus melanocephalus,
     Gennevilliers, Paris, France 1.jpg
   commons_filename: Ichthyaetus melanocephalus, Gennevilliers, Paris, France 1.jpg

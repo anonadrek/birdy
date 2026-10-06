@@ -98,8 +98,7 @@ image_refs:
   width: 2400
   height: 1549
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
+  author: Nicolas Weghaupt
   source_url: https://commons.wikimedia.org/wiki/File:Emberiza calandra singing.jpg
   commons_filename: Emberiza calandra singing.jpg
 - role: secondary
@@ -107,7 +106,7 @@ image_refs:
   width: 1800
   height: 1197
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Corn bunting (Emberiza calandra).jpg
   commons_filename: Corn bunting (Emberiza calandra).jpg
 - role: secondary
@@ -115,8 +114,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
-    ten Cate</a>
+  author: Bouke ten Cate
   source_url: https://commons.wikimedia.org/wiki/File:Grauwe gors - corn bunting -
     Emberiza calandra.jpg
   commons_filename: Grauwe gors - corn bunting - Emberiza calandra.jpg

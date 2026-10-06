@@ -103,8 +103,7 @@ image_refs:
   width: 2048
   height: 1281
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Cyanistes teneriffae teneriffae
     184052669.jpg
   commons_filename: Cyanistes teneriffae teneriffae 184052669.jpg
@@ -113,26 +112,25 @@ image_refs:
   width: 1800
   height: 1125
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Cyanistes teneriffae teneriffae
     184052632.jpg
   commons_filename: Cyanistes teneriffae teneriffae 184052632.jpg
 - role: secondary
   path: Q10546857/secondary-2.webp
   width: 1800
-  height: 1513
-  license: CC BY-SA 3.0
-  author: '<div class="fn value">
-
-    <a href="//commons.wikimedia.org/wiki/User:Archaeodontosaurus" title="User:Archaeodontosaurus">Didier
-    Descouens</a></div>'
-  source_url: https://commons.wikimedia.org/wiki/File:Cyanistes teneriffae ultramarinus
-    (Bonaparte, 1841) 323 Aïn-Chénia, El Aouinet Algérie.jpg
-  commons_filename: Cyanistes teneriffae ultramarinus (Bonaparte, 1841) 323 Aïn-Chénia,
-    El Aouinet Algérie.jpg
+  height: 1336
+  license: CC BY-SA 2.0
+  author: Juan Emilio
+  source_url: https://commons.wikimedia.org/wiki/File:Cyanistes teneriffae hedwigae
+    -Gran Canaria, Canary Islands, Spain-8.jpg
+  commons_filename: Cyanistes teneriffae hedwigae -Gran Canaria, Canary Islands, Spain-8.jpg
 review_status: approved
-review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons hero, no manual review checkpoint'
+review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons
+  hero, no manual review checkpoint
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-04T10:01:19.852102+00:00'
 sources:
   wikipedia_sv_revision: '56586268'

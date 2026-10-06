@@ -41,8 +41,7 @@ image_refs:
   width: 1536
   height: 2048
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2401694">William
-    Stephens</a>
+  author: William Stephens
   source_url: https://commons.wikimedia.org/wiki/File:Picus vaillantii 239307829.jpg
   commons_filename: Picus vaillantii 239307829.jpg
 - role: secondary
@@ -50,8 +49,7 @@ image_refs:
   width: 1800
   height: 1201
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Picus vaillantii 97480721.jpg
   commons_filename: Picus vaillantii 97480721.jpg
 - role: secondary
@@ -59,8 +57,7 @@ image_refs:
   width: 1800
   height: 1126
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Picus vaillantii 97481098.jpg
   commons_filename: Picus vaillantii 97481098.jpg
 review_status: auto

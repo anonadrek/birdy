@@ -71,29 +71,24 @@ image_refs:
   path: Q753746/hero.webp
   width: 2400
   height: 1800
-  license: Public domain
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Rudolph.A.furtado&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Rudolph.A.furtado (page does not exist)">Rudolph.A.furtado</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Psittacula eupatria -pet in
-    Mumbai-4c.jpg
-  commons_filename: Psittacula eupatria -pet in Mumbai-4c.jpg
+  license: CC BY 4.0
+  author: Ralf Hüsges
+  source_url: https://commons.wikimedia.org/wiki/File:Psittacula eupatria - Im Ruhrgebiet.jpg
+  commons_filename: Psittacula eupatria - Im Ruhrgebiet.jpg
 - role: secondary
   path: Q753746/secondary-1.webp
   width: 1800
-  height: 1350
-  license: Public domain
-  author: Rudolph.A.Furtado
-  source_url: https://commons.wikimedia.org/wiki/File:Psittacula eupatria -pet with
-    Rudolph A. Furtado-4a.jpg
-  commons_filename: Psittacula eupatria -pet with Rudolph A. Furtado-4a.jpg
+  height: 1013
+  license: CC BY 4.0
+  author: Nishant Purushottam Berde
+  source_url: https://commons.wikimedia.org/wiki/File:Psittacula eupatria 381289090.jpg
+  commons_filename: Psittacula eupatria 381289090.jpg
 - role: secondary
   path: Q753746/secondary-2.webp
   width: 1800
   height: 1350
   license: Public domain
-  author: <a href="https://en.wikipedia.org/wiki/User:Akeeq" class="extiw" title="wikipedia:User:Akeeq">Akeeq</a>
-    at <a href="https://en.wikipedia.org/wiki/" class="extiw" title="wikipedia:">English
-    Wikipedia</a>
+  author: Akeeq at English Wikipedia
   source_url: https://commons.wikimedia.org/wiki/File:Psittacula eupatria - 1 year
     old 2.jpg
   commons_filename: Psittacula eupatria - 1 year old 2.jpg

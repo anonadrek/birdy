@@ -87,7 +87,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Chestnut-bellied sandgrouse
     (Pterocles exustus), Kenya.jpg
   commons_filename: Chestnut-bellied sandgrouse (Pterocles exustus), Kenya.jpg
@@ -96,8 +96,7 @@ image_refs:
   width: 1800
   height: 1203
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/474164">Henggang
-    Cui</a>
+  author: Henggang Cui
   source_url: https://commons.wikimedia.org/wiki/File:Pterocles exustus 313966463.jpg
   commons_filename: Pterocles exustus 313966463.jpg
 - role: secondary
@@ -105,8 +104,7 @@ image_refs:
   width: 1800
   height: 1203
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
-    Kansara</a>
+  author: Parth Kansara
   source_url: https://commons.wikimedia.org/wiki/File:Pterocles exustus 156506640.jpg
   commons_filename: Pterocles exustus 156506640.jpg
 review_status: auto

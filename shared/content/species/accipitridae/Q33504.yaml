@@ -95,7 +95,7 @@ image_refs:
   width: 2048
   height: 1739
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/martin_ingemansson">martin_ingemansson</a>
+  author: martin_ingemansson
   source_url: https://commons.wikimedia.org/wiki/File:Egyptian Vulture (Neophron percnopterus),
     Kukës District, Albania 2.jpg
   commons_filename: Egyptian Vulture (Neophron percnopterus), Kukës District, Albania
@@ -105,8 +105,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43423936@N08">Siddhartha
-    Lammata</a> from Bangalore, India
+  author: Siddhartha Lammata
   source_url: https://commons.wikimedia.org/wiki/File:Neophron percnopterus -Indira
     Gandhi Zoological Park, Visakhapatnam, India-8.jpg
   commons_filename: Neophron percnopterus -Indira Gandhi Zoological Park, Visakhapatnam,
@@ -116,8 +115,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Till.niermann" title="User:Till.niermann">Till
-    Niermann</a>
+  author: Till Niermann
   source_url: https://commons.wikimedia.org/wiki/File:Neophron percnopterus Cologne
     Zoo.jpg
   commons_filename: Neophron percnopterus Cologne Zoo.jpg

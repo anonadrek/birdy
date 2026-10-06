@@ -95,8 +95,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Red-throated pipit (Anthus cervinus)
     2022.jpg
   commons_filename: Red-throated pipit (Anthus cervinus) 2022.jpg
@@ -105,8 +104,7 @@ image_refs:
   width: 1350
   height: 1800
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/49296659@N00">Charles
-    Lam</a>
+  author: Charles Lam
   source_url: https://commons.wikimedia.org/wiki/File:Red-throated Pipit (Anthus cervinus).jpg
   commons_filename: Red-throated Pipit (Anthus cervinus).jpg
 - role: secondary
@@ -114,8 +112,7 @@ image_refs:
   width: 1800
   height: 1126
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
-    Cebeci</a>
+  author: Zeynel Cebeci
   source_url: https://commons.wikimedia.org/wiki/File:Anthus cervinus - Red-throated
     Pipit, Adana 2021-03-27 01.jpg
   commons_filename: Anthus cervinus - Red-throated Pipit, Adana 2021-03-27 01.jpg

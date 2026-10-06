@@ -69,20 +69,20 @@ migration:
 image_refs:
 - role: hero
   path: Q675850/hero.webp
-  width: 2048
-  height: 1536
-  license: CC0
-  author: 葉子 ( leaf0605)
-  source_url: https://commons.wikimedia.org/wiki/File:Riparia chinensis from iNaturalist
-    photo 78705413.jpg
-  commons_filename: Riparia chinensis from iNaturalist photo 78705413.jpg
+  width: 2257
+  height: 1486
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:Brown-throated martin, Riparia
+    paludicola, at Marievale Nature Reserve, Gauteng, South Africa. (22683876005).jpg
+  commons_filename: Brown-throated martin, Riparia paludicola, at Marievale Nature
+    Reserve, Gauteng, South Africa. (22683876005).jpg
 - role: secondary
   path: Q675850/secondary-1.webp
   width: 1800
   height: 1156
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
-    Keats</a> from Johannesburg, South Africa
+  author: Derek Keats
   source_url: https://commons.wikimedia.org/wiki/File:Brown-throated martin, Riparia
     paludicola, at Marievale Nature Reserve, Gauteng, South Africa. (22695083881).jpg
   commons_filename: Brown-throated martin, Riparia paludicola, at Marievale Nature
@@ -92,8 +92,7 @@ image_refs:
   width: 1800
   height: 1197
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
-    Keats</a> from Johannesburg, South Africa
+  author: Derek Keats
   source_url: https://commons.wikimedia.org/wiki/File:Brown-throated martin, Riparia
     paludicola, at Marievale Nature Reserve, Gauteng, South Africa. (22683909195).jpg
   commons_filename: Brown-throated martin, Riparia paludicola, at Marievale Nature

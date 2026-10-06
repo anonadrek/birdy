@@ -91,8 +91,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/22541812@N03">Dan
-    Davison</a> from Rochford, England
+  author: Dan Davison
   source_url: https://commons.wikimedia.org/wiki/File:Passer italiae table.jpg
   commons_filename: Passer italiae table.jpg
 - role: secondary
@@ -100,8 +99,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/39415781@N06">Elliott
-    Brown</a> from Birmingham, United Kingdom
+  author: Elliott Brown
   source_url: https://commons.wikimedia.org/wiki/File:Passer italiae Lake Garda.jpg
   commons_filename: Passer italiae Lake Garda.jpg
 - role: secondary
@@ -109,8 +107,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/39415781@N06">Elliott
-    Brown</a> from Birmingham, United Kingdom
+  author: Elliott Brown
   source_url: https://commons.wikimedia.org/wiki/File:Passer italiae Malcesine.jpg
   commons_filename: Passer italiae Malcesine.jpg
 review_status: auto
