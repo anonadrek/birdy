@@ -67,6 +67,15 @@ SPOT_CHECK_BATCH = 40
 SPOT_CHECK_DRAW = 2
 # Which species have been counted toward a draw, and every draw with its seed (C2).
 SPOT_CHECK_STATE = "stickprov-state.json"
+# The species row of a spot check (follow-up 3, wave B review).
+SPECIES_TYP = "art"
+SPECIES_ID = "*"
+
+
+def spot_check_file(review: Path, draw: int) -> Path:
+    """Each draw is its own file, and its own sheet in Drive (follow-up 5, wave B review):
+    a new draw is never uploaded over one whose decisions are not imported yet."""
+    return review / f"stickprov-dragning-{draw}.csv"
 
 
 def revision_url(lang: str, revision: str) -> str:
@@ -124,10 +133,26 @@ def full_sheet_rows(record: Record, *, draw: int | None = None) -> list[dict[str
     is the draw the rows belong to (C2/I1, final review 2026-10-06).
 
     Beslut is left empty on every fact and on the recording (I1): a sheet imported before
-    Albin has looked at it must not count as checked. Data rows stay locked ("(data)")."""
+    Albin has looked at it must not count as checked. Data rows stay locked ("(data)").
+    The first row is the species row (Typ `art`, Id `*`, follow-up 3 of the wave B
+    review): `behåll` there keeps every row he left empty; a decision on a row wins."""
     published_at = str(record.get("publishedAt") or "")
     dragning = "" if draw is None else str(draw)
-    rows: list[dict[str, str]] = []
+    rows: list[dict[str, str]] = [
+        _row(
+            record,
+            rad="stickprov",
+            typ=SPECIES_TYP,
+            fid=SPECIES_ID,
+            topic="hela arten",
+            fact="behåll här gäller alla rader nedan som lämnas tomma",
+            source="",
+            quote="",
+            decision="",
+            publicerad=published_at,
+            dragning=dragning,
+        )
+    ]
     for fact in record.get("facts", []):
         topic = fact["topic"]
         if topic == "data":
@@ -237,6 +262,8 @@ def write_sheet(path: Path, rows: list[dict[str, str]], columns: list[str] | Non
 class ExportResult:
     path: Path
     flagged: list[str] = field(default_factory=list)
+    # Decisions carried over from the sheet that was there (follow-up 5).
+    carried: int = 0
 
 
 def _eligible(records: dict[str, Record], wave: int | None) -> list[Record]:
@@ -289,10 +316,37 @@ def export_wave(paths: WebPaths, wave: int | None = None) -> ExportResult:
     eligible = _eligible(records, wave)
     order = _queue_order(paths)
     flagged = sorted((r for r in eligible if r.get("flags")), key=lambda r: _queue_key(order, r))
-    rows = [row for r in flagged for row in flag_rows(r)]
     path = paths.review / "undantag.csv"
+    # Follow-up 5 (wave B review): the file there is the sheet downloaded from Drive. A
+    # species that still waits keeps what Albin already wrote on its open flags, so the new
+    # file can be uploaded over the Drive sheet without losing a decision.
+    old_rows = read_sheet(path, required_columns=IMPORT_COLUMNS) if path.exists() else []
+    rows: list[dict[str, str]] = []
+    carried = 0
+    for record in flagged:
+        old = [r for r in old_rows if r["QID"].strip() == record["qid"]]
+        for flag, row in zip(record.get("flags", []), flag_rows(record), strict=True):
+            carried += _carry_decision(record, flag, row, old)
+            rows.append(row)
     write_sheet(path, rows)
-    return ExportResult(path=path, flagged=[str(r["qid"]) for r in flagged])
+    return ExportResult(path=path, flagged=[str(r["qid"]) for r in flagged], carried=carried)
+
+
+def _carry_decision(
+    record: Record, flag: dict[str, Any], row: dict[str, str], old: list[dict[str, str]]
+) -> int:
+    """Copies Beslut, Kommentar and (for a status `ändra`) Faktum from the first old row
+    that decides this very flag (`_row_matches`, the import's own test). 1 if it did."""
+    for old_row in old:
+        if (_decision(old_row) or old_row.get("Kommentar", "").strip()) and _row_matches(
+            record, old_row, flag
+        ):
+            row["Beslut"] = old_row.get("Beslut", "").strip()
+            row["Kommentar"] = old_row.get("Kommentar", "")
+            if _sets_status(old_row):
+                row["Faktum"] = old_row["Faktum"].strip()
+            return 1
+    return 0
 
 
 @dataclass
@@ -380,7 +434,8 @@ def export_spot_check(
     counting anything (a redraw after a confirmed miss); `extra_species` adds named species
     to this draw (each must exist, be published and verified, review fix 2026-10-06).
     The seed is random unless given, and saved with the draw, so the draw can be re-run.
-    Drawn rows are appended to `review/stickprov.csv` with an empty Beslut (I1)."""
+    The drawn rows go to the draw's own file, `review/stickprov-dragning-N.csv`
+    (follow-up 5, wave B review), with an empty Beslut (I1)."""
     records = load_all(paths.data_out)
     state_path = paths.review / SPOT_CHECK_STATE
     state = read_spot_check_state(state_path)
@@ -414,15 +469,10 @@ def export_spot_check(
         return None
     draw_id = len(state["draws"]) + 1
     drawn_list = sorted(drawn_by_qid.values(), key=_by_name)
-    path = paths.review / "stickprov.csv"
+    path = spot_check_file(paths.review, draw_id)
     if drawn_list:
         rows = [row for r in drawn_list for row in full_sheet_rows(r, draw=draw_id)]
-        # (review fix 2026-10-06) `read_sheet`, not a plain `csv.DictReader`: a Sheets
-        # re-export can carry more than one BOM, and a bare `encoding="utf-8-sig"` only
-        # strips the first one, leaving "﻿Art" as the real key -- `write_sheet`'s
-        # `extrasaction="ignore"` then silently emptied every existing row's Art column.
-        existing_rows = read_sheet(path) if path.exists() else []
-        write_sheet(path, [*existing_rows, *rows], columns=SPOT_CHECK_COLUMNS)
+        write_sheet(path, rows, columns=SPOT_CHECK_COLUMNS)
         for record in drawn_list:
             mark_drawn(record, draw_id)
             save_record(record_path(paths.data_out, str(record["qid"])), record)
@@ -539,6 +589,20 @@ def _recheck_status(record: Record) -> list[dict[str, Any]]:
     return [{**f, "message": without_dashes(str(f["message"]))} for f in status_flags(record)]
 
 
+def _refused_on_a_live_page(record: Record, new_flags: list[dict[str, Any]], plan: _Plan) -> bool:
+    """Follow-up 2 (wave B review, Albin's call): a status Albin sets that the report data
+    (or the red list) contradicts would hold the species back from `verification`; on a
+    published page that fails the whole fas 2 build. Refused instead, like Minor 10."""
+    if not new_flags or not record.get("publish"):
+        return False
+    reasons = "; ".join(str(f["message"]) for f in new_flags)
+    plan.errors.append(
+        f"{record['qid']} är publicerad och den nya statusen motsäger rapportdatan: sätt "
+        f"publish: false först (eller välj en annan status), importera sedan igen. ({reasons})"
+    )
+    return True
+
+
 def _empties_a_required_topic(before: Record, after: Record, plan: _Plan) -> bool:
     """Minor 10 (final review 2026-10-06): a decision that strikes the last appearance,
     voice or habitat fact leaves a page that may not exist (spec §9.6); the import refuses
@@ -556,7 +620,7 @@ def _empties_a_required_topic(before: Record, after: Record, plan: _Plan) -> boo
     return bool(lost)
 
 
-# -- the spot check (stickprov.csv) -------------------------------------------------------
+# -- the spot check (stickprov-dragning-N.csv) --------------------------------------------
 
 
 def _spot_rows_for_current_draw(
@@ -614,9 +678,15 @@ def _validate_spot_rows(record: Record, rows: list[dict[str, str]], plan: _Plan)
     seen: dict[str, int] = {}
     audio_rows = 0
     undecided = 0
+    species_rows = 0
     for row in rows:
         typ, decision, fid = _typ(row), _decision(row), row["Id"].strip()
         if typ == "data":
+            continue
+        if typ == SPECIES_TYP:
+            species_rows += 1
+            if decision not in ("", KEEP):
+                plan.errors.append(f"{qid}: skriv behåll eller lämna tomt på artraden")
             continue
         if typ == "inspelning":
             audio_rows += 1
@@ -653,7 +723,19 @@ def _validate_spot_rows(record: Record, rows: list[dict[str, str]], plan: _Plan)
         plan.errors.append(f"{qid}: raderna {', '.join(twice)} står flera gånger")
     if bool(record.get("audio")) != bool(audio_rows) or audio_rows > 1:
         plan.errors.append(f"{qid}: stickprovet ska ha en inspelningsrad om arten har en")
+    if species_rows > 1:
+        plan.errors.append(f"{qid}: artraden står flera gånger i samma dragning")
     return undecided == 0
+
+
+def _keep_the_rest(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    """With `behåll` on the species row, every fact and recording row Albin left empty
+    counts as `behåll`; a decision he wrote on a row wins (follow-up 3, wave B review).
+    Without it, every row must be decided."""
+    if not any(_typ(r) == SPECIES_TYP and _decision(r) == KEEP for r in rows):
+        return rows
+    decidable = ("faktum", "status", "inspelning")
+    return [{**r, "Beslut": KEEP} if _typ(r) in decidable and not _decision(r) else r for r in rows]
 
 
 def _plan_spot_check(record: Record, rows: list[dict[str, str]], date: str) -> _Plan:
@@ -661,6 +743,7 @@ def _plan_spot_check(record: Record, rows: list[dict[str, str]], date: str) -> _
     rows = _spot_rows_for_current_draw(record, rows, plan)
     if not rows or plan.errors:
         return plan
+    rows = _keep_the_rest(rows)
     decided = _validate_spot_rows(record, rows, plan)
     if plan.errors:
         return plan
@@ -706,6 +789,8 @@ def _plan_spot_check(record: Record, rows: list[dict[str, str]], date: str) -> _
         new["verification"] = {**new["verification"], "at": date, "spotChecked": True}
         if status_after is not None and status_after != status_before:
             new_flags = _recheck_status(new)
+            if _refused_on_a_live_page(record, new_flags, plan):
+                return plan
             if new_flags:
                 new["flags"] = new_flags
                 new.pop("verification", None)
@@ -897,6 +982,8 @@ def _plan_flags(record: Record, rows: list[dict[str, str]], date: str) -> _Plan:
         else:
             new["facts"] = [*facts, new_status]
         new_flags = _recheck_status(new)
+        if _refused_on_a_live_page(record, new_flags, plan):
+            return plan
     if _empties_a_required_topic(record, new, plan):
         return plan
     verify_meta = new.setdefault("generated", {}).setdefault("verify", {})
@@ -923,7 +1010,7 @@ def apply_review(
     row is wrong. Each species' decisions are worked out on a copy, and only swapped in
     once every species has passed. Flag rows (Typ `flagga`, the exception sheet) set
     `verification` and refresh `generated.verify.factsHash` to match the edited facts (Task
-    17 requirement 4). Spot-check rows (the other Typ values, `stickprov.csv`) apply only
+    17 requirement 4). Spot-check rows (the other Typ values, `stickprov-dragning-N.csv`) apply only
     for the species' current, undecided draw (I1, final review 2026-10-06), re-date
     `verification.at` only when a decision changed something, and a species with an empty
     Beslut waits instead of counting as checked."""
@@ -995,7 +1082,8 @@ def import_wave(
     """Ändrat 2026-10-05 (b): `wave` är valfritt. Utan den importeras bara arket, utan
     säkerhetsnätet som letar upp opåverkade arter i en bestämd våg (`_auto_clear` behövs
     sällan längre, se Task 17, men är kvar för äldre data). Samma funktion importerar både
-    det löpande undantagsarket och stickprovet efter publicering (`review/stickprov.csv`):
+    det löpande undantagsarket och stickprovet efter publicering (en fil per dragning,
+    `review/stickprov-dragning-N.csv`):
     ett stickprov där Albin stryker eller ändrar något sätter `verification.at` till
     importdatumet, vilket är det nya datumet på "Kontrollerad mot källorna"."""
     records = load_all(paths.data_out)

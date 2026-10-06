@@ -472,8 +472,17 @@ def web_sheet(wave: int | None) -> None:
     Gratis."""
     from .web.review_sheet import export_wave
 
-    result = export_wave(_web_paths(), wave)
-    click.echo(f"{len(result.flagged)} flaggade arter. Ladda upp {result.path} till Drive.")
+    try:
+        result = export_wave(_web_paths(), wave)
+    except ValueError as exc:
+        raise click.ClickException(
+            f"review/undantag.csv går inte att läsa ({exc}); inget skrevs. Ladda ner arket "
+            "från Drive som CSV igen."
+        ) from exc
+    click.echo(
+        f"{len(result.flagged)} flaggade arter, {result.carried} beslut förda vidare från "
+        f"arket som låg där. Ladda upp {result.path} över Drive-arket (bara efter web import)."
+    )
 
 
 @web.command("spot-check")
@@ -504,8 +513,8 @@ def web_spot_check(seed: int | None, extra: tuple[str, ...], force: bool) -> Non
         return
     click.echo(
         f"Stickprov, dragning {result.draw} (frö {result.seed}): {', '.join(result.species)}. "
-        f"Ladda upp {result.path} till Drive som Google-kalkylark; Albin fyller i Beslut "
-        "på varje rad."
+        f"Ladda upp {result.path} till Drive som ett eget kalkylark (eller en ny flik); "
+        "Albin skriver behåll på artraden eller ett beslut på varje rad."
     )
 
 
@@ -546,7 +555,7 @@ def _iso_date(ctx: click.Context, param: click.Parameter, value: str | None) -> 
 )
 def web_import(wave: int | None, sheet: Path | None, review_date: str | None) -> None:
     """Läser in Albins beslut ur undantagsarket (standard) eller stickprovet (--file
-    review/stickprov.csv) och sätter verification på de berörda arterna. Ändrar
+    review/stickprov-dragning-N.csv) och sätter verification på de berörda arterna. Ändrar
     ingenting om något är fel. En rättad stickprovsrad får ett nytt kontrolldatum,
     vilket fas 2:s publiceringsloop republicerar sidan med."""
     from datetime import date

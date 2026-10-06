@@ -759,6 +759,8 @@ Fakta-id har prefixet `a:` eller `b:` för att visa vilken arts faktablad de kom
 
 **Stickprovet** (flyttat hit från undantagsarket, 2026-10-05 (b)): en egen flik, fylld efter publicering. För var 40:e publicerade art dras 2 (sparat frö) och läggs in med hela faktabladet; för var 10:e publicerade jämförelsesida dras 1. Samma kolumner som undantagsarket, plus vilken art eller jämförelse och vilket datum den publicerades. Hittar Albin ett fel som kontrollen borde ha fångat dras två nya och missen loggas i rapporten; ett bekräftat fel ger sidan ett nytt datum på "Kontrollerad mot källorna" och publiceras om.
 
+**Ändrat 2026-10-06 (efter fas 1b:s slutgranskning):** varje dragning är en egen fil, `review/stickprov-dragning-N.csv`, och ett eget ark eller en egen flik i Drive, så att en ny dragning aldrig laddas upp över en som inte är importerad. Varje art inleds med en **artrad** (Typ `art`, Id `*`): `behåll` där gäller alla rader för arten i dragningen som Albin lämnar tomma, och ett beslut han skriver på en rad gäller före artraden. Utan `behåll` på artraden måste varje rad ha ett beslut. Sätter Albin i stickprovet (eller på en V3-flagga) en status som rapportdatan eller rödlistan motsäger på en publicerad art, avvisas importen: först `publish: false`, sedan importera igen.
+
 Kolumnerna är samma i båda flikarna:
 
 | Kolumn | Innehåll |
@@ -767,13 +769,13 @@ Kolumnerna är samma i båda flikarna:
 | QID | Wikidata-id |
 | Rad | `stickprov` eller `flagga` |
 | Kontroll | Vilken kontroll som gav flaggan: `V2`, `V3` eller `V4`. Tomt för en stickprovsrad. |
-| Typ | `faktum`, `data`, `inspelning` eller `flagga` |
-| Id | Fakta-id (`f03`, `d01`), eller tomt för en inspelningsflagga |
+| Typ | `faktum`, `data`, `inspelning` eller `flagga`, plus `art` för stickprovets artrad (2026-10-06) |
+| Id | Fakta-id (`f03`, `d01`), eller tomt för en inspelningsflagga; `*` på artraden |
 | Ämne | Ämnet på svenska |
 | Faktum | Faktumet på svenska. Albin skriver här när beslutet är `ändra`. |
 | Källa | `sv`, `en` eller `de` med länk till artikeln på rätt revision, eller `Artportalen` / `Rödlistan` / länk till inspelningens filsida |
 | Citat | Citatet ur artikeln |
-| Beslut | `behåll` (förifyllt), `stryk` eller `ändra`. Flaggor är tomma och måste fyllas i. Datarader är låsta. **Ändrat 2026-10-06 (fas 1b:s slutgranskning I1):** inget är förifyllt i stickprovet heller; en rad utan beslut gör att arten väntar, så en import innan Albin tittat räknas aldrig som kontrollerad. Inspelningsraden tar `behåll` eller `stryk`. |
+| Beslut | `behåll` (förifyllt), `stryk` eller `ändra`. Flaggor är tomma och måste fyllas i. Datarader är låsta. **Ändrat 2026-10-06 (fas 1b:s slutgranskning I1):** inget är förifyllt i stickprovet heller; en rad utan beslut gör att arten väntar, så en import innan Albin tittat räknas aldrig som kontrollerad. Inspelningsraden tar `behåll` eller `stryk`, artraden bara `behåll` (eller tomt), och `behåll` på artraden gäller artens tomma rader i samma dragning. |
 | Kommentar | Fri text |
 | Publicerad | Bara i stickprovsfliken (2026-10-05 (b)): datumet sidan publicerades |
 | Dragning | Bara i stickprovsfliken (2026-10-06, slutgranskningen C2 och I1): vilken dragning raden hör till (`review/stickprov-state.json`). Importen tillämpar bara artens öppna dragning. |

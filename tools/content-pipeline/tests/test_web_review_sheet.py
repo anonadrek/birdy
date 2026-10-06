@@ -34,6 +34,7 @@ from birdy_fetcher.web.review_sheet import (
     mark_drawn,
     read_sheet,
     read_spot_check_state,
+    republish_commands,
     write_sheet,
 )
 from birdy_fetcher.web.waves import write_waves
@@ -93,11 +94,14 @@ def _flagged(qid: str = "Q25485") -> Record:
 
 
 def test_full_sheet_rows_cover_facts_status_data_and_recording() -> None:
-    """Bilaga E lists only four Typ values (faktum, data, inspelning, flagga) — the status
-    fact s01 is a `faktum` too, its Ämne column already says it is about status."""
+    """Bilaga E: the status fact s01 is a `faktum` too, its Ämne column already says it is
+    about status. The species row (Typ `art`, follow-up 3 of the wave B review) comes
+    first, so Albin can keep the whole species with one `behåll`."""
     rows = full_sheet_rows(_record())
-    assert [r["Typ"] for r in rows] == ["faktum", "faktum", "faktum", "data", "inspelning"]
+    assert [r["Typ"] for r in rows] == ["art", "faktum", "faktum", "faktum", "data", "inspelning"]
     assert all(r["Rad"] == "stickprov" and r["Kontroll"] == "" for r in rows)
+    species_row = rows.pop(0)
+    assert species_row["Id"] == "*" and species_row["Beslut"] == ""
     first = rows[0]
     assert first["Art"] == "Talgoxe"
     assert first["Id"] == "f01"
@@ -166,7 +170,7 @@ def test_write_sheet_has_the_columns(tmp_path: Path) -> None:
     with path.open(encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
         assert reader.fieldnames == COLUMNS
-        assert len(list(reader)) == 5
+        assert len(list(reader)) == 6  # the species row and five fact/recording rows
 
 
 def test_write_sheet_is_utf8_with_bom_so_excel_shows_aao(tmp_path: Path) -> None:
@@ -361,7 +365,8 @@ def test_drawn_rows_carry_their_draw_and_no_decision(tmp_path: Path) -> None:
         save_record(record_path(paths.data_out, r["qid"]), r)
     result = export_spot_check(paths, seed=1, force=True)
     assert result is not None
-    rows = read_sheet(paths.review / "stickprov.csv")
+    assert result.path == paths.review / "stickprov-dragning-1.csv"
+    rows = read_sheet(result.path)
     assert {r["Dragning"] for r in rows} == {"1"}
     assert {r["Beslut"] for r in rows if r["Typ"] != "data"} == {""}
     record = load_record(record_path(paths.data_out, result.species[0]))
@@ -419,28 +424,24 @@ def test_spot_check_extra_species_rejects_an_unverified_qid(tmp_path: Path) -> N
         export_spot_check(paths, seed=1, extra_species=("Q8",))
 
 
-def test_spot_check_keeps_the_art_column_when_the_old_sheet_has_a_double_bom(
+def test_every_draw_gets_its_own_file_and_never_touches_an_earlier_one(
     tmp_path: Path,
 ) -> None:
-    """Review fix 2026-10-06: a plain `encoding="utf-8-sig"` `csv.DictReader` only strips
-    ONE BOM, so a Sheets re-export with two BOMs left "Art" glued to the leftover one;
-    `write_sheet`'s `extrasaction="ignore"` then silently emptied every existing row's Art
-    column (the dict key "\ufeffArt" is missing from `fieldnames`, so `DictWriter` fills
-    the real "Art" column with its default `restval`, "")."""
+    """Follow-up 5 (wave B review): each draw is its own sheet in Drive, so a new draw can
+    never be uploaded over one whose decisions are not imported yet. (Replaces the
+    double-BOM test of the old cumulative stickprov.csv; `read_sheet` keeps that guard.)"""
     paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
     for r in (_published(f"Q{i}") for i in range(1, 6)):
         save_record(record_path(paths.data_out, r["qid"]), r)
-    path = paths.review / "stickprov.csv"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    buf = io.StringIO()
-    writer = csv.DictWriter(buf, fieldnames=SPOT_CHECK_COLUMNS)
-    writer.writeheader()
-    writer.writerow({"Art": "Blåmes", "QID": "Q25404"})
-    path.write_bytes("\ufeff\ufeff".encode() + buf.getvalue().encode("utf-8"))
-    result = export_spot_check(paths, seed=1, force=True)
-    assert result is not None
-    rows = read_sheet(path)
-    assert rows[0]["Art"] == "Blåmes"
+    first = export_spot_check(paths, seed=1, force=True)
+    assert first is not None
+    first.path.write_bytes(first.path.read_bytes() + b"Albins beslut\n")
+    before = first.path.read_bytes()
+    second = export_spot_check(paths, seed=2, force=True)
+    assert second is not None
+    assert second.path == paths.review / "stickprov-dragning-2.csv"
+    assert first.path.read_bytes() == before
+    assert {r["Dragning"] for r in read_sheet(second.path)} == {"2"}
 
 
 # -- Task 17: Albin's decisions in, `web import` ------------------------------------------
@@ -647,8 +648,9 @@ def test_a_spot_check_row_without_its_draw_is_an_error() -> None:
 def test_a_status_changed_in_the_spot_check_is_rechecked_against_the_data() -> None:
     """Minor 9: an `ändra` on s01 in the spot check recomputes the signal and runs V3 on
     the new status, like the exception sheet's V1 `ändra`; a contradiction holds the
-    species back (and `web import` lists the published page)."""
+    species back. (Unpublished here: on a live page it is refused, see below.)"""
     record = _drawn()
+    record["publish"] = False
     record["review"]["statusConfirmed"] = True
     record["data"] = {
         "months": [0, *([50] * 11)],
@@ -1099,9 +1101,12 @@ def test_import_lists_every_published_page_that_needs_rewriting(tmp_path: Path) 
     ]
 
 
-def test_a_published_page_held_back_by_a_new_flag_is_told_to_unpublish_first(
+def test_a_status_the_data_contradicts_is_refused_on_a_published_page(
     tmp_path: Path,
 ) -> None:
+    """Follow-up 2 (wave B review, Albin's call): holding a live page back would fail the
+    fas 2 build (publish needs verification), so the import refuses the decision instead,
+    like Minor 10, and changes nothing."""
     paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
     record = _with_text(_drawn("Q1"))
     record["data"] = {"months": [0, *([50] * 11)], "totalReports": 1000}
@@ -1113,17 +1118,36 @@ def test_a_published_page_held_back_by_a_new_flag_is_told_to_unpublish_first(
     ]
     record = _with_text(record)
     mark_drawn(record, 1)
-    save_record(record_path(paths.data_out, "Q1"), record)
+    path = record_path(paths.data_out, "Q1")
+    save_record(path, record)
+    before = path.read_bytes()
     sheet = tmp_path / "stickprov.csv"
     write_sheet(
         sheet,
         _decide(full_sheet_rows(record, draw=1), s01=(CHANGE, "Stannfågel")),
         columns=SPOT_CHECK_COLUMNS,
     )
-    result = import_wave(paths, sheet, date="2026-12-01")
-    item = result.republish[0]
-    assert "publish" in item.commands[0] and "false" in item.commands[0]
-    assert any("web sheet" in c for c in item.commands)
+    with pytest.raises(ReviewImportError, match="sätt publish: false först"):
+        import_wave(paths, sheet, date="2026-12-01")
+    assert path.read_bytes() == before
+
+
+def test_a_v3_change_the_data_contradicts_is_refused_on_a_published_page() -> None:
+    record = _flagged()
+    record["publish"] = True
+    record["data"] = {"months": [0, *([50] * 11)], "totalReports": 1000}
+    record["generated"]["verify"]["factsHash"] = facts_hash(record)
+    rows = _decide_flag(flag_rows(record), s01=(CHANGE, "Stannfågel"))
+    with pytest.raises(ReviewImportError, match="Q25485 är publicerad"):
+        apply_review({"Q25485": record}, rows, date="2026-11-20")
+
+
+def test_republish_commands_put_unpublishing_first_while_facts_wait() -> None:
+    record = _with_text(_drawn("Q1"))
+    record.pop("verification")
+    commands = republish_commands("Q1", record)
+    assert "publish" in commands[0] and "false" in commands[0]
+    assert any("web sheet" in c for c in commands)
 
 
 def test_a_changed_page_that_is_still_ready_is_listed_for_a_rebuild(tmp_path: Path) -> None:
@@ -1277,3 +1301,103 @@ def test_import_sweeps_a_recording_left_without_audio(tmp_path: Path) -> None:
     result = import_wave(paths, sheet, date="2026-11-20")
     assert result.swept_audio == ["Q5"]
     assert not orphan.exists()
+
+
+# Follow-up 3 (wave B review, Albin's call): one `behåll` per species and draw.
+
+
+def _species_row(rows: list[dict[str, str]], decision: str) -> list[dict[str, str]]:
+    return [{**r, "Beslut": decision} if r["Typ"] == "art" else r for r in rows]
+
+
+def test_keep_on_the_species_row_keeps_every_undecided_row() -> None:
+    record = _drawn()
+    rows = _species_row(_decide(full_sheet_rows(record, draw=1), fill=""), KEEP)
+    result = apply_review({"Q25485": record}, rows, date="2026-12-01")
+    assert result.changed == ["Q25485"] and result.waiting == []
+    assert [f["id"] for f in record["facts"]] == ["f01", "f02", "s01", "d01"]
+    assert "audio" in record
+    assert record["verification"]["at"] == "2026-11-20"
+    assert record["review"]["spotCheck"]["decidedAt"] == "2026-12-01"
+
+
+def test_an_explicit_decision_wins_over_the_species_row() -> None:
+    record = _drawn()
+    rows = _decide(full_sheet_rows(record, draw=1), fill="", f02=(STRIKE, ""))
+    rows = _species_row(rows, KEEP)
+    apply_review({"Q25485": record}, rows, date="2026-12-01")
+    assert [f["id"] for f in record["facts"]] == ["f01", "s01", "d01"]
+    assert record["verification"]["at"] == "2026-12-01"
+
+
+def test_the_species_row_takes_only_keep() -> None:
+    record = _drawn()
+    rows = _species_row(_decide(full_sheet_rows(record, draw=1), fill=""), STRIKE)
+    with pytest.raises(ReviewImportError, match="artraden"):
+        apply_review({"Q25485": record}, rows, date="2026-12-01")
+
+
+def test_without_the_species_row_every_row_needs_a_decision() -> None:
+    record = _drawn()
+    rows = [r for r in _decide(full_sheet_rows(record, draw=1)) if r["Typ"] != "art"]
+    assert apply_review({"Q25485": record}, rows, date="2026-12-01").changed == ["Q25485"]
+    other = _drawn()
+    partial = [
+        r
+        for r in _decide(full_sheet_rows(other, draw=1), fill="", f01=(KEEP, ""))
+        if r["Typ"] != "art"
+    ]
+    assert apply_review({"Q25485": other}, partial, date="2026-12-01").waiting
+
+
+# Follow-up 5 (wave B review): the Drive round trip of the exception sheet.
+
+
+def test_web_sheet_carries_over_decisions_from_the_downloaded_sheet(tmp_path: Path) -> None:
+    """Download from Drive over review/undantag.csv, import, then `web sheet`: a species that
+    still waits keeps the decisions Albin already wrote, so uploading the new file over the
+    Drive sheet loses nothing."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    record = _record("Q1")
+    record["flags"] = [
+        {"check": "V3", "factId": "s01", "message": "Statusen säger stannfågel, men a."},
+        {"check": "V4", "factId": None, "message": "ljudmodellen täcker inte arten"},
+    ]
+    save_record(record_path(paths.data_out, "Q1"), record)
+    downloaded = flag_rows(record)
+    downloaded[0] = {**downloaded[0], "Beslut": KEEP, "Kommentar": "stämmer, se Artportalen"}
+    path = paths.review / "undantag.csv"
+    write_sheet(path, downloaded)
+    import_wave(paths, path, date="2026-11-20")  # Q1 waits: the V4 flag has no decision
+    result = export_wave(paths)
+    rows = read_sheet(path)
+    assert result.carried == 1
+    assert rows[0]["Beslut"] == KEEP and rows[0]["Kommentar"] == "stämmer, se Artportalen"
+    assert rows[1]["Beslut"] == ""
+
+
+def test_web_sheet_carries_a_status_label_written_in_faktum(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    record = _record("Q1")
+    record["flags"] = [
+        {"check": "V3", "factId": "s01", "message": "Statusen säger stannfågel, men a."},
+        {"check": "V4", "factId": None, "message": "ljudmodellen täcker inte arten"},
+    ]
+    save_record(record_path(paths.data_out, "Q1"), record)
+    downloaded = _decide_flag(flag_rows(record), s01=(CHANGE, "Vintergäst"))
+    write_sheet(paths.review / "undantag.csv", downloaded)
+    export_wave(paths)
+    rows = read_sheet(paths.review / "undantag.csv")
+    assert (rows[0]["Beslut"], rows[0]["Faktum"]) == (CHANGE, "Vintergäst")
+
+
+def test_web_sheet_does_not_carry_a_decision_to_a_different_flag(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    record = _flagged("Q1")
+    save_record(record_path(paths.data_out, "Q1"), record)
+    old = _flag_decisions(flag_rows(record), s01=STRIKE)
+    old[0] = {**old[0], "Faktum": "Ett äldre meddelande."}
+    write_sheet(paths.review / "undantag.csv", old)
+    result = export_wave(paths)
+    assert result.carried == 0
+    assert read_sheet(paths.review / "undantag.csv")[0]["Beslut"] == ""
