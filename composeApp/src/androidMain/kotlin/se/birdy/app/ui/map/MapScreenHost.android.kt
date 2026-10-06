@@ -45,7 +45,7 @@ private fun mapTilerSource(apiKey: String): OnlineTileSourceBase =
     object : XYTileSource(
         "MapTiler-Toner-Retina",
         0,
-        20,
+        MAP_TILE_MAX_ZOOM.toInt(),
         MAPTILER_TILE_SIZE,
         "@2x.png",
         arrayOf("https://api.maptiler.com/maps/toner-v2/"),
@@ -78,6 +78,9 @@ actual fun MapScreenHost(
             }
             MapView(context).apply {
                 setTileSource(mapTilerSource(BuildConfig.MAPTILER_API_KEY))
+                // Never zoom past the tiles (osmdroid's own limit is 29, from its tile
+                // approximator), neither by pinching nor by a fit (Plan 3 Task 7 review).
+                maxZoomLevel = MAP_TILE_MAX_ZOOM
                 setMultiTouchControls(true)
                 setUseDataConnection(true)
                 overlayManager.tilesOverlay.setColorFilter(

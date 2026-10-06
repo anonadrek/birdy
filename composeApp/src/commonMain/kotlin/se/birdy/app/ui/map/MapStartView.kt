@@ -1,5 +1,9 @@
 package se.birdy.app.ui.map
 
+import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.max
+
 /**
  * How the finds map frames its pins when it opens: one spot is centred at [SINGLE_SPOT_ZOOM],
  * several spots are fitted, never closer than [FIT_MAX_ZOOM].
@@ -43,4 +47,40 @@ internal fun mapStartView(pins: List<MapPin>): MapStartView? {
     } else {
         MapStartView.Fit(north = north, east = east, south = south, west = west)
     }
+}
+
+/**
+ * Smallest north-south and east-west span (metres) a fit around several finds shows on iOS, about
+ * street level like Android's [FIT_MAX_ZOOM]. iOS frames with MKCoordinateRegionMakeWithDistance,
+ * and finds a few metres apart used to zoom MapKit to its maximum (Plan 3 Task 7 review).
+ */
+internal const val FIT_MIN_SPAN_METERS = 1_000.0
+
+private const val METERS_PER_DEGREE_LATITUDE = 111_320.0
+
+private const val DEGREES_TO_RADIANS = PI / 180
+
+// Room around the outermost pins, like Android's 96 px border.
+private const val FIT_SPAN_MARGIN = 1.3
+
+internal data class FitSpan(
+    val centreLatitude: Double,
+    val centreLongitude: Double,
+    val latitudeMeters: Double,
+    val longitudeMeters: Double,
+)
+
+/** The centre and span (with margin, never below [FIT_MIN_SPAN_METERS]) that show [fit]. */
+internal fun fitSpan(fit: MapStartView.Fit): FitSpan {
+    val centreLatitude = (fit.north + fit.south) / 2
+    val centreLongitude = (fit.east + fit.west) / 2
+    val latitudeMeters = (fit.north - fit.south) * METERS_PER_DEGREE_LATITUDE * FIT_SPAN_MARGIN
+    val longitudeMeters =
+        (fit.east - fit.west) * METERS_PER_DEGREE_LATITUDE * cos(centreLatitude * DEGREES_TO_RADIANS) * FIT_SPAN_MARGIN
+    return FitSpan(
+        centreLatitude = centreLatitude,
+        centreLongitude = centreLongitude,
+        latitudeMeters = max(latitudeMeters, FIT_MIN_SPAN_METERS),
+        longitudeMeters = max(longitudeMeters, FIT_MIN_SPAN_METERS),
+    )
 }

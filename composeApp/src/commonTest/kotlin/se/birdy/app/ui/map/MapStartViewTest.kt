@@ -46,4 +46,31 @@ class MapStartViewTest {
         assertTrue(FIT_MAX_ZOOM <= MAP_TILE_MAX_ZOOM)
         assertTrue(SINGLE_SPOT_ZOOM <= MAP_TILE_MAX_ZOOM)
     }
+
+    @Test
+    fun `the tile source zoom limit is a whole zoom level`() {
+        // MapScreenHost.android passes it to XYTileSource as an Int and to MapView.maxZoomLevel.
+        assertEquals(MAP_TILE_MAX_ZOOM, MAP_TILE_MAX_ZOOM.toInt().toDouble())
+    }
+
+    @Test
+    fun `a fit around finds a few metres apart never zooms closer than street level`() {
+        // iOS frames a fit with MKCoordinateRegionMakeWithDistance; finds a few metres apart
+        // used to zoom MapKit to its maximum, like Android before cfb96f2d.
+        val span = fitSpan(MapStartView.Fit(north = 59.32935, east = 18.06865, south = 59.3293, west = 18.0686))
+
+        assertEquals(59.329325, span.centreLatitude, 1e-9)
+        assertEquals(18.068625, span.centreLongitude, 1e-9)
+        assertEquals(FIT_MIN_SPAN_METERS, span.latitudeMeters)
+        assertEquals(FIT_MIN_SPAN_METERS, span.longitudeMeters)
+    }
+
+    @Test
+    fun `a fit around finds far apart covers them with a margin`() {
+        // One degree of latitude is about 111 km; the span adds a margin around the outer pins.
+        val span = fitSpan(MapStartView.Fit(north = 60.0, east = 18.5, south = 59.0, west = 17.0))
+
+        assertTrue(span.latitudeMeters > 111_000.0, "latitude span ${span.latitudeMeters}")
+        assertTrue(span.longitudeMeters > 1.5 * 111_000.0 * 0.5, "longitude span ${span.longitudeMeters}")
+    }
 }
