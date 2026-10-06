@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import re
+from pathlib import Path
+
 import pytest
 
 from birdy_fetcher.credits import (
@@ -115,7 +118,7 @@ def test_canonical_license_normalises_case_and_spacing() -> None:
         (
             '<a rel="nofollow" class="external autonumber" '
             'href="https://www.inaturalist.org/people/mourad-harzallah">[2]</a>',
-            "mourad-harzallah",
+            "Mourad Harzallah",
         ),
         (
             '<a rel="nofollow" class="external text" '
@@ -165,3 +168,68 @@ def test_unusable_authors(text: str | None) -> None:
 )
 def test_usable_authors(text: str) -> None:
     assert is_usable_author(text)
+
+
+@pytest.mark.parametrize(
+    ("raw", "expected"),
+    [
+        # Same person, one spelling (release 1.3.0 review).
+        ("blondinrikard", "Blondinrikard Fröberg"),
+        ("Saudi press Agency (SPA)", "Saudi Press Agency (SPA)"),
+        ("alexis_lours", "Alexis Lours"),
+        ("christoph_moning", "Christoph Moning"),
+        ("Christoph Moning (iNaturalist user christoph_moning)", "Christoph Moning"),
+        ("mourad-harzallah", "Mourad Harzallah"),
+        # Unsplash credits end in a link to the uploader's handle.
+        (
+            'Rodolfo Mari <a rel="nofollow" class="external text" '
+            'href="https://unsplash.com/@dolfoto">dolfoto</a>',
+            "Rodolfo Mari",
+        ),
+        (
+            'Richard Hoeg <a rel="nofollow" class="external text" '
+            'href="https://unsplash.com/@richardhoeg">richardhoeg</a>',
+            "Richard Hoeg",
+        ),
+        # iNaturalist "Name (login)": the login repeats the name.
+        ("Kudaibergen Amirekul (amirekul)", "Kudaibergen Amirekul"),
+        ("Olivier Morel (olivier_morel)", "Olivier Morel"),
+        ("James M. Maley (jmaley)", "James M. Maley"),
+        # A parenthesis that is part of the credit stays.
+        ("Sun Jiao (Interaccoonale)", "Sun Jiao (Interaccoonale)"),
+        ("Duncan Brown (Cradlehall)", "Duncan Brown (Cradlehall)"),
+        ("Le et al. (2024)", "Le et al. (2024)"),
+        ("Saudi Press Agency (SPA)", "Saudi Press Agency (SPA)"),
+    ],
+)
+def test_clean_author_uses_one_spelling_per_photographer(raw: str, expected: str) -> None:
+    assert clean_author(raw) == expected
+
+
+def test_allow_list_is_the_web_pipelines_licence_table() -> None:
+    from birdy_fetcher.credits import PUBLIC_DOMAIN_LICENSES
+    from birdy_fetcher.web.licenses import LICENSE_URLS
+
+    assert set(LICENSE_URLS) == ALLOWED_LICENSES
+    assert {k for k, url in LICENSE_URLS.items() if url is None} == PUBLIC_DOMAIN_LICENSES
+
+
+KOTLIN_VALIDATOR = (
+    Path(__file__).resolve().parents[3]
+    / "shared/content/src/jvmMain/kotlin/se/birdy/content/build/SpeciesValidator.kt"
+)
+
+
+def _kotlin_set(source: str, name: str) -> set[str]:
+    m = re.search(rf"val {name}\s*=\s*(.*?)\n\s*(?:private )?val ", source, re.DOTALL)
+    assert m, f"{name} not found in SpeciesValidator.kt"
+    return set(re.findall(r'"([^"]+)"', m.group(1)))
+
+
+@pytest.mark.skipif(not KOTLIN_VALIDATOR.exists(), reason="needs the Birdy repo checkout")
+def test_kotlin_validator_has_the_same_allow_list() -> None:
+    from birdy_fetcher.credits import PUBLIC_DOMAIN_LICENSES
+
+    source = KOTLIN_VALIDATOR.read_text(encoding="utf-8")
+    assert _kotlin_set(source, "PUBLIC_DOMAIN_LICENSES") == PUBLIC_DOMAIN_LICENSES
+    assert _kotlin_set(source, "ALLOWED_LICENSES") | PUBLIC_DOMAIN_LICENSES == ALLOWED_LICENSES

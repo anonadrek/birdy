@@ -115,13 +115,14 @@ image_refs:
   commons_filename: Golden Eagle (Aquila chrysaetos) (13668234394).jpg
 - role: secondary
   path: Q41181/secondary-2.webp
-  width: 1800
-  height: 1200
-  license: CC BY 2.0
-  author: Ron Knight
-  source_url: https://commons.wikimedia.org/wiki/File:Golden Eagle (Aquila chrysaetos)
-    (13667892725).jpg
-  commons_filename: Golden Eagle (Aquila chrysaetos) (13667892725).jpg
+  width: 1440
+  height: 1800
+  license: CC BY-SA 4.0
+  author: Giles Laurent
+  source_url: https://commons.wikimedia.org/wiki/File:015 Wild Golden Eagle in flight
+    at Pfyn-Finges (Switzerland) Photo by Giles Laurent.jpg
+  commons_filename: 015 Wild Golden Eagle in flight at Pfyn-Finges (Switzerland) Photo
+    by Giles Laurent.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-04T12:14:52.979616+00:00'

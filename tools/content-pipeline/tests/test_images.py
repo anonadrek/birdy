@@ -6,7 +6,7 @@ import io
 from pathlib import Path
 
 import pytest
-from PIL import Image
+from PIL import Image, ImageCms
 
 from birdy_fetcher.cache import Cache
 from birdy_fetcher.images import (
@@ -473,3 +473,48 @@ async def test_selector_fetches_category_members(fixtures_dir: Path, tmp_path: P
     assert found
     await selector.fetch_category_candidates("Q25485", "Parus major")
     assert len(captured) == 1
+
+
+def _swapped_primaries_profile() -> bytes:
+    """An sRGB profile with the red and blue primaries swapped (an RGB space
+    that is clearly not sRGB, built without shipping a profile file)."""
+    raw = bytearray(ImageCms.ImageCmsProfile(ImageCms.createProfile("sRGB")).tobytes())
+    count = int.from_bytes(raw[128:132], "big")
+    entries = {}
+    for i in range(count):
+        at = 132 + 12 * i
+        entries[bytes(raw[at : at + 4])] = at
+    r, b = entries[b"rXYZ"], entries[b"bXYZ"]
+    raw[r + 4 : r + 12], raw[b + 4 : b + 12] = raw[b + 4 : b + 12], raw[r + 4 : r + 12]
+    # Rename it too ("sRGB built-in" -> "SWAP built-in", UTF-16 in the desc tag).
+    return bytes(raw).replace("sRGB".encode("utf-16-be"), "SWAP".encode("utf-16-be"))
+
+
+def test_processor_converts_embedded_colour_profiles_to_srgb(tmp_path: Path) -> None:
+    # Pure red in a space whose "red" primary is sRGB blue must come out blue:
+    # the WebP carries no profile, so the pixels themselves have to be sRGB.
+    src = Image.new("RGB", (64, 64), (255, 0, 0))
+    buf = io.BytesIO()
+    src.save(buf, format="JPEG", quality=95, icc_profile=_swapped_primaries_profile())
+
+    out = tmp_path / "hero.webp"
+    ImageProcessor().process(buf.getvalue(), out_path=out, role="hero")
+
+    with Image.open(out) as written:
+        assert not written.info.get("icc_profile")
+        red, _, blue = written.convert("RGB").getpixel((32, 32))  # type: ignore[misc]
+    assert blue > 200
+    assert red < 60
+
+
+def test_processor_leaves_srgb_pixels_alone(tmp_path: Path) -> None:
+    srgb = ImageCms.ImageCmsProfile(ImageCms.createProfile("sRGB")).tobytes()
+    src = Image.new("RGB", (64, 64), (200, 120, 40))
+    tagged, plain = io.BytesIO(), io.BytesIO()
+    src.save(tagged, format="PNG", icc_profile=srgb)
+    src.save(plain, format="PNG")
+
+    a, b = tmp_path / "a.webp", tmp_path / "b.webp"
+    ImageProcessor().process(tagged.getvalue(), out_path=a, role="secondary")
+    ImageProcessor().process(plain.getvalue(), out_path=b, role="secondary")
+    assert a.read_bytes() == b.read_bytes()

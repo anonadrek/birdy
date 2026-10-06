@@ -101,11 +101,10 @@ image_refs:
   path: Q25332/hero.webp
   width: 2400
   height: 1600
-  license: Public domain
-  author: Yellowstone National Park
-  source_url: https://commons.wikimedia.org/wiki/File:Osprey (Pandion haliaetus) perched
-    along the Gardner River (29132705308).jpg
-  commons_filename: Osprey (Pandion haliaetus) perched along the Gardner River (29132705308).jpg
+  license: CC BY-SA 4.0
+  author: El Golli Mohamed
+  source_url: https://commons.wikimedia.org/wiki/File:Balbuzard pecheur Lac de Tunis.jpg
+  commons_filename: Balbuzard pecheur Lac de Tunis.jpg
 - role: secondary
   path: Q25332/secondary-1.webp
   width: 1800

@@ -71,20 +71,20 @@ migration:
 image_refs:
 - role: hero
   path: Q492684/hero.webp
-  width: 1350
-  height: 2400
-  license: CC BY-SA 4.0
-  author: Vasilikivrlm
-  source_url: https://commons.wikimedia.org/wiki/File:ALECTORIS GRAECA-ΣΟΥΝΙΟ.jpg
-  commons_filename: ALECTORIS GRAECA-ΣΟΥΝΙΟ.jpg
-- role: secondary
-  path: Q492684/secondary-1.webp
   width: 1000
   height: 667
   license: CC BY-SA 3.0
   author: FokusNatur
   source_url: https://commons.wikimedia.org/wiki/File:Steinhuhn.jpg
   commons_filename: Steinhuhn.jpg
+- role: secondary
+  path: Q492684/secondary-1.webp
+  width: 1012
+  height: 1800
+  license: CC BY-SA 4.0
+  author: Vasilikivrlm
+  source_url: https://commons.wikimedia.org/wiki/File:ALECTORIS GRAECA-ΣΟΥΝΙΟ.jpg
+  commons_filename: ALECTORIS GRAECA-ΣΟΥΝΙΟ.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T21:06:43.409276+00:00'

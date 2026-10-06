@@ -41,7 +41,7 @@ image_refs:
   width: 2048
   height: 1461
   license: CC BY 4.0
-  author: mourad-harzallah
+  author: Mourad Harzallah
   source_url: https://commons.wikimedia.org/wiki/File:Pterocles lichtensteinii 63545595.jpg
   commons_filename: Pterocles lichtensteinii 63545595.jpg
 - role: secondary
@@ -49,7 +49,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: mourad-harzallah
+  author: Mourad Harzallah
   source_url: https://commons.wikimedia.org/wiki/File:Pterocles lichtensteinii 250865375.jpg
   commons_filename: Pterocles lichtensteinii 250865375.jpg
 review_status: auto

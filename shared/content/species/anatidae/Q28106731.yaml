@@ -105,23 +105,14 @@ image_refs:
 - role: hero
   path: Q28106731/hero.webp
   width: 2400
-  height: 1600
-  license: Public domain
-  author: YellowstoneNPS
-  source_url: https://commons.wikimedia.org/wiki/File:Northern shoveler (Spatula clypeata)
-    male and female (51164997189).jpg
-  commons_filename: Northern shoveler (Spatula clypeata) male and female (51164997189).jpg
-- role: secondary
-  path: Q28106731/secondary-1.webp
-  width: 1800
-  height: 1245
+  height: 1660
   license: CC0
   author: Matti Virtala
   source_url: https://commons.wikimedia.org/wiki/File:Spatula clypeata Oulu Finland
     2016-05-07.jpg
   commons_filename: Spatula clypeata Oulu Finland 2016-05-07.jpg
 - role: secondary
-  path: Q28106731/secondary-2.webp
+  path: Q28106731/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -130,6 +121,15 @@ image_refs:
     in Vodootvodny Canal, March 2012 01.jpg
   commons_filename: Moscow, male Spatula clypeata in Vodootvodny Canal, March 2012
     01.jpg
+- role: secondary
+  path: Q28106731/secondary-2.webp
+  width: 1800
+  height: 1213
+  license: CC BY-SA 4.0
+  author: Rhododendrites
+  source_url: https://commons.wikimedia.org/wiki/File:Northern shoveler male in Marine
+    Park (33296).jpg
+  commons_filename: Northern shoveler male in Marine Park (33296).jpg
 review_status: approved
 review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
 generated_at: '2026-05-06T12:55:33.423452+00:00'

@@ -92,12 +92,12 @@ migration:
 image_refs:
 - role: hero
   path: Q166171/hero.webp
-  width: 2400
-  height: 1800
-  license: CC BY 3.0
-  author: -jkb-
-  source_url: https://commons.wikimedia.org/wiki/File:Picus viridis in Berlin 2.jpg
-  commons_filename: Picus viridis in Berlin 2.jpg
+  width: 1814
+  height: 2400
+  license: CC BY-SA 4.0
+  author: Ryzhkov Sergey
+  source_url: https://commons.wikimedia.org/wiki/File:Жовна зелена (Picus viridis).jpg
+  commons_filename: Жовна зелена (Picus viridis).jpg
 - role: secondary
   path: Q166171/secondary-1.webp
   width: 1800
@@ -111,13 +111,12 @@ image_refs:
 - role: secondary
   path: Q166171/secondary-2.webp
   width: 1800
-  height: 1592
-  license: CC BY 2.0
-  author: gailhampshire
-  source_url: https://commons.wikimedia.org/wiki/File:Juvenile Green Woodpecker digging
-    for ants. Picus viridis - Flickr - gailhampshire.jpg
-  commons_filename: Juvenile Green Woodpecker digging for ants. Picus viridis - Flickr
-    - gailhampshire.jpg
+  height: 1200
+  license: CC BY 3.0
+  author: Henk Monster
+  source_url: https://commons.wikimedia.org/wiki/File:Green woodpecker close-up in
+    the Divonne garden - panoramio.jpg
+  commons_filename: Green woodpecker close-up in the Divonne garden - panoramio.jpg
 review_status: approved
 review_notes: "Hero = Picus viridis (European Green Woodpecker / Gröngöling); allmän i öppen lövskog och parker i södra och mellersta SE."
 generated_at: '2026-05-15T21:27:10.267485+00:00'

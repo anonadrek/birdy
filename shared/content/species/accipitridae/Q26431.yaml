@@ -107,11 +107,13 @@ image_refs:
 - role: hero
   path: Q26431/hero.webp
   width: 2400
-  height: 1800
-  license: CC BY-SA 4.0
-  author: Nikolam993
-  source_url: https://commons.wikimedia.org/wiki/File:Eja močvarica (Circus aeruginosus).jpg
-  commons_filename: Eja močvarica (Circus aeruginosus).jpg
+  height: 1560
+  license: CC BY 2.0
+  author: Luiz Lapa
+  source_url: https://commons.wikimedia.org/wiki/File:Tartaranhão-ruivo-dos-pauis,
+    Águia-sapeira(ocidental), (Western) Marsh Harrier (54466566761).jpg
+  commons_filename: Tartaranhão-ruivo-dos-pauis, Águia-sapeira(ocidental), (Western)
+    Marsh Harrier (54466566761).jpg
 - role: secondary
   path: Q26431/secondary-1.webp
   width: 1800

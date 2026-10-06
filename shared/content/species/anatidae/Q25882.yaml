@@ -111,11 +111,12 @@ image_refs:
 - role: secondary
   path: Q25882/secondary-1.webp
   width: 1800
-  height: 1196
-  license: CC0
-  author: Wilfredor
-  source_url: https://commons.wikimedia.org/wiki/File:Anser anser domesticus 2.jpg
-  commons_filename: Anser anser domesticus 2.jpg
+  height: 1200
+  license: CC BY-SA 4.0
+  author: Charles J. Sharp
+  source_url: https://commons.wikimedia.org/wiki/File:Greylag goose (Anser anser)
+    head.jpg
+  commons_filename: Greylag goose (Anser anser) head.jpg
 - role: secondary
   path: Q25882/secondary-2.webp
   width: 1800

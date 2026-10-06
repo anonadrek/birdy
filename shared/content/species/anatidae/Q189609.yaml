@@ -94,11 +94,13 @@ image_refs:
 - role: hero
   path: Q189609/hero.webp
   width: 2400
-  height: 1600
-  license: CC BY 2.0
-  author: lwolfartist
-  source_url: https://commons.wikimedia.org/wiki/File:Mergus serrator DSC 5939.jpg
-  commons_filename: Mergus serrator DSC 5939.jpg
+  height: 1784
+  license: CC0
+  author: ALAN SCHMIERER
+  source_url: https://commons.wikimedia.org/wiki/File:063 - RED-BREASTED MERGANSER
+    (4-20-12) south padre island, tx (8717956869).jpg
+  commons_filename: 063 - RED-BREASTED MERGANSER (4-20-12) south padre island, tx
+    (8717956869).jpg
 - role: secondary
   path: Q189609/secondary-1.webp
   width: 1800

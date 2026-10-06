@@ -153,6 +153,70 @@ class SpeciesValidatorTest {
         assertEquals(listOf("Q25485/secondary-2.webp"), orphanErrors().map { it.message.substringBefore(" ") })
     }
 
+    private fun heroSizeErrors(
+        width: Int,
+        height: Int,
+        overrides: Map<String, OverrideEntry> = emptyMap(),
+    ): List<ValidationError> {
+        val items =
+            parser.parseAll(fixtureRoot).map { (path, yaml) ->
+                path to yaml.copy(image_refs = yaml.image_refs.map { it.copy(width = width, height = height) })
+            }
+        return SpeciesValidator(Path.of("src/jvmTest/resources/fixtures/images"), items.size, overrides)
+            .validate(items)
+            .filter { it.rule == "hero-too-small" }
+    }
+
+    @Test
+    fun `a small hero photo needs a documented per-species exception and never goes below 1000 px`() {
+        assertTrue(heroSizeErrors(1024, 849).isNotEmpty(), "no exception: 2048 px rule")
+        val exception = mapOf("Q25485" to OverrideEntry(heroMinSide = 1000))
+        assertTrue(heroSizeErrors(1024, 849, exception).isEmpty(), "exception lets a 1024 px photo be the hero")
+        assertTrue(heroSizeErrors(849, 999, exception).isNotEmpty(), "999 px is below the floor")
+        val tooLow = mapOf("Q25485" to OverrideEntry(heroMinSide = 400))
+        assertTrue(heroSizeErrors(640, 480, tooLow).isNotEmpty(), "an override can't go below 1000 px")
+    }
+
+    @Test
+    fun `overrides file sets the per-species hero size exception`() {
+        val parsed =
+            parseOverrides(
+                """
+                species:
+                  Q1143180:
+                    hero_min_side: 1000  # only photo of the species >= 2048 px is obscured
+                  Q207838:
+                    description_accept_missing: [sv]
+                """.trimIndent(),
+            )
+        assertEquals(1000, parsed.getValue("Q1143180").heroMinSide)
+        assertEquals(null, parsed.getValue("Q207838").heroMinSide)
+        assertEquals(setOf("sv"), parsed.getValue("Q207838").descriptionAcceptMissing)
+    }
+
+    @Test
+    fun `finder and explorer files in the image folder are not orphans`(
+        @TempDir tempDir: Path,
+    ) {
+        val items = parser.parseAll(fixtureRoot)
+        val referenced =
+            tempDir.resolve(
+                items
+                    .single()
+                    .second.image_refs
+                    .single()
+                    .path,
+            )
+        Files.createDirectories(referenced.parent)
+        Files.writeString(referenced, "photo")
+        for (junk in listOf(".DS_Store", "Q25485/.DS_Store", "Q25485/._hero.jpg", "Q25485/Thumbs.db", "thumbs.db")) {
+            Files.writeString(tempDir.resolve(junk), "x")
+        }
+
+        val errors = SpeciesValidator(tempDir, items.size, emptyMap(), checkOrphans = true).validate(items)
+        assertTrue(errors.none { it.rule == "image-orphan" }, errors.joinToString { it.format() })
+    }
+
     @Test
     fun `common species needing review still in auto state is rejected`() {
         val items = parser.parseAll(fixtureRoot)

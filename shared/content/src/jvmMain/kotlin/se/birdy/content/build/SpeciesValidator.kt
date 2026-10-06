@@ -44,7 +44,7 @@ class SpeciesValidator(
             .walk(imageRoot)
             .use { stream ->
                 stream
-                    .filter { Files.isRegularFile(it) }
+                    .filter { Files.isRegularFile(it) && !isDesktopJunk(it) }
                     .map { imageRoot.relativize(it).joinToString("/") }
                     .filter { it !in referenced }
                     .sorted()
@@ -102,12 +102,13 @@ class SpeciesValidator(
                         "${img.path} not found under $imageRoot",
                     )
             }
-            if (img.role == "hero" && (img.width < 2048 && img.height < 2048)) {
+            val heroMinSide = heroMinSide(yaml.id)
+            if (img.role == "hero" && maxOf(img.width, img.height) < heroMinSide) {
                 errors +=
                     ValidationError(
                         yaml.id,
                         "hero-too-small",
-                        "${img.path} is ${img.width}x${img.height}, need ≥2048 on one side",
+                        "${img.path} is ${img.width}x${img.height}, need ≥$heroMinSide on one side",
                     )
             }
             if (img.license.isBlank() || img.author.isBlank() || img.source_url.isBlank()) {
@@ -131,6 +132,16 @@ class SpeciesValidator(
         }
 
         return errors
+    }
+
+    /**
+     * 2048 px, unless overrides.yaml documents `hero_min_side` for the species
+     * (a real photo below 2048 px beats a 19th-century plate as the hero).
+     * Never below [HERO_MIN_SIDE_FLOOR].
+     */
+    private fun heroMinSide(species: String): Int {
+        val documented = overrides[species]?.heroMinSide ?: HERO_MIN_SIDE
+        return maxOf(documented, HERO_MIN_SIDE_FLOOR)
     }
 
     private fun validateCredit(
@@ -169,6 +180,8 @@ class SpeciesValidator(
             PUBLIC_DOMAIN_LICENSES +
                 setOf("CC BY 2.0", "CC BY 3.0", "CC BY 4.0", "CC BY-SA 2.0", "CC BY-SA 3.0", "CC BY-SA 4.0")
         private val UNNAMED_AUTHORS = setOf("", "unknown", "anonymous", "no rights reserved")
+        const val HERO_MIN_SIDE = 2048
+        const val HERO_MIN_SIDE_FLOOR = 1000
 
         private val VALID_REGIONS =
             setOf(
@@ -197,4 +210,13 @@ class SpeciesValidator(
 data class OverrideEntry(
     val descriptionAcceptMissing: Set<String> = emptySet(),
     val allowMissingImages: Boolean = false,
+    val heroMinSide: Int? = null,
 )
+
+private val DESKTOP_JUNK = setOf("thumbs.db", "desktop.ini")
+
+/** Mac Finder and Windows Explorer files: never photos, never orphans. */
+internal fun isDesktopJunk(file: Path): Boolean {
+    val name = file.fileName.toString()
+    return name.startsWith(".") || name.lowercase() in DESKTOP_JUNK
+}

@@ -88,12 +88,11 @@ image_refs:
 - role: hero
   path: Q26026/hero.webp
   width: 2400
-  height: 1800
-  license: CC0
-  author: Klaaschwotzer
-  source_url: https://commons.wikimedia.org/wiki/File:Ringeltaube Columba palumbus
-    Hannover Germany.jpg
-  commons_filename: Ringeltaube Columba palumbus Hannover Germany.jpg
+  height: 1590
+  license: CC BY 2.0
+  author: Ott Rebane
+  source_url: https://commons.wikimedia.org/wiki/File:2018-05-15 Kaelustuvi.jpg
+  commons_filename: 2018-05-15 Kaelustuvi.jpg
 - role: secondary
   path: Q26026/secondary-1.webp
   width: 1800
@@ -105,12 +104,11 @@ image_refs:
 - role: secondary
   path: Q26026/secondary-2.webp
   width: 1800
-  height: 1350
-  license: Public domain
-  author: Sarang
-  source_url: https://commons.wikimedia.org/wiki/File:Columba palumbus altricials
-    2.jpg
-  commons_filename: Columba palumbus altricials 2.jpg
+  height: 1743
+  license: CC0
+  author: Аимаина хикари
+  source_url: https://commons.wikimedia.org/wiki/File:Columba palumbus Nemishayeve1.JPG
+  commons_filename: Columba palumbus Nemishayeve1.JPG
 review_status: approved
 review_notes: Hero auto-pick OK — ringduva i flykt eller på gren med tydliga vita
   halsfläckar och vita vingband (diagnostiska fältkaraktärer mot andra duvor).

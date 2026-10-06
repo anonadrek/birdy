@@ -92,13 +92,12 @@ migration:
 image_refs:
 - role: hero
   path: Q25876/hero.webp
-  width: 2400
-  height: 1504
-  license: CC BY 4.0
-  author: TRinaud
-  source_url: https://commons.wikimedia.org/wiki/File:Eurasian hobby (Falco subbuteo)
-    2020.jpg
-  commons_filename: Eurasian hobby (Falco subbuteo) 2020.jpg
+  width: 2048
+  height: 1536
+  license: CC BY 2.0
+  author: Mike Prince
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian Hobby (14574008925).jpg
+  commons_filename: Eurasian Hobby (14574008925).jpg
 - role: secondary
   path: Q25876/secondary-1.webp
   width: 1198

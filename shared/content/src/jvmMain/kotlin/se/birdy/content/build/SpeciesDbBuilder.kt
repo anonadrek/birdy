@@ -64,7 +64,7 @@ class SpeciesDbBuilder(
         val referenced = items.flatMap { (_, yaml) -> yaml.image_refs.map { it.path } }.toSet()
         val files =
             Files.walk(targetImageRoot).use { stream ->
-                stream.filter { Files.isRegularFile(it) }.toList()
+                stream.filter { Files.isRegularFile(it) && !isDesktopJunk(it) }.toList()
             }
         for (file in files) {
             if (targetImageRoot.relativize(file).joinToString("/") !in referenced) Files.delete(file)

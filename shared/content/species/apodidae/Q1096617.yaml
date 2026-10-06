@@ -64,21 +64,21 @@ migration:
 image_refs:
 - role: hero
   path: Q1096617/hero.webp
-  width: 1457
-  height: 2400
-  license: CC BY-SA 4.0
-  author: Jos Zwarts
-  source_url: https://commons.wikimedia.org/wiki/File:Madeiragierzwaluw Apus unicolor
-    Jos Zwarts.tif
-  commons_filename: Madeiragierzwaluw Apus unicolor Jos Zwarts.tif
-- role: secondary
-  path: Q1096617/secondary-1.webp
   width: 1024
   height: 681
   license: CC0
   author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Einfarbsegler.jpg
   commons_filename: Einfarbsegler.jpg
+- role: secondary
+  path: Q1096617/secondary-1.webp
+  width: 1093
+  height: 1800
+  license: CC BY-SA 4.0
+  author: Jos Zwarts
+  source_url: https://commons.wikimedia.org/wiki/File:Madeiragierzwaluw Apus unicolor
+    Jos Zwarts.tif
+  commons_filename: Madeiragierzwaluw Apus unicolor Jos Zwarts.tif
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-06T14:32:46.625788+00:00'

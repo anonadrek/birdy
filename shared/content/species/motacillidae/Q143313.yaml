@@ -105,18 +105,20 @@ image_refs:
   path: Q143313/hero.webp
   width: 2400
   height: 1800
-  license: CC BY-SA 4.0
-  author: Synezis
-  source_url: https://commons.wikimedia.org/wiki/File:Anthus trivialis, Srbija (123).jpg
-  commons_filename: Anthus trivialis, Srbija (123).jpg
+  license: CC BY-SA 2.0
+  author: xulescu_g
+  source_url: https://commons.wikimedia.org/wiki/File:Anthus trivialis (40810566815).jpg
+  commons_filename: Anthus trivialis (40810566815).jpg
 - role: secondary
   path: Q143313/secondary-1.webp
-  width: 1350
-  height: 1800
-  license: CC BY-SA 4.0
-  author: Sanja Šumanović
-  source_url: https://commons.wikimedia.org/wiki/File:Šumska trepteljka (Anthus trivialis).jpg
-  commons_filename: Šumska trepteljka (Anthus trivialis).jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: Frank Vassen
+  source_url: https://commons.wikimedia.org/wiki/File:Baumpieper (Anthus trivialis),
+    Holzwarchetal bei Mürringen, Ostbelgien (3938435013).jpg
+  commons_filename: Baumpieper (Anthus trivialis), Holzwarchetal bei Mürringen, Ostbelgien
+    (3938435013).jpg
 - role: secondary
   path: Q143313/secondary-2.webp
   width: 1800

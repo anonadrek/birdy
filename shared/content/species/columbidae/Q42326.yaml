@@ -116,12 +116,13 @@ image_refs:
 - role: secondary
   path: Q42326/secondary-2.webp
   width: 1800
-  height: 1202
+  height: 1350
   license: CC BY 4.0
-  author: Flocci Nivis
-  source_url: https://commons.wikimedia.org/wiki/File:20200115 Columba livia domestica
-    Bürgerpark Saarbrücken 02.jpg
-  commons_filename: 20200115 Columba livia domestica Bürgerpark Saarbrücken 02.jpg
+  author: william_stephens
+  source_url: https://commons.wikimedia.org/wiki/File:Columba livia (Rock Dove, wild),
+    Duncansby Head, Caithness, Scotland 1.jpg
+  commons_filename: Columba livia (Rock Dove, wild), Duncansby Head, Caithness, Scotland
+    1.jpg
 review_status: approved
 review_notes: 'Hero auto-pick OK — tamduva (förvildad Columba livia) i parkmiljö med
   typisk grå-blå färgvariant och iridescenta halsfjädrar. Notera: common_en kortades

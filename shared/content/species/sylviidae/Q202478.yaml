@@ -107,13 +107,13 @@ image_refs:
   commons_filename: Garden Warbler Sylvia borin.jpg
 - role: secondary
   path: Q202478/secondary-2.webp
-  width: 1350
-  height: 1800
-  license: CC BY-SA 4.0
-  author: Sanja Šumanović
-  source_url: https://commons.wikimedia.org/wiki/File:Siva grmuša (Sylvia borin) Garden
-    Warbler.jpg
-  commons_filename: Siva grmuša (Sylvia borin) Garden Warbler.jpg
+  width: 1800
+  height: 1010
+  license: CC BY-SA 2.0
+  author: Dominic Sherony
+  source_url: https://commons.wikimedia.org/wiki/File:Garden Warbler (Sylvia borin)
+    (31633947647).jpg
+  commons_filename: Garden Warbler (Sylvia borin) (31633947647).jpg
 review_status: approved
 review_notes: "Hero = Sylvia borin (Garden Warbler / Trädgårdssångare); allmän häckare i lövskog och buskmark i hela SE."
 generated_at: '2026-05-15T21:12:36.859750+00:00'

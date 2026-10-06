@@ -97,8 +97,8 @@ image_refs:
   license: CC BY-SA 4.0
   author: Asarasua
   source_url: https://commons.wikimedia.org/wiki/File:Txirri lepokoduna, 'Eudromias
-    morinellus' 01.jpg
-  commons_filename: Txirri lepokoduna, 'Eudromias morinellus' 01.jpg
+    morinellus' 02.jpg
+  commons_filename: Txirri lepokoduna, 'Eudromias morinellus' 02.jpg
 - role: secondary
   path: Q25677554/secondary-1.webp
   width: 1800
@@ -106,8 +106,8 @@ image_refs:
   license: CC BY-SA 4.0
   author: Asarasua
   source_url: https://commons.wikimedia.org/wiki/File:Txirri lepokoduna, 'Eudromias
-    morinellus' 02.jpg
-  commons_filename: Txirri lepokoduna, 'Eudromias morinellus' 02.jpg
+    morinellus' 04.jpg
+  commons_filename: Txirri lepokoduna, 'Eudromias morinellus' 04.jpg
 - role: secondary
   path: Q25677554/secondary-2.webp
   width: 1800
@@ -115,8 +115,8 @@ image_refs:
   license: CC BY-SA 4.0
   author: Asarasua
   source_url: https://commons.wikimedia.org/wiki/File:Txirri lepokoduna, 'Eudromias
-    morinellus' 04.jpg
-  commons_filename: Txirri lepokoduna, 'Eudromias morinellus' 04.jpg
+    morinellus' 01.jpg
+  commons_filename: Txirri lepokoduna, 'Eudromias morinellus' 01.jpg
 review_status: approved
 review_notes: '2026-05-08: hero shows fjällpipare i fjälltundra-miljö — typisk häckningshabitat på högfjäll med gles vegetation. Bilden är tagen på avstånd men individen och miljön är tydligt fältdiagnostiska. Etablerad SE-häckare på höga fjäll i norra Sverige, sommargäst april–september.'
 generated_at: '2026-05-08T00:03:34.449431+00:00'

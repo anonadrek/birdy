@@ -103,21 +103,20 @@ image_refs:
 - role: secondary
   path: Q27102/secondary-1.webp
   width: 1800
-  height: 1178
-  license: CC BY 3.0
-  author: Jerzy Strzelecki
-  source_url: https://commons.wikimedia.org/wiki/File:Skellig Michael - Alca torda
-    & Uria aalge 02.jpg
-  commons_filename: Skellig Michael - Alca torda & Uria aalge 02.jpg
+  height: 1200
+  license: CC BY 2.0
+  author: Ron Knight
+  source_url: https://commons.wikimedia.org/wiki/File:Razorbill (Alca torda) (13668042894).jpg
+  commons_filename: Razorbill (Alca torda) (13668042894).jpg
 - role: secondary
   path: Q27102/secondary-2.webp
   width: 1800
-  height: 1183
-  license: CC BY 3.0
-  author: Jerzy Strzelecki
-  source_url: https://commons.wikimedia.org/wiki/File:Skellig Michael - Alca torda
-    & Uria aalge 01.jpg
-  commons_filename: Skellig Michael - Alca torda & Uria aalge 01.jpg
+  height: 1350
+  license: CC BY-SA 4.0
+  author: MPF
+  source_url: https://commons.wikimedia.org/wiki/File:2015-07-10 Alca torda Dunstanburgh
+    2.jpg
+  commons_filename: 2015-07-10 Alca torda Dunstanburgh 2.jpg
 review_status: approved
 review_notes: 'auto-pick OK (Alca torda i naturmiljö, klar identifierbar)'
 generated_at: '2026-05-06T14:17:41.114553+00:00'

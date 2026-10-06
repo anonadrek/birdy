@@ -62,21 +62,21 @@ migration:
 image_refs:
 - role: hero
   path: Q130241/hero.webp
-  width: 2375
-  height: 1926
-  license: Public domain
-  author: Joseph Smit
-  source_url: https://commons.wikimedia.org/wiki/File:Rhynchostruthus percivali from
-    RhynchostruthusRiebeckiSmit.jpg
-  commons_filename: Rhynchostruthus percivali from RhynchostruthusRiebeckiSmit.jpg
-- role: secondary
-  path: Q130241/secondary-1.webp
   width: 1534
   height: 953
   license: CC BY 4.0
   author: Jan Ebr
   source_url: https://commons.wikimedia.org/wiki/File:Rhynchostruthus percivali.jpg
   commons_filename: Rhynchostruthus percivali.jpg
+- role: secondary
+  path: Q130241/secondary-1.webp
+  width: 1800
+  height: 1460
+  license: Public domain
+  author: Joseph Smit
+  source_url: https://commons.wikimedia.org/wiki/File:Rhynchostruthus percivali from
+    RhynchostruthusRiebeckiSmit.jpg
+  commons_filename: Rhynchostruthus percivali from RhynchostruthusRiebeckiSmit.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T19:12:38.800091+00:00'

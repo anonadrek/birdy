@@ -59,8 +59,16 @@ migration:
 image_refs:
 - role: hero
   path: Q1318638/hero.webp
-  width: 2400
-  height: 1530
+  width: 1000
+  height: 590
+  license: CC BY-SA 3.0
+  author: Dûrzan cîrano
+  source_url: https://commons.wikimedia.org/wiki/File:Carpospiza brachydactyla.jpg
+  commons_filename: Carpospiza brachydactyla.jpg
+- role: secondary
+  path: Q1318638/secondary-1.webp
+  width: 1800
+  height: 1148
   license: Public domain
   author: Joseph Wolf
   source_url: https://commons.wikimedia.org/wiki/File:Carpospiza brachydactyla 1868.jpg

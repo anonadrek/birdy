@@ -65,11 +65,12 @@ image_refs:
 - role: hero
   path: Q216850/hero.webp
   width: 2400
-  height: 1600
-  license: CC0
-  author: Rodolfo Mari dolfoto
-  source_url: https://commons.wikimedia.org/wiki/File:Rodolfo Mari 2015 (Unsplash).jpg
-  commons_filename: Rodolfo Mari 2015 (Unsplash).jpg
+  height: 1958
+  license: CC BY-SA 4.0
+  author: Patrick Kern
+  source_url: https://commons.wikimedia.org/wiki/File:Calonectris Diomedea, Puffin
+    de Scopoli, St-Jean Cap Ferrat.jpg
+  commons_filename: Calonectris Diomedea, Puffin de Scopoli, St-Jean Cap Ferrat.jpg
 - role: secondary
   path: Q216850/secondary-1.webp
   width: 1800
@@ -81,12 +82,11 @@ image_refs:
 - role: secondary
   path: Q216850/secondary-2.webp
   width: 1800
-  height: 1469
-  license: CC BY-SA 4.0
-  author: Patrick Kern
-  source_url: https://commons.wikimedia.org/wiki/File:Calonectris Diomedea, Puffin
-    de Scopoli, St-Jean Cap Ferrat.jpg
-  commons_filename: Calonectris Diomedea, Puffin de Scopoli, St-Jean Cap Ferrat.jpg
+  height: 1200
+  license: CC0
+  author: Rodolfo Mari
+  source_url: https://commons.wikimedia.org/wiki/File:Rodolfo Mari 2015 (Unsplash).jpg
+  commons_filename: Rodolfo Mari 2015 (Unsplash).jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T21:21:27.553999+00:00'

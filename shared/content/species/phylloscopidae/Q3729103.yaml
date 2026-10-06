@@ -86,23 +86,15 @@ migration:
 image_refs:
 - role: hero
   path: Q3729103/hero.webp
-  width: 1642
-  height: 2400
-  license: Public domain
-  author: Gustav Mützel
-  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus sindianus 1889.jpg
-  commons_filename: Phylloscopus sindianus 1889.jpg
-- role: secondary
-  path: Q3729103/secondary-1.webp
-  width: 1800
-  height: 1350
+  width: 2000
+  height: 1500
   license: CC BY-SA 2.0
   author: Imran Shah
   source_url: https://commons.wikimedia.org/wiki/File:Mountain Chiffchaff (Phylloscopus
     sindianus) (15706499630).jpg
   commons_filename: Mountain Chiffchaff (Phylloscopus sindianus) (15706499630).jpg
 - role: secondary
-  path: Q3729103/secondary-2.webp
+  path: Q3729103/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 2.0
@@ -110,6 +102,14 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Mountain Chiffchaff (Phylloscopus
     sindianus) (53421953917).jpg
   commons_filename: Mountain Chiffchaff (Phylloscopus sindianus) (53421953917).jpg
+- role: secondary
+  path: Q3729103/secondary-2.webp
+  width: 1232
+  height: 1800
+  license: Public domain
+  author: Gustav Mützel
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus sindianus 1889.jpg
+  commons_filename: Phylloscopus sindianus 1889.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T21:22:59.995256+00:00'

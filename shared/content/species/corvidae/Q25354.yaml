@@ -105,28 +105,28 @@ image_refs:
 - role: hero
   path: Q25354/hero.webp
   width: 2400
-  height: 1800
-  license: CC0
-  author: Klaaschwotzer
-  source_url: https://commons.wikimedia.org/wiki/File:Garrulus glandarius 4.jpg
-  commons_filename: Garrulus glandarius 4.jpg
+  height: 1640
+  license: CC BY-SA 3.0
+  author: Luc Viatour
+  source_url: https://commons.wikimedia.org/wiki/File:Garrulus glandarius 1 Luc Viatour.jpg
+  commons_filename: Garrulus glandarius 1 Luc Viatour.jpg
 - role: secondary
   path: Q25354/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
   author: Klaaschwotzer
-  source_url: https://commons.wikimedia.org/wiki/File:Garrulus glandarius DS 3.jpg
-  commons_filename: Garrulus glandarius DS 3.jpg
+  source_url: https://commons.wikimedia.org/wiki/File:Garrulus glandarius 4.jpg
+  commons_filename: Garrulus glandarius 4.jpg
 - role: secondary
   path: Q25354/secondary-2.webp
   width: 1800
   height: 1200
-  license: CC BY 4.0
-  author: Marie-Lan Taÿ Pamart
-  source_url: https://commons.wikimedia.org/wiki/File:Garrulus glandarius ringing
-    SPOL mangeoire 20250220 n05.jpg
-  commons_filename: Garrulus glandarius ringing SPOL mangeoire 20250220 n05.jpg
+  license: CC BY-SA 4.0
+  author: Shiv's fotografia
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian Jay A whisper of color
+    in the silent woods 07.jpg
+  commons_filename: Eurasian Jay A whisper of color in the silent woods 07.jpg
 review_status: approved
 review_notes: Nötskrika — hela SE upp till södra Norrland. Hero standard ID-foto.
 generated_at: '2026-05-12T20:02:18.684635+00:00'

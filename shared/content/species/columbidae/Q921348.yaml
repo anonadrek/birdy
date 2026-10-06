@@ -98,7 +98,7 @@ image_refs:
   width: 2048
   height: 1363
   license: CC BY 4.0
-  author: mourad-harzallah
+  author: Mourad Harzallah
   source_url: https://commons.wikimedia.org/wiki/File:African Collared Dove, Timiaouine,
     Algeria 2.jpg
   commons_filename: African Collared Dove, Timiaouine, Algeria 2.jpg
@@ -114,11 +114,12 @@ image_refs:
 - role: secondary
   path: Q921348/secondary-2.webp
   width: 1800
-  height: 1127
+  height: 1145
   license: CC BY 4.0
-  author: Christoph Moning
-  source_url: https://commons.wikimedia.org/wiki/File:Streptopelia roseogrisea 184455781.jpg
-  commons_filename: Streptopelia roseogrisea 184455781.jpg
+  author: karimhaddad
+  source_url: https://commons.wikimedia.org/wiki/File:African Collared Dove, Timiaouine,
+    Algeria 5.jpg
+  commons_filename: African Collared Dove, Timiaouine, Algeria 5.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-08T00:47:13.879302+00:00'

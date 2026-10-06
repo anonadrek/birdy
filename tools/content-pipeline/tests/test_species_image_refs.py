@@ -30,7 +30,7 @@ SPECIES = REPO / "shared/content/species"
 IMAGES = REPO / "shared/content/images"
 ASSET_PACK = REPO / "asset-pack/src/main/assets/images"
 
-pytestmark = pytest.mark.skipif(
+needs_repo = pytest.mark.skipif(
     not SPECIES.is_dir() or not IMAGES.is_dir(), reason="needs the Birdy repo checkout"
 )
 
@@ -43,10 +43,27 @@ def _refs() -> list[tuple[str, dict[str, Any]]]:
     return [(s["id"], ref) for s in _species() for ref in (s.get("image_refs") or [])]
 
 
+def _is_desktop_junk(path: Path) -> bool:
+    """Finder/Explorer files (.DS_Store, ._x, Thumbs.db): never photos, never orphans."""
+    return path.name.startswith(".") or path.name.lower() in {"thumbs.db", "desktop.ini"}
+
+
 def _files(root: Path) -> set[str]:
-    return {p.relative_to(root).as_posix() for p in root.rglob("*") if p.is_file()}
+    return {
+        p.relative_to(root).as_posix()
+        for p in root.rglob("*")
+        if p.is_file() and not _is_desktop_junk(p)
+    }
 
 
+def test_desktop_junk_is_not_counted_as_image_files(tmp_path: Path) -> None:
+    for name in ["Q1/hero.webp", "Q1/.DS_Store", ".DS_Store", "Q1/._hero.webp", "Q1/Thumbs.db"]:
+        (tmp_path / name).parent.mkdir(parents=True, exist_ok=True)
+        (tmp_path / name).write_bytes(b"x")
+    assert _files(tmp_path) == {"Q1/hero.webp"}
+
+
+@needs_repo
 def test_every_licence_is_on_the_allow_list() -> None:
     bad = [
         f"{qid} {ref['path']}: {ref['license']!r}"
@@ -57,6 +74,7 @@ def test_every_licence_is_on_the_allow_list() -> None:
     assert not bad, "licences outside the allow-list:\n" + "\n".join(bad)
 
 
+@needs_repo
 def test_credits_are_plain_clean_text() -> None:
     bad = [
         f"{qid} {ref['path']}: {ref['author']!r}"
@@ -66,6 +84,7 @@ def test_credits_are_plain_clean_text() -> None:
     assert not bad, "credits that still need clean_author():\n" + "\n".join(bad)
 
 
+@needs_repo
 def test_attribution_licences_name_a_photographer() -> None:
     bad = [
         f"{qid} {ref['path']} ({ref['license']}): {ref['author']!r}"
@@ -75,6 +94,7 @@ def test_attribution_licences_name_a_photographer() -> None:
     assert not bad, "CC BY / BY-SA photos without a usable photographer:\n" + "\n".join(bad)
 
 
+@needs_repo
 def test_every_referenced_file_exists() -> None:
     missing = [
         f"{qid} {ref['path']}" for qid, ref in _refs() if not (IMAGES / ref["path"]).is_file()
@@ -82,12 +102,14 @@ def test_every_referenced_file_exists() -> None:
     assert not missing, "image_refs pointing at missing files:\n" + "\n".join(missing)
 
 
+@needs_repo
 def test_no_orphan_image_files() -> None:
     referenced = {ref["path"] for _, ref in _refs()}
     orphans = sorted(_files(IMAGES) - referenced)
     assert not orphans, "files nothing references (they would still ship):\n" + "\n".join(orphans)
 
 
+@needs_repo
 def test_asset_pack_mirrors_the_source_images() -> None:
     if not ASSET_PACK.is_dir():
         pytest.skip("no asset pack in this checkout")
@@ -106,6 +128,7 @@ def test_asset_pack_mirrors_the_source_images() -> None:
 _SECONDARY = re.compile(r"^secondary-(\d+)\.webp$")
 
 
+@needs_repo
 def test_paths_follow_the_role_layout() -> None:
     bad = []
     for s in _species():
@@ -130,6 +153,7 @@ def test_paths_follow_the_role_layout() -> None:
     assert not bad, "\n".join(bad)
 
 
+@needs_repo
 def test_no_commons_file_is_used_twice() -> None:
     seen: dict[str, str] = {}
     dupes = []

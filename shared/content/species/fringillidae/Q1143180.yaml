@@ -71,15 +71,6 @@ migration:
 image_refs:
 - role: hero
   path: Q1143180/hero.webp
-  width: 2048
-  height: 1536
-  license: CC BY 4.0
-  author: Simone Littledale
-  source_url: https://commons.wikimedia.org/wiki/File:Loxia scotica - Simone Littledale
-    - 562388281.jpeg
-  commons_filename: Loxia scotica - Simone Littledale - 562388281.jpeg
-- role: secondary
-  path: Q1143180/secondary-1.webp
   width: 1024
   height: 849
   license: CC BY-SA 2.0
@@ -87,6 +78,15 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Scottish Crossbill (Loxia scotica)
     - geograph.org.uk - 8205947.jpg
   commons_filename: Scottish Crossbill (Loxia scotica) - geograph.org.uk - 8205947.jpg
+- role: secondary
+  path: Q1143180/secondary-1.webp
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: Simone Littledale
+  source_url: https://commons.wikimedia.org/wiki/File:Loxia scotica - Simone Littledale
+    - 562388281.jpeg
+  commons_filename: Loxia scotica - Simone Littledale - 562388281.jpeg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T19:14:50.263799+00:00'

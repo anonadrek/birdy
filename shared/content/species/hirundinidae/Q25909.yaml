@@ -93,11 +93,13 @@ image_refs:
 - role: hero
   path: Q25909/hero.webp
   width: 2400
-  height: 1759
+  height: 1740
   license: CC BY 2.0
-  author: Andy Morffew
-  source_url: https://commons.wikimedia.org/wiki/File:They do What???? (7782171814).jpg
-  commons_filename: They do What???? (7782171814).jpg
+  author: Luiz Lapa
+  source_url: https://commons.wikimedia.org/wiki/File:Andorinha-das-barreiras, European
+    Sand Martin, (Bank Swallow) (51220062713).jpg
+  commons_filename: Andorinha-das-barreiras, European Sand Martin, (Bank Swallow)
+    (51220062713).jpg
 - role: secondary
   path: Q25909/secondary-1.webp
   width: 1286

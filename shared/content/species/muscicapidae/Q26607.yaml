@@ -97,17 +97,19 @@ image_refs:
 - role: hero
   path: Q26607/hero.webp
   width: 2400
-  height: 1800
+  height: 1956
   license: CC BY 2.0
-  author: Donald Hobern
-  source_url: https://commons.wikimedia.org/wiki/File:Muscicapa striata (8752019704).jpg
-  commons_filename: Muscicapa striata (8752019704).jpg
+  author: gailhampshire
+  source_url: https://commons.wikimedia.org/wiki/File:Spotted Flycatcher Muscicapa
+    striata, Jimena, Andalucia, Spain (1).jpg
+  commons_filename: Spotted Flycatcher Muscicapa striata, Jimena, Andalucia, Spain
+    (1).jpg
 - role: secondary
   path: Q26607/secondary-1.webp
   width: 1800
   height: 1065
   license: CC BY 2.0
-  author: blondinrikard
+  author: Blondinrikard Fröberg
   source_url: https://commons.wikimedia.org/wiki/File:Spotted flycatcher, Muscicapa
     striata, Grå flugsnappare.jpg
   commons_filename: Spotted flycatcher, Muscicapa striata, Grå flugsnappare.jpg

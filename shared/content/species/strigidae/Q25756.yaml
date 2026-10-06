@@ -99,13 +99,12 @@ image_refs:
   commons_filename: Puszczyk zwyczajny.jpg
 - role: secondary
   path: Q25756/secondary-1.webp
-  width: 1800
-  height: 1200
-  license: CC BY 4.0
-  author: Loomahuviline69
-  source_url: https://commons.wikimedia.org/wiki/File:Tawny owl aka Strix aluco in
-    Tallinn zoo 04.jpg
-  commons_filename: Tawny owl aka Strix aluco in Tallinn zoo 04.jpg
+  width: 1350
+  height: 1800
+  license: CC BY-SA 4.0
+  author: WaldFeewald
+  source_url: https://commons.wikimedia.org/wiki/File:Dösender Waldkauz.jpg
+  commons_filename: Dösender Waldkauz.jpg
 - role: secondary
   path: Q25756/secondary-2.webp
   width: 1800

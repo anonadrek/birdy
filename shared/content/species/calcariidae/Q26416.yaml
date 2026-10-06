@@ -93,12 +93,11 @@ image_refs:
 - role: hero
   path: Q26416/hero.webp
   width: 2400
-  height: 1791
-  license: CC0
-  author: Estormiz
-  source_url: https://commons.wikimedia.org/wiki/File:Plectrophenax nivalis Oulu 20140406
-    03.JPG
-  commons_filename: Plectrophenax nivalis Oulu 20140406 03.JPG
+  height: 1600
+  license: Public domain
+  author: USFWSAlaska
+  source_url: https://commons.wikimedia.org/wiki/File:Snow bunting (51102249605).jpg
+  commons_filename: Snow bunting (51102249605).jpg
 - role: secondary
   path: Q26416/secondary-1.webp
   width: 1800

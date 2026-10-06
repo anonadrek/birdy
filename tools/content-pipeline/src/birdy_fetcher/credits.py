@@ -12,21 +12,20 @@ from __future__ import annotations
 import re
 from urllib.parse import urlparse
 
+from .web.licenses import LICENSE_URLS
 from .web.licenses import clean_author as _html_to_text
 
-# Hard allow-list (release 1.3.0): only these licences may ship in the app.
-# NonCommercial, NoDerivatives, GFDL-only, ported/odd CC versions (2.5, 3.0 de,
-# …) and anything unknown are rejected.
-PUBLIC_DOMAIN_LICENSES: frozenset[str] = frozenset({"CC0", "Public domain"})
+# Hard allow-list (release 1.3.0): only these licences may ship in the app or on
+# the website. One table for both, web/licenses.py LICENSE_URLS: a licence with
+# no deed URL is public domain, the rest need a credit. NonCommercial,
+# NoDerivatives, GFDL-only, ported/odd CC versions (2.5, 3.0 de, ...) and
+# anything unknown are rejected. The Kotlin validator keeps a copy
+# (SpeciesValidator.ALLOWED_LICENSES); test_credits.py checks they agree.
+PUBLIC_DOMAIN_LICENSES: frozenset[str] = frozenset(
+    name for name, url in LICENSE_URLS.items() if url is None
+)
 ATTRIBUTION_LICENSES: frozenset[str] = frozenset(
-    {
-        "CC BY 2.0",
-        "CC BY 3.0",
-        "CC BY 4.0",
-        "CC BY-SA 2.0",
-        "CC BY-SA 3.0",
-        "CC BY-SA 4.0",
-    }
+    name for name, url in LICENSE_URLS.items() if url is not None
 )
 ALLOWED_LICENSES: frozenset[str] = PUBLIC_DOMAIN_LICENSES | ATTRIBUTION_LICENSES
 
@@ -67,6 +66,25 @@ _USERNAME_COLON_NAME = re.compile(r"^([^\s:]+):(\S.*\s.*)$")
 _WIKI_SUFFIX = re.compile(r"~\w+wiki$")
 _USER_PREFIX = re.compile(r"^user:\s*", re.IGNORECASE)
 _FOOTNOTE = re.compile(r"^\[\d+\]$")
+_UNSPLASH_HANDLE = re.compile(
+    r"""(?<=\S)\s*<a\s[^>]*unsplash\.com/@[^>]*>.*?</a>""", re.IGNORECASE | re.DOTALL
+)
+_INAT_USER = re.compile(r"\s*\(iNaturalist user [^)]*\)", re.IGNORECASE)
+# "Name (login)": iNaturalist appends the account login, all lower case.
+_LOGIN_SUFFIX = re.compile(r"^(.*\S)\s*\(\s*(?=[a-z0-9_.-]*[a-z])[a-z0-9_.-]+\s*\)$")
+# One spelling per photographer: Commons credits the same person by account
+# name on some files and full name on others.
+_SAME_PERSON = {
+    "blondinrikard": "Blondinrikard Fröberg",
+    "saudi press agency (spa)": "Saudi Press Agency (SPA)",
+    "alexis_lours": "Alexis Lours",
+    "christoph_moning": "Christoph Moning",
+    "mourad-harzallah": "Mourad Harzallah",
+    "jerzystrzelecki": "Jerzy Strzelecki",
+    "mattivirtala": "Matti Virtala",
+    "terolinjama": "Tero Linjama",
+    "ryanvanhuyssteen": "Ryan van Huyssteen",
+}
 _FLICKR_FROM = re.compile(
     r"""^\s*(<a\s[^>]*flickr\.com/(?:people|photos)/[^>]*>.*?</a>)\s+from\s+\S""",
     re.IGNORECASE | re.DOTALL,
@@ -94,6 +112,7 @@ def clean_author(raw: str | None) -> str | None:
     # place is the uploader's profile location, not part of the name.
     if m := _FLICKR_FROM.search(raw):
         raw = m.group(1)
+    raw = _UNSPLASH_HANDLE.sub("", raw)
     text = _html_to_text(raw)
     if not text:
         return None
@@ -117,7 +136,11 @@ def clean_author(raw: str | None) -> str | None:
     halves = text.split("/")
     if len(halves) == 2 and halves[0].strip() == halves[1].strip():
         text = halves[0]
+    text = _INAT_USER.sub("", text)
+    if m := _LOGIN_SUFFIX.match(text):
+        text = m.group(1)
     text = " ".join(text.split()).strip(" ,;")
+    text = _SAME_PERSON.get(text.lower(), text)
     return text or None
 
 

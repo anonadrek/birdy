@@ -94,12 +94,12 @@ image_refs:
 - role: hero
   path: Q26629/hero.webp
   width: 2400
-  height: 1800
-  license: Public domain
-  author: Botteville
-  source_url: https://commons.wikimedia.org/wiki/File:Larus marinus at Sandy Point,
-    Ipswich, MA.jpg
-  commons_filename: Larus marinus at Sandy Point, Ipswich, MA.jpg
+  height: 1600
+  license: CC BY 2.0
+  author: Andrew C
+  source_url: https://commons.wikimedia.org/wiki/File:Great Black-backed Gull (Larus
+    marinus) (15898029627).jpg
+  commons_filename: Great Black-backed Gull (Larus marinus) (15898029627).jpg
 - role: secondary
   path: Q26629/secondary-1.webp
   width: 1800

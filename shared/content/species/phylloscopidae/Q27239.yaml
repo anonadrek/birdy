@@ -118,12 +118,11 @@ image_refs:
 - role: secondary
   path: Q27239/secondary-2.webp
   width: 1800
-  height: 1200
-  license: CC BY-SA 4.0
-  author: Charles J. Sharp
-  source_url: https://commons.wikimedia.org/wiki/File:Willow warbler (Phylloscopus
-    trochilus) ringed Malta.jpg
-  commons_filename: Willow warbler (Phylloscopus trochilus) ringed Malta.jpg
+  height: 1440
+  license: CC BY 4.0
+  author: Stephan Sprinz
+  source_url: https://commons.wikimedia.org/wiki/File:Fitis im NSG Elmpter Schwalmbruch.jpg
+  commons_filename: Fitis im NSG Elmpter Schwalmbruch.jpg
 review_status: approved
 review_notes: "Hero = Phylloscopus trochilus (Willow Warbler / Lövsångare); SE:s vanligaste fågel, ubikvist i lövskog och buskmark."
 generated_at: '2026-05-15T21:22:49.170681+00:00'

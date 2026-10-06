@@ -89,12 +89,21 @@ migration:
 image_refs:
 - role: hero
   path: Q104867606/hero.webp
-  width: 2048
-  height: 1282
-  license: CC BY 4.0
-  author: Christoph Moning
-  source_url: https://commons.wikimedia.org/wiki/File:Curruca nisoria 378155893.jpg
-  commons_filename: Curruca nisoria 378155893.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: fveronesi1
+  source_url: https://commons.wikimedia.org/wiki/File:Barred Warbler - Slovenia 5P5A9614.jpg
+  commons_filename: Barred Warbler - Slovenia 5P5A9614.jpg
+- role: secondary
+  path: Q104867606/secondary-1.webp
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: MPF
+  source_url: https://commons.wikimedia.org/wiki/File:2019-10-16 Barred Warbler, St
+    Mary's Island, Northumberland 1.jpg
+  commons_filename: 2019-10-16 Barred Warbler, St Mary's Island, Northumberland 1.jpg
 review_status: approved
 review_notes: "Hero = Sylvia nisoria (Barred Warbler / Höksångare); allmän i kantzoner och buskmark i södra och mellersta SE."
 generated_at: '2026-05-15T21:11:57.123791+00:00'

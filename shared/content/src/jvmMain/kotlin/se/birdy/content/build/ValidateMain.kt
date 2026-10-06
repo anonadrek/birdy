@@ -1,6 +1,7 @@
 package se.birdy.content.build
 
 import com.charleskorn.kaml.Yaml
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import java.nio.file.Path
 
@@ -13,7 +14,17 @@ private data class OverridesYaml(
 private data class OverridesPatch(
     val description_accept_missing: List<String> = emptyList(),
     val allow_missing_images: Boolean = false,
+    @SerialName("hero_min_side") val heroMinSide: Int? = null,
 )
+
+internal fun parseOverrides(text: String): Map<String, OverrideEntry> =
+    Yaml.default.decodeFromString(OverridesYaml.serializer(), text).species.mapValues { (_, p) ->
+        OverrideEntry(
+            descriptionAcceptMissing = p.description_accept_missing.toSet(),
+            allowMissingImages = p.allow_missing_images,
+            heroMinSide = p.heroMinSide,
+        )
+    }
 
 object ValidateMain {
     @JvmStatic
@@ -35,16 +46,7 @@ object ValidateMain {
 
         val overrides: Map<String, OverrideEntry> =
             if (overridesPath != null && overridesPath.toFile().exists() && overridesPath.toFile().length() > 0) {
-                runCatching {
-                    val text = overridesPath.toFile().readText()
-                    val parsed = Yaml.default.decodeFromString(OverridesYaml.serializer(), text)
-                    parsed.species.mapValues { (_, p) ->
-                        OverrideEntry(
-                            descriptionAcceptMissing = p.description_accept_missing.toSet(),
-                            allowMissingImages = p.allow_missing_images,
-                        )
-                    }
-                }.getOrDefault(emptyMap())
+                runCatching { parseOverrides(overridesPath.toFile().readText()) }.getOrDefault(emptyMap())
             } else {
                 emptyMap()
             }

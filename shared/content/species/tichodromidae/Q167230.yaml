@@ -97,13 +97,13 @@ migration:
 image_refs:
 - role: hero
   path: Q167230/hero.webp
-  width: 2048
-  height: 1536
-  license: CC BY 4.0
-  author: Ian Dugdale
-  source_url: https://commons.wikimedia.org/wiki/File:Tichodroma muraria - Ian Dugdale
-    - 547329333.jpeg
-  commons_filename: Tichodroma muraria - Ian Dugdale - 547329333.jpeg
+  width: 2300
+  height: 1534
+  license: CC BY-SA 4.0
+  author: Charles J. Sharp
+  source_url: https://commons.wikimedia.org/wiki/File:Wallcreeper (Tichodroma muraria)
+    female Piatra Craiului.jpg
+  commons_filename: Wallcreeper (Tichodroma muraria) female Piatra Craiului.jpg
 - role: secondary
   path: Q167230/secondary-1.webp
   width: 1800
@@ -111,8 +111,8 @@ image_refs:
   license: CC BY 4.0
   author: Ian Dugdale
   source_url: https://commons.wikimedia.org/wiki/File:Tichodroma muraria - Ian Dugdale
-    - 547329349.jpeg
-  commons_filename: Tichodroma muraria - Ian Dugdale - 547329349.jpeg
+    - 547329333.jpeg
+  commons_filename: Tichodroma muraria - Ian Dugdale - 547329333.jpeg
 - role: secondary
   path: Q167230/secondary-2.webp
   width: 1800

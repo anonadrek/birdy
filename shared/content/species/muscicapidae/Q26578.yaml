@@ -96,21 +96,21 @@ image_refs:
 - role: hero
   path: Q26578/hero.webp
   width: 2400
-  height: 1647
-  license: CC0
-  author: Estormiz
-  source_url: https://commons.wikimedia.org/wiki/File:Luscinia svecica Oulu 20180907
-    02.jpg
-  commons_filename: Luscinia svecica Oulu 20180907 02.jpg
+  height: 1602
+  license: CC BY 4.0
+  author: Sultanjenin2018
+  source_url: https://commons.wikimedia.org/wiki/File:هزار أزرق الزور Luscinia svecica
+    2.jpg
+  commons_filename: هزار أزرق الزور Luscinia svecica 2.jpg
 - role: secondary
   path: Q26578/secondary-1.webp
   width: 1800
-  height: 1246
-  license: CC0
-  author: Estormiz
-  source_url: https://commons.wikimedia.org/wiki/File:Luscinia svecica Oulu 20180907
-    01.jpg
-  commons_filename: Luscinia svecica Oulu 20180907 01.jpg
+  height: 1200
+  license: CC BY-SA 4.0
+  author: El Golli Mohamed
+  source_url: https://commons.wikimedia.org/wiki/File:Bluethroat (Luscinia svecica)
+    at Ichkeul NP.jpg
+  commons_filename: Bluethroat (Luscinia svecica) at Ichkeul NP.jpg
 - role: secondary
   path: Q26578/secondary-2.webp
   width: 1800

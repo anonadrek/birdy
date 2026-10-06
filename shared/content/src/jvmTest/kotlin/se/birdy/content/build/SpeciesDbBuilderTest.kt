@@ -250,6 +250,30 @@ class SpeciesDbBuilderTest {
         assertFalse(Files.exists(dropped.parent), "empty species folder must be removed")
     }
 
+    @Test
+    fun `leaves finder and explorer files in the target folder alone`(
+        @TempDir tempDir: Path,
+    ) {
+        val items =
+            parser.parseAll(Path.of("src/jvmTest/resources/fixtures/species"))
+        val outImages = tempDir.resolve("images")
+        val junk = listOf(".DS_Store", "Q25485/.DS_Store", "Q25485/Thumbs.db").map { outImages.resolve(it) }
+        for (file in junk) {
+            Files.createDirectories(file.parent)
+            Files.writeString(file, "x")
+        }
+
+        SpeciesDbBuilder().build(
+            items = items,
+            sourceImageRoot = Path.of("src/jvmTest/resources/fixtures/images"),
+            targetDb = tempDir.resolve("species.db"),
+            targetImageRoot = outImages,
+        )
+
+        assertTrue(Files.exists(outImages.resolve("Q25485/hero.jpg")))
+        for (file in junk) assertTrue(Files.exists(file), "$file must not be pruned")
+    }
+
     private fun readApplicationId(db: Path): Int {
         val header = db.toFile().inputStream().use { it.readNBytes(100) }
         return ((header[68].toInt() and 0xFF) shl 24) or

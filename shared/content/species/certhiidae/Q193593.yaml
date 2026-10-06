@@ -81,11 +81,10 @@ image_refs:
   path: Q193593/secondary-1.webp
   width: 1800
   height: 1200
-  license: CC BY 4.0
-  author: Marie-Lan Taÿ Pamart
-  source_url: https://commons.wikimedia.org/wiki/File:Certhia familiaris ringing SPOL
-    mangeoire 20250220 n02.jpg
-  commons_filename: Certhia familiaris ringing SPOL mangeoire 20250220 n02.jpg
+  license: CC BY 2.0
+  author: Rory
+  source_url: https://commons.wikimedia.org/wiki/File:Certhia familiaris (38141380871).jpg
+  commons_filename: Certhia familiaris (38141380871).jpg
 - role: secondary
   path: Q193593/secondary-2.webp
   width: 1800

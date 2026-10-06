@@ -90,11 +90,12 @@ image_refs:
 - role: hero
   path: Q574447/hero.webp
   width: 2400
-  height: 1857
-  license: CC0
-  author: Estormiz
-  source_url: https://commons.wikimedia.org/wiki/File:Poecile Cinctus Kittila 20120307.JPG
-  commons_filename: Poecile Cinctus Kittila 20120307.JPG
+  height: 1600
+  license: CC BY-SA 4.0
+  author: Lucwrte
+  source_url: https://commons.wikimedia.org/wiki/File:Siberian Tit (Poecile cinctus)
+    in Sodankylä, Finland.jpg
+  commons_filename: Siberian Tit (Poecile cinctus) in Sodankylä, Finland.jpg
 - role: secondary
   path: Q574447/secondary-1.webp
   width: 1800
