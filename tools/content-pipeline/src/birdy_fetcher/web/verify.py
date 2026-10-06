@@ -15,6 +15,7 @@ from pydantic import BaseModel
 from ..claude_summarizer import _split_prompt
 from ..cost import CostTracker
 from .checks import _normalize
+from .datamod import record_status_contradiction
 from .facts import REQUIRED_TOPICS, STATUS_SV, TOPIC_SV
 from .llm import MODELS, JsonModelClient, record_cost
 from .record import Record
@@ -225,7 +226,8 @@ def status_flags(record: Record) -> list[dict[str, Any]]:
     if status_fact is None:
         return []
     flags = []
-    contradicts = (record.get("data") or {}).get("statusSignal", {}).get("contradicts")
+    # From the current data, never the stored statusSignal (I3, final review 2026-10-06).
+    contradicts = record_status_contradiction(record)
     if contradicts:
         flags.append({"check": "V3", "factId": "s01", "message": contradicts})
     red_flag = redlist_occurrence_flag(status_fact["value"], record.get("swedishRedList"))

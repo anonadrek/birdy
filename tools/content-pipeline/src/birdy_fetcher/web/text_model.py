@@ -10,6 +10,7 @@ from typing import Any
 
 from pydantic import BaseModel
 
+from .datamod import record_status_contradiction
 from .record import Record
 
 
@@ -92,11 +93,13 @@ def remove_paths(text: WebTextV2, paths: set[str]) -> WebTextV2:
 
 
 def status_for_site(record: Record) -> dict[str, Any] | None:
-    """The reviewed status, unless the data contradicts it and Albin did not keep it."""
+    """The reviewed status, unless the data contradicts it and Albin did not keep it. The
+    contradiction is computed from the current data, not the stored `statusSignal` (I3,
+    final review 2026-10-06)."""
     status = next((f for f in record.get("facts", []) if f.get("topic") == "status"), None)
     if status is None:
         return None
-    contradicts = (record.get("data") or {}).get("statusSignal", {}).get("contradicts")
+    contradicts = record_status_contradiction(record)
     if contradicts and not record.get("review", {}).get("statusConfirmed"):
         return None
     return {"value": status["value"], "factIds": [status["id"]]}

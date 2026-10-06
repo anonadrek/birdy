@@ -249,7 +249,14 @@ def _print_outcomes(outcomes: Sequence[StepOutcome], reports: Path) -> None:
 @web.command("sources")
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
 @click.option("--refresh", is_flag=True, help="Hämta alla källor på nytt i stället för från cache.")
-@click.option("--force", is_flag=True, help="Hämta om källor även för granskade faktablad.")
+@click.option(
+    "--force",
+    is_flag=True,
+    help=(
+        "Hämta om källor även för arter som har ett faktablad (byter Wikipediaversion, "
+        "rapportdata och inspelning under faktabladet; kör web facts och verify igen)."
+    ),
+)
 @click.option("--workers", type=click.IntRange(min=1), default=4)
 @click.option("--dry-run", is_flag=True, help="Hämta och visa, men skriv inga filer.")
 def web_sources(

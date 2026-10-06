@@ -110,7 +110,8 @@ async def test_a_current_text_is_skipped_unless_regenerated(tmp_path: Path) -> N
 async def test_an_unconfirmed_status_flag_hides_s01_from_the_writer(tmp_path: Path) -> None:
     paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
     record = reviewed_record()
-    record["data"]["statusSignal"]["contradicts"] = "Statusen säger stannfågel, men ..."
+    # A resident with a winter gap in the report data (I3: derived from the data now).
+    record["data"].update({"months": [100] * 11 + [1], "totalReports": 900})
     save_record(record_path(paths.data_out, "Q25485"), record)
     without_s01 = WebTextV2(
         sv=SV.model_copy(

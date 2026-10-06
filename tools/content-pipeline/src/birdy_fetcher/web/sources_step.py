@@ -12,13 +12,21 @@ from typing import Any, Protocol
 
 from ..cache import Cache
 from .audio import AudioCandidate, CommonsAudioClient, audio_record, choose, convert_to_mp3
-from .datamod import MIN_REPORTS, Counts, build_data
+from .datamod import MIN_REPORTS, Counts, build_data, record_status_contradiction
 from .gbif import GbifClient
 from .groups import GroupTable
 from .identify import ModelCoverage, load_coverage
 from .images import ImageOut, prepare_images
 from .paths import WebPaths
-from .record import image_dict, is_reviewed, load_record, merge_sources, record_path, save_record
+from .record import (
+    Record,
+    image_dict,
+    is_reviewed,
+    load_record,
+    merge_sources,
+    record_path,
+    save_record,
+)
 from .report import StepOutcome, render_step_report, write_step_report
 from .slugs import slugify
 from .source import SpeciesSource, load_approved
@@ -185,6 +193,14 @@ async def _collect(
     return collected, notes
 
 
+def _frozen(record: Record) -> bool:
+    """A species with a fact sheet (or a verification) keeps its sources unless --force,
+    whatever --refresh says (I3, final review 2026-10-06): the facts quote these Wikipedia
+    revisions, the status was checked against this report data and V4 heard this recording.
+    A plain rerun or a cold .cache would otherwise swap them under the facts."""
+    return bool(record.get("facts")) or is_reviewed(record)
+
+
 async def run_sources(
     paths: WebPaths,
     options: SourcesOptions,
@@ -214,18 +230,24 @@ async def run_sources(
             path = record_path(paths.data_out, source.qid)
             try:
                 existing = load_record(path)
-                if existing and is_reviewed(existing) and options.refresh and not options.force:
+                if existing and _frozen(existing) and not options.force:
                     return StepOutcome(
                         source.qid,
                         source.name_sv,
                         "skipped",
-                        ["faktabladet är kontrollerat: hämtas inte om utan --force"],
+                        ["faktabladet finns: källorna hämtas inte om utan --force"],
                     )
                 skip_audio = bool(existing and existing.get("review", {}).get("audioStruck"))
                 collected, notes = await _collect(source, ctx, skip_audio=skip_audio)
                 if options.dry_run:
                     return StepOutcome(source.qid, source.name_sv, "dry-run", notes=notes)
-                save_record(path, merge_sources(existing, source.qid, collected))
+                record = merge_sources(existing, source.qid, collected)
+                if record.get("data"):
+                    # build_data resets the signal; keep it true to the facts already there.
+                    record["data"]["statusSignal"] = {
+                        "contradicts": record_status_contradiction(record)
+                    }
+                save_record(path, record)
                 return StepOutcome(source.qid, source.name_sv, "ok", notes=notes)
             except Exception as exc:  # one species' error must not stop the run
                 return StepOutcome(

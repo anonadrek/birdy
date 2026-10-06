@@ -179,6 +179,19 @@ def status_contradiction(status: str, months: list[int] | None, total_reports: i
     return None
 
 
+def record_status_contradiction(record: dict[str, Any]) -> str | None:
+    """The contradiction for the record's current status fact and current `data`. Readers
+    use this, not the stored `data.statusSignal`: `web sources --force` rebuilds `data` with
+    the signal reset to None (I3, final review 2026-10-06)."""
+    status = next((f for f in record.get("facts", []) if f.get("topic") == "status"), None)
+    data = record.get("data")
+    if status is None or not data:
+        return None
+    return status_contradiction(
+        status["value"], data.get("months"), int(data.get("totalReports", 0))
+    )
+
+
 def build_data(
     *, taxon_key: int, species: Counts, all_birds: Counts, fetched_at: str
 ) -> dict[str, Any]:

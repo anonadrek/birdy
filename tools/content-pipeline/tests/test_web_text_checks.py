@@ -170,9 +170,20 @@ def test_remove_paths_and_the_minimum() -> None:
 def test_status_for_site_respects_an_unconfirmed_flag() -> None:
     record = reviewed_record()
     assert status_for_site(record) == {"value": "resident", "factIds": ["s01"]}
-    record["data"]["statusSignal"]["contradicts"] = "Statusen säger stannfågel, men ..."
+    # I3 (final review 2026-10-06): the contradiction comes from the report data, so a
+    # winter gap for a resident hides the status even with a stored signal of None (what
+    # `web sources --force` leaves behind).
+    record["data"].update({"months": [100] * 11 + [1], "totalReports": 900})
+    assert record["data"]["statusSignal"]["contradicts"] is None
     assert status_for_site(record) is None
     record["review"]["statusConfirmed"] = True
+    assert status_for_site(record) == {"value": "resident", "factIds": ["s01"]}
+
+
+def test_status_for_site_ignores_a_stale_stored_signal() -> None:
+    record = reviewed_record()
+    record["data"].update({"months": [100] * 12, "totalReports": 900})
+    record["data"]["statusSignal"]["contradicts"] = "Statusen säger stannfågel, men ..."
     assert status_for_site(record) == {"value": "resident", "factIds": ["s01"]}
 
 

@@ -389,12 +389,28 @@ def test_redlist_occurrence_flag() -> None:
 def test_status_flags_combines_the_data_contradiction_and_the_red_list() -> None:
     record = {
         "facts": [{"id": "s01", "topic": "status", "value": "absent", "sv": "Förekommer inte"}],
-        "data": {"statusSignal": {"contradicts": "Statusen säger ... men 5000 rapporter"}},
+        "data": {"totalReports": 5000, "statusSignal": {"contradicts": None}},
         "swedishRedList": "VU",
     }
     flags = status_flags(record)
     assert [f["check"] for f in flags] == ["V3", "V3"]
     assert all(f["factId"] == "s01" for f in flags)
+    assert "5000 rapporter" in flags[0]["message"]
+
+
+def test_status_flags_derives_the_contradiction_from_the_data_not_the_stored_signal() -> None:
+    """I3 (final review 2026-10-06): `web sources --force` rebuilds `data` with
+    `statusSignal.contradicts = None`; the contradiction must come from the current data and
+    status, never from that stored value."""
+    status = {"id": "s01", "topic": "status", "value": "resident", "sv": "Stannfågel"}
+    winter_gap = {"months": [100] * 11 + [1], "totalReports": 900}
+    reset = {"facts": [status], "data": {**winter_gap, "statusSignal": {"contradicts": None}}}
+    assert [f["check"] for f in status_flags(reset)] == ["V3"]
+    stale = {
+        "facts": [status],
+        "data": {"months": [100] * 12, "totalReports": 900, "statusSignal": {"contradicts": "x"}},
+    }
+    assert status_flags(stale) == []
 
 
 def test_status_flags_is_empty_without_a_status_fact() -> None:
