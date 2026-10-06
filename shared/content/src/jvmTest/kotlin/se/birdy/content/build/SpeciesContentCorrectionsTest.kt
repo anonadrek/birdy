@@ -88,4 +88,15 @@ class SpeciesContentCorrectionsTest {
         assertEquals("Koreastormsvala", species("hydrobatidae/Q28122606.yaml").names.sv)
         assertEquals("Vitnäbbad islom", species("gaviidae/Q208328.yaml").names.sv)
     }
+
+    // Vinmajna's Swedish text: "medlemi" (missing space) and "burmannusmajan" for the species it
+    // was split from, whose official Swedish name is burmamajna. Its English texts are empty and
+    // stay so (the app shows its own empty state; no new AI text in this task).
+    @Test
+    fun `vinmajna's swedish text has no typo and names burmamajnan`() {
+        val text = species("sturnidae/Q31874135.yaml").description.getValue("sv").orEmpty()
+        assertTrue("en medlem i familjen starar" in text, text)
+        assertTrue("burmamajnan" in text, text)
+        assertTrue("medlemi" !in text && "burmannusmajan" !in text, text)
+    }
 }
