@@ -7,14 +7,28 @@ from pathlib import Path
 
 import pytest
 
-from birdy_fetcher.web.record import Record, load_record, new_record, record_path, save_record
+from birdy_fetcher.web.record import (
+    Record,
+    facts_hash,
+    load_record,
+    new_record,
+    record_path,
+    save_record,
+)
 from birdy_fetcher.web.review_sheet import (
+    CHANGE,
     COLUMNS,
+    KEEP,
     SPOT_CHECK_COLUMNS,
+    STRIKE,
+    ReviewImportError,
+    apply_review,
     export_spot_check,
     export_wave,
     flag_rows,
     full_sheet_rows,
+    import_wave,
+    read_sheet,
     write_sheet,
 )
 from birdy_fetcher.web.waves import write_waves
@@ -301,3 +315,224 @@ def test_spot_check_extra_species_rejects_an_unverified_qid(tmp_path: Path) -> N
     save_record(record_path(paths.data_out, "Q8"), published_but_unverified)
     with pytest.raises(ValueError, match="Q8"):
         export_spot_check(paths, seed=1, extra_species=("Q8",))
+
+
+# -- Task 17: Albin's decisions in, `web import` ------------------------------------------
+
+
+def _decide(rows: list[dict[str, str]], **changes: tuple[str, str]) -> list[dict[str, str]]:
+    """changes: Id -> (Beslut, Faktum), for faktum/status rows."""
+    out = []
+    for row in rows:
+        row = dict(row)
+        if row["Id"] in changes and row["Typ"] not in ("data", "flagga"):
+            row["Beslut"], new_text = changes[row["Id"]]
+            if new_text:
+                row["Faktum"] = new_text
+        out.append(row)
+    return out
+
+
+def _flag_decisions(rows: list[dict[str, str]], **decisions: str) -> list[dict[str, str]]:
+    """decisions: fact id (or "" for a V4 flag) -> Beslut, for flagga rows."""
+    out = []
+    for row in rows:
+        row = dict(row)
+        if row["Typ"] == "flagga" and row["Id"] in decisions:
+            row["Beslut"] = decisions[row["Id"]]
+        out.append(row)
+    return out
+
+
+def test_a_flagged_species_only_needs_its_flags_decided() -> None:
+    record = _flagged()
+    rows = _flag_decisions(flag_rows(record), s01=KEEP)
+    result = apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert result.changed == ["Q25485"]
+    assert any(f["id"] == "s01" for f in record["facts"])
+    assert record["review"]["statusConfirmed"] is True
+    assert record["verification"] == {
+        "method": "auto",
+        "at": "2026-11-20",
+        "model": "claude-sonnet-5",
+        "spotChecked": False,
+    }
+
+
+def test_striking_a_v3_flag_removes_the_status() -> None:
+    record = _flagged()
+    rows = _flag_decisions(flag_rows(record), s01=STRIKE)
+    apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert all(f["id"] != "s01" for f in record["facts"])
+    assert record["review"]["statusConfirmed"] is False
+
+
+def test_striking_a_v4_flag_removes_the_recording() -> None:
+    record = _record()
+    record["flags"] = [{"check": "V4", "factId": None, "message": "ljudmodellen täcker inte arten"}]
+    rows = _flag_decisions(flag_rows(record), **{"": STRIKE})
+    result = apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert "audio" not in record
+    assert record["review"]["audioStruck"] is True
+    assert result.removed_audio == ["Q25485"]
+
+
+def test_spot_checked_species_keep_strike_and_change_like_before() -> None:
+    record = _record()
+    rows = _decide(
+        full_sheet_rows(record), f01=(CHANGE, "Svart huvud och vita kinder."), f02=(STRIKE, "")
+    )
+    result = apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert result.changed == ["Q25485"]
+    ids = [f["id"] for f in record["facts"]]
+    assert ids == ["f01", "s01", "d01"]
+    assert record["facts"][0]["sv"] == "Svart huvud och vita kinder."
+    assert record["facts"][0]["edited"] is True
+    assert record["verification"]["spotChecked"] is True
+
+
+def test_errors_stop_the_whole_import() -> None:
+    record = _record()
+    rows = [r for r in full_sheet_rows(record) if r["Id"] != "f02"]
+    rows = [{**r, "Beslut": "kanske"} if r["Id"] == "f01" else r for r in rows]
+    with pytest.raises(ReviewImportError) as error:
+        apply_review({"Q25485": record}, rows, date="2026-11-20")
+    message = str(error.value)
+    assert "f02" in message
+    assert "kanske" in message
+    assert "verification" not in record
+
+
+def test_a_flag_without_a_decision_stops_the_import() -> None:
+    record = _flagged()
+    with pytest.raises(ReviewImportError) as error:
+        apply_review({"Q25485": record}, flag_rows(record), date="2026-11-20")
+    assert "flaggan" in str(error.value)
+
+
+def test_an_invalid_status_label_stops_the_import() -> None:
+    """Requirement 5: 'en status som inte är en av de sex etiketterna' must stop the whole
+    import, not just silently keep the old status. The status fact's row has Typ "faktum"
+    (bilaga E), not "faktum"/"status" split by row -- the check must key off the fact's own
+    topic, not the row's Typ, or this validation would never fire."""
+    record = _record()
+    rows = _decide(full_sheet_rows(record), s01=(CHANGE, "kanske"))
+    with pytest.raises(ReviewImportError) as error:
+        apply_review({"Q25485": record}, rows, date="2026-11-20")
+    message = str(error.value)
+    assert "s01" in message
+    assert "Stannfågel" in message  # one of the six valid labels is listed in the error
+
+
+def test_changing_the_status_via_andra_updates_value_and_sv() -> None:
+    record = _record()
+    rows = _decide(full_sheet_rows(record), s01=(CHANGE, "Flyttfågel, häckar här"))
+    apply_review({"Q25485": record}, rows, date="2026-11-20")
+    status = next(f for f in record["facts"] if f["id"] == "s01")
+    assert status["value"] == "breeding_migrant"
+    assert status["sv"] == "Flyttfågel, häckar här"
+    assert status["edited"] is True
+
+
+def test_apply_review_refreshes_facts_hash_so_verify_does_not_rerun() -> None:
+    """Requirement 4: once Albin's edit is in, `generated.verify.factsHash` must match the
+    new facts so a later `web verify` run treats the species as already current instead of
+    re-running V1 on text Albin just hand-corrected."""
+    record = _record()
+    record["generated"]["verify"]["factsHash"] = "stale-hash-from-before-the-edit"
+    rows = _decide(full_sheet_rows(record), f01=(CHANGE, "Svart huvud och vita kinder."))
+    apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert record["generated"]["verify"]["factsHash"] == facts_hash(record)
+
+
+def test_read_sheet_accepts_a_bom(tmp_path: Path) -> None:
+    path = tmp_path / "wave-1.csv"
+    write_sheet(path, full_sheet_rows(_record()))
+    path.write_bytes(b"\xef\xbb\xbf" + path.read_bytes())
+    assert read_sheet(path)[0]["Art"] == "Talgoxe"
+
+
+def test_read_sheet_unescapes_formula_prefixed_values_written_by_write_sheet(
+    tmp_path: Path,
+) -> None:
+    """Requirement 2, round trip: write_sheet's leading apostrophe (so Sheets/Excel never
+    evaluates "-5 cm" or "=1+1" as a formula) must come back off on import."""
+    record = _record()
+    record["flags"] = [
+        {"check": "V2", "factId": "f01", "message": "=1+1"},
+        {"check": "V3", "factId": "s01", "message": "-5 cm"},
+    ]
+    path = tmp_path / "undantag.csv"
+    write_sheet(path, flag_rows(record))
+    rows = read_sheet(path)
+    assert rows[0]["Faktum"] == "=1+1"
+    assert rows[1]["Faktum"] == "-5 cm"
+
+
+def test_import_wave_also_verifies_species_without_a_sheet_row(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    flagged, clean = _flagged("Q1"), _record("Q2")
+    save_record(record_path(paths.data_out, "Q1"), flagged)
+    save_record(record_path(paths.data_out, "Q2"), clean)
+    sheet = tmp_path / "wave-1.csv"
+    write_sheet(sheet, _flag_decisions(flag_rows(flagged), s01=KEEP))
+    result = import_wave(paths, sheet, wave=1, date="2026-11-20")
+    assert set(result.changed) == {"Q1", "Q2"}
+    cleared = load_record(record_path(paths.data_out, "Q2"))
+    assert cleared is not None
+    assert cleared["verification"]["spotChecked"] is False
+
+
+def test_import_without_a_wave_only_touches_the_sheets_species(tmp_path: Path) -> None:
+    """Ändrat 2026-10-05 (b): samma kommando importerar stickprovet efter publicering,
+    utan --wave och utan att röra arter som inte stod i arket."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    spot_checked = _record("Q1")
+    spot_checked["publish"] = True
+    spot_checked["verification"] = {
+        "method": "auto",
+        "at": "2026-11-10",
+        "model": "claude-sonnet-5",
+        "spotChecked": True,
+    }
+    untouched = _record("Q2")
+    save_record(record_path(paths.data_out, "Q1"), spot_checked)
+    save_record(record_path(paths.data_out, "Q2"), untouched)
+    sheet = tmp_path / "stickprov.csv"
+    rows = _decide(full_sheet_rows(spot_checked), f01=(CHANGE, "Svart huvud och vita kinder."))
+    write_sheet(sheet, rows)
+    result = import_wave(paths, sheet, date="2026-12-01")
+    assert result.changed == ["Q1"]
+    fixed = load_record(record_path(paths.data_out, "Q1"))
+    assert fixed is not None
+    assert fixed["verification"]["at"] == "2026-12-01"
+    assert fixed["facts"][0]["sv"] == "Svart huvud och vita kinder."
+
+
+def test_import_wave_removes_the_struck_audio_file(tmp_path: Path) -> None:
+    """The V4-strike branch pops `record["audio"]`; `import_wave` must also delete the
+    orphaned voice.mp3 so a struck recording does not linger as a dead file on disk."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    record = _record("Q1")
+    record["flags"] = [{"check": "V4", "factId": None, "message": "inget konfident träff"}]
+    save_record(record_path(paths.data_out, "Q1"), record)
+    voice = paths.images_out / "Q1" / "voice.mp3"
+    voice.parent.mkdir(parents=True, exist_ok=True)
+    voice.write_bytes(b"fake-mp3")
+    sheet = tmp_path / "undantag.csv"
+    write_sheet(sheet, _flag_decisions(flag_rows(record), **{"": STRIKE}))
+    result = import_wave(paths, sheet, date="2026-11-20")
+    assert result.removed_audio == ["Q1"]
+    assert not voice.exists()
+
+
+def test_import_rejects_an_unknown_species(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    record = _flagged("Q1")
+    save_record(record_path(paths.data_out, "Q1"), record)
+    rows = flag_rows(record)
+    rows.append({**rows[0], "QID": "Q999", "Beslut": KEEP})
+    sheet = tmp_path / "undantag.csv"
+    write_sheet(sheet, _flag_decisions(rows, s01=KEEP))
+    with pytest.raises(ReviewImportError, match="Q999"):
+        import_wave(paths, sheet, date="2026-11-20")

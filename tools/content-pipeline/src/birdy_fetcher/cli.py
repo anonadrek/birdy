@@ -388,6 +388,45 @@ def web_spot_check(seed: int | None, extra: tuple[str, ...], force: bool) -> Non
     )
 
 
+@web.command("import")
+@click.option(
+    "--wave",
+    type=click.IntRange(1, 3),
+    default=None,
+    help="Valfritt säkerhetsnät, se Task 17 (ändrat 2026-10-05 (b)).",
+)
+@click.option(
+    "--file",
+    "sheet",
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+    default=None,
+    help="Exporterad CSV. Standard: review/undantag.csv.",
+)
+@click.option(
+    "--date", "review_date", default=None, help="Kontrolldatum, YYYY-MM-DD. Standard: i dag."
+)
+def web_import(wave: int | None, sheet: Path | None, review_date: str | None) -> None:
+    """Läser in Albins beslut ur undantagsarket (standard) eller stickprovet (--file
+    review/stickprov.csv) och sätter verification på de berörda arterna. Ändrar
+    ingenting om något är fel. En rättad stickprovsrad får ett nytt kontrolldatum,
+    vilket fas 2:s publiceringsloop republicerar sidan med."""
+    from datetime import date
+
+    from .web.review_sheet import ReviewImportError, import_wave
+
+    paths = _web_paths()
+    path = sheet or paths.review / "undantag.csv"
+    when = review_date or date.today().isoformat()
+    try:
+        result = import_wave(paths, path, wave=wave, date=when)
+    except ReviewImportError as exc:
+        raise click.ClickException(f"Arket har fel, inget ändrades:\n{exc}") from exc
+    click.echo(
+        f"{len(result.changed)} arter kontrollerade {when}. "
+        f"Inspelningar strukna: {len(result.removed_audio)}."
+    )
+
+
 @web.command("v1")
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
 @click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
