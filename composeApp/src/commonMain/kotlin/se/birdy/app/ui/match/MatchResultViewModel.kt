@@ -76,22 +76,6 @@ class MatchResultViewModel(
     private suspend fun resolve() {
         // Read classification results from ScanSource (replaces parseCsv)
         val parsed = source.classification.results.map { it.speciesId to it.confidence }
-        if (parsed.isEmpty()) {
-            // Empty results = the model scored nothing above noise for any mapped species,
-            // regardless of source — a real "no bird here", not a failure. (Image used to
-            // route to Error: a garbage photo the model correctly scored as background got
-            // an error screen instead of NoBird.) Decode/runtime failures surface as error
-            // states upstream of this ViewModel, before a ScanSource is ever constructed —
-            // they never reach resolve() as an empty results list.
-            _state.value =
-                MatchResultUiState.NoBird(
-                    frameJpegPath = source.frameJpegPath.ifBlank { null },
-                    capturedAtMs = capturedAtMs,
-                    source = source,
-                    topPrediction = null,
-                )
-            return
-        }
         val resolved = mutableListOf<ResolvedPrediction>()
         for ((id, conf) in parsed) {
             val species =
@@ -101,7 +85,23 @@ class MatchResultViewModel(
             if (species != null) resolved += ResolvedPrediction(species, conf)
         }
         if (resolved.isEmpty()) {
-            _state.value = MatchResultUiState.Error(MatchResultUiState.Error.Kind.ParseFailed)
+            // No species from Birdy's catalog among the results, regardless of source — a real
+            // "no bird here", not a failure. Either the results are empty (the model scored
+            // nothing above noise for any mapped species; image used to route to Error, so a
+            // garbage photo the model correctly scored as background got an error screen), or
+            // every result is a species outside the catalog: the photo model knows 954 species
+            // worldwide, the catalog 839 European ones and only 251 of the model's. That second
+            // case ended on a bare "Inga arter kunde matchas mot databasen." text with no way to
+            // try again (Release 1.3.0 Plan 3 Task 7, API 36 emulator). Decode/runtime failures
+            // surface as error states upstream of this ViewModel, before a ScanSource is ever
+            // constructed — they never reach resolve().
+            _state.value =
+                MatchResultUiState.NoBird(
+                    frameJpegPath = source.frameJpegPath.ifBlank { null },
+                    capturedAtMs = capturedAtMs,
+                    source = source,
+                    topPrediction = null,
+                )
             return
         }
         val override = matchOverrideReader?.invoke()

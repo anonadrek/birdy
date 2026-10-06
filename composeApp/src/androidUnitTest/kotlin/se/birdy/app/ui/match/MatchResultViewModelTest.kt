@@ -226,14 +226,21 @@ class MatchResultViewModelTest {
         }
 
     @Test
-    fun resolve_all_unresolved_returns_error_parse_failed() =
+    fun resolve_no_prediction_in_the_species_catalog_returns_nobird_not_error() =
         runTest(dispatcher) {
-            val vm = makeVm("Q_BOGUS1:87/100,Q_BOGUS2:5/100")
+            // The photo model knows 954 species worldwide, Birdy's catalog 839 European ones (only
+            // 251 of the model's species). A photo can score only species outside the catalog, e.g.
+            // a crop of mostly background (1.3.0 device walkthrough, API 36 emulator). That is "no
+            // bird we know here", not a failure: it used to end on a bare "Inga arter kunde matchas
+            // mot databasen." error text with no way to try again.
+            val vm = makeVm("Q_NOT_IN_CATALOG1:87/100,Q_NOT_IN_CATALOG2:5/100")
             vm.state.test {
                 assertIs<MatchResultUiState.Loading>(awaitItem())
-                val err = awaitItem()
-                assertIs<MatchResultUiState.Error>(err)
-                assertEquals(MatchResultUiState.Error.Kind.ParseFailed, err.kind)
+                val nobird = awaitItem()
+                assertIs<MatchResultUiState.NoBird>(nobird)
+                assertEquals("/cache/scan-frames/x.jpg", nobird.frameJpegPath)
+                assertEquals(capturedAtMs, nobird.capturedAtMs)
+                assertNull(nobird.topPrediction)
                 cancelAndIgnoreRemainingEvents()
             }
         }
