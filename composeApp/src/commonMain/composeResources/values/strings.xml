@@ -552,20 +552,57 @@
          reused elsewhere) so that key's wording can change without touching this badge. -->
     <string name="premium_badge">PREMIUM</string>
     <string name="stats_title">Säsongsstatistik</string>
-    <string name="stats_intro_eyebrow">SÄSONG</string>
+    <!-- 1.3.0 Task 7c: the year ring and the timeline of this year's first finds (design option B). -->
+    <string name="stats_intro_eyebrow_year">Säsong %1$d</string>
     <string name="stats_intro_headline">Ett *år* i fält.</string>
-    <string name="stats_intro_sub">Mönster från dina observationer.</string>
-    <string name="stats_section_months">Observationer per månad</string>
-    <string name="stats_section_seasons">Per säsong</string>
-    <string name="stats_section_top">Mest sedda arter</string>
-    <string name="stats_section_cumulative">Nya arter över tid</string>
-    <string name="stats_total_species">Arter</string>
-    <string name="stats_total_observations">Observationer</string>
-    <string name="stats_empty_eyebrow">SÄSONG</string>
+    <string name="stats_summary_first_find">Ditt första fynd i år kom i %1$s.</string>
+    <plurals name="stats_summary_best_month">
+        <item quantity="one">%1$d fynd. %2$s var din bästa månad.</item>
+        <item quantity="other">%1$d fynd. %2$s var din bästa månad.</item>
+    </plurals>
+    <plurals name="stats_summary_best_month_current">
+        <item quantity="one">%1$d fynd. %2$s är din bästa månad hittills.</item>
+        <item quantity="other">%1$d fynd. %2$s är din bästa månad hittills.</item>
+    </plurals>
+    <plurals name="stats_summary_total">
+        <item quantity="one">%1$d fynd hittills i år.</item>
+        <item quantity="other">%1$d fynd hittills i år.</item>
+    </plurals>
+    <string-array name="stats_months_full">
+        <item>januari</item><item>februari</item><item>mars</item><item>april</item>
+        <item>maj</item><item>juni</item><item>juli</item><item>augusti</item>
+        <item>september</item><item>oktober</item><item>november</item><item>december</item>
+    </string-array>
+    <plurals name="stats_ring_finds_label">
+        <item quantity="one">fynd</item>
+        <item quantity="other">fynd</item>
+    </plurals>
+    <plurals name="stats_ring_species">
+        <item quantity="one">%1$d art</item>
+        <item quantity="other">%1$d arter</item>
+    </plurals>
+    <string name="stats_ring_description">Årsring för %1$d med fynd per månad, januari överst</string>
+    <plurals name="stats_ring_total_description">
+        <item quantity="one">%1$d fynd totalt</item>
+        <item quantity="other">%1$d fynd totalt</item>
+    </plurals>
+    <plurals name="stats_label_finds_description">
+        <item quantity="one">%1$s: %2$d fynd</item>
+        <item quantity="other">%1$s: %2$d fynd</item>
+    </plurals>
+    <string name="stats_current_month_legend">%1$s, pågår</string>
+    <string name="stats_section_firsts">Nya arter i år</string>
+    <string name="stats_first_seen_date">%1$d %2$s</string>
+    <string name="stats_first_sighting_number">№%1$d</string>
+    <string name="stats_first_sighting_description">%1$s, årets art nummer %2$d, först sedd %3$s</string>
+    <string name="stats_section_top">Mest sedda</string>
+    <plurals name="stats_seal_count">
+        <item quantity="one">%1$d fynd</item>
+        <item quantity="other">%1$d fynd</item>
+    </plurals>
     <string name="stats_empty_headline">Inget att *kartlägga* ännu.</string>
-    <string name="stats_empty_sub">Inga fynd i år ännu — spara ett så låses din årsöversikt upp.</string>
+    <string name="stats_empty_sub">Inga fynd i år ännu. Spara ditt första så börjar årsringen fyllas.</string>
     <string name="stats_back">Tillbaka</string>
-    <string name="stats_count_format">%1$d obs</string>
     <string name="stats_winter">Vinter</string>
     <string name="stats_spring">Vår</string>
     <string name="stats_summer">Sommar</string>

@@ -538,20 +538,57 @@
          reused elsewhere) so that key's wording can change without touching this badge. -->
     <string name="premium_badge">PREMIUM</string>
     <string name="stats_title">Season statistics</string>
-    <string name="stats_intro_eyebrow">SEASON</string>
+    <!-- 1.3.0 Task 7c: the year ring and the timeline of this year's first finds (design option B). -->
+    <string name="stats_intro_eyebrow_year">Season %1$d</string>
     <string name="stats_intro_headline">A *year* in the field.</string>
-    <string name="stats_intro_sub">Patterns from your observations.</string>
-    <string name="stats_section_months">Observations by month</string>
-    <string name="stats_section_seasons">By season</string>
-    <string name="stats_section_top">Most-seen species</string>
-    <string name="stats_section_cumulative">New species over time</string>
-    <string name="stats_total_species">Species</string>
-    <string name="stats_total_observations">Observations</string>
-    <string name="stats_empty_eyebrow">SEASON</string>
+    <string name="stats_summary_first_find">Your first find this year came in %1$s.</string>
+    <plurals name="stats_summary_best_month">
+        <item quantity="one">%1$d find. %2$s was your best month.</item>
+        <item quantity="other">%1$d finds. %2$s was your best month.</item>
+    </plurals>
+    <plurals name="stats_summary_best_month_current">
+        <item quantity="one">%1$d find. %2$s is your best month so far.</item>
+        <item quantity="other">%1$d finds. %2$s is your best month so far.</item>
+    </plurals>
+    <plurals name="stats_summary_total">
+        <item quantity="one">%1$d find so far this year.</item>
+        <item quantity="other">%1$d finds so far this year.</item>
+    </plurals>
+    <string-array name="stats_months_full">
+        <item>January</item><item>February</item><item>March</item><item>April</item>
+        <item>May</item><item>June</item><item>July</item><item>August</item>
+        <item>September</item><item>October</item><item>November</item><item>December</item>
+    </string-array>
+    <plurals name="stats_ring_finds_label">
+        <item quantity="one">find</item>
+        <item quantity="other">finds</item>
+    </plurals>
+    <plurals name="stats_ring_species">
+        <item quantity="one">%1$d species</item>
+        <item quantity="other">%1$d species</item>
+    </plurals>
+    <string name="stats_ring_description">Year ring for %1$d with finds per month, January at the top</string>
+    <plurals name="stats_ring_total_description">
+        <item quantity="one">%1$d find in total</item>
+        <item quantity="other">%1$d finds in total</item>
+    </plurals>
+    <plurals name="stats_label_finds_description">
+        <item quantity="one">%1$s: %2$d find</item>
+        <item quantity="other">%1$s: %2$d finds</item>
+    </plurals>
+    <string name="stats_current_month_legend">%1$s, in progress</string>
+    <string name="stats_section_firsts">New species this year</string>
+    <string name="stats_first_seen_date">%2$s %1$d</string>
+    <string name="stats_first_sighting_number">№%1$d</string>
+    <string name="stats_first_sighting_description">%1$s, species number %2$d this year, first seen %3$s</string>
+    <string name="stats_section_top">Most seen</string>
+    <plurals name="stats_seal_count">
+        <item quantity="one">%1$d find</item>
+        <item quantity="other">%1$d finds</item>
+    </plurals>
     <string name="stats_empty_headline">Nothing to *chart* yet.</string>
-    <string name="stats_empty_sub">No finds yet this year — save one to unlock your yearly overview.</string>
+    <string name="stats_empty_sub">No finds this year yet. Save your first and the year ring starts to fill.</string>
     <string name="stats_back">Back</string>
-    <string name="stats_count_format">%1$d obs</string>
     <string name="stats_winter">Winter</string>
     <string name="stats_spring">Spring</string>
     <string name="stats_summer">Summer</string>

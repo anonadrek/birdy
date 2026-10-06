@@ -147,9 +147,11 @@ class LifelistScreenshotTest {
             totalSpeciesThisYear = 3,
             totalObservationsThisYear = 21,
             monthBars = bars,
-            seasonDonut = SeasonStatsUiState.SeasonBreakdown(winter = 3, spring = 6, summer = 9, autumn = 3),
+            seasons = SeasonStatsUiState.SeasonBreakdown(winter = 3, spring = 6, summer = 9, autumn = 3),
             topSpecies = emptyList(),
-            cumulativeLine = emptyList(),
+            firstSightings = emptyList(),
+            year = 2026,
+            bestMonth = 6,
         )
     }
 
