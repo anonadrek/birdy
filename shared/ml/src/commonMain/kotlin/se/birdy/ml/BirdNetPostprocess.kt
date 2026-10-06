@@ -20,6 +20,12 @@ fun flatSigmoid(logit: Float): Float {
  * Att ta top-3 först och mappa efteråt kastade bort korrekt EU-art på råplats 4+
  * och renderade det som "ingen fågel hörd" (shippad bug t.o.m. vC126).
  *
+ * Icke-ändliga scores (NaN) kastas: digital tystnad (exakta nollor, t.ex. när systemet
+ * stängt av mikrofonen eller en annan app håller den) ger NaN i alla BirdNET-logits. NaN
+ * sorterades överst, visades som "Hör: Berguv · 0%" och fällde resultatets JSON så att
+ * sessionen slutade i "Kunde inte identifiera ljudet." (1.3.0 Plan 3 Task 7). Utan scores
+ * blir fönstret tomt och sessionen landar i NoBird.
+ *
  * commonMain så att iOS-runnern (i3) återanvänder exakt samma postprocess.
  */
 fun rankMappedScores(
@@ -29,6 +35,7 @@ fun rankMappedScores(
 ): List<ClassificationResult> =
     scores
         .mapIndexed { idx, score -> idx to score }
+        .filter { (_, score) -> score.isFinite() }
         .mapNotNull { (idx, score) -> lookup(idx)?.let { qid -> ClassificationResult(qid, score) } }
         .sortedByDescending { it.confidence }
         .take(take)

@@ -42,4 +42,22 @@ class BirdNetPostprocessTest {
         val result = rankMappedScores(floatArrayOf(0.9f, 0.8f), lookup = { null })
         assertEquals(emptyList(), result)
     }
+
+    @Test
+    fun nonFiniteScoresAreDropped() {
+        // Digital silence (exact zeros, e.g. the mic muted by the system or another app
+        // holding it) makes every BirdNET logit NaN. NaN sorted to the top and reached
+        // Listen as "Hör: Berguv · 0%", then broke the result's JSON so the session ended on
+        // "Kunde inte identifiera ljudet." (Release 1.3.0 Plan 3 Task 7, API 36 emulator).
+        val scores = floatArrayOf(Float.NaN, Float.NaN, 0.3f, Float.POSITIVE_INFINITY)
+        val result = rankMappedScores(scores, lookup = { "Q$it" })
+        assertEquals(listOf("Q2"), result.map { it.speciesId })
+    }
+
+    @Test
+    fun allNaNScoresGiveEmptyList() {
+        val scores = FloatArray(5) { Float.NaN }
+        val result = rankMappedScores(scores, lookup = { "Q$it" })
+        assertEquals(emptyList(), result)
+    }
 }
