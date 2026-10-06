@@ -535,7 +535,9 @@ Faktabladen tas fram och kontrolleras automatiskt (V1 till V4) för alla 180 art
 - **Bildlicenser:** bara CC0, public domain, CC BY och CC BY-SA, aldrig NC eller ND; beskärning och text runt bilden räknas som bearbetning; krediten skrivs i bildtexten ("Foto: X, licens, via Wikimedia Commons, beskuren"). Filtret ligger i koden som väljer bild, inte i manuell kontroll.
 - **Senare:** en kort video med artens läte ("vems sång är det här?") som andra mall för Reels och TikTok.
 
-**Inläggens struktur (förslag 2026-10-06, Albin väljer mall):** allt text- och bildinnehåll fylls i av kod ur den kontrollerade artposten (inga nya påståenden, inga modellanrop, ingen kostnad).
+**Språk (Albins beslut 2026-10-06): alla sociala kanaler är på engelska.** Bildtext och text i bilden på engelska, länken går till den engelska artsidan (`/species/<slug>/`), det svenska namnet kan stå inom parentes.
+
+**Inläggens struktur (förslag 2026-10-06, Albin väljer mall; texterna nedan blir engelska):** allt text- och bildinnehåll fylls i av kod ur den kontrollerade artposten (inga nya påståenden, inga modellanrop, ingen kostnad).
 
 - **Bild (1080 × 1350, 4:5, samma på Facebook och Instagram):** fotot över cirka 70 % av ytan (beskuret, licensfiltret ovan), under det ett pappersband i webbens färger med en liten rubrik "DAGENS FÅGEL · NR 12" (löpnummer i publiceringsordning), artnamnet i DM Serif, det vetenskapliga namnet i kursiv, en handskriven rad (Caveat) med ett kort kontrollerat faktum, och Birdys märke + "birdy.community" i hörnet.
 - **Bildtext (svenska, engelskt namn inom parentes):**
