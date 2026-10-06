@@ -25,6 +25,10 @@ from .wiki_full import FullWikiClient, WikiArticle
 
 PROMPT_VERSION = "facts-v1"
 ATTEMPTS = 2
+# The fact sheet's model and effort (R3 chooses them). `web verify`'s V1 retry writes a fact
+# sheet too and defaults to the same values (Minor 3, final review 2026-10-06).
+DEFAULT_MODEL_KEY = "opus"
+DEFAULT_EFFORT = "high"
 
 
 class FactsFailed(RuntimeError):  # noqa: N818
@@ -75,14 +79,22 @@ class FactExtractor:
     client: JsonModelClient
     prompt_path: Path
     scientific_index: dict[str, str]
-    model_key: str = "opus"
-    effort: str = "high"
+    model_key: str = DEFAULT_MODEL_KEY
+    effort: str = DEFAULT_EFFORT
     regenerate: bool = False
 
-    def _cache_name(self, template: str, articles: dict[str, WikiArticle]) -> str:
+    def _cache_name(
+        self, template: str, articles: dict[str, WikiArticle], extra_feedback: str | None = None
+    ) -> str:
+        """A V1 retry (extra feedback) answers a different prompt than `web facts`, so it
+        gets its own entry: it must never overwrite the plain one (Minor 3, final review
+        2026-10-06)."""
         prompt_hash = hashlib.sha256(template.encode("utf-8")).hexdigest()[:8]
         revs = "-".join(f"{lang}{articles[lang].revision}" for lang in sorted(articles))
-        return f"facts-{self.model_key}-{self.effort}-{prompt_hash}-{revs}.json"
+        retry = ""
+        if extra_feedback:
+            retry = "-v1retry-" + hashlib.sha256(extra_feedback.encode("utf-8")).hexdigest()[:8]
+        return f"facts-{self.model_key}-{self.effort}-{prompt_hash}{retry}-{revs}.json"
 
     def _check(self, out: FactSheetOutput, articles: dict[str, WikiArticle]) -> FactCheck:
         return check_fact_sheet(out, articles, self.scientific_index)
@@ -96,11 +108,11 @@ class FactExtractor:
     ) -> tuple[FactCheck, int, bool]:
         """(check, attempts, from_cache). Raises FactsFailed when no answer was usable and
         MaxCostExceeded when the cap is passed. extra_feedback (Revision 2026-10-05, the V1
-        retry) skips the cache: the same articles would otherwise give the same cached answer
-        as last time."""
+        retry) is part of the cache name, so the plain answer (same articles, no feedback) is
+        never reused for it, and the retry's answer never replaces the plain one."""
         template = self.prompt_path.read_text(encoding="utf-8")
-        name = self._cache_name(template, articles)
-        cached = None if (self.regenerate or extra_feedback) else self.cache.get(source.qid, name)
+        name = self._cache_name(template, articles, extra_feedback)
+        cached = None if self.regenerate else self.cache.get(source.qid, name)
         if cached is not None:
             return self._check(FactSheetOutput.model_validate_json(cached), articles), 0, True
 
@@ -150,11 +162,21 @@ class FactExtractor:
         return best[1], attempts, False
 
 
+def facts_generated(extractor: FactExtractor, now: datetime) -> dict[str, str]:
+    """`generated.facts` for a sheet this extractor just wrote."""
+    return {
+        "model": MODELS[extractor.model_key],
+        "prompt": PROMPT_VERSION,
+        "effort": extractor.effort,
+        "at": now.isoformat(),
+    }
+
+
 @dataclass(frozen=True)
 class FactsOptions:
     qids: tuple[str, ...] = ()
-    model_key: str = "opus"
-    effort: str = "high"
+    model_key: str = DEFAULT_MODEL_KEY
+    effort: str = DEFAULT_EFFORT
     max_cost: float | None = None
     force: bool = False
     regenerate: bool = False
@@ -261,12 +283,7 @@ async def _one(
             record["errors"] = [str(exc)]
             save_record(path, record)
             return out("failed", [str(exc)])
-        generated = {
-            "model": MODELS[extractor.model_key],
-            "prompt": PROMPT_VERSION,
-            "effort": extractor.effort,
-            "at": now.isoformat(),
-        }
+        generated = facts_generated(extractor, now)
         if cached and record.get("generated", {}).get("facts"):
             generated = record["generated"]["facts"]
         apply_facts(record, check, generated=generated)

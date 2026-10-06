@@ -153,3 +153,54 @@ def test_classify_clip_raises_on_a_nonzero_exit(tmp_path: Path) -> None:
             to_wav=fake_to_wav,
             run=fake_run,
         )
+
+
+@pytest.mark.parametrize(
+    "stdout",
+    [
+        "Downloading tensorflow\n{}",
+        "",
+        json.dumps({"window": []}),
+        json.dumps({"windows": 5}),
+        json.dumps({"windows": [{"startSec": 0.0}]}),
+        json.dumps({"windows": [{"startSec": 0.0, "top": [{"qid": "Q1"}]}]}),
+        json.dumps({"windows": [{"startSec": 0.0, "top": [{"qid": "Q1", "confidence": "x"}]}]}),
+    ],
+)
+def test_unreadable_model_output_raises_audio_check_failed(tmp_path: Path, stdout: str) -> None:
+    """I4 (final review 2026-10-06): stray stdout or an unexpected shape must become
+    AudioCheckFailed (a V4 flag), never a JSONDecodeError/KeyError that fails the species."""
+
+    def fake_run(cmd: list[str], **kwargs: object) -> CompletedProcess[str]:
+        return _completed(stdout=stdout)
+
+    def fake_to_wav(mp3_path: Path, wav_path: Path) -> None:
+        wav_path.write_bytes(b"x")
+
+    with pytest.raises(AudioCheckFailed):
+        classify_clip(
+            tmp_path / "voice.mp3", tmp_path / "flexref", to_wav=fake_to_wav, run=fake_run
+        )
+
+
+def test_a_missing_program_raises_audio_check_failed(tmp_path: Path) -> None:
+    """`uv` (or ffmpeg) not on PATH is a technical V4 failure too, not a crash."""
+
+    def fake_run(cmd: list[str], **kwargs: object) -> CompletedProcess[str]:
+        raise FileNotFoundError(2, "No such file or directory", "uv")
+
+    def fake_to_wav(mp3_path: Path, wav_path: Path) -> None:
+        wav_path.write_bytes(b"x")
+
+    with pytest.raises(AudioCheckFailed):
+        classify_clip(
+            tmp_path / "voice.mp3", tmp_path / "flexref", to_wav=fake_to_wav, run=fake_run
+        )
+
+    def missing_ffmpeg(mp3_path: Path, wav_path: Path) -> None:
+        raise FileNotFoundError(2, "No such file or directory", "ffmpeg")
+
+    with pytest.raises(AudioCheckFailed):
+        classify_clip(
+            tmp_path / "voice.mp3", tmp_path / "flexref", to_wav=missing_ffmpeg, run=fake_run
+        )

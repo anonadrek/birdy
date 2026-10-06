@@ -22,6 +22,7 @@ class FakeJsonClient:
     calls: list[list[MessageParam]] = field(default_factory=list)
     schemas: list[str] = field(default_factory=list)
     models: list[str] = field(default_factory=list)
+    efforts: list[str] = field(default_factory=list)
     closed: bool = False
 
     async def complete[M: BaseModel](
@@ -37,6 +38,7 @@ class FakeJsonClient:
         self.calls.append(list(messages))
         self.schemas.append(schema.__name__)
         self.models.append(model)
+        self.efforts.append(effort)
         return cast(ModelReply[M], self.replies.pop(0))
 
     async def aclose(self) -> None:

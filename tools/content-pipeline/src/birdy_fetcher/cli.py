@@ -306,6 +306,19 @@ def web_facts(
 @click.option("--max-cost", type=float, default=None, help="Kostnadstak i USD för körningen.")
 @click.option("--force", is_flag=True, help="Kontrollera även arter som redan är kontrollerade.")
 @click.option("--workers", type=click.IntRange(min=1), default=4)
+@click.option(
+    "--facts-model",
+    "facts_model_key",
+    type=click.Choice(["opus", "sonnet"]),
+    default="opus",
+    help="Modell för V1-omförsökets nya faktablad. Samma som web facts --model.",
+)
+@click.option(
+    "--facts-effort",
+    type=click.Choice(["low", "medium", "high"]),
+    default="high",
+    help="Tankenivå för V1-omförsöket. Samma som web facts --effort.",
+)
 def web_verify(
     species: tuple[str, ...],
     model_key: str,
@@ -313,6 +326,8 @@ def web_verify(
     max_cost: float | None,
     force: bool,
     workers: int,
+    facts_model_key: str,
+    facts_effort: str,
 ) -> None:
     """Automatisk kontroll (V1 till V4) av faktabladet. Kostar pengar (V1)."""
     from .web.verify_step import VerifyOptions, run_verify
@@ -326,6 +341,8 @@ def web_verify(
         max_cost=max_cost,
         force=force,
         workers=workers,
+        facts_model_key=facts_model_key,
+        facts_effort=facts_effort,
     )
     _print_outcomes(asyncio.run(run_verify(paths, options)), paths.reports)
 

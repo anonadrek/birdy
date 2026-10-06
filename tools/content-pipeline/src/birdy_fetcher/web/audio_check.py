@@ -84,6 +84,26 @@ def _default_to_wav(mp3_path: Path, wav_path: Path) -> None:
         raise AudioCheckFailed(f"ffmpeg timeout efter {FFMPEG_TIMEOUT} sekunder") from e
 
 
+def _windows(stdout: str) -> list[dict[str, object]]:
+    """The model's windows, or AudioCheckFailed when its output is not the JSON
+    classify_clip.py writes (stray output, a missing key, a wrong type): a technical V4
+    failure is a flag, never an error that fails the species (I4, final review 2026-10-06).
+    Every entry is read here once, so `AudioCheckResult.matches` cannot fail later."""
+    try:
+        windows = json.loads(stdout)["windows"]
+        if not isinstance(windows, list):
+            raise TypeError("windows är ingen lista")
+        for window in windows:
+            for entry in window["top"]:
+                str(entry["qid"])
+                float(entry["confidence"])
+    except (ValueError, KeyError, TypeError) as exc:  # JSONDecodeError is a ValueError
+        raise AudioCheckFailed(
+            f"ljudmodellen gav ett oläsbart svar ({type(exc).__name__})"
+        ) from exc
+    return windows
+
+
 def classify_clip(
     mp3_path: Path,
     flexref_dir: Path,
@@ -102,6 +122,8 @@ def classify_clip(
             raise AudioCheckFailed(f"ffmpeg misslyckades med kod {e.returncode}") from e
         except TimeoutExpired as e:
             raise AudioCheckFailed(f"ffmpeg timeout efter {FFMPEG_TIMEOUT} sekunder") from e
+        except OSError as e:  # ffmpeg missing or not runnable
+            raise AudioCheckFailed(f"ffmpeg kunde inte startas ({e})") from e
 
         print(
             "Kontrollerar inspelningen med ljudmodellen (första körningen kan ta flera minuter)..."
@@ -125,6 +147,8 @@ def classify_clip(
             )
         except TimeoutExpired as e:
             raise AudioCheckFailed(f"ljudmodellen timeout efter {CLASSIFY_TIMEOUT} sekunder") from e
+        except OSError as e:  # uv missing or not runnable
+            raise AudioCheckFailed(f"ljudmodellen kunde inte startas ({e})") from e
     if completed.returncode != 0:
         raise AudioCheckFailed(completed.stderr.strip() or "ljudmodellen gav inget svar")
-    return AudioCheckResult(windows=json.loads(completed.stdout)["windows"])
+    return AudioCheckResult(windows=_windows(completed.stdout))

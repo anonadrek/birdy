@@ -67,6 +67,36 @@ def test_web_facts_requires_an_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
     assert "ANTHROPIC_API_KEY" in str(result.output)
 
 
+def test_web_verify_passes_the_facts_settings_for_the_v1_retry(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Minor 3 (final review 2026-10-06): the V1 retry writes a fact sheet with the model and
+    effort chosen for `web facts`; both commands default to the same values."""
+    from birdy_fetcher.web import verify_step
+    from birdy_fetcher.web.facts_step import FactsOptions
+    from birdy_fetcher.web.verify_step import VerifyOptions
+
+    seen: list[VerifyOptions] = []
+
+    async def fake_run_verify(paths: object, options: VerifyOptions) -> list[object]:
+        seen.append(options)
+        return []
+
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key-not-used")
+    monkeypatch.setattr(verify_step, "run_verify", fake_run_verify)
+    base = ["web", "verify", "--species", "Q1", "--max-cost", "1"]
+    result = CliRunner().invoke(main, [*base, "--facts-model", "sonnet", "--facts-effort", "low"])
+    assert result.exit_code == 0, result.output
+    assert (seen[0].facts_model_key, seen[0].facts_effort) == ("sonnet", "low")
+    result = CliRunner().invoke(main, base)
+    assert result.exit_code == 0, result.output
+    defaults = FactsOptions()
+    assert (seen[1].facts_model_key, seen[1].facts_effort) == (
+        defaults.model_key,
+        defaults.effort,
+    )
+
+
 def test_web_write_help_lists_its_flags() -> None:
     runner = CliRunner()
     result = runner.invoke(main, ["web", "write", "--help"])

@@ -9039,7 +9039,7 @@ git push
 - [ ] `uv run birdy-fetcher web verify --species Q25485 --species Q25383 --species Q25386 --species Q10546857 --max-cost 5`
 - [ ] `uv run birdy-fetcher web write --species Q25485 --species Q25383 --species Q25386 --species Q10546857 --allow-unreviewed --max-cost 5`
 - [ ] Läs rapporterna `reports/web-facts-*.md`, `reports/web-verify-*.md` och `reports/web-text-*.md`. Räkna ut kostnad per art för faktablad, V1-kontrollen och text. Visa Albin i chatten: talgoxens faktablad (fakta med citat), vilka fakta V1 strök och varför, talgoxens text på svenska och engelska, borttagna meningar och kostnaden per art omräknad till 180 arter.
-- [ ] **Albin väljer** modell och tankenivå för faktablad, V1-kontrollen, text och textkontrollen (standard: Opus 5 `high` för faktablad och text, Sonnet 5 för V1 och textkontrollen). Ändras något: ändra standardvärdena i `cli.py` och prompterna innan R4, och kör om provkörningen.
+- [ ] **Albin väljer** modell och tankenivå för faktablad, V1-kontrollen, text och textkontrollen (standard: Opus 5 `high` för faktablad och text, Sonnet 5 för V1 och textkontrollen). Ändras något: ändra standardvärdena i `cli.py` och prompterna innan R4, och kör om provkörningen. Faktabladets val gäller också V1-omförsöket i `web verify` (tillägg 2026-10-06, slutgranskningen Minor 3): ändra då både `web facts --model/--effort` och `web verify --facts-model/--facts-effort` i `cli.py` och `DEFAULT_MODEL_KEY`/`DEFAULT_EFFORT` i `facts_step.py`.
 - [ ] Commit och push (texterna från provkörningen är märkta `unreviewed` och kan aldrig publiceras).
 
 ### R4: Faktablad för alla 180 (cirka 75 USD)

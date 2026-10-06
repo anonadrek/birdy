@@ -7,13 +7,17 @@ from __future__ import annotations
 import asyncio
 from dataclasses import dataclass
 from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any
 
 from ..cache import Cache
 from ..cost import CostTracker, MaxCostExceeded
-from .audio_check import AudioCheckFailed, audio_verdict, classify_clip
+from .audio_check import AudioCheckFailed, AudioVerdict, audio_verdict, classify_clip
 from .facts import apply_facts
+from .facts_step import DEFAULT_EFFORT as FACTS_DEFAULT_EFFORT
+from .facts_step import DEFAULT_MODEL_KEY as FACTS_DEFAULT_MODEL_KEY
 from .facts_step import PROMPT_VERSION as FACTS_PROMPT_VERSION
-from .facts_step import FactExtractor
+from .facts_step import FactExtractor, facts_generated
 from .llm import MODELS, AnthropicJsonClient, JsonModelClient
 from .paths import WebPaths
 from .record import Record, facts_hash, load_record, record_path, save_record
@@ -41,6 +45,10 @@ class VerifyOptions:
     max_cost: float | None = None
     force: bool = False
     workers: int = 4
+    # The V1 retry writes a new fact sheet: same model and effort as `web facts` (Minor 3,
+    # final review 2026-10-06). Change both together if R3 picks something else.
+    facts_model_key: str = FACTS_DEFAULT_MODEL_KEY
+    facts_effort: str = FACTS_DEFAULT_EFFORT
 
 
 def species_about(source: SpeciesSource) -> str:
@@ -81,6 +89,8 @@ async def run_verify(
         client=model_client,
         prompt_path=paths.prompt_file(FACTS_PROMPT_VERSION),
         scientific_index=load_scientific_index(paths.species_root),
+        model_key=options.facts_model_key,
+        effort=options.facts_effort,
     )
     stop = asyncio.Event()
     semaphore = asyncio.Semaphore(options.workers)
@@ -99,10 +109,72 @@ async def run_verify(
         date=now.date().isoformat(),
         outcomes=outcomes,
         cost_usd=cost.total_usd,
-        model_line=f"Kontroll: `{MODELS[options.model_key]}`.",
+        model_line=(
+            f"Kontroll: `{MODELS[options.model_key]}`. Omförsök av faktabladet: "
+            f"`{MODELS[options.facts_model_key]}` (effort: {options.facts_effort})."
+        ),
     )
     write_step_report(paths.reports, "verify", now, report)
     return outcomes
+
+
+async def _audio_check(
+    record: Record, source: SpeciesSource, paths: WebPaths
+) -> AudioVerdict | str | None:
+    """V4, run before the paid V1 call (I4, final review 2026-10-06) so an audio problem
+    never wastes V1 work, and in a thread so the subprocess does not block the other
+    workers. None without a recording, the verdict, or the reason the model could not run.
+    Only the verdict is computed here; the record is changed after V1, as before."""
+    if not record.get("audio"):
+        return None
+    identifiable = bool(record.get("identifiable", {}).get("sound"))
+    try:
+        result = await asyncio.to_thread(
+            classify_clip, paths.images_out / source.qid / "voice.mp3", paths.flexref
+        )
+    except AudioCheckFailed as exc:
+        return str(exc)
+    return audio_verdict(result, source.qid, identifiable_sound=identifiable)
+
+
+def _apply_audio(
+    record: Record,
+    audio: AudioVerdict | str | None,
+    flags: list[dict[str, Any]],
+    notes: list[str],
+) -> None:
+    if audio is None:
+        return
+    if isinstance(audio, str):
+        flags.append(
+            {
+                "check": "V4",
+                "factId": None,
+                "message": (
+                    f"Ljudmodellen kunde inte köras ({audio}). Lyssna och besluta, "
+                    "eller kör om när felet är åtgärdat."
+                ),
+            }
+        )
+    elif audio.action == "strike":
+        record.pop("audio", None)
+        record.setdefault("review", {})["audioStruck"] = True
+        notes.append(f"inspelningen ströks: {audio.reason}")
+    elif audio.action == "flag":
+        flags.append({"check": "V4", "factId": None, "message": audio.reason})
+
+
+def _fail(record: Record, path: Path, kept: list[dict[str, Any]], missing: list[str]) -> None:
+    record["facts"] = kept
+    record["status"] = "failed"
+    record["errors"] = [f"saknas efter V1-omförsöket: {', '.join(missing)}"]
+    # A verification left over from an earlier, better-looking run must not survive this
+    # failure (review fix 2026-10-06, C1), and neither may its metadata: `web facts`
+    # refuses a species with `generated.verify` unless forced, so a stale one would make
+    # `web facts --regenerate` skip the species this failure asks it to redo (Minor 1).
+    record.pop("verification", None)
+    record.get("generated", {}).pop("verify", None)
+    save_record(path, record)
 
 
 def _retry_feedback(strike_notes: list[str], missing: list[str]) -> str:
@@ -147,6 +219,10 @@ async def _one(
             return out("skipped", ["kostnadstaket nåddes: körs vid nästa körning"])
         articles = await wiki.articles(source.qid)
         about = species_about(source)
+        audio = await _audio_check(record, source, paths)
+        if stop.is_set():
+            # Another worker reached the cap while the audio model ran.
+            return out("skipped", ["kostnadstaket nåddes: körs vid nästa körning"])
 
         notes: list[str] = []
         try:
@@ -167,15 +243,13 @@ async def _one(
                 stop.set()
                 return out("skipped", [f"kostnadstaket nåddes: {exc}"])
             if check.fatal:
-                record["facts"] = kept
-                record["status"] = "failed"
-                record["errors"] = [f"saknas efter V1-omförsöket: {', '.join(missing)}"]
-                # A verification left over from an earlier, better-looking run must not
-                # survive this failure (review fix 2026-10-06, C1).
-                record.pop("verification", None)
-                save_record(path, record)
+                _fail(record, path, kept, missing)
                 return out("failed", record["errors"], notes)
-            apply_facts(record, check, generated=record["generated"]["facts"])
+            # The record now holds the retried sheet: say what wrote it (Minor 3, final
+            # review 2026-10-06), not the original `web facts` run's model and time.
+            apply_facts(
+                record, check, generated={**facts_generated(extractor, now), "v1Retry": True}
+            )
 
             # The retried sheet is brand new text the model just wrote: it gets the same V1
             # pass the original facts did, so a fact it invents cannot slip through
@@ -190,11 +264,7 @@ async def _one(
             status_flag = status_strike_flag(verdicts)
             missing = missing_required_topics(kept)
             if missing:
-                record["facts"] = kept
-                record["status"] = "failed"
-                record["errors"] = [f"saknas efter V1-omförsöket: {', '.join(missing)}"]
-                record.pop("verification", None)
-                save_record(path, record)
+                _fail(record, path, kept, missing)
                 return out("failed", record["errors"], notes)
         record["facts"] = kept
 
@@ -202,30 +272,7 @@ async def _one(
         if status_flag:
             flags.append(status_flag)
 
-        audio = record.get("audio")
-        if audio:
-            identifiable = bool(record.get("identifiable", {}).get("sound"))
-            try:
-                result = classify_clip(paths.images_out / source.qid / "voice.mp3", paths.flexref)
-            except AudioCheckFailed as exc:
-                flags.append(
-                    {
-                        "check": "V4",
-                        "factId": None,
-                        "message": (
-                            f"Ljudmodellen kunde inte köras ({exc}). Lyssna och besluta, "
-                            "eller kör om när felet är åtgärdat."
-                        ),
-                    }
-                )
-            else:
-                verdict = audio_verdict(result, source.qid, identifiable_sound=identifiable)
-                if verdict.action == "strike":
-                    record.pop("audio", None)
-                    record.setdefault("review", {})["audioStruck"] = True
-                    notes.append(f"inspelningen ströks: {verdict.reason}")
-                elif verdict.action == "flag":
-                    flags.append({"check": "V4", "factId": None, "message": verdict.reason})
+        _apply_audio(record, audio, flags, notes)
 
         record["flags"] = flags
         record.setdefault("generated", {})["verify"] = {

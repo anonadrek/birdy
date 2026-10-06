@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import threading
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -10,6 +11,7 @@ import pytest
 
 from birdy_fetcher.web.audio_check import AudioCheckFailed, AudioCheckResult
 from birdy_fetcher.web.facts import FactSheetOutput
+from birdy_fetcher.web.facts_step import FactsOptions
 from birdy_fetcher.web.paths import WebPaths
 from birdy_fetcher.web.record import load_record, merge_sources, record_path, save_record
 from birdy_fetcher.web.verify import FactVerdict, FactVerifyOutput
@@ -511,3 +513,199 @@ async def test_a_published_species_refuses_verify_even_with_force(tmp_path: Path
     assert [o.status for o in outcomes] == ["failed"]
     assert outcomes[0].errors == ["publicerad: sätt publish: false först"]
     assert client.calls == []
+
+
+def _retry_sheet() -> FactSheetOutput:
+    return FactSheetOutput(
+        facts=[
+            *GOOD,
+            _fact("voice", "Sången hörs på långt håll.", "Sången är ett ringande ti-ta ti-ta"),
+            *[
+                _fact("appearance", f"Svart band på buken {i}.", "ett bredare svart band på buken")
+                for i in range(3)
+            ],
+        ],
+        sweden_status=STATUS,
+    )
+
+
+RETRIED_IDS = [f"f{i:02d}" for i in range(1, 11)] + ["s01"]
+
+
+async def test_the_v1_retry_uses_the_facts_model_and_effort(tmp_path: Path) -> None:
+    """Minor 3 (final review 2026-10-06): the re-extraction is a fact sheet like any other,
+    so it uses the model and effort chosen for `web facts` (R3), not a hard-coded opus/high,
+    and `generated.facts` says what actually wrote the sheet now in the record."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    client = FakeJsonClient(
+        [
+            reply(_verdicts(f04="citatet nämner inget avstånd")),
+            reply(_retry_sheet()),
+            reply(_all_supported(*RETRIED_IDS)),
+        ]
+    )
+    options = VerifyOptions(facts_model_key="sonnet", facts_effort="medium")
+    outcomes = await run_verify(paths, options, client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    retry = client.schemas.index("FactSheetOutput")
+    assert client.models[retry] == "claude-sonnet-5"
+    assert client.efforts[retry] == "medium"
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["generated"]["facts"] == {
+        "model": "claude-sonnet-5",
+        "prompt": "facts-v1",
+        "effort": "medium",
+        "at": NOW.isoformat(),
+        "v1Retry": True,
+    }
+
+
+def test_the_v1_retry_defaults_to_the_facts_step_defaults() -> None:
+    facts = FactsOptions()
+    verify = VerifyOptions()
+    assert (verify.facts_model_key, verify.facts_effort) == (facts.model_key, facts.effort)
+
+
+async def test_the_v1_retry_does_not_overwrite_the_plain_facts_cache_entry(
+    tmp_path: Path,
+) -> None:
+    """Minor 3: the retry answers a different prompt (the extra feedback), so it gets its own
+    cache entry; the one `web facts` reads keeps the original answer."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    client = FakeJsonClient(
+        [
+            reply(_verdicts(f04="citatet nämner inget avstånd")),
+            reply(_retry_sheet()),
+            reply(_all_supported(*RETRIED_IDS)),
+        ]
+    )
+    await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    cache_dir = paths.pipeline_root / ".cache" / "Q1"
+    names = sorted(p.name for p in cache_dir.glob("facts-*.json"))
+    assert len(names) == 1
+    assert "-v1retry-" in names[0]
+
+
+async def test_a_forced_reverify_that_fails_drops_the_old_verify_metadata(
+    tmp_path: Path,
+) -> None:
+    """Minor 1 (T20 M-a): `generated.verify` left over from an earlier successful run made
+    `web facts --regenerate` skip the species after this failure."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    first = FakeJsonClient([reply(_verdicts())])
+    await run_verify(paths, VerifyOptions(), client=first, wiki=FakeWiki(), now=NOW)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None and record["generated"].get("verify")
+    fatal_retry_sheet = FactSheetOutput(facts=GOOD[:2], sweden_status=None)
+    client = FakeJsonClient(
+        [
+            reply(_verdicts(f04="citatet nämner inget avstånd")),
+            reply(fatal_retry_sheet),
+            reply(fatal_retry_sheet),
+        ]
+    )
+    outcomes = await run_verify(
+        paths, VerifyOptions(force=True), client=client, wiki=FakeWiki(), now=NOW
+    )
+    assert [o.status for o in outcomes] == ["failed"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert "verify" not in record["generated"]
+
+
+async def test_a_forced_reverify_failing_after_the_second_v1_pass_drops_the_old_metadata(
+    tmp_path: Path,
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    first = FakeJsonClient([reply(_verdicts())])
+    await run_verify(paths, VerifyOptions(), client=first, wiki=FakeWiki(), now=NOW)
+    client = FakeJsonClient(
+        [
+            reply(_verdicts(f04="citatet nämner inget avstånd")),
+            reply(_retry_sheet()),
+            reply(_all_supported(*RETRIED_IDS, unsupported={"f04": "hittar inte citatet"})),
+        ]
+    )
+    outcomes = await run_verify(
+        paths, VerifyOptions(force=True), client=client, wiki=FakeWiki(), now=NOW
+    )
+    assert [o.status for o in outcomes] == ["failed"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert "verify" not in record["generated"]
+
+
+async def test_the_audio_check_runs_before_v1_and_off_the_event_loop(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """I4 (final review 2026-10-06): V4 is free but can fail; it runs before the paid V1 call
+    so an audio problem can never waste V1 work, and in a thread so a slow subprocess does
+    not stall the other workers."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True, identifiable_sound=True)
+    client = FakeJsonClient([reply(_verdicts())])
+    seen: dict[str, object] = {}
+
+    def fake_classify_clip(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        seen["v1_calls"] = len(client.calls)
+        seen["main_thread"] = threading.current_thread() is threading.main_thread()
+        top = [{"qid": "Q1", "confidence": 0.5}]
+        return AudioCheckResult(windows=[{"startSec": 0.0, "top": top}])
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", fake_classify_clip)
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    assert seen == {"v1_calls": 0, "main_thread": False}
+
+
+async def test_an_unexpected_audio_error_fails_the_species_before_any_v1_call(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True, identifiable_sound=True)
+
+    def broken_classify_clip(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        raise RuntimeError("ett fel i koden")
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", broken_classify_clip)
+    client = FakeJsonClient([])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    assert client.calls == []
+
+
+async def test_v1_strikes_survive_an_audio_check_that_could_not_run(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True, identifiable_sound=True)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    record["facts"].insert(
+        1,
+        {
+            "id": "f06",
+            "topic": "appearance",
+            "sv": "Gul buk.",
+            "sources": [{"article": "sv", "quote": "gul buk med ett svart band"}],
+        },
+    )
+    save_record(record_path(paths.data_out, "Q1"), record)
+
+    def failing_classify_clip(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        raise AudioCheckFailed("ljudmodellen gav ett oläsbart svar")
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", failing_classify_clip)
+    client = FakeJsonClient([reply(_verdicts(f06="citatet säger inget om buken"))])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert not any(f["id"] == "f06" for f in record["facts"])
+    assert [f["check"] for f in record["flags"]] == ["V4"]
+    assert record["generated"]["verify"]["factsHash"]
