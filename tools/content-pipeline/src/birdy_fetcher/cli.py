@@ -276,7 +276,12 @@ def web_sources(
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
 @click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
 @click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
-@click.option("--max-cost", type=float, default=None, help="Kostnadstak i USD för körningen.")
+@click.option(
+    "--max-cost",
+    type=click.FloatRange(min=0, min_open=True),
+    required=True,
+    help="Kostnadstak i USD för körningen (krävs).",
+)
 @click.option("--force", is_flag=True, help="Ta fram faktablad även för granskade arter.")
 @click.option("--regenerate", is_flag=True, help="Fråga modellen igen trots cachat svar.")
 @click.option("--workers", type=click.IntRange(min=1), default=4)
@@ -284,7 +289,7 @@ def web_facts(
     species: tuple[str, ...],
     model_key: str,
     effort: str,
-    max_cost: float | None,
+    max_cost: float,
     force: bool,
     regenerate: bool,
     workers: int,
@@ -310,7 +315,12 @@ def web_facts(
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla med ett faktablad.")
 @click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="sonnet")
 @click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
-@click.option("--max-cost", type=float, default=None, help="Kostnadstak i USD för körningen.")
+@click.option(
+    "--max-cost",
+    type=click.FloatRange(min=0, min_open=True),
+    required=True,
+    help="Kostnadstak i USD för körningen (krävs).",
+)
 @click.option("--force", is_flag=True, help="Kontrollera även arter som redan är kontrollerade.")
 @click.option("--workers", type=click.IntRange(min=1), default=4)
 @click.option(
@@ -330,7 +340,7 @@ def web_verify(
     species: tuple[str, ...],
     model_key: str,
     effort: str,
-    max_cost: float | None,
+    max_cost: float,
     force: bool,
     workers: int,
     facts_model_key: str,
@@ -362,7 +372,12 @@ def web_verify(
 @click.option(
     "--checker-model", "checker_key", type=click.Choice(["opus", "sonnet"]), default="sonnet"
 )
-@click.option("--max-cost", type=float, default=None, help="Kostnadstak i USD för körningen.")
+@click.option(
+    "--max-cost",
+    type=click.FloatRange(min=0, min_open=True),
+    required=True,
+    help="Kostnadstak i USD för körningen (krävs).",
+)
 @click.option("--regenerate", is_flag=True, help="Skriv om även texter som är aktuella.")
 @click.option(
     "--allow-unreviewed",
@@ -376,7 +391,7 @@ def web_write(
     model_key: str,
     effort: str,
     checker_key: str,
-    max_cost: float | None,
+    max_cost: float,
     regenerate: bool,
     allow_unreviewed: bool,
     workers: int,
@@ -552,7 +567,12 @@ def web_compare_candidates() -> None:
 @click.option(
     "--checker-model", "checker_key", type=click.Choice(["opus", "sonnet"]), default="sonnet"
 )
-@click.option("--max-cost", type=float, default=None, help="Kostnadstak i USD för körningen.")
+@click.option(
+    "--max-cost",
+    type=click.FloatRange(min=0, min_open=True),
+    required=True,
+    help="Kostnadstak i USD för körningen (krävs).",
+)
 @click.option("--regenerate", is_flag=True, help="Skriv om även jämförelser som är aktuella.")
 @click.option("--workers", type=click.IntRange(min=1), default=4)
 def web_compare(
@@ -560,7 +580,7 @@ def web_compare(
     model_key: str,
     effort: str,
     checker_key: str,
-    max_cost: float | None,
+    max_cost: float,
     regenerate: bool,
     workers: int,
 ) -> None:

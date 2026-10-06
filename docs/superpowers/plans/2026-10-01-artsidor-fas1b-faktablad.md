@@ -9045,7 +9045,7 @@ git push
 ### R4: Faktablad för alla 180 (cirka 75 USD)
 
 - [ ] `uv run birdy-fetcher web facts --max-cost 120`
-- [ ] Läs rapporten. Arter med `failed`: kör om en gång med `--regenerate --species ...`. Arter som fortfarande misslyckas listas för Albin.
+- [ ] Läs rapporten. Arter med `failed`: kör om en gång med `--regenerate --max-cost 5 --species ...`. Arter som fortfarande misslyckas listas för Albin.
 - [ ] Commit och push.
 
 ### R4b: Automatisk kontroll av alla 180 (cirka 10 till 20 USD)
@@ -9054,7 +9054,7 @@ Ny körtask 2026-10-05: ersätter Albins manuella faktabladsgranskning. Ingen Al
 
 - [ ] Kontrollera att `classify_clip.py` fungerar mot en riktig inspelning: `uv run --project tools/ml-eval/flexref python classify_clip.py <sökväg till en 20 s-inspelning från R2>` och läs av att JSON-svaret har flera fönster med rimliga värden.
 - [ ] `uv run birdy-fetcher web verify --max-cost 25`
-- [ ] Läs rapporten `reports/web-verify-*.md`. Räkna flaggor per kontroll (V2, V3, V4) och arter med `failed` (saknar fortfarande ett obligatoriskt ämne efter V1-omförsöket). Kör om misslyckade arter en gång med `--regenerate --species ...` i `web facts` först, sedan `web verify --force --species ...`.
+- [ ] Läs rapporten `reports/web-verify-*.md`. Räkna flaggor per kontroll (V2, V3, V4) och arter med `failed` (saknar fortfarande ett obligatoriskt ämne efter V1-omförsöket). Kör om misslyckade arter en gång med `--regenerate --max-cost 5 --species ...` i `web facts` först, sedan `web verify --force --max-cost 5 --species ...`.
 - [ ] Commit och push.
 
 ### R5: Vågor och löpande undantagsgranskning (Albin, cirka 15 till 30 minuter per våg)
@@ -9070,7 +9070,7 @@ Ny körtask 2026-10-05: ersätter Albins manuella faktabladsgranskning. Ingen Al
 ### R6: Text (cirka 25 USD för våg 1, mindre för senare vågor)
 
 - [ ] `uv run birdy-fetcher web write --wave 1 --max-cost 40`
-- [ ] Läs rapporten. Visa Albin tre slumpvisa texter och alla arter med `failed`. Kör om misslyckade arter en gång med `--regenerate --species ...`.
+- [ ] Läs rapporten. Visa Albin tre slumpvisa texter och alla arter med `failed`. Kör om misslyckade arter en gång med `--regenerate --max-cost 5 --species ...`.
 - [ ] Commit och push.
 
 ### R7: Jämförelser (cirka 5 USD för våg 1, mindre för senare vågor)

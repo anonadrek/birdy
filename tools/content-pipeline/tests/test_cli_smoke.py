@@ -148,9 +148,32 @@ def test_web_write_help_lists_its_flags() -> None:
         assert flag in result.output
 
 
+@pytest.mark.parametrize(
+    "args",
+    [
+        ["web", "facts", "--species", "Q1"],
+        ["web", "verify", "--species", "Q1"],
+        ["web", "write", "--species", "Q1"],
+        ["web", "compare"],
+    ],
+)
+def test_the_paid_commands_require_a_cost_cap(
+    args: list[str], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Minor 13 (final review 2026-10-06): no paid run without a cap. Click rejects the
+    missing option (exit 2) before the command body runs. No key in the environment, so
+    nothing could reach the API even if the option were optional (that exits 1)."""
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.delenv("ANTHROPIC_AUTH_TOKEN", raising=False)
+    result = CliRunner().invoke(main, args)
+    assert result.exit_code == 2
+    assert "--max-cost" in result.output
+
+
 def test_web_write_requires_wave_or_species() -> None:
-    result = CliRunner().invoke(main, ["web", "write"])
+    result = CliRunner().invoke(main, ["web", "write", "--max-cost", "1"])
     assert result.exit_code != 0
+    assert "--wave" in result.output
 
 
 def test_web_write_rejects_the_same_model_for_writer_and_checker() -> None:
@@ -158,7 +181,18 @@ def test_web_write_rejects_the_same_model_for_writer_and_checker() -> None:
     # the writer. This check runs before the API key check, so no key is needed here.
     result = CliRunner().invoke(
         main,
-        ["web", "write", "--species", "Q1", "--model", "sonnet", "--checker-model", "sonnet"],
+        [
+            "web",
+            "write",
+            "--species",
+            "Q1",
+            "--model",
+            "sonnet",
+            "--checker-model",
+            "sonnet",
+            "--max-cost",
+            "1",
+        ],
     )
     assert result.exit_code != 0
     assert "olika modeller" in result.output
@@ -181,7 +215,8 @@ def test_web_compare_help_lists_its_flags() -> None:
 
 def test_web_compare_rejects_the_same_model_for_writer_and_checker() -> None:
     result = CliRunner().invoke(
-        main, ["web", "compare", "--model", "sonnet", "--checker-model", "sonnet"]
+        main,
+        ["web", "compare", "--model", "sonnet", "--checker-model", "sonnet", "--max-cost", "1"],
     )
     assert result.exit_code != 0
     assert "olika modeller" in result.output
