@@ -55,7 +55,7 @@ image_refs:
   width: 2048
   height: 1617
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">mourad-harzallah</a>
+  author: mourad-harzallah
   source_url: https://commons.wikimedia.org/wiki/File:Phoenicurus moussieri 198655586.jpg
   commons_filename: Phoenicurus moussieri 198655586.jpg
 - role: secondary
@@ -63,8 +63,7 @@ image_refs:
   width: 1351
   height: 1800
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2401694">William
-    Stephens</a>
+  author: William Stephens
   source_url: https://commons.wikimedia.org/wiki/File:Phoenicurus moussieri 239292380.jpg
   commons_filename: Phoenicurus moussieri 239292380.jpg
 - role: secondary
@@ -72,7 +71,7 @@ image_refs:
   width: 1800
   height: 1349
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">mourad-harzallah</a>
+  author: mourad-harzallah
   source_url: https://commons.wikimedia.org/wiki/File:Phoenicurus moussieri 187917101.jpg
   commons_filename: Phoenicurus moussieri 187917101.jpg
 review_status: auto

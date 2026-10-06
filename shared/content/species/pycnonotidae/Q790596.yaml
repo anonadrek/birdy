@@ -64,8 +64,7 @@ image_refs:
   width: 2400
   height: 1597
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/196198470@N02">Sam
-    Thomas</a>
+  author: Sam Thomas
   source_url: https://commons.wikimedia.org/wiki/File:Common Bulbul (Pycnonotus barbatus)
     Cairo (52259556627).jpg
   commons_filename: Common Bulbul (Pycnonotus barbatus) Cairo (52259556627).jpg
@@ -74,8 +73,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Pycnonotus barbatus (14392739850).jpg
   commons_filename: Pycnonotus barbatus (14392739850).jpg
 - role: secondary
@@ -83,8 +81,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Pycnonotus barbatus (14392740730).jpg
   commons_filename: Pycnonotus barbatus (14392740730).jpg
 review_status: auto

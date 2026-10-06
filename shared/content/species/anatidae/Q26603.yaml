@@ -59,13 +59,13 @@ migration:
 image_refs:
 - role: hero
   path: Q26603/hero.webp
-  width: 1600
-  height: 2400
+  width: 2400
+  height: 1781
   license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/glaciernps/">GlacierNPS</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Tundra Swans (Cygnus columbianus)
-    (32651054017).jpg
-  commons_filename: Tundra Swans (Cygnus columbianus) (32651054017).jpg
+  author: U.S. Fish and Wildlife Service - Midwest Region
+  source_url: https://commons.wikimedia.org/wiki/File:Tundra swans at Shiawassee National
+    Wildlife Refuge (33684735715).jpg
+  commons_filename: Tundra swans at Shiawassee National Wildlife Refuge (33684735715).jpg
 - role: secondary
   path: Q26603/secondary-1.webp
   width: 1800

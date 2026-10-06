@@ -73,8 +73,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Pallid harrier (Circus macrourus)
     2024.jpg
   commons_filename: Pallid harrier (Circus macrourus) 2024.jpg
@@ -83,21 +82,18 @@ image_refs:
   width: 1800
   height: 1173
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Rushikesh_Deshmukh_DOP&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Rushikesh Deshmukh DOP (page does not exist)">Rushikesh
-    Deshmukh DOP</a>
+  author: Rushikesh Deshmukh DOP
   source_url: https://commons.wikimedia.org/wiki/File:Pallid harrier female (Circus
     macrourus).jpg
   commons_filename: Pallid harrier female (Circus macrourus).jpg
 - role: secondary
   path: Q230837/secondary-2.webp
   width: 1800
-  height: 1246
-  license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Chinmayisk" title="User:Chinmayisk">Chinmayisk</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Circus pygargus preparing for
-    flight at little rann of kutch.jpg
-  commons_filename: Circus pygargus preparing for flight at little rann of kutch.jpg
+  height: 1200
+  license: CC BY 4.0
+  author: Shiv's fotografia
+  source_url: https://commons.wikimedia.org/wiki/File:Pallid harrier.jpg
+  commons_filename: Pallid harrier.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-04T12:14:53.002740+00:00'

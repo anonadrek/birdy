@@ -89,12 +89,11 @@ image_refs:
 - role: hero
   path: Q208405/hero.webp
   width: 2400
-  height: 1917
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Donkey_shot" title="User:Donkey
-    shot">Donkey shot</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Puffinus puffinus distribution.jpg
-  commons_filename: Puffinus puffinus distribution.jpg
+  height: 1800
+  license: CC BY-SA 3.0
+  author: Martin Reith
+  source_url: https://commons.wikimedia.org/wiki/File:Manx Shearwater.JPG
+  commons_filename: Manx Shearwater.JPG
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T21:23:57.909014+00:00'

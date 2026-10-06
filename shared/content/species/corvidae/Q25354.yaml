@@ -107,7 +107,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Klaaschwotzer" title="User:Klaaschwotzer">Klaaschwotzer</a>
+  author: Klaaschwotzer
   source_url: https://commons.wikimedia.org/wiki/File:Garrulus glandarius 4.jpg
   commons_filename: Garrulus glandarius 4.jpg
 - role: secondary
@@ -115,7 +115,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Klaaschwotzer" title="User:Klaaschwotzer">Klaaschwotzer</a>
+  author: Klaaschwotzer
   source_url: https://commons.wikimedia.org/wiki/File:Garrulus glandarius DS 3.jpg
   commons_filename: Garrulus glandarius DS 3.jpg
 - role: secondary
@@ -123,8 +123,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
-    Taÿ Pamart</a>
+  author: Marie-Lan Taÿ Pamart
   source_url: https://commons.wikimedia.org/wiki/File:Garrulus glandarius ringing
     SPOL mangeoire 20250220 n05.jpg
   commons_filename: Garrulus glandarius ringing SPOL mangeoire 20250220 n05.jpg

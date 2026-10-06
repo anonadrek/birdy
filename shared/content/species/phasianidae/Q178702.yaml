@@ -108,8 +108,7 @@ image_refs:
   width: 2400
   height: 1607
   license: Public domain
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q26235785" class="extiw" title="d:Q26235785"><span
-    title="photographer">David Menke</span></a></bdi>
+  author: David Menke
   source_url: https://commons.wikimedia.org/wiki/File:Lagopus lagopus Alaska 2.jpg
   commons_filename: Lagopus lagopus Alaska 2.jpg
 - role: secondary
@@ -117,8 +116,7 @@ image_refs:
   width: 1800
   height: 1484
   license: Public domain
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q26235785" class="extiw" title="d:Q26235785"><span
-    title="photographer">David Menke</span></a></bdi>
+  author: David Menke
   source_url: https://commons.wikimedia.org/wiki/File:Lagopus lagopus Alaska 1.jpg
   commons_filename: Lagopus lagopus Alaska 1.jpg
 - role: secondary
@@ -126,8 +124,7 @@ image_refs:
   width: 1800
   height: 1259
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Willow ptarmigan (Lagopus lagopus)
     2018 2.jpg
   commons_filename: Willow ptarmigan (Lagopus lagopus) 2018 2.jpg

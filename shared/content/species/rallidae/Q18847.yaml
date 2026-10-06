@@ -94,8 +94,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
-    Lours">Alexis Lours</a>
+  author: Alexis Lours
   source_url: https://commons.wikimedia.org/wiki/File:Common moorhen (Gallinula chloropus).jpg
   commons_filename: Common moorhen (Gallinula chloropus).jpg
 - role: secondary
@@ -103,8 +102,7 @@ image_refs:
   width: 1800
   height: 1267
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
-    Lours">Alexis Lours</a>
+  author: Alexis Lours
   source_url: https://commons.wikimedia.org/wiki/File:Common moorhen (Gallinula chloropus)
     France.jpg
   commons_filename: Common moorhen (Gallinula chloropus) France.jpg
@@ -113,7 +111,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Sunny365days" title="User:Sunny365days">Sunny365days</a>
+  author: Sunny365days
   source_url: https://commons.wikimedia.org/wiki/File:Gallinula chloropus IMG 7013
     01.jpg
   commons_filename: Gallinula chloropus IMG 7013 01.jpg

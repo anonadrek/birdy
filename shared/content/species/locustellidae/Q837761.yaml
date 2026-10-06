@@ -95,8 +95,7 @@ image_refs:
   width: 2048
   height: 1375
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/3160036">Александр
-    Чегодаев</a>
+  author: Александр Чегодаев
   source_url: https://commons.wikimedia.org/wiki/File:Locustella lanceolata 295726819.jpg
   commons_filename: Locustella lanceolata 295726819.jpg
 - role: secondary
@@ -104,8 +103,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2840555">Ксения
-    Волянская</a>
+  author: Ксения Волянская
   source_url: https://commons.wikimedia.org/wiki/File:Locustella lanceolata 216747576.jpg
   commons_filename: Locustella lanceolata 216747576.jpg
 - role: secondary

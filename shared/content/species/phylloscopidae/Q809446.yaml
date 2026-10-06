@@ -63,8 +63,7 @@ image_refs:
   width: 2048
   height: 1365
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/7064504">Rafael
-    Würtemberger</a>
+  author: Rafael Würtemberger
   source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus schwarzi in Germany.jpg
   commons_filename: Phylloscopus schwarzi in Germany.jpg
 - role: secondary
@@ -72,7 +71,7 @@ image_refs:
   width: 1800
   height: 1125
   license: CC BY-SA 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1151287">Zinogre</a>
+  author: Zinogre
   source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus schwarzi in China.jpg
   commons_filename: Phylloscopus schwarzi in China.jpg
 review_status: auto

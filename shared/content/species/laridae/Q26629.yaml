@@ -96,7 +96,7 @@ image_refs:
   width: 2400
   height: 1800
   license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Botteville" title="User:Botteville">Botteville</a>
+  author: Botteville
   source_url: https://commons.wikimedia.org/wiki/File:Larus marinus at Sandy Point,
     Ipswich, MA.jpg
   commons_filename: Larus marinus at Sandy Point, Ipswich, MA.jpg
@@ -105,8 +105,7 @@ image_refs:
   width: 1800
   height: 1198
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:GRDN711" title="User:GRDN711">Gordon
-    Leggett</a>
+  author: Gordon Leggett
   source_url: https://commons.wikimedia.org/wiki/File:2024-06-01 02 Great black-backed
     gull (Larus marinus) pair with chicks -.jpg
   commons_filename: 2024-06-01 02 Great black-backed gull (Larus marinus) pair with
@@ -116,8 +115,7 @@ image_refs:
   width: 1800
   height: 1129
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Great black-backed gull (Larus
     marinus) 2020.jpg
   commons_filename: Great black-backed gull (Larus marinus) 2020.jpg

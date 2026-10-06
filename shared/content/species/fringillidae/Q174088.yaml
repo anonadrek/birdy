@@ -100,18 +100,16 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Hawfinch (Coccothraustes coccothraustes)
-    juvenile.jpg
-  commons_filename: Hawfinch (Coccothraustes coccothraustes) juvenile.jpg
+    male Drenthe.jpg
+  commons_filename: Hawfinch (Coccothraustes coccothraustes) male Drenthe.jpg
 - role: secondary
   path: Q174088/secondary-1.webp
   width: 1800
   height: 1196
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Nppgrandmeadow&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Nppgrandmeadow (page does not exist)">Бусел В.А.</a>
+  author: Бусел В.А.
   source_url: https://commons.wikimedia.org/wiki/File:Coccothraustes coccothraustes
     костогриз.jpg
   commons_filename: Coccothraustes coccothraustes костогриз.jpg
@@ -120,8 +118,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Hawfinch (Coccothraustes coccothraustes)
     juvenile 2.jpg
   commons_filename: Hawfinch (Coccothraustes coccothraustes) juvenile 2.jpg

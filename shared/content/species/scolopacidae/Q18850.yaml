@@ -95,7 +95,7 @@ image_refs:
   width: 2400
   height: 1518
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Actitis hypoleucos Oulu 20140623
     01.JPG
   commons_filename: Actitis hypoleucos Oulu 20140623 01.JPG
@@ -104,8 +104,7 @@ image_refs:
   width: 1800
   height: 1202
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37180297@N08">LiCheng
-    Shih</a>
+  author: LiCheng Shih
   source_url: https://commons.wikimedia.org/wiki/File:Actitis hypoleucos (25574447361).jpg
   commons_filename: Actitis hypoleucos (25574447361).jpg
 - role: secondary
@@ -113,8 +112,7 @@ image_refs:
   width: 1800
   height: 1168
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
-    Keats</a> from Johannesburg, South Africa
+  author: Derek Keats
   source_url: https://commons.wikimedia.org/wiki/File:Common Sandpiper, Actitis hypoleucos,
     Chobe National Park, Botswana (31558465823).jpg
   commons_filename: Common Sandpiper, Actitis hypoleucos, Chobe National Park, Botswana

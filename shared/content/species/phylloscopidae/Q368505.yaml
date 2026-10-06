@@ -109,7 +109,7 @@ image_refs:
   width: 1800
   height: 1535
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1822512">atheist</a>
+  author: atheist
   source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus fuscatus 288806565.jpg
   commons_filename: Phylloscopus fuscatus 288806565.jpg
 - role: secondary
@@ -117,8 +117,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Asmarifulanam&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Asmarifulanam (page does not exist)">Asmarifulanam</a>
+  author: Asmarifulanam
   source_url: https://commons.wikimedia.org/wiki/File:গাঢ়বাদামি পাতা-ফুটকি (Dusky
     Warbler), Phylloscopus fuscatus রাজশাহীর পদ্মা নদীর চর, রাজশাহী, বাংলাদেশ।.jpg
   commons_filename: গাঢ়বাদামি পাতা-ফুটকি (Dusky Warbler), Phylloscopus fuscatus রাজশাহীর

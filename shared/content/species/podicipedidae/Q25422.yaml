@@ -96,8 +96,7 @@ image_refs:
   width: 2400
   height: 1661
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Mattivirtala (page does not exist)">Mattivirtala</a>
+  author: Mattivirtala
   source_url: https://commons.wikimedia.org/wiki/File:Podiceps cristatus Oulu Finland
     2021-05-03.jpg
   commons_filename: Podiceps cristatus Oulu Finland 2021-05-03.jpg
@@ -106,8 +105,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a href="//www.flickr.com/people/97469566@N00" class="extiw" title="flickruser:97469566@N00">Bengt
-    Nyman</a>
+  author: Bengt Nyman
   source_url: https://commons.wikimedia.org/wiki/File:Podiceps cristatus 2 2013.jpg
   commons_filename: Podiceps cristatus 2 2013.jpg
 - role: secondary
@@ -115,8 +113,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
-    Lours">Alexis Lours</a>
+  author: Alexis Lours
   source_url: https://commons.wikimedia.org/wiki/File:Podiceps cristatus George-Valbon.jpg
   commons_filename: Podiceps cristatus George-Valbon.jpg
 review_status: approved

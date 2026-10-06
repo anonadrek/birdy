@@ -85,8 +85,7 @@ image_refs:
   width: 2400
   height: 1581
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/88123769@N02">Bernard
-    Spragg. NZ</a> from Christchurch, New Zealand
+  author: Bernard Spragg. NZ
   source_url: https://commons.wikimedia.org/wiki/File:The black swan (Cygnus atratus)
     (33064803230).jpg
   commons_filename: The black swan (Cygnus atratus) (33064803230).jpg
@@ -95,7 +94,7 @@ image_refs:
   width: 1800
   height: 1206
   license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Karora" title="User:Karora">Karora</a>
+  author: Karora
   source_url: https://commons.wikimedia.org/wiki/File:Cygnus atratus in flight-2.jpg
   commons_filename: Cygnus atratus in flight-2.jpg
 - role: secondary

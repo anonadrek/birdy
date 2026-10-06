@@ -89,8 +89,7 @@ image_refs:
   width: 2381
   height: 1922
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%D0%94%D0%B5%D0%BD%D0%B8%D1%81_%D0%9B%D0%B0%D0%B2%D1%80%D1%83%D1%81%D1%96%D0%BA&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Денис Лаврусік (page does not exist)">Денис Лаврусік</a>
+  author: Денис Лаврусік
   source_url: https://commons.wikimedia.org/wiki/File:Motacilla flava(1).jpg
   commons_filename: Motacilla flava(1).jpg
 - role: secondary
@@ -98,7 +97,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Sunny365days" title="User:Sunny365days">Sunny365days</a>
+  author: Sunny365days
   source_url: https://commons.wikimedia.org/wiki/File:Motacilla flava IMG 9743 06.jpg
   commons_filename: Motacilla flava IMG 9743 06.jpg
 - role: secondary
@@ -106,7 +105,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Sunny365days" title="User:Sunny365days">Sunny365days</a>
+  author: Sunny365days
   source_url: https://commons.wikimedia.org/wiki/File:Motacilla flava IMG 9743 07.jpg
   commons_filename: Motacilla flava IMG 9743 07.jpg
 review_status: approved

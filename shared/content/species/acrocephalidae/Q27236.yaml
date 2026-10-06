@@ -97,19 +97,17 @@ image_refs:
   path: Q27236/hero.webp
   width: 2400
   height: 1600
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
-    legg</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Sedge Warbler - Acrocephalus
-    schoenobaenus - Juvenile (51354422957).jpg
-  commons_filename: Sedge Warbler - Acrocephalus schoenobaenus - Juvenile (51354422957).jpg
+  license: CC BY 4.0
+  author: Valuer Hardy
+  source_url: https://commons.wikimedia.org/wiki/File:Schilfrohrsänger (Acrocephalus
+    schoenobaenus) im Portrait.jpg
+  commons_filename: Schilfrohrsänger (Acrocephalus schoenobaenus) im Portrait.jpg
 - role: secondary
   path: Q27236/secondary-1.webp
   width: 1800
   height: 1434
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Sedge Warbler. Acrocephalus
     schoenobaenus - Flickr - gailhampshire (2).jpg
   commons_filename: Sedge Warbler. Acrocephalus schoenobaenus - Flickr - gailhampshire
@@ -119,8 +117,7 @@ image_refs:
   width: 1800
   height: 1509
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Sedge Warbler Acrocephalus schoenobaenus
     - Flickr - gailhampshire.jpg
   commons_filename: Sedge Warbler Acrocephalus schoenobaenus - Flickr - gailhampshire.jpg

@@ -39,19 +39,19 @@ image_refs:
 - role: hero
   path: Q28106966/hero.webp
   width: 2400
-  height: 1600
-  license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/yellowstonenps/">YellowstoneNPS</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Gadwalls (Mareca strepera) on
-    Pelican Creek (50402249032).jpg
-  commons_filename: Gadwalls (Mareca strepera) on Pelican Creek (50402249032).jpg
+  height: 1495
+  license: CC0
+  author: Tsyganov Sergey
+  source_url: https://commons.wikimedia.org/wiki/File:Anas strepera Gadwall Серая
+    утка в Санкт-Петербурге Самец Осень 2026 02.jpg
+  commons_filename: Anas strepera Gadwall Серая утка в Санкт-Петербурге Самец Осень
+    2026 02.jpg
 - role: secondary
   path: Q28106966/secondary-1.webp
   width: 1800
   height: 1201
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/97469566@N00">Bengt
-    Nyman</a> from Vaxholm, Sweden
+  author: Bengt Nyman
   source_url: https://commons.wikimedia.org/wiki/File:Snatterand, Gadwall, Mareca
     strepera CR5 5187 (50968941648).jpg
   commons_filename: Snatterand, Gadwall, Mareca strepera CR5 5187 (50968941648).jpg
@@ -60,8 +60,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Gadwall (Mareca strepera) 2022.jpg
   commons_filename: Gadwall (Mareca strepera) 2022.jpg
 review_status: approved

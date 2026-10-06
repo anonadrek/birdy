@@ -92,7 +92,7 @@ image_refs:
   width: 2400
   height: 1857
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Poecile Cinctus Kittila 20120307.JPG
   commons_filename: Poecile Cinctus Kittila 20120307.JPG
 - role: secondary
@@ -100,8 +100,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
-    Knight</a> from Seaford, East Sussex, United Kingdom
+  author: Ron Knight
   source_url: https://commons.wikimedia.org/wiki/File:Siberian Tit (Poecile cinctus)
     (13667826373).jpg
   commons_filename: Siberian Tit (Poecile cinctus) (13667826373).jpg
@@ -110,8 +109,7 @@ image_refs:
   width: 1800
   height: 1127
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Poecile cinctus 190093338.jpg
   commons_filename: Poecile cinctus 190093338.jpg
 review_status: approved

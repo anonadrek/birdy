@@ -85,20 +85,17 @@ image_refs:
 - role: hero
   path: Q26612/hero.webp
   width: 2400
-  height: 1601
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:L._Beck" title="User:L. Beck">Lukas
-    Beck</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Å Café lub 2025-07-22 Rissa
-    tridactyla.jpg
-  commons_filename: Å Café lub 2025-07-22 Rissa tridactyla.jpg
+  height: 1596
+  license: Public domain
+  author: Alaska Region U.S. Fish & Wildlife Service
+  source_url: https://commons.wikimedia.org/wiki/File:Black-legged Kittiwake (12979752923).jpg
+  commons_filename: Black-legged Kittiwake (12979752923).jpg
 - role: secondary
   path: Q26612/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Black-legged kittiwake (Rissa
     tridactyla) 2023 2.jpg
   commons_filename: Black-legged kittiwake (Rissa tridactyla) 2023 2.jpg

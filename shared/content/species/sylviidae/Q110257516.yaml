@@ -98,20 +98,19 @@ image_refs:
   path: Q110257516/hero.webp
   width: 2400
   height: 1600
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93438832@N04">Paul
-    van de Velde</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Grasmus - Curruca communis (52152546993).jpg
-  commons_filename: Grasmus - Curruca communis (52152546993).jpg
+  license: CC BY 4.0
+  author: Alexis Lours
+  source_url: https://commons.wikimedia.org/wiki/File:Common whitethroat 2025 05 25.jpg
+  commons_filename: Common whitethroat 2025 05 25.jpg
 - role: secondary
   path: Q110257516/secondary-1.webp
   width: 1800
   height: 1200
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93438832@N04">Paul
-    van de Velde</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Grasmus - Curruca communis (52151530482).jpg
-  commons_filename: Grasmus - Curruca communis (52151530482).jpg
+  license: CC BY 4.0
+  author: Alexis Lours
+  source_url: https://commons.wikimedia.org/wiki/File:Common Whitethroat 2025 05 24
+    01.jpg
+  commons_filename: Common Whitethroat 2025 05 24 01.jpg
 - role: secondary
   path: Q110257516/secondary-2.webp
   width: 1800

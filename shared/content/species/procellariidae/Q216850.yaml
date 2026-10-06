@@ -65,20 +65,17 @@ image_refs:
 - role: hero
   path: Q216850/hero.webp
   width: 2400
-  height: 1607
-  license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Luissilveira" title="User:Luissilveira">José
-    Luís Ávila Silveira/Pedro Noronha e Costa</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Cagarro - Calonectris borealis,
-    Terceira, Açores.jpg
-  commons_filename: Cagarro - Calonectris borealis, Terceira, Açores.jpg
+  height: 1600
+  license: CC0
+  author: Rodolfo Mari dolfoto
+  source_url: https://commons.wikimedia.org/wiki/File:Rodolfo Mari 2015 (Unsplash).jpg
+  commons_filename: Rodolfo Mari 2015 (Unsplash).jpg
 - role: secondary
   path: Q216850/secondary-1.webp
   width: 1800
   height: 1155
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/8439542">Karen
-    Szafrajda</a>
+  author: Karen Szafrajda
   source_url: https://commons.wikimedia.org/wiki/File:Calonectris diomedea 424179034.jpg
   commons_filename: Calonectris diomedea 424179034.jpg
 - role: secondary

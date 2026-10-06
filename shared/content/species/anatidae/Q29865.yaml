@@ -97,20 +97,17 @@ image_refs:
 - role: hero
   path: Q29865/hero.webp
   width: 2400
-  height: 1800
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/97469566@N00">Bengt
-    Nyman</a> from Vaxholm, Sweden
-  source_url: https://commons.wikimedia.org/wiki/File:Bucephala clangula EM1B9784
-    (34375185890).jpg
-  commons_filename: Bucephala clangula EM1B9784 (34375185890).jpg
+  height: 1600
+  license: Public domain
+  author: U.S. Fish and Wildlife Service - Midwest Region
+  source_url: https://commons.wikimedia.org/wiki/File:Common Goldeneye (34846532856).jpg
+  commons_filename: Common Goldeneye (34846532856).jpg
 - role: secondary
   path: Q29865/secondary-1.webp
   width: 1800
   height: 900
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/97469566@N00">Bengt
-    Nyman</a> from Vaxholm, Sweden
+  author: Bengt Nyman
   source_url: https://commons.wikimedia.org/wiki/File:Bucephala clangula EM1B9540
     (33952163073).jpg
   commons_filename: Bucephala clangula EM1B9540 (33952163073).jpg
@@ -119,8 +116,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/97469566@N00">Bengt
-    Nyman</a> from Vaxholm, Sweden
+  author: Bengt Nyman
   source_url: https://commons.wikimedia.org/wiki/File:Bucephala clangula EM1B9776
     (34375186330).jpg
   commons_filename: Bucephala clangula EM1B9776 (34375186330).jpg

@@ -89,30 +89,27 @@ image_refs:
   width: 1642
   height: 2400
   license: Public domain
-  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Gustav_M%C3%BCtzel" class="extiw"
-    title="w:en:Gustav Mützel"><span title="German artist (1839-1893)">Gustav Mützel</span></a></bdi>
+  author: Gustav Mützel
   source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus sindianus 1889.jpg
   commons_filename: Phylloscopus sindianus 1889.jpg
 - role: secondary
   path: Q3729103/secondary-1.webp
   width: 1800
-  height: 1236
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
-    Cebeci</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus sindianus, Giresun
-    2018-08-16 1.jpg
-  commons_filename: Phylloscopus sindianus, Giresun 2018-08-16 1.jpg
+  height: 1350
+  license: CC BY-SA 2.0
+  author: Imran Shah
+  source_url: https://commons.wikimedia.org/wiki/File:Mountain Chiffchaff (Phylloscopus
+    sindianus) (15706499630).jpg
+  commons_filename: Mountain Chiffchaff (Phylloscopus sindianus) (15706499630).jpg
 - role: secondary
   path: Q3729103/secondary-2.webp
   width: 1800
-  height: 1182
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
-    Cebeci</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus sindianus, Giresun
-    2018-08-16 2.jpg
-  commons_filename: Phylloscopus sindianus, Giresun 2018-08-16 2.jpg
+  height: 1350
+  license: CC BY-SA 2.0
+  author: Birds of Gilgit-Baltistan
+  source_url: https://commons.wikimedia.org/wiki/File:Mountain Chiffchaff (Phylloscopus
+    sindianus) (53421953917).jpg
+  commons_filename: Mountain Chiffchaff (Phylloscopus sindianus) (53421953917).jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T21:22:59.995256+00:00'

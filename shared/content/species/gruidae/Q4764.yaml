@@ -104,31 +104,28 @@ image_refs:
   path: Q4764/hero.webp
   width: 2400
   height: 1600
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:DimiTalen" title="User:DimiTalen">DimiTalen</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Flock of cranes (Grus grus)
-    flying over the High Fens, Eupen, 2025.jpg
-  commons_filename: Flock of cranes (Grus grus) flying over the High Fens, Eupen,
-    2025.jpg
+  license: CC BY 2.0
+  author: Kandukuru Nagarjun
+  source_url: https://commons.wikimedia.org/wiki/File:Common crane in the cold desert
+    (52552722460).jpg
+  commons_filename: Common crane in the cold desert (52552722460).jpg
 - role: secondary
   path: Q4764/secondary-1.webp
   width: 1800
   height: 1196
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Southgeist" title="User:Southgeist">Dirk
-    Ingo Franke</a>
+  author: Dirk Ingo Franke
   source_url: https://commons.wikimedia.org/wiki/File:Ländchen Glien grus grus 09.03.2014
     18-13-43.jpg
   commons_filename: Ländchen Glien grus grus 09.03.2014 18-13-43.jpg
 - role: secondary
   path: Q4764/secondary-2.webp
-  width: 1527
-  height: 1800
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jebulon" title="User:Jebulon">Jebulon</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Héron cendré Ardea cinerea Tiergarten
-    Schönbrunn.jpg
-  commons_filename: Héron cendré Ardea cinerea Tiergarten Schönbrunn.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: José Prego
+  source_url: https://commons.wikimedia.org/wiki/File:Grou-comum (Grus grus) (53386688459).jpg
+  commons_filename: Grou-comum (Grus grus) (53386688459).jpg
 review_status: approved
 review_notes: "Trana — hero flock (Grus grus) över High Fens; allmän SE-art. Sekundär-2 är felmappad (Ardea cinerea) men hero+sek-1 är korrekta."
 generated_at: '2026-05-15T19:34:48.767285+00:00'

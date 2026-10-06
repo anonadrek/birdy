@@ -41,8 +41,7 @@ image_refs:
   width: 2048
   height: 1365
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Gyps rueppelli rueppelli 95505358.jpg
   commons_filename: Gyps rueppelli rueppelli 95505358.jpg
 - role: secondary
@@ -50,8 +49,7 @@ image_refs:
   width: 1800
   height: 1124
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Gyps rueppelli 95505669.jpg
   commons_filename: Gyps rueppelli 95505669.jpg
 - role: secondary
@@ -59,8 +57,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Snowmanstudios" class="mw-redirect"
-    title="User:Snowmanstudios">Thomas Fuhrmann</a>
+  author: Thomas Fuhrmann
   source_url: https://commons.wikimedia.org/wiki/File:Masai Mara National Reserve
     03 - Rüppell's vulture (Gyps rueppelli).jpg
   commons_filename: Masai Mara National Reserve 03 - Rüppell's vulture (Gyps rueppelli).jpg

@@ -88,7 +88,7 @@ image_refs:
   width: 2048
   height: 1365
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/932358">famkoe</a>
+  author: famkoe
   source_url: https://commons.wikimedia.org/wiki/File:Columba trocaz 525000647.jpg
   commons_filename: Columba trocaz 525000647.jpg
 - role: secondary
@@ -96,8 +96,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2200409">Oscar
-    Hopgood</a>
+  author: Oscar Hopgood
   source_url: https://commons.wikimedia.org/wiki/File:Columba trocaz 482834173.jpg
   commons_filename: Columba trocaz 482834173.jpg
 - role: secondary
@@ -105,7 +104,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/645653">thibaudaronson</a>
+  author: thibaudaronson
   source_url: https://commons.wikimedia.org/wiki/File:Columba trocaz 175416504.jpg
   commons_filename: Columba trocaz 175416504.jpg
 review_status: auto

@@ -95,20 +95,18 @@ image_refs:
 - role: hero
   path: Q25402/hero.webp
   width: 2400
-  height: 2400
+  height: 1600
   license: CC BY-SA 4.0
-  author: '<div class="fn value">
-
-    <a href="//commons.wikimedia.org/wiki/User:Erc%C3%A9" title="User:Ercé">Roger
-    Culos</a></div>'
-  source_url: https://commons.wikimedia.org/wiki/File:Cygnus olor MHNT.ZOO.2010.11.11.2.jpg
-  commons_filename: Cygnus olor MHNT.ZOO.2010.11.11.2.jpg
+  author: Charles J. Sharp
+  source_url: https://commons.wikimedia.org/wiki/File:Mute swan (Cygnus olor) taking
+    off.jpg
+  commons_filename: Mute swan (Cygnus olor) taking off.jpg
 - role: secondary
   path: Q25402/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Gzen92" title="User:Gzen92">Gzen92</a>
+  author: Gzen92
   source_url: https://commons.wikimedia.org/wiki/File:Cygne tuberculé (Cygnus olor)
     - tête (2).jpg
   commons_filename: Cygne tuberculé (Cygnus olor) - tête (2).jpg
@@ -117,7 +115,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Gzen92" title="User:Gzen92">Gzen92</a>
+  author: Gzen92
   source_url: https://commons.wikimedia.org/wiki/File:Cygne tuberculé juvénile (Cygnus
     olor) (07).jpg
   commons_filename: Cygne tuberculé juvénile (Cygnus olor) (07).jpg

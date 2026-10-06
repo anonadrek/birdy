@@ -100,19 +100,17 @@ image_refs:
 - role: secondary
   path: Q26147/secondary-1.webp
   width: 1800
-  height: 1162
+  height: 1257
   license: CC BY 2.0
-  author: blondinrikard
-  source_url: https://commons.wikimedia.org/wiki/File:Pied avocet, Recurvirostra avosetta,
-    Skärfläcka - 52265147483.jpg
-  commons_filename: Pied avocet, Recurvirostra avosetta, Skärfläcka - 52265147483.jpg
+  author: Luiz Lapa
+  source_url: https://commons.wikimedia.org/wiki/File:Alfaiate, Pied Avocet (51605292877).jpg
+  commons_filename: Alfaiate, Pied Avocet (51605292877).jpg
 - role: secondary
   path: Q26147/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
-    Prego</a> from Moura, Portugal
+  author: José Prego
   source_url: https://commons.wikimedia.org/wiki/File:Alfaiate (Recurvirostra avosetta)
     (53201284179).jpg
   commons_filename: Alfaiate (Recurvirostra avosetta) (53201284179).jpg

@@ -93,31 +93,27 @@ image_refs:
 - role: hero
   path: Q201316/hero.webp
   width: 2400
-  height: 1800
-  license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/29310050@N04">yamatsu</a>
-  source_url: https://commons.wikimedia.org/wiki/File:キセキレイ (黄鶺鴒) (Grey Wagtail) (Motacilla
-    cinerea) (23372565665).jpg
-  commons_filename: キセキレイ (黄鶺鴒) (Grey Wagtail) (Motacilla cinerea) (23372565665).jpg
+  height: 1525
+  license: CC BY 2.0
+  author: tobyas_reaper
+  source_url: https://commons.wikimedia.org/wiki/File:Bird - 41695767260.jpg
+  commons_filename: Bird - 41695767260.jpg
 - role: secondary
   path: Q201316/secondary-1.webp
   width: 1800
-  height: 1350
-  license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/29310050@N04">yamatsu</a>
-  source_url: https://commons.wikimedia.org/wiki/File:キセキレイ (黄鶺鴒) (Grey Wagtail) (Motacilla
-    cinerea) (23372575615).jpg
-  commons_filename: キセキレイ (黄鶺鴒) (Grey Wagtail) (Motacilla cinerea) (23372575615).jpg
+  height: 1201
+  license: CC BY 2.0
+  author: Greg Schechter
+  source_url: https://commons.wikimedia.org/wiki/File:Israel. Grey wagtail (15626176887).jpg
+  commons_filename: Israel. Grey wagtail (15626176887).jpg
 - role: secondary
   path: Q201316/secondary-2.webp
   width: 1800
-  height: 1200
+  height: 1350
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Motacilla cinerea, Spomenik
-    prirode Lisine.jpg
-  commons_filename: Motacilla cinerea, Spomenik prirode Lisine.jpg
+  author: Jaana Siitonen
+  source_url: https://commons.wikimedia.org/wiki/File:Motacilla cinerea - DSCN1526-01.jpg
+  commons_filename: Motacilla cinerea - DSCN1526-01.jpg
 review_status: approved
 review_notes: "Forsärla — Motacilla cinerea med lång gul stjärt; regulär SE-art längs forsande vattendrag."
 generated_at: '2026-05-15T20:16:01.040532+00:00'

@@ -92,7 +92,7 @@ image_refs:
   width: 2048
   height: 1365
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2458916">konstantinseliverstov</a>
+  author: konstantinseliverstov
   source_url: https://commons.wikimedia.org/wiki/File:Gallinago media 57850158.jpg
   commons_filename: Gallinago media 57850158.jpg
 - role: secondary
@@ -100,8 +100,7 @@ image_refs:
   width: 1800
   height: 1126
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Great Snipe (Gallinago media)
     in Sweden.jpg
   commons_filename: Great Snipe (Gallinago media) in Sweden.jpg

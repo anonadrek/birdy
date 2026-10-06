@@ -99,8 +99,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Muscicapa striata (8752019704).jpg
   commons_filename: Muscicapa striata (8752019704).jpg
 - role: secondary
@@ -117,7 +116,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Badadaba" title="User:Badadaba">Badadaba</a>
+  author: Badadaba
   source_url: https://commons.wikimedia.org/wiki/File:Muscicapa striata 1.jpg
   commons_filename: Muscicapa striata 1.jpg
 review_status: approved

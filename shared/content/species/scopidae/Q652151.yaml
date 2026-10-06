@@ -69,7 +69,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Hamerkop (Scopus umbretta),
     Kenya.jpg
   commons_filename: Hamerkop (Scopus umbretta), Kenya.jpg
@@ -78,8 +78,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/41601691@N02">Tim
-    Strater</a> from Rotterdam, Nederland
+  author: Tim Strater
   source_url: https://commons.wikimedia.org/wiki/File:Scopus umbretta -Diergaarde
     Blijdorp, Rotterdam, Netherlands-8a.jpg
   commons_filename: Scopus umbretta -Diergaarde Blijdorp, Rotterdam, Netherlands-8a.jpg
@@ -88,8 +87,7 @@ image_refs:
   width: 1800
   height: 1318
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/7997249@N06">hyper7pro</a>
-    from Secunda, South Africa
+  author: hyper7pro
   source_url: https://commons.wikimedia.org/wiki/File:Scopus umbretta -Kruger National
     Park, South Africa-8a.jpg
   commons_filename: Scopus umbretta -Kruger National Park, South Africa-8a.jpg

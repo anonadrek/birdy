@@ -93,21 +93,17 @@ image_refs:
 - role: hero
   path: Q25909/hero.webp
   width: 2400
-  height: 1600
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Klaaschwotzer" title="User:Klaaschwotzer">Klaaschwotzer</a>
-  source_url: https://commons.wikimedia.org/wiki/File:2025-08-08 Riparia riparia (Uferschwalben)
-    neben dem Südende der Hessenwand auf der Seeseite vor dem Zeltplatz auf Spiekeroog
-    (12).jpg
-  commons_filename: 2025-08-08 Riparia riparia (Uferschwalben) neben dem Südende der
-    Hessenwand auf der Seeseite vor dem Zeltplatz auf Spiekeroog (12).jpg
+  height: 1759
+  license: CC BY 2.0
+  author: Andy Morffew
+  source_url: https://commons.wikimedia.org/wiki/File:They do What???? (7782171814).jpg
+  commons_filename: They do What???? (7782171814).jpg
 - role: secondary
   path: Q25909/secondary-1.webp
   width: 1286
   height: 1800
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Bank swallow (Riparia riparia)
     2021.jpg
   commons_filename: Bank swallow (Riparia riparia) 2021.jpg
@@ -116,8 +112,7 @@ image_refs:
   width: 1200
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Rolf_Tuinstra&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Rolf Tuinstra (page does not exist)">Rolf Tuinstra</a>
+  author: Rolf Tuinstra
   source_url: https://commons.wikimedia.org/wiki/File:20170531 - 06.04 Oeverzwaluw
     (Riparia riparia) 2.jpg
   commons_filename: 20170531 - 06.04 Oeverzwaluw (Riparia riparia) 2.jpg

@@ -74,7 +74,7 @@ image_refs:
   width: 1623
   height: 2400
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Certhia familiaris Rome 20130304.jpg
   commons_filename: Certhia familiaris Rome 20130304.jpg
 - role: secondary
@@ -82,8 +82,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
-    Taÿ Pamart</a>
+  author: Marie-Lan Taÿ Pamart
   source_url: https://commons.wikimedia.org/wiki/File:Certhia familiaris ringing SPOL
     mangeoire 20250220 n02.jpg
   commons_filename: Certhia familiaris ringing SPOL mangeoire 20250220 n02.jpg
@@ -92,8 +91,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
+  author: Zerocool.marko
   source_url: https://commons.wikimedia.org/wiki/File:Certhia familiaris, Spomenik
     prirode Lisine (1).jpg
   commons_filename: Certhia familiaris, Spomenik prirode Lisine (1).jpg

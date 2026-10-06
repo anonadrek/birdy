@@ -100,7 +100,7 @@ image_refs:
   width: 2400
   height: 1596
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Rock ptarmigan (Lagopus muta)
     1.jpg
   commons_filename: Rock ptarmigan (Lagopus muta) 1.jpg
@@ -109,8 +109,7 @@ image_refs:
   width: 1800
   height: 1332
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
-    ten Cate</a>
+  author: Bouke ten Cate
   source_url: https://commons.wikimedia.org/wiki/File:Alpensneeuwhoen - rock ptarmigan
     - Lagopus muta 2.jpg
   commons_filename: Alpensneeuwhoen - rock ptarmigan - Lagopus muta 2.jpg
@@ -119,8 +118,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/39676602@N06">Daisuke
-    Tashiro</a>
+  author: Daisuke Tashiro
   source_url: https://commons.wikimedia.org/wiki/File:Lagopus muta japonica Mount
     Tsubakuro.jpg
   commons_filename: Lagopus muta japonica Mount Tsubakuro.jpg

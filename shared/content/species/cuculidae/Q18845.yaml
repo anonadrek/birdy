@@ -88,30 +88,29 @@ image_refs:
 - role: hero
   path: Q18845/hero.webp
   width: 2400
-  height: 1586
+  height: 1854
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
-  source_url: https://commons.wikimedia.org/wiki/File:Cuckoo. Cuculus canorus - Flickr
-    - gailhampshire.jpg
-  commons_filename: Cuckoo. Cuculus canorus - Flickr - gailhampshire.jpg
+  author: Luiz Lapa
+  source_url: https://commons.wikimedia.org/wiki/File:Cuco-canoro, macho, Common Cuckoo,
+    male (52777311231) (cropped).jpg
+  commons_filename: Cuco-canoro, macho, Common Cuckoo, male (52777311231) (cropped).jpg
 - role: secondary
   path: Q18845/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Drow_male" title="User:Drow male">Fernando
-    Losada Rodríguez</a>
+  author: Fernando Losada Rodríguez
   source_url: https://commons.wikimedia.org/wiki/File:Cuculus canorus.010 - A Coruña.jpg
   commons_filename: Cuculus canorus.010 - A Coruña.jpg
 - role: secondary
   path: Q18845/secondary-2.webp
   width: 1800
-  height: 1350
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Salicyna" title="User:Salicyna">Salicyna</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Cuculus canorus 2016-06-06 2456.jpg
-  commons_filename: Cuculus canorus 2016-06-06 2456.jpg
+  height: 1229
+  license: CC BY 2.0
+  author: Luiz Lapa
+  source_url: https://commons.wikimedia.org/wiki/File:Cuco-canoro, macho, Common Cuckoo,
+    male (52779232944).jpg
+  commons_filename: Cuco-canoro, macho, Common Cuckoo, male (52779232944).jpg
 review_status: approved
 review_notes: Hero = adult Cuculus canorus från Cradley (UK, Flickr CC BY 2.0); klassisk grå-bandad fältidentifiering, lång stjärt, hökliknande siluett. Två sekundärbilder från Coruña + Salicyna 2016. SV+EN beskrivning båda ≥80 ord, ingen hallucination. EN migration "data unavailable" — Claude honest fallback när källan saknade migration-info.
 generated_at: '2026-05-15T18:32:10.032316+00:00'

@@ -101,19 +101,18 @@ image_refs:
 - role: hero
   path: Q26620/hero.webp
   width: 2400
-  height: 1596
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Common Redstart - (Phoenicurus
-    phoenicurus, juvenile).jpg
-  commons_filename: Common Redstart - (Phoenicurus phoenicurus, juvenile).jpg
+  height: 1599
+  license: CC BY-SA 4.0
+  author: Dirk Wedemann
+  source_url: https://commons.wikimedia.org/wiki/File:Gartenrotschwanz, Common redstart,
+    phoenicurus phoenicurus.jpg
+  commons_filename: Gartenrotschwanz, Common redstart, phoenicurus phoenicurus.jpg
 - role: secondary
   path: Q26620/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/101181388@N07">Jevgenijs
-    Slihto</a> from Riga, Latvia
+  author: Jevgenijs Slihto
   source_url: https://commons.wikimedia.org/wiki/File:Common redstart (Phoenicurus
     phoenicurus, juvenile) (26767090208).jpg
   commons_filename: Common redstart (Phoenicurus phoenicurus, juvenile) (26767090208).jpg
@@ -122,7 +121,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Skot" title="User:Skot">Skot</a>
+  author: Skot
   source_url: https://commons.wikimedia.org/wiki/File:Rehek zahradní (Phoenicurus
     phoenicurus), Vrch Třešňovka, Praha – Hrdlořezy 01.jpg
   commons_filename: Rehek zahradní (Phoenicurus phoenicurus), Vrch Třešňovka, Praha

@@ -105,29 +105,30 @@ migration:
 image_refs:
 - role: hero
   path: Q130933/hero.webp
-  width: 1800
-  height: 2400
-  license: Public domain
-  author: LordToran
-  source_url: https://commons.wikimedia.org/wiki/File:Lto-tpbo-bubo-bubo.JPG
-  commons_filename: Lto-tpbo-bubo-bubo.JPG
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: JarroNevsbaru
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian eagle owl (Bubo bubo)
+    2024.jpg
+  commons_filename: Eurasian eagle owl (Bubo bubo) 2024.jpg
 - role: secondary
   path: Q130933/secondary-1.webp
   width: 1800
   height: 1192
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian eagle-owl (Bubo bubo).jpg
   commons_filename: Eurasian eagle-owl (Bubo bubo).jpg
 - role: secondary
   path: Q130933/secondary-2.webp
   width: 1800
-  height: 1200
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Cayambe" title="User:Cayambe">Cayambe</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Vallée de l'Eisch, Bubo bubo
-    2026a.jpg
-  commons_filename: Vallée de l'Eisch, Bubo bubo 2026a.jpg
+  height: 1800
+  license: CC BY 2.0
+  author: Blondinrikard Fröberg
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian eagle-owl, Bubo bubo,
+    Berguv (50890800777).jpg
+  commons_filename: Eurasian eagle-owl, Bubo bubo, Berguv (50890800777).jpg
 review_status: approved
 review_notes: "Hero = Bubo bubo (Eurasian Eagle-Owl / Berguv); SE:s största uggla, häckar på klippor och i bergsterräng."
 generated_at: '2026-05-15T21:16:46.583221+00:00'

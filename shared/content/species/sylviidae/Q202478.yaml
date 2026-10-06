@@ -94,8 +94,7 @@ image_refs:
   width: 2048
   height: 1536
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/4147611">Сергей
-    Неклюдов</a>
+  author: Сергей Неклюдов
   source_url: https://commons.wikimedia.org/wiki/File:Sylvia borin 315567165.jpg
   commons_filename: Sylvia borin 315567165.jpg
 - role: secondary
@@ -103,8 +102,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:VezeIvan&amp;action=edit&amp;redlink=1"
-    class="new" title="User:VezeIvan (page does not exist)">Иван Везенковић</a>
+  author: Иван Везенковић
   source_url: https://commons.wikimedia.org/wiki/File:Garden Warbler Sylvia borin.jpg
   commons_filename: Garden Warbler Sylvia borin.jpg
 - role: secondary
@@ -112,8 +110,7 @@ image_refs:
   width: 1350
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Sanja_%C5%A0umanovi%C4%87&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Sanja Šumanović (page does not exist)">Sanja Šumanović</a>
+  author: Sanja Šumanović
   source_url: https://commons.wikimedia.org/wiki/File:Siva grmuša (Sylvia borin) Garden
     Warbler.jpg
   commons_filename: Siva grmuša (Sylvia borin) Garden Warbler.jpg

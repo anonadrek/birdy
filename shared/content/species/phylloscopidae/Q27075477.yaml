@@ -103,31 +103,29 @@ image_refs:
   width: 2400
   height: 1568
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/44093058@N06">Blondinrikard
-    Fröberg</a>
+  author: Blondinrikard Fröberg
   source_url: https://commons.wikimedia.org/wiki/File:Wood warbler, Phylloscopus sibilatrix,
     Grönsångare (49853695263).jpg
   commons_filename: Wood warbler, Phylloscopus sibilatrix, Grönsångare (49853695263).jpg
 - role: secondary
   path: Q27075477/secondary-1.webp
-  width: 1800
-  height: 1200
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus sibilatrix, Lalinačka
-    slatina, Srbija (14).jpg
-  commons_filename: Phylloscopus sibilatrix, Lalinačka slatina, Srbija (14).jpg
+  width: 1225
+  height: 1800
+  license: CC0
+  author: Matti Virtala
+  source_url: https://commons.wikimedia.org/wiki/File:Rhadina sibilatrix Oulu Finland
+    2021-05-12 (1).jpg
+  commons_filename: Rhadina sibilatrix Oulu Finland 2021-05-12 (1).jpg
 - role: secondary
   path: Q27075477/secondary-2.webp
   width: 1800
   height: 1350
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Nikola_Veljkovi%C4%87&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Nikola Veljković (page does not exist)">Nikola Veljković</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Šumski zviždak (Phylloscopus
-    sibilatrix) Wood Warbler.jpg
-  commons_filename: Šumski zviždak (Phylloscopus sibilatrix) Wood Warbler.jpg
+  license: CC BY 2.0
+  author: Frank Vassen
+  source_url: https://commons.wikimedia.org/wiki/File:Waldlaubsänger (Phylloscopus
+    sibilatrix), Rocherath, Ostbelgien (3939220966).jpg
+  commons_filename: Waldlaubsänger (Phylloscopus sibilatrix), Rocherath, Ostbelgien
+    (3939220966).jpg
 review_status: approved
 review_notes: "Hero = Phylloscopus sibilatrix (Wood Warbler / Grönsångare); allmän i bokskog och lövskog i södra och mellersta SE."
 generated_at: '2026-05-15T21:21:56.743307+00:00'

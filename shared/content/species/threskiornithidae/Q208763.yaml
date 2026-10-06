@@ -81,7 +81,7 @@ image_refs:
   width: 2400
   height: 1599
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:African sacred ibis (Threskiornis
     aethiopicus) in flight.jpg
   commons_filename: African sacred ibis (Threskiornis aethiopicus) in flight.jpg
@@ -90,7 +90,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Vassil" title="User:Vassil">Vassil</a>
+  author: Vassil
   source_url: https://commons.wikimedia.org/wiki/File:Threskiornis aethiopicus Ile
     de Ré 25 04 2012.jpg
   commons_filename: Threskiornis aethiopicus Ile de Ré 25 04 2012.jpg
@@ -99,8 +99,7 @@ image_refs:
   width: 1800
   height: 1202
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
-    Keats</a> from Johannesburg, South Africa
+  author: Derek Keats
   source_url: https://commons.wikimedia.org/wiki/File:African Sacred Ibis, Threskiornis
     aethiopicus, at Pilanesberg National Park, South Africa (45081680281).jpg
   commons_filename: African Sacred Ibis, Threskiornis aethiopicus, at Pilanesberg

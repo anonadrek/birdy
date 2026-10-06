@@ -41,32 +41,28 @@ image_refs:
   width: 2081
   height: 1383
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Rüppell's weaver (Ploceus galbula),
     Oman.jpg
   commons_filename: Rüppell's weaver (Ploceus galbula), Oman.jpg
 - role: secondary
   path: Q659005/secondary-1.webp
   width: 1800
-  height: 1200
+  height: 1145
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Sailko" title="User:Sailko">Francesco
-    Bini</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Dhofar, Jabal Samhan, nido a
-    capanna pensile, forse di Ploceus galbula 01.jpg
-  commons_filename: Dhofar, Jabal Samhan, nido a capanna pensile, forse di Ploceus
-    galbula 01.jpg
+  author: منصة الصور السعودية
+  source_url: https://commons.wikimedia.org/wiki/File:طائر الحباك الذهبي (النسّاج)
+    في غابات منطقة عسير 2.jpg
+  commons_filename: طائر الحباك الذهبي (النسّاج) في غابات منطقة عسير 2.jpg
 - role: secondary
   path: Q659005/secondary-2.webp
-  width: 1219
-  height: 1800
+  width: 1800
+  height: 1055
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Sailko" title="User:Sailko">Francesco
-    Bini</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Dhofar, Jabal Samhan, nido a
-    capanna pensile, forse di Ploceus galbula 02.jpg
-  commons_filename: Dhofar, Jabal Samhan, nido a capanna pensile, forse di Ploceus
-    galbula 02.jpg
+  author: Saudi Press Agency (SPA)
+  source_url: https://commons.wikimedia.org/wiki/File:Golden Weaver Bird in Aseer
+    Forests, Saudi Arabia (2025).jpg
+  commons_filename: Golden Weaver Bird in Aseer Forests, Saudi Arabia (2025).jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T20:51:46.650547+00:00'

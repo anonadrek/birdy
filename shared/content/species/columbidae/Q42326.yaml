@@ -99,19 +99,17 @@ image_refs:
 - role: hero
   path: Q42326/hero.webp
   width: 2400
-  height: 1602
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
-    Nivis</a>
-  source_url: https://commons.wikimedia.org/wiki/File:20220926 Columba livia.jpg
-  commons_filename: 20220926 Columba livia.jpg
+  height: 1655
+  license: CC BY-SA 3.0
+  author: Luc Viatour
+  source_url: https://commons.wikimedia.org/wiki/File:Columba livia Luc Viatour.jpg
+  commons_filename: Columba livia Luc Viatour.jpg
 - role: secondary
   path: Q42326/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
-    Nivis</a>
+  author: Flocci Nivis
   source_url: https://commons.wikimedia.org/wiki/File:20200115 Columba livia domestica
     Bürgerpark Saarbrücken 06.jpg
   commons_filename: 20200115 Columba livia domestica Bürgerpark Saarbrücken 06.jpg
@@ -120,8 +118,7 @@ image_refs:
   width: 1800
   height: 1202
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
-    Nivis</a>
+  author: Flocci Nivis
   source_url: https://commons.wikimedia.org/wiki/File:20200115 Columba livia domestica
     Bürgerpark Saarbrücken 02.jpg
   commons_filename: 20200115 Columba livia domestica Bürgerpark Saarbrücken 02.jpg

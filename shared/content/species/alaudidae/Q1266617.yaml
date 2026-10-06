@@ -63,7 +63,7 @@ image_refs:
   width: 2048
   height: 1536
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/32455">paloma</a>
+  author: paloma
   source_url: https://commons.wikimedia.org/wiki/File:Chersophilus duponti 1837961.jpg
   commons_filename: Chersophilus duponti 1837961.jpg
 - role: secondary
@@ -71,7 +71,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/645653">thibaudaronson</a>
+  author: thibaudaronson
   source_url: https://commons.wikimedia.org/wiki/File:Chersophilus duponti 168410778.jpg
   commons_filename: Chersophilus duponti 168410778.jpg
 review_status: auto

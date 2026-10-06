@@ -97,8 +97,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Common swift (Apus apus) 2024
     3.jpg
   commons_filename: Common swift (Apus apus) 2024 3.jpg
@@ -107,18 +106,17 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Common swift (Apus apus) 2024.jpg
   commons_filename: Common swift (Apus apus) 2024.jpg
 - role: secondary
   path: Q25377/secondary-2.webp
-  width: 1800
-  height: 1376
+  width: 1739
+  height: 1800
   license: CC BY 4.0
-  author: NOIRLab
-  source_url: https://commons.wikimedia.org/wiki/File:Apus (apus-flashcard).jpg
-  commons_filename: Apus (apus-flashcard).jpg
+  author: Alexis Lours
+  source_url: https://commons.wikimedia.org/wiki/File:Common Swift (Apus apus) (cropped).jpg
+  commons_filename: Common Swift (Apus apus) (cropped).jpg
 review_status: approved
 review_notes: 'auto-pick OK (Apus apus i flykt 2024, klar identifierbar; CC BY 4.0)'
 generated_at: '2026-05-06T14:31:28.174225+00:00'

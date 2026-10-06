@@ -39,12 +39,11 @@ image_refs:
 - role: hero
   path: Q27075785/hero.webp
   width: 2400
-  height: 1800
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
-  source_url: https://commons.wikimedia.org/wiki/File:Chloris chloris (19753531265).jpg
-  commons_filename: Chloris chloris (19753531265).jpg
+  height: 1869
+  license: CC BY 4.0
+  author: Martin Kunz
+  source_url: https://commons.wikimedia.org/wiki/File:Chloris chloris (profile).jpg
+  commons_filename: Chloris chloris (profile).jpg
 - role: secondary
   path: Q27075785/secondary-1.webp
   width: 1561

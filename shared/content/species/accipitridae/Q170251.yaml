@@ -71,30 +71,30 @@ image_refs:
   width: 1600
   height: 2400
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Short-toed snake eagle (Circaetus
     gallicus), Potokaki Wetland.jpg
   commons_filename: Short-toed snake eagle (Circaetus gallicus), Potokaki Wetland.jpg
 - role: secondary
   path: Q170251/secondary-1.webp
   width: 1800
-  height: 1476
-  license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
-  source_url: https://commons.wikimedia.org/wiki/File:Black-chested snake-eagle (Circaetus
-    pectoralis).jpg
-  commons_filename: Black-chested snake-eagle (Circaetus pectoralis).jpg
+  height: 1202
+  license: CC BY 4.0
+  author: Sultanjenin2018
+  source_url: https://commons.wikimedia.org/wiki/File:عقاب الثعابين . عقاب قصير الأصابع
+    أو الصرارة، واسمه العلمي Circaetus gallicus 2.jpg
+  commons_filename: عقاب الثعابين . عقاب قصير الأصابع أو الصرارة، واسمه العلمي Circaetus
+    gallicus 2.jpg
 - role: secondary
   path: Q170251/secondary-2.webp
   width: 1800
-  height: 1200
+  height: 1286
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
-  source_url: https://commons.wikimedia.org/wiki/File:Black-chested snake-eagle (Circaetus
-    pectoralis) in flight.jpg
-  commons_filename: Black-chested snake-eagle (Circaetus pectoralis) in flight.jpg
+  author: Tisha Mukherjee
+  source_url: https://commons.wikimedia.org/wiki/File:Short-toed Snake-Eagle in Bhigwan
+    August 2025 by Tisha Mukherjee 01.jpg
+  commons_filename: Short-toed Snake-Eagle in Bhigwan August 2025 by Tisha Mukherjee
+    01.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-04T12:14:52.918139+00:00'

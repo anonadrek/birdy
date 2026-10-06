@@ -70,28 +70,25 @@ image_refs:
 - role: hero
   path: Q25383/hero.webp
   width: 2400
-  height: 1596
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Chaffinch of the subspecies
-    Fringilla coelebs canariensis.jpg
-  commons_filename: Chaffinch of the subspecies Fringilla coelebs canariensis.jpg
+  height: 1600
+  license: CC BY 2.0
+  author: Ralf Hüsges
+  source_url: https://commons.wikimedia.org/wiki/File:Buchfink (53508065158).jpg
+  commons_filename: Buchfink (53508065158).jpg
 - role: secondary
   path: Q25383/secondary-1.webp
   width: 1800
-  height: 1193
+  height: 1350
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Madeiran chaffinch (Fringilla
-    coelebs maderensis).jpg
-  commons_filename: Madeiran chaffinch (Fringilla coelebs maderensis).jpg
+  author: Membeth
+  source_url: https://commons.wikimedia.org/wiki/File:Buchfink-Maennchen.Luther-Friedhof.P1067297.jpg
+  commons_filename: Buchfink-Maennchen.Luther-Friedhof.P1067297.jpg
 - role: secondary
   path: Q25383/secondary-2.webp
   width: 1800
   height: 1204
   license: CC BY 3.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Tadaa3x&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Tadaa3x (page does not exist)">Martin Kunz</a>
+  author: Martin Kunz
   source_url: https://commons.wikimedia.org/wiki/File:Fringilla coelebs on branch.jpg
   commons_filename: Fringilla coelebs on branch.jpg
 review_status: approved

@@ -95,27 +95,27 @@ image_refs:
 - role: hero
   path: Q26733/hero.webp
   width: 2400
-  height: 1600
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Grendelkhan" title="User:Grendelkhan">Grendelkhan</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Branta canadensis gosling on
-    grass at Campbell Park.jpg
-  commons_filename: Branta canadensis gosling on grass at Campbell Park.jpg
+  height: 1594
+  license: CC BY 2.0
+  author: abdallahh
+  source_url: https://commons.wikimedia.org/wiki/File:Bernache du Canada (50246750056).jpg
+  commons_filename: Bernache du Canada (50246750056).jpg
 - role: secondary
   path: Q26733/secondary-1.webp
   width: 1800
-  height: 1200
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Grendelkhan" title="User:Grendelkhan">Grendelkhan</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Branta canadensis gosling on
-    grass at Campbell Park 2.jpg
-  commons_filename: Branta canadensis gosling on grass at Campbell Park 2.jpg
+  height: 1207
+  license: CC BY 2.0
+  author: Judy Gallagher
+  source_url: https://commons.wikimedia.org/wiki/File:058 366 - Canada Goose - Branta
+    canadensis, Kingstowne Lake, Alexandria, Virginia, February 27, 2024 (53557081058).jpg
+  commons_filename: 058 366 - Canada Goose - Branta canadensis, Kingstowne Lake, Alexandria,
+    Virginia, February 27, 2024 (53557081058).jpg
 - role: secondary
   path: Q26733/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Grendelkhan" title="User:Grendelkhan">Grendelkhan</a>
+  author: Grendelkhan
   source_url: https://commons.wikimedia.org/wiki/File:Branta canadensis gosling on
     grass at Campbell Park 3.jpg
   commons_filename: Branta canadensis gosling on grass at Campbell Park 3.jpg

@@ -69,7 +69,7 @@ image_refs:
   width: 2400
   height: 1800
   license: Public domain
-  author: Wikimedia Commons contributor (Public domain)
+  author: IP Singh
   source_url: https://commons.wikimedia.org/wiki/File:Amaurornis Phoenicurus.JPG
   commons_filename: Amaurornis Phoenicurus.JPG
 - role: secondary
@@ -77,8 +77,7 @@ image_refs:
   width: 1800
   height: 1013
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1698881">Tiago
-    Lubiana</a>
+  author: Tiago Lubiana
   source_url: https://commons.wikimedia.org/wiki/File:Amaurornis phoenicurus - Tiago
     Lubiana - 357686699.jpeg
   commons_filename: Amaurornis phoenicurus - Tiago Lubiana - 357686699.jpeg
@@ -87,8 +86,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Amaurornis phoenicurus (43793255525).jpg
   commons_filename: Amaurornis phoenicurus (43793255525).jpg
 review_status: auto

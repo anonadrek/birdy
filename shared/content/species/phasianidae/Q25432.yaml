@@ -110,24 +110,23 @@ image_refs:
   width: 2400
   height: 1492
   license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Tlus%C5%A5a" title="User:Tlusťa">Tlusťa</a>
+  author: Tlusťa
   source_url: https://commons.wikimedia.org/wiki/File:Phasianus colchicus Konopiste.jpg
   commons_filename: Phasianus colchicus Konopiste.jpg
 - role: secondary
   path: Q25432/secondary-1.webp
   width: 1800
   height: 1200
-  license: CC BY 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jerzystrzelecki" title="User:Jerzystrzelecki">Jerzystrzelecki</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Phasianus colchicus Lodz(Poland)(js)05.jpg
-  commons_filename: Phasianus colchicus Lodz(Poland)(js)05.jpg
+  license: Public domain
+  author: U.S. Fish and Wildlife Service - Midwest Region
+  source_url: https://commons.wikimedia.org/wiki/File:Ring-necked Pheasant (27430208127).jpg
+  commons_filename: Ring-necked Pheasant (27430208127).jpg
 - role: secondary
   path: Q25432/secondary-2.webp
   width: 1800
   height: 1192
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/26082117@N07">Daniel
-    Jolivet</a>
+  author: Daniel Jolivet
   source_url: https://commons.wikimedia.org/wiki/File:Phasianus colchicus à Thésée-la-Romaine
     (Loir-et-Cher) (50894670667).jpg
   commons_filename: Phasianus colchicus à Thésée-la-Romaine (Loir-et-Cher) (50894670667).jpg

@@ -97,26 +97,23 @@ image_refs:
   width: 2048
   height: 1535
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2986250">Antti
-    Latikka</a>
+  author: Antti Latikka
   source_url: https://commons.wikimedia.org/wiki/File:Tetrastes bonasia 277462364.jpg
   commons_filename: Tetrastes bonasia 277462364.jpg
 - role: secondary
   path: Q182761/secondary-1.webp
   width: 1800
-  height: 1350
+  height: 1292
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:%D0%90%D0%BD%D0%B4%D1%80%D1%96%D0%B9_%D0%9C%D1%96%D1%81%D1%8C%D0%BA%D0%BE%D0%B2"
-    title="User:Андрій Міськов">Андрій Міськов</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Гніздо орябка Tetrastes bonasia.jpg
-  commons_filename: Гніздо орябка Tetrastes bonasia.jpg
+  author: Lukas Kott
+  source_url: https://commons.wikimedia.org/wiki/File:Fantom Beskyd.jpg
+  commons_filename: Fantom Beskyd.jpg
 - role: secondary
   path: Q182761/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:MichaelHaeckel&amp;action=edit&amp;redlink=1"
-    class="new" title="User:MichaelHaeckel (page does not exist)">MichaelHaeckel</a>
+  author: MichaelHaeckel
   source_url: https://commons.wikimedia.org/wiki/File:Tetrastes bonasia 2.jpg
   commons_filename: Tetrastes bonasia 2.jpg
 review_status: approved

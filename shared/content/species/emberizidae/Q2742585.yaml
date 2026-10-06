@@ -56,30 +56,18 @@ migration:
 image_refs:
 - role: hero
   path: Q2742585/hero.webp
-  width: 1566
-  height: 2106
-  license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/61021753@N02">Biodiversity
-    Heritage Library</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Malurus nimudicus + Emberiza
-    Sahari (Algeria).jpg
-  commons_filename: Malurus nimudicus + Emberiza Sahari (Algeria).jpg
-- role: secondary
-  path: Q2742585/secondary-1.webp
-  width: 1800
-  height: 1200
+  width: 2400
+  height: 1600
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Robdefreitas&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Robdefreitas (page does not exist)">Robdefreitas</a>
+  author: Robdefreitas
   source_url: https://commons.wikimedia.org/wiki/File:Tibibt (Emberiza sahari), Marrakesh.jpg
   commons_filename: Tibibt (Emberiza sahari), Marrakesh.jpg
 - role: secondary
-  path: Q2742585/secondary-2.webp
+  path: Q2742585/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Henri_Pidoux" title="User:Henri
-    Pidoux">Henri Pidoux</a>
+  author: Henri Pidoux
   source_url: https://commons.wikimedia.org/wiki/File:Emberiza sahari, Marrakech.jpg
   commons_filename: Emberiza sahari, Marrakech.jpg
 review_status: auto

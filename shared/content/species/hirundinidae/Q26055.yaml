@@ -99,25 +99,25 @@ image_refs:
   width: 2400
   height: 1696
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Delichon urbicum Oulu 20120527
     07.JPG
   commons_filename: Delichon urbicum Oulu 20120527 07.JPG
 - role: secondary
   path: Q26055/secondary-1.webp
   width: 1800
-  height: 1350
+  height: 1239
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Redcompote" title="User:Redcompote">Redcompote</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Delichon urbicum from Blaues
-    Wunder 6 August 2016 DSC04743.jpg
-  commons_filename: Delichon urbicum from Blaues Wunder 6 August 2016 DSC04743.jpg
+  author: Estormiz
+  source_url: https://commons.wikimedia.org/wiki/File:Delichon urbicum Oulu 20120527
+    01.JPG
+  commons_filename: Delichon urbicum Oulu 20120527 01.JPG
 - role: secondary
   path: Q26055/secondary-2.webp
   width: 1800
   height: 1350
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Redcompote" title="User:Redcompote">Redcompote</a>
+  author: Redcompote
   source_url: https://commons.wikimedia.org/wiki/File:Delichon urbicum from Blaues
     Wunder 6 August 2016 DSC04745.jpg
   commons_filename: Delichon urbicum from Blaues Wunder 6 August 2016 DSC04745.jpg

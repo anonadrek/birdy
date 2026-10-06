@@ -70,24 +70,18 @@ migration:
 image_refs:
 - role: hero
   path: Q12265004/hero.webp
-  width: 2261
-  height: 2340
-  license: Public domain
-  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Nicolas_Huet_the_Younger"
-    class="extiw" title="w:en:Nicolas Huet the Younger"><span title="French painter,
-    illustrator and engraver (1770-1830)">Nicolas Huet</span></a></bdi> / <bdi><a
-    href="https://en.wikipedia.org/wiki/en:Jean-Gabriel_Pr%C3%AAtre" class="extiw"
-    title="w:en:Jean-Gabriel Prêtre"><span title="Swiss illustrator (1768-1849)">Jean
-    Gabriel Prêtre</span></a></bdi>
-  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe melanura 1838.jpg
-  commons_filename: Oenanthe melanura 1838.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: דג קטן
+  source_url: https://commons.wikimedia.org/wiki/File:חיות בנחל דוד 05.jpg
+  commons_filename: חיות בנחל דוד 05.jpg
 - role: secondary
   path: Q12265004/secondary-1.webp
   width: 1800
   height: 1246
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/89580006@N08">getthepictures
-    photography blog</a>
+  author: getthepictures photography blog
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe melanura -Israel-8.jpg
   commons_filename: Oenanthe melanura -Israel-8.jpg
 - role: secondary
@@ -95,8 +89,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
-    title="User:מינוזיג">מינוזיג - MinoZig</a>
+  author: מינוזיג - MinoZig
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe melanura ,Israel.jpg
   commons_filename: Oenanthe melanura ,Israel.jpg
 review_status: auto

@@ -95,7 +95,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:-jkb-" title="User:-jkb-">-jkb-</a>
+  author: -jkb-
   source_url: https://commons.wikimedia.org/wiki/File:Picus viridis in Berlin 2.jpg
   commons_filename: Picus viridis in Berlin 2.jpg
 - role: secondary
@@ -103,8 +103,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Juvenile Green Woodpecker digging
     for ants. Picus viridis - Flickr - gailhampshire (1).jpg
   commons_filename: Juvenile Green Woodpecker digging for ants. Picus viridis - Flickr
@@ -114,8 +113,7 @@ image_refs:
   width: 1800
   height: 1592
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Juvenile Green Woodpecker digging
     for ants. Picus viridis - Flickr - gailhampshire.jpg
   commons_filename: Juvenile Green Woodpecker digging for ants. Picus viridis - Flickr

@@ -41,8 +41,7 @@ image_refs:
   width: 2048
   height: 1368
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Apus berliozi 92256738.jpg
   commons_filename: Apus berliozi 92256738.jpg
 - role: secondary
@@ -50,8 +49,7 @@ image_refs:
   width: 1800
   height: 1202
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Apus berliozi 92256742.jpg
   commons_filename: Apus berliozi 92256742.jpg
 - role: secondary
@@ -59,8 +57,7 @@ image_refs:
   width: 1800
   height: 1199
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Apus berliozi 92256731.jpg
   commons_filename: Apus berliozi 92256731.jpg
 review_status: auto

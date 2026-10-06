@@ -74,8 +74,7 @@ image_refs:
   width: 2400
   height: 1350
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:DogilRobot&amp;action=edit&amp;redlink=1"
-    class="new" title="User:DogilRobot (page does not exist)">DogilRobot</a>
+  author: DogilRobot
   source_url: https://commons.wikimedia.org/wiki/File:Streptopelia orientalis in Seoul,
     Namsan Park.jpg
   commons_filename: Streptopelia orientalis in Seoul, Namsan Park.jpg
@@ -84,8 +83,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37407903@N06">nubobo</a>
-    from Iwata, Shizuoka, Japan
+  author: nubobo
   source_url: https://commons.wikimedia.org/wiki/File:Streptopelia orientalis -Japan-8.jpg
   commons_filename: Streptopelia orientalis -Japan-8.jpg
 - role: secondary
@@ -93,8 +91,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 3.0
-  author: <a rel="nofollow" class="external text" href="https://web.archive.org/web/20161028180426/http://www.panoramio.com/user/6452510?with_photo_id=105252059">lienyuan
-    lee</a>
+  author: lienyuan lee
   source_url: https://commons.wikimedia.org/wiki/File:金背鳩 Streptopelia orientalis
     - panoramio.jpg
   commons_filename: 金背鳩 Streptopelia orientalis - panoramio.jpg

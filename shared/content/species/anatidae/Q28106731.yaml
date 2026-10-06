@@ -107,7 +107,7 @@ image_refs:
   width: 2400
   height: 1600
   license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/yellowstonenps/">YellowstoneNPS</a>
+  author: YellowstoneNPS
   source_url: https://commons.wikimedia.org/wiki/File:Northern shoveler (Spatula clypeata)
     male and female (51164997189).jpg
   commons_filename: Northern shoveler (Spatula clypeata) male and female (51164997189).jpg
@@ -116,8 +116,7 @@ image_refs:
   width: 1800
   height: 1245
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Mattivirtala (page does not exist)">Matti Virtala</a>
+  author: Matti Virtala
   source_url: https://commons.wikimedia.org/wiki/File:Spatula clypeata Oulu Finland
     2016-05-07.jpg
   commons_filename: Spatula clypeata Oulu Finland 2016-05-07.jpg
@@ -126,8 +125,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Retired_electrician&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Retired electrician (page does not exist)">Retired electrician</a>
+  author: Retired electrician
   source_url: https://commons.wikimedia.org/wiki/File:Moscow, male Spatula clypeata
     in Vodootvodny Canal, March 2012 01.jpg
   commons_filename: Moscow, male Spatula clypeata in Vodootvodny Canal, March 2012

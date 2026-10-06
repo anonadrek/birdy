@@ -95,8 +95,7 @@ image_refs:
   width: 2400
   height: 1504
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian hobby (Falco subbuteo)
     2020.jpg
   commons_filename: Eurasian hobby (Falco subbuteo) 2020.jpg
@@ -105,8 +104,7 @@ image_refs:
   width: 1198
   height: 1800
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/32639361@N02">Rodrigo
-    Saldanha  de Almeida</a> from Marco de Canaveses, Portugal
+  author: Rodrigo Saldanha de Almeida
   source_url: https://commons.wikimedia.org/wiki/File:Ógea - Falco subbuteo.jpg
   commons_filename: Ógea - Falco subbuteo.jpg
 - role: secondary
@@ -114,8 +112,7 @@ image_refs:
   width: 1800
   height: 1439
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Hobby hunting. Falco subbuteo
     - Flickr - gailhampshire.jpg
   commons_filename: Hobby hunting. Falco subbuteo - Flickr - gailhampshire.jpg

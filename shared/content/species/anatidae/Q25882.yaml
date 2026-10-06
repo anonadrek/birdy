@@ -105,7 +105,7 @@ image_refs:
   width: 2400
   height: 1596
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Greylag goose (Anser anser).jpg
   commons_filename: Greylag goose (Anser anser).jpg
 - role: secondary
@@ -113,8 +113,7 @@ image_refs:
   width: 1800
   height: 1196
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Wilfredor" class="mw-redirect"
-    title="User:Wilfredor">Wilfredor</a>
+  author: Wilfredor
   source_url: https://commons.wikimedia.org/wiki/File:Anser anser domesticus 2.jpg
   commons_filename: Anser anser domesticus 2.jpg
 - role: secondary
@@ -122,9 +121,7 @@ image_refs:
   width: 1800
   height: 1196
   license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:H005" title="User:H005">H005</a>,
-    denoised by <a href="//commons.wikimedia.org/w/index.php?title=User:Pro2&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Pro2 (page does not exist)">Pro2</a>
+  author: H005, denoised by Pro2
   source_url: https://commons.wikimedia.org/wiki/File:Graugans Anser Anser.jpg
   commons_filename: Graugans Anser Anser.jpg
 review_status: approved

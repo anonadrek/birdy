@@ -95,7 +95,7 @@ image_refs:
   width: 2400
   height: 1791
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Plectrophenax nivalis Oulu 20140406
     03.JPG
   commons_filename: Plectrophenax nivalis Oulu 20140406 03.JPG
@@ -104,7 +104,7 @@ image_refs:
   width: 1800
   height: 1344
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Plectrophenax nivalis Oulu 20140406
     01.JPG
   commons_filename: Plectrophenax nivalis Oulu 20140406 01.JPG
@@ -113,8 +113,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Snow Bunting (Plectrophenax
     nivalis), Helgoland 2021 2.jpg
   commons_filename: Snow Bunting (Plectrophenax nivalis), Helgoland 2021 2.jpg

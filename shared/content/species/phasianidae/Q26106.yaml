@@ -104,28 +104,27 @@ image_refs:
 - role: hero
   path: Q26106/hero.webp
   width: 2400
-  height: 1602
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37180297@N08">LiCheng
-    Shih</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Syntypistis perdix perdix (32413832364).jpg
-  commons_filename: Syntypistis perdix perdix (32413832364).jpg
+  height: 1600
+  license: CC BY 4.0
+  author: TRinaud
+  source_url: https://commons.wikimedia.org/wiki/File:Grey partridge (Perdix perdix)
+    2020.jpg
+  commons_filename: Grey partridge (Perdix perdix) 2020.jpg
 - role: secondary
   path: Q26106/secondary-1.webp
   width: 1800
-  height: 1202
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37180297@N08">LiCheng
-    Shih</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Syntypistis perdix perdix (45418591041).jpg
-  commons_filename: Syntypistis perdix perdix (45418591041).jpg
+  height: 1199
+  license: CC BY 4.0
+  author: Hyppolyte de Saint-Rambert
+  source_url: https://commons.wikimedia.org/wiki/File:Noironte (Doubs) Perdrix grise
+    hdsr Vlux5 L1021006.jpg
+  commons_filename: Noironte (Doubs) Perdrix grise hdsr Vlux5 L1021006.jpg
 - role: secondary
   path: Q26106/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Grey partridge (Perdix perdix)
     2022.jpg
   commons_filename: Grey partridge (Perdix perdix) 2022.jpg

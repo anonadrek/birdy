@@ -92,8 +92,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Apurba_Biswas&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Apurba Biswas (page does not exist)">Apurba Biswas</a>
+  author: Apurba Biswas
   source_url: https://commons.wikimedia.org/wiki/File:Purple Sunbird (Cinnyris asiaticus)
     2.jpg
   commons_filename: Purple Sunbird (Cinnyris asiaticus) 2.jpg
@@ -102,8 +101,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
-    Thumboor</a> from Thrissur, India
+  author: Rison Thumboor
   source_url: https://commons.wikimedia.org/wiki/File:Purple Sunbird - Cinnyris asiaticus
     (16127222404).jpg
   commons_filename: Purple Sunbird - Cinnyris asiaticus (16127222404).jpg
@@ -112,8 +110,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
-    Kansara</a>
+  author: Parth Kansara
   source_url: https://commons.wikimedia.org/wiki/File:Cinnyris asiaticus 233584215.jpg
   commons_filename: Cinnyris asiaticus 233584215.jpg
 review_status: auto

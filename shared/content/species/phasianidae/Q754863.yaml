@@ -103,18 +103,18 @@ image_refs:
   width: 1800
   height: 1197
   license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Benjah-bmm27" title="User:Benjah-bmm27">Benjah-bmm27</a>
+  author: Benjah-bmm27
   source_url: https://commons.wikimedia.org/wiki/File:Young-Alectoris-rufa.JPG
   commons_filename: Young-Alectoris-rufa.JPG
 - role: secondary
   path: Q754863/secondary-2.webp
   width: 1800
   height: 1200
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/fieldsportschannel/">FieldsportsChannel.tv</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Alectoris rufa driven hunt,
-    Hampshire, England 01.png
-  commons_filename: Alectoris rufa driven hunt, Hampshire, England 01.png
+  license: CC BY 4.0
+  author: Bouke ten Cate
+  source_url: https://commons.wikimedia.org/wiki/File:Rode patrijs - red-legged partridge
+    - Alectoris rufa 2.jpg
+  commons_filename: Rode patrijs - red-legged partridge - Alectoris rufa 2.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T21:06:07.476922+00:00'

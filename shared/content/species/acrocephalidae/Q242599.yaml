@@ -102,20 +102,17 @@ image_refs:
   width: 2400
   height: 1607
   license: CC BY 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:David_Perez" title="User:David
-    Perez">David Perez</a>
+  author: David Perez
   source_url: https://commons.wikimedia.org/wiki/File:Acrocephalus paludicola 5 by-dpc.jpg
   commons_filename: Acrocephalus paludicola 5 by-dpc.jpg
 - role: secondary
   path: Q242599/secondary-1.webp
   width: 1800
-  height: 1200
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:112grammarpolice&amp;action=edit&amp;redlink=1"
-    class="new" title="User:112grammarpolice (page does not exist)">112grammarpolice</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Breeding habitat of the aquatic
-    warbler (Acrocephalus paludicola).JPG
-  commons_filename: Breeding habitat of the aquatic warbler (Acrocephalus paludicola).JPG
+  height: 1350
+  license: CC0
+  author: Tomas Pocius
+  source_url: https://commons.wikimedia.org/wiki/File:Acrocephalus paludicola 44414392.jpg
+  commons_filename: Acrocephalus paludicola 44414392.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-04T12:41:11.168138+00:00'

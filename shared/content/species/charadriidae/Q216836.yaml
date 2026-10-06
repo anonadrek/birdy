@@ -101,8 +101,7 @@ image_refs:
   width: 2048
   height: 1365
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1029721">Owen
-    Strickland</a>
+  author: Owen Strickland
   source_url: https://commons.wikimedia.org/wiki/File:Pluvialis dominica 228355544.jpg
   commons_filename: Pluvialis dominica 228355544.jpg
 - role: secondary
@@ -110,8 +109,7 @@ image_refs:
   width: 1800
   height: 1199
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1029721">Owen
-    Strickland</a>
+  author: Owen Strickland
   source_url: https://commons.wikimedia.org/wiki/File:Pluvialis dominica 231830137.jpg
   commons_filename: Pluvialis dominica 231830137.jpg
 - role: secondary

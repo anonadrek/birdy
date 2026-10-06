@@ -62,8 +62,7 @@ image_refs:
   width: 2048
   height: 1365
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2567886">Andrew
-    Bazdyrev</a>
+  author: Andrew Bazdyrev
   source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos leucotos 367166775.jpg
   commons_filename: Dendrocopos leucotos 367166775.jpg
 - role: secondary
@@ -71,18 +70,17 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2567886">Andrew
-    Bazdyrev</a>
+  author: Andrew Bazdyrev
   source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos leucotos 367166789.jpg
   commons_filename: Dendrocopos leucotos 367166789.jpg
 - role: secondary
   path: Q207290/secondary-2.webp
   width: 1800
-  height: 1200
-  license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Stolbovsky" title="User:Stolbovsky">Stolbovsky</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos leucotos in Valuesky.jpg
-  commons_filename: Dendrocopos leucotos in Valuesky.jpg
+  height: 1192
+  license: CC BY 4.0
+  author: Олег Марцун
+  source_url: https://commons.wikimedia.org/wiki/File:FOT 4548 копія.jpg
+  commons_filename: FOT 4548 копія.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T21:29:39.772607+00:00'

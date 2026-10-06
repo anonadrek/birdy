@@ -95,13 +95,12 @@ migration:
 image_refs:
 - role: hero
   path: Q30535/hero.webp
-  width: 2400
-  height: 1600
-  license: Public domain
-  author: Jacob W. Frank
-  source_url: https://commons.wikimedia.org/wiki/File:Peregrine falcon (Falco peregrinus)
-    and four chicks (ed4d091b-79a4-4752-be96-589ad25c39c7).jpg
-  commons_filename: Peregrine falcon (Falco peregrinus) and four chicks (ed4d091b-79a4-4752-be96-589ad25c39c7).jpg
+  width: 1600
+  height: 2400
+  license: CC BY 2.0
+  author: Metropolitan Transportation Authority of the State of New York
+  source_url: https://commons.wikimedia.org/wiki/File:MPB Papa Falcon (8948784670).jpg
+  commons_filename: MPB Papa Falcon (8948784670).jpg
 - role: secondary
   path: Q30535/secondary-1.webp
   width: 1800
@@ -112,13 +111,12 @@ image_refs:
   commons_filename: Falco peregrinus nest USFWS.jpg
 - role: secondary
   path: Q30535/secondary-2.webp
-  width: 1457
-  height: 1800
-  license: Public domain
-  author: USFWS photo
-  source_url: https://commons.wikimedia.org/wiki/File:Falco peregrinus nest USFWS
-    free.jpg
-  commons_filename: Falco peregrinus nest USFWS free.jpg
+  width: 1800
+  height: 1440
+  license: CC BY 2.0
+  author: Andy Morffew
+  source_url: https://commons.wikimedia.org/wiki/File:A Winchester Peregrine (54078783494).jpg
+  commons_filename: A Winchester Peregrine (54078783494).jpg
 review_status: approved
 review_notes: "Hero = Falco peregrinus med fyra ungar, klassisk fältidentifiering av adult + bo. Pilgrimsfalk häckar på klippor + stadshus i hela SE."
 generated_at: '2026-05-15T19:00:23.670861+00:00'

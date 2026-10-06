@@ -102,21 +102,17 @@ image_refs:
 - role: hero
   path: Q203053/hero.webp
   width: 2400
-  height: 1506
+  height: 1600
   license: Public domain
-  author: Department of the Interior. National Park Service. Alaska Region. (12/2/1980
-    - 5/1995)
-  source_url: https://commons.wikimedia.org/wiki/File:Parasitic Jaeger Stercorarius
-    parasiticus and gull (light bird) - DPLA - 7e23f173fc416b5022eb78030ec3f392.jpg
-  commons_filename: Parasitic Jaeger Stercorarius parasiticus and gull (light bird)
-    - DPLA - 7e23f173fc416b5022eb78030ec3f392.jpg
+  author: USFWSAlaska
+  source_url: https://commons.wikimedia.org/wiki/File:Parasitic jaeger (51102275755).jpg
+  commons_filename: Parasitic jaeger (51102275755).jpg
 - role: secondary
   path: Q203053/secondary-1.webp
   width: 1800
   height: 1237
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
-    ten Cate</a>
+  author: Bouke ten Cate
   source_url: https://commons.wikimedia.org/wiki/File:Kleine jager - parasitic jaeger
     - Stercorarius parasiticus.jpg
   commons_filename: Kleine jager - parasitic jaeger - Stercorarius parasiticus.jpg
@@ -125,8 +121,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/41502344@N02">Billy
-    Lindblom</a>
+  author: Billy Lindblom
   source_url: https://commons.wikimedia.org/wiki/File:Arctic Skua (Stercorarius parasiticus).jpg
   commons_filename: Arctic Skua (Stercorarius parasiticus).jpg
 review_status: approved

@@ -105,8 +105,7 @@ image_refs:
   width: 2400
   height: 1584
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
-    Lours">Alexis Lours</a>
+  author: Alexis Lours
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian wren (Troglodytes troglodytes).jpg
   commons_filename: Eurasian wren (Troglodytes troglodytes).jpg
 - role: secondary
@@ -114,20 +113,18 @@ image_refs:
   width: 1800
   height: 1590
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Wren Troglodytes troglodytes
     (51862229887).jpg
   commons_filename: Wren Troglodytes troglodytes (51862229887).jpg
 - role: secondary
   path: Q25740/secondary-2.webp
   width: 1800
-  height: 1216
+  height: 1350
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Naturgucker_Illtal" title="User:Naturgucker
-    Illtal">Simon Mannweiler</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Troglodytes troglodytes (Zaunkönig)
-    2024-03-10 (01).jpg
-  commons_filename: Troglodytes troglodytes (Zaunkönig) 2024-03-10 (01).jpg
+  author: حمزة راشد
+  source_url: https://commons.wikimedia.org/wiki/File:الصعوة.jpg
+  commons_filename: الصعوة.jpg
 review_status: approved
 review_notes: "Hero = Troglodytes troglodytes (Eurasian Wren / Gärdsmyg); allmän i undervegetation i hela SE."
 generated_at: '2026-05-15T21:34:53.623220+00:00'

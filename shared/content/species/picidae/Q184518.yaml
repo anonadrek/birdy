@@ -100,8 +100,7 @@ image_refs:
   width: 2400
   height: 1602
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:RaunoK&amp;action=edit&amp;redlink=1"
-    class="new" title="User:RaunoK (page does not exist)">RaunoK</a>
+  author: RaunoK
   source_url: https://commons.wikimedia.org/wiki/File:The lesser spotted woodpecker
     (Dryobates minor) - Väike-kirjurähn.jpg
   commons_filename: The lesser spotted woodpecker (Dryobates minor) - Väike-kirjurähn.jpg
@@ -110,8 +109,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Lesser spotted woodpecker (Dryobates
     minor) 2021.jpg
   commons_filename: Lesser spotted woodpecker (Dryobates minor) 2021.jpg
@@ -120,8 +118,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Mr._Lv%C3%AD%C4%8D%C3%A1tko"
-    title="User:Mr. Lvíčátko">Mr. Lvíčátko</a>
+  author: Mr. Lvíčátko
   source_url: https://commons.wikimedia.org/wiki/File:Strakapoud malý (Dryobates minor)
     pair.jpg
   commons_filename: Strakapoud malý (Dryobates minor) pair.jpg

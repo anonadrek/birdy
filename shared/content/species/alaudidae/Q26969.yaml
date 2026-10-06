@@ -92,8 +92,7 @@ image_refs:
   width: 2400
   height: 1751
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Lullula arborea, Alconocales
     1.jpg
   commons_filename: Lullula arborea, Alconocales 1.jpg
@@ -102,8 +101,7 @@ image_refs:
   width: 1800
   height: 1011
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1425580">Михаил
-    Малышев</a>
+  author: Михаил Малышев
   source_url: https://commons.wikimedia.org/wiki/File:Lullula arborea 85227474.jpg
   commons_filename: Lullula arborea 85227474.jpg
 - role: secondary
@@ -111,8 +109,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Ksimog&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Ksimog (page does not exist)">K.B. Simoglou</a>
+  author: K.B. Simoglou
   source_url: https://commons.wikimedia.org/wiki/File:Lullula arborea, Alaudidae.jpg
   commons_filename: Lullula arborea, Alaudidae.jpg
 review_status: approved

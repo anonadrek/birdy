@@ -98,7 +98,7 @@ image_refs:
   width: 2400
   height: 1647
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Luscinia svecica Oulu 20180907
     02.jpg
   commons_filename: Luscinia svecica Oulu 20180907 02.jpg
@@ -107,7 +107,7 @@ image_refs:
   width: 1800
   height: 1246
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Luscinia svecica Oulu 20180907
     01.jpg
   commons_filename: Luscinia svecica Oulu 20180907 01.jpg
@@ -116,8 +116,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
-    Nguyen</a>
+  author: Marie-Lan Nguyen
   source_url: https://commons.wikimedia.org/wiki/File:Luscinia svecica Jardin des
     Grands moulins 2018-03-29 n04.jpg
   commons_filename: Luscinia svecica Jardin des Grands moulins 2018-03-29 n04.jpg

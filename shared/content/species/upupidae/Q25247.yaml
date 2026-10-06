@@ -101,7 +101,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/124103604@N02">cotterillmike</a>
+  author: cotterillmike
   source_url: https://commons.wikimedia.org/wiki/File:Upupa epops senegalensis, Ethiopia
     (26528065293).jpg
   commons_filename: Upupa epops senegalensis, Ethiopia (26528065293).jpg
@@ -110,8 +110,7 @@ image_refs:
   width: 1800
   height: 1216
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Hoopoe. Upupa epops (32742451400).jpg
   commons_filename: Hoopoe. Upupa epops (32742451400).jpg
 - role: secondary
@@ -119,8 +118,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
-    title="User:מינוזיג">מינוזיג</a>
+  author: מינוזיג
   source_url: https://commons.wikimedia.org/wiki/File:Upupa epops, SandBath.jpg
   commons_filename: Upupa epops, SandBath.jpg
 review_status: auto

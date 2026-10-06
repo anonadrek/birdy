@@ -105,7 +105,7 @@ image_refs:
   width: 2400
   height: 1985
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alpsdake" title="User:Alpsdake">Alpsdake</a>
+  author: Alpsdake
   source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus borealis s2.jpg
   commons_filename: Phylloscopus borealis s2.jpg
 - role: secondary
@@ -113,7 +113,7 @@ image_refs:
   width: 1800
   height: 1536
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alpsdake" title="User:Alpsdake">Alpsdake</a>
+  author: Alpsdake
   source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus borealis.jpg
   commons_filename: Phylloscopus borealis.jpg
 review_status: auto

@@ -95,7 +95,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Goosander (Eurasian) (Mergus
     merganser).jpg
   commons_filename: Goosander (Eurasian) (Mergus merganser).jpg
@@ -104,8 +104,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a href="//www.flickr.com/people/97469566@N00" class="extiw" title="flickruser:97469566@N00">Bengt
-    Nyman</a>
+  author: Bengt Nyman
   source_url: https://commons.wikimedia.org/wiki/File:Mergus merganser, female, Vaxholm,
     Sweden.jpg
   commons_filename: Mergus merganser, female, Vaxholm, Sweden.jpg
@@ -114,8 +113,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/97469566@N00">Bengt
-    Nyman</a> from Vaxholm, Sweden
+  author: Bengt Nyman
   source_url: https://commons.wikimedia.org/wiki/File:Mergus merganser merganser 2124
     (5561934028).jpg
   commons_filename: Mergus merganser merganser 2124 (5561934028).jpg

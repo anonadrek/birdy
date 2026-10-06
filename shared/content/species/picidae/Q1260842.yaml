@@ -69,8 +69,7 @@ image_refs:
   width: 2048
   height: 1536
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/6924064">James
-    Eaton</a>
+  author: James Eaton
   source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos leucopterus 390378967.jpg
   commons_filename: Dendrocopos leucopterus 390378967.jpg
 - role: secondary
@@ -78,8 +77,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2567886">Andrew
-    Bazdyrev</a>
+  author: Andrew Bazdyrev
   source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos leucopterus 399366469.jpg
   commons_filename: Dendrocopos leucopterus 399366469.jpg
 - role: secondary
@@ -87,8 +85,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2567886">Andrew
-    Bazdyrev</a>
+  author: Andrew Bazdyrev
   source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos leucopterus 399366471.jpg
   commons_filename: Dendrocopos leucopterus 399366471.jpg
 review_status: auto

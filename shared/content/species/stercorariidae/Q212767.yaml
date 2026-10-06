@@ -93,8 +93,7 @@ image_refs:
   width: 1600
   height: 2400
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Pomarine jaeger (Stercorarius
     pomarinus) 2023.jpg
   commons_filename: Pomarine jaeger (Stercorarius pomarinus) 2023.jpg
@@ -103,8 +102,7 @@ image_refs:
   width: 1800
   height: 1013
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/70804987@N00">Mike
-    Prince</a> from Bangalore, India
+  author: Mike Prince
   source_url: https://commons.wikimedia.org/wiki/File:Pomarine Skua (Stercorarius
     pomarinus) (5803208086).jpg
   commons_filename: Pomarine Skua (Stercorarius pomarinus) (5803208086).jpg
@@ -113,7 +111,7 @@ image_refs:
   width: 1800
   height: 988
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/145489125@N03">peterichman</a>
+  author: peterichman
   source_url: https://commons.wikimedia.org/wiki/File:Pomarine Skua ( Stercorarius
     pomarinus ) Adult summer ... Coatham Sands , Redcar (53247051024).jpg
   commons_filename: Pomarine Skua ( Stercorarius pomarinus ) Adult summer ... Coatham

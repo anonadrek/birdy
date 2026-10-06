@@ -91,20 +91,18 @@ migration:
 image_refs:
 - role: hero
   path: Q25756/hero.webp
-  width: 1800
-  height: 2400
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Ypsilon_from_Finland" title="User:Ypsilon
-    from Finland">Ypsilon from Finland</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Strix aluco in Vantaa 1.jpg
-  commons_filename: Strix aluco in Vantaa 1.jpg
+  width: 2304
+  height: 2304
+  license: CC BY 4.0
+  author: Aneta p
+  source_url: https://commons.wikimedia.org/wiki/File:Puszczyk zwyczajny.jpg
+  commons_filename: Puszczyk zwyczajny.jpg
 - role: secondary
   path: Q25756/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Loomahuviline69&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Loomahuviline69 (page does not exist)">Loomahuviline69</a>
+  author: Loomahuviline69
   source_url: https://commons.wikimedia.org/wiki/File:Tawny owl aka Strix aluco in
     Tallinn zoo 04.jpg
   commons_filename: Tawny owl aka Strix aluco in Tallinn zoo 04.jpg
@@ -113,8 +111,7 @@ image_refs:
   width: 1800
   height: 1540
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
-    ten Cate</a>
+  author: Bouke ten Cate
   source_url: https://commons.wikimedia.org/wiki/File:Bosuil - tawny owl - Strix aluco.tif
   commons_filename: Bosuil - tawny owl - Strix aluco.tif
 review_status: approved

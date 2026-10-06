@@ -61,7 +61,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Abdim's stork (Ciconia abdimii).jpg
   commons_filename: Abdim's stork (Ciconia abdimii).jpg
 - role: secondary
@@ -69,8 +69,7 @@ image_refs:
   width: 1800
   height: 1286
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/51156152@N00">Brian
-    Ralphs</a> from Berkhamsted, Hertfordshire, UK
+  author: Brian Ralphs
   source_url: https://commons.wikimedia.org/wiki/File:Ciconia abdimii Kalahara En
     Route from Grootkolk 045.jpg
   commons_filename: Ciconia abdimii Kalahara En Route from Grootkolk 045.jpg
@@ -79,7 +78,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 3.0
-  author: <a href="https://cs.wikipedia.org/wiki/User:Dezidor" class="extiw" title="cs:User:Dezidor">Dezidor</a>
+  author: Dezidor
   source_url: https://commons.wikimedia.org/wiki/File:Ciconia abdimii.JPG
   commons_filename: Ciconia abdimii.JPG
 review_status: auto

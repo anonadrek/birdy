@@ -98,7 +98,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Isiwal" title="User:Isiwal">Isiwal</a>
+  author: Isiwal
   source_url: https://commons.wikimedia.org/wiki/File:Stieglitz Carduelis carduelis-8189.jpg
   commons_filename: Stieglitz Carduelis carduelis-8189.jpg
 - role: secondary
@@ -106,7 +106,7 @@ image_refs:
   width: 1800
   height: 1516
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Gzen92" title="User:Gzen92">Gzen92</a>
+  author: Gzen92
   source_url: https://commons.wikimedia.org/wiki/File:Carduelis carduelis (Chardonneret
     élégant) (4).jpg
   commons_filename: Carduelis carduelis (Chardonneret élégant) (4).jpg
@@ -115,8 +115,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
-    title="User:מינוזיג">מינוזיג - MinoZig</a>
+  author: מינוזיג - MinoZig
   source_url: https://commons.wikimedia.org/wiki/File:European goldfinch (Carduelis
     carduelis), Israel 04.jpg
   commons_filename: European goldfinch (Carduelis carduelis), Israel 04.jpg

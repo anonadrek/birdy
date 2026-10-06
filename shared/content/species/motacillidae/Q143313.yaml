@@ -106,8 +106,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Synezis&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Synezis (page does not exist)">Synezis</a>
+  author: Synezis
   source_url: https://commons.wikimedia.org/wiki/File:Anthus trivialis, Srbija (123).jpg
   commons_filename: Anthus trivialis, Srbija (123).jpg
 - role: secondary
@@ -115,8 +114,7 @@ image_refs:
   width: 1350
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Sanja_%C5%A0umanovi%C4%87&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Sanja Šumanović (page does not exist)">Sanja Šumanović</a>
+  author: Sanja Šumanović
   source_url: https://commons.wikimedia.org/wiki/File:Šumska trepteljka (Anthus trivialis).jpg
   commons_filename: Šumska trepteljka (Anthus trivialis).jpg
 - role: secondary
@@ -124,8 +122,7 @@ image_refs:
   width: 1800
   height: 1199
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
-    Raju Kasambe">Dr. Raju Kasambe</a>
+  author: Dr. Raju Kasambe
   source_url: https://commons.wikimedia.org/wiki/File:Tree Pipit Anthus trivialis
     by Dr. Raju Kasambe DSCN7208 (cropped).jpg
   commons_filename: Tree Pipit Anthus trivialis by Dr. Raju Kasambe DSCN7208 (cropped).jpg

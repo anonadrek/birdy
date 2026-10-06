@@ -52,8 +52,7 @@ image_refs:
   width: 2048
   height: 1281
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Treron waalia 95507055.jpg
   commons_filename: Treron waalia 95507055.jpg
 - role: secondary
@@ -61,8 +60,7 @@ image_refs:
   width: 1800
   height: 1126
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Treron waalia 95590450.jpg
   commons_filename: Treron waalia 95590450.jpg
 - role: secondary
@@ -70,8 +68,7 @@ image_refs:
   width: 1386
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%C3%81llatkertellen%C5%91r&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Állatkertellenőr (page does not exist)">Állatkertellenőr</a>
+  author: Állatkertellenőr
   source_url: https://commons.wikimedia.org/wiki/File:Papagájgalamb (Treron waalia).jpg
   commons_filename: Papagájgalamb (Treron waalia).jpg
 review_status: auto

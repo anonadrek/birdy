@@ -98,8 +98,7 @@ image_refs:
   width: 1714
   height: 2400
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:European storm-petrel (Hydrobates
     pelagicus) 2021.jpg
   commons_filename: European storm-petrel (Hydrobates pelagicus) 2021.jpg
@@ -108,8 +107,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:European storm petrel (Hydrobates
     pelagicus) Sagres.jpg
   commons_filename: European storm petrel (Hydrobates pelagicus) Sagres.jpg

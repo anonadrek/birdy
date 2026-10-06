@@ -73,8 +73,7 @@ image_refs:
   width: 1639
   height: 2048
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
-    Kansara</a>
+  author: Parth Kansara
   source_url: https://commons.wikimedia.org/wiki/File:Buteo rufinus 233696919.jpg
   commons_filename: Buteo rufinus 233696919.jpg
 - role: secondary
@@ -82,18 +81,17 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:AlyonaKaptyonkina&amp;action=edit&amp;redlink=1"
-    class="new" title="User:AlyonaKaptyonkina (page does not exist)">AlyonaKaptyonkina</a>
+  author: AlyonaKaptyonkina
   source_url: https://commons.wikimedia.org/wiki/File:Buteo rufinus in Kazakhstan2.jpg
   commons_filename: Buteo rufinus in Kazakhstan2.jpg
 - role: secondary
   path: Q233684/secondary-2.webp
-  width: 1800
-  height: 1200
-  license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:TwoWings" title="User:TwoWings">TwoWings</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Feather Buteo rufinus.jpg
-  commons_filename: Feather Buteo rufinus.jpg
+  width: 1469
+  height: 1800
+  license: CC BY 4.0
+  author: Alahamali70
+  source_url: https://commons.wikimedia.org/wiki/File:In kuwait Long-legged Buzzard.jpg
+  commons_filename: In kuwait Long-legged Buzzard.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-04T12:14:53.081664+00:00'

@@ -100,33 +100,28 @@ image_refs:
   width: 2400
   height: 1693
   license: CC BY 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Michael_G%C3%A4bler" title="User:Michael
-    Gäbler">Michael Gäbler</a>
+  author: Michael Gäbler
   source_url: https://commons.wikimedia.org/wiki/File:Aquila chrysaetos (Linnaeus
     1758).jpg
   commons_filename: Aquila chrysaetos (Linnaeus 1758).jpg
 - role: secondary
   path: Q41181/secondary-1.webp
   width: 1800
-  height: 1231
-  license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q28147777" class="extiw" title="d:Q28147777"><span
-    title="Spanish photographer">Diego Delso</span></a></bdi>
-  source_url: https://commons.wikimedia.org/wiki/File:Busardo mixto (Parabuteo unicinctus),
-    Arcos de la Frontera, Cádiz, España, 2015-12-08, DD 06.jpg
-  commons_filename: Busardo mixto (Parabuteo unicinctus), Arcos de la Frontera, Cádiz,
-    España, 2015-12-08, DD 06.jpg
+  height: 1200
+  license: CC BY 2.0
+  author: Ron Knight
+  source_url: https://commons.wikimedia.org/wiki/File:Golden Eagle (Aquila chrysaetos)
+    (13668234394).jpg
+  commons_filename: Golden Eagle (Aquila chrysaetos) (13668234394).jpg
 - role: secondary
   path: Q41181/secondary-2.webp
   width: 1800
-  height: 1597
-  license: CC BY-SA 3.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q28147777" class="extiw" title="d:Q28147777"><span
-    title="Spanish photographer">Diego Delso</span></a></bdi>
-  source_url: https://commons.wikimedia.org/wiki/File:Halcón sacre (Falco cherrug),
-    Tierpark Hellabrunn, Múnich, Alemania, 2012-06-17, DD 02.jpg
-  commons_filename: Halcón sacre (Falco cherrug), Tierpark Hellabrunn, Múnich, Alemania,
-    2012-06-17, DD 02.jpg
+  height: 1200
+  license: CC BY 2.0
+  author: Ron Knight
+  source_url: https://commons.wikimedia.org/wiki/File:Golden Eagle (Aquila chrysaetos)
+    (13667892725).jpg
+  commons_filename: Golden Eagle (Aquila chrysaetos) (13667892725).jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-04T12:14:52.979616+00:00'

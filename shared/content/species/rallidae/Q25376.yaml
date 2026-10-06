@@ -101,7 +101,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Bj.schoenmakers" title="User:Bj.schoenmakers">Bj.schoenmakers</a>
+  author: Bj.schoenmakers
   source_url: https://commons.wikimedia.org/wiki/File:Fulica atra, Coots on ice, Arnhem,
     the Netherlands.jpg
   commons_filename: Fulica atra, Coots on ice, Arnhem, the Netherlands.jpg
@@ -110,20 +110,17 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
-    Lours">Alexis Lours</a>
+  author: Alexis Lours
   source_url: https://commons.wikimedia.org/wiki/File:Fulica atra 2022 03 18.jpg
   commons_filename: Fulica atra 2022 03 18.jpg
 - role: secondary
   path: Q25376/secondary-2.webp
   width: 1800
-  height: 1202
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Trougnouf" title="User:Trougnouf">Trougnouf</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Mute swan and fulica atra in
-    front of etang Tenreuken, Auderghem, Belgium (DSCF2958).jpg
-  commons_filename: Mute swan and fulica atra in front of etang Tenreuken, Auderghem,
-    Belgium (DSCF2958).jpg
+  height: 1350
+  license: CC BY 2.0
+  author: jans canon
+  source_url: https://commons.wikimedia.org/wiki/File:Coot bird.jpg
+  commons_filename: Coot bird.jpg
 review_status: approved
 review_notes: "Hero = Fulica atra (Eurasian Coot / Sothöna); allmän vid sjöar och dammar i SE."
 generated_at: '2026-05-15T21:36:11.399782+00:00'

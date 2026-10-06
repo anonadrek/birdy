@@ -81,12 +81,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/flowcomm/">flowcomm</a> <span
-    class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a href="//commons.wikimedia.org/wiki/File:Riedscharbe_(Microcarbo_africanus),_nicht_br%C3%BCtender_Adultvogel.jpg#P170"
-    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
-    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail"
-    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
-    data-file-height="20"></a></span>
+  author: flowcomm
   source_url: https://commons.wikimedia.org/wiki/File:Riedscharbe (Microcarbo africanus),
     nicht brütender Adultvogel.jpg
   commons_filename: Riedscharbe (Microcarbo africanus), nicht brütender Adultvogel.jpg
@@ -95,10 +90,7 @@ image_refs:
   width: 1800
   height: 1201
   license: CC BY 3.0
-  author: '<div class="fn value">
-
-    <a rel="nofollow" class="external text" href="https://500px.com/aufgang">Daniel
-    Aufgang</a></div>'
+  author: Daniel Aufgang
   source_url: https://commons.wikimedia.org/wiki/File:Microcarbo africanus (181092197).jpg
   commons_filename: Microcarbo africanus (181092197).jpg
 review_status: auto

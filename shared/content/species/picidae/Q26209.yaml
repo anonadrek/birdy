@@ -99,27 +99,27 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos major (feeding).jpg
   commons_filename: Dendrocopos major (feeding).jpg
 - role: secondary
   path: Q26209/secondary-1.webp
   width: 1800
-  height: 595
-  license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Kallerna" title="User:Kallerna">kallerna</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos major with dead
-    pig.jpg
-  commons_filename: Dendrocopos major with dead pig.jpg
+  height: 1200
+  license: CC BY-SA 4.0
+  author: Charles J. Sharp
+  source_url: https://commons.wikimedia.org/wiki/File:Great spotted woodpecker (Dendrocopos
+    major) female Drenthe.jpg
+  commons_filename: Great spotted woodpecker (Dendrocopos major) female Drenthe.jpg
 - role: secondary
   path: Q26209/secondary-2.webp
   width: 1800
-  height: 1067
-  license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Kallerna" title="User:Kallerna">kallerna</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos major on ripped
-    pig kallerna.jpg
-  commons_filename: Dendrocopos major on ripped pig kallerna.jpg
+  height: 1200
+  license: CC BY-SA 4.0
+  author: Charles J. Sharp
+  source_url: https://commons.wikimedia.org/wiki/File:Great spotted woodpecker (Dendrocopos
+    major) male Drenthe.jpg
+  commons_filename: Great spotted woodpecker (Dendrocopos major) male Drenthe.jpg
 review_status: approved
 review_notes: "Hero = Dendrocopos major (Great Spotted Woodpecker / Större hackspett); allmänaste hackspetten i SE."
 generated_at: '2026-05-15T21:27:35.241159+00:00'

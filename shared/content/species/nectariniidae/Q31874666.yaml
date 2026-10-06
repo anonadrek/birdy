@@ -66,12 +66,11 @@ image_refs:
 - role: secondary
   path: Q31874666/secondary-1.webp
   width: 1800
-  height: 1192
-  license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external free" href="https://www.flickr.com/photos/28092414@N03/">https://www.flickr.com/photos/28092414@N03/</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Cinnyris hellmayri, Rotana Resort,
-    Salalah, Oman 1.jpg
-  commons_filename: Cinnyris hellmayri, Rotana Resort, Salalah, Oman 1.jpg
+  height: 1197
+  license: CC0
+  author: Hobbyfotowiki
+  source_url: https://commons.wikimedia.org/wiki/File:Glanznektarvogel 2.jpg
+  commons_filename: Glanznektarvogel 2.jpg
 - role: secondary
   path: Q31874666/secondary-2.webp
   width: 1800

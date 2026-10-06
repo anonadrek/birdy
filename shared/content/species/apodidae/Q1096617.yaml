@@ -67,11 +67,18 @@ image_refs:
   width: 1457
   height: 2400
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q21821238" class="extiw" title="d:Q21821238"><span
-    title="Dutch draughtsperson">Jos Zwarts</span></a></bdi>
+  author: Jos Zwarts
   source_url: https://commons.wikimedia.org/wiki/File:Madeiragierzwaluw Apus unicolor
     Jos Zwarts.tif
   commons_filename: Madeiragierzwaluw Apus unicolor Jos Zwarts.tif
+- role: secondary
+  path: Q1096617/secondary-1.webp
+  width: 1024
+  height: 681
+  license: CC0
+  author: Hobbyfotowiki
+  source_url: https://commons.wikimedia.org/wiki/File:Einfarbsegler.jpg
+  commons_filename: Einfarbsegler.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-06T14:32:46.625788+00:00'

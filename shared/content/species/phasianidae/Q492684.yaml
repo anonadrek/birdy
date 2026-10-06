@@ -71,22 +71,20 @@ migration:
 image_refs:
 - role: hero
   path: Q492684/hero.webp
-  width: 2400
-  height: 1350
+  width: 1350
+  height: 2400
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Vasilikivrlm&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Vasilikivrlm (page does not exist)">Vasilikivrlm</a>
+  author: Vasilikivrlm
   source_url: https://commons.wikimedia.org/wiki/File:ALECTORIS GRAECA-ΣΟΥΝΙΟ.jpg
   commons_filename: ALECTORIS GRAECA-ΣΟΥΝΙΟ.jpg
 - role: secondary
   path: Q492684/secondary-1.webp
-  width: 1800
-  height: 1350
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:AntyHoc&amp;action=edit&amp;redlink=1"
-    class="new" title="User:AntyHoc (page does not exist)">AntyHoc</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Sounio, Alectoris graeca.jpg
-  commons_filename: Sounio, Alectoris graeca.jpg
+  width: 1000
+  height: 667
+  license: CC BY-SA 3.0
+  author: FokusNatur
+  source_url: https://commons.wikimedia.org/wiki/File:Steinhuhn.jpg
+  commons_filename: Steinhuhn.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T21:06:43.409276+00:00'

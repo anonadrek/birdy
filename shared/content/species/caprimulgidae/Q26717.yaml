@@ -94,27 +94,29 @@ image_refs:
   width: 2048
   height: 1461
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/mourad-harzallah">mourad-harzallah</a>
+  author: mourad-harzallah
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian nightjar (Caprimulgus
     europaeus) in Algeria.jpg
   commons_filename: Eurasian nightjar (Caprimulgus europaeus) in Algeria.jpg
 - role: secondary
   path: Q26717/secondary-1.webp
   width: 1800
-  height: 1273
-  license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/thomas--">Thomas</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus europaeus by thomas--.jpg
-  commons_filename: Caprimulgus europaeus by thomas--.jpg
+  height: 1338
+  license: CC BY 2.0
+  author: Hans Norelius
+  source_url: https://commons.wikimedia.org/wiki/File:Nattskärra, Gotland, Augusti
+    2017 (38640216582) (cropped 2).jpg
+  commons_filename: Nattskärra, Gotland, Augusti 2017 (38640216582) (cropped 2).jpg
 - role: secondary
   path: Q26717/secondary-2.webp
   width: 1800
-  height: 1192
-  license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/mourad-harzallah">Mourad
-    Harzallah</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus europaeus by mourad-harzallah.jpg
-  commons_filename: Caprimulgus europaeus by mourad-harzallah.jpg
+  height: 1200
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:European nightjar, Caprimulgus
+    europaeus, at Mapungubwe National Park, Limpopo, South Africa - 51809726109.jpg
+  commons_filename: European nightjar, Caprimulgus europaeus, at Mapungubwe National
+    Park, Limpopo, South Africa - 51809726109.jpg
 review_status: approved
 review_notes: '2026-05-08: hero shows nattskärra vilande på sten i Algeriet (övervintringsområde) — kryptisk gråbrunmönstrad fjäderdräkt, rund platt hjässa, mörkt öga och korta ben. Diagnostiska fältkännetecken syns klart trots non-Nordic habitat. Etablerad SE-sommargäst på sandiga tallhedar och ljungmarker, här i samma plumage som ses dagtid längs grenar i Sverige.'
 generated_at: '2026-05-07T23:01:25.649964+00:00'

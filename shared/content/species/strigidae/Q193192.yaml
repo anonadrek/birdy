@@ -98,25 +98,25 @@ image_refs:
   width: 1600
   height: 2400
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Northern hawk owl (Surnia ulula)
     (Schleswig Hostein).jpg
   commons_filename: Northern hawk owl (Surnia ulula) (Schleswig Hostein).jpg
 - role: secondary
   path: Q193192/secondary-1.webp
-  width: 1350
-  height: 1800
+  width: 1800
+  height: 1350
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Daderot" title="User:Daderot">Daderot</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Surnia ulula - Finnish Museum
-    of Natural History - DSC04619.JPG
-  commons_filename: Surnia ulula - Finnish Museum of Natural History - DSC04619.JPG
+  author: Richard Hoeg richardhoeg
+  source_url: https://commons.wikimedia.org/wiki/File:Hawk Ridge, Duluth, United States
+    (Unsplash).jpg
+  commons_filename: Hawk Ridge, Duluth, United States (Unsplash).jpg
 - role: secondary
   path: Q193192/secondary-2.webp
   width: 1800
   height: 1200
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Northern hawk owl with pray
     (Surnia ulula).jpg
   commons_filename: Northern hawk owl with pray (Surnia ulula).jpg

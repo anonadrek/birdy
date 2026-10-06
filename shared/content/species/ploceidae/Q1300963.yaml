@@ -60,21 +60,17 @@ image_refs:
 - role: hero
   path: Q1300963/hero.webp
   width: 2400
-  height: 1535
-  license: Public domain
-  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Ann_Lee_(illustrator)" class="extiw"
-    title="w:en:Ann Lee (illustrator)"><span title="British scientific illustrator,
-    botanical artist and painter (1753-1790)">Ann Lee</span></a></bdi>
-  source_url: https://commons.wikimedia.org/wiki/File:Euplectes afer (Gmelin) yellow-crowned
-    bishop and Phonipara canora (Gmelin) Cuban grassquit - Ann Lee - 107-1973-10.jpg
-  commons_filename: Euplectes afer (Gmelin) yellow-crowned bishop and Phonipara canora
-    (Gmelin) Cuban grassquit - Ann Lee - 107-1973-10.jpg
+  height: 1712
+  license: CC BY-SA 2.0
+  author: Mike's Birds
+  source_url: https://commons.wikimedia.org/wiki/File:Euplectes afer by Mike's Birds.jpg
+  commons_filename: Euplectes afer by Mike's Birds.jpg
 - role: secondary
   path: Q1300963/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Gzen92" title="User:Gzen92">Gzen92</a>
+  author: Gzen92
   source_url: https://commons.wikimedia.org/wiki/File:Travailleur à tête jaune (Euplectes
     afer).jpg
   commons_filename: Travailleur à tête jaune (Euplectes afer).jpg
