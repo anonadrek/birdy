@@ -1,11 +1,15 @@
 """Step 3 (spec 2026-09-25 §9.5 and §9.6): write the text from the reviewed fact sheet,
-check it in code, check it with a second model, rewrite once, remove what still fails."""
+check it in code, check it with a second model, rewrite once, remove what still fails.
+
+The loop itself lives in `checked_writer.py` (shared with the comparison texts since
+Task 22); the guards that depend on the species record (`_keep_old_text`, the stale
+published citations check N1, `_resolve_lookalikes`) stay here."""
 
 from __future__ import annotations
 
 import asyncio
 import hashlib
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -14,6 +18,7 @@ from anthropic.types import MessageParam
 
 from ..claude_summarizer import _split_prompt
 from ..cost import CostTracker, MaxCostExceeded
+from .checked_writer import Checks, Written, write_checked
 from .checker import PROMPT_VERSION as CHECK_PROMPT_VERSION
 from .checker import CheckerFailed, SentenceChecker, check_items
 from .checks import load_banned
@@ -23,12 +28,11 @@ from .llm import MODELS, AnthropicJsonClient, JsonModelClient, ModelReply, recor
 from .paths import WebPaths
 from .record import Record, facts_hash, is_reviewed, load_all, record_path, save_record
 from .report import StepOutcome, render_step_report, write_step_report
-from .text_checks import TextContext, TextIssue, check_text, minimum_problems, path_texts, settle
+from .text_checks import TextContext, check_text, minimum_problems, path_texts, settle
 from .text_model import WebTextV2, remove_paths, status_for_site, to_site
 from .verify import missing_required_topics
 
 PROMPT_VERSION = "web-v2"
-RULE_ATTEMPTS = 2
 
 
 def writer_facts(record: Record) -> list[dict[str, Any]]:
@@ -78,33 +82,6 @@ def render_write_prompt(
     )
 
 
-def rules_feedback(issues: list[TextIssue]) -> str:
-    lines = "\n".join(f"- {i.path}: {i.message}" for i in issues)
-    return (
-        "Your answer broke these rules. Write the whole answer again with the same structure "
-        "and fix only these points:\n" + lines + "\n"
-        "Every sentence must list the ids of the facts it uses and say no more than they do."
-    )
-
-
-def support_feedback(unsupported: dict[str, str]) -> str:
-    lines = "\n".join(f"- {path}: {problem}" for path, problem in unsupported.items())
-    return (
-        "A checker found sentences that say more than the facts they cite. Write the whole "
-        "answer again with the same structure. Fix or drop these sentences and add nothing "
-        "the facts do not say:\n" + lines
-    )
-
-
-@dataclass
-class TextResult:
-    text: WebTextV2 | None
-    rejected: WebTextV2 | None
-    notes: list[str] = field(default_factory=list)
-    errors: list[str] = field(default_factory=list)
-    attempts: int = 0
-
-
 @dataclass
 class SpeciesTextWriter:
     client: JsonModelClient
@@ -126,7 +103,7 @@ class SpeciesTextWriter:
         record_cost(self.cost, self.model_key, reply)
         return reply
 
-    async def write(self, record: Record, group_sv: str, group_en: str) -> TextResult:
+    async def write(self, record: Record, group_sv: str, group_en: str) -> Written[WebTextV2]:
         facts = writer_facts(record)
         ctx = TextContext.from_facts(facts)
         about = (
@@ -135,114 +112,21 @@ class SpeciesTextWriter:
         )
         template = self.prompt_path.read_text(encoding="utf-8")
         system, user = render_write_prompt(template, record, facts, group_sv, group_en, self.banned)
-        base: list[MessageParam] = [{"role": "user", "content": user}]
-        result = TextResult(None, None)
-        messages = list(base)
-        last_stop: str | None = None
-        # (I2, review fix 2026-10-06) Track the attempt with the fewest hard problems after
-        # settling, not just whichever attempt happened to parse last: a later retry can come
-        # back worse than an earlier one, and the earlier one must still win. Ties favour the
-        # later attempt (it saw the retry feedback).
-        best: tuple[int, int, WebTextV2, list[str], list[str]] | None = None
-        for attempt in range(1, RULE_ATTEMPTS + 1):
-            result.attempts = attempt
-            reply = await self._ask(system, messages)
-            last_stop = reply.stop_reason
-            if reply.parsed is None:
-                if reply.stop_reason in ("max_tokens", "refusal"):
-                    break
-                continue
-            candidate = reply.parsed
-            issues = check_text(candidate, ctx, self.banned)
-            settled, removed, hard = settle(candidate, ctx, self.banned)
-            if best is None or len(hard) <= best[0]:
-                best = (len(hard), attempt, settled, removed, hard)
-            if not issues:
-                break
-            if attempt < RULE_ATTEMPTS:
-                messages = [
-                    *messages,
-                    {"role": "assistant", "content": reply.raw_text},
-                    {"role": "user", "content": rules_feedback(issues)},
-                ]
-        if best is None:
-            result.errors = [f"modellen gav inget giltigt svar (stop_reason={last_stop})"]
-            return result
-        _, _, text, removed, hard = best
-        result.notes += removed
-        if hard:
-            result.rejected, result.errors = text, hard
-            return result
-
-        unsupported = await self.checker.check(check_items(text, ctx), about=about)
-        if unsupported:
-            original = text
-            result.attempts += 1
-            retry: list[MessageParam] = [
-                *base,
-                {"role": "assistant", "content": text.model_dump_json()},
-                {"role": "user", "content": support_feedback(unsupported)},
-            ]
-            reply = await self._ask(system, retry)
-            # (I2, review fix 2026-10-06) A rewrite that fixes the cited problems can still
-            # introduce a new one (e.g. striking the only sentence in a required field).
-            # Build both candidates and prefer the rewrite only when it actually passes the
-            # minimum requirements; otherwise fall back to removing from the original, which
-            # is always at least as safe since it already passed the rule checks.
-            fixed_candidate: WebTextV2 | None = None
-            candidate_removed: list[str] = []
-            candidate_unsupported: dict[str, str] = {}
-            candidate_texts: dict[str, str] = {}
-            checker_failure: str | None = None
-            if reply.parsed is not None:
-                settled_candidate, candidate_removed, hard_again = settle(
-                    reply.parsed, ctx, self.banned
-                )
-                if not hard_again:
-                    try:
-                        candidate_unsupported = await self.checker.check(
-                            check_items(settled_candidate, ctx), about=about
-                        )
-                    except CheckerFailed as exc:
-                        # (N6, review fix 2026-10-06) The checker failing on the rewrite's
-                        # own re-check must not fail the whole species when a safe fallback
-                        # (the original, already checked once) exists.
-                        checker_failure = str(exc)
-                    else:
-                        candidate_texts = path_texts(settled_candidate)
-                        fixed_candidate = remove_paths(
-                            settled_candidate, set(candidate_unsupported)
-                        )
-            if fixed_candidate is not None and not minimum_problems(fixed_candidate):
-                text = fixed_candidate
-                result.notes += candidate_removed
-                result.notes += [
-                    f'{path} togs bort ("{candidate_texts.get(path, "")}"): {problem}'
-                    for path, problem in candidate_unsupported.items()
-                ]
-            else:
-                if checker_failure is not None:
-                    result.notes.append(
-                        f"kontrollen av omskrivningen misslyckades ({checker_failure}), den "
-                        "ursprungliga texten användes i stället"
-                    )
-                else:
-                    result.notes.append(
-                        "omskrivningen för de fakta som inte stöds förkastades, den ursprungliga "
-                        "texten användes i stället"
-                    )
-                original_texts = path_texts(original)
-                text = remove_paths(original, set(unsupported))
-                result.notes += [
-                    f'{path} togs bort ("{original_texts.get(path, "")}"): {problem}'
-                    for path, problem in unsupported.items()
-                ]
-        problems = minimum_problems(text)
-        if problems:
-            result.rejected, result.errors = text, problems
-            return result
-        result.text = text
-        return result
+        checks: Checks[WebTextV2] = Checks(
+            rules=lambda t: check_text(t, ctx, self.banned),
+            settle=lambda t: settle(t, ctx, self.banned),
+            items=lambda t: check_items(t, ctx),
+            remove=remove_paths,
+            minimum=minimum_problems,
+            texts=path_texts,
+        )
+        return await write_checked(
+            ask=lambda messages: self._ask(system, messages),
+            user=user,
+            checks=checks,
+            checker=self.checker,
+            about=about,
+        )
 
 
 def _lookalike_qid_map(record: Record) -> dict[str, str]:
@@ -313,7 +197,7 @@ def _stale_published_error(stale: list[str]) -> str:
     )
 
 
-def apply_text(record: Record, result: TextResult, generated: dict[str, Any]) -> None:
+def apply_text(record: Record, result: Written[WebTextV2], generated: dict[str, Any]) -> None:
     status = status_for_site(record)
     qid_map = _lookalike_qid_map(record)
     if result.text is not None:
@@ -349,20 +233,25 @@ class WriteOptions:
     workers: int = 4
 
 
+def facts_verified(record: Record) -> bool:
+    """True when the automatic verification has passed the facts as they are now. Shared
+    with the comparison step (Task 22), which writes only from two verified sheets."""
+    if not is_reviewed(record):
+        return False
+    # Defence in depth (C1): if some other code path ever forgets to clear `verification`
+    # when the facts move on, a verify hash that no longer matches the current facts is
+    # treated as not reviewed instead of trusted blindly.
+    verify_hash = (record.get("generated", {}).get("verify") or {}).get("factsHash")
+    return bool(verify_hash == facts_hash(record))
+
+
 def _skip_reason(record: Record, options: WriteOptions) -> str | None:
     if missing_required_topics(record.get("facts", [])):
         # (C1, review fix 2026-10-06) The appearance-only proxy missed a sheet that still
         # has appearance but lost voice or habitat to a V1 strike -- use the same check V1
         # itself uses, so a failed sheet is skipped even under --allow-unreviewed.
         return "faktabladet saknas eller misslyckades: kör web facts"
-    reviewed = is_reviewed(record)
-    if reviewed:
-        verify_hash = (record.get("generated", {}).get("verify") or {}).get("factsHash")
-        if verify_hash != facts_hash(record):
-            # Defence in depth (C1): if some other code path ever forgets to clear
-            # `verification` when the facts move on, a verify hash that no longer matches
-            # the current facts is treated as not reviewed instead of trusted blindly.
-            reviewed = False
+    reviewed = facts_verified(record)
     if not reviewed and not options.allow_unreviewed:
         return "faktabladet är inte kontrollerat"
     generated = record.get("generated", {}).get("text") or {}
@@ -389,7 +278,7 @@ def _keep_old_text(record: Record) -> bool:
     return bool(text_generated.get("factsHash") == facts_hash(record))
 
 
-def _prompt_hash(path: Path) -> str:
+def prompt_file_hash(path: Path) -> str:
     return hashlib.sha256(path.read_text(encoding="utf-8").encode("utf-8")).hexdigest()[:8]
 
 
@@ -441,7 +330,7 @@ async def run_write(
         model_key=options.model_key,
         effort=options.effort,
     )
-    prompt_hash = _prompt_hash(paths.prompt_file(PROMPT_VERSION))
+    prompt_hash = prompt_file_hash(paths.prompt_file(PROMPT_VERSION))
     stop = asyncio.Event()
     semaphore = asyncio.Semaphore(options.workers)
 

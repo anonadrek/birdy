@@ -501,6 +501,54 @@ def web_compare_candidates() -> None:
         )
 
 
+@web.command("compare")
+@click.option(
+    "--top", type=click.IntRange(min=1), default=30, help="Antal par med störst sökvolym."
+)
+@click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
+@click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
+@click.option(
+    "--checker-model", "checker_key", type=click.Choice(["opus", "sonnet"]), default="sonnet"
+)
+@click.option("--max-cost", type=float, default=None, help="Kostnadstak i USD för körningen.")
+@click.option("--regenerate", is_flag=True, help="Skriv om även jämförelser som är aktuella.")
+@click.option("--workers", type=click.IntRange(min=1), default=4)
+def web_compare(
+    top: int,
+    model_key: str,
+    effort: str,
+    checker_key: str,
+    max_cost: float | None,
+    regenerate: bool,
+    workers: int,
+) -> None:
+    """Jämförelsetexter för de mest sökta förväxlingsparen, ur två kontrollerade faktablad.
+    Kostar pengar."""
+    from .web.compare import CompareOptions, run_compare
+
+    if model_key == checker_key:
+        # Spec §9.6, same rule as `web write` (I3): the checker must be a different model.
+        raise click.UsageError("Skribent och kontroll måste vara olika modeller.")
+    _require_api_key()
+    paths = _web_paths()
+    options = CompareOptions(
+        top=top,
+        model_key=model_key,
+        effort=effort,
+        checker_key=checker_key,
+        max_cost=max_cost,
+        regenerate=regenerate,
+        workers=workers,
+    )
+    try:
+        outcomes = asyncio.run(run_compare(paths, options))
+    except ValueError as exc:
+        # A hand-edited comparison-volumes.csv with a bad or conflicting volume stops the
+        # run before any call is paid for; show it as a plain error, not a traceback.
+        raise click.ClickException(str(exc)) from exc
+    _print_outcomes(outcomes, paths.reports)
+
+
 @web.command("v1")
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
 @click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")

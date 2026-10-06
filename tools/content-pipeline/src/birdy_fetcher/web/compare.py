@@ -7,16 +7,39 @@ BOM-safe/formula-escaping/atomic `sheet_csv` helpers instead of a plain `csv.Dic
 candidates kept instead of silently dropped (item 5), a missing-volumes count and a
 name-change clear (item 6 and 8), row order for whoever fills the sheet in (item 9),
 duplicate-row handling (item 7), and English queries that also try the name without its
-IOC qualifier (item 12)."""
+IOC qualifier (item 12).
+
+Task 22 adds the comparison texts (`web compare`, spec §9.7): written from the two
+species' verified fact sheets with the write/check/rewrite/remove loop the species texts
+use (`checked_writer.write_checked`)."""
 
 from __future__ import annotations
 
+import asyncio
 import re
 from dataclasses import dataclass
+from datetime import UTC, datetime
 from pathlib import Path
+from typing import Any
 
-from .record import Record
+from anthropic.types import MessageParam
+from pydantic import BaseModel
+
+from ..claude_summarizer import _split_prompt
+from ..cost import CostTracker, MaxCostExceeded
+from .checked_writer import Checks, Written, write_checked
+from .checker import PROMPT_VERSION as CHECK_PROMPT_VERSION
+from .checker import CheckerFailed, CheckItem, SentenceChecker
+from .checks import _style, load_banned, sentence_count
+from .llm import MODELS, AnthropicJsonClient, JsonModelClient, ModelReply, record_cost
+from .paths import WebPaths
+from .record import Record, facts_hash, load_all, load_record, save_record
+from .report import StepOutcome, render_step_report, write_step_report
 from .sheet_csv import read_sheet, write_sheet
+from .text_checks import TextContext, TextIssue, sentence_issues
+from .text_model import Sentence
+from .text_step import facts_verified, prompt_file_hash, render_facts, writer_facts
+from .verify import missing_required_topics
 
 VOLUMES_FILE = "comparison-volumes.csv"
 COLUMNS = [
@@ -301,3 +324,500 @@ def comparison_slugs(pair: Pair, records: dict[str, Record]) -> dict[str, str]:
 def comparison_path(out_dir: Path, pair: Pair) -> Path:
     first, second = sorted((pair.a, pair.b))
     return out_dir / f"{first}_{second}.json"
+
+
+# -- the comparison texts (Task 22, spec §7 and §9.7) ------------------------------------
+
+PROMPT_VERSION = "compare-v1"
+SHORT_MAX_WORDS = 45
+SHORT_MAX_SENTENCES = 2
+ROWS_MIN, ROWS_MAX = 3, 5
+CELL_MAX_WORDS = 14
+FEATURE_MAX_WORDS = 4
+META_MIN, META_MAX = 120, 155
+SIDES = ("a", "b")
+
+
+class Cell(BaseModel):
+    text: str
+    fact_ids: list[str]
+
+
+class Row(BaseModel):
+    feature: str
+    a: Cell
+    b: Cell
+
+
+class CompareLang(BaseModel):
+    short_answer: list[Sentence]
+    rows: list[Row]
+    meta_description: str
+
+
+class CompareOutput(BaseModel):
+    sv: CompareLang
+    en: CompareLang
+
+
+def prefixed_facts(a: Record, b: Record) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Each species' writer facts with its side in front of the id (`a:f01`, `b:d01`,
+    spec appendix D)."""
+
+    def prefix(side: str, record: Record) -> list[dict[str, Any]]:
+        return [{**f, "id": f"{side}:{f['id']}"} for f in writer_facts(record)]
+
+    return prefix("a", a), prefix("b", b)
+
+
+def pair_context(a: Record, b: Record) -> TextContext:
+    a_facts, b_facts = prefixed_facts(a, b)
+    return TextContext.from_facts(a_facts + b_facts)
+
+
+def _check_lang(lang: str, t: CompareLang, ctx: TextContext, banned: list[str]) -> list[TextIssue]:
+    issues: list[TextIssue] = []
+    for i, sentence in enumerate(t.short_answer):
+        issues += sentence_issues(f"{lang}.short_answer[{i}]", lang, sentence, ctx, banned)
+    words = sum(len(s.text.split()) for s in t.short_answer)
+    sentences = sum(sentence_count(s.text) for s in t.short_answer)
+    if not t.short_answer:
+        issues.append(TextIssue(f"{lang}.short_answer", "saknas", False))
+    elif words > SHORT_MAX_WORDS or sentences > SHORT_MAX_SENTENCES:
+        issues.append(
+            TextIssue(f"{lang}.short_answer", "ska vara högst 2 meningar och 45 ord", False)
+        )
+    if not ROWS_MIN <= len(t.rows) <= ROWS_MAX:
+        issues.append(TextIssue(f"{lang}.rows", "ska ha 3 till 5 rader", False))
+    for i, row in enumerate(t.rows):
+        # A row stands or falls as a whole: a cell that breaks a rule takes its row with it.
+        path = f"{lang}.rows[{i}]"
+        problems = [f"kännetecknet {x.message}" for x in _style(path, lang, row.feature, banned)]
+        if len(row.feature.split()) > FEATURE_MAX_WORDS:
+            problems.append("kännetecknet ska vara 1 till 4 ord")
+        for side in SIDES:
+            cell: Cell = getattr(row, side)
+            if len(cell.text.split()) > CELL_MAX_WORDS:
+                problems.append(f"{side} ska vara högst 14 ord")
+            sentence = Sentence(text=cell.text, fact_ids=cell.fact_ids)
+            # A cell may only cite facts from its own species' sheet (spec §9.7).
+            problems += [
+                f"{side}: {x.message}"
+                for x in sentence_issues(path, lang, sentence, ctx, banned, prefix=f"{side}:")
+            ]
+        issues += [TextIssue(path, message, True) for message in problems]
+    meta_path = f"{lang}.meta_description"
+    issues += [
+        TextIssue(meta_path, x.message, False)
+        for x in _style(meta_path, lang, t.meta_description, banned)
+    ]
+    if not META_MIN <= len(t.meta_description) <= META_MAX:
+        issues.append(
+            TextIssue(
+                meta_path, f"ska vara 120 till 155 tecken (är {len(t.meta_description)})", False
+            )
+        )
+    if any(ch.isdigit() for ch in t.meta_description):
+        # Same rule as the species texts (M8): the meta description cites no facts, so a
+        # number in it could never be checked.
+        issues.append(TextIssue(meta_path, "innehåller siffror", False))
+    return issues
+
+
+def check_compare(text: CompareOutput, ctx: TextContext, banned: list[str]) -> list[TextIssue]:
+    return _check_lang("sv", text.sv, ctx, banned) + _check_lang("en", text.en, ctx, banned)
+
+
+def compare_path_texts(text: CompareOutput) -> dict[str, str]:
+    """Every removable path (and every checker item id) to the text it holds, so a removal
+    note shows what was dropped (same as `text_checks.path_texts`)."""
+    mapping: dict[str, str] = {}
+    for lang in ("sv", "en"):
+        t: CompareLang = getattr(text, lang)
+        for i, sentence in enumerate(t.short_answer):
+            mapping[f"{lang}.short_answer[{i}]"] = sentence.text
+        for i, row in enumerate(t.rows):
+            mapping[f"{lang}.rows[{i}]"] = f"{row.feature}: {row.a.text} / {row.b.text}"
+            for side in SIDES:
+                mapping[f"{lang}.rows[{i}].{side}"] = getattr(row, side).text
+    return mapping
+
+
+_COMPARE_PATH = re.compile(r"^(sv|en)\.(short_answer|rows)\[(\d+)\]")
+
+
+def remove_compare_paths(text: CompareOutput, paths: set[str]) -> CompareOutput:
+    """A copy without the short-answer sentences and rows named by `paths`. A cell path
+    (`sv.rows[2].a`) removes its whole row."""
+    data = text.model_dump()
+    drops: dict[tuple[str, str], set[int]] = {}
+    for path in paths:
+        match = _COMPARE_PATH.match(path)
+        if match is not None:
+            lang, name, index = match.groups()
+            drops.setdefault((lang, name), set()).add(int(index))
+    for (lang, name), indexes in drops.items():
+        data[lang][name] = [x for k, x in enumerate(data[lang][name]) if k not in indexes]
+    return CompareOutput.model_validate(data)
+
+
+def settle_compare(
+    text: CompareOutput, ctx: TextContext, banned: list[str]
+) -> tuple[CompareOutput, list[str], list[str]]:
+    """Same contract as `text_checks.settle`: removes every removable part that breaks a
+    rule, then checks again. Returns the text, removal notes and the remaining problems."""
+    issues = check_compare(text, ctx, banned)
+    removable = {i.path for i in issues if i.removable}
+    texts = compare_path_texts(text)
+    notes = [
+        f'{i.path} togs bort ("{texts.get(i.path, "")}"): {i.message}'
+        for i in issues
+        if i.removable
+    ]
+    if removable:
+        text = remove_compare_paths(text, removable)
+        issues = check_compare(text, ctx, banned)
+    return text, notes, [f"{i.path}: {i.message}" for i in issues]
+
+
+def compare_items(
+    text: CompareOutput, ctx: TextContext, names: tuple[Record, Record] | None = None
+) -> list[CheckItem]:
+    """One checker item per short-answer sentence and per table cell. With `names` (the
+    two species records), a cell's item text names the species it describes, so the
+    checker never has to guess which side a cell is about."""
+
+    def facts(ids: list[str]) -> tuple[dict[str, Any], ...]:
+        return tuple(ctx.facts_by_id[f] for f in ids if f in ctx.facts_by_id)
+
+    items: list[CheckItem] = []
+    for lang in ("sv", "en"):
+        t: CompareLang = getattr(text, lang)
+        for i, sentence in enumerate(t.short_answer):
+            items.append(
+                CheckItem(f"{lang}.short_answer[{i}]", sentence.text, facts(sentence.fact_ids))
+            )
+        for i, row in enumerate(t.rows):
+            for side, index in zip(SIDES, (0, 1), strict=True):
+                cell: Cell = getattr(row, side)
+                label = row.feature
+                if names is not None:
+                    label = f"{row.feature} ({names[index]['names'][lang]})"
+                items.append(
+                    CheckItem(
+                        f"{lang}.rows[{i}].{side}", f"{label}: {cell.text}", facts(cell.fact_ids)
+                    )
+                )
+    return items
+
+
+def compare_minimum(text: CompareOutput) -> list[str]:
+    """Spec §9.7: fewer than 3 valid rows (or no short answer, or a meta description of
+    the wrong length) and the pair gets no page."""
+    problems: list[str] = []
+    for lang in ("sv", "en"):
+        t: CompareLang = getattr(text, lang)
+        if not t.short_answer:
+            problems.append(f"{lang}.short_answer saknas")
+        if len(t.rows) < ROWS_MIN:
+            problems.append(f"{lang}.rows har färre än 3 rader")
+        if not META_MIN <= len(t.meta_description) <= META_MAX:
+            problems.append(f"{lang}.meta_description har fel längd")
+    return problems
+
+
+def _site(t: CompareLang) -> dict[str, Any]:
+    """The site's field names (spec appendix D)."""
+    return {
+        "shortAnswer": [{"text": s.text, "factIds": list(s.fact_ids)} for s in t.short_answer],
+        "rows": [
+            {
+                "feature": r.feature,
+                "a": {"text": r.a.text, "factIds": list(r.a.fact_ids)},
+                "b": {"text": r.b.text, "factIds": list(r.b.fact_ids)},
+            }
+            for r in t.rows
+        ],
+        "metaDescription": t.meta_description,
+    }
+
+
+def render_compare_prompt(
+    template: str, a: Record, b: Record, banned: list[str]
+) -> tuple[str, str]:
+    a_facts, b_facts = prefixed_facts(a, b)
+    return _split_prompt(
+        template,
+        a_sv=a["names"]["sv"],
+        a_en=a["names"]["en"],
+        a_scientific=a["names"]["scientific"],
+        b_sv=b["names"]["sv"],
+        b_en=b["names"]["en"],
+        b_scientific=b["names"]["scientific"],
+        banned_phrases=", ".join(banned),
+        a_facts=render_facts(a_facts),
+        b_facts=render_facts(b_facts),
+    )
+
+
+def pair_about(a: Record, b: Record) -> str:
+    """Who the comparison is about, for the checker (`SentenceChecker.check(about=)`)."""
+    return (
+        f"side a: {a['names']['sv']} / {a['names']['en']} ({a['names']['scientific']}); "
+        f"side b: {b['names']['sv']} / {b['names']['en']} ({b['names']['scientific']})"
+    )
+
+
+@dataclass
+class ComparisonWriter:
+    client: JsonModelClient
+    cost: CostTracker
+    checker: SentenceChecker
+    prompt_path: Path
+    banned: list[str]
+    model_key: str = "opus"
+    effort: str = "high"
+
+    async def _ask(self, system: str, messages: list[MessageParam]) -> ModelReply[CompareOutput]:
+        reply = await self.client.complete(
+            model=MODELS[self.model_key],
+            system=system,
+            messages=messages,
+            effort=self.effort,
+            schema=CompareOutput,
+        )
+        record_cost(self.cost, self.model_key, reply)
+        return reply
+
+    async def write(self, a: Record, b: Record) -> Written[CompareOutput]:
+        ctx = pair_context(a, b)
+        template = self.prompt_path.read_text(encoding="utf-8")
+        system, user = render_compare_prompt(template, a, b, self.banned)
+        checks: Checks[CompareOutput] = Checks(
+            rules=lambda t: check_compare(t, ctx, self.banned),
+            settle=lambda t: settle_compare(t, ctx, self.banned),
+            items=lambda t: compare_items(t, ctx, (a, b)),
+            remove=remove_compare_paths,
+            minimum=compare_minimum,
+            texts=compare_path_texts,
+        )
+        return await write_checked(
+            ask=lambda messages: self._ask(system, messages),
+            user=user,
+            checks=checks,
+            checker=self.checker,
+            about=pair_about(a, b),
+        )
+
+
+@dataclass(frozen=True)
+class CompareOptions:
+    top: int = TOP
+    model_key: str = "opus"
+    effort: str = "high"
+    checker_key: str = "sonnet"
+    max_cost: float | None = None
+    regenerate: bool = False
+    workers: int = 4
+
+
+def _candidate_volumes(
+    raw: dict[Pair, tuple[int, int]], records: dict[str, Record]
+) -> dict[frozenset[str], tuple[int, int]]:
+    """Volumes for the current look-alike pairs only, keyed by the frozenset of QIDs
+    (Task 21 review, item 7): `comparison-volumes.csv` is edited by hand, so a stale or
+    mistyped row must neither hide a real candidate nor sneak a non-candidate into the top
+    list. `read_volumes` keeps a row's orientation as written, so two rows for the same
+    pair can come back as Pair(a, b) and Pair(b, a); different volumes for them stop the
+    run before anything is paid for."""
+    candidates = {frozenset((p.a, p.b)) for p in candidate_pairs(records)}
+    volumes: dict[frozenset[str], tuple[int, int]] = {}
+    for pair, value in raw.items():
+        key = frozenset((pair.a, pair.b))
+        if key not in candidates:
+            continue
+        if key in volumes and volumes[key] != value:
+            first, second = sorted(key)
+            raise ValueError(
+                f"Dubblettrader för {first}/{second} i {VOLUMES_FILE} har olika volymer: "
+                f"{volumes[key]} och {value}. Rätta filen eller kör web compare-candidates."
+            )
+        volumes[key] = value
+    return volumes
+
+
+def _ordered(key: frozenset[str], records: dict[str, Record]) -> Pair:
+    """The pair in Swedish slug order (spec appendix D), whatever order the volume file
+    had it in."""
+    x, y = sorted(key)
+    return ordered_pair(x, y, records)
+
+
+def _pair_skip_reason(a: Record, b: Record) -> str | None:
+    """A comparison is written only from two verified fact sheets (spec §7 and §9.7), with
+    the same checks `web write` uses (`text_step._skip_reason`)."""
+    waiting = [
+        str(r["names"]["sv"])
+        for r in (a, b)
+        if missing_required_topics(r.get("facts", [])) or not facts_verified(r)
+    ]
+    if waiting:
+        return f"väntar på att faktabladet kontrolleras: {', '.join(waiting)}"
+    return None
+
+
+def _keep_old_comparison(existing: Record, both_hash: str) -> bool:
+    """Mirrors `text_step._keep_old_text`: a failed rewrite never destroys a comparison the
+    site may still use (a published one) or one that is still current for these facts.
+    Only a stale, unpublished comparison is replaced by the failed result, so `web publish`
+    can never put a comparison built from old facts on the site."""
+    if existing.get("publish"):
+        return True
+    if existing.get("status") != "ok":
+        return False
+    return bool((existing.get("generated") or {}).get("factsHash") == both_hash)
+
+
+async def run_compare(
+    paths: WebPaths,
+    options: CompareOptions,
+    *,
+    client: JsonModelClient | None = None,
+    now: datetime | None = None,
+) -> list[StepOutcome]:
+    if options.model_key == options.checker_key:
+        # Spec §9.6 (same rule as `web write`, I3): the checker must be a different model
+        # than the writer, in a fresh context.
+        raise ValueError("Skribenten och kontrollen måste vara olika modeller.")
+    now = now or datetime.now(UTC)
+    records = load_all(paths.data_out)
+    volumes = _candidate_volumes(read_volumes(paths.review / VOLUMES_FILE), records)
+    pairs = select_pairs({_ordered(key, records): v for key, v in volumes.items()}, options.top)
+    owned = client is None
+    model_client: JsonModelClient = client or AnthropicJsonClient()
+    cost = CostTracker(max_usd=options.max_cost)
+    checker = SentenceChecker(
+        client=model_client,
+        cost=cost,
+        prompt_path=paths.prompt_file(CHECK_PROMPT_VERSION),
+        model_key=options.checker_key,
+    )
+    writer = ComparisonWriter(
+        client=model_client,
+        cost=cost,
+        checker=checker,
+        prompt_path=paths.prompt_file(PROMPT_VERSION),
+        banned=load_banned(paths.banned),
+        model_key=options.model_key,
+        effort=options.effort,
+    )
+    prompt_hash = prompt_file_hash(paths.prompt_file(PROMPT_VERSION))
+    stop = asyncio.Event()
+    semaphore = asyncio.Semaphore(options.workers)
+
+    async def one(pair: Pair) -> StepOutcome:
+        label = f"{pair.a}_{pair.b}"
+        name = label
+        async with semaphore:
+            try:
+                a, b = records[pair.a], records[pair.b]
+                name = f"{a['names']['sv']} eller {b['names']['sv']}"
+                reason = _pair_skip_reason(a, b)
+                if reason is not None:
+                    return StepOutcome(label, name, "skipped", [reason])
+                path = comparison_path(paths.comparisons_out, pair)
+                existing = load_record(path)
+                both_hash = facts_hash(a) + facts_hash(b)
+                current = (
+                    existing is not None
+                    and existing.get("status") == "ok"
+                    and (existing.get("generated") or {}).get("factsHash") == both_hash
+                )
+                if current and not options.regenerate:
+                    return StepOutcome(
+                        label, name, "skipped", ["jämförelsen är redan skriven ur samma faktablad"]
+                    )
+                if stop.is_set():
+                    return StepOutcome(label, name, "skipped", ["kostnadstaket nåddes"])
+                try:
+                    result = await writer.write(a, b)
+                except MaxCostExceeded as exc:
+                    stop.set()
+                    return StepOutcome(label, name, "skipped", [f"kostnadstaket nåddes: {exc}"])
+                except CheckerFailed as exc:
+                    return StepOutcome(label, name, "failed", [str(exc)])
+                if (
+                    result.text is None
+                    and existing is not None
+                    and _keep_old_comparison(existing, both_hash)
+                ):
+                    notes = [*result.notes, "den tidigare jämförelsen behölls"]
+                    errors = list(result.errors)
+                    old_hash = (existing.get("generated") or {}).get("factsHash")
+                    if existing.get("publish") and old_hash != both_hash:
+                        errors.append(
+                            "jämförelsen är publicerad och faktabladen har ändrats sedan "
+                            "texten skrevs: sätt publish: false om den gamla texten nu är fel"
+                        )
+                    return StepOutcome(label, name, "failed", errors, notes)
+                sv_volume, en_volume = volumes[frozenset((pair.a, pair.b))]
+                # Keys this step does not own (`publish`, and whatever later steps add)
+                # are kept as they are; a new file starts unpublished.
+                record: Record = dict(existing) if existing is not None else {}
+                record.update(
+                    {
+                        "a": pair.a,
+                        "b": pair.b,
+                        "status": "ok" if result.text is not None else "failed",
+                        "publish": bool(record.get("publish", False)),
+                        "slug": comparison_slugs(pair, records),
+                        "volumes": {"sv": sv_volume, "en": en_volume},
+                        "text": (
+                            {lang: _site(getattr(result.text, lang)) for lang in ("sv", "en")}
+                            if result.text is not None
+                            else None
+                        ),
+                        "generated": {
+                            "model": MODELS[options.model_key],
+                            "prompt": PROMPT_VERSION,
+                            "promptHash": prompt_hash,
+                            "effort": options.effort,
+                            "checker": MODELS[options.checker_key],
+                            "checkerPrompt": CHECK_PROMPT_VERSION,
+                            "at": now.isoformat(),
+                            "factsHash": both_hash,
+                        },
+                        "errors": list(result.errors),
+                    }
+                )
+                if result.text is None:
+                    record["rejectedText"] = (
+                        {lang: _site(getattr(result.rejected, lang)) for lang in ("sv", "en")}
+                        if result.rejected is not None
+                        else None
+                    )
+                else:
+                    record.pop("rejectedText", None)
+                save_record(path, record)
+                return StepOutcome(label, name, str(record["status"]), result.errors, result.notes)
+            except Exception as exc:  # one pair's error must not stop the run
+                return StepOutcome(label, name, "failed", [f"{type(exc).__name__}: {exc}"])
+
+    try:
+        outcomes = list(await asyncio.gather(*(one(p) for p in pairs)))
+    finally:
+        if owned and isinstance(model_client, AnthropicJsonClient):
+            await model_client.aclose()
+    model_line = (
+        f"Skribent: `{MODELS[options.model_key]}` (effort: {options.effort}). "
+        f"Kontroll: `{MODELS[options.checker_key]}`."
+    )
+    report = render_step_report(
+        title="Jämförelser",
+        date=now.date().isoformat(),
+        outcomes=outcomes,
+        cost_usd=cost.total_usd,
+        model_line=model_line,
+    )
+    write_step_report(paths.reports, "compare", now, report)
+    return outcomes

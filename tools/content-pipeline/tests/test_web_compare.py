@@ -3,25 +3,49 @@
 from __future__ import annotations
 
 import csv
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
 
+from birdy_fetcher.web.checker import CheckOutput, Verdict
 from birdy_fetcher.web.compare import (
     BELOW_THRESHOLD_VALUE,
     COLUMNS,
+    Cell,
+    CompareLang,
+    CompareOptions,
+    CompareOutput,
     Pair,
+    Row,
     _number,
     candidate_pairs,
+    check_compare,
+    compare_items,
     comparison_path,
     comparison_slugs,
+    pair_context,
     queries,
     read_volumes,
+    run_compare,
     select_pairs,
     write_candidates,
 )
-from birdy_fetcher.web.record import Record, new_record
+from birdy_fetcher.web.paths import WebPaths
+from birdy_fetcher.web.record import (
+    Record,
+    facts_hash,
+    load_record,
+    new_record,
+    record_path,
+    save_record,
+)
 from birdy_fetcher.web.sheet_csv import write_sheet
+from birdy_fetcher.web.text_model import Sentence
+
+from .text_fixtures import reviewed_record
+from .web_fakes import FakeJsonClient, reply
+from .web_repo import make_repo
 
 
 def _species(qid: str, sv: str, en: str, slug_sv: str, slug_en: str, others: list[str]) -> Record:
@@ -526,3 +550,465 @@ def test_select_pairs_ranks_by_swedish_then_english_and_drops_zero() -> None:
     }
     assert select_pairs(volumes, top=2) == [Pair("Q3", "Q4"), Pair("Q1", "Q2")]
     assert Pair("Q5", "Q6") not in select_pairs(volumes, top=10)
+
+
+# -- the comparison texts (Task 22) ------------------------------------------------------
+
+NOW = datetime(2026, 11, 22, tzinfo=UTC)
+BANNED = ["fascinerande"]
+
+
+def _blue_tit() -> Record:
+    record = reviewed_record("Q25404")
+    record["names"] = {
+        "sv": "Blåmes",
+        "en": "Eurasian Blue Tit",
+        "scientific": "Cyanistes caeruleus",
+    }
+    record["slug"] = {"sv": "blames", "en": "eurasian-blue-tit"}
+    return record
+
+
+def _great_tit() -> Record:
+    record = reviewed_record("Q25485")
+    record["slug"] = {"sv": "talgoxe", "en": "great-tit"}
+    return record
+
+
+def _cell(text: str, *ids: str) -> Cell:
+    return Cell(text=text, fact_ids=list(ids))
+
+
+# Species A is the blue tit (blames < talgoxe), species B the great tit. Both test records
+# carry the talgoxe fact sheet from text_fixtures, so the ids are the same on both sides.
+SV_COMPARE = CompareLang(
+    short_answer=[Sentence(text="Talgoxen har svart huvud med vita kinder.", fact_ids=["b:f01"])],
+    rows=[
+        Row(
+            feature="Huvud",
+            a=_cell("Svart huvud med vita kinder", "a:f01"),
+            b=_cell("Svart huvud med vita kinder", "b:f01"),
+        ),
+        Row(
+            feature="Buk",
+            a=_cell("Gul med svart band", "a:f02"),
+            b=_cell("Gul med svart band", "b:f02"),
+        ),
+        Row(
+            feature="Sång",
+            a=_cell("Ringande ti ta, ti ta", "a:f04"),
+            b=_cell("Ringande ti ta, ti ta", "b:f04"),
+        ),
+    ],
+    meta_description=(
+        "Blåmes eller talgoxe? Blåmesen är mindre med blå hätta, talgoxen är större och har "
+        "svart huvud. Så skiljer du dem åt i fält."
+    ),
+)
+EN_COMPARE = CompareLang(
+    short_answer=[
+        Sentence(text="The great tit has a black head with white cheeks.", fact_ids=["b:f01"])
+    ],
+    rows=[
+        Row(
+            feature="Head",
+            a=_cell("Black head with white cheeks", "a:f01"),
+            b=_cell("Black head with white cheeks", "b:f01"),
+        ),
+        Row(
+            feature="Belly",
+            a=_cell("Yellow with a black stripe", "a:f02"),
+            b=_cell("Yellow with a black stripe", "b:f02"),
+        ),
+        Row(
+            feature="Song",
+            a=_cell("A ringing tee cha, tee cha", "a:f04"),
+            b=_cell("A ringing tee cha, tee cha", "b:f04"),
+        ),
+    ],
+    meta_description=(
+        "Eurasian Blue Tit or Great Tit? The blue tit is smaller with a blue cap, the great "
+        "tit is larger with a black head. How to tell them apart."
+    ),
+)
+COMPARE = CompareOutput(sv=SV_COMPARE, en=EN_COMPARE)
+CTX = pair_context(_blue_tit(), _great_tit())
+
+
+def _verdicts(text: CompareOutput, unsupported: dict[str, str] | None = None) -> CheckOutput:
+    bad = unsupported or {}
+    return CheckOutput(
+        verdicts=[
+            Verdict(id=i.id, supported=i.id not in bad, problem=bad.get(i.id))
+            for i in compare_items(text, CTX)
+        ]
+    )
+
+
+VOLUMES_HEADER = "a_qid,b_qid,a_sv,b_sv,a_en,b_en,sv_queries,en_queries,sv_volume,en_volume\n"
+ONE_PAIR = "Q25404,Q25485,Blåmes,Talgoxe,x,x,x,x,1300,880\n"
+
+
+def _repo_with_pair(tmp_path: Path, rows: str = ONE_PAIR) -> WebPaths:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25404"), _blue_tit())
+    save_record(record_path(paths.data_out, "Q25485"), _great_tit())
+    paths.review.mkdir(parents=True, exist_ok=True)
+    (paths.review / "comparison-volumes.csv").write_text(VOLUMES_HEADER + rows, encoding="utf-8")
+    return paths
+
+
+def _changed_great_tit() -> Record:
+    """The great tit after a later `web facts` + `web verify`: one more fact, verified."""
+    great = _great_tit()
+    great["facts"].append(
+        {
+            "id": "f99",
+            "topic": "behaviour",
+            "sv": "Den äter frön och insekter.",
+            "sources": [{"article": "sv", "quote": "äter frön och insekter"}],
+        }
+    )
+    great["generated"]["verify"]["factsHash"] = facts_hash(great)
+    return great
+
+
+def _saved(paths: WebPaths) -> Record | None:
+    return load_record(paths.comparisons_out / "Q25404_Q25485.json")
+
+
+async def test_a_comparison_is_written_with_both_slugs_and_volumes(tmp_path: Path) -> None:
+    paths = _repo_with_pair(tmp_path)
+    client = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
+    outcomes = await run_compare(paths, CompareOptions(), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    assert client.models == ["claude-opus-5", "claude-sonnet-5"]
+    assert client.schemas == ["CompareOutput", "CheckOutput"]
+    saved = _saved(paths)
+    assert saved is not None
+    assert saved["a"] == "Q25404"
+    assert saved["b"] == "Q25485"
+    assert saved["status"] == "ok"
+    assert saved["slug"] == {"sv": "blames-eller-talgoxe", "en": "eurasian-blue-tit-vs-great-tit"}
+    assert saved["volumes"] == {"sv": 1300, "en": 880}
+    assert saved["publish"] is False
+    assert saved["errors"] == []
+    assert saved["text"]["sv"]["rows"][0]["a"] == {
+        "text": "Svart huvud med vita kinder",
+        "factIds": ["a:f01"],
+    }
+    assert saved["text"]["en"]["shortAnswer"] == [
+        {"text": "The great tit has a black head with white cheeks.", "factIds": ["b:f01"]}
+    ]
+    assert saved["text"]["sv"]["metaDescription"].startswith("Blåmes eller talgoxe?")
+    assert "rejectedText" not in saved
+    generated = saved["generated"]
+    assert generated["prompt"] == "compare-v1"
+    assert len(generated["promptHash"]) == 8
+    assert generated["checker"] == "claude-sonnet-5"
+    assert generated["checkerPrompt"] == "check-v1"
+    assert generated["factsHash"] == facts_hash(_blue_tit()) + facts_hash(_great_tit())
+    assert any(p.name.startswith("web-compare-") for p in paths.reports.iterdir())
+
+
+def test_a_cell_may_only_cite_its_own_species() -> None:
+    wrong = SV_COMPARE.model_copy(
+        update={
+            "rows": [
+                *SV_COMPARE.rows[:2],
+                Row(feature="Sång", a=_cell("Ringande", "b:f04"), b=_cell("Ringande", "b:f04")),
+            ]
+        }
+    )
+    issues = check_compare(CompareOutput(sv=wrong, en=EN_COMPARE), CTX, BANNED)
+    assert [(i.path, i.removable) for i in issues] == [("sv.rows[2]", True)]
+
+
+def test_the_valid_comparison_passes_every_code_check() -> None:
+    assert check_compare(COMPARE, CTX, BANNED) == []
+
+
+def test_a_short_answer_may_cite_both_species() -> None:
+    both = SV_COMPARE.model_copy(
+        update={
+            "short_answer": [
+                Sentence(text="Båda har svart huvud med vita kinder.", fact_ids=["a:f01", "b:f01"])
+            ]
+        }
+    )
+    assert check_compare(CompareOutput(sv=both, en=EN_COMPARE), CTX, BANNED) == []
+
+
+def test_a_meta_description_with_digits_breaks_a_rule() -> None:
+    digits = SV_COMPARE.model_copy(
+        update={
+            "meta_description": (
+                "Blåmes eller talgoxe? Blåmesen är 12 cm med blå hätta, talgoxen är 14 cm och "
+                "har svart huvud. Så skiljer du dem åt i fält."
+            )
+        }
+    )
+    issues = check_compare(CompareOutput(sv=digits, en=EN_COMPARE), CTX, BANNED)
+    assert [(i.path, i.removable) for i in issues] == [("sv.meta_description", False)]
+
+
+def test_too_few_rows_is_a_hard_problem() -> None:
+    two_rows = SV_COMPARE.model_copy(update={"rows": SV_COMPARE.rows[:2]})
+    issues = check_compare(CompareOutput(sv=two_rows, en=EN_COMPARE), CTX, BANNED)
+    assert [(i.path, i.removable) for i in issues] == [("sv.rows", False)]
+
+
+def test_checker_items_name_the_species_each_cell_is_about() -> None:
+    items = {i.id: i for i in compare_items(COMPARE, CTX, names=(_blue_tit(), _great_tit()))}
+    assert items["sv.rows[0].a"].text == "Huvud (Blåmes): Svart huvud med vita kinder"
+    assert items["en.rows[0].b"].text == "Head (Great Tit): Black head with white cheeks"
+    assert [f["id"] for f in items["sv.rows[1].b"].facts] == ["b:f02"]
+    assert items["sv.short_answer[0]"].text == "Talgoxen har svart huvud med vita kinder."
+
+
+async def test_a_pair_waits_until_both_fact_sheets_are_reviewed(tmp_path: Path) -> None:
+    paths = _repo_with_pair(tmp_path)
+    blue = _blue_tit()
+    del blue["verification"]
+    save_record(record_path(paths.data_out, "Q25404"), blue)
+    client = FakeJsonClient([])
+    outcomes = await run_compare(paths, CompareOptions(), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["skipped"]
+    assert client.calls == []
+    assert _saved(paths) is None
+
+
+async def test_a_stale_verify_hash_counts_as_not_reviewed(tmp_path: Path) -> None:
+    paths = _repo_with_pair(tmp_path)
+    great = _great_tit()
+    great["generated"]["verify"]["factsHash"] = "stale0000"
+    save_record(record_path(paths.data_out, "Q25485"), great)
+    client = FakeJsonClient([])
+    outcomes = await run_compare(paths, CompareOptions(), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["skipped"]
+    assert client.calls == []
+
+
+async def test_about_names_both_sides_for_the_checker(tmp_path: Path) -> None:
+    paths = _repo_with_pair(tmp_path)
+    client = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
+    await run_compare(paths, CompareOptions(), client=client, now=NOW)
+    checker_prompt = str(client.calls[1][0]["content"])
+    assert (
+        "side a: Blåmes / Eurasian Blue Tit (Cyanistes caeruleus); "
+        "side b: Talgoxe / Great Tit (Parus major)"
+    ) in checker_prompt
+    assert "Huvud (Blåmes): Svart huvud med vita kinder" in checker_prompt
+    writer_prompt = str(client.calls[0][0]["content"])
+    assert "a:f01" in writer_prompt and "b:f01" in writer_prompt
+
+
+async def test_a_flipped_volume_row_is_normalised(tmp_path: Path) -> None:
+    paths = _repo_with_pair(tmp_path, "Q25485,Q25404,Talgoxe,Blåmes,x,x,x,x,1300,880\n")
+    client = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
+    outcomes = await run_compare(paths, CompareOptions(), client=client, now=NOW)
+    assert [(o.qid, o.status) for o in outcomes] == [("Q25404_Q25485", "ok")]
+    saved = _saved(paths)
+    assert saved is not None
+    assert (saved["a"], saved["b"]) == ("Q25404", "Q25485")
+    assert saved["volumes"] == {"sv": 1300, "en": 880}
+
+
+async def test_flipped_duplicate_rows_with_different_volumes_stop_before_any_call(
+    tmp_path: Path,
+) -> None:
+    paths = _repo_with_pair(tmp_path, ONE_PAIR + "Q25485,Q25404,Talgoxe,Blåmes,x,x,x,x,900,880\n")
+    client = FakeJsonClient([])
+    with pytest.raises(ValueError, match="Q25404"):
+        await run_compare(paths, CompareOptions(), client=client, now=NOW)
+    assert client.calls == []
+
+
+async def test_flipped_duplicate_rows_with_the_same_volumes_write_one_comparison(
+    tmp_path: Path,
+) -> None:
+    paths = _repo_with_pair(tmp_path, ONE_PAIR + "Q25485,Q25404,Talgoxe,Blåmes,x,x,x,x,1300,880\n")
+    client = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
+    outcomes = await run_compare(paths, CompareOptions(), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+
+
+async def test_a_pair_that_is_not_a_candidate_cannot_take_a_top_slot(tmp_path: Path) -> None:
+    # Q25404/Q99999 has the biggest volume in the hand-edited file, but it is not a
+    # look-alike pair (there is no Q99999 record), so it must not push the real pair out.
+    paths = _repo_with_pair(tmp_path, ONE_PAIR + "Q25404,Q99999,Blåmes,Okänd,x,x,x,x,9000,9000\n")
+    client = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
+    outcomes = await run_compare(paths, CompareOptions(top=1), client=client, now=NOW)
+    assert [(o.qid, o.status) for o in outcomes] == [("Q25404_Q25485", "ok")]
+
+
+async def test_the_writer_and_the_checker_must_be_different_models(tmp_path: Path) -> None:
+    paths = _repo_with_pair(tmp_path)
+    with pytest.raises(ValueError, match="olika modeller"):
+        await run_compare(
+            paths,
+            CompareOptions(model_key="sonnet", checker_key="sonnet"),
+            client=FakeJsonClient([]),
+            now=NOW,
+        )
+
+
+async def test_the_cost_cap_skips_and_still_writes_the_report(tmp_path: Path) -> None:
+    paths = _repo_with_pair(tmp_path)
+    client = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
+    outcomes = await run_compare(paths, CompareOptions(max_cost=0.0001), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["skipped"]
+    assert "kostnadstaket nåddes" in outcomes[0].errors[0]
+    assert len(client.calls) == 1
+    assert _saved(paths) is None
+    assert any(p.name.startswith("web-compare-") for p in paths.reports.iterdir())
+
+
+async def test_an_unsupported_cell_removes_its_row(tmp_path: Path) -> None:
+    four_rows = SV_COMPARE.model_copy(
+        update={
+            "rows": [
+                *SV_COMPARE.rows,
+                Row(
+                    feature="Storlek",
+                    a=_cell("Cirka 14 centimeter", "a:f03"),
+                    b=_cell("Cirka 14 centimeter", "b:f03"),
+                ),
+            ]
+        }
+    )
+    text = CompareOutput(sv=four_rows, en=EN_COMPARE)
+    bad = {"sv.rows[3].a": "storleken gäller talgoxen"}
+    paths = _repo_with_pair(tmp_path)
+    client = FakeJsonClient(
+        [reply(text), reply(_verdicts(text, bad)), reply(text), reply(_verdicts(text, bad))]
+    )
+    outcomes = await run_compare(paths, CompareOptions(), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    assert any('sv.rows[3].a togs bort ("Cirka 14 centimeter")' in n for n in outcomes[0].notes)
+    saved = _saved(paths)
+    assert saved is not None
+    assert [r["feature"] for r in saved["text"]["sv"]["rows"]] == ["Huvud", "Buk", "Sång"]
+
+
+async def test_fewer_than_three_rows_after_the_check_gives_no_page(tmp_path: Path) -> None:
+    bad = {"sv.rows[2].b": "sången stöds inte"}
+    paths = _repo_with_pair(tmp_path)
+    client = FakeJsonClient(
+        [
+            reply(COMPARE),
+            reply(_verdicts(COMPARE, bad)),
+            reply(COMPARE),
+            reply(_verdicts(COMPARE, bad)),
+        ]
+    )
+    outcomes = await run_compare(paths, CompareOptions(), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    saved = _saved(paths)
+    assert saved is not None
+    assert saved["status"] == "failed"
+    assert saved["text"] is None
+    assert len(saved["rejectedText"]["sv"]["rows"]) == 2
+    assert saved["publish"] is False
+
+
+async def test_a_current_comparison_is_skipped_unless_regenerated(tmp_path: Path) -> None:
+    paths = _repo_with_pair(tmp_path)
+    first = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
+    await run_compare(paths, CompareOptions(), client=first, now=NOW)
+    again = FakeJsonClient([])
+    outcomes = await run_compare(paths, CompareOptions(), client=again, now=NOW)
+    assert [o.status for o in outcomes] == ["skipped"]
+    assert again.calls == []
+    redo = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
+    outcomes = await run_compare(paths, CompareOptions(regenerate=True), client=redo, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+
+
+async def test_a_failed_rewrite_keeps_a_good_comparison(tmp_path: Path) -> None:
+    paths = _repo_with_pair(tmp_path)
+    first = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
+    await run_compare(paths, CompareOptions(), client=first, now=NOW)
+    path = paths.comparisons_out / "Q25404_Q25485.json"
+    before = path.read_bytes()
+    bad = FakeJsonClient([reply(None, stop="max_tokens")])
+    outcomes = await run_compare(paths, CompareOptions(regenerate=True), client=bad, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    assert any("den tidigare jämförelsen behölls" in n for n in outcomes[0].notes)
+    assert path.read_bytes() == before
+
+
+async def test_a_failed_rewrite_of_a_stale_unpublished_comparison_replaces_it(
+    tmp_path: Path,
+) -> None:
+    # Mirrors text_step's `_keep_old_text`: a stale, unpublished text must not stay "ok",
+    # or `web publish` could later put a comparison built from old facts on the site.
+    paths = _repo_with_pair(tmp_path)
+    first = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
+    await run_compare(paths, CompareOptions(), client=first, now=NOW)
+    great = _changed_great_tit()
+    save_record(record_path(paths.data_out, "Q25485"), great)
+    bad = FakeJsonClient([reply(None, stop="refusal")])
+    outcomes = await run_compare(paths, CompareOptions(), client=bad, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    saved = _saved(paths)
+    assert saved is not None
+    assert saved["status"] == "failed"
+    assert saved["text"] is None
+
+
+async def test_a_published_comparison_keeps_publish_and_warns_when_facts_changed(
+    tmp_path: Path,
+) -> None:
+    paths = _repo_with_pair(tmp_path)
+    first = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
+    await run_compare(paths, CompareOptions(), client=first, now=NOW)
+    path = paths.comparisons_out / "Q25404_Q25485.json"
+    published = load_record(path)
+    assert published is not None
+    published["publish"] = True
+    save_record(path, published)
+    great = _changed_great_tit()
+    save_record(record_path(paths.data_out, "Q25485"), great)
+    bad = FakeJsonClient([reply(None, stop="refusal")])
+    outcomes = await run_compare(paths, CompareOptions(), client=bad, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    assert any("sätt publish: false" in e for e in outcomes[0].errors)
+    saved = load_record(path)
+    assert saved is not None
+    assert saved["publish"] is True
+    assert saved["status"] == "ok"
+
+
+async def test_a_rewrite_never_sets_publish_but_keeps_it(tmp_path: Path) -> None:
+    paths = _repo_with_pair(tmp_path)
+    first = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
+    await run_compare(paths, CompareOptions(), client=first, now=NOW)
+    path = paths.comparisons_out / "Q25404_Q25485.json"
+    published = load_record(path)
+    assert published is not None
+    published["publish"] = True
+    save_record(path, published)
+    redo = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
+    await run_compare(paths, CompareOptions(regenerate=True), client=redo, now=NOW)
+    saved = load_record(path)
+    assert saved is not None
+    assert saved["publish"] is True
+
+
+async def test_one_pair_failing_does_not_stop_the_run(tmp_path: Path) -> None:
+    paths = _repo_with_pair(tmp_path)
+    client = FakeJsonClient([])  # the writer call raises IndexError inside the fake
+    outcomes = await run_compare(paths, CompareOptions(), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    assert "IndexError" in outcomes[0].errors[0]
+    assert _saved(paths) is None
+    assert any(p.name.startswith("web-compare-") for p in paths.reports.iterdir())
+
+
+async def test_a_checker_failure_leaves_no_file(tmp_path: Path) -> None:
+    paths = _repo_with_pair(tmp_path)
+    client = FakeJsonClient([reply(COMPARE), reply(None, stop="refusal")])
+    outcomes = await run_compare(paths, CompareOptions(), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    assert _saved(paths) is None
