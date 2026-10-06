@@ -386,6 +386,7 @@
     <string name="archive_sort_alpha">A–Z</string>
     <string name="archive_sort_family">Family</string>
     <string name="archive_sort_recent">Recently added</string>
+    <string name="archive_sort_relevance">Relevance</string>
     <string name="archive_pill_stamped">STAMPED</string>
     <plurals name="archive_section_count">
         <item quantity="one">%1$d species</item>

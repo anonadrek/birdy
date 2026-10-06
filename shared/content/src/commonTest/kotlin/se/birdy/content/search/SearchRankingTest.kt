@@ -188,4 +188,27 @@ class SearchRankingTest {
     fun `a blank query keeps the order it was given`() {
         assertEquals(tal.map { it.sv }, rankSwedish("  ", tal))
     }
+
+    // Review minors: the last tie-break is Swedish alphabetical order (å, ä, ö after z), not
+    // Unicode order (which puts ä before å).
+    @Test
+    fun `the alphabet tie-break follows the swedish alphabet`() {
+        val birds =
+            listOf(
+                Bird("Ötal", "A", "A a", ALLMÄN),
+                Bird("Ätal", "B", "B b", ALLMÄN),
+                Bird("Åtal", "C", "C c", ALLMÄN),
+                Bird("Ztal", "D", "D d", ALLMÄN),
+            )
+        // All four match "tal" in the middle of the word, all are equally common and as long.
+        assertEquals(listOf("Ztal", "Åtal", "Ätal", "Ötal"), rankSwedish("tal", birds))
+    }
+
+    @Test
+    fun `a query typed with a separate accent mark counts as typed`() {
+        // "bla" + U+030A COMBINING RING ABOVE, the decomposed form of "blå".
+        val ranked = rankSwedish("bla\u030A", bla)
+        assertEquals("Blåmes", ranked.first())
+        assertTrue(ranked.indexOf("Blå kärrhök") < ranked.indexOf("Bläsand"), ranked.toString())
+    }
 }

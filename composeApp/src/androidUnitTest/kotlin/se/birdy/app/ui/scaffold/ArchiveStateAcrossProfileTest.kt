@@ -91,8 +91,12 @@ class ArchiveStateAcrossProfileTest {
 
         compose.runOnIdle { nav.navigate(AppRoute.Archive) }
         settle()
+        compose.onNodeWithText("A–Ö").assertExists()
         compose.onNode(hasSetTextAction()).performTextInput("tal")
         settle()
+        // While a query is typed the hits are ranked, so the pill no longer claims A–Ö.
+        compose.onNodeWithText("Relevans").assertExists()
+        compose.onNodeWithText("A–Ö").assertDoesNotExist()
         speciesList().performScrollToNode(hasText("Talgoxe"))
         compose.onNodeWithText("Talgoxe").performClick()
         settle()

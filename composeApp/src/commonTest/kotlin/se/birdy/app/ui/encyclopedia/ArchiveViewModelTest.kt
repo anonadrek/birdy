@@ -125,6 +125,20 @@ class ArchiveViewModelTest {
         }
 
     @Test
+    fun `the a to z sort follows the swedish alphabet`() =
+        runTest(dispatcher) {
+            val repo =
+                FakeSpeciesRepository().apply {
+                    searchResults.value =
+                        listOf("Ökenlärka", "Ärtsångare", "Zebrafink", "Ålgräsfink", "Ägretthäger").map { summary(it, "X") }
+                }
+            val vm = archiveVm(repo, ArchiveSort.ALPHA)
+            backgroundScope.launch { vm.uiState.collect {} }
+            advanceTimeBy(300)
+            assertEquals(listOf("Zebrafink", "Ålgräsfink", "Ägretthäger", "Ärtsångare", "Ökenlärka"), vm.names())
+        }
+
+    @Test
     fun `with a query the family sort groups families and keeps the best matches first in each`() =
         runTest(dispatcher) {
             val vm = archiveVm(rankedRepo(), ArchiveSort.FAMILY)

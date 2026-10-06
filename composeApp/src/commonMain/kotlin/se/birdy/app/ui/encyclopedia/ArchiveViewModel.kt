@@ -23,6 +23,7 @@ import se.birdy.content.Locale
 import se.birdy.content.SpeciesFilter
 import se.birdy.content.SpeciesRepository
 import se.birdy.content.model.SpeciesSummary
+import se.birdy.content.search.swedishSortKey
 import se.birdy.datastore.ArchiveSort
 import se.birdy.datastore.UserPreferences
 import se.birdy.domain.observation.ObservationRepository
@@ -129,8 +130,9 @@ class ArchiveViewModel(
     ): ArchiveUiState {
         val filtered = list.filter { c.matches(it.group) }
         if (filtered.isEmpty()) return ArchiveUiState.Empty
+        // Swedish alphabetical order (å, ä, ö after z): the pill says A-Ö.
         val byName: Comparator<SpeciesSummary> =
-            if (searching) compareBy { 0 } else compareBy { it.name.lowercase() }
+            if (searching) compareBy { 0 } else compareBy { swedishSortKey(it.name) }
         val sorted =
             when (s) {
                 ArchiveSort.ALPHA -> filtered.sortedWith(byName)

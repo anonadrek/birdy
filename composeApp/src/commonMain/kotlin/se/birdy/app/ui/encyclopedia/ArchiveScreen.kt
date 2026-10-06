@@ -92,6 +92,7 @@ import birdy_bird_scanner.composeapp.generated.resources.archive_section_count
 import birdy_bird_scanner.composeapp.generated.resources.archive_sort_alpha
 import birdy_bird_scanner.composeapp.generated.resources.archive_sort_family
 import birdy_bird_scanner.composeapp.generated.resources.archive_sort_recent
+import birdy_bird_scanner.composeapp.generated.resources.archive_sort_relevance
 import birdy_bird_scanner.composeapp.generated.resources.menu_button
 import birdy_bird_scanner.composeapp.generated.resources.premium_archive_subtitle
 import birdy_bird_scanner.composeapp.generated.resources.premium_archive_title
@@ -287,7 +288,7 @@ fun ArchiveScreen(
                     horizontalArrangement = Arrangement.End,
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    SortChip(sort = sort, onClick = viewModel::onSortToggle)
+                    SortChip(sort = sort, searching = query.isNotBlank(), onClick = viewModel::onSortToggle)
                 }
             }
 
@@ -638,13 +639,19 @@ private fun ChipBar(
 @Composable
 private fun SortChip(
     sort: ArchiveSort,
+    searching: Boolean,
     onClick: () -> Unit,
 ) {
     val label =
-        when (sort) {
-            ArchiveSort.ALPHA -> stringResource(Res.string.archive_sort_alpha)
-            ArchiveSort.FAMILY -> stringResource(Res.string.archive_sort_family)
-            ArchiveSort.RECENT -> stringResource(Res.string.archive_sort_recent)
+        if (searching && sort == ArchiveSort.ALPHA) {
+            // While a query is typed the hits are ranked by match, not A-Ö (release 1.3.0 Task 7g).
+            stringResource(Res.string.archive_sort_relevance)
+        } else {
+            when (sort) {
+                ArchiveSort.ALPHA -> stringResource(Res.string.archive_sort_alpha)
+                ArchiveSort.FAMILY -> stringResource(Res.string.archive_sort_family)
+                ArchiveSort.RECENT -> stringResource(Res.string.archive_sort_recent)
+            }
         }
     BirdyPill(
         text = label,

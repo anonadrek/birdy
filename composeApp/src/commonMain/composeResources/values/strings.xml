@@ -399,6 +399,7 @@
     <string name="archive_sort_alpha">A–Ö</string>
     <string name="archive_sort_family">Familj</string>
     <string name="archive_sort_recent">Senast tillagd</string>
+    <string name="archive_sort_relevance">Relevans</string>
     <string name="archive_pill_stamped">STÄMPLAD</string>
     <plurals name="archive_section_count">
         <item quantity="one">%1$d art</item>

@@ -24,7 +24,7 @@ data class SearchNames(
  *    Bläsand only as "bla");
  * 4. how common the species is in Sweden ([Abundance], allmän first);
  * 5. the shorter matched name, which the query covers more of ("blå" gives Blåmes before Blåhake);
- * 6. the alphabet, by the primary name.
+ * 6. the Swedish alphabet (å, ä, ö after z; [swedishSortKey]), by the primary name.
  *
  * A blank query returns the list untouched.
  */
@@ -79,7 +79,7 @@ object SearchRanking {
                 .mapIndexedNotNull { index, name -> name?.let { matchIn(it, index, typed, folded) } }
                 .minWithOrNull(MATCH_ORDER)
                 ?: FieldMatch(Level.NOT_IN_A_NAME, fields.size, foldedOnly = true, nameLength = names.primary.length)
-        return Key(match = best, abundance = abundance.ordinal, name = names.primary.lowercase())
+        return Key(match = best, abundance = abundance.ordinal, name = swedishSortKey(names.primary))
     }
 
     private fun matchIn(
@@ -117,8 +117,11 @@ object SearchRanking {
         generateSequence(name.indexOf(query)) { previous -> name.indexOf(query, previous + 1).takeIf { it >= 0 } }
             .any { it == 0 || name[it - 1] == ' ' || name[it - 1] == '-' }
 
-    /** Lowercase with runs of whitespace collapsed, accents kept: the text as the user typed it. */
-    private fun typedForm(text: String): String = text.trim().lowercase().replace(WHITESPACE, " ")
+    /**
+     * Composed (NFC), lowercase, runs of whitespace collapsed, accents kept: the text as the user
+     * typed it, whether the keyboard sent "å" or "a" plus a combining ring.
+     */
+    private fun typedForm(text: String): String = composeCanonical(text).trim().lowercase().replace(WHITESPACE, " ")
 
     private val WHITESPACE = Regex("\\s+")
 }

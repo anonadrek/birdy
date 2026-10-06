@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- API 27-30: as values/, plus dark navigation bar icons (android:windowLightNavigationBar is
-         API 27+). Release 1.3.0 Task 7g: on API 30 the launch window's first frame had white status
-         and navigation bar icons on the paper background. API 31+ uses values-v31. -->
-    <style name="Theme.Birdy.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/paper_bg</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
-        <item name="postSplashScreenTheme">@style/Theme.Birdy</item>
-        <item name="android:windowLightStatusBar">true</item>
+    <!-- API 27+ (values-v31 does not override it): dark navigation bar icons on the paper launch
+         window too (android:windowLightNavigationBar is API 27+). Release 1.3.0 Task 7g. -->
+    <style name="Theme.Birdy.Starting" parent="Theme.Birdy.Starting.Base">
         <item name="android:windowLightNavigationBar">true</item>
     </style>
 </resources>

@@ -1,8 +1,5 @@
 package se.birdy.app.ui.components
 
-import android.app.Activity
-import android.content.Context
-import android.content.ContextWrapper
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalView
@@ -17,10 +14,3 @@ actual fun PlatformStatusBarIcons(lightIcons: Boolean) {
         WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !lightIcons
     }
 }
-
-private tailrec fun Context.findActivity(): Activity? =
-    when (this) {
-        is Activity -> this
-        is ContextWrapper -> baseContext.findActivity()
-        else -> null
-    }
