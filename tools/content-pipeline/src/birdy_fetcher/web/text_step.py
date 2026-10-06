@@ -255,6 +255,15 @@ def facts_verified(record: Record) -> bool:
     return bool(verify_hash == facts_hash(record))
 
 
+def text_is_current(record: Record) -> bool:
+    """True when `record["generated"]["text"]["factsHash"]` still matches the facts as
+    they are now. Shared (M5, review fix 2026-10-06) by `_skip_reason`, `_keep_old_text`
+    and `waves.py`'s publish predicate -- one definition of "the text we have was written
+    from these facts", not three."""
+    generated = record.get("generated", {}).get("text") or {}
+    return bool(generated.get("factsHash") == facts_hash(record))
+
+
 def _skip_reason(record: Record, options: WriteOptions) -> str | None:
     if missing_required_topics(record.get("facts", [])):
         # (C1, review fix 2026-10-06) The appearance-only proxy missed a sheet that still
@@ -267,7 +276,7 @@ def _skip_reason(record: Record, options: WriteOptions) -> str | None:
     generated = record.get("generated", {}).get("text") or {}
     current = (
         record.get("status") == "ok"
-        and generated.get("factsHash") == facts_hash(record)
+        and text_is_current(record)
         and bool(generated.get("unreviewed")) == (not reviewed)
     )
     if current and not options.regenerate:
@@ -284,8 +293,7 @@ def _keep_old_text(record: Record) -> bool:
         return True
     if record.get("status") != "ok":
         return False
-    text_generated = record.get("generated", {}).get("text") or {}
-    return bool(text_generated.get("factsHash") == facts_hash(record))
+    return text_is_current(record)
 
 
 def prompt_file_hash(path: Path) -> str:

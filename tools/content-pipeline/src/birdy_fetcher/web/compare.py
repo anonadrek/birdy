@@ -801,6 +801,21 @@ STALE_HASH_ERROR = (
 )
 
 
+def published_comparison_errors(comparison: Record, records: dict[str, Record]) -> list[str]:
+    """Every loud error a published comparison has right now, assuming the caller has
+    already checked `comparison.get("publish")`: a struck cited fact, or -- only when
+    that is clean -- facts that have moved on since the comparison was written. Shared
+    (I3, scope follow-up to the review fix 2026-10-06) by `_sweep_published` (every
+    `web compare` run) and `waves.py`'s `publish_wave`, so a comparison already live
+    never gets a free pass just because this particular run does not rewrite it."""
+    stale = _stale_comparison_ids(comparison, records)
+    if stale:
+        return [_stale_ids_error(stale)]
+    if not comparison_is_current(comparison, records):
+        return [STALE_HASH_ERROR]
+    return []
+
+
 def _keep_old_comparison(existing: Record, records: dict[str, Record]) -> bool:
     """Mirrors `text_step._keep_old_text`: a failed rewrite never destroys a comparison the
     site may still use (a published one) or one that is still current for these facts.
@@ -821,8 +836,8 @@ def _sweep_published(
 ) -> list[StepOutcome]:
     """Published comparisons this run does not visit (outside `--top`, no volume any more,
     or no longer a look-alike pair) are checked without a model call (review fix
-    2026-10-06, I1): a struck cited fact or changed facts is reported as failed, so the
-    page does not stay live on old facts unnoticed."""
+    2026-10-06, I1): `published_comparison_errors` reports a struck cited fact or changed
+    facts as failed, so the page does not stay live on old facts unnoticed."""
     outcomes: list[StepOutcome] = []
     for path in sorted(out_dir.glob("Q*_Q*.json")):
         if path.name in in_run:
@@ -835,15 +850,17 @@ def _sweep_published(
             a, b = records.get(str(comparison.get("a"))), records.get(str(comparison.get("b")))
             if a is not None and b is not None:
                 name = f"{a['names']['sv']} eller {b['names']['sv']}"
-            stale_error = _published_stale_error(comparison, records)
-            if stale_error is not None:
-                outcomes.append(StepOutcome(path.stem, name, "failed", [stale_error]))
-            elif not comparison_is_current(comparison, records):
-                note = (
-                    "paret skrivs inte om i den här körningen (utanför --top eller inte "
-                    "ett förväxlingspar längre)"
+            errors = published_comparison_errors(comparison, records)
+            if errors:
+                notes = (
+                    []
+                    if _stale_comparison_ids(comparison, records)
+                    else [
+                        "paret skrivs inte om i den här körningen (utanför --top eller "
+                        "inte ett förväxlingspar längre)"
+                    ]
                 )
-                outcomes.append(StepOutcome(path.stem, name, "failed", [STALE_HASH_ERROR], [note]))
+                outcomes.append(StepOutcome(path.stem, name, "failed", errors, notes))
         except Exception as exc:  # one file's error must not stop the run
             outcomes.append(
                 StepOutcome(path.stem, name, "failed", [f"{type(exc).__name__}: {exc}"])

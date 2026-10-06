@@ -2,10 +2,17 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import pytest
 from click.testing import CliRunner
 
+from birdy_fetcher import cli as cli_module
 from birdy_fetcher.cli import main
+from birdy_fetcher.web.record import record_path, save_record
+
+from .test_web_waves import _ready
+from .web_repo import make_repo
 
 
 def test_cli_help_runs() -> None:
@@ -152,3 +159,74 @@ def test_web_compare_requires_an_api_key(monkeypatch: pytest.MonkeyPatch) -> Non
     result = CliRunner().invoke(main, ["web", "compare", "--max-cost", "1"])
     assert result.exit_code != 0
     assert "ANTHROPIC_API_KEY" in str(result.output)
+
+
+# -- web publish (Task 23 + review fixes 2026-10-06, I3/I4) -----------------------------
+# `web publish` never calls a model, so unlike the commands above these invocations run
+# for real -- but only against a fake repo (`_web_paths` monkeypatched), never the real
+# one, so nothing here can touch a real species or comparison file.
+
+
+def test_web_publish_requires_wave_or_species() -> None:
+    result = CliRunner().invoke(main, ["web", "publish"])
+    assert result.exit_code != 0
+
+
+def test_web_publish_unknown_species_exits_nonzero(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    monkeypatch.setattr(cli_module, "_web_paths", lambda: paths)
+    result = CliRunner().invoke(main, ["web", "publish", "--species", "Q999"])
+    assert result.exit_code == 1
+
+
+def test_web_publish_a_ready_species_exits_zero(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q1"), _ready("Q1", "Talgoxe", 1))
+    monkeypatch.setattr(cli_module, "_web_paths", lambda: paths)
+    result = CliRunner().invoke(main, ["web", "publish", "--species", "Q1"])
+    assert result.exit_code == 0, result.output
+
+
+def test_web_publish_a_not_yet_ready_species_exits_nonzero(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # I3: --species names a real but unready species -- exit 1, even though the outcome
+    # itself is "skipped", not "failed".
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    record = _ready("Q1", "Talgoxe", 1)
+    record["status"] = "pending"
+    save_record(record_path(paths.data_out, "Q1"), record)
+    monkeypatch.setattr(cli_module, "_web_paths", lambda: paths)
+    result = CliRunner().invoke(main, ["web", "publish", "--species", "Q1"])
+    assert result.exit_code == 1
+
+
+def test_web_publish_next_rejects_wave_and_species() -> None:
+    result = CliRunner().invoke(main, ["web", "publish", "--next", "--wave", "1"])
+    assert result.exit_code != 0
+    assert "--next" in result.output
+
+
+def test_web_publish_next_prints_none_on_an_empty_queue(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    monkeypatch.setattr(cli_module, "_web_paths", lambda: paths)
+    result = CliRunner().invoke(main, ["web", "publish", "--next"])
+    assert result.exit_code == 0
+    assert result.output.strip() == "none"
+
+
+def test_web_publish_next_prints_exactly_one_species_line(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q1"), _ready("Q1", "Talgoxe", 1))
+    monkeypatch.setattr(cli_module, "_web_paths", lambda: paths)
+    result = CliRunner().invoke(main, ["web", "publish", "--next"])
+    assert result.exit_code == 0
+    assert result.output.strip() == "species Q1"

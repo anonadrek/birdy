@@ -556,16 +556,51 @@ def web_compare(
     multiple=True,
     help="QID, kan upprepas. En art i taget är det normala läget (ändrat 2026-10-05 (b)).",
 )
-def web_publish(wave: int | None, species: tuple[str, ...]) -> None:
+@click.option(
+    "--next",
+    "next_mode",
+    is_flag=True,
+    help=(
+        "Publicerar högst en färdig post (en art eller en jämförelse) i könordning, åt "
+        "fas 2:s löpande loop. Utesluter --wave/--species."
+    ),
+)
+@click.option(
+    "--exclude",
+    multiple=True,
+    help="QID eller en jämförelses filnamn utan .json, att hoppa över med --next. Kan upprepas.",
+)
+def web_publish(
+    wave: int | None, species: tuple[str, ...], next_mode: bool, exclude: tuple[str, ...]
+) -> None:
     """Slår på publish för färdiga arter och jämförelser, filtrerat på våg, på en eller
-    flera bestämda arter, eller båda. Körs löpande av fas 2:s publiceringsloop, en art i
-    taget, inte bara efter en hel vågs godkännande. Gratis, ingen modell."""
-    from .web.waves import publish_wave
+    flera bestämda arter, eller båda -- eller (--next) högst en färdig post i könordning,
+    åt fas 2:s löpande publiceringsloop. Gratis, ingen modell.
 
+    Med --next skriver kommandot EXAKT en rad på stdout: "species QID", "comparison
+    STEM", eller "none" när inget är klart -- inget annat går till stdout i det läget
+    (publiceringsloopen läser den raden maskinellt); fel/usage-meddelanden går som
+    vanligt till stderr via click."""
+    from .web.waves import publish_next, publish_wave
+
+    if next_mode:
+        if wave is not None or species:
+            raise click.UsageError("--next kan inte kombineras med --wave eller --species.")
+        pick = publish_next(_web_paths(), exclude=frozenset(exclude))
+        click.echo("none" if pick is None else f"{pick.kind} {pick.id}")
+        return
     if wave is None and not species:
         raise click.UsageError("Ange --wave, en eller flera --species, eller båda.")
     paths = _web_paths()
-    _print_outcomes(publish_wave(paths, wave, list(species) or None), paths.reports)
+    outcomes = publish_wave(paths, wave, list(species) or None)
+    _print_outcomes(outcomes, paths.reports)
+    # I3 (review fix 2026-10-06): a QID explicitly named with --species that did not end
+    # up published is as much a failure for the caller as an outcome marked `failed`.
+    status_by_qid = {o.qid: o.status for o in outcomes}
+    if any(o.status == "failed" for o in outcomes) or any(
+        status_by_qid.get(qid) != "ok" for qid in species
+    ):
+        raise click.exceptions.Exit(1)
 
 
 @web.command("v1")
