@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
 from urllib.parse import unquote
@@ -74,6 +75,41 @@ class WikidataStructured:
 SparqlRunner = Callable[[str], Awaitable[str]]
 
 
+_TRAILING_PARENTHESIS = re.compile(r"\s*\([^)]*\)$")
+
+
+def _swedish_name(
+    *,
+    scientific_name: str,
+    label: str | None,
+    taxon_title: str | None,
+    related_title: str | None,
+    related_name: str | None,
+) -> str | None:
+    """The Swedish name for a taxon, or None.
+
+    In order: the item's Swedish label, the title of its Swedish Wikipedia article, the article
+    title of a previous combination (P1420 taxon synonym / P1403 original combination). A value
+    that is only a scientific name does not count: Wikidata often puts the taxon name in the
+    Swedish label (Fringilla polatzeki), and after a genus move the new item has neither label nor
+    article while the old Charadrius/Oceanodroma item has both (release 1.3.0 Task 7g).
+    """
+
+    def usable(value: str | None, *scientific: str | None) -> str | None:
+        if not value:
+            return None
+        name = _TRAILING_PARENTHESIS.sub("", value).strip()
+        if not name or any(s and name.casefold() == s.casefold() for s in scientific):
+            return None
+        return _capitalize_first(name)
+
+    return (
+        usable(label, scientific_name)
+        or usable(taxon_title, scientific_name)
+        or usable(related_title, scientific_name, related_name)
+    )
+
+
 def _capitalize_first(s: str | None) -> str | None:
     # Wikidata rdfs:label@sv arrives inconsistently: "Talgoxe" capitalized but
     # "lammgam"/"vitögd vråk" lowercase. Force capital-first while preserving
@@ -125,7 +161,8 @@ class WikidataClient:
     def _build_query(q_id: str) -> str:
         return f"""
         SELECT ?taxonName ?taxonLabelSv ?family ?familyLabel ?familyLabelSv ?genus ?genusLabel
-               ?ordo ?ordoLabel ?iucnStatus ?iucnStatusLabel ?image WHERE {{
+               ?ordo ?ordoLabel ?iucnStatus ?iucnStatusLabel ?image
+               ?taxonSvTitle ?relatedSvTitle ?relatedName WHERE {{
           BIND(wd:{q_id} AS ?taxon)
           ?taxon wdt:P225 ?taxonName ;
                  wdt:P171* ?family .
@@ -137,6 +174,18 @@ class WikidataClient:
           OPTIONAL {{ ?taxon wdt:P141 ?iucnStatus . }}
           OPTIONAL {{ ?taxon wdt:P18 ?image . }}
           OPTIONAL {{ ?taxon rdfs:label ?taxonLabelSv . FILTER(LANG(?taxonLabelSv) = "sv") }}
+          OPTIONAL {{
+            ?taxonArticle schema:about ?taxon ;
+                          schema:isPartOf <https://sv.wikipedia.org/> ;
+                          schema:name ?taxonSvTitle .
+          }}
+          OPTIONAL {{
+            ?taxon wdt:P1420|wdt:P1403 ?related .
+            ?relatedArticle schema:about ?related ;
+                            schema:isPartOf <https://sv.wikipedia.org/> ;
+                            schema:name ?relatedSvTitle .
+            OPTIONAL {{ ?related wdt:P225 ?relatedName . }}
+          }}
           OPTIONAL {{ ?family rdfs:label ?familyLabelSv . FILTER(LANG(?familyLabelSv) = "sv") }}
           SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }}
         }}
@@ -159,7 +208,13 @@ class WikidataClient:
         if image_uri:
             tail = image_uri.rsplit("/", 1)[-1]
             image_filename = unquote(tail)
-        common_sv = _capitalize_first(b.get("taxonLabelSv", {}).get("value") or None)
+        common_sv = _swedish_name(
+            scientific_name=b["taxonName"]["value"],
+            label=b.get("taxonLabelSv", {}).get("value"),
+            taxon_title=b.get("taxonSvTitle", {}).get("value"),
+            related_title=b.get("relatedSvTitle", {}).get("value"),
+            related_name=b.get("relatedName", {}).get("value"),
+        )
         family_sv = _capitalize_first(b.get("familyLabelSv", {}).get("value") or None)
         return WikidataStructured(
             q_id=q_id,

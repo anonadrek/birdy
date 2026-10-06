@@ -193,3 +193,61 @@ async def test_a_status_nobody_knows_is_not_evaluated(tmp_path: Path) -> None:
         iucnStatus=_uri("Q123456789"), iucnStatusLabel=_lit("something new")
     )
     assert (await _structured(tmp_path, response)).iucn_status == "NE"
+
+
+@pytest.mark.asyncio
+async def test_a_swedish_label_that_is_the_scientific_name_is_not_a_swedish_name(
+    tmp_path: Path,
+) -> None:
+    # Fringilla polatzeki: Wikidata's Swedish label was the scientific name, and it was written
+    # out as the Swedish name. The Swedish Wikipedia article has the real one.
+    response = _sparql_response(
+        taxonName=_lit("Fringilla polatzeki"),
+        taxonLabelSv=_lit("Fringilla polatzeki"),
+        taxonSvTitle=_lit("Grancanariablåfink"),
+    )
+    assert (await _structured(tmp_path, response)).common_sv == "Grancanariablåfink"
+
+
+@pytest.mark.asyncio
+async def test_without_a_swedish_label_the_swedish_wikipedia_title_is_used(tmp_path: Path) -> None:
+    response = _sparql_response(
+        taxonName=_lit("Gulosus aristotelis"), taxonSvTitle=_lit("Toppskarv")
+    )
+    assert (await _structured(tmp_path, response)).common_sv == "Toppskarv"
+
+
+@pytest.mark.asyncio
+async def test_a_disambiguated_wikipedia_title_loses_its_parenthesis(tmp_path: Path) -> None:
+    response = _sparql_response(
+        taxonName=_lit("Coloeus monedula"), taxonSvTitle=_lit("Kaja (fågel)")
+    )
+    assert (await _structured(tmp_path, response)).common_sv == "Kaja"
+
+
+@pytest.mark.asyncio
+async def test_a_renamed_genus_falls_back_to_the_previous_combination(tmp_path: Path) -> None:
+    # Anarhynchus leschenaultii is a new Wikidata item (genus moved from Charadrius) with no
+    # Swedish label or article; the Charadrius item it points to has the Swedish article.
+    response = _sparql_response(
+        taxonName=_lit("Anarhynchus leschenaultii"),
+        relatedName=_lit("Charadrius leschenaultii"),
+        relatedSvTitle=_lit("Ökenpipare"),
+    )
+    assert (await _structured(tmp_path, response)).common_sv == "Ökenpipare"
+
+
+@pytest.mark.asyncio
+async def test_a_related_title_that_is_only_a_scientific_name_is_skipped(tmp_path: Path) -> None:
+    response = _sparql_response(
+        taxonName=_lit("Hydrobates monorhis"),
+        relatedName=_lit("Thalassidroma monorhis"),
+        relatedSvTitle=_lit("Thalassidroma monorhis"),
+    )
+    assert (await _structured(tmp_path, response)).common_sv is None
+
+
+def test_the_query_asks_for_the_swedish_article_and_the_previous_combinations() -> None:
+    query = WikidataClient._build_query("Q83020448")
+    assert "<https://sv.wikipedia.org/>" in query
+    assert "wdt:P1420|wdt:P1403" in query

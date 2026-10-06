@@ -64,4 +64,28 @@ class SpeciesContentCorrectionsTest {
         assertEquals(18, notEvaluated.size, notEvaluated.sorted().toString())
         assertTrue("Q25405" in notEvaluated) // Gråkråka
     }
+
+    // 13 species had no Swedish name (or the scientific one): genus moves gave them new Wikidata
+    // items without Swedish labels (Astur, Tachyspiza, Anarhynchus, Hydrobates, Gulosus,
+    // Ortygornis), and for some the Swedish label was the scientific name. The names are now
+    // BirdLife Sverige's official ones (version 2025), also kept in species_list.yaml.
+    @Test
+    fun `every species has a swedish name that is not its scientific name`() {
+        val missing =
+            parser
+                .parseAll(Path.of("species"))
+                .map { it.second }
+                .filter { it.names.sv.isNullOrBlank() || it.names.sv.equals(it.scientific_name, ignoreCase = true) }
+                .map { "${it.id} ${it.scientific_name}" }
+        assertEquals(emptyList<String>(), missing)
+    }
+
+    @Test
+    fun `renamed genera have their official swedish names`() {
+        assertEquals("Duvhök", species("accipitridae/Q137474876.yaml").names.sv)
+        assertEquals("Toppskarv", species("phalacrocoracidae/Q83020448.yaml").names.sv)
+        assertEquals("Svartbent strandpipare", species("charadriidae/Q137156829.yaml").names.sv)
+        assertEquals("Koreastormsvala", species("hydrobatidae/Q28122606.yaml").names.sv)
+        assertEquals("Vitnäbbad islom", species("gaviidae/Q208328.yaml").names.sv)
+    }
 }

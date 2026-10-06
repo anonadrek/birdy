@@ -441,6 +441,7 @@
   abundance: allmän
 - wikidata_id: Q117253126
   scientific_name: Ortygornis pondicerianus
+  common_sv: Grå frankolin  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Phasianidae
   ioc_order: Galliformes
   common_en: Grey Francolin
@@ -1034,18 +1035,21 @@
   iucn_status: LC  # IUCN Red List: Charadrius atrifrons, e.T230026276A154673176 (2023); Wikidata has no P141
 - wikidata_id: Q137159050
   scientific_name: Anarhynchus leschenaultii
+  common_sv: Ökenpipare  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Charadriidae
   ioc_order: Charadriiformes
   common_en: Greater Sand Plover
   vp_status: H
 - wikidata_id: Q137162124
   scientific_name: Anarhynchus pecuarius
+  common_sv: Herdepipare  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Charadriidae
   ioc_order: Charadriiformes
   common_en: Kittlitz’s Plover
   vp_status: H
 - wikidata_id: Q137156829
   scientific_name: Anarhynchus alexandrinus
+  common_sv: Svartbent strandpipare  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Charadriidae
   ioc_order: Charadriiformes
   common_en: Kentish Plover
@@ -1656,6 +1660,7 @@
   vp_status: H
 - wikidata_id: Q208328
   scientific_name: Gavia adamsii
+  common_sv: Vitnäbbad islom  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Gaviidae
   ioc_order: Gaviiformes
   common_en: Yellow-billed Loon
@@ -1687,24 +1692,28 @@
   vp_status: H
 - wikidata_id: Q60895939
   scientific_name: Hydrobates jabejabe
+  common_sv: Kapverdestormsvala  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Hydrobatidae
   ioc_order: Procellariiformes
   common_en: Cape Verde Storm Petrel
   vp_status: H
 - wikidata_id: Q28114472
   scientific_name: Hydrobates castro
+  common_sv: Oceanstormsvala  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Hydrobatidae
   ioc_order: Procellariiformes
   common_en: Band-rumped Storm Petrel
   vp_status: H
 - wikidata_id: Q28122611
   scientific_name: Hydrobates monteiroi
+  common_sv: Azorstormsvala  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Hydrobatidae
   ioc_order: Procellariiformes
   common_en: Monteiro’s Storm Petrel
   vp_status: H
 - wikidata_id: Q28122606
   scientific_name: Hydrobates monorhis
+  common_sv: Koreastormsvala  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Hydrobatidae
   ioc_order: Procellariiformes
   common_en: Swinhoe’s Storm Petrel
@@ -1891,6 +1900,7 @@
   vp_status: H
 - wikidata_id: Q83020448
   scientific_name: Gulosus aristotelis
+  common_sv: Toppskarv  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Phalacrocoracidae
   ioc_order: Suliformes
   common_en: European Shag
@@ -2451,6 +2461,7 @@
   vp_status: H
 - wikidata_id: Q137397344
   scientific_name: Tachyspiza badia
+  common_sv: Shikra  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Accipitridae
   ioc_order: Accipitriformes
   common_en: Shikra
@@ -2465,6 +2476,7 @@
   abundance: allmän
 - wikidata_id: Q137474876
   scientific_name: Astur gentilis
+  common_sv: Duvhök  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Accipitridae
   ioc_order: Accipitriformes
   common_en: Eurasian Goshawk
@@ -4040,6 +4052,7 @@
   vp_status: H
 - wikidata_id: Q31874135
   scientific_name: Acridotheres leucocephalus
+  common_sv: Vinmajna  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Sturnidae
   ioc_order: Passeriformes
   common_en: Vinous-breasted Myna
@@ -4853,6 +4866,7 @@
   vp_status: H
 - wikidata_id: Q22704092
   scientific_name: Fringilla polatzeki
+  common_sv: Grancanariablåfink  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Fringillidae
   ioc_order: Passeriformes
   common_en: Gran Canaria Blue Chaffinch
@@ -5056,6 +5070,7 @@
   vp_status: H
 - wikidata_id: Q606679
   scientific_name: Carduelis caniceps
+  common_sv: Grå steglits  # BirdLife Sverige, officiella svenska namn v. 2025
   family: Fringillidae
   ioc_order: Passeriformes
   common_en: Grey-crowned Goldfinch
