@@ -17,6 +17,7 @@ import se.birdy.app.testing.FakePhotoStorage
 import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.usecase.SaveObservationUseCase
 import se.birdy.content.Locale
+import se.birdy.content.SpeciesId
 import se.birdy.domain.badge.Badge
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeCategory
@@ -241,6 +242,41 @@ class MatchResultViewModelTest {
                 assertEquals("/cache/scan-frames/x.jpg", nobird.frameJpegPath)
                 assertEquals(capturedAtMs, nobird.capturedAtMs)
                 assertNull(nobird.topPrediction)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    /**
+     * Release 1.3.0 Plan 3 Task 7 review: since 535305e5 an empty resolved list means NoBird, and
+     * lookups that throw were swallowed into "not found". A database failing for every id would
+     * have been a silent NoBird. It is an error, and each failure is logged.
+     */
+    @Test
+    fun resolve_every_species_lookup_failing_returns_error_not_nobird() =
+        runTest(dispatcher) {
+            val speciesRepo = FakeSpeciesRepository.withDefaults()
+            speciesRepo.failingIds.value = setOf(SpeciesId("Q25485"), SpeciesId("Q25234"))
+            val vm = makeVm("Q25485:87/100,Q25234:8/100", speciesRepo = speciesRepo)
+            vm.state.test {
+                assertIs<MatchResultUiState.Loading>(awaitItem())
+                val err = awaitItem()
+                assertIs<MatchResultUiState.Error>(err)
+                assertEquals(MatchResultUiState.Error.Kind.ParseFailed, err.kind)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun resolve_one_failing_lookup_still_matches_the_species_that_resolved() =
+        runTest(dispatcher) {
+            val speciesRepo = FakeSpeciesRepository.withDefaults()
+            speciesRepo.failingIds.value = setOf(SpeciesId("Q25234"))
+            val vm = makeVm("Q25485:87/100,Q25234:8/100", speciesRepo = speciesRepo)
+            vm.state.test {
+                assertIs<MatchResultUiState.Loading>(awaitItem())
+                val match = awaitItem()
+                assertIs<MatchResultUiState.Match>(match)
+                assertEquals("Q25485", match.species.id.raw)
                 cancelAndIgnoreRemainingEvents()
             }
         }

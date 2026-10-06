@@ -23,10 +23,17 @@ class FakeSpeciesRepository : SpeciesRepository {
 
     var lastSearchCall: Triple<String, Locale, SpeciesFilter>? = null
 
+    /** Ids whose lookup throws, like a database error. */
+    val failingIds = MutableStateFlow<Set<SpeciesId>>(emptySet())
+
     override fun getById(
         id: SpeciesId,
         locale: Locale,
-    ): Flow<Species?> = flow { emit(byId.value[id]) }
+    ): Flow<Species?> =
+        flow {
+            if (id in failingIds.value) throw IllegalStateException("database unavailable for ${id.raw}")
+            emit(byId.value[id])
+        }
 
     override fun search(
         query: String,

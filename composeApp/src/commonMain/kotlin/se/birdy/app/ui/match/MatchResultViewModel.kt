@@ -77,12 +77,22 @@ class MatchResultViewModel(
         // Read classification results from ScanSource (replaces parseCsv)
         val parsed = source.classification.results.map { it.speciesId to it.confidence }
         val resolved = mutableListOf<ResolvedPrediction>()
+        var failedLookups = 0
         for ((id, conf) in parsed) {
             val species =
                 runCatching { repository.getById(SpeciesId(id), locale).first() }
-                    .onFailure { if (it is CancellationException) throw it }
-                    .getOrNull()
+                    .onFailure {
+                        if (it is CancellationException) throw it
+                        failedLookups++
+                        println("MatchResultViewModel: species lookup failed for $id: ${it.stackTraceToString()}")
+                    }.getOrNull()
             if (species != null) resolved += ResolvedPrediction(species, conf)
+        }
+        if (parsed.isNotEmpty() && failedLookups == parsed.size) {
+            // Every lookup threw (e.g. the species database failed to open): that is an error,
+            // not "no bird here" (Release 1.3.0 Plan 3 Task 7 review of 535305e5).
+            _state.value = MatchResultUiState.Error(MatchResultUiState.Error.Kind.ParseFailed)
+            return
         }
         if (resolved.isEmpty()) {
             // No species from Birdy's catalog among the results, regardless of source — a real
