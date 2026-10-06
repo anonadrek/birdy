@@ -43,6 +43,11 @@ class VerifyOptions:
     workers: int = 4
 
 
+def species_about(source: SpeciesSource) -> str:
+    """The species line V1 is told it checks (C1, final review 2026-10-06)."""
+    return f"{source.name_sv} / {source.name_en} ({source.scientific_name})"
+
+
 def _current(record: Record) -> bool:
     stored = record.get("generated", {}).get("verify", {}).get("factsHash")
     return bool(stored == facts_hash(record))
@@ -141,10 +146,11 @@ async def _one(
         if stop.is_set():
             return out("skipped", ["kostnadstaket nåddes: körs vid nästa körning"])
         articles = await wiki.articles(source.qid)
+        about = species_about(source)
 
         notes: list[str] = []
         try:
-            verdicts = await checker.check(record["facts"], articles)
+            verdicts = await checker.check(record["facts"], articles, about=about)
         except MaxCostExceeded as exc:
             stop.set()
             return out("skipped", [f"kostnadstaket nåddes: {exc}"])
@@ -175,7 +181,7 @@ async def _one(
             # pass the original facts did, so a fact it invents cannot slip through
             # unchecked (item 3, 2026-10-05 review fix).
             try:
-                verdicts = await checker.check(record["facts"], articles)
+                verdicts = await checker.check(record["facts"], articles, about=about)
             except MaxCostExceeded as exc:
                 stop.set()
                 return out("skipped", [f"kostnadstaket nåddes: {exc}"])

@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
+from birdy_fetcher.claude_summarizer import _split_prompt
 from birdy_fetcher.cost import CostTracker
 from birdy_fetcher.web.verify import (
     FactChecker,
@@ -23,6 +24,9 @@ from birdy_fetcher.web.verify import (
 from birdy_fetcher.web.wiki_full import WikiArticle
 
 from .web_fakes import FakeJsonClient, reply
+
+PIPELINE = Path(__file__).resolve().parents[1]
+ABOUT = "Talgoxe / Great Tit (Parus major)"
 
 ARTICLE = WikiArticle(
     "sv",
@@ -55,9 +59,77 @@ def _checker(client: FakeJsonClient, prompt_path: Path) -> FactChecker:
 
 def test_render_facts_for_check_shows_the_paragraph_and_skips_data_facts() -> None:
     text = render_facts_for_check(FACTS, {"sv": ARTICLE})
-    assert '<fact id="f01">' in text
+    assert '<fact id="f01" topic="appearance">' in text
     assert "svart huvud med vita kinder och gul buk" in text
     assert "d01" not in text
+
+
+def test_render_facts_for_check_puts_the_topic_on_every_fact() -> None:
+    """C1 (final review 2026-10-06): the checker must see which facts compare this species
+    with another one, or it strikes every look-alike fact for describing the other species."""
+    lookalike = {
+        "id": "f03",
+        "topic": "lookalike",
+        "sv": "Blåmesen är mindre och har blå hätta.",
+        "sources": [{"article": "sv", "quote": "ringande ti-ta ti-ta"}],
+        "other": {"scientific": "Cyanistes caeruleus"},
+    }
+    text = render_facts_for_check([*FACTS, lookalike], {"sv": ARTICLE})
+    assert '<fact id="f02" topic="voice">' in text
+    assert '<fact id="f03" topic="lookalike" other="Cyanistes caeruleus">' in text
+
+
+def test_render_facts_for_check_finds_the_paragraph_across_typographic_dashes_and_quotes() -> None:
+    """Minor 4 (T14b): the quote passed `quote_in_sources`, which normalises dashes, quotes
+    and whitespace; finding its paragraph must normalise the same way, or the checker only
+    sees the bare quote."""
+    article = WikiArticle(
+        "sv",
+        "Talgoxe",
+        "1",
+        "Inledning.\n\nDen är 14\u201316 cm lång och kallas \u201dmesen\u201d.  Den har gul buk.",
+    )
+    fact = {
+        "id": "f01",
+        "topic": "size",
+        "sv": "Den är 14 till 16 cm lång.",
+        "sources": [{"article": "sv", "quote": 'den är 14-16 cm lång och kallas "mesen"'}],
+    }
+    text = render_facts_for_check([fact], {"sv": article})
+    assert "Den har gul buk." in text
+
+
+def test_render_facts_for_check_labels_the_status_fact() -> None:
+    """A bare "Stannfågel" claim says nothing about Sweden (C1)."""
+    status = {
+        "id": "s01",
+        "topic": "status",
+        "value": "resident",
+        "sv": "Stannfågel",
+        "sources": [{"article": "sv", "quote": "vanlig fågel i Sverige"}],
+    }
+    text = render_facts_for_check([status], {"sv": ARTICLE})
+    assert '<fact id="s01" topic="status">' in text
+    assert "<claim>Status i Sverige: Stannfågel</claim>" in text
+
+
+def test_the_verify_prompt_lets_a_lookalike_fact_describe_the_other_species() -> None:
+    template = (PIPELINE / "prompts/verify-v1.md").read_text(encoding="utf-8")
+    system, user = _split_prompt(template, about=ABOUT, facts="")
+    assert 'topic="lookalike"' in system
+    assert "may describe that other species" in system
+    assert user.startswith(f"Species: {ABOUT}")
+
+
+async def test_the_checker_names_the_species_in_the_user_message() -> None:
+    client = FakeJsonClient([reply(FactVerifyOutput(verdicts=[]))])
+    await _checker(client, PIPELINE / "prompts/verify-v1.md").check(
+        FACTS, {"sv": ARTICLE}, about=ABOUT
+    )
+    user = client.calls[0][0]["content"]
+    assert isinstance(user, str)
+    assert f"Species: {ABOUT}" in user
+    assert '<fact id="f01" topic="appearance">' in user
 
 
 async def test_unsupported_facts_are_reported(tmp_path: Path) -> None:
@@ -68,7 +140,7 @@ async def test_unsupported_facts_are_reported(tmp_path: Path) -> None:
         FactVerdict(fact_id="f02", verdict="unsupported", reason="citatet nämner inget avstånd"),
     ]
     client = FakeJsonClient([reply(FactVerifyOutput(verdicts=verdicts))])
-    result = await _checker(client, prompt).check(FACTS, {"sv": ARTICLE})
+    result = await _checker(client, prompt).check(FACTS, {"sv": ARTICLE}, about=ABOUT)
     assert result == {"f02": ("unsupported", "citatet nämner inget avstånd")}
     assert client.schemas == ["FactVerifyOutput"]
 
@@ -77,7 +149,7 @@ async def test_a_fact_with_no_verdict_counts_as_unsupported(tmp_path: Path) -> N
     prompt = tmp_path / "verify-v1.md"
     prompt.write_text("System: x\n\nUser: {facts}", encoding="utf-8")
     client = FakeJsonClient([reply(FactVerifyOutput(verdicts=[]))])
-    result = await _checker(client, prompt).check(FACTS, {"sv": ARTICLE})
+    result = await _checker(client, prompt).check(FACTS, {"sv": ARTICLE}, about=ABOUT)
     assert set(result) == {"f01", "f02"}
 
 
@@ -92,7 +164,7 @@ async def test_duplicate_verdicts_take_the_worst(tmp_path: Path) -> None:
         FactVerdict(fact_id="f01", verdict="supported", reason="supported second"),
     ]
     client = FakeJsonClient([reply(FactVerifyOutput(verdicts=verdicts))])
-    result = await _checker(client, prompt).check(FACTS, {"sv": ARTICLE})
+    result = await _checker(client, prompt).check(FACTS, {"sv": ARTICLE}, about=ABOUT)
     # f01 must be unsupported despite the later "supported" verdict.
     assert result == {"f01": ("unsupported", "unsupported first")}
     # Also verify reverse order gives the same result (most severe always wins).
@@ -102,7 +174,7 @@ async def test_duplicate_verdicts_take_the_worst(tmp_path: Path) -> None:
         FactVerdict(fact_id="f01", verdict="unsupported", reason="unsupported second"),
     ]
     client2 = FakeJsonClient([reply(FactVerifyOutput(verdicts=verdicts_reversed))])
-    result2 = await _checker(client2, prompt).check(FACTS, {"sv": ARTICLE})
+    result2 = await _checker(client2, prompt).check(FACTS, {"sv": ARTICLE}, about=ABOUT)
     assert result2 == {"f01": ("unsupported", "unsupported second")}
 
 
@@ -110,7 +182,7 @@ async def test_no_checkable_facts_means_no_call(tmp_path: Path) -> None:
     prompt = tmp_path / "verify-v1.md"
     prompt.write_text("System: x\n\nUser: {facts}", encoding="utf-8")
     client = FakeJsonClient([])
-    assert await _checker(client, prompt).check(FACTS[2:], {"sv": ARTICLE}) == {}
+    assert await _checker(client, prompt).check(FACTS[2:], {"sv": ARTICLE}, about=ABOUT) == {}
 
 
 def test_strike_unsupported_keeps_everything_else() -> None:

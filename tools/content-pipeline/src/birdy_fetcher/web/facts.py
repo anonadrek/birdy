@@ -1,6 +1,7 @@
 """The fact sheet (spec 2026-09-25 §9.3): the model's answer, the code checks of every
-quote, the status in Sweden and the data facts that code adds. Albin reviews what this
-produces before any text is written from it."""
+quote, the status in Sweden and the data facts that code adds. Before any text is written
+from it, the automatic verification (Revision 2026-10-05, verify.py: V1 to V4) checks the
+sheet, and Albin only decides on what it flags, in the exceptions sheet (review_sheet.py)."""
 
 from __future__ import annotations
 

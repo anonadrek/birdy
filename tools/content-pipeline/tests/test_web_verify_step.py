@@ -129,6 +129,19 @@ async def test_a_clean_fact_sheet_is_verified_with_no_flags(tmp_path: Path) -> N
     assert record["verification"]["model"] == "claude-sonnet-5"
 
 
+async def test_v1_is_told_which_species_it_checks(tmp_path: Path) -> None:
+    """C1 (final review 2026-10-06): the prompt only counts quotes about the species being
+    checked, so the V1 call must name it."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    client = FakeJsonClient([reply(_verdicts())])
+    await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    user = client.calls[0][0]["content"]
+    assert isinstance(user, str)
+    assert user.startswith("Species: Talgoxe / Great Tit (Parus major)")
+    assert '<fact id="s01" topic="status">' in user
+
+
 async def test_a_struck_required_topic_is_retried_once(tmp_path: Path) -> None:
     paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
     _seed(paths, "Q1")

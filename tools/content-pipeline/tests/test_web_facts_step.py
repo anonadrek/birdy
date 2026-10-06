@@ -212,3 +212,13 @@ async def test_reply_is_costed_even_if_the_check_raises(tmp_path: Path) -> None:
     cost_tracker, _model_key, _reply_obj = record_cost_calls[0]
     assert cost_tracker.call_count == 1  # type: ignore[attr-defined]
     assert cost_tracker.total_usd > 0  # type: ignore[attr-defined]
+
+
+def test_the_facts_prompt_describes_the_automatic_verification() -> None:
+    """Minor 2 (final review 2026-10-06): no person reviews every fact any more (Revision
+    2026-10-05); the prompt says what actually happens to the facts."""
+    template = (Path(__file__).resolve().parents[1] / "prompts/facts-v1.md").read_text(
+        encoding="utf-8"
+    )
+    assert "person reviews every fact" not in template
+    assert "checks every fact against its quote" in template

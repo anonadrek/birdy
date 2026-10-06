@@ -4,6 +4,7 @@ own quote. V2 and V3 (added in Task 14c) are code, no model."""
 
 from __future__ import annotations
 
+import html
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -13,6 +14,7 @@ from pydantic import BaseModel
 
 from ..claude_summarizer import _split_prompt
 from ..cost import CostTracker
+from .checks import _normalize
 from .facts import REQUIRED_TOPICS, STATUS_SV, TOPIC_SV
 from .llm import MODELS, JsonModelClient, record_cost
 from .record import Record
@@ -247,12 +249,33 @@ class FactCheckFailed(RuntimeError):  # noqa: N818
 
 
 def _paragraph(article_text: str, quote: str) -> str:
-    """The paragraph the quote sits in. Blank lines split paragraphs; this only needs to
-    find roughly where the quote is, the exact-match normalisation lives in checks.py."""
+    """The paragraph the quote sits in. Blank lines split paragraphs. Both sides are
+    normalised like `quote_in_sources` does (typographic dashes and quotes, case,
+    whitespace), or a quote that passed that check could lose its paragraph (Minor 4,
+    final review 2026-10-06)."""
+    start = _normalize(quote)[:40]
     for paragraph in article_text.split("\n\n"):
-        if quote[:40].lower() in paragraph.lower():
+        if start in _normalize(paragraph):
             return paragraph.strip()
     return quote
+
+
+def _claim(fact: dict[str, Any]) -> str:
+    """A bare status label ("Stannfågel") says nothing about where; the checker is told it
+    is the status in Sweden (C1, final review 2026-10-06)."""
+    if fact["topic"] == "status":
+        return f"Status i Sverige: {fact['sv']}"
+    return str(fact["sv"])
+
+
+def _fact_tag(fact: dict[str, Any]) -> str:
+    """The opening tag, with the topic so the checker can tell a look-alike fact (which may
+    describe the other species, see the prompt) from the rest, and that other species' name."""
+    attrs = f'id="{fact["id"]}" topic="{fact["topic"]}"'
+    other = (fact.get("other") or {}).get("scientific")
+    if fact["topic"] == "lookalike" and other:
+        attrs += f' other="{html.escape(str(other), quote=True)}"'
+    return f"<fact {attrs}>"
 
 
 def render_facts_for_check(facts: list[dict[str, Any]], articles: dict[str, WikiArticle]) -> str:
@@ -264,7 +287,7 @@ def render_facts_for_check(facts: list[dict[str, Any]], articles: dict[str, Wiki
         article = articles.get(source["article"])
         paragraph = _paragraph(article.text, source["quote"]) if article else source["quote"]
         blocks.append(
-            f'<fact id="{fact["id"]}">\n<claim>{fact["sv"]}</claim>\n'
+            f"{_fact_tag(fact)}\n<claim>{_claim(fact)}</claim>\n"
             f"<quote>{source['quote']}</quote>\n<paragraph>{paragraph}</paragraph>\n</fact>"
         )
     return "\n\n".join(blocks)
@@ -279,15 +302,21 @@ class FactChecker:
     effort: str = "high"
 
     async def check(
-        self, facts: list[dict[str, Any]], articles: dict[str, WikiArticle]
+        self, facts: list[dict[str, Any]], articles: dict[str, WikiArticle], *, about: str
     ) -> dict[str, tuple[Verdict, str]]:
         """Fact id to (verdict, reason), for every non-`partial`/`unsupported`-free fact
-        that is not a data fact. A fact the model did not answer for counts as unsupported."""
+        that is not a data fact. A fact the model did not answer for counts as unsupported.
+        `about` names the species ("Talgoxe / Great Tit (Parus major)"): the prompt only
+        counts a quote that describes this species (C1, final review 2026-10-06)."""
         checkable = [f for f in facts if f["topic"] != "data"]
         if not checkable:
             return {}
         template = self.prompt_path.read_text(encoding="utf-8")
-        system, user = _split_prompt(template, facts=render_facts_for_check(checkable, articles))
+        # `about` first: the facts hold Wikipedia text, which must never be scanned for a
+        # placeholder after it is in.
+        system, user = _split_prompt(
+            template, about=about, facts=render_facts_for_check(checkable, articles)
+        )
         reply = await self.client.complete(
             model=MODELS[self.model_key],
             system=system,
