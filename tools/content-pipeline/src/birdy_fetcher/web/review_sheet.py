@@ -527,6 +527,10 @@ def apply_review(
         verify_meta["factsHash"] = facts_hash(record)
         if new_flags:
             record["flags"] = new_flags
+            # N3 (review fix 2026-10-06): the hash above is already refreshed, but a
+            # `verification` left over from before this import must not survive a brand
+            # new flag -- it would otherwise still look reviewed.
+            record.pop("verification", None)
             result.changed.append(qid)
             continue
         record["verification"] = {

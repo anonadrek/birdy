@@ -479,3 +479,22 @@ async def test_a_current_verification_is_skipped_unless_forced(tmp_path: Path) -
         paths, VerifyOptions(), client=FakeJsonClient([]), wiki=FakeWiki(), now=NOW
     )
     assert [o.status for o in again] == ["skipped"]
+
+
+async def test_a_published_species_refuses_verify_even_with_force(tmp_path: Path) -> None:
+    """N5 (review fix 2026-10-06): verify's V1-retry path can null a species' text and set
+    status pending while publish stays true, breaking the fas 2 build -- refuse outright
+    instead, with no model call."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    record["publish"] = True
+    save_record(record_path(paths.data_out, "Q1"), record)
+    client = FakeJsonClient([])
+    outcomes = await run_verify(
+        paths, VerifyOptions(force=True), client=client, wiki=FakeWiki(), now=NOW
+    )
+    assert [o.status for o in outcomes] == ["failed"]
+    assert outcomes[0].errors == ["publicerad: sätt publish: false först"]
+    assert client.calls == []

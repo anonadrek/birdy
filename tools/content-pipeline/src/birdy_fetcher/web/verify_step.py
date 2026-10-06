@@ -133,6 +133,11 @@ async def _one(
             return out("skipped", ["faktabladet är failed: ingenting att kontrollera"])
         if _current(record) and not options.force:
             return out("skipped", ["redan kontrollerat ur samma faktablad"])
+        if record.get("publish"):
+            # N5 (review fix 2026-10-06): the V1-retry path below (and --force) would
+            # otherwise null the text and set status pending while publish stays true,
+            # breaking the fas 2 build.
+            return out("failed", ["publicerad: sätt publish: false först"])
         if stop.is_set():
             return out("skipped", ["kostnadstaket nåddes: körs vid nästa körning"])
         articles = await wiki.articles(source.qid)

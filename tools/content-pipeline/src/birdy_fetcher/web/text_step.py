@@ -193,16 +193,26 @@ class SpeciesTextWriter:
             candidate_removed: list[str] = []
             candidate_unsupported: dict[str, str] = {}
             candidate_texts: dict[str, str] = {}
+            checker_failure: str | None = None
             if reply.parsed is not None:
                 settled_candidate, candidate_removed, hard_again = settle(
                     reply.parsed, ctx, self.banned
                 )
                 if not hard_again:
-                    candidate_unsupported = await self.checker.check(
-                        check_items(settled_candidate, ctx), about=about
-                    )
-                    candidate_texts = path_texts(settled_candidate)
-                    fixed_candidate = remove_paths(settled_candidate, set(candidate_unsupported))
+                    try:
+                        candidate_unsupported = await self.checker.check(
+                            check_items(settled_candidate, ctx), about=about
+                        )
+                    except CheckerFailed as exc:
+                        # (N6, review fix 2026-10-06) The checker failing on the rewrite's
+                        # own re-check must not fail the whole species when a safe fallback
+                        # (the original, already checked once) exists.
+                        checker_failure = str(exc)
+                    else:
+                        candidate_texts = path_texts(settled_candidate)
+                        fixed_candidate = remove_paths(
+                            settled_candidate, set(candidate_unsupported)
+                        )
             if fixed_candidate is not None and not minimum_problems(fixed_candidate):
                 text = fixed_candidate
                 result.notes += candidate_removed
@@ -211,10 +221,16 @@ class SpeciesTextWriter:
                     for path, problem in candidate_unsupported.items()
                 ]
             else:
-                result.notes.append(
-                    "omskrivningen för de fakta som inte stöds förkastades, den ursprungliga "
-                    "texten användes i stället"
-                )
+                if checker_failure is not None:
+                    result.notes.append(
+                        f"kontrollen av omskrivningen misslyckades ({checker_failure}), den "
+                        "ursprungliga texten användes i stället"
+                    )
+                else:
+                    result.notes.append(
+                        "omskrivningen för de fakta som inte stöds förkastades, den ursprungliga "
+                        "texten användes i stället"
+                    )
                 original_texts = path_texts(original)
                 text = remove_paths(original, set(unsupported))
                 result.notes += [
@@ -256,6 +272,45 @@ def _resolve_lookalikes(text: WebTextV2, qid_map: dict[str, str]) -> WebTextV2:
                 look_alike["other"] = qid_map[look_alike["other"]]
                 changed = True
     return WebTextV2.model_validate(data) if changed else text
+
+
+def _text_cited_fact_ids(lang_text: dict[str, Any]) -> set[str]:
+    """Every fact id one language half of `record["text"]` (the site-JSON shape `to_site`
+    produces) cites: sentences, look-alikes, size and swedenStatus."""
+    ids: set[str] = set()
+    for key in ("lead", "fieldMarks", "voice", "whereWhen", "behaviour"):
+        for sentence in lang_text.get(key) or []:
+            ids.update(sentence.get("factIds") or [])
+    for look_alike in lang_text.get("lookAlikes") or []:
+        for sentence in look_alike.get("text") or []:
+            ids.update(sentence.get("factIds") or [])
+    facts = lang_text.get("facts") or {}
+    for key in ("size", "swedenStatus"):
+        entry = facts.get(key)
+        if entry:
+            ids.update(entry.get("factIds") or [])
+    return ids
+
+
+def _stale_published_fact_ids(record: Record) -> list[str]:
+    """Fact ids the live, published text cites that no longer exist in `record["facts"]`
+    (N1, review fix 2026-10-06): a spot-check strike on a fact must never be allowed to
+    quietly leave a published page citing a fact that is gone. Empty whenever the species
+    is not published or has no text yet."""
+    if not record.get("publish") or not record.get("text"):
+        return []
+    current_ids = {f["id"] for f in record.get("facts", [])}
+    cited: set[str] = set()
+    for lang in ("sv", "en"):
+        cited |= _text_cited_fact_ids(record["text"].get(lang) or {})
+    return sorted(cited - current_ids)
+
+
+def _stale_published_error(stale: list[str]) -> str:
+    return (
+        f"publicerad text anger fakta som inte längre finns ({', '.join(stale)}): "
+        "sätt publish: false"
+    )
 
 
 def apply_text(record: Record, result: TextResult, generated: dict[str, Any]) -> None:
@@ -398,8 +453,15 @@ async def run_write(
         async with semaphore:
             try:
                 name = str(record["names"]["sv"])
+                # N1 (review fix 2026-10-06): computed once, before anything else -- a
+                # published page citing a fact that no longer exists (e.g. a spot-check
+                # strike) must fail loudly, not quietly skip or hide the warning in a note
+                # `_print_outcomes` never shows.
+                stale = _stale_published_fact_ids(record)
                 reason = _skip_reason(record, options)
                 if reason is not None:
+                    if stale:
+                        return StepOutcome(qid, name, "failed", [_stale_published_error(stale)])
                     return StepOutcome(qid, name, "skipped", [reason])
                 if stop.is_set():
                     return StepOutcome(qid, name, "skipped", ["kostnadstaket nåddes"])
@@ -413,17 +475,23 @@ async def run_write(
                     return StepOutcome(qid, name, "failed", [str(exc)])
                 if result.text is None and _keep_old_text(record):
                     # I1 (review fix 2026-10-06): a failed rewrite must not destroy a text
-                    # the record still depends on.
+                    # the record still depends on. P5 (review fix 2026-10-06): the warning
+                    # goes in `errors`, not `notes` -- `_print_outcomes` only shows errors.
                     notes = [*result.notes, "den tidigare texten behölls"]
-                    text_generated = record.get("generated", {}).get("text") or {}
-                    if record.get("publish") and text_generated.get("factsHash") != facts_hash(
-                        record
-                    ):
-                        notes.append(
-                            "arten är publicerad och faktabladet har ändrats sedan texten "
-                            "skrevs: sätt publish: false om den gamla texten nu är fel"
-                        )
-                    return StepOutcome(qid, name, "failed", result.errors, notes)
+                    errors = list(result.errors)
+                    if stale:
+                        errors.append(_stale_published_error(stale))
+                    else:
+                        text_generated = record.get("generated", {}).get("text") or {}
+                        if record.get("publish") and text_generated.get("factsHash") != facts_hash(
+                            record
+                        ):
+                            errors.append(
+                                "arten är publicerad och faktabladet har ändrats sedan "
+                                "texten skrevs: sätt publish: false om den gamla texten "
+                                "nu är fel"
+                            )
+                    return StepOutcome(qid, name, "failed", errors, notes)
                 generated: dict[str, Any] = {
                     "model": MODELS[options.model_key],
                     "prompt": PROMPT_VERSION,

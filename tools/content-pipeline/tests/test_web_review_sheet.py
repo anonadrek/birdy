@@ -592,6 +592,25 @@ def test_v1_flag_andra_with_a_data_contradiction_adds_a_v3_flag_and_withholds_ve
             ),
         }
     ]
+
+
+def test_a_new_flag_clears_a_stale_verification() -> None:
+    """N3 (review fix 2026-10-06): the new-flags branch already refreshes the verify hash,
+    but must also drop any `verification` left over from before -- otherwise a species
+    that just got a brand new flag could still look verified."""
+    record = _v1_flagged()
+    record["verification"] = {
+        "method": "auto",
+        "at": "2026-11-01",
+        "model": "claude-sonnet-5",
+        "spotChecked": False,
+    }
+    record["data"] = {"months": [0, *([50] * 11)], "totalReports": 1000}
+    rows = _decide_flag(flag_rows(record), s01=(CHANGE, "Stannfågel"))
+    result = apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert result.changed == ["Q25485"]
+    assert "verification" not in record
+    assert record["flags"] != []
     status = next(f for f in record["facts"] if f["id"] == "s01")
     assert status["value"] == "resident"
 

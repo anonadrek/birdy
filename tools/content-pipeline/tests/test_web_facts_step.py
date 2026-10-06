@@ -99,6 +99,50 @@ async def test_a_reviewed_fact_sheet_is_left_alone(tmp_path: Path) -> None:
     assert [o.status for o in outcomes] == ["skipped"]
 
 
+async def test_a_species_waiting_on_open_flags_is_left_alone_unless_forced(
+    tmp_path: Path,
+) -> None:
+    """N4 (review fix 2026-10-06): a species that has been through `web verify` but has
+    open flags (so `verification` is absent) must not be silently rebuilt from the cache
+    by an unforced rerun -- that would undo V1's strikes and drop the flags."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths.data_out, "Q1")
+    path = record_path(paths.data_out, "Q1")
+    record = load_record(path)
+    assert record is not None
+    record["flags"] = [{"check": "V2", "factId": "f01", "message": "x"}]
+    record["generated"]["verify"] = {"model": "claude-sonnet-5", "factsHash": "abc"}
+    save_record(path, record)
+    client = FakeJsonClient([])
+    outcomes = await run_facts(paths, FactsOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["skipped"]
+    assert client.calls == []
+    forced = FakeJsonClient([reply(FULL)])
+    outcomes = await run_facts(
+        paths, FactsOptions(force=True), client=forced, wiki=FakeWiki(), now=NOW
+    )
+    assert [o.status for o in outcomes] == ["pending"]
+
+
+async def test_a_published_species_refuses_facts_even_with_force(tmp_path: Path) -> None:
+    """N5 (review fix 2026-10-06): `web facts --force` on a published species would null
+    its text and set status pending while publish stays true, breaking the fas 2 build."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths.data_out, "Q1")
+    path = record_path(paths.data_out, "Q1")
+    record = load_record(path)
+    assert record is not None
+    record["publish"] = True
+    save_record(path, record)
+    client = FakeJsonClient([])
+    outcomes = await run_facts(
+        paths, FactsOptions(force=True), client=client, wiki=FakeWiki(), now=NOW
+    )
+    assert [o.status for o in outcomes] == ["failed"]
+    assert outcomes[0].errors == ["publicerad: sätt publish: false först"]
+    assert client.calls == []
+
+
 async def test_a_second_run_uses_the_cache(tmp_path: Path) -> None:
     paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
     _seed(paths.data_out, "Q1")

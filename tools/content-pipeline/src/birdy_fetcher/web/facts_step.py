@@ -231,6 +231,21 @@ async def _one(
             return out("failed", ["artposten saknas: kör web sources först"])
         if is_reviewed(record) and not options.force:
             return out("skipped", ["faktabladet är kontrollerat: körs inte om utan --force"])
+        if record.get("generated", {}).get("verify") and not options.force:
+            # N4 (review fix 2026-10-06): a species with open flags (verified, but not yet
+            # `is_reviewed`) must not be silently rebuilt from the cache -- that would undo
+            # V1's strikes and drop the flags Albin still needs to decide on.
+            return out(
+                "skipped",
+                [
+                    "faktabladet har varit igenom web verify (väntar på beslut): "
+                    "körs inte om utan --force"
+                ],
+            )
+        if record.get("publish"):
+            # N5 (review fix 2026-10-06): --force would otherwise null the text and set
+            # status pending while publish stays true, breaking the fas 2 build.
+            return out("failed", ["publicerad: sätt publish: false först"])
         if stop.is_set():
             return out("skipped", ["kostnadstaket nåddes: körs vid nästa körning"])
         articles = await wiki.articles(source.qid)

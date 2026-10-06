@@ -10,6 +10,7 @@ import pytest
 from birdy_fetcher.web.checker import CheckOutput, Verdict, check_items
 from birdy_fetcher.web.facts import FactCheck, apply_facts
 from birdy_fetcher.web.record import facts_hash, load_record, record_path, save_record
+from birdy_fetcher.web.review_sheet import STRIKE, apply_review, full_sheet_rows
 from birdy_fetcher.web.text_checks import TextContext
 from birdy_fetcher.web.text_model import LookAlikeText, WebTextV2
 from birdy_fetcher.web.text_step import WriteOptions, run_write
@@ -231,7 +232,9 @@ async def test_a_failed_rewrite_on_a_published_species_with_changed_facts_keeps_
     bad = FakeJsonClient([reply(None, stop="max_tokens")])
     outcomes = await run_write(paths, WriteOptions(wave=1), client=bad, now=NOW)
     assert [o.status for o in outcomes] == ["failed"]
-    assert any("sätt publish: false" in n for n in outcomes[0].notes)
+    # P5 (review fix 2026-10-06): this warning lives in `errors`, not `notes`, so
+    # `_print_outcomes` actually shows it.
+    assert any("sätt publish: false" in e for e in outcomes[0].errors)
     saved = load_record(record_path(paths.data_out, "Q25485"))
     assert saved is not None
     assert saved["status"] == "ok"
@@ -475,3 +478,93 @@ async def test_write_never_sets_publish(tmp_path: Path) -> None:
     record = load_record(record_path(paths.data_out, "Q25485"))
     assert record is not None
     assert record.get("publish") is False
+
+
+# N1 (review fix 2026-10-06): a published page must never keep a fact Albin struck with
+# almost no signal.
+
+
+async def test_a_published_page_citing_a_struck_fact_fails_loudly(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    first = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    await run_write(paths, WriteOptions(wave=1), client=first, now=NOW)
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    # VALID's only voice sentence cites f04 -- the published page now depends on it.
+    assert record["text"]["sv"]["voice"][0]["factIds"] == ["f04"]
+    record["publish"] = True
+    save_record(record_path(paths.data_out, "Q25485"), record)
+
+    # A spot check strikes f04, the species' only voice fact, via the exception sheet.
+    rows = [dict(row) for row in full_sheet_rows(record)]
+    for row in rows:
+        if row["Id"] == "f04":
+            row["Beslut"] = STRIKE
+    apply_review({"Q25485": record}, rows, date="2026-11-22")
+    assert record.get("verification") is not None  # re-verified fresh, no open flags
+    assert not any(f["id"] == "f04" for f in record["facts"])
+    save_record(record_path(paths.data_out, "Q25485"), record)
+
+    client = FakeJsonClient([])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    assert any("f04" in e and "publish: false" in e for e in outcomes[0].errors), outcomes[0].errors
+    assert client.calls == []
+    saved = load_record(record_path(paths.data_out, "Q25485"))
+    assert saved is not None
+    assert saved["publish"] is True
+    assert saved["status"] == "ok"
+    assert saved["text"]["sv"]["voice"][0]["factIds"] == ["f04"]  # untouched by run_write
+
+
+async def test_a_failed_rewrite_on_a_published_species_with_stale_citations_names_the_fact(
+    tmp_path: Path,
+) -> None:
+    """The write-failed / `_keep_old_text` branch gets the same precise error, in `errors`
+    (not just `notes`), so `_print_outcomes` actually shows it (P5). f01 is struck instead
+    of f04 here so the species still has every required topic (appearance keeps f02) and
+    actually reaches the writer instead of being skipped outright."""
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    first = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    await run_write(paths, WriteOptions(wave=1), client=first, now=NOW)
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    # VALID's lead[1] and field_marks[0] both cite f01.
+    assert "f01" in record["text"]["sv"]["lead"][1]["factIds"]
+    record["publish"] = True
+    save_record(record_path(paths.data_out, "Q25485"), record)
+    rows = [dict(row) for row in full_sheet_rows(record)]
+    for row in rows:
+        if row["Id"] == "f01":
+            row["Beslut"] = STRIKE
+    apply_review({"Q25485": record}, rows, date="2026-11-22")
+    assert record.get("verification") is not None
+    save_record(record_path(paths.data_out, "Q25485"), record)
+
+    bad = FakeJsonClient([reply(None, stop="max_tokens")])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=bad, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    assert any("f01" in e and "publish: false" in e for e in outcomes[0].errors)
+
+
+# N6 (review fix 2026-10-06): a checker failure on the rewrite's own re-check must fall back
+# to the original (already checked once) instead of failing the species.
+
+
+async def test_a_checker_failure_on_the_rewrite_falls_back_to_the_original(
+    tmp_path: Path,
+) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    bad = {"sv.lead[1]": "nämner inget om kinderna"}
+    client = FakeJsonClient(
+        [reply(VALID), reply(_verdicts(VALID, bad)), reply(VALID), reply(None, stop="refusal")]
+    )
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    assert any("kontrollen av omskrivningen misslyckades" in n for n in outcomes[0].notes)
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    assert len(record["text"]["sv"]["lead"]) == 1
