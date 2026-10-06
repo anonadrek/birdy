@@ -840,7 +840,12 @@ def published_comparison_errors(
     a, b = records.get(a_qid), records.get(b_qid)
     if a is None or b is None:
         return [STALE_HASH_ERROR] if not comparison_is_current(comparison, records) else []
-    written = (comparison.get("generated") or {}).get("factsHash") or ""
+    raw = (comparison.get("generated") or {}).get("factsHash")
+    # A non-string or wrong-length value (hand-edited JSON, a bug elsewhere) can never be
+    # split into two valid 16-hex-character halves -- fall back to "" so both halves
+    # mismatch, i.e. both sides are treated as stale (review fix 2026-10-06, item 2 of
+    # the second re-review), instead of crashing on `raw[:16]` for a non-sliceable value.
+    written = raw if isinstance(raw, str) and len(raw) == 32 else ""
     written_a, written_b = written[:16], written[16:]
     mismatch = (written_a != facts_hash(a) and relevant(a_qid)) or (
         written_b != facts_hash(b) and relevant(b_qid)

@@ -61,6 +61,12 @@ class StepOutcome:
     status: str
     errors: list[str] = field(default_factory=list)
     notes: list[str] = field(default_factory=list)
+    # True when this outcome is something the caller's own scope tried to do (review fix
+    # 2026-10-06): `waves.py`'s `publish_wave` sets this on a comparison it tried to
+    # newly publish (both sides named with --species), so the CLI's exit code can count
+    # it without a note-text marker. A new field with a default so every existing
+    # positional `StepOutcome(...)` call site is unaffected.
+    attempted: bool = False
 
 
 def render_step_report(

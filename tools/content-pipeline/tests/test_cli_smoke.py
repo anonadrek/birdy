@@ -314,3 +314,29 @@ def test_web_publish_species_exit_code_ignores_a_reported_but_unselected_compari
     result = CliRunner().invoke(main, ["web", "publish", "--species", "Q1"])
     assert result.exit_code == 0, result.output
     assert "sätt publish: false" in result.output
+
+
+def test_web_publish_species_pair_with_a_not_current_comparison_exits_nonzero(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # N1 item 1 (second re-review): --species Q1 --species Q2 tries to publish Q1_Q2
+    # too, so a not-current Q1_Q2 is this call's own business and must exit 1.
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    ready1 = _ready("Q1", "Talgoxe", 1)
+    ready2 = _ready("Q2", "Blåmes", 1)
+    for record in (ready1, ready2):
+        save_record(record_path(paths.data_out, record["qid"]), record)
+    paths.comparisons_out.mkdir(parents=True, exist_ok=True)
+    save_record(
+        paths.comparisons_out / "Q1_Q2.json",
+        {
+            "a": "Q1",
+            "b": "Q2",
+            "status": "ok",
+            "publish": False,
+            "generated": {"factsHash": "stale0000stale0000stale0000stal0"},
+        },
+    )
+    monkeypatch.setattr(cli_module, "_web_paths", lambda: paths)
+    result = CliRunner().invoke(main, ["web", "publish", "--species", "Q1", "--species", "Q2"])
+    assert result.exit_code == 1

@@ -1265,6 +1265,23 @@ async def test_published_comparison_errors_with_sides_still_reports_the_named_si
     assert any("a:f02" in e for e in errors)
 
 
+async def test_published_comparison_errors_treats_a_non_32_char_hash_as_stale_on_both_sides(
+    tmp_path: Path,
+) -> None:
+    """Item 2 (second re-review): a non-string or wrong-length `factsHash` (hand-edited
+    JSON, a bug elsewhere) must never crash on `raw[:16]` -- treat both sides as stale,
+    so it is reported whichever single side is named."""
+    paths, _ = await _written_and_published(tmp_path)
+    saved = _saved(paths)
+    assert saved is not None
+    records = {"Q25404": _blue_tit(), "Q25485": _great_tit()}
+    for bad_hash in (12345, None, "", "tooshort", "x" * 40):
+        bad = {**saved, "generated": {**saved["generated"], "factsHash": bad_hash}}
+        assert published_comparison_errors(bad, records) == [STALE_HASH_ERROR]
+        assert published_comparison_errors(bad, records, sides={"Q25404"}) == [STALE_HASH_ERROR]
+        assert published_comparison_errors(bad, records, sides={"Q25485"}) == [STALE_HASH_ERROR]
+
+
 # (c): the shared loop with the comparison callbacks.
 
 

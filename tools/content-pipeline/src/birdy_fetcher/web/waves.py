@@ -176,10 +176,24 @@ def _publish_comparisons(
     comparison is reported `skipped` with its reasons -- but only in `--species` mode;
     with `selected` left `None` (wave-only, or neither filter at all) every comparison is
     in scope either way and an unpublished, not-yet-ready one stays silent, matching the
-    behaviour before this fix."""
+    behaviour before this fix.
+
+    `StepOutcome.attempted` is set on every outcome for a comparison this call itself
+    tried to newly publish (both sides in `selected`), including when the file turns out
+    unreadable (review fix 2026-10-06, item 1 of the second re-review): `cli.py`'s
+    `web_publish` counts those toward its --species exit code, but never an
+    already-published comparison's staleness finding, which stays loud in the output and
+    report without affecting the exit code."""
     outcomes: list[StepOutcome] = []
     for path in sorted(paths.comparisons_out.glob("Q*_Q*.json")):
         name = path.stem
+        # Both sides as the filename spells them (`comparison_path`'s "{a}_{b}.json"),
+        # known even before the file is parsed -- so a malformed file that WOULD have
+        # been this call's own publish attempt still counts as `attempted` below.
+        a_from_name, _, b_from_name = path.stem.partition("_")
+        attempted_by_name = (
+            selected is not None and a_from_name in selected and b_from_name in selected
+        )
         try:
             comparison = load_record(path)
             if comparison is None:
@@ -202,19 +216,19 @@ def _publish_comparisons(
             if comparison.get("status") == "ok" and both_live and current:
                 comparison["publish"] = True
                 save_record(path, comparison)
-                outcomes.append(StepOutcome(path.stem, name, "ok", notes=["jämförelse"]))
+                outcomes.append(StepOutcome(path.stem, name, "ok", attempted=True))
             elif selected is not None:
                 reasons = _comparison_unready_reasons(comparison, a_qid, b_qid, live, current)
-                # Tagged "jämförelse" (N1 item 2, review fix 2026-10-06) so the CLI can
-                # tell a NEW-publish attempt (this call's own business, counts toward
-                # its exit code) apart from an already-published staleness finding just
-                # above (never counts, see `cli.py`'s `web_publish`).
-                outcomes.append(
-                    StepOutcome(path.stem, name, "skipped", reasons, notes=["jämförelse"])
-                )
+                outcomes.append(StepOutcome(path.stem, name, "skipped", reasons, attempted=True))
         except Exception as exc:  # one file's error must not stop the run (M6)
             outcomes.append(
-                StepOutcome(path.stem, name, "failed", [f"{type(exc).__name__}: {exc}"])
+                StepOutcome(
+                    path.stem,
+                    name,
+                    "failed",
+                    [f"{type(exc).__name__}: {exc}"],
+                    attempted=attempted_by_name,
+                )
             )
     return outcomes
 

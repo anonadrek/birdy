@@ -301,7 +301,7 @@ def test_publish_blocks_a_comparison_whose_facts_hash_is_stale(tmp_path: Path) -
     assert (load_record(record_path(paths.data_out, "Q2")) or {}).get("publish") is True
     comparison = load_record(paths.comparisons_out / "Q1_Q2.json")
     assert comparison is not None and comparison["publish"] is False
-    assert not any("jämförelse" in o.notes for o in outcomes)
+    assert not any(o.attempted for o in outcomes)
 
 
 # -- review fixes 2026-10-06: I1 (--species scope), I2 (live, not just published), I3
@@ -673,3 +673,71 @@ def test_publish_species_outside_the_named_wave_is_reported_skipped(tmp_path: Pa
     assert outcomes[0].qid == "Q1"
     assert outcomes[0].status == "skipped"
     assert any("inte i våg 2" in e for e in outcomes[0].errors)
+
+
+# -- third re-review 2026-10-06: N1 item 1 (structural `attempted`), N1 item 2 (hash
+# type/length safety) -----------------------------------------------------------------
+
+
+def test_publish_species_pair_with_a_not_current_comparison_is_attempted(tmp_path: Path) -> None:
+    """--species Q1 --species Q2 tries to publish Q1_Q2 too; a not-current comparison is
+    this call's own business and must be marked `attempted` for the CLI's exit code
+    (end to end in test_cli_smoke.py)."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    ready1 = _ready("Q1", "Talgoxe", 1)
+    ready2 = _ready("Q2", "Blåmes", 1)
+    for record in (ready1, ready2):
+        save_record(record_path(paths.data_out, record["qid"]), record)
+    paths.comparisons_out.mkdir(parents=True, exist_ok=True)
+    save_record(
+        paths.comparisons_out / "Q1_Q2.json",
+        {
+            "a": "Q1",
+            "b": "Q2",
+            "status": "ok",
+            "publish": False,
+            "generated": {"factsHash": "stale0000stale0000stale0000stal0"},
+        },
+    )
+    outcomes = publish_wave(paths, species=["Q1", "Q2"])
+    by_qid = {o.qid: o for o in outcomes}
+    assert by_qid["Q1_Q2"].status == "skipped"
+    assert by_qid["Q1_Q2"].attempted is True
+
+
+def test_publish_a_malformed_comparison_within_the_named_pair_is_attempted(
+    tmp_path: Path,
+) -> None:
+    """N1 item 1: a malformed comparison file is still this call's own business when its
+    filename names exactly the --species pair, even though it cannot be parsed to
+    confirm that from its content."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    ready1 = _ready("Q1", "Talgoxe", 1)
+    ready2 = _ready("Q2", "Blåmes", 1)
+    for record in (ready1, ready2):
+        save_record(record_path(paths.data_out, record["qid"]), record)
+    paths.comparisons_out.mkdir(parents=True, exist_ok=True)
+    (paths.comparisons_out / "Q1_Q2.json").write_text("{not json", encoding="utf-8")
+    outcomes = publish_wave(paths, species=["Q1", "Q2"])
+    by_qid = {o.qid: o for o in outcomes}
+    assert by_qid["Q1_Q2"].status == "failed"
+    assert by_qid["Q1_Q2"].attempted is True
+
+
+def test_publish_a_malformed_comparison_outside_the_named_pair_is_not_attempted(
+    tmp_path: Path,
+) -> None:
+    """The same malformed file, but only ONE side is named: not this call's own publish
+    attempt (a new comparison always needs both sides selected), so it must not affect
+    the --species exit code."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    ready1 = _ready("Q1", "Talgoxe", 1)
+    ready2 = _ready("Q2", "Blåmes", 1)
+    for record in (ready1, ready2):
+        save_record(record_path(paths.data_out, record["qid"]), record)
+    paths.comparisons_out.mkdir(parents=True, exist_ok=True)
+    (paths.comparisons_out / "Q1_Q2.json").write_text("{not json", encoding="utf-8")
+    outcomes = publish_wave(paths, species=["Q1"])
+    by_qid = {o.qid: o for o in outcomes}
+    assert by_qid["Q1_Q2"].status == "failed"
+    assert by_qid["Q1_Q2"].attempted is False
