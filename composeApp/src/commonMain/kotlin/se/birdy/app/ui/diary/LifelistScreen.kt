@@ -405,19 +405,14 @@ private fun SectionLabel(
 
 // ─── Recap entry card ─────────────────────────────────────────────────────────
 
-// The photo overlay (PhotoScrim at three stops, left to right) exists so the kicker/title/sub
-// text block — which sits in the card's left ~75%, after the week-number circle — clears WCAG
-// AA even over a blown-out (near-white) photo, while the far-right edge (behind only the
-// decorative chevron, hidden from screen readers) can fade further since a graphical object only
-// needs 3:1. Review fix wave T8c, 2026-09-27; proof in RecapEntryCardContrastTest.
-// Neutral since 2026-10-06 (was HeroMossDeep at 0.92/0.85/0.55): the find photos keep their own
-// colors, darkened only as far as the text needs. MID is the lightest 0.05 step that clears AA
-// (the apricot kicker, 4.64:1 over pure white); NEAR (behind the opaque week circle, no text of
-// its own) equals it. FAR 0.50 gives the chevron 3.77:1 at the true edge (x=1.0).
-internal const val RECAP_OVERLAY_NEAR_ALPHA = 0.70f
-internal const val RECAP_OVERLAY_MID_ALPHA = 0.70f
-internal const val RECAP_OVERLAY_FAR_ALPHA = 0.50f
-internal const val RECAP_OVERLAY_MID_STOP = 0.75f
+// The photo overlay exists so the kicker/title/sub text and the chevron clear WCAG AA even over
+// a blown-out (near-white) find photo. Review fix wave T8c, 2026-09-27; proof in
+// RecapEntryCardContrastTest. Neutral and flat since 2026-10-06 (was HeroMossDeep fading
+// 0.92 -> 0.85 -> 0.55 left to right): the photos keep their own colors, darkened only as far as
+// the text needs, and the darkening no longer assumes where the weight(1f) text column ends
+// (anywhere from ~89% to over 95% of the card width). 0.70 is the lightest 0.05 step that clears
+// AA (the apricot kicker, 4.64:1 over pure white).
+internal const val RECAP_OVERLAY_ALPHA = 0.70f
 
 @Composable
 private fun RecapEntryCard(
@@ -470,13 +465,7 @@ private fun RecapEntryCard(
                 modifier =
                     Modifier
                         .matchParentSize()
-                        .background(
-                            Brush.horizontalGradient(
-                                0f to PhotoScrim.copy(alpha = RECAP_OVERLAY_NEAR_ALPHA),
-                                RECAP_OVERLAY_MID_STOP to PhotoScrim.copy(alpha = RECAP_OVERLAY_MID_ALPHA),
-                                1f to PhotoScrim.copy(alpha = RECAP_OVERLAY_FAR_ALPHA),
-                            ),
-                        ),
+                        .background(PhotoScrim.copy(alpha = RECAP_OVERLAY_ALPHA)),
             )
         }
         Row(
