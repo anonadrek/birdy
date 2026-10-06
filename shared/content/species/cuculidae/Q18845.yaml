@@ -112,7 +112,13 @@ image_refs:
     male (52779232944).jpg
   commons_filename: Cuco-canoro, macho, Common Cuckoo, male (52779232944).jpg
 review_status: approved
-review_notes: Hero = adult Cuculus canorus från Cradley (UK, Flickr CC BY 2.0); klassisk grå-bandad fältidentifiering, lång stjärt, hökliknande siluett. Två sekundärbilder från Coruña + Salicyna 2016. SV+EN beskrivning båda ≥80 ord, ingen hallucination. EN migration "data unavailable" — Claude honest fallback när källan saknade migration-info.
+review_notes: 'Hero = adult Cuculus canorus från Cradley (UK, Flickr CC BY 2.0); klassisk grå-bandad fältidentifiering,
+  lång stjärt, hökliknande siluett. Två sekundärbilder från Coruña + Salicyna 2016. SV+EN beskrivning
+  båda ≥80 ord, ingen hallucination. EN migration "data unavailable" — Claude honest fallback när källan
+  saknade migration-info.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T18:32:10.032316+00:00'
 sources:
   wikipedia_sv_revision: '58319607'

@@ -131,7 +131,10 @@ image_refs:
     Park (33296).jpg
   commons_filename: Northern shoveler male in Marine Park (33296).jpg
 review_status: approved
-review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se b54c332e; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-06T12:55:33.423452+00:00'
 sources:
   wikipedia_sv_revision: '59207406'

@@ -119,7 +119,11 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:20240815 Falco tinnunculus.jpg
   commons_filename: 20240815 Falco tinnunculus.jpg
 review_status: approved
-review_notes: "Hero = Falco tinnunculus foto, matchar art. Tornfalk vanlig SE-häckare i öppna jordbrukslandskap, ofta sittande på stolpar."
+review_notes: 'Hero = Falco tinnunculus foto, matchar art. Tornfalk vanlig SE-häckare i öppna jordbrukslandskap,
+  ofta sittande på stolpar.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T19:00:01.105680+00:00'
 sources:
   wikipedia_sv_revision: '59171082'

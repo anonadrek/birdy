@@ -115,10 +115,10 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Cinclus cinclus32.jpg
   commons_filename: Cinclus cinclus32.jpg
 review_status: approved
-review_notes: 'Hero auto-pick (Lisine 2, 2400x1600) klarar MIN_DIMENSION men är icke-optimal
-  — fågeln syns gul/distanserad utan tydlig vit bröstfläck. Försökte byta till Lisine
-  6 (diagnostisk: vitbröstig strömstare på sten) men den är 1800x1200 < 2048. Follow-up:
-  hämta större version av Lisine 6 från Commons eller alternativ bild.'
+review_notes: 'Strömstare — hero: White-throated Dipper (Ron Knight, CC BY 2.0), strömstare på sten med
+  tydlig vit bröstfläck; den tidigare heron (Lisine 2) visade en forsärla, inte en strömstare.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; beskrivningen ovan gäller de nya bilderna.'
 generated_at: '2026-05-08T00:50:22.405113+00:00'
 sources:
   wikipedia_sv_revision: '58995035'

@@ -63,7 +63,10 @@ image_refs:
     - Female1.jpg
   commons_filename: Greenfinch - Chloris chloris - Female1.jpg
 review_status: approved
-review_notes: "Grönfink — hero godkänd, allmän SE-fågel."
+review_notes: 'Grönfink — hero godkänd, allmän SE-fågel.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T19:13:28.649893+00:00'
 sources:
   wikipedia_sv_revision: '59193236'

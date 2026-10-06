@@ -94,7 +94,10 @@ image_refs:
     plumage) (48025438576).jpg
   commons_filename: Black-headed Gull (breeding plumage) (48025438576).jpg
 review_status: approved
-review_notes: "Skrattmås — Chroicocephalus ridibundus i sommardräkt; allmän SE-art överallt vid vatten."
+review_notes: 'Skrattmås — Chroicocephalus ridibundus i sommardräkt; allmän SE-art överallt vid vatten.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T20:01:57.743435+00:00'
 sources:
   wikipedia_sv_revision: '58974944'

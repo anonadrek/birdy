@@ -120,7 +120,11 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Passer montanus (8), Lincolnshire.jpg
   commons_filename: Passer montanus (8), Lincolnshire.jpg
 review_status: approved
-review_notes: "Hero = Passer montanus (Eurasian Tree Sparrow / Pilfink); allmän vid byggnader och trädgårdar i hela SE."
+review_notes: 'Hero = Passer montanus (Eurasian Tree Sparrow / Pilfink); allmän vid byggnader och trädgårdar
+  i hela SE.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T21:28:34.993877+00:00'
 sources:
   wikipedia_sv_revision: '58649491'

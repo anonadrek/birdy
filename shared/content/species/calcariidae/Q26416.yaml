@@ -117,7 +117,13 @@ image_refs:
     nivalis), Helgoland 2021 2.jpg
   commons_filename: Snow Bunting (Plectrophenax nivalis), Helgoland 2021 2.jpg
 review_status: approved
-review_notes: '2026-05-08: hero is winter photo from Oulu (Finland) — snösparv på klipphäll vid is/havsstrand. Klassisk SE-vintervisitör; foto matchar det användare ser i fält. Pipeline-fix landed simultaneously: Rijksmuseum 1600s watercolour rejected via REJECT_PATTERNS additions (historia naturalis|rijksmuseum + author-field check).'
+review_notes: '2026-05-08: hero is winter photo from Oulu (Finland) — snösparv på klipphäll vid is/havsstrand.
+  Klassisk SE-vintervisitör; foto matchar det användare ser i fält. Pipeline-fix landed simultaneously:
+  Rijksmuseum 1600s watercolour rejected via REJECT_PATTERNS additions (historia naturalis|rijksmuseum
+  + author-field check).
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se b54c332e; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-07T22:25:24.532337+00:00'
 sources:
   wikipedia_sv_revision: '58847310'
