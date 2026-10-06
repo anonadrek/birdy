@@ -79,10 +79,6 @@ class WebPaths:
         shells out to, so the pipeline itself never imports TensorFlow."""
         return self.repo_root / "tools" / "ml-eval" / "flexref"
 
-    @property
-    def prompt(self) -> Path:
-        return self.pipeline_root / "prompts" / "web-v1.md"
-
     def prompt_file(self, name: str) -> Path:
         return self.pipeline_root / "prompts" / f"{name}.md"
 
