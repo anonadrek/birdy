@@ -932,3 +932,36 @@ async def test_no_preflight_when_no_species_to_run_has_a_recording(
     client = FakeJsonClient([reply(_verdicts())])
     outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
     assert {o.qid: o.status for o in outcomes} == {"Q1": "ok", "Q2": "failed"}
+
+
+async def test_a_malformed_record_does_not_abort_the_preflight_or_the_run(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A2 (wave A review): the preflight loads every record; a broken JSON file must count
+    as "does not need the model" and fail on its own in `_one`, not stop the whole run
+    with a traceback."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit"), ("Q2", "Blåmes", "Blue Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    record_path(paths.data_out, "Q2").write_text("{ inte json", encoding="utf-8")
+    seen: list[Path] = []
+
+    def fake_classify_clip(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        seen.append(mp3_path)
+        return OK_PREFLIGHT
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", fake_classify_clip)
+    client = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert {o.qid: o.status for o in outcomes} == {"Q1": "ok", "Q2": "failed"}
+    assert seen[0] == paths.flexref / "fixtures" / "chirp_3s_48k.wav"
+
+
+async def test_a_record_that_is_not_an_object_does_not_abort_the_preflight(
+    tmp_path: Path,
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit"), ("Q2", "Blåmes", "Blue Tit")])
+    _seed(paths, "Q1")
+    record_path(paths.data_out, "Q2").write_text("[]", encoding="utf-8")
+    client = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert {o.qid: o.status for o in outcomes} == {"Q1": "ok", "Q2": "failed"}

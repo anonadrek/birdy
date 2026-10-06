@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import io
 import math
 import struct
@@ -14,7 +15,15 @@ import pytest
 
 from birdy_fetcher.web.audio import AudioCandidate, audio_record
 from birdy_fetcher.web.datamod import Counts
-from birdy_fetcher.web.record import audio_id, load_record, new_record, record_path, save_record
+from birdy_fetcher.web.facts import data_facts
+from birdy_fetcher.web.record import (
+    audio_id,
+    facts_hash,
+    load_record,
+    new_record,
+    record_path,
+    save_record,
+)
 from birdy_fetcher.web.sources_step import (
     SlugCollisionError,
     SourceClients,
@@ -131,7 +140,8 @@ async def test_a_forced_rerun_keeps_facts_review_and_text(tmp_path: Path) -> Non
     assert [o.status for o in outcomes] == ["ok"]
     record = load_record(record_path(paths.data_out, "Q1"))
     assert record is not None
-    assert record["facts"] == [{"id": "f01"}]
+    # The model's facts stay; only the data facts are rebuilt from the new data (A4).
+    assert record["facts"] == [{"id": "f01"}, *data_facts(record)]
     assert record["text"] == {"sv": {}}
     assert record["wikipedia"]["sv"] == {"title": "Talgoxe", "revision": "1"}
 
@@ -274,7 +284,7 @@ async def test_a_forced_rerun_keeps_a_kept_recording_only_if_it_is_the_same(
     tmp_path: Path,
 ) -> None:
     paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit"), ("Q2", "Gök", "Cuckoo")])
-    same = audio_record(RECORDING, "Q1")
+    same = {**audio_record(RECORDING, "Q1"), "sha256": hashlib.sha256(_wav(3)).hexdigest()}
     for qid, kept in (("Q1", audio_id(same)), ("Q2", "an-older-recording")):
         seeded = new_record(qid)
         seeded["facts"] = [{"id": "f01"}]
@@ -286,3 +296,77 @@ async def test_a_forced_rerun_keeps_a_kept_recording_only_if_it_is_the_same(
     assert q1 is not None and q2 is not None
     assert q1["review"]["audioKept"] == audio_id(same)
     assert "audioKept" not in q2["review"]
+
+
+async def test_a_new_file_under_the_same_title_is_a_different_recording(tmp_path: Path) -> None:
+    """A1 (wave A review): `audio_id` covered only the metadata, so a new Commons version
+    under the same title kept Albin's old `behåll`. The raw download's hash is part of the
+    `audio` object now, so different bytes are a different recording."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    old = {**audio_record(RECORDING, "Q1"), "sha256": hashlib.sha256(b"old file").hexdigest()}
+    seeded = new_record("Q1")
+    seeded["facts"] = [{"id": "f01"}]
+    seeded["review"] = {"audioKept": audio_id(old)}
+    save_record(record_path(paths.data_out, "Q1"), seeded)
+    await run_sources(paths, SourcesOptions(force=True), clients=_clients(), now=NOW)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["sha256"] == hashlib.sha256(_wav(3)).hexdigest()
+    assert {k: v for k, v in record["audio"].items() if k != "sha256"} == audio_record(
+        RECORDING, "Q1"
+    )
+    assert audio_id(record["audio"]) != audio_id(old)
+    assert "audioKept" not in record["review"]
+
+
+async def test_a_forced_rerun_forgets_a_confirmed_status(tmp_path: Path) -> None:
+    """A3: Albin kept a status against the OLD report data; new data can contradict it in a
+    new way, so the confirmation does not survive `--force`."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    seeded = new_record("Q1")
+    seeded["facts"] = [{"id": "s01", "topic": "status", "value": "resident", "sv": "x"}]
+    seeded["review"] = {"statusConfirmed": True, "wave": 1}
+    save_record(record_path(paths.data_out, "Q1"), seeded)
+    await run_sources(paths, SourcesOptions(force=True), clients=_clients(), now=NOW)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["review"] == {"wave": 1}
+
+
+async def test_a_forced_rerun_drops_the_flags_of_the_old_sources(tmp_path: Path) -> None:
+    """The flags were raised against the old articles, data and recording: `web sheet`
+    must not export them again before `web verify` has run on the new sources."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    seeded = new_record("Q1")
+    seeded["facts"] = [{"id": "f01"}]
+    seeded["flags"] = [{"check": "V2", "factId": "f01", "message": "x"}]
+    save_record(record_path(paths.data_out, "Q1"), seeded)
+    await run_sources(paths, SourcesOptions(force=True), clients=_clients(), now=NOW)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert "flags" not in record
+
+
+async def test_a_forced_rerun_rebuilds_the_data_facts_from_the_new_data(tmp_path: Path) -> None:
+    """A4: the d-facts are code's own sentences from the report data and the red list; after
+    `--force` they must say what the new data says, so the facts hash (and every text
+    written from the old one) moves with it."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    seeded = new_record("Q1")
+    f01 = {"id": "f01", "topic": "appearance", "sv": "Svart huvud.", "sources": []}
+    seeded["facts"] = [
+        f01,
+        {"id": "d01", "topic": "data", "source": "artportalen", "sv": "Gammal mening."},
+        {"id": "d02", "topic": "data", "source": "rodlistan", "sv": "Inte rödlistad."},
+    ]
+    path = record_path(paths.data_out, "Q1")
+    save_record(path, seeded)
+    old_hash = facts_hash(seeded)
+    await run_sources(paths, SourcesOptions(force=True), clients=_clients(), now=NOW)
+    record = load_record(path)
+    assert record is not None
+    assert record["facts"][0] == f01
+    assert record["facts"][1:] == data_facts(record)
+    assert record["facts"][-1]["sv"] == "Svenska rödlistan 2025: Sårbar (VU)."
+    assert all(f["sv"] != "Gammal mening." for f in record["facts"])
+    assert facts_hash(record) != old_hash

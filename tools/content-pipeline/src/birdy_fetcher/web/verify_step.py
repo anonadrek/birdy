@@ -104,6 +104,17 @@ def _needs_audio_model(record: Record) -> bool:
     )
 
 
+def _needs_preflight(path: Path, options: VerifyOptions) -> bool:
+    """Whether this species will run V4 on the model. A file that cannot be read or is not
+    a record counts as "no" (A2, wave A review): `_one` reports it as failed on its own,
+    and the rest of the run goes on."""
+    try:
+        record = load_record(path)
+        return record is not None and _skip(record, options) is None and _needs_audio_model(record)
+    except Exception:  # a broken file is `_one`'s to report, not the preflight's
+        return False
+
+
 async def _preflight_audio_model(paths: WebPaths) -> None:
     try:
         await asyncio.to_thread(classify_clip, paths.flexref / PREFLIGHT_CLIP, paths.flexref)
@@ -134,8 +145,7 @@ async def run_verify(
     now = now or datetime.now(UTC)
     cache = Cache(paths.pipeline_root / ".cache")
     sources = load_approved(paths.species_root, options.qids)
-    records = [load_record(record_path(paths.data_out, s.qid)) for s in sources]
-    if any(r is not None and _skip(r, options) is None and _needs_audio_model(r) for r in records):
+    if any(_needs_preflight(record_path(paths.data_out, s.qid), options) for s in sources):
         # Before the client exists and before anything is written (follow-up 3): a broken
         # audio setup stops the run at $0 instead of flagging every species.
         await _preflight_audio_model(paths)

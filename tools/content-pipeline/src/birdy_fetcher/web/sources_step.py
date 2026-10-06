@@ -4,6 +4,7 @@ No model calls; everything here is free and cached under .cache/."""
 from __future__ import annotations
 
 import asyncio
+import hashlib
 from collections import Counter
 from collections.abc import Sequence
 from dataclasses import dataclass
@@ -13,6 +14,7 @@ from typing import Any, Protocol
 from ..cache import Cache
 from .audio import AudioCandidate, CommonsAudioClient, audio_record, choose, convert_to_mp3
 from .datamod import MIN_REPORTS, Counts, build_data, record_status_contradiction
+from .facts import data_facts
 from .gbif import GbifClient
 from .groups import GroupTable
 from .identify import ModelCoverage, load_coverage
@@ -149,7 +151,11 @@ async def _audio(
         elif not ctx.options.dry_run:
             raw = await ctx.clients.audio.download(source.qid, chosen, refresh=refresh)
             await asyncio.to_thread(convert_to_mp3, raw, voice)
-            audio = audio_record(chosen, source.qid)
+            # The raw Commons file's hash (A1, wave A review): a new version uploaded under
+            # the same title is a different recording, so `audio_id` and with it Albin's
+            # `audioKept` follow the content, not just the metadata. Hashed before ffmpeg,
+            # so it is the same on every machine.
+            audio = {**audio_record(chosen, source.qid), "sha256": hashlib.sha256(raw).hexdigest()}
     if audio is None and not ctx.options.dry_run:
         voice.unlink(missing_ok=True)
     return audio
@@ -204,14 +210,23 @@ def _frozen(record: Record) -> bool:
 
 def _forget_checks_of_old_sources(record: Record) -> None:
     """After `--force` the facts sit on new sources nothing has checked: the species
-    must go through `web verify` again (follow-up 6, wave A review). Albin's `behåll` on a
-    recording only stands while it is the same recording."""
+    must go through `web verify` again (follow-up 6, wave A review), and its flags were
+    raised against the old articles, data and recording. Albin's `behåll` on a recording
+    only stands while it is the same recording; his kept status was weighed against the old
+    report data, so it goes (A3). The data facts are code's own sentences from the data and
+    the red list: they are rebuilt from the new ones (A4), so the facts hash, and with it
+    every text written from the old facts, moves on."""
     record.pop("verification", None)
+    record.pop("flags", None)
     record.get("generated", {}).pop("verify", None)
     review = record.get("review", {})
+    review.pop("statusConfirmed", None)
     audio = record.get("audio")
     if "audioKept" in review and (not audio or review["audioKept"] != audio_id(audio)):
         review.pop("audioKept")
+    if record.get("facts"):
+        kept = [f for f in record["facts"] if f.get("topic") != "data"]
+        record["facts"] = kept + data_facts(record)
 
 
 async def run_sources(
