@@ -524,6 +524,33 @@ Faktabladen tas fram och kontrolleras automatiskt (V1 till V4) för alla 180 art
   3. Mätvärdena skrivs in i baslinjefilen efter 6 och 12 veckor och blir underlag för AlbIT-caset.
 - **Länkar efter våg 1:** agenten skriver utkast, Albin skickar i eget namn. Mottagare: en tråd på birdforum.net (skickar redan besökare), lokala ornitologiska föreningar och BirdLife Sveriges vinterräkning, svenska fågelgrupper på Facebook, lärare och naturskolor (jämförelsesidorna som gratis undervisningsmaterial) och AlbIT-caset. Utkasten sparas i `docs/marketing/2026-artsidor-utskick.md`.
 
+### 15.1 Sociala medier (beslut 2026-10-06, planeras när publiceringen startar)
+
+**Påminnelse:** när de första artsidorna publiceras på birdy.community startar Birdy ett dagligt inlägg på Facebook och Instagram (TikTok senare) om en publicerad artsida. Planeras i detalj först då; inget byggs före fas 2:s publiceringsloop.
+
+- **Ett inlägg per dag**, samma mall för alla arter: artens foto, svenskt och engelskt namn, ett eller två kontrollerade fakta ur artposten, fotografens kredit och länk till sidan. Albin väljer mallen bland 2 till 3 förslag (förhandsvisning).
+- **Konton:** Albin skapar dem själv (Facebook-sida, Instagram som företagskonto kopplat till sidan, TikTok), samma namn på alla, gärna nu så att namnet är reserverat.
+- **Schemaläggning:** steg 1 genererar en månad i taget (bild + text per dag) som Albin lägger in i Meta Business Suite; steg 2 automatiskt via Meta Graph API från ett dagligt jobb (GitHub Actions), där Albin själv lägger in åtkomstnyckeln som hemlighet. TikTok kräver att appen godkänns för publik publicering, annars utkast.
+- **Koppling till publiceringen:** varje publicerad artsida köas för ett inlägg; jämförelsesidorna kan få egna inlägg. Gärna samma art som appens Dagens fågel samma dag.
+- **Bildlicenser:** bara CC0, public domain, CC BY och CC BY-SA, aldrig NC eller ND; beskärning och text runt bilden räknas som bearbetning; krediten skrivs i bildtexten ("Foto: X, licens, via Wikimedia Commons, beskuren"). Filtret ligger i koden som väljer bild, inte i manuell kontroll.
+- **Senare:** en kort video med artens läte ("vems sång är det här?") som andra mall för Reels och TikTok.
+
+**Inläggens struktur (förslag 2026-10-06, Albin väljer mall):** allt text- och bildinnehåll fylls i av kod ur den kontrollerade artposten (inga nya påståenden, inga modellanrop, ingen kostnad).
+
+- **Bild (1080 × 1350, 4:5, samma på Facebook och Instagram):** fotot över cirka 70 % av ytan (beskuret, licensfiltret ovan), under det ett pappersband i webbens färger med en liten rubrik "DAGENS FÅGEL · NR 12" (löpnummer i publiceringsordning), artnamnet i DM Serif, det vetenskapliga namnet i kursiv, en handskriven rad (Caveat) med ett kort kontrollerat faktum, och Birdys märke + "birdy.community" i hörnet.
+- **Bildtext (svenska, engelskt namn inom parentes):**
+  1. Krok: första meningen ur sidans ingress (redan kontrollerad).
+  2. "Känn igen den:" två till tre fältkännetecken ur sidan.
+  3. "När och var:" månaden med flest fynd ur Artportalen och svensk rödlistestatus om arten är rödlistad.
+  4. "Kan förväxlas med:" en förväxlingsart om sidan har en.
+  5. Uppmaning: "Läs mer på birdy.community (länk i bio)" på Instagram, direktlänk till sidan på Facebook, och "Känn igen den med Birdy-appen".
+  6. Kredit: "Foto: X, licens, via Wikimedia Commons, beskuren".
+  7. Fem till åtta hashtaggar: #fåglar #fågelskådning #svenskafåglar #birdwatching #birdy + artnamnet.
+- **Mallval:** A en bild per inlägg; B en karusell med tre bilder (namn och foto, "Känn igen den", "När och var" med månadsdiagrammet ur Artportalen); senare C en kort video med lätet.
+- **Rytm:** ett inlägg om dagen kl. 08.00 (samma tid som appens Dagens fågel-avisering), i publiceringsordning. Variation per vecka (valfritt): fredag ett "Vem är vem?"-inlägg ur en publicerad jämförelsesida (två foton), söndag "Veckans arter" som karusell.
+- **Facebook vs Instagram:** samma bild; på Facebook är länken klickbar i inlägget, på Instagram står länken i bion (en länksida på birdy.community med veckans arter).
+- **Förväntan:** jämn närvaro och igenkänning; trafiken till sidorna kommer främst från Google, inte från inläggen (länkar i Instagraminlägg är inte klickbara).
+
 ## 16. Faser och beroenden
 
 1. **Fas 1b, pipelinen** (på `main`, rör ingen befintlig webbkod): källor, datamoduler, faktablad, automatisk kontroll, undantagsark och import, skrivande, kontroll, jämförelser, provkörning, körning och kontroll av faktabladen för alla 180. Ny plan. Kodarbetet startar direkt, parallellt med 1.3.0. **Den betalda körningen väntar på API-kredit** i Anthropic Console.
