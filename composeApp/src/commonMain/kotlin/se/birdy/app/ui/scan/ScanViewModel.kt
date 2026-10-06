@@ -7,6 +7,7 @@ package se.birdy.app.ui.scan
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.channels.BufferOverflow
@@ -17,13 +18,19 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.sample
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.datetime.Clock
+import se.birdy.app.util.ioDispatcher
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.CameraSource
 import se.birdy.ml.Classification
 import se.birdy.ml.ClassifierMode
 import se.birdy.ml.ImageInput
 
+// LongParameterList: all but the first two are test seams with defaults. The constructor was
+// already over the limit in the baseline, which is keyed on the signature text, so adding
+// persistDispatcher (Plan 3 Task 7 review) needs the suppression instead of a baseline change.
+@Suppress("LongParameterList")
 class ScanViewModel(
     private val classifier: BirdClassifier,
     cameraSourceFactory: () -> CameraSource,
@@ -36,6 +43,7 @@ class ScanViewModel(
     // init from the species catalog so the live chip never shows a raw Q-id. Default empty
     // keeps tests and previews independent of the content layer.
     private val loadNames: suspend () -> Map<String, String> = { emptyMap() },
+    private val persistDispatcher: CoroutineDispatcher = ioDispatcher,
 ) : ViewModel() {
     private val _state = MutableStateFlow<ScanUiState>(ScanUiState.PermissionRequired)
     val state: StateFlow<ScanUiState> = _state.asStateFlow()
@@ -145,30 +153,47 @@ class ScanViewModel(
             )
     }
 
+    // True from a freeze tap until its frame is written, so a second tap meanwhile is ignored.
+    private var freezing = false
+
     fun onFreeze(persist: (ImageInput) -> String) {
-        if (_state.value is ScanUiState.FrozenAt) return
+        if (_state.value is ScanUiState.FrozenAt || freezing) return
         val snap = lastClassified ?: return
-        val path = runCatching { persist(snap.frame) }.getOrNull() ?: return
         // A freeze must match what the user sees NOW. If the camera stalled (observed on
         // device 2026-06-10: indicator off while ScanScreen was still visible) the last
         // pair can be minutes old — surface it as no-detection, which MatchResultViewModel
         // routes to NoBird. The stale photo is still persisted: it is the only frame we
-        // have, and NoBird's framing ("a blur, a flicker of wings") absorbs it.
-        val isStale = nowMillis() - snap.classification.frameTimestampMillis > FREEZE_FRESHNESS_MS
-        _state.value =
-            if (isStale) {
-                ScanUiState.FrozenAt(
-                    predictions = emptyList(),
-                    frameJpegPath = path,
-                    timestampMillis = nowMillis(),
-                )
-            } else {
-                ScanUiState.FrozenAt(
-                    predictions = snap.classification.sortedByConfidenceDescending(),
-                    frameJpegPath = path,
-                    timestampMillis = snap.classification.frameTimestampMillis,
-                )
+        // have, and NoBird's framing ("a blur, a flicker of wings") absorbs it. Decided at the
+        // tap, not after the write.
+        val tappedAt = nowMillis()
+        val isStale = tappedAt - snap.classification.frameTimestampMillis > FREEZE_FRESHNESS_MS
+        freezing = true
+        viewModelScope.launch {
+            try {
+                // Off the main thread (Release 1.3.0 Plan 3 Task 7 review): on Android persist
+                // turns the frame upright (decode, rotate, re-encode), on iOS it JPEG-encodes a
+                // BGRA frame. It used to run inside the tap handler.
+                val path =
+                    withContext(persistDispatcher) { runCatching { persist(snap.frame) }.getOrNull() }
+                        ?: return@launch
+                _state.value =
+                    if (isStale) {
+                        ScanUiState.FrozenAt(
+                            predictions = emptyList(),
+                            frameJpegPath = path,
+                            timestampMillis = tappedAt,
+                        )
+                    } else {
+                        ScanUiState.FrozenAt(
+                            predictions = snap.classification.sortedByConfidenceDescending(),
+                            frameJpegPath = path,
+                            timestampMillis = snap.classification.frameTimestampMillis,
+                        )
+                    }
+            } finally {
+                freezing = false
             }
+        }
     }
 
     fun onResumeAfterFreeze() {

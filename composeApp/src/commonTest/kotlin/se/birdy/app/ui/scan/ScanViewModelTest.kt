@@ -5,6 +5,7 @@ import app.cash.turbine.test
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
@@ -40,6 +41,7 @@ class ScanViewModelTest {
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { cameraSource },
                     frameThrottling = false,
+                    persistDispatcher = dispatcher,
                 )
             vm.onPermissionResult(granted = true)
             vm.state.test {
@@ -62,6 +64,7 @@ class ScanViewModelTest {
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { cameraSource },
                     frameThrottling = false,
+                    persistDispatcher = dispatcher,
                 )
             vm.onPermissionResult(granted = true)
             vm.state.test {
@@ -87,6 +90,7 @@ class ScanViewModelTest {
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { FakeCameraSource() },
                     frameThrottling = false,
+                    persistDispatcher = dispatcher,
                 )
             vm.state.test {
                 assertEquals(ScanUiState.PermissionRequired, awaitItem())
@@ -102,6 +106,7 @@ class ScanViewModelTest {
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { FakeCameraSource() },
                     frameThrottling = false,
+                    persistDispatcher = dispatcher,
                 )
             vm.state.test {
                 assertEquals(ScanUiState.PermissionRequired, awaitItem())
@@ -120,6 +125,7 @@ class ScanViewModelTest {
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { cameraSource },
                     frameThrottling = false,
+                    persistDispatcher = dispatcher,
                     // Fixed clock 100ms after the frame so the freshness guard sees a live pair.
                     nowMillis = { 142L },
                 )
@@ -154,6 +160,7 @@ class ScanViewModelTest {
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { cameraSource },
                     frameThrottling = false,
+                    persistDispatcher = dispatcher,
                     nowMillis = { 142L },
                 )
             vm.onPermissionResult(granted = true)
@@ -190,6 +197,7 @@ class ScanViewModelTest {
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { cameraSource },
                     frameThrottling = false,
+                    persistDispatcher = dispatcher,
                     nowMillis = { fakeNow },
                 )
             vm.onPermissionResult(granted = true)
@@ -212,6 +220,48 @@ class ScanViewModelTest {
             }
         }
 
+    /**
+     * Release 1.3.0 Plan 3 Task 7 review: on Android persist turns the frame upright (decode,
+     * rotate, re-encode) since 9bb0e25b, and on iOS it JPEG-encodes a BGRA frame. It ran on the
+     * main thread inside the tap handler; it must run on the persist dispatcher instead.
+     */
+    @Test
+    fun freeze_persists_the_frame_off_the_calling_thread() =
+        runTest(dispatcher) {
+            val cameraSource = FakeCameraSource()
+            val persistDispatcher = StandardTestDispatcher(testScheduler)
+            val vm =
+                ScanViewModel(
+                    classifier = FakeBirdClassifier(),
+                    cameraSourceFactory = { cameraSource },
+                    frameThrottling = false,
+                    nowMillis = { 142L },
+                    persistDispatcher = persistDispatcher,
+                )
+            vm.onPermissionResult(granted = true)
+            cameraSource.emit(timestampMillis = 42L)
+            assertIs<ScanUiState.Scanning>(vm.state.value)
+
+            var persisted = 0
+            vm.onFreeze { _ ->
+                persisted++
+                "/cache/scan-frames/bg.jpg"
+            }
+            assertEquals(0, persisted, "persist ran inline in the tap handler")
+            assertIs<ScanUiState.Scanning>(vm.state.value)
+
+            // A second tap while the first frame is still being written is ignored.
+            vm.onFreeze { _ ->
+                persisted++
+                "/cache/scan-frames/second.jpg"
+            }
+            testScheduler.advanceUntilIdle()
+
+            assertEquals(1, persisted)
+            val frozen = assertIs<ScanUiState.FrozenAt>(vm.state.value)
+            assertEquals("/cache/scan-frames/bg.jpg", frozen.frameJpegPath)
+        }
+
     @Test
     fun freeze_without_any_classification_does_nothing() =
         runTest(dispatcher) {
@@ -220,6 +270,7 @@ class ScanViewModelTest {
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { FakeCameraSource() },
                     frameThrottling = false,
+                    persistDispatcher = dispatcher,
                 )
             vm.onPermissionResult(granted = true)
             vm.state.test {
@@ -239,6 +290,7 @@ class ScanViewModelTest {
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { cameraSource },
                     frameThrottling = false,
+                    persistDispatcher = dispatcher,
                     nowMillis = { 142L },
                 )
             vm.onPermissionResult(granted = true)
@@ -265,6 +317,7 @@ class ScanViewModelTest {
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { cameraSource },
                     frameThrottling = false,
+                    persistDispatcher = dispatcher,
                     nowMillis = { 142L },
                 )
             vm.onPermissionResult(granted = true)
@@ -297,6 +350,7 @@ class ScanViewModelTest {
                     classifier = SlowClassifier(latencyMs = 400L),
                     cameraSourceFactory = { cameraSource },
                     frameThrottling = false,
+                    persistDispatcher = dispatcher,
                     nowMillis = { fakeNow.also { fakeNow += 400L } },
                 )
             vm.onPermissionResult(granted = true)
@@ -325,6 +379,7 @@ class ScanViewModelTest {
                     classifier = classifier,
                     cameraSourceFactory = { cameraSource },
                     frameThrottling = false,
+                    persistDispatcher = dispatcher,
                 )
             vm.onPermissionResult(granted = true)
 
@@ -360,6 +415,7 @@ class ScanViewModelTest {
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { FakeCameraSource() },
                     frameThrottling = false,
+                    persistDispatcher = dispatcher,
                 )
             assertEquals(ClassifierMode.REAL, vmReal.classifierMode, "default must be REAL")
 
@@ -369,6 +425,7 @@ class ScanViewModelTest {
                     cameraSourceFactory = { FakeCameraSource() },
                     classifierMode = ClassifierMode.DEMO,
                     frameThrottling = false,
+                    persistDispatcher = dispatcher,
                 )
             assertEquals(ClassifierMode.DEMO, vmDemo.classifierMode, "DEMO must round-trip via constructor")
         }
