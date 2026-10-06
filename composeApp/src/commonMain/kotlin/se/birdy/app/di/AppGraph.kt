@@ -10,11 +10,12 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.json.Json
 import se.birdy.app.badges.RecalculateBadgesUseCase
 import se.birdy.app.bootstrap.BadgeBackfillOnAppStart
 import se.birdy.app.bootstrap.BadgeVersionStore
+import se.birdy.app.dailybird.DailyBirdSpecies
+import se.birdy.app.dailybird.DailyBirdTracker
 import se.birdy.app.data.premium.FormattedPrices
 import se.birdy.app.data.premium.PurchaseResult
 import se.birdy.app.location.LocationProvider
@@ -285,6 +286,30 @@ class AppGraph(
         )
     }
 
+    /**
+     * Today's bird for every daily-bird surface (release 1.3.0 Task 7d): the Identify hero, the
+     * strips on Mina arter/Uppslagsverk and the Identify tab's dot. AppScaffold refreshes it at
+     * every start/foreground, every save refreshes it, and every species profile reports opens.
+     */
+    val dailyBirdTracker: DailyBirdTracker by lazy {
+        DailyBirdTracker(
+            select = selectDailyBird,
+            species = { qid ->
+                repository.getById(SpeciesId(qid), defaultLocale).first()?.let { species ->
+                    DailyBirdSpecies(
+                        name = species.name,
+                        scientificName = species.scientificName,
+                        heroImagePath = species.images.firstOrNull { it.role == "hero" }?.path,
+                    )
+                }
+            },
+            history = dailyBirdHistory,
+            prefs = userPreferences,
+            now = { clock.now() },
+            timeZone = timeZone,
+        )
+    }
+
     private val inAppReviewTrigger: InAppReviewTrigger =
         InAppReviewTrigger(prefs = userPreferences, launchReview = requestInAppReview)
 
@@ -299,19 +324,8 @@ class AppGraph(
             speciesByQid = { repository.allByQid(defaultLocale) },
             onObservationSaved = { obs ->
                 val speciesId = obs.speciesId
-                if (speciesId != null) {
-                    dailyBirdHistory?.let { history ->
-                        val today =
-                            Clock.System
-                                .now()
-                                .toLocalDateTime(TimeZone.currentSystemDefault())
-                                .date
-                        val todayBird = history.speciesIdForDate(today)
-                        if (todayBird == speciesId) {
-                            history.markMatch(today, speciesId)
-                        }
-                    }
-                }
+                // Marks the catch when this is today's bird, also after midnight with the app left open.
+                if (speciesId != null) dailyBirdTracker.onSaved(speciesId)
                 inAppReviewTrigger.onObservationSaved(
                     observationRepository.observeAll().first().size,
                 )
@@ -331,7 +345,13 @@ class AppGraph(
         )
 
     fun speciesProfileViewModel(speciesId: SpeciesId): SpeciesProfileViewModel =
-        SpeciesProfileViewModel(repository, speciesId, defaultLocale)
+        SpeciesProfileViewModel(
+            repo = repository,
+            speciesId = speciesId,
+            locale = defaultLocale,
+            // Opening today's bird from anywhere (hero, strip, search, notification) clears the tab dot.
+            onOpened = { dailyBirdTracker.onSpeciesOpened(speciesId.raw) },
+        )
 
     fun scanViewModel(): ScanViewModel =
         ScanViewModel(
@@ -433,26 +453,7 @@ class AppGraph(
             formattedPricesFlow = formattedPricesFlow ?: MutableStateFlow(FormattedPrices()),
         )
 
-    fun listenLauncherViewModel(): ListenLauncherViewModel =
-        ListenLauncherViewModel(
-            selectDailyBird = selectDailyBird,
-            getSpeciesName = { qid -> repository.getById(SpeciesId(qid), defaultLocale).first()?.name },
-            getSpeciesHeroPath = { qid ->
-                repository
-                    .getById(SpeciesId(qid), defaultLocale)
-                    .first()
-                    ?.images
-                    ?.firstOrNull { it.role == "hero" }
-                    ?.path
-            },
-            recordDailyBirdShown =
-                dailyBirdHistory?.let { history ->
-                    { date, sid -> history.recordToday(date, sid) }
-                },
-            dailyBirdMatchCount = { dailyBirdHistory?.totalMatchCount() ?: 0 },
-            isDailyBirdCaught = { date -> dailyBirdHistory?.isMatched(date) ?: false },
-            huntTarget = 3, // premium_daily_bird_hunter target
-        )
+    fun listenLauncherViewModel(): ListenLauncherViewModel = ListenLauncherViewModel(dailyBird = dailyBirdTracker.state)
 
     fun onboardingViewModel(isReplay: Boolean = false): OnboardingViewModel =
         OnboardingViewModel(prefs = userPreferences, isReplay = isReplay)

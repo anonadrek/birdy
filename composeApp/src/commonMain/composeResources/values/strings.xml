@@ -2,6 +2,7 @@
 <resources>
     <!-- Bottom-nav -->
     <string name="tab_listen">Identifiera</string>
+    <string name="tab_listen_daily_bird_new">Dagens fågel väntar</string>
     <string name="tab_archive">Uppslagsverk</string>
     <string name="tab_lifelist">Mina arter</string>
     <string name="tab_badges">Märken</string>
@@ -668,12 +669,61 @@
 
     <!-- ===== v1.1 Phase A: Daily Bird + Streak Risk + 3 badges ===== -->
 
-    <!-- Daily Bird card -->
-    <string name="daily_bird_card_eyebrow">DAGENS FÅGEL</string>
-    <string name="daily_bird_eyebrow_breeding">Häckar nu i Sverige</string>
-    <string name="daily_bird_eyebrow_present">Här just nu</string>
-    <string name="daily_bird_eyebrow_migrating">På sträck</string>
-    <string name="daily_bird_card_a11y">Dagens fågel: %1$s. %2$s. Tryck för att läsa mer.</string>
+    <!-- Daily Bird: Identify hero, strips on Mina arter/Uppslagsverk, tab dot (release 1.3.0 Task 7d).
+         The day count is distinct days on which that day's bird was saved (all time, not in a row);
+         the target is the Dagens fågel-jägare badge. -->
+    <string name="daily_bird_card_eyebrow">Dagens fågel</string>
+    <string name="daily_bird_kicker_fmt">Dagens fågel · %1$s</string>
+    <string name="daily_bird_date_fmt">%1$s %2$d %3$s</string>
+    <string name="daily_bird_weekday_mon">mån</string>
+    <string name="daily_bird_weekday_tue">tis</string>
+    <string name="daily_bird_weekday_wed">ons</string>
+    <string name="daily_bird_weekday_thu">tors</string>
+    <string name="daily_bird_weekday_fri">fre</string>
+    <string name="daily_bird_weekday_sat">lör</string>
+    <string name="daily_bird_weekday_sun">sön</string>
+    <string name="daily_bird_date_full_fmt">%1$s %2$d %3$s</string>
+    <string name="daily_bird_weekday_full_mon">måndag</string>
+    <string name="daily_bird_weekday_full_tue">tisdag</string>
+    <string name="daily_bird_weekday_full_wed">onsdag</string>
+    <string name="daily_bird_weekday_full_thu">torsdag</string>
+    <string name="daily_bird_weekday_full_fri">fredag</string>
+    <string name="daily_bird_weekday_full_sat">lördag</string>
+    <string name="daily_bird_weekday_full_sun">söndag</string>
+    <string name="daily_bird_month_full_jan">januari</string>
+    <string name="daily_bird_month_full_feb">februari</string>
+    <string name="daily_bird_month_full_mar">mars</string>
+    <string name="daily_bird_month_full_apr">april</string>
+    <string name="daily_bird_month_full_may">maj</string>
+    <string name="daily_bird_month_full_jun">juni</string>
+    <string name="daily_bird_month_full_jul">juli</string>
+    <string name="daily_bird_month_full_aug">augusti</string>
+    <string name="daily_bird_month_full_sep">september</string>
+    <string name="daily_bird_month_full_oct">oktober</string>
+    <string name="daily_bird_month_full_nov">november</string>
+    <string name="daily_bird_month_full_dec">december</string>
+    <string name="daily_bird_hero_a11y">Dagens fågel, %1$s: %2$s, %3$s.</string>
+    <string name="daily_bird_read_more">Läs om arten</string>
+    <string name="daily_bird_listen_for_it">Lyssna efter den</string>
+    <string name="daily_bird_save_a_find_today">Spara ett fynd av arten idag.</string>
+    <string name="daily_bird_badge_complete">Märket är klart.</string>
+    <string name="daily_bird_one_day_left">En dag kvar till märket.</string>
+    <string name="daily_bird_two_days_left">Två dagar kvar till märket.</string>
+    <plurals name="daily_bird_days_left">
+        <item quantity="one">En dag kvar till märket.</item>
+        <item quantity="other">%1$d dagar kvar till märket.</item>
+    </plurals>
+    <plurals name="daily_bird_days_of_target">
+        <item quantity="one">%1$d av %2$d dag</item>
+        <item quantity="other">%1$d av %2$d dagar</item>
+    </plurals>
+    <plurals name="daily_bird_days_total">
+        <item quantity="one">%1$d dag</item>
+        <item quantity="other">%1$d dagar</item>
+    </plurals>
+    <string name="daily_bird_challenge_a11y">%1$s. %2$s %3$s.</string>
+    <string name="daily_bird_strip_status_fmt">%1$s · %2$s</string>
+    <string name="daily_bird_strip_a11y">Dagens fågel: %1$s. %2$s, %3$s.</string>
 
     <!-- Permission prompt sheet -->
     <string name="permission_prompt_eyebrow">AVISERINGAR</string>
@@ -689,11 +739,9 @@
 
     <!-- Notifications -->
     <string name="notification_daily_bird_title_fmt">Dagens fågel: %1$s</string>
-    <string name="notification_daily_bird_body_breeding">Häckar nu i Sverige.</string>
-    <string name="notification_daily_bird_body_present">Här just nu.</string>
-    <string name="notification_daily_bird_body_migrating">På sträck just nu.</string>
-    <string name="daily_bird_caught_today">Fångad idag ✓</string>
-    <string name="daily_bird_not_caught">Inte fångad än</string>
+    <string name="notification_daily_bird_body">Kan du fånga den idag? Kika, foto eller läte räknas.</string>
+    <string name="daily_bird_caught_today">Fångad idag</string>
+    <string name="daily_bird_not_caught">Inte fångad idag</string>
     <string name="settings_toggle_trophy">Märkesprogression — veckovis</string>
     <string name="notification_trophy_title">Mot nästa märke</string>
     <string name="notification_trophy_body_fmt">%1$s av %2$s märken upplåsta. Närmast: %3$s (%4$s/%5$s).</string>

@@ -85,4 +85,17 @@ class InMemoryUserPreferencesTest {
             assertEquals(ArchiveSort.RECENT, prefs.archiveSort.first())
             assertEquals(LifelistSort.STAMP_NUMBER, prefs.lifelistSort.first())
         }
+
+    @Test
+    fun `dailyBirdOpenedDate starts null and keeps the last opened date`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            prefs.dailyBirdOpenedDate.test {
+                assertEquals(null, awaitItem())
+                prefs.setDailyBirdOpenedDate("2026-10-06")
+                assertEquals("2026-10-06", awaitItem())
+                prefs.setDailyBirdOpenedDate("2026-10-07")
+                assertEquals("2026-10-07", awaitItem())
+            }
+        }
 }

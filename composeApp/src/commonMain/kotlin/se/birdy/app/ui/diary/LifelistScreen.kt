@@ -106,6 +106,7 @@ import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
 import se.birdy.app.ui.components.hairlineBottom
 import se.birdy.app.ui.components.parseJournalHeadline
+import se.birdy.app.ui.dailybird.DailyBirdStrip
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.AccentCopperLight
 import se.birdy.app.ui.theme.Hairline
@@ -125,6 +126,10 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.datastore.LifelistSort
 import se.birdy.datastore.LifelistStat3Choice
 
+// Pre-existing debt (LongParameterList/LongMethod/CyclomaticComplexMethod in detekt-baseline.xml): detekt keys
+// baseline entries by the signature text, so Task 7d's two daily-bird parameters re-key them without
+// changing the function's real size. Suppressed here instead of growing the baseline (AppScaffold precedent).
+@Suppress("LongParameterList")
 @Composable
 fun LifelistScreen(
     viewModel: LifelistViewModel,
@@ -135,13 +140,20 @@ fun LifelistScreen(
     livePreviewState: se.birdy.app.ui.stats.SeasonStatsUiState.Loaded? = null,
     onSeasonStatsClick: () -> Unit = {},
     onRecapClick: () -> Unit = {},
+    dailyBird: se.birdy.app.dailybird.DailyBirdToday? = null,
+    onDailyBirdClick: (speciesId: String) -> Unit = {},
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    // Release 1.3.0 Task 7d (design option B): the Dagens fågel strip, under the totals.
+    val dailyBirdStrip: (@Composable () -> Unit)? =
+        dailyBird?.let { bird ->
+            { DailyBirdStrip(bird = bird, onClick = { onDailyBirdClick(bird.speciesId) }) }
+        }
     JournalScaffold { padding ->
         Box(modifier = Modifier.fillMaxSize().padding(padding)) {
             when (val s = state) {
                 LifelistUiState.Loading -> JournalLoading()
-                LifelistUiState.Empty -> EmptyLifelist(onScanCtaClick = onScanCtaClick)
+                LifelistUiState.Empty -> EmptyLifelist(onScanCtaClick = onScanCtaClick, dailyBirdStrip = dailyBirdStrip)
                 is LifelistUiState.Loaded ->
                     LoadedLifelist(
                         state = s,
@@ -153,6 +165,7 @@ fun LifelistScreen(
                         livePreviewState = livePreviewState,
                         onSeasonStatsClick = onSeasonStatsClick,
                         onRecapClick = onRecapClick,
+                        dailyBirdStrip = dailyBirdStrip,
                     )
             }
         }
@@ -162,7 +175,10 @@ fun LifelistScreen(
 // ─── Empty state ─────────────────────────────────────────────────────────────
 
 @Composable
-private fun EmptyLifelist(onScanCtaClick: () -> Unit) {
+private fun EmptyLifelist(
+    onScanCtaClick: () -> Unit,
+    dailyBirdStrip: (@Composable () -> Unit)? = null,
+) {
     val caveat = rememberCaveat()
     Column(modifier = Modifier.fillMaxSize()) {
         JournalIntro(
@@ -170,6 +186,7 @@ private fun EmptyLifelist(onScanCtaClick: () -> Unit) {
             headline = stringResource(Res.string.lifelist_journal_headline_anonymous),
             sub = stringResource(Res.string.lifelist_journal_sub_empty),
         )
+        dailyBirdStrip?.invoke()
         Column(
             modifier = Modifier.fillMaxSize().padding(horizontal = 32.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -200,6 +217,10 @@ private fun EmptyLifelist(onScanCtaClick: () -> Unit) {
 
 // ─── Loaded state ─────────────────────────────────────────────────────────────
 
+// Pre-existing debt (LongParameterList/LongMethod/CyclomaticComplexMethod in detekt-baseline.xml): detekt keys
+// baseline entries by the signature text, so Task 7d's two daily-bird parameters re-key them without
+// changing the function's real size. Suppressed here instead of growing the baseline (AppScaffold precedent).
+@Suppress("LongParameterList", "LongMethod")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun LoadedLifelist(
@@ -212,6 +233,7 @@ private fun LoadedLifelist(
     livePreviewState: se.birdy.app.ui.stats.SeasonStatsUiState.Loaded? = null,
     onSeasonStatsClick: () -> Unit = {},
     onRecapClick: () -> Unit = {},
+    dailyBirdStrip: (@Composable () -> Unit)? = null,
 ) {
     // Refresh every minute so relative timestamps ("just now" → "2 min ago") don't
     // freeze if the Lifelist is left open in the foreground.
@@ -285,6 +307,12 @@ private fun LoadedLifelist(
                     stat3 = StatItem(labelStat3, state.stat3.value.toString()),
                     onStat3Click = onStat3Toggle,
                 )
+            }
+        }
+
+        if (dailyBirdStrip != null) {
+            item(key = "daily-bird") {
+                Box(Modifier.padding(bottom = 10.dp)) { dailyBirdStrip() }
             }
         }
 

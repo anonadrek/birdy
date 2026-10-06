@@ -22,6 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavGraphBuilder
@@ -174,6 +175,10 @@ fun AppScaffold(
                 val host = parts.getOrNull(0) ?: return@collect
                 val pathSegment = parts.getOrNull(1)?.substringBefore("?")?.takeIf { it.isNotBlank() }
                 when (host) {
+                    // Release 1.3.0 Task 7d: the daily-bird notification's "Lyssna efter den".
+                    "audio" -> {
+                        navController.navigate(AppRoute.AudioScan) { launchSingleTop = true }
+                    }
                     "species" -> {
                         val qid = pathSegment ?: return@collect
                         navController.navigate(AppRoute.SpeciesProfile(qid)) {
@@ -190,6 +195,14 @@ fun AppScaffold(
             }
         }
     }
+    // Release 1.3.0 Task 7d: today's bird for the hero, the strips and the tab dot. Reloaded at every
+    // start/return to the foreground and, while the app stays visible, just after each midnight, so a
+    // new date (new bird, dot back) shows without a restart.
+    LifecycleStartEffect(graph) {
+        val job = scope.launch { graph.dailyBirdTracker.refreshNowAndAtMidnight() }
+        onStopOrDispose { job.cancel() }
+    }
+    val dailyBirdDot by graph.dailyBirdTracker.showTabDot.collectAsState(initial = false)
     var showPermissionSheet by remember { mutableStateOf(false) }
     val notifApi = graph.platformNotificationsApi
     val requestPerm = graph.requestPostNotificationsPermission
@@ -235,7 +248,7 @@ fun AppScaffold(
     // The bottom bar already pads the navigation bar; with it hidden the screen pads it itself.
     val navBarsHandledByBottomBar = if (hideBottomBar) WindowInsets(0, 0, 0, 0) else WindowInsets.navigationBars
     Scaffold(
-        bottomBar = { if (!hideBottomBar) BottomNavBar(navController) },
+        bottomBar = { if (!hideBottomBar) BottomNavBar(navController, dailyBirdDot = dailyBirdDot) },
         snackbarHost = { SnackbarHost(snackbarHostState) { data -> CaveatToast(data) } },
         // Each screen handles the status bar itself (BelowStatusBar, or a PhotoHero drawn behind
         // it). Bottom: the bottom bar pads the navigation bar; with it hidden (Premium, intro
@@ -361,6 +374,7 @@ private fun NavGraphBuilder.appDestinations(
     navigation<AppRoute.Archive>(startDestination = AppRoute.ArchiveList) {
         composable<AppRoute.ArchiveList> {
             BelowStatusBar {
+                val dailyBird by graph.dailyBirdTracker.state.collectAsState()
                 ArchiveScreen(
                     viewModel = remember(graph) { graph.archiveViewModel() },
                     locale = graph.defaultLocale,
@@ -373,6 +387,10 @@ private fun NavGraphBuilder.appDestinations(
                     showDebugDiagnostics = graph.diagnosticsScreen != null,
                     onDebugDiagnosticsClick = { navController.navigate(AppRoute.DebugDiagnostics) },
                     onSettingsClick = { navController.navigate(AppRoute.Settings) },
+                    dailyBird = dailyBird,
+                    onDailyBirdClick = { id ->
+                        navController.navigate(AppRoute.SpeciesProfile(id)) { launchSingleTop = true }
+                    },
                 )
             }
         }
@@ -401,6 +419,7 @@ private fun NavGraphBuilder.appDestinations(
                 } else {
                     null
                 }
+            val dailyBird by graph.dailyBirdTracker.state.collectAsState()
             LifelistScreen(
                 viewModel = remember(graph) { graph.lifelistViewModel() },
                 onObservationClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
@@ -415,6 +434,10 @@ private fun NavGraphBuilder.appDestinations(
                 livePreviewState = livePreviewState,
                 onSeasonStatsClick = { navController.navigate(AppRoute.SeasonStats) },
                 onRecapClick = { navController.navigate(AppRoute.WeeklyRecap) { launchSingleTop = true } },
+                dailyBird = dailyBird,
+                onDailyBirdClick = { id ->
+                    navController.navigate(AppRoute.SpeciesProfile(id)) { launchSingleTop = true }
+                },
             )
         }
     }
