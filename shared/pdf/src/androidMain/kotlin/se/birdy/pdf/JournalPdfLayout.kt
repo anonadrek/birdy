@@ -56,10 +56,9 @@ internal object JournalPdfLayout {
 
         val teaserPaint = caveatPaint(textSize = JournalPdfMetrics.TITLE_TEASER, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)
         val teaserText =
-            JournalPdfMetrics.fmt(
-                JournalPdfMetrics.TEASER_FMT,
-                "${input.stats.speciesSeenThisYear}",
-                "${input.stats.totalObservationsThisYear}",
+            JournalPdfMetrics.teaser(
+                speciesSeen = input.stats.speciesSeenThisYear,
+                finds = input.stats.totalObservationsThisYear,
             )
         canvas.drawText(teaserText, JournalPdfMetrics.PAGE_W / 2f, JournalPdfMetrics.MARGIN_TOP + 322f, teaserPaint)
 

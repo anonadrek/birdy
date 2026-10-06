@@ -49,10 +49,12 @@ import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_empty_caveat_cta
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_empty_marginalia
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_empty_stamp_name
+import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_days
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_headline
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_headline_anonymous
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_headline_no_name
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_label
+import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_species_found
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_sub
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_sub_empty
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_month_header
@@ -294,12 +296,7 @@ private fun LoadedLifelist(
                                 ),
                             )
                         },
-                    sub =
-                        stringResource(
-                            Res.string.lifelist_journal_sub,
-                            state.daysActive.toString(),
-                            state.speciesCount.toString(),
-                        ),
+                    sub = lifelistJournalSub(daysActive = state.daysActive, speciesCount = state.speciesCount),
                 )
                 StatRow(
                     stat1 = StatItem(labelStat1, state.speciesCount.toString()),
@@ -331,7 +328,9 @@ private fun LoadedLifelist(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    text = stringResource(Res.string.lifelist_section_recent, state.stampsCount.toString()).uppercase(),
+                    text =
+                        pluralStringResource(Res.plurals.lifelist_section_recent, state.stampsCount, state.stampsCount)
+                            .uppercase(),
                     color = MarginaliaInk,
                     fontSize = 9.sp,
                     fontWeight = FontWeight.W700,
@@ -535,7 +534,12 @@ private fun RecapEntryCard(
                 )
                 if (preview.findCount > 0) {
                     Text(
-                        text = stringResource(Res.string.recap_summary_active_fmt, preview.findCount.toString()),
+                        text =
+                            pluralStringResource(
+                                Res.plurals.recap_summary_active_fmt,
+                                preview.findCount,
+                                preview.findCount,
+                            ),
                         color = TextOnHero.copy(alpha = 0.8f),
                         fontFamily = caveat,
                         fontSize = 15.sp,
@@ -747,3 +751,18 @@ private fun relativeTime(
         else -> stringResource(Res.string.lifelist_relative_days, diffD.toString())
     }
 }
+
+/**
+ * "12 dagar. 30 arter funna." under the journal headline. Each count has its own plural, so one
+ * day and one species read "1 dag. 1 art funnen." (release 1.3.0 Task 7g; was "1 dagar. 1 funna.").
+ */
+@Composable
+internal fun lifelistJournalSub(
+    daysActive: Int,
+    speciesCount: Int,
+): String =
+    stringResource(
+        Res.string.lifelist_journal_sub,
+        pluralStringResource(Res.plurals.lifelist_journal_days, daysActive, daysActive),
+        pluralStringResource(Res.plurals.lifelist_journal_species_found, speciesCount, speciesCount),
+    )
