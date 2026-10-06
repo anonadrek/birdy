@@ -344,6 +344,19 @@ def _flag_decisions(rows: list[dict[str, str]], **decisions: str) -> list[dict[s
     return out
 
 
+def _decide_flag(rows: list[dict[str, str]], **changes: tuple[str, str]) -> list[dict[str, str]]:
+    """changes: fact id -> (Beslut, Faktum), for flagga rows -- the V1 ändra case, where the
+    replacement status label goes in the Faktum column like it does for a faktum/status row
+    (`_decide` above explicitly skips flagga rows, so a separate helper is needed here)."""
+    out = []
+    for row in rows:
+        row = dict(row)
+        if row["Typ"] == "flagga" and row["Id"] in changes:
+            row["Beslut"], row["Faktum"] = changes[row["Id"]]
+        out.append(row)
+    return out
+
+
 def test_a_flagged_species_only_needs_its_flags_decided() -> None:
     record = _flagged()
     rows = _flag_decisions(flag_rows(record), s01=KEEP)
@@ -524,6 +537,84 @@ def test_import_wave_removes_the_struck_audio_file(tmp_path: Path) -> None:
     result = import_wave(paths, sheet, date="2026-11-20")
     assert result.removed_audio == ["Q1"]
     assert not voice.exists()
+
+
+def _v1_flagged(qid: str = "Q25485") -> Record:
+    """A species whose status fact (s01) the fact checker (V1) struck: `strike_unsupported`
+    already dropped it from `record["facts"]` before the flag was written, so the flag row
+    is all that is left pointing at it."""
+    record = _record(qid)
+    record["facts"] = [f for f in record["facts"] if f["id"] != "s01"]
+    record["flags"] = [
+        {
+            "check": "V1",
+            "factId": "s01",
+            "message": (
+                "Statusen i Sverige ströks av faktakontrollen: skäl. Bestäm status eller lämna tom."
+            ),
+        }
+    ]
+    return record
+
+
+def test_v1_flag_andra_recreates_the_status_fact_and_verifies() -> None:
+    record = _v1_flagged()
+    rows = _decide_flag(flag_rows(record), s01=(CHANGE, "Flyttfågel, häckar här"))
+    result = apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert result.changed == ["Q25485"]
+    status = next(f for f in record["facts"] if f["id"] == "s01")
+    assert status == {
+        "id": "s01",
+        "topic": "status",
+        "value": "breeding_migrant",
+        "sv": "Flyttfågel, häckar här",
+        "sources": [],
+        "edited": True,
+    }
+    assert record["verification"] is not None
+
+
+def test_v1_flag_andra_with_a_data_contradiction_adds_a_v3_flag_and_withholds_verification() -> (
+    None
+):
+    record = _v1_flagged()
+    record["data"] = {"months": [0, *([50] * 11)], "totalReports": 1000}
+    rows = _decide_flag(flag_rows(record), s01=(CHANGE, "Stannfågel"))
+    result = apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert result.changed == ["Q25485"]
+    assert "verification" not in record
+    assert record["flags"] == [
+        {
+            "check": "V3",
+            "factId": "s01",
+            "message": (
+                "Statusen säger stannfågel, men arten rapporteras nästan aldrig i januari."
+            ),
+        }
+    ]
+    status = next(f for f in record["facts"] if f["id"] == "s01")
+    assert status["value"] == "resident"
+
+
+def test_v1_flag_andra_with_an_invalid_label_stops_the_import() -> None:
+    record = _v1_flagged()
+    rows = _decide_flag(flag_rows(record), s01=(CHANGE, "kanske"))
+    with pytest.raises(ReviewImportError) as error:
+        apply_review({"Q25485": record}, rows, date="2026-11-20")
+    message = str(error.value)
+    assert "s01" in message
+    assert "Stannfågel" in message  # one of the six valid labels is listed in the error
+    assert all(f["id"] != "s01" for f in record["facts"])
+    assert "verification" not in record
+
+
+def test_v1_flag_behall_leaves_the_status_empty_and_verifies() -> None:
+    record = _v1_flagged()
+    rows = _flag_decisions(flag_rows(record), s01=KEEP)
+    result = apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert result.changed == ["Q25485"]
+    assert all(f["id"] != "s01" for f in record["facts"])
+    assert record["verification"] is not None
 
 
 def test_import_rejects_an_unknown_species(tmp_path: Path) -> None:

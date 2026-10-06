@@ -15,9 +15,11 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+from .datamod import status_contradiction
 from .facts import STATUS_BY_SV, STATUS_SV, TOPIC_SV
 from .paths import WebPaths
 from .record import Record, facts_hash, is_reviewed, load_all, record_path, save_record
+from .verify import status_flags
 from .waves import WAVES_FILE, read_waves
 
 COLUMNS = [
@@ -398,7 +400,17 @@ def _validate(records: dict[str, Record], by_qid: dict[str, list[dict[str, str]]
             if typ == "data":
                 continue
             if typ == "flagga":
-                if decision not in (KEEP, STRIKE):
+                # V1 on s01 (review fix 2026-10-06): the fact checker struck the status
+                # fact, so Albin can set one from the sheet instead of only keeping it
+                # empty -- same six labels as an `ändra` on a status row elsewhere.
+                check = r["Kontroll"].strip()
+                if check == "V1" and fid == "s01":
+                    if decision not in (KEEP, STRIKE, CHANGE):
+                        errors.append(f"{qid}: skriv behåll, stryk eller ändra på flaggan")
+                    elif decision == CHANGE and r["Faktum"].strip() not in STATUS_BY_SV:
+                        labels = ", ".join(STATUS_SV.values())
+                        errors.append(f"{qid} {fid}: skriv en av {labels}")
+                elif decision not in (KEEP, STRIKE):
                     errors.append(f"{qid}: skriv behåll eller stryk på flaggan")
                 continue
             if decision not in (KEEP, STRIKE, CHANGE):
@@ -417,7 +429,14 @@ def _validate(records: dict[str, Record], by_qid: dict[str, list[dict[str, str]]
     return errors
 
 
-def _apply_one(record: Record, rows: list[dict[str, str]], result: ImportResult) -> None:
+def _apply_one(
+    record: Record, rows: list[dict[str, str]], result: ImportResult
+) -> list[dict[str, Any]]:
+    """Applies Albin's decisions to one species' facts and flags. Returns any new V3 flags
+    produced by re-checking a status Albin just set via a V1 `ändra` on the struck status
+    fact (review fix 2026-10-06; empty otherwise). `apply_review` uses a non-empty return to
+    hold the species back from `verification` instead of marking it reviewed with a fresh,
+    unchecked status."""
     decisions = {r["Id"].strip(): r for r in rows if r["Typ"].strip() in ("faktum", "status")}
     facts: list[dict[str, Any]] = []
     for fact in record.get("facts", []):
@@ -439,6 +458,7 @@ def _apply_one(record: Record, rows: list[dict[str, str]], result: ImportResult)
                 fact = {**fact, "sv": text, "edited": True}
         facts.append(fact)
     review = record.setdefault("review", {})
+    new_status: dict[str, Any] | None = None
     for row in rows:
         typ, decision = row["Typ"].strip(), _decision(row)
         if typ != "flagga":
@@ -454,18 +474,44 @@ def _apply_one(record: Record, rows: list[dict[str, str]], result: ImportResult)
             result.removed_audio.append(str(record["qid"]))
         elif check == "V2" and decision == STRIKE:
             facts = [f for f in facts if f["id"] != fid]
-    record["facts"] = facts
+        elif check == "V1" and fid == "s01" and decision == CHANGE:
+            text = row["Faktum"].strip()
+            new_status = {
+                "id": "s01",
+                "topic": "status",
+                "value": STATUS_BY_SV[text],
+                "sv": text,
+                "sources": [],
+                "edited": True,
+            }
+    if new_status is None:
+        record["facts"] = facts
+        return []
+    # behåll/stryk on the V1 flag both just leave the status empty (it is already gone from
+    # `facts`, struck by the fact checker before the flag was written) -- only ändra needs
+    # this recreate-and-recheck path.
+    record["facts"] = [*(f for f in facts if f["id"] != "s01"), new_status]
+    data = record.get("data")
+    if data is not None:
+        reason = status_contradiction(
+            new_status["value"], data.get("months"), int(data.get("totalReports", 0))
+        )
+        data["statusSignal"] = {"contradicts": reason}
+    return status_flags(record)
 
 
 def apply_review(
     records: dict[str, Record], rows: list[dict[str, str]], *, date: str
 ) -> ImportResult:
     """Validates the whole sheet first (spec Revision 2026-10-05); changes nothing if any
-    row is wrong. For every affected species, applies Albin's decisions and then sets
-    `verification` (the sole "is this species' facts ready to write text from" flag now
-    that `review.facts` is gone) and refreshes `generated.verify.factsHash` to match the
-    edited facts (Task 17 requirement 4) so a later `web verify` run sees its own facts as
-    already current and does not re-run V1 on text Albin just hand-corrected."""
+    row is wrong. For every affected species, applies Albin's decisions and refreshes
+    `generated.verify.factsHash` to match the edited facts (Task 17 requirement 4) so a
+    later `web verify` run sees its own facts as already current and does not re-run V1 on
+    text Albin just hand-corrected. `verification` (the sole "is this species' facts ready
+    to write text from" flag now that `review.facts` is gone) is then set as usual -- unless
+    Albin just set a status via a V1 `ändra` and the V3 recheck found it contradicts the
+    report data or the red list (review fix 2026-10-06): the species then keeps that new
+    flag instead and stays pending for another round."""
     by_qid: dict[str, list[dict[str, str]]] = {}
     for row in rows:
         by_qid.setdefault(row["QID"].strip(), []).append(row)
@@ -475,10 +521,14 @@ def apply_review(
     result = ImportResult()
     for qid, qrows in by_qid.items():
         record = records[qid]
-        _apply_one(record, qrows, result)
+        new_flags = _apply_one(record, qrows, result)
         spot_checked = any(r["Typ"].strip() in ("faktum", "status") for r in qrows)
         verify_meta = record.setdefault("generated", {}).setdefault("verify", {})
         verify_meta["factsHash"] = facts_hash(record)
+        if new_flags:
+            record["flags"] = new_flags
+            result.changed.append(qid)
+            continue
         record["verification"] = {
             "method": "auto",
             "at": date,
