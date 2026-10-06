@@ -7,6 +7,10 @@ class SpeciesValidator(
     private val imageRoot: Path,
     private val expectedCount: Int,
     private val overrides: Map<String, OverrideEntry>,
+    // The image folder must hold exactly the files the YAML points at: a file
+    // nothing references still ships (iOS bundles the whole folder). Off by
+    // default because the test fixtures share one image folder.
+    private val checkOrphans: Boolean = false,
 ) {
     fun validate(items: List<Pair<Path, SpeciesYaml>>): List<ValidationError> {
         val errors = mutableListOf<ValidationError>()
@@ -28,8 +32,24 @@ class SpeciesValidator(
                     ValidationError(yaml.id, "duplicate-id", "id appears in multiple files")
             }
         }
+        if (checkOrphans) errors += orphanImages(items)
 
         return errors
+    }
+
+    private fun orphanImages(items: List<Pair<Path, SpeciesYaml>>): List<ValidationError> {
+        if (!Files.isDirectory(imageRoot)) return emptyList()
+        val referenced = items.flatMap { (_, yaml) -> yaml.image_refs.map { it.path } }.toSet()
+        return Files
+            .walk(imageRoot)
+            .use { stream ->
+                stream
+                    .filter { Files.isRegularFile(it) }
+                    .map { imageRoot.relativize(it).joinToString("/") }
+                    .filter { it !in referenced }
+                    .sorted()
+                    .toList()
+            }.map { ValidationError("(global)", "image-orphan", "$it is not referenced by any image_refs") }
     }
 
     private fun validateOne(
@@ -98,6 +118,7 @@ class SpeciesValidator(
                         "${img.path} missing license/author/source_url",
                     )
             }
+            errors += validateCredit(yaml.id, img)
         }
 
         if (yaml.image_refs.isEmpty() && overrides[yaml.id]?.allowMissingImages != true) {
@@ -112,7 +133,43 @@ class SpeciesValidator(
         return errors
     }
 
+    private fun validateCredit(
+        species: String,
+        img: ImageRefYaml,
+    ): List<ValidationError> {
+        val errors = mutableListOf<ValidationError>()
+        if (img.license !in ALLOWED_LICENSES) {
+            errors +=
+                ValidationError(
+                    species,
+                    "image-license-not-allowed",
+                    "${img.path} has licence '${img.license}' (allowed: ${ALLOWED_LICENSES.joinToString()})",
+                )
+        }
+        if ('<' in img.author || '>' in img.author) {
+            errors += ValidationError(species, "image-author-html", "${img.path} author is HTML, not a name")
+        }
+        val needsName = img.license in ALLOWED_LICENSES && img.license !in PUBLIC_DOMAIN_LICENSES
+        if (needsName && img.author.trim().lowercase() in UNNAMED_AUTHORS) {
+            errors +=
+                ValidationError(
+                    species,
+                    "image-author-missing",
+                    "${img.path} is ${img.license} but credits '${img.author}'",
+                )
+        }
+        return errors
+    }
+
     companion object {
+        // Release 1.3.0: the app may only ship photos under these licences
+        // (mirrors tools/content-pipeline/src/birdy_fetcher/credits.py).
+        val PUBLIC_DOMAIN_LICENSES = setOf("CC0", "Public domain")
+        val ALLOWED_LICENSES =
+            PUBLIC_DOMAIN_LICENSES +
+                setOf("CC BY 2.0", "CC BY 3.0", "CC BY 4.0", "CC BY-SA 2.0", "CC BY-SA 3.0", "CC BY-SA 4.0")
+        private val UNNAMED_AUTHORS = setOf("", "unknown", "anonymous", "no rights reserved")
+
         private val VALID_REGIONS =
             setOf(
                 "SE",

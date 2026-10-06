@@ -2,6 +2,7 @@ package se.birdy.content.build
 
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertNotEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
@@ -119,6 +120,24 @@ class SpeciesDbBuilderTest {
     }
 
     @Test
+    fun `fingerprint changes when a photo or its credit is replaced`() {
+        val items =
+            parser.parseAll(Path.of("src/jvmTest/resources/fixtures/species"))
+        val builder = SpeciesDbBuilder()
+        val newCredit =
+            items.map { (path, yaml) ->
+                path to yaml.copy(image_refs = yaml.image_refs.map { it.copy(author = "Charles J. Sharp") })
+            }
+        val newPhoto =
+            items.map { (path, yaml) ->
+                path to yaml.copy(image_refs = yaml.image_refs.map { it.copy(commons_filename = "Other.jpg") })
+            }
+        val before = builder.contentFingerprint(items, 2)
+        assertNotEquals(before, builder.contentFingerprint(newCredit, 2), "a cleaned credit must reach installed apps")
+        assertNotEquals(before, builder.contentFingerprint(newPhoto, 2), "a replaced photo must reach installed apps")
+    }
+
+    @Test
     fun `fingerprint is unaffected by CRLF line endings in the source yaml file`(
         @TempDir tempDir: Path,
     ) {
@@ -202,6 +221,33 @@ class SpeciesDbBuilderTest {
         val taxonomy = db.speciesTaxonomyQueries.selectBySpecies("Q25485").executeAsOne()
         assertEquals("songbirds", taxonomy.group_id)
         driver.close()
+    }
+
+    @Test
+    fun `removes images from the target folder that no species references any more`(
+        @TempDir tempDir: Path,
+    ) {
+        val items =
+            parser.parseAll(Path.of("src/jvmTest/resources/fixtures/species"))
+        val outImages = tempDir.resolve("images")
+        val dropped = outImages.resolve("Q11111/hero.webp")
+        val droppedSecondary = outImages.resolve("Q25485/secondary-2.webp")
+        Files.createDirectories(dropped.parent)
+        Files.createDirectories(droppedSecondary.parent)
+        Files.writeString(dropped, "old range map")
+        Files.writeString(droppedSecondary, "old egg photo")
+
+        SpeciesDbBuilder().build(
+            items = items,
+            sourceImageRoot = Path.of("src/jvmTest/resources/fixtures/images"),
+            targetDb = tempDir.resolve("species.db"),
+            targetImageRoot = outImages,
+        )
+
+        assertTrue(Files.exists(outImages.resolve("Q25485/hero.jpg")), "referenced image must be copied")
+        assertFalse(Files.exists(droppedSecondary), "unreferenced secondary must be removed")
+        assertFalse(Files.exists(dropped), "unreferenced image must be removed")
+        assertFalse(Files.exists(dropped.parent), "empty species folder must be removed")
     }
 
     private fun readApplicationId(db: Path): Int {

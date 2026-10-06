@@ -54,6 +54,7 @@ object ValidateMain {
                 imageRoot = imagesDir,
                 expectedCount = expectedCount,
                 overrides = overrides,
+                checkOrphans = true,
             )
         val errors = validator.validate(items)
 

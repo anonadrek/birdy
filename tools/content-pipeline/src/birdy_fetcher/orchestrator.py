@@ -21,6 +21,7 @@ from rich.progress import (
 from .cache import Cache
 from .claude_summarizer import ClaudeSummarizer, real_anthropic_client
 from .cost import CostTracker
+from .credits import canonical_license, clean_author
 from .hero_review import render_hero_review
 from .images import ImageProcessor, ImageSelector, rank_candidates
 from .wikidata import WikidataClient
@@ -197,7 +198,7 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
         candidates = await ctx.images.fetch_candidates(
             q_id=q_id, scientific_name=commons_query, force=ctx.options.force
         )
-        ranked = rank_candidates(candidates)[:3]
+        ranked = rank_candidates(candidates, scientific_name=commons_query)[:3]
         if not ctx.options.dry_run and candidates:
             render_hero_review(
                 q_id=q_id,
@@ -208,7 +209,7 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
             )
         for idx, candidate in enumerate(ranked):
             role = "hero" if idx == 0 else "secondary"
-            filename = "hero.jpg" if idx == 0 else f"secondary-{idx}.jpg"
+            filename = "hero.webp" if idx == 0 else f"secondary-{idx}.webp"
             out_path = ctx.images_root / q_id / filename
             if not ctx.options.dry_run:
                 raw = await ctx.image_processor.download(candidate.url)
@@ -225,8 +226,10 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
                     path=f"{q_id}/{filename}",
                     width=meta.width,
                     height=meta.height,
-                    license=candidate.license,
-                    author=candidate.author,
+                    license=canonical_license(candidate.license) or candidate.license,
+                    # rank_candidates guarantees a usable name for BY/BY-SA;
+                    # a public-domain photo may have none.
+                    author=clean_author(candidate.author) or "Unknown",
                     source_url=(
                         f"https://commons.wikimedia.org/wiki/File:{candidate.commons_filename}"
                     ),
