@@ -49,6 +49,7 @@ import se.birdy.app.premium.awaitBillingAnswer
 import se.birdy.app.ui.audio.AudioScanScreenHost
 import se.birdy.app.ui.components.CaveatToast
 import se.birdy.app.ui.components.LocalStatusBarBackdrop
+import se.birdy.app.ui.components.PlatformNavigationBarIcons
 import se.birdy.app.ui.components.PlatformStatusBarIcons
 import se.birdy.app.ui.components.StatusBarBackdrop
 import se.birdy.app.ui.diary.LifelistScreen
@@ -246,6 +247,10 @@ fun AppScaffold(
     val heroRoute = bottomBarEntry?.destination?.isHeroRoute() == true
     val statusBarBackdrop = remember { StatusBarBackdrop() }
     StatusBarIcons(heroRoute = heroRoute, backdrop = statusBarBackdrop)
+    // Release 1.3.0 Task 7g: the Premium screens (purchase and thank-you) are dark moss down to
+    // the bottom edge, where three-button navigation draws its buttons; everywhere else that edge
+    // is the paper bottom bar (or the paper intro replay).
+    PlatformNavigationBarIcons(lightIcons = bottomBarEntry?.destination?.hasRoute(AppRoute.Premium::class) == true)
     // The bottom bar already pads the navigation bar; with it hidden the screen pads it itself.
     val navBarsHandledByBottomBar = if (hideBottomBar) WindowInsets(0, 0, 0, 0) else WindowInsets.navigationBars
     Scaffold(
