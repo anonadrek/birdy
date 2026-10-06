@@ -1,3 +1,8 @@
+@file:Suppress("TooManyFunctions") // Plan 3 Task 6 added rememberStatusBarTracking to this
+// already-dense shared header file (PhotoHero + PaperSheet + their private helpers, spec
+// §4.3); splitting it further would scatter one component's internals across files for no
+// readability gain.
+
 package se.birdy.app.ui.components
 
 import androidx.compose.foundation.background
@@ -7,11 +12,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
@@ -30,7 +38,10 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.layout.layout
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.SpanStyle
@@ -61,9 +72,11 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
  * kicker + serif title (+ optional italic latin name, apricot subtitle and a hairline meta
  * row).
  *
- * [drawBehindStatusBar]: false (default) = the app's outer Scaffold already pads the status
- * bar, so the hero starts below it. true = only for routes that let it draw behind the
- * status bar (a later, device-verified task); then [topBar] gets statusBarsPadding().
+ * [drawBehindStatusBar]: false (default) = the hero starts below the status bar (AppScaffold's
+ * BelowStatusBar or the screen's own padding). true = the route draws behind the status bar
+ * (Plan 3 Task 6): the photo grows by the status bar's height, [topBar] gets
+ * statusBarsPadding(), and the hero reports to [LocalStatusBarBackdrop] whether it is still
+ * under the status bar.
  *
  * [topBar] is drawn LAST (declared after the text Column below), so the gear/back button it
  * hosts is never dimmed by either scrim (fix wave A2c, finding 1: the text-following scrim's
@@ -106,11 +119,15 @@ fun PhotoHero(
     bottomContent: (@Composable ColumnScope.() -> Unit)? = null,
 ) {
     val serif = rememberDmSerifDisplay()
+    val statusBarTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
+    val statusBarTracking = rememberStatusBarTracking(enabled = drawBehindStatusBar)
     Box(
         modifier =
             modifier
                 .fillMaxWidth()
-                .heightIn(min = height)
+                // Behind the status bar the photo grows by its height, so the part below it keeps `height`.
+                .heightIn(min = if (drawBehindStatusBar) height + statusBarTop else height)
+                .then(statusBarTracking)
                 .background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid, HeroMossDeep))),
     ) {
         // A caller's image/HeroScrim use fillMaxSize(), which can't size this (possibly taller
@@ -160,6 +177,23 @@ fun PhotoHero(
     }
 }
 
+/**
+ * For a hero drawn behind the status bar: reports to [LocalStatusBarBackdrop] whether the photo
+ * still reaches under the status bar (light icons) and returns the modifier that tracks it. The
+ * state only flips at the threshold, so scrolling doesn't recompose the hero every frame.
+ */
+@Composable
+private fun rememberStatusBarTracking(enabled: Boolean): Modifier {
+    if (!enabled) return Modifier
+    val statusBarPx = WindowInsets.statusBars.getTop(LocalDensity.current).toFloat()
+    var underStatusBar by remember { mutableStateOf(true) }
+    ReportStatusBarBackdrop(isDark = underStatusBar)
+    return Modifier.onGloballyPositioned { coords ->
+        val under = coords.boundsInRoot().bottom > statusBarPx
+        if (under != underStatusBar) underStatusBar = under
+    }
+}
+
 // Text alpha over the scrim — shared with PhotoHeroContrastTest, which proves these (plus
 // TEXT_SCRIM_ALPHA below) clear WCAG AA over a worst-case (blown-out white) photo. Change all
 // three together.
@@ -171,9 +205,8 @@ internal const val META_TEXT_ALPHA = 0.75f
 // rgba(31,42,25,0) 70%, rgba(0,0,0,.25) 100%)` (rgb(31,42,25) = HeroMossDeep). CSS "0deg" runs
 // bottom→top; Compose's Brush.verticalGradient runs top→bottom, so the CSS 0%/38%/70%/100%
 // stops become the 1f/0.62f/0.30f/0f fractions below. Black at the very top helps the gear/
-// status icons read over a bright sky — status icons don't actually sit over the hero yet (a
-// later task); the topBar slot (drawn last, see PhotoHero) is what carries that today. The
-// transparent band around 30% is what keeps the photo itself visible. Fix wave A2 (2026-09-26)
+// status icons read over a bright sky. The transparent band around 30% is what keeps the photo
+// itself visible. Fix wave A2 (2026-09-26)
 // had strengthened this ramp so much the photo nearly disappeared (finding I3) — fix wave A2b
 // moved WCAG AA coverage to the text-following scrim below instead, so this one could go back
 // to the light mockup look. This scrim alone is NOT relied on for text contrast — see

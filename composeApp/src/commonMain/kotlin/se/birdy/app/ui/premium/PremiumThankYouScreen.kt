@@ -4,8 +4,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -32,6 +35,7 @@ import se.birdy.app.ui.components.BirdyPremiumButton
 import se.birdy.app.ui.components.HeadlineSegment
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.PlatformBackHandler
+import se.birdy.app.ui.components.ReportStatusBarBackdrop
 import se.birdy.app.ui.components.parseJournalHeadline
 import se.birdy.app.ui.theme.BrassLight
 import se.birdy.app.ui.theme.HeroMossDeep
@@ -48,10 +52,15 @@ internal const val PREMIUM_THANKS_BODY_ALPHA = 0.85f
 @Composable
 fun PremiumThankYouScreen(onClose: () -> Unit) {
     PlatformBackHandler(enabled = true, onBack = onClose)
+    // The whole screen is dark moss, even after scroll (spec §5.2).
+    ReportStatusBarBackdrop(isDark = true)
     val (plain, accent) = thanksHeadlineParts(stringResource(Res.string.premium_thanks_headline))
     LazyColumn(
         modifier = Modifier.fillMaxSize().background(HeroMossDeep),
-        contentPadding = PaddingValues(bottom = 32.dp),
+        // The bottom bar is hidden on this screen; content must not end up under the gesture
+        // bar or nav buttons, and the dark background now fills all the way down (Plan 3 Task 6).
+        contentPadding =
+            PaddingValues(bottom = 32.dp + WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()),
     ) {
         item {
             ThanksHero(
@@ -106,6 +115,7 @@ private fun ThanksHero(
         title = plain,
         titleAccent = accent,
         height = 280.dp,
+        drawBehindStatusBar = true,
         image = { PremiumHeroPhoto() },
     )
 }

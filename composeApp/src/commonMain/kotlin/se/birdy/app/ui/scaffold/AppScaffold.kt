@@ -1,10 +1,18 @@
 package se.birdy.app.ui.scaffold
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
@@ -14,7 +22,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -36,6 +46,9 @@ import se.birdy.app.premium.PremiumOverrideResolver
 import se.birdy.app.premium.awaitBillingAnswer
 import se.birdy.app.ui.audio.AudioScanScreenHost
 import se.birdy.app.ui.components.CaveatToast
+import se.birdy.app.ui.components.LocalStatusBarBackdrop
+import se.birdy.app.ui.components.PlatformStatusBarIcons
+import se.birdy.app.ui.components.StatusBarBackdrop
 import se.birdy.app.ui.diary.LifelistScreen
 import se.birdy.app.ui.diary.ObservationDetailScreen
 import se.birdy.app.ui.encyclopedia.ArchiveScreen
@@ -54,6 +67,7 @@ import se.birdy.domain.premium.PremiumState
 // function's actual length/complexity. Suppressed here instead of touching the baseline (repo
 // convention: extend a baseline only for genuinely new debt).
 @Suppress("LongMethod", "CyclomaticComplexMethod")
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun AppScaffold(
     graph: AppGraph,
@@ -214,280 +228,379 @@ fun AppScaffold(
     val hideBottomBar =
         bottomBarEntry?.destination?.hasRoute(AppRoute.OnboardingReplay::class) == true ||
             bottomBarEntry?.destination?.hasRoute(AppRoute.Premium::class) == true
+    // Plan 3 Task 6: PhotoHero screens draw up behind the status bar; icons follow what is under it.
+    val heroRoute = bottomBarEntry?.destination?.isHeroRoute() == true
+    val statusBarBackdrop = remember { StatusBarBackdrop() }
+    StatusBarIcons(heroRoute = heroRoute, backdrop = statusBarBackdrop)
+    // The bottom bar already pads the navigation bar; with it hidden the screen pads it itself.
+    val navBarsHandledByBottomBar = if (hideBottomBar) WindowInsets(0, 0, 0, 0) else WindowInsets.navigationBars
     Scaffold(
         bottomBar = { if (!hideBottomBar) BottomNavBar(navController) },
         snackbarHost = { SnackbarHost(snackbarHostState) { data -> CaveatToast(data) } },
+        // Each screen handles the status bar itself (BelowStatusBar, or a PhotoHero drawn behind
+        // it). Bottom: the bottom bar pads the navigation bar; with it hidden (Premium, intro
+        // replay) the screen pads it itself. The old systemBars default left a paper-coloured
+        // band under the dark Premium screens (Plan 2 final review).
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
     ) { padding ->
-        NavHost(
-            navController = navController,
-            startDestination = AppRoute.Listen,
-            modifier = Modifier.padding(padding),
-        ) {
-            composable<AppRoute.Listen> {
-                ListenLauncherScreen(
-                    viewModel = remember(graph) { graph.listenLauncherViewModel() },
-                    onCameraClick = {
-                        navController.navigate(AppRoute.Scan) {
-                            launchSingleTop = true
-                        }
-                    },
-                    onPhotoClick = {
-                        navController.navigate(AppRoute.PhotoAnalyze) {
-                            launchSingleTop = true
-                        }
-                    },
-                    onSettingsClick = {
-                        navController.navigate(AppRoute.Settings) {
-                            launchSingleTop = true
-                        }
-                    },
-                    onNavigateToAudioScan = {
-                        navController.navigate(AppRoute.AudioScan) { launchSingleTop = true }
-                    },
-                    onSpeciesProfileClick = { speciesId ->
-                        navController.navigate(AppRoute.SpeciesProfile(speciesId)) {
-                            launchSingleTop = true
-                        }
-                    },
-                )
-            }
-            composable<AppRoute.Scan> {
-                ScanScreenHost(
+        CompositionLocalProvider(LocalStatusBarBackdrop provides statusBarBackdrop) {
+            NavHost(
+                navController = navController,
+                startDestination = AppRoute.Listen,
+                modifier =
+                    Modifier
+                        .padding(bottom = padding.calculateBottomPadding())
+                        // Stop nested Scaffolds (JournalScaffold) from padding the navigation
+                        // bar a second time when the bottom bar has already done it.
+                        .consumeWindowInsets(navBarsHandledByBottomBar),
+            ) {
+                appDestinations(
                     graph = graph,
-                    onPhotoAnalyzeClick = { navController.navigate(AppRoute.PhotoAnalyze) },
-                    onFrozen = { sourceJson, capturedAtMs ->
-                        navController.navigate(AppRoute.MatchResult(sourceJson, capturedAtMs))
-                    },
-                    onBack = {
-                        navController.popBackStack(AppRoute.Listen, inclusive = false)
-                    },
-                )
-            }
-            composable<AppRoute.PhotoAnalyze> {
-                se.birdy.app.ui.photoanalyze.PhotoAnalyzeHost(
-                    graph = graph,
-                    onLoaded = { sourceJson, capturedAtMs ->
-                        navController.navigate(AppRoute.MatchResult(sourceJson, capturedAtMs)) {
-                            popUpTo(AppRoute.Scan) { inclusive = false }
-                        }
-                    },
-                    onBack = {
-                        navController.popBackStack(AppRoute.Listen, inclusive = false)
-                    },
-                )
-            }
-            composable<AppRoute.MatchResult> { entry ->
-                val route = entry.toRoute<AppRoute.MatchResult>()
-                val vm =
-                    remember(graph, route) {
-                        graph.matchResultViewModel(route.sourceJson, route.capturedAtMs)
-                    }
-                MatchResultScreen(
-                    viewModel = vm,
-                    onBack = { navController.popIfTop(entry) },
-                    locale = graph.defaultLocale,
-                    zone = graph.timeZone,
-                )
-            }
-            navigation<AppRoute.Archive>(startDestination = AppRoute.ArchiveList) {
-                composable<AppRoute.ArchiveList> {
-                    ArchiveScreen(
-                        viewModel = remember(graph) { graph.archiveViewModel() },
-                        locale = graph.defaultLocale,
-                        onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id.raw)) },
-                        onPremiumClick = { navController.navigate(AppRoute.Premium) },
-                        onJournalExport = graph.journalExport,
-                        showPremiumTeaser = showPremiumTeaser,
-                        showDebugMenu = graph.benchmarkScreen != null || graph.diagnosticsScreen != null,
-                        onDebugBenchmarkClick = { navController.navigate(AppRoute.DebugBenchmark) },
-                        showDebugDiagnostics = graph.diagnosticsScreen != null,
-                        onDebugDiagnosticsClick = { navController.navigate(AppRoute.DebugDiagnostics) },
-                        onSettingsClick = { navController.navigate(AppRoute.Settings) },
-                    )
-                }
-                composable<AppRoute.SpeciesProfile> { entry ->
-                    val route = entry.toRoute<AppRoute.SpeciesProfile>()
-                    SpeciesProfileScreen(
-                        viewModel =
-                            remember(graph, route.speciesId) {
-                                graph.speciesProfileViewModel(SpeciesId(route.speciesId))
-                            },
-                        locale = graph.defaultLocale,
-                        onBack = { navController.popIfTop(entry) },
-                        onPremiumClick = { navController.navigate(AppRoute.Premium) },
-                        showPremiumTeaser = showPremiumTeaser,
-                    )
-                }
-            }
-            composable<AppRoute.Lifelist> {
-                val livePreviewState =
-                    if (effectivePremiumActive) {
-                        val seasonStatsVm = remember(graph) { graph.seasonStatsViewModel() }
-                        LaunchedEffect(seasonStatsVm) { seasonStatsVm.onEnter() }
-                        val state by seasonStatsVm.state.collectAsState()
-                        state as? se.birdy.app.ui.stats.SeasonStatsUiState.Loaded
-                    } else {
-                        null
-                    }
-                LifelistScreen(
-                    viewModel = remember(graph) { graph.lifelistViewModel() },
-                    onObservationClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
-                    onScanCtaClick = {
-                        navController.navigate(AppRoute.Listen) {
-                            popUpTo(AppRoute.Listen) { inclusive = false }
-                            launchSingleTop = true
-                        }
-                    },
-                    onPremiumClick = { navController.navigate(AppRoute.Premium) },
+                    navController = navController,
+                    scope = scope,
+                    snackbarHostState = snackbarHostState,
+                    dismissToast = dismissToast,
+                    welcomeToast = welcomeToast,
+                    isEarlyMember = isEarlyMember,
+                    effectivePremiumActive = effectivePremiumActive,
                     showPremiumTeaser = showPremiumTeaser,
-                    livePreviewState = livePreviewState,
-                    onSeasonStatsClick = { navController.navigate(AppRoute.SeasonStats) },
-                    onRecapClick = { navController.navigate(AppRoute.WeeklyRecap) { launchSingleTop = true } },
-                )
-            }
-            composable<AppRoute.Map> {
-                val mapVm = remember(graph) { graph.mapViewModel() }
-                if (effectivePremiumActive) {
-                    se.birdy.app.ui.map.MapScreen(
-                        viewModel = mapVm,
-                        onPinClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
-                        onIdentifyClick = {
-                            navController.navigate(AppRoute.Listen) {
-                                popUpTo(navController.graph.startDestinationId) { saveState = true }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        },
-                    )
-                } else {
-                    se.birdy.app.ui.map.MapPremiumTeaser(
-                        viewModel = mapVm,
-                        onUpgrade = { navController.navigate(AppRoute.Premium) },
-                    )
-                }
-            }
-            composable<AppRoute.ObservationDetail> { entry ->
-                val route = entry.toRoute<AppRoute.ObservationDetail>()
-                ObservationDetailScreen(
-                    viewModel = remember(graph, route.id) { graph.observationDetailViewModel(route.id) },
-                    onBack = { navController.popIfTop(entry) },
-                    onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id)) },
-                )
-            }
-            composable<AppRoute.Badges> {
-                BadgesRoute(
-                    graph = graph,
-                    onSettingsClick = { navController.navigate(AppRoute.Settings) { launchSingleTop = true } },
-                    onPremiumClick = { navController.navigate(AppRoute.Premium) },
-                    onOpenTrophyRoom = { navController.navigate(AppRoute.TrophyRoom) { launchSingleTop = true } },
-                    showPremiumTeaser = showPremiumTeaser,
-                )
-            }
-            composable<AppRoute.TrophyRoom> { entry ->
-                TrophyRoomRoute(
-                    graph = graph,
-                    onBack = { navController.popIfTop(entry) },
-                )
-            }
-            composable<AppRoute.Settings> { entry ->
-                se.birdy.app.ui.settings.SettingsScreen(
-                    viewModel = remember(graph) { graph.settingsViewModel() },
-                    onBack = { navController.popIfTop(entry) },
-                    onPremiumClick = { navController.navigate(AppRoute.Premium) },
-                    onNavigateToAbout = { navController.navigate(AppRoute.About) },
-                    onShowIntroAgain = { navController.navigate(AppRoute.OnboardingReplay) },
-                    versionName = graph.versionName,
-                    onRequestLocationPermission = { graph.requestLocationPermission?.invoke() },
-                )
-            }
-            composable<AppRoute.About> { entry ->
-                se.birdy.app.ui.settings.AboutScreen(
-                    onBack = { navController.popIfTop(entry) },
-                    version = graph.versionName,
-                )
-            }
-            composable<AppRoute.OnboardingReplay> { entry ->
-                val vm = remember(graph) { graph.onboardingViewModel(isReplay = true) }
-                val state by vm.state.collectAsState()
-                when (val s = state) {
-                    is se.birdy.app.ui.onboarding.OnboardingUiState.Visible ->
-                        se.birdy.app.ui.onboarding.OnboardingScreen(
-                            state = s,
-                            onPageChange = vm::setPageIndex,
-                            onNameChange = vm::onNameChange,
-                            onLanguageSelect = vm::selectLanguage,
-                            onComplete = { navController.popIfTop(entry) },
-                            isReplay = true,
-                        )
-                    se.birdy.app.ui.onboarding.OnboardingUiState.Done -> {
-                        LaunchedEffect(Unit) { navController.popIfTop(entry) }
-                    }
-                    se.birdy.app.ui.onboarding.OnboardingUiState.Loading -> Unit
-                }
-            }
-            composable<AppRoute.Premium> { entry ->
-                if (isEarlyMember) {
-                    // Idempotent pop (mirrors onPurchaseComplete below): a double tap on
-                    // Continue — or PlatformBackHandler firing during the NavHost's fade —
-                    // must not try to pop past an already-empty stack.
-                    PremiumThankYouScreen(
-                        onClose = { navController.popBackStack(AppRoute.Premium, inclusive = true) },
-                    )
-                } else {
-                    PremiumScreen(
-                        viewModel = remember(graph) { graph.premiumViewModel() },
-                        onClose = {
-                            // The "find it in Settings" hint only when this tap actually closed the screen.
-                            if (navController.popIfTop(entry)) {
-                                scope.launch { snackbarHostState.showSnackbar(dismissToast) }
-                            }
-                        },
-                        onPurchaseComplete = {
-                            navController.popBackStack(AppRoute.Premium, inclusive = true)
-                            scope.launch { snackbarHostState.showSnackbar(welcomeToast) }
-                        },
-                    )
-                }
-            }
-            graph.benchmarkScreen?.let { benchmarkContent ->
-                composable<AppRoute.DebugBenchmark> { benchmarkContent() }
-            }
-            graph.diagnosticsScreen?.let { diagnosticsContent ->
-                composable<AppRoute.DebugDiagnostics> { diagnosticsContent() }
-            }
-            composable<AppRoute.AudioScan> {
-                AudioScanScreenHost(
-                    graph = graph,
-                    onNavigateToMatch = { sourceJson, capturedAtMs ->
-                        navController.navigate(AppRoute.MatchResult(sourceJson, capturedAtMs)) {
-                            popUpTo(AppRoute.Listen) { inclusive = false }
-                        }
-                    },
-                    onBack = {
-                        navController.popBackStack(AppRoute.Listen, inclusive = false)
-                    },
-                )
-            }
-            composable<AppRoute.SeasonStats> { entry ->
-                LaunchedEffect(effectivePremiumActive) {
-                    if (!effectivePremiumActive) {
-                        navController.popIfTop(entry)
-                    }
-                }
-                se.birdy.app.ui.stats.SeasonStatsScreen(
-                    viewModel = remember(graph) { graph.seasonStatsViewModel() },
-                    onBack = { navController.popIfTop(entry) },
-                )
-            }
-            composable<AppRoute.WeeklyRecap> {
-                se.birdy.app.ui.recap.RecapScreen(
-                    viewModel = remember(graph) { graph.weeklyRecapViewModel() },
-                    onOpenCamera = {
-                        navController.navigate(AppRoute.Scan) { launchSingleTop = true }
-                    },
-                    onObservationClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
                 )
             }
         }
     }
+}
+
+// LongMethod: this is AppScaffold's own NavHost builder, extracted here only to keep
+// AppScaffold itself under the threshold (Plan 3 Task 6); it is one long flat list of
+// `composable<Route> { ... }` blocks, not meaningfully splittable further. LongParameterList:
+// every parameter is something the extracted destinations need from AppScaffold's own
+// composition (graph/navController/scope/toasts/premium flags) — bundling them into a data
+// class would just move the same parameter count one level down.
+@Suppress("LongMethod", "LongParameterList")
+private fun NavGraphBuilder.appDestinations(
+    graph: AppGraph,
+    navController: NavHostController,
+    scope: kotlinx.coroutines.CoroutineScope,
+    snackbarHostState: SnackbarHostState,
+    dismissToast: String,
+    welcomeToast: String,
+    isEarlyMember: Boolean,
+    effectivePremiumActive: Boolean,
+    showPremiumTeaser: Boolean,
+) {
+    composable<AppRoute.Listen> {
+        ListenLauncherScreen(
+            viewModel = remember(graph) { graph.listenLauncherViewModel() },
+            onCameraClick = {
+                navController.navigate(AppRoute.Scan) {
+                    launchSingleTop = true
+                }
+            },
+            onPhotoClick = {
+                navController.navigate(AppRoute.PhotoAnalyze) {
+                    launchSingleTop = true
+                }
+            },
+            onSettingsClick = {
+                navController.navigate(AppRoute.Settings) {
+                    launchSingleTop = true
+                }
+            },
+            onNavigateToAudioScan = {
+                navController.navigate(AppRoute.AudioScan) { launchSingleTop = true }
+            },
+            onSpeciesProfileClick = { speciesId ->
+                navController.navigate(AppRoute.SpeciesProfile(speciesId)) {
+                    launchSingleTop = true
+                }
+            },
+        )
+    }
+    composable<AppRoute.Scan> {
+        BelowStatusBar {
+            ScanScreenHost(
+                graph = graph,
+                onPhotoAnalyzeClick = { navController.navigate(AppRoute.PhotoAnalyze) },
+                onFrozen = { sourceJson, capturedAtMs ->
+                    navController.navigate(AppRoute.MatchResult(sourceJson, capturedAtMs))
+                },
+                onBack = {
+                    navController.popBackStack(AppRoute.Listen, inclusive = false)
+                },
+            )
+        }
+    }
+    composable<AppRoute.PhotoAnalyze> {
+        BelowStatusBar {
+            se.birdy.app.ui.photoanalyze.PhotoAnalyzeHost(
+                graph = graph,
+                onLoaded = { sourceJson, capturedAtMs ->
+                    navController.navigate(AppRoute.MatchResult(sourceJson, capturedAtMs)) {
+                        popUpTo(AppRoute.Scan) { inclusive = false }
+                    }
+                },
+                onBack = {
+                    navController.popBackStack(AppRoute.Listen, inclusive = false)
+                },
+            )
+        }
+    }
+    composable<AppRoute.MatchResult> { entry ->
+        val route = entry.toRoute<AppRoute.MatchResult>()
+        val vm =
+            remember(graph, route) {
+                graph.matchResultViewModel(route.sourceJson, route.capturedAtMs)
+            }
+        MatchResultScreen(
+            viewModel = vm,
+            onBack = { navController.popIfTop(entry) },
+            locale = graph.defaultLocale,
+            zone = graph.timeZone,
+        )
+    }
+    navigation<AppRoute.Archive>(startDestination = AppRoute.ArchiveList) {
+        composable<AppRoute.ArchiveList> {
+            BelowStatusBar {
+                ArchiveScreen(
+                    viewModel = remember(graph) { graph.archiveViewModel() },
+                    locale = graph.defaultLocale,
+                    onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id.raw)) },
+                    onPremiumClick = { navController.navigate(AppRoute.Premium) },
+                    onJournalExport = graph.journalExport,
+                    showPremiumTeaser = showPremiumTeaser,
+                    showDebugMenu = graph.benchmarkScreen != null || graph.diagnosticsScreen != null,
+                    onDebugBenchmarkClick = { navController.navigate(AppRoute.DebugBenchmark) },
+                    showDebugDiagnostics = graph.diagnosticsScreen != null,
+                    onDebugDiagnosticsClick = { navController.navigate(AppRoute.DebugDiagnostics) },
+                    onSettingsClick = { navController.navigate(AppRoute.Settings) },
+                )
+            }
+        }
+        composable<AppRoute.SpeciesProfile> { entry ->
+            val route = entry.toRoute<AppRoute.SpeciesProfile>()
+            SpeciesProfileScreen(
+                viewModel =
+                    remember(graph, route.speciesId) {
+                        graph.speciesProfileViewModel(SpeciesId(route.speciesId))
+                    },
+                locale = graph.defaultLocale,
+                onBack = { navController.popIfTop(entry) },
+                onPremiumClick = { navController.navigate(AppRoute.Premium) },
+                showPremiumTeaser = showPremiumTeaser,
+            )
+        }
+    }
+    composable<AppRoute.Lifelist> {
+        BelowStatusBar {
+            val livePreviewState =
+                if (effectivePremiumActive) {
+                    val seasonStatsVm = remember(graph) { graph.seasonStatsViewModel() }
+                    LaunchedEffect(seasonStatsVm) { seasonStatsVm.onEnter() }
+                    val state by seasonStatsVm.state.collectAsState()
+                    state as? se.birdy.app.ui.stats.SeasonStatsUiState.Loaded
+                } else {
+                    null
+                }
+            LifelistScreen(
+                viewModel = remember(graph) { graph.lifelistViewModel() },
+                onObservationClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
+                onScanCtaClick = {
+                    navController.navigate(AppRoute.Listen) {
+                        popUpTo(AppRoute.Listen) { inclusive = false }
+                        launchSingleTop = true
+                    }
+                },
+                onPremiumClick = { navController.navigate(AppRoute.Premium) },
+                showPremiumTeaser = showPremiumTeaser,
+                livePreviewState = livePreviewState,
+                onSeasonStatsClick = { navController.navigate(AppRoute.SeasonStats) },
+                onRecapClick = { navController.navigate(AppRoute.WeeklyRecap) { launchSingleTop = true } },
+            )
+        }
+    }
+    composable<AppRoute.Map> {
+        BelowStatusBar {
+            val mapVm = remember(graph) { graph.mapViewModel() }
+            if (effectivePremiumActive) {
+                se.birdy.app.ui.map.MapScreen(
+                    viewModel = mapVm,
+                    onPinClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
+                    onIdentifyClick = {
+                        navController.navigate(AppRoute.Listen) {
+                            popUpTo(navController.graph.startDestinationId) { saveState = true }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    },
+                )
+            } else {
+                se.birdy.app.ui.map.MapPremiumTeaser(
+                    viewModel = mapVm,
+                    onUpgrade = { navController.navigate(AppRoute.Premium) },
+                )
+            }
+        }
+    }
+    composable<AppRoute.ObservationDetail> { entry ->
+        val route = entry.toRoute<AppRoute.ObservationDetail>()
+        BelowStatusBar {
+            ObservationDetailScreen(
+                viewModel = remember(graph, route.id) { graph.observationDetailViewModel(route.id) },
+                onBack = { navController.popIfTop(entry) },
+                onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id)) },
+            )
+        }
+    }
+    composable<AppRoute.Badges> {
+        BelowStatusBar {
+            BadgesRoute(
+                graph = graph,
+                onSettingsClick = { navController.navigate(AppRoute.Settings) { launchSingleTop = true } },
+                onPremiumClick = { navController.navigate(AppRoute.Premium) },
+                onOpenTrophyRoom = { navController.navigate(AppRoute.TrophyRoom) { launchSingleTop = true } },
+                showPremiumTeaser = showPremiumTeaser,
+            )
+        }
+    }
+    composable<AppRoute.TrophyRoom> { entry ->
+        BelowStatusBar {
+            TrophyRoomRoute(
+                graph = graph,
+                onBack = { navController.popIfTop(entry) },
+            )
+        }
+    }
+    composable<AppRoute.Settings> { entry ->
+        BelowStatusBar {
+            se.birdy.app.ui.settings.SettingsScreen(
+                viewModel = remember(graph) { graph.settingsViewModel() },
+                onBack = { navController.popIfTop(entry) },
+                onPremiumClick = { navController.navigate(AppRoute.Premium) },
+                onNavigateToAbout = { navController.navigate(AppRoute.About) },
+                onShowIntroAgain = { navController.navigate(AppRoute.OnboardingReplay) },
+                versionName = graph.versionName,
+                onRequestLocationPermission = { graph.requestLocationPermission?.invoke() },
+            )
+        }
+    }
+    composable<AppRoute.About> { entry ->
+        BelowStatusBar {
+            se.birdy.app.ui.settings.AboutScreen(
+                onBack = { navController.popIfTop(entry) },
+                version = graph.versionName,
+            )
+        }
+    }
+    composable<AppRoute.OnboardingReplay> { entry ->
+        BelowStatusBar {
+            val vm = remember(graph) { graph.onboardingViewModel(isReplay = true) }
+            val state by vm.state.collectAsState()
+            when (val s = state) {
+                is se.birdy.app.ui.onboarding.OnboardingUiState.Visible ->
+                    se.birdy.app.ui.onboarding.OnboardingScreen(
+                        state = s,
+                        onPageChange = vm::setPageIndex,
+                        onNameChange = vm::onNameChange,
+                        onLanguageSelect = vm::selectLanguage,
+                        onComplete = { navController.popIfTop(entry) },
+                        isReplay = true,
+                    )
+                se.birdy.app.ui.onboarding.OnboardingUiState.Done -> {
+                    LaunchedEffect(Unit) { navController.popIfTop(entry) }
+                }
+                se.birdy.app.ui.onboarding.OnboardingUiState.Loading -> Unit
+            }
+        }
+    }
+    composable<AppRoute.Premium> { entry ->
+        if (isEarlyMember) {
+            // Idempotent pop (mirrors onPurchaseComplete below): a double tap on
+            // Continue — or PlatformBackHandler firing during the NavHost's fade —
+            // must not try to pop past an already-empty stack.
+            PremiumThankYouScreen(
+                onClose = { navController.popBackStack(AppRoute.Premium, inclusive = true) },
+            )
+        } else {
+            PremiumScreen(
+                viewModel = remember(graph) { graph.premiumViewModel() },
+                onClose = {
+                    // The "find it in Settings" hint only when this tap actually closed the screen.
+                    if (navController.popIfTop(entry)) {
+                        scope.launch { snackbarHostState.showSnackbar(dismissToast) }
+                    }
+                },
+                onPurchaseComplete = {
+                    navController.popBackStack(AppRoute.Premium, inclusive = true)
+                    scope.launch { snackbarHostState.showSnackbar(welcomeToast) }
+                },
+            )
+        }
+    }
+    graph.benchmarkScreen?.let { benchmarkContent ->
+        composable<AppRoute.DebugBenchmark> { BelowStatusBar { benchmarkContent() } }
+    }
+    graph.diagnosticsScreen?.let { diagnosticsContent ->
+        composable<AppRoute.DebugDiagnostics> { BelowStatusBar { diagnosticsContent() } }
+    }
+    composable<AppRoute.AudioScan> {
+        BelowStatusBar {
+            AudioScanScreenHost(
+                graph = graph,
+                onNavigateToMatch = { sourceJson, capturedAtMs ->
+                    navController.navigate(AppRoute.MatchResult(sourceJson, capturedAtMs)) {
+                        popUpTo(AppRoute.Listen) { inclusive = false }
+                    }
+                },
+                onBack = {
+                    navController.popBackStack(AppRoute.Listen, inclusive = false)
+                },
+            )
+        }
+    }
+    composable<AppRoute.SeasonStats> { entry ->
+        BelowStatusBar {
+            LaunchedEffect(effectivePremiumActive) {
+                if (!effectivePremiumActive) {
+                    navController.popIfTop(entry)
+                }
+            }
+            se.birdy.app.ui.stats.SeasonStatsScreen(
+                viewModel = remember(graph) { graph.seasonStatsViewModel() },
+                onBack = { navController.popIfTop(entry) },
+            )
+        }
+    }
+    composable<AppRoute.WeeklyRecap> {
+        BelowStatusBar {
+            se.birdy.app.ui.recap.RecapScreen(
+                viewModel = remember(graph) { graph.weeklyRecapViewModel() },
+                onOpenCamera = {
+                    navController.navigate(AppRoute.Scan) { launchSingleTop = true }
+                },
+                onObservationClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
+            )
+        }
+    }
+}
+
+/** Screens whose top is a PhotoHero drawn behind the status bar (spec §3 A2, §4.3). */
+private fun NavDestination.isHeroRoute(): Boolean =
+    hasRoute(AppRoute.Listen::class) ||
+        hasRoute(AppRoute.MatchResult::class) ||
+        hasRoute(AppRoute.SpeciesProfile::class) ||
+        hasRoute(AppRoute.Premium::class)
+
+/** Non-hero screens start below the status bar, each on its own, so nothing shifts during a transition. */
+@Composable
+private fun BelowStatusBar(content: @Composable () -> Unit) {
+    Box(Modifier.fillMaxSize().statusBarsPadding()) { content() }
+}
+
+/** Reads the backdrop in its own scope, so scrolling past a hero doesn't recompose AppScaffold. */
+@Composable
+private fun StatusBarIcons(
+    heroRoute: Boolean,
+    backdrop: StatusBarBackdrop,
+) {
+    PlatformStatusBarIcons(lightIcons = heroRoute && backdrop.anyDark)
 }

@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -64,7 +65,6 @@ import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.GearButton
 import se.birdy.app.ui.components.JournalIntro
-import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.hairlineBottom
 import se.birdy.app.ui.theme.AccentCopper
@@ -74,6 +74,7 @@ import se.birdy.app.ui.theme.Hairline
 import se.birdy.app.ui.theme.InkMuted
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.TextOnHero
+import se.birdy.app.ui.theme.paperBackground
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.app.util.speciesImageUri
 import se.birdy.domain.dailybird.SeasonTag
@@ -95,12 +96,11 @@ fun ListenLauncherScreen(
         }
     }
 
-    JournalScaffold { padding ->
+    Box(Modifier.fillMaxSize().paperBackground()) {
         Column(
             modifier =
                 Modifier
                     .fillMaxSize()
-                    .padding(padding)
                     .verticalScroll(rememberScrollState()),
         ) {
             val dailyBirdState by viewModel.dailyBird.collectAsState()
@@ -128,7 +128,7 @@ fun ListenLauncherScreen(
             if (ui != null) {
                 DailyBirdHero(ui = ui, onClick = { onSpeciesProfileClick(ui.speciesId) }, topBar = gearOnHero)
             } else {
-                Box(Modifier.fillMaxWidth().padding(top = 8.dp), content = gearOnPaper)
+                Box(Modifier.fillMaxWidth().statusBarsPadding().padding(top = 8.dp), content = gearOnPaper)
             }
             JournalIntro(
                 label = stringResource(Res.string.listen_journal_label),
@@ -195,6 +195,7 @@ private fun DailyBirdHero(
         metaStart = caught,
         metaEnd = "${ui.matchCount} / ${ui.huntTarget}",
         height = 300.dp,
+        drawBehindStatusBar = true,
         // mergeDescendants collapses PhotoHero's own kicker/title/subtitle/meta text nodes into
         // this one contentDescription — but it does NOT swallow topBar's GearButton: clickable()
         // makes the gear its own merge boundary, so it stays independently focusable (verified

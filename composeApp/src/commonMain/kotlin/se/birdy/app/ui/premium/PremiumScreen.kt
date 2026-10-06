@@ -10,12 +10,16 @@ import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.selectable
@@ -83,6 +87,7 @@ import se.birdy.app.ui.components.BirdyPremiumButton
 import se.birdy.app.ui.components.GlassIconButton
 import se.birdy.app.ui.components.MicroLabel
 import se.birdy.app.ui.components.PhotoHero
+import se.birdy.app.ui.components.ReportStatusBarBackdrop
 import se.birdy.app.ui.theme.BrassLight
 import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.TextOnHero
@@ -113,6 +118,9 @@ fun PremiumScreen(
         if (state.purchaseCompleted) onPurchaseComplete()
     }
 
+    // The whole screen is dark moss, even after scroll (spec §3 A2, §4.3).
+    ReportStatusBarBackdrop(isDark = true)
+
     Box(
         modifier =
             Modifier
@@ -120,7 +128,13 @@ fun PremiumScreen(
                 .background(HeroMossDeep),
     ) {
         LazyColumn(
-            contentPadding = PaddingValues(bottom = 32.dp),
+            // The bottom bar is hidden on this screen (AppScaffold); content must not end up
+            // under the gesture bar or nav buttons, and the dark background now fills all the
+            // way down (no paper-coloured band, Plan 3 Task 6).
+            contentPadding =
+                PaddingValues(
+                    bottom = 32.dp + WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding(),
+                ),
         ) {
             item { PremiumHero() }
             item { Spacer(Modifier.height(20.dp)) }
@@ -226,7 +240,7 @@ fun PremiumScreen(
             icon = Icons.Outlined.Close,
             contentDescription = stringResource(Res.string.premium_screen_close),
             onClick = onClose,
-            modifier = Modifier.align(Alignment.TopEnd).padding(top = 12.dp, end = 14.dp),
+            modifier = Modifier.align(Alignment.TopEnd).statusBarsPadding().padding(top = 12.dp, end = 14.dp),
         )
     }
 }
@@ -238,6 +252,7 @@ private fun PremiumHero() {
         title = stringResource(Res.string.premium_headline_plain),
         titleAccent = stringResource(Res.string.premium_headline_accent),
         height = 280.dp,
+        drawBehindStatusBar = true,
         image = { PremiumHeroPhoto() },
     )
 }

@@ -166,6 +166,7 @@ internal fun MatchView(
                 latinName = state.species.scientificName,
                 height = 340.dp,
                 bottomPadding = PaperSheetOverlap + 18.dp,
+                drawBehindStatusBar = true,
                 image =
                     heroPath?.let { path ->
                         {

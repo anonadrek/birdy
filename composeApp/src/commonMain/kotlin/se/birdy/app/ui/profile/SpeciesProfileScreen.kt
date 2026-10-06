@@ -141,6 +141,7 @@ private fun ProfileContent(
                 latinName = species.scientificName,
                 height = 320.dp,
                 bottomPadding = PaperSheetOverlap + 18.dp,
+                drawBehindStatusBar = true,
                 image =
                     heroImage?.let { img ->
                         {
