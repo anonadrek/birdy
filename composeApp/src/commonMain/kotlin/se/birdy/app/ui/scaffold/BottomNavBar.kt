@@ -1,7 +1,10 @@
 package se.birdy.app.ui.scaffold
 
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.indication
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,6 +19,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.LibraryBooks
 import androidx.compose.material.icons.filled.CenterFocusStrong
@@ -23,9 +28,9 @@ import androidx.compose.material.icons.filled.Stars
 import androidx.compose.material.icons.outlined.CollectionsBookmark
 import androidx.compose.material.icons.outlined.Map
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,7 +41,9 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavDestination
@@ -56,6 +63,11 @@ import se.birdy.app.ui.theme.Hairline
 import se.birdy.app.ui.theme.InkMuted
 import se.birdy.app.ui.theme.PaperBottomBar
 import kotlin.reflect.KClass
+
+private val LABEL_MAX_FONT_SIZE = 10.sp
+
+// Low enough that every label still fits its tab at a 2.0 system text size on a 411dp phone.
+private val LABEL_MIN_FONT_SIZE = 6.sp
 
 private data class TabSpec(
     val route: AppRoute,
@@ -152,42 +164,64 @@ private fun TabCell(
     modifier: Modifier = Modifier,
 ) {
     val color = if (selected) AccentCopper else InkMuted
-    Column(
+    val interactionSource = remember { MutableInteractionSource() }
+    Box(
         modifier =
             modifier
-                .clip(RoundedCornerShape(50))
-                .clickable(onClick = onClick)
-                .padding(vertical = 6.dp)
+                .clickable(interactionSource = interactionSource, indication = null, onClick = onClick)
                 .semantics(mergeDescendants = true) {
                     this.selected = selected
                     role = Role.Tab
                 },
-        horizontalAlignment = Alignment.CenterHorizontally,
+        contentAlignment = Alignment.Center,
     ) {
-        // contentDescription = null: the Text label below is merged via mergeDescendants
-        // and serves as the announcement for TalkBack.
-        Icon(tab.icon, contentDescription = null, tint = color)
-        Spacer(Modifier.height(2.dp))
-        Text(
-            text = stringResource(tab.label),
-            color = color,
-            fontSize = 10.sp,
-            // Explicit, tight line height: this cell's budget is 72dp (bar) − 12dp (bar's own
-            // vertical padding) − 12dp (this Column's vertical padding) = 48dp for
-            // icon(24) + spacer(2) + label + spacer(3) + dot(4) — the inherited bodyLarge
-            // 22sp line height blew that budget and squeezed the selected-tab dot to nothing.
-            lineHeight = 12.sp,
-            fontWeight = if (selected) FontWeight.W700 else FontWeight.W500,
-        )
-        Spacer(Modifier.height(3.dp))
-        // Reserve the dot's footprint on every tab (selected or not) so the row of
-        // labels stays vertically aligned instead of jumping when selection changes.
+        // The press ripple keeps its pill shape on a layer of its own behind the content. The tab
+        // used to clip its whole content to the pill, and the pill's round ends cut into the label
+        // row at larger text sizes (Release 1.3.0 Plan 3 Task 7, BottomNavLabelFitTest).
         Box(
-            modifier =
-                Modifier
-                    .size(4.dp)
-                    .let { m -> if (selected) m.clip(CircleShape).background(AccentCopper) else m },
+            Modifier
+                .matchParentSize()
+                .clip(RoundedCornerShape(50))
+                .indication(interactionSource, LocalIndication.current),
         )
+        Column(
+            modifier = Modifier.padding(vertical = 6.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            // contentDescription = null: the Text label below is merged via mergeDescendants
+            // and serves as the announcement for TalkBack.
+            Icon(tab.icon, contentDescription = null, tint = color)
+            Spacer(Modifier.height(2.dp))
+            BasicText(
+                text = stringResource(tab.label),
+                style =
+                    TextStyle(
+                        color = color,
+                        fontSize = LABEL_MAX_FONT_SIZE,
+                        // Explicit, tight line height: this cell's budget is 72dp (bar) − 12dp
+                        // (bar's own vertical padding) − 12dp (this Column's vertical padding) =
+                        // 48dp for icon(24) + spacer(2) + label + spacer(3) + dot(4) — the
+                        // inherited bodyLarge 22sp line height blew that budget and squeezed the
+                        // selected-tab dot to nothing.
+                        lineHeight = 12.sp,
+                        fontWeight = if (selected) FontWeight.W700 else FontWeight.W500,
+                    ),
+                // One line, shrunk to fit: at a 1.3 system text size the selected "Uppslagsverk"
+                // was wider than its fifth of the bar. Release 1.3.0 Plan 3 Task 7.
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                autoSize = TextAutoSize.StepBased(minFontSize = LABEL_MIN_FONT_SIZE, maxFontSize = LABEL_MAX_FONT_SIZE),
+            )
+            Spacer(Modifier.height(3.dp))
+            // Reserve the dot's footprint on every tab (selected or not) so the row of
+            // labels stays vertically aligned instead of jumping when selection changes.
+            Box(
+                modifier =
+                    Modifier
+                        .size(4.dp)
+                        .let { m -> if (selected) m.clip(CircleShape).background(AccentCopper) else m },
+            )
+        }
     }
 }
 
