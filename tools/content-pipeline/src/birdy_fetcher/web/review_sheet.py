@@ -216,7 +216,10 @@ def full_sheet_rows(record: Record, *, draw: int | None = None) -> list[dict[str
 
 
 def _audio_tag(audio: dict[str, Any]) -> str:
-    return str(audio.get("sha256") or "")[:12]
+    """`sha:` and the file's first 12 hex digits. The prefix keeps Google Sheets from reading
+    an all-digit (or digits-e-digits) hash as a number (merge review 2026-10-06)."""
+    sha = str(audio.get("sha256") or "")
+    return f"sha:{sha[:12]}" if sha else ""
 
 
 def flag_rows(record: Record) -> list[dict[str, str]]:
@@ -270,6 +273,11 @@ class ExportResult:
     flagged: list[str] = field(default_factory=list)
     # Decisions carried over from the sheet that was there (follow-up 5).
     carried: int = 0
+    # Decided rows of species that wait for `web verify`, kept as they were (merge review).
+    kept: int = 0
+    # Decided rows that did not reach the new file, by reason ("redan kontrollerad" is the
+    # expected one: the import has applied them).
+    not_carried: list[str] = field(default_factory=list)
 
 
 def _eligible(records: dict[str, Record], wave: int | None) -> list[Record]:
@@ -327,32 +335,75 @@ def export_wave(paths: WebPaths, wave: int | None = None) -> ExportResult:
     # species that still waits keeps what Albin already wrote on its open flags, so the new
     # file can be uploaded over the Drive sheet without losing a decision.
     old_rows = read_sheet(path, required_columns=IMPORT_COLUMNS) if path.exists() else []
+    old_by_qid: dict[str, list[dict[str, str]]] = {}
+    for old_row in old_rows:
+        old_by_qid.setdefault(old_row["QID"].strip(), []).append(old_row)
+    result = ExportResult(path=path, flagged=[str(r["qid"]) for r in flagged])
     rows: list[dict[str, str]] = []
-    carried = 0
+    lost: dict[str, list[str]] = {}
     for record in flagged:
-        old = [r for r in old_rows if r["QID"].strip() == record["qid"]]
+        old = old_by_qid.get(str(record["qid"]), [])
+        used: set[int] = set()
         for flag, row in zip(record.get("flags", []), flag_rows(record), strict=True):
-            carried += _carry_decision(record, flag, row, old)
+            index = _carry_decision(record, flag, row, old)
+            if index is not None:
+                used.add(index)
+                result.carried += 1
             rows.append(row)
+        unused = [r for i, r in enumerate(old) if i not in used and _decided(r)]
+        if unused:
+            lost.setdefault(FLAG_GONE, []).append(f"{_name(record)} ({len(unused)})")
+    flagged_qids = set(result.flagged)
+    for qid, old in old_by_qid.items():
+        decided = [r for r in old if _decided(r)]
+        if qid in flagged_qids or not decided:
+            continue
+        found = records.get(qid)
+        if found is not None and not is_reviewed(found) and not _verify_current(found):
+            # Merge review (2026-10-06): the facts changed after the flags were written and
+            # `web verify` has not run again. Kept as they are: the import skips them until
+            # it has, and the next `web sheet` matches them to the new flags.
+            rows += old
+            result.kept += len(decided)
+            lost.setdefault(WAITING_FOR_VERIFY, []).append(f"{_name(found)} ({len(decided)})")
+            continue
+        if found is None:
+            reason, name = "arten finns inte", qid
+        elif is_reviewed(found):
+            reason, name = ALREADY_DECIDED, _name(found)
+        elif wave is not None and found.get("review", {}).get("wave") != wave:
+            reason, name = "utanför --wave", _name(found)
+        else:
+            reason, name = FLAG_GONE, _name(found)
+        lost.setdefault(reason, []).append(f"{name} ({len(decided)})")
+    result.not_carried = [f"{reason}: {', '.join(names)}" for reason, names in lost.items()]
     write_sheet(path, rows)
-    return ExportResult(path=path, flagged=[str(r["qid"]) for r in flagged], carried=carried)
+    return result
+
+
+ALREADY_DECIDED = "redan kontrollerad (väntat, importen har tagit dem)"
+WAITING_FOR_VERIFY = "väntar på web verify, raderna behölls oförändrade"
+FLAG_GONE = "flaggan finns inte längre"
+
+
+def _decided(row: dict[str, str]) -> bool:
+    return bool(_decision(row) or row.get("Kommentar", "").strip())
 
 
 def _carry_decision(
     record: Record, flag: dict[str, Any], row: dict[str, str], old: list[dict[str, str]]
-) -> int:
+) -> int | None:
     """Copies Beslut, Kommentar and (for a status `ändra`) Faktum from the first old row
-    that decides this very flag (`_row_matches`, the import's own test). 1 if it did."""
-    for old_row in old:
-        if (_decision(old_row) or old_row.get("Kommentar", "").strip()) and _row_matches(
-            record, old_row, flag
-        ):
+    that decides this very flag (`_row_matches`, the import's own test). Returns that
+    row's index in `old`, or None."""
+    for index, old_row in enumerate(old):
+        if _decided(old_row) and _row_matches(record, old_row, flag):
             row["Beslut"] = old_row.get("Beslut", "").strip()
             row["Kommentar"] = old_row.get("Kommentar", "")
             if _sets_status(old_row):
                 row["Faktum"] = old_row["Faktum"].strip()
-            return 1
-    return 0
+            return index
+    return None
 
 
 @dataclass

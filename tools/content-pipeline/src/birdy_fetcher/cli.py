@@ -479,10 +479,15 @@ def web_sheet(wave: int | None) -> None:
             f"review/undantag.csv går inte att läsa ({exc}); inget skrevs. Ladda ner arket "
             "från Drive som CSV igen."
         ) from exc
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     click.echo(
-        f"{len(result.flagged)} flaggade arter, {result.carried} beslut förda vidare från "
-        f"arket som låg där. Ladda upp {result.path} över Drive-arket (bara efter web import)."
+        f"{len(result.flagged)} flaggade arter, {result.carried} beslut förda vidare och "
+        f"{result.kept} behållna från arket som låg där. Ladda upp {result.path} över "
+        "Drive-arket (bara efter web import)."
     )
+    for line in result.not_carried:
+        click.echo(f"Beslut som inte fördes vidare: {line}")
 
 
 @web.command("spot-check")

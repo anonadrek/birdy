@@ -157,7 +157,9 @@ def sweep_orphan_voices(data_out: Path, images_out: Path) -> VoiceSweep:
     (follow-up 1, wave B review). A record that cannot be read is left to the step that
     reports it."""
     sweep = VoiceSweep()
-    if not images_out.exists():
+    # No records at all (an empty or missing data folder, merge review 2026-10-06) would
+    # make every recording an orphan: nothing to compare against, so nothing is deleted.
+    if not images_out.exists() or not any(data_out.glob("Q*.json")):
         return sweep
     for voice in sorted(images_out.glob(f"Q*/{VOICE_FILE}")):
         qid = voice.parent.name

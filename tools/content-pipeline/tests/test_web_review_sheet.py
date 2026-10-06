@@ -1414,7 +1414,7 @@ def _v4(record: Record, sha: str) -> Record:
 
 def test_the_recording_flag_row_carries_the_files_hash() -> None:
     record = _v4(_record(), "ab" * 32)
-    assert flag_rows(record)[0]["Citat"] == "ab" * 6
+    assert flag_rows(record)[0]["Citat"] == "sha:" + "ab" * 6
 
 
 def test_a_recording_row_for_another_file_is_not_applied() -> None:
@@ -1425,3 +1425,68 @@ def test_a_recording_row_for_another_file_is_not_applied() -> None:
     assert result.changed == []
     assert "audio" in record
     assert any("inaktuell" in note for note in result.ignored)
+
+
+# Merge review (2026-10-06): A, B.
+
+
+def test_web_sheet_keeps_decisions_of_a_species_waiting_for_verify(tmp_path: Path) -> None:
+    """A: Albin decided a V3 flag in Drive, then the facts changed before `web verify` ran
+    again. The species is not eligible (stale verify hash), so its decided row used to
+    vanish from the file ("carried 0, rows 0") and came back empty after the re-verify."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    record = _flagged("Q1")
+    save_record(record_path(paths.data_out, "Q1"), record)
+    path = paths.review / "undantag.csv"
+    write_sheet(path, _flag_decisions(flag_rows(record), s01=KEEP))
+    record["facts"].insert(1, {"id": "f09", "topic": "habitat", "sv": "I skog.", "sources": []})
+    save_record(record_path(paths.data_out, "Q1"), record)  # verify hash now stale
+    first = export_wave(paths)
+    rows = read_sheet(path)
+    assert [(r["QID"], r["Beslut"]) for r in rows] == [("Q1", KEEP)]
+    assert first.kept == 1
+    assert any("väntar på web verify" in line for line in first.not_carried)
+    record["generated"]["verify"]["factsHash"] = facts_hash(record)  # re-verified
+    save_record(record_path(paths.data_out, "Q1"), record)
+    second = export_wave(paths)
+    assert second.carried == 1
+    assert [(r["QID"], r["Beslut"]) for r in read_sheet(path)] == [("Q1", KEEP)]
+
+
+def test_web_sheet_reports_decisions_it_does_not_carry(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    decided, gone = _flagged("Q1"), _flagged("Q2")
+    path = paths.review / "undantag.csv"
+    write_sheet(
+        path,
+        [
+            *_flag_decisions(flag_rows(decided), s01=KEEP),
+            *_flag_decisions(flag_rows(gone), s01=KEEP),
+        ],
+    )
+    decided["verification"] = {
+        "method": "auto",
+        "at": "2026-11-20",
+        "model": "m",
+        "spotChecked": False,
+    }
+    gone["flags"] = [{"check": "V2", "factId": "f01", "message": "f01 anger ett tal"}]
+    save_record(record_path(paths.data_out, "Q1"), decided)
+    save_record(record_path(paths.data_out, "Q2"), gone)
+    result = export_wave(paths)
+    assert result.carried == 0
+    assert any("redan kontrollerad" in line and "Q1" in line for line in result.not_carried)
+    assert any("flaggan finns inte längre" in line and "Q2" in line for line in result.not_carried)
+
+
+def test_an_all_digit_recording_tag_survives_the_sheet(tmp_path: Path) -> None:
+    """B: twelve digits (or digits-e-digits) are read as a number by Google Sheets and come
+    back as 1.23457E+11; the tag is prefixed so it stays text."""
+    record = _v4(_record(), "1234567890" * 6 + "1234")
+    rows = flag_rows(record)
+    assert rows[0]["Citat"] == "sha:123456789012"
+    path = tmp_path / "undantag.csv"
+    write_sheet(path, _flag_decisions(rows, **{"": KEEP}))
+    result = apply_review({"Q25485": record}, read_sheet(path), date="2026-11-20")
+    assert result.changed == ["Q25485"]
+    assert record["review"]["audioKept"] == audio_id(record["audio"])

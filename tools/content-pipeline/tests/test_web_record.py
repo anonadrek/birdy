@@ -170,3 +170,14 @@ def test_delete_voice_never_raises(tmp_path: Path, monkeypatch: pytest.MonkeyPat
     error = delete_voice(images_out, "Q1")
     assert error is not None and "PermissionError" in error
     assert delete_voice(images_out, "Q9") is None
+
+
+def test_the_sweep_does_nothing_without_any_records(tmp_path: Path) -> None:
+    """C (merge review 2026-10-06): an empty or missing data folder would otherwise make
+    every recording an orphan."""
+    images_out = tmp_path / "img"
+    voice = _voice(images_out, "Q1")
+    assert sweep_orphan_voices(tmp_path / "missing", images_out).removed == []
+    (tmp_path / "empty").mkdir()
+    assert sweep_orphan_voices(tmp_path / "empty", images_out).removed == []
+    assert voice.exists()

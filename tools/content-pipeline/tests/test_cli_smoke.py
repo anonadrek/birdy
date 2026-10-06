@@ -490,3 +490,21 @@ def test_web_import_exits_non_zero_when_a_recording_could_not_be_deleted(
     result = CliRunner().invoke(main, ["web", "import", "--file", str(sheet)])
     assert result.exit_code == 1
     assert "kunde inte tas bort" in result.output
+
+
+def test_web_sheet_prints_decisions_it_does_not_carry(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from birdy_fetcher.web import review_sheet
+
+    def fake_export_wave(paths: object, wave: int | None) -> review_sheet.ExportResult:
+        return review_sheet.ExportResult(
+            path=tmp_path / "undantag.csv",
+            not_carried=["väntar på web verify, raderna behölls oförändrade: Q1 Talgoxe (1)"],
+            kept=1,
+        )
+
+    monkeypatch.setattr(review_sheet, "export_wave", fake_export_wave)
+    result = CliRunner().invoke(main, ["web", "sheet"])
+    assert result.exit_code == 0, result.output
+    assert "väntar på web verify" in result.output
