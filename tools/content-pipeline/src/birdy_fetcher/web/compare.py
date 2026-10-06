@@ -154,7 +154,10 @@ def read_volumes(path: Path) -> dict[Pair, tuple[int, int]]:
     """Current candidates only (fix 2026-10-06, item 5): a row an earlier `write_candidates`
     marked `aktuell: nej` (no longer a look-alike pair, kept only because it had a volume)
     is skipped, so `select_pairs` never ranks a stale pair. A row missing a_qid or b_qid
-    is skipped too (fix 2026-10-06, item 2), consistent with `_load_old` below."""
+    is skipped too (fix 2026-10-06, item 2), consistent with `_load_old` below. Two rows
+    for the same pair in the same orientation with different volumes raise instead of the
+    last one silently winning (review fix 2026-10-06, M6; `run_compare` does the same for
+    flipped rows)."""
     if not path.exists():
         return {}
     volumes: dict[Pair, tuple[int, int]] = {}
@@ -166,8 +169,20 @@ def read_volumes(path: Path) -> dict[Pair, tuple[int, int]]:
             continue
         sv = _number(row.get("sv_volume", ""), lang="sv", a_qid=a_qid, b_qid=b_qid)
         en = _number(row.get("en_volume", ""), lang="en", a_qid=a_qid, b_qid=b_qid)
-        volumes[Pair(a_qid, b_qid)] = (sv, en)
+        pair = Pair(a_qid, b_qid)
+        if pair in volumes and volumes[pair] != (sv, en):
+            raise ValueError(_duplicate_volumes_error(a_qid, b_qid, volumes[pair], (sv, en)))
+        volumes[pair] = (sv, en)
     return volumes
+
+
+def _duplicate_volumes_error(
+    a_qid: str, b_qid: str, first: tuple[int, int], second: tuple[int, int]
+) -> str:
+    return (
+        f"Dubblettrader för {a_qid}/{b_qid} i {VOLUMES_FILE} har olika volymer: {first} och "
+        f"{second}. Rätta filen eller kör web compare-candidates."
+    )
 
 
 def _merge_duplicate(
@@ -375,7 +390,21 @@ def pair_context(a: Record, b: Record) -> TextContext:
     return TextContext.from_facts(a_facts + b_facts)
 
 
-def _check_lang(lang: str, t: CompareLang, ctx: TextContext, banned: list[str]) -> list[TextIssue]:
+def meta_openings(a: Record, b: Record) -> dict[str, str]:
+    """The question each meta description opens with (review fix 2026-10-06, M1): the
+    Swedish one in Swedish slug order, the English one in English slug order, the order
+    fas 2 uses for each language's page title and slug."""
+    sv_first, sv_second = sorted((a, b), key=lambda r: str(r["slug"]["sv"]))
+    en_first, en_second = sorted((a, b), key=lambda r: str(r["slug"]["en"]))
+    return {
+        "sv": f"{sv_first['names']['sv']} eller {sv_second['names']['sv']}?",
+        "en": f"{en_first['names']['en']} or {en_second['names']['en']}?",
+    }
+
+
+def _check_lang(
+    lang: str, t: CompareLang, ctx: TextContext, banned: list[str], opening: str | None
+) -> list[TextIssue]:
     issues: list[TextIssue] = []
     for i, sentence in enumerate(t.short_answer):
         issues += sentence_issues(f"{lang}.short_answer[{i}]", lang, sentence, ctx, banned)
@@ -421,11 +450,27 @@ def _check_lang(lang: str, t: CompareLang, ctx: TextContext, banned: list[str]) 
         # Same rule as the species texts (M8): the meta description cites no facts, so a
         # number in it could never be checked.
         issues.append(TextIssue(meta_path, "innehåller siffror", False))
+    if opening is not None and not t.meta_description.casefold().startswith(opening.casefold()):
+        # Case-insensitive: the second Swedish name is written as in the middle of a
+        # sentence ("Blåmes eller talgoxe?").
+        issues.append(TextIssue(meta_path, f'ska börja med frågan "{opening}"', False))
     return issues
 
 
-def check_compare(text: CompareOutput, ctx: TextContext, banned: list[str]) -> list[TextIssue]:
-    return _check_lang("sv", text.sv, ctx, banned) + _check_lang("en", text.en, ctx, banned)
+def check_compare(
+    text: CompareOutput,
+    ctx: TextContext,
+    banned: list[str],
+    *,
+    openings: dict[str, str] | None = None,
+) -> list[TextIssue]:
+    """Every code-check issue. With `openings` (see `meta_openings`), each meta description
+    must also open with its language's question."""
+    sv_opening = openings["sv"] if openings else None
+    en_opening = openings["en"] if openings else None
+    return _check_lang("sv", text.sv, ctx, banned, sv_opening) + _check_lang(
+        "en", text.en, ctx, banned, en_opening
+    )
 
 
 def compare_path_texts(text: CompareOutput) -> dict[str, str]:
@@ -462,11 +507,15 @@ def remove_compare_paths(text: CompareOutput, paths: set[str]) -> CompareOutput:
 
 
 def settle_compare(
-    text: CompareOutput, ctx: TextContext, banned: list[str]
+    text: CompareOutput,
+    ctx: TextContext,
+    banned: list[str],
+    *,
+    openings: dict[str, str] | None = None,
 ) -> tuple[CompareOutput, list[str], list[str]]:
     """Same contract as `text_checks.settle`: removes every removable part that breaks a
     rule, then checks again. Returns the text, removal notes and the remaining problems."""
-    issues = check_compare(text, ctx, banned)
+    issues = check_compare(text, ctx, banned, openings=openings)
     removable = {i.path for i in issues if i.removable}
     texts = compare_path_texts(text)
     notes = [
@@ -476,7 +525,7 @@ def settle_compare(
     ]
     if removable:
         text = remove_compare_paths(text, removable)
-        issues = check_compare(text, ctx, banned)
+        issues = check_compare(text, ctx, banned, openings=openings)
     return text, notes, [f"{i.path}: {i.message}" for i in issues]
 
 
@@ -546,8 +595,11 @@ def render_compare_prompt(
     template: str, a: Record, b: Record, banned: list[str]
 ) -> tuple[str, str]:
     a_facts, b_facts = prefixed_facts(a, b)
+    en_first, en_second = sorted((a, b), key=lambda r: str(r["slug"]["en"]))
     return _split_prompt(
         template,
+        en_first=en_first["names"]["en"],
+        en_second=en_second["names"]["en"],
         a_sv=a["names"]["sv"],
         a_en=a["names"]["en"],
         a_scientific=a["names"]["scientific"],
@@ -561,10 +613,13 @@ def render_compare_prompt(
 
 
 def pair_about(a: Record, b: Record) -> str:
-    """Who the comparison is about, for the checker (`SentenceChecker.check(about=)`)."""
+    """Who the comparison is about, for the checker (`SentenceChecker.check(about=)`), and
+    which side each fact id prefix belongs to (review fix 2026-10-06, M5)."""
     return (
         f"side a: {a['names']['sv']} / {a['names']['en']} ({a['names']['scientific']}); "
-        f"side b: {b['names']['sv']} / {b['names']['en']} ({b['names']['scientific']})"
+        f"side b: {b['names']['sv']} / {b['names']['en']} ({b['names']['scientific']}). "
+        "Fact ids starting with a: are facts about side a, ids starting with b: are facts "
+        "about side b; a look-alike fact may describe the other side."
     )
 
 
@@ -593,9 +648,10 @@ class ComparisonWriter:
         ctx = pair_context(a, b)
         template = self.prompt_path.read_text(encoding="utf-8")
         system, user = render_compare_prompt(template, a, b, self.banned)
+        openings = meta_openings(a, b)
         checks: Checks[CompareOutput] = Checks(
-            rules=lambda t: check_compare(t, ctx, self.banned),
-            settle=lambda t: settle_compare(t, ctx, self.banned),
+            rules=lambda t: check_compare(t, ctx, self.banned, openings=openings),
+            settle=lambda t: settle_compare(t, ctx, self.banned, openings=openings),
             items=lambda t: compare_items(t, ctx, (a, b)),
             remove=remove_compare_paths,
             minimum=compare_minimum,
@@ -638,10 +694,7 @@ def _candidate_volumes(
             continue
         if key in volumes and volumes[key] != value:
             first, second = sorted(key)
-            raise ValueError(
-                f"Dubblettrader för {first}/{second} i {VOLUMES_FILE} har olika volymer: "
-                f"{volumes[key]} och {value}. Rätta filen eller kör web compare-candidates."
-            )
+            raise ValueError(_duplicate_volumes_error(first, second, volumes[key], value))
         volumes[key] = value
     return volumes
 
@@ -653,29 +706,135 @@ def _ordered(key: frozenset[str], records: dict[str, Record]) -> Pair:
     return ordered_pair(x, y, records)
 
 
-def _pair_skip_reason(a: Record, b: Record) -> str | None:
+def _pair_skip_reasons(a: Record, b: Record) -> list[str]:
     """A comparison is written only from two verified fact sheets (spec §7 and §9.7), with
-    the same checks `web write` uses (`text_step._skip_reason`)."""
-    waiting = [
-        str(r["names"]["sv"])
-        for r in (a, b)
-        if missing_required_topics(r.get("facts", [])) or not facts_verified(r)
-    ]
-    if waiting:
-        return f"väntar på att faktabladet kontrolleras: {', '.join(waiting)}"
-    return None
+    the same checks and messages as `web write` (`text_step._skip_reason`, review fix
+    2026-10-06, M3). Empty when both sheets are ready."""
+    reasons: list[str] = []
+    for record in (a, b):
+        name = str(record["names"]["sv"])
+        if missing_required_topics(record.get("facts", [])):
+            reasons.append(f"{name}: faktabladet saknas eller misslyckades: kör web facts")
+        elif not facts_verified(record):
+            reasons.append(f"{name}: faktabladet är inte kontrollerat")
+    return reasons
+
+
+def _both_hash(a: Record, b: Record) -> str:
+    """The facts hash a comparison is written from: side a's, then side b's."""
+    return facts_hash(a) + facts_hash(b)
+
+
+def comparison_is_current(comparison: Record, records: dict[str, Record]) -> bool:
+    """True when the comparison was written from both species' facts as they are now (its
+    `generated.factsHash` matches, review fix 2026-10-06, I2). A comparison that is `ok`
+    but not current must not be published: `web publish` checks this, since `web compare`
+    leaves a stale comparison as it is whenever it does not rewrite it (a pair waiting for a
+    fact sheet, outside `--top`, or no longer a look-alike pair)."""
+    a, b = records.get(str(comparison.get("a"))), records.get(str(comparison.get("b")))
+    if a is None or b is None:
+        return False
+    written = (comparison.get("generated") or {}).get("factsHash")
+    return bool(written == _both_hash(a, b))
+
+
+def _comparison_cited_ids(comparison: Record) -> set[str]:
+    """Every fact id the comparison's site text (spec appendix D shape) cites."""
+    ids: set[str] = set()
+    text = comparison.get("text") or {}
+    for lang in ("sv", "en"):
+        lang_text = text.get(lang) or {}
+        for sentence in lang_text.get("shortAnswer") or []:
+            ids.update(sentence.get("factIds") or [])
+        for row in lang_text.get("rows") or []:
+            for side in SIDES:
+                ids.update((row.get(side) or {}).get("factIds") or [])
+    return ids
+
+
+def _stale_comparison_ids(comparison: Record, records: dict[str, Record]) -> list[str]:
+    """Cited ids (`a:f04`) whose fact no longer exists in that side's current `facts`
+    (review fix 2026-10-06, I1, the comparison counterpart of text_step's N1). A side whose
+    record is gone makes all its ids stale; an id without a side prefix is stale too."""
+    current: dict[str, set[str]] = {}
+    for side in SIDES:
+        record = records.get(str(comparison.get(side)))
+        current[side] = {f["id"] for f in record.get("facts", [])} if record else set()
+    stale = []
+    for fact_id in _comparison_cited_ids(comparison):
+        side, _, local = fact_id.partition(":")
+        if local not in current.get(side, set()):
+            stale.append(fact_id)
+    return sorted(stale)
+
+
+def _stale_ids_error(stale: list[str]) -> str:
+    return (
+        f"publicerad jämförelse anger fakta som inte längre finns ({', '.join(stale)}): "
+        "sätt publish: false"
+    )
+
+
+def _published_stale_error(comparison: Record | None, records: dict[str, Record]) -> str | None:
+    """The loud error for a published comparison that cites a struck fact, or None."""
+    if comparison is None or not comparison.get("publish"):
+        return None
+    stale = _stale_comparison_ids(comparison, records)
+    return _stale_ids_error(stale) if stale else None
+
+
+STALE_HASH_ERROR = (
+    "jämförelsen är publicerad och faktabladen har ändrats sedan texten skrevs: "
+    "sätt publish: false om den gamla texten nu är fel"
+)
 
 
 def _keep_old_comparison(existing: Record, both_hash: str) -> bool:
     """Mirrors `text_step._keep_old_text`: a failed rewrite never destroys a comparison the
     site may still use (a published one) or one that is still current for these facts.
-    Only a stale, unpublished comparison is replaced by the failed result, so `web publish`
-    can never put a comparison built from old facts on the site."""
+    A stale, unpublished comparison is replaced by the failed result. That alone does not
+    keep stale text off the site (a comparison this run never rewrites stays `ok`), so
+    `web publish` is only safe because it also requires `comparison_is_current`."""
     if existing.get("publish"):
         return True
     if existing.get("status") != "ok":
         return False
     return bool((existing.get("generated") or {}).get("factsHash") == both_hash)
+
+
+def _sweep_published(
+    out_dir: Path, records: dict[str, Record], in_run: set[str]
+) -> list[StepOutcome]:
+    """Published comparisons this run does not visit (outside `--top`, no volume any more,
+    or no longer a look-alike pair) are checked without a model call (review fix
+    2026-10-06, I1): a struck cited fact or changed facts is reported as failed, so the
+    page does not stay live on old facts unnoticed."""
+    outcomes: list[StepOutcome] = []
+    for path in sorted(out_dir.glob("Q*_Q*.json")):
+        if path.name in in_run:
+            continue
+        name = path.stem
+        try:
+            comparison = load_record(path)
+            if comparison is None or not comparison.get("publish"):
+                continue
+            a, b = records.get(str(comparison.get("a"))), records.get(str(comparison.get("b")))
+            if a is not None and b is not None:
+                name = f"{a['names']['sv']} eller {b['names']['sv']}"
+            stale_error = _published_stale_error(comparison, records)
+            if stale_error is not None:
+                outcomes.append(StepOutcome(path.stem, name, "failed", [stale_error]))
+            elif not comparison_is_current(comparison, records):
+                note = (
+                    "paret skrivs inte om i den här körningen (utanför --top eller inte "
+                    "ett förväxlingspar längre)"
+                )
+                outcomes.append(StepOutcome(path.stem, name, "failed", [STALE_HASH_ERROR], [note]))
+        except Exception as exc:  # one file's error must not stop the run
+            outcomes.append(
+                StepOutcome(path.stem, name, "failed", [f"{type(exc).__name__}: {exc}"])
+            )
+    return outcomes
 
 
 async def run_compare(
@@ -693,6 +852,10 @@ async def run_compare(
     records = load_all(paths.data_out)
     volumes = _candidate_volumes(read_volumes(paths.review / VOLUMES_FILE), records)
     pairs = select_pairs({_ordered(key, records): v for key, v in volumes.items()}, options.top)
+    # Everything that reads a file comes before the client exists (review fix 2026-10-06,
+    # M7), so an early error cannot leave an Anthropic client open.
+    banned = load_banned(paths.banned)
+    prompt_hash = prompt_file_hash(paths.prompt_file(PROMPT_VERSION))
     owned = client is None
     model_client: JsonModelClient = client or AnthropicJsonClient()
     cost = CostTracker(max_usd=options.max_cost)
@@ -707,45 +870,52 @@ async def run_compare(
         cost=cost,
         checker=checker,
         prompt_path=paths.prompt_file(PROMPT_VERSION),
-        banned=load_banned(paths.banned),
+        banned=banned,
         model_key=options.model_key,
         effort=options.effort,
     )
-    prompt_hash = prompt_file_hash(paths.prompt_file(PROMPT_VERSION))
     stop = asyncio.Event()
     semaphore = asyncio.Semaphore(options.workers)
 
     async def one(pair: Pair) -> StepOutcome:
-        label = f"{pair.a}_{pair.b}"
+        path = comparison_path(paths.comparisons_out, pair)
+        label = path.stem
         name = label
         async with semaphore:
             try:
                 a, b = records[pair.a], records[pair.b]
                 name = f"{a['names']['sv']} eller {b['names']['sv']}"
-                reason = _pair_skip_reason(a, b)
-                if reason is not None:
-                    return StepOutcome(label, name, "skipped", [reason])
-                path = comparison_path(paths.comparisons_out, pair)
                 existing = load_record(path)
-                both_hash = facts_hash(a) + facts_hash(b)
+                # I1 (review fix 2026-10-06): computed once, before anything else. Every
+                # way out that leaves a published comparison as it is fails loudly when it
+                # cites a fact that no longer exists.
+                stale_error = _published_stale_error(existing, records)
+
+                def leave(status: str, reasons: list[str]) -> StepOutcome:
+                    if stale_error is not None:
+                        return StepOutcome(label, name, "failed", [stale_error], reasons)
+                    return StepOutcome(label, name, status, reasons)
+
+                reasons = _pair_skip_reasons(a, b)
+                if reasons:
+                    return leave("skipped", reasons)
+                both_hash = _both_hash(a, b)
                 current = (
                     existing is not None
                     and existing.get("status") == "ok"
-                    and (existing.get("generated") or {}).get("factsHash") == both_hash
+                    and comparison_is_current(existing, records)
                 )
                 if current and not options.regenerate:
-                    return StepOutcome(
-                        label, name, "skipped", ["jämförelsen är redan skriven ur samma faktablad"]
-                    )
+                    return leave("skipped", ["jämförelsen är redan skriven ur samma faktablad"])
                 if stop.is_set():
-                    return StepOutcome(label, name, "skipped", ["kostnadstaket nåddes"])
+                    return leave("skipped", ["kostnadstaket nåddes"])
                 try:
                     result = await writer.write(a, b)
                 except MaxCostExceeded as exc:
                     stop.set()
-                    return StepOutcome(label, name, "skipped", [f"kostnadstaket nåddes: {exc}"])
+                    return leave("skipped", [f"kostnadstaket nåddes: {exc}"])
                 except CheckerFailed as exc:
-                    return StepOutcome(label, name, "failed", [str(exc)])
+                    return leave("failed", [str(exc)])
                 if (
                     result.text is None
                     and existing is not None
@@ -754,11 +924,10 @@ async def run_compare(
                     notes = [*result.notes, "den tidigare jämförelsen behölls"]
                     errors = list(result.errors)
                     old_hash = (existing.get("generated") or {}).get("factsHash")
-                    if existing.get("publish") and old_hash != both_hash:
-                        errors.append(
-                            "jämförelsen är publicerad och faktabladen har ändrats sedan "
-                            "texten skrevs: sätt publish: false om den gamla texten nu är fel"
-                        )
+                    if stale_error is not None:
+                        errors.append(stale_error)
+                    elif existing.get("publish") and old_hash != both_hash:
+                        errors.append(STALE_HASH_ERROR)
                     return StepOutcome(label, name, "failed", errors, notes)
                 sv_volume, en_volume = volumes[frozenset((pair.a, pair.b))]
                 # Keys this step does not own (`publish`, and whatever later steps add)
@@ -808,6 +977,8 @@ async def run_compare(
     finally:
         if owned and isinstance(model_client, AnthropicJsonClient):
             await model_client.aclose()
+    in_run = {comparison_path(paths.comparisons_out, p).name for p in pairs}
+    outcomes += _sweep_published(paths.comparisons_out, records, in_run)
     model_line = (
         f"Skribent: `{MODELS[options.model_key]}` (effort: {options.effort}). "
         f"Kontroll: `{MODELS[options.checker_key]}`."

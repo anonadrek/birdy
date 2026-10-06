@@ -8745,6 +8745,8 @@ git commit -m "feat(pipeline): delad skrivslinga och jämförelsetexter för fö
 
 ### Task 23: Publicering, `web publish`
 
+**Tillägg (2026-10-06, Task 22-granskningen, I2):** `status: "ok"` räcker inte för att publicera en jämförelse. `web compare` lämnar en inaktuell jämförelse orörd när den inte skrivs om (paret väntar på ett faktablad, ligger utanför `--top` eller är inte längre ett förväxlingspar), så den kan stå kvar som `ok` med text ur gamla fakta. `publish_wave` ska därför också kräva `comparison_is_current(comparison, records)` (från `compare.py`: `generated.factsHash` är lika med båda arternas nuvarande `facts_hash`, sida a först) innan `publish` sätts. Lägg till ett test: en `ok`-jämförelse vars `generated.factsHash` inte stämmer med arternas nuvarande fakta publiceras inte, fast båda arterna är publicerade.
+
 **Files:**
 - Modify: `src/birdy_fetcher/web/waves.py` (lägg till), `src/birdy_fetcher/cli.py`
 - Test: `tests/test_web_waves.py` (lägg till)

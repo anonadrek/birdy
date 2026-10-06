@@ -312,6 +312,10 @@ async def run_write(
     else:
         chosen = [r for r in records.values() if r.get("review", {}).get("wave") == options.wave]
     groups = GroupTable(paths.family_groups, paths.web_groups)
+    # Everything that reads a file comes before the client exists (review fix 2026-10-06,
+    # M7), so an early error cannot leave an Anthropic client open.
+    banned = load_banned(paths.banned)
+    prompt_hash = prompt_file_hash(paths.prompt_file(PROMPT_VERSION))
     owned = client is None
     model_client: JsonModelClient = client or AnthropicJsonClient()
     cost = CostTracker(max_usd=options.max_cost)
@@ -326,11 +330,10 @@ async def run_write(
         cost=cost,
         checker=checker,
         prompt_path=paths.prompt_file(PROMPT_VERSION),
-        banned=load_banned(paths.banned),
+        banned=banned,
         model_key=options.model_key,
         effort=options.effort,
     )
-    prompt_hash = prompt_file_hash(paths.prompt_file(PROMPT_VERSION))
     stop = asyncio.Event()
     semaphore = asyncio.Semaphore(options.workers)
 
