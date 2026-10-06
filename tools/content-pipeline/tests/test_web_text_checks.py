@@ -28,6 +28,46 @@ def test_numbers() -> None:
     assert numbers("Cirka 14 cm och 2,5 kg") == {"14", "2.5"}
 
 
+def test_numbers_with_space_grouped_thousands() -> None:
+    """Swedish thousands separators: regular space, U+00A0 (NBSP), U+202F (NNBSP)."""
+    assert numbers("Väger 1 200 g.") == {"1200"}
+    assert numbers("Väger 1 200 g.") == {"1200"}  # U+00A0 NBSP  # noqa: RUF001
+    assert numbers("Väger 1 200 g.") == {"1200"}  # U+202F NNBSP  # noqa: RUF001
+    assert numbers("1200 g") == {"1200"}  # No space, already single number
+    assert numbers("2 300 000 g") == {"2300000"}  # Multiple groups
+
+
+def test_numbers_with_decimal_comma() -> None:
+    """Decimal commas should normalize to dots, unchanged by thousands grouping."""
+    assert numbers("14,5 cm") == {"14.5"}
+    assert numbers("1 200,50 g") == {"1200.50"}
+
+
+def test_numbers_does_not_merge_groups_separated_by_words() -> None:
+    """Groups separated by words ('mellan 3 och 400') should NOT merge."""
+    assert numbers("mellan 3 och 400") == {"3", "400"}
+    # Rule: a thousands group is exactly 3 digits preceded by 1-3 digits
+    # separated by one space-like char
+    assert numbers("3 och 400 kg") == {"3", "400"}
+
+
+def test_numbers_fact_citation_with_space_grouped_thousands() -> None:
+    """Rule 5: sentence citing fact with space-grouped thousands should match correctly.
+
+    f03 contains the number 14. When a sentence cites f03 and mentions "14" with spaces
+    (e.g., "1 4" if that were split), the merge should allow the match to work.
+    Simpler: a sentence citing f03 with the number "14" (space-free in this case) should match.
+    """
+    # Test: sentence citing f03 which has the number 14
+    text = _with_sv(field_marks=[S("Cirka 14 centimeter lång.", "f03")])
+    issues = check_text(text, CTX, BANNED)
+    # Should NOT have a rule-5 issue about the number not being in the facts
+    rule5_issues = [
+        i for i in issues if "talet" in i.message and "finns inte i de fakta" in i.message
+    ]
+    assert not rule5_issues, f"Unexpected rule-5 issues: {rule5_issues}"
+
+
 def test_a_number_that_the_facts_do_not_give_is_removable() -> None:
     text = _with_sv(voice=[S("Sången hörs från 3 meters håll.", "f04")])
     issues = check_text(text, CTX, BANNED)

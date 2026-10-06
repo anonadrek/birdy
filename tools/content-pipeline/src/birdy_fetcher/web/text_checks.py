@@ -1,4 +1,5 @@
 """Code checks for the page text (spec 2026-09-25 §9.6, rules 1 to 7)."""
+# ruff: noqa: RUF001
 
 from __future__ import annotations
 
@@ -45,8 +46,35 @@ class TextContext:
 _NUMBER = re.compile(r"\d+(?:[.,]\d+)?")
 
 
+def _merge_space_grouped_thousands(text: str) -> str:
+    """Merge Swedish space-grouped thousands like '1 200' or '2 300 000'.
+
+    Handles regular space, U+00A0 (NBSP), and U+202F (NNBSP) as separators.
+    Only merges valid thousands groups: 1-3 leading digits followed by one or more
+    groups of exactly 3 digits. Does not merge groups separated by words.
+    """
+
+    def merge(match: re.Match[str]) -> str:
+        # Remove all space-like separators
+        result = match.group(0)
+        result = result.replace(" ", "")  # regular space
+        result = result.replace(" ", "")  # NBSP
+        result = result.replace(" ", "")  # NNBSP
+        return result
+
+    # Pattern: 1-3 digits followed by (space-like + exactly 3 digits) one or more times
+    # Negative lookahead ensures no match if followed by a digit (invalid structure)
+    pattern = r"(?<!\d)(\d{1,3})(?:[   ]\d{3})+(?!\d)"
+    return re.sub(pattern, merge, text)
+
+
 def numbers(text: str) -> set[str]:
-    return {n.replace(",", ".") for n in _NUMBER.findall(text)}
+    """Extract all numbers from text, merging space-grouped thousands first.
+
+    Normalizes decimal commas to dots for comparison.
+    """
+    merged = _merge_space_grouped_thousands(text)
+    return {n.replace(",", ".") for n in _NUMBER.findall(merged)}
 
 
 def fact_corpus(fact: dict[str, Any]) -> str:
