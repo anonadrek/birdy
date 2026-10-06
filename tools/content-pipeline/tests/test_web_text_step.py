@@ -497,15 +497,11 @@ async def test_a_published_page_citing_a_struck_fact_fails_loudly(tmp_path: Path
     record["publish"] = True
     save_record(record_path(paths.data_out, "Q25485"), record)
 
-    # A spot check strikes f04, the species' only voice fact, via the exception sheet.
-    mark_drawn(record, 1)
-    rows = [dict(row) for row in full_sheet_rows(record, draw=1)]
-    for row in rows:
-        if row["Typ"] != "data":
-            row["Beslut"] = STRIKE if row["Id"] == "f04" else KEEP
-    apply_review({"Q25485": record}, rows, date="2026-11-22")
-    assert record.get("verification") is not None  # re-verified fresh, no open flags
-    assert not any(f["id"] == "f04" for f in record["facts"])
+    # f04, the species' only voice fact, is gone from the facts (an import can no longer
+    # strike the last fact of a required topic, Minor 10 of the final review 2026-10-06;
+    # the page must still fail loudly however a cited fact disappears).
+    record["facts"] = [f for f in record["facts"] if f["id"] != "f04"]
+    record["generated"]["verify"]["factsHash"] = facts_hash(record)
     save_record(record_path(paths.data_out, "Q25485"), record)
 
     client = FakeJsonClient([])

@@ -226,9 +226,12 @@ def _apply_audio(
     audio: AudioVerdict | str | None,
     flags: list[dict[str, Any]],
     notes: list[str],
-) -> None:
+) -> bool:
+    """Writes V4's verdict into the record and the flags; True when the recording was
+    struck, so its file is deleted once the record is saved (Minor 11, final review
+    2026-10-06: a struck voice.mp3 left on disk could be committed without credits)."""
     if audio is None:
-        return
+        return False
     if isinstance(audio, str):
         flags.append(
             {
@@ -244,8 +247,10 @@ def _apply_audio(
         record.pop("audio", None)
         record.setdefault("review", {})["audioStruck"] = True
         notes.append(f"inspelningen ströks: {audio.reason}")
+        return True
     elif audio.action == "flag":
         flags.append({"check": "V4", "factId": None, "message": audio.reason})
+    return False
 
 
 def _fail(record: Record, path: Path, kept: list[dict[str, Any]], missing: list[str]) -> None:
@@ -351,7 +356,7 @@ async def _one(
         if status_flag:
             flags.append(status_flag)
 
-        _apply_audio(record, audio, flags, notes)
+        audio_struck = _apply_audio(record, audio, flags, notes)
 
         # V1's reason and an audio error are free text; fas 2's dash guard reads the
         # record (I7, final review 2026-10-06).
@@ -377,6 +382,8 @@ async def _one(
                 "spotChecked": False,
             }
         save_record(path, record)
+        if audio_struck:
+            (paths.images_out / source.qid / "voice.mp3").unlink(missing_ok=True)
         return out("ok", [], [*notes, *([f"{len(flags)} flaggor"] if flags else [])])
     except Exception as exc:  # one species' error must not stop the run or overwrite a file
         return out("failed", [f"{type(exc).__name__}: {exc}"])

@@ -314,3 +314,13 @@ def test_convert_raises_readable_error_on_bad_input(tmp_path: Path) -> None:
         raise AssertionError("Should have raised RuntimeError")
     except RuntimeError as e:
         assert "ffmpeg" in str(e).lower()
+
+
+def test_an_attribution_licence_without_an_author_is_rejected() -> None:
+    """Minor 11 (final review 2026-10-06): CC BY and CC BY-SA require the author's name in
+    the credit; CC0 and public domain do not."""
+    for licence in ("CC BY 4.0", "CC BY-SA 3.0"):
+        reason = rejection(replace(BASE, license=licence, author=None), "Parus major")
+        assert reason is not None and "upphovsperson" in reason
+    assert rejection(replace(BASE, license="CC0", author=None), "Parus major") is None
+    assert rejection(replace(BASE, license="Public domain", author=None), "Parus major") is None

@@ -200,3 +200,44 @@ def test_to_site_uses_the_site_field_names() -> None:
         "lead", "fieldMarks", "voice", "whereWhen", "behaviour", "lookAlikes",
         "metaDescription", "facts",
     }  # fmt: skip
+
+
+# Minor 6 (final review 2026-10-06): the prompts say "13 till 15 cm" and no questions;
+# code now holds the writer to it.
+
+
+def test_a_range_written_with_a_hyphen_is_removable() -> None:
+    text = _with_sv(voice=[S("Sången har 13-15 toner.", "f04")])
+    issues = [i for i in check_text(text, CTX, BANNED) if i.path == "sv.voice[0]"]
+    assert issues and all(i.removable for i in issues)
+    assert any("till" in i.message for i in issues)
+
+
+def test_a_hyphen_inside_a_word_is_fine() -> None:
+    text = _with_sv(voice=[S("Sången är ett ringande ti-ta ti-ta.", "f04")])
+    assert check_text(text, CTX, BANNED) == []
+
+
+def test_a_size_written_with_a_hyphen_is_removable() -> None:
+    from birdy_fetcher.web.text_model import SizeText
+
+    text = _with_sv(size=SizeText(value="13-15 cm", fact_ids=["f03"]))
+    issues = [i for i in check_text(text, CTX, BANNED) if i.path == "sv.size"]
+    assert issues and issues[0].removable
+    assert "till" in issues[0].message
+
+
+def test_a_question_in_a_sentence_is_removable() -> None:
+    text = _with_sv(voice=[S("Hur låter talgoxen?", "f04")])
+    issues = [i for i in check_text(text, CTX, BANNED) if i.path == "sv.voice[0]"]
+    assert issues and all(i.removable for i in issues)
+    assert any("fråga" in i.message for i in issues)
+
+
+def test_a_question_in_the_species_meta_description_is_a_hard_issue() -> None:
+    meta = "Talgoxe? Så känner du igen den på svart huvud och vita kinder, hör den " + (
+        "ringande sången och ser när den finns i Sverige under året."
+    )
+    text = _with_sv(meta_description=meta)
+    issues = [i for i in check_text(text, CTX, BANNED) if i.path == "sv.meta_description"]
+    assert issues and not any(i.removable for i in issues)

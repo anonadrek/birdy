@@ -403,6 +403,8 @@ async def test_audio_is_struck_silently_when_the_model_covers_the_species_and_mi
     assert "audio" not in record
     assert record["review"]["audioStruck"] is True
     assert record["flags"] == []
+    # Minor 11: a struck recording leaves no file behind for a later commit to pick up.
+    assert not (paths.images_out / "Q1" / "voice.mp3").exists()
 
 
 async def test_audio_the_model_does_not_cover_becomes_a_v4_flag_and_is_kept(

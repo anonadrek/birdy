@@ -44,6 +44,10 @@ class TextContext:
 
 
 _NUMBER = re.compile(r"\d+(?:[.,]\d+)?")
+# A range written with a hyphen (or a hyphen-like character) between two numbers: the
+# prompts say "13 till 15" / "13 to 15" (Minor 6, final review 2026-10-06).
+_HYPHEN_RANGE = re.compile(r"\d\s*[-\u2010\u2011\u2012\u2212]\s*\d")
+HYPHEN_RANGE_MESSAGE = "skriver ett intervall med bindestreck, skriv till eller to"
 
 
 def _merge_space_grouped_thousands(text: str) -> str:
@@ -103,6 +107,11 @@ def sentence_issues(
     """Rules 1 to 5 for one sentence. `prefix` limits which fact ids it may cite (used by
     the comparison table, where a cell for species A may only cite A's facts)."""
     issues = [TextIssue(path, i.message, True) for i in _style(path, lang, sentence.text, banned)]
+    if _HYPHEN_RANGE.search(sentence.text):
+        issues.append(TextIssue(path, HYPHEN_RANGE_MESSAGE, True))
+    if "?" in sentence.text:
+        # Minor 6: "No questions to the reader" (both prompts) is now code too.
+        issues.append(TextIssue(path, "är en fråga till läsaren", True))
     if not sentence.fact_ids:
         return [*issues, TextIssue(path, "anger inga fakta", True)]
     unknown = [
@@ -135,6 +144,8 @@ def _size_issues(lang: str, text: LangTextV2, ctx: TextContext) -> list[TextIssu
         return [TextIssue(path, "storleken saknar siffror", True)]
     if any(d in size.value for d in DASHES):
         return [TextIssue(path, "storleken innehåller tankstreck", True)]
+    if _HYPHEN_RANGE.search(size.value):
+        return [TextIssue(path, f"storleken {HYPHEN_RANGE_MESSAGE}", True)]
     if not size.fact_ids or any(f not in ctx.facts_by_id for f in size.fact_ids):
         return [TextIssue(path, "storleken anger inga giltiga fakta", True)]
     corpus = " ".join(fact_corpus(ctx.facts_by_id[f]) for f in size.fact_ids)
@@ -190,6 +201,10 @@ def check_lang(lang: str, text: LangTextV2, ctx: TextContext, banned: list[str])
     if any(ch.isdigit() for ch in text.meta_description):
         # M8 (review fix 2026-10-06): backs the prompt's own "no numbers" rule with code.
         field("meta_description", "innehåller siffror")
+    if "?" in text.meta_description:
+        # Minor 6: a species page's summary asks no question (a comparison page's opens
+        # with one, so this is not in the shared style rules).
+        field("meta_description", "innehåller en fråga")
     return issues + _size_issues(lang, text, ctx)
 
 

@@ -533,6 +533,23 @@ def _recheck_status(record: Record) -> list[dict[str, Any]]:
     return [{**f, "message": without_dashes(str(f["message"]))} for f in status_flags(record)]
 
 
+def _empties_a_required_topic(before: Record, after: Record, plan: _Plan) -> bool:
+    """Minor 10 (final review 2026-10-06): a decision that strikes the last appearance,
+    voice or habitat fact leaves a page that may not exist (spec §9.6); the import refuses
+    it instead of saving a species `web write` and `web publish` would then skip."""
+    lost = [
+        topic
+        for topic in missing_required_topics(after.get("facts", []))
+        if topic not in missing_required_topics(before.get("facts", []))
+    ]
+    if lost:
+        plan.errors.append(
+            f"{before['qid']}: besluten stryker allt om {', '.join(lost)}. Behåll eller ändra "
+            "minst ett sådant faktum (eller avpublicera arten och kör web facts --force)."
+        )
+    return bool(lost)
+
+
 # -- the spot check (stickprov.csv) -------------------------------------------------------
 
 
@@ -671,6 +688,8 @@ def _plan_spot_check(record: Record, rows: list[dict[str, str]], date: str) -> _
         new.pop("audio", None)
         new.setdefault("review", {})["audioStruck"] = True
         plan.removed_audio = True
+    if _empties_a_required_topic(record, new, plan):
+        return plan
     new["review"]["spotCheck"]["decidedAt"] = date
     changed = facts != record["facts"] or audio_struck
     if changed:
@@ -732,10 +751,11 @@ def _validate_flag_decision(qid: str, row: dict[str, str], plan: _Plan) -> None:
     decision, fid, check = _decision(row), row["Id"].strip(), row["Kontroll"].strip()
     if not decision:
         return
-    if check == "V1" and fid == "s01":
+    if check in ("V1", "V3") and fid == "s01":
         # V1 on s01 (review fix 2026-10-06): the fact checker struck the status fact, so
         # Albin can set one from the sheet instead of only keeping it empty -- same six
-        # labels as an `ändra` on a status row elsewhere.
+        # labels as an `ändra` on a status row elsewhere. V3 (Minor 9, final review
+        # 2026-10-06): the data contradicts the status, and Albin can write the right one.
         if decision not in (KEEP, STRIKE, CHANGE):
             plan.errors.append(f"{qid}: skriv behåll, stryk eller ändra på flaggan")
         elif decision == CHANGE:
@@ -807,18 +827,38 @@ def _plan_flags(record: Record, rows: list[dict[str, str]], date: str) -> _Plan:
     decided = _flag_decisions(record, rows, plan)
     if plan.errors or decided is None:
         return plan
+    v3 = [_decision(row) for flag, row in decided if flag["check"] == "V3"]
+    v3_labels = {
+        row["Faktum"].strip()
+        for flag, row in decided
+        if flag["check"] == "V3" and _decision(row) == CHANGE
+    }
+    if len(v3_labels) > 1 or (v3_labels and STRIKE in v3):
+        plan.errors.append(f"{record['qid']}: motstridiga beslut om statusen (ändra och stryk)")
+        return plan
     new = copy.deepcopy(record)
     facts = list(new.get("facts", []))
     review = new.setdefault("review", {})
     new_status: dict[str, Any] | None = None
-    status_kept: list[bool] = []
+    if v3_labels:
+        # Minor 9: the right status, from a V3 flag. Like a V1 `ändra` it is rechecked
+        # against the data below; the other V3 flags were about the old status.
+        label = v3_labels.pop()
+        old = next(
+            (f for f in facts if f["id"] == "s01"), {"id": "s01", "topic": "status", "sources": []}
+        )
+        new_status = {**old, "value": STATUS_BY_SV[label], "sv": label, "edited": True}
+    elif v3:
+        # Every V3 flag kept: the status stands against the data. A stryk on any of them
+        # takes the status away.
+        review["statusConfirmed"] = all(d == KEEP for d in v3)
+        if STRIKE in v3:
+            facts = [f for f in facts if f["topic"] != "status"]
     for flag, row in decided:
         decision = _decision(row)
         check, fid = flag["check"], flag.get("factId") or ""
         if check == "V3":
-            status_kept.append(decision == KEEP)
-            if decision == STRIKE:
-                facts = [f for f in facts if f["topic"] != "status"]
+            continue
         elif check == "V4" and decision == STRIKE:
             new.pop("audio", None)
             review["audioStruck"] = True
@@ -839,19 +879,20 @@ def _plan_flags(record: Record, rows: list[dict[str, str]], date: str) -> _Plan:
                 "sources": [],
                 "edited": True,
             }
-    if status_kept:
-        # Every V3 flag kept: the status stands against the data. A stryk on any of them
-        # took the status away above.
-        review["statusConfirmed"] = all(status_kept)
     new_flags: list[dict[str, Any]] = []
     if new_status is None:
         new["facts"] = facts
     else:
         # behåll/stryk on the V1 flag both just leave the status empty (it is already gone
         # from `facts`, struck by the fact checker before the flag was written) -- only
-        # ändra needs this recreate-and-recheck path.
-        new["facts"] = [*(f for f in facts if f["id"] != "s01"), new_status]
+        # ändra needs this recreate-and-recheck path. A V3 `ändra` replaces s01 in place.
+        if any(f["id"] == "s01" for f in facts):
+            new["facts"] = [new_status if f["id"] == "s01" else f for f in facts]
+        else:
+            new["facts"] = [*facts, new_status]
         new_flags = _recheck_status(new)
+    if _empties_a_required_topic(record, new, plan):
+        return plan
     verify_meta = new.setdefault("generated", {}).setdefault("verify", {})
     verify_meta["factsHash"] = facts_hash(new)
     if new_flags:

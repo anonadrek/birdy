@@ -2346,6 +2346,8 @@ git commit -m "feat(website): gruppsidorna med familjer, noindex för små grupp
 
 ### Task 9: Diagrammet, kartan, spelaren och creditblocket
 
+**Tillägg (2026-10-06, fas 1b:s slutgranskning Minor 11, ordvalet väntar på Albins ok):** varje inspelning är bearbetad, inte bara de klippta: pipelinen gör om den till mono, ljudnivånormaliserar och kodar om den till MP3 (`convert_to_mp3`). CC BY och CC BY-SA kräver att creditraden säger att verket är ändrat, så raden ska alltid säga det. Förslag: nycklarna `trimmed` blir `edited` ("bearbetad" / "edited") och `trimmedEdited` ("klippt och bearbetad" / "trimmed and edited"), och spelarens bildtext slutar med `, ${audio.trimmed ? t.species.trimmedEdited : t.species.edited}` i stället för `{audio.trimmed && ...}`; Playwright-kontrollen nedan letar efter "bearbetad" i stället för "klippt". Spec §8 punkt 5 och bilaga A:s två rader för inspelningscredit ska ändras på samma sätt när Albin har godkänt ordvalet. Pipelinen avvisar sedan 2026-10-06 dessutom en CC BY- eller CC BY-SA-inspelning utan upphovsperson, så "okänd inspelare" förekommer bara för CC0 och public domain.
+
 **Files:**
 - Create: `website/src/components/species/MonthChart.astro`
 - Create: `website/src/components/species/CountyMap.astro`

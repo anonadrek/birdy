@@ -580,7 +580,7 @@ def test_reimporting_the_cumulative_sheet_never_redates_an_old_draw() -> None:
     apply_review({"Q1": first}, first_rows, date="2026-12-01")
     assert first["verification"]["at"] == "2026-12-01"
     decided = copy.deepcopy(first)
-    sheet = [*first_rows, *_decide(full_sheet_rows(second, draw=2), f01=(STRIKE, ""))]
+    sheet = [*first_rows, *_decide(full_sheet_rows(second, draw=2), f02=(STRIKE, ""))]
     result = apply_review({"Q1": first, "Q2": second}, sheet, date="2026-12-15")
     assert result.changed == ["Q2"]
     assert first == decided
@@ -1140,3 +1140,86 @@ def test_a_changed_page_that_is_still_ready_is_listed_for_a_rebuild(tmp_path: Pa
     result = import_wave(paths, sheet, date="2026-12-01")
     assert result.republish == []
     assert result.changed_published == ["Q1"]
+
+
+# Minor 9 and 10 (final review 2026-10-06).
+
+
+def test_a_v3_flag_can_set_the_right_status() -> None:
+    """Minor 9: a V3 flag could only be kept or struck; Albin can now write the status the
+    data supports, which is then checked against the data like a V1 `ändra`."""
+    record = _flagged()
+    # Reported in summer, almost never in winter: a breeding migrant, not a resident.
+    record["data"] = {
+        "months": [0, 0, 10, 50, 80, 100, 100, 80, 50, 10, 0, 0],
+        "totalReports": 1000,
+    }
+    record["generated"]["verify"]["factsHash"] = facts_hash(record)
+    rows = _decide_flag(flag_rows(record), s01=(CHANGE, "Flyttfågel, häckar här"))
+    result = apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert result.changed == ["Q25485"]
+    status = next(f for f in record["facts"] if f["id"] == "s01")
+    assert status["value"] == "breeding_migrant"
+    assert status["edited"] is True
+    assert "statusConfirmed" not in record["review"]
+    assert record["verification"]["at"] == "2026-11-20"
+
+
+def test_a_v3_change_the_data_contradicts_is_flagged_again() -> None:
+    record = _flagged()
+    record["data"] = {"months": [0, *([50] * 11)], "totalReports": 1000}
+    record["generated"]["verify"]["factsHash"] = facts_hash(record)
+    rows = _decide_flag(flag_rows(record), s01=(CHANGE, "Stannfågel"))
+    apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert [f["check"] for f in record["flags"]] == ["V3"]
+    assert "verification" not in record
+
+
+def test_contradicting_status_decisions_stop_the_import() -> None:
+    record = _record()
+    record["flags"] = [
+        {"check": "V3", "factId": "s01", "message": "Statusen säger stannfågel, men a."},
+        {"check": "V3", "factId": "s01", "message": "Statusen säger stannfågel, men b."},
+    ]
+    rows = flag_rows(record)
+    rows[0] = {**rows[0], "Beslut": CHANGE, "Faktum": "Vintergäst"}
+    rows[1] = {**rows[1], "Beslut": STRIKE}
+    with pytest.raises(ReviewImportError, match=r"olika beslut|statusen"):
+        apply_review({"Q25485": record}, rows, date="2026-11-20")
+
+
+def test_a_v3_label_that_is_not_a_status_stops_the_import() -> None:
+    record = _flagged()
+    rows = _decide_flag(flag_rows(record), s01=(CHANGE, "kanske"))
+    with pytest.raises(ReviewImportError, match="Stannfågel"):
+        apply_review({"Q25485": record}, rows, date="2026-11-20")
+
+
+def _covered(record: Record) -> Record:
+    """`_record()` plus one voice and one habitat fact, so every required topic is there
+    once (appearance is f01)."""
+    record["facts"][1:1] = [
+        {"id": "f08", "topic": "voice", "sv": "Sjunger ti-ta.", "sources": []},
+        {"id": "f09", "topic": "habitat", "sv": "I skog.", "sources": []},
+    ]
+    record["generated"]["verify"]["factsHash"] = facts_hash(record)
+    return record
+
+
+def test_a_spot_check_may_not_strike_the_last_fact_of_a_required_topic() -> None:
+    """Minor 10: striking the only appearance fact leaves a page that may not exist."""
+    record = _covered(_published("Q25485"))
+    mark_drawn(record, 1)
+    before = copy.deepcopy(record)
+    rows = _decide(full_sheet_rows(record, draw=1), f01=(STRIKE, ""))
+    with pytest.raises(ReviewImportError, match="utseende"):
+        apply_review({"Q25485": record}, rows, date="2026-12-01")
+    assert record == before
+
+
+def test_a_v2_strike_may_not_remove_the_last_fact_of_a_required_topic() -> None:
+    record = _covered(_record())
+    record["flags"] = [{"check": "V2", "factId": "f09", "message": "f09 anger ett tal"}]
+    rows = _flag_decisions(flag_rows(record), f09=STRIKE)
+    with pytest.raises(ReviewImportError, match="miljö"):
+        apply_review({"Q25485": record}, rows, date="2026-11-20")

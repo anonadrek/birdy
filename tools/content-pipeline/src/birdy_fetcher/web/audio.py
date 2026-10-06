@@ -67,6 +67,10 @@ def rejection(candidate: AudioCandidate, scientific: str) -> str | None:
         return "uttalsfil"
     if candidate.license not in LICENSE_URLS:
         return f"licensen {candidate.license!r} finns inte i licenstabellen"
+    if LICENSE_URLS[candidate.license] is not None and not candidate.author:
+        # CC BY and CC BY-SA require the author's name in the credit (Minor 11, final
+        # review 2026-10-06); CC0 and public domain do not.
+        return "licensen kräver en upphovsperson, men filen saknar namn"
     if candidate.duration is None or candidate.duration < MIN_SECONDS:
         return "kortare än 3 sekunder"
     if not candidate.from_wikidata:
