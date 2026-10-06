@@ -549,6 +549,25 @@ def web_compare(
     _print_outcomes(outcomes, paths.reports)
 
 
+@web.command("publish")
+@click.option("--wave", type=click.IntRange(1, 3))
+@click.option(
+    "--species",
+    multiple=True,
+    help="QID, kan upprepas. En art i taget är det normala läget (ändrat 2026-10-05 (b)).",
+)
+def web_publish(wave: int | None, species: tuple[str, ...]) -> None:
+    """Slår på publish för färdiga arter och jämförelser, filtrerat på våg, på en eller
+    flera bestämda arter, eller båda. Körs löpande av fas 2:s publiceringsloop, en art i
+    taget, inte bara efter en hel vågs godkännande. Gratis, ingen modell."""
+    from .web.waves import publish_wave
+
+    if wave is None and not species:
+        raise click.UsageError("Ange --wave, en eller flera --species, eller båda.")
+    paths = _web_paths()
+    _print_outcomes(publish_wave(paths, wave, list(species) or None), paths.reports)
+
+
 @web.command("v1")
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
 @click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")

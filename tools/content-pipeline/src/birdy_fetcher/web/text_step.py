@@ -176,18 +176,28 @@ def _text_cited_fact_ids(lang_text: dict[str, Any]) -> set[str]:
     return ids
 
 
-def _stale_published_fact_ids(record: Record) -> list[str]:
-    """Fact ids the live, published text cites that no longer exist in `record["facts"]`
-    (N1, review fix 2026-10-06): a spot-check strike on a fact must never be allowed to
-    quietly leave a published page citing a fact that is gone. Empty whenever the species
-    is not published or has no text yet."""
-    if not record.get("publish") or not record.get("text"):
+def stale_cited_fact_ids(record: Record) -> list[str]:
+    """Fact ids `record["text"]` cites that no longer exist in `record["facts"]`. Empty
+    whenever there is no text yet. Public (Task 23): `waves.py`'s publish predicate reuses
+    this to check a species' text before it is ever published, not only after -- see
+    `_stale_published_fact_ids` below for the published-only guard N1 uses."""
+    if not record.get("text"):
         return []
     current_ids = {f["id"] for f in record.get("facts", [])}
     cited: set[str] = set()
     for lang in ("sv", "en"):
         cited |= _text_cited_fact_ids(record["text"].get(lang) or {})
     return sorted(cited - current_ids)
+
+
+def _stale_published_fact_ids(record: Record) -> list[str]:
+    """Fact ids the live, published text cites that no longer exist in `record["facts"]`
+    (N1, review fix 2026-10-06): a spot-check strike on a fact must never be allowed to
+    quietly leave a published page citing a fact that is gone. Empty whenever the species
+    is not published."""
+    if not record.get("publish"):
+        return []
+    return stale_cited_fact_ids(record)
 
 
 def _stale_published_error(stale: list[str]) -> str:
