@@ -472,3 +472,21 @@ def test_web_import_exits_non_zero_and_names_pages_to_republish(
     assert result.exit_code == 1
     assert "Talgoxe" in result.output
     assert "web write --species Q1" in result.output
+
+
+def test_web_import_exits_non_zero_when_a_recording_could_not_be_deleted(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from birdy_fetcher.web import review_sheet
+
+    def fake_import_wave(
+        paths: object, path: Path, *, wave: int | None, date: str
+    ) -> review_sheet.ImportResult:
+        return review_sheet.ImportResult(audio_errors=["Q1: voice.mp3 kunde inte tas bort"])
+
+    monkeypatch.setattr(review_sheet, "import_wave", fake_import_wave)
+    sheet = tmp_path / "undantag.csv"
+    sheet.write_text("x", encoding="utf-8")
+    result = CliRunner().invoke(main, ["web", "import", "--file", str(sheet)])
+    assert result.exit_code == 1
+    assert "kunde inte tas bort" in result.output

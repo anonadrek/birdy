@@ -58,3 +58,13 @@ def write_step_report(reports_dir: Path, step: str, now: datetime, text: str) ->
     path = reports_dir / f"web-{step}-{now:%Y-%m-%d-%H%M%S}.md"
     path.write_text(text, encoding="utf-8")
     return path
+
+
+def sweep_outcome(removed: list[str], errors: list[str]) -> list[StepOutcome]:
+    """The orphan-recording sweep as one extra outcome (none when it did nothing):
+    `failed` when a file could not be deleted, so the CLI prints it."""
+    if not removed and not errors:
+        return []
+    notes = [f"föräldralös inspelning borttagen: {qid}" for qid in removed]
+    status = "failed" if errors else "ok"
+    return [StepOutcome("voice.mp3", "inspelningsfiler", status, list(errors), notes)]

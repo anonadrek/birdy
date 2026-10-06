@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 from birdy_fetcher.web.record import (
+    delete_voice,
     facts_hash,
     is_reviewed,
     load_all,
@@ -15,6 +16,7 @@ from birdy_fetcher.web.record import (
     new_record,
     record_path,
     save_record,
+    sweep_orphan_voices,
 )
 
 
@@ -99,3 +101,72 @@ def test_a_failed_save_leaves_the_old_record_and_no_temp_file(
     monkeypatch.undo()
     assert path.read_bytes() == before
     assert [p.name for p in tmp_path.iterdir()] == ["Q1.json"]
+
+
+def _lock_voice_files(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A voice.mp3 another program holds open: on Windows `unlink` then raises
+    PermissionError. Simulated so the test behaves the same on every OS."""
+    real_unlink = Path.unlink
+
+    def unlink(self: Path, missing_ok: bool = False) -> None:
+        if self.name == "voice.mp3" and self.exists():
+            raise PermissionError(13, "The process cannot access the file", str(self))
+        real_unlink(self, missing_ok=missing_ok)
+
+    monkeypatch.setattr(Path, "unlink", unlink)
+
+
+def _voice(images_out: Path, qid: str) -> Path:
+    voice = images_out / qid / "voice.mp3"
+    voice.parent.mkdir(parents=True, exist_ok=True)
+    voice.write_bytes(b"id3")
+    return voice
+
+
+def test_the_sweep_removes_a_recording_whose_record_has_no_audio(tmp_path: Path) -> None:
+    data_out, images_out = tmp_path / "data", tmp_path / "img"
+    with_audio, without, no_record = new_record("Q1"), new_record("Q2"), "Q3"
+    with_audio["audio"] = {"file": "Q1/voice.mp3"}
+    save_record(record_path(data_out, "Q1"), with_audio)
+    save_record(record_path(data_out, "Q2"), without)
+    kept, orphan, stray = (
+        _voice(images_out, "Q1"),
+        _voice(images_out, "Q2"),
+        _voice(images_out, no_record),
+    )
+    sweep = sweep_orphan_voices(data_out, images_out)
+    assert sweep.removed == ["Q2", "Q3"]
+    assert sweep.errors == []
+    assert kept.exists() and not orphan.exists() and not stray.exists()
+
+
+def test_the_sweep_reports_a_locked_file_and_goes_on(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    data_out, images_out = tmp_path / "data", tmp_path / "img"
+    save_record(record_path(data_out, "Q2"), new_record("Q2"))
+    orphan = _voice(images_out, "Q2")
+    _lock_voice_files(monkeypatch)
+    sweep = sweep_orphan_voices(data_out, images_out)
+    assert sweep.removed == []
+    assert len(sweep.errors) == 1 and "Q2" in sweep.errors[0]
+    assert orphan.exists()
+
+
+def test_the_sweep_skips_an_unreadable_record(tmp_path: Path) -> None:
+    data_out, images_out = tmp_path / "data", tmp_path / "img"
+    data_out.mkdir(parents=True)
+    record_path(data_out, "Q2").write_text("{ inte json", encoding="utf-8")
+    voice = _voice(images_out, "Q2")
+    sweep = sweep_orphan_voices(data_out, images_out)
+    assert sweep.removed == [] and sweep.errors == []
+    assert voice.exists()
+
+
+def test_delete_voice_never_raises(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    images_out = tmp_path / "img"
+    _voice(images_out, "Q1")
+    _lock_voice_files(monkeypatch)
+    error = delete_voice(images_out, "Q1")
+    assert error is not None and "PermissionError" in error
+    assert delete_voice(images_out, "Q9") is None

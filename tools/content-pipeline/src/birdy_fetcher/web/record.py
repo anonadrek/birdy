@@ -9,6 +9,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -122,3 +123,53 @@ def audio_id(audio: dict[str, Any]) -> str:
 def facts_hash(record: Record) -> str:
     payload = json.dumps(record.get("facts", []), ensure_ascii=False, sort_keys=True)
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:16]
+
+
+VOICE_FILE = "voice.mp3"
+
+
+def delete_voice(images_out: Path, qid: str) -> str | None:
+    """Deletes `<qid>/voice.mp3` if it is there. Never raises (follow-up 1, wave B review):
+    every caller has saved the record already, and a file another program holds open
+    (PermissionError on Windows) must not stop the run or the report after it. Returns
+    why the file is still there, or None."""
+    voice = images_out / qid / VOICE_FILE
+    try:
+        voice.unlink(missing_ok=True)
+    except OSError as exc:
+        return (
+            f"{qid}: {voice} kunde inte tas bort ({type(exc).__name__}: {exc}); "
+            "ta bort filen innan något committas"
+        )
+    return None
+
+
+@dataclass
+class VoiceSweep:
+    removed: list[str] = field(default_factory=list)
+    errors: list[str] = field(default_factory=list)
+
+
+def sweep_orphan_voices(data_out: Path, images_out: Path) -> VoiceSweep:
+    """A `voice.mp3` whose record has no `audio` (a struck recording whose delete failed,
+    a crash between the download and the save) would go online without credits if it were
+    committed. Deleted here, at the end of `web sources`, `web verify` and `web import`
+    (follow-up 1, wave B review). A record that cannot be read is left to the step that
+    reports it."""
+    sweep = VoiceSweep()
+    if not images_out.exists():
+        return sweep
+    for voice in sorted(images_out.glob(f"Q*/{VOICE_FILE}")):
+        qid = voice.parent.name
+        try:
+            record = load_record(record_path(data_out, qid))
+        except Exception:  # unreadable: not this sweep's to judge
+            continue
+        if record is not None and record.get("audio"):
+            continue
+        error = delete_voice(images_out, qid)
+        if error is None:
+            sweep.removed.append(qid)
+        else:
+            sweep.errors.append(error)
+    return sweep

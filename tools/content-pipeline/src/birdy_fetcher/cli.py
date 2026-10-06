@@ -570,6 +570,10 @@ def web_import(wave: int | None, sheet: Path | None, review_date: str | None) ->
         click.echo(f"Väntar på beslut: {line}")
     for line in result.ignored:
         click.echo(f"Hoppade över: {line}")
+    for qid in result.swept_audio:
+        click.echo(f"Föräldralös inspelning borttagen: {qid}")
+    for error in result.audio_errors:
+        click.echo(f"Inspelningen kunde inte tas bort: {error}")
     for qid in result.changed_published:
         click.echo(f"Publicerad sida ändrad men klar: {qid}. Bygg, testa och pusha om den.")
     for item in result.republish:
@@ -577,7 +581,7 @@ def web_import(wave: int | None, sheet: Path | None, review_date: str | None) ->
         click.echo(f"  {'; '.join(item.reasons)}")
         for command in item.commands:
             click.echo(f"  {command}")
-    if result.republish:
+    if result.republish or result.audio_errors:
         raise click.exceptions.Exit(1)
 
 

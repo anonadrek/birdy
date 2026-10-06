@@ -24,11 +24,13 @@ from .paths import WebPaths
 from .record import (
     Record,
     audio_id,
+    delete_voice,
     facts_hash,
     is_reviewed,
     load_all,
     record_path,
     save_record,
+    sweep_orphan_voices,
 )
 from .sheet_csv import read_sheet as _sheet_csv_read_sheet
 from .sheet_csv import write_sheet as _sheet_csv_write_sheet
@@ -473,6 +475,10 @@ class ImportResult:
     republish: list[Republish] = field(default_factory=list)
     # Published pages this import changed that are still ready: rebuild and push them.
     changed_published: list[str] = field(default_factory=list)
+    # Recordings deleted by the end-of-run sweep (their record has no `audio`), and every
+    # voice.mp3 that could not be deleted (follow-up 1, wave B review): `web import` exits 1.
+    swept_audio: list[str] = field(default_factory=list)
+    audio_errors: list[str] = field(default_factory=list)
 
 
 def read_sheet(path: Path, *, required_columns: Sequence[str] = ()) -> list[dict[str, str]]:
@@ -1015,7 +1021,12 @@ def import_wave(
     for qid in result.changed:
         save_record(record_path(paths.data_out, qid), records[qid])
     for qid in result.removed_audio:
-        (paths.images_out / qid / "voice.mp3").unlink(missing_ok=True)
+        delete_voice(paths.images_out, qid)
+    # Every record without `audio` (the ones just struck included): the sweep is the last
+    # word, so a file still locked is reported once and a stray one from earlier goes too.
+    sweep = sweep_orphan_voices(paths.data_out, paths.images_out)
+    result.swept_audio = [q for q in sweep.removed if q not in result.removed_audio]
+    result.audio_errors = sweep.errors
     # I8 (final review 2026-10-06): every live page that is not ready any more after this
     # import (not just the ones it changed), and the ones it changed that still are.
     for qid, record in sorted(records.items()):

@@ -980,3 +980,53 @@ async def test_a_flag_message_never_carries_a_dash_the_site_refuses(tmp_path: Pa
     message = record["flags"][0]["message"]
     assert "about Norway, not Sweden" in message
     assert "\u2014" not in message
+
+
+def _lock_voice_files(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A voice.mp3 another program holds open: on Windows `unlink` then raises
+    PermissionError. Simulated so the test behaves the same on every OS."""
+    real_unlink = Path.unlink
+
+    def unlink(self: Path, missing_ok: bool = False) -> None:
+        if self.name == "voice.mp3" and self.exists():
+            raise PermissionError(13, "The process cannot access the file", str(self))
+        real_unlink(self, missing_ok=missing_ok)
+
+    monkeypatch.setattr(Path, "unlink", unlink)
+
+
+async def test_a_locked_struck_recording_is_reported_and_the_record_still_saved(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Follow-up 1 (wave B review): the record was saved before the delete; a locked
+    voice.mp3 must not turn the species into a crash, and must be reported."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True, identifiable_sound=True)
+
+    def fake_classify_clip(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        return AudioCheckResult(windows=[{"startSec": 0.0, "top": []}])
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", fake_classify_clip)
+    _lock_voice_files(monkeypatch)
+    client = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    by_qid = {o.qid: o for o in outcomes}
+    assert by_qid["Q1"].status == "ok"
+    sweep = by_qid["voice.mp3"]
+    assert sweep.status == "failed" and "Q1" in sweep.errors[0]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None and "audio" not in record
+    assert (paths.images_out / "Q1" / "voice.mp3").exists()
+
+
+async def test_verify_sweeps_a_recording_left_without_audio(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    orphan = paths.images_out / "Q2" / "voice.mp3"
+    orphan.parent.mkdir(parents=True, exist_ok=True)
+    orphan.write_bytes(b"id3")
+    client = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    sweep = next(o for o in outcomes if o.qid == "voice.mp3")
+    assert sweep.status == "ok" and any("Q2" in n for n in sweep.notes)
+    assert not orphan.exists()

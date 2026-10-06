@@ -24,14 +24,16 @@ from .paths import WebPaths
 from .record import (
     Record,
     audio_id,
+    delete_voice,
     image_dict,
     is_reviewed,
     load_record,
     merge_sources,
     record_path,
     save_record,
+    sweep_orphan_voices,
 )
-from .report import StepOutcome, render_step_report, write_step_report
+from .report import StepOutcome, render_step_report, sweep_outcome, write_step_report
 from .slugs import slugify
 from .source import SpeciesSource, load_approved
 from .wiki_full import FullWikiClient, WikiArticle
@@ -158,7 +160,9 @@ async def _audio(
             # so it is the same on every machine.
             audio = {**audio_record(chosen, source.qid), "sha256": hashlib.sha256(raw).hexdigest()}
     if audio is None and not ctx.options.dry_run:
-        voice.unlink(missing_ok=True)
+        error = delete_voice(ctx.paths.images_out, source.qid)
+        if error:
+            notes.append(error)
     return audio
 
 
@@ -303,6 +307,8 @@ async def run_sources(
 
     outcomes = list(await asyncio.gather(*(one(s) for s in sources)))
     if not options.dry_run:
+        sweep = sweep_orphan_voices(paths.data_out, paths.images_out)
+        outcomes += sweep_outcome(sweep.removed, sweep.errors)
         report = render_step_report(title="Källor", date=now.date().isoformat(), outcomes=outcomes)
         write_step_report(paths.reports, "sources", now, report)
     return outcomes

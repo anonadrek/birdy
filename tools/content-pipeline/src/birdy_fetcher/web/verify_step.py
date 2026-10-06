@@ -20,8 +20,17 @@ from .facts_step import PROMPT_VERSION as FACTS_PROMPT_VERSION
 from .facts_step import FactExtractor, facts_generated
 from .llm import MODELS, AnthropicJsonClient, JsonModelClient
 from .paths import WebPaths
-from .record import Record, audio_id, facts_hash, load_record, record_path, save_record
-from .report import StepOutcome, render_step_report, write_step_report
+from .record import (
+    Record,
+    audio_id,
+    delete_voice,
+    facts_hash,
+    load_record,
+    record_path,
+    save_record,
+    sweep_orphan_voices,
+)
+from .report import StepOutcome, render_step_report, sweep_outcome, write_step_report
 from .source import SpeciesSource, load_approved, load_scientific_index
 from .sources_step import ArticleSource
 from .verify import (
@@ -180,6 +189,8 @@ async def run_verify(
     finally:
         if owned and isinstance(model_client, AnthropicJsonClient):
             await model_client.aclose()
+    sweep = sweep_orphan_voices(paths.data_out, paths.images_out)
+    outcomes += sweep_outcome(sweep.removed, sweep.errors)
     report = render_step_report(
         title="Automatisk kontroll",
         date=now.date().isoformat(),
@@ -383,7 +394,9 @@ async def _one(
             }
         save_record(path, record)
         if audio_struck:
-            (paths.images_out / source.qid / "voice.mp3").unlink(missing_ok=True)
+            error = delete_voice(paths.images_out, source.qid)
+            if error:
+                notes.append(error)  # the sweep at the end tries again and reports it
         return out("ok", [], [*notes, *([f"{len(flags)} flaggor"] if flags else [])])
     except Exception as exc:  # one species' error must not stop the run or overwrite a file
         return out("failed", [f"{type(exc).__name__}: {exc}"])

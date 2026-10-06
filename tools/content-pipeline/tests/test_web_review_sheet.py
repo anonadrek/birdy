@@ -1223,3 +1223,57 @@ def test_a_v2_strike_may_not_remove_the_last_fact_of_a_required_topic() -> None:
     rows = _flag_decisions(flag_rows(record), f09=STRIKE)
     with pytest.raises(ReviewImportError, match="miljö"):
         apply_review({"Q25485": record}, rows, date="2026-11-20")
+
+
+def _lock_voice_files(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A voice.mp3 another program holds open: on Windows `unlink` then raises
+    PermissionError. Simulated so the test behaves the same on every OS."""
+    real_unlink = Path.unlink
+
+    def unlink(self: Path, missing_ok: bool = False) -> None:
+        if self.name == "voice.mp3" and self.exists():
+            raise PermissionError(13, "The process cannot access the file", str(self))
+        real_unlink(self, missing_ok=missing_ok)
+
+    monkeypatch.setattr(Path, "unlink", unlink)
+
+
+def test_a_locked_recording_does_not_stop_the_import_report(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Follow-up 1 (wave B review): with a locked voice.mp3 the delete raised after the
+    record was saved, so the republish list (I8) never came out."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    record = _with_text(_drawn("Q1"))
+    mark_drawn(record, 1)
+    save_record(record_path(paths.data_out, "Q1"), record)
+    voice = paths.images_out / "Q1" / "voice.mp3"
+    voice.parent.mkdir(parents=True, exist_ok=True)
+    voice.write_bytes(b"fake-mp3")
+    sheet = tmp_path / "stickprov.csv"
+    write_sheet(
+        sheet,
+        _decide(full_sheet_rows(record, draw=1), a01=(STRIKE, ""), f02=(STRIKE, "")),
+        columns=SPOT_CHECK_COLUMNS,
+    )
+    _lock_voice_files(monkeypatch)
+    result = import_wave(paths, sheet, date="2026-12-01")
+    assert [r.qid for r in result.republish] == ["Q1"]
+    assert result.audio_errors and "Q1" in result.audio_errors[0]
+    saved = load_record(record_path(paths.data_out, "Q1"))
+    assert saved is not None and "audio" not in saved
+    assert voice.exists()
+
+
+def test_import_sweeps_a_recording_left_without_audio(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    record = _flagged("Q1")
+    save_record(record_path(paths.data_out, "Q1"), record)
+    orphan = paths.images_out / "Q5" / "voice.mp3"
+    orphan.parent.mkdir(parents=True, exist_ok=True)
+    orphan.write_bytes(b"id3")
+    sheet = tmp_path / "undantag.csv"
+    write_sheet(sheet, _flag_decisions(flag_rows(record), s01=KEEP))
+    result = import_wave(paths, sheet, date="2026-11-20")
+    assert result.swept_audio == ["Q5"]
+    assert not orphan.exists()

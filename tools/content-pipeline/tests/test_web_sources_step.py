@@ -389,3 +389,26 @@ async def test_marginalia_are_written_without_dashes(tmp_path: Path) -> None:
     record = load_record(record_path(paths.data_out, "Q1"))
     assert record is not None
     assert record["marginalia"] == {"sv": "Liten, kvick.", "en": "Small, quick."}
+
+
+async def test_sources_sweeps_a_recording_left_without_audio(tmp_path: Path) -> None:
+    """Follow-up 1 (wave B review): a voice.mp3 whose record has no `audio` (a crash
+    mid-run, a strike whose delete failed) is removed at the end of the run."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    orphan = paths.images_out / "Q7" / "voice.mp3"
+    orphan.parent.mkdir(parents=True, exist_ok=True)
+    orphan.write_bytes(b"id3")
+    outcomes = await run_sources(paths, SourcesOptions(), clients=_clients(), now=NOW)
+    assert not orphan.exists()
+    assert (paths.images_out / "Q1" / "voice.mp3").exists()
+    sweep = next(o for o in outcomes if o.qid == "voice.mp3")
+    assert any("Q7" in n for n in sweep.notes)
+
+
+async def test_a_dry_run_sweeps_nothing(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    orphan = paths.images_out / "Q7" / "voice.mp3"
+    orphan.parent.mkdir(parents=True, exist_ok=True)
+    orphan.write_bytes(b"id3")
+    await run_sources(paths, SourcesOptions(dry_run=True), clients=_clients(), now=NOW)
+    assert orphan.exists()
