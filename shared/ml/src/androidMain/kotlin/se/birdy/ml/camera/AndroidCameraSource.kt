@@ -1,6 +1,7 @@
 package se.birdy.ml.camera
 
 import android.content.Context
+import android.view.OrientationEventListener
 import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
@@ -77,6 +78,13 @@ class AndroidCameraSource(
     private val _zoom = MutableStateFlow(ZoomState.NONE)
     override val zoom: StateFlow<ZoomState> = _zoom.asStateFlow()
     private val analysisFlow = MutableStateFlow<ImageAnalysis?>(null)
+
+    // Follows the phone's physical orientation while the camera is bound (CameraX's documented
+    // pattern). The Activity handles orientation changes itself, so without this the analysis
+    // frames kept their bind-time rotation and, after the phone was turned mid-scan, both the
+    // classifier input and the saved photo lay on their side (Release 1.3.0 Plan 3 Task 7 review).
+    // Created, enabled and disabled under [lifecycleLock] on the main thread with the binding.
+    private var orientationListener: OrientationEventListener? = null
     val previewUseCase: Preview = Preview.Builder().build()
 
     fun bindPreview(view: PreviewView) {
@@ -132,6 +140,13 @@ class AndroidCameraSource(
             _zoom.value = ZoomState(ratio = 1f, minRatio = 1f, maxRatio = max)
             boundCamera.cameraControl.setZoomRatio(1f)
             cameraProvider = provider
+            orientationListener =
+                object : OrientationEventListener(context) {
+                    override fun onOrientationChanged(orientation: Int) {
+                        val rotation = surfaceRotationForDeviceOrientation(orientation) ?: return
+                        analysisFlow.value?.targetRotation = rotation
+                    }
+                }.also { if (it.canDetectOrientation()) it.enable() }
             if (stopped) {
                 // stop() flipped the flag while we held the lock (it sets [stopped]
                 // before waiting). Don't leave the Activity-scoped camera bound.
@@ -167,6 +182,8 @@ class AndroidCameraSource(
     }
 
     private fun unbindLocked() {
+        orientationListener?.disable()
+        orientationListener = null
         cameraProvider?.unbindAll()
         analysisFlow.value?.clearAnalyzer()
         analysisFlow.value = null
