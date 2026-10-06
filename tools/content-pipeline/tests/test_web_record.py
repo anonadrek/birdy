@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from birdy_fetcher.web.record import (
     facts_hash,
     is_reviewed,
@@ -75,3 +77,25 @@ def test_is_reviewed() -> None:
         "spotChecked": False,
     }
     assert is_reviewed(record)
+
+
+def test_a_failed_save_leaves_the_old_record_and_no_temp_file(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Minor 5 (final review 2026-10-06): every step saves through save_record; a crash or a
+    full disk halfway through the write must never leave a truncated record."""
+    path = record_path(tmp_path, "Q1")
+    save_record(path, {"qid": "Q1", "facts": [{"id": "f01"}]})
+    before = path.read_bytes()
+    real_write_text = Path.write_text
+
+    def half_then_fail(self: Path, data: str, *args: object, **kwargs: object) -> int:
+        real_write_text(self, data[: len(data) // 2], *args, **kwargs)  # type: ignore[arg-type]
+        raise OSError(28, "No space left on device")
+
+    monkeypatch.setattr(Path, "write_text", half_then_fail)
+    with pytest.raises(OSError):
+        save_record(path, {"qid": "Q1", "facts": [{"id": "f01"}, {"id": "f02"}]})
+    monkeypatch.undo()
+    assert path.read_bytes() == before
+    assert [p.name for p in tmp_path.iterdir()] == ["Q1.json"]

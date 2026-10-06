@@ -97,6 +97,39 @@ def test_web_verify_passes_the_facts_settings_for_the_v1_retry(
     )
 
 
+def test_web_import_rejects_a_malformed_date(tmp_path: Path) -> None:
+    """Minor 7 (final review 2026-10-06): `verification.at` must match fas 2's zod date
+    regex; a malformed --date stops before anything is read."""
+    sheet = tmp_path / "undantag.csv"
+    sheet.write_text("x", encoding="utf-8")
+    result = CliRunner().invoke(
+        main, ["web", "import", "--file", str(sheet), "--date", "2026-13-01"]
+    )
+    assert result.exit_code == 2
+    assert "--date" in result.output
+
+
+def test_web_import_normalises_the_date(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """`date.fromisoformat` also reads the basic form 20261101; what reaches the record is
+    always YYYY-MM-DD."""
+    from birdy_fetcher.web import review_sheet
+
+    seen: list[str] = []
+
+    def fake_import_wave(
+        paths: object, path: Path, *, wave: int | None, date: str
+    ) -> review_sheet.ImportResult:
+        seen.append(date)
+        return review_sheet.ImportResult()
+
+    monkeypatch.setattr(review_sheet, "import_wave", fake_import_wave)
+    sheet = tmp_path / "undantag.csv"
+    sheet.write_text("x", encoding="utf-8")
+    result = CliRunner().invoke(main, ["web", "import", "--file", str(sheet), "--date", "20261101"])
+    assert result.exit_code == 0, result.output
+    assert seen == ["2026-11-01"]
+
+
 def test_web_write_help_lists_its_flags() -> None:
     runner = CliRunner()
     result = runner.invoke(main, ["web", "write", "--help"])

@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
 from typing import Any
 
@@ -43,8 +44,18 @@ def load_record(path: Path) -> Record | None:
 
 
 def save_record(path: Path, record: Record) -> None:
+    """Atomic (Minor 5, final review 2026-10-06): written to a temporary file next to the
+    record and swapped in with `os.replace`, so a crash or a full disk mid-write leaves the
+    previous record intact. The temp name does not match `Q*.json`."""
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    text = json.dumps(record, ensure_ascii=False, indent=2) + "\n"
+    tmp = path.with_name(path.name + ".tmp")
+    try:
+        tmp.write_text(text, encoding="utf-8")
+        os.replace(tmp, path)
+    except BaseException:
+        tmp.unlink(missing_ok=True)
+        raise
 
 
 def load_all(out_dir: Path) -> dict[str, Record]:

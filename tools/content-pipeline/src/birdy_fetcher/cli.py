@@ -465,6 +465,20 @@ def web_spot_check(seed: int | None, extra: tuple[str, ...], force: bool) -> Non
     )
 
 
+def _iso_date(ctx: click.Context, param: click.Parameter, value: str | None) -> str | None:
+    """`verification.at` must match fas 2's zod date regex (Minor 7, final review
+    2026-10-06): validated, and normalised to YYYY-MM-DD (fromisoformat also reads
+    20261101)."""
+    from datetime import date
+
+    if value is None:
+        return None
+    try:
+        return date.fromisoformat(value.strip()).isoformat()
+    except ValueError as exc:
+        raise click.BadParameter(f"{value!r} är inget datum, skriv YYYY-MM-DD.") from exc
+
+
 @web.command("import")
 @click.option(
     "--wave",
@@ -480,7 +494,11 @@ def web_spot_check(seed: int | None, extra: tuple[str, ...], force: bool) -> Non
     help="Exporterad CSV. Standard: review/undantag.csv.",
 )
 @click.option(
-    "--date", "review_date", default=None, help="Kontrolldatum, YYYY-MM-DD. Standard: i dag."
+    "--date",
+    "review_date",
+    default=None,
+    callback=_iso_date,
+    help="Kontrolldatum, YYYY-MM-DD. Standard: i dag.",
 )
 def web_import(wave: int | None, sheet: Path | None, review_date: str | None) -> None:
     """Läser in Albins beslut ur undantagsarket (standard) eller stickprovet (--file

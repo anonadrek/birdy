@@ -9,6 +9,7 @@ open with `encoding="utf-8-sig"` too, including the future Task 17 import step."
 from __future__ import annotations
 
 import random
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -38,6 +39,8 @@ COLUMNS = [
 ]
 # Bilaga E (ändrat 2026-10-05 (b)): "Publicerad" finns bara i stickprovsfliken.
 SPOT_CHECK_COLUMNS = [*COLUMNS, "Publicerad"]
+# The columns `apply_review` reads; both sheets have them (Minor 8, final review 2026-10-06).
+IMPORT_COLUMNS = ("QID", "Kontroll", "Typ", "Id", "Faktum", "Beslut")
 KEEP = "behåll"
 STRIKE = "stryk"
 CHANGE = "ändra"
@@ -336,14 +339,14 @@ class ImportResult:
     removed_audio: list[str] = field(default_factory=list)
 
 
-def read_sheet(path: Path) -> list[dict[str, str]]:
+def read_sheet(path: Path, *, required_columns: Sequence[str] = ()) -> list[dict[str, str]]:
     """Reads a sheet written by `write_sheet` and reverses its formula-injection escaping
     on every cell. Strips every leading UTF-8 BOM, not just the one `encoding="utf-8-sig"`
     would strip on its own: a Google Sheet re-exported on top of an already BOM'd file can
     end up with more than one, and a bare `utf-8-sig` open only removes the first, leaving
     a stray U+FEFF glued onto the header's first column name (Task 17 requirement 1).
     Delegates to `sheet_csv.read_sheet` (moved out 2026-10-06)."""
-    return _sheet_csv_read_sheet(path)
+    return _sheet_csv_read_sheet(path, required_columns=required_columns)
 
 
 def _decision(row: dict[str, str]) -> str:
@@ -533,7 +536,13 @@ def import_wave(
     en `ändra` på en stickprovsrad sätter `verification.at` till importdatumet, vilket är
     det nya datumet på "Kontrollerad mot källorna"."""
     records = load_all(paths.data_out)
-    result = apply_review(records, read_sheet(sheet), date=date)
+    try:
+        rows = read_sheet(sheet, required_columns=IMPORT_COLUMNS)
+    except ValueError as exc:
+        # A `;`-separated export (or a missing column) is a sheet error like any other,
+        # not a KeyError traceback (Minor 8, final review 2026-10-06).
+        raise ReviewImportError(str(exc)) from exc
+    result = apply_review(records, rows, date=date)
     if wave is not None:
         for qid, record in records.items():
             if qid in result.changed or record.get("review", {}).get("wave") != wave:

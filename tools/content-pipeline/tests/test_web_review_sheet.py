@@ -671,3 +671,20 @@ def test_import_rejects_an_unknown_species(tmp_path: Path) -> None:
     write_sheet(sheet, _flag_decisions(rows, s01=KEEP))
     with pytest.raises(ReviewImportError, match="Q999"):
         import_wave(paths, sheet, date="2026-11-20")
+
+
+def test_a_semicolon_separated_export_is_a_clear_import_error(tmp_path: Path) -> None:
+    """Minor 8 (final review 2026-10-06): a sheet saved with `;` folds the header into one
+    column; the import must say so, not crash with a KeyError traceback."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    record = _flagged("Q1")
+    save_record(record_path(paths.data_out, "Q1"), record)
+    rows = _flag_decisions(flag_rows(record), s01=KEEP)
+    sheet = tmp_path / "undantag.csv"
+    buffer = io.StringIO()
+    writer = csv.DictWriter(buffer, fieldnames=COLUMNS, delimiter=";", extrasaction="ignore")
+    writer.writeheader()
+    writer.writerows(rows)
+    sheet.write_text(buffer.getvalue(), encoding="utf-8")
+    with pytest.raises(ReviewImportError, match="semikolon"):
+        import_wave(paths, sheet, date="2026-11-20")
