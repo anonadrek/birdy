@@ -65,7 +65,8 @@ actual fun ScanScreenHost(
         onOpenSettings = { permission.openAppSettings() },
         persistFrame = { input ->
             val file = File(cacheDir, UUID.randomUUID().toString() + ".jpg")
-            file.outputStream().use { it.write(input.bytes) }
+            // Upright, so thumbnails and the saved diary photo match what the preview showed.
+            file.outputStream().use { it.write(input.uprightJpegBytes()) }
             file.absolutePath
         },
     )
