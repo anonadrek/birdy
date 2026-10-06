@@ -36,25 +36,27 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.AccentCopperLight
-import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 
 // Release 1.3.0 Task 7g item 5: the rust accent word sat straight on the photo at about 1.5:1.
-// The text now sits on a moss scrim drawn above the photo and the glow, the accent is apricot
-// (the palette's accent on dark), and PremiumHeroCardContrastTest checks these values against a
+// The text now sits on a scrim drawn above the photo and the glow, the accent is apricot (the
+// palette's accent on dark), and PremiumHeroCardContrastTest checks these values against a
 // white backdrop under the scrim, the brightest the photo or the glow's peak can make it.
-internal const val PREMIUM_HERO_TEXT_SCRIM_ALPHA = 0.85f
+// Review fix I2: the scrim is neutral black, not moss (Albin 2026-10-06: green over the bird takes
+// away from it), at the lightest alpha that keeps every line at 4.5:1 (apricot ≈ 4.6:1 at 0.70).
+// Same value as PhotoScrim on feature/1.3-foto-klar; switch to that token once it is merged here.
+internal const val PREMIUM_HERO_TEXT_SCRIM_ALPHA = 0.70f
 internal const val PREMIUM_HERO_SUBLINE_ALPHA = 0.9f
-internal val PremiumHeroScrimColor = HeroMossDeep
+internal val PremiumHeroScrimColor = Color.Black
 internal val PremiumHeroTextColor = TextOnHero
 internal val PremiumHeroAccentColor = AccentCopperLight
 
 /**
- * Settings-skärmens premium-upsell: foto + glöd, och texten (headline, rad, pill) på en mossgrön
- * toning som följer textblocket (samma grepp som PhotoHero): den tonar in över blockets övre
- * marginal och ligger sedan jämn ända ner. Foto laddas via Coil från files/premium/great-tit-hero.jpg.
+ * Settings-skärmens premium-upsell: foto + glöd, och texten (headline, rad, pill) på en neutral
+ * mörk toning som följer textblocket (samma grepp som PhotoHero): den tonar in ovanför blocket och
+ * ligger sedan jämn ända ner. Foto laddas via Coil från files/premium/great-tit-hero.jpg.
  */
 @OptIn(ExperimentalResourceApi::class)
 @Composable
@@ -148,7 +150,7 @@ private val SCRIM_FADE_ABOVE = 24.dp
 
 /**
  * Fades in from [fadeAbove] above the text block, through its top [padding], and is a flat
- * [PREMIUM_HERO_TEXT_SCRIM_ALPHA] moss from the first line of text down, so every line sits on the
+ * [PREMIUM_HERO_TEXT_SCRIM_ALPHA] black from the first line of text down, so every line sits on the
  * flat part. Drawing above the block's own bounds is fine: the card's clip keeps it inside.
  */
 private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawTextScrim(

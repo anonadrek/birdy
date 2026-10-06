@@ -37,4 +37,12 @@ class PremiumHeroCardContrastTest {
             )
         assertTrue(failures.isEmpty(), "at scrim alpha $PREMIUM_HERO_TEXT_SCRIM_ALPHA: " + failures.joinToString("; "))
     }
+
+    // Review fix I2 (Albin 2026-10-06, "the green over the bird takes away from it"): only a
+    // neutral darkening goes over bird photos, never moss.
+    @Test
+    fun `the scrim over the photo is neutral`() {
+        val c = PremiumHeroScrimColor
+        assertTrue(c.red == c.green && c.green == c.blue, "scrim $c has a hue")
+    }
 }
