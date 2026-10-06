@@ -50,7 +50,11 @@ def check_items(text: WebTextV2, ctx: TextContext) -> list[CheckItem]:
 
 def _fact_line(fact: dict[str, Any]) -> str:
     line = f"{fact['id']}: {fact.get('sv', '')}"
-    quotes = [s["quote"] for s in fact.get("sources", [])]
+    if fact.get("edited"):
+        # Albin changed the value by hand; its sources still hold the pre-edit quote
+        # (fix 2026-10-06), which would otherwise look like evidence for the old wording.
+        return f"{line} (ändrad av redaktören, faktatexten gäller)"
+    quotes = [q for s in fact.get("sources", []) if (q := s.get("quote"))]
     return f"{line} (citat: {' | '.join(quotes)})" if quotes else line
 
 
@@ -73,13 +77,15 @@ class SentenceChecker:
     model_key: str = "sonnet"
     effort: str = "high"
 
-    async def check(self, items: list[CheckItem]) -> dict[str, str]:
+    async def check(self, items: list[CheckItem], *, about: str) -> dict[str, str]:
         """Id to problem for every sentence that is not fully supported. A sentence the
-        checker did not answer for counts as unsupported."""
+        checker did not answer for counts as unsupported. `about` names the species (and,
+        for a comparison page, both species) so the model can tell a correct sentence about
+        this species from one that is true of a lookalike instead."""
         if not items:
             return {}
         template = self.prompt_path.read_text(encoding="utf-8")
-        system, user = _split_prompt(template, items=render_items(items))
+        system, user = _split_prompt(template, items=render_items(items), about=about)
         reply = await self.client.complete(
             model=MODELS[self.model_key],
             system=system,
@@ -92,7 +98,16 @@ class SentenceChecker:
             raise CheckerFailed(
                 f"kontrollen gav inget giltigt svar (stop_reason={reply.stop_reason})"
             )
-        verdicts = {v.id: v for v in reply.parsed.verdicts}
+        # Keep the worst verdict per id (unsupported over supported), same as the bbfbfcab
+        # fix in verify.py's FactChecker -- a duplicate id must not let a later "supported"
+        # paper over an earlier "unsupported". Strip the id too: a model answer with stray
+        # whitespace around it must still match the item it was asked about.
+        verdicts: dict[str, Verdict] = {}
+        for v in reply.parsed.verdicts:
+            vid = v.id.strip()
+            existing = verdicts.get(vid)
+            if existing is None or (existing.supported and not v.supported):
+                verdicts[vid] = v
         result: dict[str, str] = {}
         for item in items:
             verdict = verdicts.get(item.id)

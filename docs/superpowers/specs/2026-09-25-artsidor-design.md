@@ -333,7 +333,7 @@ Ersätter Albins manuella granskning av varje faktablad (Revision 2026-10-05). E
 
 ### 9.5 Skrivandet
 
-- **Prompt:** `prompts/web-v2.md`. Underlag: bara de godkända fakta och datafakta, namn, familj, grupp och `identifiable`. Modellen ser inte artiklarna. Modell i Opus-klass med hög tankenivå.
+- **Prompt:** `prompts/web-v2.md`. Underlag: bara de godkända fakta och datafakta, namn, familj och grupp. Modellen ser inte artiklarna. `identifiable` är INTE underlag för skrivandet (fix 2026-10-06): appens kännetecken-ruta är sajtens egen UI-text om vad appen klarar, inte något modellen ska skriva om. Modell i Opus-klass med hög tankenivå.
 - **Fält per språk** (svenska och engelska, var för sig naturligt skrivna):
 
   | Fält | Innehåll | Gräns |

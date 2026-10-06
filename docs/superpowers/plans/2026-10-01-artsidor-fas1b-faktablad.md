@@ -7453,6 +7453,10 @@ class SpeciesTextWriter:
     async def write(self, record: Record, group_sv: str, group_en: str) -> TextResult:
         facts = writer_facts(record)
         ctx = TextContext.from_facts(facts)
+        about = (
+            f"{record['names']['sv']} ({record['names']['scientific']}), "
+            f"familj {record['family']['sv']}"
+        )
         template = self.prompt_path.read_text(encoding="utf-8")
         system, user = render_write_prompt(template, record, facts, group_sv, group_en, self.banned)
         base: list[MessageParam] = [{"role": "user", "content": user}]
@@ -7487,7 +7491,7 @@ class SpeciesTextWriter:
             result.rejected, result.errors = text, hard
             return result
 
-        unsupported = await self.checker.check(check_items(text, ctx))
+        unsupported = await self.checker.check(check_items(text, ctx), about=about)
         if unsupported:
             result.attempts += 1
             retry: list[MessageParam] = [
@@ -7501,7 +7505,7 @@ class SpeciesTextWriter:
                 if not hard_again:
                     text = candidate
                     result.notes += removed_again
-                    unsupported = await self.checker.check(check_items(text, ctx))
+                    unsupported = await self.checker.check(check_items(text, ctx), about=about)
             if unsupported:
                 result.notes += [f"{path} togs bort: {p}" for path, p in unsupported.items()]
                 text = remove_paths(text, set(unsupported))
@@ -8057,6 +8061,7 @@ async def write_checked[T: BaseModel](
     user: str,
     checks: Checks[T],
     checker: SentenceChecker,
+    about: str,
 ) -> Written[T]:
     result: Written[T] = Written()
     base: list[MessageParam] = [{"role": "user", "content": user}]
@@ -8090,7 +8095,7 @@ async def write_checked[T: BaseModel](
         result.rejected, result.errors = text, hard
         return result
 
-    unsupported = await checker.check(checks.items(text))
+    unsupported = await checker.check(checks.items(text), about=about)
     if unsupported:
         result.attempts += 1
         reply = await ask(
@@ -8105,7 +8110,7 @@ async def write_checked[T: BaseModel](
             if not hard_again:
                 text = candidate
                 result.notes += removed_again
-                unsupported = await checker.check(checks.items(text))
+                unsupported = await checker.check(checks.items(text), about=about)
         if unsupported:
             result.notes += [f"{path} togs bort: {p}" for path, p in unsupported.items()]
             text = checks.remove(text, set(unsupported))
@@ -8125,6 +8130,10 @@ I `text_step.py`: ta bort `RULE_ATTEMPTS`, `rules_feedback`, `support_feedback` 
     async def write(self, record: Record, group_sv: str, group_en: str) -> Written[WebTextV2]:
         facts = writer_facts(record)
         ctx = TextContext.from_facts(facts)
+        about = (
+            f"{record['names']['sv']} ({record['names']['scientific']}), "
+            f"familj {record['family']['sv']}"
+        )
         template = self.prompt_path.read_text(encoding="utf-8")
         system, user = render_write_prompt(template, record, facts, group_sv, group_en, self.banned)
         checks: Checks[WebTextV2] = Checks(
@@ -8139,6 +8148,7 @@ I `text_step.py`: ta bort `RULE_ATTEMPTS`, `rules_feedback`, `support_feedback` 
             user=user,
             checks=checks,
             checker=self.checker,
+            about=about,
         )
 ```
 
@@ -8503,6 +8513,10 @@ class ComparisonWriter:
 
     async def write(self, a: Record, b: Record) -> Written[CompareOutput]:
         ctx = pair_context(a, b)
+        about = (
+            f"side a: {a['names']['sv']} ({a['names']['scientific']}); "
+            f"side b: {b['names']['sv']} ({b['names']['scientific']})"
+        )
         template = self.prompt_path.read_text(encoding="utf-8")
         system, user = render_compare_prompt(template, a, b, self.banned)
         checks: Checks[CompareOutput] = Checks(
@@ -8517,6 +8531,7 @@ class ComparisonWriter:
             user=user,
             checks=checks,
             checker=self.checker,
+            about=about,
         )
 
 

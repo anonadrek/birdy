@@ -78,6 +78,11 @@ def numbers(text: str) -> set[str]:
 
 
 def fact_corpus(fact: dict[str, Any]) -> str:
+    """The text a sentence citing this fact may draw numbers from. An edited fact's own
+    sources still hold the pre-edit quote (fix 2026-10-06, the edited fact is judged on its
+    own value, not a quote that may now be stale), so it is left out."""
+    if fact.get("edited"):
+        return str(fact.get("sv", ""))
     quotes = [s.get("quote", "") for s in fact.get("sources", [])]
     return " ".join([str(fact.get("sv", "")), *quotes])
 

@@ -5,6 +5,7 @@ from __future__ import annotations
 from birdy_fetcher.web.text_checks import (
     TextContext,
     check_text,
+    fact_corpus,
     minimum_problems,
     numbers,
     settle,
@@ -110,6 +111,18 @@ def test_size_numbers_must_come_from_the_cited_fact() -> None:
 
     text = _with_sv(size=SizeText(value="Cirka 16 cm", fact_ids=["f03"]))
     assert [i.path for i in check_text(text, CTX, BANNED)] == ["sv.size"]
+
+
+def test_fact_corpus_skips_the_stale_quote_of_an_edited_fact() -> None:
+    """Once Albin edits a fact's value, its old quote no longer reflects it (fix 2026-10-06):
+    the number rule must not let a now-wrong number from the stale quote pass as valid."""
+    edited = {
+        "id": "f03",
+        "sv": "16 till 18 cm",
+        "edited": True,
+        "sources": [{"article": "sv", "quote": "cirka 14 centimeter lång"}],
+    }
+    assert fact_corpus(edited) == "16 till 18 cm"
 
 
 def test_settle_removes_what_it_can_and_reports_the_rest() -> None:
