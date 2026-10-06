@@ -102,6 +102,15 @@ class DailyBirdSurfacesTest {
     }
 
     @Test
+    @Config(qualifiers = "+en")
+    fun `talkback reads the date in full in english`() {
+        showHero(bird())
+        compose
+            .onNodeWithContentDescription("Bird of the day, Tuesday 6 October: Sävsångare, Acrocephalus schoenobaenus.")
+            .assertHasClickAction()
+    }
+
+    @Test
     @Config(qualifiers = "+sv")
     fun `read about it opens the profile and listen for it opens audio id`() {
         showHero(bird())
@@ -117,7 +126,7 @@ class DailyBirdSurfacesTest {
     fun `the whole hero still opens the profile and reads date and names`() {
         showHero(bird())
         compose
-            .onNodeWithContentDescription("Dagens fågel, tis 6 okt: Sävsångare, Acrocephalus schoenobaenus.")
+            .onNodeWithContentDescription("Dagens fågel, tisdag 6 oktober: Sävsångare, Acrocephalus schoenobaenus.")
             .assertHasClickAction()
             .performClick()
         assertEquals(listOf("Q25403"), opened)
@@ -139,7 +148,7 @@ class DailyBirdSurfacesTest {
     fun `the challenge row after a catch on the first day says two days left`() {
         showHero(bird(caughtToday = true, daysCaught = 1))
         compose
-            .onNodeWithContentDescription("Fångad idag. 2 dagar kvar till märket. 1 av 3 dagar.", useUnmergedTree = true)
+            .onNodeWithContentDescription("Fångad idag. Två dagar kvar till märket. 1 av 3 dagar.", useUnmergedTree = true)
             .assertExists()
     }
 
@@ -166,7 +175,7 @@ class DailyBirdSurfacesTest {
     fun `the challenge row in english`() {
         showHero(bird(caughtToday = true, daysCaught = 1))
         compose
-            .onNodeWithContentDescription("Caught today. 2 more days to earn the badge. 1 of 3 days.", useUnmergedTree = true)
+            .onNodeWithContentDescription("Caught today. Two more days to the badge. 1 of 3 days.", useUnmergedTree = true)
             .assertExists()
     }
 
@@ -204,7 +213,7 @@ class DailyBirdSurfacesTest {
                 }
             }
         }
-        val withDot = SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Ny dagens fågel")
+        val withDot = SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Dagens fågel väntar")
         compose.onNode(withDot).assertExists()
         assertEquals(
             "Identifiera",

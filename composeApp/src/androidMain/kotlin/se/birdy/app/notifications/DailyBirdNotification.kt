@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import kotlinx.coroutines.CancellationException
 import se.birdy.app.R
 import java.io.IOException
 import kotlin.math.max
@@ -30,14 +31,23 @@ object DailyBirdNotification {
     /** Longest edge of the decoded photo: sharp in the expanded notification, small in memory. */
     const val PICTURE_MAX_EDGE_PX = 1024
 
+    /** Longest edge of the collapsed notification's thumbnail (the large icon). */
+    const val THUMBNAIL_MAX_EDGE_PX = 256
+
     private const val REQUEST_CODE_CONTENT = NOTIFICATION_ID
     private const val REQUEST_CODE_FIRST_ACTION = 1100
     private const val TAG = "DailyBirdNotification"
 
+    /** The photo for the expanded notification and a small copy for the collapsed one. */
+    class Picture(
+        val big: Bitmap,
+        val thumbnail: Bitmap,
+    )
+
     fun build(
         context: Context,
         content: NotificationContent,
-        picture: Bitmap?,
+        picture: Picture?,
     ): Notification {
         val builder =
             NotificationCompat
@@ -51,11 +61,11 @@ object DailyBirdNotification {
         if (picture != null) {
             // Collapsed: the photo as a thumbnail. Expanded: the big photo, no duplicate thumbnail.
             builder
-                .setLargeIcon(picture)
+                .setLargeIcon(picture.thumbnail)
                 .setStyle(
                     NotificationCompat
                         .BigPictureStyle()
-                        .bigPicture(picture)
+                        .bigPicture(picture.big)
                         .bigLargeIcon(null as Bitmap?)
                         .setSummaryText(content.body),
                 )
@@ -74,14 +84,29 @@ object DailyBirdNotification {
 
     /**
      * The species' hero photo from the bundled images (the install-time asset pack), scaled to at
-     * most [maxEdgePx]. Null when it isn't there (debug APKs carry no asset pack) or can't be
-     * decoded: the notification then goes out without a photo.
+     * most [PICTURE_MAX_EDGE_PX], plus its thumbnail. Null when it isn't there (debug APKs carry no
+     * asset pack) or anything goes wrong decoding it: the notification then goes out without a
+     * photo, with its text and buttons.
      */
     fun loadPicture(
         context: Context,
         imagePath: String,
-        maxEdgePx: Int = PICTURE_MAX_EDGE_PX,
-    ): Bitmap? = decodeAsset(context.assets, "images/$imagePath", maxEdgePx)
+    ): Picture? = pictureFrom { decodeAsset(context.assets, "images/$imagePath", PICTURE_MAX_EDGE_PX) }
+
+    /**
+     * Runs [decode] and adds the thumbnail. Any failure, out-of-memory included, gives null instead
+     * of reaching the worker's catch-all (which would retry and send no notification at all).
+     */
+    @Suppress("TooGenericExceptionCaught") // a photo is optional: every failure degrades to no photo, logged.
+    internal fun pictureFrom(decode: () -> Bitmap?): Picture? =
+        try {
+            decode()?.let { big -> Picture(big = big, thumbnail = scaledCopy(big, THUMBNAIL_MAX_EDGE_PX)) }
+        } catch (e: CancellationException) {
+            throw e
+        } catch (t: Throwable) {
+            Log.w(TAG, "No photo for the daily-bird notification", t)
+            null
+        }
 
     internal fun decodeAsset(
         assets: AssetManager,
@@ -114,7 +139,18 @@ object DailyBirdNotification {
         return sample
     }
 
+    /** Scales [bitmap] down to [maxEdgePx] and recycles the original. */
     private fun scaleDown(
+        bitmap: Bitmap,
+        maxEdgePx: Int,
+    ): Bitmap {
+        val scaled = scaledCopy(bitmap, maxEdgePx)
+        if (scaled !== bitmap) bitmap.recycle()
+        return scaled
+    }
+
+    /** A copy of [bitmap] at most [maxEdgePx] on its long edge; [bitmap] itself when already small enough. */
+    private fun scaledCopy(
         bitmap: Bitmap,
         maxEdgePx: Int,
     ): Bitmap {
@@ -123,9 +159,7 @@ object DailyBirdNotification {
         val factor = maxEdgePx.toFloat() / longEdge
         val width = (bitmap.width * factor).roundToInt()
         val height = (bitmap.height * factor).roundToInt()
-        val scaled = Bitmap.createScaledBitmap(bitmap, width, height, true)
-        if (scaled !== bitmap) bitmap.recycle()
-        return scaled
+        return Bitmap.createScaledBitmap(bitmap, width, height, true)
     }
 
     private fun deepLinkIntent(

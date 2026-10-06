@@ -112,7 +112,7 @@ class DailyBirdNotificationTest {
 
     @Test
     fun `the notification shows the photo and the two buttons open the right deep links`() {
-        val picture = Bitmap.createBitmap(240, 160, Bitmap.Config.ARGB_8888)
+        val picture = DailyBirdNotification.pictureFrom { Bitmap.createBitmap(1024, 683, Bitmap.Config.ARGB_8888) }!!
         val n = DailyBirdNotification.build(context, content(), picture)
 
         assertEquals(NotificationChannels.DAILY_BIRD, n.channelId)
@@ -148,6 +148,23 @@ class DailyBirdNotificationTest {
         assertFalse(n.extras.containsKey(Notification.EXTRA_PICTURE))
         assertNull(n.getLargeIcon())
         assertEquals(2, n.actions.size)
+    }
+
+    @Test
+    fun `the large icon is a small thumbnail and the big picture keeps its size`() {
+        val picture = DailyBirdNotification.pictureFrom { Bitmap.createBitmap(1024, 683, Bitmap.Config.ARGB_8888) }!!
+        assertEquals(1024, picture.big.width)
+        assertEquals(DailyBirdNotification.THUMBNAIL_MAX_EDGE_PX, maxOf(picture.thumbnail.width, picture.thumbnail.height))
+        assertFalse(picture.big.isRecycled, "making the thumbnail must not recycle the big picture")
+    }
+
+    @Test
+    fun `a decode that runs out of memory or crashes gives no photo and the notification still goes out`() {
+        assertNull(DailyBirdNotification.pictureFrom { throw OutOfMemoryError("test") })
+        assertNull(DailyBirdNotification.pictureFrom { error("broken image") })
+        val n = DailyBirdNotification.build(context, content(), DailyBirdNotification.pictureFrom { throw OutOfMemoryError("test") })
+        assertEquals(2, n.actions.size)
+        assertEquals("Dagens fågel: Talgoxe", n.extras.getCharSequence(Notification.EXTRA_TITLE).toString())
     }
 
     @Test

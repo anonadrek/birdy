@@ -209,14 +209,14 @@ private fun TabCell(
     }
 }
 
-/** Mockup: an 8px rust dot at the icon's top right, ringed in the bar's own colour. */
+/** Mockup: an 8dp rust dot at the icon's top right, with a 2dp ring in the bar's own colour. */
 @Composable
 private fun NewDot(modifier: Modifier = Modifier) {
     Box(
         modifier =
             modifier
-                .offset(x = 4.dp, y = (-2).dp)
-                .size(10.dp)
+                .offset(x = 5.dp, y = (-3).dp)
+                .size(12.dp)
                 .clip(CircleShape)
                 .background(AccentCopper)
                 .border(2.dp, PaperBottomBar, CircleShape),

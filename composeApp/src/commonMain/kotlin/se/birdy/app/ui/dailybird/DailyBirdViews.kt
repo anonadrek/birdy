@@ -62,10 +62,12 @@ import birdy_bird_scanner.composeapp.generated.resources.daily_bird_days_of_targ
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_days_total
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_listen_for_it
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_not_caught
+import birdy_bird_scanner.composeapp.generated.resources.daily_bird_one_day_left
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_read_more
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_save_a_find_today
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_strip_a11y
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_strip_status_fmt
+import birdy_bird_scanner.composeapp.generated.resources.daily_bird_two_days_left
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
@@ -113,7 +115,7 @@ internal data class DailyBirdChallengeTexts(
 )
 
 @Composable
-internal fun rememberChallengeTexts(challenge: DailyBirdChallenge): DailyBirdChallengeTexts =
+internal fun challengeTexts(challenge: DailyBirdChallenge): DailyBirdChallengeTexts =
     DailyBirdChallengeTexts(
         status =
             stringResource(
@@ -122,8 +124,7 @@ internal fun rememberChallengeTexts(challenge: DailyBirdChallenge): DailyBirdCha
         line =
             when (challenge.line) {
                 DailyBirdChallengeLine.SAVE_A_FIND_TODAY -> stringResource(Res.string.daily_bird_save_a_find_today)
-                DailyBirdChallengeLine.DAYS_LEFT_TO_BADGE ->
-                    pluralStringResource(Res.plurals.daily_bird_days_left, challenge.daysLeft, challenge.daysLeft)
+                DailyBirdChallengeLine.DAYS_LEFT_TO_BADGE -> daysLeftLine(challenge.daysLeft)
                 DailyBirdChallengeLine.BADGE_COMPLETE -> stringResource(Res.string.daily_bird_badge_complete)
             },
         count =
@@ -139,6 +140,18 @@ internal fun rememberChallengeTexts(challenge: DailyBirdChallenge): DailyBirdCha
                     pluralStringResource(Res.plurals.daily_bird_days_total, challenge.daysCaught, challenge.daysCaught)
             },
     )
+
+/**
+ * "En dag" / "Två dagar kvar till märket.": with the target 3 and today's catch counted, only 1 or 2
+ * days can be left, written out. The plural is only a fallback should the badge target ever grow.
+ */
+@Composable
+private fun daysLeftLine(daysLeft: Int): String =
+    when (daysLeft) {
+        1 -> stringResource(Res.string.daily_bird_one_day_left)
+        2 -> stringResource(Res.string.daily_bird_two_days_left)
+        else -> pluralStringResource(Res.plurals.daily_bird_days_left, daysLeft, daysLeft)
+    }
 
 /**
  * The two actions under the hero's names (design option B): "Läs om arten" (paper pill, opens the
@@ -219,7 +232,7 @@ internal fun DailyBirdHeroChallengeRow(
     challenge: DailyBirdChallenge,
     modifier: Modifier = Modifier,
 ) {
-    val texts = rememberChallengeTexts(challenge)
+    val texts = challengeTexts(challenge)
     val a11y = stringResource(Res.string.daily_bird_challenge_a11y, texts.status, texts.line, texts.count)
     Row(
         modifier =
@@ -371,7 +384,7 @@ fun DailyBirdStrip(
     val serif = rememberDmSerifDisplay()
     val caveat = rememberCaveat()
     val challenge = bird.challenge()
-    val texts = rememberChallengeTexts(challenge)
+    val texts = challengeTexts(challenge)
     val status = stringResource(Res.string.daily_bird_strip_status_fmt, texts.status, texts.count)
     val a11y = stringResource(Res.string.daily_bird_strip_a11y, bird.name, texts.status, texts.count)
     val readMore = stringResource(Res.string.daily_bird_read_more)

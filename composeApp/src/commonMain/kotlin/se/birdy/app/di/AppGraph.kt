@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.json.Json
 import se.birdy.app.badges.RecalculateBadgesUseCase
 import se.birdy.app.bootstrap.BadgeBackfillOnAppStart
@@ -306,7 +305,8 @@ class AppGraph(
             },
             history = dailyBirdHistory,
             prefs = userPreferences,
-            currentDate = { clock.now().toLocalDateTime(timeZone).date },
+            now = { clock.now() },
+            timeZone = timeZone,
         )
     }
 
@@ -324,17 +324,8 @@ class AppGraph(
             speciesByQid = { repository.allByQid(defaultLocale) },
             onObservationSaved = { obs ->
                 val speciesId = obs.speciesId
-                if (speciesId != null) {
-                    dailyBirdHistory?.let { history ->
-                        val today = dailyBirdTracker.today()
-                        val todayBird = history.speciesIdForDate(today)
-                        if (todayBird == speciesId) {
-                            history.markMatch(today, speciesId)
-                            // The hero, the strips and the challenge row show "Fångad idag" right away.
-                            dailyBirdTracker.refresh()
-                        }
-                    }
-                }
+                // Marks the catch when this is today's bird, also after midnight with the app left open.
+                if (speciesId != null) dailyBirdTracker.onSaved(speciesId)
                 inAppReviewTrigger.onObservationSaved(
                     observationRepository.observeAll().first().size,
                 )

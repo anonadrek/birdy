@@ -22,8 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.compose.LifecycleEventEffect
+import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavGraphBuilder
@@ -196,10 +195,12 @@ fun AppScaffold(
             }
         }
     }
-    // Release 1.3.0 Task 7d: today's bird for the hero, the strips and the tab dot. Every start and
-    // return to the foreground reloads it, so a new date (new bird, dot back) shows without a restart.
-    LifecycleEventEffect(Lifecycle.Event.ON_START) {
-        scope.launch { graph.dailyBirdTracker.refresh() }
+    // Release 1.3.0 Task 7d: today's bird for the hero, the strips and the tab dot. Reloaded at every
+    // start/return to the foreground and, while the app stays visible, just after each midnight, so a
+    // new date (new bird, dot back) shows without a restart.
+    LifecycleStartEffect(graph) {
+        val job = scope.launch { graph.dailyBirdTracker.refreshNowAndAtMidnight() }
+        onStopOrDispose { job.cancel() }
     }
     val dailyBirdDot by graph.dailyBirdTracker.showTabDot.collectAsState(initial = false)
     var showPermissionSheet by remember { mutableStateOf(false) }
@@ -387,7 +388,9 @@ private fun NavGraphBuilder.appDestinations(
                     onDebugDiagnosticsClick = { navController.navigate(AppRoute.DebugDiagnostics) },
                     onSettingsClick = { navController.navigate(AppRoute.Settings) },
                     dailyBird = dailyBird,
-                    onDailyBirdClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id)) },
+                    onDailyBirdClick = { id ->
+                        navController.navigate(AppRoute.SpeciesProfile(id)) { launchSingleTop = true }
+                    },
                 )
             }
         }
@@ -432,7 +435,9 @@ private fun NavGraphBuilder.appDestinations(
                 onSeasonStatsClick = { navController.navigate(AppRoute.SeasonStats) },
                 onRecapClick = { navController.navigate(AppRoute.WeeklyRecap) { launchSingleTop = true } },
                 dailyBird = dailyBird,
-                onDailyBirdClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id)) },
+                onDailyBirdClick = { id ->
+                    navController.navigate(AppRoute.SpeciesProfile(id)) { launchSingleTop = true }
+                },
             )
         }
     }

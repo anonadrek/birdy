@@ -1,8 +1,16 @@
 package se.birdy.app.dailybird
 
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.advanceTimeBy
+import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toInstant
 import se.birdy.app.testing.FakeDailyBirdHistoryRepository
 import se.birdy.app.testing.FakeUserPreferences
 import se.birdy.domain.dailybird.DailyBird
@@ -12,30 +20,52 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
+import kotlin.time.Duration.Companion.hours
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.seconds
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class DailyBirdTrackerTest {
+    private val zone = TimeZone.of("Europe/Stockholm")
     private val tuesday = LocalDate(2026, 10, 6)
     private val wednesday = LocalDate(2026, 10, 7)
+
+    private fun at(
+        date: LocalDate,
+        hour: Int,
+        minute: Int = 0,
+    ): Instant = LocalDateTime(date.year, date.month, date.dayOfMonth, hour, minute).toInstant(zone)
 
     private val sedgeWarbler = DailyBirdSpecies("Sävsångare", "Acrocephalus schoenobaenus", "Q25403/hero.webp")
     private val greatTit = DailyBirdSpecies("Talgoxe", "Parus major", null)
 
-    private var today = tuesday
+    private var now = at(tuesday, 12)
+    private var selectCalls = 0
+    private var speciesCalls = 0
     private val history = FakeDailyBirdHistoryRepository()
     private val prefs = FakeUserPreferences()
 
-    /** Tuesday's bird is the sedge warbler, Wednesday's the great tit. */
+    /** Tuesday's bird is the sedge warbler, every other day's the great tit. */
     private fun birdFor(date: LocalDate): String = if (date == tuesday) "Q25403" else "Q25485"
 
     private fun tracker(
-        select: (suspend (LocalDate) -> DailyBird?)? = { date -> DailyBird(birdFor(date), SeasonTag.PRESENT) },
-        species: suspend (String) -> DailyBirdSpecies? = { id -> if (id == "Q25403") sedgeWarbler else greatTit },
+        select: (suspend (LocalDate) -> DailyBird?)? = { date ->
+            selectCalls++
+            DailyBird(birdFor(date), SeasonTag.PRESENT)
+        },
+        species: suspend (String) -> DailyBirdSpecies? = { id ->
+            speciesCalls++
+            if (id == "Q25403") sedgeWarbler else greatTit
+        },
+        clock: () -> Instant = { now },
     ) = DailyBirdTracker(
         select = select,
         species = species,
         history = history,
         prefs = prefs,
-        currentDate = { today },
+        now = clock,
+        timeZone = zone,
     )
 
     @Test
@@ -99,6 +129,81 @@ class DailyBirdTrackerTest {
         }
 
     @Test
+    fun `a second refresh the same day rereads only the catch and does not reload the species`() =
+        runTest {
+            val tracker = tracker()
+            tracker.refresh()
+            history.markMatch(tuesday, "Q25403")
+            tracker.refresh()
+            tracker.refresh()
+            assertEquals(1, selectCalls, "the selector loads all species, so it runs once per day")
+            assertEquals(1, speciesCalls)
+            assertTrue(tracker.state.value!!.caughtToday)
+            assertEquals(1, tracker.state.value!!.daysCaught)
+        }
+
+    @Test
+    fun `saving todays bird counts as a catch and shows at once`() =
+        runTest {
+            val tracker = tracker()
+            tracker.refresh()
+            tracker.onSaved("Q25403")
+            assertEquals(setOf(tuesday), history.matched)
+            assertTrue(tracker.state.value!!.caughtToday)
+            assertEquals(1, tracker.state.value!!.daysCaught)
+        }
+
+    @Test
+    fun `saving another species is not a catch`() =
+        runTest {
+            val tracker = tracker()
+            tracker.refresh()
+            tracker.onSaved("Q25485")
+            assertTrue(history.matched.isEmpty())
+            assertFalse(tracker.state.value!!.caughtToday)
+        }
+
+    @Test
+    fun `state from yesterday and a save of the new days bird still counts as a catch`() =
+        runTest {
+            val tracker = tracker()
+            tracker.refresh()
+            // The app stayed open past midnight: the state still holds Tuesday's bird.
+            now = at(wednesday, 0, 30)
+            tracker.onSaved("Q25485")
+            assertEquals("Q25485", history.recorded[wednesday], "the new day's bird is recorded first")
+            assertEquals(setOf(wednesday), history.matched)
+            assertEquals(wednesday, tracker.state.value!!.date)
+            assertTrue(tracker.state.value!!.caughtToday)
+        }
+
+    @Test
+    fun `while visible the tracker refreshes at the next local midnight`() =
+        runTest {
+            val start = at(tuesday, 23, 59)
+            val tracker = tracker(clock = { start + testScheduler.currentTime.milliseconds })
+            prefs.setDailyBirdOpenedDate("2026-10-06")
+            val job = launch { tracker.refreshNowAndAtMidnight() }
+            runCurrent()
+            assertEquals(tuesday, tracker.state.value!!.date)
+            assertFalse(tracker.showTabDot.first())
+
+            advanceTimeBy(1.minutes + 2.seconds)
+            runCurrent()
+            assertEquals(wednesday, tracker.state.value!!.date)
+            assertEquals("Q25485", tracker.state.value!!.speciesId)
+            assertTrue(tracker.showTabDot.first(), "a new day brings the dot back")
+            job.cancel()
+        }
+
+    @Test
+    fun `the wait until midnight follows the local clock across a daylight saving change`() {
+        // 25 October 2026: Sweden goes back from CEST to CET, so that day has 25 hours.
+        assertEquals(25.hours, untilNextLocalMidnight(at(LocalDate(2026, 10, 25), 0), zone))
+        assertEquals(30.minutes, untilNextLocalMidnight(at(tuesday, 23, 30), zone))
+    }
+
+    @Test
     fun `the tab dot shows until todays bird is opened`() =
         runTest {
             val tracker = tracker()
@@ -128,7 +233,7 @@ class DailyBirdTrackerTest {
             tracker.onSpeciesOpened("Q25403")
             assertFalse(tracker.showTabDot.first())
 
-            today = wednesday
+            now = at(wednesday, 8)
             tracker.refresh()
             assertEquals(wednesday, tracker.state.value!!.date)
             assertEquals("Q25485", tracker.state.value!!.speciesId)
@@ -140,7 +245,7 @@ class DailyBirdTrackerTest {
         runTest {
             val tracker = tracker()
             tracker.refresh()
-            today = wednesday
+            now = at(wednesday, 0, 30)
             // The app was left open over midnight: state still holds Tuesday's bird.
             tracker.onSpeciesOpened("Q25403")
             assertNull(prefs.dailyBirdOpenedDate.first())

@@ -1,5 +1,6 @@
 package se.birdy.app.ui.scaffold
 
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -65,7 +66,7 @@ class DailyBirdRoutingTest {
     private val prefs = FakeUserPreferences()
     private val history = FakeDailyBirdHistoryRepository()
     private val deepLinks = MutableSharedFlow<String>(replay = 1, extraBufferCapacity = 4)
-    private val dot = SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Ny dagens fågel")
+    private val dot = SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Dagens fågel väntar")
 
     private fun graph(): AppGraph =
         AppGraph(
@@ -194,6 +195,26 @@ class DailyBirdRoutingTest {
 
     @Test
     @Config(qualifiers = "+sv")
+    fun `a double tap on the strip opens one profile`() {
+        val nav = compose.startAppScaffold(graph())
+        compose.onNodeWithText("Mina arter").performClick()
+        compose.waitForIdle()
+        val strip = compose.onNodeWithContentDescription("Dagens fågel: Talgoxe. Inte fångad idag, 0 av 3 dagar.")
+        compose.runOnIdle {
+            // Two taps before the first navigation has recomposed: the same click handler twice.
+            val click = strip.fetchSemanticsNode().config[SemanticsActions.OnClick].action!!
+            click()
+            click()
+        }
+        compose.waitForIdle()
+        compose.runOnIdle {
+            val profiles = nav.currentBackStack.value.count { it.destination.hasRoute(AppRoute.SpeciesProfile::class) }
+            assertEquals(1, profiles)
+        }
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
     fun `the strip in uppslagsverk opens todays bird`() {
         val nav = compose.startAppScaffold(graph())
         compose.onNodeWithText("Uppslagsverk").performClick()
@@ -210,7 +231,7 @@ class DailyBirdRoutingTest {
         history.matched += NOW_DATE
         compose.startAppScaffold(graph())
         compose
-            .onNodeWithContentDescription("Fångad idag. 2 dagar kvar till märket. 1 av 3 dagar.", useUnmergedTree = true)
+            .onNodeWithContentDescription("Fångad idag. Två dagar kvar till märket. 1 av 3 dagar.", useUnmergedTree = true)
             .assertExists()
     }
 

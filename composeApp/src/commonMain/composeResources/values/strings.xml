@@ -2,7 +2,7 @@
 <resources>
     <!-- Bottom-nav -->
     <string name="tab_listen">Identifiera</string>
-    <string name="tab_listen_daily_bird_new">Ny dagens fågel</string>
+    <string name="tab_listen_daily_bird_new">Dagens fågel väntar</string>
     <string name="tab_archive">Uppslagsverk</string>
     <string name="tab_lifelist">Mina arter</string>
     <string name="tab_badges">Märken</string>
@@ -645,11 +645,33 @@
     <string name="daily_bird_weekday_fri">fre</string>
     <string name="daily_bird_weekday_sat">lör</string>
     <string name="daily_bird_weekday_sun">sön</string>
+    <string name="daily_bird_date_full_fmt">%1$s %2$d %3$s</string>
+    <string name="daily_bird_weekday_full_mon">måndag</string>
+    <string name="daily_bird_weekday_full_tue">tisdag</string>
+    <string name="daily_bird_weekday_full_wed">onsdag</string>
+    <string name="daily_bird_weekday_full_thu">torsdag</string>
+    <string name="daily_bird_weekday_full_fri">fredag</string>
+    <string name="daily_bird_weekday_full_sat">lördag</string>
+    <string name="daily_bird_weekday_full_sun">söndag</string>
+    <string name="daily_bird_month_full_jan">januari</string>
+    <string name="daily_bird_month_full_feb">februari</string>
+    <string name="daily_bird_month_full_mar">mars</string>
+    <string name="daily_bird_month_full_apr">april</string>
+    <string name="daily_bird_month_full_may">maj</string>
+    <string name="daily_bird_month_full_jun">juni</string>
+    <string name="daily_bird_month_full_jul">juli</string>
+    <string name="daily_bird_month_full_aug">augusti</string>
+    <string name="daily_bird_month_full_sep">september</string>
+    <string name="daily_bird_month_full_oct">oktober</string>
+    <string name="daily_bird_month_full_nov">november</string>
+    <string name="daily_bird_month_full_dec">december</string>
     <string name="daily_bird_hero_a11y">Dagens fågel, %1$s: %2$s, %3$s.</string>
     <string name="daily_bird_read_more">Läs om arten</string>
     <string name="daily_bird_listen_for_it">Lyssna efter den</string>
     <string name="daily_bird_save_a_find_today">Spara ett fynd av arten idag.</string>
     <string name="daily_bird_badge_complete">Märket är klart.</string>
+    <string name="daily_bird_one_day_left">En dag kvar till märket.</string>
+    <string name="daily_bird_two_days_left">Två dagar kvar till märket.</string>
     <plurals name="daily_bird_days_left">
         <item quantity="one">En dag kvar till märket.</item>
         <item quantity="other">%1$d dagar kvar till märket.</item>

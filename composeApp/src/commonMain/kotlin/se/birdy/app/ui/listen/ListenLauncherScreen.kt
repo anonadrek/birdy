@@ -68,6 +68,7 @@ import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.hairlineBottom
 import se.birdy.app.ui.dailybird.DailyBirdHeroActions
 import se.birdy.app.ui.dailybird.DailyBirdHeroChallengeRow
+import se.birdy.app.ui.dailybird.dailyBirdDateA11yLabel
 import se.birdy.app.ui.dailybird.dailyBirdDateLabel
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.AccentCopperDeep
@@ -189,7 +190,8 @@ private fun DailyBirdHero(
     topBar: @Composable BoxScope.() -> Unit,
 ) {
     val date = dailyBirdDateLabel(bird.date)
-    val a11y = stringResource(Res.string.daily_bird_hero_a11y, date, bird.name, bird.scientificName)
+    val spokenDate = dailyBirdDateA11yLabel(bird.date)
+    val a11y = stringResource(Res.string.daily_bird_hero_a11y, spokenDate, bird.name, bird.scientificName)
     // PhotoHero grows to fit its text block, but the block doesn't keep clear of the gear row: with
     // the buttons and the challenge row at large font scales it reached the top and drew the kicker
     // under the gear (identify_sv_200). The minimum height grows with the font scale instead, which
