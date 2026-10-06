@@ -12,10 +12,12 @@ import kotlinx.datetime.TimeZone
 import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.content.Locale
+import se.birdy.content.model.SpeciesImage
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -28,7 +30,7 @@ class SeasonStatsViewModelTest {
     @AfterTest fun tearDown() = Dispatchers.resetMain()
 
     @Test
-    fun `empty repo emits Empty after onEnter`() =
+    fun `empty repo emits Empty with the year and current month after onEnter`() =
         runTest(dispatcher) {
             val vm =
                 SeasonStatsViewModel(
@@ -39,7 +41,7 @@ class SeasonStatsViewModelTest {
                     locale = Locale.SV,
                 )
             vm.onEnter()
-            assertEquals(SeasonStatsUiState.Empty, vm.state.value)
+            assertEquals(SeasonStatsUiState.Empty(year = 2026, currentMonth = 5), vm.state.value)
         }
 
     @Test
@@ -109,10 +111,10 @@ class SeasonStatsViewModelTest {
                 )
             vm.onEnter()
             val state = vm.state.value as SeasonStatsUiState.Loaded
-            assertEquals(2, state.seasonDonut.winter)
-            assertEquals(1, state.seasonDonut.spring)
-            assertEquals(1, state.seasonDonut.summer)
-            assertEquals(1, state.seasonDonut.autumn)
+            assertEquals(2, state.seasons.winter)
+            assertEquals(1, state.seasons.spring)
+            assertEquals(1, state.seasons.summer)
+            assertEquals(1, state.seasons.autumn)
         }
 
     @Test
@@ -145,31 +147,140 @@ class SeasonStatsViewModelTest {
         }
 
     @Test
-    fun `cumulative line counts unique species through end-of-month`() =
+    fun `only the three most seen species are kept with their plate photo`() =
         runTest(dispatcher) {
             val repo = FakeObservationRepository()
-            // Q1 in Jan; Q2 in Mar; Q1 again in May (no new unique); Q3 in May
-            repo.seedObservation("Q1", Instant.parse("2026-01-10T08:00:00Z"))
-            repo.seedObservation("Q2", Instant.parse("2026-03-10T08:00:00Z"))
-            repo.seedObservation("Q1", Instant.parse("2026-05-10T08:00:00Z"))
-            repo.seedObservation("Q3", Instant.parse("2026-05-15T08:00:00Z"))
+            repo.seedObservation("Q25485", Instant.parse("2026-02-01T08:00:00Z"))
+            repo.seedObservation("Q25485", Instant.parse("2026-02-02T08:00:00Z"))
+            repo.seedObservation("Q25234", Instant.parse("2026-02-03T08:00:00Z"))
+            repo.seedObservation("Q25404", Instant.parse("2026-02-04T08:00:00Z"))
+            repo.seedObservation("Q25402", Instant.parse("2026-02-05T08:00:00Z"))
             val vm =
                 SeasonStatsViewModel(
                     observationRepo = repo,
-                    speciesRepo = FakeSpeciesRepository(),
+                    speciesRepo = speciesWithHeroFor("Q25485"),
+                    clock = fixedClock("2026-05-22T08:00:00Z"),
+                    zone = utc,
+                    locale = Locale.SV,
+                )
+            vm.onEnter()
+            val state = vm.state.value as SeasonStatsUiState.Loaded
+            assertEquals(listOf("Q25485", "Q25234", "Q25402"), state.topSpecies.map { it.qid })
+            assertEquals("Talgoxe", state.topSpecies[0].nameLocalized)
+            assertEquals("Q25485/hero.webp", state.topSpecies[0].heroImagePath)
+            assertNull(state.topSpecies[1].heroImagePath)
+        }
+
+    @Test
+    fun `first sightings of the year are numbered in time order with name and date and photo`() =
+        runTest(dispatcher) {
+            val repo = FakeObservationRepository()
+            // Q25485 first in Jan (again in May), Q25234 first in Mar, Q25404 first in May.
+            repo.seedObservation("Q25485", Instant.parse("2026-05-10T08:00:00Z"))
+            repo.seedObservation("Q25404", Instant.parse("2026-05-15T08:00:00Z"))
+            repo.seedObservation("Q25234", Instant.parse("2026-03-14T08:00:00Z"))
+            repo.seedObservation("Q25485", Instant.parse("2026-01-08T08:00:00Z"))
+            val vm =
+                SeasonStatsViewModel(
+                    observationRepo = repo,
+                    speciesRepo = speciesWithHeroFor("Q25485"),
                     clock = fixedClock("2026-12-22T08:00:00Z"),
                     zone = utc,
                     locale = Locale.SV,
                 )
             vm.onEnter()
             val state = vm.state.value as SeasonStatsUiState.Loaded
-            assertEquals(12, state.cumulativeLine.size)
-            assertEquals(1, state.cumulativeLine.first { it.month == 1 }.uniqueSpeciesByEndOfMonth)
-            assertEquals(1, state.cumulativeLine.first { it.month == 2 }.uniqueSpeciesByEndOfMonth)
-            assertEquals(2, state.cumulativeLine.first { it.month == 3 }.uniqueSpeciesByEndOfMonth)
-            assertEquals(2, state.cumulativeLine.first { it.month == 4 }.uniqueSpeciesByEndOfMonth)
-            assertEquals(3, state.cumulativeLine.first { it.month == 5 }.uniqueSpeciesByEndOfMonth)
-            assertEquals(3, state.cumulativeLine.first { it.month == 12 }.uniqueSpeciesByEndOfMonth)
+            assertEquals(
+                listOf(
+                    SeasonStatsUiState.FirstSightingRow(
+                        qid = "Q25485",
+                        nameLocalized = "Talgoxe",
+                        heroImagePath = "Q25485/hero.webp",
+                        month = 1,
+                        dayOfMonth = 8,
+                        number = 1,
+                    ),
+                    SeasonStatsUiState.FirstSightingRow(
+                        qid = "Q25234",
+                        nameLocalized = "Koltrast",
+                        heroImagePath = null,
+                        month = 3,
+                        dayOfMonth = 14,
+                        number = 2,
+                    ),
+                    SeasonStatsUiState.FirstSightingRow(
+                        qid = "Q25404",
+                        nameLocalized = "Blåmes",
+                        heroImagePath = null,
+                        month = 5,
+                        dayOfMonth = 15,
+                        number = 3,
+                    ),
+                ),
+                state.firstSightings,
+            )
+        }
+
+    @Test
+    fun `the first sighting date and the month bars follow the time zone`() =
+        runTest(dispatcher) {
+            val repo = FakeObservationRepository()
+            // 23:30 UTC on 31 January is 1 February in Stockholm.
+            repo.seedObservation("Q1", Instant.parse("2026-01-31T23:30:00Z"))
+            val vm =
+                SeasonStatsViewModel(
+                    observationRepo = repo,
+                    speciesRepo = FakeSpeciesRepository(),
+                    clock = fixedClock("2026-05-22T08:00:00Z"),
+                    zone = TimeZone.of("Europe/Stockholm"),
+                    locale = Locale.SV,
+                )
+            vm.onEnter()
+            val state = vm.state.value as SeasonStatsUiState.Loaded
+            assertEquals(2, state.firstSightings.single().month)
+            assertEquals(1, state.firstSightings.single().dayOfMonth)
+            assertEquals(1, state.monthBars.first { it.month == 2 }.observationCount)
+            assertEquals(0, state.monthBars.first { it.month == 1 }.observationCount)
+        }
+
+    @Test
+    fun `loaded state carries the year and the best month and the current month`() =
+        runTest(dispatcher) {
+            val repo = FakeObservationRepository()
+            repo.seedObservation("Q1", Instant.parse("2026-01-10T08:00:00Z"))
+            repo.seedObservation("Q1", Instant.parse("2026-05-10T08:00:00Z"))
+            repo.seedObservation("Q2", Instant.parse("2026-05-11T08:00:00Z"))
+            val vm =
+                SeasonStatsViewModel(
+                    observationRepo = repo,
+                    speciesRepo = FakeSpeciesRepository(),
+                    clock = fixedClock("2026-10-05T08:00:00Z"),
+                    zone = utc,
+                    locale = Locale.SV,
+                )
+            vm.onEnter()
+            val state = vm.state.value as SeasonStatsUiState.Loaded
+            assertEquals(2026, state.year)
+            assertEquals(5, state.bestMonth)
+            assertEquals(10, state.currentMonth)
+        }
+
+    @Test
+    fun `a tie for the most finds leaves the best month empty`() =
+        runTest(dispatcher) {
+            val repo = FakeObservationRepository()
+            repo.seedObservation("Q1", Instant.parse("2026-01-10T08:00:00Z"))
+            repo.seedObservation("Q2", Instant.parse("2026-03-10T08:00:00Z"))
+            val vm =
+                SeasonStatsViewModel(
+                    observationRepo = repo,
+                    speciesRepo = FakeSpeciesRepository(),
+                    clock = fixedClock("2026-10-05T08:00:00Z"),
+                    zone = utc,
+                    locale = Locale.SV,
+                )
+            vm.onEnter()
+            assertNull((vm.state.value as SeasonStatsUiState.Loaded).bestMonth)
         }
 
     @Test
@@ -189,6 +300,32 @@ class SeasonStatsViewModelTest {
             val state = vm.state.value as SeasonStatsUiState.Loaded
             assertEquals("MAJ", state.monthBars.first { it.month == 5 }.label)
             assertEquals("OKT", state.monthBars.first { it.month == 10 }.label)
+        }
+
+    /** The default five species, with a plate photo (role "hero") for [qid] only. */
+    private fun speciesWithHeroFor(qid: String): FakeSpeciesRepository =
+        FakeSpeciesRepository.withDefaults().apply {
+            byId.value =
+                byId.value.mapValues { (id, species) ->
+                    if (id.raw == qid) {
+                        species?.copy(
+                            images =
+                                listOf(
+                                    SpeciesImage(
+                                        role = "hero",
+                                        path = "$qid/hero.webp",
+                                        width = 800,
+                                        height = 600,
+                                        license = "CC BY-SA 4.0",
+                                        author = "Test",
+                                        sourceUrl = "",
+                                    ),
+                                ),
+                        )
+                    } else {
+                        species
+                    }
+                }
         }
 
     private fun fixedClock(iso: String): Clock {
