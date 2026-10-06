@@ -6,7 +6,7 @@ Source rule: the numbered facts in the user message are your only source. Every 
 
 Style rules for both languages:
 - Plain, concrete sentences, like a knowledgeable friend, not a brochure.
-- No dashes of any kind: no em dash, no en dash, no double hyphen. Use a comma, a full stop or a colon instead. Write ranges with "till" in Swedish and "to" in English, for example "13 till 15 cm" and "13 to 15 cm". Ordinary hyphens inside a word are fine, for example "fri-levande" in Swedish or "well-known" in English.
+- No dashes of any kind: no em dash, no en dash, no double hyphen. Use a comma, a full stop or a colon instead. Write ranges with "till" in Swedish and "to" in English, for example "13 till 15 cm" and "13 to 15 cm". Ordinary hyphens inside a word are fine, for example a call written "tsi-tsi-tsi" or an English compound like "well-known".
 - No exclamation marks. No first person (no jag, vi, oss, I, we, us, our, my). No questions to the reader.
 - Never use any of these words or phrases: {banned_phrases}
 - The Swedish text must read as natural Swedish written by a Swede, the English text as natural English. Use the bird names given in the user message.

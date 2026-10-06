@@ -6907,6 +6907,8 @@ git commit -m "feat(pipeline): text med fakta-id per mening och kodkontrollerna"
 
 ### Task 19: Skrivprompten, kontrollprompten och kontrollmodellen
 
+**Tillägg/avvikelse (2026-10-06): ersatt av 4ef97260 + denna commit: about=, värsta utlåtandet vinner, ändrade fakta utan citat, skrivprompten skärpt.** Blocket nedan är som planerat och otillräckligt; kör inte om det rakt av.
+
 **Files:**
 - Create: `prompts/web-v2.md`, `prompts/check-v1.md`, `src/birdy_fetcher/web/checker.py`
 - Test: `tests/test_web_checker.py`
@@ -7454,8 +7456,8 @@ class SpeciesTextWriter:
         facts = writer_facts(record)
         ctx = TextContext.from_facts(facts)
         about = (
-            f"{record['names']['sv']} ({record['names']['scientific']}), "
-            f"familj {record['family']['sv']}"
+            f"{record['names']['sv']} / {record['names']['en']} "
+            f"({record['names']['scientific']}), familj {record['family']['sv']}"
         )
         template = self.prompt_path.read_text(encoding="utf-8")
         system, user = render_write_prompt(template, record, facts, group_sv, group_en, self.banned)
@@ -8131,8 +8133,8 @@ I `text_step.py`: ta bort `RULE_ATTEMPTS`, `rules_feedback`, `support_feedback` 
         facts = writer_facts(record)
         ctx = TextContext.from_facts(facts)
         about = (
-            f"{record['names']['sv']} ({record['names']['scientific']}), "
-            f"familj {record['family']['sv']}"
+            f"{record['names']['sv']} / {record['names']['en']} "
+            f"({record['names']['scientific']}), familj {record['family']['sv']}"
         )
         template = self.prompt_path.read_text(encoding="utf-8")
         system, user = render_write_prompt(template, record, facts, group_sv, group_en, self.banned)
@@ -8514,8 +8516,8 @@ class ComparisonWriter:
     async def write(self, a: Record, b: Record) -> Written[CompareOutput]:
         ctx = pair_context(a, b)
         about = (
-            f"side a: {a['names']['sv']} ({a['names']['scientific']}); "
-            f"side b: {b['names']['sv']} ({b['names']['scientific']})"
+            f"side a: {a['names']['sv']} / {a['names']['en']} ({a['names']['scientific']}); "
+            f"side b: {b['names']['sv']} / {b['names']['en']} ({b['names']['scientific']})"
         )
         template = self.prompt_path.read_text(encoding="utf-8")
         system, user = render_compare_prompt(template, a, b, self.banned)

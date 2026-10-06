@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pytest
 
+from birdy_fetcher.claude_summarizer import _split_prompt
 from birdy_fetcher.cost import CostTracker
 from birdy_fetcher.web.checker import (
     CheckerFailed,
@@ -55,6 +56,16 @@ def test_render_items_shows_the_quotes() -> None:
     assert '<item id="sv.lead[0]">' in text
     assert "f05: Talgoxen lever i skog, parker och trädgårdar." in text
     assert "citat: i skog, parker och trädgårdar" in text
+
+
+def test_the_prompt_allows_look_alike_items_to_describe_the_other_species() -> None:
+    """The right-species rule (above) would otherwise strike a correct sentence like
+    "Blåmesen är mindre och har blå hätta." under look_alikes, whose job is exactly to
+    describe the other species that the cited look-alike fact names (fix 2026-10-06)."""
+    template = (PIPELINE / "prompts/check-v1.md").read_text(encoding="utf-8")
+    system, _ = _split_prompt(template, items="", about="")
+    assert "look_alikes" in system
+    assert "may describe that other species" in system
 
 
 def test_render_items_shows_an_edited_fact_without_its_stale_quote() -> None:
