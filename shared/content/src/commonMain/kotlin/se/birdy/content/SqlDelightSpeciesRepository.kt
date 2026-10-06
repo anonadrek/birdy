@@ -6,6 +6,7 @@ import app.cash.sqldelight.coroutines.mapToOne
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import se.birdy.content.db.BirdyContent
@@ -114,6 +115,8 @@ class SqlDelightSpeciesRepository(
                     .rank(query = query, items = hits, names = { it.second }, abundance = { it.first.abundance })
                     .map { it.first }
             }
+            // The per-hit queries and the ranking above run off the collector's (main) thread.
+            .flowOn(Dispatchers.Default)
 
     /** One search result and the names it can be ranked by, or null when [filters] rule it out. */
     private fun searchHit(
