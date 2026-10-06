@@ -13,6 +13,11 @@ class FakeStreamingRecorder(
     val chunkSize: Int = 1_600, // ~33ms @ 48kHz
     val chunkRms: Float = 0.5f,
     val maxBufferSamples: Int = 60 * 48_000,
+    /**
+     * Value of every emitted sample. Non-zero by default, like a real microphone's noise floor;
+     * 0 models digital silence (a mic muted by the system or held by another app).
+     */
+    val sampleValue: Short = 1_000,
 ) : AudioRecorderApi {
     private var onChunk: ((ShortArray, Float, Int) -> Unit)? = null
     private var onCap: (() -> Unit)? = null
@@ -64,9 +69,9 @@ class FakeStreamingRecorder(
                 onCap?.invoke()
                 return
             }
-            // Leave buffer at default zeros — silence; tests don't read amplitude.
+            buffer.fill(sampleValue, sliceStart, sliceEnd)
             totalSamples = sliceEnd
-            onChunk?.invoke(ShortArray(len), chunkRms, totalSamples)
+            onChunk?.invoke(ShortArray(len) { sampleValue }, chunkRms, totalSamples)
             delay(33) // ~realtime cadence; test scheduler advances virtually
             if (totalSamples == maxBufferSamples) {
                 onCap?.invoke()

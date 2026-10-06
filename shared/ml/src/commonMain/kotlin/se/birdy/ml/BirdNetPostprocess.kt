@@ -39,3 +39,31 @@ fun rankMappedScores(
         .mapNotNull { (idx, score) -> lookup(idx)?.let { qid -> ClassificationResult(qid, score) } }
         .sortedByDescending { it.confidence }
         .take(take)
+
+/**
+ * True when every sample is exactly zero (or there are none): digital silence, which a real
+ * microphone never produces on its own. It means the system or another app silenced the mic
+ * (privacy toggle, a call, another recorder; the emulator's virtual mic always does). BirdNET
+ * turns it into NaN for every class, so it is a recording fault, not "no bird heard"
+ * (Release 1.3.0 Plan 3 Task 7 review).
+ */
+fun ShortArray.isDigitalSilence(): Boolean = all { it == 0.toShort() }
+
+/**
+ * A log line when [scores] holds non-finite values although [input] was not digital silence:
+ * that points to a model or runtime fault, which [rankMappedScores] would otherwise turn into a
+ * silent "no bird". Null when the scores are all finite or the input was silence (the caller
+ * reports silence as a recording fault).
+ */
+fun nonFiniteScoreWarning(
+    scores: FloatArray,
+    input: AudioInput,
+): String? {
+    val nonFinite = scores.count { !it.isFinite() }
+    val silence = input.rawPcm?.isDigitalSilence() ?: input.waveform.all { it == 0f }
+    return if (nonFinite == 0 || silence) {
+        null
+    } else {
+        "BirdNET gave $nonFinite of ${scores.size} non-finite scores for non-silent input"
+    }
+}

@@ -79,6 +79,9 @@ class AndroidTfliteAudioRunner private constructor(
             // (clip to [-15, 15] to avoid overflow on unusually large logits).
             // Mirrors BirdNET-Analyzer's `flat_sigmoid` post-processing.
             val scores = FloatArray(outputClasses) { flatSigmoid(outputBuf.float) }
+            // rankMappedScores drops non-finite scores; on real audio that would hide a model
+            // fault as "no bird", so say so in the log (Plan 3 Task 7 review).
+            nonFiniteScoreWarning(scores, input)?.let { android.util.Log.w("Birdy", it) }
 
             val top3 = rankMappedScores(scores, mapper::lookup)
 

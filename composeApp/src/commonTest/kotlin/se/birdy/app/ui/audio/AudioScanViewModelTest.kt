@@ -169,6 +169,30 @@ class AudioScanViewModelTest {
             assertTrue(classifier.callInputs.size >= 2, "classifier called ${classifier.callInputs.size} times")
         }
 
+    /**
+     * Release 1.3.0 Plan 3 Task 7 review: digital silence (exact zeros: the mic privacy toggle,
+     * another app holding the mic, the emulator) makes BirdNET return NaN for every class. Since
+     * 09a6e0db drops non-finite scores, such a session ended on NoBird with photo tips after up to
+     * 60 s. It is a recording fault: RecordingFailed, and no inference on silent windows.
+     */
+    @Test
+    fun digitalSilence_endsOnRecordingFailed_notNavigateToMatch() =
+        runTest {
+            val classifier = ScriptedClassifier(confidencesPerCall = listOf(0.45f, 0.50f))
+            val recorder = FakeStreamingRecorder(sampleValue = 0)
+            val (vm, _) = makeVm(classifier = classifier, recorder = recorder)
+            vm.onPermissionState(PermissionState.Granted)
+
+            vm.startRecording()
+            recorder.emitChunks(150)
+            advanceUntilIdle()
+            vm.stopRecording()
+            advanceUntilIdle()
+
+            assertEquals(AudioScanState.Error.RecordingFailed, vm.state.value)
+            assertEquals(0, classifier.callInputs.size, "silent windows must not be classified")
+        }
+
     @Test
     fun doesNotAutoStop_beforeFirstFullWindowAvailable() =
         runTest {

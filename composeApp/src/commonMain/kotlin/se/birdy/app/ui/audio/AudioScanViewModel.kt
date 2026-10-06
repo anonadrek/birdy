@@ -23,6 +23,7 @@ import se.birdy.ml.Classification
 import se.birdy.ml.ClassificationResult
 import se.birdy.ml.ScanSource
 import se.birdy.ml.ScanSourceSerialization
+import se.birdy.ml.isDigitalSilence
 import se.birdy.ml.normalize
 import se.birdy.ml.toSerial
 import kotlin.concurrent.Volatile
@@ -249,6 +250,8 @@ class AudioScanViewModel(
         viewModelScope.launch(parent + inferenceDispatcher) {
             try {
                 val clf = classifierInstance ?: return@launch
+                // A silent window (muted mic) gives BirdNET nothing but NaN: skip the inference.
+                if (window.isDigitalSilence()) return@launch
                 val waveform = normalizer(window)
                 val result = clf.classify(AudioInput(waveform, SAMPLE_RATE, 3_000, rawPcm = window))
                 val top = result.results.firstOrNull()
@@ -308,13 +311,29 @@ class AudioScanViewModel(
 
         val fullPcm =
             try {
-                handle?.stopAndFlush() ?: ShortArray(bufferEnd)
+                // Without a handle the session's audio is still in fullBuffer (was zeros here,
+                // which the silence check below would misread as a muted mic).
+                handle?.stopAndFlush() ?: fullBuffer.copyOf(bufferEnd)
             } catch (t: CancellationException) {
                 throw t
             } catch (t: Throwable) {
                 fullBuffer.copyOf(bufferEnd)
             }
 
+        if (fullPcm.isDigitalSilence()) {
+            // Exact zeros for the whole recording: the system or another app silenced the mic
+            // (privacy toggle, a call, another recorder; the emulator always does). BirdNET gives
+            // NaN for every class on that, which rankMappedScores drops, so the session used to
+            // end on NoBird with photo tips after up to 60 s. It is a recording fault
+            // (Release 1.3.0 Plan 3 Task 7 review).
+            logAudio("mic delivered digital silence (${fullPcm.size} samples of exact zeros)")
+            _state.update { s -> if (s is AudioScanState.Analyzing) AudioScanState.Error.RecordingFailed else s }
+        } else {
+            analyzeWithTimeout(fullPcm)
+        }
+    }
+
+    private suspend fun analyzeWithTimeout(fullPcm: ShortArray) {
         val windowEnd = fullPcm.size
         val windowStart = (windowEnd - WINDOW_SAMPLES).coerceAtLeast(0)
         val window = fullPcm.copyOfRange(windowStart, windowEnd)

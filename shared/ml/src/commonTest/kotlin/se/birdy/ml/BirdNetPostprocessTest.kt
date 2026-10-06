@@ -2,6 +2,8 @@ package se.birdy.ml
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 class BirdNetPostprocessTest {
@@ -59,5 +61,25 @@ class BirdNetPostprocessTest {
         val scores = FloatArray(5) { Float.NaN }
         val result = rankMappedScores(scores, lookup = { "Q$it" })
         assertEquals(emptyList(), result)
+    }
+
+    @Test
+    fun allZeroPcmIsDigitalSilence() {
+        assertTrue(ShortArray(48_000).isDigitalSilence())
+        assertTrue(ShortArray(0).isDigitalSilence())
+        assertFalse(ShortArray(48_000) { if (it == 7) 1 else 0 }.isDigitalSilence())
+    }
+
+    @Test
+    fun nonFiniteScoresOnRealAudioAreReported() {
+        val realAudio = AudioInput(FloatArray(4) { 0.1f }, 48_000, 3_000, rawPcm = ShortArray(4) { 100 })
+        val silence = AudioInput(FloatArray(4), 48_000, 3_000, rawPcm = ShortArray(4))
+        val withNaN = floatArrayOf(0.2f, Float.NaN, 0.1f)
+
+        val warning = nonFiniteScoreWarning(withNaN, realAudio)
+        assertTrue(warning != null && "1 of 3" in warning, "got $warning")
+        // Silence makes every logit NaN by itself; the caller reports that as a recording fault.
+        assertNull(nonFiniteScoreWarning(withNaN, silence))
+        assertNull(nonFiniteScoreWarning(floatArrayOf(0.2f, 0.1f), realAudio))
     }
 }
