@@ -79,7 +79,8 @@ def _record(qid: str = "Q25485") -> Record:
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:x.ogg",
     }
     record["flags"] = []
-    record["generated"] = {"verify": {"model": "claude-sonnet-5"}}
+    # The flags come from a `web verify` run on these facts (I2: the import checks it).
+    record["generated"] = {"verify": {"model": "claude-sonnet-5", "factsHash": facts_hash(record)}}
     return record
 
 
@@ -685,11 +686,99 @@ def test_errors_stop_the_whole_import() -> None:
     assert [record, other] == before
 
 
-def test_a_flag_without_a_decision_stops_the_import() -> None:
+def test_a_flag_without_a_decision_waits_and_the_rest_is_imported() -> None:
+    """I2 (final review 2026-10-06): partial imports. A species with an undecided flag is
+    left exactly as it was and listed as waiting; the other species' decisions apply."""
+    waiting, decided = _flagged("Q1"), _flagged("Q2")
+    before = copy.deepcopy(waiting)
+    rows = [*flag_rows(waiting), *_flag_decisions(flag_rows(decided), s01=KEEP)]
+    result = apply_review({"Q1": waiting, "Q2": decided}, rows, date="2026-11-20")
+    assert result.changed == ["Q2"]
+    assert waiting == before
+    assert result.waiting and result.waiting[0].startswith("Q1")
+    assert decided["verification"]["at"] == "2026-11-20"
+
+
+def test_reimporting_a_decided_sheet_changes_nothing() -> None:
+    """I2: the exception sheet in Drive is a running sheet; importing it again must not
+    re-date `verification.at` or reset `spotChecked` on a species already decided."""
     record = _flagged()
-    with pytest.raises(ReviewImportError) as error:
-        apply_review({"Q25485": record}, flag_rows(record), date="2026-11-20")
-    assert "flaggan" in str(error.value)
+    rows = _flag_decisions(flag_rows(record), s01=KEEP)
+    apply_review({"Q25485": record}, rows, date="2026-11-20")
+    record["verification"]["spotChecked"] = True
+    decided = copy.deepcopy(record)
+    result = apply_review({"Q25485": record}, rows, date="2026-12-24")
+    assert result.changed == []
+    assert record == decided
+    assert any("redan kontrollerad" in note for note in result.ignored)
+
+
+def test_a_row_for_a_renumbered_fact_never_strikes_the_new_one() -> None:
+    """I2: after a re-extraction, `f01` is another fact. The old row's quote no longer
+    matches, so its `stryk` is not applied to the new fact; the new flag waits."""
+    record = _record()
+    record["flags"] = [{"check": "V2", "factId": "f01", "message": "f01 anger ett tal i cm"}]
+    old_rows = _flag_decisions(flag_rows(record), f01=STRIKE)
+    record["facts"][0] = {
+        "id": "f01",
+        "topic": "appearance",
+        "sv": "Ett annat faktum med ett annat citat.",
+        "sources": [{"article": "sv", "quote": "ett helt annat citat ur artikeln"}],
+    }
+    record["generated"]["verify"]["factsHash"] = facts_hash(record)
+    result = apply_review({"Q25485": record}, old_rows, date="2026-11-20")
+    assert result.changed == []
+    assert record["facts"][0]["sv"] == "Ett annat faktum med ett annat citat."
+    assert any("inaktuell" in note for note in result.ignored)
+    assert result.waiting
+
+
+def test_rows_for_flags_from_an_older_fact_sheet_are_not_applied() -> None:
+    """I2: the facts changed after `web verify` wrote the flags (its hash no longer
+    matches): nothing is decided until verify has run on the facts as they are now."""
+    record = _flagged()
+    rows = _flag_decisions(flag_rows(record), s01=KEEP)
+    record["facts"].pop(0)
+    result = apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert result.changed == []
+    assert "verification" not in record
+    assert result.waiting and "web verify" in result.waiting[0]
+
+
+def test_a_stale_v1_row_never_touches_a_published_species() -> None:
+    """I2: a leftover V1 s01 `ändra` must not pop the verification of a live page (fas
+    2's zod rejects `publish` without `verification`, failing the whole build)."""
+    record = _v1_flagged()
+    rows = _decide_flag(flag_rows(record), s01=(CHANGE, "Stannfågel"))
+    record["publish"] = True
+    record["verification"] = {
+        "method": "auto",
+        "at": "2026-11-01",
+        "model": "claude-sonnet-5",
+        "spotChecked": False,
+    }
+    record["data"] = {"months": [0, *([50] * 11)], "totalReports": 1000}
+    before = copy.deepcopy(record)
+    result = apply_review({"Q25485": record}, rows, date="2026-11-20")
+    assert result.changed == []
+    assert record == before
+
+
+def test_two_different_decisions_on_one_flag_stop_the_import() -> None:
+    record = _flagged()
+    rows = _flag_decisions(flag_rows(record), s01=KEEP)
+    rows.append({**rows[0], "Beslut": STRIKE})
+    with pytest.raises(ReviewImportError, match="olika beslut"):
+        apply_review({"Q25485": record}, rows, date="2026-11-20")
+
+
+def test_export_skips_flags_from_an_older_fact_sheet(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    current, stale = _flagged("Q1"), _flagged("Q2")
+    stale["generated"]["verify"]["factsHash"] = "an-older-sheet"
+    save_record(record_path(paths.data_out, "Q1"), current)
+    save_record(record_path(paths.data_out, "Q2"), stale)
+    assert export_wave(paths).flagged == ["Q1"]
 
 
 def test_an_invalid_status_label_stops_the_import() -> None:
@@ -836,6 +925,7 @@ def _v1_flagged(qid: str = "Q25485") -> Record:
             ),
         }
     ]
+    record["generated"]["verify"]["factsHash"] = facts_hash(record)
     return record
 
 
@@ -876,10 +966,11 @@ def test_v1_flag_andra_with_a_data_contradiction_adds_a_v3_flag_and_withholds_ve
     ]
 
 
-def test_a_new_flag_clears_a_stale_verification() -> None:
-    """N3 (review fix 2026-10-06): the new-flags branch already refreshes the verify hash,
-    but must also drop any `verification` left over from before -- otherwise a species
-    that just got a brand new flag could still look verified."""
+def test_flag_rows_of_a_verified_species_are_ignored() -> None:
+    """Was N3 (review fix 2026-10-06), "a new flag clears a stale verification". Since I2
+    (final review 2026-10-06) a species that already has `verification` is decided: its
+    flag rows are ignored, so no leftover row can give it a new flag or drop its
+    verification."""
     record = _v1_flagged()
     record["verification"] = {
         "method": "auto",
@@ -890,11 +981,9 @@ def test_a_new_flag_clears_a_stale_verification() -> None:
     record["data"] = {"months": [0, *([50] * 11)], "totalReports": 1000}
     rows = _decide_flag(flag_rows(record), s01=(CHANGE, "Stannfågel"))
     result = apply_review({"Q25485": record}, rows, date="2026-11-20")
-    assert result.changed == ["Q25485"]
-    assert "verification" not in record
-    assert record["flags"] != []
-    status = next(f for f in record["facts"] if f["id"] == "s01")
-    assert status["value"] == "resident"
+    assert result.changed == []
+    assert record["verification"]["at"] == "2026-11-01"
+    assert all(f["id"] != "s01" for f in record["facts"])
 
 
 def test_v1_flag_andra_with_an_invalid_label_stops_the_import() -> None:

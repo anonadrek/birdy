@@ -9065,6 +9065,7 @@ Ny körtask 2026-10-05: ersätter Albins manuella faktabladsgranskning. Ingen Al
 - [ ] `uv run birdy-fetcher web sheet --wave 1`
 - [ ] Ladda upp `review/undantag.csv` till Albins Google Drive som Google-kalkylark med Google Drive-verktyget, och ge Albin länken med en kort instruktion: fatta beslut (`behåll`/`stryk`, eller `ändra` med ny text) på varje flagga, och lyssna på eventuella flaggade inspelningar. Arket är löpande: nya flaggor från senare vågor läggs till i samma flik.
 - [ ] När Albin har beslutat om en omgång: exportera kalkylarket som CSV över `review/undantag.csv`, kör `uv run birdy-fetcher web import`. Rättar Albin fel som importen hittar, kör om.
+  **Tillägg (2026-10-06, slutgranskningen I2):** importen tar bara rader för arter som fortfarande väntar (ingen `verification`) och vars flaggor kom från `web verify` på faktabladet som det ser ut nu, och bara rader som stämmer med en aktuell flagga (kontroll, fakta-id, meddelande och citat; för inspelningen filsidan). Allt annat hoppas över och listas ("Hoppade över: ..."), så det löpande arket kan importeras om hur många gånger som helst utan att något får nytt datum. En art där någon aktuell flagga saknar beslut väntar och listas ("Väntar på beslut: ..."); resten av arket importeras ändå. Ett ogiltigt beslut (fel ord, en status som inte är en av de sex, två olika beslut på samma flagga) stoppar fortfarande hela importen.
 - [ ] Commit och push.
 
 ### R6: Text (cirka 25 USD för våg 1, mindre för senare vågor)

@@ -242,6 +242,8 @@ def _eligible(records: dict[str, Record], wave: int | None) -> list[Record]:
         if (wave is None or r.get("review", {}).get("wave") == wave)
         and not is_reviewed(r)
         and any(f["topic"] != "data" for f in r.get("facts", []))
+        # Flags from an older fact sheet would only be rejected by the import (I2).
+        and _verify_current(r)
     ]
 
 
@@ -672,43 +674,132 @@ def _plan_spot_check(record: Record, rows: list[dict[str, str]], date: str) -> _
 # -- the exception sheet (undantag.csv) ---------------------------------------------------
 
 
-def _validate_flag_rows(record: Record, rows: list[dict[str, str]], plan: _Plan) -> None:
-    qid = str(record["qid"])
-    for r in rows:
-        decision, fid = _decision(r), r["Id"].strip()
+def _verify_current(record: Record) -> bool:
+    """The flags in `record` came from a `web verify` run on the facts as they are now."""
+    verify = record.get("generated", {}).get("verify") or {}
+    return bool(verify.get("factsHash") == facts_hash(record))
+
+
+def _same(a: str, b: str) -> bool:
+    return " ".join(a.split()) == " ".join(b.split())
+
+
+def _sets_status(row: dict[str, str]) -> bool:
+    """A V1 or V3 row on the status fact whose Faktum Albin replaced with a status label
+    (`ändra`): it is about the status as a whole, not one flag's wording."""
+    return row["Id"].strip() == "s01" and _decision(row) == CHANGE
+
+
+def _row_matches(record: Record, row: dict[str, str], flag: dict[str, Any]) -> bool:
+    """I2 (final review 2026-10-06): a sheet row only ever decides the flag it was written
+    for. Same check and fact id, and (unless Albin replaced the Faktum with a new status)
+    the same message, the same quotes for a fact flag and the same file for a recording
+    flag. A row written for an earlier fact sheet or recording matches nothing."""
+    check, fid = row["Kontroll"].strip(), row["Id"].strip()
+    if flag["check"] != check or (flag.get("factId") or "") != fid:
+        return False
+    if _sets_status(row) or (check == "V1" and fid == "s01"):
+        return True
+    if not _same(row["Faktum"], str(flag["message"])):
+        return False
+    fact = next((f for f in record.get("facts", []) if f["id"] == fid), None)
+    if fact is not None:
+        return _same(row.get("Citat", ""), _sources(record, fact.get("sources", []))[1])
+    if check == "V4":
+        audio = record.get("audio") or {}
+        return _same(row.get("Källa", ""), str(audio.get("sourceUrl", "")))
+    return True
+
+
+def _validate_flag_decision(qid: str, row: dict[str, str], plan: _Plan) -> None:
+    decision, fid, check = _decision(row), row["Id"].strip(), row["Kontroll"].strip()
+    if not decision:
+        return
+    if check == "V1" and fid == "s01":
         # V1 on s01 (review fix 2026-10-06): the fact checker struck the status fact, so
         # Albin can set one from the sheet instead of only keeping it empty -- same six
         # labels as an `ändra` on a status row elsewhere.
-        check = r["Kontroll"].strip()
-        if check == "V1" and fid == "s01":
-            if decision not in (KEEP, STRIKE, CHANGE):
-                plan.errors.append(f"{qid}: skriv behåll, stryk eller ändra på flaggan")
-            elif decision == CHANGE:
-                error = _status_label_error(qid, fid, r["Faktum"].strip())
-                if error:
-                    plan.errors.append(error)
-        elif decision not in (KEEP, STRIKE):
-            plan.errors.append(f"{qid}: skriv behåll eller stryk på flaggan")
+        if decision not in (KEEP, STRIKE, CHANGE):
+            plan.errors.append(f"{qid}: skriv behåll, stryk eller ändra på flaggan")
+        elif decision == CHANGE:
+            error = _status_label_error(qid, fid, row["Faktum"].strip())
+            if error:
+                plan.errors.append(error)
+    elif decision not in (KEEP, STRIKE):
+        plan.errors.append(f"{qid}: skriv behåll eller stryk på flaggan")
+
+
+def _flag_decisions(
+    record: Record, rows: list[dict[str, str]], plan: _Plan
+) -> list[tuple[dict[str, Any], dict[str, str]]] | None:
+    """Each current flag with the row that decides it, or None when the species waits (a
+    flag without a decided row). Rows that match no current flag are reported and left
+    out; two different decisions on one flag are an error."""
+    qid = str(record["qid"])
+    flags = record.get("flags") or []
+    matched: dict[int, list[dict[str, str]]] = {}
+    for row in rows:
+        _validate_flag_decision(qid, row, plan)
+        hits = [i for i, flag in enumerate(flags) if _row_matches(record, row, flag)]
+        if not hits:
+            plan.ignored.append(
+                f"{_name(record)}: raden {row['Kontroll'].strip()} {row['Id'].strip()} "
+                "stämmer inte med någon aktuell flagga (inaktuell rad)"
+            )
+        for i in hits:
+            matched.setdefault(i, []).append(row)
+    decided: list[tuple[dict[str, Any], dict[str, str]]] = []
+    undecided = 0
+    for i, flag in enumerate(flags):
+        with_decision = [r for r in matched.get(i, []) if _decision(r)]
+        if not with_decision:
+            undecided += 1
+            continue
+        kinds = {
+            (_decision(r), r["Faktum"].strip() if _sets_status(r) else "") for r in with_decision
+        }
+        if len(kinds) > 1:
+            label = f"{flag['check']} {flag.get('factId') or ''}".strip()
+            plan.errors.append(f"{qid}: olika beslut på flaggan {label}")
+            continue
+        decided.append((flag, with_decision[0]))
+    if undecided:
+        plan.waiting = f"{_name(record)}: {undecided} flaggor saknar beslut"
+        return None
+    return decided
 
 
 def _plan_flags(record: Record, rows: list[dict[str, str]], date: str) -> _Plan:
-    """Applies Albin's decisions on one species' flags (Task 17). A V1 `ändra` on the struck
-    status fact recreates it and re-runs V3 on it (review fix 2026-10-06); new V3 flags hold
-    the species back from `verification` instead of marking it checked with a fresh,
-    unchecked status."""
+    """Applies Albin's decisions on one species' flags (Task 17), guarded (I2, final review
+    2026-10-06): only for a species still waiting (no `verification`) whose flags came
+    from `web verify` on the facts as they are now, only rows that match a current flag,
+    and only once every current flag has a decision (otherwise the species waits; the rest
+    of the sheet is imported). A V1 `ändra` on the struck status fact recreates it and
+    re-runs V3 on it (review fix 2026-10-06); new V3 flags hold the species back from
+    `verification` instead of marking it checked with a fresh, unchecked status."""
     plan = _Plan()
-    _validate_flag_rows(record, rows, plan)
-    if plan.errors:
+    if is_reviewed(record):
+        plan.ignored.append(f"{_name(record)}: redan kontrollerad, raderna hoppades över")
+        return plan
+    if not _verify_current(record):
+        plan.waiting = (
+            f"{_name(record)}: faktabladet har ändrats sedan flaggorna skrevs, kör web verify "
+            "(raderna hoppades över)"
+        )
+        return plan
+    decided = _flag_decisions(record, rows, plan)
+    if plan.errors or decided is None:
         return plan
     new = copy.deepcopy(record)
     facts = list(new.get("facts", []))
     review = new.setdefault("review", {})
     new_status: dict[str, Any] | None = None
-    for row in rows:
+    status_kept: list[bool] = []
+    for flag, row in decided:
         decision = _decision(row)
-        check, fid = row["Kontroll"].strip(), row["Id"].strip()
+        check, fid = flag["check"], flag.get("factId") or ""
         if check == "V3":
-            review["statusConfirmed"] = decision == KEEP
+            status_kept.append(decision == KEEP)
             if decision == STRIKE:
                 facts = [f for f in facts if f["topic"] != "status"]
         elif check == "V4" and decision == STRIKE:
@@ -731,6 +822,10 @@ def _plan_flags(record: Record, rows: list[dict[str, str]], date: str) -> _Plan:
                 "sources": [],
                 "edited": True,
             }
+    if status_kept:
+        # Every V3 flag kept: the status stands against the data. A stryk on any of them
+        # took the status away above.
+        review["statusConfirmed"] = all(status_kept)
     new_flags: list[dict[str, Any]] = []
     if new_status is None:
         new["facts"] = facts
@@ -744,8 +839,7 @@ def _plan_flags(record: Record, rows: list[dict[str, str]], date: str) -> _Plan:
     verify_meta["factsHash"] = facts_hash(new)
     if new_flags:
         new["flags"] = new_flags
-        # N3 (review fix 2026-10-06): a `verification` left over from before this import
-        # must not survive a brand new flag -- it would otherwise still look reviewed.
+        # N3 (review fix 2026-10-06): a `verification` must not survive a brand new flag.
         new.pop("verification", None)
     else:
         new["verification"] = {
