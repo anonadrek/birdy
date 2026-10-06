@@ -348,9 +348,15 @@ def web_waves(size: int, recompute: bool) -> None:
 
 
 @web.command("sheet")
-@click.option("--wave", type=click.IntRange(1, 3), required=True)
-def web_sheet(wave: int) -> None:
-    """Skriver undantagsarkets flaggor till review/undantag.csv. Gratis."""
+@click.option(
+    "--wave",
+    type=click.IntRange(1, 3),
+    default=None,
+    help="Filtrera till en våg. Utan flaggan (standard): alla vågor, i könordning.",
+)
+def web_sheet(wave: int | None) -> None:
+    """Skriver undantagsarkets flaggor (alla vågor, löpande) till review/undantag.csv.
+    Gratis."""
     from .web.review_sheet import export_wave
 
     result = export_wave(_web_paths(), wave)
