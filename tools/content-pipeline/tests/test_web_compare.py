@@ -13,6 +13,7 @@ from birdy_fetcher.web.checker import CheckOutput, Verdict
 from birdy_fetcher.web.compare import (
     BELOW_THRESHOLD_VALUE,
     COLUMNS,
+    STALE_HASH_ERROR,
     Cell,
     CompareLang,
     CompareOptions,
@@ -28,6 +29,7 @@ from birdy_fetcher.web.compare import (
     comparison_slugs,
     meta_openings,
     pair_context,
+    published_comparison_errors,
     queries,
     read_volumes,
     render_compare_prompt,
@@ -1208,6 +1210,59 @@ async def test_comparison_is_current_follows_both_fact_sheets(tmp_path: Path) ->
     assert not comparison_is_current(saved, {**records, "Q25485": _changed_great_tit()})
     assert not comparison_is_current(saved, {"Q25404": _blue_tit()})
     assert not comparison_is_current({**saved, "generated": {}}, records)
+
+
+# N1 (review fix 2026-10-06, probe A/B): `sides` attributes a published comparison's
+# problem to the species that actually caused it, so `waves.py`'s `--species` mode never
+# reports (and never fails) a comparison over a change on the OTHER, unselected side.
+
+
+async def test_published_comparison_errors_with_sides_hides_an_unrelated_hash_mismatch(
+    tmp_path: Path,
+) -> None:
+    """Probe A: only the great tit (side b) moved on. Naming just the blue tit (side a)
+    must see no problem at all."""
+    paths, _ = await _written_and_published(tmp_path)
+    saved = _saved(paths)
+    assert saved is not None
+    records = {"Q25404": _blue_tit(), "Q25485": _changed_great_tit()}
+    assert published_comparison_errors(saved, records) == [STALE_HASH_ERROR]
+    assert published_comparison_errors(saved, records, sides={"Q25404"}) == []
+
+
+async def test_published_comparison_errors_with_sides_still_reports_the_named_sides_mismatch(
+    tmp_path: Path,
+) -> None:
+    """Probe B: the great tit (side b) moved on AND is the named side -- still reported."""
+    paths, _ = await _written_and_published(tmp_path)
+    saved = _saved(paths)
+    assert saved is not None
+    records = {"Q25404": _blue_tit(), "Q25485": _changed_great_tit()}
+    assert published_comparison_errors(saved, records, sides={"Q25485"}) == [STALE_HASH_ERROR]
+
+
+async def test_published_comparison_errors_with_sides_hides_an_unrelated_stale_citation(
+    tmp_path: Path,
+) -> None:
+    """The blue tit (side a) loses f02, cited as "a:f02" by the published belly row.
+    Naming only the great tit (side b) must see no problem."""
+    paths, _ = await _written_and_published(tmp_path)
+    saved = _saved(paths)
+    assert saved is not None
+    records = {"Q25404": _strike(_blue_tit(), "f02"), "Q25485": _great_tit()}
+    assert any("a:f02" in e for e in published_comparison_errors(saved, records))
+    assert published_comparison_errors(saved, records, sides={"Q25485"}) == []
+
+
+async def test_published_comparison_errors_with_sides_still_reports_the_named_sides_citation(
+    tmp_path: Path,
+) -> None:
+    paths, _ = await _written_and_published(tmp_path)
+    saved = _saved(paths)
+    assert saved is not None
+    records = {"Q25404": _strike(_blue_tit(), "f02"), "Q25485": _great_tit()}
+    errors = published_comparison_errors(saved, records, sides={"Q25404"})
+    assert any("a:f02" in e for e in errors)
 
 
 # (c): the shared loop with the comparison callbacks.

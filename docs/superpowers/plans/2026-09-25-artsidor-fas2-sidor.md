@@ -4158,7 +4158,7 @@ Går `--ff-only` inte: ta in `main` i grenen igen, kör om verifieringen och fö
 
 ### Task 16: Publiceringsloopen, en art eller jämförelse i taget (ändrat 2026-10-05 (b), var tidigare "Riktig data för våg 1" och "Förhandsvisning, Albins godkännande och go-live för våg 1" som två separata tasks)
 
-**Tillägg (2026-10-06, Task 23-granskningen):** `web publish`s eget urval (statusen `ok` + `verification`) var svagare än kommandots verkliga publiceringsvillkor (faktabladet fortfarande kontrollerat mot de nuvarande fakta, texten skriven ur dem, inga strukna citerade fakta) -- en kandidat som Step 2 nedan trodde var klar kunde falla på riktigt och blockera hela kön bakom sig. `publish-next.mjs` anropar därför **`uv run birdy-fetcher web publish --next`** istället för att själv välja kandidat (Step 2 nedan är ersatt: `web publish --next` gör urvalet, i samma könordning, och publicerar högst en post, eller skriver `none` på stdout om inget är klart); skriptet håller en räknare per QID/jämförelsestam i loop-sessionen och skickar **`--exclude <QID eller stam>`** för varje post som redan misslyckats 3 gånger denna session, så en enskild dålig sida aldrig blockerar de andra. Steg 7 (`git add`) gäller fortfarande bara filen/filerna för just den post `--next` skrev ut. Stickprovets republiceringsväg (Step 4) är **`uv run birdy-fetcher web write --species X`** följt av **`uv run birdy-fetcher web publish --species X`** (som även rapporterar om X:s redan publicerade jämförelser har blivit inaktuella).
+**Tillägg (2026-10-06, Task 23-granskningen, uppdaterad efter omgranskningen samma dag):** `web publish`s eget urval (statusen `ok` + `verification`) var svagare än kommandots verkliga publiceringsvillkor (faktabladet fortfarande kontrollerat mot de nuvarande fakta, texten skriven ur dem, inga strukna citerade fakta) -- en kandidat som Step 2 nedan trodde var klar kunde falla på riktigt och blockera hela kön bakom sig. `publish-next.mjs` anropar därför **`uv run birdy-fetcher web publish --next`** istället för att själv välja kandidat (Step 2 nedan är ersatt: `web publish --next` gör urvalet, i samma könordning, och publicerar högst en post, eller skriver `none` på stdout om inget är klart). Uteslutna poster står i en sessionsfil **`reports/publish-loop-excluded.txt`** (en QID eller jämförelsestam per rad): `publish-next.mjs` läser filen vid start och skickar varje rad som `--exclude`, och lägger till en ny rad **efter en posts FÖRSTA fel** (inte tre) så att en enskild dålig sida aldrig blockerar de andra; `publish-loop.sh` tömmer filen vid start av en ny körning (en gammal uteslutning ska inte överleva till nästa dag). Loopens egna stopp ("tre fel i rad", se skriptet nedan) gäller fortfarande, men nu uttryckligen tre OLIKA poster i rad (en enskild post kan aldrig bidra med mer än ett fel, den är redan utesluten efter det); det stoppet är till för systematiska fel (trasig byggmiljö och liknande), inte för enstaka dåliga sidor. Skriver `--next` `none` avslutar `publish-next.mjs` med en egen kod **3** (skild från 0 = publicerad och 1 = fel); loopen tolkar kod 3 som "stoppa nu" och räknar det inte som en publicering (ingen sömn, ingen ökning av räknaren). Steg 7 (`git add`) gäller fortfarande bara filen/filerna för just den post `--next` skrev ut. Stickprovets republiceringsväg (Step 4) är **`uv run birdy-fetcher web write --species X`**, sedan **`uv run birdy-fetcher web compare`** (samma `--top` som tidigare -- aktuella par hoppas över utan kostnad, par utanför `--top` flaggas av `compare`s egen sweep och behöver `publish: false` av Albin), sedan **`uv run birdy-fetcher web publish --species X`** (som även rapporterar om X:s redan publicerade jämförelser har blivit inaktuella); committa de omskrivna jämförelsefilerna tillsammans med X.
 
 **Villkor:** Task 15 Steg 4 har slagit ihop kodgrenen till `main`. Fas 1b har skrivit minst en arts text till `main` (`status: "ok"`, `verification` satt). Körs i huvudklonen (`C:\Users\abbea\dev\1-mina-projekt\birdy\website`), inte i worktreen `website/artsidor`, som bara behövdes för kodarbetet i Task 1 till 15: all riktig artdata går nu direkt mot `main`.
 
@@ -4196,13 +4196,19 @@ Spara loopen som `scripts/publish-loop.sh`:
 #!/usr/bin/env bash
 set -u
 MAX_PUBLISH=${1:-9999}
+: > reports/publish-loop-excluded.txt  # tom sessionsfil vid varje ny körning
 published=0
 consecutive_failures=0
 while [ "$published" -lt "$MAX_PUBLISH" ] && [ "$consecutive_failures" -lt 3 ]; do
-  if node scripts/publish-next.mjs; then
+  node scripts/publish-next.mjs
+  code=$?
+  if [ "$code" -eq 0 ]; then
     consecutive_failures=0
     published=$((published + 1))
     [ "$published" -lt "$MAX_PUBLISH" ] && sleep 300
+  elif [ "$code" -eq 3 ]; then
+    echo "Inget mer att publicera just nu."
+    break
   else
     consecutive_failures=$((consecutive_failures + 1))
   fi
@@ -4210,7 +4216,7 @@ done
 echo "$published publicerade, $consecutive_failures fel i rad vid stopp."
 ```
 
-`MAX_PUBLISH` är nödstoppet (`--max-publish N` i spec-språket): kör till exempel `bash scripts/publish-loop.sh 5` för en liten testomgång innan hela kön släpps på. Tre fel i rad stoppar loopen helt (ett enstaka sidfel stoppar bara den sidan, se steg 6 ovan); läs `reports/publish-loop-*.md` innan omstart.
+`MAX_PUBLISH` är nödstoppet (`--max-publish N` i spec-språket): kör till exempel `bash scripts/publish-loop.sh 5` för en liten testomgång innan hela kön släpps på. Tre OLIKA poster i rad (kod 1, inte kod 3) stoppar loopen helt -- en enskild dålig post bidrar aldrig med mer än ett fel, den uteslöts redan efter sitt första (se Tillägget ovan); läs `reports/publish-loop-*.md` innan omstart.
 
 - [ ] **Step 4: Stickprovet var 40:e art och var 10:e jämförelse**
 

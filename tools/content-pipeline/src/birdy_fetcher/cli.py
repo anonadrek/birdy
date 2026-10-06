@@ -594,12 +594,20 @@ def web_publish(
     paths = _web_paths()
     outcomes = publish_wave(paths, wave, list(species) or None)
     _print_outcomes(outcomes, paths.reports)
-    # I3 (review fix 2026-10-06): a QID explicitly named with --species that did not end
-    # up published is as much a failure for the caller as an outcome marked `failed`.
     status_by_qid = {o.qid: o.status for o in outcomes}
-    if any(o.status == "failed" for o in outcomes) or any(
-        status_by_qid.get(qid) != "ok" for qid in species
-    ):
+    if species:
+        # I3 + N1 item 2 (review fix 2026-10-06): in --species mode, only the named
+        # species (an unknown QID gets its own "failed" outcome under that same qid) and
+        # a comparison THIS call itself tried to publish (both sides named, tagged
+        # "jämförelse" by `_publish_comparisons`) decide the exit code. An
+        # already-published comparison's staleness finding stays loud in the
+        # output/report ("sätt publish: false") but never flips it -- otherwise fas 2's
+        # loop would `git checkout -- src/data` the very page it just correctly
+        # published, over a problem on a species this call never touched.
+        counted = set(species) | {o.qid for o in outcomes if "jämförelse" in o.notes}
+        if any(status_by_qid.get(qid) != "ok" for qid in counted):
+            raise click.exceptions.Exit(1)
+    elif any(o.status == "failed" for o in outcomes):
         raise click.exceptions.Exit(1)
 
 

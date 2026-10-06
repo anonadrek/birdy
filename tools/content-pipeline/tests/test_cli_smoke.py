@@ -9,7 +9,7 @@ from click.testing import CliRunner
 
 from birdy_fetcher import cli as cli_module
 from birdy_fetcher.cli import main
-from birdy_fetcher.web.record import record_path, save_record
+from birdy_fetcher.web.record import facts_hash, load_record, record_path, save_record
 
 from .test_web_waves import _ready
 from .web_repo import make_repo
@@ -230,3 +230,87 @@ def test_web_publish_next_prints_exactly_one_species_line(
     result = CliRunner().invoke(main, ["web", "publish", "--next"])
     assert result.exit_code == 0
     assert result.output.strip() == "species Q1"
+
+
+def test_web_publish_species_outside_named_wave_exits_nonzero(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # m2 (review fix 2026-10-06): named and not ok still exits 1, with the mismatch
+    # named in the output rather than Q1 silently having no outcome at all.
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q1"), _ready("Q1", "Talgoxe", 1))  # wave 1
+    monkeypatch.setattr(cli_module, "_web_paths", lambda: paths)
+    result = CliRunner().invoke(main, ["web", "publish", "--species", "Q1", "--wave", "2"])
+    assert result.exit_code == 1
+    assert "inte i våg 2" in result.output
+
+
+def test_web_publish_species_exit_code_ignores_an_unrelated_sides_comparison_staleness(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """N1 probe A, end to end: Q1 and Q2 published, Q1_Q2 live; only Q2's facts change.
+    --species Q1 must exit 0 and never even mention Q1_Q2."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    live_a = _ready("Q1", "Talgoxe", 1)
+    live_a["publish"] = True
+    live_b = _ready("Q2", "Blåmes", 1)
+    live_b["publish"] = True
+    for record in (live_a, live_b):
+        save_record(record_path(paths.data_out, record["qid"]), record)
+    paths.comparisons_out.mkdir(parents=True, exist_ok=True)
+    save_record(
+        paths.comparisons_out / "Q1_Q2.json",
+        {
+            "a": "Q1",
+            "b": "Q2",
+            "status": "ok",
+            "publish": True,
+            "generated": {"factsHash": facts_hash(live_a) + facts_hash(live_b)},
+        },
+    )
+    struck = load_record(record_path(paths.data_out, "Q2"))
+    assert struck is not None
+    struck["facts"] = [f for f in struck["facts"] if f["id"] != "f04"]
+    new_hash = facts_hash(struck)
+    struck["generated"]["verify"]["factsHash"] = new_hash
+    struck["generated"]["text"]["factsHash"] = new_hash
+    save_record(record_path(paths.data_out, "Q2"), struck)
+    monkeypatch.setattr(cli_module, "_web_paths", lambda: paths)
+    result = CliRunner().invoke(main, ["web", "publish", "--species", "Q1"])
+    assert result.exit_code == 0, result.output
+    assert "Q1_Q2" not in result.output
+
+
+def test_web_publish_species_exit_code_ignores_a_reported_but_unselected_comparison(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """N1 probe B, end to end: Q1's OWN facts change (the spot-check republish path).
+    Q1_Q2 is reported failed (loudly, for Albin), but --species Q1 still exits 0 so fas
+    2's loop does not revert the page it just correctly published."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    ready1 = _ready("Q1", "Talgoxe", 1)
+    ready2 = _ready("Q2", "Blåmes", 1)
+    for record in (ready1, ready2):
+        save_record(record_path(paths.data_out, record["qid"]), record)
+    paths.comparisons_out.mkdir(parents=True, exist_ok=True)
+    save_record(
+        paths.comparisons_out / "Q1_Q2.json",
+        {
+            "a": "Q1",
+            "b": "Q2",
+            "status": "ok",
+            "publish": True,
+            "generated": {"factsHash": facts_hash(ready1) + facts_hash(ready2)},
+        },
+    )
+    struck = load_record(record_path(paths.data_out, "Q1"))
+    assert struck is not None
+    struck["facts"] = [f for f in struck["facts"] if f["id"] != "f04"]
+    new_hash = facts_hash(struck)
+    struck["generated"]["verify"]["factsHash"] = new_hash
+    struck["generated"]["text"]["factsHash"] = new_hash
+    save_record(record_path(paths.data_out, "Q1"), struck)
+    monkeypatch.setattr(cli_module, "_web_paths", lambda: paths)
+    result = CliRunner().invoke(main, ["web", "publish", "--species", "Q1"])
+    assert result.exit_code == 0, result.output
+    assert "sätt publish: false" in result.output

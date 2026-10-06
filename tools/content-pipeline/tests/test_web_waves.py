@@ -8,6 +8,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+import pytest
+
 from birdy_fetcher.web.record import (
     Record,
     facts_hash,
@@ -572,3 +574,102 @@ def test_publish_next_falls_back_to_a_ready_comparison_and_changes_only_that_fil
     # Only the comparison file changed -- both species files are untouched.
     assert record_path(paths.data_out, "Q1").read_text(encoding="utf-8") == before_q1
     assert record_path(paths.data_out, "Q2").read_text(encoding="utf-8") == before_q2
+
+
+def test_publish_next_reports_an_unreadable_comparison_file_on_stderr(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """m3: --next's stdout contract (one line, or nothing when it exits with a pick) is
+    never shared with a diagnostic about a file it had to skip."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    paths.comparisons_out.mkdir(parents=True, exist_ok=True)
+    (paths.comparisons_out / "Q1_Q2.json").write_text("{not json", encoding="utf-8")
+    pick = publish_next(paths)
+    assert pick is None
+    captured = capsys.readouterr()
+    assert captured.out == ""
+    assert "Q1_Q2.json" in captured.err
+
+
+# -- re-review 2026-10-06: N1 (sides attribution + exit code), m1 (queue order), m2
+# (named species outside the named wave) --------------------------------------------
+
+
+def test_publish_species_mode_does_not_even_mention_an_unrelated_sides_staleness(
+    tmp_path: Path,
+) -> None:
+    """N1 probe A: Q1 and Q2 published, Q1_Q2 live; only Q2's facts change (struck,
+    verify + text refreshed). Publishing Q1 alone must not even mention Q1_Q2."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    live_a = _ready("Q1", "Talgoxe", 1)
+    live_a["publish"] = True
+    live_b = _ready("Q2", "Blåmes", 1)
+    live_b["publish"] = True
+    for record in (live_a, live_b):
+        save_record(record_path(paths.data_out, record["qid"]), record)
+    paths.comparisons_out.mkdir(parents=True, exist_ok=True)
+    save_record(
+        paths.comparisons_out / "Q1_Q2.json",
+        {
+            "a": "Q1",
+            "b": "Q2",
+            "status": "ok",
+            "publish": True,
+            "generated": {"factsHash": facts_hash(live_a) + facts_hash(live_b)},
+        },
+    )
+    struck = load_record(record_path(paths.data_out, "Q2"))
+    assert struck is not None
+    struck["facts"] = [f for f in struck["facts"] if f["id"] != "f04"]
+    new_hash = facts_hash(struck)
+    struck["generated"]["verify"]["factsHash"] = new_hash
+    struck["generated"]["text"]["factsHash"] = new_hash
+    save_record(record_path(paths.data_out, "Q2"), struck)
+    outcomes = publish_wave(paths, species=["Q1"])
+    assert not any(o.qid == "Q1_Q2" for o in outcomes)
+    comparison = load_record(paths.comparisons_out / "Q1_Q2.json")
+    assert comparison is not None and comparison["publish"] is True  # never flipped
+
+
+def test_publish_next_follows_waves_json_order_within_a_wave(tmp_path: Path) -> None:
+    """m1: `review/waves.json`'s own order wins over alphabetical names.sv (and over
+    QID) when both species are in the same wave."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    # Both QID order ("Q2" < "Q9") and names.sv order ("Blåmes" < "Trana") would pick Q2
+    # first; waves.json instead lists Q9 first.
+    first = _ready("Q9", "Trana", 1)
+    second = _ready("Q2", "Blåmes", 1)
+    for record in (first, second):
+        save_record(record_path(paths.data_out, record["qid"]), record)
+    waves_file = paths.review / "waves.json"
+    waves_file.parent.mkdir(parents=True, exist_ok=True)
+    waves_file.write_text(
+        json.dumps({"1": [{"qid": "Q9", "name": "Trana"}, {"qid": "Q2", "name": "Blåmes"}]}),
+        encoding="utf-8",
+    )
+    pick = publish_next(paths)
+    assert pick == NextPick("species", "Q9")
+
+
+def test_publish_next_falls_back_to_names_sv_without_waves_json(tmp_path: Path) -> None:
+    """m1: with no `review/waves.json` at all, same-wave species fall back to
+    alphabetical `names.sv`, not QID -- the two orders disagree here on purpose."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    first = _ready("Q2", "Örnsångare", 1)
+    second = _ready("Q9", "Blåmes", 1)
+    for record in (first, second):
+        save_record(record_path(paths.data_out, record["qid"]), record)
+    pick = publish_next(paths)
+    assert pick == NextPick("species", "Q9")  # "Blåmes" < "Örnsångare"
+
+
+def test_publish_species_outside_the_named_wave_is_reported_skipped(tmp_path: Path) -> None:
+    """m2: --species Q1 --wave 2 for a wave-1 species names the mismatch instead of
+    Q1 silently getting no outcome at all."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q1"), _ready("Q1", "Talgoxe", 1))  # wave 1
+    outcomes = publish_wave(paths, wave=2, species=["Q1"])
+    assert len(outcomes) == 1
+    assert outcomes[0].qid == "Q1"
+    assert outcomes[0].status == "skipped"
+    assert any("inte i våg 2" in e for e in outcomes[0].errors)

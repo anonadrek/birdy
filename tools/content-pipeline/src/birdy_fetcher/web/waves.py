@@ -5,6 +5,7 @@ turns `publish` on for species and comparisons that are ready; it never turns it
 from __future__ import annotations
 
 import json
+import sys
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -188,7 +189,9 @@ def _publish_comparisons(
             if comparison.get("publish"):
                 if selected is not None and a_qid not in selected and b_qid not in selected:
                     continue
-                errors = published_comparison_errors(comparison, records)
+                # N1 (review fix 2026-10-06): attribute the problem to a selected side,
+                # so a --species call is never failed by its OTHER, unselected side.
+                errors = published_comparison_errors(comparison, records, sides=selected)
                 if errors:
                     outcomes.append(StepOutcome(path.stem, name, "failed", errors))
                 continue
@@ -202,7 +205,13 @@ def _publish_comparisons(
                 outcomes.append(StepOutcome(path.stem, name, "ok", notes=["jämförelse"]))
             elif selected is not None:
                 reasons = _comparison_unready_reasons(comparison, a_qid, b_qid, live, current)
-                outcomes.append(StepOutcome(path.stem, name, "skipped", reasons))
+                # Tagged "jämförelse" (N1 item 2, review fix 2026-10-06) so the CLI can
+                # tell a NEW-publish attempt (this call's own business, counts toward
+                # its exit code) apart from an already-published staleness finding just
+                # above (never counts, see `cli.py`'s `web_publish`).
+                outcomes.append(
+                    StepOutcome(path.stem, name, "skipped", reasons, notes=["jämförelse"])
+                )
         except Exception as exc:  # one file's error must not stop the run (M6)
             outcomes.append(
                 StepOutcome(path.stem, name, "failed", [f"{type(exc).__name__}: {exc}"])
@@ -246,9 +255,15 @@ def publish_wave(
                     StepOutcome(qid, qid, "failed", ["artposten saknas: kör web sources först"])
                 )
     for qid, record in sorted(records.items()):
-        if wave is not None and record.get("review", {}).get("wave") != wave:
-            continue
         if selected is not None and qid not in selected:
+            # Not named at all: the wave filter (if any) is not this record's concern.
+            continue
+        if wave is not None and record.get("review", {}).get("wave") != wave:
+            if selected is not None:
+                # m2 (review fix 2026-10-06): a QID explicitly named with --species that
+                # simply is not in the --wave also given is a loud, named skip -- not a
+                # silent drop that leaves it with no outcome at all.
+                outcomes.append(StepOutcome(qid, _name(record), "skipped", [f"inte i våg {wave}"]))
             continue
         name = _name(record)
         reasons = _unready_reasons(record)
@@ -285,14 +300,35 @@ def publish_wave(
 _NO_WAVE_ORDER = 4  # after every real wave; `review.wave` is only ever 1, 2 or 3.
 
 
-def _queue_order(records: dict[str, Record]) -> list[str]:
-    """Fas 2's publish queue: species grouped by wave ascending, a species with no wave
-    assigned last, alphabetical by QID within a group -- the same order `publish_wave`'s
-    own species loop already visits them in."""
+def _wave_positions(paths: WebPaths) -> dict[str, int]:
+    """QID to its position within its wave in `review/waves.json`, when that file exists
+    (m1, review fix 2026-10-06). The file preserves the order Albin or `compute_waves`
+    assigned (common species first in wave 1, say) -- plain alphabetical order inside a
+    wave would lose that. Positions from different waves are never compared against each
+    other (the wave number is the primary sort key), so reusing the same numbering
+    space across waves is harmless."""
+    file = paths.review / WAVES_FILE
+    if not file.exists():
+        return {}
+    positions: dict[str, int] = {}
+    for qids in read_waves(file).values():
+        for i, qid in enumerate(qids):
+            positions[qid] = i
+    return positions
 
-    def key(qid: str) -> tuple[int, str]:
+
+def _queue_order(records: dict[str, Record], positions: dict[str, int]) -> list[str]:
+    """Fas 2's publish queue: species grouped by wave ascending, a species with no wave
+    assigned last; within a wave, `review/waves.json`'s own order (`positions`) when the
+    file lists the species, falling back to alphabetical by `names.sv` -- breaking ties
+    on QID -- for one that is not listed, or when the file does not exist at all (m1,
+    review fix 2026-10-06)."""
+
+    def key(qid: str) -> tuple[int, int, str, str]:
         wave = records[qid].get("review", {}).get("wave")
-        return (wave if isinstance(wave, int) else _NO_WAVE_ORDER, qid)
+        order = wave if isinstance(wave, int) else _NO_WAVE_ORDER
+        position = positions.get(qid, len(positions))
+        return (order, position, _name(records[qid]), qid)
 
     return sorted(records, key=key)
 
@@ -317,7 +353,8 @@ def publish_next(
     --species. Returns `None` when nothing is ready."""
     when = (now or datetime.now(UTC)).date().isoformat()
     records = load_all(paths.data_out)
-    for qid in _queue_order(records):
+    positions = _wave_positions(paths)
+    for qid in _queue_order(records, positions):
         record = records[qid]
         if qid in exclude or record.get("publish") or _unready_reasons(record):
             continue
@@ -333,7 +370,11 @@ def publish_next(
             continue
         try:
             comparison = load_record(path)
-        except Exception:
+        except Exception as exc:
+            # m3 (review fix 2026-10-06): --next's stdout contract is exactly one line
+            # (the pick, or "none"), so a skipped unreadable file is reported on stderr
+            # instead -- never silently, and never on stdout.
+            print(f"web publish --next: kunde inte läsa {path.name}: {exc}", file=sys.stderr)
             continue
         if comparison is None or comparison.get("publish") or comparison.get("status") != "ok":
             continue

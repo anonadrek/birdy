@@ -801,19 +801,51 @@ STALE_HASH_ERROR = (
 )
 
 
-def published_comparison_errors(comparison: Record, records: dict[str, Record]) -> list[str]:
+def published_comparison_errors(
+    comparison: Record, records: dict[str, Record], sides: set[str] | None = None
+) -> list[str]:
     """Every loud error a published comparison has right now, assuming the caller has
     already checked `comparison.get("publish")`: a struck cited fact, or -- only when
     that is clean -- facts that have moved on since the comparison was written. Shared
-    (I3, scope follow-up to the review fix 2026-10-06) by `_sweep_published` (every
-    `web compare` run) and `waves.py`'s `publish_wave`, so a comparison already live
-    never gets a free pass just because this particular run does not rewrite it."""
+    (I3, scope follow-up to the review fix 2026-10-06) by `_sweep_published` (`sides`
+    always `None`: every problem is reported) and `waves.py`'s `publish_wave` (N1, review
+    fix 2026-10-06), so a comparison already live never gets a free pass just because
+    this particular run does not rewrite it.
+
+    With `sides` given -- the QIDs a `--species` call actually named -- only a problem
+    attributable to one of THOSE species is reported: a stale cited id by its `a:`/`b:`
+    prefix, and a stale facts hash by splitting `generated.factsHash` back into its two
+    16-hex-character halves (`facts_hash(a) + facts_hash(b)`, in the orientation the
+    comparison is stored in) and comparing each half only against its own side. A
+    comparison must never fail a `--species Q1` call just because its OTHER side, Q2,
+    happens to have moved on -- that is Q2's problem to report when Q2 (or neither side)
+    is named. A side whose species record is gone entirely is always reported, since
+    there is no side left to attribute the problem to."""
+    a_qid, b_qid = str(comparison.get("a")), str(comparison.get("b"))
+
+    def relevant(qid: str) -> bool:
+        return sides is None or qid in sides
+
     stale = _stale_comparison_ids(comparison, records)
+    if sides is not None:
+        stale = [
+            fid
+            for fid in stale
+            if (fid.startswith("a:") and relevant(a_qid))
+            or (fid.startswith("b:") and relevant(b_qid))
+            or not (fid.startswith("a:") or fid.startswith("b:"))
+        ]
     if stale:
         return [_stale_ids_error(stale)]
-    if not comparison_is_current(comparison, records):
-        return [STALE_HASH_ERROR]
-    return []
+    a, b = records.get(a_qid), records.get(b_qid)
+    if a is None or b is None:
+        return [STALE_HASH_ERROR] if not comparison_is_current(comparison, records) else []
+    written = (comparison.get("generated") or {}).get("factsHash") or ""
+    written_a, written_b = written[:16], written[16:]
+    mismatch = (written_a != facts_hash(a) and relevant(a_qid)) or (
+        written_b != facts_hash(b) and relevant(b_qid)
+    )
+    return [STALE_HASH_ERROR] if mismatch else []
 
 
 def _keep_old_comparison(existing: Record, records: dict[str, Record]) -> bool:
