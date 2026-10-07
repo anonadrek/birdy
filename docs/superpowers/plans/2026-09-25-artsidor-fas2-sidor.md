@@ -1012,9 +1012,18 @@ export async function getAllSpecies(): Promise<Species[]> {
   return built;
 }
 
+/**
+ * The comparison pages are built in Task 11, which comes after the first species pages go live (2026-10-09).
+ * Until their route exists no page may link to one, so getComparisons() returns nothing: the hub hides its
+ * comparison section and the look-alikes get no "Compare" link. Task 11 flips this to true (controller
+ * decision, Task 10 review; added to this block afterwards).
+ */
+export const COMPARISONS_ENABLED = false;
+
 let builtComparisons: Comparison[] | undefined;
 /** The comparisons that get a page: written, published or previewed, and both species built. */
 export async function getComparisons(): Promise<Comparison[]> {
+  if (!COMPARISONS_ENABLED) return [];
   if (!builtComparisons) {
     const qids = new Set((await getAllSpecies()).map((s) => s.qid));
     builtComparisons = (await getCollection('comparisons')).map((e) => e.data).filter((c) => isComparisonBuilt(c, qids));
@@ -1490,7 +1499,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "chartSeriesSentence": "{name}: {text}"
   },
   "speciesAbout": {
-    "title": "Så gör vi artsidorna: källor och granskning | Birdy",
+    "title": "Så gör vi artsidorna: källor och kontroll | Birdy",
     "description": "Så skrivs Birdys artsidor: källorna, hur AI används, hur fakta kontrolleras, vilka licenser som gäller och hur du rapporterar fel.",
     "crumb": "Så gör vi artsidorna",
     "headline": "Så gör vi *artsidorna*",
@@ -1499,35 +1508,39 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       {
         "heading": "Källorna",
         "paragraphs": [
-          "Texterna bygger på artiklarna om varje art på svenska, engelska och tyska Wikipedia.",
-          "Diagrammet över när arten ses och kartan över var den rapporteras räknas fram ur Artportalen, Sveriges rapportsystem för fynd av växter, djur och svampar. SLU Artdatabanken delar rapporterna öppet via den internationella databasen GBIF. Siffrorna visar artens andel av alla fågelrapporter, så att arten inte ser vanligare ut i en viss månad eller ett visst län bara för att fler är ute och skådar där och då.",
-          "Den svenska rödlistestatusen kommer från SLU Artdatabankens Rödlistade arter i Sverige 2025 och den globala från IUCN:s rödlista via Wikidata. Foton och inspelningar kommer från Wikimedia Commons."
+          "Texterna bygger på Wikipedias artiklar om arten på svenska, engelska och tyska, i den mån arten har en artikel på språket.",
+          "Diagrammet över när arten ses och kartan över var den rapporteras räknas fram ur fågelrapporterna i Artportalen 2016 till 2025. Artportalen är Sveriges rapportsystem för fynd av växter, djur och svampar, och SLU Artdatabanken delar rapporterna öppet via den internationella databasen GBIF. Siffrorna visar artens andel av alla fågelrapporter, så att arten inte ser vanligare ut i en viss månad eller ett visst län bara för att fler är ute och skådar där och då. Har arten färre än 200 rapporter visas varken diagram eller karta.",
+          "Den svenska rödlistestatusen kommer från SLU Artdatabankens Rödlistade arter i Sverige 2025, också via GBIF, och den globala från IUCN:s rödlista via Wikidata. Foton och inspelningar kommer från Wikimedia Commons."
         ]
       },
       {
         "heading": "Så används AI",
         "paragraphs": [
-          "En språkmodell läser artiklarna och plockar ut fakta om bland annat utseende, läte, miljö och förekomst i Sverige. Varje faktum ska ha ett ordagrant citat ur artikeln, och ett program kontrollerar att citatet verkligen finns där. Fakta utan giltigt citat stryks.",
-          "Texten på sidan skrivs sedan av en modell som bara får se de fakta som har godkänts, inte artiklarna. En annan modell läser därefter varje mening och jämför den med de fakta den bygger på. Meningar som inte stöds skrivs om eller stryks.",
-          "Diagrammet och kartan räknas fram, och rödlistestatusen hämtas, direkt ur datan utan någon språkmodell."
+          "Språkmodellen Claude Opus 5.5 från Anthropic läser artiklarna och plockar ut högst 30 fakta om bland annat utseende, läte, miljö och förekomst i Sverige. Varje faktum ska ha ett ordagrant citat ur någon av artiklarna, och ett program kontrollerar att citatet verkligen finns där. Fakta utan giltigt citat stryks.",
+          "Texten på sidan skrivs sedan av samma modell, som bara får se de fakta som har klarat kontrollen nedan, inte artiklarna. En annan modell, Claude Sonnet 5, läser därefter varje mening och jämför den med de fakta och citat den bygger på. En mening som inte stöds skrivs om en gång, och stöds den fortfarande inte stryks den.",
+          "Diagrammet, kartan och meningarna under dem räknas fram av kod direkt ur datan, och rödlistestatusen hämtas på samma sätt, utan någon språkmodell."
         ]
       },
       {
         "heading": "Kontrollen",
         "paragraphs": [
-          "Innan texten skrivs kontrollerar en annan modell än den som plockade ut fakta varje faktum mot citatet och stycket runt det i artikeln, och fakta som inte stöds fullt ut stryks. Kod jämför mått som längd och vikt mellan artiklarna på de olika språken, och förekomsten i Sverige med Artportalen och den svenska rödlistan. Inspelningen kontrolleras med Birdys egen ljudmodell, och känner modellen inte igen arten visas ingen inspelning. Det som inte går att avgöra automatiskt granskas av Albin Abrahamsson, som har byggt Birdy, innan sidan publiceras. Efter publiceringen läser han dessutom ett löpande stickprov av sidorna. Datumet för den senaste kontrollen står längst ned på varje artsida."
+          "Innan texten skrivs kontrollerar Claude Sonnet 5, alltså en annan modell än den som plockade ut fakta, varje faktum mot dess citat och stycket runt citatet i artikeln. Fakta som inte stöds fullt ut stryks. Kod jämför dessutom tal som längd, vingbredd, vikt och antal ägg mellan artiklarna på de olika språken, och artens status i Sverige, till exempel stannfågel eller vintergäst, med rapporterna i Artportalen och den svenska rödlistan.",
+          "Inspelningen kontrolleras med ljudmodellen som känner igen läten i Birdy-appen. Känner modellen inte igen arten prövas upp till tre andra inspelningar från Wikimedia Commons, och annars visas ingen inspelning.",
+          "En sida där ingen kontroll hittar något publiceras automatiskt. Det som inte går att avgöra automatiskt väntar på ett beslut av Albin Abrahamsson, som har byggt Birdy, innan sidan publiceras: till exempel en status som kontrollen strök, tal som skiljer sig mellan artiklarna, en status som inte stämmer med rapporterna, eller en art som ljudmodellen inte känner till eller bara känner igen svagt. Efter publiceringen läser han dessutom ett löpande stickprov, två av varje 40 publicerade artsidor. Datumet för den senaste kontrollen står längst ned på varje artsida."
         ]
       },
       {
         "heading": "Licenserna",
         "paragraphs": [
-          "Texterna på art- och jämförelsesidorna bygger på Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy och Wikipediaartiklarna som källor och delar vidare under samma licens. Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem. Fotona är nedskalade, i övrigt oförändrade. Inspelningarna är bearbetade (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet."
+          "Texterna på art- och jämförelsesidorna är skrivna ur fakta från Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy och Wikipediaartiklarna som källor och delar vidare under samma licens. Varje sida länkar till artiklarna i den version texten bygger på.",
+          "Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem. Fotona är nedskalade, i övrigt oförändrade. Inspelningarna är bearbetade (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet.",
+          "Rapportdatan från Artportalen och den svenska rödlistan är fri att använda under CC0 och hämtas via GBIF. CC0 kräver ingen källhänvisning, men varje sida anger ändå källan."
         ]
       },
       {
         "heading": "Rättelser",
         "paragraphs": [
-          "Hittar du ett fel? Skriv till {email}, gärna med en länk till sidan. Stämmer det rättar vi sidan och sätter ett nytt kontrolldatum."
+          "Längst ned på varje artsida finns länken ”Hittade du ett fel? Skriv till oss.” Du kan också skriva direkt till {email}, gärna med en länk till sidan. Stämmer det rättar vi sidan och sätter ett nytt kontrolldatum."
         ]
       }
     ]
@@ -1661,7 +1674,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "chartSeriesSentence": "{name}: {text}"
   },
   "speciesAbout": {
-    "title": "How we make the species pages: sources and review | Birdy",
+    "title": "How we make the species pages: sources and checks | Birdy",
     "description": "How the species pages on Birdy are made: the sources, how AI is used, how the facts are checked, the licences and how to report a mistake.",
     "crumb": "How we make these pages",
     "headline": "How we make the *species pages*",
@@ -1670,35 +1683,39 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       {
         "heading": "The sources",
         "paragraphs": [
-          "The texts are based on the articles about each species on Swedish, English and German Wikipedia.",
-          "The chart of when the species is seen and the map of where it is reported are calculated from Artportalen, Sweden's reporting system for sightings of plants, animals and fungi. The SLU Swedish Species Information Centre shares the reports openly through the international database GBIF. The figures show the species' share of all bird reports, so that it does not look more common in a month or a county just because more birdwatchers are out then or there.",
-          "The Swedish red list status comes from The Swedish Red List 2025 by the SLU Swedish Species Information Centre, and the global status from the IUCN Red List via Wikidata. Photos and recordings come from Wikimedia Commons."
+          "The texts are based on Wikipedia's articles about the species in Swedish, English and German, as far as the species has an article in that language.",
+          "The chart of when the species is seen and the map of where it is reported are calculated from the bird reports in Artportalen from 2016 to 2025. Artportalen is Sweden's reporting system for sightings of plants, animals and fungi, and the SLU Swedish Species Information Centre shares the reports openly through the international database GBIF. The figures show the species' share of all bird reports, so that it does not look more common in a month or a county just because more birdwatchers are out then or there. A species with fewer than 200 reports gets neither a chart nor a map.",
+          "The Swedish red list status comes from The Swedish Red List 2025 by the SLU Swedish Species Information Centre, also through GBIF, and the global status from the IUCN Red List via Wikidata. Photos and recordings come from Wikimedia Commons."
         ]
       },
       {
         "heading": "How AI is used",
         "paragraphs": [
-          "A language model reads the articles and picks out facts about appearance, calls and song, habitat and occurrence in Sweden, among other things. Every fact needs a verbatim quote from the article, and a program checks that the quote really is there. Facts without a valid quote are removed.",
-          "The text on the page is then written by a model that only sees the approved facts, not the articles. Another model then reads every sentence and compares it with the facts it is based on. Sentences that are not supported are rewritten or removed.",
-          "The chart and the map are calculated, and the red list status is looked up, directly from the data, without any language model."
+          "The language model Claude Opus 5.5 by Anthropic reads the articles and picks out at most 30 facts about appearance, calls and song, habitat and occurrence in Sweden, among other things. Every fact needs a verbatim quote from one of the articles, and a program checks that the quote really is there. Facts without a valid quote are removed.",
+          "The text on the page is then written by the same model, which only sees the facts that have passed the checks below, not the articles. Another model, Claude Sonnet 5, then reads every sentence and compares it with the facts and quotes it is based on. A sentence that is not supported is rewritten once, and if it is still not supported it is removed.",
+          "The chart, the map and the sentences under them are calculated by code directly from the data, and the red list status is looked up the same way, without any language model."
         ]
       },
       {
         "heading": "The checks",
         "paragraphs": [
-          "Before the text is written, a different model from the one that picked out the facts checks every fact against its quote and the paragraph around it in the article, and facts that are not fully supported are removed. Code compares measurements such as length and weight between the articles in the different languages, and the occurrence in Sweden with Artportalen and the Swedish red list. The recording is checked with Birdy's own sound model, and if the model does not recognise the species, no recording is shown. Anything that cannot be settled automatically is reviewed by Albin Abrahamsson, who built Birdy, before the page is published. After publication, he also reads a running sample of the pages. The date of the latest check is at the bottom of every species page."
+          "Before the text is written, Claude Sonnet 5, a different model from the one that picked out the facts, checks every fact against its quote and the paragraph around the quote in the article. Facts that are not fully supported are removed. Code also compares numbers such as length, wingspan, weight and clutch size between the articles in the different languages, and the species' status in Sweden, such as resident or winter visitor, with the reports in Artportalen and the Swedish red list.",
+          "The recording is checked with the sound model that identifies calls and songs in the Birdy app. If the model does not recognise the species, up to three other recordings from Wikimedia Commons are tried, and otherwise no recording is shown.",
+          "A page where no check finds anything is published automatically. Anything that cannot be settled automatically waits for a decision by Albin Abrahamsson, who built Birdy, before the page is published: for example a status that the checks removed, numbers that differ between the articles, a status that does not match the reports, or a species the sound model does not know or only recognises weakly. After publication, he also reads a running sample, two of every 40 published species pages. The date of the latest check is at the bottom of every species page."
         ]
       },
       {
         "heading": "The licences",
         "paragraphs": [
-          "The texts on the species and comparison pages are based on Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and the Wikipedia articles and share under the same licence. Photos and recordings have their own licences, and every page names the author, licence and source for them. The photos are scaled down, otherwise unchanged. The recordings are edited (at most 20 seconds, mono, loudness evened out, MP3), and an edited CC BY-SA recording is shared under the same licence as the original."
+          "The texts on the species and comparison pages are written from facts in Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and the Wikipedia articles and share under the same licence. Every page links to the articles in the version the text is based on.",
+          "Photos and recordings have their own licences, and every page names the author, licence and source for them. The photos are scaled down, otherwise unchanged. The recordings are edited (at most 20 seconds, mono, loudness evened out, MP3), and an edited CC BY-SA recording is shared under the same licence as the original.",
+          "The report data from Artportalen and the Swedish red list are free to use under CC0 and come through GBIF. CC0 does not require a credit, but every page names the source anyway."
         ]
       },
       {
         "heading": "Corrections",
         "paragraphs": [
-          "Found a mistake? Write to {email}, ideally with a link to the page. If we confirm it, we correct the page and set a new check date."
+          "At the bottom of every species page there is a link, “Found a mistake? Write to us.” You can also write directly to {email}, ideally with a link to the page. If we confirm the mistake, we correct the page and set a new check date."
         ]
       }
     ]
@@ -2006,16 +2023,20 @@ test.describe('ingångssidan', () => {
       await expect(page.locator('h1')).toContainText(h1);
       await expect(page.locator('.groups a')).toHaveCount(8);
       await expect(page.locator('[data-item]')).toHaveCount(17);
-      await expect(page.locator('[data-compare-link]')).toHaveCount(2);
+      // Comparisons are off until Task 11 builds their pages (COMPARISONS_ENABLED in lib/species.ts).
+      await expect(page.locator('[data-compare-link]')).toHaveCount(0);
       await expect(page.locator(`a[href="${about}"]`)).toHaveCount(1);
       await expect(page.locator(`link[rel="alternate"][hreflang="${path.startsWith('/sv') ? 'en' : 'sv'}"]`)).toHaveAttribute('href', `https://birdy.community${other}`);
       expect(errors).toEqual([]);
     });
   }
 
-  test('jämförelserna har namnen i svensk ordning', async ({ page }) => {
+  // Task 11 turns comparisons on and restores this test's original form:
+  // await expect(page.locator('[data-compare-link]')).toHaveText(['Blåmes eller talgoxe', 'Kaja eller skata']);
+  test('jämförelserna är avstängda tills deras sidor byggs (Task 11)', async ({ page }) => {
     await page.goto('/sv/arter/');
-    await expect(page.locator('[data-compare-link]')).toHaveText(['Blåmes eller talgoxe', 'Kaja eller skata']);
+    await expect(page.locator('[data-compare-link]')).toHaveCount(0);
+    await expect(page.locator('h2', { hasText: 'Lätta att blanda ihop' })).toHaveCount(0);
   });
 
   test('opublicerade, väntande och misslyckade arter syns inte', async ({ page }) => {
@@ -2957,8 +2978,8 @@ test.describe('artsidan', () => {
     const facts = page.locator('.facts');
     for (const text of ['Vetenskapligt namn', 'Mesar', 'Stannfågel', 'Cirka 14 cm', 'Livskraftig (LC)']) await expect(facts).toContainText(text);
     await expect(facts.locator('[data-redlist]')).toContainText('Inte rödlistad');
-    await expect(page.locator('.sp-app')).toContainText('på foto eller läte');
-    await expect(page.locator('.note')).toHaveText('Testanteckning i marginalen.');
+    await expect(page.locator('.sp-app:visible')).toContainText('på foto eller läte');
+    await expect(page.locator('.note:visible')).toHaveText('Testanteckning i marginalen.');
     await expect(page.locator('h2')).toContainText(['Så känner du igen den', 'Läte', 'Var och när', 'Föda och beteende', 'Kan förväxlas med', 'Fler tättingar']);
 
     const audio = page.locator('audio');
@@ -2978,8 +2999,12 @@ test.describe('artsidan', () => {
     const looks = page.locator('.looks li');
     await expect(looks).toHaveCount(1);
     await expect(looks.locator('.look-name a')).toHaveAttribute('href', '/sv/arter/blames/');
-    await expect(looks.locator('.look-compare')).toHaveAttribute('href', '/sv/arter/blames-eller-talgoxe/');
-    await expect(looks.locator('.look-compare')).toHaveText('Jämför blåmes och talgoxe');
+    // No compare link until Task 11 (COMPARISONS_ENABLED); Task 11 restores:
+    // .look-compare href '/sv/arter/blames-eller-talgoxe/', text 'Jämför blåmes och talgoxe'.
+    await expect(looks.locator('.look-compare')).toHaveCount(0);
+    // One small thumbnail file, with its own size attributes (controller review, Task 10).
+    await expect(looks.locator('img')).toHaveAttribute('width', '192');
+    await expect(looks.locator('img')).not.toHaveAttribute('srcset', /.+/);
 
     const keys = await page.locator('[data-photo], [data-audio]').evaluateAll((els) => els.map((e) => e.getAttribute('data-photo') ?? e.getAttribute('data-audio')));
     expect(keys).toEqual(['hero', 'audio', 'extra']);
@@ -2989,7 +3014,9 @@ test.describe('artsidan', () => {
     await expect(page.locator('[data-checked]')).toContainText('Kontrollerad mot källorna 20 november 2026');
     await expect(page.locator('time[data-reviewed]')).toHaveAttribute('datetime', '2026-11-20');
     await expect(page.locator('.credits a[href="/sv/arter/om-artsidorna/"]')).toHaveCount(1);
-    await expect(page.locator('a[href*="utm_campaign%3Dtalgoxe"]')).toHaveCount(1);
+    // Two copies in the DOM (left column, single column), one displayed (controller review, Task 10).
+    await expect(page.locator('a[href*="utm_campaign%3Dtalgoxe"]')).toHaveCount(2);
+    await expect(page.locator('a[href*="utm_campaign%3Dtalgoxe"]:visible')).toHaveCount(1);
     await expect(page.locator('#site-nav .links a[lang="en"]')).toHaveAttribute('href', '/species/great-tit/');
     // Not "page": the species page isn't the group's own page, so the active chip reads aria-current="true"
     // (controller review 2026-10-07, see Task 6's code block note).
@@ -3003,8 +3030,9 @@ test.describe('artsidan', () => {
     await page.goto('/species/great-tit/');
     await expect(page.locator('h1')).toHaveText('Great Tit');
     await expect(page.locator('[data-checked]')).toContainText('Checked against sources on 20 November 2026.');
-    await expect(page.locator('.look-compare')).toHaveText('Compare the Eurasian Blue Tit and the Great Tit');
-    await expect(page.locator('.sp-app')).toContainText('from a photo or its song');
+    // Task 11 restores: .look-compare text 'Compare the Eurasian Blue Tit and the Great Tit'.
+    await expect(page.locator('.look-compare')).toHaveCount(0);
+    await expect(page.locator('.sp-app:visible')).toContainText('from a photo or its song');
   });
 
   test('pärluggla: utan inspelning, data, extrafoto, föda och förväxlingsarter', async ({ page }) => {
@@ -3017,7 +3045,7 @@ test.describe('artsidan', () => {
     await expect(page.locator('h2', { hasText: 'Föda och beteende' })).toHaveCount(0);
     await expect(page.locator('h2', { hasText: 'Kan förväxlas med' })).toHaveCount(0);
     for (const label of ['I Sverige', 'Storlek', 'Svenska rödlistan 2025']) await expect(page.locator('.facts')).not.toContainText(label);
-    await expect(page.locator('.sp-app')).toContainText('hjälper dig känna igen fåglarna');
+    await expect(page.locator('.sp-app:visible')).toContainText('hjälper dig känna igen fåglarna');
     await expect(page.locator('[data-wiki-credit] [data-wiki]')).toHaveCount(1);
     expect(errors).toEqual([]);
   });
@@ -3025,7 +3053,7 @@ test.describe('artsidan', () => {
   for (const [path, text] of [['/sv/arter/kaja/', 'på lätet,'], ['/sv/arter/trana/', 'på foto,'], ['/species/western-jackdaw/', 'from its song']] as const) {
     test(`approtan på ${path} säger bara vad appen klarar`, async ({ page }) => {
       await page.goto(path);
-      await expect(page.locator('.sp-app')).toContainText(text);
+      await expect(page.locator('.sp-app:visible')).toContainText(text);
     });
   }
 
@@ -3061,7 +3089,7 @@ test.describe('artsidan', () => {
     await expect(page.locator('[data-data-credit]')).toHaveCount(1);
     await expect(page.locator('[data-data-credit]')).toContainText('Artportalen');
     await expect(page.locator('[data-data-credit]')).not.toContainText('Rödlista');
-    await expect(page.locator('.sp-app')).toContainText('hjälper dig känna igen fåglarna');
+    await expect(page.locator('.sp-app:visible')).toContainText('hjälper dig känna igen fåglarna');
     // The look-alike has a record but no page in this build (unpublished): its name, no link, photo or comparison.
     const look = page.locator('.looks li');
     await expect(look).toHaveCount(1);
@@ -3116,21 +3144,76 @@ test.describe('artsidan', () => {
     }
   });
 
-  test('vänsterspalten följer med på dator', async ({ page }) => {
-    await page.setViewportSize({ width: 1440, height: 900 });
+  test('vänsterspalten följer med på dator när den får plats', async ({ page }) => {
+    await page.setViewportSize({ width: 1920, height: 1080 });
     await page.goto('/sv/arter/talgoxe/');
+    await expect(page.locator('.left-inner')).toHaveClass(/is-sticky/);
     await page.evaluate(() => window.scrollTo({ top: 900, behavior: 'instant' }));
     const box = (await page.locator('.plate.hero').boundingBox())!;
     expect(box.y).toBeGreaterThanOrEqual(76);
     expect(box.y).toBeLessThan(260);
   });
 
+  // The column (photo, facts, app box, note) is about 820 px tall on the test data and up to 1 200 px with a
+  // portrait photo: on a laptop it scrolls with the page, so the app box is reached by scrolling to it
+  // instead of staying below the window edge until the end of the article (controller review, Task 10).
+  for (const [width, height] of [[1440, 900], [1366, 657], [1024, 768]] as const) {
+    test(`approtan nås genom att scrolla i ${width}x${height}`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto('/sv/arter/talgoxe/');
+      await expect(page.locator('.left-inner')).not.toHaveClass(/is-sticky/);
+      const app = page.locator('.sp-app:visible');
+      const docTop = await app.evaluate((el) => el.getBoundingClientRect().top + window.scrollY);
+      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), docTop - 80);
+      const box = (await app.boundingBox())!;
+      expect(box.y).toBeGreaterThanOrEqual(0);
+      expect(box.y + box.height).toBeLessThanOrEqual(height);
+      // And it stays in the page: scrolling further moves it up, it does not stick below the edge.
+      await page.evaluate(() => window.scrollBy({ top: 200, behavior: 'instant' }));
+      expect((await app.boundingBox())!.y).toBeLessThan(box.y);
+    });
+  }
+
   test('mobilen: rubrik, foto, fakta, ingress och approta i den ordningen', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/sv/arter/talgoxe/');
     const y = async (sel: string) => (await page.locator(sel).first().boundingBox())!.y;
-    const order = [await y('h1'), await y('.plate.hero'), await y('.facts'), await y('.sp-lead'), await y('.looks-sec'), await y('.sp-app')];
+    const order = [await y('h1'), await y('.plate.hero'), await y('.facts'), await y('.sp-lead'), await y('.looks-sec'), await y('.sp-app:visible'), await y('.note:visible'), await y('.more'), await y('.credits')];
     for (let i = 1; i < order.length; i += 1) expect(order[i]).toBeGreaterThan(order[i - 1]);
+  });
+
+  test('mobilen: tabbordningen följer det man ser, spelaren före Play-märket', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/sv/arter/talgoxe/');
+    const stops: string[] = [];
+    // One pass through the page: stop when focus leaves the document (it reaches <body> before wrapping).
+    for (let i = 0; i < 120 && stops.at(-1) !== 'body'; i += 1) {
+      await page.keyboard.press('Tab');
+      stops.push(await page.evaluate(() => {
+        const el = document.activeElement as HTMLElement | null;
+        if (!el) return '';
+        if (el.matches('[data-crumb]')) return 'crumb';
+        if (el.tagName === 'AUDIO') return 'player';
+        if (el.matches('a[href*="utm_campaign%3Dtalgoxe"]')) return 'badge';
+        if (el.closest('.credits')) return 'credits';
+        return el.tagName.toLowerCase();
+      }));
+    }
+    const at = (stop: string) => stops.indexOf(stop);
+    expect(at('crumb')).toBeGreaterThanOrEqual(0);
+    expect(at('player')).toBeGreaterThan(at('crumb'));
+    expect(at('badge')).toBeGreaterThan(at('player'));
+    expect(at('credits')).toBeGreaterThan(at('badge'));
+    expect(stops.filter((x) => x === 'badge')).toHaveLength(1);
+  });
+
+  test('"More in the … family" märker det latinska familjenamnet (engelska)', async ({ page }) => {
+    await page.goto('/species/tawny-owl/');
+    await expect(page.locator('.more h2')).toHaveText('More in the Strigidae family');
+    await expect(page.locator('.more h2 span[lang="la"]')).toHaveText('Strigidae');
+    await page.goto('/sv/arter/kattuggla/');
+    await expect(page.locator('.more h2')).toHaveText('Fler egentliga ugglor');
+    await expect(page.locator('.more h2 span[lang]')).toHaveCount(0);
   });
 
   for (const width of [360, 390, 430]) {
@@ -3204,7 +3287,7 @@ interface Props { species: Species; locale: Locale }
 const { species: s, locale } = Astro.props;
 const t = getCopy(locale);
 const other: Locale = locale === 'sv' ? 'en' : 'sv';
-const text = s.text![locale];
+const text = s.text[locale];
 const [all, records, comps] = await Promise.all([getAllSpecies(), getAllRecords(), getComparisons()]);
 const group = groupByKey(s.group);
 const name = s.names[locale];
@@ -3232,11 +3315,11 @@ const familyShown = locale === 'sv' ? s.family.sv : s.family.latin;
 const rel = related(s, all, locale);
 // The group "other" ("Övriga fåglar" / "Other birds") has its own heading: the generic template gives
 // "More other birds" in English (controller review 2026-10-07). GroupPage.astro has no "More" heading.
-const moreHeading = rel.kind === 'family'
-  ? t.species.moreFamily.replace('{family}', locale === 'sv' ? s.family.sv.toLocaleLowerCase('sv') : s.family.latin)
-  : s.group === 'other'
-    ? t.species.moreOther
-    : t.species.moreGroup.replace('{group}', group.name[locale].toLocaleLowerCase(locale));
+const moreFamily = locale === 'sv' ? s.family.sv.toLocaleLowerCase('sv') : s.family.latin;
+const [moreBefore, moreAfter] = t.species.moreFamily.split('{family}');
+const moreHeading = s.group === 'other'
+  ? t.species.moreOther
+  : t.species.moreGroup.replace('{group}', group.name[locale].toLocaleLowerCase(locale));
 const marginalia = s.marginalia?.[locale];
 // Latin names are tagged for pronunciation (same pattern as SpeciesCard and the English group page):
 // the scientific name everywhere, the family name on the English page, where it is the Latin one.
@@ -3322,12 +3405,12 @@ const jsonLd = [
             {redLabel && <div data-redlist><dt>{t.species.facts.swedishRedList}</dt><dd>{redLabel}</dd></div>}
             {iucnLabel && <div><dt>{t.species.facts.iucn}</dt><dd>{iucnLabel} ({s.iucn})</dd></div>}
           </dl>
-          <aside class="sp-app">
+          <aside class="sp-app sp-app--side">
             <p class="sp-app-h">{t.species.appHeadline}</p>
             <p>{appText(s, t)}</p>
             <PlayStoreBadge locale={locale} href={playHref(s.slug[locale], 'species')} alt={t.alt.playStoreBadge} size="small" />
           </aside>
-          {marginalia && <div class="note"><MarginNote text={marginalia} /></div>}
+          {marginalia && <div class="note note--side"><MarginNote text={marginalia} /></div>}
         </div>
       </div>
 
@@ -3387,7 +3470,7 @@ const jsonLd = [
                   <li class:list={[{ 'no-photo': !photo }]}>
                     {photo && view.species && (
                       <a href={speciesHref(view.species, locale)} tabindex="-1" aria-hidden="true">
-                        <Image src={photo} alt="" widths={[192]} sizes="96px" loading="lazy" decoding="async" />
+                        <Image src={photo} alt="" width={192} loading="lazy" decoding="async" />
                       </a>
                     )}
                     <div>
@@ -3403,9 +3486,20 @@ const jsonLd = [
             </ul>
           </section>
         )}
+        {/* The same app box and note as in the left column, for the single-column layout below 1024 px,
+            where they come after the look-alikes (spec §5). Only one copy is ever displayed: display: none
+            takes the other out of the tab order and the accessibility tree, and its lazy badge image is not
+            fetched (controller review, Task 10). */}
+        <aside class="sp-app sp-app--flow">
+          <p class="sp-app-h">{t.species.appHeadline}</p>
+          <p>{appText(s, t)}</p>
+          <PlayStoreBadge locale={locale} href={playHref(s.slug[locale], 'species')} alt={t.alt.playStoreBadge} size="small" />
+        </aside>
+        {marginalia && <div class="note note--flow"><MarginNote text={marginalia} /></div>}
         {rel.items.length > 0 && (
           <section class="more">
-            <h2>{moreHeading}</h2>
+            {/* The family name is Latin on the English page and tagged so (controller review, Task 10). */}
+            <h2>{rel.kind === 'family' ? <Fragment>{moreBefore}<span lang={familyLang}>{moreFamily}</span>{moreAfter}</Fragment> : moreHeading}</h2>
             <ul class="sp-cards" role="list">
               {rel.items.map((x) => <li><SpeciesCard species={x} locale={locale} /></li>)}
             </ul>
@@ -3433,7 +3527,13 @@ const jsonLd = [
   .spread { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto 1fr; grid-template-areas: 'left head' 'left body'; }
   .head { grid-area: head; padding-left: 36px; }
   .left { grid-area: left; padding-right: 28px; border-right: 1px dashed var(--line); }
-  .left-inner { position: sticky; top: 150px; display: flex; flex-direction: column; gap: 18px; }
+  /* Sticky only when the whole column fits in the window under the menu and the category bar (the script
+     below sets .is-sticky), otherwise it scrolls with the page: on a laptop the app box would sit below the
+     window edge until the end of the article (controller review, Task 10). The hero photos run from
+     landscape to 2:1 portrait, so the column is 780 to 1 200 px tall and no fixed min-height fits. */
+  .left-inner { top: 150px; display: flex; flex-direction: column; gap: 18px; }
+  .left-inner.is-sticky { position: sticky; }
+  .sp-app--flow, .note--flow { display: none; }
   .body { grid-area: body; padding-left: 36px; }
   h1 { font-size: clamp(40px, 4.6vw, 58px); line-height: 1.02; margin: 4px 0 0; overflow-wrap: anywhere; }
   .latin { margin: 2px 0 0; font-family: var(--font-script); font-size: 24px; color: var(--muted); }
@@ -3470,20 +3570,33 @@ const jsonLd = [
   @media (max-width: 1023px) {
     .spread { display: flex; flex-direction: column; gap: 18px; }
     .left, .left-inner, .body { display: contents; }
-    .head { order: 1; padding-left: 0; }
-    .plate.hero { order: 2; }
-    .facts { order: 3; }
-    .sp-lead { order: 4; margin-top: 0; }
-    .texts { order: 5; }
-    .plate.extra { order: 6; margin-top: 0; }
-    .looks-sec { order: 7; }
-    .sp-app { order: 8; }
-    .note { order: 9; }
-    .more { order: 10; }
-    .credits-wrap { order: 11; }
+    /* No CSS order: the DOM order is the mobile order of spec §5, so focus follows what is seen. */
+    .head { padding-left: 0; }
+    .sp-lead { margin-top: 0; }
+    .plate.extra { margin-top: 0; }
+    .sp-app--side, .note--side { display: none; }
+    .sp-app--flow, .note--flow { display: block; }
     .texts h2, .looks-sec h2, .more h2 { margin-top: 18px; }
   }
 </style>
+
+<script>
+  // Sticky only when the column fits (see .left-inner in the styles): measured, because the photo's shape
+  // decides the column's height. Re-measured when the column or the window changes size (photos, fonts).
+  const inner = document.querySelector<HTMLElement>('.left-inner');
+  if (inner) {
+    const desktop = window.matchMedia('(min-width: 1024px)');
+    const MARGIN = 16;
+    const update = () => {
+      const top = parseFloat(getComputedStyle(inner).top) || 0;
+      inner.classList.toggle('is-sticky', desktop.matches && inner.offsetHeight + top + MARGIN <= window.innerHeight);
+    };
+    update();
+    new ResizeObserver(update).observe(inner);
+    window.addEventListener('resize', update);
+    desktop.addEventListener('change', update);
+  }
+</script>
 ```
 
 - [ ] **Step 4: Routen med arter**
@@ -3492,7 +3605,8 @@ Ersätt `src/lib/species-routes.ts` med:
 
 ```ts
 import type { Locale } from './i18n';
-import { ABOUT_SLUG, GROUPS, activeGroups, assertUniqueSlugs, getAllSpecies } from './species';
+import { ABOUT_SLUG, GROUPS, activeGroups, assertUniqueSlugs, getAllRecords, getAllSpecies } from './species';
+import { hasPageContract } from './species-source.mjs';
 
 /** Every page under /species/ and /sv/arter/ except the hub and the about page (spec §4). */
 export async function speciesPaths(locale: Locale) {
@@ -3500,7 +3614,10 @@ export async function speciesPaths(locale: Locale) {
   // Checked against all 15 GROUPS, not just the active ones (controller review, Task 8 fix wave): a slug
   // collision must fail the very first build, not wait for the publish that happens to activate the
   // colliding group, by which point the build has looked clean for however long the group sat empty.
-  assertUniqueSlugs([...all.map((s) => s.slug[locale]), ...GROUPS.map((g) => g.slug[locale]), ABOUT_SLUG[locale]], locale);
+  // Every species that has the page contract, built in this build or not (controller review, Task 10): the
+  // same reasoning, a collision with a verified but unpublished species must not wait for its publication.
+  const contract = (await getAllRecords()).filter((r) => hasPageContract(r));
+  assertUniqueSlugs([...contract.map((s) => s.slug[locale]), ...GROUPS.map((g) => g.slug[locale]), ABOUT_SLUG[locale]], locale);
   const groups = activeGroups(all);
   return [
     ...all.map((species) => ({ params: { slug: species.slug[locale] }, props: { species } })),
@@ -3552,10 +3669,17 @@ git commit -m "feat(website): artsidan med diagram, karta, inspelning, förväxl
 6. **Punkter i kännetecknen** (`list-style: disc`; Tailwinds grundstilar tar bort dem) och **fyra kort i bredd** under "Fler ..." på dator, som i mockupen (`species.css`s `auto-fill` gav 3 + 1).
 7. **Fler tester:** JSON-LD (brödsmulor, `WebPage` med taxon, foto, inspelning och `lastReviewed`, ingen `reviewedBy`), den frånvarande arten, "public domain" och "okänd upphovsperson" (Task 9:s omgranskning), stapelns titel utan siffra, och Blåkråka i sidledsscrollkontrollen.
 8. **Kategoriraden (Task 6:s `CategoryBar.astro`, kodblocket där är uppdaterat):** den aktiva chipen hamnade delvis under högerkantens toning när den var sist i raden (Övriga fåglar på 1280 px), eftersom raden centrerades innan webbtypsnitten laddats och chipsen blev bredare efteråt. Nu ska chipen ligga helt synlig och fri från toningen (32 px) och vänsterkanten, annars centreras den, begränsat till radens scrollområde, och samma kontroll körs igen när `document.fonts.ready` löser sig, om besökaren inte redan rört raden. Fortfarande momentant, aldrig mjukt, så reducerad rörelse behöver inget extra. Testet "kategoriraden: den aktiva chipen syns helt" (sist, först och näst först, 1280 och 390 px) failade på den gamla koden för båda sista-fallen i båda bredderna.
+9. **Task 10:s granskning (2026-10-07, `5f1197ba`):**
+   - **I1, vänsterspalten är sticky bara när hela spalten får plats** i fönstret under menyn och kategoriraden. Granskningen föreslog en mediaregel (`min-height: 980px`), men huvudfotona går från liggande till 2:1 stående (32 av de 180 riktiga är högre än 0,8 : 1), så spalten är 780 till 1 200 px hög och ingen fast höjd passar. Ett litet skript mäter spalten (`ResizeObserver` och fönstrets storlek) och sätter `.is-sticky`; utan JavaScript scrollar spalten med sidan. Testerna "approtan nås genom att scrolla" i 1440x900, 1366x657 och 1024x768 failar med en spalt som alltid är sticky (provat), och sticky-testet körs nu i 1920x1080 (testdatans spalt, 818 px, får inte plats i 900 px).
+   - **I2, approtan och marginalanteckningen finns två gånger**, i vänsterspalten (dold under 1024 px) och efter förväxlingsarterna (dold från 1024 px). `display: none` tar bort den dolda ur tabbordningen och tillgänglighetsträdet, och dess lata Play-bild hämtas inte. CSS `order` är borta: DOM-ordningen är specens mobilordning. Tester som räknar `.sp-app` räknar `:visible`, och ett tabbtest i 390 px kontrollerar brödsmulor, spelare, Play-märket och credits i den ordningen, märket en gång.
+   - **I3, `COMPARISONS_ENABLED = false`** i `lib/species.ts` (Task 4:s block har fått flaggan): `getComparisons()` ger inget, ingångssidan döljer "Lätta att blanda ihop" och förväxlingsarterna får ingen jämförelselänk, tills Task 11 bygger sidorna. Task 7:s och 10:s tester är ändrade därefter, med de gamla raderna som kommentarer för Task 11.
+   - **M1** förväxlingsartens miniatyr är `width={192}` (en fil, rätt `width`/`height`), **M2** slugvakten i `species-routes.ts` går över alla poster med sidkontrakt (`hasPageContract`), byggda eller inte, **M3** `lang="la"` på familjen i "More in the … family", **M5** `s.text[locale]` utan `!`.
 
 ---
 
 ### Task 11: Jämförelsesidorna
+
+**Tillägg (Task 10:s granskning 2026-10-07):** jämförelserna är avstängda med `COMPARISONS_ENABLED = false` i `lib/species.ts` tills den här tasken, eftersom Task 11 körs efter Task 14 och 16 (de första artsidorna går live 9 oktober). Första steget här är att sätta flaggan till `true` och återställa testerna som Task 10 ändrade: ingångssidans `[data-compare-link]` till 2, testet "jämförelserna har namnen i svensk ordning" (`['Blåmes eller talgoxe', 'Kaja eller skata']`), talgoxtestets `.look-compare` (`href` `/sv/arter/blames-eller-talgoxe/`, text "Jämför blåmes och talgoxe") och den engelska sidans `.look-compare` ("Compare the Eurasian Blue Tit and the Great Tit"). De gamla raderna står som kommentarer i `tests/species.spec.ts`.
 
 **Files:**
 - Create: `website/tests/comparisons.spec.ts`
@@ -3926,6 +4050,25 @@ test.describe('om-sidan', () => {
       expect(errors).toEqual([]);
     });
   }
+  test('om-sidan är indexerbar när det finns arter och har JSON-LD med författare och utgivare', async ({ page }) => {
+    await page.goto('/sv/arter/om-artsidorna/');
+    await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
+    const graph = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)['@graph'] as Record<string, any>[];
+    const web = graph.find((n) => n['@type'] === 'WebPage')!;
+    expect(web.author).toMatchObject({ '@type': 'Person', name: 'Albin Abrahamsson' });
+    expect(web.publisher).toMatchObject({ '@type': 'Organization', name: 'AlbIT AB' });
+    expect(graph.find((n) => n['@type'] === 'BreadcrumbList')!.itemListElement.map((c: { name: string }) => c.name)).toEqual(['Birdy', 'Arter', 'Så gör vi artsidorna']);
+  });
+
+  for (const [path, words] of [
+    ['/sv/arter/om-artsidorna/', ['Claude Opus 5.5', 'Claude Sonnet 5', 'ljudmodell', 'stickprov', 'CC BY-SA 4.0', 'CC0', 'Hittade du ett fel?']],
+    ['/species/about-these-pages/', ['Claude Opus 5.5', 'Claude Sonnet 5', 'sound model', 'sample', 'CC BY-SA 4.0', 'CC0', 'Found a mistake?']],
+  ] as const) {
+    test(`${path} beskriver modellerna, kontrollerna, licenserna och felrapporten`, async ({ page }) => {
+      await page.goto(path);
+      for (const word of words) await expect(page.locator('main')).toContainText(word);
+    });
+  }
 });
 ```
 
@@ -4051,6 +4194,14 @@ Expected: PASS (alla)
 git add src/components/species/AboutSpeciesPages.astro src/pages/sv/arter/om-artsidorna.astro src/pages/species/about-these-pages.astro tests/species.spec.ts
 git commit -m "feat(website): sidan Så gör vi artsidorna (SV och EN)"
 ```
+
+**Avvikelser vid genomförandet (Task 12, 2026-10-07; `048e070f`, kodblocket för komponenten och routerna oförändrat):**
+
+1. **Texterna (`speciesAbout`, Task 5:s copyblock ovan är uppdaterade) är kontrollerade mening för mening mot pipelinen på `origin/data/artsidor`** (`tools/content-pipeline/src/birdy_fetcher/web/`), inte mot planens äldre ordval: Claude Opus 5.5 tar ut högst 30 fakta med ordagranna citat (`defaults.py`, `facts.py`: `MAX_FACTS`, `quote_in_sources`) och skriver texten bara ur verifierade fakta (`text_step.facts_verified`, `render_facts` visar bara faktatexten); Claude Sonnet 5 gör V1 (`verify.py`, `partial`/`unsupported` stryks) och meningskontrollen (`checker.py`, en omskrivning, sedan stryks det som fortfarande inte stöds, `checked_writer.py`); V2 jämför längd, vingbredd, vikt och kullstorlek med 15 % tolerans och flaggar; V3 jämför statusen med Artportalen och rödlistan och flaggar; V4 kör appens BirdNET-modell (`tools/ml-eval/flexref`, samma `.tflite` som appen), prövar upp till tre andra Commons-inspelningar (`MAX_ALTERNATIVES`) och flaggar en art som modellen inte täcker eller bara svagt känner igen; en art utan flaggor får `verification` direkt och publiceras automatiskt, en flaggad väntar på Albins beslut (`verify_step.py`); stickprovet är 2 per 40 publicerade (`review_sheet.py`); fotona nedskalas och sparas som WebP utan beskärning (`images.py`); inspelningarna högst 20 s, mono, `loudnorm`, MP3 (`audio.py`); Artportalens och rödlistans GBIF-dataset är CC0 (kontrollerat mot GBIF:s API 2026-10-07); diagram och karta kräver 200 rapporter (`datamod.MIN_REPORTS`). Ljudmodellen kallas "ljudmodellen som känner igen läten i Birdy-appen", inte "Birdys egen", eftersom det är BirdNET.
+2. **Licensavsnittet** säger nu att varje sida länkar till artiklarnas revision och att rapportdatan är CC0 via GBIF; **Rättelser** nämner länken "Hittade du ett fel? Skriv till oss." längst ned på varje artsida.
+3. **Titeln** säger "källor och kontroll" / "sources and checks" i stället för "granskning" / "review" (specens §12-tabell ändrad).
+4. **Fler tester:** indexerbar med arter, JSON-LD med `author` och `publisher` och brödsmulor, och att sidan nämner modellerna, ljudmodellen, stickprovet, licenserna, CC0 och felrapporten.
+5. **`scripts/check-empty-hub.mjs`** kontrollerar nu även om-sidorna vid noll arter: `noindex`, h1, alla fem avsnitt och mejllänken i `<main>`, och beskrivningens längd.
 
 ---
 
@@ -4216,6 +4367,8 @@ git commit -m "feat(website): Arter i menyn, sidfoten och startsidans uppslagsve
 ---
 
 ### Task 14: Sitemap, SEO-reglerna som kod och kontrollen av förhandsbygget
+
+**Tillägg (Task 10:s granskning 2026-10-07):** Task 14 körs före Task 11, så `COMPARISONS_ENABLED` är `false` (`lib/species.ts`) och inga jämförelsesidor byggs. Sitemapen och `check-seo.mjs` ska då varken vänta sig jämförelsesidor eller länkar till dem; kontrollerna av jämförelsesidorna aktiveras när Task 11 slår på flaggan (eller läser flaggan och hoppar över dem medan den är av).
 
 **Files:**
 - Create: `website/src/lib/species-sitemap.mjs`

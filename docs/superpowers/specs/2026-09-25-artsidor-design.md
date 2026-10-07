@@ -269,6 +269,8 @@ En sida per språk som förklarar, i sajtens ton och utan tankstreck:
 - **Licenserna:** texterna är skrivna med AI ur godkända fakta och får delas under CC BY-SA 4.0 (textcreditens ordval, controller-granskning 2026-10-07), foton och inspelningar under sina egna licenser. Inspelningarna är bearbetade (tillägg 2026-10-06, godkänt av Albin): högst 20 sekunder, mono, utjämnad ljudnivå och MP3, och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet. Fotona är nedskalade, i övrigt oförändrade (ordföljden ändrad 2026-10-07, samma som appens creditrad).
 - **Rättelser:** mejladressen och att rättade sidor får nytt kontrolldatum.
 
+**Tillägg 2026-10-07 (Task 12, kontrollerat mot pipelinen på `data/artsidor`):** sidan namnger modellerna (Claude Opus 5.5 tar ut fakta och skriver texten, Claude Sonnet 5 kontrollerar fakta och meningar), säger att en sida utan flaggor publiceras automatiskt och att en flaggad väntar på Albins beslut, att V4 prövar upp till tre andra inspelningar innan inspelningen utgår, att stickprovet är två av varje 40 publicerade artsidor, att varje sida länkar till artiklarnas revision och att rapportdatan och rödlistan är CC0 via GBIF. Titeln säger "kontroll"/"checks" i stället för "granskning"/"review".
+
 Texten skrivs i planen och godkänns av Albin. Sidan länkas från alla artsidor, jämförelsesidor och ingångssidan. JSON-LD som blogginläggen: `author` Person Albin Abrahamsson, `publisher` AlbIT AB.
 
 ## 9. Pipelinen: steget `web`
@@ -423,8 +425,8 @@ Ersätter Albins manuella granskning av varje faktablad (Revision 2026-10-05). E
 | Grupp EN | `{Group}: {n} species with photos and ID tips \| Birdy` | `{Group}: species and ID tips \| Birdy` |
 | Ingång SV | `Fåglar i Sverige och Europa: {n} arter med foton \| Birdy` | |
 | Ingång EN | `Birds of Sweden and Europe: {n} species with photos \| Birdy` | |
-| Om SV | `Så gör vi artsidorna: källor och granskning \| Birdy` | |
-| Om EN | `How we make the species pages: sources and review \| Birdy` | |
+| Om SV | `Så gör vi artsidorna: källor och kontroll \| Birdy` | |
+| Om EN | `How we make the species pages: sources and checks \| Birdy` | |
 
 En reservmall för jämförelser som blir under 40 tecken godtas (korta artnamn). Vid `n = 1` står det "1 art" respektive "1 species".
 
