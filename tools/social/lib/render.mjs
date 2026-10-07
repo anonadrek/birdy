@@ -22,10 +22,12 @@ export const TAIL_SEC = SETTLE_SEC + PAUSE_SEC + AFTER_REVEAL_SEC;
 export const MAX_CLIP_SEC = Math.floor((MAX_VIDEO_SEC - LEAD_SEC - TAIL_SEC - 0.1) * 10) / 10;
 
 // Instagram Reels and YouTube Shorts lay their own buttons along the right edge and their
-// own name, caption and sound rows over roughly the bottom fifth. The brand line and the end
-// card's "birdy.community" line must end above SAFE_BOTTOM; text stays left of SAFE_RIGHT.
+// own name, caption and sound rows over roughly the bottom fifth. Everything meant to be read
+// ends above SAFE_BOTTOM and stays left of SAFE_RIGHT. The end card's small credit lines get
+// a few pixels of allowance (they are in every caption as well).
 export const SAFE_BOTTOM = 1536;
 export const SAFE_RIGHT = 918;
+export const CREDITS_ALLOWANCE = 8;
 
 /**
  * All times in seconds; the video is exactly `frames` frames long.
@@ -49,8 +51,8 @@ export function timeline(clipSec) {
 /** Layout problems: text under the platforms' own overlays. `layout` comes from setupStage. */
 export function layoutProblems(layout) {
   const problems = [];
-  if (layout.brandBottom > SAFE_BOTTOM) problems.push(`the brand line ends at y ${layout.brandBottom}, under the Reels overlay (y ${SAFE_BOTTOM})`);
-  if (layout.endLinkBottom > SAFE_BOTTOM) problems.push(`the end card's birdy.community line ends at y ${layout.endLinkBottom}, under the Reels overlay (y ${SAFE_BOTTOM})`);
+  for (const [name, bottom] of Object.entries(layout.textBottom ?? {})) if (bottom > SAFE_BOTTOM) problems.push(`${name} ends at y ${bottom}, under the Reels overlay (y ${SAFE_BOTTOM})`);
+  if (layout.endContentBottom > SAFE_BOTTOM + CREDITS_ALLOWANCE) problems.push(`the end card's credits end at y ${layout.endContentBottom}, under the Reels overlay (y ${SAFE_BOTTOM} + ${CREDITS_ALLOWANCE})`);
   for (const [name, right] of Object.entries(layout.textRight ?? {})) if (right > SAFE_RIGHT) problems.push(`${name} reaches x ${right}, under the buttons (x ${SAFE_RIGHT})`);
   return problems;
 }

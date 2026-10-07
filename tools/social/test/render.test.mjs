@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { deflateSync, crc32 } from 'node:zlib';
 import { randomBytes } from 'node:crypto';
-import { timeline, layoutProblems, encodeVideo, MAX_CLIP_SEC, MAX_VIDEO_SEC, FPS, SAFE_BOTTOM, LEAD_SEC, SETTLE_SEC, PAUSE_SEC } from '../lib/render.mjs';
+import { timeline, layoutProblems, encodeVideo, MAX_CLIP_SEC, MAX_VIDEO_SEC, FPS, SAFE_BOTTOM, CREDITS_ALLOWANCE, LEAD_SEC, SETTLE_SEC, PAUSE_SEC } from '../lib/render.mjs';
 
 test('the whole video stays within 30 s, also for the longest clip', () => {
   const t = timeline(MAX_CLIP_SEC);
@@ -25,11 +25,14 @@ test('after the song the ring settles, then one breath of stillness, then the re
   assert.ok(t.T - t.R >= 5, 'time for the name and the end card after the reveal');
 });
 
-test('layout: text under the Reels overlay or the buttons is a problem', () => {
-  assert.deepEqual(layoutProblems({ brandBottom: 1240, endLinkBottom: 1440, textRight: { question: 900 } }), []);
-  assert.match(layoutProblems({ brandBottom: 1808, endLinkBottom: 1440 }).join(), /brand line ends at y 1808/);
-  assert.match(layoutProblems({ brandBottom: 1240, endLinkBottom: SAFE_BOTTOM + 1 }).join(), /end card/);
-  assert.match(layoutProblems({ brandBottom: 1240, endLinkBottom: 1440, textRight: { name: 990 } }).join(), /name reaches x 990/);
+test('layout: anything to read under the Reels overlay or the buttons is a problem', () => {
+  const fine = { textBottom: { brand: 1236, hint: 1530, sub: 1534, endLink: 1385 }, endContentBottom: 1540, textRight: { question: 900 } };
+  assert.deepEqual(layoutProblems(fine), []);
+  assert.match(layoutProblems({ ...fine, textBottom: { brand: 1808 } }).join(), /brand ends at y 1808/);
+  assert.match(layoutProblems({ ...fine, textBottom: { sub: SAFE_BOTTOM + 1 } }).join(), /sub ends at y 1537/);
+  assert.deepEqual(layoutProblems({ ...fine, endContentBottom: SAFE_BOTTOM + CREDITS_ALLOWANCE }), [], 'credits get a small allowance');
+  assert.match(layoutProblems({ ...fine, endContentBottom: SAFE_BOTTOM + CREDITS_ALLOWANCE + 1 }).join(), /credits end at y/);
+  assert.match(layoutProblems({ ...fine, textRight: { name: 990 } }).join(), /name reaches x 990/);
 });
 
 // A small solid PNG, built by hand so the test needs no browser.
