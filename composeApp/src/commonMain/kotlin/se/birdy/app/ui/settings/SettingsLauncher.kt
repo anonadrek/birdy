@@ -14,10 +14,11 @@ expect fun openPlayStoreListing(packageName: String)
 /**
  * Opens an online, easy-to-use place to manage or cancel the given subscription SKU
  * (Google Play policy 9900533: account settings must link to the Play subscription center).
- * Android actual reads the running app's own package name off the platform Context (never
- * hardcoded), so this resolves correctly for a debug build's `.debug`-suffixed application id
- * too. iOS has no real subscriptions yet (StoreKit lands in plan i5); its actual opens Apple's
- * own subscriptions page rather than claiming an in-app management flow Birdy does not have.
+ * Android actual reads the running app's own package name off the platform Context, never a
+ * hardcoded one, so the link always points at whichever build is actually running (e.g. a
+ * debug build's `.debug`-suffixed id). iOS has no real subscriptions yet (StoreKit lands in
+ * plan i5); its actual opens Apple's own subscriptions page rather than claiming an in-app
+ * management flow Birdy does not have.
  */
 expect fun openManageSubscription(sku: String)
 

@@ -128,11 +128,6 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.datastore.AppLanguage
 import se.birdy.domain.premium.PremiumTier
 
-// Must match PremiumBillingClient.android.kt's YEARLY_PRODUCT_ID (Play Console basePlanId
-// premium_yearly_v1) — the only SKU the Manage subscription row ever links to (Lifetime has
-// nothing to cancel).
-private const val MANAGE_SUBSCRIPTION_SKU = "premium_yearly_v1"
-
 @Composable
 fun SettingsScreen(
     viewModel: SettingsViewModel,
@@ -170,7 +165,7 @@ fun SettingsScreen(
                 SettingsEffect.ShareApp -> shareApp(shareText)
                 SettingsEffect.SendFeedback -> openMailto("albin@abrahamssons.se", feedbackSubject)
                 SettingsEffect.OpenAbout -> onNavigateToAbout()
-                SettingsEffect.OpenManageSubscriptionUrl -> openManageSubscription(MANAGE_SUBSCRIPTION_SKU)
+                is SettingsEffect.OpenManageSubscriptionUrl -> openManageSubscription(effect.sku)
             }
         }
     }
@@ -198,6 +193,12 @@ fun SettingsScreen(
                 }
                 item { SectionHeader(stringResource(Res.string.settings_section_account)) }
                 item {
+                    // Play policy 9900533: an active yearly subscription must link to an online
+                    // way to manage or cancel it. Lifetime is a one-time purchase (nothing to
+                    // cancel) and early-member/debug overrides are not real Play subscriptions
+                    // either (see SettingsUiState.playSubscriptionTier KDoc), so the row — and
+                    // its caption below the card — only ever show for a real YEARLY tier.
+                    val showManageSubscription = state.playSubscriptionTier == PremiumTier.YEARLY
                     PaperCard {
                         SettingsRow(
                             icon = Icons.Outlined.Person,
@@ -212,11 +213,7 @@ fun SettingsScreen(
                             value = stringResource(state.language.labelRes()),
                             onClick = { showLanguageDialog = true },
                         )
-                        // Play policy 9900533: an active yearly subscription must link to an
-                        // online way to manage or cancel it. Lifetime is a one-time purchase
-                        // (nothing to cancel) and early-member/debug overrides are not real Play
-                        // subscriptions either, so this only shows for a real YEARLY tier.
-                        if (state.premiumTier == PremiumTier.YEARLY) {
+                        if (showManageSubscription) {
                             DashedDivider()
                             SettingsRow(
                                 icon = Icons.Outlined.CardMembership,
@@ -226,9 +223,9 @@ fun SettingsScreen(
                             )
                         }
                     }
-                }
-                if (state.premiumTier == PremiumTier.YEARLY) {
-                    item {
+                    // The note under the card, lined up with the section header above it (same
+                    // pattern as the Location section's caption below).
+                    if (showManageSubscription) {
                         Text(
                             text = stringResource(Res.string.settings_manage_subscription_caption),
                             color = MarginaliaInk,

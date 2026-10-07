@@ -1,10 +1,14 @@
 package se.birdy.app.ui.settings
 
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.core.content.FileProvider
 import java.io.File
+
+private const val TAG = "SettingsLauncher"
 
 object SettingsLauncherSetup {
     @Volatile private var appContext: Context? = null
@@ -22,7 +26,14 @@ private fun Context.startNewTaskActivity(intent: Intent) {
 
 actual fun openExternalUrl(url: String) {
     val ctx = SettingsLauncherSetup.context() ?: return
-    runCatching { ctx.startNewTaskActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))) }
+    try {
+        ctx.startNewTaskActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    } catch (e: ActivityNotFoundException) {
+        // Degradation must always show — state + log (house rule): no app to handle the URL
+        // (e.g. no browser) is silently harmless to the user (nothing happens), but worth
+        // knowing about rather than swallowing without a trace.
+        Log.w(TAG, "openExternalUrl: no app found to open $url", e)
+    }
 }
 
 actual fun openMailto(
@@ -58,12 +69,11 @@ actual fun openPlayStoreListing(packageName: String) {
 }
 
 actual fun openManageSubscription(sku: String) {
-    val ctx = SettingsLauncherSetup.context() ?: return
-    // ctx.packageName is the app's own running application id, including a debug build's
-    // ".debug" suffix — never a hardcoded "se.birdy.android" — so the sku resolves to the
-    // same package Play Billing sold the subscription under.
-    val url = "https://play.google.com/store/account/subscriptions?sku=$sku&package=${ctx.packageName}"
-    runCatching { ctx.startNewTaskActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))) }
+    // ctx.packageName is this build's own running application id — e.g. a debug build's
+    // ".debug"-suffixed id, not a hardcoded production package name — so the link points at
+    // whichever package is actually installed and running.
+    val packageName = SettingsLauncherSetup.context()?.packageName ?: return
+    openExternalUrl("https://play.google.com/store/account/subscriptions?sku=$sku&package=$packageName")
 }
 
 actual fun shareJournalPdf(pdfPath: String) {

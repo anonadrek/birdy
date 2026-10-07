@@ -8,10 +8,13 @@ data class SettingsUiState(
     val language: AppLanguage = AppLanguage.SYSTEM,
     val premiumActive: Boolean = false,
     /**
-     * The active tier, when [premiumActive] is true (from billing or [SettingsViewModel]'s
-     * premiumOverride). Only [PremiumTier.YEARLY] has a Play subscription to manage — Lifetime
-     * is a one-time purchase and early-member/debug overrides are not real Play subscriptions
-     * either, so the "Manage subscription" row only ever shows for a real yearly sub.
+     * The tier of a real, active Play **subscription** — derived from the billing backend only,
+     * never from [SettingsViewModel]'s premiumOverride. The override exists to grant Premium
+     * (grandfathering, the debug "force yearly" toggle) without a Play purchase behind it, so it
+     * must never gate the "Manage subscription" link: a grandfathered device whose Google account
+     * also holds a real yearly subscription must still see the cancel link, and the debug
+     * override must never fabricate one. Only [PremiumTier.YEARLY] has a subscription to manage
+     * — Lifetime is a one-time purchase.
      */
-    val premiumTier: PremiumTier? = null,
+    val playSubscriptionTier: PremiumTier? = null,
 )
