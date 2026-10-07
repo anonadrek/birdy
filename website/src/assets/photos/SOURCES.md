@@ -11,4 +11,12 @@ Fotona är appens egna planschfoton (`asset-pack/src/main/assets/images/<QID>/he
 | `skaggmes-q192817.webp` | Skäggmes | Q192817 | Hobbyfotowiki | CC0 | Ta med Birdy ut i fält |
 | `rodhake-q25334.webp` | Rödhake | Q25334 | Rob Hille | Public domain | blogginlägget "Varför Birdy finns" (inläggets foto, korten och delningsbilden) |
 
-Heron (`src/assets/hero/`) bygger på webbens AI-genererade `src/assets/hero-robin.webp`. Underlag och skript: `docs/superpowers/specs/assets/2026-09-24-website-1-3-lyft/rodhake-utklipp/`.
+## AI-genererade bilder
+
+| Fil | Vad | Källa |
+|---|---|---|
+| `src/assets/hero-robin.webp` | Rödhaken i heron | AI-genererad. Verktyget är okänt (Albin, 2026-10-07). Inget foto av en verklig fågel. |
+| `src/assets/hero/robin-plate.webp`, `robin-layer.png`, `phone-robin.webp` | Heron (platta, rödhakelager, telefonutsnitt) | Gjorda ur `hero-robin.webp`. Underlag och skript: `docs/superpowers/specs/assets/2026-09-24-website-1-3-lyft/rodhake-utklipp/`. |
+| `public/og-field-sv.png`, `public/og-field-en.png` | Delningsbilderna | Gjorda ur `hero-robin.webp` av `tools/generate-og.mjs`. |
+
+Birdy-fågeln (`public/brand/birdy-bird.png`, `public/coverage/seal-bird.png`, favikonerna) och appikonen står i `docs/legal/image-sources.md`, som listar alla bilder i repot.
