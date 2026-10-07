@@ -89,9 +89,9 @@ def test_canonical_license_normalises_case_and_spacing() -> None:
         ),
         ("unknown, USFWS", "USFWS"),
         ("JJ Harrison (https://www.jjharrison.com.au/)", "JJ Harrison"),
-        ("JJ Harrison (jjharrison89@facebook.com)", "JJ Harrison"),
+        ("JJ Harrison (photographer@example.com)", "JJ Harrison"),
         (
-            "Martin Olsson (mnemo on en/sv wikipedia and commons, martin@minimum.se).",
+            "Martin Olsson (mnemo on en/sv wikipedia and commons, photographer@example.org).",
             "Martin Olsson",
         ),
         ("Julian Herzog (Website)", "Julian Herzog"),

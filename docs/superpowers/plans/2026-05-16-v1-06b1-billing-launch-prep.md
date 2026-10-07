@@ -111,7 +111,7 @@ Expected: output at `androidApp/build/outputs/bundle/release/androidApp-release.
 
 - [ ] **Step T0.3: Create Internal Testing track first (backup)**
 
-In Play Console: Testing → Internal testing → Create track → upload AAB from T0.2 → add `albinviktorlindblom@gmail.com` as tester → enable.
+In Play Console: Testing → Internal testing → Create track → upload AAB from T0.2 → add Albin's own Google account as tester → enable.
 Expected: opt-in URL available; instant access (no Google review delay).
 
 - [ ] **Step T0.4: Create Closed Testing track (primary, 14-day timer)**

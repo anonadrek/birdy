@@ -78,7 +78,7 @@ Efter Plan 7e är appen feature-komplett enligt v1-designspecens scope (`docs/su
 | **Language** | (I3 ovan) |
 | **Rate Birdy** | `Intent.ACTION_VIEW` mot `market://details?id=se.birdy.android`, fallback till Play Store-web-URL |
 | **Share** | `Intent.ACTION_SEND` med standard-copy från `share_copy_sv/en`-strängar + Play Store-länk |
-| **Feedback** | `Intent.ACTION_SENDTO` med `mailto:feedback@birdy.app` (eller `albinviktorlindblom@gmail.com` tills AB-mail finns) + ämnesrad `"Birdy v${BuildConfig.VERSION_NAME} feedback"` |
+| **Feedback** | `Intent.ACTION_SENDTO` med `mailto:feedback@birdy.app` (eller Albins egen adress tills AB-mail finns) + ämnesrad `"Birdy v${BuildConfig.VERSION_NAME} feedback"` |
 | **About** | Ny `AboutScreen` (statisk Compose): version + build (från `BuildConfig.VERSION_NAME` injicerat via `AppGraph`) + AIY V1-attribution + DM Serif Italic + Caveat-font-licenser (SIL OFL) + manuell lista av open-source-licenser (kaml, SQLDelight, Coil, AndroidX m.fl.) renderad som scrollbar text |
 | **Privacy** | `Intent.ACTION_VIEW` mot `https://anonadrek.github.io/birdy/privacy` |
 | **Terms** | `Intent.ACTION_VIEW` mot `https://anonadrek.github.io/birdy/terms` |

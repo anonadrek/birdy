@@ -17,6 +17,9 @@ from .web.defaults import EFFORTS, FACTS_EFFORT, FACTS_MODEL_KEY
 from .web.paths import WebPaths
 from .web.report import StepOutcome
 
+#: `init` exit code when BirdLife Sverige's VP11.pdf can be neither found nor downloaded.
+VP11_UNAVAILABLE_EXIT = 3
+
 
 @click.group()
 @click.version_option(__version__)
@@ -58,16 +61,23 @@ def init(resume: bool) -> None:
     # species_list import is lazy because it pulls in pdfplumber/openpyxl/aiohttp,
     # which would slow `birdy-fetcher --help` for sibling commands.
     from .species_list import cli_init
+    from .vp11_source import Vp11UnavailableError
 
     root = Path(__file__).resolve().parent.parent.parent
-    exit_code = asyncio.run(
-        cli_init(
-            sources_dir=root / "sources",
-            checklists_dir=root / "checklists",
-            out_dir=root,
-            resume=resume,
+    try:
+        exit_code = asyncio.run(
+            cli_init(
+                sources_dir=root / "sources",
+                checklists_dir=root / "checklists",
+                out_dir=root,
+                cache_dir=root / ".cache",
+                resume=resume,
+            )
         )
-    )
+    except Vp11UnavailableError as e:
+        # Exit 3: click uses 2 for usage errors and init uses 1 for mapping failures.
+        click.secho(str(e), fg="red", err=True)
+        raise click.exceptions.Exit(VP11_UNAVAILABLE_EXIT) from e
     if exit_code != 0:
         click.secho(
             "Mapping failures present — patch species_list.yaml manually then "

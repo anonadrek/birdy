@@ -1,0 +1,33 @@
+# Secret scan config for gitleaks (https://github.com/gitleaks/gitleaks).
+# Used by .github/workflows/secret-scan.yml; run locally with
+#   gitleaks git . --config .gitleaks.toml --log-opts="origin/main..HEAD"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "maptiler-api-key"
+description = "MapTiler API key (app and website map tiles)"
+regex = '''(?i)(?:maptiler[a-z_]*\s*[=:]\s*["'`]?|api\.maptiler\.com/[^\s"'`]*[?&]key=)([A-Za-z0-9]{20})\b'''
+secretGroup = 1
+keywords = ["maptiler"]
+
+[[rules]]
+id = "anthropic-api-key-birdy"
+description = "Anthropic API key (content pipeline)"
+regex = '''\b(sk-ant-(?:api|admin)\d{2}-[A-Za-z0-9_\-]{80,})'''
+secretGroup = 1
+keywords = ["sk-ant-"]
+
+[[allowlists]]
+description = "GBIF dataset keys are public UUIDs, not secrets (datasetKey=…, \"datasetKey\": \"…\", datasetKey = '…')"
+regexTarget = "match"
+regexes = ['''(?i)dataset_?key["']?\s*[:=]\s*["']?[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}''']
+
+[[allowlists]]
+description = "The two GBIF datasets the species pages use: Artportalen and the Swedish Red List 2025"
+regexTarget = "secret"
+regexes = [
+  '''^38b4c89f-584c-41bb-bd8f-cd1def33e92f$''',
+  '''^87e639cc-30a9-4007-bd2c-b0cab60326b9$''',
+]

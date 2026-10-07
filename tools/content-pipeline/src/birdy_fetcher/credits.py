@@ -59,7 +59,7 @@ _MINOR_EDITS = re.compile(r"Minor edits made by.*$", re.IGNORECASE)
 _DERIVATIVE = re.compile(
     r"^\S+\.(?:jpe?g|png|tiff?):\s*(.+?)\s+derivative work:\s*(.+)$", re.IGNORECASE
 )
-# "(https://…)", "(name@mail…)", "(mnemo on en/sv wikipedia …, martin@minimum.se)."
+# "(https://…)", "(name@mail…)", "(mnemo on en/sv wikipedia …, photographer@example.org)."
 _LINK_PAREN = re.compile(r"\s*\((?:[^)]*https?://[^)]*|[^)]*@[^)]*|Website)\)\.?", re.IGNORECASE)
 _UNKNOWN_PREFIX = re.compile(r"^unknown,\s*", re.IGNORECASE)
 _USERNAME_COLON_NAME = re.compile(r"^([^\s:]+):(\S.*\s.*)$")

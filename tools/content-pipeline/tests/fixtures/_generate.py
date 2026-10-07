@@ -76,7 +76,12 @@ def gen_ioc_xlsx() -> None:
 
 
 def gen_vp11_pdf() -> None:
-    """Skapar en mini-VP11-PDF med samma kolumn-x-koordinater som riktiga filen."""
+    """Skapar en syntetisk mini-VP11-PDF med samma kolumn-x-koordinater som riktiga filen.
+
+    Innehåller ingen text ur BirdLife Sveriges lista: bara kolumnrubriker, vetenskapliga och
+    engelska artnamn (fakta) och platshållare i den svenska kolumnen. Den riktiga PDF:en ligger
+    inte i repot (ingen licens) utan hämtas av `vp11_source.ensure_vp11`.
+    """
     c = canvas.Canvas(str(HERE / "vp11_sample.pdf"), pagesize=A4)
     # Status @ x=110-145, sci @ 147-265, swe @ 268-355, eng @ 359-455, notes @ 457+
     # y växer nedåt i reportlab; rad-höjd ~12pt; använd y=800 → 700.
