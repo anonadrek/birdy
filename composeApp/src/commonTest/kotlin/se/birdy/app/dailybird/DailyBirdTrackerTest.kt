@@ -195,8 +195,9 @@ class DailyBirdTrackerTest {
             assertEquals(0, tracker.state.value!!.daysCaught)
         }
 
-    // The wait between refreshes never drops below the margin, so a clock at or past midnight
-    // can't turn refreshNowAndAtMidnight into a busy loop.
+    // Documents the wait between refreshes: until the margin past the next midnight. With
+    // untilNextLocalMidnight always positive the sum is already at least the margin; the coerce in
+    // untilNextRefresh only matters if that ever changes (or the clock jumps), so it rarely applies.
     @Test
     fun `the wait until the next refresh is never shorter than the midnight margin`() {
         val midnight = at(wednesday, 0)
@@ -205,6 +206,32 @@ class DailyBirdTrackerTest {
         assertEquals(1.seconds + 1.nanoseconds, untilNextRefresh(midnight - 1.nanoseconds, zone))
         assertTrue(untilNextRefresh(midnight - 1.nanoseconds, zone) >= 1.seconds)
     }
+
+    // Upgrade day (1.3.0 drops extinct species from the selection): the history already holds the
+    // day's bird from the old selection, and the new one would pick another. The day keeps the
+    // recorded bird, which is the one a save is matched against (INSERT OR IGNORE keeps it).
+    @Test
+    fun `a bird already recorded for the day is kept over a new selection`() =
+        runTest {
+            history.recorded[tuesday] = "Q25485" // the selector now says Q25403 for Tuesday
+            val tracker = tracker()
+            tracker.refresh()
+            assertEquals("Q25485", tracker.state.value!!.speciesId)
+            assertEquals("Talgoxe", tracker.state.value!!.name)
+            assertEquals(0, selectCalls, "a recorded day needs no selection")
+            tracker.onSaved("Q25485")
+            assertEquals(setOf(tuesday), history.matched)
+            assertTrue(tracker.state.value!!.caughtToday)
+        }
+
+    @Test
+    fun `opening the recorded bird before the first refresh clears the dot`() =
+        runTest {
+            history.recorded[tuesday] = "Q25485"
+            val tracker = tracker()
+            tracker.onSpeciesOpened("Q25485")
+            assertEquals("2026-10-06", prefs.dailyBirdOpenedDate.first())
+        }
 
     @Test
     fun `while visible the tracker refreshes at the next local midnight`() =

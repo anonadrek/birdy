@@ -163,8 +163,9 @@ class DailyBirdTracker(
         val todaysBird =
             _state.value?.takeIf { it.date == date }?.speciesId
                 // Not loaded yet (a notification tap can open the profile before the start-up
-                // refresh is done) or loaded on an earlier date: ask the selector, which is
-                // deterministic per date.
+                // refresh is done) or loaded on an earlier date: the day's recorded bird, else the
+                // selector, which is deterministic per date.
+                ?: history?.speciesIdForDate(date)
                 ?: select?.invoke(date)?.speciesId
                 ?: return
         if (todaysBird == speciesId) prefs.setDailyBirdOpenedDate(date.toString())
@@ -180,14 +181,21 @@ class DailyBirdTracker(
             daysCaught = history?.totalMatchCount() ?: 0,
         )
 
+    /**
+     * The day's bird: the one already recorded for [date] if there is one, else the selector's,
+     * which is then recorded. The recorded one wins because it is what a save is matched against
+     * (the history keeps the first bird of a day); on the day an update changes the selection
+     * (1.3.0 drops extinct species) the selector could otherwise show another bird than that.
+     */
     private suspend fun load(date: LocalDate): DailyBirdToday? {
-        val bird = select?.invoke(date)
-        val info = bird?.let { species(it.speciesId) }
-        if (bird == null || info == null) return null
-        history?.recordToday(date, bird.speciesId)
+        val recorded = history?.speciesIdForDate(date)
+        val speciesId = recorded ?: select?.invoke(date)?.speciesId
+        val info = speciesId?.let { species(it) }
+        if (speciesId == null || info == null) return null
+        if (recorded == null) history?.recordToday(date, speciesId)
         return DailyBirdToday(
             date = date,
-            speciesId = bird.speciesId,
+            speciesId = speciesId,
             name = info.name,
             scientificName = info.scientificName,
             heroImagePath = info.heroImagePath,
