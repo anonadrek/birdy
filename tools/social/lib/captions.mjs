@@ -47,17 +47,29 @@ function cleanName(name) {
   return String(name ?? '').trim().replace(/[–—]/g, '-');
 }
 
+/**
+ * A URL that survives being pasted into a caption: non-ASCII characters (and so any dash in a
+ * file name) and parentheses percent-encoded, so the link is neither cut short by a ")" nor
+ * caught by the house rule against dashes.
+ */
+export function linkSafe(url) {
+  return new URL(url).href.replace(/\(/g, '%28').replace(/\)/g, '%29');
+}
+
 function creditPart(label, media, edit, withUrls) {
   const author = cleanName(media.author);
-  const url = withUrls ? licenceUrl(media) : null;
-  const licence = url ? `${media.license.trim()} (${url})` : media.license.trim();
-  return `${label}: ${[author, licence, 'via Wikimedia Commons', edit].filter(Boolean).join(', ')}`;
+  const deed = withUrls ? licenceUrl(media) : null;
+  const licence = deed ? `${media.license.trim()} (${deed})` : media.license.trim();
+  const via = withUrls && media.sourceUrl ? `via Wikimedia Commons (${linkSafe(media.sourceUrl)})` : 'via Wikimedia Commons';
+  return `${label}: ${[author, licence, via, edit].filter(Boolean).join(', ')}`;
 }
 
 /**
  * "Photo: A, CC BY 4.0, via Wikimedia Commons, cropped · Sound: B, CC0, via Wikimedia Commons, edited".
  * The sound is always edited (levelled and faded); "trimmed and edited" when the clip in the
- * video is shorter than the original recording. `withUrls` adds each licence's deed after its name.
+ * video is shorter than the original recording. `withUrls` adds each licence's deed after its
+ * name and the Commons file page after "via Wikimedia Commons" (CC BY and BY-SA 4.0 ask for a
+ * link to the material itself, section 3(a)(1)(A)(v)).
  */
 export function creditLine(record, { trimmed = false, withUrls = false } = {}) {
   return [

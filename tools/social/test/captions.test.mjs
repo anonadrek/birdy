@@ -5,7 +5,8 @@ import { record, withAudio, withHero, approved } from './fixtures.mjs';
 
 const CREDIT = 'Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons, edited';
 const CREDIT_TRIMMED = 'Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons, trimmed and edited';
-const CREDIT_URLS = 'Photo: Julian Herzog, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons, edited';
+const CREDIT_URLS =
+  'Photo: Julian Herzog, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:x.jpg), cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Pica_pica.ogg), edited';
 const TAGS = '#birds #birdwatching #birdsong #birding #birdy #EurasianMagpie';
 
 test('credit line, exact string: the sound is always "edited"', () => {
@@ -21,12 +22,24 @@ test('credit line leaves out an empty author for CC0 and public domain', () => {
   assert.equal(creditLine(rec), 'Photo: Public domain, via Wikimedia Commons, cropped · Sound: CC0, via Wikimedia Commons, edited');
 });
 
-test('credit line with URLs: each licence deed after its name, none for public domain', () => {
+test('credit line with URLs: the licence deed after its name and the Commons file after "via Wikimedia Commons"', () => {
   assert.equal(creditLine(record(), { withUrls: true }), CREDIT_URLS);
-  const rec = withAudio(record(), { author: 'Gavin Vella', license: 'CC BY-SA 3.0', licenseUrl: null });
-  assert.match(creditLine(rec, { withUrls: true, trimmed: true }), /Sound: Gavin Vella, CC BY-SA 3\.0 \(https:\/\/creativecommons\.org\/licenses\/by-sa\/3\.0\/\), via Wikimedia Commons, trimmed and edited$/);
-  const cc0 = withAudio(record(), { author: '', license: 'CC0', licenseUrl: null });
+  const rec = withAudio(record(), { author: 'Gavin Vella', license: 'CC BY-SA 3.0', licenseUrl: null, sourceUrl: 'https://commons.wikimedia.org/wiki/File:Parus_major_-_Great_Tit_XC129643.ogg' });
+  assert.match(
+    creditLine(rec, { withUrls: true, trimmed: true }),
+    /Sound: Gavin Vella, CC BY-SA 3\.0 \(https:\/\/creativecommons\.org\/licenses\/by-sa\/3\.0\/\), via Wikimedia Commons \(https:\/\/commons\.wikimedia\.org\/wiki\/File:Parus_major_-_Great_Tit_XC129643\.ogg\), trimmed and edited$/,
+  );
+  const cc0 = withAudio(record(), { author: '', license: 'CC0', licenseUrl: null, sourceUrl: undefined });
   assert.match(creditLine(cc0, { withUrls: true }), /Sound: CC0 \(https:\/\/creativecommons\.org\/publicdomain\/zero\/1\.0\/\), via Wikimedia Commons, edited$/);
+  // Instagram's short form has no links at all.
+  assert.doesNotMatch(creditLine(record()), /https?:/);
+});
+
+test('Commons links are made safe for captions: parentheses and dashes in file names are encoded', () => {
+  const rec = withAudio(record(), { sourceUrl: 'https://commons.wikimedia.org/wiki/File:Common_Gull_(Fiskem%C3%A5ke)_(Larus_canus)_–_Tromsø.ogg' });
+  const c = buildCaptions(rec);
+  assert.match(c.facebook, /via Wikimedia Commons \(https:\/\/commons\.wikimedia\.org\/wiki\/File:Common_Gull_%28Fiskem%C3%A5ke%29_%28Larus_canus%29_%E2%80%93_Troms%C3%B8\.ogg\), edited/);
+  for (const text of [c.facebook, c.youtube.description]) assert.doesNotMatch(text, /[–—]/);
 });
 
 test('link goes to the species page only when the record is published', () => {
@@ -116,7 +129,7 @@ test('a video with CC BY-SA material gets the CC BY-SA 4.0 line right after the 
   for (const text of [c.facebook, c.youtube.description]) {
     assert.equal(
       text.split('\n\n').at(-2),
-      `Photo: Julian Herzog, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), via Wikimedia Commons, cropped · Sound: José Carlos Sires, CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/), via Wikimedia Commons, trimmed and edited\n${sa}`,
+      `Photo: Julian Herzog, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:x.jpg), cropped · Sound: José Carlos Sires, CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/), via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Pica_pica.ogg), trimmed and edited\n${sa}`,
     );
   }
   for (const text of [c.instagram, c.facebook, c.youtube.description]) assert.equal(text.split('\n\n').at(-1), TAGS);
