@@ -42,17 +42,81 @@ export function isValidIsoDate(s) {
   return addDays(s, 0) === s;
 }
 
-/**
- * items: [{ record, ...extra }] already in posting order. Returns rows with date, time and
- * an ISO datetime with the right offset (summer time ends on 2026-10-25).
- */
+/** A schedule row for `date`: 08:00 Stockholm with the right UTC offset (summer time ends on 2026-10-25). */
+export function rowFor(date, item) {
+  if (!isValidIsoDate(date)) throw new Error(`a date must be YYYY-MM-DD, got "${date}"`);
+  const offset = stockholmOffset(date, POST_TIME);
+  return { date, time: POST_TIME, timezone: TIME_ZONE, datetime: `${date}T${POST_TIME}:00${offset}`, ...item };
+}
+
+/** items already in posting order, one a day from `start`. */
 export function scheduleRows(items, { start }) {
   if (!isValidIsoDate(start)) throw new Error(`--start must be YYYY-MM-DD, got "${start}"`);
-  return items.map((item, i) => {
-    const date = addDays(start, i);
-    const offset = stockholmOffset(date, POST_TIME);
-    return { date, time: POST_TIME, timezone: TIME_ZONE, datetime: `${date}T${POST_TIME}:00${offset}`, ...item };
+  return items.map((item, i) => rowFor(addDays(start, i), item));
+}
+
+/**
+ * The posting date of every selected species, fixed per species: a species already in the
+ * schedule keeps its date; a new one gets start + its place in the selection (so a species that
+ * fails does not move the ones after it). Two species on one day is an error, raised before
+ * anything is rendered, so the fix is to pass another --start.
+ */
+export function planDates(qids, existingRows, { start }) {
+  if (!isValidIsoDate(start)) throw new Error(`--start must be YYYY-MM-DD, got "${start}"`);
+  const dateOf = new Map(existingRows.map((r) => [r.qid, r.date]));
+  const byDate = new Map(existingRows.map((r) => [r.date, r.qid]));
+  const plan = new Map();
+  qids.forEach((qid, i) => {
+    const date = dateOf.get(qid) ?? addDays(start, i);
+    const taken = byDate.get(date);
+    if (taken && taken !== qid) throw new Error(`${date} already belongs to ${taken} in schedule.csv; pass a --start where ${qid} gets a free day`);
+    byDate.set(date, qid);
+    plan.set(qid, date);
   });
+  return plan;
+}
+
+/** The existing rows with this run's rows put in by QID (a re-run replaces, never shifts), by date. */
+export function mergeSchedule(existingRows, newRows) {
+  const byQid = new Map(existingRows.map((r) => [r.qid, r]));
+  for (const r of newRows) byQid.set(r.qid, r);
+  return [...byQid.values()].sort((a, b) => a.date.localeCompare(b.date));
+}
+
+/** Reads toCsv's output back (RFC 4180: quoted cells may hold commas, quotes and new lines). */
+export function parseCsv(text) {
+  const src = text.replace(/^\uFEFF/, '');
+  const rows = [];
+  let row = [];
+  let cell = '';
+  let quoted = false;
+  for (let i = 0; i < src.length; i++) {
+    const ch = src[i];
+    if (quoted) {
+      if (ch === '"' && src[i + 1] === '"') {
+        cell += '"';
+        i++;
+      } else if (ch === '"') quoted = false;
+      else cell += ch;
+    } else if (ch === '"') quoted = true;
+    else if (ch === ',') {
+      row.push(cell);
+      cell = '';
+    } else if (ch === '\r' || ch === '\n') {
+      if (ch === '\r' && src[i + 1] === '\n') i++;
+      row.push(cell);
+      rows.push(row);
+      row = [];
+      cell = '';
+    } else cell += ch;
+  }
+  if (cell !== '' || row.length) {
+    row.push(cell);
+    rows.push(row);
+  }
+  const [header, ...body] = rows;
+  if (!header) return [];
+  return body.filter((r) => r.length > 1 || r[0] !== '').map((r) => Object.fromEntries(header.map((h, i) => [h, r[i] ?? ''])));
 }
 
 function csvCell(v) {

@@ -10,6 +10,8 @@
 // for the batch: <out>/schedule.csv (one post a day at 08:00 Europe/Stockholm). Every file is
 // written under a ".partial" name and renamed into place only when the species is complete,
 // and a species that fails is reported and skipped: the batch goes on with the next one.
+// Posting dates are fixed per species: schedule.csv is merged by QID, never rebuilt, so a
+// re-run of one species keeps everyone's day and a failed species leaves its day empty.
 import { parseArgs } from 'node:util';
 import { mkdir, mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -18,7 +20,7 @@ import { fileURLToPath } from 'node:url';
 import { DEFAULT_DATA, loadRecords, mediaPath, qualifiesWithFiles } from './lib/species.mjs';
 import { heroImage, usesShareAlike, VIDEO_SA_LICENCE } from './lib/licence.mjs';
 import { buildCaptions, voiceWord, SHARE_ALIKE_LINE } from './lib/captions.mjs';
-import { orderForSchedule, scheduleRows, toCsv, isValidIsoDate } from './lib/schedule.mjs';
+import { orderForSchedule, rowFor, planDates, mergeSchedule, parseCsv, toCsv, isValidIsoDate } from './lib/schedule.mjs';
 import { prepareClip, buildTrack, measureLoudness, isCut } from './lib/audio.mjs';
 import { probeDuration, run } from './lib/proc.mjs';
 import { decodeMono, SAMPLE_RATE } from './lib/spectrogram.mjs';
@@ -38,7 +40,8 @@ const HELP = `See the song: Birdy's social media videos.
   --all                render every qualifying species (published first, then the most reported)
   --data <dir>         website directory with src/data/species (default ${DEFAULT_DATA})
   --out <dir>          output directory (default tools/social/out)
-  --start YYYY-MM-DD   first posting day in schedule.csv (default 2026-10-09)
+  --start YYYY-MM-DD   first posting day for species not yet in schedule.csv (default 2026-10-09);
+                       a species already in schedule.csv keeps its day (delete the file to plan again)
   --captions-only      write caption.json and schedule.csv without rendering video
   --preview            write key frames (preview-*.png) instead of the video, for a quick look
 `;
@@ -111,6 +114,22 @@ else {
   }
 }
 
+// Posting days, fixed per species, planned before anything is rendered.
+const SCHEDULE = join(opt.out, 'schedule.csv');
+let existingRows = [];
+try {
+  existingRows = parseCsv(await readFile(SCHEDULE, 'utf8'));
+} catch (e) {
+  if (e.code !== 'ENOENT') throw e;
+}
+let plan;
+try {
+  plan = planDates(selection.map((r) => r.qid), existingRows, { start: opt.start });
+} catch (e) {
+  console.error(e.message);
+  process.exit(2);
+}
+
 function dataUri(file, buf) {
   const ext = extname(file).toLowerCase();
   const mime = { '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png' }[ext];
@@ -136,6 +155,20 @@ async function videoFacts(mp4) {
   return JSON.parse(stdout.toString());
 }
 
+/** Where to take a YouTube Shorts thumbnail if cover.jpg cannot be uploaded. */
+function thumbnailNote(info) {
+  if (!info?.coverAt || !info?.timeline?.R) return '';
+  return `If YouTube will not take cover.jpg, choose the frame at ${info.coverAt.toFixed(1)} s: the ring at its fullest, before the reveal at ${info.timeline.R.toFixed(1)} s (the bird is a blur there; the frame at 0 s shows no bird at all).`;
+}
+
+async function readInfo(dir) {
+  try {
+    return JSON.parse(await readFile(join(dir, 'render-info.json'), 'utf8'));
+  } catch {
+    return null;
+  }
+}
+
 const f32b64 = (a) => Buffer.from(a.buffer, a.byteOffset, a.byteLength).toString('base64');
 
 function captionJson(rec, captions) {
@@ -151,7 +184,7 @@ async function renderSpecies(rec, out, work, assets) {
     const trimmed = rec.audio.trimmed === true || isCut(await probeDuration(audioSrc), MAX_CLIP_SEC);
     const captions = buildCaptions(rec, { trimmed });
     await out.write('caption.json', captionJson(rec, captions));
-    return { captions, line: `${label}: captions written` };
+    return { captions, info: await readInfo(join(opt.out, rec.slug.en)), line: `${label}: captions written` };
   }
 
   const clip = await prepareClip(audioSrc, work, { maxSec: MAX_CLIP_SEC });
@@ -184,7 +217,7 @@ async function renderSpecies(rec, out, work, assets) {
       const keys = { start: 0, 'mid-song': tl.A0 + D / 2, settled: tl.settled + 0.05, reveal: tl.R + 1.0, name: tl.R + 2.4, end: tl.T - 1 / FPS };
       for (const [name, t] of Object.entries(keys)) await out.write(`preview-${name}.png`, await frameAt(page, t));
       await out.write('preview-cover.jpg', await frameAt(page, coverAt, { type: 'jpeg', quality: 92, cover: true }));
-      return { captions, line: `${label}: preview frames written, layout ${JSON.stringify(layout)}` };
+      return { captions, info: null, line: `${label}: preview frames written, layout ${JSON.stringify(layout)}` };
     }
     const mp4 = out.path('see-the-song.mp4');
     await encodeVideo(page, { frames: tl.frames, trackWav: track, outMp4: mp4, onProgress: (n, total) => process.stdout.write(`\r${label}: frame ${n}/${total}`) });
@@ -207,7 +240,7 @@ async function renderSpecies(rec, out, work, assets) {
     };
     await out.write('render-info.json', `${JSON.stringify(info, null, 2)}\n`);
     await out.write('caption.json', captionJson(rec, captions));
-    return { captions, line: `${label}: ${tl.T.toFixed(2)} s, ${tl.frames} frames, ${loudness.integrated} LUFS, peak ${loudness.truePeak} dBFS, ${info.renderSeconds} s to render` };
+    return { captions, info, line: `${label}: ${tl.T.toFixed(2)} s, ${tl.frames} frames, ${loudness.integrated} LUFS, peak ${loudness.truePeak} dBFS, ${info.renderSeconds} s to render` };
   } finally {
     await page.close().catch(() => {});
   }
@@ -230,10 +263,10 @@ try {
     const work = await mkdtemp(join(tmpdir(), `birdy-social-${rec.qid}-`));
     try {
       if (assets.browser && !assets.browser.isConnected()) assets.browser = await launchBrowser();
-      const { captions, line } = await renderSpecies(rec, out, work, assets);
+      const { captions, info, line } = await renderSpecies(rec, out, work, assets);
       await out.commit();
       console.log(line);
-      done.push({ record: rec, captions });
+      done.push({ record: rec, captions, info });
     } catch (e) {
       failed++;
       await out.discard();
@@ -247,8 +280,8 @@ try {
 }
 
 if (!opt.preview && done.length) {
-  const rows = scheduleRows(
-    done.map(({ record: r, captions: c }) => ({
+  const rows = done.map(({ record: r, captions: c, info }) =>
+    rowFor(plan.get(r.qid), {
       qid: r.qid,
       slug: r.slug.en,
       name_en: r.names.en,
@@ -261,14 +294,15 @@ if (!opt.preview && done.length) {
       facebook: c.facebook,
       youtube_title: c.youtube.title,
       youtube_description: c.youtube.description,
+      youtube_thumbnail: thumbnailNote(info),
       video_licence: c.videoLicence ?? '',
       note: overrides[r.qid]?.note ?? '',
-    })),
-    { start: opt.start },
+    }),
   );
-  const columns = ['date', 'time', 'timezone', 'datetime', 'qid', 'slug', 'name_en', 'name_sv', 'publish', 'video', 'cover', 'caption_json', 'instagram', 'facebook', 'youtube_title', 'youtube_description', 'video_licence', 'note'];
-  await writeFileAtomic(join(opt.out, 'schedule.csv'), toCsv(rows, columns));
-  console.log(`schedule.csv: ${rows.length} posts from ${rows[0].date} to ${rows.at(-1).date}`);
+  const merged = mergeSchedule(existingRows, rows);
+  const columns = ['date', 'time', 'timezone', 'datetime', 'qid', 'slug', 'name_en', 'name_sv', 'publish', 'video', 'cover', 'caption_json', 'instagram', 'facebook', 'youtube_title', 'youtube_description', 'youtube_thumbnail', 'video_licence', 'note'];
+  await writeFileAtomic(SCHEDULE, toCsv(merged, columns));
+  console.log(`schedule.csv: ${rows.length} updated, ${merged.length} posts from ${merged[0].date} to ${merged.at(-1).date}`);
 }
 if (failed) console.error(`${failed} species failed or did not qualify; see above.`);
 process.exit(failed ? 1 : 0);
