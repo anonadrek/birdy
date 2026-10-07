@@ -422,14 +422,15 @@
     <string name="lifelist_breadcrumb">LIFELIST</string>
     <string name="lifelist_headline_fallback">My collection.</string>
     <string name="lifelist_stat_species">SPECIES</string>
-    <string name="lifelist_stat_stamps">STAMPS</string>
+    <!-- The number of finds (a stamp is a badge in the trophy room; QA 2026-10-07). -->
+    <string name="lifelist_stat_finds">SIGHTINGS</string>
     <string name="lifelist_stat_streak">DAY STREAK</string>
     <string name="lifelist_stat_year">SPECIES THIS YEAR</string>
     <string name="lifelist_stat_month">SPECIES THIS MONTH</string>
     <string name="lifelist_stat_longest">LONGEST STREAK</string>
     <plurals name="lifelist_section_recent">
-        <item quantity="one">Recent · %1$d stamp</item>
-        <item quantity="other">Recent · %1$d stamps</item>
+        <item quantity="one">Recent · %1$d sighting</item>
+        <item quantity="other">Recent · %1$d sightings</item>
     </plurals>
     <string name="lifelist_sort_recent">Recent</string>
     <string name="lifelist_sort_stamp">Stamp #</string>

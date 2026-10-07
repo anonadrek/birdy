@@ -66,10 +66,10 @@ import birdy_bird_scanner.composeapp.generated.resources.lifelist_section_recent
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_sort_recent
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_sort_species
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_sort_stamp
+import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_finds
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_longest
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_month
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_species
-import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_stamps
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_streak
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_year
 import birdy_bird_scanner.composeapp.generated.resources.months_short_uppercase
@@ -248,7 +248,7 @@ private fun LoadedLifelist(
             }
         }.value
     val labelStat1 = stringResource(Res.string.lifelist_stat_species)
-    val labelStat2 = stringResource(Res.string.lifelist_stat_stamps)
+    val labelStat2 = stringResource(Res.string.lifelist_stat_finds)
     val labelStat3 = labelForStat3(state.stat3.kind)
     val months = stringArrayResource(Res.array.months_short_uppercase)
     val zone = remember { TimeZone.currentSystemDefault() }
