@@ -97,9 +97,9 @@ image_refs:
     yelkouan mauretanicus) 2020.jpg
   commons_filename: Mediterranean shearwater (Puffinus yelkouan mauretanicus) 2020.jpg
 review_status: auto
-review_notes: ''
+review_notes: "2026-10-07 (1.3.0, 7i-fix A): wikipedia_en_revision borttagen. Den sparade revisionen 879193886 var \"Mediterranean shearwater\", en sida om en uppdelad art (set index), inte artikeln om arten, så artsidans textkredit länkar i stället artens artikel via Wikidata (WikipediaLinks.articleUrl)."
 generated_at: '2026-05-15T21:21:17.469993+00:00'
 sources:
   wikipedia_sv_revision: '57606019'
-  wikipedia_en_revision: '879193886'
+  wikipedia_en_revision: null
   claude_model: claude-haiku-4-5-20251001

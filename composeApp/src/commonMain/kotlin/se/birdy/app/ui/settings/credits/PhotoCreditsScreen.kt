@@ -23,12 +23,8 @@ import androidx.compose.ui.semantics.customActions
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.LinkAnnotation
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.withLink
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
@@ -40,7 +36,6 @@ import birdy_bird_scanner.composeapp.generated.resources.photo_credits_numbered
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_open_file
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_open_license
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_other_title
-import birdy_bird_scanner.composeapp.generated.resources.photo_credits_resized
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_row_description
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_title
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_use_model_test
@@ -52,6 +47,11 @@ import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BackTopBar
 import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.JournalScaffold
+import se.birdy.app.ui.credits.CreditLinkStyles
+import se.birdy.app.ui.credits.PhotoCreditForm
+import se.birdy.app.ui.credits.licenseLabel
+import se.birdy.app.ui.credits.photoCreditText
+import se.birdy.app.ui.credits.photoCreditWords
 import se.birdy.app.ui.settings.formatCount
 import se.birdy.app.ui.settings.openExternalUrl
 import se.birdy.app.ui.theme.Hairline
@@ -79,7 +79,6 @@ internal data class PhotoCredits(
 )
 
 private const val HERO_ROLE = "hero"
-private const val COMMONS = "Wikimedia Commons"
 
 /**
  * A photo the app ships outside the species photos, credited under "Övriga bilder" (release 1.3.0,
@@ -190,7 +189,8 @@ internal fun PhotoCreditsScreen(
             when (state) {
                 Loadable.Loading -> JournalLoading()
                 Loadable.Failed -> CreditsError(stringResource(Res.string.photo_credits_error))
-                is Loadable.Loaded -> PhotoCreditList(state.value, locale, onOpenUrl)
+                // The licence line's links (licence, Commons) open through onOpenUrl too.
+                is Loadable.Loaded -> ProvideUrlOpener(onOpenUrl) { PhotoCreditList(state.value, locale, onOpenUrl) }
             }
         }
     }
@@ -270,13 +270,14 @@ private fun PhotoCreditRow(
     label: String,
     onOpenUrl: (String) -> Unit,
 ) {
+    val words = photoCreditWords()
     val description =
         stringResource(
             Res.string.photo_credits_row_description,
             credit.speciesName,
             label,
             credit.author,
-            credit.license,
+            licenseLabel(credit.license, words),
         )
     val openFileLabel = stringResource(Res.string.photo_credits_open_file)
     val licenseUrl = credit.licenseUrl
@@ -305,8 +306,9 @@ private fun PhotoCreditRow(
     ) {
         Text(text = label.uppercase(), fontSize = 10.sp, fontWeight = FontWeight.W600, color = InkMuted)
         Text(text = stringResource(Res.string.photo_credits_by, credit.author), fontSize = 14.sp, color = TextOnCreme)
+        // The same credit as on the species page (ui.credits), without "Foto: X", shown above.
         Text(
-            text = licenseLine(credit.license, licenseUrl, stringResource(Res.string.photo_credits_resized), onOpenUrl),
+            text = photoCreditText(credit, words, PhotoCreditForm.LicenseLine, CreditLinkStyles),
             fontSize = 13.sp,
             color = InkMuted,
         )
@@ -319,29 +321,3 @@ private fun PhotoCreditRow(
         )
     }
 }
-
-/**
- * "CC BY 2.0 · Wikimedia Commons · nedskalad" as one text, so that it wraps as a sentence at large
- * text sizes. The licence is a link of its own when it has a deed; a tap anywhere else on the row
- * opens the photo.
- */
-internal fun licenseLine(
-    license: String,
-    licenseUrl: String?,
-    resized: String,
-    onOpenUrl: (String) -> Unit,
-): AnnotatedString =
-    buildAnnotatedString {
-        if (licenseUrl != null) {
-            val link =
-                LinkAnnotation.Clickable(
-                    tag = "license",
-                    styles = CreditLinkStyles,
-                    linkInteractionListener = { onOpenUrl(licenseUrl) },
-                )
-            withLink(link) { append(license) }
-        } else {
-            append(license)
-        }
-        append(" · $COMMONS · $resized")
-    }

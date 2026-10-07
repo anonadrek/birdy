@@ -299,4 +299,72 @@ class SpeciesContentCorrectionsTest {
         assertEquals(null, repo.getById(SpeciesId("Q26452"), Locale.EN).first()?.formerName)
         driver.close()
     }
+
+    // Release 1.3.0, 7i-fix A: the profile links the Wikipedia version its text was written from.
+    // Stenfalk's texts were rewritten by hand on 2026-09-27 from sv "Stenfalk" rev 59603908 and en
+    // "Merlin (bird)" rev 1367745672, but its sources kept the pipeline's revisions, and the English
+    // one (1353678534) is the article about the wizard Merlin.
+    @Test
+    fun `stenfalk's sources are the articles its texts were written from, never the wizard`() {
+        val sources = species("falconidae/Q131918.yaml").sources
+        assertEquals("59603908", sources.wikipedia_sv_revision)
+        assertEquals("1367745672", sources.wikipedia_en_revision)
+        assertTrue(sources.wikipedia_en_revision != "1353678534")
+    }
+
+    // The 1.3.0 review compared each stored revision's Wikidata item with the species: eight were
+    // a disambiguation or split page ("Rook may refer to:", "Black-eared wheatear has been split
+    // into..."), not the species' article. Their revisions are removed so that the text credit
+    // links the species' article through Wikidata instead of a page about the name.
+    @Test
+    fun `revisions of disambiguation and split pages are not stored`() {
+        val removed =
+            mapOf(
+                "phasianidae/Q335113.yaml" to "en", // "Golden Pheasant" (disambiguation)
+                "procellariidae/Q511566.yaml" to "en", // "Mediterranean shearwater" (set index)
+                "rallidae/Q187902.yaml" to "en", // "Purple swamphen" (split)
+                "anatidae/Q26452.yaml" to "sv", // "Sädgås" (förgreningssida)
+                "corvidae/Q25386.yaml" to "en", // "Rook" (disambiguation)
+                "scolopacidae/Q28122714.yaml" to "en", // "Ruff" (disambiguation)
+                "muscicapidae/Q385723.yaml" to "en", // "Black-eared wheatear" (set index)
+                "muscicapidae/Q85758401.yaml" to "en", // "Black-eared wheatear" (set index)
+            )
+        for ((path, language) in removed) {
+            val sources = species(path).sources
+            val revision = if (language == "sv") sources.wikipedia_sv_revision else sources.wikipedia_en_revision
+            assertEquals(null, revision, "$path $language")
+        }
+        // The other language's article is the species' own and stays.
+        assertEquals("55606471", species("phasianidae/Q335113.yaml").sources.wikipedia_sv_revision)
+        assertEquals("1344985591", species("anatidae/Q26452.yaml").sources.wikipedia_en_revision)
+    }
+
+    @Test
+    fun `the shipped database credits stenfalk's english text to merlin (bird)`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val shipped = Path.of("../../composeApp/src/commonMain/composeResources/files/species.db")
+        val copy =
+            java.nio.file.Files
+                .copy(shipped, tempDir.resolve("shipped.db"))
+        val driver = JdbcSqliteDriver("jdbc:sqlite:${copy.toAbsolutePath()}")
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        assertEquals(
+            listOf("https://en.wikipedia.org/w/index.php?oldid=1367745672"),
+            repo
+                .getById(SpeciesId("Q131918"), Locale.EN)
+                .first()
+                ?.textSources
+                ?.map { it.articleUrl },
+        )
+        assertEquals(
+            listOf("https://sv.wikipedia.org/w/index.php?oldid=59603908"),
+            repo
+                .getById(SpeciesId("Q131918"), Locale.SV)
+                .first()
+                ?.textSources
+                ?.map { it.articleUrl },
+        )
+        driver.close()
+    }
 }

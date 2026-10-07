@@ -12,10 +12,13 @@ package se.birdy.content
  * a U.S. federal work), so it stays unlinked.
  */
 object PhotoLicenses {
+    /** The licence string of a public domain photo; the app shows it in the reader's language. */
+    const val PUBLIC_DOMAIN = "Public domain"
+
     val DEED_URLS: Map<String, String?> =
         mapOf(
             "CC0" to "https://creativecommons.org/publicdomain/zero/1.0/",
-            "Public domain" to null,
+            PUBLIC_DOMAIN to null,
             "CC BY 2.0" to "https://creativecommons.org/licenses/by/2.0/",
             "CC BY 3.0" to "https://creativecommons.org/licenses/by/3.0/",
             "CC BY 4.0" to "https://creativecommons.org/licenses/by/4.0/",

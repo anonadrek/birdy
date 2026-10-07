@@ -42,14 +42,14 @@ texts, models and libraries under Settings → About.
 
 Species texts (exception to the proprietary terms above)
 
-The species texts, that is the `description` and `migration` fields of the
-species files in shared/content/species/ and the same texts in the app's
-species database, are summaries that an AI model wrote from Wikipedia articles.
-They are adaptations of Wikipedia text and are licensed under the Creative
-Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0,
+The species texts, that is the `description`, `migration` and `marginalia`
+fields of the species files in shared/content/species/ and the same texts in
+the app's species database, are summaries that an AI model wrote from Wikipedia
+articles. They are adaptations of Wikipedia text and are licensed under the
+Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0,
 https://creativecommons.org/licenses/by-sa/4.0/). The Wikipedia article
-revisions they are based on are listed in the `sources` field of each species
-file.
+revisions they are based on are listed, where known, in the `sources` field of
+each species file (see shared/content/species/LICENSE.md).
 
 Species pages on the website (exception to the proprietary terms above)
 

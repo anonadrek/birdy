@@ -10,14 +10,11 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
@@ -47,8 +44,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -90,6 +89,8 @@ import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
 import se.birdy.app.ui.components.StatusBarBand
+import se.birdy.app.ui.credits.PhotoCreditForm
+import se.birdy.app.ui.credits.PhotoCreditLine
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.AccentCopperLight
 import se.birdy.app.ui.theme.CardPaper
@@ -110,40 +111,8 @@ import se.birdy.ml.ScanSource
 // unweighted children — this Box — before it hands the rest of the width to weight(1f)).
 private val StampColumnMaxWidth = 104.dp
 
-// The Match photo sits above the name (PhotoHero's textBelowPhoto), which makes the hero taller,
-// and "Spara observation" below it is this screen's main action: it must be in view without
-// scrolling, also with larger text (2026-10-06). So the photo takes the room that is left above
-// everything that follows it, between MATCH_PHOTO_MIN and MATCH_PHOTO_MAX. MATCH_BELOW_PHOTO is
-// what follows the photo down to the bottom of the save button (name, latin name, match bar,
-// paper sheet with stamp, note field, button) at 100% text on a 360dp-wide phone, and it grows by
-// MATCH_BELOW_PHOTO_PER_FONT_SCALE per +1.0 of font scale (measured 2026-10-06: 379dp, +88.5dp).
-// MatchSaveButtonFoldTest checks the result on a 360x800dp phone at 100%, 130% and 200% text;
-// re-measure there if the content below the photo changes.
-internal val MATCH_PHOTO_MAX = 260.dp
-internal val MATCH_PHOTO_MIN = 160.dp
-private val MATCH_BELOW_PHOTO = 380.dp
-private val MATCH_BELOW_PHOTO_PER_FONT_SCALE = 90.dp
-private val MATCH_FOLD_MARGIN = 8.dp
-
-/**
- * The Match photo's height for a screen whose visible area is [viewportHeight] tall (the hero
- * draws behind the [statusBar], so that height comes off the top) at [fontScale].
- */
-internal fun matchPhotoHeight(
-    viewportHeight: Dp,
-    statusBar: Dp,
-    fontScale: Float,
-): Dp {
-    val belowPhoto = MATCH_BELOW_PHOTO + MATCH_BELOW_PHOTO_PER_FONT_SCALE * (fontScale - 1f).coerceAtLeast(0f)
-    return (viewportHeight - statusBar - belowPhoto - MATCH_FOLD_MARGIN).coerceIn(MATCH_PHOTO_MIN, MATCH_PHOTO_MAX)
-}
-
-@Composable
-private fun rememberMatchPhotoHeight(viewportHeight: Dp): Dp {
-    val statusBar = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
-    val fontScale = LocalDensity.current.fontScale
-    return remember(viewportHeight, statusBar, fontScale) { matchPhotoHeight(viewportHeight, statusBar, fontScale) }
-}
+/** The Match photo, for tests that measure it. */
+internal const val MATCH_PHOTO_TAG = "match-photo"
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
@@ -189,9 +158,10 @@ internal fun MatchView(
     val isSaving = state.saveStatus == MatchResultUiState.SaveStatus.Saving
 
     val scrollState = rememberScrollState()
+    val belowPhoto = remember { BelowPhoto() }
 
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
-        val photoHeight = rememberMatchPhotoHeight(viewportHeight = maxHeight)
+        val photoHeight = rememberMatchPhotoHeight(viewportHeight = maxHeight, belowPhotoPx = belowPhoto.px)
         val photoScrolledAway by rememberPhotoScrolledAway(scrollState, photoHeight)
         Column(
             modifier =
@@ -201,7 +171,12 @@ internal fun MatchView(
                     // its own MossCreme fill or a seam of a different color shows through the
                     // corner cutouts (see PaperSheet's KDoc).
                     .background(MossCreme)
-                    .verticalScroll(scrollState),
+                    .verticalScroll(scrollState)
+                    // After verticalScroll: the scrolling content's own coordinates (see BelowPhoto).
+                    .onGloballyPositioned {
+                        belowPhoto.content = it
+                        belowPhoto.measure()
+                    },
         ) {
             val heroImage =
                 state.species.images.firstOrNull { it.role == "hero" }
@@ -226,13 +201,33 @@ internal fun MatchView(
                                 model = speciesImageUri(path),
                                 contentDescription = null,
                                 contentScale = ContentScale.Crop,
-                                modifier = Modifier.fillMaxSize(),
+                                modifier =
+                                    Modifier
+                                        .fillMaxSize()
+                                        .testTag(MATCH_PHOTO_TAG)
+                                        .onGloballyPositioned {
+                                            belowPhoto.photo = it
+                                            belowPhoto.measure()
+                                        },
                             )
                         }
                     },
                 bottomContent = {
                     ConfidenceBar(confidence = state.confidence, label = confidenceLabel)
                 },
+                // One line under the photo (release 1.3.0 Task 7e-2): "Foto: X" opens the photo's
+                // Commons page, the licence its deed. The back button sits on the photo's top-left.
+                photoCredit =
+                    heroImage?.let { img ->
+                        {
+                            PhotoCreditLine(
+                                image = img,
+                                form = PhotoCreditForm.Compact,
+                                onBand = true,
+                                modifier = Modifier.fillMaxWidth(),
+                            )
+                        }
+                    },
             )
             PaperSheet {
                 Row(
@@ -288,6 +283,11 @@ internal fun MatchView(
                         enabled = !isSaving && !isSaved && state.unlockQueueSize == 0,
                         loading = isSaving,
                         leadingIcon = Icons.Outlined.Check,
+                        modifier =
+                            Modifier.onGloballyPositioned {
+                                belowPhoto.button = it
+                                belowPhoto.measure()
+                            },
                     )
                     Spacer(Modifier.height(8.dp))
                     BirdyTextButton(
