@@ -16,14 +16,15 @@
 
   The torn paper horizon sits at y = 1306 in every video: 74 % down the centred 3:4 crop
   (1080 x 1440, y 240 to 1680) that the Instagram grid shows, so the profile reads as one artwork.
-  Text stays left of x 918 (the Reels and Shorts buttons); the brand line ends above y 1536
-  (Instagram's own name, caption and sound rows), see lib/render.mjs.
+  Text stays left of x 918 (the Reels and Shorts buttons) and above y 1536 (Instagram's own
+  name, caption and sound rows), see lib/render.mjs. The brand line and its bird mark fade out
+  with the ring, before the circle opens, so no shape is ever drawn over the revealed photo.
 -->
 <style>
 :root {
   --paper: #F6EFE2; --ink: #302019; --muted: #6E584B; --rust: #9A4526;
   --apricot: #F2B27A; --dark: #2A1D17; --cream: #FFF8EE;
-  --horizon: 1306px; --end-top: 842px;
+  --horizon: 1306px; --end-top: 792px;
 }
 html, body { margin: 0; padding: 0; background: #160E0A; }
 #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #170F0B; color: var(--cream); font-family: 'Inter', sans-serif; }
@@ -41,12 +42,12 @@ html, body { margin: 0; padding: 0; background: #160E0A; }
   background-color: var(--paper); background-image: radial-gradient(rgba(48, 32, 25, .075) 2.4px, transparent 3.2px); background-size: 36.72px 36.72px; }
 .tear { position: absolute; left: 0; width: 100%; height: 32px; fill: currentColor; display: block; }
 #band .tear { top: -31px; color: var(--paper); }
-#q { position: absolute; left: 88px; top: 70px; margin: 0; font: 400 92px/1 'DM Serif Display'; color: var(--dark); white-space: nowrap; }
+#q { position: absolute; left: 88px; top: 60px; margin: 0; font: 400 92px/1 'DM Serif Display'; color: var(--dark); white-space: nowrap; }
 #q em { font-style: italic; color: var(--rust); }
-#hint { position: absolute; left: 90px; top: 188px; margin: 0; font: 700 54px/1 'Caveat'; color: var(--rust); white-space: nowrap; }
-#name { position: absolute; left: 82px; top: 18px; width: 900px; height: 190px; overflow: visible; color: var(--dark); }
+#hint { position: absolute; left: 90px; top: 170px; margin: 0; font: 700 54px/1 'Caveat'; color: var(--rust); white-space: nowrap; }
+#name { position: absolute; left: 82px; top: -8px; width: 900px; height: 190px; overflow: visible; color: var(--dark); }
 #name text { font-family: 'Caveat'; font-weight: 700; fill: currentColor; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
-#sub { position: absolute; left: 90px; top: 196px; margin: 0; display: flex; align-items: baseline; gap: 22px; white-space: nowrap; opacity: 0; }
+#sub { position: absolute; left: 90px; top: 170px; margin: 0; display: flex; align-items: baseline; gap: 22px; white-space: nowrap; opacity: 0; }
 #sub .sv { font: 700 58px/1 'Caveat'; color: var(--rust); }
 #sub .lat { font: italic 400 46px/1 'DM Serif Display'; color: var(--muted); }
 
@@ -89,7 +90,7 @@ html, body { margin: 0; padding: 0; background: #160E0A; }
 </div>
 <script>
 'use strict';
-const W = 1080, H = 1920, HORIZON = 1306, END_TOP = 842;
+const W = 1080, H = 1920, HORIZON = 1306, END_TOP = 792;
 const TEXT_MAX = 830; // keep text clear of the Reels and Shorts buttons on the right
 // The ring sits left of centre, so its bars stay clear of the buttons too.
 const RING = { cx: 482, cy: 790, r: 210, gap: 20, lmax: 140, rest: 12, spin: 6 };
@@ -131,18 +132,24 @@ function fitSize(fontFor, text, max, min, maxWidth) {
 }
 
 function placePhoto(photo) {
-  // Cover crop into the area above the horizon, never stretched, the bird as close to the
-  // ring's centre as the crop allows (it is seen there first, blurred).
+  // The open layout: a cover crop into the area above the horizon, never stretched, the bird as
+  // close to the ring's centre as the crop allows.
   const cw = W, ch = HORIZON;
   const s = Math.max(cw / photo.width, ch / photo.height);
   const dw = photo.width * s, dh = photo.height * s;
   const left = clamp(RING.cx - photo.focus.x * dw, cw - dw, 0);
   const top = clamp(RING.cy - photo.focus.y * dh, ch - dh, 0);
   Object.assign(EL.photo.style, { width: dw + 'px', height: dh + 'px', left: left + 'px', top: top + 'px' });
+  // The circle layout: while the bird is only seen through the circle, the photo is moved so the
+  // bird sits right at the ring's centre (a landscape photo cannot move up or down in the open
+  // layout), keeping the circle covered. It eases back to the open layout as the circle opens.
+  const circleLeft = clamp(RING.cx - photo.focus.x * dw, RING.cx + RING.r - dw, RING.cx - RING.r);
+  const circleTop = clamp(RING.cy - photo.focus.y * dh, RING.cy + RING.r - dh, RING.cy - RING.r);
+  CFG.circleOffset = { x: circleLeft - left, y: circleTop - top };
   // When the end card rises, the photo slides up so the bird stays in view above it.
   const focusY = top + photo.focus.y * dh;
   CFG.photoShift = clamp(focusY - END_TOP * .5, 0, Math.max(0, ch - END_TOP));
-  return { scale: s, left, top, width: dw, height: dh, birdAt: { x: left + photo.focus.x * dw, y: focusY } };
+  return { scale: s, left, top, width: dw, height: dh, birdAt: { x: left + photo.focus.x * dw, y: focusY }, circleOffset: CFG.circleOffset };
 }
 
 async function setupStage(cfg) {
@@ -185,10 +192,17 @@ async function setupStage(cfg) {
   await new Promise((r) => requestAnimationFrame(() => r()));
   const box = (el) => el.getBoundingClientRect();
   const nameBox = EL.nameText.getBBox();
+  const nameTop = box(EL.name).top;
   const layout = {
     qSize, nameSize, photoBox, photoShift: CFG.photoShift,
-    brandBottom: Math.round(box(EL.brand).bottom),
-    endLinkBottom: Math.round(box(EL.endLink).bottom),
+    textBottom: {
+      brand: Math.round(box(EL.brand).bottom),
+      question: Math.round(box(EL.q).bottom),
+      hint: Math.round(box(EL.hint).bottom),
+      name: Math.round(nameTop + nameBox.y + nameBox.height),
+      sub: Math.round(box(EL.sub).bottom),
+      endLink: Math.round(box(EL.endLink).bottom),
+    },
     endContentBottom: Math.round(Math.max(...[...EL.end.children].map((c) => box(c).bottom))),
     textRight: {
       question: Math.round(box(EL.q).right),
@@ -267,6 +281,8 @@ function renderAt(t, { cover = false } = {}) {
   drawRing(t);
   // The ring is gone before the circle opens, so it is never drawn over the photo.
   op(EL.ring, cover ? 1 : Math.min(lin(t, 0, .4), 1 - lin(t, R + .1, R + .6)));
+  // The brand line goes with the ring: no mark over the photo (the end card names the site).
+  op(EL.brand, cover ? 1 : 1 - lin(t, R + .1, R + .6));
   op(EL.qmark, cover ? 1 : 0);
 
   // The bird: a dark blur inside the circle until the reveal, then sharp, then the circle opens.
@@ -276,7 +292,11 @@ function renderAt(t, { cover = false } = {}) {
   op(EL.photoWrap, cover ? 0 : lin(t, 0, .4));
   EL.photo.style.filter = sharp >= 1 ? 'none' : `blur(${(24 * (1 - sharp)).toFixed(2)}px) brightness(${(.62 + .38 * sharp).toFixed(3)})`;
   EL.photoWrap.style.clipPath = open >= 1 ? 'none' : `circle(${(RING.r + (OPEN_R - RING.r) * open).toFixed(1)}px at ${RING.cx}px ${RING.cy}px)`;
-  EL.photo.style.transform = `translateY(${(-CFG.photoShift * pe).toFixed(2)}px)`;
+  // From the circle layout to the open layout, done before the opening circle reaches the edge.
+  const away = cover ? 1 : 1 - eo(lin(t, R + .6, R + 1.1));
+  const dx = CFG.circleOffset.x * away;
+  const dy = CFG.circleOffset.y * away - CFG.photoShift * pe;
+  EL.photo.style.transform = `translate(${dx.toFixed(2)}px, ${dy.toFixed(2)}px)`;
 
   const ask = cover ? 1 : 1 - lin(t, R, R + .5);
   op(EL.kicker, ask);
