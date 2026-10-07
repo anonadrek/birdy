@@ -215,7 +215,7 @@ process.exit(result.status ?? 1);
 
 `tests/fixtures/make-species-fixtures.mjs`:
 
-The committed generator draws flat colours without text, one hue per species, so the images are identical on every OS (commits 18479a11, 503b4c10).
+Generatorn i repot ritar en enfärgad ruta utan text, en nyans per art, så bilderna blir identiska på alla operativsystem.
 
 ```js
 #!/usr/bin/env node
@@ -598,7 +598,7 @@ Lägg till i `"scripts"`: `"assets:counties": "node scripts/build-sweden-countie
 - [ ] **Step 3: Kör**
 
 Run: `npm run assets:counties`
-Expected: `sweden-counties: 21 län, viewBox 0 0 300 670, 15.9 KB -> .../src/data/sweden-counties.json` (provkört 2026-10-01 mot samma källfil; storleken kan skilja på någon tiondel).
+Expected: `sweden-counties: 21 län, viewBox 0 0 300 713, 16.0 KB -> .../src/data/sweden-counties.json` (provkört 2026-10-07 mot samma källfil; storleken kan skilja på någon tiondel).
 
 - [ ] **Step 4: Titta på kartan**
 
@@ -608,7 +608,7 @@ Run (ritar kartan till en PNG i fyra nyanser, bara för ögat, filen committas i
 node -e "
 const d=JSON.parse(require('fs').readFileSync('src/data/sweden-counties.json','utf8'));
 const c=['#FFFAF1','#FDE5CB','#F2B27A','#9A4526'];
-const svg='<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"'+d.viewBox+'\" width=\"300\" height=\"670\"><rect width=\"100%\" height=\"100%\" fill=\"#F6EFE2\"/>'+d.counties.map((x,i)=>'<path d=\"'+x.d+'\" fill=\"'+c[i%4]+'\" stroke=\"#6E584B\" stroke-width=\"0.6\"/>').join('')+'</svg>';
+const svg='<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"'+d.viewBox+'\" width=\"300\" height=\"713\"><rect width=\"100%\" height=\"100%\" fill=\"#F6EFE2\"/>'+d.counties.map((x,i)=>'<path d=\"'+x.d+'\" fill=\"'+c[i%4]+'\" stroke=\"#6E584B\" stroke-width=\"0.6\"/>').join('')+'</svg>';
 require('sharp')(Buffer.from(svg)).png().toFile('../county-check.png').then(()=>console.log('../county-check.png'))"
 ```
 
