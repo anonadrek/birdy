@@ -6,8 +6,9 @@ taxonomy:
   genus: Pterodroma
   ioc_order: Procellariiformes
 names:
-  sv: Kap Verdepetrell
+  sv: Kapverdepetrell
   en: Fea’s Petrel
+  former_sv: Kap Verdepetrell
 abundance: ovanlig
 iucn_status: NT
 season:

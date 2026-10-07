@@ -6,8 +6,9 @@ taxonomy:
   genus: Anser
   ioc_order: Anseriformes
 names:
-  sv: Tundrasädgås
+  sv: Tundragås
   en: Tundra Bean Goose
+  former_sv: Tundrasädgås
 abundance: ovanlig
 iucn_status: NE
 season:

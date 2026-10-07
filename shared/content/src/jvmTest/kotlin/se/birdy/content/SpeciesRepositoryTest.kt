@@ -212,6 +212,58 @@ class SpeciesRepositoryTest {
         driver.close()
     }
 
+    // --- Release 1.3.0 Task 7m: a species renamed to BirdLife Sverige's official name ---
+
+    /** The fixture's Talgoxe as if Birdy had renamed it, keeping a made-up former name. */
+    private fun newDriverWithRenamedTalgoxe(tempDir: Path): JdbcSqliteDriver {
+        val items =
+            parser
+                .parseAll(Path.of("src/jvmTest/resources/fixtures/species"))
+                .map { (path, yaml) -> path to yaml.copy(names = yaml.names.copy(formerSv = "Stormes")) }
+        val outDb = tempDir.resolve("species.db")
+        SpeciesDbBuilder().build(
+            items = items,
+            sourceImageRoot = Path.of("src/jvmTest/resources/fixtures/images"),
+            targetDb = outDb,
+            targetImageRoot = tempDir.resolve("images"),
+        )
+        return JdbcSqliteDriver("jdbc:sqlite:${outDb.toAbsolutePath()}")
+    }
+
+    @Test
+    fun `the former swedish name finds the species in either language`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val driver = newDriverWithRenamedTalgoxe(tempDir)
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        assertEquals(listOf("Talgoxe"), repo.search("stormes", Locale.SV, SpeciesFilter()).first().map { it.name })
+        assertEquals(listOf("Great Tit"), repo.search("Stormes", Locale.EN, SpeciesFilter()).first().map { it.name })
+        driver.close()
+    }
+
+    @Test
+    fun `the swedish profile carries the former name and the english one does not`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val driver = newDriverWithRenamedTalgoxe(tempDir)
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        assertEquals("Stormes", repo.getById(SpeciesId("Q25485"), Locale.SV).first()?.formerName)
+        assertEquals(null, repo.getById(SpeciesId("Q25485"), Locale.EN).first()?.formerName)
+        assertEquals("Stormes", repo.allByQid(Locale.SV)[SpeciesId("Q25485")]?.formerName)
+        assertEquals(null, repo.allByQid(Locale.EN)[SpeciesId("Q25485")]?.formerName)
+        driver.close()
+    }
+
+    @Test
+    fun `a species that was never renamed has no former name`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val driver = newDriverWithFixtures(tempDir)
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        assertEquals(null, repo.getById(SpeciesId("Q25485"), Locale.SV).first()?.formerName)
+        driver.close()
+    }
+
     // --- In-memory helpers for cross-locale / normalization regression tests ---
 
     private fun newInMemoryDb(): BirdyContent {

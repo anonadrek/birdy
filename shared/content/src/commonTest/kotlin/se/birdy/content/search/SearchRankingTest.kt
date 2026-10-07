@@ -19,6 +19,7 @@ class SearchRankingTest {
         val en: String,
         val scientific: String,
         val abundance: Abundance,
+        val formerSv: String? = null,
     )
 
     private fun rankSwedish(
@@ -29,7 +30,7 @@ class SearchRankingTest {
             .rank(
                 query,
                 birds,
-                names = { SearchNames(primary = it.sv, other = it.en, scientific = it.scientific) },
+                names = { SearchNames(primary = it.sv, other = it.en, scientific = it.scientific, former = it.formerSv) },
                 abundance = { it.abundance },
             ).map { it.sv }
 
@@ -210,5 +211,38 @@ class SearchRankingTest {
         val ranked = rankSwedish("bla\u030A", bla)
         assertEquals("Blåmes", ranked.first())
         assertTrue(ranked.indexOf("Blå kärrhök") < ranked.indexOf("Bläsand"), ranked.toString())
+    }
+
+    // Release 1.3.0 Task 7m: Birdy took BirdLife Sverige's official names, so Sädgås is now Skogsgås
+    // and Tundrasädgås Tundragås. The old name finds the species and ranks it like a name of its own.
+    @Test
+    fun `a former swedish name ranks the renamed species first`() {
+        val birds =
+            listOf(
+                Bird("Tundragås", "Tundra Bean Goose", "Anser serrirostris", OVANLIG, formerSv = "Tundrasädgås"),
+                Bird("Skogsgås", "Taiga Bean Goose", "Anser fabalis", OVANLIG, formerSv = "Sädgås"),
+            )
+        assertEquals(listOf("Skogsgås", "Tundragås"), rankSwedish("sädgås", birds))
+    }
+
+    @Test
+    fun `an exact former name beats a match in the middle of a current name`() {
+        val birds =
+            listOf(
+                Bird("Grancanariablåfink", "Gran Canaria Blue Chaffinch", "Fringilla polatzeki", OVANLIG),
+                Bird("Teneriffablåfink", "Tenerife Blue Chaffinch", "Fringilla teydea", OVANLIG, formerSv = "Blåfink"),
+            )
+        assertEquals(listOf("Teneriffablåfink", "Grancanariablåfink"), rankSwedish("blåfink", birds))
+    }
+
+    @Test
+    fun `a word start in a current name beats one in a former name`() {
+        val birds =
+            listOf(
+                // Abundance made up so the former name would win if it counted as much as a current one.
+                Bird("Saharalärka", "Dunn’s Lark", "Eremalauda dunni", ALLMÄN, formerSv = "Streckig ökenlärka"),
+                Bird("Streckad vävare", "Streaked Weaver", "Ploceus manyar", OVANLIG, formerSv = "Streckig vävare"),
+            )
+        assertEquals(listOf("Streckad vävare", "Saharalärka"), rankSwedish("streck", birds))
     }
 }

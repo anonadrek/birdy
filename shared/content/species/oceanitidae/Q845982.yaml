@@ -6,8 +6,9 @@ taxonomy:
   genus: Pelagodroma
   ioc_order: Procellariiformes
 names:
-  sv: Fregattstormsvala
+  sv: Fregatthavslöpare
   en: White-faced Storm Petrel
+  former_sv: Fregattstormsvala
 abundance: ovanlig
 iucn_status: LC
 season:

@@ -6,8 +6,9 @@ taxonomy:
   genus: Curruca
   ioc_order: Passeriformes
 names:
-  sv: Östlig sammetshätta
+  sv: Tamarisksångare
   en: Menetries’s Warbler
+  former_sv: Östlig sammetshätta
 abundance: ovanlig
 iucn_status: LC
 season:

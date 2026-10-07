@@ -6,8 +6,9 @@ taxonomy:
   genus: Curruca
   ioc_order: Passeriformes
 names:
-  sv: Moltonisångare
+  sv: Rosensångare
   en: Moltoni’s Warbler
+  former_sv: Moltonisångare
 abundance: ovanlig
 iucn_status: LC
 season:

@@ -6,8 +6,9 @@ taxonomy:
   genus: Cettia
   ioc_order: Passeriformes
 names:
-  sv: Cettisångare
+  sv: Sumpcettia
   en: Cetti’s Warbler
+  former_sv: Cettisångare
 abundance: ovanlig
 iucn_status: LC
 season:

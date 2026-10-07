@@ -6,8 +6,9 @@ taxonomy:
   genus: Foudia
   ioc_order: Passeriformes
 names:
-  sv: Rödfody
+  sv: Röd fody
   en: Red Fody
+  former_sv: Rödfody
 abundance: ovanlig
 iucn_status: LC
 season:

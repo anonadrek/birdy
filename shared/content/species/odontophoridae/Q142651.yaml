@@ -6,8 +6,9 @@ taxonomy:
   genus: Colinus
   ioc_order: Galliformes
 names:
-  sv: Vitstrupig vaktel
+  sv: Virginiavaktel
   en: Northern Bobwhite
+  former_sv: Vitstrupig vaktel
 abundance: ovanlig
 iucn_status: NT
 season:

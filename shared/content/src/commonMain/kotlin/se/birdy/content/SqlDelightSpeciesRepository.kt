@@ -18,6 +18,13 @@ import se.birdy.content.search.SearchNames
 import se.birdy.content.search.SearchRanking
 import se.birdy.content.search.normalizeSearch
 
+/**
+ * [se.birdy.content.SpeciesText] kind for the name Birdy used before it took BirdLife Sverige's
+ * official Swedish one (release 1.3.0 Task 7m), stored with the locale it belongs to. A text row
+ * rather than a column: no schema change, and only the 29 renamed species have one.
+ */
+internal const val FORMER_NAME_KIND = "former_name"
+
 @Suppress("LongMethod")
 class SqlDelightSpeciesRepository(
     private val db: BirdyContent,
@@ -57,6 +64,7 @@ class SqlDelightSpeciesRepository(
             val description = pickText(texts, locale, "description")
             val migration = pickText(texts, locale, "migration")
             val marginalia = pickText(texts, locale, "marginalia")
+            val formerName = texts.formerName(locale)
 
             emit(
                 Species(
@@ -91,6 +99,7 @@ class SqlDelightSpeciesRepository(
                                 sourceUrl = img.source_url,
                             )
                         },
+                    formerName = formerName,
                 ),
             )
         }
@@ -105,10 +114,11 @@ class SqlDelightSpeciesRepository(
             .asFlow()
             .mapToList(Dispatchers.Default)
             .map { rows ->
+                val formerNames = db.formerNamesBySpecies(locale)
                 val hits =
                     rows
                         .distinctBy { it.species_id }
-                        .mapNotNull { row -> searchHit(row.species_id, locale, filters) }
+                        .mapNotNull { row -> searchHit(row.species_id, locale, filters, formerNames[row.species_id]) }
                 // Release 1.3.0 Task 7g: best matches first (see SearchRanking), not the SQL's
                 // prefix-then-name order, which the screen re-sorted alphabetically anyway.
                 SearchRanking
@@ -123,6 +133,7 @@ class SqlDelightSpeciesRepository(
         speciesId: String,
         locale: Locale,
         filters: SpeciesFilter,
+        formerName: String?,
     ): Pair<SpeciesSummary, SearchNames>? {
         val sp =
             db.speciesQueries
@@ -161,7 +172,8 @@ class SqlDelightSpeciesRepository(
                 iucnStatus = sp.iucn_status,
             )
         val otherName = nameRows.firstOrNull { it.locale != locale.code }?.name
-        return summary to SearchNames(primary = displayName, other = otherName, scientific = sp.scientific_name)
+        return summary to
+            SearchNames(primary = displayName, other = otherName, scientific = sp.scientific_name, former = formerName)
     }
 
     private fun passesFilters(
@@ -264,6 +276,7 @@ class SqlDelightSpeciesRepository(
                     val description = pickText(texts, locale, "description")
                     val migration = pickText(texts, locale, "migration")
                     val marginalia = pickText(texts, locale, "marginalia")
+                    val formerName = texts.formerName(locale)
 
                     SpeciesId(row.id) to
                         Species(
@@ -297,6 +310,7 @@ class SqlDelightSpeciesRepository(
                                         sourceUrl = img.source_url,
                                     )
                                 },
+                            formerName = formerName,
                         )
                 }.toMap()
         }
@@ -356,3 +370,21 @@ class SqlDelightSpeciesRepository(
         return english ?: localized
     }
 }
+
+/**
+ * The former name in [locale] only, no English fallback: an English user sees no "Formerly" line
+ * for a Swedish rename.
+ */
+private fun List<SpeciesText>.formerName(locale: Locale): String? =
+    firstOrNull { it.locale == locale.code && it.kind == FORMER_NAME_KIND }?.text
+
+/**
+ * Every renamed species' former name (one query; there are 29), preferring the one in [locale].
+ * Only Swedish names were renamed, so an English user who types "sädgås" ranks by it too.
+ */
+private fun BirdyContent.formerNamesBySpecies(locale: Locale): Map<String, String> =
+    speciesTextQueries
+        .selectByKind(FORMER_NAME_KIND)
+        .executeAsList()
+        .groupBy { it.species_id }
+        .mapValues { (_, rows) -> (rows.firstOrNull { it.locale == locale.code } ?: rows.first()).text }

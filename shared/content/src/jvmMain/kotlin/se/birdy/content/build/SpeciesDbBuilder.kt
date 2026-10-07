@@ -1,6 +1,7 @@
 package se.birdy.content.build
 
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
+import se.birdy.content.FORMER_NAME_KIND
 import se.birdy.content.db.BirdyContent
 import se.birdy.content.search.normalizeSearch
 import java.nio.file.Files
@@ -112,10 +113,15 @@ class SpeciesDbBuilder(
         val fam = yaml.taxonomy.family
         val famSv = yaml.taxonomy.family_sv ?: ""
         val genus = yaml.taxonomy.genus
+        // Release 1.3.0 Task 7m: the name Birdy used before BirdLife Sverige's official one stays
+        // searchable ("sädgås" finds Skogsgås) and is shown on the Swedish profile.
+        val formerSv = yaml.names.formerSv?.takeIf { it.isNotBlank() }
         if (!yaml.names.sv.isNullOrBlank()) {
             val sv = yaml.names.sv!!
-            db.speciesNameQueries.insert(yaml.id, "sv", sv, normalizeSearch("$sv $sci $fam $famSv $genus"))
+            val svTerms = if (formerSv != null) "$sv $formerSv" else sv
+            db.speciesNameQueries.insert(yaml.id, "sv", sv, normalizeSearch("$svTerms $sci $fam $famSv $genus"))
         }
+        if (formerSv != null) db.speciesTextQueries.insert(yaml.id, "sv", FORMER_NAME_KIND, formerSv)
         val en = yaml.names.en
         db.speciesNameQueries.insert(yaml.id, "en", en, normalizeSearch("$en $sci $fam $famSv $genus"))
 

@@ -6,8 +6,9 @@ taxonomy:
   genus: Fringilla
   ioc_order: Passeriformes
 names:
-  sv: Blåfink
+  sv: Teneriffablåfink
   en: Tenerife Blue Chaffinch
+  former_sv: Blåfink
 abundance: ovanlig
 iucn_status: NT
 season:

@@ -6,8 +6,9 @@ taxonomy:
   genus: Strix
   ioc_order: Strigiformes
 names:
-  sv: Klippuggla
+  sv: Östlig klippuggla
   en: Omani Owl
+  former_sv: Klippuggla
 abundance: ovanlig
 iucn_status: LC
 season:

@@ -6,8 +6,9 @@ taxonomy:
   genus: Ploceus
   ioc_order: Passeriformes
 names:
-  sv: Streckig vävare
+  sv: Streckad vävare
   en: Streaked Weaver
+  former_sv: Streckig vävare
 abundance: ovanlig
 iucn_status: LC
 season:

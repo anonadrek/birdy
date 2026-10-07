@@ -6,8 +6,9 @@ taxonomy:
   genus: Dendropicos
   ioc_order: Piciformes
 names:
-  sv: Afrikansk gråspett
+  sv: Gulbukig askspett
   en: African Grey Woodpecker
+  former_sv: Afrikansk gråspett
 abundance: ovanlig
 iucn_status: LC
 season:

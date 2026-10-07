@@ -14,6 +14,7 @@ from birdy_fetcher.images import ImageProcessor, ImageSelector
 from birdy_fetcher.orchestrator import RefreshContext, RefreshOptions, refresh_one, run_refresh
 from birdy_fetcher.wikidata import WikidataClient
 from birdy_fetcher.wikipedia import WikipediaClient
+from birdy_fetcher.yaml_writer import SpeciesYamlData
 
 
 @pytest.mark.asyncio
@@ -264,7 +265,7 @@ async def test_run_refresh_returns_nonzero_when_species_fail(
 
 async def _refresh_without_wikidata_status(
     fixtures_dir: Path, tmp_path: Path, listed_extra: dict[str, str]
-):  # type: ignore[no-untyped-def]
+) -> SpeciesYamlData:
     """refresh_one for a species whose Wikidata item has no IUCN status (P141)."""
     pipeline_root = tmp_path / "pipeline"
     content_root = tmp_path / "content"
@@ -345,3 +346,28 @@ async def test_without_any_iucn_status_the_species_is_not_evaluated(
 ) -> None:
     data = await _refresh_without_wikidata_status(fixtures_dir, tmp_path, {})
     assert data.iucn_status == "NE"
+
+
+@pytest.mark.asyncio
+async def test_official_swedish_name_and_former_name_from_species_list_reach_the_yaml(
+    fixtures_dir: Path, tmp_path: Path
+) -> None:
+    # Release 1.3.0 Task 7m: BirdLife Sverige's official name wins over Wikidata, and the name
+    # Birdy used before stays searchable (and is shown as "Tidigare: Sädgås" on the profile).
+    data = await _refresh_without_wikidata_status(
+        fixtures_dir, tmp_path, {"common_sv": "Skogsgås", "former_sv": "Sädgås"}
+    )
+    assert (data.common_sv, data.former_sv) == ("Skogsgås", "Sädgås")
+    written = yaml.safe_load(
+        (tmp_path / "content" / "species" / "mysteriidae" / "Q999.yaml").read_text(encoding="utf-8")
+    )
+    assert written["names"]["sv"] == "Skogsgås"
+    assert written["names"]["former_sv"] == "Sädgås"
+
+
+@pytest.mark.asyncio
+async def test_a_species_that_was_never_renamed_has_no_former_name(
+    fixtures_dir: Path, tmp_path: Path
+) -> None:
+    data = await _refresh_without_wikidata_status(fixtures_dir, tmp_path, {"common_sv": "Talgoxe"})
+    assert data.former_sv is None

@@ -6,8 +6,9 @@ taxonomy:
   genus: Chersophilus
   ioc_order: Passeriformes
 names:
-  sv: Dupontlärka
+  sv: Skymningslärka
   en: Dupont’s Lark
+  former_sv: Dupontlärka
 abundance: ovanlig
 iucn_status: VU
 season:

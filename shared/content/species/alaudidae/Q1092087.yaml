@@ -6,8 +6,9 @@ taxonomy:
   genus: Eremalauda
   ioc_order: Passeriformes
 names:
-  sv: Streckig ökenlärka
+  sv: Saharalärka
   en: Dunn’s Lark
+  former_sv: Streckig ökenlärka
 abundance: ovanlig
 iucn_status: LC
 season:

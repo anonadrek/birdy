@@ -6,8 +6,9 @@ taxonomy:
   genus: Calonectris
   ioc_order: Procellariiformes
 names:
-  sv: Gulnäbbad lira
+  sv: Diomedeslira
   en: Scopoli’s Shearwater
+  former_sv: Gulnäbbad lira
 abundance: ovanlig
 iucn_status: LC
 season:

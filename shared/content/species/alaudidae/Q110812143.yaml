@@ -6,8 +6,9 @@ taxonomy:
   genus: Alaudala
   ioc_order: Passeriformes
 names:
-  sv: Turkestandvärglärka
+  sv: Turkestanlärka
   en: Turkestan Short-toed Lark
+  former_sv: Turkestandvärglärka
 abundance: ovanlig
 iucn_status: LC
 season:

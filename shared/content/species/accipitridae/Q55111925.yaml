@@ -6,8 +6,9 @@ taxonomy:
   genus: Gyps
   ioc_order: Accipitriformes
 names:
-  sv: Rüppellgam
+  sv: Fläckgam
   en: Rüppell’s Vulture
+  former_sv: Rüppellgam
 abundance: ovanlig
 iucn_status: CR
 season:

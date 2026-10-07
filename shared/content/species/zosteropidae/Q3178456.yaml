@@ -6,8 +6,9 @@ taxonomy:
   genus: Zosterops
   ioc_order: Passeriformes
 names:
-  sv: Abessinsk glasögonfågel
+  sv: Abessinglasögonfågel
   en: Abyssinian White-eye
+  former_sv: Abessinsk glasögonfågel
 abundance: ovanlig
 iucn_status: LC
 season:

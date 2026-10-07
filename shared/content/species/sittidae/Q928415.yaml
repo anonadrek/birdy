@@ -6,8 +6,9 @@ taxonomy:
   genus: Sitta
   ioc_order: Passeriformes
 names:
-  sv: Östlig klippnötväcka
+  sv: Ravinnötväcka
   en: Eastern Rock Nuthatch
+  former_sv: Östlig klippnötväcka
 abundance: ovanlig
 iucn_status: LC
 season:
