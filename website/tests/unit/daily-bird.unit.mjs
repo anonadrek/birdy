@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import {
-  KotlinRandom, SAME_AS_APP_FROM, buildDate, dateParts, javaHashCode, loadAppSpecies, parseSpeciesYaml, selectAppDailyBird, siteDailyBird,
+  KotlinRandom, SAME_AS_APP_FROM, buildDate, dateParts, freeImage, javaHashCode, loadAppSpecies, parseSpeciesYaml, selectAppDailyBird, siteDailyBird,
 } from '../../src/lib/daily-bird.mjs';
 
 // Written by the app's own Kotlin DailyBirdSelector and kotlin.random.Random (see the file's _about).
@@ -66,25 +66,34 @@ test('selectAppDailyBird: ordningen arterna läses i spelar ingen roll', () => {
 test('siteDailyBird: appens fågel när den har en sida, raden om appen först från 1.3.0-dagen', () => {
   const before = day('2026-10-14');
   const appBefore = golden.days[before.iso];
-  const out = siteDailyBird({ appSpecies: golden.species, pageQids: ['Q25485', appBefore], date: before });
+  const out = siteDailyBird({ appQid: selectAppDailyBird(golden.species, before), pageQids: ['Q25485', appBefore], date: before });
   assert.deepEqual(out, { qid: appBefore, appQid: appBefore, sameAsApp: false });
 
   const from = day(SAME_AS_APP_FROM);
   const appFrom = golden.days[from.iso];
-  assert.deepEqual(siteDailyBird({ appSpecies: golden.species, pageQids: [appFrom], date: from }), { qid: appFrom, appQid: appFrom, sameAsApp: true });
+  assert.deepEqual(siteDailyBird({ appQid: selectAppDailyBird(golden.species, from), pageQids: [appFrom], date: from }), { qid: appFrom, appQid: appFrom, sameAsApp: true });
 });
 
 test('siteDailyBird: utan sida för appens fågel väljs en art med sida, samma hela dagen och utan raden', () => {
   const date = day('2026-10-20');
   const appQid = golden.days[date.iso];
   const pages = ['Q25485', 'Q25404', 'Q14683', 'Q4764'].filter((q) => q !== appQid);
-  const a = siteDailyBird({ appSpecies: golden.species, pageQids: pages, date });
-  const b = siteDailyBird({ appSpecies: golden.species, pageQids: [...pages].reverse(), date });
+  const a = siteDailyBird({ appQid: selectAppDailyBird(golden.species, date), pageQids: pages, date });
+  const b = siteDailyBird({ appQid: selectAppDailyBird(golden.species, date), pageQids: [...pages].reverse(), date });
   assert.ok(a && pages.includes(a.qid));
   assert.deepEqual(a, b);
   assert.equal(a.sameAsApp, false);
   assert.equal(a.appQid, appQid);
-  assert.equal(siteDailyBird({ appSpecies: golden.species, pageQids: [], date }), null);
+  assert.equal(siteDailyBird({ appQid: selectAppDailyBird(golden.species, date), pageQids: [], date }), null);
+});
+
+test('freeImage: bara CC0 och public domain, huvudfotot först', () => {
+  const hero = (license) => ({ role: 'hero', license });
+  const extra = (license) => ({ role: 'extra', license });
+  assert.deepEqual(freeImage([hero('CC0'), extra('Public domain')]), hero('CC0'));
+  assert.deepEqual(freeImage([hero('CC BY 4.0'), extra('Public domain')]), extra('Public domain'));
+  assert.equal(freeImage([hero('CC BY-SA 4.0'), extra('CC BY 2.0')]), undefined);
+  assert.equal(freeImage([]), undefined);
 });
 
 test('dateParts: planschnumret är dagens nummer på året', () => {

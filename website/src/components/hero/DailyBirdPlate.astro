@@ -1,0 +1,165 @@
+---
+// Dagens fågel as a plate on the wall (plan 2026-10-08 Task 2, mockup lift-c.html): the day's bird framed in a cream
+// mat, hung from a nail, with a museum label pinned under it. The photo is shown whole (never cropped) and only when it
+// is CC0 or public domain (freeImage in daily-bird.mjs); nothing is drawn over it, the label only covers the mat.
+// The label carries the species name, Artportalen's month bars (same data as the species page's chart, this month
+// marked), the link to the species page and the photo credit. The plate number is the day of the year.
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import BirdyBird from './BirdyBird.astro';
+import { getCopy, type Locale } from '../../lib/i18n';
+import { licenseLabel, localizedLicenseUrl } from '../../lib/species';
+
+export interface PlateBird {
+  name: string;
+  scientific: string;
+  /** Species page, when the bird has one in this build. */
+  href?: string;
+  image: ImageMetadata;
+  author: string | null;
+  license: string;
+  licenseUrl: string | null;
+  sourceUrl: string;
+  /** Artportalen's share of all bird reports per month, top month 100. */
+  months?: number[];
+  /** The species page's data sentences ("Rapporteras mest i ..."). */
+  facts?: string[];
+}
+
+interface Props {
+  locale: Locale;
+  bird: PlateBird;
+  date: { day: number; month: number; weekday: number; dayOfYear: number; iso: string };
+}
+const { locale, bird, date } = Astro.props;
+const t = getCopy(locale);
+const kicker = `${t.daily.kicker} · ${t.daily.weekdays[date.weekday]} ${date.day} ${t.daily.months[date.month - 1]}`;
+const plateNo = t.species.plate.replace('{n}', String(date.dayOfYear));
+const thisMonth = date.month - 1;
+const months = bird.months?.length === 12 ? bird.months : undefined;
+const peak = months ? months.indexOf(Math.max(...months)) : -1;
+const chartLabel = t.daily.chartLabel.replace('{month}', t.species.monthNames[peak] ?? '');
+const factText = bird.facts?.join(' ');
+// A portrait photo would make a plate taller than the first view; the frame narrows instead (the photo is never cropped).
+const ratio = bird.image.width / bird.image.height;
+const alt = t.species.altHero.replace('{name}', bird.name).replace('{scientific}', bird.scientific);
+---
+
+<div class="dplate" style={`--ar:${ratio.toFixed(4)}`}>
+  <div class="dp-top">
+    <p class="kick"><span class="kick-line" aria-hidden="true"></span><time datetime={date.iso}>{kicker}</time></p>
+    <span class="dp-no" aria-hidden="true">{plateNo}</span>
+  </div>
+  <figure class="dp-hang">
+    <svg class="dp-wire" viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path d="M8 40 L100 5 L192 40" />
+    </svg>
+    <span class="dp-nail" aria-hidden="true"></span>
+    <div class="dp-frame">
+      <BirdyBird />
+      {bird.href ? (
+        <a class="dp-photo" href={bird.href} tabindex="-1" aria-hidden="true">
+          <Picture src={bird.image} formats={['avif', 'webp']} widths={[360, 540, 720, 960]} sizes="(min-width: 1024px) 470px, (min-width: 761px) 520px, calc(100vw - 68px)" alt="" loading="eager" fetchpriority="high" decoding="async" />
+        </a>
+      ) : (
+        <div class="dp-photo">
+          <Picture src={bird.image} formats={['avif', 'webp']} widths={[360, 540, 720, 960]} sizes="(min-width: 1024px) 470px, (min-width: 761px) 520px, calc(100vw - 68px)" alt={alt} loading="eager" fetchpriority="high" decoding="async" />
+        </div>
+      )}
+    </div>
+    <figcaption class="dp-label">
+      <span class="dp-pin" aria-hidden="true"></span>
+      <h2 class="dp-name">{bird.name}</h2>
+      <p class="dp-lat" lang="la">{bird.scientific}</p>
+      {factText && <p class="dp-fact" id="daily-bird-facts">{factText}</p>}
+      {months && (
+        <div class="dp-chart" role="img" aria-label={chartLabel} aria-describedby={factText ? 'daily-bird-facts' : undefined}>
+          <div class="dp-bars">
+            {months.map((v, i) => <i class:list={{ now: i === thisMonth }} style={`--h:${Math.max(4, v)}%;--i:${i}`}></i>)}
+          </div>
+          <div class="dp-letters" aria-hidden="true">
+            {t.species.monthLetters.map((l, i) => <span class:list={{ now: i === thisMonth }}>{l}</span>)}
+          </div>
+        </div>
+      )}
+      {bird.href && <a class="dp-read" href={bird.href}>{t.daily.readMore}<span class="sr-only">: {bird.name}</span> <span aria-hidden="true">→</span></a>}
+      <p class="dp-credit" data-credit>
+        {t.species.photoCredit} {bird.author ?? t.species.unknownAuthor} · {bird.licenseUrl ? <a href={localizedLicenseUrl(bird.licenseUrl, locale)}>{bird.license}</a> : licenseLabel(bird.license, t)} · <a href={bird.sourceUrl}>Wikimedia Commons</a>
+      </p>
+    </figcaption>
+  </figure>
+</div>
+
+<style>
+  .dplate { position: relative; --mat: #F3EADA; --kick-color: var(--apricot); }
+  .dp-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .dp-top .kick { margin: 0; }
+  .dp-no { font-family: var(--font-script); font-weight: 700; font-size: 26px; line-height: 1; color: var(--apricot); transform: rotate(-4deg); }
+
+  /* The plate hangs from a nail on a brass wire; the whole group swings into place on load (see below). */
+  .dp-hang { position: relative; margin: 6px 0 0; padding-top: 34px; transform-origin: 50% 0; }
+  .dp-wire { position: absolute; top: 0; left: 50%; width: 46%; height: 36px; translate: -50% 0; overflow: visible; }
+  .dp-wire path { fill: none; stroke: var(--brass); stroke-width: 1.4; vector-effect: non-scaling-stroke; opacity: .85; }
+  .dp-nail { position: absolute; top: -2px; left: 50%; width: 9px; height: 9px; margin-left: -4.5px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, var(--brass-hi), var(--brass) 55%, var(--brass-ink)); box-shadow: 0 2px 3px rgba(0, 0, 0, .5); }
+
+  .dp-frame { position: relative; width: min(100%, calc(560px * var(--ar) + 28px)); margin: 0 auto; padding: 14px 14px 64px; background: var(--mat); box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 2px 4px rgba(0, 0, 0, .35), 0 28px 50px -10px rgba(0, 0, 0, .6); }
+  .dp-frame::before { content: ''; position: absolute; inset: 7px; border: 1px solid rgba(110, 88, 75, .35); pointer-events: none; }
+  .dp-photo { display: block; position: relative; }
+  .dp-photo :global(img) { display: block; width: 100%; height: auto; }
+  .dp-frame :global(.birdy) { position: absolute; z-index: 2; left: 14%; bottom: 100%; width: 40px; height: 40px; margin: 0 0 -3px; --birdy-delay: 1.55s; }
+
+  .dp-label { position: relative; z-index: 3; width: min(88%, 420px); margin: -40px 16px 0 auto; padding: 18px 20px 14px; background: var(--card); color: var(--ink); box-shadow: 0 1px 2px rgba(0, 0, 0, .2), 0 18px 34px rgba(0, 0, 0, .38); transform: rotate(.7deg); --kick-color: var(--rust); }
+  .dp-pin { position: absolute; top: -6px; left: 50%; width: 13px; height: 13px; margin-left: -6.5px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F4DDA9, var(--brass) 55%, #7A5A22); box-shadow: 0 2px 3px rgba(0, 0, 0, .35); }
+  .dp-name { font-size: 40px; line-height: .95; letter-spacing: -.015em; color: var(--ink); }
+  .dp-lat { margin: 2px 0 0; font-family: var(--font-script); font-weight: 700; font-size: 24px; line-height: 1.1; color: var(--rust); }
+  .dp-fact { margin: 10px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--muted); }
+  .dp-chart { margin-top: 12px; }
+  .dp-bars { display: flex; align-items: flex-end; gap: 3px; height: 40px; border-bottom: 1px solid var(--line); }
+  .dp-bars i { flex: 1; height: var(--h); background: var(--rust); border-radius: 2px 2px 0 0; transform-origin: 50% 100%; }
+  .dp-letters { display: flex; gap: 3px; margin-top: 4px; font-size: 9.5px; color: var(--muted); }
+  .dp-letters span { flex: 1; text-align: center; }
+  /* This month: its letter in rust and a small ink mark above the bar, the bars keep the species page's colour. */
+  .dp-letters .now { color: var(--rust); font-weight: 600; }
+  .dp-bars i.now { position: relative; }
+  .dp-bars i.now::after { content: ''; position: absolute; left: 50%; bottom: calc(100% + 4px); width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: var(--ink); }
+  .dp-read { display: inline-block; margin-top: 14px; font-weight: 600; font-size: 14px; color: var(--rust-deep); border-bottom: 2px solid var(--rust); padding-bottom: 1px; transition: color .2s, border-color .2s; }
+  .dp-read:hover { color: var(--rust); border-color: var(--rust-deep); }
+  .dp-credit { margin: 10px 0 0; font-size: 11px; line-height: 1.5; color: var(--muted); }
+  .dp-credit a { text-decoration: underline; text-underline-offset: 2px; }
+  .dp-credit a:hover { color: var(--rust); }
+  .dp-label :global(:focus-visible) { outline-color: var(--rust); }
+
+  @media (min-width: 1024px) {
+    .dp-name { font-size: 46px; }
+    .dp-label { margin-top: -42px; padding: 20px 24px 16px; }
+  }
+
+  /* The orchestrated load (plan Task 5): the plate is hung and swings to rest on its nail, the label is pinned,
+     the month bars grow in, the plate number is stamped and the Birdy bird lands on the frame. Transform only on
+     the photo's ancestors, so the photo (the page's largest image) paints at once. */
+  @media (prefers-reduced-motion: no-preference) {
+    .dp-hang { animation: dp-swing 1.9s .15s cubic-bezier(.3, 0, .4, 1) both; }
+    .dp-frame { animation: dp-settle 1.1s .2s var(--ease-paper) both; }
+    .dp-label { animation: dp-pin 0.7s 1.05s var(--ease-paper) both; }
+    .dp-pin { animation: dp-press .35s 1.5s cubic-bezier(.3, 1.6, .5, 1) both; }
+    .dp-bars i { animation: dp-grow .55s calc(1.35s + var(--i) * 45ms) var(--ease-paper) both; }
+    .dp-bars i.now::after { animation: dp-dot .4s 2.05s var(--ease-paper) both; }
+    .dp-no { animation: dp-stamp .5s 1.75s cubic-bezier(.2, 1.4, .4, 1) both; }
+    .dp-wire path { stroke-dasharray: 220; animation: dp-wire .5s .05s ease-out both; }
+  }
+  @keyframes dp-swing {
+    0% { transform: translateY(-16px) rotate(-3.6deg); }
+    28% { transform: rotate(2.3deg); }
+    50% { transform: rotate(-1.2deg); }
+    68% { transform: rotate(.6deg); }
+    84% { transform: rotate(-.2deg); }
+    100% { transform: none; }
+  }
+  @keyframes dp-settle { from { box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 6px 10px rgba(0, 0, 0, .2), 0 60px 80px -10px rgba(0, 0, 0, .45); } }
+  @keyframes dp-pin { from { opacity: 0; transform: translateY(22px) rotate(-1.5deg); } }
+  @keyframes dp-press { from { transform: scale(1.8); opacity: 0; } }
+  @keyframes dp-grow { from { transform: scaleY(0); } }
+  @keyframes dp-dot { from { opacity: 0; transform: translateY(-6px); } }
+  @keyframes dp-stamp { from { opacity: 0; transform: scale(1.7) rotate(-14deg); } }
+  @keyframes dp-wire { from { stroke-dashoffset: 220; } }
+</style>

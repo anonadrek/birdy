@@ -137,58 +137,63 @@ test.describe('utan JavaScript', () => {
 test.describe('första vyn', () => {
   test.use({ contextOptions: { reducedMotion: 'reduce' } });
 
-  for (const [path, line1, line2, kicker] of [
-    ['/sv/', 'Känn igen fågeln.', 'Bevara stunden.', 'Fågelguide och fältdagbok'],
-    ['/', 'Know the bird.', 'Keep the moment.', 'Bird guide and field journal'],
+  // The fixture build pins BIRDY_TODAY=2026-10-15 (package.json build:fixtures) and reads the app's species from the
+  // golden file, so the app's Dagens fågel is Hornuggla (Q25384), which has a fixture page with a CC0 photo, on the day
+  // 1.3.0 goes out: the plate shows it with the line about the app.
+  for (const [path, line1, line2, kicker, plate, name, same] of [
+    ['/sv/', 'Känn igen fågeln.', 'Bevara stunden.', 'Fågelguide och fältdagbok', 'Dagens fågel · tors 15 okt', 'Hornuggla', 'samma fågel som i appen i dag'],
+    ['/', 'Know the bird.', 'Keep the moment.', 'Bird guide and field journal', 'Bird of the day · Thu 15 Oct', 'Long-eared Owl', 'the same bird as in the app today'],
   ] as const) {
-    test(`rubrik, kicker, metarad och telefon på ${path}`, async ({ page }) => {
+    test(`rubrik, kicker och Dagens fågel som plansch på ${path}`, async ({ page, request }) => {
       const errors = trackConsoleErrors(page);
       await page.goto(path);
       const hero = page.locator('[data-hero]');
       await expect(hero.locator('h1')).toContainText(line1);
       await expect(hero.locator('h1 em')).toHaveText(line2);
-      await expect(hero.locator('.copy .kick')).toHaveText(kicker);
-      await expect(hero.locator('.meta li')).toHaveCount(3);
-      await expect(hero.locator('[data-hero-phone] .ph[role="img"]')).toHaveCount(1);
-      await expect(hero.locator('[data-robin] img').first()).toBeVisible();
+      await expect(hero.locator('.intro .kick')).toHaveText(kicker);
+      await expect(hero).toHaveAttribute('data-date', '2026-10-15');
+      await expect(hero).toHaveAttribute('data-app-bird', 'Q25384');
+      await expect(hero).toHaveAttribute('data-daily-bird', 'Q25384');
+      await expect(hero.locator('.dp-top .kick')).toHaveText(plate);
+      await expect(hero.locator('.dp-no')).toHaveText('Pl. 288');
+      await expect(hero.locator('.dp-name')).toHaveText(name);
+      await expect(hero.locator('.dp-lat')).toHaveText('Asio otus');
+      await expect(hero.locator('.dp-bars i')).toHaveCount(12);
+      await expect(hero.locator('.dp-bars i.now')).toHaveCount(1);
+      await expect(hero.locator('.dp-letters .now')).toHaveText('O');
+      await expect(hero.locator('[data-credit]')).toContainText('CC0');
+      await expect(hero.locator('[data-credit] a[href^="https://commons.wikimedia.org/"]')).toHaveCount(1);
+      const href = await hero.locator('.dp-read').getAttribute('href');
+      expect(href).toMatch(path === '/sv/' ? /^\/sv\/arter\/hornuggla\/$/ : /^\/species\/long-eared-owl\/$/);
+      expect((await request.get(href!)).status()).toBe(200);
+      await expect(hero.locator('[data-same-as-app]')).toHaveText(same);
+      const img = hero.locator('.dp-photo img');
+      await expect(img).toHaveAttribute('loading', 'eager');
+      await expect(img).toHaveAttribute('fetchpriority', 'high');
+      await expect(img).toHaveAttribute('width', /^\d+$/);
+      await expect(img).toHaveAttribute('height', /^\d+$/);
       await expect(hero.locator('[data-birdy] .birdy-shape')).toHaveCSS('opacity', '1');
       expect(errors).toEqual([]);
     });
   }
 
-  for (const width of [390, 1024, 1280, 1440, 1920]) {
-    test(`telefonen täcker inte rödhaken och rödhaken syns helt i ${width} px`, async ({ page }) => {
+  for (const width of [320, 390, 768, 1024, 1280, 1440, 1920]) {
+    test(`fotot visas helt och etiketten ligger bara på passepartouten i ${width} px`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 });
       await page.goto('/sv/');
-      const phone = (await page.locator('[data-hero-phone] .ph').boundingBox())!;
-      const robin = (await page.locator('[data-robin]').boundingBox())!;
-      const overlaps = phone.x < robin.x + robin.width && robin.x < phone.x + phone.width
-        && phone.y < robin.y + robin.height && robin.y < phone.y + phone.height;
-      expect(overlaps, `telefon ${JSON.stringify(phone)} rödhake ${JSON.stringify(robin)}`).toBe(false);
-      expect(robin.x).toBeGreaterThanOrEqual(0);
-      expect(robin.x + robin.width).toBeLessThanOrEqual(width);
-    });
-  }
-
-  for (const [width, height] of [[1280, 720], [1366, 768], [1536, 730], [1600, 720], [1650, 700], [1920, 800], [1999, 800], [2000, 960], [2560, 1300]] as const) {
-    test(`korta och breda fönster: telefonen går fri och fötterna syns i ${width}×${height}`, async ({ page }) => {
-      await page.setViewportSize({ width, height });
-      await page.goto('/sv/');
-      const phone = (await page.locator('[data-hero-phone] .ph').boundingBox())!;
-      const robin = (await page.locator('[data-robin]').boundingBox())!;
-      const photo = (await page.locator('[data-hero] .photo').boundingBox())!;
-      const overlaps = phone.x < robin.x + robin.width && robin.x < phone.x + phone.width
-        && phone.y < robin.y + robin.height && robin.y < phone.y + phone.height;
-      expect(overlaps, `telefon ${JSON.stringify(phone)} rödhake ${JSON.stringify(robin)}`).toBe(false);
-      expect(robin.y + robin.height, 'fötterna ryms i fotot').toBeLessThanOrEqual(photo.y + photo.height);
-      expect(robin.x + robin.width).toBeLessThanOrEqual(width);
-      const last = (await page.locator('[data-hero] .meta li').last().boundingBox())!;
-      const hits = await page.evaluate(({ x, ys }) => ys.map((y) => !!document.elementFromPoint(x, y)?.closest('[data-hero-phone]')),
-        { x: last.x + last.width + 16, ys: [last.y + 1, last.y + last.height / 2, last.y + last.height - 1] });
-      expect(hits, 'metaraden har minst 8 px synlig luft till telefonen').toEqual([false, false, false]);
-      const copyBottom = await page.locator('[data-hero] .copy').evaluate((c) => c.getBoundingClientRect().bottom);
-      const metaTop = await page.locator('[data-hero] .meta').evaluate((m) => m.getBoundingClientRect().top);
-      expect(copyBottom, 'herotexten når aldrig metaraden').toBeLessThan(metaTop);
+      const img = page.locator('[data-hero] .dp-photo img');
+      await img.evaluate((i: HTMLImageElement) => i.decode());
+      const { ratio, natural } = await img.evaluate((i: HTMLImageElement) => {
+        const r = i.getBoundingClientRect();
+        return { ratio: r.width / r.height, natural: i.naturalWidth / i.naturalHeight };
+      });
+      expect(Math.abs(ratio - natural), 'inte beskuret').toBeLessThan(0.02);
+      const photo = (await img.boundingBox())!;
+      const label = (await page.locator('[data-hero] .dp-label').boundingBox())!;
+      expect(label.y, 'etiketten börjar under fotot').toBeGreaterThan(photo.y + photo.height + 4);
+      const frame = (await page.locator('[data-hero] .dp-frame').boundingBox())!;
+      expect(frame.x).toBeGreaterThanOrEqual(0);
+      expect(frame.x + frame.width).toBeLessThanOrEqual(width);
     });
   }
 
@@ -198,43 +203,42 @@ test.describe('första vyn', () => {
       await page.goto('/sv/');
       const nav = page.locator('#site-nav');
       const navH = await nav.evaluate((n) => n.getBoundingClientRect().height);
-      const copyTop = await page.locator('[data-hero] .copy').evaluate((c) => c.getBoundingClientRect().top + scrollY);
+      const top = await page.locator('[data-hero] .intro').evaluate((c) => c.getBoundingClientRect().top + scrollY);
       const settle = () => page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
-      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), Math.max(0, copyTop - navH - 30));
+      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), Math.max(0, top - navH - 30));
       await settle();
       await expect(nav).not.toHaveClass(/is-solid/);
-      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), copyTop - navH + 2);
+      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), top - navH + 2);
       await expect(nav).toHaveClass(/is-solid/);
     });
   }
 
-  test('rödhakens ruta börjar under menyn i 1920 px', async ({ page }) => {
-    await page.setViewportSize({ width: 1920, height: 900 });
-    await page.goto('/sv/');
-    const nav = (await page.locator('#site-nav').boundingBox())!;
-    const robin = (await page.locator('[data-robin]').boundingBox())!;
-    expect(robin.y).toBeGreaterThanOrEqual(nav.y + nav.height);
-  });
-
-  test('rubriken ryms på två rader på dator', async ({ page }) => {
+  test('planschen börjar under menyn och den handskrivna raden ryms på en rad på dator', async ({ page }) => {
     for (const path of ['/sv/', '/']) {
       for (const width of [1024, 1280, 1440, 1920]) {
         await page.setViewportSize({ width, height: 900 });
         await page.goto(path);
         await page.evaluate(() => document.fonts.ready);
-        const lines = await page.locator('[data-hero] h1').evaluate((h) => Math.round(h.getBoundingClientRect().height / parseFloat(getComputedStyle(h).lineHeight)));
-        expect(lines, `${path} ${width} px`).toBeLessThanOrEqual(2);
+        const nav = (await page.locator('#site-nav').boundingBox())!;
+        const plate = (await page.locator('[data-hero] .dp-top').boundingBox())!;
+        expect(plate.y, `${path} ${width} px`).toBeGreaterThanOrEqual(nav.y + nav.height);
+        const em = await page.locator('[data-hero] h1 em').evaluate((e) => ({
+          lines: Math.round(e.getBoundingClientRect().height / parseFloat(getComputedStyle(e).lineHeight)),
+          over: e.scrollWidth - (e.parentElement as HTMLElement).clientWidth,
+        }));
+        expect(em.lines, `${path} ${width} px`).toBe(1);
+        expect(em.over, `${path} ${width} px: raden går utanför spalten`).toBeLessThanOrEqual(0);
       }
     }
   });
 });
 
 test.describe('Birdy-fågeln flyger', () => {
-  test('fågeln flyger iväg vid scroll och kommer tillbaka', async ({ page }) => {
+  test('fågeln landar på planschen, flyger iväg vid scroll och kommer tillbaka', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/sv/');
     const bird = page.locator('[data-birdy]');
-    await expect(bird.locator('.birdy-shape')).toHaveCSS('opacity', '1');
+    await expect(bird.locator('.birdy-shape')).toHaveCSS('opacity', '1', { timeout: 8000 });
     await page.evaluate(() => window.scrollTo({ top: 320, behavior: 'instant' }));
     await expect.poll(() => bird.evaluate((b) => Number(getComputedStyle(b).opacity))).toBeLessThan(0.05);
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
@@ -260,17 +264,8 @@ test.describe('så funkar det och fältboken', () => {
     });
   }
 
-  test.describe('telefonen och smala skärmar', () => {
+  test.describe('smala skärmar', () => {
     test.use({ contextOptions: { reducedMotion: 'reduce' } });
-    for (const [width, height] of [[390, 844], [1024, 900], [1279, 900], [1280, 720]] as const) {
-      test(`herotelefonen slutar ovanför Så funkar det i ${width}×${height}`, async ({ page }) => {
-        await page.setViewportSize({ width, height });
-        await page.goto('/sv/');
-        const phone = (await page.locator('[data-hero-phone] .ph').boundingBox())!;
-        const kick = (await page.locator('#how-it-works .kick').first().boundingBox())!;
-        expect(phone.y + phone.height, 'telefonens underkant').toBeLessThan(kick.y);
-      });
-    }
     for (const width of [320, 360]) {
       test(`inget sidledes scroll på ${width} px`, async ({ page }) => {
         await page.setViewportSize({ width, height: 780 });

@@ -108,7 +108,8 @@ test.describe('marginalanteckningar', () => {
         await expect(el).toHaveCSS('font-family', /Caveat/);
         await expect(el).toHaveCSS('font-weight', '700');
       }
-      await expect(page.locator('[data-hero] .mnote')).toHaveCSS('color', 'rgb(242, 178, 122)');
+      // Peach on the hero's wall (mockup lift-c.html), apricot on the other espresso bands.
+      await expect(page.locator('[data-hero] .mnote')).toHaveCSS('color', 'rgb(253, 229, 203)');
       await expect(page.locator('#how-it-works .mnote')).toHaveCSS('color', 'rgb(154, 69, 38)');
       await expect(page.locator('#premium .mnote')).toHaveCSS('color', 'rgb(242, 178, 122)');
       await expect(page.locator('#download .mnote')).toHaveCSS('color', 'rgb(242, 178, 122)');
@@ -194,14 +195,6 @@ test.describe('rivna papperskanter', () => {
     expect(sealZ).toBeGreaterThan(edgeZ);
   });
 
-  test('herotelefonen ligger ovanför kanten mot Så funkar det i 1024×768', async ({ page }) => {
-    await page.setViewportSize({ width: 1024, height: 768 });
-    await page.goto('/sv/');
-    const phoneZ = await page.locator('.phone-slot').evaluate((el) => Number(getComputedStyle(el).zIndex));
-    const edgeZ = await page.locator('#how-it-works > .deckle').evaluate((el) => Number(getComputedStyle(el).zIndex));
-    expect(phoneZ).toBeGreaterThan(edgeZ);
-  });
-
   test('bloggen och juridiken', async ({ page }) => {
     await page.goto('/sv/blog/');
     expect(await fills(page)).toEqual(['rgb(246, 239, 226)', 'rgb(246, 239, 226)']);
@@ -215,12 +208,12 @@ test.describe('rivna papperskanter', () => {
 test.describe('delningsbilder', () => {
   const shares = {
     '/sv/': {
-      alt: copy.sv.alt.panorama,
-      image: /\/og-field-sv\.png\?v=2$/,
+      alt: copy.sv.alt.shareImage,
+      image: /\/og-field-sv\.jpg\?v=3$/,
     },
     '/': {
-      alt: copy.en.alt.panorama,
-      image: /\/og-field-en\.png\?v=2$/,
+      alt: copy.en.alt.shareImage,
+      image: /\/og-field-en\.jpg\?v=3$/,
     },
   } as const;
   for (const [path, { alt, image }] of Object.entries(shares)) {

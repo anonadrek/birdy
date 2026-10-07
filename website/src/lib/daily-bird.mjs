@@ -124,18 +124,33 @@ export function selectAppDailyBird(species, date) {
 }
 
 /**
- * What the home page shows (plan Task 1): the app's bird when it has a species page in this build, with the line
- * "the same bird as in the app today" from SAME_AS_APP_FROM on. Otherwise a pick among the species with a page,
- * with the same seed, so it stays the same all day, and without that line. Null when no species has a page.
- * @param {{ appSpecies: Parameters<typeof selectAppDailyBird>[0], pageQids: string[], date: { year: number, month: number, day: number, iso: string } }} input
+ * What the home page shows (plan Task 1): the app's bird (`appQid`, from selectAppDailyBird) when it has a species
+ * page in this build, with the line "the same bird as in the app today" from SAME_AS_APP_FROM on. Otherwise a pick
+ * among the species with a page, with the same seed, so it stays the same all day, and without that line. Null when
+ * no species has a page.
+ * @param {{ appQid: string | null, pageQids: string[], date: { year: number, month: number, day: number, iso: string } }} input
  * @returns {{ qid: string, appQid: string | null, sameAsApp: boolean } | null}
  */
-export function siteDailyBird({ appSpecies, pageQids, date }) {
-  const appQid = selectAppDailyBird(appSpecies, date);
+export function siteDailyBird({ appQid, pageQids, date }) {
   if (appQid && pageQids.includes(appQid)) return { qid: appQid, appQid, sameAsApp: date.iso >= SAME_AS_APP_FROM };
   if (pageQids.length === 0) return null;
   const sorted = [...pageQids].sort(byCodeUnits);
   return { qid: sorted[new KotlinRandom(daySeed(date)).nextInt(sorted.length)], appQid, sameAsApp: false };
+}
+
+/** Licences that ask nothing of us, so the photo may be cropped or framed together with text (plan house rules). */
+export const FREE_LICENSES = new Set(['CC0', 'Public domain']);
+
+/**
+ * The photo a plate or a card may show: the species' main photo when it is CC0 or public domain, else its first other
+ * photo that is. Undefined when it has none; such a species gets no plate or card (plan house rules: only CC0 and
+ * public domain photos are cropped or framed with text).
+ * @template {{ role: string, license: string }} T
+ * @param {T[]} images
+ * @returns {T | undefined}
+ */
+export function freeImage(images) {
+  return images.find((i) => i.role === 'hero' && FREE_LICENSES.has(i.license)) ?? images.find((i) => FREE_LICENSES.has(i.license));
 }
 
 const ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
@@ -246,6 +261,16 @@ function yamlFiles(dir) {
   return readdirSync(dir, { recursive: true, encoding: 'utf8' })
     .filter((f) => f.endsWith('.yaml'))
     .map((f) => join(dir, f));
+}
+
+/**
+ * The app's species as frozen in the golden file (release 1.3.0), for test builds (SPECIES_FIXTURES=1): with the date
+ * pinned by BIRDY_TODAY the fixture build always gets the same app bird, whatever happens to the YAML later.
+ * @param {string} websiteRoot
+ */
+export function loadFixtureAppSpecies(websiteRoot) {
+  const golden = JSON.parse(readFileSync(resolve(websiteRoot, 'tests', 'fixtures', 'daily-bird-golden.json'), 'utf8'));
+  return /** @type {ReturnType<typeof parseSpeciesYaml>[]} */ (golden.species);
 }
 
 /** @type {{ root: string, species: ReturnType<typeof parseSpeciesYaml>[] } | undefined} */

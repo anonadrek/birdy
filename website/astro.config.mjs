@@ -6,8 +6,9 @@ import sharp from 'sharp';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { basename, dirname, resolve } from 'node:path';
-import { SHARE_QUALITY, SHARE_SIZE, assetsDir, builtSpeciesMedia, isPreview, paperColour, speciesDir } from './src/lib/species-source.mjs';
+import { SHARE_QUALITY, SHARE_SIZE, assetsDir, builtSpeciesMedia, isPreview, paperColour, speciesDir, useFixtures } from './src/lib/species-source.mjs';
 import { readSpeciesSitemapInfo } from './src/lib/species-sitemap.mjs';
+import { buildDate, loadAppSpecies, loadFixtureAppSpecies, selectAppDailyBird } from './src/lib/daily-bird.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 
@@ -194,6 +195,28 @@ const speciesMediaModule = {
   },
 };
 
+// Dagens fågel (plan 2026-10-08 Task 1): today's date in Europe/Stockholm and the app's pick for it, worked out once
+// per build from the app's own species YAML (src/lib/daily-bird.mjs). A virtual module, so the 839 YAML files are
+// read here in Node and never enter Vite's module graph; the home page combines the pick with the species that have
+// a page in this build. The nightly rebuild (.github/workflows/daily-site-build.yml) moves it to the next day.
+const DAILY_BIRD = 'virtual:birdy-daily-bird';
+/** @type {import('vite').Plugin} */
+const dailyBirdModule = {
+  name: 'birdy-daily-bird',
+  resolveId(id) {
+    return id === DAILY_BIRD ? `\0${DAILY_BIRD}` : undefined;
+  },
+  load(id) {
+    if (id !== `\0${DAILY_BIRD}`) return undefined;
+    const date = buildDate();
+    // Test builds read the app's species as frozen in the golden file, so a pinned date always gives the same bird.
+    const appQid = selectAppDailyBird(useFixtures() ? loadFixtureAppSpecies(root) : loadAppSpecies(root), date);
+    const pinned = process.env.BIRDY_TODAY ? ', BIRDY_TODAY' : '';
+    console.log(`[birdy-daily-bird] ${date.iso} (Europe/Stockholm${pinned}): appens Dagens fågel ${appQid ?? 'ingen'}`);
+    return [`export const date = ${JSON.stringify(date)};`, `export const appQid = ${JSON.stringify(appQid)};`, ''].join('\n');
+  },
+};
+
 export default defineConfig({
   site: 'https://birdy.community',
   trailingSlash: 'ignore',
@@ -217,6 +240,6 @@ export default defineConfig({
     },
   }), speciesAudio, speciesShare],
   vite: {
-    plugins: [tailwindcss(), speciesMediaModule],
+    plugins: [tailwindcss(), speciesMediaModule, dailyBirdModule],
   },
 });

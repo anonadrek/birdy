@@ -8,3 +8,11 @@ declare module 'virtual:birdy-species-media' {
   /** Share image (og:image) links keyed by QID ("/og/species/Q25485.3f9c0a1b2d.jpg"); the build draws the files there. */
   export const share: ReadonlyMap<string, string>;
 }
+
+// The virtual module astro.config.mjs builds (plugin birdy-daily-bird) from src/lib/daily-bird.mjs: today's date in
+// Europe/Stockholm when the site is built (or BIRDY_TODAY) and the app's Dagens fågel for it.
+declare module 'virtual:birdy-daily-bird' {
+  export const date: { year: number; month: number; day: number; iso: string; weekday: number; dayOfYear: number };
+  /** The QID the app's DailyBirdSelector picks for `date`, or null when no species qualifies. */
+  export const appQid: string | null;
+}

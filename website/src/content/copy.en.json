@@ -26,10 +26,16 @@
     "kicker": "Bird guide and field journal",
     "headline": "Know the bird.",
     "line2": "Keep the moment.",
-    "note": "See. Listen. Keep.",
-    "sub": "Point the camera, pick a photo or let the bird sing. Birdy suggests the species right on your phone, and you save the sighting in your own field journal.",
-    "metaLabel": "Birdy at a glance",
-    "meta": ["839 European species", "Works without a signal", "No account"]
+    "note": "a new bird every day, here and in the app",
+    "sub": "Point the camera, pick a photo or let the bird sing. Birdy suggests the species right on your phone, and you save the sighting in your own field journal."
+  },
+  "daily": {
+    "kicker": "Bird of the day",
+    "weekdays": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    "readMore": "Read about it",
+    "sameAsApp": "the same bird as in the app today",
+    "chartLabel": "Share of all bird reports per month in Artportalen, highest in {month}"
   },
   "phone": {
     "match": {
@@ -466,6 +472,6 @@
     "wordmark": "Birdy wordmark",
     "playStoreBadge": "Get it on Google Play",
     "appStoreBadge": "Coming soon to the App Store",
-    "panorama": "A European robin in warm light with the words Know the bird. Keep the moment."
+    "shareImage": "A photo of a European robin, framed as a plate on a dark wall, beside the words Know the bird. Keep the moment."
   }
 }
