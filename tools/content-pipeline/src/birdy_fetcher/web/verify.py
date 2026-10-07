@@ -279,9 +279,12 @@ def _fact_tag(fact: dict[str, Any]) -> str:
     """The opening tag, with the topic so the checker can tell a look-alike fact (which may
     describe the other species, see the prompt) from the rest, and that other species' name."""
     attrs = f'id="{fact["id"]}" topic="{fact["topic"]}"'
-    other = (fact.get("other") or {}).get("scientific")
-    if fact["topic"] == "lookalike" and other:
-        attrs += f' other="{html.escape(str(other), quote=True)}"'
+    other = fact.get("other") or {}
+    if fact["topic"] == "lookalike" and other.get("scientific"):
+        attrs += f' other="{html.escape(str(other["scientific"]), quote=True)}"'
+        if other.get("written"):
+            # Birdy's name can differ from the quote's ("C. corone"): V1 sees both.
+            attrs += f' written="{html.escape(str(other["written"]), quote=True)}"'
     return f"<fact {attrs}>"
 
 

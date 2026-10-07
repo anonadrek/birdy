@@ -553,3 +553,21 @@ def test_the_verify_prompt_accepts_scandinavia_and_translated_names_and_units() 
         assert place in system
     assert '"blue tit"' in system
     assert '"14 cm"' in system
+
+
+def test_render_facts_for_check_shows_how_the_article_writes_the_lookalike() -> None:
+    lookalike = {
+        "id": "f03",
+        "topic": "lookalike",
+        "sv": "Kråkan är helsvart.",
+        "sources": [{"article": "sv", "quote": "ringande ti-ta ti-ta"}],
+        "other": {"scientific": "Corvus corone", "qid": "Q26198", "written": "C. corone"},
+    }
+    text = render_facts_for_check([lookalike], {"sv": ARTICLE})
+    assert '<fact id="f03" topic="lookalike" other="Corvus corone" written="C. corone">' in text
+
+
+def test_the_verify_prompt_explains_the_written_attribute() -> None:
+    template = (PIPELINE / "prompts/verify-v1.md").read_text(encoding="utf-8")
+    system, _ = _split_prompt(template, about=ABOUT, facts="")
+    assert "the written attribute" in system

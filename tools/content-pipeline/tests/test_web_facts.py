@@ -283,7 +283,13 @@ def test_an_abbreviated_lookalike_gets_the_binomial_and_its_qid() -> None:
         index,
         subject="Corvus frugilegus",
     )
-    assert check.facts[0]["other"] == {"scientific": "Corvus corone", "qid": "Q26198"}
+    # The name as the article writes it stays next to Birdy's (fix wave 2026-10-07), so V1
+    # and an audit see what the quote said.
+    assert check.facts[0]["other"] == {
+        "scientific": "Corvus corone",
+        "qid": "Q26198",
+        "written": "C. corone corone",
+    }
 
 
 def test_a_lookalike_birdy_does_not_have_keeps_the_name_as_written() -> None:

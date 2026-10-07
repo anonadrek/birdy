@@ -700,3 +700,18 @@ def test_the_status_line_names_the_fact_the_status_comes_from() -> None:
     template = "System: s\n\nUser: {status_line}"
     _, user = render_write_prompt(template, record, [], "", "", [])
     assert user == "Förekommer inte (fact d09)"
+
+
+def test_a_lookalike_echoed_with_its_written_name_gets_its_qid() -> None:
+    from birdy_fetcher.web.text_step import _lookalike_qid_map
+
+    record = {
+        "facts": [
+            {
+                "id": "f09",
+                "topic": "lookalike",
+                "other": {"scientific": "Corvus corone", "qid": "Q26198", "written": "C. corone"},
+            }
+        ]
+    }
+    assert _lookalike_qid_map(record) == {"Corvus corone": "Q26198", "C. corone": "Q26198"}

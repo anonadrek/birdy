@@ -39,7 +39,8 @@ class TextContext:
         for fact in facts:
             if fact.get("topic") == "lookalike":
                 other = fact.get("other", {})
-                others.update(v for v in (other.get("qid"), other.get("scientific")) if v)
+                names = (other.get("qid"), other.get("scientific"), other.get("written"))
+                others.update(v for v in names if v)
         return cls({f["id"]: f for f in facts}, frozenset(others))
 
 

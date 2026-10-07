@@ -139,9 +139,10 @@ def _lookalike_qid_map(record: Record) -> dict[str, str]:
         if fact.get("topic") != "lookalike":
             continue
         other = fact.get("other") or {}
-        qid, scientific = other.get("qid"), other.get("scientific")
-        if qid and scientific:
-            mapping[scientific] = qid
+        qid = other.get("qid")
+        for name in (other.get("scientific"), other.get("written")):
+            if qid and name:
+                mapping[name] = qid
     return mapping
 
 

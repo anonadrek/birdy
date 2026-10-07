@@ -136,6 +136,9 @@ def _entry(
         # else the name as the article writes it (R3, 2026-10-07).
         if found.binomial is not None and found.qid is not None:
             entry["other"] = {"scientific": found.binomial, "qid": found.qid}
+            if found.binomial != written:
+                # What the article said, for V1 and an audit (fix wave 2026-10-07).
+                entry["other"]["written"] = written
         else:
             entry["other"] = {"scientific": written}
         if found.note is not None:
