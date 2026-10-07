@@ -111,20 +111,24 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
     // Anti-backscatter: the receipt goes only to the (authenticated) From, never to Reply-To — a
     // forged From/Reply-To with an unauthenticated message must not turn Birdy into a relay.
     const sender = addressOf(email.from);
-    const authenticated = email.authentication?.dkim === 'pass' || email.authentication?.dmarc === 'pass';
+    const dkim = email.authentication?.dkim ?? null;
+    const dmarc = email.authentication?.dmarc ?? null;
+    const authenticated = dkim === 'pass' || dmarc === 'pass';
     if (isAutomated(email, support)) {
-      say({ outcome: 'no-receipt', id, reason: 'automated' });
+      say({ outcome: 'no-receipt', id, reason: 'automated', dkim, dmarc });
     } else if (isThreadReply(email)) {
-      say({ outcome: 'no-receipt', id, reason: 'thread' });
+      say({ outcome: 'no-receipt', id, reason: 'thread', dkim, dmarc });
     } else if (!authenticated) {
-      say({ outcome: 'no-receipt', id, reason: 'unauthenticated' });
+      say({ outcome: 'no-receipt', id, reason: 'unauthenticated', dkim, dmarc });
     } else if (mailedRecently(await resolvedClient.listSent(), sender, now, env.FORWARD_TO)) {
-      say({ outcome: 'no-receipt', id, reason: 'recent' });
+      say({ outcome: 'no-receipt', id, reason: 'recent', dkim, dmarc });
     } else {
-      const { subject, text } = receiptMessage(email.subject);
+      // DKIM alone is enough to send a receipt at all, but echoing the original subject back is
+      // held to the stricter DMARC pass (domain-aligned) — otherwise a fixed "Re: Birdy".
+      const { subject, text } = receiptMessage(dmarc === 'pass' ? email.subject : '');
       const thread = email.message_id ? { 'In-Reply-To': email.message_id, References: email.message_id } : {};
       await resolvedClient.send({ from: `Birdy <${env.SUPPORT_ADDRESS}>`, to: [sender], subject, text, headers: { 'Auto-Submitted': 'auto-replied', ...thread } }, `receipt-${id}`);
-      say({ outcome: 'receipt-sent', id });
+      say({ outcome: 'receipt-sent', id, dkim, dmarc });
     }
   } catch (error) {
     say({ outcome: 'receipt-failed', id, error: error.name, statusCode: error.statusCode });

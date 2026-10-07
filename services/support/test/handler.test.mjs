@@ -103,6 +103,8 @@ test('a message is forwarded with a label and gets one receipt, each with its id
   assert.equal(receipt.key, 'receipt-em_1');
   assert.deepEqual(receipt.payload.to, ['anna@example.se']);
   assert.equal(receipt.payload.from, 'Birdy <support@birdy.community>');
+  // The base fixture's authentication has dmarc: 'pass', so the receipt may echo the real subject.
+  assert.equal(receipt.payload.subject, 'Re: Appen kraschar');
   assert.equal(receipt.payload.headers['Auto-Submitted'], 'auto-replied');
   assert.equal(receipt.payload.headers['In-Reply-To'], '<m1@example.se>');
   assert.equal(client.calls.listAttachments, 0);
@@ -144,6 +146,28 @@ test('SPF alone is not enough for a receipt', async () => {
   const client = fakeClient({ mail: { ...email, authentication: { spf: 'pass', dkim: 'fail', dmarc: 'fail' } } });
   await run(client);
   assert.deepEqual(client.calls.send.map((c) => c.key), ['forward-em_1']);
+});
+
+test('the receipt subject echoes the original only when DMARC passes; otherwise a fixed "Re: Birdy" (DKIM alone is enough to send one, but not to echo the subject)', async () => {
+  const client = fakeClient({ mail: { ...email, authentication: { dkim: 'pass', dmarc: 'gray' } } });
+  await run(client);
+  const receipt = client.calls.send.find((c) => c.key === 'receipt-em_1');
+  assert.equal(receipt.payload.subject, 'Re: Birdy');
+});
+
+test('receipt log lines carry the dkim and dmarc result strings, which are not personal data', async () => {
+  const logs = [];
+  await run(fakeClient(), undefined, undefined, { log: (l) => logs.push(l) });
+  const receiptLine = logs.find((l) => l.includes('receipt-sent'));
+  assert.match(receiptLine, /"dkim":"pass"/);
+  assert.match(receiptLine, /"dmarc":"pass"/);
+
+  const unauthClient = fakeClient({ mail: { ...email, authentication: { dkim: 'fail', dmarc: 'fail' } } });
+  const unauthLogs = [];
+  await run(unauthClient, undefined, undefined, { log: (l) => unauthLogs.push(l) });
+  const noReceiptLine = unauthLogs.find((l) => l.includes('no-receipt'));
+  assert.match(noReceiptLine, /"dkim":"fail"/);
+  assert.match(noReceiptLine, /"dmarc":"fail"/);
 });
 
 test('no receipt when Birdy mailed the sender in the last 24 hours', async () => {
