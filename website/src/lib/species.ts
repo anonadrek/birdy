@@ -5,6 +5,7 @@ import groupData from '../data/species-groups.json';
 import type { Copy, Locale } from './i18n';
 import { comparisonsDir, hasPageContract, isComparisonBuilt, isPreview, isSpeciesBuilt, speciesDir, useFixtures } from './species-source.mjs';
 import type { speciesPage } from './species-schema.mjs';
+import { normalizeSearch } from './species-search.mjs';
 import { audio as speciesAudio, images as speciesImages } from 'virtual:birdy-species-media';
 
 /** Any species file: the full page data for written and verified records, only the envelope for the rest. */
@@ -260,9 +261,13 @@ export function playHref(campaign: string, medium: 'species' | 'group' | 'hub' |
   return `${PLAY_URL}&referrer=${encodeURIComponent(referrer)}`;
 }
 
-/** Lowercase, accents removed: "Gök" and "gok" both match. The page script normalises the same way. */
+/**
+ * Lowercase, accents removed, punctuation turned to spaces: "Gök" and "gok" both match, and so do
+ * "black headed gull" and "Black-headed Gull". The hub's search script normalises the query the same
+ * way (src/lib/species-search.mjs) and matches when every query word is present, in any order.
+ */
 export function searchKey(s: Species): string {
-  return [s.names.sv, s.names.en, s.names.scientific].join(' ').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+  return normalizeSearch([s.names.sv, s.names.en, s.names.scientific].join(' '));
 }
 
 export function wikiUrl(lang: WikiLang, ref: WikiRef): string {

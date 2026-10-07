@@ -58,6 +58,59 @@ test.describe('ingångssidan', () => {
     await expect(page.locator('[data-item]:visible')).toHaveCount(1);
   });
 
+  test('sökningen struntar i ordordning ("tit great" hittar Talgoxe)', async ({ page }) => {
+    await page.goto('/sv/arter/');
+    await page.locator('#species-search').fill('tit great');
+    await expect(page.locator('[data-item]:visible')).toHaveCount(1);
+    await expect(page.locator('[data-item]:visible')).toContainText('Talgoxe');
+  });
+
+  test('sökningen struntar i bindestreck ("long eared owl" hittar Hornuggla)', async ({ page }) => {
+    await page.goto('/sv/arter/');
+    await page.locator('#species-search').fill('long eared owl');
+    await expect(page.locator('[data-item]:visible')).toHaveCount(1);
+    await expect(page.locator('[data-item]:visible')).toContainText('Hornuggla');
+  });
+
+  test('bokstavsavsnitt utan träff döljs vid sökning', async ({ page }) => {
+    await page.goto('/sv/arter/');
+    await page.locator('#species-search').fill('talg');
+    const visible = page.locator('section.letter:visible');
+    await expect(visible).toHaveCount(1);
+    await expect(visible.locator('h3')).toHaveText('T');
+  });
+
+  test('sökträffarna annonseras i en statusrad för skärmläsare', async ({ page }) => {
+    await page.goto('/sv/arter/');
+    const status = page.locator('[data-count]');
+    await expect(status).toHaveAttribute('role', 'status');
+    await expect(status).toHaveText('');
+    await page.locator('#species-search').fill('talg');
+    await expect(status).toHaveText('1 art');
+    await page.locator('#species-search').fill('zzzz');
+    await expect(status).toHaveText('0 arter');
+    await page.locator('#species-search').fill('');
+    await expect(status).toHaveText('');
+  });
+
+  test('grupperna och jämförelserna döljs medan man söker, så resultaten hamnar direkt under sökfältet', async ({ page }) => {
+    await page.goto('/sv/arter/');
+    await expect(page.locator('[data-browse]')).toBeVisible();
+    await page.locator('#species-search').fill('talg');
+    await expect(page.locator('[data-browse]')).toBeHidden();
+    await page.locator('#species-search').fill('');
+    await expect(page.locator('[data-browse]')).toBeVisible();
+  });
+
+  test('sökresultatet hamnar ovanför vikningen på 390 px', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/sv/arter/?q=talg');
+    const box = await page.locator('[data-item]:visible').first().boundingBox();
+    expect(box).not.toBeNull();
+    expect(box!.y).toBeGreaterThanOrEqual(0);
+    expect(box!.y).toBeLessThan(844);
+  });
+
   test('390 px utan sidledsscroll', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/sv/arter/');

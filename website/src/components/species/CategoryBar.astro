@@ -32,8 +32,9 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
           class:list={['chip', { 'is-active': c.key === active }]}
           href={c.href}
           aria-current={c.key === active ? (c.href === here ? 'page' : 'true') : undefined}
+          aria-label={`${c.label}, ${countLabel(c.n, t)}`}
         >
-          {c.label}<span class="n" aria-hidden="true"> {c.n}</span><span class="sr-only">, {countLabel(c.n, t)}</span>
+          {c.label} <span class="n">{c.n}</span>
         </a>
       ))}
     </nav>
@@ -106,7 +107,8 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
   }
   @media (max-width: 760px) {
     .search { padding: 0; border-color: transparent; background: none; }
-    .search input { width: 0; padding: 0; }
+    /* 16px, not the 13px above: below that iOS Safari zooms the page in on focus (controller review 2026-10-07). */
+    .search input { width: 0; padding: 0; font-size: 16px; }
     .search:has(input:focus) { padding: 0 4px 0 14px; border-color: var(--line); background: var(--paper); }
     .search:has(input:focus) input { width: 120px; padding: 7px 0; }
     .search-btn { width: 44px; height: 44px; }

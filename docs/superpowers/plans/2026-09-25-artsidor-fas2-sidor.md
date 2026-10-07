@@ -1788,8 +1788,9 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
           class:list={['chip', { 'is-active': c.key === active }]}
           href={c.href}
           aria-current={c.key === active ? (c.href === here ? 'page' : 'true') : undefined}
+          aria-label={`${c.label}, ${countLabel(c.n, t)}`}
         >
-          {c.label}<span class="n" aria-hidden="true"> {c.n}</span><span class="sr-only">, {countLabel(c.n, t)}</span>
+          {c.label} <span class="n">{c.n}</span>
         </a>
       ))}
     </nav>
@@ -1862,7 +1863,8 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
   }
   @media (max-width: 760px) {
     .search { padding: 0; border-color: transparent; background: none; }
-    .search input { width: 0; padding: 0; }
+    /* 16px, not the 13px above: below that iOS Safari zooms the page in on focus (controller review 2026-10-07). */
+    .search input { width: 0; padding: 0; font-size: 16px; }
     .search:has(input:focus) { padding: 0 4px 0 14px; border-color: var(--line); background: var(--paper); }
     .search:has(input:focus) input { width: 120px; padding: 7px 0; }
     .search-btn { width: 44px; height: 44px; }
@@ -1874,9 +1876,9 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
 </style>
 ```
 
-(Rättat i efterhand, controller-granskning 2026-10-07: fokusringen klipptes av `.chips`s `overflow-x` (padding på `.chips` + motsvarande negativ marginal löser det, barhöjden oförändrad via mindre padding på `.catbar-inner`); mobilens sökfält var osynligt men fokuserbart (`:has(input:focus)` visar det och förstorar knappen till 44 px); platshållarens kontrast; fokuserade mål gömda bakom den klistrande raden (`scroll-padding-top` på `html:has(.catbar)`, överstyr global.css:s 5,5rem); skrollskriptet använde fel offset (bytt mot `getBoundingClientRect`-differens, skrollar bara vid behov); kantton + tunn rullist när raden svämmar över, ingen radbrytning. Minor: `aria-current` är `'page'` bara när chipens adress är sidans egen, annars `'true'`; Task 10:s test vid rad ~2645 bytt till `.chip[aria-current="true"]` (Task 8:s test står kvar som `"page"`, eftersom gruppsidan själv är chipens adress); antalet läses med en enhet för skärmläsare (`countLabel`); chipens träffyta ~45 px via `::after` (`inset: -7px 0` innanför radens egen padding, var -5px).
+(Rättat i efterhand, controller-granskning 2026-10-07: fokusringen klipptes av `.chips`s `overflow-x` (padding på `.chips` + motsvarande negativ marginal löser det, barhöjden oförändrad via mindre padding på `.catbar-inner`); mobilens sökfält var osynligt men fokuserbart (`:has(input:focus)` visar det och förstorar knappen till 44 px); platshållarens kontrast; fokuserade mål gömda bakom den klistrande raden (`scroll-padding-top` på `html:has(.catbar)`, överstyr global.css:s 5,5rem); skrollskriptet använde fel offset (bytt mot `getBoundingClientRect`-differens, skrollar bara vid behov); kantton + tunn rullist när raden svämmar över, ingen radbrytning. Minor: `aria-current` är `'page'` bara när chipens adress är sidans egen, annars `'true'`; Task 10:s test vid rad ~2800 bytt till `.chip[aria-current="true"]` (Task 8:s test står kvar som `"page"`, eftersom gruppsidan själv är chipens adress); antalet läses med en enhet för skärmläsare (`countLabel`); chipens träffyta ~45 px via `::after` (`inset: -7px 0` innanför radens egen padding, var -5px).
 
-(Rättat i efterhand, Task 7:s granskning 2026-10-07: en fokuserad chip skrollas in i raden själv på `focusin`, inte sidan (samma avgränsning som skrollskriptet ovan); den inbyggda `::-webkit-search-cancel-button` avstängd (`appearance: none`) så sökfältets eget kryss inte krockar med vår ikonknapp; mellanslaget mellan chipens namn och sifferspannen flyttat in i den `aria-hidden`-taggade spannen så skärmläsaren inte längre läser "Tättingar , 8 arter" (ett extra mellanslag före kommatecknet) — mellanslaget hörs inte, syns oförändrat.)
+(Rättat i efterhand, Task 7:s granskning 2026-10-07: en fokuserad chip skrollas in i raden själv på `focusin`, inte sidan (samma avgränsning som skrollskriptet ovan); den inbyggda `::-webkit-search-cancel-button` avstängd (`appearance: none`) så sökfältets eget kryss inte krockar med vår ikonknapp; sökfältets textstorlek 16px under 760 px, annars zoomar iOS Safari in vid fokus. Chipens tillgängliga namn kommer nu från `aria-label` på själva länken (`${c.label}, ${countLabel(c.n, t)}`) i stället för en osynlig syskon-span: en tidigare fixomgång, samma dag, flyttade mellanslaget mellan namnet och sifferspannen in i en `aria-hidden`-taggad span för att skärmläsaren inte skulle läsa "Tättingar , 8 arter"; den fixen är nu överflödig och borttagen, eftersom `aria-label` helt ersätter länkens beräknade namn och aldrig läser barnens text alls, stray space eller ej.)
 
 - [ ] **Step 5: Bygg**
 
@@ -1898,6 +1900,8 @@ git commit -m "feat(website): kategoriraden, artkortet och delade stilar för ar
 - Create: `website/tests/species.spec.ts`
 - Create: `website/src/components/species/SpeciesHub.astro`
 - Create: `website/src/pages/sv/arter/index.astro`, `website/src/pages/species/index.astro`
+- Create (controller review 2026-10-07): `website/src/lib/species-search.mjs`, `website/tests/unit/species-search.unit.mjs`, `website/scripts/check-empty-hub.mjs`
+- Modify (controller review 2026-10-07): `website/src/lib/species.ts` (`searchKey` byter till `normalizeSearch`), `website/src/components/species/CategoryBar.astro` (aria-label på chipen, mobilens textstorlek 16px), `website/src/content/copy.{en,sv}.json` (`hubLeadOne`, `hubLeadEmpty`, `descHubOne`), `website/package.json` (`build:empty`, `test:empty-hub`), `website/.gitignore` (`dist-empty/`)
 
 - [ ] **Step 1: Skriv testerna för ingångssidan**
 
@@ -1964,6 +1968,59 @@ test.describe('ingångssidan', () => {
     await expect(page.locator('[data-item]:visible')).toHaveCount(1);
   });
 
+  test('sökningen struntar i ordordning ("tit great" hittar Talgoxe)', async ({ page }) => {
+    await page.goto('/sv/arter/');
+    await page.locator('#species-search').fill('tit great');
+    await expect(page.locator('[data-item]:visible')).toHaveCount(1);
+    await expect(page.locator('[data-item]:visible')).toContainText('Talgoxe');
+  });
+
+  test('sökningen struntar i bindestreck ("long eared owl" hittar Hornuggla)', async ({ page }) => {
+    await page.goto('/sv/arter/');
+    await page.locator('#species-search').fill('long eared owl');
+    await expect(page.locator('[data-item]:visible')).toHaveCount(1);
+    await expect(page.locator('[data-item]:visible')).toContainText('Hornuggla');
+  });
+
+  test('bokstavsavsnitt utan träff döljs vid sökning', async ({ page }) => {
+    await page.goto('/sv/arter/');
+    await page.locator('#species-search').fill('talg');
+    const visible = page.locator('section.letter:visible');
+    await expect(visible).toHaveCount(1);
+    await expect(visible.locator('h3')).toHaveText('T');
+  });
+
+  test('sökträffarna annonseras i en statusrad för skärmläsare', async ({ page }) => {
+    await page.goto('/sv/arter/');
+    const status = page.locator('[data-count]');
+    await expect(status).toHaveAttribute('role', 'status');
+    await expect(status).toHaveText('');
+    await page.locator('#species-search').fill('talg');
+    await expect(status).toHaveText('1 art');
+    await page.locator('#species-search').fill('zzzz');
+    await expect(status).toHaveText('0 arter');
+    await page.locator('#species-search').fill('');
+    await expect(status).toHaveText('');
+  });
+
+  test('grupperna och jämförelserna döljs medan man söker, så resultaten hamnar direkt under sökfältet', async ({ page }) => {
+    await page.goto('/sv/arter/');
+    await expect(page.locator('[data-browse]')).toBeVisible();
+    await page.locator('#species-search').fill('talg');
+    await expect(page.locator('[data-browse]')).toBeHidden();
+    await page.locator('#species-search').fill('');
+    await expect(page.locator('[data-browse]')).toBeVisible();
+  });
+
+  test('sökresultatet hamnar ovanför vikningen på 390 px', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/sv/arter/?q=talg');
+    const box = await page.locator('[data-item]:visible').first().boundingBox();
+    expect(box).not.toBeNull();
+    expect(box!.y).toBeGreaterThanOrEqual(0);
+    expect(box!.y).toBeLessThan(844);
+  });
+
   test('390 px utan sidledsscroll', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/sv/arter/');
@@ -2025,6 +2082,13 @@ const letters = [...new Set(sorted.map((s) => firstLetter(s.names[locale])))];
 const pathname = hubHref(locale);
 const n = all.length;
 const title = t.species.titleHub.replace('{count}', countLabel(n, t));
+// Grammar for n=1 ("1 vanlig fågel", not "1 vanliga fåglar"): own copy keys, not countLabel's {n} template,
+// since these are full sentences, not just a number (controller review 2026-10-07). The title doesn't need
+// one: it already goes through countLabel ("1 art" / "16 arter"), which is correct for every n.
+// n=0 (production right after Task 15's merge, before the first species is published, spec Task 15 Step 4):
+// no count-dependent sentence reads sensibly with "0", so both get a dedicated "coming soon" line instead.
+const leadText = n === 0 ? t.species.hubLeadEmpty : n === 1 ? t.species.hubLeadOne : t.species.hubLead.replace('{n}', String(n));
+const description = n === 0 ? t.species.hubLeadEmpty : n === 1 ? t.species.descHubOne : t.species.descHub.replace('{n}', String(n));
 const crumbs = [
   { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
   { name: t.species.crumbHub, href: pathname },
@@ -2032,7 +2096,7 @@ const crumbs = [
 const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace(/ \| Birdy$/, ''), locale, sorted)];
 ---
 
-<Layout locale={locale} pathname={pathname} alternatePath={hubHref(other)} title={title} description={t.species.descHub.replace('{n}', String(n))} jsonLd={jsonLd}>
+<Layout locale={locale} pathname={pathname} alternatePath={hubHref(other)} title={title} description={description} noindex={n === 0} jsonLd={jsonLd}>
   <Nav locale={locale} variant="solid" switchLangHref={hubHref(other)} />
   <CategoryBar locale={locale} active="all" search={false} />
   <main class="hub wrap">
@@ -2044,73 +2108,110 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace
     </nav>
     <Kicker text={t.species.kicker} />
     <JournalHeadline text={t.species.hubHeadline} level="h1" align="left" size="clamp(38px, 5vw, 60px)" />
-    <p class="lead">{t.species.hubLead.replace('{n}', String(n))}</p>
-    <div class="hub-search">
-      <label class="sr-only" for="species-search">{t.species.searchLabel}</label>
-      <input id="species-search" name="q" type="search" placeholder={t.species.searchPlaceholder} autocomplete="off" />
-    </div>
+    <p class="lead">{leadText}</p>
 
-    <h2 class="sp-h2">{t.species.hubGroups}</h2>
-    <ul class="groups" role="list">
-      {groups.map((g) => {
-        const photo = groupPhoto(g, all);
-        return (
-          <li>
-            <a class="gcard" href={groupHref(g, locale)}>
-              {photo && <Image src={photo} alt="" widths={[320, 480]} sizes="(max-width: 760px) 45vw, 200px" loading="lazy" decoding="async" />}
-              <span class="gcard-name">{g.name[locale]}</span>
-              <span class="gcard-n">{countLabel(sizes.get(g.key) ?? 0, t)}</span>
-            </a>
-          </li>
-        );
-      })}
-    </ul>
-
-    {comparisons.length > 0 && (
+    {n > 0 && (
       <Fragment>
-        <h2 class="sp-h2">{t.species.hubCompare}</h2>
-        <ul class="compare-list" role="list">
-          {comparisons.map((c) => <li><a href={c.href} data-compare-link>{c.label}</a></li>)}
-        </ul>
+        {/* Hidden by default: without JavaScript this box can neither filter (the script below) nor
+            submit (it isn't a <form>), so a no-JS visitor gets the plain A-to-Z list below instead of a
+            dead control (controller review 2026-10-07). The script unhides it. A native <search> landmark,
+            not a styling div. */}
+        <search class="hub-search" data-hub-search hidden>
+          <label class="sr-only" for="species-search">{t.species.searchLabel}</label>
+          <input id="species-search" name="q" type="search" placeholder={t.species.searchPlaceholder} autocomplete="off" />
+        </search>
+        {/* Always in the DOM (not inserted by the script), so a screen reader has it registered before the
+            first count change and can announce the ones after (controller review 2026-10-07). Empty, and
+            so silent, outside of a search. */}
+        <p class="sr-only" role="status" data-count data-count-one={t.species.countOne} data-count-many={t.species.countMany}></p>
+
+        {/* The group grid and the comparison list are tall enough to push a short set of search results
+            below the fold on a phone, so the script hides this block entirely while there's a query
+            (controller review 2026-10-07): the A-to-Z results then sit right under the search field. */}
+        <div data-browse>
+          <h2 class="sp-h2">{t.species.hubGroups}</h2>
+          <ul class="groups" role="list">
+            {groups.map((g) => {
+              const photo = groupPhoto(g, all);
+              return (
+                <li>
+                  <a class="gcard" href={groupHref(g, locale)}>
+                    {photo && <Image src={photo} alt="" width={480} widths={[320, 480]} sizes="(max-width: 760px) 45vw, 200px" loading="lazy" decoding="async" />}
+                    <span class="gcard-name">{g.name[locale]}</span>
+                    <span class="gcard-n">{countLabel(sizes.get(g.key) ?? 0, t)}</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+
+          {comparisons.length > 0 && (
+            <Fragment>
+              <h2 class="sp-h2">{t.species.hubCompare}</h2>
+              <ul class="compare-list" role="list">
+                {comparisons.map((c) => <li><a href={c.href} data-compare-link>{c.label}</a></li>)}
+              </ul>
+            </Fragment>
+          )}
+        </div>
+
+        <h2 class="sp-h2" id="a-o">{t.species.hubAll}</h2>
+        <p class="no-results" data-no-results hidden>{t.species.noResults}</p>
+        {letters.map((letter) => (
+          <section class="letter" data-letter>
+            <h3>{letter}</h3>
+            <ul role="list">
+              {sorted.filter((s) => firstLetter(s.names[locale]) === letter).map((s) => (
+                <li data-item data-search={searchKey(s)}>
+                  <a href={speciesHref(s, locale)}><span>{s.names[locale]}</span> <i lang="la">{s.names.scientific}</i></a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+
+        <p class="about-link"><a href={aboutHref(locale)}>{t.species.hubAbout}</a></p>
       </Fragment>
     )}
-
-    <h2 class="sp-h2" id="a-o">{t.species.hubAll}</h2>
-    <p class="no-results" data-no-results hidden>{t.species.noResults}</p>
-    {letters.map((letter) => (
-      <section class="letter" data-letter>
-        <h3>{letter}</h3>
-        <ul role="list">
-          {sorted.filter((s) => firstLetter(s.names[locale]) === letter).map((s) => (
-            <li data-item data-search={searchKey(s)}>
-              <a href={speciesHref(s, locale)}><span>{s.names[locale]}</span> <i>{s.names.scientific}</i></a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    ))}
-
-    <p class="about-link"><a href={aboutHref(locale)}>{t.species.hubAbout}</a></p>
   </main>
   <Footer locale={locale} switchLangHref={hubHref(other)} />
 </Layout>
 
 <script>
+  import { matchesSearch, normalizeSearch } from '../../lib/species-search.mjs';
+
+  const wrap = document.querySelector<HTMLElement>('[data-hub-search]');
   const input = document.querySelector<HTMLInputElement>('#species-search');
+  const browse = document.querySelector<HTMLElement>('[data-browse]');
   const items = [...document.querySelectorAll<HTMLElement>('[data-search]')];
   const sections = [...document.querySelectorAll<HTMLElement>('[data-letter]')];
   const empty = document.querySelector<HTMLElement>('[data-no-results]');
-  const norm = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim();
+  const status = document.querySelector<HTMLElement>('[data-count]');
+
+  // The search box only works with JavaScript running (see the markup comment above), so it starts
+  // hidden and is unhidden here, the moment we know the filtering below can actually do something.
+  if (wrap) wrap.hidden = false;
+
   const apply = () => {
-    const q = norm(input?.value ?? '');
+    const q = normalizeSearch(input?.value ?? '');
     let shown = 0;
     for (const item of items) {
-      const hit = !q || (item.dataset.search ?? '').includes(q);
+      const hit = matchesSearch(item.dataset.search ?? '', q);
       item.hidden = !hit;
       if (hit) shown += 1;
     }
     for (const section of sections) section.hidden = !section.querySelector('[data-item]:not([hidden])');
     if (empty) empty.hidden = shown > 0;
+    if (browse) browse.hidden = Boolean(q);
+    if (status) {
+      const tpl = shown === 1 ? status.dataset.countOne : status.dataset.countMany?.replace('{n}', String(shown));
+      status.textContent = q ? (tpl ?? '') : '';
+    }
+    const url = new URL(location.href);
+    const raw = input?.value.trim() ?? '';
+    if (raw) url.searchParams.set('q', raw);
+    else url.searchParams.delete('q');
+    history.replaceState(null, '', url);
   };
   const params = new URLSearchParams(location.search);
   if (input && params.has('q')) {
@@ -2126,9 +2227,10 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace
   .hub-search { margin: 22px 0 0; max-width: 420px; }
   .hub-search input { width: 100%; box-sizing: border-box; font: inherit; font-size: 15px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--ink); }
   .hub-search input:focus-visible { outline: 3px solid var(--rust); outline-offset: 2px; }
+  .hub-search input::placeholder { color: var(--muted); opacity: 1; }
   .groups { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
-  .gcard { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 6px; transition: transform .25s var(--ease-paper); }
-  .gcard:hover { transform: translateY(-2px); }
+  .gcard { display: block; height: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 6px; transition: transform .25s var(--ease-paper), box-shadow .25s var(--ease-paper); }
+  .gcard:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(var(--dark-rgb), .12); }
   .gcard :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
   .gcard-name { display: block; margin: 8px 4px 0; font-weight: 600; font-size: 14px; }
   .gcard-n { display: block; margin: 0 4px 4px; font-size: 12.5px; color: var(--muted); }
@@ -2147,6 +2249,8 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace
   .about-link a { color: var(--rust); border-bottom: 1px solid currentColor; padding-bottom: 2px; }
   @media (max-width: 760px) {
     .groups { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    /* 16px, not the 15px above: below that iOS Safari zooms the page in on focus (controller review 2026-10-07). */
+    .hub-search input { font-size: 16px; }
   }
 </style>
 ```
@@ -2171,10 +2275,12 @@ import SpeciesHub from '../../components/species/SpeciesHub.astro';
 <SpeciesHub locale="en" />
 ```
 
+(Rättat i efterhand, Task 7:s granskning 2026-10-07, hela tasken: **noll-arter-läget** -- `noindex` och bara ingressen (ingen sökruta, grupplista, jämförelselista eller A-till-Ö-lista) när `getAllSpecies()` är tom, med egna "på väg"-texter `species.hubLeadEmpty` (sv/en); konsekvenser i Task 12, 13, 14, 15 Step 4 (se respektive tasks noter) och ett nytt verktyg `npm run test:empty-hub` (`scripts/check-empty-hub.mjs`, bygger mot det RIKTIGA, i dag tomma `src/data/species/` via nytt skript `build:empty`, utökas i Task 14 med `check-seo.mjs`). **Sökresultat under vikningen** -- grupplistan och jämförelselistan (`<div data-browse>`) döljs av skriptet medan det finns en sökfråga, så A-till-Ö-resultaten hamnar direkt under sökfältet i stället för långt ned på mobilen. **Statusrad** -- en alltid närvarande, tyst `<p role="status" data-count>` annonserar antalet träffar (återanvänder `countOne`/`countMany` via data-attribut) för skärmläsare, tom utan sökning. **Ord- och bindestreckstolerant sökning** -- ny delad modul `src/lib/species-search.mjs` (`normalizeSearch`/`matchesSearch`, inga Astro-importer så den funkar både i `species.ts`s `searchKey` och i sidans eget skript) byter varje icke-bokstav/siffra mot ett mellanslag och kräver att varje sökord finns någonstans i nyckeln, i valfri ordning: "tit great" hittar Talgoxe, "long eared owl" hittar Hornuggla trots bindestrecket i "Long-eared Owl". Enhetstester i `tests/unit/species-search.unit.mjs`. **Sökfältets kontrast** -- `::placeholder` satt explicit (`var(--muted)`, `opacity: 1`), annars webbläsarens standardfärg. **Sökfältet utan JavaScript** -- `<search data-hub-search hidden>` (en riktig `<search>`-landmärkestagg, inte en div) döljs tills skriptet vet att filtreringen faktiskt fungerar; utan JavaScript (ingen `<form>`, ingen server-filtrering) hade en synlig sökruta varit en död kontroll. **n=1-grammatik** -- egna hela meningar `hubLeadOne`/`descHubOne` (sv/en) i stället för `{n}`-mallen ("1 vanlig fågel", inte "1 vanliga fåglar"); titeln behövde ingen egen nyckel, den går redan genom `countLabel`. **Minors:** `width={480}` på gruppkortets `<Image>` (saknades, `check-seo.mjs` kräver `width`/`height` på nya sidor från Task 14); `.gcard` fick `height: 100%` och samma hover-skugga som `SpeciesCard`; `lang="la"` på A-till-Ö-listans vetenskapliga namn; sökfältets textstorlek 16px under 760 px (annars zoomar iOS Safari in vid fokus, samma fix som kategoriradens eget sökfält, Task 6:s not ovan); frivillig `history.replaceState` håller `?q=` i adressfältet synkat med sökfältet utan att lägga till historikposter. Tester: 6 nya i `tests/species.spec.ts` (nedan), 11 nya i `tests/unit/species-search.unit.mjs`.)
+
 - [ ] **Step 5: Kör testerna igen**
 
 Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts`
-Expected: PASS (8 tester)
+Expected: PASS (14 tester, Task 7:s granskning 2026-10-07 lade till 6)
 
 - [ ] **Step 6: Commit**
 
@@ -2182,6 +2288,8 @@ Expected: PASS (8 tester)
 git add src/components/species/SpeciesHub.astro src/pages/sv/arter/index.astro src/pages/species/index.astro tests/species.spec.ts
 git commit -m "feat(website): ingångssidan för arterna med sökning och jämförelser"
 ```
+
+(Tillägg, controller-granskning 2026-10-07, egen commit: `src/lib/species-search.mjs`, `tests/unit/species-search.unit.mjs`, `scripts/check-empty-hub.mjs`, `src/lib/species.ts`, `src/components/species/CategoryBar.astro`, `src/content/copy.en.json`, `src/content/copy.sv.json`, `package.json`, `.gitignore` -- se den sammanfattande noten ovan.)
 
 ---
 
@@ -3491,8 +3599,8 @@ Lägg till i slutet av `tests/species.spec.ts`:
 ```ts
 test.describe('om-sidan', () => {
   for (const [path, h1, other, sections] of [
-    ['/sv/arter/om-artsidorna/', 'Så gör vi artsidorna', '/species/about-these-pages/', ['Källorna', 'Så används AI', 'Granskningen', 'Licenserna', 'Rättelser']],
-    ['/species/about-these-pages/', 'How we make the species pages', '/sv/arter/om-artsidorna/', ['The sources', 'How AI is used', 'The review', 'The licences', 'Corrections']],
+    ['/sv/arter/om-artsidorna/', 'Så gör vi artsidorna', '/species/about-these-pages/', ['Källorna', 'Så används AI', 'Kontrollen', 'Licenserna', 'Rättelser']],
+    ['/species/about-these-pages/', 'How we make the species pages', '/sv/arter/om-artsidorna/', ['The sources', 'How AI is used', 'The checks', 'The licences', 'Corrections']],
   ] as const) {
     test(`${path} har rubrikerna, mejladressen och språkparet`, async ({ page }) => {
       const errors = trackConsoleErrors(page);
@@ -3507,6 +3615,8 @@ test.describe('om-sidan', () => {
   }
 });
 ```
+
+(Rättat i efterhand, Task 7:s granskning 2026-10-07: testets rubriklista stod kvar som "Granskningen"/"The review" fast copy-texten redan hette "Kontrollen"/"The checks" sedan Task 5:s fixvåg, se noten vid Step 2 i Task 5 ovan. Verbatim-testet är det som skulle ha fångat det, inte lämnat det -- rättat innan den här tasken ens är kodad. Komponentkoden i Step 3 nedan är också rättad med samma vågs andra fynd: `noindex` på om-sidan när `getAllSpecies()` är tom, samma regel och skäl som hubsidan (`SpeciesHub.astro`), men sidans eget innehåll döljs inte -- bara `noindex` ändras. Komplettera `scripts/check-empty-hub.mjs` (finns sedan Task 7) med samma två kontroller för `sv/arter/om-artsidorna` och `species/about-these-pages` när den här tasken är klar.)
 
 - [ ] **Step 2: Kör och se dem faila**
 
@@ -3527,7 +3637,7 @@ import Kicker from '../ui/Kicker.astro';
 import JournalHeadline from '../ui/JournalHeadline.astro';
 import { getCopy, type Locale } from '../../lib/i18n';
 import { ALBIN_URL, ALBIT_URL, CONTACT_EMAIL } from '../../lib/links';
-import { SITE, aboutHref, breadcrumbJsonLd, hubHref } from '../../lib/species';
+import { SITE, aboutHref, breadcrumbJsonLd, getAllSpecies, hubHref } from '../../lib/species';
 import '../../styles/species.css';
 
 interface Props { locale: Locale }
@@ -3535,6 +3645,10 @@ const { locale } = Astro.props;
 const t = getCopy(locale);
 const a = t.speciesAbout;
 const other: Locale = locale === 'sv' ? 'en' : 'sv';
+// Same rule as the hub (SpeciesHub.astro, controller review 2026-10-07): before Task 16 has published the
+// first real species, nothing on the species pages is worth a search engine's attention yet. Unlike the
+// hub, the content here doesn't depend on the species list, so only `noindex` changes, nothing is hidden.
+const speciesCount = (await getAllSpecies()).length;
 const pathname = aboutHref(locale);
 const crumbs = [
   { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
@@ -3554,7 +3668,7 @@ const jsonLd = [
 ];
 ---
 
-<Layout locale={locale} pathname={pathname} alternatePath={aboutHref(other)} title={a.title} description={a.description} jsonLd={jsonLd}>
+<Layout locale={locale} pathname={pathname} alternatePath={aboutHref(other)} title={a.title} description={a.description} noindex={speciesCount === 0} jsonLd={jsonLd}>
   <Nav locale={locale} variant="solid" switchLangHref={aboutHref(other)} />
   <main class="about wrap">
     <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
@@ -3687,24 +3801,29 @@ Expected: FAIL (ingen länk "Arter" än)
 
 - [ ] **Step 3: Menyn**
 
-I `src/components/Nav.astro`, lägg till importen `import { hubHref } from '../lib/species';` och ersätt `const links = [ ... ];` med:
+**Villkor (Task 7:s granskning 2026-10-07):** "Arter" ska bara synas när det finns något att visa. Innan Task 16 publicerat den första riktiga arten (Task 15 Step 4: produktionsbygget går igenom med noll publicerade arter) är `getAllSpecies()` tom -- menyn ska då se ut som i dag, utan länken, i stället för att peka på en hub som själv bara visar en "på väg"-rad.
+
+I `src/components/Nav.astro`, lägg till importen `import { getAllSpecies, hubHref } from '../lib/species';` och ersätt `const links = [ ... ];` med:
 
 ```ts
 const speciesHub = hubHref(locale);
+const hasSpecies = (await getAllSpecies()).length > 0;
 const links = [
-  { href: speciesHub, label: t.nav.species },
+  ...(hasSpecies ? [{ href: speciesHub, label: t.nav.species }] : []),
   { href: `${home}#how-it-works`, label: t.nav.howItWorks },
   { href: `${home}#app`, label: t.nav.app },
   { href: `${home}#premium`, label: t.nav.premium },
   { href: fieldNotesHref(locale), label: t.nav.fieldNotes },
 ];
 // "Species" is current on the hub, group, species, comparison and about pages.
-const isCurrent = (href: string) => href === here || (href === speciesHub && here.startsWith(speciesHub));
+const isCurrent = (href: string) => href === here || (hasSpecies && href === speciesHub && here.startsWith(speciesHub));
 ```
 
 Byt båda förekomsterna av `aria-current={l.href === here ? 'page' : undefined}` mot `aria-current={isCurrent(l.href) ? 'page' : undefined}`.
 
 Kontrollera i 1024 px att menyraden fortfarande får plats (fem länkar, språkbytet och knappen). Om den bryter: sänk `gap` i `.links` från `26px` till `20px` i `@media (max-width: 1180px)`.
+
+Lägg till ett test som kör mot `npm run build:prod` (riktigt läge, `src/data/species/` är tom i dag) eller en egen testdatavariant med noll arter: menyn ska INTE innehålla "Arter"/"Species" då. `scripts/check-empty-hub.mjs` (finns sedan Task 7) är en bra plats att utöka: läs `dist-empty/`s startsida och kontrollera att `#site-nav` saknar en länk till `/sv/arter/`.
 
 - [ ] **Step 4: Sidfoten**
 
@@ -3716,14 +3835,16 @@ const topGroups = largestGroups(allSpecies, 5);
 const common = commonSpecies(allSpecies);
 ```
 
-Lägg till en ny kolumn före `<div class="col">` med `t.footer.explore`:
+Lägg till en ny kolumn före `<div class="col">` med `t.footer.explore`, villkorad på `allSpecies.length > 0` (samma skäl som menyns länk i Step 3: en kolumn med grupplänkar till en hub som bara visar "på väg" är värre än ingen kolumn alls, innan Task 16 publicerat den första arten):
 
 ```astro
-      <div class="col">
-        <h2 class="fh">{t.footer.species}</h2>
-        {topGroups.map((g) => <a href={groupHref(g, locale)}>{g.name[locale]}</a>)}
-        <a href={hubHref(locale)}>{t.footer.allSpecies}</a>
-      </div>
+      {allSpecies.length > 0 && (
+        <div class="col">
+          <h2 class="fh">{t.footer.species}</h2>
+          {topGroups.map((g) => <a href={groupHref(g, locale)}>{g.name[locale]}</a>)}
+          <a href={hubHref(locale)}>{t.footer.allSpecies}</a>
+        </div>
+      )}
 ```
 
 Lägg till före `<div class="fbot">`:
@@ -3735,6 +3856,8 @@ Lägg till före `<div class="fbot">`:
 ```
 
 **Ändrat 2026-10-07 (Task 4:s fixvåg):** `commonSpecies()` stoppar inte längre bygget när någon av de tolv saknar sida, utan returnerar de av de tolv som har en sida i bygget, i listans ordning. Arterna publiceras en i taget (Task 16) och koden ligger på `main` innan något är publicerat (Task 15 Step 4), så listan är tom eller ofullständig länge. Raden "Vanliga arter" döljs när listan är tom (villkoret ovan); testa både en tom och en ofullständig lista.
+
+**Tillägg (Task 7:s granskning 2026-10-07, skild från ovanstående):** `common.length > 0` döljer bara raden "Vanliga arter". Den NYA kolumnen "Arter" (grupplänkarna + "Alla arter", ovan) döljs av ett eget villkor, `allSpecies.length > 0` -- de två kan skilja sig åt: har bara en enda icke-vanlig art publicerats finns kolumnen (grupplänkar att visa) men inte raden (ingen av de tolv vanliga är med än). Testa alla tre lägen: noll arter (ingen kolumn, ingen rad), några arter men ingen av de tolv vanliga (kolumn, ingen rad), minst en av de tolv (kolumn och rad).
 
 I `<style>`: ändra `.fgrid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }` till `grid-template-columns: 1.6fr repeat(4, 1fr);` och lägg till:
 
@@ -3748,10 +3871,12 @@ I `<style>`: ändra `.fgrid { display: grid; grid-template-columns: 1.6fr 1fr 1f
 
 - [ ] **Step 5: Startsidans länk**
 
-I `src/components/Guide.astro`, lägg till importen `import { hubHref } from '../lib/species';` och efter `<CoverageMap locale={locale} />`:
+I `src/components/Guide.astro`, lägg till importen `import { getAllSpecies, hubHref } from '../lib/species';` och efter `<CoverageMap locale={locale} />`, villkorad på samma sätt som menyn och sidfoten (Step 3 och 4): en länk till en hub som bara säger "på väg" hjälper ingen innan Task 16 publicerat den första arten.
 
 ```astro
-    <p class="browse"><a href={hubHref(locale)}>{t.guide.browse} <span aria-hidden="true">→</span></a></p>
+    {(await getAllSpecies()).length > 0 && (
+      <p class="browse"><a href={hubHref(locale)}>{t.guide.browse} <span aria-hidden="true">→</span></a></p>
+    )}
 ```
 
 Och i komponentens `<style>`:
@@ -3760,6 +3885,8 @@ Och i komponentens `<style>`:
   .browse { margin: 28px 0 0; font-weight: 600; }
   .browse a { color: var(--rust); border-bottom: 1px solid currentColor; padding-bottom: 2px; }
 ```
+
+**Tillägg (Task 7:s granskning 2026-10-07): en hoppa-till-innehållet-länk.** `CategoryBar.astro` (Task 6) lägger upp till 16 chips (en per grupp) i tab-ordningen före sökfältet och sidans eget innehåll -- en tangentbords- eller skärmläsaranvändare som landar på en artsida måste nu tabba genom menyn OCH hela kategoriraden innan `<main>`. Lägg till en osynlig-tills-fokuserad hoppa-länk högst upp i `Layout.astro` (den delas av alla sidor, inte bara artsidorna, men kostar inget på de andra): `<a href="#main" class="skip-link">{t.nav.skipToContent}</a>` som första barn i `<body>`, pekar på ett `id="main"` tillagt på varje sidas `<main>`-element (de delade artsides-komponenterna har redan `<main class="hub wrap">` etc. -- lägg till `id="main"` där; startsidan, bloggen och juridiksidorna har sina egna `<main>`, samma sak). Nya copy-nycklar `nav.skipToContent`: "Hoppa till innehållet" / "Skip to content". Stil: `.skip-link { position: absolute; left: 12px; top: -48px; z-index: 200; background: var(--dark); color: var(--cream); padding: 12px 18px; border-radius: 8px; transition: top .2s; } .skip-link:focus { top: 12px; }` (osynlig förrän den tabbas till, dyker sedan upp överst till vänster). Test: `page.keyboard.press('Tab')` en gång på en artsida ska fokusera länken (`page.locator(':focus')` har texten "Hoppa till innehållet"), och att aktivera den (Enter eller `page.locator('#main')`-kontroll av fokus) hoppar förbi menyn och kategoriraden.
 
 - [ ] **Step 6: Kör alla webbtester**
 
@@ -3800,6 +3927,9 @@ import { comparisonsDir, isComparisonBuilt, isPreview, isSpeciesBuilt, readJsonD
 
 export const MIN_GROUP_SIZE = 3;
 const BASES = [['sv', '/sv/arter/'], ['en', '/species/']];
+// Kept in sync by hand with species.ts's ABOUT_SLUG (that file imports astro:content and can't be loaded
+// from this plain-JS module, see the file-level comment; Task 12 adds the about page these point to).
+const ABOUT_SLUG = { sv: 'om-artsidorna', en: 'about-these-pages' };
 
 /** @param {string} root the website folder */
 export function readSpeciesSitemapInfo(root) {
@@ -3815,6 +3945,17 @@ export function readSpeciesSitemapInfo(root) {
   /** @type {Map<string, number>} */
   const sizes = new Map();
   let newest = '';
+  // No species published yet (Task 15 Step 4: the production build goes through with zero of them):
+  // the hub and the about page have nothing of their own to show a search engine either, same reason and
+  // same noindex meta tag as SpeciesHub.astro and AboutSpeciesPages.astro (Task 7 and Task 12; keep the
+  // three in sync, the filter below is what actually keeps them out of the sitemap, the meta tag alone
+  // only hides them from being indexed, not from being listed).
+  if (built.length === 0) {
+    for (const [lang, base] of BASES) {
+      noindex.add(base);
+      noindex.add(`${base}${ABOUT_SLUG[lang]}/`);
+    }
+  }
   for (const r of built) {
     const at = r.generated?.text?.at ?? r.verification?.at ?? '';
     for (const [lang, base] of BASES) {
@@ -4183,6 +4324,8 @@ Failar en regel på en **befintlig** sida (en h1, alt, döda länkar) är det et
 Run: `npm run build:fixtures && node scripts/check-seo.mjs && PLAYWRIGHT_PORT=4327 npx playwright test`
 Expected: PASS (`dist/` är testdatans vanliga bygge igen efter förhandsbygget, som skrev till `dist-preview/`).
 
+**Tillägg (Task 7:s granskning 2026-10-07): den varaktiga kontrollen av noll-arter-läget.** Task 7 bevisade noindex och "bara ingressen" för `SpeciesHub.astro` mot `dist-empty/` (`npm run build:empty`, byggt av det RIKTIGA, i dag tomma `src/data/species/` -- inte testdatan) med ett eget litet skript `scripts/check-empty-hub.mjs`, eftersom varken sitemap-uteslutningen eller `check-seo.mjs` fanns kodade än. Nu finns båda. Kör, som en del av den här taskens Step 7: `npm run build:empty && node scripts/check-seo.mjs dist-empty`. `check-seo.mjs`s egen regel (noindex ⇔ saknas i sitemapen, körs för alla sidor under `/sv/arter/` och `/species/`, hubben och om-sidan inkluderade) bevisar nu sitemap-uteslutningen i det riktiga noll-arter-läget, helt utan ny testkod -- det är precis det `check-empty-hub.mjs` INTE kunde bevisa i Task 7 (sitemap-koden fanns inte då). **Fäll inte Task 7:s `check-empty-hub.mjs`:** behåll den (den kontrollerar markupen direkt, snabbare och mer riktad än att parsa en hel sitemap), men lägg till `node scripts/check-seo.mjs dist-empty` som ett andra, kompletterande steg i `npm run test:empty-hub` i `package.json` (`"test:empty-hub": "npm run build:empty && node scripts/check-empty-hub.mjs && node scripts/check-seo.mjs dist-empty"`). Samma anmärkning som i `check-empty-hub.mjs`s egen kommentar gäller båda: när Task 16 har publicerat den första riktiga arten på `main` slutar `src/data/species/` vara tomt, och `npm run test:empty-hub` börjar faila -- väntat, inte en regression; den uppgiften retirerar eller anpassar skripten då (till exempel genom att peka dem på en liten tom-läges-testdata i stället för det riktiga `src/data/`).
+
 - [ ] **Step 8: Commit**
 
 ```bash
@@ -4228,7 +4371,7 @@ git push -u origin website/artsidor
 
 - [ ] **Step 4: Slå ihop koden till `main` (ändrat 2026-10-05 (b))**
 
-Riktig artdata går från nu på direkt till `main`, en art i taget (avsnitt 14, Task 16 och framåt). Koden måste alltså vara på `main` innan den första riktiga arten publiceras, annars finns inga mallar att rendera den med. **Produktionsbygget går igenom med noll publicerade arter** (ändrat 2026-10-07, Task 4:s fixvåg): `commonSpecies()` returnerar bara de vanliga arter som har en sida, sidfoten döljer raden när den är tom, och poster som inte byggs valideras bara mot kuvertet (id, status, namn, adresser). Vercels förhandsbygge av grenen ska alltså vara grönt redan före sammanslagningen; failar det är det ett fel, inte väntat.
+Riktig artdata går från nu på direkt till `main`, en art i taget (avsnitt 14, Task 16 och framåt). Koden måste alltså vara på `main` innan den första riktiga arten publiceras, annars finns inga mallar att rendera den med. **Produktionsbygget går igenom med noll publicerade arter** (ändrat 2026-10-07, Task 4:s fixvåg): `commonSpecies()` returnerar bara de vanliga arter som har en sida, sidfoten döljer raden när den är tom, och poster som inte byggs valideras bara mot kuvertet (id, status, namn, adresser). Vercels förhandsbygge av grenen ska alltså vara grönt redan före sammanslagningen; failar det är det ett fel, inte väntat. **Tillägg (Task 7:s granskning 2026-10-07, samma noll-arter-läge):** i det här fönstret (mellan den här sammanslagningen och Task 16:s första publicering) visar hubsidorna (`/sv/arter/`, `/species/`) och om-sidan (Task 12) `noindex` och bara sin ingress/text, inte en tom sökruta eller tomma grupplistor, och menyn, sidfoten och startsidans uppslagsverkslänk (Task 13) visar ingen väg dit alls -- allt redan testat mot det riktiga, i dag tomma `src/data/species/` (Task 7:s `npm run test:empty-hub`, utökad i Task 14 med `check-seo.mjs`). Det är väntat att sidorna ser sådana ut strax efter den här sammanslagningen; det är inte ett fel att undersöka.
 
 ```bash
 git fetch origin && git merge origin/main
