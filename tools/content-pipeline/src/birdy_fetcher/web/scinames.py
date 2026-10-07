@@ -9,16 +9,20 @@ calls Corvus corone "Kråka", the article "svartkråka".
 
 What counts (fix wave 2026-10-07, after wrong links in a review):
 - A binomial in Birdy's list, written out in full, is that species.
-- An abbreviated genus ("C.") that fits the page species' own genus means that genus only.
-  One that does not fit names another genus: a guess.
+- An abbreviated genus ("C.") that fits the page species' own genus means that genus
+  first. Any other genus that begins the same way is a guess ("C. monedula" on a Corvus
+  page, Coloeus monedula; re-review 2026-10-07).
 - A subspecies is its species, or the species it has since been split off as ("Corvus
   corone cornix" is Corvus cornix), always in the genus as written.
 - Birdy's list has no synonyms, so a full genus not in the list ("Parus caeruleus") is
   matched on the epithet inside the page species' family: a guess. Never for a subspecies
   ("Nucifraga c. macrorhynchos" is not Corvus macrorhynchos).
 - A guess is only taken when the fact or its quotes name that species in Swedish or English
-  ("Aythya americana" is not Mareca americana, the American Wigeon).
-- A look-alike is never the page species itself (a subspecies of it, or an older name)."""
+  ("Aythya americana" is not Mareca americana, the American Wigeon). "Eurasian", "Common"
+  or "European" may be left out of the English name only when the text has that word too
+  ("Indian scops owl" is not the Eurasian Scops Owl).
+- A look-alike is never the page species itself (a subspecies of it, or an older name):
+  such a fact is struck (facts.py)."""
 
 from __future__ import annotations
 
@@ -51,6 +55,8 @@ class Resolution:
     binomial: str | None = None
     qid: str | None = None
     note: str | None = None
+    # The written name is the page species itself (or a subspecies or older name of it).
+    own: bool = False
 
 
 def _canonical(binomial: str) -> str:
@@ -75,7 +81,8 @@ def _candidates(
         prefix = genus[:-1]
         if own_genus is not None and own_genus.startswith(prefix):
             name = f"{own_genus} {epithet}"
-            return ([name] if name in ctx.index else []), False
+            if name in ctx.index:
+                return [name], False
         found = [n for n in _with_epithet(ctx.index, epithet) if _genus(n).startswith(prefix)]
         return sorted(found), True
     name = f"{genus} {epithet}"
@@ -92,11 +99,20 @@ def _named(binomial: str, ctx: NameContext, evidence: str) -> bool:
     """Whether the fact or its quotes name this species, in Swedish or English (as a word
     start: "blåmes" is in "blåmesen", "kråka" is not in "svartkråka")."""
     text = evidence.lower()
+
+    def says(words: str) -> bool:
+        return bool(words) and re.search(rf"(?<!\w){re.escape(words)}", text) is not None
+
     for name in ctx.common.get(binomial, ()):
         low = name.lower()
-        variants = [low] + [low[len(q) :] for q in _QUALIFIERS if low.startswith(q)]
-        if any(re.search(rf"(?<!\w){re.escape(v)}", text) for v in variants if v):
+        if says(low):
             return True
+        for qualifier in _QUALIFIERS:
+            # "Eurasian blue tit" may be written "blue tit", but only when the text says
+            # Eurasian somewhere too (re-review 2026-10-07).
+            stripped = low[len(qualifier) :]
+            if low.startswith(qualifier) and says(stripped) and says(qualifier.strip()):
+                return True
     return False
 
 
@@ -129,8 +145,8 @@ def resolve_lookalike(written: str, ctx: NameContext, *, evidence: str = "") -> 
             continue
         if ctx.own_qid is not None and any(ctx.index[n] == ctx.own_qid for n in found):
             return Resolution(
-                note=f"förväxlingsarten {written} är arten själv eller en underart av den: "
-                "ingen länk"
+                note=f"förväxlingsarten {written} är arten själv eller en underart av den",
+                own=True,
             )
         if guessed:
             named = [n for n in found if _named(n, ctx, evidence)]

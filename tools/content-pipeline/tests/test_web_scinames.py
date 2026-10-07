@@ -26,6 +26,8 @@ INDEX = {
     "mareca americana": "Q26003",
     "aythya ferina": "Q26742",
     "melanitta nigra": "Q26002",
+    "otus scops": "Q26116",
+    "athene noctua": "Q25921",
 }
 FAMILIES = {
     "corvus frugilegus": "Corvidae",
@@ -47,12 +49,15 @@ FAMILIES = {
     "mareca americana": "Anatidae",
     "aythya ferina": "Anatidae",
     "melanitta nigra": "Anatidae",
+    "otus scops": "Strigidae",
+    "athene noctua": "Strigidae",
 }
 COMMON: dict[str, tuple[str, ...]] = {
     "cyanistes caeruleus": ("Blåmes", "Eurasian Blue Tit"),
     "parus major": ("Talgoxe", "Great Tit"),
     "pyrrhula major": ("Större domherre", "Large Bullfinch"),
     "mareca americana": ("Amerikansk bläsand", "American Wigeon"),
+    "otus scops": ("Dvärguv", "Eurasian Scops Owl"),
     "coloeus monedula": ("Kaja", "Western Jackdaw"),
 }
 
@@ -116,11 +121,24 @@ def test_the_family_rule_is_not_used_for_a_subspecies() -> None:
     assert _found(found) == (None, None)
 
 
-def test_an_abbreviation_that_fits_the_page_genus_means_only_that_genus() -> None:
-    """On Råka's page "C. monedula" is not looked for in other genera that begin with C
-    (Coloeus monedula): an abbreviation names the genus the article just wrote."""
+def test_an_abbreviation_that_fits_the_page_genus_means_that_genus_first() -> None:
+    """On Råka's page "C. corone" is Corvus corone without any evidence (the genus the
+    article just wrote)."""
     ctx = _ctx("Corvus frugilegus", "Q25386")
-    assert _found(resolve_lookalike("C. monedula", ctx, evidence="kaja")) == (None, None)
+    assert _found(resolve_lookalike("C. corone", ctx)) == ("Corvus corone", "Q26198")
+
+
+def test_an_own_genus_miss_falls_back_to_a_guess_that_needs_the_name() -> None:
+    """Re-review 2026-10-07: "C. monedula" on a Corvus page fits no Corvus species; another
+    genus that begins with C (Coloeus monedula, Kaja) is a guess, taken only when the fact
+    names it, otherwise a note says why there is no link."""
+    ctx = _ctx("Corvus frugilegus", "Q25386")
+    found = resolve_lookalike("C. monedula", ctx, evidence="Kan förväxlas med kajan.")
+    assert _found(found) == ("Coloeus monedula", "Q25407")
+    found = resolve_lookalike("C. monedula", ctx, evidence="Kan förväxlas.")
+    assert _found(found) == (None, None)
+    assert found.note is not None
+    assert "Kaja" in found.note
 
 
 def test_an_abbreviation_for_another_genus_needs_the_name_in_the_fact() -> None:
@@ -142,8 +160,8 @@ def test_an_older_genus_needs_the_name_in_the_fact() -> None:
     ctx = _ctx("Parus major", "Q25485")
     found = resolve_lookalike("Parus caeruleus", ctx, evidence="Kan förväxlas med blåmesen.")
     assert _found(found) == ("Cyanistes caeruleus", "Q25404")
-    found = resolve_lookalike("Parus caeruleus", ctx, evidence="the blue tit is smaller")
-    assert _found(found) == ("Cyanistes caeruleus", "Q25404")  # "Eurasian" may be left out
+    found = resolve_lookalike("Parus caeruleus", ctx, evidence="the Eurasian blue tit")
+    assert _found(found) == ("Cyanistes caeruleus", "Q25404")
     found = resolve_lookalike("Parus caeruleus", ctx, evidence="Kan förväxlas.")
     assert _found(found) == (None, None)
     assert found.note is not None
@@ -173,3 +191,21 @@ def test_a_species_birdy_does_not_have_is_none() -> None:
     assert _found(resolve_lookalike("C. brachyrhynchos", ctx)) == (None, None)
     assert _found(resolve_lookalike("Corvus", ctx)) == (None, None)
     assert _found(resolve_lookalike("", ctx)) == (None, None)
+
+
+def test_a_qualifier_left_out_must_still_be_in_the_text() -> None:
+    """Re-review 2026-10-07: "Eurasian" may be left out of "Eurasian Scops Owl" only when the
+    text says Eurasian somewhere too; "Indian scops owl" is another bird."""
+    ctx = _ctx("Athene noctua", "Q25921")
+    found = resolve_lookalike("Otus scops", ctx)
+    assert _found(found) == ("Otus scops", "Q26116")  # written in full: no guess
+    found = resolve_lookalike("Strix scops", ctx, evidence="like the Indian scops owl")
+    assert _found(found) == (None, None)
+    found = resolve_lookalike("Strix scops", ctx, evidence="the scops owl of Eurasia")
+    assert _found(found) == (None, None)
+    found = resolve_lookalike(
+        "Strix scops", ctx, evidence="smaller than the scops owl (Eurasian populations)"
+    )
+    assert _found(found) == ("Otus scops", "Q26116")
+    found = resolve_lookalike("Strix scops", ctx, evidence="the Eurasian Scops Owl")
+    assert _found(found) == ("Otus scops", "Q26116")
