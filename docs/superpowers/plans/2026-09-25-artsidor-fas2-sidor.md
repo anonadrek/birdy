@@ -4237,6 +4237,17 @@ test.describe('meny och sidfot för arterna', () => {
     });
   }
 
+  test('sidfotens grupplänkar och Alla arter leder till sidor som finns', async ({ page, request }) => {
+    await page.goto('/');
+    const column = page.locator('footer.footer .col').first();
+    await expect(column.locator('.fh')).toHaveText('Species');
+    const links = column.locator('a');
+    await expect(links.last()).toHaveText('All species A to Z');
+    for (const href of await links.evaluateAll((els) => els.map((e) => e.getAttribute('href')!))) {
+      expect((await request.get(href)).status(), href).toBe(200);
+    }
+  });
+
   test('startsidans uppslagsverk länkar till arterna', async ({ page }) => {
     await page.goto('/sv/');
     await expect(page.locator('#guide a[href="/sv/arter/"]')).toBeVisible();
@@ -4249,10 +4260,36 @@ test.describe('meny och sidfot för arterna', () => {
     await expect(page.locator('#mobile-menu a').first()).toHaveText('Arter');
   });
 
+  // Task 11 adds '/sv/arter/blames-eller-talgoxe/' to this list when comparisons are turned on.
   test('Arter är markerad i menyn under hela /sv/arter/', async ({ page }) => {
-    for (const path of ['/sv/arter/', '/sv/arter/ugglor/', '/sv/arter/talgoxe/', '/sv/arter/blames-eller-talgoxe/', '/sv/arter/om-artsidorna/']) {
+    for (const path of ['/sv/arter/', '/sv/arter/ugglor/', '/sv/arter/talgoxe/', '/sv/arter/om-artsidorna/']) {
       await page.goto(path);
       await expect(page.locator('#site-nav .links a[aria-current="page"]'), path).toHaveText('Arter');
+    }
+  });
+
+  test('menyraden får plats i 1024 px', async ({ page }) => {
+    await page.setViewportSize({ width: 1024, height: 768 });
+    for (const path of ['/sv/', '/', '/sv/arter/talgoxe/']) {
+      await page.goto(path);
+      const heights = await page.locator('#site-nav .links a').evaluateAll((els) => els.map((e) => e.getBoundingClientRect().height));
+      for (const h of heights) expect(h, path).toBeLessThan(30);
+      const [nav, cta] = await Promise.all([page.locator('#site-nav .links').boundingBox(), page.locator('#site-nav .nav-cta').boundingBox()]);
+      expect(nav!.x + nav!.width, path).toBeLessThanOrEqual(cta!.x);
+    }
+  });
+
+  test('hoppa till innehållet: första tabbstoppet, och nästa stopp ligger i main', async ({ page }) => {
+    await page.goto('/sv/arter/talgoxe/');
+    await page.keyboard.press('Tab');
+    await expect(page.locator(':focus')).toHaveText('Hoppa till innehållet');
+    await expect(page.locator(':focus')).toBeInViewport();
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Tab');
+    expect(await page.evaluate(() => Boolean(document.activeElement?.closest('main#main')))).toBe(true);
+    for (const path of ['/', '/sv/blog/', '/legal/privacy/']) {
+      await page.goto(path);
+      await expect(page.locator('main#main')).toHaveCount(1);
     }
   });
 });
@@ -4360,9 +4397,17 @@ Expected: PASS (hela sviten, även de gamla testerna)
 - [ ] **Step 7: Commit**
 
 ```bash
-git add src/components/Nav.astro src/components/Footer.astro src/components/Guide.astro tests/home.spec.ts tests/species.spec.ts
+git add src/components/Nav.astro src/components/Footer.astro src/components/Guide.astro tests/home.spec.ts tests/species.spec.ts src/layouts/Layout.astro src/styles/global.css src/content/copy.sv.json src/content/copy.en.json src/lib/species.ts src/lib/species-nav.mjs tests/unit/species-nav.unit.mjs scripts/check-empty-hub.mjs src/layouts/LegalLayout.astro src/pages/legal/index.astro src/components/HomePage.astro src/components/FieldNoteArticle.astro src/components/FieldNotesIndex.astro src/components/species/
 git commit -m "feat(website): Arter i menyn, sidfoten och startsidans uppslagsverk"
 ```
+
+**Avvikelser vid genomförandet (Task 13, 2026-10-07, `981cbe6f`):**
+
+1. **Testblocket ovan är byte-identiskt med filen.** Jämförelsesidan `/sv/arter/blames-eller-talgoxe/` är struken ur menytestet tills Task 11 slår på `COMPARISONS_ENABLED` (Task 10:s granskning); Task 11 lägger tillbaka den. Nya tester: sidfotens kolumnlänkar (fem grupper och Alla arter) svarar 200, menyraden får plats i 1024 px på start- och artsidan (fem länkar, språkbytet och knappen; `gap` behövde inte sänkas), och hoppa-till-innehållet-länken (första tabbstoppet, synlig, nästa stopp efter Enter ligger i `main#main`, `main#main` finns på start-, blogg- och juridiksidorna).
+2. **Sidfotens tre lägen testas som enhetstest:** `footerSpecies(built, commonQids)` i `src/lib/species-nav.mjs` (ren JS) ger `{ column, common }`; `Footer.astro` använder den och `commonSpecies()` i `species.ts` delegerar till den (`COMMON_QIDS` exporteras). `tests/unit/species-nav.unit.mjs` testar noll arter (ingen kolumn, ingen rad), arter utan någon av de tolv (kolumn, ingen rad) och några av de tolv i listans ordning (kolumn och rad). Byggda sidor testas för två av lägena: fixturbygget (kolumn och rad) och `dist-empty/` (inget).
+3. **Sidfotens rutnät** har kvar sina tre kolumner när arter saknas: `.fgrid` är `1.6fr repeat(3, 1fr)` och modifieraren `.fgrid--species` (satt när kolumnen visas) `1.6fr repeat(4, 1fr)`, i stället för att alltid ha fem spår.
+4. **`scripts/check-empty-hub.mjs`** kontrollerar nu också start- och bloggsidorna (`/`, `/sv/`, `/blog/`, `/sv/blog/`) i noll-arter-bygget: ingen länk till `/sv/arter/` eller `/species/`, ingen rad Vanliga arter, ingen artkolumn, ingen länk under kartan, och att hoppa-länken finns. Kontrollen failar med menylänken påtvingad (provat).
+5. **Hoppa-länken:** stilen ligger i `src/styles/global.css` med `top: -64px`, `z-index: 300` (menyn har 100), en apricosfärgad fokusring och ingen övergång vid reducerad rörelse. Copy-nyckeln `nav.skipToContent` ("Hoppa till innehållet" / "Skip to content") finns i båda copy-filerna och i specens bilaga A. `id="main"` på `main` i `HomePage`, `FieldNoteArticle`, `FieldNotesIndex`, `LegalLayout`, `pages/legal/index.astro` och de fyra artsidekomponenterna.
 
 ---
 
