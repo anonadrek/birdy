@@ -50,7 +50,11 @@ export function haloData(x, { sr = SAMPLE_RATE, fps = 30, bands = 40, tailSec = 
     const floor = percentile(col, 0.25);
     for (let k = 0; k < frames; k++) excess[k * bands + b] = Math.max(0, level[k * bands + b] - floor - 3);
   }
-  const top = Math.max(12, percentile(excess.filter((v) => v > 0), 0.97));
+  const loud = excess.filter((v) => v > 0);
+  // Nothing above the noise floor anywhere: a silent or constant clip. Fail here instead of
+  // drawing a ring from NaN.
+  if (loud.length === 0) throw new Error('the clip has no sound above its noise floor (silent or constant), so there is no ring to draw');
+  const top = Math.max(12, percentile(loud, 0.97));
   const out = new Float32Array(frames * bands);
   const prev = new Float32Array(bands);
   for (let k = 0; k < frames; k++) {

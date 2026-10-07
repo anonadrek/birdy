@@ -2,6 +2,11 @@
 // and renamed into place only when everything for that species (or the batch) is complete.
 // A failed or interrupted render therefore never leaves a half-written video, or a video
 // whose cover, caption or render info belongs to another run.
+//
+// Known limitation (left as it is): on Windows a rename fails while another program holds the
+// final file open (a video player, Explorer's preview). commit() then throws part way: the
+// files already renamed are the new ones, discard() drops the rest, and the species is
+// reported as failed with a mix of new and old files; close the file and run it again.
 import { rename, rm, writeFile } from 'node:fs/promises';
 import { basename, dirname, join } from 'node:path';
 

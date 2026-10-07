@@ -61,3 +61,7 @@ test('fullest frame: the loudest moment of the song, never in the tail', () => {
   assert.ok(k >= 60 && k <= 75, `frame ${k}`);
   assert.ok(k / h.fps <= h.duration);
 });
+
+test('a silent clip fails loudly instead of giving NaN bars', () => {
+  assert.throws(() => haloData(new Float32Array(2 * SR), { sr: SR, fps: 30, bands: 20 }), /no sound above its noise floor/);
+});
