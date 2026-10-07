@@ -298,3 +298,29 @@ def test_a_lookalike_birdy_does_not_have_keeps_the_name_as_written() -> None:
         subject="Corvus frugilegus",
     )
     assert check.facts[0]["other"] == {"scientific": "C. brachy"}
+
+
+def test_a_lookalike_that_is_the_page_species_keeps_its_name_and_says_why() -> None:
+    """Fix wave 2026-10-07: "Motacilla flava thunbergi" on Gulärla's own page."""
+    articles = {
+        "sv": WikiArticle("sv", "Gulärla", "1", "Underarten thunbergi har mörkgrått huvud.")
+    }
+    lookalike = _fact(
+        "lookalike",
+        "Underarten thunbergi har mörkgrått huvud.",
+        "Underarten thunbergi har mörkgrått huvud",
+        other="Motacilla flava thunbergi",
+    )
+    check = check_fact_sheet(
+        FactSheetOutput(facts=[lookalike], sweden_status=None),
+        articles,
+        {"motacilla flava": "Q25984"},
+        subject="Motacilla flava",
+        own_qid="Q25984",
+    )
+    assert check.facts[0]["other"] == {"scientific": "Motacilla flava thunbergi"}
+    assert check.notes == []  # info for the report, not feedback for the model
+    assert any(
+        "faktum 1: förväxlingsarten Motacilla flava thunbergi är arten själv" in n
+        for n in check.info
+    )

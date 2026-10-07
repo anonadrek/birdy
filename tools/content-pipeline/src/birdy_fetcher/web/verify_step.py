@@ -178,6 +178,7 @@ async def run_verify(
         prompt_path=paths.prompt_file(FACTS_PROMPT_VERSION),
         scientific_index=names.qids,
         scientific_families=names.families,
+        scientific_common=names.common,
     )
     stop = asyncio.Event()
     semaphore = asyncio.Semaphore(options.workers)

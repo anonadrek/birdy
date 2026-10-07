@@ -13,7 +13,7 @@ from pydantic import BaseModel
 from .checks import quote_in_sources
 from .datamod import data_status_contradiction, red_list_for_page, sentence_kind
 from .record import Record
-from .scinames import resolve_lookalike
+from .scinames import NameContext, resolve_lookalike
 from .wiki_full import WikiArticle
 
 Topic = Literal[
@@ -100,6 +100,9 @@ class FactCheck:
     notes: list[str] = field(default_factory=list)
     fatal: list[str] = field(default_factory=list)
     retry: list[str] = field(default_factory=list)
+    # For the report only, never sent back to the model as feedback: look-alikes that were
+    # not linked to a species (scinames.py).
+    info: list[str] = field(default_factory=list)
 
 
 def _valid_sources(
@@ -112,19 +115,11 @@ def _valid_sources(
     ]
 
 
-@dataclass(frozen=True)
-class _Names:
-    """What a look-alike's name is matched against (scinames.resolve_lookalike)."""
-
-    index: dict[str, str]
-    families: dict[str, str]
-    subject: str | None
-    context: str
-
-
 def _entry(
-    number: int, fact: ModelFact, articles: dict[str, WikiArticle], names: _Names
+    number: int, fact: ModelFact, articles: dict[str, WikiArticle], names: NameContext
 ) -> tuple[dict[str, Any] | None, str | None]:
+    """The fact as the record keeps it, and a note: why it was struck, or (with an entry)
+    why its look-alike got no QID."""
     sources = _valid_sources(fact.sources, articles)
     if not sources:
         return None, f"faktum {number} ströks, citatet finns inte i artikeln: {fact.sv}"
@@ -135,18 +130,16 @@ def _entry(
         if not fact.other_scientific:
             return None, f"faktum {number} ströks, förväxlingsarten saknar namn: {fact.sv}"
         written = fact.other_scientific.strip()
-        found = resolve_lookalike(
-            written,
-            names.index,
-            subject=names.subject,
-            families=names.families,
-            context=names.context,
-        )
+        evidence = " ".join([fact.sv, *(s["quote"] for s in sources)])
+        found = resolve_lookalike(written, names, evidence=evidence)
         # Birdy's own name for a species it has ("Corvus corone" for "C. corone corone"),
         # else the name as the article writes it (R3, 2026-10-07).
-        entry["other"] = (
-            {"scientific": found[0], "qid": found[1]} if found else {"scientific": written}
-        )
+        if found.binomial is not None and found.qid is not None:
+            entry["other"] = {"scientific": found.binomial, "qid": found.qid}
+        else:
+            entry["other"] = {"scientific": written}
+        if found.note is not None:
+            return entry, f"faktum {number}: {found.note}"
     return entry, None
 
 
@@ -202,23 +195,26 @@ def check_fact_sheet(
     scientific_index: dict[str, str],
     *,
     subject: str | None = None,
+    own_qid: str | None = None,
     families: dict[str, str] | None = None,
+    common: dict[str, tuple[str, ...]] | None = None,
 ) -> FactCheck:
-    """`subject` is the species' own scientific name and `families` maps the index's names
-    to their family: both help match a look-alike written "C. corone" or in an older genus
-    (scinames.py)."""
+    """`subject` and `own_qid` are the species' own scientific name and QID; `families` and
+    `common` map the index's names to their family and their Swedish and English names. All
+    help match a look-alike written "C. corone" or in an older genus (scinames.py)."""
     check = FactCheck()
-    names = _Names(
+    names = NameContext(
         index=scientific_index,
         families=families or {},
+        common=common or {},
         subject=subject,
-        context="\n\n".join(a.text for a in articles.values()),
+        own_qid=own_qid,
     )
     valid: list[tuple[int, dict[str, Any]]] = []
     for number, fact in enumerate(out.facts, start=1):
         entry, note = _entry(number, fact, articles, names)
         if note is not None:
-            check.notes.append(note)
+            (check.notes if entry is None else check.info).append(note)
         if entry is not None:
             valid.append((number, entry))
     capped, dropped = cap_by_topic(valid, MAX_FACTS)

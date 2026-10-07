@@ -79,8 +79,10 @@ class FactExtractor:
     model_key: str = FACTS_MODEL_KEY
     effort: str = FACTS_EFFORT
     regenerate: bool = False
-    # Lowercased scientific name to family, for a look-alike in an older genus (scinames).
+    # Lowercased scientific name to family and to Swedish and English names, for a
+    # look-alike in an abbreviated or older genus (scinames).
     scientific_families: dict[str, str] = field(default_factory=dict)
+    scientific_common: dict[str, tuple[str, ...]] = field(default_factory=dict)
 
     def _cache_name(
         self, template: str, articles: dict[str, WikiArticle], extra_feedback: str | None = None
@@ -103,7 +105,9 @@ class FactExtractor:
             articles,
             self.scientific_index,
             subject=source.scientific_name,
+            own_qid=source.qid,
             families=self.scientific_families,
+            common=self.scientific_common,
         )
 
     async def extract(
@@ -219,6 +223,7 @@ async def run_facts(
         prompt_path=paths.prompt_file(PROMPT_VERSION),
         scientific_index=names.qids,
         scientific_families=names.families,
+        scientific_common=names.common,
         model_key=options.model_key,
         effort=options.effort,
         regenerate=options.regenerate,
@@ -303,7 +308,7 @@ async def _one(
             generated = record["generated"]["facts"]
         apply_facts(record, check, generated=generated)
         save_record(path, record)
-        notes = [*check.notes, *([] if attempts < 2 else ["två försök"])]
+        notes = [*check.notes, *check.info, *([] if attempts < 2 else ["två försök"])]
         if check.fatal:
             return out("failed", check.fatal, notes)
         return out("pending", [], [*notes, *check.retry])

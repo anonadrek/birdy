@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -94,11 +94,15 @@ class NameIndex:
 
     qids: dict[str, str]
     families: dict[str, str]
+    # Swedish and English names: a look-alike matched by a guessed genus must be named in
+    # its fact (scinames.py).
+    common: dict[str, tuple[str, ...]] = field(default_factory=dict)
 
 
 def load_name_index(species_root: Path) -> NameIndex:
     qids: dict[str, str] = {}
     families: dict[str, str] = {}
+    common: dict[str, tuple[str, ...]] = {}
     for path in sorted(species_root.rglob("*.yaml")):
         data: dict[str, Any] = yaml.safe_load(path.read_text(encoding="utf-8"))
         name = str(data["scientific_name"]).lower()
@@ -106,7 +110,9 @@ def load_name_index(species_root: Path) -> NameIndex:
         family = (data.get("taxonomy") or {}).get("family")
         if family:
             families[name] = str(family)
-    return NameIndex(qids=qids, families=families)
+        names = data.get("names") or {}
+        common[name] = tuple(str(names[k]) for k in ("sv", "en") if names.get(k))
+    return NameIndex(qids=qids, families=families, common=common)
 
 
 def load_scientific_index(species_root: Path) -> dict[str, str]:
