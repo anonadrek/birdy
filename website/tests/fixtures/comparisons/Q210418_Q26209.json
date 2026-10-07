@@ -1,0 +1,141 @@
+{
+  "a": "Q26209",
+  "b": "Q210418",
+  "status": "ok",
+  "publish": false,
+  "slug": {
+    "sv": "storre-hackspett-eller-tretaig-hackspett",
+    "en": "eurasian-three-toed-woodpecker-vs-great-spotted-woodpecker"
+  },
+  "volumes": {
+    "sv": 100,
+    "en": 50
+  },
+  "text": {
+    "sv": {
+      "shortAnswer": [
+        {
+          "text": "Testtext: det kortaste svaret på hur större hackspett och tretåig hackspett skiljer sig åt.",
+          "factIds": [
+            "a:f01",
+            "b:f01"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "feature": "Storlek",
+          "a": {
+            "text": "Testcell 1 för den första arten",
+            "factIds": [
+              "a:f02"
+            ]
+          },
+          "b": {
+            "text": "Testcell 1 för den andra arten",
+            "factIds": [
+              "b:f02"
+            ]
+          }
+        },
+        {
+          "feature": "Huvud",
+          "a": {
+            "text": "Testcell 2 för den första arten",
+            "factIds": [
+              "a:f02"
+            ]
+          },
+          "b": {
+            "text": "Testcell 2 för den andra arten",
+            "factIds": [
+              "b:f02"
+            ]
+          }
+        },
+        {
+          "feature": "Läte",
+          "a": {
+            "text": "Testcell 3 för den första arten",
+            "factIds": [
+              "a:f02"
+            ]
+          },
+          "b": {
+            "text": "Testcell 3 för den andra arten",
+            "factIds": [
+              "b:f02"
+            ]
+          }
+        }
+      ],
+      "metaDescription": "Större hackspett eller tretåig hackspett? Testtext för jämförelsesidan: så skiljer du dem åt i fält, på storlek, färg och läte."
+    },
+    "en": {
+      "shortAnswer": [
+        {
+          "text": "Test text: the shortest answer to how the Great Spotted Woodpecker and the Eurasian Three-toed Woodpecker differ.",
+          "factIds": [
+            "a:f01",
+            "b:f01"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "feature": "Size",
+          "a": {
+            "text": "Test cell 1 for the first species",
+            "factIds": [
+              "a:f02"
+            ]
+          },
+          "b": {
+            "text": "Test cell 1 for the second species",
+            "factIds": [
+              "b:f02"
+            ]
+          }
+        },
+        {
+          "feature": "Head",
+          "a": {
+            "text": "Test cell 2 for the first species",
+            "factIds": [
+              "a:f02"
+            ]
+          },
+          "b": {
+            "text": "Test cell 2 for the second species",
+            "factIds": [
+              "b:f02"
+            ]
+          }
+        },
+        {
+          "feature": "Call",
+          "a": {
+            "text": "Test cell 3 for the first species",
+            "factIds": [
+              "a:f02"
+            ]
+          },
+          "b": {
+            "text": "Test cell 3 for the second species",
+            "factIds": [
+              "b:f02"
+            ]
+          }
+        }
+      ],
+      "metaDescription": "Great Spotted Woodpecker or Eurasian Three-toed Woodpecker? Test text for the comparison page: how to tell them apart by size, colour and call."
+    }
+  },
+  "generated": {
+    "model": "fixture",
+    "prompt": "fixture",
+    "checker": "fixture",
+    "at": "2026-11-26"
+  },
+  "errors": []
+}

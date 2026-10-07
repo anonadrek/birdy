@@ -1,0 +1,286 @@
+{
+  "qid": "Q4764",
+  "status": "ok",
+  "publish": true,
+  "slug": {
+    "sv": "trana",
+    "en": "common-crane"
+  },
+  "names": {
+    "sv": "Trana",
+    "en": "Common Crane",
+    "scientific": "Grus grus"
+  },
+  "family": {
+    "latin": "Gruidae",
+    "sv": "Tranor"
+  },
+  "group": "cranes_rails",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": false
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q4764/hero.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Testfotograf",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fixture_Q4764_hero.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Trana",
+      "revision": "1000001"
+    },
+    "en": {
+      "title": "Common Crane",
+      "revision": "2000002"
+    },
+    "de": {
+      "title": "Common Crane (Testartikel)",
+      "revision": "3000003"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-15",
+    "gbifTaxonKey": 1,
+    "totalReports": 1000,
+    "months": [
+      0,
+      0,
+      1,
+      36,
+      100,
+      51,
+      49,
+      65,
+      51,
+      10,
+      1,
+      0
+    ],
+    "counties": {
+      "SE-AB": 55,
+      "SE-AC": 92,
+      "SE-BD": 28,
+      "SE-C": 65,
+      "SE-D": 1,
+      "SE-E": 38,
+      "SE-F": 75,
+      "SE-G": 11,
+      "SE-H": 48,
+      "SE-I": 85,
+      "SE-K": 21,
+      "SE-M": 58,
+      "SE-N": 95,
+      "SE-O": 31,
+      "SE-S": 68,
+      "SE-T": 4,
+      "SE-U": 41,
+      "SE-W": 78,
+      "SE-X": 14,
+      "SE-Y": 51,
+      "SE-Z": 88
+    },
+    "raw": {
+      "speciesByMonth": [],
+      "allBirdsByMonth": [],
+      "speciesByCounty": {},
+      "allBirdsByCounty": {}
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i maj.",
+        "Nästan aldrig i november till mars.",
+        "Vanligast i rapporterna från Testlän, Provlän och Exempellän."
+      ],
+      "en": [
+        "Reported most in May.",
+        "Almost never in November to March.",
+        "Most common in reports from Testshire, Sampleshire and Exampleshire."
+      ]
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Testfaktum.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Testcitat som bara finns i testdata."
+        }
+      ]
+    }
+  ],
+  "review": {
+    "wave": 1
+  },
+  "verification": {
+    "method": "auto",
+    "at": "2026-11-20",
+    "model": "fixture",
+    "spotChecked": false
+  },
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Testtext: Trana används som exempel när artsidorna byggs och testas.",
+          "factIds": [
+            "f01"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Testpunkt ett om hur trana ser ut",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Testpunkt två om storlek och form",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Testpunkt tre om beteende i fält",
+          "factIds": [
+            "f02"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Testtext om lätet, skriven så att sidan går att bygga utan riktig data.",
+          "factIds": [
+            "f04"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Testtext om var och när arten syns i Sverige.",
+          "factIds": [
+            "f06",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Testtext om föda och beteende.",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Trana: testtext för artsidornas bygge. Kännetecken, läte och när arten syns i Sverige, med foton och karta. Testdata. Testdata.",
+      "facts": {
+        "size": null,
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "Test text: the Common Crane is used as an example when the species pages are built and tested.",
+          "factIds": [
+            "f01"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Test point one about what it looks like",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Test point two about size and shape",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Test point three about behaviour in the field",
+          "factIds": [
+            "f02"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Test text about the call, written so the page can be built without real data.",
+          "factIds": [
+            "f04"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Test text about where and when it is seen in Sweden.",
+          "factIds": [
+            "f06",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Test text about food and behaviour.",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Common Crane: test text for building the species pages. Field marks, call and when it is seen in Sweden, with photos. Test data.",
+      "facts": {
+        "size": null,
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "fixture",
+      "prompt": "fixture",
+      "effort": "none",
+      "at": "2026-10-20"
+    },
+    "text": {
+      "model": "fixture",
+      "prompt": "fixture",
+      "effort": "none",
+      "checker": "fixture",
+      "at": "2026-11-25"
+    }
+  },
+  "errors": []
+}

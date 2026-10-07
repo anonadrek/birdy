@@ -1,0 +1,22 @@
+{
+  "a": "Q25384",
+  "b": "Q25756",
+  "status": "pending",
+  "publish": false,
+  "slug": {
+    "sv": "hornuggla-eller-kattuggla",
+    "en": "long-eared-owl-vs-tawny-owl"
+  },
+  "volumes": {
+    "sv": 100,
+    "en": 50
+  },
+  "text": null,
+  "generated": {
+    "model": "fixture",
+    "prompt": "fixture",
+    "checker": "fixture",
+    "at": "2026-11-26"
+  },
+  "errors": []
+}

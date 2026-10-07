@@ -1,0 +1,73 @@
+{
+  "qid": "Q143284",
+  "status": "pending",
+  "publish": false,
+  "slug": {
+    "sv": "spillkraka",
+    "en": "black-woodpecker"
+  },
+  "names": {
+    "sv": "Spillkråka",
+    "en": "Black Woodpecker",
+    "scientific": "Dryocopus martius"
+  },
+  "family": {
+    "latin": "Picidae",
+    "sv": "Hackspettar"
+  },
+  "group": "woodpeckers",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q143284/hero.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Testfotograf",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fixture_Q143284_hero.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Spillkråka",
+      "revision": "1000001"
+    },
+    "en": {
+      "title": "Black Woodpecker",
+      "revision": "2000002"
+    }
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Testfaktum.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Testcitat som bara finns i testdata."
+        }
+      ]
+    }
+  ],
+  "review": {
+    "wave": 2
+  },
+  "text": null,
+  "generated": {
+    "facts": {
+      "model": "fixture",
+      "prompt": "fixture",
+      "effort": "none",
+      "at": "2026-10-20"
+    }
+  },
+  "errors": []
+}
