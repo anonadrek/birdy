@@ -123,3 +123,16 @@ Samma filer ligger i `docs/superpowers/specs/assets/2026-10-06-1.3-val/` på rel
 ## 9. Arbetssätt som fungerade (behåll)
 
 Subagent-driven development: en implementerare per task (Sonnet för mekaniskt, Opus för omdöme), en separat granskare efter varje task (spec, sedan kvalitet), fixvågor tills granskaren säger "Ready". Parallella spår i egna worktrees under `C:/w/` när de rör olika filer; huvudagenten slår ihop. Granskningarna fångade riktiga fel varje gång (bl.a. pamflettfotot, tyst inspelning, midnattsbuggen, publicerade sidor med strukna fakta). Förhandsvisningar som länkar innan större UI-arbete; Albin väljer de djärvare förslagen.
+
+### 🌙 Sen kväll 2026-10-07 (ny session efter sessionsgränsen)
+
+Läget står överst i `CLAUDE.md` på `main` ("LÄGET 2026-10-07 SEN KVÄLL"). Kort:
+
+| Spår | Gren | Läge | Nästa steg |
+|---|---|---|---|
+| Release 1.3.0 | `release/1.3.0` @ `a396da04` | `feature/1.3-karta` sammanslagen (brytpunkt `1792188000000`, kartan utan färgfilter, `MAPTILER_STYLE_ID`, notisen = appens fågel). | Task 9 när Albin valt variant, Task 10 vC130 när MapTiler-stilen och nyckeln finns (uppladdning senast tis 13 okt), Task 11, Task 12. |
+| Butiksbilder (Task 9) | `feature/1.3-butiksbilder` @ `526ac942` (`C:/w/birdy-butik`) | Tre varianter (A Karusellen, B Fältboken, C Espresso; rekommendation C), förhandsvisning i `docs/superpowers/specs/assets/2026-10-08-butiksbilder/`. Kartbilden tas om med Albins stil. | Albin väljer; rendera vald variant som PNG, granskning, merge. |
+| Artsidor fas 2 | `website/artsidor` (`C:/w/birdy-artsidor`) | Task 1–16 klara; Task 15–16 i granskning. | Efter godkänd granskning: in i `main`, publiceringsloopen torsdag. |
+| Artsidornas data | `data/artsidor` @ `90fec0e6` (`C:/w/birdy-artdata`) | `partial_migrant` (`d4b41275`). Våg 1: 31 av 40 klara; 9 flaggor för 8 arter i Albins Drive-ark. | Albins beslut → `web import` → `web write --wave 1`. Våg 2/3 senare (API-gränsen). |
+| Sociala videor | `social/see-the-song` @ `6d021074` (`C:/w/birdy-social`) | Stil C med paus, första veckan renderad, omgranskning "Changes needed" (logotyp över fotot, Commons-länk i FB/YT). | Fixvåg pågår, sedan schema från fre 9 okt 08.00. |
+| Support via Resend | (ingen gren än) | Sex val till Albin (artefakten QL5zLVdRhEhnYsjC813N9o). | Spec + plan efter hans svar. |
