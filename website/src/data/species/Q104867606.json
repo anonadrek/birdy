@@ -74,7 +74,7 @@
     }
   },
   "data": {
-    "fetchedAt": "2026-10-07T13:18:54.605152+00:00",
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
     "gbifTaxonKey": 2492955,
     "totalReports": 8215,
     "months": [
@@ -117,12 +117,12 @@
     "sentences": {
       "sv": [
         "Rapporteras mest i maj och juni.",
-        "Nästan aldrig i december till april.",
+        "Rapporteras sällan i december till april.",
         "Andelen av alla fågelrapporter är högst i Kalmar och Gotland."
       ],
       "en": [
         "Reported most in May and June.",
-        "Almost never in December to April.",
+        "Rarely reported in December to April.",
         "Its share of all bird reports is highest in Kalmar and Gotland."
       ]
     },

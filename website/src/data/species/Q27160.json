@@ -74,7 +74,7 @@
     }
   },
   "data": {
-    "fetchedAt": "2026-10-07T13:18:54.605152+00:00",
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
     "gbifTaxonKey": 2481174,
     "totalReports": 124609,
     "months": [
@@ -117,12 +117,12 @@
     "sentences": {
       "sv": [
         "Rapporteras mest i april, juli och augusti.",
-        "Nästan aldrig i november till februari.",
+        "Rapporteras sällan i november till februari.",
         "Andelen av alla fågelrapporter är högst i Stockholm, Halland och Gotland."
       ],
       "en": [
         "Reported most in April, July and August.",
-        "Almost never in November to February.",
+        "Rarely reported in November to February.",
         "Its share of all bird reports is highest in Stockholm, Halland and Gotland."
       ]
     },

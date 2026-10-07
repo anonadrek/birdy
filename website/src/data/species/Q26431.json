@@ -74,7 +74,7 @@
     }
   },
   "data": {
-    "fetchedAt": "2026-10-07T13:18:54.605152+00:00",
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
     "gbifTaxonKey": 2480482,
     "totalReports": 318727,
     "months": [
@@ -117,12 +117,12 @@
     "sentences": {
       "sv": [
         "Rapporteras mest i augusti.",
-        "Nästan aldrig i oktober till mars.",
+        "Rapporteras sällan i oktober till mars.",
         "Rapporteras från alla 21 län."
       ],
       "en": [
         "Reported most in August.",
-        "Almost never in October to March.",
+        "Rarely reported in October to March.",
         "Reported from all 21 counties."
       ]
     },

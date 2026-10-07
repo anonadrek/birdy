@@ -64,7 +64,7 @@
     }
   },
   "data": {
-    "fetchedAt": "2026-10-07T13:18:54.605152+00:00",
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
     "gbifTaxonKey": 2480524,
     "totalReports": 151632,
     "months": [
@@ -107,12 +107,12 @@
     "sentences": {
       "sv": [
         "Rapporteras mest i oktober.",
-        "Nästan aldrig i maj till augusti.",
+        "Rapporteras sällan i maj till augusti.",
         "Andelen av alla fågelrapporter är högst i Västmanland, Örebro och Uppsala."
       ],
       "en": [
         "Reported most in October.",
-        "Almost never in May to August.",
+        "Rarely reported in May to August.",
         "Its share of all bird reports is highest in Västmanland, Örebro and Uppsala."
       ]
     },

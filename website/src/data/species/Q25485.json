@@ -2,9 +2,7 @@
   "qid": "Q25485",
   "status": "ok",
   "publish": false,
-  "review": {
-    "audioStruck": true
-  },
+  "review": {},
   "facts": [
     {
       "id": "f01",
@@ -703,7 +701,7 @@
     }
   },
   "data": {
-    "fetchedAt": "2026-10-07T13:20:13.922388+00:00",
+    "fetchedAt": "2026-10-07T14:05:11.554878+00:00",
     "gbifTaxonKey": 9705453,
     "totalReports": 729841,
     "months": [
@@ -832,5 +830,15 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "audio": {
+    "file": "Q25485/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "José Carlos Sires",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Parus_major_-_Great_Tit_XC165660.mp3",
+    "sha256": "63d7bd73788edd899d7e9627af88264da33dca6cf62d9b89e675497716adf8e4"
   }
 }

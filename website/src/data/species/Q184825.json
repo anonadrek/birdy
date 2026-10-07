@@ -74,7 +74,7 @@
     }
   },
   "data": {
-    "fetchedAt": "2026-10-07T13:18:54.605152+00:00",
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
     "gbifTaxonKey": 2490781,
     "totalReports": 202045,
     "months": [
@@ -117,12 +117,12 @@
     "sentences": {
       "sv": [
         "Rapporteras mest i april och oktober.",
-        "Nästan aldrig i februari och augusti.",
+        "Rapporteras sällan i februari och augusti.",
         "Andelen av alla fågelrapporter är högst i Norrbotten, Jämtland och Västerbotten."
       ],
       "en": [
         "Reported most in April and October.",
-        "Almost never in February and August.",
+        "Rarely reported in February and August.",
         "Its share of all bird reports is highest in Norrbotten, Jämtland and Västerbotten."
       ]
     },

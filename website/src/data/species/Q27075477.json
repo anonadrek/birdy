@@ -74,7 +74,7 @@
   },
   "swedishRedList": "NT",
   "data": {
-    "fetchedAt": "2026-10-07T13:18:54.605152+00:00",
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
     "gbifTaxonKey": 8128385,
     "totalReports": 87428,
     "months": [
@@ -117,12 +117,12 @@
     "sentences": {
       "sv": [
         "Rapporteras mest i maj.",
-        "Nästan aldrig i augusti till mars.",
+        "Rapporteras sällan i augusti till mars.",
         "Rapporteras från alla 21 län."
       ],
       "en": [
         "Reported most in May.",
-        "Almost never in August to March.",
+        "Rarely reported in August to March.",
         "Reported from all 21 counties."
       ]
     },

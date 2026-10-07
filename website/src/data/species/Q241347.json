@@ -64,7 +64,7 @@
     }
   },
   "data": {
-    "fetchedAt": "2026-10-07T13:18:54.605152+00:00",
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
     "gbifTaxonKey": 2490283,
     "totalReports": 11883,
     "months": [
@@ -107,12 +107,12 @@
     "sentences": {
       "sv": [
         "Rapporteras mest i september.",
-        "Nästan aldrig i oktober till juli.",
+        "Rapporteras sällan i oktober till juli.",
         "Andelen av alla fågelrapporter är högst i Kalmar, Blekinge och Västerbotten."
       ],
       "en": [
         "Reported most in September.",
-        "Almost never in October to July.",
+        "Rarely reported in October to July.",
         "Its share of all bird reports is highest in Kalmar, Blekinge and Västerbotten."
       ]
     },
