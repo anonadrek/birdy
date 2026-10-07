@@ -29,6 +29,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithCache
@@ -538,6 +539,14 @@ private fun MetaText(
 /** Extra bottom space a [PhotoHero] needs before a [PaperSheet] with the default overlap
  * follows it, e.g. `bottomPadding = PaperSheetOverlap + 18.dp`. */
 val PaperSheetOverlap = 24.dp
+
+/**
+ * Where a species photo in a [PhotoHero] is anchored when it is cropped: a little above the
+ * centre, since the bird's head is usually in the upper half. Match shrinks its photo so the
+ * save button stays in view, and a centre crop cut off the head on a 1080x1920 phone (QA
+ * 2026-10-07). The profile uses the same anchor so the two read alike.
+ */
+val SpeciesPhotoAlignment: Alignment = BiasAlignment(horizontalBias = 0f, verticalBias = -0.4f)
 
 /**
  * Paper sheet that slides up over a [PhotoHero] (24dp rounded top). Place it directly after

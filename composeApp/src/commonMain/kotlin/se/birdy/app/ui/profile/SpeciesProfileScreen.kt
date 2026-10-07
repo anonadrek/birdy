@@ -75,6 +75,7 @@ import se.birdy.app.ui.components.PaperSheetOverlap
 import se.birdy.app.ui.components.PhotoBackButton
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.PremiumTeaserCard
+import se.birdy.app.ui.components.SpeciesPhotoAlignment
 import se.birdy.app.ui.components.StatusBarBand
 import se.birdy.app.ui.credits.PhotoCreditForm
 import se.birdy.app.ui.credits.PhotoCreditLine
@@ -209,6 +210,7 @@ private fun ProfileList(
                                 contentDescription = null,
                                 modifier = Modifier.fillMaxSize(),
                                 contentScale = ContentScale.Crop,
+                                alignment = SpeciesPhotoAlignment,
                             )
                         }
                     },
