@@ -53,9 +53,14 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
   }
 
   try {
-    const sender = addressOf(email.reply_to?.[0] ?? email.from);
+    // Anti-backscatter: the receipt goes only to the (authenticated) From, never to Reply-To — a
+    // forged From/Reply-To with an unauthenticated message must not turn Birdy into a relay.
+    const sender = addressOf(email.from);
+    const authenticated = email.authentication?.dkim === 'pass' || email.authentication?.dmarc === 'pass';
     if (isAutomated(email, support)) {
       say({ outcome: 'no-receipt', id, reason: 'automated' });
+    } else if (!authenticated) {
+      say({ outcome: 'no-receipt', id, reason: 'unauthenticated' });
     } else if (mailedRecently(await client.listSent(), sender, now, env.FORWARD_TO)) {
       say({ outcome: 'no-receipt', id, reason: 'recent' });
     } else {

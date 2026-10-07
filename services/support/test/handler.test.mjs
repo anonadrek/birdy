@@ -16,6 +16,8 @@ const email = {
   id: 'em_1', from: 'Anna <anna@example.se>', to: ['support@birdy.community'], reply_to: null,
   created_at: '2026-10-08T07:00:00.000Z', subject: 'Appen kraschar', text: 'Den kraschar.', html: null,
   headers: {}, message_id: '<m1@example.se>', attachments: [],
+  // DKIM/DMARC pass: a normal, authenticated sender. Not an SDK 6.32.1 type, but present at runtime.
+  authentication: { dkim: 'pass', spf: 'pass', dmarc: 'pass' },
 };
 
 function fakeClient({ sent = [], failForward = false, failReceipt = false, mail = email } = {}) {
@@ -104,6 +106,44 @@ test('a message is forwarded with a label and gets one receipt, each with its id
   assert.equal(receipt.payload.headers['Auto-Submitted'], 'auto-replied');
   assert.equal(receipt.payload.headers['In-Reply-To'], '<m1@example.se>');
   assert.equal(client.calls.listAttachments, 0);
+});
+
+test('the receipt goes only to From, never to Reply-To (anti-backscatter)', async () => {
+  // A forged or merely different Reply-To must not redirect the receipt — only the forward does that.
+  const client = fakeClient({ mail: { ...email, reply_to: ['Attacker <attacker@evil.example>'] } });
+  await run(client);
+  const receipt = client.calls.send.find((c) => c.key === 'receipt-em_1');
+  assert.deepEqual(receipt.payload.to, ['anna@example.se']);
+});
+
+test('no receipt without DKIM or DMARC pass (anti-backscatter), logged as unauthenticated', async () => {
+  const client = fakeClient({ mail: { ...email, authentication: { dkim: 'fail', dmarc: 'fail' } } });
+  await run(client);
+  assert.deepEqual(client.calls.send.map((c) => c.key), ['forward-em_1']);
+});
+
+test('no receipt when the authentication field is missing entirely', async () => {
+  const client = fakeClient({ mail: { ...email, authentication: undefined } });
+  await run(client);
+  assert.deepEqual(client.calls.send.map((c) => c.key), ['forward-em_1']);
+});
+
+test('a receipt is sent when DKIM passes even if DMARC is only gray (p=none, e.g. gmail.com)', async () => {
+  const client = fakeClient({ mail: { ...email, authentication: { dkim: 'pass', dmarc: 'gray' } } });
+  await run(client);
+  assert.deepEqual(client.calls.send.map((c) => c.key), ['forward-em_1', 'receipt-em_1']);
+});
+
+test('a receipt is sent when DMARC passes even if DKIM does not', async () => {
+  const client = fakeClient({ mail: { ...email, authentication: { dkim: 'fail', dmarc: 'pass' } } });
+  await run(client);
+  assert.deepEqual(client.calls.send.map((c) => c.key), ['forward-em_1', 'receipt-em_1']);
+});
+
+test('SPF alone is not enough for a receipt', async () => {
+  const client = fakeClient({ mail: { ...email, authentication: { spf: 'pass', dkim: 'fail', dmarc: 'fail' } } });
+  await run(client);
+  assert.deepEqual(client.calls.send.map((c) => c.key), ['forward-em_1']);
 });
 
 test('no receipt when Birdy mailed the sender in the last 24 hours', async () => {
