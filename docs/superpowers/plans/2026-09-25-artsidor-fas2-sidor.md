@@ -757,7 +757,10 @@ git commit -m "feat(website): Layout tar språkpar, noindex och extra JSON-LD, o
 **Files:**
 - Modify: `website/src/content.config.ts`
 - Create: `website/src/lib/species.ts`
+- Create: `website/src/lib/virtual-species-images.d.ts` (tillägg vid genomförandet)
 - Modify: `website/astro.config.mjs`
+
+> **Avvikelser vid genomförandet (2026-10-07, Astro 7.3.5 och zod 4):** (1) `z` importeras från `astro/zod`, och `z.url()` ersätter det utfasade `z.string().url()`. (2) Båda samlingarna har `generateId` = filnamnet: glob-laddarens standard-id är datans `slug`, som här är ett objekt, så alla poster fick id:t `[object Object]` och alla utom en försvann. (3) Fotona laddas inte med `import.meta.glob` utan med den virtuella modulen `virtual:birdy-species-images` från `astro.config.mjs`, som bara importerar fotona för arter som får en sida i bygget (`isSpeciesBuilt`, som inspelningarna). Vite lägger varje globbad bild i `dist/_astro/` så fort den laddas, även lata globbar och oanvända bilder: med planens kod hade varje opublicerad arts foto gått ut, och ett vanligt bygge hade fått med alla testfoton (uppmätt: 22 testfoton i `dist/` i riktigt läge). `speciesImage()` och resten av `species.ts` är oförändrade utåt; top-level `await` behövs inte längre.
 
 - [ ] **Step 1: Samlingarna**
 
