@@ -655,10 +655,49 @@
     <string name="about_subline">En lokal följeslagare för fynd.</string>
     <string name="about_version_prefix">Version</string>
     <string name="about_credits_label">INNEHÅLL &amp; DATA</string>
-    <string name="about_credits_body">Fågeldata från Wikidata och Wikipedia under CC BY-SA. Foton från Wikimedia Commons. Kartdata © OpenStreetMap contributors, kartrutor © MapTiler. ML-modeller: AIY Birds V1 (Google, foto) och BirdNET-Lite v2 (Cornell Lab of Ornithology, ljud).</string>
-    <string name="about_licenses_label">OPEN SOURCE</string>
-    <string name="about_licenses_body">Kotlin, Compose Multiplatform — Apache 2.0\nSQLDelight — Apache 2.0\nCoil — Apache 2.0\nAndroidX — Apache 2.0\nkaml — Apache 2.0\nosmdroid — Apache 2.0\nTensorFlow Lite (AIY Birds V1) — Apache 2.0\nBirdNET-Lite v2 (Cornell Lab of Ornithology) — CC BY-NC-SA 4.0\nDM Serif Display Italic — SIL Open Font License 1.1\nCaveat — SIL Open Font License 1.1</string>
+    <string name="about_licenses_label">KÄLLOR &amp; LICENSER</string>
     <string name="about_back">Tillbaka</string>
+    <string name="about_photos_title">Foton</string>
+    <string name="about_photos_body">%1$s foton från Wikimedia Commons under CC0, public domain, CC BY eller CC BY-SA, nedskalade av Birdy. Fotograf, licens och länk till originalet för varje foto finns under Bildkällor.</string>
+    <string name="about_photos_body_uncounted">Foton från Wikimedia Commons under CC0, public domain, CC BY eller CC BY-SA, nedskalade av Birdy. Fotograf, licens och länk till originalet för varje foto finns under Bildkällor.</string>
+    <string name="about_texts_title">Arttexter</string>
+    <string name="about_texts_body">Sammanfattningar som AI-modellen Claude (Anthropic) skrev 2026. Texterna bygger på Wikipedia-artiklar på svenska och engelska och delas under CC BY-SA 4.0.</string>
+    <string name="about_names_title">Artlista och namn</string>
+    <string name="about_names_body">BirdLife Sveriges taxonomikommitté (Västpalearktis-listan), IOC World Bird List v14.1 (F. Gill, D. Donsker &amp; P. Rasmussen, red.; CC BY 3.0) och Wikidata (CC0). Rödlistekategorin är artens kategori i IUCN:s globala rödlista, hämtad från Wikidata.</string>
+    <string name="about_map_title">Karta</string>
+    <string name="about_map_body">Kartrutor © MapTiler. Kartdata © OpenStreetMap contributors (ODbL).</string>
+    <string name="about_photo_id_title">Foto-ID</string>
+    <string name="about_photo_id_body">AIY Birds V1, © Google, Apache License 2.0.</string>
+    <string name="about_sound_id_title">Ljud-ID</string>
+    <string name="about_sound_id_body">BirdNET-Lite, K. Lisa Yang Center for Conservation Bioacoustics, Cornell Lab of Ornithology, Cornell University. Licens CC BY-NC-SA 4.0, används oförändrad. Därför är ljud-ID alltid gratis. Kahl m.fl. (2021), Ecological Informatics 61: 101236.</string>
+    <string name="about_row_photo_credits">Bildkällor</string>
+    <string name="about_row_photo_credits_sub">Fotograf och licens för varje foto</string>
+    <string name="about_row_licenses">Licenser för öppen källkod</string>
+    <string name="about_row_licenses_sub">Bibliotek, modeller och typsnitt</string>
+    <string name="photo_credits_title">Bildkällor</string>
+    <string name="photo_credits_intro">Alla %1$s foton i Birdy kommer från Wikimedia Commons och är nedskalade. Tryck på ett foto för att öppna originalet, eller på licensen för att läsa den.</string>
+    <string name="photo_credits_hero">Huvudbild</string>
+    <string name="photo_credits_numbered">Bild %1$s</string>
+    <string name="photo_credits_by">Foto: %1$s</string>
+    <string name="photo_credits_resized">nedskalad</string>
+    <string name="photo_credits_row_description">%1$s, %2$s. Foto: %3$s. Licens: %4$s. Wikimedia Commons, nedskalad.</string>
+    <string name="photo_credits_open_file">Öppna originalet på Wikimedia Commons</string>
+    <string name="photo_credits_open_license">Öppna licensen %1$s</string>
+    <string name="photo_credits_error">Bildkällorna gick inte att läsa.</string>
+    <string name="licenses_title">Licenser för öppen källkod</string>
+    <string name="licenses_intro">Birdy bygger på öppen källkod, modeller och typsnitt som andra har gjort. Här finns deras licenser och notiser. Tryck på en rad för att läsa texten.</string>
+    <string name="licenses_section_models">Modeller</string>
+    <string name="licenses_section_fonts">Typsnitt</string>
+    <string name="licenses_section_tensorflow">TensorFlow Lite</string>
+    <string name="licenses_section_google">Googles bibliotek</string>
+    <string name="licenses_section_libraries">Bibliotek</string>
+    <string name="licenses_row_version">Version %1$s</string>
+    <string name="licenses_entry_native">Inbyggd kod i TensorFlow Lite, %1$s delar</string>
+    <string name="licenses_entry_google">Öppen källkod i Googles bibliotek</string>
+    <string name="licenses_open">Läs licensen</string>
+    <string name="licenses_error">Licenserna gick inte att läsa.</string>
+    <string name="license_text_includes">Ingår: %1$s</string>
+    <string name="license_text_website">Webbplats</string>
 
     <!-- Settings row effects (Plan 6a Task 13) -->
     <string name="settings_share_copy">Birdy — fältornitologens digitala bok. Hämta den på Google Play: https://play.google.com/store/apps/details?id=se.birdy.android</string>
@@ -767,6 +806,7 @@
     <!-- Notifications -->
     <string name="notification_daily_bird_title_fmt">Dagens fågel: %1$s</string>
     <string name="notification_daily_bird_body">Kan du fånga den idag? Kika, foto eller läte räknas.</string>
+    <string name="notification_daily_bird_photo_credit">Foto: %1$s, %2$s</string>
     <string name="daily_bird_caught_today">Fångad idag</string>
     <string name="daily_bird_not_caught">Inte fångad idag</string>
     <string name="settings_toggle_trophy">Märkesprogression — veckovis</string>

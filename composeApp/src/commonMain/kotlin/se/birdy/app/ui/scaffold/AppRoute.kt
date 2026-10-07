@@ -47,6 +47,17 @@ sealed interface AppRoute {
 
     @Serializable data object About : AppRoute
 
+    /** Release 1.3.0 Task 7e-2: every species photo's credit, from About. */
+    @Serializable data object PhotoCredits : AppRoute
+
+    /** Release 1.3.0 legal review 7i-fix B: the open-source licence list, from About. */
+    @Serializable data object OpenSourceLicenses : AppRoute
+
+    /** One entry of [OpenSourceLicenses] (its id in the generated index.json) and its full text. */
+    @Serializable data class LicenseText(
+        val entryId: String,
+    ) : AppRoute
+
     @Serializable data object OnboardingReplay : AppRoute
 
     @Serializable data object Premium : AppRoute
