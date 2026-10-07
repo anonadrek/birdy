@@ -4,6 +4,7 @@ import { mkdtemp, rm, writeFile, access, stat } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { deflateSync, crc32 } from 'node:zlib';
+import { randomBytes } from 'node:crypto';
 import { timeline, layoutProblems, encodeVideo, MAX_CLIP_SEC, MAX_VIDEO_SEC, FPS, SAFE_BOTTOM, LEAD_SEC, SETTLE_SEC, PAUSE_SEC } from '../lib/render.mjs';
 
 test('the whole video stays within 30 s, also for the longest clip', () => {
@@ -71,6 +72,29 @@ function wav(seconds, sr = 48000) {
 
 const frame = png(64, 64);
 
+// A frame as large as the real ones (1080 x 1920, noisy, several MB), so a write is still in
+// flight when ffmpeg dies.
+function bigPng() {
+  const w = 1080;
+  const h = 1920;
+  const rows = randomBytes(h * (1 + 3 * w));
+  for (let y = 0; y < h; y++) rows[y * (1 + 3 * w)] = 0;
+  const chunk = (type, data) => {
+    const len = Buffer.alloc(4);
+    len.writeUInt32BE(data.length);
+    const td = Buffer.concat([Buffer.from(type), data]);
+    const crc = Buffer.alloc(4);
+    crc.writeUInt32BE(crc32(td));
+    return Buffer.concat([len, td, crc]);
+  };
+  const ihdr = Buffer.alloc(13);
+  ihdr.writeUInt32BE(w, 0);
+  ihdr.writeUInt32BE(h, 4);
+  ihdr[8] = 8;
+  ihdr[9] = 2;
+  return Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]), chunk('IHDR', ihdr), chunk('IDAT', deflateSync(rows, { level: 1 })), chunk('IEND', Buffer.alloc(0))]);
+}
+
 test('an ffmpeg failure rejects with ffmpeg\'s message instead of crashing the batch', async () => {
   const dir = await mkdtemp(join(tmpdir(), 'birdy-social-test-'));
   try {
@@ -79,6 +103,21 @@ test('an ffmpeg failure rejects with ffmpeg\'s message instead of crashing the b
     const slow = () => new Promise((r) => setTimeout(() => r(frame), 15));
     const run = encodeVideo(null, { frames: 400, trackWav: join(dir, 'missing.wav'), outMp4: join(dir, 'out.mp4'), frame: slow });
     await assert.rejects(run, /ffmpeg exited with/);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test('with full-size frames, a dying ffmpeg is reported by its own reason, not as a write error', async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'birdy-social-test-'));
+  try {
+    const big = bigPng();
+    assert.ok(big.length > 4 * 1024 * 1024, `${big.length} bytes`);
+    const run = encodeVideo(null, { frames: 40, trackWav: join(dir, 'missing.wav'), outMp4: join(dir, 'out.mp4'), frame: async () => big });
+    await assert.rejects(run, (e) => {
+      assert.match(String(e.message), /ffmpeg exited with/);
+      return true;
+    });
   } finally {
     await rm(dir, { recursive: true, force: true });
   }

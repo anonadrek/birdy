@@ -135,20 +135,33 @@ export async function encodeVideo(page, { frames, trackWav, outMp4, onProgress, 
   done.catch(() => {}); // awaited below; until then a failure must not be an unhandled rejection
   ff.stdin.on('error', () => {}); // EPIPE when ffmpeg has died; `done` carries the reason
   let written = 0;
+  let pageError = null;
   try {
     for (let f = 0; f < frames && !exited; f++) {
-      const png = await frame(page, f / FPS);
+      let png;
+      try {
+        png = await frame(page, f / FPS);
+      } catch (e) {
+        pageError = e;
+        throw e;
+      }
       if (exited) break;
       if (!ff.stdin.write(png)) await Promise.race([once(ff.stdin, 'drain'), done]);
       written++;
       if (onProgress && (f % 60 === 0 || f === frames - 1)) onProgress(f + 1, frames);
     }
   } catch (e) {
-    // ffmpeg died on its own: its message says why. Otherwise (the page failed) stop ffmpeg.
-    const ffmpegDied = exited;
-    ff.kill();
-    const reason = await done.then(() => null, (x) => x);
-    throw ffmpegDied && reason ? reason : e;
+    if (pageError) {
+      // The page failed: stop ffmpeg and report the page's error.
+      ff.kill();
+      await done.catch(() => {});
+      throw pageError;
+    }
+    // A write failed ("write EOF", EPIPE): ffmpeg has stopped or is stopping, and its exit
+    // says why. Wait for it (a few seconds at most) and report that instead.
+    const reason = await Promise.race([done.then(() => null, (x) => x), new Promise((r) => setTimeout(() => r(null), 5000))]);
+    if (!exited) ff.kill();
+    throw reason ?? e;
   } finally {
     ff.stdin.end();
   }
