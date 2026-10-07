@@ -33,6 +33,9 @@ actual fun openExternalUrl(url: String) {
         // (e.g. no browser) is silently harmless to the user (nothing happens), but worth
         // knowing about rather than swallowing without a trace.
         Log.w(TAG, "openExternalUrl: no app found to open $url", e)
+    } catch (e: SecurityException) {
+        // A misconfigured or non-exported default handler: same degradation, never a crash.
+        Log.w(TAG, "openExternalUrl: not allowed to open $url", e)
     }
 }
 
