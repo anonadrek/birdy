@@ -18,6 +18,7 @@ test('filtret för egna besök sätts och tas bort med en adressparameter, och a
   expect(await page.evaluate(() => typeof (window as unknown as { webAnalyticsBeforeSend?: unknown }).webAnalyticsBeforeSend)).toBe('undefined');
 });
 
+// Relies on /_vercel/insights/script.js returning 404 locally (astro preview), so the real script never drains window.vaq.
 test('flaggade sidor lämnar beforeSend först i Vercels analyticskö, oflaggade sidor lämnar ingen', async ({ page }) => {
   await page.goto('/?va-ignore=1');
   await page.goto('/sv/');
@@ -47,4 +48,9 @@ test('en blockerad localStorage ger varken sidfel eller en aktiv beforeSend-hook
 
   expect(errors).toEqual([]);
   expect(await page.evaluate(() => typeof (window as unknown as { webAnalyticsBeforeSend?: unknown }).webAnalyticsBeforeSend)).toBe('undefined');
+
+  // The address is cleaned in its own try, before any storage access, so it works with storage blocked too.
+  await page.goto('/?va-ignore=1');
+  expect(new URL(page.url()).searchParams.has('va-ignore')).toBe(false);
+  expect(errors).toEqual([]);
 });

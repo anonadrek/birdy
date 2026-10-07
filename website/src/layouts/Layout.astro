@@ -149,22 +149,27 @@ const jsonLd = {
       Own visits (spec 2026-09-25 §15): ?va-ignore=1 marks this browser, ?va-ignore=0 removes the mark.
       A marked browser sends nothing to Vercel Analytics. Runs before the analytics element below.
       The va-ignore parameter is stripped from the address bar once read, so it does not linger
-      in the URL (shared links, browser history). If storage is blocked (some private-browsing
-      modes throw on access), the catch below leaves the visit counted as usual.
+      in the URL (shared links, browser history). The cleanup has its own try and runs before
+      any storage access, so the address is cleaned even when storage is blocked. If storage is
+      blocked (some private-browsing modes throw on access), the second catch leaves the visit
+      counted as usual.
     */}
     <script is:inline>
       (function () {
+        var flag = null;
         try {
-          var flag = new URLSearchParams(location.search).get('va-ignore');
-          if (flag === '1') localStorage.setItem('birdy-va-ignore', '1');
-          if (flag === '0') localStorage.removeItem('birdy-va-ignore');
-          if (localStorage.getItem('birdy-va-ignore') === '1') {
-            window.webAnalyticsBeforeSend = function () { return null; };
-          }
+          flag = new URLSearchParams(location.search).get('va-ignore');
           if (flag !== null) {
             var u = new URL(location.href);
             u.searchParams.delete('va-ignore');
             history.replaceState(history.state, '', u);
+          }
+        } catch (e) {}
+        try {
+          if (flag === '1') localStorage.setItem('birdy-va-ignore', '1');
+          if (flag === '0') localStorage.removeItem('birdy-va-ignore');
+          if (localStorage.getItem('birdy-va-ignore') === '1') {
+            window.webAnalyticsBeforeSend = function () { return null; };
           }
         } catch (e) {}
       })();

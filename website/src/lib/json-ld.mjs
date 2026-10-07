@@ -8,6 +8,10 @@
 // hand before it goes live. Escaping `<` as its JSON unicode escape closes that hole: `<` is
 // valid inside a JSON string, so `JSON.parse` on the output still returns the original value
 // unchanged, but the literal byte sequence `</script` can never appear in the HTML.
+/**
+ * @param {unknown} value
+ * @returns {string}
+ */
 export function serializeJsonLd(value) {
   return JSON.stringify(value).replace(/</g, '\\u003c');
 }

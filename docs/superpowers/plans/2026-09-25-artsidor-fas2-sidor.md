@@ -662,6 +662,8 @@ Expected: FAIL, `localStorage.getItem` ger `null` i stället för `'1'`.
 
 - [ ] **Step 3: Utöka `Props`**
 
+Layout använder sedan granskningen `serializeJsonLd` från `src/lib/json-ld.mjs` (escapar `<`); behåll det.
+
 I `src/layouts/Layout.astro`, ersätt `interface Props { ... }` och raden `const { locale, pathname, ... } = Astro.props;` med:
 
 ```ts
