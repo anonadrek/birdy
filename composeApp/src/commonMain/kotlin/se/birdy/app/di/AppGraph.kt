@@ -5,6 +5,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
@@ -15,6 +16,7 @@ import se.birdy.app.badges.RecalculateBadgesUseCase
 import se.birdy.app.bootstrap.BadgeBackfillOnAppStart
 import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.dailybird.DailyBirdSpecies
+import se.birdy.app.dailybird.DailyBirdToday
 import se.birdy.app.dailybird.DailyBirdTracker
 import se.birdy.app.data.premium.FormattedPrices
 import se.birdy.app.data.premium.PurchaseResult
@@ -310,6 +312,26 @@ class AppGraph(
         )
     }
 
+    /**
+     * Today's bird as the hero and the strips draw it: [dailyBirdTracker]'s state with
+     * [DailyBirdToday.showPremiumBadgeTag] set for a user without Premium (Dagens fågel-jägare is
+     * a Premium badge; Albin, 2026-10-07). Decided here, from [effectivePremiumActive], so the
+     * Identify screen's code never reads Premium state (BirdNetLicenseGuardTest: audio ID must
+     * never be gated); it only draws a label the daily-bird model carries.
+     */
+    val dailyBirdForDisplay: StateFlow<DailyBirdToday?> by lazy {
+        fun tagged(
+            bird: DailyBirdToday?,
+            premium: Boolean,
+        ): DailyBirdToday? = bird?.copy(showPremiumBadgeTag = !premium)
+        combine(dailyBirdTracker.state, effectivePremiumActive, ::tagged)
+            .stateIn(
+                MainScope(),
+                SharingStarted.Eagerly,
+                tagged(dailyBirdTracker.state.value, effectivePremiumActive.value),
+            )
+    }
+
     private val inAppReviewTrigger: InAppReviewTrigger =
         InAppReviewTrigger(prefs = userPreferences, launchReview = requestInAppReview)
 
@@ -453,8 +475,7 @@ class AppGraph(
             formattedPricesFlow = formattedPricesFlow ?: MutableStateFlow(FormattedPrices()),
         )
 
-    fun listenLauncherViewModel(): ListenLauncherViewModel =
-        ListenLauncherViewModel(dailyBird = dailyBirdTracker.state, dailyBirdBadgeUnlocked = effectivePremiumActive)
+    fun listenLauncherViewModel(): ListenLauncherViewModel = ListenLauncherViewModel(dailyBird = dailyBirdForDisplay)
 
     fun onboardingViewModel(isReplay: Boolean = false): OnboardingViewModel =
         OnboardingViewModel(prefs = userPreferences, isReplay = isReplay)

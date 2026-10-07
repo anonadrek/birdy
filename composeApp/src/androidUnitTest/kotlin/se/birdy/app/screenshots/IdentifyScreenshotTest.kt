@@ -52,9 +52,9 @@ class IdentifyScreenshotTest {
                                 heroImagePath = null,
                                 caughtToday = caughtToday,
                                 daysCaught = daysCaught,
+                                showPremiumBadgeTag = showPremiumBadgeTag,
                             ),
                         ),
-                    dailyBirdBadgeUnlocked = MutableStateFlow(!showPremiumBadgeTag),
                 )
             }
         ListenLauncherScreen(

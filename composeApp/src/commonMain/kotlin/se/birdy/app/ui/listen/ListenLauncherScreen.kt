@@ -106,7 +106,6 @@ fun ListenLauncherScreen(
                     .verticalScroll(rememberScrollState()),
         ) {
             val dailyBirdState by viewModel.dailyBird.collectAsState()
-            val dailyBirdBadgeUnlocked by viewModel.dailyBirdBadgeUnlocked.collectAsState()
             // Two variants, not one shared lambda: the hero is a dark photo (rust-on-dark-moss
             // is hard to see, needs the light onDark styling), the fallback sits on plain paper
             // (default rust ring is correct there).
@@ -134,8 +133,6 @@ fun ListenLauncherScreen(
                     onReadMore = { onSpeciesProfileClick(bird.speciesId) },
                     onListen = viewModel::onAudioCardTap,
                     topBar = gearOnHero,
-                    // Dagens fågel-jägare is a Premium badge: a label on the row, nothing is gated.
-                    showPremiumBadgeTag = !dailyBirdBadgeUnlocked,
                 )
             } else {
                 Box(Modifier.fillMaxWidth().statusBarsPadding().padding(top = 8.dp), content = gearOnPaper)
@@ -191,7 +188,6 @@ private fun DailyBirdHero(
     onReadMore: () -> Unit,
     onListen: () -> Unit,
     topBar: @Composable BoxScope.() -> Unit,
-    showPremiumBadgeTag: Boolean,
 ) {
     val date = dailyBirdDateLabel(bird.date)
     val spokenDate = dailyBirdDateA11yLabel(bird.date)
@@ -232,7 +228,6 @@ private fun DailyBirdHero(
             DailyBirdHeroChallengeRow(
                 challenge = bird.challenge(),
                 modifier = Modifier.padding(top = 6.dp),
-                showPremiumTag = showPremiumBadgeTag,
             )
         },
     )

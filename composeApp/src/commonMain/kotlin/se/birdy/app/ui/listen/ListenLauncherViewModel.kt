@@ -19,16 +19,9 @@ sealed interface ListenLauncherEffect {
  * The Identify hub. Today's bird comes from the app-wide [se.birdy.app.dailybird.DailyBirdTracker]
  * (release 1.3.0 Task 7d), so the hero, the strips on Mina arter/Uppslagsverk and the tab dot
  * always show the same bird and the same catch state; this ViewModel no longer loads it itself.
- *
- * [dailyBirdBadgeUnlocked]: whether Dagens fågel-jägare, a Premium badge, is open to this user
- * (AppGraph passes the app's effective Premium state, early users' Lifetime included). When it is
- * not, the hero's challenge row tags the badge as Premium (Albin, 2026-10-07). A label only:
- * nothing on this screen is gated by it, audio ID least of all (BirdNET is NonCommercial, see
- * BirdNetLicenseGuardTest).
  */
 class ListenLauncherViewModel(
     val dailyBird: StateFlow<DailyBirdToday?> = MutableStateFlow(null),
-    val dailyBirdBadgeUnlocked: StateFlow<Boolean> = MutableStateFlow(true),
 ) : ViewModel() {
     private val _effects =
         MutableSharedFlow<ListenLauncherEffect>(

@@ -38,6 +38,11 @@ data class DailyBirdSpecies(
  *
  * [daysCaught] is the number of distinct days on which the user saved that day's bird (all time,
  * not days in a row), the same count the Dagens fågel-jägare badge rule reads.
+ *
+ * [showPremiumBadgeTag]: Dagens fågel-jägare is a Premium badge, so for a user without Premium the
+ * day count carries a "Premium-märke" tag (Albin, 2026-10-07). The tracker leaves it false;
+ * AppGraph.dailyBirdForDisplay sets it from the app's effective Premium state, so the screens that
+ * draw the count never read Premium themselves (the Identify screen is under BirdNetLicenseGuardTest).
  */
 data class DailyBirdToday(
     val date: LocalDate,
@@ -48,6 +53,7 @@ data class DailyBirdToday(
     val caughtToday: Boolean,
     val daysCaught: Int,
     val huntTarget: Int = DAILY_BIRD_HUNT_TARGET,
+    val showPremiumBadgeTag: Boolean = false,
 )
 
 /** The Identify tab's dot: shown while today's bird exists and has not been opened today. */

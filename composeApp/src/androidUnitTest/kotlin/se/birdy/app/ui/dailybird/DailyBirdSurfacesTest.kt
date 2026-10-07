@@ -47,6 +47,7 @@ class DailyBirdSurfacesTest {
     private fun bird(
         caughtToday: Boolean = false,
         daysCaught: Int = 0,
+        showPremiumBadgeTag: Boolean = false,
     ) = DailyBirdToday(
         date = LocalDate(2026, 10, 6),
         speciesId = "Q25403",
@@ -55,26 +56,18 @@ class DailyBirdSurfacesTest {
         heroImagePath = null,
         caughtToday = caughtToday,
         daysCaught = daysCaught,
+        showPremiumBadgeTag = showPremiumBadgeTag,
     )
 
     private val opened = mutableListOf<String>()
     private var audioOpened = 0
 
-    private fun showHero(
-        bird: DailyBirdToday,
-        showPremiumBadgeTag: Boolean = false,
-    ) {
+    private fun showHero(bird: DailyBirdToday) {
         attachComposeResourcesContext()
         compose.setContent {
             BirdyTheme {
                 ListenLauncherScreen(
-                    viewModel =
-                        remember {
-                            ListenLauncherViewModel(
-                                dailyBird = MutableStateFlow(bird),
-                                dailyBirdBadgeUnlocked = MutableStateFlow(!showPremiumBadgeTag),
-                            )
-                        },
+                    viewModel = remember { ListenLauncherViewModel(dailyBird = MutableStateFlow(bird)) },
                     onCameraClick = {},
                     onPhotoClick = {},
                     onSettingsClick = {},
@@ -189,11 +182,11 @@ class DailyBirdSurfacesTest {
     }
 
     // Albin 2026-10-07: Dagens fågel-jägare is a Premium badge; the row stays for everyone and
-    // tags the badge for users without Premium (AppGraph passes its effective Premium state to the ViewModel).
+    // tags the badge for users without Premium (AppGraph.dailyBirdForDisplay sets the flag).
     @Test
     @Config(qualifiers = "+sv")
     fun `without premium the challenge row reads out the premium badge tag`() {
-        showHero(bird(), showPremiumBadgeTag = true)
+        showHero(bird(showPremiumBadgeTag = true))
         compose
             .onNodeWithContentDescription(
                 "Inte fångad idag. Spara ett fynd av arten idag. 0 av 3 dagar. Premium-märke.",
@@ -204,7 +197,7 @@ class DailyBirdSurfacesTest {
     @Test
     @Config(qualifiers = "+en")
     fun `without premium the challenge row reads out the premium badge tag in english`() {
-        showHero(bird(caughtToday = true, daysCaught = 1), showPremiumBadgeTag = true)
+        showHero(bird(caughtToday = true, daysCaught = 1, showPremiumBadgeTag = true))
         compose
             .onNodeWithContentDescription(
                 "Caught today. Two more days to the badge. 1 of 3 days. Premium badge.",
@@ -215,7 +208,7 @@ class DailyBirdSurfacesTest {
     @Test
     @Config(qualifiers = "+sv")
     fun `with premium the challenge row has no premium tag`() {
-        showHero(bird(), showPremiumBadgeTag = false)
+        showHero(bird(showPremiumBadgeTag = false))
         compose
             .onNodeWithContentDescription("Inte fångad idag. Spara ett fynd av arten idag. 0 av 3 dagar.", useUnmergedTree = true)
             .assertExists()

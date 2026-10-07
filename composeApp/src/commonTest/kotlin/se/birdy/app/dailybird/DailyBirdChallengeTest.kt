@@ -84,4 +84,22 @@ class DailyBirdChallengeTest {
             )
         assertEquals(dailyBirdChallenge(caughtToday = true, daysCaught = 1, target = 3), bird.challenge())
     }
+
+    // Albin 2026-10-07: Dagens fågel-jägare is a Premium badge; the label decision rides on today's
+    // bird (set by AppGraph.dailyBirdForDisplay) so the row and the strips draw the same thing.
+    @Test
+    fun `the premium badge tag carries over from todays bird to the challenge`() {
+        val bird =
+            DailyBirdToday(
+                date = kotlinx.datetime.LocalDate(2026, 10, 6),
+                speciesId = "Q25403",
+                name = "Sävsångare",
+                scientificName = "Acrocephalus schoenobaenus",
+                heroImagePath = null,
+                caughtToday = false,
+                daysCaught = 0,
+            )
+        assertEquals(false, bird.challenge().showPremiumBadgeTag)
+        assertEquals(true, bird.copy(showPremiumBadgeTag = true).challenge().showPremiumBadgeTag)
+    }
 }
