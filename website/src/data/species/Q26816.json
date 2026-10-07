@@ -2,7 +2,9 @@
   "qid": "Q26816",
   "status": "pending",
   "publish": false,
-  "review": {},
+  "review": {
+    "wave": 3
+  },
   "facts": [],
   "text": null,
   "generated": {},

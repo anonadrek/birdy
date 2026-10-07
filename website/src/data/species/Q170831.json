@@ -2,7 +2,9 @@
   "qid": "Q170831",
   "status": "pending",
   "publish": false,
-  "review": {},
+  "review": {
+    "wave": 2
+  },
   "facts": [
     {
       "id": "f01",

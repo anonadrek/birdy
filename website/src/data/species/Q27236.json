@@ -2,7 +2,9 @@
   "qid": "Q27236",
   "status": "pending",
   "publish": false,
-  "review": {},
+  "review": {
+    "wave": 3
+  },
   "facts": [
     {
       "id": "f01",

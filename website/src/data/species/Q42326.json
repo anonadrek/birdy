@@ -2,7 +2,9 @@
   "qid": "Q42326",
   "status": "pending",
   "publish": false,
-  "review": {},
+  "review": {
+    "wave": 2
+  },
   "facts": [],
   "text": null,
   "generated": {},

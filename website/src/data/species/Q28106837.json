@@ -2,7 +2,9 @@
   "qid": "Q28106837",
   "status": "pending",
   "publish": false,
-  "review": {},
+  "review": {
+    "wave": 2
+  },
   "facts": [],
   "text": null,
   "generated": {},

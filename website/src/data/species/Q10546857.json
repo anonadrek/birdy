@@ -2,7 +2,9 @@
   "qid": "Q10546857",
   "status": "ok",
   "publish": false,
-  "review": {},
+  "review": {
+    "wave": 2
+  },
   "facts": [
     {
       "id": "f01",

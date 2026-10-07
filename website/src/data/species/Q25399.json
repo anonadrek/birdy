@@ -2,7 +2,9 @@
   "qid": "Q25399",
   "status": "pending",
   "publish": false,
-  "review": {},
+  "review": {
+    "wave": 3
+  },
   "facts": [],
   "text": null,
   "generated": {},

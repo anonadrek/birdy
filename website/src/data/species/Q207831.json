@@ -2,7 +2,9 @@
   "qid": "Q207831",
   "status": "pending",
   "publish": false,
-  "review": {},
+  "review": {
+    "wave": 2
+  },
   "facts": [],
   "text": null,
   "generated": {},
