@@ -5,9 +5,387 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Viggens tydligaste kännetecken är tofsen i nacken, som är lång och hängande hos häckande hanar men syns mer eller mindre i alla dräkter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess mest signifikanta drag är tofsen i nacken som hos häckande hanar är lång och nedhängande men mer eller mindre synlig på båda könen och i alla dräkter."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Viggen är en liten och kompakt dykand med ganska lång hals.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Viggen är en liten kompakt fågel med ganska lång hals."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Huvudet är påfallande runt och näbben relativt kort.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Bemerkenswert sind der relativ kurze Schnabel und der auffällig runde Kopf."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Näbben är kort, bred och blågrå, bredare mot den svarta spetsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är kort och bred och blågrå till färgen, bredare mot spetsen som är svart."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Båda könen har gul iris och ljust gråblå näbb med svart näbbnagel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Båda könen har gul iris och ljust gråblå näbb med svart näbbnagel."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "I flykten syns ett vitt vingband, med en svart kant längs vingens bakkant.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "so dass im Flug ein weißes Flügelband erkennbar ist"
+        },
+        {
+          "article": "sv",
+          "quote": "Ovansidan av handpennor och armpennor är vita med en tydlig svart avslutning som ett streck på vingkanten."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Den adulta hanen har svart huvud, bröst, ovansida och stjärt, medan sidorna, buken och vingundersidan är vita.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen har svart huvud, bröst, ovansida och stjärt, medan sidorna, buken och undersidan av vingarna är vita."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honan är brun, jämnt mörkbrun på rygg och huvud och ljusare brun på sidorna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan är färgad i olika nyanser av brunt, med en jämnt mörkbrun nyans på rygg och huvud och en ljusare brun på sidorna."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Honan har en mindre tydlig tofs än hanen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan är brunaktig och har en mindre tydlig tofs."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Vissa honor har vitt kring näbbroten, men aldrig lika mycket som hos bergänder.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In particular, some have white around the base of the bill, resembling the scaup species, although the white is never as extensive as that of those ducks."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Hanen i eklipsdräkt är som honan mörkbrun med något ljusare sidor.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "im Schlichtkleid wie die Weibchen dunkelbraun mit leicht aufgehellten Flanken"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "size",
+      "sv": "Viggen är 40–47 cm lång och har ett vingspann på 65–72 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fågelns totala längd är 40–47 cm och den har ett vingspann på 65–72 cm."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Den friande hanen har ett nästan kalkonlikt, fnittrande läte som faller i tonhöjd men ökar i hastighet, \"vip vi-vivyvyp\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från friande hane men även i flykten hörs ett nästan kalkonlikt och fnittrande läte som faller i tonhöjd men ökar i hastighet: \"vip vi-vivyvyp\"."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Honan har en skorrande ramsa, \"krr krr krr krr\", snabbare än brunandens och ljusare än bergandens.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan har en skorrande ramsa, \"krr krr krr krr\", snabbare än brunanden och ljusare än berganden."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Honans läte är ett hårt, morrande \"karr\" som oftast hörs i flykten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The female's call is a harsh, growling \"karr\", usually given in flight."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Hanarna är mestadels tysta men visslar under parningsspelet.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Males are mostly silent but will whistle during courtship"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Viggen häckar ofta i sötvatten som skogssjöar, fjäll- och tundravatten, lugna åar och parkdammar, men också vid havskuster.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar ofta i sötvatten som skogssjöar, fjäll- och tundravatten, lugnar åar, eller parkdammar, men den häckar också vid havskuster."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Viggen föredrar att häcka i grunda näringsrika sjöar, vikar och i skärgården gärna flador.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den föredrar att häcka i grunda eutrofa sjöar, vikar och i skärgården gärna flader."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Vilda viggar finns även i många parker i städer.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Reiherenten sind auch in vielen städtischen Parkanlagen wildlebend anzutreffen."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Sverige är viggen på sommaren vanligast i Norrland och östra Sverige, men häckar i stort sett i hela landet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är den på sommaren vanligast i Norrland och Sveriges östliga delar, men häckar i stort sett i hela landet."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "De flesta viggar lämnar Sverige under vintern, men vissa övervintrar i södra Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Merparten lämnar Sverige under vintern men vissa övervintrar i södra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet beräknas till mellan 40 000 och 60 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det samlade beståndet av vigg i Sverige beräknas idag vara mellan 40 000 och 60 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Viggen etablerade sig på allvar i södra Sverige först på 1850-talet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det dröjde till 1850-talet innan viggen på allvar etablerade sig i södra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Viggen lägger åtta till tio grågröna eller blygrå ägg som honan ruvar i 25 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Viggen lägger åtta till tio grågröna eller blygrå ägg, som ruvas av honan i 25 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Viggen häckar ensam eller i lösa grupper, gärna tillsammans med måsar och tärnor som ger visst skydd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De häckar antingen ensamma eller i löst sammanhållna grupper, ibland upp emot hundratals häckande honor, gärna tillsammans med måsar och tärnor som ger arten visst skydd."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Ungarna blir flygga efter 45–50 dagar men kan lämna honan mycket tidigare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna blir flygga efter 45–50 dagar men kan lämna honan mycket tidigare."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Hanarna ruggar från slutet av juni till början av september och kan då inte flyga under tre till fyra veckor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under denna ruggingsperiod som inträffar i slutet av juni till början av september är hanarna flygoförmögna i tre till fyra veckor."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Under vintern kan viggar samlas i mycket stora flockar på tusentals individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under vintern kan arten ansamlas i mycket stora flockar på tusentals individer."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "food",
+      "sv": "Viggen söker oftast föda på grunt vatten och dyker sällan djupare än tre meter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Viggen födosöker oftast på grunt vatten och dyker sällan mer än tre meter."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "food",
+      "sv": "Viktig föda är snäckor, musslor, kräftdjur, småfisk, vatteninsekter och vattenväxter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Viktig föda utgörs av snäckor, musslor, kräftdjur, småfisk, vatteninsekter och vattenväxter."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Merparten lämnar Sverige under vintern men vissa övervintrar i södra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "4b03247e9bbb7210"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "vigg",
@@ -203,7 +581,19 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V2",
+      "factId": "f12",
+      "message": "f12 anger ett tal i cm som inte stämmer med de andra artiklarna (4.1 till 5.9 cm)"
+    },
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

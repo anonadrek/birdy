@@ -5,9 +5,391 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Björktrasten är en långstjärtad och kraftigt byggd trast.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Björktrasten är en långstjärtad och kraftigt byggd trast."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Nacke, övergump, nedre delen av ryggen, hjässan och kroppssidorna är askgrå.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess nacke, övergump, nedre delen av ryggen, huvudets ovansida och kroppssidorna är askgrå."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Skuldrorna och övre delen av ryggen är kastanjebruna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skuldrorna och övre delen av ryggen är kastanjebruna"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "I flykten syns de vita undre vingtäckarna och armhålorna tydligt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In flight, its white under wing-coverts and axillaries are conspicuous."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Bröstet är orangebeige med längsgående mörka streck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bröstet är orangebeige och också vattrad med längsgående mörka streck."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Kroppssidorna under vingarna har kraftiga pilspetsformade svarta fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den är kraftigt vattrad med pilspetsformade svarta fläckar på kroppssidorna under vingarna"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Den har ett ljust ögonbrynsstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett ljust ögonbrynsstreck"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Näbben är gulorange med grå spets.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "näbben som är gulorange med en grå näbbspets"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Stjärten är svartgrå.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Schwanz ist schwarzgrau."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Längden är 22–27 cm och vingspannet 39–42 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Längden är 22–27 cm och vingspannet 39–42 cm."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "size",
+      "sv": "Vikten varierar mellan 80 och 140 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "weight ranges from 80 to 140 g"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "sex_age",
+      "sv": "Honan liknar hanen mycket men har något brunare ovansida.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The female is very similar to the male but the upper parts are somewhat more brownish"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "sex_age",
+      "sv": "Unga fåglar i första vinterdräkt känns igen på vita fjäderspetsar på de övre vingtäckarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Unga fåglar i första vinterdräkt går att särskilja genom de vita fjäderspetsarna på de övre vingtäckarna."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Det vanligaste lätet är ett skränigt, upprepat ”schäckande”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess vanligaste läte är ett skränigt upprepat ”schäckande”."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "I flykten hörs även ett tunt, högt ”giih”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "men även ett tunt, högt ”giih”"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Sången är föga melodisk, pressat kvittrande med gälla och kraxande toner och sjungs mest i flykten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der wenig melodische Gesang wird überwiegend im Flug vorgetragen."
+        },
+        {
+          "article": "de",
+          "quote": "Er ist gepresst zwitschernd mit schrillen und krächzenden Tönen"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "voice",
+      "sv": "Den använder gärna sitt tjatter för att varna för kattugglor, katter och andra faror.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I allmänhet är den inte sen att använda sitt tjatter för att varna för kattugglor, katter eller andra faror."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Den häckar i skogsmark och busksly, till exempel fjällbjörkskog, löv- och blandskog, parker och trädgårdar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar i olika slags skogsmark och busksly som till exempel fjällbjörkskog, löv- och blandskog, parker och trädgårdar."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Vintertid hittas flockarna främst i öppet landskap, jordbruksmark, fruktodlingar och glesa skogar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In the winter, groups of fieldfares are chiefly found in open country, agricultural land, orchards and open woodland."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Björktrasten häckar i stort antal över hela Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Björktrasten häckar i stort antal över hela landet."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Björktrastar som häckar norr om Mora flyttar grovt taget söderut om vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Grovt taget kan man säga att de björktrastar som häckar norr om Mora flyttar söderut om vintern."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Sedan 2020 står björktrasten på Artdatabankens rödlista som nära hotad (NT).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är sedan 2020 upptagen på Artdatabankens rödlista som nära hotad (NT)."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till 594 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 594 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Björktrastar häckar ofta i små kolonier, möjligen som skydd mot rovdjur.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Fieldfares often nest in small colonies, possibly for protection from predators."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Honan lägger vanligtvis 5–6 ljusgröna ägg med bruna fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger vanligtvis 5–6 ägg som är ljusgröna med bruna fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "De vuxna försvarar boet aggressivt genom att släppa spillning på rovdjur.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The adults will defend the nest aggressively by dropping faeces on the predators"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Björktrasten föredrar daggmask men äter även andra smådjur som insekter och spindlar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Björktrasten föredrar daggmask men livnär sig även på många andra sorters smådjur, till exempel insekter och spindlar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "På hösten och vintern äter den främst rönnbär, enbär, lingon och fallfrukt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På hösten och vintern livnär de sig företrädesvis av rönnbär, enbär, lingon, fallfrukt och dylikt."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Flyttande och övervintrande björktrastar bildar ofta stora flockar, gärna tillsammans med rödvingetrastar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Migrating birds and wintering birds often form large flocks, often in the company of redwings."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "I flykten tar den några kraftiga vingslag och fäller sedan kort ihop vingarna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It takes several strong beats then closes its wings briefly before flapping on."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Björktrasten häckar i stort antal över hela landet."
+        },
+        {
+          "article": "sv",
+          "quote": "Grovt taget kan man säga att de björktrastar som häckar norr om Mora flyttar söderut om vintern."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december och januari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "331847ee9fbd5dfc"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "bjorktrast",
@@ -203,7 +585,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

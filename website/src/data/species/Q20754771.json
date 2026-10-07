@@ -1,14 +1,374 @@
 {
   "qid": "Q20754771",
-  "status": "pending",
+  "status": "failed",
   "publish": false,
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Gråsiskan är lik hämplingen i storlek och form men har en mer kluven stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråsiskan är i storlek och form som en hämpling men med en mer kluven stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ovansidan är grå- till vitaktig med mörkare fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De övre kroppsdelarna är grå- till vitaktiga med mörkare fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Hjässa och panna är mer eller mindre röda, hakan är svart och vingarna har ljusa fjäderkanter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hjässa och panna är röda i olika stor utsträckning, hakan svart och vingarna har ljusa fjäderkanter."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Näbben är kort, triangelformad och gul, med svarta fjädrar runt näbbroten och ett mycket tunt svart tygelstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fågeln har en kort, triangelformad gul näbb, svart fjäderparti runt näbbroten och ett mycket tunt svart tygelstreck."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "I flykten syns två vita vingband på mörka vingovansidor, som kontrasterar mot ljusa vingundersidor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten ser man dess båda vita vingband på övrigt mörka vingovansidor i kontrast till de ljusa vingundersidorna."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Benen är bruna, näbben gulaktig med mörk spets och ögonen mörkbruna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It has brown legs, a dark-tipped yellowish bill and dark brown irises."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Övergumpen är streckad och ett brett mörkbrunt streck går över undergumpen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The rump is streaked and there is a broad dark brown streak across the vent."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Brunsiska är den minsta underarten och känns igen på sin kanelbruna till gulbruna grundton.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Brunsiska (A. f. cabaret) är den minsta av gråsiskans underarter och känns igen på sin kanelbruna till gulbruna grundton."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Snösiska har oftast ljusare grundton i dräkten än övriga underarter och mindre kraftigt streckad kroppssida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Snösiska (vanlig snösiska, A. f. hornemanni) har generellt en ljusare grundton i fjäderdräkten än övriga underarter, mindre kraftigt streckad kroppssida"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Den adulta hanen har rosenrött bröst på våren, men på vintern kan bröstet vara helt vitt eller bara svagt rödrosa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanens bröst är om våren rosenrött men om vintern kan den vara helt vit på bröstet eller med mycket lite rödrosa ton på bröstet."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Honan har gulgrått bröst.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honans bröst är gulgrått."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "size",
+      "sv": "Gråsiskan är cirka 11,5–14 cm lång, har 20–25 cm vingspann och väger ungefär 14 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kroppslängden är ungefär 11,5–14 cm har ett vingspann på 20–25 cm och väger ungefär 14 gram."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "habitat",
+      "sv": "Den häckar i arktisk och nordligt tempererad tundra och tajga.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It breeds in the Arctic and north temperate Holarctic tundra and taiga."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Typisk miljö är barrskog med tall, gran och lärk.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Its typical habitat is boreal forests of pines, spruces and larches."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "sweden",
+      "sv": "Nominatformen häckar i norra Sverige, medan brunsiska sedan 1970-talet häckar i Skåne och på västkusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Brunsiska (A. f. cabaret) häckar i Sverige sedan 1970-talet i Skåne och på västkusten, och nominatformen A. f. flammea i norra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "Gråsiskan häckar inte i stora delar av Mellansverige och inte utmed ostkusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dock häckar gråsiskan inte i stora delar av Mellansverige och inte utmed ostkusten."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Snösiska häckar i de allra nordligaste delarna av den svenska fjällkedjan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utöver detta häckar även snösiska (vanlig snösiska, A. f. hornemanni) i allra nordligaste av den svenska fjällkedjan."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "På vintern flyttar många söderut, ibland i stora skaror, medan andra stannar kvar i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern flyttar båda populationerna, ibland i stora skaror, söderut, en del ända till Tyskland och Frankrike, medan andra stannar kvar i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Vintertid förekommer gråsiskan i Sverige från Haparanda och söderut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Om vintern återfinns den i Sverige från Haparanda och söderut."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Honan bygger boet ganska nära marken och lägger 4–6 blåaktiga ägg med rödbruna fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet byggs ganska nära marken av honan, som sedan lägger 4-6 blåaktiga ägg med rödbruna fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Honan ruvar ensam äggen i cirka 10–12 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ensam ruvar äggen i cirka 10–12 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Ungarna blir flygfärdiga cirka 12–13 dagar efter kläckningen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Efter att äggen kläckts blir ungarna flygfärdiga på cirka 12–13 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Gråsiskan häckar gärna i glesa kolonier.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråsiskan häckar gärna i glesa kolonier."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "På vintern lever gråsiskan framför allt av björkfrön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under vintern lever den framför allt av björkfrön."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Den äter även ogräsfrön och insekter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dessutom äter gråsiskan ogräsfrön och insekter."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Gråsiskan är skicklig på att klänga, till exempel i trädgrenar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråsiskan har stor förmåga att klänga, till exempel i trädgrenar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Vintertid bildar den kringströvande flockar, gärna tillsammans med grönsiskor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid bildar den kringströvande flockar, gärna tillsammans med grönsiskor."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Den söker främst föda i träd men ibland även på marken.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It forages mainly in trees but will occasionally forage on the ground."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar tre populationer av gråsiska."
+        },
+        {
+          "article": "sv",
+          "quote": "På vintern flyttar båda populationerna, ibland i stora skaror, söderut, en del ända till Tyskland och Frankrike, medan andra stannar kvar i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november till januari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i augusti."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Norrbotten, Jämtland och Västerbotten."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
-  "errors": [],
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    }
+  },
+  "errors": [
+    "det saknas fakta om läte"
+  ],
   "slug": {
     "sv": "grasiska",
     "en": "redpoll"

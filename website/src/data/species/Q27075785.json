@@ -5,9 +5,379 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Grönfinken är en ganska kompakt fågel med kraftig finknäbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Grönfinken är en ganska kompakt fågel med kraftig finknäbb."
+        },
+        {
+          "article": "en",
+          "quote": "The bill is thick and conical."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Den är huvudsakligen grön med gult i vingar och stjärt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "but is mainly green, with yellow in the wings and tail"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Den adulta hanen är grågrön ovan med gulgrön övergump och svartaktiga ving- och stjärtpennor med gula ytterfan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen är grågrön på ovansidan, har gulgrön övergump, gröngul undergump och har svartaktiga ving- och stjärtpennor med gula ytterfan."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "På den hopfällda vingen syns ytterkanten tydligt gul.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Beim zusammengelegten Flügel ist der Außenrand dadurch ebenfalls deutlich gelb."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Näbben är ljust hornfärgad.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Schnabel ist hell hornfarben."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Honan går mera i gråbrunt och är mattare än hanen, med bruna toner på ryggen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan går mera i gråbrunt."
+        },
+        {
+          "article": "en",
+          "quote": "The female and young birds are duller and have brown tones on the back."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Honan är mindre gul än hanen och har svagt längsstreckad fjäderdräkt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Weibchen ist insgesamt deutlich matter und weniger gelb gefärbt als das Männchen. Die gesamte Körperbefiederung ist schwach längs gestrichelt."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Ungfåglar är ljusare, vitaktiga under med ljusgrå längsstreck och svagt streckat gråbruna ovan.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Jugendkleid ist deutlich heller, die Unterseite des Körpers weißlich mit hellgrauen Längsstreifen, die Oberseite verwaschen graubraun und schwach längs gestreift."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Den är 15–16,5 cm lång, har ett vingspann på 25–28 cm och väger ungefär 30 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är 15-16,5 cm lång, har ett vingspann på 25–28 cm och väger ungefär 30 gram."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Med 14–16 cm kroppslängd är den ungefär lika stor som en gråsparv.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Grünfink ist mit 14 bis 16 cm Körperlänge etwa so groß wie der Haussperling."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Dess utdragna ”knarr” hörs ibland redan under varma vårvinterdagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess utdragna \"knarr\" hörs ibland redan under varma vårvinterdagar."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "I norra delen av utbredningen är den en av de tidigaste fåglarna att börja sjunga om våren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I de norra delarna av grönfinkens utbredningsområde är den en av de tidigaste fåglarna att börja sjunga om våren."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Lockropet är ett kort, kraftigt ”jüpp” som oftast upprepas i snabba serier.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Ruf des Grünfinks ist ein kurzes, kräftiges „jüpp“, das meist in schnellen Serien wiederholt wird."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Sången innehåller mycket drillar och kvitter blandat med väsande ljud.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The song contains a lot of trilling and twittering interspersed with wheezes"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "En sångtyp är behagligare och utdragen och liknar kanariefågelns sång.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "ist angenehmer, langgezogen und ähnelt dem des Kanarienvogels"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "behaviour",
+      "sv": "Hanen utför en fjärilsliknande spelflykt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the male performs a \"butterfly\" display flight"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Grönfinken häckar i skogsbackar, särskilt i ung granskog, och i parker.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Grönfinken häckar i skogsbackar, särskilt i ung granskog, och i parker."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "I dag lever den främst i människans bebyggelse, från enskilda gårdar till storstadscentrum med parker och kyrkogårdar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Heute besiedelt er vor allem die verschiedensten Siedlungsformen des Menschen: Von Einzelhöfen und Weilern mit Streuobstbau bis zu Großstadtzentren mit Parkanlagen oder Friedhöfen"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige förekommer grönfinken från Skåne till Sundsvallstrakten och Jämtland och vidare uppför Norrlandskusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige förekommer grönfinken från Skåne till Sundsvallstrakten och Jämtland, och vidare uppför Norrlandskusten."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "De nordligaste populationerna flyttar söderut, men arten förekommer året om även i norra Sverige i mindre antal.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De nordligaste populationerna flyttar söderut men arten är härdig och grönfink förekommer året om även i norra Sverige i mindre antal."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "I södra Sverige övervintrar den som strykfågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I södra Sverige övervintrar den som strykfåglar."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Grönfinken har minskat kraftigt i Sverige, med uppskattningsvis cirka 40 % de senaste tio åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den senaste tiden har den dock minskat mycket kraftigt i antal, de senaste tio åren med uppskattningsvis cirka 40 %."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Minskningen tros bero på sjukdomen gulknopp, orsakad av parasiten Trichomonas gallinae som etablerade sig i Sverige 2008.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Orsaken bakom minskningen tros vara sjukdomen gulknopp, orsakad av parasiten Trichomonas gallinae som etablerade sig i Sverige 2008."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstid kan grönfinken bilda stora flockar, ibland med andra finkar och sparvar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utanför häckningstid kan grönfinken bilda stora flockar, ibland med andra finkar och sparvar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Den söker föda i träd och buskar och även på marken.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It forages in trees and bushes, and also on the ground."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Det skålformiga boet placeras i träd, buskar eller häckar, ofta i granar och enar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det skålformiga boet placeras i träd, buskar eller häckar, ofta i granar och enar, men även i lövträd."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Den lägger i genomsnitt fyra till sex ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger i genomsnitt fyra till sex ägg, men tre till sju har observerats."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Honan ruvar i tolv till 14 dagar och ungarna blir flygga efter 13–17 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ruvar äggen i tolv till 14 dagar och båda föräldrarna tar sedan hand om ungarna, som blir flygga efter 13–17 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Grönfinken lägger vanligtvis två kullar per år.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Grönfinken lägger vanligtvis två kullar per år."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "food",
+      "sv": "Födan utgörs främst av frön, späda knoppar och bär, men den äter även insekter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Födan utgörs främst av frön, späda knoppar och bär. Den äter dock även insekter"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december till februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Sårbar (VU)."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "c3c51b8b611983df"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "gronfink",
@@ -205,5 +575,12 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: The quote shows the species occurs year-round in small numbers in northern Sweden, but also states northernmost populations migrate south and southern Sweden birds overwinter as passage/winter visitors (strykfåglar), indicating a partial migrant pattern rather than a simple resident (stannfågel) status across Sweden.. Bestäm status eller lämna tom."
+    }
+  ]
 }

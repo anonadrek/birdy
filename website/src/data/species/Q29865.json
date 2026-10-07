@@ -5,9 +5,381 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Knipan är en medelstor, kompakt dykand med stort, lätt toppigt huvud på en kort hals.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Knipan är en medelstor, kompakt dykand med ett stort, lätt toppigt huvud som ser ut som en rundad knopp ovanpå den korta halsen."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Knipan har en liten trekantig näbb och gula ögon.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en liten trekantig näbb och gula ögon."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Benen och fötterna är orangegula.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Their legs and feet are orange-yellow."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "I flykten har både hane och hona ett vitt fält på vingens inre del, hos honan delat av flera mörka band.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten har både hane och hona ett vitt område på vingens inre del, honans avdelas av flera mörka band."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "sex_age",
+      "sv": "Hanen i praktdräkt är svartvit med skimrande grönsvart huvud och en stor vit fläck mellan näbben och ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen i praktdräkt har en svartvit dräkt och ett skimrande grönsvart huvud med en stor vit fläck mellan näbben och ögat."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "På sommaren bär hanen eklipsdräkt och liknar då honan, men har mörkare brunt huvud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under sommaren anlägger hanen en eklipsdräkt då den liknar honan, men har mörkare brunt huvud"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Honan har grå kropp, vit buk, brunt huvud och en varierande vit halsring.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan har grå kropp, vit buk, brunt huvud och en varierande vit halsring."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honans gråa näbb har en gul och svart näbbspets.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan har grå kropp, vit buk, brunt huvud och en varierande vit halsring. Dess gråa näbb har en gul och svart näbbspets."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Unga fåglar liknar honan men saknar halsband, har mörkt öga, brunare kropp och näbb utan gult.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenila individer liknar honan, men saknar halsband, har mörkt öga och är brunare på kroppen och näbben saknar gult."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Knipan är 40–48 cm lång, har 62–77 cm vingspann och väger 500–1300 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den mäter 40–48 cm på längden, har ett vingspann på 62–77 cm och når en vikt av 500 till 1300 gram."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "lookalike",
+      "sv": "Islandsknipan kan förväxlas med knipan, men hanen har blålilaglänsande huvud och en större, mer halvmåneformad fläck framför ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Enda förväxlingsrisken är islandsknipan (Bucephala islandica)"
+        },
+        {
+          "article": "sv",
+          "quote": "Hanen hos denna art har dock blålilaglänsande huvud och en större, mer halvmåneformad fläck framför ögat."
+        }
+      ],
+      "other": {
+        "scientific": "Bucephala islandica",
+        "qid": "Q369767"
+      }
+    },
+    {
+      "id": "f12",
+      "topic": "lookalike",
+      "sv": "Hona islandsknipa skiljs från knipehonan genom att ha mer gult på näbben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Enda förväxlingsrisken är islandsknipan (Bucephala islandica)"
+        },
+        {
+          "article": "sv",
+          "quote": "Hona islandsknipa har mer gult på näbben."
+        }
+      ],
+      "other": {
+        "scientific": "Bucephala islandica",
+        "qid": "Q369767"
+      }
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "I flykten hörs ett visslande vingljud, hyhyhyhy, som bär långt och är kraftigast hos hanen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Knipan har i flykten ett typiskt visslande vingljud, hyhyhyhy, som hörs på långt avstånd och är kraftigast hos hanen."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Hanen ger under parningsspelet ett kväkande ljud som liknar ljudet när man drar ett finger längs en kam.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från hanen hörs under parningsspelet ett kväkande ljud som påminner om ljudet som uppstår när man drar ett finger längs en kam."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Honans läte låter som garr garr eller graar grar och hörs även från flygande fåglar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Ruf des Weibchens klingt wie garr garr oder graar grar, das auch von fliegenden Schellenten zu hören ist."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Knipan häckar vid floder, sjöar och våtmarker.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Knipan häckar vid floder, sjöar och våtmarker."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Vintertid finns knipan vid isfria floder, sjöar och utmed kusten, i par eller större flockar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid förekommer den vid isfria floder, sjöar och utmed kusten i alltifrån par till större flockar."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Knipan föredrar att söka föda i vatten med grusig och stenig botten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Ihre bevorzugten Nahrungsgründe sind deshalb Gewässer mit kiesigem und steinigem Grund."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "breeding",
+      "sv": "Knipan lägger tio till tolv grönaktiga ägg i en naturlig trädhåla, en hålighet gjord av större hackspettar eller i holkar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger tio till tolv grönaktiga ägg i en trädhåla som skapats naturligt eller av någon av de större hackspettarna, eller i holkar."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Knipan tar gärna konstgjorda bohålor och föredrar dem till och med framför naturliga.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Schellenten nehmen Bruthilfen in Form künstlicher Nisthöhlen jedoch sehr gerne an und ziehen diese sogar natürlichen vor."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Honan ruvar ensam och ruvningen varar 28 till 32 dagar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The incubation period ranges from 28 to 32 days. The female does all the incubating"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Honan lockar ungarna ur bohålan med ett särskilt läte, och ungarna hoppar ut en efter en.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die am Boden oder im Wasser wartende Schellente lockt die Jungen dann mit einem spezifischen Ruf, der bewirkt, dass ein Junges nach dem anderen am Schlupfloch erscheint und mit einem Sprung der Mutterente folgt."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Ungarna kan flyga vid 55–65 dagars ålder.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The young are capable of flight at 55–65 days of age."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Födan består av små fiskar, snäckor, kräftdjur, växtdelar samt insekter och deras larver.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Födan består av små fiskar, snäckor, kräftdjur, växtdelar och insekter samt deras larver."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Knipan dyker efter föda, ibland så djupt som åtta meter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "För att nå bytet dyker knipan ibland ned så djupt som åtta meter."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Under spelet på tidig vår gungar hanen ner och slänger huvudet bakåt över ryggen medan han ger ett knirrande ljud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Samtidigt som han ger ifrån sig ett knirrande ljud gungar han ner och slänger huvudet bakåt över ryggen."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "sweden",
+      "sv": "Det svenska häckande beståndet uppskattades 2018 till 65 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 65 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "sweden",
+      "sv": "I Sverige anses knipan livskraftig och finns inte på rödlistan, men en pågående minskning i antal noteras.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även i Sverige anses den vara livskraftig och är ej upptagen på Artdatabankens rödlista. En pågående minskning i antal noteras dock."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 65 000 par."
+        },
+        {
+          "article": "sv",
+          "quote": "Merparten av världspopulationen är flyttfåglar. De häckar cirkumpolärt över tajgaregionen i boreala Skandinavien"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november till mars."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "ecddbf976b358196"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "knipa",
@@ -203,7 +575,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

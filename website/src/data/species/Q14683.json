@@ -1,13 +1,708 @@
 {
   "qid": "Q14683",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Gråsparven är en kraftig och kompakt tätting med stort huvud och kraftig, konisk näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråsparven är en kraftig och kompakt tätting."
+        },
+        {
+          "article": "sv",
+          "quote": "Gråsparven utmärks främst på sitt stora huvud och den kraftiga, koniska näbben."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Fjäderdräkten är främst grå och brun.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråsparvens fjäderdräkt är främst grå och brun."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Gråsparven saknar svart kindfläck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "saknar pilfinkens svarta kindfläck"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "I alla dräkter har gråsparven ett tydligt vitt främre vingband, medan det bakre vingbandet bara är antytt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I alla dräkter har den ett tydligt vitt främre vingband medan det bakre vingbandet endast är antytt."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "size",
+      "sv": "Gråsparven är 14–18 centimeter lång, i genomsnitt 16 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är 14–18 centimeter lång från näbb till stjärt, med ett genomsnitt av 16 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "size",
+      "sv": "Vingspannet är 21–26 centimeter och vikten 24–39,5 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "vingspannet 21–26 cm och den väger 24–39,5 gram"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Den adulta hanen har grå hjässa, chokladbrun nacke och huvudsidor, svart eller mörkgrå strupe och svart haklapp ned på övre bröstet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen har grå hjässa, chokladbrun nacke och huvudsidor, svart eller mörkgrå strupe samt svart haklapp som sträcker sig ned på övre delen av bröstet."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hanens ovansida är brun med längsgående mörka streck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "medan ovansidan är brunfärgad med längsgående mörka streck"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "På hösten är hanens haklapp täckt av ljusa fjäderbräm, och den helsvarta haklappen syns först på vårkanten genom slitage.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På hösten efter ruggningen är haklappen dock täckt av ljusa fjäderbräm och den helsvarta haklappen framträder först på vårkanten på grund av slitage av fjädrarna."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Honan är smutsbrun och ljusgrå med beigegrått bröst och gråbrunt huvud, och saknar hanens bruna nacke och svarta strupfläck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hon är färgad i smutsbrunt och ljusgrått med beigegrått bröst och gråbrunt huvud. Hon saknar hanens bruna nacke och svarta strupfläck."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Honan har ett ljust ögonbrynsstreck som är tydligast bakom ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det gråbruna huvudet har ett ljust ögonbrynsstreck, som är tydligt framförallt bakom ögat."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "sex_age",
+      "sv": "Honans näbb är gulaktig men blir svartgrå under häckningstiden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är gulaktig, men skiftar färg till svartgrå under häckningstiden."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "sex_age",
+      "sv": "Ungfåglarna liknar honan men är något ljusare och har ljusgul mungipa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilerna har en fjäderdräkt som påminner om honornas, men är något ljusare och har ljusgul mungipa."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Sången framförs bara av hanen och är ett monotont, ganska högljutt, rytmiskt ”tjilp”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråsparvens sång framförs endast av hanen och består av ett monotont, relativt högljutt, rytmiskt \"tjilp\""
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Ett ihärdigt, tjattrande kvitter hörs ofta från flera gråsparvar samtidigt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ett ihärdigt, tjattrande kvitter framförs i olika tonlägen, ofta kollektivt av en samling gråsparvar."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Varningslätet mot fiender i luften är ett vekt, drillande ”dryyy”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det vanliga varningslätet vid fiender från luften är strukturellt avvikande i jämförelse med andra tättingar och består av ett vekt, drillande \"dryyy\""
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "voice",
+      "sv": "Mot fiender på marken varnar den med ihållande nasala rop som ”kev kev” eller ”terrettett”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lätet som används för att varna för markbundna fiender är ihållande nasala rop som \"kev kev\" eller \"terrettett\"."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Optimala miljöer är jordbruksbyar, förortsområden, stadscentrum med stora parker, djurparker samt boskaps- och fågelfarmer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De optimala platserna är jordbruksbyar, förortsområden, stadscentrum med stora parker, zoologiska trädgårdar samt boskaps- och fågelfarmer."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "De enda landmiljöer gråsparven inte lever i är tät skog och tundra.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The only terrestrial habitats that the house sparrow does not inhabit are dense forest and tundra."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Gråsparven förekommer i större delen av Sverige utom i fjälltrakterna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråsparven uppträder i större delen av Sverige, utom i fjälltrakterna."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Antalet gråsparvar i Sverige har minskat men uppgår ändå till ungefär en miljon individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "har gråsparvens antal gått ner, men uppgår ändå till ungefär 1 miljon individer."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "lookalike",
+      "sv": "Hanen av spansk sparv skiljs från gråsparvshanen genom sin kastanjebruna hjässa.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The male Spanish sparrow and Italian sparrow are distinguished by their chestnut crowns."
+        }
+      ],
+      "other": {
+        "scientific": "Passer hispaniolensis",
+        "qid": "Q466200"
+      }
+    },
+    {
+      "id": "f23",
+      "topic": "food",
+      "sv": "Gråsparven äter huvudsakligen frön, framför allt av odlade sädesslag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråsparven livnär sig huvudsakligen på frön och då framför allt frön av odlade spannmålsarter"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Från vår till sommar kan djurföda som insekter utgöra upp till 30 procent av födan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från våren till sommaren spelar också animalisk föda en viktig roll och kan utgöra upp till 30 % av den samlade födan."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Gråsparven är en flockfågel och ses även i blandflockar med till exempel pilfinkar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråsparven är en flockfågel och kan även ses i blandflockar med exempelvis pilfinkar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "På marken hoppar gråsparven oftast i stället för att gå.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "On the ground, the house sparrow typically hops rather than walks."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Gråsparvar tar sandbad för att skydda sig mot fjäderparasiter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "För att vårda sin fjäderdräkt tar fåglarna sandbad, som skyddar mot fjäderparasiter."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Gråsparvar flyger snabbt, rätlinjigt och relativt lågt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråsparvar flyger snabbt och rätlinjigt, relativt lågt"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Typiska boplatser är skyddade hålrum på eller nära byggnader.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Typiska boplatser är skyddade hålrum på eller i närheten av byggnader."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "breeding",
+      "sv": "Boet är runt med ingång från sidan, och kullen består av fyra till sex ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Oberoende av platsen för boet är det i princip alltid runt och har ingång från sidan."
+        },
+        {
+          "article": "sv",
+          "quote": "Kullen består av fyra till sex ägg"
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråsparven uppträder i större delen av Sverige, utom i fjälltrakterna."
+        },
+        {
+          "article": "sv",
+          "quote": "I Europa är gråsparven nästan uteslutande stannfågel"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i januari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Gråsparven är en kraftig och kompakt tätting med grå och brun fjäderdräkt.",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Den trivs i jordbruksbyar, förortsområden, stadscentrum med stora parker, djurparker och på boskaps- och fågelfarmer.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Kraftig, kompakt kropp med stort huvud och kraftig, konisk näbb",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Hanen har grå hjässa, chokladbrun nacke och svart haklapp ned på övre bröstet",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Honan är smutsbrun och ljusgrå med ljust ögonbrynsstreck, tydligast bakom ögat",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        },
+        {
+          "text": "Tydligt vitt främre vingband i alla dräkter och ingen svart kindfläck",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången framförs bara av hanen och är ett monotont, ganska högljutt och rytmiskt ”tjilp”.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Från flera gråsparvar samtidigt hörs ofta ett ihärdigt, tjattrande kvitter.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Mot fiender i luften varnar den med ett vekt, drillande ”dryyy”, mot fiender på marken med ihållande nasala rop som ”kev kev” eller ”terrettett”.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Gråsparven är stannfågel och förekommer i större delen av Sverige utom i fjälltrakterna.",
+          "factIds": [
+            "s01",
+            "f20"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län och rapporteras mest i januari.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Antalet har minskat men uppgår ändå till ungefär en miljon individer, och arten är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "f21",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Gråsparven äter huvudsakligen frön, framför allt av odlade sädesslag.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "Från vår till sommar kan djurföda som insekter utgöra upp till 30 procent av födan.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Den är en flockfågel som även ses i blandflockar med till exempel pilfinkar, och på marken hoppar den oftast i stället för att gå.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "Den tar sandbad för att skydda sig mot fjäderparasiter och flyger snabbt, rätlinjigt och relativt lågt.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q466200",
+          "text": [
+            {
+              "text": "Hanen av spansk sparv har kastanjebrun hjässa, medan gråsparvshanen har grå hjässa.",
+              "factIds": [
+                "f22",
+                "f07"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Gråsparv: så känner du igen hane och hona, hur sången och varningslätena låter, vad den äter och när den rapporteras under året.",
+      "facts": {
+        "size": {
+          "value": "14 till 18 cm",
+          "factIds": [
+            "f05"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The House Sparrow is a sturdy, compact songbird with mainly grey and brown plumage.",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "It does best in farming villages, suburbs, town centres with large parks, zoos and on livestock and poultry farms.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Sturdy, compact body with a large head and a heavy, conical bill",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Male has a grey crown, chocolate brown nape and black bib onto the upper breast",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Female is dull brown and pale grey with a pale eyebrow, clearest behind the eye",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        },
+        {
+          "text": "Clear white front wing bar in all plumages and no black cheek patch",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Only the male sings, a monotonous, fairly loud and rhythmic \"tjilp\".",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "A persistent, chattering twitter is often heard from several House Sparrows at once.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "The alarm for enemies in the air is a soft, trilling \"dryyy\", and for enemies on the ground it gives persistent nasal calls like \"kev kev\" or \"terrettett\".",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The House Sparrow is resident and occurs in most of Sweden except the mountains.",
+          "factIds": [
+            "s01",
+            "f20"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties and is reported most in January.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Numbers in Sweden have fallen but still come to about one million individuals, and it is not red-listed in the Swedish Red List 2025.",
+          "factIds": [
+            "f21",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats mainly seeds, above all cultivated grain.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "From spring to summer, insects and other animal food can make up to 30 percent of its diet.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "It lives in flocks, also mixed ones with for example Tree Sparrows, and usually hops rather than walks on the ground.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "It takes sand baths against feather parasites and flies fast, straight and fairly low.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q466200",
+          "text": [
+            {
+              "text": "The male Spanish Sparrow has a chestnut crown, while the male House Sparrow has a grey crown.",
+              "factIds": [
+                "f22",
+                "f07"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "House Sparrow: how to recognise male and female, what the song and alarm calls sound like, what it eats and when it is reported.",
+      "facts": {
+        "size": {
+          "value": "14 to 18 cm",
+          "factIds": [
+            "f05"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "f6ed06e3ee5ab671"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:18:38.435410+00:00",
+      "factsHash": "f6ed06e3ee5ab671"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "grasparv",
@@ -205,5 +900,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

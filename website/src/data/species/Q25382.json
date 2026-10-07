@@ -5,9 +5,377 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Huvudets översida, vingarna och stjärten är svarta med blå metallglans.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Huvudets översida, vingarna och stjärten är svart med blå metallglans."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Domherren har ett vitt tvärband över vingen, grå rygg och vit undergump.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett vitt tvärband över vingen, grå rygg samt vit undergump."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Den vita övergumpen och de vita vingbanden syns tydligt i flykten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the white rump and wing bars are striking in flight"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Näbben är kort och tjock med kraftigt välvd övernäbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är kort och tjock med kraftigt välvd övernäbb."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Domherren är förhållandevis stor och robust byggd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Domherren är förhållandevis stor och robust byggd."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Den utfärgade hanen är röd på huvudets sidor och på bröstet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den utfärgade hanen är färgad i rött på huvudets sidor och på bröstet"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Honan är blekare i färgerna, gråbrun nästan med dragning åt lila.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "medan honan är blekare i färgerna, gråbrunt nästan med dragning åt lila"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Ungfåglar har gråbrun hätta och ansikte i stället för svart som hos de vuxna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "as are the cap and face in adults (they are greyish-brown in juveniles)"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Längden är ungefär 15–17 cm och vingspannet 22–29 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Längden är ungefär 15–17 cm, vingspannet 22–29 cm."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "En vuxen domherre väger cirka 21–27 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som vuxen väger den cirka 21–27 gram."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Det vanliga locklätet är en tyst, låg och melankolisk vissling, ungefär ”peeu” eller ”pew”.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "This bullfinch's usual call is a quiet, low, melancholy whistled peeu or pew."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Den visslande sången är svag, hörs från både hona och hane och är uppblandad med knirkande och klagande toner.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den visslande sången, som är svag och hörs från både honan och hanen, är uppblandad av knirkande och klagande toner."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Den nordliga underarten pyrrhula, som finns från Skandinavien till Östeuropa, har ett lockläte som påminner om en barntrumpet.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Sie siedelt von Skandinavien bis Osteuropa"
+        },
+        {
+          "article": "de",
+          "quote": "Aufgrund seines typischen Rufs, der an eine Kindertröte oder Kazoo erinnert, wird er auch als Trompetergimpel bezeichnet."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Domherren lever främst i barrskog från lågland till bergsskogar, gärna i granplanteringar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lever främst i barrskog från lågland till bergsskogar, gärna i granplanteringar"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Den finns i barr- och blandskog, gärna på fuktig mark med rik undervegetation.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Domherren finns i barr- och blandskog, gärna på fuktig mark med rik undervegetation."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "På vintern förekommer domherren ofta nära bebyggelse.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern förekommer den ofta nära bebyggelse."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Domherren förekommer i hela Sverige utom på högfjället.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Domherren förekommer i hela Sverige utom på högfjället."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Sverige ses den mest om vintern, då den gärna kommer till bebyggelse och fågelmatare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den ses mest om vintern då den gärna kommer fram till bebyggelse och lockas fram till fågelmatare."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Vanligtvis stannar domherren i Sverige under vintern, men vissa år flyttar många till Danmark och Mellaneuropa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vanligtvis stannar den i Sverige under vintern, men vissa år flyttar många till Danmark och Mellaneuropa."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Beståndet i Sverige uppskattas till 250 000–500 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Beståndet i Sverige uppskattas till 250 000–500 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet byggs av tunna grenar, rötter och mossa och placeras oftast i unga granar eller i häckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet byggs av tunna grenar, rötter och mossa och placeras i skogsträd, oftast unga granar, och häckar."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Kullen består av fyra till sex ljusblå ägg med rödaktigt violetta fläckar och svarta prickar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kullen består av fyra till sex ljusblå ägg med rödaktigt-violetta fläckar och svarta prickar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan ruvar två till tre gånger om året mellan april och augusti, i ungefär tretton dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ruvar två till tre gånger om året mellan april och augusti i ungefär tretton dagar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Ungarna stannar i boet i ungefär sexton till sjutton dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna stannar i boet i ungefär sexton till sjutton dagar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Födan består av frön, knoppar, bär som rönnbär, späda blad och en del insekter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Med sin tjocka näbb specialiserar den sig på föda från frön, knoppar, bär, bland annat rönnbär, späda blad och en del insekter"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Domherrar rör sig oftast i par och endast sällan i grupper.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Domherrar förflyttar sig oftast i par och endast sällan i grupper."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Den är skygg under häckningstiden men lättare att observera under resten av året.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den uppträder skyggt under häckningstiden men är lättare att observera under den övriga delen av året."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Flykten är relativt långsam och vågformig.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Flug des Vogels ist relativ langsam und wellenförmig."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Skandinavien är den en utbredd och allmän häckfågel."
+        },
+        {
+          "article": "sv",
+          "quote": "Vanligtvis stannar den i Sverige under vintern"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december och januari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i augusti och september."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Norrbotten, Västernorrland och Jämtland."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "d7ea8dd9c0854b50"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "domherre",
@@ -207,5 +575,12 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V2",
+      "factId": "f09",
+      "message": "f09 anger ett tal i cm som inte stämmer med de andra artiklarna (2 till 2 cm)"
+    }
+  ]
 }

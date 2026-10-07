@@ -5,9 +5,380 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Ringduvan är Europas största duva med en kroppslängd på upp till 45 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ringduvan är den största av de europeiska duvarterna med en kroppslängd uppemot 45 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Vingbredden är cirka 65–80 cm och vikten 400–550 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingspannet varierar mellan cirka 65 och 80 cm och fågelns vikt uppskattas till mellan 400 och 550 gram."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Ringduvan är kraftigt byggd med relativt lång stjärt och ganska litet huvud.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Ringeltauben sind große, kräftig gebaute Tauben mit relativ langem Schwanz und recht kleinem Kopf."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Fjäderdräkten är mest grå, ljusare över ryggen, med grönblått skimmer främst på huvud och nacke.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fjäderdräkten är mest grå (ljusare över ryggen) med grönblåskimrande inslag, främst på huvud och nacke."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Stjärt och vingar har tydliga svarta markeringar och bröstet är rosa och övergår i ljusgrått på undersidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärt och vingar har tydliga svarta markeringar och bröstet är rosafärgat övergående i ljusgrått på undersidan."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Den har vita fläckar på halssidorna och vita tvärband på vingovansidan som syns väl i flykten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vidare har den vita fläckar på halsens sidor (ingen egentlig \"ring\" alltså) och vita tvärband på vingöversidan som väl syns i flykten."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Benen är korta, relativt kraftiga och brunaktigt skära.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Benen är korta, relativt kraftiga och brunaktigt skära."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Hos den vuxna fågeln är ögat gult till orange.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även ögat är gult till orange hos adulten"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Vuxna fåglar har gul näbb med rödaktig vaxhud, medan ungfåglarnas näbb och vaxhud är gråaktiga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En adult fågels näbb är gul med rödaktig vaxhud medan näbb och vaxhud hos juvenilen är gråaktiga."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Könen är lika, men unga fåglar har mer rosa i dräkten och saknar de vita halsfläckarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika till storlek och utseende, men unga individer har större rosa inslag i dräkten och saknar vita halsfläckar"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Sången är ett ganska dovt femstavigt hoande med betoning på första stavelsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ringduvans sång utgörs av ett ganska dovt femstavigt hoande med betoning på första stavelsen"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Vid uppflog hörs ett intensivt smattrande ljud när vingarna slås mot varandra.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ett annat läte är det intensiva smattrande ljud som hörs vid uppflog, och uppstår genom att vingarna slås mot varandra"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "behaviour",
+      "sv": "Flykten är snabb med regelbundna klippande vingslag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flykten är snabb och sker med regelbundna klippande vingslag."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "behaviour",
+      "sv": "I flyktspelet stiger fågeln brant med ljudligt vingsmatter och glidflyger sedan med stela vingar och utbredd stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flyktspelet är karaktäristiskt och inleds med en brant stigning under ljudligt vingsmatter, följt av glidflykt med stela vingar och utbredd stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "behaviour",
+      "sv": "Ringduvan är social och ses ofta i större flockar utanför häckningstiden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ringduvan är en social fågel och ses ofta i större flockar när den inte häckar."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "behaviour",
+      "sv": "Ringduvan söker oftast föda i flock på öppna fält och åkrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I allmänhet söker ringduvan föda i flock på öppna fält och åkrar."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "behaviour",
+      "sv": "Vintertid besöker mindre flockar eller ensamma ringduvor ofta fågelbord och andra matningsplatser.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid är det inte ovanligt att smärre flockar eller ensamma individer besöker fågelbord och andra matningsplatser."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Ringduvan finns i de flesta typer av skog och har på senare år flyttat in i parker och trädgårdar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ringduvan förekommer i de flesta typer av skog och har på senare år förflyttat sig till mänsklig bebyggelse, såsom parker och trädgårdar."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Sverige är ringduvan en vanlig fågel i skogs- och jordbruksbygd från Skåne till Norrbotten och södra Lappland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är ringduvan en vanligt förekommande fågel."
+        },
+        {
+          "article": "sv",
+          "quote": "Den hittas i skogs- och jordbruksbygd från Skåne i söder till Norrbotten och södra Lappland i norr."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Ringduvan saknas i de nordligaste delarna av Skandinavien.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ringduvan förekommer i hela Europa utom på Island och i de nordligaste delarna av Ryssland och Skandinavien."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Skandinaviens ringduvor är nästan alla flyttfåglar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Ringeltauben Skandinaviens, Nordosteuropas und der Schweiz sind fast alle Zugvögel."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Höstflyttningen kulminerar i oktober och stora mängder ringduvor lämnar Sverige vid Falsterbo.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flyttsträcket kulminerar i oktober då flockarna kan bestå av flera tusen individer."
+        },
+        {
+          "article": "sv",
+          "quote": "Stora mängder sträcker ut ur Sverige i Falsterbo"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Boet är en ganska slarvig konstruktion av kvistar som helst byggs i täta barrträd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet, en ganska slarvigt tillverkad konstruktion av kvistar, byggs företrädesvis i täta barrträd."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "En kull består normalt av två vita ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En kull består normalt av två ägg som i genomsnitt väger 18,8 gram."
+        },
+        {
+          "article": "sv",
+          "quote": "Äggen är vita, nästan klotformiga"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Båda föräldrarna ruvar i 15–19 dagar och ungarna blir normalt flygfärdiga efter 21–28 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De ruvas av båda föräldrarna i 15–19 dagar och ungarna är normalt flygfärdiga efter 21–28 dygn"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Ringduvan lever nästan helt av växtföda som spannmål, frukter, ärtor, frön, bär, skott och knoppar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ringduvan är växtätare och lever nästan uteslutande av växtföda som spannmål, frukter, ärtor, frön, bär, skott och knoppar"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Vintertid är bokollon och ekollon populär föda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "vintertid utgör bokollon- och ekollon en populär föda"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Ringduvan skiljs från tamduvan bland annat genom större storlek, större bröst, längre stjärt och proportionellt mindre huvud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Förutom sin storlek särskiljs ringduvan från tamduvan bland annat genom ett större bröst, längre stjärt, och ett proportionellt mindre huvud."
+        }
+      ],
+      "other": {
+        "scientific": "Columba livia",
+        "qid": "Q42326"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Ringduvan har blekgult öga, medan klippduvan har orangerött öga.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The eye colour is a pale yellow, in contrast to that of rock doves, which is orange-red"
+        }
+      ],
+      "other": {
+        "scientific": "Columba livia",
+        "qid": "Q42326"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i mars och april."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "ffd3f60895320501"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "ringduva",
@@ -203,7 +574,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: Quotes support migratory status for Scandinavia and large numbers leaving Sweden, but do not explicitly state that the species breeds in Sweden.. Bestäm status eller lämna tom."
+    }
+  ]
 }

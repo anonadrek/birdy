@@ -5,9 +5,391 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Rödhaken har kraftigt orangerött bröst och ansikte som omges av blåaktigt grått på halsens och bröstets sidor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett kraftigt orangerött (tegelrött) bröst och ansikte som omges av blåaktigt grått på sidorna av halsen och bröstet."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ovansidan är brunaktig, kroppssidan grå- till brunaktig och buken gråvit.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ovansidan är brunaktig, kroppsidan grå- till brunaktig och buken gråvit."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Den har ganska långa mörkbruna ben, svart spetsig näbb och svart öga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ganska långa mörkbruna ben, svart spetsig näbb och svart öga."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Rödhaken är en liten fågel med rund kroppsform, särskilt när den burrar upp fjädrarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är en liten fågel med rund kroppsform, speciellt när den burrar upp fjädrarna."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Huvudet ser stort ut och fågeln ser ofta ut att sakna hals.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Huvudet ser stort ut och ser ofta ut att sakna hals."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Skandinaviska och ryska flyttande rödhakar känns igen på gråare ton på ovansidan och mattare orange bröst.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Scandinavian and Russian robins migrate to Britain and western Europe to escape the harsher winters. These migrants can be recognised by the greyish tone of the upper parts of their bodies and duller orange breast."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "En adult rödhake är 12,5–14,0 centimeter lång, har ett vingspann på 20–22 cm och väger 16–22 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En adult rödhake av nominatformen är 12,5–14,0 centimeter lång, med ett vingspann på 20–22 cm, en stjärt på 5,7–6,2 cm och en vikt på 16–22 gram."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hane och hona är lika både i storlek och fjäderdräkt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika både till storlek och fjäderdräkt."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Unga fåglar är bruna på ovansidan med gul vattring, främst på manteln och huvudet, och saknar rött bröst.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenila fåglar är bruna på ovansidan med gul vattring, främst på manteln och huvudet."
+        },
+        {
+          "article": "en",
+          "quote": "Juveniles are distinct, being freckled brown all over and lacking the red breast."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Rostgula spetsar på de övre vingtäckarna ger ett tunt gult vingband som är tydligast hos juveniler.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "de övre vingtäckarna har rostgula spetsar vilket ger den ett tunt gult vingband som är allra tydligast hos juveniler"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Sången är flöjtande och kvittrande och hörs under häckningstiden ofta på kvällen och ibland in på natten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rödhaken har en flöjtande, kvittrande sång under häckningssäsongen, då de ofta sjunger på kvällen och ibland in på natten"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången beskrivs ibland som en porlande bäck eller porlande tonkaskader.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rödhakens sång beskrivs ibland som en porlande bäck eller som porlande tonkaskader."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sången inleds ofta med en hög ihållande ton.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ofta inleds sången med en hög ihållande ton."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Locklätet är ett knäppande tick som vid oro dras ut i långa serier, tick-ick-ick-ick.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Locklätet är ett knäppande tick. När fågeln är orolig dras lätet ut i långa serier, tick-ick-ick-ick."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Både hane och hona sjunger under vinterhalvåret, då de håller åtskilda revir.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Både hanen och honan sjunger under vinterhalvåret, då de håller åtskilda revir."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Under häckningstid sjunger den ofta i gryningen och skymningen från en trädtopp.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "märks då när den framför sin sång, ofta i gryningen och skymningen, från en trädtopp."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Rödhaken förekommer främst i barr- och blandskog men även i parker och trädgårdar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den förekommer främst i olika typer av barr- och blandskog men uppträder även i parker och trädgårdar"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "I norra Europa föredrar rödhaken granskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rödhaken föredrar granskog i norra Europa"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Sverige har uppskattningsvis tre till sex miljoner par rödhakar, vilket gör den till en av landets vanligaste fåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Man uppskattar att det finns tre till sex miljoner par rödhakar i Sverige vilket gör den till en av Sveriges vanligaste fåglar."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Sverige häckar rödhaken i större delen av landet utom i fjälltrakterna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar den i större delen av landet utom i fjälltrakterna."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Rödhaken anländer till Sverige i slutet av mars eller början av april och flyttar söderut i september till november.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som flyttfågel anländer rödhaken i slutet av mars eller början av april till Sverige, och flyttar iväg i september till november söderut"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Enstaka rödhakar övervintrar i södra Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Enstaka individer övervintrar i södra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Boet ligger på marken, dolt i en hålighet, mellan trädrötter eller liknande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sitt bo har den på marken, dolt i någon hålighet, mellan trädrötter eller liknande."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Kullstorleken varierar mellan 4 och 9 ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kullstorleken brukar variera mellan 4 och 9 ägg."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Honan ruvar äggen i 13–15 dygn och båda föräldrarna tar hand om ungarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ruvar äggen i 13–15 dygn och sedan ungarna kläckts tar båda föräldrar hand om dem."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Födan består av spindlar, maskar och insekter, och på hösten och vintern även bär och frukt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På hösten och vintern utökar rödhakarna sin vanliga kost, som består av ryggradslösa djur som spindlar, maskar och insekter, med bär och frukt."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Rödhaken är relativt orädd och närmar sig gärna människor som gräver för att leta efter daggmaskar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är relativt orädd för människor och närmar sig gärna om man gräver i marken, för att leta efter daggmaskar och annan föda som kommer upp."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Rödhakehanar har ett mycket aggressivt revirbeteende.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rödhakehanar är kända för sitt mycket aggressiva revirbeteende."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Rödhaken flyttar på natten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Rotkehlchen ist ein Nachtzieher"
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Rödhakens kvälls- och nattsång gör att den ibland förväxlas med sydnäktergal.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "då de ofta sjunger på kvällen och ibland in på natten, vilket gör att de ibland förväxlas med sydnäktergal (Luscinia megarhynchos)"
+        }
+      ],
+      "other": {
+        "scientific": "Luscinia megarhynchos",
+        "qid": "Q25393"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som flyttfågel anländer rödhaken i slutet av mars eller början av april till Sverige, och flyttar iväg i september till november söderut"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "cac35388b25fa263"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "rodhake",
@@ -203,7 +585,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

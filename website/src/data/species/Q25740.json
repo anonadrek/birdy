@@ -5,9 +5,387 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Gärdsmygen är en mycket liten brun tätting med kort hals och kort stjärt som ofta hålls upprätt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gärdsmygen är en mycket liten brun tätting med kort hals, och vars mest distinkta morfologiska drag är dess kroppshållning med den korta stjärten som ofta hålls upprätt."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Näbben är proportionellt ganska lång, spetsig och lätt nedåtböjd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en proportionellt ganska lång näbb, som är spetsig och lätt nedåtböjd."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Ovansidan är rödbrun och undersidan brunvit, och fågeln har till stora delar fin mörk tvärvattring.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har rödbrun ovansida, brunvit undersida och hela fågeln har till stora delar fin mörk tvärvattring."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den har ett ljust ögonbrynsstreck och ett mörkt tygelstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett ljust ögonbrynsstreck och ett mörkt tygelstreck."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Vingarna är mycket korta och rundade.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har mycket korta rundade vingar."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Benen är långa och orangebruna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De orangebruna benen är långa."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "Gärdsmygen mäter 9–10,5 cm, har ett vingspann på 13–17 cm och kan väga upp till 14 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den mäter 9-10,5 cm, har ett vingspann på 13–17 cm och kan väga upp till 14 gram."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hane och hona ser likadana ut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika men underarterna kan skilja sig åt avsevärt"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Unga fåglar är mindre tydligt tvärvattrade och har fläckig undersida.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Young birds are less distinctly barred and have mottled underparts."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Sången är kraftfull, lång och komplex med drillar och långa partier av metalliskt klingande toner.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en kraftfull sång som både är lång och komplex och innehåller drillar och långa partier med metalliskt klingande toner."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Gärdsmygen sjunger både på sommaren och på vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gärdsmygen sjunger både på sommaren och på vintern."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Det vanligaste lätet är ett vasst, upprepat \"tic-tic-tic\".",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The most common call is a sharp, repeated \"tic-tic-tic\""
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "När fågeln är upprörd övergår lätet i ett eftertryckligt surrande, likt ett urverk som går ner.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "When the bird is annoyed or excited, its call runs into an emphatic churr, not unlike clockwork running down."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Fågeln har en mycket stark röst i förhållande till sin storlek.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The bird has an enormous voice for its size"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Gärdsmygen vistas där den lätt kan gömma sig, till exempel i häckar, rishögar, busksnår och hål.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gärdsmygen vistas på ställen där den har lätt att gömma sig, till exempel i häckar, rishögar, busksnår, hål och liknande."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Den förekommer i skog med tät undervegetation, odlingsbygd, trädgårdar med frodig örtvegetation och på kala öar med enstaka snår.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den förekommer i en rad olika biotoper som skog med tät undervegetation, i odlingsbygd och i marker och trädgårdar med frodig örtvegetation men även på kala öar med enstaka snår och dylikt."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Gärdsmygen häckar tämligen allmänt i södra halvan av Sverige och mer sparsamt upp till Jämtland och Norrbotten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gärdsmygen av nominatformen troglodytes häckar tämligen allmänt i södra halvan av Sverige, mer sparsamt upp till Jämtland och Norrbotten."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "De flesta svenska gärdsmygar flyttar söderut vintertid, men några stannar kvar och lever då ofta som strykfåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De flesta flyttar vintertid söderut, men några stannar kvar i landet, och lever då ofta som strykfåglar."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige är den stann- och strykfågel i Götaland samt flyttfågel i Svealand och nedre Norrland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är den stann- och strykfågel i Götaland samt flyttfågel i Svealand och nedre Norrland."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "År 2018 uppskattades det svenska beståndet till 857 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 857 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Gärdsmygen har traditionellt betraktats som Sveriges näst minsta fågel, efter kungsfågeln.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har traditionellt betraktats som Sveriges näst minsta fågel (näst kungsfågeln)"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "I början av häckningsperioden bygger hanen flera bon, upp till sex eller sju.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I början av häckningsperioden bygger hanen ett flertal bon, upp till 6 eller 7."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Boet är stort och klotrunt med en rund ingångsöppning på sidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det är stort och klotrunt och har på sidan en rund öppning"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Första kullen läggs i april och består av fem till åtta vita, lätt spräckliga ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I april lägger den sin första kull som består av fem till åtta vita ägg som är lätt spräckliga."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Honan ruvar äggen ensam i 12–20 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas av honan i 12–20 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Gärdsmygen är mycket polygam, vilket är ovanligt bland tättingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gärdsmygen är mycket polygam vilket är ett ovanligt häckningssystem bland tättingarna."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Födan består mest av insekter och spindlar, men vintertid äter den även puppor och frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess föda består mest av insekter och spindlar, men vintertid äter den även puppor och frön."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Nattetid, särskilt på vintern, övernattar gärdsmygar i små håligheter, mörka prång eller övergivna fågelbon.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Nattetid, speciellt på vintern, övernattar de i mindre håligheter, mörka prång eller övergivna fågelbon."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Den håller sig mest nära marken och rör sig med snabba ryck medan den letar i springor.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It moves with quick jerks, probing into crevices"
+        },
+        {
+          "article": "en",
+          "quote": "for the most part stays near the ground"
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Flykten är kort, snabb och rak med surrande små rundade vingar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "its short flights swift and direct but not usually sustained, its tiny round wings whirring as it flies"
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De flesta flyttar vintertid söderut, men några stannar kvar i landet"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november och december."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "52e932867254c5f0"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "gardsmyg",
@@ -203,7 +581,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

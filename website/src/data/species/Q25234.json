@@ -5,9 +5,384 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Hanen känns igen på sin kolsvarta kropp, gula näbb och gula ögonring.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen känns igen på sin kolsvarta kropp, gula näbb och gula ögonring."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Hos båda könen är tarser och tår mörkbruna.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Bei beiden Geschlechtern sind Lauf und Zehen dunkelbraun."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Koltrasten har lång stjärt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "is 23.5–29 cm (9.3–11.4 in) in length, has a long tail"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "sex_age",
+      "sv": "Adulta honor har mörkbrun till olivgrå ovansida och oftast en något ljusare panna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Adult hona har mörkbrun till olivgrå ovansida, och oftast en något ljusare panna."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Den adulta honans näbb är blekgul med mörkbrun övre näbbhalva.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honans näbb är blekgul med mörkbrun övre näbbas."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Ungfåglar liknar honan men har ljusa fläckar på ovansidan.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The juvenile is similar to the female, but has pale spots on its upperparts"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hanar i första vinterdräkt har kvar bruntonade vingfjädrar medan resten av kroppen är helsvart.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En hane i första vinterdräkt har fortfarande kvar sina bruntonade vingfjädrar från sin juvenila dräkt medan resten av kroppen är ruggad till helsvart fjäderdräkt."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Koltrasten är 24–27 cm lång enligt Handbook of the Birds of the World.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Efter uppdelningen i fyra arter uppger exempelvis Handbook of the Birds of the World idag storleksangivelsen till 24–27 cm."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Vingspannet är 35–38 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett vingspann på 35–38 cm."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "size",
+      "sv": "Medianvikten är 85–105 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Medianvikten är 85–105 gram."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Hanens sång är en varierad, melodisk, lågt flöjtande drill som framförs från träd, hustak och andra höga sittplatser, främst mars till juni.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The male's song is a varied, melodious, low-pitched fluted warble sung from trees, rooftops and other elevated perches mainly in the period from March to June"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Koltrasten börjar sin vida hörbara sång kort före soluppgången.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kort före soluppgången börjar den sin vidsträckt hörbara sång."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Sången innehåller ofta korta imitationer av andra fågelarter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Mellandelen innehåller ofta korta imitationer och variationer av andra fågelarter."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Vid störning eller fara hörs ett hårt, upprört smackande \"tack\", enkelt eller upprepat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "hörs ett hårt och upprört smackande \"tack\", enkelt eller upprepat."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Under flyttningen hörs ett lågmält rullande \"srrri\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På sträck hörs ett lågmält rullande \"srrri\"."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Koltrasten var tidigare en utpräglad skogsfågel men har sedan mitten av 1800-talet bosatt sig i parker och trädgårdar nära bebyggelse.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tidigare var koltrasten en utpräglad skogsfågel men den har sedan mitten av 1800-talet bosatt sig i parker nära bebyggelse samt i trädgårdar"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "I skog föredrar den lövträd med tät undervegetation.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "has a preference for deciduous trees with dense undergrowth"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Rena barrskogar bebor den sällan, och i högre lägen ersätts den av ringtrast.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rena barrskogar bebor den sällan, och i högre lägen ersätts den snabbt av ringtrast (Turdus torquatus)."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Koltrasten är allmän i hela södra och mellersta Sverige upp till norra Värmland och längs Norrlandskusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Koltrasten förekommer allmänt i hela södra och mellersta Sverige ända upp till norra Värmland och uppför Norrlandskusten."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Den svenska populationen beräknas till cirka 1,8 miljoner par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Man räknar med att den svenska populationen består av cirka 1,8 miljoner par."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "De flesta svenska koltrastar flyttar från slutet av september till början av november till Västeuropa och återkommer i mars–april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Merparten av de svenska koltrastarna flyttar i slutet av september till början av november till Västeuropa, och återkommer i mars till april."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "I södra och mellersta Sverige övervintrar en del, särskilt fåglar som lever nära bebyggelse.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I södra och mellersta Sverige övervintrar en del av populationen, särskilt de som lever nära bebyggelse."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Det skålformade boet byggs av gräs, löv och annan växtlighet som binds samman med lera.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The cup-shaped nest is made with grasses, leaves and other vegetation, bound together with mud."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Normalt läggs fyra till fem ägg med grön grundfärg och bruna fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Normalt är det fyra till fem, vid slutet av häckningstiden ofta även bara tre"
+        },
+        {
+          "article": "sv",
+          "quote": "På den gröna bakgrunden finns bruna fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Födan består främst av daggmaskar, skalbaggar och myror.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den huvudsakliga grundvalen för näringsspektrumet är daggmaskar, skalbaggar, upp till ollonborres storlek, och myror."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Fallfrukt och bär, till exempel äpple och rönnbär, äts mer på hösten och vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fallfrukt och bär, exempelvis äpple och rönnbär, tas i högre grad på hösten och vintern."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Koltrasten söker mest föda på marken, där den springer och skuttar med ryckiga rörelser.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Koltrasten födosöker mestadels på marken, där den springer och skuttar med ryckiga rörelser."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Kan förväxlas med stare, men koltrasten är större och har tydligt längre stjärt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Im Vergleich zum kleineren, ebenfalls dunkel befiederten und sich häufig auf dem Boden aufhaltenden Star hat die Amsel einen deutlich längeren Schwanz."
+        }
+      ],
+      "other": {
+        "scientific": "Sturnus vulgaris",
+        "qid": "Q25469"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Kan förväxlas med ringtrast i första vinterdräkt, som har ljusare vingar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In Europe, the common blackbird can be confused with the paler-winged first-winter ring ouzel (Turdus torquatus)"
+        }
+      ],
+      "other": {
+        "scientific": "Turdus torquatus",
+        "qid": "Q26641"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Merparten av de svenska koltrastarna flyttar i slutet av september till början av november till Västeuropa, och återkommer i mars till april."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december och januari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "d2adb224bc78a19d"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "koltrast",
@@ -203,7 +578,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

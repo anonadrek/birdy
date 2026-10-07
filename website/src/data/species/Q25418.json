@@ -5,9 +5,354 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Steglitsen har röd panna och strupe.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Pannan och strupen är röda."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Vingarna är svarta med ett brett, intensivt gult band.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingarna är svarta, med ett brett, intensivt gult band."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Huvudet är vitt med vita halssidor, och nacken och hjässan är svarta.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "ein weißer Kopf mit weißen Halsseiten und abgesetzt ein schwarzer Nacken und Oberkopf"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Stjärten är svart och övergumpen vit.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Its tail is black and its rump is white."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Ovansidan är brunaktig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är brunaktig på ovansidan."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Näbben är elfenbensfärgad, lång och spetsig, och stjärten är kluven.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They have an ivory-coloured, long, pointed bill and a forked tail."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hanen kan på nära håll skiljas ut genom en större, mörkare röd ansiktsmask som når strax bakom ögat.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Male European goldfinches can often be distinguished on close inspection by the larger, darker red mask that extends just behind the eye."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hanen har svarta skulderfjädrar medan honans är bruna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Their shoulder feathers are black, whereas those of the female are brown."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungfåglar har enfärgat huvud och gråare rygg men känns ändå igen på det gula vingbandet.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Juveniles have a plain head and a greyer back, but they are unmistakable due to the yellow wing stripe."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Kroppslängden är tolv centimeter, vingspannet 21–25,5 centimeter och vikten 14–18 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kroppslängden är tolv centimeter, vingspannet är 21–25,5 centimeter och vikten 14–18 gram."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Locklätet är ett typiskt, upprepat ”tick tickeli tickelitt” som gett arten dess namn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Locklätet består av ett typiskt, upprepande ”tick tickeli tickelitt” som har gett arten dess namn."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången liknar grönsiskans och är snabb och kvittrande med omväxlande toner och inslag av locklätet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången liknar grönsiskans och är snabb med kvittrande omväxlande toner med inslag av locklätet."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Vid aggression hörs ett hårt, snarrande ”tschrr”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Aggressionsruf besteht aus einem harten, schnarrenden „tschrr“."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Steglitsen häckar i öppna, trädrika landskap, trädgårdar och fruktodlingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "en vanlig häckfågel i öppna, trädrika landskap, trädgårdar och fruktodlingar"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Under höst och vinter finns den främst i öppna landskap med kvarstående örter, som vägkanter och avfallsplatser.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Im Herbst und Winter ist er vor allem in offenen Landschaften mit stehengebliebenen Stauden, wie Straßenrändern oder Schuttplätzen, zu finden."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige förekommer steglitsen främst i södra och mellersta delarna, men även utmed Norrlandskusten till Norrbotten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Steglits förekommer i Sverige framför allt i de södra och mellersta delarna upp till en linje från Bohuslän via södra Värmland och sydvästra Dalarna, men även vidare utmed Norrlandskusten till Norrbotten."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Steglitsen lämnar de nordliga delarna av sitt svenska häckningsområde och flyttar i oktober–november.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den överger de nordliga delarna av detta häckningsområde och flyttar i oktober–november."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "En del svenska steglitser flyttar till Väst- och Sydeuropa och återkommer i mars–april, medan andra övervintrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Delar flyttar till Väst- och Sydeuropa och återkommer i mars–april, medan andra övervintrar."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Steglitsen är numera vanlig i Sverige och har ökat med 112–245 % de senaste tio åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Steglitsen är numera en vanlig fågel i Sverige som har ökat mycket kraftigt på senare tid, de senaste tio åren med hela 112–245 %."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "food",
+      "sv": "Steglitsen lever mest av frön, särskilt från tistlar och kardborrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Steglitsen lever mest av diverse frön, med särskild förkärlek för frö från tistlar och kardborrar."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "behaviour",
+      "sv": "Den är en skicklig klättrare som ofta klättrar i tistlar för att samla frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är en skicklig klättrare som ofta klättrar i tistlar där den samlar frön."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Flykten är vågformig, och det gula i vingen syns särskilt tydligt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Flug ist wellenförmig und recht stabil; das Gelb im Flügel fällt besonders auf."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Steglitsen besöker regelbundet fågelmatningar på vintern.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They also regularly visit bird feeders in winter."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Boet placeras oftast högt i trädkronan, vanligen i lövträd men ibland i barrträd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det brukar placeras högt i trädkronan, oftast i lövträd men ibland i barrträd."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Honan lägger fem till sex vitaktiga ägg med fina röda fläckar och ruvar dem i tolv till 13 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger fem till sex vitaktiga ägg med fina röda fläckar, som hon ruvar i tolv till 13 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Steglitsen häckar två gånger om året, första gången i maj.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar två gånger om året – första gången i maj."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "lookalike",
+      "sv": "Grå steglits skiljer sig genom att sakna svart hjässa och den svarta lodräta linjen bakom örontäckarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "skiljer sig från västliga steglitser genom att de inte har svart hjässa och saknar den svarta lodräta linjen bakom örontäckarna"
+        }
+      ],
+      "other": {
+        "scientific": "Carduelis caniceps",
+        "qid": "Q606679"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Delar flyttar till Väst- och Sydeuropa och återkommer i mars–april, medan andra övervintrar."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "68187c2720ce01c6"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "steglits",
@@ -203,7 +548,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

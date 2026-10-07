@@ -5,9 +5,369 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Vuxen sångsvan är helvit med klargul näbbrot medan spetsen och nederdelen av näbben är svarta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta sångsvanen ter sig än vitare än knölsvanen och näbben är mot roten klart gult medan spetsen och nederdelen av näbben är svart."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Det gula på näbben når ned nedanför näsborren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det gula når nedanför näsborren."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Sångsvanen har ett större gult fält på näbben än mindre sångsvan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett större gult fält på näbben än vad mindre sångsvan har."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Sångsvanen håller oftare halsen rak, till skillnad från knölsvanens ibland s-formade hals.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den håller oftare halsen rak till skillnad från knölsvanens ibland s-formade halsföring."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Huvud och hals hos vuxna fåglar är ofta rostgult färgade när de födosöker i vatten rikt på garvsyror eller järnföreningar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The adults are pure white, but the head and neck are often stained rusty-yellow when feeding in water rich in tannins or iron compounds."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Unga fåglar har gråbrunvit fjäderdräkt och svart och vitgul näbb med svag rosa anstrykning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De juvenila fåglarnas fjäderdräkt är gråbrunvita och näbben är svart och vitgul med en svag anstrykning av rosa."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungfåglarna får vit fjäderdräkt under sommaren första levnadsåret eller tidigt på våren andra levnadsåret.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den anlägger vit fjäderdräkt under sommaren dess första levnadsår, eller tidigt på våren under dess andra levnadsår."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Honor är tydligt mindre och lättare än hanar, men i övrigt ser könen lika ut.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Weibchen sind deutlich kleiner und leichter als Männchen, ansonsten weisen Singschwäne keinen auffallenden Geschlechtsdimorphismus auf."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "size",
+      "sv": "Sångsvanen är 140–160 centimeter lång med ett vingspann på 205–235 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "med en längd på mellan 140 och 160 centimeter och ett vingspann på 205 till 235 centimeter"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "size",
+      "sv": "Sångsvanen väger vanligen 7,4–14,0 kilogram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The weight is typically in the range of 7.4–14.0 kilograms"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "I flykten hörs ett högt, trumpetande läte, ungefär \"klo-klo-klo\", i grupper om tre eller fyra toner.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den kan utstöta ett högt, trumpetande läte, i grupper om tre eller fyra toner när den flyger."
+        },
+        {
+          "article": "en",
+          "quote": "kloo-kloo-kloo in groups of three or four"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Typiskt för lätet är en djup, nasal basunklang.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Charakteristisch für ihren Ruf ist ein tiefer, nasaler Posaunenklang."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Vingarna ger bara ett tystlåtet svischande, till skillnad från knölsvanens kraftigt sjungande vingslag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ljudet från vingarna är ett tystlåtet svischande till skillnad från knölsvanens kraftiga sjungande vingslagsljud."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Sångsvanen häckar i vegetationsrika våtmarker, från grunda skogssjöar och vassrika slättsjöar till gårdsdammar, åar och blöta myrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sångsvanen häckar i olika typer av vegetationsrika våtmarker, allt från grunda skogssjöar till vassrika slättsjöar, gårdsdammar, utmed åar, på blöta myrar och sällsynt även vid havet i Bottenviken."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Vintertid flyttar sångsvanen till öppna vatten i bland annat västra och centrala Europa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är en flyttfågel som flyttar till öppna vatten i västra och centrala Europa"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Sångsvanen häckar idag i hela Sverige, med störst bestånd i Norrbottens, Västerbottens och Gävleborgs län.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Idag häckar den i hela Sverige, med störst bestånd i Norrbottens, Västerbottens och Gävleborgs län."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I början av 1900-talet var sångsvanen nära utrotning i Sverige efter intensiv jakt och fanns kvar bara på några lokaler i Lappland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I början av 1900-talet var sångsvanen nära utrotning i Sverige efter intensiv jakt och fanns då kvar bara på några avsides belägna lokaler i Lappland."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "År 2020 uppskattades det svenska beståndet till 9 400–14 600 häckande individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2020 uppskattas beståndet till 9 400–14 600 häckande individer."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Flyttningen till övervintringsområden i södra Sverige, Danmark och Nordsjöländerna börjar i oktober.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flyttningen till övervintringsområden i södra Sverige, Danmark och Nordsjöländerna inleds i oktober."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Flyttningen norrut börjar kring månadsskiftet februari–mars.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "norrut i månadsskiftet februari–mars."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Stora rastplatser under vårflyttningen är bland andra Hornborgasjön, Tysslingen, Väster-Färnebo och Umeälvens delta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stora rastplatser under vårflyttningen är bland andra Hornborgasjön, Tysslingen, Väster-Färnebo och Umeälvens delta."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Boet är ofta mycket stort, särskilt på höjden, och byggs av växtdelar mest tagna från sjöbotten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet är ofta oerhört stort, speciellt på höjden, och det består av växtdelar som mest tas från sjöbotten."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Häckningen sker normalt i maj och juni men kan börja redan i mitten av april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den normala häckningstiden är i maj och juni men det förekommer att den börjar redan i mitten av april."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Honan lägger fyra till sju smörfärgade ägg och ruvar i cirka 30 till 36 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger fyra till sju smörfärgade ägg och ruvar i cirka 30 till 36 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Sångsvanar bildar par för livet.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Whooper swans pair for life."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Födan består av växter och växtdelar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Födan består av växter och växtdelar."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "food",
+      "sv": "På senare tid har sångsvanen börjat födosöka i jordbruksområden likt gäss.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På senare tid har den börjat födosöka i jordbruksområden likt gäss."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden är sångsvanar sällskapliga och tål artfränder.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Außerhalb der Brutzeit sind sie durchaus gesellig und vertragen sich mit Artgenossen."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Idag häckar den i hela Sverige, med störst bestånd i Norrbottens, Västerbottens och Gävleborgs län."
+        },
+        {
+          "article": "sv",
+          "quote": "Flyttningen till övervintringsområden i södra Sverige, Danmark och Nordsjöländerna inleds i oktober."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i februari, mars, november och december."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "bb6769c34bbae1bd"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "sangsvan",
@@ -203,7 +563,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

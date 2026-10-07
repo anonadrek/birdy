@@ -5,9 +5,387 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Gräsanden är en stor och kraftig and som mäter 55–60 cm och har ett vingspann på 81–95 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gräsanden är en stor och kraftig and som mäter 55–60 cm och har ett vingspann på 81–95 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Gräsanden väger 0,7–1,6 kg.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "it weighs 0.7–1.6 kg (1.5–3.5 lb)"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Gräsanden har ett stort huvud, en lång och ganska kraftig näbb och kort stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett stort huvud, en lång och ganska kraftig näbb och kort stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "I alla dräkter har gräsanden en mörkblå iriserande vingspegel kantad först av ett svart och sedan ett brett vitt band.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I alla dräkter har den en mörkblå iriserande vingspegel omgiven av först ett svart och sedan ett brett vitt band."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Benen är gula eller gulröda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Benen är gula eller gulröda."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Honan är vattrad i brunt ovanpå och ljusbrunt under, med orange näbb och mörkgrå näbbrygg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan är vattrad i brunt på ovansidan, i ljusbrunt på undersidan och har en orange näbb med mörkgrå näbbrygg."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Den adulta hanen har i häckningsdräkt mörkgrönt, lätt skimrande huvud och hals.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen har i häckningsdräkt mörkgrönt, lätt skimrande huvud och hals."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hanen har en smal vit halsring mellan det gröna huvudet och det lilatonade kastanjebruna bröstet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en smal vit halsring som avgränsar det gröna från det lilatonade kastanjebruna bröstet."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Hanens akter är svart och några övre stjärttäckare har uppkrullade svarta spetsar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Aktern är svart och de yttre stjärtpennorna beigevita. Några av de övre stjärttäckarna har uppkrullade svarta spetsar."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Hanen har en enfärgat mattgul näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gräsandshanen har en enfärgat mattgul näbb."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Hanen i eklipsdräkt liknar honan men skiljs på enfärgat mattgul näbb, mörkare rödbrunt bröst och mer kontrastrikt huvud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "eklipsdräkt som är mer honlik men skiljs ifrån honan på att näbben är enfärgat mattgul, bröstet mörkare rödbrunt och huvudet något mer kontrastrikt"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "sex_age",
+      "sv": "Den unga fågeln är mycket lik den adulta honan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen är mycket lik den adulta honan."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Hanen låter dämpade och nasala \"vähp\", som ofta upprepas när fågeln är orolig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från hanen görs dämpade och nasala \"vähp\" som ofta upprepas av en oroad fågel."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "När hanen uppvaktar honan hörs en kort vissling, \"pjy\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vid uppvaktning av honan hörs en kort vissling, \"pjy\"."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Honan kväker med en ljudlig serie som successivt avtar i styrka.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan kväker med en ljudlig serie som successivt avtar i styrka."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "När gräsanden lyfter ger vingarna ett karaktäristiskt svagt visslande ljud.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "When taking off, the wings of a mallard produce a characteristic faint whistling noise."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Gräsanden häckar vid nästan alla typer av vatten, som skogskärr, sjöar, åar, parker samt bräckt och salt vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gräsanden kan förekomma som häckfågel vid nästan vilken typ av vatten som helst, som små skogskärr, sjöar, åar, i parker, i bräckt och salt vatten."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Gräsanden föredrar vattendjup under 0,9 meter.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Water depths of less than 0.9 metres (3.0 ft) are preferred"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige häckar gräsanden allmänt i hela landet utom i fjällmiljön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar gräsanden allmänt i hela landet."
+        },
+        {
+          "article": "sv",
+          "quote": "Det enda ställe i Sverige där gräsanden inte förekommer är i fjällmiljön."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Sverige föds varje år 400 000 gräsänder upp i fångenskap.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bara i Sverige föds varje år upp 400 000 gräsänder i fångenskap"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "food",
+      "sv": "Växtmaterial utgör en stor del av födan, särskilt under höstflytten och vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Växtmaterial utgör en stor del av dess föda, speciellt under höstflytten och vintern."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "food",
+      "sv": "Gräsanden födosöker oftast genom att tippa kroppen framåt och snappa eller beta växtmaterial under vattnet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den födosöker oftast genom att tippa kroppen framåt och snappa, eller beta efter växtmaterial under vattnet."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "När gräsanden betar under vattnet står bakdelen typiskt rakt upp ur vattnet.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Diese für Stockenten charakteristische Haltung mit senkrecht aus dem Wasser ragendem Bürzel wird als Gründeln bezeichnet."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Boet ligger ofta väl dolt i en tät tuva eller under en buske.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "ofta väl dolt i en tät tuva eller under en buske"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Honan lägger i genomsnitt nio till 13 vitaktiga ägg utan fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger i genomsnitt nio till 13 ägg"
+        },
+        {
+          "article": "sv",
+          "quote": "Äggen är vitaktiga och saknar fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Äggen ruvas i 21–28 dagar och ungarna är flygfärdiga efter 50–60 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De ruvas i 21–28 dagar"
+        },
+        {
+          "article": "sv",
+          "quote": "Ungarna är flygfärdiga efter 50–60 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstid är gräsanden mycket social och bildar stora flockar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utanför häckningstid är den mycket social och bildar stora flockar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Under ruggningen av vingpennorna kan gräsänderna inte flyga på ungefär en månad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under denna ruggningsperiod är gräsänderna flygoförmögna i cirka en månad."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Gräsanden lyfter nästan lodrätt och flyger snabbt och rakt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Stockenten fliegen fast senkrecht auf. Der Flug ist schnell und gerade."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Snatterandhonan liknar gräsandhonan men är mindre, har orangekantad näbb, vit buk och svartvit vingspegel som syns som vit ruta i flykten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The female gadwall (Mareca strepera) has an orange-lined bill, white belly, black and white speculum that is seen as a white square on the wings in flight, and is a smaller bird."
+        }
+      ],
+      "other": {
+        "scientific": "Mareca strepera",
+        "qid": "Q28106966"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "7aec9849846e5f8a"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "grasand",
@@ -203,7 +581,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: The quote confirms the mallard breeds commonly throughout Sweden, but does not state that the Swedish population is migratory ('Flyttfågel'); that part of the claim is unsupported by the given quote.. Bestäm status eller lämna tom."
+    }
+  ]
 }

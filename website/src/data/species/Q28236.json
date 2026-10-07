@@ -5,9 +5,391 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Adult gråtrut har vit undersida, vitt huvud, grå vingovansida, gul näbb med en röd fläck och vanligen skära ben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har vit undersida, vitt huvud, grå vingovansida, gul näbb med en röd fläck och vanligen skära ben."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ryggen och vingarna är ljusgrå, och vingspetsarna är svarta med små vita prickar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess rygg är ljusgrå liksom vingarna där vingspetsarna är svarta med små, vita prickar."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Benen är vanligtvis skära, men vissa individer har svagt gula ben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Benen är vanligtvis skära, men det finns individer med svagt gula ben."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Runt det ljusa ögat har den en ring av bar gul hud.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "a ring of bare yellow skin is seen around the pale eye"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "sex_age",
+      "sv": "Adulta fåglar utanför häckningstid har bruna streck på huvud och hals.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Non-breeding adults have brown streaks on their heads and necks."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Ungfåglarna är brunspräckliga med mörk näbb och mörka ögon, och det tar fyra år innan de får adult dräkt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungfåglarna är brunspräckliga med mörk näbb och mörka ögon, och det tar fyra år innan den har anlagt sin adulta fjäderdräkt."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hanar och honor har likadan fjäderdräkt i alla åldrar, men adulta hanar är ofta större.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Male and female plumage are identical at all stages of development, but adult males are often larger."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "size",
+      "sv": "Gråtruten är en stor måsfågel med kroppslängden 55–67 cm och ett vingspann på 140–155 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "med kroppslängden 55–67 cm, ett vingspann på 140–155 cm"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Den varnar ungar med ett hundliknande ”wauff”, som kan stegras till ”wuuff-wauff” när faran ökar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den varnar ungar som hamnar på marken med ett hundliknande \"wauff\", som kan stegras till ett \"wuuff-wauff\", om faran ökar."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Huvudlätet är ett ljust till gällt, fallande ”kiu” eller ”kiau”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "ist ein helles bis gellendes, herabgezogenes kiu oder kiau"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Som varning hörs även ett djupt, kacklande ”ha-ha-ha” eller ”gä-gä-gäg”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "ein tiefes und gackerndes ha-ha-ha oder gä-gä-gäg"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Dess höga, skrattande läte är särskilt välkänt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Their loud, laughing call is particularly well known"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Om vintern är trutarna mest tysta, utom när de slåss om föda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Om vintern är trutarna för det mesta tysta, utom då de slåss om föda."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Gråtruten förekommer utmed kusten, i hamnar, vid stora sjöar och i våtmarker.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråtruten är en havsfågel som förekommer utmed kusten, i hamnar, vid stora sjöar och våtmarker."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Den har anpassat sig till människan och häckar i kuststäder och vid soptippar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har framgångsrikt anpassat sig till människan och häckar i kuststäder och vid soptippar."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige häckar gråtruten allmänt runt kusterna och vid sjöar och vattendrag, och den övervintrar ofta i mellersta och södra Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "häckar allmänt runt Sveriges kuster, vid sjöar och vattendrag, och övervintrar ofta i mellersta och södra Sverige"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattas till 61 000 par, varav ungefär 65 procent finns längs Ostkusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Beståndet uppskattas till 61 000 par, varav ungefär 65 % finns längs Ostkusten."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Sverige har gråtruten minskat med mellan 56 och 72 procent de senaste 30 åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige minskar gråtruten kraftigt, med mellan 56 och 72 % de senaste 30 åren."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Sedan 2020 är gråtruten listad som sårbar på Artdatabankens röda lista.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "sedan 2020 listad i kategorin sårbar"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Inlandsbestånden i södra Skandinavien lämnar nästan helt sina häckningsplatser på vintern och finns då vid kusterna.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Binnenlandpopulationen Südskandinaviens räumen ihre Brutgebiete im Winter fast vollständig und sind dann an den Küsten zu finden."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet läggs i en skreva i berget eller på en klipphylla.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet lägger den i en skreva i berget eller någon klipphylla."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "På många ställen häckar gråtruten direkt på marken i stora kolonier.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På många ställen häckar gråtrut direkt på marken i stora kolonier."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Den lägger nästan alltid tre ägg, som är gröngrå med mörkbruna fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De lägger nästan alltid tre ägg"
+        },
+        {
+          "article": "sv",
+          "quote": "Äggen är gröngråa med mörkbruna fläckar"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Ungarna kläcks nästan samtidigt efter 28–30 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "ungarna nära nog kläcks samtidigt efter 28–30 dygn"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Ungarna tigger mat genom att picka på den röda fläcken på föräldrarnas undernäbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna tigger mat genom att picka på den röda fläcken som finns på föräldrarnas undernäbbar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Den äter fisk och fiskavfall, kräftor och musslor, maskar, insekter, fågelägg och fågelungar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den äter fisk och fiskavfall, kräftor och musslor, maskar, insekter, fågelägg och fågelungar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Gråtruten släpper ofta skalförsett byte från höjd för att knäcka skalet.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "European herring gulls can frequently be seen to drop shelled prey from a height to break the shell."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "lookalike",
+      "sv": "Medelhavstruten skiljer sig från gråtruten främst genom sina gula ben, som är klarare gula än hos gulbenta gråtrutar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Medelhavstruten (Larus michahellis) skiljer sig från gråtruten främst på sina gula ben."
+        },
+        {
+          "article": "sv",
+          "quote": "Dock finns det gråtrutsindivider med gulaktiga ben men de är aldrig så klargula som medelhavstrutens."
+        }
+      ],
+      "other": {
+        "scientific": "Larus michahellis",
+        "qid": "Q704982"
+      }
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Kaspisk trut är slankare än gråtrut, med mindre huvud, längre vingar och längre gulaktiga ben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kaspisk trut är slankare än gråtrut, med mindre huvud, längre vingar och längre ben som är gulaktiga istället för gråtrutens tuggummiskära."
+        }
+      ],
+      "other": {
+        "scientific": "Larus cachinnans",
+        "qid": "Q389505",
+        "written": "L. cachinnans"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Unga kanadatrutar skiljer sig från unga gråtrutar genom mörkare dräkt och helsvart stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungfåglar avviker dock tydligt med sin mörkare dräkt och helsvart stjärt."
+        }
+      ],
+      "other": {
+        "scientific": "L. smithsonianus"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Sårbar (VU)."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "7b342db67be84c9b"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "gratrut",
@@ -205,5 +587,12 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: Quote shows breeding widely along Swedish coasts but wintering only 'often in central and southern Sweden', indicating partial rather than full year-round residency across all of Sweden.. Bestäm status eller lämna tom."
+    }
+  ]
 }

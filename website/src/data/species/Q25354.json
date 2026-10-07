@@ -1,13 +1,667 @@
 {
   "qid": "Q25354",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Kroppen är huvudsakligen rödgrå eller beigeröd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kroppen är i huvudsak rödgrå eller beigeröd."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Den har vitaktig panna och strupe, svarta fläckar på hjässan, svart mustaschstreck och vit gump.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har vitaktig panna och strupe, svarta fläckar på hjässan och svart mustaschstreck på sidan av huvudet och vit gump."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "De större vingtäckarna är azurblå med svarta tvärstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De större vingtäckarna är azurblå, med svarta tvärstreck."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Vingarna är utåt svarta med en stor vit fläck och brunröda längre in mot kroppen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingarna är utåt svarta med en stor vit fläck. Vingarna är brunröda längre in mot kroppen."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Stjärten är huvudsakligen svart.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The tail is mainly black."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Vingarna är korta och trubbiga, stjärten lång och avrundad, fjäderdräkten yvig och huvudet har en tofs.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingarna är korta och trubbiga, stjärten lång och avrundad, fjäderbeklädnaden yvig och silkeslen och huvudet har en tofs."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Den kraftiga näbben är gråsvart till svart.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der kräftige Schnabel ist grauschwarz bis schwarz."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "I flykten syns starkt kontrasterande vingar och stjärt i svart och vitt med inslag av ljusblått.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "i flykten visar den upp sina starkt kontrasterande vingar och stjärt i svart och vitt med inslag av ljusblått"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Den vita gumpen syns särskilt tydligt i flykten och kontrasterar mot de svartbruna stjärtpennorna.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Letzteres Merkmal fällt vor allem im Flug oft deutlich auf und kontrastiert zur schwarzbraunen Färbung der Steuerfedern."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Hanar och honor har likadan fjäderdräkt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Geschlechter unterscheiden sich nicht in der Gefiederfärbung."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Ungfågeln liknar den vuxna men är något mörkare överlag och rödare på undersidan.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Jugendkleid ähnelt dem Kleid adulter Vögel, ist aber insgesamt etwas dunkler, die Unterseite rötlicher."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "size",
+      "sv": "Kroppslängden är 32–37 cm, vingspannet 54–58 cm och vikten ungefär 170 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kroppslängden är 32–37 cm, vingspannet 54–58 cm. Den väger ungefär 170 gram."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "size",
+      "sv": "Den är ungefär lika stor som en kaja.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "similar in size to a western jackdaw (Coloeus monedula)"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Vanligaste lätet är ett högljutt, hest skränande ”räk, räk”, främst som varningsläte men ibland som lockläte.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vanligast är ett högljutt skränande och hest läte (räk, räk) som främst används som varningsläte men ibland även som lockläte."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Den har ett jamande läte likt ormvråkens och kan härma andra fåglar, särskilt duvhök.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Nötskrikan har också ett jamande läte som liknar ormvråkens och den kan härma andra fåglar, särskilt duvhök."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Sången är lågmäld med djup, visslande klang och hörs om vårvintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dessutom har nötskrikan en lågmäld sång som hörs om vårvintern, och som har en djup visslande klang."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Den lever i blandskog, särskilt med ek.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "it inhabits mixed woodland, particularly with oaks"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "I den skandinaviska barrskogszonen föredrar den näringsrika tall-granskogar med hög andel gran.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "In der skandinavischen Nadelwaldzone werden vor allem besonders nahrungsreiche Waldstandorte besiedelt, bevorzugt Kiefern-Fichtenwälder mit möglichst hohem Fichtenanteil."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "I skogsliknande miljöer häckar den även nära bebyggelse, till exempel i parker, stora trädgårdar och på kyrkogårdar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "In entsprechend waldähnlichen Habitaten brütet er auch in Siedlungsnähe, etwa in Parks, ausgedehnten Gärten oder auf Friedhöfen."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Sverige häckar den allmänt i södra och mellersta delarna samt upp till och med mellersta Norrland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar den allmänt i de södra och mellersta delarna, samt upp till och med mellersta Norrland."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Nötskrikan är Sveriges talrikaste kråkfågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Nötskrikan är Sveriges talrikaste kråkfågel."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Vissa år ses stora mängder flyttningsbenägna nötskrikor vid Norrlandskusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vissa år observeras exempelvis stora mängder av sträckoroliga nötskrikor vid Norrlandskusten."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Boet placeras i träd, ofta gran, 2–10 meter över marken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet placeras i träd, ofta gran, 2–10 meter över marken."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Kullen består av 5–8 ljust grågröna, tätt brunfläckade ägg som kläcks efter 16–19 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen (5–8 st) är ljust grågröna, tätt fläckade med brunt. Dessa kläcks efter 16–19 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Nötskrikan lägger bara en kull om året.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Nötskrikan lägger bara en kull om året."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Den äter frukter, insekter, kräldjur, fågelägg, fågelungar och mindre däggdjur.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lever av många sorters frukter, insekter, kräldjur, fågelägg och fågelungar, smärre däggdjur med mera."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "På hösten hamstrar den vinterföda, i de södra delarna främst nötter och ekollon.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På hösten hamstrar den föda som den senare lever av på vintern. I de södra delarna består födan då främst av nötter och ekollon."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Den flyger tyst och svävande mellan träden men rör sig mer otympligt och hoppande på marken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den flyger tyst och svävande och rör sig med lätthet mellan träden. På marken är dess rörelser mer otympliga och hoppande."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Den lever parvis under häckningstiden, annars familjevis eller i spridda flockar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Nötskrikan lever parvis under häckningstiden, annars familjevis eller i spridda flockar."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i oktober till januari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Nötskrikan är Sveriges talrikaste kråkfågel och lever i blandskog, särskilt med ek.",
+          "factIds": [
+            "f21",
+            "f17"
+          ]
+        },
+        {
+          "text": "I skogsliknande miljöer häckar den även nära bebyggelse, till exempel i parker, stora trädgårdar och på kyrkogårdar.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Hane och hona är lika: rödgrå kropp, vitaktig strupe och svart mustaschstreck",
+          "factIds": [
+            "f10",
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Azurblå vingtäckare med svarta tvärstreck och en stor vit fläck på den svarta vingen",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "I flykten lyser vit gump mot mörk stjärt, vingarna är svartvita med ljusblått",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "Ungefär lika stor som en kaja, med tofs och kraftig gråsvart näbb",
+          "factIds": [
+            "f13",
+            "f06",
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Vanligast är ett högljutt, hest skränande \"räk, räk\", främst som varning men ibland som lockläte.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Den har också ett jamande läte likt ormvråkens och kan härma andra fåglar, särskilt duvhök.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Sången är lågmäld med djup, visslande klang och hörs om vårvintern.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Nötskrikan häckar allmänt i södra och mellersta Sverige och upp till och med mellersta Norrland.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län och mest i oktober till januari.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Vissa år ses stora mängder flyttningsbenägna nötskrikor vid Norrlandskusten.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "I barrskogszonen föredrar den näringsrika tall-granskogar med hög andel gran.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Arten är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den äter frukter, insekter, kräldjur, fågelägg, fågelungar och mindre däggdjur.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "På hösten hamstrar den vinterföda, i södra delarna främst nötter och ekollon.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Mellan träden flyger den tyst och svävande, men på marken rör den sig otympligt och hoppande.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Under häckningstiden lever den parvis, annars familjevis eller i spridda flockar.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Boet läggs i träd, ofta gran, 2 till 10 meter över marken.",
+          "factIds": [
+            "f23"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Nötskrika: så känner du igen den på fjäderdräkt, storlek och flykt, hur det hesa skränet och sången låter och när den ses under året.",
+      "facts": {
+        "size": {
+          "value": "32 till 37 cm",
+          "factIds": [
+            "f12"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Jay is the most numerous member of the crow family in Sweden and lives in mixed woodland, especially with oak.",
+          "factIds": [
+            "f21",
+            "f17"
+          ]
+        },
+        {
+          "text": "In wooded settings it also breeds near houses, for example in parks, large gardens and churchyards.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Sexes alike: reddish-grey body, whitish throat and black moustache stripe",
+          "factIds": [
+            "f10",
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Azure blue wing coverts barred black, and a large white patch on the black outer wing",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "In flight, a white rump against a dark tail, and black, white and pale blue wings",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "About the size of a Jackdaw, with a crest and a stout grey-black bill",
+          "factIds": [
+            "f13",
+            "f06",
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The commonest call is a loud, hoarse screeching \"räk, räk\", mainly as an alarm but sometimes as a contact call.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "It also gives a mewing call like a Common Buzzard's and can mimic other birds, especially Northern Goshawk.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "The song is quiet, with a deep, whistling tone, and is heard in late winter.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It breeds commonly in southern and central Sweden and north to central Norrland.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties, most often in October to January.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "In some years large numbers of jays on the move are seen along the Norrland coast.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "In the coniferous zone it prefers rich pine and spruce forest with a high share of spruce.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "It is not on the Swedish Red List 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats fruit, insects, reptiles, birds' eggs, nestlings and small mammals.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "In autumn it stores food for winter, in the south mainly nuts and acorns.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "It flies silently, gliding between the trees, but on the ground it moves clumsily with hops.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "It lives in pairs in the breeding season, otherwise in family groups or loose flocks.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "The nest sits in a tree, often a spruce, 2 to 10 metres up.",
+          "factIds": [
+            "f23"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Eurasian Jay: how to recognise it by plumage, size and flight, what its harsh screech and song sound like, and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "32 to 37 cm",
+          "factIds": [
+            "f12"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "a78b1cc7da3ef5df"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:18:38.435410+00:00",
+      "factsHash": "a78b1cc7da3ef5df"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "notskrika",
@@ -205,5 +859,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

@@ -5,9 +5,380 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Grönsiskan är en liten fink som mäter 12–13 cm, har 20–23 cm vingspann och väger ungefär 12 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Grönsiskan är en liten fink som mäter 12–13 cm, har ett vingspann på 20–23 cm och en vikt på ungefär 12 gram."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Näbben är kort, konformad och spetsig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en kort, konformad och spetsig liten näbb."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Stjärten är kort och kluven.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten är kort och kluven."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "I alla dräkter har grönsiskan två ljust gulgröna vingband omgivna av svarta partier och ljusgrön övergump.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "i alla dräkter två ljust gulgröna vingband omgärdat av svarta partier, ljusgrön övergump"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Den mörka stjärtbasen har ljust gulgröna partier på ytterkanterna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den mörka stjärtbasens ytterkanter har också var sitt ljust gulgrönt parti"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Benen och fötterna är mörkbruna och ögonen svarta.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Its legs and feet are dark brown, and its eyes are black."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Den adulta hanen är grön på rygg och bröst med gulgrön vingovansida och kraftiga svarta partier.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen är grön på ryggen och bröstet med gulgrön vingovansida med kraftiga svarta partier."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hanen har svart hjässa och svart strupfläck samt övervägande gult ansikte och bröst.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en svart strupfläck och hjässa."
+        },
+        {
+          "article": "en",
+          "quote": "The male has a predominantly yellow face and breast with a neat black cap."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Honan och ungfåglarna saknar hanens svarta partier och är ljust grågröna med mörk vattring.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honan och juveniler saknar dessa svarta partier och är överlag mer anonyma med ljust grågrön dräkt med mörk vattring."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Locklätena är tvåstaviga och visslande, det ena fallande \"tilö\", det andra stigande \"tluih\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De tvåstaviga, visslande locklätena har karakteristisk klang, det ena fallande, \"tilö\", det andra stigande, \"tluih\"."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Grönsiskan har även ett knattrande småläte.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även ett knattrande småläte hörs."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången är en kvittrande och drillande ramsa med härmningar, återkommande avbruten av en utdragen, nästan kiknande ton.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången är en kvittrande och drillande ramsa med inslag av härmningar, återkommande avbrutna av en utdragen, nästan kiknande ton."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Grönsiskor sjunger året runt, ofta i grupp.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Siskins sing throughout the year, often in groups."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Grönsiskan häckar helst i högstammig barrskog med tillgång till al och björk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Grönsiskan häckar helst i högstammig barrskog, med tillgång till al och björk."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Vintertid föredrar den stubbåkrar, odlingar och områden med fröbärande träd.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "in winter, prefers stubble and crops and areas containing trees with seeds."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "Grönsiskan häckar i hela Sverige utom i fjällen och är allmän i södra och mellersta Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Grönsiskan häckar i hela Sverige förutom i fjällen och den är allmän i södra och mellersta Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "En del svenska grönsiskor flyttar söderut till Tyskland och Frankrike medan andra övervintrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Delar av den svenska populationen flyttar så långt söderut som till Tyskland och Frankrike medan andra övervintrar."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "År 2018 uppskattades det svenska beståndet till 817 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 817 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "food",
+      "sv": "Vintertid ses grönsiskan ofta i stora flockar och lever då framför allt av alfrön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid ses den ofta i stora flockar och lever då framför allt av alfrön."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "food",
+      "sv": "Den äter även frön av örter och gräs samt insekter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dessutom äter den frön av ört- och gräsvegetation, och insekter."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "behaviour",
+      "sv": "Grönsiskan födosöker akrobatiskt och hänger ofta upp och ner som en mes.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "This small finch is an acrobatic feeder and often hangs upside down like a tit."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Den besöker fågelmatningar i trädgårdar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It will visit garden bird feeding stations."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden bildar den stora flockar, ofta blandade med gråsiskor.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Outside of the breeding season, this species will form large flocks, often mixed with redpolls."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Grönsiskan är rörlig och drar vida kring, men är ändå ganska oskygg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är en rörlig fågel som drar vida kring, även under häckningen, men är ändå rätt oskygg."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Flykten är snabb och bågformig, som hos andra finkar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Its flight pattern is rapid and bounding, similar to that of other finches."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Boet placeras oftast längst ut på en relativt hög gren i ett barrträd som gran, ädelgran eller tall.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They construct a nest that is generally located at the end of a relatively high branch in a conifer, such as spruce, fir, or pine"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Boet byggs av små kvistar, torrt gräs, mossa och lav och fodras med dun.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is made from small twigs, dried grasses, moss and lichen and lined with down."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Grönsiskan häckar april till juli, lägger 4–6 ägg som ruvas i ungefär 13 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De häckar från april till juli. Grönsiskan lägger 4–6 ägg och de ruvas i ungefär 13 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Grönsiskan föder ofta upp två kullar per häckningssäsong.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Grönsiskan föder ofta upp två kullar per häckningssäsong."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Grönsiskan häckar i hela Sverige förutom i fjällen och den är allmän i södra och mellersta Sverige."
+        },
+        {
+          "article": "sv",
+          "quote": "Delar av den svenska populationen flyttar så långt söderut som till Tyskland och Frankrike medan andra övervintrar."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i januari, februari och september."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "b54c64e8482a4603"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "gronsiska",
@@ -203,7 +574,19 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V2",
+      "factId": "f01",
+      "message": "f01 anger ett tal i cm som inte stämmer med de andra artiklarna (0.2 till 1.65 cm)"
+    },
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

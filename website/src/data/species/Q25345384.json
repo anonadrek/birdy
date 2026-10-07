@@ -5,9 +5,380 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Kajan har svart fjäderdräkt med grå nacke och en ljus iris.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "har svart fjäderdräkt med grå nacke och distinkt blek-grå iris"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Hjässan är blåsvart, ryggen svart, undersidan mörkgrå och vingarna och stjärten glänsande svarta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På ovansidan av huvudet är den blåsvart. Dess rygg är svart, de undre kroppsdelarna mörkgråa, vingarna och stjärten är glänsande svarta."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Kinderna, nacken och halsen är ljusgrå till gråsilvriga, medan undersidan är skiffergrå.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The cheeks, nape and neck are light grey to greyish-silver, and the underparts are slate-grey."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Benen är svarta, liksom den korta och kraftiga näbben.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The legs are black, as is the short stout bill"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "size",
+      "sv": "Kajan är 34–39 cm lång.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kajan är 34–39 cm lång"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "Vingspannet är 64–73 cm och vikten ungefär 240 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "vingspannet 64–73 cm. Den väger ungefär 240 gram."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hona och hane ser likadana ut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan och hanen är lika."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungfåglar har mattare och mindre skarpt avgränsad dräkt än adulta fåglar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Immature birds have duller and less demarcated plumage."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Adulta har gråvit till silvervit iris, medan ungfåglar har ljusblå iris som blir brunaktig innan den ljusnar vid omkring ett års ålder.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The irises of adults are greyish or silvery white while those of juveniles are light blue, becoming brownish before whitening at around one year of age."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Lockropet är ett metalliskt \"jack\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lockropet är ett metalliskt \"jack\"."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Huvudlätet, som ofta hörs i flykten, är ett metalliskt och gnisslande \"chyak-chyak\" eller \"kak-kak\".",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The main call, frequently given in flight, is a metallic and squeaky chyak-chyak or kak-kak."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Lätena är korta, enstaviga och metalliskt smackande och låter ljusare än hos större kråkor och korpar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Charakteristisch für die Art sind kurze, einsilbige und metallisch-schnalzende Rufe, die höher klingen als die Lautäußerungen größerer Raben oder Krähen."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Varningslätet är ett hest, utdraget \"arrrrr\" eller \"kaaaarr\" som används mot rovdjur.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Western jackdaws also have a hoarse, drawn-out alarm call, arrrrr or kaaaarr, used when warning of predators or when mobbing them."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Kajan är mycket talför, särskilt i flockar, och kan dra omkring skränande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kajan är, speciellt i flockar, mycket talför och kan skränande dra omkring."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Kajan lever i jordbrukslandskap, öppen skog, på bergsklippor vid havet och i städer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "i jordbrukslandskap, öppen skog, bergsklippor vid havet och i städer"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Den föredrar glesa löv- eller blandskogar med äldre träd som har håligheter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kajan föredrar glesa lövskogar eller blandskogar, där det finns äldre träd med håligheter."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Kajan finns ofta nära mänsklig bebyggelse och på vintern samlas större flockar i städer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den återfinns ofta i närheten av mänsklig bebyggelse och om vintern samlas ofta större flockar i städer."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige förekommer kajan i södra och mellersta delarna samt längs Norrlandskusten till Norrbotten, lokalt även i Norrlands inland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kajan förekommer i södra och mellersta Sverige samt utmed Norrlandskusten till Norrbotten, lokalt även i Norrlands inland."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "En del kajor övervintrar i Sverige, bland annat i Skåne och Uppland, medan andra flyttar söderut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En del kajor stannar kvar i Sverige på vintern, inte bara i Skåne utan också i Uppland. Andra flyttar till sydligare länder."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "De kajor som flyttar återvänder till Sverige redan i mars–april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De kajor som flyttar brukar komma tillbaka redan i mars–april."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "År 2018 uppskattades det svenska beståndet till 199 000 par, och arten ökar i antal.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 199 000 par."
+        },
+        {
+          "article": "sv",
+          "quote": "I Sverige anses kajans bestånd vara livskraftigt och den ökar i antal."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Kajan häckar vanligen i kolonier och använder ofta befintliga håligheter som hackspettshål eller skorstenar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kajor häckar vanligen i kolonier"
+        },
+        {
+          "article": "sv",
+          "quote": "Kajan utnyttjar ofta existerande håligheter, till exempel hackspettshål eller skorstenar som bon"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "I april–maj läggs fyra till sju blekt blågröna ägg med svartbruna och askgrå fläckar, som honan ruvar i 17–18 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen, som läggs i april-maj, är fyra till sju stycken, blekt blågröna, med glest placerade svartbruna och askgrå fläckar. Honan ruvar äggen i 17–18 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Kajan är allätare och äter växtdelar, ryggradslösa djur och avfall från städer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är en allätare som lever på det den kan få tag på, många olika sorters växtdelar och ryggradslösa djur, liksom avfall som den kan hitta i städer."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Födan söks framför allt på öppna markytor men även i träd, på soptippar, gator och i trädgårdar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Födosökandet sker framförallt på öppna markytor, men kajan söker också föda i träd, på sophögar, i soptunnor, på gator och i trädgårdar"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "I flykten har kajan karaktäristiska ryckiga vingslag, som dock inte syns under flyttningen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It has distinctive jerky wingbeats when flying, though these are not apparent during migration."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "På marken har kajan upprätt hållning och går raskt med snabba steg tack vare sina korta ben.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "On the ground, western jackdaws have an upright posture and strut briskly, their short legs giving them a rapid gait."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Framåt hösten samlas kajor i flockar, ofta tillsammans med råkor och kråkor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Framåt hösten samlas kajorna i flockar, ofta tillsammans med råkor och kråkor."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "På avstånd kan kajan förväxlas med råka, men kajan är mindre, har snabbare vingslag och kort näbb.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "From a distance, it can be confused with a rook (Corvus frugilegus)"
+        },
+        {
+          "article": "en",
+          "quote": "Flying western jackdaws are distinguishable from other corvids by their smaller size, faster and deeper wingbeats"
+        },
+        {
+          "article": "en",
+          "quote": "its short bill and grey nape are distinguishing features"
+        }
+      ],
+      "other": {
+        "scientific": "Corvus frugilegus",
+        "qid": "Q25386"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "071532652aeb282b"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "kaja",
@@ -203,7 +574,19 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: Quotes show a mixed pattern where some jackdaws stay in Sweden year-round while others migrate south and return in spring, which is a partial migrant status rather than simply 'Flyttfågel'; breeding in Sweden is implied but not explicitly stated.. Bestäm status eller lämna tom."
+    },
+    {
+      "check": "V4",
+      "factId": null,
+      "message": "ljudmodellen täcker inte arten: lyssna och besluta"
+    }
+  ]
 }

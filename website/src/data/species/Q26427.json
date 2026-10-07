@@ -5,9 +5,373 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Adult fiskmås i sommardräkt har grå ovansida och är i övrigt vit, med gul näbb och gula ben samt svarta vingspetsar med vita slantar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som adult i sommardräkt har den grå ovansida och är i övrigt vit, med gul näbb och ben, och svarta vingspetsar med vita slantar."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Fiskmåsen liknar gråtrut men är betydligt mindre och slankare, med smalare näbb och rundare huvud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den påminner om gråtruten men är betydligt mindre och slankare."
+        },
+        {
+          "article": "sv",
+          "quote": "Den har också smalare näbb, rundare huvud och en spänstigare, snabbare flykt än gråtruten."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "På vintern är huvudet gråstreckat och näbben får ett svart streck framför den gula näbbspetsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Huvudet är vitt på sommaren och gråstreckat på vintern, då också näbben blir grönare inne vid näbbroten, och den får ett svart streck som skiljer av den gula näbbspetsen."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den adulta fiskmåsen har brun iris och en röd ring runt ögat.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Iris ist braun, das Auge von einem roten Orbitalring umgeben."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Hos sittande fågel syns de vita spetsarna på handpennorna, som sticker ut 5–7 cm bakom stjärten, som små vita prickar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Beim sitzenden Vogel fallen die weißen Spitzen der Handschwingen, die den Schwanz um 5–7 cm überragen, als feine weiße Punkte auf."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "size",
+      "sv": "Fiskmåsen är 40–46 centimeter lång och har ett vingspann på 100–115 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess längd är 40–46 centimeter och vingspannet 100–115 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Könen är lika, men honan är något mindre och har något kortare näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika men kan könsbestämmas genom att honan är något mindre."
+        },
+        {
+          "article": "sv",
+          "quote": "Bland annat skiljer sig näbblängden åt där honans näbb är något kortare."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Juvenilen har brungrå spräcklig ovansida och rosa ben och näbb, med svart näbbspets.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den juvenila fiskmåsen har en brungrå spräcklig teckning på ovansidan"
+        },
+        {
+          "article": "sv",
+          "quote": "Dess ben och näbben är rosa utom näbbspetsen som är svart."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "I första vinterdräkten har fiskmåsen fått grå rygg men har fortfarande ett tydligt ändband på stjärten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fiskmåsen i sin första vinterdräkt har ruggat till en grå rygg."
+        },
+        {
+          "article": "sv",
+          "quote": "Den har fortfarande sitt distinkta ändband"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Fiskmåsen ruggar i omgångar och får adult dräkt under sitt tredje levnadsår.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen är spräcklig och denna dräkt ruggas sedan i omgångar tills den anlägger adult dräkt under sitt tredje levnadsår."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Lockropet är ett välkänt gnälligt ”gia”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fiskmåsen lockar med välkända gnälliga \"gia\"."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Vid oro hörs ihärdiga ”gli-u gli-u”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vid oro hörs ihärdiga \"gli-u gli-u...\"."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Det galande revirlätet återges som ”ke ke ke kliiih-a... kliiih-a... kej-a kej-a kej-a”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det galande revirlätet beskrivs som \"ke ke ke kliiih-a... kliiih-a... kej-a kej-a kej-a kej-a kej-a ke ke\"."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Alla fiskmåsens läten är ljusare än gråtrutens motsvarande läten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Alla läten är mer ljusröstade än gråtrutens motsvarande."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Fiskmåsen häckar nära vatten, till exempel vid stora sjöar, små skogstjärnar och längs kusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fiskmåsen häckar i en mängd olika biotoper i närheten av vatten som exempelvis stora sjöar, mindre skogstjärnar och utefter kusten."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Fiskmåsen finns också i stadsmiljö, men inte i samma utsträckning som gråtruten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den återfinns också i stadsmiljö, men inte i samma utsträckning som gråtruten."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Utanför häckningstiden söker fiskmåsen gärna föda på torrare marker som gräsmarker och åkrar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Bei diesen ist im Unterschied zur Lachmöwe eine Bevorzugung insgesamt trockenerer Flächen wie Grün- oder Ackerland festzustellen."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Fiskmåsen häckar vid vatten i hela Sverige ända upp i fjällvärlden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fiskmåsen häckar vid vatten i hela Sverige ända upp i fjällvärlden."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "På vintern flyttar merparten av de svenska fiskmåsarna, men några stannar kvar längs Sveriges södra kuster.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern flyttar merparten av den svenska populationen, men några stannar kvar utmed Sveriges södra kuster."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Det svenska häckande beståndet har uppskattats till mellan 100 000 och 200 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det svenska beståndet av häckande fiskmåsar har uppskattats till mellan 100 000 och 200 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Fiskmåsar från Fennoskandien övervintrar i ett område mellan Danmark och Storbritannien.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Vögel aus Fennoskandien überwintern in einem Gebiet zwischen Dänemark und Großbritannien"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "I kolonier placeras bona glest på marken, medan ensamma par kan bygga bo på hustak, i träd eller på stenblock.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kolonihäckande fåglar placerar bona rätt glest på marken med omkring en fyra meters lucka."
+        },
+        {
+          "article": "sv",
+          "quote": "Ensamhäckande par kan placera sitt bo lite varstans, på hustak, i träd eller på ett större stenblock på en åker."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Fiskmåsen lägger i snitt tre ägg som paret ruvar i 23 till 28 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger i snitt tre ägg som paret ruvar i mellan 23 och 28 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Fiskmåsen lägger vanligtvis sin enda kull i början till mitten av maj.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vanligtvis lägger den sin enda kull i början till mitten av maj."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Fiskmåsen är allätare och tar fisk, fiskavfall, musslor, daggmask, hushållsavfall, insekter, bär och utsäde.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den tar fisk och fiskavfall, musslor, daggmask, hushållsavfall, insekter som flygmyror, bär och utsäde."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Fiskmåsen går ofta på plöjda åkrar och betesmarker och letar efter insekter och deras larver.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "wo sie beim Pflügen auf Äckern oder auf Viehweiden schreitend nach Insekten und deren Larven sucht."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "lookalike",
+      "sv": "Kortnäbbad mås är mycket lik fiskmåsen men något mindre och har relativt kort näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kortnäbbad mås är mycket lik fiskmåsen, men är något mindre med som namnet avslöjar relativt kort näbb."
+        }
+      ],
+      "other": {
+        "scientific": "Larus brachyrhynchus"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern flyttar merparten av den svenska populationen, men några stannar kvar utmed Sveriges södra kuster."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "27e473097397115d"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "fiskmas",
@@ -203,7 +567,19 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V2",
+      "factId": "f05",
+      "message": "f05 anger ett tal i cm som inte stämmer med de andra artiklarna (40 till 46 cm)"
+    },
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

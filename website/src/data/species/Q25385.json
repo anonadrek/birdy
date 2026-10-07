@@ -386,6 +386,12 @@
       "prompt": "facts-v1",
       "effort": "high",
       "at": "2026-10-07T16:08:41.079475+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "c76c908863956bd0"
     }
   },
   "errors": [],
@@ -585,5 +591,12 @@
     "statusSignal": {
       "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

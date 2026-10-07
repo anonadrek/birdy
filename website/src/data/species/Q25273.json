@@ -5,9 +5,387 @@
   "review": {
     "wave": 1
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Gråhägern är en stor och grov häger med lång S-formad hals, långa vingar och ben samt lång dolkformad näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråhägern är en stor och grov häger med lång s-formad hals, långa vingar och ben och lång dolkformad näbb."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ovansidan är askgrå och skuldrorna har förlängda ljusgrå fjädrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På ovansidan är den askgrå. Skuldrorna har förlängda ljusgrå fjädrar."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Vingpennorna är gråsvarta, medan vingens framkant, huvudet och strupen är vita.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingpennorna är gråsvarta, vingens framkant, huvudet och strupen vita."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Hjässan och en lång nacktofs är svarta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hjässan och en lång nacktofs är svarta."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Halsen är gråaktig med rader av svarta fläckar längs framsidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Halsen är gråaktig, med svarta fläckar i rader längs framsidan."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Näbben och ögats iris är gula.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben, benen och även ögats iris är gula."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "I flykten drar den in huvudet intill kroppen, vilket ger en högbröstad profil.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten drar den in huvudet intill kroppen vilket gör att den får en högbröstad profil."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "size",
+      "sv": "Längden med utsträckt hals är 85–102 cm, vingspannet 155–175 cm och vikten upp till 1,4 kg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess längd är, med utsträckt hals, mellan 85 och 102 cm, vingspannet 155–175 cm och den väger upp till 1,4 kg."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Unga fåglar har grått i stället för svart huvudstreck, är mattare än vuxna och har bara en liten mörkgrå tofs.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In immature birds the adult's black stripe on the head is grey, and the white face paler grey; they are generally duller in appearance than adults, with only a small, dark grey crest."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Hanar och honor skiljer sig inte påtagligt, men hanarna är i genomsnitt något större.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Ein auffälliger Geschlechtsdimorphismus besteht nicht. Die Männchen sind im Durchschnitt allerdings etwas größer."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Vanligaste lätet är ett kraxande ”kah-ährk”, som oftast hörs i skymningen från flygande fåglar på väg till nattkvist.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det vanligaste lätet hörs oftast i skymningen från flygande fåglar på väg till nattkvist, ett kraxande \"kah-ährk\"."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "I häckningskolonierna hörs olika kraxande och knackande ljud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I häckningskolonierna hörs olika kraxande och knackande ljud."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "habitat",
+      "sv": "Den förekommer vid sjöar, vattendrag, kärr, dammar, diken, översvämmade marker, laguner, flodmynningar och havsstränder, vanligast i låglandet.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Although most common in the lowlands, it also occurs in mountain tarns, lakes, reservoirs, rivers, marshes, ponds, ditches, flooded areas, coastal lagoons, estuaries, and the sea shore."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Den söker ibland föda på betesmarker en bit från vatten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It sometimes forages away from water in pasture"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "sweden",
+      "sv": "I Sverige är gråhägern en relativt vanlig häckfågel i södra delen av landet, upp till södra Värmland, södra Dalarna, Västmanland och Hälsingland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hägern är i Sverige en relativt vanlig häckfågel och finns i södra delen av landet upp till södra Värmland, södra Dalarna, Västmanland och Hälsingland."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "Den häckar dessutom lokalt i Jämtland och ses ibland längre norrut på eftersommaren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dessutom häckar den lokalt i Jämtland. På eftersommaren påträffas den ibland längre upp i landet."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "De flesta svenska gråhägrar flyttar, men i södra Sverige och på västkusten är den stannfågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Merparten av den svenska populationen är flyttfåglar, men i södra Sverige och på Sveriges västkust är den stannfågel."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattas till 14 000 häckande individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Beståndet uppskattas till 14 000 häckande individer."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "breeding",
+      "sv": "Boet byggs i höga träd, helst bok eller alm, vid insjöar och havsvikar med bräckt vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråhägern bygger bo i höga träd, helst bokar eller almar i skogsmark, vid insjöar och havsvikar med bräckt vatten."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Den häckar i kolonier, ibland med upp till 50–100 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar i kolonier ibland på upp till 50–100 par."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Honan lägger en kull per år med oftast tre till fem blåaktigt gröna, ofläckade ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger en kull om året med i genomsnitt tre till fem ägg, ibland så många som tio, vilka är blåaktigt gröna, utan fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Ruvningen pågår 25–28 dygn och båda föräldrarna tar hand om ungarna i cirka 42–45 dygn tills de är flygga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ruvningen pågår mellan 25 och 28 dygn och när äggen är kläckta tar båda föräldrar hand om ungarna i cirka 42–45 dygn tills de är flygga."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "food",
+      "sv": "Gråhägern lever huvudsakligen av fisk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråhägern lever huvudsakligen av fisk."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Den tar även groddjur, kräftdjur, insekter och små däggdjur som vattensorkar och råttor.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Fish, amphibians, crustaceans, and insects are caught in shallow water with the heron's long bill."
+        },
+        {
+          "article": "en",
+          "quote": "Small mammals such as water voles, rats, stoats and young rabbits are additionally caught."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Den jagar genom att stå blickstilla i vattnet och snabbt hugga fisk som simmar förbi.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den jagar genom att stå blickstilla i vattnet och sedan snabbt snappa upp fisk som simmar förbi."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "När den rastar vid å- eller sjökanter står den ofta på ett ben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När den rastar, vid å- eller sjökanter, drar den upp ena benet och balanserar på det andra."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Den flyger långsamt med indragen S-formad hals, till skillnad från storkar, tranor och skedstorkar som sträcker ut halsen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The grey heron has a slow flight, with its long neck retracted in an S-shape."
+        },
+        {
+          "article": "en",
+          "quote": "distinguishes them from storks, cranes, and spoonbills, which extend their necks"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Den jagar främst i gryning och skymning.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The main hunting periods are around dawn and dusk"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Amerikansk gråhäger liknar gråhägern men är större och har kastanjebruna flanker och lår.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is closely related and similar to the North American great blue heron (Ardea herodias), which differs in being larger, and having chestnut-brown flanks and thighs"
+        }
+      ],
+      "other": {
+        "scientific": "Ardea herodias"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Merparten av den svenska populationen är flyttfåglar, men i södra Sverige och på Sveriges västkust är den stannfågel."
+        },
+        {
+          "article": "sv",
+          "quote": "Hägern är i Sverige en relativt vanlig häckfågel"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "56e828704655a728"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "grahager",
@@ -203,7 +581,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

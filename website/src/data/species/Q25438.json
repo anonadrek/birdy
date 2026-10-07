@@ -338,18 +338,6 @@
       }
     },
     {
-      "id": "s01",
-      "topic": "status",
-      "value": "resident",
-      "sv": "Stannfågel",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Svenska havsörnar kan vintertid flytta söderut så långt som till Mellaneuropa, men kan också flytta kortare sträckor eller stanna kvar vid häckningsområdet."
-        }
-      ]
-    },
-    {
       "id": "d01",
       "topic": "data",
       "source": "artportalen",
@@ -375,6 +363,12 @@
       "prompt": "facts-v1",
       "effort": "high",
       "at": "2026-10-07T16:08:41.079475+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "66f3109b303d99a6"
     }
   },
   "errors": [],
@@ -564,5 +558,12 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: Quote shows Swedish eagles can migrate south to Central Europe or shorter distances, not that the species is a strict resident (stannfågel); it describes mixed migratory behavior rather than confirming full residency.. Bestäm status eller lämna tom."
+    }
+  ]
 }
