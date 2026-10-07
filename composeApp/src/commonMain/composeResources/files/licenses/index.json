@@ -71,6 +71,10 @@
       "litert-api",
       "litert"
      ],
+     "coordinates": [
+      "com.google.ai.edge.litert:litert-api:1.4.1",
+      "com.google.ai.edge.litert:litert:1.4.1"
+     ],
      "url": "https://tensorflow.org/lite/"
     },
     {
@@ -82,13 +86,16 @@
      "artifacts": [
       "tensorflow-lite-select-tf-ops"
      ],
+     "coordinates": [
+      "org.tensorflow:tensorflow-lite-select-tf-ops:2.16.1"
+     ],
      "url": "https://tensorflow.org/lite/"
     },
     {
      "id": "tensorflow-native",
      "name": "Native code in TensorFlow Lite",
      "version": "",
-     "license": "Apache 2.0 · BSD · MIT · MPL 2.0 · zlib · IJG · libpng",
+     "license": "Apache 2.0 · BSD · MIT · MPL 2.0 · MINPACK · zlib · IJG · libpng · Ooura",
      "file": "tensorflow-third-party.txt",
      "artifacts": [
       "Protocol Buffers",
@@ -128,6 +135,10 @@
      "artifacts": [
       "billing-ktx",
       "billing"
+     ],
+     "coordinates": [
+      "com.android.billingclient:billing-ktx:8.0.0",
+      "com.android.billingclient:billing:8.0.0"
      ]
     },
     {
@@ -138,6 +149,9 @@
      "file": "google-sdk.txt",
      "artifacts": [
       "play-services-places-placereport"
+     ],
+     "coordinates": [
+      "com.google.android.gms:play-services-places-placereport:17.0.0"
      ]
     },
     {
@@ -148,6 +162,9 @@
      "file": "google-sdk.txt",
      "artifacts": [
       "play-services-tasks"
+     ],
+     "coordinates": [
+      "com.google.android.gms:play-services-tasks:18.2.0"
      ]
     },
     {
@@ -158,6 +175,9 @@
      "file": "google-sdk.txt",
      "artifacts": [
       "play-services-basement"
+     ],
+     "coordinates": [
+      "com.google.android.gms:play-services-basement:18.4.0"
      ]
     },
     {
@@ -168,6 +188,9 @@
      "file": "google-sdk.txt",
      "artifacts": [
       "play-services-base"
+     ],
+     "coordinates": [
+      "com.google.android.gms:play-services-base:18.5.0"
      ]
     },
     {
@@ -178,6 +201,9 @@
      "file": "google-sdk.txt",
      "artifacts": [
       "play-services-location"
+     ],
+     "coordinates": [
+      "com.google.android.gms:play-services-location:19.0.0"
      ]
     },
     {
@@ -188,6 +214,9 @@
      "file": "google-sdk.txt",
      "artifacts": [
       "review"
+     ],
+     "coordinates": [
+      "com.google.android.play:review:2.0.2"
      ]
     },
     {
@@ -198,6 +227,9 @@
      "file": "google-sdk.txt",
      "artifacts": [
       "core-common"
+     ],
+     "coordinates": [
+      "com.google.android.play:core-common:2.0.4"
      ]
     },
     {
@@ -223,6 +255,11 @@
       "activity-ktx",
       "activity"
      ],
+     "coordinates": [
+      "androidx.activity:activity-compose:1.9.3",
+      "androidx.activity:activity-ktx:1.9.3",
+      "androidx.activity:activity:1.9.3"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/activity#1.9.3"
     },
     {
@@ -233,6 +270,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "annotation-experimental"
+     ],
+     "coordinates": [
+      "androidx.annotation:annotation-experimental:1.4.1"
      ],
      "url": "https://developer.android.com/jetpack/androidx/releases/annotation#1.4.1"
     },
@@ -246,6 +286,10 @@
       "annotation-jvm",
       "annotation"
      ],
+     "coordinates": [
+      "androidx.annotation:annotation-jvm:1.9.1",
+      "androidx.annotation:annotation:1.9.1"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/annotation#1.9.1"
     },
     {
@@ -257,6 +301,10 @@
      "artifacts": [
       "appcompat-resources",
       "appcompat"
+     ],
+     "coordinates": [
+      "androidx.appcompat:appcompat-resources:1.7.0",
+      "androidx.appcompat:appcompat:1.7.0"
      ],
      "url": "https://developer.android.com/jetpack/androidx/releases/appcompat#1.7.0"
     },
@@ -270,6 +318,10 @@
       "core-common",
       "core-runtime"
      ],
+     "coordinates": [
+      "androidx.arch.core:core-common:2.2.0",
+      "androidx.arch.core:core-runtime:2.2.0"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/arch-core#2.2.0"
     },
     {
@@ -280,6 +332,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "autofill"
+     ],
+     "coordinates": [
+      "androidx.autofill:autofill:1.0.0"
      ],
      "url": "https://developer.android.com/jetpack/androidx"
     },
@@ -296,6 +351,13 @@
       "camera-video",
       "camera-view"
      ],
+     "coordinates": [
+      "androidx.camera:camera-camera2:1.4.0",
+      "androidx.camera:camera-core:1.4.0",
+      "androidx.camera:camera-lifecycle:1.4.0",
+      "androidx.camera:camera-video:1.4.0",
+      "androidx.camera:camera-view:1.4.0"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/camera#1.4.0"
     },
     {
@@ -308,6 +370,11 @@
       "collection-jvm",
       "collection-ktx",
       "collection"
+     ],
+     "coordinates": [
+      "androidx.collection:collection-jvm:1.5.0",
+      "androidx.collection:collection-ktx:1.5.0",
+      "androidx.collection:collection:1.5.0"
      ],
      "url": "https://developer.android.com/jetpack/androidx/releases/collection#1.5.0"
     },
@@ -323,6 +390,12 @@
       "animation-core",
       "animation"
      ],
+     "coordinates": [
+      "androidx.compose.animation:animation-android:1.8.2",
+      "androidx.compose.animation:animation-core-android:1.8.2",
+      "androidx.compose.animation:animation-core:1.8.2",
+      "androidx.compose.animation:animation:1.8.2"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.8.2"
     },
     {
@@ -336,6 +409,12 @@
       "foundation-layout-android",
       "foundation-layout",
       "foundation"
+     ],
+     "coordinates": [
+      "androidx.compose.foundation:foundation-android:1.8.2",
+      "androidx.compose.foundation:foundation-layout-android:1.8.2",
+      "androidx.compose.foundation:foundation-layout:1.8.2",
+      "androidx.compose.foundation:foundation:1.8.2"
      ],
      "url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.8.2"
     },
@@ -351,6 +430,12 @@
       "material-icons-extended-android",
       "material-icons-extended"
      ],
+     "coordinates": [
+      "androidx.compose.material:material-icons-core-android:1.7.6",
+      "androidx.compose.material:material-icons-core:1.7.6",
+      "androidx.compose.material:material-icons-extended-android:1.7.6",
+      "androidx.compose.material:material-icons-extended:1.7.6"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.7.6"
     },
     {
@@ -363,6 +448,10 @@
       "material-ripple-android",
       "material-ripple"
      ],
+     "coordinates": [
+      "androidx.compose.material:material-ripple-android:1.8.2",
+      "androidx.compose.material:material-ripple:1.8.2"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.8.2"
     },
     {
@@ -374,6 +463,10 @@
      "artifacts": [
       "material3-android",
       "material3"
+     ],
+     "coordinates": [
+      "androidx.compose.material3:material3-android:1.3.2",
+      "androidx.compose.material3:material3:1.3.2"
      ],
      "url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.3.2"
     },
@@ -388,6 +481,12 @@
       "runtime-saveable-android",
       "runtime-saveable",
       "runtime"
+     ],
+     "coordinates": [
+      "androidx.compose.runtime:runtime-android:1.8.2",
+      "androidx.compose.runtime:runtime-saveable-android:1.8.2",
+      "androidx.compose.runtime:runtime-saveable:1.8.2",
+      "androidx.compose.runtime:runtime:1.8.2"
      ],
      "url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.8.2"
     },
@@ -411,6 +510,20 @@
       "ui-util",
       "ui"
      ],
+     "coordinates": [
+      "androidx.compose.ui:ui-android:1.8.2",
+      "androidx.compose.ui:ui-geometry-android:1.8.2",
+      "androidx.compose.ui:ui-geometry:1.8.2",
+      "androidx.compose.ui:ui-graphics-android:1.8.2",
+      "androidx.compose.ui:ui-graphics:1.8.2",
+      "androidx.compose.ui:ui-text-android:1.8.2",
+      "androidx.compose.ui:ui-text:1.8.2",
+      "androidx.compose.ui:ui-unit-android:1.8.2",
+      "androidx.compose.ui:ui-unit:1.8.2",
+      "androidx.compose.ui:ui-util-android:1.8.2",
+      "androidx.compose.ui:ui-util:1.8.2",
+      "androidx.compose.ui:ui:1.8.2"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.8.2"
     },
     {
@@ -423,6 +536,10 @@
       "concurrent-futures-ktx",
       "concurrent-futures"
      ],
+     "coordinates": [
+      "androidx.concurrent:concurrent-futures-ktx:1.1.0",
+      "androidx.concurrent:concurrent-futures:1.1.0"
+     ],
      "url": "https://developer.android.com/topic/libraries/architecture/index.html"
     },
     {
@@ -433,6 +550,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "core-splashscreen"
+     ],
+     "coordinates": [
+      "androidx.core:core-splashscreen:1.0.1"
      ],
      "url": "https://developer.android.com/jetpack/androidx/releases/core#1.0.1"
     },
@@ -446,6 +566,10 @@
       "core-ktx",
       "core"
      ],
+     "coordinates": [
+      "androidx.core:core-ktx:1.15.0",
+      "androidx.core:core:1.15.0"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/core#1.15.0"
     },
     {
@@ -456,6 +580,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "cursoradapter"
+     ],
+     "coordinates": [
+      "androidx.cursoradapter:cursoradapter:1.0.0"
      ],
      "url": "http://developer.android.com/tools/extras/support-library.html"
     },
@@ -468,6 +595,10 @@
      "artifacts": [
       "customview-poolingcontainer",
       "customview"
+     ],
+     "coordinates": [
+      "androidx.customview:customview-poolingcontainer:1.0.0",
+      "androidx.customview:customview:1.0.0"
      ],
      "url": "https://developer.android.com/jetpack/androidx/releases/customview#1.0.0"
     },
@@ -489,6 +620,18 @@
       "datastore-preferences",
       "datastore"
      ],
+     "coordinates": [
+      "androidx.datastore:datastore-android:1.1.1",
+      "androidx.datastore:datastore-core-android:1.1.1",
+      "androidx.datastore:datastore-core-okio-jvm:1.1.1",
+      "androidx.datastore:datastore-core-okio:1.1.1",
+      "androidx.datastore:datastore-core:1.1.1",
+      "androidx.datastore:datastore-preferences-android:1.1.1",
+      "androidx.datastore:datastore-preferences-core-jvm:1.1.1",
+      "androidx.datastore:datastore-preferences-core:1.1.1",
+      "androidx.datastore:datastore-preferences:1.1.1",
+      "androidx.datastore:datastore:1.1.1"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/datastore#1.1.1"
     },
     {
@@ -499,6 +642,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "drawerlayout"
+     ],
+     "coordinates": [
+      "androidx.drawerlayout:drawerlayout:1.0.0"
      ],
      "url": "http://developer.android.com/tools/extras/support-library.html"
     },
@@ -512,6 +658,10 @@
       "emoji2-views-helper",
       "emoji2"
      ],
+     "coordinates": [
+      "androidx.emoji2:emoji2-views-helper:1.4.0",
+      "androidx.emoji2:emoji2:1.4.0"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/emoji2#1.4.0"
     },
     {
@@ -522,6 +672,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "exifinterface"
+     ],
+     "coordinates": [
+      "androidx.exifinterface:exifinterface:1.3.7"
      ],
      "url": "https://developer.android.com/jetpack/androidx/releases/exifinterface#1.3.7"
     },
@@ -534,6 +687,9 @@
      "artifacts": [
       "fragment"
      ],
+     "coordinates": [
+      "androidx.fragment:fragment:1.5.4"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/fragment#1.5.4"
     },
     {
@@ -545,6 +701,9 @@
      "artifacts": [
       "graphics-path"
      ],
+     "coordinates": [
+      "androidx.graphics:graphics-path:1.0.1"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/graphics#1.0.1"
     },
     {
@@ -555,6 +714,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "interpolator"
+     ],
+     "coordinates": [
+      "androidx.interpolator:interpolator:1.0.0"
      ],
      "url": "http://developer.android.com/tools/extras/support-library.html"
     },
@@ -586,6 +748,28 @@
       "lifecycle-viewmodel-savedstate",
       "lifecycle-viewmodel"
      ],
+     "coordinates": [
+      "androidx.lifecycle:lifecycle-common-java8:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-common-jvm:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-common:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-livedata-core-ktx:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-livedata-core:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-livedata:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-process:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-runtime-android:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-runtime-compose-android:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-runtime-compose:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-runtime-ktx-android:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-runtime-ktx:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-runtime:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-service:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-viewmodel-android:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-viewmodel-compose-android:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.9.0-alpha03",
+      "androidx.lifecycle:lifecycle-viewmodel:2.9.0-alpha03"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.9.0-alpha03"
     },
     {
@@ -596,6 +780,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "loader"
+     ],
+     "coordinates": [
+      "androidx.loader:loader:1.0.0"
      ],
      "url": "http://developer.android.com/tools/extras/support-library.html"
     },
@@ -612,6 +799,13 @@
       "navigation-runtime-ktx",
       "navigation-runtime"
      ],
+     "coordinates": [
+      "androidx.navigation:navigation-common-ktx:2.8.4",
+      "androidx.navigation:navigation-common:2.8.4",
+      "androidx.navigation:navigation-compose:2.8.4",
+      "androidx.navigation:navigation-runtime-ktx:2.8.4",
+      "androidx.navigation:navigation-runtime:2.8.4"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/navigation#2.8.4"
     },
     {
@@ -623,6 +817,9 @@
      "artifacts": [
       "profileinstaller"
      ],
+     "coordinates": [
+      "androidx.profileinstaller:profileinstaller:1.4.1"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/profileinstaller#1.4.1"
     },
     {
@@ -633,6 +830,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "resourceinspection-annotation"
+     ],
+     "coordinates": [
+      "androidx.resourceinspection:resourceinspection-annotation:1.0.1"
      ],
      "url": "https://developer.android.com/jetpack/androidx/releases/resourceinspection#1.0.1"
     },
@@ -646,6 +846,10 @@
       "room-common",
       "room-runtime"
      ],
+     "coordinates": [
+      "androidx.room:room-common:2.5.0",
+      "androidx.room:room-runtime:2.5.0"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/room#2.5.0"
     },
     {
@@ -657,6 +861,10 @@
      "artifacts": [
       "savedstate-ktx",
       "savedstate"
+     ],
+     "coordinates": [
+      "androidx.savedstate:savedstate-ktx:1.2.1",
+      "androidx.savedstate:savedstate:1.2.1"
      ],
      "url": "https://developer.android.com/jetpack/androidx/releases/savedstate#1.2.1"
     },
@@ -670,6 +878,10 @@
       "sqlite-framework",
       "sqlite"
      ],
+     "coordinates": [
+      "androidx.sqlite:sqlite-framework:2.4.0",
+      "androidx.sqlite:sqlite:2.4.0"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/sqlite#2.4.0"
     },
     {
@@ -680,6 +892,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "startup-runtime"
+     ],
+     "coordinates": [
+      "androidx.startup:startup-runtime:1.1.1"
      ],
      "url": "https://developer.android.com/jetpack/androidx/releases/startup#1.1.1"
     },
@@ -693,6 +908,10 @@
       "tracing-ktx",
       "tracing"
      ],
+     "coordinates": [
+      "androidx.tracing:tracing-ktx:1.2.0",
+      "androidx.tracing:tracing:1.2.0"
+     ],
      "url": "https://developer.android.com/jetpack/androidx/releases/tracing#1.2.0"
     },
     {
@@ -705,6 +924,10 @@
       "vectordrawable-animated",
       "vectordrawable"
      ],
+     "coordinates": [
+      "androidx.vectordrawable:vectordrawable-animated:1.1.0",
+      "androidx.vectordrawable:vectordrawable:1.1.0"
+     ],
      "url": "https://developer.android.com/jetpack/androidx"
     },
     {
@@ -715,6 +938,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "versionedparcelable"
+     ],
+     "coordinates": [
+      "androidx.versionedparcelable:versionedparcelable:1.1.1"
      ],
      "url": "http://developer.android.com/tools/extras/support-library.html"
     },
@@ -727,6 +953,9 @@
      "artifacts": [
       "viewpager"
      ],
+     "coordinates": [
+      "androidx.viewpager:viewpager:1.0.0"
+     ],
      "url": "http://developer.android.com/tools/extras/support-library.html"
     },
     {
@@ -738,6 +967,10 @@
      "artifacts": [
       "work-runtime-ktx",
       "work-runtime"
+     ],
+     "coordinates": [
+      "androidx.work:work-runtime-ktx:2.8.1",
+      "androidx.work:work-runtime:2.8.1"
      ],
      "url": "https://developer.android.com/jetpack/androidx/releases/work#2.8.1"
     },
@@ -756,7 +989,44 @@
       "runtime-jvm",
       "runtime"
      ],
+     "coordinates": [
+      "app.cash.sqldelight:android-driver:2.0.2",
+      "app.cash.sqldelight:async-extensions-jvm:2.0.2",
+      "app.cash.sqldelight:async-extensions:2.0.2",
+      "app.cash.sqldelight:coroutines-extensions-jvm:2.0.2",
+      "app.cash.sqldelight:coroutines-extensions:2.0.2",
+      "app.cash.sqldelight:runtime-jvm:2.0.2",
+      "app.cash.sqldelight:runtime:2.0.2"
+     ],
      "url": "https://github.com/cashapp/sqldelight/"
+    },
+    {
+     "id": "lib:com.android.tools:2.1.5:desugar_jdk_libs_configuration",
+     "name": "com.android.tools",
+     "version": "2.1.5",
+     "license": "BSD 3-Clause License",
+     "file": "desugar-jdk-libs-configuration.txt",
+     "artifacts": [
+      "desugar_jdk_libs_configuration"
+     ],
+     "coordinates": [
+      "com.android.tools:desugar_jdk_libs_configuration:2.1.5"
+     ],
+     "url": "http://r8.googlesource.com/r8"
+    },
+    {
+     "id": "lib:com.android.tools:2.1.5:desugar_jdk_libs",
+     "name": "com.android.tools",
+     "version": "2.1.5",
+     "license": "GPL 2.0 with the Classpath Exception",
+     "file": "desugar-jdk-libs.txt",
+     "artifacts": [
+      "desugar_jdk_libs"
+     ],
+     "coordinates": [
+      "com.android.tools:desugar_jdk_libs:2.1.5"
+     ],
+     "url": "https://github.com/google/desugar_jdk_libs"
     },
     {
      "id": "lib:com.charleskorn.kaml:0.65.0",
@@ -767,6 +1037,10 @@
      "artifacts": [
       "kaml-jvm",
       "kaml"
+     ],
+     "coordinates": [
+      "com.charleskorn.kaml:kaml-jvm:0.65.0",
+      "com.charleskorn.kaml:kaml:0.65.0"
      ],
      "url": "https://github.com/charleskorn/kaml"
     },
@@ -779,6 +1053,9 @@
      "artifacts": [
       "accompanist-drawablepainter"
      ],
+     "coordinates": [
+      "com.google.accompanist:accompanist-drawablepainter:0.36.0"
+     ],
      "url": "https://github.com/google/accompanist/"
     },
     {
@@ -789,6 +1066,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "transport-api"
+     ],
+     "coordinates": [
+      "com.google.android.datatransport:transport-api:3.0.0"
      ]
     },
     {
@@ -800,6 +1080,10 @@
      "artifacts": [
       "transport-backend-cct",
       "transport-runtime"
+     ],
+     "coordinates": [
+      "com.google.android.datatransport:transport-backend-cct:3.1.8",
+      "com.google.android.datatransport:transport-runtime:3.1.8"
      ]
     },
     {
@@ -811,6 +1095,9 @@
      "artifacts": [
       "auto-value-annotations"
      ],
+     "coordinates": [
+      "com.google.auto.value:auto-value-annotations:1.6.3"
+     ],
      "url": "https://github.com/google/auto"
     },
     {
@@ -821,6 +1108,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "firebase-encoders-proto"
+     ],
+     "coordinates": [
+      "com.google.firebase:firebase-encoders-proto:16.0.0"
      ]
     },
     {
@@ -831,6 +1121,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "firebase-encoders"
+     ],
+     "coordinates": [
+      "com.google.firebase:firebase-encoders:17.0.0"
      ]
     },
     {
@@ -841,6 +1134,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "firebase-encoders-json"
+     ],
+     "coordinates": [
+      "com.google.firebase:firebase-encoders-json:18.0.0"
      ]
     },
     {
@@ -851,6 +1147,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "listenablefuture"
+     ],
+     "coordinates": [
+      "com.google.guava:listenablefuture:1.0"
      ],
      "url": "https://github.com/google/guava"
     },
@@ -863,6 +1162,10 @@
      "artifacts": [
       "okio-jvm",
       "okio"
+     ],
+     "coordinates": [
+      "com.squareup.okio:okio-jvm:3.9.1",
+      "com.squareup.okio:okio:3.9.1"
      ],
      "url": "https://github.com/square/okio/"
     },
@@ -882,6 +1185,16 @@
       "coil-core",
       "coil"
      ],
+     "coordinates": [
+      "io.coil-kt.coil3:coil-android:3.0.4",
+      "io.coil-kt.coil3:coil-compose-android:3.0.4",
+      "io.coil-kt.coil3:coil-compose-core-android:3.0.4",
+      "io.coil-kt.coil3:coil-compose-core:3.0.4",
+      "io.coil-kt.coil3:coil-compose:3.0.4",
+      "io.coil-kt.coil3:coil-core-android:3.0.4",
+      "io.coil-kt.coil3:coil-core:3.0.4",
+      "io.coil-kt.coil3:coil:3.0.4"
+     ],
      "url": "https://github.com/coil-kt/coil"
     },
     {
@@ -894,6 +1207,10 @@
       "snakeyaml-engine-kmp-jvm",
       "snakeyaml-engine-kmp"
      ],
+     "coordinates": [
+      "it.krzeminski:snakeyaml-engine-kmp-jvm:3.0.3",
+      "it.krzeminski:snakeyaml-engine-kmp:3.0.3"
+     ],
      "url": "https://github.com/krzema12/snakeyaml-engine-kmp/"
     },
     {
@@ -904,6 +1221,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "javax.inject"
+     ],
+     "coordinates": [
+      "javax.inject:javax.inject:1"
      ],
      "url": "http://code.google.com/p/atinject/"
     },
@@ -917,6 +1237,10 @@
       "urlencoder-lib-jvm",
       "urlencoder-lib"
      ],
+     "coordinates": [
+      "net.thauvin.erik.urlencoder:urlencoder-lib-jvm:1.6.0",
+      "net.thauvin.erik.urlencoder:urlencoder-lib:1.6.0"
+     ],
      "url": "https://github.com/ethauvin/urlencoder"
     },
     {
@@ -927,6 +1251,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "annotations"
+     ],
+     "coordinates": [
+      "org.jetbrains:annotations:23.0.0"
      ],
      "url": "https://github.com/JetBrains/java-annotations"
     },
@@ -942,6 +1269,12 @@
       "core-uri-android",
       "core-uri"
      ],
+     "coordinates": [
+      "org.jetbrains.androidx.core:core-bundle-android:1.1.0-alpha03",
+      "org.jetbrains.androidx.core:core-bundle:1.1.0-alpha03",
+      "org.jetbrains.androidx.core:core-uri-android:1.1.0-alpha03",
+      "org.jetbrains.androidx.core:core-uri:1.1.0-alpha03"
+     ],
      "url": "https://github.com/JetBrains/compose-jb"
     },
     {
@@ -953,6 +1286,10 @@
      "artifacts": [
       "lifecycle-runtime-compose",
       "lifecycle-viewmodel-compose"
+     ],
+     "coordinates": [
+      "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose:2.8.4",
+      "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4"
      ],
      "url": "https://github.com/JetBrains/compose-jb"
     },
@@ -968,6 +1305,12 @@
       "lifecycle-viewmodel-savedstate",
       "lifecycle-viewmodel"
      ],
+     "coordinates": [
+      "org.jetbrains.androidx.lifecycle:lifecycle-common:2.9.0-alpha03",
+      "org.jetbrains.androidx.lifecycle:lifecycle-runtime:2.9.0-alpha03",
+      "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-savedstate:2.9.0-alpha03",
+      "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel:2.9.0-alpha03"
+     ],
      "url": "https://github.com/JetBrains/compose-jb"
     },
     {
@@ -981,6 +1324,11 @@
       "navigation-compose",
       "navigation-runtime"
      ],
+     "coordinates": [
+      "org.jetbrains.androidx.navigation:navigation-common:2.8.0-alpha13",
+      "org.jetbrains.androidx.navigation:navigation-compose:2.8.0-alpha13",
+      "org.jetbrains.androidx.navigation:navigation-runtime:2.8.0-alpha13"
+     ],
      "url": "https://github.com/JetBrains/compose-jb"
     },
     {
@@ -991,6 +1339,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "savedstate"
+     ],
+     "coordinates": [
+      "org.jetbrains.androidx.savedstate:savedstate:1.2.2"
      ],
      "url": "https://github.com/JetBrains/compose-jb"
     },
@@ -1004,6 +1355,10 @@
       "animation-core",
       "animation"
      ],
+     "coordinates": [
+      "org.jetbrains.compose.animation:animation-core:1.8.2",
+      "org.jetbrains.compose.animation:animation:1.8.2"
+     ],
      "url": "https://github.com/JetBrains/compose-jb"
     },
     {
@@ -1015,6 +1370,9 @@
      "artifacts": [
       "annotation"
      ],
+     "coordinates": [
+      "org.jetbrains.compose.annotation-internal:annotation:1.8.2"
+     ],
      "url": "https://github.com/JetBrains/compose-jb"
     },
     {
@@ -1025,6 +1383,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "collection"
+     ],
+     "coordinates": [
+      "org.jetbrains.compose.collection-internal:collection:1.8.2"
      ],
      "url": "https://github.com/JetBrains/compose-jb"
     },
@@ -1038,6 +1399,10 @@
       "components-resources-android",
       "components-resources"
      ],
+     "coordinates": [
+      "org.jetbrains.compose.components:components-resources-android:1.8.2",
+      "org.jetbrains.compose.components:components-resources:1.8.2"
+     ],
      "url": "https://github.com/JetBrains/compose-jb"
     },
     {
@@ -1049,6 +1414,10 @@
      "artifacts": [
       "foundation-layout",
       "foundation"
+     ],
+     "coordinates": [
+      "org.jetbrains.compose.foundation:foundation-layout:1.8.2",
+      "org.jetbrains.compose.foundation:foundation:1.8.2"
      ],
      "url": "https://github.com/JetBrains/compose-jb"
     },
@@ -1062,6 +1431,10 @@
       "material-icons-core",
       "material-icons-extended"
      ],
+     "coordinates": [
+      "org.jetbrains.compose.material:material-icons-core:1.7.3",
+      "org.jetbrains.compose.material:material-icons-extended:1.7.3"
+     ],
      "url": "https://github.com/JetBrains/compose-jb"
     },
     {
@@ -1072,6 +1445,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "material-ripple"
+     ],
+     "coordinates": [
+      "org.jetbrains.compose.material:material-ripple:1.8.2"
      ],
      "url": "https://github.com/JetBrains/compose-jb"
     },
@@ -1084,6 +1460,9 @@
      "artifacts": [
       "material3"
      ],
+     "coordinates": [
+      "org.jetbrains.compose.material3:material3:1.8.2"
+     ],
      "url": "https://github.com/JetBrains/compose-jb"
     },
     {
@@ -1095,6 +1474,10 @@
      "artifacts": [
       "runtime-saveable",
       "runtime"
+     ],
+     "coordinates": [
+      "org.jetbrains.compose.runtime:runtime-saveable:1.8.2",
+      "org.jetbrains.compose.runtime:runtime:1.8.2"
      ],
      "url": "https://github.com/JetBrains/compose-jb"
     },
@@ -1114,6 +1497,16 @@
       "ui-util",
       "ui"
      ],
+     "coordinates": [
+      "org.jetbrains.compose.ui:ui-backhandler-android:1.8.2",
+      "org.jetbrains.compose.ui:ui-backhandler:1.8.2",
+      "org.jetbrains.compose.ui:ui-geometry:1.8.2",
+      "org.jetbrains.compose.ui:ui-graphics:1.8.2",
+      "org.jetbrains.compose.ui:ui-text:1.8.2",
+      "org.jetbrains.compose.ui:ui-unit:1.8.2",
+      "org.jetbrains.compose.ui:ui-util:1.8.2",
+      "org.jetbrains.compose.ui:ui:1.8.2"
+     ],
      "url": "https://github.com/JetBrains/compose-jb"
     },
     {
@@ -1125,6 +1518,10 @@
      "artifacts": [
       "kotlin-stdlib-jdk7",
       "kotlin-stdlib-jdk8"
+     ],
+     "coordinates": [
+      "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0",
+      "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0"
      ],
      "url": "https://kotlinlang.org/"
     },
@@ -1138,6 +1535,10 @@
       "kotlin-android-extensions-runtime",
       "kotlin-parcelize-runtime"
      ],
+     "coordinates": [
+      "org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.9.22",
+      "org.jetbrains.kotlin:kotlin-parcelize-runtime:1.9.22"
+     ],
      "url": "https://kotlinlang.org/"
     },
     {
@@ -1148,6 +1549,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "kotlin-stdlib"
+     ],
+     "coordinates": [
+      "org.jetbrains.kotlin:kotlin-stdlib:2.1.21"
      ],
      "url": "https://kotlinlang.org/"
     },
@@ -1160,6 +1564,10 @@
      "artifacts": [
       "kotlinx-datetime-jvm",
       "kotlinx-datetime"
+     ],
+     "coordinates": [
+      "org.jetbrains.kotlinx:kotlinx-datetime-jvm:0.6.1",
+      "org.jetbrains.kotlinx:kotlinx-datetime:0.6.1"
      ],
      "url": "https://github.com/Kotlin/kotlinx-datetime"
     },
@@ -1176,6 +1584,13 @@
       "kotlinx-serialization-json-jvm",
       "kotlinx-serialization-json"
      ],
+     "coordinates": [
+      "org.jetbrains.kotlinx:kotlinx-serialization-bom:1.7.3",
+      "org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.7.3",
+      "org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.3",
+      "org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.7.3",
+      "org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3"
+     ],
      "url": "https://github.com/Kotlin/kotlinx.serialization"
     },
     {
@@ -1190,6 +1605,12 @@
       "kotlinx-coroutines-core-jvm",
       "kotlinx-coroutines-core"
      ],
+     "coordinates": [
+      "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0",
+      "org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.9.0",
+      "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.9.0",
+      "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0"
+     ],
      "url": "https://github.com/Kotlin/kotlinx.coroutines"
     },
     {
@@ -1201,6 +1622,9 @@
      "artifacts": [
       "jspecify"
      ],
+     "coordinates": [
+      "org.jspecify:jspecify:1.0.0"
+     ],
      "url": "http://jspecify.org/"
     },
     {
@@ -1211,6 +1635,9 @@
      "file": "apache-2.0.txt",
      "artifacts": [
       "osmdroid-android"
+     ],
+     "coordinates": [
+      "org.osmdroid:osmdroid-android:6.1.20"
      ],
      "url": "https://github.com/osmdroid/osmdroid"
     }

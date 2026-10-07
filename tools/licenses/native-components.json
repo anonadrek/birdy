@@ -15,7 +15,10 @@
         "flex"
       ],
       "pinnedIn": "tensorflow/workspace2.bzl",
-      "source": "https://raw.githubusercontent.com/protocolbuffers/protobuf/v6.31.1/LICENSE"
+      "source": "https://raw.githubusercontent.com/protocolbuffers/protobuf/v6.31.1/LICENSE",
+      "labels": [
+        "BSD"
+      ]
     },
     {
       "id": "re2",
@@ -26,7 +29,10 @@
         "flex"
       ],
       "pinnedIn": "tensorflow/workspace2.bzl",
-      "source": "https://raw.githubusercontent.com/google/re2/927f5d53caf8111721e734cf24724686bb745f55/LICENSE"
+      "source": "https://raw.githubusercontent.com/google/re2/927f5d53caf8111721e734cf24724686bb745f55/LICENSE",
+      "labels": [
+        "BSD"
+      ]
     },
     {
       "id": "abseil",
@@ -37,7 +43,10 @@
         "flex"
       ],
       "pinnedIn": "third_party/xla/third_party/absl/workspace.bzl",
-      "source": "https://raw.githubusercontent.com/abseil/abseil-cpp/255c84dadd029fd8ad25c5efb5933e47beaa00c7/LICENSE"
+      "source": "https://raw.githubusercontent.com/abseil/abseil-cpp/255c84dadd029fd8ad25c5efb5933e47beaa00c7/LICENSE",
+      "labels": [
+        "Apache 2.0"
+      ]
     },
     {
       "id": "ducc",
@@ -53,7 +62,10 @@
         1,
         37
       ],
-      "sourceNote": "The licence header of src/ducc0/fft/fft.h, from the GitHub mirror of gitlab.mpcdf.mpg.de/mtr/ducc (the GitLab server blocks scripted downloads)."
+      "sourceNote": "The licence header of src/ducc0/fft/fft.h, from the GitHub mirror of gitlab.mpcdf.mpg.de/mtr/ducc (the GitLab server blocks scripted downloads).",
+      "labels": [
+        "BSD"
+      ]
     },
     {
       "id": "eigen",
@@ -67,7 +79,12 @@
       "pinnedIn": "third_party/xla/third_party/eigen3/workspace.bzl",
       "source": "https://raw.githubusercontent.com/tensorflow/tensorflow/a95156b81d3899ed3fc471843aa82f3c33bc8c32/third_party/xla/third_party/eigen3/LICENSE",
       "sourceNote": "TensorFlow's own copy of Eigen's licences.",
-      "sourceCode": "https://gitlab.com/libeigen/eigen/-/tree/dcbaf2d608f306450f1e74949eb87e9a22a7ef4b"
+      "sourceCode": "https://gitlab.com/libeigen/eigen/-/tree/dcbaf2d608f306450f1e74949eb87e9a22a7ef4b",
+      "labels": [
+        "MPL 2.0",
+        "BSD",
+        "MINPACK"
+      ]
     },
     {
       "id": "gemmlowp",
@@ -79,7 +96,10 @@
         "litert"
       ],
       "pinnedIn": "third_party/xla/third_party/gemmlowp/workspace.bzl",
-      "source": "https://raw.githubusercontent.com/google/gemmlowp/16e8662c34917be0065110bfcd9cc27d30f52fdf/LICENSE"
+      "source": "https://raw.githubusercontent.com/google/gemmlowp/16e8662c34917be0065110bfcd9cc27d30f52fdf/LICENSE",
+      "labels": [
+        "Apache 2.0"
+      ]
     },
     {
       "id": "zlib",
@@ -90,7 +110,10 @@
         "flex"
       ],
       "pinnedIn": "tensorflow/workspace2.bzl",
-      "source": "https://raw.githubusercontent.com/madler/zlib/v1.3.1/LICENSE"
+      "source": "https://raw.githubusercontent.com/madler/zlib/v1.3.1/LICENSE",
+      "labels": [
+        "zlib"
+      ]
     },
     {
       "id": "snappy",
@@ -101,7 +124,10 @@
         "flex"
       ],
       "pinnedIn": "tensorflow/workspace2.bzl",
-      "source": "https://raw.githubusercontent.com/google/snappy/1.2.0/COPYING"
+      "source": "https://raw.githubusercontent.com/google/snappy/1.2.0/COPYING",
+      "labels": [
+        "BSD"
+      ]
     },
     {
       "id": "farmhash",
@@ -112,7 +138,10 @@
         "flex"
       ],
       "pinnedIn": "third_party/xla/third_party/farmhash/workspace.bzl",
-      "source": "https://raw.githubusercontent.com/google/farmhash/0d859a811870d10f53a594927d0d0b97573ad06d/COPYING"
+      "source": "https://raw.githubusercontent.com/google/farmhash/0d859a811870d10f53a594927d0d0b97573ad06d/COPYING",
+      "labels": [
+        "MIT"
+      ]
     },
     {
       "id": "libjpeg-turbo",
@@ -124,7 +153,12 @@
       ],
       "pinnedIn": "third_party/jpeg/workspace.bzl",
       "source": "https://raw.githubusercontent.com/libjpeg-turbo/libjpeg-turbo/2.1.4/LICENSE.md",
-      "notice": "This software is based in part on the work of the Independent JPEG Group."
+      "notice": "This software is based in part on the work of the Independent JPEG Group.",
+      "labels": [
+        "IJG",
+        "BSD",
+        "zlib"
+      ]
     },
     {
       "id": "libpng",
@@ -135,7 +169,10 @@
         "flex"
       ],
       "pinnedIn": "third_party/png/workspace.bzl",
-      "source": "https://raw.githubusercontent.com/glennrp/libpng/v1.6.43/LICENSE"
+      "source": "https://raw.githubusercontent.com/glennrp/libpng/v1.6.43/LICENSE",
+      "labels": [
+        "libpng"
+      ]
     },
     {
       "id": "xnnpack",
@@ -146,7 +183,10 @@
         "litert"
       ],
       "pinnedIn": "third_party/xla/third_party/xnnpack/workspace.bzl",
-      "source": "https://raw.githubusercontent.com/google/XNNPACK/bccfe73347861f07a0257c0c546c0babcf3257b8/LICENSE"
+      "source": "https://raw.githubusercontent.com/google/XNNPACK/bccfe73347861f07a0257c0c546c0babcf3257b8/LICENSE",
+      "labels": [
+        "BSD"
+      ]
     },
     {
       "id": "flatbuffers",
@@ -157,7 +197,10 @@
         "litert"
       ],
       "pinnedIn": "third_party/flatbuffers/workspace.bzl",
-      "source": "https://raw.githubusercontent.com/google/flatbuffers/v25.9.23/LICENSE"
+      "source": "https://raw.githubusercontent.com/google/flatbuffers/v25.9.23/LICENSE",
+      "labels": [
+        "Apache 2.0"
+      ]
     },
     {
       "id": "fft2d",
@@ -168,7 +211,10 @@
         "litert"
       ],
       "pinnedIn": "third_party/fft2d/workspace.bzl",
-      "source": "https://raw.githubusercontent.com/tensorflow/tensorflow/a95156b81d3899ed3fc471843aa82f3c33bc8c32/third_party/fft2d/LICENSE"
+      "source": "https://raw.githubusercontent.com/tensorflow/tensorflow/a95156b81d3899ed3fc471843aa82f3c33bc8c32/third_party/fft2d/LICENSE",
+      "labels": [
+        "Ooura"
+      ]
     },
     {
       "id": "ruy",
@@ -180,7 +226,10 @@
         "litert"
       ],
       "pinnedIn": "third_party/ruy/workspace.bzl",
-      "source": "https://raw.githubusercontent.com/google/ruy/3286a34cc8de6149ac6844107dfdffac91531e72/LICENSE"
+      "source": "https://raw.githubusercontent.com/google/ruy/3286a34cc8de6149ac6844107dfdffac91531e72/LICENSE",
+      "labels": [
+        "Apache 2.0"
+      ]
     },
     {
       "id": "cpuinfo",
@@ -192,7 +241,10 @@
         "litert"
       ],
       "pinnedIn": "third_party/xla/third_party/cpuinfo/workspace.bzl",
-      "source": "https://raw.githubusercontent.com/pytorch/cpuinfo/8a9210069b5a37dd89ed118a783945502a30a4ae/LICENSE"
+      "source": "https://raw.githubusercontent.com/pytorch/cpuinfo/8a9210069b5a37dd89ed118a783945502a30a4ae/LICENSE",
+      "labels": [
+        "BSD"
+      ]
     },
     {
       "id": "kleidiai",
@@ -205,7 +257,10 @@
       "pinnedIn": "tensorflow/workspace2.bzl",
       "source": "https://raw.githubusercontent.com/ARM-software/kleidiai/d41219d3db13758074a6440d7b55a87487334c8b/LICENSES/Apache-2.0.txt",
       "notice": "Copyright 2024-2026 Arm Limited and/or its affiliates <open-source-office@arm.com>",
-      "evidence": "external/KleidiAI/ paths in libtensorflowlite_jni.so"
+      "evidence": "external/KleidiAI/ paths in libtensorflowlite_jni.so",
+      "labels": [
+        "Apache 2.0"
+      ]
     },
     {
       "id": "ml-dtypes",
@@ -218,7 +273,10 @@
       "pinnedIn": "third_party/py/ml_dtypes/workspace.bzl",
       "source": "https://raw.githubusercontent.com/jax-ml/ml_dtypes/00d98cd92ade342fef589c0470379abb27baebe9/LICENSE",
       "notice": "Copyright 2022 The TensorFlow Authors (ml_dtypes source files)",
-      "evidence": "ml_dtypes and float8 type names in libtensorflowlite_flex_jni.so"
+      "evidence": "ml_dtypes and float8 type names in libtensorflowlite_flex_jni.so",
+      "labels": [
+        "Apache 2.0"
+      ]
     },
     {
       "id": "pthreadpool",
@@ -230,7 +288,10 @@
       ],
       "pinnedIn": "third_party/xla/third_party/pthreadpool/workspace.bzl",
       "source": "https://raw.githubusercontent.com/google/pthreadpool/9003ee6c137cea3b94161bd5c614fb43be523ee1/LICENSE",
-      "evidence": "no string in the stripped library names it; XNNPACK, which is in LiteRT, is built with it"
+      "evidence": "no string in the stripped library names it; XNNPACK, which is in LiteRT, is built with it",
+      "labels": [
+        "BSD"
+      ]
     },
     {
       "id": "fxdiv",
@@ -242,7 +303,10 @@
       ],
       "pinnedIn": "third_party/xla/third_party/fxdiv/workspace.bzl",
       "source": "https://raw.githubusercontent.com/Maratyszcza/FXdiv/63058eff77e11aa15bf531df5dd34395ec3017c8/LICENSE",
-      "evidence": "no string in the stripped library names it; pthreadpool, which XNNPACK uses, is built with it"
+      "evidence": "no string in the stripped library names it; pthreadpool, which XNNPACK uses, is built with it",
+      "labels": [
+        "MIT"
+      ]
     },
     {
       "id": "fp16",
@@ -254,7 +318,10 @@
       ],
       "pinnedIn": "third_party/xla/third_party/FP16/workspace.bzl",
       "source": "https://raw.githubusercontent.com/Maratyszcza/FP16/4dfe081cf6bcd15db339cf2680b9281b8451eeb3/LICENSE",
-      "evidence": "no string in the stripped library names it; XNNPACK, which is in LiteRT, is built with it"
+      "evidence": "no string in the stripped library names it; XNNPACK, which is in LiteRT, is built with it",
+      "labels": [
+        "MIT"
+      ]
     }
   ]
 }

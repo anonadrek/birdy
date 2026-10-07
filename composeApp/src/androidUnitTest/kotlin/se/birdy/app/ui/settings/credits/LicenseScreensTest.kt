@@ -79,6 +79,16 @@ class LicenseScreensTest {
     }
 
     @Test
+    fun `a very long paragraph is laid out in pieces cut at line ends`() {
+        val files = (1..400).joinToString("\n") { "./Eigen/src/Core/File$it.h" }
+        val pieces = licenseParagraphs("Following applies to:\n$files\n\nNext.")
+        assertTrue(pieces.size > 3, "${pieces.size} pieces")
+        assertTrue(pieces.all { it.length <= PARAGRAPH_CHUNK_CHARS })
+        assertEquals("Next.", pieces.last())
+        assertEquals("Following applies to:\n$files", pieces.dropLast(1).joinToString("\n"))
+    }
+
+    @Test
     fun `licence texts split into paragraphs at blank lines`() {
         assertEquals(listOf("A\nb", "C"), licenseParagraphs("A\nb\n\n  \nC\n"))
         assertEquals(listOf("Title", "   1. Indented."), licenseParagraphs("Title\n\n   1. Indented.\n"))

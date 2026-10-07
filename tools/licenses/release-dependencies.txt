@@ -128,6 +128,8 @@ app.cash.sqldelight:runtime-jvm:2.0.2
 app.cash.sqldelight:runtime:2.0.2
 com.android.billingclient:billing-ktx:8.0.0
 com.android.billingclient:billing:8.0.0
+com.android.tools:desugar_jdk_libs:2.1.5
+com.android.tools:desugar_jdk_libs_configuration:2.1.5
 com.charleskorn.kaml:kaml-jvm:0.65.0
 com.charleskorn.kaml:kaml:0.65.0
 com.google.accompanist:accompanist-drawablepainter:0.36.0

@@ -4,21 +4,24 @@
 Release 1.3.0, legal review 7i-fix B (docs/legal/2026-10-1.3.0-genomgang.md, section 6). Run it from
 anywhere inside the repo whenever a release dependency, a font, a model or a native library changes:
 
-    python tools/licenses/generate.py
+    uv run --with fonttools python tools/licenses/generate.py
 
 and commit what it writes. `./gradlew :androidApp:verifyLicenseList` (run by CI and before every
 release bundle or APK) fails until it has been run after a dependency change.
 
 What it does:
 
-1. Runs `./gradlew :androidApp:writeReleaseDependencies` (or reads --deps FILE) for the release
-   build's external dependencies, `group:name:version`, and saves them as
+1. Runs `./gradlew :androidApp:writeReleaseDependencies :androidApp:writeReleaseArtifacts` (or
+   reads --deps and --artifacts FILE) for the release build's external dependencies,
+   `group:name:version`, from the runtime classpath and the core library desugaring library, and
+   the files Gradle resolved for them. Saves the dependencies as
    tools/licenses/release-dependencies.txt, the list verifyLicenseList compares against.
 2. Reads each dependency's licence from its POM (Google Maven or Maven Central, parent POMs
    followed) and groups the libraries by Maven group, version and licence.
-3. Extracts the notices Google's closed-source libraries carry for the open-source code inside them
-   (third_party_licenses.json/.txt in the AARs, read from the Gradle cache). A notice that is just
-   the Apache License 2.0 keeps only its copyright lines; the licence text is in apache-2.0.txt.
+3. Extracts the third-party notices every dependency's file carries (third_party_licenses.json/.txt,
+   in Google's AARs among others). A notice that is just the Apache License 2.0 keeps only its
+   copyright lines; the licence text is in apache-2.0.txt. Fails when one of Google's closed-source
+   libraries has no file.
 4. Fetches the licences of the native code inside the TensorFlow libraries (native-components.json
    lists every component with its version and source) and TensorFlow's own LICENSE (Apache 2.0 plus
    the Caffe notice). Stops first when the release build's LiteRT version or androidApp's flex
@@ -31,20 +34,20 @@ What it does:
 7. Writes composeApp/src/commonMain/composeResources/files/licenses/: index.json (what the screen
    lists) and one text file per licence or notice.
 
-Needs Python 3.10+, fontTools (`pip install fonttools`) and network access; downloads are cached in
-tools/licenses/.cache/ (git-ignored). Fails loudly on a licence it does not recognise: add it to
-LICENSE_RULES below rather than guessing.
+Needs Python 3.10+, fontTools and network access; downloads are cached in tools/licenses/.cache/
+(git-ignored, a 404 is cached too). Fails loudly on a licence it does not recognise, on a library
+whose licence needs its own text (LIBRARY_TEXTS) and on any network error other than a 404.
 """
 
 from __future__ import annotations
 
 import argparse
-import glob
 import json
 import os
 import re
 import subprocess
 import sys
+import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
 import zipfile
@@ -57,6 +60,7 @@ OUT = ROOT / "composeApp/src/commonMain/composeResources/files/licenses"
 SNAPSHOT = HERE / "release-dependencies.txt"
 CACHE = HERE / ".cache"
 GRADLE_DEPS = ROOT / "androidApp/build/licenses/release-dependencies.txt"
+GRADLE_ARTIFACTS = ROOT / "androidApp/build/licenses/release-artifacts.txt"
 
 REPOSITORIES = (
     "https://dl.google.com/dl/android/maven2",
@@ -99,7 +103,43 @@ LICENSE_RULES: tuple[tuple[re.Pattern[str], str, str, str], ...] = (
         "Play Core Software Development Kit Terms of Service",
         "google-sdk.txt",
     ),
+    # These need the library's own text (LIBRARY_TEXTS): the copyright lines, or a source offer.
+    (
+        re.compile(r"general public license.*version 2.*classpath exception", re.I),
+        "gpl-2.0-classpath",
+        "GPL 2.0 with the Classpath Exception",
+        "",
+    ),
+    (re.compile(r"bsd-3-clause|bsd 3-clause", re.I), "bsd-3-clause", "BSD 3-Clause License", ""),
 )
+
+# Licence ids whose text is shared by every library under them.
+SHARED_TEXT_IDS = {"apache-2.0", "android-sdk", "play-core"}
+
+DESUGAR_COMMIT = "73170c345e6a762fc6a1f0301bb15218850023ef"
+
+# The texts for libraries under a licence that is not one shared text, by `group:name`. "version"
+# pins what the text was checked for: a new version stops the generator until it is looked at.
+LIBRARY_TEXTS: dict[str, dict[str, str]] = {
+    "com.android.tools:desugar_jdk_libs": {
+        "version": "2.1.5",
+        "file": "desugar-jdk-libs.txt",
+        "url": f"https://raw.githubusercontent.com/google/desugar_jdk_libs/{DESUGAR_COMMIT}/LICENSE",
+        "header": (
+            "desugar_jdk_libs 2.1.5: Java library code from OpenJDK that the Android build compiles into the "
+            "app, so that java.time and other Java APIs work on older Android versions. It is licensed under the "
+            "GNU General Public License, version 2, with the Classpath Exception.\n"
+            f"Source code: https://github.com/google/desugar_jdk_libs/tree/{DESUGAR_COMMIT} (the commit that "
+            "prepared version 2.1.5, 2025-02-14)"
+        ),
+    },
+    "com.android.tools:desugar_jdk_libs_configuration": {
+        "version": "2.1.5",
+        "file": "desugar-jdk-libs-configuration.txt",
+        "jarEntry": "LICENSE",
+        "header": "desugar_jdk_libs_configuration 2.1.5 (the R8 project), the LICENSE in its JAR:",
+    },
+}
 
 # Google's closed-source libraries: listed with their terms, plus the notices they carry.
 GOOGLE_TERMS_IDS = {"android-sdk", "play-core"}
@@ -118,23 +158,47 @@ class Library:
     url: str | None = None
     artifacts: list[str] = field(default_factory=list)
 
+    @property
+    def coordinates(self) -> list[str]:
+        return [f"{self.group}:{name}:{self.version}" for name in self.artifacts]
+
+
+class NotFoundError(Exception):
+    """The server answered 404 (cached, so the next run does not ask again)."""
+
 
 def log(message: str) -> None:
     print(message, file=sys.stderr)
 
 
 def fetch(url: str) -> bytes:
-    """Download [url] once; later runs read the copy in tools/licenses/.cache/."""
-    name = re.sub(r"[^A-Za-z0-9._-]+", "_", url.split("://", 1)[-1])
-    cached = CACHE / name[-180:]
+    """Download [url] once; later runs read the copy in tools/licenses/.cache/.
+
+    Raises [NotFoundError] on a 404 (remembered in the cache too). Any other failure (no network, a
+    timeout, a server error) is raised as it is: the generator must not quietly leave a text out.
+    """
+    name = re.sub(r"[^A-Za-z0-9._-]+", "_", url.split("://", 1)[-1])[-180:]
+    cached = CACHE / name
+    missing = CACHE / (name + ".404")
     if cached.exists():
         return cached.read_bytes()
+    if missing.exists():
+        raise NotFoundError(url)
     log(f"  fetching {url}")
-    request = urllib.request.Request(url, headers={"User-Agent": "birdy-licenses/1.0"})
-    with urllib.request.urlopen(request, timeout=60) as response:
-        data = response.read()
     CACHE.mkdir(parents=True, exist_ok=True)
-    cached.write_bytes(data)
+    request = urllib.request.Request(url, headers={"User-Agent": "birdy-licenses/1.0"})
+    try:
+        with urllib.request.urlopen(request, timeout=60) as response:
+            data = response.read()
+    except urllib.error.HTTPError as error:
+        if error.code == 404:
+            missing.touch()
+            raise NotFoundError(url) from error
+        raise
+    # Written next to its place and moved there, so an interrupted run never leaves half a file.
+    partial = CACHE / (name + ".partial")
+    partial.write_bytes(data)
+    os.replace(partial, cached)
     return data
 
 
@@ -145,14 +209,31 @@ def fetch_text(url: str) -> str:
 # ---- 1. dependencies -----------------------------------------------------------------------------
 
 
-def release_dependencies(deps_file: Path | None) -> list[str]:
-    if deps_file is None:
-        gradlew = ROOT / ("gradlew.bat" if os.name == "nt" else "gradlew")
-        log("Running :androidApp:writeReleaseDependencies ...")
-        subprocess.run([str(gradlew), ":androidApp:writeReleaseDependencies", "-q"], cwd=ROOT, check=True)
-        deps_file = GRADLE_DEPS
+def run_gradle() -> None:
+    gradlew = ROOT / ("gradlew.bat" if os.name == "nt" else "gradlew")
+    tasks = [":androidApp:writeReleaseDependencies", ":androidApp:writeReleaseArtifacts"]
+    log("Running " + " ".join(tasks) + " ...")
+    subprocess.run([str(gradlew), *tasks, "-q"], cwd=ROOT, check=True)
+
+
+def release_dependencies(deps_file: Path) -> list[str]:
     lines = [line.strip() for line in deps_file.read_text(encoding="utf-8").splitlines()]
     return sorted(line for line in lines if line and not line.startswith("#"))
+
+
+def release_artifacts(artifacts_file: Path, coordinates: list[str]) -> dict[str, list[Path]]:
+    """The files Gradle resolved for each dependency (a module with only metadata has none)."""
+    files: dict[str, list[Path]] = {}
+    for line in artifacts_file.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        coordinate, path = line.split("\t", 1)
+        if coordinate not in coordinates:
+            raise SystemExit(f"{artifacts_file} lists {coordinate}, not a release dependency; run Gradle again")
+        if not Path(path).is_file():
+            raise SystemExit(f"The file of {coordinate} is gone: {path}; run Gradle again")
+        files.setdefault(coordinate, []).append(Path(path))
+    return files
 
 
 # ---- 2. POM licences -----------------------------------------------------------------------------
@@ -163,10 +244,15 @@ def pom(group: str, name: str, version: str) -> ET.Element | None:
     for repo in REPOSITORIES:
         if repo.startswith("https://dl.google.com") and not group.startswith(("androidx", "com.android", "com.google")):
             continue
+        url = f"{repo}/{path}"
         try:
-            root = ET.fromstring(fetch(f"{repo}/{path}"))
-        except (OSError, ET.ParseError):  # not in this repository (404) or unreadable: try the next
+            data = fetch(url)
+        except NotFoundError:  # not in this repository: try the next
             continue
+        try:
+            root = ET.fromstring(data)
+        except ET.ParseError as error:
+            raise SystemExit(f"Unreadable POM {url}: {error}") from error
         # Old POMs (javax.inject 1) have no namespace; give every element the POM namespace.
         for element in root.iter():
             if not element.tag.startswith("{"):
@@ -204,17 +290,44 @@ def classify(coordinate: str, licenses: list[tuple[str, str]]) -> tuple[str, str
     raise SystemExit(f"Unknown licence for {coordinate}: {licenses}. Add a rule to LICENSE_RULES.")
 
 
-def libraries(coordinates: list[str]) -> list[Library]:
-    grouped: dict[tuple[str, str, str], Library] = {}
+def libraries(coordinates: list[str], artifacts: dict[str, list[Path]]) -> list[Library]:
+    grouped: dict[tuple[str, str, str, str], Library] = {}
     for coordinate in coordinates:
         group, name, version = coordinate.split(":")
         licenses, url = pom_licenses(group, name, version)
         license_id, display, file = classify(coordinate, licenses)
-        key = (group, version, license_id)
+        if license_id not in SHARED_TEXT_IDS:
+            file = library_text(coordinate, artifacts)
+        key = (group, version, license_id, file)
         library = grouped.setdefault(key, Library(group, version, license_id, display, file, url))
         library.artifacts.append(name)
         library.url = library.url or url
-    return sorted(grouped.values(), key=lambda lib: (lib.group, lib.version))
+    return sorted(grouped.values(), key=lambda lib: (lib.group, lib.version, lib.file))
+
+
+def library_text(coordinate: str, artifacts: dict[str, list[Path]]) -> str:
+    """Writes the licence text of a library that needs its own (LIBRARY_TEXTS) and returns its file."""
+    group, name, version = coordinate.split(":")
+    spec = LIBRARY_TEXTS.get(f"{group}:{name}")
+    if spec is None:
+        raise SystemExit(f"{coordinate} needs its own licence text (copyright lines): add it to LIBRARY_TEXTS")
+    if spec["version"] != version:
+        raise SystemExit(
+            f"LIBRARY_TEXTS has the text of {group}:{name} {spec['version']}, the release has {version}: "
+            "check the new version's licence and source, then update LIBRARY_TEXTS"
+        )
+    if "url" in spec:
+        body = fetch_text(spec["url"])
+        source = f"Source of this text: {spec['url']}"
+    else:
+        jar = next((p for p in artifacts.get(coordinate, []) if p.suffix in (".jar", ".aar")), None)
+        if jar is None:
+            raise SystemExit(f"No file for {coordinate}, whose licence is inside it")
+        with zipfile.ZipFile(jar) as archive:
+            body = archive.read(spec["jarEntry"]).decode("utf-8").replace("\r\n", "\n")
+        source = f"Source of this text: {spec['jarEntry']} in {name}-{version}"
+    write(spec["file"], spec["header"] + "\n" + source + "\n\n" + body.strip())
+    return spec["file"]
 
 
 # ---- licence texts -------------------------------------------------------------------------------
@@ -330,32 +443,33 @@ def section(title: str, body: str) -> str:
 # ---- 3. Google's libraries -----------------------------------------------------------------------
 
 
-def gradle_cache() -> Path:
-    home = os.environ.get("GRADLE_USER_HOME") or os.path.expanduser("~/.gradle")
-    return Path(home) / "caches/modules-2/files-2.1"
+def third_party_notices(libs: list[Library], artifacts: dict[str, list[Path]]) -> str:
+    """The third-party notices inside every dependency's file, one section per component, deduplicated.
 
-
-def google_notices(google_libs: list[Library]) -> str:
-    """The third-party notices inside Google's AARs, one section per component, deduplicated."""
+    Fails when one of Google's closed-source libraries has no file: its notices would go missing.
+    """
+    for lib in libs:
+        if lib.license_id not in SHARED_TEXT_IDS - {"apache-2.0"}:
+            continue
+        missing = [c for c in lib.coordinates if c not in artifacts]
+        if missing:
+            raise SystemExit(f"No file for {', '.join(missing)}, so its third-party notices cannot be read")
     bodies: dict[str, list[str]] = {}
-    for lib in google_libs:
-        for artifact in lib.artifacts:
-            hits = glob.glob(
-                str(gradle_cache() / lib.group / artifact / lib.version / "*" / f"{artifact}-{lib.version}.aar")
-            )
-            if not hits:
+    for path in sorted({p for paths in artifacts.values() for p in paths}):
+        if path.suffix not in (".aar", ".jar"):
+            continue
+        with zipfile.ZipFile(path) as archive:
+            names = archive.namelist()
+            if "third_party_licenses.json" not in names or "third_party_licenses.txt" not in names:
                 continue
-            with zipfile.ZipFile(hits[0]) as aar:
-                if "third_party_licenses.json" not in aar.namelist():
-                    continue
-                index = json.loads(aar.read("third_party_licenses.json"))
-                raw = aar.read("third_party_licenses.txt")
-                for component, span in index.items():
-                    body = raw[span["start"] : span["start"] + span["length"]].decode("utf-8", "replace")
-                    body = body.replace("\r\n", "\n").strip()
-                    known = bodies.setdefault(component, [])
-                    if all(normalized(body) != normalized(other) for other in known):
-                        known.append(body)
+            index = json.loads(archive.read("third_party_licenses.json"))
+            raw = archive.read("third_party_licenses.txt")
+        for component, span in index.items():
+            body = raw[span["start"] : span["start"] + span["length"]].decode("utf-8", "replace")
+            body = body.replace("\r\n", "\n").strip()
+            known = bodies.setdefault(component, [])
+            if body and all(normalized(body) != normalized(other) for other in known):
+                known.append(body)
     parts = [
         "Google's libraries in Birdy (Google Play Billing, Google Play services and Play In-App Review) "
         "are not open source; Google provides them under the terms named in the list. They contain "
@@ -367,6 +481,8 @@ def google_notices(google_libs: list[Library]) -> str:
     ]
     for component in sorted(bodies, key=str.lower):
         variants = bodies[component]
+        if not variants:
+            continue
         # One body that contains another (a longer edition of the same notice) replaces it.
         kept = [b for b in variants if not any(b is not o and normalized(b) in normalized(o) for o in variants)]
         parts.append(section(component, "\n\n".join(dict.fromkeys(apache_or_text(body) for body in kept))))
@@ -408,6 +524,19 @@ def check_native_pins(coordinates: list[str]) -> None:
             + ". Check which components and versions the new libraries contain, update"
             " tools/licenses/native-components.json, then run the generator again."
         )
+
+
+# The order the native code's licences are named in, in the list's row.
+NATIVE_LABEL_ORDER = ["Apache 2.0", "BSD", "MIT", "MPL 2.0", "MINPACK", "zlib", "IJG", "libpng", "Ooura"]
+
+
+def native_label() -> str:
+    """The licences in the native notices, from native-components.json's "labels"."""
+    labels = {label for component in NATIVE["components"] for label in component["labels"]}
+    unknown = labels - set(NATIVE_LABEL_ORDER)
+    if unknown:
+        raise SystemExit(f"Add {sorted(unknown)} to NATIVE_LABEL_ORDER")
+    return " · ".join(label for label in NATIVE_LABEL_ORDER if label in labels)
 
 
 def native_notices() -> tuple[str, list[dict]]:
@@ -478,17 +607,36 @@ def entry(entry_id: str, name: str, version: str, license_name: str, file: str, 
     return data
 
 
+def library_entry(lib: Library, libs: list[Library], license_name: str, file: str) -> dict:
+    shared = sum(1 for other in libs if other.group == lib.group and other.version == lib.version) > 1
+    entry_id = f"lib:{lib.group}:{lib.version}" + (f":{lib.artifacts[0]}" if shared else "")
+    return entry(
+        entry_id,
+        lib.group,
+        lib.version,
+        license_name,
+        file,
+        artifacts=lib.artifacts,
+        coordinates=lib.coordinates,
+        url=lib.url,
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--deps", type=Path, help="read the dependencies from this file instead of running Gradle")
+    parser.add_argument("--deps", type=Path, help="the dependencies file, instead of running Gradle")
+    parser.add_argument("--artifacts", type=Path, help="the artifacts file, instead of running Gradle")
     args = parser.parse_args()
 
-    coordinates = release_dependencies(args.deps)
-    log(f"{len(coordinates)} release dependencies")
+    if args.deps is None or args.artifacts is None:
+        run_gradle()
+    coordinates = release_dependencies(args.deps or GRADLE_DEPS)
+    artifacts = release_artifacts(args.artifacts or GRADLE_ARTIFACTS, coordinates)
+    log(f"{len(coordinates)} release dependencies, {sum(map(len, artifacts.values()))} files")
     check_native_pins(coordinates)
     load_apache()
 
-    libs = libraries(coordinates)
+    libs = libraries(coordinates, artifacts)
     google_libs = [lib for lib in libs if lib.license_id in GOOGLE_TERMS_IDS]
     tensorflow_libs = [lib for lib in libs if lib.group in TENSORFLOW_GROUPS]
     other_libs = [lib for lib in libs if lib not in google_libs and lib not in tensorflow_libs]
@@ -502,8 +650,7 @@ def main() -> None:
     write("tensorflow.txt", tf_license)
     native_text, native_components = native_notices()
     write("tensorflow-third-party.txt", native_text)
-    google_text = google_notices(google_libs)
-    write("google-third-party.txt", google_text)
+    write("google-third-party.txt", third_party_notices(libs, artifacts))
     write(
         "google-sdk.txt",
         section(
@@ -558,24 +705,13 @@ def main() -> None:
         {
             "id": "tensorflow",
             "entries": [
-                *(
-                    entry(
-                        f"lib:{lib.group}:{lib.version}",
-                        lib.group,
-                        lib.version,
-                        "Apache License 2.0",
-                        "tensorflow.txt",
-                        artifacts=lib.artifacts,
-                        url=lib.url,
-                    )
-                    for lib in tensorflow_libs
-                ),
+                *(library_entry(lib, libs, "Apache License 2.0", "tensorflow.txt") for lib in tensorflow_libs),
                 entry(
                     # The app shows its own localized name and no version for the two notice entries.
                     "tensorflow-native",
                     "Native code in TensorFlow Lite",
                     "",
-                    "Apache 2.0 · BSD · MIT · MPL 2.0 · zlib · IJG · libpng",
+                    native_label(),
                     "tensorflow-third-party.txt",
                     artifacts=[c["name"] for c in native_components],
                 ),
@@ -584,18 +720,7 @@ def main() -> None:
         {
             "id": "google",
             "entries": [
-                *(
-                    entry(
-                        f"lib:{lib.group}:{lib.version}",
-                        lib.group,
-                        lib.version,
-                        lib.license_name,
-                        "google-sdk.txt",
-                        artifacts=lib.artifacts,
-                        url=lib.url,
-                    )
-                    for lib in google_libs
-                ),
+                *(library_entry(lib, libs, lib.license_name, "google-sdk.txt") for lib in google_libs),
                 entry(
                     "google-third-party",
                     "Open-source code in Google's libraries",
@@ -607,18 +732,7 @@ def main() -> None:
         },
         {
             "id": "libraries",
-            "entries": [
-                entry(
-                    f"lib:{lib.group}:{lib.version}",
-                    lib.group,
-                    lib.version,
-                    lib.license_name,
-                    lib.file,
-                    artifacts=lib.artifacts,
-                    url=lib.url,
-                )
-                for lib in other_libs
-            ],
+            "entries": [library_entry(lib, libs, lib.license_name, lib.file) for lib in other_libs],
         },
     ]
     index = {

@@ -37,7 +37,8 @@ internal data class LicenseSection(
  * One row: a library group, a model, a font or a set of notices. [file] is the licence or notice
  * text it opens; [notice] an optional short notice file shown before it; [copyright] copyright lines
  * shown before it (fonts); [artifacts] what the entry covers (Maven artifacts, font files, native
- * components).
+ * components); [coordinates] a library entry's `group:name:version`s (LicenseListTest checks them
+ * against the release dependencies).
  */
 @Serializable
 internal data class LicenseEntry(
@@ -49,6 +50,7 @@ internal data class LicenseEntry(
     val notice: String? = null,
     val copyright: List<String> = emptyList(),
     val artifacts: List<String> = emptyList(),
+    val coordinates: List<String> = emptyList(),
     val url: String? = null,
 )
 
@@ -62,15 +64,25 @@ private val licenseJson = Json { ignoreUnknownKeys = true }
 /** Parses index.json's text. */
 internal fun parseLicenseIndex(text: String): LicenseIndex = licenseJson.decodeFromString<LicenseIndex>(text)
 
-/** Reads the bundled licence files. Off the main thread: the largest notice file is a few hundred KB. */
+/**
+ * Reads the bundled licence files, decoding and parsing off the main thread (index.json is some
+ * 50 KB, the largest notice file close to 300 KB). The index is read once per process.
+ */
 internal object LicenseFiles {
+    @Volatile
+    private var cachedIndex: LicenseIndex? = null
+
     @OptIn(ExperimentalResourceApi::class)
     suspend fun read(file: String): String =
         withContext(Dispatchers.Default) {
             Res.readBytes(LICENSE_DIR + file).decodeToString()
         }
 
-    suspend fun index(): LicenseIndex = parseLicenseIndex(read("index.json"))
+    suspend fun index(): LicenseIndex {
+        cachedIndex?.let { return it }
+        val text = read("index.json")
+        return withContext(Dispatchers.Default) { parseLicenseIndex(text) }.also { cachedIndex = it }
+    }
 }
 
 /** What the licence text page shows for one entry. */
@@ -83,9 +95,13 @@ internal data class LicenseText(
 // One or more blank lines; the next paragraph keeps the indentation of its first line.
 private val BLANK_LINES = Regex("\n(?:[ \t]*\n)+")
 
+/** Longest piece of a paragraph laid out as one item; Eigen's list of files is some 18 KB. */
+internal const val PARAGRAPH_CHUNK_CHARS = 2_000
+
 /**
- * Splits a licence text into paragraphs at blank lines, so that a long text (the notices in
- * Google's libraries are a few hundred KB) is laid out lazily, one paragraph at a time.
+ * Splits a licence text into paragraphs at blank lines, and a very long paragraph into pieces at
+ * line ends, so that a long text (the notices in Google's libraries are close to 300 KB) is laid out
+ * lazily, a piece at a time. Call it off the main thread.
  */
 internal fun licenseParagraphs(text: String): List<String> =
     text
@@ -93,9 +109,27 @@ internal fun licenseParagraphs(text: String): List<String> =
         .split(BLANK_LINES)
         .map { reflow(it.trimEnd()) }
         .filter { it.isNotBlank() }
+        .flatMap(::chunked)
 
-// A line that starts a list item, a rule or a comment: "1. ", "(a) ", "* ", "-----", "// ".
-private val STRUCTURED_LINE = Regex("""^(\d+[.)]|\([a-z0-9]+\)|[-*•=#/>|+_]).*""")
+/** [paragraph] in pieces of at most [PARAGRAPH_CHUNK_CHARS], cut at line ends (a longer line stays whole). */
+private fun chunked(paragraph: String): List<String> {
+    if (paragraph.length <= PARAGRAPH_CHUNK_CHARS) return listOf(paragraph)
+    val pieces = mutableListOf<String>()
+    val piece = StringBuilder()
+    for (line in paragraph.split('\n')) {
+        if (piece.isNotEmpty() && piece.length + 1 + line.length > PARAGRAPH_CHUNK_CHARS) {
+            pieces += piece.toString()
+            piece.clear()
+        }
+        if (piece.isNotEmpty()) piece.append('\n')
+        piece.append(line)
+    }
+    if (piece.isNotEmpty()) pieces += piece.toString()
+    return pieces
+}
+
+// A line that starts a list item, a rule, a comment or a path: "1. ", "(a) ", "* ", "-----", "// ", "./".
+private val STRUCTURED_LINE = Regex("""^(\d+[.)]|\([a-z0-9]+\)|[-*•=#/>|+_]|\./).*""")
 
 // A line of its own: a copyright line, or a short "Label: value" field ("Licence: MIT").
 private val OWN_LINE = Regex("""^(Copyright\b|\([Cc]\) |© |[A-Z][A-Za-z0-9 ]{0,40}: \S).*""")
@@ -131,12 +165,12 @@ internal fun reflow(paragraph: String): String {
 
 private fun String.isHeading() = length < HEADING_MAX_LENGTH && any(Char::isLetter) && none(Char::isLowerCase)
 
-/** The entry [id] with its notice and text, read from the bundled files. */
+/** The entry [id] with its notice and text, read from the bundled files and split off the main thread. */
 internal suspend fun loadLicenseText(id: String): LicenseText {
     val entry = LicenseFiles.index().entry(id) ?: error("No licence entry '$id'")
-    return LicenseText(
-        entry = entry,
-        notice = entry.notice?.let { LicenseFiles.read(it).trim() },
-        paragraphs = licenseParagraphs(LicenseFiles.read(entry.file)),
-    )
+    val notice = entry.notice?.let { LicenseFiles.read(it).trim() }
+    val text = LicenseFiles.read(entry.file)
+    return withContext(Dispatchers.Default) {
+        LicenseText(entry = entry, notice = notice, paragraphs = licenseParagraphs(text))
+    }
 }

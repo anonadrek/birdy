@@ -1,13 +1,16 @@
 package se.birdy.app.ui.scaffold
 
+import androidx.compose.ui.test.hasScrollToKeyAction
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.performScrollToKey
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavHostController
+import androidx.navigation.toRoute
 import kotlinx.coroutines.runBlocking
 import org.junit.Rule
 import org.junit.Test
@@ -20,6 +23,7 @@ import se.birdy.app.testing.FakeUserPreferences
 import se.birdy.content.SpeciesId
 import se.birdy.content.model.PhotoCredit
 import kotlin.reflect.KClass
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 /**
@@ -107,5 +111,22 @@ class CreditsRoutingTest {
         nav.isOn(AppRoute.OpenSourceLicenses::class)
         back()
         nav.isOn(AppRoute.About::class)
+    }
+
+    /** A library's id has ":" and "." in it ("lib:com.android.tools:2.1.5:desugar_jdk_libs"). */
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `a library entry opens its text through the route`() {
+        val nav = openAbout()
+        compose.onNodeWithText("Licenser för öppen källkod").performScrollTo().performClick()
+        compose.waitForIdle()
+        awaitText("BirdNET-Lite")
+        val id = "lib:com.android.tools:2.1.5:desugar_jdk_libs"
+        compose.onNode(hasScrollToKeyAction()).performScrollToKey(id)
+        compose.onNodeWithText("GPL 2.0 with the Classpath Exception", substring = true).performClick()
+        compose.waitForIdle()
+        nav.isOn(AppRoute.LicenseText::class)
+        compose.runOnIdle { assertEquals(id, nav.currentBackStackEntry?.toRoute<AppRoute.LicenseText>()?.entryId) }
+        awaitText("Source code: https://github.com/google/desugar_jdk_libs/tree/")
     }
 }

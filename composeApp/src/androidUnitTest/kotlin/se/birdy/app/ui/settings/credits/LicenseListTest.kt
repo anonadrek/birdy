@@ -38,13 +38,7 @@ class LicenseListTest {
                 .map { it.trim() }
                 .filter { it.isNotEmpty() && !it.startsWith("#") }
                 .toSet()
-        val covered =
-            entries
-                .filter { it.id.startsWith("lib:") }
-                .flatMap { entry ->
-                    val (group, version) = entry.id.removePrefix("lib:").split(":", limit = 2)
-                    entry.artifacts.map { "$group:$it:$version" }
-                }.toSet()
+        val covered = entries.filter { it.id.startsWith("lib:") }.flatMap { it.coordinates }.toSet()
         assertTrue(dependencies.size > 100, "only ${dependencies.size} dependencies listed")
         assertEquals(emptySet(), dependencies - covered, "release dependencies without a licence entry")
         assertEquals(emptySet(), covered - dependencies, "licence entries for libraries the release does not have")
@@ -160,6 +154,22 @@ class LicenseListTest {
         listOf("Protocol Buffers", "Animal Sniffer", "Checker Framework Annotations", "JSR 305").forEach {
             assertTrue("$it\n" in notices, "no notice for $it")
         }
+    }
+
+    /**
+     * desugar_jdk_libs is compiled into the dex (core library desugaring), so it ships although it is
+     * not on the runtime classpath: GPL 2.0 with the Classpath Exception, with its source code.
+     */
+    @Test
+    fun `the desugaring library is credited with its licence and source code`() {
+        val desugar = entry("lib:com.android.tools:2.1.5:desugar_jdk_libs")
+        assertEquals("GPL 2.0 with the Classpath Exception", desugar.license)
+        assertEquals(listOf("com.android.tools:desugar_jdk_libs:2.1.5"), desugar.coordinates)
+        val text = text(desugar.file)
+        assertTrue("Source code: https://github.com/google/desugar_jdk_libs/tree/" in text)
+        assertTrue("\"CLASSPATH\" EXCEPTION TO THE GPL" in text)
+        val configuration = entry("lib:com.android.tools:2.1.5:desugar_jdk_libs_configuration")
+        assertTrue("Copyright (c) 2016, the R8 project authors." in text(configuration.file))
     }
 
     @Test
