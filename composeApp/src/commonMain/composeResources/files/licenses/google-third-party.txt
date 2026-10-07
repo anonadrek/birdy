@@ -1,4 +1,4 @@
-Google's libraries in Birdy (Google Play Billing, Google Play services and Play In-App Review) are not open source; Google provides them under the terms named in the list. They contain open-source code, whose notices follow, as Google ships them in each library (third_party_licenses.txt). For a notice that is the Apache License 2.0, only its copyright lines are repeated here; the licence text is under Apache License 2.0 in this list.
+Google's libraries in Birdy (Google Play Billing, Google Play services and Play In-App Review) are not open source; Google provides them under the terms named in the list. They contain open-source code, whose notices follow, as Google ships them in each library (third_party_licenses.txt). For a notice that is the Apache License 2.0, only its copyright lines are repeated here; the licence text is under Apache License 2.0 in this list. Some notices contain GPL or LGPL texts (J2ObjC's, for code under the GPL with the Classpath exception, and Kotlin's); they are reproduced as Google ships them.
 
 
 Android SDK Platforms

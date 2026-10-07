@@ -121,6 +121,37 @@ class LicenseListTest {
         assertEquals("tensorflow.txt", entry("lib:com.google.ai.edge.litert:1.4.1").file)
     }
 
+    /**
+     * The native notices were researched for one flex library (tag and TensorFlow commit) and one
+     * LiteRT version. A bump of either must send someone back to native-components.json and the
+     * generator, so this fails until the two agree again.
+     */
+    @Test
+    fun `the native notices were made for the tensorflow libraries the app ships`() {
+        val manifest = File(repoRoot, "tools/licenses/native-components.json").readText()
+
+        fun field(name: String) = assertNotNull(Regex(""""$name": "([^"]+)"""").find(manifest), name).groupValues[1]
+        val build = File(repoRoot, "androidApp/build.gradle.kts").readText()
+        val flexTag = assertNotNull(Regex("""val flexReleaseTag = "([^"]+)"""").find(build)).groupValues[1]
+        assertEquals(field("flexTag"), flexTag, "flex library changed: update native-components.json, run generate.py")
+        assertTrue(field("tensorflowCommit").startsWith(flexTag.removePrefix("tf-")), "tag and commit disagree")
+
+        val litert = field("litertVersion")
+        val declared =
+            listOf("androidApp/build.gradle.kts", "shared/ml/build.gradle.kts", "gradle/libs.versions.toml")
+                .map { File(repoRoot, it).readText() }
+                .flatMap { text ->
+                    Regex("""com\.google\.ai\.edge\.litert:litert:([0-9][^"]*)|\blitert\s*=\s*"([^"]+)"""")
+                        .findAll(text)
+                        .map { it.groupValues[1].ifEmpty { it.groupValues[2] } }
+                        .toList()
+                }
+        assertTrue(declared.isNotEmpty(), "no LiteRT version found in the build files")
+        assertEquals(setOf(litert), declared.toSet(), "LiteRT changed: update native-components.json, run generate.py")
+        assertNotNull(index.entry("lib:com.google.ai.edge.litert:$litert"))
+        assertTrue("LiteRT $litert" in text("tensorflow-third-party.txt"))
+    }
+
     @Test
     fun `google's libraries come with the notices they carry`() {
         val google = index.sections.single { it.id == "google" }.entries

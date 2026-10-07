@@ -1,12 +1,11 @@
-Native code built into the TensorFlow Lite libraries in Birdy: libtensorflowlite_jni.so (LiteRT 1.4.1, photo and sound ID) and libtensorflowlite_flex_jni.so (TensorFlow, commit a95156b81d38, the 16 KB build from github.com/arxdeus/tflite_flex_16kb_android; BirdNET's sound ID needs it). Versions are the ones TensorFlow pinned at that commit.
+Native code built into the TensorFlow Lite libraries in Birdy: libtensorflowlite_jni.so (LiteRT 1.4.1, photo and sound ID) and libtensorflowlite_flex_jni.so (TensorFlow, commit a95156b81d38, the 16 KB build from github.com/arxdeus/tflite_flex_16kb_android, tag tf-a95156b81d38; BirdNET's sound ID needs it). Versions are the ones TensorFlow pinned at commit a95156b81d38 (April 2026), which the flex library is built from. LiteRT 1.4.1 (November 2025) does not publish its versions; for LiteRT the texts come from the same versions, which may differ from the ones built into it.
 
 
 Protocol Buffers
 ================
 
-Version: 6.31.1
 Licence: BSD-3-Clause
-Used in: the flex library
+In the flex library: version 6.31.1, pinned by TensorFlow a95156b81d38
 Source of this text: https://raw.githubusercontent.com/protocolbuffers/protobuf/v6.31.1/LICENSE
 
 Copyright 2008 Google Inc.  All rights reserved.
@@ -46,9 +45,8 @@ support library is itself covered by the above license.
 RE2
 ===
 
-Version: 927f5d53caf8111721e734cf24724686bb745f55
 Licence: BSD-3-Clause
-Used in: the flex library
+In the flex library: version 927f5d53caf8111721e734cf24724686bb745f55, pinned by TensorFlow a95156b81d38
 Source of this text: https://raw.githubusercontent.com/google/re2/927f5d53caf8111721e734cf24724686bb745f55/LICENSE
 
 // Copyright (c) 2009 The RE2 Authors. All rights reserved.
@@ -83,9 +81,8 @@ Source of this text: https://raw.githubusercontent.com/google/re2/927f5d53caf811
 Abseil C++
 ==========
 
-Version: LTS 20260107.1 (255c84dadd029fd8ad25c5efb5933e47beaa00c7)
 Licence: Apache-2.0
-Used in: the flex library
+In the flex library: version LTS 20260107.1 (255c84dadd029fd8ad25c5efb5933e47beaa00c7), pinned by TensorFlow a95156b81d38
 Source of this text: https://raw.githubusercontent.com/abseil/abseil-cpp/255c84dadd029fd8ad25c5efb5933e47beaa00c7/LICENSE
 
 Apache License 2.0 (its text is under Apache License 2.0 in this list)
@@ -94,10 +91,10 @@ Apache License 2.0 (its text is under Apache License 2.0 in this list)
 ducc (FFT)
 ==========
 
-Version: aa46a4c21e440b3d416c16eca3c96df19c74f316
 Licence: BSD-3-Clause (ducc's FFT component is offered under BSD-3-Clause or GPL-2.0-or-later; TensorFlow builds only the FFT component, used here under BSD-3-Clause)
-Used in: the flex library
+In the flex library: version aa46a4c21e440b3d416c16eca3c96df19c74f316, pinned by TensorFlow a95156b81d38
 Source of this text: https://raw.githubusercontent.com/mreineck/ducc/aa46a4c21e440b3d416c16eca3c96df19c74f316/src/ducc0/fft/fft.h
+The licence header of src/ducc0/fft/fft.h, from the GitHub mirror of gitlab.mpcdf.mpg.de/mtr/ducc (the GitLab server blocks scripted downloads).
 
 /*
 This file is part of the ducc FFT library
@@ -141,10 +138,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Eigen
 =====
 
-Version: dcbaf2d608f306450f1e74949eb87e9a22a7ef4b
 Licence: MPL-2.0 (some files BSD, MINPACK or Apache-2.0; see the text)
-Used in: the flex library and LiteRT
+In the flex library: version dcbaf2d608f306450f1e74949eb87e9a22a7ef4b, pinned by TensorFlow a95156b81d38
+In LiteRT 1.4.1: version not published
+Source code: https://gitlab.com/libeigen/eigen/-/tree/dcbaf2d608f306450f1e74949eb87e9a22a7ef4b
 Source of this text: https://raw.githubusercontent.com/tensorflow/tensorflow/a95156b81d3899ed3fc471843aa82f3c33bc8c32/third_party/xla/third_party/eigen3/LICENSE
+TensorFlow's own copy of Eigen's licences.
 
 Eigen is primarily MPL2 licensed. See COPYING.MPL2 and these links:
   http://www.mozilla.org/MPL/2.0/
@@ -1223,9 +1222,9 @@ POSSIBILITY OF SUCH LOSS OR DAMAGES.
 gemmlowp
 ========
 
-Version: 16e8662c34917be0065110bfcd9cc27d30f52fdf
 Licence: Apache-2.0
-Used in: the flex library and LiteRT
+In the flex library: version 16e8662c34917be0065110bfcd9cc27d30f52fdf, pinned by TensorFlow a95156b81d38
+In LiteRT 1.4.1: version not published
 Source of this text: https://raw.githubusercontent.com/google/gemmlowp/16e8662c34917be0065110bfcd9cc27d30f52fdf/LICENSE
 
 Apache License 2.0 (its text is under Apache License 2.0 in this list)
@@ -1234,9 +1233,8 @@ Apache License 2.0 (its text is under Apache License 2.0 in this list)
 zlib
 ====
 
-Version: 1.3.1
 Licence: Zlib
-Used in: the flex library
+In the flex library: version 1.3.1, pinned by TensorFlow a95156b81d38
 Source of this text: https://raw.githubusercontent.com/madler/zlib/v1.3.1/LICENSE
 
 Copyright notice:
@@ -1266,9 +1264,8 @@ Copyright notice:
 Snappy
 ======
 
-Version: 1.2.0
 Licence: BSD-3-Clause
-Used in: the flex library
+In the flex library: version 1.2.0, pinned by TensorFlow a95156b81d38
 Source of this text: https://raw.githubusercontent.com/google/snappy/1.2.0/COPYING
 
 Copyright 2011, Google Inc.
@@ -1330,9 +1327,8 @@ Some of the benchmark data in testdata/ is licensed differently:
 FarmHash
 ========
 
-Version: 0d859a811870d10f53a594927d0d0b97573ad06d
 Licence: MIT
-Used in: the flex library
+In the flex library: version 0d859a811870d10f53a594927d0d0b97573ad06d, pinned by TensorFlow a95156b81d38
 Source of this text: https://raw.githubusercontent.com/google/farmhash/0d859a811870d10f53a594927d0d0b97573ad06d/COPYING
 
 // Copyright (c) 2014 Google, Inc.
@@ -1360,9 +1356,8 @@ libjpeg-turbo
 =============
 
 This software is based in part on the work of the Independent JPEG Group.
-Version: 2.1.4
 Licence: IJG, BSD-3-Clause and Zlib
-Used in: the flex library
+In the flex library: version 2.1.4, pinned by TensorFlow a95156b81d38
 Source of this text: https://raw.githubusercontent.com/libjpeg-turbo/libjpeg-turbo/2.1.4/LICENSE.md
 
 libjpeg-turbo Licenses
@@ -1502,9 +1497,8 @@ that were granted to the IJG for code derived from their software.
 libpng
 ======
 
-Version: 1.6.43
 Licence: PNG Reference Library License version 2
-Used in: the flex library
+In the flex library: version 1.6.43, pinned by TensorFlow a95156b81d38
 Source of this text: https://raw.githubusercontent.com/glennrp/libpng/v1.6.43/LICENSE
 
 COPYRIGHT NOTICE, DISCLAIMER, and LICENSE
@@ -1646,9 +1640,9 @@ be appreciated.
 XNNPACK
 =======
 
-Version: bccfe73347861f07a0257c0c546c0babcf3257b8
 Licence: BSD-3-Clause
-Used in: LiteRT
+In LiteRT 1.4.1: version not published
+This text is from version bccfe73347861f07a0257c0c546c0babcf3257b8, pinned by TensorFlow a95156b81d38
 Source of this text: https://raw.githubusercontent.com/google/XNNPACK/bccfe73347861f07a0257c0c546c0babcf3257b8/LICENSE
 
 BSD License
@@ -1687,9 +1681,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 FlatBuffers
 ===========
 
-Version: 25.9.23
 Licence: Apache-2.0
-Used in: LiteRT
+In LiteRT 1.4.1: version not published
+This text is from version 25.9.23, pinned by TensorFlow a95156b81d38
 Source of this text: https://raw.githubusercontent.com/google/flatbuffers/v25.9.23/LICENSE
 
 Apache License 2.0 (its text is under Apache License 2.0 in this list)
@@ -1698,9 +1692,9 @@ Apache License 2.0 (its text is under Apache License 2.0 in this list)
 fft2d (Ooura FFT)
 =================
 
-Version: 1.0
 Licence: Ooura FFT licence (permissive)
-Used in: LiteRT
+In LiteRT 1.4.1: version not published
+This text is from version 1.0, pinned by TensorFlow a95156b81d38
 Source of this text: https://raw.githubusercontent.com/tensorflow/tensorflow/a95156b81d3899ed3fc471843aa82f3c33bc8c32/third_party/fft2d/LICENSE
 
 Copyright(C) 1997,2001 Takuya OOURA (email: ooura@kurims.kyoto-u.ac.jp).
@@ -1711,9 +1705,9 @@ without fee. You may distribute this ORIGINAL package.
 ruy
 ===
 
-Version: 3286a34cc8de6149ac6844107dfdffac91531e72
 Licence: Apache-2.0
-Used in: the flex library and LiteRT
+In the flex library: version 3286a34cc8de6149ac6844107dfdffac91531e72, pinned by TensorFlow a95156b81d38
+In LiteRT 1.4.1: version not published
 Source of this text: https://raw.githubusercontent.com/google/ruy/3286a34cc8de6149ac6844107dfdffac91531e72/LICENSE
 
 Apache License 2.0 (its text is under Apache License 2.0 in this list)
@@ -1722,9 +1716,9 @@ Apache License 2.0 (its text is under Apache License 2.0 in this list)
 cpuinfo
 =======
 
-Version: 8a9210069b5a37dd89ed118a783945502a30a4ae
 Licence: BSD-2-Clause
-Used in: the flex library and LiteRT
+In the flex library: version 8a9210069b5a37dd89ed118a783945502a30a4ae, pinned by TensorFlow a95156b81d38
+In LiteRT 1.4.1: version not published
 Source of this text: https://raw.githubusercontent.com/pytorch/cpuinfo/8a9210069b5a37dd89ed118a783945502a30a4ae/LICENSE
 
 Copyright (c) 2019 Google LLC
@@ -1754,3 +1748,107 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+KleidiAI
+========
+
+Copyright 2024-2026 Arm Limited and/or its affiliates <open-source-office@arm.com>
+Licence: Apache-2.0
+In LiteRT 1.4.1: version not published
+This text is from version d41219d3db13758074a6440d7b55a87487334c8b, pinned by TensorFlow a95156b81d38
+Source of this text: https://raw.githubusercontent.com/ARM-software/kleidiai/d41219d3db13758074a6440d7b55a87487334c8b/LICENSES/Apache-2.0.txt
+Why it is listed: external/KleidiAI/ paths in libtensorflowlite_jni.so
+
+Apache License 2.0 (its text is under Apache License 2.0 in this list)
+
+
+ml_dtypes
+=========
+
+Copyright 2022 The TensorFlow Authors (ml_dtypes source files)
+Licence: Apache-2.0
+In the flex library: version 00d98cd92ade342fef589c0470379abb27baebe9, pinned by TensorFlow a95156b81d38
+Source of this text: https://raw.githubusercontent.com/jax-ml/ml_dtypes/00d98cd92ade342fef589c0470379abb27baebe9/LICENSE
+Why it is listed: ml_dtypes and float8 type names in libtensorflowlite_flex_jni.so
+
+Apache License 2.0 (its text is under Apache License 2.0 in this list)
+
+
+pthreadpool
+===========
+
+Licence: BSD-2-Clause
+In LiteRT 1.4.1: version not published
+This text is from version 9003ee6c137cea3b94161bd5c614fb43be523ee1, pinned by TensorFlow a95156b81d38
+Source of this text: https://raw.githubusercontent.com/google/pthreadpool/9003ee6c137cea3b94161bd5c614fb43be523ee1/LICENSE
+Why it is listed: no string in the stripped library names it; XNNPACK, which is in LiteRT, is built with it
+
+Copyright 2019 Google LLC
+Copyright (c) 2017 Facebook Inc.
+Copyright (c) 2015-2017 Georgia Institute of Technology
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+FXdiv
+=====
+
+Licence: MIT
+In LiteRT 1.4.1: version not published
+This text is from version 63058eff77e11aa15bf531df5dd34395ec3017c8, pinned by TensorFlow a95156b81d38
+Source of this text: https://raw.githubusercontent.com/Maratyszcza/FXdiv/63058eff77e11aa15bf531df5dd34395ec3017c8/LICENSE
+Why it is listed: no string in the stripped library names it; pthreadpool, which XNNPACK uses, is built with it
+
+The MIT License (MIT)
+
+Copyright (c) 2017 Facebook Inc.
+Copyright (c) 2016-2017 Marat Dukhan
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+FP16
+====
+
+Licence: MIT
+In LiteRT 1.4.1: version not published
+This text is from version 4dfe081cf6bcd15db339cf2680b9281b8451eeb3, pinned by TensorFlow a95156b81d38
+Source of this text: https://raw.githubusercontent.com/Maratyszcza/FP16/4dfe081cf6bcd15db339cf2680b9281b8451eeb3/LICENSE
+Why it is listed: no string in the stripped library names it; XNNPACK, which is in LiteRT, is built with it
+
+The MIT License (MIT)
+
+Copyright (c) 2017 Facebook Inc.
+Copyright (c) 2017 Georgia Institute of Technology
+Copyright 2019 Google LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -42,7 +42,7 @@ class LicenseScreensTest {
             }
         }
         compose.onNodeWithText("MODELLER").assertExists()
-        compose.onNodeWithText("Version 6K global model (v2) · CC BY-NC-SA 4.0").assertExists()
+        compose.onNodeWithText("Version 6K global model · CC BY-NC-SA 4.0").assertExists()
         compose.onNodeWithText("BirdNET-Lite").performClick()
         compose.onNode(hasScrollToKeyAction()).performScrollToKey("lib:org.osmdroid:6.1.20")
         compose.onNodeWithText("org.osmdroid").performClick()
@@ -96,5 +96,13 @@ class LicenseScreensTest {
         assertEquals("Protocol Buffers\n================", reflow("Protocol Buffers\n================"))
         assertEquals("   indented\n   kept", reflow("   indented\n   kept"))
         assertEquals("-----\nSIL OPEN FONT LICENSE Version 1.1", reflow("-----\nSIL OPEN FONT LICENSE Version 1.1"))
+        assertEquals(
+            "Licence: MIT\nIn the flex library: version 1\nSource of this text: https://x",
+            reflow("Licence: MIT\nIn the flex library: version 1\nSource of this text: https://x"),
+        )
+        assertEquals(
+            "Copyright 2019 Google LLC\nCopyright (c) 2017 Facebook Inc. All rights reserved.",
+            reflow("Copyright 2019 Google LLC\nCopyright (c) 2017 Facebook Inc.\nAll rights reserved."),
+        )
     }
 }

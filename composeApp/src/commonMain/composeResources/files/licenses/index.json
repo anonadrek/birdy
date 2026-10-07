@@ -7,7 +7,7 @@
     {
      "id": "birdnet-lite",
      "name": "BirdNET-Lite",
-     "version": "6K global model (v2)",
+     "version": "6K global model",
      "license": "CC BY-NC-SA 4.0",
      "file": "birdnet-lite.txt",
      "url": "https://github.com/birdnet-team/BirdNET-Lite"
@@ -106,7 +106,12 @@
       "FlatBuffers",
       "fft2d (Ooura FFT)",
       "ruy",
-      "cpuinfo"
+      "cpuinfo",
+      "KleidiAI",
+      "ml_dtypes",
+      "pthreadpool",
+      "FXdiv",
+      "FP16"
      ]
     }
    ]
@@ -199,7 +204,7 @@
      "id": "google-third-party",
      "name": "Open-source code in Google's libraries",
      "version": "",
-     "license": "Apache 2.0 · BSD · MIT · ICU · PCRE",
+     "license": "Apache 2.0 · BSD · MIT · zlib · ICU · PCRE · GPL · LGPL",
      "file": "google-third-party.txt"
     }
    ]

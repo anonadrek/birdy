@@ -21,7 +21,10 @@ What it does:
    the Apache License 2.0 keeps only its copyright lines; the licence text is in apache-2.0.txt.
 4. Fetches the licences of the native code inside the TensorFlow libraries (native-components.json
    lists every component with its version and source) and TensorFlow's own LICENSE (Apache 2.0 plus
-   the Caffe notice).
+   the Caffe notice). Stops first when the release build's LiteRT version or androidApp's flex
+   library tag is not the one native-components.json was researched for: a new library can contain
+   other components, so look at it (strings in the .so, TensorFlow's workspace files) and update
+   the JSON before running again. LicenseListTest checks the same in CI.
 5. Reads the copyright lines of every bundled font (composeApp's composeResources/font and the PDF
    fonts) from their name tables and pairs them with the SIL Open Font License 1.1.
 6. Adds the models (notices/birdnet-lite.txt, notices/aiy-birds-v1.txt).
@@ -63,8 +66,13 @@ POM_NS = {"m": "http://maven.apache.org/POM/4.0.0"}
 
 APACHE_URL = "https://www.apache.org/licenses/LICENSE-2.0.txt"
 OFL_URL = "https://openfontlicense.org/documents/OFL.txt"
-TF_COMMIT = "a95156b81d3899ed3fc471843aa82f3c33bc8c32"
+# What the native notices were researched for: the TensorFlow commit the flex library is built from,
+# its release tag, LiteRT's version and the dates of both. A bump of either library must be looked at
+# by hand (new components, new pins), so check_native_pins() stops the generator until it is.
+NATIVE = json.loads((HERE / "native-components.json").read_text(encoding="utf-8"))
+TF_COMMIT: str = NATIVE["tensorflowCommit"]
 TF_LICENSE_URL = f"https://raw.githubusercontent.com/tensorflow/tensorflow/{TF_COMMIT}/LICENSE"
+FLEX_TAG_IN_BUILD = re.compile(r'val flexReleaseTag = "([^"]+)"')
 
 FONT_DIRS = (
     ROOT / "composeApp/src/commonMain/composeResources/font",
@@ -353,7 +361,9 @@ def google_notices(google_libs: list[Library]) -> str:
         "are not open source; Google provides them under the terms named in the list. They contain "
         "open-source code, whose notices follow, as Google ships them in each library "
         "(third_party_licenses.txt). For a notice that is the Apache License 2.0, only its copyright "
-        "lines are repeated here; the licence text is under Apache License 2.0 in this list.\n"
+        "lines are repeated here; the licence text is under Apache License 2.0 in this list. Some "
+        "notices contain GPL or LGPL texts (J2ObjC's, for code under the GPL with the Classpath "
+        "exception, and Kotlin's); they are reproduced as Google ships them.\n"
     ]
     for component in sorted(bodies, key=str.lower):
         variants = bodies[component]
@@ -366,31 +376,69 @@ def google_notices(google_libs: list[Library]) -> str:
 # ---- 4. TensorFlow and its native code -----------------------------------------------------------
 
 
+def native_version_lines(component: dict) -> list[str]:
+    """Where the component is built in, and which version the text is from, without claiming LiteRT's."""
+    pin = f"{component['version']}, pinned by TensorFlow {TF_COMMIT[:12]}"
+    in_flex = "flex" in component["in"]
+    in_litert = "litert" in component["in"]
+    lines = []
+    if in_flex:
+        lines.append(f"In the flex library: version {pin}")
+    if in_litert:
+        lines.append(f"In LiteRT {NATIVE['litertVersion']}: version not published")
+    if in_litert and not in_flex:
+        lines.append(f"This text is from version {pin}")
+    return lines
+
+
+def check_native_pins(coordinates: list[str]) -> None:
+    """Stops when the app's LiteRT or flex library is not the one native-components.json describes."""
+    litert = [c.rsplit(":", 1)[1] for c in coordinates if c.startswith("com.google.ai.edge.litert:litert:")]
+    match = FLEX_TAG_IN_BUILD.search((ROOT / "androidApp/build.gradle.kts").read_text(encoding="utf-8"))
+    flex_tag = match.group(1) if match else None
+    problems = []
+    if litert != [NATIVE["litertVersion"]]:
+        problems.append(f"the release build has LiteRT {litert}, native-components.json {NATIVE['litertVersion']}")
+    if flex_tag != NATIVE["flexTag"] or not TF_COMMIT.startswith(NATIVE["flexTag"].removeprefix("tf-")):
+        problems.append(f"androidApp's flexReleaseTag is {flex_tag}, native-components.json {NATIVE['flexTag']}")
+    if problems:
+        raise SystemExit(
+            "The native libraries changed: "
+            + "; ".join(problems)
+            + ". Check which components and versions the new libraries contain, update"
+            " tools/licenses/native-components.json, then run the generator again."
+        )
+
+
 def native_notices() -> tuple[str, list[dict]]:
-    manifest = json.loads((HERE / "native-components.json").read_text(encoding="utf-8"))
+    litert = f"LiteRT {NATIVE['litertVersion']}"
     parts = [
         "Native code built into the TensorFlow Lite libraries in Birdy: libtensorflowlite_jni.so "
-        "(LiteRT 1.4.1, photo and sound ID) and libtensorflowlite_flex_jni.so (TensorFlow, commit "
-        f"{TF_COMMIT[:12]}, the 16 KB build from github.com/arxdeus/tflite_flex_16kb_android; "
-        "BirdNET's sound ID needs it). Versions are the ones TensorFlow pinned at that commit.\n"
+        f"({litert}, photo and sound ID) and libtensorflowlite_flex_jni.so (TensorFlow, commit "
+        f"{TF_COMMIT[:12]}, the 16 KB build from github.com/arxdeus/tflite_flex_16kb_android, tag "
+        f"{NATIVE['flexTag']}; BirdNET's sound ID needs it). Versions are the ones TensorFlow pinned at "
+        f"commit {TF_COMMIT[:12]} ({NATIVE['tensorflowCommitDate']}), which the flex library is built from. "
+        f"{litert} ({NATIVE['litertDate']}) does not publish its versions; for LiteRT the texts come from "
+        "the same versions, which may differ from the ones built into it.\n"
     ]
-    for component in manifest["components"]:
+    for component in NATIVE["components"]:
         text = fetch_text(component["source"])
         if "lines" in component:
             first, last = component["lines"]
             text = "\n".join(text.splitlines()[first - 1 : last])
-        used_in = " and ".join({"flex": "the flex library", "litert": "LiteRT"}[x] for x in component["in"])
-        header = [
-            f"Version: {component['version']}",
-            f"Licence: {component['license']}",
-            f"Used in: {used_in}",
-            f"Source of this text: {component['source']}",
-        ]
+        header = [f"Licence: {component['license']}", *native_version_lines(component)]
+        if "sourceCode" in component:
+            header.append(f"Source code: {component['sourceCode']}")
+        header.append(f"Source of this text: {component['source']}")
+        if "sourceNote" in component:
+            header.append(component["sourceNote"])
+        if "evidence" in component:
+            header.append(f"Why it is listed: {component['evidence']}")
         if "notice" in component:
             header.insert(0, component["notice"])
         body = apache_or_text(text)
         parts.append(section(component["name"], "\n".join(header) + "\n\n" + body))
-    return "\n\n".join(parts), manifest["components"]
+    return "\n\n".join(parts), NATIVE["components"]
 
 
 # ---- 5. fonts ------------------------------------------------------------------------------------
@@ -437,6 +485,7 @@ def main() -> None:
 
     coordinates = release_dependencies(args.deps)
     log(f"{len(coordinates)} release dependencies")
+    check_native_pins(coordinates)
     load_apache()
 
     libs = libraries(coordinates)
@@ -475,7 +524,7 @@ def main() -> None:
                 entry(
                     "birdnet-lite",
                     "BirdNET-Lite",
-                    "6K global model (v2)",
+                    "6K global model",
                     "CC BY-NC-SA 4.0",
                     "birdnet-lite.txt",
                     url="https://github.com/birdnet-team/BirdNET-Lite",
@@ -551,7 +600,7 @@ def main() -> None:
                     "google-third-party",
                     "Open-source code in Google's libraries",
                     "",
-                    "Apache 2.0 · BSD · MIT · ICU · PCRE",
+                    "Apache 2.0 · BSD · MIT · zlib · ICU · PCRE · GPL · LGPL",
                     "google-third-party.txt",
                 ),
             ],

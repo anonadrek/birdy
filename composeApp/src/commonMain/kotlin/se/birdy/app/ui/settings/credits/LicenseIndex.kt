@@ -96,13 +96,16 @@ internal fun licenseParagraphs(text: String): List<String> =
 
 // A line that starts a list item, a rule or a comment: "1. ", "(a) ", "* ", "-----", "// ".
 private val STRUCTURED_LINE = Regex("""^(\d+[.)]|\([a-z0-9]+\)|[-*•=#/>|+_]).*""")
+
+// A line of its own: a copyright line, or a short "Label: value" field ("Licence: MIT").
+private val OWN_LINE = Regex("""^(Copyright\b|\([Cc]\) |© |[A-Z][A-Za-z0-9 ]{0,40}: \S).*""")
 private const val HEADING_MAX_LENGTH = 60
 
 /**
  * Joins the lines of a licence paragraph that were only wrapped for an 80-column file, so the text
- * wraps to the screen instead of in ragged halves. Lines that are indented, start a list item or a
- * rule, or follow a rule, a heading in capitals or a line ending in ":" keep their own line. The
- * words are never changed.
+ * wraps to the screen instead of in ragged halves. Lines that are indented, start a list item, a
+ * rule, a copyright line or a "Label: value" field, or follow a rule, a heading in capitals or a line
+ * ending in ":" keep their own line. The words are never changed.
  */
 internal fun reflow(paragraph: String): String {
     val lines = paragraph.split('\n')
@@ -117,6 +120,7 @@ internal fun reflow(paragraph: String): String {
                 line.isBlank() ||
                     line.first().isWhitespace() ||
                     STRUCTURED_LINE.matches(line) ||
+                    OWN_LINE.matches(line) ||
                     previous.endsWith(":") ||
                     previous.none { it.isLetterOrDigit() } ||
                     previous.isHeading()
