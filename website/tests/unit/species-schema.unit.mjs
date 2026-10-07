@@ -55,7 +55,7 @@ test('samma trasiga sidfält stoppar en byggbar post, publicerad eller inte', ()
     const result = speciesRecord.safeParse(breakPageFields(species(qid)));
     assert.equal(result.success, false, qid);
     const text = messages(result);
-    for (const path of ['images', 'data.totalReports', 'audio.file']) assert.match(text, new RegExp(`^${path.replace('.', '\.')}: `, 'm'), `${qid}: ${path}\n${text}`);
+    for (const path of ['images', 'data.totalReports', 'audio.file']) assert.match(text, new RegExp(`^${path.replace(/\./g, '\\.')}: `, 'm'), `${qid}: ${path}\n${text}`);
   }
 });
 

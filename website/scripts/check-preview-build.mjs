@@ -48,6 +48,9 @@ const filesUnder = (dir) =>
 /** The mean colour of an image that is one flat colour, or null for any other image. */
 async function flatColour(file) {
   const { channels } = await sharp(file).stats();
+  // Fewer than 3 channels means grayscale (+ maybe alpha), not RGB: slice(0, 3) would otherwise silently
+  // compare a gray image's single channel (repeated) against an RGB tuple and could match one by chance.
+  if (channels.length < 3) return null;
   const rgb = channels.slice(0, 3);
   return rgb.every((c) => c.stdev < 4) ? rgb.map((c) => c.mean) : null;
 }

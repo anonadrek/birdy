@@ -2496,6 +2496,8 @@ const src = audioHref(s);
 </style>
 ```
 
+**Obs:** inspelningarna kopieras in i `dist/audio/species/` först av byggkroken `astro:build:done` (Task 4), så spelaren blir tyst (404 på `<audio src>`) i `astro dev`; testa den med `npm run build:fixtures && npm run preview -- --port 4327` i stället.
+
 - [ ] **Step 4: Creditblocket**
 
 `src/components/species/Credits.astro`:
@@ -4165,11 +4167,11 @@ Riktig artdata går från nu på direkt till `main`, en art i taget (avsnitt 14,
 
 ```bash
 git fetch origin && git merge origin/main
-npm ci && npm run verify:fixtures && npm run build:prod && npx astro check && npm run test:no-accuracy && PLAYWRIGHT_PORT=4327 npx playwright test
+npm ci && npm run verify:fixtures && npx astro check && npm run test:no-accuracy && PLAYWRIGHT_PORT=4327 npx playwright test && npm run build:prod
 git push
 ```
 
-`npm run build:prod` bygger i riktigt läge mot `src/data/`, där ingen art är publicerad än: det ska gå igenom utan fel.
+`npm run build:prod` körs sist, efter Playwright, inte före: den bygger i riktigt läge mot `src/data/`, där ingen art är publicerad än, och skriver då över `dist/` med ett artlöst bygge. Körde den tidigare i kedjan skulle Playwright-testerna (som förväntar sig testdatans arter) tysta testas mot det artlösa produktionsbygget i stället för mot `verify:fixtures`s bygge. Här är den bara ett rök-test: det ska gå igenom utan fel, inget mer.
 
 Sedan i huvudmappen för `main` (worktreen kan inte byta till `main`):
 
