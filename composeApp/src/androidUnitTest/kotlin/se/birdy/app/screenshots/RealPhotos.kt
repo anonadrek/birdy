@@ -25,7 +25,9 @@ import java.io.File
  * - `file:///fake/<id>.jpg` (a find's own photo in the fixtures) → one of the benchmark photos
  *   in `composeApp/src/androidDebug/assets/benchmark/`, chosen by [findPhotos]. They live in the
  *   debug source set so that they never reach the release build (1.3.0 legal review, fix F);
- *   read straight from that folder, so it works for any test variant.
+ *   read straight from that folder, so it works for any test variant. With [findPlates] instead,
+ *   a species' plate photo from the asset pack stands in for the find's own photo (the weekly
+ *   recap shows more finds than there are benchmark photos).
  *
  * The working directory of a unit test is the `composeApp` module, hence the relative paths.
  */
@@ -33,6 +35,7 @@ import java.io.File
 @Composable
 internal fun WithRealPhotos(
     findPhotos: Map<String, String> = emptyMap(),
+    findPlates: Map<String, String> = emptyMap(),
     content: @Composable () -> Unit,
 ) {
     val handler =
@@ -43,11 +46,12 @@ internal fun WithRealPhotos(
                     data.startsWith(SPECIES_PREFIX) ->
                         File(ASSET_PACK_IMAGES, data.removePrefix(SPECIES_PREFIX)).takeIf { it.isFile }?.readBytes()
                     data.endsWith(PREMIUM_PHOTO) -> Res.readBytes(PREMIUM_PHOTO)
-                    data.startsWith(FIND_PREFIX) ->
-                        findPhotos[data.removePrefix(FIND_PREFIX)]
-                            ?.let { File(BENCHMARK_PHOTOS, it) }
+                    data.startsWith(FIND_PREFIX) -> {
+                        val name = data.removePrefix(FIND_PREFIX)
+                        (findPhotos[name]?.let { File(BENCHMARK_PHOTOS, it) } ?: findPlates[name]?.let { File(ASSET_PACK_IMAGES, it) })
                             ?.takeIf { it.isFile }
                             ?.readBytes()
+                    }
                     else -> null
                 }
             bytes?.let { BitmapFactory.decodeByteArray(it, 0, it.size) }?.asImage()

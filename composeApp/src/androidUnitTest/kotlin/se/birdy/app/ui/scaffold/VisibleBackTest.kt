@@ -30,7 +30,6 @@ import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
-import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.serialization.json.Json
 import org.junit.Rule
@@ -267,17 +266,18 @@ class VisibleBackTest {
 
     @Test
     fun `the weekly recap has a back button`() {
-        val now = Clock.System.now()
+        // The recap reads the graph's clock (Task 7j review), so the week's finds sit on it too.
+        val now = RoutingFixture.now
         val observations =
             FakeObservationRepository().apply {
                 repeat(8) { seedDirect(observation("week-$it", Instant.fromEpochMilliseconds(now.toEpochMilliseconds() - it * 1_000L))) }
             }
-        checkBack(start(observations = observations), listOf(AppRoute.Lifelist, AppRoute.WeeklyRecap), mustScroll = true)
+        checkBack(start(observations = observations), listOf(AppRoute.Lifelist, AppRoute.WeeklyRecap()), mustScroll = true)
     }
 
     @Test
     fun `the weekly recap without finds has a back button`() {
-        checkBack(start(), listOf(AppRoute.Lifelist, AppRoute.WeeklyRecap))
+        checkBack(start(), listOf(AppRoute.Lifelist, AppRoute.WeeklyRecap()))
     }
 
     // --- Identify results -------------------------------------------------------------------
@@ -473,7 +473,7 @@ class VisibleBackTest {
     @Test
     fun `the weekly recap and a find from Mina arter keep the Mina arter tab marked`() {
         val nav = start(observations = observationsWithOneFind())
-        nav.open(AppRoute.Lifelist, AppRoute.WeeklyRecap)
+        nav.open(AppRoute.Lifelist, AppRoute.WeeklyRecap())
         assertTabSelected("Mina arter")
         nav.open(AppRoute.ObservationDetail("obs-1"))
         assertTabSelected("Mina arter")
@@ -495,7 +495,7 @@ class VisibleBackTest {
     @Test
     fun `the Mina arter tab on a recap opened from its notification switches to Mina arter`() {
         val nav = start()
-        nav.open(AppRoute.WeeklyRecap)
+        nav.open(AppRoute.WeeklyRecap())
         assertTabSelected("Mina arter")
         compose.onNodeWithText("Mina arter").performClick()
         compose.waitForIdle()
@@ -644,7 +644,7 @@ class VisibleBackTest {
         val nav = start()
         tapTab("Märken")
         // birdy://recap while Märken is open.
-        nav.open(AppRoute.WeeklyRecap)
+        nav.open(AppRoute.WeeklyRecap())
         assertTabSelected("Märken")
         tapTab("Mina arter")
         compose.runOnIdle { assertTrue(nav.isOn(AppRoute.Lifelist::class)) }
@@ -679,7 +679,7 @@ class VisibleBackTest {
     fun `the recap's camera on Mina arter opens on Identifiera, and Mina arter doesn't reopen it`() {
         val nav = start()
         tapTab("Mina arter")
-        nav.open(AppRoute.WeeklyRecap)
+        nav.open(AppRoute.WeeklyRecap())
         compose.onNodeWithText("Öppna kameran", substring = true).performSemanticsAction(SemanticsActions.OnClick)
         compose.waitForIdle()
         compose.runOnIdle {
@@ -703,7 +703,7 @@ class VisibleBackTest {
         val observations = FakeObservationRepository()
         val nav = start(observations = observations)
         tapTab("Mina arter")
-        nav.open(AppRoute.WeeklyRecap)
+        nav.open(AppRoute.WeeklyRecap())
         compose.onNodeWithText("Öppna kameran", substring = true).performSemanticsAction(SemanticsActions.OnClick)
         compose.waitForIdle()
         // A freeze on the camera opens the result on top of it.

@@ -82,6 +82,12 @@ sealed interface AppRoute {
     /**
      * v1.2 Phase B: Weekly Recap screen. Reachable from Lifelist (Task 12),
      * Settings, and via the `birdy://recap` deep-link emitted by WeeklyRecapWorker.
+     *
+     * [week] is an ISO week key ("2026-W41") from the notification's link, so a tap after
+     * midnight opens the week the notification described (release 1.3.0 Task 7j review); null
+     * (Mina arter's card, older links) is the current week.
      */
-    @Serializable data object WeeklyRecap : AppRoute
+    @Serializable data class WeeklyRecap(
+        val week: String? = null,
+    ) : AppRoute
 }
