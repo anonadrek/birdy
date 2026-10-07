@@ -246,6 +246,9 @@ class AudioOutcome:
     replacement: Replacement | None = None
     tried: list[str] = field(default_factory=list)
     notes: list[str] = field(default_factory=list)
+    # Why voice.mp3 (missing, or not the recording the record names) could not be fetched
+    # again: a flag, and the model never hears the file (re-review 2026-10-07).
+    missing: str | None = None
 
 
 async def _audio_check(
@@ -259,8 +262,79 @@ async def _audio_check(
     never wastes V1 work, and in a thread so the subprocess does not block the other
     workers. No verdict without a recording or for one Albin kept; a string when the model
     could not run.
-    Only the verdict is computed here; the record is changed after V1, as before."""
-    if not record.get("audio") or _audio_kept(record):
+    Only the verdict is computed here; the record is changed after V1, as before.
+    Re-review 2026-10-07: a voice.mp3 that is missing or not the recording the record names
+    (a failed swap, the sweep) is first fetched again from Commons, as the same recording;
+    when that is not possible the wrong file goes and the species gets a flag."""
+    if not record.get("audio"):
+        return AudioOutcome(None)
+    restored: list[str] = []
+    if not _voice_matches(record, paths.images_out / source.qid / VOICE_FILE):
+        why = (
+            await _restore_voice(record, source, paths, audio_source, workdir)
+            if audio_source is not None
+            else "ingen förbindelse med Commons i den här körningen"
+        )
+        if why is not None:
+            delete_voice(paths.images_out, source.qid)  # a wrong file never stays
+            return AudioOutcome(None, missing=why)
+        restored.append("inspelningsfilen hämtades igen från Commons")
+    outcome = await _judge_voice(record, source, paths, audio_source, workdir)
+    outcome.notes[:0] = restored
+    return outcome
+
+
+def _voice_matches(record: Record, voice: Path) -> bool:
+    """voice.mp3 is there and, when the record has its hash, is that file."""
+    if not voice.exists():
+        return False
+    expected = record["audio"].get("mp3Sha256")
+    return expected is None or file_sha256(voice) == expected
+
+
+async def _restore_voice(
+    record: Record,
+    source: SpeciesSource,
+    paths: WebPaths,
+    audio_source: AudioSource,
+    workdir: Path,
+) -> str | None:
+    """Fetches the recording the record names (by its Commons page) again, checks that it is
+    the same recording (the raw file's hash), converts it and puts it in place. Returns why
+    not, or None. The new file's hash replaces `mp3Sha256`: another machine's ffmpeg may
+    encode the same recording differently."""
+    audio = record["audio"]
+    try:
+        candidates = await audio_source.candidates(source.qid, source.scientific_name)
+    except Exception as exc:  # Commons down: the flag says so
+        return f"Commons svarade inte ({type(exc).__name__})"
+    named = next((c for c in candidates if c.page_url == audio.get("sourceUrl")), None)
+    if named is None:
+        return "inspelningen finns inte längre bland artens filer på Commons"
+    try:
+        raw = await audio_source.download(source.qid, named)
+        if audio.get("sha256") and hashlib.sha256(raw).hexdigest() != audio["sha256"]:
+            return "filen på Commons är inte längre samma inspelning"
+        mp3 = workdir / "restored.mp3"
+        await asyncio.to_thread(convert_to_mp3, raw, mp3)
+    except Exception as exc:  # a download or ffmpeg error: the flag says so
+        return f"inspelningen kunde inte hämtas och kodas om ({type(exc).__name__})"
+    error = _place_voice(paths.images_out, source.qid, mp3)
+    if error is not None:
+        return error
+    audio["mp3Sha256"] = file_sha256(mp3)
+    return None
+
+
+async def _judge_voice(
+    record: Record,
+    source: SpeciesSource,
+    paths: WebPaths,
+    audio_source: AudioSource | None,
+    workdir: Path,
+) -> AudioOutcome:
+    """V4 on a voice.mp3 that is the record's recording."""
+    if _audio_kept(record):
         return AudioOutcome(None)
     if not record.get("identifiable", {}).get("sound"):
         # Not covered: the verdict is a flag whatever the model says (follow-up 3).
@@ -360,6 +434,11 @@ def _apply_audio(
     new file's path when another recording replaced it, moved into place after the save."""
     audio = outcome.verdict
     notes.extend(outcome.notes)
+    if outcome.missing is not None:
+        flags.append(
+            {"check": "V4", "factId": None, "message": RESTORE_FAILED_FLAG.format(outcome.missing)}
+        )
+        return False
     if audio is None:
         return False
     if outcome.replacement is not None:
@@ -395,7 +474,13 @@ def _apply_audio(
 
 PLACE_FAILED_FLAG = (
     "Den nya inspelningen kunde inte läggas på plats (filen var låst) och den gamla togs "
-    "bort. Kör web verify --force för arten."
+    "bort. Kör web verify --force för arten: den hämtar inspelningen igen från Commons "
+    "och kontrollerar den."
+)
+RESTORE_FAILED_FLAG = (
+    "Inspelningsfilen saknades eller var inte den artposten anger, och den kunde inte "
+    "hämtas igen ({}). Kör web sources --force och sedan web verify --force för arten, "
+    "så väljs och kontrolleras en inspelning."
 )
 
 

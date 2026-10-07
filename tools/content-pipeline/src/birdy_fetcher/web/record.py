@@ -135,7 +135,8 @@ STAGED_VOICE_FILE = VOICE_FILE + ".new"
 # A voice.mp3 whose hash is not the one its record names (re-review 2026-10-07).
 MISMATCH_FLAG = (
     "Inspelningsfilen var inte den som artposten anger (ett avbrutet byte av inspelning) "
-    "och togs bort. Kör web verify --force för arten."
+    "och togs bort. Kör web verify --force för arten: den hämtar inspelningen igen från "
+    "Commons och kontrollerar den."
 )
 
 
@@ -196,12 +197,10 @@ def sweep_orphan_voices(data_out: Path, images_out: Path) -> VoiceSweep:
             record = load_record(path)
         except Exception:  # unreadable: not this sweep's to judge
             continue
-        audio = record.get("audio") if record is not None else None
-        if audio:
-            expected = audio.get("mp3Sha256")
+        if record is not None and record.get("audio"):
+            expected = record["audio"].get("mp3Sha256")
             if expected is None or file_sha256(voice) == expected:
                 continue
-            assert record is not None
             _distrust(path, record)
             error = delete_voice(images_out, qid)
             sweep.errors.append(

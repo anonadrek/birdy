@@ -1177,7 +1177,7 @@ def import_wave(
     for qid, record in sorted(records.items()):
         if not record.get("publish"):
             continue
-        reasons = unready_reasons(record)
+        reasons = unready_reasons(record, images_out=paths.images_out)
         if reasons:
             name = str(record.get("names", {}).get("sv", qid))
             result.republish.append(Republish(qid, name, reasons, republish_commands(qid, record)))
