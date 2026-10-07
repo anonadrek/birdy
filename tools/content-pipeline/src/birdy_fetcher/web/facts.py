@@ -131,20 +131,66 @@ def _entry(
     return entry, None
 
 
+def cap_by_topic(
+    entries: list[tuple[int, dict[str, Any]]], limit: int
+) -> tuple[list[tuple[int, dict[str, Any]]], list[tuple[int, dict[str, Any]]]]:
+    """(kept, dropped), both in the model's order. Over the limit the topics take turns: the
+    first fact of every topic, then the second of every topic and so on, the required topics
+    first in each turn and the others in the order the model first used them. Before the
+    R3 trial (2026-10-07) the first `limit` facts were kept, so a model that wrote 43 facts
+    lost every food, behaviour and look-alike fact (they come last). Within a topic the
+    model's earlier facts win."""
+    if len(entries) <= limit:
+        return entries, []
+    by_topic: dict[str, list[int]] = {}
+    for index, (_, entry) in enumerate(entries):
+        by_topic.setdefault(str(entry["topic"]), []).append(index)
+    order = [t for t in REQUIRED_TOPICS if t in by_topic]
+    order += [t for t in by_topic if t not in REQUIRED_TOPICS]
+    chosen: set[int] = set()
+    turn = 0
+    while len(chosen) < limit:
+        for topic in order:
+            if turn < len(by_topic[topic]) and len(chosen) < limit:
+                chosen.add(by_topic[topic][turn])
+        turn += 1
+    kept = [e for i, e in enumerate(entries) if i in chosen]
+    dropped = [e for i, e in enumerate(entries) if i not in chosen]
+    return kept, dropped
+
+
+def _cap_notes(dropped: list[tuple[int, dict[str, Any]]]) -> list[str]:
+    """One summary line and one line per dropped fact, for the step report."""
+    if not dropped:
+        return []
+    counts: dict[str, int] = {}
+    for _, entry in dropped:
+        label = TOPIC_SV[entry["topic"]]
+        counts[label] = counts.get(label, 0) + 1
+    summary = ", ".join(f"{label} {n}" for label, n in counts.items())
+    notes = [f"{len(dropped)} fakta över gränsen {MAX_FACTS} ströks ({summary})"]
+    notes += [
+        f"faktum {number} ströks, över gränsen {MAX_FACTS} ({TOPIC_SV[entry['topic']]}): "
+        f"{entry['sv']}"
+        for number, entry in dropped
+    ]
+    return notes
+
+
 def check_fact_sheet(
     out: FactSheetOutput, articles: dict[str, WikiArticle], scientific_index: dict[str, str]
 ) -> FactCheck:
     check = FactCheck()
-    kept: list[dict[str, Any]] = []
+    valid: list[tuple[int, dict[str, Any]]] = []
     for number, fact in enumerate(out.facts, start=1):
         entry, note = _entry(number, fact, articles, scientific_index)
         if note is not None:
             check.notes.append(note)
         if entry is not None:
-            kept.append(entry)
-    if len(kept) > MAX_FACTS:
-        check.notes.append(f"{len(kept) - MAX_FACTS} fakta över gränsen {MAX_FACTS} ströks")
-        kept = kept[:MAX_FACTS]
+            valid.append((number, entry))
+    capped, dropped = cap_by_topic(valid, MAX_FACTS)
+    check.notes += _cap_notes(dropped)
+    kept = [entry for _, entry in capped]
     check.facts = [{"id": f"f{i:02d}", **entry} for i, entry in enumerate(kept, start=1)]
 
     if out.sweden_status is not None:
