@@ -155,7 +155,7 @@ test.describe('gruppsidorna', () => {
     // only ONE Corvidae section either way, not a second one for the other spelling: family.latin, not
     // family.sv, drives the grouping (controller review, Task 8 fix wave). The pipeline now guarantees one
     // canonical Swedish name per Latin family, so real data never disagrees like this fixture does on
-    // purpose — the test exercises the safeguard, not a case the pipeline is expected to produce.
+    // purpose: the test exercises the safeguard, not a case the pipeline is expected to produce.
     const corvids = page.locator('.family').filter({ has: page.locator('[data-item]', { hasText: 'Skata' }) });
     await expect(corvids).toHaveCount(1);
     await expect(corvids.locator('[data-item]')).toHaveCount(2);

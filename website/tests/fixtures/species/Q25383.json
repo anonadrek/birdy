@@ -98,13 +98,13 @@
     "sentences": {
       "sv": [
         "Rapporteras mest i maj.",
-        "Nästan aldrig i november till mars.",
-        "Vanligast i rapporterna från Testlän, Provlän och Exempellän."
+        "Rapporteras sällan i november till mars.",
+        "Andelen av alla fågelrapporter är högst i Testlän, Provlän och Exempellän."
       ],
       "en": [
         "Reported most in May.",
-        "Almost never in November to March.",
-        "Most common in reports from Testshire, Sampleshire and Exampleshire."
+        "Rarely reported in November to March.",
+        "Its share of all bird reports is highest in Testshire, Sampleshire and Exampleshire."
       ]
     },
     "statusSignal": {

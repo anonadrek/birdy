@@ -352,6 +352,7 @@
     "mapCaption": "Share of all bird reports per county in Artportalen, 2016 to 2025.",
     "mapLegend": ["No reports", "Small share", "Medium share", "Large share"],
     "monthLetters": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+    "monthNames": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     "moreFamily": "More in the {family} family",
     "moreGroup": "More {group}",
     "appHeadline": "Not sure what you are seeing?",
@@ -368,13 +369,15 @@
     "unknownRecordist": "unknown recordist",
     "edited": "edited",
     "trimmedEdited": "trimmed and edited",
-    "textCredit": "The text is based on Wikipedia and may be shared under",
+    "resized": "resized",
+    "licensePublicDomain": "public domain",
+    "textCredit": "The text was written with AI from facts in Wikipedia and may be shared under",
     "sources": "Sources",
     "articleSv": "Swedish article",
     "articleEn": "English article",
     "articleDe": "German article",
     "dataCreditReports": "Report data: Artportalen (SLU Swedish Species Information Centre) via {gbif}, 2016 to 2025.",
-    "dataCreditRedList": "Red list: The Swedish Red List 2025, SLU Swedish Species Information Centre.",
+    "dataCreditRedList": "Red list: The Swedish Red List 2025, SLU Swedish Species Information Centre via {gbif}.",
     "reviewed": "Checked against sources on {date}.",
     "aboutLink": "How we make these pages",
     "reportError": "Found a mistake? Write to us.",
@@ -424,7 +427,7 @@
       {
         "heading": "The licences",
         "paragraphs": [
-          "The texts on the species and comparison pages are based on Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and the Wikipedia articles and share under the same licence. Photos and recordings have their own licences, and every page names the author, licence and source for them. The photos are shown unchanged, only scaled down. The recordings are edited (at most 20 seconds, mono, loudness evened out, MP3), and an edited CC BY-SA recording is shared under the same licence as the original."
+          "The texts on the species and comparison pages are based on Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and the Wikipedia articles and share under the same licence. Photos and recordings have their own licences, and every page names the author, licence and source for them. The photos are scaled down, otherwise unchanged. The recordings are edited (at most 20 seconds, mono, loudness evened out, MP3), and an edited CC BY-SA recording is shared under the same licence as the original."
         ]
       },
       {

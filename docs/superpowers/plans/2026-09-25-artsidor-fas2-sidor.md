@@ -21,7 +21,7 @@
 ## Avvikelser från specen (medvetna, små)
 
 1. **Skriptet heter `npm run verify`**, eftersom `npm run check` redan är `astro check`. Testdatans variant heter `npm run verify:fixtures`.
-2. **Approtan, spelarens etikett och textcrediten nämner inte artens namn i löptext.** "Birdy känner igen talgoxe på foto" blir fel böjning på svenska och datan har inte bestämd form. Approtan säger "arten" / "this species" i fyra varianter efter `identifiable`, spelarens etikett är "Inspelning: Talgoxe", och textcrediten är "Texten bygger på Wikipedia och får delas under CC BY-SA 4.0. Källor: svenska artikeln, engelska artikeln, tyska artikeln" med länkar till revisionerna. Kontrolleras i Task 15:s testdata-skärmdumpar (ändrat 2026-10-05 (b): ingen förhandsvisning av riktig data att läsa igenom längre).
+2. **Approtan, spelarens etikett och textcrediten nämner inte artens namn i löptext.** "Birdy känner igen talgoxe på foto" blir fel böjning på svenska och datan har inte bestämd form. Approtan säger "arten" / "this species" i fyra varianter efter `identifiable`, spelarens etikett är "Inspelning: Talgoxe", och textcrediten är "Texten är skriven med AI ur fakta från Wikipedia och får delas under CC BY-SA 4.0. Källor: svenska artikeln, engelska artikeln, tyska artikeln" (ändrat 2026-10-07, controller-granskning: AI-märkning tillagd, samma beslut som appens `profile_text_credit`, var "Texten bygger på Wikipedia och får delas under CC BY-SA 4.0. ...") med länkar till revisionerna. Kontrolleras i Task 15:s testdata-skärmdumpar (ändrat 2026-10-05 (b): ingen förhandsvisning av riktig data att läsa igenom längre).
 3. **Sökfältet i kategoriraden skickar `q` till ingångssidan**, som gör filtreringen.
 4. **Artkort och förväxlingsfoton har tom alt-text.** Namnet står som text i samma länk eller bredvid.
 5. **Grupper utan någon byggd art får varken sida, chip eller kort.** Specen säger att chipsen gäller grupper med minst en publicerad art; samma regel används för gruppsidan och kortet, annars hade det funnits tomma sidor.
@@ -54,7 +54,7 @@
 |---|---|
 | `scripts/env-run.mjs` | Kör ett kommando med extra miljövariabler (Windows och macOS). |
 | `src/lib/species-source.mjs` | Var datan ligger, vem som får en sida, inspelningarnas adresser. Delas av config, sidor och skript. |
-| `tests/fixtures/make-species-fixtures.mjs` | Skriver testdatan (20 arter, 4 jämförelser, testbilder, tysta mp3). |
+| `tests/fixtures/make-species-fixtures.mjs` | Skriver testdatan (21 arter, 4 jämförelser, testbilder, tysta mp3; uppdaterat 2026-10-07, Task 9s granskning lade till en opublicerad art). |
 | `tests/fixtures/species/*.json`, `tests/fixtures/comparisons/*.json`, `tests/fixtures/species-assets/**` | Testdatan (genererad, committad). |
 | `tests/unit/species-source.unit.mjs` | Enhetstester med `node --test`. |
 | `scripts/build-sweden-counties.mjs`, `src/data/sweden-counties.json` | Länsgränserna som SVG-banor (Natural Earth). |
@@ -264,6 +264,18 @@ const SPECIES = [
   // Reviewed and written but not published: only preview builds (SPECIES_PREVIEW=1) show them.
   { qid: 'Q26209', sv: 'Större hackspett', en: 'Great Spotted Woodpecker', sci: 'Dendrocopos major', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['storre-hackspett', 'great-spotted-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', publish: false, look: ['Q210418'] },
   { qid: 'Q210418', sv: 'Tretåig hackspett', en: 'Eurasian Three-toed Woodpecker', sci: 'Picoides tridactylus', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['tretaig-hackspett', 'eurasian-three-toed-woodpecker'], iucn: 'LC', red: 'NT', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', publish: false, look: ['Q26209'] },
+  // Absent in Sweden (controller review, Task 9): `data` exists (totalReports below the 200-report
+  // threshold, spec §9.2, plus the presence sentence that becomes a written fact), but no months/counties
+  // (so no chart or map) and no swedishRedList (a species with too few reports and no red-list entry is
+  // not assessed, spec Revision 2026-10-07). Exercises `reportData={Boolean(s.data)}` (SpeciesArticle,
+  // Task 10, not written yet): the data credit must still show even though months/counties are both
+  // missing. `publish: false` on purpose (preview-only, like the two woodpeckers above): `other` is
+  // otherwise an inactive group and this would be its first published species, which would quietly
+  // change the hub's active-group and all-species counts that Task 7's and Task 8's already-passing
+  // tests hardcode (`.groups a` is 7, the hub's `[data-item]` is 16, a group page's `.catbar .chip` is
+  // 8): a cost not worth paying just to add this one fixture. Flip it when Task 10 is implemented, if
+  // its test wants to visit the built page rather than only read the fixture data.
+  { qid: 'Q25411', sv: 'Blåkråka', en: 'European Roller', sci: 'Coracias garrulus', fam: ['Coraciidae', 'Blåkråkor'], group: 'other', slug: ['blakraka', 'european-roller'], iucn: 'LC', id: [false, false], de: true, status: 'absent', absent: true, publish: false },
   // Never a page: one failed, one pending (facts exist, text not written yet).
   { qid: 'Q166171', sv: 'Gröngöling', en: 'European Green Woodpecker', sci: 'Picus viridis', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['grongoling', 'european-green-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], recordStatus: 'failed' },
   { qid: 'Q143284', sv: 'Spillkråka', en: 'Black Woodpecker', sci: 'Dryocopus martius', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['spillkraka', 'black-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], recordStatus: 'pending' },
@@ -323,12 +335,12 @@ function dataFor(sp) {
     raw: { speciesByMonth: [], allBirdsByMonth: [], speciesByCounty: {}, allBirdsByCounty: {} },
     sentences: summer
       ? {
-          sv: ['Rapporteras mest i maj.', 'Nästan aldrig i november till mars.', 'Vanligast i rapporterna från Testlän, Provlän och Exempellän.'],
-          en: ['Reported most in May.', 'Almost never in November to March.', 'Most common in reports from Testshire, Sampleshire and Exampleshire.'],
+          sv: ['Rapporteras mest i maj.', 'Rapporteras sällan i november till mars.', 'Andelen av alla fågelrapporter är högst i Testlän, Provlän och Exempellän.'],
+          en: ['Reported most in May.', 'Rarely reported in November to March.', 'Its share of all bird reports is highest in Testshire, Sampleshire and Exampleshire.'],
         }
       : {
-          sv: ['Rapporteras året runt.', 'Vanligast i rapporterna från Testlän, Provlän och Exempellän.'],
-          en: ['Reported all year round.', 'Most common in reports from Testshire, Sampleshire and Exampleshire.'],
+          sv: ['Rapporteras året runt.', 'Rapporteras från alla 21 län.'],
+          en: ['Reported all year round.', 'Reported from all 21 counties.'],
         },
     statusSignal: { contradicts: null },
   };
@@ -455,10 +467,12 @@ console.log(`fixtures: ${SPECIES.length} arter och ${COMPARISONS.length} jämfö
 
 **Avvikelse vid genomförandet (Task 8:s granskning 2026-10-07):** Kaja:s (`Q25345384`) `fam[1]` i den faktiska generatorn är `'Kråkor'`, inte `'Kråkfåglar'` som i koden ovan, så att Kaja och Skata (båda `Corvidae` i latin) deliberat har OLIKA `family.sv` i testdatan. Det är en avsiktlig divergens, inte ett misstag: gruppsidan (Task 8) grupperar efter `family.latin` som ett skyddsnät, och fixturen behöver testa att skyddsnätet fungerar även om `family.sv` skulle skilja sig. Den verkliga pipelinen garanterar numera ett enda svenskt familjenamn per latinsk familj (`web/families.py`, BirdLife Sveriges NL20), så den här situationen uppstår inte i riktig data, men skyddsnätet (och testet av det) behålls ändå.
 
+**Avvikelse vid genomförandet (controller-granskning 2026-10-07, Task 9):** `dataFor()`s mallmeningar ovan är uppdaterade till pipelinens faktiska ordval (`web/datamod.py`, fix wave 2026-10-07, efter att den här planen skrevs): "Rapporteras sällan i …" i stället för "Nästan aldrig i …", och "Rapporteras från alla 21 län."/"Andelen av alla fågelrapporter är högst i …" i stället för "Vanligast i rapporterna från …" (se spec §9.2, synkad samma dag). `SPECIES`-arrayen har dessutom en 21:a post, Blåkråka (`Q25411`, `absent: true`): `dataFor()` har en tidig retur för `sp.absent` som ger `data` utan `months`/`counties`, bara `totalReports: 0` och förekomstmeningen ("Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025." / samma på engelska) -- en fixture för `reportData={Boolean(s.data)}` (Task 10s tillägg). Posten är `publish: false` (se dess egen kommentar i `SPECIES`-arrayen för varför: annars hade hubbens och gruppsidornas redan godkända antal i Task 7 och 8s tester ändrats). `...(sp.months ? { data: dataFor(sp) } : {})` i `record()` nedan är därför `...(sp.months || sp.absent ? { data: dataFor(sp) } : {})` i den faktiska generatorn.
+
 - [ ] **Step 7: Kör generatorn**
 
 Run: `node tests/fixtures/make-species-fixtures.mjs && ls tests/fixtures/species | wc -l && ls tests/fixtures/comparisons && ls tests/fixtures/species-assets/Q25485`
-Expected: `fixtures: 20 arter och 4 jämförelser i tests/fixtures/`, `20`, fyra jämförelsefiler (`Q210418_Q26209.json Q25307_Q25345384.json Q25384_Q25756.json Q25404_Q25485.json`) och `extra.webp hero.webp voice.mp3`. Totalt cirka 350 KB.
+Expected (uppdaterat 2026-10-07, Task 9s granskning, 20 → 21 arter): `fixtures: 21 arter och 4 jämförelser i tests/fixtures/`, `21`, fyra jämförelsefiler (`Q210418_Q26209.json Q25307_Q25345384.json Q25384_Q25756.json Q25404_Q25485.json`) och `extra.webp hero.webp voice.mp3`. Totalt cirka 350 KB.
 
 - [ ] **Step 8: Skript och gitignore**
 
@@ -1168,6 +1182,23 @@ export function wikiUrl(lang: WikiLang, ref: WikiRef): string {
   return `https://${lang}.wikipedia.org/w/index.php?title=${title}&oldid=${ref.revision}`;
 }
 
+/** The Creative Commons deed localized to the page's language (controller review, Task 9): the data
+ * always stores the canonical (English) deed URL (pipeline's LICENSE_URLS), the website appends
+ * `deed.sv` for Swedish pages only. JSON-LD (SpeciesArticle's `license`/`acquireLicensePage`) keeps the
+ * canonical URL untouched, this is for the human-readable credit links only. */
+export function localizedLicenseUrl(url: string, locale: Locale): string {
+  return locale === 'sv' && url.startsWith('https://creativecommons.org/licenses/') ? `${url}deed.sv` : url;
+}
+
+/** The credit text for one licence value. The pipeline's canonical spelling for an unattributed licence
+ * is "Public domain" (capital P, `canonical_license()`); the app shows it lowercase in both languages
+ * ("public domain", `photo_credits_public_domain` in strings.xml) instead of translating it, and the
+ * website matches that (controller review, Task 9). Every other licence (CC0, CC BY …) is shown as the
+ * pipeline wrote it. */
+export function licenseLabel(license: string, t: Copy): string {
+  return license === 'Public domain' ? t.species.licensePublicDomain : license;
+}
+
 /** The Wikipedia articles a species' text is based on, in the order Swedish, English, German. */
 export function wikiSources(s: Species): { lang: WikiLang; ref: WikiRef }[] {
   return (['sv', 'en', 'de'] as const).flatMap((lang) => {
@@ -1405,6 +1436,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "mapCaption": "Andel av alla fågelrapporter per län i Artportalen 2016 till 2025.",
     "mapLegend": ["Inga rapporter", "Liten andel", "Mellanstor andel", "Stor andel"],
     "monthLetters": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+    "monthNames": ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"],
     "moreFamily": "Fler {family}",
     "moreGroup": "Fler {group}",
     "appHeadline": "Osäker på vad du ser?",
@@ -1421,13 +1453,15 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "unknownRecordist": "okänd upphovsperson",
     "edited": "bearbetad",
     "trimmedEdited": "klippt och bearbetad",
-    "textCredit": "Texten bygger på Wikipedia och får delas under",
+    "resized": "nedskalad",
+    "licensePublicDomain": "public domain",
+    "textCredit": "Texten är skriven med AI ur fakta från Wikipedia och får delas under",
     "sources": "Källor",
     "articleSv": "svenska artikeln",
     "articleEn": "engelska artikeln",
     "articleDe": "tyska artikeln",
     "dataCreditReports": "Rapportdata: Artportalen (SLU Artdatabanken) via {gbif}, 2016 till 2025.",
-    "dataCreditRedList": "Rödlista: Rödlistade arter i Sverige 2025, SLU Artdatabanken.",
+    "dataCreditRedList": "Rödlista: Rödlistade arter i Sverige 2025, SLU Artdatabanken via {gbif}.",
     "reviewed": "Kontrollerad mot källorna {date}.",
     "aboutLink": "Så gör vi artsidorna",
     "reportError": "Hittade du ett fel? Skriv till oss.",
@@ -1477,7 +1511,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       {
         "heading": "Licenserna",
         "paragraphs": [
-          "Texterna på art- och jämförelsesidorna bygger på Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy och Wikipediaartiklarna som källor och delar vidare under samma licens. Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem. Fotona visas oförändrade, bara nedskalade. Inspelningarna är bearbetade (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet."
+          "Texterna på art- och jämförelsesidorna bygger på Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy och Wikipediaartiklarna som källor och delar vidare under samma licens. Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem. Fotona är nedskalade, i övrigt oförändrade. Inspelningarna är bearbetade (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet."
         ]
       },
       {
@@ -1573,6 +1607,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "mapCaption": "Share of all bird reports per county in Artportalen, 2016 to 2025.",
     "mapLegend": ["No reports", "Small share", "Medium share", "Large share"],
     "monthLetters": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+    "monthNames": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     "moreFamily": "More in the {family} family",
     "moreGroup": "More {group}",
     "appHeadline": "Not sure what you are seeing?",
@@ -1589,13 +1624,15 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "unknownRecordist": "unknown recordist",
     "edited": "edited",
     "trimmedEdited": "trimmed and edited",
-    "textCredit": "The text is based on Wikipedia and may be shared under",
+    "resized": "resized",
+    "licensePublicDomain": "public domain",
+    "textCredit": "The text was written with AI from facts in Wikipedia and may be shared under",
     "sources": "Sources",
     "articleSv": "Swedish article",
     "articleEn": "English article",
     "articleDe": "German article",
     "dataCreditReports": "Report data: Artportalen (SLU Swedish Species Information Centre) via {gbif}, 2016 to 2025.",
-    "dataCreditRedList": "Red list: The Swedish Red List 2025, SLU Swedish Species Information Centre.",
+    "dataCreditRedList": "Red list: The Swedish Red List 2025, SLU Swedish Species Information Centre via {gbif}.",
     "reviewed": "Checked against sources on {date}.",
     "aboutLink": "How we make these pages",
     "reportError": "Found a mistake? Write to us.",
@@ -1645,7 +1682,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       {
         "heading": "The licences",
         "paragraphs": [
-          "The texts on the species and comparison pages are based on Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and the Wikipedia articles and share under the same licence. Photos and recordings have their own licences, and every page names the author, licence and source for them. The photos are shown unchanged, only scaled down. The recordings are edited (at most 20 seconds, mono, loudness evened out, MP3), and an edited CC BY-SA recording is shared under the same licence as the original."
+          "The texts on the species and comparison pages are based on Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and the Wikipedia articles and share under the same licence. Photos and recordings have their own licences, and every page names the author, licence and source for them. The photos are scaled down, otherwise unchanged. The recordings are edited (at most 20 seconds, mono, loudness evened out, MP3), and an edited CC BY-SA recording is shared under the same licence as the original."
         ]
       },
       {
@@ -1669,6 +1706,8 @@ Expected: paritet OK, inga streck, ingen noggrannhetssiffra och inga nya typfel 
 git add src/content/copy.sv.json src/content/copy.en.json
 git commit -m "feat(website): texter för artsidorna, jämförelserna och om-sidan (SV och EN)"
 ```
+
+(Tillägg, controller-granskning 2026-10-07, samma commit som Task 9: `monthNames` (12 fulla månadsnamn, till `MonthChart`s nya per-stapel-titel), `resized` ("nedskalad"/"resized", sist i fotocrediten) och `licensePublicDomain` ("public domain", samma gemener-text på båda språken som appens `photo_credits_public_domain`, aldrig översatt) är tre nya nycklar. `textCredit` har en ny mening med AI-märkning, samma beslut som appens `profile_text_credit` ("Texten är skriven med AI ur fakta från Wikipedia och får delas under" + den länkade licensen, oförändrad kod). `dataCreditRedList` fick ett eget `{gbif}`-mönster, samma som `dataCreditReports` redan hade, så att rödlistecrediten också länkar till GBIF. `speciesAbout.sections` ("Licenserna") fick ordföljden "Fotona är nedskalade, i övrigt oförändrade." / "The photos are scaled down, otherwise unchanged." (var "Fotona visas oförändrade, bara nedskalade." / "The photos are shown unchanged, only scaled down."). Se Task 9s kodblock och tillägg för hur dessa nycklar används.)
 
 ---
 
@@ -2599,10 +2638,12 @@ Komponenterna testas genom artsidan i Task 10 och jämförelsesidan i Task 11.
 ---
 // Bars per month as SVG, drawn when the site is built (spec 2026-09-25 §5 and §7). One series on species
 // pages, two on comparison pages. Values are the species' share of all bird reports, scaled so the top
-// month is 100. The text alternative is the paragraph that `describedBy` points at.
+// month is 100. The text alternative is the paragraph that `describedBy` points at. Each bar also gets a
+// hover title built from Series.label and the full month name ("Talgoxe, oktober: 100"), controller
+// review Task 9, for sighted mouse users who don't read the aria-describedby paragraph.
 interface Series { label: string; values: number[]; tone: 'rust' | 'navy' }
-interface Props { id: string; title: string; letters: string[]; series: Series[]; describedBy: string }
-const { id, title, letters, series, describedBy } = Astro.props;
+interface Props { id: string; title: string; letters: string[]; monthNames: string[]; series: Series[]; describedBy: string }
+const { id, title, letters, monthNames, series, describedBy } = Astro.props;
 const W = 360;
 const TOP = 8;
 const H = 112;
@@ -2619,8 +2660,13 @@ const heightOf = (v: number) => (v > 0 ? Math.max(1.5, (v / 100) * H) : 0);
   {letters.map((letter, m) => (
     <g>
       {series.map((s, i) => {
-        const h = heightOf(s.values[m] ?? 0);
-        return <rect data-month={m + 1} data-series={i} class={`bar bar--${s.tone}`} x={(m * SLOT + offset(i)).toFixed(1)} y={(BASE - h).toFixed(1)} width={barW} height={h.toFixed(1)} rx="2" />;
+        const v = s.values[m] ?? 0;
+        const h = heightOf(v);
+        return (
+          <rect data-month={m + 1} data-series={i} class={`bar bar--${s.tone}`} x={(m * SLOT + offset(i)).toFixed(1)} y={(BASE - h).toFixed(1)} width={barW} height={h.toFixed(1)} rx="2">
+            <title>{`${s.label}, ${monthNames[m]}: ${v}`}</title>
+          </rect>
+        );
       })}
       <text x={(m * SLOT + SLOT / 2).toFixed(1)} y={BASE + 16} class="month">{letter}</text>
     </g>
@@ -2628,13 +2674,15 @@ const heightOf = (v: number) => (v > 0 ? Math.max(1.5, (v / 100) * H) : 0);
 </svg>
 
 <style>
-  .mchart { display: block; width: 100%; height: auto; }
+  .mchart { display: block; width: 100%; max-width: 26rem; height: auto; }
   .axis { stroke: var(--line); stroke-width: 1; }
   .bar--rust { fill: var(--rust); }
   .bar--navy { fill: var(--navy); }
   .month { font-family: var(--font-sans); font-size: 11px; fill: var(--muted); text-anchor: middle; }
 </style>
 ```
+
+(Tillägg, controller-granskning 2026-10-07: `monthNames` är en ny obligatorisk prop, 12 fulla månadsnamn (`t.species.monthNames`, Task 5s copy-filer), skild från `letters` som fortfarande är de förkortade bokstäverna under staplarna. Varje stapel kapslar nu en egen `<title>`, så Task 10 och 11s anrop av `<MonthChart>` måste skicka `monthNames={t.species.monthNames}` utöver `letters={t.species.monthLetters}`.)
 
 - [ ] **Step 2: Länskartan**
 
@@ -2643,22 +2691,36 @@ const heightOf = (v: number) => (v > 0 ? Math.max(1.5, (v / 100) * H) : 0);
 ```astro
 ---
 // Sweden's 21 counties shaded by the species' share of all bird reports (spec 2026-09-25 §5 and §9.2).
-// Geometry: src/data/sweden-counties.json (npm run assets:counties). Four shades: no reports, 1 to 33,
-// 34 to 66 and 67 to 100 per cent of the highest county.
+// Geometry: src/data/sweden-counties.json (npm run assets:counties). Four shades: no reports (a hatch
+// pattern, not a flat colour, controller review Task 9: a solid --card tile reads as "unstyled", not
+// "zero"), 1 to 33, 34 to 66 and 67 to 100 per cent of the highest county.
 import counties from '../../data/sweden-counties.json';
 import type { Locale } from '../../lib/i18n';
 
 interface Props { id: string; values: Record<string, number>; locale: Locale; title: string; legend: string[]; describedBy: string }
 const { id, values, locale, title, legend, describedBy } = Astro.props;
 const bucket = (v: number | undefined) => (!v ? 0 : v <= 33 ? 1 : v <= 66 ? 2 : 3);
+const hatchId = `${id}-hatch`;
 ---
 
 <div class="cmap" data-map={id}>
   <svg viewBox={counties.viewBox} role="img" aria-labelledby={`${id}-t`} aria-describedby={describedBy}>
     <title id={`${id}-t`}>{title}</title>
-    {counties.counties.map((c) => (
-      <path d={c.d} class={`b${bucket(values[c.code])}`} data-county={c.code}><title>{locale === 'sv' ? c.sv : c.en}</title></path>
-    ))}
+    <defs>
+      <pattern id={hatchId} width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="5" height="5" fill="var(--card)" />
+        <line x1="0" y1="0" x2="0" y2="5" stroke="var(--muted)" stroke-width="1.5" />
+      </pattern>
+    </defs>
+    {counties.counties.map((c) => {
+      const b = bucket(values[c.code]);
+      const name = locale === 'sv' ? c.sv : c.en;
+      return (
+        <path d={c.d} class={`b${b}`} fill={b === 0 ? `url(#${hatchId})` : undefined} data-county={c.code}>
+          <title>{`${name}: ${legend[b].toLowerCase()}`}</title>
+        </path>
+      );
+    })}
   </svg>
   <ul class="legend" role="list">
     {legend.map((label, i) => <li><span class={`sw b${i}`} aria-hidden="true"></span>{label}</li>)}
@@ -2667,20 +2729,24 @@ const bucket = (v: number | undefined) => (!v ? 0 : v <= 33 ? 1 : v <= 66 ? 2 : 
 
 <style>
   .cmap svg { display: block; width: 100%; height: auto; max-height: 420px; }
-  path { stroke: var(--muted); stroke-width: .6; stroke-linejoin: round; }
-  .b0 { fill: var(--card); }
+  /* A light border (--paper, the page background) so two adjacent --rust (b3) counties stay visually
+     distinct from each other, not just from their neighbours (controller review, Task 9).
+     vector-effect keeps the line the same width however the SVG is scaled. */
+  path { stroke: var(--paper); stroke-width: .75px; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
   .b1 { fill: var(--peach); }
   .b2 { fill: var(--apricot); }
   .b3 { fill: var(--rust); }
   .legend { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 12px; color: var(--muted); }
   .legend li { display: inline-flex; align-items: center; gap: 6px; }
   .sw { width: 12px; height: 12px; border-radius: 3px; border: 1px solid var(--muted); }
-  .sw.b0 { background: var(--card); }
+  .sw.b0 { background: repeating-linear-gradient(45deg, var(--card) 0 2px, var(--muted) 2px 3px); }
   .sw.b1 { background: var(--peach); }
   .sw.b2 { background: var(--apricot); }
   .sw.b3 { background: var(--rust); }
 </style>
 ```
+
+(Tillägg, controller-granskning 2026-10-07: "Inga rapporter" är ett diagonalt mönster, inte `var(--card)` som en platt fyllning, eftersom en platt kortfärgad ruta läses som "ostylad" snarare än "noll", samma mönster i legendens `.sw.b0`. Varje läns `<title>` säger nu nivån ("Stockholms län: stor andel"), inte bara namnet. Kantlinjen mellan länen är `var(--paper)` (sidans bakgrund) i stället för `var(--muted)`, så att två angränsande `--rust`-län (b3) syns som skilda län, inte en sammanhängande yta; `vector-effect: non-scaling-stroke` håller linjen lika tjock oavsett hur SVG:n skalas.)
 
 - [ ] **Step 3: Spelaren**
 
@@ -2689,9 +2755,12 @@ const bucket = (v: number | undefined) => (!v ? 0 : v <= 33 ? 1 : v <= 66 ? 2 : 
 ```astro
 ---
 // One recording with its credit line right under it (spec 2026-09-25 §5; deviation 8 in the plan).
-// preload="none": nothing is downloaded until the visitor presses play.
+// preload="none": nothing is downloaded until the visitor presses play. Every recording is processed
+// (mono, level-normalised, re-encoded to MP3, spec Revision 2026-10-06), not only the clipped ones, so
+// the credit line always says so: "edited" or, when also clipped, "trimmed and edited" (CC BY and
+// CC BY-SA require the credit to say the work was changed).
 import { getCopy, type Locale } from '../../lib/i18n';
-import { audioHref, type Species } from '../../lib/species';
+import { audioHref, licenseLabel, localizedLicenseUrl, type Species } from '../../lib/species';
 
 interface Props { species: Species; locale: Locale; creditKey: string }
 const { species: s, locale, creditKey } = Astro.props;
@@ -2705,8 +2774,10 @@ const src = audioHref(s);
     <audio controls preload="none" src={src} aria-label={t.species.recordingLabel.replace('{name}', s.names[locale])}></audio>
     <figcaption data-credit-for={creditKey}>
       {t.species.recordingCredit} {audio.author ?? t.species.unknownRecordist},{' '}
-      {audio.licenseUrl ? <a href={audio.licenseUrl} rel="license noopener">{audio.license}</a> : audio.license},{' '}
-      {t.species.via} <a href={audio.sourceUrl} rel="noopener">Wikimedia Commons</a>, {audio.trimmed ? t.species.trimmedEdited : t.species.edited}
+      {/* rel="license" is reserved for the text credit's own CC BY-SA 4.0 link (controller review, Task 9);
+          "noopener" is dropped everywhere here since none of these links use target="_blank". */}
+      {audio.licenseUrl ? <a href={localizedLicenseUrl(audio.licenseUrl, locale)}>{audio.license}</a> : licenseLabel(audio.license, t)},{' '}
+      {t.species.via} <a href={audio.sourceUrl}>Wikimedia Commons</a>, {audio.trimmed ? t.species.trimmedEdited : t.species.edited}
     </figcaption>
   </figure>
 )}
@@ -2720,6 +2791,8 @@ const src = audioHref(s);
 </style>
 ```
 
+(Tillägg, controller-granskning 2026-10-07: `localizedLicenseUrl`/`licenseLabel` är två nya exporter i `species.ts`, tillagda till Task 4s kodblock, se noten där ovan. `rel="license"` tas bort här, `rel="noopener"` också (ingen av länkarna har `target="_blank"`).)
+
 **Obs:** inspelningarna kopieras in i `dist/audio/species/` först av byggkroken `astro:build:done` (Task 4), så spelaren blir tyst (404 på `<audio src>`) i `astro dev`; testa den med `npm run build:fixtures && npm run preview -- --port 4327` i stället.
 
 - [ ] **Step 4: Creditblocket**
@@ -2731,9 +2804,21 @@ const src = audioHref(s);
 // Credits for every photo, the Wikipedia articles, the data sources, the verification line
 // (spec Revision 2026-10-05: "Kontrollerad mot källorna {date}", no name) and the report link
 // (spec 2026-09-25 §5, §7 and §10). scripts/check-seo.mjs fails the build when one is missing.
+//
+// rel="license" is used only on the text credit's own CC BY-SA 4.0 link (controller review, Task 9):
+// it marks THIS page's own licence, not every external resource a photo or recording happens to be
+// under, so it does not belong on the photo/recording licence links. "noopener" is dropped everywhere
+// in this component: none of these links use target="_blank", so it has no effect.
 import { getCopy, type Locale } from '../../lib/i18n';
 import { CONTACT_EMAIL } from '../../lib/links';
-import { aboutHref, formatDate, wikiUrl, type SpeciesImage, type WikiLang, type WikiRef } from '../../lib/species';
+import { aboutHref, formatDate, licenseLabel, localizedLicenseUrl, wikiUrl, type SpeciesImage, type WikiLang, type WikiRef } from '../../lib/species';
+
+// GBIF dataset pages (not just the GBIF.org front page, controller review, Task 9), verified against the
+// GBIF API (api.gbif.org/v1/dataset/<key>) 2026-10-07: 38b4c89f… is "Artportalen" (SLU Swedish Species
+// Information Centre), 87e639cc… is "The Swedish Red List 2025" (same publisher).
+const GBIF_REPORTS_URL = 'https://www.gbif.org/dataset/38b4c89f-584c-41bb-bd8f-cd1def33e92f';
+const GBIF_RED_LIST_URL = 'https://www.gbif.org/dataset/87e639cc-30a9-4007-bd2c-b0cab60326b9';
+const CC_BY_SA_4 = 'https://creativecommons.org/licenses/by-sa/4.0/';
 
 interface Props {
   locale: Locale;
@@ -2749,7 +2834,8 @@ interface Props {
 const { locale, photos, articles, reportData, redList, reviewedAt, reportSubject } = Astro.props;
 const t = getCopy(locale);
 const labels: Record<WikiLang, string> = { sv: t.species.articleSv, en: t.species.articleEn, de: t.species.articleDe };
-const [gbifBefore, gbifAfter] = t.species.dataCreditReports.split('{gbif}');
+const [gbifReportsBefore, gbifReportsAfter] = t.species.dataCreditReports.split('{gbif}');
+const [gbifRedListBefore, gbifRedListAfter] = t.species.dataCreditRedList.split('{gbif}');
 const [reviewedBefore, reviewedAfter] = t.species.reviewed.split('{date}');
 ---
 
@@ -2757,26 +2843,26 @@ const [reviewedBefore, reviewedAfter] = t.species.reviewed.split('{date}');
   {photos.map(({ key, image }) => (
     <p data-credit-for={key}>
       {t.species.photoCredit} {image.author ?? t.species.unknownAuthor},{' '}
-      {image.licenseUrl ? <a href={image.licenseUrl} rel="license noopener">{image.license}</a> : image.license},{' '}
-      {t.species.via} <a href={image.sourceUrl} rel="noopener">Wikimedia Commons</a>
+      {image.licenseUrl ? <a href={localizedLicenseUrl(image.licenseUrl, locale)}>{image.license}</a> : licenseLabel(image.license, t)},{' '}
+      {t.species.via} <a href={image.sourceUrl}>Wikimedia Commons</a>, {t.species.resized}
     </p>
   ))}
   <p data-wiki-credit>
-    {t.species.textCredit} <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener">CC BY-SA 4.0</a>.
+    {t.species.textCredit} <a href={localizedLicenseUrl(CC_BY_SA_4, locale)} rel="license">CC BY-SA 4.0</a>.
     {' '}{t.species.sources}:{' '}
     {articles.map((a, i) => (
-      <Fragment>{i > 0 && ', '}<a href={wikiUrl(a.lang, a.ref)} rel="noopener" data-wiki={a.lang}>{a.name ? `${labels[a.lang]} (${a.name})` : labels[a.lang]}</a></Fragment>
+      <Fragment>{i > 0 && ', '}<a href={wikiUrl(a.lang, a.ref)} data-wiki={a.lang}>{a.name ? `${labels[a.lang]} (${a.name})` : labels[a.lang]}</a></Fragment>
     ))}
   </p>
   {(reportData || redList) && (
     <p data-data-credit>
-      {reportData && <Fragment>{gbifBefore}<a href="https://www.gbif.org/" rel="noopener">GBIF.org</a>{gbifAfter}</Fragment>}
+      {reportData && <Fragment>{gbifReportsBefore}<a href={GBIF_REPORTS_URL}>GBIF.org</a>{gbifReportsAfter}</Fragment>}
       {reportData && redList && ' '}
-      {redList && t.species.dataCreditRedList}
+      {redList && <Fragment>{gbifRedListBefore}<a href={GBIF_RED_LIST_URL}>GBIF.org</a>{gbifRedListAfter}</Fragment>}
     </p>
   )}
   <p class="reviewed">
-    <span data-reviewed-by>{reviewedBefore}<time datetime={reviewedAt} data-reviewed>{formatDate(reviewedAt, locale)}</time>{reviewedAfter}</span>
+    <span data-checked>{reviewedBefore}<time datetime={reviewedAt} data-reviewed>{formatDate(reviewedAt, locale)}</time>{reviewedAfter}</span>
     {' '}<a href={aboutHref(locale)}>{t.species.aboutLink}</a>
   </p>
   <p class="report"><a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(reportSubject)}`}>{t.species.reportError}</a></p>
@@ -2793,6 +2879,8 @@ const [reviewedBefore, reviewedAfter] = t.species.reviewed.split('{date}');
   .report a { color: var(--rust); }
 </style>
 ```
+
+(Tillägg, controller-granskning 2026-10-07: fotocrediten slutar nu med `, {t.species.resized}` ("nedskalad"/"resized"), samma ordval som appens creditrad. Textcrediten har en ny mening med AI-märkning (Task 5s `textCredit`-copy ändrad, se noten vid Task 5 ovan) och licenslänken lokaliseras till `deed.sv` på svenska sidor. Datacrediten länkar nu till GBIF:s egna datasetsidor för BÅDE rapportdata och rödlistan (`dataCreditRedList` fick ett eget `{gbif}`-mönster, samma som `dataCreditReports` redan hade). `data-reviewed-by` döpt om till `data-checked` (mindre missvisande: ingen person, bara en kontroll); Task 10s test uppdaterat nedan.)
 
 - [ ] **Step 5: Bygg och kontrollera paletten**
 
@@ -2843,7 +2931,7 @@ test.describe('artsidan', () => {
 
     await expect(page.locator('[data-chart] rect[data-month]')).toHaveCount(12);
     await expect(page.locator('[data-map] path[data-county]')).toHaveCount(21);
-    await expect(page.locator('.data-summary')).toHaveText('Rapporteras året runt. Vanligast i rapporterna från Testlän, Provlän och Exempellän.');
+    await expect(page.locator('.data-summary')).toHaveText('Rapporteras året runt. Rapporteras från alla 21 län.');
     await expect(page.locator('[data-data-credit]')).toContainText('Artportalen');
 
     const looks = page.locator('.looks li');
@@ -2857,7 +2945,7 @@ test.describe('artsidan', () => {
     for (const key of keys) await expect(page.locator(`[data-credit-for="${key}"]`)).toHaveCount(1);
     await expect(page.locator('[data-wiki-credit] [data-wiki]')).toHaveCount(3);
     await expect(page.locator('[data-wiki-credit]')).toContainText('CC BY-SA 4.0');
-    await expect(page.locator('[data-reviewed-by]')).toContainText('Kontrollerad mot källorna 20 november 2026');
+    await expect(page.locator('[data-checked]')).toContainText('Kontrollerad mot källorna 20 november 2026');
     await expect(page.locator('time[data-reviewed]')).toHaveAttribute('datetime', '2026-11-20');
     await expect(page.locator('.credits a[href="/sv/arter/om-artsidorna/"]')).toHaveCount(1);
     await expect(page.locator('a[href*="utm_campaign%3Dtalgoxe"]')).toHaveCount(1);
@@ -2873,7 +2961,7 @@ test.describe('artsidan', () => {
   test('engelska sidan: kontrollraden och jämförelselänken', async ({ page }) => {
     await page.goto('/species/great-tit/');
     await expect(page.locator('h1')).toHaveText('Great Tit');
-    await expect(page.locator('[data-reviewed-by]')).toContainText('Checked against sources on 20 November 2026.');
+    await expect(page.locator('[data-checked]')).toContainText('Checked against sources on 20 November 2026.');
     await expect(page.locator('.look-compare')).toHaveText('Compare the Eurasian Blue Tit and the Great Tit');
     await expect(page.locator('.sp-app')).toContainText('from a photo or its song');
   });
@@ -3123,7 +3211,7 @@ const jsonLd = [
                 <div class="fig-chart">
                   <h3 class="fig-h">{t.species.chartTitle}</h3>
                   <figure>
-                    <MonthChart id={`chart-${s.qid}`} title={t.species.chartTitle} letters={t.species.monthLetters} series={[{ label: name, values: months, tone: 'rust' }]} describedBy={summaryId} />
+                    <MonthChart id={`chart-${s.qid}`} title={t.species.chartTitle} letters={t.species.monthLetters} monthNames={t.species.monthNames} series={[{ label: name, values: months, tone: 'rust' }]} describedBy={summaryId} />
                     <figcaption class="fig-caption">{t.species.chartCaption}</figcaption>
                   </figure>
                 </div>
@@ -3192,7 +3280,7 @@ const jsonLd = [
             locale={locale}
             photos={photos}
             articles={wikiSources(s)}
-            reportData={Boolean(months || counties)}
+            reportData={Boolean(s.data)}
             redList={Boolean(redCode)}
             reviewedAt={reviewed}
             reportSubject={t.species.reportSubject.replace('{name}', name)}
@@ -3307,6 +3395,8 @@ Expected: PASS (alla). Om datumformatet skiljer (Node utan full ICU ger "Novembe
 git add src/components/species/SpeciesArticle.astro src/lib/species-routes.ts src/components/species/SpeciesRoute.astro tests/species.spec.ts
 git commit -m "feat(website): artsidan med diagram, karta, inspelning, förväxlingsarter, granskningsrad och JSON-LD"
 ```
+
+(Tillägg, controller-granskning 2026-10-07: `reportData={Boolean(s.data)}` (kodblocket ovan, var `Boolean(months || counties)`) så att en art som förekommer så sällan att den inte får diagram eller karta (spec §9.2, "För lite data") ändå visar datacrediten -- `data` finns (`totalReports` och förekomstmeningen), bara `months`/`counties` saknas. Task 1:s fixturgenerator har sedan samma granskning en art för just detta: Blåkråka (`Q25411`, `absent: true` i `SPECIES`-arrayen), `data.sentences` är bara "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025." / "Does not occur in Sweden: no reports in Artportalen 2016 to 2025.", inget `months`/`counties`, inget `swedishRedList`. Den är avsiktligt `publish: false` (som de två hackspettarna) så att den inte rör om i hubbens och gruppsidornas redan godkända räkningar (Task 7 och 8s tester); vill Task 10s eget test besöka den byggda sidan, flippa `publish` eller bygg mot `SPECIES_PREVIEW=1` i stället för standardbygget. Datameningarnas ordval är dessutom ändrat rakt över (`Rapporteras sällan i …` i stället för `Nästan aldrig i …`, `Rapporteras från alla 21 län.`/`Andelen av alla fågelrapporter är högst i …` i stället för `Vanligast i rapporterna från …`, pipelinens fix wave 2026-10-07 efter att den här planen skrevs) -- Steg 1s `.data-summary`-rad ovan är uppdaterad till `'Rapporteras året runt. Rapporteras från alla 21 län.'`.)
 
 ---
 
@@ -3527,6 +3617,7 @@ const jsonLd = [
             id={`chart-${c.a}-${c.b}`}
             title={t.species.compareChart}
             letters={t.species.monthLetters}
+            monthNames={t.species.monthNames}
             series={pair.map((p, i) => ({ label: p.species.names[locale], values: p.species.data!.months!, tone: tones[i] }))}
             describedBy={summaryId}
           />
@@ -3588,6 +3679,8 @@ const jsonLd = [
   }
 </style>
 ```
+
+(Tillägg, controller-granskning 2026-10-07: `<MonthChart>` behöver `monthNames={t.species.monthNames}` (se Task 9s tillägg). **Håll seriernas ordning identisk i diagrammet och i `.clegend`:** båda bygger på samma `pair.map((p, i) => …)` med samma `tones`-lista, i samma `pair`-ordning (Task 4s `comparisonPair()`, låst till den svenska slug-ordningen), så den första stapelfärgen (rust) och den första legendraden pekar alltid på samma art. De två listorna är ändå separat kod (en `series`-array till `<MonthChart>`, en egen `<ul class="clegend">`-rendering): ändra aldrig den ena utan den andra, och lägg aldrig till ett sorterings- eller filtersteg på bara den ena. `MonthChart`s nya per-stapel-`<title>` (`Series.label`) gör en felaktig ordning mer synlig, inte mindre: hovrar man en stapel ser man artnamnet direkt, så en legend som pekar fel sticker ut.)
 
 - [ ] **Step 4: Routen med jämförelser**
 

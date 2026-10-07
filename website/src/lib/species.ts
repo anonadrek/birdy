@@ -275,6 +275,23 @@ export function wikiUrl(lang: WikiLang, ref: WikiRef): string {
   return `https://${lang}.wikipedia.org/w/index.php?title=${title}&oldid=${ref.revision}`;
 }
 
+/** The Creative Commons deed localized to the page's language (controller review, Task 9): the data
+ * always stores the canonical (English) deed URL (pipeline's LICENSE_URLS), the website appends
+ * `deed.sv` for Swedish pages only. JSON-LD (SpeciesArticle's `license`/`acquireLicensePage`) keeps the
+ * canonical URL untouched, this is for the human-readable credit links only. */
+export function localizedLicenseUrl(url: string, locale: Locale): string {
+  return locale === 'sv' && url.startsWith('https://creativecommons.org/licenses/') ? `${url}deed.sv` : url;
+}
+
+/** The credit text for one licence value. The pipeline's canonical spelling for an unattributed licence
+ * is "Public domain" (capital P, `canonical_license()`); the app shows it lowercase in both languages
+ * ("public domain", `photo_credits_public_domain` in strings.xml) instead of translating it, and the
+ * website matches that (controller review, Task 9). Every other licence (CC0, CC BY …) is shown as the
+ * pipeline wrote it. */
+export function licenseLabel(license: string, t: Copy): string {
+  return license === 'Public domain' ? t.species.licensePublicDomain : license;
+}
+
 /** The Wikipedia articles a species' text is based on, in the order Swedish, English, German. */
 export function wikiSources(s: Species): { lang: WikiLang; ref: WikiRef }[] {
   return (['sv', 'en', 'de'] as const).flatMap((lang) => {

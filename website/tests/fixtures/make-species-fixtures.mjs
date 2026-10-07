@@ -51,6 +51,18 @@ const SPECIES = [
   // Reviewed and written but not published: only preview builds (SPECIES_PREVIEW=1) show them.
   { qid: 'Q26209', sv: 'Större hackspett', en: 'Great Spotted Woodpecker', sci: 'Dendrocopos major', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['storre-hackspett', 'great-spotted-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', publish: false, look: ['Q210418'] },
   { qid: 'Q210418', sv: 'Tretåig hackspett', en: 'Eurasian Three-toed Woodpecker', sci: 'Picoides tridactylus', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['tretaig-hackspett', 'eurasian-three-toed-woodpecker'], iucn: 'LC', red: 'NT', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', publish: false, look: ['Q26209'] },
+  // Absent in Sweden (controller review, Task 9): `data` exists (totalReports below the 200-report
+  // threshold, spec §9.2, plus the presence sentence that becomes a written fact), but no months/counties
+  // (so no chart or map) and no swedishRedList (a species with too few reports and no red-list entry is
+  // not assessed, spec Revision 2026-10-07). Exercises `reportData={Boolean(s.data)}` (SpeciesArticle,
+  // Task 10, not written yet): the data credit must still show even though months/counties are both
+  // missing. `publish: false` on purpose (preview-only, like the two woodpeckers above): `other` is
+  // otherwise an inactive group and this would be its first published species, which would quietly
+  // change the hub's active-group and all-species counts that Task 7's and Task 8's already-passing
+  // tests hardcode (`.groups a` is 7, the hub's `[data-item]` is 16, a group page's `.catbar .chip` is
+  // 8): a cost not worth paying just to add this one fixture. Flip it when Task 10 is implemented, if
+  // its test wants to visit the built page rather than only read the fixture data.
+  { qid: 'Q25411', sv: 'Blåkråka', en: 'European Roller', sci: 'Coracias garrulus', fam: ['Coraciidae', 'Blåkråkor'], group: 'other', slug: ['blakraka', 'european-roller'], iucn: 'LC', id: [false, false], de: true, status: 'absent', absent: true, publish: false },
   // Never a page: one failed, one pending (facts exist, text not written yet).
   { qid: 'Q166171', sv: 'Gröngöling', en: 'European Green Woodpecker', sci: 'Picus viridis', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['grongoling', 'european-green-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], recordStatus: 'failed' },
   { qid: 'Q143284', sv: 'Spillkråka', en: 'Black Woodpecker', sci: 'Dryocopus martius', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['spillkraka', 'black-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], recordStatus: 'pending' },
@@ -99,7 +111,25 @@ function lookalikeFact(other) {
   };
 }
 
+// Sentence wording matches the pipeline's web/datamod.py (controller review, Task 9; the fix wave of
+// 2026-10-07, after this plan was written): "Nästan aldrig" ("almost never", read as "not present then")
+// became "Rapporteras sällan" ("rarely reported", about reports, not presence), and the county sentence
+// now says "Rapporteras från alla 21 län." for a flat profile or names the top (at most three) counties
+// as a SHARE ("Andelen av alla fågelrapporter är högst i …"), never "most reports" (a common feeder bird
+// is a bigger share of a sparsely birded county's reports without being more often reported there).
 function dataFor(sp) {
+  if (sp.absent) {
+    return {
+      fetchedAt: '2026-10-15',
+      gbifTaxonKey: 1,
+      totalReports: 0,
+      sentences: {
+        sv: ['Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025.'],
+        en: ['Does not occur in Sweden: no reports in Artportalen 2016 to 2025.'],
+      },
+      statusSignal: { contradicts: null },
+    };
+  }
   const summer = sp.months === SUMMER;
   return {
     fetchedAt: '2026-10-15',
@@ -110,12 +140,12 @@ function dataFor(sp) {
     raw: { speciesByMonth: [], allBirdsByMonth: [], speciesByCounty: {}, allBirdsByCounty: {} },
     sentences: summer
       ? {
-          sv: ['Rapporteras mest i maj.', 'Nästan aldrig i november till mars.', 'Vanligast i rapporterna från Testlän, Provlän och Exempellän.'],
-          en: ['Reported most in May.', 'Almost never in November to March.', 'Most common in reports from Testshire, Sampleshire and Exampleshire.'],
+          sv: ['Rapporteras mest i maj.', 'Rapporteras sällan i november till mars.', 'Andelen av alla fågelrapporter är högst i Testlän, Provlän och Exempellän.'],
+          en: ['Reported most in May.', 'Rarely reported in November to March.', 'Its share of all bird reports is highest in Testshire, Sampleshire and Exampleshire.'],
         }
       : {
-          sv: ['Rapporteras året runt.', 'Vanligast i rapporterna från Testlän, Provlän och Exempellän.'],
-          en: ['Reported all year round.', 'Most common in reports from Testshire, Sampleshire and Exampleshire.'],
+          sv: ['Rapporteras året runt.', 'Rapporteras från alla 21 län.'],
+          en: ['Reported all year round.', 'Reported from all 21 counties.'],
         },
     statusSignal: { contradicts: null },
   };
@@ -151,7 +181,7 @@ function record(sp) {
       ...(sp.minimal ? {} : { en: { title: sp.en, revision: '2000002' } }),
       ...(sp.de ? { de: { title: `${sp.en} (Testartikel)`, revision: '3000003' } } : {}),
     },
-    ...(sp.months ? { data: dataFor(sp) } : {}),
+    ...(sp.months || sp.absent ? { data: dataFor(sp) } : {}),
     facts: [
       { id: 'f01', topic: 'appearance', sv: 'Testfaktum.', sources: [{ article: 'sv', quote: 'Testcitat som bara finns i testdata.' }] },
       ...(sp.look ?? []).map(lookalikeFact),

@@ -5,7 +5,7 @@
 // the credit line always says so: "edited" or, when also clipped, "trimmed and edited" (CC BY and
 // CC BY-SA require the credit to say the work was changed).
 import { getCopy, type Locale } from '../../lib/i18n';
-import { audioHref, type Species } from '../../lib/species';
+import { audioHref, licenseLabel, localizedLicenseUrl, type Species } from '../../lib/species';
 
 interface Props { species: Species; locale: Locale; creditKey: string }
 const { species: s, locale, creditKey } = Astro.props;
@@ -19,8 +19,10 @@ const src = audioHref(s);
     <audio controls preload="none" src={src} aria-label={t.species.recordingLabel.replace('{name}', s.names[locale])}></audio>
     <figcaption data-credit-for={creditKey}>
       {t.species.recordingCredit} {audio.author ?? t.species.unknownRecordist},{' '}
-      {audio.licenseUrl ? <a href={audio.licenseUrl} rel="license noopener">{audio.license}</a> : audio.license},{' '}
-      {t.species.via} <a href={audio.sourceUrl} rel="noopener">Wikimedia Commons</a>, {audio.trimmed ? t.species.trimmedEdited : t.species.edited}
+      {/* rel="license" is reserved for the text credit's own CC BY-SA 4.0 link (controller review, Task 9);
+          "noopener" is dropped everywhere here since none of these links use target="_blank". */}
+      {audio.licenseUrl ? <a href={localizedLicenseUrl(audio.licenseUrl, locale)}>{audio.license}</a> : licenseLabel(audio.license, t)},{' '}
+      {t.species.via} <a href={audio.sourceUrl}>Wikimedia Commons</a>, {audio.trimmed ? t.species.trimmedEdited : t.species.edited}
     </figcaption>
   </figure>
 )}

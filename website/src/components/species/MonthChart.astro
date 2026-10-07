@@ -1,10 +1,12 @@
 ---
 // Bars per month as SVG, drawn when the site is built (spec 2026-09-25 §5 and §7). One series on species
 // pages, two on comparison pages. Values are the species' share of all bird reports, scaled so the top
-// month is 100. The text alternative is the paragraph that `describedBy` points at.
+// month is 100. The text alternative is the paragraph that `describedBy` points at. Each bar also gets a
+// hover title built from Series.label and the full month name ("Talgoxe, oktober: 100"), controller
+// review Task 9, for sighted mouse users who don't read the aria-describedby paragraph.
 interface Series { label: string; values: number[]; tone: 'rust' | 'navy' }
-interface Props { id: string; title: string; letters: string[]; series: Series[]; describedBy: string }
-const { id, title, letters, series, describedBy } = Astro.props;
+interface Props { id: string; title: string; letters: string[]; monthNames: string[]; series: Series[]; describedBy: string }
+const { id, title, letters, monthNames, series, describedBy } = Astro.props;
 const W = 360;
 const TOP = 8;
 const H = 112;
@@ -21,8 +23,13 @@ const heightOf = (v: number) => (v > 0 ? Math.max(1.5, (v / 100) * H) : 0);
   {letters.map((letter, m) => (
     <g>
       {series.map((s, i) => {
-        const h = heightOf(s.values[m] ?? 0);
-        return <rect data-month={m + 1} data-series={i} class={`bar bar--${s.tone}`} x={(m * SLOT + offset(i)).toFixed(1)} y={(BASE - h).toFixed(1)} width={barW} height={h.toFixed(1)} rx="2" />;
+        const v = s.values[m] ?? 0;
+        const h = heightOf(v);
+        return (
+          <rect data-month={m + 1} data-series={i} class={`bar bar--${s.tone}`} x={(m * SLOT + offset(i)).toFixed(1)} y={(BASE - h).toFixed(1)} width={barW} height={h.toFixed(1)} rx="2">
+            <title>{`${s.label}, ${monthNames[m]}: ${v}`}</title>
+          </rect>
+        );
       })}
       <text x={(m * SLOT + SLOT / 2).toFixed(1)} y={BASE + 16} class="month">{letter}</text>
     </g>
@@ -30,7 +37,7 @@ const heightOf = (v: number) => (v > 0 ? Math.max(1.5, (v / 100) * H) : 0);
 </svg>
 
 <style>
-  .mchart { display: block; width: 100%; height: auto; }
+  .mchart { display: block; width: 100%; max-width: 26rem; height: auto; }
   .axis { stroke: var(--line); stroke-width: 1; }
   .bar--rust { fill: var(--rust); }
   .bar--navy { fill: var(--navy); }

@@ -352,6 +352,7 @@
     "mapCaption": "Andel av alla fågelrapporter per län i Artportalen 2016 till 2025.",
     "mapLegend": ["Inga rapporter", "Liten andel", "Mellanstor andel", "Stor andel"],
     "monthLetters": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+    "monthNames": ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"],
     "moreFamily": "Fler {family}",
     "moreGroup": "Fler {group}",
     "appHeadline": "Osäker på vad du ser?",
@@ -368,13 +369,15 @@
     "unknownRecordist": "okänd upphovsperson",
     "edited": "bearbetad",
     "trimmedEdited": "klippt och bearbetad",
-    "textCredit": "Texten bygger på Wikipedia och får delas under",
+    "resized": "nedskalad",
+    "licensePublicDomain": "public domain",
+    "textCredit": "Texten är skriven med AI ur fakta från Wikipedia och får delas under",
     "sources": "Källor",
     "articleSv": "svenska artikeln",
     "articleEn": "engelska artikeln",
     "articleDe": "tyska artikeln",
     "dataCreditReports": "Rapportdata: Artportalen (SLU Artdatabanken) via {gbif}, 2016 till 2025.",
-    "dataCreditRedList": "Rödlista: Rödlistade arter i Sverige 2025, SLU Artdatabanken.",
+    "dataCreditRedList": "Rödlista: Rödlistade arter i Sverige 2025, SLU Artdatabanken via {gbif}.",
     "reviewed": "Kontrollerad mot källorna {date}.",
     "aboutLink": "Så gör vi artsidorna",
     "reportError": "Hittade du ett fel? Skriv till oss.",
@@ -424,7 +427,7 @@
       {
         "heading": "Licenserna",
         "paragraphs": [
-          "Texterna på art- och jämförelsesidorna bygger på Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy och Wikipediaartiklarna som källor och delar vidare under samma licens. Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem. Fotona visas oförändrade, bara nedskalade. Inspelningarna är bearbetade (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet."
+          "Texterna på art- och jämförelsesidorna bygger på Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy och Wikipediaartiklarna som källor och delar vidare under samma licens. Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem. Fotona är nedskalade, i övrigt oförändrade. Inspelningarna är bearbetade (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet."
         ]
       },
       {
