@@ -13,7 +13,7 @@ import click
 from rich.console import Console
 
 from . import __version__
-from .web.defaults import EFFORTS, FACTS_EFFORT, FACTS_MODEL_KEY, MODEL_KEYS
+from .web.defaults import EFFORTS, FACTS_EFFORT, FACTS_MODEL_KEY, MODEL_KEYS, TEXT_MODEL_KEY
 from .web.paths import WebPaths
 from .web.report import StepOutcome
 
@@ -383,7 +383,7 @@ def web_verify(
 @web.command("write")
 @click.option("--wave", type=click.IntRange(1, 3), default=None)
 @click.option("--species", multiple=True, help="Q-ID(s) i stället för en våg.")
-@click.option("--model", "model_key", type=click.Choice(MODEL_KEYS), default="opus")
+@click.option("--model", "model_key", type=click.Choice(MODEL_KEYS), default=TEXT_MODEL_KEY)
 @click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
 @click.option("--checker-model", "checker_key", type=click.Choice(MODEL_KEYS), default="sonnet")
 @click.option(
@@ -624,7 +624,7 @@ def web_compare_candidates() -> None:
 @click.option(
     "--top", type=click.IntRange(min=1), default=30, help="Antal par med störst sökvolym."
 )
-@click.option("--model", "model_key", type=click.Choice(MODEL_KEYS), default="opus")
+@click.option("--model", "model_key", type=click.Choice(MODEL_KEYS), default=TEXT_MODEL_KEY)
 @click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
 @click.option("--checker-model", "checker_key", type=click.Choice(MODEL_KEYS), default="sonnet")
 @click.option(

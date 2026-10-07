@@ -39,7 +39,7 @@ async def test_a_good_text_is_saved_with_the_status_from_the_fact_sheet(tmp_path
     client = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
     outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
     assert [o.status for o in outcomes] == ["ok"]
-    assert client.models == ["claude-opus-5", "claude-sonnet-5"]
+    assert client.models == ["claude-opus-5-5", "claude-sonnet-5"]  # Albin's choice
     record = load_record(record_path(paths.data_out, "Q25485"))
     assert record is not None
     assert record["status"] == "ok"

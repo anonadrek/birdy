@@ -721,7 +721,7 @@ async def test_a_comparison_is_written_with_both_slugs_and_volumes(tmp_path: Pat
     client = FakeJsonClient([reply(COMPARE), reply(_verdicts(COMPARE))])
     outcomes = await run_compare(paths, CompareOptions(), client=client, now=NOW)
     assert [o.status for o in outcomes] == ["ok"]
-    assert client.models == ["claude-opus-5", "claude-sonnet-5"]
+    assert client.models == ["claude-opus-5-5", "claude-sonnet-5"]  # Albin's choice
     assert client.schemas == ["CompareOutput", "CheckOutput"]
     saved = _saved(paths)
     assert saved is not None

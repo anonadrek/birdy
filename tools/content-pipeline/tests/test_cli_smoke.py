@@ -548,3 +548,21 @@ def test_web_write_accepts_opus55_as_a_model() -> None:
         ],
     )
     assert "olika modeller" in result.output
+
+
+def test_the_defaults_are_albins_choice_opus55_writes_sonnet_checks() -> None:
+    """R3 (2026-10-07): Albin chose Opus 5.5 for the fact sheets and the texts."""
+    from birdy_fetcher.web.compare import CompareOptions
+    from birdy_fetcher.web.defaults import FACTS_EFFORT, FACTS_MODEL_KEY, TEXT_MODEL_KEY
+    from birdy_fetcher.web.llm import MODELS
+    from birdy_fetcher.web.text_step import WriteOptions
+    from birdy_fetcher.web.verify_step import VerifyOptions
+
+    assert MODELS[FACTS_MODEL_KEY] == MODELS[TEXT_MODEL_KEY] == "claude-opus-5-5"
+    assert FACTS_EFFORT == "high"
+    assert WriteOptions().model_key == CompareOptions().model_key == "opus55"
+    assert WriteOptions().checker_key == CompareOptions().checker_key == "sonnet"
+    assert VerifyOptions().model_key == "sonnet"
+    for command in ("write", "compare"):
+        help_text = CliRunner().invoke(main, ["web", command, "--help"]).output
+        assert "opus55" in help_text

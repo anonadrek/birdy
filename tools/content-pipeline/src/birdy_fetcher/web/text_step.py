@@ -22,6 +22,7 @@ from .checked_writer import Checks, Written, write_checked
 from .checker import PROMPT_VERSION as CHECK_PROMPT_VERSION
 from .checker import CheckerFailed, SentenceChecker, check_items
 from .checks import load_banned
+from .defaults import TEXT_MODEL_KEY
 from .facts import STATUS_SV, TOPIC_SV
 from .groups import GroupTable
 from .llm import MODELS, AnthropicJsonClient, JsonModelClient, ModelReply, record_cost
@@ -89,7 +90,7 @@ class SpeciesTextWriter:
     checker: SentenceChecker
     prompt_path: Path
     banned: list[str]
-    model_key: str = "opus"
+    model_key: str = TEXT_MODEL_KEY
     effort: str = "high"
 
     async def _ask(self, system: str, messages: list[MessageParam]) -> ModelReply[WebTextV2]:
@@ -235,7 +236,7 @@ def apply_text(record: Record, result: Written[WebTextV2], generated: dict[str, 
 class WriteOptions:
     wave: int | None = None
     qids: tuple[str, ...] = ()
-    model_key: str = "opus"
+    model_key: str = TEXT_MODEL_KEY
     effort: str = "high"
     checker_key: str = "sonnet"
     max_cost: float | None = None
