@@ -5,9 +5,11 @@ import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
+import se.birdy.app.i18n.AppStrings
 import se.birdy.app.testing.FakeBadgeRepository
 import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.app.testing.FakeUserPreferences
+import se.birdy.content.Locale
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.dailybird.DailyBird
 import se.birdy.domain.observation.Observation
@@ -54,6 +56,7 @@ class NotificationPayloadsTest {
             dailyBirdMatchCount = { 0 },
             timeZone = TimeZone.of("Europe/Stockholm"),
             clock = Clock.System,
+            strings = AppStrings(Locale.SV),
         )
     }
 

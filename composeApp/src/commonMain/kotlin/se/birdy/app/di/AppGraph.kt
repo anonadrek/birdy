@@ -253,6 +253,12 @@ class AppGraph(
 
     private val recalculateBadges = RecalculateBadgesUseCase(clock = clock, zone = timeZone)
 
+    /** Strings read outside composition (notifications, the weekly recap's stamps) in the app's language. */
+    val strings: se.birdy.app.i18n.AppStrings by lazy {
+        se.birdy.app.i18n
+            .AppStrings(defaultLocale)
+    }
+
     val effectivePremiumActive: StateFlow<Boolean> by lazy {
         premiumRepository.state
             .map { backend -> (premiumOverride ?: backend) is PremiumState.Active }
@@ -492,7 +498,7 @@ class AppGraph(
                 se.birdy.app.ui.recap.recapStampResolver(
                     catalog = badgeCatalog,
                     nameFor = { id ->
-                        se.birdy.app.ui.badges.resolveBadgeString(id) {
+                        se.birdy.app.ui.badges.resolveBadgeString(id, strings) {
                             se.birdy.app.ui.badges.BadgeStringMap
                                 .nameFor(id)
                         }
@@ -500,7 +506,7 @@ class AppGraph(
                     descriptionFor = { id ->
                         // No readable fallback for a description: an empty line rather than the id.
                         runCatching {
-                            org.jetbrains.compose.resources.getString(
+                            strings.get(
                                 se.birdy.app.ui.badges.BadgeStringMap
                                     .descriptionFor(id),
                             )

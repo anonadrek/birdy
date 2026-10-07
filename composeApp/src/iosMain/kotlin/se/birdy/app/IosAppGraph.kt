@@ -29,6 +29,7 @@ import platform.Foundation.preferredLanguages
 import se.birdy.app.badges.BadgeCatalogLoader
 import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.di.AppGraph
+import se.birdy.app.i18n.AppStrings
 import se.birdy.app.i18n.LocaleResolver
 import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.location.IosLocationPermissionRequester
@@ -180,6 +181,7 @@ fun buildIosAppGraph(): AppGraph {
     // iOS-paths). journalRenderer/exportJournalUseCase byggs precis som på Android direkt
     // efter resolvedLocale är känd, eftersom use caset behöver den för species-lookup.
     val journalRenderer = JournalPdfRenderer()
+    val appStrings = AppStrings(resolvedLocale)
     val exportJournalUseCase =
         ExportJournalUseCase(
             observationRepo = observationRepo,
@@ -194,8 +196,8 @@ fun buildIosAppGraph(): AppGraph {
             locale = resolvedLocale,
             // BadgeStringMap kastar för badge-id:n den inte känner igen — delade
             // resolveBadgeString faller tillbaka på en humaniserad id-sträng.
-            badgeNameResolver = { id -> resolveBadgeString(id) { BadgeStringMap.nameFor(id) } },
-            badgeDescriptionResolver = { id -> resolveBadgeString(id) { BadgeStringMap.descriptionFor(id) } },
+            badgeNameResolver = { id -> resolveBadgeString(id, appStrings) { BadgeStringMap.nameFor(id) } },
+            badgeDescriptionResolver = { id -> resolveBadgeString(id, appStrings) { BadgeStringMap.descriptionFor(id) } },
         )
     val dailyBirdHistory =
         se.birdy.data.dailybird
@@ -316,6 +318,7 @@ internal fun iosNotificationPayloads(graph: AppGraph): NotificationPayloads =
         dailyBirdMatchCount = { graph.dailyBirdHistory?.totalMatchCount() ?: 0 },
         timeZone = graph.timeZone,
         clock = graph.clock,
+        strings = graph.strings,
     )
 
 /**

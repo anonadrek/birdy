@@ -111,6 +111,7 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_trophy
 import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_weekly_recap
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.getString
+import org.jetbrains.compose.resources.rememberResourceEnvironment
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BackTopBar
 import se.birdy.app.ui.components.OrnamentRule
@@ -150,12 +151,16 @@ fun SettingsScreen(
     val nameMaskedNames =
         setOf(HISTORICAL_SV_ONBOARDING_FALLBACK_NAME, stringResource(Res.string.onboarding_p3_fallback_name))
 
+    // The snackbar's text in the app's language: getString without an environment reads the
+    // phone's language on Android (QA 2026-10-07).
+    val resourceEnvironment = rememberResourceEnvironment()
+
     LaunchedEffect(Unit) {
         viewModel.effects.collect { effect ->
             when (effect) {
                 is SettingsEffect.ApplyLocale -> applyLocale(effect.tag)
                 is SettingsEffect.ShowToast -> {
-                    val text = getString(effect.text)
+                    val text = getString(resourceEnvironment, effect.text)
                     snackbarHostState.showSnackbar(text)
                 }
                 SettingsEffect.OpenPrivacyUrl -> openExternalUrl("https://birdy.community/legal/privacy/")

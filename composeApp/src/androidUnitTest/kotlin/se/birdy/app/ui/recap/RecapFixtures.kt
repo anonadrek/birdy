@@ -3,8 +3,9 @@ package se.birdy.app.ui.recap
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
-import org.jetbrains.compose.resources.getString
 import se.birdy.app.badges.BadgeCatalogLoader
+import se.birdy.app.i18n.AppStrings
+import se.birdy.app.i18n.LocaleResolver
 import se.birdy.app.testing.FakeBadgeRepository
 import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.app.ui.badges.BadgeStringMap
@@ -149,6 +150,17 @@ internal object RecapFixtures {
         species: Map<SpeciesId, SpeciesSummary> = species(),
         now: Instant = sundayEvening,
         zone: TimeZone = stockholm,
+        // The test's language (its Robolectric qualifiers) stands in for the app's.
+        strings: AppStrings =
+            AppStrings(
+                LocaleResolver.resolve(
+                    override = null,
+                    systemTag =
+                        java.util.Locale
+                            .getDefault()
+                            .toLanguageTag(),
+                ),
+            ),
     ): RecapViewModel {
         val catalog = runBlocking { BadgeCatalogLoader.loadFromResources() }
         return RecapViewModel(
@@ -158,8 +170,8 @@ internal object RecapFixtures {
             stampFor =
                 recapStampResolver(
                     catalog = catalog,
-                    nameFor = { id -> resolveBadgeString(id) { BadgeStringMap.nameFor(id) } },
-                    descriptionFor = { id -> getString(BadgeStringMap.descriptionFor(id)) },
+                    nameFor = { id -> resolveBadgeString(id, strings) { BadgeStringMap.nameFor(id) } },
+                    descriptionFor = { id -> strings.get(BadgeStringMap.descriptionFor(id)) },
                 ),
             zone = zone,
             now = { now },
