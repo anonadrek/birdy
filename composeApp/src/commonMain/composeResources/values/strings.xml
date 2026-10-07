@@ -868,6 +868,7 @@
         <item quantity="one">%1$d *stämpel*</item>
         <item quantity="other">%1$d *stämplar*</item>
     </plurals>
+    <!-- %1$s = badge name, %2$s = date. Keep the date placeholder LAST: the card measures "label + name" by passing an empty date (TrophyRoomEntryCard). -->
     <string name="trophy_room_entry_latest">Senast: %1$s, %2$s</string>
     <string name="trophy_room_entry_first_stamp">Din första stämpel väntar.</string>
     <plurals name="trophy_room_entry_stamps_a11y">

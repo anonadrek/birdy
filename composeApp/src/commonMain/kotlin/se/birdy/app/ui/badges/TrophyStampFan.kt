@@ -33,11 +33,12 @@ private const val MAX_SEAL_FONT_SCALE = 1.3f
 
 /**
  * The stamps the Troférum entry card fans out, in drawing order: the up to three most recently
- * earned, oldest first, so the newest is drawn last (on top, in the largest slot). Sorts itself,
- * so the card never depends on the caller's order.
+ * earned ([NewestStampFirst], the same order as the rest of Märken), oldest first, so the newest
+ * is drawn last (on top, in the largest slot). Sorts itself, so the card never depends on the
+ * caller's order.
  */
 internal fun trophyFanStamps(recent: List<BadgeWithUnlock>): List<BadgeWithUnlock> =
-    recent.sortedByDescending { it.unlockedAt }.take(MAX_FAN_STAMPS).reversed()
+    recent.sortedWith(NewestStampFirst).take(MAX_FAN_STAMPS).reversed()
 
 private class FanSlot(
     val x: Dp,
@@ -68,20 +69,22 @@ internal fun trophyFanWidth(count: Int): Dp {
 
 /**
  * Up to three earned stamps fanned like stamps on a desk ([stamps] in drawing order, see
- * [trophyFanStamps]). Fewer than three take the last slots, so the newest is always the large one
- * on the right. Each seal keeps the ink it has everywhere else: brass for Premium, rust otherwise.
- * Decorative only: the card reads the stamps out in its own description.
+ * [trophyFanStamps]; given more, only the last three, the newest, are drawn). Fewer than three
+ * take the last slots, so the newest is always the large one on the right. Each seal keeps the ink
+ * it has everywhere else: brass for Premium, rust otherwise. Decorative only: the card reads the
+ * stamps out in its own description.
  */
 @Composable
 internal fun TrophyStampFan(
     stamps: List<BadgeWithUnlock>,
     modifier: Modifier = Modifier,
 ) {
-    val slots = FanSlots.takeLast(stamps.size)
+    val shown = stamps.takeLast(MAX_FAN_STAMPS)
+    val slots = FanSlots.takeLast(shown.size)
     val shift = slots.firstOrNull()?.x ?: 0.dp
-    Box(modifier = modifier.size(width = trophyFanWidth(stamps.size), height = FanHeight)) {
+    Box(modifier = modifier.size(width = trophyFanWidth(shown.size), height = FanHeight)) {
         SealTextScale {
-            stamps.zip(slots).forEach { (stamp, slot) ->
+            shown.zip(slots).forEach { (stamp, slot) ->
                 Box(
                     modifier =
                         Modifier

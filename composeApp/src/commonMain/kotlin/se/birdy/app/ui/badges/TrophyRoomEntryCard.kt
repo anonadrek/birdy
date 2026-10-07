@@ -26,12 +26,9 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
@@ -48,6 +45,9 @@ import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.HeadlineSegment
 import se.birdy.app.ui.components.MicroLabel
+import se.birdy.app.ui.components.MicroLabelRuleGap
+import se.birdy.app.ui.components.MicroLabelRuleWidth
+import se.birdy.app.ui.components.microLabelTextStyle
 import se.birdy.app.ui.components.parseJournalHeadline
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.CardPaper
@@ -102,7 +102,7 @@ fun TrophyRoomEntryCard(
         entryTexts(latest = stamps.lastOrNull(), unlockedCount = unlockedCount, locale = locale, zone = zone, now = now)
     val countStyle = countTextStyle()
     val lineStyle = lineTextStyle(empty = texts.count == null)
-    val textNeeds = textNeeds(texts, countStyle, lineStyle)
+    val textNeedsPx = textNeedsPx(texts, countStyle, lineStyle)
 
     BoxWithConstraints(
         modifier =
@@ -119,7 +119,13 @@ fun TrophyRoomEntryCard(
         val fan: @Composable (Modifier) -> Unit = { m ->
             if (stamps.isNotEmpty()) TrophyStampFan(stamps, m) else TrophyStampWaiting(m)
         }
-        val sideBySide = textNeeds <= maxWidth - trophyFanWidth(stamps.size) - TextToFanGap
+        // In whole pixels, as the Row below hands them out (each width rounded on its own), so a
+        // text that needs exactly the room that is left still counts as fitting, and never wraps.
+        val roomBesideFan =
+            with(LocalDensity.current) {
+                constraints.maxWidth - trophyFanWidth(stamps.size).roundToPx() - TextToFanGap.roundToPx()
+            }
+        val sideBySide = textNeedsPx <= roomBesideFan
         if (sideBySide) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -209,42 +215,30 @@ private fun lineTextStyle(empty: Boolean): TextStyle {
 }
 
 /**
- * How wide the text beside the seals must be, at the current text size, for each piece to stay
- * whole: the kicker ("── DITT TROFÉRUM") and the count ("8 stämplar") on one line each, the label
- * and the badge name ("Senast: Månads-rytm,") together, and every word of the handwritten line.
- * Narrower than that, the seals go below the text instead.
+ * How many pixels wide the text beside the seals must be, at the current text size, for each piece
+ * to stay whole: the kicker (rule plus "DITT TROFÉRUM") and the count ("8 stämplar") on one line
+ * each, the label and the badge name ("Senast: Månads-rytm,") together, and every word of the
+ * handwritten line. Narrower than that, the seals go below the text instead. The kicker is
+ * measured with MicroLabel's own style and rule, so the two cannot drift apart.
  */
 @Composable
-private fun textNeeds(
+private fun textNeedsPx(
     texts: EntryTexts,
     countStyle: TextStyle,
     lineStyle: TextStyle,
-): Dp {
+): Int {
     val measurer = rememberTextMeasurer()
     val density = LocalDensity.current
-    val kickerStyle = LocalTextStyle.current.merge(MicroLabelMeasureStyle)
+    val kickerStyle = LocalTextStyle.current.merge(microLabelTextStyle())
     return remember(texts, countStyle, lineStyle, kickerStyle, measurer, density) {
-        val rule = with(density) { MicroLabelRule.roundToPx() }
+        val rule = with(density) { MicroLabelRuleWidth.roundToPx() + MicroLabelRuleGap.roundToPx() }
         val kicker = measurer.measure(texts.kicker.uppercase(), kickerStyle).size.width + rule
         val count = texts.count?.let { measurer.measure(stampCountText(it), countStyle).size.width } ?: 0
         val head = texts.lineHead?.let { measurer.measure(it, lineStyle).size.width } ?: 0
         val words = texts.line.split(' ').maxOfOrNull { measurer.measure(it, lineStyle).size.width } ?: 0
-        with(density) { maxOf(kicker, count, head, words).toDp() }
+        maxOf(kicker, count, head, words)
     }
 }
-
-// MicroLabel's look (components/MicroLabel.kt): an 18dp rule and an 8dp gap before Inter caps at
-// 9.5sp, W600, 0.16em. Mirrored here only to measure it; the layout tests catch a drift (the
-// kicker must stay on one line beside the seals at 1.0x and 1.5x on 411dp).
-private val MicroLabelRule = 26.dp
-private val MicroLabelMeasureStyle =
-    TextStyle(
-        fontFamily = FontFamily.SansSerif,
-        fontSize = 9.5.sp,
-        lineHeight = 12.sp,
-        fontWeight = FontWeight.W600,
-        letterSpacing = 0.16.em,
-    )
 
 /** "8 *stämplar*": the number upright, the word in rust italic, as in every journal headline. */
 private fun stampCountText(text: String): AnnotatedString =
