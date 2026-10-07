@@ -46,7 +46,7 @@
 
 **Hur det används:**
 - Pipelinen: `former_sv` i `species_list.yaml` → `names.former_sv` i artens YAML (skrivs bara för omdöpta arter).
-- Databasen: det gamla namnet läggs till den svenska namnradens `search_text` och sparas som en `SpeciesText`-rad med `kind = former_name`, `locale = sv` (ingen schemaändring). Sökningen rankar det efter de nuvarande namnen ("sädgås" ger Skogsgås först).
+- Databasen: det gamla namnet läggs till den svenska namnradens `search_text` och sparas som en `SpeciesText`-rad med `kind = former_name`, `locale = sv` (inget nytt tabellschema; `SCHEMA_REV` i `SpeciesDbBuilder` höjdes ändå 3 → 4 eftersom byggaren skriver andra rader ur samma YAML, så att även installationer med en databas byggd ur samma YAML byts ut). Sökningen rankar det efter de nuvarande namnen ("sädgås" ger Skogsgås först).
 - Appen: `Species.formerName` (bara på svenska) → raden "Tidigare: Sädgås" under det vetenskapliga namnet på artprofilen. Engelska användare ser ingen rad. Raden visas inte när det gamla namnet är en annan arts nuvarande namn (byggaren skriver då ingen `former_name`-rad, sökordet finns kvar): i dag bara Diomedeslira, vars gamla "Gulnäbbad lira" är C. borealis namn. Sökningen på "gulnäbbad lira" ger C. borealis först, sedan Diomedeslira.
 - Artsidorna (`birdy-fetcher web`) läser `names.sv` ur samma YAML och får de nya namnen; ingen sida är publicerad ännu, så inga adresser ändras.
 
