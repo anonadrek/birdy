@@ -311,8 +311,13 @@ async def run_sources(
                         "failed",
                         ["publicerad: sätt publish: false först"],
                     )
-                skip_audio = bool(existing and existing.get("review", {}).get("audioStruck"))
                 review = (existing or {}).get("review", {})
+                # Only an old record (struck before V4 kept a list of the recordings it
+                # struck) skips the audio step; with the list a later run looks again, for
+                # a recording uploaded since (re-review 2026-10-07).
+                skip_audio = bool(review.get("audioStruck")) and not review.get(
+                    "audioStruckSources"
+                )
                 collected, notes = await _collect(
                     source,
                     ctx,
@@ -322,6 +327,8 @@ async def run_sources(
                 if options.dry_run:
                     return StepOutcome(source.qid, source.name_sv, "dry-run", notes=notes)
                 record = merge_sources(existing, source.qid, collected)
+                if record.get("audio"):
+                    record.setdefault("review", {}).pop("audioStruck", None)
                 if record.get("data"):
                     # build_data resets the signal; keep it true to the facts already there.
                     record["data"]["statusSignal"] = {

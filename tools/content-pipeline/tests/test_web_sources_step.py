@@ -466,3 +466,22 @@ async def test_a_recording_v4_struck_is_not_chosen_again(tmp_path: Path) -> None
     record = load_record(record_path(paths.data_out, "Q1"))
     assert record is not None
     assert record["audio"]["sourceUrl"] == "other"
+
+
+async def test_with_a_list_of_struck_recordings_new_uploads_are_considered(
+    tmp_path: Path,
+) -> None:
+    """Re-review 2026-10-07: V4 sets audioStruck when nothing was left, but with the
+    per-recording list a later run must look again, for a recording uploaded since. Only an
+    old record (audioStruck without the list) skips the audio step entirely."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    seeded = new_record("Q1")
+    seeded["review"] = {"audioStruck": True, "audioStruckSources": [RECORDING.page_url]}
+    save_record(record_path(paths.data_out, "Q1"), seeded)
+    audio = TwoRecordings()
+    await run_sources(paths, SourcesOptions(), clients=_clients(audio), now=NOW)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert audio.asked == ["Q1"]
+    assert record["audio"]["sourceUrl"] == "other"
+    assert record["review"] == {"audioStruckSources": [RECORDING.page_url]}
