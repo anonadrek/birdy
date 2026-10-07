@@ -3,7 +3,7 @@
 import { addressOf } from './address.mjs';
 import { buildFallbackForward, buildForward } from './forward.mjs';
 import { labelFor } from './labels.mjs';
-import { isAutomated, isThreadReply, mailedRecently, receiptMessage } from './receipt.mjs';
+import { isAutomated, isThreadReply, mailedRecently, parseTime, receiptMessage } from './receipt.mjs';
 
 const REQUIRED = ['RESEND_API_KEY', 'RESEND_WEBHOOK_SECRET', 'SUPPORT_ADDRESS', 'FORWARD_TO'];
 
@@ -44,27 +44,55 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
   }
 
   let email;
+  let forwardPayload;
   try {
     email = await resolvedClient.getEmail(id);
     const { attachments, hasMore } = email.attachments?.length > 0 ? await resolvedClient.listAttachments(id) : { attachments: [], hasMore: false };
     const label = labelFor({ subject: email.subject ?? '', text: email.text ?? '' });
-    await resolvedClient.send(buildForward({ email, attachments, hasMore, label, supportAddress: env.SUPPORT_ADDRESS, forwardTo: env.FORWARD_TO }), `forward-${id}`);
+    forwardPayload = buildForward({ email, attachments, hasMore, label, supportAddress: env.SUPPORT_ADDRESS, forwardTo: env.FORWARD_TO });
+    await resolvedClient.send(forwardPayload, `forward-${id}`);
     say({ outcome: 'forwarded', id, label, attachments: attachments.length });
   } catch (error) {
-    // Resend re-fetches attachment download_url on every listAttachments() call, so a retry (Svix,
-    // after a prior 500) can send a different payload under the same forward-<id> idempotency key.
-    // That is a 409 invalid_idempotent_request, not a real failure: the first attempt already went
-    // out, so treat it as forwarded and continue to the receipt.
-    if (email && error.statusCode === 409 && error.name === 'invalid_idempotent_request') {
-      say({ outcome: 'forward-replayed', id });
-    } else if (email && error.statusCode >= 400 && error.statusCode < 500) {
-      // A validation error (e.g. a broken attachment URL) on the full forward — try once more with
-      // a minimal, text-only version so the message is not lost outright.
+    // A validation error (e.g. a broken attachment URL) on the full forward — try once more with a
+    // minimal, text-only version so the message is not lost outright.
+    const sendFallback = async () => {
       try {
         await resolvedClient.send(buildFallbackForward({ email, supportAddress: env.SUPPORT_ADDRESS, forwardTo: env.FORWARD_TO }), `forward-fallback-${id}`);
         say({ outcome: 'forward-fallback', id, statusCode: error.statusCode });
+        return true;
       } catch (fallbackError) {
         say({ outcome: 'forward-failed', id, error: fallbackError.name, statusCode: fallbackError.statusCode });
+        return false;
+      }
+    };
+
+    if (email && error.statusCode === 409 && error.name === 'invalid_idempotent_request') {
+      // Resend re-fetches attachment download_url on every listAttachments() call, so a retry
+      // (Svix, after a prior 500) can send a different payload under the same forward-<id>
+      // idempotency key, and normally that 409 just means the first attempt already went out. But
+      // Resend may (undocumented) bind the key even on a FAILED attempt — blindly trusting the 409
+      // could then lose the message while the sender still gets a receipt. Confirm it actually
+      // reached FORWARD_TO before believing it.
+      let alreadySent = false;
+      try {
+        const sent = await resolvedClient.listSent();
+        const forwardToAddress = addressOf(env.FORWARD_TO);
+        alreadySent = sent.some(
+          (m) =>
+            (m.to ?? []).some((t) => addressOf(t) === forwardToAddress) &&
+            (m.subject ?? '') === forwardPayload.subject &&
+            parseTime(m.created_at) >= parseTime(email.created_at),
+        );
+      } catch {
+        // listSent itself failed — can't confirm either way; fall through to the safer fallback.
+      }
+      if (alreadySent) {
+        say({ outcome: 'forward-replayed', id });
+      } else if (!(await sendFallback())) {
+        return { status: 500 };
+      }
+    } else if (email && error.statusCode >= 400 && error.statusCode < 500) {
+      if (!(await sendFallback())) {
         return { status: 500 };
       }
     } else {

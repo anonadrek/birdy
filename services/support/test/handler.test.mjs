@@ -171,8 +171,8 @@ test('a failed forward is 500 so Resend tries again; a failed receipt is still 2
   assert.deepEqual(client.calls.send.map((c) => c.key), ['forward-em_1']);
 });
 
-test('a replayed forward (409 invalid_idempotent_request, e.g. from changed attachment URLs on retry) counts as forwarded and continues to the receipt', async () => {
-  const client = fakeClient();
+test('a replayed forward (409 invalid_idempotent_request), CONFIRMED via listSent (a matching forward already reached FORWARD_TO), counts as forwarded and continues to the receipt', async () => {
+  const client = fakeClient({ sent: [{ to: ['inbox@example.com'], subject: '[Fel] Appen kraschar', created_at: '2026-10-08T07:00:01.000Z' }] });
   let calls = 0;
   client.send = async (payload, key) => {
     calls += 1;
@@ -190,6 +190,69 @@ test('a replayed forward (409 invalid_idempotent_request, e.g. from changed atta
   assert.deepEqual(result, { status: 200 });
   assert.ok(logs.some((l) => l.includes('forward-replayed')));
   assert.deepEqual(client.calls.send.map((c) => c.key), ['receipt-em_1']);
+});
+
+test('a 409 invalid_idempotent_request NOT confirmed by listSent (Resend may bind the key on a failed attempt, undocumented) sends the fallback instead of trusting it blindly', async () => {
+  const client = fakeClient(); // sent: [] — no record that the forward ever reached FORWARD_TO
+  client.send = async (payload, key) => {
+    if (key === 'forward-em_1') {
+      const err = new Error('conflict');
+      err.name = 'invalid_idempotent_request';
+      err.statusCode = 409;
+      throw err;
+    }
+    client.calls.send.push({ payload, key });
+    return `sent_${client.calls.send.length}`;
+  };
+  const logs = [];
+  const result = await run(client, undefined, undefined, { log: (l) => logs.push(l) });
+  assert.deepEqual(result, { status: 200 });
+  assert.ok(logs.some((l) => l.includes('forward-fallback')));
+  assert.equal(logs.some((l) => l.includes('forward-replayed')), false);
+  assert.deepEqual(client.calls.send.map((c) => c.key), ['forward-fallback-em_1', 'receipt-em_1']);
+});
+
+test('a 409 invalid_idempotent_request is not confirmed by an unrelated sent mail (wrong subject, or sent before the message even arrived) and falls back', async () => {
+  const client = fakeClient({
+    sent: [
+      { to: ['inbox@example.com'], subject: 'Something else entirely', created_at: '2026-10-08T07:00:01.000Z' },
+      { to: ['inbox@example.com'], subject: '[Fel] Appen kraschar', created_at: '2026-10-08T06:59:00.000Z' }, // before email.created_at — can't be this forward
+    ],
+  });
+  client.send = async (payload, key) => {
+    if (key === 'forward-em_1') {
+      const err = new Error('conflict');
+      err.name = 'invalid_idempotent_request';
+      err.statusCode = 409;
+      throw err;
+    }
+    client.calls.send.push({ payload, key });
+    return `sent_${client.calls.send.length}`;
+  };
+  await run(client);
+  assert.deepEqual(client.calls.send.map((c) => c.key), ['forward-fallback-em_1', 'receipt-em_1']);
+});
+
+test('a failed listSent while confirming a 409 replay falls back instead of crashing', async () => {
+  const client = fakeClient();
+  let listSentCalls = 0;
+  client.listSent = async () => {
+    listSentCalls += 1;
+    if (listSentCalls === 1) throw new Error('resend down'); // the 409-confirmation call fails
+    return []; // the later recency check (for the receipt) succeeds normally
+  };
+  client.send = async (payload, key) => {
+    if (key === 'forward-em_1') {
+      const err = new Error('conflict');
+      err.name = 'invalid_idempotent_request';
+      err.statusCode = 409;
+      throw err;
+    }
+    client.calls.send.push({ payload, key });
+    return `sent_${client.calls.send.length}`;
+  };
+  await run(client);
+  assert.deepEqual(client.calls.send.map((c) => c.key), ['forward-fallback-em_1', 'receipt-em_1']);
 });
 
 test('a genuine 409 on a forward that was never truly forwarded (different name) is still a failure', async () => {
