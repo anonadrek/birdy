@@ -1,0 +1,212 @@
+{
+  "qid": "Q18875",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "fisktarna",
+    "en": "common-tern"
+  },
+  "names": {
+    "sv": "Fisktärna",
+    "en": "Common Tern",
+    "scientific": "Sterna hirundo"
+  },
+  "family": {
+    "latin": "Laridae",
+    "sv": "Måsfåglar"
+  },
+  "group": "gulls_terns",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q18875/hero.webp",
+      "width": 1600,
+      "height": 900,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_tern_(Sterna_hirundo),_Hallig_Hooge.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q18875/extra.webp",
+      "width": 1200,
+      "height": 834,
+      "author": "Frank Vassen",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sterna_hirundo,_Quiberon,_Brittany,_France_(14834195197).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q18875/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Mdf",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sterna-hirundo-002.ogg",
+    "sha256": "df77b9193cb023e7d92f95ba7bf43e5523f9ae280a770c852d6c6b5d548cad25",
+    "mp3Sha256": "7fa94bef4e540a2930beae20a25d273d3c465c0639ea8073e90db85297035321"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Fisktärna",
+      "revision": "59710121"
+    },
+    "en": {
+      "title": "Common tern",
+      "revision": "1376327107"
+    },
+    "de": {
+      "title": "Flussseeschwalbe",
+      "revision": "266925314"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T15:49:14.655059+00:00",
+    "gbifTaxonKey": 9367409,
+    "totalReports": 208979,
+    "months": [
+      0,
+      0,
+      1,
+      36,
+      71,
+      66,
+      100,
+      49,
+      11,
+      2,
+      1,
+      0
+    ],
+    "counties": {
+      "SE-K": 60,
+      "SE-W": 74,
+      "SE-X": 73,
+      "SE-I": 58,
+      "SE-N": 56,
+      "SE-Z": 29,
+      "SE-F": 80,
+      "SE-H": 54,
+      "SE-G": 100,
+      "SE-BD": 31,
+      "SE-T": 79,
+      "SE-E": 77,
+      "SE-M": 75,
+      "SE-D": 67,
+      "SE-AB": 82,
+      "SE-C": 94,
+      "SE-S": 72,
+      "SE-AC": 41,
+      "SE-Y": 54,
+      "SE-U": 79,
+      "SE-O": 55
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juli.",
+        "Rapporteras sällan i oktober till mars.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in July.",
+        "Rarely reported in October to March.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        115,
+        31419,
+        71615,
+        36032,
+        41947,
+        21519,
+        5214,
+        917,
+        18,
+        0
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-AB": 24320,
+        "SE-O": 23455,
+        "SE-M": 22289,
+        "SE-C": 15188,
+        "SE-H": 12202,
+        "SE-F": 9088,
+        "SE-E": 9061,
+        "SE-D": 8845,
+        "SE-N": 7242,
+        "SE-T": 6399,
+        "SE-G": 6162,
+        "SE-W": 5329,
+        "SE-U": 4989,
+        "SE-S": 4213,
+        "SE-X": 4089,
+        "SE-AC": 3432,
+        "SE-I": 2990,
+        "SE-Y": 2234,
+        "SE-BD": 2169,
+        "SE-K": 1509,
+        "SE-Z": 1193
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -64,11 +64,18 @@ migration:
 image_refs:
 - role: hero
   path: Q1096617/hero.webp
-  width: 1457
-  height: 2400
+  width: 1024
+  height: 681
+  license: CC0
+  author: Hobbyfotowiki
+  source_url: https://commons.wikimedia.org/wiki/File:Einfarbsegler.jpg
+  commons_filename: Einfarbsegler.jpg
+- role: secondary
+  path: Q1096617/secondary-1.webp
+  width: 1093
+  height: 1800
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q21821238" class="extiw" title="d:Q21821238"><span
-    title="Dutch draughtsperson">Jos Zwarts</span></a></bdi>
+  author: Jos Zwarts
   source_url: https://commons.wikimedia.org/wiki/File:Madeiragierzwaluw Apus unicolor
     Jos Zwarts.tif
   commons_filename: Madeiragierzwaluw Apus unicolor Jos Zwarts.tif

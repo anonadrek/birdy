@@ -106,8 +106,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Arctic tern (Sterna paradisaea)
     2023 2.jpg
   commons_filename: Arctic tern (Sterna paradisaea) 2023 2.jpg
@@ -116,8 +115,7 @@ image_refs:
   width: 1800
   height: 1257
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37949120@N07">Ekaterina
-    Chernetsova (Papchinskaya)</a> from Saint-Petersburg, Russia
+  author: Ekaterina Chernetsova (Papchinskaya)
   source_url: https://commons.wikimedia.org/wiki/File:Sterna paradisaea (40886787153).jpg
   commons_filename: Sterna paradisaea (40886787153).jpg
 - role: secondary
@@ -125,8 +123,7 @@ image_refs:
   width: 1800
   height: 1239
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37949120@N07">Ekaterina
-    Chernetsova (Papchinskaya)</a> from Saint-Petersburg, Russia
+  author: Ekaterina Chernetsova (Papchinskaya)
   source_url: https://commons.wikimedia.org/wiki/File:Sterna paradisaea (32909400627).jpg
   commons_filename: Sterna paradisaea (32909400627).jpg
 review_status: approved

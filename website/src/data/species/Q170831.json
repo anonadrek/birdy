@@ -1,0 +1,571 @@
+{
+  "qid": "Q170831",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Stjärtmesen är 13–15 cm lång, och mer än halva längden utgörs av stjärten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "kroppslängden är 13–15 cm men mer än halva längden utgörs av stjärten"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Stjärtmesen väger sju till tio gram.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Gewicht beträgt sieben bis zehn Gramm"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Stjärtmesen är en mycket liten och rund fågel med lång stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärtmesen är en mycket liten och rund fågel med lång stjärt"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Näbben är kort och ögat svart med ett gulorange övre ögonlock.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är kort och ögat pepparkornsaktigt svart med gulorange övre \"ögonlock\"."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Fjäderdräkten har svart rygg, vinröda eller rödbruna skuldror och vitkantad svart stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fjäderdräkten utmärks av svart rygg, vinröda eller rödbruna skuldror och vitkantad svart stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Den nordliga underarten caudatus, som finns i Skandinavien, har rent vitt huvud skarpt avgränsat mot svart nacke.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Typ CC: Unterart caudatus mit reinweißem Kopf, scharfer Abgrenzung zum schwarzen Nacken, ohne Brustband"
+        },
+        {
+          "article": "sv",
+          "quote": "nordlig stjärtmes Aegithalos caudatus caudatus – Skandinavien"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Fåglar på kontinenten och Brittiska öarna har ett brett svart band över ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "medan de på kontinenten (europaeus) och Brittiska öarna (rosaceus) har ett brett svart band över ögat"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hane och hona ser likadana ut.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The sexes look the same"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungfåglar har svartbrunt huvud med en vit, oval hjässfläck.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Jungvögel haben, abgesehen von einem weißen, ovalen Scheitelfleck, einen schwarzbraunen Kopf."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Ungfåglar har brun ovansida utan rosa skuldror.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die restliche Oberseite ist braun und zeigt keine rosa Schultern."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Från flockar hörs ett trestavigt sii-sii-siih omväxlande med ett surrande tserr tserr.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från framdragande flockar hörs trestaviga sii-sii-siih varierat med ett surrande tserr tserr."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Flockar lockar ständigt, så fåglarna hörs ofta innan de syns.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "When they are in flocks, they issue constant contact calls, so they are often heard before they are seen."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "På nära håll hörs ett skarpt, kort och tonlöst prrt-prrt-prrt som kontaktläte.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Stimmfühlungslaut auf kurze Distanz ist ein scharfes, kurzes und stimmloses prrt-prrt-prrt."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Sången hörs sällan och är lågmäld och kvittrande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången som sällan hörs är lågmäld och kvittrande."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Stjärtmesen häckar i löv- och blandskog med rik undervegetation av hassel och sälg samt inslag av döda träd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fågeln häckar i löv- och blandskog med rik undervegetation med hassel och sälg och inslag av döda träd."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Den finns också i buskmarker, hedar, häckar, jordbruksmark, strandskog, parker och trädgårdar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It can also be found in scrubland, heathland with scattered trees, bushes and hedges, farmland, riverine woodland, and parks and gardens."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "I Nordeuropa häckar den ofta i sumpmarker, myrar eller i kanten av odlingslandskapet.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "In Nordeuropa brütet sie oft in Sümpfen, Mooren oder am Rande der Kulturlandschaft."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Sverige förekommer den i södra och mellersta delarna norrut till södra Värmland–Dalarna–Hälsingland samt längs Norrlandskusten till Norrbotten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Nominatformen av stjärtmesen förekommer i södra och mellersta Sverige norrut till en linje södra Värmland–Dalarna–Hälsingland samt längs Norrlandskusten till Norrbotten"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till 34 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 34 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Den svenska populationen anses livskraftig men tros minska i antal.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även den svenska populationen anses livskraftig men tros minska i antal."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "food",
+      "sv": "Stjärtmesen äter insekter året runt, främst leddjur, och föredrar ägg och larver av fjärilar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är en insektsätare året runt som lever främst av leddjur och föredrar ägg och larver av malar och fjärilar."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "food",
+      "sv": "Vid vinterutfodringar tar den små bitar av nötter, talg, brödsmulor och ost.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Dass sie an Winterfütterungen auch kleine Stücke von Nüssen, Talg, Brotkrumen, Käse oder sonstigem annehmen"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Den klänger vigt i tunna grenar, ofta upp och ned.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den klänger vigt i tunna grenar ofta upp och ned."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden bildar stjärtmesen kompakta flockar på tre till 30 fåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "formar stjärtmesen kompakta flockar på tre till 30 fåglar"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Under kalla vinternätter trycker flockmedlemmarna ihop sig för att hålla värmen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under kalla vinternätter trycker flockmedlemmarna ihop sig för att hålla värmen."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "I Nord- och Östeuropa räknas stjärtmesen till invasionsfåglarna.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "In Nord- und Osteuropa zählt die Schwanzmeise zu den Invasionsvogelarten."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Den bygger ett klotformat bo av lav, fjädrar, spindelväv och mossa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den bygger ett konstrikt klotformat bo av lav, fjädrar, spindelväv och mossa."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Den lägger vanligen åtta till tolv ägg som honan ensam ruvar i 13–17 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger vanligtvis åtta till tolv ägg per kull"
+        },
+        {
+          "article": "sv",
+          "quote": "honan ruvar dem ensam i 13–17 dagar"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Par vars häckning misslyckats kan försöka igen, ge upp eller hjälpa ett annat par i närheten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Par som misslyckats med sin häckning har tre val: att försöka igen, helt överge häckningen eller hjälpa ett annat par som häckar i närheten."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november till februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i juli."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": null,
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T16:08:41.079475+00:00"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "stjartmes",
+    "en": "long-tailed-tit"
+  },
+  "names": {
+    "sv": "Stjärtmes",
+    "en": "Long-tailed Tit",
+    "scientific": "Aegithalos caudatus"
+  },
+  "family": {
+    "latin": "Aegithalidae",
+    "sv": "Stjärtmesar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q170831/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Membeth",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Parks.Range.Aegithalos.caudatus.caudatus.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q170831/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Long-tailed_tit_(Aegithalos_caudatus)_on_a_twig.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q170831/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Jonathon Jongsma",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aegithalos_caudatus_-_Long-tailed_Tit_-_XC114614.ogg",
+    "sha256": "797abb7d4d339ad9d280401d91ddce1d624cceb38d29ee50a5a6a20c528df50b"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Stjärtmes",
+      "revision": "59356091"
+    },
+    "en": {
+      "title": "Long-tailed tit",
+      "revision": "1374016597"
+    },
+    "de": {
+      "title": "Schwanzmeise",
+      "revision": "268081893"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2495000,
+    "totalReports": 167898,
+    "months": [
+      94,
+      99,
+      73,
+      32,
+      19,
+      14,
+      10,
+      14,
+      34,
+      71,
+      87,
+      100
+    ],
+    "counties": {
+      "SE-K": 76,
+      "SE-W": 85,
+      "SE-X": 70,
+      "SE-I": 35,
+      "SE-N": 36,
+      "SE-Z": 10,
+      "SE-F": 81,
+      "SE-H": 53,
+      "SE-G": 89,
+      "SE-BD": 7,
+      "SE-T": 100,
+      "SE-E": 68,
+      "SE-M": 41,
+      "SE-D": 78,
+      "SE-AB": 90,
+      "SE-C": 67,
+      "SE-S": 95,
+      "SE-AC": 20,
+      "SE-Y": 32,
+      "SE-U": 87,
+      "SE-O": 64
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november till februari.",
+        "Rapporteras sällan i juli.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in November to February.",
+        "Rarely reported in July.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        25345,
+        18663,
+        25489,
+        17086,
+        11816,
+        4760,
+        2677,
+        3706,
+        9525,
+        19474,
+        15080,
+        14166
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 27243,
+        "SE-AB": 26823,
+        "SE-M": 12395,
+        "SE-H": 11915,
+        "SE-C": 10895,
+        "SE-D": 10348,
+        "SE-F": 9250,
+        "SE-T": 8145,
+        "SE-E": 7974,
+        "SE-W": 6132,
+        "SE-S": 5579,
+        "SE-G": 5512,
+        "SE-U": 5462,
+        "SE-N": 4611,
+        "SE-X": 3922,
+        "SE-K": 1900,
+        "SE-I": 1801,
+        "SE-AC": 1656,
+        "SE-Y": 1345,
+        "SE-BD": 499,
+        "SE-Z": 411
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

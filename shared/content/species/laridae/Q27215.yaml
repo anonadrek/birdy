@@ -70,7 +70,7 @@ image_refs:
   width: 1600
   height: 2400
   license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/glaciernps/">GlacierNPS</a>
+  author: GlacierNPS
   source_url: https://commons.wikimedia.org/wiki/File:Black Tern (Chlidonias niger)
     (42737694055).jpg
   commons_filename: Black Tern (Chlidonias niger) (42737694055).jpg
@@ -79,8 +79,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Black tern (Chlidonias niger)
     2021.jpg
   commons_filename: Black tern (Chlidonias niger) 2021.jpg
@@ -89,8 +88,7 @@ image_refs:
   width: 1800
   height: 1192
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/56054673@N08">Brian
-    Desrosiers</a> from Fort Erie, Canada
+  author: Brian Desrosiers
   source_url: https://commons.wikimedia.org/wiki/File:Chlidonias niger Point Pelee.jpg
   commons_filename: Chlidonias niger Point Pelee.jpg
 review_status: auto

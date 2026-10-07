@@ -9,7 +9,7 @@ names:
   sv: Blåkronad parakit
   en: Blue-crowned Parakeet
 abundance: ovanlig
-iucn_status: NE
+iucn_status: LC
 season:
   jan: present
   feb: present
@@ -70,8 +70,7 @@ image_refs:
   width: 2048
   height: 1365
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1065381">Adam
-    Jackson</a>
+  author: Adam Jackson
   source_url: https://commons.wikimedia.org/wiki/File:Thectocercus acuticaudatus 505478395.jpg
   commons_filename: Thectocercus acuticaudatus 505478395.jpg
 - role: secondary
@@ -79,8 +78,7 @@ image_refs:
   width: 1800
   height: 1800
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/912605">Dan
-    Vickers</a>
+  author: Dan Vickers
   source_url: https://commons.wikimedia.org/wiki/File:Thectocercus acuticaudatus 465902258.jpg
   commons_filename: Thectocercus acuticaudatus 465902258.jpg
 - role: secondary
@@ -88,8 +86,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/438241">Sol
-    Quipildor</a>
+  author: Sol Quipildor
   source_url: https://commons.wikimedia.org/wiki/File:Thectocercus acuticaudatus 452047394.jpg
   commons_filename: Thectocercus acuticaudatus 452047394.jpg
 review_status: auto

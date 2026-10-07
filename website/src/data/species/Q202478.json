@@ -1,0 +1,211 @@
+{
+  "qid": "Q202478",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tradgardssangare",
+    "en": "garden-warbler"
+  },
+  "names": {
+    "sv": "Trädgårdssångare",
+    "en": "Garden Warbler",
+    "scientific": "Sylvia borin"
+  },
+  "family": {
+    "latin": "Sylviidae",
+    "sv": "Sylvior"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q202478/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Сергей Неклюдов",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sylvia_borin_315567165.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q202478/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Иван Везенковић",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Garden_Warbler_Sylvia_borin.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q202478/voice.mp3",
+    "durationSec": 11,
+    "trimmed": false,
+    "author": "MVmath20",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gartengrasm%C3%BCcke_(Sylvia_borin).wav",
+    "sha256": "c3b6a4ea4a1a646a036515729e8541c270c5aae8ef90756a6021e8888b167ec1"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Trädgårdssångare",
+      "revision": "59693042"
+    },
+    "en": {
+      "title": "Garden warbler",
+      "revision": "1359675141"
+    },
+    "de": {
+      "title": "Gartengrasmücke",
+      "revision": "267654649"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2492942,
+    "totalReports": 164451,
+    "months": [
+      0,
+      0,
+      0,
+      1,
+      80,
+      100,
+      44,
+      12,
+      6,
+      1,
+      1,
+      0
+    ],
+    "counties": {
+      "SE-K": 74,
+      "SE-W": 82,
+      "SE-X": 82,
+      "SE-I": 57,
+      "SE-N": 51,
+      "SE-Z": 73,
+      "SE-F": 85,
+      "SE-H": 74,
+      "SE-G": 74,
+      "SE-BD": 40,
+      "SE-T": 87,
+      "SE-E": 71,
+      "SE-M": 65,
+      "SE-D": 100,
+      "SE-AB": 78,
+      "SE-C": 77,
+      "SE-S": 86,
+      "SE-AC": 88,
+      "SE-Y": 96,
+      "SE-U": 68,
+      "SE-O": 78
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i maj och juni.",
+        "Rapporteras sällan i september till april.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in May and June.",
+        "Rarely reported in September to April.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        0,
+        46,
+        81904,
+        55134,
+        18502,
+        5543,
+        2898,
+        342,
+        20,
+        0
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 27077,
+        "SE-AB": 18867,
+        "SE-M": 15739,
+        "SE-H": 13651,
+        "SE-D": 10839,
+        "SE-C": 10171,
+        "SE-F": 7894,
+        "SE-E": 6801,
+        "SE-AC": 5978,
+        "SE-T": 5742,
+        "SE-N": 5315,
+        "SE-W": 4783,
+        "SE-S": 4078,
+        "SE-X": 3744,
+        "SE-G": 3742,
+        "SE-U": 3485,
+        "SE-Y": 3249,
+        "SE-Z": 2399,
+        "SE-I": 2389,
+        "SE-BD": 2277,
+        "SE-K": 1519
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

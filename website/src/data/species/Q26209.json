@@ -1,0 +1,847 @@
+{
+  "qid": "Q26209",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 1,
+    "audioStruckSources": [
+      "https://commons.wikimedia.org/wiki/File:Dendrocopos_major_-_Great_Spotted_Woodpecker_XC542957.mp3",
+      "https://commons.wikimedia.org/wiki/File:XC47350_-_Grote_Bonte_Specht_-_Dendrocopos_major.ogg"
+    ]
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Större hackspett känns igen på två avlånga vita skulderfläckar och röd undergump.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Större hackspett känns igen på de två avlånga vita skulderfläckarna och den röda undergumpen."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ovansidan är glänsande blåsvart med vitt på ansiktets och halsens sidor.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The upperparts are glossy blue-black, with white on the sides of the face and neck."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Svarta streck går från skuldran till nacken, näbbroten och ungefär halvvägs över bröstet.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Black lines run from the shoulder to the nape, the base of the bill and about halfway across the breast."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den har en stor vit skulderfläck, och både vingpennorna och stjärten är tvärbandade i svart och vitt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "There is a large white shoulder patch and the flight feathers are barred with black and white, as is the tail."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Näbben är skiffersvart, benen grönaktigt grå och ögat djupt rött.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The bill is slate-black, the legs greenish-grey and the eye is deep red."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "size",
+      "sv": "Längden är 23–25 cm och vingspannet 34–39 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Längden är 23–25 cm och vingspannet 34–39 cm."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "Den väger ungefär 80 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den väger ungefär 80 gram."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Vuxna hanar har svart hjässa med en röd fläck i nacken, medan vuxna honor saknar rött på huvudet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fullvuxna hanar har svart hjässa med en röd fläck i nacken, medan fullvuxna honor saknar rött på huvudet."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungfåglar har röd hjässa, precis som mindre hackspett.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna har röd hjässa precis som mindre hackspett."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Ungfåglar är mindre glansiga än vuxna, med brunaktig ton ovan, smutsvit undersida och rosa i stället för röd nedre buk.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Juvenile birds are less glossy than adults and have a brown tinge to their upperparts and dirty white underparts."
+        },
+        {
+          "article": "en",
+          "quote": "the lower belly is pink rather than red"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "behaviour",
+      "sv": "Större hackspett flyger i bågflykt, i tydliga upp- och nedåtgående bågar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Större hackspett flyger i bågflykt, det vill säga i tydliga upp- och nedåtgående bågar."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Locklätet är ett vasst ”kik” som kan upprepas som ett träaktigt skallrande ”krrarraarr” när fågeln är störd.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The call of the great spotted woodpecker is a sharp kik, which may be repeated as a wooden rattling krrarraarr if the bird is disturbed."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Trumningen är snabbare än hos andra hackspettar i området, cirka 10–16 slag per sekund i ofta upprepade ensekundsserier.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The far-carrying drumming is faster than for any other woodpecker in its range at around 10–16 strikes per second, typically in one-second bursts, although repeated frequently."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Båda könen trummar, men hanen gör det mycket oftare, mest från mitten av januari tills ungarna är flygfärdiga.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Both sexes drum, although the male does so much more often, mostly from mid-January until the young are fledged."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Trumningen hörs redan i slutet av vintern och framför allt tidigt på våren.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Trommeln ist bereits im ausgehenden Winter und vor allem im zeitigen Frühjahr zu hören."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Den finns i många slags skogar, löv-, barr- och blandskog, samt i parker och trädgårdar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is found in a wide variety of woodlands, broadleaf, coniferous or mixed, and in modified habitats like parks, gardens and olive groves."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "I Sverige lever den främst i löv- och blandskog, ibland även barrskog, från Skåne till Lappland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lever främst i löv- och blandskog, ibland även barrskog, från Skåne till Lappland."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Längst i norr är den mindre vanlig eller sällsynt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Längst i norr är den mindre vanlig eller sällsynt."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Nominatformen D. m. major förekommer i Skandinavien.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "nominatformen förekommer i Skandinavien och nordöstra Polen till västra Sibirien"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Bohålet hackas ut i en lövträdsstam, friska eller murkna, till exempel asp, al, björk eller ek, mer sällan i barrträd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bohålet hackas ut i en lövträdsstam, i såväl friska som murkna träd av till exempel asp, al, björk eller ek, mindre ofta i barrträd."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Den kan även häcka i holk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den kan även häcka i holk."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "I maj läggs fem till sju ägg som ruvas i tolv till 13 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I maj läggs fem till sju ägg som ruvas i tolv till 13 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Ungarna blir flygfärdiga efter 20–25 dygn och matas oftast en tid efter att de lämnat boet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna blir flygfärdiga efter 20-25 dygn, och de matas oftast en tid efter det att de har lämnat boet."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Under senare delen av matningstiden är bona lätta att hitta genom ungarnas oavbrutna högljudda tjatter.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "In der zweiten Hälfte der Fütterungsphase sind die Nester wegen des ununterbrochenen lauten Gezeters der Jungvögel leicht zu entdecken."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Födan är skalbaggar, myror, bladlöss och andra insekter samt bär som blåbär och lingon, vintertid främst frön ur gran- och tallkottar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Födan består av skalbaggar, myror, bladlöss och andra insekter, samt bär som till exempel blåbär och lingon – vintertid främst frön i gran- och tallkottar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Den tar ibland fågelungar och ägg, till exempel ur mesars bon.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Större hackspett tar ibland även fågelungar och ägg."
+        },
+        {
+          "article": "en",
+          "quote": "The nests of other cavity-nesting birds, such as tits, may be raided for their eggs and chicks"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Vintertid besöker den gärna fågelbord, där den främst äter talgbollar och jordnötter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid uppsöker den gärna fågelbord där den främst äter talgbollar och jordnötter."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Den använder ett ”städ” där den hackar upp hårda föremål, särskilt tall-, gran- och lärkkottar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It will use an \"anvil\" on which to hammer hard items, particularly pine, spruce, and larch cones, but also fruit, nuts, and hard-bodied insects."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Den är starkt revirhävdande och håller året runt ett revir på cirka 5 hektar, som främst försvaras av hanen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Great spotted woodpeckers are strongly territorial, typically occupying areas of about 5 ha (12 acres) year-round, which are defended mainly by the male"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december till februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Större hackspett är en hackspett med glänsande blåsvart ovansida, vita skulderfläckar och röd undergump.",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Den finns i löv-, barr- och blandskog samt i parker och trädgårdar, och vintertid besöker den gärna fågelbord.",
+          "factIds": [
+            "f16",
+            "f27"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Två avlånga vita skulderfläckar och röd undergump",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Glänsande blåsvart ovansida, vita ansiktssidor och svarta streck från skuldran mot näbbroten och bröstet",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Hanen har röd nackfläck, honan saknar rött på huvudet och ungfåglar har röd hjässa",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "Flyger i tydliga upp- och nedåtgående bågar",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Locklätet är ett vasst \"kik\", som kan upprepas som ett träaktigt skallrande \"krrarraarr\" när fågeln är störd.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Trumningen är snabbare än hos andra hackspettar i området, cirka 10 till 16 slag per sekund i ofta upprepade serier på en sekund.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Båda könen trummar, men hanen gör det mycket oftare.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "I Sverige lever den främst i löv- och blandskog, ibland även barrskog, från Skåne till Lappland.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Längst i norr är den mindre vanlig eller sällsynt.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län och mest i december till februari.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Trumningen hörs redan i slutet av vintern och framför allt tidigt på våren.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den äter skalbaggar, myror, bladlöss och andra insekter samt bär som blåbär och lingon, och ibland fågelungar och ägg.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "Vintertid äter den främst frön ur gran- och tallkottar, som den hackar upp på ett städ, och besöker gärna fågelbord för talgbollar och jordnötter.",
+          "factIds": [
+            "f25",
+            "f28",
+            "f27"
+          ]
+        },
+        {
+          "text": "Den håller året runt ett revir på cirka 5 hektar, som främst hanen försvarar.",
+          "factIds": [
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Större hackspett: så känner du igen arten på fjäderdräkt och läte, hur trumningen låter och när den rapporteras mest under året.",
+      "facts": {
+        "size": {
+          "value": "23 till 25 cm",
+          "factIds": [
+            "f06"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Great Spotted Woodpecker is a woodpecker with glossy blue-black upperparts, white shoulder patches and a red vent.",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "It lives in deciduous, coniferous and mixed woodland as well as parks and gardens, and in winter it readily visits bird tables.",
+          "factIds": [
+            "f16",
+            "f27"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Two long white shoulder patches and a red vent",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Glossy blue-black above, white face sides, black stripes from shoulder to bill base and breast",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Males have a red nape patch, females no red on the head, juveniles a red crown",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "Flies in clear rising and falling arcs",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is a sharp \"kik\", which can be repeated as a wooden rattling \"krrarraarr\" when the bird is disturbed.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The drumming is faster than in other woodpeckers in the area, about 10 to 16 strokes per second in often repeated one-second bursts.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Both sexes drum, but the male does so far more often.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "In Sweden it lives mainly in deciduous and mixed woodland, sometimes coniferous forest, from Skåne to Lapland.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "In the far north it is less common or rare.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties and most often from December to February.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Drumming is heard from late winter and above all in early spring.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats beetles, ants, aphids and other insects, berries such as bilberries and lingonberries, and sometimes nestlings and eggs.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "In winter it feeds mainly on seeds from spruce and pine cones, which it hacks open on an anvil, and readily visits bird tables for suet balls and peanuts.",
+          "factIds": [
+            "f25",
+            "f28",
+            "f27"
+          ]
+        },
+        {
+          "text": "It holds a territory of about 5 hectares all year, defended mainly by the male.",
+          "factIds": [
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Great Spotted Woodpecker: how to recognise it by plumage and voice, what its drumming sounds like and when it is reported most during the year.",
+      "facts": {
+        "size": {
+          "value": "23 to 25 cm",
+          "factIds": [
+            "f06"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "53baf119404728dc"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:21:06.173812+00:00",
+      "factsHash": "53baf119404728dc"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "storre-hackspett",
+    "en": "great-spotted-woodpecker"
+  },
+  "names": {
+    "sv": "Större hackspett",
+    "en": "Great Spotted Woodpecker",
+    "scientific": "Dendrocopos major"
+  },
+  "family": {
+    "latin": "Picidae",
+    "sv": "Hackspettar"
+  },
+  "group": "woodpeckers",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26209/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dendrocopos_major_(feeding).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26209/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Charles J. Sharp",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Great_spotted_woodpecker_(Dendrocopos_major)_female_Drenthe.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26209/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Alexander Kürthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dendrocopos_major_-_Great_Spotted_Woodpecker_XC309807.mp3",
+    "sha256": "154f48cc861ad87ebad0275d4781aa0164dad27c657ac030a80f8d7e2f159318",
+    "mp3Sha256": "d0f1ef704fa579ad792c5de8107415bb1b0388d52de3d23b1d65f4b8eb52472d"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Större hackspett",
+      "revision": "58519775"
+    },
+    "en": {
+      "title": "Great spotted woodpecker",
+      "revision": "1357282933"
+    },
+    "de": {
+      "title": "Buntspecht",
+      "revision": "269763148"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2477968,
+    "totalReports": 543543,
+    "months": [
+      100,
+      96,
+      65,
+      40,
+      29,
+      38,
+      29,
+      35,
+      40,
+      50,
+      79,
+      95
+    ],
+    "counties": {
+      "SE-K": 41,
+      "SE-W": 65,
+      "SE-X": 77,
+      "SE-I": 37,
+      "SE-N": 26,
+      "SE-Z": 64,
+      "SE-F": 53,
+      "SE-H": 37,
+      "SE-G": 47,
+      "SE-BD": 100,
+      "SE-T": 55,
+      "SE-E": 55,
+      "SE-M": 34,
+      "SE-D": 75,
+      "SE-AB": 66,
+      "SE-C": 66,
+      "SE-S": 57,
+      "SE-AC": 86,
+      "SE-Y": 94,
+      "SE-U": 54,
+      "SE-O": 60
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december till februari.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in December to February.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        77747,
+        51879,
+        65056,
+        62201,
+        51262,
+        36534,
+        21579,
+        26967,
+        32669,
+        39376,
+        39171,
+        38846
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 92338,
+        "SE-AB": 70821,
+        "SE-C": 38757,
+        "SE-M": 37179,
+        "SE-D": 36088,
+        "SE-H": 30548,
+        "SE-AC": 25980,
+        "SE-BD": 25284,
+        "SE-E": 23369,
+        "SE-F": 21888,
+        "SE-W": 16762,
+        "SE-T": 16096,
+        "SE-X": 15452,
+        "SE-Y": 14079,
+        "SE-U": 12168,
+        "SE-N": 12128,
+        "SE-S": 11964,
+        "SE-G": 10483,
+        "SE-Z": 9365,
+        "SE-I": 6956,
+        "SE-K": 3712
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

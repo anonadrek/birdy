@@ -1,0 +1,209 @@
+{
+  "qid": "Q185099",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "vattenrall",
+    "en": "water-rail"
+  },
+  "names": {
+    "sv": "Vattenrall",
+    "en": "Water Rail",
+    "scientific": "Rallus aquaticus"
+  },
+  "family": {
+    "latin": "Rallidae",
+    "sv": "Rallar"
+  },
+  "group": "cranes_rails",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q185099/hero.webp",
+      "width": 1600,
+      "height": 1064,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Water_rail_(Rallus_aquaticus).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q185099/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "keith gallie",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Water_rail_Rallus_aquaticus_(37337411980).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q185099/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Franz Lindinger",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rallus_aquaticus_-_Water_Rail_XC387327.mp3",
+    "sha256": "7d8fa0c581478fd00e4b61bb43c8b81bcc7adf19b3e138c5d3e0b6cf4059b65e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Vattenrall",
+      "revision": "59709788"
+    },
+    "en": {
+      "title": "Water rail",
+      "revision": "1372863112"
+    },
+    "de": {
+      "title": "Wasserralle",
+      "revision": "243463934"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2474831,
+    "totalReports": 116222,
+    "months": [
+      82,
+      61,
+      59,
+      93,
+      97,
+      85,
+      73,
+      99,
+      100,
+      73,
+      74,
+      85
+    ],
+    "counties": {
+      "SE-K": 28,
+      "SE-W": 37,
+      "SE-X": 44,
+      "SE-I": 72,
+      "SE-N": 66,
+      "SE-Z": 5,
+      "SE-F": 56,
+      "SE-H": 55,
+      "SE-G": 48,
+      "SE-BD": 5,
+      "SE-T": 88,
+      "SE-E": 43,
+      "SE-M": 58,
+      "SE-D": 76,
+      "SE-AB": 73,
+      "SE-C": 100,
+      "SE-S": 67,
+      "SE-AC": 8,
+      "SE-Y": 18,
+      "SE-U": 66,
+      "SE-O": 55
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        8162,
+        4265,
+        7568,
+        18356,
+        22260,
+        10548,
+        7004,
+        9926,
+        10373,
+        7330,
+        4709,
+        4442
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 17049,
+        "SE-AB": 15666,
+        "SE-M": 12596,
+        "SE-C": 11741,
+        "SE-H": 8923,
+        "SE-D": 7292,
+        "SE-N": 6120,
+        "SE-T": 5188,
+        "SE-F": 4595,
+        "SE-E": 3668,
+        "SE-U": 2987,
+        "SE-S": 2814,
+        "SE-I": 2686,
+        "SE-G": 2132,
+        "SE-W": 1917,
+        "SE-X": 1776,
+        "SE-Y": 553,
+        "SE-K": 500,
+        "SE-AC": 455,
+        "SE-BD": 230,
+        "SE-Z": 137
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -41,7 +41,7 @@ image_refs:
   width: 2048
   height: 1831
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/742241">desertnaturalist</a>
+  author: desertnaturalist
   source_url: https://commons.wikimedia.org/wiki/File:Otus cyprius 62796570.jpg
   commons_filename: Otus cyprius 62796570.jpg
 - role: secondary
@@ -49,7 +49,7 @@ image_refs:
   width: 1481
   height: 1800
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/742241">desertnaturalist</a>
+  author: desertnaturalist
   source_url: https://commons.wikimedia.org/wiki/File:Otus cyprius 62796526.jpg
   commons_filename: Otus cyprius 62796526.jpg
 - role: secondary
@@ -57,8 +57,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/175009">Julien
-    Renoult</a>
+  author: Julien Renoult
   source_url: https://commons.wikimedia.org/wiki/File:Otus cyprius.jpg
   commons_filename: Otus cyprius.jpg
 review_status: auto

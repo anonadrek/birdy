@@ -1,0 +1,211 @@
+{
+  "qid": "Q27160",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "silltrut",
+    "en": "lesser-black-backed-gull"
+  },
+  "names": {
+    "sv": "Silltrut",
+    "en": "Lesser Black-backed Gull",
+    "scientific": "Larus fuscus"
+  },
+  "family": {
+    "latin": "Laridae",
+    "sv": "Måsfåglar"
+  },
+  "group": "gulls_terns",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q27160/hero.webp",
+      "width": 1600,
+      "height": 1064,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lesser_black-backed_gull_(Larus_fuscus).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q27160/extra.webp",
+      "width": 1200,
+      "height": 801,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Larus_fuscus_Reykjavik_20120623_03.JPG"
+    }
+  ],
+  "audio": {
+    "file": "Q27160/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Tanguy Loïs",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gaviota_sombr%C3%ADa_(Larus_fuscus).wav",
+    "sha256": "b17a9e6fda9abfb02fba96d7731d92de2feb4dcf40eabe84e6accfc0348e0c24"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Silltrut",
+      "revision": "59206157"
+    },
+    "en": {
+      "title": "Lesser black-backed gull",
+      "revision": "1361736318"
+    },
+    "de": {
+      "title": "Heringsmöwe",
+      "revision": "253193104"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2481174,
+    "totalReports": 124609,
+    "months": [
+      1,
+      1,
+      42,
+      87,
+      66,
+      66,
+      88,
+      100,
+      59,
+      19,
+      6,
+      3
+    ],
+    "counties": {
+      "SE-K": 37,
+      "SE-W": 7,
+      "SE-X": 28,
+      "SE-I": 62,
+      "SE-N": 81,
+      "SE-Z": 4,
+      "SE-F": 7,
+      "SE-H": 37,
+      "SE-G": 2,
+      "SE-BD": 32,
+      "SE-T": 4,
+      "SE-E": 8,
+      "SE-M": 33,
+      "SE-D": 8,
+      "SE-AB": 100,
+      "SE-C": 33,
+      "SE-S": 19,
+      "SE-AC": 15,
+      "SE-Y": 23,
+      "SE-U": 6,
+      "SE-O": 56
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april, juli och augusti.",
+        "Rapporteras sällan i november till februari.",
+        "Andelen av alla fågelrapporter är högst i Stockholm, Halland och Gotland."
+      ],
+      "en": [
+        "Reported most in April, July and August.",
+        "Rarely reported in November to February.",
+        "Its share of all bird reports is highest in Stockholm, Halland and Gotland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        154,
+        152,
+        9250,
+        29231,
+        25704,
+        13868,
+        14294,
+        17009,
+        10387,
+        3340,
+        678,
+        242
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-AB": 29834,
+        "SE-O": 23927,
+        "SE-N": 10463,
+        "SE-M": 9836,
+        "SE-H": 8412,
+        "SE-C": 5443,
+        "SE-I": 3199,
+        "SE-BD": 2283,
+        "SE-X": 1584,
+        "SE-AC": 1255,
+        "SE-S": 1137,
+        "SE-D": 1094,
+        "SE-Y": 951,
+        "SE-K": 945,
+        "SE-E": 928,
+        "SE-F": 766,
+        "SE-W": 534,
+        "SE-T": 355,
+        "SE-U": 353,
+        "SE-Z": 156,
+        "SE-G": 149
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

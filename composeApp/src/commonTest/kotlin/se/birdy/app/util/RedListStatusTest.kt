@@ -25,4 +25,20 @@ class RedListStatusTest {
         assertFalse(isRedListed(""))
         assertFalse(isRedListed(null))
     }
+
+    // Release 1.3.0 Task 7g: Garfågel, Kanariestrandskata and Smalnäbbad spov are extinct (EX);
+    // they get their own tag instead of passing for red-listed or for not evaluated.
+    @Test
+    fun `EX and EW are extinct and not red-listed`() {
+        assertTrue(isExtinct("EX"))
+        assertTrue(isExtinct("EW"))
+        assertFalse(isRedListed("EX"))
+        assertFalse(isRedListed("EW"))
+    }
+
+    @Test
+    fun `living statuses blank and null are not extinct`() {
+        listOf("LC", "NT", "VU", "EN", "CR", "DD", "NE", "").forEach { assertFalse(isExtinct(it), it) }
+        assertFalse(isExtinct(null))
+    }
 }

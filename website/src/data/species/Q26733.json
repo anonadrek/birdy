@@ -1,0 +1,910 @@
+{
+  "qid": "Q26733",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Huvud och hals är svarta med en vit fläck på strupen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Huvud och hals är svart med en vit fläck på strupen."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Det vita hakbandet sträcker sig från strupen till bakom ögonen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "das ausgedehnte weiße Kinnband, das sich von der Kehle bis hinter die Augen erstreckt"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Den svarta halsen är skarpt avgränsad mot det grå bröstet.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die schwarze Halsbefiederung ist scharf gegen die graue Brust abgesetzt."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Näbben och fötterna är gråsvarta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben och fötterna är gråsvarta."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Buken och kroppssidorna är beigebruna med tydliga tvärband, medan ryggen och vingovansidan är mörkare gråbruna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Buken och kroppssidorna är beigebruna med tydliga tvärband. Vingovansidan och ryggen mörkare gråbrun."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Under- och övergumpen är vit och stjärten svartgrå.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under- och övergump vit och stjärten svartgrå."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Könen och åldrarna är lika.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen och åldrarna är lika."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Dunungarna har en gulaktig till grönaktigt gul dräkt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Daunenkleid der Küken hat einen gelblichen bis grüngelblichen Farbton"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Längden är 90–105 centimeter, vingspannet 1,6–1,8 meter och vikten i genomsnitt 4 500 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "med en längd på mellan 90 och 105 centimeter, ett vingspann mellan 1,6 och 1,8 meter och en genomsnittlig vikt på 4 500 gram"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Det typiska lätet är ett nasalt, tvåstavigt ”år-lytt”, där andra stavelsen nästan går upp i falsett.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Typiska lätet är ett nasalt, tvåstavigt \"år-lytt\", där den andra stavelsen nästan går upp i falsett."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Kanadagåsen ropar särskilt flitigt under flykten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Kanadagänse sind vor allem während des Fluges sehr ruffreudig."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Upprörda eller revirförsvarande gäss inleder ofta en konfrontation med ett högt väsande.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "When agitated or aggressively defending territory, Canada geese will typically initiate an encounter with a high-pitched hiss."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "habitat",
+      "sv": "Kanadagåsen finns främst i öppna sjöar och skärgård, men även i parker och jordbruksbygd med mindre sjöar eller dammar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kanadagåsen förekommer främst i öppna sjöar och i skärgården, men även i parker och jordbruksbygd med mindre sjöar eller dammar."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Den häckar även i myrområden med större vattenspeglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar även i myrområden som har större vattenspeglar."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "sweden",
+      "sv": "Arten infördes till Skandinavien under 1900-talet, med början i Sverige 1929.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They were also introduced into the Netherlands, Belgium, Germany, Scandinavia, and Finland in the 20th Century, starting in Sweden in 1929."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "Kanadagåsen är i dag Sveriges vanligaste och mest utbredda gås.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Heute ist sie nicht zuletzt deswegen die häufigste und am weitesten verbreitete Gans Schwedens."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Kanadagäss i norra Sverige och Finland flyttar till Nordsjö- och Östersjökusterna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "those in more northerly parts of Sweden and Finland migrate to the North Sea and Baltic coasts"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Många nordeuropeiska kanadagäss övervintrar i trakterna kring Danmark, Nederländerna och Polen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Många övervintrar i trakterna kring Danmark, Nederländerna och Polen."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "På nordliga platser där vattnet hålls öppet på konstgjord väg övervintrar kanadagåsen ofta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På nordliga platser, där vattnet på konstgjord väg hålls öppet vintertid, är det vanligt att kanadagåsen övervintrar."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Boet är en grop i marken med gräs, pinnar och torv, fodrad med gråvitt dun.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet är en grop i marken med gräs, pinnar och torv som fylls med gråvitt dun."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Honan lägger oftast fem till sju enfärgat gråvita ägg, främst mellan april och maj.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger de enfärgat gråvita äggen främst mellan april och maj, oftast fem till sju ägg"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Äggen ruvas i ungefär 30 dygn och ungarna blir flygga efter cirka 40–50 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas i ungefär 30 dygn och ungarna blir flygga efter cirka 40–50 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Kullar från flera par på samma plats slås ofta samman och vaktas i skift av föräldrarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Om flera kanadagåspar på samma plats får ungar slås kullarna ofta samman till en större flock med ungar som vaktas i skift av föräldraparen."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Födan består främst av gräs och andra växter samt deras rötter, ibland även små insekter och fisk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Födan består främst av gräs och andra växter samt deras rötter, men det förekommer att den även äter små insekter och fisk."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Den når längre ner under vattnet genom att lyfta bakkroppen ur vattnet när den betar vattenväxter.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Ihre Reichweite unter Wasser können Kanadagänse deutlich vergrößern, indem sie ihren Hinterkörper aus dem Wasser heben."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden lever kanadagåsen i stora flockar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utanför häckningstiden lever kanadagåsen i stora flockar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "I betande flockar håller några gäss vakt medan de andra betar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I en större flock med betande kanadagäss håller några gäss vakt medan de andra betar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Kanadagäss flyger i en karakteristisk V-formation.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Canada geese fly in a distinctive V-shaped flight formation"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Många nordeuropeiska kanadagäss är halvtama och håller till i parker och dammar nära människor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Många nordeuropeiska kanadagäss är halvtama och håller till i parker och dammar nära människor."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Polargåsen liknar en mindre kanadagås men har proportionerligt kortare hals och mindre näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Polargåsen ser ut som en mindre kanadagås, med proportionerligt kortare hals och mindre näbb."
+        }
+      ],
+      "other": {
+        "scientific": "Branta hutchinsii"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [],
+      "edited": true
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Kanadagåsen infördes till Skandinavien under 1900-talet, med början i Sverige 1929, och är i dag Sveriges vanligaste och mest utbredda gås.",
+          "factIds": [
+            "f15",
+            "f16"
+          ]
+        },
+        {
+          "text": "Den ses vid öppna sjöar och i skärgård, men också i parker och jordbruksbygd med mindre sjöar eller dammar.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Svart huvud och hals med vitt hakband från strupen till bakom ögonen",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Den svarta halsen är skarpt avgränsad mot det grå bröstet",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Beigebrun buk och sidor med tydliga tvärband, mörkare gråbrun rygg",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Vit gump, svartgrå stjärt, gråsvart näbb och fötter, könen är lika",
+          "factIds": [
+            "f04",
+            "f06",
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Det typiska lätet är ett nasalt, tvåstavigt ”år-lytt”, där andra stavelsen nästan går upp i falsett.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Den ropar särskilt flitigt i flykten.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Upprörda eller revirförsvarande gäss inleder ofta en konfrontation med ett högt väsande.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Kanadagåsen är delvis flyttfågel och häckar i Sverige, även i myrområden med större vattenspeglar.",
+          "factIds": [
+            "s01",
+            "f14"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Gäss i norra Sverige flyttar till Nordsjö- och Östersjökusterna, och många nordeuropeiska kanadagäss övervintrar kring Danmark, Nederländerna och Polen.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "På nordliga platser där vattnet hålls öppet på konstgjord väg övervintrar den ofta.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den äter främst gräs och andra växter och deras rötter, ibland även små insekter och fisk.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "När den betar vattenväxter lyfter den bakkroppen ur vattnet för att nå längre ner.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden lever den i stora flockar, där några gäss håller vakt medan de andra betar.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Den flyger i en karakteristisk V-formation, och många är halvtama och håller till i parker och dammar nära människor.",
+          "factIds": [
+            "f28",
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Branta hutchinsii",
+          "text": [
+            {
+              "text": "Polargåsen liknar en mindre kanadagås men har proportionerligt kortare hals och mindre näbb.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Kanadagås: så känner du igen den på svart hals och vitt hakband, hur lätet låter, när den ses i Sverige samt vad den äter.",
+      "facts": {
+        "size": {
+          "value": "90 till 105 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Canada Goose was introduced to Scandinavia in the 1900s, starting in Sweden in 1929, and is now Sweden's commonest and most widespread goose.",
+          "factIds": [
+            "f15",
+            "f16"
+          ]
+        },
+        {
+          "text": "It lives on open lakes and archipelagos, and in parks and farmland with smaller lakes or ponds.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Black head and neck with a white chinstrap reaching from the throat to behind the eyes",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "The black neck is sharply divided from the grey breast",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Beige-brown belly and flanks with clear bars, darker grey-brown back",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "White rump, blackish-grey tail, grey-black bill and feet, sexes alike",
+          "factIds": [
+            "f04",
+            "f06",
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The typical call is a nasal, two-syllable “år-lytt”, with the second syllable almost rising into falsetto.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "It calls especially often in flight.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Agitated or territorial geese often start a confrontation with a loud hiss.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Canada Goose is a partial migrant that breeds in Sweden, also in bogs with larger open water.",
+          "factIds": [
+            "s01",
+            "f14"
+          ]
+        },
+        {
+          "text": "It is reported all year round and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Birds from northern Sweden move to the North Sea and Baltic coasts, and many northern European Canada Geese winter around Denmark, the Netherlands and Poland.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "In northern places where water is kept open artificially, it often stays for the winter.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats mainly grass, other plants and their roots, sometimes small insects and fish.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "When grazing water plants it lifts its rear out of the water to reach deeper.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it lives in large flocks, where some geese keep watch while the others graze.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "It flies in a characteristic V formation, and many are half tame, living in parks and ponds near people.",
+          "factIds": [
+            "f28",
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Branta hutchinsii",
+          "text": [
+            {
+              "text": "Branta hutchinsii looks like a smaller Canada Goose but has a proportionally shorter neck and a smaller bill.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Canada Goose: how to recognise it by its black neck and white chinstrap, what its call sounds like, when it is seen in Sweden and what it eats.",
+      "facts": {
+        "size": {
+          "value": "90 to 105 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "7dde26dd9f5a4000"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T19:02:24.943717+00:00",
+      "factsHash": "7dde26dd9f5a4000"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "kanadagas",
+    "en": "canada-goose"
+  },
+  "names": {
+    "sv": "Kanadagås",
+    "en": "Canada Goose",
+    "scientific": "Branta canadensis"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Änder"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26733/hero.webp",
+      "width": 1600,
+      "height": 1063,
+      "author": "abdallahh",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bernache_du_Canada_(50246750056).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26733/extra.webp",
+      "width": 1200,
+      "height": 805,
+      "author": "Judy Gallagher",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:058_366_-_Canada_Goose_-_Branta_canadensis,_Kingstowne_Lake,_Alexandria,_Virginia,_February_27,_2024_(53557081058).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26733/voice.mp3",
+    "durationSec": 15,
+    "trimmed": false,
+    "author": "Antonio Xeira",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Branta_canadensis_-_Canada_Goose_XC388771.mp3",
+    "sha256": "88dfe30a733ebf822cc63610149fed10cb826df0b84935227d917d952e96052e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Kanadagås",
+      "revision": "59567613"
+    },
+    "en": {
+      "title": "Canada goose",
+      "revision": "1375166117"
+    },
+    "de": {
+      "title": "Kanadagans",
+      "revision": "269367647"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 5232437,
+    "totalReports": 399394,
+    "months": [
+      49,
+      84,
+      100,
+      61,
+      44,
+      36,
+      42,
+      45,
+      38,
+      38,
+      54,
+      47
+    ],
+    "counties": {
+      "SE-K": 46,
+      "SE-W": 85,
+      "SE-X": 79,
+      "SE-I": 27,
+      "SE-N": 52,
+      "SE-Z": 55,
+      "SE-F": 83,
+      "SE-H": 26,
+      "SE-G": 82,
+      "SE-BD": 53,
+      "SE-T": 65,
+      "SE-E": 62,
+      "SE-M": 23,
+      "SE-D": 55,
+      "SE-AB": 66,
+      "SE-C": 53,
+      "SE-S": 74,
+      "SE-AC": 61,
+      "SE-Y": 100,
+      "SE-U": 70,
+      "SE-O": 81
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        27262,
+        32286,
+        70868,
+        66406,
+        55240,
+        24881,
+        21978,
+        24790,
+        21633,
+        21103,
+        19119,
+        13622
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 80834,
+        "SE-AB": 45735,
+        "SE-F": 22194,
+        "SE-C": 20018,
+        "SE-E": 17204,
+        "SE-D": 17127,
+        "SE-M": 16006,
+        "SE-N": 15835,
+        "SE-W": 14247,
+        "SE-H": 13530,
+        "SE-T": 12287,
+        "SE-AC": 11887,
+        "SE-G": 11846,
+        "SE-X": 10362,
+        "SE-U": 10357,
+        "SE-S": 10156,
+        "SE-Y": 9744,
+        "SE-BD": 8635,
+        "SE-Z": 5227,
+        "SE-I": 3271,
+        "SE-K": 2677
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: Quote supports partial migration for northern Swedish populations but does not explicitly state the species breeds in Sweden.. Bestäm status eller lämna tom."
+    }
+  ],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

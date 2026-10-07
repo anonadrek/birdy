@@ -1,0 +1,897 @@
+{
+  "qid": "Q25382",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Huvudets översida, vingarna och stjärten är svarta med blå metallglans.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Huvudets översida, vingarna och stjärten är svart med blå metallglans."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Domherren har ett vitt tvärband över vingen, grå rygg och vit undergump.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett vitt tvärband över vingen, grå rygg samt vit undergump."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Den vita övergumpen och de vita vingbanden syns tydligt i flykten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the white rump and wing bars are striking in flight"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Näbben är kort och tjock med kraftigt välvd övernäbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är kort och tjock med kraftigt välvd övernäbb."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Domherren är förhållandevis stor och robust byggd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Domherren är förhållandevis stor och robust byggd."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Den utfärgade hanen är röd på huvudets sidor och på bröstet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den utfärgade hanen är färgad i rött på huvudets sidor och på bröstet"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Honan är blekare i färgerna, gråbrun nästan med dragning åt lila.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "medan honan är blekare i färgerna, gråbrunt nästan med dragning åt lila"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Ungfåglar har gråbrun hätta och ansikte i stället för svart som hos de vuxna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "as are the cap and face in adults (they are greyish-brown in juveniles)"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Längden är ungefär 15–17 cm och vingspannet 22–29 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Längden är ungefär 15–17 cm, vingspannet 22–29 cm."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "En vuxen domherre väger cirka 21–27 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som vuxen väger den cirka 21–27 gram."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Det vanliga locklätet är en tyst, låg och melankolisk vissling, ungefär ”peeu” eller ”pew”.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "This bullfinch's usual call is a quiet, low, melancholy whistled peeu or pew."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Den visslande sången är svag, hörs från både hona och hane och är uppblandad med knirkande och klagande toner.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den visslande sången, som är svag och hörs från både honan och hanen, är uppblandad av knirkande och klagande toner."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Den nordliga underarten pyrrhula, som finns från Skandinavien till Östeuropa, har ett lockläte som påminner om en barntrumpet.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Sie siedelt von Skandinavien bis Osteuropa"
+        },
+        {
+          "article": "de",
+          "quote": "Aufgrund seines typischen Rufs, der an eine Kindertröte oder Kazoo erinnert, wird er auch als Trompetergimpel bezeichnet."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Domherren lever främst i barrskog från lågland till bergsskogar, gärna i granplanteringar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lever främst i barrskog från lågland till bergsskogar, gärna i granplanteringar"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Den finns i barr- och blandskog, gärna på fuktig mark med rik undervegetation.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Domherren finns i barr- och blandskog, gärna på fuktig mark med rik undervegetation."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "På vintern förekommer domherren ofta nära bebyggelse.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern förekommer den ofta nära bebyggelse."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Domherren förekommer i hela Sverige utom på högfjället.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Domherren förekommer i hela Sverige utom på högfjället."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Sverige ses den mest om vintern, då den gärna kommer till bebyggelse och fågelmatare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den ses mest om vintern då den gärna kommer fram till bebyggelse och lockas fram till fågelmatare."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Vanligtvis stannar domherren i Sverige under vintern, men vissa år flyttar många till Danmark och Mellaneuropa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vanligtvis stannar den i Sverige under vintern, men vissa år flyttar många till Danmark och Mellaneuropa."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Beståndet i Sverige uppskattas till 250 000–500 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Beståndet i Sverige uppskattas till 250 000–500 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet byggs av tunna grenar, rötter och mossa och placeras oftast i unga granar eller i häckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet byggs av tunna grenar, rötter och mossa och placeras i skogsträd, oftast unga granar, och häckar."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Kullen består av fyra till sex ljusblå ägg med rödaktigt violetta fläckar och svarta prickar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kullen består av fyra till sex ljusblå ägg med rödaktigt-violetta fläckar och svarta prickar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan ruvar två till tre gånger om året mellan april och augusti, i ungefär tretton dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ruvar två till tre gånger om året mellan april och augusti i ungefär tretton dagar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Ungarna stannar i boet i ungefär sexton till sjutton dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna stannar i boet i ungefär sexton till sjutton dagar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Födan består av frön, knoppar, bär som rönnbär, späda blad och en del insekter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Med sin tjocka näbb specialiserar den sig på föda från frön, knoppar, bär, bland annat rönnbär, späda blad och en del insekter"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Domherrar rör sig oftast i par och endast sällan i grupper.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Domherrar förflyttar sig oftast i par och endast sällan i grupper."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Den är skygg under häckningstiden men lättare att observera under resten av året.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den uppträder skyggt under häckningstiden men är lättare att observera under den övriga delen av året."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Flykten är relativt långsam och vågformig.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Flug des Vogels ist relativ langsam und wellenförmig."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Skandinavien är den en utbredd och allmän häckfågel."
+        },
+        {
+          "article": "sv",
+          "quote": "Vanligtvis stannar den i Sverige under vintern"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december och januari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i augusti och september."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Norrbotten, Västernorrland och Jämtland."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Domherren är en förhållandevis stor och robust fink som lever i barr- och blandskog.",
+          "factIds": [
+            "f05",
+            "f15"
+          ]
+        },
+        {
+          "text": "På vintern kommer den gärna till bebyggelse och fågelmatare.",
+          "factIds": [
+            "f16",
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Svart hätta, vingar och stjärt med blå metallglans",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Hanen är röd på huvudets sidor och bröstet, honan blekare och gråbrun med dragning åt lila",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Grå rygg, vitt vingband och vit övergump som syns tydligt i den vågformiga flykten",
+          "factIds": [
+            "f02",
+            "f03",
+            "f28"
+          ]
+        },
+        {
+          "text": "Kort och tjock näbb med kraftigt välvd övernäbb",
+          "factIds": [
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Det vanliga locklätet är en tyst, låg och melankolisk vissling, ungefär ”peeu” eller ”pew”.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Den nordliga underarten pyrrhula, som finns från Skandinavien till Östeuropa, har ett lockläte som påminner om en barntrumpet.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Sången är en svag vissling uppblandad med knirkande och klagande toner, och både hona och hane sjunger.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Domherren är stannfågel och finns i hela Sverige utom på högfjället.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "Den lever i barr- och blandskog, gärna på fuktig mark med rik undervegetation och i granplanteringar.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i december och januari, då den gärna kommer till bebyggelse och fågelmatare, och sällan i augusti och september.",
+          "factIds": [
+            "d01",
+            "f18",
+            "d02"
+          ]
+        },
+        {
+          "text": "Vissa år flyttar många till Danmark och Mellaneuropa.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Norrbotten, Västernorrland och Jämtland.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Domherren äter frön, knoppar, bär som rönnbär, späda blad och en del insekter.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Den rör sig oftast i par och bara sällan i grupper.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Under häckningstiden är den skygg, men resten av året är den lättare att observera.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Boet placeras oftast i unga granar eller i häckar, och honan ruvar två till tre gånger om året mellan april och augusti.",
+          "factIds": [
+            "f21",
+            "f23"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Domherre: så känner du igen hane och hona på fältet, hur locklätet och sången låter och när på året arten oftast rapporteras.",
+      "facts": {
+        "size": {
+          "value": "15 till 17 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Bullfinch is a fairly large, sturdily built finch of coniferous and mixed forest.",
+          "factIds": [
+            "f05",
+            "f15"
+          ]
+        },
+        {
+          "text": "In winter it readily comes to houses and bird feeders.",
+          "factIds": [
+            "f16",
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Black cap, wings and tail with a blue metallic sheen",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Male red on the sides of the head and breast, female paler, grey-brown tinged lilac",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Grey back, white wing bar and white rump, clear in the undulating flight",
+          "factIds": [
+            "f02",
+            "f03",
+            "f28"
+          ]
+        },
+        {
+          "text": "Short, thick bill with a strongly curved upper mandible",
+          "factIds": [
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The usual call is a quiet, low, melancholy whistle, roughly \"peeu\" or \"pew\".",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The northern subspecies pyrrhula, found from Scandinavia to Eastern Europe, has a call that recalls a toy trumpet.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The song is a weak whistling mixed with creaking and plaintive notes, and both female and male sing.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "A resident found throughout Sweden except in the high mountains.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "It lives in coniferous and mixed forest, often damp with rich undergrowth.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        },
+        {
+          "text": "It is reported most in December and January, when it visits settlements and bird feeders, and rarely in August and September.",
+          "factIds": [
+            "d01",
+            "f18",
+            "d02"
+          ]
+        },
+        {
+          "text": "In some years many move to Denmark and Central Europe.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Norrbotten, Västernorrland and Jämtland.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats seeds, buds, berries such as rowan berries, young leaves and some insects.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It usually moves in pairs and only rarely in groups.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "It is shy in the breeding season but easier to watch the rest of the year.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "The nest is usually placed in young spruces or hedges, and the female incubates two to three times a year between April and August.",
+          "factIds": [
+            "f21",
+            "f23"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Eurasian Bullfinch: how to recognise male and female in the field, what the call and song sound like and when it is most often reported.",
+      "facts": {
+        "size": {
+          "value": "15 to 17 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "d7ea8dd9c0854b50"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T19:02:24.943717+00:00",
+      "factsHash": "d7ea8dd9c0854b50"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "domherre",
+    "en": "eurasian-bullfinch"
+  },
+  "names": {
+    "sv": "Domherre",
+    "en": "Eurasian Bullfinch",
+    "scientific": "Pyrrhula pyrrhula"
+  },
+  "family": {
+    "latin": "Fringillidae",
+    "sv": "Finkar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25382/hero.webp",
+      "width": 1600,
+      "height": 1455,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pyrrhula_Pyrrhula_Kittilä_20170408_01.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25382/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_bullfinch_(Pyrrhula_pyrrhula)_2022.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25382/voice.mp3",
+    "durationSec": 19,
+    "trimmed": false,
+    "author": "Benoît Van Hecke",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pyrrhula_pyrrhula_-_Eurasian_Bullfinch_XC539302.mp3",
+    "sha256": "0c2ff99beb46688de7268433f22d819518c31717f1b10a75e3e830356796fb53"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Domherre",
+      "revision": "55576523"
+    },
+    "en": {
+      "title": "Eurasian bullfinch",
+      "revision": "1357435435"
+    },
+    "de": {
+      "title": "Gimpel (Art)",
+      "revision": "270127013"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2494543,
+    "totalReports": 363176,
+    "months": [
+      90,
+      78,
+      39,
+      14,
+      8,
+      9,
+      8,
+      7,
+      10,
+      38,
+      78,
+      100
+    ],
+    "counties": {
+      "SE-K": 27,
+      "SE-W": 60,
+      "SE-X": 58,
+      "SE-I": 28,
+      "SE-N": 18,
+      "SE-Z": 79,
+      "SE-F": 50,
+      "SE-H": 21,
+      "SE-G": 35,
+      "SE-BD": 100,
+      "SE-T": 43,
+      "SE-E": 35,
+      "SE-M": 23,
+      "SE-D": 43,
+      "SE-AB": 35,
+      "SE-C": 39,
+      "SE-S": 47,
+      "SE-AC": 76,
+      "SE-Y": 80,
+      "SE-U": 38,
+      "SE-O": 41
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december och januari.",
+        "Rapporteras sällan i maj till september.",
+        "Andelen av alla fågelrapporter är högst i Norrbotten, Västernorrland och Jämtland."
+      ],
+      "en": [
+        "Reported most in December and January.",
+        "Rarely reported in May to September.",
+        "Its share of all bird reports is highest in Norrbotten, Västernorrland and Jämtland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        78526,
+        47309,
+        43741,
+        24267,
+        15010,
+        9684,
+        6596,
+        6313,
+        9029,
+        33625,
+        43325,
+        45609
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 60397,
+        "SE-AB": 35232,
+        "SE-BD": 23962,
+        "SE-M": 23202,
+        "SE-AC": 21686,
+        "SE-C": 21613,
+        "SE-D": 19596,
+        "SE-F": 19465,
+        "SE-H": 16211,
+        "SE-W": 14704,
+        "SE-E": 14065,
+        "SE-T": 12023,
+        "SE-Y": 11442,
+        "SE-X": 11026,
+        "SE-Z": 11001,
+        "SE-S": 9405,
+        "SE-U": 8190,
+        "SE-N": 8046,
+        "SE-G": 7396,
+        "SE-I": 4930,
+        "SE-K": 2336
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [
+    {
+      "check": "V2",
+      "factId": "f09",
+      "message": "f09 anger ett tal i cm som inte stämmer med de andra artiklarna (2 till 2 cm)"
+    }
+  ],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

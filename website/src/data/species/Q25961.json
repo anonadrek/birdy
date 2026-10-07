@@ -1,0 +1,587 @@
+{
+  "qid": "Q25961",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Sånglärkan är 16–18 centimeter lång, har ett vingspann på 30–36 centimeter och väger 33–45 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sånglärkan mäter 16–18 centimeter på längden, har ett vingspann på 30–36 centimeter och väger 33–45 gram."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ovansidan är gråbrunspräcklig med ljusa fjäderkanter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är på ovansidan gråbrunspräcklig med ljusa fjäderkanter."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Hals och bröst är vita med gul anstrykning och täta svartaktiga fläckar som slutar tvärt mot den ostreckade vita buken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Halsen och bröstet är vita, med gul anstrykning och täta, svartaktiga fläckar som slutar tvärt mot den ostreckade buken som är vit med svagare gul anstrykning."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Vingens ovansida har en vitaktig bakkant.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "ovansidan av vingen har en vitaktig bakkant"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Stjärtens yttersta pennor är i olika grad vita.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten är trefägad: de yttersta pennorna är i olika grad vita"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "De vita kanterna på stjärt och vingbakkant syns när fågeln flyger bort men inte när den flyger mot betraktaren.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The tail and the rear edge of the wings are edged with white, which are visible when the bird is flying away, but not if it is heading towards the observer."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Den har en kort, trubbig tofs på huvudet som kan resas och sänkas.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It has a short blunt crest on the head, which can be raised and lowered."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Den har ett kraftigt gulvitt ögonbrynsstreck och kraftigt rödbruna, ljust inramade örontäckare.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der gelblich weiße, kräftige Überaugenstreif endet an der Hinterkante der Ohrdecken. Diese sind kräftig rotbraun und hell umgrenzt."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Benen är ljusbruna och näbben är hornfärgad.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Beine sind hellbraun. Der Schnabel ist hornfarben"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Könen är lika, men hanen har bredare vingar än honan.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The sexes are alike."
+        },
+        {
+          "article": "en",
+          "quote": "The male has broader wings than the female."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Vuxna fåglar har mörkbrun iris medan unga fåglar har ljusbrun iris.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Iris ist bei adulten Feldlerchen dunkelbraun, im Jugendkleid hellbraun."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Den drillande sången framförs i spelflykt då lärkan ryttlar högt upp i luften och sedan långsamt sänker sig mot marken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sånglärkan framför sin drillande sång under spelflykt då lärkan ryttlar högt upp i luften för att långsamt sänka sig ned mot marken."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sången består av frenetiskt snabba strofer med kvitter, visslingar, rullande toner och härmningar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången består av frenetiskt snabba strofer med kvitter, visslingar, rullande toner och härmningar."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Sångstroferna är mycket utdragna och kan pågå mellan tre och femton minuter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stroferna är mycket utdragna och kan pågå mellan tre och hela 15 minuter."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Hanen sjunger ryttlande på 50 till 100 meters höjd och kan då synas som bara en prick på himlen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "which is delivered in hovering flight from heights of 50 to 100 m, when the singing bird may appear as just a dot in the sky from the ground"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Locklätena är torrt drillande, till exempel \"prrit\", och vid oro pipigare \"p(riih\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bland locklätena hörs flera olika torrt drillande varianter, exempelvis \"prrit\", vid oro pipigare \"p(riih\"."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Sånglärkan häckar på åkrar, slätter, hedar och stäpp och är ofta starkt knuten till kulturlandskapet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sånglärkan häckar på åkrar, slätter, hedar och stäpp och är i stora delar av sin utbredning starkt knuten till kulturlandskapet."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Sånglärkan häckar allmänt i Sverige ända upp i Lappland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Denna lärka häckar allmänt ända upp i Lappland."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige häckar den främst på klövervallar och gräsängar och blir därför mer sällsynt norr om odlingsgränsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess främsta häckningsbiotop är klövervallar och gräsängar vilket gör att den blir mer sällsynt norr om odlingsgränsen."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Sånglärkan anländer ofta till Sverige redan i februari–mars.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sånglärkan anländer ofta till Sverige redan i februari–mars."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "De svenska häckfåglarna flyttar till Västeuropa i september–november, men ett fåtal övervintrar i södra Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I september–november flyttar de i Sverige häckande sånglärkorna till Västeuropa. Ett fåtal övervintrar dock i södra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "År 2018 uppskattades det svenska beståndet till 800 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 800 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Boet byggs av gräs på marken och honan lägger tre till sex ägg som kläcks efter runt elva dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sånglärkan bygger sitt bo av gräs på marken, och honan lägger tre till sex ägg som kläcks efter runt elva dygn."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Ungarna lämnar boet efter tio dagar, innan de är flygga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna lämnar boet ännu ej flygga efter tio dagar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Sånglärkan lägger vanligen två kullar per år.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sånglärkan lägger vanligen två kullar per år."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "På sommaren äter den främst insekter och på vintern främst växtföda som frön, groddar och små blad.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Im Sommer werden vor allem Insekten gefressen"
+        },
+        {
+          "article": "de",
+          "quote": "Im Winter ernähren sich Feldlerchen überwiegend pflanzlich von Samen, Keimlingen, frisch austreibenden Gräsern und kleinen Blättern."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Den går omkring på marken och söker föda på jordytan.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The Eurasian skylark walks over the ground searching for food on the soil surface."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Efter sångflykten dyker den plötsligt ned, sista biten med indragna vingar, och bryter fallet strax ovanför marken.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "fliegt dann plötzlich wieder herab, das letzte Stück mit angelegten Flügeln"
+        },
+        {
+          "article": "de",
+          "quote": "Kurz über dem Boden entfaltet er seine Flügel und fängt den Sturzflug ab."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Efter häckningstiden bildar sånglärkorna ofta stora flockar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Nach der Brutzeit bilden die Vögel oft große Schwärme"
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I september–november flyttar de i Sverige häckande sånglärkorna till Västeuropa."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i mars."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i december och januari."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": null,
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T16:08:41.079475+00:00"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "sanglarka",
+    "en": "eurasian-skylark"
+  },
+  "names": {
+    "sv": "Sånglärka",
+    "en": "Eurasian Skylark",
+    "scientific": "Alauda arvensis"
+  },
+  "family": {
+    "latin": "Alaudidae",
+    "sv": "Lärkor"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25961/hero.webp",
+      "width": 1600,
+      "height": 1823,
+      "author": "Alun Williams333",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alauda_arvensis_Ehedydd.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25961/extra.webp",
+      "width": 1200,
+      "height": 823,
+      "author": "Zeynel Cebeci",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alauda_arvensis_-_Skylark_-_Tarlakuşu_02.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25961/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Guido Gerding",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:XN_Alauda_arvensis.ogg",
+    "sha256": "a1dbcc32d4e8259b51fad4222efd2590f48cc4ef538fe1b3b8e0f9e6d7e7d70e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Sånglärka",
+      "revision": "59408142"
+    },
+    "en": {
+      "title": "Eurasian skylark",
+      "revision": "1371230946"
+    },
+    "de": {
+      "title": "Feldlerche",
+      "revision": "266858099"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 8077224,
+    "totalReports": 310306,
+    "months": [
+      5,
+      74,
+      100,
+      51,
+      38,
+      41,
+      28,
+      15,
+      40,
+      48,
+      12,
+      5
+    ],
+    "counties": {
+      "SE-K": 60,
+      "SE-W": 57,
+      "SE-X": 54,
+      "SE-I": 88,
+      "SE-N": 92,
+      "SE-Z": 14,
+      "SE-F": 62,
+      "SE-H": 78,
+      "SE-G": 64,
+      "SE-BD": 34,
+      "SE-T": 63,
+      "SE-E": 72,
+      "SE-M": 90,
+      "SE-D": 95,
+      "SE-AB": 78,
+      "SE-C": 100,
+      "SE-S": 56,
+      "SE-AC": 53,
+      "SE-Y": 38,
+      "SE-U": 63,
+      "SE-O": 72
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i mars.",
+        "Rapporteras sällan i december och januari.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in March.",
+        "Rarely reported in December and January.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        2550,
+        28047,
+        70294,
+        55720,
+        48255,
+        27722,
+        14680,
+        8314,
+        22562,
+        26504,
+        4138,
+        1334
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 46842,
+        "SE-M": 40573,
+        "SE-AB": 34810,
+        "SE-H": 26787,
+        "SE-C": 24627,
+        "SE-D": 19188,
+        "SE-N": 17896,
+        "SE-E": 12910,
+        "SE-F": 10590,
+        "SE-T": 7707,
+        "SE-I": 6843,
+        "SE-AC": 6666,
+        "SE-W": 6185,
+        "SE-U": 5987,
+        "SE-G": 5960,
+        "SE-S": 4935,
+        "SE-X": 4522,
+        "SE-BD": 3625,
+        "SE-Y": 2378,
+        "SE-K": 2277,
+        "SE-Z": 855
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  }
+}

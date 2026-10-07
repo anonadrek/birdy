@@ -73,35 +73,33 @@ image_refs:
 - role: hero
   path: Q25777/hero.webp
   width: 2400
-  height: 2400
-  license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Tsyganov_Sergey&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Tsyganov Sergey (page does not exist)">Tsyganov Sergey</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Turdus pilaris Дрозд-рябинник
-    Птенец в Санкт-Петербурге 05.jpg
-  commons_filename: Turdus pilaris Дрозд-рябинник Птенец в Санкт-Петербурге 05.jpg
+  height: 1784
+  license: CC BY 2.0
+  author: Kathy Büscher
+  source_url: https://commons.wikimedia.org/wiki/File:Drossel (1) (35020696255).jpg
+  commons_filename: Drossel (1) (35020696255).jpg
 - role: secondary
   path: Q25777/secondary-1.webp
   width: 1800
-  height: 1800
-  license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Tsyganov_Sergey&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Tsyganov Sergey (page does not exist)">Tsyganov Sergey</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Turdus pilaris Дрозд-рябинник
-    Птенец в Санкт-Петербурге 02.jpg
-  commons_filename: Turdus pilaris Дрозд-рябинник Птенец в Санкт-Петербурге 02.jpg
+  height: 1159
+  license: CC BY-SA 3.0
+  author: Martin Olsson
+  source_url: https://commons.wikimedia.org/wiki/File:Fieldfare aka Turdus pilaris.jpg
+  commons_filename: Fieldfare aka Turdus pilaris.jpg
 - role: secondary
   path: Q25777/secondary-2.webp
   width: 1800
   height: 1244
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Mattivirtala (page does not exist)">Matti Virtala</a>
+  author: Matti Virtala
   source_url: https://commons.wikimedia.org/wiki/File:Turdus pilaris Oulu Finland
     2016-05-06.jpg
   commons_filename: Turdus pilaris Oulu Finland 2016-05-06.jpg
 review_status: approved
-review_notes: "Hero = Turdus pilaris (Fieldfare / Björktrast); allmän i hela SE, koloni-häckare."
+review_notes: 'Hero = Turdus pilaris (Fieldfare / Björktrast); allmän i hela SE, koloni-häckare.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T21:33:22.076807+00:00'
 sources:
   wikipedia_sv_revision: '59240095'

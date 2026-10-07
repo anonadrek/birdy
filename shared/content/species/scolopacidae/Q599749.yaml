@@ -89,8 +89,7 @@ image_refs:
   width: 2400
   height: 1398
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:ImagePerson&amp;action=edit&amp;redlink=1"
-    class="new" title="User:ImagePerson (page does not exist)">ImagePerson</a>
+  author: ImagePerson
   source_url: https://commons.wikimedia.org/wiki/File:Semipalmated plovers Charadrius
     semipalmatus, white-rumped sandpiper Calidris fuscicollis.jpg
   commons_filename: Semipalmated plovers Charadrius semipalmatus, white-rumped sandpiper
@@ -100,8 +99,7 @@ image_refs:
   width: 1800
   height: 1122
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:ImagePerson&amp;action=edit&amp;redlink=1"
-    class="new" title="User:ImagePerson (page does not exist)">ImagePerson</a>
+  author: ImagePerson
   source_url: https://commons.wikimedia.org/wiki/File:White-rumped sandpipers Calidris
     fuscicollis Mingan Islands 7025.jpg
   commons_filename: White-rumped sandpipers Calidris fuscicollis Mingan Islands 7025.jpg
@@ -110,8 +108,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/68069539@N07">Silver
-    Leapers</a> from remote NE Coastline, Newfoundland, Canada
+  author: Silver Leapers
   source_url: https://commons.wikimedia.org/wiki/File:Calidris fuscicollis, Deadman's
     Bay, Newfoundland 1.jpg
   commons_filename: Calidris fuscicollis, Deadman's Bay, Newfoundland 1.jpg

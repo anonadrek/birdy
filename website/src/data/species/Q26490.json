@@ -1,0 +1,209 @@
+{
+  "qid": "Q26490",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tornfalk",
+    "en": "common-kestrel"
+  },
+  "names": {
+    "sv": "Tornfalk",
+    "en": "Common Kestrel",
+    "scientific": "Falco tinnunculus"
+  },
+  "family": {
+    "latin": "Falconidae",
+    "sv": "Falkar"
+  },
+  "group": "raptors",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26490/hero.webp",
+      "width": 1600,
+      "height": 1427,
+      "author": "Alexey V. Kurochkin",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_kestrel_(Falco_tinnunculus)_female_(IMGP1648r2-DNA).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26490/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Falco_tinnunculus_2022_04_17.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26490/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Javier Herrera",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Falco_tinnunculus_-_Common_Kestrel_XC463430.mp3",
+    "sha256": "ff4ac98430f79b12983a4e910e14a4702d64045331b2cefbdb2efa99dab07828"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Tornfalk",
+      "revision": "59530281"
+    },
+    "en": {
+      "title": "Common kestrel",
+      "revision": "1375652533"
+    },
+    "de": {
+      "title": "Turmfalke",
+      "revision": "270181448"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 9616058,
+    "totalReports": 296670,
+    "months": [
+      33,
+      30,
+      24,
+      47,
+      36,
+      44,
+      67,
+      83,
+      100,
+      34,
+      26,
+      33
+    ],
+    "counties": {
+      "SE-K": 49,
+      "SE-W": 91,
+      "SE-X": 65,
+      "SE-I": 40,
+      "SE-N": 100,
+      "SE-Z": 92,
+      "SE-F": 61,
+      "SE-H": 61,
+      "SE-G": 42,
+      "SE-BD": 62,
+      "SE-T": 78,
+      "SE-E": 73,
+      "SE-M": 85,
+      "SE-D": 43,
+      "SE-AB": 33,
+      "SE-C": 68,
+      "SE-S": 72,
+      "SE-AC": 74,
+      "SE-Y": 90,
+      "SE-U": 77,
+      "SE-O": 66
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i augusti och september.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in August and September.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        15407,
+        9860,
+        14106,
+        43852,
+        38546,
+        25263,
+        29798,
+        38854,
+        48354,
+        16019,
+        7713,
+        8142
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 46396,
+        "SE-M": 41988,
+        "SE-H": 22955,
+        "SE-N": 21298,
+        "SE-C": 18256,
+        "SE-AB": 16138,
+        "SE-E": 14224,
+        "SE-F": 11447,
+        "SE-W": 10744,
+        "SE-T": 10419,
+        "SE-AC": 10142,
+        "SE-D": 9386,
+        "SE-U": 8013,
+        "SE-BD": 7199,
+        "SE-S": 6963,
+        "SE-Z": 6176,
+        "SE-Y": 6174,
+        "SE-X": 6016,
+        "SE-G": 4283,
+        "SE-I": 3380,
+        "SE-K": 2042
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

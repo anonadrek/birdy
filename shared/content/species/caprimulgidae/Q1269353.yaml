@@ -64,14 +64,12 @@ migration:
 image_refs:
 - role: hero
   path: Q1269353/hero.webp
-  width: 1904
-  height: 2200
-  license: Public domain
-  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Joseph_Wolf" class="extiw"
-    title="w:en:Joseph Wolf"><span title="German artist (1820-1899)">Joseph Wolf</span></a></bdi>
-  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus nubicus tamaricis
-    1866.jpg
-  commons_filename: Caprimulgus nubicus tamaricis 1866.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: Broobas
+  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgusnubicus.jpg
+  commons_filename: Caprimulgusnubicus.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-07T23:10:41.983085+00:00'

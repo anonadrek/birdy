@@ -99,7 +99,7 @@ image_refs:
   width: 2400
   height: 1491
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Davidvraju" title="User:Davidvraju">Davidvraju</a>
+  author: Davidvraju
   source_url: https://commons.wikimedia.org/wiki/File:Olive-backed pipit (Anthus hodgsoni).jpg
   commons_filename: Olive-backed pipit (Anthus hodgsoni).jpg
 - role: secondary
@@ -107,8 +107,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:%E5%A4%A7%E5%AE%B6%E5%A5%BD64"
-    title="User:大家好64">大家好64</a>
+  author: 大家好64
   source_url: https://commons.wikimedia.org/wiki/File:Olive-backed pipit (Anthus hodgsoni),
     Hangzhou, China.jpg
   commons_filename: Olive-backed pipit (Anthus hodgsoni), Hangzhou, China.jpg
@@ -117,8 +116,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Anthus hodgsoni (40950152882).jpg
   commons_filename: Anthus hodgsoni (40950152882).jpg
 review_status: auto

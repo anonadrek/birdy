@@ -91,9 +91,7 @@ image_refs:
   width: 2400
   height: 1201
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://pixabay.com/users/dannymoore1973-1813225/">Dannymoore1973</a><br><small>Minor
-    edits made by <a href="//commons.wikimedia.org/wiki/User:Subsidiary_account" title="User:Subsidiary
-    account">Subsidiary account</a></small>
+  author: Dannymoore1973
   source_url: https://commons.wikimedia.org/wiki/File:Front view of a barn owl - Tyto
     alba - in flight.jpg
   commons_filename: Front view of a barn owl - Tyto alba - in flight.jpg
@@ -102,8 +100,7 @@ image_refs:
   width: 1800
   height: 1285
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/100915417@N07">Charlie
-    Marshall</a> from Bristol UK, United Kingdom
+  author: Charlie Marshall
   source_url: https://commons.wikimedia.org/wiki/File:Tyto alba - in flight.jpg
   commons_filename: Tyto alba - in flight.jpg
 - role: secondary
@@ -111,8 +108,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jean-Pol_GRANDMONT" title="User:Jean-Pol
-    GRANDMONT">Jean-Pol GRANDMONT</a>
+  author: Jean-Pol GRANDMONT
   source_url: https://commons.wikimedia.org/wiki/File:0 Chouette effraie - Tyto alba.JPG
   commons_filename: 0 Chouette effraie - Tyto alba.JPG
 review_status: auto

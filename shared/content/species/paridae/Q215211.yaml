@@ -87,37 +87,36 @@ migration:
 image_refs:
 - role: hero
   path: Q215211/hero.webp
-  width: 1739
-  height: 2400
-  license: Public domain
-  author: <bdi><a href="https://en.wikipedia.org/wiki/en:John_Gerrard_Keulemans" class="extiw"
-    title="w:en:John Gerrard Keulemans"><span title="Dutch bird artist (1842-1912)">John
-    Gerrard Keulemans</span></a></bdi>
-  source_url: https://commons.wikimedia.org/wiki/File:Poecile montanus songarus &
-    Poecile montanus affinis & Poecile superciliosus 1889.jpg
-  commons_filename: Poecile montanus songarus & Poecile montanus affinis & Poecile
-    superciliosus 1889.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 3.0
+  author: Francis C. Franklin
+  source_url: https://commons.wikimedia.org/wiki/File:Poecile montanus kleinschmidti
+    2.jpg
+  commons_filename: Poecile montanus kleinschmidti 2.jpg
 - role: secondary
   path: Q215211/secondary-1.webp
   width: 1800
-  height: 1180
-  license: Public domain
-  author: <bdi><a href="https://en.wikipedia.org/wiki/en:John_Gerrard_Keulemans" class="extiw"
-    title="w:en:John Gerrard Keulemans"><span title="Dutch bird artist (1842-1912)">John
-    Gerrard Keulemans</span></a></bdi>
-  source_url: https://commons.wikimedia.org/wiki/File:Poecile montanus affinis 1889.jpg
-  commons_filename: Poecile montanus affinis 1889.jpg
+  height: 1376
+  license: CC0
+  author: Estormiz
+  source_url: https://commons.wikimedia.org/wiki/File:Poecile Montanus Kittila 20120307.JPG
+  commons_filename: Poecile Montanus Kittila 20120307.JPG
 - role: secondary
   path: Q215211/secondary-2.webp
   width: 1800
   height: 1352
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Poecile Montanus Kittilä 20220310
     02.jpg
   commons_filename: Poecile Montanus Kittilä 20220310 02.jpg
 review_status: approved
-review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons hero, no manual review checkpoint'
+review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons
+  hero, no manual review checkpoint
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-04T10:00:57.015365+00:00'
 sources:
   wikipedia_sv_revision: '56065327'

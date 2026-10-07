@@ -94,8 +94,7 @@ image_refs:
   width: 2048
   height: 1282
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Ammomanes cinctura 97497203.jpg
   commons_filename: Ammomanes cinctura 97497203.jpg
 - role: secondary
@@ -103,8 +102,7 @@ image_refs:
   width: 1800
   height: 1126
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Ammomanes cinctura 93093047.jpg
   commons_filename: Ammomanes cinctura 93093047.jpg
 - role: secondary
@@ -112,8 +110,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Bar-tailed lark (Ammomanes cinctura)
     Kebili.jpg
   commons_filename: Bar-tailed lark (Ammomanes cinctura) Kebili.jpg

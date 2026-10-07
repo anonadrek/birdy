@@ -6,8 +6,9 @@ taxonomy:
   genus: Sitta
   ioc_order: Passeriformes
 names:
-  sv: Krüpers nötväcka
+  sv: Turknötväcka
   en: Krüper’s Nuthatch
+  former_sv: Krüpers nötväcka
 abundance: ovanlig
 iucn_status: LC
 season:
@@ -73,8 +74,7 @@ image_refs:
   width: 1600
   height: 2400
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
-    ten Cate</a>
+  author: Bouke ten Cate
   source_url: https://commons.wikimedia.org/wiki/File:Turkse boomklever - Krüper's
     Nuthatch - Sitta krueperi.jpg
   commons_filename: Turkse boomklever - Krüper's Nuthatch - Sitta krueperi.jpg

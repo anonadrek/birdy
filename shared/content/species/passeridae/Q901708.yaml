@@ -63,8 +63,7 @@ image_refs:
   width: 2048
   height: 1494
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">Mourad
-    Harzallah</a>
+  author: Mourad Harzallah
   source_url: https://commons.wikimedia.org/wiki/File:Passer luteus in Algeria 590956865.jpg
   commons_filename: Passer luteus in Algeria 590956865.jpg
 - role: secondary
@@ -72,8 +71,7 @@ image_refs:
   width: 1800
   height: 1236
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1082970">Karim
-    Haddad</a>
+  author: Karim Haddad
   source_url: https://commons.wikimedia.org/wiki/File:Passer luteus 262388966.jpg
   commons_filename: Passer luteus 262388966.jpg
 review_status: auto

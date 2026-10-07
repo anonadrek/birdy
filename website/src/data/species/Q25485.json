@@ -1,0 +1,892 @@
+{
+  "qid": "Q25485",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "audioStruckSources": [
+      "https://commons.wikimedia.org/wiki/File:Parus_major_-_Great_Tit_XC165660.mp3",
+      "https://commons.wikimedia.org/wiki/File:Parus_major_-_Great_Tit_XC165663.mp3"
+    ],
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Talgoxen har svart huvud och hals, framträdande vita kinder, olivgrön ovansida och gul undersida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Talgoxen är lätt igenkännlig med svart huvud och hals, framträdande vita kinder, olivgrön ovansida och gul undersida"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Bröstet är klart citrongult med en svart längsgående rand mitt på, från haklappen ner till kloaköppningen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bröstet är klart citrongult med en svart längsgående rand mitt på, som löper från haklappen till kloaköppningen."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Den har en blekvit fläck på halsen som övergår till grönaktigt gult på övre nacken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en blekvit fläck på halsen som övergår till grönaktigt gul på övre nacken."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Vingtäckarna är gröna och resten av vingen är blågrå med ett vitt vingband.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingtäckarna är gröna, resten av vingen är blågrå med ett vitt vingband."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Stjärten är blåaktigt grå med vita ytterkanter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten är blåaktigt grå med vita ytterkanter."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Ben och fötter är blågrå till skiffergrå.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Beine und Füße sind blaugrau bis schiefergrau."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Honan liknar hanen men är blekare, med mindre intensivt svart haklapp och en smalare, ibland avbruten bukrand.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honans fjäderdräkt liknar hanens förutom att färgerna på det hela taget är blekare; haklappen är mindre intensivt svart, liksom randen som löper nedför magen, vilken också är smalare och ibland avbruten."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Ungfåglar liknar honan men har blekt olivbruna nackar och halsar, gråaktig gump och gråare stjärt med mindre markerade vita spetsar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungfåglar liknar honan, förutom att de har blekt olivbruna nackar och halsar, gråaktig gump, och gråare stjärtar med mindre markerade vita spetsar."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Talgoxen är en stor mes som mäter 12,5–14,0 cm och väger 16–21 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Talgoxen är en stor mes som mäter 12,5–14,0 cm"
+        },
+        {
+          "article": "sv",
+          "quote": "Den väger 16–21 gram."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Ett välkänt läte är ett ”tí-ta, tí-ta” som ofta liknas vid ett gnissligt skottkärrehjul och används för att hävda revir.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ett av de mest välkända lätena är ett \"tí-ta, tí-ta\", som ofta liknas vid ett gnissligt skottkärrehjul, vilket används för att hävda revirägande."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Ett bofinkaktigt ”ping, ping” hörs ofta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ett bofinkaktigt \"ping, ping\" hörs ofta."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Mjuka enstaka toner som ”pit”, ”spick” eller ”tjitt” används som kontaktläten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Mjuka enstaka toner som \"pit\", \"spick\" eller \"tjitt\" används som kontaktläten."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Vid fiender på marken låter den ett omelodiskt skorrande ”trrrr” eller ett upprepat ”dädädä”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Ein Ruf der Verärgerung oder Erregung bei herannahenden Bodenfeinden ist ein unmelodischer Laut, der zwischen einem schnarrenden trrrr oder einem gereihten dädädä liegen kann."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Talgoxen finns oftast i öppna lövskogslandskap, blandskog och skogsbryn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den återfinns oftast i öppna lövskogslandskap, blandskog och skogsbryn."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "I täta skogar, även barrskogar, håller den vanligen till i gläntor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I täta skogar, däribland barrskogar, återfinns den vanligen i gläntor."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Talgoxen är en vanlig fågel i stadsparker och trädgårdar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "är en vanlig fågel i stadsparker och trädgårdar"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Talgoxen finns i hela Sverige och är en av de vanligaste mesarna i mellersta och södra Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Talgoxen finns i hela Sverige och är i mellersta och södra Sverige en av de vanligaste mesarna."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Fennoskandien sker huvuddelen av äggläggningen mellan slutet av april och mitten av maj.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "in Fennoskandien und Russland liegt sie zwischen Ende April und Mitte Mai"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Talgoxen har utvidgat sitt utbredningsområde norrut till Skandinavien.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Talgoxen har utvidgat sitt utbredningsområde norrut till Skandinavien"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Talgoxen häckar i hål, vanligen i träd men ibland i husväggar eller bergväggar, och använder gärna holkar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Talgoxar är hålhäckare som vanligen häckar i träd, men ibland i husväggar eller bergväggar, och använder gärna holkar."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "En kull omfattar oftast fem till tolv, men ibland så många som 18.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Antalet ungar i en kull är ofta mycket stort, så många som 18, men fem till tolv är vanligare."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Äggen är cirka 18 millimeter stora och vita med rödaktiga fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen är cirka 18 millimeter stora och vita med rödaktiga fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan ruvar ensam i 12 till 15 dagar och matas då av hanen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan sköter hela ruvningen och utfodras då av hanen."
+        },
+        {
+          "article": "sv",
+          "quote": "Ruvningen varar i 12 till 15 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "De flesta år föder paret upp två kullar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De flesta år föder paret upp två kullar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "På sommaren äter talgoxen främst insekter och spindlar som den plockar från löv.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På sommaren äter talgoxar främst insekter och spindlar som de fångar genom att plocka dem från löv."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Under höst och vinter, när insekterna blir färre, äter den även bär och frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under höst och vinter på norra halvklotet, då färre insekter finns tillgängliga, utökar talgoxen sin föda med bär och frön."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Vid fågelbord tar den gärna matrester, jordnötter och solrosfrön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När det finns tillgängligt tar de gärna matrester, jordnötter och solrosfrön från fågelbord."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "På vintern födosöker talgoxar tillsammans med andra mesar i artblandade flockar, så kallade meståg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Talgoxar och andra mesar bildar artblandade grupper, så kallade meståg, som födosöker tillsammans under vintern."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Stora frön eller byten håller den med foten och hackar på med näbben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stora matbitar, som stora frön eller byten, hanteras genom att fågeln håller föremålet med ena foten eller båda fötterna och slår på det med näbben"
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Den födosöker oftare på lägre, grövre grenar, kring stammen eller på marken än andra mesar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "bewegt sich eher auf den unteren, kräftigeren Ästen und Zweigen, im Stammbereich oder am Boden"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november till februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Talgoxen är en stor mes som finns i hela Sverige och är en av de vanligaste mesarna i mellersta och södra Sverige.",
+          "factIds": [
+            "f09",
+            "f17"
+          ]
+        },
+        {
+          "text": "Den är en vanlig fågel i stadsparker och trädgårdar.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Svart huvud och hals med tydliga vita kinder, olivgrön ovansida och gul undersida",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Citrongult bröst med en svart längsgående rand mitt på, från haklappen och nedåt",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Gröna vingtäckare, i övrigt blågrå vingar med vitt vingband, blågrå stjärt med vita ytterkanter",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Honan är blekare, med mindre intensivt svart haklapp och smalare, ibland avbruten bukrand",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Ett välkänt läte är ett ”tí-ta, tí-ta” som ofta liknas vid ett gnissligt skottkärrehjul och används för att hävda revir.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Ofta hörs också ett bofinkaktigt ”ping, ping”.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Som kontaktläten används mjuka enstaka toner som ”pit”, ”spick” eller ”tjitt”.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Vid fiender på marken låter den ett skorrande ”trrrr” eller ett upprepat ”dädädä”.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Talgoxen finns i hela Sverige och rapporteras från alla 21 län.",
+          "factIds": [
+            "f17",
+            "d02"
+          ]
+        },
+        {
+          "text": "Den håller till i öppna lövskogslandskap, blandskog och skogsbryn, i täta skogar oftast i gläntor.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i november till februari.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "I Fennoskandien läggs de flesta äggen mellan slutet av april och mitten av maj.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "På sommaren äter den främst insekter och spindlar som den plockar från löv, och på hösten och vintern även bär och frön.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "Vid fågelbord tar den gärna jordnötter, solrosfrön och matrester.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "På vintern födosöker den i meståg, artblandade flockar med andra mesar.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Stora frön håller den med foten och hackar på med näbben.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Den häckar i hål och använder gärna holkar.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Talgoxe: så känner du igen den på dräkt och läten, vilka miljöer den håller till i, vad den äter och när den rapporteras som mest.",
+      "facts": {
+        "size": {
+          "value": "12,5 till 14,0 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Great Tit is a large tit found throughout Sweden and one of the commonest tits in central and southern Sweden.",
+          "factIds": [
+            "f09",
+            "f17"
+          ]
+        },
+        {
+          "text": "It is a common bird in city parks and gardens.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Black head and neck with bold white cheeks, olive-green upperparts and yellow underparts",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Lemon-yellow breast with a black stripe running down the middle from the bib",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Green wing coverts, otherwise blue-grey wings with a white bar; blue-grey tail with white outer edges",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "The female is paler, with a less intense black bib and narrower, sometimes broken belly stripe",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "A well-known call is a \"tí-ta, tí-ta\", often likened to a squeaky wheelbarrow wheel and used to claim a territory.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "A chaffinch-like \"ping, ping\" is also often heard.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Soft single notes such as \"pit\", \"spick\" or \"tjitt\" serve as contact calls.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "At enemies on the ground it gives a harsh rattling \"trrrr\" or a repeated \"dädädä\".",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Great Tit occurs throughout Sweden and is reported from all 21 counties.",
+          "factIds": [
+            "f17",
+            "d02"
+          ]
+        },
+        {
+          "text": "It lives in open deciduous woodland, mixed forest and woodland edges, and in dense forest it usually keeps to clearings.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        },
+        {
+          "text": "It is reported most in November to February.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "In Fennoscandia most eggs are laid between late April and mid May.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "In summer it mainly eats insects and spiders picked from leaves, and in autumn and winter it also takes berries and seeds.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "At bird tables it readily takes peanuts, sunflower seeds and food scraps.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "In winter it forages in mixed flocks with other tits.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "It holds large seeds with its foot and pecks at them with its bill.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "It nests in holes and readily uses nest boxes.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Great Tit: how to recognise it by plumage and calls, which habitats it uses, what it eats and when in the year it is reported most.",
+      "facts": {
+        "size": {
+          "value": "12.5 to 14.0 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "ab1cb184d206cb18"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "ab1cb184d206cb18"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "talgoxe",
+    "en": "great-tit"
+  },
+  "names": {
+    "sv": "Talgoxe",
+    "en": "Great Tit",
+    "scientific": "Parus major"
+  },
+  "family": {
+    "latin": "Paridae",
+    "sv": "Mesar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "marginalia": {
+    "sv": "Talgoxen söker frön i barren mitt i vintern.",
+    "en": "The great tit forages among pine needles deep in winter."
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25485/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Great_tit_(Parus_major),_North_Rhine-Westphalia.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25485/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Anton Whoa",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Parus_major,_Omsk,_Russia.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Talgoxe",
+      "revision": "59701538"
+    },
+    "en": {
+      "title": "Great tit",
+      "revision": "1374319807"
+    },
+    "de": {
+      "title": "Kohlmeise",
+      "revision": "270332786"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:05:11.554878+00:00",
+    "gbifTaxonKey": 9705453,
+    "totalReports": 729841,
+    "months": [
+      100,
+      93,
+      60,
+      39,
+      30,
+      30,
+      25,
+      26,
+      37,
+      55,
+      82,
+      100
+    ],
+    "counties": {
+      "SE-K": 44,
+      "SE-W": 53,
+      "SE-X": 77,
+      "SE-I": 39,
+      "SE-N": 30,
+      "SE-Z": 60,
+      "SE-F": 62,
+      "SE-H": 35,
+      "SE-G": 45,
+      "SE-BD": 100,
+      "SE-T": 42,
+      "SE-E": 62,
+      "SE-M": 41,
+      "SE-D": 83,
+      "SE-AB": 66,
+      "SE-C": 68,
+      "SE-S": 49,
+      "SE-AC": 69,
+      "SE-Y": 80,
+      "SE-U": 45,
+      "SE-O": 64
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november till februari.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in November to February.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        107698,
+        69751,
+        83156,
+        84504,
+        75489,
+        40680,
+        25497,
+        28143,
+        41056,
+        60205,
+        56580,
+        56715
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 129591,
+        "SE-AB": 92944,
+        "SE-M": 58154,
+        "SE-C": 52943,
+        "SE-D": 52822,
+        "SE-H": 38141,
+        "SE-E": 34618,
+        "SE-F": 33629,
+        "SE-BD": 33436,
+        "SE-AC": 27615,
+        "SE-X": 20377,
+        "SE-N": 18776,
+        "SE-W": 18178,
+        "SE-T": 16169,
+        "SE-Y": 15994,
+        "SE-U": 13651,
+        "SE-S": 13575,
+        "SE-G": 13129,
+        "SE-Z": 11612,
+        "SE-I": 9499,
+        "SE-K": 5324
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "audio": {
+    "file": "Q25485/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Gavin Vella",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Parus_major_-_Great_Tit_XC129643.ogg",
+    "sha256": "ae482ee2d446e934cddd2a8df320b1e77458feb5d7b8d3365426769cb7eccecc",
+    "mp3Sha256": "a62b65b62a4c33a24e7304174d58f313913d91a6c19388746e31e7ed1237e5ec"
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

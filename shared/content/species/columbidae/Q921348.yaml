@@ -95,34 +95,31 @@ migration:
 image_refs:
 - role: hero
   path: Q921348/hero.webp
-  width: 2400
-  height: 1604
+  width: 2048
+  height: 1363
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
-    Nivis</a>
-  source_url: https://commons.wikimedia.org/wiki/File:20190730 Streptopelia roseogrisea
-    02.jpg
-  commons_filename: 20190730 Streptopelia roseogrisea 02.jpg
+  author: Mourad Harzallah
+  source_url: https://commons.wikimedia.org/wiki/File:African Collared Dove, Timiaouine,
+    Algeria 2.jpg
+  commons_filename: African Collared Dove, Timiaouine, Algeria 2.jpg
 - role: secondary
   path: Q921348/secondary-1.webp
   width: 1800
-  height: 1203
+  height: 1242
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
-    Nivis</a>
-  source_url: https://commons.wikimedia.org/wiki/File:20200122 Streptopelia roseogrisea
-    01.jpg
-  commons_filename: 20200122 Streptopelia roseogrisea 01.jpg
+  author: karimhaddad
+  source_url: https://commons.wikimedia.org/wiki/File:African Collared Dove, Timiaouine,
+    Algeria 9.jpg
+  commons_filename: African Collared Dove, Timiaouine, Algeria 9.jpg
 - role: secondary
   path: Q921348/secondary-2.webp
   width: 1800
-  height: 1204
+  height: 1145
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
-    Nivis</a>
-  source_url: https://commons.wikimedia.org/wiki/File:20190730 Streptopelia roseogrisea
-    01.jpg
-  commons_filename: 20190730 Streptopelia roseogrisea 01.jpg
+  author: karimhaddad
+  source_url: https://commons.wikimedia.org/wiki/File:African Collared Dove, Timiaouine,
+    Algeria 5.jpg
+  commons_filename: African Collared Dove, Timiaouine, Algeria 5.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-08T00:47:13.879302+00:00'

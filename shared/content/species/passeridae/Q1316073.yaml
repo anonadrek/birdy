@@ -84,8 +84,7 @@ image_refs:
   width: 2048
   height: 1366
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
-    Judas</a>
+  author: Jacky Judas
   source_url: https://commons.wikimedia.org/wiki/File:Passer euchlorus 284522978.jpg
   commons_filename: Passer euchlorus 284522978.jpg
 - role: secondary
@@ -93,8 +92,7 @@ image_refs:
   width: 1800
   height: 1201
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
-    Judas</a>
+  author: Jacky Judas
   source_url: https://commons.wikimedia.org/wiki/File:Passer euchlorus 284523003.jpg
   commons_filename: Passer euchlorus 284523003.jpg
 - role: secondary
@@ -102,8 +100,7 @@ image_refs:
   width: 1800
   height: 1201
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
-    Judas</a>
+  author: Jacky Judas
   source_url: https://commons.wikimedia.org/wiki/File:Passer euchlorus 284523024.jpg
   commons_filename: Passer euchlorus 284523024.jpg
 review_status: auto

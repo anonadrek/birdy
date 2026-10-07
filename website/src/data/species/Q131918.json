@@ -1,0 +1,211 @@
+{
+  "qid": "Q131918",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "stenfalk",
+    "en": "merlin"
+  },
+  "names": {
+    "sv": "Stenfalk",
+    "en": "Merlin",
+    "scientific": "Falco columbarius"
+  },
+  "family": {
+    "latin": "Falconidae",
+    "sv": "Falkar"
+  },
+  "group": "raptors",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q131918/hero.webp",
+      "width": 1597,
+      "height": 2400,
+      "author": "Robert Burton / USFWS",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Falco_columbarius_FWS_14007.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q131918/extra.webp",
+      "width": 1200,
+      "height": 947,
+      "author": "Bear Golden Retriever",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Falco_columbarius_Auburn_NY.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q131918/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Jonathon Jongsma",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Falco_columbarius_-_Merlin_XC101582.mp3",
+    "sha256": "a5cc7202123bb140c849ec5a7ae5db9810c61ef72e9a041d47b310b4844a9e76"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Stenfalk",
+      "revision": "59603908"
+    },
+    "en": {
+      "title": "Merlin (bird)",
+      "revision": "1367745672"
+    },
+    "de": {
+      "title": "Merlin (Vogel)",
+      "revision": "268008130"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 9813242,
+    "totalReports": 53323,
+    "months": [
+      7,
+      7,
+      6,
+      33,
+      16,
+      6,
+      5,
+      23,
+      100,
+      64,
+      9,
+      6
+    ],
+    "counties": {
+      "SE-K": 55,
+      "SE-W": 55,
+      "SE-X": 47,
+      "SE-I": 62,
+      "SE-N": 90,
+      "SE-Z": 76,
+      "SE-F": 34,
+      "SE-H": 91,
+      "SE-G": 33,
+      "SE-BD": 82,
+      "SE-T": 43,
+      "SE-E": 36,
+      "SE-M": 58,
+      "SE-D": 17,
+      "SE-AB": 17,
+      "SE-C": 29,
+      "SE-S": 60,
+      "SE-AC": 100,
+      "SE-Y": 56,
+      "SE-U": 45,
+      "SE-O": 35
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september.",
+        "Rapporteras sällan i juni, juli och november till mars.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in September.",
+        "Rarely reported in June, July and November to March.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1048,
+        744,
+        1308,
+        10486,
+        5860,
+        1146,
+        824,
+        3667,
+        16483,
+        10244,
+        949,
+        524
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-H": 8000,
+        "SE-M": 6814,
+        "SE-O": 5755,
+        "SE-N": 4515,
+        "SE-AC": 3250,
+        "SE-BD": 2252,
+        "SE-AB": 1993,
+        "SE-C": 1829,
+        "SE-E": 1673,
+        "SE-W": 1529,
+        "SE-F": 1528,
+        "SE-S": 1364,
+        "SE-T": 1363,
+        "SE-I": 1237,
+        "SE-Z": 1202,
+        "SE-U": 1099,
+        "SE-X": 1015,
+        "SE-Y": 901,
+        "SE-D": 887,
+        "SE-G": 782,
+        "SE-K": 540
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

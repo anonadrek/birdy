@@ -41,7 +41,7 @@ image_refs:
   width: 2048
   height: 1367
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/jujurenoult">jujurenoult</a>
+  author: jujurenoult
   source_url: https://commons.wikimedia.org/wiki/File:Thalasseus bengalensis, Foundiougne,
     Sénégal 1.jpg
   commons_filename: Thalasseus bengalensis, Foundiougne, Sénégal 1.jpg
@@ -50,8 +50,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Lesser crested tern (Thalasseus
     bengalensis torresii) in flight Michaelmas Cay 2.jpg
   commons_filename: Lesser crested tern (Thalasseus bengalensis torresii) in flight
@@ -61,8 +60,7 @@ image_refs:
   width: 1800
   height: 1039
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Shino_jacob_koottanad" title="User:Shino
-    jacob koottanad">Shino jacob koottanad</a>
+  author: Shino jacob koottanad
   source_url: https://commons.wikimedia.org/wiki/File:Lesser crested tern (Thalasseus
     bengalensis).jpg
   commons_filename: Lesser crested tern (Thalasseus bengalensis).jpg

@@ -96,30 +96,26 @@ image_refs:
 - role: hero
   path: Q321267/hero.webp
   width: 2400
-  height: 1647
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
-  source_url: https://commons.wikimedia.org/wiki/File:Alpine Swifts Tachymarptis melba
-    (45597226622).jpg
-  commons_filename: Alpine Swifts Tachymarptis melba (45597226622).jpg
+  height: 1600
+  license: CC BY-SA 2.0
+  author: Paul F Donald
+  source_url: https://commons.wikimedia.org/wiki/File:Alpine swift at Koytendag, SE
+    Turkmenistan .jpg
+  commons_filename: Alpine swift at Koytendag, SE Turkmenistan .jpg
 - role: secondary
   path: Q321267/secondary-1.webp
   width: 1800
-  height: 1524
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
-  source_url: https://commons.wikimedia.org/wiki/File:Alpine Swifts Tachymarptis melba
-    (45597230432).jpg
-  commons_filename: Alpine Swifts Tachymarptis melba (45597230432).jpg
+  height: 1788
+  license: CC BY 4.0
+  author: Afsarnayakkan
+  source_url: https://commons.wikimedia.org/wiki/File:Alpine swift 5.jpg
+  commons_filename: Alpine swift 5.jpg
 - role: secondary
   path: Q321267/secondary-2.webp
   width: 1800
   height: 1120
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/asarasua/">Asier
-    Sarasua Aranberri</a>
+  author: Asier Sarasua Aranberri
   source_url: https://commons.wikimedia.org/wiki/File:Tachymarptis melba, Dubrovnik,
     Croatia 2.jpg
   commons_filename: Tachymarptis melba, Dubrovnik, Croatia 2.jpg

@@ -95,19 +95,17 @@ image_refs:
 - role: hero
   path: Q321293/hero.webp
   width: 2400
-  height: 1798
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
-  source_url: https://commons.wikimedia.org/wiki/File:Unidentified Sterna, Mission
-    Beach, Queensland (15687298970).jpg
-  commons_filename: Unidentified Sterna, Mission Beach, Queensland (15687298970).jpg
+  height: 1800
+  license: Public domain
+  author: U. S. Fish and Wildlife Service - Northeast Region
+  source_url: https://commons.wikimedia.org/wiki/File:Great Gull Island, NY (5913218742).jpg
+  commons_filename: Great Gull Island, NY (5913218742).jpg
 - role: secondary
   path: Q321293/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/rururubisco">rururubisco</a>
+  author: rururubisco
   source_url: https://commons.wikimedia.org/wiki/File:Sterna dougallii bangsi, Sanxiantai,
     Taitung, Taiwan 2.jpg
   commons_filename: Sterna dougallii bangsi, Sanxiantai, Taitung, Taiwan 2.jpg
@@ -116,7 +114,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  author: MPF
   source_url: https://commons.wikimedia.org/wiki/File:2021-07-10 Sterna dougallii,
     St Marys Island, Northumberland 11.jpg
   commons_filename: 2021-07-10 Sterna dougallii, St Marys Island, Northumberland 11.jpg

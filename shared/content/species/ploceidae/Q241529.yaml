@@ -55,8 +55,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:JNguyenFlohic&amp;action=edit&amp;redlink=1"
-    class="new" title="User:JNguyenFlohic (page does not exist)">JNguyenFlohic</a>
+  author: JNguyenFlohic
   source_url: https://commons.wikimedia.org/wiki/File:Ploceus jacksoni zoo wuppertal.jpg
   commons_filename: Ploceus jacksoni zoo wuppertal.jpg
 - role: secondary
@@ -64,8 +63,7 @@ image_refs:
   width: 1800
   height: 988
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9765210@N03">Dominic
-    Sherony</a>
+  author: Dominic Sherony
   source_url: https://commons.wikimedia.org/wiki/File:Golden-backed Weaver (Ploceus
     jacksoni) (44768533690).jpg
   commons_filename: Golden-backed Weaver (Ploceus jacksoni) (44768533690).jpg

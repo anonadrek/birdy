@@ -77,18 +77,17 @@ image_refs:
   path: Q184508/hero.webp
   width: 2400
   height: 1600
-  license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/alaskanps/">AlaskaNPS</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Northern Shrike Juvenile - Lanius
-    excubitor (20862911824).jpg
-  commons_filename: Northern Shrike Juvenile - Lanius excubitor (20862911824).jpg
+  license: CC BY-SA 4.0
+  author: Tisha Mukherjee
+  source_url: https://commons.wikimedia.org/wiki/File:Great Grey Shrike in Bhigwan
+    August 2025 by Tisha Mukherjee 02.jpg
+  commons_filename: Great Grey Shrike in Bhigwan August 2025 by Tisha Mukherjee 02.jpg
 - role: secondary
   path: Q184508/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Jaana_Siitonen&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Jaana Siitonen (page does not exist)">Jaana Siitonen</a>
+  author: Jaana Siitonen
   source_url: https://commons.wikimedia.org/wiki/File:Lanius excubitor DSCN7720-01.jpg
   commons_filename: Lanius excubitor DSCN7720-01.jpg
 - role: secondary
@@ -96,12 +95,15 @@ image_refs:
   width: 1800
   height: 1309
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:KGF&amp;action=edit&amp;redlink=1"
-    class="new" title="User:KGF (page does not exist)">KGF</a>
+  author: KGF
   source_url: https://commons.wikimedia.org/wiki/File:Lanius excubitor koenigi, Fuerteventura.jpg
   commons_filename: Lanius excubitor koenigi, Fuerteventura.jpg
 review_status: approved
-review_notes: "Varfågel — juvenile Northern Shrike-hero; allmän SE vintergäst med svart ögonband + svart-vita vingar."
+review_notes: 'Varfågel — juvenile Northern Shrike-hero; allmän SE vintergäst med svart ögonband + svart-vita
+  vingar.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T19:48:38.797571+00:00'
 sources:
   wikipedia_sv_revision: '58478974'

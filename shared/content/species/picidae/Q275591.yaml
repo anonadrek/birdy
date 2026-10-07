@@ -9,7 +9,7 @@ names:
   sv: Mellanspett
   en: Middle Spotted Woodpecker
 abundance: ovanlig
-iucn_status: NE
+iucn_status: LC
 season:
   jan: present
   feb: present
@@ -67,8 +67,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:RaunoK&amp;action=edit&amp;redlink=1"
-    class="new" title="User:RaunoK (page does not exist)">RaunoK</a>
+  author: RaunoK
   source_url: https://commons.wikimedia.org/wiki/File:The middle spotted woodpecker
     (Dendrocoptes medius) - Tamme-kirjurähn.jpg
   commons_filename: The middle spotted woodpecker (Dendrocoptes medius) - Tamme-kirjurähn.jpg
@@ -77,8 +76,7 @@ image_refs:
   width: 1580
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Dion_Art&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Dion Art (page does not exist)">Dion Art</a>
+  author: Dion Art
   source_url: https://commons.wikimedia.org/wiki/File:Средний пёстрый дятел (Dendrocoptes
     medius), Битцевский лес.jpg
   commons_filename: Средний пёстрый дятел (Dendrocoptes medius), Битцевский лес.jpg
@@ -87,8 +85,7 @@ image_refs:
   width: 1200
   height: 1800
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Middle spotted woodpecker (Dendrocoptes
     medius medius) male.jpg
   commons_filename: Middle spotted woodpecker (Dendrocoptes medius medius) male.jpg

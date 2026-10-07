@@ -49,10 +49,12 @@ import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_empty_caveat_cta
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_empty_marginalia
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_empty_stamp_name
+import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_days
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_headline
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_headline_anonymous
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_headline_no_name
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_label
+import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_species_found
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_sub
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_sub_empty
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_month_header
@@ -106,10 +108,10 @@ import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
 import se.birdy.app.ui.components.hairlineBottom
 import se.birdy.app.ui.components.parseJournalHeadline
+import se.birdy.app.ui.dailybird.DailyBirdStrip
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.AccentCopperLight
 import se.birdy.app.ui.theme.Hairline
-import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.HeroMossMid
 import se.birdy.app.ui.theme.InkMuted
@@ -118,6 +120,8 @@ import se.birdy.app.ui.theme.MatchHigh
 import se.birdy.app.ui.theme.MatchLow
 import se.birdy.app.ui.theme.MatchMid
 import se.birdy.app.ui.theme.MossCreme
+import se.birdy.app.ui.theme.PhotoLoading
+import se.birdy.app.ui.theme.PhotoScrim
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberCaveat
@@ -125,6 +129,10 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.datastore.LifelistSort
 import se.birdy.datastore.LifelistStat3Choice
 
+// Pre-existing debt (LongParameterList/LongMethod/CyclomaticComplexMethod in detekt-baseline.xml): detekt keys
+// baseline entries by the signature text, so Task 7d's two daily-bird parameters re-key them without
+// changing the function's real size. Suppressed here instead of growing the baseline (AppScaffold precedent).
+@Suppress("LongParameterList")
 @Composable
 fun LifelistScreen(
     viewModel: LifelistViewModel,
@@ -135,13 +143,20 @@ fun LifelistScreen(
     livePreviewState: se.birdy.app.ui.stats.SeasonStatsUiState.Loaded? = null,
     onSeasonStatsClick: () -> Unit = {},
     onRecapClick: () -> Unit = {},
+    dailyBird: se.birdy.app.dailybird.DailyBirdToday? = null,
+    onDailyBirdClick: (speciesId: String) -> Unit = {},
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    // Release 1.3.0 Task 7d (design option B): the Dagens fågel strip, under the totals.
+    val dailyBirdStrip: (@Composable () -> Unit)? =
+        dailyBird?.let { bird ->
+            { DailyBirdStrip(bird = bird, onClick = { onDailyBirdClick(bird.speciesId) }) }
+        }
     JournalScaffold { padding ->
         Box(modifier = Modifier.fillMaxSize().padding(padding)) {
             when (val s = state) {
                 LifelistUiState.Loading -> JournalLoading()
-                LifelistUiState.Empty -> EmptyLifelist(onScanCtaClick = onScanCtaClick)
+                LifelistUiState.Empty -> EmptyLifelist(onScanCtaClick = onScanCtaClick, dailyBirdStrip = dailyBirdStrip)
                 is LifelistUiState.Loaded ->
                     LoadedLifelist(
                         state = s,
@@ -153,6 +168,7 @@ fun LifelistScreen(
                         livePreviewState = livePreviewState,
                         onSeasonStatsClick = onSeasonStatsClick,
                         onRecapClick = onRecapClick,
+                        dailyBirdStrip = dailyBirdStrip,
                     )
             }
         }
@@ -162,7 +178,10 @@ fun LifelistScreen(
 // ─── Empty state ─────────────────────────────────────────────────────────────
 
 @Composable
-private fun EmptyLifelist(onScanCtaClick: () -> Unit) {
+private fun EmptyLifelist(
+    onScanCtaClick: () -> Unit,
+    dailyBirdStrip: (@Composable () -> Unit)? = null,
+) {
     val caveat = rememberCaveat()
     Column(modifier = Modifier.fillMaxSize()) {
         JournalIntro(
@@ -170,6 +189,7 @@ private fun EmptyLifelist(onScanCtaClick: () -> Unit) {
             headline = stringResource(Res.string.lifelist_journal_headline_anonymous),
             sub = stringResource(Res.string.lifelist_journal_sub_empty),
         )
+        dailyBirdStrip?.invoke()
         Column(
             modifier = Modifier.fillMaxSize().padding(horizontal = 32.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -200,6 +220,10 @@ private fun EmptyLifelist(onScanCtaClick: () -> Unit) {
 
 // ─── Loaded state ─────────────────────────────────────────────────────────────
 
+// Pre-existing debt (LongParameterList/LongMethod/CyclomaticComplexMethod in detekt-baseline.xml): detekt keys
+// baseline entries by the signature text, so Task 7d's two daily-bird parameters re-key them without
+// changing the function's real size. Suppressed here instead of growing the baseline (AppScaffold precedent).
+@Suppress("LongParameterList", "LongMethod")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun LoadedLifelist(
@@ -212,6 +236,7 @@ private fun LoadedLifelist(
     livePreviewState: se.birdy.app.ui.stats.SeasonStatsUiState.Loaded? = null,
     onSeasonStatsClick: () -> Unit = {},
     onRecapClick: () -> Unit = {},
+    dailyBirdStrip: (@Composable () -> Unit)? = null,
 ) {
     // Refresh every minute so relative timestamps ("just now" → "2 min ago") don't
     // freeze if the Lifelist is left open in the foreground.
@@ -272,12 +297,7 @@ private fun LoadedLifelist(
                                 ),
                             )
                         },
-                    sub =
-                        stringResource(
-                            Res.string.lifelist_journal_sub,
-                            state.daysActive.toString(),
-                            state.speciesCount.toString(),
-                        ),
+                    sub = lifelistJournalSub(daysActive = state.daysActive, speciesCount = state.speciesCount),
                 )
                 StatRow(
                     stat1 = StatItem(labelStat1, state.speciesCount.toString()),
@@ -285,6 +305,12 @@ private fun LoadedLifelist(
                     stat3 = StatItem(labelStat3, state.stat3.value.toString()),
                     onStat3Click = onStat3Toggle,
                 )
+            }
+        }
+
+        if (dailyBirdStrip != null) {
+            item(key = "daily-bird") {
+                Box(Modifier.padding(bottom = 10.dp)) { dailyBirdStrip() }
             }
         }
 
@@ -303,7 +329,9 @@ private fun LoadedLifelist(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    text = stringResource(Res.string.lifelist_section_recent, state.stampsCount.toString()).uppercase(),
+                    text =
+                        pluralStringResource(Res.plurals.lifelist_section_recent, state.stampsCount, state.stampsCount)
+                            .uppercase(),
                     color = MarginaliaInk,
                     fontSize = 9.sp,
                     fontWeight = FontWeight.W700,
@@ -404,19 +432,14 @@ private fun SectionLabel(
 
 // ─── Recap entry card ─────────────────────────────────────────────────────────
 
-// The photo overlay (HeroMossDeep at three stops, left to right) exists so the kicker/title/sub
-// text block — which sits in the card's left ~75%, after the week-number circle — clears WCAG
-// AA even over a blown-out (near-white) photo, while the far-right edge (behind only the
-// decorative chevron, hidden from screen readers) can fade further since a graphical object only
-// needs 3:1. Review fix wave T8c, 2026-09-27; proof in RecapEntryCardContrastTest.
-// FAR_ALPHA: review's own suggested literal value was 0.5f — RecapEntryCardContrastTest's exact
-// edge-of-gradient case (x=1.0, the true worst position, not a specific screen width) measured
-// only 2.91:1 there, just under the 3:1 floor. Bumped to 0.55f for a real margin (≈3.36:1 at the
-// same worst case) rather than relying on the chevron's 14dp inset keeping it off the true edge.
-internal const val RECAP_OVERLAY_NEAR_ALPHA = 0.92f
-internal const val RECAP_OVERLAY_MID_ALPHA = 0.85f
-internal const val RECAP_OVERLAY_FAR_ALPHA = 0.55f
-internal const val RECAP_OVERLAY_MID_STOP = 0.75f
+// The photo overlay exists so the kicker/title/sub text and the chevron clear WCAG AA even over
+// a blown-out (near-white) find photo. Review fix wave T8c, 2026-09-27; proof in
+// RecapEntryCardContrastTest. Neutral and flat since 2026-10-06 (was HeroMossDeep fading
+// 0.92 -> 0.85 -> 0.55 left to right): the photos keep their own colors, darkened only as far as
+// the text needs, and the darkening no longer assumes where the weight(1f) text column ends
+// (anywhere from ~89% to over 95% of the card width). 0.70 is the lightest 0.05 step that clears
+// AA (the apricot kicker, 4.64:1 over pure white).
+internal const val RECAP_OVERLAY_ALPHA = 0.70f
 
 @Composable
 private fun RecapEntryCard(
@@ -441,8 +464,15 @@ private fun RecapEntryCard(
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp, vertical = 8.dp)
                 .clip(RoundedCornerShape(18.dp))
-                .background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid)))
-                .clickable(onClick = onClick),
+                // Behind the find photos: neutral while they load, never a green flash. No
+                // photos yet: the moss card, as designed.
+                .then(
+                    if (photos.isNotEmpty()) {
+                        Modifier.background(PhotoLoading)
+                    } else {
+                        Modifier.background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid)))
+                    },
+                ).clickable(onClick = onClick),
     ) {
         if (photos.isNotEmpty()) {
             Crossfade(
@@ -462,13 +492,7 @@ private fun RecapEntryCard(
                 modifier =
                     Modifier
                         .matchParentSize()
-                        .background(
-                            Brush.horizontalGradient(
-                                0f to HeroMossDeep.copy(alpha = RECAP_OVERLAY_NEAR_ALPHA),
-                                RECAP_OVERLAY_MID_STOP to HeroMossDeep.copy(alpha = RECAP_OVERLAY_MID_ALPHA),
-                                1f to HeroMossDeep.copy(alpha = RECAP_OVERLAY_FAR_ALPHA),
-                            ),
-                        ),
+                        .background(PhotoScrim.copy(alpha = RECAP_OVERLAY_ALPHA)),
             )
         }
         Row(
@@ -507,7 +531,12 @@ private fun RecapEntryCard(
                 )
                 if (preview.findCount > 0) {
                     Text(
-                        text = stringResource(Res.string.recap_summary_active_fmt, preview.findCount.toString()),
+                        text =
+                            pluralStringResource(
+                                Res.plurals.recap_summary_active_fmt,
+                                preview.findCount,
+                                preview.findCount,
+                            ),
                         color = TextOnHero.copy(alpha = 0.8f),
                         fontFamily = caveat,
                         fontSize = 15.sp,
@@ -673,18 +702,20 @@ private fun LifelistRowComposable(
                 fontSize = 17.sp,
             )
             Text(
-                text = "${row.species?.scientificName ?: ""} · ${relativeTime(row.observation.savedAt, now)}",
+                text = lifelistMetaLine(row.species?.scientificName, relativeTime(row.observation.savedAt, now)),
                 color = InkMuted,
                 fontSize = 12.sp,
             )
         }
-        Text(
-            text = "$confidencePct%",
-            color = matchColor,
-            fontFamily = caveat,
-            fontWeight = FontWeight.Bold,
-            fontSize = 16.sp,
-        )
+        if (showsConfidence(row.observation)) {
+            Text(
+                text = "$confidencePct%",
+                color = matchColor,
+                fontFamily = caveat,
+                fontWeight = FontWeight.Bold,
+                fontSize = 16.sp,
+            )
+        }
     }
 }
 
@@ -717,3 +748,18 @@ private fun relativeTime(
         else -> stringResource(Res.string.lifelist_relative_days, diffD.toString())
     }
 }
+
+/**
+ * "12 dagar. 30 arter funna." under the journal headline. Each count has its own plural, so one
+ * day and one species read "1 dag. 1 art funnen." (release 1.3.0 Task 7g; was "1 dagar. 1 funna.").
+ */
+@Composable
+internal fun lifelistJournalSub(
+    daysActive: Int,
+    speciesCount: Int,
+): String =
+    stringResource(
+        Res.string.lifelist_journal_sub,
+        pluralStringResource(Res.plurals.lifelist_journal_days, daysActive, daysActive),
+        pluralStringResource(Res.plurals.lifelist_journal_species_found, speciesCount, speciesCount),
+    )

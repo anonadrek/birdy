@@ -1,0 +1,881 @@
+{
+  "qid": "Q25418",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Steglitsen har röd panna och strupe.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Pannan och strupen är röda."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Huvudet är vitt med vita halssidor samt svart nacke och hjässa.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "ein weißer Kopf mit weißen Halsseiten und abgesetzt ein schwarzer Nacken und Oberkopf"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Vingarna är svarta med ett brett, intensivt gult band.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingarna är svarta, med ett brett, intensivt gult band."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Ovansidan är brunaktig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är brunaktig på ovansidan."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Stjärten är svart och övergumpen vit.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Its tail is black and its rump is white."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Näbben är elfenbensfärgad, lång och spetsig, och stjärten är kluven.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They have an ivory-coloured, long, pointed bill and a forked tail."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "Kroppslängden är 12 centimeter, vingspannet 21–25,5 centimeter och vikten 14–18 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kroppslängden är tolv centimeter, vingspannet är 21–25,5 centimeter och vikten 14–18 gram."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hanen har en större och mörkare röd ansiktsmask som når strax bakom ögat.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Male European goldfinches can often be distinguished on close inspection by the larger, darker red mask that extends just behind the eye."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Honans röda ansikte når inte förbi ögat.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The red face of the female does not extend past the eye."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Ungfåglar har enfärgat huvud och gråare rygg men känns igen på det gula vingbandet.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Juveniles have a plain head and a greyer back, but they are unmistakable due to the yellow wing stripe."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Locklätet är ett upprepat ”tick tickeli tickelitt” som har gett arten dess namn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Locklätet består av ett typiskt, upprepande ”tick tickeli tickelitt” som har gett arten dess namn."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången liknar grönsiskans och är snabb med kvittrande, omväxlande toner och inslag av locklätet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången liknar grönsiskans och är snabb med kvittrande omväxlande toner med inslag av locklätet."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Aggressionslätet är ett hårt, snarrande ”tschrr”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Aggressionsruf besteht aus einem harten, schnarrenden „tschrr“."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Steglitsen häckar i öppna, trädrika landskap, trädgårdar och fruktodlingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "en vanlig häckfågel i öppna, trädrika landskap, trädgårdar och fruktodlingar"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Under höst och vinter finns den främst i öppna landskap med kvarstående örter, som vägkanter och skräpmarker.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Im Herbst und Winter ist er vor allem in offenen Landschaften mit stehengebliebenen Stauden, wie Straßenrändern oder Schuttplätzen, zu finden."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige förekommer steglitsen främst i södra och mellersta delarna, men även längs Norrlandskusten till Norrbotten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Steglits förekommer i Sverige framför allt i de södra och mellersta delarna upp till en linje från Bohuslän via södra Värmland och sydvästra Dalarna, men även vidare utmed Norrlandskusten till Norrbotten."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Den lämnar de nordliga delarna av häckningsområdet och flyttar i oktober–november.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den överger de nordliga delarna av detta häckningsområde och flyttar i oktober–november."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "En del flyttar till Väst- och Sydeuropa och återkommer i mars–april, medan andra övervintrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Delar flyttar till Väst- och Sydeuropa och återkommer i mars–april, medan andra övervintrar."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Steglitsen är numera vanlig i Sverige och har ökat med 112–245 procent de senaste tio åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Steglitsen är numera en vanlig fågel i Sverige som har ökat mycket kraftigt på senare tid, de senaste tio åren med hela 112–245 %."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "food",
+      "sv": "Den lever mest av frön och har särskild förkärlek för frön från tistlar och kardborrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Steglitsen lever mest av diverse frön, med särskild förkärlek för frö från tistlar och kardborrar."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "food",
+      "sv": "Den besöker regelbundet fågelbord på vintern.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They also regularly visit bird feeders in winter."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Steglitsen är en skicklig klättrare som ofta klättrar i tistlar för att samla frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är en skicklig klättrare som ofta klättrar i tistlar där den samlar frön."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Flykten är bågformig och det gula i vingen syns särskilt tydligt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Flug ist wellenförmig und recht stabil; das Gelb im Flügel fällt besonders auf."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "På vintern samlas steglitser i flockar på upp till 40 fåglar, ibland fler.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "During this time, European goldfinches group together to form flocks of up to 40, and occasionally more."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Vinterflockarna kan vara blandade med hämplingar, gulhämplingar och grönfinkar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "die im Winter mit Schwärmen von Bluthänfling, Girlitz und Grünfink vermischt sein können"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Steglitsen häckar två gånger om året, första gången i maj.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar två gånger om året – första gången i maj."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Boet placeras högt i trädkronan, oftast i lövträd men ibland i barrträd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det brukar placeras högt i trädkronan, oftast i lövträd men ibland i barrträd."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Honan lägger fem till sex vitaktiga ägg med fina röda fläckar och ruvar dem i 12–13 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger fem till sex vitaktiga ägg med fina röda fläckar, som hon ruvar i tolv till 13 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Grå steglits skiljer sig genom att sakna svart hjässa och den svarta lodräta linjen bakom örontäckarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "skiljer sig från västliga steglitser genom att de inte har svart hjässa och saknar den svarta lodräta linjen bakom örontäckarna"
+        }
+      ],
+      "other": {
+        "scientific": "Carduelis caniceps",
+        "qid": "Q606679"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Delar flyttar till Väst- och Sydeuropa och återkommer i mars–april, medan andra övervintrar."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Steglitsen är en delvis flyttande fink som häckar i Sverige, i öppna trädrika landskap, trädgårdar och fruktodlingar.",
+          "factIds": [
+            "s01",
+            "f14"
+          ]
+        },
+        {
+          "text": "På vintern besöker den regelbundet fågelbord.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Röd panna och strupe, vitt huvud med vita halssidor och svart hjässa och nacke",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Svarta vingar med ett brett, intensivt gult band som syns tydligt i flykten",
+          "factIds": [
+            "f03",
+            "f23"
+          ]
+        },
+        {
+          "text": "Lång, spetsig elfenbensfärgad näbb, svart kluven stjärt och vit övergump",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Hanens röda ansiktsmask når strax bakom ögat, honans når inte förbi ögat",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Locklätet är ett upprepat ”tick tickeli tickelitt”, som har gett arten dess namn.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Sången liknar grönsiskans och är snabb och kvittrande, med omväxlande toner och inslag av locklätet.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Aggressionslätet är ett hårt, snarrande ”tschrr”.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "I Sverige förekommer steglitsen främst i södra och mellersta delarna, men även längs Norrlandskusten till Norrbotten, och den rapporteras från alla 21 län.",
+          "factIds": [
+            "f16",
+            "d02"
+          ]
+        },
+        {
+          "text": "Den är delvis flyttfågel: en del flyttar i oktober till november till Väst- och Sydeuropa och återkommer i mars till april, medan andra övervintrar.",
+          "factIds": [
+            "s01",
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "Arten rapporteras året runt, är numera vanlig och har ökat med 112 till 245 procent de senaste tio åren.",
+          "factIds": [
+            "d01",
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Steglitsen lever mest av frön och har särskild förkärlek för frön från tistlar och kardborrar.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Den är en skicklig klättrare som ofta klättrar i tistlar för att samla frön.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "På vintern samlas steglitser i flockar på upp till 40 fåglar, ibland fler, och flockarna kan vara blandade med hämplingar, gulhämplingar och grönfinkar.",
+          "factIds": [
+            "f24",
+            "f25"
+          ]
+        },
+        {
+          "text": "Den häckar två gånger om året, första gången i maj.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q606679",
+          "text": [
+            {
+              "text": "Grå steglits skiljer sig genom att sakna svart hjässa och den svarta lodräta linjen bakom örontäckarna.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Steglits: så känner du igen den på röd ansiktsmask och gult vingband, hur sången och lätena låter och när den syns under året.",
+      "facts": {
+        "size": {
+          "value": "12 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The European Goldfinch is a partly migratory finch that breeds in Sweden, in open landscapes with trees, gardens and orchards.",
+          "factIds": [
+            "s01",
+            "f14"
+          ]
+        },
+        {
+          "text": "In winter it regularly visits bird tables.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Red forehead and throat, white head with white neck sides and black crown and nape",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Black wings with a broad, intense yellow band that shows clearly in flight",
+          "factIds": [
+            "f03",
+            "f23"
+          ]
+        },
+        {
+          "text": "Long, pointed ivory bill, black forked tail and white rump",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Male's red face mask reaches just behind the eye, female's does not pass it",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is a repeated “tick tickeli tickelitt”, which gave the species its Swedish name.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The song resembles the Eurasian Siskin's: fast and twittering, with varied notes and bits of the call mixed in.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The aggression call is a hard, snarling “tschrr”.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "In Sweden it occurs mainly in the south and centre, and along the Norrland coast to Norrbotten, and it is reported from all 21 counties.",
+          "factIds": [
+            "f16",
+            "d02"
+          ]
+        },
+        {
+          "text": "It is partly migratory: some leave in October to November for western and southern Europe and return in March to April, while others winter.",
+          "factIds": [
+            "s01",
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "It is reported all year and is now common, up 112 to 245 percent over the last ten years.",
+          "factIds": [
+            "d01",
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It lives mostly on seeds and is especially fond of seeds from thistles and burdocks.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "It is a skilled climber and often clambers on thistles to gather seeds.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "It breeds twice a year, the first time in May.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q606679",
+          "text": [
+            {
+              "text": "Carduelis caniceps differs by lacking the black crown and the black vertical line behind the ear coverts.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "European Goldfinch: how to recognise it by its red face and yellow wing bar, what its song and calls sound like and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "12 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "25fa96e95b545b99"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:48:54.613523+00:00",
+      "factsHash": "25fa96e95b545b99"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "steglits",
+    "en": "european-goldfinch"
+  },
+  "names": {
+    "sv": "Steglits",
+    "en": "European Goldfinch",
+    "scientific": "Carduelis carduelis"
+  },
+  "family": {
+    "latin": "Fringillidae",
+    "sv": "Finkar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25418/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Isiwal",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stieglitz_Carduelis_carduelis-8189.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25418/extra.webp",
+      "width": 1200,
+      "height": 1011,
+      "author": "Gzen92",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Carduelis_carduelis_(Chardonneret_élégant)_(4).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25418/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Sander Pieterse",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:XC101464_-_Putter_-_Carduelis_carduelis.ogg",
+    "sha256": "5191926cae29ca73e1edb38fea8b3cf4abfaa17ee1da2bcd13b12f9937ebe909"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Steglits",
+      "revision": "59703234"
+    },
+    "en": {
+      "title": "European goldfinch",
+      "revision": "1373949279"
+    },
+    "de": {
+      "title": "Stieglitz",
+      "revision": "270397915"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2494686,
+    "totalReports": 388335,
+    "months": [
+      89,
+      82,
+      71,
+      65,
+      52,
+      60,
+      68,
+      68,
+      77,
+      89,
+      100,
+      96
+    ],
+    "counties": {
+      "SE-K": 52,
+      "SE-W": 69,
+      "SE-X": 80,
+      "SE-I": 37,
+      "SE-N": 42,
+      "SE-Z": 23,
+      "SE-F": 46,
+      "SE-H": 47,
+      "SE-G": 41,
+      "SE-BD": 17,
+      "SE-T": 60,
+      "SE-E": 56,
+      "SE-M": 49,
+      "SE-D": 61,
+      "SE-AB": 80,
+      "SE-C": 84,
+      "SE-S": 56,
+      "SE-AC": 42,
+      "SE-Y": 100,
+      "SE-U": 70,
+      "SE-O": 69
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        35376,
+        22769,
+        36035,
+        51099,
+        47825,
+        29519,
+        25764,
+        26951,
+        31839,
+        35511,
+        25384,
+        19921
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 71118,
+        "SE-AB": 56600,
+        "SE-M": 35152,
+        "SE-C": 32782,
+        "SE-H": 25506,
+        "SE-D": 19457,
+        "SE-E": 15898,
+        "SE-N": 12880,
+        "SE-F": 12656,
+        "SE-W": 11792,
+        "SE-T": 11710,
+        "SE-X": 10642,
+        "SE-U": 10601,
+        "SE-Y": 9986,
+        "SE-AC": 8331,
+        "SE-S": 7805,
+        "SE-G": 6000,
+        "SE-I": 4574,
+        "SE-K": 3133,
+        "SE-BD": 2937,
+        "SE-Z": 2252
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

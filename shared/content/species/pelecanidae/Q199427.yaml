@@ -75,7 +75,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:MartinThoma" title="User:MartinThoma">MartinThoma</a>
+  author: MartinThoma
   source_url: https://commons.wikimedia.org/wiki/File:Pelecanus-onocrotalus-5.jpg
   commons_filename: Pelecanus-onocrotalus-5.jpg
 - role: secondary
@@ -83,8 +83,7 @@ image_refs:
   width: 1800
   height: 1202
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
-    Nivis</a>
+  author: Flocci Nivis
   source_url: https://commons.wikimedia.org/wiki/File:20190906 Pelecanus onocrotalus
     04.jpg
   commons_filename: 20190906 Pelecanus onocrotalus 04.jpg
@@ -93,8 +92,7 @@ image_refs:
   width: 1800
   height: 1202
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
-    Nivis</a>
+  author: Flocci Nivis
   source_url: https://commons.wikimedia.org/wiki/File:20190906 Pelecanus onocrotalus
     05.jpg
   commons_filename: 20190906 Pelecanus onocrotalus 05.jpg

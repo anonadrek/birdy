@@ -94,7 +94,7 @@ image_refs:
   width: 2400
   height: 1596
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:House sparrow (Passer domesticus),
     Amrum.jpg
   commons_filename: House sparrow (Passer domesticus), Amrum.jpg
@@ -103,8 +103,7 @@ image_refs:
   width: 1350
   height: 1800
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Julian_Herzog" title="User:Julian
-    Herzog">Julian Herzog</a> (<a rel="nofollow" class="external text" href="http://julianherzog.com">Website</a>)<br>
+  author: Julian Herzog
   source_url: https://commons.wikimedia.org/wiki/File:Male House Sparrow Passer Domesticus
     Brackley 2025 01.jpg
   commons_filename: Male House Sparrow Passer Domesticus Brackley 2025 01.jpg
@@ -113,7 +112,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:PierreSelim" title="User:PierreSelim">PierreSelim</a>
+  author: PierreSelim
   source_url: https://commons.wikimedia.org/wiki/File:Passer domesticus - Jardins
     du Carrousel.jpg
   commons_filename: Passer domesticus - Jardins du Carrousel.jpg

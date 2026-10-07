@@ -64,8 +64,7 @@ image_refs:
   width: 2048
   height: 1538
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
-    Judas</a>
+  author: Jacky Judas
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe albonigra 46176684.jpg
   commons_filename: Oenanthe albonigra 46176684.jpg
 - role: secondary
@@ -73,8 +72,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe albonigra 103721244.jpg
   commons_filename: Oenanthe albonigra 103721244.jpg
 - role: secondary
@@ -82,8 +80,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
-    Judas</a>
+  author: Jacky Judas
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe albonigra 115521704.jpg
   commons_filename: Oenanthe albonigra 115521704.jpg
 review_status: auto

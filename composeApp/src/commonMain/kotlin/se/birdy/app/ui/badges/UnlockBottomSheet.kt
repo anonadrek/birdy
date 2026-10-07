@@ -52,6 +52,7 @@ import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.journalPlainText
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.MarginaliaInk
@@ -159,7 +160,9 @@ fun UnlockBottomSheet(
             Spacer(Modifier.height(16.dp))
 
             Text(
-                stringResource(Res.string.unlock_label).uppercase(),
+                // The string carries `*accent*` markup; shown in one style, so drop it (it read
+                // "NYTT *MÄRKE*!" on the sheet).
+                journalPlainText(stringResource(Res.string.unlock_label)).uppercase(),
                 color = AccentCopper,
                 fontFamily = caveat,
                 fontSize = 16.sp,

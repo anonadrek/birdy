@@ -78,8 +78,13 @@ def test_web_verify_passes_the_facts_settings_for_the_v1_retry(
 
     seen: list[VerifyOptions] = []
 
-    async def fake_run_verify(paths: object, options: VerifyOptions) -> list[object]:
+    audio_sources: list[object] = []
+
+    async def fake_run_verify(
+        paths: object, options: VerifyOptions, *, audio: object = None
+    ) -> list[object]:
         seen.append(options)
+        audio_sources.append(audio)
         return []
 
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key-not-used")
@@ -91,6 +96,10 @@ def test_web_verify_passes_the_facts_settings_for_the_v1_retry(
     result = CliRunner().invoke(main, base)
     assert result.exit_code == 0, result.output
     assert (seen[1].facts_model_key, seen[1].facts_effort) == (None, None)
+    # V4 may try the next allowed Commons recording (fix wave 2026-10-07).
+    from birdy_fetcher.web.audio import CommonsAudioClient
+
+    assert all(isinstance(a, CommonsAudioClient) for a in audio_sources)
 
 
 def test_web_facts_defaults_are_the_shared_constants(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -119,7 +128,9 @@ def test_web_verify_reports_a_failed_audio_preflight_without_a_traceback(
     from birdy_fetcher.web import verify_step
     from birdy_fetcher.web.verify_step import AudioPreflightFailed, VerifyOptions
 
-    async def fake_run_verify(paths: object, options: VerifyOptions) -> list[object]:
+    async def fake_run_verify(
+        paths: object, options: VerifyOptions, *, audio: object = None
+    ) -> list[object]:
         raise AudioPreflightFailed("Ljudmodellen kunde inte köras: uv saknas; inga anrop gjordes")
 
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key-not-used")
@@ -508,3 +519,50 @@ def test_web_sheet_prints_decisions_it_does_not_carry(
     result = CliRunner().invoke(main, ["web", "sheet"])
     assert result.exit_code == 0, result.output
     assert "väntar på web verify" in result.output
+
+
+@pytest.mark.parametrize("command", ["facts", "verify", "write", "compare"])
+def test_the_paid_commands_offer_opus55(command: str) -> None:
+    """R3 (2026-10-07): Opus 5.5 can be chosen wherever a model can, defaults unchanged."""
+    result = CliRunner().invoke(main, ["web", command, "--help"])
+    assert result.exit_code == 0
+    assert "opus55" in result.output
+
+
+def test_web_write_accepts_opus55_as_a_model() -> None:
+    # Same model for writer and checker is refused after click accepted both choices, so
+    # the message proves `opus55` passed click.Choice (an unknown value exits 2 earlier).
+    result = CliRunner().invoke(
+        main,
+        [
+            "web",
+            "write",
+            "--species",
+            "Q1",
+            "--model",
+            "opus55",
+            "--checker-model",
+            "opus55",
+            "--max-cost",
+            "1",
+        ],
+    )
+    assert "olika modeller" in result.output
+
+
+def test_the_defaults_are_albins_choice_opus55_writes_sonnet_checks() -> None:
+    """R3 (2026-10-07): Albin chose Opus 5.5 for the fact sheets and the texts."""
+    from birdy_fetcher.web.compare import CompareOptions
+    from birdy_fetcher.web.defaults import FACTS_EFFORT, FACTS_MODEL_KEY, TEXT_MODEL_KEY
+    from birdy_fetcher.web.llm import MODELS
+    from birdy_fetcher.web.text_step import WriteOptions
+    from birdy_fetcher.web.verify_step import VerifyOptions
+
+    assert MODELS[FACTS_MODEL_KEY] == MODELS[TEXT_MODEL_KEY] == "claude-opus-5-5"
+    assert FACTS_EFFORT == "high"
+    assert WriteOptions().model_key == CompareOptions().model_key == "opus55"
+    assert WriteOptions().checker_key == CompareOptions().checker_key == "sonnet"
+    assert VerifyOptions().model_key == "sonnet"
+    for command in ("write", "compare"):
+        help_text = CliRunner().invoke(main, ["web", command, "--help"]).output
+        assert "opus55" in help_text

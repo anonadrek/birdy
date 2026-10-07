@@ -66,7 +66,7 @@ image_refs:
   width: 2400
   height: 1595
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Regulus madeirensis.jpg
   commons_filename: Regulus madeirensis.jpg
 - role: secondary
@@ -74,20 +74,18 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/198981757@N08">Donald
-    Davesne</a> from Paris, France
+  author: Donald Davesne
   source_url: https://commons.wikimedia.org/wiki/File:Regulus madeirensis, Fanal,
     Madeira, Portugal (53283937107).jpg
   commons_filename: Regulus madeirensis, Fanal, Madeira, Portugal (53283937107).jpg
 - role: secondary
   path: Q1752281/secondary-2.webp
-  width: 1350
-  height: 1800
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Ruipa&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Ruipa (page does not exist)">Ruipa</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Ave Bis Bis - Regulus madeirensis.jpg
-  commons_filename: Ave Bis Bis - Regulus madeirensis.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: Rudi B.
+  source_url: https://commons.wikimedia.org/wiki/File:Madeira firecrest.jpg
+  commons_filename: Madeira firecrest.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T20:43:43.161126+00:00'

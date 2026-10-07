@@ -72,7 +72,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Red-billed chough (Pyrrhocorax
     pyrrhocorax), Algarve.jpg
   commons_filename: Red-billed chough (Pyrrhocorax pyrrhocorax), Algarve.jpg
@@ -81,7 +81,7 @@ image_refs:
   width: 1800
   height: 1196
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Red-billed chough (Pyrrhocorax
     pyrrhocorax).jpg
   commons_filename: Red-billed chough (Pyrrhocorax pyrrhocorax).jpg
@@ -90,8 +90,7 @@ image_refs:
   width: 1800
   height: 1196
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/35693053@N04">Ross
-    Elliott</a>
+  author: Ross Elliott
   source_url: https://commons.wikimedia.org/wiki/File:Pyrrhocorax pyrrhocorax -Living
     Coasts, Devon, England-8a.jpg
   commons_filename: Pyrrhocorax pyrrhocorax -Living Coasts, Devon, England-8a.jpg

@@ -2,6 +2,7 @@ package se.birdy.app.ui.match
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -26,7 +27,15 @@ fun MatchResultScreen(
     zone: TimeZone,
 ) {
     val state by viewModel.state.collectAsState()
-    Box(modifier = Modifier.fillMaxSize().paperBackground()) {
+    Box(
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .paperBackground()
+                // Only the Match view has a photo top behind the status bar; Disambig, NoBird,
+                // loading and errors start below it (Plan 3 Task 6).
+                .then(if (state is MatchResultUiState.Match) Modifier else Modifier.statusBarsPadding()),
+    ) {
         when (val s = state) {
             MatchResultUiState.Loading -> JournalLoading()
             is MatchResultUiState.Error -> {

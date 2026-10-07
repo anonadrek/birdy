@@ -1,0 +1,209 @@
+{
+  "qid": "Q188877",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "bergfink",
+    "en": "brambling"
+  },
+  "names": {
+    "sv": "Bergfink",
+    "en": "Brambling",
+    "scientific": "Fringilla montifringilla"
+  },
+  "family": {
+    "latin": "Fringillidae",
+    "sv": "Finkar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q188877/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brambling_(Fringilla_montifringilla)_2021.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q188877/extra.webp",
+      "width": 1200,
+      "height": 811,
+      "author": "Kev Chapman",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fringilla_montifringilla_-England_-male-8_(3).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q188877/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Alexander Kurthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fringilla_montifringilla_-_Brambling_XC108349.mp3",
+    "sha256": "c1eb1c8a07a5d6c6aa204b4d7badd8bd5ab7bcee6b4af1f4e41b3907ee89a8ba"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Bergfink",
+      "revision": "59480436"
+    },
+    "en": {
+      "title": "Brambling",
+      "revision": "1361349499"
+    },
+    "de": {
+      "title": "Bergfink",
+      "revision": "267087288"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2494441,
+    "totalReports": 210770,
+    "months": [
+      76,
+      61,
+      41,
+      57,
+      18,
+      35,
+      13,
+      16,
+      71,
+      100,
+      71,
+      89
+    ],
+    "counties": {
+      "SE-K": 36,
+      "SE-W": 46,
+      "SE-X": 28,
+      "SE-I": 25,
+      "SE-N": 20,
+      "SE-Z": 74,
+      "SE-F": 32,
+      "SE-H": 20,
+      "SE-G": 30,
+      "SE-BD": 100,
+      "SE-T": 29,
+      "SE-E": 18,
+      "SE-M": 21,
+      "SE-D": 19,
+      "SE-AB": 17,
+      "SE-C": 17,
+      "SE-S": 38,
+      "SE-AC": 59,
+      "SE-Y": 40,
+      "SE-U": 25,
+      "SE-O": 30
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i oktober och december.",
+        "Andelen av alla fågelrapporter är högst i Norrbotten, Jämtland och Västerbotten."
+      ],
+      "en": [
+        "Reported most in October and December.",
+        "Its share of all bird reports is highest in Norrbotten, Jämtland and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        24056,
+        13430,
+        16735,
+        35426,
+        12784,
+        13617,
+        3802,
+        5105,
+        23314,
+        31803,
+        14354,
+        14767
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 35441,
+        "SE-BD": 19352,
+        "SE-M": 17663,
+        "SE-AB": 14126,
+        "SE-AC": 13584,
+        "SE-H": 12710,
+        "SE-F": 9963,
+        "SE-W": 9094,
+        "SE-Z": 8237,
+        "SE-C": 7683,
+        "SE-N": 7302,
+        "SE-D": 6945,
+        "SE-T": 6517,
+        "SE-S": 6065,
+        "SE-E": 5922,
+        "SE-G": 5087,
+        "SE-Y": 4568,
+        "SE-X": 4319,
+        "SE-U": 4292,
+        "SE-I": 3598,
+        "SE-K": 2492
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,864 @@
+{
+  "qid": "Q26444",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Tofsen i nacken är artens tydligaste kännetecken; den är lång och hängande hos häckande hanar men syns mer eller mindre hos båda könen i alla dräkter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess mest signifikanta drag är tofsen i nacken som hos häckande hanar är lång och nedhängande men mer eller mindre synlig på båda könen och i alla dräkter."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Näbben är kort, bred och blågrå, bredare mot den svarta spetsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är kort och bred och blågrå till färgen, bredare mot spetsen som är svart."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Båda könen har gul iris och ljust gråblå näbb med svart näbbnagel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Båda könen har gul iris och ljust gråblå näbb med svart näbbnagel."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Ovansidan av hand- och armpennor är vit med en tydlig svart bakkant, så att ett vitt vingband syns i flykten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ovansidan av handpennor och armpennor är vita med en tydlig svart avslutning som ett streck på vingkanten."
+        },
+        {
+          "article": "de",
+          "quote": "so dass im Flug ein weißes Flügelband erkennbar ist"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Den adulta hanen har svart huvud, bröst, ovansida och stjärt, medan sidorna, buken och vingarnas undersida är vita.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen har svart huvud, bröst, ovansida och stjärt, medan sidorna, buken och undersidan av vingarna är vita."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Honan är brun, jämnt mörkbrun på rygg och huvud och ljusare brun på sidorna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan är färgad i olika nyanser av brunt, med en jämnt mörkbrun nyans på rygg och huvud och en ljusare brun på sidorna."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honan har en mindre tydlig tofs än hanen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan är brunaktig och har en mindre tydlig tofs."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Hanen i sommardräkt är mörkbrun med något ljusare sidor, likt honan.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "im Schlichtkleid wie die Weibchen dunkelbraun mit leicht aufgehellten Flanken"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Ungfåglar är mattare gråbruna och liknar annars honor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen är mattare gråbruna till färgen och påminner annars om honor."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Vissa honor har vitt kring näbbroten, men det vita är aldrig lika utbrett som hos bergänder.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "some have white around the base of the bill, resembling the scaup species, although the white is never as extensive as that of those ducks"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "size",
+      "sv": "Viggen är 40–47 cm lång och har ett vingspann på 65–72 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fågelns totala längd är 40–47 cm och den har ett vingspann på 65–72 cm."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Den friande hanen, och även fåglar i flykten, ger ett nästan kalkonlikt, fnittrande läte som faller i tonhöjd och ökar i hastighet: ”vip vi-vivyvyp”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från friande hane men även i flykten hörs ett nästan kalkonlikt och fnittrande läte som faller i tonhöjd men ökar i hastighet: \"vip vi-vivyvyp\"."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Honan har en skorrande ramsa, ”krr krr krr krr”, snabbare än brunandens och ljusare än bergandens.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan har en skorrande ramsa, \"krr krr krr krr\", snabbare än brunanden och ljusare än berganden."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Hanarna är mestadels tysta utanför uppvaktningen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Males are mostly silent but will whistle during courtship"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Viggen häckar ofta i sötvatten som skogssjöar, fjäll- och tundravatten, lugna åar och parkdammar, men även vid havskuster.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar ofta i sötvatten som skogssjöar, fjäll- och tundravatten, lugnar åar, eller parkdammar, men den häckar också vid havskuster."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Den föredrar att häcka i grunda näringsrika sjöar och vikar, och i skärgården gärna i flador.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den föredrar att häcka i grunda eutrofa sjöar, vikar och i skärgården gärna flader."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Sverige är viggen på sommaren vanligast i Norrland och östra Sverige, men den häckar i stort sett i hela landet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är den på sommaren vanligast i Norrland och Sveriges östliga delar, men häckar i stort sett i hela landet."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "De flesta viggar lämnar Sverige under vintern, men vissa övervintrar i södra Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Merparten lämnar Sverige under vintern men vissa övervintrar i södra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet beräknas till mellan 40 000 och 60 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det samlade beståndet av vigg i Sverige beräknas idag vara mellan 40 000 och 60 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Viggen lägger åtta till tio grågröna eller blygrå ägg som ruvas av honan i 25 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Viggen lägger åtta till tio grågröna eller blygrå ägg, som ruvas av honan i 25 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Viggen häckar gärna tillsammans med måsar och tärnor, som ger den visst skydd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "gärna tillsammans med måsar och tärnor som ger arten visst skydd"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Ungarna blir flygga efter 45–50 dagar men kan lämna honan mycket tidigare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna blir flygga efter 45–50 dagar men kan lämna honan mycket tidigare."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Hanarna ruggar från slutet av juni till början av september och är då flygoförmögna i tre till fyra veckor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under denna ruggingsperiod som inträffar i slutet av juni till början av september är hanarna flygoförmögna i tre till fyra veckor."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "På vintern kan viggar samlas i mycket stora flockar med tusentals fåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under vintern kan arten ansamlas i mycket stora flockar på tusentals individer."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Viggen söker oftast föda på grunt vatten och dyker sällan djupare än tre meter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Viggen födosöker oftast på grunt vatten och dyker sällan mer än tre meter."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Viggen stannar i genomsnitt 15 sekunder under vattnet vid dykning.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "bleibt im Schnitt 15 Sekunden unter Wasser"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Viktig föda är snäckor, musslor, kräftdjur, småfisk, vatteninsekter och vattenväxter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Viktig föda utgörs av snäckor, musslor, kräftdjur, småfisk, vatteninsekter och vattenväxter."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Merparten lämnar Sverige under vintern men vissa övervintrar i södra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Viggen är en and med tofs i nacken som häckar i skogssjöar, lugna åar och parkdammar, men även vid havskuster.",
+          "factIds": [
+            "f02",
+            "f16"
+          ]
+        },
+        {
+          "text": "I Sverige häckar den i stort sett i hela landet.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Tofs i nacken, lång och hängande hos häckande hanar, mindre tydlig hos honan",
+          "factIds": [
+            "f02",
+            "f08"
+          ]
+        },
+        {
+          "text": "Den adulta hanen är svart med vita sidor och vit buk",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Honan är mörkbrun på rygg och huvud, ljusare brun på sidorna",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Gul iris, ljust gråblå näbb med svart nagel och vitt vingband i flykten",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Den friande hanen och fåglar i flykten ger ett nästan kalkonlikt, fnittrande läte som faller i tonhöjd och blir snabbare.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Honan har en skorrande ramsa, ”krr krr krr krr”, snabbare än brunandens och ljusare än bergandens.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Utanför uppvaktningen är hanarna mestadels tysta.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Viggen är delvis flyttfågel och häckar i Sverige, i stort sett i hela landet.",
+          "factIds": [
+            "s01",
+            "f18"
+          ]
+        },
+        {
+          "text": "På sommaren är den vanligast i Norrland och östra Sverige.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "De flesta lämnar Sverige på vintern, men vissa övervintrar i södra Sverige.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Den häckar helst i grunda, näringsrika sjöar och vikar, i skärgården gärna i flador.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Viggen söker oftast föda på grunt vatten, dyker sällan djupare än tre meter och stannar i genomsnitt 15 sekunder under vattnet.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Viktig föda är snäckor, musslor, kräftdjur, småfisk, vatteninsekter och vattenväxter.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Den häckar gärna bland måsar och tärnor, som ger visst skydd.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "På vintern kan viggar samlas i flockar med tusentals fåglar.",
+          "factIds": [
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Vigg: så känner du igen arten på tofsen, näbben och dräkten, hur hanens och honans läten låter och när viggen ses under året.",
+      "facts": {
+        "size": {
+          "value": "40 till 47 cm",
+          "factIds": [
+            "f12"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Tufted Duck is a duck with a tuft on the nape that breeds on forest lakes, slow rivers and park ponds, and also on sea coasts.",
+          "factIds": [
+            "f02",
+            "f16"
+          ]
+        },
+        {
+          "text": "In Sweden it breeds across almost the whole country.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Tuft on the nape, long and drooping in breeding males, less obvious in females",
+          "factIds": [
+            "f02",
+            "f08"
+          ]
+        },
+        {
+          "text": "The adult male is black with white flanks and a white belly",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "The female is dark brown on back and head, paler brown on the flanks",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Yellow eye, pale grey-blue bill with a black nail, white wing bar in flight",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The courting male, and birds in flight, give an almost turkey-like giggling call that falls in pitch and speeds up: \"vip vi-vivyvyp\".",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The female has a grating series, \"krr krr krr krr\", faster than the Common Pochard's and higher than the Greater Scaup's.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Outside courtship the males are mostly silent.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Tufted Duck is a partial migrant that breeds in Sweden, across almost the whole country.",
+          "factIds": [
+            "s01",
+            "f18"
+          ]
+        },
+        {
+          "text": "In summer it is commonest in Norrland and eastern Sweden.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Most leave Sweden in winter, but some winter in southern Sweden.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "It is reported all year round and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "It prefers to breed on shallow, nutrient-rich lakes and bays, in the archipelago often in shallow coastal lagoons.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It mostly feeds in shallow water, rarely dives deeper than three metres and stays under for 15 seconds on average.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Important food is snails, mussels, crustaceans, small fish, water insects and water plants.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "It likes to breed among gulls and terns, which give it some protection.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "In winter Tufted Ducks can gather in flocks of thousands of birds.",
+          "factIds": [
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Tufted Duck: how to recognise it by its tuft, bill and plumage, what the calls of male and female sound like, and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "40 to 47 cm",
+          "factIds": [
+            "f12"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "b9d6133b078265d1"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T19:02:24.943717+00:00",
+      "factsHash": "b9d6133b078265d1"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "vigg",
+    "en": "tufted-duck"
+  },
+  "names": {
+    "sv": "Vigg",
+    "en": "Tufted Duck",
+    "scientific": "Aythya fuligula"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Änder"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26444/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tufted_duck_(Aythya_fuligula)_pair.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26444/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aythya_fuligula_(male)_2022_03_20.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26444/voice.mp3",
+    "durationSec": 4,
+    "trimmed": false,
+    "author": "Jamescandless",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tufted_Duck.ogg",
+    "sha256": "f5bc9251ca60e84005a8e2d7a3165c5b7d07a8f39eb714aa7c4f985ed1dccf59"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Vigg",
+      "revision": "59694338"
+    },
+    "en": {
+      "title": "Tufted duck",
+      "revision": "1358561151"
+    },
+    "de": {
+      "title": "Reiherente",
+      "revision": "271092185"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2498261,
+    "totalReports": 342705,
+    "months": [
+      100,
+      92,
+      88,
+      89,
+      64,
+      53,
+      57,
+      38,
+      47,
+      71,
+      93,
+      94
+    ],
+    "counties": {
+      "SE-K": 69,
+      "SE-W": 55,
+      "SE-X": 56,
+      "SE-I": 75,
+      "SE-N": 55,
+      "SE-Z": 100,
+      "SE-F": 70,
+      "SE-H": 62,
+      "SE-G": 58,
+      "SE-BD": 67,
+      "SE-T": 58,
+      "SE-E": 79,
+      "SE-M": 88,
+      "SE-D": 76,
+      "SE-AB": 95,
+      "SE-C": 45,
+      "SE-S": 52,
+      "SE-AC": 64,
+      "SE-Y": 52,
+      "SE-U": 68,
+      "SE-O": 66
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        34648,
+        22319,
+        39109,
+        61188,
+        50909,
+        22913,
+        18676,
+        13280,
+        16932,
+        24811,
+        20533,
+        17147
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-AB": 44480,
+        "SE-O": 44430,
+        "SE-M": 41540,
+        "SE-H": 22182,
+        "SE-D": 16130,
+        "SE-E": 14864,
+        "SE-F": 12550,
+        "SE-C": 11492,
+        "SE-N": 11232,
+        "SE-AC": 8484,
+        "SE-T": 7487,
+        "SE-BD": 7461,
+        "SE-U": 6822,
+        "SE-Z": 6427,
+        "SE-W": 6243,
+        "SE-I": 6134,
+        "SE-G": 5695,
+        "SE-X": 4970,
+        "SE-S": 4808,
+        "SE-Y": 3414,
+        "SE-K": 2763
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [
+    {
+      "check": "V2",
+      "factId": "f12",
+      "message": "f12 anger ett tal i cm som inte stämmer med de andra artiklarna (4.1 till 5.9 cm)"
+    }
+  ],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

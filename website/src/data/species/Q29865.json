@@ -1,0 +1,911 @@
+{
+  "qid": "Q29865",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Knipan är en medelstor, kompakt dykand med stort, lätt toppigt huvud som liknar en rundad knopp på den korta halsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Knipan är en medelstor, kompakt dykand med ett stort, lätt toppigt huvud som ser ut som en rundad knopp ovanpå den korta halsen."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Knipan har en liten trekantig näbb och gula ögon.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en liten trekantig näbb och gula ögon."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Benen och fötterna är orangegula.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Their legs and feet are orange-yellow."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "I flykten har både hane och hona ett vitt område på vingens inre del, hos honan avdelat av flera mörka band.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten har både hane och hona ett vitt område på vingens inre del, honans avdelas av flera mörka band."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "size",
+      "sv": "Knipan är 40–48 cm lång, har ett vingspann på 62–77 cm och väger 500–1300 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den mäter 40–48 cm på längden, har ett vingspann på 62–77 cm och når en vikt av 500 till 1300 gram."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Hanen i praktdräkt är svartvit med skimrande grönsvart huvud och en stor vit fläck mellan näbben och ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen i praktdräkt har en svartvit dräkt och ett skimrande grönsvart huvud med en stor vit fläck mellan näbben och ögat."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "På sommaren bär hanen eklipsdräkt och liknar då honan, men har mörkare brunt huvud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under sommaren anlägger hanen en eklipsdräkt då den liknar honan, men har mörkare brunt huvud"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honan har grå kropp, vit buk, brunt huvud och en varierande vit halsring.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan har grå kropp, vit buk, brunt huvud och en varierande vit halsring."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Honans grå näbb har en gul och svart näbbspets.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess gråa näbb har en gul och svart näbbspets."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Unga fåglar liknar honan men saknar halsring, har mörkt öga, brunare kropp och ingen gul färg på näbben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenila individer liknar honan, men saknar halsband, har mörkt öga och är brunare på kroppen och näbben saknar gult."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "lookalike",
+      "sv": "Islandsknipan kan förväxlas med knipan, men dess hane har blålilaglänsande huvud och en större, mer halvmåneformad fläck framför ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Enda förväxlingsrisken är islandsknipan (Bucephala islandica) som förekommer i Nordamerika och på just Island."
+        },
+        {
+          "article": "sv",
+          "quote": "Hanen hos denna art har dock blålilaglänsande huvud och en större, mer halvmåneformad fläck framför ögat."
+        }
+      ],
+      "other": {
+        "scientific": "Bucephala islandica",
+        "qid": "Q369767"
+      }
+    },
+    {
+      "id": "f12",
+      "topic": "lookalike",
+      "sv": "Islandsknipans hona har mer gult på näbben än knipans hona.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hona islandsknipa har mer gult på näbben."
+        }
+      ],
+      "other": {
+        "scientific": "Bucephala islandica",
+        "qid": "Q369767"
+      }
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "I flykten hörs ett typiskt visslande vingljud, hyhyhyhy, på långt avstånd, kraftigast hos hanen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Knipan har i flykten ett typiskt visslande vingljud, hyhyhyhy, som hörs på långt avstånd och är kraftigast hos hanen."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Under parningsspelet låter hanen ett kväkande ljud som påminner om när man drar ett finger längs en kam.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från hanen hörs under parningsspelet ett kväkande ljud som påminner om ljudet som uppstår när man drar ett finger längs en kam."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Honan låter ett grar på häckningsplatsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan använder på häckningsplatsen ett grar."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Knipan häckar vid floder, sjöar och våtmarker.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Knipan häckar vid floder, sjöar och våtmarker."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Vintertid finns knipan vid isfria floder, sjöar och längs kusten, i par eller större flockar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid förekommer den vid isfria floder, sjöar och utmed kusten i alltifrån par till större flockar."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "breeding",
+      "sv": "Honan lägger tio till tolv grönaktiga ägg i en naturlig trädhåla, ett gammalt hackspetthål eller en holk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger tio till tolv grönaktiga ägg i en trädhåla som skapats naturligt eller av någon av de större hackspettarna, eller i holkar."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "breeding",
+      "sv": "Honan ruvar ensam och lämnas av hanen ungefär en till två veckor in i ruvningen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The female does all the incubating and is abandoned by the male about 1 to 2 weeks into incubation."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Ruvningstiden är 28 till 32 dagar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The incubation period ranges from 28 to 32 days."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Ungarna kan flyga vid 55–65 dagars ålder.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The young are capable of flight at 55–65 days of age."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Honan lockar ungarna ur boet med ett särskilt läte, och de hoppar ut en efter en.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die am Boden oder im Wasser wartende Schellente lockt die Jungen dann mit einem spezifischen Ruf, der bewirkt, dass ein Junges nach dem anderen am Schlupfloch erscheint und mit einem Sprung der Mutterente folgt."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Vid spelet på tidig vår gungar hanen ner och slänger huvudet bakåt över ryggen medan han låter knirrande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Samtidigt som han ger ifrån sig ett knirrande ljud gungar han ner och slänger huvudet bakåt över ryggen."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Födan består av små fiskar, snäckor, kräftdjur, växtdelar och insekter med larver.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Födan består av små fiskar, snäckor, kräftdjur, växtdelar och insekter samt deras larver."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Knipan dyker efter föda, ibland ned till åtta meters djup.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "För att nå bytet dyker knipan ibland ned så djupt som åtta meter."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till 65 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 65 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "sweden",
+      "sv": "I Sverige räknas knipan som livskraftig och är inte rödlistad, men en pågående minskning noteras.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även i Sverige anses den vara livskraftig och är ej upptagen på Artdatabankens rödlista."
+        },
+        {
+          "article": "sv",
+          "quote": "En pågående minskning i antal noteras dock."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De häckar cirkumpolärt över tajgaregionen i boreala Skandinavien, norra Ryssland, Kanada och norra USA Nordamerika och övervintrar längre söderut, eller i anslutning till häckningsområdet om där förekommer öppet vatten."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november till mars."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Knipan är en medelstor, kompakt dykand med stort huvud.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Den häckar vid floder, sjöar och våtmarker och ses vintertid vid isfria vatten och längs kusten.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Stort, lätt toppigt huvud på kort hals, liten trekantig näbb och gula ögon",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Hanen i praktdräkt: svartvit, skimrande grönsvart huvud och stor vit fläck mellan näbb och öga",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Honan har grå kropp, brunt huvud, varierande vit halsring och gul och svart näbbspets",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "I flykten syns ett vitt fält på vingens inre del hos båda könen",
+          "factIds": [
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "I flykten hörs ett visslande vingljud, hyhyhyhy, på långt avstånd och kraftigast hos hanen.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Under parningsspelet låter hanen kväkande, ungefär som när man drar ett finger längs en kam.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Honan låter ett grar på häckningsplatsen.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Knipan är delvis flyttfågel och häckar i Sverige.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Det svenska beståndet uppskattades 2018 till 65 000 par.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län och rapporteras mest i november till mars.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Vintertid håller den till vid isfria sjöar, floder och längs kusten, i par eller större flockar.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Arten är inte rödlistad, men en pågående minskning noteras.",
+          "factIds": [
+            "f27",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Knipan dyker efter föda, ibland ned till åtta meters djup.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Den äter små fiskar, snäckor, kräftdjur, växtdelar och insekter med larver.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Vid spelet på tidig vår gungar hanen ner och slänger huvudet bakåt över ryggen.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "Honan lägger tio till tolv ägg i en trädhåla, ett gammalt hackspetthål eller en holk och lockar senare ut ungarna, som hoppar ut en efter en.",
+          "factIds": [
+            "f18",
+            "f22"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q369767",
+          "text": [
+            {
+              "text": "Islandsknipans hane har blålilaglänsande huvud och en större, mer halvmåneformad fläck framför ögat.",
+              "factIds": [
+                "f11"
+              ]
+            },
+            {
+              "text": "Islandsknipans hona har mer gult på näbben än knipans hona.",
+              "factIds": [
+                "f12"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Knipa: så känner du igen dykanden på huvud, näbb och dräkt, hur vingljudet och lätena låter och när under året den oftast ses.",
+      "facts": {
+        "size": {
+          "value": "40 till 48 cm",
+          "factIds": [
+            "f05"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Common Goldeneye is a medium-sized, compact diving duck with a large head.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "It breeds by rivers, lakes and wetlands and in winter is found on ice-free water and along the coast.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Large, slightly peaked head on a short neck, small triangular bill and yellow eyes",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Breeding male: black and white, glossy green-black head, large white spot between bill and eye",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Female: grey body, brown head, variable white neck ring, yellow and black bill tip",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "In flight both sexes show a white patch on the inner wing",
+          "factIds": [
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "In flight the wings make a whistling sound, hyhyhyhy, audible at long range and loudest in the male.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "During display the male gives a croaking sound, like running a finger along a comb.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "The female gives a grar call at the breeding site.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Common Goldeneye is a partial migrant that breeds in Sweden.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "The Swedish population was estimated at 65 000 pairs in 2018.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties and is reported most from November to March.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "In winter it stays on ice-free lakes, rivers and along the coast, in pairs or larger flocks.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "It is not red-listed, but an ongoing decline has been noted.",
+          "factIds": [
+            "f27",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It dives for food, sometimes down to eight metres.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It eats small fish, snails, crustaceans, plant parts, insects and larvae.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "In display in early spring the male bobs down and throws his head back over his back.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "The female lays ten to twelve eggs in a tree hole, old woodpecker hole or nest box.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "She calls the young out of the nest and they jump out one by one.",
+          "factIds": [
+            "f22"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q369767",
+          "text": [
+            {
+              "text": "Male Barrow's Goldeneye has a blue-purple glossed head and a larger, more crescent-shaped spot in front of the eye.",
+              "factIds": [
+                "f11"
+              ]
+            },
+            {
+              "text": "Its female has more yellow on the bill than the Common Goldeneye female.",
+              "factIds": [
+                "f12"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Common Goldeneye: how to recognise this diving duck by head, bill and plumage, what its wing whistle and calls sound like, and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "40 to 48 cm",
+          "factIds": [
+            "f05"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "0ba720e07be29f67"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "0ba720e07be29f67"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "knipa",
+    "en": "common-goldeneye"
+  },
+  "names": {
+    "sv": "Knipa",
+    "en": "Common Goldeneye",
+    "scientific": "Bucephala clangula"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Änder"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q29865/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "U.S. Fish and Wildlife Service - Midwest Region",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_Goldeneye_(34846532856).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q29865/extra.webp",
+      "width": 1200,
+      "height": 600,
+      "author": "Bengt Nyman",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bucephala_clangula_EM1B9540_(33952163073).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q29865/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Pascal Christe",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bucephala_clangula_-_Common_Goldeneye_XC518957.mp3",
+    "sha256": "8c0f323089b7f59cdd5be06a54f9c61b810c9c6a5920b1aaeb08cb2c280d30be"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Knipa",
+      "revision": "57169142"
+    },
+    "en": {
+      "title": "Common goldeneye",
+      "revision": "1374022294"
+    },
+    "de": {
+      "title": "Schellente",
+      "revision": "247693208"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2498326,
+    "totalReports": 537769,
+    "months": [
+      97,
+      97,
+      100,
+      77,
+      52,
+      48,
+      37,
+      28,
+      35,
+      59,
+      92,
+      94
+    ],
+    "counties": {
+      "SE-K": 48,
+      "SE-W": 78,
+      "SE-X": 79,
+      "SE-I": 37,
+      "SE-N": 49,
+      "SE-Z": 95,
+      "SE-F": 99,
+      "SE-H": 36,
+      "SE-G": 100,
+      "SE-BD": 83,
+      "SE-T": 79,
+      "SE-E": 75,
+      "SE-M": 54,
+      "SE-D": 70,
+      "SE-AB": 72,
+      "SE-C": 56,
+      "SE-S": 76,
+      "SE-AC": 72,
+      "SE-Y": 74,
+      "SE-U": 65,
+      "SE-O": 80
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november till mars.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in November to March.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        58281,
+        40845,
+        77537,
+        91585,
+        71931,
+        36051,
+        21381,
+        17134,
+        21936,
+        35706,
+        35390,
+        29647
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 89044,
+        "SE-AB": 55945,
+        "SE-M": 42019,
+        "SE-F": 29376,
+        "SE-D": 24417,
+        "SE-C": 23896,
+        "SE-E": 23273,
+        "SE-H": 21170,
+        "SE-T": 16869,
+        "SE-N": 16465,
+        "SE-G": 16141,
+        "SE-AC": 15738,
+        "SE-BD": 15266,
+        "SE-W": 14604,
+        "SE-S": 11664,
+        "SE-X": 11508,
+        "SE-U": 10728,
+        "SE-Z": 10042,
+        "SE-Y": 8103,
+        "SE-I": 4964,
+        "SE-K": 3142
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

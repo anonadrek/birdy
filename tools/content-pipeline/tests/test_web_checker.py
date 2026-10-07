@@ -183,3 +183,17 @@ def test_the_meta_description_is_checked_against_every_fact_the_text_cites() -> 
 def test_the_prompt_explains_the_meta_description_item() -> None:
     prompt = (PIPELINE / "prompts/check-v1.md").read_text(encoding="utf-8")
     assert "meta_description" in prompt
+
+
+def test_the_prompt_keeps_a_county_share_a_share() -> None:
+    """R3 (2026-10-07): the checker passed "flest rapporter" written from a share."""
+    template = (PIPELINE / "prompts/check-v1.md").read_text(encoding="utf-8")
+    system, _ = _split_prompt(template, items="", about="")
+    assert "share of all bird reports" in system
+    assert "most reports come from there" in system
+
+
+def test_the_prompt_reads_month_data_as_reports() -> None:
+    template = (PIPELINE / "prompts/check-v1.md").read_text(encoding="utf-8")
+    system, _ = _split_prompt(template, items="", about="")
+    assert "about reports, not about whether the bird is there" in system

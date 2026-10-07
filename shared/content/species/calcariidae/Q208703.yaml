@@ -94,7 +94,7 @@ image_refs:
   width: 2400
   height: 1655
   license: Public domain
-  author: unknown, USFWS
+  author: USFWS
   source_url: https://commons.wikimedia.org/wiki/File:Lapland Longspur (Calcarius
     lapponicus).jpg
   commons_filename: Lapland Longspur (Calcarius lapponicus).jpg
@@ -103,8 +103,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Lapland longspur (Calcarius
     lapponicus) 2023 4.jpg
   commons_filename: Lapland longspur (Calcarius lapponicus) 2023 4.jpg
@@ -113,8 +112,7 @@ image_refs:
   width: 1200
   height: 1800
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Lapland longspur (Calcarius
     lapponicus) 2023 01.jpg
   commons_filename: Lapland longspur (Calcarius lapponicus) 2023 01.jpg

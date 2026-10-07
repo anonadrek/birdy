@@ -65,8 +65,7 @@ image_refs:
   width: 2048
   height: 1971
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1476120">Jan
-    Ebr</a>
+  author: Jan Ebr
   source_url: https://commons.wikimedia.org/wiki/File:Hedydipna metallica 261879972.jpg
   commons_filename: Hedydipna metallica 261879972.jpg
 - role: secondary
@@ -74,8 +73,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/693281">Valentin
-    Moser</a>
+  author: Valentin Moser
   source_url: https://commons.wikimedia.org/wiki/File:Hedydipna metallica 264648434.jpg
   commons_filename: Hedydipna metallica 264648434.jpg
 - role: secondary
@@ -83,8 +81,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2401694">William
-    Stephens</a>
+  author: William Stephens
   source_url: https://commons.wikimedia.org/wiki/File:Hedydipna metallica 64225590.jpg
   commons_filename: Hedydipna metallica 64225590.jpg
 review_status: auto

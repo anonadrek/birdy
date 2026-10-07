@@ -1,0 +1,209 @@
+{
+  "qid": "Q26742",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "brunand",
+    "en": "common-pochard"
+  },
+  "names": {
+    "sv": "Brunand",
+    "en": "Common Pochard",
+    "scientific": "Aythya ferina"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Änder"
+  },
+  "group": "waterfowl",
+  "iucn": "VU",
+  "swedishRedList": "EN",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26742/hero.webp",
+      "width": 1600,
+      "height": 987,
+      "author": "Blondinrikard Fröberg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_pochard,_Aythya_ferina,_Brunand_(50829034922).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26742/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Richard Barrett-Small",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aythya_ferina_Finsbury_1.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26742/voice.mp3",
+    "durationSec": 10,
+    "trimmed": false,
+    "author": "Noé Ferrari",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Porr%C3%B3n_europeo_%C2%B7_Aythya_ferina.wav",
+    "sha256": "224693205d15c15197b47d8ce821f7e4af2e77c059179086a6743f1234158368"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Brunand",
+      "revision": "59481477"
+    },
+    "en": {
+      "title": "Common pochard",
+      "revision": "1358119395"
+    },
+    "de": {
+      "title": "Tafelente",
+      "revision": "262704798"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2498255,
+    "totalReports": 96622,
+    "months": [
+      95,
+      94,
+      96,
+      100,
+      62,
+      56,
+      50,
+      38,
+      63,
+      93,
+      97,
+      92
+    ],
+    "counties": {
+      "SE-K": 46,
+      "SE-W": 79,
+      "SE-X": 33,
+      "SE-I": 68,
+      "SE-N": 36,
+      "SE-Z": 69,
+      "SE-F": 42,
+      "SE-H": 40,
+      "SE-G": 23,
+      "SE-BD": 30,
+      "SE-T": 71,
+      "SE-E": 100,
+      "SE-M": 84,
+      "SE-D": 25,
+      "SE-AB": 90,
+      "SE-C": 28,
+      "SE-S": 15,
+      "SE-AC": 6,
+      "SE-Y": 7,
+      "SE-U": 82,
+      "SE-O": 49
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Andelen av alla fågelrapporter är högst i Östergötland, Stockholm och Skåne."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Its share of all bird reports is highest in Östergötland, Stockholm and Skåne."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        8708,
+        6040,
+        11393,
+        18220,
+        13033,
+        6330,
+        4367,
+        3524,
+        6010,
+        8627,
+        5677,
+        4436
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-AB": 15781,
+        "SE-M": 14820,
+        "SE-O": 12315,
+        "SE-E": 6959,
+        "SE-H": 5356,
+        "SE-T": 3412,
+        "SE-W": 3352,
+        "SE-U": 3035,
+        "SE-F": 2829,
+        "SE-N": 2732,
+        "SE-C": 2653,
+        "SE-I": 2060,
+        "SE-D": 1995,
+        "SE-Z": 1649,
+        "SE-BD": 1257,
+        "SE-X": 1082,
+        "SE-G": 821,
+        "SE-K": 684,
+        "SE-S": 518,
+        "SE-AC": 305,
+        "SE-Y": 168
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

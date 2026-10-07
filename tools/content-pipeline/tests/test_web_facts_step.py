@@ -53,7 +53,7 @@ async def test_facts_are_saved_and_the_species_stays_pending(tmp_path: Path) -> 
     record = load_record(record_path(paths.data_out, "Q1"))
     assert record is not None
     assert [f["id"] for f in record["facts"]][-3:] == ["s01", "d01", "d02"]
-    assert record["generated"]["facts"]["model"] == "claude-opus-5"
+    assert record["generated"]["facts"]["model"] == "claude-opus-5-5"  # Albin's choice
     assert record["generated"]["facts"]["prompt"] == "facts-v1"
     assert client.schemas == ["FactSheetOutput"]
     assert any(p.name.startswith("web-facts-") for p in paths.reports.iterdir())

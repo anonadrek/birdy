@@ -61,8 +61,7 @@ image_refs:
   width: 1600
   height: 2400
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Pallas's leaf warbler (Phylloscopus
     proregulus) 2022.jpg
   commons_filename: Pallas's leaf warbler (Phylloscopus proregulus) 2022.jpg
@@ -71,7 +70,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: Olivier Morel (olivier_morel)
+  author: Olivier Morel
   source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus proregulus from
     iNaturalist photo 243983235.jpg
   commons_filename: Phylloscopus proregulus from iNaturalist photo 243983235.jpg
@@ -80,7 +79,7 @@ image_refs:
   width: 1800
   height: 1125
   license: CC BY-SA 4.0
-  author: Zinogre (zinogre)
+  author: Zinogre
   source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus proregulus from
     iNaturalist photo 464132426.jpg
   commons_filename: Phylloscopus proregulus from iNaturalist photo 464132426.jpg

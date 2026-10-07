@@ -41,7 +41,7 @@ image_refs:
   width: 2400
   height: 1595
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Bolle's pigeon (Columba bollii).jpg
   commons_filename: Bolle's pigeon (Columba bollii).jpg
 - role: secondary
@@ -49,8 +49,7 @@ image_refs:
   width: 1800
   height: 1127
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Columba bollii 184476176.jpg
   commons_filename: Columba bollii 184476176.jpg
 - role: secondary
@@ -58,8 +57,7 @@ image_refs:
   width: 1800
   height: 1127
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Columba bollii 184476205.jpg
   commons_filename: Columba bollii 184476205.jpg
 review_status: auto

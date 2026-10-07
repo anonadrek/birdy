@@ -105,8 +105,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:White-winged tern (Chlidonias
     leucopterus) 2021.jpg
   commons_filename: White-winged tern (Chlidonias leucopterus) 2021.jpg
@@ -115,8 +114,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
-    Vassen</a> from Brussels, Belgium
+  author: Frank Vassen
   source_url: https://commons.wikimedia.org/wiki/File:Chlidonias leucopterus Biebrza
     1.jpg
   commons_filename: Chlidonias leucopterus Biebrza 1.jpg
@@ -125,8 +123,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
-    Vassen</a> from Brussels, Belgium
+  author: Frank Vassen
   source_url: https://commons.wikimedia.org/wiki/File:Chlidonias leucopterus Biebrza
     2.jpg
   commons_filename: Chlidonias leucopterus Biebrza 2.jpg

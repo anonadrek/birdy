@@ -41,15 +41,18 @@ import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_photo
 import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_storage
 import birdy_bird_scanner.composeapp.generated.resources.disambig_cancel_cta
 import birdy_bird_scanner.composeapp.generated.resources.disambig_candidate_confidence
+import birdy_bird_scanner.composeapp.generated.resources.disambig_eyebrow_one
 import birdy_bird_scanner.composeapp.generated.resources.disambig_eyebrow_three
 import birdy_bird_scanner.composeapp.generated.resources.disambig_eyebrow_two
 import birdy_bird_scanner.composeapp.generated.resources.disambig_frame_caption
 import birdy_bird_scanner.composeapp.generated.resources.disambig_headline
+import birdy_bird_scanner.composeapp.generated.resources.disambig_headline_one
 import birdy_bird_scanner.composeapp.generated.resources.disambig_pick_hint
 import birdy_bird_scanner.composeapp.generated.resources.disambig_save_unknown
 import birdy_bird_scanner.composeapp.generated.resources.disambig_sub
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BirdyTextButton
 import se.birdy.app.ui.components.JournalIntro
@@ -86,17 +89,12 @@ internal fun DisambigView(
         onUnknownSaved = onUnknownSaved,
     )
 
-    val eyebrowRes =
-        if (state.candidates.size >= 3) {
-            Res.string.disambig_eyebrow_three
-        } else {
-            Res.string.disambig_eyebrow_two
-        }
+    val eyebrowRes = disambigEyebrowRes(state.candidates.size)
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
             JournalIntro(
                 label = stringResource(eyebrowRes, state.stampNumber),
-                headline = stringResource(Res.string.disambig_headline),
+                headline = stringResource(disambigHeadlineRes(state.candidates.size)),
                 sub = stringResource(Res.string.disambig_sub),
                 headlineFontSize = 30.sp,
             )
@@ -280,3 +278,21 @@ private fun CandidateThumbnail(imagePath: String?) {
         }
     }
 }
+
+/**
+ * The eyebrow names how many candidates are actually shown. Disambig keeps only the candidates
+ * above the disambig threshold, so one card is possible; it used to say "two candidates" then.
+ */
+internal fun disambigEyebrowRes(candidateCount: Int): StringResource =
+    when {
+        candidateCount >= 3 -> Res.string.disambig_eyebrow_three
+        candidateCount == 2 -> Res.string.disambig_eyebrow_two
+        else -> Res.string.disambig_eyebrow_one
+    }
+
+/**
+ * "Vilken matchar?" (which one matches?) reads oddly above a single card, so one candidate asks
+ * "Är det den här?" / "Is it this one?" (Plan 3 Task 7 review).
+ */
+internal fun disambigHeadlineRes(candidateCount: Int): StringResource =
+    if (candidateCount == 1) Res.string.disambig_headline_one else Res.string.disambig_headline

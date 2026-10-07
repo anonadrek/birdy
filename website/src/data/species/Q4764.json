@@ -1,0 +1,890 @@
+{
+  "qid": "Q4764",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "En vuxen trana är ungefär 115–130 cm lång, har ett vingspann på 200–230 cm och väger 4–6 kg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En adult trana är ungefär 115–130 cm lång, har ett vingspann på 200–230 cm och väger 4–6 kg."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Fjäderdräkten är huvudsakligen grå.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess fjäderdräkt är huvudsakligen grå."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Kinder, nacke och hals är svarta, medan huvudets sidor bakom ögonen och överhalsen är vitaktiga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kinder, nacke och hals är svarta, huvudets sidor bakom ögonen och på överhalsen vitaktiga."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "På hjässan har tranan en fjäderlös, röd, vårtaktig hudfläck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På hjässan har den en fjäderlös röd vårtaktig hudfläck"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Vingpennorna är svarta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingpennorna är svarta."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "De inre förlängda armpennorna bildar en krusig, stjärtliknande fjäderbuske, medan den egentliga stjärten är ganska kort.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De inre förlängda armpennorna har upplösta, krusiga fan, vilka bildar en krusig stjärtliknade fjäderbuske. Tranans egentliga stjärt är istället ganska kort."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Under häckningstiden kan tranor gnida in ryggfjädrarna med röd jord, vilket ger en rödbrun färg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under häckningsperioden förekommer det att individer gnider in sina ryggfjädrar med järnoxidhaltig röd jord som en sorts kamouflage inför ruvningen."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hanen är generellt något större än honan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen är generellt något större än honan."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungfågeln har gulbruna fjäderspetsar, saknar de hängande vingfjädrarna och den tydliga halsteckningen samt har fjäderklädd hjässa.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The juvenile has yellowish-brown tips to its body feathers and lacks the drooping wing feathers and the bright neck pattern of the adult, and has a fully feathered crown."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Tranan har ett högljutt, nasalt och skorrande trumpetande läte.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tranan har ett högljutt nasalt och skorrande trumpetande läte."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Lätet är genomträngande och kan höras på långt avstånd.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The call is piercing and can be heard from a considerable distance."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "I parets duettrop ger honan en hög ton och hanen följer med ett längre skrik.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The female calls out a high note and then the male follows with a longer scream in a similar posture."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "behaviour",
+      "sv": "Tranan flyttar i flock och flyger då i V-formation.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den flyttar i flock och flyger då i V-formation."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "behaviour",
+      "sv": "Tranan flyger med utsträckt hals.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Nach einigen schnellen Schritten stoßen sich die Kraniche vom Boden ab und fliegen mit ausgestrecktem Hals."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "behaviour",
+      "sv": "Tranan dansar genom att hoppa med lyfta vingar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It has a dancing display, leaping with wings uplifted"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "behaviour",
+      "sv": "Under häckningsperioden är tranan mycket vaksam och lättskrämd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under häckningsperioden är tranan mycket vaksam och lättskrämd."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "I Sverige häckar tranor oftast i små sumpiga öppningar i tallskog.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In Sweden, breeders are usually found in small, swampy openings amongst pine forests"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Efter flyttningen övervintrar tranor regelbundet i öppet landskap, ofta på odlad mark.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the birds winter regularly in open country, often on cultivated lands"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige häckar tranan sparsamt i hela landet utom i fjällen, men mer sällan längs sydkusten och kring Göteborg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar den mer eller mindre sparsamt i hela landet utom i fjällen, dock mer sällan utefter sydkusten och kring Göteborgstrakten."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Tranan anländer till Sverige i mars–april och flyttar i september–oktober.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den anländer i mars–april och flyttar i september–oktober."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Tusentals tranor ses varje år vid Hornborgasjön, där de utför sin parningsdans.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tusentals tranor ses varje år vid Hornborgasjön som är en arena för tranornas parningsdans."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "År 2005 uppskattades det svenska beståndet till 15 000–20 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2005 uppskattades det svenska beståndet till 15 000–20 000 par i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Sydsvenska tranor övervintrar i regel i sydvästra Spanien, medan nordligare häckare övervintrar i och runt Tunisien.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fåglar som häckar i södra Sverige övervintrar i regel i sydvästra Spanien (Extremadura), medan de som häckar längre norrut har sitt vinterkvarter i och runt Tunisien."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Boet placeras direkt på marken och består av en bale med mossa och kvistar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet placeras direkt på marken och består av en bale med mossa och kvistar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Honan lägger oftast två ägg, sällan ett eller tre, som ruvas i 27–31 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger i vanligaste fall två ägg, endast sällsynt ett eller tre, vilka ruvas i 27-31 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Båda föräldrarna tar hand om ungarna i 65–70 dygn tills de kan flyga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Efter att äggen har kläckts tar båda föräldrar hand om ungarna i 65-70 dygn tills de kan flyga."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Tranan är allätare och vegetabilisk föda dominerar, särskilt utanför häckningstiden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tranan är allätare. Vegetarisk föda dominerar, särskilt utanför häckningstiden."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Under häckningstiden äter tranan också maskar, sniglar, insekter, grodor, ormar, ödlor, fisk och gnagare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under häckningstiden utgörs dock en viktig del av animalisk föda, som maskar, sniglar, insekter, grodor, ormar, ödlor, fisk och gnagare."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Tranans färgkombination skiljer den från liknande asiatiska arter som munktrana.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "This combination of colouration ultimately distinguishes it from similar species in Asia, like the hooded (G. monacha) and black-necked cranes (G. nigricollis)."
+        }
+      ],
+      "other": {
+        "scientific": "G. monacha"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den anländer i mars–april och flyttar i september–oktober."
+        },
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar den mer eller mindre sparsamt i hela landet utom i fjällen"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i mars."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i november till januari."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Tranan är en grå flyttfågel som häckar i Sverige, oftast i små sumpiga öppningar i tallskog.",
+          "factIds": [
+            "s01",
+            "f02",
+            "f17"
+          ]
+        },
+        {
+          "text": "Tusentals tranor ses varje år vid Hornborgasjön, där de utför sin parningsdans.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Grå fjäderdräkt med svarta kinder, nacke och hals samt vitaktiga huvudsidor bakom ögonen",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Röd, fjäderlös och vårtaktig hudfläck på hjässan samt svarta vingpennor",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Förlängda inre armpennor bildar en krusig, stjärtliknande fjäderbuske, medan stjärten är ganska kort",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Hanen är något större än honan, ungfågeln har fjäderklädd hjässa och gulbruna fjäderspetsar",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Lätet är ett högljutt, nasalt och skorrande trumpetande som är genomträngande och hörs på långt avstånd.",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        },
+        {
+          "text": "I parets duett ger honan en hög ton och hanen följer med ett längre skrik.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Tranan är en flyttfågel som häckar sparsamt i hela landet utom i fjällen, men mer sällan längs sydkusten och kring Göteborg.",
+          "factIds": [
+            "s01",
+            "f19"
+          ]
+        },
+        {
+          "text": "Den anländer i mars till april och flyttar i september till oktober.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Arten rapporteras mest i mars och sällan i november till januari, och rapporter finns från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02",
+            "d03"
+          ]
+        },
+        {
+          "text": "Den är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "d04"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Tranan är allätare, och vegetabilisk föda dominerar, särskilt utanför häckningstiden.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Under häckningstiden äter den också maskar, sniglar, insekter, grodor, ormar, ödlor, fisk och gnagare.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Den flyttar i flock i V-formation och flyger med utsträckt hals.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        },
+        {
+          "text": "Den dansar genom att hoppa med lyfta vingar, och under häckningen är den mycket vaksam och lättskrämd.",
+          "factIds": [
+            "f15",
+            "f16"
+          ]
+        },
+        {
+          "text": "Boet är en bale av mossa och kvistar direkt på marken.",
+          "factIds": [
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Trana: så känner du igen den på grå dräkt och röd hjässa, hur det trumpetande lätet låter, när under året arten ses och vad den äter.",
+      "facts": {
+        "size": {
+          "value": "115 till 130 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Common Crane is a grey migrant that breeds in Sweden, usually in small swampy openings in pine forest.",
+          "factIds": [
+            "s01",
+            "f02",
+            "f17"
+          ]
+        },
+        {
+          "text": "Thousands of cranes are seen every year at Hornborgasjön, where they perform their mating dance.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Grey plumage with black cheeks, nape and neck, and whitish head sides behind the eyes",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Bare, red, warty patch on the crown and black flight feathers",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Elongated inner secondaries form a curly, tail-like plume, while the actual tail is fairly short",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Male slightly larger than female, juveniles have a feathered crown and yellowish-brown feather tips",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is a loud, nasal, rasping trumpeting that is piercing and carries a long way.",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        },
+        {
+          "text": "In the pair's duet the female gives a high note and the male follows with a longer scream.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Common Crane is a migrant that breeds sparsely throughout Sweden except in the mountains, and less often along the south coast and around Gothenburg.",
+          "factIds": [
+            "s01",
+            "f19"
+          ]
+        },
+        {
+          "text": "It arrives in March to April and leaves in September to October.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "It is reported most in March and rarely from November to January, with reports from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02",
+            "d03"
+          ]
+        },
+        {
+          "text": "It is not red-listed in the Swedish Red List 2025.",
+          "factIds": [
+            "d04"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It is omnivorous, with plant food dominating, especially outside the breeding season.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "When breeding it also eats worms, snails, insects, frogs, snakes, lizards, fish and rodents.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "It migrates in flocks in V formation, flying with its neck outstretched.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        },
+        {
+          "text": "It dances by jumping with raised wings, and when breeding it is very wary and easily scared.",
+          "factIds": [
+            "f15",
+            "f16"
+          ]
+        },
+        {
+          "text": "The nest is a mound of moss and twigs placed directly on the ground.",
+          "factIds": [
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Common Crane: how to recognise it by its grey plumage and red crown, what its trumpeting call sounds like, when it is seen and what it eats.",
+      "facts": {
+        "size": {
+          "value": "115 to 130 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "f74ed6ee1b52da7a"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:21:06.173812+00:00",
+      "factsHash": "f74ed6ee1b52da7a"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "trana",
+    "en": "common-crane"
+  },
+  "names": {
+    "sv": "Trana",
+    "en": "Common Crane",
+    "scientific": "Grus grus"
+  },
+  "family": {
+    "latin": "Gruidae",
+    "sv": "Tranor"
+  },
+  "group": "cranes_rails",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q4764/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Kandukuru Nagarjun",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_crane_in_the_cold_desert_(52552722460).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q4764/extra.webp",
+      "width": 1200,
+      "height": 797,
+      "author": "Dirk Ingo Franke",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ländchen_Glien_grus_grus_09.03.2014_18-13-43.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q4764/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Pálos Lőrinc",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grus_grus_-_Common_Crane_XC594758.mp3",
+    "sha256": "2e960ef5a7b9776b6381dcd0e4bb9f186f50c9904583a1297ba2cc03011a880b"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Trana",
+      "revision": "58948123"
+    },
+    "en": {
+      "title": "Common crane",
+      "revision": "1370170671"
+    },
+    "de": {
+      "title": "Kranich",
+      "revision": "268922365"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2474950,
+    "totalReports": 427653,
+    "months": [
+      1,
+      13,
+      100,
+      66,
+      40,
+      36,
+      41,
+      50,
+      46,
+      22,
+      4,
+      2
+    ],
+    "counties": {
+      "SE-K": 40,
+      "SE-W": 63,
+      "SE-X": 56,
+      "SE-I": 37,
+      "SE-N": 38,
+      "SE-Z": 65,
+      "SE-F": 67,
+      "SE-H": 36,
+      "SE-G": 100,
+      "SE-BD": 58,
+      "SE-T": 56,
+      "SE-E": 52,
+      "SE-M": 34,
+      "SE-D": 61,
+      "SE-AB": 40,
+      "SE-C": 46,
+      "SE-S": 65,
+      "SE-AC": 54,
+      "SE-Y": 68,
+      "SE-U": 65,
+      "SE-O": 47
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i mars.",
+        "Rapporteras sällan i november till januari.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in March.",
+        "Rarely reported in November to January.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        974,
+        6749,
+        96425,
+        97860,
+        69898,
+        33432,
+        29194,
+        37569,
+        35622,
+        16887,
+        1915,
+        654
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 64611,
+        "SE-AB": 38215,
+        "SE-M": 32747,
+        "SE-H": 26437,
+        "SE-D": 26298,
+        "SE-F": 24520,
+        "SE-C": 24150,
+        "SE-G": 19963,
+        "SE-E": 19777,
+        "SE-N": 15667,
+        "SE-T": 14789,
+        "SE-W": 14705,
+        "SE-AC": 14511,
+        "SE-U": 13306,
+        "SE-BD": 13087,
+        "SE-S": 12255,
+        "SE-X": 10066,
+        "SE-Y": 9207,
+        "SE-Z": 8569,
+        "SE-I": 6246,
+        "SE-K": 3261
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

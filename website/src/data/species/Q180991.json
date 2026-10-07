@@ -1,0 +1,878 @@
+{
+  "qid": "Q180991",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 1,
+    "audioStruckSources": [
+      "https://commons.wikimedia.org/wiki/File:Mergus_merganser_-_Common_Merganser_XC513502.mp3"
+    ],
+    "audioStruck": true
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Storskraken är 58–68 cm lång, har ett vingspann på 78–94 cm och väger 1 200–2 000 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storskraken är stor och lång med en längd på 58–68 centimeter, ett vingspann på 78–94 centimeter och en vikt på 1 200–2 000 gram."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Näbben är lång, smal och röd med en liten nedåtböjd svart krok i spetsen av övernäbben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är lång, smal, rund, röd och övre näbbhalvan har en nedåtböjd svart liten krok i spetsen."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Näbb och ben är röda till brunröda, klarast hos vuxna hanar och mattast hos unga fåglar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The bill and legs are red to brownish-red, brightest on adult males, dullest on juveniles."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "I flykten liknar den mer en lom eller dopping än andra änder, med lång utsträckt hals, rak flykt och grunda, snabba vingslag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten påminner den mer om lom eller dopping än om andra änder med sin långa utsträckta hals, raka flyktbana och grunda, snabba vingslag."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Den har lång hals men drar ofta in den när den simmar och ser då korthalsad ut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har lång hals men drar ofta in halsen när den simmar varför den då ser korthalsad ut."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Den vuxna hanen i praktdräkt har mörkgrönt huvud, svart rygg och nästan vita vingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta storskrakshanen i praktdräkt har mörkgrönt huvud, svart rygg och nästan vita vingar."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hanens undersida är vit med en laxrosa ton under vintern och början av våren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De undre kroppsdelarna är vita med en laxrosa anstrykning under vintern och början av våren."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Den vuxna honan har rödbrunt huvud, vit haka, askgrå ovansida och vit undersida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honan har rödbrunt huvud, vit haka, askgrå ovansida och vit undersida."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Honan har mycket längre nackfjädrar än hanen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "honan har mycket längre nackfjädrar än hanen"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Hos honan bildar det bruna huvudet en skarp gräns mot den ljusa halsen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "die braune Färbung des Kopfes beim Gänsesägerweibchen eine scharfe Grenzlinie zum hellen Gefieder des Halses"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Ungfågeln liknar honan men har mindre nacktofs och ljusa ansiktsteckningar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen påminner om honan men har mindre nacktofs och ljusa ansiktsteckningar."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Hanen spelar med ett dämpat, ringande \"krroo-krråå\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storskrakshanen spelar med ett dämpat, ringande \"krroo-krråå\""
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Honan låter under uppvaktningen ett hårt \"pra, pra-pra\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från honan hörs under uppvaktningen ett hårt \"pra, pra-pra\"."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "I flykten är den ljudligare, med malande \"prrah, prrah, prrah...\" och snabbare \"tjackerack-ack-ack\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten är den ljudligare, med malande \"prrah, prrah, prrah...\" och snabbare \"tjackerack-ack-ack\"."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Det vanliga lätet är ett lågt, hest kraxande.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Their normal vocalisation is a low, harsh croak"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Storskraken hittas vid djupa och klara vatten där den dyker efter fisk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fågeln hittas vid djupa och klara vatten där den skickligt dyker efter fisk."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Den vistas vid både sött och salt vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storskraken vistas vid både sött och salt vatten."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Den föredrar klara, även strömmande älvar med grusbotten, sjöar och kuster med träd.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Gänsesäger bevorzugen klare, auch schnell fließende Flüsse mit Kiesgrund, Seen und Küsten mit Baumbestand."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige finns storskraken över hela landet och är talrikast i östra skärgården.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är den spridd över hela landet, talrikast i östra skärgården."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Den övervintrar ofta på östkusten söder om Stockholm så länge Östersjön inte fryser helt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den övervintrar ofta på östkusten söder om Stockholm så länge Östersjön inte fryser till helt"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Många svenska storskrakar övervintrar på västkusten, i Danmark, Tyskland, Polen och Nederländerna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Annars övervintrar många av de svenska storskrakarna på västkusten, i Danmark, Tyskland, Polen och i Nederländerna."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till cirka 34 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det svenska beståndet uppskattades 2018 till cirka 34 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "De flesta västeuropeiska hanar flyttar norrut till flodmynningar i Finnmark i norra Norge för att rugga.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "most of the Western European male population migrates north to estuaries in Finnmark in northern Norway (principally Tanafjord) to moult"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Boet läggs ofta i trädhål eller holkar, och honan lägger vanligtvis sju till åtta gulaktiga ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet placeras ofta i håligheter i träd eller trädliknande holkar, och honan lägger vanligtvis sju till åtta gulaktiga ägg."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Honan ruvar äggen ensam i 32 till 35 dagar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "bebrütet sie allein 32 bis 35 Tage lang"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Direkt efter kläckningen bärs ungarna av honan på ryggen till älvar eller sjöar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The ducklings are carried by the mother on her back to rivers or lakes immediately after hatching"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Storskraken lever främst av mindre fiskar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storskraken lever främst av mindre fiskar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Utöver fisk tar den blötdjur, kräftdjur, maskar, insektslarver och groddjur.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In addition to fish, they take a wide range of other aquatic prey, such as molluscs, crustaceans, worms, insect larvae, and amphibians"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "På hösten fiskar flockar gemensamt i en linje parallell med stranden och driver småfisk mot land under dykande och vingplaskande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fåglarna bildar då en linje som är parallell med stranden och simmar in mot land under oupphörligt dykande och plaskande med vingarna."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Den sitter ofta på en sten mitt i vattnet med halvöppna vingar i solen, likt skarvar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They often sit on a rock in the middle of the water, similar to cormorants, with their wings half-open to the sun."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november till mars."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [],
+      "edited": true
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Storskraken är en and som hittas vid djupa och klara vatten, där den dyker efter fisk.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "Den vistas vid både sött och salt vatten, gärna klara älvar, sjöar och kuster med träd.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Lång, smal och röd näbb med en liten nedåtböjd svart krok i spetsen",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Hanen i praktdräkt har mörkgrönt huvud, svart rygg och nästan vita vingar",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Honan har rödbrunt huvud med skarp gräns mot ljus hals, vit haka och långa nackfjädrar",
+          "factIds": [
+            "f08",
+            "f10",
+            "f09"
+          ]
+        },
+        {
+          "text": "I flykten påminner den om en lom eller dopping, med lång utsträckt hals",
+          "factIds": [
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Det vanliga lätet är ett lågt, hest kraxande.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Hanen spelar med ett dämpat, ringande \"krroo-krråå\", och honan låter ett hårt \"pra, pra-pra\" under uppvaktningen.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        },
+        {
+          "text": "I flykten är den ljudligare, med malande \"prrah, prrah, prrah\" och snabbare \"tjackerack-ack-ack\".",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Storskraken finns över hela Sverige och är talrikast i östra skärgården.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Den är delvis flyttfågel och häckar här.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Den övervintrar ofta på östkusten söder om Stockholm så länge Östersjön inte fryser helt, och många svenska storskrakar övervintrar på västkusten, i Danmark, Tyskland, Polen och Nederländerna.",
+          "factIds": [
+            "f20",
+            "f21"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i november till mars och rapporteras från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Storskraken lever främst av mindre fiskar men tar även blötdjur, kräftdjur, maskar, insektslarver och groddjur.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        },
+        {
+          "text": "På hösten fiskar flockar gemensamt i en linje parallell med stranden och driver småfisk mot land genom att dyka och plaska med vingarna.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Den sitter ofta på en sten mitt i vattnet med halvöppna vingar i solen, likt skarvar.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "Boet läggs ofta i trädhål eller holkar.",
+          "factIds": [
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Storskrake: så känner du igen hane och hona på näbb och dräkt, hur lätena låter och när under året arten ses och rapporteras.",
+      "facts": {
+        "size": {
+          "value": "58 till 68 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Common Merganser is a duck found on deep, clear water, where it dives for fish.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "It uses both fresh and salt water, favouring clear rivers, lakes and coasts with trees.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Long, slim red bill with a small downcurved black hook at the tip",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Breeding male has a dark green head, black back and almost white wings",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Female has a red-brown head sharply divided from the pale neck, white chin, long nape feathers",
+          "factIds": [
+            "f08",
+            "f10",
+            "f09"
+          ]
+        },
+        {
+          "text": "In flight it looks like a diver or grebe, with a long outstretched neck",
+          "factIds": [
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The usual call is a low, hoarse croak.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "The displaying male gives a muted, ringing \"krroo-krråå\", and the female gives a hard \"pra, pra-pra\" during courtship.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        },
+        {
+          "text": "In flight it is louder, with a grinding \"prrah, prrah, prrah\" and a faster \"tjackerack-ack-ack\".",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Common Merganser occurs across Sweden and is most numerous in the eastern archipelago.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "It is a partial migrant that breeds here.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "It often winters on the east coast south of Stockholm unless the Baltic freezes completely.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Many Swedish birds winter on the west coast, in Denmark, Germany, Poland and the Netherlands.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "It is reported most in November to March, and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mainly on smaller fish, and besides fish it takes molluscs, crustaceans, worms, insect larvae and amphibians.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        },
+        {
+          "text": "In autumn, flocks fish together in a line parallel to the shore, driving small fish towards land by diving and splashing their wings.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "It often sits on a rock in the water with half-open wings in the sun, like cormorants.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "The nest is often in a tree hole or nest box.",
+          "factIds": [
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Common Merganser: how to recognise male and female by bill and plumage, what the calls sound like and when in the year it is seen and reported.",
+      "facts": {
+        "size": {
+          "value": "58 to 68 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "aa83f629c690af72"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T19:02:24.943717+00:00",
+      "factsHash": "aa83f629c690af72"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "storskrake",
+    "en": "common-merganser"
+  },
+  "names": {
+    "sv": "Storskrake",
+    "en": "Common Merganser",
+    "scientific": "Mergus merganser"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Änder"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q180991/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Goosander_(Eurasian)_(Mergus_merganser).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q180991/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Bengt Nyman",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mergus_merganser,_female,_Vaxholm,_Sweden.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Storskrake",
+      "revision": "59705119"
+    },
+    "en": {
+      "title": "Common merganser",
+      "revision": "1374111083"
+    },
+    "de": {
+      "title": "Gänsesäger",
+      "revision": "266920827"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 9537647,
+    "totalReports": 389178,
+    "months": [
+      100,
+      92,
+      88,
+      62,
+      37,
+      27,
+      24,
+      23,
+      33,
+      52,
+      96,
+      100
+    ],
+    "counties": {
+      "SE-K": 72,
+      "SE-W": 52,
+      "SE-X": 72,
+      "SE-I": 56,
+      "SE-N": 33,
+      "SE-Z": 54,
+      "SE-F": 75,
+      "SE-H": 45,
+      "SE-G": 100,
+      "SE-BD": 57,
+      "SE-T": 64,
+      "SE-E": 61,
+      "SE-M": 38,
+      "SE-D": 56,
+      "SE-AB": 85,
+      "SE-C": 38,
+      "SE-S": 74,
+      "SE-AC": 54,
+      "SE-Y": 69,
+      "SE-U": 64,
+      "SE-O": 70
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november till mars.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in November to March.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        50703,
+        32656,
+        57796,
+        62432,
+        43229,
+        16888,
+        11841,
+        11659,
+        17264,
+        26532,
+        31303,
+        26709
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 61921,
+        "SE-AB": 51986,
+        "SE-M": 23452,
+        "SE-H": 21257,
+        "SE-F": 17615,
+        "SE-D": 15480,
+        "SE-E": 14895,
+        "SE-G": 12755,
+        "SE-C": 12732,
+        "SE-T": 10679,
+        "SE-AC": 9239,
+        "SE-S": 8969,
+        "SE-N": 8742,
+        "SE-U": 8358,
+        "SE-X": 8339,
+        "SE-BD": 8287,
+        "SE-W": 7735,
+        "SE-I": 6004,
+        "SE-Y": 5937,
+        "SE-Z": 4511,
+        "SE-K": 3716
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: Quote confirms partial migrant status with wintering on parts of the coast, but does not explicitly state that the species breeds in Sweden.. Bestäm status eller lämna tom."
+    }
+  ],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

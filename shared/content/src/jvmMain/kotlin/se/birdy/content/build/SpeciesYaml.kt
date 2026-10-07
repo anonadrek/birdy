@@ -1,5 +1,6 @@
 package se.birdy.content.build
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -34,6 +35,9 @@ data class TaxonomyYaml(
 data class NamesYaml(
     val sv: String? = null,
     val en: String,
+    // The Swedish name Birdy used before it took BirdLife Sverige's official one (release 1.3.0
+    // Task 7m, e.g. Sädgås for Skogsgås): searchable, and shown as "Tidigare: ..." on the profile.
+    @SerialName("former_sv") val formerSv: String? = null,
 )
 
 @Serializable

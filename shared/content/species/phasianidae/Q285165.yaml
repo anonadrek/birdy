@@ -56,8 +56,7 @@ image_refs:
   width: 2184
   height: 1620
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37804979@N00">Tony
-    Hisgett</a> from Birmingham, UK
+  author: Tony Hisgett
   source_url: https://commons.wikimedia.org/wiki/File:Francolinus francolinus 1.jpg
   commons_filename: Francolinus francolinus 1.jpg
 - role: secondary
@@ -65,8 +64,7 @@ image_refs:
   width: 1800
   height: 1245
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Elshad_photo" title="User:Elshad
-    photo">Elshad photo</a>
+  author: Elshad photo
   source_url: https://commons.wikimedia.org/wiki/File:Francolinus francolinus, Azerbaijan.jpg
   commons_filename: Francolinus francolinus, Azerbaijan.jpg
 - role: secondary
@@ -74,8 +72,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Iraqi_eco" title="User:Iraqi
-    eco">Iraqi eco</a>
+  author: Iraqi eco
   source_url: https://commons.wikimedia.org/wiki/File:Francolinus francolinus دراج
     أسود (عراقي).jpg
   commons_filename: Francolinus francolinus دراج أسود (عراقي).jpg

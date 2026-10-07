@@ -6,8 +6,9 @@ taxonomy:
   genus: Zosterops
   ioc_order: Passeriformes
 names:
-  sv: Abessinsk glasögonfågel
+  sv: Abessinglasögonfågel
   en: Abyssinian White-eye
+  former_sv: Abessinsk glasögonfågel
 abundance: ovanlig
 iucn_status: LC
 season:
@@ -62,8 +63,7 @@ image_refs:
   width: 2400
   height: 1920
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64565252@N00">Lip
-    Kee</a> from Singapore, Republic of Singapore
+  author: Lip Kee
   source_url: https://commons.wikimedia.org/wiki/File:Zosterops abyssinicus (17796758236).jpg
   commons_filename: Zosterops abyssinicus (17796758236).jpg
 - role: secondary
@@ -71,8 +71,7 @@ image_refs:
   width: 1800
   height: 1074
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9765210@N03">Dominic
-    Sherony</a>
+  author: Dominic Sherony
   source_url: https://commons.wikimedia.org/wiki/File:Abyssinian White-Eye (Zosterops
     abyssinicus) (45853986594).jpg
   commons_filename: Abyssinian White-Eye (Zosterops abyssinicus) (45853986594).jpg

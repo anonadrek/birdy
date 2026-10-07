@@ -98,7 +98,7 @@ image_refs:
   width: 2400
   height: 1596
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Brent goose (Branta bernicla)
     taking off.jpg
   commons_filename: Brent goose (Branta bernicla) taking off.jpg
@@ -107,7 +107,7 @@ image_refs:
   width: 1800
   height: 1197
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Brent goose (Branta bernicla)
     in flight 2.jpg
   commons_filename: Brent goose (Branta bernicla) in flight 2.jpg
@@ -116,8 +116,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Brant (Branta bernicla) 2025.jpg
   commons_filename: Brant (Branta bernicla) 2025.jpg
 review_status: auto

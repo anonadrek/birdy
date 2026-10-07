@@ -1,0 +1,856 @@
+{
+  "qid": "Q25740",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Gärdsmygen är en mycket liten brun tätting med kort hals och en kort stjärt som ofta hålls upprätt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gärdsmygen är en mycket liten brun tätting med kort hals, och vars mest distinkta morfologiska drag är dess kroppshållning med den korta stjärten som ofta hålls upprätt."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Näbben är proportionellt ganska lång, spetsig och lätt nedåtböjd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en proportionellt ganska lång näbb, som är spetsig och lätt nedåtböjd."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Ovansidan är rödbrun och undersidan brunvit, och stora delar av fågeln har fin mörk tvärvattring.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har rödbrun ovansida, brunvit undersida och hela fågeln har till stora delar fin mörk tvärvattring."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den har ett ljust ögonbrynsstreck och ett mörkt tygelstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett ljust ögonbrynsstreck och ett mörkt tygelstreck."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Vingarna är mycket korta och rundade.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har mycket korta rundade vingar."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Benen är långa och orangebruna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De orangebruna benen är långa."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "Gärdsmygen mäter 9–10,5 cm, har ett vingspann på 13–17 cm och kan väga upp till 14 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den mäter 9-10,5 cm, har ett vingspann på 13–17 cm och kan väga upp till 14 gram."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hane och hona ser likadana ut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika men underarterna kan skilja sig åt avsevärt"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Unga fåglar är mindre tydligt tvärvattrade och har fläckig undersida.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Young birds are less distinctly barred and have mottled underparts."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Det vanligaste lätet är ett skarpt, upprepat ”tic-tic-tic”, likt rödhakens men snabbare.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The most common call is a sharp, repeated \"tic-tic-tic\", similar but faster and with less isolated notes compared to that of a robin."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "När fågeln är upprörd övergår lätet i ett eftertryckligt surrande, likt ett urverk som går ner.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "When the bird is annoyed or excited, its call runs into an emphatic churr, not unlike clockwork running down."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången är kraftfull, lång och komplex med drillar och långa partier av metalliskt klingande toner.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en kraftfull sång som både är lång och komplex och innehåller drillar och långa partier med metalliskt klingande toner."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Gärdsmygen sjunger både på sommaren och på vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gärdsmygen sjunger både på sommaren och på vintern."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Gärdsmygen vistas där den lätt kan gömma sig, till exempel i häckar, rishögar, busksnår och hål.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gärdsmygen vistas på ställen där den har lätt att gömma sig, till exempel i häckar, rishögar, busksnår, hål och liknande."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Den förekommer i skog med tät undervegetation, odlingsbygd, trädgårdar med frodig örtvegetation och på kala öar med enstaka snår.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den förekommer i en rad olika biotoper som skog med tät undervegetation, i odlingsbygd och i marker och trädgårdar med frodig örtvegetation men även på kala öar med enstaka snår och dylikt."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "Gärdsmygen häckar tämligen allmänt i södra halvan av Sverige och mer sparsamt upp till Jämtland och Norrbotten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gärdsmygen av nominatformen troglodytes häckar tämligen allmänt i södra halvan av Sverige, mer sparsamt upp till Jämtland och Norrbotten."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "De flesta svenska gärdsmygar flyttar söderut på vintern, men några stannar kvar och lever då ofta som strykfåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De flesta flyttar vintertid söderut, men några stannar kvar i landet, och lever då ofta som strykfåglar."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "År 2018 uppskattades det svenska beståndet till 857 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 857 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "food",
+      "sv": "Födan består mest av insekter och spindlar, men på vintern äter den även puppor och frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess föda består mest av insekter och spindlar, men vintertid äter den även puppor och frön."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "I början av häckningsperioden bygger hanen flera bon, upp till sex eller sju.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I början av häckningsperioden bygger hanen ett flertal bon, upp till 6 eller 7."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet är stort och klotrunt med en rund ingångsöppning på sidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det är stort och klotrunt och har på sidan en rund öppning"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Första kullen läggs i april och består av fem till åtta vita, lätt spräckliga ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I april lägger den sin första kull som består av fem till åtta vita ägg som är lätt spräckliga."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Gärdsmygen är mycket polygam, vilket är ovanligt bland tättingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gärdsmygen är mycket polygam vilket är ett ovanligt häckningssystem bland tättingarna."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Nattetid, särskilt på vintern, övernattar gärdsmygar i små håligheter, mörka prång eller övergivna fågelbon.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Nattetid, speciellt på vintern, övernattar de i mindre håligheter, mörka prång eller övergivna fågelbon."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Den rör sig med snabba ryck, letar i springor och hoppar upp på nedfallna stockar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It moves with quick jerks, probing into crevices, examining old masonry, hopping onto fallen logs and delving down among them."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Flykten är kort, snabb och rak med surrande små rundade vingar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Occasionally it flits away, its short flights swift and direct but not usually sustained, its tiny round wings whirring as it flies."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Den uppträder tämligen orädd men sitter oftare dold när den sjunger.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den uppträder tämligen orädd men sitter oftare mer dold när den sjunger."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är den stann- och strykfågel i Götaland samt flyttfågel i Svealand och nedre Norrland."
+        },
+        {
+          "article": "sv",
+          "quote": "De flesta flyttar vintertid söderut, men några stannar kvar i landet, och lever då ofta som strykfåglar."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november och december."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Gärdsmygen är en mycket liten brun tätting med kort stjärt som ofta hålls upprätt.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Den håller till där den lätt kan gömma sig, till exempel i häckar, rishögar, busksnår och hål.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Mycket liten och brun, med kort hals och kort stjärt som ofta hålls upprätt",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Rödbrun ovansida, brunvit undersida och fin mörk tvärvattring över stora delar av fågeln",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Ljust ögonbrynsstreck, mörkt tygelstreck och ganska lång, spetsig, lätt nedåtböjd näbb",
+          "factIds": [
+            "f04",
+            "f02"
+          ]
+        },
+        {
+          "text": "Hane och hona är lika, unga fåglar har fläckig undersida och svagare vattring",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Det vanligaste lätet är ett skarpt, upprepat ”tic-tic-tic”, likt rödhakens men snabbare.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "När fågeln är upprörd övergår det i ett eftertryckligt surrande, som ett urverk som går ner.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Sången är kraftfull, lång och komplex, med drillar och långa partier av metalliskt klingande toner, och hörs både sommar och vinter.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Gärdsmygen häckar tämligen allmänt i södra halvan av Sverige och mer sparsamt upp till Jämtland och Norrbotten.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "De flesta flyttar söderut på vintern, men några stannar kvar och stryker då ofta omkring.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Den finns i skog med tät undervegetation, odlingsbygd, trädgårdar med frodig örtvegetation och på kala öar med enstaka snår.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län, mest i november och december.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan är mest insekter och spindlar, men på vintern äter den även puppor och frön.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Den rör sig med snabba ryck, letar i springor och hoppar upp på nedfallna stockar.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Flykten är kort, snabb och rak med surrande små rundade vingar.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Nattetid, särskilt på vintern, övernattar den i små håligheter, mörka prång eller övergivna fågelbon.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Hanen bygger flera bon, upp till sex eller sju.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Gärdsmyg: så känner du igen den lilla bruna tättingen, hur sången och lätena låter, var den håller till och när den oftast syns.",
+      "facts": {
+        "size": {
+          "value": "9 till 10,5 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Wren is a very small brown songbird with a short tail that is often held cocked.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "It stays where it can easily hide, such as in hedges, brush piles, thickets and holes.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Very small and brown, with a short neck and a short, often cocked tail",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Rufous-brown above, brownish white below, with fine dark barring over much of the bird",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Pale eyebrow, dark loral stripe and a fairly long, pointed, slightly down-curved bill",
+          "factIds": [
+            "f04",
+            "f02"
+          ]
+        },
+        {
+          "text": "Sexes look alike, young birds have spotted underparts and less distinct barring",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The most frequent call is a sharp, repeated ”tic-tic-tic”, like a robin's but faster.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "When the bird is agitated it turns into an emphatic whirring, like clockwork running down.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The song is powerful, long and complex, with trills and long passages of metallic, ringing notes, and is heard in both summer and winter.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Eurasian Wren breeds fairly commonly in the southern half of Sweden and more sparsely north to Jämtland and Norrbotten.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "Most Swedish birds move south for the winter, but some stay and then often wander about.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "It lives in forest with dense undergrowth, farmland, gardens with lush herbaceous growth and bare islands with scattered thickets.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties, most often in November and December.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mostly on insects and spiders, but in winter also takes pupae and seeds.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "It moves in quick jerks, searching crevices and hopping up onto fallen logs.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Flight is short, fast and straight on small, rounded, whirring wings.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "At night, especially in winter, it roosts in small cavities, dark nooks or abandoned bird nests.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "The male builds several nests, up to six or seven.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Eurasian Wren: how to recognise this tiny brown songbird, what its song and calls sound like, where it lives and when it is most often seen.",
+      "facts": {
+        "size": {
+          "value": "9 to 10.5 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "6c8a991f05285ed4"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "6c8a991f05285ed4"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "gardsmyg",
+    "en": "eurasian-wren"
+  },
+  "names": {
+    "sv": "Gärdsmyg",
+    "en": "Eurasian Wren",
+    "scientific": "Troglodytes troglodytes"
+  },
+  "family": {
+    "latin": "Troglodytidae",
+    "sv": "Gärdsmygar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25740/hero.webp",
+      "width": 1600,
+      "height": 1056,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_wren_(Troglodytes_troglodytes).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25740/extra.webp",
+      "width": 1200,
+      "height": 1060,
+      "author": "gailhampshire",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wren_Troglodytes_troglodytes_(51862229887).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25740/voice.mp3",
+    "durationSec": 20,
+    "trimmed": false,
+    "author": "Grantus4504",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Troglodytes_troglodytes_song.ogg",
+    "sha256": "2f9f82dba87c7c8a6e4207c641e2b7ebabf69a537baa68d52d7121452dbb8cbd"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Gärdsmyg",
+      "revision": "59138421"
+    },
+    "en": {
+      "title": "Eurasian wren",
+      "revision": "1371127619"
+    },
+    "de": {
+      "title": "Zaunkönig",
+      "revision": "267726801"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 5231438,
+    "totalReports": 413926,
+    "months": [
+      79,
+      63,
+      61,
+      59,
+      44,
+      49,
+      47,
+      25,
+      39,
+      75,
+      100,
+      95
+    ],
+    "counties": {
+      "SE-K": 85,
+      "SE-W": 61,
+      "SE-X": 70,
+      "SE-I": 78,
+      "SE-N": 63,
+      "SE-Z": 39,
+      "SE-F": 77,
+      "SE-H": 67,
+      "SE-G": 81,
+      "SE-BD": 12,
+      "SE-T": 81,
+      "SE-E": 61,
+      "SE-M": 73,
+      "SE-D": 81,
+      "SE-AB": 99,
+      "SE-C": 62,
+      "SE-S": 80,
+      "SE-AC": 39,
+      "SE-Y": 51,
+      "SE-U": 64,
+      "SE-O": 100
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november och december.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in November and December.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        41715,
+        23415,
+        41617,
+        61989,
+        54120,
+        32087,
+        23558,
+        13140,
+        21218,
+        40301,
+        33916,
+        26380
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 86269,
+        "SE-AB": 59437,
+        "SE-M": 44295,
+        "SE-H": 30659,
+        "SE-D": 21642,
+        "SE-C": 20309,
+        "SE-F": 17673,
+        "SE-N": 16324,
+        "SE-E": 14543,
+        "SE-T": 13338,
+        "SE-G": 10113,
+        "SE-S": 9405,
+        "SE-W": 8870,
+        "SE-I": 8150,
+        "SE-U": 8134,
+        "SE-X": 7842,
+        "SE-AC": 6482,
+        "SE-K": 4312,
+        "SE-Y": 4258,
+        "SE-Z": 3215,
+        "SE-BD": 1737
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

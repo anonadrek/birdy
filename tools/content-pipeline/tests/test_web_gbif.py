@@ -7,6 +7,7 @@ from pathlib import Path
 
 from birdy_fetcher.cache import Cache
 from birdy_fetcher.web.gbif import (
+    ARTPORTALEN_DATASET,
     AVES_TAXON_KEY,
     GbifClient,
     parse_counts,
@@ -27,6 +28,9 @@ COUNTS = {
         },
     ],
 }
+
+
+BIRD = {"classKey": 212, "confidence": 99}
 
 
 class Routed:
@@ -60,11 +64,19 @@ def test_parse_counts_keeps_swedish_counties_only() -> None:
 async def test_taxon_key_needs_an_exact_species_match(tmp_path: Path) -> None:
     client, _ = _client(
         tmp_path,
-        {"name=Parus%20major": {"usageKey": 9705453, "matchType": "EXACT", "rank": "SPECIES"}},
+        {
+            "name=Parus%20major": {
+                "usageKey": 9705453,
+                "matchType": "EXACT",
+                "rank": "SPECIES",
+                **BIRD,
+            }
+        },
     )
     assert await client.taxon_key("Q25485", "Parus major") == 9705453
     fuzzy, _ = _client(
-        tmp_path / "b", {"species/match": {"usageKey": 1, "matchType": "FUZZY", "rank": "SPECIES"}}
+        tmp_path / "b",
+        {"species/match": {"usageKey": 1, "matchType": "FUZZY", "rank": "SPECIES", **BIRD}},
     )
     assert await fuzzy.taxon_key("Q1", "Parus majr") is None
 
@@ -79,27 +91,83 @@ async def test_synonym_match_uses_the_accepted_key(tmp_path: Path) -> None:
                 "synonym": True,
                 "matchType": "EXACT",
                 "rank": "SPECIES",
+                **BIRD,
             }
         },
     )
     assert await client.taxon_key("Q1", "Delichon urbica") == 6
 
 
-async def test_counts_filter_on_cc0_and_years_and_are_cached(tmp_path: Path) -> None:
+async def test_synonym_match_by_status_uses_the_accepted_key(tmp_path: Path) -> None:
+    """GBIF's match answer says "status": "SYNONYM" and has no "synonym" field (Fjällpipare,
+    Eudromias morinellus, cached 2026-10-07): the synonym's own key counted only the 54
+    records filed under that name, not the species' records."""
+    client, _ = _client(
+        tmp_path,
+        {
+            "species/match": {
+                "usageKey": 2480282,
+                "acceptedUsageKey": 2480281,
+                "canonicalName": "Eudromias morinellus",
+                "rank": "SPECIES",
+                "status": "SYNONYM",
+                "matchType": "EXACT",
+                **BIRD,
+            }
+        },
+    )
+    assert await client.taxon_key("Q25677554", "Eudromias morinellus") == 2480281
+
+
+async def test_counts_for_a_new_taxon_key_are_not_read_from_the_old_keys_cache(
+    tmp_path: Path,
+) -> None:
+    client, http = _client(tmp_path, {"occurrence/search": COUNTS})
+    await client.counts("Q25677554", 2480282)
+    await client.counts("Q25677554", 2480281)
+    assert len(http.urls) == 2
+
+
+async def test_counts_filter_on_artportalen_cc0_and_years_and_are_cached(tmp_path: Path) -> None:
     client, http = _client(tmp_path, {"occurrence/search": COUNTS})
     first = await client.counts("Q25485", 9705453)
     second = await client.counts("Q25485", 9705453)
     assert first == second
     assert len(http.urls) == 1
     url = http.urls[0]
-    for part in ("country=SE", "year=2016,2025", "license=CC0_1_0", "taxonKey=9705453"):
+    for part in (
+        "country=SE",
+        "year=2016,2025",
+        "license=CC0_1_0",
+        "taxonKey=9705453",
+        f"datasetKey={ARTPORTALEN_DATASET}",
+    ):
         assert part in url
 
 
-async def test_all_birds_uses_the_aves_key(tmp_path: Path) -> None:
+def test_the_dataset_is_artportalen() -> None:
+    """Checked against the GBIF API 2026-10-07: dataset 38b4c89f... is "Artportalen"
+    (CC0). Without it the counts included the Bird Ringing Centre's captures (6.4 % of all
+    Swedish bird records, 49.5 % of Kungsfågel's), which pile up at ringing stations in
+    autumn, and the pages say "Artportalen"."""
+    assert ARTPORTALEN_DATASET == "38b4c89f-584c-41bb-bd8f-cd1def33e92f"
+
+
+async def test_counts_cached_before_the_dataset_filter_are_not_reused(tmp_path: Path) -> None:
+    old = {**COUNTS, "count": 1}
+    Cache(tmp_path).put("Q25485", "gbif-counts-2016-2025.json", json.dumps(old))
+    client, http = _client(tmp_path, {"occurrence/search": COUNTS})
+    counts = await client.counts("Q25485", 9705453)
+    assert counts.total == COUNTS["count"]
+    assert len(http.urls) == 1
+
+
+async def test_all_birds_uses_the_aves_key_and_the_same_dataset(tmp_path: Path) -> None:
+    """The denominator has the same filters as the species, so the shares stay consistent."""
     client, http = _client(tmp_path, {"occurrence/search": COUNTS})
     await client.all_birds()
     assert f"taxonKey={AVES_TAXON_KEY}" in http.urls[0]
+    assert f"datasetKey={ARTPORTALEN_DATASET}" in http.urls[0]
     assert (tmp_path / "_aves").is_dir()
 
 
@@ -118,3 +186,62 @@ def test_red_list_code() -> None:
     assert red_list_code([least], "Delichon urbicum", 2489214) == "not_listed"
     odd = {**accepted, "threatStatuses": ["SOMETHING_NEW"]}
     assert red_list_code([odd], "Delichon urbicum", 2489214) is None
+
+
+async def test_a_doubled_letter_spelling_counts_as_the_same_name(tmp_path: Path) -> None:
+    """Grönsångare: GBIF's accepted name is "Phylloscopus sibillatrix", so "Phylloscopus
+    sibilatrix" matched only FUZZY and the species had no charts and no red list. A fuzzy
+    match that differs by a doubled letter alone is the same name; any other fuzzy match
+    still counts as none."""
+    answer = {
+        "usageKey": 8128385,
+        "canonicalName": "Phylloscopus sibillatrix",
+        "rank": "SPECIES",
+        "status": "ACCEPTED",
+        "matchType": "FUZZY",
+        **BIRD,
+    }
+    client, _ = _client(tmp_path, {"species/match": answer})
+    assert await client.taxon_key("Q27075477", "Phylloscopus sibilatrix") == 8128385
+    other, _ = _client(
+        tmp_path / "b", {"species/match": {**answer, "canonicalName": "Phylloscopus sibilans"}}
+    )
+    assert await other.taxon_key("Q1", "Phylloscopus sibilatrix") is None
+
+
+async def test_the_accepted_key_is_used_whenever_gbif_gives_one(tmp_path: Path) -> None:
+    client, _ = _client(
+        tmp_path,
+        {
+            "species/match": {
+                "usageKey": 5,
+                "acceptedUsageKey": 6,
+                "status": "DOUBTFUL",
+                "matchType": "EXACT",
+                "rank": "SPECIES",
+                **BIRD,
+            }
+        },
+    )
+    assert await client.taxon_key("Q1", "Parus major") == 6
+
+
+async def test_only_a_bird_matches(tmp_path: Path) -> None:
+    """A name shared with another class (a plant, an insect) is never a bird's data."""
+    answer = {"usageKey": 7, "matchType": "EXACT", "rank": "SPECIES", "confidence": 99}
+    for i, extra in enumerate(({"classKey": 220}, {})):
+        client, _ = _client(tmp_path / str(i), {"species/match": {**answer, **extra}})
+        assert await client.taxon_key("Q1", "Parus major") is None
+
+
+async def test_a_fuzzy_match_needs_high_confidence(tmp_path: Path) -> None:
+    answer = {
+        "usageKey": 8128385,
+        "canonicalName": "Phylloscopus sibillatrix",
+        "rank": "SPECIES",
+        "matchType": "FUZZY",
+        "classKey": 212,
+        "confidence": 94,
+    }
+    client, _ = _client(tmp_path, {"species/match": answer})
+    assert await client.taxon_key("Q27075477", "Phylloscopus sibilatrix") is None

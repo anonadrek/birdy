@@ -1,6 +1,7 @@
 package se.birdy.content.build
 
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
+import se.birdy.content.FORMER_NAME_KIND
 import se.birdy.content.db.BirdyContent
 import se.birdy.content.search.normalizeSearch
 import java.nio.file.Files
@@ -9,7 +10,10 @@ import java.security.MessageDigest
 import kotlin.io.path.copyTo
 
 // Bumpa vid VARJE schema-ändring i Species*.sq → flippar application_id → tvingar DB-replace på uppgradering.
-private const val SCHEMA_REV = 3
+// Bumpa även när byggaren skriver raderna annorlunda ur samma YAML (4: release 1.3.0 Task 7m, en
+// tidigare namn som är en annan arts namn visas inte längre som "Tidigare: ..."), annars behåller
+// en installerad app den gamla databasen.
+private const val SCHEMA_REV = 4
 
 class SpeciesDbBuilder(
     private val familyGroups: FamilyGroups = FamilyGroups.loadDefault(),
@@ -28,9 +32,11 @@ class SpeciesDbBuilder(
                 BirdyContent.Schema.create(it)
             }
         val db = BirdyContent(driver)
+        val currentSvNames = items.mapNotNull { (_, yaml) -> yaml.names.sv?.lowercase() }.toSet()
         db.transaction {
             for ((_, yaml) in items) {
                 insertSpecies(db, yaml)
+                insertNames(db, yaml, currentSvNames)
             }
         }
 
@@ -48,6 +54,34 @@ class SpeciesDbBuilder(
                 Files.createDirectories(target.parent)
                 source.copyTo(target, overwrite = true)
             }
+        }
+        pruneUnreferencedImages(items, targetImageRoot)
+    }
+
+    /**
+     * The target folder is the asset pack: a photo removed from the YAML must
+     * leave the app too, not linger from an earlier build (release 1.3.0
+     * dropped maps, eggs and a pamphlet page that had shipped as photos).
+     */
+    private fun pruneUnreferencedImages(
+        items: List<Pair<Path, SpeciesYaml>>,
+        targetImageRoot: Path,
+    ) {
+        val referenced = items.flatMap { (_, yaml) -> yaml.image_refs.map { it.path } }.toSet()
+        val files =
+            Files.walk(targetImageRoot).use { stream ->
+                stream.filter { Files.isRegularFile(it) && !isDesktopJunk(it) }.toList()
+            }
+        for (file in files) {
+            if (targetImageRoot.relativize(file).joinToString("/") !in referenced) Files.delete(file)
+        }
+        val dirs =
+            Files.walk(targetImageRoot).use { stream ->
+                stream.filter { Files.isDirectory(it) && it != targetImageRoot }.toList()
+            }
+        for (dir in dirs.sortedByDescending { it.nameCount }) {
+            val empty = Files.list(dir).use { !it.findAny().isPresent }
+            if (empty) Files.delete(dir)
         }
     }
 
@@ -80,16 +114,6 @@ class SpeciesDbBuilder(
             ioc_order = yaml.taxonomy.ioc_order,
             group_id = group,
         )
-        val sci = yaml.scientific_name
-        val fam = yaml.taxonomy.family
-        val famSv = yaml.taxonomy.family_sv ?: ""
-        val genus = yaml.taxonomy.genus
-        if (!yaml.names.sv.isNullOrBlank()) {
-            val sv = yaml.names.sv!!
-            db.speciesNameQueries.insert(yaml.id, "sv", sv, normalizeSearch("$sv $sci $fam $famSv $genus"))
-        }
-        val en = yaml.names.en
-        db.speciesNameQueries.insert(yaml.id, "en", en, normalizeSearch("$en $sci $fam $famSv $genus"))
 
         for ((lang, text) in yaml.description) {
             if (text.isNullOrBlank() || text == "[accept_missing]") continue
@@ -122,6 +146,36 @@ class SpeciesDbBuilder(
                 commons_filename = img.commons_filename,
             )
         }
+    }
+
+    /**
+     * The Swedish and English name rows, with search text over the names, the scientific name,
+     * the family and the genus. Release 1.3.0 Task 7m: the name Birdy used before BirdLife
+     * Sverige's official one stays searchable ("sädgås" finds Skogsgås) and is shown on the
+     * Swedish profile as "Tidigare: ...", unless a species ([currentSvNames]) has that name today:
+     * Diomedeslira was "Gulnäbbad lira", Calonectris borealis' name, and the line would read as if
+     * the two were one species.
+     */
+    private fun insertNames(
+        db: BirdyContent,
+        yaml: SpeciesYaml,
+        currentSvNames: Set<String>,
+    ) {
+        val sci = yaml.scientific_name
+        val fam = yaml.taxonomy.family
+        val famSv = yaml.taxonomy.family_sv ?: ""
+        val genus = yaml.taxonomy.genus
+        val formerSv = yaml.names.formerSv?.takeIf { it.isNotBlank() }
+        val sv = yaml.names.sv
+        if (!sv.isNullOrBlank()) {
+            val svTerms = if (formerSv != null) "$sv $formerSv" else sv
+            db.speciesNameQueries.insert(yaml.id, "sv", sv, normalizeSearch("$svTerms $sci $fam $famSv $genus"))
+        }
+        if (formerSv != null && formerSv.lowercase() !in currentSvNames) {
+            db.speciesTextQueries.insert(yaml.id, "sv", FORMER_NAME_KIND, formerSv)
+        }
+        val en = yaml.names.en
+        db.speciesNameQueries.insert(yaml.id, "en", en, normalizeSearch("$en $sci $fam $famSv $genus"))
     }
 
     private fun contentHash(items: List<Pair<Path, SpeciesYaml>>): Int = contentFingerprint(items, SCHEMA_REV)

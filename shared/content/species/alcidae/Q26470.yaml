@@ -97,28 +97,26 @@ migration:
 image_refs:
 - role: hero
   path: Q26470/hero.webp
-  width: 1697
+  width: 1600
   height: 2400
-  license: Public domain
-  author: <a href="//commons.wikimedia.org/w/index.php?title=Gottfried_Feder&amp;action=edit&amp;redlink=1"
-    class="new" title="Gottfried Feder (page does not exist)">Gottfried Feder</a>
-  source_url: https://commons.wikimedia.org/wiki/File:An Alle, Alle! Heft 1, 1919.jpg
-  commons_filename: An Alle, Alle! Heft 1, 1919.jpg
+  license: CC BY-SA 3.0
+  author: Jerzy Strzelecki
+  source_url: https://commons.wikimedia.org/wiki/File:Alle alle 10(js), Hornsund.jpg
+  commons_filename: Alle alle 10(js), Hornsund.jpg
 - role: secondary
   path: Q26470/secondary-1.webp
-  width: 963
-  height: 1800
-  license: Public domain
-  author: Jos. C. Huber
-  source_url: https://commons.wikimedia.org/wiki/File:An Alle, Alle! Heft 1, 1919
-    b 19.jpg
-  commons_filename: An Alle, Alle! Heft 1, 1919 b 19.jpg
+  width: 1800
+  height: 1185
+  license: CC BY-SA 3.0
+  author: Jerzy Strzelecki
+  source_url: https://commons.wikimedia.org/wiki/File:Alle alle 04(js), Hornsund.jpg
+  commons_filename: Alle alle 04(js), Hornsund.jpg
 - role: secondary
   path: Q26470/secondary-2.webp
   width: 1800
   height: 1200
   license: CC0
-  author: no rights reserved
+  author: stevestevens
   source_url: https://commons.wikimedia.org/wiki/File:Little Auk (Alle alle) at Qagssissalik,
     Greenland 18 July 2023 311710905.jpg
   commons_filename: Little Auk (Alle alle) at Qagssissalik, Greenland 18 July 2023

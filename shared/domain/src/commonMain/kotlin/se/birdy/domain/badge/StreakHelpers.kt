@@ -77,20 +77,21 @@ fun monthKey(
     return MonthKey(ldt.year, ldt.monthNumber)
 }
 
-@Suppress("MagicNumber")
 fun seasonOf(
     instant: Instant,
     zone: TimeZone,
-): BadgeSeason {
-    val month = instant.toLocalDateTime(zone).monthNumber
-    return when (month) {
+): BadgeSeason = seasonOfMonth(instant.toLocalDateTime(zone).monthNumber)
+
+/** The meteorological season of [month] (1..12); December belongs to the winter of its own year. */
+@Suppress("MagicNumber")
+fun seasonOfMonth(month: Int): BadgeSeason =
+    when (month) {
         12, 1, 2 -> BadgeSeason.WINTER
         3, 4, 5 -> BadgeSeason.SPRING
         6, 7, 8 -> BadgeSeason.SUMMER
         9, 10, 11 -> BadgeSeason.AUTUMN
         else -> error("unreachable month=$month")
     }
-}
 
 /**
  * Längsta consecutive-kedja i en sorted ascending sekvens. T är komparabel

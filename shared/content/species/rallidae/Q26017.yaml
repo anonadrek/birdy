@@ -101,8 +101,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
-    Knight</a> from Seaford, East Sussex, United Kingdom
+  author: Ron Knight
   source_url: https://commons.wikimedia.org/wiki/File:Crex crex, Beachy Head 1.jpg
   commons_filename: Crex crex, Beachy Head 1.jpg
 - role: secondary
@@ -110,8 +109,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
-    Knight</a> from Seaford, East Sussex, United Kingdom
+  author: Ron Knight
   source_url: https://commons.wikimedia.org/wiki/File:Crex crex, Beachy Head 2.jpg
   commons_filename: Crex crex, Beachy Head 2.jpg
 - role: secondary
@@ -119,8 +117,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
-    Knight</a> from Seaford, East Sussex, United Kingdom
+  author: Ron Knight
   source_url: https://commons.wikimedia.org/wiki/File:Crex crex, Beachy Head 3.jpg
   commons_filename: Crex crex, Beachy Head 3.jpg
 review_status: auto

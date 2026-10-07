@@ -71,27 +71,24 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Sharbelle_Fernandez" title="User:Sharbelle
-    Fernandez">Sharbelle Fernandez</a>
+  author: Sharbelle Fernandez
   source_url: https://commons.wikimedia.org/wiki/File:Asian Koel (female) -Eudynamys
     scolopaceus.jpg
   commons_filename: Asian Koel (female) -Eudynamys scolopaceus.jpg
 - role: secondary
   path: Q798401/secondary-1.webp
   width: 1800
-  height: 1350
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Chiranjivisubedi&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Chiranjivisubedi (page does not exist)">Chiranjivisubedi</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Eudynamys scolopaceus.jpg
-  commons_filename: Eudynamys scolopaceus.jpg
+  height: 1202
+  license: CC BY 2.0
+  author: Ganesh Subramaniam
+  source_url: https://commons.wikimedia.org/wiki/File:Koel (26746749179).jpg
+  commons_filename: Koel (26746749179).jpg
 - role: secondary
   path: Q798401/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Angelo_Rison&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Angelo Rison (page does not exist)">Angelo Rison</a>
+  author: Angelo Rison
   source_url: https://commons.wikimedia.org/wiki/File:Asian koel (Eudynamys scolopaceus).jpg
   commons_filename: Asian koel (Eudynamys scolopaceus).jpg
 review_status: auto

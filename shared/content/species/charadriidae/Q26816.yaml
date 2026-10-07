@@ -96,7 +96,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Ringed plover (Charadrius hiaticula).jpg
   commons_filename: Ringed plover (Charadrius hiaticula).jpg
 - role: secondary
@@ -104,7 +104,7 @@ image_refs:
   width: 1800
   height: 1201
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Common ringed plover (Charadrius
     hiaticula), Seltjarnarnes, Iceland.jpg
   commons_filename: Common ringed plover (Charadrius hiaticula), Seltjarnarnes, Iceland.jpg
@@ -113,8 +113,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
-    legg</a>
+  author: caroline legg
   source_url: https://commons.wikimedia.org/wiki/File:Ringed Plover - Charadrius hiaticula
     - Juvenile (51427262079).jpg
   commons_filename: Ringed Plover - Charadrius hiaticula - Juvenile (51427262079).jpg

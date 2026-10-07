@@ -9,7 +9,7 @@ names:
   sv: Stäppörn
   en: Steppe Eagle
 abundance: ovanlig
-iucn_status: NE
+iucn_status: EN
 season:
   jan: present
   feb: present
@@ -70,8 +70,7 @@ image_refs:
   width: 2048
   height: 1365
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
-    Kansara</a>
+  author: Parth Kansara
   source_url: https://commons.wikimedia.org/wiki/File:Aquila nipalensis 156507147.jpg
   commons_filename: Aquila nipalensis 156507147.jpg
 - role: secondary
@@ -79,8 +78,7 @@ image_refs:
   width: 1800
   height: 1165
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%E0%A4%95%E0%A5%83%E0%A4%B7%E0%A5%8D%E0%A4%A3_%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%9C%E0%A4%BE%E0%A4%AA%E0%A4%A4%E0%A4%BF&amp;action=edit&amp;redlink=1"
-    class="new" title="User:कृष्ण प्रजापति (page does not exist)">Krishna Prajapati</a>
+  author: Krishna Prajapati
   source_url: https://commons.wikimedia.org/wiki/File:The steppe eagle (Aquila nipalensis)
     - 68.jpg
   commons_filename: The steppe eagle (Aquila nipalensis) - 68.jpg
@@ -89,8 +87,7 @@ image_refs:
   width: 1800
   height: 1142
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%E0%A4%95%E0%A5%83%E0%A4%B7%E0%A5%8D%E0%A4%A3_%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%9C%E0%A4%BE%E0%A4%AA%E0%A4%A4%E0%A4%BF&amp;action=edit&amp;redlink=1"
-    class="new" title="User:कृष्ण प्रजापति (page does not exist)">Krishna Prajapati</a>
+  author: Krishna Prajapati
   source_url: https://commons.wikimedia.org/wiki/File:The steppe eagle (Aquila nipalensis)
     - 69.jpg
   commons_filename: The steppe eagle (Aquila nipalensis) - 69.jpg

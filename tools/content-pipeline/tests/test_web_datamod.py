@@ -6,6 +6,7 @@ import pytest
 
 from birdy_fetcher.web.counties import COUNTIES
 from birdy_fetcher.web.datamod import (
+    BREEDING_MONTHS,
     MIN_REPORTS,
     Counts,
     build_data,
@@ -17,7 +18,10 @@ from birdy_fetcher.web.datamod import (
     month_runs,
     month_sentences,
     months_text,
+    rarely_sentence,
+    red_list_for_page,
     scaled,
+    sentence_kind,
     status_contradiction,
 )
 
@@ -80,11 +84,11 @@ def test_two_months_are_listed() -> None:
 def test_migrant_sentences() -> None:
     assert month_sentences(MIGRANT, "sv") == [
         "Rapporteras mest i maj till juli.",
-        "Nästan aldrig i oktober till mars.",
+        "Rapporteras sällan i oktober till mars.",
     ]
     assert month_sentences(MIGRANT, "en") == [
         "Reported most in May to July.",
-        "Almost never in October to March.",
+        "Rarely reported in October to March.",
     ]
 
 
@@ -94,20 +98,52 @@ def test_resident_is_reported_all_year() -> None:
     ]
 
 
-def test_county_sentence_names_the_top_three() -> None:
-    profile = {iso: 0 for iso in ("SE-BD", "SE-AC", "SE-Z", "SE-M")}
-    profile.update({"SE-BD": 100, "SE-AC": 80, "SE-Z": 60, "SE-M": 5})
-    assert county_sentence(profile, "sv") == (
-        "Vanligast i rapporterna från Norrbotten, Västerbotten och Jämtland."
+# Artportalen-only county profiles (2026-10-07). Talgoxe's is flat: every county lies
+# within a factor of about three of the top one, and the old sentence "Vanligast i
+# rapporterna från Norrbotten, Västerbotten och Västernorrland" read as "most reports" while
+# it meant the largest share of each county's reports (a composition effect: northern
+# counties report fewer species, so a common feeder bird makes up more of their reports).
+TALGOXE_COUNTIES = {
+    "SE-K": 44, "SE-W": 53, "SE-X": 77, "SE-I": 39, "SE-N": 30, "SE-Z": 60, "SE-F": 62,
+    "SE-H": 35, "SE-G": 45, "SE-BD": 100, "SE-T": 42, "SE-E": 62, "SE-M": 41, "SE-D": 83,
+    "SE-AB": 66, "SE-C": 68, "SE-S": 49, "SE-AC": 69, "SE-Y": 80, "SE-U": 45, "SE-O": 64,
+}  # fmt: skip
+TOBISGRISSLA_COUNTIES = {
+    "SE-K": 39, "SE-W": 0, "SE-X": 26, "SE-I": 67, "SE-N": 100, "SE-Z": 0, "SE-F": 0,
+    "SE-H": 57, "SE-G": 0, "SE-BD": 13, "SE-T": 0, "SE-E": 7, "SE-M": 32, "SE-D": 10,
+    "SE-AB": 42, "SE-C": 13, "SE-S": 1, "SE-AC": 29, "SE-Y": 52, "SE-U": 0, "SE-O": 29,
+}  # fmt: skip
+
+
+def test_a_flat_county_profile_says_where_it_is_reported_not_a_top_three() -> None:
+    assert county_sentence(TALGOXE_COUNTIES, "sv") == "Rapporteras från alla 21 län."
+    assert county_sentence(TALGOXE_COUNTIES, "en") == "Reported from all 21 counties."
+
+
+def test_a_flat_profile_with_a_county_without_reports_counts_the_counties() -> None:
+    profile = {**TALGOXE_COUNTIES, "SE-K": 0}
+    assert county_sentence(profile, "sv") == "Rapporteras från 20 av 21 län."
+    assert county_sentence(profile, "en") == "Reported from 20 of the 21 counties."
+
+
+def test_a_skewed_profile_names_the_counties_by_their_share() -> None:
+    """Half the counties under half the top share: the counties with at least half of it,
+    at most three, said as a share so it cannot be read as "the most reports"."""
+    assert county_sentence(TOBISGRISSLA_COUNTIES, "sv") == (
+        "Andelen av alla fågelrapporter är högst i Halland, Gotland och Kalmar."
     )
-    assert county_sentence(profile, "en") == (
-        "Most common in reports from Norrbotten, Västerbotten and Jämtland."
+    assert county_sentence(TOBISGRISSLA_COUNTIES, "en") == (
+        "Its share of all bird reports is highest in Halland, Gotland and Kalmar."
     )
 
 
-def test_county_sentence_with_one_county_and_with_none() -> None:
+def test_a_skewed_profile_names_only_the_counties_near_the_top() -> None:
     assert county_sentence({"SE-I": 100, "SE-M": 0}, "sv") == (
-        "Vanligast i rapporterna från Gotland."
+        "Andelen av alla fågelrapporter är högst i Gotland."
+    )
+    tretaig_mas = {"SE-N": 100, "SE-O": 27, "SE-M": 25, "SE-H": 14, "SE-K": 13}
+    assert (
+        county_sentence(tretaig_mas, "sv") == "Andelen av alla fågelrapporter är högst i Halland."
     )
     assert county_sentence({"SE-I": 0}, "sv") is None
 
@@ -115,8 +151,8 @@ def test_county_sentence_with_one_county_and_with_none() -> None:
 def test_data_sentences_put_months_first() -> None:
     assert data_sentences(MIGRANT, {"SE-I": 100}, "sv") == [
         "Rapporteras mest i maj till juli.",
-        "Nästan aldrig i oktober till mars.",
-        "Vanligast i rapporterna från Gotland.",
+        "Rapporteras sällan i oktober till mars.",
+        "Andelen av alla fågelrapporter är högst i Gotland.",
     ]
 
 
@@ -133,7 +169,7 @@ def test_no_peak_but_low_months_gives_only_never_sentence() -> None:
     profile = [5, 5, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]
     result = month_sentences(profile, "sv")
     assert len(result) == 1
-    expected = "Nästan aldrig i januari och februari."
+    expected = "Rapporteras sällan i januari och februari."
     assert result[0] == expected
 
 
@@ -195,4 +231,124 @@ def test_build_data_with_too_few_reports_has_no_modules() -> None:
     )
     assert "months" not in data
     assert "counties" not in data
-    assert data["sentences"] == {"sv": [], "en": []}
+    assert data["sentences"]["sv"] == [
+        "Sällsynt i Sverige: 199 rapporter i Artportalen 2016 till 2025."
+    ]
+
+
+# Artportalen-only month profiles 2016 to 2025 (fetched 2026-10-07, after the dataset
+# filter): the R2 calibration species, and Kungsfågel, whose profile the ringing captures
+# had turned into an autumn peak (September 89, October 100, May to August under 10).
+TALGOXE_MONTHS = [100, 93, 60, 39, 30, 30, 25, 26, 37, 55, 82, 100]
+LADUSVALA_MONTHS = [0, 1, 1, 32, 75, 65, 82, 100, 81, 17, 1, 1]
+SIDENSVANS_MONTHS = [78, 54, 17, 5, 2, 4, 4, 2, 6, 62, 95, 100]
+KUNGSFAGEL_MONTHS = [66, 49, 49, 40, 28, 33, 21, 26, 70, 100, 75, 64]
+
+
+def test_the_calibration_species_pass_the_status_signal_on_artportalen_data() -> None:
+    assert status_contradiction("resident", TALGOXE_MONTHS, 729_841) is None
+    assert status_contradiction("breeding_migrant", LADUSVALA_MONTHS, 334_341) is None
+    assert status_contradiction("winter_visitor", SIDENSVANS_MONTHS, 178_590) is None
+    assert status_contradiction("absent", None, 0) is None  # Koboltmes
+
+
+def test_kungsfagel_without_ringing_is_reported_all_winter() -> None:
+    """A summer-visitor status for Kungsfågel passed the signal on the old counts; on
+    Artportalen's own it is flagged, and a resident status is not."""
+    assert status_contradiction("resident", KUNGSFAGEL_MONTHS, 244_744) is None
+    assert status_contradiction("breeding_migrant", KUNGSFAGEL_MONTHS, 244_744) is not None
+
+
+def test_no_reports_at_all_says_the_species_does_not_occur_in_sweden() -> None:
+    """R3 (2026-10-07): Koboltmes's page never said the bird does not occur in Sweden. An
+    exact GBIF match with no Artportalen report in ten years says so, with the evidence."""
+    species = Counts([0] * 12, {}, 0)
+    data = build_data(
+        taxon_key=7341849, species=species, all_birds=Counts([100] * 12, {}, 1), fetched_at="x"
+    )
+    assert data["sentences"] == {
+        "sv": ["Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025."],
+        "en": ["Does not occur in Sweden: no reports in Artportalen 2016 to 2025."],
+    }
+    assert sentence_kind(data["sentences"]["sv"][0]) == "absent"
+
+
+def test_a_few_reports_say_the_species_is_rare_in_sweden() -> None:
+    few = Counts([1] * 12, {}, 12)
+    data = build_data(taxon_key=7, species=few, all_birds=Counts([100] * 12, {}, 1), fetched_at="x")
+    assert data["sentences"] == {
+        "sv": ["Sällsynt i Sverige: 12 rapporter i Artportalen 2016 till 2025."],
+        "en": ["Rare in Sweden: 12 reports in Artportalen 2016 to 2025."],
+    }
+    assert sentence_kind(data["sentences"]["sv"][0]) is None
+    one = build_data(taxon_key=7, species=Counts([0] * 12, {}, 1), all_birds=few, fetched_at="x")
+    assert one["sentences"]["sv"] == ["Sällsynt i Sverige: 1 rapport i Artportalen 2016 till 2025."]
+    assert one["sentences"]["en"] == ["Rare in Sweden: 1 report in Artportalen 2016 to 2025."]
+
+
+def test_the_other_sentences_have_no_kind_but_the_county_share() -> None:
+    assert sentence_kind("Rapporteras året runt.") is None
+    assert sentence_kind("Rapporteras från alla 21 län.") is None
+    assert sentence_kind("Andelen av alla fågelrapporter är högst i Gotland.") == "countyShare"
+
+
+def test_a_species_not_regular_in_sweden_is_not_shown_as_not_red_listed() -> None:
+    """The red list on GBIF holds only red-listed species, so `not_listed` cannot tell
+    "assessed, least concern" from "not assessed". A species with fewer than 200 reports is
+    not regular in Sweden and not assessed (NA/NE): no red-list row, no data fact."""
+    assert red_list_for_page("not_listed", 962_371) == "not_listed"
+    assert red_list_for_page("not_listed", MIN_REPORTS - 1) is None
+    assert red_list_for_page("not_listed", 0) is None
+    assert red_list_for_page("VU", 120) == "VU"
+    assert red_list_for_page(None, 962_371) is None
+
+
+def test_a_status_saying_the_species_is_here_contradicts_zero_reports() -> None:
+    for status in ("resident", "breeding_migrant", "passage", "winter_visitor"):
+        assert status_contradiction(status, None, 0) is not None
+    assert status_contradiction("rare_visitor", None, 0) is None
+    assert status_contradiction("absent", None, 0) is None
+    assert status_contradiction("resident", None, 12) is None
+
+
+def test_a_rare_month_is_about_reports_not_presence() -> None:
+    """Fix wave 2026-10-07: "Nästan aldrig i juni" for Pilgrimsfalk and Sparvhök read as
+    "not there in June"; their breeding records are withheld and ringing is no longer
+    counted, so the data only say they are rarely reported then."""
+    profile = [100] * 12
+    profile[5] = 4
+    assert month_sentences(profile, "sv") == [
+        "Rapporteras mest i juli till maj.",
+        "Rapporteras sällan i juni.",
+    ]
+    assert month_sentences(profile, "en")[-1] == "Rarely reported in June."
+    assert sentence_kind("Rapporteras sällan i juni.") == "rarelyReported"
+    assert sentence_kind("Rarely reported in June.") == "rarelyReported"
+
+
+def test_rarely_sentence_can_leave_months_out() -> None:
+    profile = [5, 5, 5, 5, 60, 80, 9, 100, 90, 5, 5, 5]
+    assert rarely_sentence(profile, "sv") == ("Rapporteras sällan i juli och oktober till april.")
+    assert rarely_sentence(profile, "sv", skip=BREEDING_MONTHS) == (
+        "Rapporteras sällan i oktober till april."
+    )
+    assert rarely_sentence([100] * 5 + [4] + [100] * 6, "sv", skip=BREEDING_MONTHS) is None
+
+
+def test_a_partial_migrant_agrees_with_winter_reports() -> None:
+    """Wave 1 (2026-10-07): most common Swedish birds are partial migrants (some stay, some
+    leave), so a breeding_migrant status was flagged by the winter reports and a resident
+    one struck by the fact checker. partial_migrant fits both kinds of data."""
+    assert status_contradiction("partial_migrant", KUNGSFAGEL_MONTHS, 244_744) is None
+    assert status_contradiction("partial_migrant", TALGOXE_MONTHS, 729_841) is None
+    assert status_contradiction("partial_migrant", RESIDENT, 5000) is None
+
+
+def test_a_partial_migrant_never_reported_in_winter_is_flagged() -> None:
+    reason = status_contradiction("partial_migrant", LADUSVALA_MONTHS, 334_341)
+    assert reason is not None
+    assert "delvis flyttfågel" in reason
+
+
+def test_a_partial_migrant_contradicts_zero_reports() -> None:
+    assert status_contradiction("partial_migrant", None, 0) is not None

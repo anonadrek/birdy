@@ -94,21 +94,18 @@ migration:
 image_refs:
 - role: hero
   path: Q25393/hero.webp
-  width: 2048
-  height: 1532
+  width: 2400
+  height: 1600
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/francescocecere">Francesco
-    Cecere</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Luscinia megarhynchos by Francesco
-    Cecere.jpg
-  commons_filename: Luscinia megarhynchos by Francesco Cecere.jpg
+  author: Romzig
+  source_url: https://commons.wikimedia.org/wiki/File:Nachtigall (April 2025) 2.jpg
+  commons_filename: Nachtigall (April 2025) 2.jpg
 - role: secondary
   path: Q25393/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
-    Taÿ Pamart</a>
+  author: Marie-Lan Taÿ Pamart
   source_url: https://commons.wikimedia.org/wiki/File:Luscinia megarhynchos Moëze-Oléron
     20250506.jpg
   commons_filename: Luscinia megarhynchos Moëze-Oléron 20250506.jpg
@@ -117,8 +114,7 @@ image_refs:
   width: 1800
   height: 1300
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Nightingale . Luscinia megarhynchos
     - Flickr - gailhampshire (1).jpg
   commons_filename: Nightingale . Luscinia megarhynchos - Flickr - gailhampshire (1).jpg

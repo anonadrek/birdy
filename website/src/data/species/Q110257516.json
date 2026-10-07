@@ -1,0 +1,211 @@
+{
+  "qid": "Q110257516",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tornsangare",
+    "en": "common-whitethroat"
+  },
+  "names": {
+    "sv": "Törnsångare",
+    "en": "Common Whitethroat",
+    "scientific": "Curruca communis"
+  },
+  "family": {
+    "latin": "Sylviidae",
+    "sv": "Sylvior"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": false
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q110257516/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_whitethroat_2025_05_25.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q110257516/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_Whitethroat_2025_05_24_01.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q110257516/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Marie-Lan Taÿ Pamart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sylvia_communis_-_Common_Whitethroat_XC478080.mp3",
+    "sha256": "16f196b0ae910aa25a799742f6d46ba86ee4cd7355a1a39bacf950dde6b013d3"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Törnsångare",
+      "revision": "59705232"
+    },
+    "en": {
+      "title": "Common whitethroat",
+      "revision": "1370535713"
+    },
+    "de": {
+      "title": "Dorngrasmücke",
+      "revision": "263741571"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2492943,
+    "totalReports": 172543,
+    "months": [
+      1,
+      0,
+      1,
+      2,
+      93,
+      100,
+      49,
+      30,
+      9,
+      1,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 82,
+      "SE-W": 60,
+      "SE-X": 52,
+      "SE-I": 100,
+      "SE-N": 88,
+      "SE-Z": 13,
+      "SE-F": 62,
+      "SE-H": 80,
+      "SE-G": 66,
+      "SE-BD": 12,
+      "SE-T": 81,
+      "SE-E": 63,
+      "SE-M": 94,
+      "SE-D": 82,
+      "SE-AB": 67,
+      "SE-C": 74,
+      "SE-S": 57,
+      "SE-AC": 50,
+      "SE-Y": 54,
+      "SE-U": 61,
+      "SE-O": 90
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i maj och juni.",
+        "Rapporteras sällan i september till april.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in May and June.",
+        "Rarely reported in September to April.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1,
+        0,
+        1,
+        1703,
+        85858,
+        49940,
+        18877,
+        12010,
+        3817,
+        90,
+        25,
+        7
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 32361,
+        "SE-M": 23476,
+        "SE-AB": 16749,
+        "SE-H": 15142,
+        "SE-C": 10063,
+        "SE-N": 9489,
+        "SE-D": 9141,
+        "SE-E": 6252,
+        "SE-F": 5862,
+        "SE-T": 5517,
+        "SE-I": 4320,
+        "SE-W": 3601,
+        "SE-AC": 3476,
+        "SE-G": 3416,
+        "SE-U": 3216,
+        "SE-S": 2809,
+        "SE-X": 2410,
+        "SE-Y": 1871,
+        "SE-K": 1717,
+        "SE-BD": 712,
+        "SE-Z": 428
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

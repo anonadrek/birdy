@@ -108,7 +108,7 @@ image_refs:
   width: 2400
   height: 1594
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Buteo buteo insularum, Azores.jpg
   commons_filename: Buteo buteo insularum, Azores.jpg
 - role: secondary
@@ -116,7 +116,7 @@ image_refs:
   width: 1800
   height: 1648
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Yerpo" title="User:Yerpo">Yerpo</a>
+  author: Yerpo
   source_url: https://commons.wikimedia.org/wiki/File:Buteo buteo juv Log (2).jpg
   commons_filename: Buteo buteo juv Log (2).jpg
 - role: secondary
@@ -124,8 +124,7 @@ image_refs:
   width: 1200
   height: 1800
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Steppe buzzard (Buteo buteo
     vulpinus).jpg
   commons_filename: Steppe buzzard (Buteo buteo vulpinus).jpg

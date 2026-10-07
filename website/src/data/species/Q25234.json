@@ -1,0 +1,948 @@
+{
+  "qid": "Q25234",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Den vuxna hanen är enfärgat svart till brunsvart med orangegul näbb och en lysande orangegul ring runt ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Adult hane är enfärgat svart till brunsvart med orangegul näbb, som mörknar på sensommaren, och har en lysande orangegul orbitalring."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Hos båda könen är benen och tårna mörkbruna.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Bei beiden Geschlechtern sind Lauf und Zehen dunkelbraun."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "sex_age",
+      "sv": "Den vuxna honan har mörkbrun till olivgrå ovansida, ofta med något ljusare panna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Adult hona har mörkbrun till olivgrå ovansida, och oftast en något ljusare panna."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "sex_age",
+      "sv": "Den vuxna honans näbb är blekgul med mörkbrun övre näbbhalva.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honans näbb är blekgul med mörkbrun övre näbbas."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "sex_age",
+      "sv": "Honan är sotbrun med brunvit strupe och svag fläckighet på bröstet.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The adult female is sooty-brown with a dull yellowish-brownish bill, a brownish-white throat and some weak mottling on the breast."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Ungfågeln liknar honan men har ljusa fläckar på ovansidan, och mycket unga fåglar har även fläckigt bröst.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The juvenile is similar to the female, but has pale spots on its upperparts, and the very young juvenile also has a speckled breast."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Ettårig hane liknar vuxen hane men har mörk näbb, svagare ögonring och bruna vingar som kontrasterar mot den svarta kroppen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The first year male resembles the adult male, but has a dark bill and weaker eye ring. Its folded wing is brown, rather than black like the body plumage."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "size",
+      "sv": "Koltrasten är 24–27 cm lång enligt Handbook of the Birds of the World.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Efter uppdelningen i fyra arter uppger exempelvis Handbook of the Birds of the World idag storleksangivelsen till 24–27 cm."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Medianvikten är 85–105 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Medianvikten är 85–105 gram."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Vingspannet är 35–38 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett vingspann på 35–38 cm."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Hanens sång är en varierad, melodisk och lågt flöjtande sång från träd, hustak och andra höga sittplatser, främst mars till juni.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The male's song is a varied, melodious, low-pitched fluted warble sung from trees, rooftops and other elevated perches mainly in the period from March to June"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Koltrasten börjar sin vida hörbara sång kort före soluppgången.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kort före soluppgången börjar den sin vidsträckt hörbara sång."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Vid störning eller fara varnar den med ett hårt, upprört smackande \"tack\", enkelt eller upprepat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vid störning eller som alarm vid närvaro av en predator hörs ett hårt och upprört smackande \"tack\", enkelt eller upprepat."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Sångens mellandel innehåller ofta korta härmningar av andra fågelarter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Mellandelen innehåller ofta korta imitationer och variationer av andra fågelarter."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Under flyttningen hörs ett lågmält rullande \"srrri\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På sträck hörs ett lågmält rullande \"srrri\"."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Ett mycket högt \"ssieh\" används ofta som varning för en fiende som kommer flygande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ett mycket högt \"ssieh\" (mellan 9 och 7 kHz avfallande) används ofta som varningsläte för en fiende som kommer flygande."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Koltrasten var tidigare en utpräglad skogsfågel men lever sedan 1800-talet även i parker och trädgårdar nära bebyggelse.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tidigare var koltrasten en utpräglad skogsfågel men den har sedan mitten av 1800-talet bosatt sig i parker nära bebyggelse samt i trädgårdar"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "I skog föredrar den lövträd med tät undervegetation.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "This species is common over most of its range in woodland and has a preference for deciduous trees with dense undergrowth."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige är koltrasten allmän i hela södra och mellersta Sverige upp till norra Värmland och längs Norrlandskusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Koltrasten förekommer allmänt i hela södra och mellersta Sverige ända upp till norra Värmland och uppför Norrlandskusten."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Den svenska populationen beräknas till cirka 1,8 miljoner par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Man räknar med att den svenska populationen består av cirka 1,8 miljoner par."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "De flesta svenska koltrastar flyttar till Västeuropa från slutet av september till början av november och återkommer i mars–april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Merparten av de svenska koltrastarna flyttar i slutet av september till början av november till Västeuropa, och återkommer i mars till april."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Koltrasten utsågs 2015 åter till Sveriges nationalfågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vid en ny omröstning 2015, initierad av Sveriges ornitologiska förening, utsågs koltrasten åter till Sveriges nationalfågel."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Boet är skålformat av gräs, löv och annan växtlighet sammanfogat med lera, och byggs av honan ensam.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The cup-shaped nest is made with grasses, leaves and other vegetation, bound together with mud. It is built by the female alone."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Honan lägger tre till fem, oftast fyra, blågröna ägg med rödbruna fläckar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "She lays three to five (usually four) bluish-green eggs marked with reddish-brown blotches"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Koltrasten är allätare och äter insekter, daggmaskar, frön och bär.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Koltrasten är allätare och äter ett stort urval insekter, daggmaskar, frön och bär."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "På hösten och vintern äter den mer fallfrukt och bär, till exempel äpple och rönnbär.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fallfrukt och bär, exempelvis äpple och rönnbär, tas i högre grad på hösten och vintern."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Den söker mest föda på marken, där den springer och skuttar med ryckiga rörelser.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Koltrasten födosöker mestadels på marken, där den springer och skuttar med ryckiga rörelser."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Koltrasten kan förväxlas med ringtrast i första vinterdräkt, som har ljusare vingar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In Europe, the common blackbird can be confused with the paler-winged first-winter ring ouzel (Turdus torquatus)"
+        }
+      ],
+      "other": {
+        "scientific": "Turdus torquatus",
+        "qid": "Q26641"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Staren är också mörk och ofta på marken men är mindre och har tydligt kortare stjärt än koltrasten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Im Vergleich zum kleineren, ebenfalls dunkel befiederten und sich häufig auf dem Boden aufhaltenden Star hat die Amsel einen deutlich längeren Schwanz."
+        },
+        {
+          "article": "en",
+          "quote": "the superficially similar common starling (Sturnus vulgaris)"
+        }
+      ],
+      "other": {
+        "scientific": "Sturnus vulgaris",
+        "qid": "Q25469"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I södra och mellersta Sverige övervintrar en del av populationen, särskilt de som lever nära bebyggelse."
+        },
+        {
+          "article": "sv",
+          "quote": "Merparten av de svenska koltrastarna flyttar i slutet av september till början av november till Västeuropa, och återkommer i mars till april."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december och januari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Koltrasten är en trast som häckar i Sverige och är delvis flyttfågel.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Förr var den en utpräglad skogsfågel, men sedan 1800-talet lever den även i parker och trädgårdar nära bebyggelse.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Vuxen hane: enfärgat svart till brunsvart med orangegul näbb och orangegul ring runt ögat",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Honan är sotbrun med brunvit strupe, svagt fläckigt bröst och blekgul näbb med mörkbrun överdel",
+          "factIds": [
+            "f05",
+            "f04"
+          ]
+        },
+        {
+          "text": "Ungfågeln liknar honan men har ljusa fläckar på ovansidan",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Ettårig hane har mörk näbb, svagare ögonring och bruna vingar mot svart kropp",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Hanen sjunger en varierad, melodisk och lågt flöjtande sång från träd, hustak och andra höga sittplatser, främst mars till juni.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Sången hörs vida, börjar kort före soluppgången och innehåller ofta korta härmningar av andra arter.",
+          "factIds": [
+            "f12",
+            "f14"
+          ]
+        },
+        {
+          "text": "Varningslätet är ett hårt, smackande \"tack\".",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Ett mycket högt \"ssieh\" varnar för flygande fiender, och under flyttningen hörs ett lågmält rullande \"srrri\".",
+          "factIds": [
+            "f16",
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Koltrasten häckar i Sverige och är delvis flyttfågel.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Den är allmän i södra och mellersta Sverige upp till norra Värmland och längs Norrlandskusten.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Beståndet beräknas till cirka 1,8 miljoner par.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län, mest i december och januari.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "De flesta flyttar till Västeuropa från slutet av september till början av november och återkommer i mars till april.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Koltrasten är allätare och äter insekter, daggmaskar, frön och bär.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "På hösten och vintern äter den mer fallfrukt och bär, till exempel äpple och rönnbär.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Den söker mest föda på marken, där den springer och skuttar med ryckiga rörelser.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Honan bygger boet ensam och lägger tre till fem, oftast fyra, blågröna ägg med rödbruna fläckar.",
+          "factIds": [
+            "f24",
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q26641",
+          "text": [
+            {
+              "text": "Ringtrast i första vinterdräkt kan likna koltrasten men har ljusare vingar.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q25469",
+          "text": [
+            {
+              "text": "Staren är också mörk och ofta på marken, men den är mindre och har tydligt kortare stjärt.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Koltrast: så känner du igen hane, hona och ungfågel, hur sången och varningslätena låter och när koltrasten syns i Sverige under året.",
+      "facts": {
+        "size": {
+          "value": "24 till 27 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Common Blackbird is a thrush that breeds in Sweden and is a partial migrant.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Once a typical forest bird, since the 1800s it has also lived in parks and gardens near houses.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Adult male: plain black to brownish black, with orange-yellow bill and orange-yellow eye-ring",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Female: sooty brown, brownish-white throat, faintly spotted breast, pale yellow bill with dark brown upper half",
+          "factIds": [
+            "f05",
+            "f04"
+          ]
+        },
+        {
+          "text": "Juveniles look like the female but have pale spots on the upperparts",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "First-year males have a dark bill, weaker eye-ring and brown wings against a black body",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The male sings a varied, melodious, low fluting song from trees, rooftops and other high perches, mainly March to June.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "It carries far, starts shortly before sunrise and often includes short imitations of other birds.",
+          "factIds": [
+            "f12",
+            "f14"
+          ]
+        },
+        {
+          "text": "The alarm is a hard, agitated \"tack\".",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "A very high \"ssieh\" warns of a flying enemy, and on migration a soft rolling \"srrri\" is heard.",
+          "factIds": [
+            "f16",
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It breeds in Sweden and is a partial migrant.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "It is common throughout southern and central Sweden up to northern Värmland and along the Norrland coast.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "The population is estimated at about 1.8 million pairs.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties, most often in December and January.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Most Swedish birds migrate to Western Europe from late September to early November and return in March to April.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Common Blackbird is omnivorous and eats insects, earthworms, seeds and berries.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "In autumn and winter it eats more fallen fruit and berries, such as apples and rowan berries.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "It forages mostly on the ground, running and hopping with jerky movements.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "The female builds the nest alone and lays three to five, usually four, blue-green eggs with reddish-brown spots.",
+          "factIds": [
+            "f24",
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q26641",
+          "text": [
+            {
+              "text": "A Ring Ouzel in first-winter plumage can look like a Common Blackbird but has paler wings.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q25469",
+          "text": [
+            {
+              "text": "The Starling is also dark and often on the ground, but it is smaller and has a clearly shorter tail.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Common Blackbird: how to recognise males, females and young birds, what the song and alarm calls sound like, and when it is seen in Sweden.",
+      "facts": {
+        "size": {
+          "value": "24 to 27 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "39da66dabf7a00d3"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "39da66dabf7a00d3"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "koltrast",
+    "en": "common-blackbird"
+  },
+  "names": {
+    "sv": "Koltrast",
+    "en": "Common Blackbird",
+    "scientific": "Turdus merula"
+  },
+  "family": {
+    "latin": "Turdidae",
+    "sv": "Trastar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25234/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Musicaline",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turdus_merula_1294.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25234/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Musicaline",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turdus_merula_1308.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25234/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Oona Räisänen (Mysid)",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turdus_merula_2.ogg",
+    "sha256": "2e713300a07d50b9cad26bb0f7b5d5bdce148ab062b56922ee3dd95fab54ec9f"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Koltrast",
+      "revision": "59568519"
+    },
+    "en": {
+      "title": "Common blackbird",
+      "revision": "1370087119"
+    },
+    "de": {
+      "title": "Amsel",
+      "revision": "271100414"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2490719,
+    "totalReports": 679857,
+    "months": [
+      100,
+      76,
+      60,
+      50,
+      46,
+      55,
+      41,
+      20,
+      25,
+      51,
+      69,
+      100
+    ],
+    "counties": {
+      "SE-K": 65,
+      "SE-W": 55,
+      "SE-X": 81,
+      "SE-I": 67,
+      "SE-N": 56,
+      "SE-Z": 35,
+      "SE-F": 71,
+      "SE-H": 48,
+      "SE-G": 61,
+      "SE-BD": 31,
+      "SE-T": 55,
+      "SE-E": 78,
+      "SE-M": 62,
+      "SE-D": 100,
+      "SE-AB": 94,
+      "SE-C": 98,
+      "SE-S": 59,
+      "SE-AC": 53,
+      "SE-Y": 58,
+      "SE-U": 57,
+      "SE-O": 93
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december och januari.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in December and January.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        92371,
+        49011,
+        71586,
+        91171,
+        97028,
+        63269,
+        36117,
+        18431,
+        23973,
+        47383,
+        40628,
+        48524
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 137618,
+        "SE-AB": 96776,
+        "SE-M": 64298,
+        "SE-C": 55699,
+        "SE-D": 46318,
+        "SE-H": 37544,
+        "SE-E": 32191,
+        "SE-F": 28162,
+        "SE-N": 24935,
+        "SE-X": 15760,
+        "SE-T": 15496,
+        "SE-AC": 15404,
+        "SE-W": 13666,
+        "SE-G": 13185,
+        "SE-U": 12588,
+        "SE-S": 11992,
+        "SE-I": 11941,
+        "SE-Y": 8419,
+        "SE-BD": 7457,
+        "SE-K": 5707,
+        "SE-Z": 4946
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

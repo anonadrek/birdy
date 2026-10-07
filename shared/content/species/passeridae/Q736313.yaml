@@ -73,7 +73,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  author: MPF
   source_url: https://commons.wikimedia.org/wiki/File:2017-05-02 Petronia petronia,
     Monestir d'Avellanes, Catalunya 02.jpg
   commons_filename: 2017-05-02 Petronia petronia, Monestir d'Avellanes, Catalunya
@@ -83,7 +83,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  author: MPF
   source_url: https://commons.wikimedia.org/wiki/File:2017-05-03 Petronia petronia,
     Monestir d'Avellanes, Catalunya 01.jpg
   commons_filename: 2017-05-03 Petronia petronia, Monestir d'Avellanes, Catalunya
@@ -93,8 +93,7 @@ image_refs:
   width: 1800
   height: 1069
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/69445801@N04">Jargal
-    Lamjav</a> from Ulaanbaatar, Mongolia
+  author: Jargal Lamjav
   source_url: https://commons.wikimedia.org/wiki/File:Drink time. Rock Sparrow (Petronia
     petronia) - Хадны боршувуу (16805215495).jpg
   commons_filename: Drink time. Rock Sparrow (Petronia petronia) - Хадны боршувуу

@@ -1,0 +1,211 @@
+{
+  "qid": "Q25392",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tofsvipa",
+    "en": "northern-lapwing"
+  },
+  "names": {
+    "sv": "Tofsvipa",
+    "en": "Northern Lapwing",
+    "scientific": "Vanellus vanellus"
+  },
+  "family": {
+    "latin": "Charadriidae",
+    "sv": "Pipare"
+  },
+  "group": "waders",
+  "iucn": "NT",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25392/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Bengt Nyman",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vanellus_vanellus_CR5_9288_(51191855686).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25392/extra.webp",
+      "width": 1200,
+      "height": 857,
+      "author": "caroline legg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lapwing_-_Vanellus_vanellus_(52227600256).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25392/voice.mp3",
+    "durationSec": 3,
+    "trimmed": false,
+    "author": "Jens Loose",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vanellus_vanellus_-_Northern_Lapwing_XC588231.mp3",
+    "sha256": "357aa8255002e9c918aaefe8c2ac7b14b190d9f192ef04e620c81c287082a11b"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Tofsvipa",
+      "revision": "59701604"
+    },
+    "en": {
+      "title": "Northern lapwing",
+      "revision": "1359049934"
+    },
+    "de": {
+      "title": "Kiebitz (Art)",
+      "revision": "268543846"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2480242,
+    "totalReports": 416565,
+    "months": [
+      4,
+      50,
+      100,
+      61,
+      46,
+      46,
+      53,
+      48,
+      40,
+      37,
+      25,
+      7
+    ],
+    "counties": {
+      "SE-K": 62,
+      "SE-W": 86,
+      "SE-X": 75,
+      "SE-I": 74,
+      "SE-N": 83,
+      "SE-Z": 45,
+      "SE-F": 83,
+      "SE-H": 80,
+      "SE-G": 98,
+      "SE-BD": 54,
+      "SE-T": 84,
+      "SE-E": 88,
+      "SE-M": 80,
+      "SE-D": 95,
+      "SE-AB": 77,
+      "SE-C": 100,
+      "SE-S": 89,
+      "SE-AC": 60,
+      "SE-Y": 70,
+      "SE-U": 87,
+      "SE-O": 69
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i mars.",
+        "Rapporteras sällan i december och januari.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in March.",
+        "Rarely reported in December and January.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        2537,
+        22451,
+        82350,
+        77968,
+        68291,
+        36897,
+        32643,
+        30516,
+        26385,
+        23952,
+        10234,
+        2240
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 54469,
+        "SE-M": 43931,
+        "SE-AB": 42137,
+        "SE-H": 33067,
+        "SE-C": 29916,
+        "SE-D": 23338,
+        "SE-N": 19747,
+        "SE-E": 19173,
+        "SE-F": 17333,
+        "SE-T": 12598,
+        "SE-W": 11341,
+        "SE-G": 11159,
+        "SE-U": 10023,
+        "SE-S": 9511,
+        "SE-AC": 9135,
+        "SE-X": 7675,
+        "SE-I": 7017,
+        "SE-BD": 6897,
+        "SE-Y": 5368,
+        "SE-Z": 3357,
+        "SE-K": 2859
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

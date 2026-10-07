@@ -98,8 +98,7 @@ image_refs:
   width: 2400
   height: 1590
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:BertSeghers" title="User:BertSeghers">Bert
-    Seghers</a>
+  author: Bert Seghers
   source_url: https://commons.wikimedia.org/wiki/File:Mergellus-albellus-London.JPG
   commons_filename: Mergellus-albellus-London.JPG
 - role: secondary
@@ -107,8 +106,7 @@ image_refs:
   width: 1800
   height: 1192
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:BertSeghers" title="User:BertSeghers">Bert
-    Seghers</a>
+  author: Bert Seghers
   source_url: https://commons.wikimedia.org/wiki/File:Mergellus-albellus.JPG
   commons_filename: Mergellus-albellus.JPG
 - role: secondary
@@ -116,8 +114,7 @@ image_refs:
   width: 1800
   height: 1192
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:BertSeghers" title="User:BertSeghers">Bert
-    Seghers</a>
+  author: Bert Seghers
   source_url: https://commons.wikimedia.org/wiki/File:Mergellus-albellus London.JPG
   commons_filename: Mergellus-albellus London.JPG
 review_status: auto

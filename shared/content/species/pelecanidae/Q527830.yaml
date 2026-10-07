@@ -68,8 +68,7 @@ image_refs:
   width: 2092
   height: 1303
   license: Public domain
-  author: No machine-readable author provided. <a href="//commons.wikimedia.org/wiki/User:Magalh%C3%A3es"
-    title="User:Magalhães">Magalhães</a> assumed (based on copyright claims).
+  author: Magalhães
   source_url: https://commons.wikimedia.org/wiki/File:Pelecanus rufescens.jpg
   commons_filename: Pelecanus rufescens.jpg
 - role: secondary
@@ -77,7 +76,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external free" href="https://www.flickr.com/people/flowcomm/">https://www.flickr.com/people/flowcomm/</a>
+  author: flowcomm
   source_url: https://commons.wikimedia.org/wiki/File:Rötelpelikan (Pelecanus rufescens),
     ruhend.jpg
   commons_filename: Rötelpelikan (Pelecanus rufescens), ruhend.jpg
@@ -86,7 +85,7 @@ image_refs:
   width: 1800
   height: 1354
   license: CC BY 4.0
-  author: (c) Matt Muir, some rights reserved (CC BY)
+  author: Matt Muir
   source_url: https://commons.wikimedia.org/wiki/File:Pelecanus rufescens in Rwanda
     5679243.jpg
   commons_filename: Pelecanus rufescens in Rwanda 5679243.jpg

@@ -1,0 +1,209 @@
+{
+  "qid": "Q54696",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "turkduva",
+    "en": "eurasian-collared-dove"
+  },
+  "names": {
+    "sv": "Turkduva",
+    "en": "Eurasian Collared Dove",
+    "scientific": "Streptopelia decaocto"
+  },
+  "family": {
+    "latin": "Columbidae",
+    "sv": "Duvor"
+  },
+  "group": "doves",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q54696/hero.webp",
+      "width": 969,
+      "height": 2048,
+      "author": "Dan Horowitz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Streptopelia_decaocto,_feral,_Yuma,_Arizona.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q54696/extra.webp",
+      "width": 1200,
+      "height": 750,
+      "author": "Christian Ferrer",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Streptopelia_decaocto,_Sète_02.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q54696/voice.mp3",
+    "durationSec": 10,
+    "trimmed": false,
+    "author": "Warper up",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%9A%D0%BE%D0%BB%D1%8C%D1%87%D0%B0%D1%82%D0%B0%D1%8F_%D0%93%D0%BE%D1%80%D0%BB%D0%B8%D1%86%D0%B0.ogg",
+    "sha256": "f02571d243aaa2a8e9e777699a8eb81e141c000cf43fc404c43c1b8be9965da4"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Turkduva",
+      "revision": "59700433"
+    },
+    "en": {
+      "title": "Eurasian collared dove",
+      "revision": "1375830673"
+    },
+    "de": {
+      "title": "Türkentaube",
+      "revision": "269019555"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2495696,
+    "totalReports": 102435,
+    "months": [
+      100,
+      88,
+      51,
+      39,
+      42,
+      48,
+      56,
+      55,
+      43,
+      40,
+      61,
+      90
+    ],
+    "counties": {
+      "SE-K": 65,
+      "SE-W": 37,
+      "SE-X": 42,
+      "SE-I": 100,
+      "SE-N": 42,
+      "SE-Z": 13,
+      "SE-F": 49,
+      "SE-H": 68,
+      "SE-G": 36,
+      "SE-BD": 27,
+      "SE-T": 32,
+      "SE-E": 26,
+      "SE-M": 58,
+      "SE-D": 12,
+      "SE-AB": 5,
+      "SE-C": 24,
+      "SE-S": 36,
+      "SE-AC": 25,
+      "SE-Y": 4,
+      "SE-U": 44,
+      "SE-O": 32
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Andelen av alla fågelrapporter är högst i Gotland, Kalmar och Blekinge."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Its share of all bird reports is highest in Gotland, Kalmar and Blekinge."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        13753,
+        8408,
+        9017,
+        10544,
+        13289,
+        8177,
+        7310,
+        7618,
+        6160,
+        5626,
+        5361,
+        6526
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-M": 18935,
+        "SE-H": 16616,
+        "SE-O": 15028,
+        "SE-F": 5993,
+        "SE-N": 5806,
+        "SE-I": 5585,
+        "SE-C": 4234,
+        "SE-E": 3331,
+        "SE-U": 2984,
+        "SE-W": 2873,
+        "SE-T": 2851,
+        "SE-X": 2512,
+        "SE-G": 2436,
+        "SE-AC": 2279,
+        "SE-S": 2258,
+        "SE-BD": 2026,
+        "SE-K": 1757,
+        "SE-D": 1678,
+        "SE-AB": 1481,
+        "SE-Z": 590,
+        "SE-Y": 202
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

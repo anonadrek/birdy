@@ -70,8 +70,7 @@ image_refs:
   width: 2048
   height: 1365
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1065381">Adam
-    Jackson</a>
+  author: Adam Jackson
   source_url: https://commons.wikimedia.org/wiki/File:Psittacara mitratus 339606908.jpg
   commons_filename: Psittacara mitratus 339606908.jpg
 - role: secondary
@@ -79,7 +78,7 @@ image_refs:
   width: 1350
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:NasserHalaweh" title="User:NasserHalaweh">NasserHalaweh</a>
+  author: NasserHalaweh
   source_url: https://commons.wikimedia.org/wiki/File:Psittacidae Psittacara mitratus
     1.jpg
   commons_filename: Psittacidae Psittacara mitratus 1.jpg
@@ -88,8 +87,7 @@ image_refs:
   width: 1800
   height: 1800
   license: CC BY-SA 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/7766529">Gary
-    T. Leavens</a>
+  author: Gary T. Leavens
   source_url: https://commons.wikimedia.org/wiki/File:Psittacara mitratus 364406988.jpg
   commons_filename: Psittacara mitratus 364406988.jpg
 review_status: auto

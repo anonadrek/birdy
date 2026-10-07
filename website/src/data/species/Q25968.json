@@ -1,0 +1,933 @@
+{
+  "qid": "Q25968",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 1,
+    "audioStruckSources": [
+      "https://commons.wikimedia.org/wiki/File:Passer_montanus.ogg"
+    ]
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Pilfinken har kastanjebrun hjässa och nacke samt en svart fläck på den vita kinden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har kastanjefärgad hjässa och nacke, och en svart fläck på den vita kinden."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Hakan, strupen och området mellan näbb och strupe är svarta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hakan, strupen och området mellan näbb och strupe är svarta."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Ovansidan är fläckig i rödbrunt, svart, gulbrunt och grått.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På ovansidan är pilfinken fläckig i rödbrunt, svart, gulbrunt och grått."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "De bruna vingarna har två tydliga smala vita vingband.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the brown wings have two distinct narrow white bars"
+        },
+        {
+          "article": "de",
+          "quote": "Die Flügel tragen zwei weiße Binden."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "sex_age",
+      "sv": "Hane och hona har likadan fjäderdräkt, vilket är ovanligt inom släktet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten är distinkt även inom sitt släkte då det inte förekommer några könsskillnader vad gäller fjäderdräkt."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Ungfåglar liknar de vuxna men har blekare färger.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenila individer ser också ut som de adulta, men färgerna tenderar att vara blekare."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hos ungfåglar är kindfläcken och strupfläcken ännu sotgrå.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "der Wangen- und der Kehlfleck sind bei ihnen noch rußgrau"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "size",
+      "sv": "Pilfinken är 12,5–14 cm lång, har omkring 21 cm vingspann och väger 24 g, ungefär 10 % mindre än gråsparven.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Pilfinken är 12,5–14 cm lång, med ett vingspann på omkring 21 cm och en vikt på 24 g, vilket gör den ungefär 10 % mindre än gråsparven."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Pilfinken saknar egentlig sång, men oparade eller uppvaktande hanar yttrar en upphetsad serie tschip-läten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ingen egentlig sång, men en upphetsad serie tschip-läten yttras av oparade eller uppvaktande hannar."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Flyktlätet är ett strävt teck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "flyktlätet är ett strävt teck"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Typiska läten är ett träaktigt tek tek tek och ljusa zwit-läten som går väl att skilja från gråsparvens.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Zu den typischen Lautäußerungen gehören ein hölzernes tek tek tek und helle zwit-Laute, die von denen des Haussperlings gut unterscheidbar sind."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Lätena liknar gråsparvens men är svagare och ofta mjukare.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "jedoch sind die Rufe leiser und vielfach auch weicher als beim Haussperling"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "habitat",
+      "sv": "I Europa förekommer pilfinken främst i öppna landskap med mindre inslag av skog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "men i Europa förekommer den främst i öppna landskap med smärre inslag av skog."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "I Europa finns den ofta vid klippkuster, i tomma byggnader och i hamlade pilar längs långsamma vattendrag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Europa hittas den ofta vid kuster med klippor, i tomma byggnader, i hamlade videväxter längs långsamma vattendrag"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Pilfinken föredrar boplatser nära våtmarker och undviker att häcka i intensivt brukad jordbruksmark.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Pilfinken visar en stark förkärlek för boplatser nära våtmarksmiljöer, och undviker häckning i intensivbrukad blandad jordbruksmark."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Där båda arterna finns häckar gråsparven i tätorter medan pilfinken häckar på landsbygden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När pilfinken och den något större gråsparven förekommer i samma område, häckar gråsparven i stadsområden medan den mindre pilfinken häckar på landsbygden."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Pilfinken är vanlig i södra och mellersta Sverige, och tätheten avtar norrut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är vanlig i södra och mellersta Sverige. Populationstätheten avtar norrut."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Pilfinken har utökat sin utbredning i Fennoskandien.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Pilfinken har utökat sin utbredning i Fennoskandia och östra Europa"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "breeding",
+      "sv": "Boet placeras ofta i ett hål i ett gammalt träd eller en klippvägg, men även under takpannor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vanligt är att den placerar sitt bo i en hålighet i ett gammalt träd eller i en klippvägg men även under takpannor"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Pilfinken använder gärna fågelholkar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den använder gärna fågelholkar. I en spansk undersökning"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "En typisk kull består av fem eller sex vita till blekgrå ägg med kraftiga fläckar eller prickar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En typisk kull består av fem eller sex ägg (sällan mer än fyra i Malaysia), som är vita till blekgrå och kraftigt märkta med fläckar eller prickar."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Båda föräldrarna ruvar äggen i 12–13 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas av båda föräldrar i 12–13 dagar innan de kläcks."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "food",
+      "sv": "Pilfinken äter främst frön och säd och söker föda på marken i flock.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Pilfinken är till övervägande del en frö- och sädätande fågel som födosöker på marken i flock"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Under häckningstiden matas ungarna till stor del med animalisk föda som insekter och spindlar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "särskilt under häckningssäsongen när ungarna till stor del utfodras med animalisk föda"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Pilfinken besöker fågelbord och uppskattar särskilt jordnötter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den besöker fågelbord, där den särskilt uppskattar jordnötter"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Under höst och vinter ses pilfinken i flockar vid städer, byar och gårdar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under höst och vinter ses den i flockar, vid städer, byar och gårdar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Pilfinken tillbringar mycket tid på marken där den rör sig hoppande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den tillbringar ganska mycket tid på marken där den rör sig hoppande."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Pilfinken är fridsammare än gråsparven och driver inte bort andra fåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Till lynnet är pilfinken fridsammare än gråsparven och driver inte bort andra fåglar."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Pilfinkar tar ofta långa sandbad.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Ausgedehnte Staubbäder gehören zu dem typischen Komfortverhalten von Feldsperlingen."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Skiljs från gråsparvshanen på mindre storlek, helt kastanjebrun hjässa och nacke samt svart fläck på den vita kinden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den mindre storleken, helt kastanjefärgade hjässan och nacken och den svarta fläcken på den vita kinden är ytterligare skillnader från gråsparvshanen."
+        },
+        {
+          "article": "en",
+          "quote": "the smaller size and brown, not grey, crown are additional differences from the male house sparrow"
+        }
+      ],
+      "other": {
+        "scientific": "Passer domesticus",
+        "qid": "Q14683"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december och januari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Pilfinken är en sparvfink som är vanlig i södra och mellersta Sverige.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Under höst och vinter ses den ofta i flockar vid städer, byar och gårdar.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Kastanjebrun hjässa och nacke samt en svart fläck på den vita kinden",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Svart haka och strupe, och svart mellan näbb och strupe",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Bruna vingar med två tydliga smala vita vingband",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Hane och hona ser likadana ut, ungfåglar är blekare med sotgrå kind- och strupfläck",
+          "factIds": [
+            "f05",
+            "f06",
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Pilfinken saknar egentlig sång, men oparade eller uppvaktande hanar yttrar en upphetsad serie tschip-läten.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Typiska läten är ett träaktigt tek tek tek och ljusa zwit-läten, och flyktlätet är ett strävt teck.",
+          "factIds": [
+            "f11",
+            "f10"
+          ]
+        },
+        {
+          "text": "Lätena liknar gråsparvens men är svagare och ofta mjukare.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Pilfinken är vanlig i södra och mellersta Sverige, och tätheten avtar norrut.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Den har utökat sin utbredning i Fennoskandien och rapporteras från alla 21 län.",
+          "factIds": [
+            "f18",
+            "d02"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i december och januari.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Där både pilfink och gråsparv finns häckar pilfinken på landsbygden, gärna nära våtmarker.",
+          "factIds": [
+            "f16",
+            "f15"
+          ]
+        },
+        {
+          "text": "Arten är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Pilfinken äter främst frön och säd och söker föda på marken i flock, där den rör sig hoppande.",
+          "factIds": [
+            "f23",
+            "f27"
+          ]
+        },
+        {
+          "text": "Ungarna matas till stor del med insekter och spindlar.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Den besöker fågelbord och uppskattar särskilt jordnötter.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Pilfinken är fridsammare än gråsparven, driver inte bort andra fåglar och tar ofta långa sandbad.",
+          "factIds": [
+            "f28",
+            "f29"
+          ]
+        },
+        {
+          "text": "Den häckar ofta i hål i gamla träd och använder gärna fågelholkar.",
+          "factIds": [
+            "f19",
+            "f20"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q14683",
+          "text": [
+            {
+              "text": "Pilfinken är mindre än gråsparvshanen och har helt kastanjebrun hjässa och nacke samt en svart fläck på den vita kinden.",
+              "factIds": [
+                "f30"
+              ]
+            },
+            {
+              "text": "Lätena är svagare och ofta mjukare än gråsparvens.",
+              "factIds": [
+                "f12"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Pilfink: så känner du igen arten på kastanjebrun hjässa och svart kindfläck, hur lätena låter och när den rapporteras som mest.",
+      "facts": {
+        "size": {
+          "value": "12,5 till 14 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Tree Sparrow is a sparrow that is common in southern and central Sweden.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "In autumn and winter it is often seen in flocks around towns, villages and farms.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Chestnut crown and nape, with a black spot on the white cheek",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Black chin and throat, and black between the bill and the throat",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Brown wings with two clear, narrow white wing bars",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Male and female look alike, juveniles are paler with sooty grey cheek and throat spots",
+          "factIds": [
+            "f05",
+            "f06",
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The Eurasian Tree Sparrow has no real song, but unpaired or courting males give an excited series of tschip calls.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Typical calls are a wooden tek tek tek and high zwit calls, and the flight call is a harsh teck.",
+          "factIds": [
+            "f11",
+            "f10"
+          ]
+        },
+        {
+          "text": "The calls resemble the House Sparrow's but are weaker and often softer.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It is common in southern and central Sweden, with density decreasing further north.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "It has expanded its range in Fennoscandia and is reported from all 21 counties.",
+          "factIds": [
+            "f18",
+            "d02"
+          ]
+        },
+        {
+          "text": "It is reported most in December and January.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Where it occurs alongside the House Sparrow, it breeds in the countryside, preferably near wetlands.",
+          "factIds": [
+            "f16",
+            "f15"
+          ]
+        },
+        {
+          "text": "It is not red-listed in the Swedish Red List 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mainly on seeds and grain, foraging on the ground in flocks and moving about by hopping.",
+          "factIds": [
+            "f23",
+            "f27"
+          ]
+        },
+        {
+          "text": "The young are fed largely on insects and spiders.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "It visits bird tables and is especially fond of peanuts.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It is more peaceable than the House Sparrow, does not chase other birds away and often takes long dust baths.",
+          "factIds": [
+            "f28",
+            "f29"
+          ]
+        },
+        {
+          "text": "It often nests in holes in old trees and readily uses nest boxes.",
+          "factIds": [
+            "f19",
+            "f20"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q14683",
+          "text": [
+            {
+              "text": "The Eurasian Tree Sparrow is smaller than the male House Sparrow and has an all chestnut crown and nape and a black spot on the white cheek.",
+              "factIds": [
+                "f30"
+              ]
+            },
+            {
+              "text": "Its calls are weaker and often softer.",
+              "factIds": [
+                "f12"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Eurasian Tree Sparrow: how to recognise it by its chestnut crown and black cheek spot, what its calls sound like and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "12.5 to 14 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "f377fac7f0a4ad4d"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:21:06.173812+00:00",
+      "factsHash": "f377fac7f0a4ad4d"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "pilfink",
+    "en": "eurasian-tree-sparrow"
+  },
+  "names": {
+    "sv": "Pilfink",
+    "en": "Eurasian Tree Sparrow",
+    "scientific": "Passer montanus"
+  },
+  "family": {
+    "latin": "Passeridae",
+    "sv": "Sparvfinkar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25968/hero.webp",
+      "width": 1600,
+      "height": 1600,
+      "author": "Mike Prince",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_Tree_Sparrow_(14181664512).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25968/extra.webp",
+      "width": 1200,
+      "height": 785,
+      "author": "Joe Pell",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Passer_montanus_(7).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25968/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Derek Paulo",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Passer_montanus_-_Eurasian_Tree_Sparrow_XC347807.mp3",
+    "sha256": "05db85aa42f22a4638ebd252b9a8bd922f62bb73f194b930edd73e9f4d7378d9",
+    "mp3Sha256": "997cacce9377721ea05aa2515786a81da7359a0c7c35e321ae02f58e18e0e321"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Pilfink",
+      "revision": "59694145"
+    },
+    "en": {
+      "title": "Eurasian tree sparrow",
+      "revision": "1371443274"
+    },
+    "de": {
+      "title": "Feldsperling",
+      "revision": "264877692"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 5231198,
+    "totalReports": 298898,
+    "months": [
+      100,
+      72,
+      43,
+      28,
+      23,
+      31,
+      33,
+      30,
+      33,
+      50,
+      73,
+      88
+    ],
+    "counties": {
+      "SE-K": 50,
+      "SE-W": 56,
+      "SE-X": 66,
+      "SE-I": 34,
+      "SE-N": 52,
+      "SE-Z": 51,
+      "SE-F": 56,
+      "SE-H": 50,
+      "SE-G": 43,
+      "SE-BD": 85,
+      "SE-T": 56,
+      "SE-E": 66,
+      "SE-M": 57,
+      "SE-D": 92,
+      "SE-AB": 73,
+      "SE-C": 82,
+      "SE-S": 57,
+      "SE-AC": 77,
+      "SE-Y": 100,
+      "SE-U": 48,
+      "SE-O": 65
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december och januari.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in December and January.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        50540,
+        25385,
+        28090,
+        27884,
+        26387,
+        19126,
+        15983,
+        14997,
+        17542,
+        25779,
+        23714,
+        23401
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 48509,
+        "SE-AB": 37939,
+        "SE-M": 29517,
+        "SE-C": 23080,
+        "SE-D": 21375,
+        "SE-H": 19601,
+        "SE-E": 13538,
+        "SE-N": 11697,
+        "SE-AC": 11140,
+        "SE-F": 11120,
+        "SE-BD": 10372,
+        "SE-T": 7946,
+        "SE-Y": 7247,
+        "SE-W": 7043,
+        "SE-X": 6433,
+        "SE-S": 5786,
+        "SE-U": 5275,
+        "SE-G": 4670,
+        "SE-Z": 3585,
+        "SE-I": 3012,
+        "SE-K": 2183
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

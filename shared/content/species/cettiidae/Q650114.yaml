@@ -6,8 +6,9 @@ taxonomy:
   genus: Cettia
   ioc_order: Passeriformes
 names:
-  sv: Cettisångare
+  sv: Sumpcettia
   en: Cetti’s Warbler
+  former_sv: Cettisångare
 abundance: ovanlig
 iucn_status: LC
 season:
@@ -30,10 +31,10 @@ regions:
 - DK
 - DE
 description:
-  sv: '# Cettisångare
+  sv: '# Sumpcettia
 
 
-    Cettisångare är en liten, diskret fågel och den enda europeiska medlemmen av familjen
+    Sumpcettia är en liten, diskret fågel och den enda europeiska medlemmen av familjen
     cettior. Den är svåridentifierad med sitt brunaktiga och gräsliknande utseende,
     vilket gör det lätt att förbise den i sin naturliga miljö.
 
@@ -44,23 +45,23 @@ description:
     föredrar att röra sig i tät vegetation där den är svår att få ögonkontakt med.
 
 
-    Cettisångaren förekommer normalt från södra England och södra Europa österut till
+    Sumpcettian förekommer normalt från södra England och södra Europa österut till
     Afghanistan, samt i Nordafrika. Den ses huvudsakligen i våtmarker, vass och tätt
     buskage. Norrut från sitt vanliga utbredningsområde är den endast tillfällig och
     mycket sällsynt – endast tre fynd är registrerade i Sverige, vilket gör dessa
     observationer extra värdefulla för lokala fågelintresserade.'
   en: ''
 migration:
-  sv: '**Cettisångare (Cettia cetti) i Skandinavien**
+  sv: '**Sumpcettia (Cettia cetti) i Skandinavien**
 
 
-    Cettisångaren är en mycket sällsynt gäst i Skandinavien och Nordeuropa. Arten
-    förekommer normalt inte regelbundet i regionen utan är istället en tillfällig
-    besökare långt norr om sitt huvudsakliga utbredningsområde i södra och centrala
-    Europa. I Sverige har arten endast noterats tre gånger, vilket understryker dess
-    extrema sällsynthet i norr. Några bestämd migrationsmönster för arten i Skandinavien
-    kan därför inte fastställas, då förekomsterna verkar vara sporadiska vandringar
-    långt bortom artens normala område snarare än regelbundna migrationsmönster.'
+    Sumpcettian är en mycket sällsynt gäst i Skandinavien och Nordeuropa. Arten förekommer
+    normalt inte regelbundet i regionen utan är istället en tillfällig besökare långt
+    norr om sitt huvudsakliga utbredningsområde i södra och centrala Europa. I Sverige
+    har arten endast noterats tre gånger, vilket understryker dess extrema sällsynthet
+    i norr. Några bestämd migrationsmönster för arten i Skandinavien kan därför inte
+    fastställas, då förekomsterna verkar vara sporadiska vandringar långt bortom artens
+    normala område snarare än regelbundna migrationsmönster.'
   en: ''
 image_refs:
 - role: hero
@@ -68,7 +69,7 @@ image_refs:
   width: 2400
   height: 1701
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:WikiPokos" title="User:WikiPokos">WikiPokos</a>
+  author: WikiPokos
   source_url: https://commons.wikimedia.org/wiki/File:Cetia ruiseñor (Cettia cetti)
     en Salburua.jpg
   commons_filename: Cetia ruiseñor (Cettia cetti) en Salburua.jpg
@@ -77,7 +78,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/mattpilkington">mattpilkington</a>
+  author: mattpilkington
   source_url: https://commons.wikimedia.org/wiki/File:Cetti's Warbler (Cettia cetti),
     Leighton Moss, Lancashire 2.jpg
   commons_filename: Cetti's Warbler (Cettia cetti), Leighton Moss, Lancashire 2.jpg
@@ -86,7 +87,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/mattpilkington">mattpilkington</a>
+  author: mattpilkington
   source_url: https://commons.wikimedia.org/wiki/File:Cetti's Warbler (Cettia cetti),
     Leighton Moss, Lancashire 3.jpg
   commons_filename: Cetti's Warbler (Cettia cetti), Leighton Moss, Lancashire 3.jpg

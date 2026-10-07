@@ -62,12 +62,18 @@ migration:
 image_refs:
 - role: hero
   path: Q130241/hero.webp
-  width: 2375
-  height: 1926
+  width: 1534
+  height: 953
+  license: CC BY 4.0
+  author: Jan Ebr
+  source_url: https://commons.wikimedia.org/wiki/File:Rhynchostruthus percivali.jpg
+  commons_filename: Rhynchostruthus percivali.jpg
+- role: secondary
+  path: Q130241/secondary-1.webp
+  width: 1800
+  height: 1460
   license: Public domain
-  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Joseph_Smit" class="extiw"
-    title="w:en:Joseph Smit"><span title="Dutch natural history illustrator (1836-1929)">Joseph
-    Smit</span></a></bdi>
+  author: Joseph Smit
   source_url: https://commons.wikimedia.org/wiki/File:Rhynchostruthus percivali from
     RhynchostruthusRiebeckiSmit.jpg
   commons_filename: Rhynchostruthus percivali from RhynchostruthusRiebeckiSmit.jpg

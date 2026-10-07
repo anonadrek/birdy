@@ -1,0 +1,212 @@
+{
+  "qid": "Q191155",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "sparvuggla",
+    "en": "eurasian-pygmy-owl"
+  },
+  "names": {
+    "sv": "Sparvuggla",
+    "en": "Eurasian Pygmy Owl",
+    "scientific": "Glaucidium passerinum"
+  },
+  "family": {
+    "latin": "Strigidae",
+    "sv": "Ugglor"
+  },
+  "group": "owls",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q191155/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Frank Vassen",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_Pygmy_Owl_(Glaucidium_passerinum),_Eastern_Belgium_(14581626193).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q191155/extra.webp",
+      "width": 1200,
+      "height": 824,
+      "author": "Frank Vassen",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_Pygmy_Owl_(Glaucidium_passerinum)_in_the_drizzle,_21.06.2015_(18403237513).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q191155/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Rabe19",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sperlingskauz.OGG",
+    "sha256": "9feb963145e0b81fb550b3bdcb26c217660bec8fd8a0c7ff8b507fe186f14be7",
+    "mp3Sha256": "608f52cc0de8ba319f40a0d88f41d369594fcee5ee8c2f4dcfca065f36e56747"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Sparvuggla",
+      "revision": "59195393"
+    },
+    "en": {
+      "title": "Eurasian pygmy owl",
+      "revision": "1360791728"
+    },
+    "de": {
+      "title": "Sperlingskauz",
+      "revision": "266967152"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T15:49:14.655059+00:00",
+    "gbifTaxonKey": 5232162,
+    "totalReports": 29745,
+    "months": [
+      50,
+      100,
+      79,
+      14,
+      2,
+      4,
+      3,
+      6,
+      19,
+      33,
+      51,
+      41
+    ],
+    "counties": {
+      "SE-K": 14,
+      "SE-W": 74,
+      "SE-X": 56,
+      "SE-I": 1,
+      "SE-N": 11,
+      "SE-Z": 81,
+      "SE-F": 36,
+      "SE-H": 13,
+      "SE-G": 45,
+      "SE-BD": 48,
+      "SE-T": 56,
+      "SE-E": 21,
+      "SE-M": 3,
+      "SE-D": 18,
+      "SE-AB": 12,
+      "SE-C": 56,
+      "SE-S": 73,
+      "SE-AC": 58,
+      "SE-Y": 82,
+      "SE-U": 100,
+      "SE-O": 27
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i februari.",
+        "Rapporteras sällan i maj till augusti.",
+        "Andelen av alla fågelrapporter är högst i Västmanland, Västernorrland och Jämtland."
+      ],
+      "en": [
+        "Reported most in February.",
+        "Rarely reported in May to August.",
+        "Its share of all bird reports is highest in Västmanland, Västernorrland and Jämtland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        3896,
+        5389,
+        7879,
+        2215,
+        433,
+        380,
+        241,
+        468,
+        1560,
+        2610,
+        2510,
+        1663
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 4265,
+        "SE-C": 3332,
+        "SE-U": 2311,
+        "SE-W": 1959,
+        "SE-AC": 1774,
+        "SE-T": 1664,
+        "SE-S": 1566,
+        "SE-F": 1483,
+        "SE-AB": 1322,
+        "SE-Y": 1250,
+        "SE-BD": 1239,
+        "SE-Z": 1208,
+        "SE-X": 1148,
+        "SE-H": 1101,
+        "SE-G": 1015,
+        "SE-D": 901,
+        "SE-E": 896,
+        "SE-N": 527,
+        "SE-M": 350,
+        "SE-K": 128,
+        "SE-I": 1
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

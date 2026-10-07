@@ -72,8 +72,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
-    title="User:מינוזיג">מינוזיג</a>
+  author: מינוזיג
   source_url: https://commons.wikimedia.org/wiki/File:Scotocerca inquieta, Israel.jpg
   commons_filename: Scotocerca inquieta, Israel.jpg
 - role: secondary
@@ -81,8 +80,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
-    title="User:מינוזיג">מינוזיג</a>
+  author: מינוזיג
   source_url: https://commons.wikimedia.org/wiki/File:Scotocerca inquieta. Israel.jpg
   commons_filename: Scotocerca inquieta. Israel.jpg
 - role: secondary
@@ -90,8 +88,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
-    title="User:מינוזיג">מינוזיג - MinoZig</a>
+  author: מינוזיג - MinoZig
   source_url: https://commons.wikimedia.org/wiki/File:Scotocerca inquieta - Israel.jpg
   commons_filename: Scotocerca inquieta - Israel.jpg
 review_status: auto

@@ -94,8 +94,7 @@ image_refs:
   width: 2048
   height: 1536
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2401694">William
-    Stephens</a>
+  author: William Stephens
   source_url: https://commons.wikimedia.org/wiki/File:Turnix sylvaticus 64607517.jpg
   commons_filename: Turnix sylvaticus 64607517.jpg
 - role: secondary
@@ -109,12 +108,12 @@ image_refs:
 - role: secondary
   path: Q18836/secondary-2.webp
   width: 1800
-  height: 1429
+  height: 1013
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:%D0%A1%D1%82%D0%B5%D1%84%D0%B0%D0%BD%D0%BA%D0%BE1982"
-    title="User:Стефанко1982">Стефанко1982</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Turnix sylvaticus dist.png
-  commons_filename: Turnix sylvaticus dist.png
+  author: Alandmanson
+  source_url: https://commons.wikimedia.org/wiki/File:Kurrichane Buttonquail 2016
+    01 01 2734.jpg
+  commons_filename: Kurrichane Buttonquail 2016 01 01 2734.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T19:45:41.248322+00:00'

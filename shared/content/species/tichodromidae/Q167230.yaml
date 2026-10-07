@@ -97,34 +97,31 @@ migration:
 image_refs:
 - role: hero
   path: Q167230/hero.webp
-  width: 2400
-  height: 2387
+  width: 2300
+  height: 1534
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Wallcreeper (Tichodroma muraria)
-    female composite Piatra Craiului.jpg
-  commons_filename: Wallcreeper (Tichodroma muraria) female composite Piatra Craiului.jpg
+    female Piatra Craiului.jpg
+  commons_filename: Wallcreeper (Tichodroma muraria) female Piatra Craiului.jpg
 - role: secondary
   path: Q167230/secondary-1.webp
   width: 1800
   height: 1350
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Cyornis&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Cyornis (page does not exist)">Raman Kumar</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Wallcreeper - Tichodroma muraria
-    - P1050326.jpg
-  commons_filename: Wallcreeper - Tichodroma muraria - P1050326.jpg
+  license: CC BY 4.0
+  author: Ian Dugdale
+  source_url: https://commons.wikimedia.org/wiki/File:Tichodroma muraria - Ian Dugdale
+    - 547329333.jpeg
+  commons_filename: Tichodroma muraria - Ian Dugdale - 547329333.jpeg
 - role: secondary
   path: Q167230/secondary-2.webp
   width: 1800
-  height: 1350
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Cyornis&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Cyornis (page does not exist)">Raman Kumar</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Wallcreeper - Tichodroma muraria
-    - P1050384.jpg
-  commons_filename: Wallcreeper - Tichodroma muraria - P1050384.jpg
+  height: 1200
+  license: CC BY 4.0
+  author: TRinaud
+  source_url: https://commons.wikimedia.org/wiki/File:Wallcreeper (Tichodroma muraria)
+    2023.jpg
+  commons_filename: Wallcreeper (Tichodroma muraria) 2023.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T19:46:38.909670+00:00'

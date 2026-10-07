@@ -100,27 +100,24 @@ image_refs:
   width: 2399
   height: 2400
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:BertSeghers" title="User:BertSeghers">Bert
-    Seghers</a>
+  author: Bert Seghers
   source_url: https://commons.wikimedia.org/wiki/File:Branta-ruficollis-London2014.JPG
   commons_filename: Branta-ruficollis-London2014.JPG
 - role: secondary
   path: Q187852/secondary-1.webp
-  width: 1219
-  height: 1800
-  license: CC0
-  author: Rijksmuseum
-  source_url: https://commons.wikimedia.org/wiki/File:Roodhalsgans (Branta ruficollis)
-    Anas Brasiliana (titel op object), RP-T-BR-2017-1-5-76.jpg
-  commons_filename: Roodhalsgans (Branta ruficollis) Anas Brasiliana (titel op object),
-    RP-T-BR-2017-1-5-76.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: Frédéric Bisson
+  source_url: https://commons.wikimedia.org/wiki/File:Branta ruficollis by Frédéric
+    Bisson.jpg
+  commons_filename: Branta ruficollis by Frédéric Bisson.jpg
 - role: secondary
   path: Q187852/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/41018892@N00">David
-    Long</a> from London, United Kingdom
+  author: David Long
   source_url: https://commons.wikimedia.org/wiki/File:Branta ruficollis -Beale Park,
     Berkshire, England-8a.jpg
   commons_filename: Branta ruficollis -Beale Park, Berkshire, England-8a.jpg

@@ -72,28 +72,26 @@ image_refs:
   width: 2400
   height: 1805
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
-    ten Cate</a>
+  author: Bouke ten Cate
   source_url: https://commons.wikimedia.org/wiki/File:Duinpieper - tawny pipit - Anthus
     campestris.tif
   commons_filename: Duinpieper - tawny pipit - Anthus campestris.tif
 - role: secondary
   path: Q27226/secondary-1.webp
   width: 1800
-  height: 1235
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
-  source_url: https://commons.wikimedia.org/wiki/File:Tawny Pipit. Anthus campestris
-    (1) - Flickr - gailhampshire.jpg
-  commons_filename: Tawny Pipit. Anthus campestris (1) - Flickr - gailhampshire.jpg
+  height: 1200
+  license: CC BY-SA 4.0
+  author: Tisha Mukherjee
+  source_url: https://commons.wikimedia.org/wiki/File:Tawny Pipit in Tal Chhapar Sanctuary
+    November 2025 by Tisha Mukherjee 04.jpg
+  commons_filename: Tawny Pipit in Tal Chhapar Sanctuary November 2025 by Tisha Mukherjee
+    04.jpg
 - role: secondary
   path: Q27226/secondary-2.webp
   width: 1800
   height: 1349
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:VezeIvan&amp;action=edit&amp;redlink=1"
-    class="new" title="User:VezeIvan (page does not exist)">Иван Везенковић</a>
+  author: Иван Везенковић
   source_url: https://commons.wikimedia.org/wiki/File:Tawny Pipit Anthus campestris.jpg
   commons_filename: Tawny Pipit Anthus campestris.jpg
 review_status: auto

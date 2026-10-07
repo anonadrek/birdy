@@ -102,7 +102,7 @@ image_refs:
   width: 1536
   height: 2048
   license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Orlica" title="User:Orlica">Orlica</a>
+  author: Orlica
   source_url: https://commons.wikimedia.org/wiki/File:Falco rusticolus in Spain.jpg
   commons_filename: Falco rusticolus in Spain.jpg
 - role: secondary
@@ -110,8 +110,7 @@ image_refs:
   width: 1205
   height: 1800
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25609635@N03">Elena
-    Gaillard</a> from New York, USA
+  author: Elena Gaillard
   source_url: https://commons.wikimedia.org/wiki/File:Falco rusticolus 1.jpg
   commons_filename: Falco rusticolus 1.jpg
 - role: secondary
@@ -119,8 +118,7 @@ image_refs:
   width: 1308
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Julesvernex2" title="User:Julesvernex2">Jules
-    Verne Times Two</a>
+  author: Jules Verne Times Two
   source_url: https://commons.wikimedia.org/wiki/File:Gyrfalcon (Falco rusticolus),
     Mafra National Palace, Mafra, Portugal julesvernex2.jpg
   commons_filename: Gyrfalcon (Falco rusticolus), Mafra National Palace, Mafra, Portugal

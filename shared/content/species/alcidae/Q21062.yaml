@@ -93,7 +93,7 @@ image_refs:
   width: 2400
   height: 1596
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Common guillemot (Uria aalge).jpg
   commons_filename: Common guillemot (Uria aalge).jpg
 - role: secondary
@@ -101,7 +101,7 @@ image_refs:
   width: 1800
   height: 1197
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Common guillemot (Uria aalge),
     Heligoland.jpg
   commons_filename: Common guillemot (Uria aalge), Heligoland.jpg
@@ -110,8 +110,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Common murre (Uria aalge) 2021.jpg
   commons_filename: Common murre (Uria aalge) 2021.jpg
 review_status: approved

@@ -86,21 +86,21 @@ image_refs:
 - role: hero
   path: Q1193031/hero.webp
   width: 2400
-  height: 1600
+  height: 1715
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Robdefreitas&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Robdefreitas (page does not exist)">Robdefreitas</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Tibibt (Emberiza sahari), Marrakesh.jpg
-  commons_filename: Tibibt (Emberiza sahari), Marrakesh.jpg
+  author: Tisha Mukherjee
+  source_url: https://commons.wikimedia.org/wiki/File:Striolated Bunting in Saswad
+    August 2025 by Tisha Mukherjee 03.jpg
+  commons_filename: Striolated Bunting in Saswad August 2025 by Tisha Mukherjee 03.jpg
 - role: secondary
   path: Q1193031/secondary-1.webp
   width: 1800
-  height: 1069
-  license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/145489125@N03">peterichman</a>
-  source_url: https://commons.wikimedia.org/wiki/File:House Bunting ( Emberiza striolata
-    ) ... Southern Morocco (53460985289).jpg
-  commons_filename: House Bunting ( Emberiza striolata ) ... Southern Morocco (53460985289).jpg
+  height: 1200
+  license: CC BY-SA 4.0
+  author: Tisha Mukherjee
+  source_url: https://commons.wikimedia.org/wiki/File:Striolated Bunting in Saswad
+    August 2025 by Tisha Mukherjee 10.jpg
+  commons_filename: Striolated Bunting in Saswad August 2025 by Tisha Mukherjee 10.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T18:38:03.619035+00:00'

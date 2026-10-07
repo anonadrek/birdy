@@ -102,19 +102,17 @@ image_refs:
 - role: hero
   path: Q26657/hero.webp
   width: 2400
-  height: 1800
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Calandrella" title="User:Calandrella">Calandrella</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Regulus regulus ringed by Landsort
-    Bird Observatory-1.JPG
-  commons_filename: Regulus regulus ringed by Landsort Bird Observatory-1.JPG
+  height: 1600
+  license: CC BY 4.0
+  author: Alexis Lours
+  source_url: https://commons.wikimedia.org/wiki/File:Goldcrest 2025 11 30.jpg
+  commons_filename: Goldcrest 2025 11 30.jpg
 - role: secondary
   path: Q26657/secondary-1.webp
   width: 1800
   height: 1675
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Goldcrest, male (Regulus regulus)
     (25207928227).jpg
   commons_filename: Goldcrest, male (Regulus regulus) (25207928227).jpg
@@ -123,13 +121,16 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Stephan_Sprinz" title="User:Stephan
-    Sprinz">Stephan Sprinz</a>
+  author: Stephan Sprinz
   source_url: https://commons.wikimedia.org/wiki/File:Wintergoldhähnchen (Regulus
     regulus) 03.jpg
   commons_filename: Wintergoldhähnchen (Regulus regulus) 03.jpg
 review_status: approved
-review_notes: "Kungsfågel — Regulus regulus från Landsort Bird Observatory; allmän SE-art året runt i barrskog."
+review_notes: 'Kungsfågel — Regulus regulus från Landsort Bird Observatory; allmän SE-art året runt i
+  barrskog.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T20:42:57.981116+00:00'
 sources:
   wikipedia_sv_revision: '58994190'
