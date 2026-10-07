@@ -22,14 +22,11 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.exifinterface.media.ExifInterface
 import androidx.lifecycle.viewmodel.compose.viewModel
-import birdy_bird_scanner.composeapp.generated.resources.Res
-import birdy_bird_scanner.composeapp.generated.resources.bootstrap_loading
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.di.AppGraph
-import se.birdy.app.ui.components.JournalLoading
+import se.birdy.app.ui.components.PhotoModelStartingView
 import se.birdy.app.ui.components.PhotoModelUnavailableView
 import se.birdy.ml.ClassifierBootstrapState
 import se.birdy.ml.FrameFormat
@@ -60,7 +57,7 @@ actual fun PhotoAnalyzeHost(
         // call graph.photoAnalyzeViewModel() yet (it requires Ready); show an in-place loader
         // scoped to this screen instead of AppGate's full-screen one, so Photo-ID stays on the
         // back stack.
-        JournalLoading(label = stringResource(Res.string.bootstrap_loading))
+        PhotoModelStartingView(onBack = onBack)
         return
     }
     val context = LocalContext.current

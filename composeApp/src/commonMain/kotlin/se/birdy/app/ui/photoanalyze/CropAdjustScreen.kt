@@ -45,6 +45,7 @@ import birdy_bird_scanner.composeapp.generated.resources.crop_cancel
 import birdy_bird_scanner.composeapp.generated.resources.crop_confirm
 import birdy_bird_scanner.composeapp.generated.resources.crop_rotate
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BackTopBar
 import se.birdy.app.ui.components.PlatformBackHandler
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.OffwhiteWarm
@@ -85,6 +86,9 @@ fun CropAdjustScreen(
     val edgeMarginPx = with(LocalDensity.current) { CROP_EDGE_MARGIN.toPx() }
 
     Column(modifier = Modifier.fillMaxSize().paperBackground()) {
+        // A way back at the top too (release 1.3.0 Task 7b), besides "Avbryt" at the bottom. It
+        // sits on the paper above the crop area, so no corner drag can start on it.
+        BackTopBar(onBack = onCancel, modifier = Modifier.padding(bottom = 8.dp))
         Box(
             modifier =
                 Modifier

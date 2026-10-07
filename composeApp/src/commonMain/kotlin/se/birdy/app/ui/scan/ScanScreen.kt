@@ -71,6 +71,7 @@ import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BackButton
 import se.birdy.app.ui.components.JournalHeadline
+import se.birdy.app.ui.components.backButtonPlacement
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.OffwhiteWarm
@@ -202,21 +203,28 @@ fun ScanScreen(
             )
         }
         // Back-arrow top-left across every state — last in stack so it sits above the
-        // full-screen tap-detector and remains clickable.
+        // full-screen tap-detector and remains clickable. Dark glass over the camera image, the
+        // paper button on the paper permission and error views (release 1.3.0 Task 7b).
+        val overPaper = state.showsPaperView()
         BackButton(
             onClick = onBack,
             contentDescription = stringResource(Res.string.profile_back),
+            onDark = !overPaper,
             modifier =
                 Modifier
                     .align(Alignment.TopStart)
                     .windowInsetsPadding(WindowInsets.statusBars)
-                    .padding(start = 12.dp, top = 8.dp),
+                    .backButtonPlacement(onDark = !overPaper),
         )
     }
     if (showDemoSheet) {
         DemoModeBottomSheet(onDismiss = { showDemoSheet = false })
     }
 }
+
+/** The permission and error views are paper; every other state shows the camera image. */
+private fun ScanUiState.showsPaperView(): Boolean =
+    this is ScanUiState.PermissionRequired || this is ScanUiState.PermissionDenied || this is ScanUiState.Error
 
 @Composable
 private fun DemoBanner(

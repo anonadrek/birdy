@@ -14,17 +14,24 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -57,15 +64,17 @@ import birdy_bird_scanner.composeapp.generated.resources.profile_label_photos
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
-import se.birdy.app.ui.components.BackButton
+import se.birdy.app.ui.components.BackTopBar
 import se.birdy.app.ui.components.EmptyState
 import se.birdy.app.ui.components.HeroImage
 import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.MicroLabel
 import se.birdy.app.ui.components.PaperSheet
 import se.birdy.app.ui.components.PaperSheetOverlap
+import se.birdy.app.ui.components.PhotoBackButton
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.PremiumTeaserCard
+import se.birdy.app.ui.components.StatusBarBand
 import se.birdy.app.ui.encyclopedia.localizedFamilyLabel
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaBorder
@@ -73,12 +82,16 @@ import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.MossCreme
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.TextOnHero
+import se.birdy.app.ui.theme.paperBackground
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.app.util.speciesImageUri
 import se.birdy.content.Abundance
 import se.birdy.content.Locale
 import se.birdy.content.model.Species
+
+/** The photo's height below the status bar, at the top of the profile. */
+private val ProfilePhotoHeight = 280.dp
 
 @Composable
 fun SpeciesProfileScreen(
@@ -90,12 +103,23 @@ fun SpeciesProfileScreen(
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     when (val s = state) {
-        SpeciesProfileUiState.Loading -> JournalLoading()
+        // The profile route draws behind the status bar (its photo top), so the plain states
+        // pad it themselves. Both can be reached straight from a `birdy://species/<id>` link,
+        // so they need their own way back (release 1.3.0 Task 7b).
+        SpeciesProfileUiState.Loading ->
+            Column(Modifier.fillMaxSize().paperBackground().statusBarsPadding()) {
+                BackTopBar(onBack = onBack, contentDescription = stringResource(Res.string.profile_back))
+                JournalLoading(modifier = Modifier.weight(1f))
+            }
         SpeciesProfileUiState.NotFound ->
-            EmptyState(
-                title = stringResource(Res.string.not_found_title),
-                body = stringResource(Res.string.not_found_body),
-            )
+            Column(Modifier.fillMaxSize().paperBackground().statusBarsPadding()) {
+                BackTopBar(onBack = onBack, contentDescription = stringResource(Res.string.profile_back))
+                EmptyState(
+                    title = stringResource(Res.string.not_found_title),
+                    body = stringResource(Res.string.not_found_body),
+                    modifier = Modifier.weight(1f),
+                )
+            }
         is SpeciesProfileUiState.Loaded -> ProfileContent(s.species, locale, onBack, onPremiumClick, showPremiumTeaser)
     }
 }
@@ -109,9 +133,7 @@ private fun ProfileContent(
     onPremiumClick: () -> Unit,
     showPremiumTeaser: Boolean,
 ) {
-    val serif = rememberDmSerifDisplay()
     val familyLabel = localizedFamilyLabel(locale, species.taxonomy.family, species.taxonomy.familySv)
-    val heroImage = species.images.firstOrNull { it.role == "hero" } ?: species.images.firstOrNull()
     // The family lives ONLY in the kicker now — the quality review found it shown twice (kicker
     // + an abundance-adjacent pill in ProfilePillRow, removed below). SV pairs the Swedish family
     // name with the Latin one ("Mesar · Paridae") when both exist and differ; EN shows the family
@@ -127,7 +149,57 @@ private fun ProfileContent(
             familyLabel
         }
 
-    LazyColumn(modifier = Modifier.fillMaxSize().background(MossCreme)) {
+    val listState = rememberLazyListState()
+    val photoScrolledAway by rememberPhotoScrolledAway(listState)
+    Box(modifier = Modifier.fillMaxSize().background(MossCreme)) {
+        ProfileList(
+            species = species,
+            kicker = kicker,
+            onPremiumClick = onPremiumClick,
+            showPremiumTeaser = showPremiumTeaser,
+            listState = listState,
+        )
+        StatusBarBand(photoScrolledAway = photoScrolledAway, color = MossCreme)
+        // Over the list, not in the hero's topBar: it stays put when the photo scrolls away
+        // (release 1.3.0 Task 7b).
+        PhotoBackButton(onBack = onBack, contentDescription = stringResource(Res.string.profile_back))
+    }
+}
+
+/**
+ * True once the photo at the top of the hero (the list's first item, [ProfilePhotoHeight] below
+ * the status bar) no longer reaches under the status bar: the same test PhotoHero uses to switch
+ * the status bar icons, read from the list's layout.
+ */
+@Composable
+private fun rememberPhotoScrolledAway(listState: LazyListState): State<Boolean> {
+    val photoPx = with(LocalDensity.current) { ProfilePhotoHeight.roundToPx() }
+    return remember(listState, photoPx) {
+        derivedStateOf {
+            val visible = listState.layoutInfo.visibleItemsInfo
+            // Nothing laid out yet (the first frame): the photo is about to be there.
+            val hero = visible.firstOrNull { it.index == 0 }
+            visible.isNotEmpty() && (hero == null || hero.offset + photoPx <= 0)
+        }
+    }
+}
+
+// Moved unchanged out of ProfileContent so the back button can sit over the list instead of
+// scrolling away with it (release 1.3.0 Task 7b). ProfileContent's long-method and complexity
+// findings, baselined until then, moved with it.
+@Suppress("LongMethod", "CyclomaticComplexMethod")
+@OptIn(ExperimentalResourceApi::class)
+@Composable
+private fun ProfileList(
+    species: Species,
+    kicker: String,
+    onPremiumClick: () -> Unit,
+    showPremiumTeaser: Boolean,
+    listState: LazyListState,
+) {
+    val serif = rememberDmSerifDisplay()
+    val heroImage = species.images.firstOrNull { it.role == "hero" } ?: species.images.firstOrNull()
+    LazyColumn(modifier = Modifier.fillMaxSize(), state = listState) {
         item {
             PhotoHero(
                 kicker = kicker,
@@ -135,7 +207,7 @@ private fun ProfileContent(
                 latinName = species.scientificName,
                 // The photo keeps the top 280dp and the name sits below it, so the whole bird
                 // is in view (2026-10-06): a 3:2 photo is ~274dp tall on a 411dp-wide phone.
-                height = 280.dp,
+                height = ProfilePhotoHeight,
                 bottomPadding = PaperSheetOverlap + 18.dp,
                 drawBehindStatusBar = true,
                 textBelowPhoto = true,
@@ -150,14 +222,6 @@ private fun ProfileContent(
                             )
                         }
                     },
-                topBar = {
-                    BackButton(
-                        onClick = onBack,
-                        contentDescription = stringResource(Res.string.profile_back),
-                        onDark = true,
-                        modifier = Modifier.padding(start = 12.dp),
-                    )
-                },
                 bottomContent = {
                     species.formerName?.let { FormerNameLine(formerName = it) }
                     Spacer(Modifier.height(10.dp))

@@ -1,3 +1,5 @@
+@file:Suppress("TooManyFunctions") // the bar, its tabs and the rules for which tab a stack belongs to.
+
 package se.birdy.app.ui.scaffold
 
 import androidx.compose.foundation.LocalIndication
@@ -93,6 +95,10 @@ private data class TabSpec(
     val label: StringResource,
     val icon: ImageVector,
     val ownedRoutes: Set<KClass<out AppRoute>> = setOf(route::class),
+    // The screen the tab opens on. The encyclopedia's route is its nested graph, whose first
+    // screen is the list (release 1.3.0 Task 7b review: popping to the graph itself also popped
+    // the graph, so the tab jumped to Identifiera).
+    val rootRoute: AppRoute = route,
 )
 
 private val tabs =
@@ -110,8 +116,21 @@ private val tabs =
                     AppRoute.MatchResult::class,
                 ),
         ),
-        TabSpec(AppRoute.Archive, Res.string.tab_archive, Icons.AutoMirrored.Filled.LibraryBooks),
-        TabSpec(AppRoute.Lifelist, Res.string.tab_lifelist, Icons.Outlined.CollectionsBookmark),
+        TabSpec(
+            route = AppRoute.Archive,
+            label = Res.string.tab_archive,
+            icon = Icons.AutoMirrored.Filled.LibraryBooks,
+            rootRoute = AppRoute.ArchiveList,
+        ),
+        // Release 1.3.0 Task 7b: the weekly recap and season statistics are Mina arter's screens
+        // (the recap opened from its notification marks Mina arter too, unless another tab's
+        // stack is open, see markedTab).
+        TabSpec(
+            route = AppRoute.Lifelist,
+            label = Res.string.tab_lifelist,
+            icon = Icons.Outlined.CollectionsBookmark,
+            ownedRoutes = setOf(AppRoute.Lifelist::class, AppRoute.WeeklyRecap::class, AppRoute.SeasonStats::class),
+        ),
         TabSpec(
             route = AppRoute.Badges,
             label = Res.string.tab_badges,
@@ -131,6 +150,9 @@ fun BottomNavBar(
     dailyBirdDot: Boolean = false,
 ) {
     val backStackEntry by navController.currentBackStackEntryAsState()
+    // The back stack only changes together with its top entry, so this is worked out again
+    // exactly when backStackEntry changes.
+    val markedTab = remember(backStackEntry) { backStackEntry?.let { navController.markedTab(it.destination) } }
     Row(
         modifier =
             Modifier
@@ -153,30 +175,11 @@ fun BottomNavBar(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         for (tab in tabs) {
-            val selected =
-                backStackEntry?.destination?.parentChain()?.any { dest ->
-                    tab.ownedRoutes.any { dest.hasRoute(it) }
-                } == true
             TabCell(
                 tab = tab,
-                selected = selected,
+                selected = tab == markedTab,
                 showDot = dailyBirdDot && tab.route == AppRoute.Listen,
-                onClick = {
-                    // If already inside this tab but on a sub-screen, pop back to the tab root
-                    // so tapping the Identify tab from Scan/PhotoAnalyze/AudioScan returns to
-                    // the launcher hub. Otherwise navigate cross-tab as usual.
-                    val onTabRoot =
-                        backStackEntry?.destination?.hasRoute(tab.route::class) == true
-                    if (selected && !onTabRoot) {
-                        navController.popBackStack(tab.route, inclusive = false)
-                    } else {
-                        navController.navigate(tab.route) {
-                            popUpTo(navController.graph.startDestinationId) { saveState = true }
-                            launchSingleTop = true
-                            restoreState = true
-                        }
-                    }
-                },
+                onClick = { navController.onTabClick(tab) },
                 modifier = Modifier.weight(1f),
             )
         }
@@ -282,3 +285,120 @@ private fun NewDot(modifier: Modifier = Modifier) {
 }
 
 private fun NavDestination.parentChain(): Sequence<NavDestination> = generateSequence(this) { it.parent }
+
+/** Screens opened on top of any tab that no tab owns: the bar marks no tab on them. */
+private val untabbedRoutes: Set<KClass<out AppRoute>> =
+    setOf(
+        AppRoute.Settings::class,
+        AppRoute.About::class,
+        AppRoute.OnboardingReplay::class,
+        AppRoute.Premium::class,
+        AppRoute.DebugBenchmark::class,
+        AppRoute.DebugDiagnostics::class,
+    )
+
+private fun NavDestination.ownedBy(tab: TabSpec): Boolean {
+    val chain = parentChain()
+    return chain.any { dest -> tab.ownedRoutes.any { dest.hasRoute(it) } }
+}
+
+private val identifyTab: TabSpec = tabs.first { it.route == AppRoute.Listen }
+
+/** Scan, photo-ID, audio-ID and their results: always Identifiera's, never saved or restored. */
+private fun NavDestination.isIdentifyFlow(): Boolean = ownedBy(identifyTab)
+
+// getBackStackEntry is the only public way to ask whether a route is on the back stack
+// (NavController.currentBackStack is @RestrictTo(LIBRARY_GROUP), and an entry has no link to the
+// one below it); it answers "no" by throwing IllegalArgumentException. Called once per change of
+// the current entry (BottomNavBar's remember) and once per tap, at most four routes each time.
+@Suppress("SwallowedException")
+private fun NavHostController.isOnStack(route: AppRoute): Boolean =
+    try {
+        getBackStackEntry(route)
+        true
+    } catch (notOnStack: IllegalArgumentException) {
+        false
+    }
+
+/**
+ * The tab whose own stack the user is in (release 1.3.0 Task 7b review): the tab whose first
+ * screen (Mina arter, Märken, Karta, Uppslagsverk's list) is on the stack. Those are only ever
+ * opened by their tab, always right above Identifiera's start screen, so at most one is there and
+ * it owns everything above it: a species opened from today's bird on Mina arter belongs to Mina
+ * arter. Null = Identifiera's stack: the identify flow wherever it is (it's opened on
+ * Identifiera's stack, see [navigateInIdentify]) and screens opened on Identifiera without their
+ * tab's first screen (a species from today's bird, the recap from its notification). Identifiera's
+ * stack is never saved: a tap on Identifiera always shows its start screen.
+ */
+private fun NavHostController.stackTab(): TabSpec? {
+    if (currentDestination?.isIdentifyFlow() == true) return null
+    return tabs.firstOrNull { it != identifyTab && isOnStack(it.rootRoute) }
+}
+
+/**
+ * The tab the bar marks: Identifiera on the identify flow; the tab whose stack this is; on
+ * Identifiera's stack the tab owning the screen itself (a species: Uppslagsverk; the recap
+ * opened from its notification: Mina arter; a find: the screen it was opened from); none on
+ * Settings, About, Premium, the intro and the debug screens.
+ */
+private fun NavHostController.markedTab(current: NavDestination): TabSpec? {
+    val isFind = current.hasRoute(AppRoute.ObservationDetail::class)
+    val shown = if (isFind) previousBackStackEntry?.destination else current
+    return when {
+        untabbedRoutes.any { current.hasRoute(it) } -> null
+        current.isIdentifyFlow() -> identifyTab
+        else -> stackTab() ?: tabs.firstOrNull { tab -> shown?.ownedBy(tab) == true }
+    }
+}
+
+/**
+ * A tap on [tab] (release 1.3.0 Task 7b review):
+ * - Identifiera: back to its start screen. The stack being left is kept when it is another
+ *   tab's (that tab brings it back), and dropped when it is Identifiera's own (a camera, a
+ *   result, a species from today's bird): Identifiera never restores, so a result already saved
+ *   can't come back to be saved again;
+ * - the tab whose stack this is: back to its first screen (Mina arter on a species opened from
+ *   Mina arter returns to the list); nothing on that screen itself;
+ * - another tab: the usual tab switch, which saves the stack being left if it is a tab's and
+ *   brings back the tapped tab's saved stack.
+ */
+private fun NavHostController.onTabClick(tab: TabSpec) {
+    val owner = stackTab()
+    when {
+        tab == identifyTab -> popBackStack(AppRoute.Listen, inclusive = false, saveState = owner != null)
+        owner == tab -> {
+            val onRoot = currentDestination?.hasRoute(tab.rootRoute::class) == true
+            if (!onRoot) popBackStack(tab.rootRoute, inclusive = false)
+        }
+        else ->
+            navigate(tab.route) {
+                popUpTo(AppRoute.Listen) { saveState = owner != null }
+                launchSingleTop = true
+                restoreState = true
+            }
+    }
+}
+
+/**
+ * Identifiera's start screen from anywhere else in the app (the map's "Identifiera"), as its tab
+ * does it: see [onTabClick].
+ */
+internal fun NavHostController.goToIdentify() {
+    popBackStack(AppRoute.Listen, inclusive = false, saveState = stackTab() != null)
+}
+
+/**
+ * Opens [route] of the identify flow (the recap's camera, birdy://audio) on Identifiera's stack,
+ * wherever the user is (release 1.3.0 Task 7b review). Opened on top of Mina arter it used to
+ * become Mina arter's: Identifiera then saved it there and Mina arter brought the camera, or a
+ * result that could be saved a second time, back later. The stack being left is kept if it is a
+ * tab's, as when switching tab. Nothing happens if [route] is already open.
+ */
+internal fun NavHostController.navigateInIdentify(route: AppRoute) {
+    if (currentDestination?.hasRoute(route::class) == true) return
+    val owner = stackTab()
+    navigate(route) {
+        popUpTo(AppRoute.Listen) { saveState = owner != null }
+        launchSingleTop = true
+    }
+}

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -23,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
@@ -115,16 +117,22 @@ fun OnboardingScreen(
             modifier =
                 Modifier
                     .align(Alignment.TopEnd)
-                    .padding(top = 12.dp, end = 12.dp),
+                    .padding(top = 12.dp, end = 12.dp)
+                    // A full touch target: on the replay this is the way out (Task 7b).
+                    .heightIn(min = 48.dp),
         ) {
             Text(
                 text =
                     stringResource(
                         if (isReplay) Res.string.onboarding_close_replay else Res.string.onboarding_skip,
                     ),
-                color = MarginaliaInk.copy(alpha = 0.7f),
+                // The first run keeps its quiet "Hoppa över"; on the replay "Stäng" is the only way
+                // back besides the gesture, so it gets full contrast and normal size (release 1.3.0
+                // Task 7b: it was 13sp at 70 % alpha).
+                color = if (isReplay) MarginaliaInk else MarginaliaInk.copy(alpha = 0.7f),
                 fontStyle = FontStyle.Italic,
-                fontSize = 13.sp,
+                fontWeight = if (isReplay) FontWeight.W600 else null,
+                fontSize = if (isReplay) 16.sp else 13.sp,
             )
         }
 

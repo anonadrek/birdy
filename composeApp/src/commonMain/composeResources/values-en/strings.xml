@@ -363,6 +363,8 @@
     <string name="settings_name_dialog_cancel">Cancel</string>
     <string name="settings_language_dialog_done">Done</string>
     <string name="settings_back">Back</string>
+    <!-- The back button's label wherever a screen has no label of its own (release 1.3.0 Task 7b). -->
+    <string name="common_back">Back</string>
     <string name="menu_button">Menu</string>
 
     <!-- ===== Plan 7b: ArchiveScreen ===== -->
