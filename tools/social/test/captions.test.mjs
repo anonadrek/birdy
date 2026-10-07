@@ -36,10 +36,10 @@ test('credit line with URLs: the licence deed after its name and the Commons fil
 });
 
 test('Commons links are made safe for captions: parentheses and dashes in file names are encoded', () => {
-  const rec = withAudio(record(), { sourceUrl: 'https://commons.wikimedia.org/wiki/File:Common_Gull_(Fiskem%C3%A5ke)_(Larus_canus)_–_Tromsø.ogg' });
+  const rec = withAudio(record(), { sourceUrl: 'https://commons.wikimedia.org/wiki/File:Common_Gull_(Fiskem%C3%A5ke)_(Larus_canus)_\u2013_Tromsø.ogg' });
   const c = buildCaptions(rec);
   assert.match(c.facebook, /via Wikimedia Commons \(https:\/\/commons\.wikimedia\.org\/wiki\/File:Common_Gull_%28Fiskem%C3%A5ke%29_%28Larus_canus%29_%E2%80%93_Troms%C3%B8\.ogg\), edited/);
-  for (const text of [c.facebook, c.youtube.description]) assert.doesNotMatch(text, /[–—]/);
+  for (const text of [c.facebook, c.youtube.description]) assert.doesNotMatch(text, /[\u2013\u2014]/);
 });
 
 test('link goes to the species page only when the record is published', () => {
@@ -104,13 +104,13 @@ test('hook: first sentence of the English lead when the text is approved', () =>
 });
 
 test('hook falls back to the neutral line if the lead has a dash', () => {
-  assert.equal(hook(approved(record(), 'It is 44–46 cm long.')), 'Listen to the song of the Eurasian Magpie.');
+  assert.equal(hook(approved(record(), 'It is 44\u201346 cm long.')), 'Listen to the song of the Eurasian Magpie.');
 });
 
 test('no dashes anywhere in generated text, even when a name has one', () => {
-  const rec = withAudio(record(), { author: 'Jean–Pierre Dupont' });
+  const rec = withAudio(record(), { author: 'Jean\u2013Pierre Dupont' });
   const c = buildCaptions(rec);
-  for (const text of [c.instagram, c.facebook, c.youtube.title, c.youtube.description]) assert.doesNotMatch(text, /[–—]/);
+  for (const text of [c.instagram, c.facebook, c.youtube.title, c.youtube.description]) assert.doesNotMatch(text, /[\u2013\u2014]/);
   assert.match(c.facebook, /Jean-Pierre Dupont/);
 });
 

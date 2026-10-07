@@ -10,7 +10,7 @@ export const CTA = 'Identify birds by sound with the free Birdy app';
 export const BASE_TAGS = ['#birds', '#birdwatching', '#birdsong', '#birding', '#birdy'];
 export const YOUTUBE_TITLE_MAX = 100;
 
-const DASHES = /[–—]/;
+const DASHES = /[\u2013\u2014]/;
 
 /** "song" for the songbird group (the passerines), "voice" for every other group (a cormorant does not sing). */
 export function voiceWord(record) {
@@ -44,7 +44,7 @@ export function hook(record) {
 }
 
 function cleanName(name) {
-  return String(name ?? '').trim().replace(/[–—]/g, '-');
+  return String(name ?? '').trim().replace(/[\u2013\u2014]/g, '-');
 }
 
 /**
