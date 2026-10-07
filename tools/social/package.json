@@ -1,0 +1,15 @@
+{
+  "name": "birdy-social",
+  "private": true,
+  "type": "module",
+  "description": "Renders Birdy's social media videos (See the song) and captions from the species records.",
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "test": "node --test \"test/*.test.mjs\"",
+    "list": "node see-the-song.mjs --list",
+    "render": "node see-the-song.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.60.0"
+  }
+}

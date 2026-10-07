@@ -1,0 +1,11 @@
+{
+  "_about": "Per species, by QID. focus: where the bird is in the hero photo (0..1 from the left and from the top), used for the cover crop and to keep the bird in view above the end card; the default is the centre. note: shown by --list and in schedule.csv, for a person to read before posting.",
+  "Q25307": { "focus": { "x": 0.44, "y": 0.4 } },
+  "Q26026": { "focus": { "x": 0.44, "y": 0.35 } },
+  "Q26114": { "focus": { "x": 0.62, "y": 0.45 }, "note": "The recording also has a Common Chiffchaff singing (its Commons file name says so). Listen before posting." },
+  "Q28106731": { "focus": { "x": 0.39, "y": 0.5 } },
+  "Q208703": { "focus": { "x": 0.58, "y": 0.5 } },
+  "Q192817": { "focus": { "x": 0.53, "y": 0.45 } },
+  "Q26055": { "focus": { "x": 0.75, "y": 0.3 } },
+  "Q191155": { "focus": { "x": 0.62, "y": 0.35 } }
+}
