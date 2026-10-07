@@ -56,9 +56,11 @@ Skriven i slutet av sessionen 2026-10-05–07 (Windows). Läs den här filen och
 
 ## 6. Albins öppna beslut
 
-- **Gratisanvändare och raden "0 av 3 dagar"** (räknar mot Premium-märket Dagens fågel-jägare; i dag syns den för alla).
+- ~~Gratisanvändare och raden "0 av 3 dagar"~~: **beslutat 2026-10-07 (kväll): raden syns för alla, gratisanvändare får en liten etikett "Premium-märke"** (görs som uppföljare 3 på `feature/1.3-namn`).
 - ~~30 svenska namn~~: **beslutat 2026-10-07: byt till BirdLife Sveriges officiella namn** (Task 7m ovan).
-- **Tolkningen av svaren 2026-10-07** ("Uppslag 1 > B, Märkesbild S, Yes kör allt"): tolkat som Uppslag 1 (A), Märkesbild Bild 2 (B), övrigt enligt rekommendationen ovan. Bekräfta kort i nästa session.
+- ~~Tolkningen av svaren 2026-10-07~~: **bekräftat av Albin 2026-10-07 (kväll): Veckans uppslag = Uppslag 1, märkesbilden = Bild 2**, övrigt enligt rekommendationen ovan.
+
+**Pågår (session 2026-10-07 kväll):** 7b på `feature/1.3-tillbaka` (`C:/w/birdy-tillbaka`, äger emulatorn), 7m + uppföljarna på `feature/1.3-namn` (`C:/w/birdy-namn`), 7k Bild 2 på `feature/1.3-marken` (`C:/w/birdy-marken`), 7i-granskningen (bara dokumentet) på `feature/1.3-juridik` (`C:/w/birdy-juridik`). 7j Uppslag 1 startar när 7b är sammanslagen (båda ändrar `RecapScreen.kt`); 7e-2 när 7b och 7m är sammanslagna (artprofilen).
 
 ## 7. Artsidorna (parallellt spår)
 
