@@ -47,6 +47,11 @@ test('isThreadReply detects an In-Reply-To header, case-insensitively, meaning t
   assert.equal(isThreadReply({ headers: null }), false);
 });
 
+test('isThreadReply requires a non-empty In-Reply-To value, not just a present (but blank) header', () => {
+  assert.equal(isThreadReply({ headers: { 'In-Reply-To': '' } }), false);
+  assert.equal(isThreadReply({ headers: { 'In-Reply-To': '   ' } }), false);
+});
+
 test("parseTime reads both of Resend's timestamp forms", () => {
   assert.equal(parseTime('2026-10-07T20:00:00.000Z'), Date.UTC(2026, 9, 7, 20));
   assert.equal(parseTime('2026-10-07 20:00:00.123456+00'), Date.UTC(2026, 9, 7, 20, 0, 0, 123));

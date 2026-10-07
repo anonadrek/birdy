@@ -17,9 +17,9 @@ export function isAutomated({ from, headers }, supportAddress) {
   return 'list-id' in h || 'list-unsubscribe' in h;
 }
 
-/** True when the incoming mail already references a prior message (an ongoing thread) — no receipt needed, the sender already knows Birdy has it. */
+/** True when the incoming mail already references a prior message (an ongoing thread) — no receipt needed, the sender already knows Birdy has it. A present-but-blank header does not count. */
 export function isThreadReply({ headers }) {
-  return 'in-reply-to' in lowerKeys(headers);
+  return Boolean(lowerKeys(headers)['in-reply-to']?.trim());
 }
 
 /** Resend's timestamps, ISO ("…Z") or Postgres style ("2026-10-07 20:00:00.123456+00"). */
