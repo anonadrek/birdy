@@ -23,9 +23,19 @@ export function parseTime(value) {
   return Date.parse(iso);
 }
 
-/** Whether Birdy (a receipt, or Albin's reply through Resend) mailed `address` in the last 24 hours. */
-export function mailedRecently(sent, address, now) {
-  return sent.some((email) => (email.to ?? []).some((to) => addressOf(to) === address) && now - parseTime(email.created_at) < DAY_MS);
+/**
+ * Whether Birdy (a receipt, or Albin's reply through Resend) mailed `address` in the last 24 hours.
+ * Mail sent to `excludeAddress` (FORWARD_TO) is ignored: it is the forward to Albin's inbox, not a
+ * receipt, and must not be mistaken for one when the sender happens to be that same inbox (Albin
+ * testing from his own Gmail, which is also FORWARD_TO).
+ */
+export function mailedRecently(sent, address, now, excludeAddress) {
+  const exclude = excludeAddress ? addressOf(excludeAddress) : null;
+  return sent.some((email) => {
+    const to = email.to ?? [];
+    if (exclude && to.some((t) => addressOf(t) === exclude)) return false;
+    return to.some((t) => addressOf(t) === address) && now - parseTime(email.created_at) < DAY_MS;
+  });
 }
 
 /** The receipt's subject and plain text. */

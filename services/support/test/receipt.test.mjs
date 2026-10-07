@@ -57,6 +57,17 @@ test('mailedRecently looks at mail sent to the address in the last 24 hours', ()
   assert.equal(mailedRecently([], 'anna@example.se', now), false);
 });
 
+test('mailedRecently ignores mail sent to FORWARD_TO (so a sender testing from the forwarding inbox is not mistaken for a recent receipt)', () => {
+  const now = Date.UTC(2026, 9, 8, 12);
+  // Albin tests by mailing support@ from his own Gmail, which is also FORWARD_TO: the forward we
+  // just sent to his inbox must not count as "we already mailed him a receipt today".
+  const sent = [{ to: ['inbox@example.com'], created_at: '2026-10-08T11:00:00.000Z' }];
+  assert.equal(mailedRecently(sent, 'inbox@example.com', now, 'inbox@example.com'), false);
+  // A genuine receipt to someone else is still detected even when forwards to FORWARD_TO are excluded.
+  const withReceipt = [...sent, { to: ['anna@example.se'], created_at: '2026-10-08T11:30:00.000Z' }];
+  assert.equal(mailedRecently(withReceipt, 'anna@example.se', now, 'inbox@example.com'), true);
+});
+
 test("the receipt is in Birdy's name, Swedish first, and never names a person", () => {
   const r = receiptMessage('Appen kraschar');
   assert.equal(r.subject, 'Re: Appen kraschar');

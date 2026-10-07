@@ -56,7 +56,7 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
     const sender = addressOf(email.reply_to?.[0] ?? email.from);
     if (isAutomated(email, support)) {
       say({ outcome: 'no-receipt', id, reason: 'automated' });
-    } else if (mailedRecently(await client.listSent(), sender, now)) {
+    } else if (mailedRecently(await client.listSent(), sender, now, env.FORWARD_TO)) {
       say({ outcome: 'no-receipt', id, reason: 'recent' });
     } else {
       const { subject, text } = receiptMessage(email.subject);
