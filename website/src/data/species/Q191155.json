@@ -53,11 +53,12 @@
     "file": "Q191155/voice.mp3",
     "durationSec": 20,
     "trimmed": true,
-    "author": "Rabe19 (Diskussion)",
+    "author": "Rabe19",
     "license": "Public domain",
     "licenseUrl": null,
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sperlingskauz.OGG",
-    "sha256": "9feb963145e0b81fb550b3bdcb26c217660bec8fd8a0c7ff8b507fe186f14be7"
+    "sha256": "9feb963145e0b81fb550b3bdcb26c217660bec8fd8a0c7ff8b507fe186f14be7",
+    "mp3Sha256": "608f52cc0de8ba319f40a0d88f41d369594fcee5ee8c2f4dcfca065f36e56747"
   },
   "wikipedia": {
     "sv": {
@@ -74,7 +75,7 @@
     }
   },
   "data": {
-    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "fetchedAt": "2026-10-07T15:49:14.655059+00:00",
     "gbifTaxonKey": 5232162,
     "totalReports": 29745,
     "months": [

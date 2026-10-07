@@ -53,11 +53,12 @@
     "file": "Q18875/voice.mp3",
     "durationSec": 20,
     "trimmed": true,
-    "author": "No machine-readable author provided. Mdf assumed (based on copyright claims).",
+    "author": "Mdf",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sterna-hirundo-002.ogg",
-    "sha256": "df77b9193cb023e7d92f95ba7bf43e5523f9ae280a770c852d6c6b5d548cad25"
+    "sha256": "df77b9193cb023e7d92f95ba7bf43e5523f9ae280a770c852d6c6b5d548cad25",
+    "mp3Sha256": "7fa94bef4e540a2930beae20a25d273d3c465c0639ea8073e90db85297035321"
   },
   "wikipedia": {
     "sv": {
@@ -74,7 +75,7 @@
     }
   },
   "data": {
-    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "fetchedAt": "2026-10-07T15:49:14.655059+00:00",
     "gbifTaxonKey": 9367409,
     "totalReports": 208979,
     "months": [

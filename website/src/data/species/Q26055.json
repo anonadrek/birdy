@@ -53,11 +53,12 @@
     "file": "Q26055/voice.mp3",
     "durationSec": 20,
     "trimmed": true,
-    "author": "This image is created by user Justin Jansen at Waarneming.nl, a source of nature observations in the Netherlands.",
+    "author": "Justin Jansen",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Delichon_urbicum_contact_call.ogg",
-    "sha256": "91b53f18d3c5463923ae16f7e717b9f4065029f1327f96e5f44c6e4679e5be0a"
+    "sha256": "91b53f18d3c5463923ae16f7e717b9f4065029f1327f96e5f44c6e4679e5be0a",
+    "mp3Sha256": "dcc91ab3c08af60b814afc4012feb597fb77a40c66d2c5981c7f595f1f491944"
   },
   "wikipedia": {
     "sv": {
@@ -74,7 +75,7 @@
     }
   },
   "data": {
-    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "fetchedAt": "2026-10-07T15:49:14.655059+00:00",
     "gbifTaxonKey": 2489214,
     "totalReports": 141475,
     "months": [

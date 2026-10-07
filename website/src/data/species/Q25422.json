@@ -49,16 +49,6 @@
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Podiceps_cristatus_2_2013.jpg"
     }
   ],
-  "audio": {
-    "file": "Q25422/voice.mp3",
-    "durationSec": 20,
-    "trimmed": true,
-    "author": "Unknown authorUnknown author",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Southern-crested-grebe-song.wav",
-    "sha256": "fa5baeda529f052a8fc9ef253af37bb4729d98d96d8fd6751e305b05ada14b96"
-  },
   "wikipedia": {
     "sv": {
       "title": "Skäggdopping",
@@ -74,7 +64,7 @@
     }
   },
   "data": {
-    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "fetchedAt": "2026-10-07T15:49:14.655059+00:00",
     "gbifTaxonKey": 2482054,
     "totalReports": 267910,
     "months": [
