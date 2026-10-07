@@ -41,7 +41,7 @@ import se.birdy.ml.ScanSource
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(sdk = [35], qualifiers = "w411dp-h891dp-xxhdpi")
-class CreditsScreenshotTest {
+class SpeciesCreditsScreenshotTest {
     @get:Rule
     val compose = createComposeRule()
 
