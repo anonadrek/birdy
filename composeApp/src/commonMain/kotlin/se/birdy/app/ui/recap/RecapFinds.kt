@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -23,8 +24,9 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.TextMeasurer
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
@@ -35,7 +37,7 @@ import birdy_bird_scanner.composeapp.generated.resources.recap_find_a11y_fmt
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.dailybird.dailyBirdDateA11yLabel
-import se.birdy.app.ui.stats.wordFitFontSize
+import se.birdy.app.ui.stats.firstSizeFittingWords
 import se.birdy.app.ui.theme.InkMuted
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.SandCreme
@@ -68,8 +70,14 @@ internal fun FindsGrid(
     val unknown = stringResource(Res.string.diary_detail_unknown_species)
     val names = finds.map { it.speciesName ?: unknown }
     val captionStyle = TextStyle(fontFamily = rememberCaveat(), color = MarginaliaInk, lineHeight = 1.1.em)
+    val measurer = rememberTextMeasurer()
+    val density = LocalDensity.current
     BoxWithConstraints(Modifier.fillMaxWidth()) {
-        val layout = gridLayout(names, captionStyle, maxWidth)
+        // Measured once per set of names, width and text size, not on every recomposition.
+        val layout =
+            remember(names, maxWidth, density.fontScale, captionStyle) {
+                with(density) { gridLayout(names, captionStyle, measurer, maxWidth.toPx(), GridGap.toPx()) }
+            }
         Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             finds.zip(names).chunked(layout.columns).forEach { row ->
                 Row(horizontalArrangement = Arrangement.spacedBy(GridGap)) {
@@ -95,15 +103,16 @@ private data class GridLayout(
 )
 
 /** The most columns (and the largest caption size for them) at which every word of every name fits a cell. */
-@Composable
 private fun gridLayout(
     names: List<String>,
     style: TextStyle,
-    maxWidth: Dp,
+    measurer: TextMeasurer,
+    maxWidthPx: Float,
+    gapPx: Float,
 ): GridLayout {
     for (columns in GRID_COLUMNS downTo 1) {
-        val cellWidth = (maxWidth - GridGap * (columns - 1)) / columns
-        val size = wordFitFontSize(names, style, CaptionSizes, cellWidth)
+        val cellWidthPx = (maxWidthPx - gapPx * (columns - 1)) / columns
+        val size = measurer.firstSizeFittingWords(names, style, CaptionSizes, cellWidthPx)
         if (size != null) return GridLayout(columns, size)
     }
     return GridLayout(columns = 1, captionSize = CaptionSizes.last())

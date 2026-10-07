@@ -700,7 +700,7 @@
          the target is the Dagens fågel-jägare badge. -->
     <string name="daily_bird_card_eyebrow">Dagens fågel</string>
     <string name="daily_bird_kicker_fmt">Dagens fågel · %1$s</string>
-    <string name="daily_bird_date_fmt">%1$s %2$d %3$s</string>
+    <string name="daily_bird_date_fmt">%1$s %2$d&#160;%3$s</string>
     <string name="daily_bird_weekday_mon">mån</string>
     <string name="daily_bird_weekday_tue">tis</string>
     <string name="daily_bird_weekday_wed">ons</string>
@@ -786,7 +786,7 @@
     <string name="badge_desc_daily_bird_first">Spara dagens kuraterade fågel för första gången.</string>
 
     <!-- ===== v1.2 Phase B: Weekly Recap ===== -->
-    <string name="recap_eyebrow_fmt">Fältrapport · Vecka %1$s</string>
+    <string name="recap_eyebrow_fmt">Fältrapport · Vecka&#160;%1$s</string>
     <string name="recap_headline_active">En vecka i *fält*.</string>
     <string name="recap_headline_quiet">En *lugn* vecka.</string>
     <!-- "fynd" is the same word for 1 and many; English needs both forms. -->
@@ -808,13 +808,13 @@
     </plurals>
     <!-- Release 1.3.0 Task 7j, "Uppslag 1": the week's dates under the headline. -->
     <!-- %1$d = first day, %2$d = last day, %3$s = month ("5 till 11 oktober"). -->
-    <string name="recap_dates_one_month_fmt">%1$d till %2$d %3$s</string>
+    <string name="recap_dates_one_month_fmt">%1$d till %2$d&#160;%3$s</string>
     <!-- "28 september till 4 oktober". -->
-    <string name="recap_dates_two_months_fmt">%1$d %2$s till %3$d %4$s</string>
+    <string name="recap_dates_two_months_fmt">%1$d&#160;%2$s till %3$d&#160;%4$s</string>
     <!-- %1$s = recap_dates_*, %2$d = days with at least one find. -->
     <plurals name="recap_sub_active">
-        <item quantity="one">%1$s. %2$d dag ute.</item>
-        <item quantity="other">%1$s. %2$d dagar ute.</item>
+        <item quantity="one">%1$s. %2$d&#160;dag ute.</item>
+        <item quantity="other">%1$s. %2$d&#160;dagar ute.</item>
     </plurals>
     <string name="recap_sub_quiet">%1$s.</string>
     <!-- The words under the three numbers in the header row (shown in caps). -->
@@ -827,8 +827,8 @@
         <item quantity="other">nya arter</item>
     </plurals>
     <plurals name="recap_ledger_weeks">
-        <item quantity="one">vecka i rad</item>
-        <item quantity="other">veckor i rad</item>
+        <item quantity="one">vecka i&#160;rad</item>
+        <item quantity="other">veckor i&#160;rad</item>
     </plurals>
     <!-- The header row read as one sentence: recap_stats_finds, recap_stats_new_species, recap_stats_week_streak. -->
     <string name="recap_ledger_a11y_fmt">%1$s, %2$s, %3$s.</string>
@@ -847,7 +847,7 @@
     <string name="recap_day_future_a11y">%1$s, inte än</string>
     <string name="recap_section_new">Nya i livslistan</string>
     <!-- %1$d = the species' number in the life list, %2$s = "lör 10 okt". -->
-    <string name="recap_new_lifelist_fmt">№ %1$d i livslistan · %2$s</string>
+    <string name="recap_new_lifelist_fmt">№&#160;%1$d i livslistan · %2$s</string>
     <!-- %1$s = species, %2$d = life-list number, %3$s = "lördag 10 oktober". -->
     <string name="recap_new_a11y_fmt">%1$s, nummer %2$d i livslistan, först sedd %3$s</string>
     <string name="recap_new_tag">Ny</string>
@@ -857,6 +857,8 @@
     <string name="recap_stamp_none_label">Veckans stämpel</string>
     <string name="recap_stamp_none">Ingen ny stämpel den här veckan.</string>
     <string name="recap_section_all_fmt">Alla fynd · %1$d</string>
+    <!-- The grid heading for TalkBack ("Alla fynd, 7"). -->
+    <string name="recap_section_all_a11y_fmt">Alla fynd, %1$d</string>
     <!-- A square in the grid: %1$s = species, %2$s = "söndag 11 oktober". -->
     <string name="recap_find_a11y_fmt">%1$s, %2$s</string>
     <string name="recap_quiet_encouragement">Ingen brådska. Tio minuter i parken räcker för veckans första rad.</string>

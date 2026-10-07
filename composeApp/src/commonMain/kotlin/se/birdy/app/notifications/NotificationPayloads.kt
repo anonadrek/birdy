@@ -24,12 +24,14 @@ import se.birdy.app.badges.RecalculateBadgesUseCase
 import se.birdy.app.badges.TrophyProgress
 import se.birdy.app.di.AppGraph
 import se.birdy.app.recap.WeeklyRecapBuilder
+import se.birdy.app.recap.toIsoString
 import se.birdy.app.ui.badges.BadgeStringMap
 import se.birdy.content.SpeciesId
 import se.birdy.content.model.Species
 import se.birdy.datastore.UserPreferences
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeRepository
+import se.birdy.domain.badge.WeekKey
 import se.birdy.domain.dailybird.DailyBird
 import se.birdy.domain.observation.ObservationRepository
 
@@ -39,6 +41,22 @@ object BirdyDeepLinks {
 
     /** Audio ID (the Lyssna screen); added for the daily-bird notification in release 1.3.0. */
     const val AUDIO = "birdy://audio"
+
+    /**
+     * The weekly recap of [week] ("birdy://recap?week=2026-W41", release 1.3.0 Task 7j review): the
+     * Sunday notification names the week it describes, so a tap after midnight still opens that
+     * week. A link without the week (older notifications) opens the current week.
+     */
+    fun recap(week: WeekKey): String = "birdy://recap?week=${week.toIsoString()}"
+
+    /** The `week` of a recap link, or null when the link has none. */
+    fun recapWeek(uri: String): String? =
+        uri
+            .substringAfter("?", missingDelimiterValue = "")
+            .split("&")
+            .firstOrNull { it.startsWith("week=") }
+            ?.removePrefix("week=")
+            ?.takeIf { it.isNotBlank() }
 }
 
 /** A notification button: its label and the deep link it opens. */
@@ -130,13 +148,13 @@ class NotificationPayloads(
                             finds = summary.observationCount,
                             newSpecies = summary.newSpeciesCount,
                         ),
-                    deepLink = "birdy://recap",
+                    deepLink = BirdyDeepLinks.recap(summary.week),
                 )
             summary.streakAtRisk ->
                 NotificationContent(
                     title = getString(Res.string.notification_recap_streak_title),
                     body = getString(Res.string.notification_recap_streak_body),
-                    deepLink = "birdy://recap",
+                    deepLink = BirdyDeepLinks.recap(summary.week),
                 )
             // Quiet week with no streak at risk → no push (spec §3.6)
             else -> null

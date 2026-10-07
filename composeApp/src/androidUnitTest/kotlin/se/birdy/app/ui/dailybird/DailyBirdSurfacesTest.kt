@@ -91,7 +91,7 @@ class DailyBirdSurfacesTest {
     @Config(qualifiers = "+sv")
     fun `the hero kicker carries todays date in swedish`() {
         showHero(bird())
-        compose.onNodeWithText("DAGENS FÅGEL · TIS 6 OKT", useUnmergedTree = true).assertExists()
+        compose.onNodeWithText("DAGENS FÅGEL · TIS 6\u00A0OKT", useUnmergedTree = true).assertExists()
         compose.onNodeWithText("Acrocephalus schoenobaenus", useUnmergedTree = true).assertExists()
         compose.onNodeWithText("Här just nu", useUnmergedTree = true).assertDoesNotExist()
     }
@@ -100,7 +100,7 @@ class DailyBirdSurfacesTest {
     @Config(qualifiers = "+en")
     fun `the hero kicker carries todays date in english`() {
         showHero(bird())
-        compose.onNodeWithText("BIRD OF THE DAY · TUE 6 OCT", useUnmergedTree = true).assertExists()
+        compose.onNodeWithText("BIRD OF THE DAY · TUE 6\u00A0OCT", useUnmergedTree = true).assertExists()
     }
 
     @Test

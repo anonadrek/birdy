@@ -175,10 +175,15 @@ fun AppScaffold(
     }
     graph.deepLinkFlow?.let { flow ->
         LaunchedEffect(navController) {
+            // The link that started the app is replayed as soon as this collects, which on a cold
+            // start can be before the NavHost (inside the Scaffold's content) has set its graph, and
+            // navigate() would throw. Wait for its first entry, as the paywall check above does.
+            navController.currentBackStackEntryFlow.first()
             flow.collect { uriString ->
-                val parts = uriString.removePrefix("birdy://").split("/", limit = 2)
+                // The query (birdy://recap?week=2026-W41) is not part of the host.
+                val parts = uriString.removePrefix("birdy://").substringBefore("?").split("/", limit = 2)
                 val host = parts.getOrNull(0) ?: return@collect
-                val pathSegment = parts.getOrNull(1)?.substringBefore("?")?.takeIf { it.isNotBlank() }
+                val pathSegment = parts.getOrNull(1)?.takeIf { it.isNotBlank() }
                 when (host) {
                     // Release 1.3.0 Task 7d: the daily-bird notification's "Lyssna efter den".
                     "audio" -> navController.navigateInIdentify(AppRoute.AudioScan)
@@ -192,7 +197,11 @@ fun AppScaffold(
                         navController.popBackStack(AppRoute.Listen, inclusive = false)
                     }
                     "recap" -> {
-                        navController.navigate(AppRoute.WeeklyRecap) { launchSingleTop = true }
+                        // The week the Sunday notification described, also when tapped after midnight.
+                        val week =
+                            se.birdy.app.notifications.BirdyDeepLinks
+                                .recapWeek(uriString)
+                        navController.navigate(AppRoute.WeeklyRecap(week = week)) { launchSingleTop = true }
                     }
                 }
             }
@@ -445,7 +454,7 @@ private fun NavGraphBuilder.appDestinations(
                 showPremiumTeaser = showPremiumTeaser,
                 livePreviewState = livePreviewState,
                 onSeasonStatsClick = { navController.navigate(AppRoute.SeasonStats) },
-                onRecapClick = { navController.navigate(AppRoute.WeeklyRecap) { launchSingleTop = true } },
+                onRecapClick = { navController.navigate(AppRoute.WeeklyRecap()) { launchSingleTop = true } },
                 dailyBird = dailyBird,
                 onDailyBirdClick = { id ->
                     navController.navigate(AppRoute.SpeciesProfile(id)) { launchSingleTop = true }
@@ -602,9 +611,11 @@ private fun NavGraphBuilder.appDestinations(
         }
     }
     composable<AppRoute.WeeklyRecap> { entry ->
+        val week = entry.toRoute<AppRoute.WeeklyRecap>().week
         BelowStatusBar {
             se.birdy.app.ui.recap.RecapScreen(
-                viewModel = remember(graph) { graph.weeklyRecapViewModel() },
+                // Keyed on the week: a notification for another week replaces the open recap's route.
+                viewModel = remember(graph, week) { graph.weeklyRecapViewModel(week) },
                 // On Identifiera's stack, not the recap's tab's (Task 7b review).
                 onOpenCamera = { navController.navigateInIdentify(AppRoute.Scan) },
                 onObservationClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },

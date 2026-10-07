@@ -18,6 +18,8 @@ import se.birdy.content.model.SpeciesSummary
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeRepository
 import se.birdy.domain.badge.BadgeUnlock
+import se.birdy.domain.badge.WeekKey
+import se.birdy.domain.badge.weekKey
 import se.birdy.domain.observation.Observation
 import se.birdy.domain.observation.ObservationRepository
 import se.birdy.domain.observation.ObservationSource
@@ -27,7 +29,12 @@ import se.birdy.domain.observation.ObservationSource
  * numbers, the Monday-to-Sunday strip, new species with their life-list number, the week's stamps
  * and every find. [stampFor] looks a stamp up in the badge catalog ([recapStampResolver]); it
  * returns null for an unlock whose badge is no longer in the catalog, which the card then skips.
+ *
+ * [week] is the week the Sunday notification described (its link names it), so a tap after
+ * midnight opens that week and not the new, empty one; null (Mina arter's card) is the current week.
+ * LongParameterList: seven parameters, one over the limit; the week is the route's own argument.
  */
+@Suppress("LongParameterList")
 class RecapViewModel(
     private val obsRepo: ObservationRepository,
     private val badgeRepo: BadgeRepository,
@@ -35,6 +42,7 @@ class RecapViewModel(
     private val stampFor: suspend (String) -> RecapStampItem?,
     private val zone: TimeZone,
     private val now: () -> Instant = { Clock.System.now() },
+    private val week: WeekKey? = null,
 ) : ViewModel() {
     private val builder = WeeklyRecapBuilder(zone)
 
@@ -51,18 +59,20 @@ class RecapViewModel(
         unlocks: List<BadgeUnlock>,
     ): RecapUiState {
         val species = speciesByQid()
-        val recap = builder.build(obs, species, unlocks, now())
+        val at = now()
+        val recap = builder.build(obs, species, unlocks, at, week ?: weekKey(at, zone))
         val items = recap.finds.associate { f -> f.observationId to f.toItem(species) }
-        val weekBadgeIds = recap.summary.newBadgeIds.toSet()
+        // Newest stamp first; stamps unlocked in the same pass share a time, then the higher
+        // number counts as newer, as on Märken (NewestStampFirst).
         val stamps =
-            buildList {
-                unlocks
-                    .filter { it.badgeId in weekBadgeIds }
-                    .sortedByDescending { it.unlockedAt }
-                    .map { it.badgeId }
-                    .distinct()
-                    .forEach { id -> stampFor(id)?.let { add(it) } }
-            }
+            unlocks
+                .filter { weekKey(it.unlockedAt, zone) == recap.summary.week }
+                .distinctBy { it.badgeId }
+                .mapNotNull { unlock -> stampFor(unlock.badgeId)?.let { unlock.unlockedAt to it } }
+                .sortedWith(
+                    compareByDescending<Pair<Instant, RecapStampItem>> { it.first }
+                        .thenByDescending { it.second.stampNumber },
+                ).map { it.second }
         return RecapUiState.Loaded(
             recap = recap,
             finds = recap.finds.map { items.getValue(it.observationId) },
@@ -92,7 +102,6 @@ class RecapViewModel(
             speciesName = speciesId?.let { species[SpeciesId(it)]?.name },
             photoPath = photoPath,
             heroImagePath = heroImagePath,
-            isNewSpecies = isNewSpecies,
             date = capturedAt.toLocalDateTime(zone).date,
             isHeard = source == ObservationSource.Audio,
         )

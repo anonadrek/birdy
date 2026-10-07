@@ -480,15 +480,8 @@ class AppGraph(
     fun onboardingViewModel(isReplay: Boolean = false): OnboardingViewModel =
         OnboardingViewModel(prefs = userPreferences, isReplay = isReplay)
 
-    /**
-     * Factory for [AudioScanViewModel].
-     *
-     * Requires [audioClassifierProvider], [audioStorageDir], [audioRecorderFactory],
-     * and [waveformRendererFactory] to be non-null. On Android all four are injected
-     * from [se.birdy.android.MainActivity]; in tests construct [AudioScanViewModel]
-     * directly with fake collaborators instead.
-     */
-    fun weeklyRecapViewModel(): se.birdy.app.ui.recap.RecapViewModel =
+    /** [week]: an ISO week key from the notification's link ("2026-W41"); null or unreadable = the current week. */
+    fun weeklyRecapViewModel(week: String? = null): se.birdy.app.ui.recap.RecapViewModel =
         se.birdy.app.ui.recap.RecapViewModel(
             obsRepo = observationRepository,
             badgeRepo = badgeRepository,
@@ -516,8 +509,20 @@ class AppGraph(
                     },
                 ),
             zone = timeZone,
+            now = { clock.now() },
+            week =
+                se.birdy.app.recap
+                    .parseIsoWeekKey(week),
         )
 
+    /**
+     * Factory for [AudioScanViewModel].
+     *
+     * Requires [audioClassifierProvider], [audioStorageDir], [audioRecorderFactory],
+     * and [waveformRendererFactory] to be non-null. On Android all four are injected
+     * from [se.birdy.android.MainActivity]; in tests construct [AudioScanViewModel]
+     * directly with fake collaborators instead.
+     */
     fun audioScanViewModel(): AudioScanViewModel {
         val provider =
             audioClassifierProvider

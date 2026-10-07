@@ -23,6 +23,7 @@ import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeCategory
 import se.birdy.domain.badge.BadgeRule
 import se.birdy.domain.badge.BadgeUnlock
+import se.birdy.domain.badge.WeekKey
 import se.birdy.domain.observation.FileCleanupRequest
 import se.birdy.domain.observation.Observation
 import se.birdy.domain.observation.ObservationRepository
@@ -66,6 +67,7 @@ class RecapViewModelTest {
         obs: FakeObservationRepository = FakeObservationRepository(),
         badges: FakeBadgeRepository = FakeBadgeRepository(),
         speciesByQid: suspend () -> Map<SpeciesId, SpeciesSummary> = { emptyMap() },
+        week: WeekKey? = null,
     ) = RecapViewModel(
         obsRepo = obs,
         badgeRepo = badges,
@@ -73,6 +75,7 @@ class RecapViewModelTest {
         stampFor = recapStampResolver(catalog, nameFor = { "Name $it" }, descriptionFor = { "Desc $it" }),
         zone = TimeZone.UTC,
         now = { fixedNow },
+        week = week,
     )
 
     private suspend fun RecapViewModel.loaded(): RecapUiState.Loaded {
@@ -109,7 +112,43 @@ class RecapViewModelTest {
             assertEquals("Talgoxe", find.speciesName)
             assertEquals(LocalDate(2026, 5, 28), find.date)
             assertEquals("Q25485/hero.webp", find.heroImagePath)
-            assertTrue(loaded.recap.summary.observationCount >= 1)
+            assertEquals(1, loaded.recap.summary.observationCount)
+        }
+
+    @Test
+    fun `a find saved while the recap is open shows up in it`() =
+        runTest {
+            val obsRepo = FakeObservationRepository()
+            val vm = vm(obs = obsRepo, speciesByQid = { mapOf(SpeciesId("Q25485") to talgoxe) })
+            vm.state.test {
+                var item = awaitItem()
+                while (item !is RecapUiState.Loaded) item = awaitItem()
+                assertTrue(item.finds.isEmpty())
+
+                obsRepo.seedObservation(speciesId = "Q25485", capturedAt = Instant.parse("2026-05-30T09:00:00Z"), id = "new")
+                var next = awaitItem()
+                while (next !is RecapUiState.Loaded || next.finds.isEmpty()) next = awaitItem()
+                assertEquals(listOf("new"), next.finds.map { it.observationId })
+                assertEquals(1, next.recap.summary.observationCount)
+                assertEquals(1, next.days.single { it.date == LocalDate(2026, 5, 30) }.findCount)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun `the week named by the notification is built instead of the current one`() =
+        runTest {
+            val obsRepo = FakeObservationRepository()
+            // fixedNow is in week 22; the notification named week 21 (18 to 24 May).
+            obsRepo.seedObservation(speciesId = "Q25485", capturedAt = Instant.parse("2026-05-20T10:00:00Z"), id = "w21")
+            obsRepo.seedObservation(speciesId = "Q25485", capturedAt = Instant.parse("2026-05-28T10:00:00Z"), id = "w22")
+            val loaded = vm(obs = obsRepo, week = WeekKey(2026, 21)).loaded()
+            assertEquals(WeekKey(2026, 21), loaded.recap.summary.week)
+            assertEquals(listOf("w21"), loaded.finds.map { it.observationId })
+            assertEquals(LocalDate(2026, 5, 18), loaded.days.first().date)
+
+            // Without a week (Mina arter's card) it is still the current week.
+            assertEquals(listOf("w22"), vm(obs = obsRepo).loaded().finds.map { it.observationId })
         }
 
     @Test
@@ -176,6 +215,15 @@ class RecapViewModelTest {
                 ),
                 loaded.stamps,
             )
+        }
+
+    @Test
+    fun `stamps unlocked at the same moment put the higher number first as on Marken`() =
+        runTest {
+            val at = Instant.parse("2026-05-26T10:00:00Z")
+            val badges = FakeBadgeRepository()
+            badges.seedUnlocks(listOf(BadgeUnlock("novice", at), BadgeUnlock("weekly_streak_4", at)))
+            assertEquals(listOf(2, 1), vm(badges = badges).loaded().stamps.map { it.stampNumber })
         }
 
     @Test

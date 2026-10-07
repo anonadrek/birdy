@@ -132,7 +132,7 @@ class DailyBirdRoutingTest {
     @Config(qualifiers = "+sv")
     fun `identify shows todays bird and the tab dot until the bird is opened`() {
         val nav = compose.startAppScaffold(graph())
-        compose.onNodeWithText("DAGENS FÅGEL · TIS 6 OKT", useUnmergedTree = true).assertExists()
+        compose.onNodeWithText("DAGENS FÅGEL · TIS 6\u00A0OKT", useUnmergedTree = true).assertExists()
         compose.onNode(dot).assertExists()
         assertEquals("Q25485", history.recorded[NOW_DATE], "start-up records the bird so a save can match it")
 

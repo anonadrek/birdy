@@ -9,7 +9,6 @@ data class RecapFindItem(
     val speciesName: String?,
     val photoPath: String,
     val heroImagePath: String?,
-    val isNewSpecies: Boolean,
     /** The local date the find was made, for the labels TalkBack reads. */
     val date: LocalDate,
     /** An audio find: its own image is a waveform, so the species' plate photo goes first. */

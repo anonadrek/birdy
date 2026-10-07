@@ -3,6 +3,7 @@ package se.birdy.app.recap
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
+import se.birdy.domain.badge.WeekKey
 import se.birdy.domain.observation.Observation
 import se.birdy.domain.observation.ObservationSource
 import kotlin.test.Test
@@ -47,7 +48,16 @@ class WeeklyRecapSpreadTest {
         observations: List<Observation>,
         now: String,
         zone: TimeZone = stockholm,
-    ): WeeklyRecap = WeeklyRecapBuilder(zone).build(observations, emptyMap(), emptyList(), Instant.parse(now))
+        week: WeekKey? = null,
+    ): WeeklyRecap {
+        val builder = WeeklyRecapBuilder(zone)
+        val instant = Instant.parse(now)
+        return if (week == null) {
+            builder.build(observations, emptyMap(), emptyList(), instant)
+        } else {
+            builder.build(observations, emptyMap(), emptyList(), instant, week)
+        }
+    }
 
     // ── The Monday-to-Sunday strip ─────────────────────────────────────────────────────────────
 
@@ -142,6 +152,59 @@ class WeeklyRecapSpreadTest {
         // Wednesday 7 October: Thursday to Sunday have not happened yet.
         val recap = build(emptyList(), now = "2026-10-07T10:00:00Z")
         assertEquals(listOf(false, false, false, true, true, true, true), recap.days.map { it.isFuture })
+    }
+
+    // ── A week asked for by the notification ───────────────────────────────────────────────────
+
+    @Test
+    fun `last week opened just after midnight is shown as it stood on Sunday`() {
+        // The Sunday notification for week 41, tapped on Monday 12 October at 00:30 in Stockholm.
+        val finds =
+            listOf(
+                obs("w40", "Q1", "2026-10-01T10:00:00Z"), // week 40
+                obs("w41-mon", "Q2", "2026-10-05T10:00:00Z"),
+                obs("w41-sun", "Q1", "2026-10-11T10:00:00Z"),
+            )
+        val recap = build(finds, now = "2026-10-11T22:30:00Z", week = WeekKey(2026, 41))
+        assertEquals(WeekKey(2026, 41), recap.summary.week)
+        assertEquals(listOf("w41-sun", "w41-mon"), recap.finds.map { it.observationId })
+        assertEquals(LocalDate(2026, 10, 5), recap.days.first().date)
+        assertTrue(recap.days.none { it.isFuture }, "every day of last week has happened")
+        assertEquals(1, recap.summary.deltaVsLastWeek, "against its own week before")
+        assertEquals(2, recap.summary.weeklyStreak, "weeks 40 and 41")
+        assertEquals(listOf("Q2"), recap.newSpecies.map { it.speciesId })
+    }
+
+    @Test
+    fun `a quiet earlier week never says its streak is at risk`() {
+        val finds = listOf(obs("w39", "Q1", "2026-09-22T10:00:00Z"), obs("w40", "Q1", "2026-10-01T10:00:00Z"))
+        // Week 41 had nothing; opened on Monday of week 42 its Sunday is already over.
+        val recap = build(finds, now = "2026-10-11T22:30:00Z", week = WeekKey(2026, 41))
+        assertTrue(recap.summary.isQuiet)
+        assertFalse(recap.summary.streakAtRisk)
+        // The same week seen from its own Sunday evening is at risk.
+        assertTrue(build(finds, now = "2026-10-11T16:00:00Z").summary.streakAtRisk)
+    }
+
+    @Test
+    fun `week keys read and write as ISO weeks`() {
+        assertEquals("2026-W41", WeekKey(2026, 41).toIsoString())
+        assertEquals("2027-W01", WeekKey(2027, 1).toIsoString())
+        assertEquals(WeekKey(2026, 41), parseIsoWeekKey("2026-W41"))
+        assertEquals(WeekKey(2026, 53), parseIsoWeekKey("2026-W53")) // 2026 has 53 ISO weeks
+        assertNull(parseIsoWeekKey("2025-W53")) // 2025 has 52
+        assertNull(parseIsoWeekKey("2026-W00"))
+        assertNull(parseIsoWeekKey("2026-41"))
+        assertNull(parseIsoWeekKey(""))
+        assertNull(parseIsoWeekKey(null))
+    }
+
+    @Test
+    fun `a week's Monday matches its ISO number across the new year`() {
+        assertEquals(LocalDate(2026, 10, 5), WeekKey(2026, 41).monday())
+        // 2027-W01 starts on Monday 4 January 2027; 2026-W53 on Monday 28 December 2026.
+        assertEquals(LocalDate(2027, 1, 4), WeekKey(2027, 1).monday())
+        assertEquals(LocalDate(2026, 12, 28), WeekKey(2026, 53).monday())
     }
 
     // ── New species and their place in the life list ───────────────────────────────────────────

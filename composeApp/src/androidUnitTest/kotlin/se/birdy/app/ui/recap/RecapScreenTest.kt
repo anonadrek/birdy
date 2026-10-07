@@ -86,10 +86,10 @@ class RecapScreenTest {
     @Config(qualifiers = "+sv")
     fun `the header names the week, its dates and the days out`() {
         show()
-        compose.onNodeWithText("FÄLTRAPPORT · VECKA 41").assertExists()
+        compose.onNodeWithText("FÄLTRAPPORT · VECKA\u00A041").assertExists()
         // JournalHeadline sets the accent word as its own text: the merged headline holds "fält".
         compose.onNodeWithText("fält").assert(isHeading())
-        compose.onNodeWithText("5 till 11 oktober. 5 dagar ute.").assertExists()
+        compose.onNodeWithText("5 till 11\u00A0oktober. 5\u00A0dagar ute.").assertExists()
     }
 
     @Test
@@ -104,8 +104,8 @@ class RecapScreenTest {
     @Config(qualifiers = "+en")
     fun `the header in English`() {
         show(species = RecapFixtures.species(english = true))
-        compose.onNodeWithText("FIELD REPORT · WEEK 41").assertExists()
-        compose.onNodeWithText("5 to 11 October. Out on 5 days.").assertExists()
+        compose.onNodeWithText("FIELD REPORT · WEEK\u00A041").assertExists()
+        compose.onNodeWithText("5 to 11\u00A0October. Out on 5\u00A0days.").assertExists()
         compose.onNodeWithContentDescription("7 sightings, 3 new species, 4 weeks in a row.").assertExists()
         compose.onNodeWithText("+3 sightings compared with last week").assertExists()
     }
@@ -115,7 +115,7 @@ class RecapScreenTest {
     fun `one of everything reads in the singular`() {
         show(observations = RecapFixtures.firstFindRepo(), badges = FakeBadgeRepository())
         compose.onNodeWithContentDescription("1 fynd, 1 ny art, 1 vecka i rad.").assertExists()
-        compose.onNodeWithText("5 till 11 oktober. 1 dag ute.").assertExists()
+        compose.onNodeWithText("5 till 11\u00A0oktober. 1\u00A0dag ute.").assertExists()
         compose.onNodeWithText("+1 fynd mot förra veckan").assertExists()
     }
 
@@ -124,7 +124,7 @@ class RecapScreenTest {
     fun `one of everything in English`() {
         show(observations = RecapFixtures.firstFindRepo(), badges = FakeBadgeRepository(), species = RecapFixtures.species(english = true))
         compose.onNodeWithContentDescription("1 sighting, 1 new species, 1 week in a row.").assertExists()
-        compose.onNodeWithText("5 to 11 October. Out on 1 day.").assertExists()
+        compose.onNodeWithText("5 to 11\u00A0October. Out on 1\u00A0day.").assertExists()
         compose.onNodeWithText("+1 sighting compared with last week").assertExists()
     }
 
@@ -185,8 +185,8 @@ class RecapScreenTest {
                 )
             }
         show(observations = observations, badges = FakeBadgeRepository(), now = Instant.parse("2026-10-25T22:45:00Z"))
-        compose.onNodeWithText("FÄLTRAPPORT · VECKA 43").assertExists()
-        compose.onNodeWithText("19 till 25 oktober. 2 dagar ute.").assertExists()
+        compose.onNodeWithText("FÄLTRAPPORT · VECKA\u00A043").assertExists()
+        compose.onNodeWithText("19 till 25\u00A0oktober. 2\u00A0dagar ute.").assertExists()
         compose.onNodeWithContentDescription("måndag 19 oktober, 1 fynd").assertExists()
         compose.onNodeWithContentDescription("söndag 25 oktober, 1 fynd").assertExists()
     }
@@ -196,7 +196,7 @@ class RecapScreenTest {
     fun `a week across two months names both`() {
         // Week 40: Monday 28 September to Sunday 4 October 2026.
         show(observations = FakeObservationRepository(), badges = FakeBadgeRepository(), now = Instant.parse("2026-10-04T10:00:00Z"))
-        compose.onNodeWithText("28 september till 4 oktober.").assertExists()
+        compose.onNodeWithText("28\u00A0september till 4\u00A0oktober.").assertExists()
         compose.onNodeWithContentDescription("måndag 28 september, inga fynd").assertExists()
     }
 
@@ -204,7 +204,7 @@ class RecapScreenTest {
     @Config(qualifiers = "+en")
     fun `a week across two months in English`() {
         show(observations = FakeObservationRepository(), badges = FakeBadgeRepository(), now = Instant.parse("2026-10-04T10:00:00Z"))
-        compose.onNodeWithText("28 September to 4 October.").assertExists()
+        compose.onNodeWithText("28\u00A0September to 4\u00A0October.").assertExists()
     }
 
     // ── New species, the stamp, the grid ─────────────────────────────────────────────────────────
@@ -214,9 +214,9 @@ class RecapScreenTest {
     fun `new species are listed with their place in the life list, latest first`() {
         show()
         compose.onNodeWithText("NYA I LIVSLISTAN").assert(isHeading())
-        compose.onNodeWithText("№ 31 i livslistan · lör 10 okt").assertExists()
-        compose.onNodeWithText("№ 30 i livslistan · tors 8 okt").assertExists()
-        compose.onNodeWithText("№ 29 i livslistan · tis 6 okt").assertExists()
+        compose.onNodeWithText("№\u00A031 i livslistan · lör 10\u00A0okt").assertExists()
+        compose.onNodeWithText("№\u00A030 i livslistan · tors 8\u00A0okt").assertExists()
+        compose.onNodeWithText("№\u00A029 i livslistan · tis 6\u00A0okt").assertExists()
         val sidensvans = compose.onNodeWithContentDescription("Sidensvans, nummer 31 i livslistan, först sedd lördag 10 oktober")
         val stjartmes = compose.onNodeWithContentDescription("Stjärtmes, nummer 30 i livslistan, först sedd torsdag 8 oktober")
         val domherre = compose.onNodeWithContentDescription("Domherre, nummer 29 i livslistan, först sedd tisdag 6 oktober")
@@ -230,7 +230,7 @@ class RecapScreenTest {
     fun `new species in English`() {
         show(species = RecapFixtures.species(english = true))
         compose.onNodeWithText("NEW ON YOUR LIFE LIST").assertExists()
-        compose.onNodeWithText("№ 31 on your life list · Sat 10 Oct").assertExists()
+        compose.onNodeWithText("№\u00A031 on your life list · Sat 10\u00A0Oct").assertExists()
         compose
             .onNodeWithContentDescription("Bohemian Waxwing, number 31 on your life list, first seen Saturday 10 October")
             .assertExists()
@@ -268,6 +268,8 @@ class RecapScreenTest {
     fun `every find is a square in the grid, labelled with its species and day`() {
         show()
         compose.onNodeWithText("ALLA FYND · 7").assert(isHeading())
+        // TalkBack reads the heading as words, not the caps with their middle dot.
+        compose.onNodeWithContentDescription("Alla fynd, 7").assert(isHeading())
         listOf(
             "Rödhake, söndag 11 oktober",
             "Talgoxe, söndag 11 oktober",
@@ -299,7 +301,7 @@ class RecapScreenTest {
     fun `a quiet week keeps the strip and asks for the first find`() {
         show(observations = RecapFixtures.quietWeekRepo(), badges = FakeBadgeRepository())
         compose.onNodeWithText("lugn").assert(isHeading())
-        compose.onNodeWithText("5 till 11 oktober.").assertExists()
+        compose.onNodeWithText("5 till 11\u00A0oktober.").assertExists()
         compose.onNodeWithContentDescription("måndag 5 oktober, inga fynd").assertExists()
         compose.onNodeWithText("Ingen brådska. Tio minuter i parken räcker för veckans första rad.").assertExists()
         // Weeks 38 to 40 had finds: the streak is alive but needs this week.
@@ -321,7 +323,7 @@ class RecapScreenTest {
     fun `a quiet week in English`() {
         show(observations = FakeObservationRepository(), badges = FakeBadgeRepository())
         compose.onNodeWithText("quiet").assert(isHeading())
-        compose.onNodeWithText("5 to 11 October.").assertExists()
+        compose.onNodeWithText("5 to 11\u00A0October.").assertExists()
         compose.onNodeWithText("Open the camera").assertExists()
         compose.onNodeWithText("YOUR STREAK").assertDoesNotExist()
     }

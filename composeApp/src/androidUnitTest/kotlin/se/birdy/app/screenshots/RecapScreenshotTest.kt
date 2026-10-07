@@ -59,7 +59,7 @@ class RecapScreenshotTest {
     @Config(qualifiers = "+sv")
     fun recap_sv() {
         compose.captureScreen("recap_sv") { screen() }
-        compose.onNodeWithText("5 till 11 oktober. 5 dagar ute.").assertExists()
+        compose.onNodeWithText("5 till 11\u00A0oktober. 5\u00A0dagar ute.").assertExists()
     }
 
     @Test
@@ -89,7 +89,7 @@ class RecapScreenshotTest {
         compose.captureScreen("recap_first_find_sv") {
             screen(observations = RecapFixtures.firstFindRepo(), badges = FakeBadgeRepository())
         }
-        compose.onNodeWithText("5 till 11 oktober. 1 dag ute.").assertExists()
+        compose.onNodeWithText("5 till 11\u00A0oktober. 1\u00A0dag ute.").assertExists()
     }
 
     @Test

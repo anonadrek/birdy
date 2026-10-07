@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
@@ -32,6 +33,7 @@ import birdy_bird_scanner.composeapp.generated.resources.recap_headline_active
 import birdy_bird_scanner.composeapp.generated.resources.recap_headline_quiet
 import birdy_bird_scanner.composeapp.generated.resources.recap_load_error
 import birdy_bird_scanner.composeapp.generated.resources.recap_quiet_encouragement
+import birdy_bird_scanner.composeapp.generated.resources.recap_section_all_a11y_fmt
 import birdy_bird_scanner.composeapp.generated.resources.recap_section_all_fmt
 import birdy_bird_scanner.composeapp.generated.resources.recap_streak_label
 import birdy_bird_scanner.composeapp.generated.resources.recap_streak_nudge_fmt
@@ -214,9 +216,15 @@ private fun ActiveBody(
     Spacer(Modifier.height(16.dp))
     StampSection(state.stamps)
     Spacer(Modifier.height(20.dp))
+    // Read as "Alla fynd, 7", not the caps with their middle dot.
+    val allFinds = stringResource(Res.string.recap_section_all_a11y_fmt, state.finds.size)
     MicroLabel(
         text = stringResource(Res.string.recap_section_all_fmt, state.finds.size),
-        modifier = Modifier.semantics(mergeDescendants = true) { heading() },
+        modifier =
+            Modifier.semantics(mergeDescendants = true) {
+                heading()
+                contentDescription = allFinds
+            },
     )
     Spacer(Modifier.height(10.dp))
     FindsGrid(state.finds, onObservationClick)
