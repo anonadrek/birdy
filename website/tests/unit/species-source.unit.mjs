@@ -3,8 +3,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
-import { audioPublicPath, isComparisonBuilt, isPreview, isSpeciesBuilt, readJsonDir } from '../../src/lib/species-source.mjs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { audioPublicPath, builtSpeciesMedia, isComparisonBuilt, isPreview, isSpeciesBuilt, readJsonDir } from '../../src/lib/species-source.mjs';
 
 const ok = {
   status: 'ok', publish: true,
@@ -162,5 +163,26 @@ test('audioPublicPath: formatet är /audio/species/<QID>.<10 hex>.mp3, och hashe
       assert.match(path2, /^\/audio\/species\/Q99999\.[0-9a-f]{10}\.mp3$/);
       assert.notEqual(path1, path2);
     });
+  });
+});
+
+test('builtSpeciesMedia: foton och inspelningar bara för arter som får en sida, med samma adress som audioPublicPath', () => {
+  const website = join(dirname(fileURLToPath(import.meta.url)), '../..');
+  withEnv({ SPECIES_FIXTURES: '1', VERCEL_ENV: undefined }, () => {
+    const normal = builtSpeciesMedia(website, false);
+    const preview = builtSpeciesMedia(website, true);
+    // 16 published species with a hero, two of them with an extra photo; the preview adds two woodpeckers.
+    assert.equal(normal.images.length, 18);
+    assert.equal(preview.images.length, 20);
+    for (const qid of ['Q26209', 'Q210418', 'Q143284', 'Q166171']) {
+      assert.equal(normal.images.some((f) => f.startsWith(`${qid}/`)), false, qid);
+    }
+    assert.ok(preview.images.includes('Q26209/hero.webp') && preview.images.includes('Q210418/hero.webp'));
+    assert.equal(preview.images.some((f) => /^Q(143284|166171)\//.test(f)), false);
+    assert.deepEqual(normal.audio.map((a) => a.qid), ['Q25234', 'Q25404', 'Q25485', 'Q25756']);
+    for (const a of normal.audio) {
+      assert.equal(a.file, `${a.qid}/voice.mp3`);
+      assert.equal(a.href, audioPublicPath(website, { qid: a.qid, audio: { file: a.file } }));
+    }
   });
 });

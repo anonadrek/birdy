@@ -3,9 +3,9 @@ import type { ImageMetadata } from 'astro';
 import type { z } from 'astro/zod';
 import groupData from '../data/species-groups.json';
 import type { Copy, Locale } from './i18n';
-import { audioPublicPath, comparisonsDir, hasPageContract, isComparisonBuilt, isPreview, isSpeciesBuilt, speciesDir, useFixtures } from './species-source.mjs';
+import { comparisonsDir, hasPageContract, isComparisonBuilt, isPreview, isSpeciesBuilt, speciesDir, useFixtures } from './species-source.mjs';
 import type { speciesPage } from './species-schema.mjs';
-import speciesImages from 'virtual:birdy-species-images';
+import { audio as speciesAudio, images as speciesImages } from 'virtual:birdy-species-media';
 
 /** Any species file: the full page data for written and verified records, only the envelope for the rest. */
 export type SpeciesRecord = CollectionEntry<'species'>['data'];
@@ -56,9 +56,12 @@ export function heroOf(s: Species): SpeciesImage {
   return hero;
 }
 
-/** Where the species' recording is served (astro.config.mjs copies it there), or undefined. */
+/** Where the species' recording is served (astro.config.mjs copies it there, same hashed name), or undefined. */
 export function audioHref(s: Species): string | undefined {
-  return s.audio ? audioPublicPath(process.cwd(), s) : undefined;
+  if (!s.audio) return undefined;
+  const href = speciesAudio.get(s.qid);
+  if (!href) throw new Error(`${s.qid}: inspelningen finns inte i bygget (bara arter som får en sida har inspelningar)`);
+  return href;
 }
 
 let records: SpeciesRecord[] | undefined;

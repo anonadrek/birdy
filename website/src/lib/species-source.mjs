@@ -73,3 +73,20 @@ export function audioPublicPath(root, record) {
   const hash = createHash('sha256').update(readFileSync(file)).digest('hex').slice(0, 10);
   return `/audio/species/${record.qid}.${hash}.mp3`;
 }
+
+/**
+ * The photos and recordings of the species built in this build (`isSpeciesBuilt`), read once from the
+ * data files with `root` = the website folder (Astro's config root, never process.cwd()). astro.config.mjs
+ * turns this into the virtual module the pages import (virtual:birdy-species-media) and copies the
+ * recordings into dist under the same hashed names, so a page link and the copied file always agree.
+ * @param {string} root
+ * @param {boolean} [preview]
+ * @returns {{ images: string[], audio: { qid: string, file: string, href: string }[] }}
+ */
+export function builtSpeciesMedia(root, preview = isPreview()) {
+  const built = readJsonDir(root, speciesDir()).filter((r) => isSpeciesBuilt(r, preview));
+  return {
+    images: built.flatMap((r) => (r.images ?? []).map((/** @type {{ file: string }} */ i) => i.file)),
+    audio: built.filter((r) => r.audio).map((r) => ({ qid: r.qid, file: r.audio.file, href: audioPublicPath(root, r) })),
+  };
+}

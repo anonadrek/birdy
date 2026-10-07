@@ -5,8 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 import sharp from 'sharp';
 import { copyFileSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname, resolve } from 'node:path';
-import { assetsDir, audioPublicPath, isSpeciesBuilt, readJsonDir, speciesDir } from './src/lib/species-source.mjs';
+import { basename, dirname, resolve } from 'node:path';
+import { assetsDir, builtSpeciesMedia } from './src/lib/species-source.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 
@@ -93,51 +93,57 @@ for (const locale of ['en', 'sv']) {
   }
 }
 
+// The photos and recordings of the species that get a page in this build, read once per build on first
+// use (after the content sync, so a broken record gets zod's message first). Spec 2026-09-25 §9.1 and
+// §9.9: a photo or recording is only served once a built page uses it.
+/** @type {ReturnType<typeof builtSpeciesMedia> | undefined} */
+let media;
+const speciesMedia = () => (media ??= builtSpeciesMedia(root));
+
 // Recordings live beside the photos (src/assets/species/<QID>/voice.mp3) and are copied into dist only
-// for species that get a page in this build, under the content-hashed name the page links to, so an
-// unpublished recording is never served (spec 2026-09-25 §9.9; deviation 9 in the plan).
+// for species that get a page in this build, under the content-hashed name the page links to (the same
+// href the virtual module gives the pages), so an unpublished recording is never served (deviation 9).
 /** @type {import('astro').AstroIntegration} */
 const speciesAudio = {
   name: 'birdy-species-audio',
   hooks: {
     'astro:build:done': ({ dir, logger }) => {
+      const { audio } = speciesMedia();
       const out = fileURLToPath(new URL('audio/species/', dir));
-      let copied = 0;
-      for (const record of readJsonDir(root, speciesDir()).filter((r) => isSpeciesBuilt(r) && r.audio)) {
-        mkdirSync(out, { recursive: true });
-        const name = audioPublicPath(root, record).split('/').pop();
-        copyFileSync(resolve(root, assetsDir(), record.audio.file), resolve(out, /** @type {string} */ (name)));
-        copied += 1;
+      if (audio.length) mkdirSync(out, { recursive: true });
+      for (const recording of audio) {
+        copyFileSync(resolve(root, assetsDir(), recording.file), resolve(out, basename(recording.href)));
       }
-      logger.info(`${copied} inspelningar kopierade till audio/species/`);
+      logger.info(`${audio.length} inspelningar kopierade till audio/species/`);
     },
   },
 };
 
-// Photos of the species that get a page in this build, as one virtual module that src/lib/species.ts
-// imports (spec 2026-09-25 §9.1: a photo is only served once a built page uses it). An import.meta.glob
-// over src/assets/species/ would not do: Vite emits every globbed image into dist/_astro/ as soon as it
-// loads it, used or not (lazy globs too), so every unpublished species' photo would go online, and a
-// normal build would also carry every test photo under tests/fixtures/ (verified with Astro 7.3.5).
-// SPECIES_FIXTURES=1 reads the test photos instead (assetsDir()), SPECIES_PREVIEW=1 adds verified
-// unpublished species, the same rule as the pages and the recordings above.
-const SPECIES_IMAGES = 'virtual:birdy-species-images';
+// The photos and recording links of the species that get a page, as one virtual module that
+// src/lib/species.ts imports. An import.meta.glob over src/assets/species/ would not do: Vite emits every
+// globbed image into dist/_astro/ as soon as it loads it, used or not (lazy globs too), so every
+// unpublished species' photo would go online, and a normal build would also carry every test photo under
+// tests/fixtures/ (verified with Astro 7.3.5). SPECIES_FIXTURES=1 reads the test photos instead
+// (assetsDir()), SPECIES_PREVIEW=1 adds verified unpublished species, the same rule as the pages.
+const SPECIES_MEDIA = 'virtual:birdy-species-media';
 /** @type {import('vite').Plugin} */
-const speciesImages = {
-  name: 'birdy-species-images',
+const speciesMediaModule = {
+  name: 'birdy-species-media',
   resolveId(id) {
-    return id === SPECIES_IMAGES ? `\0${SPECIES_IMAGES}` : undefined;
+    return id === SPECIES_MEDIA ? `\0${SPECIES_MEDIA}` : undefined;
   },
   load(id) {
-    if (id !== `\0${SPECIES_IMAGES}`) return undefined;
-    /** @type {string[]} */
-    const files = readJsonDir(root, speciesDir())
-      .filter((r) => isSpeciesBuilt(r))
-      .flatMap((r) => (r.images ?? []).map((/** @type {{ file: string }} */ i) => i.file));
+    if (id !== `\0${SPECIES_MEDIA}`) return undefined;
+    const { images, audio } = speciesMedia();
     // Root-relative ids ("/tests/fixtures/species-assets/Q25485/hero.webp"), which Vite resolves on every OS.
-    const imports = files.map((file, n) => `import img${n} from ${JSON.stringify(`/${assetsDir()}/${file}`)};`);
-    const entries = files.map((file, n) => `[${JSON.stringify(file)}, img${n}]`);
-    return `${imports.join('\n')}\nexport default new Map([${entries.join(', ')}]);\n`;
+    const imports = images.map((file, n) => `import img${n} from ${JSON.stringify(`/${assetsDir()}/${file}`)};`);
+    const entries = images.map((file, n) => `[${JSON.stringify(file)}, img${n}]`);
+    return [
+      ...imports,
+      `export const images = new Map([${entries.join(', ')}]);`,
+      `export const audio = new Map(${JSON.stringify(audio.map((a) => [a.qid, a.href]))});`,
+      '',
+    ].join('\n');
   },
 };
 
@@ -162,6 +168,6 @@ export default defineConfig({
     },
   }), speciesAudio],
   vite: {
-    plugins: [tailwindcss(), speciesImages],
+    plugins: [tailwindcss(), speciesMediaModule],
   },
 });
