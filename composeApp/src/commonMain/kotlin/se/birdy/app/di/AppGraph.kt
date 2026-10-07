@@ -307,7 +307,7 @@ class AppGraph(
                     DailyBirdSpecies(
                         name = species.name,
                         scientificName = species.scientificName,
-                        heroImagePath = species.images.firstOrNull { it.role == "hero" }?.path,
+                        heroImage = species.images.firstOrNull { it.role == "hero" },
                     )
                 }
             },
