@@ -197,6 +197,41 @@ test('a genuine 409 on a forward that was never truly forwarded (different name)
   assert.deepEqual(await run(client), { status: 500 });
 });
 
+test('a 4xx validation error on the forward (e.g. a broken attachment) sends one text-only fallback forward, then the receipt', async () => {
+  const client = fakeClient();
+  client.send = async (payload, key) => {
+    if (key === 'forward-em_1') {
+      const err = new Error('invalid attachment');
+      err.name = 'invalid_attachment';
+      err.statusCode = 422;
+      throw err;
+    }
+    client.calls.send.push({ payload, key });
+    return `sent_${client.calls.send.length}`;
+  };
+  const logs = [];
+  const result = await run(client, undefined, undefined, { log: (l) => logs.push(l) });
+  assert.deepEqual(result, { status: 200 });
+  assert.ok(logs.some((l) => l.includes('forward-fallback')));
+  assert.deepEqual(client.calls.send.map((c) => c.key), ['forward-fallback-em_1', 'receipt-em_1']);
+});
+
+test('a failed fallback forward is still a 500', async () => {
+  const client = fakeClient();
+  client.send = async (_payload, key) => {
+    const err = new Error('nope');
+    if (key === 'forward-em_1') {
+      err.name = 'invalid_attachment';
+      err.statusCode = 422;
+    } else {
+      err.name = 'internal_server_error';
+      err.statusCode = 500;
+    }
+    throw err;
+  };
+  assert.deepEqual(await run(client), { status: 500 });
+});
+
 test('attachments are only fetched when the message has some', async () => {
   const client = fakeClient({ mail: { ...email, attachments: [{ id: 'a1', size: 10 }] } });
   await run(client);

@@ -1,7 +1,7 @@
 // The whole flow (spec section 3). Returns { status }; the Vercel entry turns it into a Response.
 // Logs one JSON line per outcome with the email id, never addresses, subjects or content (spec section 6).
 import { addressOf } from './address.mjs';
-import { buildForward } from './forward.mjs';
+import { buildFallbackForward, buildForward } from './forward.mjs';
 import { labelFor } from './labels.mjs';
 import { isAutomated, mailedRecently, receiptMessage } from './receipt.mjs';
 
@@ -54,6 +54,16 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
     // out, so treat it as forwarded and continue to the receipt.
     if (email && error.statusCode === 409 && error.name === 'invalid_idempotent_request') {
       say({ outcome: 'forward-replayed', id });
+    } else if (email && error.statusCode >= 400 && error.statusCode < 500) {
+      // A validation error (e.g. a broken attachment URL) on the full forward — try once more with
+      // a minimal, text-only version so the message is not lost outright.
+      try {
+        await client.send(buildFallbackForward({ email, supportAddress: env.SUPPORT_ADDRESS, forwardTo: env.FORWARD_TO }), `forward-fallback-${id}`);
+        say({ outcome: 'forward-fallback', id, statusCode: error.statusCode });
+      } catch (fallbackError) {
+        say({ outcome: 'forward-failed', id, error: fallbackError.name, statusCode: fallbackError.statusCode });
+        return { status: 500 };
+      }
     } else {
       say({ outcome: 'forward-failed', id, error: error.name, statusCode: error.statusCode });
       return { status: 500 };

@@ -8,6 +8,10 @@ test('addressOf takes the address out of a display name, lower case', () => {
   assert.equal(addressOf(' anna@example.se '), 'anna@example.se');
 });
 
+test('addressOf takes the LAST angle-bracket address when there is more than one (a quoted display name containing one)', () => {
+  assert.equal(addressOf('"Anna <x>" <anna@ex.se>'), 'anna@ex.se');
+});
+
 test('the app feedback subject gets [App], in both of the app subject forms', () => {
   assert.equal(labelFor({ subject: 'Birdy v1.3.0 — feedback', text: '' }), '[App]');
   assert.equal(labelFor({ subject: 'Birdy v1.2.0-rc3 - feedback', text: 'Hej' }), '[App]');

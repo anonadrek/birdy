@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildForward, MAX_ATTACHMENT_BYTES } from '../lib/forward.mjs';
+import { buildForward, buildFallbackForward, MAX_ATTACHMENT_BYTES } from '../lib/forward.mjs';
 
 const email = {
   id: 'em_1',
@@ -29,9 +29,15 @@ test('the original Reply-To wins over From', () => {
 
 test('a short header goes first in text and html, then the message', () => {
   const f = buildForward(base);
-  assert.match(f.text, /^Från: Anna <anna@example\.se>\nDatum: 2026-10-08T07:00:00\.000Z\nTill: support@birdy\.community\n\nDen kraschar/);
+  assert.match(f.text, /^Från: Anna <anna@example\.se>\nDatum: 2026-10-08T07:00:00\.000Z\nTill: support@birdy\.community\nResend-id: em_1\n\nDen kraschar/);
   assert.match(f.html, /Från: Anna &lt;anna@example\.se&gt;/);
   assert.match(f.html, /<p>Den kraschar när jag sparar\.<\/p>$/);
+});
+
+test('the header always includes the Resend id, for finding the message in Resend later', () => {
+  const f = buildForward(base);
+  assert.match(f.text, /Resend-id: em_1/);
+  assert.match(f.html, /Resend-id: em_1/);
 });
 
 test('without text the html is used as text, without tags', () => {
@@ -56,4 +62,20 @@ test('too large attachments stay in Resend and the header says so', () => {
   const f = buildForward({ ...base, attachments });
   assert.equal(f.attachments, undefined);
   assert.match(f.text, /Bilagor \(1 st, 10\.0 MB\) skickas inte vidare; de finns kvar i Resend i 30 dagar \(em_1\)\./);
+});
+
+test('buildFallbackForward is text-only, with no attachments or Reply-To, and a fixed subject carrying the id', () => {
+  const f = buildFallbackForward({ email, supportAddress: 'support@birdy.community', forwardTo: 'inbox@example.com' });
+  assert.equal(f.from, 'Birdy support <support@birdy.community>');
+  assert.deepEqual(f.to, ['inbox@example.com']);
+  assert.equal(f.subject, '[Birdy] (kunde inte vidarebefordras som vanligt) em_1');
+  assert.match(f.text, /^Resend-id: em_1\n\nDen kraschar när jag sparar\.$/);
+  assert.equal(f.replyTo, undefined);
+  assert.equal(f.attachments, undefined);
+  assert.equal(f.html, undefined);
+});
+
+test('buildFallbackForward uses the stripped html when there is no text', () => {
+  const f = buildFallbackForward({ email: { ...email, text: null }, supportAddress: 'support@birdy.community', forwardTo: 'inbox@example.com' });
+  assert.match(f.text, /\n\nDen kraschar när jag sparar\.$/);
 });
