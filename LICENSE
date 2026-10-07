@@ -29,8 +29,11 @@ remain subject to their own licenses, including (non-exhaustively):
   - DM Serif Display, Caveat: SIL Open Font License 1.1
   - Species photos from Wikimedia Commons: CC0, public domain, CC BY or
     CC BY-SA, as recorded for each photo
-  - Species names and red-list categories from Wikidata: CC0
-  - IOC World Bird List (F. Gill, D. Donsker & P. Rasmussen, eds.): CC BY 3.0
+  - Species selection and English names: BirdLife Sweden's taxonomic
+    committee, Western Palearctic list (VP11), checked against the IOC
+    World Bird List (F. Gill, D. Donsker & P. Rasmussen, eds.): CC BY 3.0
+  - Swedish names: mostly Wikidata (CC0), some from BirdLife Sweden's
+    official list; red-list categories (IUCN): Wikidata (CC0)
   - Map data © OpenStreetMap contributors (ODbL); map tiles © MapTiler
 
 These third-party licenses govern their respective components and are not

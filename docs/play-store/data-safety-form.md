@@ -6,7 +6,7 @@ Console **Data Safety** section. Keep in sync with code reality.
 Birdy is developed and operated by **AlbIT AB** (org. no. 559593-7607,
 Solna, Sweden).
 
-_Last reviewed: 2026-10-07 (v1.3.0): Premium sold through Google Play Billing (yearly subscription or lifetime purchase), sound ID records up to 60 seconds, early users recognised on the device from the install time, local notifications listed under the permissions. No form answer changes. See Diff log entries 2026-10-05 and 2026-10-07._
+_Last reviewed: 2026-10-07 (v1.3.0): Premium sold through Google Play Billing (yearly subscription or lifetime purchase), sound ID records up to 60 seconds, early users recognised on the device from the install time or the phone's network time, local notifications listed under the permissions. No form answer changes. See Diff log entries 2026-10-05 and 2026-10-07._
 
 ## Data collection and security
 
@@ -49,8 +49,9 @@ the record: map tile requests (HTTPS to MapTiler) are encrypted in
 transit and carry only the map viewport, no user data.
 
 ### Do you provide a way for users to request that their data be deleted?
-**Yes.** Uninstalling the app removes all device-local data. Inside the
-app, users can long-press an observation to delete it individually.
+**Not asked** either, for the same reason. For the record: uninstalling
+the app removes all device-local data, and users can delete a single
+observation with Delete on its page.
 
 ## Data types (none selected)
 
@@ -92,8 +93,8 @@ in the form:
   collection and security" above). For the record: map tile requests
   use HTTPS, no user data is transmitted, and observation data
   (including optional location) never leaves the device.
-- Data deletion: users can request deletion via uninstall or
-  in-app long-press delete
+- Data deletion: **not asked** in the form. For the record: uninstall,
+  or Delete on an observation's page.
 - Independent security review: **No**
 - Committed to Google Play's Families Policy: **No** (target audience
   is 13+, not "directed to children")
@@ -119,15 +120,16 @@ in the form:
   enabled "Save location with my finds" in Settings. Location is
   stored only on the device; never transmitted.
 - `android.permission.POST_NOTIFICATIONS`: used to show local
-  notifications (the daily Bird of the day at 08:00 with a photo of the
-  species, the weekly recap and the weekly badge progress note). On
+  notifications (the daily Bird of the day around 08:00 with a photo of
+  the species, the weekly recap and the weekly badge progress note). On
   Android 13 and later the user is asked after the first saved find and
   can decline; each kind can be turned off in Settings. Scheduled on the
-  device with WorkManager; there is no push server and nothing is sent.
-- Added by libraries: `RECEIVE_BOOT_COMPLETED`, `WAKE_LOCK` and
-  `FOREGROUND_SERVICE` (AndroidX WorkManager, keeps the notification
-  schedule after a restart) and `com.android.vending.BILLING` (Google
-  Play Billing).
+  device with AndroidX WorkManager; there is no push server and nothing
+  is sent.
+- Added by libraries: WorkManager declares `RECEIVE_BOOT_COMPLETED`, so
+  the schedule survives a restart, and `WAKE_LOCK` and
+  `FOREGROUND_SERVICE`, which it can use while running scheduled work;
+  Google Play Billing declares `com.android.vending.BILLING`.
 
 We do **not** declare:
 - Photos permission (`READ_MEDIA_IMAGES` / `READ_EXTERNAL_STORAGE`):
@@ -183,6 +185,7 @@ features, provide:
 - **2026-10-07**: legal review for v1.3.0 (vC130). Added
   `POST_NOTIFICATIONS` (local notifications, in the manifest since the
   notification features shipped) and the permissions that libraries add
-  to the permission list. The encryption question is not asked when no
-  data is collected or shared; the two places that answered it ("N/A"
-  and "Yes") now say so. No change to any form answer.
+  to the permission list. The encryption and deletion questions are not
+  asked when no data is collected or shared; the places that answered
+  them now say so, and deletion is described as it works (Delete on an
+  observation's page, not long-press). No change to any form answer.

@@ -63,16 +63,17 @@ This data **never leaves your device** unless:
   map tile imagery from MapTiler when you view the personal finds map.
   See section 2a.
 - **Notifications** (`POST_NOTIFICATIONS`): used for local reminders,
-  namely the daily Bird of the day at 08:00 (with a photo of the
+  namely the daily Bird of the day around 08:00 (with a photo of the
   species), a weekly recap on Sunday evening and a weekly note on your
   badge progress. On Android 13 and later Birdy asks for permission
   after your first saved find, and you can say no; on earlier versions
   Android allows them by default. Each kind can be turned off in
-  Settings → Notifications. The notifications are
-  created and scheduled on your device with Android's WorkManager
-  (which also uses `RECEIVE_BOOT_COMPLETED`, `WAKE_LOCK` and
-  `FOREGROUND_SERVICE` to keep the schedule after a restart). There is
-  no push server, and nothing is sent.
+  Settings → Notifications. The notifications are created and
+  scheduled on your device with Android's WorkManager library (the
+  library also declares `RECEIVE_BOOT_COMPLETED`, so the schedule
+  survives a restart, and `WAKE_LOCK` and `FOREGROUND_SERVICE`, which
+  it can use while running scheduled work). There is no push server,
+  and nothing is sent.
 
 ## 2a. Location and the personal finds map
 
@@ -150,8 +151,8 @@ collect data from users under 13.
 Since Birdy stores data only on your device, your rights under GDPR
 (right to access, right to erasure, etc.) are satisfied by:
 
-- **Accessing your data**: open the Diary / Lifelist tabs in Birdy.
-- **Deleting your data**: long-press an observation to delete, or
+- **Accessing your data**: open the Lifelist tab in Birdy.
+- **Deleting your data**: open an observation and tap Delete, or
   uninstall the app to clear all data.
 
 ## 8. The website birdy.community
@@ -162,7 +163,8 @@ forms and no advertising, and it does not set cookies.
 
 - **Visitor statistics**: the website uses **Vercel Web Analytics** to
   count page views, without cookies. For each page view it records
-  the time, the page address, the referring site, an approximate
+  the time, the page address (including query parameters), the
+  referring site, an approximate
   location (country, region and city) and the type of device,
   operating system and browser. Visitors are told
   apart by a hash of the request that is discarded after 24 hours, and
@@ -171,12 +173,12 @@ forms and no advertising, and it does not set cookies.
 - **Hosting**: the website is hosted by **Vercel**, which handles the
   technical data that every web request carries (such as your IP
   address) in order to deliver the pages.
-- **Map**: the coverage map on the start page loads map imagery from
-  **MapTiler** when you scroll to it, so MapTiler receives the requests
-  for those map tiles. See
+- **Map**: the coverage map on the start page loads the map (style,
+  map data and label fonts) from **MapTiler** when you scroll near it,
+  so MapTiler receives those requests. See
   [MapTiler's Privacy Policy](https://www.maptiler.com/privacy-policy/).
-- **Fonts** are served from the website itself, not from a font
-  service.
+- **Fonts**: the website's own typefaces are served from the website
+  itself, not from a font service.
 
 ## 9. Changes to this policy
 

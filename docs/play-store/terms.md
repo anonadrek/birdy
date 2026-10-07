@@ -40,8 +40,8 @@ legal hunting, sensitive surveys, conservation work).
 
 ## 4. Content sources and licenses
 
-The App combines our own work with content that others publish under
-open licenses:
+The App combines our own work with content and components from
+others, most of them under open licenses:
 
 - **Species texts.** The description and migration texts are summaries
   that an AI model (Claude, from Anthropic) wrote from the Wikipedia
@@ -51,15 +51,15 @@ open licenses:
 - **Photos.** The species photos come from **Wikimedia Commons**. Each
   one is in the public domain, dedicated to it under **CC0**, or
   licensed under **CC BY** or **CC BY-SA** (version 2.0, 3.0 or 4.0) by
-  its photographer. We resize and convert the photos and do not
+  its author. We resize and convert the photos and do not
   otherwise change them; each photo remains under its own license.
 - **Species list and names.** The selection of species and the English
-  names follow the Western Palearctic list of BirdLife Sweden's
+  names follow the Western Palearctic list (VP11) of BirdLife Sweden's
   taxonomic committee, checked against the **IOC World Bird List**
   v14.1 (F. Gill, D. Donsker & P. Rasmussen, eds.), licensed under
-  **CC BY 3.0**. Swedish names and the global red-list category (IUCN)
-  come from **Wikidata**, which is in the public domain (**CC0**); some
-  Swedish names follow BirdLife Sweden.
+  **CC BY 3.0**. Most Swedish names come from **Wikidata**, which is in
+  the public domain (**CC0**), and some from BirdLife Sweden's official
+  list. The global red-list category (IUCN) also comes from Wikidata.
 - **Photo identification.** The **AIY Birds V1** model, © Google,
   licensed under the **Apache License 2.0**.
 - **Sound identification.** The **BirdNET-Lite** model by the K. Lisa
