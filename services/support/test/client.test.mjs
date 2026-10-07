@@ -26,6 +26,19 @@ test('send throws an error carrying name and statusCode from Resend, never leaki
   });
 });
 
+test('listAttachments asks for up to 100 and reports whether more exist', async () => {
+  let requestedOptions;
+  const resend = fakeResend();
+  resend.emails.receiving.attachments.list = async (options) => {
+    requestedOptions = options;
+    return { data: { object: 'list', has_more: true, data: [{ id: 'a1' }] }, error: null };
+  };
+  const client = resendClient(resend);
+  const result = await client.listAttachments('em_1');
+  assert.deepEqual(requestedOptions, { emailId: 'em_1', limit: 100 });
+  assert.deepEqual(result, { attachments: [{ id: 'a1' }], hasMore: true });
+});
+
 test('getEmail throws an error carrying name and statusCode too', async () => {
   const client = resendClient(fakeResend());
   await assert.rejects(client.getEmail('em_1'), (err) => {

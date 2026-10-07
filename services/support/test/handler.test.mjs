@@ -26,7 +26,7 @@ function fakeClient({ sent = [], failForward = false, failReceipt = false, mail 
     calls,
     verify: realVerify,
     getEmail: async (id) => (id === mail.id ? mail : Promise.reject(new Error('not found'))),
-    listAttachments: async () => { calls.listAttachments += 1; return []; },
+    listAttachments: async () => { calls.listAttachments += 1; return { attachments: [], hasMore: false }; },
     listSent: async () => sent,
     send: async (payload, key) => {
       const isReceipt = key.startsWith('receipt-');
@@ -236,6 +236,17 @@ test('attachments are only fetched when the message has some', async () => {
   const client = fakeClient({ mail: { ...email, attachments: [{ id: 'a1', size: 10 }] } });
   await run(client);
   assert.equal(client.calls.listAttachments, 1);
+});
+
+test('a hasMore attachments page adds a header line noting more exist in Resend', async () => {
+  const client = fakeClient({ mail: { ...email, attachments: [{ id: 'a1', size: 10 }] } });
+  client.listAttachments = async () => {
+    client.calls.listAttachments += 1;
+    return { attachments: [{ id: 'a1', filename: 'x.png', size: 10, content_type: 'image/png', download_url: 'https://x' }], hasMore: true };
+  };
+  await run(client);
+  const forward = client.calls.send.find((c) => c.key === 'forward-em_1');
+  assert.match(forward.payload.text, /Fler bilagor finns kvar i Resend/);
 });
 
 test('a missing setting is 500 and logged, before anything is sent', async () => {

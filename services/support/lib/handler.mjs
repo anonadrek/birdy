@@ -46,9 +46,9 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
   let email;
   try {
     email = await resolvedClient.getEmail(id);
-    const attachments = email.attachments?.length > 0 ? await resolvedClient.listAttachments(id) : [];
+    const { attachments, hasMore } = email.attachments?.length > 0 ? await resolvedClient.listAttachments(id) : { attachments: [], hasMore: false };
     const label = labelFor({ subject: email.subject ?? '', text: email.text ?? '' });
-    await resolvedClient.send(buildForward({ email, attachments, label, supportAddress: env.SUPPORT_ADDRESS, forwardTo: env.FORWARD_TO }), `forward-${id}`);
+    await resolvedClient.send(buildForward({ email, attachments, hasMore, label, supportAddress: env.SUPPORT_ADDRESS, forwardTo: env.FORWARD_TO }), `forward-${id}`);
     say({ outcome: 'forwarded', id, label, attachments: attachments.length });
   } catch (error) {
     // Resend re-fetches attachment download_url on every listAttachments() call, so a retry (Svix,

@@ -64,6 +64,16 @@ test('too large attachments stay in Resend and the header says so', () => {
   assert.match(f.text, /Bilagor \(1 st, 10\.0 MB\) skickas inte vidare; de finns kvar i Resend i 30 dagar \(em_1\)\./);
 });
 
+test('a header line notes when more attachments exist in Resend beyond what was fetched', () => {
+  const f = buildForward({ ...base, hasMore: true });
+  assert.match(f.text, /Fler bilagor finns kvar i Resend/);
+});
+
+test('no extra header line when there are no more attachments', () => {
+  const f = buildForward(base);
+  assert.doesNotMatch(f.text, /Fler bilagor/);
+});
+
 test('buildFallbackForward is text-only, with no attachments or Reply-To, and a fixed subject carrying the id', () => {
   const f = buildFallbackForward({ email, supportAddress: 'support@birdy.community', forwardTo: 'inbox@example.com' });
   assert.equal(f.from, 'Birdy support <support@birdy.community>');

@@ -12,8 +12,12 @@ export function plainBody(email) {
   return email.text ?? stripTags(email.html ?? '');
 }
 
-/** The payload for resend.emails.send. `attachments` are Resend's attachment records with download_url. */
-export function buildForward({ email, attachments, label, supportAddress, forwardTo }) {
+/**
+ * The payload for resend.emails.send. `attachments` are Resend's attachment records with
+ * download_url. `hasMore` (from the paginated attachments list) means Resend holds even more
+ * attachments than were fetched — noted in the header rather than silently dropped.
+ */
+export function buildForward({ email, attachments, hasMore = false, label, supportAddress, forwardTo }) {
   const total = attachments.reduce((sum, a) => sum + a.size, 0);
   const fits = total <= MAX_ATTACHMENT_BYTES;
   // Resend-id is always present, so the message can be found in Resend even when the subject or
@@ -21,6 +25,9 @@ export function buildForward({ email, attachments, label, supportAddress, forwar
   const header = [`Från: ${email.from}`, `Datum: ${email.created_at}`, `Till: ${(email.to ?? []).join(', ')}`, `Resend-id: ${email.id}`];
   if (attachments.length > 0 && !fits) {
     header.push(`Bilagor (${attachments.length} st, ${megabytes(total)} MB) skickas inte vidare; de finns kvar i Resend i 30 dagar (${email.id}).`);
+  }
+  if (hasMore) {
+    header.push(`Fler bilagor finns kvar i Resend (${email.id}); bara de första listade hämtades.`);
   }
   const body = plainBody(email);
   return {

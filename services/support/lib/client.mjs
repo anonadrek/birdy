@@ -16,7 +16,12 @@ export function resendClient(resend) {
   return {
     verify: ({ payload, headers, secret }) => resend.webhooks.verify({ payload, headers, webhookSecret: secret }),
     getEmail: async (id) => unwrap('receiving.get')(await resend.emails.receiving.get(id)),
-    listAttachments: async (id) => unwrap('receiving.attachments.list')(await resend.emails.receiving.attachments.list({ emailId: id })).data,
+    listAttachments: async (id) => {
+      // limit: 100 raises the default page of 20, which silently dropped attachments beyond it;
+      // has_more still says whether even that was not everyone (forward.mjs notes it when so).
+      const result = unwrap('receiving.attachments.list')(await resend.emails.receiving.attachments.list({ emailId: id, limit: 100 }));
+      return { attachments: result.data, hasMore: result.has_more };
+    },
     listSent: async () => unwrap('emails.list')(await resend.emails.list({ limit: 100 })).data,
     send: async (payload, idempotencyKey) => unwrap('emails.send')(await resend.emails.send(payload, { idempotencyKey })).id,
   };
