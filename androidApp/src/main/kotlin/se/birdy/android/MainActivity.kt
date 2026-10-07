@@ -37,6 +37,8 @@ import se.birdy.app.bootstrap.SharedPrefsBadgeVersionStore
 import se.birdy.app.di.AppGraph
 import se.birdy.app.i18n.AppStrings
 import se.birdy.app.i18n.LocaleResolver
+import se.birdy.app.i18n.appliedLocaleTags
+import se.birdy.app.i18n.reconcileAppLanguage
 import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.notifications.workers.TrophyProgressWorker
 import se.birdy.app.photo.PhotoStorageProvider
@@ -402,7 +404,8 @@ class MainActivity : AppCompatActivity() {
                 debugForceYearly = BuildConfig.DEBUG && BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE,
                 now = Clock.System.now(),
             )
-        val overrideTag = runBlocking { userPreferences.appLanguage.first() }.toLocaleTagOrNull()
+        // Android's per-app language wins on API 33+ (reconcileAppLanguage).
+        val overrideTag = runBlocking { reconcileAppLanguage(userPreferences, appliedLocaleTags()) }.toLocaleTagOrNull()
         val resolvedLocale =
             LocaleResolver.resolve(
                 override = overrideTag,
