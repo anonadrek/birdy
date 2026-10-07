@@ -46,6 +46,24 @@ Skriven i slutet av sessionen 2026-10-05–07 (Windows). Läs den här filen och
    - **Artsidornas data:** sedan `main` slogs ihop med `release/1.3.0` (d96b0760) finns både de städade fotona och fas 1b-pipelinen på release-grenen, så R1/R2 och de betalda körningarna kan köras från en gren av `release/1.3.0` utan att vänta på Task 11.
 2. **Det absolut sista i releasen (efter Task 11):** städa (worktrees under `C:/w/`, sammanslagna grenar, scratch), granska iOS-spåret (i0 till i4 och vad 1.3.0 ändrat i delad kod som Macen måste ta hand om: nya `UserPreferences`-medlemmar i `NsUserDefaultsUserPreferences`, iOS-värdarna som 7b ändrade, Dagens fågel-notisen, priser från StoreKit, `PurchaseResult.Pending`), uppdatera iOS-planen (i5 StoreKit, i6 App Store) med nuvarande modell eftersom de skrevs med en äldre, och skriv en enkel överlämning för Mac-sessionen. Plan 3 Task 12.
 
+### Albins svar på beslutssidan 2026-10-07 (sent kväll)
+
+Beslutssidan: https://claude.ai/artifact/NHEcrCSEqvrhU9KrHWNX42 (uppdateras med läget när allt nedan är gjort).
+
+1. **Artsidornas modell: B, Opus 5.5** (ca 90 USD för 180 arter). Pipelinen byter standard och kör R3 igen, sedan R4, R4b, R5 (undantagsarket via Drive till Albin) och R6 för våg 1. R7 (jämförelser) väntar på sökordsplaneraren.
+2. **Datum:** de första inläggen på sociala medier **fredag 9 oktober** (artsidor måste vara live då, så fas 2 Task 10 och 12 till 16 före Task 11, jämförelsesidorna sist); **appen + annonser torsdag 15 oktober**. Brytpunkten blir **2026-10-17 00:00 Stockholm (`1792188000000`)**, ändras på release-grenen före vC130. Play granskar uppdateringar på upp till några dagar: vC130 laddas upp senast tisdag 13 oktober med styrd publicering.
+3. **MapTiler Flex:** Albin skaffar Flex nästa vecka (Flex tillåter kommersiell användning enligt prissidan). Koden byts redan nu: inget färgfilter på rutorna (villkoren §4.4 gäller alla planer), stil-id ur en Gradle-egenskap så att Albins egen stil (MapTiler Customize, samma papperstoner) kan bakas in i vC130 utan kodändring. Ny appnyckel samtidigt.
+4. **Arttexterna under CC BY-SA 4.0: ja.** Det är Wikipedias licens som kräver det för bearbetningar; risken ligger i att inte göra det. Kredit med länk till artikel och revision, licens och AI-märkning finns på varje sida.
+5. **BirdNET:** brevet till ccb-birdnet@cornell.edu ligger i Albins Claude Docs (https://claude.ai/artifact/DB8bKVYQX4bmzVLPKyDjWo); Albin skickar det själv. Ljud-ID körs på BirdNET, så frågan gäller även om ljud-ID är gratis. Plan B vid nej: Googles Perch (Apache 2.0).
+6. **Kråka:** namnet står kvar (Corvus corone heter redan Kråka i appen; ingen ändring).
+7. **Publika repot:** BirdLife Sveriges PDF bort ur trädet, säkerhetssvep av träd och historik, privata uppgifter i CLAUDE.md/AGENTS.md listas, README och `SECURITY.md` (gren `chore/1.3-repo`). Historiken skrivs inte om utan Albins uttryckliga ja (force-push, alla kloner och Macen måste klona om).
+8. **Licensskärmen:** behålls som genererad lista.
+9. **Hjälterödhaken på webben:** AI-genererad, verktyget okänt.
+10. **Appikonens fågel:** gjord med AI. (AI-bilder har svagt eller inget upphovsrättsskydd; varumärkesskyddet nedan blir viktigare.)
+11. **EU-varumärket "Birdy" (klass 9 och 42) efter lanseringen:** EUIPO:s avgift är 850 EUR för en klass + 50 EUR för den andra = 900 EUR. EUIPO:s SME Fund 2026 (75 % tillbaka, högst 700 EUR) har slut på varumärkescheckar; väntar man på nästa omgång (brukar öppna i februari) blir det ca 225 EUR. Checken måste sökas före ansökan.
+12. **Speed Insights Plus på albit.se:** avstängd 2026-10-07 (förnyas inte, finns kvar till 7 nov 2026).
+13. När allt ovan är gjort: beslutssidan uppdateras med läget, sedan CLAUDE.md och minnet så att en ny session kan ta vid.
+
 ## 4. Emulatorn
 
 - AVD `pg-api36` (API 36, google_apis x86_64) körs som `emulator-5554`; `pg-api30` finns. WHPX fungerar. Start: `emulator -avd pg-api36 -no-snapshot -no-boot-anim -netdelay none -netspeed full` (från `C:/Users/abbea/AppData/Local/Android/Sdk/emulator`).
