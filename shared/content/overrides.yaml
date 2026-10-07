@@ -817,7 +817,9 @@ species:
     description_accept_missing: [sv]
     allow_missing_images: true  # Cape Verde Shearwater — sparse svwiki + no images
   Q216850:
-    description_accept_missing: [en]  # Scopoli's Shearwater — sparse enwiki
+    # Diomedeslira (Scopoli's Shearwater): sparse enwiki. The Swedish text was about Gulnäbbad lira
+    # (C. borealis) and is cleared until a refresh writes one from the article Diomedeslira (Task 7m).
+    description_accept_missing: [en, sv]
   Q26896:
     description_accept_missing: [sv]  # Northern Fulmar — sparse svwiki (72w)
   Q27074603:

@@ -178,6 +178,48 @@ class SpeciesContentCorrectionsTest {
         assertEquals(renamed.map { it.path.substringAfter('/').removeSuffix(".yaml") }.toSet(), withFormer)
     }
 
+    // The Swedish texts of the renamed species used the old name ("Sädgåsen är ..."). Current names
+    // of species that contain a former name at a word start are masked first, so "Större
+    // kapverdelira" or "Östlig klippuggla" does not count as a use of "Kapverdelira" or "Klippuggla".
+    @Test
+    fun `no swedish text of a renamed species uses its former name`() {
+        val currentNames =
+            parser
+                .parseAll(Path.of("species"))
+                .mapNotNull {
+                    it.second.names.sv
+                        ?.lowercase()
+                }
+        val uses =
+            renamed.flatMap { r ->
+                val former = r.former.lowercase()
+                val atWordStart = Regex("(?<![\\p{L}\\p{N}])" + Regex.escape(former))
+                val masks =
+                    currentNames
+                        .filter { it != former && atWordStart.containsMatchIn(it) }
+                        .sortedByDescending { it.length }
+                val yaml = species(r.path)
+                listOf("description" to yaml.description, "migration" to yaml.migration, "marginalia" to yaml.marginalia)
+                    .mapNotNull { (kind, texts) ->
+                        val text = masks.fold(texts["sv"].orEmpty().lowercase()) { t, name -> t.replace(name, " ") }
+                        "${r.path} $kind.sv uses ${r.former}".takeIf { atWordStart.containsMatchIn(text) }
+                    }
+            }
+        assertEquals(emptyList<String>(), uses)
+    }
+
+    // Diomedeslira (Calonectris diomedea, Scopoli's) had Swedish texts about Gulnäbbad lira (C.
+    // borealis, Cory's, "förekommer främst i Atlanten"), written from the Wikipedia article of the
+    // name it wrongly had. They are cleared; its English texts are empty too, so the app shows its
+    // own empty-state texts. A pipeline refresh now reads the article "Diomedeslira"; update this
+    // test when the new Swedish texts are in.
+    @Test
+    fun `diomedeslira has no swedish text about gulnäbbad lira`() {
+        val diomedeslira = species("procellariidae/Q216850.yaml")
+        assertEquals("", diomedeslira.description["sv"].orEmpty())
+        assertEquals("", diomedeslira.migration["sv"].orEmpty())
+    }
+
     // Calonectris diomedea (Scopoli's) shared "Gulnäbbad lira" with Calonectris borealis (Cory's);
     // BirdLife Sverige calls it diomedeslira.
     @Test
