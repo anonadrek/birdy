@@ -1,0 +1,350 @@
+<title>Birdy 1.3 Store Images</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=DM+Serif+Display&family=Inter:wght@400;600&display=swap">
+<style>
+  :root {
+    --bg: #F6EFE2; --surface: #FFFAF1; --ink: #302019; --muted: #6E584B; --line: #DFD2BA;
+    --accent: #9A4526; --chip: #FDE5CB; --chip-ink: #72301A;
+    --band: #2A1D17; --band-ink: #FFF8EE; --band-accent: #F2B27A; --band-muted: #D9C6B4;
+    --shadow: 0 10px 24px rgba(42, 29, 23, .16);
+    --serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+    --hand: 'Caveat', 'Segoe Print', cursive;
+    --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #1E1410; --surface: #2A1D17; --ink: #FFF8EE; --muted: #CDB8A6; --line: #4A372C;
+      --accent: #F2B27A; --chip: #3B2A21; --chip-ink: #F2B27A;
+      --band: #140D0A; --shadow: 0 10px 24px rgba(0, 0, 0, .4);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #1E1410; --surface: #2A1D17; --ink: #FFF8EE; --muted: #CDB8A6; --line: #4A372C;
+    --accent: #F2B27A; --chip: #3B2A21; --chip-ink: #F2B27A;
+    --band: #140D0A; --shadow: 0 10px 24px rgba(0, 0, 0, .4);
+  }
+
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.55; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.05; letter-spacing: -.01em; text-wrap: balance; margin: 0; }
+  .acc { font-family: var(--hand); font-weight: 700; font-size: 1.16em; color: var(--accent); letter-spacing: 0; }
+  .kick { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; font-size: 11.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+  .kick::before { content: ''; width: 22px; height: 2px; background: currentColor; }
+  p { margin: 0; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+  /* Espresso header that tears down into the page, like the website's bands. */
+  header { position: relative; background: var(--band); color: var(--band-ink); padding-block: 44px 64px; --accent: var(--band-accent); }
+  header h1 { font-size: clamp(38px, 7vw, 66px); color: var(--band-ink); }
+  header .lead { margin-top: 16px; max-width: 62ch; color: var(--band-muted); font-size: 16px; }
+  .tear { position: absolute; left: 0; right: 0; bottom: -1px; height: 22px; display: block; width: 100%; }
+  .tear path { fill: var(--bg); }
+
+  .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 26px; }
+  .seg { display: inline-flex; border: 1px solid rgba(255, 248, 238, .35); border-radius: 999px; padding: 3px; }
+  .seg button { font: 600 13px var(--sans); color: var(--band-ink); background: transparent; border: 0; border-radius: 999px; padding: 8px 16px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--band-accent); color: #2A1D17; }
+  .toolbar .hint { font-family: var(--hand); font-weight: 700; font-size: 21px; color: var(--band-accent); transform: rotate(-1.5deg); }
+
+  main { padding-block: 34px 70px; }
+  section { margin-top: 54px; }
+  section:first-child { margin-top: 0; }
+  .sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; }
+  .sec-head h2 { font-size: clamp(30px, 5vw, 44px); }
+  .h-small { font-size: clamp(24px, 4.2vw, 36px); }
+  .letter { display: inline-grid; place-items: center; width: 1.25em; height: 1.25em; margin-right: .25em; border-radius: 50%; background: var(--accent); color: var(--bg); font-family: var(--serif); font-size: .8em; vertical-align: .08em; }
+  .sec-head .tag { font-size: 13px; color: var(--muted); }
+  .desc { margin-top: 10px; max-width: 68ch; color: var(--muted); }
+  .margin-note { margin-top: 8px; font-family: var(--hand); font-weight: 700; font-size: 22px; color: var(--accent); transform: rotate(-1deg); width: fit-content; }
+
+  /* The Play-style row: screenshots side by side, scroll sideways on a phone. */
+  .row { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 18px 2px 14px; margin-top: 6px; scrollbar-width: thin; }
+  .shot { flex: 0 0 clamp(132px, 38vw, 196px); scroll-snap-align: start; padding: 0; border: 0; background: none; color: inherit; cursor: zoom-in; border-radius: 12px; text-align: left; }
+  .shot img { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 12px; box-shadow: var(--shadow); background: var(--line); }
+  .shot small, .ph small { display: block; margin-top: 7px; font-size: 12px; color: var(--muted); }
+  .ph { flex: 0 0 clamp(132px, 38vw, 196px); scroll-snap-align: start; }
+  .ph .box { aspect-ratio: 9 / 16; border: 2px dashed var(--line); border-radius: 12px; display: grid; place-items: center; padding: 14px; text-align: center; font-family: var(--hand); font-weight: 700; font-size: 21px; line-height: 1.15; color: var(--muted); }
+  .fg { margin-top: 8px; max-width: 640px; }
+  .fg .shot { width: 100%; display: block; }
+  .fg img { aspect-ratio: 1024 / 500; }
+  .fg-label { margin-top: 18px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+  .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-top: 16px; }
+  .rules div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .rules b { display: block; font-family: var(--serif); font-weight: 400; font-size: 19px; margin-bottom: 2px; }
+  .rules p { color: var(--muted); font-size: 14px; }
+
+  .tablewrap { overflow-x: auto; margin-top: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 560px; }
+  th, td { text-align: left; vertical-align: top; padding: 11px 14px; border-bottom: 1px solid var(--line); }
+  tr:last-child td { border-bottom: 0; }
+  th { font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  td .hl { font-family: var(--serif); font-size: 17px; }
+  td .hl em { font-style: normal; font-family: var(--hand); font-weight: 700; font-size: 1.15em; color: var(--accent); }
+  td .nt { display: block; font-family: var(--hand); font-weight: 700; font-size: 18px; color: var(--muted); }
+
+  .choose { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-top: 18px; display: grid; gap: 20px; }
+  fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+  legend { font-family: var(--serif); font-size: 20px; margin-bottom: 10px; }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opts label { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; cursor: pointer; background: var(--bg); font-weight: 600; font-size: 14px; }
+  .opts input { accent-color: var(--accent); margin: 0; }
+  .opts label:has(input:checked) { border-color: var(--accent); background: var(--chip); color: var(--chip-ink); }
+  textarea { width: 100%; min-height: 84px; box-sizing: border-box; font: 14px/1.5 var(--sans); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; resize: vertical; }
+  .answer { display: grid; gap: 10px; }
+  .answer pre { margin: 0; white-space: pre-wrap; word-break: break-word; font: 13px/1.5 ui-monospace, 'Cascadia Mono', Consolas, monospace; background: var(--bg); border: 1px dashed var(--line); border-radius: 10px; padding: 12px; color: var(--ink); }
+  .btn { justify-self: start; font: 600 14px var(--sans); color: var(--bg); background: var(--accent); border: 0; border-radius: 999px; padding: 10px 20px; cursor: pointer; }
+  .copied { font-size: 13px; color: var(--muted); }
+
+  .questions { margin: 14px 0 0; padding-left: 22px; max-width: 74ch; }
+  .questions li { margin-top: 10px; }
+  .questions li::marker { color: var(--accent); font-weight: 600; }
+
+  /* Lightbox */
+  .lb { position: fixed; inset: 0; z-index: 10; background: rgba(20, 13, 10, .94); display: grid; grid-template-rows: 1fr auto; place-items: center; padding: calc(env(safe-area-inset-top, 0px) + 60px) 14px calc(env(safe-area-inset-bottom, 0px) + 14px); }
+  .lb[hidden], .copied[hidden] { display: none; }
+  .lb img { max-width: 100%; max-height: calc(100vh - 130px); max-height: calc(100dvh - 130px); border-radius: 10px; }
+  .lb p { color: #FFF8EE; font-size: 13px; margin-top: 10px; text-align: center; }
+  .lb button { position: absolute; top: calc(env(safe-area-inset-top, 0px) + 10px); right: 12px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 248, 238, .4); background: rgba(42, 29, 23, .8); color: #FFF8EE; font-size: 22px; line-height: 1; cursor: pointer; }
+  @media (prefers-reduced-motion: no-preference) { .shot img { transition: transform .2s ease; } .shot:hover img { transform: translateY(-3px); } }
+</style>
+
+<header>
+  <div class="wrap">
+    <p class="kick">Release 1.3.0 · Plan 3, Task 9</p>
+    <h1>Store images for <span class="acc">1.3.0</span></h1>
+    <p class="lead">Three looks for the Google Play listing, all built from the same five 1.3.0 screenshots and the website's colours and handwriting. Pick one set of screenshots and one feature graphic at the bottom. The chosen set is rendered as PNG and goes up together with vC130.</p>
+    <div class="toolbar">
+      <div class="seg" role="group" aria-label="Language of the images">
+        <button type="button" id="lang-sv" data-lang="sv" aria-pressed="true">Svenska</button>
+        <button type="button" id="lang-en" data-lang="en" aria-pressed="false">English</button>
+      </div>
+      <span class="hint">tap an image to see it large</span>
+    </div>
+  </div>
+  <svg class="tear" viewBox="0 0 1440 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26 V13 L30 7 L64 17 L100 9 L136 16 L172 5 L206 14 L240 8 L276 18 L312 9 L346 16 L382 6 L418 15 L452 8 L488 19 L524 10 L558 17 L596 6 L630 15 L664 9 L700 18 L738 7 L774 16 L810 10 L846 19 L884 8 L918 14 L952 6 L988 16 L1024 9 L1060 20 L1098 10 L1132 17 L1170 5 L1206 15 L1236 8 L1272 18 L1310 9 L1342 16 L1370 6 L1404 14 L1440 8 V26 Z"/></svg>
+</header>
+
+<main class="wrap">
+  <section aria-labelledby="rules-h">
+    <h2 id="rules-h" class="h-small">What every variant keeps</h2>
+    <div class="rules">
+      <div><b>Bird photos untouched</b><p>No tint, tape or arrow over any bird photo. Only CC0 or public domain photos appear: the screenshots, plus one CC0 bearded reedling in feature graphic B.</p></div>
+      <div><b>Play's format</b><p>1080 × 1920 screenshots and a 1024 × 500 feature graphic, PNG without alpha. The render script checks every file.</p></div>
+      <div><b>Honest words</b><p>No dashes, no "offline", no "free", no ranking or accuracy claims. Headlines reuse the website's tone, starting with "Se. Lyssna. Spara."</p></div>
+      <div><b>The map waits</b><p>Image 6 (the map) is left out of every set: it still shows the old sepia look. It is retaken next week with your own MapTiler style.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="now-h">
+    <div class="sec-head"><h2 id="now-h">Now <span class="acc">(1.2)</span></h2><span class="tag">8 screenshots + feature graphic, live on Play today</span></div>
+    <p class="desc">For comparison. Paper cards from the v1.2 era: the old moss palette, English app screens even on the Swedish cards, and two finds (snow bunting, common gull) whose photos have no known licence.</p>
+    <div class="row" id="row-now"></div>
+    <p class="fg-label">Feature graphic (English only today)</p>
+    <div class="fg" id="fg-now"></div>
+  </section>
+
+  <section aria-labelledby="a-h">
+    <div class="sec-head"><h2 id="a-h"><span class="letter">A</span>Karusellen</h2><span class="tag">closest to birdy.community</span></div>
+    <p class="desc">The website's phone carousel turned into store images: peach with rust dots, a centred kicker, the handwritten word on its own line, a margin note, and the phone standing on an espresso band with a torn edge and the Birdy bird.</p>
+    <div class="row" data-variant="a"></div>
+    <p class="fg-label">Feature graphic</p>
+    <div class="fg" data-feature="a"></div>
+  </section>
+
+  <section aria-labelledby="b-h">
+    <div class="sec-head"><h2 id="b-h"><span class="letter">B</span>Fältboken</h2><span class="tag">a page torn out of the field journal</span></div>
+    <p class="desc">A ruled notebook page with a red margin, lying on espresso. The phone is taped in at a slight angle and handwritten notes with arrows point at what each screen does. The feature graphic is a taped photo plate of a bearded reedling (CC0, Hobbyfotowiki).</p>
+    <p class="margin-note">tells the most, phone is smallest</p>
+    <div class="row" data-variant="b"></div>
+    <p class="fg-label">Feature graphic</p>
+    <div class="fg" data-feature="b"></div>
+  </section>
+
+  <section aria-labelledby="c-h">
+    <div class="sec-head"><h2 id="c-h"><span class="letter">C</span>Espresso</h2><span class="tag">the bold one</span></div>
+    <p class="desc">Dark espresso with the handwritten word set huge in apricot, the phone large and running off the bottom edge. A dotted flight line runs through all five images, so they read as one strip when Play shows them side by side, and ends with the Birdy bird on the last one.</p>
+    <p class="margin-note">scroll the row: the line continues</p>
+    <div class="row" data-variant="c"></div>
+    <p class="fg-label">Feature graphic</p>
+    <div class="fg" data-feature="c"></div>
+  </section>
+
+  <section aria-labelledby="hl-h">
+    <h2 id="hl-h" class="h-small">The headlines</h2>
+    <p class="desc">The same words in all three variants (B shows the arrow notes instead of the margin note). Change any of them in your answer.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>#</th><th>Screen</th><th>Svenska</th><th>English</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Identify, bird of the day</td><td><span class="hl">Se. Lyssna. <em>Spara.</em></span><span class="nt">kamera, foto eller läte</span></td><td><span class="hl">See. Listen. <em>Keep.</em></span><span class="nt">camera, photo or song</span></td></tr>
+          <tr><td>2</td><td>Match, great tit</td><td><span class="hl">Vilken fågel <em>var det?</em></span><span class="nt">Birdy svarar och säger hur säker den är</span></td><td><span class="hl">Which bird <em>was that?</em></span><span class="nt">Birdy answers and says how sure it is</span></td></tr>
+          <tr><td>3</td><td>My species</td><td><span class="hl">Din egen <em>fältbok.</em></span><span class="nt">varje fynd får en egen sida</span></td><td><span class="hl">Your own <em>field journal.</em></span><span class="nt">every sighting gets its own page</span></td></tr>
+          <tr><td>4</td><td>Field guide</td><td><span class="hl">Europas fåglar, <em>i fickan.</em></span><span class="nt">slå upp fågeln du just såg</span></td><td><span class="hl">Europe's birds, <em>in your pocket.</em></span><span class="nt">look up the bird you just saw</span></td></tr>
+          <tr><td>5</td><td>Species profile</td><td><span class="hl">Lär känna dina <em>fåglar.</em></span><span class="nt">foto, beskrivning och rödlistning</span></td><td><span class="hl">Know your <em>birds.</em></span><span class="nt">photo, description and Red List status</span></td></tr>
+          <tr><td>FG</td><td>Feature graphic</td><td><span class="hl">Se. Lyssna. <em>Spara.</em></span><span class="nt">Känn igen fågeln. Bevara stunden.</span></td><td><span class="hl">See. Listen. <em>Keep.</em></span><span class="nt">Know the bird. Keep the moment.</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="q-h">
+    <h2 id="q-h" class="h-small">Also needs your call</h2>
+    <ol class="questions">
+      <li><b>No listening screen.</b> Headline 1 promises "Lyssna" but none of the five screenshots shows sound ID (v1.2 had one). Add a Listen screenshot (taken on the emulator), or keep five?</li>
+      <li><b>If the map style is late.</b> Release with five images and add the map afterwards, or hold the images until the map is retaken?</li>
+      <li><b>A dash inside screenshot 1.</b> The app's own line under "Tre sätt att fånga" has a dash ("Kamera, foto eller läte — arten dyker upp …"). Fine inside the app screen, or retake once the app strings drop their dashes?</li>
+      <li><b>English kickers.</b> I used "Lifelist" (the app's tab name) and "Field guide" (the website's word; the app's tab says "Archive"). Keep, or match the app exactly?</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="choose-h">
+    <h2 id="choose-h" style="font-size: clamp(30px, 5vw, 44px)">Choose <span class="acc">your set.</span></h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Variant</th><th>Strongest at</th><th>Watch out</th></tr></thead>
+        <tbody>
+          <tr><td><b>A · Karusellen</b></td><td>Same look as the website, so the listing and birdy.community feel like one place. Calm and readable.</td><td>The safest of the three; peach thumbnails can look pale next to other apps in Play's row.</td></tr>
+          <tr><td><b>B · Fältboken</b></td><td>Explains each screen with handwritten notes; the most "field journal" and the most charming up close.</td><td>Most text and the smallest phone, so it says less at Play's thumbnail size.</td></tr>
+          <tr><td><b>C · Espresso</b></td><td>Biggest phone, strongest contrast, stands out in Play's row; the flight line joins the five images. My pick.</td><td>Dark; the tab bar is cut off at the bottom. The flight line only lines up when the images sit next to each other.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <form class="choose" id="choose-form" novalidate>
+      <fieldset>
+        <legend>Screenshots</legend>
+        <div class="opts">
+          <label><input type="radio" name="shots" id="shots-a" value="A"> A · Karusellen</label>
+          <label><input type="radio" name="shots" id="shots-b" value="B"> B · Fältboken</label>
+          <label><input type="radio" name="shots" id="shots-c" value="C"> C · Espresso</label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Feature graphic</legend>
+        <div class="opts">
+          <label><input type="radio" name="fg" id="fg-same" value="same as screenshots"> Same as screenshots</label>
+          <label><input type="radio" name="fg" id="fg-a" value="A"> A</label>
+          <label><input type="radio" name="fg" id="fg-b" value="B (photo plate)"> B (photo plate)</label>
+          <label><input type="radio" name="fg" id="fg-c" value="C"> C</label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Listening screen</legend>
+        <div class="opts">
+          <label><input type="radio" name="listen" id="listen-add" value="add a Listen screenshot"> Add a Listen screenshot</label>
+          <label><input type="radio" name="listen" id="listen-keep" value="keep five"> Keep five</label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Headlines and anything else</legend>
+        <textarea id="notes" name="notes" aria-label="Changes to headlines or anything else" placeholder="e.g. headlines OK, or: 4 SV should say …"></textarea>
+      </fieldset>
+      <div class="answer">
+        <pre id="answer" aria-live="polite"></pre>
+        <button class="btn" type="button" id="copy">Copy answer</button>
+        <span class="copied" id="copied" hidden>Copied. Paste it in the chat.</span>
+      </div>
+    </form>
+  </section>
+</main>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Large image">
+  <img id="lb-img" alt="">
+  <p id="lb-cap"></p>
+  <button type="button" id="lb-close" aria-label="Close">×</button>
+</div>
+
+<script>
+  const el = (tag, props = {}, kids = []) => { const n = Object.assign(document.createElement(tag), props); n.append(...kids); return n; };
+  const cards = [
+    ['01-identifiera', '1 · Identify'],
+    ['02-match', '2 · Match'],
+    ['03-mina-arter', '3 · My species'],
+    ['04-uppslagsverk', '4 · Field guide'],
+    ['05-artprofil', '5 · Species profile'],
+  ];
+  const nowCards = [['01-identify', 'Identify'], ['02-listen', 'Listen'], ['03-journal', 'Journal'], ['04-archive', 'Archive'], ['05-badges', 'Badges'], ['06-map', 'Map'], ['07-recap', 'Recap'], ['08-season', 'Season']];
+  const names = { a: 'A Karusellen', b: 'B Fältboken', c: 'C Espresso' };
+
+  function shot(src, cap, alt, label) {
+    const b = el('button', { type: 'button', className: 'shot' }, [el('img', { alt, loading: 'lazy' })]);
+    b.dataset.src = src; b.dataset.cap = cap;
+    if (label) b.append(el('small', { textContent: label }));
+    return b;
+  }
+
+  const rowNow = document.getElementById('row-now');
+  nowCards.forEach(([id, label], i) => rowNow.append(shot(`img/now/now-{L}-${id}.jpg`, `Now (1.2) · ${i + 1} ${label}`, `v1.2 store image ${i + 1}, ${label}`, `${i + 1} · ${label}`)));
+  document.getElementById('fg-now').append(shot('img/now/now-feature.jpg', 'Now (1.2) · feature graphic', 'v1.2 feature graphic'));
+
+  document.querySelectorAll('[data-variant]').forEach((row) => {
+    const v = row.dataset.variant;
+    cards.forEach(([id, label]) => row.append(shot(`img/${v}-{L}-${id}.jpg`, `${names[v]} · ${label}`, `Variant ${v.toUpperCase()}, store image ${label}`, label)));
+    row.append(el('div', { className: 'ph' }, [
+      el('div', { className: 'box', textContent: '6 · map, retaken next week with your MapTiler style' }),
+      el('small', { textContent: '6 · Map (placeholder)' }),
+    ]));
+  });
+  document.querySelectorAll('[data-feature]').forEach((box) => {
+    const v = box.dataset.feature;
+    box.append(shot(`img/${v}-{L}-feature.jpg`, `${names[v]} · feature graphic`, `Variant ${v.toUpperCase()}, feature graphic 1024 by 500`));
+  });
+
+  let lang = 'sv';
+  try { lang = localStorage.getItem('birdy-store-lang') === 'en' ? 'en' : 'sv'; } catch (e) { /* storage blocked */ }
+  function setLang(l) {
+    lang = l;
+    document.querySelectorAll('.shot').forEach((b) => { b.querySelector('img').src = b.dataset.src.replace('{L}', l); });
+    document.querySelectorAll('.seg button').forEach((btn) => btn.setAttribute('aria-pressed', String(btn.dataset.lang === l)));
+    try { localStorage.setItem('birdy-store-lang', l); } catch (e) { /* storage blocked */ }
+  }
+  document.querySelectorAll('.seg button').forEach((btn) => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
+  setLang(lang);
+
+  // Lightbox
+  const lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCap = document.getElementById('lb-cap');
+  let opener = null;
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('.shot');
+    if (!b) return;
+    opener = b;
+    lbImg.src = b.dataset.src.replace('{L}', lang);
+    lbImg.alt = b.querySelector('img').alt;
+    lbCap.textContent = `${b.dataset.cap} · ${lang === 'sv' ? 'Svenska' : 'English'}`;
+    lb.hidden = false;
+    document.getElementById('lb-close').focus();
+  });
+  function closeLb() { lb.hidden = true; if (opener) opener.focus(); }
+  lb.addEventListener('click', (e) => { if (e.target === lb || e.target.id === 'lb-close' || e.target === lbImg) closeLb(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) closeLb(); });
+
+  // Answer builder: the answer is copied into the chat.
+  const form = document.getElementById('choose-form'), out = document.getElementById('answer'), notesEl = document.getElementById('notes');
+  const KEY = 'birdy-store-choice';
+  const val = (name) => { const c = form.querySelector(`input[name="${name}"]:checked`); return c ? c.value : '(not chosen)'; };
+  function update() {
+    const notes = notesEl.value.trim();
+    out.textContent = `Store images 1.3.0\nScreenshots: ${val('shots')}\nFeature graphic: ${val('fg')}\nListening screen: ${val('listen')}\nNotes: ${notes || 'headlines OK as written'}`;
+    try { localStorage.setItem(KEY, JSON.stringify({ shots: val('shots'), fg: val('fg'), listen: val('listen'), notes: notesEl.value })); } catch (e) { /* storage blocked */ }
+  }
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (saved) {
+      ['shots', 'fg', 'listen'].forEach((n) => { form.querySelectorAll(`input[name="${n}"]`).forEach((r) => { if (r.value === saved[n]) r.checked = true; }); });
+      notesEl.value = saved.notes || '';
+    }
+  } catch (e) { /* storage blocked */ }
+  form.addEventListener('input', update);
+  form.addEventListener('change', update);
+  form.addEventListener('submit', (e) => e.preventDefault());
+  update();
+  document.getElementById('copy').addEventListener('click', () => {
+    const done = () => { document.getElementById('copied').hidden = false; };
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents(out); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    try { navigator.clipboard.writeText(out.textContent).then(done, fallback); } catch (e) { fallback(); }
+  });
+</script>

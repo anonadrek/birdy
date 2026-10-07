@@ -1,0 +1,65 @@
+{
+  "_about": "Butiksbilder 1.3.0 (Plan 3 Task 9). Rubrikerna följer webbens ton: *ord* = handskrivet accentord. Inga tankstreck, inga offline-löften, inga precisionssiffror, inget 'gratis' i bilderna (Plays regler för butiksbilder). notes[].y = höjden i skärmdumpens egna pixlar (1080x1920) som variant B:s pil pekar på. 06-karta saknas medvetet: kartan tas om när Albins MapTiler-stil finns.",
+  "cards": [
+    {
+      "id": "01-identifiera",
+      "kicker": { "sv": "Identifiera · i fält", "en": "Identify · in the field" },
+      "head": { "sv": "Se. Lyssna. *Spara.*", "en": "See. Listen. *Keep.*" },
+      "note": { "sv": "kamera, foto eller läte", "en": "camera, photo or song" },
+      "notes": [
+        { "y": 520, "sv": "en ny fågel varje dag", "en": "a new bird every day" },
+        { "y": 1330, "sv": "kamera, foto eller läte", "en": "camera, photo or song" }
+      ]
+    },
+    {
+      "id": "02-match",
+      "kicker": { "sv": "Träff", "en": "Match" },
+      "head": { "sv": "Vilken fågel *var det?*", "en": "Which bird *was that?*" },
+      "note": { "sv": "Birdy svarar och säger hur säker den är", "en": "Birdy answers and says how sure it is" },
+      "notes": [
+        { "y": 944, "sv": "säger hur säker den är", "en": "says how sure it is" },
+        { "y": 1404, "sv": "skriv en egen anteckning", "en": "add a note of your own" }
+      ]
+    },
+    {
+      "id": "03-mina-arter",
+      "kicker": { "sv": "Mina arter", "en": "Lifelist" },
+      "head": { "sv": "Din egen *fältbok.*", "en": "Your own *field journal.*" },
+      "note": { "sv": "varje fynd får en egen sida", "en": "every sighting gets its own page" },
+      "notes": [
+        { "y": 290, "sv": "arter, fynd och dagar i rad", "en": "species, sightings and your streak" },
+        { "y": 770, "sv": "varje vecka ett eget uppslag", "en": "every week gets its own spread" }
+      ]
+    },
+    {
+      "id": "04-uppslagsverk",
+      "kicker": { "sv": "Uppslagsverk · 839 arter", "en": "Field guide · 839 species" },
+      "head": { "sv": "Europas fåglar, *i fickan.*", "en": "Europe's birds, *in your pocket.*" },
+      "note": { "sv": "slå upp fågeln du just såg", "en": "look up the bird you just saw" },
+      "notes": [
+        { "y": 200, "sv": "sök på art, släkte eller familj", "en": "search by species, genus or family" },
+        { "y": 967, "sv": "839 arter i telefonen", "en": "839 species on your phone" }
+      ]
+    },
+    {
+      "id": "05-artprofil",
+      "kicker": { "sv": "Artprofil", "en": "Species profile" },
+      "head": { "sv": "Lär känna dina *fåglar.*", "en": "Know your *birds.*" },
+      "note": { "sv": "foto, beskrivning och rödlistning", "en": "photo, description and Red List status" },
+      "notes": [
+        { "y": 874, "sv": "fotografen står vid varje bild", "en": "every photo credits its photographer" },
+        { "y": 1231, "sv": "status på IUCN:s rödlista", "en": "IUCN Red List status" }
+      ]
+    }
+  ],
+  "feature": {
+    "kicker": { "sv": "Fågelguide och fältdagbok", "en": "Bird guide and field journal" },
+    "head": { "sv": "Se. Lyssna. *Spara.*", "en": "See. Listen. *Keep.*" },
+    "note": { "sv": "Känn igen fågeln. Bevara stunden.", "en": "Know the bird. Keep the moment." },
+    "plate": {
+      "photo": "skaggmes-q192817.webp",
+      "caption": { "sv": "Skäggmes, Panurus biarmicus", "en": "Bearded reedling, Panurus biarmicus" },
+      "credit": { "sv": "Foto: Hobbyfotowiki · CC0", "en": "Photo: Hobbyfotowiki · CC0" }
+    }
+  }
+}
