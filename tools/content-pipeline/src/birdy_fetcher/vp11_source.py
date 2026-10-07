@@ -8,7 +8,9 @@ it against a pinned SHA-256, so a changed or truncated file never feeds the spec
 from __future__ import annotations
 
 import hashlib
+import http.client
 import os
+import urllib.error
 import urllib.request
 from collections.abc import Callable
 from pathlib import Path
@@ -56,7 +58,7 @@ def ensure_vp11(
     *,
     url: str = VP11_URL,
     expected_sha256: str = VP11_SHA256,
-    fetch: Callable[[str], bytes] = _http_get,
+    fetch: Callable[[str], bytes] | None = None,
 ) -> Path:
     """Return the path to a verified VP11.pdf, downloading it once if it is missing.
 
@@ -74,8 +76,10 @@ def ensure_vp11(
         return target
 
     try:
-        data = fetch(url)
-    except OSError as e:  # URLError, HTTPError, timeouts and socket errors are all OSError
+        data = (fetch or _http_get)(url)
+    # URLError/HTTPError, timeouts and socket errors are OSError; a truncated or garbled
+    # response (IncompleteRead, BadStatusLine) is an http.client.HTTPException.
+    except (urllib.error.URLError, OSError, http.client.HTTPException) as e:
         raise Vp11UnavailableError(
             f"Could not download {url}: {e}. {_manual_hint(target, expected_sha256)}"
         ) from e

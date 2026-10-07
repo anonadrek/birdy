@@ -22,7 +22,7 @@ Birdy känner igen fåglar på foto och på läte, direkt i telefonen. Appen har
 
 ## Integritet
 
-All identifiering sker i telefonen. Det finns inga konton, ingen analys och ingen reklam i appen. Fynd, foton och inspelningar sparas bara i telefonen. Kartan hämtar kartbilder från MapTiler, och köp går via Google Play. Detaljer i [integritetspolicyn](https://birdy.community/legal/privacy/).
+All identifiering sker i telefonen. Det finns inga konton, ingen analys och ingen reklam i appen. Fynd, foton och inspelningar sparas bara i telefonen. Har du säkerhetskopiering påslagen i Android följer fynden, fotona och inställningarna med i din egen säkerhetskopia i ditt Google-konto; inspelningarna gör det inte. Kartan hämtar kartbilder från MapTiler, och köp går via Google Play. Detaljer i [integritetspolicyn](https://birdy.community/legal/privacy/).
 
 ## Artsidor på birdy.community
 
@@ -39,13 +39,13 @@ Kotlin Multiplatform och Compose Multiplatform: affärslogik och UI delas mellan
 
 | Mapp | Innehåll |
 |---|---|
-| `composeApp` | Delad UI för Android och iOS |
-| `shared/domain` | Use cases och affärsregler (ren Kotlin) |
+| `composeApp` | Delad UI för Android och iOS; märkena själva står i `composeResources/files/badges.yaml` och `premium_badges.yaml` |
+| `shared/domain` | Use cases och affärsregler (ren Kotlin), bland annat märkesreglerna |
 | `shared/data` | SQLDelight-databasen för fynden |
 | `shared/datastore` | Inställningar och Premium-läge |
 | `shared/ml` | Foto-ID (LiteRT på Android, TensorFlow Lite C på iOS) och ljud-ID |
 | `shared/pdf` | PDF-exporten av dagboken |
-| `shared/content` | Artdata, artfoton och märkesregler |
+| `shared/content` | Artdata och artfoton |
 | `androidApp` | Android-appen |
 | `asset-pack` | Artfotona (2 066 WebP-filer) som Play Asset Delivery-paket |
 | `iosApp` | iPhone-appen (Xcode-projektet genereras med xcodegen ur `project.yml`) |
@@ -57,7 +57,7 @@ Kotlin Multiplatform och Compose Multiplatform: affärslogik och UI delas mellan
 
 ## Bygga
 
-**Krav:** JDK 21 och Android SDK 36. Kartan behöver `MAPTILER_API_KEY` i `~/.gradle/gradle.properties` (aldrig i repot). iOS kräver en Mac med Xcode och xcodegen. Webben kräver Node.js 22.12 eller senare.
+**Krav:** JDK 21 och Android SDK 36. Kartan behöver `MAPTILER_API_KEY` i `~/.gradle/gradle.properties` för Android och i `iosApp/Local.xcconfig` för iOS (mall: `iosApp/Local.xcconfig.sample`); ingen av filerna checkas in. iOS kräver en Mac med Xcode och xcodegen. Webben kräver Node.js 22.12 eller senare.
 
 ```bash
 # Android
@@ -88,7 +88,7 @@ Innehåll och komponenter från andra har sina egna licenser:
 
 | Vad | Licens |
 |---|---|
-| Arttexterna (AI-sammanfattningar av Wikipedia) i appen och på artsidorna | CC BY-SA 4.0, se [`shared/content/species/LICENSE.md`](shared/content/species/LICENSE.md) och `LICENSE.md` i `website/src/data/` |
+| Arttexterna (AI-sammanfattningar av Wikipedia) i appen och på artsidorna | CC BY-SA 4.0, se [`shared/content/species/LICENSE.md`](shared/content/species/LICENSE.md), [`website/src/data/species/LICENSE.md`](website/src/data/species/LICENSE.md) och [`website/src/data/comparisons/LICENSE.md`](website/src/data/comparisons/LICENSE.md) |
 | Artfotona från Wikimedia Commons | CC0, public domain, CC BY eller CC BY-SA enligt krediten för varje foto |
 | Ljudmodellen BirdNET-Lite (K. Lisa Yang Center for Conservation Bioacoustics, Cornell Lab of Ornithology) | CC BY-NC-SA 4.0, används oförändrad; därför är ljud-ID alltid gratis |
 | Fotomodellen AIY Birds V1 (Google) | Apache 2.0 |

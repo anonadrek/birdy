@@ -3,12 +3,16 @@
 from __future__ import annotations
 
 import hashlib
+import http.client
 import re
 import urllib.error
 from pathlib import Path
 
 import pytest
+from click.testing import CliRunner
 
+from birdy_fetcher import vp11_source
+from birdy_fetcher.cli import VP11_UNAVAILABLE_EXIT, main
 from birdy_fetcher.doctor import run_doctor
 from birdy_fetcher.species_list import parse_vp11
 from birdy_fetcher.vp11_source import (
@@ -70,6 +74,38 @@ def test_network_error_says_how_to_get_the_file(tmp_path: Path) -> None:
     assert "no network" in message
     assert str(vp11_cache_path(tmp_path)) in message
     assert FAKE_SHA in message
+
+
+def test_truncated_response_is_reported_not_raised(tmp_path: Path) -> None:
+    """IncompleteRead and friends are http.client.HTTPException, not OSError."""
+
+    def truncated(url: str) -> bytes:
+        raise http.client.IncompleteRead(b"%PDF-1.4 half", 260771)
+
+    with pytest.raises(Vp11UnavailableError, match="Could not download"):
+        ensure_vp11(tmp_path, expected_sha256=FAKE_SHA, fetch=truncated)
+    assert not vp11_cache_path(tmp_path).exists()
+
+
+def test_init_exits_3_with_the_manual_download_hint(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """`birdy-fetcher init` offline: exit 3 (not click's usage-error 2) and say what to do."""
+    target = tmp_path / "sources" / "vp11.pdf"
+
+    def offline(url: str) -> bytes:
+        raise urllib.error.URLError("no network")
+
+    monkeypatch.setattr(vp11_source, "vp11_cache_path", lambda cache_root: target)
+    monkeypatch.setattr(vp11_source, "_http_get", offline)
+
+    result = CliRunner().invoke(main, ["init"])
+
+    assert result.exit_code == VP11_UNAVAILABLE_EXIT == 3
+    assert vp11_source.VP11_PAGE_URL in result.output
+    assert str(target) in result.output
+    assert VP11_SHA256 in result.output
+    assert not target.exists()
 
 
 def test_pdf_is_not_tracked_in_the_repo() -> None:

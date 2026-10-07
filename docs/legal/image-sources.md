@@ -122,6 +122,16 @@ These are copies (resized or cropped) of Wikimedia Commons photos that the app a
 | `2026-09-25-artsidor/talgoxe-hero.jpg` | Q25485 | Hobbyfotowiki | CC0 | [Great tit (Parus major), North Rhine-Westphalia.jpg](https://commons.wikimedia.org/wiki/File:Great_tit_(Parus_major),_North_Rhine-Westphalia.jpg) | same image |
 | `2026-09-25-artsidor/tofsmes.jpg` | Q207831 | Gonçalo Vila Ferraz | CC BY 4.0 | [Lophophanes cristatus, Parque Biológico de Gaia, Porto.jpg](https://commons.wikimedia.org/wiki/File:Lophophanes_cristatus,_Parque_Biológico_de_Gaia,_Porto.jpg) | image comparison (cropped) |
 
+**Design mockups with embedded media** (`docs/superpowers/specs/assets/`; images and sound stored as base64 inside the HTML file)
+
+| File | Embedded media | Credits |
+|---|---|---|
+| `2026-10-06-1.3-val/birdy-posts.html`, `2026-10-06-1.3-val/birdy-posts-2.html` | Plate photos from Wikimedia Commons, cut-outs drawn from them, and in `birdy-posts-2.html` five bird recordings from Wikimedia Commons (MP3) | Inline in each page: photographer or recordist, licence, Commons file and how it was edited (`birdy-posts-2.html` has a full credit list at the end). |
+| `2026-10-06-1.3-val/birdy-uppslag-marken.html` | Plate photos (Sidensvans, Talgoxe, Domherre, Rödhake, Lavskrika; all CC0 or public domain) and drawn app screens | Inline ("Foto: … · CC0 · Wikimedia Commons" and a source line at the end). |
+| `2026-10-06-1.3-val/birdy-val.html` | Seven crops of the plate photos as they were before the photo cleanup in release 1.3.0 | The page says they are the app's plate photos. Sävsångare: caroline legg, CC BY 2.0, [Sedge Warbler - Acrocephalus schoenobaenus - Juvenile (51354422957).jpg](https://commons.wikimedia.org/wiki/File:Sedge_Warbler_-_Acrocephalus_schoenobaenus_-_Juvenile_(51354422957).jpg). Talgoxe: Hobbyfotowiki, CC0. Blåmes: Jojovavasasa, CC0. Koltrast: Musicaline, CC BY-SA 4.0. Rödhake: Rob Hille, public domain. Bofink: Hobbyfotowiki, CC0, [Chaffinch of the subspecies Fringilla coelebs canariensis.jpg](https://commons.wikimedia.org/wiki/File:Chaffinch_of_the_subspecies_Fringilla_coelebs_canariensis.jpg). The other files are linked in the tables above. |
+| `2026-10-06-1.3-val/birdy-foto-fore-efter.html` | Twelve app screenshots, before and after | Screenshots, see the next section. |
+| `2026-09-24-website-1-3-lyft/startsida-v5.html` | Four copies of the Birdy bird as a PNG mask | Own artwork (see "Birdy's own artwork"). The robin images the page loads are the AI-generated ones above. |
+
 ## Screenshots
 
 | Files | Content |

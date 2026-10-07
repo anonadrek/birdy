@@ -17,6 +17,9 @@ from .web.defaults import EFFORTS, FACTS_EFFORT, FACTS_MODEL_KEY
 from .web.paths import WebPaths
 from .web.report import StepOutcome
 
+#: `init` exit code when BirdLife Sverige's VP11.pdf can be neither found nor downloaded.
+VP11_UNAVAILABLE_EXIT = 3
+
 
 @click.group()
 @click.version_option(__version__)
@@ -72,8 +75,9 @@ def init(resume: bool) -> None:
             )
         )
     except Vp11UnavailableError as e:
+        # Exit 3: click uses 2 for usage errors and init uses 1 for mapping failures.
         click.secho(str(e), fg="red", err=True)
-        raise click.exceptions.Exit(2) from e
+        raise click.exceptions.Exit(VP11_UNAVAILABLE_EXIT) from e
     if exit_code != 0:
         click.secho(
             "Mapping failures present — patch species_list.yaml manually then "
