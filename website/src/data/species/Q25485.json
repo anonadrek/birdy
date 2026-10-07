@@ -1,7 +1,7 @@
 {
   "qid": "Q25485",
   "status": "ok",
-  "publish": false,
+  "publish": true,
   "review": {
     "audioStruckSources": [
       "https://commons.wikimedia.org/wiki/File:Parus_major_-_Great_Tit_XC165660.mp3",
@@ -888,5 +888,6 @@
     "at": "2026-10-07",
     "model": "claude-sonnet-5",
     "spotChecked": false
-  }
+  },
+  "publishedAt": "2026-10-07"
 }
