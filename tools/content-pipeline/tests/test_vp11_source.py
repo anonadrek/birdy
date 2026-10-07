@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import http.client
+import os
 import re
 import urllib.error
 from pathlib import Path
@@ -11,7 +12,7 @@ from pathlib import Path
 import pytest
 from click.testing import CliRunner
 
-from birdy_fetcher import vp11_source
+from birdy_fetcher import species_list, vp11_source
 from birdy_fetcher.cli import VP11_UNAVAILABLE_EXIT, main
 from birdy_fetcher.doctor import run_doctor
 from birdy_fetcher.species_list import parse_vp11
@@ -87,25 +88,54 @@ def test_truncated_response_is_reported_not_raised(tmp_path: Path) -> None:
     assert not vp11_cache_path(tmp_path).exists()
 
 
+# Folders that pytest, the type checker and the virtualenv write to on their own.
+_SNAPSHOT_SKIP = {".venv", "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache"}
+
+
+def _snapshot(root: Path) -> dict[str, tuple[int, int]]:
+    """Size and modification time of every file under ``root``, by relative path."""
+    files: dict[str, tuple[int, int]] = {}
+    for dirpath, dirnames, filenames in os.walk(root):
+        dirnames[:] = [d for d in dirnames if d not in _SNAPSHOT_SKIP]
+        for name in filenames:
+            path = Path(dirpath, name)
+            stat = path.stat()
+            files[path.relative_to(root).as_posix()] = (stat.st_size, stat.st_mtime_ns)
+    return files
+
+
 def test_init_exits_3_with_the_manual_download_hint(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """`birdy-fetcher init` offline: exit 3 (not click's usage-error 2) and say what to do."""
+    """`birdy-fetcher init` offline: exit 3 (not click's usage-error 2) and say what to do.
+
+    The real `init` writes species_list.yaml and calls Wikidata, so the step after the
+    download is a tripwire, and the test checks that nothing in the pipeline folder changed.
+    """
     target = tmp_path / "sources" / "vp11.pdf"
+    tripped: list[str] = []
 
     def offline(url: str) -> bytes:
         raise urllib.error.URLError("no network")
 
+    async def tripwire(**kwargs: object) -> None:
+        tripped.append("build_species_list")
+        raise AssertionError("init went past the failed VP11 download")
+
     monkeypatch.setattr(vp11_source, "vp11_cache_path", lambda cache_root: target)
     monkeypatch.setattr(vp11_source, "_http_get", offline)
+    monkeypatch.setattr(species_list, "build_species_list", tripwire)
+    before = _snapshot(PIPELINE_ROOT)
 
     result = CliRunner().invoke(main, ["init"])
 
+    assert tripped == []
     assert result.exit_code == VP11_UNAVAILABLE_EXIT == 3
     assert vp11_source.VP11_PAGE_URL in result.output
     assert str(target) in result.output
     assert VP11_SHA256 in result.output
     assert not target.exists()
+    assert _snapshot(PIPELINE_ROOT) == before
 
 
 def test_pdf_is_not_tracked_in_the_repo() -> None:
