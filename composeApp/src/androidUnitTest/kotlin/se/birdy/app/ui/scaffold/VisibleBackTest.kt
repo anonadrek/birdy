@@ -9,6 +9,7 @@ import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.SemanticsNodeInteraction
+import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasClickAction
@@ -575,5 +576,89 @@ class VisibleBackTest {
 
         tapTab("Mina arter")
         compose.runOnIdle { assertTrue(nav.isOn(AppRoute.Lifelist::class)) }
+    }
+
+    // --- A species or a recap opened on top of another tab (Task 7b quality review) ---------
+
+    private fun NavHostController.hasOnStack(route: AppRoute): Boolean = runCatching { getBackStackEntry(route) }.isSuccess
+
+    private fun assertNoTabSelected() {
+        compose.onAllNodes(SemanticsMatcher.expectValue(SemanticsProperties.Selected, true)).assertCountEquals(0)
+    }
+
+    @Test
+    fun `today's bird on Mina arter, then Uppslagsverk and back to Mina arter`() {
+        val nav = start()
+        tapTab("Uppslagsverk")
+        val list = nav.currentBackStackEntry?.id
+        tapTab("Mina arter")
+        // The daily-bird card on Mina arter opens the species on top of Mina arter.
+        nav.open(AppRoute.SpeciesProfile("Q25485"))
+        assertTabSelected("Mina arter")
+
+        // Uppslagsverk: the real Uppslagsverk tab, the list it was left on.
+        tapTab("Uppslagsverk")
+        compose.runOnIdle {
+            assertTrue(nav.isOn(AppRoute.ArchiveList::class))
+            assertTrue(nav.currentBackStackEntry?.id == list, "the Uppslagsverk tab's own list, not a new one")
+            assertTrue(!nav.hasOnStack(AppRoute.Lifelist), "Mina arter's screens are not under the list")
+        }
+        assertTabSelected("Uppslagsverk")
+
+        // Mina arter: back to Mina arter's own stack, as it was left (the species on top) ...
+        tapTab("Mina arter")
+        compose.runOnIdle { assertTrue(nav.hasOnStack(AppRoute.Lifelist)) }
+        assertTabSelected("Mina arter")
+        // ... and one more tap goes to its first screen.
+        tapTab("Mina arter")
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.Lifelist::class)) }
+    }
+
+    @Test
+    fun `Mina arter on a species opened from a find goes back to Mina arter's first screen`() {
+        val nav = start(observations = observationsWithOneFind())
+        tapTab("Mina arter")
+        val lifelist = nav.currentBackStackEntry
+        // A find's "visa artprofil".
+        nav.open(AppRoute.ObservationDetail("obs-1"), AppRoute.SpeciesProfile("Q25485"))
+        assertTabSelected("Mina arter")
+        tapTab("Mina arter")
+        compose.runOnIdle { assertSame(lifelist, nav.currentBackStackEntry) }
+    }
+
+    @Test
+    fun `Mina arter on a species opened from Mina arter goes back to Mina arter`() {
+        val nav = start()
+        tapTab("Mina arter")
+        val lifelist = nav.currentBackStackEntry
+        nav.open(AppRoute.SpeciesProfile("Q25485"))
+        tapTab("Mina arter")
+        compose.runOnIdle { assertSame(lifelist, nav.currentBackStackEntry) }
+    }
+
+    @Test
+    fun `a recap opened from its notification on Marken stays in Marken's stack`() {
+        val nav = start()
+        tapTab("Märken")
+        // birdy://recap while Märken is open.
+        nav.open(AppRoute.WeeklyRecap)
+        assertTabSelected("Märken")
+        tapTab("Mina arter")
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.Lifelist::class)) }
+        assertTabSelected("Mina arter")
+        tapTab("Märken")
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.WeeklyRecap::class), "Märken comes back as it was left") }
+        assertTabSelected("Märken")
+    }
+
+    @Test
+    fun `Settings marks no tab, and the tab it was opened from goes back to that tab's first screen`() {
+        val nav = start()
+        tapTab("Märken")
+        val badges = nav.currentBackStackEntry
+        nav.open(AppRoute.Settings)
+        assertNoTabSelected()
+        tapTab("Märken")
+        compose.runOnIdle { assertSame(badges, nav.currentBackStackEntry) }
     }
 }

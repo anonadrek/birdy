@@ -120,9 +120,9 @@ private val tabs =
             icon = Icons.AutoMirrored.Filled.LibraryBooks,
             rootRoute = AppRoute.ArchiveList,
         ),
-        // Release 1.3.0 Task 7b: the weekly recap and season statistics are opened from Mina arter,
-        // so they keep its tab marked (a find, ObservationDetail, follows the screen it was opened
-        // from, see tabOwnerDestination).
+        // Release 1.3.0 Task 7b: the weekly recap and season statistics are Mina arter's screens
+        // (the recap opened from its notification marks Mina arter too, unless another tab's
+        // stack is open, see markedTab).
         TabSpec(
             route = AppRoute.Lifelist,
             label = Res.string.tab_lifelist,
@@ -148,8 +148,8 @@ fun BottomNavBar(
     dailyBirdDot: Boolean = false,
 ) {
     val backStackEntry by navController.currentBackStackEntryAsState()
-    val ownerDestination =
-        tabOwnerDestination(backStackEntry?.destination, navController.previousBackStackEntry?.destination)
+    // Read again whenever the current entry changes (backStackEntry above).
+    val markedTab = backStackEntry?.let { navController.markedTab(it.destination) }
     Row(
         modifier =
             Modifier
@@ -172,15 +172,11 @@ fun BottomNavBar(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         for (tab in tabs) {
-            val selected =
-                ownerDestination?.parentChain()?.any { dest ->
-                    tab.ownedRoutes.any { dest.hasRoute(it) }
-                } == true
             TabCell(
                 tab = tab,
-                selected = selected,
+                selected = tab == markedTab,
                 showDot = dailyBirdDot && tab.route == AppRoute.Listen,
-                onClick = { navController.onTabClick(tab, selected, backStackEntry?.destination) },
+                onClick = { navController.onTabClick(tab, backStackEntry?.destination) },
                 modifier = Modifier.weight(1f),
             )
         }
@@ -287,29 +283,71 @@ private fun NewDot(modifier: Modifier = Modifier) {
 
 private fun NavDestination.parentChain(): Sequence<NavDestination> = generateSequence(this) { it.parent }
 
+/** Screens opened on top of any tab that no tab owns: the bar marks no tab on them. */
+private val untabbedRoutes: Set<KClass<out AppRoute>> =
+    setOf(
+        AppRoute.Settings::class,
+        AppRoute.About::class,
+        AppRoute.OnboardingReplay::class,
+        AppRoute.Premium::class,
+        AppRoute.DebugBenchmark::class,
+        AppRoute.DebugDiagnostics::class,
+    )
+
+private fun NavDestination.ownedBy(tab: TabSpec): Boolean {
+    val chain = parentChain()
+    return chain.any { dest -> tab.ownedRoutes.any { dest.hasRoute(it) } }
+}
+
+private fun NavHostController.isOnStack(route: AppRoute): Boolean = runCatching { getBackStackEntry(route) }.isSuccess
+
 /**
- * A tap on [tab]. Inside the tab on a sub-screen it goes back to the tab's root screen, so
- * tapping Identifiera on Scan/PhotoAnalyze/AudioScan returns to the launcher hub and Uppslagsverk
- * on a species returns to the list. Otherwise it switches tab as usual.
+ * The tab whose own stack the user is in, or null for Identifiera's (release 1.3.0 Task 7b
+ * review). A tab's first screen (Mina arter, Märken, Karta) is only ever opened by its tab, always
+ * right above the start destination, so at most one is on the stack and it owns everything above
+ * it: a species opened from today's bird on Mina arter belongs to Mina arter, not Uppslagsverk.
+ * Uppslagsverk's nested graph owns the stack only when no such screen is under it.
+ */
+private fun NavHostController.stackTab(): TabSpec? =
+    tabs.firstOrNull { it.route != AppRoute.Listen && it.rootRoute == it.route && isOnStack(it.route) }
+        ?: tabs.firstOrNull { it.rootRoute != it.route && isOnStack(it.route) }
+
+/**
+ * The tab the bar marks: the tab whose stack this is; on Identifiera's stack the tab owning the
+ * screen itself (a find: the screen it was opened from, e.g. the weekly recap opened from its
+ * notification); none on Settings, About, Premium, the intro and the debug screens.
+ */
+private fun NavHostController.markedTab(current: NavDestination): TabSpec? {
+    if (untabbedRoutes.any { current.hasRoute(it) }) return null
+    val isFind = current.hasRoute(AppRoute.ObservationDetail::class)
+    val shown = if (isFind) previousBackStackEntry?.destination else current
+    return stackTab() ?: tabs.firstOrNull { tab -> shown?.ownedBy(tab) == true }
+}
+
+/**
+ * A tap on [tab] (release 1.3.0 Task 7b review):
+ * - inside the tab's own stack on a sub-screen: back to the tab's first screen (Identifiera on
+ *   Scan/PhotoAnalyze/AudioScan returns to the launcher hub, Mina arter on a species opened from
+ *   Mina arter returns to the list);
+ * - inside Uppslagsverk's graph without its list (a species opened from today's bird on
+ *   Identifiera): the list takes the species' place;
+ * - otherwise, and on the tab's first screen itself: the usual tab switch, which keeps each
+ *   tab's stack (the stack being left is saved, the tapped tab's saved stack is restored).
  */
 private fun NavHostController.onTabClick(
     tab: TabSpec,
-    selected: Boolean,
     current: NavDestination?,
 ) {
     val onTabRoot = current?.hasRoute(tab.rootRoute::class) == true
-    val poppedToTabRoot = selected && !onTabRoot && popBackStack(tab.rootRoute, inclusive = false)
+    val inTabStack = stackTab() == tab || (tab.route == AppRoute.Listen && stackTab() == null)
+    val poppedToTabRoot = inTabStack && !onTabRoot && popBackStack(tab.rootRoute, inclusive = false)
     when {
         poppedToTabRoot -> Unit
-        // In the tab's nested graph without its root screen on the stack (a species opened from
-        // today's bird on Identifiera): put the root screen in place of what is open in the graph.
-        selected && !onTabRoot && tab.rootRoute != tab.route ->
+        inTabStack && !onTabRoot && tab.rootRoute != tab.route ->
             navigate(tab.rootRoute) {
                 popUpTo(tab.route) { inclusive = false }
                 launchSingleTop = true
             }
-        // Another tab, the tab's root itself, or a screen the tab owns without its root on the
-        // stack (the weekly recap opened from its notification): the usual tab switch.
         else ->
             navigate(tab.route) {
                 popUpTo(graph.startDestinationId) { saveState = true }
@@ -317,17 +355,4 @@ private fun NavHostController.onTabClick(
                 restoreState = true
             }
     }
-}
-
-/**
- * The destination that decides which tab is marked: the current one, except for a find
- * (ObservationDetail), which belongs to the screen it was opened from (Mina arter, the map or the
- * weekly recap). Release 1.3.0 Task 7b.
- */
-private fun tabOwnerDestination(
-    current: NavDestination?,
-    previous: NavDestination?,
-): NavDestination? {
-    val isFind = current?.hasRoute(AppRoute.ObservationDetail::class) == true
-    return if (isFind && previous != null) previous else current
 }
