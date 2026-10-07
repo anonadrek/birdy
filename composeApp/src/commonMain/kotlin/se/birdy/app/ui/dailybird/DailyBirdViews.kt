@@ -21,7 +21,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Hearing
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -45,12 +44,10 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_badge_complete
@@ -76,7 +73,6 @@ import se.birdy.app.dailybird.DailyBirdChallengeLine
 import se.birdy.app.dailybird.DailyBirdCountStyle
 import se.birdy.app.dailybird.DailyBirdToday
 import se.birdy.app.dailybird.challenge
-import se.birdy.app.ui.components.LATIN_NAME_TEXT_ALPHA
 import se.birdy.app.ui.components.MicroLabel
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.AccentCopperLight
@@ -94,11 +90,7 @@ import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.app.util.speciesImageUri
 
-// Text on the hero's text area (PhotoHero's own text-following scrim). PhotoHeroContrastTest
-// proves TextOnHero at META_TEXT_ALPHA (0.75) and up clears WCAG AA there; every alpha below is
-// at least LATIN_NAME_TEXT_ALPHA (0.85), so these lines need no scrim of their own.
-private const val HERO_LABEL_ALPHA = 0.9f
-private const val HERO_COUNT_ALPHA = 0.88f
+// The hairline over the hero's challenge row (its text alphas are in DailyBirdHeroChallenge.kt).
 private const val HERO_RULE_ALPHA = 0.28f
 
 // The outlined hero button's border: a graphical boundary, 3:1 is enough. ≈3.72:1 over PhotoHero's
@@ -243,7 +235,7 @@ internal fun DailyBirdHeroChallengeRow(
             stringResource(Res.string.daily_bird_challenge_a11y, texts.status, texts.line, texts.count),
             challenge.showPremiumBadgeTag,
         )
-    Row(
+    Box(
         modifier =
             modifier
                 .fillMaxWidth()
@@ -256,70 +248,8 @@ internal fun DailyBirdHeroChallengeRow(
                     )
                 }.padding(top = 10.dp)
                 .clearAndSetSemantics { contentDescription = a11y },
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
-        verticalAlignment = Alignment.Bottom,
     ) {
-        HeroChallengeStatus(caughtToday = challenge.caughtToday, texts = texts, modifier = Modifier.weight(1f))
-        Column(horizontalAlignment = Alignment.End) {
-            DailyBirdSeals(
-                filled = challenge.filledSeals,
-                total = challenge.seals,
-                sealSize = 15.dp,
-                colors = HeroSealColors,
-            )
-            Spacer(Modifier.height(6.dp))
-            Text(
-                text = texts.count,
-                color = TextOnHero.copy(alpha = HERO_COUNT_ALPHA),
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.W600,
-                fontSize = 9.5.sp,
-                lineHeight = 12.sp,
-                letterSpacing = 0.08.em,
-            )
-            if (challenge.showPremiumBadgeTag) {
-                Spacer(Modifier.height(5.dp))
-                DailyBirdPremiumBadgeTag()
-            }
-        }
-    }
-}
-
-@Composable
-private fun HeroChallengeStatus(
-    caughtToday: Boolean,
-    texts: DailyBirdChallengeTexts,
-    modifier: Modifier = Modifier,
-) {
-    Column(modifier) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            if (caughtToday) {
-                Icon(
-                    Icons.Filled.Check,
-                    contentDescription = null,
-                    tint = AccentCopperLight,
-                    modifier = Modifier.size(13.dp),
-                )
-                Spacer(Modifier.width(5.dp))
-            }
-            Text(
-                text = texts.status.uppercase(),
-                color = TextOnHero.copy(alpha = HERO_LABEL_ALPHA),
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.W600,
-                fontSize = 9.5.sp,
-                lineHeight = 12.sp,
-                letterSpacing = 0.15.em,
-            )
-        }
-        Text(
-            text = texts.line,
-            color = TextOnHero.copy(alpha = LATIN_NAME_TEXT_ALPHA),
-            fontFamily = rememberCaveat(),
-            fontSize = 17.sp,
-            lineHeight = 19.sp,
-            modifier = Modifier.padding(top = 3.dp),
-        )
+        DailyBirdHeroChallengeContent(challenge = challenge, texts = texts)
     }
 }
 
@@ -329,8 +259,7 @@ internal data class SealColors(
     val check: Color,
 )
 
-// On the dark hero: apricot seals with a moss tick (mockup "m-dots"). On paper: rust with a light tick.
-private val HeroSealColors = SealColors(ring = AccentCopperLight, check = HeroMossDeep)
+// On paper: rust with a light tick (the hero's apricot seals are in DailyBirdHeroChallenge.kt).
 internal val PaperSealColors = SealColors(ring = AccentCopper, check = TextOnHero)
 
 // The tick inside a filled seal, as fractions of the seal's size.
@@ -387,8 +316,9 @@ private fun Seal(
 /**
  * The slim Dagens fågel strip on Mina arter and Uppslagsverk (design option B): round photo,
  * kicker, name, status with the day count, chevron. Shown all day; opening it opens the profile.
- * Without Premium the day count gets the same "Premium-märke" tag as the hero's challenge row,
- * beside the status or under it when the line is full (large text).
+ * Without Premium the day count gets the same "Premium-märke" tag as the hero's challenge row, on a
+ * line of its own under the status: in the text column beside the photo it did not fit at 200 %
+ * text on a 320dp phone, so it starts under the text but may reach under the chevron.
  */
 @Composable
 fun DailyBirdStrip(
@@ -407,7 +337,7 @@ fun DailyBirdStrip(
             challenge.showPremiumBadgeTag,
         )
     val readMore = stringResource(Res.string.daily_bird_read_more)
-    Row(
+    Column(
         modifier =
             modifier
                 .fillMaxWidth()
@@ -419,28 +349,36 @@ fun DailyBirdStrip(
                 .clickable(role = Role.Button, onClickLabel = readMore, onClick = onClick)
                 .semantics(mergeDescendants = true) { contentDescription = a11y }
                 .padding(start = 10.dp, end = 10.dp, top = 10.dp, bottom = 10.dp),
-        verticalAlignment = Alignment.CenterVertically,
     ) {
-        StripAvatar(heroImagePath = bird.heroImagePath)
-        Spacer(Modifier.width(12.dp))
-        Column(Modifier.weight(1f)) {
-            MicroLabel(stringResource(Res.string.daily_bird_card_eyebrow), fontSize = 8.5.sp)
-            Text(
-                text = bird.name,
-                color = TextOnCreme,
-                fontFamily = serif,
-                fontSize = 19.sp,
-                lineHeight = 22.sp,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.padding(top = 3.dp),
-            )
-            DailyBirdStripStatus(challenge = challenge, status = status, caveat = caveat)
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            StripAvatar(heroImagePath = bird.heroImagePath)
+            Spacer(Modifier.width(StripTextInset - StripAvatarSize))
+            Column(Modifier.weight(1f)) {
+                MicroLabel(stringResource(Res.string.daily_bird_card_eyebrow), fontSize = 8.5.sp)
+                Text(
+                    text = bird.name,
+                    color = TextOnCreme,
+                    fontFamily = serif,
+                    fontSize = 19.sp,
+                    lineHeight = 22.sp,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.padding(top = 3.dp),
+                )
+                DailyBirdStripStatus(challenge = challenge, status = status, caveat = caveat)
+            }
+            Spacer(Modifier.width(6.dp))
+            Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = InkMuted)
         }
-        Spacer(Modifier.width(6.dp))
-        Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = InkMuted)
+        if (challenge.showPremiumBadgeTag) {
+            DailyBirdPremiumBadgeTag(Modifier.padding(start = StripTextInset, top = 6.dp))
+        }
     }
 }
+
+// The strip's round photo, and where its text starts (photo plus a 12dp gap).
+private val StripAvatarSize = 48.dp
+private val StripTextInset = 60.dp
 
 @Composable
 private fun StripAvatar(heroImagePath: String?) {
@@ -448,7 +386,7 @@ private fun StripAvatar(heroImagePath: String?) {
     Box(
         modifier =
             Modifier
-                .size(48.dp)
+                .size(StripAvatarSize)
                 .border(1.5.dp, AccentCopperLight, CircleShape)
                 .padding(3.5.dp)
                 .clip(CircleShape)

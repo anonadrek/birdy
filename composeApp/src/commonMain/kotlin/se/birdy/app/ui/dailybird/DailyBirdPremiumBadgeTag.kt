@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
@@ -22,7 +23,8 @@ import se.birdy.app.ui.theme.BrassLight
  * "PREMIUM-MÄRKE" by the day count (the hero's challenge row and the strips) for a user without
  * Premium: Dagens fågel-jägare is a Premium badge (Albin, 2026-10-07). The Premium teaser's corner-tag style:
  * brass fill and brass ink (5.4:1 on brass, more on this lighter brass), so it reads on the hero's
- * dark text area as on any photo.
+ * dark text area as on any photo. Where it is narrower than its text (a strip at 200 % text on a
+ * 320dp phone) it wraps at the hyphen or space instead of being cut off.
  */
 @Composable
 internal fun DailyBirdPremiumBadgeTag(modifier: Modifier = Modifier) {
@@ -33,7 +35,7 @@ internal fun DailyBirdPremiumBadgeTag(modifier: Modifier = Modifier) {
         fontWeight = FontWeight.W700,
         // Without it the theme's 22sp bodyLarge line height makes the tag look like a button.
         lineHeight = 12.sp,
-        maxLines = 1,
+        textAlign = TextAlign.Center,
         letterSpacing = 0.12.em,
         modifier =
             modifier
