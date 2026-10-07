@@ -191,3 +191,9 @@ def test_the_prompt_keeps_a_county_share_a_share() -> None:
     system, _ = _split_prompt(template, items="", about="")
     assert "share of all bird reports" in system
     assert "most reports come from there" in system
+
+
+def test_the_prompt_reads_month_data_as_reports() -> None:
+    template = (PIPELINE / "prompts/check-v1.md").read_text(encoding="utf-8")
+    system, _ = _split_prompt(template, items="", about="")
+    assert "about reports, not about whether the bird is there" in system

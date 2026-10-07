@@ -715,3 +715,10 @@ def test_a_lookalike_echoed_with_its_written_name_gets_its_qid() -> None:
         ]
     }
     assert _lookalike_qid_map(record) == {"Corvus corone": "Q26198", "C. corone": "Q26198"}
+
+
+def test_the_writer_prompt_reads_month_data_as_reports() -> None:
+    template = (Path(__file__).resolve().parents[1] / "prompts/web-v2.md").read_text(
+        encoding="utf-8"
+    )
+    assert "how often the bird is reported, not whether it is there" in template

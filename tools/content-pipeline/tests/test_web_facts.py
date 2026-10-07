@@ -330,3 +330,27 @@ def test_a_lookalike_that_is_the_page_species_keeps_its_name_and_says_why() -> N
         "faktum 1: förväxlingsarten Motacilla flava thunbergi är arten själv" in n
         for n in check.info
     )
+
+
+def test_a_breeding_season_month_is_not_given_to_the_writer_as_rare() -> None:
+    """For a resident or a breeding migrant, a breeding-season month (May to July) in the
+    "Rapporteras sällan" sentence is the data's gap (withheld breeding records), so the
+    writer gets the sentence without it, or not at all. Other statuses keep it."""
+    record = new_record("Q30535")
+    pilgrim = [100] * 5 + [4] + [100] * 6
+    rarely = "Rapporteras sällan i juni."
+    record["data"] = {"months": pilgrim, "sentences": {"sv": ["Rapporteras året runt.", rarely]}}
+    assert [f["sv"] for f in data_facts(record, status="resident")] == ["Rapporteras året runt."]
+    assert [f["sv"] for f in data_facts(record, status="winter_visitor")] == [
+        "Rapporteras året runt.",
+        rarely,
+    ]
+    assert [f["sv"] for f in data_facts(record)] == ["Rapporteras året runt.", rarely]
+    nightingale = [0, 0, 0, 5, 80, 100, 9, 2, 1, 0, 0, 0]
+    record["data"] = {
+        "months": nightingale,
+        "sentences": {"sv": ["Rapporteras sällan i juli till april."]},
+    }
+    assert [f["sv"] for f in data_facts(record, status="breeding_migrant")] == [
+        "Rapporteras sällan i augusti till april."
+    ]

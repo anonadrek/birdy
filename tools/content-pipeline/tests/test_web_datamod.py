@@ -6,6 +6,7 @@ import pytest
 
 from birdy_fetcher.web.counties import COUNTIES
 from birdy_fetcher.web.datamod import (
+    BREEDING_MONTHS,
     MIN_REPORTS,
     Counts,
     build_data,
@@ -17,6 +18,7 @@ from birdy_fetcher.web.datamod import (
     month_runs,
     month_sentences,
     months_text,
+    rarely_sentence,
     red_list_for_page,
     scaled,
     sentence_kind,
@@ -82,11 +84,11 @@ def test_two_months_are_listed() -> None:
 def test_migrant_sentences() -> None:
     assert month_sentences(MIGRANT, "sv") == [
         "Rapporteras mest i maj till juli.",
-        "Nästan aldrig i oktober till mars.",
+        "Rapporteras sällan i oktober till mars.",
     ]
     assert month_sentences(MIGRANT, "en") == [
         "Reported most in May to July.",
-        "Almost never in October to March.",
+        "Rarely reported in October to March.",
     ]
 
 
@@ -149,7 +151,7 @@ def test_a_skewed_profile_names_only_the_counties_near_the_top() -> None:
 def test_data_sentences_put_months_first() -> None:
     assert data_sentences(MIGRANT, {"SE-I": 100}, "sv") == [
         "Rapporteras mest i maj till juli.",
-        "Nästan aldrig i oktober till mars.",
+        "Rapporteras sällan i oktober till mars.",
         "Andelen av alla fågelrapporter är högst i Gotland.",
     ]
 
@@ -167,7 +169,7 @@ def test_no_peak_but_low_months_gives_only_never_sentence() -> None:
     profile = [5, 5, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]
     result = month_sentences(profile, "sv")
     assert len(result) == 1
-    expected = "Nästan aldrig i januari och februari."
+    expected = "Rapporteras sällan i januari och februari."
     assert result[0] == expected
 
 
@@ -307,3 +309,27 @@ def test_a_status_saying_the_species_is_here_contradicts_zero_reports() -> None:
     assert status_contradiction("rare_visitor", None, 0) is None
     assert status_contradiction("absent", None, 0) is None
     assert status_contradiction("resident", None, 12) is None
+
+
+def test_a_rare_month_is_about_reports_not_presence() -> None:
+    """Fix wave 2026-10-07: "Nästan aldrig i juni" for Pilgrimsfalk and Sparvhök read as
+    "not there in June"; their breeding records are withheld and ringing is no longer
+    counted, so the data only say they are rarely reported then."""
+    profile = [100] * 12
+    profile[5] = 4
+    assert month_sentences(profile, "sv") == [
+        "Rapporteras mest i juli till maj.",
+        "Rapporteras sällan i juni.",
+    ]
+    assert month_sentences(profile, "en")[-1] == "Rarely reported in June."
+    assert sentence_kind("Rapporteras sällan i juni.") == "rarelyReported"
+    assert sentence_kind("Rarely reported in June.") == "rarelyReported"
+
+
+def test_rarely_sentence_can_leave_months_out() -> None:
+    profile = [5, 5, 5, 5, 60, 80, 9, 100, 90, 5, 5, 5]
+    assert rarely_sentence(profile, "sv") == ("Rapporteras sällan i juli och oktober till april.")
+    assert rarely_sentence(profile, "sv", skip=BREEDING_MONTHS) == (
+        "Rapporteras sällan i oktober till april."
+    )
+    assert rarely_sentence([100] * 5 + [4] + [100] * 6, "sv", skip=BREEDING_MONTHS) is None

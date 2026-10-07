@@ -249,7 +249,8 @@ def _forget_checks_of_old_sources(record: Record) -> None:
         review.pop("audioKept")
     if record.get("facts"):
         kept = [f for f in record["facts"] if f.get("topic") != "data"]
-        record["facts"] = kept + data_facts(record)
+        status = next((f["value"] for f in kept if f.get("topic") == "status"), None)
+        record["facts"] = kept + data_facts(record, status=status)
 
 
 async def run_sources(

@@ -64,7 +64,13 @@ _AND = {"sv": "och", "en": "and"}
 _TO = {"sv": "till", "en": "to"}
 ALL_YEAR = {"sv": "Rapporteras året runt.", "en": "Reported all year round."}
 MOST = {"sv": "Rapporteras mest i {months}.", "en": "Reported most in {months}."}
-NEVER = {"sv": "Nästan aldrig i {months}.", "en": "Almost never in {months}."}
+# About reports, not presence (fix wave 2026-10-07): "Nästan aldrig i juni" read as "not
+# there in June" for Pilgrimsfalk and Sparvhök, whose breeding records are withheld.
+RARELY = {"sv": "Rapporteras sällan i {months}.", "en": "Rarely reported in {months}."}
+# May to July (0-based): a resident's or breeding migrant's few reports then are a gap in
+# the data (withheld breeding records, no ringing), so the writer does not get those months
+# as "rarely reported" (facts.data_facts).
+BREEDING_MONTHS = frozenset({4, 5, 6})
 # The county map shows each county's share of all its bird reports (spec §9.2). Before the
 # R3 trial (2026-10-07) the sentence named the top three as "Vanligast i rapporterna från
 # ...", which reads as "most reports", and for a widespread species the top three are small
@@ -137,10 +143,19 @@ def month_sentences(profile: list[int], lang: str) -> list[str]:
     sentences: list[str] = []
     if peak:
         sentences.append(MOST[lang].format(months=months_text(peak, lang)))
-    low = {i for i, value in enumerate(profile) if value <= LOW}
-    if low:
-        sentences.append(NEVER[lang].format(months=months_text(low, lang)))
+    rarely = rarely_sentence(profile, lang)
+    if rarely is not None:
+        sentences.append(rarely)
     return sentences
+
+
+def rarely_sentence(
+    profile: list[int], lang: str, *, skip: frozenset[int] = frozenset()
+) -> str | None:
+    """The months with a value of LOW or less, minus `skip`, as a "rarely reported"
+    sentence; None when there are none."""
+    low = {i for i, value in enumerate(profile) if value <= LOW} - skip
+    return RARELY[lang].format(months=months_text(low, lang)) if low else None
 
 
 def county_sentence(profile: dict[str, int], lang: str) -> str | None:
@@ -197,6 +212,8 @@ def sentence_kind(sentence: str) -> str | None:
         return "rare"
     if any(sentence.startswith(_prefix(t)) for t in COUNTIES_SHARE.values()):
         return "countyShare"
+    if any(sentence.startswith(_prefix(t)) for t in RARELY.values()):
+        return "rarelyReported"
     return None
 
 

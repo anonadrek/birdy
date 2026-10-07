@@ -11,7 +11,13 @@ from typing import Any, Literal
 from pydantic import BaseModel
 
 from .checks import quote_in_sources
-from .datamod import data_status_contradiction, red_list_for_page, sentence_kind
+from .datamod import (
+    BREEDING_MONTHS,
+    data_status_contradiction,
+    rarely_sentence,
+    red_list_for_page,
+    sentence_kind,
+)
 from .record import Record
 from .scinames import NameContext, resolve_lookalike
 from .wiki_full import WikiArticle
@@ -252,8 +258,13 @@ def check_fact_sheet(
     return check
 
 
-def data_facts(record: Record) -> list[dict[str, Any]]:
-    """Facts that code writes from the report data and the red list (never the model)."""
+BREEDS_HERE = ("resident", "breeding_migrant")
+
+
+def data_facts(record: Record, *, status: str | None = None) -> list[dict[str, Any]]:
+    """Facts that code writes from the report data and the red list (never the model).
+    `status` is the fact sheet's status value: for a species that breeds here, the "rarely
+    reported" sentence loses its breeding-season months (or goes), see BREEDING_MONTHS."""
     out: list[dict[str, Any]] = []
 
     def add(source: str, text: str, kind: str | None = None) -> None:
@@ -267,7 +278,14 @@ def data_facts(record: Record) -> list[dict[str, Any]]:
 
     data = record.get("data") or {}
     for sentence in data.get("sentences", {}).get("sv", []):
-        add("artportalen", sentence, sentence_kind(sentence))
+        kind = sentence_kind(sentence)
+        months = data.get("months")
+        if kind == "rarelyReported" and status in BREEDS_HERE and months:
+            trimmed = rarely_sentence(months, "sv", skip=BREEDING_MONTHS)
+            if trimmed is None:
+                continue
+            sentence = trimmed
+        add("artportalen", sentence, kind)
     red = record.get("swedishRedList")
     if "totalReports" in data:
         # A record written before `web sources` dropped `not_listed` for a species that is
@@ -289,7 +307,8 @@ def apply_facts(record: Record, check: FactCheck, *, generated: dict[str, Any]) 
     facts = list(check.facts)
     if check.status is not None:
         facts.append(check.status)
-    facts.extend(data_facts(record))
+    status = check.status["value"] if check.status is not None else None
+    facts.extend(data_facts(record, status=status))
     record["facts"] = facts
     data = record.get("data")
     if data is not None:
