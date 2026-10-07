@@ -57,6 +57,12 @@ test('attachments up to the limit go along by URL', () => {
   assert.deepEqual(f.attachments, [{ filename: 'skärm.png', path: 'https://inbound-cdn.resend.com/a1', contentType: 'image/png' }]);
 });
 
+test('an inline attachment (content_id) is forwarded with its contentId, so cid: references in the html resolve', () => {
+  const attachments = [{ id: 'a1', filename: 'inline.png', size: 100, content_type: 'image/png', content_id: 'img1@resend', download_url: 'https://x' }];
+  const f = buildForward({ ...base, attachments });
+  assert.deepEqual(f.attachments, [{ filename: 'inline.png', path: 'https://x', contentType: 'image/png', contentId: 'img1@resend' }]);
+});
+
 test('too large attachments stay in Resend and the header says so', () => {
   const attachments = [{ id: 'a1', filename: null, size: MAX_ATTACHMENT_BYTES + 1, content_type: 'video/mp4', download_url: 'https://x' }];
   const f = buildForward({ ...base, attachments });

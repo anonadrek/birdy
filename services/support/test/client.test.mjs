@@ -26,6 +26,21 @@ test('send throws an error carrying name and statusCode from Resend, never leaki
   });
 });
 
+test('getEmail asks Resend to keep inline images as cid references, not base64 duplicates', async () => {
+  let requestedId;
+  let requestedOptions;
+  const resend = fakeResend();
+  resend.emails.receiving.get = async (id, options) => {
+    requestedId = id;
+    requestedOptions = options;
+    return { data: { id, attachments: [] }, error: null };
+  };
+  const client = resendClient(resend);
+  await client.getEmail('em_1');
+  assert.equal(requestedId, 'em_1');
+  assert.deepEqual(requestedOptions, { html_format: 'cid' });
+});
+
 test('listAttachments asks for up to 100 and reports whether more exist', async () => {
   let requestedOptions;
   const resend = fakeResend();

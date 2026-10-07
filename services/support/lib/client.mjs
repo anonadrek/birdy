@@ -15,7 +15,10 @@ export function resendClient(resend) {
   };
   return {
     verify: ({ payload, headers, secret }) => resend.webhooks.verify({ payload, headers, webhookSecret: secret }),
-    getEmail: async (id) => unwrap('receiving.get')(await resend.emails.receiving.get(id)),
+    // html_format: 'cid' keeps <img src="cid:..."> references in html instead of inlining every
+    // image as a base64 data: URI (the default) — avoiding a duplicate of each inline image's
+    // bytes once in html and again as a forwarded attachment.
+    getEmail: async (id) => unwrap('receiving.get')(await resend.emails.receiving.get(id, { html_format: 'cid' })),
     listAttachments: async (id) => {
       // limit: 100 raises the default page of 20, which silently dropped attachments beyond it;
       // has_more still says whether even that was not everyone (forward.mjs notes it when so).

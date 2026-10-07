@@ -39,7 +39,15 @@ export function buildForward({ email, attachments, hasMore = false, label, suppo
     html: email.html ? `<p style="color:#6E584B;font-size:13px">${header.map(escapeHtml).join('<br>')}</p><hr>${email.html}` : undefined,
     attachments:
       attachments.length > 0 && fits
-        ? attachments.map((a) => ({ filename: a.filename ?? `bilaga-${a.id}`, path: a.download_url, contentType: a.content_type }))
+        ? attachments.map((a) => ({
+            filename: a.filename ?? `bilaga-${a.id}`,
+            path: a.download_url,
+            contentType: a.content_type,
+            // contentId makes this attachment inline, resolving a matching cid: reference in html
+            // (from html_format: 'cid') instead of a base64 duplicate. Omitted, not undefined, when
+            // there is none — Resend's own attachments without a content_id stay regular downloads.
+            ...(a.content_id ? { contentId: a.content_id } : {}),
+          }))
         : undefined,
   };
 }
