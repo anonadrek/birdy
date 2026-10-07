@@ -7,6 +7,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
+import org.junit.Assume.assumeTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -14,6 +15,7 @@ import org.robolectric.RuntimeEnvironment
 import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
+import se.birdy.app.BuildConfig
 import se.birdy.app.testing.FakeBadgeRepository
 import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.app.testing.FakeSpeciesRepository
@@ -169,6 +171,10 @@ class DailyBirdNotificationTest {
 
     @Test
     fun `the bundled photo is decoded and scaled down`() {
+        // The benchmark photos are debug-only assets (composeApp/src/androidDebug/assets, 1.3.0 legal
+        // review fix F), so only testDebugUnitTest (the CI gate) has one to decode. The release unit
+        // test variant skips this case; there is no other bundled JPEG in the module's assets.
+        assumeTrue("benchmark/talgoxe.jpg is a debug-only asset", BuildConfig.DEBUG)
         val bitmap = DailyBirdNotification.decodeAsset(context.assets, "benchmark/talgoxe.jpg", maxEdgePx = 256)
         assertNotNull(bitmap)
         assertEquals(256, maxOf(bitmap.width, bitmap.height))

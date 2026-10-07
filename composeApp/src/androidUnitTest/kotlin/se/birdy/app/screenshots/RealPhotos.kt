@@ -23,7 +23,9 @@ import java.io.File
  *   `asset-pack/src/main/assets/images/`
  * - `.../files/premium/great-tit-hero.jpg` (Res.getUri) → the bundled compose resource
  * - `file:///fake/<id>.jpg` (a find's own photo in the fixtures) → one of the benchmark photos
- *   in `composeApp/src/androidMain/assets/benchmark/`, chosen by [findPhotos]
+ *   in `composeApp/src/androidDebug/assets/benchmark/`, chosen by [findPhotos]. They live in the
+ *   debug source set so that they never reach the release build (1.3.0 legal review, fix F);
+ *   read straight from that folder, so it works for any test variant.
  *
  * The working directory of a unit test is the `composeApp` module, hence the relative paths.
  */
@@ -62,4 +64,4 @@ private const val SPECIES_PREFIX = "file:///android_asset/images/"
 private const val FIND_PREFIX = "file:///fake/"
 private const val PREMIUM_PHOTO = "files/premium/great-tit-hero.jpg"
 private const val ASSET_PACK_IMAGES = "../asset-pack/src/main/assets/images"
-private const val BENCHMARK_PHOTOS = "src/androidMain/assets/benchmark"
+private const val BENCHMARK_PHOTOS = "src/androidDebug/assets/benchmark"

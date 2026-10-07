@@ -4,7 +4,8 @@
 // escape is caught once JSON.parse has decoded it. Field notes (Markdown, rendered through
 // Astro/smartypants) are checked line by line for literal dash characters, HTML dash entities,
 // and "--" sequences that smartypants turns into a dash; pure-hyphen fence/thematic-break lines
-// (frontmatter delimiters, thematic breaks) are skipped.
+// (frontmatter delimiters, thematic breaks) are skipped. The legal pages under /legal/ are rendered
+// from docs/play-store/ (src/lib/markdown.ts, LEGAL_DOCS) and are checked the same way.
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve, join } from 'node:path';
@@ -15,7 +16,9 @@ const deckFiles = ['src/content/copy.en.json', 'src/content/copy.sv.json'];
 const noteFiles = readdirSync(notesDir, { recursive: true })
   .filter((f) => String(f).endsWith('.md'))
   .map((f) => join('src/content/field-notes', String(f)));
-const files = [...deckFiles, ...noteFiles];
+// The three files LEGAL_DOCS in src/lib/markdown.ts renders on /legal/ (keep the two lists in step).
+const legalFiles = ['privacy-policy.md', 'terms.md', 'data-safety-form.md'].map((f) => join('..', 'docs', 'play-store', f));
+const files = [...deckFiles, ...noteFiles, ...legalFiles];
 
 // Built via fromCharCode, not source escapes, so the regex source is unambiguous on disk.
 const NEWLINE = String.fromCharCode(10);
@@ -57,8 +60,8 @@ for (const file of deckFiles) {
   });
 }
 
-// Field notes: check every rendered line, skipping pure-hyphen fence/thematic-break lines.
-for (const file of noteFiles) {
+// Field notes and legal pages: check every rendered line, skipping pure-hyphen fence/thematic-break lines.
+for (const file of [...noteFiles, ...legalFiles]) {
   const lines = readFileSync(resolve(root, file), 'utf8').split(NEWLINE);
   lines.forEach((line, i) => {
     if (fenceRe.test(line)) return;
