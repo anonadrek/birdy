@@ -208,14 +208,38 @@ function comparison(c) {
 
 // Colour alone distinguishes species and roles (no <text>): text rendering depends on which fonts
 // are installed, so an SVG with a <text> element rasterizes to different pixels (and thus different
-// WebP bytes) on Windows vs macOS vs CI. A flat-colour rectangle is byte-identical everywhere. The
-// hue is a deterministic hash of the QID, so screenshots taken during testing can tell species
-// apart; extra.webp is a lighter shade of the same hue as hero.webp.
-function hashHue(qid) {
-  let h = 0;
-  for (let i = 0; i < qid.length; i++) h = (h * 31 + qid.charCodeAt(i)) >>> 0;
-  return h % 360;
+// WebP bytes) on Windows vs macOS vs CI. A flat-colour rectangle is byte-identical everywhere.
+// The hue is deterministic but NOT a plain "hash(qid) % 360": with only ~20 species and a
+// continuous 0-360 range, two hashes land close together often enough to make two species render
+// as the same pixel (e.g. a naive 31-multiplier hash put Q25384 and Q25385 about 1 degree apart).
+// Instead every QID gets a stable RANK (sort all QIDs by their FNV-1a hash, so the order doesn't
+// depend on SPECIES's array order) and ranks are spread evenly around the wheel, 360/count degrees
+// apart -- the only spacing that is guaranteed, for any fixed count, to keep every pair as far
+// apart as possible. extra.webp is a lighter shade of the same hue as hero.webp.
+function fnv1a(str) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return h >>> 0;
 }
+function assignHues(qids) {
+  const ranked = [...qids].sort((a, b) => fnv1a(a) - fnv1a(b));
+  const step = 360 / ranked.length;
+  const hues = new Map(ranked.map((qid, i) => [qid, i * step]));
+  let minGap = Infinity;
+  const sorted = [...hues.values()].sort((a, b) => a - b);
+  for (let i = 0; i < sorted.length; i++) {
+    const next = sorted[(i + 1) % sorted.length];
+    const gap = i === sorted.length - 1 ? 360 - sorted[i] + next : next - sorted[i];
+    minGap = Math.min(minGap, gap);
+  }
+  console.log(`fixture hues: ${ranked.length} arter, minsta avstånd mellan två nyanser ${minGap.toFixed(1)} grader`);
+  if (minGap < 15) throw new Error(`fixturfärgerna ligger för tätt (${minGap.toFixed(1)} grader, krävs minst 15)`);
+  return hues;
+}
+const HUES = assignHues(SPECIES.map((sp) => sp.qid));
 function hslToHex(h, s, l) {
   const sat = s / 100;
   const light = l / 100;
@@ -228,7 +252,7 @@ function hslToHex(h, s, l) {
 async function photo(qid, role) {
   const dir = resolve(OUT.assets, qid);
   mkdirSync(dir, { recursive: true });
-  const hue = hashHue(qid);
+  const hue = HUES.get(qid);
   const bg = role === 'hero' ? hslToHex(hue, 55, 50) : hslToHex(hue, 55, 72);
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="1200" height="800" fill="${bg}"/></svg>`;
   await sharp(Buffer.from(svg)).webp({ quality: 60 }).toFile(resolve(dir, `${role}.webp`));

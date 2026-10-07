@@ -215,6 +215,8 @@ process.exit(result.status ?? 1);
 
 `tests/fixtures/make-species-fixtures.mjs`:
 
+The committed generator draws flat colours without text, one hue per species, so the images are identical on every OS (commits 18479a11, 503b4c10).
+
 ```js
 #!/usr/bin/env node
 // Writes TEST data for the species pages (spec 2026-09-25 appendix C and D), so the pages can be built
@@ -421,8 +423,6 @@ function comparison(c) {
   };
 }
 
-// Not what's committed: the actual generator draws a flat colour with no <text>, so the fixture
-// images are byte-identical on every OS (font rendering differs by platform); see commit 18479a11.
 async function photo(qid, role, label) {
   const dir = resolve(OUT.assets, qid);
   mkdirSync(dir, { recursive: true });
