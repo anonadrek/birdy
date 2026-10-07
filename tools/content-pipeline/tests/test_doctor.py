@@ -15,7 +15,6 @@ def test_doctor_passes_when_everything_present(
     sources = tmp_path / "sources"
     sources.mkdir()
     (sources / "ioc-14.1.xlsx").write_bytes(b"PK\x03\x04fakeexcelplaceholder")
-    (sources / "vp11.pdf").write_bytes(b"%PDF-1.4 fakepdfplaceholder")
     (tmp_path / "species_list.yaml").write_text("- wikidata_id: Q1\n  scientific_name: x\n")
     monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-fake")
 

@@ -58,16 +58,22 @@ def init(resume: bool) -> None:
     # species_list import is lazy because it pulls in pdfplumber/openpyxl/aiohttp,
     # which would slow `birdy-fetcher --help` for sibling commands.
     from .species_list import cli_init
+    from .vp11_source import Vp11UnavailableError
 
     root = Path(__file__).resolve().parent.parent.parent
-    exit_code = asyncio.run(
-        cli_init(
-            sources_dir=root / "sources",
-            checklists_dir=root / "checklists",
-            out_dir=root,
-            resume=resume,
+    try:
+        exit_code = asyncio.run(
+            cli_init(
+                sources_dir=root / "sources",
+                checklists_dir=root / "checklists",
+                out_dir=root,
+                cache_dir=root / ".cache",
+                resume=resume,
+            )
         )
-    )
+    except Vp11UnavailableError as e:
+        click.secho(str(e), fg="red", err=True)
+        raise click.exceptions.Exit(2) from e
     if exit_code != 0:
         click.secho(
             "Mapping failures present — patch species_list.yaml manually then "

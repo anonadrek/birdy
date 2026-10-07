@@ -12,8 +12,11 @@ Attribution 3.0 Unported License"). The file is the list as published; Birdy has
 Birdy uses it to cross-check its species list, status codes and English names (see
 `src/birdy_fetcher/species_list.py`). The app credits the list under Settings, About.
 
-## `vp11.pdf`
+## BirdLife Sverige's Western Palearctic list (not in this folder)
 
-BirdLife Sverige's taxonomic committee's Western Palearctic list (version 11). It carries no
-licence and is not covered by this file; see `docs/legal/2026-10-1.3.0-genomgang.md`
-("Utanför 1.3.0").
+BirdLife Sverige's taxonomic committee's Western Palearctic list, version 11 (June 2025),
+https://birdlife.se/tk/vastpalearktislistan/. It carries no licence, so the repo does not
+contain it. `birdy-fetcher init` downloads `VP11.pdf` from BirdLife Sverige into the gitignored
+`.cache/sources/` folder and checks a pinned SHA-256 (`src/birdy_fetcher/vp11_source.py`).
+The species selection, status codes and English names in `species_list.yaml` were taken from
+it; the app credits the list under Settings, About.

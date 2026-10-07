@@ -1,4 +1,8 @@
-"""Build species_list.yaml from VP11.pdf + IOC v14.1 xlsx with Wikidata Q-ID mapping."""
+"""Build species_list.yaml from VP11.pdf + IOC v14.1 xlsx with Wikidata Q-ID mapping.
+
+VP11.pdf (BirdLife Sverige) is not in the repo; ``cli_init`` downloads it into the gitignored
+cache via ``vp11_source.ensure_vp11`` and checks its pinned SHA-256.
+"""
 
 from __future__ import annotations
 
@@ -20,6 +24,7 @@ from .models import (
     Vp11Entry,
     VpStatus,
 )
+from .vp11_source import ensure_vp11
 
 WIKIDATA_SPARQL = "https://query.wikidata.org/sparql"
 USER_AGENT = "birdy-fetcher/0.1.0 (https://github.com/anonadrek/birdy)"
@@ -453,17 +458,23 @@ async def cli_init(
     sources_dir: Path,
     checklists_dir: Path,
     out_dir: Path,
+    cache_dir: Path,
     resume: bool = False,
 ) -> int:
-    """Returns exit code: 0 if no failures, 1 if mapping_failures.yaml is non-empty."""
+    """Returns exit code: 0 if no failures, 1 if mapping_failures.yaml is non-empty.
+
+    Raises ``Vp11UnavailableError`` when VP11.pdf can be neither found in ``cache_dir`` nor
+    downloaded with the pinned checksum.
+    """
     out_list = out_dir / "species_list.yaml"
     out_failures = out_dir / "mapping_failures.yaml"
     if resume and not out_list.exists():
         raise RuntimeError("nothing to resume — species_list.yaml not found")
 
+    vp11_pdf = ensure_vp11(cache_dir)
     await build_species_list(
         ioc_xlsx=sources_dir / "ioc-14.1.xlsx",
-        vp11_pdf=sources_dir / "vp11.pdf",
+        vp11_pdf=vp11_pdf,
         filter_yaml=checklists_dir / "vp11-filter.yaml",
         out_list=out_list,
         out_failures=out_failures,
