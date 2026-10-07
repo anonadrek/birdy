@@ -1,7 +1,7 @@
 {
   "qid": "Q25740",
   "status": "ok",
-  "publish": false,
+  "publish": true,
   "review": {
     "wave": 1
   },
@@ -852,5 +852,6 @@
     "at": "2026-10-07",
     "model": "claude-sonnet-5",
     "spotChecked": false
-  }
+  },
+  "publishedAt": "2026-10-07"
 }
