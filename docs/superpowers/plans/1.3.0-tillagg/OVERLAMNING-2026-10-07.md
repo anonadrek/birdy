@@ -136,3 +136,13 @@ Läget står överst i `CLAUDE.md` på `main` ("LÄGET 2026-10-07 SEN KVÄLL"). 
 | Artsidornas data | `data/artsidor` @ `90fec0e6` (`C:/w/birdy-artdata`) | `partial_migrant` (`d4b41275`). Våg 1: 31 av 40 klara; 9 flaggor för 8 arter i Albins Drive-ark. | Albins beslut → `web import` → `web write --wave 1`. Våg 2/3 senare (API-gränsen). |
 | Sociala videor | `social/see-the-song` @ `6d021074` (`C:/w/birdy-social`) | Stil C med paus, första veckan renderad, omgranskning "Changes needed" (logotyp över fotot, Commons-länk i FB/YT). | Fixvåg pågår, sedan schema från fre 9 okt 08.00. |
 | Support via Resend | (ingen gren än) | Sex val till Albin (artefakten QL5zLVdRhEhnYsjC813N9o). | Spec + plan efter hans svar. |
+
+### Albins tillägg 2026-10-07 ca 22.30 (före release 1.3.0)
+
+1. **Webbens bilder = butiksbilderna:** appbilderna på birdy.community (karusellen m.m.) byts till samma som i Google Play (variant C, `docs/play-store/store-assets/1.3.0/` och råskärmdumparna i `docs/play-store/screenshots/1.3.0/`).
+2. **Webben lyfts lite i design:** "Vi ska sticka ut, vi är speciella." Förhandsvisning med namngivna djärva riktningar görs på `website/1.3-premium` (`C:/w/birdy-premium`, assets i `docs/superpowers/specs/assets/2026-10-08-webb-lyft-premium/`); Albin väljer 8 okt, sedan SDD.
+3. **Egen Premium-sida** (`/sv/premium/`, `/premium/`): förklarar läget (Premium köps i Google Play från 1.3.0, alla som installerat före 17 okt 00.00 behåller Premium gratis för alltid, ljud-ID alltid gratis, ingen reklam eller spårning, iPhone på väg) och visar vad man får i dag med den nya designen.
+4. **Inspelningar som inte går att verifiera för vårt bruk stryks** i stället för att vänta på beslut (Kajans gjordes 2026-10-07, `6f077631`). Gäller även kommande vågor.
+5. **Sociala konton** (Facebook-sida, Instagram-företagskonto, YouTube-kanal, alla "Birdy"): Albin skapar dem 8 okt.
+
+Alla fem ska vara klara före lanseringen torsdag 15 oktober (webben kan gå live före appen, som förut).
