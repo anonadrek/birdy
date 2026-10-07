@@ -7,7 +7,7 @@ import io
 import math
 import struct
 import wave
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -443,3 +443,26 @@ async def test_a_species_absent_from_sweden_gets_no_red_list_row(tmp_path: Path)
     assert record["data"]["sentences"]["sv"] == [
         "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025."
     ]
+
+
+@dataclass
+class TwoRecordings(FakeAudio):
+    async def candidates(
+        self, qid: str, scientific: str, *, refresh: bool = False
+    ) -> list[AudioCandidate]:
+        self.asked.append(qid)
+        other = replace(RECORDING, title="File:Parus major call.ogg", page_url="other")
+        return [RECORDING, other]
+
+
+async def test_a_recording_v4_struck_is_not_chosen_again(tmp_path: Path) -> None:
+    """Fix wave 2026-10-07: V4 remembers every recording it struck or tried in vain, and
+    the sources step chooses the first allowed one that is not among them."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    seeded = new_record("Q1")
+    seeded["review"] = {"audioStruckSources": [RECORDING.page_url]}
+    save_record(record_path(paths.data_out, "Q1"), seeded)
+    await run_sources(paths, SourcesOptions(), clients=_clients(TwoRecordings()), now=NOW)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["sourceUrl"] == "other"

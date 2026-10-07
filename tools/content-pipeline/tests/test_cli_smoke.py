@@ -78,8 +78,13 @@ def test_web_verify_passes_the_facts_settings_for_the_v1_retry(
 
     seen: list[VerifyOptions] = []
 
-    async def fake_run_verify(paths: object, options: VerifyOptions) -> list[object]:
+    audio_sources: list[object] = []
+
+    async def fake_run_verify(
+        paths: object, options: VerifyOptions, *, audio: object = None
+    ) -> list[object]:
         seen.append(options)
+        audio_sources.append(audio)
         return []
 
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key-not-used")
@@ -91,6 +96,10 @@ def test_web_verify_passes_the_facts_settings_for_the_v1_retry(
     result = CliRunner().invoke(main, base)
     assert result.exit_code == 0, result.output
     assert (seen[1].facts_model_key, seen[1].facts_effort) == (None, None)
+    # V4 may try the next allowed Commons recording (fix wave 2026-10-07).
+    from birdy_fetcher.web.audio import CommonsAudioClient
+
+    assert all(isinstance(a, CommonsAudioClient) for a in audio_sources)
 
 
 def test_web_facts_defaults_are_the_shared_constants(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -119,7 +128,9 @@ def test_web_verify_reports_a_failed_audio_preflight_without_a_traceback(
     from birdy_fetcher.web import verify_step
     from birdy_fetcher.web.verify_step import AudioPreflightFailed, VerifyOptions
 
-    async def fake_run_verify(paths: object, options: VerifyOptions) -> list[object]:
+    async def fake_run_verify(
+        paths: object, options: VerifyOptions, *, audio: object = None
+    ) -> list[object]:
         raise AudioPreflightFailed("Ljudmodellen kunde inte köras: uv saknas; inga anrop gjordes")
 
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key-not-used")

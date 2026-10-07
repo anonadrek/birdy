@@ -3,12 +3,13 @@
 from __future__ import annotations
 
 import threading
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
 
+from birdy_fetcher.web.audio import AudioCandidate
 from birdy_fetcher.web.audio_check import AudioCheckFailed, AudioCheckResult
 from birdy_fetcher.web.facts import FactSheetOutput
 from birdy_fetcher.web.facts_step import FactsOptions
@@ -1030,3 +1031,133 @@ async def test_verify_sweeps_a_recording_left_without_audio(tmp_path: Path) -> N
     sweep = next(o for o in outcomes if o.qid == "voice.mp3")
     assert sweep.status == "ok" and any("Q2" in n for n in sweep.notes)
     assert not orphan.exists()
+
+
+# V4 falls back to the species' next allowed Commons recording (fix wave 2026-10-07).
+def _candidate(name: str) -> AudioCandidate:
+    return AudioCandidate(
+        title=f"File:Parus major {name}.ogg",
+        url=f"https://upload.wikimedia.org/{name}.ogg",
+        page_url=name,
+        mime="application/ogg",
+        duration=25.0,
+        license="CC BY-SA 4.0",
+        author="Anna",
+        categories=("Category:Parus major",),
+        from_wikidata=True,
+    )
+
+
+@dataclass
+class FakeCommons:
+    cands: list[AudioCandidate]
+    downloaded: list[str] = field(default_factory=list)
+
+    async def candidates(
+        self, qid: str, scientific: str, *, refresh: bool = False
+    ) -> list[AudioCandidate]:
+        return self.cands
+
+    async def download(
+        self, qid: str, candidate: AudioCandidate, *, refresh: bool = False
+    ) -> bytes:
+        self.downloaded.append(candidate.page_url)
+        return candidate.page_url.encode()
+
+
+KEEP = AudioCheckResult(windows=[{"startSec": 0.0, "top": [{"qid": "Q1", "confidence": 0.9}]}])
+WEAK = AudioCheckResult(
+    windows=[
+        {"startSec": 0.0, "top": [{"qid": "Q1", "confidence": 0.03}]},
+        {"startSec": 3.0, "top": [{"qid": "Q1", "confidence": 0.025}]},
+    ]
+)
+NONE = AudioCheckResult(windows=[{"startSec": 0.0, "top": []}])
+
+
+def _fake_model(monkeypatch: pytest.MonkeyPatch, results: dict[bytes, AudioCheckResult]) -> None:
+    """classify_clip answers by the file's bytes: b"id3" is the seeded voice.mp3, an
+    alternative's bytes are its page url (FakeCommons.download + the fake converter)."""
+
+    def fake_classify_clip(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        if mp3_path.suffix == ".wav":
+            return OK_PREFLIGHT
+        return results[mp3_path.read_bytes()]
+
+    def fake_convert(raw: bytes, out_path: Path) -> None:
+        out_path.write_bytes(raw)
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", fake_classify_clip)
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.convert_to_mp3", fake_convert)
+
+
+async def _verify_with(paths: WebPaths, commons: FakeCommons) -> list[str]:
+    client = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(
+        paths, VerifyOptions(), client=client, wiki=FakeWiki(), audio=commons, now=NOW
+    )
+    assert [o.status for o in outcomes] == ["ok"]
+    return outcomes[0].notes
+
+
+async def test_a_struck_recording_gives_way_to_the_next_allowed_one(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _fake_model(monkeypatch, {b"id3": NONE, b"alt1": NONE, b"alt2": KEEP})
+    commons = FakeCommons([_candidate("x"), _candidate("alt1"), _candidate("alt2")])
+    notes = await _verify_with(paths, commons)
+    assert commons.downloaded == ["alt1", "alt2"]  # the current one is never fetched again
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["sourceUrl"] == "alt2"
+    assert record["audio"]["author"] == "Anna"
+    assert record["review"]["audioStruckSources"] == ["x", "alt1"]
+    assert "audioStruck" not in record["review"]
+    assert record["flags"] == []
+    assert (paths.images_out / "Q1" / "voice.mp3").read_bytes() == b"alt2"
+    assert any("byttes" in n for n in notes)
+
+
+async def test_a_weak_recording_is_replaced_by_one_the_model_keeps(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _fake_model(monkeypatch, {b"id3": WEAK, b"alt1": KEEP})
+    await _verify_with(paths, FakeCommons([_candidate("alt1")]))
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["sourceUrl"] == "alt1"
+    assert record["flags"] == []
+
+
+async def test_a_weak_recording_with_nothing_better_is_a_flag_and_stays(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _fake_model(monkeypatch, {b"id3": WEAK, b"alt1": NONE})
+    await _verify_with(paths, FakeCommons([_candidate("alt1")]))
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["sourceUrl"] == "x"
+    assert [f["check"] for f in record["flags"]] == ["V4"]
+    assert "lyssna och besluta" in record["flags"][0]["message"]
+    assert (paths.images_out / "Q1" / "voice.mp3").read_bytes() == b"id3"
+
+
+async def test_with_no_recording_left_the_strike_remembers_every_one_tried(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _fake_model(monkeypatch, {b"id3": NONE, b"alt1": NONE, b"alt2": NONE})
+    await _verify_with(paths, FakeCommons([_candidate("alt1"), _candidate("alt2")]))
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert "audio" not in record
+    assert record["review"]["audioStruck"] is True
+    assert record["review"]["audioStruckSources"] == ["x", "alt1", "alt2"]
+    assert not (paths.images_out / "Q1" / "voice.mp3").exists()

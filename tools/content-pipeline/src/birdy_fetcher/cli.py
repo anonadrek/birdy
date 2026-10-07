@@ -353,6 +353,8 @@ def web_verify(
     facts_effort: str | None,
 ) -> None:
     """Automatisk kontroll (V1 till V4) av faktabladet. Kostar pengar (V1)."""
+    from .cache import Cache
+    from .web.audio import CommonsAudioClient
     from .web.verify_step import AudioPreflightFailed, VerifyOptions, run_verify
 
     _require_api_key()
@@ -368,7 +370,9 @@ def web_verify(
         facts_effort=facts_effort,
     )
     try:
-        outcomes = asyncio.run(run_verify(paths, options))
+        # V4 may try a species' next allowed Commons recording (free, cached when seen).
+        commons = CommonsAudioClient(cache=Cache(paths.pipeline_root / ".cache"))
+        outcomes = asyncio.run(run_verify(paths, options, audio=commons))
     except AudioPreflightFailed as exc:
         # Follow-up 3 (wave A review): the audio model cannot run at all; nothing was paid
         # or written.

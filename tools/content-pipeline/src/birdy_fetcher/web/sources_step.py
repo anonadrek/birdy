@@ -150,7 +150,12 @@ async def _data_and_red_list(
 
 
 async def _audio(
-    source: SpeciesSource, ctx: _Context, notes: list[str], *, skip: bool
+    source: SpeciesSource,
+    ctx: _Context,
+    notes: list[str],
+    *,
+    skip: bool,
+    struck: frozenset[str] = frozenset(),
 ) -> dict[str, Any] | None:
     voice = ctx.paths.images_out / source.qid / "voice.mp3"
     audio: dict[str, Any] | None = None
@@ -159,6 +164,9 @@ async def _audio(
         candidates = await ctx.clients.audio.candidates(
             source.qid, source.scientific_name, refresh=refresh
         )
+        # A recording V4 struck or tried in vain is never chosen again (fix wave
+        # 2026-10-07): V4 may have replaced it with a later one, which this keeps.
+        candidates = [c for c in candidates if c.page_url not in struck]
         chosen, rejected = choose(candidates, source.scientific_name)
         notes.extend(f"inspelning avvisad: {r}" for r in rejected[:5])
         if chosen is None:
@@ -179,14 +187,18 @@ async def _audio(
 
 
 async def _collect(
-    source: SpeciesSource, ctx: _Context, *, skip_audio: bool
+    source: SpeciesSource,
+    ctx: _Context,
+    *,
+    skip_audio: bool,
+    struck_audio: frozenset[str] = frozenset(),
 ) -> tuple[dict[str, Any], list[str]]:
     notes: list[str] = []
     articles = await ctx.clients.wiki.articles(source.qid, refresh=ctx.options.refresh)
     if not articles:
         notes.append("ingen Wikipediaartikel")
     data, red = await _data_and_red_list(source, ctx, notes)
-    audio = await _audio(source, ctx, notes, skip=skip_audio)
+    audio = await _audio(source, ctx, notes, skip=skip_audio, struck=struck_audio)
     images: list[ImageOut] = []
     if not ctx.options.dry_run:
         images = await asyncio.to_thread(
@@ -300,7 +312,13 @@ async def run_sources(
                         ["publicerad: sätt publish: false först"],
                     )
                 skip_audio = bool(existing and existing.get("review", {}).get("audioStruck"))
-                collected, notes = await _collect(source, ctx, skip_audio=skip_audio)
+                review = (existing or {}).get("review", {})
+                collected, notes = await _collect(
+                    source,
+                    ctx,
+                    skip_audio=skip_audio,
+                    struck_audio=frozenset(review.get("audioStruckSources", [])),
+                )
                 if options.dry_run:
                     return StepOutcome(source.qid, source.name_sv, "dry-run", notes=notes)
                 record = merge_sources(existing, source.qid, collected)
