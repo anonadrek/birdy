@@ -6,8 +6,9 @@ taxonomy:
   genus: Puffinus
   ioc_order: Procellariiformes
 names:
-  sv: Boydlira
+  sv: Mindre kapverdelira
   en: Boyd’s Shearwater
+  former_sv: Boydlira
 abundance: ovanlig
 iucn_status: NE
 season:

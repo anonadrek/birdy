@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
+import se.birdy.content.build.NamesYaml
 import se.birdy.content.build.SpeciesDbBuilder
 import se.birdy.content.build.SpeciesYamlParser
 import se.birdy.content.db.BirdyContent
@@ -209,6 +210,103 @@ class SpeciesRepositoryTest {
         val en = repo.allByQid(Locale.EN)
         assertEquals("Great Tit", en[SpeciesId("Q25485")]?.name)
 
+        driver.close()
+    }
+
+    // --- Release 1.3.0 Task 7m: a species renamed to BirdLife Sverige's official name ---
+
+    /** The fixture's Talgoxe as if Birdy had renamed it, keeping a made-up former name. */
+    private fun newDriverWithRenamedTalgoxe(tempDir: Path): JdbcSqliteDriver {
+        val items =
+            parser
+                .parseAll(Path.of("src/jvmTest/resources/fixtures/species"))
+                .map { (path, yaml) -> path to yaml.copy(names = yaml.names.copy(formerSv = "Stormes")) }
+        val outDb = tempDir.resolve("species.db")
+        SpeciesDbBuilder().build(
+            items = items,
+            sourceImageRoot = Path.of("src/jvmTest/resources/fixtures/images"),
+            targetDb = outDb,
+            targetImageRoot = tempDir.resolve("images"),
+        )
+        return JdbcSqliteDriver("jdbc:sqlite:${outDb.toAbsolutePath()}")
+    }
+
+    @Test
+    fun `the former swedish name finds the species in either language`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val driver = newDriverWithRenamedTalgoxe(tempDir)
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        assertEquals(listOf("Talgoxe"), repo.search("stormes", Locale.SV, SpeciesFilter()).first().map { it.name })
+        assertEquals(listOf("Great Tit"), repo.search("Stormes", Locale.EN, SpeciesFilter()).first().map { it.name })
+        driver.close()
+    }
+
+    @Test
+    fun `the swedish profile carries the former name and the english one does not`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val driver = newDriverWithRenamedTalgoxe(tempDir)
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        assertEquals("Stormes", repo.getById(SpeciesId("Q25485"), Locale.SV).first()?.formerName)
+        assertEquals(null, repo.getById(SpeciesId("Q25485"), Locale.EN).first()?.formerName)
+        assertEquals("Stormes", repo.allByQid(Locale.SV)[SpeciesId("Q25485")]?.formerName)
+        assertEquals(null, repo.allByQid(Locale.EN)[SpeciesId("Q25485")]?.formerName)
+        driver.close()
+    }
+
+    // A former name that is another species' current name (Diomedeslira was called "Gulnäbbad
+    // lira", the name of Calonectris borealis) would read as if the two were one species: the profile
+    // leaves the line out, and the old name stays a search term.
+    @Test
+    fun `a former name that is another species' name is searchable but not shown`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val talgoxe = parser.parseAll(Path.of("src/jvmTest/resources/fixtures/species")).single()
+        val renamed = talgoxe.first to talgoxe.second.copy(names = talgoxe.second.names.copy(formerSv = "Blåmes"))
+        val blames =
+            talgoxe.first.resolveSibling("Q25404.yaml") to
+                talgoxe.second.copy(
+                    id = "Q25404",
+                    scientific_name = "Cyanistes caeruleus",
+                    names = NamesYaml(sv = "Blåmes", en = "Eurasian Blue Tit"),
+                    image_refs = emptyList(),
+                )
+        val outDb = tempDir.resolve("species.db")
+        SpeciesDbBuilder().build(
+            items = listOf(renamed, blames),
+            sourceImageRoot = Path.of("src/jvmTest/resources/fixtures/images"),
+            targetDb = outDb,
+            targetImageRoot = tempDir.resolve("images"),
+        )
+        val driver = JdbcSqliteDriver("jdbc:sqlite:${outDb.toAbsolutePath()}")
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        assertEquals(null, repo.getById(SpeciesId("Q25485"), Locale.SV).first()?.formerName)
+        assertEquals(listOf("Blåmes", "Talgoxe"), repo.search("blåmes", Locale.SV, SpeciesFilter()).first().map { it.name })
+        driver.close()
+    }
+
+    // Species content does not change while the app runs: the former names are read once per locale.
+    @Test
+    fun `the former names are read once per locale`() =
+        runTest {
+            val driver = RecordingDriver(JdbcSqliteDriver(JdbcSqliteDriver.IN_MEMORY))
+            BirdyContent.Schema.create(driver)
+            val db = BirdyContent(driver)
+            db.seedTalgoxe()
+            val repo = SqlDelightSpeciesRepository(db)
+            repeat(3) { repo.search("tal", Locale.SV, SpeciesFilter()).first() }
+            repo.search("tal", Locale.EN, SpeciesFilter()).first()
+            assertEquals(2, driver.queries.count { "WHERE kind = ?" in it }, driver.queries.toString())
+        }
+
+    @Test
+    fun `a species that was never renamed has no former name`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val driver = newDriverWithFixtures(tempDir)
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        assertEquals(null, repo.getById(SpeciesId("Q25485"), Locale.SV).first()?.formerName)
         driver.close()
     }
 
@@ -487,6 +585,7 @@ class SpeciesRepositoryTest {
         private val delegate: app.cash.sqldelight.db.SqlDriver,
     ) : app.cash.sqldelight.db.SqlDriver by delegate {
         val threads: MutableSet<String> = java.util.Collections.synchronizedSet(mutableSetOf())
+        val queries: MutableList<String> = java.util.Collections.synchronizedList(mutableListOf())
 
         override fun <R> executeQuery(
             identifier: Int?,
@@ -496,6 +595,7 @@ class SpeciesRepositoryTest {
             binders: (app.cash.sqldelight.db.SqlPreparedStatement.() -> Unit)?,
         ): app.cash.sqldelight.db.QueryResult<R> {
             threads += Thread.currentThread().name
+            queries += sql
             return delegate.executeQuery(identifier, sql, mapper, parameters, binders)
         }
     }

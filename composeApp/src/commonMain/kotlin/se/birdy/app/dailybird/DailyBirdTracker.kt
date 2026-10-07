@@ -38,6 +38,11 @@ data class DailyBirdSpecies(
  *
  * [daysCaught] is the number of distinct days on which the user saved that day's bird (all time,
  * not days in a row), the same count the Dagens fågel-jägare badge rule reads.
+ *
+ * [showPremiumBadgeTag]: Dagens fågel-jägare is a Premium badge, so for a user without Premium the
+ * day count carries a "Premium-märke" tag (Albin, 2026-10-07). The tracker leaves it false;
+ * AppGraph.dailyBirdForDisplay sets it from the app's effective Premium state, so the screens that
+ * draw the count never read Premium themselves (the Identify screen is under BirdNetLicenseGuardTest).
  */
 data class DailyBirdToday(
     val date: LocalDate,
@@ -48,6 +53,7 @@ data class DailyBirdToday(
     val caughtToday: Boolean,
     val daysCaught: Int,
     val huntTarget: Int = DAILY_BIRD_HUNT_TARGET,
+    val showPremiumBadgeTag: Boolean = false,
 )
 
 /** The Identify tab's dot: shown while today's bird exists and has not been opened today. */
@@ -67,6 +73,16 @@ fun untilNextLocalMidnight(
 
 // Wake a little after midnight, so the new date is certain when the refresh reads the clock.
 private val MidnightMargin = 1.seconds
+
+/**
+ * How long [DailyBirdTracker.refreshNowAndAtMidnight] waits after a refresh: until [MidnightMargin]
+ * past the next local midnight, and never less than the margin itself, so a clock that reads
+ * midnight (or one that jumps) can't make it refresh in a busy loop.
+ */
+internal fun untilNextRefresh(
+    now: Instant,
+    zone: TimeZone,
+): Duration = (untilNextLocalMidnight(now, zone) + MidnightMargin).coerceAtLeast(MidnightMargin)
 
 /**
  * One shared source for today's bird (release 1.3.0 Task 7d), owned by the AppGraph so the hero,
@@ -124,7 +140,7 @@ class DailyBirdTracker(
     suspend fun refreshNowAndAtMidnight() {
         while (true) {
             refresh()
-            delay(untilNextLocalMidnight(now(), timeZone) + MidnightMargin)
+            delay(untilNextRefresh(now(), timeZone))
         }
     }
 
@@ -147,8 +163,9 @@ class DailyBirdTracker(
         val todaysBird =
             _state.value?.takeIf { it.date == date }?.speciesId
                 // Not loaded yet (a notification tap can open the profile before the start-up
-                // refresh is done) or loaded on an earlier date: ask the selector, which is
-                // deterministic per date.
+                // refresh is done) or loaded on an earlier date: the day's recorded bird, else the
+                // selector, which is deterministic per date.
+                ?: history?.speciesIdForDate(date)
                 ?: select?.invoke(date)?.speciesId
                 ?: return
         if (todaysBird == speciesId) prefs.setDailyBirdOpenedDate(date.toString())
@@ -164,14 +181,21 @@ class DailyBirdTracker(
             daysCaught = history?.totalMatchCount() ?: 0,
         )
 
+    /**
+     * The day's bird: the one already recorded for [date] if there is one, else the selector's,
+     * which is then recorded. The recorded one wins because it is what a save is matched against
+     * (the history keeps the first bird of a day); on the day an update changes the selection
+     * (1.3.0 drops extinct species) the selector could otherwise show another bird than that.
+     */
     private suspend fun load(date: LocalDate): DailyBirdToday? {
-        val bird = select?.invoke(date)
-        val info = bird?.let { species(it.speciesId) }
-        if (bird == null || info == null) return null
-        history?.recordToday(date, bird.speciesId)
+        val recorded = history?.speciesIdForDate(date)
+        val speciesId = recorded ?: select?.invoke(date)?.speciesId
+        val info = speciesId?.let { species(it) }
+        if (speciesId == null || info == null) return null
+        if (recorded == null) history?.recordToday(date, speciesId)
         return DailyBirdToday(
             date = date,
-            speciesId = bird.speciesId,
+            speciesId = speciesId,
             name = info.name,
             scientificName = info.scientificName,
             heroImagePath = info.heroImagePath,

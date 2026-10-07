@@ -159,6 +159,7 @@ private fun ProfileContent(
                     )
                 },
                 bottomContent = {
+                    species.formerName?.let { FormerNameLine(formerName = it) }
                     Spacer(Modifier.height(10.dp))
                     ProfilePillRow(species = species)
                 },

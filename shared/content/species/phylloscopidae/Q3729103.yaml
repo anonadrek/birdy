@@ -6,8 +6,9 @@ taxonomy:
   genus: Phylloscopus
   ioc_order: Passeriformes
 names:
-  sv: Kashmirgransångare
+  sv: Berggransångare
   en: Mountain Chiffchaff
+  former_sv: Kashmirgransångare
 abundance: ovanlig
 iucn_status: LC
 season:

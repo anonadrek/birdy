@@ -251,3 +251,97 @@ async def test_build_species_list_resume_preserves_manual_and_cleans_failures(
     assert "Manualicus addedicus" not in final_names, (
         "resolved failure auto-removed from mapping_failures.yaml"
     )
+
+
+@pytest.mark.asyncio
+async def test_build_species_list_resume_keeps_hand_set_fields(
+    sample_ioc: Path,
+    sample_vp11: Path,
+    fixtures_dir: Path,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """--resume keeps the fields a person set on a species the pipeline lists again.
+
+    Release 1.3.0: common_sv/former_sv (BirdLife Sverige's names, Task 7m), iucn_status (IUCN Red
+    List where Wikidata has none), abundance, family_sv and commons_search_name live only in
+    species_list.yaml; a resume used to rebuild the entry from the checklists and drop them.
+    """
+    from birdy_fetcher import species_list
+
+    fixture = (fixtures_dir / "wikidata_sparql_response.json").read_text()
+
+    async def fake_sparql(query: str) -> str:
+        return fixture
+
+    monkeypatch.setattr(species_list, "_run_sparql", fake_sparql)
+    out_list = tmp_path / "species_list.yaml"
+    out_failures = tmp_path / "mapping_failures.yaml"
+    checklists_dir = fixtures_dir.parent.parent / "checklists"
+    kwargs = {
+        "ioc_xlsx": sample_ioc,
+        "vp11_pdf": sample_vp11,
+        "filter_yaml": checklists_dir / "vp11-filter.yaml",
+        "out_list": out_list,
+        "out_failures": out_failures,
+    }
+    await build_species_list(**kwargs)  # type: ignore[arg-type]
+    entries = yaml.safe_load(out_list.read_text(encoding="utf-8"))
+    hand_set = {
+        "common_sv": "Talgoxe",
+        "former_sv": "Gammal talgoxe",
+        "iucn_status": "LC",
+        "abundance": "allmän",
+        "family_sv": "Mesar",
+        "commons_search_name": "Parus major",
+    }
+    great_tit = next(e for e in entries if e["scientific_name"] == "Parus major")
+    great_tit.update(hand_set)
+    great_tit["common_en"] = "Stale English name"  # a pipeline field: the checklist wins
+    out_list.write_text(yaml.safe_dump(entries, allow_unicode=True), encoding="utf-8")
+
+    await build_species_list(**kwargs, resume=True)  # type: ignore[arg-type]
+
+    merged = yaml.safe_load(out_list.read_text(encoding="utf-8"))
+    great_tit = next(e for e in merged if e["scientific_name"] == "Parus major")
+    assert {k: great_tit.get(k) for k in hand_set} == hand_set
+    assert great_tit["common_en"] == "Great Tit"
+    assert len(merged) == len(entries)
+
+
+def test_hand_set_fields_survive_on_a_manual_entry_too(tmp_path: Path) -> None:
+    from birdy_fetcher.models import SpeciesListEntry
+    from birdy_fetcher.species_list import _merge_with_existing
+
+    existing = tmp_path / "species_list.yaml"
+    existing.write_text(
+        yaml.safe_dump(
+            [
+                {
+                    "wikidata_id": "Q99999",
+                    "scientific_name": "Manualicus addedicus",
+                    "family": "Manualidae",
+                    "ioc_order": "Manualiformes",
+                    "common_en": "Manual Bird",
+                    "vp_status": "H",
+                    "common_sv": "Handfågel",
+                    "former_sv": "Gammal handfågel",
+                }
+            ],
+            allow_unicode=True,
+        ),
+        encoding="utf-8",
+    )
+    pipeline = [
+        SpeciesListEntry(
+            wikidata_id="Q25485",
+            scientific_name="Parus major",
+            family="Paridae",
+            ioc_order="Passeriformes",
+            common_en="Great Tit",
+            vp_status="H",
+        )
+    ]
+    merged = [e.model_dump(exclude_none=True) for e in _merge_with_existing(pipeline, existing)]
+    manual = next(e for e in merged if e["scientific_name"] == "Manualicus addedicus")
+    assert (manual["common_sv"], manual["former_sv"]) == ("Handfågel", "Gammal handfågel")

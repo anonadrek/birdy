@@ -6,8 +6,9 @@ taxonomy:
   genus: Foudia
   ioc_order: Passeriformes
 names:
-  sv: Rödfody
+  sv: Röd fody
   en: Red Fody
+  former_sv: Rödfody
 abundance: ovanlig
 iucn_status: LC
 season:
@@ -30,16 +31,16 @@ regions:
 - DK
 - DE
 description:
-  sv: '# Rödfody
+  sv: '# Röd fody
 
 
-    Rödfody är en liten tätting som tillhör familjen vävare. Arten är ursprunglig
+    Röd fody är en liten tätting som tillhör familjen vävare. Arten är ursprunglig
     från Madagaskar men har introducerats till många olika områden världen över och
     är nu etablerad på flera platser.
 
 
     Hanen är karakteristisk med sin glödande röda fjäderdräkt, särskilt under häckningstiden.
-    Honan är däremot mycket mindre färgglad och har en gråbrun färgtoning. Rödfody
+    Honan är däremot mycket mindre färgglad och har en gråbrun färgtoning. Röd fody
     är en aktiv och social fågel som ofta ses i mindre flockar. Den födosöker på marken
     eller i låg växtlighet och äter huvudsakligen frön och insekter.
 
@@ -70,7 +71,7 @@ migration:
   sv: 'Migrationsdata saknas för denna art.
 
 
-    Red Fody är en ursprunglig madagaskisk art som inte naturligt förekommer i Skandinavien
+    Röd fody är en ursprunglig madagaskisk art som inte naturligt förekommer i Skandinavien
     eller Nordeuropa. Den källtext som tillhandahölls innehåller ingen information
     om migration eller säsongsförekomst i vår region. Arten är en stationär invånare
     på Madagaskar och förekommer endast i andra världsdelar där den introducerats

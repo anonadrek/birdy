@@ -178,6 +178,39 @@ class ProfileScreenshotTest {
         compose.onNodeWithText("Lås upp").assertExists()
     }
 
+    // Release 1.3.0 Task 7m: a species renamed to BirdLife Sverige's official name says what it was
+    // called before ("Tidigare: Sädgås") under its scientific name.
+    @Test
+    @Config(qualifiers = "+sv")
+    fun profile_former_name_sv() {
+        val skogsgas =
+            Species(
+                id = SpeciesId("Q26452"),
+                scientificName = "Anser fabalis",
+                taxonomy =
+                    SpeciesTaxonomy(
+                        family = "Anatidae",
+                        familySv = "Andfåglar",
+                        genus = "Anser",
+                        iocOrder = "Anseriformes",
+                    ),
+                name = "Skogsgås",
+                abundance = Abundance.OVANLIG,
+                iucnStatus = "LC",
+                regions = listOf("SE", "NO", "FI"),
+                season = emptyMap(),
+                description =
+                    "Skogsgåsen är en stor, brungrå gås med orange band på den mörka näbben. Den häckar " +
+                        "vid myrar och sjöar i den nordliga barrskogen.",
+                migration = "Flyttar i flockar till södra Sverige och Danmark under vintern.",
+                marginalia = "Känns igen på den långa, mörka näbben med orange band.",
+                images = listOf(heroImage("Q26452")),
+                formerName = "Sädgås",
+            )
+        compose.captureScreen("profile_former_name_sv") { screen(skogsgas, Locale.SV, showPremiumTeaser = false) }
+        compose.onNodeWithText("Tidigare: Sädgås").assertExists()
+    }
+
     @Test
     @Config(qualifiers = "+en")
     fun profile_long_en_130() {

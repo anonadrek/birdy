@@ -6,8 +6,9 @@ taxonomy:
   genus: Puffinus
   ioc_order: Procellariiformes
 names:
-  sv: Levantlira
+  sv: Medelhavslira
   en: Mediterranean Shearwater
+  former_sv: Levantlira
 abundance: ovanlig
 iucn_status: VU
 season:

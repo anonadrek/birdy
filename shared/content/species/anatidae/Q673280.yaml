@@ -6,8 +6,9 @@ taxonomy:
   genus: Anser
   ioc_order: Anseriformes
 names:
-  sv: Tundrasädgås
+  sv: Tundragås
   en: Tundra Bean Goose
+  former_sv: Tundrasädgås
 abundance: ovanlig
 iucn_status: NE
 season:
@@ -30,11 +31,11 @@ regions:
 - DK
 - DE
 description:
-  sv: '# Tundrasädgås
+  sv: '# Tundragås
 
 
-    Tundrasädgåsen är en grå gås som häckar på tundra i norr. Den urskildes tidigare
-    från sädgåsen men betraktas numera allt oftare som egen art.
+    Tundragåsen är en grå gås som häckar på tundra i norr. Den räknades tidigare som
+    samma art som skogsgåsen men är numera en egen art.
 
 
     Denna gås återfinns främst på nordliga häckningsplatser under sommaren och migrerar
@@ -69,10 +70,10 @@ description:
     to thrive in extreme northern environments and its long-distance migrations make
     it a remarkable arctic breeder adapted to harsh seasonal conditions.'
 migration:
-  sv: '**Tundrasädgås i Skandinavien**
+  sv: '**Tundragås i Skandinavien**
 
 
-    Tundrasädgås är en migrationsart som förekommer i Skandinavien huvudsakligen under
+    Tundragås är en migrationsart som förekommer i Skandinavien huvudsakligen under
     höst- och vårflyttningen. Arten häckar på tundra i norra Ryssland och Sibirien
     och passerar genom norra Europa på vägen till och från sina övervintringskvartsäer
     längre söderut. Under senhösten anländer flockar till Skandinavien, särskilt till

@@ -47,6 +47,7 @@ class DailyBirdSurfacesTest {
     private fun bird(
         caughtToday: Boolean = false,
         daysCaught: Int = 0,
+        showPremiumBadgeTag: Boolean = false,
     ) = DailyBirdToday(
         date = LocalDate(2026, 10, 6),
         speciesId = "Q25403",
@@ -55,6 +56,7 @@ class DailyBirdSurfacesTest {
         heroImagePath = null,
         caughtToday = caughtToday,
         daysCaught = daysCaught,
+        showPremiumBadgeTag = showPremiumBadgeTag,
     )
 
     private val opened = mutableListOf<String>()
@@ -179,6 +181,49 @@ class DailyBirdSurfacesTest {
             .assertExists()
     }
 
+    // Albin 2026-10-07: Dagens fågel-jägare is a Premium badge; the row stays for everyone and
+    // tags the badge for users without Premium (AppGraph.dailyBirdForDisplay sets the flag).
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `without premium the challenge row reads out the premium badge tag`() {
+        showHero(bird(showPremiumBadgeTag = true))
+        compose
+            .onNodeWithContentDescription(
+                "Inte fångad idag. Spara ett fynd av arten idag. 0 av 3 dagar. Premium-märke.",
+                useUnmergedTree = true,
+            ).assertExists()
+    }
+
+    @Test
+    @Config(qualifiers = "+en")
+    fun `without premium the challenge row reads out the premium badge tag in english`() {
+        showHero(bird(caughtToday = true, daysCaught = 1, showPremiumBadgeTag = true))
+        compose
+            .onNodeWithContentDescription(
+                "Caught today. Two more days to the badge. 1 of 3 days. Premium badge.",
+                useUnmergedTree = true,
+            ).assertExists()
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `with premium the challenge row has no premium tag`() {
+        showHero(bird(showPremiumBadgeTag = false))
+        compose
+            .onNodeWithContentDescription("Inte fångad idag. Spara ett fynd av arten idag. 0 av 3 dagar.", useUnmergedTree = true)
+            .assertExists()
+        compose.onNodeWithContentDescription("Premium-märke", substring = true, useUnmergedTree = true).assertDoesNotExist()
+    }
+
+    // The row reads as one sentence (clearAndSetSemantics), so the tag's own text is checked here.
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `the premium badge tag says premium-märke`() {
+        attachComposeResourcesContext()
+        compose.setContent { BirdyTheme { DailyBirdPremiumBadgeTag() } }
+        compose.onNodeWithText("PREMIUM-MÄRKE").assertExists()
+    }
+
     @Test
     @Config(qualifiers = "+sv")
     fun `the strip names the bird and the status and opens the profile`() {
@@ -189,6 +234,34 @@ class DailyBirdSurfacesTest {
             .assertHasClickAction()
             .performClick()
         assertEquals(listOf("Q25403"), opened)
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `without premium the strip shows and reads out the premium badge tag`() {
+        showStrip(bird(showPremiumBadgeTag = true))
+        compose.onNodeWithText("PREMIUM-MÄRKE", useUnmergedTree = true).assertExists()
+        compose
+            .onNodeWithContentDescription("Dagens fågel: Sävsångare. Inte fångad idag, 0 av 3 dagar. Premium-märke.")
+            .assertHasClickAction()
+    }
+
+    @Test
+    @Config(qualifiers = "+en")
+    fun `without premium the strip reads out the premium badge tag in english`() {
+        showStrip(bird(caughtToday = true, daysCaught = 1, showPremiumBadgeTag = true))
+        compose.onNodeWithText("PREMIUM BADGE", useUnmergedTree = true).assertExists()
+        compose
+            .onNodeWithContentDescription("Bird of the day: Sävsångare. Caught today, 1 of 3 days. Premium badge.")
+            .assertExists()
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `with premium the strip has no premium tag`() {
+        showStrip(bird(showPremiumBadgeTag = false))
+        compose.onNodeWithText("PREMIUM-MÄRKE", useUnmergedTree = true).assertDoesNotExist()
+        compose.onNodeWithContentDescription("Dagens fågel: Sävsångare. Inte fångad idag, 0 av 3 dagar.").assertExists()
     }
 
     @Test

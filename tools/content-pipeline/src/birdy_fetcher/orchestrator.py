@@ -273,6 +273,8 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
         ioc_order=ioc_order,
         common_sv=common_sv,
         common_en=listed.get("common_en") or "",
+        # species_list.yaml sets former_sv where common_sv replaced the name Birdy used before.
+        former_sv=listed.get("former_sv"),
         abundance=abundance,
         # species_list.yaml may set iucn_status for a species whose Wikidata item has no P141
         # (looked up on the IUCN Red List; release 1.3.0 Task 7g). Otherwise Wikidata decides.

@@ -37,6 +37,7 @@ class IdentifyScreenshotTest {
         caughtToday: Boolean = false,
         daysCaught: Int = 0,
         name: String = "Sävsångare",
+        showPremiumBadgeTag: Boolean = false,
     ) {
         val viewModel =
             remember {
@@ -51,6 +52,7 @@ class IdentifyScreenshotTest {
                                 heroImagePath = null,
                                 caughtToday = caughtToday,
                                 daysCaught = daysCaught,
+                                showPremiumBadgeTag = showPremiumBadgeTag,
                             ),
                         ),
                 )
@@ -94,6 +96,20 @@ class IdentifyScreenshotTest {
     fun identify_sv_fontscale_200_long_name() {
         RuntimeEnvironment.setFontScale(2.0f)
         compose.captureScreen("identify_sv_200") { screen(caughtToday = true, daysCaught = 2, name = "Halsbandsflugsnappare") }
+    }
+
+    // A user without Premium: the challenge row tags Dagens fågel-jägare as a Premium badge.
+    @Test
+    @Config(qualifiers = "+sv")
+    fun identify_free_sv() = compose.captureScreen("identify_free_sv") { screen(showPremiumBadgeTag = true) }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun identify_free_sv_fontscale_200_long_name() {
+        RuntimeEnvironment.setFontScale(2.0f)
+        compose.captureScreen("identify_free_sv_200") {
+            screen(caughtToday = true, daysCaught = 2, name = "Halsbandsflugsnappare", showPremiumBadgeTag = true)
+        }
     }
 
     @Test

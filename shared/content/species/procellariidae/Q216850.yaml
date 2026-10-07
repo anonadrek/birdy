@@ -6,8 +6,9 @@ taxonomy:
   genus: Calonectris
   ioc_order: Procellariiformes
 names:
-  sv: Gulnäbbad lira
+  sv: Diomedeslira
   en: Scopoli’s Shearwater
+  former_sv: Gulnäbbad lira
 abundance: ovanlig
 iucn_status: LC
 season:
@@ -30,36 +31,10 @@ regions:
 - DK
 - DE
 description:
-  sv: '# Gulnäbbad lira
-
-
-    Gulnäbbad lira är en medelstor havsfågel i familjen liror som förekommer främst
-    i Atlanten. Den är nära släkt med diomedeslira och större kapverdelira, och dessa
-    tre bildade länge ett artskomplex som gemensamt kallades gulnäbbad lira. Arten
-    är därför lätt att förväxla med sina närmaste släktingar.
-
-
-    Utanför häckningstiden kan det vara mycket svårt – ibland rentav omöjligt – att
-    skilja gulnäbbad lira från diomedeslira i fält. För en amatörfågelvårdare kräver
-    säker artbestämning ofta god erfarenhet och goda observationsförhållanden. Det
-    är därför viktigt att inte vara alltför säker på artidentifikationen utan istället
-    anteckna detaljerade iakttagelser för senare granskning.'
+  sv: ''
   en: ''
 migration:
-  sv: '# Gulnäbbad lira - Förekomst i Nordeuropa
-
-
-    Gulnäbbad lira är en havsfågel som främst förekommer i Atlanten och är en mycket
-    sällsynt gäst i nordeuropeiska vatten. Arten häckar i södra Medelhavsregionen
-    och förekommer huvudsakligen under olika tider på öppet hav. I Skandinavien och
-    Nordeuropa registreras arten endast sporadiskt, främst under höst- och vintermånaderna
-    när några individer kan påträffas långt från sina ordinära utbredningsområden.
-    Observationer från dessa regioner är mycket ovanliga och följer inte något förutsägbart
-    mönster.
-
-
-    Migrationsdata saknas för denna art i kontexten av Skandinavien och Nordeuropa,
-    då arten inte utgör en regelbunden eller säsongsmässig förekomst i dessa områden.'
+  sv: ''
   en: ''
 image_refs:
 - role: hero

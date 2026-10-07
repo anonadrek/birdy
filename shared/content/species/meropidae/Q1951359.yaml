@@ -6,8 +6,9 @@ taxonomy:
   genus: Merops
   ioc_order: Coraciiformes
 names:
-  sv: Blåkindad biätare
+  sv: Grön biätare
   en: Blue-cheeked Bee-eater
+  former_sv: Blåkindad biätare
 abundance: ovanlig
 iucn_status: LC
 season:

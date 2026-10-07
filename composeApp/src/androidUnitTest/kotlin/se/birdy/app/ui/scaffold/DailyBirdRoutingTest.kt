@@ -68,7 +68,12 @@ class DailyBirdRoutingTest {
     private val deepLinks = MutableSharedFlow<String>(replay = 1, extraBufferCapacity = 4)
     private val dot = SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Dagens fågel väntar")
 
-    private fun graph(): AppGraph =
+    private fun graph(
+        // A paying subscriber by default: no automatic paywall covers the start screen.
+        premium: PremiumState = PremiumState.Active(PremiumTier.YEARLY, NOW),
+        premiumOverride: PremiumState? = null,
+        isGrandfathered: Boolean = false,
+    ): AppGraph =
         AppGraph(
             repository = FakeSpeciesRepository.withDefaults(),
             classifierBootstrap =
@@ -83,8 +88,9 @@ class DailyBirdRoutingTest {
                     override var lastSeen: Int = 1
                 },
             userPreferences = prefs,
-            // A paying subscriber: no automatic paywall covers the start screen.
-            premiumRepository = FakePremiumRepository(PremiumState.Active(PremiumTier.YEARLY, NOW)),
+            premiumRepository = FakePremiumRepository(premium),
+            premiumOverride = premiumOverride,
+            isGrandfathered = isGrandfathered,
             clock = FakeClock(NOW),
             timeZone = TimeZone.of("Europe/Stockholm"),
             launchPurchase = { PurchaseResult.UserCancelled },
@@ -233,6 +239,68 @@ class DailyBirdRoutingTest {
         compose
             .onNodeWithContentDescription("Fångad idag. Två dagar kvar till märket. 1 av 3 dagar.", useUnmergedTree = true)
             .assertExists()
+    }
+
+    // Albin 2026-10-07: Dagens fågel-jägare is a Premium badge. The challenge row stays for everyone
+    // and tags the badge as Premium for users without it, from the app's effective Premium state.
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `a user without premium sees the challenge row tag the badge as premium`() {
+        // The day-0 paywall and the 7-day modal already shown, so the start screen stays in view.
+        runBlocking {
+            prefs.setPostOnboardingPremiumShown(true)
+            prefs.setPremiumModalLastShownAt(NOW.toEpochMilliseconds())
+        }
+        compose.startAppScaffold(graph(premium = PremiumState.Free))
+        compose
+            .onNodeWithContentDescription(
+                "Inte fångad idag. Spara ett fynd av arten idag. 0 av 3 dagar. Premium-märke.",
+                useUnmergedTree = true,
+            ).assertExists()
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `a user without premium sees the strips on mina arter and uppslagsverk tag the badge as premium`() {
+        runBlocking {
+            prefs.setPostOnboardingPremiumShown(true)
+            prefs.setPremiumModalLastShownAt(NOW.toEpochMilliseconds())
+        }
+        compose.startAppScaffold(graph(premium = PremiumState.Free))
+        val tagged = "Dagens fågel: Talgoxe. Inte fångad idag, 0 av 3 dagar. Premium-märke."
+        compose.onNodeWithText("Mina arter").performClick()
+        compose.waitForIdle()
+        compose.onNodeWithContentDescription(tagged).assertExists()
+        compose.onNodeWithText("Uppslagsverk").performClick()
+        compose.waitForIdle()
+        compose.onNodeWithContentDescription(tagged).assertExists()
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `a paying subscriber sees no premium tag on the challenge row`() {
+        compose.startAppScaffold(graph())
+        compose
+            .onNodeWithContentDescription("Inte fångad idag. Spara ett fynd av arten idag. 0 av 3 dagar.", useUnmergedTree = true)
+            .assertExists()
+        compose.onNodeWithContentDescription("Premium-märke", substring = true, useUnmergedTree = true).assertDoesNotExist()
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `an early user with lifetime premium sees no premium tag on the challenge row`() {
+        runBlocking { prefs.setGrandfatherThanksShown(true) }
+        compose.startAppScaffold(
+            graph(
+                premium = PremiumState.Free,
+                premiumOverride = PremiumState.Active(PremiumTier.LIFETIME, NOW),
+                isGrandfathered = true,
+            ),
+        )
+        compose
+            .onNodeWithContentDescription("Inte fångad idag. Spara ett fynd av arten idag. 0 av 3 dagar.", useUnmergedTree = true)
+            .assertExists()
+        compose.onNodeWithContentDescription("Premium-märke", substring = true, useUnmergedTree = true).assertDoesNotExist()
     }
 
     private companion object {

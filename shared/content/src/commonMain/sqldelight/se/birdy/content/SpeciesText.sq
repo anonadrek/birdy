@@ -16,5 +16,8 @@ SELECT * FROM SpeciesText WHERE species_id = ? AND locale = ?;
 selectAll:
 SELECT * FROM SpeciesText;
 
+selectByKind:
+SELECT species_id, locale, text FROM SpeciesText WHERE kind = ?;
+
 insert:
 INSERT INTO SpeciesText(species_id, locale, kind, text) VALUES (?, ?, ?, ?);

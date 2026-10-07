@@ -25,6 +25,7 @@ enum class DailyBirdCountStyle {
  * The challenge row (release 1.3.0 Task 7d, design option B): caught today or not, what to do,
  * three seals and the day count toward Dagens fågel-jägare. [daysCaught] counts distinct days on
  * which that day's bird was saved, all time, so the copy says "dagar", never "i rad".
+ * [showPremiumBadgeTag]: the count is shown with a "Premium-märke" tag (see [DailyBirdToday]).
  */
 data class DailyBirdChallenge(
     val caughtToday: Boolean,
@@ -34,12 +35,14 @@ data class DailyBirdChallenge(
     val seals: Int,
     val daysCaught: Int,
     val countStyle: DailyBirdCountStyle,
+    val showPremiumBadgeTag: Boolean = false,
 )
 
 fun dailyBirdChallenge(
     caughtToday: Boolean,
     daysCaught: Int,
     target: Int,
+    showPremiumBadgeTag: Boolean = false,
 ): DailyBirdChallenge {
     // A catch today is itself one day, even if the count was read a moment before the match landed.
     val days = if (caughtToday) daysCaught.coerceAtLeast(1) else daysCaught.coerceAtLeast(0)
@@ -57,8 +60,14 @@ fun dailyBirdChallenge(
         seals = target,
         daysCaught = days,
         countStyle = if (days <= target) DailyBirdCountStyle.OF_TARGET else DailyBirdCountStyle.TOTAL,
+        showPremiumBadgeTag = showPremiumBadgeTag,
     )
 }
 
 fun DailyBirdToday.challenge(): DailyBirdChallenge =
-    dailyBirdChallenge(caughtToday = caughtToday, daysCaught = daysCaught, target = huntTarget)
+    dailyBirdChallenge(
+        caughtToday = caughtToday,
+        daysCaught = daysCaught,
+        target = huntTarget,
+        showPremiumBadgeTag = showPremiumBadgeTag,
+    )

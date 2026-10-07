@@ -109,6 +109,8 @@
   vp_status: H
 - wikidata_id: Q673280
   scientific_name: Anser serrirostris
+  common_sv: Tundragås  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Tundrasädgås  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Anatidae
   ioc_order: Anseriformes
   common_en: Tundra Bean Goose
@@ -121,6 +123,8 @@
   vp_status: H
 - wikidata_id: Q26452
   scientific_name: Anser fabalis
+  common_sv: Skogsgås  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Sädgås  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Anatidae
   ioc_order: Anseriformes
   common_en: Taiga Bean Goose
@@ -350,6 +354,8 @@
   vp_status: H
 - wikidata_id: Q142651
   scientific_name: Colinus virginianus
+  common_sv: Virginiavaktel  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Vitstrupig vaktel  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Odontophoridae
   ioc_order: Galliformes
   common_en: Northern Bobwhite
@@ -1063,6 +1069,8 @@
   vp_status: H
 - wikidata_id: Q18861
   scientific_name: Hydrophasianus chirurgus
+  common_sv: Fasanjassana  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Fasanjaçana  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Jacanidae
   ioc_order: Charadriiformes
   common_en: Pheasant-tailed Jacana
@@ -1680,6 +1688,8 @@
   vp_status: F
 - wikidata_id: Q845982
   scientific_name: Pelagodroma marina
+  common_sv: Fregatthavslöpare  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Fregattstormsvala  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Oceanitidae
   ioc_order: Procellariiformes
   common_en: White-faced Storm Petrel
@@ -1744,12 +1754,16 @@
   vp_status: H
 - wikidata_id: Q181323
   scientific_name: Calonectris edwardsii
+  common_sv: Större kapverdelira  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Kapverdelira  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Procellariidae
   ioc_order: Procellariiformes
   common_en: Cape Verde Shearwater
   vp_status: H
 - wikidata_id: Q216850
   scientific_name: Calonectris diomedea
+  common_sv: Diomedeslira  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Gulnäbbad lira  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Procellariidae
   ioc_order: Procellariiformes
   common_en: Scopoli’s Shearwater
@@ -1792,6 +1806,8 @@
   vp_status: H
 - wikidata_id: Q511566
   scientific_name: Puffinus yelkouan
+  common_sv: Medelhavslira  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Levantlira  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Procellariidae
   ioc_order: Procellariiformes
   common_en: Mediterranean Shearwater
@@ -1804,6 +1820,8 @@
   vp_status: H
 - wikidata_id: Q3410601
   scientific_name: Puffinus boydi
+  common_sv: Mindre kapverdelira  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Boydlira  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Procellariidae
   ioc_order: Procellariiformes
   common_en: Boyd’s Shearwater
@@ -1822,6 +1840,8 @@
   vp_status: H
 - wikidata_id: Q1261612
   scientific_name: Pterodroma feae
+  common_sv: Kapverdepetrell  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Kap Verdepetrell  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Procellariidae
   ioc_order: Procellariiformes
   common_en: Fea’s Petrel
@@ -2297,6 +2317,8 @@
   vp_status: H
 - wikidata_id: Q1272529
   scientific_name: Strix butleri
+  common_sv: Östlig klippuggla  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Klippuggla  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Strigidae
   ioc_order: Strigiformes
   common_en: Omani Owl
@@ -2377,6 +2399,8 @@
   vp_status: H
 - wikidata_id: Q55111925
   scientific_name: Gyps rueppelli
+  common_sv: Fläckgam  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Rüppellgam  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Accipitridae
   ioc_order: Accipitriformes
   common_en: Rüppell’s Vulture
@@ -2604,6 +2628,8 @@
   vp_status: H
 - wikidata_id: Q1951359
   scientific_name: Merops persicus
+  common_sv: Grön biätare  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Blåkindad biätare  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Meropidae
   ioc_order: Coraciiformes
   common_en: Blue-cheeked Bee-eater
@@ -2712,6 +2738,8 @@
   iucn_status: NT  # IUCN Red List: Dendropicos dorae, e.T22681095A119106114 (2017); Wikidata has no P141
 - wikidata_id: Q946681
   scientific_name: Dendropicos goertae
+  common_sv: Gulbukig askspett  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Afrikansk gråspett  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Picidae
   ioc_order: Piciformes
   common_en: African Grey Woodpecker
@@ -2865,6 +2893,8 @@
   vp_status: H
 - wikidata_id: Q753746
   scientific_name: Psittacula eupatria
+  common_sv: Storparakit  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Alexanderparakit  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Psittaculidae
   ioc_order: Psittaciformes
   common_en: Alexandrine Parakeet
@@ -3200,6 +3230,8 @@
   vp_status: H
 - wikidata_id: Q1083050
   scientific_name: Mirafra javanica
+  common_sv: Drillärka  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Australisk lärka  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Alaudidae
   ioc_order: Passeriformes
   common_en: Singing Bush Lark
@@ -3298,12 +3330,16 @@
   vp_status: H
 - wikidata_id: Q1266617
   scientific_name: Chersophilus duponti
+  common_sv: Skymningslärka  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Dupontlärka  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Alaudidae
   ioc_order: Passeriformes
   common_en: Dupont’s Lark
   vp_status: H
 - wikidata_id: Q1092087
   scientific_name: Eremalauda dunni
+  common_sv: Saharalärka  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Streckig ökenlärka  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Alaudidae
   ioc_order: Passeriformes
   common_en: Dunn’s Lark
@@ -3328,6 +3364,8 @@
   vp_status: H
 - wikidata_id: Q110812143
   scientific_name: Alaudala heinei
+  common_sv: Turkestanlärka  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Turkestandvärglärka  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Alaudidae
   ioc_order: Passeriformes
   common_en: Turkestan Short-toed Lark
@@ -3564,6 +3602,8 @@
   vp_status: H
 - wikidata_id: Q650114
   scientific_name: Cettia cetti
+  common_sv: Sumpcettia  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Cettisångare  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Cettiidae
   ioc_order: Passeriformes
   common_en: Cetti’s Warbler
@@ -3632,6 +3672,8 @@
   abundance: allmän
 - wikidata_id: Q3729103
   scientific_name: Phylloscopus sindianus
+  common_sv: Berggransångare  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Kashmirgransångare  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Phylloscopidae
   ioc_order: Passeriformes
   common_en: Mountain Chiffchaff
@@ -3781,6 +3823,8 @@
   vp_status: H
 - wikidata_id: Q110257505
   scientific_name: Curruca mystacea
+  common_sv: Tamarisksångare  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Östlig sammetshätta  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Sylviidae
   ioc_order: Passeriformes
   common_en: Menetries’s Warbler
@@ -3836,6 +3880,8 @@
   vp_status: H
 - wikidata_id: Q110257513
   scientific_name: Curruca subalpina
+  common_sv: Rosensångare  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Moltonisångare  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Sylviidae
   ioc_order: Passeriformes
   common_en: Moltoni’s Warbler
@@ -3872,6 +3918,8 @@
   vp_status: H
 - wikidata_id: Q3178456
   scientific_name: Zosterops abyssinicus
+  common_sv: Abessinglasögonfågel  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Abessinsk glasögonfågel  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Zosteropidae
   ioc_order: Passeriformes
   common_en: Abyssinian White-eye
@@ -3946,6 +3994,8 @@
   vp_status: H
 - wikidata_id: Q851556
   scientific_name: Sitta krueperi
+  common_sv: Turknötväcka  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Krüpers nötväcka  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Sittidae
   ioc_order: Passeriformes
   common_en: Krüper’s Nuthatch
@@ -3970,6 +4020,8 @@
   vp_status: H
 - wikidata_id: Q928415
   scientific_name: Sitta tephronota
+  common_sv: Ravinnötväcka  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Östlig klippnötväcka  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Sittidae
   ioc_order: Passeriformes
   common_en: Eastern Rock Nuthatch
@@ -4513,12 +4565,16 @@
   vp_status: H
 - wikidata_id: Q1306610
   scientific_name: Ploceus manyar
+  common_sv: Streckad vävare  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Streckig vävare  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Ploceidae
   ioc_order: Passeriformes
   common_en: Streaked Weaver
   vp_status: H
 - wikidata_id: Q1060466
   scientific_name: Foudia madagascariensis
+  common_sv: Röd fody  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Rödfody  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Ploceidae
   ioc_order: Passeriformes
   common_en: Red Fody
@@ -4860,6 +4916,8 @@
   abundance: allmän
 - wikidata_id: Q847168
   scientific_name: Fringilla teydea
+  common_sv: Teneriffablåfink  # BirdLife Sverige, officiella svenska namn v. 2025
+  former_sv: Blåfink  # Birdys namn före 1.3.0: sökord och "Tidigare:" på artprofilen
   family: Fringillidae
   ioc_order: Passeriformes
   common_en: Tenerife Blue Chaffinch

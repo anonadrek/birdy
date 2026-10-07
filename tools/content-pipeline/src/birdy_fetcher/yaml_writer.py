@@ -43,6 +43,10 @@ class SpeciesYamlData:
     review_notes: str = ""
     generated_at: str = ""
     sources: dict[str, Any] = field(default_factory=dict)
+    # The Swedish name Birdy used before it took BirdLife Sverige's official one (release 1.3.0
+    # Task 7m, e.g. Sädgås for Skogsgås). Written only for renamed species: the app keeps it as a
+    # search term and shows it on the species profile ("Tidigare: Sädgås").
+    former_sv: str | None = None
 
 
 def _serialize(data: SpeciesYamlData) -> dict[str, Any]:
@@ -58,6 +62,7 @@ def _serialize(data: SpeciesYamlData) -> dict[str, Any]:
         "names": {
             "sv": data.common_sv,
             "en": data.common_en,
+            **({"former_sv": data.former_sv} if data.former_sv else {}),
         },
         "abundance": data.abundance,
         "iucn_status": data.iucn_status,

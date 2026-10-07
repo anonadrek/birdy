@@ -15,7 +15,8 @@ import se.birdy.app.ui.components.hasForcedMidWordBreak
  * whole composed screen. It walks every node that carries a `GetTextLayoutResult` semantics action
  * (i.e. every laid-out Text/BasicText), fetches its real [TextLayoutResult] and checks three ways
  * a label can silently lose content:
- * 1. [hasForcedMidWordBreak]: the wrap broke mid-word rather than at a space.
+ * 1. [hasForcedMidWordBreak]: the wrap broke mid-word rather than at a space (the message lists the
+ *    lines as laid out).
  * 2. A single-line node (`maxLines == 1`) exceeded that line and got clipped
  *    (`multiParagraph.didExceedMaxLines`).
  * 3. A `softWrap = false` node needs more width for its text (`multiParagraph.maxIntrinsicWidth`)
@@ -40,7 +41,10 @@ internal fun ComposeContentTestRule.assertNoTextLayoutRegressions() {
         layoutResults.forEach { result ->
             val text = result.layoutInput.text.text
             assertFalse(
-                "\"$text\" has a forced mid-word break",
+                "\"$text\" has a forced mid-word break: " +
+                    (0 until result.lineCount).joinToString(" | ") { line ->
+                        text.substring(result.getLineStart(line), result.getLineEnd(line, visibleEnd = false))
+                    },
                 result.hasForcedMidWordBreak(text),
             )
             if (result.layoutInput.maxLines == 1) {

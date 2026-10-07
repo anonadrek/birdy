@@ -1,8 +1,17 @@
 package se.birdy.content.build
 
+import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.io.TempDir
+import se.birdy.content.Locale
+import se.birdy.content.SpeciesFilter
+import se.birdy.content.SpeciesId
+import se.birdy.content.SqlDelightSpeciesRepository
+import se.birdy.content.db.BirdyContent
 import java.nio.file.Path
 
 /**
@@ -98,5 +107,196 @@ class SpeciesContentCorrectionsTest {
         assertTrue("en medlem i familjen starar" in text, text)
         assertTrue("burmamajnan" in text, text)
         assertTrue("medlemi" !in text && "burmannusmajan" !in text, text)
+    }
+
+    private data class Renamed(
+        val path: String,
+        val official: String,
+        val former: String,
+    )
+
+    // Release 1.3.0 Task 7m: the Swedish names that differed from BirdLife Sverige's official list
+    // ("Officiella svenska namn på alla världens fågelarter", version 2025, file NL20.xlsx) now
+    // follow it. The name Birdy used before stays as names.former_sv: a search term, and shown as
+    // "Tidigare: ..." on the Swedish profile. All are also set in species_list.yaml (common_sv and
+    // former_sv), so a pipeline refresh keeps them. Mapping and sources:
+    // docs/superpowers/plans/1.3.0-tillagg/task07m-namn.md.
+    private val renamed =
+        listOf(
+            Renamed("alaudidae/Q110812143.yaml", official = "Turkestanlärka", former = "Turkestandvärglärka"), // Alaudala heinei
+            Renamed("anatidae/Q26452.yaml", official = "Skogsgås", former = "Sädgås"), // Anser fabalis
+            Renamed("anatidae/Q673280.yaml", official = "Tundragås", former = "Tundrasädgås"), // Anser serrirostris
+            Renamed("procellariidae/Q216850.yaml", official = "Diomedeslira", former = "Gulnäbbad lira"), // Calonectris diomedea
+            Renamed("procellariidae/Q181323.yaml", official = "Större kapverdelira", former = "Kapverdelira"), // Calonectris edwardsii
+            Renamed("cettiidae/Q650114.yaml", official = "Sumpcettia", former = "Cettisångare"), // Cettia cetti
+            Renamed("alaudidae/Q1266617.yaml", official = "Skymningslärka", former = "Dupontlärka"), // Chersophilus duponti
+            Renamed("odontophoridae/Q142651.yaml", official = "Virginiavaktel", former = "Vitstrupig vaktel"), // Colinus virginianus
+            Renamed("sylviidae/Q110257505.yaml", official = "Tamarisksångare", former = "Östlig sammetshätta"), // Curruca mystacea
+            Renamed("sylviidae/Q110257513.yaml", official = "Rosensångare", former = "Moltonisångare"), // Curruca subalpina
+            Renamed("picidae/Q946681.yaml", official = "Gulbukig askspett", former = "Afrikansk gråspett"), // Dendropicos goertae
+            Renamed("alaudidae/Q1092087.yaml", official = "Saharalärka", former = "Streckig ökenlärka"), // Eremalauda dunni
+            Renamed("ploceidae/Q1060466.yaml", official = "Röd fody", former = "Rödfody"), // Foudia madagascariensis
+            Renamed("fringillidae/Q847168.yaml", official = "Teneriffablåfink", former = "Blåfink"), // Fringilla teydea
+            Renamed("accipitridae/Q55111925.yaml", official = "Fläckgam", former = "Rüppellgam"), // Gyps rueppelli
+            Renamed("jacanidae/Q18861.yaml", official = "Fasanjassana", former = "Fasanjaçana"), // Hydrophasianus chirurgus
+            Renamed("meropidae/Q1951359.yaml", official = "Grön biätare", former = "Blåkindad biätare"), // Merops persicus
+            Renamed("alaudidae/Q1083050.yaml", official = "Drillärka", former = "Australisk lärka"), // Mirafra javanica
+            Renamed("oceanitidae/Q845982.yaml", official = "Fregatthavslöpare", former = "Fregattstormsvala"), // Pelagodroma marina
+            Renamed("phylloscopidae/Q3729103.yaml", official = "Berggransångare", former = "Kashmirgransångare"), // Phylloscopus sindianus
+            Renamed("ploceidae/Q1306610.yaml", official = "Streckad vävare", former = "Streckig vävare"), // Ploceus manyar
+            Renamed("psittaculidae/Q753746.yaml", official = "Storparakit", former = "Alexanderparakit"), // Psittacula eupatria
+            Renamed("procellariidae/Q1261612.yaml", official = "Kapverdepetrell", former = "Kap Verdepetrell"), // Pterodroma feae
+            Renamed("procellariidae/Q3410601.yaml", official = "Mindre kapverdelira", former = "Boydlira"), // Puffinus boydi
+            Renamed("procellariidae/Q511566.yaml", official = "Medelhavslira", former = "Levantlira"), // Puffinus yelkouan
+            Renamed("sittidae/Q851556.yaml", official = "Turknötväcka", former = "Krüpers nötväcka"), // Sitta krueperi
+            Renamed("sittidae/Q928415.yaml", official = "Ravinnötväcka", former = "Östlig klippnötväcka"), // Sitta tephronota
+            Renamed("strigidae/Q1272529.yaml", official = "Östlig klippuggla", former = "Klippuggla"), // Strix butleri
+            // Zosterops abyssinicus
+            Renamed("zosteropidae/Q3178456.yaml", official = "Abessinglasögonfågel", former = "Abessinsk glasögonfågel"),
+        )
+
+    @Test
+    fun `swedish names follow birdlife sverige and keep the name birdy used before`() {
+        val wrong =
+            renamed.mapNotNull { r ->
+                val names = species(r.path).names
+                "${r.path}: ${names.sv} (former ${names.formerSv})"
+                    .takeUnless { names.sv == r.official && names.formerSv == r.former }
+            }
+        assertEquals(emptyList<String>(), wrong)
+    }
+
+    @Test
+    fun `only the renamed species carry a former name`() {
+        val withFormer =
+            parser
+                .parseAll(Path.of("species"))
+                .map { it.second }
+                .filter { it.names.formerSv != null }
+                .map { it.id }
+                .toSet()
+        assertEquals(renamed.map { it.path.substringAfter('/').removeSuffix(".yaml") }.toSet(), withFormer)
+    }
+
+    // The Swedish texts of the renamed species used the old name ("Sädgåsen är ..."). Current names
+    // of species that contain a former name at a word start are masked first, so "Större
+    // kapverdelira" or "Östlig klippuggla" does not count as a use of "Kapverdelira" or "Klippuggla".
+    @Test
+    fun `no swedish text of a renamed species uses its former name`() {
+        val currentNames =
+            parser
+                .parseAll(Path.of("species"))
+                .mapNotNull {
+                    it.second.names.sv
+                        ?.lowercase()
+                }
+        val uses =
+            renamed.flatMap { r ->
+                val former = r.former.lowercase()
+                val atWordStart = Regex("(?<![\\p{L}\\p{N}])" + Regex.escape(former))
+                val masks =
+                    currentNames
+                        .filter { it != former && atWordStart.containsMatchIn(it) }
+                        .sortedByDescending { it.length }
+                val yaml = species(r.path)
+                listOf("description" to yaml.description, "migration" to yaml.migration, "marginalia" to yaml.marginalia)
+                    .mapNotNull { (kind, texts) ->
+                        val text = masks.fold(texts["sv"].orEmpty().lowercase()) { t, name -> t.replace(name, " ") }
+                        "${r.path} $kind.sv uses ${r.former}".takeIf { atWordStart.containsMatchIn(text) }
+                    }
+            }
+        assertEquals(emptyList<String>(), uses)
+    }
+
+    // Diomedeslira (Calonectris diomedea, Scopoli's) had Swedish texts about Gulnäbbad lira (C.
+    // borealis, Cory's, "förekommer främst i Atlanten"), written from the Wikipedia article of the
+    // name it wrongly had. They are cleared; its English texts are empty too, so the app shows its
+    // own empty-state texts. A pipeline refresh now reads the article "Diomedeslira"; update this
+    // test when the new Swedish texts are in.
+    @Test
+    fun `diomedeslira has no swedish text about gulnäbbad lira`() {
+        val diomedeslira = species("procellariidae/Q216850.yaml")
+        assertEquals("", diomedeslira.description["sv"].orEmpty())
+        assertEquals("", diomedeslira.migration["sv"].orEmpty())
+    }
+
+    // Calonectris diomedea (Scopoli's) shared "Gulnäbbad lira" with Calonectris borealis (Cory's);
+    // BirdLife Sverige calls it diomedeslira.
+    @Test
+    fun `no two species share a swedish name`() {
+        val duplicates =
+            parser
+                .parseAll(Path.of("species"))
+                .map { it.second }
+                .groupBy { it.names.sv?.lowercase() }
+                .filterValues { it.size > 1 }
+                .map { (name, list) -> "$name: ${list.map { it.id }}" }
+        assertEquals(emptyList<String>(), duplicates)
+    }
+
+    @Test
+    fun `searching a former name finds the renamed species first`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val db = tempDir.resolve("species.db")
+        SpeciesDbBuilder().build(
+            items = parser.parseAll(Path.of("species")),
+            // No photos needed to search; a missing source folder copies none.
+            sourceImageRoot = tempDir.resolve("no-images"),
+            targetDb = db,
+            targetImageRoot = tempDir.resolve("images"),
+        )
+        val driver = JdbcSqliteDriver("jdbc:sqlite:${db.toAbsolutePath()}")
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        val firstHits =
+            listOf(
+                "sädgås",
+                "Sädgås",
+                "rödfody",
+                "cettisångare",
+                "Kap Verdepetrell",
+                "Rüppellgam",
+                "levantlira",
+                // Typed without the accents.
+                "ruppellgam",
+                "fasanjacana",
+                "krupers notvacka",
+            ).associateWith { query ->
+                repo
+                    .search(query, Locale.SV, SpeciesFilter())
+                    .first()
+                    .firstOrNull()
+                    ?.name
+            }
+        assertEquals(
+            mapOf(
+                "sädgås" to "Skogsgås",
+                "Sädgås" to "Skogsgås",
+                "rödfody" to "Röd fody",
+                "cettisångare" to "Sumpcettia",
+                "Kap Verdepetrell" to "Kapverdepetrell",
+                "Rüppellgam" to "Fläckgam",
+                "levantlira" to "Medelhavslira",
+                "ruppellgam" to "Fläckgam",
+                "fasanjacana" to "Fasanjassana",
+                "krupers notvacka" to "Turknötväcka",
+            ),
+            firstHits,
+        )
+        // "Gulnäbbad lira" is Calonectris borealis' current name and Diomedeslira's former one:
+        // the species that has the name comes first, and Diomedeslira's profile leaves out a
+        // "Tidigare:" line that would read as if the two were one species.
+        assertEquals(
+            listOf("Gulnäbbad lira", "Diomedeslira"),
+            repo
+                .search("gulnäbbad lira", Locale.SV, SpeciesFilter())
+                .first()
+                .take(2)
+                .map { it.name },
+        )
+        assertEquals(null, repo.getById(SpeciesId("Q216850"), Locale.SV).first()?.formerName)
+        assertEquals("Sädgås", repo.getById(SpeciesId("Q26452"), Locale.SV).first()?.formerName)
+        assertEquals(null, repo.getById(SpeciesId("Q26452"), Locale.EN).first()?.formerName)
+        driver.close()
     }
 }

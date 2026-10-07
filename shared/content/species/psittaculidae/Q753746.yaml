@@ -6,8 +6,9 @@ taxonomy:
   genus: Psittacula
   ioc_order: Psittaciformes
 names:
-  sv: Alexanderparakit
+  sv: Storparakit
   en: Alexandrine Parakeet
+  former_sv: Alexanderparakit
 abundance: ovanlig
 iucn_status: LC
 season:

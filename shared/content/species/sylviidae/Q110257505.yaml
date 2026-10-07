@@ -6,8 +6,9 @@ taxonomy:
   genus: Curruca
   ioc_order: Passeriformes
 names:
-  sv: Östlig sammetshätta
+  sv: Tamarisksångare
   en: Menetries’s Warbler
+  former_sv: Östlig sammetshätta
 abundance: ovanlig
 iucn_status: LC
 season:
@@ -30,11 +31,11 @@ regions:
 - DK
 - DE
 description:
-  sv: '# Östlig sammetshätta
+  sv: '# Tamarisksångare
 
 
-    Östlig sammetshätta är en liten fågel i familjen sylvior som förekommer i västra
-    Asien. Arten är klassificerad som livskraftig enligt IUCN.
+    Tamarisksångare är en liten fågel i familjen sylvior som förekommer i västra Asien.
+    Arten är klassificerad som livskraftig enligt IUCN.
 
 
     Fågeln är känd för att förekomma i tamariskskogar och buskskogar i sitt naturliga
@@ -48,10 +49,10 @@ description:
     runt Medelhavet.'
   en: ''
 migration:
-  sv: '# Östlig sammetshätta – Förekomst i Norden
+  sv: '# Tamarisksångare – Förekomst i Norden
 
 
-    Östlig sammetshätta är en västasiatic art som normalt inte förekommer i Skandinavien
+    Tamarisksångare är en västasiatic art som normalt inte förekommer i Skandinavien
     eller Nordeuropa. Arten är mycket sällan registrerad i regionen och betraktas
     som en tillfällig gäst. Några sporadiska observationer har dokumenterats i södra
     Europa, men arten är ytterst osannolik att påträffa i norra delen av kontinenten.

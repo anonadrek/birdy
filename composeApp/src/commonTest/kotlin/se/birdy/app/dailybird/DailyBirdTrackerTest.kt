@@ -23,6 +23,7 @@ import kotlin.test.assertTrue
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.nanoseconds
 import kotlin.time.Duration.Companion.seconds
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -175,6 +176,61 @@ class DailyBirdTrackerTest {
             assertEquals(setOf(wednesday), history.matched)
             assertEquals(wednesday, tracker.state.value!!.date)
             assertTrue(tracker.state.value!!.caughtToday)
+        }
+
+    // The app stayed open past midnight and the user saves Tuesday's bird at 00:30 on Wednesday:
+    // Wednesday's bird is recorded first (as onSaved does), and Tuesday's is not today's catch.
+    @Test
+    fun `gårdagens fågel sparad efter midnatt räknas inte`() =
+        runTest {
+            val tracker = tracker()
+            tracker.refresh()
+            assertEquals("Q25403", tracker.state.value!!.speciesId)
+            now = at(wednesday, 0, 30)
+            tracker.onSaved("Q25403")
+            assertEquals("Q25485", history.recorded[wednesday], "the new day's bird is recorded first")
+            assertTrue(history.matched.isEmpty(), "yesterday's bird saved today is no catch: ${history.matched}")
+            assertEquals(wednesday, tracker.state.value!!.date)
+            assertFalse(tracker.state.value!!.caughtToday)
+            assertEquals(0, tracker.state.value!!.daysCaught)
+        }
+
+    // Documents the wait between refreshes: until the margin past the next midnight. With
+    // untilNextLocalMidnight always positive the sum is already at least the margin; the coerce in
+    // untilNextRefresh only matters if that ever changes (or the clock jumps), so it rarely applies.
+    @Test
+    fun `the wait until the next refresh is never shorter than the midnight margin`() {
+        val midnight = at(wednesday, 0)
+        assertEquals(24.hours + 1.seconds, untilNextRefresh(midnight, zone))
+        assertEquals(1.seconds + 1.milliseconds, untilNextRefresh(midnight - 1.milliseconds, zone))
+        assertEquals(1.seconds + 1.nanoseconds, untilNextRefresh(midnight - 1.nanoseconds, zone))
+        assertTrue(untilNextRefresh(midnight - 1.nanoseconds, zone) >= 1.seconds)
+    }
+
+    // Upgrade day (1.3.0 drops extinct species from the selection): the history already holds the
+    // day's bird from the old selection, and the new one would pick another. The day keeps the
+    // recorded bird, which is the one a save is matched against (INSERT OR IGNORE keeps it).
+    @Test
+    fun `a bird already recorded for the day is kept over a new selection`() =
+        runTest {
+            history.recorded[tuesday] = "Q25485" // the selector now says Q25403 for Tuesday
+            val tracker = tracker()
+            tracker.refresh()
+            assertEquals("Q25485", tracker.state.value!!.speciesId)
+            assertEquals("Talgoxe", tracker.state.value!!.name)
+            assertEquals(0, selectCalls, "a recorded day needs no selection")
+            tracker.onSaved("Q25485")
+            assertEquals(setOf(tuesday), history.matched)
+            assertTrue(tracker.state.value!!.caughtToday)
+        }
+
+    @Test
+    fun `opening the recorded bird before the first refresh clears the dot`() =
+        runTest {
+            history.recorded[tuesday] = "Q25485"
+            val tracker = tracker()
+            tracker.onSpeciesOpened("Q25485")
+            assertEquals("2026-10-06", prefs.dailyBirdOpenedDate.first())
         }
 
     @Test

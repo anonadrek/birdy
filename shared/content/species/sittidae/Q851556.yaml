@@ -6,8 +6,9 @@ taxonomy:
   genus: Sitta
   ioc_order: Passeriformes
 names:
-  sv: Krüpers nötväcka
+  sv: Turknötväcka
   en: Krüper’s Nuthatch
+  former_sv: Krüpers nötväcka
 abundance: ovanlig
 iucn_status: LC
 season:

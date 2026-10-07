@@ -6,8 +6,9 @@ taxonomy:
   genus: Hydrophasianus
   ioc_order: Charadriiformes
 names:
-  sv: Fasanjaçana
+  sv: Fasanjassana
   en: Pheasant-tailed Jacana
+  former_sv: Fasanjaçana
 abundance: ovanlig
 iucn_status: LC
 season:
