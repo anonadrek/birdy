@@ -145,6 +145,57 @@ test.describe('gruppsidorna', () => {
   test('Tättingar delas upp i familjer', async ({ page }) => {
     await page.goto('/sv/arter/tattingar/');
     await expect(page.locator('.family h3')).toHaveCount(6);
+    // Swedish headings are Swedish text, not Latin: no pronunciation tag needed (controller review, Task 8 fix wave).
+    await expect(page.locator('.family h3[lang="la"]')).toHaveCount(0);
+  });
+
+  test('familjer grupperas efter det latinska namnet, inte den svenska stavningen (Kaja och Skata är båda Corvidae men fixturen ger dem olika family.sv)', async ({ page }) => {
+    await page.goto('/sv/arter/tattingar/');
+    // One of the two Swedish spellings wins (whichever species is first in sort order), but there must be
+    // only ONE Corvidae section either way, not a second one for the other spelling (controller review,
+    // Task 8 fix wave: the pipeline doesn't yet guarantee one canonical Swedish name per Latin family).
+    const corvids = page.locator('.family').filter({ has: page.locator('[data-item]', { hasText: 'Skata' }) });
+    await expect(corvids).toHaveCount(1);
+    await expect(corvids.locator('[data-item]')).toHaveCount(2);
+    await expect(corvids).toContainText('Skata');
+    await expect(corvids).toContainText('Kaja');
+  });
+
+  test('Songbirds (EN) delas också upp i sex familjer, rubrikerna är latin', async ({ page }) => {
+    await page.goto('/species/songbirds/');
+    await expect(page.locator('.family h3')).toHaveCount(6);
+    await expect(page.locator('.family h3[lang="la"]')).toHaveCount(6);
+    // Same family split as the Swedish page, grouped by family.latin, so one Corvidae section here too.
+    const corvids = page.locator('.family').filter({ has: page.locator('h3', { hasText: 'Corvidae' }) });
+    await expect(corvids).toHaveCount(1);
+    await expect(corvids.locator('[data-item]')).toHaveCount(2);
+  });
+
+  test('de fyra första artkorten laddas direkt, resten lat (Tättingar, 8 arter i 6 familjer)', async ({ page }) => {
+    await page.goto('/sv/arter/tattingar/');
+    const images = page.locator('.sp-cards img');
+    await expect(images).toHaveCount(8);
+    const loading = await images.evaluateAll((els) => els.map((el) => el.getAttribute('loading')));
+    expect(loading.slice(0, 4)).toEqual(['eager', 'eager', 'eager', 'eager']);
+    expect(loading.slice(4)).toEqual(['lazy', 'lazy', 'lazy', 'lazy']);
+  });
+
+  test('en grupp med en enda art undviker "dem"/"them" i beskrivningen', async ({ page }) => {
+    await page.goto('/sv/arter/havsfaglar/');
+    const descSv = await page.locator('meta[name="description"]').getAttribute('content');
+    expect(descSv).not.toContain('dem');
+    expect(descSv).toContain('1 art');
+
+    await page.goto('/species/seabirds/');
+    const descEn = await page.locator('meta[name="description"]').getAttribute('content');
+    expect(descEn).not.toContain('them');
+    expect(descEn).toContain('1 species');
+  });
+
+  test('gruppsidans og:image är artens eget foto, inte standardbilden', async ({ page }) => {
+    await page.goto('/sv/arter/ugglor/');
+    const og = await page.locator('meta[property="og:image"]').getAttribute('content');
+    expect(og).not.toContain('og-field-');
   });
 
   test('små grupper har noindex', async ({ page }) => {

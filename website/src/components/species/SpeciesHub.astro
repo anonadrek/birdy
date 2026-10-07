@@ -36,23 +36,25 @@ const n = all.length;
 // one for n=1: it already goes through countLabel ("1 art" / "16 arter"), which is correct for every n.
 // n=0 (production right after Task 15's merge, before the first species is published, spec Task 15 Step 4):
 // no count-dependent sentence reads sensibly with "0", so the title gets its own dedicated copy key too
-// (second controller review, same day) instead of rendering "...: 0 arter med foton | Birdy".
+// (third controller review, same day) instead of rendering "...: 0 arter med foton | Birdy".
 const title = n === 0 ? t.species.titleHubEmpty : t.species.titleHub.replace('{count}', countLabel(n, t));
 const leadText = n === 0 ? t.species.hubLeadEmpty : n === 1 ? t.species.hubLeadOne : t.species.hubLead.replace('{n}', String(n));
-const description = n === 0 ? t.species.hubLeadEmpty : n === 1 ? t.species.descHubOne : t.species.descHub.replace('{n}', String(n));
+// descHubEmpty, not hubLeadEmpty reused: the English lead ran to 156 characters, one over spec §12's
+// 120-to-155 cap on meta descriptions (Task 8 fix wave); its own, shorter copy key stays in range.
+const description = n === 0 ? t.species.descHubEmpty : n === 1 ? t.species.descHubOne : t.species.descHub.replace('{n}', String(n));
 const crumbs = [
   { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
   { name: t.species.crumbHub, href: pathname },
 ];
 // At n=0 there is no list to describe: an ItemList with zero items would be a CollectionPage claiming
-// to list species it doesn't have (second controller review, same day). Breadcrumbs alone still apply.
+// to list species it doesn't have (third controller review, same day). Breadcrumbs alone still apply.
 const jsonLd = n === 0 ? [breadcrumbJsonLd(crumbs)] : [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace(/ \| Birdy$/, ''), locale, sorted)];
 ---
 
 <Layout locale={locale} pathname={pathname} alternatePath={hubHref(other)} title={title} description={description} noindex={n === 0} jsonLd={jsonLd}>
   <Nav locale={locale} variant="solid" switchLangHref={hubHref(other)} />
   {/* The bar's only chip at n=0 would be "All species (0)": nothing to filter into, so it is hidden
-      along with the rest of the browsing UI below (second controller review, same day). */}
+      along with the rest of the browsing UI below (third controller review, same day). */}
   {n > 0 && <CategoryBar locale={locale} active="all" search={false} />}
   <main class="hub wrap">
     <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
@@ -169,7 +171,7 @@ const jsonLd = n === 0 ? [breadcrumbJsonLd(crumbs)] : [breadcrumbJsonLd(crumbs),
     try {
       // Safari throttles history.replaceState (SecurityError past a call-rate limit); keeping the URL
       // in sync with the search box is a nicety, not something the filtering above depends on
-      // (second controller review, same day).
+      // (third controller review, same day).
       history.replaceState(null, '', url);
     } catch {
       // Filtering already happened above; losing the URL sync is harmless.
@@ -188,7 +190,7 @@ const jsonLd = n === 0 ? [breadcrumbJsonLd(crumbs)] : [breadcrumbJsonLd(crumbs),
   .hub { padding-top: 26px; padding-bottom: 88px; }
   /* <search> is a new HTML sectioning element: some engines don't yet default it to block, so it is set
      explicitly. That same rule would otherwise beat the UA [hidden] rule on specificity and keep the box
-     visible before the script runs; the second declaration restores [hidden] (second controller review,
+     visible before the script runs; the second declaration restores [hidden] (third controller review,
      same day). */
   search.hub-search { display: block; }
   .hub-search[hidden] { display: none; }

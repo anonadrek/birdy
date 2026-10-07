@@ -35,6 +35,16 @@ const page = (path) => {
   return readFileSync(file, 'utf8');
 };
 
+// Astro HTML-escapes attribute values; decode the handful of entities a meta description could contain
+// so the measured length matches what a search result actually shows (Task 8 fix wave: reusing
+// hubLeadEmpty as the n=0 description made the English one 156 characters, one over spec §12's 155-char
+// cap — descHubEmpty is its own, shorter copy key now, and this check keeps that true for good).
+const decodeEntities = (s) => s.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+const metaDescription = (html) => {
+  const m = html.match(/<meta name="description" content="([^"]*)"/);
+  return m ? decodeEntities(m[1]) : null;
+};
+
 const errors = [];
 const fail = (where, why) => errors.push(`${where}: ${why}`);
 
@@ -47,10 +57,13 @@ for (const path of ['sv/arter', 'species']) {
   if (html.includes('id="species-search"')) fail(path, 'visar sökfältet trots noll byggda arter');
   if (/<li\s+data-item/.test(html)) fail(path, 'visar en art trots noll byggda arter');
   if (!html.includes('<h1')) fail(path, 'saknar h1');
-  // Second controller review, same day: the category bar's only chip at n=0 is "All species (0)" (nothing
+  // Third controller review, same day: the category bar's only chip at n=0 is "All species (0)" (nothing
   // to filter into), and an ItemList with zero items would be a CollectionPage claiming a list it doesn't have.
   if (html.includes('data-catbar')) fail(path, 'visar kategoriraden trots noll byggda arter');
   if (html.includes('"@type":"CollectionPage"')) fail(path, 'har en ItemList i JSON-LD trots noll byggda arter');
+  const desc = metaDescription(html);
+  if (!desc) fail(path, 'saknar meta description');
+  else if (desc.length < 120 || desc.length > 155) fail(path, `meta description är ${desc.length} tecken (ska vara 120 till 155): ${desc}`);
 }
 
 const sitemap = existsSync(join(dist, 'sitemap-index.xml')) ? 'present' : 'missing';

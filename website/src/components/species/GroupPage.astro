@@ -1,4 +1,5 @@
 ---
+import { getImage } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../Nav.astro';
 import Footer from '../Footer.astro';
@@ -8,8 +9,8 @@ import CategoryBar from './CategoryBar.astro';
 import SpeciesCard from './SpeciesCard.astro';
 import { getCopy, type Locale } from '../../lib/i18n';
 import {
-  appText, breadcrumbJsonLd, countLabel, getAllSpecies, groupHref, groupTitle, hubHref, isGroupIndexed,
-  itemListJsonLd, playHref, sortByName, type Group, type Species,
+  appText, breadcrumbJsonLd, countLabel, getAllSpecies, groupHref, groupPhoto, groupTitle, hubHref, isGroupIndexed,
+  itemListJsonLd, playHref, sortByName, type Group,
 } from '../../lib/species';
 import '../../styles/species.css';
 
@@ -21,20 +22,42 @@ const all = await getAllSpecies();
 const members = sortByName(all.filter((s) => s.group === group.key), locale);
 const pathname = groupHref(group, locale);
 const title = groupTitle(group, members.length, locale, t);
-const description = t.species.descGroup.replace('{group}', group.name[locale]).replace('{count}', countLabel(members.length, t));
-const familyName = (s: Species) => (locale === 'sv' ? s.family.sv : s.family.latin);
+const description = members.length === 1
+  ? t.species.descGroupOne.replace('{group}', group.name[locale])
+  : t.species.descGroup.replace('{group}', group.name[locale]).replace('{count}', countLabel(members.length, t));
+// Grouped by family.latin in both languages (same sections in SV and EN, like related() in species.ts),
+// not by the locale's own display name: the pipeline doesn't yet guarantee one canonical Swedish family
+// name per Latin family, so two species of the same family could otherwise land in two different SV
+// sections while staying one section in EN (controller review, Task 8 fix wave). The SV label is the
+// first member's family.sv in sorted order (members is already locale-sorted, and Array#sort is stable),
+// so the choice is deterministic even while that pipeline guarantee doesn't exist yet; EN always shows
+// the Latin name itself, which is unambiguous by definition. Same rule applies to Task 10's family kicker
+// row and "Fler {family}" heading, see the note there.
+const families = new Map<string, { sv: string; items: typeof members }>();
+for (const s of members) {
+  const existing = families.get(s.family.latin);
+  if (existing) existing.items.push(s);
+  else families.set(s.family.latin, { sv: s.family.sv, items: [s] });
+}
 const byFamily = group.key === 'songbirds'
-  ? [...new Set(members.map(familyName))].sort((a, b) => a.localeCompare(b, locale)).map((name) => ({ name, items: members.filter((s) => familyName(s) === name) }))
+  ? [...families.entries()]
+      .map(([latin, { sv, items }]) => ({ name: locale === 'sv' ? sv : latin, items }))
+      .sort((a, b) => a.name.localeCompare(b.name, locale))
   : [];
+const renderOrder = byFamily.length ? byFamily.flatMap((f) => f.items) : members;
+// Only the species cards likely above the fold skip native lazy-loading (controller review, Task 8 fix wave).
+const eagerQids = new Set(renderOrder.slice(0, 4).map((s) => s.qid));
 const crumbs = [
   { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
   { name: t.species.crumbHub, href: hubHref(locale) },
   { name: group.name[locale], href: pathname },
 ];
-const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, group.name[locale], locale, byFamily.length ? byFamily.flatMap((f) => f.items) : members)];
+const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, group.name[locale], locale, renderOrder)];
+const photo = groupPhoto(group, all);
+const ogImage = photo ? await getImage({ src: photo, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 82 }) : undefined;
 ---
 
-<Layout locale={locale} pathname={pathname} alternatePath={groupHref(group, other)} title={title} description={description} noindex={!isGroupIndexed(group, all)} jsonLd={jsonLd}>
+<Layout locale={locale} pathname={pathname} alternatePath={groupHref(group, other)} title={title} description={description} noindex={!isGroupIndexed(group, all)} jsonLd={jsonLd} ogImage={ogImage?.src}>
   <Nav locale={locale} variant="solid" switchLangHref={groupHref(group, other)} />
   <CategoryBar locale={locale} active={group.key} />
   <main class="group wrap">
@@ -53,15 +76,18 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, group.name[lo
     {byFamily.length > 0 ? (
       byFamily.map((f) => (
         <section class="family">
-          <h3>{f.name}</h3>
+          {/* f.name is always Latin in English (the group key by definition), Swedish on the Swedish
+              page: tagged for pronunciation on the English page only (controller review, Task 8 fix wave,
+              same pattern as SpeciesCard's scientific name). */}
+          <h3 lang={locale === 'en' ? 'la' : undefined}>{f.name}</h3>
           <ul class="sp-cards" role="list">
-            {f.items.map((s) => <li data-item><SpeciesCard species={s} locale={locale} /></li>)}
+            {f.items.map((s) => <li data-item><SpeciesCard species={s} locale={locale} loading={eagerQids.has(s.qid) ? 'eager' : 'lazy'} /></li>)}
           </ul>
         </section>
       ))
     ) : (
       <ul class="sp-cards" role="list">
-        {members.map((s) => <li data-item><SpeciesCard species={s} locale={locale} /></li>)}
+        {members.map((s) => <li data-item><SpeciesCard species={s} locale={locale} loading={eagerQids.has(s.qid) ? 'eager' : 'lazy'} /></li>)}
       </ul>
     )}
 

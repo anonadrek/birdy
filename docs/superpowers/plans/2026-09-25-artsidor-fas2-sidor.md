@@ -1728,12 +1728,12 @@ import { Image } from 'astro:assets';
 import type { Locale } from '../../lib/i18n';
 import { heroOf, speciesHref, speciesImage, type Species } from '../../lib/species';
 
-interface Props { species: Species; locale: Locale }
-const { species: s, locale } = Astro.props;
+interface Props { species: Species; locale: Locale; loading?: 'eager' | 'lazy' }
+const { species: s, locale, loading = 'lazy' } = Astro.props;
 ---
 
 <a class="scard" href={speciesHref(s, locale)}>
-  <Image src={speciesImage(heroOf(s).file)} alt="" width={480} widths={[320, 480]} sizes="(max-width: 760px) 45vw, 220px" loading="lazy" decoding="async" />
+  <Image src={speciesImage(heroOf(s).file)} alt="" width={480} widths={[320, 480]} sizes="(max-width: 760px) 45vw, 220px" loading={loading} decoding="async" />
   <span class="scard-name">{s.names[locale]}</span>
   <span class="scard-latin" lang="la">{s.names.scientific}</span>
 </a>
@@ -1891,6 +1891,8 @@ Expected: bygget går igenom (komponenterna används inte än) och palettvakten 
 git add src/components/ui/Icon.astro src/styles/species.css src/components/species/CategoryBar.astro src/components/species/SpeciesCard.astro
 git commit -m "feat(website): kategoriraden, artkortet och delade stilar för artsidorna"
 ```
+
+(Tillägg, Task 8:s granskning 2026-10-07, egen commit skild från Task 8: `SpeciesCard.astro` fick en `loading` prop, `'eager' | 'lazy'`, default `'lazy'` så hubbens och gruppens befintliga användning är oförändrad; gruppsidan skickar `'eager'` för korten ovan vecket, se Task 8:s not.)
 
 ---
 
@@ -2083,24 +2085,31 @@ const firstLetter = (name: string) => name.charAt(0).toLocaleUpperCase(locale);
 const letters = [...new Set(sorted.map((s) => firstLetter(s.names[locale])))];
 const pathname = hubHref(locale);
 const n = all.length;
-const title = t.species.titleHub.replace('{count}', countLabel(n, t));
 // Grammar for n=1 ("1 vanlig fågel", not "1 vanliga fåglar"): own copy keys, not countLabel's {n} template,
 // since these are full sentences, not just a number (controller review 2026-10-07). The title doesn't need
-// one: it already goes through countLabel ("1 art" / "16 arter"), which is correct for every n.
+// one for n=1: it already goes through countLabel ("1 art" / "16 arter"), which is correct for every n.
 // n=0 (production right after Task 15's merge, before the first species is published, spec Task 15 Step 4):
-// no count-dependent sentence reads sensibly with "0", so both get a dedicated "coming soon" line instead.
+// no count-dependent sentence reads sensibly with "0", so the title gets its own dedicated copy key too
+// (third controller review, same day) instead of rendering "...: 0 arter med foton | Birdy".
+const title = n === 0 ? t.species.titleHubEmpty : t.species.titleHub.replace('{count}', countLabel(n, t));
 const leadText = n === 0 ? t.species.hubLeadEmpty : n === 1 ? t.species.hubLeadOne : t.species.hubLead.replace('{n}', String(n));
-const description = n === 0 ? t.species.hubLeadEmpty : n === 1 ? t.species.descHubOne : t.species.descHub.replace('{n}', String(n));
+// descHubEmpty, not hubLeadEmpty reused: the English lead ran to 156 characters, one over spec §12's
+// 120-to-155 cap on meta descriptions (Task 8 fix wave); its own, shorter copy key stays in range.
+const description = n === 0 ? t.species.descHubEmpty : n === 1 ? t.species.descHubOne : t.species.descHub.replace('{n}', String(n));
 const crumbs = [
   { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
   { name: t.species.crumbHub, href: pathname },
 ];
-const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace(/ \| Birdy$/, ''), locale, sorted)];
+// At n=0 there is no list to describe: an ItemList with zero items would be a CollectionPage claiming
+// to list species it doesn't have (third controller review, same day). Breadcrumbs alone still apply.
+const jsonLd = n === 0 ? [breadcrumbJsonLd(crumbs)] : [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace(/ \| Birdy$/, ''), locale, sorted)];
 ---
 
 <Layout locale={locale} pathname={pathname} alternatePath={hubHref(other)} title={title} description={description} noindex={n === 0} jsonLd={jsonLd}>
   <Nav locale={locale} variant="solid" switchLangHref={hubHref(other)} />
-  <CategoryBar locale={locale} active="all" search={false} />
+  {/* The bar's only chip at n=0 would be "All species (0)": nothing to filter into, so it is hidden
+      along with the rest of the browsing UI below (third controller review, same day). */}
+  {n > 0 && <CategoryBar locale={locale} active="all" search={false} />}
   <main class="hub wrap">
     <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
       <ol>
@@ -2213,7 +2222,14 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace
     const raw = input?.value.trim() ?? '';
     if (raw) url.searchParams.set('q', raw);
     else url.searchParams.delete('q');
-    history.replaceState(null, '', url);
+    try {
+      // Safari throttles history.replaceState (SecurityError past a call-rate limit); keeping the URL
+      // in sync with the search box is a nicety, not something the filtering above depends on
+      // (third controller review, same day).
+      history.replaceState(null, '', url);
+    } catch {
+      // Filtering already happened above; losing the URL sync is harmless.
+    }
   };
   const params = new URLSearchParams(location.search);
   if (input && params.has('q')) {
@@ -2226,6 +2242,12 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace
 
 <style>
   .hub { padding-top: 26px; padding-bottom: 88px; }
+  /* <search> is a new HTML sectioning element: some engines don't yet default it to block, so it is set
+     explicitly. That same rule would otherwise beat the UA [hidden] rule on specificity and keep the box
+     visible before the script runs; the second declaration restores [hidden] (third controller review,
+     same day). */
+  search.hub-search { display: block; }
+  .hub-search[hidden] { display: none; }
   .hub-search { margin: 22px 0 0; max-width: 420px; }
   .hub-search input { width: 100%; box-sizing: border-box; font: inherit; font-size: 15px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--ink); }
   .hub-search input:focus-visible { outline: 3px solid var(--rust); outline-offset: 2px; }
@@ -2367,6 +2389,7 @@ Expected: FAIL (404 på `/sv/arter/ugglor/`)
 
 ```astro
 ---
+import { getImage } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../Nav.astro';
 import Footer from '../Footer.astro';
@@ -2376,8 +2399,8 @@ import CategoryBar from './CategoryBar.astro';
 import SpeciesCard from './SpeciesCard.astro';
 import { getCopy, type Locale } from '../../lib/i18n';
 import {
-  appText, breadcrumbJsonLd, countLabel, getAllSpecies, groupHref, groupTitle, hubHref, isGroupIndexed,
-  itemListJsonLd, playHref, sortByName, type Group, type Species,
+  appText, breadcrumbJsonLd, countLabel, getAllSpecies, groupHref, groupPhoto, groupTitle, hubHref, isGroupIndexed,
+  itemListJsonLd, playHref, sortByName, type Group,
 } from '../../lib/species';
 import '../../styles/species.css';
 
@@ -2389,20 +2412,42 @@ const all = await getAllSpecies();
 const members = sortByName(all.filter((s) => s.group === group.key), locale);
 const pathname = groupHref(group, locale);
 const title = groupTitle(group, members.length, locale, t);
-const description = t.species.descGroup.replace('{group}', group.name[locale]).replace('{count}', countLabel(members.length, t));
-const familyName = (s: Species) => (locale === 'sv' ? s.family.sv : s.family.latin);
+const description = members.length === 1
+  ? t.species.descGroupOne.replace('{group}', group.name[locale])
+  : t.species.descGroup.replace('{group}', group.name[locale]).replace('{count}', countLabel(members.length, t));
+// Grouped by family.latin in both languages (same sections in SV and EN, like related() in species.ts),
+// not by the locale's own display name: the pipeline doesn't yet guarantee one canonical Swedish family
+// name per Latin family, so two species of the same family could otherwise land in two different SV
+// sections while staying one section in EN (controller review, Task 8 fix wave). The SV label is the
+// first member's family.sv in sorted order (members is already locale-sorted, and Array#sort is stable),
+// so the choice is deterministic even while that pipeline guarantee doesn't exist yet; EN always shows
+// the Latin name itself, which is unambiguous by definition. Same rule applies to Task 10's family kicker
+// row and "Fler {family}" heading, see the note there.
+const families = new Map<string, { sv: string; items: typeof members }>();
+for (const s of members) {
+  const existing = families.get(s.family.latin);
+  if (existing) existing.items.push(s);
+  else families.set(s.family.latin, { sv: s.family.sv, items: [s] });
+}
 const byFamily = group.key === 'songbirds'
-  ? [...new Set(members.map(familyName))].sort((a, b) => a.localeCompare(b, locale)).map((name) => ({ name, items: members.filter((s) => familyName(s) === name) }))
+  ? [...families.entries()]
+      .map(([latin, { sv, items }]) => ({ name: locale === 'sv' ? sv : latin, items }))
+      .sort((a, b) => a.name.localeCompare(b.name, locale))
   : [];
+const renderOrder = byFamily.length ? byFamily.flatMap((f) => f.items) : members;
+// Only the species cards likely above the fold skip native lazy-loading (controller review, Task 8 fix wave).
+const eagerQids = new Set(renderOrder.slice(0, 4).map((s) => s.qid));
 const crumbs = [
   { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
   { name: t.species.crumbHub, href: hubHref(locale) },
   { name: group.name[locale], href: pathname },
 ];
-const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, group.name[locale], locale, byFamily.length ? byFamily.flatMap((f) => f.items) : members)];
+const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, group.name[locale], locale, renderOrder)];
+const photo = groupPhoto(group, all);
+const ogImage = photo ? await getImage({ src: photo, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 82 }) : undefined;
 ---
 
-<Layout locale={locale} pathname={pathname} alternatePath={groupHref(group, other)} title={title} description={description} noindex={!isGroupIndexed(group, all)} jsonLd={jsonLd}>
+<Layout locale={locale} pathname={pathname} alternatePath={groupHref(group, other)} title={title} description={description} noindex={!isGroupIndexed(group, all)} jsonLd={jsonLd} ogImage={ogImage?.src}>
   <Nav locale={locale} variant="solid" switchLangHref={groupHref(group, other)} />
   <CategoryBar locale={locale} active={group.key} />
   <main class="group wrap">
@@ -2421,15 +2466,18 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, group.name[lo
     {byFamily.length > 0 ? (
       byFamily.map((f) => (
         <section class="family">
-          <h3>{f.name}</h3>
+          {/* f.name is always Latin in English (the group key by definition), Swedish on the Swedish
+              page: tagged for pronunciation on the English page only (controller review, Task 8 fix wave,
+              same pattern as SpeciesCard's scientific name). */}
+          <h3 lang={locale === 'en' ? 'la' : undefined}>{f.name}</h3>
           <ul class="sp-cards" role="list">
-            {f.items.map((s) => <li data-item><SpeciesCard species={s} locale={locale} /></li>)}
+            {f.items.map((s) => <li data-item><SpeciesCard species={s} locale={locale} loading={eagerQids.has(s.qid) ? 'eager' : 'lazy'} /></li>)}
           </ul>
         </section>
       ))
     ) : (
       <ul class="sp-cards" role="list">
-        {members.map((s) => <li data-item><SpeciesCard species={s} locale={locale} /></li>)}
+        {members.map((s) => <li data-item><SpeciesCard species={s} locale={locale} loading={eagerQids.has(s.qid) ? 'eager' : 'lazy'} /></li>)}
       </ul>
     )}
 
@@ -2457,13 +2505,16 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, group.name[lo
 
 ```ts
 import type { Locale } from './i18n';
-import { ABOUT_SLUG, activeGroups, assertUniqueSlugs, getAllSpecies } from './species';
+import { ABOUT_SLUG, GROUPS, activeGroups, assertUniqueSlugs, getAllSpecies } from './species';
 
 /** Every page under /species/ and /sv/arter/ except the hub and the about page (spec §4). */
 export async function speciesPaths(locale: Locale) {
   const all = await getAllSpecies();
+  // Checked against all 15 GROUPS, not just the active ones (controller review, Task 8 fix wave): a slug
+  // collision must fail the very first build, not wait for the publish that happens to activate the
+  // colliding group, by which point the build has looked clean for however long the group sat empty.
+  assertUniqueSlugs([...GROUPS.map((g) => g.slug[locale]), ABOUT_SLUG[locale]], locale);
   const groups = activeGroups(all);
-  assertUniqueSlugs([...groups.map((g) => g.slug[locale]), ABOUT_SLUG[locale]], locale);
   return groups.map((group) => ({ params: { slug: group.slug[locale] }, props: { group } }));
 }
 ```
@@ -3207,13 +3258,15 @@ Ersätt `src/lib/species-routes.ts` med:
 
 ```ts
 import type { Locale } from './i18n';
-import { ABOUT_SLUG, activeGroups, assertUniqueSlugs, getAllSpecies } from './species';
+import { ABOUT_SLUG, GROUPS, activeGroups, assertUniqueSlugs, getAllSpecies } from './species';
 
 /** Every page under /species/ and /sv/arter/ except the hub and the about page (spec §4). */
 export async function speciesPaths(locale: Locale) {
   const all = await getAllSpecies();
+  // Checked against all 15 GROUPS, not just the active ones (carried over from Task 8's fix wave): a
+  // slug collision must fail the very first build, not wait for the publish that activates the group.
+  assertUniqueSlugs([...all.map((s) => s.slug[locale]), ...GROUPS.map((g) => g.slug[locale]), ABOUT_SLUG[locale]], locale);
   const groups = activeGroups(all);
-  assertUniqueSlugs([...all.map((s) => s.slug[locale]), ...groups.map((g) => g.slug[locale]), ABOUT_SLUG[locale]], locale);
   return [
     ...all.map((species) => ({ params: { slug: species.slug[locale] }, props: { species } })),
     ...groups.map((group) => ({ params: { slug: group.slug[locale] }, props: { group } })),
@@ -3236,6 +3289,8 @@ const { locale, species, group } = Astro.props;
 {species && <SpeciesArticle species={species} locale={locale} />}
 {group && <GroupPage group={group} locale={locale} />}
 ```
+
+**Tillägg (Task 8:s granskning 2026-10-07): samma familjeregel här.** Artsidans familjerad (`t.species.facts.family`) och "Fler {familj}"-rubriken (`moreFamily`) visar artens EGNA `family.sv`/`family.latin` direkt (koden nedan, raderna med `familyShown`) -- det är ingen tvetydighet här som på gruppsidan, eftersom en artsida bara handlar om EN art, inte en lista av arter som kan ha olika `family.sv`-stavningar för samma `family.latin`. Samma `related()`-funktion (grupperar på `family.latin`, se Task 4) används för att hitta vilka andra arter som räknas som samma familj till "Fler"-länken; de visade NAMNEN kommer fortfarande från den aktuella arten själv, inte en aggregerad etikett. Gruppsidans `GroupPage.astro` (Task 8) löser den tvetydigheten med en stabil "första förekomst vinner"-regel, tills pipelinen skriver ett kanoniskt svenskt familjenamn per latinsk familj.
 
 - [ ] **Step 5: Kör testerna**
 
@@ -3536,19 +3591,21 @@ Ersätt `src/lib/species-routes.ts` med:
 
 ```ts
 import type { Locale } from './i18n';
-import { ABOUT_SLUG, activeGroups, assertUniqueSlugs, getAllSpecies, getComparisons } from './species';
+import { ABOUT_SLUG, GROUPS, activeGroups, assertUniqueSlugs, getAllSpecies, getComparisons } from './species';
 
 /** Every page under /species/ and /sv/arter/ except the hub and the about page (spec §4). */
 export async function speciesPaths(locale: Locale) {
   const all = await getAllSpecies();
-  const groups = activeGroups(all);
   const comparisons = await getComparisons();
+  // Checked against all 15 GROUPS, not just the active ones (carried over from Task 8's fix wave): a
+  // slug collision must fail the very first build, not wait for the publish that activates the group.
   assertUniqueSlugs([
     ...all.map((s) => s.slug[locale]),
-    ...groups.map((g) => g.slug[locale]),
+    ...GROUPS.map((g) => g.slug[locale]),
     ...comparisons.map((c) => c.slug[locale]),
     ABOUT_SLUG[locale],
   ], locale);
+  const groups = activeGroups(all);
   return [
     ...all.map((species) => ({ params: { slug: species.slug[locale] }, props: { species } })),
     ...groups.map((group) => ({ params: { slug: group.slug[locale] }, props: { group } })),
