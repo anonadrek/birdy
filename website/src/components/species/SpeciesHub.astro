@@ -1,0 +1,158 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../Nav.astro';
+import Footer from '../Footer.astro';
+import Kicker from '../ui/Kicker.astro';
+import JournalHeadline from '../ui/JournalHeadline.astro';
+import CategoryBar from './CategoryBar.astro';
+import { getCopy, type Locale } from '../../lib/i18n';
+import {
+  aboutHref, activeGroups, breadcrumbJsonLd, comparisonHref, comparisonPair, countLabel, getAllSpecies, getComparisons,
+  groupHref, groupPhoto, groupSizes, hubHref, itemListJsonLd, pairNames, searchKey, sortByName, speciesHref,
+} from '../../lib/species';
+import '../../styles/species.css';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getCopy(locale);
+const other: Locale = locale === 'sv' ? 'en' : 'sv';
+const all = await getAllSpecies();
+const sizes = groupSizes(all);
+const groups = activeGroups(all);
+const sorted = sortByName(all, locale);
+const comparisons = (await getComparisons())
+  .map((c) => {
+    const names = pairNames(comparisonPair(c, locale, all), locale);
+    return { href: comparisonHref(c, locale), label: t.species.compareItem.replace('{a}', names[0]).replace('{b}', names[1]) };
+  })
+  .sort((a, b) => a.label.localeCompare(b.label, locale));
+const firstLetter = (name: string) => name.charAt(0).toLocaleUpperCase(locale);
+const letters = [...new Set(sorted.map((s) => firstLetter(s.names[locale])))];
+const pathname = hubHref(locale);
+const n = all.length;
+const title = t.species.titleHub.replace('{count}', countLabel(n, t));
+const crumbs = [
+  { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
+  { name: t.species.crumbHub, href: pathname },
+];
+const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace(/ \| Birdy$/, ''), locale, sorted)];
+---
+
+<Layout locale={locale} pathname={pathname} alternatePath={hubHref(other)} title={title} description={t.species.descHub.replace('{n}', String(n))} jsonLd={jsonLd}>
+  <Nav locale={locale} variant="solid" switchLangHref={hubHref(other)} />
+  <CategoryBar locale={locale} active="all" search={false} />
+  <main class="hub wrap">
+    <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
+      <ol>
+        <li><a href={crumbs[0].href} data-crumb>{crumbs[0].name}</a></li>
+        <li><span aria-current="page" data-crumb>{crumbs[1].name}</span></li>
+      </ol>
+    </nav>
+    <Kicker text={t.species.kicker} />
+    <JournalHeadline text={t.species.hubHeadline} level="h1" align="left" size="clamp(38px, 5vw, 60px)" />
+    <p class="lead">{t.species.hubLead.replace('{n}', String(n))}</p>
+    <div class="hub-search">
+      <label class="sr-only" for="species-search">{t.species.searchLabel}</label>
+      <input id="species-search" name="q" type="search" placeholder={t.species.searchPlaceholder} autocomplete="off" />
+    </div>
+
+    <h2 class="sp-h2">{t.species.hubGroups}</h2>
+    <ul class="groups" role="list">
+      {groups.map((g) => {
+        const photo = groupPhoto(g, all);
+        return (
+          <li>
+            <a class="gcard" href={groupHref(g, locale)}>
+              {photo && <Image src={photo} alt="" widths={[320, 480]} sizes="(max-width: 760px) 45vw, 200px" loading="lazy" decoding="async" />}
+              <span class="gcard-name">{g.name[locale]}</span>
+              <span class="gcard-n">{countLabel(sizes.get(g.key) ?? 0, t)}</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+
+    {comparisons.length > 0 && (
+      <Fragment>
+        <h2 class="sp-h2">{t.species.hubCompare}</h2>
+        <ul class="compare-list" role="list">
+          {comparisons.map((c) => <li><a href={c.href} data-compare-link>{c.label}</a></li>)}
+        </ul>
+      </Fragment>
+    )}
+
+    <h2 class="sp-h2" id="a-o">{t.species.hubAll}</h2>
+    <p class="no-results" data-no-results hidden>{t.species.noResults}</p>
+    {letters.map((letter) => (
+      <section class="letter" data-letter>
+        <h3>{letter}</h3>
+        <ul role="list">
+          {sorted.filter((s) => firstLetter(s.names[locale]) === letter).map((s) => (
+            <li data-item data-search={searchKey(s)}>
+              <a href={speciesHref(s, locale)}><span>{s.names[locale]}</span> <i>{s.names.scientific}</i></a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <p class="about-link"><a href={aboutHref(locale)}>{t.species.hubAbout}</a></p>
+  </main>
+  <Footer locale={locale} switchLangHref={hubHref(other)} />
+</Layout>
+
+<script>
+  const input = document.querySelector<HTMLInputElement>('#species-search');
+  const items = [...document.querySelectorAll<HTMLElement>('[data-search]')];
+  const sections = [...document.querySelectorAll<HTMLElement>('[data-letter]')];
+  const empty = document.querySelector<HTMLElement>('[data-no-results]');
+  const norm = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim();
+  const apply = () => {
+    const q = norm(input?.value ?? '');
+    let shown = 0;
+    for (const item of items) {
+      const hit = !q || (item.dataset.search ?? '').includes(q);
+      item.hidden = !hit;
+      if (hit) shown += 1;
+    }
+    for (const section of sections) section.hidden = !section.querySelector('[data-item]:not([hidden])');
+    if (empty) empty.hidden = shown > 0;
+  };
+  const params = new URLSearchParams(location.search);
+  if (input && params.has('q')) {
+    input.value = params.get('q') ?? '';
+    input.focus();
+  }
+  apply();
+  input?.addEventListener('input', apply);
+</script>
+
+<style>
+  .hub { padding-top: 26px; padding-bottom: 88px; }
+  .hub-search { margin: 22px 0 0; max-width: 420px; }
+  .hub-search input { width: 100%; box-sizing: border-box; font: inherit; font-size: 15px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--ink); }
+  .hub-search input:focus-visible { outline: 3px solid var(--rust); outline-offset: 2px; }
+  .groups { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+  .gcard { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 6px; transition: transform .25s var(--ease-paper); }
+  .gcard:hover { transform: translateY(-2px); }
+  .gcard :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
+  .gcard-name { display: block; margin: 8px 4px 0; font-weight: 600; font-size: 14px; }
+  .gcard-n { display: block; margin: 0 4px 4px; font-size: 12.5px; color: var(--muted); }
+  .compare-list { list-style: none; margin: 0; padding: 0; columns: 2 260px; column-gap: 28px; }
+  .compare-list li { break-inside: avoid; padding: 6px 0; border-bottom: 1px dotted var(--line); font-size: 15px; }
+  .compare-list a:hover { color: var(--rust); }
+  .letter { margin-top: 22px; }
+  .letter h3 { font-size: 26px; color: var(--rust); margin: 0 0 8px; }
+  .letter ul { list-style: none; margin: 0; padding: 0; columns: 3 220px; column-gap: 28px; }
+  .letter li { break-inside: avoid; padding: 5px 0; border-bottom: 1px dotted var(--line); font-size: 14.5px; }
+  .letter li[hidden], .letter[hidden] { display: none; }
+  .letter a:hover span { color: var(--rust); }
+  .letter i { font-family: var(--font-script); font-style: normal; font-size: 16px; color: var(--muted); margin-left: 4px; }
+  .no-results { color: var(--muted); }
+  .about-link { margin: 48px 0 0; font-weight: 600; }
+  .about-link a { color: var(--rust); border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+  @media (max-width: 760px) {
+    .groups { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  }
+</style>
