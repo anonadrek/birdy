@@ -83,3 +83,36 @@ test('marginalia kan sakna ett språk (null), och wikipedia kan sakna vilken art
   assert.ok(result.success, result.success ? '' : messages(result));
   assert.deepEqual(result.data.marginalia, { sv: 'Bara på svenska.', en: null });
 });
+
+test('länkar i krediterna måste vara http(s)', () => {
+  const record = species('Q25485');
+  const bad = { ...record, images: record.images.map((i, n) => (n === 0 ? { ...i, sourceUrl: 'javascript:alert(1)' } : i)), audio: { ...record.audio, licenseUrl: 'data:text/html,x' } };
+  const text = messages(speciesRecord.safeParse(bad));
+  assert.match(text, /^images\.0\.sourceUrl: /m);
+  assert.match(text, /^audio\.licenseUrl: /m);
+});
+
+test('datumen: verification.at är YYYY-MM-DD, generated.text.at datum eller pipelinens isoformat()', () => {
+  const record = species('Q25485');
+  const withAt = (verificationAt, textAt) => ({ ...record, verification: { ...record.verification, at: verificationAt }, generated: { text: { at: textAt } } });
+  assert.ok(speciesRecord.safeParse(withAt('2026-11-20', '2026-11-21T10:00:00.123456+00:00')).success);
+  assert.ok(speciesRecord.safeParse(withAt('2026-11-20', '2026-11-21')).success);
+  assert.match(messages(speciesRecord.safeParse(withAt('2026-11-20T10:00:00', '2026-11-21'))), /^verification\.at: /m);
+  assert.match(messages(speciesRecord.safeParse(withAt('2026-11-20', 'i går'))), /^generated\.text\.at: /m);
+  const comparison = read('comparisons', 'Q25404_Q25485.json');
+  assert.ok(comparisonRecord.safeParse({ ...comparison, generated: { at: '2026-11-26T08:00:00+00:00' } }).success);
+  assert.equal(comparisonRecord.safeParse({ ...comparison, generated: { at: '26/11' } }).success, false);
+});
+
+test('en arts foton och inspelning ligger under dess egen QID', () => {
+  const record = species('Q25485');
+  const bad = { ...record, images: record.images.map((i, n) => (n === 0 ? { ...i, file: 'Q25404/hero.webp' } : i)), audio: { ...record.audio, file: 'Q25404/voice.mp3' } };
+  const text = messages(speciesRecord.safeParse(bad));
+  assert.match(text, /^images\.0\.file: Q25485: Q25404\/hero\.webp ligger inte under Q25485\//m);
+  assert.match(text, /^audio\.file: Q25485: Q25404\/voice\.mp3 ligger inte under Q25485\//m);
+});
+
+test('en jämförelse mellan en art och sig själv är ett fel', () => {
+  const comparison = read('comparisons', 'Q25404_Q25485.json');
+  assert.match(messages(comparisonRecord.safeParse({ ...comparison, b: comparison.a })), /^b: .*samma art/m);
+});

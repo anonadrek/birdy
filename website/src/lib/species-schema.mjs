@@ -16,12 +16,16 @@ const localized = z.object({ sv: z.string().min(1), en: z.string().min(1) });
 const sentence = z.object({ text: z.string().min(1), factIds: z.array(z.string().min(1)).min(1) });
 const sentences = z.array(sentence).min(1);
 const recordStatus = z.enum(['pending', 'ok', 'failed']);
+// Both URLs become links on the page: only http(s), never javascript: or data:.
 const licensed = {
   author: z.string().nullable(),
   license: z.string().min(1),
-  licenseUrl: z.url().nullable(),
-  sourceUrl: z.url(),
+  licenseUrl: z.httpUrl().nullable(),
+  sourceUrl: z.httpUrl(),
 };
+// The pipeline's timestamps are Python isoformat() in UTC ("2026-11-21T10:00:00.123456+00:00"); the
+// test data uses plain dates. The sitemap reads them as lastmod.
+const timestamp = z.union([z.iso.date(), z.iso.datetime({ offset: true })]);
 const wikiRef = z.object({ title: z.string().min(1), revision: z.string().min(1) });
 const langText = z.object({
   lead: sentences,
@@ -45,7 +49,9 @@ const langText = z.object({
 // the site never branches on them.
 const verification = z.object({
   method: z.literal('auto'),
-  at: z.string().regex(/^\d{4}-\d{2}-\d{2}/),
+  // Always YYYY-MM-DD: web verify writes the date, web import and the spot check take it from --date
+  // (validated) or today (fas 1b, Minor 7).
+  at: z.iso.date(),
   model: z.string().min(1),
   spotChecked: z.boolean(),
 });
@@ -105,11 +111,20 @@ export const speciesPage = z
       other: z.object({ scientific: z.string().min(1), qid: qid.optional() }).optional(),
     })).default([]),
     text: z.object({ sv: langText, en: langText }),
-    generated: z.object({ text: z.object({ at: z.string() }).optional() }).optional(),
+    generated: z.object({ text: z.object({ at: timestamp }).optional() }).optional(),
   })
   .superRefine((d, ctx) => {
     if (!d.images.some((i) => i.role === 'hero')) {
       ctx.addIssue({ code: 'custom', path: ['images'], message: `${d.qid}: status ok kräver huvudfoto` });
+    }
+    // A species' files live in its own folder (src/assets/species/<QID>/), never another species'.
+    d.images.forEach((image, i) => {
+      if (!image.file.startsWith(`${d.qid}/`)) {
+        ctx.addIssue({ code: 'custom', path: ['images', i, 'file'], message: `${d.qid}: ${image.file} ligger inte under ${d.qid}/` });
+      }
+    });
+    if (d.audio && !d.audio.file.startsWith(`${d.qid}/`)) {
+      ctx.addIssue({ code: 'custom', path: ['audio', 'file'], message: `${d.qid}: ${d.audio.file} ligger inte under ${d.qid}/` });
     }
   });
 
@@ -155,9 +170,10 @@ export const comparisonRecord = z
     publish: z.boolean(),
     slug: localized,
     text: z.object({ sv: compareText, en: compareText }).nullable(),
-    generated: z.object({ at: z.string() }).optional(),
+    generated: z.object({ at: timestamp }).optional(),
   })
   .superRefine((d, ctx) => {
+    if (d.a === d.b) ctx.addIssue({ code: 'custom', path: ['b'], message: `${d.slug.sv}: a och b är samma art (${d.a})` });
     if (d.status === 'ok' && !d.text) ctx.addIssue({ code: 'custom', message: `${d.slug.sv}: status ok kräver text` });
     if (d.status !== 'ok' && d.text) ctx.addIssue({ code: 'custom', message: `${d.slug.sv}: status ${d.status} ska ha text: null` });
     if (d.publish && d.status !== 'ok') ctx.addIssue({ code: 'custom', message: `${d.slug.sv}: publish kräver status ok` });

@@ -3,7 +3,7 @@ import type { ImageMetadata } from 'astro';
 import type { z } from 'astro/zod';
 import groupData from '../data/species-groups.json';
 import type { Copy, Locale } from './i18n';
-import { audioPublicPath, hasPageContract, isComparisonBuilt, isPreview, isSpeciesBuilt, useFixtures } from './species-source.mjs';
+import { audioPublicPath, comparisonsDir, hasPageContract, isComparisonBuilt, isPreview, isSpeciesBuilt, speciesDir, useFixtures } from './species-source.mjs';
 import type { speciesPage } from './species-schema.mjs';
 import speciesImages from 'virtual:birdy-species-images';
 
@@ -64,7 +64,11 @@ export function audioHref(s: Species): string | undefined {
 let records: SpeciesRecord[] | undefined;
 /** Every species file, whatever its status. Used for names (look-alikes), never for pages. */
 export async function getAllRecords(): Promise<SpeciesRecord[]> {
-  records ??= (await getCollection('species')).map((e) => e.data);
+  records ??= (await getCollection('species')).map((e) => {
+    // The entry id is the file name (content.config.ts); the pipeline names every file after its QID.
+    if (e.id !== e.data.qid) throw new Error(`${speciesDir()}/${e.id}.json: qid är ${e.data.qid}, filen ska heta ${e.data.qid}.json`);
+    return e.data;
+  });
   return records;
 }
 
@@ -81,7 +85,14 @@ let builtComparisons: Comparison[] | undefined;
 export async function getComparisons(): Promise<Comparison[]> {
   if (!builtComparisons) {
     const qids = new Set((await getAllSpecies()).map((s) => s.qid));
-    builtComparisons = (await getCollection('comparisons')).map((e) => e.data).filter((c) => isComparisonBuilt(c, qids));
+    builtComparisons = (await getCollection('comparisons'))
+      .map((e) => {
+        // The pipeline names the file after the two QIDs in string order (comparison_path in compare.py).
+        const expected = [e.data.a, e.data.b].sort().join('_');
+        if (e.id !== expected) throw new Error(`${comparisonsDir()}/${e.id}.json: a och b är ${e.data.a} och ${e.data.b}, filen ska heta ${expected}.json`);
+        return e.data;
+      })
+      .filter((c) => isComparisonBuilt(c, qids));
   }
   return builtComparisons;
 }
