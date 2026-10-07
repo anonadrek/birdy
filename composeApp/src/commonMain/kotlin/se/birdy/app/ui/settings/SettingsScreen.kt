@@ -24,6 +24,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.List
 import androidx.compose.material.icons.outlined.CalendarToday
+import androidx.compose.material.icons.outlined.CardMembership
 import androidx.compose.material.icons.outlined.EmojiEvents
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Language
@@ -84,12 +85,14 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_language_sv
 import birdy_bird_scanner.composeapp.generated.resources.settings_language_system
 import birdy_bird_scanner.composeapp.generated.resources.settings_location_caption
 import birdy_bird_scanner.composeapp.generated.resources.settings_location_section
+import birdy_bird_scanner.composeapp.generated.resources.settings_manage_subscription_caption
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_cancel
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_save
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_title
 import birdy_bird_scanner.composeapp.generated.resources.settings_notifications_disabled_helpline
 import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_feedback
+import birdy_bird_scanner.composeapp.generated.resources.settings_row_manage_subscription
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_privacy
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_rate
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_share
@@ -123,6 +126,7 @@ import se.birdy.app.ui.theme.paperBackground
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.datastore.AppLanguage
+import se.birdy.domain.premium.PremiumTier
 
 @Composable
 fun SettingsScreen(
@@ -161,6 +165,7 @@ fun SettingsScreen(
                 SettingsEffect.ShareApp -> shareApp(shareText)
                 SettingsEffect.SendFeedback -> openMailto("albin@abrahamssons.se", feedbackSubject)
                 SettingsEffect.OpenAbout -> onNavigateToAbout()
+                is SettingsEffect.OpenManageSubscriptionUrl -> openManageSubscription(effect.sku)
             }
         }
     }
@@ -188,6 +193,12 @@ fun SettingsScreen(
                 }
                 item { SectionHeader(stringResource(Res.string.settings_section_account)) }
                 item {
+                    // Play policy 9900533: an active yearly subscription must link to an online
+                    // way to manage or cancel it. Lifetime is a one-time purchase (nothing to
+                    // cancel) and early-member/debug overrides are not real Play subscriptions
+                    // either (see SettingsUiState.playSubscriptionTier KDoc), so the row — and
+                    // its caption below the card — only ever show for a real YEARLY tier.
+                    val showManageSubscription = state.playSubscriptionTier == PremiumTier.YEARLY
                     PaperCard {
                         SettingsRow(
                             icon = Icons.Outlined.Person,
@@ -201,6 +212,25 @@ fun SettingsScreen(
                             label = stringResource(Res.string.settings_label_language),
                             value = stringResource(state.language.labelRes()),
                             onClick = { showLanguageDialog = true },
+                        )
+                        if (showManageSubscription) {
+                            DashedDivider()
+                            SettingsRow(
+                                icon = Icons.Outlined.CardMembership,
+                                label = stringResource(Res.string.settings_row_manage_subscription),
+                                value = null,
+                                onClick = { viewModel.openManageSubscription() },
+                            )
+                        }
+                    }
+                    // The note under the card, lined up with the section header above it (same
+                    // pattern as the Location section's caption below).
+                    if (showManageSubscription) {
+                        Text(
+                            text = stringResource(Res.string.settings_manage_subscription_caption),
+                            color = MarginaliaInk,
+                            fontSize = 12.sp,
+                            modifier = Modifier.padding(start = SectionInset, end = SectionInset, top = 6.dp),
                         )
                     }
                 }
