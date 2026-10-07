@@ -18,6 +18,7 @@ import kotlinx.datetime.TimeZone
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BackTopBar
 import se.birdy.app.ui.components.JournalLoading
+import se.birdy.app.ui.components.PlatformBackHandler
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.paperBackground
 import se.birdy.content.Locale
@@ -31,6 +32,13 @@ fun MatchResultScreen(
 ) {
     val state by viewModel.state.collectAsState()
     val s = state
+    // While a find is being saved there is no way back (release 1.3.0 Task 7b review): the arrow
+    // is disabled and the system back gesture is swallowed here, so the two still do the same
+    // thing, like "Avbryt", which is disabled too. Leaving mid-save is the window PR #21 closed:
+    // the screen must stay until the save has succeeded (it then goes back by itself on
+    // Disambig) or failed (its error is shown here).
+    val saving = s.isSaving()
+    PlatformBackHandler(enabled = saving) {}
     if (s is MatchResultUiState.Match) {
         // Only the Match view has a photo top behind the status bar (Plan 3 Task 6); it draws its
         // own glass back button over the photo (release 1.3.0 Task 7b).
@@ -50,7 +58,7 @@ fun MatchResultScreen(
     // stays put while their content scrolls (release 1.3.0 Task 7b: Disambig's "Avbryt" sat
     // below the candidates, NoBird had only "Försök igen", the error text had nothing).
     Column(modifier = Modifier.fillMaxSize().paperBackground().statusBarsPadding()) {
-        BackTopBar(onBack = onBack)
+        BackTopBar(onBack = onBack, enabled = !saving)
         Box(modifier = Modifier.fillMaxWidth().weight(1f)) {
             when (s) {
                 MatchResultUiState.Loading -> JournalLoading()
@@ -83,3 +91,10 @@ fun MatchResultScreen(
         }
     }
 }
+
+private fun MatchResultUiState.isSaving(): Boolean =
+    when (this) {
+        is MatchResultUiState.Match -> saveStatus == MatchResultUiState.SaveStatus.Saving
+        is MatchResultUiState.Disambig -> saveStatus == MatchResultUiState.SaveStatus.Saving
+        else -> false
+    }

@@ -18,6 +18,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import birdy_bird_scanner.composeapp.generated.resources.Res
@@ -33,6 +34,10 @@ import se.birdy.app.ui.theme.OffwhiteWarm
  *
  * [onDark]: true på en mörk yta (t.ex. en [PhotoHero]) — byts mot den delade [GlassIconButton]
  * (mörkt glas, samma mönster som Premiums stängknapp). Default (false) är oförändrat.
+ *
+ * [enabled]: false while leaving would lose work (a save in progress, release 1.3.0 Task 7b):
+ * dimmed like the other disabled buttons and announced as disabled. The screen then also
+ * swallows the system back gesture, so the arrow and the gesture still do the same thing.
  */
 @Composable
 fun BackButton(
@@ -40,6 +45,7 @@ fun BackButton(
     contentDescription: String,
     modifier: Modifier = Modifier,
     onDark: Boolean = false,
+    enabled: Boolean = true,
 ) {
     if (onDark) {
         GlassIconButton(
@@ -47,12 +53,15 @@ fun BackButton(
             contentDescription = contentDescription,
             onClick = onClick,
             modifier = modifier,
+            enabled = enabled,
         )
     } else {
         IconButton(
             onClick = onClick,
+            enabled = enabled,
             modifier =
                 modifier
+                    .alpha(if (enabled) 1f else DISABLED_ALPHA)
                     .size(40.dp)
                     .clip(CircleShape)
                     .background(OffwhiteWarm)
@@ -83,6 +92,7 @@ fun BackTopBar(
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
     contentDescription: String = stringResource(Res.string.profile_back),
+    enabled: Boolean = true,
     content: @Composable RowScope.() -> Unit = {},
 ) {
     Row(
@@ -91,7 +101,7 @@ fun BackTopBar(
         modifier = modifier.fillMaxWidth().padding(start = 12.dp, top = 8.dp, end = 16.dp, bottom = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        BackButton(onClick = onBack, contentDescription = contentDescription)
+        BackButton(onClick = onBack, contentDescription = contentDescription, enabled = enabled)
         content()
     }
 }
@@ -109,11 +119,13 @@ fun BackTopBar(
 fun BoxScope.PhotoBackButton(
     onBack: () -> Unit,
     contentDescription: String = stringResource(Res.string.profile_back),
+    enabled: Boolean = true,
 ) {
     BackButton(
         onClick = onBack,
         contentDescription = contentDescription,
         onDark = true,
+        enabled = enabled,
         modifier = Modifier.align(Alignment.TopStart).statusBarsPadding().backButtonPlacement(onDark = true),
     )
 }

@@ -9,6 +9,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
@@ -32,9 +33,13 @@ import se.birdy.app.ui.theme.TextOnHero
  * first in reading order regardless of where it's placed in the layout (mirrors the close
  * button's original T9c #2 reasoning).
  *
+ * [enabled] false dims the button and announces it as disabled (the back arrow during a save,
+ * release 1.3.0 Task 7b).
+ *
  * [iconSize] defaults to 20dp, matching [BackButton]; [GearButton] passes 18dp so its glyph stays the exact
  * size it was before this extraction — only its glass disc grew, from 32dp to this shared 36dp.
  */
+@Suppress("LongParameterList") // the usual button parameters: icon, label, click, modifier, size, enabled.
 @Composable
 internal fun GlassIconButton(
     icon: ImageVector,
@@ -42,14 +47,16 @@ internal fun GlassIconButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     iconSize: Dp = 20.dp,
+    enabled: Boolean = true,
 ) {
     val label = contentDescription
     Box(
         modifier =
             modifier
                 .size(48.dp)
+                .alpha(if (enabled) 1f else DISABLED_ALPHA)
                 .clip(CircleShape)
-                .clickable(role = Role.Button, onClick = onClick)
+                .clickable(enabled = enabled, role = Role.Button, onClick = onClick)
                 .semantics {
                     this.contentDescription = label
                     traversalIndex = -1f

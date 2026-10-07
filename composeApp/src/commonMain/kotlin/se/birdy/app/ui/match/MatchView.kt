@@ -292,9 +292,10 @@ internal fun MatchView(
                 }
             }
         }
-        // Fixed over the scrolling photo and sheet, in every save state: after "Spara" the
-        // "Avbryt" button is gone and this is the way back (release 1.3.0 Task 7b).
-        PhotoBackButton(onBack = onCancel)
+        // Fixed over the scrolling photo and sheet: after "Spara" the "Avbryt" button is gone and
+        // this is the way back (release 1.3.0 Task 7b). Disabled while saving, like "Avbryt"
+        // (MatchResultScreen swallows the back gesture then).
+        PhotoBackButton(onBack = onCancel, enabled = !isSaving)
         SnackbarHost(
             hostState = snackbarHost,
             modifier = Modifier.align(Alignment.BottomCenter),
