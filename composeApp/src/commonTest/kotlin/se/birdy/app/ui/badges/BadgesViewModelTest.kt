@@ -88,6 +88,42 @@ class BadgesViewModelTest {
         }
 
     @Test
+    fun `badges unlocked in the same pass are ordered by stamp number so every view agrees on the latest`() =
+        runTest {
+            val catalog =
+                BadgeCatalog(
+                    version = 1,
+                    badges = listOf("a", "b", "c", "d").map { Badge(it, BadgeCategory.PROGRESSION, BadgeRule.CountUniqueSpecies(1)) },
+                )
+            val pass = Instant.fromEpochMilliseconds(2_000L)
+            // One recalculation unlocked b, c and d together; the repository hands them back in any order.
+            val unlocks =
+                listOf(
+                    BadgeUnlock("b", pass),
+                    BadgeUnlock("a", Instant.fromEpochMilliseconds(1_000L)),
+                    BadgeUnlock("d", pass),
+                    BadgeUnlock("c", pass),
+                )
+            val vm = makeVm(observations = emptyList(), unlocks = unlocks, totalSpecies = 700, catalog = catalog)
+
+            vm.state.test {
+                var item = awaitItem()
+                while (item is BadgesUiState.Loading) item = awaitItem()
+                val loaded = item as BadgesUiState.Loaded
+                assertEquals(listOf("d", "c", "b", "a"), loaded.recentlyUnlocked.map { it.badge.id })
+                assertEquals(
+                    "d",
+                    loaded.trophyShowcase.hero
+                        ?.badge
+                        ?.id,
+                )
+                // The entry card's fan: oldest of the three first, the newest (the hero) drawn last.
+                assertEquals(listOf("b", "c", "d"), trophyFanStamps(loaded.recentlyUnlocked.shuffled()).map { it.badge.id })
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
     fun `weekly streak hidden below 2`() =
         runTest {
             val obs = listOf(observation("Q1", 2026, 5, 7))

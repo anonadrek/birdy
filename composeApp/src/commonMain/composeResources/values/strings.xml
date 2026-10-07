@@ -863,11 +863,19 @@
     <string name="trophy_room_sub">%1$s av %2$s · %3$s väntar i fält</string>
     <string name="trophy_room_back">Tillbaka</string>
     <string name="trophy_room_entry_eyebrow">Ditt troférum</string>
-    <string name="trophy_room_entry_count">%1$s troféer</string>
-    <string name="trophy_room_entry_count_one">%1$s trofé</string>
-    <string name="trophy_room_entry_empty">Ditt troférum väntar</string>
-    <string name="trophy_room_entry_a11y">Öppna ditt troférum, %1$s troféer</string>
-    <string name="trophy_room_entry_a11y_one">Öppna ditt troférum, %1$s trofé</string>
+    <!-- Release 1.3.0 Task 7k ("Bild 2"): the entry card shows your three latest stamps. -->
+    <plurals name="trophy_room_entry_stamps">
+        <item quantity="one">%1$d *stämpel*</item>
+        <item quantity="other">%1$d *stämplar*</item>
+    </plurals>
+    <!-- %1$s = badge name, %2$s = date. Keep the date placeholder LAST: the card measures "label + name" by passing an empty date (TrophyRoomEntryCard). -->
+    <string name="trophy_room_entry_latest">Senast: %1$s, %2$s</string>
+    <string name="trophy_room_entry_first_stamp">Din första stämpel väntar.</string>
+    <plurals name="trophy_room_entry_stamps_a11y">
+        <item quantity="one">Ditt troférum, %1$d stämpel, senast %2$s, %3$s. Öppna.</item>
+        <item quantity="other">Ditt troférum, %1$d stämplar, senast %2$s, %3$s. Öppna.</item>
+    </plurals>
+    <string name="trophy_room_entry_empty_a11y">Ditt troférum. Din första stämpel väntar. Öppna.</string>
     <string name="trophy_hero_recent_label">Senast vunnen</string>
     <string name="trophy_hero_empty_name">din första stämpel väntar</string>
     <string name="trophy_section_recent">Senast upplåsta</string>

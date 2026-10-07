@@ -847,11 +847,19 @@
     <string name="trophy_room_sub">%1$s of %2$s · %3$s waiting in the field</string>
     <string name="trophy_room_back">Back</string>
     <string name="trophy_room_entry_eyebrow">Your trophy room</string>
-    <string name="trophy_room_entry_count">%1$s trophies</string>
-    <string name="trophy_room_entry_count_one">%1$s trophy</string>
-    <string name="trophy_room_entry_empty">Your trophy room awaits</string>
-    <string name="trophy_room_entry_a11y">Open your trophy room, %1$s trophies</string>
-    <string name="trophy_room_entry_a11y_one">Open your trophy room, %1$s trophy</string>
+    <!-- Release 1.3.0 Task 7k ("Bild 2"): the entry card shows your three latest stamps. -->
+    <plurals name="trophy_room_entry_stamps">
+        <item quantity="one">%1$d *stamp*</item>
+        <item quantity="other">%1$d *stamps*</item>
+    </plurals>
+    <!-- %1$s = badge name, %2$s = date. Keep the date placeholder LAST: the card measures "label + name" by passing an empty date (TrophyRoomEntryCard). -->
+    <string name="trophy_room_entry_latest">Latest: %1$s, %2$s</string>
+    <string name="trophy_room_entry_first_stamp">Your first stamp awaits.</string>
+    <plurals name="trophy_room_entry_stamps_a11y">
+        <item quantity="one">Your trophy room, %1$d stamp, latest %2$s, %3$s. Open.</item>
+        <item quantity="other">Your trophy room, %1$d stamps, latest %2$s, %3$s. Open.</item>
+    </plurals>
+    <string name="trophy_room_entry_empty_a11y">Your trophy room. Your first stamp awaits. Open.</string>
     <string name="trophy_hero_recent_label">Most recent</string>
     <string name="trophy_hero_empty_name">your first stamp awaits</string>
     <string name="trophy_section_recent">Recently unlocked</string>
