@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Premium A · Brass (EN)</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  /* ---------- Premium A: Mässing. Samma mörka espresso och mässing som appens egen Premium-skärm
+     och tack-skärm, så att webben och appen säger samma sak på samma sätt. Läget berättas som en
+     tidslinje längs den prickade flyglinjen. Alla skärmar är riktiga skärmdumpar ur 1.3.0. ---------- */
+  .dark { background: linear-gradient(180deg, var(--dark) 0%, var(--dark-deep) 100%); color: var(--cream); --kick: var(--brass-hi); --acc: var(--brass-hi); --note: var(--apricot); --lead: rgba(242, 234, 220, .8); }
+  section, header { position: relative; }
+  .hero { padding-bottom: 60px; overflow: hidden; }
+  .hero .wrap { position: relative; z-index: 2; }
+  .hero .glow { position: absolute; inset: 0; background: radial-gradient(60% 50% at 80% 30%, rgba(226, 192, 126, .14), transparent 60%); pointer-events: none; }
+  .nav-links .cur { border-bottom-color: var(--brass-hi); }
+  .hero .kick { margin-top: 24px; }
+  .hero h1 { font-size: 50px; line-height: .98; margin-top: 14px; color: var(--cream); }
+  .hero h1 .acc { display: block; font-size: 1.22em; margin-top: 4px; }
+  .hero .note { margin-top: 12px; }
+  .hero .lead { margin-top: 16px; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 24px; }
+  .btn-brass { display: inline-flex; align-items: center; height: 50px; padding: 0 20px; border-radius: 12px; background: linear-gradient(135deg, var(--brass-hi), var(--brass)); color: var(--brass-ink); font-weight: 600; font-size: 15px; }
+  .hero-phone { position: relative; margin: 44px auto 0; width: 250px; }
+  .hero-phone .phone { --pw: 250px; --r: 28px; --bz: 8px; transform: rotate(-3deg); --psh: 0 34px 70px rgba(0, 0, 0, .5); }
+  .hero-phone .seal { position: absolute; right: -30px; top: 40px; z-index: 3; width: 84px; height: 84px; font-size: 16px; }
+  .hero-phone .hand { position: absolute; left: -22px; bottom: -46px; z-index: 3; font-family: var(--script); font-weight: 700; font-size: 25px; color: var(--apricot); transform: rotate(-4deg); white-space: nowrap; line-height: 1; }
+  .hero-phone { margin-bottom: 40px; }
+
+  /* Läget: tidslinjen. */
+  .situation { background: var(--paper); padding: 72px 0 70px; }
+  .situation h2 { font-size: 40px; margin-top: 12px; }
+  .situation .story { margin-top: 18px; display: grid; gap: 14px; font-size: 16px; line-height: 1.65; color: var(--ink); max-width: 36rem; }
+  .timeline { position: relative; list-style: none; margin: 36px 0 0; padding: 0 0 0 34px; display: grid; gap: 28px; }
+  .timeline::before { content: ''; position: absolute; left: 9px; top: 6px; bottom: 6px; width: 4px; background-image: radial-gradient(circle, var(--rust) 1.6px, transparent 2px); background-size: 4px 11px; background-repeat: repeat-y; opacity: .7; }
+  .timeline li { position: relative; }
+  .timeline li::before { content: ''; position: absolute; left: -32px; top: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--paper); border: 2px solid var(--rust); }
+  .timeline li.key::before { background: var(--brass); border-color: var(--brass); box-shadow: 0 0 0 4px rgba(184, 137, 58, .22); }
+  .timeline li.soon::before { border-style: dashed; }
+  .timeline .when { font-size: 11px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--rust); }
+  .timeline .what { margin-top: 4px; font-family: var(--serif); font-size: 22px; line-height: 1.15; }
+  .timeline .more { margin-top: 4px; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+  .timeline .bird { position: absolute; left: -34px; top: -30px; font-size: 26px; transform: rotate(-12deg); }
+
+  /* Det här får du i dag. */
+  .gets { padding: 84px 0 70px; }
+  .gets > .wrap > h2 { font-size: 40px; margin-top: 12px; color: var(--cream); }
+  .gets > .wrap > .note { margin-top: 10px; }
+  .feat { display: grid; gap: 26px; margin-top: 54px; align-items: center; }
+  .feat .txt h3 { font-size: 30px; color: var(--cream); }
+  .feat .txt .tag { display: inline-block; margin-bottom: 10px; padding: 3px 10px; border: 1px solid rgba(226, 192, 126, .5); border-radius: 999px; font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--brass-hi); }
+  .feat .txt p { margin-top: 10px; font-size: 15.5px; line-height: 1.6; color: rgba(242, 234, 220, .8); max-width: 30rem; }
+  .feat .vis { display: flex; justify-content: center; }
+  .feat .phone { --pw: 230px; --r: 26px; --bz: 8px; --psh: 0 30px 60px rgba(0, 0, 0, .5); }
+  .pages { position: relative; width: 300px; height: 330px; }
+  .pages img { position: absolute; width: 200px; aspect-ratio: 595 / 842; box-shadow: 0 20px 40px rgba(0, 0, 0, .45); }
+  .pages img:nth-child(1) { left: 0; top: 30px; transform: rotate(-8deg); }
+  .pages img:nth-child(2) { left: 50px; top: 10px; transform: rotate(-1deg); }
+  .pages img:nth-child(3) { left: 100px; top: 34px; transform: rotate(7deg); }
+  .maph { width: 230px; aspect-ratio: 9 / 16; border: 2px dashed rgba(226, 192, 126, .45); border-radius: 30px; display: grid; place-items: center; text-align: center; padding: 26px; font-family: var(--script); font-weight: 700; font-size: 25px; line-height: 1.1; color: var(--apricot); }
+  .maph small { display: block; margin-top: 12px; font-family: var(--sans); font-weight: 600; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: rgba(242, 234, 220, .6); }
+
+  /* Alltid gratis. */
+  .free { background: var(--peach); padding: 72px 0 66px; }
+  .free h2 { font-size: 40px; margin-top: 12px; }
+  .free ul { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 0; }
+  .free li { display: flex; gap: 12px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid rgba(154, 69, 38, .2); font-size: 16px; }
+  .free li::before { content: '✓'; color: var(--rust); font-weight: 600; }
+  .free .bn { margin-top: 22px; font-size: 14.5px; line-height: 1.6; color: var(--muted); max-width: 36rem; }
+  .free .bn b { color: var(--ink); }
+
+  /* Priserna. */
+  .prices { padding: 84px 0 76px; }
+  .prices h2 { font-size: 40px; margin-top: 12px; color: var(--cream); }
+  .cards { display: grid; gap: 14px; margin-top: 30px; }
+  .pcard { position: relative; padding: 22px 22px 20px; border-radius: 16px; border: 1px solid rgba(226, 192, 126, .35); background: rgba(255, 255, 255, .03); }
+  .pcard.sel { border: 2px solid var(--brass-hi); background: rgba(226, 192, 126, .06); }
+  .pcard .lab { font-size: 11.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(242, 234, 220, .75); }
+  .pcard .amt { font-family: var(--serif); font-size: 50px; line-height: 1; margin-top: 10px; color: var(--cream); font-variant-numeric: tabular-nums; }
+  .pcard .amt small { font-family: var(--sans); font-size: 15px; color: rgba(242, 234, 220, .7); margin-left: 6px; }
+  .pcard p { margin-top: 10px; font-size: 14.5px; line-height: 1.55; color: rgba(242, 234, 220, .78); }
+  .pcard .hand { position: absolute; right: 18px; top: 16px; font-family: var(--script); font-weight: 700; font-size: 22px; color: var(--apricot); transform: rotate(-4deg); }
+  .fine { margin-top: 18px; font-size: 13px; line-height: 1.6; color: rgba(242, 234, 220, .62); max-width: 40rem; }
+
+  /* Tidiga fältmedlemmar. */
+  .early { background: var(--paper); padding: 80px 0 74px; }
+  .early .grid { display: grid; gap: 34px; }
+  .early .seal { width: 112px; height: 112px; font-size: 17px; line-height: 1.1; }
+  .early h2 { font-size: 40px; margin-top: 18px; }
+  .early .big { margin-top: 16px; font-size: 18px; line-height: 1.6; color: var(--ink); max-width: 34rem; }
+  .early .big b { background: linear-gradient(transparent 62%, rgba(226, 192, 126, .55) 62%); font-weight: 600; }
+  .early .lead { margin-top: 12px; }
+  .early .small { margin-top: 14px; font-size: 13px; line-height: 1.6; color: var(--muted); max-width: 34rem; }
+  .early .phone { --pw: 230px; --r: 26px; --bz: 8px; margin: 0 auto; }
+
+  /* Så köper du. */
+  .buy { padding: 80px 0 80px; }
+  .buy h2 { font-size: 40px; margin-top: 12px; color: var(--cream); }
+  .steps { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 16px; counter-reset: s; }
+  .steps li { counter-increment: s; display: flex; gap: 14px; align-items: baseline; font-size: 16px; line-height: 1.5; color: rgba(242, 234, 220, .88); }
+  .steps li::before { content: counter(s); flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--brass-hi); color: var(--brass-ink); font-family: var(--serif); font-size: 16px; transform: translateY(4px); }
+  .buy .badges { margin-top: 28px; }
+  .faq { margin-top: 44px; display: grid; gap: 0; border-top: 1px solid rgba(255, 255, 255, .12); }
+  .faq div { padding: 16px 0; border-bottom: 1px solid rgba(255, 255, 255, .12); }
+  .faq b { display: block; font-family: var(--serif); font-weight: 400; font-size: 19px; color: var(--cream); }
+  .faq p { margin-top: 6px; font-size: 14.5px; line-height: 1.6; color: rgba(242, 234, 220, .72); }
+
+  @media (min-width: 900px) {
+    .hero { padding-bottom: 0; }
+    .hero .grid { display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: center; min-height: 640px; }
+    .hero h1 { font-size: 78px; }
+    .hero .kick { margin-top: 0; }
+    .hero-phone { margin: 30px 0 -60px auto; width: 290px; }
+    .hero-phone .phone { --pw: 290px; --r: 32px; --bz: 9px; }
+    .situation, .free, .early { padding: 110px 0 100px; }
+    .situation .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .situation h2, .gets > .wrap > h2, .free h2, .prices h2, .early h2, .buy h2 { font-size: 54px; }
+    .timeline { margin-top: 10px; }
+    .gets { padding: 120px 0 100px; }
+    .feat { grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 90px; }
+    .feat:nth-of-type(even) .vis { order: -1; }
+    .feat .txt h3 { font-size: 40px; }
+    .feat .phone { --pw: 270px; }
+    .pages { width: 380px; height: 400px; }
+    .pages img { width: 250px; }
+    .pages img:nth-child(2) { left: 64px; }
+    .pages img:nth-child(3) { left: 128px; }
+    .maph { width: 270px; }
+    .free .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .free ul { margin-top: 0; }
+    .prices { padding: 120px 0 100px; }
+    .cards { grid-template-columns: 1fr 1fr; gap: 20px; max-width: 820px; }
+    .early .grid { grid-template-columns: 1fr 320px; gap: 80px; align-items: center; }
+    .buy { padding: 110px 0; }
+    .buy .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .faq { margin-top: 0; }
+  }
+</style>
+</head>
+<body>
+<header class="dark hero">
+  <div class="glow"></div>
+  <div class="wrap">
+    <nav class="nav"><span class="wm">Birdy.</span><div class="nav-right"><div class="nav-links"><span>Species</span><span>How it works</span><span>The app</span><span class="cur">Premium</span><span>Field notes</span><span>SV</span></div><span class="nav-cta">Get the app</span><span class="menu-btn"><i></i></span></div></nav>
+    <div class="grid">
+      <div>
+        <p class="kick">Birdy Premium</p>
+        <h1>A whole year as a <span class="acc">field birder.</span></h1>
+        <p class="note">an extra, never a must</p>
+        <p class="lead">Everything you need to identify and save birds is free. Premium is for when you want to see your year in the field: the year ring, your field journal as a PDF, seven extra badges and the map of your finds.</p>
+        <div class="ctas"><a class="btn-brass">See prices</a><img class="play" src="media/play-badge-en.png" alt="Get it on Google Play"></div>
+      </div>
+      <div class="hero-phone">
+        <div class="phone"><img src="media/emu-stats-en-1.jpg" alt="Season statistics: the year ring with 46 finds"></div>
+        <span class="seal brass">Premium</span>
+        <span class="hand">your year as a ring</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="situation">
+  <div data-deckle="#1E1410"></div>
+  <div class="wrap grid">
+    <div>
+      <p class="kick">Where we stand</p>
+      <h2>Where things stand, <span class="acc">honestly.</span></h2>
+      <div class="story">
+        <p>Birdy is a small, independent app made by AlbIT AB in Solna, Sweden. No ads, no tracking, no account. Your field journal stays on your phone.</p>
+        <p>When Birdy launched in June, Premium was open to everyone. From Birdy 1.3, Premium is bought in Google Play. Premium is what lets us keep building Birdy, and the next big step is the iPhone app.</p>
+      </div>
+    </div>
+    <ol class="timeline">
+      <li><p class="when">June 2026</p><p class="what">Birdy launches on Google Play.</p><p class="more">Premium is open to everyone during the launch.</p></li>
+      <li><p class="when">15 October 2026</p><p class="what">Birdy 1.3.</p><p class="more">Premium can be bought in Google Play, for a year or for good.</p></li>
+      <li class="key"><p class="when">17 October 2026, 00:00 Swedish time</p><p class="what">The cutoff for early field members.</p><p class="more">If you started using Birdy before then, Premium is yours, free, forever.</p></li>
+      <li class="soon"><span class="bird rust" aria-hidden="true"></span><p class="when">Soon</p><p class="what">Birdy for iPhone.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="dark gets">
+  <div data-deckle="#F6EFE2"></div>
+  <div class="wrap">
+    <p class="kick">With Premium</p>
+    <h2>What you get <span class="acc">today.</span></h2>
+    <p class="note">screens straight from the app</p>
+    <div class="feat">
+      <div class="txt"><span class="tag">Season statistics</span><h3>The year ring</h3><p>Your whole year as a ring, month by month. See this year's first sighting of each species, your best months and the birds you see most.</p></div>
+      <div class="vis"><div class="phone"><img src="media/emu-stats-en-1.jpg" alt="Season statistics"></div></div>
+    </div>
+    <div class="feat">
+      <div class="txt"><span class="tag">Export</span><h3>Your field journal as a PDF</h3><p>Your whole journal on paper: the year in numbers, every species you have seen and the stamps you have earned. Save it, print it or send it on.</p></div>
+      <div class="vis"><div class="pages"><img src="media/pdf-en-1.jpg" alt="PDF: cover"><img src="media/pdf-en-2.jpg" alt="PDF: 2026 in numbers"><img src="media/pdf-en-5.jpg" alt="PDF: stamps"></div></div>
+    </div>
+    <div class="feat">
+      <div class="txt"><span class="tag">Badges</span><h3>Seven brass badges</h3><p>Extra stamps for birding all year round: Dawn chorus, Early pilgrim, Winter wanderer, Sunday birder and three more. They sit in the trophy room next to your other badges.</p></div>
+      <div class="vis"><div class="phone"><img src="media/emu-trophy-en-1.jpg" alt="The trophy room with brass badges"></div></div>
+    </div>
+    <div class="feat">
+      <div class="txt"><span class="tag">Map</span><h3>Your finds map</h3><p>Your finds on a map of their own. Location is only saved if you turn it on, and then only on your phone.</p></div>
+      <div class="vis"><div class="maph"><span>The map gets a new style next week. The picture comes then.<small>Preview</small></span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="free">
+  <div data-deckle="#1E1410"></div>
+  <div class="wrap grid">
+    <div>
+      <p class="kick">Without Premium</p>
+      <h2>This is <span class="acc">always free.</span></h2>
+      <p class="bn"><b>Audio ID is free for everyone, always.</b> The model that recognises bird song, BirdNET from the Cornell Lab of Ornithology, may only be used non-commercially, so it never goes behind Premium.</p>
+    </div>
+    <ul>
+      <li>Identification by camera and photo</li>
+      <li>Audio ID: record the song and Birdy suggests the species</li>
+      <li>The field journal with all your finds</li>
+      <li>The field guide with 839 European species</li>
+      <li>27 badges and the trophy room</li>
+      <li>Bird of the day, every day</li>
+    </ul>
+  </div>
+</section>
+
+<section class="dark prices" id="priser">
+  <div data-deckle="#FDE5CB"></div>
+  <div class="wrap">
+    <p class="kick">Prices</p>
+    <h2>A year or <span class="acc">for good.</span></h2>
+    <div class="cards">
+      <div class="pcard sel"><p class="lab">Yearly</p><p class="amt">1 year<small>renews yearly</small></p><p>Cancel any time in Google Play, and Premium stays until the end of the year you paid for.</p></div>
+      <div class="pcard"><span class="hand">once and done</span><p class="lab">Lifetime</p><p class="amt">For good<small>pay once</small></p><p>Pay once and keep Premium for as long as you have Birdy. Nothing renews.</p></div>
+    </div>
+    <p class="fine">Prices are shown in Google Play, in your currency. Google Play also handles the payment, and refunds follow Google Play's policy.</p>
+  </div>
+</section>
+
+<section class="early">
+  <div data-deckle="#1E1410"></div>
+  <div class="wrap grid">
+    <div>
+      <span class="seal brass">Early field member</span>
+      <h2>Here from <span class="acc">the start?</span></h2>
+      <p class="big">Then Premium is already yours. <b>If you started using Birdy before 17 October 2026, 00:00 Swedish time, you get Premium free, forever.</b> A thank-you for being here while Birdy was new.</p>
+      <p class="lead">You don't need to do anything. Update the app, and the thank-you screen greets you the next time you open it.</p>
+      <p class="small">The app works this out on your phone and sends nothing anywhere. The proof travels with Google's backup if you change phones.</p>
+    </div>
+    <div class="phone"><img src="media/emu-tack-en.jpg" alt="The thank-you screen: Premium is yours. Forever."></div>
+  </div>
+</section>
+
+<section class="dark buy">
+  <div data-deckle="#F6EFE2"></div>
+  <div class="wrap grid">
+    <div>
+      <p class="kick">Buy</p>
+      <h2>How to get <span class="acc">Premium.</span></h2>
+      <ol class="steps">
+        <li>Get Birdy from Google Play.</li>
+        <li>Open Premium in the app, from Lifelist or Settings.</li>
+        <li>Choose a year or lifetime and pay in Google Play.</li>
+      </ol>
+      <div class="badges"><img class="play" src="media/play-badge-en.png" alt="Get it on Google Play"><span data-appstore="en"></span></div>
+    </div>
+    <div class="faq">
+      <div><b>Can I cancel?</b><p>Yes. Cancel the yearly plan in Google Play under Payments &amp; subscriptions. Premium stays until the end of the year you paid for.</p></div>
+      <div><b>What happens to my finds if I stop paying?</b><p>Nothing. The field journal is free and your finds stay on your phone. Only the Premium parts close.</p></div>
+      <div><b>Changing phones?</b><p>The purchase belongs to your Google account and moves with you to the new phone.</p></div>
+      <div><b>Does it carry over to iPhone?</b><p>No. Birdy has no accounts, so a Google Play purchase applies to the Android app. The iPhone app will have its own purchases in the App Store.</p></div>
+    </div>
+  </div>
+</section>
+<script src="common.js"></script>
+</body>
+</html>
