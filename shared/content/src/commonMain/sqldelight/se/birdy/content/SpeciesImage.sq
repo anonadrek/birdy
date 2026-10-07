@@ -22,3 +22,25 @@ insert:
 INSERT INTO SpeciesImage(
     species_id, role, path, width, height, license, author, source_url, commons_filename
 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+-- Release 1.3.0 Task 7e-2: every photo with what its credit needs (the "Bildkällor" list under
+-- About), the species named in :locale with the English name, then the scientific one, as fallback.
+selectCredits:
+SELECT
+    i.species_id,
+    i.role,
+    i.path,
+    i.license,
+    i.author,
+    i.commons_filename,
+    s.scientific_name,
+    localName.name AS local_name,
+    englishName.name AS english_name
+FROM SpeciesImage i
+JOIN Species s ON s.id = i.species_id
+LEFT JOIN SpeciesName localName ON localName.species_id = i.species_id AND localName.locale = :locale
+LEFT JOIN SpeciesName englishName ON englishName.species_id = i.species_id AND englishName.locale = 'en'
+ORDER BY i.species_id, i.role, i.path;
+
+countAll:
+SELECT count(*) FROM SpeciesImage;

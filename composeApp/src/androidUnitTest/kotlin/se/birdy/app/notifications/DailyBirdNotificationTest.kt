@@ -43,7 +43,7 @@ import kotlin.test.assertTrue
 class DailyBirdNotificationTest {
     private val context get() = RuntimeEnvironment.getApplication()
 
-    private fun payloads(): NotificationPayloads {
+    private fun payloads(withPhotos: Boolean = true): NotificationPayloads {
         val prefs = FakeUserPreferences()
         runBlocking { prefs.setDailyBirdPushEnabled(true) }
         val repo = FakeSpeciesRepository.withDefaults()
@@ -51,10 +51,14 @@ class DailyBirdNotificationTest {
         val withPhoto =
             greatTit.copy(
                 images =
-                    listOf(
-                        SpeciesImage("secondary", "Q25485/secondary-1.webp", 800, 600, "CC BY-SA 4.0", "A", "u"),
-                        SpeciesImage("hero", "Q25485/hero.webp", 2400, 1600, "CC BY-SA 4.0", "B", "u"),
-                    ),
+                    if (withPhotos) {
+                        listOf(
+                            SpeciesImage("secondary", "Q25485/secondary-1.webp", 800, 600, "CC BY-SA 4.0", "A", "u"),
+                            SpeciesImage("hero", "Q25485/hero.webp", 2400, 1600, "CC BY 2.0", "Derek Keats", "u"),
+                        )
+                    } else {
+                        emptyList()
+                    },
             )
         return NotificationPayloads(
             prefs = prefs,
@@ -81,6 +85,7 @@ class DailyBirdNotificationTest {
                     NotificationAction("Läs om arten", "birdy://species/Q25485"),
                     NotificationAction("Lyssna efter den", "birdy://audio"),
                 ),
+            photoCredit = "Foto: Derek Keats, CC BY 2.0",
         )
 
     @Test
@@ -92,6 +97,8 @@ class DailyBirdNotificationTest {
         assertEquals("Kan du fånga den idag? Kika, foto eller läte räknas.", c.body)
         assertEquals("birdy://species/Q25485", c.deepLink)
         assertEquals("Q25485/hero.webp", c.imagePath)
+        // Release 1.3.0 Task 7e-2: the hero photo's credit, not the secondary photo's.
+        assertEquals("Foto: Derek Keats, CC BY 2.0", c.photoCredit)
         assertEquals(
             listOf(
                 NotificationAction("Läs om arten", "birdy://species/Q25485"),
@@ -109,6 +116,16 @@ class DailyBirdNotificationTest {
         assertEquals("Bird of the day: Talgoxe", c.title)
         assertEquals("Can you catch it today? Camera, photo or call all count.", c.body)
         assertEquals(listOf("Read about it", "Listen for it"), c.actions.map { it.label })
+        assertEquals("Photo: Derek Keats, CC BY 2.0", c.photoCredit)
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `a species without a photo gets neither a photo nor a credit`() {
+        attachComposeResourcesContext()
+        val c = runBlocking { payloads(withPhotos = false).dailyBird(LocalDate(2026, 10, 6)) }!!
+        assertNull(c.imagePath)
+        assertNull(c.photoCredit)
     }
 
     @Test
@@ -127,6 +144,11 @@ class DailyBirdNotificationTest {
             "the photo is in the expanded notification",
         )
         assertNotNull(n.getLargeIcon(), "the photo is the collapsed thumbnail")
+        // Release 1.3.0 Task 7e-2: the expanded notification credits the photo under the title.
+        assertEquals(
+            "Foto: Derek Keats, CC BY 2.0",
+            n.extras.getCharSequence(Notification.EXTRA_SUMMARY_TEXT).toString(),
+        )
 
         val contentIntent = shadowOf(n.contentIntent).savedIntent
         assertEquals(Uri.parse("birdy://species/Q25485"), contentIntent.data)
@@ -148,6 +170,7 @@ class DailyBirdNotificationTest {
         val n = DailyBirdNotification.build(context, content(), picture = null)
         assertFalse(n.extras.containsKey(Notification.EXTRA_PICTURE))
         assertNull(n.getLargeIcon())
+        assertNull(n.extras.getCharSequence(Notification.EXTRA_SUMMARY_TEXT), "no photo, so no photo credit")
         assertEquals(2, n.actions.size)
     }
 

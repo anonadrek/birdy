@@ -233,3 +233,33 @@ def test_kotlin_validator_has_the_same_allow_list() -> None:
     source = KOTLIN_VALIDATOR.read_text(encoding="utf-8")
     assert _kotlin_set(source, "PUBLIC_DOMAIN_LICENSES") == PUBLIC_DOMAIN_LICENSES
     assert _kotlin_set(source, "ALLOWED_LICENSES") | PUBLIC_DOMAIN_LICENSES == ALLOWED_LICENSES
+
+
+KOTLIN_APP_LICENSES = (
+    Path(__file__).resolve().parents[3]
+    / "shared/content/src/commonMain/kotlin/se/birdy/content/PhotoLicenses.kt"
+)
+
+
+@pytest.mark.skipif(not KOTLIN_APP_LICENSES.exists(), reason="needs the Birdy repo checkout")
+def test_the_apps_licence_links_match_the_web_pipelines() -> None:
+    """The app's photo credits (release 1.3.0, Task 7e-2) link the same deeds as the web pages.
+
+    The app also links CC0's deed, which the web credits leave unlinked; public domain stays
+    unlinked in both.
+    """
+    from birdy_fetcher.web.licenses import LICENSE_URLS
+
+    source = KOTLIN_APP_LICENSES.read_text(encoding="utf-8")
+    block = re.search(r"val DEED_URLS.*?mapOf\((.*?)\n\s*\)", source, re.DOTALL)
+    assert block, "DEED_URLS not found in PhotoLicenses.kt"
+    kotlin = {
+        name: (None if url == "null" else url.strip('"'))
+        for name, url in re.findall(r'"([^"]+)" to ("[^"]+"|null)', block.group(1))
+    }
+    assert set(kotlin) == set(LICENSE_URLS)
+    for name, url in LICENSE_URLS.items():
+        if url is not None:
+            assert kotlin[name] == url, name
+    assert kotlin["Public domain"] is None
+    assert kotlin["CC0"] == "https://creativecommons.org/publicdomain/zero/1.0/"

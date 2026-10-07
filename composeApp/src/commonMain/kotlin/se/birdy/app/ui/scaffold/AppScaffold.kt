@@ -514,9 +514,39 @@ private fun NavGraphBuilder.appDestinations(
     }
     composable<AppRoute.About> { entry ->
         BelowStatusBar {
-            se.birdy.app.ui.settings.AboutScreen(
-                onBack = { navController.popIfTop(entry) },
+            se.birdy.app.ui.settings.AboutRoute(
+                repository = graph.repository,
+                locale = graph.defaultLocale,
                 version = graph.versionName,
+                onBack = { navController.popIfTop(entry) },
+                onOpenPhotoCredits = { navController.navigate(AppRoute.PhotoCredits) { launchSingleTop = true } },
+                onOpenLicenses = { navController.navigate(AppRoute.OpenSourceLicenses) { launchSingleTop = true } },
+            )
+        }
+    }
+    composable<AppRoute.PhotoCredits> { entry ->
+        BelowStatusBar {
+            se.birdy.app.ui.settings.credits.PhotoCreditsRoute(
+                repository = graph.repository,
+                locale = graph.defaultLocale,
+                onBack = { navController.popIfTop(entry) },
+            )
+        }
+    }
+    composable<AppRoute.OpenSourceLicenses> { entry ->
+        BelowStatusBar {
+            se.birdy.app.ui.settings.credits.OpenSourceLicensesRoute(
+                onBack = { navController.popIfTop(entry) },
+                onOpenEntry = { id -> navController.navigate(AppRoute.LicenseText(id)) { launchSingleTop = true } },
+            )
+        }
+    }
+    composable<AppRoute.LicenseText> { entry ->
+        val route = entry.toRoute<AppRoute.LicenseText>()
+        BelowStatusBar {
+            se.birdy.app.ui.settings.credits.LicenseTextRoute(
+                entryId = route.entryId,
+                onBack = { navController.popIfTop(entry) },
             )
         }
     }

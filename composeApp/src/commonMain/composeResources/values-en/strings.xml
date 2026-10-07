@@ -644,10 +644,51 @@
     <string name="about_subline">A local journal for sightings.</string>
     <string name="about_version_prefix">Version</string>
     <string name="about_credits_label">CONTENT &amp; DATA</string>
-    <string name="about_credits_body">Bird data from Wikidata and Wikipedia under CC BY-SA. Photos from Wikimedia Commons. Map data © OpenStreetMap contributors, tiles © MapTiler. ML models: AIY Birds V1 (Google, photo) and BirdNET-Lite v2 (Cornell Lab of Ornithology, audio).</string>
-    <string name="about_licenses_label">OPEN SOURCE</string>
-    <string name="about_licenses_body">Kotlin, Compose Multiplatform — Apache 2.0\nSQLDelight — Apache 2.0\nCoil — Apache 2.0\nAndroidX — Apache 2.0\nkaml — Apache 2.0\nosmdroid — Apache 2.0\nTensorFlow Lite (AIY Birds V1) — Apache 2.0\nBirdNET-Lite v2 (Cornell Lab of Ornithology) — CC BY-NC-SA 4.0\nDM Serif Display Italic — SIL Open Font License 1.1\nCaveat — SIL Open Font License 1.1</string>
-    <string name="about_back">Back</string>
+    <string name="about_licenses_label">SOURCES &amp; LICENSES</string>
+    <string name="about_photos_title">Photos</string>
+    <string name="about_photos_body">%1$s species photos from Wikimedia Commons under CC0, public domain, CC BY or CC BY-SA, resized by Birdy. The photographer, license and a link to the original of every photo are under Photo credits.</string>
+    <string name="about_photos_body_uncounted">Species photos from Wikimedia Commons under CC0, public domain, CC BY or CC BY-SA, resized by Birdy. The photographer, license and a link to the original of every photo are under Photo credits.</string>
+    <string name="about_texts_title">Species texts</string>
+    <string name="about_texts_body">Summaries that the AI model Claude (Anthropic) wrote in 2026. The texts are based on Wikipedia articles in Swedish and English and are shared under CC BY-SA 4.0.</string>
+    <string name="about_names_title">Species list and names</string>
+    <string name="about_names_body">BirdLife Sweden’s taxonomic committee (the Western Palearctic list), IOC World Bird List v14.1 (F. Gill, D. Donsker &amp; P. Rasmussen, eds.; CC BY 3.0) and Wikidata (CC0). The red-list category is the species’ category on the IUCN’s global Red List, taken from Wikidata.</string>
+    <string name="about_map_title">Map</string>
+    <string name="about_map_body">Map tiles © MapTiler. Map data © OpenStreetMap contributors (ODbL).</string>
+    <string name="about_photo_id_title">Photo ID</string>
+    <string name="about_photo_id_body">AIY Birds V1, © Google, Apache License 2.0.</string>
+    <string name="about_sound_id_title">Sound ID</string>
+    <string name="about_sound_id_body">BirdNET-Lite, K. Lisa Yang Center for Conservation Bioacoustics, Cornell Lab of Ornithology, Cornell University. License CC BY-NC-SA 4.0, used unchanged. That is why sound ID is always free. Kahl et al. (2021), Ecological Informatics 61: 101236.</string>
+    <string name="about_row_photo_credits">Photo credits</string>
+    <string name="about_row_photo_credits_sub">Photographer and license for every photo</string>
+    <string name="about_row_licenses">Open-source licenses</string>
+    <string name="about_row_licenses_sub">Libraries, models and fonts</string>
+    <string name="photo_credits_title">Photo credits</string>
+    <string name="photo_credits_intro">All %1$s species photos in Birdy come from Wikimedia Commons and are resized. Tap a photo to open the original, or its license to read it.</string>
+    <string name="photo_credits_hero">Main photo</string>
+    <string name="photo_credits_numbered">Photo %1$s</string>
+    <string name="photo_credits_by">Photo: %1$s</string>
+    <string name="photo_credits_resized">resized</string>
+    <string name="photo_credits_row_description">%1$s, %2$s. Photo: %3$s. License: %4$s. Wikimedia Commons, resized.</string>
+    <string name="photo_credits_open_file">Open the original on Wikimedia Commons</string>
+    <string name="photo_credits_open_license">Open the license %1$s</string>
+    <string name="photo_credits_error">The photo credits could not be loaded.</string>
+    <string name="photo_credits_other_title">Other images</string>
+    <string name="photo_credits_use_premium">Premium screen</string>
+    <string name="photo_credits_use_model_test">Test image for the photo model</string>
+    <string name="licenses_title">Open-source licenses</string>
+    <string name="licenses_intro">Birdy is built on open-source code, models and fonts made by others. Their licenses and notices are here. Tap a row to read the text.</string>
+    <string name="licenses_section_models">Models</string>
+    <string name="licenses_section_fonts">Fonts</string>
+    <string name="licenses_section_tensorflow">TensorFlow Lite</string>
+    <string name="licenses_section_google">Google’s libraries</string>
+    <string name="licenses_section_libraries">Libraries</string>
+    <string name="licenses_row_version">Version %1$s</string>
+    <string name="licenses_entry_native">Native code in TensorFlow Lite, %1$s components</string>
+    <string name="licenses_entry_google">Open-source code in Google’s libraries</string>
+    <string name="licenses_open">Read the license</string>
+    <string name="licenses_error">The licenses could not be loaded.</string>
+    <string name="license_text_includes">Includes: %1$s</string>
+    <string name="license_text_website">Website</string>
 
     <!-- Settings row effects (Plan 6a Task 13) -->
     <string name="settings_share_copy">Birdy — a field birder’s digital companion. Get it on Google Play: https://play.google.com/store/apps/details?id=se.birdy.android</string>
@@ -756,6 +797,7 @@
     <!-- Notifications -->
     <string name="notification_daily_bird_title_fmt">Bird of the day: %1$s</string>
     <string name="notification_daily_bird_body">Can you catch it today? Camera, photo or call all count.</string>
+    <string name="notification_daily_bird_photo_credit">Photo: %1$s, %2$s</string>
     <string name="daily_bird_caught_today">Caught today</string>
     <string name="daily_bird_not_caught">Not caught today</string>
     <string name="settings_toggle_trophy">Badge progress — weekly</string>
