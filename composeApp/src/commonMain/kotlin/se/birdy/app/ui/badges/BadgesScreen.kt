@@ -150,8 +150,11 @@ private fun LoadedContent(
         }
         item(span = { GridItemSpan(maxLineSpan) }) {
             TrophyRoomEntryCard(
-                hero = state.trophyShowcase.hero,
+                recent = state.recentlyUnlocked,
                 unlockedCount = state.unlockedCount,
+                locale = locale,
+                zone = zone,
+                now = now,
                 onClick = onOpenTrophyRoom,
             )
         }
