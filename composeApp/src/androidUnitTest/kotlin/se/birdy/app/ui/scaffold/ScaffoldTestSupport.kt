@@ -1,5 +1,6 @@
 package se.birdy.app.ui.scaffold
 
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -29,6 +30,7 @@ import se.birdy.app.ui.theme.BirdyTheme
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesRepository
 import se.birdy.domain.badge.BadgeCatalog
+import se.birdy.domain.observation.ObservationRepository
 import se.birdy.domain.premium.PremiumState
 import se.birdy.ml.ClassifierBootstrap
 import se.birdy.ml.ClassifierMode
@@ -66,6 +68,9 @@ internal fun testAppGraph(
     // Release 1.3.0 Task 7g: the encyclopedia test feeds its own search results.
     repository: SpeciesRepository = FakeSpeciesRepository(),
     defaultLocale: Locale = Locale.SV,
+    // Release 1.3.0 Task 7b: the back-button tests open finds, the weekly recap and a debug screen.
+    observationRepository: ObservationRepository = FakeObservationRepository(),
+    diagnosticsScreen: (@Composable () -> Unit)? = null,
 ): AppGraph {
     val grandfathered =
         GrandfatherPolicy.isGrandfathered(
@@ -77,7 +82,7 @@ internal fun testAppGraph(
         repository = repository,
         classifierBootstrap = classifierBootstrap,
         cameraSourceFactory = { FakeCameraSource() },
-        observationRepository = FakeObservationRepository(),
+        observationRepository = observationRepository,
         photoStorage = FakePhotoStorage(),
         badgeRepository = FakeBadgeRepository(),
         badgeCatalog = BadgeCatalog(version = 1, badges = emptyList()),
@@ -102,6 +107,7 @@ internal fun testAppGraph(
         launchPurchase = { PurchaseResult.UserCancelled },
         formattedPricesFlow = MutableStateFlow(prices),
         defaultLocale = defaultLocale,
+        diagnosticsScreen = diagnosticsScreen,
     )
 }
 

@@ -82,6 +82,7 @@ import se.birdy.app.ui.components.BirdyTextButton
 import se.birdy.app.ui.components.BodyTextWithCaveatAccents
 import se.birdy.app.ui.components.PaperSheet
 import se.birdy.app.ui.components.PaperSheetOverlap
+import se.birdy.app.ui.components.PhotoBackButton
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
@@ -291,6 +292,9 @@ internal fun MatchView(
                 }
             }
         }
+        // Fixed over the scrolling photo and sheet, in every save state: after "Spara" the
+        // "Avbryt" button is gone and this is the way back (release 1.3.0 Task 7b).
+        PhotoBackButton(onBack = onCancel)
         SnackbarHost(
             hostState = snackbarHost,
             modifier = Modifier.align(Alignment.BottomCenter),

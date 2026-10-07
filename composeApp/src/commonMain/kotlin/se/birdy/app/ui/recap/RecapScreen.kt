@@ -51,6 +51,7 @@ import birdy_bird_scanner.composeapp.generated.resources.recap_summary_active_ne
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BackTopBar
 import se.birdy.app.ui.components.JournalHeadline
 import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.OrnamentRule
@@ -67,13 +68,19 @@ fun RecapScreen(
     viewModel: RecapViewModel,
     onOpenCamera: () -> Unit,
     onObservationClick: (String) -> Unit,
+    onBack: () -> Unit,
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    Box(modifier = Modifier.fillMaxSize().paperBackground()) {
-        when (val s = state) {
-            RecapUiState.Loading -> JournalLoading()
-            is RecapUiState.Loaded -> RecapContent(s, onOpenCamera, onObservationClick)
-            is RecapUiState.Error -> RecapError()
+    // Reached from the recap card in Mina arter and from the weekly notification; it had no way
+    // back but the system gesture (release 1.3.0 Task 7b). The bar stays put above the content.
+    Column(modifier = Modifier.fillMaxSize().paperBackground()) {
+        BackTopBar(onBack = onBack)
+        Box(modifier = Modifier.fillMaxWidth().weight(1f)) {
+            when (val s = state) {
+                RecapUiState.Loading -> JournalLoading()
+                is RecapUiState.Loaded -> RecapContent(s, onOpenCamera, onObservationClick)
+                is RecapUiState.Error -> RecapError()
+            }
         }
     }
 }
@@ -108,7 +115,8 @@ private fun RecapContent(
             Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(horizontal = 24.dp, vertical = 28.dp)
+                // 8dp at the top: the back button's bar is already above it (Task 7b).
+                .padding(start = 24.dp, top = 8.dp, end = 24.dp, bottom = 28.dp)
                 .semantics { contentDescription = a11yLabel },
     ) {
         Text(

@@ -1,10 +1,12 @@
 package se.birdy.app.ui.scaffold
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -47,6 +49,7 @@ import se.birdy.app.premium.EntryFlowDecider
 import se.birdy.app.premium.PremiumOverrideResolver
 import se.birdy.app.premium.awaitBillingAnswer
 import se.birdy.app.ui.audio.AudioScanScreenHost
+import se.birdy.app.ui.components.BackTopBar
 import se.birdy.app.ui.components.CaveatToast
 import se.birdy.app.ui.components.LocalStatusBarBackdrop
 import se.birdy.app.ui.components.PlatformNavigationBarIcons
@@ -335,7 +338,10 @@ private fun NavGraphBuilder.appDestinations(
             },
         )
     }
-    composable<AppRoute.Scan> {
+    // Release 1.3.0 Task 7b: the back arrows on Scan, Photo-ID and audio ID (AudioScan) take one
+    // step back, like the system gesture (they used to jump straight to the Identify tab, so
+    // Scan → Photo-ID → arrow skipped Scan while the gesture went back to it).
+    composable<AppRoute.Scan> { entry ->
         BelowStatusBar {
             ScanScreenHost(
                 graph = graph,
@@ -343,13 +349,11 @@ private fun NavGraphBuilder.appDestinations(
                 onFrozen = { sourceJson, capturedAtMs ->
                     navController.navigate(AppRoute.MatchResult(sourceJson, capturedAtMs))
                 },
-                onBack = {
-                    navController.popBackStack(AppRoute.Listen, inclusive = false)
-                },
+                onBack = { navController.popIfTop(entry) },
             )
         }
     }
-    composable<AppRoute.PhotoAnalyze> {
+    composable<AppRoute.PhotoAnalyze> { entry ->
         BelowStatusBar {
             se.birdy.app.ui.photoanalyze.PhotoAnalyzeHost(
                 graph = graph,
@@ -358,9 +362,7 @@ private fun NavGraphBuilder.appDestinations(
                         popUpTo(AppRoute.Scan) { inclusive = false }
                     }
                 },
-                onBack = {
-                    navController.popBackStack(AppRoute.Listen, inclusive = false)
-                },
+                onBack = { navController.popIfTop(entry) },
             )
         }
     }
@@ -572,12 +574,16 @@ private fun NavGraphBuilder.appDestinations(
         }
     }
     graph.benchmarkScreen?.let { benchmarkContent ->
-        composable<AppRoute.DebugBenchmark> { BelowStatusBar { benchmarkContent() } }
+        composable<AppRoute.DebugBenchmark> { entry ->
+            BelowStatusBar { DebugScreen(onBack = { navController.popIfTop(entry) }, content = benchmarkContent) }
+        }
     }
     graph.diagnosticsScreen?.let { diagnosticsContent ->
-        composable<AppRoute.DebugDiagnostics> { BelowStatusBar { diagnosticsContent() } }
+        composable<AppRoute.DebugDiagnostics> { entry ->
+            BelowStatusBar { DebugScreen(onBack = { navController.popIfTop(entry) }, content = diagnosticsContent) }
+        }
     }
-    composable<AppRoute.AudioScan> {
+    composable<AppRoute.AudioScan> { entry ->
         BelowStatusBar {
             AudioScanScreenHost(
                 graph = graph,
@@ -586,9 +592,7 @@ private fun NavGraphBuilder.appDestinations(
                         popUpTo(AppRoute.Listen) { inclusive = false }
                     }
                 },
-                onBack = {
-                    navController.popBackStack(AppRoute.Listen, inclusive = false)
-                },
+                onBack = { navController.popIfTop(entry) },
             )
         }
     }
@@ -605,7 +609,7 @@ private fun NavGraphBuilder.appDestinations(
             )
         }
     }
-    composable<AppRoute.WeeklyRecap> {
+    composable<AppRoute.WeeklyRecap> { entry ->
         BelowStatusBar {
             se.birdy.app.ui.recap.RecapScreen(
                 viewModel = remember(graph) { graph.weeklyRecapViewModel() },
@@ -613,6 +617,7 @@ private fun NavGraphBuilder.appDestinations(
                     navController.navigate(AppRoute.Scan) { launchSingleTop = true }
                 },
                 onObservationClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
+                onBack = { navController.popIfTop(entry) },
             )
         }
     }
@@ -624,6 +629,18 @@ private fun NavDestination.isHeroRoute(): Boolean =
         hasRoute(AppRoute.MatchResult::class) ||
         hasRoute(AppRoute.SpeciesProfile::class) ||
         hasRoute(AppRoute.Premium::class)
+
+/** The debug-build screens (benchmark, diagnostics) under the same fixed way back as the others (Task 7b). */
+@Composable
+private fun DebugScreen(
+    onBack: () -> Unit,
+    content: @Composable () -> Unit,
+) {
+    Column(Modifier.fillMaxSize()) {
+        BackTopBar(onBack = onBack)
+        Box(Modifier.fillMaxWidth().weight(1f)) { content() }
+    }
+}
 
 /** Non-hero screens start below the status bar, each on its own, so nothing shifts during a transition. */
 @Composable

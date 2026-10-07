@@ -111,7 +111,15 @@ private val tabs =
                 ),
         ),
         TabSpec(AppRoute.Archive, Res.string.tab_archive, Icons.AutoMirrored.Filled.LibraryBooks),
-        TabSpec(AppRoute.Lifelist, Res.string.tab_lifelist, Icons.Outlined.CollectionsBookmark),
+        // Release 1.3.0 Task 7b: the weekly recap and season statistics are opened from Mina arter,
+        // so they keep its tab marked (a find, ObservationDetail, follows the screen it was opened
+        // from, see tabOwnerDestination).
+        TabSpec(
+            route = AppRoute.Lifelist,
+            label = Res.string.tab_lifelist,
+            icon = Icons.Outlined.CollectionsBookmark,
+            ownedRoutes = setOf(AppRoute.Lifelist::class, AppRoute.WeeklyRecap::class, AppRoute.SeasonStats::class),
+        ),
         TabSpec(
             route = AppRoute.Badges,
             label = Res.string.tab_badges,
@@ -131,6 +139,8 @@ fun BottomNavBar(
     dailyBirdDot: Boolean = false,
 ) {
     val backStackEntry by navController.currentBackStackEntryAsState()
+    val ownerDestination =
+        tabOwnerDestination(backStackEntry?.destination, navController.previousBackStackEntry?.destination)
     Row(
         modifier =
             Modifier
@@ -154,7 +164,7 @@ fun BottomNavBar(
     ) {
         for (tab in tabs) {
             val selected =
-                backStackEntry?.destination?.parentChain()?.any { dest ->
+                ownerDestination?.parentChain()?.any { dest ->
                     tab.ownedRoutes.any { dest.hasRoute(it) }
                 } == true
             TabCell(
@@ -167,9 +177,11 @@ fun BottomNavBar(
                     // the launcher hub. Otherwise navigate cross-tab as usual.
                     val onTabRoot =
                         backStackEntry?.destination?.hasRoute(tab.route::class) == true
-                    if (selected && !onTabRoot) {
-                        navController.popBackStack(tab.route, inclusive = false)
-                    } else {
+                    // The tab's root may not be on the back stack (the weekly recap opened from its
+                    // notification): then switch to the tab the usual way.
+                    val poppedToTabRoot =
+                        selected && !onTabRoot && navController.popBackStack(tab.route, inclusive = false)
+                    if (!poppedToTabRoot) {
                         navController.navigate(tab.route) {
                             popUpTo(navController.graph.startDestinationId) { saveState = true }
                             launchSingleTop = true
@@ -282,3 +294,16 @@ private fun NewDot(modifier: Modifier = Modifier) {
 }
 
 private fun NavDestination.parentChain(): Sequence<NavDestination> = generateSequence(this) { it.parent }
+
+/**
+ * The destination that decides which tab is marked: the current one, except for a find
+ * (ObservationDetail), which belongs to the screen it was opened from (Mina arter, the map or the
+ * weekly recap). Release 1.3.0 Task 7b.
+ */
+private fun tabOwnerDestination(
+    current: NavDestination?,
+    previous: NavDestination?,
+): NavDestination? {
+    val isFind = current?.hasRoute(AppRoute.ObservationDetail::class) == true
+    return if (isFind && previous != null) previous else current
+}
