@@ -8,3 +8,6 @@ dist-empty/
 .DS_Store
 playwright-report/
 test-results/
+
+# Publiceringsloopens sessionsfil och rapporter (scripts/publish-next.mjs, plan Task 16)
+reports/

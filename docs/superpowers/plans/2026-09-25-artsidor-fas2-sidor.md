@@ -5118,7 +5118,7 @@ Skapa (med SDD, enligt plan-skelettets vanliga TDD-mönster) `scripts/publish-ne
 2. ~~Bland arterna: välj den med lägst `review.wave` ..., som har `status: "ok"` och `verification` satt. Finns ingen sådan art: samma urval bland jämförelser ...~~ **(ersatt, se Tillägget ovan: det egna urvalet är helt borttaget. `web publish --next` väljer själv, med det riktiga publiceringsvillkoret, i `review/waves.json`s egen ordning inom en våg.)**
 3. ~~Finns ingen kandidat: skriv "Inget att publicera" och avsluta med kod 0 ...~~ **(ersatt, se Tillägget ovan: `--next` skriver självt `none` på stdout när inget är klart; `publish-next.mjs` avslutar då med kod 3, inte 0, och loopen stoppar i stället för att sova.)**
 4. ~~Kör `uv run birdy-fetcher web publish --species <QID>` (art) eller `--species <A> --species <B>` ...~~ **(ersatt, se Tillägget ovan: kör `uv run birdy-fetcher web publish --next --exclude ...` (en rad per uteslutning från sessionsfilen) i `../tools/content-pipeline`; läs dess stdout-rad (`species <QID>`, `comparison <STEM>` eller `none`) för att veta vilket spår, 5 till 7, gäller.)**
-5. Bygg produktionsläget (`npm run build:prod`, pinnar `SPECIES_FIXTURES=0 SPECIES_PREVIEW=0` så ett ärvt skalvärde aldrig kan ändra bygget tyst), kör `node scripts/check-seo.mjs`, kör den sidans egna Playwright-test (`PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts -g <slug>` för en art, `tests/comparisons.spec.ts -g <slug>` för en jämförelse) och axe-kontrollen mot samma adress (`AXE_PATH="sv/arter/<slug>/" PLAYWRIGHT_PORT=4327 npm run test:a11y`, Task 14 Step 6b).
+5. Bygg produktionsläget (`npm run build:prod`, pinnar `SPECIES_FIXTURES=0 SPECIES_PREVIEW=0` så ett ärvt skalvärde aldrig kan ändra bygget tyst), kör `node scripts/check-seo.mjs`, kör den sidans egna Playwright-test (`PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts -g <slug>` för en art, `tests/comparisons.spec.ts -g <slug>` för en jämförelse) **(ersatt vid genomförandet: `tests/published-page.spec.ts` med `PAGE_PATHS`, se Genomförandet punkt 1 nedan)** och axe-kontrollen mot samma adress (`AXE_PATH="sv/arter/<slug>/" PLAYWRIGHT_PORT=4327 npm run test:a11y`, Task 14 Step 6b).
 6. Något steg i 4 eller 5 failar: ~~`git checkout -- src/data`~~ **(ersatt 2026-10-06, se Tillägget om I7 och I8 ovan: återställ bara den post `--next` skrev ut, `git checkout -- src/data/species/<QID>.json` eller `git checkout -- src/data/comparisons/<STEM>.json`)** (ångra `publish`-ändringen), skriv felet till `reports/publish-loop-<datum>.md`, lägg till den misslyckade postens QID eller jämförelsestam på en ny rad i `reports/publish-loop-excluded.txt` **(tillagt, se Tillägget ovan: efter detta FÖRSTA felet, inte efter tre)**, avsluta med kod 1. Inget annat ändras.
 7. Allt grönt: `git add` bara de filer som ändrades för just den här arten eller jämförelsen (dess JSON i `src/data/`, foton och inspelning under `src/assets/species/<QID>/` om de är nya), commit `data(artsidor): {namn} ({QID})` (jämförelse: `data(artsidor): {A} eller {B} ({QID-A}+{QID-B})`), push, avsluta med kod 0. **(Tillägg 2026-10-06: ändringar från `web spot-check` och `web import` committas aldrig här utan i egna commits, se Tillägget om I7 och I8 ovan.)**
 
@@ -5126,19 +5126,30 @@ Spara loopen som `scripts/publish-loop.sh`:
 
 ```bash
 #!/usr/bin/env bash
+# The publish loop (plan Task 16, spec 2026-09-25 §14): runs scripts/publish-next.mjs until nothing is ready,
+# MAX_PUBLISH pages are out, or three DIFFERENT records in a row have failed (a failed record is excluded for
+# the rest of the session after its first failure, so three in a row means something systematic: read
+# reports/publish-loop-<date>.md before starting again). Run from a main checkout:
+#   bash scripts/publish-loop.sh 5            five pages, then stop (a small first round)
+#   bash scripts/publish-loop.sh              the whole queue
+#   bash scripts/publish-loop.sh 1 --dry-run  extra arguments go to publish-next.mjs
+# SLEEP_SECONDS (default 300) is the pause between two pushes, so Vercel builds one page at a time.
 set -u
+cd "$(dirname "$0")/.." || exit 1
 MAX_PUBLISH=${1:-9999}
+shift || true
+SLEEP_SECONDS=${SLEEP_SECONDS:-300}
 mkdir -p reports
 : > reports/publish-loop-excluded.txt  # tom sessionsfil vid varje ny körning
 published=0
 consecutive_failures=0
 while [ "$published" -lt "$MAX_PUBLISH" ] && [ "$consecutive_failures" -lt 3 ]; do
-  node scripts/publish-next.mjs
+  node scripts/publish-next.mjs "$@"
   code=$?
   if [ "$code" -eq 0 ]; then
     consecutive_failures=0
     published=$((published + 1))
-    [ "$published" -lt "$MAX_PUBLISH" ] && sleep 300
+    [ "$published" -lt "$MAX_PUBLISH" ] && sleep "$SLEEP_SECONDS"
   elif [ "$code" -eq 3 ]; then
     echo "Inget mer att publicera just nu."
     break
@@ -5147,9 +5158,373 @@ while [ "$published" -lt "$MAX_PUBLISH" ] && [ "$consecutive_failures" -lt 3 ]; 
   fi
 done
 echo "$published publicerade, $consecutive_failures fel i rad vid stopp."
+echo "Stickprovet (plan Task 16 Step 4): cd ../tools/content-pipeline && uv run birdy-fetcher web spot-check"
 ```
 
 `MAX_PUBLISH` är nödstoppet (`--max-publish N` i spec-språket): kör till exempel `bash scripts/publish-loop.sh 5` för en liten testomgång innan hela kön släpps på. Tre OLIKA poster i rad (kod 1, inte kod 3) stoppar loopen helt: en enskild dålig post bidrar aldrig med mer än ett fel, den uteslöts redan efter sitt första (se Tillägget ovan); läs `reports/publish-loop-*.md` innan omstart. `website/reports/` (sessionsfilen + loopens egna `.md`-rapporter) är lokalt arbetsmaterial, inte artdata: lägg till raden `reports/` i `website/.gitignore` som en del av den här uppgiften, annars dyker filerna upp som ospårade i varje `git status`.
+
+**Genomförandet (Task 16, 2026-10-07; kodblocken här är byte-identiska med filerna, och loopen är provkörd mot riktig data, se nedan):**
+
+1. **Sidans egna tester är `tests/published-page.spec.ts`**, inte `tests/species.spec.ts -g <slug>`: `species.spec.ts` testar testdatan (Talgoxe, Ugglor och så vidare), så `-g` med en riktig arts adress matchar inget test och Playwright avslutar med fel. Den nya filen är oberoende av datan: `PAGE_PATHS` (sidans adress på båda språken) ger 200, ingen `noindex` och ingen förhandsbanderoll, en h1, rätt canonical, adressen i sitemapen, språkparet svarar, `og:image` och inspelningen svarar, huvudfotot är laddat, kontrollraden finns, inga konsolfel, och ingen sidledsscroll i 360, 390 och 430 px. Utan `PAGE_PATHS` kontrollerar den testdatans Talgoxe, så den körs också i den vanliga sviten. axe körs på båda språken (`AXE_PATH` med kommatecken, Task 14).
+2. **Jämförelserna utesluts så länge `COMPARISONS_ENABLED` är `false`** (Task 11 slår på den): varje jämförelsefil skickas som `--exclude`, så `--next` aldrig publicerar en jämförelse som ingen sida finns för.
+3. **En post med ocommittade ändringar** (ett stickprov eller en import som pågår) skickas också som `--exclude`: att återställa en misslyckad post (`git checkout -- <fil>`) kan då aldrig kasta bort någon annans ändringar.
+4. **Förkontroll innan något ändras:** pipelinen finns, grenen är `main` (utom med `--dry-run` eller `--no-push`), och porten för testernas server är ledig. Ett fel där väljer ingen post och utesluter ingen.
+5. **Testerna får en egen server:** `astro preview --port <PUBLISH_PORT, standard 4327> --strictPort --ignore-lock` i förgrunden (Astro 7:s förhandsvisningslås kan hållas av en annan sessions server), Playwright återanvänder den, och den stängs efter testerna. `SPECIES_FIXTURES`, `SPECIES_PREVIEW`, `SPECIES_EMPTY` och `CI` tas bort ur miljön.
+6. **Flaggor:** `--dry-run` gör allt utom commit och push och återställer posten, `--no-push` committar utan att pusha (och tillåter en annan gren än `main`), `--port N`. `publish-loop.sh` skickar argument efter det första vidare (`bash scripts/publish-loop.sh 1 --dry-run`), går själv till `website/` och har `SLEEP_SECONDS` (standard 300). Den påminner om stickprovet (Step 4) när den stannar; `web spot-check` räknar per dragning, så det räcker att köra det efter en omgång.
+7. **Commit och push:** bara postens filer (`git commit -- <filer>`, så att något annat i indexet aldrig följer med), med `Co-Authored-By` sist. Går pushen inte (någon annan pushade under tiden) görs `git pull --rebase --autostash` och ett nytt försök; går det ändå inte är posten committad men inte pushad, kod 1 utan uteslutning (`--next` väljer den inte igen, och nästa lyckade push tar den med).
+8. **Rapporten** `reports/publish-loop-<datum>.md` får en rad per post, även lyckade, och vid fel de sista raderna av stegets utdata utan färgkoder. `website/.gitattributes` håller `scripts/publish-loop.sh` med LF även i Windows-utcheckningar (`core.autocrlf` hade gett CRLF och fått bash att fallera).
+9. **Varje bygge loggar `artdata …, förhandsbygge av|på, VERCEL_ENV=…`** (`astro.config.mjs`, byggkroken `birdy-species-share`), så Vercels bygglogg visar om Production-spärren mot förhandssidor ser `VERCEL_ENV`. Står det `VERCEL_ENV=(saknas)` i en Production-logg på Vercel är "Automatically expose System Environment Variables" avslaget i projektet.
+10. **Provkört 2026-10-07** i en tillfällig worktree med `data/artsidor`s riktiga data (11 färdiga arter): `--dry-run` grönt för Blåmes och återställt; loopen med `--no-push` publicerade Blåmes, Gråsparv och Trana i våg 1:s ordning (en commit var, bara artens JSON); med trasiga huvudfoton föll tre poster i rad i `build:prod`, var och en återställd och utesluten, och loopen stannade med "0 publicerade, 3 fel i rad"; `none` gav kod 3 (med de uteslutna och en ocommittad post bortvalda), upptagen port och fel gren gav kod 1 i förkontrollen. Pushen är inte provkörd (den kräver `main`). Enhetstester i `tests/unit/publish-next.unit.mjs`.
+
+`scripts/publish-next.mjs`:
+
+```js
+#!/usr/bin/env node
+// Publishes at most ONE species or comparison (spec 2026-09-25 §14, plan Task 16), from website/ on `main`:
+//   1. `uv run birdy-fetcher web publish --next` in ../tools/content-pipeline picks the next ready record in
+//      queue order and sets `publish: true` (stdout: "species QID", "comparison STEM" or "none");
+//   2. the production build (npm run build:prod), check-seo.mjs over the whole site, the page's own tests
+//      (tests/published-page.spec.ts) and axe (tests/a11y.spec.ts) on both language versions;
+//   3. all green: commit only that record's files and push; anything red: put the record back, write the
+//      reason to reports/publish-loop-<date>.md and exclude the record for the rest of the session.
+// Exit codes: 0 published (or, with --dry-run, everything green), 1 failure, 3 nothing ready.
+// scripts/publish-loop.sh runs it in a loop. Flags:
+//   --dry-run   do everything but commit and push, then put the record back (leaves no trace but reports/)
+//   --no-push   commit, but do not push (and allow a branch other than main), for testing
+//   --port N    the preview server's port for the tests (default 4327, or PUBLISH_PORT)
+import { spawn, spawnSync } from 'node:child_process';
+import { appendFileSync, existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
+import { connect } from 'node:net';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { COMPARISONS_ENABLED } from '../src/lib/species-source.mjs';
+
+export const EXIT = { published: 0, failed: 1, none: 3 };
+export const EXCLUDED_FILE = 'reports/publish-loop-excluded.txt';
+export const TRAILER = 'Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>';
+const SPECIES_DIR = 'src/data/species';
+const COMPARISONS_DIR = 'src/data/comparisons';
+const ASSETS_DIR = 'src/assets/species';
+
+/** @param {string[]} argv */
+export function parseArgs(argv) {
+  const out = { dryRun: false, push: true, port: Number(process.env.PUBLISH_PORT ?? 4327) };
+  for (let i = 0; i < argv.length; i += 1) {
+    const a = argv[i];
+    if (a === '--dry-run') out.dryRun = true;
+    else if (a === '--no-push') out.push = false;
+    else if (a === '--port') out.port = Number(argv[(i += 1)]);
+    else throw new Error(`okänd flagga: ${a}`);
+  }
+  if (!Number.isInteger(out.port) || out.port < 1024 || out.port > 65535) throw new Error(`ogiltig port: ${out.port}`);
+  return out;
+}
+
+/** The session's exclusions: one QID or comparison stem per line; blank lines and # comments are skipped. */
+export function readExcluded(text) {
+  return [...new Set(text.split(/\r?\n/).map((l) => l.trim()).filter((l) => l && !l.startsWith('#')))];
+}
+
+/** The record ids behind a list of changed paths (`git status --porcelain`): src/data JSON files only. */
+export function dirtyRecordIds(porcelain) {
+  const ids = new Set();
+  for (const line of porcelain.split(/\r?\n/)) {
+    const m = line.match(/src\/data\/(?:species|comparisons)\/(Q\d+(?:_Q\d+)?)\.json/);
+    if (m) ids.add(m[1]);
+  }
+  return [...ids];
+}
+
+/**
+ * The arguments for `uv` (run in ../tools/content-pipeline). Comparison pages come with Task 11: while
+ * COMPARISONS_ENABLED is false every comparison is excluded, so --next never publishes one that has no page.
+ */
+export function nextArgs(excluded, comparisonStems, comparisonsEnabled) {
+  const skip = [...new Set([...excluded, ...(comparisonsEnabled ? [] : comparisonStems)])];
+  return ['run', 'birdy-fetcher', 'web', 'publish', '--next', ...skip.flatMap((id) => ['--exclude', id])];
+}
+
+/** --next's stdout contract: exactly one line, "species QID", "comparison STEM" or "none". */
+export function parsePick(stdout) {
+  const lines = stdout.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+  if (lines.length !== 1) throw new Error(`web publish --next skrev ${lines.length} rader, väntade en: ${JSON.stringify(stdout.slice(0, 300))}`);
+  if (lines[0] === 'none') return null;
+  const species = lines[0].match(/^species (Q\d+)$/);
+  if (species) return { kind: 'species', id: species[1] };
+  const comparison = lines[0].match(/^comparison (Q\d+_Q\d+)$/);
+  if (comparison) return { kind: 'comparison', id: comparison[1] };
+  throw new Error(`web publish --next: oväntad rad ${JSON.stringify(lines[0])}`);
+}
+
+/** The files a published record may change: its JSON, and for a species its photos and recording. */
+export function pickFiles(pick) {
+  return pick.kind === 'species'
+    ? { json: `${SPECIES_DIR}/${pick.id}.json`, extra: [`${ASSETS_DIR}/${pick.id}`] }
+    : { json: `${COMPARISONS_DIR}/${pick.id}.json`, extra: [] };
+}
+
+/** The page's address in both languages, without the leading slash (as the tests take them). */
+export function pagePaths(record) {
+  return [`sv/arter/${record.slug.sv}/`, `species/${record.slug.en}/`];
+}
+
+/** "data(artsidor): Talgoxe (Q25485)" or "data(artsidor): Blåmes eller talgoxe (Q25404+Q25485)". */
+export function commitMessage(pick, names) {
+  const subject = pick.kind === 'species'
+    ? `data(artsidor): ${names[0]} (${pick.id})`
+    : `data(artsidor): ${names[0]} eller ${names[1].toLocaleLowerCase('sv')} (${pick.id.replace('_', '+')})`;
+  return `${subject}\n\n${TRAILER}\n`;
+}
+
+/** Local date and time, for the report's file name and headings. */
+const stamp = () => {
+  const now = new Date();
+  return { date: now.toLocaleDateString('sv-SE'), time: now.toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit' }) };
+};
+// The last lines of a command's output, without the terminal's colour and cursor codes.
+// eslint-disable-next-line no-control-regex
+const tail = (text, lines = 60) => (text ?? '').replace(/\x1b\[[0-9;?]*[A-Za-z]/g, '').trimEnd().split(/\r?\n/).slice(-lines).join('\n').trim();
+
+/** True when something answers on the port, on IPv4 or IPv6 localhost (astro preview binds "localhost"). */
+async function portInUse(port) {
+  const answers = (host) => new Promise((done) => {
+    const socket = connect({ host, port });
+    socket.setTimeout(1000);
+    socket.once('connect', () => { socket.destroy(); done(true); });
+    socket.once('timeout', () => { socket.destroy(); done(false); });
+    socket.once('error', () => done(false));
+  });
+  return (await Promise.all(['127.0.0.1', '::1'].map(answers))).some(Boolean);
+}
+
+async function waitForServer(url, ms) {
+  const until = Date.now() + ms;
+  while (Date.now() < until) {
+    try {
+      if ((await fetch(url)).ok) return true;
+    } catch {
+      // not up yet
+    }
+    await new Promise((r) => setTimeout(r, 500));
+  }
+  return false;
+}
+
+async function main() {
+  const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+  const pipeline = resolve(root, '../tools/content-pipeline');
+  const opts = parseArgs(process.argv.slice(2));
+  // Never let an inherited variable change the production build or the tests (build:prod pins the first two).
+  const env = { ...process.env };
+  for (const name of ['SPECIES_FIXTURES', 'SPECIES_PREVIEW', 'SPECIES_EMPTY', 'CI']) delete env[name];
+
+  const sh = (cmd, cwd = root, extraEnv = {}, timeout = 15 * 60_000) =>
+    spawnSync(cmd, { cwd, env: { ...env, ...extraEnv }, shell: true, encoding: 'utf8', timeout, maxBuffer: 64 * 1024 * 1024 });
+  const git = (args) => spawnSync('git', args, { cwd: root, env, encoding: 'utf8' });
+  const say = (line) => console.log(`publish-next: ${line}`);
+
+  mkdirSync(resolve(root, 'reports'), { recursive: true });
+  const { date } = stamp();
+  const report = resolve(root, `reports/publish-loop-${date}.md`);
+  const writeReport = (heading, body = '') => appendFileSync(report, `## ${stamp().time} ${heading}\n\n${body ? `\`\`\`\n${body}\n\`\`\`\n\n` : ''}`);
+
+  // -- Before anything changes ---------------------------------------------------------------------------
+  const preflight = [];
+  if (!existsSync(pipeline)) preflight.push(`pipelinen saknas: ${pipeline}`);
+  const branch = git(['rev-parse', '--abbrev-ref', 'HEAD']).stdout.trim();
+  if (opts.push && !opts.dryRun && branch !== 'main') preflight.push(`grenen är ${branch}, publiceringen pushar bara från main (testa med --dry-run eller --no-push)`);
+  if (await portInUse(opts.port)) preflight.push(`porten ${opts.port} är upptagen (en annan server?), välj en annan med --port eller PUBLISH_PORT`);
+  if (preflight.length) {
+    writeReport('förkontroll FAILED (ingen post vald)', preflight.join('\n'));
+    for (const p of preflight) console.error(`publish-next: ${p}`);
+    process.exit(EXIT.failed);
+  }
+
+  const excludedPath = resolve(root, EXCLUDED_FILE);
+  const excluded = existsSync(excludedPath) ? readExcluded(readFileSync(excludedPath, 'utf8')) : [];
+  // A record with uncommitted changes (a spot check or an import in progress) is somebody else's work in
+  // progress: never pick it, so putting a failed record back can never throw those changes away.
+  const dirty = dirtyRecordIds(git(['status', '--porcelain', '--', SPECIES_DIR, COMPARISONS_DIR]).stdout);
+  const stems = existsSync(resolve(root, COMPARISONS_DIR))
+    ? readdirSync(resolve(root, COMPARISONS_DIR)).filter((f) => /^Q\d+_Q\d+\.json$/.test(f)).map((f) => f.slice(0, -5))
+    : [];
+
+  // -- 1. The pick -------------------------------------------------------------------------------------
+  const args = nextArgs([...excluded, ...dirty], stems, COMPARISONS_ENABLED);
+  const picked = spawnSync('uv', args, { cwd: pipeline, env, encoding: 'utf8', timeout: 10 * 60_000 });
+  if (picked.error || picked.status !== 0) {
+    writeReport('web publish --next FAILED (ingen post vald)', `${picked.error?.message ?? ''}\n${tail(picked.stderr)}\n${tail(picked.stdout)}`.trim());
+    console.error(`publish-next: web publish --next misslyckades (${picked.error?.message ?? `kod ${picked.status}`}), se ${report}`);
+    process.exit(EXIT.failed);
+  }
+  let pick;
+  try {
+    pick = parsePick(picked.stdout);
+  } catch (e) {
+    writeReport('web publish --next gav ett oväntat svar', `${e.message}\n${tail(picked.stderr)}`);
+    console.error(`publish-next: ${e.message}`);
+    process.exit(EXIT.failed);
+  }
+  if (!pick) {
+    say(`inget att publicera just nu (${excluded.length} uteslutna i sessionen, ${dirty.length} med ocommittade ändringar${COMPARISONS_ENABLED ? '' : ', jämförelserna avstängda till Task 11'})`);
+    process.exit(EXIT.none);
+  }
+
+  const files = pickFiles(pick);
+  const restore = () => git(['checkout', '--', files.json]);
+  const fail = (step, details) => {
+    restore();
+    appendFileSync(excludedPath, `${pick.id}\n`);
+    writeReport(`${pick.kind} ${pick.id} FAILED i steget ${step} (återställd, utesluten i sessionen)`, details);
+    console.error(`publish-next: ${pick.kind} ${pick.id} föll i steget ${step}; posten är återställd och utesluten, se ${report}`);
+    process.exit(EXIT.failed);
+  };
+
+  let record;
+  let names;
+  try {
+    record = JSON.parse(readFileSync(resolve(root, files.json), 'utf8'));
+    if (pick.kind === 'comparison' && !COMPARISONS_ENABLED) throw new Error('en jämförelse valdes fast jämförelserna är avstängda (COMPARISONS_ENABLED)');
+    names = pick.kind === 'species'
+      ? [record.names.sv]
+      : [record.a, record.b].map((qid) => JSON.parse(readFileSync(resolve(root, SPECIES_DIR, `${qid}.json`), 'utf8')).names.sv);
+  } catch (e) {
+    fail('läsa posten', e.message);
+  }
+  const paths = pagePaths(record);
+  say(`${pick.kind} ${pick.id} (${names.join(' / ')}): bygger och testar /${paths.join(' och /')}`);
+
+  // -- 2. Build and check --------------------------------------------------------------------------------
+  const build = sh('npm run build:prod');
+  if (build.status !== 0) fail('build:prod', `${tail(build.stdout)}\n${tail(build.stderr)}`);
+  const seo = sh('node scripts/check-seo.mjs');
+  if (seo.status !== 0) fail('check-seo', `${tail(seo.stdout)}\n${tail(seo.stderr)}`);
+  for (const p of paths) {
+    if (!existsSync(resolve(root, 'dist', p, 'index.html'))) fail('bygget', `/${p} finns inte i dist/ efter bygget`);
+  }
+
+  // The tests get a preview server of their own (foreground, outside Astro's preview lock, which another
+  // session's server may hold); Playwright reuses it instead of starting one.
+  const server = spawn(process.execPath, [resolve(root, 'node_modules/astro/bin/astro.mjs'), 'preview', '--port', String(opts.port), '--strictPort', '--ignore-lock'], { cwd: root, env, stdio: 'ignore' });
+  let tests;
+  try {
+    if (!(await waitForServer(`http://localhost:${opts.port}/`, 60_000))) {
+      server.kill();
+      fail('förhandsvisningsservern', `astro preview svarade inte på port ${opts.port} inom 60 s`);
+    }
+    tests = sh(
+      `"${process.execPath}" node_modules/@playwright/test/cli.js test tests/published-page.spec.ts tests/a11y.spec.ts --workers=2 --reporter=line`,
+      root,
+      { PAGE_PATHS: paths.join(','), AXE_PATH: paths.join(','), PLAYWRIGHT_PORT: String(opts.port) },
+      10 * 60_000,
+    );
+  } finally {
+    server.kill();
+  }
+  if (tests.status !== 0) fail('Playwright och axe', `${tail(tests.stdout, 120)}\n${tail(tests.stderr)}`);
+  say(`testerna gröna: ${tail(tests.stdout, 1)}`);
+
+  // -- 3. Publish ---------------------------------------------------------------------------------------
+  if (opts.dryRun) {
+    restore();
+    writeReport(`${pick.kind} ${pick.id}: torrkörning grön (återställd, inget committat)`);
+    say(`torrkörning: allt grönt för ${pick.id}, posten är återställd och inget är committat`);
+    process.exit(EXIT.published);
+  }
+  const commitPaths = [files.json, ...files.extra.filter((p) => existsSync(resolve(root, p)))];
+  const added = git(['add', '--', ...commitPaths]);
+  const committed = added.status === 0 ? git(['commit', '-m', commitMessage(pick, names), '--', ...commitPaths]) : added;
+  if (committed.status !== 0) fail('git commit', `${committed.stdout}\n${committed.stderr}`);
+  const hash = git(['rev-parse', '--short', 'HEAD']).stdout.trim();
+  if (opts.push) {
+    let pushed = git(['push']);
+    if (pushed.status !== 0) {
+      // Someone else pushed meanwhile (the pipeline's data, a spot check): rebase once and try again.
+      const pulled = git(['pull', '--rebase', '--autostash']);
+      pushed = pulled.status === 0 ? git(['push']) : pulled;
+    }
+    if (pushed.status !== 0) {
+      // Committed but not pushed: the record is published locally, so --next will not pick it again and the
+      // next successful push takes it along. Not excluded, nothing to put back.
+      writeReport(`${pick.kind} ${pick.id}: committad (${hash}) men push FAILED`, `${pushed.stdout}\n${pushed.stderr}`);
+      console.error(`publish-next: ${pick.id} är committad (${hash}) men gick inte att pusha, se ${report}`);
+      process.exit(EXIT.failed);
+    }
+  }
+  writeReport(`${pick.kind} ${pick.id} (${names.join(' / ')}): publicerad ${hash}${opts.push ? ', pushad' : ', inte pushad (--no-push)'}`);
+  say(`${names.join(' / ')} (${pick.id}) publicerad som ${hash}${opts.push ? ' och pushad' : ' (inte pushad)'}`);
+  process.exit(EXIT.published);
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
+  main().catch((e) => {
+    console.error(`publish-next: ${e.stack ?? e}`);
+    process.exit(EXIT.failed);
+  });
+}
+```
+
+`tests/published-page.spec.ts`:
+
+```ts
+import { test, expect } from '@playwright/test';
+import { trackConsoleErrors } from './test-helpers';
+
+// The page the publish loop just built (scripts/publish-next.mjs, plan Task 16), checked on the production
+// build before it is committed: PAGE_PATHS holds its address in both languages, comma-separated
+// ("sv/arter/koboltmes/,species/azure-tit/"). Without PAGE_PATHS the test data's Talgoxe is checked, so the
+// same tests run in the normal suite (npm run build:fixtures first). Data-independent on purpose: the
+// fixture-specific checks live in species.spec.ts.
+const SITE = 'https://birdy.community';
+const paths = (process.env.PAGE_PATHS ?? 'sv/arter/talgoxe/,species/great-tit/').split(',').map((p) => p.trim()).filter(Boolean);
+
+for (const path of paths) {
+  test.describe(`publicerad sida /${path}`, () => {
+    test('svarar 200, är indexerbar, finns i sitemapen och språkparet finns', async ({ page, request }) => {
+      const errors = trackConsoleErrors(page);
+      const res = await page.goto(`/${path}`);
+      expect(res?.status()).toBe(200);
+      const html = await page.content();
+      expect(html).not.toContain('content="noindex');
+      expect(html).not.toContain('data-preview-banner');
+      await expect(page.locator('h1')).toHaveCount(1);
+      await expect(page.locator('h1')).not.toBeEmpty();
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `${SITE}/${path}`);
+
+      const sitemap = await (await request.get('/sitemap-0.xml')).text();
+      expect(sitemap).toContain(`<loc>${SITE}/${path}</loc>`);
+
+      const other = await page.locator(`link[rel="alternate"][hreflang="${path.startsWith('sv/') ? 'en' : 'sv'}"]`).getAttribute('href');
+      expect(other).toBeTruthy();
+      expect((await request.get(new URL(other!).pathname)).status(), other!).toBe(200);
+
+      const og = await page.locator('meta[property="og:image"]').getAttribute('content');
+      expect((await request.get(new URL(og!).pathname)).status(), og!).toBe(200);
+
+      // The first photo (the hero) is loaded, not just referenced.
+      const first = page.locator('main img').first();
+      await expect(first).toBeVisible();
+      expect(await first.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+
+      for (const src of await page.locator('audio').evaluateAll((els) => els.map((e) => e.getAttribute('src')))) {
+        expect(src).toBeTruthy();
+        expect((await request.get(src!)).status(), src!).toBe(200);
+      }
+      await expect(page.locator('[data-reviewed]')).toHaveCount(1);
+      expect(errors).toEqual([]);
+    });
+
+    for (const width of [360, 390, 430]) {
+      test(`ingen sidledsscroll i ${width} px`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 844 });
+        await page.goto(`/${path}`);
+        const [scroll, client] = await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.clientWidth]);
+        expect(scroll).toBeLessThanOrEqual(client);
+      });
+    }
+  });
+}
+```
 
 - [ ] **Step 4: Stickprovet var 40:e art och var 10:e jämförelse**
 

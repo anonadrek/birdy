@@ -6,7 +6,7 @@ import sharp from 'sharp';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { basename, dirname, resolve } from 'node:path';
-import { SHARE_QUALITY, SHARE_SIZE, assetsDir, builtSpeciesMedia, paperColour } from './src/lib/species-source.mjs';
+import { SHARE_QUALITY, SHARE_SIZE, assetsDir, builtSpeciesMedia, isPreview, paperColour, speciesDir } from './src/lib/species-source.mjs';
 import { readSpeciesSitemapInfo } from './src/lib/species-sitemap.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -132,6 +132,12 @@ const speciesAudio = {
 const speciesShare = {
   name: 'birdy-species-share',
   hooks: {
+    // One line in every build log (Vercel's too): which species data the build reads, and VERCEL_ENV, which the
+    // Production guard against preview pages (isPreview) depends on. "(saknas)" on Vercel means the project's
+    // "Automatically expose System Environment Variables" is off and the guard can't see Production.
+    'astro:build:start': ({ logger }) => {
+      logger.info(`artdata ${speciesDir()}, förhandsbygge ${isPreview() ? 'på' : 'av'}, VERCEL_ENV=${process.env.VERCEL_ENV ?? '(saknas)'}`);
+    },
     'astro:build:done': async ({ dir, logger }) => {
       const { share } = speciesMedia();
       const out = fileURLToPath(new URL('og/species/', dir));
