@@ -8,10 +8,12 @@ const PURCHASE = ['köp', 'kvitto', 'återbetal', 'refund', 'premium', 'prenumer
 const BUG = ['krasch', 'fel', 'bugg', 'crash', 'bug', 'error', 'fungerar inte', "doesn't work", 'does not work', 'broken', 'hänger sig', 'freezes'];
 
 const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-// "fel" alone also matches the start of the English words "felt"/"fell"/"fellow" — block exactly
-// those two continuations ('t', 'l') while still allowing Swedish compounds ("felet", "felaktig",
-// "felmeddelande") and the bare word with punctuation ("fel", "fel.", "fel,").
-const wordPattern = (word) => (word === 'fel' ? 'fel(?!t|l)' : escape(word));
+// "fel" only counts as the bare Swedish word for "error", or followed by one of these real
+// compounds/suffixes — never just any letter run, which would also swallow Felix, Felicia, feline,
+// felony (and a blocklist of specific continuations like the former 'fel(?!t|l)' rule missed
+// feltolkning/felkod, which start with the very letters it blocked).
+const FEL_SUFFIXES = ['aktigt', 'aktig', 'meddelande', 'tolkning', 'tryck', 'rapport', 'kod', 'et', 'en', 'a'];
+const wordPattern = (word) => (word === 'fel' ? `fel(?:${FEL_SUFFIXES.join('|')})?(?![\\p{L}\\p{N}])` : escape(word));
 // A word counts at the start of a word: "köpte" matches "köp", "sköp" does not.
 const startsAWord = (words) => new RegExp(`(?<![\\p{L}\\p{N}])(?:${words.map(wordPattern).join('|')})`, 'iu');
 const PURCHASE_RE = startsAWord(PURCHASE);
