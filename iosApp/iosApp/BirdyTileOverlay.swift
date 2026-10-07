@@ -6,7 +6,8 @@ import ComposeApp
 /// bindning K/N 2.1.20 länkar (klib-verifierat, se `IosTileFetcher`s KDoc i ComposeApp för
 /// den fulla bakgrunden). Den här filen äger därför den faktiska subklassen och gör
 /// ingenting annat än att vidarebefordra varje tile-laddning till `IosTileFetcher` — all
-/// logik (URL, nätverk, disk-cache, duotone-tint) lever på Kotlin-sidan.
+/// logik (URL, stil, nätverk, disk-cache) lever på Kotlin-sidan. Rutorna visas som MapTiler
+/// levererar dem (villkoren förbjuder att ändra dem).
 final class BirdyTileOverlay: MKTileOverlay {
     init() {
         super.init(urlTemplate: nil)

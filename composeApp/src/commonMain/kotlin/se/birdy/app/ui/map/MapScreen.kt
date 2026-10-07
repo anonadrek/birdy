@@ -93,8 +93,9 @@ fun MapScreen(
                         append(stringResource(Res.string.map_attribution_osm))
                     }
                 }
-            // On a solid paper chip: the map's sea is near-black, and MapTiler's terms want the
-            // attribution always visible and readable (QA 2026-10-07: dark ink on the dark sea).
+            // On a solid paper chip: MapTiler's terms want the attribution always visible and
+            // readable whatever the style draws under it (QA 2026-10-07: dark ink on a near-black
+            // sea; a custom style can have dark areas too).
             Text(
                 text = attribution,
                 color = MapAttributionInk,

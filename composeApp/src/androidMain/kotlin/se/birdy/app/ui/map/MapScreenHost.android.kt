@@ -1,7 +1,6 @@
 package se.birdy.app.ui.map
 
 import android.graphics.BitmapFactory
-import android.graphics.ColorMatrixColorFilter
 import android.graphics.drawable.BitmapDrawable
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -33,30 +32,38 @@ import java.io.File
 
 // 512px @2x ("retina") tiles render crisp on high-DPI phones and cut the tile
 // count ~4× vs 256px, so the map is sharper AND fills faster. MapTiler exposes
-// HiDPI via the "@2x.png" suffix. Base style is "toner-v2" (grayscale ink) which
-// the duotone ColorMatrix (see the setColorFilter call below) tints to paper+sepia.
-// Source name is suffixed so the on-disk cache doesn't mix toner with old tiles.
+// HiDPI via the "@2x.png" suffix. The tiles are drawn exactly as MapTiler serves them
+// (terms §4.4): the look is the style's, see MapTilerUrls.kt. The source name carries the
+// style id, so osmdroid's on-disk cache never mixes tiles from two styles.
 private const val MAPTILER_TILE_SIZE = 512
 
 /** Space kept free around the pins when several finds are fitted on screen. */
 private const val FIT_BORDER_PX = 96
 
-private fun mapTilerSource(apiKey: String): OnlineTileSourceBase =
+/** Alpha byte for the 24-bit RGB [MapTileTheme.PAPER]. */
+private const val OPAQUE: Int = 0xFF shl 24
+
+private fun mapTilerSource(
+    styleId: String,
+    apiKey: String,
+): OnlineTileSourceBase =
     object : XYTileSource(
-        "MapTiler-Toner-Retina",
+        mapTilerTileSourceName(styleId),
         0,
         MAP_TILE_MAX_ZOOM.toInt(),
         MAPTILER_TILE_SIZE,
         "@2x.png",
-        arrayOf("https://api.maptiler.com/maps/toner-v2/"),
+        arrayOf(mapTilerTileBaseUrl(styleId)),
         "© MapTiler © OpenStreetMap contributors",
     ) {
         override fun getTileURLString(pMapTileIndex: Long): String =
-            getBaseUrl() +
-                MapTileIndex.getZoom(pMapTileIndex) + "/" +
-                MapTileIndex.getX(pMapTileIndex) + "/" +
-                MapTileIndex.getY(pMapTileIndex) +
-                mImageFilenameEnding + "?key=" + apiKey
+            mapTilerTileUrl(
+                styleId = styleId,
+                z = MapTileIndex.getZoom(pMapTileIndex).toLong(),
+                x = MapTileIndex.getX(pMapTileIndex).toLong(),
+                y = MapTileIndex.getY(pMapTileIndex).toLong(),
+                apiKey = apiKey,
+            )
     }
 
 @Composable
@@ -77,17 +84,22 @@ actual fun MapScreenHost(
                 tileDownloadThreads = 8 // default 2 — parallel fetch for faster cold-cache fill
             }
             MapView(context).apply {
-                setTileSource(mapTilerSource(BuildConfig.MAPTILER_API_KEY))
+                setTileSource(
+                    mapTilerSource(
+                        styleId = mapTilerStyleId(BuildConfig.MAPTILER_STYLE_ID),
+                        apiKey = BuildConfig.MAPTILER_API_KEY,
+                    ),
+                )
                 // Never zoom past the tiles (osmdroid's own limit is 29, from its tile
                 // approximator), neither by pinching nor by a fit (Plan 3 Task 7 review).
                 maxZoomLevel = MAP_TILE_MAX_ZOOM
                 setMultiTouchControls(true)
                 setUseDataConnection(true)
-                overlayManager.tilesOverlay.setColorFilter(
-                    ColorMatrixColorFilter(
-                        MapTileTheme.duotoneMatrix(MapTileTheme.INK, MapTileTheme.PAPER),
-                    ),
-                )
+                // Paper, not osmdroid's grey grid, where a tile hasn't loaded yet. Our own
+                // placeholder: the tiles themselves are never touched.
+                val paper = MapTileTheme.PAPER or OPAQUE
+                overlayManager.tilesOverlay.loadingBackgroundColor = paper
+                overlayManager.tilesOverlay.loadingLineColor = paper
             }
         }
 

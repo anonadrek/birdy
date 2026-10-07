@@ -122,14 +122,6 @@
     <ID>MagicNumber:BodyTextWithCaveatAccents.kt$1.2f</ID>
     <ID>MagicNumber:BodyTextWithCaveatAccents.kt$1.55f</ID>
     <ID>MagicNumber:BottomNavBar.kt$50</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$14</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$19</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$20</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$255f</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$3</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$4</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$5</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$9</ID>
     <ID>MagicNumber:Color.kt$0x1FA8552D</ID>
     <ID>MagicNumber:Color.kt$0x66A8552D</ID>
     <ID>MagicNumber:Color.kt$0x99E8E2D2</ID>
@@ -168,7 +160,6 @@
     <ID>MagicNumber:IosSealMarker.kt$16</ID>
     <ID>MagicNumber:IosSealMarker.kt$255.0</ID>
     <ID>MagicNumber:IosSealMarker.kt$8</ID>
-    <ID>MagicNumber:IosTileFetcher.kt$IosTileFetcher$3</ID>
     <ID>MagicNumber:JournalBarChart.kt$0.62f</ID>
     <ID>MagicNumber:JournalDonutChart.kt$360f</ID>
     <ID>MagicNumber:JournalDonutChart.kt$90f</ID>
@@ -203,13 +194,6 @@
     <ID>MagicNumber:MapScreenHost.ios.kt$0.1</ID>
     <ID>MagicNumber:MapScreenHost.ios.kt$4000.0</ID>
     <ID>MagicNumber:MapScreenHost.ios.kt$48.0</ID>
-    <ID>MagicNumber:MapTileTheme.kt$MapTileTheme$0.114f</ID>
-    <ID>MagicNumber:MapTileTheme.kt$MapTileTheme$0.299f</ID>
-    <ID>MagicNumber:MapTileTheme.kt$MapTileTheme$0.587f</ID>
-    <ID>MagicNumber:MapTileTheme.kt$MapTileTheme$0xFF</ID>
-    <ID>MagicNumber:MapTileTheme.kt$MapTileTheme$16</ID>
-    <ID>MagicNumber:MapTileTheme.kt$MapTileTheme$255f</ID>
-    <ID>MagicNumber:MapTileTheme.kt$MapTileTheme$8</ID>
     <ID>MagicNumber:MapViewModel.kt$MapViewModel$5_000</ID>
     <ID>MagicNumber:MatchResultViewModel.kt$MatchResultViewModel$3</ID>
     <ID>MagicNumber:MatchView.kt$100</ID>
@@ -387,7 +371,6 @@
     <ID>MatchingDeclarationName:SettingsLauncher.android.kt$SettingsLauncherSetup</ID>
     <ID>MaxLineLength:AppGraph.kt$AppGraph$)</ID>
     <ID>MaxLineLength:BadgesScreen.kt$sub = stringResource(Res.string.badges_journal_sub, (state.totalBadges - state.unlockedCount).toString())</ID>
-    <ID>MaxLineLength:CiColorMatrixVectors.kt$fun row(i: Int)</ID>
     <ID>MaxLineLength:CropAdjustScreen.kt$CropHandle.BOTTOM_LEFT to Offset(fit.offsetX + rect.left * fit.scale, fit.offsetY + rect.bottom * fit.scale)</ID>
     <ID>MaxLineLength:CropAdjustScreen.kt$CropHandle.BOTTOM_RIGHT to Offset(fit.offsetX + rect.right * fit.scale, fit.offsetY + rect.bottom * fit.scale)</ID>
     <ID>MaxLineLength:DisambigView.kt$val confidenceLabel = stringResource(Res.string.disambig_candidate_confidence, candidate.species.scientificName, "$pct%")</ID>
@@ -400,7 +383,6 @@
     <ID>MaxLineLength:IosNotificationScheduler.kt$IosNotificationScheduler$add(ID_TROPHY, content, NotificationTimes.nextWeekly(graph.clock.now(), graph.timeZone, DayOfWeek.WEDNESDAY, 9, 0))</ID>
     <ID>MaxLineLength:IosNotificationScheduler.kt$IosNotificationScheduler$requests.orEmpty().mapNotNull { (it as? UNNotificationRequest)?.identifier }.filter { it.startsWith(prefix) }</ID>
     <ID>MaxLineLength:IosSealMarker.kt$CGContextSetShadowWithColor(ctx, CGSizeMake(0.0, s.SHADOW_DY.toDouble()), s.SHADOW_BLUR.toDouble(), shadowUiColor.CGColor)</ID>
-    <ID>MaxLineLength:IosTileFetcher.kt$IosTileFetcher$fun vec(v: FloatArray)</ID>
     <ID>MaxLineLength:LifelistScreen.kt$.</ID>
     <ID>MaxLineLength:LockedBadgeBottomSheet.kt$Text(stampText, color = AccentCopper, fontFamily = serif, fontStyle = FontStyle.Italic, fontSize = 30.sp)</ID>
     <ID>MaxLineLength:LockedBadgeBottomSheet.kt$Text(stringResource(Res.string.badge_sheet_close), color = AccentCopper, fontFamily = caveat, fontSize = 16.sp)</ID>
@@ -438,7 +420,6 @@
     <ID>ReturnCount:IosImageDecode.kt$internal fun rotate90(working: WorkingImage): WorkingImage</ID>
     <ID>ReturnCount:IosImageDecode.kt$private fun UIImage.bakeUpright(maxLongSide: Int): WorkingImage?</ID>
     <ID>ReturnCount:IosScanFramePersist.kt$internal fun encodeBgraFrameToJpeg(input: ImageInput): ByteArray?</ID>
-    <ID>ReturnCount:IosTileFetcher.kt$IosTileFetcher$private fun tinted(data: NSData): NSData?</ID>
     <ID>ReturnCount:MapScreenHost.ios.kt$BirdyMapDelegate$override fun mapView( mapView: MKMapView, viewForAnnotation: MKAnnotationProtocol, ): MKAnnotationView?</ID>
     <ID>ReturnCount:MatchOverride.kt$fun parseMatchOverride(text: String): MatchOverride?</ID>
     <ID>ReturnCount:MatchResultViewModel.kt$MatchResultViewModel$fun saveToDiary(note: String = "")</ID>

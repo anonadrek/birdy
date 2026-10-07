@@ -34,7 +34,7 @@ Skriven i slutet av sessionen 2026-10-05–07 (Windows). Läs den här filen och
 8. **7i Upphovsrätts- och juridikgenomgång** (KRÄVS): se Plan 3, avsnittet Task 7i, tio punkter; resultatet i `docs/legal/2026-10-1.3.0-genomgang.md`.
 9. **Task 8** R8-röktest (minifierat bygge) av tack-skärmen och betalväggen.
 10. **Task 9** butiksbilder i webbens look (KRÄVS; bara CC0/PD-foton; feature graphic; laddas upp med vC130, agenten fyller i Console med Albins godkännande).
-11. **Task 10** vC130 produktionsbygget: höj `releaseVersionCode` till 130, ny MapTiler-nyckel (alternativ b: Albin skapar ny nyckel i MapTiler Cloud, Default key återkallas när vC130 är live), signering, raden `Birdy release config: versionCode=130 versionName=1.3.0 GRANDFATHER_CUTOFF_MS=1792188000000 billingTestBuild=false`. **Brytpunkten flyttad 2026-10-07 till 2026-10-17 00:00 för go-live torsdag 2026-10-15; flyttas igen FÖRE bygget om go-live sker senare.** Ladda upp till Intern testning först; Albin kör hela testsviten på telefonen; befordra till produktion.
+11. **Task 10** vC130 produktionsbygget: höj `releaseVersionCode` till 130, ny MapTiler-nyckel (alternativ b: Albin skapar ny nyckel i MapTiler Cloud, Default key återkallas när vC130 är live), signering, raden `Birdy release config: versionCode=130 versionName=1.3.0 GRANDFATHER_CUTOFF_MS=1792188000000 billingTestBuild=false MAPTILER_STYLE_ID=<Albins egna stil-id>` (Albin lägger `MAPTILER_STYLE_ID` och den nya nyckeln i `~/.gradle/gradle.properties`; `unset` = MapTilers färdiga stil, tillåten men inte i appens färger). **Brytpunkten flyttad 2026-10-07 till 2026-10-17 00:00 för go-live torsdag 2026-10-15; flyttas igen FÖRE bygget om go-live sker senare.** Ladda upp till Intern testning först; Albin kör hela testsviten på telefonen; befordra till produktion.
 12. **Task 11** avslut: CI grön på PR #53, slutgranskning av hela release-grenen, merge till main, CLAUDE.md.
 
 **1.3.1 (direkt efter go-live, Albins val 2026-10-07 "kör allt" enligt rekommendationen):** Märken 1b (certifikatbladet med fyndet som gav märket: kräver ett nytt fält `observationId` i `BadgeUnlock`, troférummet som hyllor, stämpelslaget), PDF 1 (1.3-färgerna, riktiga foton med krediter, sida "Bildkällor"; i dag har PDF:en inga foton och rad 25 krockar med sidnumret), Pop-up 1 (Premium-ark från 5:e sparade fyndet, en gång, aldrig för tidiga användare/Premium, gemensam 14-dagarspaus för alla Premium-uppmaningar; 3:e sparade är redan Play-recensionen), Intro 1 (fem sidor, levande demo, Dagens fågel). Senare: Uppslag 2/3, Märken 2 (fältpass), PDF 2, Intro 2.
@@ -75,7 +75,7 @@ Beslutssidan: https://claude.ai/artifact/NHEcrCSEqvrhU9KrHWNX42 (uppdateras med 
 ## 5. Albins steg (blockerar release)
 
 1. **Köptestet med vC129** på sin telefon (gå med via anmälningslänken under Play Console → Intern testning, installera, köp Livstid med testkortet; "Välkommen, fältmedlem." = hård grind före vC130).
-2. **Ny MapTiler-nyckel** i MapTiler Cloud före vC130-bygget.
+2. **MapTiler Flex, egen stil och ny nyckel** före vC130-bygget: skapa stilen i MapTiler Customize (appens papper och sepia), lägg dess id i `MAPTILER_STYLE_ID` och den nya nyckeln i `MAPTILER_API_KEY` i `~/.gradle/gradle.properties` (Macen: `iosApp/Local.xcconfig`).
 3. **Bankkontot** i betalningsprofilen (sist): Play Console → Inställningar → Betalningsprofil → Betalningssätt → "Lägg till betalningsmetod" (agenten öppnade sidan 2026-10-07; Albin fyller i själv).
 4. Kontrollera att inspelningstimern går i rätt takt på riktig telefon (den gick för fort på emulatorn).
 

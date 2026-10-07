@@ -43,7 +43,7 @@ Designspecar: v1 [`docs/superpowers/specs/2026-04-30-birdy-bird-scanner-v1-desig
 **Krav:**
 - JDK 21 (Temurin)
 - Android SDK 36 med build-tools (AGP 8.9.1, Gradle 8.11.1)
-- `MAPTILER_API_KEY` i lokala `~/.gradle/gradle.properties` för kartan (committas aldrig). Release-bygget behöver dessutom `BIRDY_PLAY_LICENSE_KEY` och signeringsuppgifter.
+- `MAPTILER_API_KEY` i lokala `~/.gradle/gradle.properties` för kartan (committas aldrig), och `MAPTILER_STYLE_ID` för Birdys egen kartstil i MapTiler (utan den visas MapTilers standardstil `landscape`; rutorna färgas aldrig om i appen, det förbjuder MapTilers villkor). Release-bygget behöver dessutom `BIRDY_PLAY_LICENSE_KEY` och signeringsuppgifter.
 - iOS, bara på Mac: Xcode 26, xcodegen och `iosApp/Local.xcconfig` (mall: `Local.xcconfig.sample`)
 - Webben: Node.js 20 eller senare
 

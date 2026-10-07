@@ -318,14 +318,31 @@ val verifyReleaseKeys by tasks.registering {
     inputs.property("releaseVersionName", releaseVersionName)
     inputs.property("grandfatherCutoffMs", grandfatherCutoffMs)
     inputs.property("billingTestBuild", billingTestBuild)
+    // The map's MapTiler style (composeApp bakes it into BuildConfig and rejects a malformed id).
+    // Not a secret; printed so the vC130 build log shows which style ships. Unset is legal (the
+    // app falls back to MapTiler's stock style), so it only warns, never fails.
+    inputs.property(
+        "mapTilerStyleId",
+        providers.gradleProperty("MAPTILER_STYLE_ID").map { it.trim() }.orElse(""),
+    )
     doLast(
         Action {
+            val mapTilerStyleId = inputs.properties["mapTilerStyleId"] as String
             logger.lifecycle(
                 "Birdy release config: versionCode=${inputs.properties["releaseVersionCode"]} " +
                     "versionName=${inputs.properties["releaseVersionName"]} " +
                     "GRANDFATHER_CUTOFF_MS=${inputs.properties["grandfatherCutoffMs"]} " +
-                    "billingTestBuild=${inputs.properties["billingTestBuild"]}",
+                    "billingTestBuild=${inputs.properties["billingTestBuild"]} " +
+                    "MAPTILER_STYLE_ID=${mapTilerStyleId.ifEmpty { "unset" }}",
             )
+            if (mapTilerStyleId.isEmpty()) {
+                logger.warn(
+                    "warning: MAPTILER_STYLE_ID is not set, so the map uses MapTiler's stock style " +
+                        "(DEFAULT_MAPTILER_STYLE_ID in composeApp's MapTilerUrls.kt), not Birdy's own " +
+                        "style. Allowed, but if the style exists, put its id in " +
+                        "~/.gradle/gradle.properties and build again.",
+                )
+            }
             val missing =
                 inputs.properties
                     .filter { (name, present) -> name.startsWith("present.") && present == false }
