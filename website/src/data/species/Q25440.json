@@ -1,0 +1,207 @@
+{
+  "qid": "Q25440",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "storskarv",
+    "en": "great-cormorant"
+  },
+  "names": {
+    "sv": "Storskarv",
+    "en": "Great Cormorant",
+    "scientific": "Phalacrocorax carbo"
+  },
+  "family": {
+    "latin": "Phalacrocoracidae",
+    "sv": "Skarvar"
+  },
+  "group": "seabirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25440/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Great_cormorant_(Phalacrocorax_carbo),_Travemünde.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25440/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Great_cormorant_(Phalacrocorax_carbo)_in_flight,_Travemünde.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25440/voice.mp3",
+    "durationSec": 13,
+    "trimmed": false,
+    "author": "Sonothèque ADVL",
+    "license": "CC0",
+    "licenseUrl": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cormor%C3%A1n_grande_(Phalacrocorax_carbo).mp3",
+    "sha256": "b892c0e17ab3926e9d5e7edf750f7a13f29d3fa2a139a07f4e254245d1187fca"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Storskarv",
+      "revision": "58850386"
+    },
+    "en": {
+      "title": "Great cormorant",
+      "revision": "1339370010"
+    },
+    "de": {
+      "title": "Kormoran (Art)",
+      "revision": "268396955"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2481890,
+    "totalReports": 391637,
+    "months": [
+      93,
+      73,
+      89,
+      71,
+      51,
+      64,
+      75,
+      92,
+      98,
+      92,
+      100,
+      85
+    ],
+    "counties": {
+      "SE-K": 56,
+      "SE-W": 25,
+      "SE-X": 38,
+      "SE-I": 46,
+      "SE-N": 63,
+      "SE-Z": 4,
+      "SE-F": 71,
+      "SE-H": 43,
+      "SE-G": 100,
+      "SE-BD": 20,
+      "SE-T": 41,
+      "SE-E": 55,
+      "SE-M": 69,
+      "SE-D": 63,
+      "SE-AB": 63,
+      "SE-C": 39,
+      "SE-S": 44,
+      "SE-AC": 13,
+      "SE-Y": 38,
+      "SE-U": 71,
+      "SE-O": 65
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Kronoberg, Jönköping och Västmanland."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Kronoberg, Jönköping and Västmanland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        32595,
+        17632,
+        39573,
+        49156,
+        41872,
+        30533,
+        26638,
+        35669,
+        41388,
+        37712,
+        23045,
+        15605
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 58829,
+        "SE-M": 46299,
+        "SE-AB": 40109,
+        "SE-H": 20831,
+        "SE-F": 17766,
+        "SE-D": 17716,
+        "SE-N": 17569,
+        "SE-E": 13656,
+        "SE-G": 13383,
+        "SE-C": 13343,
+        "SE-U": 9717,
+        "SE-T": 7374,
+        "SE-S": 5992,
+        "SE-I": 5855,
+        "SE-X": 4806,
+        "SE-W": 3930,
+        "SE-K": 3664,
+        "SE-Y": 3553,
+        "SE-BD": 3179,
+        "SE-AC": 2724,
+        "SE-Z": 392
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

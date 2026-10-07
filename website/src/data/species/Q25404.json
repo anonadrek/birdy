@@ -1,0 +1,211 @@
+{
+  "qid": "Q25404",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "blames",
+    "en": "eurasian-blue-tit"
+  },
+  "names": {
+    "sv": "Blåmes",
+    "en": "Eurasian Blue Tit",
+    "scientific": "Cyanistes caeruleus"
+  },
+  "family": {
+    "latin": "Paridae",
+    "sv": "Mesar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "marginalia": {
+    "sv": "Blåmesen hänger gärna upp och ned från en kvist.",
+    "en": "The blue tit will hang upside-down from a twig without hesitation."
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25404/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Kathy Büscher",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blaumeise_(64)_(34633517080).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25404/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Kathy Büscher",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blaumeise_(67)_(35020838535).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25404/voice.mp3",
+    "durationSec": 11,
+    "trimmed": false,
+    "author": "Benoît Van Hecke",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cyanistes_caeruleus_-_Eurasian_Blue_Tit_XC538220.mp3",
+    "sha256": "0f108876f58113e48771c1721dc5c6062a6e74712b7b5e8635dd5b962decb08a"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Blåmes",
+      "revision": "59325080"
+    },
+    "en": {
+      "title": "Eurasian blue tit",
+      "revision": "1374417094"
+    },
+    "de": {
+      "title": "Blaumeise",
+      "revision": "266641831"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2487879,
+    "totalReports": 876895,
+    "months": [
+      91,
+      83,
+      50,
+      31,
+      32,
+      46,
+      22,
+      26,
+      47,
+      81,
+      93,
+      100
+    ],
+    "counties": {
+      "SE-K": 100,
+      "SE-W": 58,
+      "SE-X": 95,
+      "SE-I": 92,
+      "SE-N": 45,
+      "SE-Z": 52,
+      "SE-F": 77,
+      "SE-H": 43,
+      "SE-G": 57,
+      "SE-BD": 74,
+      "SE-T": 52,
+      "SE-E": 65,
+      "SE-M": 88,
+      "SE-D": 90,
+      "SE-AB": 76,
+      "SE-C": 73,
+      "SE-S": 67,
+      "SE-AC": 84,
+      "SE-Y": 100,
+      "SE-U": 64,
+      "SE-O": 77
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i oktober till februari.",
+        "Vanligast i rapporterna från Blekinge, Västernorrland och Gävleborg."
+      ],
+      "en": [
+        "Reported most in October to February.",
+        "Most common in reports from Blekinge, Västernorrland and Gävleborg."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        109880,
+        68835,
+        76819,
+        74316,
+        89527,
+        76462,
+        27224,
+        34174,
+        68969,
+        113679,
+        73453,
+        63328
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 139251,
+        "SE-M": 119275,
+        "SE-AB": 97736,
+        "SE-D": 51121,
+        "SE-C": 49819,
+        "SE-H": 42118,
+        "SE-F": 38756,
+        "SE-AC": 35008,
+        "SE-E": 32489,
+        "SE-N": 25361,
+        "SE-X": 23930,
+        "SE-I": 23665,
+        "SE-BD": 23511,
+        "SE-Y": 18673,
+        "SE-T": 18599,
+        "SE-S": 18590,
+        "SE-W": 17874,
+        "SE-U": 17691,
+        "SE-G": 15452,
+        "SE-K": 13171,
+        "SE-Z": 9136
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

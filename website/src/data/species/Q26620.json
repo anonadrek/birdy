@@ -1,0 +1,209 @@
+{
+  "qid": "Q26620",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "rodstjart",
+    "en": "common-redstart"
+  },
+  "names": {
+    "sv": "Rödstjärt",
+    "en": "Common Redstart",
+    "scientific": "Phoenicurus phoenicurus"
+  },
+  "family": {
+    "latin": "Muscicapidae",
+    "sv": "Flugsnappare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26620/hero.webp",
+      "width": 1600,
+      "height": 1066,
+      "author": "Dirk Wedemann",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gartenrotschwanz,_Common_redstart,_phoenicurus_phoenicurus.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26620/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Jevgenijs Slihto",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_redstart_(Phoenicurus_phoenicurus,_juvenile)_(26767090208).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26620/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "W.carter",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Redstart_warning_call_(cat)_in_Tuntorp,_Brastad.ogg",
+    "sha256": "3bc25b27348f8af4db92b8f26f08a88cbe309e2b6decd286036416b592b2615b"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Rödstjärt",
+      "revision": "57468539"
+    },
+    "en": {
+      "title": "Common redstart",
+      "revision": "1371681379"
+    },
+    "de": {
+      "title": "Gartenrotschwanz",
+      "revision": "271068270"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 5739317,
+    "totalReports": 199734,
+    "months": [
+      1,
+      1,
+      1,
+      35,
+      100,
+      80,
+      48,
+      45,
+      30,
+      6,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 100,
+      "SE-W": 36,
+      "SE-X": 30,
+      "SE-I": 68,
+      "SE-N": 60,
+      "SE-Z": 55,
+      "SE-F": 37,
+      "SE-H": 73,
+      "SE-G": 36,
+      "SE-BD": 97,
+      "SE-T": 26,
+      "SE-E": 31,
+      "SE-M": 73,
+      "SE-D": 33,
+      "SE-AB": 44,
+      "SE-C": 25,
+      "SE-S": 28,
+      "SE-AC": 58,
+      "SE-Y": 39,
+      "SE-U": 26,
+      "SE-O": 43
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i maj och juni.",
+        "Nästan aldrig i oktober till mars.",
+        "Vanligast i rapporterna från Blekinge, Norrbotten och Kalmar."
+      ],
+      "en": [
+        "Reported most in May and June.",
+        "Almost never in October to March.",
+        "Most common in reports from Blekinge, Norrbotten and Kalmar."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1,
+        1,
+        9,
+        24710,
+        84683,
+        39262,
+        17276,
+        17899,
+        12921,
+        2520,
+        65,
+        30
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-M": 32266,
+        "SE-O": 25570,
+        "SE-H": 23217,
+        "SE-AB": 18627,
+        "SE-N": 11146,
+        "SE-BD": 10061,
+        "SE-AC": 7915,
+        "SE-D": 6167,
+        "SE-F": 6015,
+        "SE-I": 5749,
+        "SE-C": 5664,
+        "SE-E": 5056,
+        "SE-K": 4315,
+        "SE-W": 3699,
+        "SE-G": 3215,
+        "SE-Z": 3143,
+        "SE-T": 2998,
+        "SE-S": 2580,
+        "SE-X": 2507,
+        "SE-Y": 2371,
+        "SE-U": 2347
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

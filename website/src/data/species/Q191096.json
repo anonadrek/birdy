@@ -1,0 +1,207 @@
+{
+  "qid": "Q191096",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "svartmes",
+    "en": "coal-tit"
+  },
+  "names": {
+    "sv": "Svartmes",
+    "en": "Coal Tit",
+    "scientific": "Periparus ater"
+  },
+  "family": {
+    "latin": "Paridae",
+    "sv": "Mesfåglar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q191096/hero.webp",
+      "width": 1600,
+      "height": 1139,
+      "author": "Luiz Lapa",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chapim-carvoeiro,_Coal_Tit_(50587266376).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q191096/extra.webp",
+      "width": 1200,
+      "height": 807,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Coal_tit_(Periparus_ater)_2019.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q191096/voice.mp3",
+    "durationSec": 12,
+    "trimmed": false,
+    "author": "Vladimir Yu. Arkhipov, Arkhivov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Periparus_ater.ogg",
+    "sha256": "0ea73b43d20ecf7165bac2103f0b2e9c540e40f22250d172cbd1b5cc24f0abed"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Svartmes",
+      "revision": "59705839"
+    },
+    "en": {
+      "title": "Coal tit",
+      "revision": "1368773832"
+    },
+    "de": {
+      "title": "Tannenmeise",
+      "revision": "270804252"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2487871,
+    "totalReports": 205031,
+    "months": [
+      100,
+      92,
+      55,
+      30,
+      17,
+      18,
+      16,
+      18,
+      38,
+      47,
+      73,
+      98
+    ],
+    "counties": {
+      "SE-K": 63,
+      "SE-W": 77,
+      "SE-X": 82,
+      "SE-I": 100,
+      "SE-N": 36,
+      "SE-Z": 76,
+      "SE-F": 68,
+      "SE-H": 38,
+      "SE-G": 79,
+      "SE-BD": 74,
+      "SE-T": 78,
+      "SE-E": 49,
+      "SE-M": 37,
+      "SE-D": 80,
+      "SE-AB": 71,
+      "SE-C": 61,
+      "SE-S": 94,
+      "SE-AC": 84,
+      "SE-Y": 84,
+      "SE-U": 79,
+      "SE-O": 79
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december till februari.",
+        "Vanligast i rapporterna från Gotland, Värmland och Västerbotten."
+      ],
+      "en": [
+        "Reported most in December to February.",
+        "Most common in reports from Gotland, Värmland and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        34655,
+        21830,
+        24024,
+        20632,
+        13618,
+        8459,
+        5461,
+        6874,
+        15815,
+        18939,
+        16743,
+        17870
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 37889,
+        "SE-AB": 23913,
+        "SE-M": 13211,
+        "SE-D": 11868,
+        "SE-C": 11005,
+        "SE-H": 9662,
+        "SE-AC": 9206,
+        "SE-F": 8998,
+        "SE-T": 7363,
+        "SE-S": 6813,
+        "SE-I": 6748,
+        "SE-E": 6425,
+        "SE-W": 6296,
+        "SE-BD": 6125,
+        "SE-U": 5687,
+        "SE-G": 5638,
+        "SE-X": 5408,
+        "SE-N": 5408,
+        "SE-Y": 4138,
+        "SE-Z": 3540,
+        "SE-K": 2174
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

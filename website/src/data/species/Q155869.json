@@ -1,0 +1,209 @@
+{
+  "qid": "Q155869",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "buskskvatta",
+    "en": "whinchat"
+  },
+  "names": {
+    "sv": "Buskskvätta",
+    "en": "Whinchat",
+    "scientific": "Saxicola rubetra"
+  },
+  "family": {
+    "latin": "Muscicapidae",
+    "sv": "Flugsnappare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q155869/hero.webp",
+      "width": 1600,
+      "height": 1160,
+      "author": "Matti Virtala",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saxicola_rubetra_Oulu_Finland_2020-07-19.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q155869/extra.webp",
+      "width": 1200,
+      "height": 837,
+      "author": "Frank Vassen",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Braunkehlchen_(Saxicola_rubetra),_Warchetal_bei_Hünningen,_Ostbelgien_(19134054681).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q155869/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Olivier Grimm",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saxicola_rubetra_-_Whinchat_XC486281.mp3",
+    "sha256": "e9237c266ec444c6700af87d58134cb6a8189261f4d2cc2c0d75a5f7892292f0"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Buskskvätta",
+      "revision": "59481728"
+    },
+    "en": {
+      "title": "Whinchat",
+      "revision": "1375721097"
+    },
+    "de": {
+      "title": "Braunkehlchen",
+      "revision": "261912873"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2492521,
+    "totalReports": 153906,
+    "months": [
+      1,
+      1,
+      1,
+      17,
+      100,
+      76,
+      53,
+      79,
+      36,
+      2,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 31,
+      "SE-W": 100,
+      "SE-X": 55,
+      "SE-I": 34,
+      "SE-N": 44,
+      "SE-Z": 57,
+      "SE-F": 87,
+      "SE-H": 45,
+      "SE-G": 74,
+      "SE-BD": 56,
+      "SE-T": 73,
+      "SE-E": 54,
+      "SE-M": 39,
+      "SE-D": 59,
+      "SE-AB": 43,
+      "SE-C": 62,
+      "SE-S": 75,
+      "SE-AC": 60,
+      "SE-Y": 72,
+      "SE-U": 59,
+      "SE-O": 71
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i maj.",
+        "Nästan aldrig i oktober till mars.",
+        "Vanligast i rapporterna från Dalarna, Jönköping och Värmland."
+      ],
+      "en": [
+        "Reported most in May.",
+        "Almost never in October to March.",
+        "Most common in reports from Dalarna, Jönköping and Värmland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        41,
+        12,
+        2,
+        9339,
+        64534,
+        28644,
+        14565,
+        24080,
+        11868,
+        596,
+        111,
+        6
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 28995,
+        "SE-AB": 12240,
+        "SE-M": 12022,
+        "SE-F": 9767,
+        "SE-H": 9693,
+        "SE-C": 9537,
+        "SE-D": 7467,
+        "SE-W": 6968,
+        "SE-E": 6123,
+        "SE-T": 5843,
+        "SE-N": 5591,
+        "SE-AC": 5557,
+        "SE-S": 4645,
+        "SE-G": 4476,
+        "SE-BD": 3943,
+        "SE-U": 3656,
+        "SE-X": 3114,
+        "SE-Y": 3023,
+        "SE-Z": 2260,
+        "SE-I": 1944,
+        "SE-K": 907
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

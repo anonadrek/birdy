@@ -1,0 +1,207 @@
+{
+  "qid": "Q25968",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "pilfink",
+    "en": "eurasian-tree-sparrow"
+  },
+  "names": {
+    "sv": "Pilfink",
+    "en": "Eurasian Tree Sparrow",
+    "scientific": "Passer montanus"
+  },
+  "family": {
+    "latin": "Passeridae",
+    "sv": "Sparvfinkar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25968/hero.webp",
+      "width": 1600,
+      "height": 1600,
+      "author": "Mike Prince",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_Tree_Sparrow_(14181664512).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25968/extra.webp",
+      "width": 1200,
+      "height": 785,
+      "author": "Joe Pell",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Passer_montanus_(7).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25968/voice.mp3",
+    "durationSec": 11,
+    "trimmed": false,
+    "author": "Vladimir Yu. Arkhipov, Arkhivov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Passer_montanus.ogg",
+    "sha256": "eb776d11526454947d8a392a5b09f2da657b9c0bd5c6e4297e72016ff191a403"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Pilfink",
+      "revision": "59694145"
+    },
+    "en": {
+      "title": "Eurasian tree sparrow",
+      "revision": "1371443274"
+    },
+    "de": {
+      "title": "Feldsperling",
+      "revision": "264877692"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 5231198,
+    "totalReports": 320622,
+    "months": [
+      100,
+      73,
+      44,
+      28,
+      23,
+      30,
+      35,
+      33,
+      31,
+      48,
+      75,
+      90
+    ],
+    "counties": {
+      "SE-K": 44,
+      "SE-W": 56,
+      "SE-X": 60,
+      "SE-I": 28,
+      "SE-N": 52,
+      "SE-Z": 47,
+      "SE-F": 53,
+      "SE-H": 49,
+      "SE-G": 47,
+      "SE-BD": 81,
+      "SE-T": 55,
+      "SE-E": 65,
+      "SE-M": 56,
+      "SE-D": 90,
+      "SE-AB": 70,
+      "SE-C": 78,
+      "SE-S": 49,
+      "SE-AC": 70,
+      "SE-Y": 100,
+      "SE-U": 47,
+      "SE-O": 63
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december och januari.",
+        "Vanligast i rapporterna från Västernorrland, Södermanland och Norrbotten."
+      ],
+      "en": [
+        "Reported most in December and January.",
+        "Most common in reports from Västernorrland, Södermanland and Norrbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        51742,
+        25984,
+        28972,
+        28467,
+        28003,
+        21286,
+        18532,
+        18994,
+        19351,
+        29165,
+        25532,
+        24523
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 50288,
+        "SE-AB": 39160,
+        "SE-M": 33481,
+        "SE-C": 23351,
+        "SE-D": 22108,
+        "SE-H": 20542,
+        "SE-E": 14388,
+        "SE-N": 12899,
+        "SE-AC": 12739,
+        "SE-F": 11545,
+        "SE-BD": 11163,
+        "SE-T": 8587,
+        "SE-Y": 8162,
+        "SE-W": 7660,
+        "SE-X": 6646,
+        "SE-S": 5916,
+        "SE-U": 5671,
+        "SE-G": 5530,
+        "SE-Z": 3640,
+        "SE-I": 3180,
+        "SE-K": 2515
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

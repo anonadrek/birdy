@@ -1,0 +1,187 @@
+{
+  "qid": "Q178702",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "dalripa",
+    "en": "willow-ptarmigan"
+  },
+  "names": {
+    "sv": "Dalripa",
+    "en": "Willow Ptarmigan",
+    "scientific": "Lagopus lagopus"
+  },
+  "family": {
+    "latin": "Phasianidae",
+    "sv": "Skogshöns"
+  },
+  "group": "gamebirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q178702/hero.webp",
+      "width": 1600,
+      "height": 1071,
+      "author": "David Menke",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lagopus_lagopus_Alaska_2.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q178702/extra.webp",
+      "width": 1200,
+      "height": 989,
+      "author": "David Menke",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lagopus_lagopus_Alaska_1.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Dalripa",
+      "revision": "59709762"
+    },
+    "en": {
+      "title": "Willow ptarmigan",
+      "revision": "1374853084"
+    },
+    "de": {
+      "title": "Moorschneehuhn",
+      "revision": "265216118"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2473421,
+    "totalReports": 12269,
+    "months": [
+      17,
+      29,
+      27,
+      20,
+      17,
+      100,
+      58,
+      22,
+      12,
+      7,
+      8,
+      13
+    ],
+    "counties": {
+      "SE-K": 0,
+      "SE-W": 17,
+      "SE-X": 1,
+      "SE-I": 0,
+      "SE-N": 0,
+      "SE-Z": 100,
+      "SE-F": 0,
+      "SE-H": 0,
+      "SE-G": 0,
+      "SE-BD": 52,
+      "SE-T": 1,
+      "SE-E": 0,
+      "SE-M": 0,
+      "SE-D": 0,
+      "SE-AB": 1,
+      "SE-C": 0,
+      "SE-S": 1,
+      "SE-AC": 22,
+      "SE-Y": 6,
+      "SE-U": 0,
+      "SE-O": 0
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juni.",
+        "Nästan aldrig i oktober och november.",
+        "Vanligast i rapporterna från Jämtland, Norrbotten och Västerbotten."
+      ],
+      "en": [
+        "Reported most in June.",
+        "Almost never in October and November.",
+        "Most common in reports from Jämtland, Norrbotten and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        511,
+        594,
+        1034,
+        1196,
+        1214,
+        4120,
+        1756,
+        722,
+        422,
+        243,
+        165,
+        211
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-Z": 4272,
+        "SE-BD": 3966,
+        "SE-AC": 2238,
+        "SE-W": 1301,
+        "SE-Y": 292,
+        "SE-X": 58,
+        "SE-S": 53,
+        "SE-AB": 42,
+        "SE-T": 1
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

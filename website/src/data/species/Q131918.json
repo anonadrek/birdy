@@ -1,0 +1,209 @@
+{
+  "qid": "Q131918",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "stenfalk",
+    "en": "merlin"
+  },
+  "names": {
+    "sv": "Stenfalk",
+    "en": "Merlin",
+    "scientific": "Falco columbarius"
+  },
+  "family": {
+    "latin": "Falconidae",
+    "sv": "Falkfåglar"
+  },
+  "group": "raptors",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q131918/hero.webp",
+      "width": 1597,
+      "height": 2400,
+      "author": "Robert Burton / USFWS",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Falco_columbarius_FWS_14007.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q131918/extra.webp",
+      "width": 1200,
+      "height": 947,
+      "author": "Bear Golden Retriever",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Falco_columbarius_Auburn_NY.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q131918/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Jonathon Jongsma",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Falco_columbarius_-_Merlin_XC101582.mp3",
+    "sha256": "a5cc7202123bb140c849ec5a7ae5db9810c61ef72e9a041d47b310b4844a9e76"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Stenfalk",
+      "revision": "59603908"
+    },
+    "en": {
+      "title": "Merlin (bird)",
+      "revision": "1367745672"
+    },
+    "de": {
+      "title": "Merlin (Vogel)",
+      "revision": "268008130"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 9813242,
+    "totalReports": 53474,
+    "months": [
+      8,
+      8,
+      8,
+      39,
+      18,
+      6,
+      6,
+      24,
+      100,
+      64,
+      11,
+      7
+    ],
+    "counties": {
+      "SE-K": 50,
+      "SE-W": 60,
+      "SE-X": 49,
+      "SE-I": 59,
+      "SE-N": 97,
+      "SE-Z": 84,
+      "SE-F": 37,
+      "SE-H": 100,
+      "SE-G": 35,
+      "SE-BD": 88,
+      "SE-T": 46,
+      "SE-E": 40,
+      "SE-M": 61,
+      "SE-D": 19,
+      "SE-AB": 19,
+      "SE-C": 32,
+      "SE-S": 60,
+      "SE-AC": 96,
+      "SE-Y": 58,
+      "SE-U": 48,
+      "SE-O": 38
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september.",
+        "Nästan aldrig i juni, juli och december till mars.",
+        "Vanligast i rapporterna från Kalmar, Halland och Västerbotten."
+      ],
+      "en": [
+        "Reported most in September.",
+        "Almost never in June, July and December to March.",
+        "Most common in reports from Kalmar, Halland and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1050,
+        745,
+        1310,
+        10491,
+        5865,
+        1215,
+        843,
+        3677,
+        16511,
+        10253,
+        949,
+        525
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-H": 8003,
+        "SE-M": 6816,
+        "SE-O": 5762,
+        "SE-N": 4516,
+        "SE-AC": 3278,
+        "SE-BD": 2301,
+        "SE-AB": 1993,
+        "SE-C": 1830,
+        "SE-E": 1674,
+        "SE-W": 1536,
+        "SE-F": 1528,
+        "SE-S": 1366,
+        "SE-T": 1363,
+        "SE-I": 1239,
+        "SE-Z": 1218,
+        "SE-U": 1100,
+        "SE-X": 1015,
+        "SE-Y": 902,
+        "SE-D": 887,
+        "SE-G": 783,
+        "SE-K": 540
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

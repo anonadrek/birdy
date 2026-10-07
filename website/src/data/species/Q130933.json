@@ -1,0 +1,208 @@
+{
+  "qid": "Q130933",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "berguv",
+    "en": "eurasian-eagle-owl"
+  },
+  "names": {
+    "sv": "Berguv",
+    "en": "Eurasian Eagle-Owl",
+    "scientific": "Bubo bubo"
+  },
+  "family": {
+    "latin": "Strigidae",
+    "sv": "Egentliga ugglor"
+  },
+  "group": "owls",
+  "iucn": "LC",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q130933/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "JarroNevsbaru",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_eagle_owl_(Bubo_bubo)_2024.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q130933/extra.webp",
+      "width": 1200,
+      "height": 795,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_eagle-owl_(Bubo_bubo).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q130933/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Mirko Tomasi",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bubo_bubo_-_Eurasian_Eagle-Owl_XC461330.mp3",
+    "sha256": "1354a5e9a5d6537a2467f04e7b2ecde821c1bd08a13cf8af5d45c942f5b6c927"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Berguv",
+      "revision": "59392182"
+    },
+    "en": {
+      "title": "Eurasian eagle-owl",
+      "revision": "1375870499"
+    },
+    "de": {
+      "title": "Uhu",
+      "revision": "269833471"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 5959092,
+    "totalReports": 6607,
+    "months": [
+      100,
+      72,
+      33,
+      17,
+      30,
+      40,
+      14,
+      8,
+      16,
+      45,
+      75,
+      71
+    ],
+    "counties": {
+      "SE-K": 15,
+      "SE-W": 100,
+      "SE-X": 23,
+      "SE-I": 10,
+      "SE-N": 14,
+      "SE-Z": 0,
+      "SE-F": 15,
+      "SE-H": 8,
+      "SE-G": 4,
+      "SE-BD": 5,
+      "SE-T": 29,
+      "SE-E": 22,
+      "SE-M": 62,
+      "SE-D": 6,
+      "SE-AB": 26,
+      "SE-C": 3,
+      "SE-S": 4,
+      "SE-AC": 2,
+      "SE-Y": 8,
+      "SE-U": 16,
+      "SE-O": 22
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i januari.",
+        "Nästan aldrig i augusti.",
+        "Vanligast i rapporterna från Dalarna, Skåne och Örebro."
+      ],
+      "en": [
+        "Reported most in January.",
+        "Almost never in August.",
+        "Most common in reports from Dalarna, Skåne and Örebro."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1242,
+        612,
+        516,
+        404,
+        874,
+        676,
+        174,
+        110,
+        247,
+        652,
+        615,
+        462
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-M": 1759,
+        "SE-O": 852,
+        "SE-AB": 702,
+        "SE-W": 649,
+        "SE-E": 234,
+        "SE-T": 216,
+        "SE-N": 165,
+        "SE-H": 161,
+        "SE-F": 153,
+        "SE-X": 122,
+        "SE-U": 90,
+        "SE-D": 71,
+        "SE-I": 52,
+        "SE-K": 42,
+        "SE-C": 40,
+        "SE-Y": 33,
+        "SE-BD": 31,
+        "SE-S": 22,
+        "SE-G": 22,
+        "SE-AC": 21
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

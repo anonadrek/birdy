@@ -1,0 +1,207 @@
+{
+  "qid": "Q18854",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "storspov",
+    "en": "eurasian-curlew"
+  },
+  "names": {
+    "sv": "Storspov",
+    "en": "Eurasian Curlew",
+    "scientific": "Numenius arquata"
+  },
+  "family": {
+    "latin": "Scolopacidae",
+    "sv": "Snäppor"
+  },
+  "group": "waders",
+  "iucn": "NT",
+  "swedishRedList": "EN",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q18854/hero.webp",
+      "width": 1600,
+      "height": 1183,
+      "author": "Matti Virtala",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Numenius_arquata_Liminka_Finland_2020-05-22.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q18854/extra.webp",
+      "width": 1200,
+      "height": 863,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Numenius_Arquata_Simo_20110715.JPG"
+    }
+  ],
+  "audio": {
+    "file": "Q18854/voice.mp3",
+    "durationSec": 12,
+    "trimmed": false,
+    "author": "Pascal Christe",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Numenius_arquata_-_Eurasian_Curlew_XC466469.mp3",
+    "sha256": "686bf85a34fd23b01bbbbb38cdbd035607b0af3f0348331538293866005a893d"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Storspov",
+      "revision": "59693984"
+    },
+    "en": {
+      "title": "Eurasian curlew",
+      "revision": "1375004362"
+    },
+    "de": {
+      "title": "Großer Brachvogel",
+      "revision": "261463659"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2481792,
+    "totalReports": 237121,
+    "months": [
+      18,
+      20,
+      31,
+      100,
+      47,
+      59,
+      67,
+      65,
+      27,
+      19,
+      22,
+      20
+    ],
+    "counties": {
+      "SE-K": 20,
+      "SE-W": 59,
+      "SE-X": 43,
+      "SE-I": 47,
+      "SE-N": 100,
+      "SE-Z": 69,
+      "SE-F": 37,
+      "SE-H": 48,
+      "SE-G": 33,
+      "SE-BD": 72,
+      "SE-T": 31,
+      "SE-E": 31,
+      "SE-M": 49,
+      "SE-D": 10,
+      "SE-AB": 12,
+      "SE-C": 25,
+      "SE-S": 39,
+      "SE-AC": 67,
+      "SE-Y": 62,
+      "SE-U": 34,
+      "SE-O": 24
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april.",
+        "Vanligast i rapporterna från Halland, Norrbotten och Jämtland."
+      ],
+      "en": [
+        "Reported most in April.",
+        "Most common in reports from Halland, Norrbotten and Jämtland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        6443,
+        4873,
+        13832,
+        68515,
+        38558,
+        28249,
+        23554,
+        24931,
+        11162,
+        7818,
+        5007,
+        3612
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-M": 30090,
+        "SE-N": 25320,
+        "SE-H": 20706,
+        "SE-O": 19672,
+        "SE-AC": 12579,
+        "SE-BD": 10270,
+        "SE-W": 8271,
+        "SE-F": 8244,
+        "SE-C": 7779,
+        "SE-E": 7109,
+        "SE-AB": 6917,
+        "SE-Z": 5475,
+        "SE-I": 5395,
+        "SE-Y": 5198,
+        "SE-T": 5045,
+        "SE-X": 4870,
+        "SE-S": 4852,
+        "SE-U": 4163,
+        "SE-G": 3984,
+        "SE-D": 2474,
+        "SE-K": 1205
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

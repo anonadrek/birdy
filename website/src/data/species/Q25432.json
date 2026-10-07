@@ -1,0 +1,207 @@
+{
+  "qid": "Q25432",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "fasan",
+    "en": "common-pheasant"
+  },
+  "names": {
+    "sv": "Fasan",
+    "en": "Common Pheasant",
+    "scientific": "Phasianus colchicus"
+  },
+  "family": {
+    "latin": "Phasianidae",
+    "sv": "Fälthöns"
+  },
+  "group": "gamebirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25432/hero.webp",
+      "width": 1600,
+      "height": 995,
+      "author": "Tlusťa",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Phasianus_colchicus_Konopiste.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25432/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "U.S. Fish and Wildlife Service - Midwest Region",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ring-necked_Pheasant_(27430208127).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25432/voice.mp3",
+    "durationSec": 17,
+    "trimmed": false,
+    "author": "SanoAK: Alexander Kürthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:PhasianusColchicusSlovakia.ogg",
+    "sha256": "1d9b9d4f8520df198c96283c2765c5d009ede2c289d9a3ac41f766eacd373ee2"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Fasan",
+      "revision": "58510647"
+    },
+    "en": {
+      "title": "Common pheasant",
+      "revision": "1372984964"
+    },
+    "de": {
+      "title": "Fasan",
+      "revision": "269917917"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 9752149,
+    "totalReports": 141440,
+    "months": [
+      100,
+      83,
+      79,
+      88,
+      75,
+      52,
+      32,
+      26,
+      32,
+      44,
+      72,
+      88
+    ],
+    "counties": {
+      "SE-K": 70,
+      "SE-W": 7,
+      "SE-X": 11,
+      "SE-I": 81,
+      "SE-N": 72,
+      "SE-Z": 1,
+      "SE-F": 12,
+      "SE-H": 61,
+      "SE-G": 22,
+      "SE-BD": 4,
+      "SE-T": 60,
+      "SE-E": 45,
+      "SE-M": 85,
+      "SE-D": 100,
+      "SE-AB": 57,
+      "SE-C": 93,
+      "SE-S": 9,
+      "SE-AC": 1,
+      "SE-Y": 8,
+      "SE-U": 40,
+      "SE-O": 38
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april och december till februari.",
+        "Vanligast i rapporterna från Södermanland, Uppsala och Skåne."
+      ],
+      "en": [
+        "Reported most in April and December to February.",
+        "Most common in reports from Södermanland, Uppsala and Skåne."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        15329,
+        8692,
+        15441,
+        26517,
+        27092,
+        10831,
+        5022,
+        4366,
+        5840,
+        7879,
+        7287,
+        7088
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-M": 26454,
+        "SE-AB": 16629,
+        "SE-O": 15798,
+        "SE-C": 14583,
+        "SE-H": 13486,
+        "SE-D": 12896,
+        "SE-N": 9220,
+        "SE-E": 5161,
+        "SE-T": 4867,
+        "SE-I": 4716,
+        "SE-U": 2487,
+        "SE-K": 2114,
+        "SE-F": 1361,
+        "SE-G": 1328,
+        "SE-X": 604,
+        "SE-S": 595,
+        "SE-W": 494,
+        "SE-Y": 346,
+        "SE-BD": 276,
+        "SE-AC": 131,
+        "SE-Z": 8
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

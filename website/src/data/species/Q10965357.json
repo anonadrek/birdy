@@ -1,0 +1,199 @@
+{
+  "qid": "Q10965357",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "vinterhampling",
+    "en": "twite"
+  },
+  "names": {
+    "sv": "Vinterhämpling",
+    "en": "Twite",
+    "scientific": "Linaria flavirostris"
+  },
+  "family": {
+    "latin": "Fringillidae",
+    "sv": "Finkar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q10965357/hero.webp",
+      "width": 1600,
+      "height": 900,
+      "author": "Hans Norelius",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vinterhämpling,_Uppsala,_Uppland,_Februari_2018_(28072290378).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q10965357/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "William Stephens",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Linaria_flavirostris_200495342.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Vinterhämpling",
+      "revision": "56596662"
+    },
+    "en": {
+      "title": "Twite",
+      "revision": "1354935424"
+    },
+    "de": {
+      "title": "Berghänfling",
+      "revision": "263181953"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 7668711,
+    "totalReports": 53067,
+    "months": [
+      48,
+      41,
+      29,
+      27,
+      2,
+      1,
+      1,
+      1,
+      1,
+      90,
+      100,
+      45
+    ],
+    "counties": {
+      "SE-K": 44,
+      "SE-W": 77,
+      "SE-X": 31,
+      "SE-I": 38,
+      "SE-N": 100,
+      "SE-Z": 34,
+      "SE-F": 30,
+      "SE-H": 66,
+      "SE-G": 27,
+      "SE-BD": 27,
+      "SE-T": 42,
+      "SE-E": 72,
+      "SE-M": 66,
+      "SE-D": 19,
+      "SE-AB": 24,
+      "SE-C": 47,
+      "SE-S": 42,
+      "SE-AC": 27,
+      "SE-Y": 18,
+      "SE-U": 41,
+      "SE-O": 46
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i oktober och november.",
+        "Nästan aldrig i maj till september.",
+        "Vanligast i rapporterna från Halland, Dalarna och Östergötland."
+      ],
+      "en": [
+        "Reported most in October and November.",
+        "Almost never in May to September.",
+        "Most common in reports from Halland, Dalarna and Östergötland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        6964,
+        4011,
+        5371,
+        7574,
+        518,
+        86,
+        131,
+        54,
+        220,
+        15094,
+        9479,
+        3414
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-M": 7711,
+        "SE-O": 7178,
+        "SE-H": 5527,
+        "SE-N": 4880,
+        "SE-E": 3120,
+        "SE-C": 2776,
+        "SE-AB": 2612,
+        "SE-W": 2072,
+        "SE-F": 1314,
+        "SE-T": 1303,
+        "SE-S": 1013,
+        "SE-U": 972,
+        "SE-AC": 969,
+        "SE-D": 931,
+        "SE-I": 849,
+        "SE-BD": 738,
+        "SE-X": 671,
+        "SE-G": 629,
+        "SE-Z": 524,
+        "SE-K": 498,
+        "SE-Y": 289
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

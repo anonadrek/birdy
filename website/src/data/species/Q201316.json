@@ -1,0 +1,207 @@
+{
+  "qid": "Q201316",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "forsarla",
+    "en": "grey-wagtail"
+  },
+  "names": {
+    "sv": "Forsärla",
+    "en": "Grey Wagtail",
+    "scientific": "Motacilla cinerea"
+  },
+  "family": {
+    "latin": "Motacillidae",
+    "sv": "Ärlor och piplärkor"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q201316/hero.webp",
+      "width": 1600,
+      "height": 1017,
+      "author": "tobyas_reaper",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bird_-_41695767260.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q201316/extra.webp",
+      "width": 1200,
+      "height": 801,
+      "author": "Greg Schechter",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Israel._Grey_wagtail_(15626176887).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q201316/voice.mp3",
+    "durationSec": 5,
+    "trimmed": false,
+    "author": "Sudipto Roy",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Motacilla_cinerea_-_Grey_Wagtail_XC128136.ogg",
+    "sha256": "94f11afc68e73d167ab14d6b6313e360a23867c24753daf89b43f0ea5ab0b81b"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Forsärla",
+      "revision": "58516472"
+    },
+    "en": {
+      "title": "Grey wagtail",
+      "revision": "1323720993"
+    },
+    "de": {
+      "title": "Gebirgsstelze",
+      "revision": "271032114"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2490310,
+    "totalReports": 130175,
+    "months": [
+      42,
+      28,
+      75,
+      74,
+      49,
+      59,
+      62,
+      54,
+      100,
+      73,
+      42,
+      43
+    ],
+    "counties": {
+      "SE-K": 48,
+      "SE-W": 100,
+      "SE-X": 76,
+      "SE-I": 4,
+      "SE-N": 63,
+      "SE-Z": 59,
+      "SE-F": 89,
+      "SE-H": 28,
+      "SE-G": 73,
+      "SE-BD": 5,
+      "SE-T": 87,
+      "SE-E": 70,
+      "SE-M": 59,
+      "SE-D": 33,
+      "SE-AB": 7,
+      "SE-C": 43,
+      "SE-S": 68,
+      "SE-AC": 25,
+      "SE-Y": 61,
+      "SE-U": 67,
+      "SE-O": 77
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september.",
+        "Vanligast i rapporterna från Dalarna, Jönköping och Örebro."
+      ],
+      "en": [
+        "Reported most in September.",
+        "Most common in reports from Dalarna, Jönköping and Örebro."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        6146,
+        2851,
+        14014,
+        21475,
+        16954,
+        11896,
+        9275,
+        8846,
+        17765,
+        12474,
+        4106,
+        3353
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 29656,
+        "SE-M": 16953,
+        "SE-F": 9392,
+        "SE-E": 7444,
+        "SE-N": 7434,
+        "SE-T": 6576,
+        "SE-W": 6542,
+        "SE-C": 6209,
+        "SE-H": 5770,
+        "SE-G": 4133,
+        "SE-X": 4059,
+        "SE-S": 3977,
+        "SE-D": 3924,
+        "SE-U": 3903,
+        "SE-Y": 2399,
+        "SE-AC": 2213,
+        "SE-Z": 2203,
+        "SE-AB": 1880,
+        "SE-K": 1346,
+        "SE-BD": 320,
+        "SE-I": 212
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

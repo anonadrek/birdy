@@ -1,0 +1,209 @@
+{
+  "qid": "Q27442",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "svartvit-flugsnappare",
+    "en": "european-pied-flycatcher"
+  },
+  "names": {
+    "sv": "Svartvit flugsnappare",
+    "en": "European Pied Flycatcher",
+    "scientific": "Ficedula hypoleuca"
+  },
+  "family": {
+    "latin": "Muscicapidae",
+    "sv": "Flugsnappare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q27442/hero.webp",
+      "width": 1600,
+      "height": 1143,
+      "author": "Ron Knight",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ficedula_hypoleuca_Sussex_2.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q27442/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "caroline legg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pied_Flycatcher_-_Ficedula_hypoleuca_-_Male_(51220779018).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q27442/voice.mp3",
+    "durationSec": 9,
+    "trimmed": false,
+    "author": "Marie-Lan Taÿ Pamart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ficedula_hypoleuca_-_European_Pied_Flycatcher_XC493770.mp3",
+    "sha256": "9ca40c27c7e2b6a7c934b29d31113736967b5dd48f43ea10395a00aa48802289"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Svartvit flugsnappare",
+      "revision": "59710373"
+    },
+    "en": {
+      "title": "European pied flycatcher",
+      "revision": "1341343180"
+    },
+    "de": {
+      "title": "Trauerschnäpper",
+      "revision": "270766077"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2492606,
+    "totalReports": 264623,
+    "months": [
+      0,
+      0,
+      1,
+      13,
+      72,
+      100,
+      26,
+      16,
+      4,
+      1,
+      1,
+      0
+    ],
+    "counties": {
+      "SE-K": 39,
+      "SE-W": 44,
+      "SE-X": 54,
+      "SE-I": 31,
+      "SE-N": 18,
+      "SE-Z": 61,
+      "SE-F": 59,
+      "SE-H": 31,
+      "SE-G": 39,
+      "SE-BD": 84,
+      "SE-T": 41,
+      "SE-E": 40,
+      "SE-M": 31,
+      "SE-D": 46,
+      "SE-AB": 48,
+      "SE-C": 39,
+      "SE-S": 39,
+      "SE-AC": 100,
+      "SE-Y": 48,
+      "SE-U": 43,
+      "SE-O": 37
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juni.",
+        "Nästan aldrig i september till mars.",
+        "Vanligast i rapporterna från Västerbotten, Norrbotten och Jämtland."
+      ],
+      "en": [
+        "Reported most in June.",
+        "Almost never in September to March.",
+        "Most common in reports from Västerbotten, Norrbotten and Jämtland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        2,
+        18387,
+        117547,
+        95306,
+        18003,
+        12027,
+        2959,
+        205,
+        8,
+        0
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 34931,
+        "SE-AB": 32066,
+        "SE-M": 22068,
+        "SE-AC": 21606,
+        "SE-H": 15742,
+        "SE-F": 15374,
+        "SE-BD": 13788,
+        "SE-C": 13739,
+        "SE-D": 13668,
+        "SE-E": 10597,
+        "SE-T": 7587,
+        "SE-W": 7166,
+        "SE-X": 7028,
+        "SE-U": 6128,
+        "SE-Z": 5586,
+        "SE-S": 5580,
+        "SE-G": 5542,
+        "SE-N": 5194,
+        "SE-Y": 4694,
+        "SE-I": 4091,
+        "SE-K": 2660
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "qid": "Q184432",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "storlom",
+    "en": "black-throated-loon"
+  },
+  "names": {
+    "sv": "Storlom",
+    "en": "Black-throated Loon",
+    "scientific": "Gavia arctica"
+  },
+  "family": {
+    "latin": "Gaviidae",
+    "sv": "Lommar"
+  },
+  "group": "grebes_divers",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q184432/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Bengt Nyman",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gavia_arctica_EM1B1934_(48009481846).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q184432/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Kathy Büscher",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Prachttaucher_(1)_(34640349480).jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Storlom",
+      "revision": "57937282"
+    },
+    "en": {
+      "title": "Black-throated loon",
+      "revision": "1354909991"
+    },
+    "de": {
+      "title": "Prachttaucher",
+      "revision": "251575238"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2481959,
+    "totalReports": 182208,
+    "months": [
+      14,
+      11,
+      22,
+      92,
+      79,
+      78,
+      100,
+      81,
+      75,
+      51,
+      32,
+      16
+    ],
+    "counties": {
+      "SE-K": 35,
+      "SE-W": 100,
+      "SE-X": 44,
+      "SE-I": 37,
+      "SE-N": 29,
+      "SE-Z": 91,
+      "SE-F": 82,
+      "SE-H": 60,
+      "SE-G": 92,
+      "SE-BD": 47,
+      "SE-T": 49,
+      "SE-E": 32,
+      "SE-M": 23,
+      "SE-D": 40,
+      "SE-AB": 38,
+      "SE-C": 10,
+      "SE-S": 71,
+      "SE-AC": 46,
+      "SE-Y": 54,
+      "SE-U": 36,
+      "SE-O": 43
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april, juli och augusti.",
+        "Vanligast i rapporterna från Dalarna, Kronoberg och Jämtland."
+      ],
+      "en": [
+        "Reported most in April, July and August.",
+        "Most common in reports from Dalarna, Kronoberg and Jämtland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        2794,
+        1499,
+        5654,
+        37012,
+        37853,
+        21668,
+        20568,
+        18351,
+        18428,
+        12035,
+        4261,
+        1668
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 25270,
+        "SE-H": 18881,
+        "SE-AB": 15671,
+        "SE-F": 13378,
+        "SE-M": 10292,
+        "SE-W": 10128,
+        "SE-G": 8114,
+        "SE-D": 7445,
+        "SE-S": 6441,
+        "SE-AC": 6167,
+        "SE-T": 5690,
+        "SE-N": 5407,
+        "SE-E": 5310,
+        "SE-Z": 5248,
+        "SE-BD": 4824,
+        "SE-X": 3633,
+        "SE-Y": 3263,
+        "SE-U": 3228,
+        "SE-I": 3106,
+        "SE-C": 2254,
+        "SE-K": 1500
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

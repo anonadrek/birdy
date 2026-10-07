@@ -1,0 +1,204 @@
+{
+  "qid": "Q192817",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "skaggmes",
+    "en": "bearded-reedling"
+  },
+  "names": {
+    "sv": "Skäggmes",
+    "en": "Bearded Reedling",
+    "scientific": "Panurus biarmicus"
+  },
+  "family": {
+    "latin": "Panuridae",
+    "sv": "Panuridae"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q192817/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bearded_reedling_(Panurus_biarmicus).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q192817/extra.webp",
+      "width": 1200,
+      "height": 1800,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bearded_reedling_2_(Panurus_biarmicus).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q192817/voice.mp3",
+    "durationSec": 7,
+    "trimmed": false,
+    "author": "Bubulcus",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Panurus.ogg",
+    "sha256": "68c45b7759c2360cb99ba86bfbcdcc3937c8daecd9cfa0db12806d641ac36457"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Skäggmes",
+      "revision": "59706532"
+    },
+    "en": {
+      "title": "Bearded reedling",
+      "revision": "1375105589"
+    },
+    "de": {
+      "title": "Bartmeise",
+      "revision": "254361756"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2493367,
+    "totalReports": 69179,
+    "months": [
+      68,
+      47,
+      30,
+      32,
+      34,
+      29,
+      58,
+      37,
+      59,
+      100,
+      96,
+      67
+    ],
+    "counties": {
+      "SE-K": 23,
+      "SE-W": 4,
+      "SE-X": 9,
+      "SE-I": 29,
+      "SE-N": 62,
+      "SE-Z": 0,
+      "SE-F": 26,
+      "SE-H": 52,
+      "SE-G": 12,
+      "SE-BD": 0,
+      "SE-T": 100,
+      "SE-E": 80,
+      "SE-M": 55,
+      "SE-D": 39,
+      "SE-AB": 23,
+      "SE-C": 72,
+      "SE-S": 41,
+      "SE-AC": 0,
+      "SE-Y": 2,
+      "SE-U": 43,
+      "SE-O": 43
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i oktober och november.",
+        "Vanligast i rapporterna från Örebro, Östergötland och Uppsala."
+      ],
+      "en": [
+        "Reported most in October and November.",
+        "Most common in reports from Örebro, Östergötland and Uppsala."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        6555,
+        3140,
+        3657,
+        6189,
+        7737,
+        3822,
+        5643,
+        3919,
+        6897,
+        11305,
+        6111,
+        3399
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 10223,
+        "SE-M": 9831,
+        "SE-H": 6669,
+        "SE-C": 6496,
+        "SE-E": 5288,
+        "SE-T": 4724,
+        "SE-N": 4635,
+        "SE-AB": 3805,
+        "SE-D": 2903,
+        "SE-F": 1733,
+        "SE-U": 1564,
+        "SE-S": 1477,
+        "SE-I": 975,
+        "SE-G": 439,
+        "SE-K": 405,
+        "SE-X": 315,
+        "SE-W": 145,
+        "SE-Y": 49
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "qid": "Q18845",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "gok",
+    "en": "common-cuckoo"
+  },
+  "names": {
+    "sv": "Gök",
+    "en": "Common Cuckoo",
+    "scientific": "Cuculus canorus"
+  },
+  "family": {
+    "latin": "Cuculidae",
+    "sv": "Gökar"
+  },
+  "group": "other",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q18845/hero.webp",
+      "width": 1600,
+      "height": 1236,
+      "author": "Luiz Lapa",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cuco-canoro,_macho,_Common_Cuckoo,_male_(52777311231)_(cropped).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q18845/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Fernando Losada Rodríguez",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cuculus_canorus.010_-_A_Coruña.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q18845/voice.mp3",
+    "durationSec": 18,
+    "trimmed": false,
+    "author": "Vladimir Yu. Arkhipov, Arkhivov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cuculus_canorus.ogg",
+    "sha256": "537bc5c286d8adb701c0287f4a8ea84c8766c7cc63910623bd0fbb03a199022e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Gök",
+      "revision": "59628046"
+    },
+    "en": {
+      "title": "Common cuckoo",
+      "revision": "1359813015"
+    },
+    "de": {
+      "title": "Kuckuck",
+      "revision": "270751147"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 5231918,
+    "totalReports": 176007,
+    "months": [
+      1,
+      0,
+      1,
+      1,
+      94,
+      100,
+      20,
+      12,
+      5,
+      1,
+      1,
+      0
+    ],
+    "counties": {
+      "SE-K": 40,
+      "SE-W": 72,
+      "SE-X": 54,
+      "SE-I": 64,
+      "SE-N": 40,
+      "SE-Z": 98,
+      "SE-F": 49,
+      "SE-H": 86,
+      "SE-G": 57,
+      "SE-BD": 66,
+      "SE-T": 77,
+      "SE-E": 51,
+      "SE-M": 60,
+      "SE-D": 61,
+      "SE-AB": 41,
+      "SE-C": 50,
+      "SE-S": 56,
+      "SE-AC": 51,
+      "SE-Y": 46,
+      "SE-U": 100,
+      "SE-O": 39
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i maj och juni.",
+        "Nästan aldrig i september till april.",
+        "Vanligast i rapporterna från Västmanland, Jämtland och Kalmar."
+      ],
+      "en": [
+        "Reported most in May and June.",
+        "Almost never in September to April.",
+        "Most common in reports from Västmanland, Jämtland and Kalmar."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1,
+        0,
+        1,
+        987,
+        97599,
+        60016,
+        8685,
+        5648,
+        2504,
+        97,
+        2,
+        0
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-H": 21883,
+        "SE-M": 21454,
+        "SE-O": 18617,
+        "SE-AB": 13930,
+        "SE-D": 9062,
+        "SE-C": 8952,
+        "SE-U": 7251,
+        "SE-T": 7236,
+        "SE-E": 6709,
+        "SE-F": 6503,
+        "SE-W": 5930,
+        "SE-N": 5893,
+        "SE-AC": 5624,
+        "SE-BD": 5520,
+        "SE-Z": 4536,
+        "SE-I": 4352,
+        "SE-S": 4100,
+        "SE-G": 4028,
+        "SE-X": 3570,
+        "SE-Y": 2251,
+        "SE-K": 1396
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

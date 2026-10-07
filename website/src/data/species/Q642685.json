@@ -1,0 +1,197 @@
+{
+  "qid": "Q642685",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "skarpiplarka",
+    "en": "european-rock-pipit"
+  },
+  "names": {
+    "sv": "Skärpiplärka",
+    "en": "European Rock Pipit",
+    "scientific": "Anthus petrosus"
+  },
+  "family": {
+    "latin": "Motacillidae",
+    "sv": "Ärlor och piplärkor"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q642685/hero.webp",
+      "width": 1600,
+      "height": 988,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:European_rock_pipit_(Anthus_petrosus)_2020.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q642685/extra.webp",
+      "width": 1200,
+      "height": 1025,
+      "author": "Jacob Spinks",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rock_Pipit_-_Anthus_petrosus_(14334291183).jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Skärpiplärka",
+      "revision": "59709959"
+    },
+    "en": {
+      "title": "European rock pipit",
+      "revision": "1313791708"
+    },
+    "de": {
+      "title": "Strandpieper",
+      "revision": "259005793"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2490275,
+    "totalReports": 54106,
+    "months": [
+      74,
+      64,
+      76,
+      47,
+      24,
+      32,
+      41,
+      34,
+      99,
+      93,
+      100,
+      79
+    ],
+    "counties": {
+      "SE-K": 37,
+      "SE-W": 4,
+      "SE-X": 1,
+      "SE-I": 33,
+      "SE-N": 100,
+      "SE-Z": 2,
+      "SE-F": 7,
+      "SE-H": 29,
+      "SE-G": 3,
+      "SE-BD": 4,
+      "SE-T": 6,
+      "SE-E": 10,
+      "SE-M": 29,
+      "SE-D": 6,
+      "SE-AB": 15,
+      "SE-C": 3,
+      "SE-S": 1,
+      "SE-AC": 5,
+      "SE-Y": 2,
+      "SE-U": 4,
+      "SE-O": 25
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september till november.",
+        "Vanligast i rapporterna från Halland, Blekinge och Gotland."
+      ],
+      "en": [
+        "Reported most in September to November.",
+        "Most common in reports from Halland, Blekinge and Gotland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        4872,
+        2911,
+        6320,
+        6080,
+        3696,
+        2871,
+        2722,
+        2486,
+        7856,
+        7113,
+        4334,
+        2742
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-N": 9874,
+        "SE-O": 7834,
+        "SE-M": 6806,
+        "SE-H": 4921,
+        "SE-AB": 3315,
+        "SE-I": 1479,
+        "SE-E": 914,
+        "SE-K": 851,
+        "SE-D": 637,
+        "SE-F": 588,
+        "SE-AC": 366,
+        "SE-T": 364,
+        "SE-C": 323,
+        "SE-BD": 228,
+        "SE-W": 197,
+        "SE-U": 179,
+        "SE-G": 143,
+        "SE-X": 65,
+        "SE-S": 63,
+        "SE-Y": 61,
+        "SE-Z": 61
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

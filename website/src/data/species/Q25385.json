@@ -1,0 +1,207 @@
+{
+  "qid": "Q25385",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "ormvrak",
+    "en": "common-buzzard"
+  },
+  "names": {
+    "sv": "Ormvråk",
+    "en": "Common Buzzard",
+    "scientific": "Buteo buteo"
+  },
+  "family": {
+    "latin": "Accipitridae",
+    "sv": "Hökar"
+  },
+  "group": "raptors",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25385/hero.webp",
+      "width": 1600,
+      "height": 1063,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Buteo_buteo_insularum,_Azores.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25385/extra.webp",
+      "width": 1200,
+      "height": 1099,
+      "author": "Yerpo",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Buteo_buteo_juv_Log_(2).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25385/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Benoît Van Hecke",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Buteo_buteo_-_Common_Buzzard_XC538678.mp3",
+    "sha256": "3a0be495eb4d38eb40a22f3ee8cc2bd358adf484a9021dd6c3790087c1199ec2"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Ormvråk",
+      "revision": "57876994"
+    },
+    "en": {
+      "title": "Common buzzard",
+      "revision": "1372105476"
+    },
+    "de": {
+      "title": "Mäusebussard",
+      "revision": "266681495"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2480537,
+    "totalReports": 588000,
+    "months": [
+      86,
+      100,
+      90,
+      52,
+      29,
+      31,
+      42,
+      64,
+      85,
+      66,
+      72,
+      91
+    ],
+    "counties": {
+      "SE-K": 46,
+      "SE-W": 56,
+      "SE-X": 44,
+      "SE-I": 31,
+      "SE-N": 67,
+      "SE-Z": 11,
+      "SE-F": 83,
+      "SE-H": 48,
+      "SE-G": 100,
+      "SE-BD": 11,
+      "SE-T": 59,
+      "SE-E": 60,
+      "SE-M": 61,
+      "SE-D": 90,
+      "SE-AB": 77,
+      "SE-C": 72,
+      "SE-S": 62,
+      "SE-AC": 16,
+      "SE-Y": 42,
+      "SE-U": 70,
+      "SE-O": 82
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september och december till mars.",
+        "Vanligast i rapporterna från Kronoberg, Södermanland och Jönköping."
+      ],
+      "en": [
+        "Reported most in September and December to March.",
+        "Most common in reports from Kronoberg, Södermanland and Jönköping."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        58222,
+        46265,
+        77340,
+        68707,
+        46728,
+        28756,
+        28573,
+        48049,
+        68967,
+        51921,
+        31879,
+        32107
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 116175,
+        "SE-AB": 77015,
+        "SE-M": 64582,
+        "SE-D": 39692,
+        "SE-C": 38352,
+        "SE-H": 36349,
+        "SE-F": 32370,
+        "SE-N": 29324,
+        "SE-E": 23729,
+        "SE-G": 21029,
+        "SE-T": 16447,
+        "SE-U": 14959,
+        "SE-W": 13583,
+        "SE-S": 13364,
+        "SE-X": 8626,
+        "SE-I": 6251,
+        "SE-Y": 6130,
+        "SE-AC": 5101,
+        "SE-K": 4745,
+        "SE-BD": 2737,
+        "SE-Z": 1457
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

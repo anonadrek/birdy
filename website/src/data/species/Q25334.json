@@ -1,0 +1,207 @@
+{
+  "qid": "Q25334",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "rodhake",
+    "en": "european-robin"
+  },
+  "names": {
+    "sv": "Rödhake",
+    "en": "European Robin",
+    "scientific": "Erithacus rubecula"
+  },
+  "family": {
+    "latin": "Muscicapidae",
+    "sv": "Flugsnappare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25334/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Rob Hille",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Robin_-_Erithacus_rubecula_1.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25334/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:European_robin_(Erithacus_rubecula)_2024.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25334/voice.mp3",
+    "durationSec": 16,
+    "trimmed": false,
+    "author": "Vladimir Yu. Arkhipov, Arkhivov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Erithacus_rubecula.ogg",
+    "sha256": "fcd93245d2c4091bfb3f80ac5fa310e32d565d5c494bb32c3cf7fe65ee0cb43c"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Rödhake",
+      "revision": "59699944"
+    },
+    "en": {
+      "title": "European robin",
+      "revision": "1376146581"
+    },
+    "de": {
+      "title": "Rotkehlchen",
+      "revision": "270052456"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2492462,
+    "totalReports": 704425,
+    "months": [
+      37,
+      28,
+      34,
+      75,
+      29,
+      26,
+      22,
+      30,
+      100,
+      75,
+      40,
+      42
+    ],
+    "counties": {
+      "SE-K": 100,
+      "SE-W": 28,
+      "SE-X": 34,
+      "SE-I": 46,
+      "SE-N": 34,
+      "SE-Z": 23,
+      "SE-F": 37,
+      "SE-H": 29,
+      "SE-G": 37,
+      "SE-BD": 17,
+      "SE-T": 32,
+      "SE-E": 30,
+      "SE-M": 51,
+      "SE-D": 36,
+      "SE-AB": 47,
+      "SE-C": 29,
+      "SE-S": 42,
+      "SE-AC": 30,
+      "SE-Y": 32,
+      "SE-U": 26,
+      "SE-O": 40
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september.",
+        "Vanligast i rapporterna från Blekinge, Skåne och Stockholm."
+      ],
+      "en": [
+        "Reported most in September.",
+        "Most common in reports from Blekinge, Skåne and Stockholm."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        39801,
+        20361,
+        45580,
+        157673,
+        71709,
+        37316,
+        23331,
+        35023,
+        128657,
+        93136,
+        27871,
+        23538
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 97619,
+        "SE-M": 92785,
+        "SE-AB": 81368,
+        "SE-H": 38362,
+        "SE-D": 27134,
+        "SE-C": 26652,
+        "SE-N": 25918,
+        "SE-F": 25074,
+        "SE-E": 20198,
+        "SE-K": 17771,
+        "SE-AC": 16948,
+        "SE-I": 15833,
+        "SE-S": 15801,
+        "SE-T": 15471,
+        "SE-G": 13489,
+        "SE-W": 11833,
+        "SE-X": 11495,
+        "SE-U": 9511,
+        "SE-Y": 7965,
+        "SE-BD": 7266,
+        "SE-Z": 5381
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

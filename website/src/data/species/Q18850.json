@@ -1,0 +1,209 @@
+{
+  "qid": "Q18850",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "drillsnappa",
+    "en": "common-sandpiper"
+  },
+  "names": {
+    "sv": "Drillsnäppa",
+    "en": "Common Sandpiper",
+    "scientific": "Actitis hypoleucos"
+  },
+  "family": {
+    "latin": "Scolopacidae",
+    "sv": "Snäppor"
+  },
+  "group": "waders",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q18850/hero.webp",
+      "width": 1600,
+      "height": 1012,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Actitis_hypoleucos_Oulu_20140623_01.JPG"
+    },
+    {
+      "role": "extra",
+      "file": "Q18850/extra.webp",
+      "width": 1200,
+      "height": 801,
+      "author": "LiCheng Shih",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Actitis_hypoleucos_(25574447361).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q18850/voice.mp3",
+    "durationSec": 17,
+    "trimmed": false,
+    "author": "Jens Loose",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Actitis_hypoleucos_-_Common_Sandpiper_XC477776.mp3",
+    "sha256": "2520266e538b65740ddaf57a8aed37de4b4120385ef7d2cc987a30026ffc7798"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Drillsnäppa",
+      "revision": "59400824"
+    },
+    "en": {
+      "title": "Common sandpiper",
+      "revision": "1368250297"
+    },
+    "de": {
+      "title": "Flussuferläufer",
+      "revision": "269373967"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2481800,
+    "totalReports": 179229,
+    "months": [
+      1,
+      1,
+      1,
+      18,
+      70,
+      49,
+      100,
+      85,
+      14,
+      1,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 32,
+      "SE-W": 71,
+      "SE-X": 54,
+      "SE-I": 39,
+      "SE-N": 59,
+      "SE-Z": 100,
+      "SE-F": 49,
+      "SE-H": 42,
+      "SE-G": 59,
+      "SE-BD": 68,
+      "SE-T": 51,
+      "SE-E": 42,
+      "SE-M": 44,
+      "SE-D": 36,
+      "SE-AB": 30,
+      "SE-C": 31,
+      "SE-S": 67,
+      "SE-AC": 59,
+      "SE-Y": 61,
+      "SE-U": 42,
+      "SE-O": 50
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juli och augusti.",
+        "Nästan aldrig i oktober till mars.",
+        "Vanligast i rapporterna från Jämtland, Dalarna och Norrbotten."
+      ],
+      "en": [
+        "Reported most in July and August.",
+        "Almost never in October to March.",
+        "Most common in reports from Jämtland, Dalarna and Norrbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        85,
+        38,
+        16,
+        13166,
+        61542,
+        24900,
+        37528,
+        34957,
+        6352,
+        387,
+        71,
+        22
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 25846,
+        "SE-M": 17191,
+        "SE-H": 11644,
+        "SE-AB": 10874,
+        "SE-N": 9410,
+        "SE-AC": 7013,
+        "SE-F": 6940,
+        "SE-W": 6252,
+        "SE-BD": 6095,
+        "SE-C": 6050,
+        "SE-E": 6020,
+        "SE-D": 5780,
+        "SE-S": 5249,
+        "SE-T": 5169,
+        "SE-Z": 5005,
+        "SE-G": 4531,
+        "SE-X": 3898,
+        "SE-U": 3265,
+        "SE-Y": 3233,
+        "SE-I": 2868,
+        "SE-K": 1208
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

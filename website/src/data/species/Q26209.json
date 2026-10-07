@@ -1,0 +1,207 @@
+{
+  "qid": "Q26209",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "storre-hackspett",
+    "en": "great-spotted-woodpecker"
+  },
+  "names": {
+    "sv": "Större hackspett",
+    "en": "Great Spotted Woodpecker",
+    "scientific": "Dendrocopos major"
+  },
+  "family": {
+    "latin": "Picidae",
+    "sv": "Hackspettar"
+  },
+  "group": "woodpeckers",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26209/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dendrocopos_major_(feeding).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26209/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Charles J. Sharp",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Great_spotted_woodpecker_(Dendrocopos_major)_female_Drenthe.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26209/voice.mp3",
+    "durationSec": 3,
+    "trimmed": false,
+    "author": "Benoît Van Hecke",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dendrocopos_major_-_Great_Spotted_Woodpecker_XC542957.mp3",
+    "sha256": "1722ee107e139b272e4d5dc5bea38f92744b5c40678cbafb4fbfedfd39a16fbd"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Större hackspett",
+      "revision": "58519775"
+    },
+    "en": {
+      "title": "Great spotted woodpecker",
+      "revision": "1357282933"
+    },
+    "de": {
+      "title": "Buntspecht",
+      "revision": "269763148"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2477968,
+    "totalReports": 556781,
+    "months": [
+      100,
+      96,
+      66,
+      40,
+      29,
+      37,
+      28,
+      32,
+      35,
+      44,
+      77,
+      96
+    ],
+    "counties": {
+      "SE-K": 36,
+      "SE-W": 67,
+      "SE-X": 77,
+      "SE-I": 34,
+      "SE-N": 27,
+      "SE-Z": 67,
+      "SE-F": 54,
+      "SE-H": 39,
+      "SE-G": 49,
+      "SE-BD": 100,
+      "SE-T": 55,
+      "SE-E": 58,
+      "SE-M": 34,
+      "SE-D": 78,
+      "SE-AB": 68,
+      "SE-C": 70,
+      "SE-S": 54,
+      "SE-AC": 79,
+      "SE-Y": 94,
+      "SE-U": 56,
+      "SE-O": 62
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december till februari.",
+        "Vanligast i rapporterna från Norrbotten, Västernorrland och Västerbotten."
+      ],
+      "en": [
+        "Reported most in December to February.",
+        "Most common in reports from Norrbotten, Västernorrland and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        79060,
+        52356,
+        66222,
+        62571,
+        53453,
+        39549,
+        21973,
+        27596,
+        33569,
+        40540,
+        39831,
+        39804
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 93239,
+        "SE-AB": 71426,
+        "SE-C": 39117,
+        "SE-M": 38102,
+        "SE-D": 36414,
+        "SE-H": 31092,
+        "SE-AC": 26834,
+        "SE-BD": 26015,
+        "SE-E": 23881,
+        "SE-F": 22372,
+        "SE-W": 17219,
+        "SE-T": 16289,
+        "SE-X": 15868,
+        "SE-Y": 14434,
+        "SE-U": 12688,
+        "SE-S": 12386,
+        "SE-N": 12280,
+        "SE-G": 10769,
+        "SE-Z": 9703,
+        "SE-I": 7164,
+        "SE-K": 3947
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

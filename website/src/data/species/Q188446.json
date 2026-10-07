@@ -1,0 +1,209 @@
+{
+  "qid": "Q188446",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "svarthatta",
+    "en": "eurasian-blackcap"
+  },
+  "names": {
+    "sv": "Svarthätta",
+    "en": "Eurasian Blackcap",
+    "scientific": "Sylvia atricapilla"
+  },
+  "family": {
+    "latin": "Sylviidae",
+    "sv": "Sylvior"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q188446/hero.webp",
+      "width": 1600,
+      "height": 1064,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sylvia_atricapilla_heineken.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q188446/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Marie-Lan Taÿ Pamart",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sylvia_atricapilla_JdP_20190405_t112815.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q188446/voice.mp3",
+    "durationSec": 17,
+    "trimmed": false,
+    "author": "Vladimir Yu. Arkhipov, Arkhivov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sylvia_atricapilla.ogg",
+    "sha256": "0ddb71e8509faf1e80be708853143c88ace75b7e0a40fc6ee6e6c7aa3f2db7c5"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Svarthätta",
+      "revision": "59399718"
+    },
+    "en": {
+      "title": "Eurasian blackcap",
+      "revision": "1359675334"
+    },
+    "de": {
+      "title": "Mönchsgrasmücke",
+      "revision": "267221636"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2492956,
+    "totalReports": 355117,
+    "months": [
+      3,
+      4,
+      1,
+      36,
+      100,
+      86,
+      61,
+      58,
+      84,
+      25,
+      6,
+      3
+    ],
+    "counties": {
+      "SE-K": 100,
+      "SE-W": 27,
+      "SE-X": 31,
+      "SE-I": 43,
+      "SE-N": 46,
+      "SE-Z": 12,
+      "SE-F": 46,
+      "SE-H": 41,
+      "SE-G": 45,
+      "SE-BD": 7,
+      "SE-T": 41,
+      "SE-E": 30,
+      "SE-M": 41,
+      "SE-D": 39,
+      "SE-AB": 41,
+      "SE-C": 34,
+      "SE-S": 37,
+      "SE-AC": 17,
+      "SE-Y": 32,
+      "SE-U": 30,
+      "SE-O": 47
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i maj, juni och september.",
+        "Nästan aldrig i november till mars.",
+        "Vanligast i rapporterna från Blekinge, Västra Götaland och Halland."
+      ],
+      "en": [
+        "Reported most in May, June and September.",
+        "Almost never in November to March.",
+        "Most common in reports from Blekinge, Västra Götaland and Halland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1749,
+        1278,
+        894,
+        35974,
+        120478,
+        60287,
+        31424,
+        33037,
+        51906,
+        14921,
+        1880,
+        894
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 62281,
+        "SE-M": 40515,
+        "SE-AB": 38288,
+        "SE-H": 28835,
+        "SE-N": 18895,
+        "SE-C": 16962,
+        "SE-F": 16804,
+        "SE-D": 15968,
+        "SE-E": 11105,
+        "SE-T": 10581,
+        "SE-K": 9588,
+        "SE-G": 8868,
+        "SE-I": 8077,
+        "SE-S": 7477,
+        "SE-W": 6057,
+        "SE-U": 6044,
+        "SE-X": 5715,
+        "SE-AC": 4996,
+        "SE-Y": 4320,
+        "SE-Z": 1573,
+        "SE-BD": 1515
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

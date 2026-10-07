@@ -1,0 +1,208 @@
+{
+  "qid": "Q26612",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tretaig-mas",
+    "en": "black-legged-kittiwake"
+  },
+  "names": {
+    "sv": "Tretåig mås",
+    "en": "Black-legged Kittiwake",
+    "scientific": "Rissa tridactyla"
+  },
+  "family": {
+    "latin": "Laridae",
+    "sv": "Måsfåglar"
+  },
+  "group": "gulls_terns",
+  "iucn": "VU",
+  "swedishRedList": "EN",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26612/hero.webp",
+      "width": 1600,
+      "height": 1064,
+      "author": "Alaska Region U.S. Fish & Wildlife Service",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Black-legged_Kittiwake_(12979752923).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26612/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Black-legged_kittiwake_(Rissa_tridactyla)_2023_2.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26612/voice.mp3",
+    "durationSec": 4,
+    "trimmed": false,
+    "author": "Wikimalte",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kittiwake_Rissa_tridactyla_Troms%C3%B8_2023.ogg",
+    "sha256": "13f717f0d9d09d8f60c89ff6c0d610f7af5f899be043fb5800576e77d2670be6"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Tretåig mås",
+      "revision": "58946383"
+    },
+    "en": {
+      "title": "Black-legged kittiwake",
+      "revision": "1371827325"
+    },
+    "de": {
+      "title": "Dreizehenmöwe",
+      "revision": "268922623"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2481205,
+    "totalReports": 19057,
+    "months": [
+      32,
+      42,
+      6,
+      7,
+      8,
+      17,
+      15,
+      15,
+      17,
+      63,
+      100,
+      39
+    ],
+    "counties": {
+      "SE-K": 11,
+      "SE-W": 7,
+      "SE-X": 1,
+      "SE-I": 7,
+      "SE-N": 100,
+      "SE-Z": 0,
+      "SE-F": 1,
+      "SE-H": 14,
+      "SE-G": 1,
+      "SE-BD": 1,
+      "SE-T": 1,
+      "SE-E": 1,
+      "SE-M": 24,
+      "SE-D": 1,
+      "SE-AB": 1,
+      "SE-C": 1,
+      "SE-S": 2,
+      "SE-AC": 1,
+      "SE-Y": 1,
+      "SE-U": 4,
+      "SE-O": 27
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november.",
+        "Nästan aldrig i mars till maj.",
+        "Vanligast i rapporterna från Halland, Västra Götaland och Skåne."
+      ],
+      "en": [
+        "Reported most in November.",
+        "Almost never in March to May.",
+        "Most common in reports from Halland, Västra Götaland and Skåne."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1791,
+        1610,
+        464,
+        802,
+        1051,
+        1331,
+        861,
+        944,
+        1155,
+        4157,
+        3699,
+        1165
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-N": 5043,
+        "SE-O": 4469,
+        "SE-M": 2862,
+        "SE-H": 1235,
+        "SE-W": 197,
+        "SE-I": 161,
+        "SE-K": 130,
+        "SE-U": 102,
+        "SE-AB": 87,
+        "SE-C": 68,
+        "SE-S": 48,
+        "SE-E": 37,
+        "SE-AC": 31,
+        "SE-BD": 27,
+        "SE-F": 26,
+        "SE-D": 18,
+        "SE-X": 18,
+        "SE-T": 15,
+        "SE-Y": 15,
+        "SE-G": 11
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "qid": "Q27102",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tordmule",
+    "en": "razorbill"
+  },
+  "names": {
+    "sv": "Tordmule",
+    "en": "Razorbill",
+    "scientific": "Alca torda"
+  },
+  "family": {
+    "latin": "Alcidae",
+    "sv": "Alkor"
+  },
+  "group": "auks",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q27102/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Chme82",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tordalk_(Alca_torda)_Handa.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q27102/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Ron Knight",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Razorbill_(Alca_torda)_(13668042894).jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Tordmule",
+      "revision": "59709543"
+    },
+    "en": {
+      "title": "Razorbill",
+      "revision": "1362853442"
+    },
+    "de": {
+      "title": "Tordalk",
+      "revision": "263526663"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 8277073,
+    "totalReports": 56626,
+    "months": [
+      32,
+      27,
+      19,
+      22,
+      36,
+      35,
+      100,
+      15,
+      25,
+      83,
+      93,
+      50
+    ],
+    "counties": {
+      "SE-K": 52,
+      "SE-W": 0,
+      "SE-X": 13,
+      "SE-I": 100,
+      "SE-N": 51,
+      "SE-Z": 0,
+      "SE-F": 2,
+      "SE-H": 85,
+      "SE-G": 0,
+      "SE-BD": 7,
+      "SE-T": 1,
+      "SE-E": 8,
+      "SE-M": 48,
+      "SE-D": 8,
+      "SE-AB": 25,
+      "SE-C": 5,
+      "SE-S": 1,
+      "SE-AC": 6,
+      "SE-Y": 10,
+      "SE-U": 1,
+      "SE-O": 18
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juli, oktober och november.",
+        "Vanligast i rapporterna från Gotland, Kalmar och Blekinge."
+      ],
+      "en": [
+        "Reported most in July, October and November.",
+        "Most common in reports from Gotland, Kalmar and Blekinge."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        3121,
+        1824,
+        2346,
+        4152,
+        8244,
+        4614,
+        9817,
+        1616,
+        2963,
+        9407,
+        5929,
+        2537
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-H": 10711,
+        "SE-M": 8388,
+        "SE-AB": 4232,
+        "SE-O": 4190,
+        "SE-N": 3751,
+        "SE-I": 3329,
+        "SE-K": 888,
+        "SE-D": 576,
+        "SE-E": 520,
+        "SE-C": 442,
+        "SE-X": 438,
+        "SE-AC": 337,
+        "SE-BD": 300,
+        "SE-Y": 240,
+        "SE-F": 137,
+        "SE-U": 52,
+        "SE-S": 48,
+        "SE-T": 6
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

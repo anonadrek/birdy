@@ -1,0 +1,209 @@
+{
+  "qid": "Q27239",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "lovsangare",
+    "en": "willow-warbler"
+  },
+  "names": {
+    "sv": "Lövsångare",
+    "en": "Willow Warbler",
+    "scientific": "Phylloscopus trochilus"
+  },
+  "family": {
+    "latin": "Phylloscopidae",
+    "sv": "Lövsångare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q27239/hero.webp",
+      "width": 1600,
+      "height": 1131,
+      "author": "Derek Keats",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Willow_warbler,_Phylloscopus_trochilus,_at_Marakele_National_Park,_Limpopo,_South_Africa_(45938437674).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q27239/extra.webp",
+      "width": 1200,
+      "height": 886,
+      "author": "gailhampshire",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Willow_Warbler._Phylloscopus_trochilus._-_Flickr_-_gailhampshire.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q27239/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Vladimir Yu. Arkhipov, Arkhivov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Phylloscopus_trochilus_acredula.ogg",
+    "sha256": "8712ea8a6b3bf8c9c2000c67d797312dda2f96bef0af7b99d2263010c482ac89"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Lövsångare",
+      "revision": "59572197"
+    },
+    "en": {
+      "title": "Willow warbler",
+      "revision": "1361144628"
+    },
+    "de": {
+      "title": "Fitis",
+      "revision": "270899070"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2493052,
+    "totalReports": 567995,
+    "months": [
+      1,
+      0,
+      1,
+      25,
+      66,
+      49,
+      44,
+      100,
+      32,
+      1,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 100,
+      "SE-W": 42,
+      "SE-X": 47,
+      "SE-I": 75,
+      "SE-N": 29,
+      "SE-Z": 72,
+      "SE-F": 52,
+      "SE-H": 31,
+      "SE-G": 39,
+      "SE-BD": 85,
+      "SE-T": 44,
+      "SE-E": 29,
+      "SE-M": 38,
+      "SE-D": 37,
+      "SE-AB": 33,
+      "SE-C": 27,
+      "SE-S": 44,
+      "SE-AC": 79,
+      "SE-Y": 61,
+      "SE-U": 23,
+      "SE-O": 37
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i augusti.",
+        "Nästan aldrig i oktober till mars.",
+        "Vanligast i rapporterna från Blekinge, Norrbotten och Västerbotten."
+      ],
+      "en": [
+        "Reported most in August.",
+        "Almost never in October to March.",
+        "Most common in reports from Blekinge, Norrbotten and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        2,
+        0,
+        1,
+        59542,
+        188040,
+        80738,
+        54328,
+        134154,
+        47262,
+        2025,
+        70,
+        19
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 69184,
+        "SE-M": 52323,
+        "SE-AB": 42334,
+        "SE-AC": 33281,
+        "SE-H": 30347,
+        "SE-BD": 27187,
+        "SE-F": 26293,
+        "SE-D": 21220,
+        "SE-I": 19631,
+        "SE-C": 19119,
+        "SE-N": 16769,
+        "SE-T": 16157,
+        "SE-E": 15079,
+        "SE-K": 13393,
+        "SE-W": 13136,
+        "SE-Z": 12923,
+        "SE-S": 12471,
+        "SE-X": 11991,
+        "SE-Y": 11668,
+        "SE-G": 10648,
+        "SE-U": 6369
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

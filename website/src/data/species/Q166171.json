@@ -1,0 +1,206 @@
+{
+  "qid": "Q166171",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "grongoling",
+    "en": "european-green-woodpecker"
+  },
+  "names": {
+    "sv": "Gröngöling",
+    "en": "European Green Woodpecker",
+    "scientific": "Picus viridis"
+  },
+  "family": {
+    "latin": "Picidae",
+    "sv": "Hackspettar"
+  },
+  "group": "woodpeckers",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q166171/hero.webp",
+      "width": 1600,
+      "height": 2117,
+      "author": "Ryzhkov Sergey",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Жовна_зелена_(Picus_viridis).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q166171/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "gailhampshire",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Juvenile_Green_Woodpecker_digging_for_ants._Picus_viridis_-_Flickr_-_gailhampshire_(1).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q166171/voice.mp3",
+    "durationSec": 14,
+    "trimmed": false,
+    "author": "Alvaro Ortiz Troncoso",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Picus_viridis_-_European_Green_Woodpecker_XC416424.mp3",
+    "sha256": "bdb4f70e45dc8dd248337dc0ba391166c77959f4bbd60fee1d2ef35737e72ab8"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Gröngöling",
+      "revision": "59562794"
+    },
+    "en": {
+      "title": "European green woodpecker",
+      "revision": "1372406697"
+    },
+    "de": {
+      "title": "Grünspecht",
+      "revision": "269901096"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2478523,
+    "totalReports": 263146,
+    "months": [
+      66,
+      100,
+      100,
+      57,
+      38,
+      33,
+      66,
+      61,
+      52,
+      56,
+      75,
+      61
+    ],
+    "counties": {
+      "SE-K": 54,
+      "SE-W": 42,
+      "SE-X": 47,
+      "SE-I": 1,
+      "SE-N": 38,
+      "SE-Z": 1,
+      "SE-F": 68,
+      "SE-H": 54,
+      "SE-G": 100,
+      "SE-BD": 0,
+      "SE-T": 79,
+      "SE-E": 66,
+      "SE-M": 48,
+      "SE-D": 93,
+      "SE-AB": 91,
+      "SE-C": 60,
+      "SE-S": 62,
+      "SE-AC": 1,
+      "SE-Y": 7,
+      "SE-U": 84,
+      "SE-O": 77
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Kronoberg, Södermanland och Stockholm."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Kronoberg, Södermanland and Stockholm."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        20407,
+        21079,
+        39147,
+        34815,
+        27336,
+        14091,
+        20545,
+        20938,
+        19536,
+        20037,
+        15113,
+        9932
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 52419,
+        "SE-AB": 43210,
+        "SE-M": 24204,
+        "SE-D": 19614,
+        "SE-H": 19542,
+        "SE-C": 15202,
+        "SE-F": 12702,
+        "SE-E": 12341,
+        "SE-T": 10599,
+        "SE-G": 10044,
+        "SE-U": 8598,
+        "SE-N": 7942,
+        "SE-S": 6355,
+        "SE-W": 4806,
+        "SE-X": 4445,
+        "SE-K": 2645,
+        "SE-Y": 502,
+        "SE-Z": 82,
+        "SE-AC": 8,
+        "SE-I": 3
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

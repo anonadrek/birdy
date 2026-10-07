@@ -1,0 +1,209 @@
+{
+  "qid": "Q26135",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "sidensvans",
+    "en": "bohemian-waxwing"
+  },
+  "names": {
+    "sv": "Sidensvans",
+    "en": "Bohemian Waxwing",
+    "scientific": "Bombycilla garrulus"
+  },
+  "family": {
+    "latin": "Bombycillidae",
+    "sv": "Bombycillidae"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26135/hero.webp",
+      "width": 1600,
+      "height": 1491,
+      "author": "Аимаина хикари",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bombycilla_garrulus_Kiev1.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26135/extra.webp",
+      "width": 1200,
+      "height": 899,
+      "author": "Аимаина хикари",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bombycilla_garrulus_Kiev3.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26135/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Bushman",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bombycilla_garrulus_-_Bohemian_Waxwing_XC132884.ogg",
+    "sha256": "3f08523fde70d337d12b863711e5d93acd877c632cd0d1c8308c7b40f725a0ef"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Sidensvans",
+      "revision": "59705949"
+    },
+    "en": {
+      "title": "Bohemian waxwing",
+      "revision": "1365151915"
+    },
+    "de": {
+      "title": "Seidenschwanz (Art)",
+      "revision": "254879175"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2484605,
+    "totalReports": 178590,
+    "months": [
+      78,
+      55,
+      19,
+      5,
+      2,
+      4,
+      3,
+      2,
+      5,
+      59,
+      93,
+      100
+    ],
+    "counties": {
+      "SE-K": 37,
+      "SE-W": 65,
+      "SE-X": 70,
+      "SE-I": 29,
+      "SE-N": 19,
+      "SE-Z": 47,
+      "SE-F": 44,
+      "SE-H": 32,
+      "SE-G": 43,
+      "SE-BD": 82,
+      "SE-T": 54,
+      "SE-E": 40,
+      "SE-M": 25,
+      "SE-D": 44,
+      "SE-AB": 43,
+      "SE-C": 40,
+      "SE-S": 46,
+      "SE-AC": 100,
+      "SE-Y": 76,
+      "SE-U": 67,
+      "SE-O": 31
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november och december.",
+        "Nästan aldrig i april till september.",
+        "Vanligast i rapporterna från Västerbotten, Norrbotten och Västernorrland."
+      ],
+      "en": [
+        "Reported most in November and December.",
+        "Almost never in April to September.",
+        "Most common in reports from Västerbotten, Norrbotten and Västernorrland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        39165,
+        19227,
+        12152,
+        4895,
+        2806,
+        2646,
+        1750,
+        844,
+        3104,
+        34521,
+        30808,
+        26542
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 20122,
+        "SE-AB": 19473,
+        "SE-AC": 14735,
+        "SE-M": 12283,
+        "SE-H": 10901,
+        "SE-C": 9832,
+        "SE-BD": 9236,
+        "SE-D": 8794,
+        "SE-F": 7907,
+        "SE-W": 7144,
+        "SE-E": 7125,
+        "SE-T": 6912,
+        "SE-U": 6524,
+        "SE-X": 6237,
+        "SE-Y": 5026,
+        "SE-S": 4551,
+        "SE-G": 4073,
+        "SE-N": 3861,
+        "SE-Z": 2919,
+        "SE-I": 2641,
+        "SE-K": 1752
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

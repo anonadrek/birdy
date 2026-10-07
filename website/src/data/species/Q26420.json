@@ -1,0 +1,199 @@
+{
+  "qid": "Q26420",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "stenskvatta",
+    "en": "northern-wheatear"
+  },
+  "names": {
+    "sv": "Stenskvätta",
+    "en": "Northern Wheatear",
+    "scientific": "Oenanthe oenanthe"
+  },
+  "family": {
+    "latin": "Muscicapidae",
+    "sv": "Flugsnappare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26420/hero.webp",
+      "width": 1600,
+      "height": 1286,
+      "author": "gailhampshire",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Northern_Wheatear,_Oenanthe_oenanthe,_female_(28185169449).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26420/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Stephan Sprinz",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Farbberingter_Steinschmätzer_(Oenanthe_oenanthe)_auf_Norderney_02.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Stenskvätta",
+      "revision": "59703993"
+    },
+    "en": {
+      "title": "Northern wheatear",
+      "revision": "1357474464"
+    },
+    "de": {
+      "title": "Steinschmätzer (Art)",
+      "revision": "236699118"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 5231240,
+    "totalReports": 191056,
+    "months": [
+      1,
+      1,
+      5,
+      83,
+      97,
+      76,
+      80,
+      84,
+      100,
+      17,
+      2,
+      1
+    ],
+    "counties": {
+      "SE-K": 83,
+      "SE-W": 70,
+      "SE-X": 40,
+      "SE-I": 93,
+      "SE-N": 89,
+      "SE-Z": 100,
+      "SE-F": 77,
+      "SE-H": 93,
+      "SE-G": 71,
+      "SE-BD": 72,
+      "SE-T": 59,
+      "SE-E": 63,
+      "SE-M": 50,
+      "SE-D": 66,
+      "SE-AB": 70,
+      "SE-C": 74,
+      "SE-S": 49,
+      "SE-AC": 65,
+      "SE-Y": 58,
+      "SE-U": 45,
+      "SE-O": 78
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april, maj och juli till september.",
+        "Nästan aldrig i november till mars.",
+        "Vanligast i rapporterna från Jämtland, Gotland och Kalmar."
+      ],
+      "en": [
+        "Reported most in April, May and July to September.",
+        "Almost never in November to March.",
+        "Most common in reports from Jämtland, Gotland and Kalmar."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        11,
+        1,
+        1441,
+        38024,
+        53629,
+        24161,
+        18816,
+        21771,
+        28248,
+        4610,
+        248,
+        4
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 30303,
+        "SE-H": 19164,
+        "SE-AB": 19110,
+        "SE-M": 14506,
+        "SE-C": 10842,
+        "SE-N": 10723,
+        "SE-F": 8232,
+        "SE-D": 7977,
+        "SE-E": 6722,
+        "SE-AC": 5726,
+        "SE-I": 5109,
+        "SE-BD": 4889,
+        "SE-W": 4620,
+        "SE-T": 4518,
+        "SE-G": 4064,
+        "SE-Z": 3753,
+        "SE-S": 2872,
+        "SE-U": 2650,
+        "SE-K": 2324,
+        "SE-Y": 2311,
+        "SE-X": 2158
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "qid": "Q208703",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "lappsparv",
+    "en": "lapland-longspur"
+  },
+  "names": {
+    "sv": "Lappsparv",
+    "en": "Lapland Longspur",
+    "scientific": "Calcarius lapponicus"
+  },
+  "family": {
+    "latin": "Calcariidae",
+    "sv": "Fältsparvar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q208703/hero.webp",
+      "width": 1600,
+      "height": 1103,
+      "author": "USFWS",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lapland_Longspur_(Calcarius_lapponicus).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q208703/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lapland_longspur_(Calcarius_lapponicus)_2023_4.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q208703/voice.mp3",
+    "durationSec": 8,
+    "trimmed": false,
+    "author": "Thomas Koffel",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Calcarius_lapponicus_30352.wav",
+    "sha256": "cf5d35636b628fd6435d84e9be038ea50e538213839462980b158699a0955267"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Lappsparv",
+      "revision": "59570188"
+    },
+    "en": {
+      "title": "Lapland longspur",
+      "revision": "1373628002"
+    },
+    "de": {
+      "title": "Spornammer",
+      "revision": "247901682"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2491678,
+    "totalReports": 17145,
+    "months": [
+      17,
+      20,
+      13,
+      47,
+      30,
+      89,
+      43,
+      13,
+      100,
+      75,
+      34,
+      9
+    ],
+    "counties": {
+      "SE-K": 7,
+      "SE-W": 10,
+      "SE-X": 4,
+      "SE-I": 9,
+      "SE-N": 7,
+      "SE-Z": 100,
+      "SE-F": 4,
+      "SE-H": 10,
+      "SE-G": 2,
+      "SE-BD": 48,
+      "SE-T": 3,
+      "SE-E": 4,
+      "SE-M": 3,
+      "SE-D": 2,
+      "SE-AB": 4,
+      "SE-C": 6,
+      "SE-S": 5,
+      "SE-AC": 47,
+      "SE-Y": 7,
+      "SE-U": 3,
+      "SE-O": 2
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juni och september.",
+        "Nästan aldrig i december.",
+        "Vanligast i rapporterna från Jämtland, Norrbotten och Västerbotten."
+      ],
+      "en": [
+        "Reported most in June and September.",
+        "Almost never in December.",
+        "Most common in reports from Jämtland, Norrbotten and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        464,
+        368,
+        436,
+        2546,
+        1922,
+        3333,
+        1179,
+        387,
+        3301,
+        2400,
+        603,
+        129
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-AC": 3036,
+        "SE-Z": 2722,
+        "SE-BD": 2343,
+        "SE-H": 1563,
+        "SE-AB": 871,
+        "SE-M": 713,
+        "SE-N": 647,
+        "SE-C": 613,
+        "SE-O": 610,
+        "SE-W": 476,
+        "SE-I": 364,
+        "SE-E": 318,
+        "SE-F": 275,
+        "SE-S": 220,
+        "SE-Y": 213,
+        "SE-D": 190,
+        "SE-X": 168,
+        "SE-T": 166,
+        "SE-U": 143,
+        "SE-K": 137,
+        "SE-G": 64
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

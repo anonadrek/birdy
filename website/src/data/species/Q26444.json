@@ -1,0 +1,207 @@
+{
+  "qid": "Q26444",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "vigg",
+    "en": "tufted-duck"
+  },
+  "names": {
+    "sv": "Vigg",
+    "en": "Tufted Duck",
+    "scientific": "Aythya fuligula"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Egentliga andfåglar"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26444/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tufted_duck_(Aythya_fuligula)_pair.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26444/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aythya_fuligula_(male)_2022_03_20.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26444/voice.mp3",
+    "durationSec": 4,
+    "trimmed": false,
+    "author": "Jamescandless",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tufted_Duck.ogg",
+    "sha256": "f5bc9251ca60e84005a8e2d7a3165c5b7d07a8f39eb714aa7c4f985ed1dccf59"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Vigg",
+      "revision": "59694338"
+    },
+    "en": {
+      "title": "Tufted duck",
+      "revision": "1358561151"
+    },
+    "de": {
+      "title": "Reiherente",
+      "revision": "271092185"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2498261,
+    "totalReports": 351282,
+    "months": [
+      100,
+      87,
+      83,
+      83,
+      59,
+      51,
+      50,
+      32,
+      38,
+      57,
+      84,
+      88
+    ],
+    "counties": {
+      "SE-K": 60,
+      "SE-W": 55,
+      "SE-X": 56,
+      "SE-I": 66,
+      "SE-N": 54,
+      "SE-Z": 100,
+      "SE-F": 68,
+      "SE-H": 63,
+      "SE-G": 57,
+      "SE-BD": 67,
+      "SE-T": 57,
+      "SE-E": 81,
+      "SE-M": 84,
+      "SE-D": 78,
+      "SE-AB": 95,
+      "SE-C": 46,
+      "SE-S": 47,
+      "SE-AC": 58,
+      "SE-Y": 52,
+      "SE-U": 67,
+      "SE-O": 66
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Jämtland, Stockholm och Skåne."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Jämtland, Stockholm and Skåne."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        37391,
+        22427,
+        39283,
+        61200,
+        52454,
+        26049,
+        18792,
+        13286,
+        17341,
+        24899,
+        20623,
+        17297
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-AB": 44748,
+        "SE-O": 44517,
+        "SE-M": 41996,
+        "SE-H": 22383,
+        "SE-D": 16233,
+        "SE-E": 14985,
+        "SE-F": 12574,
+        "SE-C": 11516,
+        "SE-N": 11245,
+        "SE-AC": 8799,
+        "SE-BD": 7812,
+        "SE-T": 7492,
+        "SE-U": 6823,
+        "SE-Z": 6485,
+        "SE-W": 6272,
+        "SE-I": 6261,
+        "SE-G": 5699,
+        "SE-X": 5160,
+        "SE-S": 4822,
+        "SE-Y": 3557,
+        "SE-K": 2926
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

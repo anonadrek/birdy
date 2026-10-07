@@ -1,0 +1,209 @@
+{
+  "qid": "Q25961",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "sanglarka",
+    "en": "eurasian-skylark"
+  },
+  "names": {
+    "sv": "Sånglärka",
+    "en": "Eurasian Skylark",
+    "scientific": "Alauda arvensis"
+  },
+  "family": {
+    "latin": "Alaudidae",
+    "sv": "Lärkor"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25961/hero.webp",
+      "width": 1600,
+      "height": 1823,
+      "author": "Alun Williams333",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alauda_arvensis_Ehedydd.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25961/extra.webp",
+      "width": 1200,
+      "height": 823,
+      "author": "Zeynel Cebeci",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alauda_arvensis_-_Skylark_-_Tarlakuşu_02.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25961/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Guido Gerding",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:XN_Alauda_arvensis.ogg",
+    "sha256": "a1dbcc32d4e8259b51fad4222efd2590f48cc4ef538fe1b3b8e0f9e6d7e7d70e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Sånglärka",
+      "revision": "59408142"
+    },
+    "en": {
+      "title": "Eurasian skylark",
+      "revision": "1371230946"
+    },
+    "de": {
+      "title": "Feldlerche",
+      "revision": "266858099"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 8077224,
+    "totalReports": 314864,
+    "months": [
+      5,
+      73,
+      100,
+      51,
+      37,
+      38,
+      26,
+      14,
+      34,
+      41,
+      11,
+      5
+    ],
+    "counties": {
+      "SE-K": 49,
+      "SE-W": 55,
+      "SE-X": 51,
+      "SE-I": 75,
+      "SE-N": 88,
+      "SE-Z": 14,
+      "SE-F": 59,
+      "SE-H": 77,
+      "SE-G": 61,
+      "SE-BD": 33,
+      "SE-T": 61,
+      "SE-E": 74,
+      "SE-M": 83,
+      "SE-D": 95,
+      "SE-AB": 75,
+      "SE-C": 100,
+      "SE-S": 50,
+      "SE-AC": 50,
+      "SE-Y": 35,
+      "SE-U": 62,
+      "SE-O": 72
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i mars.",
+        "Nästan aldrig i december och januari.",
+        "Vanligast i rapporterna från Uppsala, Södermanland och Halland."
+      ],
+      "en": [
+        "Reported most in March.",
+        "Almost never in December and January.",
+        "Most common in reports from Uppsala, Södermanland and Halland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        2570,
+        28076,
+        70911,
+        56277,
+        49309,
+        28773,
+        14792,
+        8461,
+        23023,
+        26970,
+        4163,
+        1353
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 47148,
+        "SE-M": 40944,
+        "SE-AB": 34907,
+        "SE-H": 26919,
+        "SE-C": 24756,
+        "SE-D": 19344,
+        "SE-N": 17935,
+        "SE-E": 13425,
+        "SE-F": 10655,
+        "SE-T": 7885,
+        "SE-AC": 7451,
+        "SE-I": 6982,
+        "SE-W": 6212,
+        "SE-U": 6139,
+        "SE-G": 5996,
+        "SE-S": 4955,
+        "SE-X": 4617,
+        "SE-BD": 3770,
+        "SE-Y": 2384,
+        "SE-K": 2321,
+        "SE-Z": 861
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

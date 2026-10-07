@@ -1,0 +1,209 @@
+{
+  "qid": "Q25382",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "domherre",
+    "en": "eurasian-bullfinch"
+  },
+  "names": {
+    "sv": "Domherre",
+    "en": "Eurasian Bullfinch",
+    "scientific": "Pyrrhula pyrrhula"
+  },
+  "family": {
+    "latin": "Fringillidae",
+    "sv": "Finkar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25382/hero.webp",
+      "width": 1600,
+      "height": 1455,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pyrrhula_Pyrrhula_Kittilä_20170408_01.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25382/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_bullfinch_(Pyrrhula_pyrrhula)_2022.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25382/voice.mp3",
+    "durationSec": 19,
+    "trimmed": false,
+    "author": "Benoît Van Hecke",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pyrrhula_pyrrhula_-_Eurasian_Bullfinch_XC539302.mp3",
+    "sha256": "0c2ff99beb46688de7268433f22d819518c31717f1b10a75e3e830356796fb53"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Domherre",
+      "revision": "55576523"
+    },
+    "en": {
+      "title": "Eurasian bullfinch",
+      "revision": "1357435435"
+    },
+    "de": {
+      "title": "Gimpel (Art)",
+      "revision": "270127013"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2494543,
+    "totalReports": 393530,
+    "months": [
+      89,
+      79,
+      40,
+      15,
+      8,
+      9,
+      7,
+      7,
+      9,
+      37,
+      77,
+      100
+    ],
+    "counties": {
+      "SE-K": 28,
+      "SE-W": 59,
+      "SE-X": 62,
+      "SE-I": 25,
+      "SE-N": 18,
+      "SE-Z": 82,
+      "SE-F": 51,
+      "SE-H": 22,
+      "SE-G": 37,
+      "SE-BD": 100,
+      "SE-T": 41,
+      "SE-E": 35,
+      "SE-M": 22,
+      "SE-D": 43,
+      "SE-AB": 35,
+      "SE-C": 39,
+      "SE-S": 47,
+      "SE-AC": 83,
+      "SE-Y": 79,
+      "SE-U": 42,
+      "SE-O": 41
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december och januari.",
+        "Nästan aldrig i maj till september.",
+        "Vanligast i rapporterna från Norrbotten, Västerbotten och Jämtland."
+      ],
+      "en": [
+        "Reported most in December and January.",
+        "Almost never in May to September.",
+        "Most common in reports from Norrbotten, Västerbotten and Jämtland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        81771,
+        50265,
+        47343,
+        26723,
+        17195,
+        11628,
+        6893,
+        6892,
+        9819,
+        39885,
+        46528,
+        48446
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 61275,
+        "SE-AB": 37110,
+        "SE-AC": 28316,
+        "SE-BD": 25918,
+        "SE-M": 24475,
+        "SE-C": 21921,
+        "SE-F": 20874,
+        "SE-D": 20116,
+        "SE-H": 17576,
+        "SE-W": 15114,
+        "SE-E": 14393,
+        "SE-X": 12894,
+        "SE-T": 12148,
+        "SE-Y": 12039,
+        "SE-Z": 11830,
+        "SE-S": 10733,
+        "SE-U": 9384,
+        "SE-N": 8231,
+        "SE-G": 8081,
+        "SE-I": 5233,
+        "SE-K": 3054
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

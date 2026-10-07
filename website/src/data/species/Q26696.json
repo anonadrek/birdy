@@ -1,0 +1,197 @@
+{
+  "qid": "Q26696",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "ejder",
+    "en": "common-eider"
+  },
+  "names": {
+    "sv": "Ejder",
+    "en": "Common Eider",
+    "scientific": "Somateria mollissima"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Egentliga andfåglar"
+  },
+  "group": "waterfowl",
+  "iucn": "NT",
+  "swedishRedList": "EN",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26696/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_eider_(Somateria_mollissima).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26696/extra.webp",
+      "width": 1200,
+      "height": 798,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Somateria_mollissima_(female)_on_the_dune,_Heligoland.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Ejder",
+      "revision": "59697419"
+    },
+    "en": {
+      "title": "Common eider",
+      "revision": "1366477457"
+    },
+    "de": {
+      "title": "Eiderente",
+      "revision": "260436170"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2498352,
+    "totalReports": 201699,
+    "months": [
+      72,
+      77,
+      100,
+      90,
+      81,
+      79,
+      82,
+      57,
+      64,
+      79,
+      66,
+      60
+    ],
+    "counties": {
+      "SE-K": 75,
+      "SE-W": 1,
+      "SE-X": 17,
+      "SE-I": 77,
+      "SE-N": 100,
+      "SE-Z": 1,
+      "SE-F": 2,
+      "SE-H": 73,
+      "SE-G": 4,
+      "SE-BD": 1,
+      "SE-T": 1,
+      "SE-E": 14,
+      "SE-M": 59,
+      "SE-D": 11,
+      "SE-AB": 30,
+      "SE-C": 5,
+      "SE-S": 4,
+      "SE-AC": 11,
+      "SE-Y": 36,
+      "SE-U": 1,
+      "SE-O": 33
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Halland, Gotland och Blekinge."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Halland, Gotland and Blekinge."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        13011,
+        9582,
+        22892,
+        32048,
+        34274,
+        19513,
+        14966,
+        11444,
+        13827,
+        16528,
+        7785,
+        5666
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-M": 28982,
+        "SE-H": 25719,
+        "SE-O": 21915,
+        "SE-N": 20482,
+        "SE-AB": 14112,
+        "SE-I": 7190,
+        "SE-K": 3610,
+        "SE-E": 2571,
+        "SE-Y": 2426,
+        "SE-D": 2299,
+        "SE-AC": 1629,
+        "SE-X": 1555,
+        "SE-C": 1139,
+        "SE-S": 415,
+        "SE-G": 378,
+        "SE-F": 320,
+        "SE-T": 150,
+        "SE-BD": 149,
+        "SE-W": 82,
+        "SE-U": 38,
+        "SE-Z": 10
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "qid": "Q574281",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "balkanmes",
+    "en": "sombre-tit"
+  },
+  "names": {
+    "sv": "Balkanmes",
+    "en": "Sombre Tit",
+    "scientific": "Poecile lugubris"
+  },
+  "family": {
+    "latin": "Paridae",
+    "sv": "Mesfåglar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "marginalia": {
+    "sv": "Bär sin sotgrå hätta som en sjömanns mössa.",
+    "en": "Wears its sooty-grey cap like a sailor's hat."
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q574281/hero.webp",
+      "width": 1600,
+      "height": 1066,
+      "author": "Christoph Moning",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Poecile_lugubris_in_Türkiye.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q574281/extra.webp",
+      "width": 1200,
+      "height": 891,
+      "author": "Nikola Veljković",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Senica_šljivarka_(Poecile_lugubris)_Sombre_Tit.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Balkanmes",
+      "revision": "59480013"
+    },
+    "en": {
+      "title": "Sombre tit",
+      "revision": "1361770597"
+    },
+    "de": {
+      "title": "Balkanmeise",
+      "revision": "267960556"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2487857,
+    "totalReports": 0,
+    "sentences": {
+      "sv": [],
+      "en": []
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {},
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

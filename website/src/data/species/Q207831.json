@@ -1,0 +1,206 @@
+{
+  "qid": "Q207831",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tofsmes",
+    "en": "crested-tit"
+  },
+  "names": {
+    "sv": "Tofsmes",
+    "en": "Crested Tit",
+    "scientific": "Lophophanes cristatus"
+  },
+  "family": {
+    "latin": "Paridae",
+    "sv": "Mesfåglar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q207831/hero.webp",
+      "width": 1600,
+      "height": 2400,
+      "author": "Gonçalo Vila Ferraz",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lophophanes_cristatus,_Parque_Biológico_de_Gaia,_Porto.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q207831/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Marie-Lan Taÿ Pamart",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lophophanes_cristatus_Gran_Paradiso_20190908.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q207831/voice.mp3",
+    "durationSec": 12,
+    "trimmed": false,
+    "author": "Alexander Kurthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lophophanes_cristatus_-_European_Crested_Tit_XC108346.mp3",
+    "sha256": "0c34d428e860cbdafebf5607d052a74a6441aeb76ebd36164ac45b57321168d1"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Tofsmes",
+      "revision": "56667392"
+    },
+    "en": {
+      "title": "Crested tit",
+      "revision": "1357526590"
+    },
+    "de": {
+      "title": "Haubenmeise",
+      "revision": "249904567"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2487883,
+    "totalReports": 139576,
+    "months": [
+      100,
+      88,
+      48,
+      21,
+      12,
+      24,
+      31,
+      29,
+      36,
+      44,
+      83,
+      97
+    ],
+    "counties": {
+      "SE-K": 35,
+      "SE-W": 100,
+      "SE-X": 86,
+      "SE-I": 0,
+      "SE-N": 23,
+      "SE-Z": 69,
+      "SE-F": 51,
+      "SE-H": 28,
+      "SE-G": 76,
+      "SE-BD": 58,
+      "SE-T": 79,
+      "SE-E": 47,
+      "SE-M": 12,
+      "SE-D": 99,
+      "SE-AB": 83,
+      "SE-C": 72,
+      "SE-S": 82,
+      "SE-AC": 43,
+      "SE-Y": 75,
+      "SE-U": 84,
+      "SE-O": 52
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november till februari.",
+        "Vanligast i rapporterna från Dalarna, Södermanland och Gävleborg."
+      ],
+      "en": [
+        "Reported most in November to February.",
+        "Most common in reports from Dalarna, Södermanland and Gävleborg."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        23642,
+        14373,
+        14488,
+        9542,
+        6946,
+        7886,
+        7285,
+        7662,
+        10412,
+        12192,
+        12882,
+        12010
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-AB": 22972,
+        "SE-O": 20248,
+        "SE-D": 12138,
+        "SE-C": 10716,
+        "SE-W": 6714,
+        "SE-T": 6134,
+        "SE-H": 5818,
+        "SE-F": 5564,
+        "SE-E": 5072,
+        "SE-U": 4981,
+        "SE-S": 4899,
+        "SE-X": 4682,
+        "SE-G": 4402,
+        "SE-BD": 3983,
+        "SE-AC": 3827,
+        "SE-M": 3650,
+        "SE-Y": 3018,
+        "SE-N": 2833,
+        "SE-Z": 2636,
+        "SE-K": 1002
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

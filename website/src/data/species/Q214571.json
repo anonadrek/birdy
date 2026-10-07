@@ -1,0 +1,199 @@
+{
+  "qid": "Q214571",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tallbit",
+    "en": "pine-grosbeak"
+  },
+  "names": {
+    "sv": "Tallbit",
+    "en": "Pine Grosbeak",
+    "scientific": "Pinicola enucleator"
+  },
+  "family": {
+    "latin": "Fringillidae",
+    "sv": "Finkar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q214571/hero.webp",
+      "width": 1600,
+      "height": 1159,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pinicola_Enucleator_Oulu_20150105_02.JPG"
+    },
+    {
+      "role": "extra",
+      "file": "Q214571/extra.webp",
+      "width": 1200,
+      "height": 898,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pinicola_Enucleator_Oulu_20150105_01.JPG"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Tallbit",
+      "revision": "59707269"
+    },
+    "en": {
+      "title": "Pine grosbeak",
+      "revision": "1374486003"
+    },
+    "de": {
+      "title": "Hakengimpel",
+      "revision": "266292426"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2494771,
+    "totalReports": 42365,
+    "months": [
+      42,
+      14,
+      5,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      23,
+      74,
+      100
+    ],
+    "counties": {
+      "SE-K": 11,
+      "SE-W": 88,
+      "SE-X": 66,
+      "SE-I": 1,
+      "SE-N": 26,
+      "SE-Z": 80,
+      "SE-F": 41,
+      "SE-H": 13,
+      "SE-G": 50,
+      "SE-BD": 100,
+      "SE-T": 46,
+      "SE-E": 19,
+      "SE-M": 5,
+      "SE-D": 21,
+      "SE-AB": 38,
+      "SE-C": 74,
+      "SE-S": 69,
+      "SE-AC": 83,
+      "SE-Y": 66,
+      "SE-U": 72,
+      "SE-O": 38
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december.",
+        "Nästan aldrig i mars till september.",
+        "Vanligast i rapporterna från Norrbotten, Dalarna och Västerbotten."
+      ],
+      "en": [
+        "Reported most in December.",
+        "Almost never in March to September.",
+        "Most common in reports from Norrbotten, Dalarna and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        9299,
+        2152,
+        1289,
+        629,
+        105,
+        247,
+        98,
+        48,
+        109,
+        5939,
+        10707,
+        11536
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 6288,
+        "SE-C": 4612,
+        "SE-AB": 4450,
+        "SE-AC": 3131,
+        "SE-BD": 2884,
+        "SE-W": 2482,
+        "SE-F": 1880,
+        "SE-U": 1800,
+        "SE-S": 1748,
+        "SE-X": 1515,
+        "SE-T": 1497,
+        "SE-N": 1331,
+        "SE-Z": 1287,
+        "SE-G": 1229,
+        "SE-H": 1177,
+        "SE-Y": 1130,
+        "SE-D": 1074,
+        "SE-E": 855,
+        "SE-M": 672,
+        "SE-K": 131,
+        "SE-I": 6
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "qid": "Q26816",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "storre-strandpipare",
+    "en": "common-ringed-plover"
+  },
+  "names": {
+    "sv": "Större strandpipare",
+    "en": "Common Ringed Plover",
+    "scientific": "Charadrius hiaticula"
+  },
+  "family": {
+    "latin": "Charadriidae",
+    "sv": "Pipare"
+  },
+  "group": "waders",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26816/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ringed_plover_(Charadrius_hiaticula).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26816/extra.webp",
+      "width": 1200,
+      "height": 801,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_ringed_plover_(Charadrius_hiaticula),_Seltjarnarnes,_Iceland.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26816/voice.mp3",
+    "durationSec": 6,
+    "trimmed": false,
+    "author": "Joost van Bruggen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Charadrius_hiaticula_-_Common_Ringed_Plover_XC432627.mp3",
+    "sha256": "fdeec3b39002dfa083796f1aefd60fd08a7761702331bd70eb6d8770a572ac1b"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Större strandpipare",
+      "revision": "59697937"
+    },
+    "en": {
+      "title": "Common ringed plover",
+      "revision": "1376074111"
+    },
+    "de": {
+      "title": "Sandregenpfeifer",
+      "revision": "266840474"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 9566659,
+    "totalReports": 212242,
+    "months": [
+      1,
+      14,
+      35,
+      28,
+      36,
+      31,
+      60,
+      100,
+      54,
+      15,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 44,
+      "SE-W": 39,
+      "SE-X": 26,
+      "SE-I": 71,
+      "SE-N": 100,
+      "SE-Z": 61,
+      "SE-F": 21,
+      "SE-H": 86,
+      "SE-G": 18,
+      "SE-BD": 40,
+      "SE-T": 29,
+      "SE-E": 45,
+      "SE-M": 54,
+      "SE-D": 22,
+      "SE-AB": 30,
+      "SE-C": 36,
+      "SE-S": 26,
+      "SE-AC": 43,
+      "SE-Y": 23,
+      "SE-U": 36,
+      "SE-O": 35
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i augusti.",
+        "Nästan aldrig i november till januari.",
+        "Vanligast i rapporterna från Halland, Kalmar och Gotland."
+      ],
+      "en": [
+        "Reported most in August.",
+        "Almost never in November to January.",
+        "Most common in reports from Halland, Kalmar and Gotland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        25,
+        4270,
+        19180,
+        24092,
+        36315,
+        18431,
+        26138,
+        47815,
+        28069,
+        7609,
+        203,
+        16
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-H": 25508,
+        "SE-M": 22524,
+        "SE-O": 19217,
+        "SE-N": 17168,
+        "SE-AB": 11521,
+        "SE-C": 7431,
+        "SE-E": 6960,
+        "SE-I": 5532,
+        "SE-AC": 5438,
+        "SE-BD": 3866,
+        "SE-W": 3725,
+        "SE-D": 3715,
+        "SE-Z": 3282,
+        "SE-F": 3232,
+        "SE-T": 3125,
+        "SE-U": 3023,
+        "SE-S": 2163,
+        "SE-X": 1979,
+        "SE-K": 1749,
+        "SE-G": 1493,
+        "SE-Y": 1301
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

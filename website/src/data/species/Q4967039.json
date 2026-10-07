@@ -1,0 +1,122 @@
+{
+  "qid": "Q4967039",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "hyrkanmes",
+    "en": "caspian-tit"
+  },
+  "names": {
+    "sv": "Hyrkanmes",
+    "en": "Caspian Tit",
+    "scientific": "Poecile hyrcanus"
+  },
+  "family": {
+    "latin": "Paridae",
+    "sv": "Mesfåglar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q4967039/hero.webp",
+      "width": 1600,
+      "height": 1066,
+      "author": "James Eaton",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Poecile_hyrcanus_351030492.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Hyrkanmes",
+      "revision": "58595068"
+    },
+    "en": {
+      "title": "Caspian tit",
+      "revision": "1337161560"
+    },
+    "de": {
+      "title": "Elbursmeise",
+      "revision": "259005848"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 7342129,
+    "totalReports": 0,
+    "sentences": {
+      "sv": [],
+      "en": []
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {},
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

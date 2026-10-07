@@ -1,0 +1,209 @@
+{
+  "qid": "Q202478",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tradgardssangare",
+    "en": "garden-warbler"
+  },
+  "names": {
+    "sv": "Trädgårdssångare",
+    "en": "Garden Warbler",
+    "scientific": "Sylvia borin"
+  },
+  "family": {
+    "latin": "Sylviidae",
+    "sv": "Sylvior"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q202478/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Сергей Неклюдов",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sylvia_borin_315567165.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q202478/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Иван Везенковић",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Garden_Warbler_Sylvia_borin.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q202478/voice.mp3",
+    "durationSec": 11,
+    "trimmed": false,
+    "author": "MVmath20",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gartengrasm%C3%BCcke_(Sylvia_borin).wav",
+    "sha256": "c3b6a4ea4a1a646a036515729e8541c270c5aae8ef90756a6021e8888b167ec1"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Trädgårdssångare",
+      "revision": "59693042"
+    },
+    "en": {
+      "title": "Garden warbler",
+      "revision": "1359675141"
+    },
+    "de": {
+      "title": "Gartengrasmücke",
+      "revision": "267654649"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2492942,
+    "totalReports": 197353,
+    "months": [
+      0,
+      0,
+      0,
+      1,
+      87,
+      100,
+      50,
+      46,
+      14,
+      1,
+      1,
+      0
+    ],
+    "counties": {
+      "SE-K": 75,
+      "SE-W": 75,
+      "SE-X": 76,
+      "SE-I": 70,
+      "SE-N": 68,
+      "SE-Z": 67,
+      "SE-F": 85,
+      "SE-H": 66,
+      "SE-G": 73,
+      "SE-BD": 34,
+      "SE-T": 90,
+      "SE-E": 64,
+      "SE-M": 62,
+      "SE-D": 87,
+      "SE-AB": 70,
+      "SE-C": 68,
+      "SE-S": 78,
+      "SE-AC": 74,
+      "SE-Y": 100,
+      "SE-U": 63,
+      "SE-O": 73
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i maj och juni.",
+        "Nästan aldrig i oktober till april.",
+        "Vanligast i rapporterna från Västernorrland, Örebro och Södermanland."
+      ],
+      "en": [
+        "Reported most in May and June.",
+        "Almost never in October to April.",
+        "Most common in reports from Västernorrland, Örebro and Södermanland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        0,
+        48,
+        87764,
+        58625,
+        21534,
+        21686,
+        7200,
+        413,
+        21,
+        0
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 29765,
+        "SE-AB": 20089,
+        "SE-M": 19155,
+        "SE-H": 14549,
+        "SE-D": 11075,
+        "SE-C": 10551,
+        "SE-F": 9677,
+        "SE-N": 8612,
+        "SE-E": 7317,
+        "SE-T": 7238,
+        "SE-AC": 6892,
+        "SE-W": 5291,
+        "SE-S": 4865,
+        "SE-G": 4464,
+        "SE-X": 4351,
+        "SE-Y": 4217,
+        "SE-I": 4067,
+        "SE-U": 3904,
+        "SE-Z": 2681,
+        "SE-BD": 2447,
+        "SE-K": 2217
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

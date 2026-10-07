@@ -1,0 +1,207 @@
+{
+  "qid": "Q27075785",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "gronfink",
+    "en": "european-greenfinch"
+  },
+  "names": {
+    "sv": "Grönfink",
+    "en": "European Greenfinch",
+    "scientific": "Chloris chloris"
+  },
+  "family": {
+    "latin": "Fringillidae",
+    "sv": "Finkar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q27075785/hero.webp",
+      "width": 1600,
+      "height": 1246,
+      "author": "Martin Kunz",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chloris_chloris_(profile).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q27075785/extra.webp",
+      "width": 1200,
+      "height": 1384,
+      "author": "caroline legg",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Greenfinch_-_Chloris_chloris_-_Male1.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q27075785/voice.mp3",
+    "durationSec": 11,
+    "trimmed": false,
+    "author": "Vladimir Yu. Arkhipov, Arkhivov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Carduelis_chloris.ogg",
+    "sha256": "22daeea9da4aafda7e3c82b14ea5ee9bca9cc3bac8b7177d688cc04ac412b783"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Grönfink",
+      "revision": "59193236"
+    },
+    "en": {
+      "title": "European greenfinch",
+      "revision": "1366309617"
+    },
+    "de": {
+      "title": "Grünfink",
+      "revision": "267730805"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 5845582,
+    "totalReports": 474104,
+    "months": [
+      93,
+      100,
+      72,
+      44,
+      32,
+      34,
+      36,
+      30,
+      30,
+      48,
+      78,
+      90
+    ],
+    "counties": {
+      "SE-K": 49,
+      "SE-W": 58,
+      "SE-X": 85,
+      "SE-I": 46,
+      "SE-N": 46,
+      "SE-Z": 64,
+      "SE-F": 63,
+      "SE-H": 48,
+      "SE-G": 52,
+      "SE-BD": 95,
+      "SE-T": 48,
+      "SE-E": 72,
+      "SE-M": 49,
+      "SE-D": 93,
+      "SE-AB": 84,
+      "SE-C": 98,
+      "SE-S": 48,
+      "SE-AC": 75,
+      "SE-Y": 100,
+      "SE-U": 52,
+      "SE-O": 71
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Västernorrland, Uppsala och Norrbotten."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Västernorrland, Uppsala and Norrbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        60883,
+        44988,
+        60120,
+        57172,
+        49687,
+        30636,
+        23693,
+        21991,
+        23627,
+        36630,
+        33465,
+        31039
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 76095,
+        "SE-AB": 63099,
+        "SE-C": 39186,
+        "SE-M": 38653,
+        "SE-D": 30775,
+        "SE-H": 27146,
+        "SE-E": 21247,
+        "SE-F": 18435,
+        "SE-AC": 18208,
+        "SE-BD": 17656,
+        "SE-N": 15154,
+        "SE-X": 12545,
+        "SE-Y": 10937,
+        "SE-W": 10465,
+        "SE-T": 10073,
+        "SE-U": 8331,
+        "SE-G": 8224,
+        "SE-S": 7792,
+        "SE-I": 6966,
+        "SE-Z": 6647,
+        "SE-K": 3802
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "qid": "Q26629",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "havstrut",
+    "en": "great-black-backed-gull"
+  },
+  "names": {
+    "sv": "Havstrut",
+    "en": "Great Black-backed Gull",
+    "scientific": "Larus marinus"
+  },
+  "family": {
+    "latin": "Laridae",
+    "sv": "Måsfåglar"
+  },
+  "group": "gulls_terns",
+  "iucn": "LC",
+  "swedishRedList": "EN",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26629/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Andrew C",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Great_Black-backed_Gull_(Larus_marinus)_(15898029627).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26629/extra.webp",
+      "width": 1200,
+      "height": 799,
+      "author": "Gordon Leggett",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024-06-01_02_Great_black-backed_gull_(Larus_marinus)_pair_with_chicks_-.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26629/voice.mp3",
+    "durationSec": 4,
+    "trimmed": false,
+    "author": "Tony Phillips",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Larus_marinus.ogg",
+    "sha256": "fbffde1adbc1639321cb4024b8cd6fec757cd931decb7fd7d11725cbcec2f81a"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Havstrut",
+      "revision": "59563851"
+    },
+    "en": {
+      "title": "Great black-backed gull",
+      "revision": "1371557791"
+    },
+    "de": {
+      "title": "Mantelmöwe",
+      "revision": "267241068"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2481172,
+    "totalReports": 204307,
+    "months": [
+      96,
+      100,
+      93,
+      60,
+      47,
+      53,
+      73,
+      65,
+      50,
+      57,
+      76,
+      80
+    ],
+    "counties": {
+      "SE-K": 69,
+      "SE-W": 16,
+      "SE-X": 62,
+      "SE-I": 63,
+      "SE-N": 100,
+      "SE-Z": 1,
+      "SE-F": 16,
+      "SE-H": 51,
+      "SE-G": 52,
+      "SE-BD": 25,
+      "SE-T": 27,
+      "SE-E": 58,
+      "SE-M": 59,
+      "SE-D": 29,
+      "SE-AB": 55,
+      "SE-C": 23,
+      "SE-S": 57,
+      "SE-AC": 33,
+      "SE-Y": 52,
+      "SE-U": 34,
+      "SE-O": 60
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Halland, Blekinge och Gotland."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Halland, Blekinge and Gotland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        20603,
+        14785,
+        25351,
+        25262,
+        23840,
+        15628,
+        15893,
+        15584,
+        13071,
+        14422,
+        10708,
+        9044
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 28686,
+        "SE-M": 20990,
+        "SE-AB": 18486,
+        "SE-N": 14779,
+        "SE-H": 13060,
+        "SE-E": 7677,
+        "SE-I": 4261,
+        "SE-D": 4244,
+        "SE-C": 4131,
+        "SE-S": 4120,
+        "SE-X": 4108,
+        "SE-G": 3654,
+        "SE-AC": 3644,
+        "SE-Y": 2530,
+        "SE-T": 2516,
+        "SE-U": 2419,
+        "SE-K": 2379,
+        "SE-F": 2162,
+        "SE-BD": 2036,
+        "SE-W": 1344,
+        "SE-Z": 65
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

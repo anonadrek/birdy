@@ -1,0 +1,207 @@
+{
+  "qid": "Q25345384",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "kaja",
+    "en": "western-jackdaw"
+  },
+  "names": {
+    "sv": "Kaja",
+    "en": "Western Jackdaw",
+    "scientific": "Coloeus monedula"
+  },
+  "family": {
+    "latin": "Corvidae",
+    "sv": "Kråkfåglar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": false
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25345384/hero.webp",
+      "width": 1600,
+      "height": 2133,
+      "author": "ChoucasChoucas",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Choucas_(Coloeus_monedula)_à_5080_Emines_01.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25345384/extra.webp",
+      "width": 1200,
+      "height": 1200,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Coloeus_monedula_Oulu_20250503_02.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25345384/voice.mp3",
+    "durationSec": 17,
+    "trimmed": false,
+    "author": "QWerk",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:European_Jackdaw%27s_croaking.ogg",
+    "sha256": "a4db6f2c2a5d52ce3f1661ff48e3eb6a2f8b7c6b6ba32924cd9b42acbaecb4f0"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Kaja",
+      "revision": "59710970"
+    },
+    "en": {
+      "title": "Western jackdaw",
+      "revision": "1376327689"
+    },
+    "de": {
+      "title": "Dohle",
+      "revision": "267327875"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 6100954,
+    "totalReports": 404202,
+    "months": [
+      100,
+      83,
+      63,
+      40,
+      37,
+      37,
+      28,
+      30,
+      40,
+      55,
+      68,
+      82
+    ],
+    "counties": {
+      "SE-K": 38,
+      "SE-W": 50,
+      "SE-X": 100,
+      "SE-I": 52,
+      "SE-N": 50,
+      "SE-Z": 43,
+      "SE-F": 96,
+      "SE-H": 37,
+      "SE-G": 70,
+      "SE-BD": 34,
+      "SE-T": 47,
+      "SE-E": 69,
+      "SE-M": 67,
+      "SE-D": 82,
+      "SE-AB": 56,
+      "SE-C": 92,
+      "SE-S": 53,
+      "SE-AC": 51,
+      "SE-Y": 70,
+      "SE-U": 50,
+      "SE-O": 68
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december till februari.",
+        "Vanligast i rapporterna från Gävleborg, Jönköping och Uppsala."
+      ],
+      "en": [
+        "Reported most in December to February.",
+        "Most common in reports from Gävleborg, Jönköping and Uppsala."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        56484,
+        32309,
+        45093,
+        44757,
+        49043,
+        28437,
+        16150,
+        19044,
+        26990,
+        36200,
+        25377,
+        24237
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 66839,
+        "SE-M": 49557,
+        "SE-AB": 38615,
+        "SE-C": 33954,
+        "SE-F": 25995,
+        "SE-D": 25032,
+        "SE-H": 19238,
+        "SE-E": 18643,
+        "SE-N": 15247,
+        "SE-X": 13629,
+        "SE-AC": 11423,
+        "SE-G": 10265,
+        "SE-T": 9115,
+        "SE-W": 8367,
+        "SE-S": 7908,
+        "SE-U": 7438,
+        "SE-I": 7168,
+        "SE-Y": 7057,
+        "SE-BD": 5825,
+        "SE-Z": 4071,
+        "SE-K": 2737
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

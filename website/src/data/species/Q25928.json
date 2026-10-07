@@ -1,0 +1,209 @@
+{
+  "qid": "Q25928",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "strandskata",
+    "en": "eurasian-oystercatcher"
+  },
+  "names": {
+    "sv": "Strandskata",
+    "en": "Eurasian Oystercatcher",
+    "scientific": "Haematopus ostralegus"
+  },
+  "family": {
+    "latin": "Haematopodidae",
+    "sv": "Strandskator"
+  },
+  "group": "waders",
+  "iucn": "NT",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25928/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_oystercatcher_(Haematopus_ostralegus)_at_Amrum.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25928/extra.webp",
+      "width": 1200,
+      "height": 797,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_oystercatcher_(Haematopus_ostralegus).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25928/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Pascal Christe",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Haematopus_ostralegus_-_Eurasian_Oystercatcher_XC466474.mp3",
+    "sha256": "1007c2046f7af2c9399e7ce47dbb9b88f18b956a0b9a37af6d66d55102b7f1f4"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Strandskata",
+      "revision": "59703488"
+    },
+    "en": {
+      "title": "Eurasian oystercatcher",
+      "revision": "1361099735"
+    },
+    "de": {
+      "title": "Austernfischer",
+      "revision": "268096855"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 7788295,
+    "totalReports": 247914,
+    "months": [
+      4,
+      22,
+      92,
+      87,
+      68,
+      73,
+      100,
+      49,
+      17,
+      10,
+      7,
+      6
+    ],
+    "counties": {
+      "SE-K": 50,
+      "SE-W": 27,
+      "SE-X": 27,
+      "SE-I": 72,
+      "SE-N": 100,
+      "SE-Z": 36,
+      "SE-F": 33,
+      "SE-H": 57,
+      "SE-G": 33,
+      "SE-BD": 18,
+      "SE-T": 29,
+      "SE-E": 46,
+      "SE-M": 66,
+      "SE-D": 22,
+      "SE-AB": 31,
+      "SE-C": 11,
+      "SE-S": 31,
+      "SE-AC": 23,
+      "SE-Y": 34,
+      "SE-U": 17,
+      "SE-O": 51
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i mars, april och juli.",
+        "Nästan aldrig i oktober till januari.",
+        "Vanligast i rapporterna från Halland, Gotland och Skåne."
+      ],
+      "en": [
+        "Reported most in March, April and July.",
+        "Almost never in October to January.",
+        "Most common in reports from Halland, Gotland and Skåne."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1430,
+        4955,
+        37748,
+        55667,
+        52128,
+        32360,
+        32742,
+        17442,
+        6769,
+        3814,
+        1586,
+        960
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 35131,
+        "SE-M": 34172,
+        "SE-N": 21544,
+        "SE-H": 21276,
+        "SE-AB": 15212,
+        "SE-E": 8806,
+        "SE-I": 7056,
+        "SE-F": 6312,
+        "SE-D": 4764,
+        "SE-T": 3908,
+        "SE-AC": 3708,
+        "SE-G": 3417,
+        "SE-S": 3285,
+        "SE-W": 3190,
+        "SE-C": 2921,
+        "SE-X": 2614,
+        "SE-K": 2520,
+        "SE-Z": 2439,
+        "SE-Y": 2394,
+        "SE-BD": 2153,
+        "SE-U": 1792
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

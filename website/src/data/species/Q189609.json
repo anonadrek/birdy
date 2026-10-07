@@ -1,0 +1,207 @@
+{
+  "qid": "Q189609",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "smaskrake",
+    "en": "red-breasted-merganser"
+  },
+  "names": {
+    "sv": "Småskrake",
+    "en": "Red-breasted Merganser",
+    "scientific": "Mergus serrator"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Egentliga andfåglar"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q189609/hero.webp",
+      "width": 1600,
+      "height": 1189,
+      "author": "ALAN SCHMIERER",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:063_-_RED-BREASTED_MERGANSER_(4-20-12)_south_padre_island,_tx_(8717956869).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q189609/extra.webp",
+      "width": 1200,
+      "height": 933,
+      "author": "peggycadigan",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mergus_serrator_in_water_02.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q189609/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Jonathon Jongsma",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mergus_serrator_-_Red-breasted_Merganser_XC139389.ogg",
+    "sha256": "86f8c45ced911d54aaf6cc57d3db2cdec6a80f24b53d20783c30ca535802424f"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Småskrake",
+      "revision": "57950240"
+    },
+    "en": {
+      "title": "Red-breasted merganser",
+      "revision": "1356931841"
+    },
+    "de": {
+      "title": "Mittelsäger",
+      "revision": "262751574"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2498375,
+    "totalReports": 191313,
+    "months": [
+      99,
+      82,
+      64,
+      85,
+      87,
+      84,
+      71,
+      44,
+      60,
+      94,
+      100,
+      83
+    ],
+    "counties": {
+      "SE-K": 75,
+      "SE-W": 31,
+      "SE-X": 50,
+      "SE-I": 100,
+      "SE-N": 86,
+      "SE-Z": 62,
+      "SE-F": 44,
+      "SE-H": 92,
+      "SE-G": 47,
+      "SE-BD": 67,
+      "SE-T": 23,
+      "SE-E": 45,
+      "SE-M": 75,
+      "SE-D": 15,
+      "SE-AB": 41,
+      "SE-C": 15,
+      "SE-S": 54,
+      "SE-AC": 63,
+      "SE-Y": 65,
+      "SE-U": 32,
+      "SE-O": 61
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Gotland, Kalmar och Halland."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Gotland, Kalmar and Halland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        16549,
+        9477,
+        13731,
+        28215,
+        34532,
+        19363,
+        12024,
+        8126,
+        12273,
+        18453,
+        11060,
+        7311
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 23589,
+        "SE-M": 21655,
+        "SE-H": 19046,
+        "SE-AB": 11206,
+        "SE-N": 10332,
+        "SE-AC": 5578,
+        "SE-I": 5458,
+        "SE-E": 4868,
+        "SE-F": 4692,
+        "SE-BD": 4514,
+        "SE-S": 3149,
+        "SE-G": 2703,
+        "SE-X": 2660,
+        "SE-Y": 2577,
+        "SE-Z": 2337,
+        "SE-C": 2179,
+        "SE-K": 2094,
+        "SE-W": 2052,
+        "SE-U": 1892,
+        "SE-D": 1817,
+        "SE-T": 1755
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "qid": "Q25469",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "stare",
+    "en": "common-starling"
+  },
+  "names": {
+    "sv": "Stare",
+    "en": "Common Starling",
+    "scientific": "Sturnus vulgaris"
+  },
+  "family": {
+    "latin": "Sturnidae",
+    "sv": "Starar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25469/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Judy Gallagher",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:European_Starling_-_Sturnus_vulgaris,_Veteran's_Park,_Woodbridge,_Virginia_(25823769668).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25469/extra.webp",
+      "width": 1200,
+      "height": 956,
+      "author": "gailhampshire",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Starling._Sturnus_vulgaris_-_Flickr_-_gailhampshire.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25469/voice.mp3",
+    "durationSec": 19,
+    "trimmed": false,
+    "author": "Kfrommolt",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sturnus_vulgaris_juveniles_sound_recording.ogg",
+    "sha256": "b70f725f5f3c662000478354fd23d22a1f5e2d917de2095162e5d6947b95d7a8"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Stare",
+      "revision": "59698526"
+    },
+    "en": {
+      "title": "Common starling",
+      "revision": "1375763236"
+    },
+    "de": {
+      "title": "Star (Art)",
+      "revision": "268356619"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 9809229,
+    "totalReports": 435155,
+    "months": [
+      28,
+      46,
+      100,
+      73,
+      71,
+      56,
+      43,
+      38,
+      38,
+      49,
+      37,
+      31
+    ],
+    "counties": {
+      "SE-K": 80,
+      "SE-W": 65,
+      "SE-X": 65,
+      "SE-I": 74,
+      "SE-N": 75,
+      "SE-Z": 35,
+      "SE-F": 80,
+      "SE-H": 78,
+      "SE-G": 78,
+      "SE-BD": 32,
+      "SE-T": 86,
+      "SE-E": 93,
+      "SE-M": 73,
+      "SE-D": 92,
+      "SE-AB": 88,
+      "SE-C": 100,
+      "SE-S": 68,
+      "SE-AC": 44,
+      "SE-Y": 60,
+      "SE-U": 61,
+      "SE-O": 90
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i mars.",
+        "Vanligast i rapporterna från Uppsala, Östergötland och Södermanland."
+      ],
+      "en": [
+        "Reported most in March.",
+        "Most common in reports from Uppsala, Östergötland and Södermanland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        14958,
+        17250,
+        68824,
+        77371,
+        90984,
+        41644,
+        23788,
+        22876,
+        24685,
+        30682,
+        13144,
+        8723
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 73323,
+        "SE-AB": 50521,
+        "SE-M": 44344,
+        "SE-H": 33856,
+        "SE-C": 30700,
+        "SE-D": 23366,
+        "SE-E": 20900,
+        "SE-N": 19067,
+        "SE-F": 17963,
+        "SE-T": 13880,
+        "SE-G": 9426,
+        "SE-W": 9054,
+        "SE-S": 8476,
+        "SE-I": 8476,
+        "SE-AC": 8116,
+        "SE-U": 7547,
+        "SE-X": 7385,
+        "SE-Y": 5037,
+        "SE-K": 4758,
+        "SE-BD": 4587,
+        "SE-Z": 2740
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

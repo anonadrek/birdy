@@ -1,0 +1,204 @@
+{
+  "qid": "Q104867606",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "hoksangare",
+    "en": "barred-warbler"
+  },
+  "names": {
+    "sv": "Höksångare",
+    "en": "Barred Warbler",
+    "scientific": "Curruca nisoria"
+  },
+  "family": {
+    "latin": "Sylviidae",
+    "sv": "Sylvior"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": false,
+    "sound": false
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q104867606/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "fveronesi1",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Barred_Warbler_-_Slovenia_5P5A9614.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q104867606/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "MPF",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2019-10-16_Barred_Warbler,_St_Mary's_Island,_Northumberland_1.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q104867606/voice.mp3",
+    "durationSec": 7,
+    "trimmed": false,
+    "author": "Natura Saxonia",
+    "license": "CC0",
+    "licenseUrl": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Curruca_nisoria.ogg",
+    "sha256": "dbb482a8de3e46a60d8c9397ce576844d34c188069b366106e13ec054bebd2af"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Höksångare",
+      "revision": "59400818"
+    },
+    "en": {
+      "title": "Barred warbler",
+      "revision": "1360736333"
+    },
+    "de": {
+      "title": "Sperbergrasmücke",
+      "revision": "258063158"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 10983621,
+    "totalReports": 303,
+    "months": [
+      0,
+      0,
+      0,
+      0,
+      45,
+      40,
+      20,
+      100,
+      40,
+      10,
+      2,
+      0
+    ],
+    "counties": {
+      "SE-K": 42,
+      "SE-W": 4,
+      "SE-X": 5,
+      "SE-I": 100,
+      "SE-N": 3,
+      "SE-Z": 0,
+      "SE-F": 2,
+      "SE-H": 10,
+      "SE-G": 6,
+      "SE-BD": 0,
+      "SE-T": 9,
+      "SE-E": 0,
+      "SE-M": 2,
+      "SE-D": 0,
+      "SE-AB": 6,
+      "SE-C": 1,
+      "SE-S": 3,
+      "SE-AC": 4,
+      "SE-Y": 5,
+      "SE-U": 0,
+      "SE-O": 3
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i augusti.",
+        "Nästan aldrig i oktober till april.",
+        "Vanligast i rapporterna från Gotland, Blekinge och Kalmar."
+      ],
+      "en": [
+        "Reported most in August.",
+        "Almost never in October to April.",
+        "Most common in reports from Gotland, Blekinge and Kalmar."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        0,
+        0,
+        92,
+        47,
+        17,
+        95,
+        41,
+        10,
+        1,
+        0
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-I": 83,
+        "SE-H": 30,
+        "SE-AB": 25,
+        "SE-K": 18,
+        "SE-O": 17,
+        "SE-T": 11,
+        "SE-M": 9,
+        "SE-N": 6,
+        "SE-AC": 5,
+        "SE-G": 5,
+        "SE-W": 4,
+        "SE-X": 4,
+        "SE-C": 3,
+        "SE-S": 3,
+        "SE-Y": 3,
+        "SE-F": 3
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

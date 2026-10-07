@@ -1,0 +1,207 @@
+{
+  "qid": "Q18847",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "rorhona",
+    "en": "common-moorhen"
+  },
+  "names": {
+    "sv": "Rörhöna",
+    "en": "Common Moorhen",
+    "scientific": "Gallinula chloropus"
+  },
+  "family": {
+    "latin": "Rallidae",
+    "sv": "Rallar"
+  },
+  "group": "cranes_rails",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q18847/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_moorhen_(Gallinula_chloropus).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q18847/extra.webp",
+      "width": 1200,
+      "height": 845,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_moorhen_(Gallinula_chloropus)_France.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q18847/voice.mp3",
+    "durationSec": 9,
+    "trimmed": false,
+    "author": "Joost van Bruggen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gallinula_chloropus_-_Common_Moorhen_XC432931.mp3",
+    "sha256": "bbf6f092821f0a62477b42e8139e54f7ec84da9a9651fe026020211d695b7b5e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Rörhöna",
+      "revision": "59703119"
+    },
+    "en": {
+      "title": "Common moorhen",
+      "revision": "1373419751"
+    },
+    "de": {
+      "title": "Teichralle",
+      "revision": "269380512"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 5228199,
+    "totalReports": 127628,
+    "months": [
+      95,
+      72,
+      40,
+      85,
+      70,
+      71,
+      100,
+      93,
+      74,
+      58,
+      61,
+      85
+    ],
+    "counties": {
+      "SE-K": 29,
+      "SE-W": 27,
+      "SE-X": 28,
+      "SE-I": 24,
+      "SE-N": 67,
+      "SE-Z": 1,
+      "SE-F": 100,
+      "SE-H": 39,
+      "SE-G": 49,
+      "SE-BD": 1,
+      "SE-T": 53,
+      "SE-E": 62,
+      "SE-M": 71,
+      "SE-D": 71,
+      "SE-AB": 80,
+      "SE-C": 73,
+      "SE-S": 18,
+      "SE-AC": 10,
+      "SE-Y": 5,
+      "SE-U": 53,
+      "SE-O": 65
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Jönköping, Stockholm och Uppsala."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Jönköping, Stockholm and Uppsala."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        11235,
+        5808,
+        6060,
+        19762,
+        19615,
+        11492,
+        11930,
+        12162,
+        10547,
+        7976,
+        4737,
+        5251
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 22858,
+        "SE-AB": 19868,
+        "SE-M": 18730,
+        "SE-C": 9708,
+        "SE-F": 9707,
+        "SE-D": 7720,
+        "SE-H": 7330,
+        "SE-N": 7273,
+        "SE-E": 5997,
+        "SE-T": 3693,
+        "SE-U": 2809,
+        "SE-G": 2577,
+        "SE-W": 1599,
+        "SE-X": 1359,
+        "SE-I": 1210,
+        "SE-S": 950,
+        "SE-AC": 792,
+        "SE-K": 730,
+        "SE-Y": 181,
+        "SE-BD": 85,
+        "SE-Z": 32
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

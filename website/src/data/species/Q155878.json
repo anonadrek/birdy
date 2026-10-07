@@ -1,0 +1,207 @@
+{
+  "qid": "Q155878",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "orre",
+    "en": "black-grouse"
+  },
+  "names": {
+    "sv": "Orre",
+    "en": "Black Grouse",
+    "scientific": "Lyrurus tetrix"
+  },
+  "family": {
+    "latin": "Phasianidae",
+    "sv": "Fälthöns"
+  },
+  "group": "gamebirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": false
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q155878/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Spjutkastare",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Orrtuppen.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q155878/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Spjutkastare",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Orrtupp.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q155878/voice.mp3",
+    "durationSec": 4,
+    "trimmed": false,
+    "author": "Carl Steinbeißer",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Black_grouse_-_rolling_and_hissing_sounds.ogg",
+    "sha256": "b228ec7fc709874b1e85b8f491e78edada0509082ed0c56f6c7f86ba6531ff44"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Orre",
+      "revision": "59691878"
+    },
+    "en": {
+      "title": "Black grouse",
+      "revision": "1371788242"
+    },
+    "de": {
+      "title": "Birkhuhn",
+      "revision": "269264612"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2473682,
+    "totalReports": 72084,
+    "months": [
+      71,
+      78,
+      70,
+      100,
+      57,
+      38,
+      16,
+      15,
+      31,
+      37,
+      61,
+      74
+    ],
+    "counties": {
+      "SE-K": 2,
+      "SE-W": 59,
+      "SE-X": 56,
+      "SE-I": 1,
+      "SE-N": 8,
+      "SE-Z": 100,
+      "SE-F": 30,
+      "SE-H": 7,
+      "SE-G": 53,
+      "SE-BD": 74,
+      "SE-T": 40,
+      "SE-E": 13,
+      "SE-M": 1,
+      "SE-D": 7,
+      "SE-AB": 1,
+      "SE-C": 24,
+      "SE-S": 42,
+      "SE-AC": 69,
+      "SE-Y": 60,
+      "SE-U": 57,
+      "SE-O": 13
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april.",
+        "Vanligast i rapporterna från Jämtland, Norrbotten och Västerbotten."
+      ],
+      "en": [
+        "Reported most in April.",
+        "Most common in reports from Jämtland, Norrbotten and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        6382,
+        4816,
+        8097,
+        17780,
+        12128,
+        4683,
+        1444,
+        1489,
+        3410,
+        3923,
+        3655,
+        3540
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-AC": 8092,
+        "SE-O": 6844,
+        "SE-BD": 6579,
+        "SE-W": 5191,
+        "SE-Z": 4945,
+        "SE-C": 4583,
+        "SE-U": 4419,
+        "SE-F": 4288,
+        "SE-T": 4040,
+        "SE-X": 3990,
+        "SE-G": 3978,
+        "SE-S": 3227,
+        "SE-Y": 3135,
+        "SE-H": 2040,
+        "SE-E": 1900,
+        "SE-N": 1278,
+        "SE-D": 1166,
+        "SE-AB": 530,
+        "SE-M": 478,
+        "SE-I": 85,
+        "SE-K": 56
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

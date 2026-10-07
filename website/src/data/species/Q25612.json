@@ -1,0 +1,207 @@
+{
+  "qid": "Q25612",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "sangsvan",
+    "en": "whooper-swan"
+  },
+  "names": {
+    "sv": "Sångsvan",
+    "en": "Whooper Swan",
+    "scientific": "Cygnus cygnus"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Egentliga andfåglar"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25612/hero.webp",
+      "width": 1600,
+      "height": 1456,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cygnus_cygnus_Reykjavik_20120623_04.JPG"
+    },
+    {
+      "role": "extra",
+      "file": "Q25612/extra.webp",
+      "width": 1200,
+      "height": 1567,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cygnus_cygnus_Oulu_20170417_02.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25612/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Olivier Grimm",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cygnus_cygnus_-_Whooper_Swan_XC561008.mp3",
+    "sha256": "a96ff7facb442d43c9ec4ea1a214c466f01011b0f541373dc8902efb9b303285"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Sångsvan",
+      "revision": "59703253"
+    },
+    "en": {
+      "title": "Whooper swan",
+      "revision": "1366800487"
+    },
+    "de": {
+      "title": "Singschwan",
+      "revision": "265348203"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2498347,
+    "totalReports": 565877,
+    "months": [
+      71,
+      91,
+      100,
+      45,
+      27,
+      24,
+      16,
+      17,
+      25,
+      38,
+      94,
+      85
+    ],
+    "counties": {
+      "SE-K": 26,
+      "SE-W": 88,
+      "SE-X": 76,
+      "SE-I": 30,
+      "SE-N": 34,
+      "SE-Z": 58,
+      "SE-F": 86,
+      "SE-H": 34,
+      "SE-G": 84,
+      "SE-BD": 100,
+      "SE-T": 83,
+      "SE-E": 65,
+      "SE-M": 25,
+      "SE-D": 74,
+      "SE-AB": 60,
+      "SE-C": 58,
+      "SE-S": 75,
+      "SE-AC": 70,
+      "SE-Y": 77,
+      "SE-U": 92,
+      "SE-O": 54
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i februari, mars, november och december.",
+        "Vanligast i rapporterna från Norrbotten, Västmanland och Dalarna."
+      ],
+      "en": [
+        "Reported most in February, March, November and December.",
+        "Most common in reports from Norrbotten, Västmanland and Dalarna."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        60298,
+        53618,
+        108506,
+        76221,
+        54003,
+        27639,
+        13832,
+        16463,
+        25771,
+        37433,
+        52858,
+        38361
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 78251,
+        "SE-AB": 61439,
+        "SE-F": 34426,
+        "SE-D": 33151,
+        "SE-C": 31815,
+        "SE-M": 26953,
+        "SE-H": 26260,
+        "SE-E": 26151,
+        "SE-BD": 25232,
+        "SE-T": 23701,
+        "SE-AC": 23175,
+        "SE-W": 21707,
+        "SE-U": 20167,
+        "SE-G": 18052,
+        "SE-S": 16559,
+        "SE-N": 15466,
+        "SE-X": 15230,
+        "SE-Y": 11483,
+        "SE-Z": 8173,
+        "SE-I": 6195,
+        "SE-K": 2711
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "qid": "Q26407",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "fjallvrak",
+    "en": "rough-legged-buzzard"
+  },
+  "names": {
+    "sv": "Fjällvråk",
+    "en": "Rough-legged Buzzard",
+    "scientific": "Buteo lagopus"
+  },
+  "family": {
+    "latin": "Accipitridae",
+    "sv": "Hökar"
+  },
+  "group": "raptors",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26407/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "David A Mitchell",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Buteo_lagopus_(45356696964).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26407/extra.webp",
+      "width": 1200,
+      "height": 799,
+      "author": "David A Mitchell",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Buteo_lagopus_(46030903972).jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Fjällvråk",
+      "revision": "59200674"
+    },
+    "en": {
+      "title": "Rough-legged buzzard",
+      "revision": "1368889176"
+    },
+    "de": {
+      "title": "Raufußbussard",
+      "revision": "254845170"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2480524,
+    "totalReports": 152130,
+    "months": [
+      80,
+      82,
+      50,
+      30,
+      6,
+      5,
+      5,
+      5,
+      38,
+      100,
+      77,
+      78
+    ],
+    "counties": {
+      "SE-K": 28,
+      "SE-W": 46,
+      "SE-X": 22,
+      "SE-I": 18,
+      "SE-N": 38,
+      "SE-Z": 66,
+      "SE-F": 30,
+      "SE-H": 50,
+      "SE-G": 21,
+      "SE-BD": 45,
+      "SE-T": 80,
+      "SE-E": 52,
+      "SE-M": 32,
+      "SE-D": 70,
+      "SE-AB": 47,
+      "SE-C": 72,
+      "SE-S": 52,
+      "SE-AC": 41,
+      "SE-Y": 31,
+      "SE-U": 100,
+      "SE-O": 35
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i januari, februari och oktober.",
+        "Nästan aldrig i maj till augusti.",
+        "Vanligast i rapporterna från Västmanland, Örebro och Uppsala."
+      ],
+      "en": [
+        "Reported most in January, February and October.",
+        "Almost never in May to August.",
+        "Most common in reports from Västmanland, Örebro and Uppsala."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        22269,
+        15696,
+        17567,
+        16547,
+        4182,
+        1888,
+        1467,
+        1441,
+        12897,
+        32356,
+        13990,
+        11447
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 18231,
+        "SE-AB": 16983,
+        "SE-C": 13917,
+        "SE-H": 13861,
+        "SE-M": 12478,
+        "SE-D": 11190,
+        "SE-T": 8113,
+        "SE-U": 7815,
+        "SE-E": 7496,
+        "SE-N": 6146,
+        "SE-AC": 4825,
+        "SE-F": 4328,
+        "SE-W": 4097,
+        "SE-S": 4084,
+        "SE-BD": 4006,
+        "SE-Z": 3283,
+        "SE-Y": 1660,
+        "SE-G": 1620,
+        "SE-X": 1547,
+        "SE-I": 1324,
+        "SE-K": 1050
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

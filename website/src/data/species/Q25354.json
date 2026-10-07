@@ -1,0 +1,207 @@
+{
+  "qid": "Q25354",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "notskrika",
+    "en": "eurasian-jay"
+  },
+  "names": {
+    "sv": "Nötskrika",
+    "en": "Eurasian Jay",
+    "scientific": "Garrulus glandarius"
+  },
+  "family": {
+    "latin": "Corvidae",
+    "sv": "Kråkfåglar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25354/hero.webp",
+      "width": 1600,
+      "height": 1093,
+      "author": "Luc Viatour",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Garrulus_glandarius_1_Luc_Viatour.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25354/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Klaaschwotzer",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Garrulus_glandarius_4.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25354/voice.mp3",
+    "durationSec": 13,
+    "trimmed": false,
+    "author": "Vladimir Yu. Arkhipov, Arkhivov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Garrulus_glandarius_iphigenia.ogg",
+    "sha256": "2e297cc66ed62c5507f5815f1157a984e22ba5e36fa58e98ce13a546042f1097"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Nötskrika",
+      "revision": "59269248"
+    },
+    "en": {
+      "title": "Eurasian jay",
+      "revision": "1366136298"
+    },
+    "de": {
+      "title": "Eichelhäher",
+      "revision": "271093663"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 5229493,
+    "totalReports": 253967,
+    "months": [
+      92,
+      64,
+      41,
+      26,
+      19,
+      18,
+      18,
+      23,
+      59,
+      76,
+      100,
+      92
+    ],
+    "counties": {
+      "SE-K": 36,
+      "SE-W": 55,
+      "SE-X": 62,
+      "SE-I": 43,
+      "SE-N": 23,
+      "SE-Z": 69,
+      "SE-F": 65,
+      "SE-H": 25,
+      "SE-G": 63,
+      "SE-BD": 100,
+      "SE-T": 53,
+      "SE-E": 42,
+      "SE-M": 21,
+      "SE-D": 59,
+      "SE-AB": 76,
+      "SE-C": 45,
+      "SE-S": 57,
+      "SE-AC": 70,
+      "SE-Y": 79,
+      "SE-U": 49,
+      "SE-O": 58
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november till januari.",
+        "Vanligast i rapporterna från Norrbotten, Västernorrland och Stockholm."
+      ],
+      "en": [
+        "Reported most in November to January.",
+        "Most common in reports from Norrbotten, Västernorrland and Stockholm."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        37366,
+        17841,
+        21169,
+        20884,
+        17703,
+        9919,
+        7545,
+        10193,
+        28951,
+        35973,
+        26695,
+        19638
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 44639,
+        "SE-AB": 41273,
+        "SE-D": 14152,
+        "SE-F": 13707,
+        "SE-BD": 13374,
+        "SE-C": 12982,
+        "SE-AC": 12324,
+        "SE-M": 11941,
+        "SE-H": 10443,
+        "SE-E": 8900,
+        "SE-T": 8034,
+        "SE-W": 7243,
+        "SE-G": 7137,
+        "SE-X": 6656,
+        "SE-S": 6623,
+        "SE-Y": 6212,
+        "SE-U": 5743,
+        "SE-N": 5358,
+        "SE-Z": 5120,
+        "SE-I": 4621,
+        "SE-K": 2002
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

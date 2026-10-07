@@ -1,0 +1,195 @@
+{
+  "qid": "Q21062",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "sillgrissla",
+    "en": "common-murre"
+  },
+  "names": {
+    "sv": "Sillgrissla",
+    "en": "Common Murre",
+    "scientific": "Uria aalge"
+  },
+  "family": {
+    "latin": "Alcidae",
+    "sv": "Alkor"
+  },
+  "group": "auks",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q21062/hero.webp",
+      "width": 1600,
+      "height": 1064,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_guillemot_(Uria_aalge).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q21062/extra.webp",
+      "width": 1200,
+      "height": 798,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_guillemot_(Uria_aalge),_Heligoland.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Sillgrissla",
+      "revision": "59461284"
+    },
+    "en": {
+      "title": "Common murre",
+      "revision": "1362495741"
+    },
+    "de": {
+      "title": "Trottellumme",
+      "revision": "266320101"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2481342,
+    "totalReports": 68829,
+    "months": [
+      12,
+      18,
+      5,
+      6,
+      11,
+      18,
+      100,
+      4,
+      10,
+      33,
+      36,
+      16
+    ],
+    "counties": {
+      "SE-K": 4,
+      "SE-W": 1,
+      "SE-X": 1,
+      "SE-I": 100,
+      "SE-N": 14,
+      "SE-Z": 0,
+      "SE-F": 0,
+      "SE-H": 8,
+      "SE-G": 1,
+      "SE-BD": 1,
+      "SE-T": 0,
+      "SE-E": 1,
+      "SE-M": 7,
+      "SE-D": 1,
+      "SE-AB": 2,
+      "SE-C": 1,
+      "SE-S": 1,
+      "SE-AC": 1,
+      "SE-Y": 1,
+      "SE-U": 0,
+      "SE-O": 6
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juli.",
+        "Nästan aldrig i mars, april, augusti och september.",
+        "Vanligast i rapporterna från Gotland, Halland och Kalmar."
+      ],
+      "en": [
+        "Reported most in July.",
+        "Almost never in March, April, August and September.",
+        "Most common in reports from Gotland, Halland and Kalmar."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        3001,
+        2980,
+        1663,
+        2723,
+        6246,
+        6132,
+        24919,
+        992,
+        2900,
+        9354,
+        5770,
+        2101
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-I": 20261,
+        "SE-O": 8127,
+        "SE-M": 7625,
+        "SE-N": 6393,
+        "SE-H": 6236,
+        "SE-AB": 1670,
+        "SE-K": 424,
+        "SE-E": 216,
+        "SE-D": 149,
+        "SE-X": 94,
+        "SE-C": 92,
+        "SE-Y": 51,
+        "SE-AC": 45,
+        "SE-G": 23,
+        "SE-BD": 21,
+        "SE-S": 16,
+        "SE-W": 8
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "qid": "Q203053",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "kustlabb",
+    "en": "parasitic-jaeger"
+  },
+  "names": {
+    "sv": "Kustlabb",
+    "en": "Parasitic Jaeger",
+    "scientific": "Stercorarius parasiticus"
+  },
+  "family": {
+    "latin": "Stercorariidae",
+    "sv": "Labbar"
+  },
+  "group": "gulls_terns",
+  "iucn": "LC",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q203053/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "USFWSAlaska",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Parasitic_jaeger_(51102275755).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q203053/extra.webp",
+      "width": 1200,
+      "height": 825,
+      "author": "Bouke ten Cate",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kleine_jager_-_parasitic_jaeger_-_Stercorarius_parasiticus.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q203053/voice.mp3",
+    "durationSec": 18,
+    "trimmed": false,
+    "author": "Doug Hynes",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stercorarius_parasiticus_-_Parasitic_Jaeger_XC609518.mp3",
+    "sha256": "24fe34454c4d7baeead3cf4baa7e4afec23de27d92cecff71e578e21757a0c54"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Kustlabb",
+      "revision": "59569209"
+    },
+    "en": {
+      "title": "Parasitic jaeger",
+      "revision": "1375885635"
+    },
+    "de": {
+      "title": "Schmarotzerraubmöwe",
+      "revision": "235205709"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2481621,
+    "totalReports": 36150,
+    "months": [
+      0,
+      0,
+      3,
+      28,
+      56,
+      44,
+      84,
+      100,
+      61,
+      21,
+      2,
+      1
+    ],
+    "counties": {
+      "SE-K": 79,
+      "SE-W": 1,
+      "SE-X": 16,
+      "SE-I": 74,
+      "SE-N": 62,
+      "SE-Z": 1,
+      "SE-F": 3,
+      "SE-H": 100,
+      "SE-G": 4,
+      "SE-BD": 46,
+      "SE-T": 2,
+      "SE-E": 13,
+      "SE-M": 36,
+      "SE-D": 12,
+      "SE-AB": 42,
+      "SE-C": 17,
+      "SE-S": 25,
+      "SE-AC": 58,
+      "SE-Y": 21,
+      "SE-U": 1,
+      "SE-O": 22
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juli och augusti.",
+        "Nästan aldrig i november till mars.",
+        "Vanligast i rapporterna från Kalmar, Blekinge och Gotland."
+      ],
+      "en": [
+        "Reported most in July and August.",
+        "Almost never in November to March.",
+        "Most common in reports from Kalmar, Blekinge and Gotland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        287,
+        3672,
+        8678,
+        3975,
+        5546,
+        7267,
+        4821,
+        1576,
+        76,
+        8
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-H": 6144,
+        "SE-AB": 3376,
+        "SE-M": 3081,
+        "SE-O": 2535,
+        "SE-N": 2201,
+        "SE-AC": 1530,
+        "SE-I": 1201,
+        "SE-BD": 925,
+        "SE-C": 731,
+        "SE-K": 659,
+        "SE-S": 435,
+        "SE-D": 433,
+        "SE-E": 400,
+        "SE-X": 252,
+        "SE-Y": 250,
+        "SE-F": 91,
+        "SE-G": 61,
+        "SE-T": 42,
+        "SE-U": 25,
+        "SE-W": 17,
+        "SE-Z": 8
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "qid": "Q159080",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "rorsangare",
+    "en": "common-reed-warbler"
+  },
+  "names": {
+    "sv": "Rörsångare",
+    "en": "Common Reed Warbler",
+    "scientific": "Acrocephalus scirpaceus"
+  },
+  "family": {
+    "latin": "Acrocephalidae",
+    "sv": "Kärrsångare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q159080/hero.webp",
+      "width": 1600,
+      "height": 1714,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_Reed_Warbler_(Acrocephalus_scirpaceus).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q159080/extra.webp",
+      "width": 1200,
+      "height": 963,
+      "author": "gailhampshire",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Reed_Warbler._Acrocephalus_scirpaceus_-_Flickr_-_gailhampshire.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q159080/voice.mp3",
+    "durationSec": 9,
+    "trimmed": false,
+    "author": "Jochem verweij",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Acrocephalus_scirpaceus_-_Eurasian_Reed_Warbler_XC503636.mp3",
+    "sha256": "3b235454ace12a221dc869b0f6a6f92a6b2c469f822a2fda23016ca823411132"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Rörsångare",
+      "revision": "59701616"
+    },
+    "en": {
+      "title": "Common reed warbler",
+      "revision": "1374039650"
+    },
+    "de": {
+      "title": "Teichrohrsänger",
+      "revision": "254334482"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2493118,
+    "totalReports": 182318,
+    "months": [
+      0,
+      0,
+      0,
+      2,
+      53,
+      52,
+      56,
+      100,
+      37,
+      2,
+      1,
+      0
+    ],
+    "counties": {
+      "SE-K": 14,
+      "SE-W": 9,
+      "SE-X": 21,
+      "SE-I": 15,
+      "SE-N": 74,
+      "SE-Z": 1,
+      "SE-F": 43,
+      "SE-H": 35,
+      "SE-G": 19,
+      "SE-BD": 1,
+      "SE-T": 100,
+      "SE-E": 39,
+      "SE-M": 41,
+      "SE-D": 23,
+      "SE-AB": 21,
+      "SE-C": 26,
+      "SE-S": 20,
+      "SE-AC": 1,
+      "SE-Y": 5,
+      "SE-U": 21,
+      "SE-O": 28
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i augusti.",
+        "Nästan aldrig i oktober till april.",
+        "Vanligast i rapporterna från Örebro, Halland och Jönköping."
+      ],
+      "en": [
+        "Reported most in August.",
+        "Almost never in October to April.",
+        "Most common in reports from Örebro, Halland and Jönköping."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        0,
+        1664,
+        54755,
+        31161,
+        25108,
+        48846,
+        19621,
+        1084,
+        2,
+        0
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-M": 26529,
+        "SE-O": 24391,
+        "SE-N": 19737,
+        "SE-T": 17071,
+        "SE-H": 16216,
+        "SE-AB": 12876,
+        "SE-F": 10247,
+        "SE-E": 9295,
+        "SE-C": 8443,
+        "SE-D": 6304,
+        "SE-U": 2782,
+        "SE-S": 2604,
+        "SE-X": 2532,
+        "SE-G": 2397,
+        "SE-I": 1822,
+        "SE-W": 1318,
+        "SE-K": 897,
+        "SE-Y": 434,
+        "SE-AC": 246,
+        "SE-BD": 14,
+        "SE-Z": 9
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

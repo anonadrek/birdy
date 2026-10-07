@@ -1,0 +1,207 @@
+{
+  "qid": "Q193593",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tradkrypare",
+    "en": "eurasian-treecreeper"
+  },
+  "names": {
+    "sv": "Trädkrypare",
+    "en": "Eurasian Treecreeper",
+    "scientific": "Certhia familiaris"
+  },
+  "family": {
+    "latin": "Certhiidae",
+    "sv": "Trädkrypare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q193593/hero.webp",
+      "width": 1600,
+      "height": 2366,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Certhia_familiaris_Rome_20130304.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q193593/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Rory",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Certhia_familiaris_(38141380871).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q193593/voice.mp3",
+    "durationSec": 4,
+    "trimmed": false,
+    "author": "Alexander Kürthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Certhia_familiaris_-_Eurasian_Treecreeper_XC309079.mp3",
+    "sha256": "d2fca1e35147ed9def0c99d7f6a255be9d6383e55e486b487dc5ec57bb45b0d7"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Trädkrypare",
+      "revision": "59705208"
+    },
+    "en": {
+      "title": "Eurasian treecreeper",
+      "revision": "1358318920"
+    },
+    "de": {
+      "title": "Waldbaumläufer",
+      "revision": "251014249"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2487603,
+    "totalReports": 204079,
+    "months": [
+      100,
+      94,
+      71,
+      40,
+      31,
+      25,
+      27,
+      27,
+      44,
+      74,
+      79,
+      87
+    ],
+    "counties": {
+      "SE-K": 77,
+      "SE-W": 68,
+      "SE-X": 85,
+      "SE-I": 55,
+      "SE-N": 38,
+      "SE-Z": 37,
+      "SE-F": 69,
+      "SE-H": 69,
+      "SE-G": 81,
+      "SE-BD": 30,
+      "SE-T": 88,
+      "SE-E": 72,
+      "SE-M": 54,
+      "SE-D": 86,
+      "SE-AB": 100,
+      "SE-C": 78,
+      "SE-S": 85,
+      "SE-AC": 64,
+      "SE-Y": 55,
+      "SE-U": 80,
+      "SE-O": 82
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december till februari.",
+        "Vanligast i rapporterna från Stockholm, Örebro och Södermanland."
+      ],
+      "en": [
+        "Reported most in December to February.",
+        "Most common in reports from Stockholm, Örebro and Södermanland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        27725,
+        17957,
+        25035,
+        22042,
+        20059,
+        9449,
+        7572,
+        8405,
+        14602,
+        23953,
+        14420,
+        12739
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 34697,
+        "SE-AB": 29920,
+        "SE-M": 17030,
+        "SE-H": 15599,
+        "SE-C": 12489,
+        "SE-D": 11391,
+        "SE-E": 8460,
+        "SE-F": 8113,
+        "SE-T": 7416,
+        "SE-AC": 6174,
+        "SE-S": 5500,
+        "SE-U": 5116,
+        "SE-G": 5090,
+        "SE-N": 5061,
+        "SE-X": 5016,
+        "SE-W": 4966,
+        "SE-I": 3306,
+        "SE-Y": 2383,
+        "SE-K": 2378,
+        "SE-BD": 2201,
+        "SE-Z": 1531
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

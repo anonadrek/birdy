@@ -1,0 +1,209 @@
+{
+  "qid": "Q25450",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "stjartand",
+    "en": "northern-pintail"
+  },
+  "names": {
+    "sv": "Stjärtand",
+    "en": "Northern Pintail",
+    "scientific": "Anas acuta"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Egentliga andfåglar"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "EN",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25450/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flock_Of_Northern_Pintail_Ducks_(Anas_acuta).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25450/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Northern_pintail_(Anas_acuta)_2023_01.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25450/voice.mp3",
+    "durationSec": 4,
+    "trimmed": false,
+    "author": "Luis Alvarez Menendez",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anas_acuta_-_Northern_Pintail_XC543138.mp3",
+    "sha256": "8ac5ff13683e8f82d38199d2e5ca7f501b588e8a1f59ad6f01b3c3a3034753c3"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Stjärtand",
+      "revision": "59698282"
+    },
+    "en": {
+      "title": "Northern pintail",
+      "revision": "1368362958"
+    },
+    "de": {
+      "title": "Spießente",
+      "revision": "263923659"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2498112,
+    "totalReports": 125701,
+    "months": [
+      26,
+      33,
+      67,
+      87,
+      30,
+      9,
+      9,
+      39,
+      100,
+      86,
+      40,
+      26
+    ],
+    "counties": {
+      "SE-K": 53,
+      "SE-W": 47,
+      "SE-X": 24,
+      "SE-I": 58,
+      "SE-N": 87,
+      "SE-Z": 25,
+      "SE-F": 42,
+      "SE-H": 89,
+      "SE-G": 43,
+      "SE-BD": 62,
+      "SE-T": 74,
+      "SE-E": 85,
+      "SE-M": 81,
+      "SE-D": 22,
+      "SE-AB": 37,
+      "SE-C": 54,
+      "SE-S": 43,
+      "SE-AC": 56,
+      "SE-Y": 24,
+      "SE-U": 100,
+      "SE-O": 46
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april, september och oktober.",
+        "Nästan aldrig i juni och juli.",
+        "Vanligast i rapporterna från Västmanland, Kalmar och Halland."
+      ],
+      "en": [
+        "Reported most in April, September and October.",
+        "Almost never in June and July.",
+        "Most common in reports from Västmanland, Kalmar and Halland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        4637,
+        4088,
+        15302,
+        30552,
+        12732,
+        2304,
+        1632,
+        7690,
+        21577,
+        17873,
+        4668,
+        2439
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-M": 17202,
+        "SE-H": 13458,
+        "SE-O": 13114,
+        "SE-N": 7696,
+        "SE-AB": 7386,
+        "SE-E": 6722,
+        "SE-C": 5824,
+        "SE-U": 4311,
+        "SE-T": 4156,
+        "SE-AC": 3668,
+        "SE-F": 3304,
+        "SE-BD": 3076,
+        "SE-I": 2340,
+        "SE-W": 2277,
+        "SE-D": 1980,
+        "SE-S": 1850,
+        "SE-G": 1814,
+        "SE-K": 1089,
+        "SE-X": 966,
+        "SE-Y": 710,
+        "SE-Z": 678
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "qid": "Q28106731",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "skedand",
+    "en": "northern-shoveler"
+  },
+  "names": {
+    "sv": "Skedand",
+    "en": "Northern Shoveler",
+    "scientific": "Spatula clypeata"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Egentliga andfåglar"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q28106731/hero.webp",
+      "width": 1600,
+      "height": 1107,
+      "author": "Matti Virtala",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spatula_clypeata_Oulu_Finland_2016-05-07.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q28106731/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Retired electrician",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Moscow,_male_Spatula_clypeata_in_Vodootvodny_Canal,_March_2012_01.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q28106731/voice.mp3",
+    "durationSec": 3,
+    "trimmed": false,
+    "author": "Bubulcus",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Northern_shoveler.ogg",
+    "sha256": "9d9683691be1c173a387e8ea70a764cb10f365e16d50e5324e85670723577c2d"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Skedand",
+      "revision": "59699802"
+    },
+    "en": {
+      "title": "Northern shoveler",
+      "revision": "1356797660"
+    },
+    "de": {
+      "title": "Löffelente",
+      "revision": "266829879"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 8332393,
+    "totalReports": 188724,
+    "months": [
+      6,
+      4,
+      22,
+      100,
+      82,
+      48,
+      34,
+      48,
+      52,
+      52,
+      27,
+      8
+    ],
+    "counties": {
+      "SE-K": 42,
+      "SE-W": 35,
+      "SE-X": 26,
+      "SE-I": 56,
+      "SE-N": 62,
+      "SE-Z": 20,
+      "SE-F": 29,
+      "SE-H": 70,
+      "SE-G": 30,
+      "SE-BD": 18,
+      "SE-T": 59,
+      "SE-E": 67,
+      "SE-M": 64,
+      "SE-D": 29,
+      "SE-AB": 49,
+      "SE-C": 53,
+      "SE-S": 27,
+      "SE-AC": 31,
+      "SE-Y": 22,
+      "SE-U": 100,
+      "SE-O": 27
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april och maj.",
+        "Nästan aldrig i december till februari.",
+        "Vanligast i rapporterna från Västmanland, Kalmar och Östergötland."
+      ],
+      "en": [
+        "Reported most in April and May.",
+        "Almost never in December to February.",
+        "Most common in reports from Västmanland, Kalmar and Östergötland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1442,
+        749,
+        7129,
+        51080,
+        50508,
+        17095,
+        8843,
+        13857,
+        16185,
+        15671,
+        4637,
+        1100
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-M": 27271,
+        "SE-H": 21041,
+        "SE-AB": 19379,
+        "SE-O": 15344,
+        "SE-C": 11344,
+        "SE-N": 10946,
+        "SE-E": 10509,
+        "SE-U": 8579,
+        "SE-T": 6608,
+        "SE-D": 5162,
+        "SE-F": 4575,
+        "SE-I": 4460,
+        "SE-AC": 4007,
+        "SE-W": 3366,
+        "SE-G": 2498,
+        "SE-S": 2310,
+        "SE-X": 2022,
+        "SE-BD": 1787,
+        "SE-K": 1735,
+        "SE-Y": 1302,
+        "SE-Z": 1080
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

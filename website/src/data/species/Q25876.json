@@ -1,0 +1,209 @@
+{
+  "qid": "Q25876",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "larkfalk",
+    "en": "eurasian-hobby"
+  },
+  "names": {
+    "sv": "Lärkfalk",
+    "en": "Eurasian Hobby",
+    "scientific": "Falco subbuteo"
+  },
+  "family": {
+    "latin": "Falconidae",
+    "sv": "Falkfåglar"
+  },
+  "group": "raptors",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25876/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Mike Prince",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_Hobby_(14574008925).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25876/extra.webp",
+      "width": 1198,
+      "height": 1800,
+      "author": "Rodrigo Saldanha de Almeida",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ógea_-_Falco_subbuteo.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25876/voice.mp3",
+    "durationSec": 14,
+    "trimmed": false,
+    "author": "Rafael Suleimanov",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Falco_subbuteo_-_Eurasian_Hobby_XC469763.mp3",
+    "sha256": "128d328ba3304b2a5ac45aac311248899d4b93c4f247c7040230e9ec559367e3"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Lärkfalk",
+      "revision": "59570263"
+    },
+    "en": {
+      "title": "Eurasian hobby",
+      "revision": "1366132077"
+    },
+    "de": {
+      "title": "Baumfalke",
+      "revision": "269714155"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2481035,
+    "totalReports": 122564,
+    "months": [
+      0,
+      0,
+      1,
+      5,
+      49,
+      42,
+      70,
+      100,
+      71,
+      3,
+      1,
+      0
+    ],
+    "counties": {
+      "SE-K": 49,
+      "SE-W": 67,
+      "SE-X": 56,
+      "SE-I": 100,
+      "SE-N": 36,
+      "SE-Z": 21,
+      "SE-F": 66,
+      "SE-H": 83,
+      "SE-G": 67,
+      "SE-BD": 27,
+      "SE-T": 76,
+      "SE-E": 54,
+      "SE-M": 54,
+      "SE-D": 48,
+      "SE-AB": 53,
+      "SE-C": 60,
+      "SE-S": 70,
+      "SE-AC": 31,
+      "SE-Y": 53,
+      "SE-U": 74,
+      "SE-O": 36
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i augusti.",
+        "Nästan aldrig i oktober till april.",
+        "Vanligast i rapporterna från Gotland, Kalmar och Örebro."
+      ],
+      "en": [
+        "Reported most in August.",
+        "Almost never in October to April.",
+        "Most common in reports from Gotland, Kalmar and Örebro."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        1,
+        2547,
+        31142,
+        15427,
+        19093,
+        30050,
+        23185,
+        1048,
+        5,
+        0
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-H": 15096,
+        "SE-M": 13773,
+        "SE-AB": 12780,
+        "SE-O": 12259,
+        "SE-C": 7658,
+        "SE-F": 6164,
+        "SE-E": 5136,
+        "SE-D": 5121,
+        "SE-T": 5070,
+        "SE-I": 4806,
+        "SE-W": 3925,
+        "SE-U": 3821,
+        "SE-N": 3790,
+        "SE-S": 3635,
+        "SE-G": 3364,
+        "SE-X": 2624,
+        "SE-AC": 2382,
+        "SE-Y": 1839,
+        "SE-BD": 1610,
+        "SE-K": 1210,
+        "SE-Z": 690
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

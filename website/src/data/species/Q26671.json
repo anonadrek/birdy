@@ -1,0 +1,209 @@
+{
+  "qid": "Q26671",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tornskata",
+    "en": "red-backed-shrike"
+  },
+  "names": {
+    "sv": "Törnskata",
+    "en": "Red-backed Shrike",
+    "scientific": "Lanius collurio"
+  },
+  "family": {
+    "latin": "Laniidae",
+    "sv": "Törnskator"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26671/hero.webp",
+      "width": 1600,
+      "height": 1601,
+      "author": "Hwbund",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Neuntöter_mit_erbeutetem_Heupferd_im_Geo-Naturpark_Bergstraße-Odenwald_(cropped).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26671/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Romzig",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Neuntöter_Männchen_(Mai_2024).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26671/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Marie-Lan Taÿ Pamart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lanius_collurio_-_Red-backed_Shrike_XC493670.mp3",
+    "sha256": "fd0422bde1c21f083634e9ef26582987887a2944249033b5b14efe512ca77780"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Törnskata",
+      "revision": "59695522"
+    },
+    "en": {
+      "title": "Red-backed shrike",
+      "revision": "1372624498"
+    },
+    "de": {
+      "title": "Neuntöter",
+      "revision": "270950349"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 7745240,
+    "totalReports": 120492,
+    "months": [
+      1,
+      0,
+      0,
+      1,
+      42,
+      48,
+      83,
+      100,
+      21,
+      1,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 84,
+      "SE-W": 46,
+      "SE-X": 34,
+      "SE-I": 87,
+      "SE-N": 37,
+      "SE-Z": 5,
+      "SE-F": 54,
+      "SE-H": 100,
+      "SE-G": 55,
+      "SE-BD": 3,
+      "SE-T": 61,
+      "SE-E": 45,
+      "SE-M": 47,
+      "SE-D": 62,
+      "SE-AB": 65,
+      "SE-C": 46,
+      "SE-S": 41,
+      "SE-AC": 21,
+      "SE-Y": 35,
+      "SE-U": 57,
+      "SE-O": 46
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juli och augusti.",
+        "Nästan aldrig i oktober till april.",
+        "Vanligast i rapporterna från Kalmar, Gotland och Blekinge."
+      ],
+      "en": [
+        "Reported most in July and August.",
+        "Almost never in October to April.",
+        "Most common in reports from Kalmar, Gotland and Blekinge."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1,
+        0,
+        0,
+        109,
+        30812,
+        20446,
+        26043,
+        34566,
+        7900,
+        352,
+        29,
+        2
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-H": 18233,
+        "SE-O": 15828,
+        "SE-AB": 15558,
+        "SE-M": 11956,
+        "SE-D": 6624,
+        "SE-C": 5869,
+        "SE-F": 5096,
+        "SE-E": 4238,
+        "SE-I": 4194,
+        "SE-T": 4138,
+        "SE-N": 3972,
+        "SE-U": 2962,
+        "SE-G": 2773,
+        "SE-W": 2669,
+        "SE-S": 2140,
+        "SE-K": 2081,
+        "SE-AC": 1668,
+        "SE-X": 1618,
+        "SE-Y": 1230,
+        "SE-BD": 197,
+        "SE-Z": 160
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

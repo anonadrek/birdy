@@ -1,0 +1,197 @@
+{
+  "qid": "Q25438",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "havsorn",
+    "en": "white-tailed-eagle"
+  },
+  "names": {
+    "sv": "Havsörn",
+    "en": "White-tailed Eagle",
+    "scientific": "Haliaeetus albicilla"
+  },
+  "family": {
+    "latin": "Accipitridae",
+    "sv": "Hökar"
+  },
+  "group": "raptors",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25438/hero.webp",
+      "width": 1600,
+      "height": 979,
+      "author": "Andreas Weith",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Adult_white-tailed_eagle_(Haliaeetus_albicilla)_of_central_Poland_in_flight_(2).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25438/extra.webp",
+      "width": 1200,
+      "height": 675,
+      "author": "Andreas Weith",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:An_adult_white-tailed_eagle_(Haliaeetus_albicilla)_defending_its_prey.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Havsörn",
+      "revision": "59563848"
+    },
+    "en": {
+      "title": "White-tailed eagle",
+      "revision": "1368918638"
+    },
+    "de": {
+      "title": "Seeadler (Art)",
+      "revision": "268406546"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2480449,
+    "totalReports": 504964,
+    "months": [
+      79,
+      100,
+      77,
+      45,
+      28,
+      21,
+      37,
+      57,
+      67,
+      66,
+      79,
+      83
+    ],
+    "counties": {
+      "SE-K": 55,
+      "SE-W": 31,
+      "SE-X": 53,
+      "SE-I": 70,
+      "SE-N": 51,
+      "SE-Z": 10,
+      "SE-F": 49,
+      "SE-H": 70,
+      "SE-G": 71,
+      "SE-BD": 37,
+      "SE-T": 62,
+      "SE-E": 85,
+      "SE-M": 39,
+      "SE-D": 79,
+      "SE-AB": 68,
+      "SE-C": 62,
+      "SE-S": 61,
+      "SE-AC": 40,
+      "SE-Y": 43,
+      "SE-U": 100,
+      "SE-O": 43
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i februari och december.",
+        "Vanligast i rapporterna från Västmanland, Östergötland och Södermanland."
+      ],
+      "en": [
+        "Reported most in February and December.",
+        "Most common in reports from Västmanland, Östergötland and Södermanland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        50897,
+        44258,
+        63219,
+        56710,
+        42350,
+        18406,
+        24206,
+        40900,
+        52135,
+        49864,
+        33676,
+        28231
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-AB": 60714,
+        "SE-O": 55172,
+        "SE-H": 47772,
+        "SE-M": 36894,
+        "SE-D": 31348,
+        "SE-E": 29926,
+        "SE-C": 29810,
+        "SE-N": 19947,
+        "SE-U": 19269,
+        "SE-F": 17278,
+        "SE-T": 15576,
+        "SE-G": 13461,
+        "SE-I": 12500,
+        "SE-S": 11858,
+        "SE-AC": 11540,
+        "SE-X": 9389,
+        "SE-BD": 8107,
+        "SE-W": 6774,
+        "SE-Y": 5603,
+        "SE-K": 5075,
+        "SE-Z": 1215
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "qid": "Q26114",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "morkulla",
+    "en": "eurasian-woodcock"
+  },
+  "names": {
+    "sv": "Morkulla",
+    "en": "Eurasian Woodcock",
+    "scientific": "Scolopax rusticola"
+  },
+  "family": {
+    "latin": "Scolopacidae",
+    "sv": "Snäppor"
+  },
+  "group": "waders",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26114/hero.webp",
+      "width": 1600,
+      "height": 1066,
+      "author": "tcager",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_Woodcock_Scolopax_rusticola,_Sverdlovsky_District,_Perm,_Russia_423261431.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26114/extra.webp",
+      "width": 1200,
+      "height": 871,
+      "author": "Blondinrikard Fröberg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_woodcock,_Scolopax_rusticola,_Morkulla_-_50939378612.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26114/voice.mp3",
+    "durationSec": 6,
+    "trimmed": false,
+    "author": "ChristianSW",
+    "license": "CC0",
+    "licenseUrl": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chocha_perdiz_(Scolopax_rusticola)_y_Mosquitero_com%C3%BAn_(Phylloscopus_collybita).mp3",
+    "sha256": "6a9b0ba2d0b973f7e25b83f4f61fe6ae87978d5f8de791b51e29a29d88c8fe36"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Morkulla",
+      "revision": "59574423"
+    },
+    "en": {
+      "title": "Eurasian woodcock",
+      "revision": "1367878140"
+    },
+    "de": {
+      "title": "Waldschnepfe",
+      "revision": "269765937"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2481700,
+    "totalReports": 95853,
+    "months": [
+      11,
+      15,
+      67,
+      60,
+      60,
+      100,
+      38,
+      6,
+      6,
+      23,
+      33,
+      17
+    ],
+    "counties": {
+      "SE-K": 53,
+      "SE-W": 74,
+      "SE-X": 71,
+      "SE-I": 70,
+      "SE-N": 37,
+      "SE-Z": 100,
+      "SE-F": 65,
+      "SE-H": 57,
+      "SE-G": 98,
+      "SE-BD": 74,
+      "SE-T": 69,
+      "SE-E": 45,
+      "SE-M": 35,
+      "SE-D": 48,
+      "SE-AB": 47,
+      "SE-C": 52,
+      "SE-S": 76,
+      "SE-AC": 79,
+      "SE-Y": 67,
+      "SE-U": 69,
+      "SE-O": 56
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juni.",
+        "Nästan aldrig i augusti och september.",
+        "Vanligast i rapporterna från Jämtland, Kronoberg och Västerbotten."
+      ],
+      "en": [
+        "Reported most in June.",
+        "Almost never in August and September.",
+        "Most common in reports from Jämtland, Kronoberg and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1728,
+        1653,
+        13266,
+        18519,
+        22067,
+        21364,
+        6011,
+        981,
+        1171,
+        4169,
+        3393,
+        1415
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 14749,
+        "SE-AB": 8714,
+        "SE-H": 7980,
+        "SE-M": 6831,
+        "SE-C": 5140,
+        "SE-AC": 4758,
+        "SE-F": 4752,
+        "SE-D": 3951,
+        "SE-G": 3848,
+        "SE-T": 3601,
+        "SE-BD": 3403,
+        "SE-W": 3357,
+        "SE-E": 3311,
+        "SE-S": 3032,
+        "SE-N": 2986,
+        "SE-U": 2763,
+        "SE-X": 2613,
+        "SE-I": 2609,
+        "SE-Z": 2554,
+        "SE-Y": 1827,
+        "SE-K": 1005
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

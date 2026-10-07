@@ -1,0 +1,207 @@
+{
+  "qid": "Q26026",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "ringduva",
+    "en": "common-wood-pigeon"
+  },
+  "names": {
+    "sv": "Ringduva",
+    "en": "Common Wood Pigeon",
+    "scientific": "Columba palumbus"
+  },
+  "family": {
+    "latin": "Columbidae",
+    "sv": "Duvor"
+  },
+  "group": "doves",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26026/hero.webp",
+      "width": 1600,
+      "height": 1060,
+      "author": "Ott Rebane",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2018-05-15_Kaelustuvi.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26026/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Аимаина хикари",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Columba_palumbus_Moczydło.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26026/voice.mp3",
+    "durationSec": 12,
+    "trimmed": false,
+    "author": "Oona Räisänen (Mysid)",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Columba_palumbus_birdsong.ogg",
+    "sha256": "aaf7f25693e645d5e9144a118bbd338680393ecd398c5251c436b64d9282efe5"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Ringduva",
+      "revision": "59692692"
+    },
+    "en": {
+      "title": "Common wood pigeon",
+      "revision": "1358214024"
+    },
+    "de": {
+      "title": "Ringeltaube",
+      "revision": "262871775"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2495455,
+    "totalReports": 572062,
+    "months": [
+      45,
+      68,
+      100,
+      82,
+      61,
+      66,
+      70,
+      67,
+      60,
+      48,
+      28,
+      38
+    ],
+    "counties": {
+      "SE-K": 50,
+      "SE-W": 57,
+      "SE-X": 76,
+      "SE-I": 58,
+      "SE-N": 58,
+      "SE-Z": 51,
+      "SE-F": 81,
+      "SE-H": 55,
+      "SE-G": 89,
+      "SE-BD": 50,
+      "SE-T": 57,
+      "SE-E": 87,
+      "SE-M": 79,
+      "SE-D": 99,
+      "SE-AB": 92,
+      "SE-C": 92,
+      "SE-S": 59,
+      "SE-AC": 52,
+      "SE-Y": 57,
+      "SE-U": 63,
+      "SE-O": 100
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i mars och april.",
+        "Vanligast i rapporterna från Västra Götaland, Södermanland och Stockholm."
+      ],
+      "en": [
+        "Reported most in March and April.",
+        "Most common in reports from Västra Götaland, Södermanland and Stockholm."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        27642,
+        28876,
+        78546,
+        100006,
+        88762,
+        55661,
+        43556,
+        45615,
+        44480,
+        34921,
+        11364,
+        12391
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 112542,
+        "SE-AB": 72517,
+        "SE-M": 66039,
+        "SE-C": 38945,
+        "SE-D": 34688,
+        "SE-H": 32922,
+        "SE-E": 27036,
+        "SE-F": 25034,
+        "SE-N": 20393,
+        "SE-G": 14778,
+        "SE-AC": 13422,
+        "SE-T": 12652,
+        "SE-X": 11922,
+        "SE-W": 10978,
+        "SE-U": 10788,
+        "SE-S": 10016,
+        "SE-BD": 9860,
+        "SE-I": 9151,
+        "SE-Y": 6551,
+        "SE-Z": 5599,
+        "SE-K": 4089
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

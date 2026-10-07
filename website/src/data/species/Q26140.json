@@ -1,0 +1,209 @@
+{
+  "qid": "Q26140",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "skogsduva",
+    "en": "stock-dove"
+  },
+  "names": {
+    "sv": "Skogsduva",
+    "en": "Stock Dove",
+    "scientific": "Columba oenas"
+  },
+  "family": {
+    "latin": "Columbidae",
+    "sv": "Duvor"
+  },
+  "group": "doves",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26140/hero.webp",
+      "width": 1600,
+      "height": 1905,
+      "author": "Frank Vassen",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Couple_de_Pigeons_colombin_(Columba_oenas),_Parc_de_Woluwe,_Bruxelles_(51978316920).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26140/extra.webp",
+      "width": 1200,
+      "height": 852,
+      "author": "Frank Vassen",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pigeon_colombin_(Columba_oenas),_Parc_de_Woluwe,_Bruxelles_(52843953909).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26140/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Hannu Varkki",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Columba_oenas_-_Stock_Dove_XC489891.mp3",
+    "sha256": "7835f40d6cb74da2ecca708e76a7d03faab338a78f8a41d4076227eefe7a80de"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Skogsduva",
+      "revision": "58537196"
+    },
+    "en": {
+      "title": "Stock dove",
+      "revision": "1345924661"
+    },
+    "de": {
+      "title": "Hohltaube",
+      "revision": "257057688"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2495471,
+    "totalReports": 166247,
+    "months": [
+      12,
+      52,
+      100,
+      64,
+      48,
+      40,
+      45,
+      47,
+      40,
+      32,
+      11,
+      8
+    ],
+    "counties": {
+      "SE-K": 54,
+      "SE-W": 52,
+      "SE-X": 37,
+      "SE-I": 87,
+      "SE-N": 37,
+      "SE-Z": 6,
+      "SE-F": 37,
+      "SE-H": 66,
+      "SE-G": 72,
+      "SE-BD": 20,
+      "SE-T": 54,
+      "SE-E": 43,
+      "SE-M": 64,
+      "SE-D": 71,
+      "SE-AB": 100,
+      "SE-C": 65,
+      "SE-S": 47,
+      "SE-AC": 21,
+      "SE-Y": 20,
+      "SE-U": 61,
+      "SE-O": 39
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i mars.",
+        "Nästan aldrig i december.",
+        "Vanligast i rapporterna från Stockholm, Gotland och Kronoberg."
+      ],
+      "en": [
+        "Reported most in March.",
+        "Almost never in December.",
+        "Most common in reports from Stockholm, Gotland and Kronoberg."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        2916,
+        8952,
+        31764,
+        31488,
+        28559,
+        13774,
+        11273,
+        12869,
+        12158,
+        9357,
+        1780,
+        1037
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-AB": 31870,
+        "SE-M": 21579,
+        "SE-O": 17765,
+        "SE-H": 15944,
+        "SE-C": 11138,
+        "SE-D": 9974,
+        "SE-I": 5534,
+        "SE-E": 5346,
+        "SE-N": 5165,
+        "SE-T": 4850,
+        "SE-G": 4837,
+        "SE-F": 4689,
+        "SE-U": 4149,
+        "SE-W": 4063,
+        "SE-S": 3262,
+        "SE-X": 2339,
+        "SE-AC": 2152,
+        "SE-K": 1785,
+        "SE-BD": 1615,
+        "SE-Y": 931,
+        "SE-Z": 252
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

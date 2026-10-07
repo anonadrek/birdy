@@ -1,0 +1,207 @@
+{
+  "qid": "Q188877",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "bergfink",
+    "en": "brambling"
+  },
+  "names": {
+    "sv": "Bergfink",
+    "en": "Brambling",
+    "scientific": "Fringilla montifringilla"
+  },
+  "family": {
+    "latin": "Fringillidae",
+    "sv": "Finkar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q188877/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brambling_(Fringilla_montifringilla)_2021.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q188877/extra.webp",
+      "width": 1200,
+      "height": 811,
+      "author": "Kev Chapman",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fringilla_montifringilla_-England_-male-8_(3).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q188877/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Alexander Kurthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fringilla_montifringilla_-_Brambling_XC108349.mp3",
+    "sha256": "c1eb1c8a07a5d6c6aa204b4d7badd8bd5ab7bcee6b4af1f4e41b3907ee89a8ba"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Bergfink",
+      "revision": "59480436"
+    },
+    "en": {
+      "title": "Brambling",
+      "revision": "1361349499"
+    },
+    "de": {
+      "title": "Bergfink",
+      "revision": "267087288"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2494441,
+    "totalReports": 278698,
+    "months": [
+      64,
+      53,
+      37,
+      52,
+      18,
+      29,
+      16,
+      53,
+      100,
+      92,
+      62,
+      78
+    ],
+    "counties": {
+      "SE-K": 34,
+      "SE-W": 39,
+      "SE-X": 21,
+      "SE-I": 17,
+      "SE-N": 14,
+      "SE-Z": 55,
+      "SE-F": 21,
+      "SE-H": 13,
+      "SE-G": 25,
+      "SE-BD": 86,
+      "SE-T": 19,
+      "SE-E": 12,
+      "SE-M": 15,
+      "SE-D": 13,
+      "SE-AB": 11,
+      "SE-C": 11,
+      "SE-S": 23,
+      "SE-AC": 100,
+      "SE-Y": 41,
+      "SE-U": 16,
+      "SE-O": 20
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september och oktober.",
+        "Vanligast i rapporterna från Västerbotten, Norrbotten och Jämtland."
+      ],
+      "en": [
+        "Reported most in September and October.",
+        "Most common in reports from Västerbotten, Norrbotten and Jämtland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        24817,
+        14010,
+        17972,
+        39685,
+        16658,
+        15315,
+        6160,
+        22566,
+        46704,
+        41538,
+        15792,
+        15904
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-AC": 41647,
+        "SE-O": 36049,
+        "SE-BD": 27276,
+        "SE-M": 19823,
+        "SE-AB": 14538,
+        "SE-H": 12859,
+        "SE-W": 12071,
+        "SE-F": 10516,
+        "SE-Z": 9641,
+        "SE-N": 7718,
+        "SE-C": 7706,
+        "SE-Y": 7636,
+        "SE-D": 7209,
+        "SE-G": 6846,
+        "SE-T": 6785,
+        "SE-S": 6401,
+        "SE-E": 6018,
+        "SE-X": 5388,
+        "SE-K": 4556,
+        "SE-U": 4504,
+        "SE-I": 4269
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "qid": "Q25709",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "rordrom",
+    "en": "eurasian-bittern"
+  },
+  "names": {
+    "sv": "Rördrom",
+    "en": "Eurasian Bittern",
+    "scientific": "Botaurus stellaris"
+  },
+  "family": {
+    "latin": "Ardeidae",
+    "sv": "Hägrar"
+  },
+  "group": "herons_storks",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25709/hero.webp",
+      "width": 1600,
+      "height": 1109,
+      "author": "caroline legg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bittern_(M)_-_Botaurus_stellaris_(52911849783).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25709/extra.webp",
+      "width": 1200,
+      "height": 801,
+      "author": "Jo Garbutt",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Botaurus_stellaris_-Minsmere_RSPB_reserve,_Suffolk,_England-8.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25709/voice.mp3",
+    "durationSec": 14,
+    "trimmed": false,
+    "author": "Miro Demko",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Botaurus_stellaris_-_Eurasian_Bittern_XC362697.mp3",
+    "sha256": "ecf2b874c12fe2ca4c7a9bd4837702c1dce91bf9676d62eb7b97959e146f363e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Rördrom",
+      "revision": "59481698"
+    },
+    "en": {
+      "title": "Eurasian bittern",
+      "revision": "1376023720"
+    },
+    "de": {
+      "title": "Rohrdommel",
+      "revision": "267377467"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2480910,
+    "totalReports": 68771,
+    "months": [
+      7,
+      18,
+      48,
+      100,
+      90,
+      49,
+      6,
+      2,
+      2,
+      2,
+      3,
+      7
+    ],
+    "counties": {
+      "SE-K": 4,
+      "SE-W": 41,
+      "SE-X": 37,
+      "SE-I": 24,
+      "SE-N": 5,
+      "SE-Z": 1,
+      "SE-F": 37,
+      "SE-H": 10,
+      "SE-G": 31,
+      "SE-BD": 8,
+      "SE-T": 83,
+      "SE-E": 73,
+      "SE-M": 20,
+      "SE-D": 67,
+      "SE-AB": 38,
+      "SE-C": 76,
+      "SE-S": 100,
+      "SE-AC": 1,
+      "SE-Y": 21,
+      "SE-U": 93,
+      "SE-O": 31
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april och maj.",
+        "Nästan aldrig i juli till januari.",
+        "Vanligast i rapporterna från Värmland, Västmanland och Örebro."
+      ],
+      "en": [
+        "Reported most in April and May.",
+        "Almost never in July to January.",
+        "Most common in reports from Värmland, Västmanland and Örebro."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        832,
+        1423,
+        7144,
+        22807,
+        24658,
+        7771,
+        697,
+        278,
+        240,
+        205,
+        238,
+        452
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 9040,
+        "SE-C": 8426,
+        "SE-AB": 7957,
+        "SE-D": 6126,
+        "SE-E": 5917,
+        "SE-T": 4844,
+        "SE-S": 4482,
+        "SE-M": 4322,
+        "SE-U": 4157,
+        "SE-F": 3016,
+        "SE-W": 2088,
+        "SE-H": 1591,
+        "SE-X": 1515,
+        "SE-G": 1337,
+        "SE-I": 997,
+        "SE-Y": 640,
+        "SE-N": 479,
+        "SE-BD": 426,
+        "SE-K": 87,
+        "SE-AC": 73,
+        "SE-Z": 2
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

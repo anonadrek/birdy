@@ -1,0 +1,206 @@
+{
+  "qid": "Q182761",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "jarpe",
+    "en": "hazel-grouse"
+  },
+  "names": {
+    "sv": "Järpe",
+    "en": "Hazel Grouse",
+    "scientific": "Tetrastes bonasia"
+  },
+  "family": {
+    "latin": "Phasianidae",
+    "sv": "Skogshöns"
+  },
+  "group": "gamebirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q182761/hero.webp",
+      "width": 1600,
+      "height": 1199,
+      "author": "Antti Latikka",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tetrastes_bonasia_277462364.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q182761/extra.webp",
+      "width": 1200,
+      "height": 861,
+      "author": "Lukas Kott",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fantom_Beskyd.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q182761/voice.mp3",
+    "durationSec": 5,
+    "trimmed": false,
+    "author": "SanoAK: Alexander Kürthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CallHazelGrouseSlovakia.ogg",
+    "sha256": "30afb79f8f2806889b22654ea2f53c32cb3fd1c0ba266ee9357a4bee3a42f6fb"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Järpe",
+      "revision": "59227939"
+    },
+    "en": {
+      "title": "Hazel grouse",
+      "revision": "1369288162"
+    },
+    "de": {
+      "title": "Haselhuhn",
+      "revision": "270231052"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2473663,
+    "totalReports": 28918,
+    "months": [
+      60,
+      69,
+      56,
+      52,
+      45,
+      60,
+      57,
+      39,
+      65,
+      82,
+      100,
+      85
+    ],
+    "counties": {
+      "SE-K": 2,
+      "SE-W": 37,
+      "SE-X": 26,
+      "SE-I": 0,
+      "SE-N": 1,
+      "SE-Z": 87,
+      "SE-F": 8,
+      "SE-H": 3,
+      "SE-G": 2,
+      "SE-BD": 100,
+      "SE-T": 17,
+      "SE-E": 5,
+      "SE-M": 1,
+      "SE-D": 2,
+      "SE-AB": 1,
+      "SE-C": 9,
+      "SE-S": 18,
+      "SE-AC": 92,
+      "SE-Y": 78,
+      "SE-U": 21,
+      "SE-O": 2
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Norrbotten, Västerbotten och Jämtland."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Norrbotten, Västerbotten and Jämtland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        2006,
+        1605,
+        2382,
+        3411,
+        3571,
+        2783,
+        1943,
+        1456,
+        2658,
+        3237,
+        2216,
+        1509
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-AC": 6908,
+        "SE-BD": 5726,
+        "SE-Z": 2768,
+        "SE-Y": 2629,
+        "SE-W": 2099,
+        "SE-X": 1195,
+        "SE-C": 1104,
+        "SE-T": 1083,
+        "SE-U": 1052,
+        "SE-S": 889,
+        "SE-F": 697,
+        "SE-O": 549,
+        "SE-E": 474,
+        "SE-H": 442,
+        "SE-D": 156,
+        "SE-AB": 147,
+        "SE-G": 102,
+        "SE-N": 77,
+        "SE-K": 42,
+        "SE-M": 4
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "qid": "Q20754771",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "grasiska",
+    "en": "redpoll"
+  },
+  "names": {
+    "sv": "Gråsiska",
+    "en": "Redpoll",
+    "scientific": "Acanthis flammea"
+  },
+  "family": {
+    "latin": "Fringillidae",
+    "sv": "Finkar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q20754771/hero.webp",
+      "width": 1600,
+      "height": 2136,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Acanthis_flammea_Oulu_20120507_02.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q20754771/extra.webp",
+      "width": 1200,
+      "height": 1682,
+      "author": "Matti Virtala",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Acanthis_flammea_Oulu_Finland_2020-09-25.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q20754771/voice.mp3",
+    "durationSec": 18,
+    "trimmed": false,
+    "author": "Jonathon Jongsma",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Acanthis_flammea_-_Common_Redpoll_XC118265.ogg",
+    "sha256": "10626db0435029943d9f511ab23a94bffac6a5017149621180073eb074078b1c"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Gråsiska",
+      "revision": "58942312"
+    },
+    "en": {
+      "title": "Redpoll",
+      "revision": "1374724184"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 5231630,
+    "totalReports": 388108,
+    "months": [
+      44,
+      36,
+      16,
+      8,
+      4,
+      6,
+      7,
+      5,
+      24,
+      100,
+      81,
+      49
+    ],
+    "counties": {
+      "SE-K": 31,
+      "SE-W": 25,
+      "SE-X": 38,
+      "SE-I": 12,
+      "SE-N": 13,
+      "SE-Z": 36,
+      "SE-F": 24,
+      "SE-H": 12,
+      "SE-G": 13,
+      "SE-BD": 49,
+      "SE-T": 15,
+      "SE-E": 11,
+      "SE-M": 11,
+      "SE-D": 16,
+      "SE-AB": 22,
+      "SE-C": 17,
+      "SE-S": 100,
+      "SE-AC": 81,
+      "SE-Y": 25,
+      "SE-U": 20,
+      "SE-O": 20
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i oktober och november.",
+        "Nästan aldrig i april till augusti.",
+        "Vanligast i rapporterna från Värmland, Västerbotten och Norrbotten."
+      ],
+      "en": [
+        "Reported most in October and November.",
+        "Almost never in April to August.",
+        "Most common in reports from Värmland, Västerbotten and Norrbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        47602,
+        26280,
+        21366,
+        16834,
+        10363,
+        9393,
+        7623,
+        5601,
+        31490,
+        125652,
+        57349,
+        27993
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 42993,
+        "SE-AC": 40162,
+        "SE-AB": 33435,
+        "SE-S": 33205,
+        "SE-BD": 18809,
+        "SE-M": 17552,
+        "SE-F": 14423,
+        "SE-H": 13963,
+        "SE-C": 13567,
+        "SE-X": 11650,
+        "SE-D": 10943,
+        "SE-W": 9324,
+        "SE-N": 8921,
+        "SE-Z": 7576,
+        "SE-U": 6734,
+        "SE-E": 6441,
+        "SE-T": 6314,
+        "SE-Y": 5621,
+        "SE-K": 4841,
+        "SE-G": 4290,
+        "SE-I": 3741
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

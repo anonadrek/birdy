@@ -1,0 +1,209 @@
+{
+  "qid": "Q26800",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "silvertarna",
+    "en": "arctic-tern"
+  },
+  "names": {
+    "sv": "Silvertärna",
+    "en": "Arctic Tern",
+    "scientific": "Sterna paradisaea"
+  },
+  "family": {
+    "latin": "Laridae",
+    "sv": "Tärnor"
+  },
+  "group": "gulls_terns",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26800/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arctic_tern_(Sterna_paradisaea)_2023_2.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26800/extra.webp",
+      "width": 1200,
+      "height": 838,
+      "author": "Ekaterina Chernetsova (Papchinskaya)",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sterna_paradisaea_(40886787153).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26800/voice.mp3",
+    "durationSec": 12,
+    "trimmed": false,
+    "author": "Doug Hynes",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sterna_paradisaea_-_Arctic_Tern_XC564600.mp3",
+    "sha256": "92eb16ee9beaa786d2764f8881025c95ac548387b7ee34535e97c35bf9fdc90a"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Silvertärna",
+      "revision": "59708819"
+    },
+    "en": {
+      "title": "Arctic tern",
+      "revision": "1374622634"
+    },
+    "de": {
+      "title": "Küstenseeschwalbe",
+      "revision": "266925345"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 5229230,
+    "totalReports": 87663,
+    "months": [
+      1,
+      0,
+      1,
+      20,
+      77,
+      97,
+      100,
+      31,
+      4,
+      3,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 56,
+      "SE-W": 22,
+      "SE-X": 47,
+      "SE-I": 98,
+      "SE-N": 35,
+      "SE-Z": 100,
+      "SE-F": 12,
+      "SE-H": 69,
+      "SE-G": 18,
+      "SE-BD": 74,
+      "SE-T": 9,
+      "SE-E": 16,
+      "SE-M": 25,
+      "SE-D": 15,
+      "SE-AB": 31,
+      "SE-C": 20,
+      "SE-S": 22,
+      "SE-AC": 69,
+      "SE-Y": 51,
+      "SE-U": 12,
+      "SE-O": 12
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juni och juli.",
+        "Nästan aldrig i september till mars.",
+        "Vanligast i rapporterna från Jämtland, Gotland och Norrbotten."
+      ],
+      "en": [
+        "Reported most in June and July.",
+        "Almost never in September to March.",
+        "Most common in reports from Jämtland, Gotland and Norrbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1,
+        0,
+        11,
+        7033,
+        31897,
+        23210,
+        17693,
+        6029,
+        925,
+        586,
+        157,
+        8
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-H": 9973,
+        "SE-AB": 5827,
+        "SE-M": 5030,
+        "SE-AC": 4289,
+        "SE-I": 3754,
+        "SE-BD": 3501,
+        "SE-O": 3344,
+        "SE-N": 2946,
+        "SE-Z": 2626,
+        "SE-C": 1993,
+        "SE-X": 1780,
+        "SE-Y": 1431,
+        "SE-D": 1239,
+        "SE-E": 1205,
+        "SE-K": 1105,
+        "SE-W": 1020,
+        "SE-S": 902,
+        "SE-F": 868,
+        "SE-G": 712,
+        "SE-U": 506,
+        "SE-T": 500
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

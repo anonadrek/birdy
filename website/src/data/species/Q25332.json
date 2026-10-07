@@ -1,0 +1,209 @@
+{
+  "qid": "Q25332",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "fiskgjuse",
+    "en": "osprey"
+  },
+  "names": {
+    "sv": "Fiskgjuse",
+    "en": "Osprey",
+    "scientific": "Pandion haliaetus"
+  },
+  "family": {
+    "latin": "Pandionidae",
+    "sv": "Fiskgjusar"
+  },
+  "group": "raptors",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25332/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "El Golli Mohamed",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Balbuzard_pecheur_Lac_de_Tunis.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25332/extra.webp",
+      "width": 1200,
+      "height": 1200,
+      "author": "Bengt Nyman",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pandion_haliaetus_5950_(16704998543).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25332/voice.mp3",
+    "durationSec": 4,
+    "trimmed": false,
+    "author": "G. McGrane",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Osprey.ogg",
+    "sha256": "01f3d223b3a949cf38f9bd82bac82292b116bbad981c276dd7d6f8e2747bae22"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Fiskgjuse",
+      "revision": "59521723"
+    },
+    "en": {
+      "title": "Osprey",
+      "revision": "1374397946"
+    },
+    "de": {
+      "title": "Fischadler",
+      "revision": "269598970"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2480726,
+    "totalReports": 179616,
+    "months": [
+      1,
+      1,
+      6,
+      74,
+      52,
+      46,
+      80,
+      100,
+      48,
+      4,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 23,
+      "SE-W": 68,
+      "SE-X": 50,
+      "SE-I": 14,
+      "SE-N": 34,
+      "SE-Z": 45,
+      "SE-F": 76,
+      "SE-H": 29,
+      "SE-G": 100,
+      "SE-BD": 34,
+      "SE-T": 74,
+      "SE-E": 60,
+      "SE-M": 43,
+      "SE-D": 58,
+      "SE-AB": 62,
+      "SE-C": 52,
+      "SE-S": 72,
+      "SE-AC": 31,
+      "SE-Y": 42,
+      "SE-U": 75,
+      "SE-O": 64
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juli och augusti.",
+        "Nästan aldrig i oktober till mars.",
+        "Vanligast i rapporterna från Kronoberg, Jönköping och Västmanland."
+      ],
+      "en": [
+        "Reported most in July and August.",
+        "Almost never in October to March.",
+        "Most common in reports from Kronoberg, Jönköping and Västmanland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        3,
+        8,
+        2422,
+        44100,
+        37012,
+        19072,
+        24340,
+        33417,
+        17548,
+        1554,
+        86,
+        2
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 31417,
+        "SE-AB": 21235,
+        "SE-M": 15653,
+        "SE-F": 10209,
+        "SE-C": 9603,
+        "SE-D": 8728,
+        "SE-E": 8085,
+        "SE-H": 7482,
+        "SE-G": 7231,
+        "SE-T": 7069,
+        "SE-W": 5677,
+        "SE-U": 5521,
+        "SE-S": 5326,
+        "SE-N": 5079,
+        "SE-AC": 3420,
+        "SE-X": 3354,
+        "SE-BD": 2852,
+        "SE-Z": 2145,
+        "SE-Y": 2096,
+        "SE-I": 941,
+        "SE-K": 824
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "qid": "Q184825",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "rodvingetrast",
+    "en": "redwing"
+  },
+  "names": {
+    "sv": "Rödvingetrast",
+    "en": "Redwing",
+    "scientific": "Turdus iliacus"
+  },
+  "family": {
+    "latin": "Turdidae",
+    "sv": "Trastar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q184825/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Redwing_(Turdus_iliacus)_2021.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q184825/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Redwing_(Turdus_iliacus)_2022.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q184825/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Vladimir Yu. Arkhipov, Arkhivov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turdus_iliacus.ogg",
+    "sha256": "d83552c7f117d51b232bdd7d6b092bde03caadb99cef882c8aed0d0d6eb5d24e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Rödvingetrast",
+      "revision": "59707541"
+    },
+    "en": {
+      "title": "Redwing",
+      "revision": "1318090248"
+    },
+    "de": {
+      "title": "Rotdrossel",
+      "revision": "267739015"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2490781,
+    "totalReports": 213198,
+    "months": [
+      34,
+      11,
+      34,
+      100,
+      41,
+      62,
+      23,
+      10,
+      28,
+      98,
+      71,
+      69
+    ],
+    "counties": {
+      "SE-K": 19,
+      "SE-W": 51,
+      "SE-X": 53,
+      "SE-I": 17,
+      "SE-N": 14,
+      "SE-Z": 98,
+      "SE-F": 37,
+      "SE-H": 21,
+      "SE-G": 34,
+      "SE-BD": 100,
+      "SE-T": 31,
+      "SE-E": 21,
+      "SE-M": 25,
+      "SE-D": 20,
+      "SE-AB": 32,
+      "SE-C": 29,
+      "SE-S": 39,
+      "SE-AC": 82,
+      "SE-Y": 71,
+      "SE-U": 26,
+      "SE-O": 32
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april och oktober.",
+        "Nästan aldrig i augusti.",
+        "Vanligast i rapporterna från Norrbotten, Jämtland och Västerbotten."
+      ],
+      "en": [
+        "Reported most in April and October.",
+        "Almost never in August.",
+        "Most common in reports from Norrbotten, Jämtland and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        9796,
+        2131,
+        12515,
+        57407,
+        28221,
+        24896,
+        6912,
+        3334,
+        9831,
+        33454,
+        13583,
+        10577
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 30479,
+        "SE-AB": 21195,
+        "SE-AC": 17700,
+        "SE-M": 17432,
+        "SE-BD": 16547,
+        "SE-H": 10637,
+        "SE-C": 10287,
+        "SE-F": 9797,
+        "SE-Z": 8977,
+        "SE-W": 8328,
+        "SE-X": 7044,
+        "SE-Y": 6956,
+        "SE-D": 5919,
+        "SE-T": 5879,
+        "SE-S": 5710,
+        "SE-E": 5555,
+        "SE-G": 4837,
+        "SE-N": 4251,
+        "SE-U": 3698,
+        "SE-I": 2341,
+        "SE-K": 1331
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

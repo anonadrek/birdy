@@ -1,0 +1,207 @@
+{
+  "qid": "Q25761",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "gravand",
+    "en": "common-shelduck"
+  },
+  "names": {
+    "sv": "Gravand",
+    "en": "Common Shelduck",
+    "scientific": "Tadorna tadorna"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Egentliga andfåglar"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25761/hero.webp",
+      "width": 1600,
+      "height": 900,
+      "author": "Tsyganov Sergey",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tadorna_tadorna_Common_Shellduck_Пеганка_в_Санкт-Петербурге_03.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25761/extra.webp",
+      "width": 1200,
+      "height": 842,
+      "author": "Matti Virtala",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tadorna_tadorna_Oulu_Finland_2017-05-03_(2).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25761/voice.mp3",
+    "durationSec": 12,
+    "trimmed": false,
+    "author": "Ryan Hodnett",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_Shelduck_(Tadorna_tadorna)_-_Parc_Natural_de_s%27Albufera,_Spain_2022-04-16.mp3",
+    "sha256": "cace5d1ab6db60909b0c921ef48369375e46b636035d0ac2cf15bf55514a2372"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Gravand",
+      "revision": "57943834"
+    },
+    "en": {
+      "title": "Common shelduck",
+      "revision": "1369667709"
+    },
+    "de": {
+      "title": "Brandgans",
+      "revision": "269708413"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2498009,
+    "totalReports": 158389,
+    "months": [
+      25,
+      100,
+      93,
+      71,
+      65,
+      53,
+      64,
+      42,
+      21,
+      17,
+      15,
+      13
+    ],
+    "counties": {
+      "SE-K": 47,
+      "SE-W": 3,
+      "SE-X": 2,
+      "SE-I": 61,
+      "SE-N": 100,
+      "SE-Z": 2,
+      "SE-F": 13,
+      "SE-H": 58,
+      "SE-G": 3,
+      "SE-BD": 4,
+      "SE-T": 8,
+      "SE-E": 21,
+      "SE-M": 78,
+      "SE-D": 5,
+      "SE-AB": 4,
+      "SE-C": 4,
+      "SE-S": 2,
+      "SE-AC": 2,
+      "SE-Y": 1,
+      "SE-U": 2,
+      "SE-O": 17
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i februari och mars.",
+        "Vanligast i rapporterna från Halland, Skåne och Gotland."
+      ],
+      "en": [
+        "Reported most in February and March.",
+        "Most common in reports from Halland, Skåne and Gotland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        5346,
+        14456,
+        24937,
+        29578,
+        32267,
+        15228,
+        13645,
+        9698,
+        5238,
+        4284,
+        2104,
+        1427
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-M": 39381,
+        "SE-H": 21026,
+        "SE-N": 20891,
+        "SE-O": 11443,
+        "SE-I": 5845,
+        "SE-E": 3910,
+        "SE-F": 2378,
+        "SE-K": 2274,
+        "SE-AB": 1853,
+        "SE-C": 1052,
+        "SE-D": 1033,
+        "SE-T": 1021,
+        "SE-BD": 439,
+        "SE-AC": 352,
+        "SE-W": 332,
+        "SE-G": 297,
+        "SE-S": 245,
+        "SE-U": 219,
+        "SE-X": 152,
+        "SE-Z": 102,
+        "SE-Y": 91
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

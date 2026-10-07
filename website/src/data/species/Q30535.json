@@ -1,0 +1,207 @@
+{
+  "qid": "Q30535",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "pilgrimsfalk",
+    "en": "peregrine-falcon"
+  },
+  "names": {
+    "sv": "Pilgrimsfalk",
+    "en": "Peregrine Falcon",
+    "scientific": "Falco peregrinus"
+  },
+  "family": {
+    "latin": "Falconidae",
+    "sv": "Falkfåglar"
+  },
+  "group": "raptors",
+  "iucn": "LC",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q30535/hero.webp",
+      "width": 1600,
+      "height": 2400,
+      "author": "Metropolitan Transportation Authority of the State of New York",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:MPB_Papa_Falcon_(8948784670).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q30535/extra.webp",
+      "width": 1200,
+      "height": 994,
+      "author": "USFWS photo",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Falco_peregrinus_nest_USFWS.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q30535/voice.mp3",
+    "durationSec": 15,
+    "trimmed": false,
+    "author": "Sternanita3",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Halc%C3%B3n_peregrino.ogg",
+    "sha256": "008ff445061636d850820d4334b6153d98830f0e7a438af49a8065a4cdd5d9d0"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Pilgrimsfalk",
+      "revision": "59596342"
+    },
+    "en": {
+      "title": "Peregrine falcon",
+      "revision": "1373167227"
+    },
+    "de": {
+      "title": "Wanderfalke",
+      "revision": "267023252"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2481047,
+    "totalReports": 104062,
+    "months": [
+      66,
+      65,
+      36,
+      30,
+      15,
+      21,
+      29,
+      67,
+      100,
+      85,
+      68,
+      65
+    ],
+    "counties": {
+      "SE-K": 24,
+      "SE-W": 27,
+      "SE-X": 16,
+      "SE-I": 30,
+      "SE-N": 100,
+      "SE-Z": 7,
+      "SE-F": 22,
+      "SE-H": 42,
+      "SE-G": 10,
+      "SE-BD": 15,
+      "SE-T": 36,
+      "SE-E": 55,
+      "SE-M": 45,
+      "SE-D": 14,
+      "SE-AB": 9,
+      "SE-C": 43,
+      "SE-S": 31,
+      "SE-AC": 22,
+      "SE-Y": 16,
+      "SE-U": 40,
+      "SE-O": 41
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september och oktober.",
+        "Vanligast i rapporterna från Halland, Östergötland och Skåne."
+      ],
+      "en": [
+        "Reported most in September and October.",
+        "Most common in reports from Halland, Östergötland and Skåne."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        10108,
+        6816,
+        7064,
+        8852,
+        5266,
+        4287,
+        4505,
+        11390,
+        18428,
+        15107,
+        6780,
+        5242
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 17465,
+        "SE-M": 14300,
+        "SE-N": 13058,
+        "SE-H": 9439,
+        "SE-C": 6866,
+        "SE-E": 6389,
+        "SE-T": 2957,
+        "SE-F": 2586,
+        "SE-AB": 2557,
+        "SE-U": 2532,
+        "SE-AC": 2133,
+        "SE-S": 1982,
+        "SE-W": 1962,
+        "SE-D": 1848,
+        "SE-I": 1806,
+        "SE-BD": 1076,
+        "SE-X": 939,
+        "SE-K": 740,
+        "SE-Y": 691,
+        "SE-G": 604,
+        "SE-Z": 281
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "qid": "Q241347",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "rodstrupig-piplarka",
+    "en": "red-throated-pipit"
+  },
+  "names": {
+    "sv": "Rödstrupig piplärka",
+    "en": "Red-throated Pipit",
+    "scientific": "Anthus cervinus"
+  },
+  "family": {
+    "latin": "Motacillidae",
+    "sv": "Ärlor och piplärkor"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "EN",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q241347/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Red-throated_pipit_(Anthus_cervinus)_2022.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q241347/extra.webp",
+      "width": 1200,
+      "height": 1600,
+      "author": "Charles Lam",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Red-throated_Pipit_(Anthus_cervinus).jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Rödstrupig piplärka",
+      "revision": "59708915"
+    },
+    "en": {
+      "title": "Red-throated pipit",
+      "revision": "1315370731"
+    },
+    "de": {
+      "title": "Rotkehlpieper",
+      "revision": "252684429"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2490283,
+    "totalReports": 11921,
+    "months": [
+      0,
+      0,
+      1,
+      1,
+      10,
+      1,
+      1,
+      18,
+      100,
+      10,
+      1,
+      0
+    ],
+    "counties": {
+      "SE-K": 79,
+      "SE-W": 74,
+      "SE-X": 30,
+      "SE-I": 62,
+      "SE-N": 34,
+      "SE-Z": 5,
+      "SE-F": 24,
+      "SE-H": 100,
+      "SE-G": 31,
+      "SE-BD": 55,
+      "SE-T": 51,
+      "SE-E": 44,
+      "SE-M": 37,
+      "SE-D": 28,
+      "SE-AB": 44,
+      "SE-C": 41,
+      "SE-S": 49,
+      "SE-AC": 75,
+      "SE-Y": 43,
+      "SE-U": 56,
+      "SE-O": 19
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september.",
+        "Nästan aldrig i oktober till juli.",
+        "Vanligast i rapporterna från Kalmar, Blekinge och Västerbotten."
+      ],
+      "en": [
+        "Reported most in September.",
+        "Almost never in October to July.",
+        "Most common in reports from Kalmar, Blekinge and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        2,
+        22,
+        1520,
+        51,
+        21,
+        1353,
+        8048,
+        809,
+        6,
+        0
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-H": 2095,
+        "SE-AB": 1215,
+        "SE-M": 1100,
+        "SE-O": 746,
+        "SE-AC": 676,
+        "SE-C": 609,
+        "SE-W": 494,
+        "SE-E": 480,
+        "SE-N": 416,
+        "SE-T": 398,
+        "SE-BD": 373,
+        "SE-I": 344,
+        "SE-D": 343,
+        "SE-U": 335,
+        "SE-S": 291,
+        "SE-F": 265,
+        "SE-K": 224,
+        "SE-G": 178,
+        "SE-Y": 175,
+        "SE-X": 166,
+        "SE-Z": 19
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

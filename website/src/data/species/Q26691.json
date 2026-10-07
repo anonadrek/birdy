@@ -1,0 +1,207 @@
+{
+  "qid": "Q26691",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "smalom",
+    "en": "red-throated-loon"
+  },
+  "names": {
+    "sv": "Smålom",
+    "en": "Red-throated Loon",
+    "scientific": "Gavia stellata"
+  },
+  "family": {
+    "latin": "Gaviidae",
+    "sv": "Lommar"
+  },
+  "group": "grebes_divers",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26691/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Red-throated_diver_(Gavia_stellata),_Seltjarnarnes,_lake_Bakkatjörn,_Iceland.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26691/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Red-throated_diver_(Gavia_stellata).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26691/voice.mp3",
+    "durationSec": 15,
+    "trimmed": false,
+    "author": "Ryan Hodnett",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Red-throated_Diver_(Sm%C3%A5lom)_(Gavia_stellata)_-_Troms%C3%B8,_Norway_2023-07-07_(06).mp3",
+    "sha256": "88eb994fa07c5a0d074cf28eb7b3fddfe90c66dfabc6dc6e820a4bcd948464bb"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Smålom",
+      "revision": "59706323"
+    },
+    "en": {
+      "title": "Red-throated loon",
+      "revision": "1360619947"
+    },
+    "de": {
+      "title": "Sterntaucher",
+      "revision": "255606871"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2481958,
+    "totalReports": 100519,
+    "months": [
+      53,
+      40,
+      40,
+      78,
+      66,
+      44,
+      56,
+      58,
+      53,
+      86,
+      100,
+      69
+    ],
+    "counties": {
+      "SE-K": 33,
+      "SE-W": 76,
+      "SE-X": 23,
+      "SE-I": 46,
+      "SE-N": 74,
+      "SE-Z": 100,
+      "SE-F": 22,
+      "SE-H": 67,
+      "SE-G": 12,
+      "SE-BD": 57,
+      "SE-T": 34,
+      "SE-E": 7,
+      "SE-M": 36,
+      "SE-D": 3,
+      "SE-AB": 10,
+      "SE-C": 5,
+      "SE-S": 67,
+      "SE-AC": 32,
+      "SE-Y": 39,
+      "SE-U": 26,
+      "SE-O": 41
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Jämtland, Dalarna och Halland."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Jämtland, Dalarna and Halland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        5954,
+        3140,
+        5756,
+        17441,
+        17528,
+        6797,
+        6439,
+        7240,
+        7189,
+        11315,
+        7457,
+        4141
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 15718,
+        "SE-H": 13797,
+        "SE-M": 10384,
+        "SE-N": 8835,
+        "SE-W": 4996,
+        "SE-S": 3927,
+        "SE-BD": 3845,
+        "SE-Z": 3722,
+        "SE-AC": 2836,
+        "SE-AB": 2689,
+        "SE-T": 2586,
+        "SE-I": 2488,
+        "SE-F": 2331,
+        "SE-U": 1538,
+        "SE-Y": 1537,
+        "SE-X": 1217,
+        "SE-K": 930,
+        "SE-E": 754,
+        "SE-G": 686,
+        "SE-C": 671,
+        "SE-D": 348
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

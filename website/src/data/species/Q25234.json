@@ -1,0 +1,207 @@
+{
+  "qid": "Q25234",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "koltrast",
+    "en": "common-blackbird"
+  },
+  "names": {
+    "sv": "Koltrast",
+    "en": "Common Blackbird",
+    "scientific": "Turdus merula"
+  },
+  "family": {
+    "latin": "Turdidae",
+    "sv": "Trastar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25234/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Musicaline",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turdus_merula_1294.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25234/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Musicaline",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turdus_merula_1308.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25234/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Oona Räisänen (Mysid)",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turdus_merula_2.ogg",
+    "sha256": "2e713300a07d50b9cad26bb0f7b5d5bdce148ab062b56922ee3dd95fab54ec9f"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Koltrast",
+      "revision": "59568519"
+    },
+    "en": {
+      "title": "Common blackbird",
+      "revision": "1370087119"
+    },
+    "de": {
+      "title": "Amsel",
+      "revision": "271100414"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2490719,
+    "totalReports": 714595,
+    "months": [
+      100,
+      77,
+      64,
+      50,
+      45,
+      52,
+      40,
+      20,
+      23,
+      50,
+      70,
+      100
+    ],
+    "counties": {
+      "SE-K": 63,
+      "SE-W": 55,
+      "SE-X": 78,
+      "SE-I": 65,
+      "SE-N": 56,
+      "SE-Z": 35,
+      "SE-F": 71,
+      "SE-H": 48,
+      "SE-G": 63,
+      "SE-BD": 29,
+      "SE-T": 54,
+      "SE-E": 80,
+      "SE-M": 61,
+      "SE-D": 100,
+      "SE-AB": 94,
+      "SE-C": 99,
+      "SE-S": 55,
+      "SE-AC": 48,
+      "SE-Y": 56,
+      "SE-U": 58,
+      "SE-O": 93
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december och januari.",
+        "Vanligast i rapporterna från Södermanland, Uppsala och Stockholm."
+      ],
+      "en": [
+        "Reported most in December and January.",
+        "Most common in reports from Södermanland, Uppsala and Stockholm."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        94020,
+        49899,
+        76104,
+        93280,
+        100684,
+        66894,
+        37840,
+        20544,
+        26334,
+        55506,
+        43527,
+        49598
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 139979,
+        "SE-AB": 99642,
+        "SE-M": 68848,
+        "SE-C": 56270,
+        "SE-D": 46902,
+        "SE-H": 38630,
+        "SE-E": 33235,
+        "SE-F": 29449,
+        "SE-N": 26181,
+        "SE-AC": 16455,
+        "SE-X": 16358,
+        "SE-T": 15996,
+        "SE-W": 14147,
+        "SE-G": 14033,
+        "SE-I": 13875,
+        "SE-U": 13326,
+        "SE-S": 12672,
+        "SE-Y": 8651,
+        "SE-BD": 7665,
+        "SE-K": 6910,
+        "SE-Z": 5153
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

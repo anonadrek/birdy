@@ -1,0 +1,207 @@
+{
+  "qid": "Q26956",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "angspiplarka",
+    "en": "meadow-pipit"
+  },
+  "names": {
+    "sv": "Ängspiplärka",
+    "en": "Meadow Pipit",
+    "scientific": "Anthus pratensis"
+  },
+  "family": {
+    "latin": "Motacillidae",
+    "sv": "Ärlor och piplärkor"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26956/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Donald Hobern",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anthus_pratensis_(33752471506).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26956/extra.webp",
+      "width": 1200,
+      "height": 1800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Meadow_pipit_(Anthus_pratensis)_2022.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26956/voice.mp3",
+    "durationSec": 8,
+    "trimmed": false,
+    "author": "Hannu Varkki",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anthus_pratensis_-_Meadow_Pipit_XC501787.mp3",
+    "sha256": "0a8fd16f44f941335082523e608e7bb9fa282c68c0c7d03ed5471c3524a4811e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Ängspiplärka",
+      "revision": "59477389"
+    },
+    "en": {
+      "title": "Meadow pipit",
+      "revision": "1361100973"
+    },
+    "de": {
+      "title": "Wiesenpieper",
+      "revision": "266195746"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2490266,
+    "totalReports": 264370,
+    "months": [
+      17,
+      13,
+      34,
+      61,
+      30,
+      31,
+      29,
+      28,
+      100,
+      69,
+      25,
+      17
+    ],
+    "counties": {
+      "SE-K": 44,
+      "SE-W": 76,
+      "SE-X": 37,
+      "SE-I": 38,
+      "SE-N": 89,
+      "SE-Z": 100,
+      "SE-F": 52,
+      "SE-H": 47,
+      "SE-G": 41,
+      "SE-BD": 87,
+      "SE-T": 41,
+      "SE-E": 49,
+      "SE-M": 55,
+      "SE-D": 33,
+      "SE-AB": 48,
+      "SE-C": 51,
+      "SE-S": 57,
+      "SE-AC": 65,
+      "SE-Y": 36,
+      "SE-U": 32,
+      "SE-O": 75
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september.",
+        "Vanligast i rapporterna från Jämtland, Halland och Norrbotten."
+      ],
+      "en": [
+        "Reported most in September.",
+        "Most common in reports from Jämtland, Halland and Norrbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        7535,
+        4048,
+        19164,
+        53912,
+        32059,
+        19080,
+        13008,
+        13720,
+        54055,
+        36007,
+        7476,
+        3954
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 49070,
+        "SE-M": 27221,
+        "SE-AB": 22101,
+        "SE-N": 18129,
+        "SE-H": 16516,
+        "SE-C": 12571,
+        "SE-BD": 10008,
+        "SE-AC": 9751,
+        "SE-F": 9515,
+        "SE-E": 8956,
+        "SE-W": 8546,
+        "SE-D": 6791,
+        "SE-Z": 6365,
+        "SE-S": 5660,
+        "SE-T": 5363,
+        "SE-G": 3988,
+        "SE-I": 3511,
+        "SE-X": 3410,
+        "SE-U": 3207,
+        "SE-Y": 2461,
+        "SE-K": 2079
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

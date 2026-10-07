@@ -1,0 +1,207 @@
+{
+  "qid": "Q26490",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tornfalk",
+    "en": "common-kestrel"
+  },
+  "names": {
+    "sv": "Tornfalk",
+    "en": "Common Kestrel",
+    "scientific": "Falco tinnunculus"
+  },
+  "family": {
+    "latin": "Falconidae",
+    "sv": "Falkar"
+  },
+  "group": "raptors",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26490/hero.webp",
+      "width": 1600,
+      "height": 1427,
+      "author": "Alexey V. Kurochkin",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_kestrel_(Falco_tinnunculus)_female_(IMGP1648r2-DNA).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26490/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Falco_tinnunculus_2022_04_17.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26490/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Javier Herrera",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Falco_tinnunculus_-_Common_Kestrel_XC463430.mp3",
+    "sha256": "ff4ac98430f79b12983a4e910e14a4702d64045331b2cefbdb2efa99dab07828"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Tornfalk",
+      "revision": "59530281"
+    },
+    "en": {
+      "title": "Common kestrel",
+      "revision": "1375652533"
+    },
+    "de": {
+      "title": "Turmfalke",
+      "revision": "270181448"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 9616058,
+    "totalReports": 326515,
+    "months": [
+      39,
+      36,
+      28,
+      56,
+      41,
+      83,
+      96,
+      88,
+      100,
+      34,
+      29,
+      39
+    ],
+    "counties": {
+      "SE-K": 37,
+      "SE-W": 88,
+      "SE-X": 88,
+      "SE-I": 31,
+      "SE-N": 93,
+      "SE-Z": 84,
+      "SE-F": 56,
+      "SE-H": 56,
+      "SE-G": 38,
+      "SE-BD": 60,
+      "SE-T": 73,
+      "SE-E": 70,
+      "SE-M": 76,
+      "SE-D": 39,
+      "SE-AB": 31,
+      "SE-C": 66,
+      "SE-S": 61,
+      "SE-AC": 100,
+      "SE-Y": 80,
+      "SE-U": 95,
+      "SE-O": 71
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juni till september.",
+        "Vanligast i rapporterna från Västerbotten, Västmanland och Halland."
+      ],
+      "en": [
+        "Reported most in June to September.",
+        "Most common in reports from Västerbotten, Västmanland and Halland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        15485,
+        9869,
+        14126,
+        43873,
+        39012,
+        45416,
+        38652,
+        38931,
+        48412,
+        16057,
+        7726,
+        8200
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 54527,
+        "SE-M": 43487,
+        "SE-H": 22979,
+        "SE-N": 22207,
+        "SE-C": 18945,
+        "SE-AC": 17526,
+        "SE-AB": 16787,
+        "SE-E": 14846,
+        "SE-F": 11841,
+        "SE-W": 11581,
+        "SE-T": 11110,
+        "SE-U": 11003,
+        "SE-X": 9416,
+        "SE-D": 9414,
+        "SE-BD": 7975,
+        "SE-S": 7104,
+        "SE-Y": 6302,
+        "SE-Z": 6240,
+        "SE-G": 4295,
+        "SE-I": 3383,
+        "SE-K": 2048
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

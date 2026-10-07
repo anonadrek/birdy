@@ -1,0 +1,209 @@
+{
+  "qid": "Q25377",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tornseglare",
+    "en": "common-swift"
+  },
+  "names": {
+    "sv": "Tornseglare",
+    "en": "Common Swift",
+    "scientific": "Apus apus"
+  },
+  "family": {
+    "latin": "Apodidae",
+    "sv": "Seglare"
+  },
+  "group": "other",
+  "iucn": "LC",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25377/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_swift_(Apus_apus)_2024_3.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25377/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_swift_(Apus_apus)_2024.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25377/voice.mp3",
+    "durationSec": 19,
+    "trimmed": false,
+    "author": "Jugrü",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mauersegler.ogg",
+    "sha256": "357d3bcad2b8d56b463b9ae95a68a3cb6fa14e80790d594dd8c68ade25588f9e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Tornseglare",
+      "revision": "59419377"
+    },
+    "en": {
+      "title": "Common swift",
+      "revision": "1361442305"
+    },
+    "de": {
+      "title": "Mauersegler",
+      "revision": "268553117"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 5228676,
+    "totalReports": 223149,
+    "months": [
+      1,
+      1,
+      1,
+      1,
+      49,
+      73,
+      100,
+      54,
+      5,
+      1,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 80,
+      "SE-W": 100,
+      "SE-X": 96,
+      "SE-I": 96,
+      "SE-N": 68,
+      "SE-Z": 92,
+      "SE-F": 88,
+      "SE-H": 88,
+      "SE-G": 77,
+      "SE-BD": 56,
+      "SE-T": 82,
+      "SE-E": 82,
+      "SE-M": 76,
+      "SE-D": 98,
+      "SE-AB": 81,
+      "SE-C": 96,
+      "SE-S": 79,
+      "SE-AC": 55,
+      "SE-Y": 83,
+      "SE-U": 94,
+      "SE-O": 93
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juli.",
+        "Nästan aldrig i september till april.",
+        "Vanligast i rapporterna från Dalarna, Södermanland och Gotland."
+      ],
+      "en": [
+        "Reported most in July.",
+        "Almost never in September to April.",
+        "Most common in reports from Dalarna, Södermanland and Gotland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1,
+        1,
+        3,
+        42,
+        66858,
+        58477,
+        58923,
+        34605,
+        3854,
+        216,
+        25,
+        2
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 37580,
+        "SE-AB": 23013,
+        "SE-M": 22793,
+        "SE-H": 18950,
+        "SE-C": 14561,
+        "SE-D": 12268,
+        "SE-F": 9781,
+        "SE-E": 9122,
+        "SE-N": 8482,
+        "SE-W": 6873,
+        "SE-T": 6537,
+        "SE-U": 5747,
+        "SE-I": 5447,
+        "SE-X": 5329,
+        "SE-AC": 5042,
+        "SE-S": 4808,
+        "SE-G": 4573,
+        "SE-BD": 3930,
+        "SE-Z": 3575,
+        "SE-Y": 3427,
+        "SE-K": 2332
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

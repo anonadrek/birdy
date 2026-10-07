@@ -1,0 +1,207 @@
+{
+  "qid": "Q25418",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "steglits",
+    "en": "european-goldfinch"
+  },
+  "names": {
+    "sv": "Steglits",
+    "en": "European Goldfinch",
+    "scientific": "Carduelis carduelis"
+  },
+  "family": {
+    "latin": "Fringillidae",
+    "sv": "Finkar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25418/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Isiwal",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stieglitz_Carduelis_carduelis-8189.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25418/extra.webp",
+      "width": 1200,
+      "height": 1011,
+      "author": "Gzen92",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Carduelis_carduelis_(Chardonneret_élégant)_(4).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25418/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Sander Pieterse",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:XC101464_-_Putter_-_Carduelis_carduelis.ogg",
+    "sha256": "5191926cae29ca73e1edb38fea8b3cf4abfaa17ee1da2bcd13b12f9937ebe909"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Steglits",
+      "revision": "59703234"
+    },
+    "en": {
+      "title": "European goldfinch",
+      "revision": "1373949279"
+    },
+    "de": {
+      "title": "Stieglitz",
+      "revision": "270397915"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2494686,
+    "totalReports": 398633,
+    "months": [
+      91,
+      85,
+      73,
+      68,
+      53,
+      56,
+      65,
+      63,
+      69,
+      80,
+      100,
+      98
+    ],
+    "counties": {
+      "SE-K": 45,
+      "SE-W": 72,
+      "SE-X": 83,
+      "SE-I": 33,
+      "SE-N": 42,
+      "SE-Z": 23,
+      "SE-F": 47,
+      "SE-H": 49,
+      "SE-G": 41,
+      "SE-BD": 17,
+      "SE-T": 62,
+      "SE-E": 59,
+      "SE-M": 51,
+      "SE-D": 64,
+      "SE-AB": 82,
+      "SE-C": 88,
+      "SE-S": 52,
+      "SE-AC": 37,
+      "SE-Y": 100,
+      "SE-U": 73,
+      "SE-O": 73
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Västernorrland, Uppsala och Gävleborg."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Västernorrland, Uppsala and Gävleborg."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        35832,
+        23197,
+        36954,
+        52656,
+        49122,
+        30369,
+        26195,
+        27778,
+        32977,
+        36725,
+        26064,
+        20422
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 72248,
+        "SE-AB": 57126,
+        "SE-M": 37776,
+        "SE-C": 32994,
+        "SE-H": 25854,
+        "SE-D": 19890,
+        "SE-E": 16100,
+        "SE-N": 12973,
+        "SE-F": 12799,
+        "SE-W": 12271,
+        "SE-T": 12023,
+        "SE-X": 11480,
+        "SE-U": 10922,
+        "SE-Y": 10190,
+        "SE-AC": 8437,
+        "SE-S": 7864,
+        "SE-G": 6093,
+        "SE-I": 4629,
+        "SE-K": 3220,
+        "SE-BD": 2949,
+        "SE-Z": 2256
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

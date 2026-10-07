@@ -1,0 +1,199 @@
+{
+  "qid": "Q201831",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "stromstare",
+    "en": "white-throated-dipper"
+  },
+  "names": {
+    "sv": "Strömstare",
+    "en": "White-throated Dipper",
+    "scientific": "Cinclus cinclus"
+  },
+  "family": {
+    "latin": "Cinclidae",
+    "sv": "Strömstarar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q201831/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Ron Knight",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:White-throated_Dipper_(Cinclus_cinclus)_(13667851995).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q201831/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cinclus_cinclus_Oulu_20231025_04.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Strömstare",
+      "revision": "58995035"
+    },
+    "en": {
+      "title": "White-throated dipper",
+      "revision": "1357422918"
+    },
+    "de": {
+      "title": "Wasseramsel",
+      "revision": "260469540"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2495093,
+    "totalReports": 82529,
+    "months": [
+      100,
+      86,
+      43,
+      11,
+      5,
+      12,
+      5,
+      2,
+      2,
+      14,
+      62,
+      83
+    ],
+    "counties": {
+      "SE-K": 22,
+      "SE-W": 100,
+      "SE-X": 63,
+      "SE-I": 18,
+      "SE-N": 18,
+      "SE-Z": 98,
+      "SE-F": 32,
+      "SE-H": 14,
+      "SE-G": 48,
+      "SE-BD": 72,
+      "SE-T": 50,
+      "SE-E": 52,
+      "SE-M": 15,
+      "SE-D": 41,
+      "SE-AB": 28,
+      "SE-C": 38,
+      "SE-S": 46,
+      "SE-AC": 51,
+      "SE-Y": 86,
+      "SE-U": 65,
+      "SE-O": 40
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december till februari.",
+        "Nästan aldrig i maj och juli till september.",
+        "Vanligast i rapporterna från Dalarna, Jämtland och Västernorrland."
+      ],
+      "en": [
+        "Reported most in December to February.",
+        "Almost never in May and July to September.",
+        "Most common in reports from Dalarna, Jämtland and Västernorrland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        22024,
+        12938,
+        11899,
+        4722,
+        2746,
+        3574,
+        1102,
+        460,
+        522,
+        3608,
+        8961,
+        9609
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 13558,
+        "SE-AB": 6731,
+        "SE-W": 5773,
+        "SE-E": 4846,
+        "SE-C": 4820,
+        "SE-D": 4306,
+        "SE-BD": 4239,
+        "SE-AC": 3893,
+        "SE-M": 3670,
+        "SE-T": 3362,
+        "SE-U": 3313,
+        "SE-Z": 3199,
+        "SE-F": 2992,
+        "SE-Y": 2982,
+        "SE-X": 2971,
+        "SE-H": 2503,
+        "SE-G": 2423,
+        "SE-S": 2370,
+        "SE-N": 1910,
+        "SE-I": 857,
+        "SE-K": 542
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

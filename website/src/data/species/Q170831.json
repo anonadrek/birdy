@@ -1,0 +1,209 @@
+{
+  "qid": "Q170831",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "stjartmes",
+    "en": "long-tailed-tit"
+  },
+  "names": {
+    "sv": "Stjärtmes",
+    "en": "Long-tailed Tit",
+    "scientific": "Aegithalos caudatus"
+  },
+  "family": {
+    "latin": "Aegithalidae",
+    "sv": "Stjärtmesar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q170831/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Membeth",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Parks.Range.Aegithalos.caudatus.caudatus.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q170831/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Long-tailed_tit_(Aegithalos_caudatus)_on_a_twig.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q170831/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Jonathon Jongsma",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aegithalos_caudatus_-_Long-tailed_Tit_-_XC114614.ogg",
+    "sha256": "797abb7d4d339ad9d280401d91ddce1d624cceb38d29ee50a5a6a20c528df50b"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Stjärtmes",
+      "revision": "59356091"
+    },
+    "en": {
+      "title": "Long-tailed tit",
+      "revision": "1374016597"
+    },
+    "de": {
+      "title": "Schwanzmeise",
+      "revision": "268081893"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2495000,
+    "totalReports": 188193,
+    "months": [
+      91,
+      97,
+      72,
+      31,
+      18,
+      13,
+      10,
+      12,
+      34,
+      100,
+      91,
+      97
+    ],
+    "counties": {
+      "SE-K": 62,
+      "SE-W": 53,
+      "SE-X": 43,
+      "SE-I": 21,
+      "SE-N": 24,
+      "SE-Z": 6,
+      "SE-F": 51,
+      "SE-H": 33,
+      "SE-G": 55,
+      "SE-BD": 5,
+      "SE-T": 61,
+      "SE-E": 42,
+      "SE-M": 27,
+      "SE-D": 48,
+      "SE-AB": 57,
+      "SE-C": 42,
+      "SE-S": 100,
+      "SE-AC": 13,
+      "SE-Y": 19,
+      "SE-U": 54,
+      "SE-O": 40
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i oktober till februari.",
+        "Nästan aldrig i juli.",
+        "Vanligast i rapporterna från Värmland, Blekinge och Örebro."
+      ],
+      "en": [
+        "Reported most in October to February.",
+        "Almost never in July.",
+        "Most common in reports from Värmland, Blekinge and Örebro."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        25760,
+        18898,
+        25839,
+        17172,
+        12234,
+        5222,
+        2745,
+        3903,
+        11786,
+        33007,
+        17031,
+        14485
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-AB": 28163,
+        "SE-O": 27858,
+        "SE-M": 14286,
+        "SE-H": 12201,
+        "SE-C": 11150,
+        "SE-S": 10664,
+        "SE-D": 10471,
+        "SE-F": 9945,
+        "SE-T": 8470,
+        "SE-E": 8206,
+        "SE-W": 6375,
+        "SE-U": 5733,
+        "SE-G": 5733,
+        "SE-N": 5311,
+        "SE-X": 4166,
+        "SE-K": 3157,
+        "SE-I": 2121,
+        "SE-AC": 2017,
+        "SE-Y": 1396,
+        "SE-BD": 611,
+        "SE-Z": 421
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "qid": "Q185784",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "gransangare",
+    "en": "common-chiffchaff"
+  },
+  "names": {
+    "sv": "Gransångare",
+    "en": "Common Chiffchaff",
+    "scientific": "Phylloscopus collybita"
+  },
+  "family": {
+    "latin": "Phylloscopidae",
+    "sv": "Lövsångare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q185784/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_chiffchaff_(Phylloscopus_collybita_tristis)_2021.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q185784/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_chiffchaff_(Phylloscopus_collybita)_2024.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q185784/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Oona Räisänen (Mysid)",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Phylloscopus_collybita.ogg",
+    "sha256": "a206de92ef75f589da8a859f4e4644043b6f31b1df9af241a5f2abdfd4d89876"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Gransångare",
+      "revision": "59562516"
+    },
+    "en": {
+      "title": "Common chiffchaff",
+      "revision": "1353214873"
+    },
+    "de": {
+      "title": "Zilpzalp",
+      "revision": "270899056"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2493091,
+    "totalReports": 457350,
+    "months": [
+      1,
+      1,
+      19,
+      68,
+      49,
+      41,
+      35,
+      24,
+      100,
+      71,
+      7,
+      2
+    ],
+    "counties": {
+      "SE-K": 100,
+      "SE-W": 33,
+      "SE-X": 47,
+      "SE-I": 53,
+      "SE-N": 78,
+      "SE-Z": 61,
+      "SE-F": 40,
+      "SE-H": 63,
+      "SE-G": 63,
+      "SE-BD": 30,
+      "SE-T": 42,
+      "SE-E": 22,
+      "SE-M": 93,
+      "SE-D": 30,
+      "SE-AB": 35,
+      "SE-C": 25,
+      "SE-S": 57,
+      "SE-AC": 80,
+      "SE-Y": 74,
+      "SE-U": 35,
+      "SE-O": 75
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september.",
+        "Nästan aldrig i november till februari.",
+        "Vanligast i rapporterna från Blekinge, Skåne och Västerbotten."
+      ],
+      "en": [
+        "Reported most in September.",
+        "Almost never in November to February.",
+        "Most common in reports from Blekinge, Skåne and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1034,
+        335,
+        18495,
+        101843,
+        87295,
+        42393,
+        26710,
+        20160,
+        91459,
+        62548,
+        3518,
+        920
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 83115,
+        "SE-M": 77346,
+        "SE-H": 37375,
+        "SE-AB": 26949,
+        "SE-N": 26861,
+        "SE-AC": 20379,
+        "SE-F": 12236,
+        "SE-G": 10402,
+        "SE-C": 10398,
+        "SE-D": 10235,
+        "SE-S": 9669,
+        "SE-T": 9286,
+        "SE-Y": 8393,
+        "SE-I": 8341,
+        "SE-K": 8047,
+        "SE-X": 7302,
+        "SE-E": 6863,
+        "SE-Z": 6598,
+        "SE-W": 6222,
+        "SE-BD": 5874,
+        "SE-U": 5827
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

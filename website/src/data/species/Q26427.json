@@ -1,0 +1,207 @@
+{
+  "qid": "Q26427",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "fiskmas",
+    "en": "common-gull"
+  },
+  "names": {
+    "sv": "Fiskmås",
+    "en": "Common Gull",
+    "scientific": "Larus canus"
+  },
+  "family": {
+    "latin": "Laridae",
+    "sv": "Måsfåglar"
+  },
+  "group": "gulls_terns",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26427/hero.webp",
+      "width": 1600,
+      "height": 1210,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Larus_canus_Oulu_20150712_03.JPG"
+    },
+    {
+      "role": "extra",
+      "file": "Q26427/extra.webp",
+      "width": 1200,
+      "height": 901,
+      "author": "James T M Towill",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_Gull_(Larus_canus)_-_geograph.org.uk_-_3043508.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26427/voice.mp3",
+    "durationSec": 6,
+    "trimmed": false,
+    "author": "Ryan Hodnett",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_Gull_(Fiskem%C3%A5ke)_(Larus_canus)_-_Troms%C3%B8,_Norway_2023-07-07_(08).mp3",
+    "sha256": "a7217ba10282f2eb0806eff2ad16931d8b92b0bb5939aed70f26e527bc4af8c3"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Fiskmås",
+      "revision": "59701347"
+    },
+    "en": {
+      "title": "Common gull",
+      "revision": "1342205357"
+    },
+    "de": {
+      "title": "Sturmmöwe",
+      "revision": "261458520"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 7982160,
+    "totalReports": 440627,
+    "months": [
+      51,
+      39,
+      56,
+      82,
+      71,
+      95,
+      100,
+      52,
+      34,
+      41,
+      52,
+      47
+    ],
+    "counties": {
+      "SE-K": 47,
+      "SE-W": 69,
+      "SE-X": 93,
+      "SE-I": 51,
+      "SE-N": 54,
+      "SE-Z": 100,
+      "SE-F": 80,
+      "SE-H": 46,
+      "SE-G": 87,
+      "SE-BD": 61,
+      "SE-T": 52,
+      "SE-E": 62,
+      "SE-M": 60,
+      "SE-D": 67,
+      "SE-AB": 70,
+      "SE-C": 61,
+      "SE-S": 73,
+      "SE-AC": 58,
+      "SE-Y": 67,
+      "SE-U": 51,
+      "SE-O": 72
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Jämtland, Gävleborg och Kronoberg."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Jämtland, Gävleborg and Kronoberg."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        24803,
+        13058,
+        34212,
+        77721,
+        80517,
+        62551,
+        48742,
+        27531,
+        19832,
+        22856,
+        16616,
+        11988
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 67041,
+        "SE-AB": 45376,
+        "SE-M": 41709,
+        "SE-H": 22888,
+        "SE-C": 21140,
+        "SE-F": 20466,
+        "SE-D": 19218,
+        "SE-E": 15987,
+        "SE-N": 15453,
+        "SE-AC": 12234,
+        "SE-X": 11946,
+        "SE-G": 11914,
+        "SE-W": 10968,
+        "SE-S": 10349,
+        "SE-BD": 9891,
+        "SE-T": 9477,
+        "SE-Z": 8983,
+        "SE-U": 7189,
+        "SE-I": 6671,
+        "SE-Y": 6356,
+        "SE-K": 3148
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

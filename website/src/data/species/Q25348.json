@@ -1,0 +1,207 @@
+{
+  "qid": "Q25348",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "grasand",
+    "en": "mallard"
+  },
+  "names": {
+    "sv": "Gräsand",
+    "en": "Mallard",
+    "scientific": "Anas platyrhynchos"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Egentliga andfåglar"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25348/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mallard_(Anas_platyrhynchos)_male_head.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25348/extra.webp",
+      "width": 1200,
+      "height": 655,
+      "author": "Calle Eklund/V-wolf",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anas_platyrhynchos_Vikmanshyttan_02.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25348/voice.mp3",
+    "durationSec": 17,
+    "trimmed": false,
+    "author": "Jonathon Jongsma",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anas_platyrhynchos_-_Mallard_-_XC112828.ogg",
+    "sha256": "8e67444536642af9a3764e37d0248f678a3ca761b6ddf767c815f173c2c2db0e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Gräsand",
+      "revision": "59562543"
+    },
+    "en": {
+      "title": "Mallard",
+      "revision": "1374348462"
+    },
+    "de": {
+      "title": "Stockente",
+      "revision": "270645289"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 9761484,
+    "totalReports": 662742,
+    "months": [
+      100,
+      80,
+      72,
+      62,
+      50,
+      52,
+      50,
+      45,
+      45,
+      52,
+      80,
+      88
+    ],
+    "counties": {
+      "SE-K": 49,
+      "SE-W": 61,
+      "SE-X": 72,
+      "SE-I": 41,
+      "SE-N": 55,
+      "SE-Z": 57,
+      "SE-F": 80,
+      "SE-H": 43,
+      "SE-G": 100,
+      "SE-BD": 62,
+      "SE-T": 53,
+      "SE-E": 72,
+      "SE-M": 71,
+      "SE-D": 77,
+      "SE-AB": 76,
+      "SE-C": 69,
+      "SE-S": 55,
+      "SE-AC": 55,
+      "SE-Y": 55,
+      "SE-U": 54,
+      "SE-O": 73
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Kronoberg, Jönköping och Södermanland."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Kronoberg, Jönköping and Södermanland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        75924,
+        41660,
+        69895,
+        92107,
+        89993,
+        54313,
+        38090,
+        38207,
+        40999,
+        46310,
+        39894,
+        35060
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 102777,
+        "SE-AB": 74438,
+        "SE-M": 74057,
+        "SE-C": 36504,
+        "SE-D": 33511,
+        "SE-H": 32064,
+        "SE-F": 30761,
+        "SE-E": 27801,
+        "SE-N": 23836,
+        "SE-G": 20756,
+        "SE-AC": 17715,
+        "SE-BD": 15003,
+        "SE-T": 14749,
+        "SE-W": 14517,
+        "SE-X": 13948,
+        "SE-S": 11617,
+        "SE-U": 11510,
+        "SE-I": 8138,
+        "SE-Y": 7916,
+        "SE-Z": 7716,
+        "SE-K": 4977
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

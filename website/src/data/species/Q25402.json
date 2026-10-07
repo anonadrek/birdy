@@ -1,0 +1,207 @@
+{
+  "qid": "Q25402",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "knolsvan",
+    "en": "mute-swan"
+  },
+  "names": {
+    "sv": "Knölsvan",
+    "en": "Mute Swan",
+    "scientific": "Cygnus olor"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Andfåglar"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25402/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Charles J. Sharp",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mute_swan_(Cygnus_olor)_taking_off.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25402/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Gzen92",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cygne_tuberculé_(Cygnus_olor)_-_tête_(2).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25402/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Joost van Bruggen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cygnus_olor_-_Mute_Swan_XC434964.mp3",
+    "sha256": "1d202c2eb86b1c2828b82f97e1758e99392020d7bcfeaeeef0a6d1560c7dc00e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Knölsvan",
+      "revision": "59568452"
+    },
+    "en": {
+      "title": "Mute swan",
+      "revision": "1374078477"
+    },
+    "de": {
+      "title": "Höckerschwan",
+      "revision": "261156108"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2498343,
+    "totalReports": 441384,
+    "months": [
+      100,
+      89,
+      72,
+      51,
+      43,
+      45,
+      48,
+      38,
+      45,
+      52,
+      74,
+      88
+    ],
+    "counties": {
+      "SE-K": 67,
+      "SE-W": 51,
+      "SE-X": 42,
+      "SE-I": 65,
+      "SE-N": 57,
+      "SE-Z": 2,
+      "SE-F": 56,
+      "SE-H": 63,
+      "SE-G": 47,
+      "SE-BD": 1,
+      "SE-T": 54,
+      "SE-E": 90,
+      "SE-M": 83,
+      "SE-D": 77,
+      "SE-AB": 100,
+      "SE-C": 59,
+      "SE-S": 29,
+      "SE-AC": 16,
+      "SE-Y": 56,
+      "SE-U": 32,
+      "SE-O": 71
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Stockholm, Östergötland och Skåne."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Stockholm, Östergötland and Skåne."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        53969,
+        32846,
+        49326,
+        54672,
+        54678,
+        33081,
+        26025,
+        22958,
+        29244,
+        32688,
+        26451,
+        24960
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 60709,
+        "SE-AB": 60136,
+        "SE-M": 53205,
+        "SE-H": 28757,
+        "SE-E": 21189,
+        "SE-D": 20353,
+        "SE-C": 18896,
+        "SE-N": 15131,
+        "SE-F": 13149,
+        "SE-T": 9166,
+        "SE-I": 7821,
+        "SE-W": 7448,
+        "SE-G": 5938,
+        "SE-X": 4973,
+        "SE-Y": 4937,
+        "SE-K": 4160,
+        "SE-U": 4119,
+        "SE-S": 3720,
+        "SE-AC": 3074,
+        "SE-Z": 191,
+        "SE-BD": 180
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

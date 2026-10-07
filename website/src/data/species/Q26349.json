@@ -1,0 +1,209 @@
+{
+  "qid": "Q26349",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "taltrast",
+    "en": "song-thrush"
+  },
+  "names": {
+    "sv": "Taltrast",
+    "en": "Song Thrush",
+    "scientific": "Turdus philomelos"
+  },
+  "family": {
+    "latin": "Turdidae",
+    "sv": "Trastar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26349/hero.webp",
+      "width": 1542,
+      "height": 2160,
+      "author": "Matti Virtala",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turdus_philomelos_Oulu_Finland_2021-05-12.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26349/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Song_thrush_(Turdus_philomelos)_2021.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26349/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Benoît Van Hecke",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turdus_philomelos_-_Song_Thrush_XC541198.mp3",
+    "sha256": "924308e4f90d9df85272bfc54f75a27447831cb355cb8183209fdd5cd769aa99"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Taltrast",
+      "revision": "59699357"
+    },
+    "en": {
+      "title": "Song thrush",
+      "revision": "1371949296"
+    },
+    "de": {
+      "title": "Singdrossel",
+      "revision": "264174354"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 7901064,
+    "totalReports": 283828,
+    "months": [
+      1,
+      1,
+      38,
+      100,
+      58,
+      61,
+      27,
+      12,
+      45,
+      48,
+      7,
+      2
+    ],
+    "counties": {
+      "SE-K": 88,
+      "SE-W": 76,
+      "SE-X": 86,
+      "SE-I": 80,
+      "SE-N": 54,
+      "SE-Z": 96,
+      "SE-F": 89,
+      "SE-H": 72,
+      "SE-G": 86,
+      "SE-BD": 86,
+      "SE-T": 72,
+      "SE-E": 67,
+      "SE-M": 72,
+      "SE-D": 91,
+      "SE-AB": 100,
+      "SE-C": 84,
+      "SE-S": 77,
+      "SE-AC": 94,
+      "SE-Y": 74,
+      "SE-U": 64,
+      "SE-O": 94
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april.",
+        "Nästan aldrig i november till februari.",
+        "Vanligast i rapporterna från Stockholm, Jämtland och Västerbotten."
+      ],
+      "en": [
+        "Reported most in April.",
+        "Almost never in November to February.",
+        "Most common in reports from Stockholm, Jämtland and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        661,
+        330,
+        21668,
+        89320,
+        62460,
+        37841,
+        12159,
+        6151,
+        24851,
+        25551,
+        1990,
+        510
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 48443,
+        "SE-AB": 36171,
+        "SE-M": 27537,
+        "SE-H": 19615,
+        "SE-C": 16273,
+        "SE-D": 14568,
+        "SE-F": 12693,
+        "SE-AC": 10988,
+        "SE-E": 9529,
+        "SE-N": 8599,
+        "SE-BD": 7734,
+        "SE-T": 7334,
+        "SE-W": 6693,
+        "SE-G": 6533,
+        "SE-X": 6110,
+        "SE-S": 6016,
+        "SE-I": 5803,
+        "SE-U": 4964,
+        "SE-Z": 4805,
+        "SE-Y": 3913,
+        "SE-K": 3296
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

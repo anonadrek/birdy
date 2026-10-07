@@ -1,0 +1,188 @@
+{
+  "qid": "Q574447",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "lappmes",
+    "en": "grey-headed-chickadee"
+  },
+  "names": {
+    "sv": "Lappmes",
+    "en": "Grey-headed Chickadee",
+    "scientific": "Poecile cinctus"
+  },
+  "family": {
+    "latin": "Paridae",
+    "sv": "Mesfåglar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q574447/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Lucwrte",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Siberian_Tit_(Poecile_cinctus)_in_Sodankylä,_Finland.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q574447/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Ron Knight",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Siberian_Tit_(Poecile_cinctus)_(13667826373).jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Lappmes",
+      "revision": "59570174"
+    },
+    "en": {
+      "title": "Grey-headed chickadee",
+      "revision": "1374261617"
+    },
+    "de": {
+      "title": "Lapplandmeise",
+      "revision": "270502975"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2487862,
+    "totalReports": 5619,
+    "months": [
+      96,
+      87,
+      57,
+      35,
+      8,
+      55,
+      39,
+      32,
+      34,
+      65,
+      95,
+      100
+    ],
+    "counties": {
+      "SE-K": 0,
+      "SE-W": 6,
+      "SE-X": 1,
+      "SE-I": 0,
+      "SE-N": 0,
+      "SE-Z": 3,
+      "SE-F": 0,
+      "SE-H": 1,
+      "SE-G": 0,
+      "SE-BD": 100,
+      "SE-T": 0,
+      "SE-E": 0,
+      "SE-M": 0,
+      "SE-D": 0,
+      "SE-AB": 1,
+      "SE-C": 1,
+      "SE-S": 1,
+      "SE-AC": 5,
+      "SE-Y": 5,
+      "SE-U": 0,
+      "SE-O": 0
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november till februari.",
+        "Nästan aldrig i maj.",
+        "Vanligast i rapporterna från Norrbotten, Dalarna och Västerbotten."
+      ],
+      "en": [
+        "Reported most in November to February.",
+        "Almost never in May.",
+        "Most common in reports from Norrbotten, Dalarna and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        770,
+        477,
+        580,
+        542,
+        160,
+        604,
+        313,
+        281,
+        330,
+        601,
+        498,
+        420
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-BD": 4698,
+        "SE-AC": 299,
+        "SE-W": 283,
+        "SE-Y": 133,
+        "SE-Z": 67,
+        "SE-C": 4,
+        "SE-X": 4,
+        "SE-AB": 3,
+        "SE-S": 3,
+        "SE-H": 1
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "qid": "Q205930",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "fjallripa",
+    "en": "rock-ptarmigan"
+  },
+  "names": {
+    "sv": "Fjällripa",
+    "en": "Rock Ptarmigan",
+    "scientific": "Lagopus muta"
+  },
+  "family": {
+    "latin": "Phasianidae",
+    "sv": "Skogshöns"
+  },
+  "group": "gamebirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q205930/hero.webp",
+      "width": 1600,
+      "height": 1064,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rock_ptarmigan_(Lagopus_muta)_1.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q205930/extra.webp",
+      "width": 1200,
+      "height": 888,
+      "author": "Bouke ten Cate",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alpensneeuwhoen_-_rock_ptarmigan_-_Lagopus_muta_2.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Fjällripa",
+      "revision": "59701825"
+    },
+    "en": {
+      "title": "Rock ptarmigan",
+      "revision": "1367877718"
+    },
+    "de": {
+      "title": "Alpenschneehuhn",
+      "revision": "265782820"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 5227679,
+    "totalReports": 5828,
+    "months": [
+      4,
+      14,
+      14,
+      13,
+      6,
+      100,
+      72,
+      18,
+      7,
+      2,
+      1,
+      4
+    ],
+    "counties": {
+      "SE-K": 0,
+      "SE-W": 20,
+      "SE-X": 0,
+      "SE-I": 0,
+      "SE-N": 0,
+      "SE-Z": 100,
+      "SE-F": 0,
+      "SE-H": 0,
+      "SE-G": 0,
+      "SE-BD": 24,
+      "SE-T": 0,
+      "SE-E": 0,
+      "SE-M": 0,
+      "SE-D": 0,
+      "SE-AB": 0,
+      "SE-C": 0,
+      "SE-S": 0,
+      "SE-AC": 16,
+      "SE-Y": 0,
+      "SE-U": 0,
+      "SE-O": 0
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juni.",
+        "Nästan aldrig i maj och september till januari.",
+        "Vanligast i rapporterna från Jämtland, Norrbotten och Dalarna."
+      ],
+      "en": [
+        "Reported most in June.",
+        "Almost never in May and September to January.",
+        "Most common in reports from Jämtland, Norrbotten and Dalarna."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        66,
+        179,
+        330,
+        485,
+        248,
+        2538,
+        1346,
+        372,
+        160,
+        39,
+        16,
+        39
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-Z": 2692,
+        "SE-BD": 1176,
+        "SE-AC": 1020,
+        "SE-W": 936
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "qid": "Q26733",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "kanadagas",
+    "en": "canada-goose"
+  },
+  "names": {
+    "sv": "Kanadagås",
+    "en": "Canada Goose",
+    "scientific": "Branta canadensis"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Egentliga andfåglar"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26733/hero.webp",
+      "width": 1600,
+      "height": 1063,
+      "author": "abdallahh",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bernache_du_Canada_(50246750056).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26733/extra.webp",
+      "width": 1200,
+      "height": 805,
+      "author": "Judy Gallagher",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:058_366_-_Canada_Goose_-_Branta_canadensis,_Kingstowne_Lake,_Alexandria,_Virginia,_February_27,_2024_(53557081058).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26733/voice.mp3",
+    "durationSec": 15,
+    "trimmed": false,
+    "author": "Antonio Xeira",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Branta_canadensis_-_Canada_Goose_XC388771.mp3",
+    "sha256": "88dfe30a733ebf822cc63610149fed10cb826df0b84935227d917d952e96052e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Kanadagås",
+      "revision": "59567613"
+    },
+    "en": {
+      "title": "Canada goose",
+      "revision": "1375166117"
+    },
+    "de": {
+      "title": "Kanadagans",
+      "revision": "269367647"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 5232437,
+    "totalReports": 404457,
+    "months": [
+      49,
+      84,
+      100,
+      60,
+      43,
+      35,
+      39,
+      40,
+      32,
+      32,
+      52,
+      47
+    ],
+    "counties": {
+      "SE-K": 39,
+      "SE-W": 87,
+      "SE-X": 79,
+      "SE-I": 24,
+      "SE-N": 53,
+      "SE-Z": 56,
+      "SE-F": 84,
+      "SE-H": 26,
+      "SE-G": 83,
+      "SE-BD": 52,
+      "SE-T": 65,
+      "SE-E": 65,
+      "SE-M": 22,
+      "SE-D": 57,
+      "SE-AB": 68,
+      "SE-C": 55,
+      "SE-S": 70,
+      "SE-AC": 55,
+      "SE-Y": 100,
+      "SE-U": 72,
+      "SE-O": 84
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Västernorrland, Dalarna och Jönköping."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Västernorrland, Dalarna and Jönköping."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        27485,
+        32354,
+        71205,
+        66456,
+        57198,
+        26825,
+        22054,
+        24815,
+        21647,
+        21232,
+        19213,
+        13767
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 81216,
+        "SE-AB": 45945,
+        "SE-F": 22295,
+        "SE-C": 20062,
+        "SE-E": 17346,
+        "SE-D": 17229,
+        "SE-M": 16111,
+        "SE-N": 15884,
+        "SE-W": 14342,
+        "SE-H": 13620,
+        "SE-T": 12362,
+        "SE-AC": 12014,
+        "SE-G": 11937,
+        "SE-X": 10557,
+        "SE-U": 10497,
+        "SE-S": 10270,
+        "SE-Y": 9917,
+        "SE-BD": 8760,
+        "SE-Z": 5271,
+        "SE-I": 3280,
+        "SE-K": 2740
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

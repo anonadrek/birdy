@@ -1,0 +1,207 @@
+{
+  "qid": "Q215211",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "talltita",
+    "en": "willow-tit"
+  },
+  "names": {
+    "sv": "Talltita",
+    "en": "Willow Tit",
+    "scientific": "Poecile montanus"
+  },
+  "family": {
+    "latin": "Paridae",
+    "sv": "Mesfåglar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q215211/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Francis C. Franklin",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Poecile_montanus_kleinschmidti_2.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q215211/extra.webp",
+      "width": 1200,
+      "height": 917,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Poecile_Montanus_Kittila_20120307.JPG"
+    }
+  ],
+  "audio": {
+    "file": "Q215211/voice.mp3",
+    "durationSec": 12,
+    "trimmed": false,
+    "author": "Anthony Wetherhill",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Poecile_montanus_-_Willow_Tit_XC462898.mp3",
+    "sha256": "b452633bcd32fa51927eac6d22b6e1a196b7f34dab6115be4cc7a4bd0be57308"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Talltita",
+      "revision": "59701395"
+    },
+    "en": {
+      "title": "Willow tit",
+      "revision": "1360622875"
+    },
+    "de": {
+      "title": "Weidenmeise",
+      "revision": "241557096"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2487866,
+    "totalReports": 161933,
+    "months": [
+      93,
+      90,
+      52,
+      26,
+      12,
+      23,
+      31,
+      36,
+      48,
+      56,
+      91,
+      100
+    ],
+    "counties": {
+      "SE-K": 4,
+      "SE-W": 38,
+      "SE-X": 29,
+      "SE-I": 1,
+      "SE-N": 4,
+      "SE-Z": 70,
+      "SE-F": 14,
+      "SE-H": 8,
+      "SE-G": 18,
+      "SE-BD": 100,
+      "SE-T": 18,
+      "SE-E": 9,
+      "SE-M": 2,
+      "SE-D": 12,
+      "SE-AB": 8,
+      "SE-C": 13,
+      "SE-S": 25,
+      "SE-AC": 56,
+      "SE-Y": 44,
+      "SE-U": 22,
+      "SE-O": 9
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november till februari.",
+        "Vanligast i rapporterna från Norrbotten, Jämtland och Västerbotten."
+      ],
+      "en": [
+        "Reported most in November to February.",
+        "Most common in reports from Norrbotten, Jämtland and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        23574,
+        15718,
+        16651,
+        12982,
+        6883,
+        8010,
+        7974,
+        10087,
+        14604,
+        16514,
+        15218,
+        13312
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-BD": 26730,
+        "SE-AC": 19776,
+        "SE-O": 14243,
+        "SE-Z": 10451,
+        "SE-W": 9958,
+        "SE-AB": 8409,
+        "SE-C": 7482,
+        "SE-Y": 6913,
+        "SE-X": 6160,
+        "SE-H": 6159,
+        "SE-F": 5899,
+        "SE-S": 5878,
+        "SE-D": 5610,
+        "SE-T": 5358,
+        "SE-U": 5035,
+        "SE-G": 4149,
+        "SE-E": 3842,
+        "SE-M": 2169,
+        "SE-N": 1905,
+        "SE-K": 497,
+        "SE-I": 5
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

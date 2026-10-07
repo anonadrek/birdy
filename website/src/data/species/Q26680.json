@@ -1,0 +1,207 @@
+{
+  "qid": "Q26680",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "vitkindad-gas",
+    "en": "barnacle-goose"
+  },
+  "names": {
+    "sv": "Vitkindad gås",
+    "en": "Barnacle Goose",
+    "scientific": "Branta leucopsis"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Egentliga andfåglar"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26680/hero.webp",
+      "width": 1600,
+      "height": 1600,
+      "author": "Tsyganov Sergey",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Branta_leucopsis_Белощёкая_казарка_в_Санкт-Петербурге_03.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26680/extra.webp",
+      "width": 1200,
+      "height": 709,
+      "author": "Tsyganov Sergey",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Branta_leucopsis_Белощёкая_казарка_в_Санкт-Петербурге_05.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26680/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Joost van Bruggen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Branta_leucopsis_-_Barnacle_Goose_XC433386.mp3",
+    "sha256": "f05705cb2a16a435bf69281edabc6c601d4a406a4f0e805851f3c04f16c3718d"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Vitkindad gås",
+      "revision": "59709568"
+    },
+    "en": {
+      "title": "Barnacle goose",
+      "revision": "1369802615"
+    },
+    "de": {
+      "title": "Weißwangengans",
+      "revision": "270913170"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 5232464,
+    "totalReports": 282871,
+    "months": [
+      33,
+      49,
+      77,
+      76,
+      67,
+      44,
+      41,
+      47,
+      44,
+      100,
+      68,
+      40
+    ],
+    "counties": {
+      "SE-K": 90,
+      "SE-W": 45,
+      "SE-X": 39,
+      "SE-I": 78,
+      "SE-N": 100,
+      "SE-Z": 30,
+      "SE-F": 32,
+      "SE-H": 87,
+      "SE-G": 39,
+      "SE-BD": 14,
+      "SE-T": 47,
+      "SE-E": 52,
+      "SE-M": 85,
+      "SE-D": 30,
+      "SE-AB": 50,
+      "SE-C": 41,
+      "SE-S": 29,
+      "SE-AC": 27,
+      "SE-Y": 31,
+      "SE-U": 49,
+      "SE-O": 48
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Halland, Blekinge och Kalmar."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Halland, Blekinge and Kalmar."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        10701,
+        11042,
+        31918,
+        49160,
+        51887,
+        19835,
+        13717,
+        17022,
+        17354,
+        38264,
+        14682,
+        6979
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-M": 44444,
+        "SE-O": 33628,
+        "SE-H": 32470,
+        "SE-AB": 24518,
+        "SE-N": 21764,
+        "SE-C": 10924,
+        "SE-E": 10117,
+        "SE-I": 7687,
+        "SE-D": 6530,
+        "SE-T": 6467,
+        "SE-F": 6149,
+        "SE-W": 5410,
+        "SE-U": 5160,
+        "SE-K": 4602,
+        "SE-AC": 4263,
+        "SE-G": 4090,
+        "SE-X": 3778,
+        "SE-S": 3131,
+        "SE-Y": 2252,
+        "SE-Z": 2014,
+        "SE-BD": 1653
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

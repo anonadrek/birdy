@@ -1,0 +1,75 @@
+{
+  "qid": "Q27075477",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "gronsangare",
+    "en": "wood-warbler"
+  },
+  "names": {
+    "sv": "Grönsångare",
+    "en": "Wood Warbler",
+    "scientific": "Phylloscopus sibilatrix"
+  },
+  "family": {
+    "latin": "Phylloscopidae",
+    "sv": "Lövsångare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q27075477/hero.webp",
+      "width": 1600,
+      "height": 1045,
+      "author": "Blondinrikard Fröberg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wood_warbler,_Phylloscopus_sibilatrix,_Grönsångare_(49853695263).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q27075477/extra.webp",
+      "width": 1200,
+      "height": 1763,
+      "author": "Matti Virtala",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rhadina_sibilatrix_Oulu_Finland_2021-05-12_(1).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q27075477/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Pichard",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:20080510_1117_Phylloscopus_sibilatrix.ogg",
+    "sha256": "e97408e2f74993967d571be1dd8951acc5a161c10160f3a0ed367cabdf2c5f0c"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Grönsångare",
+      "revision": "59562973"
+    },
+    "en": {
+      "title": "Wood warbler",
+      "revision": "1315227310"
+    },
+    "de": {
+      "title": "Waldlaubsänger",
+      "revision": "236669549"
+    }
+  }
+}

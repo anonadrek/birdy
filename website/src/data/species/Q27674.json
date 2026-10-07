@@ -1,0 +1,199 @@
+{
+  "qid": "Q27674",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "harmsangare",
+    "en": "icterine-warbler"
+  },
+  "names": {
+    "sv": "Härmsångare",
+    "en": "Icterine Warbler",
+    "scientific": "Hippolais icterina"
+  },
+  "family": {
+    "latin": "Acrocephalidae",
+    "sv": "Kärrsångare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q27674/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Jevgenijs Slihto",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hippolais_icterina,_Riga,_Latvia_1.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q27674/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Olivier Grimm",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hippolais_icterina_-_Icterine_Warbler_XC561005.mp3",
+    "sha256": "283d49ec693545c41e83ac60117b92dd2d7d2fa8be06da6a5044354d56666f90"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Härmsångare",
+      "revision": "59563777"
+    },
+    "en": {
+      "title": "Icterine warbler",
+      "revision": "1361296227"
+    },
+    "de": {
+      "title": "Gelbspötter",
+      "revision": "240316407"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2493220,
+    "totalReports": 98846,
+    "months": [
+      0,
+      1,
+      0,
+      1,
+      83,
+      100,
+      31,
+      17,
+      1,
+      1,
+      0,
+      0
+    ],
+    "counties": {
+      "SE-K": 90,
+      "SE-W": 61,
+      "SE-X": 53,
+      "SE-I": 100,
+      "SE-N": 42,
+      "SE-Z": 67,
+      "SE-F": 36,
+      "SE-H": 94,
+      "SE-G": 27,
+      "SE-BD": 4,
+      "SE-T": 63,
+      "SE-E": 39,
+      "SE-M": 56,
+      "SE-D": 31,
+      "SE-AB": 39,
+      "SE-C": 37,
+      "SE-S": 55,
+      "SE-AC": 31,
+      "SE-Y": 56,
+      "SE-U": 42,
+      "SE-O": 41
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i maj och juni.",
+        "Nästan aldrig i september till april.",
+        "Vanligast i rapporterna från Gotland, Kalmar och Blekinge."
+      ],
+      "en": [
+        "Reported most in May and June.",
+        "Almost never in September to April.",
+        "Most common in reports from Gotland, Kalmar and Blekinge."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        1,
+        0,
+        36,
+        50254,
+        35064,
+        8109,
+        4951,
+        228,
+        3,
+        0,
+        0
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-H": 14957,
+        "SE-M": 12400,
+        "SE-O": 12221,
+        "SE-AB": 8148,
+        "SE-I": 4196,
+        "SE-C": 4167,
+        "SE-N": 3835,
+        "SE-T": 3705,
+        "SE-E": 3183,
+        "SE-W": 3082,
+        "SE-F": 2985,
+        "SE-D": 2911,
+        "SE-S": 2506,
+        "SE-X": 2199,
+        "SE-AC": 2094,
+        "SE-K": 1951,
+        "SE-Z": 1918,
+        "SE-U": 1902,
+        "SE-Y": 1703,
+        "SE-G": 1189,
+        "SE-BD": 217
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "qid": "Q14683",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "grasparv",
+    "en": "house-sparrow"
+  },
+  "names": {
+    "sv": "Gråsparv",
+    "en": "House Sparrow",
+    "scientific": "Passer domesticus"
+  },
+  "family": {
+    "latin": "Passeridae",
+    "sv": "Sparvfinkar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q14683/hero.webp",
+      "width": 1600,
+      "height": 1064,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:House_sparrow_(Passer_domesticus),_Amrum.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q14683/extra.webp",
+      "width": 1200,
+      "height": 1600,
+      "author": "Julian Herzog",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Male_House_Sparrow_Passer_Domesticus_Brackley_2025_01.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q14683/voice.mp3",
+    "durationSec": 11,
+    "trimmed": false,
+    "author": "Jonathon Jongsma",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Passer_domesticus_-_House_Sparrow_-_XC86749.ogg",
+    "sha256": "599d13fd1dc58bd49fb37fc0e2ba0900c4cc5c17af7305a110d3fb068d58f81a"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Gråsparv",
+      "revision": "59562557"
+    },
+    "en": {
+      "title": "House sparrow",
+      "revision": "1373712122"
+    },
+    "de": {
+      "title": "Haussperling",
+      "revision": "270741398"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 5231190,
+    "totalReports": 185920,
+    "months": [
+      100,
+      68,
+      39,
+      27,
+      27,
+      36,
+      38,
+      28,
+      24,
+      32,
+      54,
+      70
+    ],
+    "counties": {
+      "SE-K": 54,
+      "SE-W": 42,
+      "SE-X": 100,
+      "SE-I": 41,
+      "SE-N": 45,
+      "SE-Z": 30,
+      "SE-F": 57,
+      "SE-H": 75,
+      "SE-G": 24,
+      "SE-BD": 85,
+      "SE-T": 46,
+      "SE-E": 96,
+      "SE-M": 45,
+      "SE-D": 74,
+      "SE-AB": 73,
+      "SE-C": 69,
+      "SE-S": 32,
+      "SE-AC": 47,
+      "SE-Y": 63,
+      "SE-U": 44,
+      "SE-O": 63
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i januari.",
+        "Vanligast i rapporterna från Gävleborg, Östergötland och Norrbotten."
+      ],
+      "en": [
+        "Reported most in January.",
+        "Most common in reports from Gävleborg, Östergötland and Norrbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        32690,
+        15215,
+        16077,
+        17344,
+        20648,
+        16304,
+        12471,
+        10008,
+        9387,
+        12090,
+        11547,
+        12055
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 29727,
+        "SE-AB": 24286,
+        "SE-H": 18863,
+        "SE-M": 15886,
+        "SE-E": 12490,
+        "SE-C": 12310,
+        "SE-D": 10922,
+        "SE-F": 7415,
+        "SE-BD": 6996,
+        "SE-X": 6538,
+        "SE-N": 6508,
+        "SE-AC": 5060,
+        "SE-T": 4259,
+        "SE-W": 3420,
+        "SE-U": 3112,
+        "SE-Y": 3053,
+        "SE-I": 2713,
+        "SE-S": 2315,
+        "SE-K": 1848,
+        "SE-G": 1664,
+        "SE-Z": 1392
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

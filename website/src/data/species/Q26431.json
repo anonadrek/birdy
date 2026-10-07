@@ -1,0 +1,209 @@
+{
+  "qid": "Q26431",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "brun-karrhok",
+    "en": "western-marsh-harrier"
+  },
+  "names": {
+    "sv": "Brun kärrhök",
+    "en": "Western Marsh Harrier",
+    "scientific": "Circus aeruginosus"
+  },
+  "family": {
+    "latin": "Accipitridae",
+    "sv": "Hökar"
+  },
+  "group": "raptors",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26431/hero.webp",
+      "width": 1600,
+      "height": 1040,
+      "author": "Luiz Lapa",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tartaranhão-ruivo-dos-pauis,_Águia-sapeira(ocidental),_(Western)_Marsh_Harrier_(54466566761).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26431/extra.webp",
+      "width": 1200,
+      "height": 730,
+      "author": "Zeynel Cebeci",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Circus_aeruginosus_-_Western_Marsh_Harrier_2021-03-27.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26431/voice.mp3",
+    "durationSec": 12,
+    "trimmed": false,
+    "author": "Sternanita2",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Call_circus_aeruginosus.ogg",
+    "sha256": "6e55bde3b56b75d5cc24edc1b855f5be16563779ced1e912b1c12a503e49fcfa"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Brun kärrhök",
+      "revision": "59481516"
+    },
+    "en": {
+      "title": "Western marsh harrier",
+      "revision": "1369217069"
+    },
+    "de": {
+      "title": "Rohrweihe",
+      "revision": "265424248"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2480482,
+    "totalReports": 320607,
+    "months": [
+      1,
+      1,
+      10,
+      74,
+      56,
+      43,
+      59,
+      100,
+      62,
+      8,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 34,
+      "SE-W": 87,
+      "SE-X": 49,
+      "SE-I": 48,
+      "SE-N": 77,
+      "SE-Z": 24,
+      "SE-F": 68,
+      "SE-H": 64,
+      "SE-G": 45,
+      "SE-BD": 20,
+      "SE-T": 84,
+      "SE-E": 81,
+      "SE-M": 56,
+      "SE-D": 70,
+      "SE-AB": 54,
+      "SE-C": 87,
+      "SE-S": 84,
+      "SE-AC": 20,
+      "SE-Y": 32,
+      "SE-U": 100,
+      "SE-O": 57
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i augusti.",
+        "Nästan aldrig i oktober till mars.",
+        "Vanligast i rapporterna från Västmanland, Dalarna och Uppsala."
+      ],
+      "en": [
+        "Reported most in August.",
+        "Almost never in October to March.",
+        "Most common in reports from Västmanland, Dalarna and Uppsala."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        116,
+        108,
+        7014,
+        76768,
+        70193,
+        31045,
+        31356,
+        58545,
+        39721,
+        4928,
+        164,
+        59
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 45386,
+        "SE-M": 33355,
+        "SE-AB": 30139,
+        "SE-H": 27273,
+        "SE-C": 25892,
+        "SE-N": 18881,
+        "SE-E": 17873,
+        "SE-D": 17375,
+        "SE-F": 14979,
+        "SE-T": 13180,
+        "SE-U": 11993,
+        "SE-W": 11757,
+        "SE-S": 10132,
+        "SE-X": 5419,
+        "SE-I": 5396,
+        "SE-G": 5262,
+        "SE-AC": 3640,
+        "SE-BD": 2705,
+        "SE-Y": 2571,
+        "SE-K": 1942,
+        "SE-Z": 1814
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

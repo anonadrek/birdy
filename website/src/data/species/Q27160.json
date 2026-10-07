@@ -1,0 +1,209 @@
+{
+  "qid": "Q27160",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "silltrut",
+    "en": "lesser-black-backed-gull"
+  },
+  "names": {
+    "sv": "Silltrut",
+    "en": "Lesser Black-backed Gull",
+    "scientific": "Larus fuscus"
+  },
+  "family": {
+    "latin": "Laridae",
+    "sv": "Måsfåglar"
+  },
+  "group": "gulls_terns",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q27160/hero.webp",
+      "width": 1600,
+      "height": 1064,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lesser_black-backed_gull_(Larus_fuscus).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q27160/extra.webp",
+      "width": 1200,
+      "height": 801,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Larus_fuscus_Reykjavik_20120623_03.JPG"
+    }
+  ],
+  "audio": {
+    "file": "Q27160/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Tanguy Loïs",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gaviota_sombr%C3%ADa_(Larus_fuscus).wav",
+    "sha256": "b17a9e6fda9abfb02fba96d7731d92de2feb4dcf40eabe84e6accfc0348e0c24"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Silltrut",
+      "revision": "59206157"
+    },
+    "en": {
+      "title": "Lesser black-backed gull",
+      "revision": "1361736318"
+    },
+    "de": {
+      "title": "Heringsmöwe",
+      "revision": "253193104"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2481174,
+    "totalReports": 131605,
+    "months": [
+      1,
+      1,
+      41,
+      84,
+      63,
+      68,
+      100,
+      87,
+      49,
+      16,
+      6,
+      3
+    ],
+    "counties": {
+      "SE-K": 31,
+      "SE-W": 7,
+      "SE-X": 30,
+      "SE-I": 65,
+      "SE-N": 79,
+      "SE-Z": 4,
+      "SE-F": 7,
+      "SE-H": 37,
+      "SE-G": 2,
+      "SE-BD": 31,
+      "SE-T": 4,
+      "SE-E": 8,
+      "SE-M": 31,
+      "SE-D": 8,
+      "SE-AB": 100,
+      "SE-C": 34,
+      "SE-S": 18,
+      "SE-AC": 13,
+      "SE-Y": 22,
+      "SE-U": 5,
+      "SE-O": 56
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april, juli och augusti.",
+        "Nästan aldrig i november till februari.",
+        "Vanligast i rapporterna från Stockholm, Halland och Gotland."
+      ],
+      "en": [
+        "Reported most in April, July and August.",
+        "Almost never in November to February.",
+        "Most common in reports from Stockholm, Halland and Gotland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        156,
+        153,
+        9254,
+        29278,
+        26363,
+        16399,
+        17910,
+        17095,
+        10429,
+        3348,
+        678,
+        242
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-AB": 30020,
+        "SE-O": 24114,
+        "SE-N": 10478,
+        "SE-M": 9864,
+        "SE-H": 8421,
+        "SE-C": 5495,
+        "SE-I": 3938,
+        "SE-BD": 2310,
+        "SE-X": 1758,
+        "SE-AC": 1268,
+        "SE-S": 1137,
+        "SE-D": 1106,
+        "SE-Y": 975,
+        "SE-K": 948,
+        "SE-E": 928,
+        "SE-F": 767,
+        "SE-W": 534,
+        "SE-T": 355,
+        "SE-U": 353,
+        "SE-Z": 156,
+        "SE-G": 149
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

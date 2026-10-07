@@ -1,0 +1,209 @@
+{
+  "qid": "Q25429",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "ladusvala",
+    "en": "barn-swallow"
+  },
+  "names": {
+    "sv": "Ladusvala",
+    "en": "Barn Swallow",
+    "scientific": "Hirundo rustica"
+  },
+  "family": {
+    "latin": "Hirundinidae",
+    "sv": "Svalor"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25429/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Аимаина хикари",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hirundo_rustica_Zazymya3.JPG"
+    },
+    {
+      "role": "extra",
+      "file": "Q25429/extra.webp",
+      "width": 1200,
+      "height": 899,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hirundo_rustica_nest_Kuivaniemi_20140614_01.JPG"
+    }
+  ],
+  "audio": {
+    "file": "Q25429/voice.mp3",
+    "durationSec": 19,
+    "trimmed": false,
+    "author": "Jonathon Jongsma",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hirundo_rustica_-_Barn_Swallow_-_XC83449.ogg",
+    "sha256": "ddd5e808c415ebd6f0c2124501789843239368e94b5f39670a7c3e7d3686ae63"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Ladusvala",
+      "revision": "59569628"
+    },
+    "en": {
+      "title": "Barn swallow",
+      "revision": "1376326986"
+    },
+    "de": {
+      "title": "Rauchschwalbe",
+      "revision": "269968261"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 9515886,
+    "totalReports": 351801,
+    "months": [
+      0,
+      1,
+      1,
+      32,
+      73,
+      62,
+      80,
+      100,
+      71,
+      15,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 77,
+      "SE-W": 91,
+      "SE-X": 87,
+      "SE-I": 70,
+      "SE-N": 87,
+      "SE-Z": 99,
+      "SE-F": 83,
+      "SE-H": 87,
+      "SE-G": 86,
+      "SE-BD": 83,
+      "SE-T": 86,
+      "SE-E": 78,
+      "SE-M": 100,
+      "SE-D": 87,
+      "SE-AB": 82,
+      "SE-C": 71,
+      "SE-S": 81,
+      "SE-AC": 83,
+      "SE-Y": 90,
+      "SE-U": 60,
+      "SE-O": 97
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juli och augusti.",
+        "Nästan aldrig i november till mars.",
+        "Vanligast i rapporterna från Skåne, Jämtland och Västra Götaland."
+      ],
+      "en": [
+        "Reported most in July and August.",
+        "Almost never in November to March.",
+        "Most common in reports from Skåne, Jämtland and Västra Götaland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        14,
+        79,
+        35521,
+        98496,
+        48658,
+        46341,
+        63102,
+        49095,
+        9819,
+        517,
+        1
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 58050,
+        "SE-M": 44557,
+        "SE-AB": 34580,
+        "SE-H": 27626,
+        "SE-D": 16088,
+        "SE-C": 16024,
+        "SE-N": 15981,
+        "SE-F": 13643,
+        "SE-E": 12796,
+        "SE-AC": 11345,
+        "SE-T": 10136,
+        "SE-W": 9236,
+        "SE-BD": 8620,
+        "SE-G": 7627,
+        "SE-S": 7351,
+        "SE-X": 7198,
+        "SE-I": 5882,
+        "SE-Z": 5696,
+        "SE-Y": 5512,
+        "SE-U": 5399,
+        "SE-K": 3324
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

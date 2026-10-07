@@ -1,0 +1,207 @@
+{
+  "qid": "Q25405",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "grakraka",
+    "en": "hooded-crow"
+  },
+  "names": {
+    "sv": "Gråkråka",
+    "en": "Hooded Crow",
+    "scientific": "Corvus cornix"
+  },
+  "family": {
+    "latin": "Corvidae",
+    "sv": "Kråkfåglar"
+  },
+  "group": "songbirds",
+  "iucn": "NE",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25405/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Nicolas Weghaupt",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Corvus_cornix_Vienna.JPG"
+    },
+    {
+      "role": "extra",
+      "file": "Q25405/extra.webp",
+      "width": 1200,
+      "height": 861,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Corvus_cornix_Oulu_20160130.JPG"
+    }
+  ],
+  "audio": {
+    "file": "Q25405/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Qypchak",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%9A%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%BD%D1%8F.ogg",
+    "sha256": "4c697dcd0fcd5b766c53fe2125da3e9d36dc44affdde2bd369a38c4eac0ce118"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Gråkråka",
+      "revision": "59133938"
+    },
+    "en": {
+      "title": "Hooded crow",
+      "revision": "1376334673"
+    },
+    "de": {
+      "title": "Nebelkrähe",
+      "revision": "270837787"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2482515,
+    "totalReports": 554093,
+    "months": [
+      100,
+      88,
+      68,
+      46,
+      39,
+      43,
+      44,
+      40,
+      43,
+      54,
+      75,
+      86
+    ],
+    "counties": {
+      "SE-K": 55,
+      "SE-W": 57,
+      "SE-X": 100,
+      "SE-I": 50,
+      "SE-N": 61,
+      "SE-Z": 77,
+      "SE-F": 80,
+      "SE-H": 38,
+      "SE-G": 58,
+      "SE-BD": 78,
+      "SE-T": 48,
+      "SE-E": 82,
+      "SE-M": 68,
+      "SE-D": 100,
+      "SE-AB": 82,
+      "SE-C": 99,
+      "SE-S": 57,
+      "SE-AC": 66,
+      "SE-Y": 81,
+      "SE-U": 50,
+      "SE-O": 81
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Vanligast i rapporterna från Gävleborg, Södermanland och Uppsala."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Most common in reports from Gävleborg, Södermanland and Uppsala."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        70614,
+        42473,
+        60862,
+        63498,
+        64231,
+        41692,
+        31049,
+        31427,
+        36797,
+        44503,
+        34723,
+        32031
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 92116,
+        "SE-AB": 65690,
+        "SE-M": 57515,
+        "SE-C": 42035,
+        "SE-D": 35226,
+        "SE-E": 25576,
+        "SE-F": 25057,
+        "SE-H": 23040,
+        "SE-N": 21385,
+        "SE-AC": 17058,
+        "SE-X": 15713,
+        "SE-BD": 15460,
+        "SE-W": 10950,
+        "SE-T": 10697,
+        "SE-G": 9811,
+        "SE-S": 9777,
+        "SE-Y": 9426,
+        "SE-U": 8626,
+        "SE-Z": 8444,
+        "SE-I": 7936,
+        "SE-K": 4491
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

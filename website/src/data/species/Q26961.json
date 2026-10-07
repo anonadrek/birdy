@@ -1,0 +1,209 @@
+{
+  "qid": "Q26961",
+  "status": "pending",
+  "publish": false,
+  "review": {},
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "savsparv",
+    "en": "common-reed-bunting"
+  },
+  "names": {
+    "sv": "Sävsparv",
+    "en": "Common Reed Bunting",
+    "scientific": "Emberiza schoeniclus"
+  },
+  "family": {
+    "latin": "Emberizidae",
+    "sv": "Fältsparvar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26961/hero.webp",
+      "width": 1469,
+      "height": 2400,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_reed_bunting_(Emberiza_schoeniclus)_2021.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26961/extra.webp",
+      "width": 1200,
+      "height": 1800,
+      "author": "caroline legg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Reed_Bunting_(Male)_-_Emberiza_schoeniclus_(50968939411).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26961/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Tommy Andriollo",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Emberiza_schoeniclus_-_Common_Reed_Bunting_XC552170.mp3",
+    "sha256": "c1e2e5cddcb64e57daa95aa7372a3f15e813e854c7c719a23584057cb22dffc6"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Sävsparv",
+      "revision": "59710023"
+    },
+    "en": {
+      "title": "Common reed bunting",
+      "revision": "1335493293"
+    },
+    "de": {
+      "title": "Rohrammer",
+      "revision": "267392352"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T11:39:41.565281+00:00",
+    "gbifTaxonKey": 2491557,
+    "totalReports": 329715,
+    "months": [
+      10,
+      8,
+      54,
+      67,
+      59,
+      59,
+      46,
+      40,
+      100,
+      53,
+      15,
+      9
+    ],
+    "counties": {
+      "SE-K": 38,
+      "SE-W": 71,
+      "SE-X": 75,
+      "SE-I": 30,
+      "SE-N": 69,
+      "SE-Z": 84,
+      "SE-F": 75,
+      "SE-H": 49,
+      "SE-G": 98,
+      "SE-BD": 100,
+      "SE-T": 92,
+      "SE-E": 64,
+      "SE-M": 58,
+      "SE-D": 65,
+      "SE-AB": 58,
+      "SE-C": 79,
+      "SE-S": 71,
+      "SE-AC": 98,
+      "SE-Y": 57,
+      "SE-U": 53,
+      "SE-O": 76
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september.",
+        "Nästan aldrig i december till februari.",
+        "Vanligast i rapporterna från Norrbotten, Kronoberg och Västerbotten."
+      ],
+      "en": [
+        "Reported most in September.",
+        "Almost never in December to February.",
+        "Most common in reports from Norrbotten, Kronoberg and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        4343,
+        2400,
+        31155,
+        60027,
+        63339,
+        36916,
+        21381,
+        20141,
+        55076,
+        27956,
+        4352,
+        2172
+      ],
+      "allBirdsByMonth": [
+        3179223,
+        2184298,
+        4041377,
+        6254366,
+        7498517,
+        4350909,
+        3211861,
+        3519738,
+        3842434,
+        3708719,
+        2093064,
+        1672763
+      ],
+      "speciesByCounty": {
+        "SE-O": 52786,
+        "SE-M": 30376,
+        "SE-AB": 28521,
+        "SE-C": 20587,
+        "SE-H": 18100,
+        "SE-AC": 15595,
+        "SE-N": 14977,
+        "SE-F": 14449,
+        "SE-D": 14141,
+        "SE-T": 12628,
+        "SE-E": 12398,
+        "SE-BD": 12111,
+        "SE-G": 10131,
+        "SE-W": 8428,
+        "SE-S": 7557,
+        "SE-X": 7224,
+        "SE-Z": 5671,
+        "SE-U": 5566,
+        "SE-Y": 4108,
+        "SE-I": 2929,
+        "SE-K": 1918
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6520437,
+        "SE-M": 4873404,
+        "SE-AB": 4586228,
+        "SE-H": 3476560,
+        "SE-C": 2454082,
+        "SE-D": 2027684,
+        "SE-N": 2020559,
+        "SE-E": 1804101,
+        "SE-F": 1799934,
+        "SE-AC": 1487351,
+        "SE-T": 1284756,
+        "SE-BD": 1134977,
+        "SE-W": 1113972,
+        "SE-S": 991562,
+        "SE-U": 985926,
+        "SE-G": 966846,
+        "SE-I": 919673,
+        "SE-X": 904064,
+        "SE-Y": 669995,
+        "SE-Z": 631349,
+        "SE-K": 472600
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}
