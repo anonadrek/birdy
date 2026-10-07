@@ -5,6 +5,9 @@ import type { Locale } from './i18n';
 export const albitProductHref = (locale: Locale): string =>
   locale === 'sv' ? 'https://www.albit.se/produkter/birdy/' : 'https://www.albit.se/en/products/birdy/';
 
+/** The Premium page (plan 2026-10-08 Task 6). */
+export const premiumHref = (locale: Locale): string => (locale === 'sv' ? '/sv/premium/' : '/premium/');
+
 /** Contact address on the site. A bridge until feedback@birdy.community exists (CLAUDE.md, follow-up #2). */
 export const CONTACT_EMAIL = 'albin@abrahamssons.se';
 

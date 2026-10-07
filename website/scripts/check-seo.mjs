@@ -9,7 +9,8 @@ import { fileURLToPath } from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = resolve(root, process.argv[2] ?? 'dist');
 const SITE = 'https://birdy.community';
-const NEW = ['/species/', '/sv/arter/'];
+// The Premium page (plan 2026-10-08 Task 6) is held to the same rules as the species pages.
+const NEW = ['/species/', '/sv/arter/', '/premium/', '/sv/premium/'];
 
 if (!existsSync(dist)) {
   console.error(`check-seo: ${dist} saknas, bygg först`);

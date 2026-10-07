@@ -278,7 +278,7 @@ export function appText(s: Species | undefined, t: Copy): string {
 }
 
 /** Play link with UTM tags, readable in Play Console's acquisition report (spec §15). */
-export function playHref(campaign: string, medium: 'species' | 'group' | 'hub' | 'compare'): string {
+export function playHref(campaign: string, medium: 'species' | 'group' | 'hub' | 'compare' | 'premium'): string {
   const referrer = `utm_source=birdy.community&utm_medium=${medium}&utm_campaign=${campaign}`;
   return `${PLAY_URL}&referrer=${encodeURIComponent(referrer)}`;
 }

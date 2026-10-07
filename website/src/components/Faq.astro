@@ -4,6 +4,7 @@ import JournalHeadline from './ui/JournalHeadline.astro';
 import MarginNote from './ui/MarginNote.astro';
 import FaqItem from './ui/FaqItem.astro';
 import { type Locale, getCopy } from '../lib/i18n';
+import { premiumHref } from '../lib/links';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -18,7 +19,7 @@ const t = getCopy(locale);
       <MarginNote text={t.faq.note} align="center" />
     </div>
     <div data-reveal style="--rd:120ms">
-      {t.faq.items.map((item, i) => <FaqItem question={item.q} answer={item.a} open={i === 0} />)}
+      {t.faq.items.map((item, i) => <FaqItem question={item.q} answer={item.a} open={i === 0} link={'premium' in item && item.premium ? { href: premiumHref(locale), text: t.faq.premiumLink } : undefined} />)}
     </div>
   </div>
 </section>
