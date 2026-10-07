@@ -8,6 +8,8 @@ import se.birdy.app.SpeciesRepositoryProvider
 import se.birdy.app.badges.BadgeCatalogLoader
 import se.birdy.app.i18n.AppStrings
 import se.birdy.app.i18n.LocaleResolver
+import se.birdy.app.i18n.appliedLocaleTags
+import se.birdy.app.i18n.reconcileAppLanguage
 import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.content.SpeciesId
 import se.birdy.data.DatabaseFactory
@@ -46,7 +48,9 @@ internal object AndroidNotificationPayloads {
         try {
             val birdyData = BirdyData(driver)
             val userPreferences = UserPreferencesStore(appContext).preferences()
-            val overrideTag = userPreferences.appLanguage.first().toLocaleTagOrNull()
+            // Same rule as MainActivity: a language set in Android's settings wins (API 33+), also
+            // for the overnight notification when the app hasn't been opened since.
+            val overrideTag = reconcileAppLanguage(userPreferences, appContext.appliedLocaleTags()).toLocaleTagOrNull()
             val resolvedLocale =
                 LocaleResolver.resolve(
                     override = overrideTag,
