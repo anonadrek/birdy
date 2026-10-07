@@ -1,6 +1,6 @@
 {
   "qid": "Q25405",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
@@ -9,29 +9,29 @@
     {
       "id": "f01",
       "topic": "appearance",
-      "sv": "Vuxen gråkråka har svart huvud, haka, övre bröst, vingpennor och stjärt, medan resten av fjäderdräkten är askgrå.",
+      "sv": "Hos den vuxna gråkråkan är huvud, haka, övre bröst, vingpennor, en del av vingtäckarna och stjärt svarta.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Huvudet, hakan, övre delen av bröstet, vingpennorna, en del av vingtäckarna (handtäckare och större armtäckare) och stjärten är hos den vuxna fågeln svarta. I övrigt är fjäderdräkten askgrå."
+          "quote": "Huvudet, hakan, övre delen av bröstet, vingpennorna, en del av vingtäckarna (handtäckare och större armtäckare) och stjärten är hos den vuxna fågeln svarta."
         }
       ]
     },
     {
       "id": "f02",
       "topic": "appearance",
-      "sv": "Näbben och benen är svarta och irisen är mörkbrun.",
+      "sv": "Resten av fjäderdräkten är askgrå.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Den har svart näbb och ben, och iris är mörkbrun."
+          "quote": "I övrigt är fjäderdräkten askgrå."
         }
       ]
     },
     {
       "id": "f03",
       "topic": "appearance",
-      "sv": "Den grå fjäderdräkten har mörka fjäderskaft som ger den ett strimmigt utseende.",
+      "sv": "Den grå fjäderdräkten får ett streckat utseende av de mörka fjäderskaften.",
       "sources": [
         {
           "article": "en",
@@ -42,7 +42,18 @@
     {
       "id": "f04",
       "topic": "appearance",
-      "sv": "Den svarta, fransiga bröstlappen varierar i storlek.",
+      "sv": "Gråkråkan har svart näbb och svarta ben samt mörkbrun iris.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har svart näbb och ben, och iris är mörkbrun."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Den fransiga svarta bröstlappen varierar i storlek.",
       "sources": [
         {
           "article": "de",
@@ -51,18 +62,29 @@
       ]
     },
     {
-      "id": "f05",
+      "id": "f06",
       "topic": "size",
-      "sv": "Gråkråkan är 48–52 centimeter lång, har 84–100 centimeters vingspann och väger i genomsnitt 510 gram.",
+      "sv": "Gråkråkan är 48–52 centimeter lång och har ett vingspann på 84–100 centimeter.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Gråkråkan mäter 48–52 centimeter, har ett vingspann på 84–100 centimeter och väger i genomsnitt 510 gram."
+          "quote": "Gråkråkan mäter 48–52 centimeter, har ett vingspann på 84–100 centimeter"
         }
       ]
     },
     {
-      "id": "f06",
+      "id": "f07",
+      "topic": "size",
+      "sv": "Gråkråkan väger i genomsnitt 510 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "väger i genomsnitt 510 gram"
+        }
+      ]
+    },
+    {
+      "id": "f08",
       "topic": "sex_age",
       "sv": "Hanen är något större än honan, men i övrigt ser könen likadana ut.",
       "sources": [
@@ -73,9 +95,9 @@
       ]
     },
     {
-      "id": "f07",
+      "id": "f09",
       "topic": "sex_age",
-      "sv": "Unga fåglar har mörkare fjäderdräkt än vuxna och blå- till gråaktig iris.",
+      "sv": "Ungfågeln har mörkare fjäderdräkt än de vuxna och blå- till gråaktig iris.",
       "sources": [
         {
           "article": "sv",
@@ -84,7 +106,7 @@
       ]
     },
     {
-      "id": "f08",
+      "id": "f10",
       "topic": "behaviour",
       "sv": "Gråkråkan har en vaggande gång och flyger kraftfullt och långsamt, oftast ganska rakt.",
       "sources": [
@@ -95,20 +117,20 @@
       ]
     },
     {
-      "id": "f09",
+      "id": "f11",
       "topic": "voice",
       "sv": "Gråkråkans kraa-läten går nästan inte att skilja från svartkråkans.",
       "sources": [
         {
           "article": "de",
-          "quote": "die kraa-Rufe der Nebelkrähe und der Rabenkrähe sind fast nicht zu unterscheiden"
+          "quote": "aber die kraa-Rufe der Nebelkrähe und der Rabenkrähe sind fast nicht zu unterscheiden"
         }
       ]
     },
     {
-      "id": "f10",
+      "id": "f12",
       "topic": "voice",
-      "sv": "Kråkorna mobbar rovfåglar genom att förfölja dem under höga skrik.",
+      "sv": "Kråkorna förföljer rovfåglar under höga skrik.",
       "sources": [
         {
           "article": "sv",
@@ -117,24 +139,29 @@
       ]
     },
     {
-      "id": "f11",
+      "id": "f13",
       "topic": "lookalike",
-      "sv": "Svartkråkan liknar gråkråkan men saknar den kontrasterande grå och svarta dräkten; deras läten är nästan omöjliga att skilja åt.",
+      "sv": "Svartkråkan är helsvart, medan gråkråkan skiljer sig genom sina kontrasterande grå och svarta partier.",
       "sources": [
         {
           "article": "en",
-          "quote": "The hooded crow, with its contrasted greys and blacks, is visually distinct from both the carrion crow and the rook, but the  call notes of the hooded and carrion crows are almost indistinguishable."
+          "quote": "The hooded crow, with its contrasted greys and blacks, is visually distinct from both the carrion crow and the rook"
+        },
+        {
+          "article": "en",
+          "quote": "the all-black carrion crows"
         }
       ],
       "other": {
         "scientific": "Corvus corone",
-        "qid": "Q26198"
+        "qid": "Q26198",
+        "written": "Corvus corone corone"
       }
     },
     {
-      "id": "f12",
+      "id": "f14",
       "topic": "habitat",
-      "sv": "Gråkråkan håller gärna till i skogsdungar, men även i parker och trädgårdar nära människor.",
+      "sv": "Gråkråkan håller gärna till i skogsdungar men även i parker och trädgårdar nära människor.",
       "sources": [
         {
           "article": "sv",
@@ -143,9 +170,9 @@
       ]
     },
     {
-      "id": "f13",
+      "id": "f15",
       "topic": "habitat",
-      "sv": "Den lever ofta i öppen terräng och söker föda på fält och åkrar.",
+      "sv": "Gråkråkan lever ofta i öppen terräng och söker föda på fält och åkrar.",
       "sources": [
         {
           "article": "de",
@@ -158,7 +185,7 @@
       ]
     },
     {
-      "id": "f14",
+      "id": "f16",
       "topic": "sweden",
       "sv": "Gråkråkan är vanlig i Sverige och häckar över hela landet.",
       "sources": [
@@ -169,9 +196,9 @@
       ]
     },
     {
-      "id": "f15",
+      "id": "f17",
       "topic": "sweden",
-      "sv": "Den svenska populationen har minskat med i genomsnitt 24 procent under de senaste tre generationerna, alltså 18 år.",
+      "sv": "Den svenska populationen har minskat med i genomsnitt 24 procent under de senaste tre generationerna.",
       "sources": [
         {
           "article": "sv",
@@ -180,20 +207,20 @@
       ]
     },
     {
-      "id": "f16",
+      "id": "f18",
       "topic": "sweden",
       "sv": "År 2020 togs gråkråkan för första gången upp på Artdatabankens rödlista som nära hotad.",
       "sources": [
         {
           "article": "sv",
-          "quote": "togs den därför 2020 för första gången upp på Artdatabankens rödlista, som nära hotad (NT)"
+          "quote": "På grund av detta togs den därför 2020 för första gången upp på Artdatabankens rödlista, som nära hotad (NT)."
         }
       ]
     },
     {
-      "id": "f17",
+      "id": "f19",
       "topic": "breeding",
-      "sv": "Boet byggs i höga träd, i Sverige i slutet av mars eller början av april.",
+      "sv": "I Sverige bygger gråkråkan sitt bo i höga träd i slutet av mars eller början av april.",
       "sources": [
         {
           "article": "sv",
@@ -202,7 +229,7 @@
       ]
     },
     {
-      "id": "f18",
+      "id": "f20",
       "topic": "breeding",
       "sv": "Gamla bon repareras ofta och används på nytt.",
       "sources": [
@@ -213,7 +240,18 @@
       ]
     },
     {
-      "id": "f19",
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet byggs av torra kvistar med gräs, bastremsor och rötter, ett lager lera och innerst ull, hår och andra mjuka fibrer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Underlaget består av torra kvistar. Ovanpå dessa läggs gräs, bastremsor, rötter med mera, därefter ett lager lera och innerst ull, hår, borst och andra mjuka fibrer."
+        }
+      ]
+    },
+    {
+      "id": "f22",
       "topic": "breeding",
       "sv": "Kullen består av tre till sex gröngrå ägg fläckade med leverbrunt och askgrått.",
       "sources": [
@@ -224,7 +262,7 @@
       ]
     },
     {
-      "id": "f20",
+      "id": "f23",
       "topic": "breeding",
       "sv": "Honan ruvar ensam, men båda föräldrarna tar hand om ungarna efter kläckningen.",
       "sources": [
@@ -235,7 +273,7 @@
       ]
     },
     {
-      "id": "f21",
+      "id": "f24",
       "topic": "breeding",
       "sv": "Äggen ruvas i 17–19 dagar och ungarna blir flygga efter 32 till 36 dagar.",
       "sources": [
@@ -250,7 +288,7 @@
       ]
     },
     {
-      "id": "f22",
+      "id": "f25",
       "topic": "food",
       "sv": "Gråkråkan är allätare och äter bland annat as, sniglar, insekter, frukt, säd, småfåglar, smådäggdjur, fisk och fågelägg.",
       "sources": [
@@ -261,19 +299,30 @@
       ]
     },
     {
-      "id": "f23",
+      "id": "f26",
       "topic": "food",
-      "sv": "Den släpper musslor och krabbor från höjden för att krossa dem.",
+      "sv": "Den släpper musslor och krabbor från höjd för att knäcka dem.",
       "sources": [
         {
           "article": "en",
-          "quote": "It drops molluscs and crabs to break them after the manner of the carrion crow"
+          "quote": "It drops molluscs and crabs to break them"
         }
       ]
     },
     {
-      "id": "f24",
+      "id": "f27",
       "topic": "food",
+      "sv": "På kustklippor stjäl den ägg från måsar, skarvar och andra fåglar när de är borta från boet.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "On coastal cliffs, the eggs of gulls, cormorants, and other birds are stolen when their owners are absent"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
       "sv": "Gråkråkan gömmer ofta föda för att äta den senare.",
       "sources": [
         {
@@ -283,9 +332,9 @@
       ]
     },
     {
-      "id": "f25",
+      "id": "f29",
       "topic": "behaviour",
-      "sv": "Under häckningstiden lever gråkråkor i par, under resten av året ofta i flock.",
+      "sv": "Under häckningen lever gråkråkorna parvis, under andra delar av året ofta i flock.",
       "sources": [
         {
           "article": "sv",
@@ -294,24 +343,13 @@
       ]
     },
     {
-      "id": "f26",
+      "id": "f30",
       "topic": "behaviour",
       "sv": "Mot kvällen samlas traktens kråkor för att övernatta i en lund eller skog.",
       "sources": [
         {
           "article": "sv",
           "quote": "Framåt kvällen samlas traktens kråkor och tillbringar natten i någon lund eller skog."
-        }
-      ]
-    },
-    {
-      "id": "f27",
-      "topic": "behaviour",
-      "sv": "När en gråkråka varnar för fara samlas alla kråkor inom hörhåll.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "När en gråkråka av denna anledning eller vid någon fara ger ifrån sig sitt läte samlas alla kråkor som finns inom hörhåll."
         }
       ]
     },
@@ -334,19 +372,308 @@
       "sv": "Inte rödlistad i Svenska rödlistan 2025."
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Gråkråkan är en kråkfågel med svart och askgrå fjäderdräkt.",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Den håller gärna till i skogsdungar, parker och trädgårdar nära människor och söker föda på fält och åkrar.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Svart huvud, haka, övre bröst, vingpennor och stjärt, resten av fjäderdräkten askgrå",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Den grå fjäderdräkten ser streckad ut av de mörka fjäderskaften",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Svart näbb, svarta ben och en fransig svart bröstlapp som varierar i storlek",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Hanen är något större än honan, ungfågeln är mörkare med blå- till gråaktig iris",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Lätet är ett kraa som nästan inte går att skilja från svartkråkans.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Kråkorna förföljer rovfåglar under höga skrik.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Gråkråkan håller gärna till i skogsdungar, men även i parker och trädgårdar nära människor.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Den lever ofta i öppen terräng och söker föda på fält och åkrar.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Arten rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Gråkråkan är allätare och äter bland annat as, sniglar, insekter, frukt, säd, småfåglar, smådäggdjur, fisk och fågelägg.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Musslor och krabbor släpper den från höjd för att knäcka dem, och den gömmer ofta föda till senare.",
+          "factIds": [
+            "f26",
+            "f28"
+          ]
+        },
+        {
+          "text": "Under häckningen lever den parvis, under resten av året ofta i flock.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Mot kvällen samlas traktens kråkor för att övernatta i en lund eller skog.",
+          "factIds": [
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q26198",
+          "text": [
+            {
+              "text": "Svartkråkan är helsvart, medan gråkråkan har kontrasterande grå och svarta partier.",
+              "factIds": [
+                "f13"
+              ]
+            },
+            {
+              "text": "Lätena går nästan inte att skilja åt.",
+              "factIds": [
+                "f11"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Gråkråka: så känner du igen den på den grå och svarta dräkten, hur lätet låter, vilka förväxlingsarter som finns och när den syns.",
+      "facts": {
+        "size": {
+          "value": "48 till 52 cm",
+          "factIds": [
+            "f06"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Hooded Crow is a member of the crow family with black and ash-grey plumage.",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "It likes small woods, parks and gardens near people, and feeds on fields and farmland.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Black head, chin, upper breast, flight feathers and tail, the rest of the plumage ash-grey",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "The grey plumage looks streaked because of the dark feather shafts",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Black bill, black legs and a ragged black breast patch that varies in size",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Males are slightly larger than females, young birds are darker with bluish to greyish eyes",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is a kraa that can hardly be told from that of the Carrion Crow.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Crows chase birds of prey with loud screams.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Hooded Crow likes small woods, and also parks and gardens near people.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "It often lives in open country and feeds on fields and farmland.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "It is reported all year round and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Hooded Crow is omnivorous and eats carrion, snails, insects, fruit, grain, small birds, small mammals, fish and birds' eggs, among other things.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It drops mussels and crabs from a height to crack them, and often hides food to eat later.",
+          "factIds": [
+            "f26",
+            "f28"
+          ]
+        },
+        {
+          "text": "In the breeding season it lives in pairs, at other times of year often in flocks.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Towards evening the local crows gather to roost in a grove or wood.",
+          "factIds": [
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q26198",
+          "text": [
+            {
+              "text": "The Carrion Crow is all black, while the Hooded Crow shows contrasting grey and black areas.",
+              "factIds": [
+                "f13"
+              ]
+            },
+            {
+              "text": "Their calls can hardly be told apart.",
+              "factIds": [
+                "f11"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Hooded Crow: how to recognise it by its grey and black plumage, what its call sounds like, which birds it is confused with and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "48 to 52 cm",
+          "factIds": [
+            "f06"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T18:01:38.342955+00:00"
+      "at": "2026-10-07T18:25:23.683515+00:00"
     },
     "verify": {
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
-      "at": "2026-10-07T18:08:57.902786+00:00",
-      "factsHash": "6374aa7bec8ff854"
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "29c7c384ffafc099"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "29c7c384ffafc099"
     }
   },
   "errors": [],
@@ -544,14 +871,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+      "contradicts": null
     }
   },
-  "flags": [
-    {
-      "check": "V1",
-      "factId": "s01",
-      "message": "Statusen i Sverige ströks av faktakontrollen: The quote confirms the species is common and breeds throughout Sweden, but the paragraph only states migratory status varies by latitude across the species' broader European range (northern populations migratory, southern resident) without specifying which applies to Sweden, so the 'flyttfågel' (migratory) status for Sweden specifically is not confirmed.. Bestäm status eller lämna tom."
-    }
-  ]
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }

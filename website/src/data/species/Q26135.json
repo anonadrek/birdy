@@ -1,6 +1,6 @@
 {
   "qid": "Q26135",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
@@ -20,7 +20,7 @@
     {
       "id": "f02",
       "topic": "appearance",
-      "sv": "Sidensvansen är stor som en stare men verkar större, med kompakt kropp, tjock hals och stort huvud.",
+      "sv": "Sidensvansen är stor som en stare men verkar större genom sin kompakta kropp med tjock hals och stort huvud.",
       "sources": [
         {
           "article": "sv",
@@ -51,9 +51,24 @@
       ]
     },
     {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Armpennorna, ibland även stjärtpennorna, har lackröda bihang som liknar droppar av sigillack.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingarnas armpennor, ibland också stjärtpennorna, har lackröda pergamentartade bihang."
+        },
+        {
+          "article": "en",
+          "quote": "The adult's secondaries end in long red appendages with the sealing wax appearance"
+        }
+      ]
+    },
+    {
       "id": "f06",
       "topic": "appearance",
-      "sv": "Hos vuxna fåglar bildar handpennornas teckningar ett gult streck och vita krokar på den hopfällda vingen.",
+      "sv": "Hos vuxna fåglar ger handpennornas teckningar en gul strimma och vita krokar på den hopfällda vingen.",
       "sources": [
         {
           "article": "en",
@@ -64,18 +79,7 @@
     {
       "id": "f07",
       "topic": "appearance",
-      "sv": "Nedre delen av buken är kraftigt kastanjebrun och området runt den svarta masken är kanelfärgat.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "The lower belly is a rich chestnut colour and there are cinnamon-coloured areas around the mask."
-        }
-      ]
-    },
-    {
-      "id": "f08",
-      "topic": "appearance",
-      "sv": "Övergumpen är grå och stjärten slutar i ett klargult band med ett brett svart fält ovanför.",
+      "sv": "Övergumpen är grå och stjärten slutar i ett klargult band med ett brett svart band ovanför.",
       "sources": [
         {
           "article": "en",
@@ -84,20 +88,31 @@
       ]
     },
     {
-      "id": "f09",
-      "topic": "sex_age",
-      "sv": "Honan liknar hanen men har smalare gult stjärtband och en mindre skarpt avgränsad svart strupe.",
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Ögonen är mörkbruna, näbben mest svart och benen mörkgrå eller svarta.",
       "sources": [
         {
           "article": "en",
-          "quote": "Females are very similar to males, but have a narrower (4–8 mm) yellow terminal band to the tail, a less defined lower edge to the black throat"
+          "quote": "The eyes are dark brown, the bill is mainly black, and the legs are dark grey or black."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Honan liknar hanen men har smalare gult stjärtband, mindre skarpt avgränsad svart strupe och något färre röda vaxspetsar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Females are very similar to males, but have a narrower (4–8 mm) yellow terminal band to the tail, a less defined lower edge to the black throat and slightly fewer red tips"
         }
       ]
     },
     {
       "id": "f10",
       "topic": "sex_age",
-      "sv": "Förstavintersfåglar skiljs från vuxna på handpennornas vita eller mycket blekgula framkant och avsaknad av vit bockmarkering.",
+      "sv": "Fåglar i första vinterdräkten har vit eller mycket blekgul framkant på handpennornas spetsar och saknar den vita bakkantsmarkeringen.",
       "sources": [
         {
           "article": "en",
@@ -108,7 +123,7 @@
     {
       "id": "f11",
       "topic": "sex_age",
-      "sv": "Ungfåglar är mattare än vuxna, med streckad vitare undersida, ingen svart strupe och mindre svart ansiktsmask.",
+      "sv": "Juvenila fåglar är mattare, med streckad vitare undersida, ingen svart strupe och mindre svart ansiktsmask.",
       "sources": [
         {
           "article": "en",
@@ -119,7 +134,7 @@
     {
       "id": "f12",
       "topic": "voice",
-      "sv": "Lätet är mycket karaktäristiskt, hörs ofta från överflygande flockar och beskrivs som ett plingande av silverklockor.",
+      "sv": "Lätet hörs ofta från överflygande flockar och beskrivs som ett plingande av silverklockor.",
       "sources": [
         {
           "article": "sv",
@@ -134,55 +149,55 @@
     {
       "id": "f13",
       "topic": "voice",
-      "sv": "Lätet är en hög drill, ungefär ”sirrrr”.",
+      "sv": "Lätet är en hög drill, ”sirrrr”, som kan låta som ett klingande nyckelknippe.",
       "sources": [
         {
           "article": "en",
           "quote": "The Bohemian waxwing's call is a high trill sirrrr."
+        },
+        {
+          "article": "de",
+          "quote": "Sein gläserner Ruf klingt wie „Sirrrrr“ oder „wie ein klingelnder Schlüsselbund“."
         }
       ]
     },
     {
       "id": "f14",
-      "topic": "voice",
-      "sv": "När en flock lyfter eller landar ger vingarna ett tydligt rasslande ljud som hörs 30 meter bort.",
+      "topic": "behaviour",
+      "sv": "När en flock lyfter eller landar ger vingarna ett skallrande ljud som hörs på 30 meters avstånd.",
       "sources": [
         {
           "article": "en",
-          "quote": "when a flock takes off or lands, the wings make a distinctive rattling sound that can be heard 30 m (98 ft) away"
+          "quote": "when a flock takes off or lands, the wings make a distinctive rattling sound that can be heard 30 m (98 ft) away."
         }
       ]
     },
     {
       "id": "f15",
-      "topic": "habitat",
-      "sv": "Sidensvansen häckar i barrskogsbältets nordligare delar, ofta nära vatten.",
+      "topic": "behaviour",
+      "sv": "I flykten påminner flockarna, de långa vingarna och den korta stjärten om stare, och flykten är snabb och rak.",
       "sources": [
         {
-          "article": "sv",
-          "quote": "Sidensvansen häckar i barrskogsbältets nordligare delar i nordvästra Nordamerika, Europa och Asien."
-        },
-        {
           "article": "en",
-          "quote": "The breeding habitat is coniferous forests, usually near water."
+          "quote": "In flight, the waxwing's large flocks, long wings and short tail give some resemblance to the common starling, and its flight is similarly fast and direct."
         }
       ]
     },
     {
       "id": "f16",
       "topic": "habitat",
-      "sv": "Häckningsmiljön är gammal barrskog, ofta gran.",
+      "sv": "Den häckar i äldre barrskog, ofta gran, ibland med inslag av andra barrträd och lövträd.",
       "sources": [
         {
           "article": "en",
-          "quote": "The breeding habitat is mature conifers, often spruce"
+          "quote": "The breeding habitat is mature conifers, often spruce although other conifers and broadleaf trees may also be present."
         }
       ]
     },
     {
       "id": "f17",
       "topic": "habitat",
-      "sv": "Utanför häckningstiden finns den vid vägar, i parker och trädgårdar och längs häckar och skogsbryn.",
+      "sv": "Utanför häckningstiden kan den ses vid vägar, i parker och trädgårdar samt längs häckar och skogsbryn.",
       "sources": [
         {
           "article": "en",
@@ -193,7 +208,7 @@
     {
       "id": "f18",
       "topic": "sweden",
-      "sv": "I Sverige häckar sidensvansen främst i norra Norrlands barrskogar men även längs Norrbottens och Västerbottens kust.",
+      "sv": "I Sverige häckar den främst i norra Norrlands barrskogar men även längs Norrbottens och Västerbottens kust.",
       "sources": [
         {
           "article": "sv",
@@ -204,30 +219,34 @@
     {
       "id": "f19",
       "topic": "sweden",
-      "sv": "De flesta häckar mellan 60 och 67 grader nord, men i Skandinavien når arten 70 grader nord.",
+      "sv": "Den har observerats så långt söderut som Västmanland, Närke, Uppland och norra Småland.",
       "sources": [
         {
-          "article": "en",
-          "quote": "Most birds breed between 60–67°N, reaching 70°N in Scandinavia."
+          "article": "sv",
+          "quote": "Den har observerats så långt söderut som Västmanland, Närke, Uppland och norra Småland"
         }
       ]
     },
     {
       "id": "f20",
-      "topic": "behaviour",
-      "sv": "Vintertid är den en strykfågel som drar omkring i stora nomadiska flockar.",
+      "topic": "sweden",
+      "sv": "I Finland är sidensvansen mycket vanlig och har observerats i hela landet.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Vintertid är den en så kallad strykfågel, det vill säga en partiell flyttfågel, och drar då omkring i stora nomadiska flockar."
+          "quote": "I Finland, där den är mycket vanlig, har den blivit observerad i hela landet."
         }
       ]
     },
     {
       "id": "f21",
       "topic": "behaviour",
-      "sv": "Om bärtillgången är låg i häckningsområdet drar sidensvansen söderut.",
+      "sv": "Vintertid drar den omkring i stora nomadiska flockar, och vid dålig bärtillgång i häckningsområdet drar den söderut.",
       "sources": [
+        {
+          "article": "sv",
+          "quote": "drar då omkring i stora nomadiska flockar"
+        },
         {
           "article": "sv",
           "quote": "Om bärtillgången är låg i häckningsområdet, drar den söderut."
@@ -236,39 +255,6 @@
     },
     {
       "id": "f22",
-      "topic": "behaviour",
-      "sv": "På vintern kan sidensvansar vara mycket orädda och söker sig in i städer och trädgårdar efter föda.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "Waxwings can be very tame in winter, entering towns and gardens in search of food, rowan berries being a particular favourite."
-        }
-      ]
-    },
-    {
-      "id": "f23",
-      "topic": "behaviour",
-      "sv": "I flykten påminner flockarna om stare, med långa vingar, kort stjärt och snabb, rak flykt.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "In flight, the waxwing's large flocks, long wings and short tail give some resemblance to the common starling, and its flight is similarly fast and direct."
-        }
-      ]
-    },
-    {
-      "id": "f24",
-      "topic": "behaviour",
-      "sv": "Vid fara stelnar sidensvansen med näbb och hals riktade uppåt.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "When alarmed, Bohemian waxwings \"freeze\" with bill and neck pointing upwards."
-        }
-      ]
-    },
-    {
-      "id": "f25",
       "topic": "food",
       "sv": "Under häckningstiden äter den insekter, men under vinterhalvåret mest bär och frukt som rönnbär, hagtorn och äpplen.",
       "sources": [
@@ -279,9 +265,20 @@
       ]
     },
     {
-      "id": "f26",
+      "id": "f23",
       "topic": "food",
-      "sv": "Insekterna fångas främst i luften från en öppen utkiksplats.",
+      "sv": "Rönnbär är en favoritföda som äts närhelst de finns.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Rowan berries are a favourite food, and are eaten whenever available."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Insekter fångas främst genom att den flyger ut efter dem från en öppen sittplats.",
       "sources": [
         {
           "article": "en",
@@ -290,20 +287,31 @@
       ]
     },
     {
-      "id": "f27",
-      "topic": "food",
-      "sv": "En sidensvans kan äta flera hundra bär om dagen, mer än dubbla sin egen vikt.",
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "På vintern kan sidensvansar vara mycket orädda och söker sig in i städer och trädgårdar efter föda.",
       "sources": [
         {
           "article": "en",
-          "quote": "each bird sometimes consuming several hundred a day, more than double its own weight"
+          "quote": "Waxwings can be very tame in winter, entering towns and gardens in search of food"
         }
       ]
     },
     {
-      "id": "f28",
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Vid fara stelnar sidensvansen med näbb och hals riktade uppåt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "When alarmed, Bohemian waxwings \"freeze\" with bill and neck pointing upwards."
+        }
+      ]
+    },
+    {
+      "id": "f27",
       "topic": "breeding",
-      "sv": "Boet byggs av båda könen och är en skål av tunna kvistar fodrad med gräs, mossa, päls eller lav.",
+      "sv": "Boet byggs av båda könen och är en skål av tunna kvistar fodrad med fint gräs, mossa, päls eller lav.",
       "sources": [
         {
           "article": "en",
@@ -312,20 +320,24 @@
       ]
     },
     {
-      "id": "f29",
+      "id": "f28",
       "topic": "breeding",
-      "sv": "Sidensvansen lägger vanligtvis fem till sex ägg.",
+      "sv": "Kullen består vanligtvis av fem till sex ägg.",
       "sources": [
         {
           "article": "sv",
           "quote": "Den lägger vanligtvis fem till sex ägg"
+        },
+        {
+          "article": "en",
+          "quote": "the clutch is 3–7 eggs, although five or six is most common"
         }
       ]
     },
     {
-      "id": "f30",
+      "id": "f29",
       "topic": "breeding",
-      "sv": "Honan ruvar äggen ensam.",
+      "sv": "Äggen ruvas av honan ensam i 13–14 dagar.",
       "sources": [
         {
           "article": "en",
@@ -344,7 +356,7 @@
       "topic": "data",
       "source": "artportalen",
       "kind": "rarelyReported",
-      "sv": "Rapporteras sällan i april, augusti och september."
+      "sv": "Rapporteras sällan i april till september."
     },
     {
       "id": "d03",
@@ -360,19 +372,300 @@
       "sv": "Inte rödlistad i Svenska rödlistan 2025."
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Sidensvansen är en kompakt, rödgrå fågel med en mycket lång tofs på huvudet.",
+          "factIds": [
+            "f02",
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "På vintern drar den omkring i stora flockar och söker sig in i städer och trädgårdar efter föda.",
+          "factIds": [
+            "f21",
+            "f25"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Rödgrå med lång tofs, svart strupe och ett svart band genom vardera ögat",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Stor som en stare men ser större ut med kompakt kropp och stort huvud",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Klargult stjärtband med brett svart band ovanför och lackröda spetsar på armpennorna",
+          "factIds": [
+            "f07",
+            "f05"
+          ]
+        },
+        {
+          "text": "Honan har smalare gult stjärtband och mindre skarpt avgränsad svart strupe",
+          "factIds": [
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Lätet är en hög drill, ”sirrrr”, som kan låta som ett klingande nyckelknippe.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Det hörs ofta från överflygande flockar och beskrivs som ett plingande av silverklockor.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "När en flock lyfter eller landar ger vingarna ett skallrande ljud som hörs på 30 meters avstånd.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Den häckar i äldre barrskog, främst i norra Norrland men även längs Norrbottens och Västerbottens kust.",
+          "factIds": [
+            "f16",
+            "f18"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden ses den vid vägar, i parker och trädgårdar samt längs häckar och skogsbryn.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i november och december och sällan i april till september.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Västerbotten, Norrbotten och Västernorrland.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Under häckningstiden äter den insekter, som den främst fångar genom att flyga ut från en öppen sittplats.",
+          "factIds": [
+            "f22",
+            "f24"
+          ]
+        },
+        {
+          "text": "Vinterhalvåret äter den mest bär och frukt, gärna rönnbär.",
+          "factIds": [
+            "f22",
+            "f23"
+          ]
+        },
+        {
+          "text": "Vintertid drar den omkring i stora flockar och flyttar söderut när det är ont om bär i häckningsområdet.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Den kan då vara mycket orädd och söka sig in i städer och trädgårdar.",
+          "factIds": [
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Sidensvans: lär dig känna igen den på tofsen och den gula stjärtspetsen, hör hur lätet låter och se när på året den rapporteras.",
+      "facts": {
+        "size": {
+          "value": "18 till 21 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Bohemian Waxwing is a compact, reddish-grey bird with a very long crest on its head.",
+          "factIds": [
+            "f02",
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "In winter it roams in large flocks and comes into towns and gardens looking for food.",
+          "factIds": [
+            "f21",
+            "f25"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Reddish-grey with a long crest, black throat and a black band through each eye",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "The size of a Starling but looks bigger, with a compact body and large head",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Bright yellow tail band with a broad black band above, sealing-wax red tips on the secondaries",
+          "factIds": [
+            "f07",
+            "f05"
+          ]
+        },
+        {
+          "text": "The female has a narrower yellow tail band and a less sharply defined black throat",
+          "factIds": [
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is a high trill, \"sirrrr\", which can sound like a jingling bunch of keys.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "It is often heard from flocks flying over and is described as a tinkling of silver bells.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "When a flock takes off or lands, the wings make a rattling sound that can be heard 30 metres away.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It breeds in older conifer forest, mainly in the north of Norrland and also along the coasts of Norrbotten and Västerbotten.",
+          "factIds": [
+            "f16",
+            "f18"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it can be seen along roads, in parks and gardens, and along hedges and woodland edges.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "It is reported most in November and December and rarely from April to September.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Västerbotten, Norrbotten and Västernorrland.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "In the breeding season it eats insects, mainly caught by flying out from an open perch.",
+          "factIds": [
+            "f22",
+            "f24"
+          ]
+        },
+        {
+          "text": "In winter it eats mostly berries and fruit, with rowan berries a favourite.",
+          "factIds": [
+            "f22",
+            "f23"
+          ]
+        },
+        {
+          "text": "In winter it roams in large flocks and moves south when berries are scarce in the breeding area.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "It can then be very tame and comes into towns and gardens for food.",
+          "factIds": [
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Bohemian Waxwing: how to recognise it by its crest and yellow tail tip, what its trilling call sounds like and when it is reported.",
+      "facts": {
+        "size": {
+          "value": "18 to 21 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T18:01:38.342955+00:00"
+      "at": "2026-10-07T18:25:23.683515+00:00"
     },
     "verify": {
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
-      "at": "2026-10-07T18:08:57.902786+00:00",
-      "factsHash": "1437c7461f8a91f3"
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "2dd2b8f30b662a3d"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "2dd2b8f30b662a3d"
     }
   },
   "errors": [],
@@ -572,14 +865,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+      "contradicts": null
     }
   },
-  "flags": [
-    {
-      "check": "V1",
-      "factId": "s01",
-      "message": "Statusen i Sverige ströks av faktakontrollen: The quote confirms breeding in Sweden, but does not state that the species is a migratory bird ('flyttfågel'); migration status is not addressed by this quote.. Bestäm status eller lämna tom."
-    }
-  ]
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }

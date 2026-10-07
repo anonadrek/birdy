@@ -1,6 +1,6 @@
 {
   "qid": "Q25882",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1,
@@ -24,27 +24,16 @@
     {
       "id": "f02",
       "topic": "appearance",
-      "sv": "Huvudet är stort och halsen tjock, båda ljust brungrå, medan ovansidan är brunaktig med ljusgrå fjäderkanter och bröst och buk är ljusgrå.",
+      "sv": "Näbben är tjock, konisk och rödorange eller rosa med vit näbbnagel.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Grågåsens huvud är stort och halsen tjock och de är ljust brungrå, ovansidan är brunaktig med ljusgrå fjäderkanter, bröstet och buken är ljusgrå"
+          "quote": "är tjock, konisk och rödorange- eller rosafärgad med vit näbbnagel"
         }
       ]
     },
     {
       "id": "f03",
-      "topic": "appearance",
-      "sv": "Övergumpen är ljust askgrå medan undergumpen och stjärtens bakkant är vita.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "övergumpen är ljust askgrå, undergumpen och bakkanten av stjärten är vit"
-        }
-      ]
-    },
-    {
-      "id": "f04",
       "topic": "appearance",
       "sv": "Grågåsen saknar vitt på huvudet.",
       "sources": [
@@ -55,18 +44,7 @@
       ]
     },
     {
-      "id": "f05",
-      "topic": "appearance",
-      "sv": "Näbben är kraftig, tjock och konisk, 6–7 cm lång, rödorange eller rosa med vit näbbnagel.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Grågåsen har en kraftig, helljus näbb som mäter 6–7 cm på längden, är tjock, konisk och rödorange- eller rosafärgad med vit näbbnagel."
-        }
-      ]
-    },
-    {
-      "id": "f06",
+      "id": "f04",
       "topic": "appearance",
       "sv": "I flykten känns den igen på ljust huvud, mörk rygg och ljust stålgrå vingframkanter som mot de mörka vingpennorna kan se nästan vita ut.",
       "sources": [
@@ -77,9 +55,9 @@
       ]
     },
     {
-      "id": "f07",
+      "id": "f05",
       "topic": "appearance",
-      "sv": "Bröst och buk har en varierande mängd svarta fläckar.",
+      "sv": "Bröst och buk är ljusare med varierande mängd svarta fläckar.",
       "sources": [
         {
           "article": "en",
@@ -88,53 +66,20 @@
       ]
     },
     {
-      "id": "f08",
+      "id": "f06",
       "topic": "appearance",
-      "sv": "Vuxna fåglar har ett tydligt veckat mönster i halsfjädrarna.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "Adults have a distinctive 'concertina' pattern of folds in the feathers on their necks."
-        }
-      ]
-    },
-    {
-      "id": "f09",
-      "topic": "size",
-      "sv": "Grågåsen har en kroppslängd på 74–84 cm och ett vingspann på 149–168 cm.",
+      "sv": "Undergumpen och stjärtens bakkant är vita.",
       "sources": [
         {
           "article": "sv",
-          "quote": "med en kroppslängd på 74–84 cm och ett vingspann på 149–168 centimeter"
+          "quote": "undergumpen och bakkanten av stjärten är vit"
         }
       ]
     },
     {
-      "id": "f10",
-      "topic": "size",
-      "sv": "En hane av nominatformen väger 2600–4560 gram och en hona 2070–3960 gram.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "En hane av nominatformen väger 2600–4560 gram och honan 2070–3960 gram"
-        }
-      ]
-    },
-    {
-      "id": "f11",
+      "id": "f07",
       "topic": "sex_age",
-      "sv": "Könen är lika till utseendet men skiljer sig något i vikt.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Könen hos grågåsen är lika men varierar något i vikt."
-        }
-      ]
-    },
-    {
-      "id": "f12",
-      "topic": "sex_age",
-      "sv": "Unga fåglar skiljer sig främst genom att de saknar svarta fläckar på bröst och buk och har gråaktiga ben.",
+      "sv": "Unga fåglar skiljer sig främst genom att sakna svarta fläckar på bröst och buk och genom grååktiga ben.",
       "sources": [
         {
           "article": "en",
@@ -143,7 +88,51 @@
       ]
     },
     {
-      "id": "f13",
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Könen är lika men varierar något i vikt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen hos grågåsen är lika men varierar något i vikt."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Hanarna är i allmänhet större än honorna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Males are generally larger than females"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Kroppslängden är 74–84 cm och vingspannet 149–168 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "med en kroppslängd på 74–84 cm och ett vingspann på 149–168 centimeter"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "size",
+      "sv": "Den väger 2,16–4,56 kilo.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It weighs 2.16 to 4.56 kilograms"
+        }
+      ]
+    },
+    {
+      "id": "f12",
       "topic": "voice",
       "sv": "Grågåsen är mycket ljudlig med grova, nasala och kacklande läten.",
       "sources": [
@@ -154,9 +143,9 @@
       ]
     },
     {
-      "id": "f14",
+      "id": "f13",
       "topic": "voice",
-      "sv": "Det mest typiska lätet är ett \"kijaaa-ga-ga\" där första tonen är i falsett.",
+      "sv": "Det mest typiska lätet är ett ”kijaaa-ga-ga” med första tonen i falsett.",
       "sources": [
         {
           "article": "sv",
@@ -165,9 +154,9 @@
       ]
     },
     {
-      "id": "f15",
+      "id": "f14",
       "topic": "voice",
-      "sv": "Ljudet från en flock grågäss liknar skall från en hundflock.",
+      "sv": "Ljudet från en flock grågäss liknar skallet från jakthundar.",
       "sources": [
         {
           "article": "en",
@@ -176,20 +165,9 @@
       ]
     },
     {
-      "id": "f16",
-      "topic": "voice",
-      "sv": "Vuxna fåglar väser när de känner sig hotade eller är arga.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "adults hiss if threatened or angered"
-        }
-      ]
-    },
-    {
-      "id": "f17",
+      "id": "f15",
       "topic": "habitat",
-      "sv": "Den häckar i många biotoper nära vatten, som våtmarker, små och stora sjöar och kuster.",
+      "sv": "Den häckar i många olika miljöer nära vatten, som våtmarker, små och stora sjöar eller vid kusterna.",
       "sources": [
         {
           "article": "sv",
@@ -198,9 +176,9 @@
       ]
     },
     {
-      "id": "f18",
+      "id": "f16",
       "topic": "habitat",
-      "sv": "Vintertid uppehåller den sig på strandängar, i flodmynningar, sötvattenskärr, översvämmade fält och betesmarker nära vatten.",
+      "sv": "Vintertid håller den till på bland annat strandängar, flodmynningar, sötvattensträsk, översvämmade fält och betesmarker nära vatten.",
       "sources": [
         {
           "article": "en",
@@ -209,9 +187,9 @@
       ]
     },
     {
-      "id": "f19",
+      "id": "f17",
       "topic": "sweden",
-      "sv": "Grågåsen häckar i stora delar av södra Sverige och längs norrlandskusten, främst vid kusten och i yttre skärgården.",
+      "sv": "I Sverige häckar grågåsen i stora delar av södra Sverige och längs norrlandskusten, helst vid kusten och i yttre skärgården.",
       "sources": [
         {
           "article": "sv",
@@ -220,9 +198,9 @@
       ]
     },
     {
-      "id": "f20",
+      "id": "f18",
       "topic": "sweden",
-      "sv": "I Sverige är grågåsen en sommargäst som mest ses mellan mars och oktober.",
+      "sv": "I Sverige ses den mest mellan mars och oktober.",
       "sources": [
         {
           "article": "sv",
@@ -231,18 +209,7 @@
       ]
     },
     {
-      "id": "f21",
-      "topic": "sweden",
-      "sv": "Den svenska populationen övervintrar i sydvästra och södra Europa.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Den svenska populationen övervintrar i sydvästra och södra Europa."
-        }
-      ]
-    },
-    {
-      "id": "f22",
+      "id": "f19",
       "topic": "sweden",
       "sv": "År 2018 uppskattades det svenska beståndet till 41 000 par.",
       "sources": [
@@ -253,20 +220,9 @@
       ]
     },
     {
-      "id": "f23",
+      "id": "f20",
       "topic": "sweden",
-      "sv": "Under senare decennier övervintrar många grågäss i eller nära häckningsområdet, även i Skandinavien.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "but in recent decades many instead overwinter in or near their breeding range, even in Scandinavia."
-        }
-      ]
-    },
-    {
-      "id": "f24",
-      "topic": "sweden",
-      "sv": "Stora mängder unga grågäss samlas varje år för att rugga på Roneholmarna nära Gotland.",
+      "sv": "Stora mängder unga grågäss samlas varje år för att rugga på holmarna vid Rone nära Gotland.",
       "sources": [
         {
           "article": "en",
@@ -275,29 +231,21 @@
       ]
     },
     {
-      "id": "f25",
+      "id": "f21",
       "topic": "breeding",
-      "sv": "Boet kan ligga på land, vid kusten ofta byggt av tång, och numera även inne i rörvass.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Kusthäckande grågäss som häckar på land bygger ofta sitt bo av tång."
-        },
-        {
-          "article": "sv",
-          "quote": "grågåsens bon återfinns nu även inne i rörvass"
-        }
-      ]
-    },
-    {
-      "id": "f26",
-      "topic": "breeding",
-      "sv": "Vanligen läggs fyra till sex ägg, och honan ruvar oftast i 27–28 dygn.",
+      "sv": "Den lägger vanligtvis fyra till sex ägg, men upp till 14 ägg har observerats i ett bo.",
       "sources": [
         {
           "article": "sv",
           "quote": "Vanligtvis lägger den fyra till sex ägg men man har observerat upp till 14 ägg i ett rede."
-        },
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Honan ruvar äggen oftast i 27 till 28 dygn.",
+      "sources": [
         {
           "article": "sv",
           "quote": "Honan ruvar oftast äggen i mellan 27 och 28 dygn."
@@ -305,18 +253,18 @@
       ]
     },
     {
-      "id": "f27",
+      "id": "f23",
       "topic": "breeding",
-      "sv": "Båda föräldrarna tar hand om ungarna, som är flygfärdiga efter cirka 60–70 dygn.",
+      "sv": "Kusthäckande grågäss som häckar på land bygger ofta boet av tång.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Paret tar gemensamt hand om ungarna som är flygfärdiga efter cirka 60-70 dygn."
+          "quote": "Kusthäckande grågäss som häckar på land bygger ofta sitt bo av tång."
         }
       ]
     },
     {
-      "id": "f28",
+      "id": "f24",
       "topic": "food",
       "sv": "Vuxna fåglar lever av växtmaterial medan ungarna äter mycket smådjur.",
       "sources": [
@@ -327,36 +275,62 @@
       ]
     },
     {
-      "id": "f29",
-      "topic": "behaviour",
-      "sv": "Grågäss är mycket vaksamma, varnar ljudligt för fara och flyger lätt upp om en människa kommer för nära.",
+      "id": "f25",
+      "topic": "food",
+      "sv": "Grågäss äter främst gräs.",
       "sources": [
         {
-          "article": "sv",
-          "quote": "De är mycket vaksamma och varnar ljudligt för minsta fara och tar lätt till vingar om exempelvis en människa kommer för nära."
+          "article": "en",
+          "quote": "Greylag geese are largely herbivorous and feed chiefly on grasses."
         }
       ]
     },
     {
-      "id": "f30",
+      "id": "f26",
       "topic": "behaviour",
-      "sv": "Vid längre förflyttningar flyger flocken i v-formation, så kallad plog.",
+      "sv": "Vid längre förflyttningar flyger flocken i v-formation, en så kallad plog.",
       "sources": [
         {
           "article": "sv",
-          "quote": "vid längre förflyttningar ordnar sig flocken i en så kallad \"plog\""
+          "quote": "flyger i en v-formation för minskat luftmotstånd"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Grågäss är mycket vaksamma och varnar ljudligt för minsta fara.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De är mycket vaksamma och varnar ljudligt för minsta fara"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Direkt efter häckningen ruggar grågåsen och kan då inte flyga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Direkt efter häckningen ruggar grågåsen och blir därmed flygoförmögen."
         }
       ]
     },
     {
       "id": "s01",
       "topic": "status",
-      "value": "breeding_migrant",
-      "sv": "Flyttfågel, häckar här",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
       "sources": [
         {
           "article": "sv",
-          "quote": "I Sverige är den en sommargäst som mest ses mellan mars och oktober."
+          "quote": "Den svenska populationen övervintrar i sydvästra och södra Europa."
+        },
+        {
+          "article": "en",
+          "quote": "in recent decades many instead overwinter in or near their breeding range, even in Scandinavia"
         }
       ]
     },
@@ -379,19 +353,322 @@
       "sv": "Inte rödlistad i Svenska rödlistan 2025."
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Grågåsen är en stor och kraftig grå gås.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Den häckar nära vatten, i våtmarker, vid små och stora sjöar och längs kusterna.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Stor, kraftig grå gås med tjock rödorange eller rosa näbb och vit näbbnagel",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Ljusare bröst och buk med svarta fläckar, vit undergump och inget vitt på huvudet",
+          "factIds": [
+            "f03",
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "I flykten syns ljust huvud, mörk rygg och ljusgrå vingframkanter som kan se nästan vita ut",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Könen är lika, ungfåglar saknar svarta fläckar på bröst och buk och har grååktiga ben",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Grågåsen är mycket ljudlig med grova, nasala och kacklande läten.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Det mest typiska lätet är ett ”kijaaa-ga-ga” där första tonen ligger i falsett.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "En flock grågäss låter som skallande jakthundar.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Grågåsen är delvis flyttfågel och häckar i stora delar av södra Sverige och längs norrlandskusten, helst vid kusten och i yttre skärgården.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "Den ses mest mellan mars och oktober men rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "f18",
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Vintertid håller den till på strandängar, översvämmade fält och betesmarker nära vatten.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "Stora mängder unga grågäss samlas varje år för att rugga på holmarna vid Rone nära Gotland.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Vuxna grågäss lever av växtmaterial, främst gräs, medan ungarna äter mycket smådjur.",
+          "factIds": [
+            "f24",
+            "f25"
+          ]
+        },
+        {
+          "text": "De är mycket vaksamma och varnar ljudligt för minsta fara.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Vid längre förflyttningar flyger flocken i v-formation, en så kallad plog.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Direkt efter häckningen ruggar grågåsen och kan då inte flyga.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Kullen är vanligtvis fyra till sex ägg, som honan oftast ruvar i 27 till 28 dygn.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Grågås: så känner du igen den stora grå gåsen på näbb och fjäderdräkt, hur de kacklande lätena låter och när på året den syns.",
+      "facts": {
+        "size": {
+          "value": "74 till 84 cm",
+          "factIds": [
+            "f10"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Greylag Goose is a large, heavy grey goose.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "It breeds near water, in wetlands, by small and large lakes and along coasts.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Big, heavy grey goose with a thick orange-red or pink bill and white nail",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Paler breast and belly with black spots, white undertail and no white on the head",
+          "factIds": [
+            "f03",
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "In flight: pale head, dark back and pale grey forewings that can look almost white",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Sexes alike, young birds lack black spots on breast and belly and have greyish legs",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The Greylag Goose is very noisy, with harsh, nasal, cackling calls.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The most typical call is a ”kijaaa-ga-ga” with the first note in falsetto.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "A flock sounds like baying hunting dogs.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "A partial migrant, it breeds across much of southern Sweden and along the Norrland coast, preferably on the coast and in the outer archipelago.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "It is seen mostly March to October, but is reported all year and from all 21 counties.",
+          "factIds": [
+            "f18",
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "In winter it uses shore meadows, flooded fields and pastures near water.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "Large numbers of young geese gather yearly to moult on the islets at Rone near Gotland.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Adults feed on plant material, mainly grass, while the young eat many small animals.",
+          "factIds": [
+            "f24",
+            "f25"
+          ]
+        },
+        {
+          "text": "Greylags are very wary and give loud warnings at the slightest danger.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "On longer journeys the flock flies in a V formation.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Right after breeding they moult and cannot fly.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "A clutch is usually four to six eggs, which the female usually incubates for 27 to 28 days.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Greylag Goose: how to recognise this big grey goose by bill and plumage, what its cackling calls sound like and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "74 to 84 cm",
+          "factIds": [
+            "f10"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T18:01:38.342955+00:00"
+      "at": "2026-10-07T18:25:23.683515+00:00"
     },
     "verify": {
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
-      "at": "2026-10-07T18:08:57.902786+00:00",
-      "factsHash": "d0c9861f5e5500d3"
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "2eef9cac29fc641f"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "2eef9cac29fc641f"
     }
   },
   "errors": [],
@@ -590,19 +867,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+      "contradicts": null
     }
   },
-  "flags": [
-    {
-      "check": "V2",
-      "factId": "f05",
-      "message": "f05 anger ett tal i cm som inte stämmer med de andra artiklarna (75 till 90 cm)"
-    },
-    {
-      "check": "V3",
-      "factId": "s01",
-      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
-    }
-  ]
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }

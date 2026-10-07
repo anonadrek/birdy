@@ -1,6 +1,6 @@
 {
   "qid": "Q25612",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
@@ -8,19 +8,41 @@
   "facts": [
     {
       "id": "f01",
-      "topic": "appearance",
-      "sv": "Vuxen sångsvan är helvit med klargul näbbrot medan spetsen och nederdelen av näbben är svarta.",
+      "topic": "size",
+      "sv": "Sångsvanen är 140–160 cm lång och har ett vingspann på 205–235 cm, ungefär lika stor som knölsvanen.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Den adulta sångsvanen ter sig än vitare än knölsvanen och näbben är mot roten klart gult medan spetsen och nederdelen av näbben är svart."
+          "quote": "Sångsvanen är ungefär lika stor som knölsvanen med en längd på mellan 140 och 160 centimeter och ett vingspann på 205 till 235 centimeter"
         }
       ]
     },
     {
       "id": "f02",
+      "topic": "size",
+      "sv": "Sångsvanen väger vanligen 7,4–14,0 kilo.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The weight is typically in the range of 7.4–14.0 kilograms"
+        }
+      ]
+    },
+    {
+      "id": "f03",
       "topic": "appearance",
-      "sv": "Det gula på näbben når ned nedanför näsborren.",
+      "sv": "Den vuxna sångsvanen är vit med klart gul näbbrot medan näbbens spets och nederdel är svart.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "näbben är mot roten klart gult medan spetsen och nederdelen av näbben är svart"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Det gula på näbben når nedanför näsborren.",
       "sources": [
         {
           "article": "sv",
@@ -29,7 +51,7 @@
       ]
     },
     {
-      "id": "f03",
+      "id": "f05",
       "topic": "appearance",
       "sv": "Sångsvanen har ett större gult fält på näbben än mindre sångsvan.",
       "sources": [
@@ -40,7 +62,7 @@
       ]
     },
     {
-      "id": "f04",
+      "id": "f06",
       "topic": "appearance",
       "sv": "Sångsvanen håller oftare halsen rak, till skillnad från knölsvanens ibland s-formade hals.",
       "sources": [
@@ -53,18 +75,40 @@
     {
       "id": "f07",
       "topic": "appearance",
-      "sv": "Huvud och hals hos vuxna fåglar är ofta rostgult färgade när de födosöker i vatten rikt på garvsyror eller järnföreningar.",
+      "sv": "Den triangelformade näbben fortsätter ut från den sluttande hjässan och ger huvudet ett mycket spetsigt utseende.",
       "sources": [
         {
-          "article": "en",
-          "quote": "The adults are pure white, but the head and neck are often stained rusty-yellow when feeding in water rich in tannins or iron compounds."
+          "article": "sv",
+          "quote": "Den triangelformade näbben, som är längre än knölsvanens, fortsätter ut från den sluttande hjässan och ger huvudet ett mycket spetsigt utseende."
         }
       ]
     },
     {
       "id": "f08",
+      "topic": "appearance",
+      "sv": "När sångsvanen simmar håller den den korta stjärten nedsänkt horisontellt mot vattenytan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När den simmar håller den stjärten, som är kortare än knölsvanens, nedsänkt horisontellt mot vattenytan."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Huvud och hals är ofta rostgult färgade när svanen födosöker i vatten rikt på garvsyra eller järnföreningar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the head and neck are often stained rusty-yellow when feeding in water rich in tannins or iron compounds"
+        }
+      ]
+    },
+    {
+      "id": "f10",
       "topic": "sex_age",
-      "sv": "Unga fåglar har gråbrunvit fjäderdräkt och svart och vitgul näbb med svag rosa anstrykning.",
+      "sv": "Unga fåglar har gråbrunvit fjäderdräkt och svart och vitgul näbb med svag rosa ton.",
       "sources": [
         {
           "article": "sv",
@@ -73,9 +117,9 @@
       ]
     },
     {
-      "id": "f09",
+      "id": "f11",
       "topic": "sex_age",
-      "sv": "Ungfåglarna får vit fjäderdräkt under sommaren första levnadsåret eller tidigt på våren andra levnadsåret.",
+      "sv": "Ungfågeln blir vit under sommaren första levnadsåret eller tidigt på våren andra levnadsåret.",
       "sources": [
         {
           "article": "sv",
@@ -84,9 +128,9 @@
       ]
     },
     {
-      "id": "f10",
+      "id": "f12",
       "topic": "sex_age",
-      "sv": "Honor är tydligt mindre och lättare än hanar, men i övrigt ser könen lika ut.",
+      "sv": "Honorna är tydligt mindre och lättare än hanarna, men i övrigt ser könen likadana ut.",
       "sources": [
         {
           "article": "de",
@@ -95,50 +139,24 @@
       ]
     },
     {
-      "id": "f11",
-      "topic": "size",
-      "sv": "Sångsvanen är 140–160 centimeter lång med ett vingspann på 205–235 centimeter.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "med en längd på mellan 140 och 160 centimeter och ett vingspann på 205 till 235 centimeter"
-        }
-      ]
-    },
-    {
-      "id": "f12",
-      "topic": "size",
-      "sv": "Sångsvanen väger vanligen 7,4–14,0 kilogram.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "The weight is typically in the range of 7.4–14.0 kilograms"
-        }
-      ]
-    },
-    {
       "id": "f13",
       "topic": "voice",
-      "sv": "I flykten hörs ett högt, trumpetande läte, ungefär \"klo-klo-klo\", i grupper om tre eller fyra toner.",
+      "sv": "I flykten låter sångsvanen ett högt, trumpetande läte i grupper om tre eller fyra toner.",
       "sources": [
         {
           "article": "sv",
           "quote": "Den kan utstöta ett högt, trumpetande läte, i grupper om tre eller fyra toner när den flyger."
-        },
-        {
-          "article": "en",
-          "quote": "kloo-kloo-kloo in groups of three or four"
         }
       ]
     },
     {
       "id": "f14",
       "topic": "voice",
-      "sv": "Typiskt för lätet är en djup, nasal basunklang.",
+      "sv": "Lätet återges som kloo-kloo-kloo i grupper om tre eller fyra.",
       "sources": [
         {
-          "article": "de",
-          "quote": "Charakteristisch für ihren Ruf ist ein tiefer, nasaler Posaunenklang."
+          "article": "en",
+          "quote": "kloo-kloo-kloo in groups of three or four"
         }
       ]
     },
@@ -160,25 +178,14 @@
       "sources": [
         {
           "article": "sv",
-          "quote": "Sångsvanen häckar i olika typer av vegetationsrika våtmarker, allt från grunda skogssjöar till vassrika slättsjöar, gårdsdammar, utmed åar, på blöta myrar och sällsynt även vid havet i Bottenviken."
+          "quote": "Sångsvanen häckar i olika typer av vegetationsrika våtmarker, allt från grunda skogssjöar till vassrika slättsjöar, gårdsdammar, utmed åar, på blöta myrar"
         }
       ]
     },
     {
       "id": "f17",
-      "topic": "habitat",
-      "sv": "Vintertid flyttar sångsvanen till öppna vatten i bland annat västra och centrala Europa.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Den är en flyttfågel som flyttar till öppna vatten i västra och centrala Europa"
-        }
-      ]
-    },
-    {
-      "id": "f18",
       "topic": "sweden",
-      "sv": "Sångsvanen häckar idag i hela Sverige, med störst bestånd i Norrbottens, Västerbottens och Gävleborgs län.",
+      "sv": "Sångsvanen häckar i hela Sverige, med störst bestånd i Norrbottens, Västerbottens och Gävleborgs län.",
       "sources": [
         {
           "article": "sv",
@@ -187,18 +194,18 @@
       ]
     },
     {
-      "id": "f19",
+      "id": "f18",
       "topic": "sweden",
-      "sv": "I början av 1900-talet var sångsvanen nära utrotning i Sverige efter intensiv jakt och fanns kvar bara på några lokaler i Lappland.",
+      "sv": "I början av 1900-talet var sångsvanen nära utrotning i Sverige efter intensiv jakt.",
       "sources": [
         {
           "article": "sv",
-          "quote": "I början av 1900-talet var sångsvanen nära utrotning i Sverige efter intensiv jakt och fanns då kvar bara på några avsides belägna lokaler i Lappland."
+          "quote": "I början av 1900-talet var sångsvanen nära utrotning i Sverige efter intensiv jakt"
         }
       ]
     },
     {
-      "id": "f20",
+      "id": "f19",
       "topic": "sweden",
       "sv": "År 2020 uppskattades det svenska beståndet till 9 400–14 600 häckande individer.",
       "sources": [
@@ -209,7 +216,7 @@
       ]
     },
     {
-      "id": "f21",
+      "id": "f20",
       "topic": "sweden",
       "sv": "Flyttningen till övervintringsområden i södra Sverige, Danmark och Nordsjöländerna börjar i oktober.",
       "sources": [
@@ -220,18 +227,18 @@
       ]
     },
     {
-      "id": "f22",
+      "id": "f21",
       "topic": "sweden",
-      "sv": "Flyttningen norrut börjar kring månadsskiftet februari–mars.",
+      "sv": "Flyttningen norrut börjar vid månadsskiftet februari–mars.",
       "sources": [
         {
           "article": "sv",
-          "quote": "norrut i månadsskiftet februari–mars."
+          "quote": "norrut i månadsskiftet februari–mars"
         }
       ]
     },
     {
-      "id": "f23",
+      "id": "f22",
       "topic": "sweden",
       "sv": "Stora rastplatser under vårflyttningen är bland andra Hornborgasjön, Tysslingen, Väster-Färnebo och Umeälvens delta.",
       "sources": [
@@ -242,9 +249,31 @@
       ]
     },
     {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Sångsvanen är Norrbottens landskapsfågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är även Norrbottens landskapsfågel."
+        }
+      ]
+    },
+    {
       "id": "f24",
+      "topic": "food",
+      "sv": "Födan består av växter och växtdelar, och på senare tid söker den även föda i jordbruksområden likt gäss.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Födan består av växter och växtdelar. På senare tid har den börjat födosöka i jordbruksområden likt gäss."
+        }
+      ]
+    },
+    {
+      "id": "f25",
       "topic": "breeding",
-      "sv": "Boet är ofta mycket stort, särskilt på höjden, och byggs av växtdelar mest tagna från sjöbotten.",
+      "sv": "Boet är ofta mycket stort, särskilt på höjden, och byggs av växtdelar mest från sjöbotten.",
       "sources": [
         {
           "article": "sv",
@@ -253,7 +282,7 @@
       ]
     },
     {
-      "id": "f25",
+      "id": "f26",
       "topic": "breeding",
       "sv": "Häckningen sker normalt i maj och juni men kan börja redan i mitten av april.",
       "sources": [
@@ -264,7 +293,7 @@
       ]
     },
     {
-      "id": "f26",
+      "id": "f27",
       "topic": "breeding",
       "sv": "Honan lägger fyra till sju smörfärgade ägg och ruvar i cirka 30 till 36 dygn.",
       "sources": [
@@ -275,7 +304,7 @@
       ]
     },
     {
-      "id": "f27",
+      "id": "f28",
       "topic": "breeding",
       "sv": "Sångsvanar bildar par för livet.",
       "sources": [
@@ -286,31 +315,9 @@
       ]
     },
     {
-      "id": "f28",
-      "topic": "food",
-      "sv": "Födan består av växter och växtdelar.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Födan består av växter och växtdelar."
-        }
-      ]
-    },
-    {
       "id": "f29",
-      "topic": "food",
-      "sv": "På senare tid har sångsvanen börjat födosöka i jordbruksområden likt gäss.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "På senare tid har den börjat födosöka i jordbruksområden likt gäss."
-        }
-      ]
-    },
-    {
-      "id": "f30",
       "topic": "behaviour",
-      "sv": "Utanför häckningstiden är sångsvanar sällskapliga och tål artfränder.",
+      "sv": "Utanför häckningstiden är sångsvanar sällskapliga och drar sig väl med artfränder.",
       "sources": [
         {
           "article": "de",
@@ -319,10 +326,21 @@
       ]
     },
     {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Under flyttningen flyger sångsvanen oftast på 50–200 meters höjd i upp till 100 km/h.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "usually flies at an altitude of 50–200 m (160–660 ft) at speeds of up to 100 km/h"
+        }
+      ]
+    },
+    {
       "id": "s01",
       "topic": "status",
-      "value": "breeding_migrant",
-      "sv": "Flyttfågel, häckar här",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
       "sources": [
         {
           "article": "sv",
@@ -353,19 +371,317 @@
       "sv": "Inte rödlistad i Svenska rödlistan 2025."
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Sångsvanen är en vit svan som häckar i vegetationsrika våtmarker i hela Sverige, från grunda skogssjöar och vassrika slättsjöar till gårdsdammar, åar och blöta myrar.",
+          "factIds": [
+            "f03",
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden är den sällskaplig, och på senare tid söker den även föda i jordbruksområden som gäss.",
+          "factIds": [
+            "f29",
+            "f24"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Vit fjäderdräkt och klart gul näbbrot, medan näbbens spets och nederdel är svart",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Det gula på näbben når nedanför näsborren",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Oftast rak hals och spetsigt huvud där näbben fortsätter ut från den sluttande hjässan",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Ungfåglar är gråbrunvita, och honan är tydligt mindre än hanen men annars lik",
+          "factIds": [
+            "f10",
+            "f12"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "I flykten hörs ett högt, trumpetande läte i grupper om tre eller fyra toner, ungefär kloo-kloo-kloo.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        },
+        {
+          "text": "Vingarna ger bara ett tystlåtet svischande, till skillnad från knölsvanens kraftigt sjungande vingslag.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Sångsvanen är delvis flyttfågel och häckar i hela Sverige, med störst bestånd i Norrbottens, Västerbottens och Gävleborgs län.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "Flyttningen till övervintringsområden i södra Sverige, Danmark och Nordsjöländerna börjar i oktober.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Flyttningen norrut börjar vid månadsskiftet mellan februari och mars.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Stora rastplatser på våren är bland andra Hornborgasjön, Tysslingen, Väster-Färnebo och Umeälvens delta.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län och mest i februari, mars, november och december.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan består av växter och växtdelar, och på senare tid söker sångsvanen även föda i jordbruksområden som gäss gör.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden är den sällskaplig.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Paren bildas för livet, och boet är ofta mycket stort och byggs mest av växtdelar från sjöbotten.",
+          "factIds": [
+            "f28",
+            "f25"
+          ]
+        },
+        {
+          "text": "Honan lägger fyra till sju smörfärgade ägg.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Under flyttningen flyger den oftast på 50 till 200 meters höjd i upp till 100 km/h.",
+          "factIds": [
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Sångsvan: så känner du igen den på näbbens gula fält och raka hals, hur det trumpetande lätet låter och under vilka månader den rapporteras mest.",
+      "facts": {
+        "size": {
+          "value": "140 till 160 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Whooper Swan is a white swan that breeds in wetlands rich in vegetation throughout Sweden, from forest lakes to farm ponds, streams and wet bogs.",
+          "factIds": [
+            "f03",
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it is sociable, and lately it also feeds on farmland like geese.",
+          "factIds": [
+            "f29",
+            "f24"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "White, with a bright yellow bill base, the bill tip and lower part black",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "The yellow on the bill reaches below the nostril",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Usually a straight neck and a pointed head, the bill continuing from the sloping crown",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Young birds are greyish brown-white, and females are clearly smaller than males",
+          "factIds": [
+            "f10",
+            "f12"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "In flight it gives a loud, trumpeting call in groups of three or four notes, written as kloo-kloo-kloo.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        },
+        {
+          "text": "The wings make only a quiet swishing, unlike the loudly singing wingbeats of the Mute Swan.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It is a partial migrant breeding throughout Sweden, with the largest populations in Norrbotten, Västerbotten and Gävleborg counties.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "Autumn migration to southern Sweden, Denmark and the North Sea countries starts in October, and spring migration north around the turn of February and March.",
+          "factIds": [
+            "f20",
+            "f21"
+          ]
+        },
+        {
+          "text": "Spring stopover sites include Hornborgasjön, Tysslingen, Väster-Färnebo and the Ume River delta.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties, most in February, March, November and December.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds on plants and plant parts, lately also on farmland like geese.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it is sociable.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Pairs form for life, and the nest is often very large and built mostly from plant material from the lake bottom.",
+          "factIds": [
+            "f28",
+            "f25"
+          ]
+        },
+        {
+          "text": "The female lays four to seven butter-coloured eggs.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "On migration it usually flies at 50 to 200 metres altitude at up to 100 km/h.",
+          "factIds": [
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Whooper Swan: how to recognise it by its yellow bill base and straight neck, what its trumpeting call sounds like and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "140 to 160 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T18:01:38.342955+00:00"
+      "at": "2026-10-07T18:25:23.683515+00:00"
     },
     "verify": {
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
-      "at": "2026-10-07T18:08:57.902786+00:00",
-      "factsHash": "bb6769c34bbae1bd"
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "bcff71b0a788229c"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "bcff71b0a788229c"
     }
   },
   "errors": [],
@@ -563,14 +879,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+      "contradicts": null
     }
   },
-  "flags": [
-    {
-      "check": "V3",
-      "factId": "s01",
-      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
-    }
-  ]
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }

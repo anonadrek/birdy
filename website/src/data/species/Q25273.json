@@ -1,6 +1,6 @@
 {
   "qid": "Q25273",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
@@ -20,18 +20,18 @@
     {
       "id": "f02",
       "topic": "appearance",
-      "sv": "Ovansidan är askgrå och skuldrorna har förlängda ljusgrå fjädrar.",
+      "sv": "Ovansidan är askgrå.",
       "sources": [
         {
           "article": "sv",
-          "quote": "På ovansidan är den askgrå. Skuldrorna har förlängda ljusgrå fjädrar."
+          "quote": "På ovansidan är den askgrå."
         }
       ]
     },
     {
       "id": "f03",
       "topic": "appearance",
-      "sv": "Vingpennorna är gråsvarta, medan vingens framkant, huvudet och strupen är vita.",
+      "sv": "Vingpennorna är gråsvarta medan vingens framkant, huvudet och strupen är vita.",
       "sources": [
         {
           "article": "sv",
@@ -53,7 +53,7 @@
     {
       "id": "f05",
       "topic": "appearance",
-      "sv": "Halsen är gråaktig med rader av svarta fläckar längs framsidan.",
+      "sv": "Halsen är gråaktig med svarta fläckar i rader längs framsidan.",
       "sources": [
         {
           "article": "sv",
@@ -64,7 +64,7 @@
     {
       "id": "f06",
       "topic": "appearance",
-      "sv": "Näbben och ögats iris är gula.",
+      "sv": "Näbben, benen och ögats iris är gula.",
       "sources": [
         {
           "article": "sv",
@@ -97,7 +97,7 @@
     {
       "id": "f09",
       "topic": "sex_age",
-      "sv": "Unga fåglar har grått i stället för svart huvudstreck, är mattare än vuxna och har bara en liten mörkgrå tofs.",
+      "sv": "Unga fåglar har grått i stället för svart huvudstreck, är allmänt mattare än vuxna och har bara en liten mörkgrå tofs.",
       "sources": [
         {
           "article": "en",
@@ -108,7 +108,7 @@
     {
       "id": "f10",
       "topic": "sex_age",
-      "sv": "Hanar och honor skiljer sig inte påtagligt, men hanarna är i genomsnitt något större.",
+      "sv": "Könen ser inte påtagligt olika ut, men hanarna är i genomsnitt något större.",
       "sources": [
         {
           "article": "de",
@@ -119,7 +119,7 @@
     {
       "id": "f11",
       "topic": "voice",
-      "sv": "Vanligaste lätet är ett kraxande ”kah-ährk”, som oftast hörs i skymningen från flygande fåglar på väg till nattkvist.",
+      "sv": "Vanligaste lätet är ett kraxande \"kah-ährk\", som oftast hörs i skymningen från fåglar som flyger till nattkvisten.",
       "sources": [
         {
           "article": "sv",
@@ -141,18 +141,18 @@
     {
       "id": "f13",
       "topic": "habitat",
-      "sv": "Den förekommer vid sjöar, vattendrag, kärr, dammar, diken, översvämmade marker, laguner, flodmynningar och havsstränder, vanligast i låglandet.",
+      "sv": "Gråhägern lever i våtmarker och ses vid sjöar, vattendrag, dammar, kärr och havskuster.",
       "sources": [
         {
           "article": "en",
-          "quote": "Although most common in the lowlands, it also occurs in mountain tarns, lakes, reservoirs, rivers, marshes, ponds, ditches, flooded areas, coastal lagoons, estuaries, and the sea shore."
+          "quote": "A bird of wetland areas, it can be seen around lakes, rivers, ponds, marshes and on the sea coast."
         }
       ]
     },
     {
       "id": "f14",
       "topic": "habitat",
-      "sv": "Den söker ibland föda på betesmarker en bit från vatten.",
+      "sv": "Ibland söker den föda på betesmarker en bit från vatten.",
       "sources": [
         {
           "article": "en",
@@ -163,7 +163,7 @@
     {
       "id": "f15",
       "topic": "sweden",
-      "sv": "I Sverige är gråhägern en relativt vanlig häckfågel i södra delen av landet, upp till södra Värmland, södra Dalarna, Västmanland och Hälsingland.",
+      "sv": "I Sverige är gråhägern en relativt vanlig häckfågel i södra delen av landet upp till södra Värmland, södra Dalarna, Västmanland och Hälsingland.",
       "sources": [
         {
           "article": "sv",
@@ -174,16 +174,27 @@
     {
       "id": "f16",
       "topic": "sweden",
-      "sv": "Den häckar dessutom lokalt i Jämtland och ses ibland längre norrut på eftersommaren.",
+      "sv": "Den häckar dessutom lokalt i Jämtland.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Dessutom häckar den lokalt i Jämtland. På eftersommaren påträffas den ibland längre upp i landet."
+          "quote": "Dessutom häckar den lokalt i Jämtland."
         }
       ]
     },
     {
       "id": "f17",
+      "topic": "sweden",
+      "sv": "På eftersommaren påträffas den ibland längre norrut i landet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På eftersommaren påträffas den ibland längre upp i landet."
+        }
+      ]
+    },
+    {
+      "id": "f18",
       "topic": "sweden",
       "sv": "De flesta svenska gråhägrar flyttar, men i södra Sverige och på västkusten är den stannfågel.",
       "sources": [
@@ -194,7 +205,7 @@
       ]
     },
     {
-      "id": "f18",
+      "id": "f19",
       "topic": "sweden",
       "sv": "Det svenska beståndet uppskattas till 14 000 häckande individer.",
       "sources": [
@@ -205,20 +216,9 @@
       ]
     },
     {
-      "id": "f19",
+      "id": "f21",
       "topic": "breeding",
-      "sv": "Boet byggs i höga träd, helst bok eller alm, vid insjöar och havsvikar med bräckt vatten.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Gråhägern bygger bo i höga träd, helst bokar eller almar i skogsmark, vid insjöar och havsvikar med bräckt vatten."
-        }
-      ]
-    },
-    {
-      "id": "f20",
-      "topic": "breeding",
-      "sv": "Den häckar i kolonier, ibland med upp till 50–100 par.",
+      "sv": "Den häckar i kolonier som ibland omfattar 50–100 par.",
       "sources": [
         {
           "article": "sv",
@@ -227,9 +227,9 @@
       ]
     },
     {
-      "id": "f21",
+      "id": "f22",
       "topic": "breeding",
-      "sv": "Honan lägger en kull per år med oftast tre till fem blåaktigt gröna, ofläckade ägg.",
+      "sv": "Honan lägger en kull om året med i genomsnitt tre till fem blåaktigt gröna, ofläckade ägg.",
       "sources": [
         {
           "article": "sv",
@@ -238,7 +238,7 @@
       ]
     },
     {
-      "id": "f22",
+      "id": "f23",
       "topic": "breeding",
       "sv": "Ruvningen pågår 25–28 dygn och båda föräldrarna tar hand om ungarna i cirka 42–45 dygn tills de är flygga.",
       "sources": [
@@ -249,39 +249,24 @@
       ]
     },
     {
-      "id": "f23",
+      "id": "f24",
       "topic": "food",
-      "sv": "Gråhägern lever huvudsakligen av fisk.",
+      "sv": "Gråhägern lever huvudsakligen av fisk som den fångar genom att stå blickstilla i vattnet och snabbt hugga.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Gråhägern lever huvudsakligen av fisk."
-        }
-      ]
-    },
-    {
-      "id": "f24",
-      "topic": "food",
-      "sv": "Den tar även groddjur, kräftdjur, insekter och små däggdjur som vattensorkar och råttor.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "Fish, amphibians, crustaceans, and insects are caught in shallow water with the heron's long bill."
-        },
-        {
-          "article": "en",
-          "quote": "Small mammals such as water voles, rats, stoats and young rabbits are additionally caught."
+          "quote": "Gråhägern lever huvudsakligen av fisk. Den jagar genom att stå blickstilla i vattnet och sedan snabbt snappa upp fisk som simmar förbi."
         }
       ]
     },
     {
       "id": "f25",
-      "topic": "behaviour",
-      "sv": "Den jagar genom att stå blickstilla i vattnet och snabbt hugga fisk som simmar förbi.",
+      "topic": "food",
+      "sv": "Den tar även groddjur, kräftdjur och insekter i grunt vatten.",
       "sources": [
         {
-          "article": "sv",
-          "quote": "Den jagar genom att stå blickstilla i vattnet och sedan snabbt snappa upp fisk som simmar förbi."
+          "article": "en",
+          "quote": "Fish, amphibians, crustaceans, and insects are caught in shallow water with the heron's long bill."
         }
       ]
     },
@@ -299,33 +284,29 @@
     {
       "id": "f27",
       "topic": "behaviour",
-      "sv": "Den flyger långsamt med indragen S-formad hals, till skillnad från storkar, tranor och skedstorkar som sträcker ut halsen.",
+      "sv": "Flykten är långsam med långsamma vingslag och halsen indragen i S-form.",
       "sources": [
         {
           "article": "en",
           "quote": "The grey heron has a slow flight, with its long neck retracted in an S-shape."
-        },
-        {
-          "article": "en",
-          "quote": "distinguishes them from storks, cranes, and spoonbills, which extend their necks"
         }
       ]
     },
     {
       "id": "f28",
       "topic": "behaviour",
-      "sv": "Den jagar främst i gryning och skymning.",
+      "sv": "På natten vilar den i träd eller på klippor, gärna i grupp.",
       "sources": [
         {
           "article": "en",
-          "quote": "The main hunting periods are around dawn and dusk"
+          "quote": "At night it roosts in trees or on cliffs, where it tends to be gregarious."
         }
       ]
     },
     {
       "id": "f29",
       "topic": "lookalike",
-      "sv": "Amerikansk gråhäger liknar gråhägern men är större och har kastanjebruna flanker och lår.",
+      "sv": "Den liknar amerikansk gråhäger, som är större och har kastanjebruna flanker och lår.",
       "sources": [
         {
           "article": "en",
@@ -339,16 +320,12 @@
     {
       "id": "s01",
       "topic": "status",
-      "value": "breeding_migrant",
-      "sv": "Flyttfågel, häckar här",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
       "sources": [
         {
           "article": "sv",
           "quote": "Merparten av den svenska populationen är flyttfåglar, men i södra Sverige och på Sveriges västkust är den stannfågel."
-        },
-        {
-          "article": "sv",
-          "quote": "Hägern är i Sverige en relativt vanlig häckfågel"
         }
       ]
     },
@@ -371,19 +348,346 @@
       "sv": "Inte rödlistad i Svenska rödlistan 2025."
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Gråhägern är en stor och grov häger med lång S-formad hals, långa ben och lång dolkformad näbb.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Den ses vid sjöar, vattendrag, dammar, kärr och havskuster.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Askgrå ovansida, gråsvarta vingpennor samt vitt huvud, vit strupe och vit vingframkant",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Svart hjässa och lång svart nacktofs, gråaktig hals med rader av svarta fläckar framtill",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Gul näbb, gula ben och gul iris, könen är lika men hanen i snitt något större",
+          "factIds": [
+            "f06",
+            "f10"
+          ]
+        },
+        {
+          "text": "I flykten indraget huvud och högbröstad profil, med långsamma vingslag",
+          "factIds": [
+            "f07",
+            "f27"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Det vanligaste lätet är ett kraxande \"kah-ährk\", som oftast hörs i skymningen när fåglarna flyger till nattkvisten.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "I häckningskolonierna hörs olika kraxande och knackande ljud.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "I Sverige är gråhägern en relativt vanlig häckfågel i södra delen av landet upp till södra Värmland, södra Dalarna, Västmanland och Hälsingland, och den häckar lokalt i Jämtland.",
+          "factIds": [
+            "f15",
+            "f16",
+            "s01"
+          ]
+        },
+        {
+          "text": "De flesta flyttar, men i södra Sverige och på västkusten är den stannfågel.",
+          "factIds": [
+            "f18",
+            "s01"
+          ]
+        },
+        {
+          "text": "På eftersommaren ses den ibland längre norrut.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Beståndet uppskattas till 14 000 häckande individer.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den lever huvudsakligen av fisk, som den fångar genom att stå blickstilla i vattnet och hugga snabbt.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Den tar även groddjur, kräftdjur och insekter i grunt vatten, och ibland söker den föda på betesmarker en bit från vatten.",
+          "factIds": [
+            "f25",
+            "f14"
+          ]
+        },
+        {
+          "text": "Vid å- och sjökanter står den ofta på ett ben.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "På natten vilar den i träd eller på klippor, gärna i grupp.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Den häckar i kolonier om ibland 50 till 100 par.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Ardea herodias",
+          "text": [
+            {
+              "text": "Amerikansk gråhäger liknar gråhägern men är större och har kastanjebruna flanker och lår.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Gråhäger: så känner du igen den på fjäderdräkt, gul näbb och flykt, hur det kraxande lätet låter, vad den äter och när den ses under året.",
+      "facts": {
+        "size": {
+          "value": "85 till 102 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Grey Heron is a large, heavily built heron with a long S-shaped neck, long legs and a long dagger-shaped bill.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "It is seen by lakes, rivers, ponds, marshes and sea coasts.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Ash-grey upperparts, grey-black flight feathers, white head and throat, white leading edge to the wing",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Black crown and long black plume, greyish neck with rows of black spots in front",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Yellow bill, legs and iris, sexes look alike but males average slightly larger",
+          "factIds": [
+            "f06",
+            "f10"
+          ]
+        },
+        {
+          "text": "In flight the head is drawn in, giving a deep-chested look, with slow wingbeats",
+          "factIds": [
+            "f07",
+            "f27"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The most frequent call is a croaking \"kah-ährk\", mostly heard at dusk from birds flying to their night roost.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "In breeding colonies there are various croaking and knocking sounds.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "In Sweden the Grey Heron is a fairly common breeder in the south, north to southern Värmland, southern Dalarna, Västmanland and Hälsingland, and breeds locally in Jämtland.",
+          "factIds": [
+            "f15",
+            "f16",
+            "s01"
+          ]
+        },
+        {
+          "text": "Most migrate, but it is resident in southern Sweden and on the west coast.",
+          "factIds": [
+            "f18",
+            "s01"
+          ]
+        },
+        {
+          "text": "In late summer it sometimes turns up further north.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "The population is estimated at 14 000 breeding individuals.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "It is reported all year from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mainly on fish, caught by standing motionless in the water and striking fast.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "It also takes amphibians, crustaceans and insects in shallow water, and sometimes forages on pasture some way from water.",
+          "factIds": [
+            "f25",
+            "f14"
+          ]
+        },
+        {
+          "text": "Resting at stream or lake edges, it often stands on one leg.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "At night it roosts in trees or on rocks, often in groups.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "It nests in colonies, sometimes of 50 to 100 pairs.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Ardea herodias",
+          "text": [
+            {
+              "text": "Great Blue Heron is similar but larger, with chestnut flanks and thighs.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Grey Heron: how to recognise it by plumage, yellow bill and flight, what its croaking call sounds like, what it eats and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "85 to 102 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T18:01:38.342955+00:00"
+      "at": "2026-10-07T18:25:23.683515+00:00"
     },
     "verify": {
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
-      "at": "2026-10-07T18:08:57.902786+00:00",
-      "factsHash": "56e828704655a728"
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "5731e9cff0505bc4"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:48:54.613523+00:00",
+      "factsHash": "5731e9cff0505bc4"
     }
   },
   "errors": [],
@@ -581,14 +885,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+      "contradicts": null
     }
   },
-  "flags": [
-    {
-      "check": "V3",
-      "factId": "s01",
-      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
-    }
-  ]
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }

@@ -1,6 +1,6 @@
 {
   "qid": "Q25438",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
@@ -19,8 +19,23 @@
     },
     {
       "id": "f02",
+      "topic": "sex_age",
+      "sv": "Honan är större än hanen och i genomsnitt drygt ett kilo tyngre.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "honor är i genomsnitt drygt ett kilo tyngre än hanar"
+        },
+        {
+          "article": "sv",
+          "quote": "Som hos de flesta rovfåglar är honan större än hanen."
+        }
+      ]
+    },
+    {
+      "id": "f03",
       "topic": "appearance",
-      "sv": "Den adulta havsörnen är jämnt brun med ljusbrunt huvud och vit stjärt.",
+      "sv": "Den vuxna havsörnen är jämnt brun med ljusbrunt huvud och vit stjärt.",
       "sources": [
         {
           "article": "sv",
@@ -29,9 +44,9 @@
       ]
     },
     {
-      "id": "f03",
+      "id": "f04",
       "topic": "appearance",
-      "sv": "Näbben är gul och mycket kraftig, även jämfört med kungsörnens.",
+      "sv": "Näbben är gul och mycket kraftig.",
       "sources": [
         {
           "article": "sv",
@@ -40,9 +55,9 @@
       ]
     },
     {
-      "id": "f04",
+      "id": "f05",
       "topic": "appearance",
-      "sv": "Hos den adulta fågeln är näbb, vaxhud, fötter och ögon gula.",
+      "sv": "Hos den vuxna fågeln är alla nakna kroppsdelar gula, även näbb, vaxhud, fötter och ögon.",
       "sources": [
         {
           "article": "en",
@@ -51,7 +66,7 @@
       ]
     },
     {
-      "id": "f05",
+      "id": "f06",
       "topic": "appearance",
       "sv": "Den vita stjärten är kort och kilformad.",
       "sources": [
@@ -62,7 +77,7 @@
       ]
     },
     {
-      "id": "f06",
+      "id": "f07",
       "topic": "appearance",
       "sv": "Vingarna har rak fram- och bakkant och tvärt avskuren vingspets med spretiga, mycket långa vingpennor.",
       "sources": [
@@ -73,229 +88,9 @@
       ]
     },
     {
-      "id": "f07",
-      "topic": "appearance",
-      "sv": "På hög höjd syns den vita stjärten ofta knappt och flygbilden beskrivs som en flygande ställningsplanka.",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "In größerer Höhe ist der weiße Stoß oft kaum sichtbar, das Flugbild wird dann oft mit „fliegendem Gerüstbrett“ umschrieben."
-        }
-      ]
-    },
-    {
       "id": "f08",
-      "topic": "sex_age",
-      "sv": "Honan är större än hanen.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Som hos de flesta rovfåglar är honan större än hanen."
-        }
-      ]
-    },
-    {
-      "id": "f09",
-      "topic": "sex_age",
-      "sv": "Unga fåglar saknar vit stjärt; stjärten blir successivt vitare med åldern tills den är helt vit vid könsmognad.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Juvenila fåglar saknar den vita stjärten. Stjärten blir successivt vitare med åldern för att bli helt vit när fågeln uppnår könsmognad."
-        }
-      ]
-    },
-    {
-      "id": "f10",
-      "topic": "sex_age",
-      "sv": "Hos unga fåglar är näbben ungefär till hälften mörkbrun från spetsen och till hälften smutsigt gulaktig eller grå mot basen.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "The bill of juveniles is usually almost half dark brown from the tip and half dirty, dull yellowish or grey to the base"
-        }
-      ]
-    },
-    {
-      "id": "f11",
-      "topic": "sex_age",
-      "sv": "Helt vit stjärt och enhetligt ljust huvud och hals uppnås oftast först under åttonde året.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "usually the fully white tail and the uniform pale head and neck are not obtained until the eighth year"
-        }
-      ]
-    },
-    {
-      "id": "f12",
-      "topic": "voice",
-      "sv": "Havsörnen är tystlåten utom under häckningstid, då den låter en kacklande och gäll ramsa som påminner om spillkråkans läte.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Havsörnen är tystlåten utom under häckningstid då den låter höra en kacklande och gäll ramsa påminnande om spillkråkans läte."
-        }
-      ]
-    },
-    {
-      "id": "f13",
-      "topic": "voice",
-      "sv": "Varningslätet är ett djupt och hårt \"kleck\".",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Varningslätet är ett djupt och hårt \"kleck\"."
-        }
-      ]
-    },
-    {
-      "id": "f14",
-      "topic": "voice",
-      "sv": "Ropserien hörs nästan bara nära boet, främst i morgon- och kvällsskymningen.",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "Der Ruf wird fast nur in Horstnähe und dort vor allem in der Morgen- und Abenddämmerung geäußert."
-        }
-      ]
-    },
-    {
-      "id": "f15",
-      "topic": "habitat",
-      "sv": "Havsörnen lever större delen av året nära stora öppna vatten, både vid kuster och vid sjöar, våtmarker, myrar och floder.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "White-tailed eagles live most of the year near large bodies of open water, including coastal saltwater areas and inland freshwater lakes, wetlands, bogs and rivers."
-        }
-      ]
-    },
-    {
-      "id": "f16",
-      "topic": "sweden",
-      "sv": "I Sverige häckar havsörnen främst längs Östersjökusten och vid sötvattensjöar över hela landet.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "I Sverige häckar havsörnen främst utmed Östersjökusten, och sötvattensjöar över hela landet."
-        }
-      ]
-    },
-    {
-      "id": "f17",
-      "topic": "sweden",
-      "sv": "Svenska havsörnar kan vintertid flytta söderut till Mellaneuropa, flytta kortare sträckor eller stanna kvar vid häckningsområdet.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Svenska havsörnar kan vintertid flytta söderut så långt som till Mellaneuropa, men kan också flytta kortare sträckor eller stanna kvar vid häckningsområdet."
-        }
-      ]
-    },
-    {
-      "id": "f18",
-      "topic": "sweden",
-      "sv": "Det svenska beståndet skattades 2025 till cirka 2 800 reproduktiva individer.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Det totala beståndet skattades 2025 till cirka 2 800 reproduktiva individer"
-        }
-      ]
-    },
-    {
-      "id": "f19",
-      "topic": "breeding",
-      "sv": "Boet är mycket stort och tungt, används år efter år av samma par och placeras ofta i träd men ibland på klippavsatser.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Havsörnens bo är mycket stort och tungt och används år efter år av samma par. Det placeras ofta i träd men kan också byggas på en klippavsats."
-        }
-      ]
-    },
-    {
-      "id": "f20",
-      "topic": "breeding",
-      "sv": "Havsörnen lägger oftast två till tre ägg.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Havsörnen lägger oftast två-tre ägg"
-        }
-      ]
-    },
-    {
-      "id": "f21",
-      "topic": "breeding",
-      "sv": "Paret ruvar i 35–45 dygn och tar gemensamt hand om ungarna, som är flygfärdiga efter cirka 70 dygn.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Paret ruvar i mellan 35 och 45 dygn och tar sedan gemensamt hand om ungarna som är flygfärdiga efter cirka 70 dygn."
-        }
-      ]
-    },
-    {
-      "id": "f22",
-      "topic": "food",
-      "sv": "Födan är främst fisk, cirka 90 procent sommartid, ofta gädda och braxen, men även sjöfågel, mindre däggdjur och as.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Bytet är främst fisk som utgör cirka 90% av födan sommartid, ofta gädda och braxen, men även sjöfågel, mindre däggdjur och as."
-        }
-      ]
-    },
-    {
-      "id": "f23",
-      "topic": "behaviour",
-      "sv": "Havsörnen stjäl ofta föda från andra djur och fåglar.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Det är också vanligt att den stjäl föda från andra djur och fåglar."
-        }
-      ]
-    },
-    {
-      "id": "f24",
-      "topic": "behaviour",
-      "sv": "Om havsörnen griper en för stor fisk kan den simma i land med fångsten i klorna.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "I det fall havsörnen råkar gripa tag i en för stor fisk, kan den simma i land med fångsten i klorna."
-        }
-      ]
-    },
-    {
-      "id": "f25",
-      "topic": "behaviour",
-      "sv": "Havsörnen sitter stora delar av dagen i träd eller på klippor och kan ofta sitta stilla i timmar.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "White-tailed eagles spend much of their day perched on trees or crags, and may often not move for hours."
-        }
-      ]
-    },
-    {
-      "id": "f26",
-      "topic": "behaviour",
-      "sv": "Vintertid samlas havsörnar i grupper, nära de skandinaviska länderna med minst 30–50 individer.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "Many such groups can contain up to 10 and, in areas near large breeding populations such as the Scandinavian countries, up to at least 30–50 individuals."
-        }
-      ]
-    },
-    {
-      "id": "f27",
       "topic": "lookalike",
-      "sv": "I flykten skiljer sig havsörnen från kungsörnen genom breda vingar, kort stjärt och långt utskjutande huvudparti.",
+      "sv": "I flykten skiljer sig havsörnen från kungsörnen genom breda vingar, kort stjärt och långt utskjutande huvud som sticker ut nästan lika långt som stjärten.",
       "sources": [
         {
           "article": "sv",
@@ -308,13 +103,13 @@
       }
     },
     {
-      "id": "f28",
+      "id": "f09",
       "topic": "lookalike",
-      "sv": "Unga havsörnar förväxlas ibland med unga kungsörnar men skiljs på kroppsproportionerna och avsaknaden av ljusa vingfält.",
+      "sv": "Till skillnad från kungsörnen är havsörnens ben inte fjäderklädda ända ner till tårna.",
       "sources": [
         {
           "article": "de",
-          "quote": "Immature Seeadler werden wegen der häufig gut ausgebildeten dunklen Stoßendbinde gelegentlich mit jungen Steinadlern verwechselt. Anhand der sehr unterschiedlichen Körperproportionen und den bei Seeadlern fehlenden hellen Flügelfeldern sind die Arten jedoch gut zu unterscheiden."
+          "quote": "Die Beine sind anders als beim Steinadler (Aquila chrysaetos) nicht bis zu den Zehen befiedert."
         }
       ],
       "other": {
@@ -323,19 +118,240 @@
       }
     },
     {
-      "id": "f29",
+      "id": "f10",
       "topic": "lookalike",
-      "sv": "På långt håll kan adult havsörn förväxlas med gåsgam, som har litet huvud, tydligt böjd vingbakkant och mer uppåtböjda vingar.",
+      "sv": "Unga havsörnar kan förväxlas med unga kungsörnar men skiljs på kroppsproportionerna och på att havsörnen saknar ljusa vingfält.",
       "sources": [
         {
-          "article": "en",
-          "quote": "However even at long range, the relatively tiny head, distinctly curved trailing wing-edges and more raised wings make the vulture distinctive from the white-tailed eagle."
+          "article": "de",
+          "quote": "Anhand der sehr unterschiedlichen Körperproportionen und den bei Seeadlern fehlenden hellen Flügelfeldern sind die Arten jedoch gut zu unterscheiden."
         }
       ],
       "other": {
-        "scientific": "Gyps fulvus",
-        "qid": "Q177856"
+        "scientific": "Aquila chrysaetos",
+        "qid": "Q41181"
       }
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Unga fåglar saknar vit stjärt, och stjärten blir successivt vitare tills den är helt vit vid könsmognad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenila fåglar saknar den vita stjärten. Stjärten blir successivt vitare med åldern för att bli helt vit när fågeln uppnår könsmognad."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "sex_age",
+      "sv": "Unga havsörnar är mörkbruna med mörkgrå fötter och vaxhud.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Junge Seeadler sind dunkelbraun, die Fänge und die Wachshaut sind dunkelgrau."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Havsörnen är tystlåten utom under häckningstid, då den låter höra en kacklande och gäll ramsa som påminner om spillkråkans läte.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Havsörnen är tystlåten utom under häckningstid då den låter höra en kacklande och gäll ramsa påminnande om spillkråkans läte."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Varningslätet är ett djupt och hårt \"kleck\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Varningslätet är ett djupt och hårt \"kleck\"."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Ropserien hörs nästan bara nära boet, främst i morgon- och kvällsskymningen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Ruf wird fast nur in Horstnähe und dort vor allem in der Morgen- und Abenddämmerung geäußert."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Havsörnen lever större delen av året nära stora öppna vatten, såsom kuster, sötvattensjöar, våtmarker, myrar och floder.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "White-tailed eagles live most of the year near large bodies of open water, including coastal saltwater areas and inland freshwater lakes, wetlands, bogs and rivers."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "I Sverige häckar havsörnen främst längs Östersjökusten och vid sötvattensjöar över hela landet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar havsörnen främst utmed Östersjökusten, och sötvattensjöar över hela landet."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Svenska havsörnar kan vintertid flytta söderut till Mellaneuropa, flytta kortare sträckor eller stanna kvar vid häckningsområdet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Svenska havsörnar kan vintertid flytta söderut så långt som till Mellaneuropa, men kan också flytta kortare sträckor eller stanna kvar vid häckningsområdet."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet skattades 2025 till cirka 2 800 reproduktiva individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det totala beståndet skattades 2025 till cirka 2 800 reproduktiva individer"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Ringmärkning har visat att den lappländska populationen är helt avskild från resten av den svenska populationen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Denna ringmärkning har också visat att den lappländska populationen är helt avskild från den resterande svenska populationen."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet är mycket stort och tungt, används år efter år av samma par och placeras ofta i träd men ibland på en klippavsats.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Havsörnens bo är mycket stort och tungt och används år efter år av samma par. Det placeras ofta i träd men kan också byggas på en klippavsats."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Boet kräver grova träd, och endast tallar som är minst 100 år gamla är lämpliga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det kräver lämpliga grova träd i häckningsområdet, endast tallar som är minst 100 år gamla är lämpliga."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Havsörnen lägger oftast två–tre ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Havsörnen lägger oftast två-tre ägg"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Paret ruvar i 35–45 dygn och tar gemensamt hand om ungarna, som är flygfärdiga efter cirka 70 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Paret ruvar i mellan 35 och 45 dygn och tar sedan gemensamt hand om ungarna som är flygfärdiga efter cirka 70 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Födan är främst fisk, ofta gädda och braxen, som utgör cirka 90 procent sommartid, men även sjöfågel, mindre däggdjur och as.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bytet är främst fisk som utgör cirka 90% av födan sommartid, ofta gädda och braxen, men även sjöfågel, mindre däggdjur och as."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Det är vanligt att havsörnen stjäl föda från andra djur och fåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det är också vanligt att den stjäl föda från andra djur och fåglar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Griper havsörnen en för stor fisk kan den simma i land med fångsten i klorna genom att paddla med vingarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "kan den simma i land med fångsten i klorna. Den paddlar då sig fram med vingarna tills den når stranden."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Havsörnar tillbringar en stor del av dagen sittande i träd eller på klippor och kan ofta sitta stilla i timmar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "White-tailed eagles spend much of their day perched on trees or crags, and may often not move for hours."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Vintertid samlas havsörnar i grupper, nära stora häckningsbestånd som i Skandinavien med minst 30–50 individer.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Many such groups can contain up to 10 and, in areas near large breeding populations such as the Scandinavian countries, up to at least 30–50 individuals."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Svenska havsörnar kan vintertid flytta söderut så långt som till Mellaneuropa, men kan också flytta kortare sträckor eller stanna kvar vid häckningsområdet."
+        }
+      ]
     },
     {
       "id": "d01",
@@ -356,19 +372,346 @@
       "sv": "Inte rödlistad i Svenska rödlistan 2025."
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Havsörnen är en rovfågel med ett vingspann på 190 till 240 cm som större delen av året lever nära stora öppna vatten, som kuster, sjöar, våtmarker och floder.",
+          "factIds": [
+            "f01",
+            "f16"
+          ]
+        },
+        {
+          "text": "I Sverige häckar den främst längs Östersjökusten och vid sötvattensjöar över hela landet.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Vuxen fågel är jämnt brun med ljusbrunt huvud och kort, kilformad vit stjärt",
+          "factIds": [
+            "f03",
+            "f06"
+          ]
+        },
+        {
+          "text": "Mycket kraftig gul näbb, och hos vuxna är även vaxhud, fötter och ögon gula",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Breda vingar med rak fram- och bakkant och spretiga, mycket långa vingpennor",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        },
+        {
+          "text": "Ungfåglar är mörkbruna utan vit stjärt, med mörkgrå fötter och vaxhud",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Havsörnen är tystlåten utom under häckningstid, då den låter höra en kacklande och gäll ramsa som påminner om spillkråkans läte.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Ropserien hörs nästan bara nära boet, främst i morgon- och kvällsskymningen.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Varningslätet är ett djupt och hårt \"kleck\".",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Havsörnen är delvis flyttfågel och häckar i Sverige, främst längs Östersjökusten och vid sötvattensjöar över hela landet.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "Vintertid kan svenska havsörnar flytta söderut till Mellaneuropa, flytta kortare sträckor eller stanna kvar vid häckningsområdet.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Beståndet skattades 2025 till cirka 2 800 reproduktiva individer.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län och mest i november till februari.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan är främst fisk, ofta gädda och braxen, men även sjöfågel, mindre däggdjur och as.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Det är vanligt att den stjäl föda från andra djur och fåglar.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Griper den en för stor fisk kan den simma i land med fångsten genom att paddla med vingarna.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "En stor del av dagen sitter den i träd eller på klippor, ofta stilla i timmar, och vintertid samlas havsörnar i grupper.",
+          "factIds": [
+            "f28",
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q41181",
+          "text": [
+            {
+              "text": "I flykten skiljs havsörnen från kungsörnen på breda vingar, kort stjärt och långt utskjutande huvud.",
+              "factIds": [
+                "f08"
+              ]
+            },
+            {
+              "text": "Benen är inte fjäderklädda ända ner till tårna, och unga havsörnar saknar ljusa vingfält.",
+              "factIds": [
+                "f09",
+                "f10"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Havsörn: så känner du igen den på dräkt, näbb och flyktbild, hur lätena låter, vad den äter och när den oftast rapporteras i Sverige.",
+      "facts": {
+        "size": {
+          "value": "76 till 94 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The White-tailed Eagle, with a wingspan of 190 to 240 cm, lives most of the year near large open waters such as coasts, lakes, wetlands and rivers.",
+          "factIds": [
+            "f01",
+            "f16"
+          ]
+        },
+        {
+          "text": "In Sweden it breeds mainly along the Baltic coast and at freshwater lakes across the country.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Adults are evenly brown with a pale brown head and a short, wedge-shaped white tail",
+          "factIds": [
+            "f03",
+            "f06"
+          ]
+        },
+        {
+          "text": "Very heavy yellow bill, and adults also have yellow cere, feet and eyes",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Broad wings with straight edges, a squared-off tip and spread, very long flight feathers",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        },
+        {
+          "text": "Young birds are dark brown without a white tail, with dark grey feet and cere",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The White-tailed Eagle is quiet except in the breeding season, when it gives a cackling, shrill series that recalls the call of a Black Woodpecker.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The calling is heard almost only near the nest, mainly at dawn and dusk.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "The alarm call is a deep, hard \"kleck\".",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The White-tailed Eagle is a partial migrant that breeds in Sweden, mainly along the Baltic coast and at freshwater lakes across the country.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "In winter Swedish birds may move south to central Europe, move shorter distances or stay in the breeding area.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "The population was estimated in 2025 at about 2 800 reproductive individuals.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties and most often from November to February.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mainly on fish, often pike and bream, as well as waterbirds, small mammals and carrion.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It often steals food from other animals and birds.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "If it grabs a fish that is too big, it can swim ashore with the catch by paddling with its wings.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "It spends much of the day sitting in trees or on cliffs, often still for hours, and in winter eagles gather in groups.",
+          "factIds": [
+            "f28",
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q41181",
+          "text": [
+            {
+              "text": "In flight it differs from the Golden Eagle by broad wings, a short tail and a long protruding head.",
+              "factIds": [
+                "f08"
+              ]
+            },
+            {
+              "text": "Its legs are not feathered to the toes, and young birds lack pale wing patches.",
+              "factIds": [
+                "f09",
+                "f10"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "White-tailed Eagle: how to recognise it by plumage, bill and flight, what its calls sound like, what it eats and when it is seen in Sweden.",
+      "facts": {
+        "size": {
+          "value": "76 to 94 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T16:08:41.079475+00:00"
+      "at": "2026-10-07T18:25:23.683515+00:00"
     },
     "verify": {
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
-      "at": "2026-10-07T18:08:57.902786+00:00",
-      "factsHash": "66f3109b303d99a6"
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "238454056ed2efc0"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "238454056ed2efc0"
     }
   },
   "errors": [],
@@ -559,11 +902,11 @@
       "contradicts": null
     }
   },
-  "flags": [
-    {
-      "check": "V1",
-      "factId": "s01",
-      "message": "Statusen i Sverige ströks av faktakontrollen: Quote shows Swedish eagles can migrate south to Central Europe or shorter distances, not that the species is a strict resident (stannfågel); it describes mixed migratory behavior rather than confirming full residency.. Bestäm status eller lämna tom."
-    }
-  ]
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }

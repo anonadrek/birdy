@@ -13,7 +13,7 @@
     {
       "id": "f01",
       "topic": "size",
-      "sv": "Storskraken är 58–68 centimeter lång, har ett vingspann på 78–94 centimeter och väger 1 200–2 000 gram.",
+      "sv": "Storskraken är 58–68 cm lång, har ett vingspann på 78–94 cm och väger 1 200–2 000 gram.",
       "sources": [
         {
           "article": "sv",
@@ -24,17 +24,6 @@
     {
       "id": "f02",
       "topic": "appearance",
-      "sv": "Storskraken har lång hals men drar ofta in den när den simmar och ser då korthalsad ut.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Den har lång hals men drar ofta in halsen när den simmar varför den då ser korthalsad ut."
-        }
-      ]
-    },
-    {
-      "id": "f03",
-      "topic": "appearance",
       "sv": "Näbben är lång, smal och röd med en liten nedåtböjd svart krok i spetsen av övernäbben.",
       "sources": [
         {
@@ -44,9 +33,20 @@
       ]
     },
     {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Näbb och ben är röda till brunröda, klarast hos vuxna hanar och mattast hos unga fåglar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The bill and legs are red to brownish-red, brightest on adult males, dullest on juveniles."
+        }
+      ]
+    },
+    {
       "id": "f04",
       "topic": "appearance",
-      "sv": "I flykten liknar storskraken mer en lom eller dopping än andra änder, med utsträckt hals, rak flyktbana och grunda, snabba vingslag.",
+      "sv": "I flykten liknar den mer en lom eller dopping än andra änder, med lång utsträckt hals, rak flykt och grunda, snabba vingslag.",
       "sources": [
         {
           "article": "sv",
@@ -57,11 +57,11 @@
     {
       "id": "f05",
       "topic": "appearance",
-      "sv": "De förlängda nackfjädrarna ligger oftast slätt rundade bakom huvudet och bildar normalt ingen upprest tofs.",
+      "sv": "Den har lång hals men drar ofta in den när den simmar och ser då korthalsad ut.",
       "sources": [
         {
-          "article": "en",
-          "quote": "these usually lie smoothly rounded behind the head and do not normally form an erect crest"
+          "article": "sv",
+          "quote": "Den har lång hals men drar ofta in halsen när den simmar varför den då ser korthalsad ut."
         }
       ]
     },
@@ -101,33 +101,33 @@
     {
       "id": "f09",
       "topic": "sex_age",
-      "sv": "Hos honan bildar det bruna huvudet en skarp gräns mot halsens ljusa fjäderdräkt.",
+      "sv": "Honan har mycket längre nackfjädrar än hanen.",
       "sources": [
         {
-          "article": "de",
-          "quote": "bildet die braune Färbung des Kopfes beim Gänsesägerweibchen eine scharfe Grenzlinie zum hellen Gefieder des Halses"
+          "article": "sv",
+          "quote": "honan har mycket längre nackfjädrar än hanen"
         }
       ]
     },
     {
       "id": "f10",
       "topic": "sex_age",
-      "sv": "Ungfåglar liknar honan men har mindre nacktofs och ljusa ansiktsteckningar.",
+      "sv": "Hos honan bildar det bruna huvudet en skarp gräns mot den ljusa halsen.",
       "sources": [
         {
-          "article": "sv",
-          "quote": "Juvenilen påminner om honan men har mindre nacktofs och ljusa ansiktsteckningar."
+          "article": "de",
+          "quote": "die braune Färbung des Kopfes beim Gänsesägerweibchen eine scharfe Grenzlinie zum hellen Gefieder des Halses"
         }
       ]
     },
     {
       "id": "f11",
       "topic": "sex_age",
-      "sv": "I vilodräkt skiljs könen lättast i flykten genom hanens vita, sammanhängande fält på vingens ovansida.",
+      "sv": "Ungfågeln liknar honan men har mindre nacktofs och ljusa ansiktsteckningar.",
       "sources": [
         {
-          "article": "de",
-          "quote": "Zu unterscheiden sind sie dann noch am ehesten im Flug an dem weißen, durchgehenden Feld auf der Flügeloberseite des Männchens."
+          "article": "sv",
+          "quote": "Juvenilen påminner om honan men har mindre nacktofs och ljusa ansiktsteckningar."
         }
       ]
     },
@@ -138,14 +138,14 @@
       "sources": [
         {
           "article": "sv",
-          "quote": "Storskrakshanen spelar med ett dämpat, ringande \"krroo-krråå\"."
+          "quote": "Storskrakshanen spelar med ett dämpat, ringande \"krroo-krråå\""
         }
       ]
     },
     {
       "id": "f13",
       "topic": "voice",
-      "sv": "Honan låter under uppvaktningen med ett hårt \"pra, pra-pra\".",
+      "sv": "Honan låter under uppvaktningen ett hårt \"pra, pra-pra\".",
       "sources": [
         {
           "article": "sv",
@@ -156,7 +156,7 @@
     {
       "id": "f14",
       "topic": "voice",
-      "sv": "I flykten är storskraken ljudligare, med malande \"prrah, prrah, prrah...\" och snabbare \"tjackerack-ack-ack\".",
+      "sv": "I flykten är den ljudligare, med malande \"prrah, prrah, prrah...\" och snabbare \"tjackerack-ack-ack\".",
       "sources": [
         {
           "article": "sv",
@@ -166,6 +166,17 @@
     },
     {
       "id": "f15",
+      "topic": "voice",
+      "sv": "Det vanliga lätet är ett lågt, hest kraxande.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Their normal vocalisation is a low, harsh croak"
+        }
+      ]
+    },
+    {
+      "id": "f16",
       "topic": "habitat",
       "sv": "Storskraken hittas vid djupa och klara vatten där den dyker efter fisk.",
       "sources": [
@@ -176,9 +187,9 @@
       ]
     },
     {
-      "id": "f16",
+      "id": "f17",
       "topic": "habitat",
-      "sv": "Storskraken vistas vid både sött och salt vatten.",
+      "sv": "Den vistas vid både sött och salt vatten.",
       "sources": [
         {
           "article": "sv",
@@ -187,9 +198,9 @@
       ]
     },
     {
-      "id": "f17",
+      "id": "f18",
       "topic": "habitat",
-      "sv": "Arten föredrar klara, även snabbt strömmande vattendrag med grusbotten, sjöar och kuster med träd.",
+      "sv": "Den föredrar klara, även strömmande älvar med grusbotten, sjöar och kuster med träd.",
       "sources": [
         {
           "article": "de",
@@ -198,9 +209,9 @@
       ]
     },
     {
-      "id": "f18",
+      "id": "f19",
       "topic": "sweden",
-      "sv": "I Sverige är storskraken spridd över hela landet och talrikast i östra skärgården.",
+      "sv": "I Sverige finns storskraken över hela landet och är talrikast i östra skärgården.",
       "sources": [
         {
           "article": "sv",
@@ -209,9 +220,9 @@
       ]
     },
     {
-      "id": "f19",
+      "id": "f20",
       "topic": "sweden",
-      "sv": "Storskraken övervintrar ofta på östkusten söder om Stockholm så länge Östersjön inte fryser helt.",
+      "sv": "Den övervintrar ofta på östkusten söder om Stockholm så länge Östersjön inte fryser helt.",
       "sources": [
         {
           "article": "sv",
@@ -220,9 +231,9 @@
       ]
     },
     {
-      "id": "f20",
+      "id": "f21",
       "topic": "sweden",
-      "sv": "Många svenska storskrakar övervintrar annars på västkusten, i Danmark, Tyskland, Polen och Nederländerna.",
+      "sv": "Många svenska storskrakar övervintrar på västkusten, i Danmark, Tyskland, Polen och Nederländerna.",
       "sources": [
         {
           "article": "sv",
@@ -231,7 +242,7 @@
       ]
     },
     {
-      "id": "f21",
+      "id": "f22",
       "topic": "sweden",
       "sv": "Det svenska beståndet uppskattades 2018 till cirka 34 000 par.",
       "sources": [
@@ -242,7 +253,18 @@
       ]
     },
     {
-      "id": "f22",
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "De flesta västeuropeiska hanar flyttar norrut till flodmynningar i Finnmark i norra Norge för att rugga.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "most of the Western European male population migrates north to estuaries in Finnmark in northern Norway (principally Tanafjord) to moult"
+        }
+      ]
+    },
+    {
+      "id": "f24",
       "topic": "breeding",
       "sv": "Boet läggs ofta i trädhål eller holkar, och honan lägger vanligtvis sju till åtta gulaktiga ägg.",
       "sources": [
@@ -253,20 +275,20 @@
       ]
     },
     {
-      "id": "f23",
+      "id": "f25",
       "topic": "breeding",
-      "sv": "Ungarna lämnar boet en dag efter kläckningen.",
+      "sv": "Honan ruvar äggen ensam i 32 till 35 dagar.",
       "sources": [
         {
           "article": "de",
-          "quote": "Gänsesägerküken verlassen das Nest einen Tag nach dem Schlüpfen."
+          "quote": "bebrütet sie allein 32 bis 35 Tage lang"
         }
       ]
     },
     {
-      "id": "f24",
+      "id": "f26",
       "topic": "breeding",
-      "sv": "Honan bär ungarna på ryggen till floder eller sjöar direkt efter kläckningen.",
+      "sv": "Direkt efter kläckningen bärs ungarna av honan på ryggen till älvar eller sjöar.",
       "sources": [
         {
           "article": "en",
@@ -275,7 +297,7 @@
       ]
     },
     {
-      "id": "f25",
+      "id": "f27",
       "topic": "food",
       "sv": "Storskraken lever främst av mindre fiskar.",
       "sources": [
@@ -286,9 +308,9 @@
       ]
     },
     {
-      "id": "f26",
+      "id": "f28",
       "topic": "food",
-      "sv": "Förutom fisk tar den blötdjur, kräftdjur, maskar, insektslarver och groddjur.",
+      "sv": "Utöver fisk tar den blötdjur, kräftdjur, maskar, insektslarver och groddjur.",
       "sources": [
         {
           "article": "en",
@@ -297,20 +319,9 @@
       ]
     },
     {
-      "id": "f27",
+      "id": "f29",
       "topic": "behaviour",
-      "sv": "Under häckningstiden lever storskrakar parvis och resten av året i flockar.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Under häckningsperioden lever de parvis och övrig tid i flockar."
-        }
-      ]
-    },
-    {
-      "id": "f28",
-      "topic": "behaviour",
-      "sv": "På hösten fiskar flockar gemensamt i en linje parallell med stranden och simmar mot land under dykande och vingplaskande.",
+      "sv": "På hösten fiskar flockar gemensamt i en linje parallell med stranden och driver småfisk mot land under dykande och vingplaskande.",
       "sources": [
         {
           "article": "sv",
@@ -319,9 +330,9 @@
       ]
     },
     {
-      "id": "f29",
+      "id": "f30",
       "topic": "behaviour",
-      "sv": "Storskrakar sitter ofta på en sten mitt i vattnet med halvöppna vingar mot solen, likt skarvar.",
+      "sv": "Den sitter ofta på en sten mitt i vattnet med halvöppna vingar i solen, likt skarvar.",
       "sources": [
         {
           "article": "en",
@@ -354,13 +365,13 @@
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T18:01:38.342955+00:00"
+      "at": "2026-10-07T18:25:23.683515+00:00"
     },
     "verify": {
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
-      "at": "2026-10-07T18:08:57.902786+00:00",
-      "factsHash": "6e72fe2cae0cca24"
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "b0782a96d49258fc"
     }
   },
   "errors": [],
@@ -548,14 +559,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+      "contradicts": null
     }
   },
   "flags": [
     {
       "check": "V1",
       "factId": "s01",
-      "message": "Statusen i Sverige ströks av faktakontrollen: The quote confirms the species is migratory in most of Sweden, but does not explicitly state that it breeds in Sweden in this paragraph.. Bestäm status eller lämna tom."
+      "message": "Statusen i Sverige ströks av faktakontrollen: Quote confirms partial migrant status with wintering on parts of the coast, but does not explicitly state that the species breeds in Sweden.. Bestäm status eller lämna tom."
     }
   ]
 }

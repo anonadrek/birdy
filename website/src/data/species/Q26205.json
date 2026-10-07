@@ -1,6 +1,6 @@
 {
   "qid": "Q26205",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
@@ -42,7 +42,18 @@
     {
       "id": "f04",
       "topic": "appearance",
-      "sv": "Buken är gul medan bröstet och kroppssidan är rostbruna med fina längsgående streck.",
+      "sv": "Den adulta hanen har i häckningsdräkt lysande gult huvud och strupe med smalt mörkt ögonstreck bakom ögat och ganska långt mörkt mustaschstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen har i häckningsdräkt ett lysande gult huvud och strupe, med ett smalt mörkt ögonstreck bakom ögat och ett ganska långt mörkt mustaschstreck."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Hanens buk är gul, medan bröstet och kroppssidan är rostbruna med fina längsgående streck.",
       "sources": [
         {
           "article": "sv",
@@ -51,7 +62,7 @@
       ]
     },
     {
-      "id": "f05",
+      "id": "f06",
       "topic": "appearance",
       "sv": "Ovansidan är övervägande brun och kraftigt svartfläckad.",
       "sources": [
@@ -62,9 +73,9 @@
       ]
     },
     {
-      "id": "f06",
+      "id": "f07",
       "topic": "appearance",
-      "sv": "Stjärten är mörk, och i flykten syns den vita yttre kanten tydligt.",
+      "sv": "Stjärten är mörk med vita kanter som syns tydligt i flykten.",
       "sources": [
         {
           "article": "de",
@@ -73,20 +84,9 @@
       ]
     },
     {
-      "id": "f07",
-      "topic": "sex_age",
-      "sv": "Den adulta hanen har i häckningsdräkt lysande gult huvud och strupe med smalt mörkt ögonstreck bakom ögat och ganska långt mörkt mustaschstreck.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Den adulta hanen har i häckningsdräkt ett lysande gult huvud och strupe, med ett smalt mörkt ögonstreck bakom ögat och ett ganska långt mörkt mustaschstreck."
-        }
-      ]
-    },
-    {
       "id": "f08",
       "topic": "sex_age",
-      "sv": "Honan är mindre kontrastrik, mer brunfärgad och kraftigare streckad undertill än hanen.",
+      "sv": "Honan är mindre kontrastrik, mer brunfärgad och kraftigare streckad undertill än hanen och har en liknande dräkt året runt.",
       "sources": [
         {
           "article": "sv",
@@ -97,7 +97,7 @@
     {
       "id": "f09",
       "topic": "sex_age",
-      "sv": "Honan saknar hanens lysande gula huvud men har ändå tydliga ljusgula partier, till exempel strupen.",
+      "sv": "Honan saknar hanens lysande gula huvud men har tydliga ljusgula partier, exempelvis strupen.",
       "sources": [
         {
           "article": "sv",
@@ -118,8 +118,19 @@
     },
     {
       "id": "f11",
+      "topic": "sex_age",
+      "sv": "Ungfågeln är mycket mattare och mindre gul än de vuxna och har ofta ljusare övergump.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The juvenile is much duller and less yellow than the adults, and often has a paler rump."
+        }
+      ]
+    },
+    {
+      "id": "f12",
       "topic": "voice",
-      "sv": "Sången består av fem till elva strofer, som om fågeln räknar, och kan låta tju, tju, tju, tju, tju, tju, tjuuu.",
+      "sv": "Sången består av fem till elva strofer och kan beskrivas som att fågeln räknar, ungefär tju, tju, tju, tju, tju, tju, tjuuu.",
       "sources": [
         {
           "article": "sv",
@@ -132,7 +143,7 @@
       ]
     },
     {
-      "id": "f12",
+      "id": "f13",
       "topic": "voice",
       "sv": "Sången är en serie korta toner som gradvis blir starkare och avslutas med en eller två mer utdragna toner.",
       "sources": [
@@ -143,9 +154,9 @@
       ]
     },
     {
-      "id": "f13",
+      "id": "f14",
       "topic": "voice",
-      "sv": "Andra läten är ett kontaktläte zit, ett varningsläte see och ett drillat tirrr i flykten.",
+      "sv": "Bland andra läten finns ett kontaktläte zit, ett varningsläte see och ett drillande tirrr i flykten.",
       "sources": [
         {
           "article": "en",
@@ -154,9 +165,9 @@
       ]
     },
     {
-      "id": "f14",
+      "id": "f15",
       "topic": "voice",
-      "sv": "Sången framförs från en upphöjd sångpost, till exempel en busk- eller trädtopp eller en påle.",
+      "sv": "Sången framförs från en upphöjd sittplats, till exempel en busk- eller trädtopp eller en stolpe.",
       "sources": [
         {
           "article": "de",
@@ -165,37 +176,9 @@
       ]
     },
     {
-      "id": "f15",
-      "topic": "lookalike",
-      "sv": "Gulsparvens sång liknar tallsparvens.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Sången är ganska karaktäristisk, men liknar tallsparvens."
-        }
-      ],
-      "other": {
-        "scientific": "Emberiza leucocephalos"
-      }
-    },
-    {
       "id": "f16",
-      "topic": "lookalike",
-      "sv": "Honor och unga gulsparvar kan förväxlas med tallsparv men har alltid gul ton i dräkten, ljusare rödbrun övergump och jämnare ovansida.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "may be confused with pine buntings, but they always have a yellow tint to their plumage, a paler rufous rump, and more uniform upperparts than that species"
-        }
-      ],
-      "other": {
-        "scientific": "Emberiza leucocephalos"
-      }
-    },
-    {
-      "id": "f17",
       "topic": "habitat",
-      "sv": "Gulsparven häckar i busk- och åkermark, skogsmark med gläntor, på hyggen och även på hedar och strandängar.",
+      "sv": "Gulsparven häckar i busk- och åkermark, skogsmark med gläntor, på hyggen samt på hedar och strandängar.",
       "sources": [
         {
           "article": "sv",
@@ -204,9 +187,9 @@
       ]
     },
     {
-      "id": "f18",
+      "id": "f17",
       "topic": "habitat",
-      "sv": "Gulsparven saknas i stadsmiljöer, skogar och våtmarker.",
+      "sv": "Gulsparven saknas i tätorter, skogar och våtmarker.",
       "sources": [
         {
           "article": "en",
@@ -215,7 +198,7 @@
       ]
     },
     {
-      "id": "f19",
+      "id": "f18",
       "topic": "sweden",
       "sv": "Gulsparven häckar i stora delar av Sverige, bitvis talrikt, men inte i fjällen och allra längst norrut.",
       "sources": [
@@ -226,9 +209,9 @@
       ]
     },
     {
-      "id": "f20",
+      "id": "f19",
       "topic": "sweden",
-      "sv": "De nordliga inlandsområdena överges på hösten, men längs Norrlandskusten och från Mellansverige och söderut finns gulsparven året om.",
+      "sv": "De nordliga häckningsområdena i inlandet överges på hösten, men längs Norrlandskusten och från Mellansverige och söderut finns arten året om.",
       "sources": [
         {
           "article": "sv",
@@ -237,9 +220,9 @@
       ]
     },
     {
-      "id": "f21",
+      "id": "f20",
       "topic": "sweden",
-      "sv": "År 2018 uppskattades det svenska beståndet till 533 000 par.",
+      "sv": "Det svenska beståndet uppskattades 2018 till 533 000 par.",
       "sources": [
         {
           "article": "sv",
@@ -248,20 +231,20 @@
       ]
     },
     {
-      "id": "f22",
+      "id": "f21",
       "topic": "sweden",
-      "sv": "Den svenska populationen bedömdes 2015 som sårbar men nedgraderades 2020 till nära hotad.",
+      "sv": "Den svenska häckningspopulationen bedömdes som sårbar 2015 men nedgraderades 2020 till nära hotad.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Den svenska häckningspopulationen bedömdes 2015 av ArtDatabanken som sårbar (VU), men nedgraderades 2020 till den lägre hotkategorin nära hotad"
+          "quote": "Den svenska häckningspopulationen bedömdes 2015 av ArtDatabanken som sårbar (VU), men nedgraderades 2020 till den lägre hotkategorin nära hotad eftersom minskningstakten har avtagit."
         }
       ]
     },
     {
-      "id": "f23",
+      "id": "f22",
       "topic": "breeding",
-      "sv": "Häckningen startar ofta i början av maj, men i de södra delarna av utbredningsområdet redan i april.",
+      "sv": "Häckningen startar ofta i början av maj, men i södra delarna av utbredningsområdet redan i april.",
       "sources": [
         {
           "article": "sv",
@@ -270,9 +253,9 @@
       ]
     },
     {
-      "id": "f24",
+      "id": "f23",
       "topic": "breeding",
-      "sv": "Honan bygger ett skålformat bo på eller nära marken, vanligtvis dolt i tuvor, mot en liten vall eller lågt i en buske.",
+      "sv": "Honan bygger ett skålformigt bo på eller nära marken, vanligtvis dolt i tuvor, mot en liten vall eller lågt i en buske.",
       "sources": [
         {
           "article": "sv",
@@ -281,17 +264,24 @@
       ]
     },
     {
-      "id": "f25",
+      "id": "f24",
       "topic": "breeding",
-      "sv": "Kullen är vanligtvis tre till fem vitaktiga ägg mönstrade med ett nätverk av fina mörka linjer.",
+      "sv": "Äggen är vitaktiga och vanligtvis mönstrade med ett nätverk av fina mörka linjer.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Gulsparven lägger vanligtvis tre till fem ägg per kull"
-        },
+          "quote": "Äggen är vitaktiga och vanligtvis mönstrade med ett nätverk av fina mörka linjer."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Båda föräldrarna matar ungarna i boet, och två eller tre kullar föds upp varje år.",
+      "sources": [
         {
           "article": "sv",
-          "quote": "Äggen är vitaktiga och vanligtvis mönstrade med ett nätverk av fina mörka linjer."
+          "quote": "Båda föräldrarna matar ungarna i boet och två eller tre kullar föds upp varje år."
         }
       ]
     },
@@ -319,19 +309,8 @@
     },
     {
       "id": "f28",
-      "topic": "food",
-      "sv": "Under häckningstid äter gulsparven även insekter.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Under häckningstid tar den även insekter."
-        }
-      ]
-    },
-    {
-      "id": "f29",
       "topic": "behaviour",
-      "sv": "Utanför häckningstid söker gulsparven föda i flockar, ibland på hundratals fåglar, ofta blandade med andra fältsparvar och finkar.",
+      "sv": "Utanför häckningstiden söker gulsparven föda i flockar, ibland hundratals fåglar, ofta blandade med andra fältsparvar och finkar.",
       "sources": [
         {
           "article": "sv",
@@ -340,13 +319,42 @@
       ]
     },
     {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Honor och ungfåglar kan förväxlas med tallsparv men har alltid gul ton, blekare rödbrun övergump och jämnare ovansida.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "may be confused with pine buntings, but they always have a yellow tint to their plumage, a paler rufous rump, and more uniform upperparts than that species."
+        }
+      ],
+      "other": {
+        "scientific": "Emberiza leucocephalos"
+      }
+    },
+    {
       "id": "f30",
-      "topic": "behaviour",
-      "sv": "Hanarna har revir längs häckar och skogsbryn och sjunger från ett träd eller en buske.",
+      "topic": "lookalike",
+      "sv": "Gulsparvens sång är ganska karaktäristisk men liknar tallsparvens.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Hanarna etablerar revir längs häckar och skogsbryn och sjunger från ett träd eller buske."
+          "quote": "Sången är ganska karaktäristisk, men liknar tallsparvens."
+        }
+      ],
+      "other": {
+        "scientific": "Emberiza leucocephalos"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De nordliga häckningsområdena i inlandet överges på hösten men utmed Norrlandskusten och från Mellansverige och söderut förekommer den året om."
         }
       ]
     },
@@ -369,19 +377,310 @@
       "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Gulsparven är en långstjärtad fältsparv med gula inslag i fjäderdräkten.",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Den häckar i busk- och åkermark, skogsmark med gläntor, på hyggen samt på hedar och strandängar.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Ostreckad rödbrun övergump och gula inslag i alla dräkter",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Hanen i häckningsdräkt har lysande gult huvud och strupe samt smalt mörkt ögonstreck",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Honan är mer brunfärgad, kraftigare streckad undertill och saknar hanens lysande gula huvud",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "Mörk stjärt med vita kanter som syns tydligt i flykten",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången är en serie korta toner som gradvis blir starkare och avslutas med en eller två mer utdragna toner, ungefär tju, tju, tju, tju, tju, tju, tjuuu.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        },
+        {
+          "text": "Den sjungs från en upphöjd sittplats, till exempel en busktopp eller en stolpe.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Andra läten är ett kontaktläte zit, ett varningsläte see och ett drillande tirrr i flykten.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Gulsparven häckar i stora delar av Sverige, bitvis talrikt, men inte i fjällen och allra längst norrut.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Den är delvis flyttfågel: de nordliga häckningsområdena i inlandet överges på hösten, men längs Norrlandskusten och från Mellansverige och söderut finns den året om.",
+          "factIds": [
+            "s01",
+            "f19"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län och mest i december till februari.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "På svenska rödlistan 2025 är den nära hotad.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Gulsparven söker föda främst på marken och äter främst frön, och under höst och vinter är spannmål en betydande del av födan.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden söker den föda i flockar, ibland hundratals fåglar, ofta blandade med andra fältsparvar och finkar.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Honan bygger ett skålformigt bo på eller nära marken, och båda föräldrarna matar ungarna.",
+          "factIds": [
+            "f23",
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Emberiza leucocephalos",
+          "text": [
+            {
+              "text": "Honor och ungfåglar kan förväxlas med tallsparv, men gulsparven har alltid en gul ton, blekare rödbrun övergump och jämnare ovansida.",
+              "factIds": [
+                "f29"
+              ]
+            },
+            {
+              "text": "Sången är ganska karaktäristisk men liknar tallsparvens.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Gulsparv: så känner du igen hane och hona på dräkten, hur sången och lätena låter, var arten häckar och när den rapporteras mest.",
+      "facts": {
+        "size": {
+          "value": "15,5 till 17 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Yellowhammer is a long-tailed bunting with yellow tones in its plumage.",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "It breeds in scrub and farmland, woodland with clearings, clear-cuts, heaths and shore meadows.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Unstreaked rufous rump and yellow tones in every plumage",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Breeding male has a bright yellow head and throat and a thin dark eye-stripe",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Female is browner, more heavily streaked below and lacks the male's bright yellow head",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "Dark tail with white edges that show clearly in flight",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is a series of short notes that gradually get louder and end in one or two longer drawn-out notes, roughly tju, tju, tju, tju, tju, tju, tjuuu.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        },
+        {
+          "text": "It sings from a raised perch such as a bush top or a post.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Other calls include a contact call zit, an alarm call see and a trilling tirrr in flight.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It breeds across large parts of Sweden, in places in good numbers, but not in the mountains or the far north.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "A partial migrant, it leaves northern inland breeding areas in autumn but stays all year along the Norrland coast and from central Sweden southwards.",
+          "factIds": [
+            "s01",
+            "f19"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties, most in December to February.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "It is Near Threatened on the Swedish Red List 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Yellowhammer feeds mainly on the ground and eats mostly seeds, and in autumn and winter grain makes up a large part of its diet.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it feeds in flocks, sometimes hundreds of birds, often mixed with other buntings and finches.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "The female builds a cup-shaped nest on or near the ground, and both parents feed the chicks.",
+          "factIds": [
+            "f23",
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Yellowhammer: how to recognise male and female by plumage, what the song and calls sound like, where it breeds and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "15.5 to 17 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T18:01:38.342955+00:00"
+      "at": "2026-10-07T18:25:23.683515+00:00"
     },
     "verify": {
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
-      "at": "2026-10-07T18:08:57.902786+00:00",
-      "factsHash": "12d012d9eceeb5c8"
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "b3d0c4af82d0d062"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "b3d0c4af82d0d062"
     }
   },
   "errors": [],
@@ -582,11 +881,11 @@
       "contradicts": null
     }
   },
-  "flags": [
-    {
-      "check": "V1",
-      "factId": "s01",
-      "message": "Statusen i Sverige ströks av faktakontrollen: The quote only states year-round presence along the Norrland coast and from central Sweden southward, while northern inland breeding areas are abandoned in autumn; this is not a nationwide resident status, so the blanket claim of 'Stannfågel' for Sweden is only partially supported.. Bestäm status eller lämna tom."
-    }
-  ]
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }

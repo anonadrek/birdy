@@ -1,6 +1,6 @@
 {
   "qid": "Q25385",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
@@ -8,6 +8,17 @@
   "facts": [
     {
       "id": "f01",
+      "topic": "size",
+      "sv": "Ormvråken är 45–58 cm lång, har ett vingspann på 110–132 cm och väger ungefär 1 kg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den mäter 45–58 cm med ett vingspann på 110–132 cm och väger ungefär 1 kg."
+        }
+      ]
+    },
+    {
+      "id": "f02",
       "topic": "appearance",
       "sv": "Ormvråken är en kompakt, medelstor rovfågel med breda vingar, satt kropp, kort hals och medellång stjärt.",
       "sources": [
@@ -18,7 +29,7 @@
       ]
     },
     {
-      "id": "f02",
+      "id": "f03",
       "topic": "appearance",
       "sv": "Dräkten är oftast brun med spräckliga eller vattrade partier men varierar mycket mellan individer.",
       "sources": [
@@ -29,20 +40,20 @@
       ]
     },
     {
-      "id": "f03",
+      "id": "f05",
       "topic": "appearance",
-      "sv": "Stjärten är tydligt tvärrandig med små band.",
+      "sv": "Undersidan av vingarna är oftast ljusare än resten av fågeln.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Stjärten är tydligt tvärrandig med små band."
+          "quote": "Undersidan av vingarna är oftast ljusare än fågeln i övrigt."
         }
       ]
     },
     {
-      "id": "f04",
+      "id": "f06",
       "topic": "appearance",
-      "sv": "Det finns extremt ljusa former, ibland kallade börringevråk, med ljust till vitt huvud, vit stjärtbas och vita vingundersidor.",
+      "sv": "Extremt ljusa former, ibland kallade börringevråk, har ljust till vitt huvud, vit stjärtbas och vita vingundersidor men är i övrigt bruna.",
       "sources": [
         {
           "article": "sv",
@@ -51,9 +62,9 @@
       ]
     },
     {
-      "id": "f05",
+      "id": "f07",
       "topic": "appearance",
-      "sv": "Över bröstet syns ofta ett ljust U-format band.",
+      "sv": "Ett ljust U-format band tvärs över bröstet finns ofta.",
       "sources": [
         {
           "article": "en",
@@ -62,9 +73,20 @@
       ]
     },
     {
-      "id": "f06",
+      "id": "f08",
       "topic": "appearance",
-      "sv": "Fötter och vaxhud är gula hos vuxna fåglar.",
+      "sv": "Sedd underifrån i flykten har ormvråken i Europa typiskt en mörk bakkant på vingarna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Seen from below in flight, buzzards in Europe typically have a dark trailing edge to the wings."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Hos vuxna fåglar är fötter och vaxhud gula.",
       "sources": [
         {
           "article": "de",
@@ -73,29 +95,18 @@
       ]
     },
     {
-      "id": "f07",
-      "topic": "behaviour",
-      "sv": "Ormvråken kretsar med vingarna något resta.",
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Unga fåglar skiljs från vuxna på ljusare öga, smalare ändband på stjärten och längsstreckad istället för tvärbandad undersida.",
       "sources": [
         {
-          "article": "sv",
-          "quote": "medan ormvråken kretsar med vingarna något resta."
+          "article": "en",
+          "quote": "Juvenile buzzards are quite similar to adult in the nominate subspecies, being best told apart by having a paler eye, a narrower subterminal band on the tail and underside markings that appear as streaks rather than bars."
         }
       ]
     },
     {
-      "id": "f08",
-      "topic": "size",
-      "sv": "Ormvråken mäter 45–58 cm, har ett vingspann på 110–132 cm och väger ungefär 1 kg.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Den mäter 45–58 cm med ett vingspann på 110–132 cm och väger ungefär 1 kg."
-        }
-      ]
-    },
-    {
-      "id": "f09",
+      "id": "f11",
       "topic": "sex_age",
       "sv": "Honor är i genomsnitt 2–7 procent större än hanar och väger ungefär 15 procent mer.",
       "sources": [
@@ -106,18 +117,7 @@
       ]
     },
     {
-      "id": "f10",
-      "topic": "sex_age",
-      "sv": "Unga fåglar skiljs från vuxna på ljusare öga, smalare ändband på stjärten och längsstreckad i stället för tvärbandad undersida.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "being best told apart by having a paler eye, a narrower subterminal band on the tail and underside markings that appear as streaks rather than bars"
-        }
-      ]
-    },
-    {
-      "id": "f11",
+      "id": "f12",
       "topic": "voice",
       "sv": "Det vanligaste lätet är ett fallande jamande som mest hörs i flykten.",
       "sources": [
@@ -128,9 +128,20 @@
       ]
     },
     {
-      "id": "f12",
+      "id": "f13",
       "topic": "voice",
-      "sv": "Det höga, fallande jamande lätet härmas gärna av nötskrikan.",
+      "sv": "Huvudlätet är ett klagande, långt bärande ”pii-jå” eller ”piii-o”.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The main call of the species is a plaintive, far-carrying pee-yow or peee-oo"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Det fallande, jamande lätet härmas gärna av nötskrikan.",
       "sources": [
         {
           "article": "de",
@@ -139,18 +150,7 @@
       ]
     },
     {
-      "id": "f13",
-      "topic": "voice",
-      "sv": "Ungarna tigger med ett liknande läte som ofta är mer vibrerande och klagande.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Ungarna tigger snarlikt men är ofta mer vibrerande och mer klagande."
-        }
-      ]
-    },
-    {
-      "id": "f14",
+      "id": "f15",
       "topic": "habitat",
       "sv": "Ormvråken föredrar skogskanter som gränsar till åkrar, sjöar, hyggen eller myrar.",
       "sources": [
@@ -161,9 +161,9 @@
       ]
     },
     {
-      "id": "f15",
+      "id": "f16",
       "topic": "habitat",
-      "sv": "Den är vanligast i uppbrutet landskap med spridda träddungar.",
+      "sv": "Vanligast förekommer ormvråken i uppbrutet landskap med spridda träddungar.",
       "sources": [
         {
           "article": "sv",
@@ -172,7 +172,7 @@
       ]
     },
     {
-      "id": "f16",
+      "id": "f17",
       "topic": "sweden",
       "sv": "Ormvråken är tillsammans med sparvhöken en av Sveriges vanligaste rovfåglar.",
       "sources": [
@@ -183,9 +183,9 @@
       ]
     },
     {
-      "id": "f17",
+      "id": "f18",
       "topic": "sweden",
-      "sv": "Den häckar i stora delar av Sveriges skogsbevuxna delar men saknas i fjällen.",
+      "sv": "Den häckar i stora delar av det trädbevuxna Sverige men saknas i fjällen.",
       "sources": [
         {
           "article": "sv",
@@ -194,7 +194,7 @@
       ]
     },
     {
-      "id": "f18",
+      "id": "f19",
       "topic": "sweden",
       "sv": "Den svenska populationen består av omkring 35 000 par.",
       "sources": [
@@ -205,9 +205,9 @@
       ]
     },
     {
-      "id": "f19",
+      "id": "f20",
       "topic": "sweden",
-      "sv": "De flesta svenska ormvråkar flyttar kort till vinterkvarter i Europa, men i södra Sverige, särskilt Skåne, övervintrar arten.",
+      "sv": "De flesta svenska ormvråkar flyttar kort till vinterkvarter i Europa, men i södra Sverige och särskilt Skåne övervintrar arten.",
       "sources": [
         {
           "article": "sv",
@@ -216,7 +216,7 @@
       ]
     },
     {
-      "id": "f20",
+      "id": "f21",
       "topic": "sweden",
       "sv": "Flytten söderut sker augusti–november och återflytten till häckningsområdet februari–maj.",
       "sources": [
@@ -227,24 +227,13 @@
       ]
     },
     {
-      "id": "f21",
+      "id": "f22",
       "topic": "sweden",
-      "sv": "Som mest har 41 000 ormvråkar räknats vid Falsterbo i södra Sverige.",
+      "sv": "Som mest har 41 000 ormvråkar räknats vid Falsterbo, en av de viktigaste flyttplatserna i södra Sverige.",
       "sources": [
         {
           "article": "en",
           "quote": "A maximum of 41,000 individuals have been recorded at one of the main migration sites within southern Sweden in Falsterbo."
-        }
-      ]
-    },
-    {
-      "id": "f22",
-      "topic": "breeding",
-      "sv": "Boet är plattformslikt och mäter ofta cirka en meter i diameter.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Ormvråken bygger ett plattformslikt bo, som ofta mäter cirka en meter i diameter."
         }
       ]
     },
@@ -262,12 +251,19 @@
     {
       "id": "f24",
       "topic": "breeding",
-      "sv": "Paret ruvar gemensamt i 33–38 dygn och ungarna är flygfärdiga efter 45–55 dygn.",
+      "sv": "Paret ruvar äggen gemensamt i 33–38 dygn och tar sedan hand om ungarna tillsammans.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Ormvråksparet ruvar sedan äggen gemensamt i 33–38 dygn"
-        },
+          "quote": "Ormvråksparet ruvar sedan äggen gemensamt i 33–38 dygn och tar sedan hand om ungarna tillsammans."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Ungarna är flygfärdiga efter 45–55 dygn.",
+      "sources": [
         {
           "article": "sv",
           "quote": "Ungarna är flygfärdiga efter 45–55 dygn."
@@ -275,7 +271,7 @@
       ]
     },
     {
-      "id": "f25",
+      "id": "f26",
       "topic": "food",
       "sv": "Födan består främst av smågnagare som sorkar och möss.",
       "sources": [
@@ -286,7 +282,7 @@
       ]
     },
     {
-      "id": "f26",
+      "id": "f27",
       "topic": "food",
       "sv": "Ormvråken ses ofta på nyplöjda åkrar där den letar efter mask och insekter.",
       "sources": [
@@ -297,35 +293,28 @@
       ]
     },
     {
-      "id": "f27",
-      "topic": "behaviour",
-      "sv": "Den jagar främst genom att spana från en utsiktsplats och snabbt slå bytet, men ryttlar ibland.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Den jagar främst genom att spana ifrån en utsiktsplats och sedan snabbt slå sitt byte, men det förekommer också att den ryttlar."
-        }
-      ]
-    },
-    {
       "id": "f28",
       "topic": "behaviour",
-      "sv": "Den spanar gärna från stolpar längs vägar där den söker trafikdödat vilt.",
+      "sv": "Den spanar gärna från träd eller stolpar intill vägar där den söker trafikdödat vilt.",
       "sources": [
         {
           "article": "sv",
-          "quote": "spanar också gärna från trädstammar eller stolpar intill vägar där den söker trafikdödat vilt"
+          "quote": "spanar också gärna från trädstammar eller stolpar intill vägar där den söker trafikdödat vilt."
         }
       ]
     },
     {
       "id": "f29",
       "topic": "lookalike",
-      "sv": "Bivråken liknar ormvråken men har mindre näbb, mer framträdande huvud och hals, längre vingar och fylligare stjärt.",
+      "sv": "Bivråken har mindre näbb, mer framträdande huvud och hals, längre vingar, och kretsar på plana eller sänkta vingar medan ormvråken håller dem något resta.",
       "sources": [
         {
           "article": "sv",
           "quote": "Ormvråken förväxlas lätt med bivråken, men denna har mindre näbb, mer framträdande huvud och hals, längre vingar och fylligare stjärt."
+        },
+        {
+          "article": "sv",
+          "quote": "Bivråken har också en avvikande flyktsilhuett med plana eller något sänkta vingar, medan ormvråken kretsar med vingarna något resta."
         }
       ],
       "other": {
@@ -336,7 +325,7 @@
     {
       "id": "f30",
       "topic": "lookalike",
-      "sv": "Fjällvråken är något större med längre vingar, oftast ljus stjärtovansida och tydligt mörka karpalfläckar.",
+      "sv": "Fjällvråken är något större med längre vingar, vanligen ljus stjärtovansida och tydligt mörka karpalfläckar.",
       "sources": [
         {
           "article": "sv",
@@ -351,12 +340,12 @@
     {
       "id": "s01",
       "topic": "status",
-      "value": "breeding_migrant",
-      "sv": "Flyttfågel, häckar här",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
       "sources": [
         {
           "article": "sv",
-          "quote": "Merparten av Sveriges ormvråkar är kortflyttande flyttfåglar som har sina vinterkvarter i Europa"
+          "quote": "Merparten av Sveriges ormvråkar är kortflyttande flyttfåglar som har sina vinterkvarter i Europa, men i södra Sverige och särskilt i Skåne övervintrar ormvråken."
         }
       ]
     },
@@ -379,19 +368,382 @@
       "sv": "Inte rödlistad i Svenska rödlistan 2025."
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Ormvråken är en kompakt, medelstor rovfågel och tillsammans med sparvhöken en av Sveriges vanligaste rovfåglar.",
+          "factIds": [
+            "f02",
+            "f17"
+          ]
+        },
+        {
+          "text": "Den syns oftast i uppbrutet landskap med spridda träddungar och vid skogskanter mot åkrar.",
+          "factIds": [
+            "f16",
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Kompakt och bredvingad, honan i genomsnitt 2 till 7 procent större än hanen",
+          "factIds": [
+            "f02",
+            "f11"
+          ]
+        },
+        {
+          "text": "Oftast brun och vattrad men mycket varierande, ofta med ljust U-format band över bröstet",
+          "factIds": [
+            "f03",
+            "f07"
+          ]
+        },
+        {
+          "text": "Underifrån i flykten: ljusare vingundersida med mörk bakkant",
+          "factIds": [
+            "f05",
+            "f08"
+          ]
+        },
+        {
+          "text": "Vuxna har gula fötter och vaxhud, unga har ljusare öga och längsstreckad undersida",
+          "factIds": [
+            "f09",
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Huvudlätet är ett klagande, långt bärande ”pii-jå” eller ”piii-o”.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Det fallande, jamande lätet hörs mest i flykten och härmas gärna av nötskrikan.",
+          "factIds": [
+            "f12",
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Omkring 35 000 par häckar i stora delar av det trädbevuxna Sverige, men arten saknas i fjällen.",
+          "factIds": [
+            "f19",
+            "f18"
+          ]
+        },
+        {
+          "text": "Den är delvis flyttfågel: de flesta flyttar kort till vinterkvarter i Europa, men i södra Sverige och särskilt Skåne övervintrar den.",
+          "factIds": [
+            "s01",
+            "f20"
+          ]
+        },
+        {
+          "text": "Flytten söderut sker i augusti till november, återflytten i februari till maj.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Vid Falsterbo har som mest 41 000 ormvråkar räknats.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan består främst av smågnagare som sorkar och möss.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Den ses ofta på nyplöjda åkrar där den letar efter mask och insekter.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Den spanar gärna från träd eller stolpar vid vägar och söker trafikdödat vilt.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Boet läggs i ett större träd, oftast gran, och honan lägger två till fyra ägg i april till maj.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "Paret ruvar tillsammans i 33 till 38 dygn.",
+          "factIds": [
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q170466",
+          "text": [
+            {
+              "text": "Bivråken har mindre näbb, mer framträdande huvud och hals och längre vingar.",
+              "factIds": [
+                "f29"
+              ]
+            },
+            {
+              "text": "Den kretsar på plana eller sänkta vingar, medan ormvråken håller dem något resta.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q26407",
+          "text": [
+            {
+              "text": "Fjällvråken är något större med längre vingar, vanligen ljus stjärtovansida och tydligt mörka karpalfläckar.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Ormvråk: så känner du igen arten på dräkt och flyktbild, hur lätet låter, när den ses och hur den skiljs från liknande vråkar.",
+      "facts": {
+        "size": {
+          "value": "45 till 58 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Common Buzzard is a compact, medium-sized bird of prey and, along with the Sparrowhawk, one of the commonest raptors in Sweden.",
+          "factIds": [
+            "f02",
+            "f17"
+          ]
+        },
+        {
+          "text": "It is usually seen in open, broken country with scattered clumps of trees and along forest edges bordering fields.",
+          "factIds": [
+            "f16",
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Compact and broad-winged, the female on average 2 to 7 percent larger than the male",
+          "factIds": [
+            "f02",
+            "f11"
+          ]
+        },
+        {
+          "text": "Usually brown and mottled but very variable, often with a pale U-shaped band across the breast",
+          "factIds": [
+            "f03",
+            "f07"
+          ]
+        },
+        {
+          "text": "From below in flight: paler underwing with a dark trailing edge",
+          "factIds": [
+            "f05",
+            "f08"
+          ]
+        },
+        {
+          "text": "Adults have yellow feet and cere, juveniles a paler eye and streaked underparts",
+          "factIds": [
+            "f09",
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The main call is a plaintive, far-carrying “pii-jå” or “piii-o”.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The falling, mewing call is heard mostly in flight and is often imitated by the Jay.",
+          "factIds": [
+            "f12",
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "About 35 000 pairs breed across much of wooded Sweden, but not in the mountains.",
+          "factIds": [
+            "f19",
+            "f18"
+          ]
+        },
+        {
+          "text": "It is a partial migrant: most move a short way to Europe for winter, but it winters in southern Sweden, especially Skåne.",
+          "factIds": [
+            "s01",
+            "f20"
+          ]
+        },
+        {
+          "text": "Migration south runs August to November, the return February to May.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Up to 41 000 have been counted at Falsterbo.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "It is reported year-round from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Its food is mainly small rodents such as voles and mice.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "It is often seen on freshly ploughed fields, searching for worms and insects.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "It likes to watch from trees or posts beside roads, looking for road-killed animals.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "The nest is built in a large tree, usually a spruce, and the female lays two to four eggs in April to May.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "The pair incubate together for 33 to 38 days.",
+          "factIds": [
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q170466",
+          "text": [
+            {
+              "text": "The Honey Buzzard has a smaller bill, a more protruding head and neck, and longer wings.",
+              "factIds": [
+                "f29"
+              ]
+            },
+            {
+              "text": "It circles on flat or lowered wings, while the Common Buzzard holds them slightly raised.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q26407",
+          "text": [
+            {
+              "text": "The Rough-legged Buzzard is slightly larger with longer wings, usually a pale upper tail and clearly dark carpal patches.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Common Buzzard: how to recognise it by plumage and flight, what its call sounds like, when it is seen and how to tell it from similar buzzards.",
+      "facts": {
+        "size": {
+          "value": "45 to 58 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T16:08:41.079475+00:00"
+      "at": "2026-10-07T18:25:23.683515+00:00"
     },
     "verify": {
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
-      "at": "2026-10-07T18:08:57.902786+00:00",
-      "factsHash": "c76c908863956bd0"
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "c5d9d4dc8c557169"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "c5d9d4dc8c557169"
     }
   },
   "errors": [],
@@ -589,14 +941,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+      "contradicts": null
     }
   },
-  "flags": [
-    {
-      "check": "V3",
-      "factId": "s01",
-      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
-    }
-  ]
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }

@@ -1,6 +1,6 @@
 {
   "qid": "Q27075785",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
@@ -14,28 +14,24 @@
         {
           "article": "sv",
           "quote": "Grönfinken är en ganska kompakt fågel med kraftig finknäbb."
-        },
-        {
-          "article": "en",
-          "quote": "The bill is thick and conical."
         }
       ]
     },
     {
       "id": "f02",
-      "topic": "appearance",
-      "sv": "Den är huvudsakligen grön med gult i vingar och stjärt.",
+      "topic": "size",
+      "sv": "Grönfinken är 15–16,5 cm lång, har ett vingspann på 25–28 cm och väger ungefär 30 gram.",
       "sources": [
         {
-          "article": "en",
-          "quote": "but is mainly green, with yellow in the wings and tail"
+          "article": "sv",
+          "quote": "Den är 15-16,5 cm lång, har ett vingspann på 25–28 cm och väger ungefär 30 gram."
         }
       ]
     },
     {
       "id": "f03",
       "topic": "appearance",
-      "sv": "Den adulta hanen är grågrön ovan med gulgrön övergump och svartaktiga ving- och stjärtpennor med gula ytterfan.",
+      "sv": "Den adulta hanen är grågrön ovan med gulgrön övergump, gröngul undergump och svartaktiga ving- och stjärtpennor med gula ytterfan.",
       "sources": [
         {
           "article": "sv",
@@ -46,6 +42,17 @@
     {
       "id": "f04",
       "topic": "appearance",
+      "sv": "Grönfinken är huvudsakligen grön med gult i vingar och stjärt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "is mainly green, with yellow in the wings and tail"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
       "sv": "På den hopfällda vingen syns ytterkanten tydligt gul.",
       "sources": [
         {
@@ -55,7 +62,7 @@
       ]
     },
     {
-      "id": "f05",
+      "id": "f06",
       "topic": "appearance",
       "sv": "Näbben är ljust hornfärgad.",
       "sources": [
@@ -66,14 +73,21 @@
       ]
     },
     {
-      "id": "f06",
+      "id": "f07",
       "topic": "sex_age",
-      "sv": "Honan går mera i gråbrunt och är mattare än hanen, med bruna toner på ryggen.",
+      "sv": "Honan går mer i gråbrunt än hanen.",
       "sources": [
         {
           "article": "sv",
           "quote": "Honan går mera i gråbrunt."
-        },
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honor och unga fåglar är mattare färgade och har bruna toner på ryggen.",
+      "sources": [
         {
           "article": "en",
           "quote": "The female and young birds are duller and have brown tones on the back."
@@ -81,75 +95,31 @@
       ]
     },
     {
-      "id": "f07",
-      "topic": "sex_age",
-      "sv": "Honan är mindre gul än hanen och har svagt längsstreckad fjäderdräkt.",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "Das Weibchen ist insgesamt deutlich matter und weniger gelb gefärbt als das Männchen. Die gesamte Körperbefiederung ist schwach längs gestrichelt."
-        }
-      ]
-    },
-    {
-      "id": "f08",
-      "topic": "sex_age",
-      "sv": "Ungfåglar är ljusare, vitaktiga under med ljusgrå längsstreck och svagt streckat gråbruna ovan.",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "Das Jugendkleid ist deutlich heller, die Unterseite des Körpers weißlich mit hellgrauen Längsstreifen, die Oberseite verwaschen graubraun und schwach längs gestreift."
-        }
-      ]
-    },
-    {
       "id": "f09",
-      "topic": "size",
-      "sv": "Den är 15–16,5 cm lång, har ett vingspann på 25–28 cm och väger ungefär 30 gram.",
+      "topic": "sex_age",
+      "sv": "Honans hela fjäderdräkt är svagt längsstreckad.",
       "sources": [
         {
-          "article": "sv",
-          "quote": "Den är 15-16,5 cm lång, har ett vingspann på 25–28 cm och väger ungefär 30 gram."
+          "article": "de",
+          "quote": "Die gesamte Körperbefiederung ist schwach längs gestrichelt."
         }
       ]
     },
     {
       "id": "f10",
-      "topic": "size",
-      "sv": "Med 14–16 cm kroppslängd är den ungefär lika stor som en gråsparv.",
+      "topic": "sex_age",
+      "sv": "Ungfåglar är tydligt ljusare, med vitaktig undersida med ljusgrå längsstreck.",
       "sources": [
         {
           "article": "de",
-          "quote": "Der Grünfink ist mit 14 bis 16 cm Körperlänge etwa so groß wie der Haussperling."
-        }
-      ]
-    },
-    {
-      "id": "f11",
-      "topic": "voice",
-      "sv": "Dess utdragna ”knarr” hörs ibland redan under varma vårvinterdagar.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Dess utdragna \"knarr\" hörs ibland redan under varma vårvinterdagar."
+          "quote": "Das Jugendkleid ist deutlich heller, die Unterseite des Körpers weißlich mit hellgrauen Längsstreifen"
         }
       ]
     },
     {
       "id": "f12",
       "topic": "voice",
-      "sv": "I norra delen av utbredningen är den en av de tidigaste fåglarna att börja sjunga om våren.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "I de norra delarna av grönfinkens utbredningsområde är den en av de tidigaste fåglarna att börja sjunga om våren."
-        }
-      ]
-    },
-    {
-      "id": "f13",
-      "topic": "voice",
-      "sv": "Lockropet är ett kort, kraftigt ”jüpp” som oftast upprepas i snabba serier.",
+      "sv": "Lätet är ett kort, kraftigt ”jypp” som oftast upprepas i snabba serier.",
       "sources": [
         {
           "article": "de",
@@ -158,7 +128,7 @@
       ]
     },
     {
-      "id": "f14",
+      "id": "f13",
       "topic": "voice",
       "sv": "Sången innehåller mycket drillar och kvitter blandat med väsande ljud.",
       "sources": [
@@ -169,20 +139,20 @@
       ]
     },
     {
-      "id": "f15",
+      "id": "f14",
       "topic": "voice",
-      "sv": "En sångtyp är behagligare och utdragen och liknar kanariefågelns sång.",
+      "sv": "Det knarrande sångljudet liknar ljudet när man drar upp ett armbandsur eller fickur.",
       "sources": [
         {
           "article": "de",
-          "quote": "ist angenehmer, langgezogen und ähnelt dem des Kanarienvogels"
+          "quote": "wie das Geräusch beim Aufziehen einer Armband- oder Taschenuhr"
         }
       ]
     },
     {
-      "id": "f16",
+      "id": "f15",
       "topic": "behaviour",
-      "sv": "Hanen utför en fjärilsliknande spelflykt.",
+      "sv": "Hanen utför en fladdrande sångflykt som liknar en fjärils.",
       "sources": [
         {
           "article": "en",
@@ -191,7 +161,7 @@
       ]
     },
     {
-      "id": "f17",
+      "id": "f16",
       "topic": "habitat",
       "sv": "Grönfinken häckar i skogsbackar, särskilt i ung granskog, och i parker.",
       "sources": [
@@ -202,73 +172,18 @@
       ]
     },
     {
-      "id": "f18",
+      "id": "f17",
       "topic": "habitat",
-      "sv": "I dag lever den främst i människans bebyggelse, från enskilda gårdar till storstadscentrum med parker och kyrkogårdar.",
+      "sv": "Idag lever grönfinken främst i olika typer av mänskliga bosättningar.",
       "sources": [
         {
           "article": "de",
-          "quote": "Heute besiedelt er vor allem die verschiedensten Siedlungsformen des Menschen: Von Einzelhöfen und Weilern mit Streuobstbau bis zu Großstadtzentren mit Parkanlagen oder Friedhöfen"
+          "quote": "Heute besiedelt er vor allem die verschiedensten Siedlungsformen des Menschen"
         }
       ]
     },
     {
-      "id": "f19",
-      "topic": "sweden",
-      "sv": "I Sverige förekommer grönfinken från Skåne till Sundsvallstrakten och Jämtland och vidare uppför Norrlandskusten.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "I Sverige förekommer grönfinken från Skåne till Sundsvallstrakten och Jämtland, och vidare uppför Norrlandskusten."
-        }
-      ]
-    },
-    {
-      "id": "f20",
-      "topic": "sweden",
-      "sv": "De nordligaste populationerna flyttar söderut, men arten förekommer året om även i norra Sverige i mindre antal.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "De nordligaste populationerna flyttar söderut men arten är härdig och grönfink förekommer året om även i norra Sverige i mindre antal."
-        }
-      ]
-    },
-    {
-      "id": "f21",
-      "topic": "sweden",
-      "sv": "I södra Sverige övervintrar den som strykfågel.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "I södra Sverige övervintrar den som strykfåglar."
-        }
-      ]
-    },
-    {
-      "id": "f22",
-      "topic": "sweden",
-      "sv": "Grönfinken har minskat kraftigt i Sverige, med uppskattningsvis cirka 40 % de senaste tio åren.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Den senaste tiden har den dock minskat mycket kraftigt i antal, de senaste tio åren med uppskattningsvis cirka 40 %."
-        }
-      ]
-    },
-    {
-      "id": "f23",
-      "topic": "sweden",
-      "sv": "Minskningen tros bero på sjukdomen gulknopp, orsakad av parasiten Trichomonas gallinae som etablerade sig i Sverige 2008.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Orsaken bakom minskningen tros vara sjukdomen gulknopp, orsakad av parasiten Trichomonas gallinae som etablerade sig i Sverige 2008."
-        }
-      ]
-    },
-    {
-      "id": "f24",
+      "id": "f18",
       "topic": "behaviour",
       "sv": "Utanför häckningstid kan grönfinken bilda stora flockar, ibland med andra finkar och sparvar.",
       "sources": [
@@ -279,9 +194,9 @@
       ]
     },
     {
-      "id": "f25",
-      "topic": "behaviour",
-      "sv": "Den söker föda i träd och buskar och även på marken.",
+      "id": "f19",
+      "topic": "food",
+      "sv": "Grönfinken söker föda i träd och buskar och även på marken.",
       "sources": [
         {
           "article": "en",
@@ -290,9 +205,75 @@
       ]
     },
     {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Sverige förekommer grönfinken från Skåne till Sundsvallstrakten och Jämtland samt vidare uppför Norrlandskusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige förekommer grönfinken från Skåne till Sundsvallstrakten och Jämtland, och vidare uppför Norrlandskusten."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "De nordligaste populationerna flyttar söderut, men grönfinken finns året om även i norra Sverige i mindre antal.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De nordligaste populationerna flyttar söderut men arten är härdig och grönfink förekommer året om även i norra Sverige i mindre antal."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "I södra Sverige övervintrar grönfinken som strykfågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I södra Sverige övervintrar den som strykfåglar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Grönfinken har minskat kraftigt i Sverige, med uppskattningsvis cirka 40 procent de senaste tio åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den senaste tiden har den dock minskat mycket kraftigt i antal, de senaste tio åren med uppskattningsvis cirka 40 %."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "sweden",
+      "sv": "Minskningen tros bero på sjukdomen gulknopp, orsakad av parasiten Trichomonas gallinae som etablerade sig i Sverige 2008.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Orsaken bakom minskningen tros vara sjukdomen gulknopp, orsakad av parasiten Trichomonas gallinae som etablerade sig i Sverige 2008."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "sweden",
+      "sv": "På den svenska rödlistan ändrades grönfinkens status 2025 till sårbar (VU).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "vilket lett till att artens status 2025 ändrades till sårbar (VU)"
+        }
+      ]
+    },
+    {
       "id": "f26",
       "topic": "breeding",
-      "sv": "Det skålformiga boet placeras i träd, buskar eller häckar, ofta i granar och enar.",
+      "sv": "Det skålformiga boet placeras i träd, buskar eller häckar, ofta i granar och enar men även i lövträd.",
       "sources": [
         {
           "article": "sv",
@@ -303,7 +284,7 @@
     {
       "id": "f27",
       "topic": "breeding",
-      "sv": "Den lägger i genomsnitt fyra till sex ägg.",
+      "sv": "Honan lägger i genomsnitt fyra till sex ägg, men tre till sju har observerats.",
       "sources": [
         {
           "article": "sv",
@@ -336,11 +317,23 @@
     {
       "id": "f30",
       "topic": "food",
-      "sv": "Födan utgörs främst av frön, späda knoppar och bär, men den äter även insekter.",
+      "sv": "Födan består främst av frön, späda knoppar och bär.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Födan utgörs främst av frön, späda knoppar och bär. Den äter dock även insekter"
+          "quote": "Födan utgörs främst av frön, späda knoppar och bär."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De nordligaste populationerna flyttar söderut men arten är härdig och grönfink förekommer året om även i norra Sverige i mindre antal."
         }
       ]
     },
@@ -363,19 +356,332 @@
       "sv": "Svenska rödlistan 2025: Sårbar (VU)."
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Grönfinken är en ganska kompakt fink med kraftig finknäbb, huvudsakligen grön med gult i vingar och stjärt.",
+          "factIds": [
+            "f01",
+            "f04"
+          ]
+        },
+        {
+          "text": "Idag lever den främst i olika typer av mänskliga bosättningar.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Huvudsakligen grön med gult i vingar och stjärt, tydligt gul ytterkant på hopfälld vinge",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Kraftig, ljust hornfärgad finknäbb på en ganska kompakt kropp",
+          "factIds": [
+            "f01",
+            "f06"
+          ]
+        },
+        {
+          "text": "Adult hane är grågrön ovan med gulgrön övergump och svartaktiga ving- och stjärtpennor",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Honan är mattare och mer gråbrun, med bruna toner på ryggen och svagt längsstreckad",
+          "factIds": [
+            "f07",
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Lätet är ett kort, kraftigt ”jypp” som oftast upprepas i snabba serier.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Sången innehåller mycket drillar och kvitter blandat med väsande ljud.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Ett knarrande sångljud påminner om när man drar upp ett armbandsur eller fickur.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Grönfinken är delvis flyttfågel och häckar i Sverige, från Skåne till Sundsvallstrakten och Jämtland samt uppför Norrlandskusten.",
+          "factIds": [
+            "s01",
+            "f20"
+          ]
+        },
+        {
+          "text": "De nordligaste populationerna flyttar söderut, men i mindre antal finns den året om även i norra Sverige.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "I södra Sverige övervintrar den som strykfågel.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län och mest i december till februari.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Sedan 2025 är den rödlistad som sårbar (VU).",
+          "factIds": [
+            "f25",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Grönfinken söker föda i träd och buskar och även på marken.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Födan består främst av frön, späda knoppar och bär.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "Utanför häckningstid kan den bilda stora flockar, ibland med andra finkar och sparvar.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Hanen gör en fladdrande sångflykt som liknar en fjärils.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Det skålformiga boet ligger i träd, buskar eller häckar, ofta i granar och enar.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Grönfink: så känner du igen arten på fjäderdräkt och näbb, hur lätet och sången låter och när grönfinken ses under året och vad den äter.",
+      "facts": {
+        "size": {
+          "value": "15 till 16,5 cm",
+          "factIds": [
+            "f02"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The European Greenfinch is a fairly compact finch with a heavy finch bill, mainly green with yellow in the wings and tail.",
+          "factIds": [
+            "f01",
+            "f04"
+          ]
+        },
+        {
+          "text": "Today it lives mainly in different kinds of human settlements.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Mainly green, yellow in wings and tail, clear yellow edge on the folded wing",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Heavy, pale horn-coloured finch bill on a fairly compact body",
+          "factIds": [
+            "f01",
+            "f06"
+          ]
+        },
+        {
+          "text": "Adult male is grey-green above with a yellow-green rump and blackish wing and tail feathers",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Female is duller and more grey-brown, with brown tones on the back and faint streaking",
+          "factIds": [
+            "f07",
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is a short, strong \"jypp\", usually repeated in quick series.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The song has lots of trills and twittering mixed with wheezing sounds.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "One creaking song sound is like winding up a wristwatch or pocket watch.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The European Greenfinch is a partial migrant that breeds in Sweden, from Skåne to the Sundsvall area and Jämtland and on up the Norrland coast.",
+          "factIds": [
+            "s01",
+            "f20"
+          ]
+        },
+        {
+          "text": "The northernmost populations move south, but smaller numbers stay all year even in northern Sweden.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "In southern Sweden it winters as a wandering bird.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties, most in December to February.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Since 2025 it has been red-listed as Vulnerable (VU).",
+          "factIds": [
+            "f25",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The European Greenfinch looks for food in trees and bushes and also on the ground.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "It eats mainly seeds, young buds and berries.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it can form large flocks, sometimes with other finches and sparrows.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "The male performs a fluttering song flight like a butterfly's.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "The cup-shaped nest is placed in trees, bushes or hedges, often in spruces and junipers.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "European Greenfinch: how to recognise it by plumage and bill, what its calls and song sound like, when it is seen and what it eats.",
+      "facts": {
+        "size": {
+          "value": "15 to 16.5 cm",
+          "factIds": [
+            "f02"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T18:01:38.342955+00:00"
+      "at": "2026-10-07T18:25:23.683515+00:00"
     },
     "verify": {
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
-      "at": "2026-10-07T18:08:57.902786+00:00",
-      "factsHash": "c3c51b8b611983df"
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "911e24cfd08aa24d"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "911e24cfd08aa24d"
     }
   },
   "errors": [],
@@ -576,11 +882,11 @@
       "contradicts": null
     }
   },
-  "flags": [
-    {
-      "check": "V1",
-      "factId": "s01",
-      "message": "Statusen i Sverige ströks av faktakontrollen: The quote shows the species occurs year-round in small numbers in northern Sweden, but also states northernmost populations migrate south and southern Sweden birds overwinter as passage/winter visitors (strykfåglar), indicating a partial migrant pattern rather than a simple resident (stannfågel) status across Sweden.. Bestäm status eller lämna tom."
-    }
-  ]
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }

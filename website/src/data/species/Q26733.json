@@ -20,7 +20,7 @@
     {
       "id": "f02",
       "topic": "appearance",
-      "sv": "Det vita hakbandet är brett och sträcker sig från strupen till bakom ögonen.",
+      "sv": "Det vita hakbandet sträcker sig från strupen till bakom ögonen.",
       "sources": [
         {
           "article": "de",
@@ -53,18 +53,18 @@
     {
       "id": "f05",
       "topic": "appearance",
-      "sv": "Buken och kroppssidorna är beigebruna med tydliga tvärband.",
+      "sv": "Buken och kroppssidorna är beigebruna med tydliga tvärband, medan ryggen och vingovansidan är mörkare gråbruna.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Buken och kroppssidorna är beigebruna med tydliga tvärband."
+          "quote": "Buken och kroppssidorna är beigebruna med tydliga tvärband. Vingovansidan och ryggen mörkare gråbrun."
         }
       ]
     },
     {
       "id": "f06",
       "topic": "appearance",
-      "sv": "Under- och övergumpen är vita och stjärten är svartgrå.",
+      "sv": "Under- och övergumpen är vit och stjärten svartgrå.",
       "sources": [
         {
           "article": "sv",
@@ -74,28 +74,6 @@
     },
     {
       "id": "f07",
-      "topic": "size",
-      "sv": "Kanadagåsen är 90–105 cm lång, har ett vingspann på 1,6–1,8 meter och väger i genomsnitt 4 500 gram.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "med en längd på mellan 90 och 105 centimeter, ett vingspann mellan 1,6 och 1,8 meter och en genomsnittlig vikt på 4 500 gram"
-        }
-      ]
-    },
-    {
-      "id": "f08",
-      "topic": "size",
-      "sv": "Kanadagåsen är den största och mest långhalsade gåsen som häckar i Europa.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Kanadagås är den största och mest långhalsade gåsen som häckar i Europa"
-        }
-      ]
-    },
-    {
-      "id": "f09",
       "topic": "sex_age",
       "sv": "Könen och åldrarna är lika.",
       "sources": [
@@ -106,20 +84,9 @@
       ]
     },
     {
-      "id": "f10",
+      "id": "f08",
       "topic": "sex_age",
-      "sv": "Unga gäss har mer rundade rygg- och skulderfjädrar med bredare bruna kanter än vuxna.",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "Die Rücken- und Schulterfedern sind bei ihnen allerdings noch stärker gerundet und haben einen breiteren braunen Saum."
-        }
-      ]
-    },
-    {
-      "id": "f11",
-      "topic": "sex_age",
-      "sv": "Dunungarnas dundräkt är gulaktig till grönaktigt gul.",
+      "sv": "Dunungarna har en gulaktig till grönaktigt gul dräkt.",
       "sources": [
         {
           "article": "de",
@@ -128,9 +95,20 @@
       ]
     },
     {
-      "id": "f12",
+      "id": "f09",
+      "topic": "size",
+      "sv": "Längden är 90–105 centimeter, vingspannet 1,6–1,8 meter och vikten i genomsnitt 4 500 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "med en längd på mellan 90 och 105 centimeter, ett vingspann mellan 1,6 och 1,8 meter och en genomsnittlig vikt på 4 500 gram"
+        }
+      ]
+    },
+    {
+      "id": "f10",
       "topic": "voice",
-      "sv": "Typiska lätet är ett nasalt, tvåstavigt ”år-lytt” där andra stavelsen nästan går upp i falsett.",
+      "sv": "Det typiska lätet är ett nasalt, tvåstavigt ”år-lytt”, där andra stavelsen nästan går upp i falsett.",
       "sources": [
         {
           "article": "sv",
@@ -139,9 +117,9 @@
       ]
     },
     {
-      "id": "f13",
+      "id": "f11",
       "topic": "voice",
-      "sv": "Kanadagässen ropar särskilt mycket när de flyger.",
+      "sv": "Kanadagåsen ropar särskilt flitigt under flykten.",
       "sources": [
         {
           "article": "de",
@@ -150,9 +128,9 @@
       ]
     },
     {
-      "id": "f14",
+      "id": "f12",
       "topic": "voice",
-      "sv": "Upprörda eller revirförsvarande kanadagäss inleder ofta en konfrontation med ett högt väsande.",
+      "sv": "Upprörda eller revirförsvarande gäss inleder ofta en konfrontation med ett högt väsande.",
       "sources": [
         {
           "article": "en",
@@ -161,7 +139,7 @@
       ]
     },
     {
-      "id": "f15",
+      "id": "f13",
       "topic": "habitat",
       "sv": "Kanadagåsen finns främst i öppna sjöar och skärgård, men även i parker och jordbruksbygd med mindre sjöar eller dammar.",
       "sources": [
@@ -172,7 +150,7 @@
       ]
     },
     {
-      "id": "f16",
+      "id": "f14",
       "topic": "habitat",
       "sv": "Den häckar även i myrområden med större vattenspeglar.",
       "sources": [
@@ -183,20 +161,20 @@
       ]
     },
     {
-      "id": "f17",
+      "id": "f15",
       "topic": "sweden",
-      "sv": "Kanadagåsen förekommer i dag som frilevande population över merparten av Sverige.",
+      "sv": "Arten infördes till Skandinavien under 1900-talet, med början i Sverige 1929.",
       "sources": [
         {
-          "article": "sv",
-          "quote": "I Västra palearktis förekommer kanadagåsen idag som friflygande population över merparten av Sverige"
+          "article": "en",
+          "quote": "They were also introduced into the Netherlands, Belgium, Germany, Scandinavia, and Finland in the 20th Century, starting in Sweden in 1929."
         }
       ]
     },
     {
-      "id": "f18",
+      "id": "f16",
       "topic": "sweden",
-      "sv": "Kanadagåsen är i dag Sveriges vanligaste och mest spridda gås.",
+      "sv": "Kanadagåsen är i dag Sveriges vanligaste och mest utbredda gås.",
       "sources": [
         {
           "article": "de",
@@ -205,20 +183,9 @@
       ]
     },
     {
-      "id": "f19",
+      "id": "f17",
       "topic": "sweden",
-      "sv": "År 1927 förde Bengt Berg in två kanadagäss till Värnanäs i Småland.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "År 1927 införde fågelfotografen och dokumentärfilmaren Bengt Berg två individer till Värnanäs i Småland"
-        }
-      ]
-    },
-    {
-      "id": "f20",
-      "topic": "sweden",
-      "sv": "Kanadagäss i nordligare delar av Sverige och Finland flyttar till Nordsjöns och Östersjöns kuster.",
+      "sv": "Kanadagäss i norra Sverige och Finland flyttar till Nordsjö- och Östersjökusterna.",
       "sources": [
         {
           "article": "en",
@@ -227,9 +194,9 @@
       ]
     },
     {
-      "id": "f21",
+      "id": "f18",
       "topic": "sweden",
-      "sv": "Många nordeuropeiska kanadagäss övervintrar kring Danmark, Nederländerna och Polen.",
+      "sv": "Många nordeuropeiska kanadagäss övervintrar i trakterna kring Danmark, Nederländerna och Polen.",
       "sources": [
         {
           "article": "sv",
@@ -238,9 +205,20 @@
       ]
     },
     {
-      "id": "f22",
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "På nordliga platser där vattnet hålls öppet på konstgjord väg övervintrar kanadagåsen ofta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På nordliga platser, där vattnet på konstgjord väg hålls öppet vintertid, är det vanligt att kanadagåsen övervintrar."
+        }
+      ]
+    },
+    {
+      "id": "f20",
       "topic": "breeding",
-      "sv": "Boet är en grop i marken med gräs, pinnar och torv som fylls med gråvitt dun.",
+      "sv": "Boet är en grop i marken med gräs, pinnar och torv, fodrad med gråvitt dun.",
       "sources": [
         {
           "article": "sv",
@@ -249,9 +227,9 @@
       ]
     },
     {
-      "id": "f23",
+      "id": "f21",
       "topic": "breeding",
-      "sv": "Honan lägger främst i april–maj, oftast fem till sju enfärgat gråvita ägg.",
+      "sv": "Honan lägger oftast fem till sju enfärgat gråvita ägg, främst mellan april och maj.",
       "sources": [
         {
           "article": "sv",
@@ -260,7 +238,7 @@
       ]
     },
     {
-      "id": "f24",
+      "id": "f22",
       "topic": "breeding",
       "sv": "Äggen ruvas i ungefär 30 dygn och ungarna blir flygga efter cirka 40–50 dygn.",
       "sources": [
@@ -271,9 +249,9 @@
       ]
     },
     {
-      "id": "f25",
+      "id": "f23",
       "topic": "breeding",
-      "sv": "Kullar från flera par slås ofta samman till en större flock ungar som föräldraparen vaktar i skift.",
+      "sv": "Kullar från flera par på samma plats slås ofta samman och vaktas i skift av föräldrarna.",
       "sources": [
         {
           "article": "sv",
@@ -282,7 +260,7 @@
       ]
     },
     {
-      "id": "f26",
+      "id": "f24",
       "topic": "food",
       "sv": "Födan består främst av gräs och andra växter samt deras rötter, ibland även små insekter och fisk.",
       "sources": [
@@ -293,7 +271,18 @@
       ]
     },
     {
-      "id": "f27",
+      "id": "f25",
+      "topic": "food",
+      "sv": "Den når längre ner under vattnet genom att lyfta bakkroppen ur vattnet när den betar vattenväxter.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Ihre Reichweite unter Wasser können Kanadagänse deutlich vergrößern, indem sie ihren Hinterkörper aus dem Wasser heben."
+        }
+      ]
+    },
+    {
+      "id": "f26",
       "topic": "behaviour",
       "sv": "Utanför häckningstiden lever kanadagåsen i stora flockar.",
       "sources": [
@@ -304,13 +293,24 @@
       ]
     },
     {
-      "id": "f28",
+      "id": "f27",
       "topic": "behaviour",
       "sv": "I betande flockar håller några gäss vakt medan de andra betar.",
       "sources": [
         {
           "article": "sv",
           "quote": "I en större flock med betande kanadagäss håller några gäss vakt medan de andra betar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Kanadagäss flyger i en karakteristisk V-formation.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Canada geese fly in a distinctive V-shaped flight formation"
         }
       ]
     },
@@ -364,13 +364,13 @@
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T18:01:38.342955+00:00"
+      "at": "2026-10-07T18:25:23.683515+00:00"
     },
     "verify": {
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
-      "at": "2026-10-07T18:08:57.902786+00:00",
-      "factsHash": "7698d46a80867544"
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "2bcc3ae04465de81"
     }
   },
   "errors": [],
@@ -568,14 +568,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+      "contradicts": null
     }
   },
   "flags": [
     {
       "check": "V1",
       "factId": "s01",
-      "message": "Statusen i Sverige ströks av faktakontrollen: Quotes confirm the species breeds across most of Sweden, but migration is only confirmed for geese in more northerly parts of Sweden/Finland, while other passages note wintering occurs where water stays open; the uniform 'migratory bird' label is not fully supported for all of Sweden.. Bestäm status eller lämna tom."
+      "message": "Statusen i Sverige ströks av faktakontrollen: Quote supports partial migration for northern Swedish populations but does not explicitly state the species breeds in Sweden.. Bestäm status eller lämna tom."
     }
   ]
 }

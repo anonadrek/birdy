@@ -1,6 +1,6 @@
 {
   "qid": "Q25307",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
@@ -9,7 +9,29 @@
     {
       "id": "f01",
       "topic": "appearance",
-      "sv": "Skatan har vit buk, vita kroppssidor och skuldror samt övervägande vita handpennor.",
+      "sv": "Skatan har en lång och kilformad stjärt, som främst skiljer den från andra kråkfåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skatan och övriga arter i släktet skator skiljer sig från andra kråkfåglar främst genom sin långa och kilformade stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Stjärten är ofta lika lång som resten av kroppen och längre än de korta, breda vingarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten är ofta lika lång som den övriga delen av kroppen, i varje fall längre än de korta och breda vingarna."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Buk, kroppssidor och skuldror är vita, och handpennorna är till största delen vita.",
       "sources": [
         {
           "article": "sv",
@@ -18,7 +40,7 @@
       ]
     },
     {
-      "id": "f02",
+      "id": "f04",
       "topic": "appearance",
       "sv": "Resten av fjäderdräkten är svart med metallglans.",
       "sources": [
@@ -29,20 +51,9 @@
       ]
     },
     {
-      "id": "f03",
+      "id": "f05",
       "topic": "appearance",
-      "sv": "Skatan skiljer sig från andra kråkfåglar främst genom sin långa, kilformade stjärt.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Skatan och övriga arter i släktet skator skiljer sig från andra kråkfåglar främst genom sin långa och kilformade stjärt."
-        }
-      ]
-    },
-    {
-      "id": "f04",
-      "topic": "appearance",
-      "sv": "Stjärtfjädrarna och vingpennornas ytterfan skimrar på nära håll i metalliskt grönt, blått eller purpur.",
+      "sv": "Stjärten och vingpennorna skimrar på nära håll i metalliskt grönt, blått eller purpur beroende på ljuset.",
       "sources": [
         {
           "article": "sv",
@@ -51,7 +62,7 @@
       ]
     },
     {
-      "id": "f05",
+      "id": "f06",
       "topic": "appearance",
       "sv": "Näbben och fötterna är svartgrå och ganska grova.",
       "sources": [
@@ -62,7 +73,7 @@
       ]
     },
     {
-      "id": "f06",
+      "id": "f07",
       "topic": "size",
       "sv": "Skatan är 40–51 cm lång, varav stjärten är 20–30 cm, och har ett vingspann på 48–53 cm.",
       "sources": [
@@ -73,7 +84,7 @@
       ]
     },
     {
-      "id": "f07",
+      "id": "f08",
       "topic": "sex_age",
       "sv": "Hanarna är i genomsnitt något tyngre än honorna, med medelvikt 233 g mot 203 g.",
       "sources": [
@@ -84,32 +95,25 @@
       ]
     },
     {
-      "id": "f08",
-      "topic": "sex_age",
-      "sv": "Unga skator har oftast en mer brunsvart ton på huvud och bröst.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Juvenila fåglar har oftast en mer brunsvart ton på huvud och bröst."
-        }
-      ]
-    },
-    {
       "id": "f09",
       "topic": "sex_age",
-      "sv": "Unga skator har kortare stjärt utan glans.",
+      "sv": "Unga fåglar har oftast en mer brunsvart ton på huvud och bröst samt en kortare stjärt utan glans.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Stjärten, som är kortare, är utan glans"
+          "quote": "Juvenila fåglar har oftast en mer brunsvart ton på huvud och bröst. Stjärten, som är kortare, är utan glans"
         }
       ]
     },
     {
       "id": "f10",
       "topic": "voice",
-      "sv": "Vanligaste lätet är ett hest skrattande schackande i serier av lätt kraxande ”schäck-schäck-schäck”.",
+      "sv": "Det vanligaste lätet är ett hest, skrattande schackande i serier av lätt kraxande ”schäck-schäck-schäck”.",
       "sources": [
+        {
+          "article": "sv",
+          "quote": "Skatans vanligaste läte är ett hest skrattande \"schackande\" eller \"schäckande\"."
+        },
         {
           "article": "sv",
           "quote": "Det består av mer eller mindre snabbt på varandra följande serier av lätt kraxande \"schäck-schäck-schäck\"."
@@ -119,29 +123,37 @@
     {
       "id": "f11",
       "topic": "voice",
-      "sv": "Schäckandet är ett varnings- och alarmläte som används för att försvara reviret.",
+      "sv": "Schäckandet är ett varnings- och alarmläte, och snabbt, upphackat schäckande visar stor upprördhet.",
       "sources": [
         {
           "article": "sv",
           "quote": "Schäckandet är ett varnings- och alarmläte som syftar till att försvara reviret."
+        },
+        {
+          "article": "sv",
+          "quote": "Fågelns upprördhet är särskilt stor om schäckandet är snabbt och upphackat."
         }
       ]
     },
     {
       "id": "f12",
       "topic": "voice",
-      "sv": "Skatpar framför en låg, halvkvävt pladdrande sång för att befästa sitt partnerskap.",
+      "sv": "Paren framför en låg, halvkvävt pladdrande sång, som ofta hörs under kalla vinterdagar.",
       "sources": [
         {
           "article": "sv",
           "quote": "Skatpar framför en låg halvkvävt pladdrande sång för att befästa sitt partnerskap."
+        },
+        {
+          "article": "sv",
+          "quote": "Denna sång, som ofta hörs under kalla vinterdagar"
         }
       ]
     },
     {
       "id": "f13",
       "topic": "voice",
-      "sv": "För att markera revir använder paret ett läte som låter som ”kia”, ”kjää” eller ”kik”.",
+      "sv": "För att markera revir använder paren ett läte som låter som ”kia”, ”kjää” eller ”kik”.",
       "sources": [
         {
           "article": "sv",
@@ -152,7 +164,7 @@
     {
       "id": "f14",
       "topic": "habitat",
-      "sv": "Skatan är ofta starkt knuten till mänsklig bebyggelse och finns både i städer och på landsbygden.",
+      "sv": "Skatan är ofta starkt knuten till mänsklig bebyggelse och uppträder både i städer och på landsbygden.",
       "sources": [
         {
           "article": "sv",
@@ -163,7 +175,7 @@
     {
       "id": "f15",
       "topic": "habitat",
-      "sv": "Den bor främst i delvis öppna landskap med ängar, häckar, buskar och enstaka träddungar.",
+      "sv": "Den lever framför allt i delvis öppna landskap med ängar, häckar, buskar och enstaka träddungar.",
       "sources": [
         {
           "article": "sv",
@@ -174,27 +186,27 @@
     {
       "id": "f16",
       "topic": "habitat",
-      "sv": "I Sverige är skatan helt knuten till mänskliga bosättningar.",
+      "sv": "Skatan saknas normalt i trädlösa områden och täta skogar.",
       "sources": [
         {
           "article": "en",
-          "quote": "In Sweden, magpies are exclusively associated with human settlements."
+          "quote": "magpies are normally absent from treeless areas and dense forests"
         }
       ]
     },
     {
       "id": "f17",
-      "topic": "sweden",
-      "sv": "I Sverige är skatan vanlig upp till Lycksele lappmark och mellersta Norrbotten, men saknas i norra fjällkedjan och Östersjöns mellan- och ytterskärgårdar.",
+      "topic": "habitat",
+      "sv": "I städer bor den främst i villaområden med kortklippta gräsmattor, parker, alléer, kyrkogårdar och stora trädgårdar.",
       "sources": [
         {
           "article": "sv",
-          "quote": "I Sverige är den vanlig i hela landet ända upp till Lycksele lappmark och mellersta Norrbotten, men saknas i norra delen av fjällkedjan och i Östersjöns mellan- och ytterskärgårdar."
+          "quote": "De bor framför allt i villaområden med kortklippta gräsytor, samt parkanläggningar, alléer, kyrkogårdar och stora husträdgårdar."
         }
       ]
     },
     {
-      "id": "f18",
+      "id": "f19",
       "topic": "sweden",
       "sv": "Skatan har ökat i Sverige sedan 1970-talet och beståndet uppskattades 2007 till 300 000–700 000 par.",
       "sources": [
@@ -205,19 +217,49 @@
       ]
     },
     {
-      "id": "f19",
+      "id": "f20",
       "topic": "sweden",
-      "sv": "Skator i Sverige och Finland kan flytta söderut vid hårt väder.",
+      "sv": "I Sverige är skatan helt knuten till mänskliga boplatser och påträffas sällan mer än några hundra meter från bostäder.",
       "sources": [
         {
           "article": "en",
-          "quote": "those living near the northernmost limits of their range, in Sweden, Finland, and Russia, may move south in harsh weather conditions."
+          "quote": "In Sweden, magpies are exclusively associated with human settlements. It is extremely rare to find a magpie more than a few hundred metres from a human dwelling."
         }
       ]
     },
     {
-      "id": "f20",
-      "topic": "sweden",
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet är ett klotformat, ganska stort bygge av grenar, oftast med ett huvliknande tak och en eller två sidoutgångar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Redet är ett klotformat, ganska stort bygge av grenar."
+        },
+        {
+          "article": "sv",
+          "quote": "De flesta reden har en huvartad överbyggnad som består av stora grenar med en eller ofta två utgångar på sidorna."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Boet byggs ofta högt upp i höga träd på 12–30 meters höjd eller i täta, taggiga buskar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "bygger de ofta reden i de översta grenarna i höga träd på 12–30 meters höjd"
+        },
+        {
+          "article": "sv",
+          "quote": "bygger skator även reden på tre till fyra meters höjd i tätt törnigt buskage eller i törniga häckar"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
       "sv": "I Skandinavien börjar äggläggningen i slutet av april eller början av maj.",
       "sources": [
         {
@@ -227,46 +269,17 @@
       ]
     },
     {
-      "id": "f21",
-      "topic": "breeding",
-      "sv": "Boet är ett klotformat, ganska stort bygge av grenar.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Redet är ett klotformat, ganska stort bygge av grenar."
-        }
-      ]
-    },
-    {
-      "id": "f22",
-      "topic": "breeding",
-      "sv": "De flesta bon har en huvliknande överbyggnad av grenar med en eller ofta två utgångar på sidorna.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "De flesta reden har en huvartad överbyggnad som består av stora grenar med en eller ofta två utgångar på sidorna."
-        }
-      ]
-    },
-    {
-      "id": "f23",
-      "topic": "breeding",
-      "sv": "En kull består i snitt av 5–8 ägg.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "en kull består i snitt av 5–8 ägg"
-        }
-      ]
-    },
-    {
       "id": "f24",
       "topic": "breeding",
-      "sv": "Endast honan ruvar, medan hanen försvarar reviret och står för det mesta av hennes föda.",
+      "sv": "En kull består i snitt av 5–8 ägg, och endast honan ruvar.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Endast honan ruvar på äggen, medan hanen försvarar reviret och täcker större delen av honans försörjning."
+          "quote": "en kull består i snitt av 5–8 ägg, sällsynt upp till 10 vid mycket god födotillgång."
+        },
+        {
+          "article": "sv",
+          "quote": "Endast honan ruvar på äggen, medan hanen försvarar reviret"
         }
       ]
     },
@@ -284,7 +297,7 @@
     {
       "id": "f26",
       "topic": "food",
-      "sv": "Under häckningstiden plundrar skator andra fåglars bon på ägg och ungar.",
+      "sv": "Under häckningstiden på vår och försommar plundrar skatan andra fåglars bon på ägg och ungar.",
       "sources": [
         {
           "article": "sv",
@@ -295,7 +308,7 @@
     {
       "id": "f27",
       "topic": "behaviour",
-      "sv": "På marken rör sig skatan ofta med jämfotahopp, gärna med rest stjärt.",
+      "sv": "På marken rör sig skatan ofta med jämfotahopp men går också med knyckiga rörelser, ofta med rest stjärt.",
       "sources": [
         {
           "article": "sv",
@@ -326,13 +339,18 @@
       ]
     },
     {
-      "id": "f30",
-      "topic": "behaviour",
-      "sv": "Skatan är en av få fågelarter som klarar spegeltestet.",
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
       "sources": [
         {
+          "article": "de",
+          "quote": "Die Elster ist ein Standvogel, in Skandinavien jedoch auch ein Strichvogel."
+        },
+        {
           "article": "en",
-          "quote": "It is one of the few bird species known to pass the mirror test."
+          "quote": "However, those living near the northernmost limits of their range, in Sweden, Finland, and Russia, may move south in harsh weather conditions."
         }
       ]
     },
@@ -355,19 +373,338 @@
       "sv": "Inte rödlistad i Svenska rödlistan 2025."
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Skatan är en kråkfågel med svartvit fjäderdräkt och lång, kilformad stjärt.",
+          "factIds": [
+            "f01",
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Den är ofta starkt knuten till mänsklig bebyggelse och syns både i städer och på landsbygden.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Lång, kilformad stjärt, ofta lika lång som resten av kroppen",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Vit buk, vita kroppssidor och skuldror, resten svart med metallglans",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Stjärt och vingpennor skimrar i grönt, blått eller purpur på nära håll",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Unga fåglar har mer brunsvart huvud och bröst och kortare stjärt utan glans",
+          "factIds": [
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Det vanligaste lätet är ett hest, skrattande schackande i serier: ”schäck-schäck-schäck”.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Det är ett varnings- och alarmläte, och snabbt, upphackat schäckande visar stor upprördhet.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Paren har en låg, halvkvävt pladdrande sång som ofta hörs under kalla vinterdagar.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Revir markeras med ett läte som låter ”kia”, ”kjää” eller ”kik”.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Skatan är delvis flyttfågel och häckar i Sverige.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Här är den helt knuten till mänskliga boplatser och påträffas sällan mer än några hundra meter från bostäder.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "I städer bor den främst i villaområden, parker, alléer, kyrkogårdar och stora trädgårdar.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län och mest i december och januari.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Beståndet uppskattades 2007 till 300 000 till 700 000 par.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Skatan är allätare och söker ofta föda på marken.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Under häckningstiden på vår och försommar plundrar den andra fåglars bon på ägg och ungar.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "På marken hoppar den ofta jämfota eller går med knyckiga rörelser, gärna med rest stjärt.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Flykten är flaxig och går i rak bana.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "På vintern bildar skator flockar från ett dussin upp till några hundra fåglar.",
+          "factIds": [
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Skata: så känner du igen den svartvita kråkfågeln med lång stjärt, hur det skrattande schackandet låter och när den oftast rapporteras.",
+      "facts": {
+        "size": {
+          "value": "40 till 51 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Magpie is a member of the crow family with black and white plumage and a long, wedge-shaped tail.",
+          "factIds": [
+            "f01",
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "It is often closely tied to human settlement and appears both in towns and in the countryside.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Long, wedge-shaped tail, often as long as the rest of the body",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "White belly, flanks and shoulders, the rest black with a metallic sheen",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Close up, tail and flight feathers shimmer green, blue or purple",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Young birds have browner black head and breast and a shorter, unglossed tail",
+          "factIds": [
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The commonest call is a harsh, laughing chatter in series: \"schäck-schäck-schäck\".",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "It is a warning and alarm call, and fast, broken chattering shows great agitation.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Pairs give a low, half-stifled babbling song, often heard on cold winter days.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "To mark territory they use a call like \"kia\", \"kjää\" or \"kik\".",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "A partial migrant that breeds in Sweden.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Here it is wholly tied to human settlements, seldom more than a few hundred metres from houses.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "In towns it lives mainly in residential areas, parks, avenues, churchyards and large gardens.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Reported from all 21 counties, most in December and January.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "The 2007 population estimate was 300 000 to 700 000 pairs.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Eurasian Magpie is omnivorous and often feeds on the ground.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "In the breeding season in spring and early summer it raids other birds' nests for eggs and young.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "On the ground it often hops with both feet together or walks jerkily, often with its tail raised.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Its flight is flappy and straight.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "In winter magpies form flocks of a dozen up to a few hundred birds.",
+          "factIds": [
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Eurasian Magpie: how to recognise this black and white corvid with a long tail, what its harsh chattering call sounds like and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "40 to 51 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T18:01:38.342955+00:00"
+      "at": "2026-10-07T18:25:23.683515+00:00"
     },
     "verify": {
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
-      "at": "2026-10-07T18:08:57.902786+00:00",
-      "factsHash": "866f56a0642cda64"
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "008a2c2ed7831ade"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "008a2c2ed7831ade"
     }
   },
   "errors": [],
@@ -568,11 +905,11 @@
       "contradicts": null
     }
   },
-  "flags": [
-    {
-      "check": "V1",
-      "factId": "s01",
-      "message": "Statusen i Sverige ströks av faktakontrollen: The German quote states the magpie is a resident bird (Standvogel) but explicitly notes that in Scandinavia it is also a partial/dispersive migrant (Strichvogel), contradicting a simple 'stannfågel' (resident only) status claim for Sweden; this nuance is not reflected in the claim.. Bestäm status eller lämna tom."
-    }
-  ]
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }

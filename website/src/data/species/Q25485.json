@@ -24,7 +24,7 @@
     {
       "id": "f02",
       "topic": "appearance",
-      "sv": "Bröstet är klart citrongult med en svart längsgående rand mitt på, från haklappen till kloaköppningen.",
+      "sv": "Bröstet är klart citrongult med en svart längsgående rand mitt på, från haklappen ner till kloaköppningen.",
       "sources": [
         {
           "article": "sv",
@@ -35,7 +35,7 @@
     {
       "id": "f03",
       "topic": "appearance",
-      "sv": "Den har en blekvit fläck på halsen som övergår till grönaktigt gul på övre nacken.",
+      "sv": "Den har en blekvit fläck på halsen som övergår till grönaktigt gult på övre nacken.",
       "sources": [
         {
           "article": "sv",
@@ -46,7 +46,7 @@
     {
       "id": "f04",
       "topic": "appearance",
-      "sv": "Vingtäckarna är gröna och resten av vingen blågrå med ett vitt vingband.",
+      "sv": "Vingtäckarna är gröna och resten av vingen är blågrå med ett vitt vingband.",
       "sources": [
         {
           "article": "sv",
@@ -68,18 +68,7 @@
     {
       "id": "f06",
       "topic": "appearance",
-      "sv": "Näbben är förhållandevis kraftig och svartaktigt hornfärgad med något ljusare kanter.",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "Schnabel ist verhältnismäßig kräftig und schwärzlich hornfarben mit etwas helleren Kanten"
-        }
-      ]
-    },
-    {
-      "id": "f07",
-      "topic": "appearance",
-      "sv": "Benen och fötterna är blågrå till skiffergrå.",
+      "sv": "Ben och fötter är blågrå till skiffergrå.",
       "sources": [
         {
           "article": "de",
@@ -88,7 +77,29 @@
       ]
     },
     {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Honan liknar hanen men är blekare, med mindre intensivt svart haklapp och en smalare, ibland avbruten bukrand.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honans fjäderdräkt liknar hanens förutom att färgerna på det hela taget är blekare; haklappen är mindre intensivt svart, liksom randen som löper nedför magen, vilken också är smalare och ibland avbruten."
+        }
+      ]
+    },
+    {
       "id": "f08",
+      "topic": "sex_age",
+      "sv": "Ungfåglar liknar honan men har blekt olivbruna nackar och halsar, gråaktig gump och gråare stjärt med mindre markerade vita spetsar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungfåglar liknar honan, förutom att de har blekt olivbruna nackar och halsar, gråaktig gump, och gråare stjärtar med mindre markerade vita spetsar."
+        }
+      ]
+    },
+    {
+      "id": "f09",
       "topic": "size",
       "sv": "Talgoxen är en stor mes som mäter 12,5–14,0 cm och väger 16–21 gram.",
       "sources": [
@@ -103,31 +114,9 @@
       ]
     },
     {
-      "id": "f09",
-      "topic": "sex_age",
-      "sv": "Honan liknar hanen men är blekare, med mindre intensivt svart haklapp och en smalare, ibland avbruten bukrand.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Honans fjäderdräkt liknar hanens förutom att färgerna på det hela taget är blekare; haklappen är mindre intensivt svart, liksom randen som löper nedför magen, vilken också är smalare och ibland avbruten."
-        }
-      ]
-    },
-    {
       "id": "f10",
-      "topic": "sex_age",
-      "sv": "Ungfåglar liknar honan men har blekt olivbruna nackar och halsar, gråaktig gump och gråare stjärt med mindre markerade vita spetsar.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Ungfåglar liknar honan, förutom att de har blekt olivbruna nackar och halsar, gråaktig gump, och gråare stjärtar med mindre markerade vita spetsar."
-        }
-      ]
-    },
-    {
-      "id": "f11",
       "topic": "voice",
-      "sv": "Ett välkänt läte är ett ”tí-ta, tí-ta”, ofta liknat vid ett gnissligt skottkärrehjul, som används för att hävda revir.",
+      "sv": "Ett välkänt läte är ett ”tí-ta, tí-ta” som ofta liknas vid ett gnissligt skottkärrehjul och används för att hävda revir.",
       "sources": [
         {
           "article": "sv",
@@ -136,7 +125,7 @@
       ]
     },
     {
-      "id": "f12",
+      "id": "f11",
       "topic": "voice",
       "sv": "Ett bofinkaktigt ”ping, ping” hörs ofta.",
       "sources": [
@@ -147,22 +136,7 @@
       ]
     },
     {
-      "id": "f13",
-      "topic": "voice",
-      "sv": "Det metalliska ”pink”-lätet är ensamt knappt att skilja från bofinkens liknande läte men upprepas ofta flera gånger.",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "ein metallisches pink, das für sich allein kaum vom ähnlichen Ruf des Buchfinken zu unterscheiden ist"
-        },
-        {
-          "article": "de",
-          "quote": "Es wird aber oft mehrfach wiederholt"
-        }
-      ]
-    },
-    {
-      "id": "f14",
+      "id": "f12",
       "topic": "voice",
       "sv": "Mjuka enstaka toner som ”pit”, ”spick” eller ”tjitt” används som kontaktläten.",
       "sources": [
@@ -173,29 +147,18 @@
       ]
     },
     {
-      "id": "f15",
+      "id": "f13",
       "topic": "voice",
-      "sv": "Vuxna hanar använder ett högljutt ”tink” som larm eller i revirstrider.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Ett högljutt \"tink\"används av vuxna hanar som larm eller i revirstrider."
-        }
-      ]
-    },
-    {
-      "id": "f16",
-      "topic": "voice",
-      "sv": "Bland lätena finns ett högt ”pink” och ett varnande ”dädädä”.",
+      "sv": "Vid fiender på marken låter den ett omelodiskt skorrande ”trrrr” eller ett upprepat ”dädädä”.",
       "sources": [
         {
           "article": "de",
-          "quote": "ein hohes pink und ein warnendes dädädä"
+          "quote": "Ein Ruf der Verärgerung oder Erregung bei herannahenden Bodenfeinden ist ein unmelodischer Laut, der zwischen einem schnarrenden trrrr oder einem gereihten dädädä liegen kann."
         }
       ]
     },
     {
-      "id": "f17",
+      "id": "f14",
       "topic": "habitat",
       "sv": "Talgoxen finns oftast i öppna lövskogslandskap, blandskog och skogsbryn.",
       "sources": [
@@ -206,9 +169,9 @@
       ]
     },
     {
-      "id": "f18",
+      "id": "f15",
       "topic": "habitat",
-      "sv": "I täta skogar, däribland barrskogar, håller den vanligen till i gläntor.",
+      "sv": "I täta skogar, även barrskogar, håller den vanligen till i gläntor.",
       "sources": [
         {
           "article": "sv",
@@ -217,7 +180,7 @@
       ]
     },
     {
-      "id": "f19",
+      "id": "f16",
       "topic": "habitat",
       "sv": "Talgoxen är en vanlig fågel i stadsparker och trädgårdar.",
       "sources": [
@@ -228,9 +191,9 @@
       ]
     },
     {
-      "id": "f20",
+      "id": "f17",
       "topic": "sweden",
-      "sv": "Talgoxen finns i hela Sverige och är i mellersta och södra Sverige en av de vanligaste mesarna.",
+      "sv": "Talgoxen finns i hela Sverige och är en av de vanligaste mesarna i mellersta och södra Sverige.",
       "sources": [
         {
           "article": "sv",
@@ -239,20 +202,9 @@
       ]
     },
     {
-      "id": "f21",
+      "id": "f18",
       "topic": "sweden",
-      "sv": "Talgoxen är en av de vanligast ringmärkta fågelarterna i Sverige.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "utgör talgoxen en av de vanligast ringmärkta fågelarterna i Sverige"
-        }
-      ]
-    },
-    {
-      "id": "f22",
-      "topic": "sweden",
-      "sv": "I Fennoskandien infaller den huvudsakliga äggläggningen mellan slutet av april och mitten av maj.",
+      "sv": "I Fennoskandien sker huvuddelen av äggläggningen mellan slutet av april och mitten av maj.",
       "sources": [
         {
           "article": "de",
@@ -261,9 +213,20 @@
       ]
     },
     {
-      "id": "f23",
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Talgoxen har utvidgat sitt utbredningsområde norrut till Skandinavien.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Talgoxen har utvidgat sitt utbredningsområde norrut till Skandinavien"
+        }
+      ]
+    },
+    {
+      "id": "f20",
       "topic": "breeding",
-      "sv": "Talgoxen häckar i hål, vanligen i träd men ibland i hus- eller bergväggar, och använder gärna holkar.",
+      "sv": "Talgoxen häckar i hål, vanligen i träd men ibland i husväggar eller bergväggar, och använder gärna holkar.",
       "sources": [
         {
           "article": "sv",
@@ -272,7 +235,18 @@
       ]
     },
     {
-      "id": "f24",
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "En kull omfattar oftast fem till tolv, men ibland så många som 18.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Antalet ungar i en kull är ofta mycket stort, så många som 18, men fem till tolv är vanligare."
+        }
+      ]
+    },
+    {
+      "id": "f22",
       "topic": "breeding",
       "sv": "Äggen är cirka 18 millimeter stora och vita med rödaktiga fläckar.",
       "sources": [
@@ -283,9 +257,9 @@
       ]
     },
     {
-      "id": "f25",
+      "id": "f23",
       "topic": "breeding",
-      "sv": "Honan ruvar ensam och matas då av hanen; ruvningen varar 12 till 15 dagar.",
+      "sv": "Honan ruvar ensam i 12 till 15 dagar och matas då av hanen.",
       "sources": [
         {
           "article": "sv",
@@ -298,18 +272,7 @@
       ]
     },
     {
-      "id": "f26",
-      "topic": "breeding",
-      "sv": "Ungarna stannar i boet i 16 till 22 dagar.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Ungarna stannar i boet i 16 till 22 dagar"
-        }
-      ]
-    },
-    {
-      "id": "f27",
+      "id": "f24",
       "topic": "breeding",
       "sv": "De flesta år föder paret upp två kullar.",
       "sources": [
@@ -320,7 +283,7 @@
       ]
     },
     {
-      "id": "f28",
+      "id": "f25",
       "topic": "food",
       "sv": "På sommaren äter talgoxen främst insekter och spindlar som den plockar från löv.",
       "sources": [
@@ -331,24 +294,57 @@
       ]
     },
     {
-      "id": "f29",
+      "id": "f26",
       "topic": "food",
-      "sv": "Vintertid består ungefär 90 procent av födan av växtmaterial hos populationerna i norra Europa.",
+      "sv": "Under höst och vinter, när insekterna blir färre, äter den även bär och frön.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Vintertid utgör ungefär 90% av födan växtmaterial hos de populationer som lever i norra Europa."
+          "quote": "Under höst och vinter på norra halvklotet, då färre insekter finns tillgängliga, utökar talgoxen sin föda med bär och frön."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Vid fågelbord tar den gärna matrester, jordnötter och solrosfrön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När det finns tillgängligt tar de gärna matrester, jordnötter och solrosfrön från fågelbord."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "På vintern födosöker talgoxar tillsammans med andra mesar i artblandade flockar, så kallade meståg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Talgoxar och andra mesar bildar artblandade grupper, så kallade meståg, som födosöker tillsammans under vintern."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Stora frön eller byten håller den med foten och hackar på med näbben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stora matbitar, som stora frön eller byten, hanteras genom att fågeln håller föremålet med ena foten eller båda fötterna och slår på det med näbben"
         }
       ]
     },
     {
       "id": "f30",
       "topic": "behaviour",
-      "sv": "Talgoxar bildar vintertid artblandade meståg tillsammans med andra mesar som födosöker tillsammans.",
+      "sv": "Den födosöker oftare på lägre, grövre grenar, kring stammen eller på marken än andra mesar.",
       "sources": [
         {
-          "article": "sv",
-          "quote": "Talgoxar och andra mesar bildar artblandade grupper, så kallade meståg, som födosöker tillsammans under vintern."
+          "article": "de",
+          "quote": "bewegt sich eher auf den unteren, kräftigeren Ästen und Zweigen, im Stammbereich oder am Boden"
         }
       ]
     },
@@ -375,65 +371,69 @@
     "sv": {
       "lead": [
         {
-          "text": "Talgoxen är en stor mes som finns i hela Sverige.",
+          "text": "Talgoxen är en stor mes som finns i hela Sverige och är en av de vanligaste mesarna i mellersta och södra Sverige.",
           "factIds": [
-            "f08",
-            "f20"
+            "f09",
+            "f17"
           ]
         },
         {
-          "text": "Den är en vanlig fågel i stadsparker och trädgårdar och håller annars oftast till i öppna lövskogslandskap, blandskog och skogsbryn.",
+          "text": "Den är en vanlig fågel i stadsparker och trädgårdar.",
           "factIds": [
-            "f19",
-            "f17"
+            "f16"
           ]
         }
       ],
       "fieldMarks": [
         {
-          "text": "Svart huvud och hals med framträdande vita kinder",
+          "text": "Svart huvud och hals med tydliga vita kinder, olivgrön ovansida och gul undersida",
           "factIds": [
             "f01"
           ]
         },
         {
-          "text": "Citrongult bröst med en svart längsgående rand mitt på",
+          "text": "Citrongult bröst med en svart längsgående rand mitt på, från haklappen och nedåt",
           "factIds": [
             "f02"
           ]
         },
         {
-          "text": "Olivgrön ovansida och blågrå vingar med ett vitt vingband",
+          "text": "Gröna vingtäckare, i övrigt blågrå vingar med vitt vingband, blågrå stjärt med vita ytterkanter",
           "factIds": [
-            "f01",
-            "f04"
+            "f04",
+            "f05"
           ]
         },
         {
           "text": "Honan är blekare, med mindre intensivt svart haklapp och smalare, ibland avbruten bukrand",
           "factIds": [
-            "f09"
+            "f07"
           ]
         }
       ],
       "voice": [
         {
-          "text": "Ett välkänt läte är ett ”tí-ta, tí-ta”, som ofta liknas vid ett gnissligt skottkärrehjul och används för att hävda revir.",
+          "text": "Ett välkänt läte är ett ”tí-ta, tí-ta” som ofta liknas vid ett gnissligt skottkärrehjul och används för att hävda revir.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Ofta hörs också ett bofinkaktigt ”ping, ping”.",
           "factIds": [
             "f11"
           ]
         },
         {
-          "text": "Ett metalliskt ”pink” är knappt att skilja från bofinkens liknande läte men upprepas ofta flera gånger.",
+          "text": "Som kontaktläten används mjuka enstaka toner som ”pit”, ”spick” eller ”tjitt”.",
           "factIds": [
-            "f13"
+            "f12"
           ]
         },
         {
-          "text": "Som kontaktläten hörs mjuka toner som ”pit”, ”spick” eller ”tjitt”, och varningslätet är ett ”dädädä”.",
+          "text": "Vid fiender på marken låter den ett skorrande ”trrrr” eller ett upprepat ”dädädä”.",
           "factIds": [
-            "f14",
-            "f16"
+            "f13"
           ]
         }
       ],
@@ -441,14 +441,15 @@
         {
           "text": "Talgoxen finns i hela Sverige och rapporteras från alla 21 län.",
           "factIds": [
-            "f20",
+            "f17",
             "d02"
           ]
         },
         {
-          "text": "I täta skogar, även barrskog, håller den vanligen till i gläntor.",
+          "text": "Den håller till i öppna lövskogslandskap, blandskog och skogsbryn, i täta skogar oftast i gläntor.",
           "factIds": [
-            "f18"
+            "f14",
+            "f15"
           ]
         },
         {
@@ -456,41 +457,54 @@
           "factIds": [
             "d01"
           ]
+        },
+        {
+          "text": "I Fennoskandien läggs de flesta äggen mellan slutet av april och mitten av maj.",
+          "factIds": [
+            "f18"
+          ]
         }
       ],
       "behaviour": [
         {
-          "text": "På sommaren äter talgoxen främst insekter och spindlar som den plockar från löv.",
+          "text": "På sommaren äter den främst insekter och spindlar som den plockar från löv, och på hösten och vintern även bär och frön.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "Vid fågelbord tar den gärna jordnötter, solrosfrön och matrester.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "På vintern födosöker den i meståg, artblandade flockar med andra mesar.",
           "factIds": [
             "f28"
           ]
         },
         {
-          "text": "Vintertid består ungefär 90 procent av födan av växtmaterial hos populationerna i norra Europa.",
+          "text": "Stora frön håller den med foten och hackar på med näbben.",
           "factIds": [
             "f29"
           ]
         },
         {
-          "text": "På vintern bildar den meståg tillsammans med andra mesar som söker föda ihop.",
+          "text": "Den häckar i hål och använder gärna holkar.",
           "factIds": [
-            "f30"
-          ]
-        },
-        {
-          "text": "Den häckar i hål, vanligen i träd, och använder gärna holkar.",
-          "factIds": [
-            "f23"
+            "f20"
           ]
         }
       ],
       "lookAlikes": [],
-      "metaDescription": "Talgoxe: så känner du igen den på svart huvud, vita kinder och gult bröst, hur lätena låter och när på året den oftast rapporteras.",
+      "metaDescription": "Talgoxe: så känner du igen den på dräkt och läten, vilka miljöer den håller till i, vad den äter och när den rapporteras som mest.",
       "facts": {
         "size": {
           "value": "12,5 till 14,0 cm",
           "factIds": [
-            "f08"
+            "f09"
           ]
         },
         "swedenStatus": null
@@ -499,65 +513,69 @@
     "en": {
       "lead": [
         {
-          "text": "The Great Tit is a large tit found throughout Sweden.",
+          "text": "The Great Tit is a large tit found throughout Sweden and one of the commonest tits in central and southern Sweden.",
           "factIds": [
-            "f08",
-            "f20"
+            "f09",
+            "f17"
           ]
         },
         {
-          "text": "It is a common bird in town parks and gardens, and otherwise usually lives in open broadleaf woodland, mixed forest and woodland edges.",
+          "text": "It is a common bird in city parks and gardens.",
           "factIds": [
-            "f19",
-            "f17"
+            "f16"
           ]
         }
       ],
       "fieldMarks": [
         {
-          "text": "Black head and neck with prominent white cheeks",
+          "text": "Black head and neck with bold white cheeks, olive-green upperparts and yellow underparts",
           "factIds": [
             "f01"
           ]
         },
         {
-          "text": "Lemon-yellow breast with a black stripe running down the middle",
+          "text": "Lemon-yellow breast with a black stripe running down the middle from the bib",
           "factIds": [
             "f02"
           ]
         },
         {
-          "text": "Olive-green upperparts and blue-grey wings with a white wing bar",
+          "text": "Green wing coverts, otherwise blue-grey wings with a white bar; blue-grey tail with white outer edges",
           "factIds": [
-            "f01",
-            "f04"
+            "f04",
+            "f05"
           ]
         },
         {
-          "text": "Female paler, with a less intense black bib and narrower, sometimes broken belly stripe",
+          "text": "The female is paler, with a less intense black bib and narrower, sometimes broken belly stripe",
           "factIds": [
-            "f09"
+            "f07"
           ]
         }
       ],
       "voice": [
         {
-          "text": "A well-known “tee-ta, tee-ta”, often likened to a squeaky wheelbarrow wheel, is used to claim a territory.",
+          "text": "A well-known call is a \"tí-ta, tí-ta\", often likened to a squeaky wheelbarrow wheel and used to claim a territory.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "A chaffinch-like \"ping, ping\" is also often heard.",
           "factIds": [
             "f11"
           ]
         },
         {
-          "text": "On its own, a metallic “pink” is hard to tell from the Chaffinch's similar call, but it is often repeated.",
+          "text": "Soft single notes such as \"pit\", \"spick\" or \"tjitt\" serve as contact calls.",
           "factIds": [
-            "f13"
+            "f12"
           ]
         },
         {
-          "text": "Soft “pit”, “spick” or “chit” notes are contact calls, and a “dädädä” is a warning.",
+          "text": "At enemies on the ground it gives a harsh rattling \"trrrr\" or a repeated \"dädädä\".",
           "factIds": [
-            "f14",
-            "f16"
+            "f13"
           ]
         }
       ],
@@ -565,14 +583,15 @@
         {
           "text": "The Great Tit occurs throughout Sweden and is reported from all 21 counties.",
           "factIds": [
-            "f20",
+            "f17",
             "d02"
           ]
         },
         {
-          "text": "In dense forest, including conifer forest, it usually keeps to clearings.",
+          "text": "It lives in open deciduous woodland, mixed forest and woodland edges, and in dense forest it usually keeps to clearings.",
           "factIds": [
-            "f18"
+            "f14",
+            "f15"
           ]
         },
         {
@@ -580,41 +599,54 @@
           "factIds": [
             "d01"
           ]
+        },
+        {
+          "text": "In Fennoscandia most eggs are laid between late April and mid May.",
+          "factIds": [
+            "f18"
+          ]
         }
       ],
       "behaviour": [
         {
-          "text": "In summer it mainly eats insects and spiders that it picks from leaves.",
+          "text": "In summer it mainly eats insects and spiders picked from leaves, and in autumn and winter it also takes berries and seeds.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "At bird tables it readily takes peanuts, sunflower seeds and food scraps.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "In winter it forages in mixed flocks with other tits.",
           "factIds": [
             "f28"
           ]
         },
         {
-          "text": "In winter, about 90 percent of the diet of northern European populations is plant material.",
+          "text": "It holds large seeds with its foot and pecks at them with its bill.",
           "factIds": [
             "f29"
           ]
         },
         {
-          "text": "In winter it joins mixed flocks with other tits that forage together.",
+          "text": "It nests in holes and readily uses nest boxes.",
           "factIds": [
-            "f30"
-          ]
-        },
-        {
-          "text": "It nests in holes, usually in trees, and readily uses nest boxes.",
-          "factIds": [
-            "f23"
+            "f20"
           ]
         }
       ],
       "lookAlikes": [],
-      "metaDescription": "Great Tit: how to recognise it by its black head, white cheeks and yellow breast, what its calls sound like and when it is reported most.",
+      "metaDescription": "Great Tit: how to recognise it by plumage and calls, which habitats it uses, what it eats and when in the year it is reported most.",
       "facts": {
         "size": {
           "value": "12.5 to 14.0 cm",
           "factIds": [
-            "f08"
+            "f09"
           ]
         },
         "swedenStatus": null
@@ -626,7 +658,7 @@
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T16:03:26.895925+00:00"
+      "at": "2026-10-07T18:25:23.683515+00:00"
     },
     "text": {
       "model": "claude-opus-5-5",
@@ -637,15 +669,14 @@
       "bannedHash": "44609988",
       "prompt": "web-v2",
       "checkerPrompt": "check-v1",
-      "at": "2026-10-07T16:06:13.928325+00:00",
-      "factsHash": "02a94426beca2850",
-      "unreviewed": true
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "ab1cb184d206cb18"
     },
     "verify": {
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
-      "at": "2026-10-07T16:04:31.393419+00:00",
-      "factsHash": "02a94426beca2850"
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "ab1cb184d206cb18"
     }
   },
   "errors": [],
@@ -851,11 +882,11 @@
     "sha256": "ae482ee2d446e934cddd2a8df320b1e77458feb5d7b8d3365426769cb7eccecc",
     "mp3Sha256": "a62b65b62a4c33a24e7304174d58f313913d91a6c19388746e31e7ed1237e5ec"
   },
-  "flags": [
-    {
-      "check": "V1",
-      "factId": "s01",
-      "message": "Statusen i Sverige ströks av faktakontrollen: The Swedish quote only covers distribution, not residency status, and the German quote speaks generally of 'Europe' and areas 'north of the Arctic Circle', without naming Sweden, Scandinavia, Norden or Fennoscandia explicitly; the broader German text also describes the species as a partial migrant (Teilzieher), so full 'stannfågel' status for Sweden is not clearly established by the quoted text.. Bestäm status eller lämna tom."
-    }
-  ]
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }
