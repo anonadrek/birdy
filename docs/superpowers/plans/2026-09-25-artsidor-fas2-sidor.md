@@ -496,6 +496,8 @@ git commit -m "feat(website): testdata och bygglägen för artsidorna"
 
 - [ ] **Step 1: Skriv skriptet**
 
+Skriptet i repot har sedan granskningen sinusprojektion runt 15° O, kontroll av källfilens SHA-256 och exakt kontroll av de 21 länskoderna; utgå från det, inte från blocket nedan.
+
 `scripts/build-sweden-counties.mjs`:
 
 ```js
