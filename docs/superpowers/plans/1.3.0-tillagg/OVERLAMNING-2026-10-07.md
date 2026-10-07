@@ -74,7 +74,7 @@ Beslutssidan: https://claude.ai/artifact/NHEcrCSEqvrhU9KrHWNX42 (uppdateras med 
 
 ## 5. Albins steg (blockerar release)
 
-1. **Köptestet med vC129** på sin telefon (gå med via `https://play.google.com/apps/internaltest/4701434188270894832`, installera, köp Livstid med testkortet; "Välkommen, fältmedlem." = hård grind före vC130).
+1. **Köptestet med vC129** på sin telefon (gå med via anmälningslänken under Play Console → Intern testning, installera, köp Livstid med testkortet; "Välkommen, fältmedlem." = hård grind före vC130).
 2. **Ny MapTiler-nyckel** i MapTiler Cloud före vC130-bygget.
 3. **Bankkontot** i betalningsprofilen (sist): Play Console → Inställningar → Betalningsprofil → Betalningssätt → "Lägg till betalningsmetod" (agenten öppnade sidan 2026-10-07; Albin fyller i själv).
 4. Kontrollera att inspelningstimern går i rätt takt på riktig telefon (den gick för fort på emulatorn).
