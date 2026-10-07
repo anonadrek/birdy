@@ -901,4 +901,17 @@
         <item quantity="other">%1$d fynd med plats väntar på kartan</item>
     </plurals>
     <string name="map_teaser_cta">Lås upp med Premium</string>
+    <!-- Release 1.3.0, 7e-2 + 7i-fix A: credits on the species profile, Match and Disambig
+         (legal review §2 and §4). A photo credit reads "Foto: X · CC BY 4.0 · Wikimedia Commons
+         · nedskalad"; the licence name and "Wikimedia Commons" are links. -->
+    <string name="photo_credit_by">Foto: %1$s</string>
+    <string name="photo_credit_resized">nedskalad</string>
+    <string name="photo_credit_public_domain">public domain</string>
+    <string name="profile_text_credit">Texten bygger på %1$s och har sammanfattats och ändrats. Den får delas under %2$s.</string>
+    <string name="profile_text_credit_two">Texten bygger på Wikipedia-artiklarna på %1$s och %2$s och har sammanfattats och ändrats. Den får delas under %3$s.</string>
+    <string name="profile_text_credit_article">Wikipedia-artikeln</string>
+    <string name="profile_text_credit_article_sv">den svenska Wikipedia-artikeln</string>
+    <string name="profile_text_credit_article_en">den engelska Wikipedia-artikeln</string>
+    <string name="profile_text_credit_language_sv">svenska</string>
+    <string name="profile_text_credit_language_en">engelska</string>
 </resources>

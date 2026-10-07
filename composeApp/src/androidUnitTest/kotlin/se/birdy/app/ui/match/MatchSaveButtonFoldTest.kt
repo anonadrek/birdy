@@ -64,7 +64,8 @@ class MatchSaveButtonFoldTest {
             season = emptyMap(),
             description = null,
             migration = null,
-            images = listOf(SpeciesImage("hero", "Q25334/hero.webp", 2400, 1800, "CC BY-SA 4.0", "Test", "https://example.com")),
+            // A typical credit under the photo: the photographers' names are 13 characters on average.
+            images = listOf(SpeciesImage("hero", "Q25334/hero.webp", 2400, 1800, "CC BY-SA 4.0", "Hobbyfotowiki", "https://example.com")),
         )
 
     private fun assertSaveButtonInView(fontScale: Float) {

@@ -90,6 +90,8 @@ import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
 import se.birdy.app.ui.components.StatusBarBand
+import se.birdy.app.ui.credits.PhotoCredit
+import se.birdy.app.ui.credits.PhotoCreditForm
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.AccentCopperLight
 import se.birdy.app.ui.theme.CardPaper
@@ -114,15 +116,17 @@ private val StampColumnMaxWidth = 104.dp
 // and "Spara observation" below it is this screen's main action: it must be in view without
 // scrolling, also with larger text (2026-10-06). So the photo takes the room that is left above
 // everything that follows it, between MATCH_PHOTO_MIN and MATCH_PHOTO_MAX. MATCH_BELOW_PHOTO is
-// what follows the photo down to the bottom of the save button (name, latin name, match bar,
-// paper sheet with stamp, note field, button) at 100% text on a 360dp-wide phone, and it grows by
-// MATCH_BELOW_PHOTO_PER_FONT_SCALE per +1.0 of font scale (measured 2026-10-06: 379dp, +88.5dp).
-// MatchSaveButtonFoldTest checks the result on a 360x800dp phone at 100%, 130% and 200% text;
-// re-measure there if the content below the photo changes.
+// what follows the photo down to the bottom of the save button (photo credit, name, latin name,
+// match bar, paper sheet with stamp, note field, button) at 100% text on a 360dp-wide phone, and
+// it grows by MATCH_BELOW_PHOTO_PER_FONT_SCALE per +1.0 of font scale (measured 2026-10-06: 379dp,
+// +88.5dp; the photo credit of 2026-10-07 adds 27dp, +15dp). MatchSaveButtonFoldTest checks the
+// result on a 360x800dp phone at 100%, 130% and 200% text; re-measure there if the content below
+// the photo changes. The floor was 160dp before the credit; at 200% text on that phone the photo
+// is now 128dp, the room the button leaves.
 internal val MATCH_PHOTO_MAX = 260.dp
-internal val MATCH_PHOTO_MIN = 160.dp
-private val MATCH_BELOW_PHOTO = 380.dp
-private val MATCH_BELOW_PHOTO_PER_FONT_SCALE = 90.dp
+internal val MATCH_PHOTO_MIN = 128.dp
+private val MATCH_BELOW_PHOTO = 407.dp
+private val MATCH_BELOW_PHOTO_PER_FONT_SCALE = 105.dp
 private val MATCH_FOLD_MARGIN = 8.dp
 
 /**
@@ -233,6 +237,19 @@ internal fun MatchView(
                 bottomContent = {
                     ConfidenceBar(confidence = state.confidence, label = confidenceLabel)
                 },
+                // One line under the photo (release 1.3.0 Task 7e-2): "Foto: X" opens the photo's
+                // Commons page, the licence its deed. The back button sits on the photo's top-left.
+                photoCredit =
+                    heroImage?.let { img ->
+                        {
+                            PhotoCredit(
+                                image = img,
+                                form = PhotoCreditForm.Compact,
+                                onBand = true,
+                                modifier = Modifier.fillMaxWidth(),
+                            )
+                        }
+                    },
             )
             PaperSheet {
                 Row(
