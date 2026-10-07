@@ -60,7 +60,9 @@ class RecapViewModel(
     ): RecapUiState {
         val species = speciesByQid()
         val at = now()
-        val recap = builder.build(obs, species, unlocks, at, week ?: weekKey(at, zone))
+        val current = weekKey(at, zone)
+        // A week from a link can't be in the future (a bad link or a clock set back): fall back.
+        val recap = builder.build(obs, species, unlocks, at, week?.takeIf { it <= current } ?: current)
         val items = recap.finds.associate { f -> f.observationId to f.toItem(species) }
         // Newest stamp first; stamps unlocked in the same pass share a time, then the higher
         // number counts as newer, as on Märken (NewestStampFirst).
