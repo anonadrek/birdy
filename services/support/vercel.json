@@ -1,0 +1,3 @@
+{
+  "functions": { "api/inbound.mjs": { "maxDuration": 30 } }
+}
