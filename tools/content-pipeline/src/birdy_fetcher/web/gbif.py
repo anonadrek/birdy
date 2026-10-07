@@ -55,6 +55,21 @@ def parse_counts(data: dict[str, Any]) -> Counts:
     return Counts(by_month=by_month, by_county=by_county, total=int(data.get("count", 0)))
 
 
+def _undoubled(name: str) -> str:
+    """The name in lower case with every doubled letter written once."""
+    out: list[str] = []
+    for ch in name.lower():
+        if not out or out[-1] != ch:
+            out.append(ch)
+    return "".join(out)
+
+
+def same_name(gbif_name: str, scientific: str) -> bool:
+    """GBIF's backbone spells a few names with a doubled letter ("Phylloscopus sibillatrix"
+    for Grönsångare): such a fuzzy match is the same name, nothing else is (2026-10-07)."""
+    return _undoubled(gbif_name) == _undoubled(scientific)
+
+
 def red_list_code(results: list[dict[str, Any]], scientific: str, taxon_key: int) -> str | None:
     """`not_listed` when the species is not on the list, its code when it is, and None when
     the list uses a category this table does not know (reported, never guessed)."""
@@ -87,7 +102,11 @@ class GbifClient:
     async def taxon_key(self, qid: str, scientific: str, *, refresh: bool = False) -> int | None:
         url = f"{API}/species/match?kingdom=Animalia&strict=true&name={quote(scientific)}"
         data = await self._json(qid, "gbif-match.json", url, refresh)
-        if data.get("matchType") != "EXACT" or data.get("rank") != "SPECIES":
+        exact = data.get("matchType") == "EXACT" or (
+            data.get("matchType") == "FUZZY"
+            and same_name(str(data.get("canonicalName", "")), scientific)
+        )
+        if not exact or data.get("rank") != "SPECIES":
             return None
         # GBIF marks a synonym with "status": "SYNONYM" (no "synonym" field in today's
         # answers): its own key counted only the records filed under the old name (54 for

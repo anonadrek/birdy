@@ -173,3 +173,23 @@ def test_red_list_code() -> None:
     assert red_list_code([least], "Delichon urbicum", 2489214) == "not_listed"
     odd = {**accepted, "threatStatuses": ["SOMETHING_NEW"]}
     assert red_list_code([odd], "Delichon urbicum", 2489214) is None
+
+
+async def test_a_doubled_letter_spelling_counts_as_the_same_name(tmp_path: Path) -> None:
+    """Grönsångare: GBIF's accepted name is "Phylloscopus sibillatrix", so "Phylloscopus
+    sibilatrix" matched only FUZZY and the species had no charts and no red list. A fuzzy
+    match that differs by a doubled letter alone is the same name; any other fuzzy match
+    still counts as none."""
+    answer = {
+        "usageKey": 8128385,
+        "canonicalName": "Phylloscopus sibillatrix",
+        "rank": "SPECIES",
+        "status": "ACCEPTED",
+        "matchType": "FUZZY",
+    }
+    client, _ = _client(tmp_path, {"species/match": answer})
+    assert await client.taxon_key("Q27075477", "Phylloscopus sibilatrix") == 8128385
+    other, _ = _client(
+        tmp_path / "b", {"species/match": {**answer, "canonicalName": "Phylloscopus sibilans"}}
+    )
+    assert await other.taxon_key("Q1", "Phylloscopus sibilatrix") is None
