@@ -184,12 +184,28 @@ class ProfileScreenshotTest {
     @Config(qualifiers = "+sv")
     fun profile_former_name_sv() {
         val skogsgas =
-            talgoxe(Locale.SV).copy(
+            Species(
                 id = SpeciesId("Q26452"),
                 scientificName = "Anser fabalis",
+                taxonomy =
+                    SpeciesTaxonomy(
+                        family = "Anatidae",
+                        familySv = "Andfåglar",
+                        genus = "Anser",
+                        iocOrder = "Anseriformes",
+                    ),
                 name = "Skogsgås",
-                formerName = "Sädgås",
+                abundance = Abundance.OVANLIG,
+                iucnStatus = "LC",
+                regions = listOf("SE", "NO", "FI"),
+                season = emptyMap(),
+                description =
+                    "Skogsgåsen är en stor, brungrå gås med orange band på den mörka näbben. Den häckar " +
+                        "vid myrar och sjöar i den nordliga barrskogen.",
+                migration = "Flyttar i flockar till södra Sverige och Danmark under vintern.",
+                marginalia = "Känns igen på den långa, mörka näbben med orange band.",
                 images = listOf(heroImage("Q26452")),
+                formerName = "Sädgås",
             )
         compose.captureScreen("profile_former_name_sv") { screen(skogsgas, Locale.SV, showPremiumTeaser = false) }
         compose.onNodeWithText("Tidigare: Sädgås").assertExists()

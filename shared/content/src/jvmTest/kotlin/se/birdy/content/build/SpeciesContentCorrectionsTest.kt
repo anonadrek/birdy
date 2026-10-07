@@ -257,6 +257,10 @@ class SpeciesContentCorrectionsTest {
                 "Kap Verdepetrell",
                 "Rüppellgam",
                 "levantlira",
+                // Typed without the accents.
+                "ruppellgam",
+                "fasanjacana",
+                "krupers notvacka",
             ).associateWith { query ->
                 repo
                     .search(query, Locale.SV, SpeciesFilter())
@@ -273,6 +277,9 @@ class SpeciesContentCorrectionsTest {
                 "Kap Verdepetrell" to "Kapverdepetrell",
                 "Rüppellgam" to "Fläckgam",
                 "levantlira" to "Medelhavslira",
+                "ruppellgam" to "Fläckgam",
+                "fasanjacana" to "Fasanjassana",
+                "krupers notvacka" to "Turknötväcka",
             ),
             firstHits,
         )

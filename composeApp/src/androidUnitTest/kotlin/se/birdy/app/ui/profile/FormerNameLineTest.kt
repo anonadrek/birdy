@@ -21,7 +21,8 @@ import se.birdy.content.model.SpeciesTaxonomy
 /**
  * Release 1.3.0 Task 7m: Birdy took BirdLife Sverige's official Swedish names, so Sädgås became
  * Skogsgås. The profile says what the species was called before, under its name, and only for
- * the renamed species.
+ * the renamed species. That English users see no line is up to the repository, which gives no
+ * former name in English (SpeciesRepositoryTest).
  */
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
@@ -86,14 +87,5 @@ class FormerNameLineTest {
         show(skogsgas(formerName = null), Locale.SV)
         compose.onNodeWithText("Skogsgås").assertExists()
         compose.onNodeWithText("Tidigare:", substring = true).assertDoesNotExist()
-    }
-
-    // The repository gives no former name in English (English names were not renamed).
-    @Test
-    @Config(qualifiers = "+en")
-    fun `english shows no former name line`() {
-        show(skogsgas(formerName = null).copy(name = "Taiga Bean Goose"), Locale.EN)
-        compose.onNodeWithText("Taiga Bean Goose").assertExists()
-        compose.onNodeWithText("Formerly:", substring = true).assertDoesNotExist()
     }
 }
