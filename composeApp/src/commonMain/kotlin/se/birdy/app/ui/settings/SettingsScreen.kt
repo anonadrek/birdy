@@ -427,7 +427,8 @@ private fun TopBar(onBack: () -> Unit) {
         onBack = onBack,
         contentDescription = stringResource(Res.string.settings_back),
     ) {
-        Spacer(Modifier.size(8.dp))
+        // 12dp: the paper disc is drawn 4dp past its 40dp box, so 8dp left the title crowding it.
+        Spacer(Modifier.size(12.dp))
         Text(
             text = stringResource(Res.string.settings_title),
             fontFamily = rememberDmSerifDisplay(),
