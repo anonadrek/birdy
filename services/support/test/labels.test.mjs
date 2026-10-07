@@ -41,6 +41,19 @@ test('words only match at the start of a word', () => {
   assert.equal(labelFor({ subject: 'Jag köpte Premium', text: '' }), '[Köp]');
 });
 
+test('"fel" does not match English words that merely start with it (felt, fell, fellow)', () => {
+  assert.equal(labelFor({ subject: 'I felt great about the update', text: '' }), '[Birdy]');
+  assert.equal(labelFor({ subject: 'The tree fell down', text: '' }), '[Birdy]');
+  assert.equal(labelFor({ subject: 'My fellow bird watcher', text: '' }), '[Birdy]');
+});
+
+test('"fel" still matches real Swedish forms: a bare word, with punctuation, or a compound', () => {
+  assert.equal(labelFor({ subject: 'Ett fel', text: '' }), '[Fel]');
+  assert.equal(labelFor({ subject: 'Hej', text: 'Fel.' }), '[Fel]');
+  assert.equal(labelFor({ subject: 'Hej', text: 'felet syns inte' }), '[Fel]');
+  assert.equal(labelFor({ subject: 'Felmeddelande vid start', text: '' }), '[Fel]');
+});
+
 test('nothing matching gives [Birdy]', () => {
   assert.equal(labelFor({ subject: 'Tack för appen', text: 'Fin fågelbok!' }), '[Birdy]');
   assert.equal(labelFor({}), '[Birdy]');
