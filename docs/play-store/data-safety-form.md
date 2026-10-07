@@ -31,6 +31,12 @@ The only data that ever leaves the device is via:
   MapTiler or anyone else.
 - Google Play Billing (purchase token; handled entirely by Google's
   SDK; we receive only purchase state, never PII).
+  The Billing Library brings Google's `datatransport` component
+  (`com.google.android.datatransport`, which adds `JobInfoSchedulerService`
+  to the release manifest); only the Billing Library uses it, to send its
+  own diagnostic logs about billing calls to Google (log source
+  `PLAY_BILLING_LIBRARY` in the library). Birdy's code never calls it and
+  puts no user data in it.
 - Google Play In-App Review (the prompt that asks the user to rate
   Birdy; handled entirely by Google).
 - Android Auto-Backup to Google Drive (opt-in via system settings;
@@ -190,3 +196,10 @@ features, provide:
   asked when no data is collected or shared; the places that answered
   them now say so, and deletion is described as it works (Delete on an
   observation's page, not long-press). No change to any form answer.
+- **2026-10-07** (release QA): the release manifest's `JobInfoSchedulerService`
+  is Google's `datatransport`, pulled in only by Google Play Billing 8.0.0
+  (`dependencyInsight` on the release classpath). The Billing Library uses it
+  for its own diagnostic logs to Google; Birdy sends nothing through it. No
+  change to any form answer; check Google's data safety guidance for the Play
+  Billing Library before the next review in case Google asks apps to declare
+  those diagnostics.
