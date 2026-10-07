@@ -22,7 +22,7 @@ Birdy känner igen fåglar på foto och på läte, direkt i telefonen. Appen har
 
 ## Integritet
 
-All identifiering sker i telefonen. Det finns inga konton, ingen analys och ingen reklam i appen. Fynd, foton och inspelningar sparas bara i telefonen. Har du säkerhetskopiering påslagen i Android följer fynden, fotona och inställningarna med i din egen säkerhetskopia i ditt Google-konto; inspelningarna gör det inte. Kartan hämtar kartbilder från MapTiler, och köp går via Google Play. Detaljer i [integritetspolicyn](https://birdy.community/legal/privacy/).
+All identifiering sker i telefonen. Det finns inga konton, ingen analys och ingen reklam i appen. Fynd, foton och inspelningar sparas i telefonen. Har du säkerhetskopiering påslagen i Android följer fynden, fotona och inställningarna med i din egen säkerhetskopia i ditt Google-konto; inspelningarna gör det inte. Kartan hämtar kartbilder från MapTiler, och köp går via Google Play. Detaljer i [integritetspolicyn](https://birdy.community/legal/privacy/).
 
 ## Artsidor på birdy.community
 
