@@ -8,6 +8,8 @@
   the renderer calls setupStage(config) once and then renderAt(t) for every frame.
   The torn paper horizon sits at y = 1306 in every video: 74 % down the centred 3:4 crop
   (1080 x 1440, y 240 to 1680) that the Instagram grid shows, so the profile reads as one artwork.
+  The sound layer (#sound) has five styles: glow (the first version) and four options from
+  2026-10-07: sonagram, waveform, halo and notes. Photo, band, name and end card are shared.
 -->
 <style>
 :root {
@@ -22,20 +24,41 @@ html, body { margin: 0; padding: 0; background: #160E0A; }
 #bg { background: radial-gradient(120% 75% at 50% 40%, #3B2920 0%, #24180F 52%, #160E0A 100%); }
 #photoWrap { position: absolute; left: 0; top: 0; width: 1080px; height: var(--horizon); overflow: hidden; opacity: 0; }
 #photo { position: absolute; display: block; max-width: none; }
+#sound { position: absolute; left: 0; top: 0; width: 1080px; height: var(--horizon); }
 #kicker { position: absolute; left: 88px; top: 250px; margin: 0; font: 700 76px/1 'Caveat'; color: var(--apricot); }
 
-#axes { color: rgba(226, 192, 126, .82); font: 500 26px/1 'Inter'; }
-#axes .frame { position: absolute; border-left: 2px solid rgba(184, 137, 58, .5); border-bottom: 2px solid rgba(184, 137, 58, .5); box-sizing: border-box; }
-#axes .gl { position: absolute; height: 0; border-top: 2px dashed rgba(184, 137, 58, .24); }
-#axes .fl { position: absolute; transform: translate(-100%, -50%); }
-#axes .unit { position: absolute; }
-#axes .tl { position: absolute; transform: translateX(-50%); white-space: nowrap; }
-#axes .tl.first { transform: none; }
-#axes .tl.last { transform: translateX(-100%); }
+/* glow: the first version (cream spectrogram drawn behind a playhead) */
+.ax { color: rgba(226, 192, 126, .82); font: 500 26px/1 'Inter'; }
+.ax .frame { position: absolute; border-left: 2px solid rgba(184, 137, 58, .5); border-bottom: 2px solid rgba(184, 137, 58, .5); box-sizing: border-box; }
+.ax .gl { position: absolute; height: 0; border-top: 2px dashed rgba(184, 137, 58, .24); }
+.ax .fl { position: absolute; transform: translate(-100%, -50%); }
+.ax .unit { position: absolute; }
+.ax .tl { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.ax .tl.first { transform: none; }
+.ax .tl.last { transform: translateX(-100%); }
+.glowWrap { position: absolute; filter: drop-shadow(0 0 12px rgba(242, 178, 122, .55)); }
+.glowWrap canvas { display: block; }
+.ph { position: absolute; width: 6px; margin-left: -3px; border-radius: 6px; background: var(--apricot); box-shadow: 0 0 26px 5px rgba(242, 178, 122, .6); opacity: 0; }
 
-#specWrap { position: absolute; filter: drop-shadow(0 0 12px rgba(242, 178, 122, .55)); }
-#spec { display: block; }
-#ph { position: absolute; width: 6px; margin-left: -3px; border-radius: 6px; background: var(--apricot); box-shadow: 0 0 26px 5px rgba(242, 178, 122, .6); opacity: 0; }
+/* paper card shared by sonagram and notes */
+.card { position: absolute; background: var(--card); box-shadow: 0 22px 48px rgba(20, 13, 10, .45), 0 2px 6px rgba(20, 13, 10, .3); }
+.card .tape { position: absolute; width: 150px; height: 40px; background: rgba(242, 178, 122, .78); clip-path: polygon(2% 8%, 98% 0, 100% 92%, 0 100%); }
+.card .t1 { left: -38px; top: -8px; transform: rotate(-34deg); }
+.card .t2 { right: -38px; top: -8px; transform: rotate(31deg); }
+.kick { position: absolute; margin: 0; font: 600 20px/1 'Inter'; letter-spacing: .16em; text-transform: uppercase; color: var(--rust); }
+.hnote { position: absolute; margin: 0; font: 700 50px/1 'Caveat'; color: var(--rust); }
+.inkAx { color: var(--muted); font: 500 22px/1 'Inter'; }
+.inkAx .gl { position: absolute; height: 0; border-top: 1.5px solid rgba(110, 88, 75, .18); }
+.inkAx .base { position: absolute; height: 0; border-top: 2px solid rgba(42, 29, 23, .55); }
+.inkAx .fl { position: absolute; transform: translate(-100%, -50%); }
+.inkAx .unit { position: absolute; font-weight: 600; }
+.inkAx .tl { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.inkAx .tl.first { transform: none; }
+.inkAx .tl.last { transform: translateX(-100%); }
+.caret { position: absolute; width: 0; height: 0; border-left: 9px solid transparent; border-right: 9px solid transparent; border-bottom: 14px solid var(--rust); margin-left: -9px; }
+.nib { position: absolute; left: 0; top: 0; width: 80px; height: 140px; overflow: visible; filter: drop-shadow(3px 6px 4px rgba(20, 13, 10, .35)); }
+.staff { position: absolute; height: 0; border-top: 2px solid rgba(154, 69, 38, .2); }
+.layerCanvas { position: absolute; display: block; }
 
 #band { position: absolute; left: 0; right: 0; top: var(--horizon); bottom: 0; color: var(--dark);
   background-color: var(--paper); background-image: radial-gradient(rgba(48, 32, 25, .075) 2.4px, transparent 3.2px); background-size: 36.72px 36.72px; }
@@ -69,10 +92,8 @@ html, body { margin: 0; padding: 0; background: #160E0A; }
 <div id="stage">
   <div class="L" id="bg"></div>
   <div id="photoWrap"><img id="photo" alt=""></div>
+  <div id="sound"></div>
   <p id="kicker">Sound on</p>
-  <div class="L" id="axes"></div>
-  <div id="specWrap"><canvas id="spec"></canvas></div>
-  <i id="ph"></i>
   <div id="band">
     <svg class="tear" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0 11 L11 7 L23 13 L36 8 L49 14 L62 9 L77 12 L90 6 L104 13 L118 8 L133 15 L147 7 L162 12 L176 6 L190 14 L205 8 L219 13 L234 6 L248 12 L262 7 L277 13 L290 8 L300 11 V20 H0 Z"/></svg>
     <p id="q">Whose <em id="qWord"></em> is this?</p>
@@ -93,18 +114,22 @@ html, body { margin: 0; padding: 0; background: #160E0A; }
 <script>
 'use strict';
 const W = 1080, H = 1920, HORIZON = 1306, END_TOP = 842;
-const PANEL = { x: 88, y: 430, w: 904, h: 640 };
 const TEXT_MAX = 830; // keep text clear of the Reels and Shorts buttons on the right
 let CFG = null;
 let EL = null;
+let STYLE = null;
 
 function clamp(x, a = 0, b = 1) { return x < a ? a : x > b ? b : x; }
 function lin(t, a, b) { return clamp((t - a) / (b - a)); }
 function eo(x) { return 1 - Math.pow(1 - x, 3); }
 function eio(x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+function eob(x) { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); } // ease out with a small overshoot
 function op(el, v) { el.style.opacity = String(Math.round(clamp(v) * 1000) / 1000); }
+function mixRgb(a, b, k) { return a.map((v, i) => Math.round(v + (b[i] - v) * clamp(k))); }
+const CREAM = [255, 248, 238], PEACH = [248, 217, 178], APRICOT = [242, 178, 122], ESPRESSO = [42, 29, 23], RUST = [154, 69, 38];
 
 function b64bytes(b64) { const s = atob(b64); const u = new Uint8Array(s.length); for (let i = 0; i < s.length; i++) u[i] = s.charCodeAt(i); return u; }
+function b64floats(b64) { const u = b64bytes(b64); return new Float32Array(u.buffer, u.byteOffset, u.byteLength / 4); }
 
 async function loadFonts(fonts) {
   for (const f of fonts) {
@@ -127,51 +152,367 @@ function fitSize(fontFor, text, max, min, maxWidth) {
   return Math.max(min, Math.min(max, Math.floor(max * maxWidth / w)));
 }
 
-function mix(a, b, k) { return a.map((v, i) => Math.round(v + (b[i] - v) * k)); }
-function gradientAt(y) { // cream at the top (high notes), apricot at the bottom
-  const cream = [255, 248, 238], peach = [248, 217, 178], apricot = [242, 178, 122];
-  return y < .45 ? mix(cream, peach, y / .45) : mix(peach, apricot, (y - .45) / .55);
+function el(tag, cls, css, parent) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (css) Object.assign(e.style, css);
+  (parent || EL.sound).appendChild(e);
+  return e;
+}
+function px(n) { return n + 'px'; }
+function canvasAt(x, y, w, h, parent) {
+  const c = el('canvas', 'layerCanvas', { left: px(x), top: px(y), width: px(w), height: px(h) }, parent);
+  c.width = w; c.height = h;
+  return c;
 }
 
-function drawSpectrogram(spec) {
-  const alpha = b64bytes(spec.alphaB64);
+/** Draws an alpha matrix (top row = highest frequency) into a canvas of the panel's size. */
+function matrixCanvas(m, colourAt, w, h) {
+  const alpha = b64bytes(m.alphaB64);
   const src = document.createElement('canvas');
-  src.width = spec.cols; src.height = spec.rows;
+  src.width = m.cols; src.height = m.rows;
   const sctx = src.getContext('2d');
-  const img = sctx.createImageData(spec.cols, spec.rows);
-  for (let r = 0; r < spec.rows; r++) {
-    const [cr, cg, cb] = gradientAt(spec.rows === 1 ? 0 : r / (spec.rows - 1));
-    for (let c = 0; c < spec.cols; c++) {
-      const i = (r * spec.cols + c) * 4;
-      img.data[i] = cr; img.data[i + 1] = cg; img.data[i + 2] = cb; img.data[i + 3] = alpha[r * spec.cols + c];
+  const img = sctx.createImageData(m.cols, m.rows);
+  for (let r = 0; r < m.rows; r++) {
+    const [cr, cg, cb] = colourAt(m.rows === 1 ? 0 : r / (m.rows - 1));
+    for (let c = 0; c < m.cols; c++) {
+      const i = (r * m.cols + c) * 4;
+      img.data[i] = cr; img.data[i + 1] = cg; img.data[i + 2] = cb; img.data[i + 3] = alpha[r * m.cols + c];
     }
   }
   sctx.putImageData(img, 0, 0);
-  const out = EL.spec;
-  out.width = PANEL.w; out.height = PANEL.h;
+  const out = document.createElement('canvas');
+  out.width = w; out.height = h;
   const ctx = out.getContext('2d');
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = 'high';
-  ctx.drawImage(src, 0, 0, PANEL.w, PANEL.h);
+  ctx.drawImage(src, 0, 0, w, h);
+  return out;
 }
 
-function buildAxes(spec) {
-  const ax = EL.axes;
-  const add = (cls, css, text) => { const e = document.createElement(text === undefined ? 'i' : 'span'); e.className = cls; Object.assign(e.style, css); if (text !== undefined) e.textContent = text; ax.appendChild(e); return e; };
-  add('frame', { left: PANEL.x + 'px', top: PANEL.y + 'px', width: PANEL.w + 'px', height: PANEL.h + 'px' });
-  const yOf = (f) => PANEL.y + PANEL.h * (1 - (f - spec.fmin) / (spec.fmax - spec.fmin));
+function axes(cls, P, spec, { unitLeft, labelGap, timeGap, dashed }) {
+  const ax = el('div', 'L ' + cls);
+  const add = (c, css, text) => { const e = el(text === undefined ? 'i' : 'span', c, css, ax); if (text !== undefined) e.textContent = text; return e; };
+  if (dashed) add('frame', { left: px(P.x), top: px(P.y), width: px(P.w), height: px(P.h) });
+  else add('base', { left: px(P.x), top: px(P.y + P.h), width: px(P.w) });
+  const yOf = (f) => P.y + P.h * (1 - (f - spec.fmin) / (spec.fmax - spec.fmin));
   for (const tk of spec.freqTicks) {
     const y = yOf(tk.f);
-    add('gl', { left: PANEL.x + 'px', top: y + 'px', width: PANEL.w + 'px' });
-    add('fl', { left: (PANEL.x - 16) + 'px', top: y + 'px' }, tk.label);
+    add('gl', { left: px(P.x), top: px(y), width: px(P.w) });
+    add('fl', { left: px(P.x - labelGap), top: px(y) }, tk.label);
   }
-  add('unit', { left: '30px', top: (PANEL.y - 44) + 'px' }, 'kHz');
+  add('unit', { left: px(unitLeft), top: px(P.y - 44) }, 'kHz');
   spec.timeTicks.forEach((tk, i) => {
-    const x = PANEL.x + PANEL.w * (tk.t / spec.duration);
-    const cls = 'tl' + (i === 0 ? ' first' : Math.abs(tk.t - spec.duration) < 1e-6 ? ' last' : '');
-    add(cls, { left: x + 'px', top: (PANEL.y + PANEL.h + 18) + 'px' }, tk.label);
+    const x = P.x + P.w * (tk.t / spec.duration);
+    const c = 'tl' + (i === 0 ? ' first' : Math.abs(tk.t - spec.duration) < 1e-6 ? ' last' : '');
+    add(c, { left: px(x), top: px(P.y + P.h + timeGap) }, tk.label);
   });
+  return ax;
 }
+
+function card(C) {
+  const c = el('div', 'card', { left: px(C.x), top: px(C.y), width: px(C.w), height: px(C.h) });
+  el('i', 'tape t1', null, c);
+  el('i', 'tape t2', null, c);
+  return c;
+}
+
+/* ---------------- the five sound styles ---------------- */
+const STYLES = {};
+
+/* glow: the first version, a cream spectrogram drawn in step behind a glowing playhead */
+STYLES.glow = {
+  photoMode: 'faint',
+  P: { x: 88, y: 430, w: 904, h: 640 },
+  setup(cfg) {
+    const P = this.P, s = cfg.spec;
+    this.ax = axes('ax', P, s, { unitLeft: 30, labelGap: 16, timeGap: 18, dashed: true });
+    this.wrap = el('div', 'glowWrap', { left: px(P.x), top: px(P.y), width: px(P.w), height: px(P.h) });
+    const grad = (y) => y < .45 ? mixRgb(CREAM, PEACH, y / .45) : mixRgb(PEACH, APRICOT, (y - .45) / .55);
+    this.canvas = matrixCanvas(s, grad, P.w, P.h);
+    this.wrap.appendChild(this.canvas);
+    this.ph = el('i', 'ph', { top: px(P.y - 12), height: px(P.h + 24) });
+    return { panel: P };
+  },
+  render(t, A0, D, E) {
+    const P = this.P, p = lin(t, A0, E);
+    // The drawn part ends exactly at the playhead: x = P.x + P.w * (t - A0) / D.
+    this.canvas.style.clipPath = p >= 1 ? 'none' : `inset(0 ${(100 - p * 100).toFixed(4)}% 0 0)`;
+    this.ph.style.left = px((P.x + p * P.w).toFixed(3));
+    op(this.ph, t > A0 && t < E ? Math.min(1, (t - A0) / .2, (E - t) / .3) : 0);
+    op(this.wrap, 1 - lin(t, E + .3, E + 1.0));
+    op(this.ax, 1 - lin(t, E + .2, E + .8));
+  },
+};
+
+/* A sonagram: a field-guide sonagram in ink on a paper card, written by a pen nib, over the blurred photo */
+STYLES.sonagram = {
+  photoMode: 'backdrop',
+  C: { x: 64, y: 372, w: 836, h: 792 },
+  P: { x: 150, y: 470, w: 700, h: 560 },
+  setup(cfg) {
+    const P = this.P, s = cfg.sonagram;
+    card(this.C);
+    const k = el('p', 'kick', { left: px(this.C.x + 36), top: px(this.C.y + 24) });
+    k.textContent = 'Sonagram';
+    const ax = axes('inkAx', P, s, { unitLeft: P.x - 64, labelGap: 14, timeGap: 30, dashed: false });
+    ax.querySelector('.unit').style.top = px(P.y - 22);
+    const ink = (y) => ESPRESSO;
+    this.crisp = matrixCanvas(s, ink, P.w, P.h);
+    this.crisp.className = 'layerCanvas';
+    Object.assign(this.crisp.style, { left: px(P.x), top: px(P.y) });
+    EL.sound.appendChild(this.crisp);
+    // Wet ink: a slightly blurred, denser copy shown just behind the nib, drying as the pen moves on.
+    this.blur = document.createElement('canvas');
+    this.blur.width = P.w; this.blur.height = P.h;
+    const b = this.blur.getContext('2d');
+    b.filter = 'blur(1.6px)';
+    b.drawImage(this.crisp, 0, 0);
+    b.drawImage(this.crisp, 0, 0);
+    this.wet = canvasAt(P.x, P.y, P.w, P.h);
+    this.caret = el('i', 'caret', { top: px(P.y + P.h + 4) });
+    this.penY = b64floats(s.penYB64);
+    this.penInk = b64bytes(s.penInkB64);
+    this.nib = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    this.nib.setAttribute('class', 'nib');
+    this.nib.setAttribute('viewBox', '-40 -130 80 140');
+    const ns = 'http://www.w3.org/2000/svg';
+    const g = document.createElementNS(ns, 'g');
+    g.setAttribute('transform', 'rotate(28)');
+    const defs = document.createElementNS(ns, 'defs');
+    const lg = document.createElementNS(ns, 'linearGradient');
+    lg.setAttribute('id', 'nibGrad'); lg.setAttribute('x1', '0'); lg.setAttribute('x2', '1');
+    for (const [o, c] of [['0', '#8A6428'], ['.45', '#E2C07E'], ['1', '#9C7430']]) { const st = document.createElementNS(ns, 'stop'); st.setAttribute('offset', o); st.setAttribute('stop-color', c); lg.appendChild(st); }
+    defs.appendChild(lg);
+    this.nib.appendChild(defs);
+    const body = document.createElementNS(ns, 'path');
+    body.setAttribute('d', 'M0 0 L-13 -40 Q-19 -78 -11 -118 L11 -118 Q19 -78 13 -40 Z');
+    body.setAttribute('fill', 'url(#nibGrad)'); body.setAttribute('stroke', '#2A1D17'); body.setAttribute('stroke-width', '2');
+    const slit = document.createElementNS(ns, 'path');
+    slit.setAttribute('d', 'M0 -2 L0 -52'); slit.setAttribute('stroke', '#2A1D17'); slit.setAttribute('stroke-width', '2');
+    const hole = document.createElementNS(ns, 'circle');
+    hole.setAttribute('cx', '0'); hole.setAttribute('cy', '-58'); hole.setAttribute('r', '4.5'); hole.setAttribute('fill', '#2A1D17');
+    g.appendChild(body); g.appendChild(slit); g.appendChild(hole);
+    this.nib.appendChild(g);
+    EL.sound.appendChild(this.nib);
+    return { panel: P, card: this.C, caretY: P.y + P.h + 4 };
+  },
+  render(t, A0, D, E) {
+    const P = this.P, p = lin(t, A0, E), xh = P.x + p * P.w;
+    this.crisp.style.clipPath = p >= 1 ? 'none' : `inset(0 ${(100 - p * 100).toFixed(4)}% 0 0)`;
+    // wet strip: the last 60 px behind the nib, fading out to the left
+    const w = this.wet.getContext('2d');
+    w.globalCompositeOperation = 'source-over';
+    w.clearRect(0, 0, P.w, P.h);
+    const x1 = p * P.w, x0 = Math.max(0, x1 - 60);
+    if (x1 > x0 && t < E + .4) {
+      w.drawImage(this.blur, x0, 0, x1 - x0, P.h, x0, 0, x1 - x0, P.h);
+      w.globalCompositeOperation = 'destination-in';
+      const g = w.createLinearGradient(x0, 0, x1, 0);
+      g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,.9)');
+      w.fillStyle = g;
+      w.fillRect(x0, 0, x1 - x0, P.h);
+    }
+    this.caret.style.left = px(xh.toFixed(3));
+    const n = this.penY.length;
+    const c = Math.min(n - 1, Math.max(0, Math.floor(p * n)));
+    const inking = t > A0 && t < E && this.penInk[c];
+    const lift = inking ? 0 : 7;
+    const yt = P.y + this.penY[c] * P.h - lift;
+    Object.assign(this.nib.style, { transform: `translate(${(xh - 40).toFixed(2)}px, ${(yt - 130).toFixed(2)}px)` });
+    op(this.nib, Math.min(lin(t, A0 - .5, A0), 1 - lin(t, E + .1, E + .5)));
+    // The card lifts away as the photo comes into focus.
+    const k = eio(lin(t, E + .35, E + 1.05));
+    op(EL.sound, 1 - k);
+    EL.sound.style.transform = `translateY(${(-26 * k).toFixed(2)}px)`;
+  },
+};
+
+/* B waveform: a mirrored loudness ribbon flowing right to left, glowing with the sound, the past fading */
+STYLES.waveform = {
+  photoMode: 'faint',
+  HEAD_X: 700, X0: 64, WIN: 3.4, CY: 770, HMAX: 250,
+  setup(cfg) {
+    const s = cfg.waveform;
+    this.env = b64floats(s.envB64);
+    this.col = b64floats(s.colourB64);
+    this.rate = s.rate;
+    this.D = s.duration;
+    this.pxs = (this.HEAD_X - this.X0) / this.WIN;
+    this.canvas = canvasAt(0, this.CY - 400, W, 800);
+    return { headX: this.HEAD_X, probeX: this.HEAD_X - 24, probeAgeSec: 24 / this.pxs, cy: this.CY, hmax: this.HMAX, pxPerSec: this.pxs };
+  },
+  at(arr, s) {
+    if (s < 0 || s > this.D) return 0;
+    const i = s * this.rate, i0 = Math.floor(i), f = i - i0;
+    const a = arr[Math.min(arr.length - 1, i0)], b = arr[Math.min(arr.length - 1, i0 + 1)];
+    return a + (b - a) * f;
+  },
+  render(t, A0, D, E) {
+    const ctx = this.canvas.getContext('2d');
+    const cy = 400;
+    ctx.clearRect(0, 0, W, 800);
+    const tau = t - A0;
+    // baseline
+    ctx.fillStyle = 'rgba(184,137,58,.28)';
+    ctx.fillRect(this.X0, cy - 1, 900 - this.X0, 2);
+    for (let x = this.X0; x <= this.HEAD_X; x += 2) {
+      const age = (this.HEAD_X - x) / this.pxs;
+      const s = tau - age;
+      const v = this.at(this.env, s);
+      if (v <= 0.002) continue;
+      const fade = Math.pow(1 - age / this.WIN, 1.3);
+      const h = 1.5 + v * this.HMAX;
+      const [r, g, b] = mixRgb(APRICOT, CREAM, this.at(this.col, s) * 1.4 - .2);
+      const grd = ctx.createLinearGradient(0, cy - h, 0, cy + h);
+      grd.addColorStop(0, `rgba(${r},${g},${b},${(.25 * fade).toFixed(3)})`);
+      grd.addColorStop(.5, `rgba(${r},${g},${b},${(.95 * fade).toFixed(3)})`);
+      grd.addColorStop(1, `rgba(${r},${g},${b},${(.25 * fade).toFixed(3)})`);
+      ctx.fillStyle = grd;
+      ctx.fillRect(x, cy - h, 2.4, 2 * h);
+    }
+    const vHead = this.at(this.env, tau);
+    // a bright centre thread and the head
+    ctx.fillStyle = 'rgba(255,248,238,.55)';
+    ctx.fillRect(this.X0, cy - 1, this.HEAD_X - this.X0, 2);
+    ctx.beginPath();
+    ctx.arc(this.HEAD_X, cy, 6 + vHead * 8, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255,248,238,.95)';
+    ctx.fill();
+    this.canvas.style.filter = `drop-shadow(0 0 ${(8 + 26 * vHead).toFixed(1)}px rgba(242,178,122,${(.35 + .45 * vHead).toFixed(3)}))`;
+    op(this.canvas, 1 - lin(t, E + .3, E + 1.0));
+  },
+};
+
+/* C halo: the bird blurred in a circle, a ring of bars that answers each band, settling into a still circle */
+STYLES.halo = {
+  photoMode: 'circle',
+  CX: 482, CY: 790, R: 210, GAP: 20, LMAX: 140,
+  setup(cfg) {
+    const s = cfg.halo;
+    this.level = b64floats(s.levelB64);
+    this.bands = s.bands;
+    this.frames = s.frames;
+    this.fps = s.fps;
+    this.canvas = canvasAt(0, 0, W, HORIZON);
+    this.canvas.style.filter = 'drop-shadow(0 0 10px rgba(242,178,122,.45))';
+    return { cx: this.CX, cy: this.CY, r: this.R, base: this.R + this.GAP, lmax: this.LMAX, bands: this.bands };
+  },
+  rot(t, E) { return 6 * Math.min(t, E) + 4 * eo(lin(t, E, E + .9)); },
+  render(t, A0, D, E) {
+    const ctx = this.canvas.getContext('2d');
+    ctx.clearRect(0, 0, W, HORIZON);
+    const k = Math.round((t - A0) * this.fps);
+    const settle = eo(lin(t, E, E + .7));
+    const base = this.R + this.GAP;
+    const rot = this.rot(t, E) * Math.PI / 180;
+    ctx.lineCap = 'round';
+    // the still circle, faint while the bird sings, firm once it stops
+    ctx.beginPath();
+    ctx.arc(this.CX, this.CY, base - 9, 0, Math.PI * 2);
+    ctx.strokeStyle = `rgba(226,192,126,${(.3 + .55 * settle).toFixed(3)})`;
+    ctx.lineWidth = 2 + 2 * settle;
+    ctx.stroke();
+    const nb = this.bands;
+    for (let side = 0; side < 2; side++) {
+      for (let b = 0; b < nb; b++) {
+        const v = k >= 0 && k < this.frames ? this.level[k * nb + b] : 0;
+        let L = 6 + this.LMAX * v;
+        L = L + (12 - L) * settle;
+        // low bands at the bottom, high at the top, the left side mirrors the right
+        const a0 = Math.PI / 2 - (b + .5) * (Math.PI / nb);
+        const a = (side ? Math.PI - a0 : a0) + rot;
+        const [r, g, bl] = mixRgb(APRICOT, CREAM, b / (nb - 1));
+        ctx.strokeStyle = `rgba(${r},${g},${bl},${(.55 + .45 * v * (1 - settle)).toFixed(3)})`;
+        ctx.lineWidth = 6;
+        ctx.beginPath();
+        ctx.moveTo(this.CX + Math.cos(a) * base, this.CY + Math.sin(a) * base);
+        ctx.lineTo(this.CX + Math.cos(a) * (base + L), this.CY + Math.sin(a) * (base + L));
+        ctx.stroke();
+      }
+    }
+    op(this.canvas, Math.min(lin(t, 0, .4), 1 - lin(t, E + .9, E + 1.5)));
+  },
+};
+
+/* D notes: each syllable lands as an ink note on a staff, its height the pitch, its size the loudness */
+STYLES.notes = {
+  photoMode: 'plain',
+  C: { x: 64, y: 372, w: 836, h: 792 },
+  X0: 130, XW: 720, Y_LO: 1030, Y_HI: 540,
+  setup(cfg) {
+    const s = cfg.notes;
+    card(this.C);
+    const h = el('p', 'hnote', { left: px(this.C.x + 34), top: px(this.C.y + 18) });
+    h.textContent = 'note by note';
+    for (let i = 0; i < 5; i++) el('i', 'staff', { left: px(this.X0 - 20), width: px(this.XW + 40), top: px(560 + i * 115) });
+    this.D = s.duration;
+    this.sy = s.syllables;
+    this.fLo = s.fmin; this.fHi = s.fmax;
+    this.canvas = canvasAt(this.C.x, this.C.y, this.C.w, this.C.h);
+    this.caret = el('i', 'caret', { top: px(1078) });
+    this.cursor = el('i', null, { position: 'absolute', top: px(520), height: px(540), width: '2px', background: 'rgba(154,69,38,.16)' });
+    const marks = this.sy.map((q) => ({ t0: q.t0, x: this.xOf(q.t0), y: this.yOf(q.contour[0].f), loud: q.loud }));
+    return { card: this.C, caretY: 1078, x0: this.X0, xw: this.XW, marks };
+  },
+  xOf(s) { return this.X0 + (s / this.D) * this.XW; },
+  yOf(f) { return this.Y_LO - (Math.log(f / this.fLo) / Math.log(this.fHi / this.fLo)) * (this.Y_LO - this.Y_HI); },
+  render(t, A0, D, E) {
+    const tau = t - A0;
+    const ctx = this.canvas.getContext('2d');
+    const ox = this.C.x, oy = this.C.y;
+    ctx.clearRect(0, 0, this.C.w, this.C.h);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    for (const q of this.sy) {
+      if (tau < q.t0) break;
+      const age = tau - q.t0;
+      const dur = Math.max(.03, q.t1 - q.t0);
+      const [c0, c1, c2] = q.contour;
+      const X = this.xOf(c0.t) - ox, Y = this.yOf(c0.f) - oy;
+      // the tail follows the pitch while the syllable sounds (a curve through its start, middle and end)
+      const prog = clamp(age / dur);
+      const X2 = this.xOf(c2.t) - ox, Y2 = this.yOf(c2.f) - oy;
+      if (X2 - X > 6 && prog > 0) {
+        const Xm = this.xOf(c1.t) - ox, Ym = this.yOf(c1.f) - oy;
+        const cx = 2 * Xm - (X + X2) / 2, cy = 2 * Ym - (Y + Y2) / 2;
+        ctx.strokeStyle = 'rgba(42,29,23,.88)';
+        ctx.lineWidth = 3 + 3 * q.loud;
+        ctx.beginPath();
+        ctx.moveTo(X, Y);
+        const steps = 16;
+        for (let i = 1; i <= Math.ceil(steps * prog); i++) {
+          const u = Math.min(prog, i / steps);
+          const bx = (1 - u) * (1 - u) * X + 2 * (1 - u) * u * cx + u * u * X2;
+          const by = (1 - u) * (1 - u) * Y + 2 * (1 - u) * u * cy + u * u * Y2;
+          ctx.lineTo(bx, by);
+        }
+        ctx.stroke();
+      }
+      // the head lands with a small overshoot, wet rust drying to espresso, and an ink ring spreads
+      const land = Math.max(0, eob(clamp(age / .2)));
+      const rx = (8 + 10 * q.loud) * land, ry = rx * .72;
+      const [r, g, b] = mixRgb(RUST, ESPRESSO, lin(age, .25, .9));
+      ctx.fillStyle = `rgb(${r},${g},${b})`;
+      ctx.beginPath(); ctx.ellipse(X, Y, rx, ry, -0.45, 0, Math.PI * 2); ctx.fill();
+      if (age < .55) {
+        const k = eo(age / .55);
+        ctx.strokeStyle = `rgba(154,69,38,${(.5 * (1 - k)).toFixed(3)})`;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.arc(X, Y, 10 + (16 + 30 * q.loud) * k, 0, Math.PI * 2); ctx.stroke();
+      }
+    }
+    const xc = this.xOf(clamp(tau, 0, this.D));
+    this.caret.style.left = px(xc.toFixed(3));
+    this.cursor.style.left = px((xc - 1).toFixed(3));
+    op(this.cursor, t > A0 && t < E ? 1 : 0);
+    const k = eio(lin(t, E + .35, E + 1.05));
+    op(EL.sound, 1 - k);
+    EL.sound.style.transform = `translateY(${(-26 * k).toFixed(2)}px)`;
+  },
+};
+
+/* ---------------- shared parts ---------------- */
 
 function placePhoto(photo) {
   // Cover crop into the area above the horizon, never stretched, centred on the bird.
@@ -184,13 +525,14 @@ function placePhoto(photo) {
   // When the end card rises, the photo slides up so the bird stays in view above it.
   const focusY = top + photo.focus.y * dh;
   CFG.photoShift = clamp(focusY - END_TOP * .5, 0, Math.max(0, ch - END_TOP));
+  CFG.focusPx = { x: left + photo.focus.x * dw, y: focusY };
   return { scale: s, left, top, width: dw, height: dh };
 }
 
 async function setupStage(cfg) {
   CFG = cfg;
   EL = {};
-  for (const id of ['photoWrap', 'photo', 'kicker', 'axes', 'specWrap', 'spec', 'ph', 'q', 'qWord', 'hint', 'name', 'nameText', 'sub', 'subSv', 'subLat', 'end', 'mark', 'brandMark', 'credits']) EL[id] = document.getElementById(id);
+  for (const id of ['photoWrap', 'photo', 'sound', 'kicker', 'q', 'qWord', 'hint', 'name', 'nameText', 'sub', 'subSv', 'subLat', 'end', 'mark', 'brandMark', 'credits']) EL[id] = document.getElementById(id);
   await loadFonts(cfg.fonts);
 
   EL.photo.src = cfg.photo.src;
@@ -203,10 +545,9 @@ async function setupStage(cfg) {
   cfg.photo.height = EL.photo.naturalHeight;
   const photoBox = placePhoto(cfg.photo);
 
-  Object.assign(EL.specWrap.style, { left: PANEL.x + 'px', top: PANEL.y + 'px', width: PANEL.w + 'px', height: PANEL.h + 'px' });
-  drawSpectrogram(cfg.spec);
-  buildAxes(cfg.spec);
-  Object.assign(EL.ph.style, { top: (PANEL.y - 12) + 'px', height: (PANEL.h + 24) + 'px' });
+  STYLE = STYLES[cfg.style || 'glow'];
+  if (!STYLE) throw new Error(`unknown style ${cfg.style}`);
+  const styleInfo = STYLE.setup(cfg);
 
   // Band text: the question while the bird is heard, then the name, sized to fit.
   EL.qWord.textContent = cfg.word;
@@ -226,7 +567,7 @@ async function setupStage(cfg) {
   await new Promise((r) => requestAnimationFrame(() => r()));
   const subWidth = EL.sub.getBoundingClientRect().width;
   const endContentBottom = Math.max(...[...EL.end.children].map((c) => c.getBoundingClientRect().bottom)) - EL.end.getBoundingClientRect().top + END_TOP;
-  return { qSize, nameSize, subWidth, photoBox, photoShift: CFG.photoShift, endContentBottom };
+  return { style: cfg.style || 'glow', styleInfo, qSize, nameSize, subWidth, photoBox, photoShift: CFG.photoShift, endContentBottom };
 }
 
 function hand(textEl, p) {
@@ -235,23 +576,46 @@ function hand(textEl, p) {
   textEl.style.strokeDashoffset = (L * (1 - clamp(p / .8))).toFixed(1);
   textEl.style.fillOpacity = String(Math.round(clamp((p - .4) / .6) * 1000) / 1000);
 }
-function wipe(el, p) {
+function wipe(e, p) {
   p = clamp(p);
-  el.style.clipPath = p >= 1 ? 'none' : `inset(-40% ${(100 - p * 100).toFixed(3)}% -40% -8%)`;
+  e.style.clipPath = p >= 1 ? 'none' : `inset(-40% ${(100 - p * 100).toFixed(3)}% -40% -8%)`;
+}
+
+function renderPhoto(t, A0, D, E, pe) {
+  const reveal = eio(lin(t, E + .3, E + 1.4));
+  const shift = `translateY(${(-CFG.photoShift * pe).toFixed(2)}px)`;
+  const mode = STYLE.photoMode;
+  EL.photoWrap.style.clipPath = 'none';
+  EL.photo.style.filter = 'none';
+  EL.photo.style.transform = shift;
+  if (mode === 'faint') op(EL.photoWrap, Math.max(.42 * eio(lin(t, A0 + .70 * D, A0 + .88 * D)), reveal));
+  else if (mode === 'plain') op(EL.photoWrap, reveal);
+  else if (mode === 'backdrop') {
+    // blurred and dark behind the card while the bird sings, then into focus
+    op(EL.photoWrap, 1);
+    EL.photo.style.filter = `blur(${(34 * (1 - reveal)).toFixed(2)}px) brightness(${(.5 + .5 * reveal).toFixed(3)})`;
+    EL.photo.style.transformOrigin = `${CFG.focusPx.x - parseFloat(EL.photo.style.left)}px ${CFG.focusPx.y - parseFloat(EL.photo.style.top)}px`;
+    EL.photo.style.transform = `${shift} scale(${(1.08 - .08 * reveal).toFixed(4)})`;
+  } else if (mode === 'circle') {
+    // the bird hidden in the circle (blurred, dark), sharpening when the song ends, then the circle opens
+    const s = STYLE;
+    const sharp = eio(lin(t, E + .4, E + 1.2));
+    const open = eio(lin(t, E + 1.0, E + 1.9));
+    op(EL.photoWrap, lin(t, 0, .4));
+    EL.photo.style.filter = `blur(${(24 * (1 - sharp)).toFixed(2)}px) brightness(${(.62 + .38 * sharp).toFixed(3)})`;
+    const r = s.R + (1400 - s.R) * open;
+    EL.photoWrap.style.clipPath = `circle(${r.toFixed(1)}px at ${s.CX}px ${s.CY}px)`;
+  }
 }
 
 function renderAt(t) {
   const { A0, D } = CFG;
   const E = A0 + D;
-  const p = lin(t, A0, E);
-  // The drawn part of the spectrogram ends exactly at the playhead: x = PANEL.x + PANEL.w * (t - A0) / D.
-  EL.spec.style.clipPath = p >= 1 ? 'none' : `inset(0 ${(100 - p * 100).toFixed(4)}% 0 0)`;
-  EL.ph.style.left = (PANEL.x + p * PANEL.w).toFixed(3) + 'px';
-  op(EL.ph, t > A0 && t < E ? Math.min(1, (t - A0) / .2, (E - t) / .3) : 0);
-
-  op(EL.photoWrap, Math.max(.42 * eio(lin(t, A0 + .70 * D, A0 + .88 * D)), eio(lin(t, E + .3, E + 1.4))));
-  op(EL.specWrap, 1 - lin(t, E + .3, E + 1.0));
-  op(EL.axes, 1 - lin(t, E + .2, E + .8));
+  EL.sound.style.opacity = '';
+  EL.sound.style.transform = '';
+  STYLE.render(t, A0, D, E);
+  const pe = eo(lin(t, E + 3.4, E + 4.2));
+  renderPhoto(t, A0, D, E, pe);
   op(EL.kicker, 1 - lin(t, E + .2, E + .8));
   op(EL.q, 1 - lin(t, E + .2, E + .7));
   op(EL.hint, 1 - lin(t, E + .2, E + .7));
@@ -260,15 +624,12 @@ function renderAt(t) {
   wipe(EL.name, pn);
   hand(EL.nameText, pn);
   op(EL.sub, lin(t, E + 2.0, E + 2.5));
-
-  const pe = eo(lin(t, E + 3.4, E + 4.2));
   EL.end.style.transform = `translateY(${((1 - pe) * 106).toFixed(3)}%)`;
-  EL.photo.style.transform = `translateY(${(-CFG.photoShift * pe).toFixed(2)}px)`;
 }
 
 window.setupStage = setupStage;
 window.renderAt = renderAt;
-window.stageLayout = { W, H, HORIZON, END_TOP, PANEL, TEXT_MAX };
+window.stageLayout = { W, H, HORIZON, END_TOP, TEXT_MAX };
 </script>
 </body>
 </html>

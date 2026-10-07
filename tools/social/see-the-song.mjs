@@ -19,7 +19,8 @@ import { buildCaptions, voiceWord, SHARE_ALIKE_LINE } from './lib/captions.mjs';
 import { orderForSchedule, scheduleRows, toCsv, isValidIsoDate } from './lib/schedule.mjs';
 import { prepareClip, buildTrack, measureLoudness, MAX_CLIP_SEC } from './lib/audio.mjs';
 import { probeDuration, run } from './lib/proc.mjs';
-import { decodeMono, spectrogramMatrix, SAMPLE_RATE } from './lib/spectrogram.mjs';
+import { decodeMono, SAMPLE_RATE } from './lib/spectrogram.mjs';
+import { styleData, STYLE_LETTERS, STYLES } from './lib/style-config.mjs';
 import { timeline, launchBrowser, openStage, encodeVideo, writeCover, frameAt, FPS } from './lib/render.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -38,6 +39,10 @@ const HELP = `See the song: Birdy's social media videos.
   --share-alike        also admit CC BY-SA photos and recordings (the video is then CC BY-SA 4.0)
   --captions-only      write caption.json and schedule.csv without rendering video
   --preview            write key frames (preview-*.png) instead of the video, for a quick look
+  --style <name>       sound animation: glow (first version), sonagram, waveform, halo or notes
+  --clip-start <s>     start the clip this far into the recording (previews)
+  --clip-seconds <s>   use at most this much of the recording (previews)
+  --preview-video      a short, light preview clip and still in <out>/previews/ (no schedule)
 `;
 
 const { values: opt } = parseArgs({
@@ -51,6 +56,10 @@ const { values: opt } = parseArgs({
     'share-alike': { type: 'boolean', default: false },
     'captions-only': { type: 'boolean', default: false },
     preview: { type: 'boolean', default: false },
+    style: { type: 'string', default: 'glow' },
+    'clip-start': { type: 'string', default: '0' },
+    'clip-seconds': { type: 'string' },
+    'preview-video': { type: 'boolean', default: false },
     help: { type: 'boolean', short: 'h', default: false },
   },
 });
@@ -65,6 +74,13 @@ if (!isValidIsoDate(opt.start)) {
 }
 
 const shareAlike = opt['share-alike'];
+if (!STYLES.includes(opt.style)) {
+  console.error(`--style must be one of ${STYLES.join(', ')}`);
+  process.exit(2);
+}
+const clipStart = Number(opt['clip-start']);
+const clipSeconds = opt['clip-seconds'] ? Number(opt['clip-seconds']) : MAX_CLIP_SEC;
+const previewVideo = opt['preview-video'];
 const overrides = JSON.parse(await readFile(join(here, 'overrides.json'), 'utf8'));
 const records = await loadRecords(opt.data);
 const byQid = new Map(records.map((r) => [r.qid, r]));
@@ -154,7 +170,7 @@ try {
     const work = await mkdtemp(join(tmpdir(), `birdy-social-${rec.qid}-`));
     try {
       const audioSrc = mediaPath(opt.data, rec.audio.file);
-      const clip = opt['captions-only'] ? { cut: (await probeDuration(audioSrc)) > MAX_CLIP_SEC + 0.05 } : await prepareClip(audioSrc, work);
+      const clip = opt['captions-only'] ? { cut: (await probeDuration(audioSrc)) > MAX_CLIP_SEC + 0.05 } : await prepareClip(audioSrc, work, { start: clipStart, maxSec: clipSeconds });
       const trimmed = rec.audio.trimmed === true || clip.cut;
       const captions = buildCaptions(rec, { trimmed });
       const word = voiceWord(rec);
@@ -166,8 +182,13 @@ try {
       if (!opt['captions-only']) {
         const samples = await decodeMono(clip.clip);
         const D = samples.length / SAMPLE_RATE;
-        const spec = spectrogramMatrix(samples, { cols: 1808 });
+        const sd = styleData(opt.style, samples, { fps: FPS, D });
         const tl = timeline(D);
+        if (previewVideo) {
+          // A preview ends shortly after the name has been written.
+          tl.frames = Math.round((tl.E + 3.0) * FPS);
+          tl.T = tl.frames / FPS;
+        }
         const track = await buildTrack(clip.clip, work, { leadSec: tl.A0, totalSec: tl.T });
         const hero = heroImage(rec);
         const heroFile = mediaPath(opt.data, hero.file);
@@ -179,12 +200,16 @@ try {
           photo: { src: dataUri(heroFile, await readFile(heroFile)), focus: overrides[rec.qid]?.focus ?? { x: 0.5, y: 0.5 } },
           markSrc,
           fonts: fontFaces,
-          spec: { cols: spec.cols, rows: spec.rows, alphaB64: Buffer.from(spec.alpha).toString('base64'), fmin: spec.fmin, fmax: spec.fmax, freqTicks: spec.freqTicks, timeTicks: spec.timeTicks, duration: D },
+          style: opt.style,
+          [sd.key]: sd.data,
           names: rec.names,
           word,
           creditLines,
         };
-        const mp4 = join(dir, 'see-the-song.mp4');
+        const previewDir = join(opt.out, 'previews');
+        const previewBase = join(previewDir, `${STYLE_LETTERS[opt.style]}-${opt.style}-${rec.slug.en}`);
+        if (previewVideo) await mkdir(previewDir, { recursive: true });
+        const mp4 = previewVideo ? `${previewBase}.mp4` : join(dir, 'see-the-song.mp4');
         const { page, layout } = await openStage(browser, config);
         if (opt.preview) {
           const keys = { start: 0, 'mid-song': tl.A0 + D / 2, cover: tl.cover, writing: tl.E + 1.7, reveal: tl.reveal, end: tl.T - 1 / FPS };
@@ -203,10 +228,12 @@ try {
             frames: tl.frames,
             trackWav: track,
             outMp4: mp4,
+            preview: previewVideo,
             onProgress: (n, total) => process.stdout.write(`\r${label}: frame ${n}/${total}`),
           });
           process.stdout.write('\n');
-          await writeCover(page, tl.cover, join(dir, 'cover.jpg'));
+          if (previewVideo) await writeCover(page, tl.A0 + sd.stillAt, `${previewBase}.jpg`);
+          else await writeCover(page, tl.cover, join(dir, 'cover.jpg'));
         } finally {
           await page.close();
         }
@@ -217,14 +244,18 @@ try {
           timeline: tl,
           fps: FPS,
           clip: { seconds: D, sourceSeconds: clip.sourceDur, cutAt30s: clip.cut, trimmedCredit: trimmed, measuredInputLufs: clip.measuredInputLufs, gainDb: clip.gainDb, clipLoudness: clip.clipLoudness },
-          spectrogram: { fmin: spec.fmin, fmax: spec.fmax, cols: spec.cols, rows: spec.rows },
+          style: opt.style,
+          clipStart,
+          spectrogram: sd.band,
+          syllables: sd.syllables,
+          stillAt: tl.A0 + sd.stillAt,
           layout,
           loudness,
           ffprobe: facts,
           videoLicence: usesShareAlike(rec) ? VIDEO_SA_LICENCE : null,
           renderSeconds: Math.round((Date.now() - t0) / 1000),
         };
-        await writeFile(join(dir, 'render-info.json'), `${JSON.stringify(info, null, 2)}\n`);
+        await writeFile(previewVideo ? `${previewBase}.json` : join(dir, 'render-info.json'), `${JSON.stringify(info, null, 2)}\n`);
         console.log(`${label}: ${tl.T.toFixed(2)} s, ${tl.frames} frames, ${loudness.integrated} LUFS, peak ${loudness.truePeak} dBFS, ${info.renderSeconds} s to render`);
       } else console.log(`${label}: captions written`);
 
@@ -260,7 +291,7 @@ const rows = scheduleRows(
   { start: opt.start },
 );
 const columns = ['date', 'time', 'timezone', 'datetime', 'qid', 'slug', 'name_en', 'name_sv', 'publish', 'video', 'cover', 'caption_json', 'instagram', 'facebook', 'youtube_title', 'youtube_description', 'video_licence', 'note'];
-if (rows.length) {
+if (rows.length && !opt.preview && !previewVideo) {
   await writeFile(join(opt.out, 'schedule.csv'), toCsv(rows, columns));
   console.log(`schedule.csv: ${rows.length} posts from ${rows[0].date} to ${rows.at(-1).date}`);
 }

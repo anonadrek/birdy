@@ -63,7 +63,7 @@ function makeFft(n) {
 }
 
 /** Power spectrogram in dB with frames centred at f * hop. */
-export function powerDb(x, { sr = SAMPLE_RATE, n = 2048, hop = HOP } = {}) {
+export function powerDb(x, { sr = SAMPLE_RATE, n = 2048, hop = HOP, smoothBins = 1 } = {}) {
   const fft = makeFft(n);
   const win = new Float64Array(n);
   for (let i = 0; i < n; i++) win[i] = 0.5 - 0.5 * Math.cos((2 * Math.PI * i) / (n - 1));
@@ -82,7 +82,8 @@ export function powerDb(x, { sr = SAMPLE_RATE, n = 2048, hop = HOP } = {}) {
     fft(re, im);
     for (let b = 0; b < bins; b++) power[f * bins + b] = re[b] * re[b] + im[b] * im[b];
   }
-  // A 3 x 3 average over neighbouring frames and frequencies calms the noise speckle.
+  // A 3 x 3 average over neighbouring frames and frequencies calms the noise speckle
+  // (smoothBins 0: over neighbouring frames only, for sharper lines).
   const db = new Float32Array(frames * bins);
   for (let f = 0; f < frames; f++) {
     for (let b = 0; b < bins; b++) {
@@ -91,7 +92,7 @@ export function powerDb(x, { sr = SAMPLE_RATE, n = 2048, hop = HOP } = {}) {
       for (let df = -1; df <= 1; df++) {
         const ff = f + df;
         if (ff < 0 || ff >= frames) continue;
-        for (let db2 = -1; db2 <= 1; db2++) {
+        for (let db2 = -smoothBins; db2 <= smoothBins; db2++) {
           const bb = b + db2;
           if (bb < 0 || bb >= bins) continue;
           sum += power[ff * bins + bb];
@@ -113,7 +114,7 @@ function percentile(sorted, p) {
  * below the recording's typical floor minus 12 dB: above an MP3 encoder's low-pass the floor
  * is near silence, and leakage there would otherwise look as loud as the bird.
  */
-function excessOverNoise({ frames, bins, db, binHz }) {
+export function excessOverNoise({ frames, bins, db, binHz }) {
   const out = new Float32Array(frames * bins);
   const col = new Float32Array(frames);
   const floors = new Float32Array(bins);
@@ -254,4 +255,10 @@ export function spectrogramMatrix(x, { sr = SAMPLE_RATE, cols = 1808 } = {}) {
     alpha[i] = Math.round(255 * v ** 0.8);
   }
   return { cols: outCols, rows, alpha, fmin, fmax, duration, freqTicks: freqTicks(fmin, fmax), timeTicks: timeTicks(duration) };
+}
+
+/** The frequency band (Hz) that holds the bird in this clip, chosen as for the spectrogram. */
+export function bandOf(x, sr = SAMPLE_RATE) {
+  const spec = powerDb(x, { sr, n: 2048 });
+  return chooseRange(excessOverNoise(spec), spec, sr / 2);
 }

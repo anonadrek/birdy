@@ -35,12 +35,12 @@ export async function measureLoudness(file) {
  * and returns its length and whether it was cut at 30 s. Plain gain to -16 LUFS plus a peak
  * limiter at -2 dBFS, so the bird's own dynamics stay as recorded (no compressor).
  */
-export async function prepareClip(src, workDir) {
+export async function prepareClip(src, workDir, { start = 0, maxSec = MAX_CLIP_SEC } = {}) {
   const full = await probeDuration(src);
-  const dur = Math.min(full, MAX_CLIP_SEC);
-  const cut = full > MAX_CLIP_SEC + 0.05;
+  const dur = Math.min(full - start, maxSec);
+  const cut = start > 0 || full - start > maxSec + 0.05;
   const clip = join(workDir, 'clip.wav');
-  const t = ['-t', dur.toFixed(3)];
+  const t = [...(start > 0 ? ['-ss', start.toFixed(3)] : []), '-t', dur.toFixed(3)];
   const { stderr } = await run('ffmpeg', ['-hide_banner', '-nostats', ...t, '-i', src, '-af', `${fades(dur)},ebur128`, '-f', 'null', '-']);
   const input = parseEbur128(stderr).integrated;
   if (!Number.isFinite(input)) throw new Error(`could not measure the loudness of ${src}`);

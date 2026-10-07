@@ -47,24 +47,26 @@ export async function frameAt(page, t, type = 'png', quality) {
   return page.screenshot(type === 'jpeg' ? { type, quality } : { type });
 }
 
-function x264Args({ frames, trackWav, outMp4 }) {
+/** Final quality by default; `preview` trades quality for small files (about 3 MB for 8 s). */
+function x264Args({ frames, trackWav, outMp4, preview = false }) {
+  const q = preview ? ['-crf', '26', '-maxrate', '2400k', '-bufsize', '4800k'] : ['-crf', '18'];
   return [
     '-hide_banner', '-nostats', '-loglevel', 'error', '-y',
     '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'png', '-i', '-',
     '-i', trackWav,
     '-map', '0:v:0', '-map', '1:a:0',
     '-vf', 'scale=out_color_matrix=bt709:out_range=tv,format=yuv420p',
-    '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-profile:v', 'high', '-g', '60', '-r', String(FPS),
+    '-c:v', 'libx264', '-preset', 'medium', ...q, '-profile:v', 'high', '-g', '60', '-r', String(FPS),
     '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-color_range', 'tv',
-    '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
+    '-c:a', 'aac', '-b:a', preview ? '128k' : '192k', '-ar', '48000',
     '-frames:v', String(frames), '-t', (frames / FPS).toFixed(4),
     '-movflags', '+faststart', outMp4,
   ];
 }
 
 /** Renders every frame into ffmpeg and writes the MP4. */
-export async function encodeVideo(page, { frames, trackWav, outMp4, onProgress }) {
-  const ff = spawn('ffmpeg', x264Args({ frames, trackWav, outMp4 }), { stdio: ['pipe', 'ignore', 'pipe'], windowsHide: true });
+export async function encodeVideo(page, { frames, trackWav, outMp4, onProgress, preview = false }) {
+  const ff = spawn('ffmpeg', x264Args({ frames, trackWav, outMp4, preview }), { stdio: ['pipe', 'ignore', 'pipe'], windowsHide: true });
   let err = '';
   ff.stderr.on('data', (d) => {
     err += d.toString();
