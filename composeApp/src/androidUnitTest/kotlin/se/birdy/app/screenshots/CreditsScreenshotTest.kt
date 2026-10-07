@@ -130,6 +130,20 @@ class CreditsScreenshotTest {
     @Config(qualifiers = "+en")
     fun license_text_caveat_en() = licenseText("license_text_caveat_en", "font:caveat")
 
+    /** The end of the list: the other images, after a short list of species photos. */
+    @Test
+    @Config(qualifiers = "+sv")
+    fun photo_credits_other_sv() {
+        val credits = groupPhotoCredits(shippedCredits(Locale.SV).filter { it.speciesId.raw in setOf("Q25485", "Q180991") })
+        compose.captureScreen("photo_credits_other_sv") {
+            PhotoCreditsScreen(state = Loadable.Loaded(credits), locale = Locale.SV, onBack = {})
+        }
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun license_text_native_sv() = licenseText("license_text_native_sv", "tensorflow-native")
+
     @Test
     @Config(qualifiers = "+sv")
     fun license_text_birdnet_sv_200() {

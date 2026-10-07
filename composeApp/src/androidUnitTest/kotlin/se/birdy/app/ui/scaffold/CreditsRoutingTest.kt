@@ -79,7 +79,7 @@ class CreditsRoutingTest {
                     )
             }
         val nav = openAbout(repository)
-        compose.onNodeWithText("1 foton från Wikimedia Commons", substring = true).assertExists()
+        compose.onNodeWithText("1 artfoton från Wikimedia Commons", substring = true).assertExists()
         compose.onNodeWithText("Bildkällor").performScrollTo().performClick()
         compose.waitForIdle()
         nav.isOn(AppRoute.PhotoCredits::class)

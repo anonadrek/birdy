@@ -658,8 +658,8 @@
     <string name="about_licenses_label">KÄLLOR &amp; LICENSER</string>
     <string name="about_back">Tillbaka</string>
     <string name="about_photos_title">Foton</string>
-    <string name="about_photos_body">%1$s foton från Wikimedia Commons under CC0, public domain, CC BY eller CC BY-SA, nedskalade av Birdy. Fotograf, licens och länk till originalet för varje foto finns under Bildkällor.</string>
-    <string name="about_photos_body_uncounted">Foton från Wikimedia Commons under CC0, public domain, CC BY eller CC BY-SA, nedskalade av Birdy. Fotograf, licens och länk till originalet för varje foto finns under Bildkällor.</string>
+    <string name="about_photos_body">%1$s artfoton från Wikimedia Commons under CC0, public domain, CC BY eller CC BY-SA, nedskalade av Birdy. Fotograf, licens och länk till originalet för varje foto finns under Bildkällor.</string>
+    <string name="about_photos_body_uncounted">Artfoton från Wikimedia Commons under CC0, public domain, CC BY eller CC BY-SA, nedskalade av Birdy. Fotograf, licens och länk till originalet för varje foto finns under Bildkällor.</string>
     <string name="about_texts_title">Arttexter</string>
     <string name="about_texts_body">Sammanfattningar som AI-modellen Claude (Anthropic) skrev 2026. Texterna bygger på Wikipedia-artiklar på svenska och engelska och delas under CC BY-SA 4.0.</string>
     <string name="about_names_title">Artlista och namn</string>
@@ -675,7 +675,7 @@
     <string name="about_row_licenses">Licenser för öppen källkod</string>
     <string name="about_row_licenses_sub">Bibliotek, modeller och typsnitt</string>
     <string name="photo_credits_title">Bildkällor</string>
-    <string name="photo_credits_intro">Alla %1$s foton i Birdy kommer från Wikimedia Commons och är nedskalade. Tryck på ett foto för att öppna originalet, eller på licensen för att läsa den.</string>
+    <string name="photo_credits_intro">Alla %1$s artfoton i Birdy kommer från Wikimedia Commons och är nedskalade. Tryck på ett foto för att öppna originalet, eller på licensen för att läsa den.</string>
     <string name="photo_credits_hero">Huvudbild</string>
     <string name="photo_credits_numbered">Bild %1$s</string>
     <string name="photo_credits_by">Foto: %1$s</string>
@@ -684,6 +684,9 @@
     <string name="photo_credits_open_file">Öppna originalet på Wikimedia Commons</string>
     <string name="photo_credits_open_license">Öppna licensen %1$s</string>
     <string name="photo_credits_error">Bildkällorna gick inte att läsa.</string>
+    <string name="photo_credits_other_title">Övriga bilder</string>
+    <string name="photo_credits_use_premium">Premiumskärmen</string>
+    <string name="photo_credits_use_model_test">Testbild för fotomodellen</string>
     <string name="licenses_title">Licenser för öppen källkod</string>
     <string name="licenses_intro">Birdy bygger på öppen källkod, modeller och typsnitt som andra har gjort. Här finns deras licenser och notiser. Tryck på en rad för att läsa texten.</string>
     <string name="licenses_section_models">Modeller</string>

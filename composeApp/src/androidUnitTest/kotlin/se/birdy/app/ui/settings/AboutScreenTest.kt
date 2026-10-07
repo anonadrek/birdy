@@ -65,7 +65,7 @@ class AboutScreenTest {
     fun `swedish about names every source and licence`() {
         show(Locale.SV)
         listOf(
-            "2\u00A0066 foton från Wikimedia Commons under CC0, public domain, CC BY eller CC BY-SA, nedskalade",
+            "2\u00A0066 artfoton från Wikimedia Commons under CC0, public domain, CC BY eller CC BY-SA, nedskalade",
             "Claude (Anthropic)",
             "Wikipedia-artiklar på svenska och engelska och delas under CC BY-SA 4.0",
             "BirdLife Sveriges taxonomikommitté (Västpalearktis-listan)",
@@ -87,7 +87,7 @@ class AboutScreenTest {
     fun `english about names every source and licence`() {
         show(Locale.EN)
         listOf(
-            "2,066 photos from Wikimedia Commons under CC0, public domain, CC BY or CC BY-SA, resized",
+            "2,066 species photos from Wikimedia Commons under CC0, public domain, CC BY or CC BY-SA, resized",
             "based on Wikipedia articles in Swedish and English and are shared under CC BY-SA 4.0",
             "IOC World Bird List v14.1 (F. Gill, D. Donsker & P. Rasmussen, eds.; CC BY 3.0) and Wikidata (CC0)",
             "© OpenStreetMap contributors (ODbL)",
@@ -100,7 +100,7 @@ class AboutScreenTest {
     @Config(qualifiers = "+sv")
     fun `before the number of photos is read the paragraph has no number`() {
         show(Locale.SV, photoCount = null)
-        compose.onNodeWithText("Foton från Wikimedia Commons under CC0", substring = true).assertExists()
+        compose.onNodeWithText("Artfoton från Wikimedia Commons under CC0", substring = true).assertExists()
     }
 
     @Test

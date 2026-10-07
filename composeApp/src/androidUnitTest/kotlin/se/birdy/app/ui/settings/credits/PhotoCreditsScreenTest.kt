@@ -6,12 +6,14 @@ import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.click
+import androidx.compose.ui.test.hasScrollToKeyAction
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performCustomAccessibilityActionWithLabel
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.performScrollToKey
 import androidx.compose.ui.test.performTouchInput
 import org.junit.Rule
 import org.junit.Test
@@ -93,7 +95,7 @@ class PhotoCreditsScreenTest {
     @Config(qualifiers = "+sv")
     fun `a row shows the photographer and licence and opens the photo on commons`() {
         show()
-        compose.onNodeWithText("Alla 4 foton i Birdy kommer från Wikimedia Commons", substring = true).assertExists()
+        compose.onNodeWithText("Alla 4 artfoton i Birdy kommer från Wikimedia Commons", substring = true).assertExists()
         val description = "Talgoxe, Huvudbild. Foto: Hobbyfotowiki. Licens: CC0. Wikimedia Commons, nedskalad."
         compose.onNodeWithContentDescription(description).performScrollTo().performClick()
         compose
@@ -150,10 +152,35 @@ class PhotoCreditsScreenTest {
     @Config(qualifiers = "+en")
     fun `the english page`() {
         show()
-        compose.onNodeWithText("All 4 photos in Birdy come from Wikimedia Commons", substring = true).assertExists()
+        compose.onNodeWithText("All 4 species photos in Birdy come from Wikimedia Commons", substring = true).assertExists()
         compose
             .onNodeWithContentDescription("Talgoxe, Main photo. Photo: Hobbyfotowiki. License: CC0. Wikimedia Commons, resized.")
             .assertExists()
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `the photos outside the species list are credited under other images`() {
+        show()
+        compose.onNode(hasScrollToKeyAction()).performScrollToKey("other")
+        compose.onNodeWithText("Övriga bilder").assertExists()
+        // The premium photo is named like the species above it (Talgoxe), the test image by its
+        // scientific name when its species is not in the list.
+        compose.onNode(hasScrollToKeyAction()).performScrollToKey("other/premium/great-tit-hero.jpg")
+        compose
+            .onNodeWithContentDescription("Talgoxe, Premiumskärmen. Foto: Hobbyfotowiki. Licens: CC0. Wikimedia Commons, nedskalad.")
+            .performClick()
+        compose.onNode(hasScrollToKeyAction()).performScrollToKey("other/testdata/parity_Q180991.jpg")
+        compose
+            .onNodeWithContentDescription(
+                "Mergus merganser, Testbild för fotomodellen. Foto: Hobbyfotowiki. Licens: CC0. Wikimedia Commons, nedskalad.",
+            ).assertExists()
+        compose.runOnIdle {
+            assertEquals(
+                listOf("https://commons.wikimedia.org/wiki/File:Great_tit_(Parus_major),_North_Rhine-Westphalia.jpg"),
+                opened,
+            )
+        }
     }
 
     @Test

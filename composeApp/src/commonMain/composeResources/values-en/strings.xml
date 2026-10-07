@@ -643,8 +643,8 @@
     <string name="about_licenses_label">SOURCES &amp; LICENSES</string>
     <string name="about_back">Back</string>
     <string name="about_photos_title">Photos</string>
-    <string name="about_photos_body">%1$s photos from Wikimedia Commons under CC0, public domain, CC BY or CC BY-SA, resized by Birdy. The photographer, license and a link to the original of every photo are under Photo credits.</string>
-    <string name="about_photos_body_uncounted">Photos from Wikimedia Commons under CC0, public domain, CC BY or CC BY-SA, resized by Birdy. The photographer, license and a link to the original of every photo are under Photo credits.</string>
+    <string name="about_photos_body">%1$s species photos from Wikimedia Commons under CC0, public domain, CC BY or CC BY-SA, resized by Birdy. The photographer, license and a link to the original of every photo are under Photo credits.</string>
+    <string name="about_photos_body_uncounted">Species photos from Wikimedia Commons under CC0, public domain, CC BY or CC BY-SA, resized by Birdy. The photographer, license and a link to the original of every photo are under Photo credits.</string>
     <string name="about_texts_title">Species texts</string>
     <string name="about_texts_body">Summaries that the AI model Claude (Anthropic) wrote in 2026. The texts are based on Wikipedia articles in Swedish and English and are shared under CC BY-SA 4.0.</string>
     <string name="about_names_title">Species list and names</string>
@@ -660,7 +660,7 @@
     <string name="about_row_licenses">Open-source licenses</string>
     <string name="about_row_licenses_sub">Libraries, models and fonts</string>
     <string name="photo_credits_title">Photo credits</string>
-    <string name="photo_credits_intro">All %1$s photos in Birdy come from Wikimedia Commons and are resized. Tap a photo to open the original, or its license to read it.</string>
+    <string name="photo_credits_intro">All %1$s species photos in Birdy come from Wikimedia Commons and are resized. Tap a photo to open the original, or its license to read it.</string>
     <string name="photo_credits_hero">Main photo</string>
     <string name="photo_credits_numbered">Photo %1$s</string>
     <string name="photo_credits_by">Photo: %1$s</string>
@@ -669,6 +669,9 @@
     <string name="photo_credits_open_file">Open the original on Wikimedia Commons</string>
     <string name="photo_credits_open_license">Open the license %1$s</string>
     <string name="photo_credits_error">The photo credits could not be loaded.</string>
+    <string name="photo_credits_other_title">Other images</string>
+    <string name="photo_credits_use_premium">Premium screen</string>
+    <string name="photo_credits_use_model_test">Test image for the photo model</string>
     <string name="licenses_title">Open-source licenses</string>
     <string name="licenses_intro">Birdy is built on open-source code, models and fonts made by others. Their licenses and notices are here. Tap a row to read the text.</string>
     <string name="licenses_section_models">Models</string>

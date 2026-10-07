@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,9 +40,13 @@ import birdy_bird_scanner.composeapp.generated.resources.photo_credits_intro
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_numbered
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_open_file
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_open_license
+import birdy_bird_scanner.composeapp.generated.resources.photo_credits_other_title
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_resized
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_row_description
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_title
+import birdy_bird_scanner.composeapp.generated.resources.photo_credits_use_model_test
+import birdy_bird_scanner.composeapp.generated.resources.photo_credits_use_premium
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.JournalScaffold
@@ -73,6 +78,53 @@ internal data class PhotoCredits(
 
 private const val HERO_ROLE = "hero"
 private const val COMMONS = "Wikimedia Commons"
+
+/**
+ * A photo the app ships outside the species photos, credited under "Övriga bilder" (release 1.3.0,
+ * review of Task 7e-2): what it is used for, and its credit. Both are CC0 photos by Hobbyfotowiki
+ * that are also species heroes; the app's other images (the bird of the icon and the splash, the
+ * map pin) are Birdy's own. `OtherImagesTest` fails when a new image file is bundled without being
+ * listed here or as Birdy's own.
+ */
+internal data class OtherImage(
+    val use: StringResource,
+    val file: String,
+    val credit: PhotoCredit,
+)
+
+internal val OTHER_IMAGES =
+    listOf(
+        OtherImage(
+            use = Res.string.photo_credits_use_premium,
+            file = "composeApp/src/commonMain/composeResources/files/premium/great-tit-hero.jpg",
+            credit =
+                PhotoCredit(
+                    speciesId = SpeciesId("Q25485"),
+                    speciesName = "Parus major",
+                    scientificName = "Parus major",
+                    role = "other",
+                    path = "other/premium/great-tit-hero.jpg",
+                    license = "CC0",
+                    author = "Hobbyfotowiki",
+                    commonsFileName = "Great tit (Parus major), North Rhine-Westphalia.jpg",
+                ),
+        ),
+        OtherImage(
+            use = Res.string.photo_credits_use_model_test,
+            file = "shared/ml/src/commonMain/composeResources/files/testdata/parity_Q180991.jpg",
+            credit =
+                PhotoCredit(
+                    speciesId = SpeciesId("Q180991"),
+                    speciesName = "Mergus merganser",
+                    scientificName = "Mergus merganser",
+                    role = "other",
+                    path = "other/testdata/parity_Q180991.jpg",
+                    license = "CC0",
+                    author = "Hobbyfotowiki",
+                    commonsFileName = "Goosander (Eurasian) (Mergus merganser).jpg",
+                ),
+        ),
+    )
 
 // The main photo first, then the others in file order ("secondary-2" before "secondary-10").
 private val PHOTO_ORDER = compareBy<PhotoCredit>({ it.role != HERO_ROLE }, { it.path.length }, { it.path })
@@ -107,7 +159,8 @@ fun PhotoCreditsRoute(
 
 /**
  * Bildkällor / Photo credits (release 1.3.0 Task 7e-2, legal review §2): every species photo in the
- * app with its photographer, licence and source, CC0 and public domain included. A row opens the
+ * app with its photographer, licence and source, CC0 and public domain included, then the other
+ * photos the app ships ([OTHER_IMAGES]). A row opens the
  * photo's page on Wikimedia Commons; its licence name opens the licence. For TalkBack each row is
  * one node that reads the whole credit, with opening the licence as an extra action.
  */
@@ -157,16 +210,35 @@ private fun PhotoCreditList(
             )
         }
         credits.groups.forEach { group ->
-            item(key = "species:${group.speciesId.raw}") { SpeciesHeader(group) }
+            item(key = "species:${group.speciesId.raw}") { SpeciesHeader(group.speciesName, group.scientificName) }
             itemsIndexed(group.photos, key = { _, photo -> photo.path }) { index, photo ->
-                PhotoCreditRow(credit = photo, position = index + 1, onOpenUrl = onOpenUrl)
+                val label =
+                    if (photo.role == HERO_ROLE) {
+                        stringResource(Res.string.photo_credits_hero)
+                    } else {
+                        stringResource(Res.string.photo_credits_numbered, (index + 1).toString())
+                    }
+                PhotoCreditRow(credit = photo, label = label, onOpenUrl = onOpenUrl)
             }
+        }
+        item(key = "other") { SpeciesHeader(stringResource(Res.string.photo_credits_other_title), null) }
+        items(OTHER_IMAGES, key = { it.credit.path }) { image ->
+            // Named like the species in the list above, in the reader's language.
+            val name = credits.groups.firstOrNull { it.speciesId == image.credit.speciesId }?.speciesName
+            PhotoCreditRow(
+                credit = image.credit.copy(speciesName = name ?: image.credit.scientificName),
+                label = stringResource(image.use),
+                onOpenUrl = onOpenUrl,
+            )
         }
     }
 }
 
 @Composable
-private fun SpeciesHeader(group: PhotoCreditGroup) {
+private fun SpeciesHeader(
+    title: String,
+    scientificName: String?,
+) {
     Column(
         modifier =
             Modifier
@@ -175,27 +247,23 @@ private fun SpeciesHeader(group: PhotoCreditGroup) {
                 .semantics(mergeDescendants = true) { heading() },
     ) {
         Text(
-            text = group.speciesName,
+            text = title,
             fontFamily = rememberDmSerifDisplay(),
             fontSize = 19.sp,
             color = TextOnCreme,
         )
-        Text(text = group.scientificName, fontStyle = FontStyle.Italic, fontSize = 13.sp, color = InkMuted)
+        if (scientificName != null) {
+            Text(text = scientificName, fontStyle = FontStyle.Italic, fontSize = 13.sp, color = InkMuted)
+        }
     }
 }
 
 @Composable
 private fun PhotoCreditRow(
     credit: PhotoCredit,
-    position: Int,
+    label: String,
     onOpenUrl: (String) -> Unit,
 ) {
-    val label =
-        if (credit.role == HERO_ROLE) {
-            stringResource(Res.string.photo_credits_hero)
-        } else {
-            stringResource(Res.string.photo_credits_numbered, position.toString())
-        }
     val description =
         stringResource(
             Res.string.photo_credits_row_description,
