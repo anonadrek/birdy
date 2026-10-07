@@ -197,7 +197,9 @@ fun buildIosAppGraph(): AppGraph {
             // BadgeStringMap kastar för badge-id:n den inte känner igen — delade
             // resolveBadgeString faller tillbaka på en humaniserad id-sträng.
             badgeNameResolver = { id -> resolveBadgeString(id, appStrings) { BadgeStringMap.nameFor(id) } },
-            badgeDescriptionResolver = { id -> resolveBadgeString(id, appStrings) { BadgeStringMap.descriptionFor(id) } },
+            badgeDescriptionResolver = { id ->
+                resolveBadgeString(id, appStrings) { BadgeStringMap.descriptionFor(id) }
+            },
         )
     val dailyBirdHistory =
         se.birdy.data.dailybird

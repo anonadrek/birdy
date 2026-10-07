@@ -97,6 +97,7 @@ data class NotificationContent(
  * paths the workers had before this hoist (disabled toggle, no candidate, quiet
  * week with no streak risk, nothing in progress toward a badge).
  */
+@Suppress("LongParameterList") // wired by three platforms; a holder object would only move the same list
 class NotificationPayloads(
     private val prefs: UserPreferences,
     private val observationRepo: ObservationRepository,
