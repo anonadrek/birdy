@@ -634,6 +634,7 @@ Faktabladen tas fram och kontrolleras automatiskt (V1 till V4) för alla 180 art
 | Länk jämförelse | Jämför {art} och {art} | Compare the {name} and the {name} |
 | Rubrik fler (familj) | Fler {familj i gemener} | More in the {Latin} family |
 | Rubrik fler (grupp) | Fler {grupp i gemener} | More {group in lowercase} |
+| Rubrik fler (gruppen Övriga fåglar, tillagd 2026-10-07 i Task 10: mallen ovan gav "More other birds") | Fler övriga fåglar | More birds |
 | Appruta, rubrik | Osäker på vad du ser? | Not sure what you are seeing? |
 | Appruta, foto och läte (EN ändrat 2026-10-07) | Birdy känner igen {art i gemener} på foto eller läte, direkt i telefonen och utan täckning. | Birdy identifies the {name} from a photo or its song, right on your phone and without a signal. |
 | Appruta, bara läte (EN ändrat 2026-10-07) | Birdy känner igen {art i gemener} på lätet, direkt i telefonen och utan täckning. | Birdy identifies the {name} from its song, right on your phone and without a signal. |

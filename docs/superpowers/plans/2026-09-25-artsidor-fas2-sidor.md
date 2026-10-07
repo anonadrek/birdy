@@ -54,7 +54,7 @@
 |---|---|
 | `scripts/env-run.mjs` | Kör ett kommando med extra miljövariabler (Windows och macOS). |
 | `src/lib/species-source.mjs` | Var datan ligger, vem som får en sida, inspelningarnas adresser. Delas av config, sidor och skript. |
-| `tests/fixtures/make-species-fixtures.mjs` | Skriver testdatan (21 arter, 4 jämförelser, testbilder, tysta mp3; uppdaterat 2026-10-07, Task 9s granskning lade till en opublicerad art). |
+| `tests/fixtures/make-species-fixtures.mjs` | Skriver testdatan (21 arter, 4 jämförelser, testbilder, tysta mp3; uppdaterat 2026-10-07: Task 9s granskning lade till Blåkråka, en frånvarande art, som Task 10 publicerade). |
 | `tests/fixtures/species/*.json`, `tests/fixtures/comparisons/*.json`, `tests/fixtures/species-assets/**` | Testdatan (genererad, committad). |
 | `tests/unit/species-source.unit.mjs` | Enhetstester med `node --test`. |
 | `scripts/build-sweden-counties.mjs`, `src/data/sweden-counties.json` | Länsgränserna som SVG-banor (Natural Earth). |
@@ -244,7 +244,7 @@ const SUMMER = [0, 0, 1, 36, 100, 51, 49, 65, 51, 10, 1, 0];
 const SPECIES = [
   { qid: 'Q25485', sv: 'Talgoxe', en: 'Great Tit', sci: 'Parus major', fam: ['Paridae', 'Mesar'], group: 'songbirds', slug: ['talgoxe', 'great-tit'], iucn: 'LC', red: 'not_listed', id: [true, true], extra: true, audio: 'trimmed', marginalia: true, de: true, months: YEAR_ROUND, status: 'resident', size: ['Cirka 14 cm', 'About 14 cm'], look: ['Q25404'] },
   { qid: 'Q25404', sv: 'Blåmes', en: 'Eurasian Blue Tit', sci: 'Cyanistes caeruleus', fam: ['Paridae', 'Mesar'], group: 'songbirds', slug: ['blames', 'eurasian-blue-tit'], iucn: 'LC', red: 'not_listed', id: [true, true], audio: 'full', de: true, months: YEAR_ROUND, status: 'resident', size: ['Cirka 12 cm', 'About 12 cm'], look: ['Q25485'] },
-  { qid: 'Q25234', sv: 'Koltrast', en: 'Common Blackbird', sci: 'Turdus merula', fam: ['Turdidae', 'Trastar'], group: 'songbirds', slug: ['koltrast', 'common-blackbird'], iucn: 'LC', red: 'not_listed', id: [true, true], extra: true, audio: 'trimmed', de: true, months: YEAR_ROUND, status: 'resident' },
+  { qid: 'Q25234', sv: 'Koltrast', en: 'Common Blackbird', sci: 'Turdus merula', fam: ['Turdidae', 'Trastar'], group: 'songbirds', slug: ['koltrast', 'common-blackbird'], iucn: 'LC', red: 'not_listed', id: [true, true], extra: true, extraPd: true, audio: 'trimmed', de: true, months: YEAR_ROUND, status: 'resident' },
   { qid: 'Q25334', sv: 'Rödhake', en: 'European Robin', sci: 'Erithacus rubecula', fam: ['Muscicapidae', 'Flugsnappare'], group: 'songbirds', slug: ['rodhake', 'european-robin'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
   { qid: 'Q14683', sv: 'Gråsparv', en: 'House Sparrow', sci: 'Passer domesticus', fam: ['Passeridae', 'Sparvfinkar'], group: 'songbirds', slug: ['grasparv', 'house-sparrow'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
   { qid: 'Q25307', sv: 'Skata', en: 'Eurasian Magpie', sci: 'Pica pica', fam: ['Corvidae', 'Kråkfåglar'], group: 'songbirds', slug: ['skata', 'eurasian-magpie'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', look: ['Q25345384'] },
@@ -254,7 +254,7 @@ const SPECIES = [
   { qid: 'Q26427', sv: 'Fiskmås', en: 'Common Gull', sci: 'Larus canus', fam: ['Laridae', 'Måsfåglar'], group: 'gulls_terns', slug: ['fiskmas', 'common-gull'], iucn: 'LC', red: 'NT', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
   { qid: 'Q25385', sv: 'Ormvråk', en: 'Common Buzzard', sci: 'Buteo buteo', fam: ['Accipitridae', 'Hökar'], group: 'raptors', slug: ['ormvrak', 'common-buzzard'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
   { qid: 'Q4764', sv: 'Trana', en: 'Common Crane', sci: 'Grus grus', fam: ['Gruidae', 'Tranor'], group: 'cranes_rails', slug: ['trana', 'common-crane'], iucn: 'LC', red: 'not_listed', id: [true, false], de: true, months: SUMMER, status: 'breeding_migrant' },
-  { qid: 'Q25756', sv: 'Kattuggla', en: 'Tawny Owl', sci: 'Strix aluco', fam: ['Strigidae', 'Egentliga ugglor'], group: 'owls', slug: ['kattuggla', 'tawny-owl'], iucn: 'LC', red: 'not_listed', id: [true, true], audio: 'full', de: true, months: YEAR_ROUND, status: 'resident', look: ['Strix uralensis'] },
+  { qid: 'Q25756', sv: 'Kattuggla', en: 'Tawny Owl', sci: 'Strix aluco', fam: ['Strigidae', 'Egentliga ugglor'], group: 'owls', slug: ['kattuggla', 'tawny-owl'], iucn: 'LC', red: 'not_listed', id: [true, true], audio: 'full', audioPd: true, de: true, months: YEAR_ROUND, status: 'resident', look: ['Strix uralensis'] },
   { qid: 'Q25384', sv: 'Hornuggla', en: 'Long-eared Owl', sci: 'Asio otus', fam: ['Strigidae', 'Egentliga ugglor'], group: 'owls', slug: ['hornuggla', 'long-eared-owl'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', look: ['Q25769'] },
   // Minimal record: no audio, no report data, no extra photo, no behaviour or look-alikes, no size,
   // status or Swedish red list, Swedish article only.
@@ -268,19 +268,22 @@ const SPECIES = [
   // threshold, spec §9.2, plus the presence sentence that becomes a written fact), but no months/counties
   // (so no chart or map) and no swedishRedList (a species with too few reports and no red-list entry is
   // not assessed, spec Revision 2026-10-07). Exercises `reportData={Boolean(s.data)}` (SpeciesArticle,
-  // Task 10, not written yet): the data credit must still show even though months/counties are both
-  // missing. `publish: false` on purpose (preview-only, like the two woodpeckers above): `other` is
-  // otherwise an inactive group and this would be its first published species, which would quietly
-  // change the hub's active-group and all-species counts that Task 7's and Task 8's already-passing
-  // tests hardcode (`.groups a` is 7, the hub's `[data-item]` is 16, a group page's `.catbar .chip` is
-  // 8): a cost not worth paying just to add this one fixture. Flip it when Task 10 is implemented, if
-  // its test wants to visit the built page rather than only read the fixture data.
-  { qid: 'Q25411', sv: 'Blåkråka', en: 'European Roller', sci: 'Coracias garrulus', fam: ['Coraciidae', 'Blåkråkor'], group: 'other', slug: ['blakraka', 'european-roller'], iucn: 'LC', id: [false, false], de: true, status: 'absent', absent: true, publish: false },
+  // Task 10): the data credit must still show even though months/counties are both missing. Published
+  // since Task 10 (was `publish: false` until then), so the absent-species page is built and tested like
+  // the real ones (Koboltmes, Q10546857, is absent and written): it makes `other` an active group with one
+  // species, so Task 7's and Task 8's counts went up by one consciously (hub `.groups a` 7 to 8, hub
+  // `[data-item]` 16 to 17, a group page's `.catbar .chip` 8 to 9). Its look-alike is Större hackspett,
+  // a species with a record but no page in the normal build (same as Koboltmes' look-alike Blåmes in the
+  // real data): the name shows without a link, a photo or a comparison link.
+  { qid: 'Q25411', sv: 'Blåkråka', en: 'European Roller', sci: 'Coracias garrulus', fam: ['Coraciidae', 'Blåkråkor'], group: 'other', slug: ['blakraka', 'european-roller'], iucn: 'LC', id: [false, false], de: true, status: 'absent', absent: true, look: ['Q26209'] },
   // Never a page: one failed, one pending (facts exist, text not written yet).
   { qid: 'Q166171', sv: 'Gröngöling', en: 'European Green Woodpecker', sci: 'Picus viridis', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['grongoling', 'european-green-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], recordStatus: 'failed' },
   { qid: 'Q143284', sv: 'Spillkråka', en: 'Black Woodpecker', sci: 'Dryocopus martius', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['spillkraka', 'black-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], recordStatus: 'pending' },
 ];
 
+// extraPd (Koltrast's extra photo) and audioPd (Kattuggla's recording, no recordist) carry the pipeline's
+// canonical "Public domain" without a licence link, so the credit lines' "public domain" label and the
+// unknown-recordist fallback are tested on built pages (Task 9 re-review).
 const S = (text, factIds) => ({ text, factIds });
 const lowerSv = (name) => name.toLocaleLowerCase('sv');
 
@@ -363,12 +366,19 @@ function record(sp) {
     ...(sp.marginalia ? { marginalia: { sv: 'Testanteckning i marginalen.', en: 'A test note in the margin.' } } : {}),
     images: [
       { role: 'hero', file: `${sp.qid}/hero.webp`, width: 1200, height: 800, author: 'Testfotograf', license: 'CC0', licenseUrl: null, sourceUrl: commons('hero.jpg') },
-      ...(sp.extra ? [{ role: 'extra', file: `${sp.qid}/extra.webp`, width: 1200, height: 800, author: 'Testfotograf två', license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/', sourceUrl: commons('extra.jpg') }] : []),
+      ...(sp.extra ? [{
+        role: 'extra', file: `${sp.qid}/extra.webp`, width: 1200, height: 800, author: 'Testfotograf två',
+        ...(sp.extraPd ? { license: 'Public domain', licenseUrl: null } : { license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/' }),
+        sourceUrl: commons('extra.jpg'),
+      }] : []),
     ],
     ...(sp.audio ? {
       audio: {
         file: `${sp.qid}/voice.mp3`, durationSec: 1, trimmed: sp.audio === 'trimmed',
-        author: 'Testinspelare', license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/', sourceUrl: commons('song.ogg'),
+        ...(sp.audioPd
+          ? { author: null, license: 'Public domain', licenseUrl: null }
+          : { author: 'Testinspelare', license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/' }),
+        sourceUrl: commons('song.ogg'),
       },
     } : {}),
     wikipedia: {
@@ -467,7 +477,7 @@ console.log(`fixtures: ${SPECIES.length} arter och ${COMPARISONS.length} jämfö
 
 **Avvikelse vid genomförandet (Task 8:s granskning 2026-10-07):** Kaja:s (`Q25345384`) `fam[1]` i den faktiska generatorn är `'Kråkor'`, inte `'Kråkfåglar'` som i koden ovan, så att Kaja och Skata (båda `Corvidae` i latin) deliberat har OLIKA `family.sv` i testdatan. Det är en avsiktlig divergens, inte ett misstag: gruppsidan (Task 8) grupperar efter `family.latin` som ett skyddsnät, och fixturen behöver testa att skyddsnätet fungerar även om `family.sv` skulle skilja sig. Den verkliga pipelinen garanterar numera ett enda svenskt familjenamn per latinsk familj (`web/families.py`, BirdLife Sveriges NL20), så den här situationen uppstår inte i riktig data, men skyddsnätet (och testet av det) behålls ändå.
 
-**Avvikelse vid genomförandet (controller-granskning 2026-10-07, Task 9):** `dataFor()`s mallmeningar ovan är uppdaterade till pipelinens faktiska ordval (`web/datamod.py`, fix wave 2026-10-07, efter att den här planen skrevs): "Rapporteras sällan i …" i stället för "Nästan aldrig i …", och "Rapporteras från alla 21 län."/"Andelen av alla fågelrapporter är högst i …" i stället för "Vanligast i rapporterna från …" (se spec §9.2, synkad samma dag). `SPECIES`-arrayen har dessutom en 21:a post, Blåkråka (`Q25411`, `absent: true`): `dataFor()` har en tidig retur för `sp.absent` som ger `data` utan `months`/`counties`, bara `totalReports: 0` och förekomstmeningen ("Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025." / samma på engelska) -- en fixture för `reportData={Boolean(s.data)}` (Task 10s tillägg). Posten är `publish: false` (se dess egen kommentar i `SPECIES`-arrayen för varför: annars hade hubbens och gruppsidornas redan godkända antal i Task 7 och 8s tester ändrats). `...(sp.months ? { data: dataFor(sp) } : {})` i `record()` nedan är därför `...(sp.months || sp.absent ? { data: dataFor(sp) } : {})` i den faktiska generatorn.
+**Avvikelse vid genomförandet (controller-granskning 2026-10-07, Task 9):** `dataFor()`s mallmeningar ovan är uppdaterade till pipelinens faktiska ordval (`web/datamod.py`, fix wave 2026-10-07, efter att den här planen skrevs): "Rapporteras sällan i …" i stället för "Nästan aldrig i …", och "Rapporteras från alla 21 län."/"Andelen av alla fågelrapporter är högst i …" i stället för "Vanligast i rapporterna från …" (se spec §9.2, synkad samma dag). `SPECIES`-arrayen har dessutom en 21:a post, Blåkråka (`Q25411`, `absent: true`): `dataFor()` har en tidig retur för `sp.absent` som ger `data` utan `months`/`counties`, bara `totalReports: 0` och förekomstmeningen ("Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025." / samma på engelska), en fixture för `reportData={Boolean(s.data)}` (Task 10s tillägg). Posten var `publish: false` fram till Task 10, som publicerade den och höjde Task 7:s och 8:s räkningar med en (se Task 10:s avvikelser). Sedan Task 9:s omgranskning har dessutom Koltrastens extrafoto (`extraPd`) och Kattugglans inspelning (`audioPd`, utan upphovsperson) licensen "Public domain" utan länk, så att "public domain" och "okänd upphovsperson" testas på byggda sidor. `...(sp.months ? { data: dataFor(sp) } : {})` i `record()` nedan är därför `...(sp.months || sp.absent ? { data: dataFor(sp) } : {})` i den faktiska generatorn.
 
 - [ ] **Step 7: Kör generatorn**
 
@@ -1957,7 +1967,8 @@ import { test, expect, type Page } from '@playwright/test';
 import { trackConsoleErrors } from './test-helpers';
 
 // Runs against the TEST data (tests/fixtures/): build with `npm run build:fixtures` first.
-// 16 species are published there, in 7 groups; two woodpeckers are unpublished, one is failed and one pending.
+// 17 species are published there, in 8 groups; two woodpeckers are unpublished, one is failed and one pending.
+// (Blåkråka, absent in Sweden and the only species in "other", is published since Task 10: 16 and 7 before.)
 
 async function noSideScroll(page: Page): Promise<void> {
   const [scroll, client] = await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.clientWidth]);
@@ -1974,8 +1985,8 @@ test.describe('ingångssidan', () => {
       const res = await page.goto(path);
       expect(res?.status()).toBe(200);
       await expect(page.locator('h1')).toContainText(h1);
-      await expect(page.locator('.groups a')).toHaveCount(7);
-      await expect(page.locator('[data-item]')).toHaveCount(16);
+      await expect(page.locator('.groups a')).toHaveCount(8);
+      await expect(page.locator('[data-item]')).toHaveCount(17);
       await expect(page.locator('[data-compare-link]')).toHaveCount(2);
       await expect(page.locator(`a[href="${about}"]`)).toHaveCount(1);
       await expect(page.locator(`link[rel="alternate"][hreflang="${path.startsWith('/sv') ? 'en' : 'sv'}"]`)).toHaveAttribute('href', `https://birdy.community${other}`);
@@ -2381,7 +2392,7 @@ test.describe('gruppsidorna', () => {
     expect(res?.status()).toBe(200);
     await expect(page.locator('h1')).toHaveText('Ugglor');
     await expect(page.locator('.catbar .chip[aria-current="page"]')).toContainText('Ugglor');
-    await expect(page.locator('.catbar .chip')).toHaveCount(8);
+    await expect(page.locator('.catbar .chip')).toHaveCount(9);
     await expect(page.locator('[data-item]')).toHaveCount(3);
     await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
     await expect(page.locator('a[href*="utm_medium%3Dgroup"]')).toHaveCount(1);
@@ -2639,8 +2650,10 @@ Komponenterna testas genom artsidan i Task 10 och jämförelsesidan i Task 11.
 // Bars per month as SVG, drawn when the site is built (spec 2026-09-25 §5 and §7). One series on species
 // pages, two on comparison pages. Values are the species' share of all bird reports, scaled so the top
 // month is 100. The text alternative is the paragraph that `describedBy` points at. Each bar also gets a
-// hover title built from Series.label and the full month name ("Talgoxe, oktober: 100"), controller
-// review Task 9, for sighted mouse users who don't read the aria-describedby paragraph.
+// hover title built from Series.label and the full month name ("Talgoxe, oktober"), controller review
+// Task 9, for sighted mouse users who don't read the aria-describedby paragraph. No number: the values are
+// scaled so the top month is 100, and "Talgoxe, oktober: 100" read as 100 per cent of the reports (Task 9
+// re-review).
 interface Series { label: string; values: number[]; tone: 'rust' | 'navy' }
 interface Props { id: string; title: string; letters: string[]; monthNames: string[]; series: Series[]; describedBy: string }
 const { id, title, letters, monthNames, series, describedBy } = Astro.props;
@@ -2664,7 +2677,7 @@ const heightOf = (v: number) => (v > 0 ? Math.max(1.5, (v / 100) * H) : 0);
         const h = heightOf(v);
         return (
           <rect data-month={m + 1} data-series={i} class={`bar bar--${s.tone}`} x={(m * SLOT + offset(i)).toFixed(1)} y={(BASE - h).toFixed(1)} width={barW} height={h.toFixed(1)} rx="2">
-            <title>{`${s.label}, ${monthNames[m]}: ${v}`}</title>
+            <title>{`${s.label}, ${monthNames[m]}`}</title>
           </rect>
         );
       })}
@@ -2701,6 +2714,10 @@ interface Props { id: string; values: Record<string, number>; locale: Locale; ti
 const { id, values, locale, title, legend, describedBy } = Astro.props;
 const bucket = (v: number | undefined) => (!v ? 0 : v <= 33 ? 1 : v <= 66 ? 2 : 3);
 const hatchId = `${id}-hatch`;
+// The light counties (no reports, small share) get a darker border than the paper-coloured one, or two
+// such neighbours merge into one patch (Task 9 re-review). Neighbours share a border, so the later path's
+// stroke is the one that shows: the light counties are drawn last, so their borders win.
+const drawOrder = [...counties.counties].sort((a, b) => bucket(values[b.code]) - bucket(values[a.code]));
 ---
 
 <div class="cmap" data-map={id}>
@@ -2712,7 +2729,7 @@ const hatchId = `${id}-hatch`;
         <line x1="0" y1="0" x2="0" y2="5" stroke="var(--muted)" stroke-width="1.5" />
       </pattern>
     </defs>
-    {counties.counties.map((c) => {
+    {drawOrder.map((c) => {
       const b = bucket(values[c.code]);
       const name = locale === 'sv' ? c.sv : c.en;
       return (
@@ -2733,13 +2750,15 @@ const hatchId = `${id}-hatch`;
      distinct from each other, not just from their neighbours (controller review, Task 9).
      vector-effect keeps the line the same width however the SVG is scaled. */
   path { stroke: var(--paper); stroke-width: .75px; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+  path.b0, path.b1 { stroke: color-mix(in srgb, var(--muted) 45%, var(--paper)); }
   .b1 { fill: var(--peach); }
   .b2 { fill: var(--apricot); }
   .b3 { fill: var(--rust); }
   .legend { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 12px; color: var(--muted); }
   .legend li { display: inline-flex; align-items: center; gap: 6px; }
   .sw { width: 12px; height: 12px; border-radius: 3px; border: 1px solid var(--muted); }
-  .sw.b0 { background: repeating-linear-gradient(45deg, var(--card) 0 2px, var(--muted) 2px 3px); }
+  /* -45deg: the same slant as the map's hatch pattern (rotate(45) on a vertical line, Task 9 re-review). */
+  .sw.b0 { background: repeating-linear-gradient(-45deg, var(--card) 0 2px, var(--muted) 2px 3px); }
   .sw.b1 { background: var(--peach); }
   .sw.b2 { background: var(--apricot); }
   .sw.b3 { background: var(--rust); }
@@ -2920,6 +2939,7 @@ test.describe('artsidan', () => {
     for (const text of ['Vetenskapligt namn', 'Mesar', 'Stannfågel', 'Cirka 14 cm', 'Livskraftig (LC)']) await expect(facts).toContainText(text);
     await expect(facts.locator('[data-redlist]')).toContainText('Inte rödlistad');
     await expect(page.locator('.sp-app')).toContainText('på foto eller läte');
+    await expect(page.locator('.note')).toHaveText('Testanteckning i marginalen.');
     await expect(page.locator('h2')).toContainText(['Så känner du igen den', 'Läte', 'Var och när', 'Föda och beteende', 'Kan förväxlas med', 'Fler tättingar']);
 
     const audio = page.locator('audio');
@@ -2930,6 +2950,8 @@ test.describe('artsidan', () => {
     await expect(page.locator('[data-credit-for="audio"]')).toContainText('bearbetad');
 
     await expect(page.locator('[data-chart] rect[data-month]')).toHaveCount(12);
+    // The bar's hover title has no number: the values are scaled to a top month of 100, not per cent (Task 9 re-review).
+    await expect(page.locator('[data-chart] rect[data-month="10"] title')).toHaveText('Talgoxe, oktober');
     await expect(page.locator('[data-map] path[data-county]')).toHaveCount(21);
     await expect(page.locator('.data-summary')).toHaveText('Rapporteras året runt. Rapporteras från alla 21 län.');
     await expect(page.locator('[data-data-credit]')).toContainText('Artportalen');
@@ -3003,6 +3025,72 @@ test.describe('artsidan', () => {
     await expect(page.locator('.looks .look-name')).toHaveText('Asio flammeus');
   });
 
+  test('blåkråka: frånvarande art utan diagram och karta, men med datacredit och förväxlingsart utan sida', async ({ page }) => {
+    const errors = trackConsoleErrors(page);
+    const res = await page.goto('/sv/arter/blakraka/');
+    expect(res?.status()).toBe(200);
+    const facts = page.locator('.facts');
+    await expect(facts).toContainText('I Sverige');
+    await expect(facts).toContainText('Förekommer inte');
+    await expect(facts).toContainText('Livskraftig (LC)');
+    await expect(facts).not.toContainText('Svenska rödlistan 2025');
+    await expect(page.locator('[data-chart], [data-map], audio')).toHaveCount(0);
+    // data exists (the presence sentence, spec §9.2) without months/counties: the sentence and the report
+    // credit show, the red list credit doesn't (controller decision, Task 9 re-review).
+    await expect(page.locator('.data-summary')).toBeVisible();
+    await expect(page.locator('.data-summary')).toHaveText('Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025.');
+    await expect(page.locator('[data-data-credit]')).toHaveCount(1);
+    await expect(page.locator('[data-data-credit]')).toContainText('Artportalen');
+    await expect(page.locator('[data-data-credit]')).not.toContainText('Rödlista');
+    await expect(page.locator('.sp-app')).toContainText('hjälper dig känna igen fåglarna');
+    // The look-alike has a record but no page in this build (unpublished): its name, no link, photo or comparison.
+    const look = page.locator('.looks li');
+    await expect(look).toHaveCount(1);
+    await expect(look.locator('.look-name')).toHaveText('Större hackspett');
+    await expect(look.locator('a, img')).toHaveCount(0);
+    // The only species in "other": no "Fler ..." section.
+    await expect(page.locator('.more')).toHaveCount(0);
+    expect(errors).toEqual([]);
+  });
+
+  test('JSON-LD: brödsmulor och WebPage med taxon, foto, inspelning och kontrolldatum', async ({ page }) => {
+    await page.goto('/sv/arter/talgoxe/');
+    const graph = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)['@graph'] as Record<string, any>[];
+    const crumbs = graph.find((n) => n['@type'] === 'BreadcrumbList')!;
+    expect(crumbs.itemListElement.map((c: { name: string }) => c.name)).toEqual(['Birdy', 'Arter', 'Tättingar', 'Talgoxe']);
+    expect(crumbs.itemListElement[3].item).toBe('https://birdy.community/sv/arter/talgoxe/');
+    const web = graph.find((n) => n['@type'] === 'WebPage')!;
+    expect(web.inLanguage).toBe('sv');
+    expect(web.lastReviewed).toBe('2026-11-20');
+    expect(web).not.toHaveProperty('reviewedBy');
+    expect(web.about).toMatchObject({ '@type': 'Taxon', name: 'Parus major', sameAs: 'https://www.wikidata.org/wiki/Q25485' });
+    expect(web.primaryImageOfPage).toMatchObject({ '@type': 'ImageObject', creditText: 'Testfotograf' });
+    const src = await page.locator('audio').getAttribute('src');
+    expect(web.associatedMedia).toMatchObject({ '@type': 'AudioObject', contentUrl: `https://birdy.community${src}`, license: 'https://creativecommons.org/licenses/by-sa/4.0/' });
+    await page.goto('/sv/arter/parluggla/');
+    const plain = (JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)['@graph'] as Record<string, any>[]).find((n) => n['@type'] === 'WebPage')!;
+    expect(plain).not.toHaveProperty('associatedMedia');
+  });
+
+  test('public domain: "public domain" i gemener utan licenslänk, okänd upphovsperson när namnet saknas', async ({ page }) => {
+    await page.goto('/sv/arter/koltrast/');
+    const extra = page.locator('[data-credit-for="extra"]');
+    await expect(extra).toContainText('Foto: Testfotograf två, public domain, via Wikimedia Commons, nedskalad');
+    await expect(extra.locator('a')).toHaveText(['Wikimedia Commons']);
+    await page.goto('/sv/arter/kattuggla/');
+    const audio = page.locator('[data-credit-for="audio"]');
+    await expect(audio).toContainText('Inspelning: okänd upphovsperson, public domain, via Wikimedia Commons, bearbetad');
+    await expect(audio.locator('a')).toHaveText(['Wikimedia Commons']);
+    // JSON-LD says no more than the page: no licence link and no creator for this recording.
+    const graph = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)['@graph'] as Record<string, any>[];
+    const media = graph.find((n) => n['@type'] === 'WebPage')!.associatedMedia;
+    expect(media['@type']).toBe('AudioObject');
+    expect(media).not.toHaveProperty('license');
+    expect(media).not.toHaveProperty('creator');
+    await page.goto('/species/tawny-owl/');
+    await expect(page.locator('[data-credit-for="audio"]')).toContainText('Recording: unknown recordist, public domain, via Wikimedia Commons, edited');
+  });
+
   test('opublicerade, väntande och misslyckade arter ger 404', async ({ page }) => {
     for (const path of ['/sv/arter/storre-hackspett/', '/sv/arter/grongoling/', '/sv/arter/spillkraka/', '/species/black-woodpecker/']) {
       expect((await page.goto(path))?.status(), path).toBe(404);
@@ -3029,7 +3117,7 @@ test.describe('artsidan', () => {
   for (const width of [360, 390, 430]) {
     test(`ingen sidledsscroll i ${width} px`, async ({ page }) => {
       await page.setViewportSize({ width, height: 844 });
-      for (const path of ['/sv/arter/talgoxe/', '/species/great-tit/', '/sv/arter/parluggla/']) {
+      for (const path of ['/sv/arter/talgoxe/', '/species/great-tit/', '/sv/arter/parluggla/', '/sv/arter/blakraka/']) {
         await page.goto(path);
         await noSideScroll(page);
       }
@@ -3054,6 +3142,7 @@ import Layout from '../../layouts/Layout.astro';
 import Nav from '../Nav.astro';
 import Footer from '../Footer.astro';
 import Kicker from '../ui/Kicker.astro';
+import MarginNote from '../ui/MarginNote.astro';
 import PlayStoreBadge from '../ui/PlayStoreBadge.astro';
 import CategoryBar from './CategoryBar.astro';
 import SpeciesCard from './SpeciesCard.astro';
@@ -3100,20 +3189,25 @@ const redLabel = redCode
 const iucnLabel = s.iucn !== 'NE' ? (t.species.iucnLabels as Record<string, string>)[s.iucn] : undefined;
 const familyShown = locale === 'sv' ? s.family.sv : s.family.latin;
 const rel = related(s, all, locale);
+// The group "other" ("Övriga fåglar" / "Other birds") has its own heading: the generic template gives
+// "More other birds" in English (controller review 2026-10-07). GroupPage.astro has no "More" heading.
 const moreHeading = rel.kind === 'family'
   ? t.species.moreFamily.replace('{family}', locale === 'sv' ? s.family.sv.toLocaleLowerCase('sv') : s.family.latin)
-  : t.species.moreGroup.replace('{group}', group.name[locale].toLocaleLowerCase(locale));
+  : s.group === 'other'
+    ? t.species.moreOther
+    : t.species.moreGroup.replace('{group}', group.name[locale].toLocaleLowerCase(locale));
 const marginalia = s.marginalia?.[locale];
-// Obs (controller-granskning 2026-10-07): `species-groups.json`s gruppnamn för nyckeln `other` är
-// "Övriga fåglar" / "Other birds", så den generiska mallen `moreGroup` ger "Fler övriga fåglar" /
-// "More other birds" oförändrad. Det låter rimligt på svenska men dubblerat och klumpigt på engelska
-// ("more ... other birds"). Specialfall gruppnyckeln `other` här (och i samma mönster på GroupPage.astro,
-// Task 8) med en egen rad, t.ex. en `moreOther`-nyckel. Nyckeln måste finnas i BÅDA copy-filerna
-// (Task 5), inte bara på engelska: svensk text kan vara samma som i dag, "Fler övriga fåglar".
+// Latin names are tagged for pronunciation (same pattern as SpeciesCard and the English group page):
+// the scientific name everywhere, the family name on the English page, where it is the Latin one.
+const familyLang = locale === 'en' ? 'la' : undefined;
 
 const months = s.data?.months;
 const counties = s.data?.counties;
 const summaryId = `data-summary-${s.qid}`;
+// Rendered whenever the species has report data (controller decision, Task 9 re-review 2026-10-07): with
+// the chart and map it is their text alternative; without them (an absent or rare species, spec §9.2) it is
+// the presence sentence that the Artportalen credit below refers to.
+const dataSentences = (s.data?.sentences[locale] ?? []).join(' ');
 const behaviour = joinSentences(text.behaviour);
 const looks = text.lookAlikes.flatMap((item) => {
   const view = lookAlikeView(s, item, locale, all, records, comps);
@@ -3167,9 +3261,9 @@ const jsonLd = [
             <li><span aria-current="page" data-crumb>{name}</span></li>
           </ol>
         </nav>
-        <Kicker text={familyShown} />
+        <Kicker text={familyShown} lang={familyLang} />
         <h1>{name}</h1>
-        <p class="latin">{s.names.scientific}</p>
+        <p class="latin" lang="la">{s.names.scientific}</p>
       </header>
 
       <div class="left">
@@ -3179,8 +3273,8 @@ const jsonLd = [
             <figcaption><span>{t.species.plate.replace('{n}', '1')}, {name}</span><span>{t.species.photoCredit} {hero.author ?? t.species.unknownAuthor}</span></figcaption>
           </figure>
           <dl class="facts">
-            <div><dt>{t.species.facts.scientific}</dt><dd><i>{s.names.scientific}</i></dd></div>
-            <div><dt>{t.species.facts.family}</dt><dd>{familyShown}</dd></div>
+            <div><dt>{t.species.facts.scientific}</dt><dd><i lang="la">{s.names.scientific}</i></dd></div>
+            <div><dt>{t.species.facts.family}</dt><dd lang={familyLang}>{familyShown}</dd></div>
             {status && <div><dt>{t.species.facts.sweden}</dt><dd>{status}</dd></div>}
             {text.facts.size && <div><dt>{t.species.facts.size}</dt><dd>{text.facts.size.value}</dd></div>}
             {redLabel && <div data-redlist><dt>{t.species.facts.swedishRedList}</dt><dd>{redLabel}</dd></div>}
@@ -3191,7 +3285,7 @@ const jsonLd = [
             <p>{appText(s, t)}</p>
             <PlayStoreBadge locale={locale} href={playHref(s.slug[locale], 'species')} alt={t.alt.playStoreBadge} size="small" />
           </aside>
-          {marginalia && <p class="note">{marginalia}</p>}
+          {marginalia && <div class="note"><MarginNote text={marginalia} /></div>}
         </div>
       </div>
 
@@ -3205,8 +3299,8 @@ const jsonLd = [
           <AudioPlayer species={s} locale={locale} creditKey="audio" />
           <h2>{t.species.headWhere}</h2>
           <p>{joinSentences(text.whereWhen)}</p>
-          {(months || counties) && (
-            <div class="datafig">
+          {dataSentences && (
+            <div class:list={['datafig', { 'datafig--text': !months && !counties }]}>
               {months && (
                 <div class="fig-chart">
                   <h3 class="fig-h">{t.species.chartTitle}</h3>
@@ -3225,7 +3319,7 @@ const jsonLd = [
                   </figure>
                 </div>
               )}
-              <p class="data-summary" id={summaryId}>{(s.data?.sentences[locale] ?? []).join(' ')}</p>
+              <p class="data-summary" id={summaryId}>{dataSentences}</p>
             </div>
           )}
           {behaviour && (
@@ -3256,7 +3350,7 @@ const jsonLd = [
                     )}
                     <div>
                       <p class="look-name">
-                        {view.species ? <a href={speciesHref(view.species, locale)}>{view.name}</a> : view.scientificOnly ? <i>{view.name}</i> : view.name}
+                        {view.species ? <a href={speciesHref(view.species, locale)}>{view.name}</a> : view.scientificOnly ? <i lang="la">{view.name}</i> : view.name}
                       </p>
                       <p class="look-text">{view.text}</p>
                       {view.comparison && <a class="look-compare" href={comparisonHref(view.comparison, locale)}>{compareText(view.comparison)}</a>}
@@ -3301,18 +3395,25 @@ const jsonLd = [
   .body { grid-area: body; padding-left: 36px; }
   h1 { font-size: clamp(40px, 4.6vw, 58px); line-height: 1.02; margin: 4px 0 0; overflow-wrap: anywhere; }
   .latin { margin: 2px 0 0; font-family: var(--font-script); font-size: 24px; color: var(--muted); }
-  .note { margin: 4px 0 0; font-family: var(--font-script); font-size: 22px; line-height: 1.2; color: var(--rust); transform: rotate(-2deg); }
   .sp-lead { font-size: 17px; line-height: 1.6; margin: 18px 0 0; max-width: 40rem; }
   .texts h2, .looks-sec h2, .more h2 { font-size: 24px; margin: 30px 0 8px; }
   .texts > p, .marks { font-size: 15.5px; line-height: 1.65; max-width: 40rem; margin: 0; }
-  .marks { padding-left: 20px; }
+  .marks { padding-left: 20px; list-style: disc; }
   .marks li { margin: 3px 0; }
-  .datafig { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 18px 28px; align-items: start; margin-top: 16px; max-width: 40rem; }
+  /* The summary sits under the chart, next to the taller map, instead of under both (no empty column). */
+  .datafig { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); grid-template-rows: auto 1fr; grid-template-areas: 'chart map' 'sum map'; gap: 18px 28px; align-items: start; margin-top: 16px; max-width: 40rem; }
+  .datafig--text { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: 'sum'; }
   .datafig figure { margin: 0; }
-  .datafig .data-summary { grid-column: 1 / -1; }
+  .fig-chart { grid-area: chart; }
+  .fig-map { grid-area: map; }
+  .datafig .data-summary { grid-area: sum; }
   .fig-h { font-family: var(--font-sans); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--rust); font-weight: 600; margin: 0 0 8px; }
   .fig-map { max-width: 220px; }
   .plate.extra { margin-top: 30px; max-width: 640px; }
+  /* Four across on the desktop spread, as in the mockup (species.css's auto-fill gives 3 + 1 here). */
+  @media (min-width: 1024px) {
+    .more .sp-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
   .looks { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; max-width: 40rem; }
   .looks li { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 14px; align-items: start; }
   .looks li.no-photo { grid-template-columns: minmax(0, 1fr); }
@@ -3323,7 +3424,7 @@ const jsonLd = [
   .look-text { margin: 2px 0 0; font-size: 15px; line-height: 1.6; }
   .look-compare { display: inline-block; margin-top: 4px; font-size: 13.5px; font-weight: 600; color: var(--rust); border-bottom: 1px solid currentColor; }
   @media (max-width: 600px) {
-    .datafig { grid-template-columns: minmax(0, 1fr); }
+    .datafig:not(.datafig--text) { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: 'chart' 'map' 'sum'; }
   }
   @media (max-width: 1023px) {
     .spread { display: flex; flex-direction: column; gap: 18px; }
@@ -3355,8 +3456,9 @@ import { ABOUT_SLUG, GROUPS, activeGroups, assertUniqueSlugs, getAllSpecies } fr
 /** Every page under /species/ and /sv/arter/ except the hub and the about page (spec §4). */
 export async function speciesPaths(locale: Locale) {
   const all = await getAllSpecies();
-  // Checked against all 15 GROUPS, not just the active ones (carried over from Task 8's fix wave): a
-  // slug collision must fail the very first build, not wait for the publish that activates the group.
+  // Checked against all 15 GROUPS, not just the active ones (controller review, Task 8 fix wave): a slug
+  // collision must fail the very first build, not wait for the publish that happens to activate the
+  // colliding group, by which point the build has looked clean for however long the group sat empty.
   assertUniqueSlugs([...all.map((s) => s.slug[locale]), ...GROUPS.map((g) => g.slug[locale]), ABOUT_SLUG[locale]], locale);
   const groups = activeGroups(all);
   return [
@@ -3382,7 +3484,7 @@ const { locale, species, group } = Astro.props;
 {group && <GroupPage group={group} locale={locale} />}
 ```
 
-**Tillägg (Task 8:s granskning 2026-10-07): samma familjeregel här.** Artsidans familjerad (`t.species.facts.family`) och "Fler {familj}"-rubriken (`moreFamily`) visar artens EGNA `family.sv`/`family.latin` direkt (koden nedan, raderna med `familyShown`) -- det är ingen tvetydighet här som på gruppsidan, eftersom en artsida bara handlar om EN art, inte en lista av arter som kan ha olika `family.sv`-stavningar för samma `family.latin`. Samma `related()`-funktion (grupperar på `family.latin`, se Task 4) används för att hitta vilka andra arter som räknas som samma familj till "Fler"-länken; de visade NAMNEN kommer fortfarande från den aktuella arten själv, inte en aggregerad etikett. Gruppsidans `GroupPage.astro` (Task 8) löser den tvetydigheten med en stabil "första förekomst vinner"-regel, tills pipelinen skriver ett kanoniskt svenskt familjenamn per latinsk familj.
+**Tillägg (Task 8:s granskning 2026-10-07): samma familjeregel här.** Artsidans familjerad (`t.species.facts.family`) och "Fler {familj}"-rubriken (`moreFamily`) visar artens EGNA `family.sv`/`family.latin` direkt (koden ovan, raderna med `familyShown`). Det är ingen tvetydighet här som på gruppsidan, eftersom en artsida bara handlar om EN art, inte en lista av arter som kan ha olika `family.sv`-stavningar för samma `family.latin`. Samma `related()`-funktion (grupperar på `family.latin`, se Task 4) används för att hitta vilka andra arter som räknas som samma familj till "Fler"-länken; de visade NAMNEN kommer fortfarande från den aktuella arten själv, inte en aggregerad etikett. Gruppsidans `GroupPage.astro` (Task 8) löser den tvetydigheten med en stabil "första förekomst vinner"-regel, tills pipelinen skriver ett kanoniskt svenskt familjenamn per latinsk familj.
 
 - [ ] **Step 5: Kör testerna**
 
@@ -3392,11 +3494,22 @@ Expected: PASS (alla). Om datumformatet skiljer (Node utan full ICU ger "Novembe
 - [ ] **Step 6: Commit**
 
 ```bash
-git add src/components/species/SpeciesArticle.astro src/lib/species-routes.ts src/components/species/SpeciesRoute.astro tests/species.spec.ts
+git add src/components/species/SpeciesArticle.astro src/lib/species-routes.ts src/components/species/SpeciesRoute.astro tests/species.spec.ts src/components/ui/Kicker.astro src/content/copy.sv.json src/content/copy.en.json tests/fixtures/make-species-fixtures.mjs tests/fixtures/species/Q25411.json tests/unit/species-source.unit.mjs
 git commit -m "feat(website): artsidan med diagram, karta, inspelning, förväxlingsarter, granskningsrad och JSON-LD"
 ```
 
-(Tillägg, controller-granskning 2026-10-07: `reportData={Boolean(s.data)}` (kodblocket ovan, var `Boolean(months || counties)`) så att en art som förekommer så sällan att den inte får diagram eller karta (spec §9.2, "För lite data") ändå visar datacrediten -- `data` finns (`totalReports` och förekomstmeningen), bara `months`/`counties` saknas. Task 1:s fixturgenerator har sedan samma granskning en art för just detta: Blåkråka (`Q25411`, `absent: true` i `SPECIES`-arrayen), `data.sentences` är bara "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025." / "Does not occur in Sweden: no reports in Artportalen 2016 to 2025.", inget `months`/`counties`, inget `swedishRedList`. Den är avsiktligt `publish: false` (som de två hackspettarna) så att den inte rör om i hubbens och gruppsidornas redan godkända räkningar (Task 7 och 8s tester); vill Task 10s eget test besöka den byggda sidan, flippa `publish` eller bygg mot `SPECIES_PREVIEW=1` i stället för standardbygget. Datameningarnas ordval är dessutom ändrat rakt över (`Rapporteras sällan i …` i stället för `Nästan aldrig i …`, `Rapporteras från alla 21 län.`/`Andelen av alla fågelrapporter är högst i …` i stället för `Vanligast i rapporterna från …`, pipelinens fix wave 2026-10-07 efter att den här planen skrevs) -- Steg 1s `.data-summary`-rad ovan är uppdaterad till `'Rapporteras året runt. Rapporteras från alla 21 län.'`.)
+(Tillägg, controller-granskning 2026-10-07: `reportData={Boolean(s.data)}` (kodblocket ovan, var `Boolean(months || counties)`) så att en art som förekommer så sällan att den inte får diagram eller karta (spec §9.2, "För lite data") ändå visar datacrediten: `data` finns (`totalReports` och förekomstmeningen), bara `months`/`counties` saknas. Task 1:s fixturgenerator har sedan samma granskning en art för just detta: Blåkråka (`Q25411`, `absent: true` i `SPECIES`-arrayen), `data.sentences` är bara "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025." / "Does not occur in Sweden: no reports in Artportalen 2016 to 2025.", inget `months`/`counties`, inget `swedishRedList`. Den var `publish: false` (som de två hackspettarna) fram till Task 10, som publicerade den, se avvikelserna nedan. Datameningarnas ordval är dessutom ändrat rakt över (`Rapporteras sällan i …` i stället för `Nästan aldrig i …`, `Rapporteras från alla 21 län.`/`Andelen av alla fågelrapporter är högst i …` i stället för `Vanligast i rapporterna från …`, pipelinens fix wave 2026-10-07 efter att den här planen skrevs); Steg 1s `.data-summary`-rad ovan är uppdaterad till `'Rapporteras året runt. Rapporteras från alla 21 län.'`.)
+
+
+**Avvikelser vid genomförandet (Task 10, 2026-10-07; kodblocken ovan är byte-identiska med filerna):**
+
+1. **Blåkråka är publicerad i testdatan** (`publish: true`, var `false`), så att sidtypen "frånvarande art" byggs och testas som en vanlig sida; riktig data har en sådan art redan (Koboltmes, `Q10546857`). Den gör gruppen `other` aktiv med en art, så Task 7:s och 8:s räkningar steg med en (kodblocken där är ändrade: `.groups a` 8, ingångssidans `[data-item]` 17, gruppsidans `.catbar .chip` 9) och enhetstestet `builtSpeciesMedia` räknar 19 foton i `dist/`. Dess förväxlingsart är Större hackspett, en post utan sida i standardbygget (samma fall som Koboltmes och Blåmes i riktig data): namnet visas utan länk, foto och jämförelselänk.
+2. **Datameningen visas när arten har `data`**, även utan diagram och karta (controllerns beslut i Task 9:s omgranskning): för en frånvarande eller sällsynt art är den förekomstmeningen som datacrediten syftar på. Med diagram och karta står meningen under diagrammet bredvid kartan (`grid-template-areas`), inte under båda, så att vänsterkolumnen inte lämnar ett tomt fält bredvid den höga kartan.
+3. **`moreOther`** ("Fler övriga fåglar" / "More birds", ny nyckel i båda copy-filerna och i specens bilaga A) för gruppen `other`, i stället för mallen som gav "More other birds". `GroupPage.astro` har ingen "Fler"-rubrik, så bara artsidan berörs.
+4. **Marginalanteckningen är `MarginNote`** (specen §5 nämner komponenten) inuti `<div class="note">`, i stället för ett eget `<p class="note">` med egna stilar.
+5. **`lang="la"`** på det vetenskapliga namnet (rubriken, faktalistan, förväxlingsarter utan fil) och på familjen på den engelska sidan (kickern och faktalistan), samma mönster som `SpeciesCard` och gruppsidan. `Kicker.astro` fick därför en valfri `lang`-prop.
+6. **Punkter i kännetecknen** (`list-style: disc`; Tailwinds grundstilar tar bort dem) och **fyra kort i bredd** under "Fler ..." på dator, som i mockupen (`species.css`s `auto-fill` gav 3 + 1).
+7. **Fler tester:** JSON-LD (brödsmulor, `WebPage` med taxon, foto, inspelning och `lastReviewed`, ingen `reviewedBy`), den frånvarande arten, "public domain" och "okänd upphovsperson" (Task 9:s omgranskning), stapelns titel utan siffra, och Blåkråka i sidledsscrollkontrollen.
 
 ---
 
