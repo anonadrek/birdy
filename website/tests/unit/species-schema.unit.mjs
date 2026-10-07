@@ -76,3 +76,10 @@ test('kuvertet kontrolleras: namn, adresser och text: null för väntande poster
   assert.match(messages(speciesRecord.safeParse({ ...pending, slug: { sv: 'spillkraka' } })), /^slug\.en: /m);
   assert.match(messages(speciesRecord.safeParse({ ...pending, text: species('Q25485').text })), /^text: Q143284: status pending ska ha text: null/m);
 });
+
+test('marginalia kan sakna ett språk (null), och wikipedia kan sakna vilken artikel som helst', () => {
+  const record = species('Q25485');
+  const result = speciesRecord.safeParse({ ...record, marginalia: { sv: 'Bara på svenska.', en: null }, wikipedia: { de: record.wikipedia.de } });
+  assert.ok(result.success, result.success ? '' : messages(result));
+  assert.deepEqual(result.data.marginalia, { sv: 'Bara på svenska.', en: null });
+});

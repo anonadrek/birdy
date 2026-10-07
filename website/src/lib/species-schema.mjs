@@ -74,7 +74,8 @@ export const speciesPage = z
     iucn: z.string(),
     swedishRedList: z.enum(['RE', 'CR', 'EN', 'VU', 'NT', 'DD', 'not_listed']).optional(),
     identifiable: z.object({ photo: z.boolean(), sound: z.boolean() }),
-    marginalia: localized.optional(),
+    // The app's marginalia can exist in one language only; the pipeline then writes null for the other.
+    marginalia: z.object({ sv: z.string().nullish(), en: z.string().nullish() }).optional(),
     images: z.array(z.object({
       role: z.enum(['hero', 'extra']),
       file: z.string().regex(/^Q\d+\/(hero|extra)\.webp$/),

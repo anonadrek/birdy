@@ -753,7 +753,7 @@ Listan ligger i `prompts/web-banned-phrases.txt` (med böjningsformer sedan fas 
 - `review` är alltid ett objekt. `review.statusConfirmed` är sant när Albin har behållit statusen trots en flagga.
 - `verification` finns bara för en art som har klarat den automatiska kontrollen (9.4) och, om den hade flaggor, fått Albins beslut. `verification.model` är kontrollmodellens id, `verification.spotChecked` är sant om arten har dragits i stickprovet efter publicering (ändrat 2026-10-05 (b), avsnitt 14). Ingen text skrivs för en art utan `verification`.
 - `publish` styr produktionsbygget (avsnitt 14).
-- `audio`, `marginalia`, `data` och `wikipedia.de` kan saknas. `data.months` och `data.counties` saknas när arten har färre än 200 rapporter.
+- `audio`, `marginalia` och `data` kan saknas. `wikipedia.sv`, `wikipedia.en` och `wikipedia.de` kan var för sig saknas (bara artiklar som finns skrivs), och `marginalia` kan sakna ett språk (`null`). `data.months` och `data.counties` saknas när arten har färre än 200 rapporter.
 - `swedishRedList` är `RE`, `CR`, `EN`, `VU`, `NT`, `DD` eller `not_listed`, eller saknas om matchningen mot listan misslyckades.
 - `lookAlikes[].other` och `facts[].other.qid` är QID när den andra arten finns bland de 839, annars saknas `qid` och `lookAlikes[].other` är det vetenskapliga namnet. Bara arter med publicerad sida länkas.
 - Sajtens zod-schema läser bara de fält sidorna behöver och görs inte `.strict()`. Av `facts` läser sajten bara `id`, `topic` och `other` (namnet på en förväxlingsart som inte har egen sida). Av `verification` läser sajten bara `at` (till creditraden och `lastReviewed`). `raw`, `generated` och `rejectedText` läses inte av sajten.
