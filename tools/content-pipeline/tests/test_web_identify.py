@@ -36,3 +36,15 @@ def test_scientific_index_covers_all_species_lowercase(tmp_path: Path) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text, encoding="utf-8")
     assert load_scientific_index(tmp_path) == {"parus major": "Q1", "cyanistes caeruleus": "Q2"}
+
+
+def test_the_name_index_has_the_family_of_every_species(tmp_path: Path) -> None:
+    from birdy_fetcher.web.source import load_name_index
+
+    text = YAML_TEMPLATE.format(qid="Q1", sv="X", en="X", status="auto", marginalia="")
+    path = tmp_path / "x" / "Q1.yaml"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+    names = load_name_index(tmp_path)
+    assert names.qids == {"parus major": "Q1"}
+    assert names.families == {"parus major": "Paridae"}

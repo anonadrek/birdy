@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import asyncio
 import hashlib
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -20,7 +20,7 @@ from .llm import MODELS, AnthropicJsonClient, JsonModelClient, record_cost
 from .paths import WebPaths
 from .record import is_reviewed, load_record, record_path, save_record
 from .report import StepOutcome, render_step_report, write_step_report
-from .source import SpeciesSource, load_approved, load_scientific_index
+from .source import SpeciesSource, load_approved, load_name_index
 from .sources_step import ArticleSource
 from .wiki_full import FullWikiClient, WikiArticle
 
@@ -79,6 +79,8 @@ class FactExtractor:
     model_key: str = FACTS_MODEL_KEY
     effort: str = FACTS_EFFORT
     regenerate: bool = False
+    # Lowercased scientific name to family, for a look-alike in an older genus (scinames).
+    scientific_families: dict[str, str] = field(default_factory=dict)
 
     def _cache_name(
         self, template: str, articles: dict[str, WikiArticle], extra_feedback: str | None = None
@@ -93,8 +95,16 @@ class FactExtractor:
             retry = "-v1retry-" + hashlib.sha256(extra_feedback.encode("utf-8")).hexdigest()[:8]
         return f"facts-{self.model_key}-{self.effort}-{prompt_hash}{retry}-{revs}.json"
 
-    def _check(self, out: FactSheetOutput, articles: dict[str, WikiArticle]) -> FactCheck:
-        return check_fact_sheet(out, articles, self.scientific_index)
+    def _check(
+        self, out: FactSheetOutput, articles: dict[str, WikiArticle], source: SpeciesSource
+    ) -> FactCheck:
+        return check_fact_sheet(
+            out,
+            articles,
+            self.scientific_index,
+            subject=source.scientific_name,
+            families=self.scientific_families,
+        )
 
     async def extract(
         self,
@@ -111,7 +121,11 @@ class FactExtractor:
         name = self._cache_name(template, articles, extra_feedback)
         cached = None if self.regenerate else self.cache.get(source.qid, name)
         if cached is not None:
-            return self._check(FactSheetOutput.model_validate_json(cached), articles), 0, True
+            return (
+                self._check(FactSheetOutput.model_validate_json(cached), articles, source),
+                0,
+                True,
+            )
 
         system, user = render_facts_prompt(template, source, articles)
         messages: list[MessageParam] = [{"role": "user", "content": user}]
@@ -133,11 +147,13 @@ class FactExtractor:
                 record_cost(self.cost, self.model_key, reply)
             except MaxCostExceeded:
                 if reply.parsed is not None:
-                    capped = self._check(reply.parsed, articles)
+                    capped = self._check(reply.parsed, articles, source)
                     if not capped.retry:
                         self.cache.put(source.qid, name, reply.parsed.model_dump_json(indent=2))
                 raise
-            check = self._check(reply.parsed, articles) if reply.parsed is not None else None
+            check = (
+                self._check(reply.parsed, articles, source) if reply.parsed is not None else None
+            )
             if reply.parsed is None or check is None:
                 reason = f"modellen gav inget giltigt svar (stop_reason={reply.stop_reason})"
                 if reply.stop_reason in ("max_tokens", "refusal"):
@@ -195,12 +211,14 @@ async def run_facts(
     owned = client is None
     model_client: JsonModelClient = client or AnthropicJsonClient()
     cost = CostTracker(max_usd=options.max_cost)
+    names = load_name_index(paths.species_root)
     extractor = FactExtractor(
         cache=cache,
         cost=cost,
         client=model_client,
         prompt_path=paths.prompt_file(PROMPT_VERSION),
-        scientific_index=load_scientific_index(paths.species_root),
+        scientific_index=names.qids,
+        scientific_families=names.families,
         model_key=options.model_key,
         effort=options.effort,
         regenerate=options.regenerate,

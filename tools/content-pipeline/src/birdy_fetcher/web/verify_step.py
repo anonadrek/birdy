@@ -31,7 +31,7 @@ from .record import (
     sweep_orphan_voices,
 )
 from .report import StepOutcome, render_step_report, sweep_outcome, write_step_report
-from .source import SpeciesSource, load_approved, load_scientific_index
+from .source import SpeciesSource, load_approved, load_name_index
 from .sources_step import ArticleSource
 from .verify import (
     FactChecker,
@@ -170,12 +170,14 @@ async def run_verify(
         model_key=options.model_key,
         effort=options.effort,
     )
+    names = load_name_index(paths.species_root)
     extractor = FactExtractor(
         cache=cache,
         cost=cost,
         client=model_client,
         prompt_path=paths.prompt_file(FACTS_PROMPT_VERSION),
-        scientific_index=load_scientific_index(paths.species_root),
+        scientific_index=names.qids,
+        scientific_families=names.families,
     )
     stop = asyncio.Event()
     semaphore = asyncio.Semaphore(options.workers)

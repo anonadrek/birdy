@@ -231,3 +231,41 @@ def test_apply_facts_orders_facts_and_flags_a_status_contradiction() -> None:
     assert record["status"] == "pending"
     assert "statusConfirmed" not in record["review"]
     assert record["generated"]["facts"] == {"model": "claude-opus-5"}
+
+
+def test_an_abbreviated_lookalike_gets_the_binomial_and_its_qid() -> None:
+    """R3 (2026-10-07): Råka's look-alike was "C. corone" (or "C. corone corone"), so it
+    got no QID and the box could not link to Kråka (Corvus corone)."""
+    articles = {
+        "sv": WikiArticle(
+            "sv", "Råka", "1", "Råkan kan förväxlas med svartkråka (C. corone corone)."
+        )
+    }
+    index = {"corvus corone": "Q26198", "corvus frugilegus": "Q25386"}
+    lookalike = _fact(
+        "lookalike",
+        "Kan förväxlas med svartkråka.",
+        "kan förväxlas med svartkråka (C. corone corone)",
+        other="C. corone corone",
+    )
+    check = check_fact_sheet(
+        FactSheetOutput(facts=[lookalike], sweden_status=None),
+        articles,
+        index,
+        subject="Corvus frugilegus",
+    )
+    assert check.facts[0]["other"] == {"scientific": "Corvus corone", "qid": "Q26198"}
+
+
+def test_a_lookalike_birdy_does_not_have_keeps_the_name_as_written() -> None:
+    articles = {"en": WikiArticle("en", "Rook", "1", "It resembles the American crow C. brachy.")}
+    lookalike = _fact(
+        "lookalike", "Liknar amerikansk kråka.", "resembles the American crow", "en", "C. brachy"
+    )
+    check = check_fact_sheet(
+        FactSheetOutput(facts=[lookalike], sweden_status=None),
+        articles,
+        {"corvus corone": "Q26198"},
+        subject="Corvus frugilegus",
+    )
+    assert check.facts[0]["other"] == {"scientific": "C. brachy"}

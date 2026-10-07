@@ -13,6 +13,7 @@ from pydantic import BaseModel
 from .checks import quote_in_sources
 from .datamod import status_contradiction
 from .record import Record
+from .scinames import resolve_lookalike
 from .wiki_full import WikiArticle
 
 Topic = Literal[
@@ -111,8 +112,18 @@ def _valid_sources(
     ]
 
 
+@dataclass(frozen=True)
+class _Names:
+    """What a look-alike's name is matched against (scinames.resolve_lookalike)."""
+
+    index: dict[str, str]
+    families: dict[str, str]
+    subject: str | None
+    context: str
+
+
 def _entry(
-    number: int, fact: ModelFact, articles: dict[str, WikiArticle], index: dict[str, str]
+    number: int, fact: ModelFact, articles: dict[str, WikiArticle], names: _Names
 ) -> tuple[dict[str, Any] | None, str | None]:
     sources = _valid_sources(fact.sources, articles)
     if not sources:
@@ -123,11 +134,19 @@ def _entry(
     if fact.topic == "lookalike":
         if not fact.other_scientific:
             return None, f"faktum {number} ströks, förväxlingsarten saknar namn: {fact.sv}"
-        other = {"scientific": fact.other_scientific.strip()}
-        qid = index.get(other["scientific"].lower())
-        if qid:
-            other["qid"] = qid
-        entry["other"] = other
+        written = fact.other_scientific.strip()
+        found = resolve_lookalike(
+            written,
+            names.index,
+            subject=names.subject,
+            families=names.families,
+            context=names.context,
+        )
+        # Birdy's own name for a species it has ("Corvus corone" for "C. corone corone"),
+        # else the name as the article writes it (R3, 2026-10-07).
+        entry["other"] = (
+            {"scientific": found[0], "qid": found[1]} if found else {"scientific": written}
+        )
     return entry, None
 
 
@@ -178,12 +197,26 @@ def _cap_notes(dropped: list[tuple[int, dict[str, Any]]]) -> list[str]:
 
 
 def check_fact_sheet(
-    out: FactSheetOutput, articles: dict[str, WikiArticle], scientific_index: dict[str, str]
+    out: FactSheetOutput,
+    articles: dict[str, WikiArticle],
+    scientific_index: dict[str, str],
+    *,
+    subject: str | None = None,
+    families: dict[str, str] | None = None,
 ) -> FactCheck:
+    """`subject` is the species' own scientific name and `families` maps the index's names
+    to their family: both help match a look-alike written "C. corone" or in an older genus
+    (scinames.py)."""
     check = FactCheck()
+    names = _Names(
+        index=scientific_index,
+        families=families or {},
+        subject=subject,
+        context="\n\n".join(a.text for a in articles.values()),
+    )
     valid: list[tuple[int, dict[str, Any]]] = []
     for number, fact in enumerate(out.facts, start=1):
-        entry, note = _entry(number, fact, articles, scientific_index)
+        entry, note = _entry(number, fact, articles, names)
         if note is not None:
             check.notes.append(note)
         if entry is not None:
