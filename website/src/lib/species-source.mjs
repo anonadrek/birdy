@@ -2,12 +2,28 @@
 // Plain JS so astro.config.mjs, content.config.ts, src/lib/species.ts and the check scripts share one rule.
 //   SPECIES_FIXTURES=1  read the test data in tests/fixtures/ instead of src/data/ and src/assets/species/
 //   SPECIES_PREVIEW=1   also build verified pages that are not published yet (Vercel Preview)
+// Both are off unless exactly '1' (unset, '0' or anything else means off); `npm run build:prod` pins
+// both to '0' explicitly, so an inherited shell variable can never silently change a production build.
 import { createHash } from 'node:crypto';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 export const useFixtures = () => process.env.SPECIES_FIXTURES === '1';
-export const isPreview = () => process.env.SPECIES_PREVIEW === '1';
+
+/**
+ * Preview (unpublished-but-verified) pages must never build in a Vercel Production deploy, even if
+ * SPECIES_PREVIEW leaks in from a misconfigured environment. Vercel sets VERCEL_ENV to 'production'
+ * only for Production deploys (Preview deploys get 'preview'), so this is a safe, narrow check.
+ */
+export function isPreview() {
+  const preview = process.env.SPECIES_PREVIEW === '1';
+  if (preview && process.env.VERCEL_ENV === 'production') {
+    throw new Error(
+      'SPECIES_PREVIEW=1 är satt men VERCEL_ENV=production: förhandsgranskade (opublicerade) sidor får aldrig byggas i Vercels Production.',
+    );
+  }
+  return preview;
+}
 
 /** Folders relative to the website root. */
 export const speciesDir = () => (useFixtures() ? 'tests/fixtures/species' : 'src/data/species');
@@ -31,7 +47,14 @@ export function readJsonDir(root, dir) {
   return readdirSync(abs)
     .filter((f) => f.endsWith('.json'))
     .sort()
-    .map((f) => JSON.parse(readFileSync(resolve(abs, f), 'utf8')));
+    .map((f) => {
+      const text = readFileSync(resolve(abs, f), 'utf8');
+      try {
+        return JSON.parse(text);
+      } catch (e) {
+        throw new Error(`${dir}/${f}: ${text.startsWith('\uFEFF') ? 'starts with a UTF-8 BOM; ' : ''}${e.message}`, { cause: e });
+      }
+    });
 }
 
 /** Public path of a species' recording. Content-hashed; astro.config.mjs copies the file into dist for built species only. */

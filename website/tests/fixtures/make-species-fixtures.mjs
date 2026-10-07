@@ -4,6 +4,9 @@
 // "Testtext" / "Test text". Output lives under tests/fixtures/ and is only read when the build runs
 // with SPECIES_FIXTURES=1 (npm run build:fixtures). Re-run after changing this file:
 //   node tests/fixtures/make-species-fixtures.mjs
+//
+// This script DELETES and rewrites its three output folders (species/, comparisons/, species-assets/)
+// from scratch on every run — nothing hand-written can live there, it would be wiped on the next run.
 import { mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -203,11 +206,14 @@ function comparison(c) {
   };
 }
 
-async function photo(qid, role, label) {
+// Colour alone distinguishes hero from extra (no <text>): text rendering depends on which fonts are
+// installed, so an SVG with a <text> element rasterizes to different pixels (and thus different WebP
+// bytes) on Windows vs macOS vs CI. A flat-colour rectangle is byte-identical everywhere.
+async function photo(qid, role) {
   const dir = resolve(OUT.assets, qid);
   mkdirSync(dir, { recursive: true });
   const bg = role === 'hero' ? '#F2B27A' : '#FDE5CB';
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="1200" height="800" fill="${bg}"/><text x="600" y="420" font-family="Georgia, serif" font-size="64" fill="#302019" text-anchor="middle">Testbild: ${label}</text></svg>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="1200" height="800" fill="${bg}"/></svg>`;
   await sharp(Buffer.from(svg)).webp({ quality: 60 }).toFile(resolve(dir, `${role}.webp`));
 }
 
@@ -225,8 +231,8 @@ for (const dir of Object.values(OUT)) {
 }
 for (const sp of SPECIES) {
   writeFileSync(resolve(OUT.species, `${sp.qid}.json`), `${JSON.stringify(record(sp), null, 2)}\n`);
-  await photo(sp.qid, 'hero', sp.sv);
-  if (sp.extra) await photo(sp.qid, 'extra', `${sp.sv}, extra`);
+  await photo(sp.qid, 'hero');
+  if (sp.extra) await photo(sp.qid, 'extra');
   if (sp.audio) writeFileSync(resolve(OUT.assets, sp.qid, 'voice.mp3'), silentMp3());
 }
 for (const c of COMPARISONS) writeFileSync(resolve(OUT.comparisons, `${c.file}.json`), `${JSON.stringify(comparison(c), null, 2)}\n`);
