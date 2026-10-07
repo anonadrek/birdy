@@ -181,9 +181,7 @@ fun AppScaffold(
                 val pathSegment = parts.getOrNull(1)?.substringBefore("?")?.takeIf { it.isNotBlank() }
                 when (host) {
                     // Release 1.3.0 Task 7d: the daily-bird notification's "Lyssna efter den".
-                    "audio" -> {
-                        navController.navigate(AppRoute.AudioScan) { launchSingleTop = true }
-                    }
+                    "audio" -> navController.navigateInIdentify(AppRoute.AudioScan)
                     "species" -> {
                         val qid = pathSegment ?: return@collect
                         navController.navigate(AppRoute.SpeciesProfile(qid)) {
@@ -462,13 +460,7 @@ private fun NavGraphBuilder.appDestinations(
                 se.birdy.app.ui.map.MapScreen(
                     viewModel = mapVm,
                     onPinClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
-                    onIdentifyClick = {
-                        navController.navigate(AppRoute.Listen) {
-                            popUpTo(navController.graph.startDestinationId) { saveState = true }
-                            launchSingleTop = true
-                            restoreState = true
-                        }
-                    },
+                    onIdentifyClick = { navController.goToIdentify() },
                 )
             } else {
                 se.birdy.app.ui.map.MapPremiumTeaser(
@@ -613,9 +605,8 @@ private fun NavGraphBuilder.appDestinations(
         BelowStatusBar {
             se.birdy.app.ui.recap.RecapScreen(
                 viewModel = remember(graph) { graph.weeklyRecapViewModel() },
-                onOpenCamera = {
-                    navController.navigate(AppRoute.Scan) { launchSingleTop = true }
-                },
+                // On Identifiera's stack, not the recap's tab's (Task 7b review).
+                onOpenCamera = { navController.navigateInIdentify(AppRoute.Scan) },
                 onObservationClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
                 onBack = { navController.popIfTop(entry) },
             )

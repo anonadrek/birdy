@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -77,6 +78,8 @@ internal fun testAppGraph(
     diagnosticsScreen: (@Composable () -> Unit)? = null,
     // Task 7b review: fakes for the audio-ID screen, so a test can open AudioScan.
     withAudio: Boolean = false,
+    // birdy:// links, as a notification tap delivers them (Task 7b review).
+    deepLinks: MutableSharedFlow<String>? = null,
 ): AppGraph {
     val grandfathered =
         GrandfatherPolicy.isGrandfathered(
@@ -114,6 +117,7 @@ internal fun testAppGraph(
         formattedPricesFlow = MutableStateFlow(prices),
         defaultLocale = defaultLocale,
         diagnosticsScreen = diagnosticsScreen,
+        deepLinkFlow = deepLinks,
         audioClassifierProvider = if (withAudio) ({ FakeAudioClassifier() to AudioClassifierMode.DEMO }) else null,
         audioStorageDir = if (withAudio) ({ System.getProperty("java.io.tmpdir") }) else null,
         audioRecorderFactory = if (withAudio) ({ FakeStreamingRecorder() }) else null,

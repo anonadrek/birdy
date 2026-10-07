@@ -25,6 +25,7 @@ import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
@@ -88,6 +89,7 @@ class VisibleBackTest {
         installedAtMs: Long = RoutingFixture.beforeCutoffMs,
         diagnosticsScreen: (@androidx.compose.runtime.Composable () -> Unit)? = null,
         withAudio: Boolean = false,
+        deepLinks: MutableSharedFlow<String>? = null,
     ): NavHostController =
         compose.startAppScaffold(
             testAppGraph(
@@ -97,6 +99,7 @@ class VisibleBackTest {
                 observationRepository = observations,
                 diagnosticsScreen = diagnosticsScreen,
                 withAudio = withAudio,
+                deepLinks = deepLinks,
             ),
         )
 
@@ -660,5 +663,129 @@ class VisibleBackTest {
         assertNoTabSelected()
         tapTab("Märken")
         compose.runOnIdle { assertSame(badges, nav.currentBackStackEntry) }
+    }
+
+    // --- The identify flow belongs to Identifiera; Identifiera never restores (Task 7b re-review) --
+
+    private fun deepLink(
+        links: MutableSharedFlow<String>,
+        uri: String,
+    ) {
+        compose.runOnIdle { assertTrue(links.tryEmit(uri)) }
+        compose.waitForIdle()
+    }
+
+    @Test
+    fun `the recap's camera on Mina arter opens on Identifiera, and Mina arter doesn't reopen it`() {
+        val nav = start()
+        tapTab("Mina arter")
+        nav.open(AppRoute.WeeklyRecap)
+        compose.onNodeWithText("Öppna kameran", substring = true).performSemanticsAction(SemanticsActions.OnClick)
+        compose.waitForIdle()
+        compose.runOnIdle {
+            assertTrue(nav.isOn(AppRoute.Scan::class))
+            assertTrue(!nav.hasOnStack(AppRoute.Lifelist), "the camera is on Identifiera's stack")
+        }
+        assertTabSelected("Identifiera")
+
+        tapTab("Identifiera")
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.Listen::class)) }
+        tapTab("Mina arter")
+        compose.runOnIdle {
+            assertTrue(nav.isOn(AppRoute.WeeklyRecap::class), "Mina arter comes back as it was left")
+            assertTrue(!nav.hasOnStack(AppRoute.Scan), "no camera in Mina arter's stack")
+        }
+    }
+
+    @Test
+    fun `a find saved from the recap's camera can't come back to be saved again`() {
+        val frame = File.createTempFile("frame", ".jpg").apply { writeBytes(byteArrayOf(1, 2, 3, 4)) }
+        val observations = FakeObservationRepository()
+        val nav = start(observations = observations)
+        tapTab("Mina arter")
+        nav.open(AppRoute.WeeklyRecap)
+        compose.onNodeWithText("Öppna kameran", substring = true).performSemanticsAction(SemanticsActions.OnClick)
+        compose.waitForIdle()
+        // A freeze on the camera opens the result on top of it.
+        nav.open(matchRoute("Q25485" to 0.95f, framePath = frame.absolutePath))
+        compose.onNodeWithText("Spara observation").performSemanticsAction(SemanticsActions.OnClick)
+        // The camera stays alive under the result, so waitUntil never sees the app idle; the save
+        // reads the frame on an IO thread, so give it real time too.
+        repeat(50) {
+            if (observations.allInserted.size == 1) return@repeat
+            Thread.sleep(50)
+            compose.mainClock.advanceTimeBy(100)
+            compose.waitForIdle()
+        }
+        assertTrue(observations.allInserted.size == 1, "the find was saved")
+        compose.waitForIdle()
+
+        tapTab("Identifiera")
+        tapTab("Mina arter")
+        // Mina arter is back on the recap it was left on, not on the result.
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.WeeklyRecap::class)) }
+        compose.onNodeWithText("Spara observation").assertDoesNotExist()
+        tapTab("Identifiera")
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.Listen::class)) }
+        compose.onNodeWithText("Spara observation").assertDoesNotExist()
+        compose.runOnIdle { assertTrue(observations.allInserted.size == 1, "the find was saved once") }
+    }
+
+    @Test
+    fun `birdy audio on Mina arter opens on Identifiera, and Mina arter doesn't bring it back`() {
+        val links = MutableSharedFlow<String>(extraBufferCapacity = 4)
+        val nav = start(withAudio = true, deepLinks = links)
+        tapTab("Mina arter")
+        deepLink(links, "birdy://audio")
+        compose.runOnIdle {
+            assertTrue(nav.isOn(AppRoute.AudioScan::class))
+            assertTrue(!nav.hasOnStack(AppRoute.Lifelist), "audio ID is on Identifiera's stack")
+        }
+        assertTabSelected("Identifiera")
+
+        tapTab("Identifiera")
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.Listen::class)) }
+        tapTab("Mina arter")
+        compose.runOnIdle {
+            assertTrue(nav.isOn(AppRoute.Lifelist::class))
+            assertTrue(!nav.hasOnStack(AppRoute.AudioScan))
+        }
+    }
+
+    @Test
+    fun `Identifiera on a species from today's bird on Identifiera goes to Identifiera`() {
+        val nav = start()
+        nav.open(AppRoute.SpeciesProfile("Q25485"))
+        tapTab("Identifiera")
+        compose.runOnIdle {
+            assertTrue(nav.isOn(AppRoute.Listen::class))
+            assertTrue(!nav.hasOnStack(AppRoute.SpeciesProfile("Q25485")))
+        }
+    }
+
+    @Test
+    fun `Identifiera on a species from a birdy species link at start goes to Identifiera`() {
+        val links = MutableSharedFlow<String>(extraBufferCapacity = 4)
+        val nav = start(deepLinks = links)
+        deepLink(links, "birdy://species/Q25485")
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.SpeciesProfile::class)) }
+        tapTab("Identifiera")
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.Listen::class)) }
+    }
+
+    @Test
+    fun `a species from Identifiera doesn't come back after another tab`() {
+        val nav = start()
+        nav.open(AppRoute.SpeciesProfile("Q25485"))
+        tapTab("Mina arter")
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.Lifelist::class)) }
+        tapTab("Identifiera")
+        compose.runOnIdle {
+            assertTrue(nav.isOn(AppRoute.Listen::class))
+            assertTrue(!nav.hasOnStack(AppRoute.SpeciesProfile("Q25485")))
+        }
+        // Nor in Uppslagsverk: it was Identifiera's, not the encyclopedia tab's.
+        tapTab("Uppslagsverk")
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.ArchiveList::class)) }
     }
 }
