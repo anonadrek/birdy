@@ -19,7 +19,8 @@
     "switchLangHref": "/sv/",
     "getApp": "Get the app",
     "menuOpen": "Open menu",
-    "menuClose": "Close menu"
+    "menuClose": "Close menu",
+    "skipToContent": "Skip to content"
   },
   "hero": {
     "kicker": "Bird guide and field journal",

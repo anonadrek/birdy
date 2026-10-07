@@ -6,6 +6,7 @@ import type { Copy, Locale } from './i18n';
 import { comparisonsDir, hasPageContract, isComparisonBuilt, isPreview, isSpeciesBuilt, speciesDir, useEmptyData, useFixtures } from './species-source.mjs';
 import type { speciesPage } from './species-schema.mjs';
 import { normalizeSearch } from './species-search.mjs';
+import { footerSpecies } from './species-nav.mjs';
 import { audio as speciesAudio, images as speciesImages } from 'virtual:birdy-species-media';
 
 /** Any species file: the full page data for written and verified records, only the envelope for the rest. */
@@ -156,8 +157,10 @@ export function largestGroups(list: Species[], n: number): Group[] {
  * order. Species are published one at a time (spec §14), so the list is often incomplete and empty
  * before the first publication; the footer hides the row when it is empty (Task 13).
  */
+export const COMMON_QIDS: readonly string[] = groupData.common;
+
 export function commonSpecies(list: Species[]): Species[] {
-  return groupData.common.flatMap((qid) => list.filter((s) => s.qid === qid));
+  return footerSpecies(list, COMMON_QIDS).common;
 }
 
 /** The group's fixed photo species, or its first built species in Swedish alphabetical order (spec §6). */

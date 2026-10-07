@@ -18,7 +18,7 @@ const otherLocale: Locale = locale === 'sv' ? 'en' : 'sv';
 
 <Layout locale={locale} pathname={fieldNotesHref(locale)} title={t.blog.indexTitle} description={t.blog.indexDescription}>
   <Nav locale={locale} switchLangHref={fieldNotesHref(otherLocale)} />
-  <main>
+  <main id="main">
     <header class="bhead">
       <div class="wrap">
         <Kicker text={t.blog.kicker} />

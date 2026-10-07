@@ -19,7 +19,8 @@
     "switchLangHref": "/",
     "getApp": "Hämta appen",
     "menuOpen": "Öppna menyn",
-    "menuClose": "Stäng menyn"
+    "menuClose": "Stäng menyn",
+    "skipToContent": "Hoppa till innehållet"
   },
   "hero": {
     "kicker": "Fågelguide och fältdagbok",

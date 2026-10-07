@@ -40,7 +40,7 @@ const jsonLd = [
 
 <Layout locale={locale} pathname={pathname} alternatePath={aboutHref(other)} title={a.title} description={a.description} noindex={speciesCount === 0} jsonLd={jsonLd}>
   <Nav locale={locale} variant="solid" switchLangHref={aboutHref(other)} />
-  <main class="about wrap">
+  <main id="main" class="about wrap">
     <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
       <ol>
         <li><a href={crumbs[0].href} data-crumb>{crumbs[0].name}</a></li>

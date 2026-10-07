@@ -42,7 +42,7 @@ async function textContrastAgainstBackground(page: Page, locator: Locator): Prom
 }
 
 test.describe('meny och sidfot', () => {
-  for (const [path, label, getApp] of [['/sv/', 'Så funkar det', 'Hämta appen'], ['/', 'How it works', 'Get the app']] as const) {
+  for (const [path, label, getApp] of [['/sv/', 'Arter', 'Hämta appen'], ['/', 'Species', 'Get the app']] as const) {
     test(`menyn på ${path} har nya länkar och blir espressobrun efter första vyn`, async ({ page }) => {
       const errors = trackConsoleErrors(page);
       await page.setViewportSize({ width: 1280, height: 800 });
@@ -102,7 +102,7 @@ test.describe('meny och sidfot', () => {
   test('sidfoten har kolumnerna', async ({ page }) => {
     await page.goto('/sv/');
     const footer = page.locator('footer.footer');
-    await expect(footer.locator('.fh')).toHaveText(['Utforska', 'Läs', 'Information']);
+    await expect(footer.locator('.fh')).toHaveText(['Arter', 'Utforska', 'Läs', 'Information']);
     await expect(footer.locator('a[href="/legal/privacy/"]')).toHaveText('Integritetspolicy');
   });
 

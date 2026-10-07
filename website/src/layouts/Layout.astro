@@ -144,6 +144,8 @@ const jsonLd = {
     <script is:inline type="application/ld+json" set:html={serializeJsonLd(jsonLd)} />
   </head>
   <body>
+    {/* Past the menu (and the species pages' category bar) to the page's own <main id="main"> (Task 7's review). */}
+    <a href="#main" class="skip-link">{copy.nav.skipToContent}</a>
     <slot />
     {/*
       Own visits (spec 2026-09-25 §15): ?va-ignore=1 marks this browser, ?va-ignore=0 removes the mark.

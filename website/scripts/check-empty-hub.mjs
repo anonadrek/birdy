@@ -78,6 +78,18 @@ for (const path of ['sv/arter/om-artsidorna', 'species/about-these-pages']) {
   else if (desc.length < 120 || desc.length > 155) fail(path, `meta description är ${desc.length} tecken (ska vara 120 till 155): ${desc}`);
 }
 
+// The menu, the footer and the home page's field guide section (Task 13) link to the species pages only once
+// a species is built: at zero no page on the site may link to them (the hub only says they are coming).
+for (const path of ['', 'sv', 'blog', 'sv/blog']) {
+  const html = page(path);
+  const where = path || '/';
+  if (/href="\/(sv\/arter|species)\//.test(html)) fail(where, 'länkar till artsidorna trots noll byggda arter');
+  if (html.includes('class="fpop"')) fail(where, 'sidfoten har raden Vanliga arter trots noll byggda arter');
+  if (html.includes('fgrid--species')) fail(where, 'sidfoten har kolumnen Arter trots noll byggda arter');
+  if (html.includes('class="browse"')) fail(where, 'startsidan länkar till arterna trots noll byggda arter');
+  if (!html.includes('class="skip-link"')) fail(where, 'saknar hoppa-till-innehållet-länken');
+}
+
 const sitemap = existsSync(join(dist, 'sitemap-index.xml')) ? 'present' : 'missing';
 if (sitemap === 'missing') fail('sitemap-index.xml', 'saknas helt');
 
@@ -85,4 +97,4 @@ if (errors.length) {
   console.error(`check-empty-hub FAILED (${errors.length} fel):\n${errors.join('\n')}`);
   process.exit(1);
 }
-console.log('check-empty-hub OK (hubsidorna har noindex och visar bara ingressen, om-sidorna har noindex och hela innehållet, med noll byggda arter)');
+console.log('check-empty-hub OK (hubsidorna har noindex och visar bara ingressen, om-sidorna har noindex och hela innehållet, startsidorna och bloggen länkar inte till artsidorna, med noll byggda arter)');

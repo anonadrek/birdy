@@ -114,7 +114,7 @@ const jsonLd = [
 <Layout locale={locale} pathname={pathname} alternatePath={otherPath} title={title} description={text.metaDescription} ogImage={share.src} ogImageAlt={altHero} noindex={unpublished} jsonLd={jsonLd}>
   <Nav locale={locale} variant="solid" switchLangHref={otherPath} />
   <CategoryBar locale={locale} active={s.group} />
-  <main class="sp wrap" data-species-page>
+  <main id="main" class="sp wrap" data-species-page>
     {unpublished && <p class="sp-preview" data-preview-banner role="note">{t.species.previewBanner}</p>}
     <div class="spread">
       <header class="head">

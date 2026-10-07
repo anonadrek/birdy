@@ -547,3 +547,75 @@ test.describe('om-sidan', () => {
     });
   }
 });
+
+test.describe('meny och sidfot för arterna', () => {
+  for (const path of ['/sv/', '/sv/blog/', '/sv/arter/talgoxe/']) {
+    test(`sidfoten på ${path} har Arter och tolv vanliga arter`, async ({ page, request }) => {
+      await page.goto(path);
+      const footer = page.locator('footer.footer');
+      await expect(footer.locator('.fh').first()).toHaveText('Arter');
+      const common = footer.locator('.fpop a');
+      await expect(common).toHaveCount(12);
+      for (const href of await common.evaluateAll((els) => els.map((e) => e.getAttribute('href')!))) {
+        expect((await request.get(href)).status(), href).toBe(200);
+      }
+    });
+  }
+
+  test('sidfotens grupplänkar och Alla arter leder till sidor som finns', async ({ page, request }) => {
+    await page.goto('/');
+    const column = page.locator('footer.footer .col').first();
+    await expect(column.locator('.fh')).toHaveText('Species');
+    const links = column.locator('a');
+    await expect(links.last()).toHaveText('All species A to Z');
+    for (const href of await links.evaluateAll((els) => els.map((e) => e.getAttribute('href')!))) {
+      expect((await request.get(href)).status(), href).toBe(200);
+    }
+  });
+
+  test('startsidans uppslagsverk länkar till arterna', async ({ page }) => {
+    await page.goto('/sv/');
+    await expect(page.locator('#guide a[href="/sv/arter/"]')).toBeVisible();
+  });
+
+  test('mobilmenyn har Arter först', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/sv/');
+    await page.locator('#site-nav .menu-toggle').click();
+    await expect(page.locator('#mobile-menu a').first()).toHaveText('Arter');
+  });
+
+  // Task 11 adds '/sv/arter/blames-eller-talgoxe/' to this list when comparisons are turned on.
+  test('Arter är markerad i menyn under hela /sv/arter/', async ({ page }) => {
+    for (const path of ['/sv/arter/', '/sv/arter/ugglor/', '/sv/arter/talgoxe/', '/sv/arter/om-artsidorna/']) {
+      await page.goto(path);
+      await expect(page.locator('#site-nav .links a[aria-current="page"]'), path).toHaveText('Arter');
+    }
+  });
+
+  test('menyraden får plats i 1024 px', async ({ page }) => {
+    await page.setViewportSize({ width: 1024, height: 768 });
+    for (const path of ['/sv/', '/', '/sv/arter/talgoxe/']) {
+      await page.goto(path);
+      const heights = await page.locator('#site-nav .links a').evaluateAll((els) => els.map((e) => e.getBoundingClientRect().height));
+      for (const h of heights) expect(h, path).toBeLessThan(30);
+      const [nav, cta] = await Promise.all([page.locator('#site-nav .links').boundingBox(), page.locator('#site-nav .nav-cta').boundingBox()]);
+      expect(nav!.x + nav!.width, path).toBeLessThanOrEqual(cta!.x);
+    }
+  });
+
+  test('hoppa till innehållet: första tabbstoppet, och nästa stopp ligger i main', async ({ page }) => {
+    await page.goto('/sv/arter/talgoxe/');
+    await page.keyboard.press('Tab');
+    await expect(page.locator(':focus')).toHaveText('Hoppa till innehållet');
+    await expect(page.locator(':focus')).toBeInViewport();
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Tab');
+    expect(await page.evaluate(() => Boolean(document.activeElement?.closest('main#main')))).toBe(true);
+    for (const path of ['/', '/sv/blog/', '/legal/privacy/']) {
+      await page.goto(path);
+      await expect(page.locator('main#main')).toHaveCount(1);
+    }
+  });
+});
+
