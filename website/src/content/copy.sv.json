@@ -317,6 +317,7 @@
     "statusLabels": {
       "resident": "Stannfågel",
       "breeding_migrant": "Flyttfågel, häckar här",
+      "partial_migrant": "Delvis flyttfågel, häckar här",
       "passage": "Ses under flyttningen",
       "winter_visitor": "Vintergäst",
       "rare_visitor": "Sällsynt gäst",

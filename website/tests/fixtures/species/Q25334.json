@@ -191,7 +191,7 @@
       "facts": {
         "size": null,
         "swedenStatus": {
-          "value": "resident",
+          "value": "partial_migrant",
           "factIds": [
             "s01"
           ]
@@ -257,7 +257,7 @@
       "facts": {
         "size": null,
         "swedenStatus": {
-          "value": "resident",
+          "value": "partial_migrant",
           "factIds": [
             "s01"
           ]

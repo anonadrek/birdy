@@ -317,6 +317,7 @@
     "statusLabels": {
       "resident": "Resident all year",
       "breeding_migrant": "Summer visitor, breeds here",
+      "partial_migrant": "Partial migrant, breeds here",
       "passage": "Seen on migration",
       "winter_visitor": "Winter visitor",
       "rare_visitor": "Rare visitor",

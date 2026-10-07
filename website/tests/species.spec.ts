@@ -231,6 +231,14 @@ test.describe('gruppsidorna', () => {
 });
 
 test.describe('artsidan', () => {
+  // The seventh status (2026-10-07): most common Swedish birds are partial migrants, some stay and some leave.
+  for (const [path, label] of [['/sv/arter/rodhake/', 'Delvis flyttfågel, häckar här'], ['/species/european-robin/', 'Partial migrant, breeds here']] as const) {
+    test(`statusen delvis flyttfågel på ${path}`, async ({ page }) => {
+      await page.goto(path);
+      await expect(page.locator('.facts')).toContainText(label);
+    });
+  }
+
   // The whole photo on the paper colour, never cropped (controller decision, Task 10/12 review). The test photos
   // are 3:2 and one flat colour, so in 1200 x 630 the photo is 945 px wide with paper on both sides.
   test('artsidans og:image är hela fotot på papper, inte beskuret', async ({ page, request }) => {

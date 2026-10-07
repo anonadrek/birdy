@@ -39,7 +39,7 @@ const langText = z.object({
   facts: z.object({
     size: z.object({ value: z.string().min(1), factIds: z.array(z.string()) }).nullable(),
     swedenStatus: z.object({
-      value: z.enum(['resident', 'breeding_migrant', 'passage', 'winter_visitor', 'rare_visitor', 'absent']),
+      value: z.enum(['resident', 'breeding_migrant', 'partial_migrant', 'passage', 'winter_visitor', 'rare_visitor', 'absent']),
       factIds: z.array(z.string()),
     }).nullable(),
   }),

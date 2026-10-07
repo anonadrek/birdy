@@ -245,7 +245,7 @@ const SPECIES = [
   { qid: 'Q25485', sv: 'Talgoxe', en: 'Great Tit', sci: 'Parus major', fam: ['Paridae', 'Mesar'], group: 'songbirds', slug: ['talgoxe', 'great-tit'], iucn: 'LC', red: 'not_listed', id: [true, true], extra: true, audio: 'trimmed', marginalia: true, de: true, months: YEAR_ROUND, status: 'resident', size: ['Cirka 14 cm', 'About 14 cm'], look: ['Q25404'] },
   { qid: 'Q25404', sv: 'Blåmes', en: 'Eurasian Blue Tit', sci: 'Cyanistes caeruleus', fam: ['Paridae', 'Mesar'], group: 'songbirds', slug: ['blames', 'eurasian-blue-tit'], iucn: 'LC', red: 'not_listed', id: [true, true], audio: 'full', de: true, months: YEAR_ROUND, status: 'resident', size: ['Cirka 12 cm', 'About 12 cm'], look: ['Q25485'] },
   { qid: 'Q25234', sv: 'Koltrast', en: 'Common Blackbird', sci: 'Turdus merula', fam: ['Turdidae', 'Trastar'], group: 'songbirds', slug: ['koltrast', 'common-blackbird'], iucn: 'LC', red: 'not_listed', id: [true, true], extra: true, extraPd: true, audio: 'trimmed', de: true, months: YEAR_ROUND, status: 'resident' },
-  { qid: 'Q25334', sv: 'Rödhake', en: 'European Robin', sci: 'Erithacus rubecula', fam: ['Muscicapidae', 'Flugsnappare'], group: 'songbirds', slug: ['rodhake', 'european-robin'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
+  { qid: 'Q25334', sv: 'Rödhake', en: 'European Robin', sci: 'Erithacus rubecula', fam: ['Muscicapidae', 'Flugsnappare'], group: 'songbirds', slug: ['rodhake', 'european-robin'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'partial_migrant' },
   { qid: 'Q14683', sv: 'Gråsparv', en: 'House Sparrow', sci: 'Passer domesticus', fam: ['Passeridae', 'Sparvfinkar'], group: 'songbirds', slug: ['grasparv', 'house-sparrow'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
   { qid: 'Q25307', sv: 'Skata', en: 'Eurasian Magpie', sci: 'Pica pica', fam: ['Corvidae', 'Kråkfåglar'], group: 'songbirds', slug: ['skata', 'eurasian-magpie'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', look: ['Q25345384'] },
   { qid: 'Q25345384', sv: 'Kaja', en: 'Western Jackdaw', sci: 'Coloeus monedula', fam: ['Corvidae', 'Kråkfåglar'], group: 'songbirds', slug: ['kaja', 'western-jackdaw'], iucn: 'NE', red: 'not_listed', id: [false, true], de: true, months: YEAR_ROUND, status: 'resident', look: ['Q25307'] },
@@ -788,6 +788,8 @@ git commit -m "feat(website): Layout tar språkpar, noindex och extra JSON-LD, o
 
 > **Avvikelser vid genomförandet (2026-10-07, Astro 7.3.5 och zod 4):** (1) `z` importeras från `astro/zod`, och `z.url()` ersätter det utfasade `z.string().url()`. (2) Båda samlingarna har `generateId` = filnamnet: glob-laddarens standard-id är datans `slug`, som här är ett objekt, så alla poster fick id:t `[object Object]` och alla utom en försvann. (3) Fotona laddas inte med `import.meta.glob` utan med den virtuella modulen `virtual:birdy-species-media` (först `virtual:birdy-species-images`) från `astro.config.mjs`, som bara importerar fotona för arter som får en sida i bygget (`isSpeciesBuilt`, som inspelningarna). Vite lägger varje globbad bild i `dist/_astro/` så fort den laddas, även lata globbar och oanvända bilder: med planens kod hade varje opublicerad arts foto gått ut, och ett vanligt bygge hade fått med alla testfoton (uppmätt: 22 testfoton i `dist/` i riktigt läge). `speciesImage()` och resten av `species.ts` är oförändrade utåt; top-level `await` behövs inte längre.
 
+> **Tillägg (2026-10-07 kväll, pipelinens sjunde status):** `swedenStatus.value` kan också vara `partial_migrant` (delvis flyttfågel: en del stannar, en del flyttar; de flesta vanliga svenska fåglarna, och det binära valet stannfågel/flyttfågel gav fel status i 28 av 35 flaggor i våg 1). Etiketterna är "Delvis flyttfågel, häckar här" / "Partial migrant, breeds here", Rödhake har den statusen i testdatan, och ett Playwright-test läser etiketten på båda språken. Specens bilaga C ändras på `data/artsidor`.
+
 > **Fixvåg efter granskningen (2026-10-07):** (a) `commonSpecies()` returnerar de av de tolv som har en sida, i listans ordning, i stället för att stoppa bygget (Task 13, 14 och 15 är ändrade efter det). (b) Zod-schemat ligger i `src/lib/species-schema.mjs` (ren JS, delas av `content.config.ts` och enhetstesterna i `tests/unit/species-schema.unit.mjs`). Bara en post som får byggas (`hasPageContract` i `species-source.mjs`: status `ok` och `verification`) hålls mot hela sidkontraktet, publicerad eller inte; alla andra poster kontrolleras som ett kuvert (`qid`, `status`, `publish`, `slug`, `names`, `family`, `group`, `review`, `verification`, `text: null` för väntande och misslyckade) och sidfälten släpps, så att en trasig post som aldrig får en sida inte stoppar bygget av alla andra. `publish: true` på en sådan post är fortfarande ett fel. `species.ts` har typerna `SpeciesRecord` (alla poster) och `Species` (sidkontraktet). (c) `marginalia` kan sakna ett språk (`null`). (d) Länkar i krediterna är `z.httpUrl()`, `verification.at` är `z.iso.date()`, `generated.text.at` och jämförelsernas `generated.at` är datum eller pipelinens `isoformat()`. En arts foton och inspelning måste ligga under dess egen QID, en jämförelse får inte ha `a === b`, och `getAllRecords()`/`getComparisons()` stoppar bygget om ett filnamn inte stämmer med `qid` (eller `a` och `b` i strängordning). (e) `builtSpeciesMedia(root)` i `species-source.mjs` räknar ut de byggda arternas foton och inspelningar en gång per bygge med Astros `root` (inte `process.cwd()`); den virtuella modulen exporterar `images` och `audio` (QID till hashad adress), som `audioHref()` läser, och byggkroken kopierar samma filer till samma namn. (f) `scripts/check-preview-build.mjs` (`npm run test:preview-build`) kontrollerar att opublicerade och aldrig byggda arters foton och inspelningar inte finns i `dist/`; Task 14 utökar samma skript.
 
 - [ ] **Step 1: Samlingarna**
@@ -810,7 +812,7 @@ const qid = z.string().regex(/^Q\d+$/);
 const localized = z.object({ sv: z.string().min(1), en: z.string().min(1) });
 const sentence = z.object({ text: z.string().min(1), factIds: z.array(z.string().min(1)).min(1) });
 const sentences = z.array(sentence).min(1);
-const statuses = ['resident', 'breeding_migrant', 'passage', 'winter_visitor', 'rare_visitor', 'absent'] as const;
+const statuses = ['resident', 'breeding_migrant', 'partial_migrant', 'passage', 'winter_visitor', 'rare_visitor', 'absent'] as const;
 const recordStatus = z.enum(['pending', 'ok', 'failed']);
 const licensed = {
   author: z.string().nullable(),
@@ -1419,6 +1421,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "statusLabels": {
       "resident": "Stannfågel",
       "breeding_migrant": "Flyttfågel, häckar här",
+      "partial_migrant": "Delvis flyttfågel, häckar här",
       "passage": "Ses under flyttningen",
       "winter_visitor": "Vintergäst",
       "rare_visitor": "Sällsynt gäst",
@@ -1594,6 +1597,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "statusLabels": {
       "resident": "Resident all year",
       "breeding_migrant": "Summer visitor, breeds here",
+      "partial_migrant": "Partial migrant, breeds here",
       "passage": "Seen on migration",
       "winter_visitor": "Winter visitor",
       "rare_visitor": "Rare visitor",
