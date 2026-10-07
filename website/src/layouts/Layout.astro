@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Analytics from '@vercel/analytics/astro';
 import { getCopy, alternateHref, type Locale } from '../lib/i18n';
 import { ALBIT_URL, ALBIN_URL } from '../lib/links';
+import { serializeJsonLd } from '../lib/json-ld.mjs';
 
 interface Props {
   locale: Locale;
@@ -140,13 +141,18 @@ const jsonLd = {
 
     <meta name="theme-color" content="#2A1D17" />
 
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script is:inline type="application/ld+json" set:html={serializeJsonLd(jsonLd)} />
   </head>
   <body>
     <slot />
+    {/*
+      Own visits (spec 2026-09-25 §15): ?va-ignore=1 marks this browser, ?va-ignore=0 removes the mark.
+      A marked browser sends nothing to Vercel Analytics. Runs before the analytics element below.
+      The va-ignore parameter is stripped from the address bar once read, so it does not linger
+      in the URL (shared links, browser history). If storage is blocked (some private-browsing
+      modes throw on access), the catch below leaves the visit counted as usual.
+    */}
     <script is:inline>
-      // Own visits (spec 2026-09-25 §15): ?va-ignore=1 marks this browser, ?va-ignore=0 removes the mark.
-      // A marked browser sends nothing to Vercel Analytics. Runs before the analytics element below.
       (function () {
         try {
           var flag = new URLSearchParams(location.search).get('va-ignore');
@@ -155,9 +161,12 @@ const jsonLd = {
           if (localStorage.getItem('birdy-va-ignore') === '1') {
             window.webAnalyticsBeforeSend = function () { return null; };
           }
-        } catch (e) {
-          // Storage blocked (private mode): the visit is counted as usual.
-        }
+          if (flag !== null) {
+            var u = new URL(location.href);
+            u.searchParams.delete('va-ignore');
+            history.replaceState(history.state, '', u);
+          }
+        } catch (e) {}
       })();
     </script>
     <Analytics />
