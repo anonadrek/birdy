@@ -91,8 +91,8 @@ test.describe('handskrivna accentord', () => {
 
 test.describe('marginalanteckningar', () => {
   const notes = {
-    '/sv/': [copy.sv.hero.note, copy.sv.howItWorks.note, copy.sv.tour.note, copy.sv.guide.note, copy.sv.premium.note, copy.sv.privacy.note, copy.sv.fieldNotes.note, copy.sv.faq.note, copy.sv.download.note],
-    '/': [copy.en.hero.note, copy.en.howItWorks.note, copy.en.tour.note, copy.en.guide.note, copy.en.premium.note, copy.en.privacy.note, copy.en.fieldNotes.note, copy.en.faq.note, copy.en.download.note],
+    '/sv/': [copy.sv.hero.note, copy.sv.monthBirds.note, copy.sv.howItWorks.note, copy.sv.tour.note, copy.sv.guide.note, copy.sv.premium.note, copy.sv.privacy.note, copy.sv.fieldNotes.note, copy.sv.faq.note, copy.sv.download.note],
+    '/': [copy.en.hero.note, copy.en.monthBirds.note, copy.en.howItWorks.note, copy.en.tour.note, copy.en.guide.note, copy.en.premium.note, copy.en.privacy.note, copy.en.fieldNotes.note, copy.en.faq.note, copy.en.download.note],
   } as const;
   for (const [path, texts] of Object.entries(notes)) {
     test(`en handskriven rad under varje rubrik på ${path}`, async ({ page }) => {
@@ -178,7 +178,7 @@ test.describe('rivna papperskanter', () => {
     // Named per section so a failure points straight at the broken edge, and a total-count
     // assertion so an extra/missing edge fails even if every named one still matches.
     const edges: [string, string][] = [
-      ['#how-it-works > .deckle path', 'rgb(42, 29, 23)'],    // hero → Tre sätt att fånga
+      ['#season > .deckle path', 'rgb(42, 29, 23)'],          // hero → Fåglarna i oktober
       ['#app > .deckle path', 'rgb(255, 250, 241)'],          // Fältboken → karusellen
       ['#guide > .deckle path', 'rgb(253, 229, 203)'],        // karusellen → Uppslagsverket
       ['#premium > .deckle path', 'rgb(246, 239, 226)'],      // Uppslagsverket → Premium

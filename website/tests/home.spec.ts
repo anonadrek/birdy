@@ -247,6 +247,30 @@ test.describe('Birdy-fågeln flyger', () => {
   });
 });
 
+test.describe('fåglarna i månaden', () => {
+  // Fixture build, 15 October: every fixture species with a free photo and report data has the same October share,
+  // above its yearly mean, so the four come in QID order (ties by QID, src/lib/month-birds.mjs).
+  for (const [path, heading, names] of [
+    ['/sv/', 'Fåglarna i oktober.', ['Gråsparv', 'Koltrast', 'Skata', 'Rödhake']],
+    ['/', 'Birds in October.', ['House Sparrow', 'Common Blackbird', 'Eurasian Magpie', 'European Robin']],
+  ] as const) {
+    test(`fyra arter med sida, foto och staplar på ${path}`, async ({ page, request }) => {
+      await page.goto(path);
+      const section = page.locator('[data-month-birds]');
+      await expect(section.locator('h2')).toHaveText(heading);
+      const cards = section.locator('.spec');
+      await expect(cards).toHaveCount(4);
+      await expect(section.locator('.spec-name')).toHaveText([...names]);
+      await expect(section.locator('.spec').first().locator('.spec-bars i.now')).toHaveCount(1);
+      for (const href of await cards.evaluateAll((as) => as.map((a) => a.getAttribute('href')!))) {
+        expect((await request.get(href)).status(), href).toBe(200);
+      }
+      await expect(section.locator('.spec-credit').first()).toContainText('CC0');
+      expect((await request.get((await section.locator('a.all').getAttribute('href'))!)).status()).toBe(200);
+    });
+  }
+});
+
 test.describe('så funkar det och fältboken', () => {
   for (const [path, how, journal, free, label] of [
     ['/sv/', 'Tre sätt att fånga.', 'Varje fynd får en egen sida.', 'Gratis', 'märken att samla'],
@@ -552,7 +576,7 @@ test.describe('frågor, slutet och ordningen', () => {
       await page.goto(path);
       await expect(page.locator('main > header.hero:first-child')).toHaveCount(1);
       const ids = await page.locator('main > section[id]').evaluateAll((els) => els.map((e) => e.id));
-      expect(ids).toEqual(['how-it-works', 'journal', 'app', 'guide', 'premium', 'privacy', 'field-notes', 'faq', 'download']);
+      expect(ids).toEqual(['season', 'how-it-works', 'journal', 'app', 'guide', 'premium', 'privacy', 'field-notes', 'faq', 'download']);
     }
   });
 

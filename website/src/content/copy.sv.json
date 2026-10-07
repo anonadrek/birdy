@@ -37,6 +37,12 @@
     "sameAsApp": "samma fågel som i appen i dag",
     "chartLabel": "Andel av alla fågelrapporter per månad i Artportalen, högst i {month}"
   },
+  "monthBirds": {
+    "kicker": "Säsongen just nu",
+    "headline": "Fåglarna i *{month}.*",
+    "note": "ur rapporterna i Artportalen",
+    "lead": "Arter som rapporteras mer i {month} än under resten av året. Listan byts varje månad och leder till artsidorna, med foton, kännetecken och läten."
+  },
   "phone": {
     "match": {
       "label": "Birdys träffskärm: rödhake, säker match 94 procent, första i fältboken",

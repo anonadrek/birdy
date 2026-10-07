@@ -37,6 +37,12 @@
     "sameAsApp": "the same bird as in the app today",
     "chartLabel": "Share of all bird reports per month in Artportalen, highest in {month}"
   },
+  "monthBirds": {
+    "kicker": "The season right now",
+    "headline": "Birds in *{month}.*",
+    "note": "from the reports in Artportalen",
+    "lead": "Species reported more in {month} than the rest of the year in Artportalen, Sweden's bird reporting system. The list changes every month and leads to the species pages, with photos, field marks and calls."
+  },
   "phone": {
     "match": {
       "label": "Birdy's match screen: European robin, a confident 94 percent match, first in the field journal",

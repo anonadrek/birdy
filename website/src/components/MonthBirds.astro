@@ -1,0 +1,88 @@
+---
+// "Fåglarna i oktober" (plan 2026-10-08 Task 3, mockup lift-c.html "Säsongen just nu"): up to four species with a page
+// that are reported more this month than over the year (src/lib/month-birds.mjs), as specimen cards with Artportalen's
+// month bars. Only species whose photo is CC0 or public domain, since the cards crop it. Hidden when none qualifies.
+import { Image } from 'astro:assets';
+import Kicker from './ui/Kicker.astro';
+import JournalHeadline from './ui/JournalHeadline.astro';
+import DeckleEdge from './ui/DeckleEdge.astro';
+import MarginNote from './ui/MarginNote.astro';
+import { type Locale, getCopy } from '../lib/i18n';
+import { getAllSpecies, hubHref, licenseLabel, speciesHref, speciesImage } from '../lib/species';
+import { freeImage } from '../lib/daily-bird.mjs';
+import { monthBirds } from '../lib/month-birds.mjs';
+import { date } from 'virtual:birdy-daily-bird';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getCopy(locale);
+const m = date.month - 1;
+const monthName = t.species.monthNames[m];
+const withPhoto = (await getAllSpecies()).filter((s) => freeImage(s.images) && s.data?.months);
+const picks = monthBirds(withPhoto.map((s) => ({ qid: s.qid, months: s.data?.months, s })), m).map((x) => x.s);
+---
+
+{picks.length > 0 && (
+  <section id="season" class="sec now" data-month-birds data-month={date.month}>
+    <DeckleEdge color="var(--dark)" />
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <div>
+          <Kicker text={t.monthBirds.kicker} />
+          <JournalHeadline text={t.monthBirds.headline.replace('{month}', monthName)} level="h2" align="left" size="clamp(36px, 4.6vw, 56px)" />
+          <MarginNote text={t.monthBirds.note} />
+        </div>
+        <p class="lead">{t.monthBirds.lead.replace('{month}', monthName)}</p>
+      </div>
+      <ul class="specimens" role="list">
+        {picks.map((s, i) => {
+          const photo = freeImage(s.images)!;
+          const months = s.data!.months!;
+          return (
+            <li data-reveal style={`--rd:${i * 90}ms`}>
+              <a class="spec" href={speciesHref(s, locale)} data-qid={s.qid}>
+                <span class="spec-photo">
+                  <Image src={speciesImage(photo.file)} alt="" widths={[300, 480, 640]} sizes="(min-width: 900px) 250px, 44vw" loading="lazy" decoding="async" />
+                </span>
+                <span class="spec-name">{s.names[locale]}</span>
+                <span class="spec-lat" lang="la">{s.names.scientific}</span>
+                <span class="spec-bars" aria-hidden="true">
+                  {months.map((v, j) => <i class:list={{ now: j === m }} style={`--h:${Math.max(5, v)}%`}></i>)}
+                </span>
+                <span class="spec-credit">{t.species.photoCredit} {photo.author ?? t.species.unknownAuthor} · {licenseLabel(photo.license, t)}</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+      <a class="all" href={hubHref(locale)}>{t.species.hubAll} <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+)}
+
+<style>
+  .now { position: relative; background: var(--paper); }
+  .now::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(154, 69, 38, .06) 1px, transparent 1.2px); background-size: 18px 18px; pointer-events: none; }
+  .now .wrap { position: relative; }
+  .head { display: grid; gap: 14px; }
+  .head .lead { margin: 0; }
+  .specimens { list-style: none; margin: 34px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 14px; }
+  .spec { display: flex; flex-direction: column; height: 100%; padding: 8px 8px 12px; background: var(--card); border: 1px solid var(--line); box-shadow: 0 1px 0 rgba(var(--dark-rgb), .04), 0 10px 22px -12px rgba(var(--dark-rgb), .28); transition: transform .3s var(--ease-paper), box-shadow .3s var(--ease-paper); }
+  .spec:hover { transform: translateY(-3px) rotate(-.4deg); box-shadow: 0 1px 0 rgba(var(--dark-rgb), .04), 0 18px 30px -12px rgba(var(--dark-rgb), .34); }
+  .spec-photo { display: block; overflow: hidden; }
+  .spec-photo :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+  .spec-name { margin-top: 10px; font-family: var(--font-serif); font-size: 21px; line-height: 1.05; color: var(--ink); }
+  .spec-lat { font-family: var(--font-script); font-weight: 700; font-size: 18px; line-height: 1.15; color: var(--rust); }
+  .spec-bars { display: flex; align-items: flex-end; gap: 2px; height: 26px; margin-top: 10px; border-bottom: 1px solid var(--line); }
+  .spec-bars i { flex: 1; height: var(--h); background: var(--rust); border-radius: 1.5px 1.5px 0 0; opacity: .32; }
+  .spec-bars i.now { opacity: 1; }
+  .spec-credit { margin-top: auto; padding-top: 8px; font-size: 10.5px; line-height: 1.4; color: var(--muted); }
+  .all { display: inline-block; margin-top: 30px; font-weight: 600; color: var(--rust-deep); border-bottom: 2px solid var(--rust); padding-bottom: 1px; transition: color .2s; }
+  .all:hover { color: var(--rust); }
+  @media (min-width: 900px) {
+    .head { grid-template-columns: 1fr 1fr; gap: 70px; align-items: end; }
+    .specimens { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; margin-top: 44px; }
+    .spec-name { font-size: 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .spec, .spec:hover { transition: none; transform: none; } }
+</style>
