@@ -11,3 +11,6 @@ Uppföljare (små, före vC130 om tid finns):
 - Pipeline (efter release): manuellt iucn_status vinner alltid (M1), okänd status → NE tyst (logga, M2), svenska namn-fallback kan ta gammalt binomen/ej deterministisk (M3).
 - Artsidorna: kör om web sources för Kaja (NE→LC) och för alla godkända arter vars foton byttes (62 st) innan deras sidor genereras.
 - 30 svenska namn skiljer sig från BirdLife Sveriges lista (Albins beslut).
+
+Artsidans textkredit (7i-fix A, granskningen 2026-10-07), till 1.3.1:
+- Fyra engelska texter kan beskriva ett annat taxon än arten, eftersom den sparade revisionen är en artikel om ett annat Wikidata-objekt (inte en förgreningssida, så revisionen står kvar och krediten länkar den): Kricka Q25700 (en "Green-winged teal" rev 1347153361, Q704074 = Anas carolinensis, amerikansk kricka), Q1083050 Mirafra javanica (en "Singing bush lark" rev 1315354773, Q2743822 = M. cantillans), Härfågel Q25247 (en "Hoopoe" rev 1350762486, Q20977 = familjen/släktet) och Gråsiska Q20754771 (en "Redpoll" rev 1315349490, Q2822501 = släktet). Hämta om rätt artikel i 1.3.1 och skriv om texterna, eller töm revisionen som för förgreningssidorna (dadf90e5).
