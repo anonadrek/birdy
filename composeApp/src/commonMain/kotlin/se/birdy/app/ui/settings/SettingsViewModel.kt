@@ -62,10 +62,12 @@ class SettingsViewModel(
                 prefs.appLanguage,
                 premiumRepository.state,
             ) { name, lang, premium ->
+                val effective = premiumOverride ?: premium
                 SettingsUiState(
                     userName = name,
                     language = lang,
-                    premiumActive = (premiumOverride ?: premium) !is PremiumState.Free,
+                    premiumActive = effective !is PremiumState.Free,
+                    premiumTier = (effective as? PremiumState.Active)?.tier,
                 )
             }.collect { _state.value = it }
         }
@@ -108,6 +110,10 @@ class SettingsViewModel(
 
     fun openAbout() {
         viewModelScope.launch { _effects.send(SettingsEffect.OpenAbout) }
+    }
+
+    fun openManageSubscription() {
+        viewModelScope.launch { _effects.send(SettingsEffect.OpenManageSubscriptionUrl) }
     }
 
     fun setDailyBirdPushEnabled(value: Boolean) {

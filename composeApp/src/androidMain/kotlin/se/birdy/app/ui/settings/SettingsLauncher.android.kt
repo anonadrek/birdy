@@ -57,6 +57,15 @@ actual fun openPlayStoreListing(packageName: String) {
     }
 }
 
+actual fun openManageSubscription(sku: String) {
+    val ctx = SettingsLauncherSetup.context() ?: return
+    // ctx.packageName is the app's own running application id, including a debug build's
+    // ".debug" suffix — never a hardcoded "se.birdy.android" — so the sku resolves to the
+    // same package Play Billing sold the subscription under.
+    val url = "https://play.google.com/store/account/subscriptions?sku=$sku&package=${ctx.packageName}"
+    runCatching { ctx.startNewTaskActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))) }
+}
+
 actual fun shareJournalPdf(pdfPath: String) {
     val ctx = SettingsLauncherSetup.context() ?: return
     runCatching {

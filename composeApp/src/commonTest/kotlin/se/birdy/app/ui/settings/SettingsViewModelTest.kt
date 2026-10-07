@@ -110,6 +110,65 @@ class SettingsViewModelTest {
         }
 
     @Test
+    fun `premiumTier is yearly for an active yearly subscription`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            val premiumRepo = FakePremiumRepository(PremiumState.Active(PremiumTier.YEARLY, Clock.System.now()))
+            val vm = SettingsViewModel(prefs, premiumRepo)
+            vm.state.test {
+                assertEquals(PremiumTier.YEARLY, awaitItem().premiumTier)
+            }
+        }
+
+    @Test
+    fun `premiumTier is lifetime for an active lifetime purchase`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            val premiumRepo = FakePremiumRepository(PremiumState.Active(PremiumTier.LIFETIME, Clock.System.now()))
+            val vm = SettingsViewModel(prefs, premiumRepo)
+            vm.state.test {
+                assertEquals(PremiumTier.LIFETIME, awaitItem().premiumTier)
+            }
+        }
+
+    @Test
+    fun `premiumTier is null for a free user`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            val vm = SettingsViewModel(prefs, FakePremiumRepository(PremiumState.Free))
+            vm.state.test {
+                assertEquals(null, awaitItem().premiumTier)
+            }
+        }
+
+    @Test
+    fun `premiumTier is lifetime for a grandfathered early member override`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            val premiumRepo = FakePremiumRepository(PremiumState.Free)
+            val vm =
+                SettingsViewModel(
+                    prefs,
+                    premiumRepo,
+                    premiumOverride = PremiumState.Active(PremiumTier.LIFETIME, Clock.System.now()),
+                )
+            vm.state.test {
+                assertEquals(PremiumTier.LIFETIME, awaitItem().premiumTier)
+            }
+        }
+
+    @Test
+    fun `openManageSubscription sends the manage subscription effect`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            val vm = SettingsViewModel(prefs, FakePremiumRepository(PremiumState.Active(PremiumTier.YEARLY, Clock.System.now())))
+            vm.effects.test {
+                vm.openManageSubscription()
+                assertEquals(SettingsEffect.OpenManageSubscriptionUrl, awaitItem())
+            }
+        }
+
+    @Test
     fun `no override keeps billing state`() =
         runTest {
             val prefs = InMemoryUserPreferences()

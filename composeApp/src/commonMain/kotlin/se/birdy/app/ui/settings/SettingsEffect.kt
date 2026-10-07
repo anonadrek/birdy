@@ -25,4 +25,7 @@ sealed interface SettingsEffect {
     data object SendFeedback : SettingsEffect
 
     data object OpenAbout : SettingsEffect
+
+    /** Opens Google Play's subscription center for the yearly plan (Play policy 9900533). */
+    data object OpenManageSubscriptionUrl : SettingsEffect
 }
