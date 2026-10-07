@@ -22,11 +22,10 @@ BirdNET-Lite for audio) — no internet needed, no accounts. Photo and
 bird call identification are free, always.
 
 **LEARN — a European birds guide that grows with you**
-Browse 839 European species with text from Wikipedia, photos from
-Wikimedia Commons, and short marginalia for field marks. Search by
-name, filter by ecological group, or just wander. It's the offline
-bird identification companion for the field — and a quiet reference
-at home.
+Browse 839 European species with texts based on Wikipedia and photos
+from Wikimedia Commons. Search by name, filter by ecological group, or
+just wander. It's the offline bird identification companion for the
+field, and a quiet reference at home.
 
 **COLLECT — your birdwatching journal stays yours**
 Save sightings with a photo, a handwritten note in the margin, and —

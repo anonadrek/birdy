@@ -22,11 +22,10 @@ BirdNET-Lite för ljud) — inget internet behövs, inga konton. Foto- och
 ljud-ID av fågelläten är alltid gratis.
 
 **LÄR — en fågelguide för Sverige och Europa som växer med dig**
-Bläddra bland 839 europeiska arter med text från Wikipedia, foton från
-Wikimedia Commons och korta marginalanteckningar för fältkännemärken.
-Sök på namn, filtrera på ekologisk grupp, eller bara ströv runt. Det
-är följeslagaren för artbestämning av fåglar i fält — och ett stilla
-uppslagsverk hemma.
+Bläddra bland 839 europeiska arter med texter som bygger på Wikipedia
+och foton från Wikimedia Commons. Sök på namn, filtrera på ekologisk
+grupp, eller bara ströv runt. Det är följeslagaren för artbestämning
+av fåglar i fält, och ett stilla uppslagsverk hemma.
 
 **SAMLA — fågeldagboken är din egen**
 Spara fynd med foto, en handskriven notering i marginalen och — om du

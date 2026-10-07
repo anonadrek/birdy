@@ -38,8 +38,11 @@ och att Data safety-formuläret fortfarande stämmer med `docs/play-store/data-s
 ## Butikstexten (lång beskrivning)
 
 Stycket SKANNA/SCAN har ändrats i `store-listing-sv.md` och `store-listing-en.md`
-("3-sekunders klipp" / "3-second clip" stämmer inte i 1.3.0). Klistra in hela den långa
-beskrivningen på nytt från de filerna i samma upload.
+("3-sekunders klipp" / "3-second clip" stämmer inte i 1.3.0). Stycket LÄR/LEARN har också
+ändrats (juridikgenomgången 2026-10-07, 7i-fix D): marginalanteckningarna är borta (bara 4 av
+839 arter har en) och texterna "bygger på Wikipedia" / "are based on Wikipedia" i stället för
+"text från Wikipedia". Klistra in hela den långa beskrivningen på nytt från de filerna i samma
+upload (SV 2 426 tecken, EN 2 461, gränsen är 4 000).
 
 ## Räkna tecknen
 

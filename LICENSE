@@ -21,12 +21,29 @@ This application bundles and depends on third-party software and data that
 remain subject to their own licenses, including (non-exhaustively):
 
   - Kotlin, Compose Multiplatform, SQLDelight, Coil, AndroidX, kaml,
-    osmdroid, TensorFlow Lite — Apache License 2.0
-  - BirdNET-Lite v2 (Cornell Lab of Ornithology) — CC BY-NC-SA 4.0
-  - DM Serif Display, Caveat — SIL Open Font License 1.1
-  - Bird data from Wikidata / Wikipedia — CC BY-SA; photos from Wikimedia Commons
-  - Map data © OpenStreetMap contributors; map tiles © MapTiler
+    osmdroid, TensorFlow Lite (LiteRT): Apache License 2.0
+  - AIY Birds V1 photo model, © Google: Apache License 2.0
+  - BirdNET-Lite sound model, K. Lisa Yang Center for Conservation
+    Bioacoustics, Cornell Lab of Ornithology, Cornell University:
+    CC BY-NC-SA 4.0
+  - DM Serif Display, Caveat: SIL Open Font License 1.1
+  - Species photos from Wikimedia Commons: CC0, public domain, CC BY or
+    CC BY-SA, as recorded for each photo
+  - Species names and red-list categories from Wikidata: CC0
+  - IOC World Bird List (F. Gill, D. Donsker & P. Rasmussen, eds.): CC BY 3.0
+  - Map data © OpenStreetMap contributors (ODbL); map tiles © MapTiler
 
-The full attribution list is shown in-app under Settings → About. These
-third-party licenses govern their respective components and are not affected by
-the proprietary terms above.
+These third-party licenses govern their respective components and are not
+affected by the proprietary terms above. The app shows the credits for photos,
+texts, models and libraries under Settings → About.
+
+Species texts (exception to the proprietary terms above)
+
+The species texts, that is the `description` and `migration` fields of the
+species files in shared/content/species/ and the same texts in the app's
+species database, are summaries that an AI model wrote from Wikipedia articles.
+They are adaptations of Wikipedia text and are licensed under the Creative
+Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0,
+https://creativecommons.org/licenses/by-sa/4.0/). The Wikipedia article
+revisions they are based on are listed in the `sources` field of each species
+file.
