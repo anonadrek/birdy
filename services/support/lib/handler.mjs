@@ -6,6 +6,12 @@ import { labelFor } from './labels.mjs';
 import { isAutomated, isThreadReply, mailedRecently, parseTime, receiptMessage } from './receipt.mjs';
 
 const REQUIRED = ['RESEND_API_KEY', 'RESEND_WEBHOOK_SECRET', 'SUPPORT_ADDRESS', 'FORWARD_TO'];
+// Only these qualify the full forward's failure for the text-only fallback: a real validation
+// problem on the content itself. A 409 concurrent_idempotent_requests (attempt 1 may still complete
+// — falling back would then double-send), 401/403 (API key trouble), 429 (rate limited — falling
+// back would permanently degrade the forward with a 200, so Svix never retries the full version),
+// and 5xx are real, retryable failures instead.
+const FALLBACK_NAMES = new Set(['validation_error', 'invalid_attachment', 'invalid_parameter', 'missing_required_field']);
 
 export async function handleInbound({ rawBody, headers, env, client, now = Date.now(), log = console.log }) {
   const say = (fields) => log(JSON.stringify(fields));
@@ -91,7 +97,7 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
       } else if (!(await sendFallback())) {
         return { status: 500 };
       }
-    } else if (email && error.statusCode >= 400 && error.statusCode < 500) {
+    } else if (email && (error.statusCode === 400 || error.statusCode === 422 || FALLBACK_NAMES.has(error.name))) {
       if (!(await sendFallback())) {
         return { status: 500 };
       }

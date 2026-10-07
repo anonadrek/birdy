@@ -255,15 +255,46 @@ test('a failed listSent while confirming a 409 replay falls back instead of cras
   assert.deepEqual(client.calls.send.map((c) => c.key), ['forward-fallback-em_1', 'receipt-em_1']);
 });
 
-test('a genuine 409 on a forward that was never truly forwarded (different name) is still a failure', async () => {
+test('non-fallback-worthy errors (409 concurrent, 401, 403, 429, 5xx) are real failures, never a fallback — even though the fallback would succeed', async () => {
+  for (const { name, statusCode } of [
+    { name: 'concurrent_idempotent_requests', statusCode: 409 }, // a Svix retry while attempt 1 is still in flight — attempt 1 may still complete
+    { name: 'invalid_api_key', statusCode: 401 },
+    { name: 'restricted_api_key', statusCode: 403 },
+    { name: 'rate_limit_exceeded', statusCode: 429 }, // falling back here would permanently degrade the forward with a 200, so Svix never retries the full version
+    { name: 'internal_server_error', statusCode: 500 },
+  ]) {
+    const client = fakeClient();
+    client.send = async (payload, key) => {
+      if (key === 'forward-em_1') {
+        const err = new Error('nope');
+        err.name = name;
+        err.statusCode = statusCode;
+        throw err;
+      }
+      // Any other key (the fallback, the receipt) would succeed — proving the fallback was never attempted.
+      client.calls.send.push({ payload, key });
+      return 'sent';
+    };
+    const result = await run(client);
+    assert.deepEqual(result, { status: 500 }, `${name} ${statusCode}`);
+    assert.equal(client.calls.send.some((c) => c.key.startsWith('forward-fallback-')), false, `${name} ${statusCode}`);
+  }
+});
+
+test('a fallback-worthy error name (invalid_parameter) triggers the fallback even without statusCode exactly 400/422', async () => {
   const client = fakeClient();
-  client.send = async () => {
-    const err = new Error('conflict');
-    err.name = 'concurrent_idempotent_requests';
-    err.statusCode = 409;
-    throw err;
+  client.send = async (payload, key) => {
+    if (key === 'forward-em_1') {
+      const err = new Error('bad parameter');
+      err.name = 'invalid_parameter';
+      // No statusCode set at all — the name alone must be enough to qualify for the fallback.
+      throw err;
+    }
+    client.calls.send.push({ payload, key });
+    return 'sent';
   };
-  assert.deepEqual(await run(client), { status: 500 });
+  await run(client);
+  assert.ok(client.calls.send.some((c) => c.key === 'forward-fallback-em_1'));
 });
 
 test('a 4xx validation error on the forward (e.g. a broken attachment) sends one text-only fallback forward, then the receipt', async () => {
