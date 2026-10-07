@@ -1,0 +1,15 @@
+BirdNET-Lite
+
+TFLite version of BirdNET, bird sound recognition for more than 6,000 species worldwide.
+
+K. Lisa Yang Center for Conservation Bioacoustics, Cornell Lab of Ornithology, Cornell University. https://birdnet.cornell.edu
+
+Source: BirdNET_6K_GLOBAL_MODEL.tflite from https://github.com/birdnet-team/BirdNET-Lite
+
+Birdy ships the model file unchanged (in the app as birdnet_lite_v2.tflite). Birdy's own table that links the model's classes to the app's species is not part of the model.
+
+Licence: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0). https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+Birdy uses the model for sound ID, which is free for everyone and never part of Premium.
+
+Citation: Kahl, S., Wood, C. M., Eibl, M., & Klinck, H. (2021). BirdNET: A deep learning solution for avian diversity monitoring. Ecological Informatics, 61, 101236. https://doi.org/10.1016/j.ecoinf.2021.101236
