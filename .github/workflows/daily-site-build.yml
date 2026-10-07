@@ -1,0 +1,44 @@
+# Nightly rebuild of birdy.community (plan 2026-10-08 Task 7). The home page works out Dagens fågel and "Fåglarna i
+# oktober" when it is built (website/src/lib/daily-bird.mjs, Europe/Stockholm), so the site has to be rebuilt every
+# night to move on to the next day. This job only asks Vercel to build main again through a deploy hook.
+#
+# Two runs a day so that one of them is always 00:05 Swedish time: 22:05 UTC is 00:05 in summer (CEST, UTC+2) and
+# 23:05 UTC is 00:05 in winter (CET, UTC+1). The other run is an extra build of the same day, which does no harm.
+# GitHub may start scheduled runs some minutes late; that only delays the switch to the new day.
+#
+# Setup (not done by this file): create a deploy hook for the main branch in Vercel (Project → Settings → Git →
+# Deploy Hooks) and store its URL as the repository secret VERCEL_DEPLOY_HOOK_BIRDY. Without the secret the job
+# writes a notice and succeeds, so it never fails before the hook exists. Scheduled workflows only run on the
+# default branch.
+name: Nightly site build
+
+on:
+  schedule:
+    - cron: '5 22 * * *'
+    - cron: '5 23 * * *'
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: daily-site-build
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    name: Trigger a Vercel build of main
+    if: github.repository == 'anonadrek/birdy'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Call the Vercel deploy hook
+        env:
+          VERCEL_DEPLOY_HOOK_BIRDY: ${{ secrets.VERCEL_DEPLOY_HOOK_BIRDY }}
+        run: |
+          if [ -z "${VERCEL_DEPLOY_HOOK_BIRDY}" ]; then
+            echo "::notice title=Nightly site build skipped::The secret VERCEL_DEPLOY_HOOK_BIRDY is not set, so no build was started. Create a deploy hook in Vercel and add it as a repository secret."
+            exit 0
+          fi
+          # -f fails on an HTTP error, the body (the job id) is not printed so the hook URL never ends up in the log.
+          curl --fail --silent --show-error --request POST --retry 3 --retry-delay 15 --max-time 30 \
+            --output /dev/null --write-out 'Vercel answered HTTP %{http_code}\n' "${VERCEL_DEPLOY_HOOK_BIRDY}"
