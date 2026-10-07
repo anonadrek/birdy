@@ -6,6 +6,12 @@ export const MAX_ATTACHMENT_BYTES = 10 * 1024 * 1024;
 const escapeHtml = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const stripTags = (html) => html.replace(/<style[\s\S]*?<\/style>/gi, '').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
 const megabytes = (bytes) => (bytes / (1024 * 1024)).toFixed(1);
+// Resend's content_id may come wrapped in angle brackets (the raw MIME Content-ID form), but the
+// cid: reference in html never has them.
+const stripAngles = (s) => s.replace(/^<|>$/g, '');
+// Only treat an attachment as inline when the html actually references it — a content_id present
+// but unused would otherwise wrongly hide a real, downloadable attachment as "inline" content.
+const isInlineReferenced = (html, contentId) => typeof html === 'string' && html.includes(`cid:${stripAngles(contentId)}`);
 
 /** The plain-text body: the message's own text, or its html stripped of tags when there is no text. */
 export function plainBody(email) {
@@ -24,7 +30,7 @@ export function buildForward({ email, attachments, hasMore = false, label, suppo
   // sender gets mangled on the way through a mail client.
   const header = [`Från: ${email.from}`, `Datum: ${email.created_at}`, `Till: ${(email.to ?? []).join(', ')}`, `Resend-id: ${email.id}`];
   if (attachments.length > 0 && !fits) {
-    header.push(`Bilagor (${attachments.length} st, ${megabytes(total)} MB) skickas inte vidare; de finns kvar i Resend i 30 dagar (${email.id}).`);
+    header.push(`Bilagor (${attachments.length} st, ${megabytes(total)} MB) skickas inte vidare, inklusive eventuella infogade bilder i texten; de finns kvar i Resend i 30 dagar (${email.id}).`);
   }
   if (hasMore) {
     header.push(`Fler bilagor finns kvar i Resend (${email.id}); bara de första listade hämtades.`);
@@ -45,8 +51,9 @@ export function buildForward({ email, attachments, hasMore = false, label, suppo
             contentType: a.content_type,
             // contentId makes this attachment inline, resolving a matching cid: reference in html
             // (from html_format: 'cid') instead of a base64 duplicate. Omitted, not undefined, when
-            // there is none — Resend's own attachments without a content_id stay regular downloads.
-            ...(a.content_id ? { contentId: a.content_id } : {}),
+            // there is none, or when the html doesn't actually reference it — a content_id present
+            // but unused must still be a normal, visible, downloadable attachment.
+            ...(a.content_id && isInlineReferenced(email.html, a.content_id) ? { contentId: stripAngles(a.content_id) } : {}),
           }))
         : undefined,
   };

@@ -57,17 +57,35 @@ test('attachments up to the limit go along by URL', () => {
   assert.deepEqual(f.attachments, [{ filename: 'skärm.png', path: 'https://inbound-cdn.resend.com/a1', contentType: 'image/png' }]);
 });
 
-test('an inline attachment (content_id) is forwarded with its contentId, so cid: references in the html resolve', () => {
+test('an inline attachment (content_id) actually referenced via cid: in the html is forwarded with its contentId', () => {
   const attachments = [{ id: 'a1', filename: 'inline.png', size: 100, content_type: 'image/png', content_id: 'img1@resend', download_url: 'https://x' }];
-  const f = buildForward({ ...base, attachments });
+  const f = buildForward({ ...base, email: { ...email, html: '<p><img src="cid:img1@resend"></p>' }, attachments });
   assert.deepEqual(f.attachments, [{ filename: 'inline.png', path: 'https://x', contentType: 'image/png', contentId: 'img1@resend' }]);
 });
 
-test('too large attachments stay in Resend and the header says so', () => {
+test('a content_id wrapped in angle brackets (as Resend may return it) is matched and stripped before use', () => {
+  const attachments = [{ id: 'a1', filename: 'inline.png', size: 100, content_type: 'image/png', content_id: '<img1@resend>', download_url: 'https://x' }];
+  const f = buildForward({ ...base, email: { ...email, html: '<p><img src="cid:img1@resend"></p>' }, attachments });
+  assert.deepEqual(f.attachments, [{ filename: 'inline.png', path: 'https://x', contentType: 'image/png', contentId: 'img1@resend' }]);
+});
+
+test('a content_id NOT referenced anywhere in the html is forwarded as a regular attachment, not inline', () => {
+  const attachments = [{ id: 'a1', filename: 'inline.png', size: 100, content_type: 'image/png', content_id: 'img1@resend', download_url: 'https://x' }];
+  const f = buildForward({ ...base, email: { ...email, html: '<p>no image reference here</p>' }, attachments });
+  assert.deepEqual(f.attachments, [{ filename: 'inline.png', path: 'https://x', contentType: 'image/png' }]);
+});
+
+test('a content_id is a regular attachment when there is no html at all', () => {
+  const attachments = [{ id: 'a1', filename: 'inline.png', size: 100, content_type: 'image/png', content_id: 'img1@resend', download_url: 'https://x' }];
+  const f = buildForward({ ...base, email: { ...email, html: null }, attachments });
+  assert.deepEqual(f.attachments, [{ filename: 'inline.png', path: 'https://x', contentType: 'image/png' }]);
+});
+
+test('too large attachments stay in Resend and the header says so, including any inline images in the html', () => {
   const attachments = [{ id: 'a1', filename: null, size: MAX_ATTACHMENT_BYTES + 1, content_type: 'video/mp4', download_url: 'https://x' }];
   const f = buildForward({ ...base, attachments });
   assert.equal(f.attachments, undefined);
-  assert.match(f.text, /Bilagor \(1 st, 10\.0 MB\) skickas inte vidare; de finns kvar i Resend i 30 dagar \(em_1\)\./);
+  assert.match(f.text, /Bilagor \(1 st, 10\.0 MB\) skickas inte vidare, inklusive eventuella infogade bilder i texten; de finns kvar i Resend i 30 dagar \(em_1\)\./);
 });
 
 test('a header line notes when more attachments exist in Resend beyond what was fetched', () => {
