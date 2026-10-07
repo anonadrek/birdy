@@ -106,18 +106,19 @@ test.describe('meny och sidfot', () => {
     await expect(footer.locator('a[href="/legal/privacy/"]')).toHaveText('Integritetspolicy');
   });
 
-  for (const [path, albitHref, workshop, line] of [
-    ['/sv/', 'https://www.albit.se/produkter/birdy/', 'Från samma verkstad', 'HR-verktyg för chefer i växande bolag'],
-    ['/', 'https://www.albit.se/en/products/birdy/', 'From the same workshop', 'An HR tool for managers in growing companies'],
+  for (const [path, albitHref, builtBy] of [
+    ['/sv/', 'https://www.albit.se/produkter/birdy/', 'Byggd av'],
+    ['/', 'https://www.albit.se/en/products/birdy/', 'Built by'],
   ] as const) {
-    test(`sidfoten på ${path} länkar till AlbIT och LoopLead`, async ({ page }) => {
+    test(`sidfoten på ${path} har AlbIT:s ordmärke och ingen LoopLead`, async ({ page }) => {
       await page.goto(path);
       const footer = page.locator('footer.footer');
-      await expect(footer.locator(`a[href="${albitHref}"]`)).toHaveText('AlbIT');
-      await expect(footer.locator('.sibling')).toContainText(workshop);
-      const looplead = footer.locator('a[href="https://looplead.se/"]');
-      await expect(looplead).toContainText('LoopLead');
-      await expect(looplead).toContainText(line);
+      const credit = footer.locator(`a.albit-kredit[href="${albitHref}"]`);
+      await expect(credit).toContainText(builtBy);
+      await expect(credit.locator('img[alt="AlbIT"]')).toHaveAttribute('src', '/images/albit-ordmarke-vit.png');
+      // Albin 2026-10-07: LoopLead is off Birdy's site for now.
+      await expect(footer.locator('a[href*="looplead"]')).toHaveCount(0);
+      await expect(footer).not.toContainText('LoopLead');
     });
   }
 });
