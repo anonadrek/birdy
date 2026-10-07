@@ -227,10 +227,12 @@ test('builtSpeciesMedia: foton och inspelningar bara för arter som får en sida
   withEnv({ SPECIES_FIXTURES: '1', VERCEL_ENV: undefined }, () => {
     const normal = builtSpeciesMedia(website, false);
     const preview = builtSpeciesMedia(website, true);
-    // 17 published species with a hero (Blåkråka, the absent species, published since Task 10), two of them
-    // with an extra photo; the preview adds the two unpublished woodpeckers, two heroes, no extras.
-    assert.equal(normal.images.length, 19);
-    assert.equal(preview.images.length, 21);
+    // 17 published species with a hero (Blåkråka, the absent species, published since Task 10), three of them
+    // with an extra photo (Talgoxe, Koltrast, and Gråsparv's CC BY extra for the home page's month cards);
+    // the preview adds the two unpublished woodpeckers, two heroes, no extras.
+    assert.equal(normal.images.length, 20);
+    assert.equal(preview.images.length, 22);
+    assert.ok(normal.images.includes('Q14683/extra.webp'));
     for (const qid of ['Q26209', 'Q210418', 'Q143284', 'Q166171']) {
       assert.equal(normal.images.some((f) => f.startsWith(`${qid}/`)), false, qid);
     }

@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import {
-  KotlinRandom, SAME_AS_APP_FROM, buildDate, dateParts, freeImage, javaHashCode, loadAppSpecies, parseSpeciesYaml, selectAppDailyBird, siteDailyBird,
+  KotlinRandom, SAME_AS_APP_FROM, buildDate, cropImage, dateParts, javaHashCode, loadAppSpecies, parseSpeciesYaml, plateImage, selectAppDailyBird, siteDailyBird,
 } from '../../src/lib/daily-bird.mjs';
 
 // Written by the app's own Kotlin DailyBirdSelector and kotlin.random.Random (see the file's _about).
@@ -87,13 +87,29 @@ test('siteDailyBird: utan sida för appens fågel väljs en art med sida, samma 
   assert.equal(siteDailyBird({ appQid: selectAppDailyBird(golden.species, date), pageQids: [], date }), null);
 });
 
-test('freeImage: bara CC0 och public domain, huvudfotot först', () => {
-  const hero = (license) => ({ role: 'hero', license });
-  const extra = (license) => ({ role: 'extra', license });
-  assert.deepEqual(freeImage([hero('CC0'), extra('Public domain')]), hero('CC0'));
-  assert.deepEqual(freeImage([hero('CC BY 4.0'), extra('Public domain')]), extra('Public domain'));
-  assert.equal(freeImage([hero('CC BY-SA 4.0'), extra('CC BY 2.0')]), undefined);
-  assert.equal(freeImage([]), undefined);
+// Albin's photo rules (plan, house rules; decided 2026-10-08): CC0, public domain and CC BY always; CC BY-SA only when
+// the photo is shown whole with nothing drawn on it. The plate shows the photo whole, the month cards crop it.
+const hero = (license) => ({ role: 'hero', license });
+const extra = (license) => ({ role: 'extra', license });
+
+test('plateImage: CC0, public domain, CC BY och CC BY-SA, huvudfotot först, inget annat', () => {
+  assert.deepEqual(plateImage([hero('CC0'), extra('Public domain')]), hero('CC0'));
+  assert.deepEqual(plateImage([hero('CC BY 4.0')]), hero('CC BY 4.0'));
+  assert.deepEqual(plateImage([hero('CC BY-SA 3.0'), extra('CC BY 2.0')]), hero('CC BY-SA 3.0'));
+  assert.deepEqual(plateImage([hero('CC BY-NC 2.0'), extra('Public domain')]), extra('Public domain'));
+  assert.equal(plateImage([hero('CC BY-NC-SA 4.0')]), undefined);
+  assert.equal(plateImage([hero('GFDL 1.2')]), undefined);
+  assert.equal(plateImage([]), undefined);
+});
+
+test('cropImage: ett beskuret foto är CC0, public domain eller CC BY, aldrig CC BY-SA', () => {
+  assert.deepEqual(cropImage([hero('CC0')]), hero('CC0'));
+  assert.deepEqual(cropImage([hero('CC BY 2.0')]), hero('CC BY 2.0'));
+  assert.deepEqual(cropImage([hero('CC BY-SA 4.0'), extra('CC BY 2.0')]), extra('CC BY 2.0'));
+  assert.equal(cropImage([hero('CC BY-SA 4.0')]), undefined);
+  assert.equal(cropImage([hero('CC BY-SA 3.0'), extra('CC BY-SA 4.0')]), undefined);
+  assert.equal(cropImage([hero('CC BY-NC 2.0')]), undefined);
+  assert.equal(cropImage([]), undefined);
 });
 
 test('dateParts: planschnumret är dagens nummer på året', () => {

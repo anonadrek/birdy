@@ -138,19 +138,47 @@ export function siteDailyBird({ appQid, pageQids, date }) {
   return { qid: sorted[new KotlinRandom(daySeed(date)).nextInt(sorted.length)], appQid, sameAsApp: false };
 }
 
-/** Licences that ask nothing of us, so the photo may be cropped or framed together with text (plan house rules). */
-export const FREE_LICENSES = new Set(['CC0', 'Public domain']);
+// Albin's photo rules (plan 2026-10-08, house rules): nothing is ever tinted or drawn over a bird photo. A CC0, public
+// domain or CC BY photo may also be cropped; a CC BY-SA photo is only shown whole with nothing on it (a crop is an
+// adaptation we would have to share alike). The licence names are the content pipeline's canonical ones
+// (tools/content-pipeline/src/birdy_fetcher/web/licenses.py, LICENSE_URLS); any other licence never qualifies.
+const CROP_OK = /^(?:CC0|Public domain|CC BY \d\.\d)$/;
+const WHOLE_ONLY = /^CC BY-SA \d\.\d$/;
+
+/** Whether a photo under this licence may be shown cropped (the month cards). */
+export const mayCrop = (license) => CROP_OK.test(license);
+/** Whether a photo under this licence may be shown whole with nothing on it (the plate). */
+export const mayShowWhole = (license) => CROP_OK.test(license) || WHOLE_ONLY.test(license);
 
 /**
- * The photo a plate or a card may show: the species' main photo when it is CC0 or public domain, else its first other
- * photo that is. Undefined when it has none; such a species gets no plate or card (plan house rules: only CC0 and
- * public domain photos are cropped or framed with text).
+ * The species' main photo when its licence qualifies, else its first other photo that does, else undefined.
+ * @template {{ role: string, license: string }} T
+ * @param {T[]} images
+ * @param {(license: string) => boolean} allowed
+ * @returns {T | undefined}
+ */
+const pickImage = (images, allowed) => images.find((i) => i.role === 'hero' && allowed(i.license)) ?? images.find((i) => allowed(i.license));
+
+/**
+ * The photo the home page's plate shows whole: CC0, public domain, CC BY or CC BY-SA. Undefined when the species has
+ * none; the plate then shows another species (siteDailyBird).
  * @template {{ role: string, license: string }} T
  * @param {T[]} images
  * @returns {T | undefined}
  */
-export function freeImage(images) {
-  return images.find((i) => i.role === 'hero' && FREE_LICENSES.has(i.license)) ?? images.find((i) => FREE_LICENSES.has(i.license));
+export function plateImage(images) {
+  return pickImage(images, mayShowWhole);
+}
+
+/**
+ * The photo a month card crops: CC0, public domain or CC BY, never CC BY-SA. Undefined when the species has none; the
+ * species then gets no card.
+ * @template {{ role: string, license: string }} T
+ * @param {T[]} images
+ * @returns {T | undefined}
+ */
+export function cropImage(images) {
+  return pickImage(images, mayCrop);
 }
 
 const ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;

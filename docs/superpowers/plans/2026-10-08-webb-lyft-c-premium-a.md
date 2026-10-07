@@ -14,7 +14,7 @@
 
 **Gren och worktree:** `website/1.3-premium` i `C:/w/birdy-premium` (från `main`). Sammanslagning till `main` gör huvudagenten. **OBS:** en publiceringsloop pushar artsidor till `main` hela tiden; slå ihop `origin/main` in i grenen före sista kontrollen.
 
-**Husregler:** inga tankstreck i copy (vakten), inget grönt på sajtens yta (`test:palette`), ingen ton eller form över fågelfoton (bara neutral skugga bakom text, eller text bredvid/under), bara CC0/public domain-foton där vi beskär eller lägger text intill i en ram, aldrig AI-genererade fåglar, inga påståenden om "offline" eller träffsäkerhet (`test:no-accuracy`), WCAG AA-kontrast (`test:contrast` och axe), `prefers-reduced-motion` respekteras, ingen horisontell scroll vid 390 px.
+**Husregler:** inga tankstreck i copy (vakten), inget grönt på sajtens yta (`test:palette`), ingen ton eller form över fågelfoton (bara neutral skugga bakom text, eller text bredvid/under), fotolicenser enligt Albins regler (beslut 2026-10-08): CC0, public domain och CC BY får alltid visas, även beskurna; CC BY-SA bara hela och utan något ritat på fotot; varje visat foto krediteras med fotograf, licens (länkad) och källa med samma rad som på artsidan; aldrig AI-genererade fåglar, inga påståenden om "offline" eller träffsäkerhet (`test:no-accuracy`), WCAG AA-kontrast (`test:contrast` och axe), `prefers-reduced-motion` respekteras, ingen horisontell scroll vid 390 px.
 
 ---
 
@@ -26,13 +26,13 @@
 - [ ] Källan för arterna är appens innehåll `shared/content/species/**/*.yaml` (fälten `abundance`, `iucn_status`, `season`, `regions`, `id`). Sajten byggs med rotkatalog `website` men läser redan filer utanför (juridiktexterna via `import.meta.glob`), så läs YAML vid bygget eller generera en liten JSON med ett skript; välj det som håller bygget snabbt och testbart.
 - [ ] **Golden-test:** generera med den riktiga Kotlin-väljaren (en engångstest i `shared/domain` jvmTest som läser samma YAML, eller som matar väljaren med exakt samma artlista) listan datum → QID för alla dagar 2026-10-01 till 2027-12-31 och jämför JS-porten mot den i `daily-bird.unit.mjs`. 2026-10-07 ska ge Råka (Corvus frugilegus), som appen visade den dagen (skärmdumpen i butiksbild 01).
 - [ ] Datumet är dagens datum i Europe/Stockholm vid bygget (`Intl.DateTimeFormat` med `timeZone`), inte UTC.
-- [ ] **Visning:** har dagens fågel en publicerad artsida används den (foto, namn, länk). Saknas sidan: välj deterministiskt bland publicerade arter med samma frö (stabilt hela dagen) och visa ingen "samma som i appen"-rad. Är det appens fågel visas en handskriven rad "samma fågel som i appen i dag" / "the same bird as in the app today".
+- [ ] **Visning:** har dagens fågel en publicerad artsida används den (foto, namn, länk). Saknas sidan, eller har arten inget foto som planschen får visa (CC0, public domain, CC BY eller CC BY-SA, `plateImage` i `daily-bird.mjs`; beslut 2026-10-08): välj deterministiskt bland publicerade arter med ett sådant foto, med samma frö (stabilt hela dagen), och visa ingen "samma som i appen"-rad. Är det appens fågel visas en handskriven rad "samma fågel som i appen i dag" / "the same bird as in the app today", från och med 2026-10-15 (innan dess har appen i telefonerna den gamla regeln).
 
 ### Task 2: Startsidans hjälte, Dagens fågel som plansch
 
 **Files:** Modify `website/src/components/Hero.astro` (eller ersätt med `components/hero/DailyBirdHero.astro`), `HomePage.astro`, copy-filerna; remove AI-rödhaken `website/src/assets/hero-robin.webp` och dess rad i `SOURCES.md`; kontrollera `tools/generate-og.mjs` och delningsbilderna (`og-field-*.png`): använder de rödhaken, rendera om dem utan den.
 
-- [ ] Enligt `mockups/lift-c.html`: inramad plansch med dagens fågel (fotot från artsidans data, nedskalat, aldrig beskuret så att fågeln kapas), museietikett med svenskt + vetenskapligt namn, Artportalens månadsstaplar (samma data och färger som artsidans diagram), fotografkredit med licens, länk till artsidan, planschnummer = dagens nummer på året ("Pl. 281" den 8 okt).
+- [ ] Enligt `mockups/lift-c.html`: inramad plansch med dagens fågel (fotot från artsidans data, nedskalat, visat helt och aldrig beskuret, utan något ritat över det; därför får det vara CC0, public domain, CC BY eller CC BY-SA), museietikett med svenskt + vetenskapligt namn, Artportalens månadsstaplar (samma data och färger som artsidans diagram), fotokredit med fotograf, länkad licens och källa, samma rad som artsidans (`PhotoCredit.astro`), länk till artsidan, planschnummer = dagens nummer på året ("Pl. 281" den 8 okt).
 - [ ] Rubrik, underrad och knappar (Google Play-märket, App Store "snart") behålls i sak; texten skrivs om så att den bär Dagens fågel. Inga tankstreck.
 - [ ] LCP: hjältebilden laddas `eager` med `fetchpriority="high"`, rätt `width`/`height`, inga layoutskift (CLS < 0,05).
 - [ ] Playwright: hjälten visar en art med länk till en sida som svarar 200 i bygget, kredit finns, och vid fixturdatum (sätt datumet via en env-variabel i testbygget, t.ex. `BIRDY_TODAY=2026-10-07`) är det den förväntade arten.
@@ -41,7 +41,7 @@
 
 **Files:** en komponent under `components/`, copy, unit-test för urvalet.
 
-- [ ] Fyra publicerade arter som rapporteras mer i innevarande månad än årsgenomsnittet (artsidornas `data.months`, högst kvot månadens värde / medel), med foto, namn och länk; månadens namn i rubriken. Färre än fyra kvalificerade: visa de som finns, noll: dölj sektionen.
+- [ ] Fyra publicerade arter som rapporteras mer i innevarande månad än årsgenomsnittet (artsidornas `data.months`, högst kvot månadens värde / medel), med foto, namn och länk; månadens namn i rubriken. Korten beskär fotot, så bara CC0, public domain och CC BY (`cropImage`), aldrig CC BY-SA; en art utan sådant foto hoppas över, och krediten under kortet är artsidans rad. Färre än fyra kvalificerade: visa de som finns, noll: dölj sektionen.
 - [ ] Unit-test för urvalet (ordning, likavärden avgörs på QID).
 
 ### Task 4: Appens bilder, samma rull som i dag, i kod

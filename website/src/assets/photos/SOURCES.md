@@ -9,4 +9,4 @@ Fotona är appens egna planschfoton (`asset-pack/src/main/assets/images/<QID>/he
 | `skaggmes-q192817.webp` | Skäggmes | Q192817 | Hobbyfotowiki | CC0 | Ta med Birdy ut i fält |
 | `rodhake-q25334.webp` | Rödhake | Q25334 | Rob Hille | Public domain | blogginlägget "Varför Birdy finns" (inläggets foto, korten och delningsbilden); delningsbilderna `public/og-field-{sv,en}.jpg` (tools/generate-og.mjs) |
 
-Startsidans plansch (Dagens fågel) visar artsidans eget foto, och bara när det är CC0 eller public domain; källan står på artsidan och under planschen. Den AI-genererade rödhaken som heron byggde på före 2026-10-08 är borttagen.
+Startsidans plansch (Dagens fågel) visar artsidans eget foto helt, utan något ritat över det, och får därför visa foton under CC0, public domain, CC BY och CC BY-SA. Korten Fåglarna i månaden beskär fotot och visar därför bara CC0, public domain och CC BY, aldrig CC BY-SA (Albins fotoregler, `src/lib/daily-bird.mjs`). Fotograf, licens (länkad) och källa står under planschen och korten med samma rad som på artsidan (`src/components/species/PhotoCredit.astro`). Den AI-genererade rödhaken som heron byggde på före 2026-10-08 är borttagen.

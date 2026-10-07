@@ -1,15 +1,18 @@
 ---
 // "Fåglarna i oktober" (plan 2026-10-08 Task 3, mockup lift-c.html "Säsongen just nu"): up to four species with a page
 // that are reported more this month than over the year (src/lib/month-birds.mjs), as specimen cards with Artportalen's
-// month bars. Only species whose photo is CC0 or public domain, since the cards crop it. Hidden when none qualifies.
+// month bars. The cards crop the photo, so only CC0, public domain and CC BY photos hang here, never CC BY-SA
+// (cropImage in src/lib/daily-bird.mjs, plan house rules); a species without such a photo gets no card. The credit
+// under each card is the species page's (PhotoCredit.astro). Hidden when no species qualifies.
 import { Image } from 'astro:assets';
 import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import DeckleEdge from './ui/DeckleEdge.astro';
 import MarginNote from './ui/MarginNote.astro';
+import PhotoCredit from './species/PhotoCredit.astro';
 import { type Locale, getCopy } from '../lib/i18n';
-import { getAllSpecies, hubHref, licenseLabel, speciesHref, speciesImage } from '../lib/species';
-import { freeImage } from '../lib/daily-bird.mjs';
+import { getAllSpecies, hubHref, speciesHref, speciesImage } from '../lib/species';
+import { cropImage } from '../lib/daily-bird.mjs';
 import { monthBirds } from '../lib/month-birds.mjs';
 import { date } from 'virtual:birdy-daily-bird';
 
@@ -18,7 +21,7 @@ const { locale } = Astro.props;
 const t = getCopy(locale);
 const m = date.month - 1;
 const monthName = t.species.monthNames[m];
-const withPhoto = (await getAllSpecies()).filter((s) => freeImage(s.images) && s.data?.months);
+const withPhoto = (await getAllSpecies()).filter((s) => cropImage(s.images) && s.data?.months);
 const picks = monthBirds(withPhoto.map((s) => ({ qid: s.qid, months: s.data?.months, s })), m).map((x) => x.s);
 ---
 
@@ -36,21 +39,23 @@ const picks = monthBirds(withPhoto.map((s) => ({ qid: s.qid, months: s.data?.mon
       </div>
       <ul class="specimens" role="list">
         {picks.map((s, i) => {
-          const photo = freeImage(s.images)!;
+          const photo = cropImage(s.images)!;
           const months = s.data!.months!;
           return (
             <li data-reveal style={`--rd:${i * 90}ms`}>
-              <a class="spec" href={speciesHref(s, locale)} data-qid={s.qid}>
-                <span class="spec-photo">
-                  <Image src={speciesImage(photo.file)} alt="" widths={[300, 480, 640]} sizes="(min-width: 900px) 250px, 44vw" loading="lazy" decoding="async" />
-                </span>
-                <span class="spec-name">{s.names[locale]}</span>
-                <span class="spec-lat" lang="la">{s.names.scientific}</span>
-                <span class="spec-bars" aria-hidden="true">
-                  {months.map((v, j) => <i class:list={{ now: j === m }} style={`--h:${Math.max(5, v)}%`}></i>)}
-                </span>
-                <span class="spec-credit">{t.species.photoCredit} {photo.author ?? t.species.unknownAuthor} · {licenseLabel(photo.license, t)}</span>
-              </a>
+              <div class="spec">
+                <a class="spec-link" href={speciesHref(s, locale)} data-qid={s.qid}>
+                  <span class="spec-photo">
+                    <Image src={speciesImage(photo.file)} alt="" widths={[300, 480, 640]} sizes="(min-width: 900px) 250px, 44vw" loading="lazy" decoding="async" />
+                  </span>
+                  <span class="spec-name">{s.names[locale]}</span>
+                  <span class="spec-lat" lang="la">{s.names.scientific}</span>
+                  <span class="spec-bars" aria-hidden="true">
+                    {months.map((v, j) => <i class:list={{ now: j === m }} style={`--h:${Math.max(5, v)}%`}></i>)}
+                  </span>
+                </a>
+                <p class="spec-credit"><PhotoCredit locale={locale} image={photo} /></p>
+              </div>
             </li>
           );
         })}
@@ -67,8 +72,12 @@ const picks = monthBirds(withPhoto.map((s) => ({ qid: s.qid, months: s.data?.mon
   .head { display: grid; gap: 14px; }
   .head .lead { margin: 0; }
   .specimens { list-style: none; margin: 34px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 14px; }
+  /* The card: the link covers the photo, the names and the bars; the credit sits under it, outside the link, so its
+     licence and source links can be links of their own. */
   .spec { display: flex; flex-direction: column; height: 100%; padding: 8px 8px 12px; background: var(--card); border: 1px solid var(--line); box-shadow: 0 1px 0 rgba(var(--dark-rgb), .04), 0 10px 22px -12px rgba(var(--dark-rgb), .28); transition: transform .3s var(--ease-paper), box-shadow .3s var(--ease-paper); }
   .spec:hover { transform: translateY(-3px) rotate(-.4deg); box-shadow: 0 1px 0 rgba(var(--dark-rgb), .04), 0 18px 30px -12px rgba(var(--dark-rgb), .34); }
+  .spec-link { display: block; }
+  .spec-link:hover .spec-name { color: var(--rust); }
   .spec-photo { display: block; overflow: hidden; }
   .spec-photo :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
   .spec-name { margin-top: 10px; font-family: var(--font-serif); font-size: 21px; line-height: 1.05; color: var(--ink); }
@@ -76,7 +85,9 @@ const picks = monthBirds(withPhoto.map((s) => ({ qid: s.qid, months: s.data?.mon
   .spec-bars { display: flex; align-items: flex-end; gap: 2px; height: 26px; margin-top: 10px; border-bottom: 1px solid var(--line); }
   .spec-bars i { flex: 1; height: var(--h); background: var(--rust); border-radius: 1.5px 1.5px 0 0; opacity: .32; }
   .spec-bars i.now { opacity: 1; }
-  .spec-credit { margin-top: auto; padding-top: 8px; font-size: 10.5px; line-height: 1.4; color: var(--muted); }
+  .spec-credit { margin: auto 0 0; padding-top: 8px; font-size: 10.5px; line-height: 1.4; color: var(--muted); }
+  .spec-credit :global(a) { text-decoration: underline; text-underline-offset: 2px; }
+  .spec-credit :global(a:hover) { color: var(--rust); }
   .all { display: inline-block; margin-top: 30px; font-weight: 600; color: var(--rust-deep); border-bottom: 2px solid var(--rust); padding-bottom: 1px; transition: color .2s; }
   .all:hover { color: var(--rust); }
   @media (min-width: 900px) {

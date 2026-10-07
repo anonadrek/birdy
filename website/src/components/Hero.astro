@@ -1,7 +1,7 @@
 ---
 // The first view (plan 2026-10-08 Task 2, mockup lift-c.html): Dagens fågel as a plate on the espresso wall, the same
-// bird as the app's Dagens fågel when it has a species page with a CC0 or public domain photo (src/lib/daily-bird.mjs).
-// Rebuilt every night, so the plate changes with the app.
+// bird as the app's Dagens fågel when it has a species page with a photo the plate may show whole (plateImage in
+// src/lib/daily-bird.mjs: CC0, public domain, CC BY or CC BY-SA). Rebuilt every night, so the plate changes with the app.
 import PlayStoreBadge from './ui/PlayStoreBadge.astro';
 import AppStoreBadge from './ui/AppStoreBadge.astro';
 import Kicker from './ui/Kicker.astro';
@@ -10,7 +10,7 @@ import DailyBirdPlate, { type PlateBird } from './hero/DailyBirdPlate.astro';
 import fallbackPhoto from '../assets/photos/talgoxe-q25485.webp';
 import { type Locale, getCopy } from '../lib/i18n';
 import { getAllSpecies, speciesHref, speciesImage, type Species } from '../lib/species';
-import { freeImage, siteDailyBird } from '../lib/daily-bird.mjs';
+import { plateImage, siteDailyBird } from '../lib/daily-bird.mjs';
 import { appQid, date } from 'virtual:birdy-daily-bird';
 
 interface Props { locale: Locale }
@@ -18,14 +18,15 @@ const { locale } = Astro.props;
 const t = getCopy(locale);
 const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android';
 
-// Only species with a page and a CC0 or public domain photo can hang on the wall (plan house rules).
-const eligible = (await getAllSpecies()).filter((s) => freeImage(s.images));
+// Only species with a page and a photo that may hang whole on the wall (plan house rules). The app's bird is replaced
+// by another species only when it has no such photo.
+const eligible = (await getAllSpecies()).filter((s) => plateImage(s.images));
 const pick = siteDailyBird({ appQid, pageQids: eligible.map((s) => s.qid), date });
 const species: Species | undefined = pick ? eligible.find((s) => s.qid === pick.qid) : undefined;
 
 let bird: PlateBird;
 if (species) {
-  const photo = freeImage(species.images)!;
+  const photo = plateImage(species.images)!;
   bird = {
     name: species.names[locale],
     scientific: species.names.scientific,
@@ -39,8 +40,8 @@ if (species) {
     facts: species.data?.sentences[locale],
   };
 } else {
-  // No species page with a free photo in this build (only the empty test build): the site's own CC0 great tit,
-  // without a link or month bars (src/assets/photos/SOURCES.md).
+  // No species page with a photo the plate may show in this build (only the empty test build): the site's own CC0
+  // great tit, without a link or month bars (src/assets/photos/SOURCES.md).
   bird = {
     name: locale === 'sv' ? 'Talgoxe' : 'Great Tit',
     scientific: 'Parus major',

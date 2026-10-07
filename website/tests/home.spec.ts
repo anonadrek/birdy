@@ -140,9 +140,9 @@ test.describe('första vyn', () => {
   // The fixture build pins BIRDY_TODAY=2026-10-15 (package.json build:fixtures) and reads the app's species from the
   // golden file, so the app's Dagens fågel is Hornuggla (Q25384), which has a fixture page with a CC0 photo, on the day
   // 1.3.0 goes out: the plate shows it with the line about the app.
-  for (const [path, line1, line2, kicker, plate, name, same] of [
-    ['/sv/', 'Känn igen fågeln.', 'Bevara stunden.', 'Fågelguide och fältdagbok', 'Dagens fågel · tors 15 okt', 'Hornuggla', 'samma fågel som i appen i dag'],
-    ['/', 'Know the bird.', 'Keep the moment.', 'Bird guide and field journal', 'Bird of the day · Thu 15 Oct', 'Long-eared Owl', 'the same bird as in the app today'],
+  for (const [path, line1, line2, kicker, plate, name, same, credit] of [
+    ['/sv/', 'Känn igen fågeln.', 'Bevara stunden.', 'Fågelguide och fältdagbok', 'Dagens fågel · tors 15 okt', 'Hornuggla', 'samma fågel som i appen i dag', 'Foto: Testfotograf, CC BY 4.0, via Wikimedia Commons, nedskalad'],
+    ['/', 'Know the bird.', 'Keep the moment.', 'Bird guide and field journal', 'Bird of the day · Thu 15 Oct', 'Long-eared Owl', 'the same bird as in the app today', 'Photo: Testfotograf, CC BY 4.0, via Wikimedia Commons, resized'],
   ] as const) {
     test(`rubrik, kicker och Dagens fågel som plansch på ${path}`, async ({ page, request }) => {
       const errors = trackConsoleErrors(page);
@@ -161,7 +161,10 @@ test.describe('första vyn', () => {
       await expect(hero.locator('.dp-bars i')).toHaveCount(12);
       await expect(hero.locator('.dp-bars i.now')).toHaveCount(1);
       await expect(hero.locator('.dp-letters .now')).toHaveText('O');
-      await expect(hero.locator('[data-credit]')).toContainText('CC0');
+      // Hornuggla's test photo is CC BY and the only one it has: allowed on the plate, which shows the photo whole,
+      // and credited exactly like the species page (photographer, linked licence, source).
+      await expect(hero.locator('[data-credit]')).toHaveText(credit);
+      await expect(hero.locator('[data-credit] a[href^="https://creativecommons.org/licenses/by/4.0/"]')).toHaveText('CC BY 4.0');
       await expect(hero.locator('[data-credit] a[href^="https://commons.wikimedia.org/"]')).toHaveCount(1);
       const href = await hero.locator('.dp-read').getAttribute('href');
       expect(href).toMatch(path === '/sv/' ? /^\/sv\/arter\/hornuggla\/$/ : /^\/species\/long-eared-owl\/$/);
@@ -261,11 +264,18 @@ test.describe('fåglarna i månaden', () => {
       const cards = section.locator('.spec');
       await expect(cards).toHaveCount(4);
       await expect(section.locator('.spec-name')).toHaveText([...names]);
-      await expect(section.locator('.spec').first().locator('.spec-bars i.now')).toHaveCount(1);
-      for (const href of await cards.evaluateAll((as) => as.map((a) => a.getAttribute('href')!))) {
+      await expect(cards.first().locator('.spec-bars i.now')).toHaveCount(1);
+      for (const href of await section.locator('.spec-link').evaluateAll((as) => as.map((a) => a.getAttribute('href')!))) {
         expect((await request.get(href)).status(), href).toBe(200);
       }
-      await expect(section.locator('.spec-credit').first()).toContainText('CC0');
+      // The cards crop the photo, so a CC BY-SA photo never hangs there: Gråsparv's test hero is CC BY-SA and the card
+      // shows its CC BY extra instead, credited like the species page; Koltrast's CC0 hero is fine as it is.
+      const sparrow = section.locator('.spec', { has: page.locator('[data-qid="Q14683"]') });
+      await expect(sparrow.locator('img')).toHaveAttribute('src', /\/extra\./);
+      await expect(sparrow.locator('.spec-credit')).toContainText('CC BY 2.0');
+      await expect(sparrow.locator('.spec-credit a[href^="https://creativecommons.org/licenses/by/2.0/"]')).toHaveCount(1);
+      await expect(section.locator('.spec', { has: page.locator('[data-qid="Q25234"]') }).locator('.spec-credit')).toContainText('CC0');
+      for (const text of await section.locator('.spec-credit').allTextContents()) expect(text).not.toMatch(/BY-SA/);
       expect((await request.get((await section.locator('a.all').getAttribute('href'))!)).status()).toBe(200);
     });
   }
