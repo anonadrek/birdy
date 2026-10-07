@@ -86,6 +86,7 @@ class VisibleBackTest {
         prefs: FakeUserPreferences = startPrefs(),
         installedAtMs: Long = RoutingFixture.beforeCutoffMs,
         diagnosticsScreen: (@androidx.compose.runtime.Composable () -> Unit)? = null,
+        withAudio: Boolean = false,
     ): NavHostController =
         compose.startAppScaffold(
             testAppGraph(
@@ -94,6 +95,7 @@ class VisibleBackTest {
                 repository = repository,
                 observationRepository = observations,
                 diagnosticsScreen = diagnosticsScreen,
+                withAudio = withAudio,
             ),
         )
 
@@ -449,6 +451,13 @@ class VisibleBackTest {
             Column(Modifier.verticalScroll(rememberScrollState())) { repeat(80) { Text("rad $it") } }
         }
         checkBack(start(diagnosticsScreen = diagnostics), listOf(AppRoute.DebugDiagnostics), mustScroll = true)
+    }
+
+    @Test
+    fun `the arrow on audio ID goes one step back, like the gesture`() {
+        // Opened on top of Settings (as the daily-bird notification's "Lyssna efter den" can):
+        // the arrow used to jump to the Identify tab instead.
+        checkBack(start(withAudio = true), listOf(AppRoute.Settings, AppRoute.AudioScan))
     }
 
     // --- Which tab is marked -------------------------------------------------------------------

@@ -26,14 +26,18 @@ import se.birdy.app.testing.FakePremiumRepository
 import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.testing.FakeUserPreferences
 import se.birdy.app.testing.attachComposeResourcesContext
+import se.birdy.app.ui.audio.FakeStreamingRecorder
+import se.birdy.app.ui.audio.WaveformRendererApi
 import se.birdy.app.ui.theme.BirdyTheme
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesRepository
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.observation.ObservationRepository
 import se.birdy.domain.premium.PremiumState
+import se.birdy.ml.AudioClassifierMode
 import se.birdy.ml.ClassifierBootstrap
 import se.birdy.ml.ClassifierMode
+import se.birdy.ml.FakeAudioClassifier
 import se.birdy.ml.FakeBirdClassifier
 
 /**
@@ -71,6 +75,8 @@ internal fun testAppGraph(
     // Release 1.3.0 Task 7b: the back-button tests open finds, the weekly recap and a debug screen.
     observationRepository: ObservationRepository = FakeObservationRepository(),
     diagnosticsScreen: (@Composable () -> Unit)? = null,
+    // Task 7b review: fakes for the audio-ID screen, so a test can open AudioScan.
+    withAudio: Boolean = false,
 ): AppGraph {
     val grandfathered =
         GrandfatherPolicy.isGrandfathered(
@@ -108,7 +114,24 @@ internal fun testAppGraph(
         formattedPricesFlow = MutableStateFlow(prices),
         defaultLocale = defaultLocale,
         diagnosticsScreen = diagnosticsScreen,
+        audioClassifierProvider = if (withAudio) ({ FakeAudioClassifier() to AudioClassifierMode.DEMO }) else null,
+        audioStorageDir = if (withAudio) ({ System.getProperty("java.io.tmpdir") }) else null,
+        audioRecorderFactory = if (withAudio) ({ FakeStreamingRecorder() }) else null,
+        waveformRendererFactory = if (withAudio) ({ NoWaveformRenderer }) else null,
     )
+}
+
+/** Writes nothing: the audio-ID tests never get as far as saving a recording. */
+private object NoWaveformRenderer : WaveformRendererApi {
+    override suspend fun renderWaveformPng(
+        pcm: ShortArray,
+        outPath: String,
+    ): String = outPath
+
+    override suspend fun encodeOpus(
+        pcm: ShortArray,
+        outPath: String,
+    ): String? = null
 }
 
 /** Composes the real AppScaffold inside BirdyTheme, waits until it has settled, returns its NavHostController. */
