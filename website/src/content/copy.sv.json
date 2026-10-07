@@ -397,7 +397,7 @@
     "chartSeriesSentence": "{name}: {text}"
   },
   "speciesAbout": {
-    "title": "Så gör vi artsidorna: källor och granskning | Birdy",
+    "title": "Så gör vi artsidorna: källor och kontroll | Birdy",
     "description": "Så skrivs Birdys artsidor: källorna, hur AI används, hur fakta kontrolleras, vilka licenser som gäller och hur du rapporterar fel.",
     "crumb": "Så gör vi artsidorna",
     "headline": "Så gör vi *artsidorna*",
@@ -406,35 +406,39 @@
       {
         "heading": "Källorna",
         "paragraphs": [
-          "Texterna bygger på artiklarna om varje art på svenska, engelska och tyska Wikipedia.",
-          "Diagrammet över när arten ses och kartan över var den rapporteras räknas fram ur Artportalen, Sveriges rapportsystem för fynd av växter, djur och svampar. SLU Artdatabanken delar rapporterna öppet via den internationella databasen GBIF. Siffrorna visar artens andel av alla fågelrapporter, så att arten inte ser vanligare ut i en viss månad eller ett visst län bara för att fler är ute och skådar där och då.",
-          "Den svenska rödlistestatusen kommer från SLU Artdatabankens Rödlistade arter i Sverige 2025 och den globala från IUCN:s rödlista via Wikidata. Foton och inspelningar kommer från Wikimedia Commons."
+          "Texterna bygger på Wikipedias artiklar om arten på svenska, engelska och tyska, i den mån arten har en artikel på språket.",
+          "Diagrammet över när arten ses och kartan över var den rapporteras räknas fram ur fågelrapporterna i Artportalen 2016 till 2025. Artportalen är Sveriges rapportsystem för fynd av växter, djur och svampar, och SLU Artdatabanken delar rapporterna öppet via den internationella databasen GBIF. Siffrorna visar artens andel av alla fågelrapporter, så att arten inte ser vanligare ut i en viss månad eller ett visst län bara för att fler är ute och skådar där och då. Har arten färre än 200 rapporter visas varken diagram eller karta.",
+          "Den svenska rödlistestatusen kommer från SLU Artdatabankens Rödlistade arter i Sverige 2025, också via GBIF, och den globala från IUCN:s rödlista via Wikidata. Foton och inspelningar kommer från Wikimedia Commons."
         ]
       },
       {
         "heading": "Så används AI",
         "paragraphs": [
-          "En språkmodell läser artiklarna och plockar ut fakta om bland annat utseende, läte, miljö och förekomst i Sverige. Varje faktum ska ha ett ordagrant citat ur artikeln, och ett program kontrollerar att citatet verkligen finns där. Fakta utan giltigt citat stryks.",
-          "Texten på sidan skrivs sedan av en modell som bara får se de fakta som har godkänts, inte artiklarna. En annan modell läser därefter varje mening och jämför den med de fakta den bygger på. Meningar som inte stöds skrivs om eller stryks.",
-          "Diagrammet och kartan räknas fram, och rödlistestatusen hämtas, direkt ur datan utan någon språkmodell."
+          "Språkmodellen Claude Opus 5.5 från Anthropic läser artiklarna och plockar ut högst 30 fakta om bland annat utseende, läte, miljö och förekomst i Sverige. Varje faktum ska ha ett ordagrant citat ur någon av artiklarna, och ett program kontrollerar att citatet verkligen finns där. Fakta utan giltigt citat stryks.",
+          "Texten på sidan skrivs sedan av samma modell, som bara får se de fakta som har klarat kontrollen nedan, inte artiklarna. En annan modell, Claude Sonnet 5, läser därefter varje mening och jämför den med de fakta och citat den bygger på. En mening som inte stöds skrivs om en gång, och stöds den fortfarande inte stryks den.",
+          "Diagrammet, kartan och meningarna under dem räknas fram av kod direkt ur datan, och rödlistestatusen hämtas på samma sätt, utan någon språkmodell."
         ]
       },
       {
         "heading": "Kontrollen",
         "paragraphs": [
-          "Innan texten skrivs kontrollerar en annan modell än den som plockade ut fakta varje faktum mot citatet och stycket runt det i artikeln, och fakta som inte stöds fullt ut stryks. Kod jämför mått som längd och vikt mellan artiklarna på de olika språken, och förekomsten i Sverige med Artportalen och den svenska rödlistan. Inspelningen kontrolleras med Birdys egen ljudmodell, och känner modellen inte igen arten visas ingen inspelning. Det som inte går att avgöra automatiskt granskas av Albin Abrahamsson, som har byggt Birdy, innan sidan publiceras. Efter publiceringen läser han dessutom ett löpande stickprov av sidorna. Datumet för den senaste kontrollen står längst ned på varje artsida."
+          "Innan texten skrivs kontrollerar Claude Sonnet 5, alltså en annan modell än den som plockade ut fakta, varje faktum mot dess citat och stycket runt citatet i artikeln. Fakta som inte stöds fullt ut stryks. Kod jämför dessutom tal som längd, vingbredd, vikt och antal ägg mellan artiklarna på de olika språken, och artens status i Sverige, till exempel stannfågel eller vintergäst, med rapporterna i Artportalen och den svenska rödlistan.",
+          "Inspelningen kontrolleras med ljudmodellen som känner igen läten i Birdy-appen. Känner modellen inte igen arten prövas upp till tre andra inspelningar från Wikimedia Commons, och annars visas ingen inspelning.",
+          "En sida där ingen kontroll hittar något publiceras automatiskt. Det som inte går att avgöra automatiskt väntar på ett beslut av Albin Abrahamsson, som har byggt Birdy, innan sidan publiceras: till exempel en status som kontrollen strök, tal som skiljer sig mellan artiklarna, en status som inte stämmer med rapporterna, eller en art som ljudmodellen inte känner till eller bara känner igen svagt. Efter publiceringen läser han dessutom ett löpande stickprov, två av varje 40 publicerade artsidor. Datumet för den senaste kontrollen står längst ned på varje artsida."
         ]
       },
       {
         "heading": "Licenserna",
         "paragraphs": [
-          "Texterna på art- och jämförelsesidorna bygger på Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy och Wikipediaartiklarna som källor och delar vidare under samma licens. Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem. Fotona är nedskalade, i övrigt oförändrade. Inspelningarna är bearbetade (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet."
+          "Texterna på art- och jämförelsesidorna är skrivna ur fakta från Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy och Wikipediaartiklarna som källor och delar vidare under samma licens. Varje sida länkar till artiklarna i den version texten bygger på.",
+          "Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem. Fotona är nedskalade, i övrigt oförändrade. Inspelningarna är bearbetade (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet.",
+          "Rapportdatan från Artportalen och den svenska rödlistan är fri att använda under CC0 och hämtas via GBIF. CC0 kräver ingen källhänvisning, men varje sida anger ändå källan."
         ]
       },
       {
         "heading": "Rättelser",
         "paragraphs": [
-          "Hittar du ett fel? Skriv till {email}, gärna med en länk till sidan. Stämmer det rättar vi sidan och sätter ett nytt kontrolldatum."
+          "Längst ned på varje artsida finns länken ”Hittade du ett fel? Skriv till oss.” Du kan också skriva direkt till {email}, gärna med en länk till sidan. Stämmer det rättar vi sidan och sätter ett nytt kontrolldatum."
         ]
       }
     ]

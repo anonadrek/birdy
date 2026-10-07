@@ -444,3 +444,40 @@ test.describe('kategoriraden: den aktiva chipen syns helt, fri från kanttoninge
     }
   }
 });
+
+test.describe('om-sidan', () => {
+  for (const [path, h1, other, sections] of [
+    ['/sv/arter/om-artsidorna/', 'Så gör vi artsidorna', '/species/about-these-pages/', ['Källorna', 'Så används AI', 'Kontrollen', 'Licenserna', 'Rättelser']],
+    ['/species/about-these-pages/', 'How we make the species pages', '/sv/arter/om-artsidorna/', ['The sources', 'How AI is used', 'The checks', 'The licences', 'Corrections']],
+  ] as const) {
+    test(`${path} har rubrikerna, mejladressen och språkparet`, async ({ page }) => {
+      const errors = trackConsoleErrors(page);
+      const res = await page.goto(path);
+      expect(res?.status()).toBe(200);
+      await expect(page.locator('h1')).toHaveText(h1);
+      await expect(page.locator('main h2')).toHaveText([...sections]);
+      await expect(page.locator('main a[href^="mailto:"]')).toHaveCount(1);
+      await expect(page.locator(`link[rel="alternate"][hreflang="${path.startsWith('/sv') ? 'en' : 'sv'}"]`)).toHaveAttribute('href', `https://birdy.community${other}`);
+      expect(errors).toEqual([]);
+    });
+  }
+  test('om-sidan är indexerbar när det finns arter och har JSON-LD med författare och utgivare', async ({ page }) => {
+    await page.goto('/sv/arter/om-artsidorna/');
+    await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
+    const graph = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)['@graph'] as Record<string, any>[];
+    const web = graph.find((n) => n['@type'] === 'WebPage')!;
+    expect(web.author).toMatchObject({ '@type': 'Person', name: 'Albin Abrahamsson' });
+    expect(web.publisher).toMatchObject({ '@type': 'Organization', name: 'AlbIT AB' });
+    expect(graph.find((n) => n['@type'] === 'BreadcrumbList')!.itemListElement.map((c: { name: string }) => c.name)).toEqual(['Birdy', 'Arter', 'Så gör vi artsidorna']);
+  });
+
+  for (const [path, words] of [
+    ['/sv/arter/om-artsidorna/', ['Claude Opus 5.5', 'Claude Sonnet 5', 'ljudmodell', 'stickprov', 'CC BY-SA 4.0', 'CC0', 'Hittade du ett fel?']],
+    ['/species/about-these-pages/', ['Claude Opus 5.5', 'Claude Sonnet 5', 'sound model', 'sample', 'CC BY-SA 4.0', 'CC0', 'Found a mistake?']],
+  ] as const) {
+    test(`${path} beskriver modellerna, kontrollerna, licenserna och felrapporten`, async ({ page }) => {
+      await page.goto(path);
+      for (const word of words) await expect(page.locator('main')).toContainText(word);
+    });
+  }
+});

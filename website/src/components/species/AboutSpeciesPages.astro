@@ -1,0 +1,77 @@
+---
+// "How we make the species pages" (spec 2026-09-25 §8). Text in copy.{sv,en}.json → speciesAbout.
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../Nav.astro';
+import Footer from '../Footer.astro';
+import Kicker from '../ui/Kicker.astro';
+import JournalHeadline from '../ui/JournalHeadline.astro';
+import { getCopy, type Locale } from '../../lib/i18n';
+import { ALBIN_URL, ALBIT_URL, CONTACT_EMAIL } from '../../lib/links';
+import { SITE, aboutHref, breadcrumbJsonLd, getAllSpecies, hubHref } from '../../lib/species';
+import '../../styles/species.css';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getCopy(locale);
+const a = t.speciesAbout;
+const other: Locale = locale === 'sv' ? 'en' : 'sv';
+// Same rule as the hub (SpeciesHub.astro, controller review 2026-10-07): before Task 16 has published the
+// first real species, nothing on the species pages is worth a search engine's attention yet. Unlike the
+// hub, the content here doesn't depend on the species list, so only `noindex` changes, nothing is hidden.
+const speciesCount = (await getAllSpecies()).length;
+const pathname = aboutHref(locale);
+const crumbs = [
+  { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
+  { name: t.species.crumbHub, href: hubHref(locale) },
+  { name: a.crumb, href: pathname },
+];
+const jsonLd = [
+  breadcrumbJsonLd(crumbs),
+  {
+    '@type': 'WebPage',
+    url: new URL(pathname, SITE).toString(),
+    name: a.title.replace(/ \| Birdy$/, ''),
+    inLanguage: locale,
+    author: { '@type': 'Person', name: 'Albin Abrahamsson', url: ALBIN_URL },
+    publisher: { '@type': 'Organization', name: 'AlbIT AB', url: ALBIT_URL },
+  },
+];
+---
+
+<Layout locale={locale} pathname={pathname} alternatePath={aboutHref(other)} title={a.title} description={a.description} noindex={speciesCount === 0} jsonLd={jsonLd}>
+  <Nav locale={locale} variant="solid" switchLangHref={aboutHref(other)} />
+  <main class="about wrap">
+    <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
+      <ol>
+        <li><a href={crumbs[0].href} data-crumb>{crumbs[0].name}</a></li>
+        <li><a href={crumbs[1].href} data-crumb>{crumbs[1].name}</a></li>
+        <li><span aria-current="page" data-crumb>{crumbs[2].name}</span></li>
+      </ol>
+    </nav>
+    <Kicker text={t.species.kicker} />
+    <JournalHeadline text={a.headline} level="h1" align="left" size="clamp(38px, 5vw, 60px)" />
+    <p class="lead">{a.lead}</p>
+    {a.sections.map((section) => (
+      <section class="about-sec">
+        <h2>{section.heading}</h2>
+        {section.paragraphs.map((paragraph) => {
+          const [before, after] = paragraph.split('{email}');
+          return (
+            <p>
+              {before}
+              {after !== undefined && <Fragment><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>{after}</Fragment>}
+            </p>
+          );
+        })}
+      </section>
+    ))}
+  </main>
+  <Footer locale={locale} switchLangHref={aboutHref(other)} />
+</Layout>
+
+<style>
+  .about { padding-top: 26px; padding-bottom: 88px; max-width: 46rem; }
+  .about-sec h2 { font-size: 26px; margin: 36px 0 10px; }
+  .about-sec p { font-size: 16px; line-height: 1.7; margin: 0 0 12px; }
+  .about-sec a { color: var(--rust); text-decoration: underline; text-underline-offset: 3px; }
+</style>

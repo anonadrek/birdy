@@ -397,7 +397,7 @@
     "chartSeriesSentence": "{name}: {text}"
   },
   "speciesAbout": {
-    "title": "How we make the species pages: sources and review | Birdy",
+    "title": "How we make the species pages: sources and checks | Birdy",
     "description": "How the species pages on Birdy are made: the sources, how AI is used, how the facts are checked, the licences and how to report a mistake.",
     "crumb": "How we make these pages",
     "headline": "How we make the *species pages*",
@@ -406,35 +406,39 @@
       {
         "heading": "The sources",
         "paragraphs": [
-          "The texts are based on the articles about each species on Swedish, English and German Wikipedia.",
-          "The chart of when the species is seen and the map of where it is reported are calculated from Artportalen, Sweden's reporting system for sightings of plants, animals and fungi. The SLU Swedish Species Information Centre shares the reports openly through the international database GBIF. The figures show the species' share of all bird reports, so that it does not look more common in a month or a county just because more birdwatchers are out then or there.",
-          "The Swedish red list status comes from The Swedish Red List 2025 by the SLU Swedish Species Information Centre, and the global status from the IUCN Red List via Wikidata. Photos and recordings come from Wikimedia Commons."
+          "The texts are based on Wikipedia's articles about the species in Swedish, English and German, as far as the species has an article in that language.",
+          "The chart of when the species is seen and the map of where it is reported are calculated from the bird reports in Artportalen from 2016 to 2025. Artportalen is Sweden's reporting system for sightings of plants, animals and fungi, and the SLU Swedish Species Information Centre shares the reports openly through the international database GBIF. The figures show the species' share of all bird reports, so that it does not look more common in a month or a county just because more birdwatchers are out then or there. A species with fewer than 200 reports gets neither a chart nor a map.",
+          "The Swedish red list status comes from The Swedish Red List 2025 by the SLU Swedish Species Information Centre, also through GBIF, and the global status from the IUCN Red List via Wikidata. Photos and recordings come from Wikimedia Commons."
         ]
       },
       {
         "heading": "How AI is used",
         "paragraphs": [
-          "A language model reads the articles and picks out facts about appearance, calls and song, habitat and occurrence in Sweden, among other things. Every fact needs a verbatim quote from the article, and a program checks that the quote really is there. Facts without a valid quote are removed.",
-          "The text on the page is then written by a model that only sees the approved facts, not the articles. Another model then reads every sentence and compares it with the facts it is based on. Sentences that are not supported are rewritten or removed.",
-          "The chart and the map are calculated, and the red list status is looked up, directly from the data, without any language model."
+          "The language model Claude Opus 5.5 by Anthropic reads the articles and picks out at most 30 facts about appearance, calls and song, habitat and occurrence in Sweden, among other things. Every fact needs a verbatim quote from one of the articles, and a program checks that the quote really is there. Facts without a valid quote are removed.",
+          "The text on the page is then written by the same model, which only sees the facts that have passed the checks below, not the articles. Another model, Claude Sonnet 5, then reads every sentence and compares it with the facts and quotes it is based on. A sentence that is not supported is rewritten once, and if it is still not supported it is removed.",
+          "The chart, the map and the sentences under them are calculated by code directly from the data, and the red list status is looked up the same way, without any language model."
         ]
       },
       {
         "heading": "The checks",
         "paragraphs": [
-          "Before the text is written, a different model from the one that picked out the facts checks every fact against its quote and the paragraph around it in the article, and facts that are not fully supported are removed. Code compares measurements such as length and weight between the articles in the different languages, and the occurrence in Sweden with Artportalen and the Swedish red list. The recording is checked with Birdy's own sound model, and if the model does not recognise the species, no recording is shown. Anything that cannot be settled automatically is reviewed by Albin Abrahamsson, who built Birdy, before the page is published. After publication, he also reads a running sample of the pages. The date of the latest check is at the bottom of every species page."
+          "Before the text is written, Claude Sonnet 5, a different model from the one that picked out the facts, checks every fact against its quote and the paragraph around the quote in the article. Facts that are not fully supported are removed. Code also compares numbers such as length, wingspan, weight and clutch size between the articles in the different languages, and the species' status in Sweden, such as resident or winter visitor, with the reports in Artportalen and the Swedish red list.",
+          "The recording is checked with the sound model that identifies calls and songs in the Birdy app. If the model does not recognise the species, up to three other recordings from Wikimedia Commons are tried, and otherwise no recording is shown.",
+          "A page where no check finds anything is published automatically. Anything that cannot be settled automatically waits for a decision by Albin Abrahamsson, who built Birdy, before the page is published: for example a status that the checks removed, numbers that differ between the articles, a status that does not match the reports, or a species the sound model does not know or only recognises weakly. After publication, he also reads a running sample, two of every 40 published species pages. The date of the latest check is at the bottom of every species page."
         ]
       },
       {
         "heading": "The licences",
         "paragraphs": [
-          "The texts on the species and comparison pages are based on Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and the Wikipedia articles and share under the same licence. Photos and recordings have their own licences, and every page names the author, licence and source for them. The photos are scaled down, otherwise unchanged. The recordings are edited (at most 20 seconds, mono, loudness evened out, MP3), and an edited CC BY-SA recording is shared under the same licence as the original."
+          "The texts on the species and comparison pages are written from facts in Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and the Wikipedia articles and share under the same licence. Every page links to the articles in the version the text is based on.",
+          "Photos and recordings have their own licences, and every page names the author, licence and source for them. The photos are scaled down, otherwise unchanged. The recordings are edited (at most 20 seconds, mono, loudness evened out, MP3), and an edited CC BY-SA recording is shared under the same licence as the original.",
+          "The report data from Artportalen and the Swedish red list are free to use under CC0 and come through GBIF. CC0 does not require a credit, but every page names the source anyway."
         ]
       },
       {
         "heading": "Corrections",
         "paragraphs": [
-          "Found a mistake? Write to {email}, ideally with a link to the page. If we confirm it, we correct the page and set a new check date."
+          "At the bottom of every species page there is a link, “Found a mistake? Write to us.” You can also write directly to {email}, ideally with a link to the page. If we confirm the mistake, we correct the page and set a new check date."
         ]
       }
     ]

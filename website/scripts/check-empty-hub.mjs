@@ -12,9 +12,8 @@
 // dist/: the two must never be confused, since dist/ holds the 16-species fixture build the rest of the
 // Playwright suite depends on.
 //
-// NOTE for whoever picks up Task 12 and Task 14: once AboutSpeciesPages.astro exists, extend this script
-// with the same two checks for sv/arter/om-artsidorna/ and species/about-these-pages/ (Task 12 applies
-// the same zero-species noindex rule there).
+// The about pages (Task 12) follow the same zero-species noindex rule, but nothing on them depends on the
+// species list, so their content must stay: all five sections and the mail link.
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -66,6 +65,19 @@ for (const path of ['sv/arter', 'species']) {
   else if (desc.length < 120 || desc.length > 155) fail(path, `meta description är ${desc.length} tecken (ska vara 120 till 155): ${desc}`);
 }
 
+for (const path of ['sv/arter/om-artsidorna', 'species/about-these-pages']) {
+  const html = page(path);
+  if (!html.includes('<meta name="robots" content="noindex, follow"')) fail(path, 'saknar noindex trots noll byggda arter');
+  if (!html.includes('<h1')) fail(path, 'saknar h1');
+  const main = html.slice(html.indexOf('<main'), html.indexOf('</main>'));
+  const sections = (main.match(/<h2[\s>]/g) ?? []).length;
+  if (sections < 5) fail(path, `har ${sections} h2, ska ha alla fem avsnitten även med noll byggda arter`);
+  if (!main.includes('href="mailto:')) fail(path, 'saknar mejllänken');
+  const desc = metaDescription(html);
+  if (!desc) fail(path, 'saknar meta description');
+  else if (desc.length < 120 || desc.length > 155) fail(path, `meta description är ${desc.length} tecken (ska vara 120 till 155): ${desc}`);
+}
+
 const sitemap = existsSync(join(dist, 'sitemap-index.xml')) ? 'present' : 'missing';
 if (sitemap === 'missing') fail('sitemap-index.xml', 'saknas helt');
 
@@ -73,4 +85,4 @@ if (errors.length) {
   console.error(`check-empty-hub FAILED (${errors.length} fel):\n${errors.join('\n')}`);
   process.exit(1);
 }
-console.log('check-empty-hub OK (hubsidorna har noindex och visar bara ingressen med noll byggda arter)');
+console.log('check-empty-hub OK (hubsidorna har noindex och visar bara ingressen, om-sidorna har noindex och hela innehållet, med noll byggda arter)');
