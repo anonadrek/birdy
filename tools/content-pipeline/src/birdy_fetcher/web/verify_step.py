@@ -5,6 +5,7 @@ in the exception sheet at all (Task 16)."""
 from __future__ import annotations
 
 import asyncio
+import contextlib
 import hashlib
 import os
 import shutil
@@ -26,11 +27,13 @@ from .facts_step import FactExtractor, facts_generated
 from .llm import MODELS, AnthropicJsonClient, JsonModelClient
 from .paths import WebPaths
 from .record import (
+    STAGED_VOICE_FILE,
     VOICE_FILE,
     Record,
     audio_id,
     delete_voice,
     facts_hash,
+    file_sha256,
     load_record,
     record_path,
     save_record,
@@ -317,6 +320,7 @@ async def _try_other_recordings(
             audio={
                 **audio_record(candidate, source.qid),
                 "sha256": hashlib.sha256(raw).hexdigest(),
+                "mp3Sha256": file_sha256(mp3),
             },
             mp3=mp3,
             title=candidate.title,
@@ -389,21 +393,32 @@ def _apply_audio(
     return False
 
 
+PLACE_FAILED_FLAG = (
+    "Den nya inspelningen kunde inte läggas på plats (filen var låst) och den gamla togs "
+    "bort. Kör web verify --force för arten."
+)
+
+
+def _swap(staged: Path, voice: Path) -> None:
+    os.replace(staged, voice)
+
+
 def _place_voice(images_out: Path, qid: str, mp3: Path) -> str | None:
     """Moves a replacement recording into place after its record was saved. On failure the
-    old file is deleted rather than left under the new credits; returns why."""
+    old file is deleted rather than left under the new credits (if that fails too, the
+    sweep removes it by its hash), and nothing staged is left; returns why."""
     voice = images_out / qid / VOICE_FILE
-    staged = voice.with_name(VOICE_FILE + ".new")
+    staged = voice.with_name(STAGED_VOICE_FILE)
     try:
         shutil.copyfile(mp3, staged)
-        os.replace(staged, voice)
+        _swap(staged, voice)
     except OSError as exc:
-        staged.unlink(missing_ok=True)
+        with contextlib.suppress(OSError):  # else the sweep at the end of the run does
+            staged.unlink(missing_ok=True)
         error = delete_voice(images_out, qid)
         return (
             f"{qid}: den nya inspelningen kunde inte läggas på plats "
-            f"({type(exc).__name__}: {exc}); kör web verify --force igen"
-            + (f"; {error}" if error else "")
+            f"({type(exc).__name__}: {exc})" + (f"; {error}" if error else "")
         )
     return None
 
@@ -561,7 +576,15 @@ async def _one_in(
         if isinstance(audio_change, Path):
             error = _place_voice(paths.images_out, source.qid, audio_change)
             if error:
+                # The saved record names the new recording, which is not in place: it must
+                # not stay verified (re-review 2026-10-07).
                 notes.append(error)
+                record.pop("verification", None)
+                record["flags"] = [
+                    *record["flags"],
+                    {"check": "V4", "factId": None, "message": PLACE_FAILED_FLAG},
+                ]
+                save_record(path, record)
         elif audio_change:
             error = delete_voice(paths.images_out, source.qid)
             if error:

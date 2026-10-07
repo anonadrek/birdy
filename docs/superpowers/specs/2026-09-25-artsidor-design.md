@@ -692,7 +692,8 @@ Listan ligger i `prompts/web-banned-phrases.txt` (med böjningsformer sedan fas 
   "audio": {
     "file": "Q25485/voice.mp3", "durationSec": 20, "trimmed": true,
     "author": "…", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:…"
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:…",
+    "sha256": "…", "mp3Sha256": "…"
   },
   "wikipedia": {
     "sv": { "title": "Talgoxe", "revision": "59064377" },
@@ -759,6 +760,7 @@ Listan ligger i `prompts/web-banned-phrases.txt` (med böjningsformer sedan fas 
 - `verification` finns bara för en art som har klarat den automatiska kontrollen (9.4) och, om den hade flaggor, fått Albins beslut. `verification.model` är kontrollmodellens id, `verification.spotChecked` är sant om arten har dragits i stickprovet efter publicering (ändrat 2026-10-05 (b), avsnitt 14). Ingen text skrivs för en art utan `verification`.
 - `publish` styr produktionsbygget (avsnitt 14).
 - `audio`, `marginalia`, `data` och `wikipedia.de` kan saknas. `data.months` och `data.counties` saknas när arten har färre än 200 rapporter.
+- `audio.sha256` är hashen av den nedladdade originalfilen (identifierar inspelningen, `review.audioKept` gäller den), `audio.mp3Sha256` hashen av den omkodade `voice.mp3` (**tillagt 2026-10-07**): städningen i slutet av `web sources`, `web verify` och `web import` tar bort en `voice.mp3` som inte har den hashen (ett avbrutet byte av inspelning i V4) och varje kvarlämnad `voice.mp3.new`, och artposten förlorar då `verification` och får en V4-flagga. Går det nya bytet inte att lägga på plats (låst fil) sparas artposten om på samma sätt.
 - `swedishRedList` är `RE`, `CR`, `EN`, `VU`, `NT`, `DD` eller `not_listed`, eller saknas om matchningen mot listan misslyckades. **Tillagt 2026-10-07:** rödlistans dataset på GBIF har bara rödlistade arter, så `not_listed` skiljer inte "bedömd, livskraftig" från "inte bedömd". En art som inte finns i listan och har färre än 200 rapporter förekommer inte regelbundet i Sverige och är inte bedömd (NA eller NE): fältet saknas då, raden döljs och ingen mening "Inte rödlistad i Svenska rödlistan 2025" skrivs.
 - `lookAlikes[].other` och `facts[].other.qid` är QID när den andra arten finns bland de 839, annars saknas `qid` och `lookAlikes[].other` är det vetenskapliga namnet. Bara arter med publicerad sida länkas. `facts[].other.scientific` är Birdys binomen när arten matchades (avsnitt 9.3), annars namnet som artikeln skriver det; `facts[].other.written` finns när artikeln skriver namnet på annat sätt än Birdy ("C. caeruleus"), så att kontrollen och en granskning ser vad citatet sa.
 - Sajtens zod-schema läser bara de fält sidorna behöver och görs inte `.strict()`. Av `facts` läser sajten bara `id`, `topic` och `other` (namnet på en förväxlingsart som inte har egen sida). Av `verification` läser sajten bara `at` (till creditraden och `lastReviewed`). `raw`, `generated` och `rejectedText` läses inte av sajten.

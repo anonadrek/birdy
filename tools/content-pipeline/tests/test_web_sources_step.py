@@ -126,6 +126,9 @@ async def test_sources_write_a_pending_record_with_every_source(tmp_path: Path) 
     assert record["wikipedia"]["de"] == {"title": "Kohlmeise", "revision": "3"}
     assert record["audio"]["file"] == "Q1/voice.mp3"
     assert record["audio"]["trimmed"] is True
+    # The converted file's hash: the sweep removes a voice.mp3 that is not this one.
+    voice = paths.images_out / "Q1" / "voice.mp3"
+    assert record["audio"]["mp3Sha256"] == hashlib.sha256(voice.read_bytes()).hexdigest()
     assert (paths.images_out / "Q1" / "voice.mp3").exists()
     assert (paths.images_out / "Q1" / "hero.webp").exists()
     assert any(p.name.startswith("web-sources-") for p in paths.reports.iterdir())
@@ -313,9 +316,9 @@ async def test_a_new_file_under_the_same_title_is_a_different_recording(tmp_path
     record = load_record(record_path(paths.data_out, "Q1"))
     assert record is not None
     assert record["audio"]["sha256"] == hashlib.sha256(_wav(3)).hexdigest()
-    assert {k: v for k, v in record["audio"].items() if k != "sha256"} == audio_record(
-        RECORDING, "Q1"
-    )
+    assert {
+        k: v for k, v in record["audio"].items() if k not in ("sha256", "mp3Sha256")
+    } == audio_record(RECORDING, "Q1")
     assert audio_id(record["audio"]) != audio_id(old)
     assert "audioKept" not in record["review"]
 

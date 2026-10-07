@@ -31,6 +31,7 @@ from .record import (
     Record,
     audio_id,
     delete_voice,
+    file_sha256,
     image_dict,
     is_reviewed,
     load_record,
@@ -178,7 +179,13 @@ async def _audio(
             # the same title is a different recording, so `audio_id` and with it Albin's
             # `audioKept` follow the content, not just the metadata. Hashed before ffmpeg,
             # so it is the same on every machine.
-            audio = {**audio_record(chosen, source.qid), "sha256": hashlib.sha256(raw).hexdigest()}
+            audio = {
+                **audio_record(chosen, source.qid),
+                "sha256": hashlib.sha256(raw).hexdigest(),
+                # The converted file's own hash: the sweep removes a voice.mp3 that is not
+                # this one (re-review 2026-10-07).
+                "mp3Sha256": file_sha256(voice),
+            }
     if audio is None and not ctx.options.dry_run:
         error = delete_voice(ctx.paths.images_out, source.qid)
         if error:

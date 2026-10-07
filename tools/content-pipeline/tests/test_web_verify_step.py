@@ -21,6 +21,7 @@ from birdy_fetcher.web.record import (
     merge_sources,
     record_path,
     save_record,
+    sweep_orphan_voices,
 )
 from birdy_fetcher.web.verify import FactVerdict, FactVerifyOutput
 from birdy_fetcher.web.verify_step import AudioPreflightFailed, VerifyOptions, run_verify
@@ -1161,3 +1162,81 @@ async def test_with_no_recording_left_the_strike_remembers_every_one_tried(
     assert record["review"]["audioStruck"] is True
     assert record["review"]["audioStruckSources"] == ["x", "alt1", "alt2"]
     assert not (paths.images_out / "Q1" / "voice.mp3").exists()
+
+
+async def test_a_locked_voice_file_leaves_the_species_unverified_with_a_flag(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Re-review 2026-10-07: when the new recording cannot be put in place (Windows lock on
+    os.replace), the record that names it is saved again without verification and with a
+    V4 flag, the old file does not stay under the new credits, and no .new is left."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _fake_model(monkeypatch, {b"id3": NONE, b"alt1": KEEP})
+
+    def locked(src: object, dst: object) -> None:
+        raise PermissionError("filen används av en annan process")
+
+    # Only the swap of voice.mp3 is locked, not the record's own atomic save.
+    monkeypatch.setattr("birdy_fetcher.web.verify_step._swap", locked)
+    notes = await _verify_with(paths, FakeCommons([_candidate("alt1")]))
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["sourceUrl"] == "alt1"
+    assert "verification" not in record
+    assert [f["check"] for f in record["flags"]] == ["V4"]
+    assert "kunde inte läggas på plats" in record["flags"][0]["message"]
+    voice = paths.images_out / "Q1" / "voice.mp3"
+    assert not voice.exists()
+    assert not voice.with_name("voice.mp3.new").exists()
+    assert any("kunde inte läggas på plats" in n for n in notes)
+
+
+async def test_a_crash_between_save_and_swap_is_caught_by_the_next_sweep(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The process dies after the record with the new recording is saved and before the
+    file is swapped in: the next sweep (any step's end) removes the old file and the stray
+    .new, and the record loses its verification."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _fake_model(monkeypatch, {b"id3": NONE, b"alt1": KEEP})
+
+    class PowerCut(BaseException):
+        """The process dies: nothing after this line of the step runs (a BaseException
+        other than SystemExit, which asyncio would re-raise past the test)."""
+
+    def crash(images_out: Path, qid: str, mp3: Path) -> str | None:
+        (images_out / qid / "voice.mp3.new").write_bytes(b"alt1")
+        raise PowerCut
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step._place_voice", crash)
+    with pytest.raises(PowerCut):
+        await _verify_with(paths, FakeCommons([_candidate("alt1")]))
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["sourceUrl"] == "alt1" and "verification" in record
+    voice = paths.images_out / "Q1" / "voice.mp3"
+    assert voice.read_bytes() == b"id3"  # the old recording under the new credits
+
+    sweep = sweep_orphan_voices(paths.data_out, paths.images_out)
+    assert not voice.exists() and not voice.with_name("voice.mp3.new").exists()
+    assert sweep.errors and "Q1" in sweep.errors[0]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert "verification" not in record
+    assert [f["check"] for f in record["flags"]] == ["V4"]
+
+
+async def test_a_replacement_records_the_hash_of_its_file(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import hashlib
+
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _fake_model(monkeypatch, {b"id3": NONE, b"alt1": KEEP})
+    await _verify_with(paths, FakeCommons([_candidate("alt1")]))
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["mp3Sha256"] == hashlib.sha256(b"alt1").hexdigest()
