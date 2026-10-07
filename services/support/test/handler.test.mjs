@@ -60,6 +60,31 @@ test('other events and other recipients are ignored with 200', async () => {
   assert.equal(client.calls.send.length, 0);
 });
 
+test('support@ in Cc, Bcc, or received_for (alias/list delivery) also forwards, not just To', async () => {
+  const client = fakeClient();
+  await run(client, event({ to: ['other@example.se'], cc: ['support@birdy.community'] }));
+  assert.equal(client.calls.send[0]?.key, 'forward-em_1');
+});
+
+test('support@ in Bcc also forwards', async () => {
+  const client = fakeClient();
+  await run(client, event({ to: ['other@example.se'], bcc: ['support@birdy.community'] }));
+  assert.equal(client.calls.send[0]?.key, 'forward-em_1');
+});
+
+test('support@ in received_for also forwards', async () => {
+  const client = fakeClient();
+  await run(client, event({ to: ['other@example.se'], received_for: ['support@birdy.community'] }));
+  assert.equal(client.calls.send[0]?.key, 'forward-em_1');
+});
+
+test('an event with no data object at all is ignored with 200, not thrown', async () => {
+  const client = fakeClient();
+  const body = JSON.stringify({ type: 'email.received', created_at: '2026-10-08T07:00:01.000Z' });
+  assert.deepEqual(await run(client, body), { status: 200 });
+  assert.equal(client.calls.send.length, 0);
+});
+
 test('mail from Birdy itself is not forwarded (no loops)', async () => {
   const client = fakeClient({ mail: { ...email, from: 'Birdy support <support@birdy.community>' } });
   assert.deepEqual(await run(client, event({ from: 'support@birdy.community' })), { status: 200 });

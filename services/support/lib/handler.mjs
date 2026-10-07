@@ -29,11 +29,13 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
 
   const id = event?.data?.email_id ?? null;
   const support = env.SUPPORT_ADDRESS.toLowerCase();
-  if (event.type !== 'email.received' || !(event.data.to ?? []).some((to) => addressOf(to) === support)) {
+  // support@ can be reached via To, Cc, Bcc, or an alias/list (received_for) — any of them counts.
+  const recipients = [...(event.data?.to ?? []), ...(event.data?.cc ?? []), ...(event.data?.bcc ?? []), ...(event.data?.received_for ?? [])];
+  if (event.type !== 'email.received' || !recipients.some((to) => addressOf(to) === support)) {
     say({ outcome: 'ignored', id, type: event.type });
     return { status: 200 };
   }
-  if (addressOf(event.data.from) === support) {
+  if (addressOf(event.data?.from) === support) {
     say({ outcome: 'own-mail', id });
     return { status: 200 };
   }
