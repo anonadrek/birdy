@@ -1789,7 +1789,7 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
           href={c.href}
           aria-current={c.key === active ? (c.href === here ? 'page' : 'true') : undefined}
         >
-          {c.label} <span class="n" aria-hidden="true">{c.n}</span><span class="sr-only">, {countLabel(c.n, t)}</span>
+          {c.label}<span class="n" aria-hidden="true"> {c.n}</span><span class="sr-only">, {countLabel(c.n, t)}</span>
         </a>
       ))}
     </nav>
@@ -1823,6 +1823,16 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
   updateFade();
   chips?.addEventListener('scroll', updateFade);
   window.addEventListener('resize', updateFade);
+
+  // Scroll a focused chip into view inside the row itself, not the page (controller review 2026-10-07).
+  chips?.addEventListener('focusin', (e) => {
+    const el = (e.target as HTMLElement).closest('.chip');
+    if (!el || !chips) return;
+    const c = chips.getBoundingClientRect();
+    const a = el.getBoundingClientRect();
+    if (a.right > c.right - 40) chips.scrollLeft += a.right - (c.right - 40);
+    else if (a.left < c.left + 6) chips.scrollLeft -= c.left + 6 - a.left;
+  });
 </script>
 
 <style>
@@ -1835,7 +1845,7 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
     .chips { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
   }
   .chip { position: relative; flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); font-size: 13px; font-weight: 600; color: var(--ink); white-space: nowrap; transition: border-color .2s; }
-  .chip::after { content: ''; position: absolute; inset: -5px 0; }
+  .chip::after { content: ''; position: absolute; inset: -7px 0; }
   .chip:hover { border-color: var(--rust); }
   .chip .n { font-weight: 400; color: var(--muted); }
   .chip.is-active { background: var(--rust); border-color: var(--rust); color: var(--cream); }
@@ -1844,6 +1854,7 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
   .search:focus-within { outline: 3px solid var(--rust); outline-offset: 2px; }
   .search input { border: 0; background: none; font: inherit; font-size: 13px; width: 150px; padding: 7px 0; color: var(--ink); outline: none; }
   .search input::placeholder { color: var(--muted); opacity: 1; }
+  .search input::-webkit-search-cancel-button { appearance: none; }
   .search-btn { border: 0; background: none; color: var(--muted); width: 32px; height: 32px; display: grid; place-items: center; cursor: pointer; }
   @media (max-width: 1023px) {
     .catbar { top: 64px; }
@@ -1863,7 +1874,9 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
 </style>
 ```
 
-(Rättat i efterhand, controller-granskning 2026-10-07: fokusringen klipptes av `.chips`s `overflow-x` (padding på `.chips` + motsvarande negativ marginal löser det, barhöjden oförändrad via mindre padding på `.catbar-inner`); mobilens sökfält var osynligt men fokuserbart (`:has(input:focus)` visar det och förstorar knappen till 44 px); platshållarens kontrast; fokuserade mål gömda bakom den klistrande raden (`scroll-padding-top` på `html:has(.catbar)`, överstyr global.css:s 5,5rem); skrollskriptet använde fel offset (bytt mot `getBoundingClientRect`-differens, skrollar bara vid behov); kantton + tunn rullist när raden svämmar över, ingen radbrytning. Minor: `aria-current` är `'page'` bara när chipens adress är sidans egen, annars `'true'`; Task 10:s test vid rad ~2645 bytt till `.chip[aria-current]` (Task 8:s test står kvar som `"page"`, eftersom gruppsidan själv är chipens adress); antalet läses med en enhet för skärmläsare (`countLabel`); chipens träffyta 44 px via `::after`.)
+(Rättat i efterhand, controller-granskning 2026-10-07: fokusringen klipptes av `.chips`s `overflow-x` (padding på `.chips` + motsvarande negativ marginal löser det, barhöjden oförändrad via mindre padding på `.catbar-inner`); mobilens sökfält var osynligt men fokuserbart (`:has(input:focus)` visar det och förstorar knappen till 44 px); platshållarens kontrast; fokuserade mål gömda bakom den klistrande raden (`scroll-padding-top` på `html:has(.catbar)`, överstyr global.css:s 5,5rem); skrollskriptet använde fel offset (bytt mot `getBoundingClientRect`-differens, skrollar bara vid behov); kantton + tunn rullist när raden svämmar över, ingen radbrytning. Minor: `aria-current` är `'page'` bara när chipens adress är sidans egen, annars `'true'`; Task 10:s test vid rad ~2645 bytt till `.chip[aria-current="true"]` (Task 8:s test står kvar som `"page"`, eftersom gruppsidan själv är chipens adress); antalet läses med en enhet för skärmläsare (`countLabel`); chipens träffyta ~45 px via `::after` (`inset: -7px 0` innanför radens egen padding, var -5px).
+
+(Rättat i efterhand, Task 7:s granskning 2026-10-07: en fokuserad chip skrollas in i raden själv på `focusin`, inte sidan (samma avgränsning som skrollskriptet ovan); den inbyggda `::-webkit-search-cancel-button` avstängd (`appearance: none`) så sökfältets eget kryss inte krockar med vår ikonknapp; mellanslaget mellan chipens namn och sifferspannen flyttat in i den `aria-hidden`-taggade spannen så skärmläsaren inte längre läser "Tättingar , 8 arter" (ett extra mellanslag före kommatecknet) — mellanslaget hörs inte, syns oförändrat.)
 
 - [ ] **Step 5: Bygg**
 
@@ -2684,7 +2697,7 @@ test.describe('artsidan', () => {
     await expect(page.locator('#site-nav .links a[lang="en"]')).toHaveAttribute('href', '/species/great-tit/');
     // Not "page": the species page isn't the group's own page, so the active chip reads aria-current="true"
     // (controller review 2026-10-07, see Task 6's code block note).
-    await expect(page.locator('.catbar .chip[aria-current]')).toContainText('Tättingar');
+    await expect(page.locator('.catbar .chip[aria-current="true"]')).toContainText('Tättingar');
     await expect(page.locator('[data-preview-banner]')).toHaveCount(0);
     await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
     expect(errors).toEqual([]);

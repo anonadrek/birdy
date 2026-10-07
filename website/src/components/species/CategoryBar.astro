@@ -33,7 +33,7 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
           href={c.href}
           aria-current={c.key === active ? (c.href === here ? 'page' : 'true') : undefined}
         >
-          {c.label} <span class="n" aria-hidden="true">{c.n}</span><span class="sr-only">, {countLabel(c.n, t)}</span>
+          {c.label}<span class="n" aria-hidden="true"> {c.n}</span><span class="sr-only">, {countLabel(c.n, t)}</span>
         </a>
       ))}
     </nav>
@@ -67,6 +67,16 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
   updateFade();
   chips?.addEventListener('scroll', updateFade);
   window.addEventListener('resize', updateFade);
+
+  // Scroll a focused chip into view inside the row itself, not the page (controller review 2026-10-07).
+  chips?.addEventListener('focusin', (e) => {
+    const el = (e.target as HTMLElement).closest('.chip');
+    if (!el || !chips) return;
+    const c = chips.getBoundingClientRect();
+    const a = el.getBoundingClientRect();
+    if (a.right > c.right - 40) chips.scrollLeft += a.right - (c.right - 40);
+    else if (a.left < c.left + 6) chips.scrollLeft -= c.left + 6 - a.left;
+  });
 </script>
 
 <style>
@@ -79,7 +89,7 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
     .chips { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
   }
   .chip { position: relative; flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); font-size: 13px; font-weight: 600; color: var(--ink); white-space: nowrap; transition: border-color .2s; }
-  .chip::after { content: ''; position: absolute; inset: -5px 0; }
+  .chip::after { content: ''; position: absolute; inset: -7px 0; }
   .chip:hover { border-color: var(--rust); }
   .chip .n { font-weight: 400; color: var(--muted); }
   .chip.is-active { background: var(--rust); border-color: var(--rust); color: var(--cream); }
@@ -88,6 +98,7 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
   .search:focus-within { outline: 3px solid var(--rust); outline-offset: 2px; }
   .search input { border: 0; background: none; font: inherit; font-size: 13px; width: 150px; padding: 7px 0; color: var(--ink); outline: none; }
   .search input::placeholder { color: var(--muted); opacity: 1; }
+  .search input::-webkit-search-cancel-button { appearance: none; }
   .search-btn { border: 0; background: none; color: var(--muted); width: 32px; height: 32px; display: grid; place-items: center; cursor: pointer; }
   @media (max-width: 1023px) {
     .catbar { top: 64px; }
