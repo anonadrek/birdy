@@ -6,7 +6,7 @@
 //   node tests/fixtures/make-species-fixtures.mjs
 //
 // This script DELETES and rewrites its three output folders (species/, comparisons/, species-assets/)
-// from scratch on every run — nothing hand-written can live there, it would be wiped on the next run.
+// from scratch on every run: nothing hand-written can live there, it would be wiped on the next run.
 import { mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -27,7 +27,7 @@ const SUMMER = [0, 0, 1, 36, 100, 51, 49, 65, 51, 10, 1, 0];
 const SPECIES = [
   { qid: 'Q25485', sv: 'Talgoxe', en: 'Great Tit', sci: 'Parus major', fam: ['Paridae', 'Mesar'], group: 'songbirds', slug: ['talgoxe', 'great-tit'], iucn: 'LC', red: 'not_listed', id: [true, true], extra: true, audio: 'trimmed', marginalia: true, de: true, months: YEAR_ROUND, status: 'resident', size: ['Cirka 14 cm', 'About 14 cm'], look: ['Q25404'] },
   { qid: 'Q25404', sv: 'Blåmes', en: 'Eurasian Blue Tit', sci: 'Cyanistes caeruleus', fam: ['Paridae', 'Mesar'], group: 'songbirds', slug: ['blames', 'eurasian-blue-tit'], iucn: 'LC', red: 'not_listed', id: [true, true], audio: 'full', de: true, months: YEAR_ROUND, status: 'resident', size: ['Cirka 12 cm', 'About 12 cm'], look: ['Q25485'] },
-  { qid: 'Q25234', sv: 'Koltrast', en: 'Common Blackbird', sci: 'Turdus merula', fam: ['Turdidae', 'Trastar'], group: 'songbirds', slug: ['koltrast', 'common-blackbird'], iucn: 'LC', red: 'not_listed', id: [true, true], extra: true, audio: 'trimmed', de: true, months: YEAR_ROUND, status: 'resident' },
+  { qid: 'Q25234', sv: 'Koltrast', en: 'Common Blackbird', sci: 'Turdus merula', fam: ['Turdidae', 'Trastar'], group: 'songbirds', slug: ['koltrast', 'common-blackbird'], iucn: 'LC', red: 'not_listed', id: [true, true], extra: true, extraPd: true, audio: 'trimmed', de: true, months: YEAR_ROUND, status: 'resident' },
   { qid: 'Q25334', sv: 'Rödhake', en: 'European Robin', sci: 'Erithacus rubecula', fam: ['Muscicapidae', 'Flugsnappare'], group: 'songbirds', slug: ['rodhake', 'european-robin'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
   { qid: 'Q14683', sv: 'Gråsparv', en: 'House Sparrow', sci: 'Passer domesticus', fam: ['Passeridae', 'Sparvfinkar'], group: 'songbirds', slug: ['grasparv', 'house-sparrow'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
   // Skata and Kaja deliberately disagree on fam[1] (the Swedish family name), both "Corvidae" in Latin:
@@ -41,7 +41,7 @@ const SPECIES = [
   { qid: 'Q26427', sv: 'Fiskmås', en: 'Common Gull', sci: 'Larus canus', fam: ['Laridae', 'Måsfåglar'], group: 'gulls_terns', slug: ['fiskmas', 'common-gull'], iucn: 'LC', red: 'NT', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
   { qid: 'Q25385', sv: 'Ormvråk', en: 'Common Buzzard', sci: 'Buteo buteo', fam: ['Accipitridae', 'Hökar'], group: 'raptors', slug: ['ormvrak', 'common-buzzard'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
   { qid: 'Q4764', sv: 'Trana', en: 'Common Crane', sci: 'Grus grus', fam: ['Gruidae', 'Tranor'], group: 'cranes_rails', slug: ['trana', 'common-crane'], iucn: 'LC', red: 'not_listed', id: [true, false], de: true, months: SUMMER, status: 'breeding_migrant' },
-  { qid: 'Q25756', sv: 'Kattuggla', en: 'Tawny Owl', sci: 'Strix aluco', fam: ['Strigidae', 'Egentliga ugglor'], group: 'owls', slug: ['kattuggla', 'tawny-owl'], iucn: 'LC', red: 'not_listed', id: [true, true], audio: 'full', de: true, months: YEAR_ROUND, status: 'resident', look: ['Strix uralensis'] },
+  { qid: 'Q25756', sv: 'Kattuggla', en: 'Tawny Owl', sci: 'Strix aluco', fam: ['Strigidae', 'Egentliga ugglor'], group: 'owls', slug: ['kattuggla', 'tawny-owl'], iucn: 'LC', red: 'not_listed', id: [true, true], audio: 'full', audioPd: true, de: true, months: YEAR_ROUND, status: 'resident', look: ['Strix uralensis'] },
   { qid: 'Q25384', sv: 'Hornuggla', en: 'Long-eared Owl', sci: 'Asio otus', fam: ['Strigidae', 'Egentliga ugglor'], group: 'owls', slug: ['hornuggla', 'long-eared-owl'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', look: ['Q25769'] },
   // Minimal record: no audio, no report data, no extra photo, no behaviour or look-alikes, no size,
   // status or Swedish red list, Swedish article only.
@@ -68,6 +68,9 @@ const SPECIES = [
   { qid: 'Q143284', sv: 'Spillkråka', en: 'Black Woodpecker', sci: 'Dryocopus martius', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['spillkraka', 'black-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], recordStatus: 'pending' },
 ];
 
+// extraPd (Koltrast's extra photo) and audioPd (Kattuggla's recording, no recordist) carry the pipeline's
+// canonical "Public domain" without a licence link, so the credit lines' "public domain" label and the
+// unknown-recordist fallback are tested on built pages (Task 9 re-review).
 const S = (text, factIds) => ({ text, factIds });
 const lowerSv = (name) => name.toLocaleLowerCase('sv');
 
@@ -168,12 +171,19 @@ function record(sp) {
     ...(sp.marginalia ? { marginalia: { sv: 'Testanteckning i marginalen.', en: 'A test note in the margin.' } } : {}),
     images: [
       { role: 'hero', file: `${sp.qid}/hero.webp`, width: 1200, height: 800, author: 'Testfotograf', license: 'CC0', licenseUrl: null, sourceUrl: commons('hero.jpg') },
-      ...(sp.extra ? [{ role: 'extra', file: `${sp.qid}/extra.webp`, width: 1200, height: 800, author: 'Testfotograf två', license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/', sourceUrl: commons('extra.jpg') }] : []),
+      ...(sp.extra ? [{
+        role: 'extra', file: `${sp.qid}/extra.webp`, width: 1200, height: 800, author: 'Testfotograf två',
+        ...(sp.extraPd ? { license: 'Public domain', licenseUrl: null } : { license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/' }),
+        sourceUrl: commons('extra.jpg'),
+      }] : []),
     ],
     ...(sp.audio ? {
       audio: {
         file: `${sp.qid}/voice.mp3`, durationSec: 1, trimmed: sp.audio === 'trimmed',
-        author: 'Testinspelare', license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/', sourceUrl: commons('song.ogg'),
+        ...(sp.audioPd
+          ? { author: null, license: 'Public domain', licenseUrl: null }
+          : { author: 'Testinspelare', license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/' }),
+        sourceUrl: commons('song.ogg'),
       },
     } : {}),
     wikipedia: {
@@ -248,7 +258,7 @@ function comparison(c) {
 // as the same pixel (e.g. a naive 31-multiplier hash put Q25384 and Q25385 about 1 degree apart).
 // Instead every QID gets a stable RANK (sort all QIDs by their FNV-1a hash, so the order doesn't
 // depend on SPECIES's array order) and ranks are spread evenly around the wheel, 360/count degrees
-// apart -- the only spacing that is guaranteed, for any fixed count, to keep every pair as far
+// apart: the only spacing that is guaranteed, for any fixed count, to keep every pair as far
 // apart as possible. extra.webp is a lighter shade of the same hue as hero.webp.
 function fnv1a(str) {
   let h = 0x811c9dc5;

@@ -6,7 +6,7 @@
 // box, group grid, comparison list or A-to-Z list (all of which would be empty or dead anyway).
 //
 // This reads `dist-empty/` (npm run build:empty, SPECIES_EMPTY=1, which points src/lib/species-source.mjs
-// at the intentionally empty tests/fixtures/empty/ rather than src/data/species/ — a deliberate test
+// at the intentionally empty tests/fixtures/empty/ rather than src/data/species/, a deliberate test
 // fixture, not the real data's current, temporary emptiness, so this check stays meaningful and green
 // forever, including after Task 16 has published real species on `main`). Not the fixtures build in
 // dist/: the two must never be confused, since dist/ holds the 16-species fixture build the rest of the
@@ -38,7 +38,7 @@ const page = (path) => {
 // Astro HTML-escapes attribute values; decode the handful of entities a meta description could contain
 // so the measured length matches what a search result actually shows (Task 8 fix wave: reusing
 // hubLeadEmpty as the n=0 description made the English one 156 characters, one over spec §12's 155-char
-// cap — descHubEmpty is its own, shorter copy key now, and this check keeps that true for good).
+// cap: descHubEmpty is its own, shorter copy key now, and this check keeps that true for good).
 const decodeEntities = (s) => s.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 const metaDescription = (html) => {
   const m = html.match(/<meta name="description" content="([^"]*)"/);

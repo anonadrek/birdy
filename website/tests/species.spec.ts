@@ -248,6 +248,8 @@ test.describe('artsidan', () => {
     await expect(page.locator('[data-credit-for="audio"]')).toContainText('bearbetad');
 
     await expect(page.locator('[data-chart] rect[data-month]')).toHaveCount(12);
+    // The bar's hover title has no number: the values are scaled to a top month of 100, not per cent (Task 9 re-review).
+    await expect(page.locator('[data-chart] rect[data-month="10"] title')).toHaveText('Talgoxe, oktober');
     await expect(page.locator('[data-map] path[data-county]')).toHaveCount(21);
     await expect(page.locator('.data-summary')).toHaveText('Rapporteras året runt. Rapporteras från alla 21 län.');
     await expect(page.locator('[data-data-credit]')).toContainText('Artportalen');
@@ -366,6 +368,25 @@ test.describe('artsidan', () => {
     await page.goto('/sv/arter/parluggla/');
     const plain = (JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)['@graph'] as Record<string, any>[]).find((n) => n['@type'] === 'WebPage')!;
     expect(plain).not.toHaveProperty('associatedMedia');
+  });
+
+  test('public domain: "public domain" i gemener utan licenslänk, okänd upphovsperson när namnet saknas', async ({ page }) => {
+    await page.goto('/sv/arter/koltrast/');
+    const extra = page.locator('[data-credit-for="extra"]');
+    await expect(extra).toContainText('Foto: Testfotograf två, public domain, via Wikimedia Commons, nedskalad');
+    await expect(extra.locator('a')).toHaveText(['Wikimedia Commons']);
+    await page.goto('/sv/arter/kattuggla/');
+    const audio = page.locator('[data-credit-for="audio"]');
+    await expect(audio).toContainText('Inspelning: okänd upphovsperson, public domain, via Wikimedia Commons, bearbetad');
+    await expect(audio.locator('a')).toHaveText(['Wikimedia Commons']);
+    // JSON-LD says no more than the page: no licence link and no creator for this recording.
+    const graph = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)['@graph'] as Record<string, any>[];
+    const media = graph.find((n) => n['@type'] === 'WebPage')!.associatedMedia;
+    expect(media['@type']).toBe('AudioObject');
+    expect(media).not.toHaveProperty('license');
+    expect(media).not.toHaveProperty('creator');
+    await page.goto('/species/tawny-owl/');
+    await expect(page.locator('[data-credit-for="audio"]')).toContainText('Recording: unknown recordist, public domain, via Wikimedia Commons, edited');
   });
 
   test('opublicerade, väntande och misslyckade arter ger 404', async ({ page }) => {
