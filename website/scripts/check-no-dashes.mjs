@@ -7,7 +7,7 @@
 // (frontmatter delimiters, thematic breaks) are skipped.
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname, resolve, join } from 'node:path';
+import { basename, dirname, resolve, join } from 'node:path';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const notesDir = resolve(root, 'src/content/field-notes');
@@ -78,8 +78,21 @@ const dataFiles = [
   'src/data/species-groups.json',
   ...dataDirs.flatMap((dir) => (existsSync(resolve(root, dir)) ? readdirSync(resolve(root, dir)).filter((f) => f.endsWith('.json')).map((f) => join(dir, f)) : [])),
 ];
+// The publish loop (scripts/publish-next.mjs) checks only what goes online: the published records in src/data/
+// plus the one it is publishing (NO_DASHES_PUBLISHED_ONLY=1, NO_DASHES_RECORD=<QID or comparison stem>), so a
+// dash in a record nobody publishes yet can't fail, and be blamed on, every other record's pick. A normal run
+// (npm run test:no-dashes) checks every record.
+const publishedOnly = process.env.NO_DASHES_PUBLISHED_ONLY === '1';
+const currentRecord = process.env.NO_DASHES_RECORD ?? '';
+let skippedRecords = 0;
 for (const file of dataFiles) {
-  walkRendered(JSON.parse(readFileSync(resolve(root, file), 'utf8')), '', (value, path) => {
+  const data = JSON.parse(readFileSync(resolve(root, file), 'utf8'));
+  const isRecord = /^src[\\/]data[\\/](species|comparisons)[\\/]/.test(file);
+  if (publishedOnly && isRecord && data.publish !== true && basename(file, '.json') !== currentRecord) {
+    skippedRecords += 1;
+    continue;
+  }
+  walkRendered(data, '', (value, path) => {
     if (emDashRe.test(value)) fail(`${file}:${path}`, `tankstreck (${EM_DASH})`);
     if (spacedEnDashRe.test(value)) fail(`${file}:${path}`, `tankstreck ( ${EN_DASH} )`);
   });
@@ -100,4 +113,4 @@ for (const file of noteFiles) {
 }
 
 if (failed) process.exit(1);
-console.log(`no-dashes OK (${files.length} filer)`);
+console.log(`no-dashes OK (${files.length - skippedRecords} filer${publishedOnly ? `, ${skippedRecords} opublicerade poster utanför kontrollen` : ''})`);

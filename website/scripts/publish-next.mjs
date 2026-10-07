@@ -15,8 +15,10 @@
 // a restore that did not take, push or rebase trouble, a page that never went live, Ctrl+C).
 // scripts/publish-loop.sh runs it in a loop. Flags:
 //   --dry-run   everything but commit and push, then put the record back and exclude it for the session
-//   --no-push   commit, but do not push (no worktree or upstream requirements), for testing
+//   --no-push   commit, but do not push (no upstream, clean-tree or fast-forward requirements), for testing
 //   --port N    the preview server's port for the tests (default 46327, or PUBLISH_PORT)
+// Environment: PUBLISH_PORT (as --port), PUBLISH_SITE (the site the live check polls, default
+// https://birdy.community), PUBLISH_LIVE_TIMEOUT (seconds the live check waits, default 600).
 import { spawn, spawnSync } from 'node:child_process';
 import { appendFileSync, existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { connect } from 'node:net';
@@ -138,6 +140,19 @@ export function restoreFiles(cwd, files, env = process.env) {
   return { ok, detail: [restored.stderr, left.stdout, left.stderr].filter(Boolean).join('\n').trim() };
 }
 
+/**
+ * Which of `paths` (relative to cwd) differ between two commits: after a rejected push, a non-empty answer
+ * for the record's own files means another commit changed the record we tested (a pipeline run rewriting its
+ * facts, say), so the loop must stop rather than publish it; after the fast-forward, website/package*.json
+ * tells whether node_modules needs `npm ci`.
+ * @returns {{ ok: boolean, files: string[] }}
+ */
+export function changedFiles(cwd, from, to, paths, env = process.env) {
+  if (!paths.length) return { ok: true, files: [] };
+  const diff = spawnSync('git', ['diff', '--name-only', from, to, '--', ...paths], { cwd, env, encoding: 'utf8' });
+  return { ok: diff.status === 0, files: diff.stdout.split(/\r?\n/).filter(Boolean) };
+}
+
 /** Nothing changed, staged or untracked anywhere in the checkout, the loop's own reports/ aside. */
 export function treeIsClean(repoRoot, env = process.env) {
   const status = spawnSync('git', ['status', '--porcelain', '--untracked-files=all', '--', '.', ':(exclude)website/reports'], { cwd: repoRoot, env, encoding: 'utf8' });
@@ -166,11 +181,17 @@ async function portInUse(port) {
   return (await Promise.all(['127.0.0.1', '::1'].map(answers))).some(Boolean);
 }
 
+/** A server that accepts the connection but never answers must not hold the loop: 20 s per request. */
+const FETCH_TIMEOUT_MS = 20_000;
+
+/** Set when Ctrl+C, a kill or an uncaught exception has stopped the run: every later step ends at once. */
+let aborted = false;
+
 async function waitForServer(url, ms) {
   const until = Date.now() + ms;
-  while (Date.now() < until) {
+  while (Date.now() < until && !aborted) {
     try {
-      if ((await fetch(url)).ok) return true;
+      if ((await fetch(url, { signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) })).ok) return true;
     } catch {
       // not up yet
     }
@@ -203,9 +224,11 @@ function killTree(child) {
   else child.kill('SIGTERM');
 }
 
-/** Runs a command without blocking the event loop (so Ctrl+C is handled), with a timeout. */
+/** Runs a command without blocking the event loop (so Ctrl+C is handled), with a timeout. After an abort it
+ * rejects with Exit(stop) instead, so main() never goes on to the next step. */
 function run(command, args, { cwd, env, timeoutMs, shell = false }) {
-  return new Promise((done) => {
+  if (aborted) return Promise.reject(new Exit(EXIT.stop));
+  return new Promise((done, reject) => {
     const child = shell ? spawn(command, { cwd, env, shell: true, windowsHide: true }) : spawn(command, args, { cwd, env, windowsHide: true });
     children.add(child);
     let stdout = '';
@@ -217,6 +240,10 @@ function run(command, args, { cwd, env, timeoutMs, shell = false }) {
     const finish = (status, error) => {
       clearTimeout(timer);
       children.delete(child);
+      if (aborted) {
+        reject(new Exit(EXIT.stop));
+        return;
+      }
       done({ status: timedOut ? null : status, stdout, stderr: `${stderr}${error ? `\n${error.message}` : ''}${timedOut ? `\navbruten efter ${timeoutMs / 1000} s` : ''}` });
     };
     child.once('error', (e) => finish(null, e));
@@ -235,7 +262,9 @@ async function main() {
 
   const say = (line) => console.log(`publish-next: ${line}`);
   const git = (args) => spawnSync('git', args, { cwd: root, env, encoding: 'utf8' });
-  const gitNet = (args) => run('git', args, { cwd: root, env, timeoutMs: 60_000 });
+  // Fetch and push may move photos and species data: five minutes in all, but give up on a stalled transfer
+  // (under 1 kB/s for a minute) long before that.
+  const gitNet = (args) => run('git', ['-c', 'http.lowSpeedLimit=1000', '-c', 'http.lowSpeedTime=60', ...args], { cwd: root, env, timeoutMs: 5 * 60_000 });
   const sh = (command, extraEnv = {}, timeoutMs = 15 * 60_000) => run(command, [], { cwd: root, env: { ...env, ...extraEnv }, timeoutMs, shell: true });
 
   mkdirSync(resolve(root, 'reports'), { recursive: true });
@@ -248,7 +277,15 @@ async function main() {
   let restoreList = [];
   // Photos or a recording that HEAD doesn't have yet are only unstaged on a failure, never deleted.
   let unstageList = [];
+  // Records with uncommitted changes before the pick (never ours to put back), and whether --next is running:
+  // stopped while it runs (Ctrl+C right after it saved the record), what it wrote is worked out from git.
+  let dirtyBefore = [];
+  let picking = false;
+  const writtenByNext = () => dirtyRecordIds(git(['status', '--porcelain', '--', SPECIES_DIR, COMPARISONS_DIR]).stdout)
+    .filter((id) => !dirtyBefore.includes(id))
+    .map((id) => recordFile({ kind: id.includes('_') ? 'comparison' : 'species', id }));
   const putBack = () => {
+    if (picking) restoreList = writtenByNext();
     if (unstageList.length) git(['reset', '-q', '--', ...unstageList]);
     const result = restoreFiles(root, restoreList, env);
     if (result.ok) {
@@ -266,11 +303,13 @@ async function main() {
   };
   /** Stops the loop. */
   const stop = (heading, details = '') => {
+    if (aborted) throw new Exit(EXIT.stop); // the abort has already put the record back and reported
     halt(heading, details);
     throw new Exit(EXIT.stop);
   };
   /** This record failed: put it back, exclude it for the session, let the loop go on. */
   const fail = (step, details) => {
+    if (aborted) throw new Exit(EXIT.stop);
     const back = putBack();
     if (!back.ok) stop(`${pick.id} föll i steget ${step} och gick inte att återställa`, `${details}\n\n${back.detail}`);
     appendFileSync(excludedPath, `${pick.id}\n`);
@@ -278,11 +317,17 @@ async function main() {
     console.error(`publish-next: ${pick.kind} ${pick.id} föll i steget ${step}; posten är återställd och utesluten, se ${report}`);
     throw new Exit(EXIT.failed);
   };
-  // Ctrl+C, a kill, or an exception outside main()'s own flow: put the record back and stop the loop at once.
+  // Ctrl+C, a kill, or an exception outside main()'s own flow: stop the children, put the record back and stop
+  // the loop. No process.exit() (it can crash Node on Windows): main() ends at its next step (run() rejects
+  // once `aborted` is set) and Node exits by itself; a timer that doesn't keep Node alive forces the exit if
+  // something still hangs after 10 s.
   const abort = (heading, details = '') => {
+    if (aborted) return;
+    aborted = true;
+    process.exitCode = EXIT.stop;
     for (const child of children) killTree(child);
     halt(heading, details);
-    process.exit(EXIT.stop);
+    setTimeout(() => process.exit(EXIT.stop), 10_000).unref();
   };
   for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, () => abort(`avbruten med ${signal}`));
   process.on('uncaughtException', (e) => abort('oväntat fel', e?.stack ?? String(e)));
@@ -296,12 +341,13 @@ async function main() {
   if (existsSync(resolve(root, STOP_FILE))) problems.push(`${STOP_FILE} finns (ta bort den för att publicera igen)`);
   if (!existsSync(pipeline)) problems.push(`pipelinen saknas: ${pipeline}`);
   if (await portInUse(opts.port)) problems.push(`porten ${opts.port} är upptagen (en annan server?), välj en annan med --port eller PUBLISH_PORT`);
+  // The main clone is shared with other sessions: the loop only runs in a worktree of its own, dry runs too
+  // (a dry run there would change and put back another session's files).
+  const gitDir = resolve(root, git(['rev-parse', '--git-dir']).stdout.trim());
+  const commonDir = resolve(root, git(['rev-parse', '--git-common-dir']).stdout.trim());
+  if (gitDir === commonDir) problems.push('det här är huvudklonen; loopen körs bara i en egen worktree (planens Task 16, "Uppsättning")');
   const live = opts.push && !opts.dryRun;
   if (live) {
-    // The main clone is shared with other sessions: the loop only publishes from a worktree of its own.
-    const gitDir = resolve(root, git(['rev-parse', '--git-dir']).stdout.trim());
-    const commonDir = resolve(root, git(['rev-parse', '--git-common-dir']).stdout.trim());
-    if (gitDir === commonDir) problems.push('det här är huvudklonen; loopen pushar bara från en egen worktree (planens Task 16, "Uppsättning")');
     const upstream = git(['rev-parse', '--abbrev-ref', '--symbolic-full-name', '@{u}']);
     const detached = git(['symbolic-ref', '-q', 'HEAD']).status !== 0;
     if (!detached && upstream.stdout.trim() !== 'origin/main') problems.push(`grenen följer ${upstream.stdout.trim() || 'ingenting'}, inte origin/main`);
@@ -314,29 +360,48 @@ async function main() {
     throw new Exit(EXIT.stop);
   }
   if (live) {
+    const before = git(['rev-parse', 'HEAD']).stdout.trim();
     const fetched = await gitNet(['fetch', 'origin', 'main']);
-    const merged = fetched.status === 0 ? git(['merge', '--ff-only', 'origin/main']) : fetched;
-    const ahead = merged.status === 0 ? git(['rev-list', '--count', 'origin/main..HEAD']).stdout.trim() : '';
-    if (merged.status !== 0 || ahead !== '0') {
-      const why = merged.status !== 0 ? `fetch eller merge --ff-only misslyckades:\n${merged.stdout}${merged.stderr}` : `${ahead} lokala commits är inte pushade`;
+    const ahead = fetched.status === 0 ? git(['rev-list', '--count', 'origin/main..HEAD']).stdout.trim() : '';
+    const merged = fetched.status === 0 && ahead === '0' ? git(['merge', '--ff-only', 'origin/main']) : null;
+    if (fetched.status !== 0 || ahead !== '0' || merged?.status !== 0) {
+      // A publish commit that never reached origin (a stop after a rejected push, a crash) is the usual reason.
+      const why = fetched.status !== 0
+        ? `git fetch misslyckades:\n${fetched.stderr}`
+        : ahead !== '0'
+          ? `${ahead} lokala publiceringscommits finns som inte är pushade (se git log --oneline origin/main..HEAD). Kontrollera dem; ska de inte ut, släpp dem med git reset --hard origin/main i den här worktreen, och kör sedan loopen igen.`
+          : `git merge --ff-only origin/main misslyckades:\n${merged.stdout}${merged.stderr}`;
       writeReport('förkontroll: STOPP (ingen post vald)', why);
       console.error(`publish-next: STOPP: ${why}`);
       throw new Exit(EXIT.stop);
+    }
+    // Vercel installs from package-lock.json for every build: when main's dependencies changed, the local
+    // checks must run on the same ones.
+    const deps = changedFiles(root, before, 'HEAD', ['package.json', 'package-lock.json'], env);
+    if (!deps.ok || deps.files.length) {
+      say('package.json eller package-lock.json har ändrats på main: npm ci');
+      const installed = await sh('npm ci', {}, 10 * 60_000);
+      if (installed.status !== 0) {
+        writeReport('förkontroll: STOPP (npm ci misslyckades, ingen post vald)', `${tail(installed.stdout)}\n${tail(installed.stderr)}`);
+        console.error('publish-next: STOPP: npm ci misslyckades efter att main fått nya beroenden');
+        throw new Exit(EXIT.stop);
+      }
     }
   }
 
   const excluded = existsSync(excludedPath) ? readExcluded(readFileSync(excludedPath, 'utf8')) : [];
   // Outside a live run a record with uncommitted changes (somebody's spot check or import) is never picked.
-  const dirtyBefore = dirtyRecordIds(git(['status', '--porcelain', '--', SPECIES_DIR, COMPARISONS_DIR]).stdout);
+  dirtyBefore = dirtyRecordIds(git(['status', '--porcelain', '--', SPECIES_DIR, COMPARISONS_DIR]).stdout);
   const stems = existsSync(resolve(root, COMPARISONS_DIR))
     ? readdirSync(resolve(root, COMPARISONS_DIR)).filter((f) => /^Q\d+_Q\d+\.json$/.test(f)).map((f) => f.slice(0, -5))
     : [];
 
   // -- 1. The pick -------------------------------------------------------------------------------------
+  picking = true;
   const picked = await run('uv', nextArgs([...excluded, ...dirtyBefore], stems, COMPARISONS_ENABLED), { cwd: pipeline, env, timeoutMs: 10 * 60_000 });
   // Whatever --next wrote is put back on any failure from here, even when its answer can't be read.
-  const writtenByNext = dirtyRecordIds(git(['status', '--porcelain', '--', SPECIES_DIR, COMPARISONS_DIR]).stdout).filter((id) => !dirtyBefore.includes(id));
-  restoreList = writtenByNext.map((id) => recordFile({ kind: id.includes('_') ? 'comparison' : 'species', id }));
+  restoreList = writtenByNext();
+  picking = false;
   if (picked.status !== 0) stop('web publish --next misslyckades', `${tail(picked.stderr)}\n${tail(picked.stdout)}`);
   try {
     pick = parsePick(picked.stdout);
@@ -355,7 +420,8 @@ async function main() {
   let names;
   let paths;
   let axe;
-  try {
+  /** The record, its names and the addresses to test, read from disk (again after a rebase). */
+  const readRecord = () => {
     record = JSON.parse(readFileSync(resolve(root, json), 'utf8'));
     if (pick.kind === 'comparison' && !COMPARISONS_ENABLED) throw new Error('en jämförelse valdes fast jämförelserna är avstängda (COMPARISONS_ENABLED)');
     names = pick.kind === 'species'
@@ -363,6 +429,9 @@ async function main() {
       : [record.a, record.b].map((qid) => JSON.parse(readFileSync(resolve(root, SPECIES_DIR, `${qid}.json`), 'utf8')).names.sv);
     paths = pagePaths(record);
     axe = axePaths(pick, record, JSON.parse(readFileSync(resolve(root, 'src/data/species-groups.json'), 'utf8')).groups);
+  };
+  try {
+    readRecord();
   } catch (e) {
     fail('läsa posten', e.message);
   }
@@ -371,7 +440,8 @@ async function main() {
   // -- 2. Build and check (again after a rebase) -----------------------------------------------------------
   /** @returns {Promise<string | null>} the failed step and its output, or null when everything is green */
   const verify = async () => {
-    const dashes = await sh('node scripts/check-no-dashes.mjs', {}, 120_000);
+    // Published records and this one only: a dash in a record nobody publishes yet is not this record's fault.
+    const dashes = await sh('node scripts/check-no-dashes.mjs', { NO_DASHES_PUBLISHED_ONLY: '1', NO_DASHES_RECORD: pick.id }, 120_000);
     if (dashes.status !== 0) return `check-no-dashes\n${tail(dashes.stdout)}\n${tail(dashes.stderr)}`;
     const build = await sh('npm run build:prod');
     if (build.status !== 0) return `build:prod\n${tail(build.stdout)}\n${tail(build.stderr)}`;
@@ -440,11 +510,28 @@ async function main() {
     // again, push again. Anything else stops the loop with the commit kept locally for a person to look at.
     say(`pushen avvisades (någon annan pushade under tiden): rebase på origin/main och en ny kontroll`);
     writeReport(`${pick.kind} ${pick.id}: push avvisad, rebase på origin/main och ny kontroll`, tail(pushed.stderr, 10));
+    const base = git(['rev-parse', 'HEAD~1']).stdout.trim(); // what --next and every check started from
     const fetched = await gitNet(['fetch', 'origin', 'main']);
-    const rebased = fetched.status === 0 ? git(['rebase', 'origin/main']) : fetched;
+    if (fetched.status !== 0) stop(`push avvisad och git fetch misslyckades; ${hash} ligger kvar lokalt`, `${pushed.stderr}\n${fetched.stderr}`);
+    // The site checks can't tell whether the record is still ready (the pipeline's own condition: its facts
+    // checked, its text written from them). If the incoming commits changed any of its files, a pipeline run
+    // may have rewritten the facts under the tested text: stop, do not rebase or publish.
+    const incoming = changedFiles(root, base, 'origin/main', commitPaths, env);
+    if (!incoming.ok || incoming.files.length) {
+      stop(
+        `${pick.id} ändrades på origin/main medan den testades; publiceringen ${hash} ligger kvar lokalt och pushas inte`,
+        `Ändrat på origin/main: ${incoming.files.join(', ') || '(git diff misslyckades)'}\nKontrollera, släpp commiten med git reset --hard origin/main i den här worktreen och kör loopen igen (posten tas då om från början).`,
+      );
+    }
+    const rebased = git(['rebase', '--no-autostash', 'origin/main']);
     if (rebased.status !== 0) {
       git(['rebase', '--abort']);
       stop(`push avvisad och rebase misslyckades; ${hash} ligger kvar lokalt`, `${pushed.stderr}\n${rebased.stdout}${rebased.stderr}`);
+    }
+    try {
+      readRecord();
+    } catch (e) {
+      stop(`efter rebase på origin/main gick ${pick.id} inte att läsa; commiten ligger kvar lokalt`, e.message);
     }
     const again = await verify();
     if (again) stop(`efter rebase på origin/main föll ${again.split('\n')[0]}; commiten ligger kvar lokalt`, again);
@@ -461,11 +548,12 @@ async function main() {
   for (;;) {
     const statuses = await Promise.all(liveUrls(site, paths, pushedHash).map(async (url) => {
       try {
-        return (await fetch(url, { headers: { 'cache-control': 'no-cache' } })).status;
+        return (await fetch(url, { headers: { 'cache-control': 'no-cache' }, signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) })).status;
       } catch {
         return 0;
       }
     }));
+    if (aborted) throw new Exit(EXIT.stop);
     if (statuses.every((code) => code === 200)) break;
     if (Date.now() >= until) {
       stop(`${pick.id} är pushad (${pushedHash}) men inte live på ${site} i tid; kontrollera Vercel`, paths.map((path, i) => `/${path}: ${statuses[i]}`).join('\n'));
@@ -480,10 +568,10 @@ async function main() {
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   main().catch((e) => {
     if (e instanceof Exit) {
-      process.exitCode = e.code;
+      process.exitCode = aborted ? EXIT.stop : e.code;
       return;
     }
-    if (onFatal) onFatal(e);
+    if (onFatal && !aborted) onFatal(e);
     else console.error(`publish-next: ${e?.stack ?? e}`);
     process.exitCode = EXIT.stop;
   });

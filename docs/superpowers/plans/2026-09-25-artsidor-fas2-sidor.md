@@ -4924,7 +4924,7 @@ console.log(
 
 - [ ] **Step 5: Streckvakten täcker artdatan**
 
-I `scripts/check-no-dashes.mjs`, ändra importraden högst upp till `import { existsSync, readFileSync, readdirSync } from 'node:fs';` och lägg till efter loopen över `deckFiles` (före loopen över `noteFiles`):
+I `scripts/check-no-dashes.mjs`, ändra importraderna högst upp till `import { existsSync, readFileSync, readdirSync } from 'node:fs';` och `import { basename, dirname, resolve, join } from 'node:path';` och lägg till efter loopen över `deckFiles` (före loopen över `noteFiles`). Slutraden blir `` console.log(`no-dashes OK (${files.length - skippedRecords} filer${publishedOnly ? `, ${skippedRecords} opublicerade poster utanför kontrollen` : ''})`); ``. (Tillägg 2026-10-07, granskningen av Task 16: publiceringsloopen kör vakten med `NO_DASHES_PUBLISHED_ONLY=1` och `NO_DASHES_RECORD=<post>`, så att ett streck i en post som ingen publicerar än inte fäller, och skylls på, varje annan posts publicering; `npm run test:no-dashes` kontrollerar som förut alla poster.)
 
 ```js
 // Species and comparison data (spec 2026-09-25): rendered text only. Quotes are Wikipedia's own words and
@@ -4948,8 +4948,21 @@ const dataFiles = [
   'src/data/species-groups.json',
   ...dataDirs.flatMap((dir) => (existsSync(resolve(root, dir)) ? readdirSync(resolve(root, dir)).filter((f) => f.endsWith('.json')).map((f) => join(dir, f)) : [])),
 ];
+// The publish loop (scripts/publish-next.mjs) checks only what goes online: the published records in src/data/
+// plus the one it is publishing (NO_DASHES_PUBLISHED_ONLY=1, NO_DASHES_RECORD=<QID or comparison stem>), so a
+// dash in a record nobody publishes yet can't fail, and be blamed on, every other record's pick. A normal run
+// (npm run test:no-dashes) checks every record.
+const publishedOnly = process.env.NO_DASHES_PUBLISHED_ONLY === '1';
+const currentRecord = process.env.NO_DASHES_RECORD ?? '';
+let skippedRecords = 0;
 for (const file of dataFiles) {
-  walkRendered(JSON.parse(readFileSync(resolve(root, file), 'utf8')), '', (value, path) => {
+  const data = JSON.parse(readFileSync(resolve(root, file), 'utf8'));
+  const isRecord = /^src[\\/]data[\\/](species|comparisons)[\\/]/.test(file);
+  if (publishedOnly && isRecord && data.publish !== true && basename(file, '.json') !== currentRecord) {
+    skippedRecords += 1;
+    continue;
+  }
+  walkRendered(data, '', (value, path) => {
     if (emDashRe.test(value)) fail(`${file}:${path}`, `tankstreck (${EM_DASH})`);
     if (spacedEnDashRe.test(value)) fail(`${file}:${path}`, `tankstreck ( ${EN_DASH} )`);
   });
@@ -5218,20 +5231,20 @@ PLAYWRIGHT_CHANNEL=chrome node scripts/publish-next.mjs --dry-run         # torr
 PLAYWRIGHT_CHANNEL=chrome bash scripts/publish-loop.sh 3                  # en första liten omgång
 ```
 
-`main` är utcheckad i huvudklonen och kan inte vara det i en worktree till, därför grenen `publish/main`; loopen pushar med `git push origin HEAD:main`. Stoppa loopen mellan två poster med `touch reports/STOP` (ta bort filen för att starta igen).
+`main` är utcheckad i huvudklonen och kan inte vara det i en worktree till, därför grenen `publish/main`; loopen pushar med `git push origin HEAD:main`. Worktreen ska ha egna `node_modules` (`npm ci`), aldrig en länk till en annan utchecknings: loopen kör själv `npm ci` när main har fått nya beroenden. Stoppa loopen mellan två poster med `touch reports/STOP` (ta bort filen för att starta igen).
 
-1. **Sidans egna tester är `tests/published-page.spec.ts`**, inte `tests/species.spec.ts -g <slug>`: `species.spec.ts` testar testdatan, så `-g` med en riktig arts adress matchar inget test och Playwright avslutar med fel. Den nya filen är oberoende av datan: `PAGE_PATHS` (sidans adress på båda språken) ger 200, ingen `noindex` och ingen förhandsbanderoll, en h1, rätt canonical, adressen i sitemapen, språkparet svarar, `og:image` och inspelningen svarar, huvudfotot är laddat, kontrollraden finns, inga konsolfel, ingen sidledsscroll i 360, 390 och 430 px. Utan `PAGE_PATHS` kontrollerar den testdatans Talgoxe, så den körs också i den vanliga sviten. axe körs på sidan på båda språken, ingångssidan och artens gruppsida (de ändras och kan bli indexerbara med varje publicering). Streckvakten (`check-no-dashes.mjs`) körs före bygget.
+1. **Sidans egna tester är `tests/published-page.spec.ts`**, inte `tests/species.spec.ts -g <slug>`: `species.spec.ts` testar testdatan, så `-g` med en riktig arts adress matchar inget test och Playwright avslutar med fel. Den nya filen är oberoende av datan: `PAGE_PATHS` (sidans adress på båda språken) ger 200, ingen `noindex` och ingen förhandsbanderoll, en h1, rätt canonical, adressen i sitemapen, språkparet svarar, `og:image` och inspelningen svarar, huvudfotot är laddat, kontrollraden finns, inga konsolfel, ingen sidledsscroll i 360, 390 och 430 px. Utan `PAGE_PATHS` kontrollerar den testdatans Talgoxe, så den körs också i den vanliga sviten. axe körs på sidan på båda språken, ingångssidan och artens gruppsida (de ändras och kan bli indexerbara med varje publicering). Streckvakten (`check-no-dashes.mjs`) körs före bygget, på de publicerade posterna och den aktuella (`NO_DASHES_PUBLISHED_ONLY=1`, `NO_DASHES_RECORD`).
 2. **Jämförelserna utesluts så länge `COMPARISONS_ENABLED` är `false`** (Task 11 slår på den): varje jämförelsefil skickas som `--exclude`.
-3. **Förkontroll, innan något ändras (fel ger kod 4 och stoppar loopen):** `reports/STOP` finns inte, pipelinen finns, porten för testernas server är ledig (standard 46327, `PUBLISH_PORT`). Vid publicering dessutom: utcheckningen är en egen worktree (inte huvudklonen), grenen följer `origin/main` (eller HEAD är lös), utcheckningen är helt ren (`git status --porcelain --untracked-files=all`, bara `website/reports/` undantagen), och efter `git fetch origin main` och `git merge --ff-only origin/main` finns inga opushade commits. Med `--dry-run` eller `--no-push` görs inte de kontrollerna, och en post med ocommittade ändringar skickas i stället som `--exclude`.
-4. **Återställningen** är `git restore --source=HEAD --staged --worktree` på postens filer och kontrolleras (`git status` på filerna ska vara tomt): `git checkout -- fil` återställde från indexet och gjorde ingenting efter en `git add`. Foton eller en inspelning som HEAD inte har avköas bara, de raderas aldrig. Det som `--next` skrev återställs även när svaret inte går att läsa. Går återställningen inte (till exempel en kvarglömd `index.lock`) står det i rapporten och loopen stoppas (kod 4); posten utesluts bara när återställningen tog.
-5. **Avbrott:** Ctrl+C och SIGTERM dödar barnprocesserna, återställer posten och ger kod 4, ett oväntat fel likaså. Normala slut sätter `process.exitCode` och låter Node avsluta själv: `process.exit()` med en öppen fetch eller en barnprocess som stängs kraschade Node på Windows ("Assertion failed: ... UV_HANDLE_CLOSING") i provkörningen, och loopen fick då en kraschkod. Loopen tolkar 0, 1, 3 och 4 och stoppar på alla andra koder.
-6. **Testerna får en egen server:** `astro preview --port <port> --strictPort --ignore-lock` i förgrunden; har servern dött men porten ändå svarar (en annan server) är det ett fel. `SPECIES_FIXTURES`, `SPECIES_PREVIEW`, `SPECIES_EMPTY` och `CI` tas bort ur miljön, och git körs med `GIT_TERMINAL_PROMPT=0` och `GCM_INTERACTIVE=never` (ingen lösenordsfråga som hänger loopen) och med tidsgräns på fetch och push.
+3. **Förkontroll, innan något ändras (fel ger kod 4 och stoppar loopen):** `reports/STOP` finns inte, pipelinen finns, porten för testernas server är ledig (standard 46327, `PUBLISH_PORT`), och utcheckningen är inte huvudklonen (gäller även `--dry-run` och `--no-push`). Vid publicering dessutom: grenen följer `origin/main` (eller HEAD är lös), utcheckningen är helt ren (`git status --porcelain --untracked-files=all`, bara `website/reports/` undantagen), `git fetch origin main` går, inga lokala commits saknas på origin (annars säger rapporten att det finns opushade publiceringscommits och hur de släpps, `git reset --hard origin/main` efter kontroll), och `git merge --ff-only origin/main` går. Har sammanslagningen ändrat `website/package.json` eller `package-lock.json` körs `npm ci` (Vercel installerar från låsfilen för varje bygge). Med `--dry-run` eller `--no-push` görs inte de kontrollerna, och en post med ocommittade ändringar skickas i stället som `--exclude`.
+4. **Återställningen** är `git restore --source=HEAD --staged --worktree` på postens filer och kontrolleras (`git status` på filerna ska vara tomt): `git checkout -- fil` återställde från indexet och gjorde ingenting efter en `git add`. Foton eller en inspelning som HEAD inte har avköas bara, de raderas aldrig. Det som `--next` skrev återställs även när svaret inte går att läsa, och avbryts körningen medan `--next` kör räknas det ut ur `git status`. Går återställningen inte (till exempel en kvarglömd `index.lock`) står det i rapporten och loopen stoppas (kod 4); posten utesluts bara när återställningen tog.
+5. **Avbrott:** Ctrl+C, SIGTERM och ett oväntat fel dödar barnprocesserna, återställer posten och ger kod 4. Ingenstans anropas `process.exit()` i det vanliga flödet: med en öppen fetch eller en barnprocess som stängs kraschade Node på Windows ("Assertion failed: ... UV_HANDLE_CLOSING") i provkörningen, och loopen fick då en kraschkod. Slutet sätter `process.exitCode` och Node avslutar själv; efter ett avbrott slutar varje följande steg direkt, och en timer som inte håller Node vid liv tvingar fram slutet om något ändå hänger efter 10 s. Loopen tolkar 0, 1, 3 och 4 och stoppar på alla andra koder.
+6. **Testerna får en egen server:** `astro preview --port <port> --strictPort --ignore-lock` i förgrunden; har servern dött men porten ändå svarar (en annan server) är det ett fel. `SPECIES_FIXTURES`, `SPECIES_PREVIEW`, `SPECIES_EMPTY` och `CI` tas bort ur miljön, och git körs med `GIT_TERMINAL_PROMPT=0` och `GCM_INTERACTIVE=never` (ingen lösenordsfråga som hänger loopen) och med tidsgräns på fetch och push (fem minuter, och `http.lowSpeedLimit=1000`/`http.lowSpeedTime=60` så att en överföring som står still ger upp efter en minut). Varje HTTP-anrop (servern startad, live-kontrollen) har en tidsgräns på 20 s, så en server som tar emot anslutningen men aldrig svarar inte håller loopen.
 7. **Commit:** postens JSON, de foton och den inspelning posten pekar på, och borttagna filer i artens mapp (`git add -A` och `git commit -- <filer>`), med `Co-Authored-By` sist.
-8. **Push:** `git push origin HEAD:main`. Avvisas den: `git fetch`, `git rebase origin/main` utan autostash (`git rebase --abort` om den inte går), hela kontrollen igen på det nya trädet och en ny push. Fallerar något av det stoppas loopen (kod 4) med commiten kvar lokalt; nästa förkontroll vägrar då tills en person har rett ut det.
-9. **Live:** efter pushen hämtas sidans adress på båda språken på birdy.community var 15:e sekund (med commitens hash som cachebrytare; `PUBLISH_SITE`, `PUBLISH_LIVE_TIMEOUT` i sekunder, standard 600). Svarar de inte 200 i tid stoppas loopen (kod 4): då har Vercel inte byggt.
+8. **Push:** `git push origin HEAD:main`. Avvisas den hämtas origin/main, och har de nya commitsen ändrat någon av postens filer (till exempel en pipelinekörning som skrev om ett faktum under den testade texten, så att `unready_reasons` inte längre godkänner posten) stoppas loopen (kod 4) med publiceringscommiten kvar lokalt, utan rebase och utan push; rapporten säger hur commiten släpps. Annars `git rebase --no-autostash origin/main` (`git rebase --abort` om den inte går), posten och adresserna läses om, hela kontrollen körs igen på det nya trädet och en ny push görs. Fallerar något av det stoppas loopen med commiten kvar lokalt; nästa förkontroll vägrar då tills en person har rett ut det.
+9. **Live:** efter pushen hämtas sidans adress på båda språken på birdy.community var 15:e sekund, högst 20 s per anrop (med commitens hash som cachebrytare; `PUBLISH_SITE`, `PUBLISH_LIVE_TIMEOUT` i sekunder, standard 600). Svarar de inte 200 i tid stoppas loopen (kod 4): då har Vercel inte byggt.
 10. **Loopskriptet:** första argumentet är antalet (ett positivt heltal, annars kod 2), resten går till `publish-next.mjs`; `reports/STOP` kontrolleras före varje post och under pausen (`SLEEP_SECONDS`, standard 300, räknat från att sidan är live); allt ligger i `main()` med `main "$@"; exit $?` sist, så att en fast-forward som skriver om filen under körningen inte ändrar den pågående loopen. En grön torrkörning utesluter posten för sessionen, så `publish-loop.sh 3 --dry-run` provar tre olika poster.
 11. **Rapporten** `reports/publish-loop-<datum>.md` får en rad per post (även lyckade, en rebase och ett stopp), vid fel de sista raderna av stegets utdata utan färgkoder. `website/.gitattributes` håller `scripts/publish-loop.sh` med LF. Varje bygge loggar `artdata …, förhandsbygge av|på, VERCEL_ENV=…` (`astro.config.mjs`); står det `VERCEL_ENV=(saknas)` i en Production-logg på Vercel är "Automatically expose System Environment Variables" avslaget.
-12. **Provkört 2026-10-07** i ett eget testförråd (webbkoden från den här grenen och datan från `data/artsidor`, en lokal bare-remote som `origin`, worktreen på `publish/main`, en lokal server som svarar 200 eller 404 i stället för birdy.community): publicering med push och live-kontroll i köordning; en annan sessions push under bygget gav avvisad push, rebase, ny kontroll och push; en sida som inte blev live stoppade loopen (kod 4, loopen kod 1); huvudklonen, en ospårad fil och `reports/STOP` stoppade i förkontrollen; en `index.lock` gav ett högljutt stopp med posten kvar ändrad; en commit-krok som vägrade efter `git add` gav en riktig återställning (ren utcheckning, posten utesluten, kod 1); torrkörningar i loopen tog två olika poster; tre fel i rad (trasiga foton) stoppade loopen. Ctrl+C går inte att skicka till en Windowsprocess från agentens skal och är inte provat. Enhetstester i `tests/unit/publish-next.unit.mjs` (bland annat återställningen och den rena utcheckningen mot ett tillfälligt git-förråd).
+12. **Provkört 2026-10-07** i ett eget testförråd (webbkoden från den här grenen och datan från `data/artsidor`, en lokal bare-remote som `origin`, worktreen på `publish/main`, en lokal server som svarar 200 eller 404 i stället för birdy.community): publicering med push och live-kontroll i köordning; en annan sessions push under bygget gav avvisad push, rebase, ny kontroll och push; en sida som inte blev live stoppade loopen (kod 4, loopen kod 1); huvudklonen, en ospårad fil och `reports/STOP` stoppade i förkontrollen; en `index.lock` gav ett högljutt stopp med posten kvar ändrad; en commit-krok som vägrade efter `git add` gav en riktig återställning (ren utcheckning, posten utesluten, kod 1); torrkörningar i loopen tog två olika poster; tre fel i rad (trasiga foton) stoppade loopen. Ctrl+C går inte att skicka till en Windowsprocess från agentens skal och är inte provat. Enhetstester i `tests/unit/publish-next.unit.mjs` (bland annat återställningen och den rena utcheckningen mot ett tillfälligt git-förråd). Omprov efter andra granskningen (samma kväll, eget förråd i `C:/w/lt`): en commit på origin/main som skrev om den valda postens faktum medan den testades gav avvisad push och stopp med publiceringscommiten kvar lokalt (inget pushat, posten inte live); nästa körning vägrade med besked om den opushade commiten; efter `git reset --hard origin/main` valdes posten inte längre (`--next` hoppade över den) och nästa art publicerades; en live-server som tar emot men aldrig svarar stoppade efter 67 s i stället för över 300 s (`PUBLISH_LIVE_TIMEOUT=30`); huvudklonen vägrades även med `--dry-run` och `--no-push`; ett tankstreck i en opublicerad post stoppade inte publiceringen men fäller fortfarande den fullständiga vakten. `npm ci` efter ändrade beroenden och Ctrl+C medan `--next` kör är inte provkörda (det första skulle ha skrivit om provets länkade `node_modules`, det andra går inte att skicka till en Windowsprocess från agentens skal); upptäckten av ändrade filer har ett enhetstest (`changedFiles`).
 
 `scripts/publish-next.mjs`:
 
@@ -5253,8 +5266,10 @@ PLAYWRIGHT_CHANNEL=chrome bash scripts/publish-loop.sh 3                  # en f
 // a restore that did not take, push or rebase trouble, a page that never went live, Ctrl+C).
 // scripts/publish-loop.sh runs it in a loop. Flags:
 //   --dry-run   everything but commit and push, then put the record back and exclude it for the session
-//   --no-push   commit, but do not push (no worktree or upstream requirements), for testing
+//   --no-push   commit, but do not push (no upstream, clean-tree or fast-forward requirements), for testing
 //   --port N    the preview server's port for the tests (default 46327, or PUBLISH_PORT)
+// Environment: PUBLISH_PORT (as --port), PUBLISH_SITE (the site the live check polls, default
+// https://birdy.community), PUBLISH_LIVE_TIMEOUT (seconds the live check waits, default 600).
 import { spawn, spawnSync } from 'node:child_process';
 import { appendFileSync, existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { connect } from 'node:net';
@@ -5376,6 +5391,19 @@ export function restoreFiles(cwd, files, env = process.env) {
   return { ok, detail: [restored.stderr, left.stdout, left.stderr].filter(Boolean).join('\n').trim() };
 }
 
+/**
+ * Which of `paths` (relative to cwd) differ between two commits: after a rejected push, a non-empty answer
+ * for the record's own files means another commit changed the record we tested (a pipeline run rewriting its
+ * facts, say), so the loop must stop rather than publish it; after the fast-forward, website/package*.json
+ * tells whether node_modules needs `npm ci`.
+ * @returns {{ ok: boolean, files: string[] }}
+ */
+export function changedFiles(cwd, from, to, paths, env = process.env) {
+  if (!paths.length) return { ok: true, files: [] };
+  const diff = spawnSync('git', ['diff', '--name-only', from, to, '--', ...paths], { cwd, env, encoding: 'utf8' });
+  return { ok: diff.status === 0, files: diff.stdout.split(/\r?\n/).filter(Boolean) };
+}
+
 /** Nothing changed, staged or untracked anywhere in the checkout, the loop's own reports/ aside. */
 export function treeIsClean(repoRoot, env = process.env) {
   const status = spawnSync('git', ['status', '--porcelain', '--untracked-files=all', '--', '.', ':(exclude)website/reports'], { cwd: repoRoot, env, encoding: 'utf8' });
@@ -5404,11 +5432,17 @@ async function portInUse(port) {
   return (await Promise.all(['127.0.0.1', '::1'].map(answers))).some(Boolean);
 }
 
+/** A server that accepts the connection but never answers must not hold the loop: 20 s per request. */
+const FETCH_TIMEOUT_MS = 20_000;
+
+/** Set when Ctrl+C, a kill or an uncaught exception has stopped the run: every later step ends at once. */
+let aborted = false;
+
 async function waitForServer(url, ms) {
   const until = Date.now() + ms;
-  while (Date.now() < until) {
+  while (Date.now() < until && !aborted) {
     try {
-      if ((await fetch(url)).ok) return true;
+      if ((await fetch(url, { signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) })).ok) return true;
     } catch {
       // not up yet
     }
@@ -5441,9 +5475,11 @@ function killTree(child) {
   else child.kill('SIGTERM');
 }
 
-/** Runs a command without blocking the event loop (so Ctrl+C is handled), with a timeout. */
+/** Runs a command without blocking the event loop (so Ctrl+C is handled), with a timeout. After an abort it
+ * rejects with Exit(stop) instead, so main() never goes on to the next step. */
 function run(command, args, { cwd, env, timeoutMs, shell = false }) {
-  return new Promise((done) => {
+  if (aborted) return Promise.reject(new Exit(EXIT.stop));
+  return new Promise((done, reject) => {
     const child = shell ? spawn(command, { cwd, env, shell: true, windowsHide: true }) : spawn(command, args, { cwd, env, windowsHide: true });
     children.add(child);
     let stdout = '';
@@ -5455,6 +5491,10 @@ function run(command, args, { cwd, env, timeoutMs, shell = false }) {
     const finish = (status, error) => {
       clearTimeout(timer);
       children.delete(child);
+      if (aborted) {
+        reject(new Exit(EXIT.stop));
+        return;
+      }
       done({ status: timedOut ? null : status, stdout, stderr: `${stderr}${error ? `\n${error.message}` : ''}${timedOut ? `\navbruten efter ${timeoutMs / 1000} s` : ''}` });
     };
     child.once('error', (e) => finish(null, e));
@@ -5473,7 +5513,9 @@ async function main() {
 
   const say = (line) => console.log(`publish-next: ${line}`);
   const git = (args) => spawnSync('git', args, { cwd: root, env, encoding: 'utf8' });
-  const gitNet = (args) => run('git', args, { cwd: root, env, timeoutMs: 60_000 });
+  // Fetch and push may move photos and species data: five minutes in all, but give up on a stalled transfer
+  // (under 1 kB/s for a minute) long before that.
+  const gitNet = (args) => run('git', ['-c', 'http.lowSpeedLimit=1000', '-c', 'http.lowSpeedTime=60', ...args], { cwd: root, env, timeoutMs: 5 * 60_000 });
   const sh = (command, extraEnv = {}, timeoutMs = 15 * 60_000) => run(command, [], { cwd: root, env: { ...env, ...extraEnv }, timeoutMs, shell: true });
 
   mkdirSync(resolve(root, 'reports'), { recursive: true });
@@ -5486,7 +5528,15 @@ async function main() {
   let restoreList = [];
   // Photos or a recording that HEAD doesn't have yet are only unstaged on a failure, never deleted.
   let unstageList = [];
+  // Records with uncommitted changes before the pick (never ours to put back), and whether --next is running:
+  // stopped while it runs (Ctrl+C right after it saved the record), what it wrote is worked out from git.
+  let dirtyBefore = [];
+  let picking = false;
+  const writtenByNext = () => dirtyRecordIds(git(['status', '--porcelain', '--', SPECIES_DIR, COMPARISONS_DIR]).stdout)
+    .filter((id) => !dirtyBefore.includes(id))
+    .map((id) => recordFile({ kind: id.includes('_') ? 'comparison' : 'species', id }));
   const putBack = () => {
+    if (picking) restoreList = writtenByNext();
     if (unstageList.length) git(['reset', '-q', '--', ...unstageList]);
     const result = restoreFiles(root, restoreList, env);
     if (result.ok) {
@@ -5504,11 +5554,13 @@ async function main() {
   };
   /** Stops the loop. */
   const stop = (heading, details = '') => {
+    if (aborted) throw new Exit(EXIT.stop); // the abort has already put the record back and reported
     halt(heading, details);
     throw new Exit(EXIT.stop);
   };
   /** This record failed: put it back, exclude it for the session, let the loop go on. */
   const fail = (step, details) => {
+    if (aborted) throw new Exit(EXIT.stop);
     const back = putBack();
     if (!back.ok) stop(`${pick.id} föll i steget ${step} och gick inte att återställa`, `${details}\n\n${back.detail}`);
     appendFileSync(excludedPath, `${pick.id}\n`);
@@ -5516,11 +5568,17 @@ async function main() {
     console.error(`publish-next: ${pick.kind} ${pick.id} föll i steget ${step}; posten är återställd och utesluten, se ${report}`);
     throw new Exit(EXIT.failed);
   };
-  // Ctrl+C, a kill, or an exception outside main()'s own flow: put the record back and stop the loop at once.
+  // Ctrl+C, a kill, or an exception outside main()'s own flow: stop the children, put the record back and stop
+  // the loop. No process.exit() (it can crash Node on Windows): main() ends at its next step (run() rejects
+  // once `aborted` is set) and Node exits by itself; a timer that doesn't keep Node alive forces the exit if
+  // something still hangs after 10 s.
   const abort = (heading, details = '') => {
+    if (aborted) return;
+    aborted = true;
+    process.exitCode = EXIT.stop;
     for (const child of children) killTree(child);
     halt(heading, details);
-    process.exit(EXIT.stop);
+    setTimeout(() => process.exit(EXIT.stop), 10_000).unref();
   };
   for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, () => abort(`avbruten med ${signal}`));
   process.on('uncaughtException', (e) => abort('oväntat fel', e?.stack ?? String(e)));
@@ -5534,12 +5592,13 @@ async function main() {
   if (existsSync(resolve(root, STOP_FILE))) problems.push(`${STOP_FILE} finns (ta bort den för att publicera igen)`);
   if (!existsSync(pipeline)) problems.push(`pipelinen saknas: ${pipeline}`);
   if (await portInUse(opts.port)) problems.push(`porten ${opts.port} är upptagen (en annan server?), välj en annan med --port eller PUBLISH_PORT`);
+  // The main clone is shared with other sessions: the loop only runs in a worktree of its own, dry runs too
+  // (a dry run there would change and put back another session's files).
+  const gitDir = resolve(root, git(['rev-parse', '--git-dir']).stdout.trim());
+  const commonDir = resolve(root, git(['rev-parse', '--git-common-dir']).stdout.trim());
+  if (gitDir === commonDir) problems.push('det här är huvudklonen; loopen körs bara i en egen worktree (planens Task 16, "Uppsättning")');
   const live = opts.push && !opts.dryRun;
   if (live) {
-    // The main clone is shared with other sessions: the loop only publishes from a worktree of its own.
-    const gitDir = resolve(root, git(['rev-parse', '--git-dir']).stdout.trim());
-    const commonDir = resolve(root, git(['rev-parse', '--git-common-dir']).stdout.trim());
-    if (gitDir === commonDir) problems.push('det här är huvudklonen; loopen pushar bara från en egen worktree (planens Task 16, "Uppsättning")');
     const upstream = git(['rev-parse', '--abbrev-ref', '--symbolic-full-name', '@{u}']);
     const detached = git(['symbolic-ref', '-q', 'HEAD']).status !== 0;
     if (!detached && upstream.stdout.trim() !== 'origin/main') problems.push(`grenen följer ${upstream.stdout.trim() || 'ingenting'}, inte origin/main`);
@@ -5552,29 +5611,48 @@ async function main() {
     throw new Exit(EXIT.stop);
   }
   if (live) {
+    const before = git(['rev-parse', 'HEAD']).stdout.trim();
     const fetched = await gitNet(['fetch', 'origin', 'main']);
-    const merged = fetched.status === 0 ? git(['merge', '--ff-only', 'origin/main']) : fetched;
-    const ahead = merged.status === 0 ? git(['rev-list', '--count', 'origin/main..HEAD']).stdout.trim() : '';
-    if (merged.status !== 0 || ahead !== '0') {
-      const why = merged.status !== 0 ? `fetch eller merge --ff-only misslyckades:\n${merged.stdout}${merged.stderr}` : `${ahead} lokala commits är inte pushade`;
+    const ahead = fetched.status === 0 ? git(['rev-list', '--count', 'origin/main..HEAD']).stdout.trim() : '';
+    const merged = fetched.status === 0 && ahead === '0' ? git(['merge', '--ff-only', 'origin/main']) : null;
+    if (fetched.status !== 0 || ahead !== '0' || merged?.status !== 0) {
+      // A publish commit that never reached origin (a stop after a rejected push, a crash) is the usual reason.
+      const why = fetched.status !== 0
+        ? `git fetch misslyckades:\n${fetched.stderr}`
+        : ahead !== '0'
+          ? `${ahead} lokala publiceringscommits finns som inte är pushade (se git log --oneline origin/main..HEAD). Kontrollera dem; ska de inte ut, släpp dem med git reset --hard origin/main i den här worktreen, och kör sedan loopen igen.`
+          : `git merge --ff-only origin/main misslyckades:\n${merged.stdout}${merged.stderr}`;
       writeReport('förkontroll: STOPP (ingen post vald)', why);
       console.error(`publish-next: STOPP: ${why}`);
       throw new Exit(EXIT.stop);
+    }
+    // Vercel installs from package-lock.json for every build: when main's dependencies changed, the local
+    // checks must run on the same ones.
+    const deps = changedFiles(root, before, 'HEAD', ['package.json', 'package-lock.json'], env);
+    if (!deps.ok || deps.files.length) {
+      say('package.json eller package-lock.json har ändrats på main: npm ci');
+      const installed = await sh('npm ci', {}, 10 * 60_000);
+      if (installed.status !== 0) {
+        writeReport('förkontroll: STOPP (npm ci misslyckades, ingen post vald)', `${tail(installed.stdout)}\n${tail(installed.stderr)}`);
+        console.error('publish-next: STOPP: npm ci misslyckades efter att main fått nya beroenden');
+        throw new Exit(EXIT.stop);
+      }
     }
   }
 
   const excluded = existsSync(excludedPath) ? readExcluded(readFileSync(excludedPath, 'utf8')) : [];
   // Outside a live run a record with uncommitted changes (somebody's spot check or import) is never picked.
-  const dirtyBefore = dirtyRecordIds(git(['status', '--porcelain', '--', SPECIES_DIR, COMPARISONS_DIR]).stdout);
+  dirtyBefore = dirtyRecordIds(git(['status', '--porcelain', '--', SPECIES_DIR, COMPARISONS_DIR]).stdout);
   const stems = existsSync(resolve(root, COMPARISONS_DIR))
     ? readdirSync(resolve(root, COMPARISONS_DIR)).filter((f) => /^Q\d+_Q\d+\.json$/.test(f)).map((f) => f.slice(0, -5))
     : [];
 
   // -- 1. The pick -------------------------------------------------------------------------------------
+  picking = true;
   const picked = await run('uv', nextArgs([...excluded, ...dirtyBefore], stems, COMPARISONS_ENABLED), { cwd: pipeline, env, timeoutMs: 10 * 60_000 });
   // Whatever --next wrote is put back on any failure from here, even when its answer can't be read.
-  const writtenByNext = dirtyRecordIds(git(['status', '--porcelain', '--', SPECIES_DIR, COMPARISONS_DIR]).stdout).filter((id) => !dirtyBefore.includes(id));
-  restoreList = writtenByNext.map((id) => recordFile({ kind: id.includes('_') ? 'comparison' : 'species', id }));
+  restoreList = writtenByNext();
+  picking = false;
   if (picked.status !== 0) stop('web publish --next misslyckades', `${tail(picked.stderr)}\n${tail(picked.stdout)}`);
   try {
     pick = parsePick(picked.stdout);
@@ -5593,7 +5671,8 @@ async function main() {
   let names;
   let paths;
   let axe;
-  try {
+  /** The record, its names and the addresses to test, read from disk (again after a rebase). */
+  const readRecord = () => {
     record = JSON.parse(readFileSync(resolve(root, json), 'utf8'));
     if (pick.kind === 'comparison' && !COMPARISONS_ENABLED) throw new Error('en jämförelse valdes fast jämförelserna är avstängda (COMPARISONS_ENABLED)');
     names = pick.kind === 'species'
@@ -5601,6 +5680,9 @@ async function main() {
       : [record.a, record.b].map((qid) => JSON.parse(readFileSync(resolve(root, SPECIES_DIR, `${qid}.json`), 'utf8')).names.sv);
     paths = pagePaths(record);
     axe = axePaths(pick, record, JSON.parse(readFileSync(resolve(root, 'src/data/species-groups.json'), 'utf8')).groups);
+  };
+  try {
+    readRecord();
   } catch (e) {
     fail('läsa posten', e.message);
   }
@@ -5609,7 +5691,8 @@ async function main() {
   // -- 2. Build and check (again after a rebase) -----------------------------------------------------------
   /** @returns {Promise<string | null>} the failed step and its output, or null when everything is green */
   const verify = async () => {
-    const dashes = await sh('node scripts/check-no-dashes.mjs', {}, 120_000);
+    // Published records and this one only: a dash in a record nobody publishes yet is not this record's fault.
+    const dashes = await sh('node scripts/check-no-dashes.mjs', { NO_DASHES_PUBLISHED_ONLY: '1', NO_DASHES_RECORD: pick.id }, 120_000);
     if (dashes.status !== 0) return `check-no-dashes\n${tail(dashes.stdout)}\n${tail(dashes.stderr)}`;
     const build = await sh('npm run build:prod');
     if (build.status !== 0) return `build:prod\n${tail(build.stdout)}\n${tail(build.stderr)}`;
@@ -5678,11 +5761,28 @@ async function main() {
     // again, push again. Anything else stops the loop with the commit kept locally for a person to look at.
     say(`pushen avvisades (någon annan pushade under tiden): rebase på origin/main och en ny kontroll`);
     writeReport(`${pick.kind} ${pick.id}: push avvisad, rebase på origin/main och ny kontroll`, tail(pushed.stderr, 10));
+    const base = git(['rev-parse', 'HEAD~1']).stdout.trim(); // what --next and every check started from
     const fetched = await gitNet(['fetch', 'origin', 'main']);
-    const rebased = fetched.status === 0 ? git(['rebase', 'origin/main']) : fetched;
+    if (fetched.status !== 0) stop(`push avvisad och git fetch misslyckades; ${hash} ligger kvar lokalt`, `${pushed.stderr}\n${fetched.stderr}`);
+    // The site checks can't tell whether the record is still ready (the pipeline's own condition: its facts
+    // checked, its text written from them). If the incoming commits changed any of its files, a pipeline run
+    // may have rewritten the facts under the tested text: stop, do not rebase or publish.
+    const incoming = changedFiles(root, base, 'origin/main', commitPaths, env);
+    if (!incoming.ok || incoming.files.length) {
+      stop(
+        `${pick.id} ändrades på origin/main medan den testades; publiceringen ${hash} ligger kvar lokalt och pushas inte`,
+        `Ändrat på origin/main: ${incoming.files.join(', ') || '(git diff misslyckades)'}\nKontrollera, släpp commiten med git reset --hard origin/main i den här worktreen och kör loopen igen (posten tas då om från början).`,
+      );
+    }
+    const rebased = git(['rebase', '--no-autostash', 'origin/main']);
     if (rebased.status !== 0) {
       git(['rebase', '--abort']);
       stop(`push avvisad och rebase misslyckades; ${hash} ligger kvar lokalt`, `${pushed.stderr}\n${rebased.stdout}${rebased.stderr}`);
+    }
+    try {
+      readRecord();
+    } catch (e) {
+      stop(`efter rebase på origin/main gick ${pick.id} inte att läsa; commiten ligger kvar lokalt`, e.message);
     }
     const again = await verify();
     if (again) stop(`efter rebase på origin/main föll ${again.split('\n')[0]}; commiten ligger kvar lokalt`, again);
@@ -5699,11 +5799,12 @@ async function main() {
   for (;;) {
     const statuses = await Promise.all(liveUrls(site, paths, pushedHash).map(async (url) => {
       try {
-        return (await fetch(url, { headers: { 'cache-control': 'no-cache' } })).status;
+        return (await fetch(url, { headers: { 'cache-control': 'no-cache' }, signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) })).status;
       } catch {
         return 0;
       }
     }));
+    if (aborted) throw new Exit(EXIT.stop);
     if (statuses.every((code) => code === 200)) break;
     if (Date.now() >= until) {
       stop(`${pick.id} är pushad (${pushedHash}) men inte live på ${site} i tid; kontrollera Vercel`, paths.map((path, i) => `/${path}: ${statuses[i]}`).join('\n'));
@@ -5718,10 +5819,10 @@ async function main() {
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   main().catch((e) => {
     if (e instanceof Exit) {
-      process.exitCode = e.code;
+      process.exitCode = aborted ? EXIT.stop : e.code;
       return;
     }
-    if (onFatal) onFatal(e);
+    if (onFatal && !aborted) onFatal(e);
     else console.error(`publish-next: ${e?.stack ?? e}`);
     process.exitCode = EXIT.stop;
   });

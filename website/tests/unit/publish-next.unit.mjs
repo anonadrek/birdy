@@ -7,7 +7,7 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'nod
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import {
-  DEFAULT_PORT, EXIT, GIT_ENV, TRAILER, assetFiles, axePaths, commitMessage, dirtyRecordIds, liveUrls, nextArgs, pagePaths, parseArgs,
+  DEFAULT_PORT, EXIT, GIT_ENV, TRAILER, assetFiles, axePaths, changedFiles, commitMessage, dirtyRecordIds, liveUrls, nextArgs, pagePaths, parseArgs,
   parsePick, readExcluded, recordFile, restoreFiles, treeIsClean,
 } from '../../scripts/publish-next.mjs';
 
@@ -168,5 +168,26 @@ test('treeIsClean: ändrade, köade och ospårade filer räknas, loopens egna re
     const dirty = treeIsClean(dir);
     assert.equal(dirty.clean, false);
     assert.match(dirty.detail, /Q1\.json/);
+  });
+});
+
+const NL = String.fromCharCode(10);
+
+test('changedFiles: vilka av postens filer som ändrades mellan två commits (stopp efter en avvisad push)', () => {
+  withRepo(({ site, g }) => {
+    const base = spawnSync('git', ['rev-parse', 'HEAD'], { cwd: site, encoding: 'utf8' }).stdout.trim();
+    writeFileSync(join(site, 'src/data/species/Q2.json'), '{}' + NL);
+    g('add', '-A');
+    g('commit', '-q', '-m', 'en annan art');
+    const other = changedFiles(site, base, 'HEAD', ['src/data/species/Q1.json', 'src/assets/species/Q1/hero.webp']);
+    assert.deepEqual(other, { ok: true, files: [] });
+    writeFileSync(join(site, 'src/data/species/Q1.json'), '{"publish": false, "facts": ["ändrat"]}' + NL);
+    g('add', '-A');
+    g('commit', '-q', '-m', 'pipelinen skriver om Q1');
+    const touched = changedFiles(site, base, 'HEAD', ['src/data/species/Q1.json', 'src/assets/species/Q1/hero.webp']);
+    assert.equal(touched.ok, true);
+    assert.deepEqual(touched.files, ['website/src/data/species/Q1.json']);
+    assert.deepEqual(changedFiles(site, base, 'HEAD', []), { ok: true, files: [] });
+    assert.equal(changedFiles(site, 'finns-inte', 'HEAD', ['src/data/species/Q1.json']).ok, false);
   });
 });
