@@ -1,11 +1,717 @@
 {
   "qid": "Q25386",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {},
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Råkan känns igen på sin långa, spetsiga och något nedåtböjda näbb med ljust naket hudparti vid näbbasen samt metalliskt glänsande svart fjäderdräkt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den utmärks av sin långa, spetsiga och något nedåtböjda näbb med det ljusa nakna hudpartiet vid näbbasen och sin metalliskt glänsande svarta fjäderdräkt."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Fjäderdräkten är svart med blå- och purpuraktig glans, särskilt på huvud och hals, där fjädrarna är fina och silkeslena.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Råkan är svart, med blå- och purpuraktig glans, i synnerhet på huvudet och halsen, vilkas fjäderbeklädnad är fin och silkeslik utan synliga fjäderspolar."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Ben och fötter är svarta, näbben gråsvart och ögat mörkbrunt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The legs and feet are generally black, the bill grey-black and the iris dark brown."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Stjärten är mindre kilformad än korpens.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten är mindre kilformad än korpens."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "size",
+      "sv": "Råkan är 41–49 cm lång och har ett vingspann på 81–94 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Till storleken är den bara lite mindre än en kråka med en längd på mellan 41 och 49 cm och med ett vingspann på 81 till 94 cm."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "size",
+      "sv": "Vikten hos vuxna fåglar är 280–340 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The rook is a fairly large bird, at 280 to 340 g (9.9 to 12.0 oz) adult weight, 44 to 46 cm (17 to 18 in) in length and 81 to 99 cm (32 to 39 in) wingspan."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hane och hona skiljer sig varken i fjäderdräkt eller storlek.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen skiljer sig varken i fjäderdräkt eller storlek."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hos adulta fåglar saknas befjädring vid näsborrarna och den blekt gula näbbasen är naken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den blekt gula näbbasen är även den fjäderlös"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungfågeln är svart med svag grönaktig glans, men nacke, rygg och undersida är brunsvarta.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The juvenile plumage is black with a slight greenish gloss, except for the hind neck, back and underparts, which are brownish-black."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "lookalike",
+      "sv": "Unga och subadulta råkor liknar svartkråka mycket men skiljs främst genom den spetsiga, dolkformade näbben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenila och subadulta fåglar är mycket lika svartkråkan men skiljs från denna främst genom sin spetsiga dolkformade näbb."
+        }
+      ],
+      "other": {
+        "scientific": "C. corone"
+      }
+    },
+    {
+      "id": "f11",
+      "topic": "lookalike",
+      "sv": "I flykten skiljs råkan från svartkråka på de något längre handpennorna, och flykten verkar lättare med snabbare vingslag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten är råkan ganska lätt urskiljbar från svartkråkan på de något längre handfjädrarna. Dess flykt verkar lättare och vingslagen är något snabbare än svartkråkans."
+        }
+      ],
+      "other": {
+        "scientific": "C. corone"
+      }
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Vanligaste lätet är ett varierande \"kah\" eller \"krah\", ofta framfört vid rituella bugningar när partner hälsar på varandra.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det vanligaste lätet är ett \"kah\" eller \"krah\", som kan låta ganska varierande; ofta framförs det vid rituella bugningar av partner som hälsar på varandra."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "I aggressiva situationer blir lätet längre och högre, ett \"krääääh\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I aggressiva situationer är detta ljud längre och högre: \"krääääh\"."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Särskilt på våren hörs ett lätt, kuttrande pladdrande inbäddat i de längre kraxljuden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dessutom är särskilt på våren ett lätt, kuttrande pladdrande inbäddat i de längre kraxljuden."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Ungfåglar och boungar ropar mycket högljutt och piper, senare hörs ett genomträngande \"rrrah\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även ungfåglarna och ungarna i boet ropar mycket högt; de piper hörbart. Senare hör man från dem ett genomträngande \"rrrah\"."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Lätet liknar svartkråkans men är mindre strävt, och i flykten avges ropen oftast enstaka.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The call is usually described as caw or kaah, and is somewhat similar to that of the carrion crow, but less raucous."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Råkan bebor mest öppen åker- och ängsmark med buskskog, småskog eller trädrader.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Råkan bebor mestadels öppen åker- och ängsmark som består av buskskog, småskog eller trädrader."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Den är till stor del beroende av kulturlandskap och föredrar jämna eller backiga trakter, medan den undviker bergstrakter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är till stor del anvisad till kulturlandskap som omvandlats av människor."
+        },
+        {
+          "article": "sv",
+          "quote": "Den föredrar jämna eller backiga trakter, och undviker bergstrakter."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Råkan skyggar inte för människor och häckar ofta i parkanläggningar och nära bebyggelse.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den skyggar inte för människors närhet."
+        },
+        {
+          "article": "sv",
+          "quote": "förekommer också lokalt som häckfågel i städer, då framförallt i parker"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Arten häckar allmänt i Skåne, på Öland och Gotland samt enstaka längre norrut, till exempel i Vadstena och Uppsala.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten häckar allmänt i Skåne, på Öland och Gotland och dessutom på något enstaka ställe längre norrut, exempelvis i Vadstena och Uppsala, där den delvis lever i stadsmiljö."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Råkan är Skånes vanligaste kråkfågel och omkring 90 procent av Sveriges råkor finns i landskapet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Råkan är Skånes överlägset vanligaste kråkfågel, och det största beståndet, med cirka 90 % av Sveriges råkor, finns i landskapet."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Sveriges största råkkoloni finns i parken Karlslund i Landskrona, där omkring 40 000 par häckar årligen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I parken Karlslund i Landskronas norra utkant finns Sveriges största koloni av råkor. På en yta av en knapp km² häckar där årligen omkring 40 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "I Norden når utbredningen Danmark och södra Sverige samt södra och västra Finland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Norden når den Danmark och södra Sverige samt södra och västra Finland, i sydost Svarta havets och Kaspiska havets kuster."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "sweden",
+      "sv": "Råkan ses enstaka eller i flock ända upp i Norrland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den siktas enstaka eller i flock ända uppe i Norrland."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Råkan är obligat kolonihäckare och häckar alltid i grupp med andra råkor i skogsdungar eller parker.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Råkan är en så kallad obligat kolonihäckare, vilket innebär att råkparet alltid häckar i grupp med andra råkor. Dessa råkkolonier återfinns i skogsdungar eller parker"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Bobygget börjar i början av mars och boet placeras ofta högt i en trädklyka i alléer, parker eller skogsdungar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bobygget påbörjas i början av mars, och det ofta stora boet byggs av både honan och hanen."
+        },
+        {
+          "article": "sv",
+          "quote": "Boet byggs ofta högt upp i en trädklyka i alléer och i parker eller i skogsdungar på åkrar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Honan lägger vanligen 4–5 ägg mellan 1 och 15 april; äggen är grågröna med bruna eller gråa fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Normal äggläggningstid förekommer vanligtvis mellan 1 och 15 april då honan lägger 4–5 ägg."
+        },
+        {
+          "article": "sv",
+          "quote": "Äggen har grågrön bottenfärg och är tätt prickade av bruna eller gråa ovala fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Honan ruvar ensam i 16–19 dygn och matas under tiden av hanen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ruvar ensam äggen i 16 till 19 dygn under vilken tid hanen förser henne med föda."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Ungarna blir flygfärdiga efter 29–33 dygn men matas av föräldrarna länge efter utflygningen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det tar ungarna mellan 29 och 33 dygn att bli flygfärdiga, men föräldrarna fortsätter att mata dem under en lång tid efter utflygningen."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "food",
+      "sv": "Råkan är allätare och äter mest insekter och maskar samt frön och växtdelar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Råkan är allätare, men äter mest insekter och mask samt frön och växtdelar."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Vanligast i rapporterna från Skåne, Halland och Gotland."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Råkan är en kråkfågel med metalliskt glänsande svart fjäderdräkt och en lång, spetsig näbb med ljust naket hudparti vid basen.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Den håller till i öppen åker- och ängsmark med trädrader och småskog, och häckar gärna i parker och nära bebyggelse.",
+          "factIds": [
+            "f17",
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Lång, spetsig och något nedåtböjd näbb med ljust naket hudparti vid basen",
+          "factIds": [
+            "f01",
+            "f08"
+          ]
+        },
+        {
+          "text": "Svart fjäderdräkt med blå och purpuraktig glans, tydligast på huvud och hals",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Ben och fötter svarta, näbben gråsvart och ögat mörkbrunt",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Hane och hona är lika; ungfågeln har brunsvart nacke, rygg och undersida",
+          "factIds": [
+            "f07",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Vanligaste lätet är ett varierande \"kah\" eller \"krah\", ofta framfört vid rituella bugningar när partnerna hälsar på varandra.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "I aggressiva situationer blir lätet längre och högre, ett \"krääääh\".",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Särskilt på våren hörs ett lätt, kuttrande pladder inbäddat i de längre kraxljuden.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Ungfåglar och boungar ropar högljutt och piper, senare hörs ett genomträngande \"rrrah\".",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Lätet liknar svartkråkans men är mindre strävt.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Råkan häckar allmänt i Skåne, på Öland och Gotland och enstaka längre norrut, till exempel i Vadstena och Uppsala.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Omkring 90 procent av Sveriges råkor finns i Skåne, och i parken Karlslund i Landskrona häckar omkring 40 000 par årligen.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt, vanligast från Skåne, Halland och Gotland, och ses enstaka eller i flock upp i Norrland.",
+          "factIds": [
+            "d01",
+            "d02",
+            "f24"
+          ]
+        },
+        {
+          "text": "Arten är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Råkan är allätare och tar mest insekter och maskar, men även frön och växtdelar.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "Den häckar alltid i koloni med andra råkor i skogsdungar eller parker, och bobygget börjar i början av mars, ofta högt i en trädklyka.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "Honan lägger 4 till 5 ägg mellan 1 och 15 april och ruvar ensam i 16 till 19 dygn medan hanen matar henne.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "C. corone",
+          "text": [
+            {
+              "text": "Unga och subadulta råkor liknar svartkråka mycket, men råkans näbb är spetsig och dolkformad.",
+              "factIds": [
+                "f10"
+              ]
+            },
+            {
+              "text": "I flykten har råkan något längre handpennor och lättare flykt med snabbare vingslag.",
+              "factIds": [
+                "f11"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Råka: känn igen kråkfågeln på den spetsiga näbben och den glänsande svarta dräkten, lär dig lätet och se när och var den ses i Sverige.",
+      "facts": {
+        "size": {
+          "value": "41 till 49 cm",
+          "factIds": [
+            "f05"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Rook is a crow family bird with glossy black plumage and a long, pointed bill with a pale bare base.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "It lives in open farmland and meadows with scrub, small woods and tree lines, and often breeds in parks and near houses.",
+          "factIds": [
+            "f17",
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Long, pointed and slightly downcurved bill with a pale bare patch at the base",
+          "factIds": [
+            "f01",
+            "f08"
+          ]
+        },
+        {
+          "text": "Black plumage with a blue and purple sheen, strongest on head and neck",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Legs and feet black, bill grey-black and the eye dark brown",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Male and female look alike; juveniles have brown-black nape, back and underside",
+          "factIds": [
+            "f07",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The common call is a varied \"kah\" or \"krah\", often given during ritual bowing when partners greet each other.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "In aggressive situations the call gets longer and higher, a \"krääääh\".",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "In spring there is a light, cooing chatter mixed into the longer caws.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Young birds and nestlings call very loudly and squeak, later a piercing \"rrrah\" is heard.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Rook breeds commonly in Skåne, on Öland and Gotland, and singly further north.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "About 90 percent of Sweden's Rooks are in Skåne, and about 40 000 pairs nest each year in Karlslund park in Landskrona.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        },
+        {
+          "text": "It is reported all year, most often from Skåne, Halland and Gotland, and is seen singly or in flocks up into Norrland.",
+          "factIds": [
+            "d01",
+            "d02",
+            "f24"
+          ]
+        },
+        {
+          "text": "It is not red-listed in the 2025 Swedish Red List.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Rook is an omnivore and eats mostly insects and worms, along with seeds and plant matter.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "It always breeds in a colony with other Rooks in copses or parks, and nest building starts in early March, often high in a tree fork.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "The female lays 4 to 5 eggs between 1 and 15 April and incubates alone for 16 to 19 days while the male feeds her.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "C. corone",
+          "text": [
+            {
+              "text": "Young and subadult Rooks look much like Carrion Crow, but the Rook has a pointed, dagger-shaped bill.",
+              "factIds": [
+                "f10"
+              ]
+            },
+            {
+              "text": "In flight the Rook has slightly longer primaries and a lighter flight with faster wingbeats.",
+              "factIds": [
+                "f11"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Rook: how to recognise this crow family bird by bill and plumage, what its calls sound like, and where and when it is seen in Sweden.",
+      "facts": {
+        "size": {
+          "value": "41 to 49 cm",
+          "factIds": [
+            "f05"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T11:57:18.515193+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T12:09:38.937263+00:00",
+      "factsHash": "9a61b28c07162a3a"
+    },
+    "text": {
+      "model": "claude-opus-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "ef240f1a",
+      "checkerPromptHash": "e6424dac",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T12:11:40.743958+00:00",
+      "factsHash": "9a61b28c07162a3a",
+      "unreviewed": true
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "raka",
@@ -203,5 +909,12 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: Quote only states resident status specifically for Skåne, not Sweden as a whole, while the paragraph notes the species is also seen seasonally further north, so generalizing to all of Sweden overstates the source.. Bestäm status eller lämna tom."
+    }
+  ]
 }

@@ -1,11 +1,689 @@
 {
   "qid": "Q25383",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {},
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Bofinken är stor som en gråsparv men slankare och med längre stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bofinken är stor som en gråsparv, men slankare och med längre stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Bofinken mäter 14–16 cm, har ett vingspann på 25–29 cm och väger ungefär 20 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den mäter 14–16 cm, har ett vingspann på 25–29 cm och en vikt på ungefär 20 gram."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Näbben är kort, tjock och konisk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en kort, tjock och konisk näbb"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "I flykten syns dubbla vita vingband och vita fält på de yttre stjärtpennorna mot den i övrigt mörka stjärten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bofinken utmärker sig i flykten genom sina dubbla vita vingband och de yttre stjärtpennornas vita fält, som kontrasterar mot den i övrigt mörka stjärten."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Oavsett kön har bofinken en iögonfallande vit skulderfläck, vitt vingband och vita yttre stjärtpennor.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Unabhängig vom Geschlecht weisen Buchfinken einen auffallenden weißen Schulterfleck, eine weiße Flügelbinde und weiße äußere Steuerfedern auf."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Ögonen har mörkbrun iris och benen är gråbruna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The eyes have dark brown irises and the legs are grey-brown."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Den adulta hanen har svart panna vid näbbroten, gråblått huvud i övrigt och rödbruna kinder.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen skiljer sig från honan på att pannan är svart vid näbbroten och den övriga delen av huvudet är gråblått, utom kinderna, som är rödbruna."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hanens rödbruna färg går ned på hals och bröst, medan honan där är mattare gråbrun.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den rödbruna färgen sträcker sig också ned på hals och bröst, där honan istället är mattare färgad i gråbrunt."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Juvenilen liknar honan.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The juvenile resembles the female."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Hanens näbb är stålblå på våren och annars hornfärgad, medan honans är ljusbrun till hornfärgad året om.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Schnabel ist beim Männchen im Frühjahr stahlblau, ansonsten hornfarben."
+        },
+        {
+          "article": "de",
+          "quote": "Der Schnabel des Weibchens ist ganzjährig hellbraun bis hornfarben."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Från mars sjunger bofinken högt och genomträngande med en omisskännlig slutmelodi, ungefär tsitsitsitsjatsjatsoritiu-tsip.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från mars månad sjunger den högt och genomträngande med sin omisskännliga slutmelodi, ungefär som tsitsitsitsjatsjatsoritiu-tsip eller tsiptsiptsip."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Lövsångarens sång liknar bofinkens men är tydligt svagare och saknar drill i slutet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lövsångarens sång liknar bofinkens, men är tydligt svagare, och utan drill i slutet."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Locklätet är ett högljutt fink, fink och flyglätet ett dämpat jupp.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bofinkens lockläte är ett högljutt fink, fink. Dess flygläte är ett dämpat jupp."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "I vissa trakter hörs även ett hyitt eller rrhy som kallas regnsång.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Förutom locklätet fink finns även i vissa trakter ett hyitt eller rrhy som kallas \"regnsång\"."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "I olika områden förekommer olika läten, så kallade regionala dialekter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I olika områden förekommer olika läten, så kallade regionala dialekter."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Juvenilen lär sig sjunga under sin första vår genom att härma artfränder och sjunger sedan dessa melodier livet ut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen lär sig att sjunga under den första våren genom att härma sina artfränder. De melodier som de lär sig på det sättet sjunger de sedan under resten av livet."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Bofinken lever i skogsbiotoper, trädgårdar och parker, även i bergsområden upp till omkring 1500 meters höjd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bofinken förekommer i skogsbiotoper, trädgårdar och parker, men även i bergsområden upp till ungefär 1500 meters höjd."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Livsmiljön utgörs av skogar, snår, häckar, trädgårdar och stora fruktodlingar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Lebensraum des Buchfinken sind Wälder, Dickichte, Hecken, Gärten und große Obstanbauflächen."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Bofinken förekommer från granskogs- eller lägre tallskogsregionen i Lappland söderut till södra Europa och vidare in i västra Asien.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den återfinns från granskogs- eller lägre delen av tallskogsregionen i Lappland, ned till södra Europa och vidare in i västra Asien."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Tillsammans med lövsångaren är bofinken Sveriges vanligaste fågelart, med cirka 8,3 miljoner par enligt uppskattning 2018.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tillsammans med lövsångaren är bofinken Sveriges vanligaste fågelart. Antalet par i Sverige uppskattades 2018 till cirka 8,3 miljoner."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Särskilt honan med årsungarna lämnar häckningsområdet på vintern, medan äldre hanar i större utsträckning övervintrar i sitt revir.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Särskilt honan med sina årsungar lämnar häckningsområdet på vintern, medan äldre bofinkshanar i större utsträckning övervintrar i sitt revir."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "På marken nickar bofinken rytmiskt på huvudet och den flyger i kraftfulla bågar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Då bofinken rör sig på marken nickar den rytmiskt på huvudet och den flyger i kraftfulla bågar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Bofinken är en ganska orädd fågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bofinken är en ganska orädd fågel."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "På våren markerar hanen sitt häckningsrevir med ljudlig sång.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På våren markerar hanen sitt häckningsrevir genom ljudlig sång."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden bildar bofinken lösa flockar, ibland blandade med bergfinkar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It forms loose flocks outside the breeding season, sometimes mixed with bramblings."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Boet är tjockt och skålformigt och byggs av rötter, barkbitar, strån, mossa och lavar, invändigt fodrat med hår och enstaka fjädrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det omsorgsfullt byggda redet är tjockt och skålformigt och består av rötter, barkbitar, strån, mossa och lavar. Det fodras invändigt med hår och enstaka fjädrar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Boet byggs oftast två till tio meter upp i buskar eller högt i träd i en grenklyka, väl maskerat med mossa och lav.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Redet byggs oftast på en höjd av två till tio meter, på buskar eller högt i träden i en grenklyka, och väl maskerat med mossa och lav."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Boet byggs helt och hållet av honan.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Nests are built entirely by the female"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Honan lägger tre till sex ljusbruna eller blåaktigt vita ägg per kull, tecknade med röd- till mörkbruna fläckar och fina streck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger tre till sex ljusbruna eller blåaktigt vita ägg per kull."
+        },
+        {
+          "article": "sv",
+          "quote": "de är dock alltid tecknade med röd- till mörkbruna fläckar och fina streck"
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "breeding",
+      "sv": "Äggen ruvas i tretton till fjorton dagar av honan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas i tretton till fjorton dagar av honan."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Vanligast i rapporterna från Norrbotten, Västerbotten och Västernorrland."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Bofinken är en fink som lever i skogsbiotoper, trädgårdar och parker, även i bergsområden upp till omkring 1500 meters höjd.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Den trivs också i snår, häckar och stora fruktodlingar, och är stor som en gråsparv men slankare.",
+          "factIds": [
+            "f18",
+            "f01"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Stor som en gråsparv men slankare och med längre stjärt",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Kort, tjock och konisk näbb, vit skulderfläck och vita yttre stjärtpennor",
+          "factIds": [
+            "f03",
+            "f05"
+          ]
+        },
+        {
+          "text": "Hanen har gråblått huvud, rödbruna kinder och rödbrunt ned på hals och bröst",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        },
+        {
+          "text": "Honan är mattare gråbrun under, och juvenilen liknar henne",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Från mars sjunger bofinken högt och genomträngande med en omisskännlig slutmelodi, ungefär tsitsitsitsjatsjatsoritiu-tsip.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Locklätet är ett högljutt fink, fink och flyglätet ett dämpat jupp.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "I vissa trakter hörs ett hyitt eller rrhy som kallas regnsång.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Lätena skiljer sig mellan områden, så kallade regionala dialekter.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Lövsångarens sång liknar bofinkens men är tydligt svagare och saknar drill i slutet.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Bofinken rapporteras året runt, och flest rapporter kommer från Norrbotten, Västerbotten och Västernorrland.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Tillsammans med lövsångaren är den Sveriges vanligaste fågelart, med cirka 8,3 miljoner par enligt uppskattning 2018.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Särskilt honan med årsungarna lämnar häckningsområdet på vintern, medan äldre hanar i större utsträckning övervintrar i sitt revir.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Arten är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "På marken nickar bofinken rytmiskt på huvudet och den flyger i kraftfulla bågar.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Den är ganska orädd.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "På våren markerar hanen sitt häckningsrevir med ljudlig sång.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden bildar den lösa flockar, ibland blandade med bergfinkar.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Honan bygger ensam ett tjockt, skålformigt bo, oftast två till tio meter upp i buskar eller högt i träd.",
+          "factIds": [
+            "f26",
+            "f27",
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Bofink: känn igen fågeln på fjäderdräkt, näbb och vingband, hör hur sången och lätena låter och se när den syns i Sverige.",
+      "facts": {
+        "size": {
+          "value": "14 till 16 cm",
+          "factIds": [
+            "f02"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Chaffinch is a finch of woodland, gardens and parks, and also hill country up to around 1500 metres.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "It also uses scrub, hedges and large orchards, and is the size of a House Sparrow but slimmer.",
+          "factIds": [
+            "f18",
+            "f01"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "The size of a House Sparrow but slimmer and with a longer tail",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Short, thick and conical bill, white shoulder patch and white outer tail feathers",
+          "factIds": [
+            "f03",
+            "f05"
+          ]
+        },
+        {
+          "text": "Male has a grey-blue head, red-brown cheeks and red-brown down the throat and breast",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        },
+        {
+          "text": "Female is duller grey-brown below, and the juvenile looks like her",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "From March it sings loudly and penetratingly with an unmistakable closing flourish, roughly tsitsitsitsjatsjatsoritiu-tsip.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The contact call is a loud fink, fink and the flight call a muted jupp.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "In some districts a hyitt or rrhy, known as the rain song, is heard.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Calls differ between areas, so called regional dialects.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The chaffinch is reported all year round, with most reports from Norrbotten, Västerbotten and Västernorrland.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Together with the Willow Warbler it is Sweden's commonest bird species, with about 8.3 million pairs according to a 2018 estimate.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Females with the year's young in particular leave the breeding area in winter, while older males more often winter in their territory.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "The species is not on the Swedish Red List 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "On the ground the chaffinch bobs its head rhythmically, and it flies in powerful arcs.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "It is fairly tame.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "In spring the male marks his breeding territory with loud song.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it forms loose flocks, sometimes mixed with Bramblings.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "The female alone builds a thick, cup-shaped nest, usually two to ten metres up in bushes or high in a tree.",
+          "factIds": [
+            "f26",
+            "f27",
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Eurasian Chaffinch: how to recognise it by plumage, bill and wing bars, what its song and calls sound like, and when it is seen in Sweden.",
+      "facts": {
+        "size": {
+          "value": "14 to 16 cm",
+          "factIds": [
+            "f02"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T11:57:18.515193+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T12:09:38.937263+00:00",
+      "factsHash": "dc09e7ae3fe3d05a"
+    },
+    "text": {
+      "model": "claude-opus-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "ef240f1a",
+      "checkerPromptHash": "e6424dac",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T12:11:40.743958+00:00",
+      "factsHash": "dc09e7ae3fe3d05a",
+      "unreviewed": true
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "bofink",
@@ -201,7 +879,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: Quote discusses migratory status for 'Nord- und Osteuropa' generally, not explicitly naming Sweden, Scandinavia or Fennoscandia, and breeding status there is only implied via a separate sentence about distribution, not stated directly as breeding status.. Bestäm status eller lämna tom."
+    }
+  ]
 }

@@ -1,11 +1,623 @@
 {
   "qid": "Q10546857",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {},
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "lookalike",
+      "sv": "Koboltmesen liknar blåmesen till form och dräkt men är något mindre och mörkare, med skarpare avgränsad svartblå hjässa och gråblå rygg utan grönt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Koboltmesen är till formen och dräkten lik blåmesen, men är något mindre och mörkare: svartblå skarpare avgränsad hjässa, gråblå rygg utan inslag av grönt och ultramarinfärgad vinge."
+        }
+      ],
+      "other": {
+        "scientific": "Cyanistes caeruleus",
+        "qid": "Q25404"
+      }
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Vingen är ultramarinfärgad och ryggen gråblå utan inslag av grönt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "svartblå skarpare avgränsad hjässa, gråblå rygg utan inslag av grönt och ultramarinfärgad vinge"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Pannan och ögonbrynsstrecket är vita och ramar in en djupblå hjässa.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Stirn und Überaugenstreif sind weiß und rahmen eine tiefblaue Kopfplatte."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Svartaktiga tyglar och ögonstreck avgränsar tillsammans med svart haka och halsband de vita kinderna och öronfläckarna.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Zügel und Augenstreif sind schwärzlich und über den blaugrauen Nacken verbunden, sie grenzen gemeinsam mit einem schwarzen Kinn und Halsband die weißen Wangen und Ohrdecken ein."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Undersidan är mörkgul med ett svart längsstreck på buken.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Körperunterseite ist dunkelgelb mit einem schwarzen Längsstreifen auf dem Bauch."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Näbben är liten och spetsig, skiffergrå till svart, benen mörkgrå och iris mörkbrun till svart.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Iris ist dunkelbraun bis schwarz, der kleine spitze Schnabel schiefergrau bis schwarz mit blasseren Schneidkanten. Die Beine sind dunkelgrau."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Rygg, övergump och vingtäckare är blågrå, medan ving- och stjärtpennor är grå med blå ytterfan.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Rücken-, Bürzelgefieder und die Flügeldecken sind blaugrau. Flügel- und Schwanzfedern sind grau mit blauen Außenfahnen."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Populationerna på Kanarieöarna saknar det vita vingband som koboltmesar i Nordafrika har.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Populationerna på Kanarieöarna saknar även det vita vingbandet som både blåmes och koboltmes i Nordafrika har."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Underarten degener på östra Kanarieöarna har svart hjässa, smalare ögonbrynsstreck och gråare ovansida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Underarten degener på de östra Kanarieöarna har svart hjässa, smalare ögonbrynsstreck, gråare ovansida och breda spetsar på större täckarna och tertialkanterna."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "appearance",
+      "sv": "Underarten palmensis på La Palma är mindre färgglad än nominatformen och saknar glans på hjässan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Underarten palmensis på Palma är mindre färgglad än nominatformen och saknar glans på hjässan."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "appearance",
+      "sv": "Koboltmesen är en liten och kompakt mes med spetsig näbb.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is a small, sharp-billed, compact tit."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "sex_age",
+      "sv": "Adulta hanar och honor saknar synliga skillnader i dräkten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Bei adulten Tieren ist kein Geschlechtsdimorphismus vorhanden."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "sex_age",
+      "sv": "Ungfåglar har gult ögonbrynsstreck, gul nacke och gula öronfläckar, grönblå till olivgrön ovansida och saknar oftast svart bukstreck.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Bei Jungtieren sind Überaugenstreif, Nacken und Ohrdecken gelb, die Kopfplatte und Körperoberseite ist grünlich-blau bis olivgrün, die Körperunterseite ist matter gelb, teilweise gräulich oder braun, und der schwarze Bauchstreif fehlt in der Regel."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "size",
+      "sv": "Koboltmesen mäter 11–12 centimeter.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The African blue tit ranges from 11–12 cm (4.3–4.7 in) in size."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "size",
+      "sv": "Den är ungefär 12 centimeter lång och väger i genomsnitt 10 gram.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Kanarenmeise ist etwa 12 cm lang und wiegt durchschnittlich 10 g."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Sången består av en varierad upprepning av en eller två toner.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The song is a variable repetition of one or two notes."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "voice",
+      "sv": "Lätena skiljer sig från blåmesens, några påminner om talgoxe och andra om tofsmes.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lätena skiljer sig också, vissa ska påminna om talgoxe, andra om tofsmes."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Arten lever i olika skogsmiljöer, från lagerskogar och trädljungbestånd till bergstallskogar samt parker och trädgårdar med fruktträd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Koboltmesen hittas i olika typer av skogsmiljöer, alltifrån lagerskogar och stånd med trädljung till bergsbelägna tallskogar samt parker och trädgårdar, framför allt där det finns fruktträd."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "På La Palma är den begränsad till tallskog och ses bara tillfälligt i undervegetation i lagerskogar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På La Palma är den tydligen begränsad till tallskog och ses endast tillfälligt i undervegetation i lagerskogar."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "habitat",
+      "sv": "På Fuerteventura och Lanzarote häckar den mest i lågväxande buskmarker med Tamarix och Phoenix samt frodig vegetation i gräsrika områden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På de torrare öarna Fuerteventura och Lanzarote häckar den mestadels i lågväxande buskskogar med Tamarix och Phoenix samt i frodig vegetation i gräsrika områden."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "habitat",
+      "sv": "Koboltmesen förekommer i Nordafrika österut till Libyen samt på Kanarieöarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den förekommer i Nordafrika österut till Libyen samt i Kanarieöarna."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Häckningen sker mellan februari och juli, möjligen också under oktober–januari.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Koboltmesen häckar mellan februari och juli, möjligen också oktober–januari."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Boet är en skål av mossa, tallbarr, blad och fjädrar, placerad upp till tre meter över mark i trädhål, klippskreva, mur eller holk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet liknar blåmesens, en skål av mossa tallbarr, blad och fjädrar som placeras upp till tre meter ovan mark i ett hål i ett träd, i en klippskreva, en mur eller i en holk, eller direkt på marken."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Kullen består av tre till sex ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Däri lägger den tre till sex ägg."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Födan består av bladlöss, små fjärilar och skalbaggar samt deras larver.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Nahrung der Kanarenmeise besteht aus Blattläusen, kleinen Schmetterlingen und Käfern, sowie deren Larven."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Arten äter en mängd olika fjärilslarver.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The species is known to consume a variety of caterpillars."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Den ses enstaka, i par eller i smågrupper och födosöker på alla nivåer i träd och buskage.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Koboltmesen ses enstaka, i par eller i smågrupper. Den är ofta lätt att komma nära där den födosöker på alla nivåer i träd och buskage."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Den söker föda i träd och undervegetation, delvis hängande upp och ner på grenar, kottar och blad.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Sie wird auf Bäumen und im Unterholz gesucht, teilweise kopfüber hängend an Ästen, Tannenzapfen und Blättern."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Koboltmesen är en stannfågel i Nordafrika från Marocko till Libyen och på Kanarieöarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Koboltmesen är en stannfågel i Nordafrika från Marocko till Libyen samt i Kanarieöarna."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Koboltmesen är en liten och kompakt mes med spetsig näbb, som förekommer i Nordafrika österut till Libyen och på Kanarieöarna.",
+          "factIds": [
+            "f11",
+            "f21"
+          ]
+        },
+        {
+          "text": "Den lever i allt från lagerskogar och trädljungbestånd till bergstallskogar, parker och trädgårdar med fruktträd.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Vit panna och vitt ögonbrynsstreck ramar in en djupblå hjässa",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Svart haka, halsband och ögonstreck avgränsar de vita kinderna och öronfläckarna",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Mörkgul undersida med ett svart längsstreck på buken, gråblå rygg utan grönt",
+          "factIds": [
+            "f05",
+            "f02"
+          ]
+        },
+        {
+          "text": "Hanar och honor lika; ungfåglar har gult ögonbrynsstreck och gula öronfläckar",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången är en varierad upprepning av en eller två toner.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "Lätena skiljer sig från blåmesens: några påminner om talgoxe, andra om tofsmes.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Koboltmesen förekommer i Nordafrika österut till Libyen samt på Kanarieöarna, där den är stannfågel.",
+          "factIds": [
+            "f21",
+            "f29"
+          ]
+        },
+        {
+          "text": "På La Palma håller den sig till tallskog, och på Fuerteventura och Lanzarote häckar den mest i låga buskmarker med Tamarix och Phoenix.",
+          "factIds": [
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "Häckningen sker mellan februari och juli, möjligen också under oktober till januari.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Arten är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan består av bladlöss, små fjärilar och skalbaggar samt deras larver, och arten tar en mängd olika fjärilslarver.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "Den ses enstaka, i par eller i smågrupper och födosöker på alla nivåer i träd och buskage.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Den söker föda i träd och undervegetation, delvis hängande upp och ner på grenar, kottar och blad.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25404",
+          "text": [
+            {
+              "text": "Koboltmesen liknar blåmesen till form och dräkt men är något mindre och mörkare.",
+              "factIds": [
+                "f01"
+              ]
+            },
+            {
+              "text": "Hjässan är skarpare avgränsad och svartblå, och ryggen är gråblå utan grönt.",
+              "factIds": [
+                "f01"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Koboltmes: lär dig känna igen arten på dräkt och storlek, hör hur sången och lätena låter och läs om var och när den kan ses.",
+      "facts": {
+        "size": {
+          "value": "11 till 12 cm",
+          "factIds": [
+            "f14"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The African Blue Tit is a small, compact tit with a pointed bill, found in North Africa east to Libya and on the Canary Islands.",
+          "factIds": [
+            "f11",
+            "f21"
+          ]
+        },
+        {
+          "text": "It lives in woodland from laurel forest to mountain pine forest, parks and gardens.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "White forehead and white supercilium frame a deep blue crown",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Black chin, collar and eye stripe set off the white cheeks and ear patches",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Dark yellow underparts with a black stripe down the belly, grey blue back",
+          "factIds": [
+            "f05",
+            "f02"
+          ]
+        },
+        {
+          "text": "Males and females look alike; juveniles show a yellow supercilium and yellow ear patches",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is a varied repetition of one or two notes.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "The calls differ from those of the Eurasian Blue Tit: some recall Great Tit, others Crested Tit.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The African Blue Tit occurs in North Africa east to Libya and on the Canary Islands, where it is resident.",
+          "factIds": [
+            "f21",
+            "f29"
+          ]
+        },
+        {
+          "text": "On La Palma it keeps to pine forest, and on Fuerteventura and Lanzarote it breeds mostly in low scrub with Tamarix and Phoenix.",
+          "factIds": [
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "Breeding takes place between February and July, possibly also from October to January.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "The species is not red-listed in the Swedish Red List 2025.",
+          "factIds": [
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The food consists of aphids, small butterflies and beetles and their larvae, and the species takes a wide range of caterpillars.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "It is seen singly, in pairs or in small groups and forages at all levels in trees and bushes.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "It feeds in trees and undergrowth, partly hanging upside down on branches, cones and leaves.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "African Blue Tit: how to recognise it by plumage and size, what its song and calls sound like, and where and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "11 to 12 cm",
+          "factIds": [
+            "f14"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T11:57:18.515193+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T12:09:38.937263+00:00",
+      "factsHash": "4a1e155c2f27ce83"
+    },
+    "text": {
+      "model": "claude-opus-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "ef240f1a",
+      "checkerPromptHash": "e6424dac",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T12:11:40.743958+00:00",
+      "factsHash": "4a1e155c2f27ce83"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "koboltmes",
@@ -132,5 +744,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }
