@@ -1,6 +1,6 @@
 ﻿Art,QID,Rad,Kontroll,Typ,Id,Ämne,Faktum,Källa,Citat,Beslut,Kommentar
 Kaja,Q25345384,flagga,V1,flagga,s01,,"Delvis flyttfågel, häckar här",,,ändra,"Albin 2026-10-07: godkände förslaget (delvis flyttfågel, häckar i Sverige)"
-Kaja,Q25345384,flagga,V4,flagga,,inspelning,ljudmodellen täcker inte arten: lyssna och besluta,https://commons.wikimedia.org/wiki/File:European_Jackdaw%27s_croaking.ogg,sha:a4db6f2c2a5d,,
+Kaja,Q25345384,flagga,V4,flagga,,inspelning,ljudmodellen täcker inte arten: lyssna och besluta,https://commons.wikimedia.org/wiki/File:European_Jackdaw%27s_croaking.ogg,sha:a4db6f2c2a5d,stryk,Albin 2026-10-07: inspelningar som inte går att verifiera för vårt bruk stryks
 Bofink,Q25383,flagga,V1,flagga,s01,,"Delvis flyttfågel, häckar här",,,ändra,"Albin 2026-10-07: godkände förslaget (delvis flyttfågel, häckar i Sverige)"
 Domherre,Q25382,flagga,V2,flagga,f09,storlek,f09 anger ett tal i cm som inte stämmer med de andra artiklarna (2 till 2 cm),sv: https://sv.wikipedia.org/w/index.php?oldid=55576523,"Längden är ungefär 15–17 cm, vingspannet 22–29 cm.",behåll,"Albin 2026-10-07: godkände förslaget (de svenska måtten stämmer, V2 läste andra artiklars tal fel)"
 Storskrake,Q180991,flagga,V1,flagga,s01,,"Delvis flyttfågel, häckar här",,,ändra,"Albin 2026-10-07: godkände förslaget (delvis flyttfågel, häckar i Sverige)"

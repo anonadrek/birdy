@@ -1,9 +1,10 @@
 {
   "qid": "Q25345384",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
-    "wave": 1
+    "wave": 1,
+    "audioStruck": true
   },
   "facts": [
     {
@@ -337,9 +338,338 @@
       "topic": "data",
       "source": "rodlistan",
       "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [],
+      "edited": true
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Kajan är en kråkfågel med svart fjäderdräkt, grå nacke och påfallande ljus iris.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Den finns ofta nära mänsklig bebyggelse, och på vintern samlas ofta större flockar i städer.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Svart fjäderdräkt med grå nacke, blåsvart hjässa och mörkgrå undersida",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Påfallande ljus iris och kort, kraftig svart näbb",
+          "factIds": [
+            "f01",
+            "f03"
+          ]
+        },
+        {
+          "text": "Hane och hona är lika, ungfåglar har brun iris och brunare vingar",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Ryckiga vingslag i flykten och upprätt hållning på marken",
+          "factIds": [
+            "f24",
+            "f25"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Lockropet är ett metalliskt ”jack”.",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Kajan är mycket pratsam, särskilt i flock, och kan dra omkring skränande.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Mot rovdjur varnar den med ett hest, utdraget ”arrrrr” eller ”kaaaarr”.",
+          "factIds": [
+            "f10"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Kajan är delvis flyttfågel och häckar i Sverige.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Den förekommer i södra och mellersta Sverige samt längs Norrlandskusten till Norrbotten, lokalt även i Norrlands inland.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "En del övervintrar här, medan andra flyttar söderut och återvänder redan i mars till april.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Det svenska beståndet uppskattades 2018 till 199 000 par.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Kajan rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Kajan äter främst små ryggradslösa djur upp till 18 mm.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Den äter också säd, ogräsfrö, fläderbär, ekollon och odlade frukter, och söker föda främst på öppna markytor.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        },
+        {
+          "text": "Framåt hösten samlas kajor i flockar, ofta tillsammans med råkor och kråkor.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "De häckar vanligen i kolonier i håligheter som hackspettshål eller skorstenar.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Nästan alla par som varit tillsammans mer än sex månader håller ihop resten av livet.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25386",
+          "text": [
+            {
+              "text": "På avstånd kan kajan förväxlas med råka, men kajan är mindre och har kort näbb och grå nacke.",
+              "factIds": [
+                "f27"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Kaja: så känner du igen den på grå nacke och ljus iris, hur lockropet och varningslätet låter och när under året den brukar ses.",
+      "facts": {
+        "size": {
+          "value": "34 till 39 cm",
+          "factIds": [
+            "f05"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Western Jackdaw is a member of the crow family with black plumage, a grey nape and a strikingly pale iris.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "It is often found near human settlements, and in winter larger flocks often gather in towns and cities.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Black plumage with a grey nape, blue-black crown and dark grey underparts",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Strikingly pale iris and a short, stout black bill",
+          "factIds": [
+            "f01",
+            "f03"
+          ]
+        },
+        {
+          "text": "Male and female look alike, young birds have a brown iris and browner wings",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Jerky wingbeats in flight and an upright stance on the ground",
+          "factIds": [
+            "f24",
+            "f25"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is a metallic \"jack\".",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Jackdaws are very talkative, especially in flocks, and can move around noisily.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Against predators it gives a hoarse, drawn-out \"arrrrr\" or \"kaaaarr\" alarm call.",
+          "factIds": [
+            "f10"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Western Jackdaw is a partial migrant that breeds in Sweden.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "It occurs in southern and central Sweden and along the Norrland coast to Norrbotten, locally also in inland Norrland.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Some birds winter in Sweden, while others move south and return as early as March to April.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "The Swedish population was estimated at 199 000 pairs in 2018.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "It is reported all year round and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It mainly eats small invertebrates up to 18 mm.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "It also eats grain, weed seeds, elderberries, acorns and cultivated fruit, and feeds mainly on open ground.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        },
+        {
+          "text": "Towards autumn jackdaws gather in flocks, often together with rooks and crows.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "They usually breed in colonies, in cavities such as woodpecker holes or chimneys.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Almost all pairs that have been together for more than six months stay together for life.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25386",
+          "text": [
+            {
+              "text": "At a distance the Western Jackdaw can be confused with a Rook, but the jackdaw is smaller, with a short bill and a grey nape.",
+              "factIds": [
+                "f27"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Western Jackdaw: how to recognise it by its grey nape and pale iris, what its call and alarm call sound like, and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "34 to 39 cm",
+          "factIds": [
+            "f05"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
@@ -351,7 +681,19 @@
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
       "at": "2026-10-07T18:32:32.145333+00:00",
-      "factsHash": "f6e11095eb8548fc"
+      "factsHash": "35ec4aa376416593"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T20:31:50.247310+00:00",
+      "factsHash": "35ec4aa376416593"
     }
   },
   "errors": [],
@@ -397,16 +739,6 @@
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Coloeus_monedula_Oulu_20250503_02.jpg"
     }
   ],
-  "audio": {
-    "file": "Q25345384/voice.mp3",
-    "durationSec": 17,
-    "trimmed": false,
-    "author": "QWerk",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:European_Jackdaw%27s_croaking.ogg",
-    "sha256": "a4db6f2c2a5d52ce3f1661ff48e3eb6a2f8b7c6b6ba32924cd9b42acbaecb4f0"
-  },
   "wikipedia": {
     "sv": {
       "title": "Kaja",
@@ -563,5 +895,11 @@
       "factId": null,
       "message": "ljudmodellen täcker inte arten: lyssna och besluta"
     }
-  ]
+  ],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }
