@@ -285,17 +285,32 @@ def _fact_tag(fact: dict[str, Any]) -> str:
     return f"<fact {attrs}>"
 
 
+def _render_sources(sources: list[dict[str, Any]], articles: dict[str, WikiArticle]) -> str:
+    """Every quote of the fact with its article's language, each followed by the paragraph
+    it sits in. V1 saw only the first quote before the R3 trial (2026-10-07), so a status
+    backed by its second quote was struck for every Swedish species. A paragraph two quotes
+    share is sent once, after the first of them."""
+    parts: list[str] = []
+    shown: set[str] = set()
+    for source in sources:
+        article = articles.get(source["article"])
+        paragraph = _paragraph(article.text, source["quote"]) if article else source["quote"]
+        lang = html.escape(str(source["article"]), quote=True)
+        parts.append(f'<quote article="{lang}">{source["quote"]}</quote>')
+        if paragraph not in shown:
+            shown.add(paragraph)
+            parts.append(f"<paragraph>{paragraph}</paragraph>")
+    return "\n".join(parts)
+
+
 def render_facts_for_check(facts: list[dict[str, Any]], articles: dict[str, WikiArticle]) -> str:
     blocks = []
     for fact in facts:
         if fact["topic"] == "data":
             continue
-        source = fact["sources"][0]
-        article = articles.get(source["article"])
-        paragraph = _paragraph(article.text, source["quote"]) if article else source["quote"]
         blocks.append(
             f"{_fact_tag(fact)}\n<claim>{_claim(fact)}</claim>\n"
-            f"<quote>{source['quote']}</quote>\n<paragraph>{paragraph}</paragraph>\n</fact>"
+            f"{_render_sources(fact['sources'], articles)}\n</fact>"
         )
     return "\n\n".join(blocks)
 
