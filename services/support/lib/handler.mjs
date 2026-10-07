@@ -48,8 +48,16 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
     await client.send(buildForward({ email, attachments, label, supportAddress: env.SUPPORT_ADDRESS, forwardTo: env.FORWARD_TO }), `forward-${id}`);
     say({ outcome: 'forwarded', id, label, attachments: attachments.length });
   } catch (error) {
-    say({ outcome: 'forward-failed', id, error: error.name, statusCode: error.statusCode });
-    return { status: 500 };
+    // Resend re-fetches attachment download_url on every listAttachments() call, so a retry (Svix,
+    // after a prior 500) can send a different payload under the same forward-<id> idempotency key.
+    // That is a 409 invalid_idempotent_request, not a real failure: the first attempt already went
+    // out, so treat it as forwarded and continue to the receipt.
+    if (email && error.statusCode === 409 && error.name === 'invalid_idempotent_request') {
+      say({ outcome: 'forward-replayed', id });
+    } else {
+      say({ outcome: 'forward-failed', id, error: error.name, statusCode: error.statusCode });
+      return { status: 500 };
+    }
   }
 
   try {

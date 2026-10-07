@@ -165,6 +165,38 @@ test('a failed forward is 500 so Resend tries again; a failed receipt is still 2
   assert.deepEqual(client.calls.send.map((c) => c.key), ['forward-em_1']);
 });
 
+test('a replayed forward (409 invalid_idempotent_request, e.g. from changed attachment URLs on retry) counts as forwarded and continues to the receipt', async () => {
+  const client = fakeClient();
+  let calls = 0;
+  client.send = async (payload, key) => {
+    calls += 1;
+    if (key.startsWith('forward-') && calls === 1) {
+      const err = new Error('conflict');
+      err.name = 'invalid_idempotent_request';
+      err.statusCode = 409;
+      throw err;
+    }
+    client.calls.send.push({ payload, key });
+    return `sent_${client.calls.send.length}`;
+  };
+  const logs = [];
+  const result = await run(client, undefined, undefined, { log: (l) => logs.push(l) });
+  assert.deepEqual(result, { status: 200 });
+  assert.ok(logs.some((l) => l.includes('forward-replayed')));
+  assert.deepEqual(client.calls.send.map((c) => c.key), ['receipt-em_1']);
+});
+
+test('a genuine 409 on a forward that was never truly forwarded (different name) is still a failure', async () => {
+  const client = fakeClient();
+  client.send = async () => {
+    const err = new Error('conflict');
+    err.name = 'concurrent_idempotent_requests';
+    err.statusCode = 409;
+    throw err;
+  };
+  assert.deepEqual(await run(client), { status: 500 });
+});
+
 test('attachments are only fetched when the message has some', async () => {
   const client = fakeClient({ mail: { ...email, attachments: [{ id: 'a1', size: 10 }] } });
   await run(client);
