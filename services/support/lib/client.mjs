@@ -1,9 +1,16 @@
 // The only file that knows Resend's SDK. Every call throws on an error, so the handler has one error path.
+// The thrown error carries `.name` and `.statusCode` from Resend's error object, never its `.message`
+// (which can embed the address or content that triggered it) — callers must log name/statusCode only.
 
 /** @param {import('resend').Resend} resend */
 export function resendClient(resend) {
   const unwrap = (what) => ({ data, error }) => {
-    if (error) throw new Error(`${what}: ${error.name ?? 'error'} ${error.message ?? ''}`.trim());
+    if (error) {
+      const err = new Error(`${what} failed`);
+      err.name = error.name ?? 'error';
+      err.statusCode = error.statusCode ?? null;
+      throw err;
+    }
     return data;
   };
   return {

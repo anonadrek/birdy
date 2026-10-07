@@ -181,6 +181,23 @@ test('a missing setting is 500 and logged, before anything is sent', async () =>
   assert.equal(client.calls.send.length, 0);
 });
 
+test('forward-failed and receipt-failed log only error.name and statusCode, never error.message', async () => {
+  const logs = [];
+  const client = fakeClient();
+  client.send = async () => {
+    const err = new Error('to: anna@example.se is invalid');
+    err.name = 'validation_error';
+    err.statusCode = 422;
+    throw err;
+  };
+  await run(client, undefined, undefined, { log: (l) => logs.push(l) });
+  const line = logs.find((l) => l.includes('forward-failed'));
+  assert.ok(line);
+  assert.doesNotMatch(line, /anna@example\.se/);
+  assert.match(line, /"error":"validation_error"/);
+  assert.match(line, /"statusCode":422/);
+});
+
 test('logs carry the email id and outcome, never addresses or subjects', async () => {
   const logs = [];
   await run(fakeClient(), undefined, undefined, { log: (l) => logs.push(l) });

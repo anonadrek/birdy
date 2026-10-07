@@ -48,7 +48,7 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
     await client.send(buildForward({ email, attachments, label, supportAddress: env.SUPPORT_ADDRESS, forwardTo: env.FORWARD_TO }), `forward-${id}`);
     say({ outcome: 'forwarded', id, label, attachments: attachments.length });
   } catch (error) {
-    say({ outcome: 'forward-failed', id, error: error.message });
+    say({ outcome: 'forward-failed', id, error: error.name, statusCode: error.statusCode });
     return { status: 500 };
   }
 
@@ -70,7 +70,7 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
       say({ outcome: 'receipt-sent', id });
     }
   } catch (error) {
-    say({ outcome: 'receipt-failed', id, error: error.message });
+    say({ outcome: 'receipt-failed', id, error: error.name, statusCode: error.statusCode });
   }
   return { status: 200 };
 }
