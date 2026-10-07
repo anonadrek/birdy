@@ -26,13 +26,14 @@ const description = members.length === 1
   ? t.species.descGroupOne.replace('{group}', group.name[locale])
   : t.species.descGroup.replace('{group}', group.name[locale]).replace('{count}', countLabel(members.length, t));
 // Grouped by family.latin in both languages (same sections in SV and EN, like related() in species.ts),
-// not by the locale's own display name: the pipeline doesn't yet guarantee one canonical Swedish family
-// name per Latin family, so two species of the same family could otherwise land in two different SV
-// sections while staying one section in EN (controller review, Task 8 fix wave). The SV label is the
-// first member's family.sv in sorted order (members is already locale-sorted, and Array#sort is stable),
-// so the choice is deterministic even while that pipeline guarantee doesn't exist yet; EN always shows
-// the Latin name itself, which is unambiguous by definition. Same rule applies to Task 10's family kicker
-// row and "Fler {family}" heading, see the note there.
+// not by the locale's own display name: the pipeline now guarantees one Swedish family name per Latin
+// family (web/families.py, BirdLife Sverige's world bird list NL20), but grouping by Latin stays as a
+// safeguard here rather than trusting that every record agrees (controller review, Task 8 fix wave; the
+// fixture generator still deliberately gives Kaja and Skata different family.sv values, both Corvidae, to
+// exercise this safeguard). The SV label is the first member's family.sv in sorted order (members is
+// already locale-sorted, and Array#sort is stable), so the choice is deterministic even if two records
+// ever disagreed; EN always shows the Latin name itself, which is unambiguous by definition. Same rule
+// applies to Task 10's family kicker row and "Fler {family}" heading, see the note there.
 const families = new Map<string, { sv: string; items: typeof members }>();
 for (const s of members) {
   const existing = families.get(s.family.latin);

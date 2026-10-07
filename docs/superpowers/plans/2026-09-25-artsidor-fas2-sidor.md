@@ -453,6 +453,8 @@ for (const c of COMPARISONS) writeFileSync(resolve(OUT.comparisons, `${c.file}.j
 console.log(`fixtures: ${SPECIES.length} arter och ${COMPARISONS.length} jämförelser i tests/fixtures/`);
 ```
 
+**Avvikelse vid genomförandet (Task 8:s granskning 2026-10-07):** Kaja:s (`Q25345384`) `fam[1]` i den faktiska generatorn är `'Kråkor'`, inte `'Kråkfåglar'` som i koden ovan, så att Kaja och Skata (båda `Corvidae` i latin) deliberat har OLIKA `family.sv` i testdatan. Det är en avsiktlig divergens, inte ett misstag: gruppsidan (Task 8) grupperar efter `family.latin` som ett skyddsnät, och fixturen behöver testa att skyddsnätet fungerar även om `family.sv` skulle skilja sig. Den verkliga pipelinen garanterar numera ett enda svenskt familjenamn per latinsk familj (`web/families.py`, BirdLife Sveriges NL20), så den här situationen uppstår inte i riktig data, men skyddsnätet (och testet av det) behålls ändå.
+
 - [ ] **Step 7: Kör generatorn**
 
 Run: `node tests/fixtures/make-species-fixtures.mjs && ls tests/fixtures/species | wc -l && ls tests/fixtures/comparisons && ls tests/fixtures/species-assets/Q25485`
@@ -2564,7 +2566,7 @@ export async function getStaticPaths() {
 - [ ] **Step 5: Kör testerna igen**
 
 Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts`
-Expected: PASS (14 tester)
+Expected: PASS (25 tester, Task 8:s granskning 2026-10-07 lade till 5 i `gruppsidorna`, se tillägget nedan)
 
 - [ ] **Step 6: Commit**
 
@@ -2572,6 +2574,8 @@ Expected: PASS (14 tester)
 git add src/components/species/GroupPage.astro src/components/species/SpeciesRoute.astro src/lib/species-routes.ts "src/pages/sv/arter/[slug].astro" "src/pages/species/[slug].astro" tests/species.spec.ts
 git commit -m "feat(website): gruppsidorna med familjer, noindex för små grupper och approta"
 ```
+
+(Tillägg, Task 8:s granskning 2026-10-07, samma commit: fem nya tester i `gruppsidorna` utöver de sex i Step 1, `tests/species.spec.ts` har 25 totalt (var 14 efter Task 7). **Familjeskyddsnätet** -- "familjer grupperas efter det latinska namnet, inte den svenska stavningen" bevisar att Kaja och Skata (olika `family.sv`, se Task 1:s avvikelse ovan) ändå hamnar i EN sektion, inte två. **Engelska familjer** -- "Songbirds (EN) delas också upp i sex familjer, rubrikerna är latin" bevisar att `/species/songbirds/` delar upp på samma sätt och att rubrikerna har `lang="la"` (GroupPage.astro fick samma attribut på den engelska sidans `<h3>`, svenska sidans har det inte: "Tättingar delas upp i familjer" fick ett tillägg, `.family h3[lang="la"]` ska vara noll på svenska). **Eager/lazy** -- "de fyra första artkorten laddas direkt, resten lat" bevisar att bara de fyra först renderade korten (över vikningen, oavsett familjeindelning) skippar `loading="lazy"` (`SpeciesCard.astro`s nya `loading`-prop, se Task 6:s tillägg). **n=1-grammatik** -- "en grupp med en enda art undviker 'dem'/'them' i beskrivningen" bevisar `descGroupOne`/`descGroupOne`-liknande engelsk motsvarighet på en grupp med exakt en byggd art (Storskarv, `seabirds`). **og:image** -- "gruppsidans og:image är artens eget foto, inte standardbilden" bevisar att `ogImage`-raden i koden ovan faktiskt används i stället för Layout-standarden. Alla fem kräver ingen ny kod utöver vad Step 3 redan visar; de bevisar beteende som redan fanns i den visade `GroupPage.astro`.)
 
 ---
 

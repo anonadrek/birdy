@@ -152,8 +152,10 @@ test.describe('gruppsidorna', () => {
   test('familjer grupperas efter det latinska namnet, inte den svenska stavningen (Kaja och Skata är båda Corvidae men fixturen ger dem olika family.sv)', async ({ page }) => {
     await page.goto('/sv/arter/tattingar/');
     // One of the two Swedish spellings wins (whichever species is first in sort order), but there must be
-    // only ONE Corvidae section either way, not a second one for the other spelling (controller review,
-    // Task 8 fix wave: the pipeline doesn't yet guarantee one canonical Swedish name per Latin family).
+    // only ONE Corvidae section either way, not a second one for the other spelling: family.latin, not
+    // family.sv, drives the grouping (controller review, Task 8 fix wave). The pipeline now guarantees one
+    // canonical Swedish name per Latin family, so real data never disagrees like this fixture does on
+    // purpose — the test exercises the safeguard, not a case the pipeline is expected to produce.
     const corvids = page.locator('.family').filter({ has: page.locator('[data-item]', { hasText: 'Skata' }) });
     await expect(corvids).toHaveCount(1);
     await expect(corvids.locator('[data-item]')).toHaveCount(2);
