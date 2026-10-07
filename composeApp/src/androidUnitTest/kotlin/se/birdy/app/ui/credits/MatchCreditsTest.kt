@@ -141,8 +141,8 @@ class MatchCreditsTest {
             .onNode(
                 hasText("Koltrast", substring = true) and hasText(nb("Foto: Musicaline · CC BY-SA 4.0"), substring = true),
             ).assertHasClickAction()
-        compose.onNode(hasText("Foto: Hobbyfotowiki · CC0", substring = true)).assertHasClickAction()
-        for (credit in listOf(nb("Foto: Musicaline · CC BY-SA 4.0"), "Foto: Hobbyfotowiki · CC0")) {
+        compose.onNode(hasText(nb("Foto: Hobbyfotowiki · CC0"), substring = true)).assertHasClickAction()
+        for (credit in listOf(nb("Foto: Musicaline · CC BY-SA 4.0"), nb("Foto: Hobbyfotowiki · CC0"))) {
             val node = compose.onNodeWithText(credit, useUnmergedTree = true)
             val text = node.fetchSemanticsNode().config[SemanticsProperties.Text].single()
             assertEquals(0, text.getLinkAnnotations(0, text.length).size, credit)

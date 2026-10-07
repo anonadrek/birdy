@@ -124,7 +124,31 @@ class MatchSaveButtonFoldTest {
         val viewport = compose.onNode(hasTestTag("viewport")).getUnclippedBoundsInRoot()
         val button = compose.onNode(hasText("Spara observation")).getUnclippedBoundsInRoot()
         val photo = compose.onNode(hasTestTag(MATCH_PHOTO_TAG)).getUnclippedBoundsInRoot()
-        return Fold(buttonOverflow = button.bottom - viewport.bottom, photoHeight = photo.bottom - photo.top)
+        val fold = Fold(buttonOverflow = button.bottom - viewport.bottom, photoHeight = photo.bottom - photo.top)
+        assertSizedFromTheMeasurement(fold, fontScale)
+        return fold
+    }
+
+    /**
+     * Between the floor and the full height the photo is sized from what follows it as measured
+     * on screen, so the button ends exactly MATCH_FOLD_MARGIN above the fold (within rounding). Only
+     * the measured height meets this: the first-frame estimate is off by more than a dp at every
+     * text size, so the test fails if the measurement (BelowPhoto) stops working.
+     */
+    private fun assertSizedFromTheMeasurement(
+        fold: Fold,
+        fontScale: Float,
+    ) {
+        // The photo includes the 32dp status bar it draws behind.
+        val photo = fold.photoHeight - 32.dp
+        if (photo > MATCH_PHOTO_MIN && photo < MATCH_PHOTO_MAX) {
+            val off = fold.buttonOverflow + MATCH_FOLD_MARGIN
+            assertTrue(
+                off.value in -1f..1f,
+                "at font scale $fontScale the photo is $photo but the button ends ${fold.buttonOverflow} from the fold, " +
+                    "not -$MATCH_FOLD_MARGIN: the photo is not sized from the measured content",
+            )
+        }
     }
 
     private fun assertSaveButtonInView(fontScale: Float) {

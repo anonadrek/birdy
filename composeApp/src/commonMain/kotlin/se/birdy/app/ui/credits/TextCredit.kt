@@ -11,11 +11,11 @@ import se.birdy.content.model.SpeciesTextSource
 
 /**
  * The species text's credit (release 1.3.0, legal review §4, 7i-fix A): the texts are AI summaries
- * of the species' Wikipedia article, so the credit links the article version behind the text
- * shown (or, where none is stored, the species' current article through Wikidata; the wording
- * says "Wikipedia-artikeln", never a version, so it is true for both), says the text is changed
- * and that it may be shared under CC BY-SA 4.0 (linked to the deed, in Swedish for the Swedish
- * app). [sources] come from the repository, one per language
+ * of the species' Wikipedia article, so the credit says so ("Texten är en AI-sammanfattning av
+ * Wikipedia-artikeln"), links the article version behind the text shown (or, where none is
+ * stored, the species' current article through Wikidata; the wording names the article, never a
+ * version, so it is true for both) and says the text may be shared under CC BY-SA 4.0 (linked to
+ * the deed, in Swedish for the Swedish app). [sources] come from the repository, one per language
  * among the texts shown: a Swedish user who sees the English fallback is pointed at "den engelska
  * Wikipedia-artikeln", and a profile with texts in both languages links both. Null when no text
  * is shown (no sources), so nothing is credited for the app's own empty-state lines.
@@ -51,7 +51,7 @@ internal fun TextCredit(
     modifier: Modifier = Modifier,
 ) {
     val text =
-        textCreditText(sources, appLanguage, rememberTextCreditWords(), creditLinkStyles(CreditOnPaper))
+        textCreditText(sources, appLanguage, textCreditWords(), CreditLinkStyles)
             ?: return
     Text(
         text = text,

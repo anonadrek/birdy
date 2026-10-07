@@ -76,8 +76,8 @@ import se.birdy.app.ui.components.PhotoBackButton
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.PremiumTeaserCard
 import se.birdy.app.ui.components.StatusBarBand
-import se.birdy.app.ui.credits.PhotoCredit
 import se.birdy.app.ui.credits.PhotoCreditForm
+import se.birdy.app.ui.credits.PhotoCreditLine
 import se.birdy.app.ui.credits.TextCredit
 import se.birdy.app.ui.encyclopedia.localizedFamilyLabel
 import se.birdy.app.ui.theme.AccentCopper
@@ -221,7 +221,7 @@ private fun ProfileList(
                 photoCredit =
                     heroImage?.let { img ->
                         {
-                            PhotoCredit(
+                            PhotoCreditLine(
                                 image = img,
                                 form = PhotoCreditForm.Full,
                                 onBand = true,
@@ -334,7 +334,7 @@ private fun ProfilePhotos(images: List<SpeciesImage>) {
                             cornerRadius = 12.dp,
                         )
                         Spacer(Modifier.width(12.dp))
-                        PhotoCredit(image = img, form = PhotoCreditForm.Full, modifier = Modifier.weight(1f))
+                        PhotoCreditLine(image = img, form = PhotoCreditForm.Full, modifier = Modifier.weight(1f))
                     }
                 }
             }

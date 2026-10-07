@@ -173,10 +173,9 @@ fun PhotoHero(
                     // Only text drawn over the photo needs the scrim; on the band it has none.
                     .drawTextFollowingScrim(enabled = image != null && !photoAbove) // before padding: see its KDoc.
                     .padding(start = 22.dp, end = 22.dp, bottom = bottomPadding)
-                    // Its own traversal group, so the photo credit drawn first can be read last.
-                    .semantics { isTraversalGroup = true },
+                    .creditReadLast(hasCredit = photoAbove && photoCredit != null),
         ) {
-            PhotoCreditLine(photoCredit.takeIf { photoAbove })
+            PhotoCreditSlot(photoCredit.takeIf { photoAbove }) // only under a photo, never over it
             MicroLabel(kicker, color = AccentCopperLight)
             Spacer(Modifier.height(8.dp))
             HeroTitle(title = title, titleAccent = titleAccent, serif = serif)
@@ -209,13 +208,19 @@ fun PhotoHero(
     }
 }
 
+/** With a credit, the text block is its own traversal group, so the credit drawn first is read last. */
+private fun Modifier.creditReadLast(hasCredit: Boolean): Modifier {
+    if (!hasCredit) return this
+    return semantics { isTraversalGroup = true }
+}
+
 /**
  * The photo's credit right under the photo, above the kicker, when there is one (see [PhotoHero]).
  * TalkBack reads it after the name and the rest of the text block: it sits first on screen, next
  * to the photo it credits, but the species is what the screen is about.
  */
 @Composable
-private fun PhotoCreditLine(photoCredit: (@Composable () -> Unit)?) {
+private fun PhotoCreditSlot(photoCredit: (@Composable () -> Unit)?) {
     if (photoCredit == null) return
     Box(Modifier.fillMaxWidth().padding(top = 4.dp).semantics { traversalIndex = 1f }) { photoCredit() }
     Spacer(Modifier.height(8.dp))

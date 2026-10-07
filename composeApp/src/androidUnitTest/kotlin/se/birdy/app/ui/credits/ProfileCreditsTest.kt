@@ -10,6 +10,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onChildren
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performFirstLinkClick
 import androidx.compose.ui.text.LinkAnnotation
 import org.junit.Rule
 import org.junit.Test
@@ -21,6 +22,7 @@ import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.testing.attachComposeResourcesContext
 import se.birdy.app.ui.profile.SpeciesProfileScreen
 import se.birdy.app.ui.profile.SpeciesProfileViewModel
+import se.birdy.app.ui.settings.credits.ProvideUrlOpener
 import se.birdy.app.ui.theme.BirdyTheme
 import se.birdy.content.Abundance
 import se.birdy.content.Locale
@@ -80,6 +82,8 @@ class ProfileCreditsTest {
         textSources = textSources,
     )
 
+    private val opened = mutableListOf<String>()
+
     private fun show(
         species: Species,
         locale: Locale,
@@ -87,23 +91,32 @@ class ProfileCreditsTest {
         attachComposeResourcesContext()
         compose.setContent {
             BirdyTheme {
-                SpeciesProfileScreen(
-                    viewModel =
-                        remember {
-                            SpeciesProfileViewModel(
-                                repo = FakeSpeciesRepository().apply { byId.value = mapOf(species.id to species) },
-                                speciesId = species.id,
-                                locale = locale,
-                            )
-                        },
-                    locale = locale,
-                    onBack = {},
-                    onPremiumClick = {},
-                    showPremiumTeaser = false,
-                )
+                // As AppScaffold provides it in the app (openExternalUrl), a recorder here.
+                ProvideUrlOpener({ opened += it }) { profile(species, locale) }
             }
         }
         compose.waitForIdle()
+    }
+
+    @androidx.compose.runtime.Composable
+    private fun profile(
+        species: Species,
+        locale: Locale,
+    ) {
+        SpeciesProfileScreen(
+            viewModel =
+                remember {
+                    SpeciesProfileViewModel(
+                        repo = FakeSpeciesRepository().apply { byId.value = mapOf(species.id to species) },
+                        speciesId = species.id,
+                        locale = locale,
+                    )
+                },
+            locale = locale,
+            onBack = {},
+            onPremiumClick = {},
+            showPremiumTeaser = false,
+        )
     }
 
     /** The links in a text node, as (linked words, url), in order. */
@@ -123,7 +136,7 @@ class ProfileCreditsTest {
 
     private val heroCreditSv = nb("Foto: Musicaline · CC BY-SA 4.0 · Wikimedia Commons · nedskalad")
     private val textCreditSv =
-        nb("Texten bygger på Wikipedia-artikeln och har sammanfattats och ändrats. Den får delas under CC BY-SA 4.0.")
+        nb("Texten är en AI-sammanfattning av Wikipedia-artikeln och får delas under CC BY-SA 4.0.")
 
     @Test
     @Config(qualifiers = "+sv")
@@ -139,7 +152,10 @@ class ProfileCreditsTest {
             hero.links(),
         )
         hero.assertLinks(2)
-        val publicDomain = compose.onNodeWithText(nb("Foto: U.S. Fish and Wildlife Service · public domain · Wikimedia Commons"))
+        val publicDomain =
+            compose.onNodeWithText(
+                nb("Foto: U.S. Fish and Wildlife Service · public domain · Wikimedia Commons · nedskalad"),
+            )
         assertEquals(listOf("Wikimedia Commons" to "https://commons.wikimedia.org/wiki/File:Blackbird_FWS.jpg"), publicDomain.links())
         publicDomain.assertLinks(1)
     }
@@ -166,6 +182,9 @@ class ProfileCreditsTest {
             credit.links(),
         )
         credit.assertLinks(2)
+        // A tap on a link opens it through the provided url opener.
+        credit.performFirstLinkClick()
+        compose.runOnIdle { assertEquals(listOf("https://sv.wikipedia.org/w/index.php?oldid=57446811"), opened) }
     }
 
     @Test
@@ -174,10 +193,7 @@ class ProfileCreditsTest {
         show(koltrast(textSources = listOf(enSource)), Locale.SV)
         val credit =
             compose.onNodeWithText(
-                nb(
-                    "Texten bygger på den engelska Wikipedia-artikeln och har sammanfattats och ändrats. " +
-                        "Den får delas under CC BY-SA 4.0.",
-                ),
+                nb("Texten är en AI-sammanfattning av den engelska Wikipedia-artikeln och får delas under CC BY-SA 4.0."),
             )
         assertEquals("den engelska Wikipedia-artikeln" to enSource.articleUrl, credit.links().first())
     }
@@ -189,10 +205,7 @@ class ProfileCreditsTest {
         compose.onAllNodesWithText(nb("Photo: Musicaline · CC BY-SA 4.0 · Wikimedia Commons · resized")).assertCountEquals(2)
         val credit =
             compose.onNodeWithText(
-                nb(
-                    "The text is based on the Wikipedia article and has been summarised and changed. " +
-                        "It may be shared under CC BY-SA 4.0.",
-                ),
+                nb("The text is an AI summary of the Wikipedia article and may be shared under CC BY-SA 4.0."),
             )
         assertEquals(
             listOf(
@@ -208,14 +221,15 @@ class ProfileCreditsTest {
     @Config(qualifiers = "+sv")
     fun `a species without text has no text credit but its photos are still credited`() {
         show(koltrast(description = null, migration = null, textSources = emptyList()), Locale.SV)
-        compose.onNodeWithText("Texten bygger på", substring = true).assertDoesNotExist()
+        compose.onNodeWithText("AI-sammanfattning", substring = true).assertDoesNotExist()
         compose.onAllNodesWithText(heroCreditSv).assertCountEquals(2)
     }
 }
 
 /**
  * [s] with the no-break spaces the credits put inside licence names, "Wikimedia Commons" and
- * "public domain" (see keepTogether), so a test can write the credit as it reads.
+ * "public domain" (see keepTogether) and before each separator, so a test can write the credit as
+ * it reads.
  */
 internal fun nb(s: String): String =
     listOf(
@@ -224,6 +238,7 @@ internal fun nb(s: String): String =
         "Wikimedia Commons",
         "public domain",
     ).fold(s) { acc, term -> acc.replace(term, term.keepTogether()) }
+        .replace(" · ", SEPARATOR)
 
 /**
  * [credit] (an unmerged text node) is wrapped in a node with a traversal index after its

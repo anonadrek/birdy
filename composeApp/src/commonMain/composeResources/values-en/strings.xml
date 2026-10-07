@@ -971,11 +971,9 @@
     <string name="map_teaser_cta">Unlock with Premium</string>
     <!-- Release 1.3.0, 7e-2 + 7i-fix A: credits on the species profile, Match and Disambig
          (legal review §2 and §4). -->
-    <string name="photo_credit_by">Photo: %1$s</string>
-    <string name="photo_credit_resized">resized</string>
-    <string name="photo_credit_public_domain">public domain</string>
-    <string name="profile_text_credit">The text is based on %1$s and has been summarised and changed. It may be shared under %2$s.</string>
-    <string name="profile_text_credit_two">The text is based on the Wikipedia articles in %1$s and %2$s and has been summarised and changed. It may be shared under %3$s.</string>
+    <string name="photo_credits_public_domain">public domain</string>
+    <string name="profile_text_credit">The text is an AI summary of %1$s and may be shared under %2$s.</string>
+    <string name="profile_text_credit_two">The text is an AI summary of the Wikipedia articles in %1$s and %2$s and may be shared under %3$s.</string>
     <string name="profile_text_credit_article">the Wikipedia article</string>
     <string name="profile_text_credit_article_sv">the Swedish Wikipedia article</string>
     <string name="profile_text_credit_article_en">the English Wikipedia article</string>

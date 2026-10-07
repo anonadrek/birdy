@@ -74,9 +74,6 @@ data class SpeciesImage(
     /** The licence deed, or null for public domain (no single deed) and an unknown licence. */
     val licenseUrl: String? get() = PhotoLicenses.deedUrl(license)
 
-    /** CC0 and public domain photos need no licence notice, nor a note that they were resized. */
-    val isPublicDomain: Boolean get() = license == "CC0" || license == "Public domain"
-
     private companion object {
         const val COMMONS_FILE_MARKER = "/wiki/File:"
     }

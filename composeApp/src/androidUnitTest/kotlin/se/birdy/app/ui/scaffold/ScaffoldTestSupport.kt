@@ -144,13 +144,25 @@ private object NoWaveformRenderer : WaveformRendererApi {
     ): String? = null
 }
 
-/** Composes the real AppScaffold inside BirdyTheme, waits until it has settled, returns its NavHostController. */
-internal fun ComposeContentTestRule.startAppScaffold(graph: AppGraph): NavHostController {
+/**
+ * Composes the real AppScaffold inside BirdyTheme, waits until it has settled, returns its
+ * NavHostController. [openUrl] records the links a test opens (null: the app's own opener).
+ */
+internal fun ComposeContentTestRule.startAppScaffold(
+    graph: AppGraph,
+    openUrl: ((String) -> Unit)? = null,
+): NavHostController {
     attachComposeResourcesContext()
     lateinit var nav: NavHostController
     setContent {
         nav = rememberNavController()
-        BirdyTheme { AppScaffold(graph = graph, navController = nav) }
+        BirdyTheme {
+            if (openUrl != null) {
+                AppScaffold(graph = graph, navController = nav, openUrl = openUrl)
+            } else {
+                AppScaffold(graph = graph, navController = nav)
+            }
+        }
     }
     waitForIdle()
     return nav

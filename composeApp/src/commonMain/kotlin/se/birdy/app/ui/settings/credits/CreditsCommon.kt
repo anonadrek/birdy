@@ -20,17 +20,15 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
-import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.CancellationException
-import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.credits.CreditLinkStyles
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
@@ -45,10 +43,6 @@ internal data class TextLink(
     val phrase: String,
     val url: String,
 )
-
-/** Underlined rust, the link style on paper. */
-internal val CreditLinkStyles =
-    TextLinkStyles(style = SpanStyle(color = AccentCopper, textDecoration = TextDecoration.Underline))
 
 /**
  * [text] with the first occurrence of every [links] phrase made a link. A phrase the text does not
@@ -111,14 +105,21 @@ internal fun ProvideUrlOpener(
     onOpenUrl: (String) -> Unit,
     content: @Composable () -> Unit,
 ) {
-    val handler =
-        remember(onOpenUrl) {
-            object : UriHandler {
-                override fun openUri(uri: String) = onOpenUrl(uri)
-            }
-        }
-    CompositionLocalProvider(LocalUriHandler provides handler, content = content)
+    CompositionLocalProvider(LocalUriHandler provides rememberUrlOpener(onOpenUrl), content = content)
 }
+
+/**
+ * A [UriHandler] that opens through [onOpenUrl]. AppScaffold provides one for the whole app with
+ * `openExternalUrl`, which catches a missing browser or a refused handler and logs it, where
+ * Compose's default handler would crash; every credit link opens through it.
+ */
+@Composable
+internal fun rememberUrlOpener(onOpenUrl: (String) -> Unit): UriHandler =
+    remember(onOpenUrl) {
+        object : UriHandler {
+            override fun openUri(uri: String) = onOpenUrl(uri)
+        }
+    }
 
 /**
  * A credits page's title in the shared [se.birdy.app.ui.components.BackTopBar] (Task 7b), after the

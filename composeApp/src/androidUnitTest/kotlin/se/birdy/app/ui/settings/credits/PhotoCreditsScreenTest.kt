@@ -24,6 +24,11 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import se.birdy.app.testing.attachComposeResourcesContext
+import se.birdy.app.ui.credits.CreditLinkStyles
+import se.birdy.app.ui.credits.PhotoCreditForm
+import se.birdy.app.ui.credits.nb
+import se.birdy.app.ui.credits.photoCreditText
+import se.birdy.app.ui.credits.photoCreditWords
 import se.birdy.app.ui.theme.BirdyTheme
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
@@ -139,16 +144,20 @@ class PhotoCreditsScreenTest {
         compose.runOnIdle { assertEquals(listOf("https://creativecommons.org/licenses/by/2.0/"), opened) }
     }
 
+    // The row's licence line is the species page's credit without "Foto: X" (ui.credits), its links
+    // opening through the provided url opener.
     @Test
     @Config(qualifiers = "+sv")
     fun `the licence in the row's line is a link to its deed`() {
         attachComposeResourcesContext()
         compose.setContent {
             BirdyTheme {
-                Text(licenseLine("CC BY 2.0", "https://creativecommons.org/licenses/by/2.0/", "nedskalad") { opened += it })
+                ProvideUrlOpener({ opened += it }) {
+                    Text(photoCreditText(credits[0], photoCreditWords(), PhotoCreditForm.LicenseLine, CreditLinkStyles))
+                }
             }
         }
-        compose.onNodeWithText("CC BY 2.0 · Wikimedia Commons · nedskalad").performFirstLinkClick()
+        compose.onNodeWithText(nb("CC BY 2.0 · Wikimedia Commons · nedskalad")).performFirstLinkClick()
         compose.runOnIdle { assertEquals(listOf("https://creativecommons.org/licenses/by/2.0/"), opened) }
     }
 
@@ -158,7 +167,7 @@ class PhotoCreditsScreenTest {
         show()
         compose
             .onNodeWithContentDescription(
-                "Ärtsångare, Huvudbild. Foto: U.S. Fish and Wildlife Service. Licens: Public domain. Wikimedia Commons, nedskalad.",
+                "Ärtsångare, Huvudbild. Foto: U.S. Fish and Wildlife Service. Licens: public domain. Wikimedia Commons, nedskalad.",
             ).performScrollTo()
             .assert(SemanticsMatcher.keyNotDefined(SemanticsActions.CustomActions))
     }

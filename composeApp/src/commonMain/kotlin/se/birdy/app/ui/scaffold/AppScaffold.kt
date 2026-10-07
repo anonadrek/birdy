@@ -24,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination
@@ -64,6 +65,8 @@ import se.birdy.app.ui.premium.PremiumScreen
 import se.birdy.app.ui.premium.PremiumThankYouScreen
 import se.birdy.app.ui.profile.SpeciesProfileScreen
 import se.birdy.app.ui.scan.ScanScreenHost
+import se.birdy.app.ui.settings.credits.rememberUrlOpener
+import se.birdy.app.ui.settings.openExternalUrl
 import se.birdy.content.SpeciesId
 import se.birdy.domain.premium.PremiumState
 
@@ -79,6 +82,10 @@ fun AppScaffold(
     graph: AppGraph,
     // Tests pass their own controller to open a route directly (Plan 3 Task 1); the app uses the default.
     navController: NavHostController = rememberNavController(),
+    // Every link in the app's texts (the photo and text credits, About) opens through this: the
+    // browser via openExternalUrl, which catches and logs a missing or refusing handler. Tests
+    // record the urls instead.
+    openUrl: (String) -> Unit = ::openExternalUrl,
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
@@ -272,7 +279,10 @@ fun AppScaffold(
         // band under the dark Premium screens (Plan 2 final review).
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
     ) { padding ->
-        CompositionLocalProvider(LocalStatusBarBackdrop provides statusBarBackdrop) {
+        CompositionLocalProvider(
+            LocalStatusBarBackdrop provides statusBarBackdrop,
+            LocalUriHandler provides rememberUrlOpener(openUrl),
+        ) {
             NavHost(
                 navController = navController,
                 startDestination = AppRoute.Listen,

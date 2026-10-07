@@ -202,7 +202,6 @@ class SpeciesTextSourcesTest {
         assertEquals("Parus_major_-_garden.jpg", image.commonsFileName)
         assertEquals("https://commons.wikimedia.org/wiki/File:Parus_major_-_garden.jpg", image.filePageUrl)
         assertEquals("https://creativecommons.org/licenses/by-sa/4.0/", image.licenseUrl)
-        assertEquals(false, image.isPublicDomain)
         driver.close()
     }
 }

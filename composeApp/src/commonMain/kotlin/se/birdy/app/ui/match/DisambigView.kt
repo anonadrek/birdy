@@ -56,8 +56,8 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BirdyTextButton
 import se.birdy.app.ui.components.JournalIntro
-import se.birdy.app.ui.credits.PhotoCredit
 import se.birdy.app.ui.credits.PhotoCreditForm
+import se.birdy.app.ui.credits.PhotoCreditLine
 import se.birdy.app.ui.theme.CardPaper
 import se.birdy.app.ui.theme.Hairline
 import se.birdy.app.ui.theme.InkMuted
@@ -258,7 +258,7 @@ private fun CandidateCard(
             Text(text = confidenceLabel, color = InkMuted, fontSize = 12.sp)
             // The thumbnail's credit (release 1.3.0 Task 7e-2), without links: the whole card is
             // the button that picks this species, and its Match screen has the linked credit.
-            heroImage?.let { PhotoCredit(image = it, form = PhotoCreditForm.Compact, withLinks = false) }
+            heroImage?.let { PhotoCreditLine(image = it, form = PhotoCreditForm.Compact, withLinks = false) }
         }
         Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = InkMuted)
     }

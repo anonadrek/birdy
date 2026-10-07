@@ -4,6 +4,8 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.TextLinkStyles
 import se.birdy.content.Locale
+import se.birdy.content.SpeciesId
+import se.birdy.content.model.PhotoCredit
 import se.birdy.content.model.SpeciesImage
 import se.birdy.content.model.SpeciesTextSource
 import kotlin.test.Test
@@ -68,7 +70,7 @@ class CreditTextTest {
     @Test
     fun `a public domain photo is still credited with no deed to link`() {
         val text = photoCreditText(publicDomain, sv, PhotoCreditForm.Full, styles)
-        assertEquals("Foto: Robert Burton / USFWS · public domain · Wikimedia Commons", text.plain())
+        assertEquals("Foto: Robert Burton / USFWS · public domain · Wikimedia Commons · nedskalad", text.plain())
         assertEquals(
             listOf("Wikimedia Commons" to "https://commons.wikimedia.org/wiki/File:Falco_columbarius_FWS_14007.jpg"),
             links(text),
@@ -76,9 +78,9 @@ class CreditTextTest {
     }
 
     @Test
-    fun `a cc0 photo links the cc0 deed and is not marked resized`() {
+    fun `a cc0 photo links the cc0 deed and is resized like every photo`() {
         val text = photoCreditText(cc0, sv, PhotoCreditForm.Full, styles)
-        assertEquals("Foto: Hobbyfotowiki · CC0 · Wikimedia Commons", text.plain())
+        assertEquals("Foto: Hobbyfotowiki · CC0 · Wikimedia Commons · nedskalad", text.plain())
         assertEquals(
             listOf(
                 "CC0" to "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -121,13 +123,39 @@ class CreditTextTest {
     }
 
     // A line never ends inside a licence name or "Wikimedia Commons" ("CC BY" on one line, "2.0" on
-    // the next): their spaces are no-break spaces.
+    // the next), nor starts with a separator ("· nedskalad"): no-break spaces there.
     @Test
     fun `licence names and wikimedia commons never break across lines`() {
         val text = photoCreditText(ccBySa, sv, PhotoCreditForm.Full, styles).text
-        assertEquals("Foto: Musicaline · CC\u00A0BY-SA\u00A04.0 · Wikimedia\u00A0Commons · nedskalad", text)
+        assertEquals(
+            "Foto: Musicaline\u00A0· CC\u00A0BY-SA\u00A04.0\u00A0· Wikimedia\u00A0Commons\u00A0· nedskalad",
+            text,
+        )
         val credit = textCreditText(listOf(svSource), Locale.SV, textSv, styles)!!.text
         assertEquals(true, credit.endsWith("CC\u00A0BY-SA\u00A04.0."), credit)
+    }
+
+    // "Bildkällor" under About shows "Foto: X" on its own line and the rest below it: the same
+    // credit, in the same words and with the same links, as on the species page.
+    @Test
+    fun `the photo credits list credits a photo exactly as its species page does`() {
+        val credit =
+            PhotoCredit(
+                speciesId = SpeciesId("Q25234"),
+                speciesName = "Koltrast",
+                scientificName = "Turdus merula",
+                role = "hero",
+                path = "Q25234/hero.webp",
+                license = "CC BY-SA 4.0",
+                author = "Musicaline",
+                commonsFileName = "Turdus merula 1294.jpg",
+            )
+        val line = photoCreditText(credit, sv, PhotoCreditForm.LicenseLine, styles)
+        assertEquals("CC BY-SA 4.0 · Wikimedia Commons · nedskalad", line.plain())
+        assertEquals(links(photoCreditText(ccBySa, sv, PhotoCreditForm.Full, styles)), links(line))
+        assertEquals(photoCreditText(ccBySa, sv, PhotoCreditForm.Full, styles).plain(), "Foto: Musicaline · " + line.plain())
+        val pd = photoCreditText(credit.copy(license = "Public domain"), en, PhotoCreditForm.LicenseLine, styles)
+        assertEquals("public domain · Wikimedia Commons · resized", pd.plain())
     }
 
     // An older fixture without the file name falls back to the name in the source URL.
@@ -139,20 +167,16 @@ class CreditTextTest {
 
     private val textSv =
         TextCreditWords(
-            oneArticle = "Texten bygger på %1\$s och har sammanfattats och ändrats. Den får delas under %2\$s.",
-            twoArticles =
-                "Texten bygger på Wikipedia-artiklarna på %1\$s och %2\$s och har sammanfattats och ändrats. " +
-                    "Den får delas under %3\$s.",
+            oneArticle = "Texten är en AI-sammanfattning av %1\$s och får delas under %2\$s.",
+            twoArticles = "Texten är en AI-sammanfattning av Wikipedia-artiklarna på %1\$s och %2\$s och får delas under %3\$s.",
             article = "Wikipedia-artikeln",
             articleIn = mapOf(Locale.SV to "den svenska Wikipedia-artikeln", Locale.EN to "den engelska Wikipedia-artikeln"),
             languageName = mapOf(Locale.SV to "svenska", Locale.EN to "engelska"),
         )
     private val textEn =
         TextCreditWords(
-            oneArticle = "The text is based on %1\$s and has been summarised and changed. It may be shared under %2\$s.",
-            twoArticles =
-                "The text is based on the Wikipedia articles in %1\$s and %2\$s and has been summarised and changed. " +
-                    "It may be shared under %3\$s.",
+            oneArticle = "The text is an AI summary of %1\$s and may be shared under %2\$s.",
+            twoArticles = "The text is an AI summary of the Wikipedia articles in %1\$s and %2\$s and may be shared under %3\$s.",
             article = "the Wikipedia article",
             articleIn = mapOf(Locale.SV to "the Swedish Wikipedia article", Locale.EN to "the English Wikipedia article"),
             languageName = mapOf(Locale.SV to "Swedish", Locale.EN to "English"),
@@ -164,7 +188,7 @@ class CreditTextTest {
     fun `the text credit links the article version shown and the licence deed`() {
         val text = textCreditText(listOf(svSource), Locale.SV, textSv, styles)!!
         assertEquals(
-            "Texten bygger på Wikipedia-artikeln och har sammanfattats och ändrats. Den får delas under CC BY-SA 4.0.",
+            "Texten är en AI-sammanfattning av Wikipedia-artikeln och får delas under CC BY-SA 4.0.",
             text.plain(),
         )
         assertEquals(
@@ -176,7 +200,7 @@ class CreditTextTest {
         )
         val english = textCreditText(listOf(enSource), Locale.EN, textEn, styles)!!
         assertEquals(
-            "The text is based on the Wikipedia article and has been summarised and changed. It may be shared under CC BY-SA 4.0.",
+            "The text is an AI summary of the Wikipedia article and may be shared under CC BY-SA 4.0.",
             english.plain(),
         )
         assertEquals(
@@ -192,7 +216,7 @@ class CreditTextTest {
     fun `the english fallback on the swedish app credits the english article`() {
         val text = textCreditText(listOf(enSource), Locale.SV, textSv, styles)!!
         assertEquals(
-            "Texten bygger på den engelska Wikipedia-artikeln och har sammanfattats och ändrats. Den får delas under CC BY-SA 4.0.",
+            "Texten är en AI-sammanfattning av den engelska Wikipedia-artikeln och får delas under CC BY-SA 4.0.",
             text.plain(),
         )
         assertEquals("den engelska Wikipedia-artikeln" to enSource.articleUrl, links(text).first())
@@ -205,7 +229,7 @@ class CreditTextTest {
         val fallback = SpeciesTextSource(Locale.EN, null, "https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q335113")
         val text = textCreditText(listOf(fallback), Locale.EN, textEn, styles)!!
         assertEquals(
-            "The text is based on the Wikipedia article and has been summarised and changed. It may be shared under CC BY-SA 4.0.",
+            "The text is an AI summary of the Wikipedia article and may be shared under CC BY-SA 4.0.",
             text.plain(),
         )
         assertEquals("the Wikipedia article" to fallback.articleUrl, links(text).first())
@@ -217,8 +241,7 @@ class CreditTextTest {
     fun `texts in two languages link both articles`() {
         val text = textCreditText(listOf(svSource, enSource), Locale.SV, textSv, styles)!!
         assertEquals(
-            "Texten bygger på Wikipedia-artiklarna på svenska och engelska och har sammanfattats och ändrats. " +
-                "Den får delas under CC BY-SA 4.0.",
+            "Texten är en AI-sammanfattning av Wikipedia-artiklarna på svenska och engelska och får delas under CC BY-SA 4.0.",
             text.plain(),
         )
         assertEquals(
