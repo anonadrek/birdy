@@ -39,6 +39,13 @@ Skriven i slutet av sessionen 2026-10-05–07 (Windows). Läs den här filen och
 
 **1.3.1 (direkt efter go-live, Albins val 2026-10-07 "kör allt" enligt rekommendationen):** Märken 1b (certifikatbladet med fyndet som gav märket: kräver ett nytt fält `observationId` i `BadgeUnlock`, troférummet som hyllor, stämpelslaget), PDF 1 (1.3-färgerna, riktiga foton med krediter, sida "Bildkällor"; i dag har PDF:en inga foton och rad 25 krockar med sidnumret), Pop-up 1 (Premium-ark från 5:e sparade fyndet, en gång, aldrig för tidiga användare/Premium, gemensam 14-dagarspaus för alla Premium-uppmaningar; 3:e sparade är redan Play-recensionen), Intro 1 (fem sidor, levande demo, Dagens fågel). Senare: Uppslag 2/3, Märken 2 (fältpass), PDF 2, Intro 2.
 
+### Albins beslut 2026-10-07 kväll: en gemensam lansering och Mac-överlämningen sist
+
+1. **Allt släpps i en stöt:** appen 1.3.0 (vC130) befordras till produktion samma dag som de första artsidorna publiceras på birdy.community och de första inläggen går ut på Facebook, Instagram och YouTube Shorts (tredje kanalen, schemaläggs i YouTube Studio; TikTok senare för betalda annonser). Se spec §15.1 i `2026-09-25-artsidor-design.md`.
+   - **Kopplingen till brytpunkten:** `GRANDFATHER_CUTOFF_MS` bakas in i vC130 och ska vara lanseringsdagen + 48 h. Bestäm lanseringsdagen INNAN vC130 byggs; flyttas lanseringen efter 2026-10-14 flyttas brytpunkten (i dag 2026-10-16 00:00) före bygget.
+   - **Artsidornas data:** sedan `main` slogs ihop med `release/1.3.0` (d96b0760) finns både de städade fotona och fas 1b-pipelinen på release-grenen, så R1/R2 och de betalda körningarna kan köras från en gren av `release/1.3.0` utan att vänta på Task 11.
+2. **Det absolut sista i releasen (efter Task 11):** städa (worktrees under `C:/w/`, sammanslagna grenar, scratch), granska iOS-spåret (i0 till i4 och vad 1.3.0 ändrat i delad kod som Macen måste ta hand om: nya `UserPreferences`-medlemmar i `NsUserDefaultsUserPreferences`, iOS-värdarna som 7b ändrade, Dagens fågel-notisen, priser från StoreKit, `PurchaseResult.Pending`), uppdatera iOS-planen (i5 StoreKit, i6 App Store) med nuvarande modell eftersom de skrevs med en äldre, och skriv en enkel överlämning för Mac-sessionen. Plan 3 Task 12.
+
 ## 4. Emulatorn
 
 - AVD `pg-api36` (API 36, google_apis x86_64) körs som `emulator-5554`; `pg-api30` finns. WHPX fungerar. Start: `emulator -avd pg-api36 -no-snapshot -no-boot-anim -netdelay none -netspeed full` (från `C:/Users/abbea/AppData/Local/Android/Sdk/emulator`).
