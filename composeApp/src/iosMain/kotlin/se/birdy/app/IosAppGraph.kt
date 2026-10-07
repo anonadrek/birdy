@@ -317,6 +317,7 @@ internal fun iosNotificationPayloads(graph: AppGraph): NotificationPayloads =
                 ?.name
         },
         selectDailyBird = graph.selectDailyBird,
+        dailyBirdHistory = graph.dailyBirdHistory,
         dailyBirdMatchCount = { graph.dailyBirdHistory?.totalMatchCount() ?: 0 },
         timeZone = graph.timeZone,
         clock = graph.clock,

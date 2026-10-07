@@ -29,6 +29,7 @@ import se.birdy.app.ui.badges.BadgeStringMap
 import se.birdy.content.SpeciesId
 import se.birdy.content.model.Species
 import se.birdy.content.model.SpeciesImage
+import se.birdy.data.dailybird.DailyBirdHistoryRepository
 import se.birdy.datastore.UserPreferences
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeRepository
@@ -106,6 +107,11 @@ class NotificationPayloads(
     private val speciesByQid: suspend () -> Map<SpeciesId, Species>,
     private val speciesNameFor: suspend (qid: String) -> String?,
     private val selectDailyBird: (suspend (LocalDate) -> DailyBird?)?,
+    /**
+     * The daily-bird history the app records each day's bird in (DailyBirdTracker), so the
+     * notification names the bird the app shows; see [dailyBird]. Null where there is none.
+     */
+    private val dailyBirdHistory: DailyBirdHistoryRepository?,
     private val dailyBirdMatchCount: suspend () -> Int,
     private val timeZone: TimeZone,
     private val clock: Clock,
@@ -120,13 +126,11 @@ class NotificationPayloads(
      */
     suspend fun dailyBird(date: LocalDate): NotificationContent? {
         if (!prefs.dailyBirdPushEnabled.first()) return null
-        val selector = selectDailyBird ?: return null
-        val bird = selector(date) ?: return null
-        val displayName = speciesNameFor(bird.speciesId) ?: bird.speciesId
-        val speciesLink = BirdyDeepLinks.species(bird.speciesId)
-        // Through speciesByQid (memoised on iOS) rather than a new constructor parameter, so the
-        // three platform wirings of this class stay as they are.
-        val hero = heroOf(speciesByQid()[SpeciesId(bird.speciesId)])
+        val speciesId = dailyBirdSpeciesId(date) ?: return null
+        val displayName = speciesNameFor(speciesId) ?: speciesId
+        val speciesLink = BirdyDeepLinks.species(speciesId)
+        // The photo through speciesByQid, which iOS memoises.
+        val hero = heroOf(speciesByQid()[SpeciesId(speciesId)])
         return NotificationContent(
             title = strings.get(Res.string.notification_daily_bird_title_fmt, displayName),
             body = strings.get(Res.string.notification_daily_bird_body),
@@ -141,6 +145,17 @@ class NotificationPayloads(
                 ),
         )
     }
+
+    /**
+     * The bird the app shows for [date]: the one recorded in the daily-bird history, else the
+     * selector's. DailyBirdTracker records the first bird of a day and keeps it, and every save is
+     * matched against it; on the day an update changes the selection (1.3.0 drops extinct species)
+     * the selector alone could name another bird than the Identify hero. Nothing recorded yet (the
+     * app not opened today) means the selector's bird, which the app then records too (the
+     * selector is deterministic per date). Read only: recording the day stays with the tracker.
+     */
+    private suspend fun dailyBirdSpeciesId(date: LocalDate): String? =
+        dailyBirdHistory?.speciesIdForDate(date) ?: selectDailyBird?.invoke(date)?.speciesId
 
     suspend fun weeklyRecap(forceForDev: Boolean = false): NotificationContent? {
         if (!forceForDev && !prefs.weeklyRecapPushEnabled.first()) return null
@@ -229,6 +244,7 @@ class NotificationPayloads(
                         ?.name
                 },
                 selectDailyBird = graph.selectDailyBird,
+                dailyBirdHistory = graph.dailyBirdHistory,
                 dailyBirdMatchCount = { graph.dailyBirdHistory?.totalMatchCount() ?: 0 },
                 timeZone = graph.timeZone,
                 clock = graph.clock,
