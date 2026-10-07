@@ -69,6 +69,16 @@ fun untilNextLocalMidnight(
 private val MidnightMargin = 1.seconds
 
 /**
+ * How long [DailyBirdTracker.refreshNowAndAtMidnight] waits after a refresh: until [MidnightMargin]
+ * past the next local midnight, and never less than the margin itself, so a clock that reads
+ * midnight (or one that jumps) can't make it refresh in a busy loop.
+ */
+internal fun untilNextRefresh(
+    now: Instant,
+    zone: TimeZone,
+): Duration = (untilNextLocalMidnight(now, zone) + MidnightMargin).coerceAtLeast(MidnightMargin)
+
+/**
  * One shared source for today's bird (release 1.3.0 Task 7d), owned by the AppGraph so the hero,
  * both strips and the tab dot always agree.
  *
@@ -124,7 +134,7 @@ class DailyBirdTracker(
     suspend fun refreshNowAndAtMidnight() {
         while (true) {
             refresh()
-            delay(untilNextLocalMidnight(now(), timeZone) + MidnightMargin)
+            delay(untilNextRefresh(now(), timeZone))
         }
     }
 

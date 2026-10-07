@@ -23,6 +23,7 @@ import kotlin.test.assertTrue
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.nanoseconds
 import kotlin.time.Duration.Companion.seconds
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -176,6 +177,34 @@ class DailyBirdTrackerTest {
             assertEquals(wednesday, tracker.state.value!!.date)
             assertTrue(tracker.state.value!!.caughtToday)
         }
+
+    // The app stayed open past midnight and the user saves Tuesday's bird at 00:30 on Wednesday:
+    // Wednesday's bird is recorded first (as onSaved does), and Tuesday's is not today's catch.
+    @Test
+    fun `gårdagens fågel sparad efter midnatt räknas inte`() =
+        runTest {
+            val tracker = tracker()
+            tracker.refresh()
+            assertEquals("Q25403", tracker.state.value!!.speciesId)
+            now = at(wednesday, 0, 30)
+            tracker.onSaved("Q25403")
+            assertEquals("Q25485", history.recorded[wednesday], "the new day's bird is recorded first")
+            assertTrue(history.matched.isEmpty(), "yesterday's bird saved today is no catch: ${history.matched}")
+            assertEquals(wednesday, tracker.state.value!!.date)
+            assertFalse(tracker.state.value!!.caughtToday)
+            assertEquals(0, tracker.state.value!!.daysCaught)
+        }
+
+    // The wait between refreshes never drops below the margin, so a clock at or past midnight
+    // can't turn refreshNowAndAtMidnight into a busy loop.
+    @Test
+    fun `the wait until the next refresh is never shorter than the midnight margin`() {
+        val midnight = at(wednesday, 0)
+        assertEquals(24.hours + 1.seconds, untilNextRefresh(midnight, zone))
+        assertEquals(1.seconds + 1.milliseconds, untilNextRefresh(midnight - 1.milliseconds, zone))
+        assertEquals(1.seconds + 1.nanoseconds, untilNextRefresh(midnight - 1.nanoseconds, zone))
+        assertTrue(untilNextRefresh(midnight - 1.nanoseconds, zone) >= 1.seconds)
+    }
 
     @Test
     fun `while visible the tracker refreshes at the next local midnight`() =
