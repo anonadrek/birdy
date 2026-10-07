@@ -22,7 +22,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import birdy_bird_scanner.composeapp.generated.resources.Res
-import birdy_bird_scanner.composeapp.generated.resources.profile_back
+import birdy_bird_scanner.composeapp.generated.resources.common_back
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.OffwhiteWarm
@@ -91,7 +91,7 @@ fun BackButton(
 fun BackTopBar(
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
-    contentDescription: String = stringResource(Res.string.profile_back),
+    contentDescription: String = stringResource(Res.string.common_back),
     enabled: Boolean = true,
     content: @Composable RowScope.() -> Unit = {},
 ) {
@@ -118,7 +118,7 @@ fun BackTopBar(
 @Composable
 fun BoxScope.PhotoBackButton(
     onBack: () -> Unit,
-    contentDescription: String = stringResource(Res.string.profile_back),
+    contentDescription: String = stringResource(Res.string.common_back),
     enabled: Boolean = true,
 ) {
     BackButton(
@@ -149,4 +149,4 @@ fun Modifier.backButtonPlacement(onDark: Boolean): Modifier =
     }
 
 /** See [backButtonPlacement]: 4dp (paper disc's top) − 6dp (glass disc's inset in its touch target). */
-val GlassBackTopOffset = -2.dp
+internal val GlassBackTopOffset = -2.dp
