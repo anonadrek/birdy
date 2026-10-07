@@ -55,14 +55,14 @@ const SPECIES = [
   // threshold, spec §9.2, plus the presence sentence that becomes a written fact), but no months/counties
   // (so no chart or map) and no swedishRedList (a species with too few reports and no red-list entry is
   // not assessed, spec Revision 2026-10-07). Exercises `reportData={Boolean(s.data)}` (SpeciesArticle,
-  // Task 10, not written yet): the data credit must still show even though months/counties are both
-  // missing. `publish: false` on purpose (preview-only, like the two woodpeckers above): `other` is
-  // otherwise an inactive group and this would be its first published species, which would quietly
-  // change the hub's active-group and all-species counts that Task 7's and Task 8's already-passing
-  // tests hardcode (`.groups a` is 7, the hub's `[data-item]` is 16, a group page's `.catbar .chip` is
-  // 8): a cost not worth paying just to add this one fixture. Flip it when Task 10 is implemented, if
-  // its test wants to visit the built page rather than only read the fixture data.
-  { qid: 'Q25411', sv: 'Blåkråka', en: 'European Roller', sci: 'Coracias garrulus', fam: ['Coraciidae', 'Blåkråkor'], group: 'other', slug: ['blakraka', 'european-roller'], iucn: 'LC', id: [false, false], de: true, status: 'absent', absent: true, publish: false },
+  // Task 10): the data credit must still show even though months/counties are both missing. Published
+  // since Task 10 (was `publish: false` until then), so the absent-species page is built and tested like
+  // the real ones (Koboltmes, Q10546857, is absent and written): it makes `other` an active group with one
+  // species, so Task 7's and Task 8's counts went up by one consciously (hub `.groups a` 7 to 8, hub
+  // `[data-item]` 16 to 17, a group page's `.catbar .chip` 8 to 9). Its look-alike is Större hackspett,
+  // a species with a record but no page in the normal build (same as Koboltmes' look-alike Blåmes in the
+  // real data): the name shows without a link, a photo or a comparison link.
+  { qid: 'Q25411', sv: 'Blåkråka', en: 'European Roller', sci: 'Coracias garrulus', fam: ['Coraciidae', 'Blåkråkor'], group: 'other', slug: ['blakraka', 'european-roller'], iucn: 'LC', id: [false, false], de: true, status: 'absent', absent: true, look: ['Q26209'] },
   // Never a page: one failed, one pending (facts exist, text not written yet).
   { qid: 'Q166171', sv: 'Gröngöling', en: 'European Green Woodpecker', sci: 'Picus viridis', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['grongoling', 'european-green-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], recordStatus: 'failed' },
   { qid: 'Q143284', sv: 'Spillkråka', en: 'Black Woodpecker', sci: 'Dryocopus martius', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['spillkraka', 'black-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], recordStatus: 'pending' },

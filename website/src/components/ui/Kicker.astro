@@ -5,6 +5,8 @@ interface Props {
   text: string;
   center?: boolean;
   class?: string;
+  /** "la" when the text is a Latin name (the family kicker on an English species page). */
+  lang?: string;
 }
 const { text, center = false, class: cls, ...rest } = Astro.props;
 ---

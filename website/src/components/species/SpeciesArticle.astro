@@ -1,0 +1,307 @@
+---
+import { Image, getImage } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../Nav.astro';
+import Footer from '../Footer.astro';
+import Kicker from '../ui/Kicker.astro';
+import MarginNote from '../ui/MarginNote.astro';
+import PlayStoreBadge from '../ui/PlayStoreBadge.astro';
+import CategoryBar from './CategoryBar.astro';
+import SpeciesCard from './SpeciesCard.astro';
+import Credits from './Credits.astro';
+import AudioPlayer from './AudioPlayer.astro';
+import MonthChart from './MonthChart.astro';
+import CountyMap from './CountyMap.astro';
+import { getCopy, type Locale } from '../../lib/i18n';
+import {
+  SITE, appText, audioJsonLd, breadcrumbJsonLd, comparisonHref, comparisonPair, getAllRecords, getAllSpecies, getComparisons,
+  groupByKey, groupHref, heroOf, hubHref, isUnpublished, joinSentences, lookAlikeView, pairNames, playHref, related,
+  reviewDate, speciesHref, speciesImage, speciesTitle, taxonJsonLd, wikiSources,
+  type Comparison, type LookAlikeView, type Species,
+} from '../../lib/species';
+import '../../styles/species.css';
+
+interface Props { species: Species; locale: Locale }
+const { species: s, locale } = Astro.props;
+const t = getCopy(locale);
+const other: Locale = locale === 'sv' ? 'en' : 'sv';
+const text = s.text![locale];
+const [all, records, comps] = await Promise.all([getAllSpecies(), getAllRecords(), getComparisons()]);
+const group = groupByKey(s.group);
+const name = s.names[locale];
+const pathname = speciesHref(s, locale);
+const otherPath = speciesHref(s, other);
+const title = speciesTitle(s, locale, t);
+const unpublished = isUnpublished(s);
+
+const hero = heroOf(s);
+const extra = s.images.find((i) => i.role === 'extra');
+const heroImg = speciesImage(hero.file);
+const extraImg = extra ? speciesImage(extra.file) : undefined;
+const photos = [{ key: 'hero', image: hero }, ...(extra ? [{ key: 'extra', image: extra }] : [])];
+const altHero = t.species.altHero.replace('{name}', name).replace('{scientific}', s.names.scientific);
+const share = await getImage({ src: heroImg, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 82 });
+const content = await getImage({ src: heroImg, width: 1200, format: 'webp' });
+
+const status = text.facts.swedenStatus ? t.species.statusLabels[text.facts.swedenStatus.value] : undefined;
+const redCode = s.swedishRedList;
+const redLabel = redCode
+  ? redCode === 'not_listed' ? t.species.redListLabels.not_listed : `${t.species.redListLabels[redCode]} (${redCode})`
+  : undefined;
+const iucnLabel = s.iucn !== 'NE' ? (t.species.iucnLabels as Record<string, string>)[s.iucn] : undefined;
+const familyShown = locale === 'sv' ? s.family.sv : s.family.latin;
+const rel = related(s, all, locale);
+// The group "other" ("Övriga fåglar" / "Other birds") has its own heading: the generic template gives
+// "More other birds" in English (controller review 2026-10-07). GroupPage.astro has no "More" heading.
+const moreHeading = rel.kind === 'family'
+  ? t.species.moreFamily.replace('{family}', locale === 'sv' ? s.family.sv.toLocaleLowerCase('sv') : s.family.latin)
+  : s.group === 'other'
+    ? t.species.moreOther
+    : t.species.moreGroup.replace('{group}', group.name[locale].toLocaleLowerCase(locale));
+const marginalia = s.marginalia?.[locale];
+// Latin names are tagged for pronunciation (same pattern as SpeciesCard and the English group page):
+// the scientific name everywhere, the family name on the English page, where it is the Latin one.
+const familyLang = locale === 'en' ? 'la' : undefined;
+
+const months = s.data?.months;
+const counties = s.data?.counties;
+const summaryId = `data-summary-${s.qid}`;
+// Rendered whenever the species has report data (controller decision, Task 9 re-review 2026-10-07): with
+// the chart and map it is their text alternative; without them (an absent or rare species, spec §9.2) it is
+// the presence sentence that the Artportalen credit below refers to.
+const dataSentences = (s.data?.sentences[locale] ?? []).join(' ');
+const behaviour = joinSentences(text.behaviour);
+const looks = text.lookAlikes.flatMap((item) => {
+  const view = lookAlikeView(s, item, locale, all, records, comps);
+  return view ? [view] : [];
+});
+const compareText = (c: Comparison): string => {
+  const [na, nb] = pairNames(comparisonPair(c, locale, all), locale);
+  return t.species.compareLink.replace('{a}', locale === 'sv' ? na.toLocaleLowerCase('sv') : na).replace('{b}', nb);
+};
+const lookPhoto = (view: LookAlikeView) => (view.species ? speciesImage(heroOf(view.species).file) : undefined);
+const reviewed = reviewDate(s);
+const audioNode = audioJsonLd(s);
+
+const crumbs = [
+  { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
+  { name: t.species.crumbHub, href: hubHref(locale) },
+  { name: group.name[locale], href: groupHref(group, locale) },
+  { name, href: pathname },
+];
+const jsonLd = [
+  breadcrumbJsonLd(crumbs),
+  {
+    '@type': 'WebPage',
+    url: new URL(pathname, SITE).toString(),
+    name: title.replace(/ \| Birdy$/, ''),
+    inLanguage: locale,
+    about: taxonJsonLd(s),
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      contentUrl: new URL(content.src, SITE).toString(),
+      ...(hero.licenseUrl ? { license: hero.licenseUrl } : {}),
+      acquireLicensePage: hero.sourceUrl,
+      ...(hero.author ? { creator: { '@type': 'Person', name: hero.author }, creditText: hero.author } : {}),
+    },
+    ...(audioNode ? { associatedMedia: audioNode } : {}),
+    lastReviewed: reviewed,
+  },
+];
+---
+
+<Layout locale={locale} pathname={pathname} alternatePath={otherPath} title={title} description={text.metaDescription} ogImage={share.src} ogImageAlt={altHero} noindex={unpublished} jsonLd={jsonLd}>
+  <Nav locale={locale} variant="solid" switchLangHref={otherPath} />
+  <CategoryBar locale={locale} active={s.group} />
+  <main class="sp wrap" data-species-page>
+    {unpublished && <p class="sp-preview" data-preview-banner role="note">{t.species.previewBanner}</p>}
+    <div class="spread">
+      <header class="head">
+        <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
+          <ol>
+            {crumbs.slice(0, -1).map((c) => <li><a href={c.href} data-crumb>{c.name}</a></li>)}
+            <li><span aria-current="page" data-crumb>{name}</span></li>
+          </ol>
+        </nav>
+        <Kicker text={familyShown} lang={familyLang} />
+        <h1>{name}</h1>
+        <p class="latin" lang="la">{s.names.scientific}</p>
+      </header>
+
+      <div class="left">
+        <div class="left-inner">
+          <figure class="plate hero" data-photo="hero">
+            <Image src={heroImg} alt={altHero} widths={[480, 800, 1200]} sizes="(max-width: 1023px) 100vw, 440px" loading="eager" fetchpriority="high" decoding="async" />
+            <figcaption><span>{t.species.plate.replace('{n}', '1')}, {name}</span><span>{t.species.photoCredit} {hero.author ?? t.species.unknownAuthor}</span></figcaption>
+          </figure>
+          <dl class="facts">
+            <div><dt>{t.species.facts.scientific}</dt><dd><i lang="la">{s.names.scientific}</i></dd></div>
+            <div><dt>{t.species.facts.family}</dt><dd lang={familyLang}>{familyShown}</dd></div>
+            {status && <div><dt>{t.species.facts.sweden}</dt><dd>{status}</dd></div>}
+            {text.facts.size && <div><dt>{t.species.facts.size}</dt><dd>{text.facts.size.value}</dd></div>}
+            {redLabel && <div data-redlist><dt>{t.species.facts.swedishRedList}</dt><dd>{redLabel}</dd></div>}
+            {iucnLabel && <div><dt>{t.species.facts.iucn}</dt><dd>{iucnLabel} ({s.iucn})</dd></div>}
+          </dl>
+          <aside class="sp-app">
+            <p class="sp-app-h">{t.species.appHeadline}</p>
+            <p>{appText(s, t)}</p>
+            <PlayStoreBadge locale={locale} href={playHref(s.slug[locale], 'species')} alt={t.alt.playStoreBadge} size="small" />
+          </aside>
+          {marginalia && <div class="note"><MarginNote text={marginalia} /></div>}
+        </div>
+      </div>
+
+      <div class="body">
+        <p class="sp-lead">{joinSentences(text.lead)}</p>
+        <div class="texts">
+          <h2>{t.species.headMarks}</h2>
+          <ul class="marks">{text.fieldMarks.map((m) => <li>{m.text}</li>)}</ul>
+          <h2>{t.species.headVoice}</h2>
+          <p>{joinSentences(text.voice)}</p>
+          <AudioPlayer species={s} locale={locale} creditKey="audio" />
+          <h2>{t.species.headWhere}</h2>
+          <p>{joinSentences(text.whereWhen)}</p>
+          {dataSentences && (
+            <div class:list={['datafig', { 'datafig--text': !months && !counties }]}>
+              {months && (
+                <div class="fig-chart">
+                  <h3 class="fig-h">{t.species.chartTitle}</h3>
+                  <figure>
+                    <MonthChart id={`chart-${s.qid}`} title={t.species.chartTitle} letters={t.species.monthLetters} monthNames={t.species.monthNames} series={[{ label: name, values: months, tone: 'rust' }]} describedBy={summaryId} />
+                    <figcaption class="fig-caption">{t.species.chartCaption}</figcaption>
+                  </figure>
+                </div>
+              )}
+              {counties && (
+                <div class="fig-map">
+                  <h3 class="fig-h">{t.species.mapTitle}</h3>
+                  <figure>
+                    <CountyMap id={`map-${s.qid}`} values={counties} locale={locale} title={t.species.mapTitle} legend={t.species.mapLegend} describedBy={summaryId} />
+                    <figcaption class="fig-caption">{t.species.mapCaption}</figcaption>
+                  </figure>
+                </div>
+              )}
+              <p class="data-summary" id={summaryId}>{dataSentences}</p>
+            </div>
+          )}
+          {behaviour && (
+            <Fragment>
+              <h2>{t.species.headBehaviour}</h2>
+              <p>{behaviour}</p>
+            </Fragment>
+          )}
+        </div>
+        {extra && extraImg && (
+          <figure class="plate extra" data-photo="extra">
+            <Image src={extraImg} alt={t.species.altExtra.replace('{name}', name)} widths={[480, 800, 1200]} sizes="(max-width: 1023px) 100vw, 640px" loading="lazy" decoding="async" />
+            <figcaption><span>{t.species.plate.replace('{n}', '2')}</span><span>{t.species.photoCredit} {extra.author ?? t.species.unknownAuthor}</span></figcaption>
+          </figure>
+        )}
+        {looks.length > 0 && (
+          <section class="looks-sec">
+            <h2>{t.species.headLookAlikes}</h2>
+            <ul class="looks" role="list">
+              {looks.map((view) => {
+                const photo = lookPhoto(view);
+                return (
+                  <li class:list={[{ 'no-photo': !photo }]}>
+                    {photo && view.species && (
+                      <a href={speciesHref(view.species, locale)} tabindex="-1" aria-hidden="true">
+                        <Image src={photo} alt="" widths={[192]} sizes="96px" loading="lazy" decoding="async" />
+                      </a>
+                    )}
+                    <div>
+                      <p class="look-name">
+                        {view.species ? <a href={speciesHref(view.species, locale)}>{view.name}</a> : view.scientificOnly ? <i lang="la">{view.name}</i> : view.name}
+                      </p>
+                      <p class="look-text">{view.text}</p>
+                      {view.comparison && <a class="look-compare" href={comparisonHref(view.comparison, locale)}>{compareText(view.comparison)}</a>}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
+        {rel.items.length > 0 && (
+          <section class="more">
+            <h2>{moreHeading}</h2>
+            <ul class="sp-cards" role="list">
+              {rel.items.map((x) => <li><SpeciesCard species={x} locale={locale} /></li>)}
+            </ul>
+          </section>
+        )}
+        <div class="credits-wrap">
+          <Credits
+            locale={locale}
+            photos={photos}
+            articles={wikiSources(s)}
+            reportData={Boolean(s.data)}
+            redList={Boolean(redCode)}
+            reviewedAt={reviewed}
+            reportSubject={t.species.reportSubject.replace('{name}', name)}
+          />
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer locale={locale} switchLangHref={otherPath} />
+</Layout>
+
+<style>
+  .sp { padding-top: 26px; padding-bottom: 88px; }
+  .spread { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto 1fr; grid-template-areas: 'left head' 'left body'; }
+  .head { grid-area: head; padding-left: 36px; }
+  .left { grid-area: left; padding-right: 28px; border-right: 1px dashed var(--line); }
+  .left-inner { position: sticky; top: 150px; display: flex; flex-direction: column; gap: 18px; }
+  .body { grid-area: body; padding-left: 36px; }
+  h1 { font-size: clamp(40px, 4.6vw, 58px); line-height: 1.02; margin: 4px 0 0; overflow-wrap: anywhere; }
+  .latin { margin: 2px 0 0; font-family: var(--font-script); font-size: 24px; color: var(--muted); }
+  .sp-lead { font-size: 17px; line-height: 1.6; margin: 18px 0 0; max-width: 40rem; }
+  .texts h2, .looks-sec h2, .more h2 { font-size: 24px; margin: 30px 0 8px; }
+  .texts > p, .marks { font-size: 15.5px; line-height: 1.65; max-width: 40rem; margin: 0; }
+  .marks { padding-left: 20px; list-style: disc; }
+  .marks li { margin: 3px 0; }
+  /* The summary sits under the chart, next to the taller map, instead of under both (no empty column). */
+  .datafig { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); grid-template-rows: auto 1fr; grid-template-areas: 'chart map' 'sum map'; gap: 18px 28px; align-items: start; margin-top: 16px; max-width: 40rem; }
+  .datafig--text { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: 'sum'; }
+  .datafig figure { margin: 0; }
+  .fig-chart { grid-area: chart; }
+  .fig-map { grid-area: map; }
+  .datafig .data-summary { grid-area: sum; }
+  .fig-h { font-family: var(--font-sans); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--rust); font-weight: 600; margin: 0 0 8px; }
+  .fig-map { max-width: 220px; }
+  .plate.extra { margin-top: 30px; max-width: 640px; }
+  /* Four across on the desktop spread, as in the mockup (species.css's auto-fill gives 3 + 1 here). */
+  @media (min-width: 1024px) {
+    .more .sp-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+  .looks { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; max-width: 40rem; }
+  .looks li { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 14px; align-items: start; }
+  .looks li.no-photo { grid-template-columns: minmax(0, 1fr); }
+  .looks :global(img) { display: block; width: 96px; height: 72px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
+  .look-name { margin: 0; font-weight: 600; font-size: 16px; }
+  .look-name a:hover { color: var(--rust); }
+  .look-name i { font-family: var(--font-script); font-style: normal; font-size: 19px; font-weight: 400; }
+  .look-text { margin: 2px 0 0; font-size: 15px; line-height: 1.6; }
+  .look-compare { display: inline-block; margin-top: 4px; font-size: 13.5px; font-weight: 600; color: var(--rust); border-bottom: 1px solid currentColor; }
+  @media (max-width: 600px) {
+    .datafig:not(.datafig--text) { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: 'chart' 'map' 'sum'; }
+  }
+  @media (max-width: 1023px) {
+    .spread { display: flex; flex-direction: column; gap: 18px; }
+    .left, .left-inner, .body { display: contents; }
+    .head { order: 1; padding-left: 0; }
+    .plate.hero { order: 2; }
+    .facts { order: 3; }
+    .sp-lead { order: 4; margin-top: 0; }
+    .texts { order: 5; }
+    .plate.extra { order: 6; margin-top: 0; }
+    .looks-sec { order: 7; }
+    .sp-app { order: 8; }
+    .note { order: 9; }
+    .more { order: 10; }
+    .credits-wrap { order: 11; }
+    .texts h2, .looks-sec h2, .more h2 { margin-top: 18px; }
+  }
+</style>

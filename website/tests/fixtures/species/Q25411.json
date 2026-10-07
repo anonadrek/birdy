@@ -1,7 +1,7 @@
 {
   "qid": "Q25411",
   "status": "ok",
-  "publish": false,
+  "publish": true,
   "slug": {
     "sv": "blakraka",
     "en": "european-roller"
@@ -74,10 +74,25 @@
           "quote": "Testcitat som bara finns i testdata."
         }
       ]
+    },
+    {
+      "id": "f09",
+      "topic": "lookalike",
+      "sv": "Testfaktum om förväxling.",
+      "other": {
+        "scientific": "Dendrocopos major",
+        "qid": "Q26209"
+      },
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Testcitat som bara finns i testdata."
+        }
+      ]
     }
   ],
   "review": {
-    "wave": 2
+    "wave": 1
   },
   "verification": {
     "method": "auto",
@@ -140,7 +155,19 @@
           ]
         }
       ],
-      "lookAlikes": [],
+      "lookAlikes": [
+        {
+          "other": "Q26209",
+          "text": [
+            {
+              "text": "Testtext om hur de skiljer sig åt.",
+              "factIds": [
+                "f09"
+              ]
+            }
+          ]
+        }
+      ],
       "metaDescription": "Blåkråka: testtext för artsidornas bygge. Kännetecken, läte och när arten syns i Sverige, med foton och karta. Testdata.",
       "facts": {
         "size": null,
@@ -206,7 +233,19 @@
           ]
         }
       ],
-      "lookAlikes": [],
+      "lookAlikes": [
+        {
+          "other": "Q26209",
+          "text": [
+            {
+              "text": "Test text about how to tell them apart.",
+              "factIds": [
+                "f09"
+              ]
+            }
+          ]
+        }
+      ],
       "metaDescription": "European Roller: test text for building the species pages. Field marks, call and when it is seen in Sweden, with photos.",
       "facts": {
         "size": null,

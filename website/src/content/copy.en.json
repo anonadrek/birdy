@@ -355,6 +355,7 @@
     "monthNames": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     "moreFamily": "More in the {family} family",
     "moreGroup": "More {group}",
+    "moreOther": "More birds",
     "appHeadline": "Not sure what you are seeing?",
     "appTextBoth": "Birdy identifies this species from a photo or its song, right on your phone and without a signal.",
     "appTextSound": "Birdy identifies this species from its song, right on your phone and without a signal.",

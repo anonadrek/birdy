@@ -7,7 +7,10 @@ export async function speciesPaths(locale: Locale) {
   // Checked against all 15 GROUPS, not just the active ones (controller review, Task 8 fix wave): a slug
   // collision must fail the very first build, not wait for the publish that happens to activate the
   // colliding group, by which point the build has looked clean for however long the group sat empty.
-  assertUniqueSlugs([...GROUPS.map((g) => g.slug[locale]), ABOUT_SLUG[locale]], locale);
+  assertUniqueSlugs([...all.map((s) => s.slug[locale]), ...GROUPS.map((g) => g.slug[locale]), ABOUT_SLUG[locale]], locale);
   const groups = activeGroups(all);
-  return groups.map((group) => ({ params: { slug: group.slug[locale] }, props: { group } }));
+  return [
+    ...all.map((species) => ({ params: { slug: species.slug[locale] }, props: { species } })),
+    ...groups.map((group) => ({ params: { slug: group.slug[locale] }, props: { group } })),
+  ];
 }

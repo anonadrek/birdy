@@ -355,6 +355,7 @@
     "monthNames": ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"],
     "moreFamily": "Fler {family}",
     "moreGroup": "Fler {group}",
+    "moreOther": "Fler övriga fåglar",
     "appHeadline": "Osäker på vad du ser?",
     "appTextBoth": "Birdy känner igen arten på foto eller läte, direkt i telefonen och utan täckning.",
     "appTextSound": "Birdy känner igen arten på lätet, direkt i telefonen och utan täckning.",
