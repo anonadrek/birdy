@@ -25,7 +25,7 @@ interface Props { species: Species; locale: Locale }
 const { species: s, locale } = Astro.props;
 const t = getCopy(locale);
 const other: Locale = locale === 'sv' ? 'en' : 'sv';
-const text = s.text![locale];
+const text = s.text[locale];
 const [all, records, comps] = await Promise.all([getAllSpecies(), getAllRecords(), getComparisons()]);
 const group = groupByKey(s.group);
 const name = s.names[locale];
@@ -53,11 +53,11 @@ const familyShown = locale === 'sv' ? s.family.sv : s.family.latin;
 const rel = related(s, all, locale);
 // The group "other" ("Övriga fåglar" / "Other birds") has its own heading: the generic template gives
 // "More other birds" in English (controller review 2026-10-07). GroupPage.astro has no "More" heading.
-const moreHeading = rel.kind === 'family'
-  ? t.species.moreFamily.replace('{family}', locale === 'sv' ? s.family.sv.toLocaleLowerCase('sv') : s.family.latin)
-  : s.group === 'other'
-    ? t.species.moreOther
-    : t.species.moreGroup.replace('{group}', group.name[locale].toLocaleLowerCase(locale));
+const moreFamily = locale === 'sv' ? s.family.sv.toLocaleLowerCase('sv') : s.family.latin;
+const [moreBefore, moreAfter] = t.species.moreFamily.split('{family}');
+const moreHeading = s.group === 'other'
+  ? t.species.moreOther
+  : t.species.moreGroup.replace('{group}', group.name[locale].toLocaleLowerCase(locale));
 const marginalia = s.marginalia?.[locale];
 // Latin names are tagged for pronunciation (same pattern as SpeciesCard and the English group page):
 // the scientific name everywhere, the family name on the English page, where it is the Latin one.
@@ -143,12 +143,12 @@ const jsonLd = [
             {redLabel && <div data-redlist><dt>{t.species.facts.swedishRedList}</dt><dd>{redLabel}</dd></div>}
             {iucnLabel && <div><dt>{t.species.facts.iucn}</dt><dd>{iucnLabel} ({s.iucn})</dd></div>}
           </dl>
-          <aside class="sp-app">
+          <aside class="sp-app sp-app--side">
             <p class="sp-app-h">{t.species.appHeadline}</p>
             <p>{appText(s, t)}</p>
             <PlayStoreBadge locale={locale} href={playHref(s.slug[locale], 'species')} alt={t.alt.playStoreBadge} size="small" />
           </aside>
-          {marginalia && <div class="note"><MarginNote text={marginalia} /></div>}
+          {marginalia && <div class="note note--side"><MarginNote text={marginalia} /></div>}
         </div>
       </div>
 
@@ -208,7 +208,7 @@ const jsonLd = [
                   <li class:list={[{ 'no-photo': !photo }]}>
                     {photo && view.species && (
                       <a href={speciesHref(view.species, locale)} tabindex="-1" aria-hidden="true">
-                        <Image src={photo} alt="" widths={[192]} sizes="96px" loading="lazy" decoding="async" />
+                        <Image src={photo} alt="" width={192} loading="lazy" decoding="async" />
                       </a>
                     )}
                     <div>
@@ -224,9 +224,20 @@ const jsonLd = [
             </ul>
           </section>
         )}
+        {/* The same app box and note as in the left column, for the single-column layout below 1024 px,
+            where they come after the look-alikes (spec §5). Only one copy is ever displayed: display: none
+            takes the other out of the tab order and the accessibility tree, and its lazy badge image is not
+            fetched (controller review, Task 10). */}
+        <aside class="sp-app sp-app--flow">
+          <p class="sp-app-h">{t.species.appHeadline}</p>
+          <p>{appText(s, t)}</p>
+          <PlayStoreBadge locale={locale} href={playHref(s.slug[locale], 'species')} alt={t.alt.playStoreBadge} size="small" />
+        </aside>
+        {marginalia && <div class="note note--flow"><MarginNote text={marginalia} /></div>}
         {rel.items.length > 0 && (
           <section class="more">
-            <h2>{moreHeading}</h2>
+            {/* The family name is Latin on the English page and tagged so (controller review, Task 10). */}
+            <h2>{rel.kind === 'family' ? <Fragment>{moreBefore}<span lang={familyLang}>{moreFamily}</span>{moreAfter}</Fragment> : moreHeading}</h2>
             <ul class="sp-cards" role="list">
               {rel.items.map((x) => <li><SpeciesCard species={x} locale={locale} /></li>)}
             </ul>
@@ -254,7 +265,13 @@ const jsonLd = [
   .spread { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto 1fr; grid-template-areas: 'left head' 'left body'; }
   .head { grid-area: head; padding-left: 36px; }
   .left { grid-area: left; padding-right: 28px; border-right: 1px dashed var(--line); }
-  .left-inner { position: sticky; top: 150px; display: flex; flex-direction: column; gap: 18px; }
+  /* Sticky only when the whole column fits in the window under the menu and the category bar (the script
+     below sets .is-sticky), otherwise it scrolls with the page: on a laptop the app box would sit below the
+     window edge until the end of the article (controller review, Task 10). The hero photos run from
+     landscape to 2:1 portrait, so the column is 780 to 1 200 px tall and no fixed min-height fits. */
+  .left-inner { top: 150px; display: flex; flex-direction: column; gap: 18px; }
+  .left-inner.is-sticky { position: sticky; }
+  .sp-app--flow, .note--flow { display: none; }
   .body { grid-area: body; padding-left: 36px; }
   h1 { font-size: clamp(40px, 4.6vw, 58px); line-height: 1.02; margin: 4px 0 0; overflow-wrap: anywhere; }
   .latin { margin: 2px 0 0; font-family: var(--font-script); font-size: 24px; color: var(--muted); }
@@ -291,17 +308,30 @@ const jsonLd = [
   @media (max-width: 1023px) {
     .spread { display: flex; flex-direction: column; gap: 18px; }
     .left, .left-inner, .body { display: contents; }
-    .head { order: 1; padding-left: 0; }
-    .plate.hero { order: 2; }
-    .facts { order: 3; }
-    .sp-lead { order: 4; margin-top: 0; }
-    .texts { order: 5; }
-    .plate.extra { order: 6; margin-top: 0; }
-    .looks-sec { order: 7; }
-    .sp-app { order: 8; }
-    .note { order: 9; }
-    .more { order: 10; }
-    .credits-wrap { order: 11; }
+    /* No CSS order: the DOM order is the mobile order of spec §5, so focus follows what is seen. */
+    .head { padding-left: 0; }
+    .sp-lead { margin-top: 0; }
+    .plate.extra { margin-top: 0; }
+    .sp-app--side, .note--side { display: none; }
+    .sp-app--flow, .note--flow { display: block; }
     .texts h2, .looks-sec h2, .more h2 { margin-top: 18px; }
   }
 </style>
+
+<script>
+  // Sticky only when the column fits (see .left-inner in the styles): measured, because the photo's shape
+  // decides the column's height. Re-measured when the column or the window changes size (photos, fonts).
+  const inner = document.querySelector<HTMLElement>('.left-inner');
+  if (inner) {
+    const desktop = window.matchMedia('(min-width: 1024px)');
+    const MARGIN = 16;
+    const update = () => {
+      const top = parseFloat(getComputedStyle(inner).top) || 0;
+      inner.classList.toggle('is-sticky', desktop.matches && inner.offsetHeight + top + MARGIN <= window.innerHeight);
+    };
+    update();
+    new ResizeObserver(update).observe(inner);
+    window.addEventListener('resize', update);
+    desktop.addEventListener('change', update);
+  }
+</script>

@@ -84,9 +84,18 @@ export async function getAllSpecies(): Promise<Species[]> {
   return built;
 }
 
+/**
+ * The comparison pages are built in Task 11, which comes after the first species pages go live (2026-10-09).
+ * Until their route exists no page may link to one, so getComparisons() returns nothing: the hub hides its
+ * comparison section and the look-alikes get no "Compare" link. Task 11 flips this to true (controller
+ * decision, Task 10 review).
+ */
+export const COMPARISONS_ENABLED = false;
+
 let builtComparisons: Comparison[] | undefined;
 /** The comparisons that get a page: written, published or previewed, and both species built. */
 export async function getComparisons(): Promise<Comparison[]> {
+  if (!COMPARISONS_ENABLED) return [];
   if (!builtComparisons) {
     const qids = new Set((await getAllSpecies()).map((s) => s.qid));
     builtComparisons = (await getCollection('comparisons'))

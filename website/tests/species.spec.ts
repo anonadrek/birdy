@@ -22,16 +22,20 @@ test.describe('ingångssidan', () => {
       await expect(page.locator('h1')).toContainText(h1);
       await expect(page.locator('.groups a')).toHaveCount(8);
       await expect(page.locator('[data-item]')).toHaveCount(17);
-      await expect(page.locator('[data-compare-link]')).toHaveCount(2);
+      // Comparisons are off until Task 11 builds their pages (COMPARISONS_ENABLED in lib/species.ts).
+      await expect(page.locator('[data-compare-link]')).toHaveCount(0);
       await expect(page.locator(`a[href="${about}"]`)).toHaveCount(1);
       await expect(page.locator(`link[rel="alternate"][hreflang="${path.startsWith('/sv') ? 'en' : 'sv'}"]`)).toHaveAttribute('href', `https://birdy.community${other}`);
       expect(errors).toEqual([]);
     });
   }
 
-  test('jämförelserna har namnen i svensk ordning', async ({ page }) => {
+  // Task 11 turns comparisons on and restores this test's original form:
+  // await expect(page.locator('[data-compare-link]')).toHaveText(['Blåmes eller talgoxe', 'Kaja eller skata']);
+  test('jämförelserna är avstängda tills deras sidor byggs (Task 11)', async ({ page }) => {
     await page.goto('/sv/arter/');
-    await expect(page.locator('[data-compare-link]')).toHaveText(['Blåmes eller talgoxe', 'Kaja eller skata']);
+    await expect(page.locator('[data-compare-link]')).toHaveCount(0);
+    await expect(page.locator('h2', { hasText: 'Lätta att blanda ihop' })).toHaveCount(0);
   });
 
   test('opublicerade, väntande och misslyckade arter syns inte', async ({ page }) => {
@@ -139,7 +143,7 @@ test.describe('gruppsidorna', () => {
     await expect(page.locator('[data-item]')).toHaveCount(3);
     await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
     await expect(page.locator('a[href*="utm_medium%3Dgroup"]')).toHaveCount(1);
-    await expect(page.locator('.sp-app')).toContainText('hjälper dig känna igen fåglarna');
+    await expect(page.locator('.sp-app:visible')).toContainText('hjälper dig känna igen fåglarna');
     expect(errors).toEqual([]);
   });
 
@@ -236,8 +240,8 @@ test.describe('artsidan', () => {
     const facts = page.locator('.facts');
     for (const text of ['Vetenskapligt namn', 'Mesar', 'Stannfågel', 'Cirka 14 cm', 'Livskraftig (LC)']) await expect(facts).toContainText(text);
     await expect(facts.locator('[data-redlist]')).toContainText('Inte rödlistad');
-    await expect(page.locator('.sp-app')).toContainText('på foto eller läte');
-    await expect(page.locator('.note')).toHaveText('Testanteckning i marginalen.');
+    await expect(page.locator('.sp-app:visible')).toContainText('på foto eller läte');
+    await expect(page.locator('.note:visible')).toHaveText('Testanteckning i marginalen.');
     await expect(page.locator('h2')).toContainText(['Så känner du igen den', 'Läte', 'Var och när', 'Föda och beteende', 'Kan förväxlas med', 'Fler tättingar']);
 
     const audio = page.locator('audio');
@@ -257,8 +261,12 @@ test.describe('artsidan', () => {
     const looks = page.locator('.looks li');
     await expect(looks).toHaveCount(1);
     await expect(looks.locator('.look-name a')).toHaveAttribute('href', '/sv/arter/blames/');
-    await expect(looks.locator('.look-compare')).toHaveAttribute('href', '/sv/arter/blames-eller-talgoxe/');
-    await expect(looks.locator('.look-compare')).toHaveText('Jämför blåmes och talgoxe');
+    // No compare link until Task 11 (COMPARISONS_ENABLED); Task 11 restores:
+    // .look-compare href '/sv/arter/blames-eller-talgoxe/', text 'Jämför blåmes och talgoxe'.
+    await expect(looks.locator('.look-compare')).toHaveCount(0);
+    // One small thumbnail file, with its own size attributes (controller review, Task 10).
+    await expect(looks.locator('img')).toHaveAttribute('width', '192');
+    await expect(looks.locator('img')).not.toHaveAttribute('srcset', /.+/);
 
     const keys = await page.locator('[data-photo], [data-audio]').evaluateAll((els) => els.map((e) => e.getAttribute('data-photo') ?? e.getAttribute('data-audio')));
     expect(keys).toEqual(['hero', 'audio', 'extra']);
@@ -268,7 +276,9 @@ test.describe('artsidan', () => {
     await expect(page.locator('[data-checked]')).toContainText('Kontrollerad mot källorna 20 november 2026');
     await expect(page.locator('time[data-reviewed]')).toHaveAttribute('datetime', '2026-11-20');
     await expect(page.locator('.credits a[href="/sv/arter/om-artsidorna/"]')).toHaveCount(1);
-    await expect(page.locator('a[href*="utm_campaign%3Dtalgoxe"]')).toHaveCount(1);
+    // Two copies in the DOM (left column, single column), one displayed (controller review, Task 10).
+    await expect(page.locator('a[href*="utm_campaign%3Dtalgoxe"]')).toHaveCount(2);
+    await expect(page.locator('a[href*="utm_campaign%3Dtalgoxe"]:visible')).toHaveCount(1);
     await expect(page.locator('#site-nav .links a[lang="en"]')).toHaveAttribute('href', '/species/great-tit/');
     // Not "page": the species page isn't the group's own page, so the active chip reads aria-current="true"
     // (controller review 2026-10-07, see Task 6's code block note).
@@ -282,8 +292,9 @@ test.describe('artsidan', () => {
     await page.goto('/species/great-tit/');
     await expect(page.locator('h1')).toHaveText('Great Tit');
     await expect(page.locator('[data-checked]')).toContainText('Checked against sources on 20 November 2026.');
-    await expect(page.locator('.look-compare')).toHaveText('Compare the Eurasian Blue Tit and the Great Tit');
-    await expect(page.locator('.sp-app')).toContainText('from a photo or its song');
+    // Task 11 restores: .look-compare text 'Compare the Eurasian Blue Tit and the Great Tit'.
+    await expect(page.locator('.look-compare')).toHaveCount(0);
+    await expect(page.locator('.sp-app:visible')).toContainText('from a photo or its song');
   });
 
   test('pärluggla: utan inspelning, data, extrafoto, föda och förväxlingsarter', async ({ page }) => {
@@ -296,7 +307,7 @@ test.describe('artsidan', () => {
     await expect(page.locator('h2', { hasText: 'Föda och beteende' })).toHaveCount(0);
     await expect(page.locator('h2', { hasText: 'Kan förväxlas med' })).toHaveCount(0);
     for (const label of ['I Sverige', 'Storlek', 'Svenska rödlistan 2025']) await expect(page.locator('.facts')).not.toContainText(label);
-    await expect(page.locator('.sp-app')).toContainText('hjälper dig känna igen fåglarna');
+    await expect(page.locator('.sp-app:visible')).toContainText('hjälper dig känna igen fåglarna');
     await expect(page.locator('[data-wiki-credit] [data-wiki]')).toHaveCount(1);
     expect(errors).toEqual([]);
   });
@@ -304,7 +315,7 @@ test.describe('artsidan', () => {
   for (const [path, text] of [['/sv/arter/kaja/', 'på lätet,'], ['/sv/arter/trana/', 'på foto,'], ['/species/western-jackdaw/', 'from its song']] as const) {
     test(`approtan på ${path} säger bara vad appen klarar`, async ({ page }) => {
       await page.goto(path);
-      await expect(page.locator('.sp-app')).toContainText(text);
+      await expect(page.locator('.sp-app:visible')).toContainText(text);
     });
   }
 
@@ -340,7 +351,7 @@ test.describe('artsidan', () => {
     await expect(page.locator('[data-data-credit]')).toHaveCount(1);
     await expect(page.locator('[data-data-credit]')).toContainText('Artportalen');
     await expect(page.locator('[data-data-credit]')).not.toContainText('Rödlista');
-    await expect(page.locator('.sp-app')).toContainText('hjälper dig känna igen fåglarna');
+    await expect(page.locator('.sp-app:visible')).toContainText('hjälper dig känna igen fåglarna');
     // The look-alike has a record but no page in this build (unpublished): its name, no link, photo or comparison.
     const look = page.locator('.looks li');
     await expect(look).toHaveCount(1);
@@ -395,21 +406,76 @@ test.describe('artsidan', () => {
     }
   });
 
-  test('vänsterspalten följer med på dator', async ({ page }) => {
-    await page.setViewportSize({ width: 1440, height: 900 });
+  test('vänsterspalten följer med på dator när den får plats', async ({ page }) => {
+    await page.setViewportSize({ width: 1920, height: 1080 });
     await page.goto('/sv/arter/talgoxe/');
+    await expect(page.locator('.left-inner')).toHaveClass(/is-sticky/);
     await page.evaluate(() => window.scrollTo({ top: 900, behavior: 'instant' }));
     const box = (await page.locator('.plate.hero').boundingBox())!;
     expect(box.y).toBeGreaterThanOrEqual(76);
     expect(box.y).toBeLessThan(260);
   });
 
+  // The column (photo, facts, app box, note) is about 820 px tall on the test data and up to 1 200 px with a
+  // portrait photo: on a laptop it scrolls with the page, so the app box is reached by scrolling to it
+  // instead of staying below the window edge until the end of the article (controller review, Task 10).
+  for (const [width, height] of [[1440, 900], [1366, 657], [1024, 768]] as const) {
+    test(`approtan nås genom att scrolla i ${width}x${height}`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto('/sv/arter/talgoxe/');
+      await expect(page.locator('.left-inner')).not.toHaveClass(/is-sticky/);
+      const app = page.locator('.sp-app:visible');
+      const docTop = await app.evaluate((el) => el.getBoundingClientRect().top + window.scrollY);
+      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), docTop - 80);
+      const box = (await app.boundingBox())!;
+      expect(box.y).toBeGreaterThanOrEqual(0);
+      expect(box.y + box.height).toBeLessThanOrEqual(height);
+      // And it stays in the page: scrolling further moves it up, it does not stick below the edge.
+      await page.evaluate(() => window.scrollBy({ top: 200, behavior: 'instant' }));
+      expect((await app.boundingBox())!.y).toBeLessThan(box.y);
+    });
+  }
+
   test('mobilen: rubrik, foto, fakta, ingress och approta i den ordningen', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/sv/arter/talgoxe/');
     const y = async (sel: string) => (await page.locator(sel).first().boundingBox())!.y;
-    const order = [await y('h1'), await y('.plate.hero'), await y('.facts'), await y('.sp-lead'), await y('.looks-sec'), await y('.sp-app')];
+    const order = [await y('h1'), await y('.plate.hero'), await y('.facts'), await y('.sp-lead'), await y('.looks-sec'), await y('.sp-app:visible'), await y('.note:visible'), await y('.more'), await y('.credits')];
     for (let i = 1; i < order.length; i += 1) expect(order[i]).toBeGreaterThan(order[i - 1]);
+  });
+
+  test('mobilen: tabbordningen följer det man ser, spelaren före Play-märket', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/sv/arter/talgoxe/');
+    const stops: string[] = [];
+    // One pass through the page: stop when focus leaves the document (it reaches <body> before wrapping).
+    for (let i = 0; i < 120 && stops.at(-1) !== 'body'; i += 1) {
+      await page.keyboard.press('Tab');
+      stops.push(await page.evaluate(() => {
+        const el = document.activeElement as HTMLElement | null;
+        if (!el) return '';
+        if (el.matches('[data-crumb]')) return 'crumb';
+        if (el.tagName === 'AUDIO') return 'player';
+        if (el.matches('a[href*="utm_campaign%3Dtalgoxe"]')) return 'badge';
+        if (el.closest('.credits')) return 'credits';
+        return el.tagName.toLowerCase();
+      }));
+    }
+    const at = (stop: string) => stops.indexOf(stop);
+    expect(at('crumb')).toBeGreaterThanOrEqual(0);
+    expect(at('player')).toBeGreaterThan(at('crumb'));
+    expect(at('badge')).toBeGreaterThan(at('player'));
+    expect(at('credits')).toBeGreaterThan(at('badge'));
+    expect(stops.filter((x) => x === 'badge')).toHaveLength(1);
+  });
+
+  test('"More in the … family" märker det latinska familjenamnet (engelska)', async ({ page }) => {
+    await page.goto('/species/tawny-owl/');
+    await expect(page.locator('.more h2')).toHaveText('More in the Strigidae family');
+    await expect(page.locator('.more h2 span[lang="la"]')).toHaveText('Strigidae');
+    await page.goto('/sv/arter/kattuggla/');
+    await expect(page.locator('.more h2')).toHaveText('Fler egentliga ugglor');
+    await expect(page.locator('.more h2 span[lang]')).toHaveCount(0);
   });
 
   for (const width of [360, 390, 430]) {
