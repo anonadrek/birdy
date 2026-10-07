@@ -2,3 +2,6 @@
 //   cp Local.xcconfig.sample Local.xcconfig
 // Samma nyckel som Androids gradle.properties (MAPTILER_API_KEY).
 MAPTILER_API_KEY =
+// Kartstilens id från MapTiler Cloud (Albins egen stil, samma som Androids MAPTILER_STYLE_ID).
+// Tomt = MapTilers standardstil (DEFAULT_MAPTILER_STYLE_ID i composeApp/.../map/MapTilerUrls.kt).
+MAPTILER_STYLE_ID =

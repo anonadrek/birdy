@@ -101,11 +101,12 @@ if (cutoffOverride != null && !billingTestBuild) {
 val releaseVersionName = releaseVersionNameBase + (if (billingTestBuild) "-koptest" else "")
 
 // Early-user cutoff (spec §5.1): installs before this instant keep Premium forever.
-// Default = planned go-live + 48 h = 2026-10-16T00:00 Europe/Stockholm
-// (2026-10-15T22:00:00Z), for go-live no later than 2026-10-14. Moved 2026-10-01
-// from 2026-10-02 because go-live slipped (Albin's call); move it again BEFORE
-// building vC129 if go-live slips past 2026-10-14. NEVER change it after 1.3.0 ships.
-val grandfatherCutoffMs = cutoffOverride ?: "1792101600000"
+// Default = planned go-live + 48 h, rounded up to midnight = 2026-10-17T00:00
+// Europe/Stockholm (2026-10-16T22:00:00Z), for go-live on Thursday 2026-10-15. Moved
+// 2026-10-01 from 2026-10-02 to 2026-10-16, then 2026-10-07 to 2026-10-17 when the launch
+// day was set (Albin's call); move it again BEFORE building vC130 if go-live slips past
+// 2026-10-15. NEVER change it after 1.3.0 ships.
+val grandfatherCutoffMs = cutoffOverride ?: "1792188000000"
 
 android {
     namespace = "se.birdy.android"
@@ -317,14 +318,31 @@ val verifyReleaseKeys by tasks.registering {
     inputs.property("releaseVersionName", releaseVersionName)
     inputs.property("grandfatherCutoffMs", grandfatherCutoffMs)
     inputs.property("billingTestBuild", billingTestBuild)
+    // The map's MapTiler style (composeApp bakes it into BuildConfig and rejects a malformed id).
+    // Not a secret; printed so the vC130 build log shows which style ships. Unset is legal (the
+    // app falls back to MapTiler's stock style), so it only warns, never fails.
+    inputs.property(
+        "mapTilerStyleId",
+        providers.gradleProperty("MAPTILER_STYLE_ID").map { it.trim() }.orElse(""),
+    )
     doLast(
         Action {
+            val mapTilerStyleId = inputs.properties["mapTilerStyleId"] as String
             logger.lifecycle(
                 "Birdy release config: versionCode=${inputs.properties["releaseVersionCode"]} " +
                     "versionName=${inputs.properties["releaseVersionName"]} " +
                     "GRANDFATHER_CUTOFF_MS=${inputs.properties["grandfatherCutoffMs"]} " +
-                    "billingTestBuild=${inputs.properties["billingTestBuild"]}",
+                    "billingTestBuild=${inputs.properties["billingTestBuild"]} " +
+                    "MAPTILER_STYLE_ID=${mapTilerStyleId.ifEmpty { "unset" }}",
             )
+            if (mapTilerStyleId.isEmpty()) {
+                logger.warn(
+                    "warning: MAPTILER_STYLE_ID is not set, so the map uses MapTiler's stock style " +
+                        "(DEFAULT_MAPTILER_STYLE_ID in composeApp's MapTilerUrls.kt), not Birdy's own " +
+                        "style. Allowed, but if the style exists, put its id in " +
+                        "~/.gradle/gradle.properties and build again.",
+                )
+            }
             val missing =
                 inputs.properties
                     .filter { (name, present) -> name.startsWith("present.") && present == false }

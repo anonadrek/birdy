@@ -74,6 +74,8 @@ internal object AndroidNotificationPayloads {
                             ?.name
                     },
                     selectDailyBird = { date -> dailyBirdSelector.selectFor(date) },
+                    // The day's recorded bird wins over the selector, as in the app.
+                    dailyBirdHistory = dailyBirdHistory,
                     dailyBirdMatchCount = { dailyBirdHistory.totalMatchCount() },
                     timeZone = TimeZone.currentSystemDefault(),
                     clock = Clock.System,

@@ -57,7 +57,7 @@ Kotlin Multiplatform och Compose Multiplatform: affärslogik och UI delas mellan
 
 ## Bygga
 
-**Krav:** JDK 21 och Android SDK 36. Kartan behöver `MAPTILER_API_KEY` i `~/.gradle/gradle.properties` för Android och i `iosApp/Local.xcconfig` för iOS (mall: `iosApp/Local.xcconfig.sample`); ingen av filerna checkas in. iOS kräver en Mac med Xcode och xcodegen. Webben kräver Node.js 22.12 eller senare.
+**Krav:** JDK 21 och Android SDK 36. Kartan behöver `MAPTILER_API_KEY` och `MAPTILER_STYLE_ID` (Birdys egen kartstil i MapTiler; utan den visas MapTilers standardstil `landscape`, och rutorna färgas aldrig om i appen eftersom MapTilers villkor förbjuder det) i `~/.gradle/gradle.properties` för Android och i `iosApp/Local.xcconfig` för iOS (mall: `iosApp/Local.xcconfig.sample`); ingen av filerna checkas in. iOS kräver en Mac med Xcode och xcodegen. Webben kräver Node.js 22.12 eller senare.
 
 ```bash
 # Android

@@ -16,6 +16,7 @@ import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import se.birdy.app.i18n.AppStrings
 import se.birdy.app.testing.FakeBadgeRepository
+import se.birdy.app.testing.FakeDailyBirdHistoryRepository
 import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.testing.FakeUserPreferences
@@ -23,6 +24,7 @@ import se.birdy.app.testing.attachComposeResourcesContext
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
 import se.birdy.content.model.SpeciesImage
+import se.birdy.data.dailybird.DailyBirdHistoryRepository
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.dailybird.DailyBird
 import se.birdy.domain.dailybird.SeasonTag
@@ -48,6 +50,7 @@ class DailyBirdNotificationTest {
     private fun payloads(
         withPhotos: Boolean = true,
         appLanguage: Locale = Locale.SV,
+        history: DailyBirdHistoryRepository? = null,
     ): NotificationPayloads {
         val prefs = FakeUserPreferences()
         runBlocking { prefs.setDailyBirdPushEnabled(true) }
@@ -71,8 +74,9 @@ class DailyBirdNotificationTest {
             badgeRepo = FakeBadgeRepository(),
             badgeCatalog = BadgeCatalog(version = 1, badges = emptyList()),
             speciesByQid = { mapOf(SpeciesId("Q25485") to withPhoto) },
-            speciesNameFor = { "Talgoxe" },
+            speciesNameFor = { qid -> mapOf("Q25485" to "Talgoxe", "Q25404" to "Blåmes")[qid] },
             selectDailyBird = { DailyBird("Q25485", SeasonTag.PRESENT) },
+            dailyBirdHistory = history,
             dailyBirdMatchCount = { 0 },
             timeZone = TimeZone.of("Europe/Stockholm"),
             clock = Clock.System,
@@ -161,6 +165,39 @@ class DailyBirdNotificationTest {
                 .getDefault()
                 .language,
         )
+    }
+
+    /**
+     * The notification names the bird the app shows: the one recorded for the day (the history
+     * keeps the first bird of a day and every save is matched against it), not the selector's,
+     * which can differ on the day an update changes the selection (1.3.0 drops extinct species).
+     * Same rule as DailyBirdTracker, for the worker's fresh process and the live graph alike.
+     */
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `the recorded bird of the day wins over the selector`() {
+        attachComposeResourcesContext()
+        val date = LocalDate(2026, 10, 6)
+        val history = FakeDailyBirdHistoryRepository().apply { recorded[date] = "Q25404" }
+        val c = runBlocking { payloads(history = history).dailyBird(date) }!!
+        assertEquals("Dagens fågel: Blåmes", c.title)
+        assertEquals("birdy://species/Q25404", c.deepLink)
+        assertEquals("birdy://species/Q25404", c.actions.first().deepLink)
+        // Blåmes has no photo in this fixture: never Talgoxe's photo under Blåmes' name.
+        assertNull(c.imagePath)
+        assertNull(c.photoCredit)
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `with nothing recorded for the day the selector's bird is named`() {
+        attachComposeResourcesContext()
+        val date = LocalDate(2026, 10, 6)
+        val history = FakeDailyBirdHistoryRepository().apply { recorded[LocalDate(2026, 10, 5)] = "Q25404" }
+        val c = runBlocking { payloads(history = history).dailyBird(date) }!!
+        assertEquals("Dagens fågel: Talgoxe", c.title)
+        assertEquals("birdy://species/Q25485", c.deepLink)
+        assertNull(history.recorded[date], "the notification only reads the history, the app records the day")
     }
 
     @Test

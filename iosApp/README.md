@@ -5,7 +5,10 @@ Generated Xcode project — edit `project.yml`, then regenerate with `xcodegen g
 `ComposeApp` framework via Gradle (needs JDK 21 at `~/.local/java21`).
 
 Open `Birdy.xcodeproj`, scheme `Birdy`, and run on a simulator (iOS 16+).
-Copy `Local.xcconfig.sample` to `Local.xcconfig` and add the MapTiler key for the map.
+Copy `Local.xcconfig.sample` to `Local.xcconfig` and add the MapTiler key for the map, and the
+id of Birdy's own MapTiler style as `MAPTILER_STYLE_ID` (left empty, the map uses MapTiler's stock
+style, see `MapTilerUrls.kt`). The tiles are shown exactly as MapTiler serves them: MapTiler's
+terms forbid recolouring them, so the map's colours come from the style.
 The pre-build script `tools/fetch_ios_selectops.sh` fetches the SHA-pinned
 `TensorFlowLiteSelectTfOps` 2.17.0 for sound ID. It is device only, so the simulator
 shows an honest error state (or the DEBUG demo banner) instead of real audio inference.
