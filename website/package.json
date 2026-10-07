@@ -17,7 +17,7 @@
     "build:fixtures": "node scripts/env-run.mjs SPECIES_FIXTURES=1 -- astro build --force",
     "build:preview-fixtures": "node scripts/env-run.mjs SPECIES_FIXTURES=1 SPECIES_PREVIEW=1 -- astro build --force --outDir dist-preview",
     "build:prod": "node scripts/env-run.mjs SPECIES_FIXTURES=0 SPECIES_PREVIEW=0 -- astro build --force",
-    "build:empty": "node scripts/env-run.mjs SPECIES_FIXTURES=0 SPECIES_PREVIEW=0 -- astro build --force --outDir dist-empty",
+    "build:empty": "node scripts/env-run.mjs SPECIES_FIXTURES=0 SPECIES_PREVIEW=0 SPECIES_EMPTY=1 -- astro build --force --outDir dist-empty",
     "test:preview-build": "npm run build:preview-fixtures && node scripts/check-preview-build.mjs",
     "test:empty-hub": "npm run build:empty && node scripts/check-empty-hub.mjs",
     "fixtures:species": "node tests/fixtures/make-species-fixtures.mjs",

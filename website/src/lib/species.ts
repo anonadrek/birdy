@@ -3,7 +3,7 @@ import type { ImageMetadata } from 'astro';
 import type { z } from 'astro/zod';
 import groupData from '../data/species-groups.json';
 import type { Copy, Locale } from './i18n';
-import { comparisonsDir, hasPageContract, isComparisonBuilt, isPreview, isSpeciesBuilt, speciesDir, useFixtures } from './species-source.mjs';
+import { comparisonsDir, hasPageContract, isComparisonBuilt, isPreview, isSpeciesBuilt, speciesDir, useEmptyData, useFixtures } from './species-source.mjs';
 import type { speciesPage } from './species-schema.mjs';
 import { normalizeSearch } from './species-search.mjs';
 import { audio as speciesAudio, images as speciesImages } from 'virtual:birdy-species-media';
@@ -45,7 +45,7 @@ const images: ReadonlyMap<string, ImageMetadata> = speciesImages;
 export function speciesImage(file: string): ImageMetadata {
   const hit = images.get(file);
   if (!hit) {
-    const dir = useFixtures() ? 'tests/fixtures/species-assets' : 'src/assets/species';
+    const dir = useEmptyData() ? 'tests/fixtures/empty/species-assets' : useFixtures() ? 'tests/fixtures/species-assets' : 'src/assets/species';
     throw new Error(`Artbilden saknas: ${file} (${dir}; bara arter som får en sida i det här bygget har foton)`);
   }
   return hit;

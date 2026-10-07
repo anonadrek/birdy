@@ -5,7 +5,9 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { audioPublicPath, builtSpeciesMedia, isComparisonBuilt, isPreview, isSpeciesBuilt, readJsonDir } from '../../src/lib/species-source.mjs';
+import {
+  assetsDir, audioPublicPath, builtSpeciesMedia, comparisonsDir, isComparisonBuilt, isPreview, isSpeciesBuilt, readJsonDir, speciesDir, useEmptyData,
+} from '../../src/lib/species-source.mjs';
 
 const ok = {
   status: 'ok', publish: true,
@@ -98,6 +100,60 @@ test('VERCEL_ENV=preview (eller inget VERCEL_ENV) tillåter SPECIES_PREVIEW=1', 
   });
   withEnv({ SPECIES_PREVIEW: '1', VERCEL_ENV: undefined }, () => {
     assert.equal(isPreview(), true);
+  });
+});
+
+test('useEmptyData läser SPECIES_EMPTY från miljön', () => {
+  withEnv({ SPECIES_EMPTY: '1', VERCEL_ENV: undefined }, () => {
+    assert.equal(useEmptyData(), true);
+  });
+  withEnv({ SPECIES_EMPTY: undefined, VERCEL_ENV: undefined }, () => {
+    assert.equal(useEmptyData(), false);
+  });
+  withEnv({ SPECIES_EMPTY: '0', VERCEL_ENV: undefined }, () => {
+    assert.equal(useEmptyData(), false);
+  });
+});
+
+test('VERCEL_ENV=production spärrar SPECIES_EMPTY=1 (det tomma testläget får aldrig byggas i Production)', () => {
+  withEnv({ SPECIES_EMPTY: '1', VERCEL_ENV: 'production' }, () => {
+    assert.throws(() => useEmptyData(), /VERCEL_ENV=production/);
+  });
+});
+
+test('VERCEL_ENV=preview (eller inget VERCEL_ENV) tillåter SPECIES_EMPTY=1', () => {
+  withEnv({ SPECIES_EMPTY: '1', VERCEL_ENV: 'preview' }, () => {
+    assert.equal(useEmptyData(), true);
+  });
+  withEnv({ SPECIES_EMPTY: '1', VERCEL_ENV: undefined }, () => {
+    assert.equal(useEmptyData(), true);
+  });
+});
+
+test('SPECIES_EMPTY pekar katalogerna på tests/fixtures/empty/, oavsett SPECIES_FIXTURES', () => {
+  withEnv({ SPECIES_EMPTY: '1', SPECIES_FIXTURES: undefined, VERCEL_ENV: undefined }, () => {
+    assert.equal(speciesDir(), 'tests/fixtures/empty/species');
+    assert.equal(comparisonsDir(), 'tests/fixtures/empty/comparisons');
+    assert.equal(assetsDir(), 'tests/fixtures/empty/species-assets');
+  });
+  // SPECIES_EMPTY wins even when SPECIES_FIXTURES is also set (defensive precedence, not a real combination).
+  withEnv({ SPECIES_EMPTY: '1', SPECIES_FIXTURES: '1', VERCEL_ENV: undefined }, () => {
+    assert.equal(speciesDir(), 'tests/fixtures/empty/species');
+    assert.equal(comparisonsDir(), 'tests/fixtures/empty/comparisons');
+    assert.equal(assetsDir(), 'tests/fixtures/empty/species-assets');
+  });
+});
+
+test('utan SPECIES_EMPTY pekar katalogerna som förut: fixtures eller src/data/', () => {
+  withEnv({ SPECIES_EMPTY: undefined, SPECIES_FIXTURES: '1', VERCEL_ENV: undefined }, () => {
+    assert.equal(speciesDir(), 'tests/fixtures/species');
+    assert.equal(comparisonsDir(), 'tests/fixtures/comparisons');
+    assert.equal(assetsDir(), 'tests/fixtures/species-assets');
+  });
+  withEnv({ SPECIES_EMPTY: undefined, SPECIES_FIXTURES: undefined, VERCEL_ENV: undefined }, () => {
+    assert.equal(speciesDir(), 'src/data/species');
+    assert.equal(comparisonsDir(), 'src/data/comparisons');
+    assert.equal(assetsDir(), 'src/assets/species');
   });
 });
 

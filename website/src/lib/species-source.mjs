@@ -2,8 +2,11 @@
 // Plain JS so astro.config.mjs, content.config.ts, src/lib/species.ts and the check scripts share one rule.
 //   SPECIES_FIXTURES=1  read the test data in tests/fixtures/ instead of src/data/ and src/assets/species/
 //   SPECIES_PREVIEW=1   also build verified pages that are not published yet (Vercel Preview)
-// Both are off unless exactly '1' (unset, '0' or anything else means off); `npm run build:prod` pins
-// both to '0' explicitly, so an inherited shell variable can never silently change a production build.
+//   SPECIES_EMPTY=1     read the intentionally empty tests/fixtures/empty/ instead, overriding
+//                       SPECIES_FIXTURES, for testing the zero-species state (see useEmptyData below)
+// All three are off unless exactly '1' (unset, '0' or anything else means off); `npm run build:prod` pins
+// SPECIES_FIXTURES and SPECIES_PREVIEW to '0' explicitly, so an inherited shell variable can never
+// silently change a production build.
 import { createHash } from 'node:crypto';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -25,10 +28,30 @@ export function isPreview() {
   return preview;
 }
 
-/** Folders relative to the website root. */
-export const speciesDir = () => (useFixtures() ? 'tests/fixtures/species' : 'src/data/species');
-export const comparisonsDir = () => (useFixtures() ? 'tests/fixtures/comparisons' : 'src/data/comparisons');
-export const assetsDir = () => (useFixtures() ? 'tests/fixtures/species-assets' : 'src/assets/species');
+/**
+ * An explicit, intentionally empty data set (tests/fixtures/empty/), for testing the zero-species
+ * state (controller review 2026-10-07: SpeciesHub.astro's noindex + lead-only rendering, the
+ * sitemap exclusion in Task 14, the hidden nav/footer/guide links in Task 13) without depending on
+ * src/data/species/ being empty for real. That emptiness is only temporary (Task 16 fills it in one
+ * species at a time), and a check tied to it would start failing the moment the first species is
+ * published, a trap for both CI and the publish loop. Same production guard as isPreview(): this
+ * should never reach Vercel at all (no build script sets it there), but Production must not honour
+ * it even if it leaked in.
+ */
+export function useEmptyData() {
+  const empty = process.env.SPECIES_EMPTY === '1';
+  if (empty && process.env.VERCEL_ENV === 'production') {
+    throw new Error(
+      'SPECIES_EMPTY=1 är satt men VERCEL_ENV=production: det tomma testläget för noll arter får aldrig byggas i Vercels Production.',
+    );
+  }
+  return empty;
+}
+
+/** Folders relative to the website root. SPECIES_EMPTY wins over SPECIES_FIXTURES if both are set. */
+export const speciesDir = () => (useEmptyData() ? 'tests/fixtures/empty/species' : useFixtures() ? 'tests/fixtures/species' : 'src/data/species');
+export const comparisonsDir = () => (useEmptyData() ? 'tests/fixtures/empty/comparisons' : useFixtures() ? 'tests/fixtures/comparisons' : 'src/data/comparisons');
+export const assetsDir = () => (useEmptyData() ? 'tests/fixtures/empty/species-assets' : useFixtures() ? 'tests/fixtures/species-assets' : 'src/assets/species');
 
 /**
  * Written (ok) and verified (spec Revision 2026-10-05): a record the site may build, so the one held to

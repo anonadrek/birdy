@@ -1,21 +1,20 @@
 #!/usr/bin/env node
-// Checks the species hub's zero-species state (spec 2026-09-25 §14, controller review 2026-10-07):
-// right after Task 15 merges this branch's code to `main`, and until Task 16 publishes the first real
-// species, `src/data/species/` is genuinely empty (it holds only LICENSE.md today) and the production
-// build goes through with zero built species (Task 15 Step 4). The hub must not then offer an indexable,
-// empty page: it gets noindex and shows only its lead paragraph, no search box, group grid, comparison
-// list or A-to-Z list (all of which would be empty or dead anyway).
+// Checks the species hub's zero-species state (spec 2026-09-25 §14, controller review 2026-10-07): the
+// production build must go through cleanly with zero published species (Task 15 Step 4, the window
+// between this branch's code merging to `main` and Task 16 publishing the first real one). The hub must
+// not then offer an indexable, empty page: it gets noindex and shows only its lead paragraph, no search
+// box, group grid, comparison list or A-to-Z list (all of which would be empty or dead anyway).
 //
-// This reads `dist-empty/` (npm run build:empty, SPECIES_FIXTURES=0 against the real, currently empty
-// src/data/species/), not the fixtures build in dist/: the two must never be confused, since dist/ holds
-// the 16-species fixture build the rest of the Playwright suite depends on.
+// This reads `dist-empty/` (npm run build:empty, SPECIES_EMPTY=1, which points src/lib/species-source.mjs
+// at the intentionally empty tests/fixtures/empty/ rather than src/data/species/ — a deliberate test
+// fixture, not the real data's current, temporary emptiness, so this check stays meaningful and green
+// forever, including after Task 16 has published real species on `main`). Not the fixtures build in
+// dist/: the two must never be confused, since dist/ holds the 16-species fixture build the rest of the
+// Playwright suite depends on.
 //
-// NOTE for whoever picks up Task 12 and Task 14: once AboutSpeciesPages.astro exists, extend this
-// script with the same two checks for sv/arter/om-artsidorna/ and species/about-these-pages/ (Task 12
-// applies the same zero-species noindex rule there). Once this scenario is no longer real (Task 16 has
-// published species on `main`), `npm run test:empty-hub` will start failing here because the hub pages
-// will legitimately show species again — that is expected, not a regression; retire or adapt this script
-// at that point instead of trying to keep it green against real data.
+// NOTE for whoever picks up Task 12 and Task 14: once AboutSpeciesPages.astro exists, extend this script
+// with the same two checks for sv/arter/om-artsidorna/ and species/about-these-pages/ (Task 12 applies
+// the same zero-species noindex rule there).
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
