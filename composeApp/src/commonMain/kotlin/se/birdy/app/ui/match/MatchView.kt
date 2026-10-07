@@ -2,6 +2,7 @@ package se.birdy.app.ui.match
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,7 +34,10 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -44,6 +48,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontStyle
@@ -86,6 +91,7 @@ import se.birdy.app.ui.components.PhotoBackButton
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
+import se.birdy.app.ui.components.StatusBarBand
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.AccentCopperLight
 import se.birdy.app.ui.theme.CardPaper
@@ -184,6 +190,10 @@ internal fun MatchView(
     val isSaved = state.saveStatus == MatchResultUiState.SaveStatus.Saved
     val isSaving = state.saveStatus == MatchResultUiState.SaveStatus.Saving
 
+    val scrollState = rememberScrollState()
+    var heroHeightPx by remember { mutableIntStateOf(0) }
+    val heroScrolledAway by rememberHeroScrolledAway(scrollState, heroHeightPx)
+
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
         val photoHeight = rememberMatchPhotoHeight(viewportHeight = maxHeight)
         Column(
@@ -194,7 +204,7 @@ internal fun MatchView(
                     // its own MossCreme fill or a seam of a different color shows through the
                     // corner cutouts (see PaperSheet's KDoc).
                     .background(MossCreme)
-                    .verticalScroll(rememberScrollState()),
+                    .verticalScroll(scrollState),
         ) {
             val heroImage =
                 state.species.images.firstOrNull { it.role == "hero" }
@@ -203,6 +213,7 @@ internal fun MatchView(
             val confidenceLabel = stringResource(Res.string.match_sub_confidence, "$confidencePct%")
 
             PhotoHero(
+                modifier = Modifier.onSizeChanged { heroHeightPx = it.height },
                 kicker = stringResource(Res.string.match_eyebrow, state.stampNumber),
                 title = state.species.name,
                 latinName = state.species.scientificName,
@@ -292,6 +303,7 @@ internal fun MatchView(
                 }
             }
         }
+        StatusBarBand(heroScrolledAway = heroScrolledAway, color = MossCreme)
         // Fixed over the scrolling photo and sheet: after "Spara" the "Avbryt" button is gone and
         // this is the way back (release 1.3.0 Task 7b). Disabled while saving, like "Avbryt"
         // (MatchResultScreen swallows the back gesture then).
@@ -314,6 +326,22 @@ internal fun MatchView(
                 onDismiss = onDismissUnlock,
             )
         }
+    }
+}
+
+/**
+ * True once the hero ([heroHeightPx] tall, at the top of the scrolling column) no longer reaches
+ * under the status bar: the same test PhotoHero uses to switch the status bar icons. Only a
+ * short window (landscape, large text) can scroll that far.
+ */
+@Composable
+private fun rememberHeroScrolledAway(
+    scrollState: ScrollState,
+    heroHeightPx: Int,
+): State<Boolean> {
+    val statusBarPx = WindowInsets.statusBars.getTop(LocalDensity.current)
+    return remember(scrollState, heroHeightPx, statusBarPx) {
+        derivedStateOf { heroHeightPx > 0 && heroHeightPx - scrollState.value <= statusBarPx }
     }
 }
 

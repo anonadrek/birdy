@@ -9,23 +9,31 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -68,6 +76,7 @@ import se.birdy.app.ui.components.PaperSheetOverlap
 import se.birdy.app.ui.components.PhotoBackButton
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.PremiumTeaserCard
+import se.birdy.app.ui.components.StatusBarBand
 import se.birdy.app.ui.encyclopedia.localizedFamilyLabel
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaBorder
@@ -82,7 +91,6 @@ import se.birdy.app.util.speciesImageUri
 import se.birdy.content.Abundance
 import se.birdy.content.Locale
 import se.birdy.content.model.Species
-import se.birdy.content.model.SpeciesImage
 
 @Composable
 fun SpeciesProfileScreen(
@@ -125,7 +133,6 @@ private fun ProfileContent(
     showPremiumTeaser: Boolean,
 ) {
     val familyLabel = localizedFamilyLabel(locale, species.taxonomy.family, species.taxonomy.familySv)
-    val heroImage = species.images.firstOrNull { it.role == "hero" } ?: species.images.firstOrNull()
     // The family lives ONLY in the kicker now — the quality review found it shown twice (kicker
     // + an abundance-adjacent pill in ProfilePillRow, removed below). SV pairs the Swedish family
     // name with the Latin one ("Mesar · Paridae") when both exist and differ; EN shows the family
@@ -141,17 +148,37 @@ private fun ProfileContent(
             familyLabel
         }
 
+    val listState = rememberLazyListState()
+    val heroScrolledAway by rememberHeroScrolledAway(listState)
     Box(modifier = Modifier.fillMaxSize().background(MossCreme)) {
         ProfileList(
             species = species,
             kicker = kicker,
-            heroImage = heroImage,
             onPremiumClick = onPremiumClick,
             showPremiumTeaser = showPremiumTeaser,
+            listState = listState,
         )
+        StatusBarBand(heroScrolledAway = heroScrolledAway, color = MossCreme)
         // Over the list, not in the hero's topBar: it stays put when the photo scrolls away
         // (release 1.3.0 Task 7b).
         PhotoBackButton(onBack = onBack, contentDescription = stringResource(Res.string.profile_back))
+    }
+}
+
+/**
+ * True once the hero (the list's first item) no longer reaches under the status bar: the same
+ * test PhotoHero uses to switch the status bar icons, read from the list's layout.
+ */
+@Composable
+private fun rememberHeroScrolledAway(listState: LazyListState): State<Boolean> {
+    val statusBarPx = WindowInsets.statusBars.getTop(LocalDensity.current)
+    return remember(listState, statusBarPx) {
+        derivedStateOf {
+            val visible = listState.layoutInfo.visibleItemsInfo
+            // Nothing laid out yet (the first frame): the hero is about to be there.
+            val hero = visible.firstOrNull { it.index == 0 }
+            visible.isNotEmpty() && (hero == null || hero.offset + hero.size <= statusBarPx)
+        }
     }
 }
 
@@ -163,12 +190,13 @@ private fun ProfileContent(
 private fun ProfileList(
     species: Species,
     kicker: String,
-    heroImage: SpeciesImage?,
     onPremiumClick: () -> Unit,
     showPremiumTeaser: Boolean,
+    listState: LazyListState,
 ) {
     val serif = rememberDmSerifDisplay()
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
+    val heroImage = species.images.firstOrNull { it.role == "hero" } ?: species.images.firstOrNull()
+    LazyColumn(modifier = Modifier.fillMaxSize(), state = listState) {
         item {
             PhotoHero(
                 kicker = kicker,
