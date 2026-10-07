@@ -3,9 +3,381 @@
   "status": "pending",
   "publish": false,
   "review": {},
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Rörsångaren är 12,5–14 cm lång och har ett vingspann på 17–21 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rörsångaren mäter 12,5–14 cm lång och har ett vingspann på 17–21 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Rörsångaren väger ungefär 10–15 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vikten är ungefär 10-15 gram."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Ovansidan är brun med svagt olivgrå ton på ryggen och mer rostbrun övergump.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ovansidan är brun där ryggen ofta med svagt olivgrå ton medan övergumpen mer rostbrun."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Ryggen är brun och ostreckad.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The adult has an unstreaked brown back and buff underparts."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Undersidan är beigevit och strupen vitaktig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Undersidan är beigevit och strupen vitaktig."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Den har flack panna, lång, smal och spetsig näbb samt gråbruna ben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har flack panna, lång, smal och spetsig näbb och gråbruna ben."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hane och hona ser likadana ut, men unga fåglar är varmare beige undertill.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The sexes are identical, as with most warblers, but young birds are richer buff below."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "voice",
+      "sv": "Sången är ett långsamt tjattrande med inslag av visslingar och härmljud och hörs mest i skymning och gryning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången, som mest hörs i skymning och gryning, är ett långsamt tjattrande med inslag av visslingar och härmljud."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Sången kan återges som ett långsamt, tjattrande ”jit-jit-jit”.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The song is a slow, chattering jit-jit-jit"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Lockropet är kort och oansenligt och låter som ”tscharr” och ”tschirrak”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Sein kurzer unauffälliger Ruf klingt wie „tscharr“ und „tschirrak“."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "habitat",
+      "sv": "Rörsångaren lever i tät bladvass och strandbuskar vid sjöar, dammar, våtmarker och åar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rörsångaren lever i tät bladvass och strandbuskar vid sjöar, dammar, våtmarker och åar."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "habitat",
+      "sv": "Arten finns nästan uteslutande i vassbälten, oftast med inslag av buskar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "This small passerine bird is a species found almost exclusively in reed beds, usually with some bushes."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "sweden",
+      "sv": "I Sverige häckar rörsångaren i södra och mellersta delarna och vidare norrut längs Norrlandskusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Idag häckar den i södra och mellersta Sverige och vidare norrut utefter Norrlandskusten."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "sweden",
+      "sv": "Rörsångaren fanns tidigare bara i Skåne i Sverige men har spridit sig norrut sedan slutet av 1800-talet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige fanns den tidigare bara i Skåne men har från 1800-talets slut utbrett sig norrut."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "sweden",
+      "sv": "I Sverige är rörsångaren sommargäst, främst från mitten av maj till månadsskiftet augusti/september.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är den en sommargäst och förekommer framförallt i landet från mitten av maj till månadsskiftet augusti/september."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "Rörsångaren är klassad som nära hotad i Artdatabankens rödlista från 2020.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I 2020 års upplaga av svenska Artdatabankens rödlista tas rörsångaren upp som nära hotad."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Under de senaste tio åren tros rörsångaren ha minskat med mer än 15 procent i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De senaste tio åren tros den ha minskat med mer än 15 % i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "behaviour",
+      "sv": "Europeiska rörsångare är oftast långflyttare som övervintrar i Afrika söder om Sahara.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fåglarna i Europa och Asien är oftast långflyttare"
+        },
+        {
+          "article": "sv",
+          "quote": "och övervintrar i Afrika söder om Sahara"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "behaviour",
+      "sv": "Rörsångaren flyttar nattetid och lägger upp fettreserver inför flytten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Um die rund 6000 Kilometer gut zu überstehen, legt der Nachtzieher Fettreserven an."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "behaviour",
+      "sv": "Rörsångaren klättrar och hoppar skickligt i vassen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rörsångaren klättrar och hoppar skickligt i vassen"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "food",
+      "sv": "Födan består av insekter och deras larver, spindlar och blötdjur.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "livnär sig på insekter och deras larver, spindlar och blötdjur"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "food",
+      "sv": "Ibland äter den även växtföda som bär.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "will occasionally take plant material such as berries"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Boet byggs av gräs och vasstrån och fästs oftast mellan tre och fyra vasstrån ovanför vattnet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den bygger sitt bo av gräs och vasstrån som oftast placeras skyddat mellan tre och fyra vasstrån ovanför vattnet."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Boet byggs helt av honan.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "above the surface of the water and is built entirely by the female"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Honan lägger tre till fem ägg som båda föräldrarna ruvar i elva till 14 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger tre till fem ägg, som sedan ruvas omväxlande av båda föräldrarna i elva till 14 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Äggen är mycket ljust gröna med prickar och fläckar i olivgrönt eller grått.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The eggs are very pale green with speckles and blotches of olive green or grey."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Hanarna återvänder till häckningsplatserna två eller tre veckor före honorna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The males return to the breeding grounds two or three weeks before the females."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Göken lägger ofta sina ägg i rörsångarens bo, och rörsångaren ruvar och föder upp gökungen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Göken nyttjar ofta rörsångaren för att genom häckningsparasitism låta rörsångaren ruva och föda upp gökungen."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Rörsångaren liknar trastsångaren, men trastsångaren är större och har ett tydligare ögonbrynsstreck.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The common reed warbler looks similar to the great reed warbler, but the great reed warbler is larger in size and has a stronger supercilium."
+        }
+      ],
+      "other": {
+        "scientific": "Acrocephalus arundinaceus",
+        "qid": "Q180835"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är den en sommargäst och förekommer framförallt i landet från mitten av maj till månadsskiftet augusti/september."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i maj och juni."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i oktober till april."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T16:08:41.079475+00:00"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "rorsangare",

@@ -3,9 +3,403 @@
   "status": "pending",
   "publish": false,
   "review": {},
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Härmsångaren har ganska stort huvud, långa vingar och ganska kort, tvärt avskuren stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ganska stort huvud, långa vingar och ganska kort, tvärt avskuren stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Den har grågrön ovansida och jämnt ljusgul undersida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika tecknade med grågrön ovansida och jämnt ljusgul undersida."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Den har blygrå ben och lång bredbasig näbb med orange undre och grå övre näbbhalva.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har blygrå ben och lång bredbasig näbb med orange undre och grå övre näbbhalva."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den har ljus tygel, ett ganska otydligt gulaktigt ögonbrynsstreck och en ljus ögonring.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It has pale lores and a rather vague yellowish supercilium with a pale eye ring."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "På den hoplagda vingen syns ett ljust fält som bildas av ljusa kanter på armpennor och tertialer.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "a panel on the folded wings formed by pale edges to the secondary feathers and tertiary feathers"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Hane och hona är lika tecknade.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika tecknade med grågrön ovansida och jämnt ljusgul undersida."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Ungfåglar har mer brungrå och mindre olivgrön ovansida samt blekare gul undersida med utbredda bruna flanker.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Im Jugendkleid ist die Oberseite mehr braungrau und weniger oliv, die Unterseite blasser gelb mit ausgedehnter braunen Flanken."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "size",
+      "sv": "Härmsångaren är en medelstor sångare som mäter 12–13,5 cm och väger 14–20 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Härmsångaren är en medelstor sångare som mäter 12–13,5 cm och väger 14–20 gram."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Locklätet på häckningsplatsen låter ungefär \"tä-tä-hyi\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Härmsångarens lockläte på häckningsplats låter ungefär \"tä-tä-hyi\""
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Vid oro ger den ifrån sig korta serier med \"tä tä tä\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "vid oro ger den ifrån sig korta serier med \"tä tä tä...\""
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Sången är snabb och ljudlig, dock långsammare än kärrsångarens, med inslag av härmningar av andra arters sång.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess sång är snabb (dock långsammare än kärrsångaren) och ljudlig och den väver in härmningar av andra arters sång."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "I sången återkommer nasala gnälliga toner \"gie gie gie\" som kan påminna om en delfins läte.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ett återkommande sångläte är nasala gnälliga toner \"gie gie gie\" som kan associeras med lätet från en delfin."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Den väver även in sitt igenkännbara lockläte i sången.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den väver även in sitt igenkännbara lockläte i sången."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Härmsångaren förekommer främst i lummig, gärna lite fuktig och parkliknande lövskog med undervegetation av hägg, hassel och slån.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Härmsångaren förekommer främst i lummig lövskog med undervegetation av hägg, hassel och slån, gärna lite fuktig och av parkliknande karaktär."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Den häckar även i alkärr och björkskog med risig undervegetation, gärna nära en vassjö.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar även i alkärr och exempelvis i renodlad björkskog med risig undervegetation, gärna angränsande till en vassjö."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Den kan också finnas i dungar, fruktträdgårdar, parker, trädgårdar, läplanteringar och höga häckar med träd.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It will use copses, orchards, parks, gardens, shelterbelts and tall hedges interspersed with trees."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Härmsångaren häckar i hela Sverige norrut till Skellefteå men är vanligast i kustområdena i söder.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Härmsångaren häckar i hela Sverige så långt norrut som till Skellefteå, men är vanligast i kustområdena i söder."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Den stannar i genomsnitt bara 2,5 månader per år i Sverige, en av de kortaste vistelserna bland häckfåglarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den befinner sig i genomsnitt bara 2,5 månader i Sverige per år vilket gör den till en av de häckfåglar som befinner sig kortaste tiden i landet."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I norra Europa förekommer härmsångaren från maj till augusti.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I norra Europa förekommer den från maj till augusti."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till 58 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 58 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "I Sverige ökar härmsångaren i antal, de senaste tio åren med mellan 16 och 69 procent.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige ökar härmsångaren i antal, de senaste tio åren med mellan 16 och 69 procent."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Den sjunger gärna högt uppe i ett träd under dygnets ljusa timmar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den föredrar att sitta högt uppe i ett träd och sjunga vilket den gör under dygnets ljusa timmar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Den bygger ett skålformat bo av kvistar, strån, löv och gräs lågt i träd eller buskar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den bygger ett välbyggt skålformat bo av kvistar, strån, löv och gräs som den placerar lågt i träd eller buskar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Honan lägger fyra till sex rosafärgade ägg med svarta prickar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger fyra till sex rosafärgade ägg med svarta prickar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Härmsångaren känner lätt igen ett gökägg och kastar ut det ur boet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Härmsångaren känner lätt igen ett gökägg och kastar ut det ur boet."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Den lägger bara en kull per häckningssäsong.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger bara en kull per häckningssäsong."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Härmsångaren lever främst av insekter och spindlar men kan även äta bär på sensommaren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Liksom de flesta sångarna är lever härmsångaren främst av insekter och spindlar, men kan även äta bär på sensommaren."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Den är livlig, letar ständigt efter föda och befinner sig sällan på marken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den livliga härmsångaren letar ständigt efter föda och befinner sig sällan på marken."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Härmsångaren skiljs från polyglottsångaren på mycket längre handpenneprojektion och ljuskantade armpennor som ger en ljus vingspegel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "har härmsångaren mycket längre handpenneprojektion (lika lång som tertiallängden), tydligt ljuskantade armpennor som skapar en ljus vingspegel på den hoplagda vingen"
+        }
+      ],
+      "other": {
+        "scientific": "Hippolais polyglotta",
+        "qid": "Q752539",
+        "written": "H. polyglotta"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Polyglottsångaren har brunaktiga eller gråbruna ben, medan härmsångaren har blygrå ben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "polyglottsångaren har brunaktiga eller gråbruna ben"
+        },
+        {
+          "article": "sv",
+          "quote": "Den har blygrå ben och lång bredbasig näbb"
+        }
+      ],
+      "other": {
+        "scientific": "Hippolais polyglotta",
+        "qid": "Q752539",
+        "written": "H. polyglotta"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Härmsångaren häckar i hela Sverige så långt norrut som till Skellefteå"
+        },
+        {
+          "article": "sv",
+          "quote": "Den befinner sig i genomsnitt bara 2,5 månader i Sverige per år"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i juni."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i augusti till april."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Kalmar, Gotland och Blekinge."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T16:08:41.079475+00:00"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "harmsangare",

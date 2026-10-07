@@ -3,9 +3,363 @@
   "status": "pending",
   "publish": false,
   "review": {},
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Sparvhöken är en liten rovfågel med korta, breda vingar med ganska trubbig vingspets och lång stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sparvhöken är en liten rovfågel med korta breda vingar, med ganska trubbig vingspets och lång stjärt"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Alla sparvhökar har långa, smala, gula ben med svarta klor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De har alla långa, smala, gula ben med svarta klor"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Stjärten har hos båda könen fyra till fem glesa mörka tvärband.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "stjärten har hos båda könen 4-5 glesa mörka tvärband"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Näbben är svart med blågrå bas.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Schnabel ist schwarz, an der Basis blaugrau."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "sex_age",
+      "sv": "Den adulta hanen är blygrå till gråblå ovan och fint rödbandad på vit botten under, vilket ser orangefärgat ut på håll.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är jämnt blygrå till gråblå på ovansidan, undersidan är fint bandad i rött på vit botten vilket får den att se orangefärgad ut på håll"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Hanens iris är orangegul till orangeröd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "irisen är orangegul till orangeröd"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Honan har grå till gråbrun ovansida, gråbrunt tvärvattrad undersida och klargul iris.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan har grå till gråbrun ovansida, tvärvattrad undersida i gråbrunt, och med klargul iris."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Ungfågeln är mörkbrun med rostig ton ovan, grovt och ojämnt mörkbrunt vattrad under och har ljusgul iris.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen är på ovansidan mörkbrun med en rostig ton, har en ojämnt och grovt vattrad undersida i mörkbrunt, och har ljusgul iris."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Honorna kan bli upp till 25 procent större än hanarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honorna kan bli upp till 25 % större än hanarna"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Den adulta hanen är 29–34 cm lång, har ett vingspann på 58–65 cm och väger 131–180 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen är 29–34 cm lång, med ett vingspann på 58–65 cm, och väger 131-180 gram."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "size",
+      "sv": "Honan är 35–41 cm lång, har ett vingspann på 67–80 cm och väger 186–345 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan är mycket större än hanen och mäter 35–41 cm på längden, har ett vingspann på 67–80 cm, och väger 186–345 gram."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "behaviour",
+      "sv": "Flykten består av några snabba vingslag följda av glidflykt, vilket ger en lätt bågformad flykt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flykten är karaktäristisk med några snabba vingslag följt av glidflykt, där glidflykten ger den en lätt bågformad flykt."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "behaviour",
+      "sv": "Den flyger ofta tätt över marken och kan förfölja byten till fots in under buskar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den flyger ofta tätt över marken och kan till och med förfölja byten till fots in under buskar och dylikt."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Sparvhöken är tystlåten, även under häckningen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sparvhöken är en tystlåten fågel, även under häckningen."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Det vanligaste lätet är ett kacklande ”kjukjukjukjukju…”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vanligast är ett kacklande \"!kjukjukjukjukju...\"."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Honan tigger med ett klagande ”pii-ih”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan tigger med ett klagande \"pii-ih\"."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "voice",
+      "sv": "Mest märkbara är de utflugna ungarnas tiggläten, ett ”kiäh-kiäh” som liknar unga duvhökars.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Vergleichsweise am auffälligsten sind die Bettelrufe der ausgeflogenen Jungvögel, sie klingen ähnlich wie die junger Habichte wie „kiäh-kiäh“"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Sparvhöken är vanlig i de flesta skogstyper men även i mer öppna landskap med enstaka träd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sparvhöken är vanlig i de flesta olika skogsbiotoper som förekommer i dess utbredningsområdet, men även i mer öppna landskap med enstaka träd."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Till skillnad från duvhöken förekommer den i trädgårdar och stadsmiljöer och häckar till och med i stadsparker.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Till skillnad från sin större släkting duvhöken förekommer den också i trädgårdar och stadsmiljöer och häckar till och med i parker i städer."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Den häckar i frodiga, större skogsområden, ofta med barrskog eller blandskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sparvhöken häckar i frodiga, större skogsområden, ofta med barrskog eller blandskog."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Ett nytt bo byggs varje år, och hanen gör merparten av arbetet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den bygger ett nytt bo varje år, där hanen gör merparten av jobbet."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Den lägger en kull per säsong med fyra till fem ägg, som ruvas i genomsnitt 33 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger en kull per häckningssäsong som består av fyra till fem ägg."
+        },
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas i genomsnitt 33 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "food",
+      "sv": "Hanar tar främst mesar, finkar, sparvar och pilfinkar, medan honor ofta tar trastar och starar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanar tar främst mesar, finkar, sparvar och fältsparvar. Honor tar ofta trastar och starar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Den gömmer sig och väntar på att fåglar kommer nära, och flyger sedan ut snabbt och lågt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den gömmer sig och väntar på att fåglar ska komma nära. När ett byte är tillräckligt nära, flyger den ut snabbt och lågt."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "sweden",
+      "sv": "I Sverige anses beståndet vara stabilt och livskraftigt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även i Sverige anses beståndet vara stabilt och livskraftigt."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "sweden",
+      "sv": "Den svenska populationen minskade kraftigt från 1950-talet men återhämtade sig efter förbudet mot organoklorföreningar på 1970-talet.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In Sweden, the population also decreased drastically from the 1950s, but recovered again once organochlorines were banned in the 1970s."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "sweden",
+      "sv": "Mellersta och norra Skandinavien lämnas helt av sparvhökarna under vintern.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Vollständig geräumt wird im Winter das mittlere und nördliche Skandinavien"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "lookalike",
+      "sv": "Till skillnad från balkanhök saknar sparvhöken mörkt strupband.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Till skillnad från många av de arter som den kan förväxlas med i sitt utbredningsområde, som balkanhök, besra och tajgahök så saknar sparvhöken mörkt strupband."
+        }
+      ],
+      "other": {
+        "scientific": "Tachyspiza brevipes",
+        "qid": "Q114338"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Vollständig geräumt wird im Winter das mittlere und nördliche Skandinavien"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i september."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T16:08:41.079475+00:00"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "sparvhok",
@@ -203,7 +557,7 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
   }
 }

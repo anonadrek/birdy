@@ -3,9 +3,374 @@
   "status": "pending",
   "publish": false,
   "review": {},
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Brun kärrhök har en kroppslängd på 42–56 centimeter och ett vingspann på 115–140 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "kroppslängd på 42–56 centimeter och ett vingspann på 115–140 centimeter"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Hanen väger 400–650 gram och honan 550–800 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "a weight of 400 to 650 g (14 to 23 oz) in males and 550 to 800 g (19 to 28 oz) in females"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Den är något större än ormvråk men ser slankare ut, med smalare kropp och vingar och längre stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Brun kärrhök är något större än ormvråk"
+        },
+        {
+          "article": "sv",
+          "quote": "Den uppfattas dock som slankare med smalare kropp och vingar och längre stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "sex_age",
+      "sv": "Honan är större än hanen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som hos flertalet rovfåglar är honan större än hanen."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Den adulta hanen har brun rygg samt bruna inre vingtäckare och armpennor ovanpå.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanens rygg och ovansidan av armpennorna och inre vingtäckarna är bruna."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Den adulta hanen har ljust gråblå stjärt och undersida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en ljust gråblå stjärt och undersida."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Flygande hanar ser karakteristiskt trefärgade ut i brunt, grått och svart.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "flying males appear characteristically three-colored brown-grey-black"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Den adulta honan är mörkt brun med ljus teckning på huvudet och vingens framkant.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honan är mörkt brun, med ljus teckning på huvudet och vingens framkant."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungfåglarna liknar honan men saknar mycket av den ljusare teckningen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungfåglarna liknar honan, men saknar mycket av den ljusare teckningen."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "appearance",
+      "sv": "Ben, fötter, ögon och vaxhud är gula, medan näbben är svart.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The legs, feet, irides and the cere of the black bill are yellow."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "appearance",
+      "sv": "Det finns en sällsynt mörk form med till stor del mörk fjäderdräkt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "There is a rare hypermelanic morph with largely dark plumage."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "behaviour",
+      "sv": "I flykten kretsar den med karakteristiskt lyftade vingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten kretsar den med karakteristiskt lyftade vingar."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "behaviour",
+      "sv": "Den jagar genom att glida lågt över öppen mark med vingarna i ett grunt V och ofta hängande ben.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "gliding low over flat open ground on its search for prey, with its wings held in a shallow V-shape and often with dangling legs"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "behaviour",
+      "sv": "Från mars–april kan man se hanens akrobatiska spelflykt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Ab März/April ist der beeindruckende akrobatische Balzflug des Männchens zu beobachten"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Spellätet i flykten är ett gnälligt, nasalt \"vä-i\" som upprepas med två sekunders paus, likt tofsvipans varningsläte.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Spellätet under häckningstid som yttras i flykten är gnälligt och nasalt, \"vä-i\", och upprepas med två sekunders paus, i tonen lik tofsvipans varningsläte."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Honan visslar pipigt och ljust \"psii-i\" när hanen kommer med ett byte.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan visslar pipigt och ljust, \"psii-i\" när hanen kommer med ett byte."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "voice",
+      "sv": "Varningslätet är ett snabbt \"kveck-ek-ek-ek-ek\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Varningslätet är snabba \"kveck-ek-ek-ek-ek\"."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Den häckar i jordbruksmarker och vassrika slättsjöar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar i jordbruksmarker och vassrika slättsjöar"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Arten är starkt knuten till våtmarker, särskilt sådana med mycket bladvass.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "strongly associated with wetland areas, especially those rich in common reed"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Sverige häckar den i södra Sverige upp till Dalarna och Hälsingland samt lokalt längs kusten från Medelpad till Norrbotten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar den bruna kärrhöken i södra Sverige upp till Dalarna och Hälsingland samt lokalt utmed kusten från Medelpad till Norrbotten."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "De svenska fåglarna övervintrar i Medelhavsområdet eller tropiska Afrika.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den övervintrar i Medelhavsområdet eller tropiska Afrika."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet ökar och uppskattas till mellan 2 600 och 3 400 häckande individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även i Sverige ökar bruna kärrhöken i antal och beståndet uppskattas idag till mellan 2 600 och 3 400 häckande individer."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "I Fennoskandien drar häckfåglarnas återkomst ut till början eller mitten av april.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "in Fennoskandinavien zieht sich die Rückkehr der Brutvögel bis Anfang oder Mitte April hin"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Det plattformsliknande boet byggs direkt på marken av grenar, vass och gräs, ofta i vassbädd men även på åkrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det plattformsliknande boet byggs direkt på marken av grenar, vass och gräs. Det placeras ofta på vassbädd, men de häckar även på åkrar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Den lägger i genomsnitt tre till fem ägg som ruvas av honan i 31–38 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I genomsnitt lägger den tre till fem ägg"
+        },
+        {
+          "article": "sv",
+          "quote": "som ruvas av honan i 31–38 dagar"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Hanen bildar ofta par med två eller till och med tre honor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen bildar ofta par med två eller till och med tre honor."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Den jagar små däggdjur och fåglar längs vassrika sjöstränder och över våtmarker, fält och hedar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Brun kärrhök jagar främst längs strandkanten av vassrika sjöar och över våtmarker, fält och hedar på jakt efter små däggdjur och fåglar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Bytet består till 70–80 % av småfåglar och oftast unga vattenfåglar som änder, rörhöns och sothöns.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Beute setzt sich zu 70–80 % aus Singvögeln und (zumeist jungen) Wasservögeln wie Enten, Teichrallen und Blässhühnern zusammen."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar den bruna kärrhöken i södra Sverige upp till Dalarna och Hälsingland"
+        },
+        {
+          "article": "sv",
+          "quote": "Den övervintrar i Medelhavsområdet eller tropiska Afrika."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i augusti."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i oktober till mars."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T16:08:41.079475+00:00"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "brun-karrhok",
