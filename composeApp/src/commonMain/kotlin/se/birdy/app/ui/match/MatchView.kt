@@ -37,7 +37,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -48,7 +47,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontStyle
@@ -191,11 +189,10 @@ internal fun MatchView(
     val isSaving = state.saveStatus == MatchResultUiState.SaveStatus.Saving
 
     val scrollState = rememberScrollState()
-    var heroHeightPx by remember { mutableIntStateOf(0) }
-    val heroScrolledAway by rememberHeroScrolledAway(scrollState, heroHeightPx)
 
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
         val photoHeight = rememberMatchPhotoHeight(viewportHeight = maxHeight)
+        val photoScrolledAway by rememberPhotoScrolledAway(scrollState, photoHeight)
         Column(
             modifier =
                 Modifier
@@ -213,7 +210,6 @@ internal fun MatchView(
             val confidenceLabel = stringResource(Res.string.match_sub_confidence, "$confidencePct%")
 
             PhotoHero(
-                modifier = Modifier.onSizeChanged { heroHeightPx = it.height },
                 kicker = stringResource(Res.string.match_eyebrow, state.stampNumber),
                 title = state.species.name,
                 latinName = state.species.scientificName,
@@ -303,7 +299,7 @@ internal fun MatchView(
                 }
             }
         }
-        StatusBarBand(heroScrolledAway = heroScrolledAway, color = MossCreme)
+        StatusBarBand(photoScrolledAway = photoScrolledAway, color = MossCreme)
         // Fixed over the scrolling photo and sheet: after "Spara" the "Avbryt" button is gone and
         // this is the way back (release 1.3.0 Task 7b). Disabled while saving, like "Avbryt"
         // (MatchResultScreen swallows the back gesture then).
@@ -330,19 +326,17 @@ internal fun MatchView(
 }
 
 /**
- * True once the hero ([heroHeightPx] tall, at the top of the scrolling column) no longer reaches
- * under the status bar: the same test PhotoHero uses to switch the status bar icons. Only a
- * short window (landscape, large text) can scroll that far.
+ * True once the photo at the top of the scrolling column ([photoHeight] below the status bar,
+ * drawn behind it) no longer reaches under the status bar: the same test PhotoHero uses to switch
+ * the status bar icons. Only a low window (the phone on its side, large text) scrolls that far.
  */
 @Composable
-private fun rememberHeroScrolledAway(
+private fun rememberPhotoScrolledAway(
     scrollState: ScrollState,
-    heroHeightPx: Int,
+    photoHeight: Dp,
 ): State<Boolean> {
-    val statusBarPx = WindowInsets.statusBars.getTop(LocalDensity.current)
-    return remember(scrollState, heroHeightPx, statusBarPx) {
-        derivedStateOf { heroHeightPx > 0 && heroHeightPx - scrollState.value <= statusBarPx }
-    }
+    val photoPx = with(LocalDensity.current) { photoHeight.roundToPx() }
+    return remember(scrollState, photoPx) { derivedStateOf { scrollState.value >= photoPx } }
 }
 
 /** Confidence bar drawn in [PhotoHero]'s bottomContent slot (light-on-dark, spec 2026-09-24 §4.3). */

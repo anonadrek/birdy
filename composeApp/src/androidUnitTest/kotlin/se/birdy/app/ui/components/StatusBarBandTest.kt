@@ -1,5 +1,6 @@
 package se.birdy.app.ui.components
 
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.SemanticsMatcher
@@ -31,6 +32,8 @@ import se.birdy.ml.Classification
 import se.birdy.ml.ClassificationResult
 import se.birdy.ml.ScanSource
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 /**
  * Release 1.3.0 Task 7b review: the species profile and Match draw their photo behind the status
@@ -74,30 +77,39 @@ class StatusBarBandTest {
                 byId.value = byId.value + (id to byId.value.getValue(id)!!.copy(description = "Talgoxen sjunger. ".repeat(200)))
             }
         val viewModel = SpeciesProfileViewModel(repository, SpeciesId("Q25485"), Locale.SV)
+        val backdrop = StatusBarBackdrop()
         compose.setContent {
             inset.Capture()
-            BirdyTheme { SpeciesProfileScreen(viewModel = viewModel, locale = Locale.SV, onBack = {}, onPremiumClick = {}) }
+            CompositionLocalProvider(LocalStatusBarBackdrop provides backdrop) {
+                BirdyTheme { SpeciesProfileScreen(viewModel = viewModel, locale = Locale.SV, onBack = {}, onPremiumClick = {}) }
+            }
         }
         compose.waitForIdle()
         compose.runOnIdle { inset.apply() }
         compose.waitForIdle()
 
         compose.onNodeWithTag(STATUS_BAR_BAND_TAG).assertDoesNotExist()
-        // Partly scrolled, the photo's band still under the status bar: nothing over it.
-        scrollTo(100f)
+        compose.runOnIdle { assertTrue(backdrop.anyDark, "light icons over the photo") }
+        // The photo is 280dp (840px) below the status bar. 10px of it left: nothing over it yet.
+        scrollTo(830f)
         compose.onNodeWithTag(STATUS_BAR_BAND_TAG).assertDoesNotExist()
+        compose.runOnIdle { assertTrue(backdrop.anyDark) }
+        // Past the photo: the band, and dark icons on it, at the same point.
+        scrollTo(20f)
+        assertBandCoversTheStatusBar()
+        compose.runOnIdle { assertFalse(backdrop.anyDark, "dark icons on the band") }
 
         scrollTo(100_000f)
         assertBandCoversTheStatusBar()
 
         scrollTo(-100_000f)
         compose.onNodeWithTag(STATUS_BAR_BAND_TAG).assertDoesNotExist()
+        compose.runOnIdle { assertTrue(backdrop.anyDark) }
     }
 
     /**
      * A phone on its side is where Match can scroll its photo away: about 300dp of the window's
-     * height is left between the status bar and the bottom bar. At 360dp the photo's dark band
-     * still reaches under the status bar at the bottom of the scroll, so no band there.
+     * height is left between the status bar and the bottom bar.
      */
     @Test
     @Config(qualifiers = "sv-w800dp-h300dp-xxhdpi")

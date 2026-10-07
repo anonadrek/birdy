@@ -9,13 +9,11 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -92,6 +90,9 @@ import se.birdy.content.Abundance
 import se.birdy.content.Locale
 import se.birdy.content.model.Species
 
+/** The photo's height below the status bar, at the top of the profile. */
+private val ProfilePhotoHeight = 280.dp
+
 @Composable
 fun SpeciesProfileScreen(
     viewModel: SpeciesProfileViewModel,
@@ -149,7 +150,7 @@ private fun ProfileContent(
         }
 
     val listState = rememberLazyListState()
-    val heroScrolledAway by rememberHeroScrolledAway(listState)
+    val photoScrolledAway by rememberPhotoScrolledAway(listState)
     Box(modifier = Modifier.fillMaxSize().background(MossCreme)) {
         ProfileList(
             species = species,
@@ -158,7 +159,7 @@ private fun ProfileContent(
             showPremiumTeaser = showPremiumTeaser,
             listState = listState,
         )
-        StatusBarBand(heroScrolledAway = heroScrolledAway, color = MossCreme)
+        StatusBarBand(photoScrolledAway = photoScrolledAway, color = MossCreme)
         // Over the list, not in the hero's topBar: it stays put when the photo scrolls away
         // (release 1.3.0 Task 7b).
         PhotoBackButton(onBack = onBack, contentDescription = stringResource(Res.string.profile_back))
@@ -166,18 +167,19 @@ private fun ProfileContent(
 }
 
 /**
- * True once the hero (the list's first item) no longer reaches under the status bar: the same
- * test PhotoHero uses to switch the status bar icons, read from the list's layout.
+ * True once the photo at the top of the hero (the list's first item, [ProfilePhotoHeight] below
+ * the status bar) no longer reaches under the status bar: the same test PhotoHero uses to switch
+ * the status bar icons, read from the list's layout.
  */
 @Composable
-private fun rememberHeroScrolledAway(listState: LazyListState): State<Boolean> {
-    val statusBarPx = WindowInsets.statusBars.getTop(LocalDensity.current)
-    return remember(listState, statusBarPx) {
+private fun rememberPhotoScrolledAway(listState: LazyListState): State<Boolean> {
+    val photoPx = with(LocalDensity.current) { ProfilePhotoHeight.roundToPx() }
+    return remember(listState, photoPx) {
         derivedStateOf {
             val visible = listState.layoutInfo.visibleItemsInfo
-            // Nothing laid out yet (the first frame): the hero is about to be there.
+            // Nothing laid out yet (the first frame): the photo is about to be there.
             val hero = visible.firstOrNull { it.index == 0 }
-            visible.isNotEmpty() && (hero == null || hero.offset + hero.size <= statusBarPx)
+            visible.isNotEmpty() && (hero == null || hero.offset + photoPx <= 0)
         }
     }
 }
@@ -204,7 +206,7 @@ private fun ProfileList(
                 latinName = species.scientificName,
                 // The photo keeps the top 280dp and the name sits below it, so the whole bird
                 // is in view (2026-10-06): a 3:2 photo is ~274dp tall on a 411dp-wide phone.
-                height = 280.dp,
+                height = ProfilePhotoHeight,
                 bottomPadding = PaperSheetOverlap + 18.dp,
                 drawBehindStatusBar = true,
                 textBelowPhoto = true,

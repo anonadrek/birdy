@@ -43,6 +43,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
@@ -135,10 +136,10 @@ fun PhotoHero(
 ) {
     val serif = rememberDmSerifDisplay()
     val statusBarTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
-    val statusBarTracking = rememberStatusBarTracking(enabled = drawBehindStatusBar)
     // Behind the status bar the photo grows by its height, so the part below it keeps `height`.
     val photoHeight = if (drawBehindStatusBar) height + statusBarTop else height
     val photoAbove = textBelowPhoto && image != null
+    val statusBarTracking = rememberStatusBarTracking(drawBehindStatusBar, photoHeight.takeIf { textBelowPhoto })
     Box(
         modifier =
             modifier
@@ -203,15 +204,28 @@ fun PhotoHero(
  * For a hero drawn behind the status bar: reports to [LocalStatusBarBackdrop] whether the photo
  * still reaches under the status bar (light icons) and returns the modifier that tracks it. The
  * state only flips at the threshold, so scrolling doesn't recompose the hero every frame.
+ *
+ * [trackedHeight]: with the text below the photo (textBelowPhoto) only the photo counts, the
+ * top [trackedHeight] of the hero (without a photo, the moss area of that height; release
+ * 1.3.0 Task 7b review). Past it the screen covers the
+ * status bar with a [StatusBarBand] in its page colour, so the icons turn dark at that same
+ * point. Null = the whole hero counts (the text sits on the photo).
  */
 @Composable
-private fun rememberStatusBarTracking(enabled: Boolean): Modifier {
+private fun rememberStatusBarTracking(
+    enabled: Boolean,
+    trackedHeight: Dp?,
+): Modifier {
     if (!enabled) return Modifier
-    val statusBarPx = WindowInsets.statusBars.getTop(LocalDensity.current).toFloat()
+    val density = LocalDensity.current
+    val statusBarPx = WindowInsets.statusBars.getTop(density).toFloat()
+    val trackedPx = trackedHeight?.let { with(density) { it.toPx() } }
     var underStatusBar by remember { mutableStateOf(true) }
     ReportStatusBarBackdrop(isDark = underStatusBar)
     return Modifier.onGloballyPositioned { coords ->
-        val under = coords.boundsInRoot().bottom > statusBarPx
+        // positionInRoot isn't clipped by a scrolling parent, unlike boundsInRoot's top.
+        val bottom = if (trackedPx != null) coords.positionInRoot().y + trackedPx else coords.boundsInRoot().bottom
+        val under = bottom > statusBarPx
         if (under != underStatusBar) underStatusBar = under
     }
 }

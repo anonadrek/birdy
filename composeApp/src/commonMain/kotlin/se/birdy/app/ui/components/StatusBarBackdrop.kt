@@ -59,20 +59,21 @@ fun ReportStatusBarBackdrop(isDark: Boolean) {
 internal const val STATUS_BAR_BAND_TAG = "status-bar-band"
 
 /**
- * A band in the page's [color] behind the status bar, for a screen whose [PhotoHero] is drawn
- * behind the status bar and scrolls (the species profile, Match). Shown only once the hero has
- * scrolled out from under the status bar ([heroScrolledAway]), so the text scrolling up after it
- * doesn't run under the clock and the icons; while the hero is there nothing is drawn over the
- * bird. PhotoHero switches the icons to dark at that same point. Release 1.3.0 Task 7b review.
+ * A band in the page's [color] behind the status bar, for a screen whose [PhotoHero] draws its
+ * photo behind the status bar with the name below it (textBelowPhoto: the species profile,
+ * Match). Shown only once the photo has scrolled out from under the status bar
+ * ([photoScrolledAway]), so the name and the text scrolling up after it don't run under the
+ * clock and the icons; while any of the photo is there nothing is drawn over the bird. PhotoHero
+ * switches the icons to dark at that same point. Release 1.3.0 Task 7b review.
  *
  * Draw it after (over) the scrolling content and before the back button.
  */
 @Composable
 fun BoxScope.StatusBarBand(
-    heroScrolledAway: Boolean,
+    photoScrolledAway: Boolean,
     color: Color,
 ) {
-    if (!heroScrolledAway) return
+    if (!photoScrolledAway) return
     Box(
         Modifier
             .align(Alignment.TopStart)
