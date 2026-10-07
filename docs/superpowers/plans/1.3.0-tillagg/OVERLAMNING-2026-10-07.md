@@ -29,12 +29,13 @@ Skriven i slutet av sessionen 2026-10-05–07 (Windows). Läs den här filen och
 3. **7j Veckans uppslag "Uppslag 1"** (Albin 2026-10-07). Design: `docs/superpowers/specs/assets/2026-10-06-1.3-val/birdy-uppslag-marken.html`, sektion A, "Uppslag 1" (S).
 4. **7k Märkesbilden "Bild 2"** (Albin: "Märkesbild S", tolkat som rekommenderade Bild 2: dina tre senaste stämplar i solfjäder; bekräfta med Albin om osäkert). Samma fil, sektion B. Ta bort `composeApp/src/commonMain/composeResources/files/branding/trophy_hero.webp` helt (okänt ursprung).
 5. **7l Märken 1a** (märkesfliken med "Inom räckhåll") om det hinns före go-live, annars 1.3.1. Samma fil, sektion C. Byt namn på säsongsmärket "Året runt" → "Fyra årstider" (två märken heter "Året runt").
-6. **Små uppföljare** (`uppfoljare.md`): Dagens fågel får inte välja en utdöd art; midnattsmarginal + test.
-7. **7i Upphovsrätts- och juridikgenomgång** (KRÄVS): se Plan 3, avsnittet Task 7i, tio punkter; resultatet i `docs/legal/2026-10-1.3.0-genomgang.md`.
-8. **Task 8** R8-röktest (minifierat bygge) av tack-skärmen och betalväggen.
-9. **Task 9** butiksbilder i webbens look (KRÄVS; bara CC0/PD-foton; feature graphic; laddas upp med vC130, agenten fyller i Console med Albins godkännande).
-10. **Task 10** vC130 produktionsbygget: höj `releaseVersionCode` till 130, ny MapTiler-nyckel (alternativ b: Albin skapar ny nyckel i MapTiler Cloud, Default key återkallas när vC130 är live), signering, raden `Birdy release config: versionCode=130 versionName=1.3.0 GRANDFATHER_CUTOFF_MS=1792101600000 billingTestBuild=false`. **Brytpunkten 2026-10-16 00:00 flyttas FÖRE bygget om go-live inte sker senast 2026-10-14.** Ladda upp till Intern testning först; Albin kör hela testsviten på telefonen; befordra till produktion.
-11. **Task 11** avslut: CI grön på PR #53, slutgranskning av hela release-grenen, merge till main, CLAUDE.md.
+6. **7m Svenska namn enligt BirdLife Sverige** (Albin "Yes" 2026-10-07): de 30 arter vars svenska namn skiljer sig från BirdLife Sveriges aktuella lista (t.ex. sädgås → skogsgås, cettisångare → sumpcettia, rödfody → röd fody, Kap Verdepetrell → kapverdepetrell; listan togs fram i Task 7g, jämför `species_list.yaml` mot BirdLife Sveriges namnlista) byts till de officiella namnen. Det gamla namnet blir sökord (sökning på "sädgås" hittar arten) och artprofilen visar "tidigare sädgås" / "formerly …" om det behövs. Sätt namnen som `common_sv` i `species_list.yaml` så en pipeline-körning behåller dem; species.db byggs om; test som låser namnen. Gäller även artsidorna (de läser namnen från samma källa).
+7. **Små uppföljare** (`uppfoljare.md`): Dagens fågel får inte välja en utdöd art; midnattsmarginal + test.
+8. **7i Upphovsrätts- och juridikgenomgång** (KRÄVS): se Plan 3, avsnittet Task 7i, tio punkter; resultatet i `docs/legal/2026-10-1.3.0-genomgang.md`.
+9. **Task 8** R8-röktest (minifierat bygge) av tack-skärmen och betalväggen.
+10. **Task 9** butiksbilder i webbens look (KRÄVS; bara CC0/PD-foton; feature graphic; laddas upp med vC130, agenten fyller i Console med Albins godkännande).
+11. **Task 10** vC130 produktionsbygget: höj `releaseVersionCode` till 130, ny MapTiler-nyckel (alternativ b: Albin skapar ny nyckel i MapTiler Cloud, Default key återkallas när vC130 är live), signering, raden `Birdy release config: versionCode=130 versionName=1.3.0 GRANDFATHER_CUTOFF_MS=1792101600000 billingTestBuild=false`. **Brytpunkten 2026-10-16 00:00 flyttas FÖRE bygget om go-live inte sker senast 2026-10-14.** Ladda upp till Intern testning först; Albin kör hela testsviten på telefonen; befordra till produktion.
+12. **Task 11** avslut: CI grön på PR #53, slutgranskning av hela release-grenen, merge till main, CLAUDE.md.
 
 **1.3.1 (direkt efter go-live, Albins val 2026-10-07 "kör allt" enligt rekommendationen):** Märken 1b (certifikatbladet med fyndet som gav märket: kräver ett nytt fält `observationId` i `BadgeUnlock`, troférummet som hyllor, stämpelslaget), PDF 1 (1.3-färgerna, riktiga foton med krediter, sida "Bildkällor"; i dag har PDF:en inga foton och rad 25 krockar med sidnumret), Pop-up 1 (Premium-ark från 5:e sparade fyndet, en gång, aldrig för tidiga användare/Premium, gemensam 14-dagarspaus för alla Premium-uppmaningar; 3:e sparade är redan Play-recensionen), Intro 1 (fem sidor, levande demo, Dagens fågel). Senare: Uppslag 2/3, Märken 2 (fältpass), PDF 2, Intro 2.
 
@@ -50,13 +51,13 @@ Skriven i slutet av sessionen 2026-10-05–07 (Windows). Läs den här filen och
 
 1. **Köptestet med vC129** på sin telefon (gå med via `https://play.google.com/apps/internaltest/4701434188270894832`, installera, köp Livstid med testkortet; "Välkommen, fältmedlem." = hård grind före vC130).
 2. **Ny MapTiler-nyckel** i MapTiler Cloud före vC130-bygget.
-3. **Bankkontot** i betalningsprofilen (sist).
+3. **Bankkontot** i betalningsprofilen (sist): Play Console → Inställningar → Betalningsprofil → Betalningssätt → "Lägg till betalningsmetod" (agenten öppnade sidan 2026-10-07; Albin fyller i själv).
 4. Kontrollera att inspelningstimern går i rätt takt på riktig telefon (den gick för fort på emulatorn).
 
 ## 6. Albins öppna beslut
 
 - **Gratisanvändare och raden "0 av 3 dagar"** (räknar mot Premium-märket Dagens fågel-jägare; i dag syns den för alla).
-- **30 svenska namn** skiljer sig från BirdLife Sveriges aktuella lista (t.ex. sädgås → skogsgås, cettisångare → sumpcettia, rödfody → röd fody). Rekommendation: byt till de officiella.
+- ~~30 svenska namn~~: **beslutat 2026-10-07: byt till BirdLife Sveriges officiella namn** (Task 7m ovan).
 - **Tolkningen av svaren 2026-10-07** ("Uppslag 1 > B, Märkesbild S, Yes kör allt"): tolkat som Uppslag 1 (A), Märkesbild Bild 2 (B), övrigt enligt rekommendationen ovan. Bekräfta kort i nästa session.
 
 ## 7. Artsidorna (parallellt spår)
