@@ -1733,9 +1733,9 @@ const { species: s, locale } = Astro.props;
 ---
 
 <a class="scard" href={speciesHref(s, locale)}>
-  <Image src={speciesImage(heroOf(s).file)} alt="" widths={[320, 480]} sizes="(max-width: 760px) 45vw, 220px" loading="lazy" decoding="async" />
+  <Image src={speciesImage(heroOf(s).file)} alt="" width={480} widths={[320, 480]} sizes="(max-width: 760px) 45vw, 220px" loading="lazy" decoding="async" />
   <span class="scard-name">{s.names[locale]}</span>
-  <span class="scard-latin">{s.names.scientific}</span>
+  <span class="scard-latin" lang="la">{s.names.scientific}</span>
 </a>
 
 <style>
@@ -1743,9 +1743,11 @@ const { species: s, locale } = Astro.props;
   .scard:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(var(--dark-rgb), .12); }
   .scard :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
   .scard-name { display: block; margin: 8px 4px 0; font-weight: 600; font-size: 14px; color: var(--ink); }
-  .scard-latin { display: block; margin: 0 4px 4px; font-family: var(--font-script); font-size: 17px; color: var(--muted); }
+  .scard-latin { display: block; margin: 0 4px 4px; font-family: var(--font-script); font-size: 17px; line-height: 1.15; color: var(--muted); }
 </style>
 ```
+
+(Rättat i efterhand, controller-granskning 2026-10-07: `width={480}` på bildens `src`-fallback, `lang="la"` + `line-height: 1.15` på det vetenskapliga namnet om det radbryts.)
 
 - [ ] **Step 4: Kategoriraden**
 
@@ -1755,7 +1757,7 @@ const { species: s, locale } = Astro.props;
 ---
 import Icon from '../ui/Icon.astro';
 import { getCopy, type Locale } from '../../lib/i18n';
-import { activeGroups, getAllSpecies, groupHref, groupSizes, hubHref } from '../../lib/species';
+import { activeGroups, countLabel, getAllSpecies, groupHref, groupSizes, hubHref } from '../../lib/species';
 
 interface Props {
   locale: Locale;
@@ -1772,14 +1774,22 @@ const chips = [
   { key: 'all', href: hubHref(locale), label: t.species.allChip, n: all.length },
   ...activeGroups(all).map((g) => ({ key: g.key, href: groupHref(g, locale), label: g.name[locale], n: sizes.get(g.key) ?? 0 })),
 ];
+// Mirrors Nav.astro's `here`: a chip is the literal current page (aria-current="page") only when its
+// href is the page we're actually on (the hub chip on the hub, a group chip on its own group page).
+// Elsewhere "active" marks the current section without being the page itself (controller review 2026-10-07).
+const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 ---
 
 <div class="catbar" data-catbar>
   <div class="catbar-inner">
     <nav class="chips" aria-label={t.species.groupsLabel} data-chips>
       {chips.map((c) => (
-        <a class:list={['chip', { 'is-active': c.key === active }]} href={c.href} aria-current={c.key === active ? 'page' : undefined}>
-          {c.label} <span class="n">{c.n}</span>
+        <a
+          class:list={['chip', { 'is-active': c.key === active }]}
+          href={c.href}
+          aria-current={c.key === active ? (c.href === here ? 'page' : 'true') : undefined}
+        >
+          {c.label} <span class="n" aria-hidden="true">{c.n}</span><span class="sr-only">, {countLabel(c.n, t)}</span>
         </a>
       ))}
     </nav>
@@ -1794,18 +1804,38 @@ const chips = [
 </div>
 
 <script>
-  // Bring the active chip into view on narrow screens, without scrolling the page itself.
+  // Bring the active chip into view on narrow screens, without scrolling the page itself, and show an
+  // edge fade + scrollbar hint while the chip row overflows (controller review 2026-10-07).
   const chips = document.querySelector<HTMLElement>('[data-chips]');
   const current = chips?.querySelector<HTMLElement>('.chip.is-active');
-  if (chips && current) chips.scrollLeft = current.offsetLeft - (chips.clientWidth - current.offsetWidth) / 2;
+  if (chips && current) {
+    const c = chips.getBoundingClientRect();
+    const a = current.getBoundingClientRect();
+    if (a.left < c.left || a.right > c.right) chips.scrollLeft += a.left - c.left - (c.width - a.width) / 2;
+  }
+
+  const updateFade = () => {
+    if (!chips) return;
+    const overflowing = chips.scrollWidth > chips.clientWidth + 1;
+    const atEnd = chips.scrollLeft + chips.clientWidth >= chips.scrollWidth - 1;
+    chips.classList.toggle('has-overflow', overflowing && !atEnd);
+  };
+  updateFade();
+  chips?.addEventListener('scroll', updateFade);
+  window.addEventListener('resize', updateFade);
 </script>
 
 <style>
   .catbar { position: sticky; top: 76px; z-index: 90; background: var(--card); border-bottom: 1px solid var(--line); }
-  .catbar-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 10px 44px; }
-  .chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; }
+  .catbar-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 4px 44px; }
+  .chips { display: flex; flex-wrap: nowrap; gap: 8px; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; padding: 6px; margin-inline: -6px; scroll-padding-inline: 6px; }
   .chips::-webkit-scrollbar { display: none; }
-  .chip { flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); font-size: 13px; font-weight: 600; color: var(--ink); white-space: nowrap; transition: border-color .2s; }
+  .chips.has-overflow { mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
+  @media (hover: hover) and (pointer: fine) {
+    .chips { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+  }
+  .chip { position: relative; flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); font-size: 13px; font-weight: 600; color: var(--ink); white-space: nowrap; transition: border-color .2s; }
+  .chip::after { content: ''; position: absolute; inset: -5px 0; }
   .chip:hover { border-color: var(--rust); }
   .chip .n { font-weight: 400; color: var(--muted); }
   .chip.is-active { background: var(--rust); border-color: var(--rust); color: var(--cream); }
@@ -1813,17 +1843,27 @@ const chips = [
   .search { flex: none; display: flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); padding: 0 4px 0 14px; }
   .search:focus-within { outline: 3px solid var(--rust); outline-offset: 2px; }
   .search input { border: 0; background: none; font: inherit; font-size: 13px; width: 150px; padding: 7px 0; color: var(--ink); outline: none; }
+  .search input::placeholder { color: var(--muted); opacity: 1; }
   .search-btn { border: 0; background: none; color: var(--muted); width: 32px; height: 32px; display: grid; place-items: center; cursor: pointer; }
   @media (max-width: 1023px) {
     .catbar { top: 64px; }
-    .catbar-inner { padding: 8px 20px; gap: 10px; }
+    .catbar-inner { padding: 2px 20px; gap: 10px; }
   }
   @media (max-width: 760px) {
     .search { padding: 0; border-color: transparent; background: none; }
     .search input { width: 0; padding: 0; }
+    .search:has(input:focus) { padding: 0 4px 0 14px; border-color: var(--line); background: var(--paper); }
+    .search:has(input:focus) input { width: 120px; padding: 7px 0; }
+    .search-btn { width: 44px; height: 44px; }
+  }
+  :global(html:has(.catbar)) { scroll-padding-top: 9.25rem; }
+  @media (max-width: 1023px) {
+    :global(html:has(.catbar)) { scroll-padding-top: 8rem; }
   }
 </style>
 ```
+
+(Rättat i efterhand, controller-granskning 2026-10-07: fokusringen klipptes av `.chips`s `overflow-x` (padding på `.chips` + motsvarande negativ marginal löser det, barhöjden oförändrad via mindre padding på `.catbar-inner`); mobilens sökfält var osynligt men fokuserbart (`:has(input:focus)` visar det och förstorar knappen till 44 px); platshållarens kontrast; fokuserade mål gömda bakom den klistrande raden (`scroll-padding-top` på `html:has(.catbar)`, överstyr global.css:s 5,5rem); skrollskriptet använde fel offset (bytt mot `getBoundingClientRect`-differens, skrollar bara vid behov); kantton + tunn rullist när raden svämmar över, ingen radbrytning. Minor: `aria-current` är `'page'` bara när chipens adress är sidans egen, annars `'true'`; Task 10:s test vid rad ~2645 bytt till `.chip[aria-current]` (Task 8:s test står kvar som `"page"`, eftersom gruppsidan själv är chipens adress); antalet läses med en enhet för skärmläsare (`countLabel`); chipens träffyta 44 px via `::after`.)
 
 - [ ] **Step 5: Bygg**
 
@@ -2642,7 +2682,9 @@ test.describe('artsidan', () => {
     await expect(page.locator('.credits a[href="/sv/arter/om-artsidorna/"]')).toHaveCount(1);
     await expect(page.locator('a[href*="utm_campaign%3Dtalgoxe"]')).toHaveCount(1);
     await expect(page.locator('#site-nav .links a[lang="en"]')).toHaveAttribute('href', '/species/great-tit/');
-    await expect(page.locator('.catbar .chip[aria-current="page"]')).toContainText('Tättingar');
+    // Not "page": the species page isn't the group's own page, so the active chip reads aria-current="true"
+    // (controller review 2026-10-07, see Task 6's code block note).
+    await expect(page.locator('.catbar .chip[aria-current]')).toContainText('Tättingar');
     await expect(page.locator('[data-preview-banner]')).toHaveCount(0);
     await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
     expect(errors).toEqual([]);

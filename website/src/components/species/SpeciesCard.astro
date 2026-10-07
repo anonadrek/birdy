@@ -8,9 +8,9 @@ const { species: s, locale } = Astro.props;
 ---
 
 <a class="scard" href={speciesHref(s, locale)}>
-  <Image src={speciesImage(heroOf(s).file)} alt="" widths={[320, 480]} sizes="(max-width: 760px) 45vw, 220px" loading="lazy" decoding="async" />
+  <Image src={speciesImage(heroOf(s).file)} alt="" width={480} widths={[320, 480]} sizes="(max-width: 760px) 45vw, 220px" loading="lazy" decoding="async" />
   <span class="scard-name">{s.names[locale]}</span>
-  <span class="scard-latin">{s.names.scientific}</span>
+  <span class="scard-latin" lang="la">{s.names.scientific}</span>
 </a>
 
 <style>
@@ -18,5 +18,5 @@ const { species: s, locale } = Astro.props;
   .scard:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(var(--dark-rgb), .12); }
   .scard :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
   .scard-name { display: block; margin: 8px 4px 0; font-weight: 600; font-size: 14px; color: var(--ink); }
-  .scard-latin { display: block; margin: 0 4px 4px; font-family: var(--font-script); font-size: 17px; color: var(--muted); }
+  .scard-latin { display: block; margin: 0 4px 4px; font-family: var(--font-script); font-size: 17px; line-height: 1.15; color: var(--muted); }
 </style>

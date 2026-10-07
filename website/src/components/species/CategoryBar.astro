@@ -1,7 +1,7 @@
 ---
 import Icon from '../ui/Icon.astro';
 import { getCopy, type Locale } from '../../lib/i18n';
-import { activeGroups, getAllSpecies, groupHref, groupSizes, hubHref } from '../../lib/species';
+import { activeGroups, countLabel, getAllSpecies, groupHref, groupSizes, hubHref } from '../../lib/species';
 
 interface Props {
   locale: Locale;
@@ -18,14 +18,22 @@ const chips = [
   { key: 'all', href: hubHref(locale), label: t.species.allChip, n: all.length },
   ...activeGroups(all).map((g) => ({ key: g.key, href: groupHref(g, locale), label: g.name[locale], n: sizes.get(g.key) ?? 0 })),
 ];
+// Mirrors Nav.astro's `here`: a chip is the literal current page (aria-current="page") only when its
+// href is the page we're actually on (the hub chip on the hub, a group chip on its own group page).
+// Elsewhere "active" marks the current section without being the page itself (controller review 2026-10-07).
+const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 ---
 
 <div class="catbar" data-catbar>
   <div class="catbar-inner">
     <nav class="chips" aria-label={t.species.groupsLabel} data-chips>
       {chips.map((c) => (
-        <a class:list={['chip', { 'is-active': c.key === active }]} href={c.href} aria-current={c.key === active ? 'page' : undefined}>
-          {c.label} <span class="n">{c.n}</span>
+        <a
+          class:list={['chip', { 'is-active': c.key === active }]}
+          href={c.href}
+          aria-current={c.key === active ? (c.href === here ? 'page' : 'true') : undefined}
+        >
+          {c.label} <span class="n" aria-hidden="true">{c.n}</span><span class="sr-only">, {countLabel(c.n, t)}</span>
         </a>
       ))}
     </nav>
@@ -40,18 +48,38 @@ const chips = [
 </div>
 
 <script>
-  // Bring the active chip into view on narrow screens, without scrolling the page itself.
+  // Bring the active chip into view on narrow screens, without scrolling the page itself, and show an
+  // edge fade + scrollbar hint while the chip row overflows (controller review 2026-10-07).
   const chips = document.querySelector<HTMLElement>('[data-chips]');
   const current = chips?.querySelector<HTMLElement>('.chip.is-active');
-  if (chips && current) chips.scrollLeft = current.offsetLeft - (chips.clientWidth - current.offsetWidth) / 2;
+  if (chips && current) {
+    const c = chips.getBoundingClientRect();
+    const a = current.getBoundingClientRect();
+    if (a.left < c.left || a.right > c.right) chips.scrollLeft += a.left - c.left - (c.width - a.width) / 2;
+  }
+
+  const updateFade = () => {
+    if (!chips) return;
+    const overflowing = chips.scrollWidth > chips.clientWidth + 1;
+    const atEnd = chips.scrollLeft + chips.clientWidth >= chips.scrollWidth - 1;
+    chips.classList.toggle('has-overflow', overflowing && !atEnd);
+  };
+  updateFade();
+  chips?.addEventListener('scroll', updateFade);
+  window.addEventListener('resize', updateFade);
 </script>
 
 <style>
   .catbar { position: sticky; top: 76px; z-index: 90; background: var(--card); border-bottom: 1px solid var(--line); }
-  .catbar-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 10px 44px; }
-  .chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; }
+  .catbar-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 4px 44px; }
+  .chips { display: flex; flex-wrap: nowrap; gap: 8px; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; padding: 6px; margin-inline: -6px; scroll-padding-inline: 6px; }
   .chips::-webkit-scrollbar { display: none; }
-  .chip { flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); font-size: 13px; font-weight: 600; color: var(--ink); white-space: nowrap; transition: border-color .2s; }
+  .chips.has-overflow { mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
+  @media (hover: hover) and (pointer: fine) {
+    .chips { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+  }
+  .chip { position: relative; flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); font-size: 13px; font-weight: 600; color: var(--ink); white-space: nowrap; transition: border-color .2s; }
+  .chip::after { content: ''; position: absolute; inset: -5px 0; }
   .chip:hover { border-color: var(--rust); }
   .chip .n { font-weight: 400; color: var(--muted); }
   .chip.is-active { background: var(--rust); border-color: var(--rust); color: var(--cream); }
@@ -59,13 +87,21 @@ const chips = [
   .search { flex: none; display: flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); padding: 0 4px 0 14px; }
   .search:focus-within { outline: 3px solid var(--rust); outline-offset: 2px; }
   .search input { border: 0; background: none; font: inherit; font-size: 13px; width: 150px; padding: 7px 0; color: var(--ink); outline: none; }
+  .search input::placeholder { color: var(--muted); opacity: 1; }
   .search-btn { border: 0; background: none; color: var(--muted); width: 32px; height: 32px; display: grid; place-items: center; cursor: pointer; }
   @media (max-width: 1023px) {
     .catbar { top: 64px; }
-    .catbar-inner { padding: 8px 20px; gap: 10px; }
+    .catbar-inner { padding: 2px 20px; gap: 10px; }
   }
   @media (max-width: 760px) {
     .search { padding: 0; border-color: transparent; background: none; }
     .search input { width: 0; padding: 0; }
+    .search:has(input:focus) { padding: 0 4px 0 14px; border-color: var(--line); background: var(--paper); }
+    .search:has(input:focus) input { width: 120px; padding: 7px 0; }
+    .search-btn { width: 44px; height: 44px; }
+  }
+  :global(html:has(.catbar)) { scroll-padding-top: 9.25rem; }
+  @media (max-width: 1023px) {
+    :global(html:has(.catbar)) { scroll-padding-top: 8rem; }
   }
 </style>
