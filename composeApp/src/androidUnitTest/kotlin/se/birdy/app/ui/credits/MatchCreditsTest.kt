@@ -115,6 +115,8 @@ class MatchCreditsTest {
                 .fetchSemanticsNode()
                 .boundsInRoot.top
         kotlin.test.assertTrue(creditBottom <= kickerTop, "credit ($creditBottom) runs into the kicker ($kickerTop)")
+        // ...but TalkBack reads it after the name.
+        assertCreditReadAfter(compose.onNodeWithText(nb("Foto: Musicaline · CC BY-SA 4.0"), useUnmergedTree = true), title = "Koltrast")
     }
 
     @Test

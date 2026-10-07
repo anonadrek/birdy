@@ -46,7 +46,9 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
@@ -170,7 +172,9 @@ fun PhotoHero(
                     .fillMaxWidth()
                     // Only text drawn over the photo needs the scrim; on the band it has none.
                     .drawTextFollowingScrim(enabled = image != null && !photoAbove) // before padding: see its KDoc.
-                    .padding(start = 22.dp, end = 22.dp, bottom = bottomPadding),
+                    .padding(start = 22.dp, end = 22.dp, bottom = bottomPadding)
+                    // Its own traversal group, so the photo credit drawn first can be read last.
+                    .semantics { isTraversalGroup = true },
         ) {
             PhotoCreditLine(photoCredit.takeIf { photoAbove })
             MicroLabel(kicker, color = AccentCopperLight)
@@ -205,11 +209,15 @@ fun PhotoHero(
     }
 }
 
-/** The photo's credit right under the photo, above the kicker, when there is one (see [PhotoHero]). */
+/**
+ * The photo's credit right under the photo, above the kicker, when there is one (see [PhotoHero]).
+ * TalkBack reads it after the name and the rest of the text block: it sits first on screen, next
+ * to the photo it credits, but the species is what the screen is about.
+ */
 @Composable
 private fun PhotoCreditLine(photoCredit: (@Composable () -> Unit)?) {
     if (photoCredit == null) return
-    Box(Modifier.fillMaxWidth().padding(top = 4.dp)) { photoCredit() }
+    Box(Modifier.fillMaxWidth().padding(top = 4.dp).semantics { traversalIndex = 1f }) { photoCredit() }
     Spacer(Modifier.height(8.dp))
 }
 

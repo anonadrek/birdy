@@ -2,6 +2,7 @@ package se.birdy.app.ui.credits
 
 import androidx.compose.runtime.remember
 import androidx.compose.ui.semantics.SemanticsProperties
+import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertHasClickAction
@@ -143,6 +144,15 @@ class ProfileCreditsTest {
         publicDomain.assertLinks(1)
     }
 
+    // The credit under the photo is drawn before the name, but TalkBack reads it after the name
+    // and the rest of the hero's text: it is last in the text block's own traversal group.
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `talkback reads the photo credit after the species name`() {
+        show(koltrast(), Locale.SV)
+        assertCreditReadAfter(compose.onAllNodesWithText(heroCreditSv, useUnmergedTree = true)[0], title = "Koltrast")
+    }
+
     @Test
     @Config(qualifiers = "+sv")
     fun `the species text ends with its article version and licence`() {
@@ -214,3 +224,25 @@ internal fun nb(s: String): String =
         "Wikimedia Commons",
         "public domain",
     ).fold(s) { acc, term -> acc.replace(term, term.keepTogether()) }
+
+/**
+ * [credit] (an unmerged text node) is wrapped in a node with a traversal index after its
+ * siblings', inside a traversal group that also holds [title]: TalkBack reads the title first.
+ */
+internal fun assertCreditReadAfter(
+    credit: SemanticsNodeInteraction,
+    title: String,
+) {
+    val wrapper = credit.fetchSemanticsNode().parent!!
+    assertEquals(1f, wrapper.config.getOrNull(SemanticsProperties.TraversalIndex))
+    var group = wrapper.parent
+    while (group != null && group.config.getOrNull(SemanticsProperties.IsTraversalGroup) != true) group = group.parent
+    val texts = mutableListOf<String>()
+
+    fun collect(node: androidx.compose.ui.semantics.SemanticsNode) {
+        node.config.getOrNull(SemanticsProperties.Text)?.forEach { texts += it.text }
+        node.children.forEach(::collect)
+    }
+    collect(group!!)
+    assertEquals(true, title in texts, "the credit's traversal group holds $texts")
+}
