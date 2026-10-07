@@ -1,0 +1,39 @@
+---
+// Sweden's 21 counties shaded by the species' share of all bird reports (spec 2026-09-25 §5 and §9.2).
+// Geometry: src/data/sweden-counties.json (npm run assets:counties). Four shades: no reports, 1 to 33,
+// 34 to 66 and 67 to 100 per cent of the highest county.
+import counties from '../../data/sweden-counties.json';
+import type { Locale } from '../../lib/i18n';
+
+interface Props { id: string; values: Record<string, number>; locale: Locale; title: string; legend: string[]; describedBy: string }
+const { id, values, locale, title, legend, describedBy } = Astro.props;
+const bucket = (v: number | undefined) => (!v ? 0 : v <= 33 ? 1 : v <= 66 ? 2 : 3);
+---
+
+<div class="cmap" data-map={id}>
+  <svg viewBox={counties.viewBox} role="img" aria-labelledby={`${id}-t`} aria-describedby={describedBy}>
+    <title id={`${id}-t`}>{title}</title>
+    {counties.counties.map((c) => (
+      <path d={c.d} class={`b${bucket(values[c.code])}`} data-county={c.code}><title>{locale === 'sv' ? c.sv : c.en}</title></path>
+    ))}
+  </svg>
+  <ul class="legend" role="list">
+    {legend.map((label, i) => <li><span class={`sw b${i}`} aria-hidden="true"></span>{label}</li>)}
+  </ul>
+</div>
+
+<style>
+  .cmap svg { display: block; width: 100%; height: auto; max-height: 420px; }
+  path { stroke: var(--muted); stroke-width: .6; stroke-linejoin: round; }
+  .b0 { fill: var(--card); }
+  .b1 { fill: var(--peach); }
+  .b2 { fill: var(--apricot); }
+  .b3 { fill: var(--rust); }
+  .legend { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 12px; color: var(--muted); }
+  .legend li { display: inline-flex; align-items: center; gap: 6px; }
+  .sw { width: 12px; height: 12px; border-radius: 3px; border: 1px solid var(--muted); }
+  .sw.b0 { background: var(--card); }
+  .sw.b1 { background: var(--peach); }
+  .sw.b2 { background: var(--apricot); }
+  .sw.b3 { background: var(--rust); }
+</style>
