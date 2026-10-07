@@ -253,9 +253,13 @@ def test_the_apps_licence_links_match_the_web_pipelines() -> None:
     source = KOTLIN_APP_LICENSES.read_text(encoding="utf-8")
     block = re.search(r"val DEED_URLS.*?mapOf\((.*?)\n\s*\)", source, re.DOTALL)
     assert block, "DEED_URLS not found in PhotoLicenses.kt"
+    # Keys are string literals or `const val` names in the same object (PUBLIC_DOMAIN).
+    constants = dict(re.findall(r'const val (\w+) = "([^"]+)"', source))
     kotlin = {
-        name: (None if url == "null" else url.strip('"'))
-        for name, url in re.findall(r'"([^"]+)" to ("[^"]+"|null)', block.group(1))
+        (constants[ident] if ident else literal): (None if url == "null" else url.strip('"'))
+        for literal, ident, url in re.findall(
+            r'(?:"([^"]+)"|\b([A-Z_]+)\b) to ("[^"]+"|null)', block.group(1)
+        )
     }
     assert set(kotlin) == set(LICENSE_URLS)
     for name, url in LICENSE_URLS.items():
