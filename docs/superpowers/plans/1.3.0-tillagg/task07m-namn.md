@@ -4,7 +4,7 @@
 
 **Metod:** alla 839 arters `names.sv` jämförda med listan på vetenskapligt namn (838 träffar, 1 utan träff), skiftläge ignorerat. Varje avvikelse kontrollerad för hand: samma engelska namn i listan och i Birdy för alla 29 nedan, alltså samma taxon. Listan följer AviList sedan juni 2025 (Birdy följer IOC); sammanslagningar i AviList kontrollerade mot ändringsloggen.
 
-**Resultat:** 29 namn byts (Albin räknade 30 i Task 7g; den 30:e är gråkråkan, se nedan). Det gamla namnet ligger kvar som `names.former_sv`: sökord i appen och raden "Tidigare: …" på den svenska artprofilen. Allt står även som `common_sv` + `former_sv` i `tools/content-pipeline/species_list.yaml`, så en pipelinekörning behåller dem. Låst i `SpeciesContentCorrectionsTest`.
+**Resultat:** 29 namn byts (Albin räknade 30 i Task 7g; den 30:e är gråkråkan, se nedan). Det gamla namnet ligger kvar som `names.former_sv`: sökord i appen och raden "Tidigare: …" på den svenska artprofilen. Allt står även som `common_sv` + `former_sv` i `tools/content-pipeline/species_list.yaml`, som `birdy-fetcher refresh` läser, så en refresh skriver samma namn igen. `birdy-fetcher init --resume` (som bygger om listan ur checklistorna) för sedan fixvågen över alla handsatta fält (`common_sv`, `former_sv`, `iucn_status`, `abundance`, `family_sv`, `commons_search_name` …) för arter den listar igen; kommentarerna i filen försvinner dock vid en `init`, och en `init` utan `--resume` börjar om från checklistorna och tappar fälten. Låst i `SpeciesContentCorrectionsTest`.
 
 | Vetenskapligt namn | Wikidata | Tidigare i Birdy | Officiellt namn | Not |
 |---|---|---|---|---|
