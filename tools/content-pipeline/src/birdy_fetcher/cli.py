@@ -3,11 +3,19 @@
 from __future__ import annotations
 
 import asyncio
+import os
+import sys
+from collections import Counter
+from collections.abc import Sequence
 from pathlib import Path
 
 import click
+from rich.console import Console
 
 from . import __version__
+from .web.defaults import EFFORTS, FACTS_EFFORT, FACTS_MODEL_KEY
+from .web.paths import WebPaths
+from .web.report import StepOutcome
 
 
 @click.group()
@@ -206,84 +214,532 @@ def build_mapping(labelmap: Path, model_version: str, out: Path) -> None:
     )
 
 
-@main.command()
-@click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
-@click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
-@click.option(
-    "--effort",
-    type=click.Choice(["low", "medium", "high"]),
-    default="high",
-    help="Modellens svarsansträngning. 'high' är Opus 5-standarden (oförändrat).",
-)
-@click.option("--max-cost", type=float, default=None, help="Kostnadstak i USD för körningen.")
-@click.option("--force", is_flag=True, help="Skriv över arter som redan har review: approved.")
-@click.option("--refresh-sources", is_flag=True, help="Hämta Wikidata och Wikipedia på nytt.")
-@click.option("--regenerate", is_flag=True, help="Fråga modellen igen trots cachat svar.")
-@click.option("--workers", type=click.IntRange(min=1), default=4)
-@click.option("--dry-run", is_flag=True, help="Hämta källor och visa artikelstorlek, inget anrop.")
-def web(
-    species: tuple[str, ...],
-    model_key: str,
-    effort: str,
-    max_cost: float | None,
-    force: bool,
-    refresh_sources: bool,
-    regenerate: bool,
-    workers: int,
-    dry_run: bool,
-) -> None:
-    """Webbtexter, foton och licensdata för artsidorna på birdy.community."""
-    import os
-    import sys
-    from collections import Counter
+@main.group()
+def web() -> None:
+    """Artsidorna på birdy.community: källor, faktablad, granskning, text och jämförelser."""
 
-    from rich.console import Console
 
-    from .web.run import WebPaths, WebRunOptions, run_web
+def _web_paths() -> WebPaths:
+    pipeline_root = Path(__file__).resolve().parent.parent.parent
+    return WebPaths(repo_root=pipeline_root.parent.parent)
 
-    # The locked anthropic 0.97 SDK only reads ANTHROPIC_API_KEY / ANTHROPIC_AUTH_TOKEN from
-    # the environment (no `ant auth login` profile support) -- fail fast with a clear message
-    # instead of getting an opaque SDK error partway through a 180-species run. --dry-run
-    # never calls the model, so it doesn't need a key.
-    if not dry_run and not (
-        os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN")
-    ):
+
+def _require_api_key() -> None:
+    # The locked anthropic 0.97 SDK only reads ANTHROPIC_API_KEY / ANTHROPIC_AUTH_TOKEN, so
+    # fail fast with a clear message instead of an opaque SDK error partway through a run.
+    if not (os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN")):
         raise click.ClickException(
             "ANTHROPIC_API_KEY saknas. Lägg den i miljön eller i "
             "tools/content-pipeline/.env och kör med uv run --env-file .env ..."
         )
 
-    pipeline_root = Path(__file__).resolve().parent.parent.parent
-    paths = WebPaths(repo_root=pipeline_root.parent.parent)
-    options = WebRunOptions(
+
+def _print_outcomes(outcomes: Sequence[StepOutcome], reports: Path) -> None:
+    # Swedish and Polish author names and error text can contain characters or literal
+    # `[...]` that would crash or mangle on a Windows console.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    console = Console(markup=False, highlight=False)
+    for o in outcomes:
+        if o.status not in ("ok", "pending"):
+            console.print(f"{o.status:8} {o.name} ({o.qid}): {'; '.join(o.errors)}")
+    counts = Counter(o.status for o in outcomes)
+    console.print(f"Klart: {dict(counts)}. Rapporter i {reports}.")
+
+
+@web.command("sources")
+@click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
+@click.option("--refresh", is_flag=True, help="Hämta alla källor på nytt i stället för från cache.")
+@click.option(
+    "--force",
+    is_flag=True,
+    help=(
+        "Hämta om källor även för arter som har ett faktablad (byter Wikipediaversion, "
+        "rapportdata och inspelning under faktabladet; kör web facts och verify igen)."
+    ),
+)
+@click.option("--workers", type=click.IntRange(min=1), default=4)
+@click.option("--dry-run", is_flag=True, help="Hämta och visa, men skriv inga filer.")
+def web_sources(
+    species: tuple[str, ...], refresh: bool, force: bool, workers: int, dry_run: bool
+) -> None:
+    """Steg 1: Wikipedia, Artportalen, rödlistan, inspelning och foton. Gratis."""
+    from .web.sources_step import SourcesOptions, run_sources
+
+    paths = _web_paths()
+    options = SourcesOptions(
+        qids=species, refresh=refresh, force=force, workers=workers, dry_run=dry_run
+    )
+    _print_outcomes(asyncio.run(run_sources(paths, options)), paths.reports)
+
+
+@web.command("facts")
+@click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
+@click.option(
+    "--model", "model_key", type=click.Choice(["opus", "sonnet"]), default=FACTS_MODEL_KEY
+)
+@click.option("--effort", type=click.Choice(EFFORTS), default=FACTS_EFFORT)
+@click.option(
+    "--max-cost",
+    type=click.FloatRange(min=0, min_open=True),
+    required=True,
+    help="Kostnadstak i USD för körningen (krävs).",
+)
+@click.option("--force", is_flag=True, help="Ta fram faktablad även för granskade arter.")
+@click.option("--regenerate", is_flag=True, help="Fråga modellen igen trots cachat svar.")
+@click.option("--workers", type=click.IntRange(min=1), default=4)
+def web_facts(
+    species: tuple[str, ...],
+    model_key: str,
+    effort: str,
+    max_cost: float,
+    force: bool,
+    regenerate: bool,
+    workers: int,
+) -> None:
+    """Steg 2: faktablad med citat ur Wikipedia. Kostar pengar."""
+    from .web.facts_step import FactsOptions, run_facts
+
+    _require_api_key()
+    paths = _web_paths()
+    options = FactsOptions(
         qids=species,
         model_key=model_key,
         effort=effort,
         max_cost=max_cost,
         force=force,
-        refresh_sources=refresh_sources,
         regenerate=regenerate,
         workers=workers,
-        dry_run=dry_run,
     )
-    outcomes = asyncio.run(run_web(paths, options, client=None))
+    _print_outcomes(asyncio.run(run_facts(paths, options)), paths.reports)
 
-    # 180 species' worth of Swedish/Polish/etc. author names and error text can contain
-    # characters or literal `[...]` that would otherwise crash or mangle on a Windows
-    # console; disable rich markup interpretation and make stdout tolerant of encoding gaps.
+
+@web.command("verify")
+@click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla med ett faktablad.")
+@click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="sonnet")
+@click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
+@click.option(
+    "--max-cost",
+    type=click.FloatRange(min=0, min_open=True),
+    required=True,
+    help="Kostnadstak i USD för körningen (krävs).",
+)
+@click.option("--force", is_flag=True, help="Kontrollera även arter som redan är kontrollerade.")
+@click.option("--workers", type=click.IntRange(min=1), default=4)
+@click.option(
+    "--facts-model",
+    "facts_model_key",
+    type=click.Choice(["opus", "sonnet"]),
+    default=None,
+    help=(
+        "Modell för V1-omförsökets nya faktablad. Standard: samma som artens faktablad, "
+        f"annars {FACTS_MODEL_KEY}."
+    ),
+)
+@click.option(
+    "--facts-effort",
+    type=click.Choice(EFFORTS),
+    default=None,
+    help=(
+        f"Tankenivå för V1-omförsöket. Standard: samma som artens faktablad, annars {FACTS_EFFORT}."
+    ),
+)
+def web_verify(
+    species: tuple[str, ...],
+    model_key: str,
+    effort: str,
+    max_cost: float,
+    force: bool,
+    workers: int,
+    facts_model_key: str | None,
+    facts_effort: str | None,
+) -> None:
+    """Automatisk kontroll (V1 till V4) av faktabladet. Kostar pengar (V1)."""
+    from .web.verify_step import AudioPreflightFailed, VerifyOptions, run_verify
+
+    _require_api_key()
+    paths = _web_paths()
+    options = VerifyOptions(
+        qids=species,
+        model_key=model_key,
+        effort=effort,
+        max_cost=max_cost,
+        force=force,
+        workers=workers,
+        facts_model_key=facts_model_key,
+        facts_effort=facts_effort,
+    )
+    try:
+        outcomes = asyncio.run(run_verify(paths, options))
+    except AudioPreflightFailed as exc:
+        # Follow-up 3 (wave A review): the audio model cannot run at all; nothing was paid
+        # or written.
+        raise click.ClickException(str(exc)) from exc
+    _print_outcomes(outcomes, paths.reports)
+
+
+@web.command("write")
+@click.option("--wave", type=click.IntRange(1, 3), default=None)
+@click.option("--species", multiple=True, help="Q-ID(s) i stället för en våg.")
+@click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
+@click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
+@click.option(
+    "--checker-model", "checker_key", type=click.Choice(["opus", "sonnet"]), default="sonnet"
+)
+@click.option(
+    "--max-cost",
+    type=click.FloatRange(min=0, min_open=True),
+    required=True,
+    help="Kostnadstak i USD för körningen (krävs).",
+)
+@click.option("--regenerate", is_flag=True, help="Skriv om även texter som är aktuella.")
+@click.option(
+    "--retry-failed",
+    is_flag=True,
+    help="Försök igen med texter som misslyckades förra gången med samma indata.",
+)
+@click.option(
+    "--allow-unreviewed",
+    is_flag=True,
+    help="Skriv även ur okontrollerade faktablad (bara provkörning, publiceras aldrig).",
+)
+@click.option("--workers", type=click.IntRange(min=1), default=4)
+def web_write(
+    wave: int | None,
+    species: tuple[str, ...],
+    model_key: str,
+    effort: str,
+    checker_key: str,
+    max_cost: float,
+    regenerate: bool,
+    retry_failed: bool,
+    allow_unreviewed: bool,
+    workers: int,
+) -> None:
+    """Steg 3: text ur det kontrollerade faktabladet, kontrollerad mening för mening. Kostar
+    pengar."""
+    from .web.text_step import WriteOptions, run_write
+
+    if wave is None and not species:
+        raise click.UsageError("Ange --wave eller --species.")
+    if model_key == checker_key:
+        # I3 (review fix 2026-10-06, spec §9.6): the checker must be a different model
+        # than the writer, in a fresh context.
+        raise click.UsageError("Skribent och kontroll måste vara olika modeller.")
+    _require_api_key()
+    paths = _web_paths()
+    options = WriteOptions(
+        wave=wave,
+        qids=species,
+        model_key=model_key,
+        effort=effort,
+        checker_key=checker_key,
+        max_cost=max_cost,
+        regenerate=regenerate,
+        allow_unreviewed=allow_unreviewed,
+        workers=workers,
+        retry_failed=retry_failed,
+    )
+    _print_outcomes(asyncio.run(run_write(paths, options)), paths.reports)
+
+
+@web.command("waves")
+@click.option("--size", type=click.IntRange(min=12), default=40, help="Antal arter i våg 1.")
+@click.option(
+    "--recompute", is_flag=True, help="Räkna om listan i stället för att läsa waves.json."
+)
+def web_waves(size: int, recompute: bool) -> None:
+    """Delar in arterna i tre vågor (körordning, ingen publiceringsgrind) och skriver
+    review/waves.json. Gratis."""
+    from .web.waves import run_waves
+
+    paths = _web_paths()
+    waves = run_waves(paths, size=size, recompute=recompute)
+    for number, qids in sorted(waves.items()):
+        click.echo(f"Våg {number}: {len(qids)} arter")
+    click.echo(f"Listan finns i {paths.review / 'waves.json'}.")
+
+
+@web.command("sheet")
+@click.option(
+    "--wave",
+    type=click.IntRange(1, 3),
+    default=None,
+    help="Filtrera till en våg. Utan flaggan (standard): alla vågor, i könordning.",
+)
+def web_sheet(wave: int | None) -> None:
+    """Skriver undantagsarkets flaggor (alla vågor, löpande) till review/undantag.csv.
+    Gratis."""
+    from .web.review_sheet import export_wave
+
+    try:
+        result = export_wave(_web_paths(), wave)
+    except ValueError as exc:
+        raise click.ClickException(
+            f"review/undantag.csv går inte att läsa ({exc}); inget skrevs. Ladda ner arket "
+            "från Drive som CSV igen."
+        ) from exc
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-    console = Console(markup=False, highlight=False)
-    for o in outcomes:
-        if o.status != "ok":
-            console.print(f"{o.status:8} {o.name_sv} ({o.qid}): {'; '.join(o.errors)}")
-    counts = Counter(o.status for o in outcomes)
-    if dry_run:
-        console.print(f"Klart: {dict(counts)}.")
-    else:
-        console.print(f"Klart: {dict(counts)}. Rapport i {paths.reports}.")
-    if counts["failed"]:
-        console.print("Några arter fick ingen sida. Se rapporten.", style="yellow")
+    click.echo(
+        f"{len(result.flagged)} flaggade arter, {result.carried} beslut förda vidare och "
+        f"{result.kept} behållna från arket som låg där. Ladda upp {result.path} över "
+        "Drive-arket (bara efter web import)."
+    )
+    for line in result.not_carried:
+        click.echo(f"Beslut som inte fördes vidare: {line}")
+
+
+@web.command("spot-check")
+@click.option(
+    "--seed",
+    type=int,
+    default=None,
+    help="Frö för dragningen. Standard: slumpas och sparas i review/stickprov-state.json.",
+)
+@click.option(
+    "--extra", multiple=True, help="Extra Q-ID(er) till stickprovet efter ett bekräftat missat fel."
+)
+@click.option(
+    "--force",
+    is_flag=True,
+    help="Dra direkt, utan att vänta på SPOT_CHECK_BATCH fler publicerade arter.",
+)
+def web_spot_check(seed: int | None, extra: tuple[str, ...], force: bool) -> None:
+    """Stickprov efter publicering (spec Revision 2026-10-05 (b)): 2 arter per 40
+    publicerade, räknat sedan förra dragningen (review/stickprov-state.json). Körs av fas
+    2:s publiceringsloop efter varje publicerad art; skriver bara när något faktiskt
+    drogs."""
+    from .web.review_sheet import export_spot_check
+
+    result = export_spot_check(_web_paths(), seed=seed, extra_species=extra, force=force)
+    if result is None:
+        click.echo("Inget drogs än (för få nypublicerade arter sedan sist).")
+        return
+    click.echo(
+        f"Stickprov, dragning {result.draw} (frö {result.seed}): {', '.join(result.species)}. "
+        f"Ladda upp {result.path} till Drive som ett eget kalkylark (eller en ny flik); "
+        "Albin skriver behåll på artraden eller ett beslut på varje rad."
+    )
+
+
+def _iso_date(ctx: click.Context, param: click.Parameter, value: str | None) -> str | None:
+    """`verification.at` must match fas 2's zod date regex (Minor 7, final review
+    2026-10-06): validated, and normalised to YYYY-MM-DD (fromisoformat also reads
+    20261101)."""
+    from datetime import date
+
+    if value is None:
+        return None
+    try:
+        return date.fromisoformat(value.strip()).isoformat()
+    except ValueError as exc:
+        raise click.BadParameter(f"{value!r} är inget datum, skriv YYYY-MM-DD.") from exc
+
+
+@web.command("import")
+@click.option(
+    "--wave",
+    type=click.IntRange(1, 3),
+    default=None,
+    help="Valfritt säkerhetsnät, se Task 17 (ändrat 2026-10-05 (b)).",
+)
+@click.option(
+    "--file",
+    "sheet",
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+    default=None,
+    help="Exporterad CSV. Standard: review/undantag.csv.",
+)
+@click.option(
+    "--date",
+    "review_date",
+    default=None,
+    callback=_iso_date,
+    help="Kontrolldatum, YYYY-MM-DD. Standard: i dag.",
+)
+def web_import(wave: int | None, sheet: Path | None, review_date: str | None) -> None:
+    """Läser in Albins beslut ur undantagsarket (standard) eller stickprovet (--file
+    review/stickprov-dragning-N.csv) och sätter verification på de berörda arterna. Ändrar
+    ingenting om något är fel. En rättad stickprovsrad får ett nytt kontrolldatum,
+    vilket fas 2:s publiceringsloop republicerar sidan med."""
+    from datetime import date
+
+    from .web.review_sheet import ReviewImportError, import_wave
+
+    paths = _web_paths()
+    path = sheet or paths.review / "undantag.csv"
+    when = review_date or date.today().isoformat()
+    try:
+        result = import_wave(paths, path, wave=wave, date=when)
+    except ReviewImportError as exc:
+        raise click.ClickException(f"Arket har fel, inget ändrades:\n{exc}") from exc
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    click.echo(
+        f"{len(result.changed)} arter uppdaterade {when}. "
+        f"Inspelningar strukna: {len(result.removed_audio)}."
+    )
+    for line in result.waiting:
+        click.echo(f"Väntar på beslut: {line}")
+    for line in result.ignored:
+        click.echo(f"Hoppade över: {line}")
+    for qid in result.swept_audio:
+        click.echo(f"Föräldralös inspelning borttagen: {qid}")
+    for error in result.audio_errors:
+        click.echo(f"Inspelningen kunde inte tas bort: {error}")
+    for qid in result.changed_published:
+        click.echo(f"Publicerad sida ändrad men klar: {qid}. Bygg, testa och pusha om den.")
+    for item in result.republish:
+        click.echo(f"Publicerad men inte längre klar: {item.name} ({item.qid}): ")
+        click.echo(f"  {'; '.join(item.reasons)}")
+        for command in item.commands:
+            click.echo(f"  {command}")
+    if result.republish or result.audio_errors:
+        raise click.exceptions.Exit(1)
+
+
+@web.command("compare-candidates")
+def web_compare_candidates() -> None:
+    """Skriver förväxlingsparen till review/comparison-volumes.csv. Gratis."""
+    from .web.compare import VOLUMES_FILE, candidate_pairs, write_candidates
+    from .web.record import load_all
+
+    paths = _web_paths()
+    records = load_all(paths.data_out)
+    pairs = candidate_pairs(records)
+    result = write_candidates(paths.review / VOLUMES_FILE, pairs, records)
+    click.echo(
+        f"{len(pairs)} par i {result.path}. {result.missing_volumes} saknar volym "
+        "(tom cell, skilt från en ifylld nolla). Fyll i sv_volume och en_volume."
+    )
+    if result.cleared_sv or result.cleared_en:
+        click.echo(
+            f"Namnbyte rensade {result.cleared_sv} sv_volume och {result.cleared_en} "
+            "en_volume (fyll i på nytt)."
+        )
+
+
+@web.command("compare")
+@click.option(
+    "--top", type=click.IntRange(min=1), default=30, help="Antal par med störst sökvolym."
+)
+@click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
+@click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
+@click.option(
+    "--checker-model", "checker_key", type=click.Choice(["opus", "sonnet"]), default="sonnet"
+)
+@click.option(
+    "--max-cost",
+    type=click.FloatRange(min=0, min_open=True),
+    required=True,
+    help="Kostnadstak i USD för körningen (krävs).",
+)
+@click.option("--regenerate", is_flag=True, help="Skriv om även jämförelser som är aktuella.")
+@click.option(
+    "--retry-failed",
+    is_flag=True,
+    help="Försök igen med jämförelser som misslyckades förra gången med samma indata.",
+)
+@click.option("--workers", type=click.IntRange(min=1), default=4)
+def web_compare(
+    top: int,
+    model_key: str,
+    effort: str,
+    checker_key: str,
+    max_cost: float,
+    regenerate: bool,
+    retry_failed: bool,
+    workers: int,
+) -> None:
+    """Jämförelsetexter för de mest sökta förväxlingsparen, ur två kontrollerade faktablad.
+    Kostar pengar."""
+    from .web.compare import CompareOptions, run_compare
+
+    if model_key == checker_key:
+        # Spec §9.6, same rule as `web write` (I3): the checker must be a different model.
+        raise click.UsageError("Skribent och kontroll måste vara olika modeller.")
+    _require_api_key()
+    paths = _web_paths()
+    options = CompareOptions(
+        top=top,
+        model_key=model_key,
+        effort=effort,
+        checker_key=checker_key,
+        max_cost=max_cost,
+        regenerate=regenerate,
+        workers=workers,
+        retry_failed=retry_failed,
+    )
+    try:
+        outcomes = asyncio.run(run_compare(paths, options))
+    except ValueError as exc:
+        # A hand-edited comparison-volumes.csv with a bad or conflicting volume stops the
+        # run before any call is paid for; show it as a plain error, not a traceback.
+        raise click.ClickException(str(exc)) from exc
+    _print_outcomes(outcomes, paths.reports)
+
+
+@web.command("publish")
+@click.option("--wave", type=click.IntRange(1, 3))
+@click.option(
+    "--species",
+    multiple=True,
+    help="QID, kan upprepas. En art i taget är det normala läget (ändrat 2026-10-05 (b)).",
+)
+@click.option(
+    "--next",
+    "next_mode",
+    is_flag=True,
+    help=(
+        "Publicerar högst en färdig post (en art eller en jämförelse) i könordning, åt "
+        "fas 2:s löpande loop. Utesluter --wave/--species."
+    ),
+)
+@click.option(
+    "--exclude",
+    multiple=True,
+    help="QID eller en jämförelses filnamn utan .json, att hoppa över med --next. Kan upprepas.",
+)
+def web_publish(
+    wave: int | None, species: tuple[str, ...], next_mode: bool, exclude: tuple[str, ...]
+) -> None:
+    """Slår på publish för färdiga arter och jämförelser, filtrerat på våg, på en eller
+    flera bestämda arter, eller båda -- eller (--next) högst en färdig post i könordning,
+    åt fas 2:s löpande publiceringsloop. Gratis, ingen modell.
+
+    Med --next skriver kommandot EXAKT en rad på stdout: "species QID", "comparison
+    STEM", eller "none" när inget är klart -- inget annat går till stdout i det läget
+    (publiceringsloopen läser den raden maskinellt); fel/usage-meddelanden går som
+    vanligt till stderr via click."""
+    from .web.waves import publish_next, publish_wave
+
+    if next_mode:
+        if wave is not None or species:
+            raise click.UsageError("--next kan inte kombineras med --wave eller --species.")
+        pick = publish_next(_web_paths(), exclude=frozenset(exclude))
+        click.echo("none" if pick is None else f"{pick.kind} {pick.id}")
+        return
+    if wave is None and not species:
+        raise click.UsageError("Ange --wave, en eller flera --species, eller båda.")
+    paths = _web_paths()
+    outcomes = publish_wave(paths, wave, list(species) or None)
+    _print_outcomes(outcomes, paths.reports)
+    status_by_qid = {o.qid: o.status for o in outcomes}
+    if species:
+        # I3 + N1 item 2 (review fix 2026-10-06): in --species mode, only the named
+        # species (an unknown QID gets its own "failed" outcome under that same qid) and
+        # a comparison THIS call itself tried to publish (both sides named,
+        # `StepOutcome.attempted` set by `_publish_comparisons`) decide the exit code.
+        # An already-published comparison's staleness finding stays loud in the
+        # output/report ("sätt publish: false") but never flips it -- otherwise fas 2's
+        # loop would `git checkout -- src/data` the very page it just correctly
+        # published, over a problem on a species this call never touched.
+        counted = set(species) | {o.qid for o in outcomes if o.attempted}
+        if any(status_by_qid.get(qid) != "ok" for qid in counted):
+            raise click.exceptions.Exit(1)
+    elif any(o.status == "failed" for o in outcomes):
+        raise click.exceptions.Exit(1)
 
 
 if __name__ == "__main__":

@@ -50,3 +50,10 @@ Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0,
 https://creativecommons.org/licenses/by-sa/4.0/). The Wikipedia article
 revisions they are based on are listed in the `sources` field of each species
 file.
+
+Species pages on the website (exception to the proprietary terms above)
+
+The species texts in website/src/data/species/ and the comparison texts in
+website/src/data/comparisons/ are licensed under CC BY-SA 4.0, see the LICENSE.md
+file in each folder. Photos and recordings in website/src/assets/species/ keep the
+licenses credited in the species files and on each page.

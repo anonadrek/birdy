@@ -1,0 +1,666 @@
+"""Tests for web/text_step.py: write, check, rewrite, remove, and the run."""
+
+from __future__ import annotations
+
+from datetime import UTC, datetime
+from pathlib import Path
+
+import pytest
+
+from birdy_fetcher.web.checker import CheckOutput, Verdict, check_items
+from birdy_fetcher.web.facts import FactCheck, apply_facts
+from birdy_fetcher.web.record import facts_hash, load_record, record_path, save_record
+from birdy_fetcher.web.review_sheet import KEEP, STRIKE, apply_review, full_sheet_rows, mark_drawn
+from birdy_fetcher.web.text_checks import TextContext
+from birdy_fetcher.web.text_model import LookAlikeText, WebTextV2
+from birdy_fetcher.web.text_step import WriteOptions, run_write
+
+from .text_fixtures import EN, FACTS, SV, VALID, S, reviewed_record
+from .web_fakes import FakeJsonClient, reply
+from .web_repo import make_repo
+
+NOW = datetime(2026, 11, 21, tzinfo=UTC)
+CTX = TextContext.from_facts(FACTS)
+
+
+def _verdicts(text: WebTextV2, unsupported: dict[str, str] | None = None) -> CheckOutput:
+    bad = unsupported or {}
+    return CheckOutput(
+        verdicts=[
+            Verdict(id=i.id, supported=i.id not in bad, problem=bad.get(i.id))
+            for i in check_items(text, CTX)
+        ]
+    )
+
+
+async def test_a_good_text_is_saved_with_the_status_from_the_fact_sheet(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    client = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    assert client.models == ["claude-opus-5", "claude-sonnet-5"]
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    assert record["status"] == "ok"
+    assert record["text"]["sv"]["facts"]["swedenStatus"] == {
+        "value": "resident",
+        "factIds": ["s01"],
+    }
+    assert record["text"]["en"]["lead"][1]["factIds"] == ["f01"]
+    assert record["generated"]["text"]["checker"] == "claude-sonnet-5"
+    assert "unreviewed" not in record["generated"]["text"]
+    assert any(p.name.startswith("web-text-") for p in paths.reports.iterdir())
+
+
+async def test_a_broken_rule_gets_one_retry(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    short = WebTextV2(sv=SV.model_copy(update={"meta_description": "Kort."}), en=EN)
+    client = FakeJsonClient([reply(short), reply(VALID), reply(_verdicts(VALID))])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    assert len(client.calls) == 3
+    assert "meta_description" in str(client.calls[1][-1]["content"])
+
+
+async def test_an_unsupported_sentence_is_rewritten_then_removed(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    bad = {"sv.lead[1]": "nämner inget om kinderna"}
+    client = FakeJsonClient(
+        [reply(VALID), reply(_verdicts(VALID, bad)), reply(VALID), reply(_verdicts(VALID, bad))]
+    )
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    assert any("sv.lead[1] togs bort" in n for n in outcomes[0].notes)
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    assert len(record["text"]["sv"]["lead"]) == 1
+
+
+async def test_an_unreviewed_fact_sheet_is_only_written_when_allowed(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    record = reviewed_record()
+    del record["verification"]
+    save_record(record_path(paths.data_out, "Q25485"), record)
+    skipped = await run_write(paths, WriteOptions(wave=1), client=FakeJsonClient([]), now=NOW)
+    assert [o.status for o in skipped] == ["skipped"]
+    client = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    await run_write(
+        paths, WriteOptions(qids=("Q25485",), allow_unreviewed=True), client=client, now=NOW
+    )
+    saved = load_record(record_path(paths.data_out, "Q25485"))
+    assert saved is not None
+    assert saved["generated"]["text"]["unreviewed"] is True
+
+
+async def test_a_current_text_is_skipped_unless_regenerated(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    first = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    await run_write(paths, WriteOptions(wave=1), client=first, now=NOW)
+    again = await run_write(paths, WriteOptions(wave=1), client=FakeJsonClient([]), now=NOW)
+    assert [o.status for o in again] == ["skipped"]
+    redo = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    outcomes = await run_write(paths, WriteOptions(wave=1, regenerate=True), client=redo, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+
+
+async def test_an_unconfirmed_status_flag_hides_s01_from_the_writer(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    record = reviewed_record()
+    # A resident with a winter gap in the report data (I3: derived from the data now).
+    record["data"].update({"months": [100] * 11 + [1], "totalReports": 900})
+    save_record(record_path(paths.data_out, "Q25485"), record)
+    without_s01 = WebTextV2(
+        sv=SV.model_copy(
+            update={
+                "where_when": [
+                    S("Rapporteras året runt i skog, parker och trädgårdar.", "d01", "f05")
+                ]
+            }
+        ),
+        en=EN.model_copy(
+            update={
+                "where_when": [S("Reported all year in woodland, parks and gardens.", "d01", "f05")]
+            }
+        ),
+    )
+    client = FakeJsonClient([reply(without_s01), reply(_verdicts(without_s01))])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    assert "s01" not in str(client.calls[0][0]["content"])
+    saved = load_record(record_path(paths.data_out, "Q25485"))
+    assert saved is not None
+    assert saved["text"]["sv"]["facts"]["swedenStatus"] is None
+
+
+async def test_a_text_that_cannot_be_fixed_fails_and_keeps_the_rejected_text(
+    tmp_path: Path,
+) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    two_marks = WebTextV2(sv=SV.model_copy(update={"field_marks": SV.field_marks[:2]}), en=EN)
+    client = FakeJsonClient([reply(two_marks), reply(two_marks)])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    saved = load_record(record_path(paths.data_out, "Q25485"))
+    assert saved is not None
+    assert saved["text"] is None
+    assert len(saved["rejectedText"]["sv"]["fieldMarks"]) == 2
+
+
+# C1 (review fix 2026-10-06): a stale `verification` must never let text be written from
+# facts that were never actually checked.
+
+
+async def test_new_facts_after_verification_are_not_written_until_reverified(
+    tmp_path: Path,
+) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    new_check = FactCheck(
+        facts=[dict(f) for f in FACTS if f["topic"] in ("appearance", "voice", "habitat")]
+    )
+    apply_facts(record, new_check, generated={"model": "claude-opus-5"})
+    save_record(record_path(paths.data_out, "Q25485"), record)
+    client = FakeJsonClient([])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["skipped"]
+    assert outcomes[0].errors == ["faktabladet är inte kontrollerat"]
+    assert client.calls == []
+
+
+async def test_a_stale_verify_hash_is_treated_as_not_verified(tmp_path: Path) -> None:
+    """Defence in depth: even if `verification` itself was somehow left behind, a
+    `generated.verify.factsHash` that no longer matches the current facts must not be
+    trusted."""
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    record = reviewed_record()
+    record["generated"]["verify"]["factsHash"] = "stale0000"
+    save_record(record_path(paths.data_out, "Q25485"), record)
+    client = FakeJsonClient([])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["skipped"]
+    assert outcomes[0].errors == ["faktabladet är inte kontrollerat"]
+    assert client.calls == []
+
+
+# I1 (review fix 2026-10-06): a failed rewrite must not destroy a text the site still
+# depends on.
+
+
+async def test_a_failed_regenerate_keeps_the_current_text_and_status(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    first = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    await run_write(paths, WriteOptions(wave=1), client=first, now=NOW)
+    bad = FakeJsonClient([reply(None, stop="max_tokens")])
+    outcomes = await run_write(paths, WriteOptions(wave=1, regenerate=True), client=bad, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    assert any("den tidigare texten behölls" in n for n in outcomes[0].notes)
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    assert record["status"] == "ok"
+    assert record["text"] is not None
+
+
+async def test_a_failed_rewrite_on_a_published_species_with_changed_facts_keeps_old_text(
+    tmp_path: Path,
+) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    first = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    await run_write(paths, WriteOptions(wave=1), client=first, now=NOW)
+    published = load_record(record_path(paths.data_out, "Q25485"))
+    assert published is not None
+    published["publish"] = True
+    # Facts changed after the text was written (e.g. via a later `web facts` + `web
+    # verify`), but the old text is still the one live on the site.
+    published["facts"] = published["facts"] + [
+        {
+            "id": "f99",
+            "topic": "behaviour",
+            "sv": "Den äter frön och insekter.",
+            "sources": [{"article": "sv", "quote": "äter frön och insekter"}],
+        }
+    ]
+    published["generated"]["verify"]["factsHash"] = facts_hash(published)
+    save_record(record_path(paths.data_out, "Q25485"), published)
+    bad = FakeJsonClient([reply(None, stop="max_tokens")])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=bad, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    # P5 (review fix 2026-10-06): this warning lives in `errors`, not `notes`, so
+    # `_print_outcomes` actually shows it.
+    assert any("sätt publish: false" in e for e in outcomes[0].errors)
+    saved = load_record(record_path(paths.data_out, "Q25485"))
+    assert saved is not None
+    assert saved["status"] == "ok"
+    assert saved["publish"] is True
+
+
+# I2 (review fix 2026-10-06): the best attempt (fewest hard problems) is kept, and a bad
+# rewrite falls back to removing from the original instead of destroying a good answer.
+
+
+async def test_an_earlier_clean_attempt_beats_a_later_broken_one(tmp_path: Path) -> None:
+    attempt1 = WebTextV2(
+        sv=SV.model_copy(update={"field_marks": [*SV.field_marks, S("Okänd uppgift", "f99")]}),
+        en=EN,
+    )
+    attempt2 = WebTextV2(sv=SV.model_copy(update={"meta_description": "Kort."}), en=EN)
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    client = FakeJsonClient([reply(attempt1), reply(attempt2), reply(_verdicts(VALID))])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    assert len(record["text"]["sv"]["fieldMarks"]) == 3
+
+
+async def test_a_bad_rewrite_falls_back_to_removing_from_the_original(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    client = FakeJsonClient(
+        [
+            reply(VALID),
+            reply(_verdicts(VALID, {"sv.lead[1]": "nämner inget om kinderna"})),
+            reply(VALID),
+            reply(_verdicts(VALID, {"sv.voice[0]": "sången är inte styrkt"})),
+        ]
+    )
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    assert any("omskrivningen" in n for n in outcomes[0].notes)
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    assert len(record["text"]["sv"]["lead"]) == 1
+    assert len(record["text"]["sv"]["voice"]) == 1
+
+
+# I3 (review fix 2026-10-06): the writer and the checker must be different models.
+
+
+async def test_the_writer_and_the_checker_must_be_different_models(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    with pytest.raises(ValueError):
+        await run_write(
+            paths,
+            WriteOptions(wave=1, model_key="sonnet", checker_key="sonnet"),
+            client=FakeJsonClient([]),
+            now=NOW,
+        )
+
+
+# M1: --species is deduplicated, and an unknown QID is a failed outcome, not a silent drop.
+
+
+async def test_unknown_species_are_reported_failed_and_deduplicated(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    client = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    outcomes = await run_write(
+        paths,
+        WriteOptions(qids=("Q25485", "Q25485", "QUNKNOWN")),
+        client=client,
+        now=NOW,
+    )
+    assert len(outcomes) == 2
+    by_qid = {o.qid: o for o in outcomes}
+    assert by_qid["Q25485"].status == "ok"
+    assert by_qid["QUNKNOWN"].status == "failed"
+    assert by_qid["QUNKNOWN"].errors == ["artposten saknas: kör web sources först"]
+
+
+# M2: a malformed record must fail on its own, never abort the whole run.
+
+
+async def test_a_malformed_record_fails_without_aborting_the_run(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    broken = reviewed_record("Q99999")
+    del broken["names"]
+    save_record(record_path(paths.data_out, "Q99999"), broken)
+    client = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    statuses = {o.qid: o.status for o in outcomes}
+    assert statuses["Q25485"] == "ok"
+    assert statuses["Q99999"] == "failed"
+
+
+# M3: generated.text records the checker's prompt version and a writer prompt hash.
+
+
+async def test_generated_text_records_the_checker_prompt_and_a_prompt_hash(
+    tmp_path: Path,
+) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    client = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    generated = record["generated"]["text"]
+    assert generated["checkerPrompt"] == "check-v1"
+    assert isinstance(generated["promptHash"], str)
+    assert len(generated["promptHash"]) == 8
+
+
+# M5: a look-alike named by scientific name in the model's answer is mapped to the fact's
+# QID before it reaches the site.
+
+
+async def test_a_lookalike_named_by_scientific_name_is_mapped_to_its_qid(
+    tmp_path: Path,
+) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    by_scientific = WebTextV2(
+        sv=SV.model_copy(
+            update={
+                "look_alikes": [
+                    LookAlikeText(
+                        other="Cyanistes caeruleus",
+                        sentences=[S("Blåmesen är mindre och har blå hätta.", "f06")],
+                    )
+                ]
+            }
+        ),
+        en=EN,
+    )
+    client = FakeJsonClient([reply(by_scientific), reply(_verdicts(by_scientific))])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    assert record["text"]["sv"]["lookAlikes"][0]["other"] == "Q25404"
+
+
+# M7: cost cap, a checker failure that leaves the record untouched, a removal that empties
+# a required field, a writer refusal, an edited/data fact reaching the prompt, `about`
+# reaching the checker, and `publish` staying False.
+
+
+async def test_the_cost_cap_skips_instead_of_failing(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    client = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    outcomes = await run_write(paths, WriteOptions(wave=1, max_cost=0.0001), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["skipped"]
+    assert "kostnadstaket nåddes" in outcomes[0].errors[0]
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    assert record["status"] == "pending"
+
+
+async def test_a_checker_failure_leaves_the_record_untouched(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    client = FakeJsonClient([reply(VALID), reply(None, stop="refusal")])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    assert record["status"] == "pending"
+    assert record["text"] is None
+
+
+async def test_a_removal_that_empties_a_required_field_fails(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    bad = {"sv.voice[0]": "sången är inte styrkt"}
+    client = FakeJsonClient(
+        [reply(VALID), reply(_verdicts(VALID, bad)), reply(VALID), reply(_verdicts(VALID, bad))]
+    )
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    assert record["text"] is None
+    assert record["rejectedText"]["sv"]["voice"] == []
+
+
+async def test_a_refused_writer_reply_fails_without_retrying_forever(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    client = FakeJsonClient([reply(None, stop="refusal")])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    assert "refusal" in outcomes[0].errors[0]
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    assert record["text"] is None
+    assert record["rejectedText"] is None
+
+
+async def test_an_edited_fact_and_a_data_fact_reach_the_writer_prompt(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    record = reviewed_record()
+    record["facts"].append(
+        {
+            "id": "f07",
+            "topic": "appearance",
+            "sv": "Ungfågeln har en brunare ton.",
+            "sources": [],
+            "edited": True,
+        }
+    )
+    # Simulate the edit having gone through `web import`/`apply_review`, which refreshes
+    # this hash to match the edited facts (otherwise C1's stale-verify defence would skip
+    # the species before it ever reaches the writer).
+    record["generated"]["verify"]["factsHash"] = facts_hash(record)
+    save_record(record_path(paths.data_out, "Q25485"), record)
+    client = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    prompt = str(client.calls[0][0]["content"])
+    assert "d01" in prompt and "Rapporteras året runt." in prompt
+    assert "f07" in prompt and "Ungfågeln har en brunare ton." in prompt
+
+
+async def test_about_reaches_the_checker(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    client = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    checker_prompt = str(client.calls[1][0]["content"])
+    assert "Talgoxe / Great Tit (Parus major), familj Mesar" in checker_prompt
+
+
+async def test_write_never_sets_publish(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    client = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    assert record.get("publish") is False
+
+
+# N1 (review fix 2026-10-06): a published page must never keep a fact Albin struck with
+# almost no signal.
+
+
+async def test_a_published_page_citing_a_struck_fact_fails_loudly(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    first = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    await run_write(paths, WriteOptions(wave=1), client=first, now=NOW)
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    # VALID's only voice sentence cites f04 -- the published page now depends on it.
+    assert record["text"]["sv"]["voice"][0]["factIds"] == ["f04"]
+    record["publish"] = True
+    save_record(record_path(paths.data_out, "Q25485"), record)
+
+    # f04, the species' only voice fact, is gone from the facts (an import can no longer
+    # strike the last fact of a required topic, Minor 10 of the final review 2026-10-06;
+    # the page must still fail loudly however a cited fact disappears).
+    record["facts"] = [f for f in record["facts"] if f["id"] != "f04"]
+    record["generated"]["verify"]["factsHash"] = facts_hash(record)
+    save_record(record_path(paths.data_out, "Q25485"), record)
+
+    client = FakeJsonClient([])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    assert any("f04" in e and "publish: false" in e for e in outcomes[0].errors), outcomes[0].errors
+    assert client.calls == []
+    saved = load_record(record_path(paths.data_out, "Q25485"))
+    assert saved is not None
+    assert saved["publish"] is True
+    assert saved["status"] == "ok"
+    assert saved["text"]["sv"]["voice"][0]["factIds"] == ["f04"]  # untouched by run_write
+
+
+async def test_a_failed_rewrite_on_a_published_species_with_stale_citations_names_the_fact(
+    tmp_path: Path,
+) -> None:
+    """The write-failed / `_keep_old_text` branch gets the same precise error, in `errors`
+    (not just `notes`), so `_print_outcomes` actually shows it (P5). f01 is struck instead
+    of f04 here so the species still has every required topic (appearance keeps f02) and
+    actually reaches the writer instead of being skipped outright."""
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    first = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    await run_write(paths, WriteOptions(wave=1), client=first, now=NOW)
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    # VALID's lead[1] and field_marks[0] both cite f01.
+    assert "f01" in record["text"]["sv"]["lead"][1]["factIds"]
+    record["publish"] = True
+    save_record(record_path(paths.data_out, "Q25485"), record)
+    mark_drawn(record, 1)
+    rows = [dict(row) for row in full_sheet_rows(record, draw=1)]
+    for row in rows:
+        if row["Typ"] != "data":
+            row["Beslut"] = STRIKE if row["Id"] == "f01" else KEEP
+    apply_review({"Q25485": record}, rows, date="2026-11-22")
+    assert record.get("verification") is not None
+    save_record(record_path(paths.data_out, "Q25485"), record)
+
+    bad = FakeJsonClient([reply(None, stop="max_tokens")])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=bad, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    assert any("f01" in e and "publish: false" in e for e in outcomes[0].errors)
+
+
+# N6 (review fix 2026-10-06): a checker failure on the rewrite's own re-check must fall back
+# to the original (already checked once) instead of failing the species.
+
+
+async def test_a_checker_failure_on_the_rewrite_falls_back_to_the_original(
+    tmp_path: Path,
+) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    bad = {"sv.lead[1]": "nämner inget om kinderna"}
+    client = FakeJsonClient(
+        [reply(VALID), reply(_verdicts(VALID, bad)), reply(VALID), reply(None, stop="refusal")]
+    )
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    assert any("kontrollen av omskrivningen misslyckades" in n for n in outcomes[0].notes)
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    assert len(record["text"]["sv"]["lead"]) == 1
+
+
+# I5 (final review 2026-10-06): the meta description goes to the second model too.
+
+
+async def test_an_unsupported_meta_description_that_stays_unsupported_fails_the_text(
+    tmp_path: Path,
+) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    bad = {"sv.meta_description": "säger att den är vanligast i Sverige"}
+    client = FakeJsonClient(
+        [reply(VALID), reply(_verdicts(VALID, bad)), reply(VALID), reply(_verdicts(VALID, bad))]
+    )
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    assert "sv.meta_description" in str(client.calls[2][-1]["content"])
+    assert any("meta_description" in e for e in outcomes[0].errors)
+    saved = load_record(record_path(paths.data_out, "Q25485"))
+    assert saved is not None
+    assert saved["text"] is None
+
+
+async def test_a_meta_description_fixed_by_the_rewrite_is_saved(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    bad = {"sv.meta_description": "säger att den är vanligast i Sverige"}
+    client = FakeJsonClient(
+        [reply(VALID), reply(_verdicts(VALID, bad)), reply(VALID), reply(_verdicts(VALID))]
+    )
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+
+
+# I6 (final review 2026-10-06): a text that failed is not paid for again on every rerun.
+
+
+async def test_a_failed_text_is_not_paid_for_again_unless_regenerated(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    two_marks = WebTextV2(sv=SV.model_copy(update={"field_marks": SV.field_marks[:2]}), en=EN)
+    first = FakeJsonClient([reply(two_marks), reply(two_marks)])
+    await run_write(paths, WriteOptions(wave=1), client=first, now=NOW)
+    again = FakeJsonClient([])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=again, now=NOW)
+    assert [o.status for o in outcomes] == ["skipped"]
+    assert "--retry-failed" in outcomes[0].errors[0]
+    assert again.calls == []
+    redo = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    outcomes = await run_write(paths, WriteOptions(wave=1, retry_failed=True), client=redo, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+
+
+async def test_a_failed_text_is_tried_again_with_another_writer(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    two_marks = WebTextV2(sv=SV.model_copy(update={"field_marks": SV.field_marks[:2]}), en=EN)
+    first = FakeJsonClient([reply(two_marks), reply(two_marks)])
+    await run_write(paths, WriteOptions(wave=1), client=first, now=NOW)
+    other = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    options = WriteOptions(wave=1, model_key="sonnet", checker_key="opus")
+    outcomes = await run_write(paths, options, client=other, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+
+
+async def test_a_failed_text_is_tried_again_when_the_facts_change(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    two_marks = WebTextV2(sv=SV.model_copy(update={"field_marks": SV.field_marks[:2]}), en=EN)
+    first = FakeJsonClient([reply(two_marks), reply(two_marks)])
+    await run_write(paths, WriteOptions(wave=1), client=first, now=NOW)
+    record = load_record(record_path(paths.data_out, "Q25485"))
+    assert record is not None
+    record["facts"].append(
+        {"id": "d09", "topic": "data", "source": "artportalen", "sv": "Ny mening."}
+    )
+    record["generated"]["verify"]["factsHash"] = facts_hash(record)
+    save_record(record_path(paths.data_out, "Q25485"), record)
+    redo = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=redo, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+
+
+async def test_a_failed_text_is_tried_again_after_the_banned_list_changes(
+    tmp_path: Path,
+) -> None:
+    """Follow-up 6 (wave B review): the banned phrases are part of the writer's prompt and
+    of the code checks, so a changed list is a different attempt."""
+    paths = make_repo(tmp_path, [("Q25485", "Talgoxe", "Great Tit")])
+    save_record(record_path(paths.data_out, "Q25485"), reviewed_record())
+    two_marks = WebTextV2(sv=SV.model_copy(update={"field_marks": SV.field_marks[:2]}), en=EN)
+    first = FakeJsonClient([reply(two_marks), reply(two_marks)])
+    await run_write(paths, WriteOptions(wave=1), client=first, now=NOW)
+    paths.banned.write_text("fascinerande\nmagnifik\n", encoding="utf-8")
+    redo = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
+    outcomes = await run_write(paths, WriteOptions(wave=1), client=redo, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]

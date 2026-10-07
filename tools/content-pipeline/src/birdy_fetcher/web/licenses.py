@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from html.parser import HTMLParser
 
+from .checks import without_dashes
+
 LICENSE_URLS: dict[str, str | None] = {
     "CC0": None,
     "Public domain": None,
@@ -39,7 +41,8 @@ _NAMESPACE_PREFIXES = ("Template:", "User:")
 
 
 def clean_author(raw: str | None) -> str | None:
-    """Commons author fields are HTML; the site shows plain text."""
+    """Commons author fields are HTML; the site shows plain text, without the dashes its
+    dash guard refuses (I7, final review 2026-10-06)."""
     if not raw:
         return None
     parser = _TextCollector()
@@ -50,7 +53,7 @@ def clean_author(raw: str | None) -> str | None:
         if text.startswith(prefix):
             text = text.removeprefix(prefix).strip()
             break
-    return text or None
+    return without_dashes(text) or None
 
 
 def commons_url(source_url: str) -> str:

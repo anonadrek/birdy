@@ -85,3 +85,13 @@ def load_approved(species_root: Path, qids: Sequence[str] = ()) -> list[SpeciesS
     if missing:
         raise KeyError(f"Saknas i artfilerna: {sorted(missing)}")
     return found
+
+
+def load_scientific_index(species_root: Path) -> dict[str, str]:
+    """Lowercased scientific name to QID for all species, approved or not. Used to link a
+    look-alike named in a fact to its species."""
+    index: dict[str, str] = {}
+    for path in sorted(species_root.rglob("*.yaml")):
+        data: dict[str, Any] = yaml.safe_load(path.read_text(encoding="utf-8"))
+        index[str(data["scientific_name"]).lower()] = data["id"]
+    return index

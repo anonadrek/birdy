@@ -14,6 +14,7 @@ dependencies = [
     "pydantic>=2.9.2",
     "pdfplumber>=0.11.4",
     "openpyxl>=3.1.5",
+    "imageio-ffmpeg>=0.6.0",
 ]
 
 [project.scripts]
@@ -55,3 +56,7 @@ exclude = ["tests/fixtures/_generate\\.py"]
 testpaths = ["tests"]
 asyncio_mode = "auto"
 addopts = "-v --strict-markers"
+
+[[tool.mypy.overrides]]
+module = ["imageio_ffmpeg"]
+ignore_missing_imports = true
