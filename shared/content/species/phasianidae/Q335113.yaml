@@ -96,9 +96,9 @@ image_refs:
     Reserve.jpg
   commons_filename: Golden Pheasant, Tangjiahe Nature Reserve.jpg
 review_status: auto
-review_notes: ''
+review_notes: "2026-10-07 (1.3.0, 7i-fix A): wikipedia_en_revision borttagen. Den sparade revisionen 1312202782 var \"Golden Pheasant\", en förgreningssida (disambiguation), inte artikeln om arten, så artsidans textkredit länkar i stället artens artikel via Wikidata (WikipediaLinks.articleUrl)."
 generated_at: '2026-05-15T21:06:16.456469+00:00'
 sources:
   wikipedia_sv_revision: '55606471'
-  wikipedia_en_revision: '1312202782'
+  wikipedia_en_revision: null
   claude_model: claude-haiku-4-5-20251001

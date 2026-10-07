@@ -86,9 +86,9 @@ image_refs:
     Mumbai DSCN0762 (2).jpg
   commons_filename: Ruff Calidris pugnax female Mumbai DSCN0762 (2).jpg
 review_status: auto
-review_notes: ''
+review_notes: "2026-10-07 (1.3.0, 7i-fix A): wikipedia_en_revision borttagen. Den sparade revisionen 1321407778 var \"Ruff\", en förgreningssida (disambiguation), inte artikeln om arten, så artsidans textkredit länkar i stället artens artikel via Wikidata (WikipediaLinks.articleUrl)."
 generated_at: '2026-05-15T21:01:29.291382+00:00'
 sources:
   wikipedia_sv_revision: '58520102'
-  wikipedia_en_revision: '1321407778'
+  wikipedia_en_revision: null
   claude_model: claude-haiku-4-5-20251001

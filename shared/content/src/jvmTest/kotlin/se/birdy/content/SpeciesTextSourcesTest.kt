@@ -129,10 +129,12 @@ class SpeciesTextSourcesTest {
         assertEquals("https://creativecommons.org/licenses/by-sa/4.0/", WikipediaLinks.textLicenseUrl(Locale.EN))
     }
 
-    // Every text the app ships has the revision of its own language, so no shipped credit needs
-    // the Wikidata fallback above.
+    // Every text the app ships has the revision of its own language, except the four whose stored
+    // revision was a disambiguation or split page rather than the species' article (1.3.0 review):
+    // those revisions are removed from the YAML, and their credit links the species' article
+    // through Wikidata instead (see SpeciesContentCorrectionsTest).
     @Test
-    fun `every shipped text has a revision in its own language`(
+    fun `every shipped text has a revision in its own language, except the four disambiguation pages`(
         @TempDir tempDir: Path,
     ) {
         val shipped = Path.of("../../composeApp/src/commonMain/composeResources/files/species.db")
@@ -152,7 +154,37 @@ class SpeciesTextSourcesTest {
                         buildList { while (rs.next()) add("${rs.getString(1)} ${rs.getString(2)} ${rs.getString(3)}") }
                     }
             }
-        assertEquals(emptyList<String>(), missing)
+        val disambiguationPages =
+            listOf("Q187902 en", "Q26452 sv", "Q335113 en", "Q511566 en")
+                .flatMap { listOf("$it description", "$it migration") }
+        assertEquals(disambiguationPages, missing.sorted())
+    }
+
+    @Test
+    fun `a text whose source was a disambiguation page credits the species' article through wikidata`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val shipped = Path.of("../../composeApp/src/commonMain/composeResources/files/species.db")
+        val db = Files.copy(shipped, tempDir.resolve("shipped.db"))
+        val driver = JdbcSqliteDriver("jdbc:sqlite:${db.toAbsolutePath()}")
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        // The pages they had: "Golden Pheasant", "Mediterranean shearwater", "Purple swamphen", "Sädgås".
+        val fallbacks =
+            listOf(
+                Triple("Q335113", Locale.EN, "enwiki"),
+                Triple("Q511566", Locale.EN, "enwiki"),
+                Triple("Q187902", Locale.EN, "enwiki"),
+                Triple("Q26452", Locale.SV, "svwiki"),
+            )
+        for ((qid, locale, wiki) in fallbacks) {
+            val sources = repo.getById(SpeciesId(qid), locale).first()?.textSources
+            assertEquals(
+                listOf(SpeciesTextSource(locale, null, "https://www.wikidata.org/wiki/Special:GoToLinkedPage/$wiki/$qid")),
+                sources,
+                qid,
+            )
+        }
+        driver.close()
     }
 
     @Test

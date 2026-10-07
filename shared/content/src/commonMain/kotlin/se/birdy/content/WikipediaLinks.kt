@@ -3,8 +3,8 @@ package se.birdy.content
 /**
  * Links for the species texts' credit (release 1.3.0, legal review §4, 7i-fix A). The texts are
  * AI summaries of the intro of the species' Wikipedia article in the same language, which is
- * CC BY-SA 4.0, so the profile links the exact article version they were written from and the
- * licence the texts are shared under.
+ * CC BY-SA 4.0, so the profile links the article version they were written from, where it is
+ * known, and the licence the texts are shared under.
  */
 object WikipediaLinks {
     /** The licence of Wikipedia's text, and so of the species texts adapted from it. */
@@ -15,8 +15,11 @@ object WikipediaLinks {
     /**
      * The permanent link to one version of an article: `index.php?oldid=` needs no title, and it
      * keeps showing the version the text was written from after the article changes. Without a
-     * usable [revision] (none stored, which no shipped text has today), Wikidata's redirect to the
-     * species' article in [language] instead, so the credit still names the right article.
+     * usable [revision], Wikidata's redirect to the species' article in [language] instead, so the
+     * credit still names the right article. No revision is stored where the pipeline's page was a
+     * disambiguation or split page rather than the species' article (1.3.0 review: four shown
+     * texts, see SpeciesContentCorrectionsTest); the credit's wording names the article, never a
+     * version, so it stays true for this link.
      */
     fun articleUrl(
         language: Locale,

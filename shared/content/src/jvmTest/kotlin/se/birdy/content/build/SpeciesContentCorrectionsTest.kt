@@ -312,6 +312,33 @@ class SpeciesContentCorrectionsTest {
         assertTrue(sources.wikipedia_en_revision != "1353678534")
     }
 
+    // The 1.3.0 review compared each stored revision's Wikidata item with the species: eight were
+    // a disambiguation or split page ("Rook may refer to:", "Black-eared wheatear has been split
+    // into..."), not the species' article. Their revisions are removed so that the text credit
+    // links the species' article through Wikidata instead of a page about the name.
+    @Test
+    fun `revisions of disambiguation and split pages are not stored`() {
+        val removed =
+            mapOf(
+                "phasianidae/Q335113.yaml" to "en", // "Golden Pheasant" (disambiguation)
+                "procellariidae/Q511566.yaml" to "en", // "Mediterranean shearwater" (set index)
+                "rallidae/Q187902.yaml" to "en", // "Purple swamphen" (split)
+                "anatidae/Q26452.yaml" to "sv", // "Sädgås" (förgreningssida)
+                "corvidae/Q25386.yaml" to "en", // "Rook" (disambiguation)
+                "scolopacidae/Q28122714.yaml" to "en", // "Ruff" (disambiguation)
+                "muscicapidae/Q385723.yaml" to "en", // "Black-eared wheatear" (set index)
+                "muscicapidae/Q85758401.yaml" to "en", // "Black-eared wheatear" (set index)
+            )
+        for ((path, language) in removed) {
+            val sources = species(path).sources
+            val revision = if (language == "sv") sources.wikipedia_sv_revision else sources.wikipedia_en_revision
+            assertEquals(null, revision, "$path $language")
+        }
+        // The other language's article is the species' own and stays.
+        assertEquals("55606471", species("phasianidae/Q335113.yaml").sources.wikipedia_sv_revision)
+        assertEquals("1344985591", species("anatidae/Q26452.yaml").sources.wikipedia_en_revision)
+    }
+
     @Test
     fun `the shipped database credits stenfalk's english text to merlin (bird)`(
         @TempDir tempDir: Path,

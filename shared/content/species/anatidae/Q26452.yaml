@@ -125,9 +125,9 @@ image_refs:
     Izunuma, Miyagi, Japan 2.jpg
   commons_filename: Anser fabalis middendorffii, Izunuma, Miyagi, Japan 2.jpg
 review_status: auto
-review_notes: ''
+review_notes: "2026-10-07 (1.3.0, 7i-fix A): wikipedia_sv_revision borttagen. Den sparade revisionen 58564241 var \"Sädgås\", en förgreningssida om att arten delats upp, inte artikeln om arten, så artsidans textkredit länkar i stället artens artikel via Wikidata (WikipediaLinks.articleUrl)."
 generated_at: '2026-05-06T12:55:16.296829+00:00'
 sources:
-  wikipedia_sv_revision: '58564241'
+  wikipedia_sv_revision: null
   wikipedia_en_revision: '1344985591'
   claude_model: claude-haiku-4-5-20251001

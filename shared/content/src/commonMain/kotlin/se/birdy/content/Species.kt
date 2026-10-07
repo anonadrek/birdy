@@ -33,7 +33,9 @@ data class Species(
  * 1.3.0, legal review §4, 7i-fix A). The texts are AI summaries of the article's intro, so the
  * profile credits the article and shares the text under CC BY-SA 4.0. [language] is the language
  * of the text as shown: English when a Swedish user sees the English fallback. [articleUrl] is
- * the permanent link to [revision] (see [se.birdy.content.WikipediaLinks]).
+ * the permanent link to [revision], or, when no revision is stored (the stored one was a
+ * disambiguation page for eight species), the species' current article through Wikidata (see
+ * [se.birdy.content.WikipediaLinks]).
  */
 data class SpeciesTextSource(
     val language: Locale,

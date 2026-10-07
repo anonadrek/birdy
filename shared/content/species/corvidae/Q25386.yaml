@@ -86,10 +86,9 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Corvus frugilegus (Rook) 4065.jpg
   commons_filename: Corvus frugilegus (Rook) 4065.jpg
 review_status: approved
-review_notes: Råka — allmän i södra SE-jordbrukslandskap. Hero swappad från nestling till adult
-  (secondary-1 → hero). enwiki sparse-override applicerad.
+review_notes: "Råka — allmän i södra SE-jordbrukslandskap. Hero swappad från nestling till adult (secondary-1 → hero). enwiki sparse-override applicerad. 2026-10-07 (1.3.0, 7i-fix A): wikipedia_en_revision borttagen. Den sparade revisionen 1346088466 var \"Rook\", en förgreningssida (disambiguation), inte artikeln om arten, så artsidans textkredit länkar i stället artens artikel via Wikidata (WikipediaLinks.articleUrl)."
 generated_at: '2026-05-12T19:59:21.356887+00:00'
 sources:
   wikipedia_sv_revision: '59270526'
-  wikipedia_en_revision: '1346088466'
+  wikipedia_en_revision: null
   claude_model: claude-haiku-4-5-20251001

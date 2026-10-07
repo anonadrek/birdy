@@ -198,6 +198,21 @@ class CreditTextTest {
         assertEquals("den engelska Wikipedia-artikeln" to enSource.articleUrl, links(text).first())
     }
 
+    // Where the stored revision was a disambiguation page, the credit links the species' current
+    // article through Wikidata, and its words name the article, never a version.
+    @Test
+    fun `without a stored revision the credit links the article through wikidata and claims no version`() {
+        val fallback = SpeciesTextSource(Locale.EN, null, "https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q335113")
+        val text = textCreditText(listOf(fallback), Locale.EN, textEn, styles)!!
+        assertEquals(
+            "The text is based on the Wikipedia article and has been summarised and changed. It may be shared under CC BY-SA 4.0.",
+            text.plain(),
+        )
+        assertEquals("the Wikipedia article" to fallback.articleUrl, links(text).first())
+        val swedish = textCreditText(listOf(fallback), Locale.SV, textSv, styles)!!.plain()
+        assertEquals(false, "version" in swedish || "version" in text.plain(), swedish)
+    }
+
     @Test
     fun `texts in two languages link both articles`() {
         val text = textCreditText(listOf(svSource, enSource), Locale.SV, textSv, styles)!!
