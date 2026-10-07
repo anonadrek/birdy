@@ -285,3 +285,23 @@ def test_an_english_county_share_must_say_share() -> None:
         ),
     )
     assert check_text(right, ctx, BANNED) == []
+
+
+def test_a_species_with_no_status_and_no_reports_shows_does_not_occur() -> None:
+    """R3 (2026-10-07): no article mentions Sweden for Koboltmes, so it has no status fact;
+    the data say it has no reports in ten years, so the page's "I Sverige" row says
+    "Förekommer inte", citing that data fact."""
+    record = reviewed_record()
+    record["facts"] = [f for f in record["facts"] if f["topic"] != "status"]
+    record["facts"].append(
+        {
+            "id": "d09",
+            "topic": "data",
+            "source": "artportalen",
+            "kind": "absent",
+            "sv": "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025.",
+        }
+    )
+    assert status_for_site(record) == {"value": "absent", "factIds": ["d09"]}
+    record["facts"].pop()
+    assert status_for_site(record) is None

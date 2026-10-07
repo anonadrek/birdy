@@ -161,10 +161,54 @@ def county_sentence(profile: dict[str, int], lang: str) -> str | None:
     return COUNTIES_SHARE[lang].format(counties=join_list(names, lang))
 
 
-def is_county_share_sentence(sentence: str) -> bool:
-    """True for the skewed-profile county sentence: a share, which the text must keep
-    calling a share (text_checks)."""
-    return any(sentence.startswith(t.split("{", 1)[0]) for t in COUNTIES_SHARE.values())
+# Fewer than MIN_REPORTS reports: no charts, but what the data says about the species in
+# Sweden (R3, 2026-10-07: Koboltmes's page never said the bird does not occur here). An
+# exact GBIF match with no Artportalen report in ten years does not occur in Sweden.
+NO_REPORTS = {
+    "sv": "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025.",
+    "en": "Does not occur in Sweden: no reports in Artportalen 2016 to 2025.",
+}
+FEW_REPORTS = {
+    "sv": "Sällsynt i Sverige: {n} {reports} i Artportalen 2016 till 2025.",
+    "en": "Rare in Sweden: {n} {reports} in Artportalen 2016 to 2025.",
+}
+_REPORTS = {"sv": ("rapport", "rapporter"), "en": ("report", "reports")}
+
+
+def presence_sentence(total: int, lang: str) -> str:
+    """The sentence for a species with fewer than MIN_REPORTS reports."""
+    if total == 0:
+        return NO_REPORTS[lang]
+    one, many = _REPORTS[lang]
+    return FEW_REPORTS[lang].format(n=total, reports=one if total == 1 else many)
+
+
+def _prefix(template: str) -> str:
+    return template.split("{", 1)[0]
+
+
+def sentence_kind(sentence: str) -> str | None:
+    """What a data sentence is, where code needs to know (a Swedish or English sentence):
+    `absent` (no reports: the page's status is "Förekommer inte"), `rare` (a few reports),
+    `countyShare` (a share, which the text must keep calling a share, text_checks)."""
+    if sentence in NO_REPORTS.values():
+        return "absent"
+    if any(sentence.startswith(_prefix(t)) for t in FEW_REPORTS.values()):
+        return "rare"
+    if any(sentence.startswith(_prefix(t)) for t in COUNTIES_SHARE.values()):
+        return "countyShare"
+    return None
+
+
+def red_list_for_page(code: str | None, total_reports: int) -> str | None:
+    """The red list's dataset on GBIF holds only red-listed species, so `not_listed` cannot
+    tell "assessed, least concern" from "not assessed". A species with fewer than
+    MIN_REPORTS reports in ten years is not regular in Sweden and not assessed (NA or NE):
+    no category then, so the page hides the row and no "Inte rödlistad" sentence is written
+    (R3, 2026-10-07, Koboltmes). A listed category always stands."""
+    if code == "not_listed" and total_reports < MIN_REPORTS:
+        return None
+    return code
 
 
 def data_sentences(months: list[int], counties: dict[str, int], lang: str) -> list[str]:
@@ -186,17 +230,33 @@ def _mean(profile: list[int], months: tuple[int, ...]) -> float:
     return sum(profile[i] for i in months) / len(months)
 
 
-def status_contradiction(status: str, months: list[int] | None, total_reports: int) -> str | None:
+# A status that says the species is in Sweden, with its label in the flag message.
+_PRESENT = {
+    "resident": "stannfågel",
+    "breeding_migrant": "flyttfågel som häckar här",
+    "passage": "ses under flyttningen",
+    "winter_visitor": "vintergäst",
+}
+
+
+def status_contradiction(
+    status: str, months: list[int] | None, total_reports: int | None
+) -> str | None:
     """A plain Swedish reason when the report data clearly contradicts the stated status,
-    otherwise None. Only clear contradictions count (spec §9.2); passage and rare_visitor are
-    never flagged."""
+    otherwise None. Only clear contradictions count (spec §9.2); rare_visitor is never
+    flagged. `total_reports` is None when the data does not say (no GBIF match)."""
     if status == "absent":
-        if total_reports >= MIN_REPORTS:
+        if total_reports is not None and total_reports >= MIN_REPORTS:
             return (
                 "Statusen säger att arten inte förekommer i Sverige, men den har "
                 f"{total_reports} rapporter i Artportalen 2016 till 2025."
             )
         return None
+    if status in _PRESENT and total_reports == 0:
+        return (
+            f"Statusen ({_PRESENT[status]}) säger att arten finns i Sverige, men den har "
+            "inga rapporter i Artportalen 2016 till 2025."
+        )
     if months is None:
         return None
     if status == "resident" and min(months) < RESIDENT_MIN_MONTH:
@@ -217,8 +277,14 @@ def record_status_contradiction(record: dict[str, Any]) -> str | None:
     data = record.get("data")
     if status is None or not data:
         return None
+    return data_status_contradiction(status["value"], data)
+
+
+def data_status_contradiction(status: str, data: dict[str, Any]) -> str | None:
+    """`status_contradiction` for a record's `data` object."""
+    total = data.get("totalReports")
     return status_contradiction(
-        status["value"], data.get("months"), int(data.get("totalReports", 0))
+        status, data.get("months"), int(total) if total is not None else None
     )
 
 
@@ -238,7 +304,9 @@ def build_data(
         data["counties"] = counties
         data["sentences"] = {lang: data_sentences(months, counties, lang) for lang in ("sv", "en")}
     else:
-        data["sentences"] = {"sv": [], "en": []}
+        data["sentences"] = {
+            lang: [presence_sentence(species.total, lang)] for lang in ("sv", "en")
+        }
     data["raw"] = {
         "speciesByMonth": species.by_month,
         "allBirdsByMonth": all_birds.by_month,

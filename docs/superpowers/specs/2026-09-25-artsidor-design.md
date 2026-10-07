@@ -298,7 +298,7 @@ Räknas av kod, aldrig av en modell.
 
 - **Månadsandel:** för varje månad är andelen artens rapporter delat med alla fågelrapporter samma månad. Diagrammet visar andelen skalad så att den högsta månaden blir 100, avrundat till heltal. Det justerar för att fler är ute och rapporterar i maj.
 - **Länsandel:** samma sak per län. Kartan visar fyra nyanser: inga rapporter, 1 till 33, 34 till 66 och 67 till 100 procent av det högsta länet.
-- **För lite data:** har arten färre än 200 rapporter totalt i perioden visas varken diagram eller karta.
+- **För lite data:** har arten färre än 200 rapporter totalt i perioden visas varken diagram eller karta. **Tillagt 2026-10-07** (provkörningen R3: koboltmesens sida sa aldrig att fågeln inte finns i Sverige): datan får då i stället en mening om förekomsten, "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025." när arten har en exakt GBIF-träff men inga rapporter, annars "Sällsynt i Sverige: {n} rapporter i Artportalen 2016 till 2025." Den blir ett datafaktum som texten kan använda (skribenten ska säga det under Var och när), och utan rapporter visar raden "I Sverige" "Förekommer inte" med datafaktumet som källa när ingen artikel ger en status. En status som säger att arten finns här (stannfågel, flyttfågel, ses under flyttningen, vintergäst) med noll rapporter blir en V3-flagga.
 - **Meningar ur datan** (mallar i bilaga A, svenska och engelska):
   - Månader med värde 80 eller mer är "mest", månader med 10 eller mindre är "nästan aldrig". Har alla månader 30 eller mer blir meningen "Rapporteras året runt." Annars "Rapporteras mest i {månader}." och, om det finns sådana månader, "Nästan aldrig i {månader}." Månader i följd skrivs som spann ("december till februari").
   - Länen (**ändrat 2026-10-07**, var "Vanligast i rapporterna från {län}, {län} och {län}." med de tre högsta länen, som lästes som "flest rapporter" och för spridda arter pekade ut tre norrlandslän för både talgoxe och bofink: norrlandslänen rapporterar färre arter, så en vanlig fågelbordsart blir en större andel av deras rapporter): har minst hälften av länen minst halva det högsta länets andel är fördelningen jämn och meningen blir "Rapporteras från alla 21 län." (eller "från {n} av 21 län."). Annars "Andelen av alla fågelrapporter är högst i {län}, {län} och {län}." med de län som har minst halva det högsta länets andel, högst tre. Datafaktumet för andelsmeningen har `kind: "countyShare"`, och en mening i texten som anger det måste säga "andel" (EN "share"), annars stryks den (koden), så att andelen aldrig blir "flest rapporter".
@@ -308,7 +308,7 @@ Räknas av kod, aldrig av en modell.
 ### 9.3 Faktabladet
 
 - **Prompt:** `prompts/facts-v1.md`. Underlag: de tre artiklarna, namn och familj. Modell i Opus-klass med hög tankenivå.
-- **Status i Sverige** tas också fram här, inte av skribenten: modellen anger en av `resident`, `breeding_migrant`, `passage`, `winter_visitor`, `rare_visitor` eller `absent` med citat, och den sparas som faktumet `s01` (`topic: "status"`). Statussignalen (9.2) jämförs med den direkt, så att en motsägelse blir en flagga i undantagsarket (9.4).
+- **Status i Sverige** tas också fram här, inte av skribenten (utom när ingen artikel ger en och datan saknar rapporter, se "För lite data" i 9.2): modellen anger en av `resident`, `breeding_migrant`, `passage`, `winter_visitor`, `rare_visitor` eller `absent` med citat, och den sparas som faktumet `s01` (`topic: "status"`). Statussignalen (9.2) jämförs med den direkt, så att en motsägelse blir en flagga i undantagsarket (9.4).
 - **Ett faktum** har:
   - `id` (`f01`, `f02` …)
   - `topic`: en av `appearance`, `sex_age`, `size`, `voice`, `habitat`, `sweden`, `breeding`, `food`, `behaviour`, `lookalike`
@@ -623,6 +623,8 @@ Faktabladen tas fram och kontrolleras automatiskt (V1 till V4) för alla 180 art
 | Mening, året runt | Rapporteras året runt. | Reported all year round. |
 | Mening, mest | Rapporteras mest i {månader}. | Reported most in {months}. |
 | Mening, nästan aldrig | Nästan aldrig i {månader}. | Almost never in {months}. |
+| Mening, inga rapporter | Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025. | Does not occur in Sweden: no reports in Artportalen 2016 to 2025. |
+| Mening, få rapporter | Sällsynt i Sverige: {n} rapporter i Artportalen 2016 till 2025. | Rare in Sweden: {n} reports in Artportalen 2016 to 2025. |
 | Mening, län (jämn) | Rapporteras från alla 21 län. / Rapporteras från {n} av 21 län. | Reported from all 21 counties. / Reported from {n} of the 21 counties. |
 | Mening, län (andel) | Andelen av alla fågelrapporter är högst i {län}, {län} och {län}. | Its share of all bird reports is highest in {county}, {county} and {county}. |
 | Rubrik föda och beteende | Föda och beteende | Food and behaviour |
@@ -757,7 +759,7 @@ Listan ligger i `prompts/web-banned-phrases.txt` (med böjningsformer sedan fas 
 - `verification` finns bara för en art som har klarat den automatiska kontrollen (9.4) och, om den hade flaggor, fått Albins beslut. `verification.model` är kontrollmodellens id, `verification.spotChecked` är sant om arten har dragits i stickprovet efter publicering (ändrat 2026-10-05 (b), avsnitt 14). Ingen text skrivs för en art utan `verification`.
 - `publish` styr produktionsbygget (avsnitt 14).
 - `audio`, `marginalia`, `data` och `wikipedia.de` kan saknas. `data.months` och `data.counties` saknas när arten har färre än 200 rapporter.
-- `swedishRedList` är `RE`, `CR`, `EN`, `VU`, `NT`, `DD` eller `not_listed`, eller saknas om matchningen mot listan misslyckades.
+- `swedishRedList` är `RE`, `CR`, `EN`, `VU`, `NT`, `DD` eller `not_listed`, eller saknas om matchningen mot listan misslyckades. **Tillagt 2026-10-07:** rödlistans dataset på GBIF har bara rödlistade arter, så `not_listed` skiljer inte "bedömd, livskraftig" från "inte bedömd". En art som inte finns i listan och har färre än 200 rapporter förekommer inte regelbundet i Sverige och är inte bedömd (NA eller NE): fältet saknas då, raden döljs och ingen mening "Inte rödlistad i Svenska rödlistan 2025" skrivs.
 - `lookAlikes[].other` och `facts[].other.qid` är QID när den andra arten finns bland de 839, annars saknas `qid` och `lookAlikes[].other` är det vetenskapliga namnet. Bara arter med publicerad sida länkas.
 - Sajtens zod-schema läser bara de fält sidorna behöver och görs inte `.strict()`. Av `facts` läser sajten bara `id`, `topic` och `other` (namnet på en förväxlingsart som inte har egen sida). Av `verification` läser sajten bara `at` (till creditraden och `lastReviewed`). `raw`, `generated` och `rejectedText` läses inte av sajten.
 - `publish` sätts bara av pipelinen (`birdy-fetcher web publish --wave N`), aldrig för hand och aldrig av sajtens skript.

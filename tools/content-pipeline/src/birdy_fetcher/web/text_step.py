@@ -63,7 +63,7 @@ def render_write_prompt(
 ) -> tuple[str, str]:
     status = status_for_site(record)
     status_line = (
-        f"{STATUS_SV[status['value']]} (fact s01)"
+        f"{STATUS_SV[status['value']]} (fact {status['factIds'][0]})"
         if status
         else "not decided, do not state a status"
     )

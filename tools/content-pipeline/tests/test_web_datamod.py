@@ -12,13 +12,14 @@ from birdy_fetcher.web.datamod import (
     county_profile,
     county_sentence,
     data_sentences,
-    is_county_share_sentence,
     join_list,
     month_profile,
     month_runs,
     month_sentences,
     months_text,
+    red_list_for_page,
     scaled,
+    sentence_kind,
     status_contradiction,
 )
 
@@ -153,12 +154,6 @@ def test_data_sentences_put_months_first() -> None:
     ]
 
 
-def test_a_county_share_sentence_is_recognised() -> None:
-    assert is_county_share_sentence("Andelen av alla fågelrapporter är högst i Gotland.")
-    assert not is_county_share_sentence("Rapporteras från alla 21 län.")
-    assert not is_county_share_sentence("Rapporteras mest i maj.")
-
-
 def test_join_list_empty_is_empty_string() -> None:
     assert join_list([], "sv") == ""
 
@@ -234,7 +229,9 @@ def test_build_data_with_too_few_reports_has_no_modules() -> None:
     )
     assert "months" not in data
     assert "counties" not in data
-    assert data["sentences"] == {"sv": [], "en": []}
+    assert data["sentences"]["sv"] == [
+        "Sällsynt i Sverige: 199 rapporter i Artportalen 2016 till 2025."
+    ]
 
 
 # Artportalen-only month profiles 2016 to 2025 (fetched 2026-10-07, after the dataset
@@ -258,3 +255,55 @@ def test_kungsfagel_without_ringing_is_reported_all_winter() -> None:
     Artportalen's own it is flagged, and a resident status is not."""
     assert status_contradiction("resident", KUNGSFAGEL_MONTHS, 244_744) is None
     assert status_contradiction("breeding_migrant", KUNGSFAGEL_MONTHS, 244_744) is not None
+
+
+def test_no_reports_at_all_says_the_species_does_not_occur_in_sweden() -> None:
+    """R3 (2026-10-07): Koboltmes's page never said the bird does not occur in Sweden. An
+    exact GBIF match with no Artportalen report in ten years says so, with the evidence."""
+    species = Counts([0] * 12, {}, 0)
+    data = build_data(
+        taxon_key=7341849, species=species, all_birds=Counts([100] * 12, {}, 1), fetched_at="x"
+    )
+    assert data["sentences"] == {
+        "sv": ["Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025."],
+        "en": ["Does not occur in Sweden: no reports in Artportalen 2016 to 2025."],
+    }
+    assert sentence_kind(data["sentences"]["sv"][0]) == "absent"
+
+
+def test_a_few_reports_say_the_species_is_rare_in_sweden() -> None:
+    few = Counts([1] * 12, {}, 12)
+    data = build_data(taxon_key=7, species=few, all_birds=Counts([100] * 12, {}, 1), fetched_at="x")
+    assert data["sentences"] == {
+        "sv": ["Sällsynt i Sverige: 12 rapporter i Artportalen 2016 till 2025."],
+        "en": ["Rare in Sweden: 12 reports in Artportalen 2016 to 2025."],
+    }
+    assert sentence_kind(data["sentences"]["sv"][0]) == "rare"
+    one = build_data(taxon_key=7, species=Counts([0] * 12, {}, 1), all_birds=few, fetched_at="x")
+    assert one["sentences"]["sv"] == ["Sällsynt i Sverige: 1 rapport i Artportalen 2016 till 2025."]
+    assert one["sentences"]["en"] == ["Rare in Sweden: 1 report in Artportalen 2016 to 2025."]
+
+
+def test_the_other_sentences_have_no_kind_but_the_county_share() -> None:
+    assert sentence_kind("Rapporteras året runt.") is None
+    assert sentence_kind("Rapporteras från alla 21 län.") is None
+    assert sentence_kind("Andelen av alla fågelrapporter är högst i Gotland.") == "countyShare"
+
+
+def test_a_species_not_regular_in_sweden_is_not_shown_as_not_red_listed() -> None:
+    """The red list on GBIF holds only red-listed species, so `not_listed` cannot tell
+    "assessed, least concern" from "not assessed". A species with fewer than 200 reports is
+    not regular in Sweden and not assessed (NA/NE): no red-list row, no data fact."""
+    assert red_list_for_page("not_listed", 962_371) == "not_listed"
+    assert red_list_for_page("not_listed", MIN_REPORTS - 1) is None
+    assert red_list_for_page("not_listed", 0) is None
+    assert red_list_for_page("VU", 120) == "VU"
+    assert red_list_for_page(None, 962_371) is None
+
+
+def test_a_status_saying_the_species_is_here_contradicts_zero_reports() -> None:
+    for status in ("resident", "breeding_migrant", "passage", "winter_visitor"):
+        assert status_contradiction(status, None, 0) is not None
+    assert status_contradiction("rare_visitor", None, 0) is None
+    assert status_contradiction("absent", None, 0) is None
+    assert status_contradiction("resident", None, 12) is None

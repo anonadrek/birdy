@@ -674,3 +674,29 @@ def test_the_writer_prompt_keeps_a_county_share_a_share() -> None:
     )
     assert "keep the word andel in Swedish and share in English" in template
     assert "never write that the most reports come from those counties" in template
+
+
+def test_the_writer_prompt_says_when_a_species_is_not_in_sweden() -> None:
+    template = (Path(__file__).resolve().parents[1] / "prompts/web-v2.md").read_text(
+        encoding="utf-8"
+    )
+    assert "does not occur in Sweden, or is rare there, say so in where_when" in template
+
+
+def test_the_status_line_names_the_fact_the_status_comes_from() -> None:
+    from birdy_fetcher.web.text_step import render_write_prompt
+
+    record = reviewed_record()
+    record["facts"] = [f for f in record["facts"] if f["topic"] != "status"]
+    record["facts"].append(
+        {
+            "id": "d09",
+            "topic": "data",
+            "source": "artportalen",
+            "kind": "absent",
+            "sv": "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025.",
+        }
+    )
+    template = "System: s\n\nUser: {status_line}"
+    _, user = render_write_prompt(template, record, [], "", "", [])
+    assert user == "Förekommer inte (fact d09)"

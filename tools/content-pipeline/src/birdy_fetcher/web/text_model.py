@@ -101,7 +101,10 @@ def status_for_site(record: Record) -> dict[str, Any] | None:
     final review 2026-10-06)."""
     status = next((f for f in record.get("facts", []) if f.get("topic") == "status"), None)
     if status is None:
-        return None
+        # No article gave a status, but the data say the species has no reports in Sweden
+        # (R3, 2026-10-07, Koboltmes): "Förekommer inte", citing that data fact.
+        absent = next((f for f in record.get("facts", []) if f.get("kind") == "absent"), None)
+        return {"value": "absent", "factIds": [absent["id"]]} if absent else None
     contradicts = record_status_contradiction(record)
     if contradicts and not record.get("review", {}).get("statusConfirmed"):
         return None

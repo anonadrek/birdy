@@ -207,6 +207,19 @@ def test_the_county_share_data_fact_is_marked() -> None:
     }
 
 
+def test_an_absent_species_gets_the_absence_fact_and_no_red_list_fact() -> None:
+    """R3 (2026-10-07): Koboltmes. The absence is a data fact the text can cite; "Inte
+    rödlistad" is not written for a species Sweden has not assessed, even in a record from
+    before `web sources` dropped its `not_listed`."""
+    record = new_record("Q10546857")
+    absent = "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025."
+    record["data"] = {"totalReports": 0, "sentences": {"sv": [absent]}}
+    record["swedishRedList"] = "not_listed"
+    assert data_facts(record) == [
+        {"id": "d01", "topic": "data", "source": "artportalen", "kind": "absent", "sv": absent}
+    ]
+
+
 def test_apply_facts_clears_a_stale_verification_flags_and_verify_hash() -> None:
     """C1 (review fix 2026-10-06): new facts have never been through V1, so an earlier
     `verification`/`flags`/`generated.verify` must not survive -- otherwise `web write`

@@ -14,7 +14,13 @@ from typing import Any, Protocol
 from ..cache import Cache
 from .audio import AudioCandidate, CommonsAudioClient, audio_record, choose, convert_to_mp3
 from .checks import without_dashes
-from .datamod import MIN_REPORTS, Counts, build_data, record_status_contradiction
+from .datamod import (
+    MIN_REPORTS,
+    Counts,
+    build_data,
+    record_status_contradiction,
+    red_list_for_page,
+)
 from .facts import data_facts
 from .gbif import GbifClient
 from .groups import GroupTable
@@ -134,7 +140,13 @@ async def _data_and_red_list(
     )
     if red is None:
         notes.append("okänd kategori i Svenska rödlistan")
-    return data, red
+    page_red = red_list_for_page(red, counts.total)
+    if red is not None and page_red is None:
+        notes.append(
+            f"inte bedömd i Svenska rödlistan ({counts.total} rapporter): "
+            "sidan visar ingen rödlistekategori"
+        )
+    return data, page_red
 
 
 async def _audio(

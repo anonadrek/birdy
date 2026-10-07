@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 
 from .checks import without_dashes
-from .datamod import status_contradiction
+from .datamod import data_status_contradiction
 from .facts import STATUS_BY_SV, STATUS_SV, TOPIC_SV
 from .paths import WebPaths
 from .record import (
@@ -639,9 +639,7 @@ def _recheck_status(record: Record) -> list[dict[str, Any]]:
     if data is not None:
         reason = None
         if status is not None:
-            reason = status_contradiction(
-                status["value"], data.get("months"), int(data.get("totalReports", 0))
-            )
+            reason = data_status_contradiction(status["value"], data)
         data["statusSignal"] = {"contradicts": reason}
     return [{**f, "message": without_dashes(str(f["message"]))} for f in status_flags(record)]
 

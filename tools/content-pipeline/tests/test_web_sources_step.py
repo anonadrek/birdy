@@ -412,3 +412,34 @@ async def test_a_dry_run_sweeps_nothing(tmp_path: Path) -> None:
     orphan.write_bytes(b"id3")
     await run_sources(paths, SourcesOptions(dry_run=True), clients=_clients(), now=NOW)
     assert orphan.exists()
+
+
+@dataclass
+class AbsentGbif(FakeGbif):
+    """Koboltmes: an exact match, no Artportalen report, not on the red list."""
+
+    async def counts(self, qid: str, taxon_key: int, *, refresh: bool = False) -> Counts:
+        return Counts([0] * 12, {}, 0)
+
+    async def swedish_red_list(
+        self, qid: str, scientific: str, taxon_key: int, *, refresh: bool = False
+    ) -> str | None:
+        return "not_listed"
+
+
+async def test_a_species_absent_from_sweden_gets_no_red_list_row(tmp_path: Path) -> None:
+    """R3 (2026-10-07): Koboltmes's text ended "Arten är inte rödlistad i Svenska rödlistan
+    2025", as if Sweden had assessed it. Not on the list and not regular here means not
+    assessed: no `swedishRedList` (the page hides the row) and no red-list data fact."""
+    paths = make_repo(tmp_path, [("Q1", "Koboltmes", "African Blue Tit")])
+    clients = SourceClients(wiki=FakeWiki(), gbif=AbsentGbif(), audio=FakeAudio())
+    outcomes = await run_sources(paths, SourcesOptions(), clients=clients, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    assert any("inte bedömd" in n for n in outcomes[0].notes)
+    assert not any("okänd kategori" in n for n in outcomes[0].notes)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert "swedishRedList" not in record
+    assert record["data"]["sentences"]["sv"] == [
+        "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025."
+    ]

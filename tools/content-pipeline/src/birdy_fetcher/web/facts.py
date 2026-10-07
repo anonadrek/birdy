@@ -11,7 +11,7 @@ from typing import Any, Literal
 from pydantic import BaseModel
 
 from .checks import quote_in_sources
-from .datamod import is_county_share_sentence, status_contradiction
+from .datamod import data_status_contradiction, red_list_for_page, sentence_kind
 from .record import Record
 from .scinames import resolve_lookalike
 from .wiki_full import WikiArticle
@@ -260,14 +260,20 @@ def data_facts(record: Record) -> list[dict[str, Any]]:
     def add(source: str, text: str, kind: str | None = None) -> None:
         fact: dict[str, Any] = {"id": f"d{len(out) + 1:02d}", "topic": "data", "source": source}
         if kind:
-            # Read by the text checks: a sentence citing a county share must keep saying
-            # andel/share (R3, 2026-10-07).
+            # Read by code (R3, 2026-10-07): a sentence citing a county share must keep
+            # saying andel/share (text_checks), and `absent` gives the page its status when
+            # no article does (text_model.status_for_site).
             fact["kind"] = kind
         out.append({**fact, "sv": text})
 
-    for sentence in (record.get("data") or {}).get("sentences", {}).get("sv", []):
-        add("artportalen", sentence, "countyShare" if is_county_share_sentence(sentence) else None)
+    data = record.get("data") or {}
+    for sentence in data.get("sentences", {}).get("sv", []):
+        add("artportalen", sentence, sentence_kind(sentence))
     red = record.get("swedishRedList")
+    if "totalReports" in data:
+        # A record written before `web sources` dropped `not_listed` for a species that is
+        # not regular in Sweden still gets no "Inte rödlistad" sentence.
+        red = red_list_for_page(red, int(data["totalReports"]))
     if red == "not_listed":
         add("rodlistan", "Inte rödlistad i Svenska rödlistan 2025.")
     elif red in REDLIST_SV:
@@ -290,9 +296,7 @@ def apply_facts(record: Record, check: FactCheck, *, generated: dict[str, Any]) 
     if data is not None:
         reason = None
         if check.status is not None:
-            reason = status_contradiction(
-                check.status["value"], data.get("months"), int(data.get("totalReports", 0))
-            )
+            reason = data_status_contradiction(check.status["value"], data)
         data["statusSignal"] = {"contradicts": reason}
     generated_dict = record.setdefault("generated", {})
     generated_dict["facts"] = generated
