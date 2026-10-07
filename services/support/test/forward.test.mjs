@@ -85,10 +85,19 @@ test('buildFallbackForward is text-only, with no attachments or Reply-To, and a 
   assert.equal(f.from, 'Birdy support <support@birdy.community>');
   assert.deepEqual(f.to, ['inbox@example.com']);
   assert.equal(f.subject, '[Birdy] (kunde inte vidarebefordras som vanligt) em_1');
-  assert.match(f.text, /^Resend-id: em_1\n\nDen kraschar när jag sparar\.$/);
   assert.equal(f.replyTo, undefined);
   assert.equal(f.attachments, undefined);
   assert.equal(f.html, undefined);
+});
+
+test('buildFallbackForward includes Från, Datum and the original subject as plain text lines — none of which can fail validation', () => {
+  const f = buildFallbackForward({ email, supportAddress: 'support@birdy.community', forwardTo: 'inbox@example.com' });
+  assert.match(f.text, /^Från: Anna <anna@example\.se>\nDatum: 2026-10-08T07:00:00\.000Z\nÄmne: Appen kraschar\nResend-id: em_1\n\nDen kraschar när jag sparar\.$/);
+});
+
+test('buildFallbackForward notes a missing original subject the same way the normal forward does', () => {
+  const f = buildFallbackForward({ email: { ...email, subject: '' }, supportAddress: 'support@birdy.community', forwardTo: 'inbox@example.com' });
+  assert.match(f.text, /Ämne: \(inget ämne\)/);
 });
 
 test('buildFallbackForward uses the stripped html when there is no text', () => {

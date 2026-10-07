@@ -58,10 +58,13 @@ export function buildForward({ email, attachments, hasMore = false, label, suppo
  * lost. Its own idempotency key (forward-fallback-<id>) is separate from the normal forward's.
  */
 export function buildFallbackForward({ email, supportAddress, forwardTo }) {
+  // Plain lines only — Från/Datum/Ämne/Resend-id can never themselves fail validation, unlike the
+  // full forward's html or attachments.
+  const header = [`Från: ${email.from}`, `Datum: ${email.created_at}`, `Ämne: ${email.subject?.trim() || '(inget ämne)'}`, `Resend-id: ${email.id}`];
   return {
     from: `Birdy support <${supportAddress}>`,
     to: [forwardTo],
     subject: `[Birdy] (kunde inte vidarebefordras som vanligt) ${email.id}`,
-    text: `Resend-id: ${email.id}\n\n${plainBody(email)}`,
+    text: `${header.join('\n')}\n\n${plainBody(email)}`,
   };
 }
