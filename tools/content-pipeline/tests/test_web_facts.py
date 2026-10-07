@@ -191,6 +191,22 @@ def test_data_facts_come_from_the_record() -> None:
     assert data_facts(record)[-1]["sv"] == "Inte rödlistad i Svenska rödlistan 2025."
 
 
+def test_the_county_share_data_fact_is_marked() -> None:
+    """The text checks find it by its kind (a sentence citing it must say andel/share)."""
+    record = new_record("Q212055")
+    share = "Andelen av alla fågelrapporter är högst i Halland, Gotland och Kalmar."
+    record["data"] = {"sentences": {"sv": ["Rapporteras året runt.", share]}}
+    facts = data_facts(record)
+    assert "kind" not in facts[0]
+    assert facts[1] == {
+        "id": "d02",
+        "topic": "data",
+        "source": "artportalen",
+        "kind": "countyShare",
+        "sv": share,
+    }
+
+
 def test_apply_facts_clears_a_stale_verification_flags_and_verify_hash() -> None:
     """C1 (review fix 2026-10-06): new facts have never been through V1, so an earlier
     `verification`/`flags`/`generated.verify` must not survive -- otherwise `web write`

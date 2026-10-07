@@ -12,6 +12,7 @@ from birdy_fetcher.web.datamod import (
     county_profile,
     county_sentence,
     data_sentences,
+    is_county_share_sentence,
     join_list,
     month_profile,
     month_runs,
@@ -94,20 +95,52 @@ def test_resident_is_reported_all_year() -> None:
     ]
 
 
-def test_county_sentence_names_the_top_three() -> None:
-    profile = {iso: 0 for iso in ("SE-BD", "SE-AC", "SE-Z", "SE-M")}
-    profile.update({"SE-BD": 100, "SE-AC": 80, "SE-Z": 60, "SE-M": 5})
-    assert county_sentence(profile, "sv") == (
-        "Vanligast i rapporterna från Norrbotten, Västerbotten och Jämtland."
+# Artportalen-only county profiles (2026-10-07). Talgoxe's is flat: every county lies
+# within a factor of about three of the top one, and the old sentence "Vanligast i
+# rapporterna från Norrbotten, Västerbotten och Västernorrland" read as "most reports" while
+# it meant the largest share of each county's reports (a composition effect: northern
+# counties report fewer species, so a common feeder bird makes up more of their reports).
+TALGOXE_COUNTIES = {
+    "SE-K": 44, "SE-W": 53, "SE-X": 77, "SE-I": 39, "SE-N": 30, "SE-Z": 60, "SE-F": 62,
+    "SE-H": 35, "SE-G": 45, "SE-BD": 100, "SE-T": 42, "SE-E": 62, "SE-M": 41, "SE-D": 83,
+    "SE-AB": 66, "SE-C": 68, "SE-S": 49, "SE-AC": 69, "SE-Y": 80, "SE-U": 45, "SE-O": 64,
+}  # fmt: skip
+TOBISGRISSLA_COUNTIES = {
+    "SE-K": 39, "SE-W": 0, "SE-X": 26, "SE-I": 67, "SE-N": 100, "SE-Z": 0, "SE-F": 0,
+    "SE-H": 57, "SE-G": 0, "SE-BD": 13, "SE-T": 0, "SE-E": 7, "SE-M": 32, "SE-D": 10,
+    "SE-AB": 42, "SE-C": 13, "SE-S": 1, "SE-AC": 29, "SE-Y": 52, "SE-U": 0, "SE-O": 29,
+}  # fmt: skip
+
+
+def test_a_flat_county_profile_says_where_it_is_reported_not_a_top_three() -> None:
+    assert county_sentence(TALGOXE_COUNTIES, "sv") == "Rapporteras från alla 21 län."
+    assert county_sentence(TALGOXE_COUNTIES, "en") == "Reported from all 21 counties."
+
+
+def test_a_flat_profile_with_a_county_without_reports_counts_the_counties() -> None:
+    profile = {**TALGOXE_COUNTIES, "SE-K": 0}
+    assert county_sentence(profile, "sv") == "Rapporteras från 20 av 21 län."
+    assert county_sentence(profile, "en") == "Reported from 20 of the 21 counties."
+
+
+def test_a_skewed_profile_names_the_counties_by_their_share() -> None:
+    """Half the counties under half the top share: the counties with at least half of it,
+    at most three, said as a share so it cannot be read as "the most reports"."""
+    assert county_sentence(TOBISGRISSLA_COUNTIES, "sv") == (
+        "Andelen av alla fågelrapporter är högst i Halland, Gotland och Kalmar."
     )
-    assert county_sentence(profile, "en") == (
-        "Most common in reports from Norrbotten, Västerbotten and Jämtland."
+    assert county_sentence(TOBISGRISSLA_COUNTIES, "en") == (
+        "Its share of all bird reports is highest in Halland, Gotland and Kalmar."
     )
 
 
-def test_county_sentence_with_one_county_and_with_none() -> None:
+def test_a_skewed_profile_names_only_the_counties_near_the_top() -> None:
     assert county_sentence({"SE-I": 100, "SE-M": 0}, "sv") == (
-        "Vanligast i rapporterna från Gotland."
+        "Andelen av alla fågelrapporter är högst i Gotland."
+    )
+    tretaig_mas = {"SE-N": 100, "SE-O": 27, "SE-M": 25, "SE-H": 14, "SE-K": 13}
+    assert (
+        county_sentence(tretaig_mas, "sv") == "Andelen av alla fågelrapporter är högst i Halland."
     )
     assert county_sentence({"SE-I": 0}, "sv") is None
 
@@ -116,8 +149,14 @@ def test_data_sentences_put_months_first() -> None:
     assert data_sentences(MIGRANT, {"SE-I": 100}, "sv") == [
         "Rapporteras mest i maj till juli.",
         "Nästan aldrig i oktober till mars.",
-        "Vanligast i rapporterna från Gotland.",
+        "Andelen av alla fågelrapporter är högst i Gotland.",
     ]
+
+
+def test_a_county_share_sentence_is_recognised() -> None:
+    assert is_county_share_sentence("Andelen av alla fågelrapporter är högst i Gotland.")
+    assert not is_county_share_sentence("Rapporteras från alla 21 län.")
+    assert not is_county_share_sentence("Rapporteras mest i maj.")
 
 
 def test_join_list_empty_is_empty_string() -> None:
@@ -196,3 +235,26 @@ def test_build_data_with_too_few_reports_has_no_modules() -> None:
     assert "months" not in data
     assert "counties" not in data
     assert data["sentences"] == {"sv": [], "en": []}
+
+
+# Artportalen-only month profiles 2016 to 2025 (fetched 2026-10-07, after the dataset
+# filter): the R2 calibration species, and Kungsfågel, whose profile the ringing captures
+# had turned into an autumn peak (September 89, October 100, May to August under 10).
+TALGOXE_MONTHS = [100, 93, 60, 39, 30, 30, 25, 26, 37, 55, 82, 100]
+LADUSVALA_MONTHS = [0, 1, 1, 32, 75, 65, 82, 100, 81, 17, 1, 1]
+SIDENSVANS_MONTHS = [78, 54, 17, 5, 2, 4, 4, 2, 6, 62, 95, 100]
+KUNGSFAGEL_MONTHS = [66, 49, 49, 40, 28, 33, 21, 26, 70, 100, 75, 64]
+
+
+def test_the_calibration_species_pass_the_status_signal_on_artportalen_data() -> None:
+    assert status_contradiction("resident", TALGOXE_MONTHS, 729_841) is None
+    assert status_contradiction("breeding_migrant", LADUSVALA_MONTHS, 334_341) is None
+    assert status_contradiction("winter_visitor", SIDENSVANS_MONTHS, 178_590) is None
+    assert status_contradiction("absent", None, 0) is None  # Koboltmes
+
+
+def test_kungsfagel_without_ringing_is_reported_all_winter() -> None:
+    """A summer-visitor status for Kungsfågel passed the signal on the old counts; on
+    Artportalen's own it is flagged, and a resident status is not."""
+    assert status_contradiction("resident", KUNGSFAGEL_MONTHS, 244_744) is None
+    assert status_contradiction("breeding_migrant", KUNGSFAGEL_MONTHS, 244_744) is not None

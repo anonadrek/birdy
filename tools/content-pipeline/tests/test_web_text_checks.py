@@ -241,3 +241,47 @@ def test_a_question_in_the_species_meta_description_is_a_hard_issue() -> None:
     text = _with_sv(meta_description=meta)
     issues = [i for i in check_text(text, CTX, BANNED) if i.path == "sv.meta_description"]
     assert issues and not any(i.removable for i in issues)
+
+
+SHARE_FACT = {
+    "id": "d02",
+    "topic": "data",
+    "source": "artportalen",
+    "kind": "countyShare",
+    "sv": "Andelen av alla fågelrapporter är högst i Halland, Gotland och Kalmar.",
+}
+
+
+def test_a_county_share_must_stay_a_share() -> None:
+    """R3 (2026-10-07): from "Vanligast i rapporterna från Norrbotten ..." the writer wrote
+    "flest rapporter kommer från Norrbotten", and the text check let it through. A sentence
+    that cites the county share must say andel/share, or it is removed."""
+    ctx = TextContext.from_facts([*FACTS, SHARE_FACT])
+    wrong = _with_sv(where_when=[S("Flest rapporter kommer från Halland och Gotland.", "d02")])
+    issues = check_text(wrong, ctx, BANNED)
+    assert [(i.path, i.removable) for i in issues] == [("sv.where_when[0]", True)]
+    assert "andel" in issues[0].message
+    right = _with_sv(
+        where_when=[S("Andelen av alla fågelrapporter är högst i Halland och Gotland.", "d02")]
+    )
+    assert check_text(right, ctx, BANNED) == []
+
+
+def test_an_english_county_share_must_say_share() -> None:
+    ctx = TextContext.from_facts([*FACTS, SHARE_FACT])
+    wrong = WebTextV2(
+        sv=SV,
+        en=EN.model_copy(
+            update={"where_when": [S("Most reports come from Halland and Gotland.", "d02")]}
+        ),
+    )
+    assert [i.path for i in check_text(wrong, ctx, BANNED)] == ["en.where_when[0]"]
+    right = WebTextV2(
+        sv=SV,
+        en=EN.model_copy(
+            update={
+                "where_when": [S("Its share of all bird reports is highest in Halland.", "d02")]
+            }
+        ),
+    )
+    assert check_text(right, ctx, BANNED) == []

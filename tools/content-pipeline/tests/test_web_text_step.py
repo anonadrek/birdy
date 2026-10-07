@@ -664,3 +664,13 @@ async def test_a_failed_text_is_tried_again_after_the_banned_list_changes(
     redo = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
     outcomes = await run_write(paths, WriteOptions(wave=1), client=redo, now=NOW)
     assert [o.status for o in outcomes] == ["ok"]
+
+
+def test_the_writer_prompt_keeps_a_county_share_a_share() -> None:
+    """R3 (2026-10-07): "Vanligast i rapporterna från Norrbotten ..." became "flest rapporter
+    kommer från Norrbotten" in A's Bofink text."""
+    template = (Path(__file__).resolve().parents[1] / "prompts/web-v2.md").read_text(
+        encoding="utf-8"
+    )
+    assert "keep the word andel in Swedish and share in English" in template
+    assert "never write that the most reports come from those counties" in template

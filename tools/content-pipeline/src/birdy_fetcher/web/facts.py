@@ -11,7 +11,7 @@ from typing import Any, Literal
 from pydantic import BaseModel
 
 from .checks import quote_in_sources
-from .datamod import status_contradiction
+from .datamod import is_county_share_sentence, status_contradiction
 from .record import Record
 from .scinames import resolve_lookalike
 from .wiki_full import WikiArticle
@@ -257,11 +257,16 @@ def data_facts(record: Record) -> list[dict[str, Any]]:
     """Facts that code writes from the report data and the red list (never the model)."""
     out: list[dict[str, Any]] = []
 
-    def add(source: str, text: str) -> None:
-        out.append({"id": f"d{len(out) + 1:02d}", "topic": "data", "source": source, "sv": text})
+    def add(source: str, text: str, kind: str | None = None) -> None:
+        fact: dict[str, Any] = {"id": f"d{len(out) + 1:02d}", "topic": "data", "source": source}
+        if kind:
+            # Read by the text checks: a sentence citing a county share must keep saying
+            # andel/share (R3, 2026-10-07).
+            fact["kind"] = kind
+        out.append({**fact, "sv": text})
 
     for sentence in (record.get("data") or {}).get("sentences", {}).get("sv", []):
-        add("artportalen", sentence)
+        add("artportalen", sentence, "countyShare" if is_county_share_sentence(sentence) else None)
     red = record.get("swedishRedList")
     if red == "not_listed":
         add("rodlistan", "Inte rödlistad i Svenska rödlistan 2025.")

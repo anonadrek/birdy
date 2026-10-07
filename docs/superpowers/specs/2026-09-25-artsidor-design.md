@@ -301,7 +301,7 @@ Räknas av kod, aldrig av en modell.
 - **För lite data:** har arten färre än 200 rapporter totalt i perioden visas varken diagram eller karta.
 - **Meningar ur datan** (mallar i bilaga A, svenska och engelska):
   - Månader med värde 80 eller mer är "mest", månader med 10 eller mindre är "nästan aldrig". Har alla månader 30 eller mer blir meningen "Rapporteras året runt." Annars "Rapporteras mest i {månader}." och, om det finns sådana månader, "Nästan aldrig i {månader}." Månader i följd skrivs som spann ("december till februari").
-  - Länen: "Vanligast i rapporterna från {län}, {län} och {län}." med de tre högsta länen.
+  - Länen (**ändrat 2026-10-07**, var "Vanligast i rapporterna från {län}, {län} och {län}." med de tre högsta länen, som lästes som "flest rapporter" och för spridda arter pekade ut tre norrlandslän för både talgoxe och bofink: norrlandslänen rapporterar färre arter, så en vanlig fågelbordsart blir en större andel av deras rapporter): har minst hälften av länen minst halva det högsta länets andel är fördelningen jämn och meningen blir "Rapporteras från alla 21 län." (eller "från {n} av 21 län."). Annars "Andelen av alla fågelrapporter är högst i {län}, {län} och {län}." med de län som har minst halva det högsta länets andel, högst tre. Datafaktumet för andelsmeningen har `kind: "countyShare"`, och en mening i texten som anger det måste säga "andel" (EN "share"), annars stryks den (koden), så att andelen aldrig blir "flest rapporter".
 - **Statussignal:** datan jämförs med statusen som texten anger (avsnitt 9.5). Bara tydliga motsägelser flaggas, till exempel `resident` med en månad under 5, `breeding_migrant` med ett snitt för december till februari över 25, `winter_visitor` med ett snitt för juni och juli över 25, eller `absent` med 200 rapporter eller fler. Trösklarna kalibreras i planen mot minst fyra kända arter bland de 180, en per status, med tester.
 - Rådata (antal per månad och län, för arten och för alla fåglar) och hämtningsdatum sparas i artens JSON så att siffrorna går att kontrollera.
 
@@ -623,7 +623,8 @@ Faktabladen tas fram och kontrolleras automatiskt (V1 till V4) för alla 180 art
 | Mening, året runt | Rapporteras året runt. | Reported all year round. |
 | Mening, mest | Rapporteras mest i {månader}. | Reported most in {months}. |
 | Mening, nästan aldrig | Nästan aldrig i {månader}. | Almost never in {months}. |
-| Mening, län | Vanligast i rapporterna från {län}, {län} och {län}. | Most common in reports from {county}, {county} and {county}. |
+| Mening, län (jämn) | Rapporteras från alla 21 län. / Rapporteras från {n} av 21 län. | Reported from all 21 counties. / Reported from {n} of the 21 counties. |
+| Mening, län (andel) | Andelen av alla fågelrapporter är högst i {län}, {län} och {län}. | Its share of all bird reports is highest in {county}, {county} and {county}. |
 | Rubrik föda och beteende | Föda och beteende | Food and behaviour |
 | Rubrik förväxlingsarter | Kan förväxlas med | Can be confused with |
 | Länk jämförelse | Jämför {art} och {art} | Compare the {name} and the {name} |

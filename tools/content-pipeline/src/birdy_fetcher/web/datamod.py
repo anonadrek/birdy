@@ -65,10 +65,27 @@ _TO = {"sv": "till", "en": "to"}
 ALL_YEAR = {"sv": "Rapporteras året runt.", "en": "Reported all year round."}
 MOST = {"sv": "Rapporteras mest i {months}.", "en": "Reported most in {months}."}
 NEVER = {"sv": "Nästan aldrig i {months}.", "en": "Almost never in {months}."}
-COUNTIES_SENTENCE = {
-    "sv": "Vanligast i rapporterna från {counties}.",
-    "en": "Most common in reports from {counties}.",
+# The county map shows each county's share of all its bird reports (spec §9.2). Before the
+# R3 trial (2026-10-07) the sentence named the top three as "Vanligast i rapporterna från
+# ...", which reads as "most reports", and for a widespread species the top three are small
+# differences (Talgoxe and Bofink both got three Norrland counties: northern counties report
+# fewer species, so a common feeder bird makes up more of their reports). Now a flat profile
+# says how many counties report the species, and a skewed one names the counties with the
+# largest share, worded as a share.
+COUNTIES_SHARE = {
+    "sv": "Andelen av alla fågelrapporter är högst i {counties}.",
+    "en": "Its share of all bird reports is highest in {counties}.",
 }
+COUNTIES_ALL = {"sv": "Rapporteras från alla 21 län.", "en": "Reported from all 21 counties."}
+COUNTIES_SOME = {
+    "sv": "Rapporteras från {n} av 21 län.",
+    "en": "Reported from {n} of the 21 counties.",
+}
+# Flat: at least half the counties have at least half the top county's share.
+FLAT_MEDIAN = 50
+# Named in a skewed profile: at least half the top county's share, at most three.
+SHARE_MIN = 50
+SHARE_COUNTIES = 3
 PEAK = 80
 LOW = 10
 ALL_YEAR_MIN = 30
@@ -127,14 +144,27 @@ def month_sentences(profile: list[int], lang: str) -> list[str]:
 
 
 def county_sentence(profile: dict[str, int], lang: str) -> str | None:
-    ranked = sorted(
-        (iso for iso, value in profile.items() if value > 0),
-        key=lambda iso: (-profile[iso], COUNTY_NAMES[iso]),
-    )[:3]
-    if not ranked:
+    """A county missing from `profile` has no reports."""
+    values = sorted(profile.get(iso, 0) for iso in COUNTY_NAMES)
+    reported = sum(1 for value in values if value > 0)
+    if reported == 0:
         return None
+    if values[len(values) // 2] >= FLAT_MEDIAN:
+        if reported == len(COUNTY_NAMES):
+            return COUNTIES_ALL[lang]
+        return COUNTIES_SOME[lang].format(n=reported)
+    ranked = sorted(
+        (iso for iso, value in profile.items() if value >= SHARE_MIN),
+        key=lambda iso: (-profile[iso], COUNTY_NAMES[iso]),
+    )[:SHARE_COUNTIES]
     names = [COUNTY_NAMES[iso] for iso in ranked]
-    return COUNTIES_SENTENCE[lang].format(counties=join_list(names, lang))
+    return COUNTIES_SHARE[lang].format(counties=join_list(names, lang))
+
+
+def is_county_share_sentence(sentence: str) -> bool:
+    """True for the skewed-profile county sentence: a share, which the text must keep
+    calling a share (text_checks)."""
+    return any(sentence.startswith(t.split("{", 1)[0]) for t in COUNTIES_SHARE.values())
 
 
 def data_sentences(months: list[int], counties: dict[str, int], lang: str) -> list[str]:
