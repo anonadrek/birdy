@@ -1516,7 +1516,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       {
         "heading": "Så används AI",
         "paragraphs": [
-          "Språkmodellen Claude Opus 5.5 från Anthropic läser artiklarna och plockar ut högst 30 fakta om bland annat utseende, läte, miljö och förekomst i Sverige. Varje faktum ska ha ett ordagrant citat ur någon av artiklarna, och ett program kontrollerar att citatet verkligen finns där. Fakta utan giltigt citat stryks.",
+          "Språkmodellen Claude Opus 5.5 från Anthropic läser artiklarna och plockar ut fakta om bland annat utseende, läte, miljö och förekomst i Sverige. Varje faktum ska ha ett ordagrant citat ur någon av artiklarna, och ett program kontrollerar att citatet verkligen finns där. Fakta utan giltigt citat stryks. Blir det fler än 30 behåller programmet 30 och tar dem turvis från ämnena, så att inget ämne trängs ut.",
           "Texten på sidan skrivs sedan av samma modell, som bara får se de fakta som har klarat kontrollen nedan, inte artiklarna. En annan modell, Claude Sonnet 5, läser därefter varje mening och jämför den med de fakta och citat den bygger på. En mening som inte stöds skrivs om en gång, och stöds den fortfarande inte stryks den.",
           "Diagrammet, kartan och meningarna under dem räknas fram av kod direkt ur datan, och rödlistestatusen hämtas på samma sätt, utan någon språkmodell."
         ]
@@ -1532,7 +1532,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       {
         "heading": "Licenserna",
         "paragraphs": [
-          "Texterna på art- och jämförelsesidorna är skrivna ur fakta från Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy och Wikipediaartiklarna som källor och delar vidare under samma licens. Varje sida länkar till artiklarna i den version texten bygger på.",
+          "Texterna på art- och jämförelsesidorna är skrivna med AI ur fakta från Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy och Wikipediaartiklarna som källor och delar vidare under samma licens. Varje sida länkar till artiklarna i den version texten bygger på.",
           "Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem. Fotona är nedskalade, i övrigt oförändrade. Inspelningarna är bearbetade (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet.",
           "Rapportdatan från Artportalen och den svenska rödlistan är fri att använda under CC0 och hämtas via GBIF. CC0 kräver ingen källhänvisning, men varje sida anger ändå källan."
         ]
@@ -1691,7 +1691,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       {
         "heading": "How AI is used",
         "paragraphs": [
-          "The language model Claude Opus 5.5 by Anthropic reads the articles and picks out at most 30 facts about appearance, calls and song, habitat and occurrence in Sweden, among other things. Every fact needs a verbatim quote from one of the articles, and a program checks that the quote really is there. Facts without a valid quote are removed.",
+          "The language model Claude Opus 5.5 by Anthropic reads the articles and picks out facts about appearance, calls and song, habitat and occurrence in Sweden, among other things. Every fact needs a verbatim quote from one of the articles, and a program checks that the quote really is there. Facts without a valid quote are removed. If more than 30 remain, the program keeps 30, taking them from each topic in turn so that no topic is crowded out.",
           "The text on the page is then written by the same model, which only sees the facts that have passed the checks below, not the articles. Another model, Claude Sonnet 5, then reads every sentence and compares it with the facts and quotes it is based on. A sentence that is not supported is rewritten once, and if it is still not supported it is removed.",
           "The chart, the map and the sentences under them are calculated by code directly from the data, and the red list status is looked up the same way, without any language model."
         ]
@@ -1707,7 +1707,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       {
         "heading": "The licences",
         "paragraphs": [
-          "The texts on the species and comparison pages are written from facts in Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and the Wikipedia articles and share under the same licence. Every page links to the articles in the version the text is based on.",
+          "The texts on the species and comparison pages are written with AI from facts in Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and the Wikipedia articles and share under the same licence. Every page links to the articles in the version the text is based on.",
           "Photos and recordings have their own licences, and every page names the author, licence and source for them. The photos are scaled down, otherwise unchanged. The recordings are edited (at most 20 seconds, mono, loudness evened out, MP3), and an edited CC BY-SA recording is shared under the same licence as the original.",
           "The report data from Artportalen and the Swedish red list are free to use under CC0 and come through GBIF. CC0 does not require a credit, but every page names the source anyway."
         ]
@@ -3278,7 +3278,7 @@ import { getCopy, type Locale } from '../../lib/i18n';
 import {
   SITE, appText, audioJsonLd, breadcrumbJsonLd, comparisonHref, comparisonPair, getAllRecords, getAllSpecies, getComparisons,
   groupByKey, groupHref, heroOf, hubHref, isUnpublished, joinSentences, lookAlikeView, pairNames, playHref, related,
-  reviewDate, speciesHref, speciesImage, speciesTitle, taxonJsonLd, wikiSources,
+  reviewDate, shareHref, speciesHref, speciesImage, speciesTitle, taxonJsonLd, wikiSources,
   type Comparison, type LookAlikeView, type Species,
 } from '../../lib/species';
 import '../../styles/species.css';
@@ -3302,7 +3302,8 @@ const heroImg = speciesImage(hero.file);
 const extraImg = extra ? speciesImage(extra.file) : undefined;
 const photos = [{ key: 'hero', image: hero }, ...(extra ? [{ key: 'extra', image: extra }] : [])];
 const altHero = t.species.altHero.replace('{name}', name).replace('{scientific}', s.names.scientific);
-const share = await getImage({ src: heroImg, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 82 });
+// The whole photo on the paper colour, never cropped (the build draws it, see shareHref in species.ts).
+const share = shareHref(s);
 const content = await getImage({ src: heroImg, width: 1200, format: 'webp' });
 
 const status = text.facts.swedenStatus ? t.species.statusLabels[text.facts.swedenStatus.value] : undefined;
@@ -3373,10 +3374,10 @@ const jsonLd = [
 ];
 ---
 
-<Layout locale={locale} pathname={pathname} alternatePath={otherPath} title={title} description={text.metaDescription} ogImage={share.src} ogImageAlt={altHero} noindex={unpublished} jsonLd={jsonLd}>
+<Layout locale={locale} pathname={pathname} alternatePath={otherPath} title={title} description={text.metaDescription} ogImage={share} ogImageAlt={altHero} noindex={unpublished} jsonLd={jsonLd}>
   <Nav locale={locale} variant="solid" switchLangHref={otherPath} />
   <CategoryBar locale={locale} active={s.group} />
-  <main class="sp wrap" data-species-page>
+  <main id="main" class="sp wrap" data-species-page>
     {unpublished && <p class="sp-preview" data-preview-banner role="note">{t.species.previewBanner}</p>}
     <div class="spread">
       <header class="head">
@@ -3530,8 +3531,10 @@ const jsonLd = [
   /* Sticky only when the whole column fits in the window under the menu and the category bar (the script
      below sets .is-sticky), otherwise it scrolls with the page: on a laptop the app box would sit below the
      window edge until the end of the article (controller review, Task 10). The hero photos run from
-     landscape to 2:1 portrait, so the column is 780 to 1 200 px tall and no fixed min-height fits. */
-  .left-inner { top: 150px; display: flex; flex-direction: column; gap: 18px; }
+     landscape to 2:1 portrait, so the column is 780 to 1 200 px tall and no fixed min-height fits.
+     --sticky-top: the menu (76 px) and the category bar (about 55 px) plus a gap, close to species.css's
+     scroll-padding-top (9.25rem); the script reads the same value. */
+  .left-inner { --sticky-top: 150px; top: var(--sticky-top); display: flex; flex-direction: column; gap: 18px; }
   .left-inner.is-sticky { position: sticky; }
   .sp-app--flow, .note--flow { display: none; }
   .body { grid-area: body; padding-left: 36px; }
@@ -3587,8 +3590,10 @@ const jsonLd = [
   if (inner) {
     const desktop = window.matchMedia('(min-width: 1024px)');
     const MARGIN = 16;
+    // The fallback is --sticky-top's own value: a top that can't be read must not make a too tall column fit.
+    const STICKY_TOP = 150;
     const update = () => {
-      const top = parseFloat(getComputedStyle(inner).top) || 0;
+      const top = parseFloat(getComputedStyle(inner).getPropertyValue('--sticky-top')) || STICKY_TOP;
       inner.classList.toggle('is-sticky', desktop.matches && inner.offsetHeight + top + MARGIN <= window.innerHeight);
     };
     update();
@@ -3674,6 +3679,10 @@ git commit -m "feat(website): artsidan med diagram, karta, inspelning, förväxl
    - **I2, approtan och marginalanteckningen finns två gånger**, i vänsterspalten (dold under 1024 px) och efter förväxlingsarterna (dold från 1024 px). `display: none` tar bort den dolda ur tabbordningen och tillgänglighetsträdet, och dess lata Play-bild hämtas inte. CSS `order` är borta: DOM-ordningen är specens mobilordning. Tester som räknar `.sp-app` räknar `:visible`, och ett tabbtest i 390 px kontrollerar brödsmulor, spelare, Play-märket och credits i den ordningen, märket en gång.
    - **I3, `COMPARISONS_ENABLED = false`** i `lib/species.ts` (Task 4:s block har fått flaggan): `getComparisons()` ger inget, ingångssidan döljer "Lätta att blanda ihop" och förväxlingsarterna får ingen jämförelselänk, tills Task 11 bygger sidorna. Task 7:s och 10:s tester är ändrade därefter, med de gamla raderna som kommentarer för Task 11.
    - **M1** förväxlingsartens miniatyr är `width={192}` (en fil, rätt `width`/`height`), **M2** slugvakten i `species-routes.ts` går över alla poster med sidkontrakt (`hasPageContract`), byggda eller inte, **M3** `lang="la"` på familjen i "More in the … family", **M5** `s.text[locale]` utan `!`.
+10. **Granskningen av Task 10:s fixar och Task 12 (2026-10-07, "Approved with minors", egen commit efter Task 14):**
+   - **Delningsbilden (`og:image`) beskär inte fågeln** (controllerns beslut): hela huvudfotot på papperets färg (`--paper` ur `src/styles/tokens.css`) i 1200 × 630. Astros `getImage` klarar inte det (`fit: 'contain'` fyller med svart, `background` plattar bara till genomskinlighet), så `astro.config.mjs` ritar bilderna med sharp i byggkroken `birdy-species-share`, bara för arter som får en sida, under `/og/species/<QID>.<hash>.jpg` (`sharePublicPath` i `species-source.mjs`, hashen täcker fotot, färgen, storleken och JPEG-kvaliteten; ritade bilder återanvänds ur `node_modules/.cache/birdy-share/`). Den virtuella modulen exporterar `share` (QID till adress), `shareHref(s)` i `species.ts` läser den. `check-seo.mjs` kräver att varje ny sidas `og:image` finns i bygget, `check-preview-build.mjs` att det finns exakt en delningsbild per byggd art i varje bygge, nytt enhetstest för `sharePublicPath`/`paperColour` och ett Playwright-test som läser bildens pixlar (papper i kanterna, fotot i mitten, 1200 × 630, samma bild på SV och EN).
+   - **`--sticky-top`:** vänsterspaltens avstånd till fönstrets överkant är en egen variabel (150 px) som stilen och skriptet läser, och skriptets reservvärde är samma 150 (förut 0, som hade fått en för hög spalt att se ut att rymmas om värdet inte gick att läsa).
+   - **Specen** §5 och §13 beskriver vänsterspalten som den fungerar (sticky bara när hela spalten ryms, skriptet sätter `.is-sticky`).
 
 ---
 
@@ -4202,6 +4211,7 @@ git commit -m "feat(website): sidan Så gör vi artsidorna (SV och EN)"
 3. **Titeln** säger "källor och kontroll" / "sources and checks" i stället för "granskning" / "review" (specens §12-tabell ändrad).
 4. **Fler tester:** indexerbar med arter, JSON-LD med `author` och `publisher` och brödsmulor, och att sidan nämner modellerna, ljudmodellen, stickprovet, licenserna, CC0 och felrapporten.
 5. **`scripts/check-empty-hub.mjs`** kontrollerar nu även om-sidorna vid noll arter: `noindex`, h1, alla fem avsnitt och mejllänken i `<main>`, och beskrivningens längd.
+6. **Granskningen av Task 12 (2026-10-07, minors, egen commit efter Task 14):** licensstycket säger att texterna är skrivna **med AI** ur fakta från Wikipedia (som specens §8 och textcrediten), och AI-stycket säger vad pipelinen gör med gränsen 30: modellen plockar ut fakta, de utan giltigt citat stryks, och blir det fler än 30 behåller programmet 30 och tar dem turvis från ämnena (`MAX_FACTS` och `cap_by_topic` i `web/facts.py` på `data/artsidor`). Task 5:s copyblock är uppdaterade.
 
 ---
 
@@ -4610,6 +4620,11 @@ for (const { path, html } of pages) {
     if (levels[i] > levels[i - 1] + 1) fail(path, `rubriknivån hoppar från h${levels[i - 1]} till h${levels[i]}`);
   }
 
+  // The share image is in the build (the species pages' own is drawn by astro.config.mjs, not by Astro).
+  const og = attr(html.match(/<meta property="og:image"[^>]*>/)?.[0] ?? '', 'content');
+  if (!og) fail(path, 'og:image saknas');
+  else if (og.startsWith(SITE) && !exists(new URL(og).pathname)) fail(path, `og:image finns inte i bygget: ${og}`);
+
   const canonical = attr(html.match(/<link rel="canonical"[^>]*>/)?.[0] ?? '', 'href');
   if (canonical !== SITE + path) fail(path, `canonical är ${canonical}`);
   const alternates = Object.fromEntries([...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]]));
@@ -4861,6 +4876,13 @@ if (!woodpeckers || !woodpeckers.includes('noindex')) errors.push('dist-preview/
 const sitemapOf = (dir) => readdirSync(dir).filter((f) => /^sitemap-\d+\.xml$/.test(f)).map((f) => readFileSync(join(dir, f), 'utf8')).join(' ');
 if (sitemapOf(preview).includes('storre-hackspett')) errors.push('dist-preview: en opublicerad sida finns i sitemapen');
 if (!COMPARISONS_ENABLED && /-eller-|-vs-/.test(sitemapOf(dist) + sitemapOf(preview))) errors.push('en jämförelsesida finns i sitemapen fast jämförelserna är avstängda (Task 11)');
+
+// The share images (og/species/<QID>.<hash>.jpg, drawn by astro.config.mjs): one per built species, no other.
+const shareQids = (dir) => (existsSync(join(dir, 'og/species')) ? readdirSync(join(dir, 'og/species')).map((f) => f.split('.')[0]).sort() : []);
+for (const [name, dir, list] of [['dist', dist, published], ['dist-preview', preview, [...published, ...previewOnly]]]) {
+  const want = list.map((r) => r.qid).sort();
+  if (JSON.stringify(shareQids(dir)) !== JSON.stringify(want)) errors.push(`${name}/og/species: väntade delningsbilder för ${want.join(', ')}, fick ${shareQids(dir).join(', ')}`);
+}
 
 const audio = existsSync(join(dist, 'audio/species')) ? readdirSync(join(dist, 'audio/species')) : [];
 if (audio.length !== 4) errors.push(`dist/audio/species: väntade 4 inspelningar (byggda arter med inspelning), fick ${audio.length}`);

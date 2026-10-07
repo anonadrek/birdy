@@ -79,6 +79,11 @@ for (const { path, html } of pages) {
     if (levels[i] > levels[i - 1] + 1) fail(path, `rubriknivån hoppar från h${levels[i - 1]} till h${levels[i]}`);
   }
 
+  // The share image is in the build (the species pages' own is drawn by astro.config.mjs, not by Astro).
+  const og = attr(html.match(/<meta property="og:image"[^>]*>/)?.[0] ?? '', 'content');
+  if (!og) fail(path, 'og:image saknas');
+  else if (og.startsWith(SITE) && !exists(new URL(og).pathname)) fail(path, `og:image finns inte i bygget: ${og}`);
+
   const canonical = attr(html.match(/<link rel="canonical"[^>]*>/)?.[0] ?? '', 'href');
   if (canonical !== SITE + path) fail(path, `canonical är ${canonical}`);
   const alternates = Object.fromEntries([...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]]));

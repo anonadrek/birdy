@@ -1,4 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
+import sharp from 'sharp';
 import { trackConsoleErrors } from './test-helpers';
 
 // Runs against the TEST data (tests/fixtures/): build with `npm run build:fixtures` first.
@@ -230,6 +231,25 @@ test.describe('gruppsidorna', () => {
 });
 
 test.describe('artsidan', () => {
+  // The whole photo on the paper colour, never cropped (controller decision, Task 10/12 review). The test photos
+  // are 3:2 and one flat colour, so in 1200 x 630 the photo is 945 px wide with paper on both sides.
+  test('artsidans og:image är hela fotot på papper, inte beskuret', async ({ page, request }) => {
+    await page.goto('/sv/arter/talgoxe/');
+    const og = await page.locator('meta[property="og:image"]').getAttribute('content');
+    expect(og).toMatch(/^https:\/\/birdy\.community\/og\/species\/Q25485\.[0-9a-f]{10}\.jpg$/);
+    await page.goto('/species/great-tit/');
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', og!);
+    const res = await request.get(new URL(og!).pathname);
+    expect(res.status()).toBe(200);
+    const { data, info } = await sharp(await res.body()).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+    expect([info.width, info.height]).toEqual([1200, 630]);
+    const at = (x: number, y: number) => [...data.subarray((y * info.width + x) * info.channels, (y * info.width + x) * info.channels + 3)];
+    const paper = [0xf6, 0xef, 0xe2];
+    const isPaper = (rgb: number[]) => rgb.every((v, i) => Math.abs(v - paper[i]) <= 6);
+    for (const x of [10, 100, 1100, 1190]) expect(isPaper(at(x, 315)), `x=${x}`).toBe(true);
+    for (const [x, y] of [[600, 5], [600, 315], [600, 625], [180, 315], [1020, 315]]) expect(isPaper(at(x, y)), `${x},${y}`).toBe(false);
+  });
+
   test('talgoxe: rubrik, fakta, moduler, förväxlingsart, credits och språkbyte', async ({ page, request }) => {
     const errors = trackConsoleErrors(page);
     const res = await page.goto('/sv/arter/talgoxe/');

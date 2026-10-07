@@ -3,10 +3,10 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import sharp from 'sharp';
-import { copyFileSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { basename, dirname, resolve } from 'node:path';
-import { assetsDir, builtSpeciesMedia } from './src/lib/species-source.mjs';
+import { SHARE_QUALITY, SHARE_SIZE, assetsDir, builtSpeciesMedia, paperColour } from './src/lib/species-source.mjs';
 import { readSpeciesSitemapInfo } from './src/lib/species-sitemap.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -123,6 +123,42 @@ const speciesAudio = {
   },
 };
 
+// The share images (og:image) of the species pages: the whole hero photo letterboxed on the paper colour,
+// never cropped (sharePublicPath in species-source.mjs), drawn into dist only for species that get a page,
+// under the hashed name the page links to. Astro's getImage can't do this (its `fit: 'contain'` pads with
+// black, `background` only flattens transparency), so sharp draws them here. A drawn image is kept in
+// node_modules/.cache/birdy-share/ under the same hashed name, so a build redraws only new or changed photos.
+/** @type {import('astro').AstroIntegration} */
+const speciesShare = {
+  name: 'birdy-species-share',
+  hooks: {
+    'astro:build:done': async ({ dir, logger }) => {
+      const { share } = speciesMedia();
+      const out = fileURLToPath(new URL('og/species/', dir));
+      const cache = resolve(root, 'node_modules/.cache/birdy-share');
+      if (share.length) mkdirSync(out, { recursive: true });
+      mkdirSync(cache, { recursive: true });
+      const background = paperColour(root);
+      let drawn = 0;
+      for (const image of share) {
+        const name = basename(image.href);
+        const cached = resolve(cache, name);
+        if (!existsSync(cached)) {
+          await sharp(resolve(root, assetsDir(), image.file))
+            .rotate()
+            .resize({ ...SHARE_SIZE, fit: 'contain', background })
+            .flatten({ background })
+            .jpeg({ quality: SHARE_QUALITY, mozjpeg: true })
+            .toFile(cached);
+          drawn += 1;
+        }
+        copyFileSync(cached, resolve(out, name));
+      }
+      logger.info(`${share.length} delningsbilder i og/species/ (${drawn} nyritade)`);
+    },
+  },
+};
+
 // The photos and recording links of the species that get a page, as one virtual module that
 // src/lib/species.ts imports. An import.meta.glob over src/assets/species/ would not do: Vite emits every
 // globbed image into dist/_astro/ as soon as it loads it, used or not (lazy globs too), so every
@@ -138,7 +174,7 @@ const speciesMediaModule = {
   },
   load(id) {
     if (id !== `\0${SPECIES_MEDIA}`) return undefined;
-    const { images, audio } = speciesMedia();
+    const { images, audio, share } = speciesMedia();
     // Root-relative ids ("/tests/fixtures/species-assets/Q25485/hero.webp"), which Vite resolves on every OS.
     const imports = images.map((file, n) => `import img${n} from ${JSON.stringify(`/${assetsDir()}/${file}`)};`);
     const entries = images.map((file, n) => `[${JSON.stringify(file)}, img${n}]`);
@@ -146,6 +182,7 @@ const speciesMediaModule = {
       ...imports,
       `export const images = new Map([${entries.join(', ')}]);`,
       `export const audio = new Map(${JSON.stringify(audio.map((a) => [a.qid, a.href]))});`,
+      `export const share = new Map(${JSON.stringify(share.map((a) => [a.qid, a.href]))});`,
       '',
     ].join('\n');
   },
@@ -172,7 +209,7 @@ export default defineConfig({
       if (d) item.lastmod = new Date(d).toISOString();
       return item;
     },
-  }), speciesAudio],
+  }), speciesAudio, speciesShare],
   vite: {
     plugins: [tailwindcss(), speciesMediaModule],
   },

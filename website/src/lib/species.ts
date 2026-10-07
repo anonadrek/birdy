@@ -7,7 +7,7 @@ import { COMPARISONS_ENABLED, comparisonsDir, hasPageContract, isComparisonBuilt
 import type { speciesPage } from './species-schema.mjs';
 import { normalizeSearch } from './species-search.mjs';
 import { footerSpecies } from './species-nav.mjs';
-import { audio as speciesAudio, images as speciesImages } from 'virtual:birdy-species-media';
+import { audio as speciesAudio, images as speciesImages, share as speciesShare } from 'virtual:birdy-species-media';
 
 /** Any species file: the full page data for written and verified records, only the envelope for the rest. */
 export type SpeciesRecord = CollectionEntry<'species'>['data'];
@@ -63,6 +63,13 @@ export function audioHref(s: Species): string | undefined {
   if (!s.audio) return undefined;
   const href = speciesAudio.get(s.qid);
   if (!href) throw new Error(`${s.qid}: inspelningen finns inte i bygget (bara arter som får en sida har inspelningar)`);
+  return href;
+}
+
+/** The species page's share image (og:image): the whole hero photo on the paper colour, drawn by the build. */
+export function shareHref(s: Species): string {
+  const href = speciesShare.get(s.qid);
+  if (!href) throw new Error(`${s.qid}: delningsbilden finns inte i bygget (bara arter som får en sida har en)`);
   return href;
 }
 

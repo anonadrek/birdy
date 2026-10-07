@@ -6,7 +6,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  assetsDir, audioPublicPath, builtSpeciesMedia, comparisonsDir, isComparisonBuilt, isPreview, isSpeciesBuilt, readJsonDir, speciesDir, useEmptyData,
+  assetsDir, audioPublicPath, builtSpeciesMedia, comparisonsDir, isComparisonBuilt, isPreview, isSpeciesBuilt, paperColour, readJsonDir, sharePublicPath, speciesDir, useEmptyData,
 } from '../../src/lib/species-source.mjs';
 
 const ok = {
@@ -241,5 +241,42 @@ test('builtSpeciesMedia: foton och inspelningar bara för arter som får en sida
       assert.equal(a.file, `${a.qid}/voice.mp3`);
       assert.equal(a.href, audioPublicPath(website, { qid: a.qid, audio: { file: a.file } }));
     }
+    // One share image per built species, from its hero, at the same address as sharePublicPath.
+    assert.equal(normal.share.length, 17);
+    assert.equal(preview.share.length, 19);
+    for (const s of normal.share) {
+      assert.equal(s.file, `${s.qid}/hero.webp`);
+      assert.equal(s.href, sharePublicPath(website, { qid: s.qid, images: [{ role: 'hero', file: s.file }] }));
+    }
+  });
+});
+
+test('sharePublicPath: /og/species/<QID>.<10 hex>.jpg, ny hash när fotot eller papperet ändras, inget huvudfoto ger undefined', async () => {
+  await withTempDir((root) => {
+    withEnv({ SPECIES_FIXTURES: '1', SPECIES_EMPTY: undefined }, () => {
+      mkdirSync(join(root, 'src/styles'), { recursive: true });
+      const tokens = join(root, 'src/styles/tokens.css');
+      const dir = join(root, 'tests/fixtures/species-assets', 'Q99999');
+      mkdirSync(dir, { recursive: true });
+      const photo = join(dir, 'hero.webp');
+      const record = { qid: 'Q99999', images: [{ role: 'extra', file: 'Q99999/extra.webp' }, { role: 'hero', file: 'Q99999/hero.webp' }] };
+
+      writeFileSync(tokens, ':root { --paper: #f6efe2; }');
+      writeFileSync(photo, Buffer.from([1, 2, 3]));
+      assert.equal(paperColour(root), '#F6EFE2');
+      const path1 = sharePublicPath(root, record);
+      assert.match(path1, /^\/og\/species\/Q99999\.[0-9a-f]{10}\.jpg$/);
+
+      writeFileSync(photo, Buffer.from([4, 5, 6]));
+      const path2 = sharePublicPath(root, record);
+      assert.notEqual(path1, path2);
+
+      writeFileSync(tokens, ':root { --paper: #FFFFFF; }');
+      assert.notEqual(sharePublicPath(root, record), path2);
+
+      assert.equal(sharePublicPath(root, { qid: 'Q99999', images: [{ role: 'extra', file: 'Q99999/extra.webp' }] }), undefined);
+      writeFileSync(tokens, ':root { --ink: #302019; }');
+      assert.throws(() => paperColour(root), /--paper saknas/);
+    });
   });
 });

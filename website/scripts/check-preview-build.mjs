@@ -158,6 +158,13 @@ const sitemapOf = (dir) => readdirSync(dir).filter((f) => /^sitemap-\d+\.xml$/.t
 if (sitemapOf(preview).includes('storre-hackspett')) errors.push('dist-preview: en opublicerad sida finns i sitemapen');
 if (!COMPARISONS_ENABLED && /-eller-|-vs-/.test(sitemapOf(dist) + sitemapOf(preview))) errors.push('en jämförelsesida finns i sitemapen fast jämförelserna är avstängda (Task 11)');
 
+// The share images (og/species/<QID>.<hash>.jpg, drawn by astro.config.mjs): one per built species, no other.
+const shareQids = (dir) => (existsSync(join(dir, 'og/species')) ? readdirSync(join(dir, 'og/species')).map((f) => f.split('.')[0]).sort() : []);
+for (const [name, dir, list] of [['dist', dist, published], ['dist-preview', preview, [...published, ...previewOnly]]]) {
+  const want = list.map((r) => r.qid).sort();
+  if (JSON.stringify(shareQids(dir)) !== JSON.stringify(want)) errors.push(`${name}/og/species: väntade delningsbilder för ${want.join(', ')}, fick ${shareQids(dir).join(', ')}`);
+}
+
 const audio = existsSync(join(dist, 'audio/species')) ? readdirSync(join(dist, 'audio/species')) : [];
 if (audio.length !== 4) errors.push(`dist/audio/species: väntade 4 inspelningar (byggda arter med inspelning), fick ${audio.length}`);
 

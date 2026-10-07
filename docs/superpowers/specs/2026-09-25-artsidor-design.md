@@ -175,7 +175,7 @@ Utseendet följer fältbokens färger: inget grönt, espresso för mörka ytor, 
 
 **Dator (från 1024 px):** två spalter, 5 : 7, med en streckad hårlinje emellan.
 
-- **Vänster spalt**, `position: sticky` under menyn och kategoriraden:
+- **Vänster spalt**, `position: sticky` under menyn och kategoriraden när hela spalten ryms i fönstret, annars följer den med sidan (ändrat 2026-10-07, Task 10:s granskning: huvudfotot går från liggande till 2:1 stående, så spalten är 780 till 1 200 px hög, och på en laptop hade approtan legat under fönsterkanten tills artikeln var slut). Ett litet skript mäter spalten när sidan laddas och när spalten eller fönstret ändrar storlek, och sätter klassen `.is-sticky` bara när spaltens höjd plus avståndet till fönstrets överkant (`--sticky-top`, 150 px) och en marginal ryms i fönstrets höjd. Utan JavaScript följer spalten med sidan.
   1. Huvudfoto i planschram med bildtext i Caveat ("Pl. 1, Talgoxe" och "Foto: {fotograf}").
   2. Faktalista (etiketter i bilaga A):
      - Vetenskapligt namn (kursivt)
@@ -473,7 +473,7 @@ För alla sidor: inga interna länkar till sidor som saknas, exakt en h1, `alt` 
 - Bygget failar på schemafel (zod) och slug-krockar.
 - Playwright (`tests/species.spec.ts` och `tests/comparisons.spec.ts`), SV och EN:
   - ingångssidan: sökningen filtrerar, `?q=` fylls i, hela listan utan JavaScript, sektionen "Lätta att blanda ihop"
-  - artsidan: diagrammet har 12 staplar och sin mening, kartan har 21 län, ljudspelaren har `preload="none"` och creditrad, förväxlingslänkar leder till publicerade sidor, sticky på 1440 px, ingen sidledsscroll i 360, 390 och 430 px, språkbytet leder till samma art
+  - artsidan: diagrammet har 12 staplar och sin mening, kartan har 21 län, ljudspelaren har `preload="none"` och creditrad, förväxlingslänkar leder till publicerade sidor, vänsterspalten är sticky när den ryms (1920 × 1080 på testdatan) och följer med sidan när den inte gör det (1440 × 900, 1366 × 657 och 1024 × 768, där approtan nås genom att scrolla), ingen sidledsscroll i 360, 390 och 430 px, språkbytet leder till samma art
   - jämförelsesidan: tabellen har 3 till 5 rader, båda artsidorna är länkade, diagrammet har båda arterna
   - publiceringen: en art med `publish: false` får ingen sida i produktionsbygget men finns med `noindex` i förhandsbygget
   - sidfoten: Arter-kolumnen och Vanliga arter finns, alla länkar ger 200

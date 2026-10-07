@@ -106,19 +106,54 @@ export function audioPublicPath(root, record) {
   return `/audio/species/${record.qid}.${hash}.mp3`;
 }
 
+/** The share image (og:image) of a species page: the whole hero photo on the site's paper colour. */
+export const SHARE_SIZE = { width: 1200, height: 630 };
+export const SHARE_QUALITY = 82;
+
+/** The site's paper colour (`--paper` in src/styles/tokens.css), the background of the share images. */
+export function paperColour(root) {
+  const css = readFileSync(resolve(root, 'src/styles/tokens.css'), 'utf8');
+  const hit = css.match(/--paper:\s*(#[0-9A-Fa-f]{6})\b/);
+  if (!hit) throw new Error('src/styles/tokens.css: --paper saknas (bakgrunden till artsidornas delningsbilder)');
+  return hit[1].toUpperCase();
+}
+
 /**
- * The photos and recordings of the species built in this build (`isSpeciesBuilt`), read once from the
- * data files with `root` = the website folder (Astro's config root, never process.cwd()). astro.config.mjs
- * turns this into the virtual module the pages import (virtual:birdy-species-media) and copies the
- * recordings into dist under the same hashed names, so a page link and the copied file always agree.
+ * Public path of a species' share image (og:image), or undefined without a hero photo. The hero is shown
+ * whole, letterboxed on the paper colour, never cropped (controller decision, Task 10/12 review: a 1200 x 630
+ * crop of a portrait photo cut off the bird). Content-hashed over the photo and how it is drawn, like the
+ * recordings; astro.config.mjs draws the file into dist for built species only.
+ */
+export function sharePublicPath(root, record) {
+  const hero = (record.images ?? []).find((/** @type {{ role: string }} */ i) => i.role === 'hero');
+  if (!hero) return undefined;
+  const hash = createHash('sha256')
+    .update(`${paperColour(root)} ${SHARE_SIZE.width}x${SHARE_SIZE.height} contain jpeg ${SHARE_QUALITY}\n`)
+    .update(readFileSync(resolve(root, assetsDir(), hero.file)))
+    .digest('hex')
+    .slice(0, 10);
+  return `/og/species/${record.qid}.${hash}.jpg`;
+}
+
+/**
+ * The photos, recordings and share images of the species built in this build (`isSpeciesBuilt`), read once
+ * from the data files with `root` = the website folder (Astro's config root, never process.cwd()).
+ * astro.config.mjs turns this into the virtual module the pages import (virtual:birdy-species-media), copies
+ * the recordings and draws the share images into dist under the same hashed names, so a page link and the
+ * file always agree.
  * @param {string} root
  * @param {boolean} [preview]
- * @returns {{ images: string[], audio: { qid: string, file: string, href: string }[] }}
+ * @returns {{ images: string[], audio: { qid: string, file: string, href: string }[], share: { qid: string, file: string, href: string }[] }}
  */
 export function builtSpeciesMedia(root, preview = isPreview()) {
   const built = readJsonDir(root, speciesDir()).filter((r) => isSpeciesBuilt(r, preview));
   return {
     images: built.flatMap((r) => (r.images ?? []).map((/** @type {{ file: string }} */ i) => i.file)),
     audio: built.filter((r) => r.audio).map((r) => ({ qid: r.qid, file: r.audio.file, href: audioPublicPath(root, r) })),
+    share: built.flatMap((r) => {
+      const href = sharePublicPath(root, r);
+      const hero = (r.images ?? []).find((/** @type {{ role: string }} */ i) => i.role === 'hero');
+      return href && hero ? [{ qid: r.qid, file: hero.file, href }] : [];
+    }),
   };
 }

@@ -16,7 +16,7 @@ import { getCopy, type Locale } from '../../lib/i18n';
 import {
   SITE, appText, audioJsonLd, breadcrumbJsonLd, comparisonHref, comparisonPair, getAllRecords, getAllSpecies, getComparisons,
   groupByKey, groupHref, heroOf, hubHref, isUnpublished, joinSentences, lookAlikeView, pairNames, playHref, related,
-  reviewDate, speciesHref, speciesImage, speciesTitle, taxonJsonLd, wikiSources,
+  reviewDate, shareHref, speciesHref, speciesImage, speciesTitle, taxonJsonLd, wikiSources,
   type Comparison, type LookAlikeView, type Species,
 } from '../../lib/species';
 import '../../styles/species.css';
@@ -40,7 +40,8 @@ const heroImg = speciesImage(hero.file);
 const extraImg = extra ? speciesImage(extra.file) : undefined;
 const photos = [{ key: 'hero', image: hero }, ...(extra ? [{ key: 'extra', image: extra }] : [])];
 const altHero = t.species.altHero.replace('{name}', name).replace('{scientific}', s.names.scientific);
-const share = await getImage({ src: heroImg, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 82 });
+// The whole photo on the paper colour, never cropped (the build draws it, see shareHref in species.ts).
+const share = shareHref(s);
 const content = await getImage({ src: heroImg, width: 1200, format: 'webp' });
 
 const status = text.facts.swedenStatus ? t.species.statusLabels[text.facts.swedenStatus.value] : undefined;
@@ -111,7 +112,7 @@ const jsonLd = [
 ];
 ---
 
-<Layout locale={locale} pathname={pathname} alternatePath={otherPath} title={title} description={text.metaDescription} ogImage={share.src} ogImageAlt={altHero} noindex={unpublished} jsonLd={jsonLd}>
+<Layout locale={locale} pathname={pathname} alternatePath={otherPath} title={title} description={text.metaDescription} ogImage={share} ogImageAlt={altHero} noindex={unpublished} jsonLd={jsonLd}>
   <Nav locale={locale} variant="solid" switchLangHref={otherPath} />
   <CategoryBar locale={locale} active={s.group} />
   <main id="main" class="sp wrap" data-species-page>
@@ -268,8 +269,10 @@ const jsonLd = [
   /* Sticky only when the whole column fits in the window under the menu and the category bar (the script
      below sets .is-sticky), otherwise it scrolls with the page: on a laptop the app box would sit below the
      window edge until the end of the article (controller review, Task 10). The hero photos run from
-     landscape to 2:1 portrait, so the column is 780 to 1 200 px tall and no fixed min-height fits. */
-  .left-inner { top: 150px; display: flex; flex-direction: column; gap: 18px; }
+     landscape to 2:1 portrait, so the column is 780 to 1 200 px tall and no fixed min-height fits.
+     --sticky-top: the menu (76 px) and the category bar (about 55 px) plus a gap, close to species.css's
+     scroll-padding-top (9.25rem); the script reads the same value. */
+  .left-inner { --sticky-top: 150px; top: var(--sticky-top); display: flex; flex-direction: column; gap: 18px; }
   .left-inner.is-sticky { position: sticky; }
   .sp-app--flow, .note--flow { display: none; }
   .body { grid-area: body; padding-left: 36px; }
@@ -325,8 +328,10 @@ const jsonLd = [
   if (inner) {
     const desktop = window.matchMedia('(min-width: 1024px)');
     const MARGIN = 16;
+    // The fallback is --sticky-top's own value: a top that can't be read must not make a too tall column fit.
+    const STICKY_TOP = 150;
     const update = () => {
-      const top = parseFloat(getComputedStyle(inner).top) || 0;
+      const top = parseFloat(getComputedStyle(inner).getPropertyValue('--sticky-top')) || STICKY_TOP;
       inner.classList.toggle('is-sticky', desktop.matches && inner.offsetHeight + top + MARGIN <= window.innerHeight);
     };
     update();
