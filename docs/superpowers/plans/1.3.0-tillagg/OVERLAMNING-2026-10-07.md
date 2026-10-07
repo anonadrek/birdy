@@ -63,6 +63,7 @@ Beslutssidan: https://claude.ai/artifact/NHEcrCSEqvrhU9KrHWNX42 (uppdateras med 
 11. **EU-varumärket "Birdy" (klass 9 och 42) efter lanseringen:** EUIPO:s avgift är 850 EUR för en klass + 50 EUR för den andra = 900 EUR. EUIPO:s SME Fund 2026 (75 % tillbaka, högst 700 EUR) har slut på varumärkescheckar; väntar man på nästa omgång (brukar öppna i februari) blir det ca 225 EUR. Checken måste sökas före ansökan.
 12. **Speed Insights Plus på albit.se:** avstängd 2026-10-07 (förnyas inte, finns kvar till 7 nov 2026).
 13. När allt ovan är gjort: beslutssidan uppdateras med läget, sedan CLAUDE.md och minnet så att en ny session kan ta vid.
+14. **Sociala videor (Albin 2026-10-07 sent):** share-alike tillåtet (alternativ a): CC BY-SA-foton och inspelningar får användas, och videon publiceras då under CC BY-SA 4.0 (står i bildtexten); NC och ND aldrig. 156 av 180 arter går att använda. "Whose song is this?" för tättingar, "voice" för övriga. **Ljudanimationen ska göras om** ("not satisfying"): fyra alternativ (fältguidesonagram, levande vågform, sångring, bläcknoter) renderas som korta klipp, Albin väljer. Verktyget: `tools/social/` på grenen `social/see-the-song`, förhandsvisning https://claude.ai/artifact/MhoiQXSgEVPRxvD71QKoeJ.
 
 ## 4. Emulatorn
 
