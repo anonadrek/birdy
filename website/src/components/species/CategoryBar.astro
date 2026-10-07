@@ -53,11 +53,9 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
   // edge fade + scrollbar hint while the chip row overflows (controller review 2026-10-07).
   const chips = document.querySelector<HTMLElement>('[data-chips]');
   const current = chips?.querySelector<HTMLElement>('.chip.is-active');
-  if (chips && current) {
-    const c = chips.getBoundingClientRect();
-    const a = current.getBoundingClientRect();
-    if (a.left < c.left || a.right > c.right) chips.scrollLeft += a.left - c.left - (c.width - a.width) / 2;
-  }
+  /** Width of the right-edge fade (the mask in the styles below) and the clear margin at the left edge. */
+  const FADE = 32;
+  const EDGE = 6;
 
   const updateFade = () => {
     if (!chips) return;
@@ -65,7 +63,28 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
     const atEnd = chips.scrollLeft + chips.clientWidth >= chips.scrollWidth - 1;
     chips.classList.toggle('has-overflow', overflowing && !atEnd);
   };
+
+  // The active chip must end up fully visible and clear of the fade, at either end of the row (controller
+  // review 2026-10-07: the last chip was left half under the fade). Centred when it isn't, clamped to the
+  // row's scroll range, so the first chip lands at the start and the last at the end, where there is no
+  // fade. Instant, never smooth, so reduced motion needs nothing extra.
+  const revealActive = () => {
+    if (!chips || !current) return;
+    const c = chips.getBoundingClientRect();
+    const a = current.getBoundingClientRect();
+    if (a.left >= c.left + EDGE && a.right <= c.right - FADE) return;
+    const max = chips.scrollWidth - chips.clientWidth;
+    const target = chips.scrollLeft + a.left - c.left - (c.width - a.width) / 2;
+    chips.scrollLeft = Math.max(0, Math.min(max, target));
+    updateFade();
+  };
+  revealActive();
   updateFade();
+  // The web fonts change the chips' widths after this first pass, which left the last chip under the fade.
+  // Run it again once they have loaded, unless the visitor has already scrolled the row.
+  let touched = false;
+  for (const type of ['pointerdown', 'wheel', 'keydown']) chips?.addEventListener(type, () => { touched = true; }, { once: true, passive: true });
+  document.fonts?.ready.then(() => { if (!touched) revealActive(); updateFade(); });
   chips?.addEventListener('scroll', updateFade);
   window.addEventListener('resize', updateFade);
 

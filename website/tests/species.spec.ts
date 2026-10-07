@@ -333,10 +333,10 @@ test.describe('artsidan', () => {
     await expect(facts).toContainText('Livskraftig (LC)');
     await expect(facts).not.toContainText('Svenska rödlistan 2025');
     await expect(page.locator('[data-chart], [data-map], audio')).toHaveCount(0);
-    // data exists (the presence sentence, spec §9.2) without months/counties: the sentence and the report
-    // credit show, the red list credit doesn't (controller decision, Task 9 re-review).
-    await expect(page.locator('.data-summary')).toBeVisible();
-    await expect(page.locator('.data-summary')).toHaveText('Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025.');
+    // data exists (the presence sentence, spec §9.2) without months/counties: the report credit shows, the red
+    // list credit doesn't, and there is no summary paragraph (it describes a chart and a map; the written text
+    // already states the presence fact), controller decision 2026-10-07.
+    await expect(page.locator('.data-summary')).toHaveCount(0);
     await expect(page.locator('[data-data-credit]')).toHaveCount(1);
     await expect(page.locator('[data-data-credit]')).toContainText('Artportalen');
     await expect(page.locator('[data-data-credit]')).not.toContainText('Rödlista');
@@ -420,5 +420,27 @@ test.describe('artsidan', () => {
         await noSideScroll(page);
       }
     });
+  }
+});
+
+test.describe('kategoriraden: den aktiva chipen syns helt, fri från kanttoningen', () => {
+  // The active chip last in the row (Övriga fåglar), first (Alla arter on the hub) and second (Tättingar).
+  // Before the fix the last chip was centred before the web fonts had loaded and ended up under the fade.
+  for (const width of [1280, 390]) {
+    for (const [path, label] of [['/sv/arter/blakraka/', 'Övriga fåglar'], ['/sv/arter/ovriga-faglar/', 'Övriga fåglar'], ['/sv/arter/', 'Alla arter'], ['/sv/arter/talgoxe/', 'Tättingar']] as const) {
+      test(`${path} i ${width} px`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(path);
+        await page.evaluate(() => document.fonts.ready);
+        await expect(page.locator('.catbar .chip.is-active')).toContainText(label);
+        await expect.poll(() => page.evaluate(() => {
+          const row = document.querySelector('[data-chips]')!;
+          const c = row.getBoundingClientRect();
+          const a = row.querySelector('.chip.is-active')!.getBoundingClientRect();
+          const fade = row.classList.contains('has-overflow') ? 32 : 0;
+          return a.left >= c.left && a.right <= c.right - fade;
+        })).toBe(true);
+      });
+    }
   }
 });

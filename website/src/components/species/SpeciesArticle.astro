@@ -66,9 +66,10 @@ const familyLang = locale === 'en' ? 'la' : undefined;
 const months = s.data?.months;
 const counties = s.data?.counties;
 const summaryId = `data-summary-${s.qid}`;
-// Rendered whenever the species has report data (controller decision, Task 9 re-review 2026-10-07): with
-// the chart and map it is their text alternative; without them (an absent or rare species, spec §9.2) it is
-// the presence sentence that the Artportalen credit below refers to.
+// The sentences are the chart's and the map's text alternative, so they show only with them. An absent or
+// rare species (data, but no months/counties, spec §9.2) gets no summary: its presence sentence is a data
+// fact the written text already states (Koboltmes' fact d01), and the Artportalen credit still shows
+// (reportData={Boolean(s.data)}), controller decision 2026-10-07.
 const dataSentences = (s.data?.sentences[locale] ?? []).join(' ');
 const behaviour = joinSentences(text.behaviour);
 const looks = text.lookAlikes.flatMap((item) => {
@@ -161,8 +162,8 @@ const jsonLd = [
           <AudioPlayer species={s} locale={locale} creditKey="audio" />
           <h2>{t.species.headWhere}</h2>
           <p>{joinSentences(text.whereWhen)}</p>
-          {dataSentences && (
-            <div class:list={['datafig', { 'datafig--text': !months && !counties }]}>
+          {(months || counties) && (
+            <div class="datafig">
               {months && (
                 <div class="fig-chart">
                   <h3 class="fig-h">{t.species.chartTitle}</h3>
@@ -264,7 +265,6 @@ const jsonLd = [
   .marks li { margin: 3px 0; }
   /* The summary sits under the chart, next to the taller map, instead of under both (no empty column). */
   .datafig { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); grid-template-rows: auto 1fr; grid-template-areas: 'chart map' 'sum map'; gap: 18px 28px; align-items: start; margin-top: 16px; max-width: 40rem; }
-  .datafig--text { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: 'sum'; }
   .datafig figure { margin: 0; }
   .fig-chart { grid-area: chart; }
   .fig-map { grid-area: map; }
@@ -286,7 +286,7 @@ const jsonLd = [
   .look-text { margin: 2px 0 0; font-size: 15px; line-height: 1.6; }
   .look-compare { display: inline-block; margin-top: 4px; font-size: 13.5px; font-weight: 600; color: var(--rust); border-bottom: 1px solid currentColor; }
   @media (max-width: 600px) {
-    .datafig:not(.datafig--text) { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: 'chart' 'map' 'sum'; }
+    .datafig { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: 'chart' 'map' 'sum'; }
   }
   @media (max-width: 1023px) {
     .spread { display: flex; flex-direction: column; gap: 18px; }
