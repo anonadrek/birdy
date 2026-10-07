@@ -43,115 +43,6 @@
     "note": "from the reports in Artportalen",
     "lead": "Species reported more in {month} than the rest of the year in Artportalen, Sweden's bird reporting system. The list changes every month and leads to the species pages, with photos, field marks and calls."
   },
-  "phone": {
-    "match": {
-      "label": "Birdy's match screen: European robin, a confident 94 percent match, first in the field journal",
-      "kicker": "Match · Find no. 12",
-      "species": "European Robin",
-      "latin": "Erithacus rubecula",
-      "confidence": "Confident match · 94%",
-      "newSpecies": "New species",
-      "first": "First in your field journal!",
-      "seal": "No. 12",
-      "note": "Add a note",
-      "save": "Save to field journal",
-      "more": "Not it? See more suggestions"
-    },
-    "matchTour": {
-      "label": "Birdy's match screen: Eurasian bullfinch, a confident 91 percent match",
-      "kicker": "Match · Find no. 24",
-      "species": "Eurasian Bullfinch",
-      "latin": "Pyrrhula pyrrhula",
-      "confidence": "Confident match · 91%",
-      "seal": "No. 24"
-    },
-    "identify": {
-      "label": "Birdy's Identify screen with the bird of the day, a long-tailed tit",
-      "dailyBird": "Bird of the day",
-      "species": "Long-tailed Tit",
-      "status": "here right now.",
-      "latin": "Aegithalos caudatus",
-      "caught": "Not caught yet",
-      "kicker": "Identify",
-      "headline": "Three ways to *catch it.*",
-      "weekNote": "7 sightings this week",
-      "startCamera": "Start the camera",
-      "photoTitle": "From a photo",
-      "photoBody": "Pick a picture from your gallery",
-      "listenTitle": "Listen to the song",
-      "listenBody": "Record a song or call"
-    },
-    "listen": {
-      "label": "Birdy's sound ID listening and hearing a common blackbird",
-      "kicker": "Listening",
-      "headline": "Let it *sing.*",
-      "hearing": "Hearing: Common Blackbird",
-      "hint1": "Hold the phone still.",
-      "hint2": "Birdy stops by itself when it is sure."
-    },
-    "journal": {
-      "label": "Birdy's field journal with 24 species and this week's page",
-      "kicker": "Lifelist",
-      "headline": "Your *field journal.*",
-      "stats": [
-        { "value": "24", "label": "species" },
-        { "value": "9", "label": "stamps" },
-        { "value": "5", "label": "day streak" }
-      ],
-      "weekLabel": "This week's page",
-      "weekSpecies": "Eurasian Bullfinch",
-      "entries": [
-        { "no": "24", "species": "Eurasian Bullfinch", "when": "12 Jan · Hagaparken" },
-        { "no": "23", "species": "Great Tit", "when": "10 Jan · Trädgården" },
-        { "no": "22", "species": "Bohemian Waxwing", "when": "8 Jan · Centrum" },
-        { "no": "21", "species": "Long-tailed Tit", "when": "6 Jan · Skogsstigen" }
-      ]
-    },
-    "species": {
-      "label": "Birdy's species profile for the great tit, stamped with 12 sightings",
-      "family": "Tits · Paridae",
-      "name": "Great Tit",
-      "latin": "Parus major",
-      "stamped": "Stamped · 12 sightings",
-      "abundance": "Common",
-      "status": "Least Concern (LC)",
-      "aboutLabel": "About the species",
-      "about": "The great tit is a small, strikingly patterned passerine with distinctive markings that make it easy to identify. It is highly adaptable and readily visits gardens and parks.",
-      "seasonLabel": "In Sweden",
-      "months": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
-    },
-    "badges": {
-      "label": "Birdy's badges with the trophy room and twelve stamps",
-      "kicker": "Badges · Trophy room",
-      "headline": "Come home with a *badge.*",
-      "roomLabel": "Your trophy room",
-      "rank": "Field member",
-      "trophies": "3 trophies",
-      "unlocked": "unlocked",
-      "remaining": "left to find"
-    },
-    "map": {
-      "label": "Birdy's finds map with four sightings shown as seals",
-      "kicker": "Finds map",
-      "headline": "Everywhere you have *been.*"
-    },
-    "season": {
-      "label": "Birdy's season statistics for 2026 with 23 species and 57 observations",
-      "kicker": "Season 2026",
-      "headline": "A *year* in the field.",
-      "species": "species",
-      "observations": "observations",
-      "perMonth": "Observations per month",
-      "perSeason": "By season",
-      "seasons": ["Winter 7", "Spring 22", "Summer 17", "Autumn 11"],
-      "mostSeen": "Most seen",
-      "top": [
-        { "name": "Great Tit", "count": "12" },
-        { "name": "Common Blackbird", "count": "8" }
-      ]
-    },
-    "premiumBadge": "Premium"
-  },
   "appStoreBadge": {
     "top": "Coming soon to the",
     "bottom": "App Store"
@@ -187,20 +78,17 @@
     "kicker": "The app",
     "headline": "A tour of *the field journal.*",
     "note": "straight from the app",
-    "lead": "From the first match to your own field guide. This is Birdy on your phone.",
+    "lead": "From the first match to your own field guide. The screens are taken from Birdy 1.3.",
     "label": "Screens from the app",
     "prev": "Previous screen",
     "next": "Next screen",
-    "premium": "Premium",
     "slides": [
-      { "k": "Identify", "h": "Three ways to catch it", "p": "Camera, photo or song. Bird of the day shows a species you can find in Sweden right now.", "premium": false },
-      { "k": "Match", "h": "Honest about how sure it is", "p": "Birdy shows its confidence clearly. When it is unsure, you get more suggestions to choose from.", "premium": false },
-      { "k": "Sound ID · free", "h": "Listen to the song", "p": "Record the song and Birdy suggests the species. Sound identification is free for everyone.", "premium": false },
-      { "k": "Field journal", "h": "Your own field journal", "p": "Every sighting is saved on your phone. New species get an embossed stamp.", "premium": false },
-      { "k": "Species profile", "h": "Everything about a species on one spread", "p": "Photos, a description and when the species is in Sweden. You see right away if you have stamped it.", "premium": false },
-      { "k": "Badges", "h": "Come home with a badge", "p": "34 badges to collect, 27 of them free. The trophy room shows everything you have tracked down.", "premium": false },
-      { "k": "Finds map", "h": "Everywhere you have been", "p": "Your sightings on a map of their own. The location is only saved if you want, and only on your phone.", "premium": true },
-      { "k": "Season", "h": "A year in the field", "p": "Big numbers and calm charts. See the patterns in your sightings, month by month.", "premium": true }
+      { "screen": "01-identifiera", "k": "Identify", "h": "Three ways to catch it", "p": "Camera, photo or call. Bird of the day waits at the top, a new species every day.", "alt": "Birdy's Identify screen: Bird of the day at the top, a rook, and below it Three ways to catch" },
+      { "screen": "07-lyssna", "k": "Audio ID", "h": "Listen for a song", "p": "Hold your phone still and let the bird sing, and Birdy suggests the species. Audio ID is free for everyone.", "alt": "Birdy's audio ID: Listen for a song, with a sound wave and a button to tap" },
+      { "screen": "02-match", "k": "Match", "h": "Honest about how sure it is", "p": "Birdy shows how sure it is. Save the sighting with a note of your own, or pick from more suggestions when it is unsure.", "alt": "Birdy's match screen: a great tit, with room for a note and the Save observation button" },
+      { "screen": "03-mina-arter", "k": "Lifelist", "h": "Your own field journal", "p": "Every sighting is saved on your phone, and every week your sightings come together on This week's page.", "alt": "The Lifelist in Birdy: species, sightings and day streak, Bird of the day, This week's page and the latest sightings" },
+      { "screen": "04-uppslagsverk", "k": "Archive", "h": "Europe's birds in your pocket", "p": "839 species. Search by name, genus or family, or browse the app's groups.", "alt": "Birdy's archive: a search field, groups such as songbirds and ducks and geese, and the list of 839 species" },
+      { "screen": "05-artprofil", "k": "Species profile", "h": "All about the species on one page", "p": "Photo, description, how common it is and its red list status.", "alt": "The species profile for the great tit in Birdy: photo, name, how common it is, red list status and description" }
     ]
   },
   "guide": {

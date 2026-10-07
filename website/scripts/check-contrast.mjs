@@ -107,6 +107,8 @@ const compositedPairs = [
   { label: 'Footer .sib-kick', fg: [233, 226, 210], alpha: 0.6, bg: darkDeep, min: 4.5 },
   { label: 'Premium .pnote', fg: [242, 234, 220], alpha: 0.62, bg: premiumGradientLight, min: 4.5 },
   { label: 'Premium .feat p', fg: [242, 234, 220], alpha: 0.66, bg: premiumGradientLight, min: 4.5 },
+  // AppTour.astro: the lead and the plate labels on the gallery wall, over its lightest point (#33251D).
+  { label: 'AppTour .tour-lead / .plno', fg: [255, 248, 238], alpha: 0.78, bg: [51, 37, 29], min: 4.5 },
 ];
 
 for (const { label, fg, alpha, bg, min } of compositedPairs) {

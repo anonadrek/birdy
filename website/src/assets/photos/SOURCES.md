@@ -4,9 +4,7 @@ Fotona är appens egna planschfoton (`asset-pack/src/main/assets/images/<QID>/he
 
 | Fil | Art | QID | Fotograf | Licens | Används i |
 |---|---|---|---|---|---|
-| `stjartmes-q170831.webp` | Stjärtmes | Q170831 | Membeth | CC0 | karusellen: Identifiera |
-| `domherre-q25382.webp` | Domherre | Q25382 | Estormiz | CC0 | karusellen: Träff och Fältboken |
-| `talgoxe-q25485.webp` | Talgoxe | Q25485 | Hobbyfotowiki | CC0 | karusellen: Artprofil; startsidans plansch när ingen artsida har ett fritt foto (bara testbygget utan arter) |
+| `talgoxe-q25485.webp` | Talgoxe | Q25485 | Hobbyfotowiki | CC0 | startsidans plansch när ingen artsida har ett fritt foto (bara testbygget utan arter) |
 | `ladusvala-q25429.webp` | Ladusvala | Q25429 | Аимаина хикари | CC0 | Fältboken (planschen) |
 | `skaggmes-q192817.webp` | Skäggmes | Q192817 | Hobbyfotowiki | CC0 | Ta med Birdy ut i fält |
 | `rodhake-q25334.webp` | Rödhake | Q25334 | Rob Hille | Public domain | blogginlägget "Varför Birdy finns" (inläggets foto, korten och delningsbilden); delningsbilderna `public/og-field-{sv,en}.jpg` (tools/generate-og.mjs) |

@@ -1,64 +1,63 @@
 ---
+// The app tour (plan 2026-10-08 Task 4, mockup lift-c.html "Appen"): the same carousel as before (scroll snap, depth,
+// arrows, keys, drag, the caption following the centred phone, app-tour.ts), now with real Birdy 1.3.0 screens in a CSS
+// phone on a dark gallery wall, each hung as a plate with its number and the app's own name for the screen. Swedish
+// pages show the Swedish screens, English pages the English ones (src/assets/screens/1.3.0/, from
+// docs/play-store/screenshots/1.3.0/ on release/1.3.0; the map is left out until its new style is in the app).
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import DeckleEdge from './ui/DeckleEdge.astro';
 import MarginNote from './ui/MarginNote.astro';
 import Icon from './ui/Icon.astro';
-import PhoneFrame from './phone/PhoneFrame.astro';
-import IdentifyScreen from './phone/screens/IdentifyScreen.astro';
-import MatchScreen from './phone/screens/MatchScreen.astro';
-import ListenScreen from './phone/screens/ListenScreen.astro';
-import JournalScreen from './phone/screens/JournalScreen.astro';
-import SpeciesScreen from './phone/screens/SpeciesScreen.astro';
-import BadgesScreen from './phone/screens/BadgesScreen.astro';
-import FindsMapScreen from './phone/screens/FindsMapScreen.astro';
-import SeasonScreen from './phone/screens/SeasonScreen.astro';
-import bullfinch from '../assets/photos/domherre-q25382.webp';
 import { type Locale, getCopy } from '../lib/i18n';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getCopy(locale);
-const p = t.phone;
 const slides = t.tour.slides;
-const slideData = (i: number) => ({
-  'data-k': slides[i].k,
-  'data-h': slides[i].h,
-  'data-p': slides[i].p,
-  'data-premium': slides[i].premium ? '1' : undefined,
-});
+const screens = import.meta.glob<ImageMetadata>('../assets/screens/1.3.0/*/*.png', { eager: true, import: 'default' });
+const screen = (name: string): ImageMetadata => {
+  const hit = screens[`../assets/screens/1.3.0/${locale}/${name}.png`];
+  if (!hit) throw new Error(`Appskärmen saknas: src/assets/screens/1.3.0/${locale}/${name}.png`);
+  return hit;
+};
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+const plate = (i: number) => t.species.plate.replace('{n}', ROMAN[i] ?? String(i + 1));
 const first = slides[0];
 ---
 
 <section id="app" class="tour" data-tour data-loop>
-  <DeckleEdge color="var(--card)" />
+  <DeckleEdge color="var(--paper)" />
   <div class="tour-head" data-reveal>
     <Kicker text={t.tour.kicker} center />
-    <JournalHeadline text={t.tour.headline} level="h2" size="clamp(34px, 4.4vw, 52px)" />
+    <JournalHeadline text={t.tour.headline} level="h2" size="clamp(36px, 4.6vw, 56px)" />
     <MarginNote text={t.tour.note} align="center" />
     <p class="tour-lead">{t.tour.lead}</p>
   </div>
   <ul class="track" tabindex="0" role="list" aria-label={t.tour.label} data-track>
-    <li class="slide" {...slideData(0)}><PhoneFrame label={p.identify.label}><IdentifyScreen copy={p.identify} /></PhoneFrame></li>
-    <li class="slide" {...slideData(1)}><PhoneFrame label={p.matchTour.label}><MatchScreen photo={bullfinch} photoPosition="40% 35%" copy={{ ...p.match, ...p.matchTour }} confidence={91} /></PhoneFrame></li>
-    <li class="slide" {...slideData(2)}><PhoneFrame label={p.listen.label}><ListenScreen copy={p.listen} /></PhoneFrame></li>
-    <li class="slide" {...slideData(3)}><PhoneFrame label={p.journal.label} darkStatus><JournalScreen copy={p.journal} /></PhoneFrame></li>
-    <li class="slide" {...slideData(4)}><PhoneFrame label={p.species.label}><SpeciesScreen copy={p.species} /></PhoneFrame></li>
-    <li class="slide" {...slideData(5)}><PhoneFrame label={p.badges.label} darkStatus><BadgesScreen copy={p.badges} /></PhoneFrame></li>
-    <li class="slide" {...slideData(6)}><PhoneFrame label={p.map.label} darkStatus><FindsMapScreen copy={p.map} premium={p.premiumBadge} /></PhoneFrame></li>
-    <li class="slide" {...slideData(7)}><PhoneFrame label={p.season.label} darkStatus><SeasonScreen copy={p.season} premium={p.premiumBadge} /></PhoneFrame></li>
+    {slides.map((s, i) => (
+      <li class="slide" data-k={s.k} data-h={s.h} data-p={s.p} data-screen={s.screen}>
+        <figure class="plate">
+          <div class="phone">
+            <Picture src={screen(s.screen)} formats={['avif']} fallbackFormat="webp" quality={82} widths={[270, 400, 540, 800]} sizes="(max-width: 760px) 222px, 252px" alt={s.alt} loading="lazy" decoding="async" />
+          </div>
+          <figcaption class="plno"><b>{plate(i)}</b><span>{s.k}</span></figcaption>
+        </figure>
+      </li>
+    ))}
   </ul>
   <div class="foot">
     <button class="arrow" type="button" data-prev aria-label={t.tour.prev}><Icon name="arrow-left" /></button>
     <div class="cap" aria-live="polite" aria-atomic="true">
+      <span class="cap-pin" aria-hidden="true"></span>
       <div class="cap-inner" data-cap>
-        <p class="kick kick--center"><span class="kick-line" aria-hidden="true"></span><span data-ck>{first.k}</span><span class="pr2" data-cp hidden={!first.premium}>{t.tour.premium}</span><span class="kick-line" aria-hidden="true"></span></p>
         <h3 data-ch>{first.h}</h3>
         <p class="cap-text" data-cpp>{first.p}</p>
       </div>
       {slides.map((s) => (
         <div class="cap-sizer" aria-hidden="true">
-          <p class="kick kick--center"><span class="kick-line"></span><span>{s.k}</span>{s.premium && <span class="pr2">{t.tour.premium}</span>}<span class="kick-line"></span></p>
           <p class="cap-h">{s.h}</p>
           <p class="cap-text">{s.p}</p>
         </div>
@@ -67,7 +66,7 @@ const first = slides[0];
     <button class="arrow" type="button" data-next aria-label={t.tour.next}><Icon name="arrow-right" /></button>
   </div>
   <noscript>
-    <ol class="cap-list">{slides.map((s) => <li><span class="kick kick--center">{s.k}{s.premium && <span class="pr2">{t.tour.premium}</span>}</span><b>{s.h}</b><span>{s.p}</span></li>)}</ol>
+    <ol class="cap-list">{slides.map((s, i) => <li><span class="kick kick--center">{plate(i)} · {s.k}</span><b>{s.h}</b><span>{s.p}</span></li>)}</ol>
   </noscript>
   <div class="rail" style={`--n:${slides.length};--p:0`} data-rail aria-hidden="true"><span></span></div>
 </section>
@@ -77,41 +76,49 @@ const first = slides[0];
 </script>
 
 <style>
-  /* --ph-shadow: offset + blur (12 + 20 px) must stay below .track's padding-bottom (34 px), or the scroller clips the phones' shadow. */
-  .tour { position: relative; overflow-x: clip; color: var(--ink); background: var(--peach); padding: 96px 0 70px; --kick-color: var(--rust); --jh-ink: var(--ink); --jh-accent: var(--rust); --ph-shadow: 0 12px 20px rgba(var(--dark-rgb), .22); }
-  .tour::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(154, 69, 38, .07) 1px, transparent 1.2px); background-size: 18px 18px; pointer-events: none; }
-  .tour :global(:focus-visible) { outline-color: var(--rust); }
+  /* A dark gallery wall (mockup): a pool of light behind the phones, ending in espresso-deep for the torn edge below.
+     The phone's shadow (offset + blur) must stay inside .track's padding-bottom, or the scroller clips it. */
+  .tour { position: relative; overflow-x: clip; color: var(--cream); background: radial-gradient(70% 55% at 50% 52%, #33251D 0%, var(--dark-deep) 70%); padding: 100px 0 80px; --kick-color: var(--apricot); --jh-ink: var(--cream); --jh-accent: var(--apricot); --mn-color: var(--peach); }
+  .tour :global(:focus-visible) { outline-color: var(--apricot); }
   .track:focus-visible { outline-offset: -3px; }
   .tour-head { position: relative; text-align: center; padding: 0 24px; }
-  .tour-head .tour-lead { margin: 14px auto 0; max-width: 480px; font-size: 15px; line-height: 1.6; color: var(--muted); }
-  .track { --w: 250px; --gap: 34px; position: relative; display: flex; gap: var(--gap); overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; margin: 0; padding: 40px calc(50% - var(--w) / 2) 34px; scrollbar-width: none; cursor: grab; overscroll-behavior-x: contain; }
+  /* alpha checked in scripts/check-contrast.mjs */
+  .tour-head .tour-lead { margin: 14px auto 0; max-width: 500px; font-size: 15.5px; line-height: 1.6; color: rgba(255, 248, 238, .78); }
+  .track { --w: 222px; --gap: 30px; position: relative; display: flex; gap: var(--gap); overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; margin: 0; padding: 46px calc(50% - var(--w) / 2) 44px; scrollbar-width: none; cursor: grab; overscroll-behavior-x: contain; list-style: none; }
   .track::-webkit-scrollbar { display: none; }
   .track:global(.dragging) { cursor: grabbing; scroll-snap-type: none; }
   .slide { flex: 0 0 var(--w); scroll-snap-align: center; will-change: transform, opacity; transform-origin: 50% 60%; }
   @media (prefers-reduced-motion: reduce) { .slide { will-change: auto; } }
-  .foot { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; align-items: center; gap: 18px; max-width: 640px; margin: 0 auto; padding: 0 24px; }
-  .arrow { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(48, 32, 25, .5); background: transparent; color: var(--ink); display: grid; place-items: center; cursor: pointer; transition: background .25s, border-color .25s, transform .25s; }
-  .arrow:hover:not([aria-disabled="true"]) { background: rgba(154, 69, 38, .08); border-color: var(--rust); }
+  .plate { margin: 0; }
+  /* The phone: a warm near-black bezel with the screenshot untouched inside. */
+  .phone { padding: 8px; border-radius: 30px; background: #17100C; box-shadow: inset 0 0 0 1.5px rgba(255, 248, 238, .12), 0 16px 24px rgba(0, 0, 0, .5); }
+  .phone :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 22px; user-select: none; -webkit-user-drag: none; }
+  .plno { display: flex; flex-direction: column; align-items: flex-start; margin-top: 14px; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 248, 238, .78); }
+  .plno b { font-family: var(--font-script); font-weight: 700; font-size: 23px; line-height: 1; letter-spacing: 0; text-transform: none; color: var(--apricot); transform: rotate(-3deg); }
+
+  .foot { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; align-items: center; gap: 18px; max-width: 660px; margin: 6px auto 0; padding: 0 24px; }
+  .arrow { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255, 248, 238, .45); background: transparent; color: var(--cream); display: grid; place-items: center; cursor: pointer; transition: background .25s, border-color .25s, transform .25s; }
+  .arrow:hover:not([aria-disabled="true"]) { background: rgba(255, 248, 238, .08); border-color: var(--apricot); }
   .arrow:active { transform: scale(.94); }
   .arrow[aria-disabled="true"] { opacity: .35; cursor: default; }
-  .cap { display: grid; text-align: center; min-height: 92px; }
-  .cap > * { grid-area: 1 / 1; }
+  /* The caption is the centred plate's museum label, pinned to the wall. */
+  .cap { position: relative; display: grid; text-align: center; min-height: 92px; padding: 18px 22px 16px; background: var(--card); color: var(--ink); box-shadow: 0 1px 2px rgba(0, 0, 0, .25), 0 16px 30px rgba(0, 0, 0, .4); transform: rotate(-.5deg); }
+  .cap > :not(.cap-pin) { grid-area: 1 / 1; }
+  .cap-pin { position: absolute; top: -6px; left: 50%; width: 13px; height: 13px; margin-left: -6.5px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F4DDA9, var(--brass) 55%, #7A5A22); box-shadow: 0 2px 3px rgba(0, 0, 0, .35); }
   .cap-inner { transition: opacity .35s var(--ease-paper), transform .35s var(--ease-paper); }
   .cap-inner:global(.out) { opacity: 0; transform: translateY(6px); }
   .cap-sizer { visibility: hidden; pointer-events: none; }
-  .cap .kick { margin-bottom: 6px; flex-wrap: wrap; row-gap: 4px; }
-  .tour :global(.pr2) { color: var(--brass-ink); background: var(--brass-hi); padding: 2px 7px; border-radius: 10px; letter-spacing: .1em; font-size: 8.5px; margin-left: 4px; }
-  .cap h3, .cap-h { margin: 0; font-family: var(--font-serif); font-weight: 400; font-size: 26px; line-height: 1.15; color: var(--ink); text-wrap: balance; }
-  .cap-text { margin: 6px 0 0; font-size: 14px; color: var(--muted); line-height: 1.5; }
-  .rail { position: relative; width: 200px; height: 2px; margin: 20px auto 0; background: rgba(48, 32, 25, .15); border-radius: 2px; overflow: hidden; }
-  .rail span { position: absolute; top: 0; bottom: 0; width: calc(100% / var(--n)); background: var(--rust); border-radius: 2px; transform: translateX(calc(var(--p) * 100%)); }
-  @media (max-width: 760px) { .track { --gap: 22px; } .foot { gap: 10px; padding: 0 16px; } }
+  .cap h3, .cap-h { margin: 0; font-family: var(--font-serif); font-weight: 400; font-size: 25px; line-height: 1.15; color: var(--ink); text-wrap: balance; }
+  .cap-text { margin: 6px 0 0; font-size: 14px; color: var(--muted); line-height: 1.5; text-wrap: pretty; }
+  .rail { position: relative; width: 200px; height: 2px; margin: 26px auto 0; background: rgba(255, 248, 238, .18); border-radius: 2px; overflow: hidden; }
+  .rail span { position: absolute; top: 0; bottom: 0; width: calc(100% / var(--n)); background: var(--apricot); border-radius: 2px; transform: translateX(calc(var(--p) * 100%)); }
+  @media (min-width: 761px) { .track { --w: 252px; --gap: 40px; } }
+  @media (max-width: 760px) { .foot { gap: 10px; padding: 0 16px; } .cap { padding: 16px 14px 14px; } .cap h3, .cap-h { font-size: 22px; } }
 
-  /* No-JS fallback: the scroller still works with native horizontal scrolling, but the shared
-     caption can only ever show the first slide, so read the copy as a plain list instead and
-     drop the now-nonfunctional arrows/caption/rail. */
+  /* No-JS fallback: the scroller still works with native horizontal scrolling, but the shared caption can only ever
+     show the first slide, so read the copy as a plain list instead and drop the arrows, caption and rail. */
   .tour :global(.cap-list) { list-style: none; margin: 0 auto; padding: 0 20px; max-width: 640px; text-align: center; display: grid; gap: 28px; }
-  .tour :global(.cap-list b) { display: block; font-family: var(--font-serif); font-weight: 400; font-size: 26px; line-height: 1.15; color: var(--ink); margin: 4px 0 6px; text-wrap: balance; }
-  .tour :global(.cap-list li > span:last-child) { display: block; font-size: 14px; color: var(--muted); line-height: 1.5; }
+  .tour :global(.cap-list b) { display: block; font-family: var(--font-serif); font-weight: 400; font-size: 26px; line-height: 1.15; color: var(--cream); margin: 4px 0 6px; text-wrap: balance; }
+  .tour :global(.cap-list li > span:last-child) { display: block; font-size: 14px; color: rgba(255, 248, 238, .78); line-height: 1.5; }
   :global(html:not(.js)) .foot, :global(html:not(.js)) .rail { display: none; }
 </style>
