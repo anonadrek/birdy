@@ -86,7 +86,6 @@ import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.HeroMossMid
 import se.birdy.app.ui.theme.InkMuted
-import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.MossCreme
 import se.birdy.app.ui.theme.PhotoLoading
 import se.birdy.app.ui.theme.TextOnCreme
@@ -332,7 +331,7 @@ internal data class SealColors(
 
 // On the dark hero: apricot seals with a moss tick (mockup "m-dots"). On paper: rust with a light tick.
 private val HeroSealColors = SealColors(ring = AccentCopperLight, check = HeroMossDeep)
-private val PaperSealColors = SealColors(ring = AccentCopper, check = TextOnHero)
+internal val PaperSealColors = SealColors(ring = AccentCopper, check = TextOnHero)
 
 // The tick inside a filled seal, as fractions of the seal's size.
 private const val TICK_START_X = 0.30f
@@ -388,6 +387,8 @@ private fun Seal(
 /**
  * The slim Dagens fågel strip on Mina arter and Uppslagsverk (design option B): round photo,
  * kicker, name, status with the day count, chevron. Shown all day; opening it opens the profile.
+ * Without Premium the day count gets the same "Premium-märke" tag as the hero's challenge row,
+ * beside the status or under it when the line is full (large text).
  */
 @Composable
 fun DailyBirdStrip(
@@ -400,7 +401,11 @@ fun DailyBirdStrip(
     val challenge = bird.challenge()
     val texts = challengeTexts(challenge)
     val status = stringResource(Res.string.daily_bird_strip_status_fmt, texts.status, texts.count)
-    val a11y = stringResource(Res.string.daily_bird_strip_a11y, bird.name, texts.status, texts.count)
+    val a11y =
+        withPremiumBadgeTag(
+            stringResource(Res.string.daily_bird_strip_a11y, bird.name, texts.status, texts.count),
+            challenge.showPremiumBadgeTag,
+        )
     val readMore = stringResource(Res.string.daily_bird_read_more)
     Row(
         modifier =
@@ -430,13 +435,7 @@ fun DailyBirdStrip(
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.padding(top = 3.dp),
             )
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                if (challenge.caughtToday) {
-                    DailyBirdSeals(filled = 1, total = 1, sealSize = 13.dp, colors = PaperSealColors)
-                    Spacer(Modifier.width(5.dp))
-                }
-                Text(text = status, color = MarginaliaInk, fontFamily = caveat, fontSize = 15.sp, lineHeight = 18.sp)
-            }
+            DailyBirdStripStatus(challenge = challenge, status = status, caveat = caveat)
         }
         Spacer(Modifier.width(6.dp))
         Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = InkMuted)

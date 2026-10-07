@@ -261,6 +261,23 @@ class DailyBirdRoutingTest {
 
     @Test
     @Config(qualifiers = "+sv")
+    fun `a user without premium sees the strips on mina arter and uppslagsverk tag the badge as premium`() {
+        runBlocking {
+            prefs.setPostOnboardingPremiumShown(true)
+            prefs.setPremiumModalLastShownAt(NOW.toEpochMilliseconds())
+        }
+        compose.startAppScaffold(graph(premium = PremiumState.Free))
+        val tagged = "Dagens fågel: Talgoxe. Inte fångad idag, 0 av 3 dagar. Premium-märke."
+        compose.onNodeWithText("Mina arter").performClick()
+        compose.waitForIdle()
+        compose.onNodeWithContentDescription(tagged).assertExists()
+        compose.onNodeWithText("Uppslagsverk").performClick()
+        compose.waitForIdle()
+        compose.onNodeWithContentDescription(tagged).assertExists()
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
     fun `a paying subscriber sees no premium tag on the challenge row`() {
         compose.startAppScaffold(graph())
         compose

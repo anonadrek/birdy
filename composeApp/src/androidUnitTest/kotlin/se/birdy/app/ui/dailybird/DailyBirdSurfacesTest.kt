@@ -237,6 +237,34 @@ class DailyBirdSurfacesTest {
     }
 
     @Test
+    @Config(qualifiers = "+sv")
+    fun `without premium the strip shows and reads out the premium badge tag`() {
+        showStrip(bird(showPremiumBadgeTag = true))
+        compose.onNodeWithText("PREMIUM-MÄRKE", useUnmergedTree = true).assertExists()
+        compose
+            .onNodeWithContentDescription("Dagens fågel: Sävsångare. Inte fångad idag, 0 av 3 dagar. Premium-märke.")
+            .assertHasClickAction()
+    }
+
+    @Test
+    @Config(qualifiers = "+en")
+    fun `without premium the strip reads out the premium badge tag in english`() {
+        showStrip(bird(caughtToday = true, daysCaught = 1, showPremiumBadgeTag = true))
+        compose.onNodeWithText("PREMIUM BADGE", useUnmergedTree = true).assertExists()
+        compose
+            .onNodeWithContentDescription("Bird of the day: Sävsångare. Caught today, 1 of 3 days. Premium badge.")
+            .assertExists()
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `with premium the strip has no premium tag`() {
+        showStrip(bird(showPremiumBadgeTag = false))
+        compose.onNodeWithText("PREMIUM-MÄRKE", useUnmergedTree = true).assertDoesNotExist()
+        compose.onNodeWithContentDescription("Dagens fågel: Sävsångare. Inte fångad idag, 0 av 3 dagar.").assertExists()
+    }
+
+    @Test
     @Config(qualifiers = "+en")
     fun `the strip after a catch in english`() {
         showStrip(bird(caughtToday = true, daysCaught = 1))

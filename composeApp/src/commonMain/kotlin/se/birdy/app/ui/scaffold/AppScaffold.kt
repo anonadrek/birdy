@@ -380,7 +380,7 @@ private fun NavGraphBuilder.appDestinations(
     navigation<AppRoute.Archive>(startDestination = AppRoute.ArchiveList) {
         composable<AppRoute.ArchiveList> {
             BelowStatusBar {
-                val dailyBird by graph.dailyBirdTracker.state.collectAsState()
+                val dailyBird by graph.dailyBirdForDisplay.collectAsState()
                 ArchiveScreen(
                     // Scoped to this NavHost entry (release 1.3.0 Task 7g), not a `remember`: the
                     // entry stays on the back stack while a species profile covers it, so the search
@@ -431,7 +431,7 @@ private fun NavGraphBuilder.appDestinations(
                 } else {
                     null
                 }
-            val dailyBird by graph.dailyBirdTracker.state.collectAsState()
+            val dailyBird by graph.dailyBirdForDisplay.collectAsState()
             LifelistScreen(
                 viewModel = remember(graph) { graph.lifelistViewModel() },
                 onObservationClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },

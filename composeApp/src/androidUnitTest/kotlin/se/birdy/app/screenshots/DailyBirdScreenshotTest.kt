@@ -58,6 +58,7 @@ class DailyBirdScreenshotTest {
     private fun bird(
         caughtToday: Boolean = false,
         daysCaught: Int = 0,
+        showPremiumBadgeTag: Boolean = false,
     ) = DailyBirdToday(
         date = LocalDate(2026, 10, 6),
         speciesId = "Q25403",
@@ -66,6 +67,7 @@ class DailyBirdScreenshotTest {
         heroImagePath = null,
         caughtToday = caughtToday,
         daysCaught = daysCaught,
+        showPremiumBadgeTag = showPremiumBadgeTag,
     )
 
     private fun observation(
@@ -187,6 +189,29 @@ class DailyBirdScreenshotTest {
     fun daily_bird_lifelist_sv_200() {
         RuntimeEnvironment.setFontScale(2.0f)
         compose.captureScreen("daily_bird_lifelist_sv_200") { lifelist(bird(caughtToday = true, daysCaught = 1)) }
+    }
+
+    // Without Premium: the strip's day count carries the "Premium-märke" tag (Albin, 2026-10-07).
+    @Test
+    @Config(qualifiers = "+sv")
+    fun daily_bird_lifelist_free_sv() = compose.captureScreen("daily_bird_lifelist_free_sv") { lifelist(bird(showPremiumBadgeTag = true)) }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun daily_bird_lifelist_free_sv_200() {
+        RuntimeEnvironment.setFontScale(2.0f)
+        compose.captureScreen("daily_bird_lifelist_free_sv_200") {
+            lifelist(bird(caughtToday = true, daysCaught = 1, showPremiumBadgeTag = true))
+        }
+    }
+
+    @Test
+    @Config(qualifiers = "+en")
+    fun daily_bird_lifelist_free_en_200() {
+        RuntimeEnvironment.setFontScale(2.0f)
+        compose.captureScreen("daily_bird_lifelist_free_en_200") {
+            lifelist(bird(caughtToday = true, daysCaught = 1, showPremiumBadgeTag = true))
+        }
     }
 
     @Test
