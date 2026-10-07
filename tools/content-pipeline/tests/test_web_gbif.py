@@ -30,6 +30,9 @@ COUNTS = {
 }
 
 
+BIRD = {"classKey": 212, "confidence": 99}
+
+
 class Routed:
     def __init__(self, routes: dict[str, object]) -> None:
         self.routes = routes
@@ -61,11 +64,19 @@ def test_parse_counts_keeps_swedish_counties_only() -> None:
 async def test_taxon_key_needs_an_exact_species_match(tmp_path: Path) -> None:
     client, _ = _client(
         tmp_path,
-        {"name=Parus%20major": {"usageKey": 9705453, "matchType": "EXACT", "rank": "SPECIES"}},
+        {
+            "name=Parus%20major": {
+                "usageKey": 9705453,
+                "matchType": "EXACT",
+                "rank": "SPECIES",
+                **BIRD,
+            }
+        },
     )
     assert await client.taxon_key("Q25485", "Parus major") == 9705453
     fuzzy, _ = _client(
-        tmp_path / "b", {"species/match": {"usageKey": 1, "matchType": "FUZZY", "rank": "SPECIES"}}
+        tmp_path / "b",
+        {"species/match": {"usageKey": 1, "matchType": "FUZZY", "rank": "SPECIES", **BIRD}},
     )
     assert await fuzzy.taxon_key("Q1", "Parus majr") is None
 
@@ -80,6 +91,7 @@ async def test_synonym_match_uses_the_accepted_key(tmp_path: Path) -> None:
                 "synonym": True,
                 "matchType": "EXACT",
                 "rank": "SPECIES",
+                **BIRD,
             }
         },
     )
@@ -100,6 +112,7 @@ async def test_synonym_match_by_status_uses_the_accepted_key(tmp_path: Path) -> 
                 "rank": "SPECIES",
                 "status": "SYNONYM",
                 "matchType": "EXACT",
+                **BIRD,
             }
         },
     )
@@ -186,6 +199,7 @@ async def test_a_doubled_letter_spelling_counts_as_the_same_name(tmp_path: Path)
         "rank": "SPECIES",
         "status": "ACCEPTED",
         "matchType": "FUZZY",
+        **BIRD,
     }
     client, _ = _client(tmp_path, {"species/match": answer})
     assert await client.taxon_key("Q27075477", "Phylloscopus sibilatrix") == 8128385
@@ -193,3 +207,41 @@ async def test_a_doubled_letter_spelling_counts_as_the_same_name(tmp_path: Path)
         tmp_path / "b", {"species/match": {**answer, "canonicalName": "Phylloscopus sibilans"}}
     )
     assert await other.taxon_key("Q1", "Phylloscopus sibilatrix") is None
+
+
+async def test_the_accepted_key_is_used_whenever_gbif_gives_one(tmp_path: Path) -> None:
+    client, _ = _client(
+        tmp_path,
+        {
+            "species/match": {
+                "usageKey": 5,
+                "acceptedUsageKey": 6,
+                "status": "DOUBTFUL",
+                "matchType": "EXACT",
+                "rank": "SPECIES",
+                **BIRD,
+            }
+        },
+    )
+    assert await client.taxon_key("Q1", "Parus major") == 6
+
+
+async def test_only_a_bird_matches(tmp_path: Path) -> None:
+    """A name shared with another class (a plant, an insect) is never a bird's data."""
+    answer = {"usageKey": 7, "matchType": "EXACT", "rank": "SPECIES", "confidence": 99}
+    for i, extra in enumerate(({"classKey": 220}, {})):
+        client, _ = _client(tmp_path / str(i), {"species/match": {**answer, **extra}})
+        assert await client.taxon_key("Q1", "Parus major") is None
+
+
+async def test_a_fuzzy_match_needs_high_confidence(tmp_path: Path) -> None:
+    answer = {
+        "usageKey": 8128385,
+        "canonicalName": "Phylloscopus sibillatrix",
+        "rank": "SPECIES",
+        "matchType": "FUZZY",
+        "classKey": 212,
+        "confidence": 94,
+    }
+    client, _ = _client(tmp_path, {"species/match": answer})
+    assert await client.taxon_key("Q27075477", "Phylloscopus sibilatrix") is None

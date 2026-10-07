@@ -305,3 +305,20 @@ def test_a_species_with_no_status_and_no_reports_shows_does_not_occur() -> None:
     assert status_for_site(record) == {"value": "absent", "factIds": ["d09"]}
     record["facts"].pop()
     assert status_for_site(record) is None
+
+
+def test_a_county_share_may_be_said_as_a_proportion() -> None:
+    """Fix wave 2026-10-07: "proportion" counts as well as "share", and the Swedish word
+    may sit inside a compound ("rapportandelen")."""
+    ctx = TextContext.from_facts([*FACTS, SHARE_FACT])
+    en = WebTextV2(
+        sv=SV.model_copy(
+            update={"where_when": [S("Rapportandelen är högst i Halland och Gotland.", "d02")]}
+        ),
+        en=EN.model_copy(
+            update={
+                "where_when": [S("The proportion of bird reports is highest in Halland.", "d02")]
+            }
+        ),
+    )
+    assert check_text(en, ctx, BANNED) == []

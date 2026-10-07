@@ -204,12 +204,11 @@ def _prefix(template: str) -> str:
 
 def sentence_kind(sentence: str) -> str | None:
     """What a data sentence is, where code needs to know (a Swedish or English sentence):
-    `absent` (no reports: the page's status is "Förekommer inte"), `rare` (a few reports),
-    `countyShare` (a share, which the text must keep calling a share, text_checks)."""
+    `absent` (no reports: the page's status is "Förekommer inte"), `countyShare` (a share,
+    which the text must keep calling a share, text_checks), `rarelyReported` (the writer
+    gets it without breeding-season months for a species that breeds here, facts)."""
     if sentence in NO_REPORTS.values():
         return "absent"
-    if any(sentence.startswith(_prefix(t)) for t in FEW_REPORTS.values()):
-        return "rare"
     if any(sentence.startswith(_prefix(t)) for t in COUNTIES_SHARE.values()):
         return "countyShare"
     if any(sentence.startswith(_prefix(t)) for t in RARELY.values()):

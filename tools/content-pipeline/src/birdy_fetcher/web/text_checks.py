@@ -51,9 +51,10 @@ _HYPHEN_RANGE = re.compile(r"\d\s*[-\u2010\u2011\u2012\u2212]\s*\d")
 HYPHEN_RANGE_MESSAGE = "skriver ett intervall med bindestreck, skriv till eller to"
 # A county share (datamod.COUNTIES_SHARE) stays a share: from "Vanligast i rapporterna från
 # Norrbotten ..." the R3 writer made "flest rapporter kommer från Norrbotten" (2026-10-07).
+# Inside a word too ("rapportandelen"); English "share" or "proportion" (fix wave 2026-10-07).
 _SHARE_WORD = {
-    "sv": re.compile(r"\bandel", re.IGNORECASE),
-    "en": re.compile(r"\bshare", re.IGNORECASE),
+    "sv": re.compile("andel", re.IGNORECASE),
+    "en": re.compile("share|proportion", re.IGNORECASE),
 }
 SHARE_MESSAGE = "anger länsandelen utan att säga andel (share): det är ingen uppgift om antal"
 

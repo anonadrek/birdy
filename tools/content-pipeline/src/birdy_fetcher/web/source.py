@@ -113,8 +113,3 @@ def load_name_index(species_root: Path) -> NameIndex:
         names = data.get("names") or {}
         common[name] = tuple(str(names[k]) for k in ("sv", "en") if names.get(k))
     return NameIndex(qids=qids, families=families, common=common)
-
-
-def load_scientific_index(species_root: Path) -> dict[str, str]:
-    """Lowercased scientific name to QID for all species, approved or not."""
-    return load_name_index(species_root).qids

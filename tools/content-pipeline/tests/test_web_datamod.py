@@ -280,7 +280,7 @@ def test_a_few_reports_say_the_species_is_rare_in_sweden() -> None:
         "sv": ["Sällsynt i Sverige: 12 rapporter i Artportalen 2016 till 2025."],
         "en": ["Rare in Sweden: 12 reports in Artportalen 2016 to 2025."],
     }
-    assert sentence_kind(data["sentences"]["sv"][0]) == "rare"
+    assert sentence_kind(data["sentences"]["sv"][0]) is None
     one = build_data(taxon_key=7, species=Counts([0] * 12, {}, 1), all_birds=few, fetched_at="x")
     assert one["sentences"]["sv"] == ["Sällsynt i Sverige: 1 rapport i Artportalen 2016 till 2025."]
     assert one["sentences"]["en"] == ["Rare in Sweden: 1 report in Artportalen 2016 to 2025."]

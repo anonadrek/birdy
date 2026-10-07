@@ -24,6 +24,8 @@ FILTERS = (
     f"&datasetKey={ARTPORTALEN_DATASET}"
 )
 AVES_TAXON_KEY = 212
+# A fuzzy match must be this sure (GBIF's own confidence, 0 to 100).
+FUZZY_MIN_CONFIDENCE = 95
 ALL_BIRDS_CACHE_KEY = "_aves"
 # A new name for the Artportalen-only counts, so counts cached before the dataset filter
 # (gbif-counts-2016-2025.json) are never read again.
@@ -102,17 +104,18 @@ class GbifClient:
     async def taxon_key(self, qid: str, scientific: str, *, refresh: bool = False) -> int | None:
         url = f"{API}/species/match?kingdom=Animalia&strict=true&name={quote(scientific)}"
         data = await self._json(qid, "gbif-match.json", url, refresh)
+        # Fix wave 2026-10-07: only a bird (class Aves) counts, a fuzzy match only when
+        # GBIF is sure and the names differ by a doubled letter alone, and the accepted key
+        # is used whenever GBIF gives one (not only for "status": "SYNONYM").
+        bird = data.get("classKey") == AVES_TAXON_KEY
         exact = data.get("matchType") == "EXACT" or (
             data.get("matchType") == "FUZZY"
+            and int(data.get("confidence", 0)) >= FUZZY_MIN_CONFIDENCE
             and same_name(str(data.get("canonicalName", "")), scientific)
         )
-        if not exact or data.get("rank") != "SPECIES":
+        if not bird or not exact or data.get("rank") != "SPECIES":
             return None
-        # GBIF marks a synonym with "status": "SYNONYM" (no "synonym" field in today's
-        # answers): its own key counted only the records filed under the old name (54 for
-        # Fjällpipare, Eudromias morinellus). `acceptedUsageKey` is only there for one.
-        synonym = data.get("synonym") or data.get("status") == "SYNONYM"
-        key = data.get("acceptedUsageKey") if synonym else None
+        key = data.get("acceptedUsageKey")
         key = key if key is not None else data.get("usageKey")
         return int(key) if key is not None else None
 
