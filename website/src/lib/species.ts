@@ -3,7 +3,7 @@ import type { ImageMetadata } from 'astro';
 import type { z } from 'astro/zod';
 import groupData from '../data/species-groups.json';
 import type { Copy, Locale } from './i18n';
-import { comparisonsDir, hasPageContract, isComparisonBuilt, isPreview, isSpeciesBuilt, speciesDir, useEmptyData, useFixtures } from './species-source.mjs';
+import { COMPARISONS_ENABLED, comparisonsDir, hasPageContract, isComparisonBuilt, isPreview, isSpeciesBuilt, speciesDir, useEmptyData, useFixtures } from './species-source.mjs';
 import type { speciesPage } from './species-schema.mjs';
 import { normalizeSearch } from './species-search.mjs';
 import { footerSpecies } from './species-nav.mjs';
@@ -85,13 +85,9 @@ export async function getAllSpecies(): Promise<Species[]> {
   return built;
 }
 
-/**
- * The comparison pages are built in Task 11, which comes after the first species pages go live (2026-10-09).
- * Until their route exists no page may link to one, so getComparisons() returns nothing: the hub hides its
- * comparison section and the look-alikes get no "Compare" link. Task 11 flips this to true (controller
- * decision, Task 10 review).
- */
-export const COMPARISONS_ENABLED = false;
+// COMPARISONS_ENABLED (species-source.mjs): until Task 11 getComparisons() returns nothing, so the hub hides
+// its comparison section and the look-alikes get no "Compare" link.
+export { COMPARISONS_ENABLED };
 
 let builtComparisons: Comparison[] | undefined;
 /** The comparisons that get a page: written, published or previewed, and both species built. */

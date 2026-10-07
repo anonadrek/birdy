@@ -68,6 +68,15 @@ export function isSpeciesBuilt(record, preview = isPreview()) {
   return hasPageContract(record) && (record.publish === true || preview);
 }
 
+/**
+ * The comparison pages are built in Task 11, which comes after the first species pages go live (2026-10-09).
+ * Until their route exists no page may link to one and no sitemap may list one: getComparisons() in
+ * species.ts, the sitemap (species-sitemap.mjs) and check-preview-build.mjs all read this flag. Task 11 flips
+ * it to true (controller decision, Task 10 review; moved here from species.ts in Task 14 so the plain-JS
+ * modules can read it too).
+ */
+export const COMPARISONS_ENABLED = false;
+
 /** A comparison page exists when its text is written, it is published or previewed, and both species pages exist. */
 export function isComparisonBuilt(record, builtQids, preview = isPreview()) {
   return record.status === 'ok' && (record.publish === true || preview) && builtQids.has(record.a) && builtQids.has(record.b);

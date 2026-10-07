@@ -469,7 +469,9 @@ test.describe('bloggen', () => {
     }
   });
 
-  test('webbplatskartan har lastmod endast för inläggen', async ({ page }) => {
+  // The species pages (Task 14) carry a lastmod of their own from their data (spec §12); every other page
+  // still has none.
+  test('webbplatskartan har lastmod för inläggen och artsidorna, inte för andra sidor', async ({ page }) => {
     const xml = await (await page.request.get('/sitemap-0.xml')).text();
     const blocks = xml.match(/<url>[\s\S]*?<\/url>/g) ?? [];
     const blockFor = (url: string) => blocks.find((b) => b.includes(`<loc>${url}</loc>`));
@@ -481,9 +483,11 @@ test.describe('bloggen', () => {
     }
     // No other URL in the whole sitemap carries a lastmod, not just the two obvious home-page checks.
     expect(blocks.length).toBeGreaterThan(postUrls.length);
+    const isSpeciesPage = (loc: string) => /^https:\/\/birdy\.community\/(sv\/arter|species)\//.test(loc);
+    expect(blockFor('https://birdy.community/sv/arter/talgoxe/')).toMatch(/<lastmod>2026-11-25/);
     for (const block of blocks) {
       const loc = block.match(/<loc>(.*?)<\/loc>/)?.[1] ?? block;
-      if (postUrls.includes(loc)) continue;
+      if (postUrls.includes(loc) || isSpeciesPage(loc)) continue;
       expect(block, loc).not.toMatch(/<lastmod>/);
     }
   });

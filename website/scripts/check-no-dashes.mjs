@@ -5,7 +5,7 @@
 // Astro/smartypants) are checked line by line for literal dash characters, HTML dash entities,
 // and "--" sequences that smartypants turns into a dash; pure-hyphen fence/thematic-break lines
 // (frontmatter delimiters, thematic breaks) are skipped.
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve, join } from 'node:path';
 
@@ -56,6 +56,35 @@ for (const file of deckFiles) {
     if (spacedEnDashRe.test(text)) fail(`${file}:${path}`, `tankstreck ( ${EN_DASH} )`);
   });
 }
+
+// Species and comparison data (spec 2026-09-25): rendered text only. Quotes are Wikipedia's own words and
+// are not shown; the top-level fact list, raw counts and generation details are not shown either.
+const SKIP = new Set(['quote', 'sourceUrl', 'licenseUrl', 'file', 'revision', 'title', 'model', 'prompt', 'at', 'effort', 'checker', 'qid', 'slug', 'factIds']);
+// 'flags' added 2026-10-06 (fas 1b final review I7): the flag messages are never shown and can hold the
+// checking model's own English reasons.
+const SKIP_TOP = new Set(['facts', 'raw', 'generated', 'rejectedText', 'errors', 'review', 'verification', 'flags']);
+const walkRendered = (value, path, cb) => {
+  if (typeof value === 'string') cb(value, path);
+  else if (Array.isArray(value)) value.forEach((v, i) => walkRendered(v, `${path}[${i}]`, cb));
+  else if (value && typeof value === 'object') {
+    for (const key of Object.keys(value)) {
+      if (SKIP.has(key) || (!path && SKIP_TOP.has(key))) continue;
+      walkRendered(value[key], path ? `${path}.${key}` : key, cb);
+    }
+  }
+};
+const dataDirs = ['src/data/species', 'src/data/comparisons', 'tests/fixtures/species', 'tests/fixtures/comparisons'];
+const dataFiles = [
+  'src/data/species-groups.json',
+  ...dataDirs.flatMap((dir) => (existsSync(resolve(root, dir)) ? readdirSync(resolve(root, dir)).filter((f) => f.endsWith('.json')).map((f) => join(dir, f)) : [])),
+];
+for (const file of dataFiles) {
+  walkRendered(JSON.parse(readFileSync(resolve(root, file), 'utf8')), '', (value, path) => {
+    if (emDashRe.test(value)) fail(`${file}:${path}`, `tankstreck (${EM_DASH})`);
+    if (spacedEnDashRe.test(value)) fail(`${file}:${path}`, `tankstreck ( ${EN_DASH} )`);
+  });
+}
+files.push(...dataFiles);
 
 // Field notes: check every rendered line, skipping pure-hyphen fence/thematic-break lines.
 for (const file of noteFiles) {

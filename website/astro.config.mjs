@@ -7,6 +7,7 @@ import { copyFileSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { basename, dirname, resolve } from 'node:path';
 import { assetsDir, builtSpeciesMedia } from './src/lib/species-source.mjs';
+import { readSpeciesSitemapInfo } from './src/lib/species-sitemap.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 
@@ -93,6 +94,9 @@ for (const locale of ['en', 'sv']) {
   }
 }
 
+// Species pages: lastmod from each page's data, small groups and unpublished preview pages left out (spec §12 and §14).
+const speciesInfo = readSpeciesSitemapInfo(root);
+
 // The photos and recordings of the species that get a page in this build, read once per build on first
 // use (after the content sync, so a broken record gets zod's message first). Spec 2026-09-25 §9.1 and
 // §9.9: a photo or recording is only served once a built page uses it.
@@ -161,9 +165,11 @@ export default defineConfig({
     },
   },
   integrations: [sitemap({
+    filter: (page) => !speciesInfo.noindex.has(new URL(page).pathname),
     serialize(item) {
-      const d = noteDates.get(new URL(item.url).pathname);
-      if (d) item.lastmod = d;
+      const path = new URL(item.url).pathname;
+      const d = noteDates.get(path) ?? speciesInfo.lastmod.get(path);
+      if (d) item.lastmod = new Date(d).toISOString();
       return item;
     },
   }), speciesAudio],

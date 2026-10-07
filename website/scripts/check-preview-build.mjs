@@ -20,7 +20,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
-import { isSpeciesBuilt, readJsonDir } from '../src/lib/species-source.mjs';
+import { COMPARISONS_ENABLED, isSpeciesBuilt, readJsonDir } from '../src/lib/species-source.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = resolve(root, 'dist');
@@ -113,6 +113,54 @@ if (positive) {
   mustBe(published, 'dist', true, 'publicerad art; är dist/ ett fixturbygge?');
 }
 
+// -- Pages (Task 14) -----------------------------------------------------------------------------------
+const page = (dir, path) => {
+  const file = join(dir, path, 'index.html');
+  return existsSync(file) ? readFileSync(file, 'utf8') : null;
+};
+// The comparison pages come with Task 11 (COMPARISONS_ENABLED in species-source.mjs): until then neither
+// build may have one, published or not.
+const UNPUBLISHED_COMPARISONS = [
+  'sv/arter/storre-hackspett-eller-tretaig-hackspett',
+  'species/eurasian-three-toed-woodpecker-vs-great-spotted-woodpecker',
+];
+const UNPUBLISHED = ['sv/arter/storre-hackspett', 'species/great-spotted-woodpecker', ...(COMPARISONS_ENABLED ? UNPUBLISHED_COMPARISONS : [])];
+const NEVER = [
+  'sv/arter/grongoling',
+  'sv/arter/spillkraka',
+  'sv/arter/hornuggla-eller-kattuggla',
+  'species/long-eared-owl-vs-tawny-owl',
+  ...(COMPARISONS_ENABLED ? [] : [...UNPUBLISHED_COMPARISONS, 'sv/arter/blames-eller-talgoxe', 'species/eurasian-blue-tit-vs-great-tit']),
+];
+
+for (const p of UNPUBLISHED) {
+  if (page(dist, p)) errors.push(`dist/${p}: opublicerad sida finns i det vanliga bygget`);
+  const html = page(preview, p);
+  if (!html) {
+    errors.push(`dist-preview/${p}: saknas i förhandsbygget`);
+    continue;
+  }
+  if (!html.includes('<meta name="robots" content="noindex, follow"')) errors.push(`dist-preview/${p}: saknar noindex`);
+  if (!html.includes('data-preview-banner')) errors.push(`dist-preview/${p}: saknar förhandsbanderollen`);
+}
+for (const p of NEVER) {
+  for (const [name, dir] of [['dist', dist], ['dist-preview', preview]]) if (page(dir, p)) errors.push(`${name}/${p}: ska aldrig få en sida`);
+}
+
+const talgoxe = page(preview, 'sv/arter/talgoxe');
+if (!talgoxe || talgoxe.includes('data-preview-banner') || talgoxe.includes('noindex')) errors.push('dist-preview/sv/arter/talgoxe: en publicerad sida ska se ut som vanligt');
+
+if (page(dist, 'sv/arter/hackspettar')) errors.push('dist/sv/arter/hackspettar: en grupp utan byggda arter ska inte få en sida');
+const woodpeckers = page(preview, 'sv/arter/hackspettar');
+if (!woodpeckers || !woodpeckers.includes('noindex')) errors.push('dist-preview/sv/arter/hackspettar: ska finnas med noindex (färre än tre arter)');
+
+const sitemapOf = (dir) => readdirSync(dir).filter((f) => /^sitemap-\d+\.xml$/.test(f)).map((f) => readFileSync(join(dir, f), 'utf8')).join(' ');
+if (sitemapOf(preview).includes('storre-hackspett')) errors.push('dist-preview: en opublicerad sida finns i sitemapen');
+if (!COMPARISONS_ENABLED && /-eller-|-vs-/.test(sitemapOf(dist) + sitemapOf(preview))) errors.push('en jämförelsesida finns i sitemapen fast jämförelserna är avstängda (Task 11)');
+
+const audio = existsSync(join(dist, 'audio/species')) ? readdirSync(join(dist, 'audio/species')) : [];
+if (audio.length !== 4) errors.push(`dist/audio/species: väntade 4 inspelningar (byggda arter med inspelning), fick ${audio.length}`);
+
 if (errors.length) {
   console.error(`check-preview-build FAILED (${errors.length} fel):\n${errors.join('\n')}`);
   process.exit(1);
@@ -122,5 +170,6 @@ console.log(
     `${previewOnly.map((r) => r.qid).join(', ')} inte i dist/` +
     (positive
       ? ` men i dist-preview/, alla ${published.length} publicerade arter i dist/)`
-      : `; inga artsidor i bygget än, så bara frånvaron är kontrollerad)`),
+      : `; inga artsidor i bygget än, så bara frånvaron är kontrollerad)`) +
+    `; sidor: opublicerat bara i förhandsbygget med noindex och banderoll${COMPARISONS_ENABLED ? '' : ', inga jämförelsesidor (avstängda till Task 11)'}`,
 );
