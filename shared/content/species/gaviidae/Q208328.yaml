@@ -6,7 +6,7 @@ taxonomy:
   genus: Gavia
   ioc_order: Gaviiformes
 names:
-  sv: VVitnäbbad islom
+  sv: Vitnäbbad islom
   en: Yellow-billed Loon
 abundance: ovanlig
 iucn_status: NT
@@ -69,11 +69,7 @@ image_refs:
   width: 2400
   height: 1600
   license: Public domain
-  author: '<p>Ryan Askren
-
-    </p>
-
-    USGS, Alaska Science Center'
+  author: Ryan Askren USGS, Alaska Science Center
   source_url: https://commons.wikimedia.org/wiki/File:Yellow-billed Loon Chipp South
     8-12-13 Ryan Askren.jpg
   commons_filename: Yellow-billed Loon Chipp South 8-12-13 Ryan Askren.jpg
@@ -82,8 +78,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1065381">Adam
-    Jackson</a>
+  author: Adam Jackson
   source_url: https://commons.wikimedia.org/wiki/File:Gavia adamsii 339608190.jpg
   commons_filename: Gavia adamsii 339608190.jpg
 - role: secondary
@@ -91,8 +86,7 @@ image_refs:
   width: 1800
   height: 1354
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1610034">Anna
-    Hess</a>
+  author: Anna Hess
   source_url: https://commons.wikimedia.org/wiki/File:Gavia adamsii 353681067.jpg
   commons_filename: Gavia adamsii 353681067.jpg
 review_status: auto

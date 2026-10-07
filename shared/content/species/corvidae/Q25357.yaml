@@ -98,20 +98,18 @@ image_refs:
 - role: hero
   path: Q25357/hero.webp
   width: 2400
-  height: 1600
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
-    Taÿ Pamart</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Corvus corax massif du Sancy
-    20230506.jpg
-  commons_filename: Corvus corax massif du Sancy 20230506.jpg
+  height: 1698
+  license: CC BY-SA 3.0
+  author: Diliff
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus corax (Common Raven),
+    Yosemite NP, CA, US - Diliff.jpg
+  commons_filename: Corvus corax (Common Raven), Yosemite NP, CA, US - Diliff.jpg
 - role: secondary
   path: Q25357/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/42244964@N03">Frank
-    Vassen</a> from Brussels, Belgium
+  author: Frank Vassen
   source_url: https://commons.wikimedia.org/wiki/File:Corvus corax -Tefia, Lanzarote,
     Canary Islands, Spain-8.jpg
   commons_filename: Corvus corax -Tefia, Lanzarote, Canary Islands, Spain-8.jpg
@@ -120,15 +118,17 @@ image_refs:
   width: 1800
   height: 1192
   license: CC BY 3.0
-  author: <a rel="nofollow" class="external text" href="https://web.archive.org/web/20161020203425/http://www.panoramio.com/user/1100550?with_photo_id=68208854">Henk
-    Monster</a>
+  author: Henk Monster
   source_url: https://commons.wikimedia.org/wiki/File:With prey (dead chamois) there
     are alway ravens (corvus corax) to eat the meat - panoramio.jpg
   commons_filename: With prey (dead chamois) there are alway ravens (corvus corax)
     to eat the meat - panoramio.jpg
 review_status: approved
-review_notes: Korp — hela landet, skog och fjäll. Hero från Massif du Sancy (FR) visar typisk silhuett
+review_notes: 'Korp — hela landet, skog och fjäll. Hero från Massif du Sancy (FR) visar typisk silhuett
   + plumage.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-12T20:00:27.620248+00:00'
 sources:
   wikipedia_sv_revision: '59280352'

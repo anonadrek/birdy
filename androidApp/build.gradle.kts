@@ -83,7 +83,7 @@ fun releaseFlagFromCommandLineOnly(name: String): String? {
     return fromCommandLine
 }
 
-val releaseVersionCode = 128
+val releaseVersionCode = 129
 val releaseVersionNameBase = "1.3.0"
 
 // A cutoff override requires BOTH -Pbirdy.grandfatherCutoffMs=<ms> AND

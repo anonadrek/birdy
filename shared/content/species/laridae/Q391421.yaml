@@ -9,7 +9,7 @@ names:
   sv: Långnäbbad mås
   en: Slender-billed Gull
 abundance: ovanlig
-iucn_status: NE
+iucn_status: LC
 season:
   jan: present
   feb: present
@@ -70,8 +70,7 @@ image_refs:
   width: 2400
   height: 1442
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
-    ten Cate</a>
+  author: Bouke ten Cate
   source_url: https://commons.wikimedia.org/wiki/File:Dunbekmeeuw - slender-billed
     gull - Chroicocephalus genei.tif
   commons_filename: Dunbekmeeuw - slender-billed gull - Chroicocephalus genei.tif
@@ -80,8 +79,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/78782622@N03">Jac.
-    Janssen</a> from Baarlo lb, NL
+  author: Jac. Janssen
   source_url: https://commons.wikimedia.org/wiki/File:Chroicocephalus genei (34473955465).jpg
   commons_filename: Chroicocephalus genei (34473955465).jpg
 - role: secondary
@@ -89,8 +87,7 @@ image_refs:
   width: 1800
   height: 1413
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Chroicocephalus ridibundus &
     Chroicocephalus genei, Parque Nacional de Doñana.jpg
   commons_filename: Chroicocephalus ridibundus & Chroicocephalus genei, Parque Nacional

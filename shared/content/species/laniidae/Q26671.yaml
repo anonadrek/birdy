@@ -69,35 +69,37 @@ migration:
 image_refs:
 - role: hero
   path: Q26671/hero.webp
-  width: 2400
-  height: 1800
-  license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:AndreyA" title="User:AndreyA">user:AndreyA</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Lanius collurio in Aleksandria
-    Garden 2.jpg
-  commons_filename: Lanius collurio in Aleksandria Garden 2.jpg
+  width: 2399
+  height: 2400
+  license: CC BY-SA 4.0
+  author: Hwbund
+  source_url: https://commons.wikimedia.org/wiki/File:Neuntöter mit erbeutetem Heupferd
+    im Geo-Naturpark Bergstraße-Odenwald (cropped).jpg
+  commons_filename: Neuntöter mit erbeutetem Heupferd im Geo-Naturpark Bergstraße-Odenwald
+    (cropped).jpg
 - role: secondary
   path: Q26671/secondary-1.webp
   width: 1800
   height: 1200
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Lanius collurio, mužjak, Spomenik
-    prirode Lisine (3).jpg
-  commons_filename: Lanius collurio, mužjak, Spomenik prirode Lisine (3).jpg
+  license: CC0
+  author: Romzig
+  source_url: https://commons.wikimedia.org/wiki/File:Neuntöter Männchen (Mai 2024).jpg
+  commons_filename: Neuntöter Männchen (Mai 2024).jpg
 - role: secondary
   path: Q26671/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
-    Taÿ Pamart</a>
+  author: Marie-Lan Taÿ Pamart
   source_url: https://commons.wikimedia.org/wiki/File:Lanius collurio female Gran
     Paradiso 20190908 t103029.jpg
   commons_filename: Lanius collurio female Gran Paradiso 20190908 t103029.jpg
 review_status: approved
-review_notes: "Törnskata — Lanius collurio från Aleksandria Garden; klassisk hane med rödbrun rygg + svart mask; allmän SE sommarfågel."
+review_notes: 'Törnskata — Lanius collurio från Aleksandria Garden; klassisk hane med rödbrun rygg + svart
+  mask; allmän SE sommarfågel.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T19:48:55.680078+00:00'
 sources:
   wikipedia_sv_revision: '56627306'

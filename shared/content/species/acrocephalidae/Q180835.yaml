@@ -94,26 +94,24 @@ image_refs:
   width: 2400
   height: 1800
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:MilanIlic553&amp;action=edit&amp;redlink=1"
-    class="new" title="User:MilanIlic553 (page does not exist)">MilanIlic553</a>
+  author: MilanIlic553
   source_url: https://commons.wikimedia.org/wiki/File:Acrocephalus arundinaceus.jpg
   commons_filename: Acrocephalus arundinaceus.jpg
 - role: secondary
   path: Q180835/secondary-1.webp
-  width: 1681
+  width: 1610
   height: 1800
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Common Reed Warbler (Acrocephalus
-    scirpaceus).jpg
-  commons_filename: Common Reed Warbler (Acrocephalus scirpaceus).jpg
+  license: CC BY 2.0
+  author: Agustín Povedano
+  source_url: https://commons.wikimedia.org/wiki/File:Carricero tordal Acrocephalus
+    arundinaceus 1.jpg
+  commons_filename: Carricero tordal Acrocephalus arundinaceus 1.jpg
 - role: secondary
   path: Q180835/secondary-2.webp
   width: 1800
   height: 1285
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/60513640@N07">Agustín
-    Povedano</a>
+  author: Agustín Povedano
   source_url: https://commons.wikimedia.org/wiki/File:Carricero tordal Acrocephalus
     arundinaceus.jpg
   commons_filename: Carricero tordal Acrocephalus arundinaceus.jpg

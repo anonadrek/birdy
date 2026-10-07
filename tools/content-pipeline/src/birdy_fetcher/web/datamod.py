@@ -64,11 +64,34 @@ _AND = {"sv": "och", "en": "and"}
 _TO = {"sv": "till", "en": "to"}
 ALL_YEAR = {"sv": "Rapporteras året runt.", "en": "Reported all year round."}
 MOST = {"sv": "Rapporteras mest i {months}.", "en": "Reported most in {months}."}
-NEVER = {"sv": "Nästan aldrig i {months}.", "en": "Almost never in {months}."}
-COUNTIES_SENTENCE = {
-    "sv": "Vanligast i rapporterna från {counties}.",
-    "en": "Most common in reports from {counties}.",
+# About reports, not presence (fix wave 2026-10-07): "Nästan aldrig i juni" read as "not
+# there in June" for Pilgrimsfalk and Sparvhök, whose breeding records are withheld.
+RARELY = {"sv": "Rapporteras sällan i {months}.", "en": "Rarely reported in {months}."}
+# May to July (0-based): a resident's or breeding migrant's few reports then are a gap in
+# the data (withheld breeding records, no ringing), so the writer does not get those months
+# as "rarely reported" (facts.data_facts).
+BREEDING_MONTHS = frozenset({4, 5, 6})
+# The county map shows each county's share of all its bird reports (spec §9.2). Before the
+# R3 trial (2026-10-07) the sentence named the top three as "Vanligast i rapporterna från
+# ...", which reads as "most reports", and for a widespread species the top three are small
+# differences (Talgoxe and Bofink both got three Norrland counties: northern counties report
+# fewer species, so a common feeder bird makes up more of their reports). Now a flat profile
+# says how many counties report the species, and a skewed one names the counties with the
+# largest share, worded as a share.
+COUNTIES_SHARE = {
+    "sv": "Andelen av alla fågelrapporter är högst i {counties}.",
+    "en": "Its share of all bird reports is highest in {counties}.",
 }
+COUNTIES_ALL = {"sv": "Rapporteras från alla 21 län.", "en": "Reported from all 21 counties."}
+COUNTIES_SOME = {
+    "sv": "Rapporteras från {n} av 21 län.",
+    "en": "Reported from {n} of the 21 counties.",
+}
+# Flat: at least half the counties have at least half the top county's share.
+FLAT_MEDIAN = 50
+# Named in a skewed profile: at least half the top county's share, at most three.
+SHARE_MIN = 50
+SHARE_COUNTIES = 3
 PEAK = 80
 LOW = 10
 ALL_YEAR_MIN = 30
@@ -120,21 +143,88 @@ def month_sentences(profile: list[int], lang: str) -> list[str]:
     sentences: list[str] = []
     if peak:
         sentences.append(MOST[lang].format(months=months_text(peak, lang)))
-    low = {i for i, value in enumerate(profile) if value <= LOW}
-    if low:
-        sentences.append(NEVER[lang].format(months=months_text(low, lang)))
+    rarely = rarely_sentence(profile, lang)
+    if rarely is not None:
+        sentences.append(rarely)
     return sentences
 
 
+def rarely_sentence(
+    profile: list[int], lang: str, *, skip: frozenset[int] = frozenset()
+) -> str | None:
+    """The months with a value of LOW or less, minus `skip`, as a "rarely reported"
+    sentence; None when there are none."""
+    low = {i for i, value in enumerate(profile) if value <= LOW} - skip
+    return RARELY[lang].format(months=months_text(low, lang)) if low else None
+
+
 def county_sentence(profile: dict[str, int], lang: str) -> str | None:
-    ranked = sorted(
-        (iso for iso, value in profile.items() if value > 0),
-        key=lambda iso: (-profile[iso], COUNTY_NAMES[iso]),
-    )[:3]
-    if not ranked:
+    """A county missing from `profile` has no reports."""
+    values = sorted(profile.get(iso, 0) for iso in COUNTY_NAMES)
+    reported = sum(1 for value in values if value > 0)
+    if reported == 0:
         return None
+    if values[len(values) // 2] >= FLAT_MEDIAN:
+        if reported == len(COUNTY_NAMES):
+            return COUNTIES_ALL[lang]
+        return COUNTIES_SOME[lang].format(n=reported)
+    ranked = sorted(
+        (iso for iso, value in profile.items() if value >= SHARE_MIN),
+        key=lambda iso: (-profile[iso], COUNTY_NAMES[iso]),
+    )[:SHARE_COUNTIES]
     names = [COUNTY_NAMES[iso] for iso in ranked]
-    return COUNTIES_SENTENCE[lang].format(counties=join_list(names, lang))
+    return COUNTIES_SHARE[lang].format(counties=join_list(names, lang))
+
+
+# Fewer than MIN_REPORTS reports: no charts, but what the data says about the species in
+# Sweden (R3, 2026-10-07: Koboltmes's page never said the bird does not occur here). An
+# exact GBIF match with no Artportalen report in ten years does not occur in Sweden.
+NO_REPORTS = {
+    "sv": "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025.",
+    "en": "Does not occur in Sweden: no reports in Artportalen 2016 to 2025.",
+}
+FEW_REPORTS = {
+    "sv": "Sällsynt i Sverige: {n} {reports} i Artportalen 2016 till 2025.",
+    "en": "Rare in Sweden: {n} {reports} in Artportalen 2016 to 2025.",
+}
+_REPORTS = {"sv": ("rapport", "rapporter"), "en": ("report", "reports")}
+
+
+def presence_sentence(total: int, lang: str) -> str:
+    """The sentence for a species with fewer than MIN_REPORTS reports."""
+    if total == 0:
+        return NO_REPORTS[lang]
+    one, many = _REPORTS[lang]
+    return FEW_REPORTS[lang].format(n=total, reports=one if total == 1 else many)
+
+
+def _prefix(template: str) -> str:
+    return template.split("{", 1)[0]
+
+
+def sentence_kind(sentence: str) -> str | None:
+    """What a data sentence is, where code needs to know (a Swedish or English sentence):
+    `absent` (no reports: the page's status is "Förekommer inte"), `countyShare` (a share,
+    which the text must keep calling a share, text_checks), `rarelyReported` (the writer
+    gets it without breeding-season months for a species that breeds here, facts)."""
+    if sentence in NO_REPORTS.values():
+        return "absent"
+    if any(sentence.startswith(_prefix(t)) for t in COUNTIES_SHARE.values()):
+        return "countyShare"
+    if any(sentence.startswith(_prefix(t)) for t in RARELY.values()):
+        return "rarelyReported"
+    return None
+
+
+def red_list_for_page(code: str | None, total_reports: int) -> str | None:
+    """The red list's dataset on GBIF holds only red-listed species, so `not_listed` cannot
+    tell "assessed, least concern" from "not assessed". A species with fewer than
+    MIN_REPORTS reports in ten years is not regular in Sweden and not assessed (NA or NE):
+    no category then, so the page hides the row and no "Inte rödlistad" sentence is written
+    (R3, 2026-10-07, Koboltmes). A listed category always stands."""
+    if code == "not_listed" and total_reports < MIN_REPORTS:
+        return None
+    return code
 
 
 def data_sentences(months: list[int], counties: dict[str, int], lang: str) -> list[str]:
@@ -147,6 +237,9 @@ def data_sentences(months: list[int], counties: dict[str, int], lang: str) -> li
 
 RESIDENT_MIN_MONTH = 5
 MIGRANT_WINTER_MAX = 25
+# A partial migrant has some of its birds here all winter: a winter mean this low is a
+# species that leaves altogether (Ladusvala's is under 1).
+PARTIAL_MIGRANT_WINTER_MIN = 5
 WINTER_VISITOR_SUMMER_MAX = 25
 _WINTER = (11, 0, 1)
 _SUMMER = (5, 6)
@@ -156,22 +249,44 @@ def _mean(profile: list[int], months: tuple[int, ...]) -> float:
     return sum(profile[i] for i in months) / len(months)
 
 
-def status_contradiction(status: str, months: list[int] | None, total_reports: int) -> str | None:
+# A status that says the species is in Sweden, with its label in the flag message.
+_PRESENT = {
+    "resident": "stannfågel",
+    "partial_migrant": "delvis flyttfågel",
+    "breeding_migrant": "flyttfågel som häckar här",
+    "passage": "ses under flyttningen",
+    "winter_visitor": "vintergäst",
+}
+
+
+def status_contradiction(
+    status: str, months: list[int] | None, total_reports: int | None
+) -> str | None:
     """A plain Swedish reason when the report data clearly contradicts the stated status,
-    otherwise None. Only clear contradictions count (spec §9.2); passage and rare_visitor are
-    never flagged."""
+    otherwise None. Only clear contradictions count (spec §9.2); rare_visitor is never
+    flagged. `total_reports` is None when the data does not say (no GBIF match)."""
     if status == "absent":
-        if total_reports >= MIN_REPORTS:
+        if total_reports is not None and total_reports >= MIN_REPORTS:
             return (
                 "Statusen säger att arten inte förekommer i Sverige, men den har "
                 f"{total_reports} rapporter i Artportalen 2016 till 2025."
             )
         return None
+    if status in _PRESENT and total_reports == 0:
+        return (
+            f"Statusen ({_PRESENT[status]}) säger att arten finns i Sverige, men den har "
+            "inga rapporter i Artportalen 2016 till 2025."
+        )
     if months is None:
         return None
     if status == "resident" and min(months) < RESIDENT_MIN_MONTH:
         lowest = MONTHS["sv"][months.index(min(months))]
         return f"Statusen säger stannfågel, men arten rapporteras nästan aldrig i {lowest}."
+    if status == "partial_migrant" and _mean(months, _WINTER) < PARTIAL_MIGRANT_WINTER_MIN:
+        return (
+            "Statusen säger delvis flyttfågel, men arten rapporteras nästan aldrig "
+            "december till februari."
+        )
     if status == "breeding_migrant" and _mean(months, _WINTER) > MIGRANT_WINTER_MAX:
         return "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     if status == "winter_visitor" and _mean(months, _SUMMER) > WINTER_VISITOR_SUMMER_MAX:
@@ -187,8 +302,14 @@ def record_status_contradiction(record: dict[str, Any]) -> str | None:
     data = record.get("data")
     if status is None or not data:
         return None
+    return data_status_contradiction(status["value"], data)
+
+
+def data_status_contradiction(status: str, data: dict[str, Any]) -> str | None:
+    """`status_contradiction` for a record's `data` object."""
+    total = data.get("totalReports")
     return status_contradiction(
-        status["value"], data.get("months"), int(data.get("totalReports", 0))
+        status, data.get("months"), int(total) if total is not None else None
     )
 
 
@@ -208,7 +329,9 @@ def build_data(
         data["counties"] = counties
         data["sentences"] = {lang: data_sentences(months, counties, lang) for lang in ("sv", "en")}
     else:
-        data["sentences"] = {"sv": [], "en": []}
+        data["sentences"] = {
+            lang: [presence_sentence(species.total, lang)] for lang in ("sv", "en")
+        }
     data["raw"] = {
         "speciesByMonth": species.by_month,
         "allBirdsByMonth": all_birds.by_month,

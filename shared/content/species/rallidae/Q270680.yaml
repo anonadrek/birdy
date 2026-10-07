@@ -75,8 +75,7 @@ image_refs:
   width: 2400
   height: 1137
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Little crake (Zapornia parva)
     2019.jpg
   commons_filename: Little crake (Zapornia parva) 2019.jpg
@@ -85,7 +84,7 @@ image_refs:
   width: 1800
   height: 1502
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external autonumber" href="https://www.inaturalist.org/people/mourad-harzallah">[2]</a>
+  author: Mourad Harzallah
   source_url: https://commons.wikimedia.org/wiki/File:Female little crake (Zapornia
     parva) in Algeria.jpg
   commons_filename: Female little crake (Zapornia parva) in Algeria.jpg

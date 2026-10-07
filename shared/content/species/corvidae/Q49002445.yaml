@@ -69,8 +69,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Maghreb magpie (Pica mauritanica).jpg
   commons_filename: Maghreb magpie (Pica mauritanica).jpg
 - role: secondary
@@ -78,8 +77,7 @@ image_refs:
   width: 1800
   height: 1156
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37174512@N03">Panegyrics
-    of Granovetter</a> from Toronto, Ontario, Canada
+  author: Panegyrics of Granovetter
   source_url: https://commons.wikimedia.org/wiki/File:Pica mauritanica, Agadir 1.jpg
   commons_filename: Pica mauritanica, Agadir 1.jpg
 - role: secondary
@@ -87,8 +85,7 @@ image_refs:
   width: 1625
   height: 1800
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/60678622@N04">Len
-    Worthington</a>
+  author: Len Worthington
   source_url: https://commons.wikimedia.org/wiki/File:Moroccan Magpie Pica pica mauritanica
     (8470664586).jpg
   commons_filename: Moroccan Magpie Pica pica mauritanica (8470664586).jpg

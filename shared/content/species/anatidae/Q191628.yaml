@@ -95,25 +95,24 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Uusijani" title="User:Uusijani">Uusijani</a>
+  author: Uusijani
   source_url: https://commons.wikimedia.org/wiki/File:Anser erythropus (standing on
     one leg).jpg
   commons_filename: Anser erythropus (standing on one leg).jpg
 - role: secondary
   path: Q191628/secondary-1.webp
   width: 1800
-  height: 1800
-  license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/3113277">nbasargin</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Unidentified hybrid goose, München,
-    Deutschland 425987939.jpg
-  commons_filename: Unidentified hybrid goose, München, Deutschland 425987939.jpg
+  height: 1350
+  license: CC BY-SA 4.0
+  author: Iggy
+  source_url: https://commons.wikimedia.org/wiki/File:Oie Naine - Anser erythropus.jpg
+  commons_filename: Oie Naine - Anser erythropus.jpg
 - role: secondary
   path: Q191628/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Kyu3a" title="User:Kyu3a">Kyu3</a>
+  author: Kyu3
   source_url: https://commons.wikimedia.org/wiki/File:Anser erythropus in Higashiyama
     Zoo - 1.jpg
   commons_filename: Anser erythropus in Higashiyama Zoo - 1.jpg

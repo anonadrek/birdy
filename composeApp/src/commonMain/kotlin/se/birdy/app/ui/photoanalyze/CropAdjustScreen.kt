@@ -1,14 +1,20 @@
 package se.birdy.app.ui.photoanalyze
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemGestures
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
@@ -47,6 +53,12 @@ import kotlin.math.roundToInt
 
 private const val MIN_CROP_SIDE_PX = 224
 
+/** Space between the crop area and the screen edge, so the corner handles are never cut in half. */
+private val CROP_EDGE_MARGIN = 12.dp
+
+/** Dims everything that is not kept: the backdrop around the photo and the photo outside the crop. */
+private val CropDim = Color.Black.copy(alpha = 0.5f)
+
 /**
  * Beskärnings- och rotations-yta för en uppladdad bild. Crop-rektangeln hålls i
  * källbildens pixel-koordinater; gester konverteras via en ContentScale.Fit-mappning.
@@ -70,10 +82,25 @@ fun CropAdjustScreen(
     }
     var boxSize by remember { mutableStateOf(IntSize.Zero) }
     val touchPx = with(LocalDensity.current) { 32.dp.toPx() }
+    val edgeMarginPx = with(LocalDensity.current) { CROP_EDGE_MARGIN.toPx() }
 
     Column(modifier = Modifier.fillMaxSize().paperBackground()) {
         Box(
-            modifier = Modifier.fillMaxWidth().weight(1f),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    // Backdrop behind the photo, the edge margins included (drawn before the
+                    // padding below so the margins match the rest of the dimmed area).
+                    .background(CropDim)
+                    // A wide photo fills the width, which put the left and right corner handles
+                    // on the screen edges. With gesture navigation those edges are the system back
+                    // gesture: dragging a corner inward closed the crop screen instead of cropping
+                    // (Release 1.3.0 Plan 3 Task 7, API 36 emulator). Keep clear of the gesture
+                    // zones (zero with button navigation). The photo itself is drawn a further
+                    // CROP_EDGE_MARGIN inside the canvas on every side (see fitMapping), so the
+                    // handles show whole and their outer half still sits inside the touch area.
+                    .windowInsetsPadding(WindowInsets.systemGestures.only(WindowInsetsSides.Horizontal)),
             contentAlignment = Alignment.Center,
         ) {
             val cropHint = stringResource(Res.string.a11y_crop_hint)
@@ -83,8 +110,8 @@ fun CropAdjustScreen(
                         .fillMaxSize()
                         .semantics { contentDescription = cropHint }
                         .onSizeChanged { boxSize = it }
-                        .pointerInput(image, boxSize) {
-                            val fit = fitMapping(boxSize, image.width, image.height)
+                        .pointerInput(image, boxSize, edgeMarginPx) {
+                            val fit = fitMapping(boxSize, image.width, image.height, edgeMarginPx)
                             var mode: DragMode = DragMode.None
                             detectDragGestures(
                                 onDragStart = { pos ->
@@ -112,7 +139,8 @@ fun CropAdjustScreen(
                             )
                         },
             ) {
-                val fit = fitMapping(IntSize(size.width.toInt(), size.height.toInt()), image.width, image.height)
+                val canvasSize = IntSize(size.width.toInt(), size.height.toInt())
+                val fit = fitMapping(canvasSize, image.width, image.height, edgeMarginPx)
                 // 1. Bilden
                 drawImage(
                     image = image,
@@ -124,12 +152,16 @@ fun CropAdjustScreen(
                 val t = fit.offsetY + rect.top * fit.scale
                 val r = fit.offsetX + rect.right * fit.scale
                 val b = fit.offsetY + rect.bottom * fit.scale
-                // 3. Mörkad overlay utanför crop (fyra rektanglar)
-                val dim = Color.Black.copy(alpha = 0.5f)
-                drawRect(dim, topLeft = Offset(0f, 0f), size = Size(size.width, t))
-                drawRect(dim, topLeft = Offset(0f, b), size = Size(size.width, size.height - b))
-                drawRect(dim, topLeft = Offset(0f, t), size = Size(l, b - t))
-                drawRect(dim, topLeft = Offset(r, t), size = Size(size.width - r, b - t))
+                // 3. Mörkad overlay över bilden utanför crop (fyra rektanglar). Ytan runt bilden
+                // är redan mörkad av Boxens bakgrund (CropDim), så overlayn täcker bara bilden.
+                val imgL = fit.offsetX
+                val imgT = fit.offsetY
+                val imgR = fit.offsetX + fit.dispWidth
+                val imgB = fit.offsetY + fit.dispHeight
+                drawRect(CropDim, topLeft = Offset(imgL, imgT), size = Size(imgR - imgL, t - imgT))
+                drawRect(CropDim, topLeft = Offset(imgL, b), size = Size(imgR - imgL, imgB - b))
+                drawRect(CropDim, topLeft = Offset(imgL, t), size = Size(l - imgL, b - t))
+                drawRect(CropDim, topLeft = Offset(r, t), size = Size(imgR - r, b - t))
                 // 4. Rule-of-thirds-linjer
                 val third = AccentCopper.copy(alpha = 0.6f)
                 val cw = (r - l) / 3f
@@ -180,13 +212,21 @@ private data class FitMapping(
     val dispHeight: Float,
 )
 
+/**
+ * ContentScale.Fit of the photo into [box], keeping [inset] free on every side: a wide photo used
+ * to touch the left and right edges, a tall one the top and bottom, with the corner handles half
+ * outside the canvas and its touch area (Plan 3 Task 7 and its review).
+ */
 private fun fitMapping(
     box: IntSize,
     srcWidth: Int,
     srcHeight: Int,
+    inset: Float,
 ): FitMapping {
-    if (box.width == 0 || box.height == 0) return FitMapping(1f, 0f, 0f, srcWidth.toFloat(), srcHeight.toFloat())
-    val scale = minOf(box.width.toFloat() / srcWidth, box.height.toFloat() / srcHeight)
+    val availWidth = box.width - 2f * inset
+    val availHeight = box.height - 2f * inset
+    if (availWidth <= 0f || availHeight <= 0f) return FitMapping(1f, 0f, 0f, srcWidth.toFloat(), srcHeight.toFloat())
+    val scale = minOf(availWidth / srcWidth, availHeight / srcHeight)
     val dispW = srcWidth * scale
     val dispH = srcHeight * scale
     return FitMapping(

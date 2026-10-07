@@ -100,8 +100,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
-    Lours">Alexis LOURS</a>
+  author: Alexis LOURS
   source_url: https://commons.wikimedia.org/wiki/File:Griffon vulture (Gyps fulvus).jpg
   commons_filename: Griffon vulture (Gyps fulvus).jpg
 - role: secondary
@@ -109,7 +108,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Uoaei1" title="User:Uoaei1">Uoaei1</a>
+  author: Uoaei1
   source_url: https://commons.wikimedia.org/wiki/File:Gyps fulvus Riegersburg 02.jpg
   commons_filename: Gyps fulvus Riegersburg 02.jpg
 - role: secondary
@@ -117,8 +116,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:%D0%92%D1%8B%D1%85_%D0%9F%D1%8B%D1%85%D0%BC%D0%B0%D0%BD%D0%BD"
-    class="mw-redirect" title="User:Вых Пыхманн">Вых Пыхманн</a>
+  author: Вых Пыхманн
   source_url: https://commons.wikimedia.org/wiki/File:Griffon vulture (gyps fulvus)
     in flight.jpg
   commons_filename: Griffon vulture (gyps fulvus) in flight.jpg

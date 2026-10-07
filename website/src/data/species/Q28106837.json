@@ -1,0 +1,209 @@
+{
+  "qid": "Q28106837",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "blasand",
+    "en": "eurasian-wigeon"
+  },
+  "names": {
+    "sv": "Bläsand",
+    "en": "Eurasian Wigeon",
+    "scientific": "Mareca penelope"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Änder"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q28106837/hero.webp",
+      "width": 1600,
+      "height": 1201,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mareca_penelope_Oulu_20110515_02.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q28106837/extra.webp",
+      "width": 1200,
+      "height": 902,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mareca_penelope_Oulu_20110515_01.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q28106837/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Bird Boy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mareca_penelope_-_Eurasian_Wigeon_XC507245.mp3",
+    "sha256": "59f1dc35a9b1ace66e9a25e78bfa1db104e8a7bfbb7eb8143257f43ade0d4a68"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Bläsand",
+      "revision": "59481004"
+    },
+    "en": {
+      "title": "Eurasian wigeon",
+      "revision": "1371443283"
+    },
+    "de": {
+      "title": "Pfeifente",
+      "revision": "267345015"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 8000602,
+    "totalReports": 292860,
+    "months": [
+      31,
+      33,
+      52,
+      61,
+      30,
+      29,
+      22,
+      29,
+      88,
+      100,
+      65,
+      38
+    ],
+    "counties": {
+      "SE-K": 46,
+      "SE-W": 67,
+      "SE-X": 42,
+      "SE-I": 56,
+      "SE-N": 90,
+      "SE-Z": 78,
+      "SE-F": 70,
+      "SE-H": 62,
+      "SE-G": 57,
+      "SE-BD": 73,
+      "SE-T": 67,
+      "SE-E": 74,
+      "SE-M": 100,
+      "SE-D": 42,
+      "SE-AB": 51,
+      "SE-C": 51,
+      "SE-S": 65,
+      "SE-AC": 68,
+      "SE-Y": 37,
+      "SE-U": 80,
+      "SE-O": 51
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september och oktober.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in September and October.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        13797,
+        10223,
+        30100,
+        54836,
+        30864,
+        16002,
+        9545,
+        12933,
+        40978,
+        45565,
+        18812,
+        8984
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-M": 44822,
+        "SE-O": 32850,
+        "SE-AB": 22631,
+        "SE-H": 21109,
+        "SE-N": 17356,
+        "SE-E": 13097,
+        "SE-C": 12472,
+        "SE-F": 11868,
+        "SE-AC": 8520,
+        "SE-D": 8441,
+        "SE-T": 8165,
+        "SE-BD": 7715,
+        "SE-U": 7536,
+        "SE-W": 7227,
+        "SE-S": 5720,
+        "SE-G": 5246,
+        "SE-Z": 4718,
+        "SE-I": 4338,
+        "SE-X": 3535,
+        "SE-Y": 2304,
+        "SE-K": 1717
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

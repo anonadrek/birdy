@@ -85,8 +85,7 @@ image_refs:
   width: 2400
   height: 2400
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Red-rumped wheatear (Oenanthe
     moesta) Kebili.jpg
   commons_filename: Red-rumped wheatear (Oenanthe moesta) Kebili.jpg
@@ -95,8 +94,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Red-rumped wheatear (Oenanthe
     moesta moesta) male Kebili.jpg
   commons_filename: Red-rumped wheatear (Oenanthe moesta moesta) male Kebili.jpg
@@ -105,8 +103,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:OlivierPDupont&amp;action=edit&amp;redlink=1"
-    class="new" title="User:OlivierPDupont (page does not exist)">OlivierPDupont</a>
+  author: OlivierPDupont
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe moesta Morocco.jpg
   commons_filename: Oenanthe moesta Morocco.jpg
 review_status: auto

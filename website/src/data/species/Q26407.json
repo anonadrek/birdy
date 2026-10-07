@@ -1,0 +1,601 @@
+{
+  "qid": "Q26407",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Fjällvråken är 49–60 cm lång och har ett vingspann på 123–148 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fjällvråken är 49–60 cm lång och har ett vingspann på 123–148 cm"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Fjällvråken väger 600–1 660 gram, och honorna är oftast större och tyngre än hanarna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Individuals can weigh from 600 to 1,660 g (1.32 to 3.66 lb) with females typically being larger and heavier than males."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "I alla dräkter har fjällvråken vit övergump och ett svart ändband på stjärtens ovansida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har i alla dräkter vit övergump med svart ändband på ovansidan stjärten."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den adulta fågeln är mest ljus på undersidan med svart ändband på stjärt och vingar, svarta handlovsfläckar och mörkt parti på buken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "även den adulta fågeln är huvudsakligen ljus på undersidan med svart ändband på stjärt och vingar samt svarta knogar och mörkt parti på buken"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Näbben är förhållandevis klen för en vråk av fjällvråkens storlek.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "För att vara en vråk av denna storlek är dess näbb förhållandevis klen."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Benen är fjäderklädda, men kännetecknet syns oftast bara på nära håll.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har fjäderklädda tarser."
+        },
+        {
+          "article": "de",
+          "quote": "Die Beine sind bis zu den Zehen befiedert, doch ist dieses sichere Merkmal meist nur aus geringer Distanz erkennbar."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Det påfallande runda huvudet och nacken är ljusbruna till ljusgrå, ibland nästan vita.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der auffallend runde Kopf und der Nacken des Raufußbussards sind hellbraun bis hellgrau, in Einzelfällen fast weiß."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Hos sittande fågel når vingspetsarna till eller förbi stjärtspetsen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The wing tips are long enough to reach or extend past the tail when it is perched."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungfåglar är ljusare än adulta och har ännu inte ett tydligt svart ändband på stjärten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Jungvögel sind heller als die Altvögel, vor allem die schwarze Endbinde des Schwanzes ist noch nicht deutlich ausgeprägt."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Honans stjärt har oftast bara ett ändband, medan hanen utöver ett brett band har två till tre smalare band.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Schwanz der Weibchen schließt meist mit nur einer Endbinde ab, während bei den Männchen neben einer breiten meist noch zwei bis drei schmalere Binden zu erkennen sind."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Honorna är något större än hanarna och upp till 20 procent tyngre.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Weibchen sind geringfügig größer als die Männchen und bis zu 20 % schwerer."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "På häckplatsen är fjällvråken ljudlig med ett ormvråkslikt jamande, men gällare och något mer fallande i tonhöjd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På häckplats är fjällvråken en ljudlig fågel, med vanligast ett ormvråkslikt jamande, men med gällare röst och något mer fallande i tonhöjd."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Huvudlätet är ett högt, något klagande, utdraget \"pi-iii-äääh\" som på avstånd kan påminna om en katts jamande.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Hauptruf ist ein lautes, ein wenig klagend klingendes langgezogenes Pi-iii-äääh"
+        },
+        {
+          "article": "de",
+          "quote": "Entfernt kann dieser Ruf an das Miauen einer Hauskatze erinnern."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "behaviour",
+      "sv": "Till skillnad från andra större rovfåglar ryttlar fjällvråken ibland när den spanar efter byten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Till skillnad från andra större rovfåglar brukar den ibland ryttla när den spanar efter byten."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "behaviour",
+      "sv": "När den ryttlar ändrar den ständigt flyghöjd, och denna jojo-flykt gör att arten ofta kan bestämmas på långt avstånd.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Beim Rüttelflug variiert der Raufußbussard ständig die Flughöhe, dieser „Jo-Jo“-Flug erlaubt oft auf große Entfernung die Artbestimmung."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "lookalike",
+      "sv": "Fjällvråken är något större och mer långvingad än ormvråken och mycket mindre varierande i färgteckningen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Insgesamt ist der Raufußbussard etwas größer und langflügeliger als der Mäusebussard (Buteo buteo) und im Vergleich zu diesem in der Färbung viel weniger variabel."
+        }
+      ],
+      "other": {
+        "scientific": "Buteo buteo",
+        "qid": "Q25385"
+      }
+    },
+    {
+      "id": "f17",
+      "topic": "lookalike",
+      "sv": "I glidflykt har fjällvråken en synlig knyck i vingprofilen, medan ormvråken oftast håller vingarna raka eller lyfter dem i V-form.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Dadurch entsteht ein wahrnehmbarer Knick im Flügelprofil, ein gutes Unterscheidungsmerkmal zu gleitenden Mäusebussarden, die Arm- und Handschwingen meist gerade halten bzw. beim Segeln V-förmig anheben."
+        }
+      ],
+      "other": {
+        "scientific": "Buteo buteo",
+        "qid": "Q25385"
+      }
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Fjällvråken häckar främst på tundran och i övergångslandskapet mellan skog och tundra, under goda gnagarår även i skogslandskapet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar främst på tundran och i övergångslandskapet mellan skog och tundra, under goda gnagarår även i skogslandskapet."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "I Fennoskandien häckar den både på trädlösa fjäll och i glesa björkskogar i den subalpina zonen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "In Fennoskandien besiedelt er die baumlosen Fjällgebiete ebenso wie lockere Birkenbestände in der subalpinen Zone."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "habitat",
+      "sv": "Vintertid, oktober till april, föredrar den kärr, hedmark, prärie och jordbruksbygd där det finns gott om gnagare.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "During the winter months, from October to April, preferred habitats include marshes, moorland, prairies and agricultural regions where rodent prey is most abundant."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Fjällvråken häckar i nordvästra Sverige från nordligaste Värmland till Norrbotten och upp i fjällvärlden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fjällvråk häckar i nordöstra Sverige från nordligaste Värmland till Norrbotten och upp i fjällvärlden."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "På vintern förekommer fjällvråken i södra Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern förekommer den i södra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattas till 3 000–5 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "med 3 000-5 000 par i Sverige"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "sweden",
+      "sv": "Antalet häckande par i Sverige varierar kraftigt mellan åren beroende på tillgången på gnagare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Antalet häckande par i Sverige varierar kraftigt mellan olika år beroende på tillgången på gnagare"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "sweden",
+      "sv": "År 2025 ändrades artens status i Artdatabankens rödlista från nära hotad till livskraftig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På grund av den stabila populationen ändrades artens status i Artdatabankens rödlista år 2025 från nära hotad (NT) till livskraftig (LC)."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "sweden",
+      "sv": "Vid Falsterbo kan man se ansamlingar av flyttande fjällvråkar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Zu Häufungen von durchziehenden Raufußbussarden kommt es unter anderem bei Falsterbo"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Huvudfödan utgörs av åkersork, gråsiding och fjällämmel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Åkersork, gråsiding och fjällämmel utgör dess huvudföda"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Efter däggdjur är fåglar den vanligaste födan, och under dåliga gnagarår dominerar fågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utöver däggdjur är fåglar den vanligaste födan och under dåliga gnagarår dominerar fågel."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Boet byggs i klippbrant, träd eller på marken, helst på klipphyllor eller klippig hällmark.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet byggs i en klippbrant, i ett träd eller på marken och den föredrar att placera boet på klipphyllor eller på klippig hällmark."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "breeding",
+      "sv": "Honan lägger ett till sju ägg, vanligtvis tre till fem, och ruvar minst 31 dagar medan hanen matar henne.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan kan lägga ett till sju ägg men lägger vanligtvis tre till fem stycken."
+        },
+        {
+          "article": "sv",
+          "quote": "Den ruvar i mist 31 dagar, vilket nästan enbart sköts av honan och under tiden matas hon av hanen."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fjällvråk häckar i nordöstra Sverige från nordligaste Värmland till Norrbotten och upp i fjällvärlden."
+        },
+        {
+          "article": "sv",
+          "quote": "Den är en utpräglad flyttfågel som häckar cirkumpolärt i de nordligaste delarna av holarktis."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i oktober."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i augusti."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Västmanland, Örebro och Uppsala."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": null,
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T16:08:41.079475+00:00"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "fjallvrak",
+    "en": "rough-legged-buzzard"
+  },
+  "names": {
+    "sv": "Fjällvråk",
+    "en": "Rough-legged Buzzard",
+    "scientific": "Buteo lagopus"
+  },
+  "family": {
+    "latin": "Accipitridae",
+    "sv": "Hökar"
+  },
+  "group": "raptors",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26407/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "David A Mitchell",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Buteo_lagopus_(45356696964).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26407/extra.webp",
+      "width": 1200,
+      "height": 799,
+      "author": "David A Mitchell",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Buteo_lagopus_(46030903972).jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Fjällvråk",
+      "revision": "59200674"
+    },
+    "en": {
+      "title": "Rough-legged buzzard",
+      "revision": "1368889176"
+    },
+    "de": {
+      "title": "Raufußbussard",
+      "revision": "254845170"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2480524,
+    "totalReports": 151632,
+    "months": [
+      69,
+      70,
+      43,
+      26,
+      6,
+      4,
+      5,
+      5,
+      39,
+      100,
+      68,
+      68
+    ],
+    "counties": {
+      "SE-K": 34,
+      "SE-W": 46,
+      "SE-X": 22,
+      "SE-I": 21,
+      "SE-N": 38,
+      "SE-Z": 65,
+      "SE-F": 31,
+      "SE-H": 49,
+      "SE-G": 21,
+      "SE-BD": 45,
+      "SE-T": 80,
+      "SE-E": 51,
+      "SE-M": 34,
+      "SE-D": 68,
+      "SE-AB": 46,
+      "SE-C": 69,
+      "SE-S": 56,
+      "SE-AC": 46,
+      "SE-Y": 32,
+      "SE-U": 100,
+      "SE-O": 34
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i oktober.",
+        "Rapporteras sällan i maj till augusti.",
+        "Andelen av alla fågelrapporter är högst i Västmanland, Örebro och Uppsala."
+      ],
+      "en": [
+        "Reported most in October.",
+        "Rarely reported in May to August.",
+        "Its share of all bird reports is highest in Västmanland, Örebro and Uppsala."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        22157,
+        15681,
+        17522,
+        16546,
+        4172,
+        1766,
+        1424,
+        1441,
+        12892,
+        32293,
+        13965,
+        11390
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 18192,
+        "SE-AB": 16935,
+        "SE-C": 13909,
+        "SE-H": 13839,
+        "SE-M": 12444,
+        "SE-D": 11180,
+        "SE-T": 8107,
+        "SE-U": 7805,
+        "SE-E": 7478,
+        "SE-N": 6142,
+        "SE-AC": 4789,
+        "SE-F": 4318,
+        "SE-W": 4087,
+        "SE-S": 4083,
+        "SE-BD": 3940,
+        "SE-Z": 3244,
+        "SE-Y": 1653,
+        "SE-G": 1614,
+        "SE-X": 1542,
+        "SE-I": 1323,
+        "SE-K": 1042
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  }
+}

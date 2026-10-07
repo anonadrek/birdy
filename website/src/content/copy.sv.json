@@ -14,11 +14,13 @@
     "guide": "Uppslagsverket",
     "privacy": "Integritet",
     "faq": "Frågor",
+    "species": "Arter",
     "switchLang": "EN",
     "switchLangHref": "/",
     "getApp": "Hämta appen",
     "menuOpen": "Öppna menyn",
-    "menuClose": "Stäng menyn"
+    "menuClose": "Stäng menyn",
+    "skipToContent": "Hoppa till innehållet"
   },
   "hero": {
     "kicker": "Fågelguide och fältdagbok",
@@ -201,7 +203,8 @@
     ],
     "mapCaption": "Birdy känner igen fåglar i hela Europa, från trädgårdens stammisar till sällsynta gäster.",
     "fallbackAlt": "Karta över Europa där länderna som Birdy täcker är ifyllda i rost",
-    "attribution": "© MapTiler © OpenStreetMap contributors"
+    "attribution": "© MapTiler © OpenStreetMap contributors",
+    "browse": "Bläddra bland arterna"
   },
   "premium": {
     "kicker": "Birdy Premium",
@@ -268,6 +271,180 @@
     "note": "vi ses därute",
     "sub": "Gratis att ladda ner. Inget konto. Fungerar utan täckning."
   },
+  "species": {
+    "allChip": "Alla arter",
+    "groupsLabel": "Grupper",
+    "searchLabel": "Sök art",
+    "searchPlaceholder": "Sök art",
+    "searchSubmit": "Sök",
+    "kicker": "Uppslagsverket",
+    "hubHeadline": "Fåglar i Sverige och *Europa*",
+    "hubLead": "{n} vanliga fåglar med foton, kännetecken och läten. Alla finns också i appens uppslagsverk, och med appen kan du känna igen fåglar på plats.",
+    "hubLeadOne": "1 vanlig fågel med foton, kännetecken och läten. Den finns också i appens uppslagsverk, och med appen kan du känna igen fåglar på plats.",
+    "hubLeadEmpty": "De första artsidorna är på väg: korta, källgranskade porträtt av Sveriges och Europas vanligaste fåglar, med foton, kännetecken och läten.",
+    "hubGroups": "Grupperna",
+    "hubCompare": "Lätta att blanda ihop",
+    "hubAll": "Alla arter från A till Ö",
+    "hubAbout": "Så gör vi artsidorna",
+    "noResults": "Ingen art matchar sökningen.",
+    "groupSpecies": "Arterna",
+    "countOne": "1 art",
+    "countMany": "{n} arter",
+    "titleSpecies": "{name}: kännetecken, läte och foton | Birdy",
+    "titleSpeciesShort": "{name}: kännetecken och läte | Birdy",
+    "titleGroup": "{group}: {count} med foton och kännetecken | Birdy",
+    "titleGroupShort": "{group}: arter och kännetecken | Birdy",
+    "titleHub": "Fåglar i Sverige och Europa: {count} med foton | Birdy",
+    "titleHubEmpty": "Fåglar i Sverige och Europa: nya artsidor på väg | Birdy",
+    "titleCompare": "{a} eller {b}? Så skiljer du dem åt | Birdy",
+    "titleCompareShort": "{a} eller {b}? | Birdy",
+    "descGroup": "{group}: {count} med foton, kännetecken och läten. Lär dig skilja dem åt i fält, och känn igen dem på plats med appen Birdy.",
+    "descGroupOne": "{group}: 1 art med foton, kännetecken och läten. Lär dig känna igen den i fält, och identifiera den på plats med appen Birdy.",
+    "descHub": "Bläddra bland {n} vanliga fåglar i Sverige och Europa. Foton, kännetecken och läten, sorterade i samma grupper som i appen Birdy.",
+    "descHubOne": "Bläddra bland 1 vanlig fågel i Sverige och Europa. Foton, kännetecken och läten, sorterade i samma grupper som i appen Birdy.",
+    "descHubEmpty": "Artsidor för Sveriges och Europas vanligaste fåglar är på väg: foton, kännetecken och läten, sorterade i samma grupper som i appen Birdy.",
+    "crumbLabel": "Brödsmulor",
+    "crumbHome": "Birdy",
+    "crumbHub": "Arter",
+    "facts": {
+      "scientific": "Vetenskapligt namn",
+      "family": "Familj",
+      "sweden": "I Sverige",
+      "size": "Storlek",
+      "swedishRedList": "Svenska rödlistan 2025",
+      "iucn": "Global rödlista (IUCN)"
+    },
+    "statusLabels": {
+      "resident": "Stannfågel",
+      "breeding_migrant": "Flyttfågel, häckar här",
+      "partial_migrant": "Delvis flyttfågel, häckar här",
+      "passage": "Ses under flyttningen",
+      "winter_visitor": "Vintergäst",
+      "rare_visitor": "Sällsynt gäst",
+      "absent": "Förekommer inte"
+    },
+    "redListLabels": {
+      "RE": "Nationellt utdöd",
+      "CR": "Akut hotad",
+      "EN": "Starkt hotad",
+      "VU": "Sårbar",
+      "NT": "Nära hotad",
+      "DD": "Kunskapsbrist",
+      "not_listed": "Inte rödlistad"
+    },
+    "iucnLabels": {
+      "LC": "Livskraftig",
+      "NT": "Nära hotad",
+      "VU": "Sårbar",
+      "EN": "Starkt hotad",
+      "CR": "Akut hotad",
+      "EW": "Utdöd i vilt tillstånd",
+      "EX": "Utdöd",
+      "DD": "Kunskapsbrist"
+    },
+    "headMarks": "Så känner du igen den",
+    "headVoice": "Läte",
+    "headWhere": "Var och när",
+    "headBehaviour": "Föda och beteende",
+    "headLookAlikes": "Kan förväxlas med",
+    "compareLink": "Jämför {a} och {b}",
+    "chartTitle": "När ses den i Sverige?",
+    "chartCaption": "Andel av alla fågelrapporter per månad i Artportalen 2016 till 2025.",
+    "mapTitle": "Var rapporteras den?",
+    "mapCaption": "Andel av alla fågelrapporter per län i Artportalen 2016 till 2025.",
+    "mapLegend": ["Inga rapporter", "Liten andel", "Mellanstor andel", "Stor andel"],
+    "monthLetters": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+    "monthNames": ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"],
+    "moreFamily": "Fler {family}",
+    "moreGroup": "Fler {group}",
+    "moreOther": "Fler övriga fåglar",
+    "appHeadline": "Osäker på vad du ser?",
+    "appTextBoth": "Birdy känner igen arten på foto eller läte, direkt i telefonen och utan täckning.",
+    "appTextSound": "Birdy känner igen arten på lätet, direkt i telefonen och utan täckning.",
+    "appTextPhoto": "Birdy känner igen arten på foto, direkt i telefonen och utan täckning.",
+    "appTextNone": "Birdy hjälper dig känna igen fåglarna omkring dig på foto och läte, direkt i telefonen och utan täckning.",
+    "plate": "Pl. {n}",
+    "photoCredit": "Foto:",
+    "via": "via",
+    "unknownAuthor": "okänd fotograf",
+    "recordingLabel": "Inspelning: {name}",
+    "recordingCredit": "Inspelning:",
+    "unknownRecordist": "okänd upphovsperson",
+    "edited": "bearbetad",
+    "trimmedEdited": "klippt och bearbetad",
+    "resized": "nedskalad",
+    "licensePublicDomain": "public domain",
+    "textCredit": "Texten är skriven med AI ur fakta från Wikipedia och får delas under",
+    "sources": "Källor",
+    "articleSv": "svenska artikeln",
+    "articleEn": "engelska artikeln",
+    "articleDe": "tyska artikeln",
+    "dataCreditReports": "Rapportdata: Artportalen (SLU Artdatabanken) via {gbif}, 2016 till 2025.",
+    "dataCreditRedList": "Rödlista: Rödlistade arter i Sverige 2025, SLU Artdatabanken via {gbif}.",
+    "reviewed": "Kontrollerad mot källorna {date}.",
+    "aboutLink": "Så gör vi artsidorna",
+    "reportError": "Hittade du ett fel? Skriv till oss.",
+    "reportSubject": "Fel på artsidan: {name}",
+    "reportSubjectCompare": "Fel på jämförelsesidan: {name}",
+    "altHero": "{name} ({scientific})",
+    "altExtra": "{name}, ytterligare foto",
+    "previewBanner": "Förhandsvisning, inte publicerad",
+    "compareKicker": "Lätta att blanda ihop",
+    "compareHeadline": "{a} eller *{b}*?",
+    "compareItem": "{a} eller {b}",
+    "compareTable": "Så skiljer du dem åt",
+    "compareFeature": "Kännetecken",
+    "compareChart": "När ses de?",
+    "compareApp": "Fortfarande osäker?",
+    "chartSeriesSentence": "{name}: {text}"
+  },
+  "speciesAbout": {
+    "title": "Så gör vi artsidorna: källor och kontroll | Birdy",
+    "description": "Så skrivs Birdys artsidor: källorna, hur AI används, hur fakta kontrolleras, vilka licenser som gäller och hur du rapporterar fel.",
+    "crumb": "Så gör vi artsidorna",
+    "headline": "Så gör vi *artsidorna*",
+    "lead": "Varje artsida bygger på flera källor och kontrolleras i flera steg innan den publiceras. Det mesta sköts automatiskt, och det som sticker ut avgörs av en människa. Så här går det till.",
+    "sections": [
+      {
+        "heading": "Källorna",
+        "paragraphs": [
+          "Texterna bygger på Wikipedias artiklar om arten på svenska, engelska och tyska, i den mån arten har en artikel på språket.",
+          "Diagrammet över när arten ses och kartan över var den rapporteras räknas fram ur fågelrapporterna i Artportalen 2016 till 2025. Artportalen är Sveriges rapportsystem för fynd av växter, djur och svampar, och SLU Artdatabanken delar rapporterna öppet via den internationella databasen GBIF. Siffrorna visar artens andel av alla fågelrapporter, så att arten inte ser vanligare ut i en viss månad eller ett visst län bara för att fler är ute och skådar där och då. Har arten färre än 200 rapporter visas varken diagram eller karta.",
+          "Den svenska rödlistestatusen kommer från SLU Artdatabankens Rödlistade arter i Sverige 2025, också via GBIF, och den globala från IUCN:s rödlista via Wikidata. Foton och inspelningar kommer från Wikimedia Commons."
+        ]
+      },
+      {
+        "heading": "Så används AI",
+        "paragraphs": [
+          "Språkmodellen Claude Opus 5.5 från Anthropic läser artiklarna och plockar ut fakta om bland annat utseende, läte, miljö och förekomst i Sverige. Varje faktum ska ha ett ordagrant citat ur någon av artiklarna, och ett program kontrollerar att citatet verkligen finns där. Fakta utan giltigt citat stryks. Blir det fler än 30 behåller programmet 30 och tar dem turvis från ämnena, så att inget ämne trängs ut.",
+          "Texten på sidan skrivs sedan av samma modell, som bara får se de fakta som har klarat kontrollen nedan, inte artiklarna. En annan modell, Claude Sonnet 5, läser därefter varje mening och jämför den med de fakta och citat den bygger på. En mening som inte stöds skrivs om en gång, och stöds den fortfarande inte stryks den.",
+          "Diagrammet, kartan och meningarna under dem räknas fram av kod direkt ur datan, och rödlistestatusen hämtas på samma sätt, utan någon språkmodell."
+        ]
+      },
+      {
+        "heading": "Kontrollen",
+        "paragraphs": [
+          "Innan texten skrivs kontrollerar Claude Sonnet 5, alltså en annan modell än den som plockade ut fakta, varje faktum mot dess citat och stycket runt citatet i artikeln. Fakta som inte stöds fullt ut stryks. Kod jämför dessutom tal som längd, vingbredd, vikt och antal ägg mellan artiklarna på de olika språken, och artens status i Sverige, till exempel stannfågel eller vintergäst, med rapporterna i Artportalen och den svenska rödlistan.",
+          "Inspelningen kontrolleras med ljudmodellen som känner igen läten i Birdy-appen. Känner modellen inte igen arten prövas upp till tre andra inspelningar från Wikimedia Commons, och annars visas ingen inspelning.",
+          "En sida där ingen kontroll hittar något publiceras automatiskt. Det som inte går att avgöra automatiskt väntar på ett beslut av Albin Abrahamsson, som har byggt Birdy, innan sidan publiceras: till exempel en status som kontrollen strök, tal som skiljer sig mellan artiklarna, en status som inte stämmer med rapporterna, eller en art som ljudmodellen inte känner till eller bara känner igen svagt. Efter publiceringen läser han dessutom ett löpande stickprov, två av varje 40 publicerade artsidor. Datumet för den senaste kontrollen står längst ned på varje artsida."
+        ]
+      },
+      {
+        "heading": "Licenserna",
+        "paragraphs": [
+          "Texterna på art- och jämförelsesidorna är skrivna med AI ur fakta från Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy och Wikipediaartiklarna som källor och delar vidare under samma licens. Varje sida länkar till artiklarna i den version texten bygger på.",
+          "Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem. Fotona är nedskalade, i övrigt oförändrade. Inspelningarna är bearbetade (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet.",
+          "Rapportdatan från Artportalen och den svenska rödlistan är fri att använda under CC0 och hämtas via GBIF. CC0 kräver ingen källhänvisning, men varje sida anger ändå källan."
+        ]
+      },
+      {
+        "heading": "Rättelser",
+        "paragraphs": [
+          "Längst ned på varje artsida finns länken ”Hittade du ett fel? Skriv till oss.” Du kan också skriva direkt till {email}, gärna med en länk till sidan. Stämmer det rättar vi sidan och sätter ett nytt kontrolldatum."
+        ]
+      }
+    ]
+  },
   "footer": {
     "tagline": "Känn igen fågeln. Bevara stunden.",
     "explore": "Utforska",
@@ -281,8 +458,9 @@
     "otherLanguage": "English",
     "copyright": "© 2026 Birdy · Skapad i Sverige",
     "builtBy": "Byggd av",
-    "workshop": "Från samma verkstad",
-    "loopleadLine": "HR-verktyg för chefer i växande bolag"
+    "species": "Arter",
+    "allSpecies": "Alla arter från A till Ö",
+    "commonSpecies": "Vanliga arter"
   },
   "alt": {
     "wordmark": "Birdys ordbild",

@@ -1,6 +1,8 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
+import { comparisonsDir, speciesDir } from './lib/species-source.mjs';
+import { comparisonRecord, speciesRecord } from './lib/species-schema.mjs';
 
 const fieldNotes = defineCollection({
   loader: glob({
@@ -29,4 +31,24 @@ const fieldNotes = defineCollection({
   }),
 });
 
-export const collections = { fieldNotes };
+// Species pages (spec 2026-09-25 appendix C and D). The pipeline writes src/data/species/*.json and
+// src/data/comparisons/*.json; SPECIES_FIXTURES=1 reads the test data in tests/fixtures/ instead. The
+// schemas live in src/lib/species-schema.mjs (plain JS, shared with the unit tests): the full page
+// contract for records the site may build, an envelope for every other record.
+//
+// The entry id is the file name (Q25485, Q25404_Q25485). The glob loader's default id is the data's
+// `slug` field when it has one, and here `slug` is an object ({ sv, en }): every file would get the
+// id "[object Object]" and all but one entry would be lost.
+const idFromFileName = ({ entry }: { entry: string }) => entry.replace(/\.json$/, '');
+
+const species = defineCollection({
+  loader: glob({ pattern: '*.json', base: `./${speciesDir()}`, generateId: idFromFileName }),
+  schema: speciesRecord,
+});
+
+const comparisons = defineCollection({
+  loader: glob({ pattern: '*.json', base: `./${comparisonsDir()}`, generateId: idFromFileName }),
+  schema: comparisonRecord,
+});
+
+export const collections = { fieldNotes, species, comparisons };

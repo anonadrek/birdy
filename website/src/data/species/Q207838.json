@@ -1,0 +1,919 @@
+{
+  "qid": "Q207838",
+  "status": "ok",
+  "publish": true,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Entitan är 11,5–13 centimeter lång, har ett vingspann på 18–20 centimeter och väger cirka 11 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en längd på 11,5–13 centimeter, ett vingspann på 18–20 centimeter och en vikt på cirka 11 gram."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "I storlek ligger entitan mellan talgoxe och blåmes.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Sumpfmeise steht mit 11,5 bis 13 cm Körperlänge in der Größe zwischen Kohl- und Blaumeise."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Entitan är en liten kompakt fågel med proportionellt stort huvud och fyllig nacke.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Entitan är en liten kompakt fågel, med ett proportionellt stort huvud och fyllig nacke."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den har en svart hätta på huvudet som sträcker sig ned till ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en svart hätta på huvudet som sträcker sig ned till ögat."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Kinden är vit och under den korta näbben sitter en ofta liten svart haklapp.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kinden är vit och den har en ofta liten svart haklapp under den grå korta näbben."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Ovansidan är brungrå och undersidan ljusare, gråbeige till vit.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ovansidan är brungrå och undersidan ljusare gråbeige till vit."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Entitans hätta är glansigt svart.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "entitans hätta är glansigt svart och talltitans matt"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Entitan saknar ljusa partier på armpennorna som bildar ett ljust stråk på den hopfällda vingen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Entitan saknar också de ljusa partier på armpennorna som bildar ett ljust stråk på vingen när fågeln sitter."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Ben och fötter är blåaktigt grå till skifferfärgade.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Beine und Füße sind bläulich grau bis schieferfarben."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Könen är lika.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ovansidan är brungrå och undersidan ljusare gråbeige till vit. Den har en kort konisk och kullrig näbb. Yttre tån ungefär lika lång som innertån. Klorna är krökta, hoptryckta och spetsiga. Könen är lika."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Unga fåglar liknar adulta men har mattare svart hätta och haklapp, gråare ovansida och ljusare undersida.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Juveniles are very similar to adults, but with a duller black cap and bib, more greyish upperparts and paler underparts"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Entitan bestäms bäst på lätet, ett kort explosivt dubbelslag \"pitjä\" med betoning på andra stavelsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "bestäms i fält bäst på lätet, ett kort, explosivt dubbelslag \"pitjä\" eller \"pitchii\" med betoning på andra stavelsen/tonen"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sången kan vara ett ringande \"schip-schip-schip\" eller ett mjukare \"tu-tu-tu-tu-tu\".",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Some of the more common songs include a typical tit-like, ringing, \"schip-schip-schip-schip-ship\", a more liquid \"tu-tu-tu-tu-tu\""
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Ett vanligt kontaktläte är ett spetsigt, högt \"tzie\" eller \"szie\".",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Ebenfalls häufig zu hörender Stimmfühlungslaut ist ein spitzes hohes tzie oder szie."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Upprörd entita lägger till en \"dä-dä-dä\"-serie som tydligt skiljer sig från talltitans nasala läte.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "In Erregung folgt darauf (oder auf das Pjiet-scha) eine dä-dä-dä Reihe, die sich deutlich vom nasalen däh der Weidenmeise unterscheidet"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "lookalike",
+      "sv": "Talltitor i Fennoskandien är färglöst grå ovan och vitare under, medan entitor verkar varmare brunaktiga.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "So sind beispielsweise die Weidenmeisen Fennoskandiens (P. montanus borealis) oberseits eher farblos grau und unterseits weißlicher. Dagegen wirken Sumpfmeisen insgesamt wärmer bräunlich."
+        }
+      ],
+      "other": {
+        "scientific": "P. montanus borealis"
+      }
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Entitan föredrar ogallrad, fuktig lövskog och ses ofta vid kärr, strandskogar och i större trädgårdar med undervegetation.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Entitan föredrar lövskog som är ogallrad och fuktig och uppträder ofta vid kärr, strandskogar och i större trädgårdar med undervegetation."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Trots namnet förekommer entitan i många typer av miljöer, även i torr skogsmark.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den förekommer trots sitt namn i många olika typer av habitat, även i torr skogsmark."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Utanför häckningstiden ses den ofta i barrskog eller i häckar i öppnare landskap.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Außerhalb der Brutzeit ist die Art bezüglich der Habitate weniger wählerisch. Man kann sie dann auch oft in Nadelwäldern oder in Hecken in der offeneren Landschaft antreffen."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Entitan har begränsad utbredning i Sverige och saknas i stort sett norr om Dalälven samt på Gotland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Entitan har begränsad utbredning i Sverige och saknas i stort sett norr om Dalälven och saknas också på Gotland."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "År 2018 uppskattades det svenska beståndet till 90 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 90 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Sedan 2020 är entitan rödlistad som nära hotad i Sverige efter en minskning med 10–30 % på tio år.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sedan 2020 listas den återigen som nära hotad efter data som visar att den minskat med 10–30% de senaste tio åren."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "I Sverige lagrar entitan föda mest mellan september och slutet av februari, med en topp i september–oktober.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In Sweden, storing food is most frequent between September and late February, with the peak in this behaviour occurring from September to October."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Entitan bygger boet i hål i träd och gärna i holkar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den placerar sitt bo i hål som den finner i träd och gärna i holkar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Boet består av hår och ull på en bädd av mossa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet byggs av båda könen och består av hår och ull som läggs på en bädd av mossa."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Honan ruvar äggen i snitt 13–15 dygn och matas då av hanen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ruvar äggen i snitt 13–15 dygn och matas då av hanen."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Sommartid äter entitan mest insekter, men på hösten och vintern äter den gärna frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Entitans föda består sommartid mest av insekter, men den äter gärna frön under hösten och vintern."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Entitan hamstrar frön som den gömmer i barksprickor och liknande ställen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sommartid förekommer det att entitan hamstrar frön som den gömmer i barksprickor och dylikt."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Entitan är en utpräglad stannfågel som stannar i sitt revir även under kalla vintrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Entitan är en extrem stannfågel som även under kalla vintrar stannar kvar i sitt revir."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "I blandade vinterflockar av mesar finns sällan mer än en eller två entitor.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In mixed winter tit flocks, seldom more than one or two marsh tits are present"
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Entitan har begränsad utbredning i Sverige och saknas i stort sett norr om Dalälven och saknas också på Gotland."
+        },
+        {
+          "article": "sv",
+          "quote": "Entitan är en extrem stannfågel som även under kalla vintrar stannar kvar i sitt revir."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december och januari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från 19 av 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Entitan är en liten, kompakt mes som i storlek ligger mellan talgoxe och blåmes.",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Den ses ofta i fuktig lövskog, vid kärr, i strandskogar och i större trädgårdar med undervegetation.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Glansigt svart hätta ned till ögat, vita kinder och ofta en liten svart haklapp",
+          "factIds": [
+            "f04",
+            "f05",
+            "f07"
+          ]
+        },
+        {
+          "text": "Brungrå ovansida och ljusare, gråbeige till vit undersida",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Saknar ljust stråk på den hopfällda vingen",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Könen är lika, unga fåglar har mattare svart hätta och haklapp",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Entitan bestäms bäst på lätet, ett kort och explosivt dubbelslag \"pitjä\" med betoning på andra stavelsen.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Ett vanligt kontaktläte är ett spetsigt, högt \"tzie\" eller \"szie\".",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Sången kan vara ett ringande \"schip-schip-schip\" eller ett mjukare \"tu-tu-tu-tu-tu\".",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Upprörd lägger den till en \"dä-dä-dä\"-serie.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Entitan är stannfågel i Sverige men har begränsad utbredning och saknas i stort sett norr om Dalälven och på Gotland.",
+          "factIds": [
+            "s01",
+            "f20"
+          ]
+        },
+        {
+          "text": "Den rapporteras från 19 av 21 län och rapporteras mest i december och januari.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden ses den ofta i barrskog eller i häckar i öppnare landskap.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Arten är rödlistad som nära hotad (NT).",
+          "factIds": [
+            "d03",
+            "f22"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Sommartid äter entitan mest insekter, men på hösten och vintern äter den gärna frön.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Den hamstrar frön i barksprickor och liknande ställen, mest mellan september och slutet av februari med en topp i september och oktober.",
+          "factIds": [
+            "f28",
+            "f23"
+          ]
+        },
+        {
+          "text": "Den stannar i sitt revir även under kalla vintrar, och i blandade vinterflockar av mesar finns sällan mer än en eller två entitor.",
+          "factIds": [
+            "f29",
+            "f30"
+          ]
+        },
+        {
+          "text": "Boet byggs i hål i träd och gärna i holkar.",
+          "factIds": [
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "P. montanus borealis",
+          "text": [
+            {
+              "text": "Talltitor i Fennoskandien är färglöst grå ovan och vitare under, medan entitan ser varmare brunaktig ut.",
+              "factIds": [
+                "f16"
+              ]
+            },
+            {
+              "text": "Upprörd entita har en \"dä-dä-dä\"-serie som tydligt skiljer sig från talltitans nasala läte.",
+              "factIds": [
+                "f15"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Entita: så känner du igen den på hätta och haklapp, hur lätet och sången låter, när den ses och hur den skiljs från talltitan.",
+      "facts": {
+        "size": {
+          "value": "11,5 till 13 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Marsh Tit is a small, compact tit that sits between Great Tit and Blue Tit in size.",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "It is often seen in damp broadleaved woodland, by marshes, in waterside woods and in larger gardens with undergrowth.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Glossy black cap reaching down to the eye, white cheeks and often a small black bib",
+          "factIds": [
+            "f04",
+            "f05",
+            "f07"
+          ]
+        },
+        {
+          "text": "Brownish grey upperparts and paler, greyish beige to white underparts",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "No pale panel on the folded wing",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Sexes alike, young birds have a duller black cap and bib",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The Marsh Tit is best identified by its call, a short, explosive double note \"pitjä\" stressed on the second syllable.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "A common contact call is a sharp, high \"tzie\" or \"szie\".",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "The song can be a ringing \"schip-schip-schip\" or a softer \"tu-tu-tu-tu-tu\".",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "When agitated it adds a \"dä-dä-dä\" series.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Marsh Tit is resident in Sweden but has a limited range and is largely absent north of the Dalälven river and on Gotland.",
+          "factIds": [
+            "s01",
+            "f20"
+          ]
+        },
+        {
+          "text": "It is reported from 19 of 21 counties and is reported most in December and January.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it is often seen in conifer forest or in hedges in more open country.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "It is red-listed as Near Threatened (NT).",
+          "factIds": [
+            "d03",
+            "f22"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "In summer it eats mostly insects, but in autumn and winter readily seeds.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "It hoards seeds in bark crevices and similar places, mostly from September to the end of February, peaking in September and October.",
+          "factIds": [
+            "f28",
+            "f23"
+          ]
+        },
+        {
+          "text": "It stays in its territory even in cold winters, and mixed winter tit flocks rarely hold more than one or two Marsh Tits.",
+          "factIds": [
+            "f29",
+            "f30"
+          ]
+        },
+        {
+          "text": "It nests in tree holes and readily in nest boxes.",
+          "factIds": [
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Marsh Tit: how to recognise it by its cap and bib, what its call and song sound like, when it is seen and how to tell it from Willow Tit.",
+      "facts": {
+        "size": {
+          "value": "11.5 to 13 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "efc978a3693cdef6"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:18:38.435410+00:00",
+      "factsHash": "efc978a3693cdef6"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "entita",
+    "en": "marsh-tit"
+  },
+  "names": {
+    "sv": "Entita",
+    "en": "Marsh Tit",
+    "scientific": "Poecile palustris"
+  },
+  "family": {
+    "latin": "Paridae",
+    "sv": "Mesar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q207838/hero.webp",
+      "width": 1600,
+      "height": 1909,
+      "author": "Blondinrikard Fröberg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marsh_tit,_Poecile_palustris,_Entita.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q207838/extra.webp",
+      "width": 1200,
+      "height": 965,
+      "author": "gailhampshire",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marsh_Tit_Poecile_palustris_(51977059969).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q207838/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Vladimir Yu. Arkhipov, Arkhivov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Poecile_palustris.ogg",
+    "sha256": "75d5d30bfb0f07e2db8b2f1b9fd35ecc45e584a3d20fbc6dc17b28dd89b5ddec"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Entita",
+      "revision": "59400833"
+    },
+    "en": {
+      "title": "Marsh tit",
+      "revision": "1360887406"
+    },
+    "de": {
+      "title": "Sumpfmeise",
+      "revision": "265343303"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2487843,
+    "totalReports": 192778,
+    "months": [
+      100,
+      78,
+      44,
+      24,
+      12,
+      10,
+      16,
+      22,
+      29,
+      39,
+      78,
+      99
+    ],
+    "counties": {
+      "SE-K": 80,
+      "SE-W": 54,
+      "SE-X": 10,
+      "SE-I": 0,
+      "SE-N": 34,
+      "SE-Z": 0,
+      "SE-F": 86,
+      "SE-H": 38,
+      "SE-G": 100,
+      "SE-BD": 1,
+      "SE-T": 78,
+      "SE-E": 58,
+      "SE-M": 44,
+      "SE-D": 92,
+      "SE-AB": 56,
+      "SE-C": 69,
+      "SE-S": 63,
+      "SE-AC": 1,
+      "SE-Y": 1,
+      "SE-U": 71,
+      "SE-O": 83
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december och januari.",
+        "Rapporteras sällan i juni.",
+        "Rapporteras från 19 av 21 län."
+      ],
+      "en": [
+        "Reported most in December and January.",
+        "Rarely reported in June.",
+        "Reported from 19 of the 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        38026,
+        20778,
+        21749,
+        17893,
+        10197,
+        4830,
+        5624,
+        8518,
+        11343,
+        15076,
+        18949,
+        19693
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 46285,
+        "SE-AB": 21762,
+        "SE-M": 17388,
+        "SE-D": 15957,
+        "SE-C": 14602,
+        "SE-F": 12774,
+        "SE-H": 11327,
+        "SE-E": 8938,
+        "SE-T": 8253,
+        "SE-G": 8070,
+        "SE-U": 5882,
+        "SE-N": 5722,
+        "SE-W": 5018,
+        "SE-S": 4817,
+        "SE-K": 2617,
+        "SE-X": 744,
+        "SE-BD": 15,
+        "SE-AC": 1,
+        "SE-Y": 1
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-07"
+}

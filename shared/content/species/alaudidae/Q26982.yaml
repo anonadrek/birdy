@@ -99,7 +99,7 @@ image_refs:
   width: 2400
   height: 1596
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Crested Lark (Galerida cristata),
     Oman.jpg
   commons_filename: Crested Lark (Galerida cristata), Oman.jpg
@@ -108,8 +108,7 @@ image_refs:
   width: 1800
   height: 1800
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Crested lark (Galerida cristata
     cristata) Hungary.jpg
   commons_filename: Crested lark (Galerida cristata cristata) Hungary.jpg
@@ -118,8 +117,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Skander_zarrad" title="User:Skander
-    zarrad">Skander zarrad</a>
+  author: Skander zarrad
   source_url: https://commons.wikimedia.org/wiki/File:Galerida cristata - tunisia.jpg
   commons_filename: Galerida cristata - tunisia.jpg
 review_status: auto

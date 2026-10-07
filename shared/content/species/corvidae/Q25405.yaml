@@ -102,8 +102,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
+  author: Nicolas Weghaupt
   source_url: https://commons.wikimedia.org/wiki/File:Corvus cornix Vienna.JPG
   commons_filename: Corvus cornix Vienna.JPG
 - role: secondary
@@ -111,21 +110,23 @@ image_refs:
   width: 1800
   height: 1292
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Corvus cornix Oulu 20160130.JPG
   commons_filename: Corvus cornix Oulu 20160130.JPG
 - role: secondary
   path: Q25405/secondary-2.webp
-  width: 1225
-  height: 1800
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jebulon" title="User:Jebulon">Jebulon</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Corvus cornix amiral Pericles
-    Ioannidis Rhodes.jpg
-  commons_filename: Corvus cornix amiral Pericles Ioannidis Rhodes.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: Donald Judge
+  source_url: https://commons.wikimedia.org/wiki/File:18.7.22 Vienna 260 (52226723911).jpg
+  commons_filename: 18.7.22 Vienna 260 (52226723911).jpg
 review_status: approved
-review_notes: Gråkråka — den vanligaste kråkan i SE; ny rad tillagd 2026-05-12 (IOC corone/cornix-split).
+review_notes: 'Gråkråka — den vanligaste kråkan i SE; ny rad tillagd 2026-05-12 (IOC corone/cornix-split).
   Hero Vienna är typisk gråkråka-färgning (grå rygg/svart huvud + vingar).
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-12T20:03:33.988429+00:00'
 sources:
   wikipedia_sv_revision: '59133938'

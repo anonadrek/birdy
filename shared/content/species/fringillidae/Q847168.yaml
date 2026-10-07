@@ -6,8 +6,9 @@ taxonomy:
   genus: Fringilla
   ioc_order: Passeriformes
 names:
-  sv: Blåfink
+  sv: Teneriffablåfink
   en: Tenerife Blue Chaffinch
+  former_sv: Blåfink
 abundance: ovanlig
 iucn_status: NT
 season:
@@ -30,18 +31,18 @@ regions:
 - DK
 - DE
 description:
-  sv: '# Blåfink
+  sv: '# Teneriffablåfink
 
 
-    Blåfinken är en liten fågel som är endemisk för Kanarieöarna och utgör djursymbolen
-    för ön Teneriffa. Arten tillhör familjen finkar och är närbesläktad med den vanligare
-    boffinken.
+    Teneriffablåfinken är en liten fågel som är endemisk för Kanarieöarna och utgör
+    djursymbolen för ön Teneriffa. Arten tillhör familjen finkar och är närbesläktad
+    med den vanligare boffinken.
 
 
-    Blåfinken är en diskret fågel som föredrar bergiga områden på högre höjder. Den
-    är känd för sin blåaktiga färgteckning, som skiljer den från andra finkar i regionen.
-    Arten lever huvudsakligen av frön och små växter som den plockar från marken eller
-    från låga växter.
+    Teneriffablåfinken är en diskret fågel som föredrar bergiga områden på högre höjder.
+    Den är känd för sin blåaktiga färgteckning, som skiljer den från andra finkar
+    i regionen. Arten lever huvudsakligen av frön och små växter som den plockar från
+    marken eller från låga växter.
 
 
     Denna endemiska art är ett viktigt kännetecken för Kanarieöarnas unika fauna och
@@ -88,22 +89,18 @@ migration:
 image_refs:
 - role: hero
   path: Q847168/hero.webp
-  width: 1597
-  height: 2400
+  width: 2400
+  height: 1596
   license: Public domain
-  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Henrik_Gr%C3%B8nvold" class="extiw"
-    title="w:en:Henrik Grønvold"><span title="Danish illustrator (1858–1940)">Henrik
-    Grønvold</span></a></bdi>
-  source_url: https://commons.wikimedia.org/wiki/File:Fringilla teydea polatzeki by
-    Gronvold.jpg
-  commons_filename: Fringilla teydea polatzeki by Gronvold.jpg
+  author: Bartkauz at German Wikipedia
+  source_url: https://commons.wikimedia.org/wiki/File:Teidefink.jpg
+  commons_filename: Teidefink.jpg
 - role: secondary
   path: Q847168/secondary-1.webp
   width: 1800
   height: 1729
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/35142635@N05">Silversyrpher</a>
-    from Scotland, UK
+  author: Silversyrpher
   source_url: https://commons.wikimedia.org/wiki/File:Fringilla teydea Pinar de Chio.jpg
   commons_filename: Fringilla teydea Pinar de Chio.jpg
 - role: secondary
@@ -111,7 +108,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Danielbrockner" title="User:Danielbrockner">Danielbrockner</a>
+  author: Danielbrockner
   source_url: https://commons.wikimedia.org/wiki/File:Teidefink (Fringilla teydea),
     Männchen.JPG
   commons_filename: Teidefink (Fringilla teydea), Männchen.JPG

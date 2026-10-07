@@ -41,7 +41,7 @@ image_refs:
   width: 2048
   height: 1365
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/hungryholobiont">hungryholobiont</a>
+  author: hungryholobiont
   source_url: https://commons.wikimedia.org/wiki/File:Saunders's Tern (Sternula saundersi),
     Jeddah, Saudi Arabia.jpg
   commons_filename: Saunders's Tern (Sternula saundersi), Jeddah, Saudi Arabia.jpg
@@ -50,8 +50,7 @@ image_refs:
   width: 1800
   height: 1171
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Lintophilip&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Lintophilip (page does not exist)">Lintophilip</a>
+  author: Lintophilip
   source_url: https://commons.wikimedia.org/wiki/File:Saunders's Tern (Sternula saundersi)
     flying, UAE.jpg
   commons_filename: Saunders's Tern (Sternula saundersi) flying, UAE.jpg

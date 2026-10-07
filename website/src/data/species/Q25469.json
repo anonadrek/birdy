@@ -1,0 +1,209 @@
+{
+  "qid": "Q25469",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "stare",
+    "en": "common-starling"
+  },
+  "names": {
+    "sv": "Stare",
+    "en": "Common Starling",
+    "scientific": "Sturnus vulgaris"
+  },
+  "family": {
+    "latin": "Sturnidae",
+    "sv": "Starar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25469/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Judy Gallagher",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:European_Starling_-_Sturnus_vulgaris,_Veteran's_Park,_Woodbridge,_Virginia_(25823769668).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25469/extra.webp",
+      "width": 1200,
+      "height": 956,
+      "author": "gailhampshire",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Starling._Sturnus_vulgaris_-_Flickr_-_gailhampshire.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25469/voice.mp3",
+    "durationSec": 19,
+    "trimmed": false,
+    "author": "Kfrommolt",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sturnus_vulgaris_juveniles_sound_recording.ogg",
+    "sha256": "b70f725f5f3c662000478354fd23d22a1f5e2d917de2095162e5d6947b95d7a8"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Stare",
+      "revision": "59698526"
+    },
+    "en": {
+      "title": "Common starling",
+      "revision": "1375763236"
+    },
+    "de": {
+      "title": "Star (Art)",
+      "revision": "268356619"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 9809229,
+    "totalReports": 400324,
+    "months": [
+      28,
+      46,
+      100,
+      73,
+      54,
+      55,
+      42,
+      42,
+      45,
+      57,
+      38,
+      31
+    ],
+    "counties": {
+      "SE-K": 91,
+      "SE-W": 73,
+      "SE-X": 72,
+      "SE-I": 86,
+      "SE-N": 86,
+      "SE-Z": 40,
+      "SE-F": 81,
+      "SE-H": 83,
+      "SE-G": 89,
+      "SE-BD": 37,
+      "SE-T": 79,
+      "SE-E": 97,
+      "SE-M": 83,
+      "SE-D": 100,
+      "SE-AB": 91,
+      "SE-C": 100,
+      "SE-S": 83,
+      "SE-AC": 57,
+      "SE-Y": 71,
+      "SE-U": 66,
+      "SE-O": 96
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i mars.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in March.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        14899,
+        17218,
+        68367,
+        77003,
+        65940,
+        36484,
+        21427,
+        22078,
+        24627,
+        30437,
+        12940,
+        8678
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 69382,
+        "SE-AB": 45911,
+        "SE-M": 42241,
+        "SE-H": 31963,
+        "SE-C": 27647,
+        "SE-D": 22563,
+        "SE-E": 19435,
+        "SE-N": 18947,
+        "SE-F": 15695,
+        "SE-T": 10981,
+        "SE-G": 9284,
+        "SE-W": 8893,
+        "SE-S": 8193,
+        "SE-AC": 8021,
+        "SE-I": 7488,
+        "SE-U": 7099,
+        "SE-X": 6818,
+        "SE-Y": 4993,
+        "SE-BD": 4456,
+        "SE-K": 3890,
+        "SE-Z": 2722
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

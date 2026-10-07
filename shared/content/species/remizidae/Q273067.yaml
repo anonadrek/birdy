@@ -86,19 +86,17 @@ image_refs:
 - role: hero
   path: Q273067/hero.webp
   width: 2400
-  height: 1590
-  license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Nest Remiz pendulinus.JPG
-  commons_filename: Nest Remiz pendulinus.JPG
+  height: 1785
+  license: CC BY-SA 4.0
+  author: Ігор Червоненко
+  source_url: https://commons.wikimedia.org/wiki/File:Ремез 7113.jpg
+  commons_filename: Ремез 7113.jpg
 - role: secondary
   path: Q273067/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
-    Prego</a> from Moura, Portugal
+  author: José Prego
   source_url: https://commons.wikimedia.org/wiki/File:Chapim-de-faces-pretas (Remiz
     pendulinus) (52712339112).jpg
   commons_filename: Chapim-de-faces-pretas (Remiz pendulinus) (52712339112).jpg
@@ -107,8 +105,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
-    Prego</a> from Moura, Portugal
+  author: José Prego
   source_url: https://commons.wikimedia.org/wiki/File:Chapim-de-faces-pretas (Remiz
     pendulinus) (52712340427).jpg
   commons_filename: Chapim-de-faces-pretas (Remiz pendulinus) (52712340427).jpg

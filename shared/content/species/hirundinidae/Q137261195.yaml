@@ -96,31 +96,30 @@ image_refs:
 - role: hero
   path: Q137261195/hero.webp
   width: 2400
-  height: 1600
-  license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Cecropis rufula, Serbia 101.jpg
-  commons_filename: Cecropis rufula, Serbia 101.jpg
+  height: 1601
+  license: CC BY 4.0
+  author: Annatsach
+  source_url: https://commons.wikimedia.org/wiki/File:Red-rumped Swallow (Cecropis
+    daurica), northern Greece.jpg
+  commons_filename: Red-rumped Swallow (Cecropis daurica), northern Greece.jpg
 - role: secondary
   path: Q137261195/secondary-1.webp
   width: 1800
-  height: 1200
+  height: 1196
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Cecropis rufula, Serbia 001.jpg
-  commons_filename: Cecropis rufula, Serbia 001.jpg
+  author: Paulclee
+  source_url: https://commons.wikimedia.org/wiki/File:Red-rumped swallow in Calpe,
+    Spain - May 2018 01.jpg
+  commons_filename: Red-rumped swallow in Calpe, Spain - May 2018 01.jpg
 - role: secondary
   path: Q137261195/secondary-2.webp
   width: 1800
-  height: 1205
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:David_Perez" title="User:David
-    Perez">David Perez</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Cecropis rufula, nest, Vila
-    Nova de Foz Coa, Portugal 01 by-dpc.jpg
-  commons_filename: Cecropis rufula, nest, Vila Nova de Foz Coa, Portugal 01 by-dpc.jpg
+  height: 1121
+  license: CC BY-SA 4.0
+  author: Zeynel Cebeci
+  source_url: https://commons.wikimedia.org/wiki/File:Cecropis rufula - European Red-rumped
+    Swallow, Adana, Turkey 01.jpg
+  commons_filename: Cecropis rufula - European Red-rumped Swallow, Adana, Turkey 01.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T19:37:46.657883+00:00'

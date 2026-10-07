@@ -1,0 +1,942 @@
+{
+  "qid": "Q25334",
+  "status": "ok",
+  "publish": true,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Rödhaken har kraftigt orangerött bröst och ansikte som omges av blåaktigt grått på halsens och bröstets sidor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett kraftigt orangerött (tegelrött) bröst och ansikte som omges av blåaktigt grått på sidorna av halsen och bröstet."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ovansidan är brunaktig, kroppssidan grå- till brunaktig och buken gråvit.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ovansidan är brunaktig, kroppsidan grå- till brunaktig och buken gråvit."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Den har ganska långa mörkbruna ben, svart spetsig näbb och svart öga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ganska långa mörkbruna ben, svart spetsig näbb och svart öga."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Rödhaken är en liten, rund fågel vars huvud ser stort ut och ofta tycks sakna hals.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är en liten fågel med rund kroppsform, speciellt när den burrar upp fjädrarna. Huvudet ser stort ut och ser ofta ut att sakna hals."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "De övre vingtäckarna har rostgula spetsar som bildar ett tunt gult vingband, tydligast hos unga fåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "de övre vingtäckarna har rostgula spetsar vilket ger den ett tunt gult vingband som är allra tydligast hos juveniler"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Skandinaviska och ryska flyttande rödhakar känns igen på gråare ovansida och mattare orange bröst.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "These migrants can be recognised by the greyish tone of the upper parts of their bodies and duller orange breast."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "En vuxen rödhake är 12,5–14,0 cm lång, har 20–22 cm vingbredd och väger 16–22 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En adult rödhake av nominatformen är 12,5–14,0 centimeter lång, med ett vingspann på 20–22 cm, en stjärt på 5,7–6,2 cm och en vikt på 16–22 gram."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hane och hona är lika både i storlek och fjäderdräkt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika både till storlek och fjäderdräkt."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Unga fåglar saknar rött bröst och är bruna med gul vattring på ovansidan, främst på manteln och huvudet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenila fåglar är bruna på ovansidan med gul vattring, främst på manteln och huvudet."
+        },
+        {
+          "article": "en",
+          "quote": "Juveniles are distinct, being freckled brown all over and lacking the red breast."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Ungfåglar får de första rödaktiga bröstfjädrarna två till tre månader efter att de blivit flygfärdiga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De första två till tre månaderna efter att fåglarna blivit flygfärdiga växer de första rödaktiga fjädrarna ut på bröstet"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Fåglar i första vinterdräkt liknar vuxna men har tydligare gulbruna spetsar på vingtäckarna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "First-winter immatures resemble the adults, except they have more obvious yellow-brown tips to the wing covert feathers, which are inconspicuous or absent in adults."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången beskrivs som en porlande bäck eller porlande tonkaskader med många klara toner och tempoväxlingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rödhakens sång beskrivs ibland som en porlande bäck eller som porlande tonkaskader. Den har många klara toner med lika många tempoväxlingar."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sången inleds ofta med en hög ihållande ton.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ofta inleds sången med en hög ihållande ton."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Locklätet är ett knäppande tick som hos en orolig fågel dras ut i långa serier, tick-ick-ick-ick.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Locklätet är ett knäppande tick. När fågeln är orolig dras lätet ut i långa serier, tick-ick-ick-ick."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Varningslätet liknas ofta vid en moraklocka som dras upp.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det liknas ofta vid en moraklocka som dras upp."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Både hane och hona sjunger under vinterhalvåret, då de håller åtskilda revir.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Både hanen och honan sjunger under vinterhalvåret, då de håller åtskilda revir."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "lookalike",
+      "sv": "Eftersom rödhaken ofta sjunger på kvällen och ibland in på natten förväxlas den ibland med sydnäktergal.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "då de ofta sjunger på kvällen och ibland in på natten, vilket gör att de ibland förväxlas med sydnäktergal (Luscinia megarhynchos)"
+        }
+      ],
+      "other": {
+        "scientific": "Luscinia megarhynchos",
+        "qid": "Q25393"
+      }
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Rödhaken förekommer främst i barr- och blandskog men även i parker och trädgårdar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den förekommer främst i olika typer av barr- och blandskog men uppträder även i parker och trädgårdar"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "I norra Europa föredrar rödhaken granskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rödhaken föredrar granskog i norra Europa"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Det finns uppskattningsvis tre till sex miljoner par i Sverige, vilket gör rödhaken till en av landets vanligaste fåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Man uppskattar att det finns tre till sex miljoner par rödhakar i Sverige vilket gör den till en av Sveriges vanligaste fåglar."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "I Sverige häckar rödhaken i större delen av landet utom i fjälltrakterna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar den i större delen av landet utom i fjälltrakterna."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Rödhaken anländer till Sverige i slutet av mars eller början av april och flyttar i september till november.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som flyttfågel anländer rödhaken i slutet av mars eller början av april till Sverige, och flyttar iväg i september till november"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Enstaka individer övervintrar i södra Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Enstaka individer övervintrar i södra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Boet ligger på marken, dolt i en hålighet, mellan trädrötter eller liknande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sitt bo har den på marken, dolt i någon hålighet, mellan trädrötter eller liknande."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Det skålformade redet byggs av mossa, löv och gräs och fodras med finare gräs, hår och fjädrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Redet, som är skålformat, byggs av mossa, löv och gräs, och fodras med finare gräs, hår och fjädrar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Honan ruvar äggen i 13–15 dygn och båda föräldrarna tar hand om ungarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ruvar äggen i 13–15 dygn och sedan ungarna kläckts tar båda föräldrar hand om dem."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Födan består av spindlar, maskar och insekter, och på hösten och vintern även bär och frukt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På hösten och vintern utökar rödhakarna sin vanliga kost, som består av ryggradslösa djur som spindlar, maskar och insekter, med bär och frukt."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Rödhaken hoppar ofta orädd på marken framför människor och djur för att fånga uppskrämda insekter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "uppträder även mycket orädd hoppande på marken framför människor och djur för att fånga uppskrämda insekter"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Rödhakehanar är kända för ett mycket aggressivt revirbeteende.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rödhakehanar är kända för sitt mycket aggressiva revirbeteende."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Rödhaken flyttar på natten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Rotkehlchen ist ein Nachtzieher"
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som flyttfågel anländer rödhaken i slutet av mars eller början av april till Sverige, och flyttar iväg i september till november"
+        },
+        {
+          "article": "sv",
+          "quote": "Enstaka individer övervintrar i södra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Rödhaken är en liten, rund fågel med kraftigt orangerött bröst och ansikte.",
+          "factIds": [
+            "f04",
+            "f01"
+          ]
+        },
+        {
+          "text": "Den förekommer främst i barr- och blandskog, i norra Europa helst granskog, men även i parker och trädgårdar.",
+          "factIds": [
+            "f18",
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Kraftigt orangerött bröst och ansikte, omgivet av blåaktigt grått på halsens och bröstets sidor",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Brunaktig ovansida, grå till brunaktig kroppssida och gråvit buk",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Liten och rund med stort huvud, svart spetsig näbb och ganska långa mörkbruna ben",
+          "factIds": [
+            "f04",
+            "f03"
+          ]
+        },
+        {
+          "text": "Hane och hona är lika, ungfåglar är bruna med gul vattring och saknar rött bröst",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången är en porlande kaskad av klara toner med tempoväxlingar och inleds ofta med en hög, ihållande ton.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        },
+        {
+          "text": "Locklätet är ett knäppande tick som hos en orolig fågel dras ut i långa serier, tick-ick-ick-ick.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Varningslätet liknas ofta vid en moraklocka som dras upp.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Både hane och hona sjunger under vinterhalvåret.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Rödhaken är delvis flyttfågel och häckar i större delen av Sverige utom i fjälltrakterna.",
+          "factIds": [
+            "s01",
+            "f21"
+          ]
+        },
+        {
+          "text": "Den anländer i slutet av mars eller början av april och flyttar nattetid i september till november.",
+          "factIds": [
+            "f22",
+            "f30"
+          ]
+        },
+        {
+          "text": "Enstaka individer övervintrar i södra Sverige.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "Med uppskattningsvis tre till sex miljoner par är den en av landets vanligaste fåglar.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan består av spindlar, maskar och insekter, och på hösten och vintern även bär och frukt.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Rödhaken hoppar ofta orädd på marken framför människor och djur för att fånga uppskrämda insekter.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Hanarna är kända för ett mycket aggressivt revirbeteende.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Boet ligger dolt på marken, i en hålighet eller mellan trädrötter, och honan ruvar äggen i 13 till 15 dygn.",
+          "factIds": [
+            "f24",
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25393",
+          "text": [
+            {
+              "text": "Rödhaken sjunger ofta på kvällen och ibland in på natten och förväxlas därför ibland med sydnäktergal.",
+              "factIds": [
+                "f17"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Rödhake: så känner du igen arten på fjäderdräkten, hur sången och lätena låter och när den ses i Sverige, plus föda och beteende.",
+      "facts": {
+        "size": {
+          "value": "12,5 till 14,0 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The European Robin is a small, round bird with a strong orange-red breast and face.",
+          "factIds": [
+            "f04",
+            "f01"
+          ]
+        },
+        {
+          "text": "It lives mainly in coniferous and mixed forest, in northern Europe preferably spruce forest, and also in parks and gardens.",
+          "factIds": [
+            "f18",
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Strong orange-red breast and face, edged with bluish grey on the sides of neck and breast",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Brownish upperparts, grey to brownish flanks and greyish-white belly",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Small and round with a big-looking head, black pointed bill and fairly long dark brown legs",
+          "factIds": [
+            "f04",
+            "f03"
+          ]
+        },
+        {
+          "text": "Sexes alike, young birds are brown with yellow spotting and no red breast",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is a rippling cascade of clear notes with changes of tempo, often starting with a high, sustained note.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        },
+        {
+          "text": "The call is a clicking tick, drawn out into long series, tick-ick-ick-ick, by an anxious bird.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "The alarm call is often likened to a longcase clock being wound.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Both sexes sing during the winter half of the year.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The European Robin is a partial migrant that breeds in most of Sweden except the mountains.",
+          "factIds": [
+            "s01",
+            "f21"
+          ]
+        },
+        {
+          "text": "It arrives in late March or early April and leaves in September to November, migrating at night.",
+          "factIds": [
+            "f22",
+            "f30"
+          ]
+        },
+        {
+          "text": "A few individuals winter in southern Sweden.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "With an estimated three to six million pairs it is one of the country's commonest birds.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "It is reported all year round and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds on spiders, worms and insects, and in autumn and winter also berries and fruit.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "It often hops fearlessly on the ground in front of people and animals to catch insects they disturb.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Males are known for very aggressive territorial behaviour.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "The nest lies hidden on the ground in a hollow or between tree roots, and the female incubates the eggs for 13 to 15 days.",
+          "factIds": [
+            "f24",
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25393",
+          "text": [
+            {
+              "text": "The European Robin often sings in the evening and sometimes into the night, so it is sometimes mistaken for the Common Nightingale.",
+              "factIds": [
+                "f17"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "European Robin: how to recognise it by plumage, what its song and calls sound like and when it is seen in Sweden, plus food and behaviour.",
+      "facts": {
+        "size": {
+          "value": "12.5 to 14.0 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "b11e17ac5ee5cb98"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "b11e17ac5ee5cb98"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "rodhake",
+    "en": "european-robin"
+  },
+  "names": {
+    "sv": "Rödhake",
+    "en": "European Robin",
+    "scientific": "Erithacus rubecula"
+  },
+  "family": {
+    "latin": "Muscicapidae",
+    "sv": "Flugsnappare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25334/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Rob Hille",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Robin_-_Erithacus_rubecula_1.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25334/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:European_robin_(Erithacus_rubecula)_2024.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25334/voice.mp3",
+    "durationSec": 16,
+    "trimmed": false,
+    "author": "Vladimir Yu. Arkhipov, Arkhivov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Erithacus_rubecula.ogg",
+    "sha256": "fcd93245d2c4091bfb3f80ac5fa310e32d565d5c494bb32c3cf7fe65ee0cb43c"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Rödhake",
+      "revision": "59699944"
+    },
+    "en": {
+      "title": "European robin",
+      "revision": "1376146581"
+    },
+    "de": {
+      "title": "Rotkehlchen",
+      "revision": "270052456"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2492462,
+    "totalReports": 469341,
+    "months": [
+      72,
+      53,
+      56,
+      100,
+      47,
+      49,
+      37,
+      44,
+      67,
+      67,
+      71,
+      80
+    ],
+    "counties": {
+      "SE-K": 100,
+      "SE-W": 64,
+      "SE-X": 78,
+      "SE-I": 66,
+      "SE-N": 63,
+      "SE-Z": 53,
+      "SE-F": 76,
+      "SE-H": 70,
+      "SE-G": 76,
+      "SE-BD": 41,
+      "SE-T": 71,
+      "SE-E": 70,
+      "SE-M": 70,
+      "SE-D": 87,
+      "SE-AB": 87,
+      "SE-C": 68,
+      "SE-S": 78,
+      "SE-AC": 70,
+      "SE-Y": 72,
+      "SE-U": 60,
+      "SE-O": 96
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        39449,
+        20240,
+        39947,
+        109148,
+        59239,
+        33181,
+        19557,
+        24446,
+        38062,
+        37376,
+        25031,
+        23237
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 93643,
+        "SE-AB": 58889,
+        "SE-M": 47751,
+        "SE-H": 36092,
+        "SE-D": 26418,
+        "SE-C": 25295,
+        "SE-F": 19886,
+        "SE-E": 18889,
+        "SE-N": 18472,
+        "SE-AC": 13328,
+        "SE-T": 13303,
+        "SE-G": 10804,
+        "SE-W": 10510,
+        "SE-S": 10482,
+        "SE-X": 9966,
+        "SE-U": 8590,
+        "SE-I": 7838,
+        "SE-Y": 6908,
+        "SE-BD": 6607,
+        "SE-K": 5747,
+        "SE-Z": 4873
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-07"
+}

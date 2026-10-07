@@ -6,8 +6,9 @@ taxonomy:
   genus: Calonectris
   ioc_order: Procellariiformes
 names:
-  sv: Kapverdelira
+  sv: Större kapverdelira
   en: Cape Verde Shearwater
+  former_sv: Kapverdelira
 abundance: ovanlig
 iucn_status: NT
 season:

@@ -1,0 +1,209 @@
+{
+  "qid": "Q143284",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "spillkraka",
+    "en": "black-woodpecker"
+  },
+  "names": {
+    "sv": "Spillkråka",
+    "en": "Black Woodpecker",
+    "scientific": "Dryocopus martius"
+  },
+  "family": {
+    "latin": "Picidae",
+    "sv": "Hackspettar"
+  },
+  "group": "woodpeckers",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q143284/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Иван Везенковић",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Black_Woodpecker_Dryocopus_martius.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q143284/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Julianruizp",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dryocopus_martius_in_Germia.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q143284/voice.mp3",
+    "durationSec": 6,
+    "trimmed": false,
+    "author": "Alexander Kürthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dryocopus_martius_spring_call_kuikuikuikui.ogg",
+    "sha256": "1e716dd4ff080144c1e0d99974d07e3cf6bb8aeeb6ea8c1dc89ec3c73734518b"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Spillkråka",
+      "revision": "59697015"
+    },
+    "en": {
+      "title": "Black woodpecker",
+      "revision": "1357539071"
+    },
+    "de": {
+      "title": "Schwarzspecht",
+      "revision": "270887532"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2477872,
+    "totalReports": 230098,
+    "months": [
+      67,
+      100,
+      84,
+      47,
+      38,
+      32,
+      38,
+      62,
+      81,
+      65,
+      76,
+      65
+    ],
+    "counties": {
+      "SE-K": 63,
+      "SE-W": 87,
+      "SE-X": 63,
+      "SE-I": 46,
+      "SE-N": 35,
+      "SE-Z": 70,
+      "SE-F": 64,
+      "SE-H": 43,
+      "SE-G": 99,
+      "SE-BD": 60,
+      "SE-T": 87,
+      "SE-E": 46,
+      "SE-M": 34,
+      "SE-D": 61,
+      "SE-AB": 45,
+      "SE-C": 37,
+      "SE-S": 87,
+      "SE-AC": 75,
+      "SE-Y": 100,
+      "SE-U": 74,
+      "SE-O": 46
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        19326,
+        20024,
+        31101,
+        26969,
+        25320,
+        11422,
+        10507,
+        17788,
+        24183,
+        18966,
+        13924,
+        9789
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 31888,
+        "SE-AB": 21611,
+        "SE-M": 16519,
+        "SE-H": 15694,
+        "SE-D": 13093,
+        "SE-F": 11736,
+        "SE-T": 11525,
+        "SE-AC": 10138,
+        "SE-W": 10115,
+        "SE-G": 9951,
+        "SE-C": 9764,
+        "SE-E": 8801,
+        "SE-S": 8278,
+        "SE-U": 7611,
+        "SE-N": 7232,
+        "SE-BD": 6821,
+        "SE-Y": 6766,
+        "SE-X": 5674,
+        "SE-Z": 4598,
+        "SE-I": 3884,
+        "SE-K": 2558
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

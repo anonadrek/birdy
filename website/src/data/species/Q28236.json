@@ -1,0 +1,961 @@
+{
+  "qid": "Q28236",
+  "status": "ok",
+  "publish": true,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Gråtruten har vit undersida, vitt huvud, grå vingovansida, gul näbb med en röd fläck och vanligen skära ben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har vit undersida, vitt huvud, grå vingovansida, gul näbb med en röd fläck och vanligen skära ben."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ryggen och vingarna är ljusgrå, och vingspetsarna är svarta med små vita prickar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess rygg är ljusgrå liksom vingarna där vingspetsarna är svarta med små, vita prickar."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Runt det ljusa ögat har den adulta fågeln en ring av bar gul hud.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "a ring of bare yellow skin is seen around the pale eye"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "sex_age",
+      "sv": "Adulta fåglar utanför häckningstiden har bruna streck på huvud och hals.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Non-breeding adults have brown streaks on their heads and necks."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "sex_age",
+      "sv": "Ungfåglarna är brunspräckliga med mörk näbb och mörka ögon, och det tar fyra år innan de får adult dräkt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungfåglarna är brunspräckliga med mörk näbb och mörka ögon, och det tar fyra år innan den har anlagt sin adulta fjäderdräkt."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Hanar och honor har likadan dräkt i alla åldrar, men adulta hanar är ofta större.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Male and female plumage are identical at all stages of development, but adult males are often larger."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "Gråtruten är 55–67 cm lång, har ett vingspann på 140–155 cm och väger ungefär 1 200 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "med kroppslängden 55–67 cm, ett vingspann på 140–155 cm och väger ungefär 1 200 gram"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "voice",
+      "sv": "Den varnar ungar med ett hundliknande ”wauff”, som kan stegras till ”wuuff-wauff” när faran ökar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den varnar ungar som hamnar på marken med ett hundliknande \"wauff\", som kan stegras till ett \"wuuff-wauff\", om faran ökar."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Dess höga, skrattande läte är särskilt välkänt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Their loud, laughing call is particularly well known"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Huvudlätet är ett ljust till gällt, fallande ”kiu” eller ”kiau”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "ist ein helles bis gellendes, herabgezogenes kiu oder kiau"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Ett varningsläte är ett djupt, kacklande ”ha-ha-ha” eller ”gä-gä-gäg”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "ein tiefes und gackerndes ha-ha-ha oder gä-gä-gäg"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Ett läte låter som en huskatts utdragna jamande och hörs främst i häckningskolonier.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "klingt wie das langgezogene Miauen einer Hauskatze. Er ist vor allem in Brutkolonien zu hören"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "På vintern är gråtrutarna mestadels tysta, utom när de slåss om föda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Om vintern är trutarna för det mesta tysta, utom då de slåss om föda."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Gråtruten förekommer utmed kusten, i hamnar, vid stora sjöar och i våtmarker.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråtruten är en havsfågel som förekommer utmed kusten, i hamnar, vid stora sjöar och våtmarker."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Gråtruten har anpassat sig till människan och häckar i kuststäder och vid soptippar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har framgångsrikt anpassat sig till människan och häckar i kuststäder och vid soptippar."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige häckar gråtruten allmänt runt kusterna, vid sjöar och vattendrag, och övervintrar ofta i mellersta och södra Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "häckar allmänt runt Sveriges kuster, vid sjöar och vattendrag, och övervintrar ofta i mellersta och södra Sverige"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattas till 61 000 par, varav ungefär 65 procent finns längs Ostkusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Beståndet uppskattas till 61 000 par, varav ungefär 65 % finns längs Ostkusten."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Sverige har gråtruten minskat kraftigt, med mellan 56 och 72 procent de senaste 30 åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige minskar gråtruten kraftigt, med mellan 56 och 72 % de senaste 30 åren."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Gråtruten står sedan 2020 på den svenska rödlistan i kategorin sårbar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "sedan 2020 listad i kategorin sårbar"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Flyttande gråtrutar från Skandinavien drar främst mellan september och november.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Zugvögel aus Skandinavien ziehen vorwiegend zwischen September und November"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Gråtruten häckar från slutet av april till början av maj och lägger boet i en bergsskreva eller på en klipphylla.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråtruten häckar i slutet av april till i början av maj. Boet lägger den i en skreva i berget eller någon klipphylla."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Den lägger nästan alltid tre ägg, som är gröngrå med mörkbruna fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De lägger nästan alltid tre ägg"
+        },
+        {
+          "article": "sv",
+          "quote": "Äggen är gröngråa med mörkbruna fläckar"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Ungarna kläcks nästan samtidigt efter 28–30 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "ungarna nära nog kläcks samtidigt efter 28–30 dygn"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Ungarna tigger mat genom att picka på den röda fläcken på föräldrarnas undernäbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna tigger mat genom att picka på den röda fläcken som finns på föräldrarnas undernäbbar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Gråtruten äter fisk och fiskavfall, kräftor, musslor, maskar, insekter, fågelägg och fågelungar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den äter fisk och fiskavfall, kräftor och musslor, maskar, insekter, fågelägg och fågelungar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "I städer äter gråtrutar främst avfall och bortkastad mat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I städer äter de främst avfall och bortkastad mat."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Gråtruten släpper ofta skalförsedda byten från hög höjd för att knäcka skalet.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "European herring gulls can frequently be seen to drop shelled prey from a height to break the shell."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Kaspisk trut är slankare än gråtrut, med mindre huvud, längre vingar och längre gulaktiga ben i stället för skära.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kaspisk trut är slankare än gråtrut, med mindre huvud, längre vingar och längre ben som är gulaktiga istället för gråtrutens tuggummiskära."
+        }
+      ],
+      "other": {
+        "scientific": "Larus cachinnans",
+        "qid": "Q389505",
+        "written": "L. cachinnans"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Unga kanadatrutar skiljer sig från unga gråtrutar genom mörkare dräkt och helsvart stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungfåglar avviker dock tydligt med sin mörkare dräkt och helsvart stjärt."
+        }
+      ],
+      "other": {
+        "scientific": "Larus smithsonianus"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "häckar allmänt runt Sveriges kuster, vid sjöar och vattendrag, och övervintrar ofta i mellersta och södra Sverige"
+        },
+        {
+          "article": "en",
+          "quote": "breeds in Scandinavia and northwestern Russia. Northern and eastern populations migrate southwest in winter."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Sårbar (VU)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Gråtruten är en trut med vitt huvud och grå vingar som häckar allmänt runt de svenska kusterna.",
+          "factIds": [
+            "f01",
+            "f16"
+          ]
+        },
+        {
+          "text": "Den ses utmed kusten, i hamnar, vid stora sjöar och i våtmarker, men också i kuststäder och vid soptippar.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Vitt huvud och vit undersida, ljusgrå rygg och vingar, svarta vingspetsar med små vita prickar",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Gul näbb med röd fläck, gul ring runt det ljusa ögat och oftast skära ben",
+          "factIds": [
+            "f01",
+            "f03"
+          ]
+        },
+        {
+          "text": "Ungfåglar är brunspräckliga med mörk näbb och mörka ögon, adult dräkt först efter fyra år",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Könen är lika, adulta hanar ofta större, utanför häckningstid bruna streck på huvud och hals",
+          "factIds": [
+            "f06",
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Huvudlätet är ett ljust till gällt, fallande ”kiu” eller ”kiau”, och det höga, skrattande lätet är särskilt välkänt.",
+          "factIds": [
+            "f10",
+            "f09"
+          ]
+        },
+        {
+          "text": "Ett varningsläte är ett djupt, kacklande ”ha-ha-ha”, och ungarna varnas med ett hundliknande ”wauff” som kan stegras till ”wuuff-wauff”.",
+          "factIds": [
+            "f11",
+            "f08"
+          ]
+        },
+        {
+          "text": "I häckningskolonier hörs ett utdraget, kattlikt jamande, men på vintern är den mest tyst utom vid bråk om föda.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Gråtruten är delvis flyttfågel och häckar allmänt runt kusterna och vid sjöar och vattendrag i Sverige, och övervintrar ofta i mellersta och södra Sverige.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Flyttande gråtrutar från Skandinavien drar främst mellan september och november.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Beståndet, uppskattat till 61 000 par, har minskat med 56 till 72 procent de senaste 30 åren, och arten är rödlistad som sårbar (VU).",
+          "factIds": [
+            "f17",
+            "f18",
+            "f19",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Gråtruten äter fisk och fiskavfall, kräftor, musslor, maskar, insekter, fågelägg och fågelungar, och i städer främst avfall och bortkastad mat.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "Skalförsedda byten släpper den ofta från hög höjd så att skalet knäcks.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Den häckar från slutet av april till början av maj i en bergsskreva eller på en klipphylla och lägger nästan alltid tre ägg.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        },
+        {
+          "text": "Ungarna tigger mat genom att picka på den röda fläcken på föräldrarnas undernäbb.",
+          "factIds": [
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q389505",
+          "text": [
+            {
+              "text": "Kaspisk trut är slankare med mindre huvud och längre vingar.",
+              "factIds": [
+                "f29"
+              ]
+            },
+            {
+              "text": "Den har längre, gulaktiga ben i stället för gråtrutens skära.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Larus smithsonianus",
+          "text": [
+            {
+              "text": "Unga kanadatrutar har mörkare dräkt än unga gråtrutar och helsvart stjärt.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Gråtrut: så känner du igen den på dräkt, näbb och ben, hur lätena låter, när den ses under året och vilka trutar den kan förväxlas med.",
+      "facts": {
+        "size": {
+          "value": "55 till 67 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The European Herring Gull is a gull with a white head and grey wings that breeds commonly around the Swedish coasts.",
+          "factIds": [
+            "f01",
+            "f16"
+          ]
+        },
+        {
+          "text": "It is met along coasts, in harbours, by large lakes and in wetlands, and also in coastal towns and at rubbish tips.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "White head and underparts, pale grey back and wings, black wingtips with small white spots",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Yellow bill with a red spot, yellow ring around the pale eye, usually pink legs",
+          "factIds": [
+            "f01",
+            "f03"
+          ]
+        },
+        {
+          "text": "Juveniles are brown-speckled with dark bill and dark eyes, adult plumage after four years",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Sexes look alike, adult males often larger, brown streaks on head and neck outside breeding season",
+          "factIds": [
+            "f06",
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The main call is a high to shrill, falling “kiu” or “kiau”.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Its high, laughing call is especially well known.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Alarm calls include a deep, cackling “ha-ha-ha” and a dog-like “wauff” warning chicks.",
+          "factIds": [
+            "f11",
+            "f08"
+          ]
+        },
+        {
+          "text": "A drawn-out, cat-like mewing is heard mainly in colonies.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "In winter it is mostly silent except when fighting over food.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "A partial migrant, it breeds commonly around the coasts and by lakes and rivers in Sweden, often wintering in central and southern Sweden.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "It is reported all year and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Migrating Scandinavian birds move mainly between September and November.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "The population, estimated at 61 000 pairs, has fallen by 56 to 72 percent in 30 years and is red-listed as Vulnerable (VU).",
+          "factIds": [
+            "f17",
+            "f18",
+            "f19",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats fish and fish waste, crayfish, mussels, worms, insects, birds' eggs and chicks, and in towns mainly waste and discarded food.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "It often drops shelled prey from a height to crack the shell.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "It breeds from late April to early May in a rock crevice or on a cliff ledge and almost always lays three eggs.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        },
+        {
+          "text": "Chicks beg by pecking the red spot on the parent's lower bill.",
+          "factIds": [
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q389505",
+          "text": [
+            {
+              "text": "The Caspian Gull is slimmer, with a smaller head, longer wings and longer, yellowish legs instead of pink ones.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Larus smithsonianus",
+          "text": [
+            {
+              "text": "Young American Herring Gulls differ from young European Herring Gulls by their darker plumage and all-black tail.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "European Herring Gull: how to recognise it by plumage, bill and legs, what its calls sound like, when it is seen and which gulls it can be confused with.",
+      "facts": {
+        "size": {
+          "value": "55 to 67 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "162bfd4e862cf3e7"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "162bfd4e862cf3e7"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "gratrut",
+    "en": "european-herring-gull"
+  },
+  "names": {
+    "sv": "Gråtrut",
+    "en": "European Herring Gull",
+    "scientific": "Larus argentatus"
+  },
+  "family": {
+    "latin": "Laridae",
+    "sv": "Måsfåglar"
+  },
+  "group": "gulls_terns",
+  "iucn": "LC",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q28236/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Marie-Lan Taÿ Pamart",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Larus_argentatus_Tuileries_20180324_t144119.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q28236/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Marie-Lan Taÿ Pamart",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Larus_argentatus_Tuileries_20180324_t144644.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q28236/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Marie-Lan Taÿ Pamart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Larus_argentatus_-_European_Herring_Gull_XC488995.mp3",
+    "sha256": "5d6606536823b5f6884ef7c59d6082952762cc5b1243adaca76e1dfc3b54464c"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Gråtrut",
+      "revision": "59562574"
+    },
+    "en": {
+      "title": "European herring gull",
+      "revision": "1366518740"
+    },
+    "de": {
+      "title": "Silbermöwe",
+      "revision": "270788442"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2481139,
+    "totalReports": 361159,
+    "months": [
+      100,
+      92,
+      82,
+      50,
+      37,
+      44,
+      63,
+      57,
+      54,
+      63,
+      82,
+      90
+    ],
+    "counties": {
+      "SE-K": 90,
+      "SE-W": 54,
+      "SE-X": 92,
+      "SE-I": 74,
+      "SE-N": 100,
+      "SE-Z": 41,
+      "SE-F": 68,
+      "SE-H": 59,
+      "SE-G": 80,
+      "SE-BD": 53,
+      "SE-T": 63,
+      "SE-E": 74,
+      "SE-M": 78,
+      "SE-D": 71,
+      "SE-AB": 92,
+      "SE-C": 59,
+      "SE-S": 65,
+      "SE-AC": 54,
+      "SE-Y": 57,
+      "SE-U": 72,
+      "SE-O": 93
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        42678,
+        27450,
+        44818,
+        42467,
+        36544,
+        23251,
+        25843,
+        24493,
+        23740,
+        27126,
+        22372,
+        20191
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 60217,
+        "SE-AB": 41546,
+        "SE-M": 35192,
+        "SE-H": 20178,
+        "SE-N": 19586,
+        "SE-C": 14674,
+        "SE-D": 14353,
+        "SE-E": 13293,
+        "SE-F": 11799,
+        "SE-T": 7806,
+        "SE-X": 7792,
+        "SE-G": 7530,
+        "SE-U": 6884,
+        "SE-AC": 6874,
+        "SE-W": 5909,
+        "SE-I": 5818,
+        "SE-S": 5800,
+        "SE-BD": 5683,
+        "SE-Y": 3578,
+        "SE-K": 3429,
+        "SE-Z": 2511
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-07"
+}

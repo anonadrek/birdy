@@ -102,7 +102,7 @@ image_refs:
   width: 2044
   height: 2189
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Common Reed Warbler (Acrocephalus
     scirpaceus).jpg
   commons_filename: Common Reed Warbler (Acrocephalus scirpaceus).jpg
@@ -111,8 +111,7 @@ image_refs:
   width: 1800
   height: 1444
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Reed Warbler. Acrocephalus scirpaceus
     - Flickr - gailhampshire.jpg
   commons_filename: Reed Warbler. Acrocephalus scirpaceus - Flickr - gailhampshire.jpg

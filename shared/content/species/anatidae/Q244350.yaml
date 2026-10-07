@@ -97,20 +97,18 @@ image_refs:
 - role: hero
   path: Q244350/hero.webp
   width: 2400
-  height: 1856
+  height: 1607
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://flickr.com/people/43158397@N02">jans
-    canon</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Netta rufina -St James's Park,
-    London, England -duckling-8.jpg
-  commons_filename: Netta rufina -St James's Park, London, England -duckling-8.jpg
+  author: gailhampshire
+  source_url: https://commons.wikimedia.org/wiki/File:Red Crested Pochard Netta rufina
+    (51852197821).jpg
+  commons_filename: Red Crested Pochard Netta rufina (51852197821).jpg
 - role: secondary
   path: Q244350/secondary-1.webp
   width: 1800
   height: 1512
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/33590535@N06">Drew
-    Avery</a>
+  author: Drew Avery
   source_url: https://commons.wikimedia.org/wiki/File:Red-Crested Pochard (Female)
     netta rufina.jpg
   commons_filename: Red-Crested Pochard (Female) netta rufina.jpg
@@ -119,7 +117,7 @@ image_refs:
   width: 1800
   height: 1299
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:SVKMBFLY" title="User:SVKMBFLY">SVKMBFLY</a>
+  author: SVKMBFLY
   source_url: https://commons.wikimedia.org/wiki/File:রাঙ্গামুড়ি (Netta rufina),
     চুপি, পুরবস্থলি, বর্ধমান, পশ্চিমবঙ্গ.DSC3026.jpg
   commons_filename: রাঙ্গামুড়ি (Netta rufina), চুপি, পুরবস্থলি, বর্ধমান, পশ্চিমবঙ্গ.DSC3026.jpg

@@ -94,21 +94,18 @@ image_refs:
 - role: hero
   path: Q320043/hero.webp
   width: 2400
-  height: 1590
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:PJeganathan" title="User:PJeganathan">PJeganathan</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Pied kingfisher (Ceryle rudis)
-    from Kallanai JEG9784.jpg
-  commons_filename: Pied kingfisher (Ceryle rudis) from Kallanai JEG9784.jpg
+  height: 1600
+  license: CC BY-SA 4.0
+  author: Charles J. Sharp
+  source_url: https://commons.wikimedia.org/wiki/File:Pied kingfisher (Ceryle rudis
+    rudis) female 2.jpg
+  commons_filename: Pied kingfisher (Ceryle rudis rudis) female 2.jpg
 - role: secondary
   path: Q320043/secondary-1.webp
   width: 1800
   height: 1201
   license: CC BY 3.0
-  author: '<div class="fn value">
-
-    <a rel="nofollow" class="external text" href="https://500px.com/aufgang">Daniel
-    Aufgang</a></div>'
+  author: Daniel Aufgang
   source_url: https://commons.wikimedia.org/wiki/File:Ceryle rudis rudis (181091491).jpg
   commons_filename: Ceryle rudis rudis (181091491).jpg
 - role: secondary
@@ -116,8 +113,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q28147777" class="extiw" title="d:Q28147777"><span
-    title="Spanish photographer">Diego Delso</span></a></bdi>
+  author: Diego Delso
   source_url: https://commons.wikimedia.org/wiki/File:Martín pescador pío (Ceryle
     rudis), parque nacional de Amboseli, Kenia, 2024-05-22, DD 19.jpg
   commons_filename: Martín pescador pío (Ceryle rudis), parque nacional de Amboseli,

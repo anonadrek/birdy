@@ -67,20 +67,18 @@ migration:
 image_refs:
 - role: hero
   path: Q242369/hero.webp
-  width: 2336
-  height: 2006
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jebulon" title="User:Jebulon">Jebulon</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Phoenicopterus ruber Tiergarten
-    Schönbrunn.jpg
-  commons_filename: Phoenicopterus ruber Tiergarten Schönbrunn.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: Shiv's fotografia
+  source_url: https://commons.wikimedia.org/wiki/File:Lesser flamingos courtship display.jpg
+  commons_filename: Lesser flamingos courtship display.jpg
 - role: secondary
   path: Q242369/secondary-1.webp
   width: 1800
   height: 1203
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
-    Kansara</a>
+  author: Parth Kansara
   source_url: https://commons.wikimedia.org/wiki/File:Phoeniconaias minor 231910073.jpg
   commons_filename: Phoeniconaias minor 231910073.jpg
 - role: secondary
@@ -88,8 +86,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
-    Kansara</a>
+  author: Parth Kansara
   source_url: https://commons.wikimedia.org/wiki/File:Phoeniconaias minor and Phoenicopterus
     roseus, Kachchh, Gujarat, India 157955869.jpg
   commons_filename: Phoeniconaias minor and Phoenicopterus roseus, Kachchh, Gujarat,

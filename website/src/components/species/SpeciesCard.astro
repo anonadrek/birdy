@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import type { Locale } from '../../lib/i18n';
+import { heroOf, speciesHref, speciesImage, type Species } from '../../lib/species';
+
+interface Props { species: Species; locale: Locale; loading?: 'eager' | 'lazy' }
+const { species: s, locale, loading = 'lazy' } = Astro.props;
+---
+
+<a class="scard" href={speciesHref(s, locale)}>
+  <Image src={speciesImage(heroOf(s).file)} alt="" width={480} widths={[320, 480]} sizes="(max-width: 760px) 45vw, 220px" loading={loading} decoding="async" />
+  <span class="scard-name">{s.names[locale]}</span>
+  <span class="scard-latin" lang="la">{s.names.scientific}</span>
+</a>
+
+<style>
+  .scard { display: block; height: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 6px; transition: transform .25s var(--ease-paper), box-shadow .25s var(--ease-paper); }
+  .scard:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(var(--dark-rgb), .12); }
+  .scard :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
+  .scard-name { display: block; margin: 8px 4px 0; font-weight: 600; font-size: 14px; color: var(--ink); }
+  .scard-latin { display: block; margin: 0 4px 4px; font-family: var(--font-script); font-size: 17px; line-height: 1.15; color: var(--muted); }
+</style>

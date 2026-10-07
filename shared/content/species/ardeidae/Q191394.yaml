@@ -89,19 +89,16 @@ image_refs:
   path: Q191394/hero.webp
   width: 2400
   height: 1600
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
-  source_url: https://commons.wikimedia.org/wiki/File:Ardeola ralloides and Egretta
-    dimorpha (22194228345).jpg
-  commons_filename: Ardeola ralloides and Egretta dimorpha (22194228345).jpg
+  license: CC BY-SA 3.0
+  author: Pierre Dalous
+  source_url: https://commons.wikimedia.org/wiki/File:Crabier chevelu.jpg
+  commons_filename: Crabier chevelu.jpg
 - role: secondary
   path: Q191394/secondary-1.webp
   width: 1800
   height: 1198
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/196198470@N02">Sam
-    Thomas</a>
+  author: Sam Thomas
   source_url: https://commons.wikimedia.org/wiki/File:Squacco Heron (Ardeola ralloides)
     Aswan (52260545878).jpg
   commons_filename: Squacco Heron (Ardeola ralloides) Aswan (52260545878).jpg
@@ -110,8 +107,7 @@ image_refs:
   width: 1800
   height: 1182
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
-    Keats</a> from Johannesburg, South Africa
+  author: Derek Keats
   source_url: https://commons.wikimedia.org/wiki/File:Squacco Heron, Ardeola ralloides
     at Marievale Nature Reserve, Gauteng, South Africa (20375651613).jpg
   commons_filename: Squacco Heron, Ardeola ralloides at Marievale Nature Reserve,

@@ -6,11 +6,13 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
@@ -37,24 +39,44 @@ fun MicroLabel(
     modifier: Modifier = Modifier,
     color: Color = AccentCopper,
     showRule: Boolean = true,
-    fontSize: TextUnit = 9.5.sp,
+    fontSize: TextUnit = MicroLabelFontSize,
 ) {
     Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
         if (showRule) {
-            Box(Modifier.width(18.dp).height(1.dp).background(color))
-            Spacer(Modifier.width(8.dp))
+            Box(Modifier.width(MicroLabelRuleWidth).height(1.dp).background(color))
+            Spacer(Modifier.width(MicroLabelRuleGap))
         }
         Text(
             text = text.uppercase(),
-            color = color,
-            fontFamily = FontFamily.SansSerif,
-            fontSize = fontSize,
-            // Explicit, tight line height — otherwise this inherits the theme's bodyLarge
-            // 22sp line height, which is why callers that budget a fixed-height row around
-            // this text (e.g. BottomNavBar's TabCell) can overflow their cell.
-            lineHeight = 12.sp,
-            fontWeight = FontWeight.W600,
-            letterSpacing = 0.16.em,
+            style = LocalTextStyle.current.merge(microLabelTextStyle(color = color, fontSize = fontSize)),
         )
     }
 }
+
+/** Default size of [MicroLabel]'s caps. */
+internal val MicroLabelFontSize = 9.5.sp
+
+/** Length of [MicroLabel]'s leading rule, and the gap after it (with `showRule`). */
+internal val MicroLabelRuleWidth = 18.dp
+internal val MicroLabelRuleGap = 8.dp
+
+/**
+ * [MicroLabel]'s caps (system sans serif, W600, 0.16em), for the label itself and for callers that
+ * measure one before laying it out (the Troférum entry card). Merge it onto LocalTextStyle, as
+ * [MicroLabel] does, so a measurement matches what is drawn.
+ */
+internal fun microLabelTextStyle(
+    color: Color = AccentCopper,
+    fontSize: TextUnit = MicroLabelFontSize,
+): TextStyle =
+    TextStyle(
+        color = color,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = fontSize,
+        // Explicit, tight line height — otherwise this inherits the theme's bodyLarge
+        // 22sp line height, which is why callers that budget a fixed-height row around
+        // this text (e.g. BottomNavBar's TabCell) can overflow their cell.
+        lineHeight = 12.sp,
+        fontWeight = FontWeight.W600,
+        letterSpacing = 0.16.em,
+    )

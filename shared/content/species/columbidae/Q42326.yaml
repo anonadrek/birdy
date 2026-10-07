@@ -99,37 +99,37 @@ image_refs:
 - role: hero
   path: Q42326/hero.webp
   width: 2400
-  height: 1602
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
-    Nivis</a>
-  source_url: https://commons.wikimedia.org/wiki/File:20220926 Columba livia.jpg
-  commons_filename: 20220926 Columba livia.jpg
+  height: 1655
+  license: CC BY-SA 3.0
+  author: Luc Viatour
+  source_url: https://commons.wikimedia.org/wiki/File:Columba livia Luc Viatour.jpg
+  commons_filename: Columba livia Luc Viatour.jpg
 - role: secondary
   path: Q42326/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
-    Nivis</a>
+  author: Flocci Nivis
   source_url: https://commons.wikimedia.org/wiki/File:20200115 Columba livia domestica
     Bürgerpark Saarbrücken 06.jpg
   commons_filename: 20200115 Columba livia domestica Bürgerpark Saarbrücken 06.jpg
 - role: secondary
   path: Q42326/secondary-2.webp
   width: 1800
-  height: 1202
+  height: 1350
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
-    Nivis</a>
-  source_url: https://commons.wikimedia.org/wiki/File:20200115 Columba livia domestica
-    Bürgerpark Saarbrücken 02.jpg
-  commons_filename: 20200115 Columba livia domestica Bürgerpark Saarbrücken 02.jpg
+  author: william_stephens
+  source_url: https://commons.wikimedia.org/wiki/File:Columba livia (Rock Dove, wild),
+    Duncansby Head, Caithness, Scotland 1.jpg
+  commons_filename: Columba livia (Rock Dove, wild), Duncansby Head, Caithness, Scotland
+    1.jpg
 review_status: approved
-review_notes: 'Hero auto-pick OK — tamduva (förvildad Columba livia) i parkmiljö med
-  typisk grå-blå färgvariant och iridescenta halsfjädrar. Notera: common_en kortades
-  från "Rock Dove / Feral Pigeon" till "Rock Dove" eftersom snedstrecket bröt Wikipedia-fetcherns
-  URL-bygge.'
+review_notes: 'Hero auto-pick OK — tamduva (förvildad Columba livia) i parkmiljö med typisk grå-blå färgvariant
+  och iridescenta halsfjädrar. Notera: common_en kortades från "Rock Dove / Feral Pigeon" till "Rock Dove"
+  eftersom snedstrecket bröt Wikipedia-fetcherns URL-bygge.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c och b54c332e; fotobeskrivningar ovan gäller
+  tidigare bilder.'
 generated_at: '2026-05-08T00:51:17.019456+00:00'
 sources:
   wikipedia_sv_revision: '59122965'

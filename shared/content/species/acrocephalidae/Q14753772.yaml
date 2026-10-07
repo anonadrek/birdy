@@ -97,19 +97,18 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Medeniacus" title="User:Medeniacus">Medeniacus</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Iduna pallida - sivi voljić.jpg
-  commons_filename: Iduna pallida - sivi voljić.jpg
+  author: Иван Везенковић
+  source_url: https://commons.wikimedia.org/wiki/File:Eastern Olivaceous Warbler Iduna
+    pallida.jpg
+  commons_filename: Eastern Olivaceous Warbler Iduna pallida.jpg
 - role: secondary
   path: Q14753772/secondary-1.webp
   width: 1800
   height: 1350
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:VezeIvan&amp;action=edit&amp;redlink=1"
-    class="new" title="User:VezeIvan (page does not exist)">Иван Везенковић</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Eastern Olivaceous Warbler Iduna
-    pallida.jpg
-  commons_filename: Eastern Olivaceous Warbler Iduna pallida.jpg
+  license: CC BY 4.0
+  author: Ani Sarkisyan
+  source_url: https://commons.wikimedia.org/wiki/File:Iduna pallida 7870781.jpg
+  commons_filename: Iduna pallida 7870781.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-04T12:40:20.427552+00:00'

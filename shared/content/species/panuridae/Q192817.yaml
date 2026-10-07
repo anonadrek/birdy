@@ -106,7 +106,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Bearded reedling (Panurus biarmicus).jpg
   commons_filename: Bearded reedling (Panurus biarmicus).jpg
 - role: secondary
@@ -114,7 +114,7 @@ image_refs:
   width: 1200
   height: 1800
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Bearded reedling 2 (Panurus
     biarmicus).jpg
   commons_filename: Bearded reedling 2 (Panurus biarmicus).jpg
@@ -123,8 +123,7 @@ image_refs:
   width: 1800
   height: 1566
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Jaana_Siitonen&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Jaana Siitonen (page does not exist)">Jaana Siitonen</a>
+  author: Jaana Siitonen
   source_url: https://commons.wikimedia.org/wiki/File:Panurus biarmicus DSCN8931-02.jpg
   commons_filename: Panurus biarmicus DSCN8931-02.jpg
 review_status: approved

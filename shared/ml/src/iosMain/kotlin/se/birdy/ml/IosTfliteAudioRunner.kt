@@ -13,6 +13,7 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import platform.Foundation.NSData
 import platform.Foundation.NSDataReadingMappedIfSafe
+import platform.Foundation.NSLog
 import platform.Foundation.dataWithContentsOfFile
 import platform.posix.memcpy
 import tflitec.TfLiteInterpreterAllocateTensors
@@ -205,6 +206,11 @@ class IosTfliteAudioRunner(
             val inferenceMs = t0.elapsedNow().inWholeMilliseconds
 
             val scores = FloatArray(outputClasses) { flatSigmoid(logits[it]) }
+            // rankMappedScores drops non-finite scores; on real audio that would hide a model
+            // fault as "no bird", so say so in the log (Plan 3 Task 7 review). One-argument
+            // NSLog only: a Kotlin String passed as a C vararg crashes (trap catalogue); the
+            // message holds no '%'.
+            nonFiniteScoreWarning(scores, input)?.let { NSLog("Birdy/audio: $it") }
             AudioClassification(
                 results = rankMappedScores(scores, mapper::lookup),
                 inferenceMs = inferenceMs,

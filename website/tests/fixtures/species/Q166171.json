@@ -1,0 +1,82 @@
+{
+  "qid": "Q166171",
+  "status": "failed",
+  "publish": false,
+  "slug": {
+    "sv": "grongoling",
+    "en": "european-green-woodpecker"
+  },
+  "names": {
+    "sv": "Gröngöling",
+    "en": "European Green Woodpecker",
+    "scientific": "Picus viridis"
+  },
+  "family": {
+    "latin": "Picidae",
+    "sv": "Hackspettar"
+  },
+  "group": "woodpeckers",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q166171/hero.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Testfotograf",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fixture_Q166171_hero.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Gröngöling",
+      "revision": "1000001"
+    },
+    "en": {
+      "title": "European Green Woodpecker",
+      "revision": "2000002"
+    }
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Testfaktum.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Testcitat som bara finns i testdata."
+        }
+      ]
+    }
+  ],
+  "review": {
+    "wave": 1
+  },
+  "verification": {
+    "method": "auto",
+    "at": "2026-11-20",
+    "model": "fixture",
+    "spotChecked": false
+  },
+  "text": null,
+  "rejectedText": null,
+  "generated": {
+    "facts": {
+      "model": "fixture",
+      "prompt": "fixture",
+      "effort": "none",
+      "at": "2026-10-20"
+    }
+  },
+  "errors": [
+    "Testfel: kontrollen failade."
+  ]
+}

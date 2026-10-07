@@ -13,7 +13,15 @@ from pathlib import Path
 from .compare import comparison_is_current, published_comparison_errors
 from .groups import GroupTable
 from .paths import WebPaths
-from .record import Record, load_all, load_record, record_path, save_record
+from .record import (
+    VOICE_FILE,
+    Record,
+    file_sha256,
+    load_all,
+    load_record,
+    record_path,
+    save_record,
+)
 from .report import StepOutcome, render_step_report, write_step_report
 from .text_step import facts_verified, stale_cited_fact_ids, text_is_current
 from .verify import missing_required_topics
@@ -95,7 +103,7 @@ def run_waves(paths: WebPaths, *, size: int, recompute: bool) -> dict[int, list[
 # -- publishing (Task 23, spec Revision 2026-10-05 (b)) ---------------------------------
 
 
-def unready_reasons(record: Record) -> list[str]:
+def unready_reasons(record: Record, *, images_out: Path) -> list[str]:
     """Every reason `record` is not ready to publish. The plan's original predicate
     (status "ok" + a verification set + a text not written with --allow-unreviewed) was
     too weak after the Task 20 reviews: it must also have every required topic, a
@@ -121,18 +129,38 @@ def unready_reasons(record: Record) -> list[str]:
     stale = stale_cited_fact_ids(record)
     if stale:
         reasons.append(f"texten anger fakta som inte längre finns ({', '.join(stale)})")
+    reasons += _voice_reasons(record, images_out)
     return reasons
+
+
+def _voice_reasons(record: Record, images_out: Path) -> list[str]:
+    """Re-review 2026-10-07: never publish an old voice.mp3 under a new recording's
+    credits. With `audio.mp3Sha256` the file must be there and be that file."""
+    audio = record.get("audio") or {}
+    expected = audio.get("mp3Sha256")
+    if not expected:
+        return []
+    voice = images_out / str(record.get("qid")) / VOICE_FILE
+    if not voice.exists():
+        return ["inspelningsfilen saknas: kör web verify --force"]
+    if file_sha256(voice) != expected:
+        return ["inspelningsfilen är inte den inspelning artposten anger: kör web verify --force"]
+    return []
 
 
 def _unready_published_error(reasons: list[str]) -> str:
     return f"publicerad men inte längre klar ({'; '.join(reasons)}): sätt publish: false"
 
 
-def _live_set(records: dict[str, Record]) -> set[str]:
+def _live_set(records: dict[str, Record], images_out: Path) -> set[str]:
     """QIDs that are published AND still satisfy the predicate right now (I2, review fix
     2026-10-06): a species whose `publish` flag is stuck `True` only because this step
     never unpublishes anything must not count as a usable side of a comparison."""
-    return {q for q, r in records.items() if r.get("publish") and not unready_reasons(r)}
+    return {
+        q
+        for q, r in records.items()
+        if r.get("publish") and not unready_reasons(r, images_out=images_out)
+    }
 
 
 def _comparison_name(comparison: Record, records: dict[str, Record], fallback: str) -> str:
@@ -280,7 +308,7 @@ def publish_wave(
                 outcomes.append(StepOutcome(qid, _name(record), "skipped", [f"inte i våg {wave}"]))
             continue
         name = _name(record)
-        reasons = unready_reasons(record)
+        reasons = unready_reasons(record, images_out=paths.images_out)
         if not reasons:
             changed = not record.get("publish")
             if not record.get("publishedAt"):
@@ -299,7 +327,7 @@ def publish_wave(
             outcomes.append(StepOutcome(qid, name, "failed", [_unready_published_error(reasons)]))
         else:
             outcomes.append(StepOutcome(qid, name, "skipped", reasons))
-    live = _live_set(records)
+    live = _live_set(records, paths.images_out)
     outcomes += _publish_comparisons(paths, records, live, selected)
     report = render_step_report(
         title="Publicering", date=now_dt.date().isoformat(), outcomes=outcomes
@@ -370,14 +398,18 @@ def publish_next(
     positions = _wave_positions(paths)
     for qid in _queue_order(records, positions):
         record = records[qid]
-        if qid in exclude or record.get("publish") or unready_reasons(record):
+        if (
+            qid in exclude
+            or record.get("publish")
+            or unready_reasons(record, images_out=paths.images_out)
+        ):
             continue
         if not record.get("publishedAt"):
             record["publishedAt"] = when
         record["publish"] = True
         save_record(record_path(paths.data_out, qid), record)
         return NextPick("species", qid)
-    live = _live_set(records)
+    live = _live_set(records, paths.images_out)
     for path in sorted(paths.comparisons_out.glob("Q*_Q*.json")):
         stem = path.stem
         if stem in exclude:

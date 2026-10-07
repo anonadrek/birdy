@@ -89,8 +89,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Haytem93&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Haytem93 (page does not exist)">Haytem93</a>
+  author: Haytem93
   source_url: https://commons.wikimedia.org/wiki/File:A beautiful bird ( Alaemon alaudipes
     ) posing for the camera.jpg
   commons_filename: A beautiful bird ( Alaemon alaudipes ) posing for the camera.jpg
@@ -99,8 +98,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Haytem93&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Haytem93 (page does not exist)">Haytem93</a>
+  author: Haytem93
   source_url: https://commons.wikimedia.org/wiki/File:Cursorius cursor ( bird in the
     right ) saying to Alaemon alaudipes ( bird in the left ) get the hell out of here.jpg
   commons_filename: Cursorius cursor ( bird in the right ) saying to Alaemon alaudipes
@@ -108,12 +106,12 @@ image_refs:
 - role: secondary
   path: Q899345/secondary-2.webp
   width: 1800
-  height: 1304
+  height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Christian_Pirkl" title="User:Christian
-    Pirkl">Christian Pirkl</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Alaemon alaudipes 294A6376 Wüstenläuferlerche.jpg
-  commons_filename: Alaemon alaudipes 294A6376 Wüstenläuferlerche.jpg
+  author: Shiv's fotografia
+  source_url: https://commons.wikimedia.org/wiki/File:Greater Hoopoe-Lark The Whisperer
+    of the Desert Dunes 07.jpg
+  commons_filename: Greater Hoopoe-Lark The Whisperer of the Desert Dunes 07.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-04T13:12:18.998183+00:00'

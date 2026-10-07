@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class IocEntry(BaseModel):
@@ -32,7 +32,13 @@ class Vp11Entry(BaseModel):
 
 
 class SpeciesListEntry(BaseModel):
-    """One mapped species in species_list.yaml."""
+    """One mapped species in species_list.yaml.
+
+    Fields a person sets by hand (common_sv, former_sv, iucn_status, abundance, family_sv,
+    commons_search_name, ...) are kept as extra fields, so `init --resume` writes them back.
+    """
+
+    model_config = ConfigDict(extra="allow")
 
     wikidata_id: str | None = None  # Q-ID; null if mapping failed
     scientific_name: str

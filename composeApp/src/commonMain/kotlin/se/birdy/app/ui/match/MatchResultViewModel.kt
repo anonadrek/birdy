@@ -76,13 +76,35 @@ class MatchResultViewModel(
     private suspend fun resolve() {
         // Read classification results from ScanSource (replaces parseCsv)
         val parsed = source.classification.results.map { it.speciesId to it.confidence }
-        if (parsed.isEmpty()) {
-            // Empty results = the model scored nothing above noise for any mapped species,
-            // regardless of source — a real "no bird here", not a failure. (Image used to
-            // route to Error: a garbage photo the model correctly scored as background got
-            // an error screen instead of NoBird.) Decode/runtime failures surface as error
-            // states upstream of this ViewModel, before a ScanSource is ever constructed —
-            // they never reach resolve() as an empty results list.
+        val resolved = mutableListOf<ResolvedPrediction>()
+        var failedLookups = 0
+        for ((id, conf) in parsed) {
+            val species =
+                runCatching { repository.getById(SpeciesId(id), locale).first() }
+                    .onFailure {
+                        if (it is CancellationException) throw it
+                        failedLookups++
+                        println("MatchResultViewModel: species lookup failed for $id: ${it.stackTraceToString()}")
+                    }.getOrNull()
+            if (species != null) resolved += ResolvedPrediction(species, conf)
+        }
+        if (parsed.isNotEmpty() && failedLookups == parsed.size) {
+            // Every lookup threw (e.g. the species database failed to open): that is an error,
+            // not "no bird here" (Release 1.3.0 Plan 3 Task 7 review of 535305e5).
+            _state.value = MatchResultUiState.Error(MatchResultUiState.Error.Kind.ParseFailed)
+            return
+        }
+        if (resolved.isEmpty()) {
+            // No species from Birdy's catalog among the results, regardless of source — a real
+            // "no bird here", not a failure. Either the results are empty (the model scored
+            // nothing above noise for any mapped species; image used to route to Error, so a
+            // garbage photo the model correctly scored as background got an error screen), or
+            // every result is a species outside the catalog: the photo model knows 954 species
+            // worldwide, the catalog 839 European ones and only 251 of the model's. That second
+            // case ended on a bare "Inga arter kunde matchas mot databasen." text with no way to
+            // try again (Release 1.3.0 Plan 3 Task 7, API 36 emulator). Decode/runtime failures
+            // surface as error states upstream of this ViewModel, before a ScanSource is ever
+            // constructed — they never reach resolve().
             _state.value =
                 MatchResultUiState.NoBird(
                     frameJpegPath = source.frameJpegPath.ifBlank { null },
@@ -90,18 +112,6 @@ class MatchResultViewModel(
                     source = source,
                     topPrediction = null,
                 )
-            return
-        }
-        val resolved = mutableListOf<ResolvedPrediction>()
-        for ((id, conf) in parsed) {
-            val species =
-                runCatching { repository.getById(SpeciesId(id), locale).first() }
-                    .onFailure { if (it is CancellationException) throw it }
-                    .getOrNull()
-            if (species != null) resolved += ResolvedPrediction(species, conf)
-        }
-        if (resolved.isEmpty()) {
-            _state.value = MatchResultUiState.Error(MatchResultUiState.Error.Kind.ParseFailed)
             return
         }
         val override = matchOverrideReader?.invoke()

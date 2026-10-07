@@ -9,7 +9,7 @@ names:
   sv: Arabspett
   en: Arabian Woodpecker
 abundance: ovanlig
-iucn_status: NE
+iucn_status: NT
 season:
   jan: present
   feb: present
@@ -79,8 +79,7 @@ image_refs:
   width: 2048
   height: 1536
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/james_birdtourasia">James
-    Eaton</a>
+  author: James Eaton
   source_url: https://commons.wikimedia.org/wiki/File:Dendrocoptes dorae by James
     Eaton.jpg
   commons_filename: Dendrocoptes dorae by James Eaton.jpg
@@ -89,8 +88,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
-    Judas</a>
+  author: Jacky Judas
   source_url: https://commons.wikimedia.org/wiki/File:Dendrocoptes dorae 222956296.jpg
   commons_filename: Dendrocoptes dorae 222956296.jpg
 - role: secondary
@@ -98,8 +96,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
-    Judas</a>
+  author: Jacky Judas
   source_url: https://commons.wikimedia.org/wiki/File:Dendrocoptes dorae 222956309.jpg
   commons_filename: Dendrocoptes dorae 222956309.jpg
 review_status: auto

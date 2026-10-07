@@ -38,11 +38,14 @@ import java.io.File
 // Source name is suffixed so the on-disk cache doesn't mix toner with old tiles.
 private const val MAPTILER_TILE_SIZE = 512
 
+/** Space kept free around the pins when several finds are fitted on screen. */
+private const val FIT_BORDER_PX = 96
+
 private fun mapTilerSource(apiKey: String): OnlineTileSourceBase =
     object : XYTileSource(
         "MapTiler-Toner-Retina",
         0,
-        20,
+        MAP_TILE_MAX_ZOOM.toInt(),
         MAPTILER_TILE_SIZE,
         "@2x.png",
         arrayOf("https://api.maptiler.com/maps/toner-v2/"),
@@ -75,6 +78,9 @@ actual fun MapScreenHost(
             }
             MapView(context).apply {
                 setTileSource(mapTilerSource(BuildConfig.MAPTILER_API_KEY))
+                // Never zoom past the tiles (osmdroid's own limit is 29, from its tile
+                // approximator), neither by pinching nor by a fit (Plan 3 Task 7 review).
+                maxZoomLevel = MAP_TILE_MAX_ZOOM
                 setMultiTouchControls(true)
                 setUseDataConnection(true)
                 overlayManager.tilesOverlay.setColorFilter(
@@ -115,29 +121,31 @@ actual fun MapScreenHost(
     LaunchedEffect(pins, sealIcon) {
         mapView.overlays.clear()
         val icon = sealIcon
-        val geoPoints =
-            pins.map { pin ->
-                val point = GeoPoint(pin.latitude, pin.longitude)
-                val marker =
-                    Marker(mapView).apply {
-                        position = point
-                        setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-                        title = "#${pin.stampNumber}"
-                        if (icon != null) this.icon = icon
-                        setOnMarkerClickListener { _, _ ->
-                            onPinClick(pin.observationId)
-                            true
-                        }
+        pins.forEach { pin ->
+            val marker =
+                Marker(mapView).apply {
+                    position = GeoPoint(pin.latitude, pin.longitude)
+                    setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+                    title = "#${pin.stampNumber}"
+                    if (icon != null) this.icon = icon
+                    setOnMarkerClickListener { _, _ ->
+                        onPinClick(pin.observationId)
+                        true
                     }
-                mapView.overlays.add(marker)
-                point
+                }
+            mapView.overlays.add(marker)
+        }
+        // Finds at one spot are centred, never fitted: a zero-size box made osmdroid zoom to 29,
+        // far past the tiles, and the map opened empty (see MapStartView).
+        when (val start = mapStartView(pins)) {
+            null -> Unit
+            is MapStartView.Centre -> {
+                mapView.controller.setZoom(SINGLE_SPOT_ZOOM)
+                mapView.controller.setCenter(GeoPoint(start.latitude, start.longitude))
             }
-        if (geoPoints.isNotEmpty()) {
-            if (geoPoints.size == 1) {
-                mapView.controller.setZoom(13.0)
-                mapView.controller.setCenter(geoPoints.first())
-            } else {
-                mapView.post { mapView.zoomToBoundingBox(BoundingBox.fromGeoPoints(geoPoints), false, 96) }
+            is MapStartView.Fit -> {
+                val box = BoundingBox(start.north, start.east, start.south, start.west)
+                mapView.post { mapView.zoomToBoundingBox(box, false, FIT_BORDER_PX, FIT_MAX_ZOOM, null) }
             }
         }
         mapView.invalidate()

@@ -1,0 +1,211 @@
+{
+  "qid": "Q26578",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "blahake",
+    "en": "bluethroat"
+  },
+  "names": {
+    "sv": "Blåhake",
+    "en": "Bluethroat",
+    "scientific": "Luscinia svecica"
+  },
+  "family": {
+    "latin": "Muscicapidae",
+    "sv": "Flugsnappare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26578/hero.webp",
+      "width": 1600,
+      "height": 1068,
+      "author": "Sultanjenin2018",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:هزار_أزرق_الزور_Luscinia_svecica_2.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26578/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "El Golli Mohamed",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bluethroat_(Luscinia_svecica)_at_Ichkeul_NP.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26578/voice.mp3",
+    "durationSec": 16,
+    "trimmed": false,
+    "author": "Vladimir Yu. Arkhipov, Arkhivov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Luscinia_svecica.ogg",
+    "sha256": "690a49e55eb40740b1b525634aee2aa66a691766975e2875410a9db0d144cd46"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Blåhake",
+      "revision": "59480985"
+    },
+    "en": {
+      "title": "Bluethroat",
+      "revision": "1362849443"
+    },
+    "de": {
+      "title": "Blaukehlchen",
+      "revision": "260615470"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 4408732,
+    "totalReports": 43741,
+    "months": [
+      1,
+      1,
+      1,
+      14,
+      34,
+      39,
+      27,
+      65,
+      100,
+      5,
+      1,
+      2
+    ],
+    "counties": {
+      "SE-K": 15,
+      "SE-W": 22,
+      "SE-X": 15,
+      "SE-I": 18,
+      "SE-N": 27,
+      "SE-Z": 100,
+      "SE-F": 3,
+      "SE-H": 18,
+      "SE-G": 2,
+      "SE-BD": 80,
+      "SE-T": 14,
+      "SE-E": 6,
+      "SE-M": 9,
+      "SE-D": 7,
+      "SE-AB": 17,
+      "SE-C": 18,
+      "SE-S": 15,
+      "SE-AC": 61,
+      "SE-Y": 17,
+      "SE-U": 18,
+      "SE-O": 4
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september.",
+        "Rapporteras sällan i oktober till mars.",
+        "Andelen av alla fågelrapporter är högst i Jämtland, Norrbotten och Västerbotten."
+      ],
+      "en": [
+        "Reported most in September.",
+        "Rarely reported in October to March.",
+        "Its share of all bird reports is highest in Jämtland, Norrbotten and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        170,
+        82,
+        223,
+        3300,
+        9437,
+        5830,
+        3147,
+        7914,
+        12551,
+        644,
+        50,
+        122
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-BD": 5135,
+        "SE-AC": 4714,
+        "SE-AB": 4523,
+        "SE-H": 3825,
+        "SE-Z": 3732,
+        "SE-N": 3254,
+        "SE-C": 2685,
+        "SE-M": 2590,
+        "SE-O": 1537,
+        "SE-W": 1470,
+        "SE-U": 1049,
+        "SE-T": 1028,
+        "SE-I": 834,
+        "SE-S": 805,
+        "SE-D": 803,
+        "SE-X": 777,
+        "SE-Y": 648,
+        "SE-E": 625,
+        "SE-K": 355,
+        "SE-F": 272,
+        "SE-G": 128
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

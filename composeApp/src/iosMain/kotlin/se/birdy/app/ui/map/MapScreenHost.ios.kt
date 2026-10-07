@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.UIKitView
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import kotlinx.cinterop.ExperimentalForeignApi
-import kotlinx.cinterop.readValue
 import kotlinx.cinterop.useContents
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -25,10 +24,6 @@ import platform.Foundation.NSLog
 import platform.MapKit.MKAnnotationProtocol
 import platform.MapKit.MKAnnotationView
 import platform.MapKit.MKCoordinateRegionMakeWithDistance
-import platform.MapKit.MKMapPointForCoordinate
-import platform.MapKit.MKMapRectMake
-import platform.MapKit.MKMapRectNull
-import platform.MapKit.MKMapRectUnion
 import platform.MapKit.MKMapView
 import platform.MapKit.MKMapViewDelegateProtocol
 import platform.MapKit.MKOverlayLevelAboveLabels
@@ -39,7 +34,6 @@ import platform.MapKit.MKPointOfInterestFilter
 import platform.MapKit.MKTileOverlay
 import platform.MapKit.MKTileOverlayRenderer
 import platform.MapKit.addOverlay
-import platform.UIKit.UIEdgeInsetsMake
 import platform.UIKit.UIImage
 import platform.darwin.NSObject
 import se.birdy.app.toNSData
@@ -146,17 +140,26 @@ actual fun MapScreenHost(
                 },
             )
         }
-        if (pins.size == 1) {
-            val c = CLLocationCoordinate2DMake(pins[0].latitude, pins[0].longitude)
-            mapView.setRegion(MKCoordinateRegionMakeWithDistance(c, 4000.0, 4000.0), animated = false)
-        } else if (pins.size > 1) {
-            var rect = MKMapRectNull.readValue()
-            pins.forEach { pin ->
-                val point = MKMapPointForCoordinate(CLLocationCoordinate2DMake(pin.latitude, pin.longitude))
-                rect = MKMapRectUnion(rect, point.useContents { MKMapRectMake(x, y, 0.1, 0.1) })
+        // Same start view as Android (MapStartView): finds at one spot are centred like a single
+        // find, and a fit never zooms closer than street level. A fit around finds at one spot
+        // (or a few metres apart) used to zoom MapKit to its maximum (Plan 3 Task 7 review).
+        when (val start = mapStartView(pins)) {
+            null -> Unit
+            is MapStartView.Centre -> {
+                val c = CLLocationCoordinate2DMake(start.latitude, start.longitude)
+                mapView.setRegion(
+                    MKCoordinateRegionMakeWithDistance(c, SINGLE_SPOT_SPAN_METERS, SINGLE_SPOT_SPAN_METERS),
+                    animated = false,
+                )
             }
-            // 48pt ≈ Androids 96px @2x-padding (zoomToBoundingBox(..., 96) i MapScreenHost.android.kt).
-            mapView.setVisibleMapRect(rect, edgePadding = UIEdgeInsetsMake(48.0, 48.0, 48.0, 48.0), animated = false)
+            is MapStartView.Fit -> {
+                val span = fitSpan(start)
+                val c = CLLocationCoordinate2DMake(span.centreLatitude, span.centreLongitude)
+                mapView.setRegion(
+                    MKCoordinateRegionMakeWithDistance(c, span.latitudeMeters, span.longitudeMeters),
+                    animated = false,
+                )
+            }
         }
     }
 
@@ -165,6 +168,9 @@ actual fun MapScreenHost(
         onDispose { mapView.delegate = null }
     }
 }
+
+// A single find (or several at one spot) opens with about 4 km around it, as before.
+private const val SINGLE_SPOT_SPAN_METERS = 4_000.0
 
 internal class BirdyPinAnnotation(
     val observationId: String,

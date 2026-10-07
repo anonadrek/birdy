@@ -69,7 +69,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Pulcheria7" title="User:Pulcheria7">Pulcheria7</a>
+  author: Pulcheria7
   source_url: https://commons.wikimedia.org/wiki/File:Centropus senegalensis à la
     maison des tortues.jpg
   commons_filename: Centropus senegalensis à la maison des tortues.jpg
@@ -78,8 +78,7 @@ image_refs:
   width: 1800
   height: 1800
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Senegal coucal (Centropus senegalensis
     senegalensis).jpg
   commons_filename: Senegal coucal (Centropus senegalensis senegalensis).jpg
@@ -88,7 +87,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Atamari" title="User:Atamari">Atamari</a>
+  author: Atamari
   source_url: https://commons.wikimedia.org/wiki/File:Centropus senegalensis 0001.jpg
   commons_filename: Centropus senegalensis 0001.jpg
 review_status: auto

@@ -89,8 +89,7 @@ image_refs:
   width: 2400
   height: 1800
   license: Public domain
-  author: '<a rel="nofollow" class="external text" href="https://www.flickr.com/people/156700692@N02">GeorgeTan
-    #1...thanks for millionth support (PASSIVE)</a> from Singapore'
+  author: GeorgeTan
   source_url: https://commons.wikimedia.org/wiki/File:Egretta garzetta 2020-03-27.jpg
   commons_filename: Egretta garzetta 2020-03-27.jpg
 - role: secondary
@@ -98,7 +97,7 @@ image_refs:
   width: 1800
   height: 1197
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Little egret (Egretta garzetta).jpg
   commons_filename: Little egret (Egretta garzetta).jpg
 - role: secondary
@@ -106,7 +105,7 @@ image_refs:
   width: 1800
   height: 1197
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Little egret (Egretta garzetta)
     in flight.jpg
   commons_filename: Little egret (Egretta garzetta) in flight.jpg

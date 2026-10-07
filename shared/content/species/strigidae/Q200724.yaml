@@ -100,8 +100,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/88123769@N02">Bernard
-    Spragg. NZ</a> from Christchurch, New Zealand
+  author: Bernard Spragg. NZ
   source_url: https://commons.wikimedia.org/wiki/File:Great Grey Owl (Strix nebulosa)
     (37310719232).jpg
   commons_filename: Great Grey Owl (Strix nebulosa) (37310719232).jpg
@@ -110,20 +109,19 @@ image_refs:
   width: 1800
   height: 1201
   license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/usfws_alaska/">USFWSAlaska</a>
+  author: USFWSAlaska
   source_url: https://commons.wikimedia.org/wiki/File:Great gray owl, Strix nebulosa
     (51080405547).jpg
   commons_filename: Great gray owl, Strix nebulosa (51080405547).jpg
 - role: secondary
   path: Q200724/secondary-2.webp
-  width: 1800
-  height: 1356
-  license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Leo_Johannes" class="mw-redirect"
-    title="User:Leo Johannes">Leo Johannes</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Strix nebulosa at Skansen spring
-    2008-8.JPG
-  commons_filename: Strix nebulosa at Skansen spring 2008-8.JPG
+  width: 1364
+  height: 1800
+  license: CC BY-SA 4.0
+  author: Dion Art
+  source_url: https://commons.wikimedia.org/wiki/File:Бородатая неясыть (Strix nebulosa,
+    m), Ботанический сад.jpg
+  commons_filename: Бородатая неясыть (Strix nebulosa, m), Ботанический сад.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T21:17:06.645043+00:00'

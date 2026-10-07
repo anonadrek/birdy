@@ -303,6 +303,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleDeepLink(intent: Intent) {
+        // A notification button (Dagens fågel's "Läs om arten" / "Lyssna efter den") doesn't
+        // auto-cancel its notification the way a tap on the notification itself does.
+        val dismissId =
+            intent.getIntExtra(se.birdy.app.notifications.DailyBirdNotification.EXTRA_DISMISS_NOTIFICATION_ID, 0)
+        if (dismissId != 0) NotificationManagerCompat.from(this).cancel(dismissId)
         val uri = intent.data ?: return
         if (uri.scheme != "birdy") return
         val uriString = uri.toString()
@@ -700,9 +705,13 @@ class MainActivity : AppCompatActivity() {
                 // MUST be cheap + non-throwing — BirdClassifierFactory does not guard the DEMO-path fallback.
                 createFallback = { FakeBirdClassifier() },
                 onCrashlytics = { t ->
-                    android.util.Log.e("Birdy", "TFLite init failed, falling back to Fake", t)
+                    android.util.Log.e("Birdy", "TFLite init failed", t)
                     // FirebaseCrashlytics integration deferred — Plan 6 polish.
                 },
+                // Debug keeps FakeBirdClassifier + SessionFailureGuard; release rethrows
+                // load failure (ClassifierBootstrap Failed + retry) and never degrades
+                // mid-session to canned Great Tit 87% — same gate as buildAudioClassifier.
+                allowFallback = BuildConfig.DEBUG,
             )
         val (classifier, mode) = factory.create()
         // capturedModelVersion is null when createReal threw and we fell back to DEMO.

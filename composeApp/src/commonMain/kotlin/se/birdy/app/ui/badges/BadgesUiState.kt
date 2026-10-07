@@ -36,6 +36,16 @@ data class BadgeWithUnlock(
     val stampNumber: Int = 0,
 )
 
+/**
+ * Newest stamp first. Badges unlocked in the same pass share a timestamp; then the higher stamp
+ * number counts as newer (and the badge id settles the rest), so Märken's recently unlocked row,
+ * the Troférum hero and the entry card's fan always agree on which stamp is the latest.
+ */
+internal val NewestStampFirst: Comparator<BadgeWithUnlock> =
+    compareByDescending<BadgeWithUnlock> { it.unlockedAt }
+        .thenByDescending { it.stampNumber }
+        .thenBy { it.badge.id }
+
 enum class BadgeErrorKind { CatalogParseFailed, LoadFailed }
 
 sealed interface BadgeGridState {

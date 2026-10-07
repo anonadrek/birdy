@@ -33,6 +33,7 @@ class FakeUserPreferences : UserPreferences {
     private val _grandfatherLegacyCaptured = MutableStateFlow(false)
     private val _grandfatherLegacyInstallMs = MutableStateFlow<Long?>(null)
     private val _grandfatherTrustedFirstSeenMs = MutableStateFlow<Long?>(null)
+    private val _dailyBirdOpenedDate = MutableStateFlow<String?>(null)
 
     val archiveChipWrites = mutableListOf<String>()
     var archiveSortValue: ArchiveSort
@@ -79,6 +80,7 @@ class FakeUserPreferences : UserPreferences {
     override val grandfatherLegacyCaptured: Flow<Boolean> = _grandfatherLegacyCaptured.asStateFlow()
     override val grandfatherLegacyInstallMs: Flow<Long?> = _grandfatherLegacyInstallMs.asStateFlow()
     override val grandfatherTrustedFirstSeenMs: Flow<Long?> = _grandfatherTrustedFirstSeenMs.asStateFlow()
+    override val dailyBirdOpenedDate: Flow<String?> = _dailyBirdOpenedDate.asStateFlow()
 
     override suspend fun setUserName(name: String) {
         _userName.value = name
@@ -168,5 +170,9 @@ class FakeUserPreferences : UserPreferences {
 
     override suspend fun setGrandfatherTrustedFirstSeenMs(ms: Long) {
         _grandfatherTrustedFirstSeenMs.value = ms
+    }
+
+    override suspend fun setDailyBirdOpenedDate(date: String) {
+        _dailyBirdOpenedDate.value = date
     }
 }

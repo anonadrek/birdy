@@ -1,0 +1,211 @@
+{
+  "qid": "Q25399",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "sadesarla",
+    "en": "white-wagtail"
+  },
+  "names": {
+    "sv": "Sädesärla",
+    "en": "White Wagtail",
+    "scientific": "Motacilla alba"
+  },
+  "family": {
+    "latin": "Motacillidae",
+    "sv": "Ärlor"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25399/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:White_wagtail_(Motacilla_alba),_Seltjarnarnes,_Iceland.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25399/extra.webp",
+      "width": 1200,
+      "height": 841,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Motacilla_Alba_Oulu_20140426.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25399/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Pascal Christe",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Motacilla_alba_-_White_Wagtail_XC466458.mp3",
+    "sha256": "9de3942944e93d3fba182ef115da9462cda85f9882763038694fb06b8de85260"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Sädesärla",
+      "revision": "59692077"
+    },
+    "en": {
+      "title": "White wagtail",
+      "revision": "1373329691"
+    },
+    "de": {
+      "title": "Bachstelze",
+      "revision": "267946255"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 9687165,
+    "totalReports": 445858,
+    "months": [
+      3,
+      2,
+      26,
+      100,
+      61,
+      74,
+      81,
+      88,
+      97,
+      27,
+      7,
+      5
+    ],
+    "counties": {
+      "SE-K": 76,
+      "SE-W": 72,
+      "SE-X": 86,
+      "SE-I": 68,
+      "SE-N": 70,
+      "SE-Z": 92,
+      "SE-F": 70,
+      "SE-H": 62,
+      "SE-G": 60,
+      "SE-BD": 100,
+      "SE-T": 56,
+      "SE-E": 78,
+      "SE-M": 70,
+      "SE-D": 84,
+      "SE-AB": 80,
+      "SE-C": 72,
+      "SE-S": 74,
+      "SE-AC": 85,
+      "SE-Y": 85,
+      "SE-U": 50,
+      "SE-O": 79
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april och juli till september.",
+        "Rapporteras sällan i november till februari.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in April and July to September.",
+        "Rarely reported in November to February.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1556,
+        744,
+        19219,
+        115053,
+        81249,
+        53430,
+        44717,
+        51194,
+        58396,
+        16081,
+        2637,
+        1390
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 71544,
+        "SE-AB": 50464,
+        "SE-M": 44234,
+        "SE-H": 29606,
+        "SE-C": 24889,
+        "SE-D": 23781,
+        "SE-E": 19536,
+        "SE-N": 19326,
+        "SE-F": 17021,
+        "SE-AC": 14988,
+        "SE-BD": 14901,
+        "SE-W": 11003,
+        "SE-X": 10236,
+        "SE-T": 9773,
+        "SE-S": 9150,
+        "SE-Z": 7908,
+        "SE-G": 7818,
+        "SE-Y": 7508,
+        "SE-I": 7439,
+        "SE-U": 6640,
+        "SE-K": 4055
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

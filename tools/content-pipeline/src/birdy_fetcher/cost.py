@@ -10,6 +10,7 @@ _PRICING = {
     "sonnet": {"input": 3.00, "output": 15.00},  # claude-sonnet-4-6
     "opus5": {"input": 5.00, "output": 25.00},  # claude-opus-5 (web step)
     "sonnet5": {"input": 2.00, "output": 10.00},  # claude-sonnet-5 (web step)
+    "opus55": {"input": 4.00, "output": 20.00},  # claude-opus-5-5 (web step, R3 2026-10-07)
 }
 
 

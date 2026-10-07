@@ -62,8 +62,7 @@ image_refs:
   width: 2400
   height: 1695
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Crab Plover. Dromas ardeola
     - Flickr - gailhampshire (1).jpg
   commons_filename: Crab Plover. Dromas ardeola - Flickr - gailhampshire (1).jpg
@@ -72,8 +71,7 @@ image_refs:
   width: 1800
   height: 1357
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Crab Plover. Dromas ardeola
     - Flickr - gailhampshire (2).jpg
   commons_filename: Crab Plover. Dromas ardeola - Flickr - gailhampshire (2).jpg
@@ -82,8 +80,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:AL_BADUSH&amp;action=edit&amp;redlink=1"
-    class="new" title="User:AL BADUSH (page does not exist)">AL BADUSH</a>
+  author: AL BADUSH
   source_url: https://commons.wikimedia.org/wiki/File:Crab Plover (Dromas ardeola).jpg
   commons_filename: Crab Plover (Dromas ardeola).jpg
 review_status: auto

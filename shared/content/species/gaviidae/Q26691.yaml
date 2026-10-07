@@ -95,7 +95,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Red-throated diver (Gavia stellata),
     Seltjarnarnes, lake Bakkatjörn, Iceland.jpg
   commons_filename: Red-throated diver (Gavia stellata), Seltjarnarnes, lake Bakkatjörn,
@@ -105,7 +105,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Red-throated diver (Gavia stellata).jpg
   commons_filename: Red-throated diver (Gavia stellata).jpg
 - role: secondary
@@ -113,7 +113,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Red-throated diver (Gavia stellata),
     Seltjarnarnes, Iceland.jpg
   commons_filename: Red-throated diver (Gavia stellata), Seltjarnarnes, Iceland.jpg

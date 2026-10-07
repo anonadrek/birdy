@@ -95,29 +95,28 @@ migration:
 image_refs:
 - role: hero
   path: Q27434/hero.webp
-  width: 1601
-  height: 2400
-  license: CC0
-  author: Rijksmuseum
-  source_url: https://commons.wikimedia.org/wiki/File:Zwarte zee-eend (Melanitta nigra),
-    RP-T-BR-2017-1-5-84.jpg
-  commons_filename: Zwarte zee-eend (Melanitta nigra), RP-T-BR-2017-1-5-84.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: Stephan Sprinz
+  source_url: https://commons.wikimedia.org/wiki/File:Männliche Trauerente (Melanitta
+    nigra) - Spiekeroog, Nationalpark Niedersächsisches Wattenmeer.jpg
+  commons_filename: Männliche Trauerente (Melanitta nigra) - Spiekeroog, Nationalpark
+    Niedersächsisches Wattenmeer.jpg
 - role: secondary
   path: Q27434/secondary-1.webp
-  width: 1200
-  height: 1800
-  license: CC0
-  author: Rijksmuseum
-  source_url: https://commons.wikimedia.org/wiki/File:Zwarte zee-eend (Melanitta nigra),
-    RP-T-BR-2017-1-5-85.jpg
-  commons_filename: Zwarte zee-eend (Melanitta nigra), RP-T-BR-2017-1-5-85.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: Sean Hartnett
+  source_url: https://commons.wikimedia.org/wiki/File:Melanitta nigra 339774850.jpg
+  commons_filename: Melanitta nigra 339774850.jpg
 - role: secondary
   path: Q27434/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Melanitta nigra (39772066244).jpg
   commons_filename: Melanitta nigra (39772066244).jpg
 review_status: auto

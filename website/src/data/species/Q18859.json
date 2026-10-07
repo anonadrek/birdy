@@ -1,0 +1,211 @@
+{
+  "qid": "Q18859",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "rodbena",
+    "en": "common-redshank"
+  },
+  "names": {
+    "sv": "Rödbena",
+    "en": "Common Redshank",
+    "scientific": "Tringa totanus"
+  },
+  "family": {
+    "latin": "Scolopacidae",
+    "sv": "Snäppor"
+  },
+  "group": "waders",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q18859/hero.webp",
+      "width": 1600,
+      "height": 1064,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Redshank_(Tringa_totanus).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q18859/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "HLI-Photography",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rotschenkel_(Tringa_totanus)_(53633851007).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q18859/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Joost van Bruggen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tringa_totanus_-_Common_Redshank_XC432923.mp3",
+    "sha256": "be0076987c912105880cd841221b844045d42b6ee1a23f8dcea4d1699dda0e2e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Rödbena",
+      "revision": "58511944"
+    },
+    "en": {
+      "title": "Common redshank",
+      "revision": "1375614588"
+    },
+    "de": {
+      "title": "Rotschenkel",
+      "revision": "252721809"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2481714,
+    "totalReports": 228819,
+    "months": [
+      7,
+      6,
+      18,
+      78,
+      84,
+      80,
+      100,
+      74,
+      17,
+      8,
+      8,
+      8
+    ],
+    "counties": {
+      "SE-K": 52,
+      "SE-W": 29,
+      "SE-X": 32,
+      "SE-I": 83,
+      "SE-N": 100,
+      "SE-Z": 97,
+      "SE-F": 28,
+      "SE-H": 88,
+      "SE-G": 24,
+      "SE-BD": 47,
+      "SE-T": 53,
+      "SE-E": 81,
+      "SE-M": 71,
+      "SE-D": 23,
+      "SE-AB": 40,
+      "SE-C": 36,
+      "SE-S": 39,
+      "SE-AC": 57,
+      "SE-Y": 31,
+      "SE-U": 57,
+      "SE-O": 44
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i maj till juli.",
+        "Rapporteras sällan i oktober till februari.",
+        "Andelen av alla fågelrapporter är högst i Halland, Jämtland och Kalmar."
+      ],
+      "en": [
+        "Reported most in May to July.",
+        "Rarely reported in October to February.",
+        "Its share of all bird reports is highest in Halland, Jämtland and Kalmar."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        2205,
+        1382,
+        7784,
+        51754,
+        64453,
+        32941,
+        31852,
+        24690,
+        5869,
+        2554,
+        1790,
+        1350
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-M": 27366,
+        "SE-H": 25634,
+        "SE-O": 24466,
+        "SE-N": 16704,
+        "SE-AB": 15548,
+        "SE-E": 12393,
+        "SE-C": 7674,
+        "SE-AC": 6135,
+        "SE-T": 5592,
+        "SE-I": 5524,
+        "SE-Z": 5103,
+        "SE-U": 4626,
+        "SE-BD": 4271,
+        "SE-F": 4121,
+        "SE-D": 3901,
+        "SE-S": 2972,
+        "SE-W": 2668,
+        "SE-X": 2289,
+        "SE-G": 1903,
+        "SE-K": 1705,
+        "SE-Y": 1683
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -6,7 +6,7 @@ taxonomy:
   genus: Hydrobates
   ioc_order: Procellariiformes
 names:
-  sv: null
+  sv: Kapverdestormsvala
   en: Cape Verde Storm Petrel
 abundance: ovanlig
 iucn_status: LC
@@ -70,8 +70,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/816774">Charlotte
-    Kirchner</a>
+  author: Charlotte Kirchner
   source_url: https://commons.wikimedia.org/wiki/File:Hydrobates jabejabe - Charlotte
     Kirchner - 333452293.jpeg
   commons_filename: Hydrobates jabejabe - Charlotte Kirchner - 333452293.jpeg

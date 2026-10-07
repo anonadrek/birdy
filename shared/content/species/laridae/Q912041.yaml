@@ -9,7 +9,7 @@ names:
   sv: Vitögd mås
   en: White-eyed Gull
 abundance: ovanlig
-iucn_status: NE
+iucn_status: LC
 season:
   jan: present
   feb: present
@@ -86,7 +86,7 @@ image_refs:
   width: 2048
   height: 1958
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/opisska">opisska</a>
+  author: opisska
   source_url: https://commons.wikimedia.org/wiki/File:Ichthyaetus leucophthalmus,
     Hurghada, Egypt 5.jpg
   commons_filename: Ichthyaetus leucophthalmus, Hurghada, Egypt 5.jpg
@@ -95,7 +95,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/ch_berg">ch_berg</a>
+  author: ch_berg
   source_url: https://commons.wikimedia.org/wiki/File:Ichthyaetus leucophthalmus,
     Hurghada, Egypt 2.jpg
   commons_filename: Ichthyaetus leucophthalmus, Hurghada, Egypt 2.jpg
@@ -104,7 +104,7 @@ image_refs:
   width: 1800
   height: 1205
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Anai171" title="User:Anai171">Anai171</a>
+  author: Anai171
   source_url: https://commons.wikimedia.org/wiki/File:Goéland à iris blanc (Ichthyaetus
     leucophthalmus) sur la plage de l'île Moucha, oiseau endémique de la mer Rouge,
     Djibouti.jpg

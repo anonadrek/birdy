@@ -11,8 +11,15 @@ from typing import Any, Literal
 from pydantic import BaseModel
 
 from .checks import quote_in_sources
-from .datamod import status_contradiction
+from .datamod import (
+    BREEDING_MONTHS,
+    data_status_contradiction,
+    rarely_sentence,
+    red_list_for_page,
+    sentence_kind,
+)
 from .record import Record
+from .scinames import NameContext, resolve_lookalike
 from .wiki_full import WikiArticle
 
 Topic = Literal[
@@ -29,7 +36,13 @@ Topic = Literal[
 ]
 ArticleLang = Literal["sv", "en", "de"]
 SwedenStatus = Literal[
-    "resident", "breeding_migrant", "passage", "winter_visitor", "rare_visitor", "absent"
+    "resident",
+    "partial_migrant",
+    "breeding_migrant",
+    "passage",
+    "winter_visitor",
+    "rare_visitor",
+    "absent",
 ]
 
 
@@ -75,6 +88,10 @@ TOPIC_SV = {
 }
 STATUS_SV = {
     "resident": "Stannfågel",
+    # Wave 1 (2026-10-07): some of the Swedish birds stay over winter, some leave. Without it
+    # the model had to call Koltrast or Gräsand resident or migrant, and the checks struck
+    # or flagged 28 of wave 1's 35 flags on that alone.
+    "partial_migrant": "Delvis flyttfågel, häckar här",
     "breeding_migrant": "Flyttfågel, häckar här",
     "passage": "Ses under flyttningen",
     "winter_visitor": "Vintergäst",
@@ -99,6 +116,9 @@ class FactCheck:
     notes: list[str] = field(default_factory=list)
     fatal: list[str] = field(default_factory=list)
     retry: list[str] = field(default_factory=list)
+    # For the report only, never sent back to the model as feedback: look-alikes that were
+    # not linked to a species (scinames.py).
+    info: list[str] = field(default_factory=list)
 
 
 def _valid_sources(
@@ -112,8 +132,10 @@ def _valid_sources(
 
 
 def _entry(
-    number: int, fact: ModelFact, articles: dict[str, WikiArticle], index: dict[str, str]
+    number: int, fact: ModelFact, articles: dict[str, WikiArticle], names: NameContext
 ) -> tuple[dict[str, Any] | None, str | None]:
+    """The fact as the record keeps it, and a note: why it was struck, or (with an entry)
+    why its look-alike got no QID."""
     sources = _valid_sources(fact.sources, articles)
     if not sources:
         return None, f"faktum {number} ströks, citatet finns inte i artikeln: {fact.sv}"
@@ -123,28 +145,105 @@ def _entry(
     if fact.topic == "lookalike":
         if not fact.other_scientific:
             return None, f"faktum {number} ströks, förväxlingsarten saknar namn: {fact.sv}"
-        other = {"scientific": fact.other_scientific.strip()}
-        qid = index.get(other["scientific"].lower())
-        if qid:
-            other["qid"] = qid
-        entry["other"] = other
+        written = fact.other_scientific.strip()
+        evidence = " ".join([fact.sv, *(s["quote"] for s in sources)])
+        found = resolve_lookalike(written, names, evidence=evidence)
+        if found.own:
+            # "Kan förväxlas med <its own subspecies>" never reaches a page (re-review
+            # 2026-10-07); code cannot tell whether the quote would carry it as another
+            # topic, so the fact goes.
+            return None, f"faktum {number} ströks: {found.note}"
+        # Birdy's own name for a species it has ("Corvus corone" for "C. corone corone"),
+        # else the name as the article writes it (R3, 2026-10-07).
+        if found.binomial is not None and found.qid is not None:
+            entry["other"] = {"scientific": found.binomial, "qid": found.qid}
+            if found.binomial != written:
+                # What the article said, for V1 and an audit (fix wave 2026-10-07).
+                entry["other"]["written"] = written
+        else:
+            entry["other"] = {"scientific": written}
+        if found.note is not None:
+            return entry, f"faktum {number}: {found.note}"
     return entry, None
 
 
+def cap_by_topic(
+    entries: list[tuple[int, dict[str, Any]]], limit: int
+) -> tuple[list[tuple[int, dict[str, Any]]], list[tuple[int, dict[str, Any]]]]:
+    """(kept, dropped), both in the model's order. Over the limit the topics take turns: the
+    first fact of every topic, then the second of every topic and so on, the required topics
+    first in each turn and the others in the order the model first used them. Before the
+    R3 trial (2026-10-07) the first `limit` facts were kept, so a model that wrote 43 facts
+    lost every food, behaviour and look-alike fact (they come last). Within a topic the
+    model's earlier facts win."""
+    if len(entries) <= limit:
+        return entries, []
+    by_topic: dict[str, list[int]] = {}
+    for index, (_, entry) in enumerate(entries):
+        by_topic.setdefault(str(entry["topic"]), []).append(index)
+    order = [t for t in REQUIRED_TOPICS if t in by_topic]
+    order += [t for t in by_topic if t not in REQUIRED_TOPICS]
+    chosen: set[int] = set()
+    turn = 0
+    while len(chosen) < limit:
+        for topic in order:
+            if turn < len(by_topic[topic]) and len(chosen) < limit:
+                chosen.add(by_topic[topic][turn])
+        turn += 1
+    kept = [e for i, e in enumerate(entries) if i in chosen]
+    dropped = [e for i, e in enumerate(entries) if i not in chosen]
+    return kept, dropped
+
+
+def _cap_notes(dropped: list[tuple[int, dict[str, Any]]]) -> list[str]:
+    """One summary line and one line per dropped fact, for the step report."""
+    if not dropped:
+        return []
+    counts: dict[str, int] = {}
+    for _, entry in dropped:
+        label = TOPIC_SV[entry["topic"]]
+        counts[label] = counts.get(label, 0) + 1
+    summary = ", ".join(f"{label} {n}" for label, n in counts.items())
+    notes = [f"{len(dropped)} fakta över gränsen {MAX_FACTS} ströks ({summary})"]
+    notes += [
+        f"faktum {number} ströks, över gränsen {MAX_FACTS} ({TOPIC_SV[entry['topic']]}): "
+        f"{entry['sv']}"
+        for number, entry in dropped
+    ]
+    return notes
+
+
 def check_fact_sheet(
-    out: FactSheetOutput, articles: dict[str, WikiArticle], scientific_index: dict[str, str]
+    out: FactSheetOutput,
+    articles: dict[str, WikiArticle],
+    scientific_index: dict[str, str],
+    *,
+    subject: str | None = None,
+    own_qid: str | None = None,
+    families: dict[str, str] | None = None,
+    common: dict[str, tuple[str, ...]] | None = None,
 ) -> FactCheck:
+    """`subject` and `own_qid` are the species' own scientific name and QID; `families` and
+    `common` map the index's names to their family and their Swedish and English names. All
+    help match a look-alike written "C. corone" or in an older genus (scinames.py)."""
     check = FactCheck()
-    kept: list[dict[str, Any]] = []
+    names = NameContext(
+        index=scientific_index,
+        families=families or {},
+        common=common or {},
+        subject=subject,
+        own_qid=own_qid,
+    )
+    valid: list[tuple[int, dict[str, Any]]] = []
     for number, fact in enumerate(out.facts, start=1):
-        entry, note = _entry(number, fact, articles, scientific_index)
+        entry, note = _entry(number, fact, articles, names)
         if note is not None:
-            check.notes.append(note)
+            (check.notes if entry is None else check.info).append(note)
         if entry is not None:
-            kept.append(entry)
-    if len(kept) > MAX_FACTS:
-        check.notes.append(f"{len(kept) - MAX_FACTS} fakta över gränsen {MAX_FACTS} ströks")
-        kept = kept[:MAX_FACTS]
+            valid.append((number, entry))
+    capped, dropped = cap_by_topic(valid, MAX_FACTS)
+    check.notes += _cap_notes(dropped)
+    kept = [entry for _, entry in capped]
     check.facts = [{"id": f"f{i:02d}", **entry} for i, entry in enumerate(kept, start=1)]
 
     if out.sweden_status is not None:
@@ -174,16 +273,39 @@ def check_fact_sheet(
     return check
 
 
-def data_facts(record: Record) -> list[dict[str, Any]]:
-    """Facts that code writes from the report data and the red list (never the model)."""
+BREEDS_HERE = ("resident", "partial_migrant", "breeding_migrant")
+
+
+def data_facts(record: Record, *, status: str | None = None) -> list[dict[str, Any]]:
+    """Facts that code writes from the report data and the red list (never the model).
+    `status` is the fact sheet's status value: for a species that breeds here, the "rarely
+    reported" sentence loses its breeding-season months (or goes), see BREEDING_MONTHS."""
     out: list[dict[str, Any]] = []
 
-    def add(source: str, text: str) -> None:
-        out.append({"id": f"d{len(out) + 1:02d}", "topic": "data", "source": source, "sv": text})
+    def add(source: str, text: str, kind: str | None = None) -> None:
+        fact: dict[str, Any] = {"id": f"d{len(out) + 1:02d}", "topic": "data", "source": source}
+        if kind:
+            # Read by code (R3, 2026-10-07): a sentence citing a county share must keep
+            # saying andel/share (text_checks), and `absent` gives the page its status when
+            # no article does (text_model.status_for_site).
+            fact["kind"] = kind
+        out.append({**fact, "sv": text})
 
-    for sentence in (record.get("data") or {}).get("sentences", {}).get("sv", []):
-        add("artportalen", sentence)
+    data = record.get("data") or {}
+    for sentence in data.get("sentences", {}).get("sv", []):
+        kind = sentence_kind(sentence)
+        months = data.get("months")
+        if kind == "rarelyReported" and status in BREEDS_HERE and months:
+            trimmed = rarely_sentence(months, "sv", skip=BREEDING_MONTHS)
+            if trimmed is None:
+                continue
+            sentence = trimmed
+        add("artportalen", sentence, kind)
     red = record.get("swedishRedList")
+    if "totalReports" in data:
+        # A record written before `web sources` dropped `not_listed` for a species that is
+        # not regular in Sweden still gets no "Inte rödlistad" sentence.
+        red = red_list_for_page(red, int(data["totalReports"]))
     if red == "not_listed":
         add("rodlistan", "Inte rödlistad i Svenska rödlistan 2025.")
     elif red in REDLIST_SV:
@@ -200,15 +322,14 @@ def apply_facts(record: Record, check: FactCheck, *, generated: dict[str, Any]) 
     facts = list(check.facts)
     if check.status is not None:
         facts.append(check.status)
-    facts.extend(data_facts(record))
+    status = check.status["value"] if check.status is not None else None
+    facts.extend(data_facts(record, status=status))
     record["facts"] = facts
     data = record.get("data")
     if data is not None:
         reason = None
         if check.status is not None:
-            reason = status_contradiction(
-                check.status["value"], data.get("months"), int(data.get("totalReports", 0))
-            )
+            reason = data_status_contradiction(check.status["value"], data)
         data["statusSignal"] = {"contradicts": reason}
     generated_dict = record.setdefault("generated", {})
     generated_dict["facts"] = generated

@@ -95,7 +95,7 @@ image_refs:
   width: 2400
   height: 1596
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Northern ganet (Morus bassanus),
     Heligoland.jpg
   commons_filename: Northern ganet (Morus bassanus), Heligoland.jpg
@@ -104,7 +104,7 @@ image_refs:
   width: 1800
   height: 1197
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Morus Bassanus, Heligoland 2019.jpg
   commons_filename: Morus Bassanus, Heligoland 2019.jpg
 - role: secondary
@@ -112,7 +112,7 @@ image_refs:
   width: 1800
   height: 1198
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Morus Bassanus, prepared for
     landing.jpg
   commons_filename: Morus Bassanus, prepared for landing.jpg

@@ -68,8 +68,7 @@ image_refs:
   width: 2400
   height: 1600
   license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Sabine%27s_Sunbird" title="User:Sabine's
-    Sunbird">Duncan Wright</a>, USFWS
+  author: Duncan Wright, USFWS
   source_url: https://commons.wikimedia.org/wiki/File:Anous stolidus nesting.JPG
   commons_filename: Anous stolidus nesting.JPG
 - role: secondary
@@ -77,8 +76,7 @@ image_refs:
   width: 1800
   height: 1199
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
-    Knight</a> from Seaford, East Sussex, United Kingdom
+  author: Ron Knight
   source_url: https://commons.wikimedia.org/wiki/File:Common Noddy (Anous stolidus)
     (8603063360).jpg
   commons_filename: Common Noddy (Anous stolidus) (8603063360).jpg
@@ -87,8 +85,7 @@ image_refs:
   width: 1800
   height: 1199
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
-    Knight</a> from Seaford, East Sussex, United Kingdom
+  author: Ron Knight
   source_url: https://commons.wikimedia.org/wiki/File:Common Noddy (Anous stolidus)
     (8603063808).jpg
   commons_filename: Common Noddy (Anous stolidus) (8603063808).jpg

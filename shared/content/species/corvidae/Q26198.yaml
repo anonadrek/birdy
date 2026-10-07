@@ -99,8 +99,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
-    Taÿ Pamart</a>
+  author: Marie-Lan Taÿ Pamart
   source_url: https://commons.wikimedia.org/wiki/File:Corvus corone anting JdP 20250607
     n02.jpg
   commons_filename: Corvus corone anting JdP 20250607 n02.jpg
@@ -109,8 +108,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
-    Lours">Alexis Lours</a>
+  author: Alexis Lours
   source_url: https://commons.wikimedia.org/wiki/File:Corvus corone 2023 10 28 07.jpg
   commons_filename: Corvus corone 2023 10 28 07.jpg
 - role: secondary
@@ -118,8 +116,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
-    Lours">Alexis Lours</a>
+  author: Alexis Lours
   source_url: https://commons.wikimedia.org/wiki/File:Corvus corone 2023 10 28 01.jpg
   commons_filename: Corvus corone 2023 10 28 01.jpg
 review_status: auto

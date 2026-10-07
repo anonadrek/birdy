@@ -81,7 +81,7 @@ image_refs:
   width: 2048
   height: 1365
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/tls-60">tls-60</a>
+  author: tls-60
   source_url: https://commons.wikimedia.org/wiki/File:Nucifraga caryocatactes macrorhynchos,
     Khanty-Mansiysk, Khanty-Mansi Autonomous Okrug, Russia 1.jpg
   commons_filename: Nucifraga caryocatactes macrorhynchos, Khanty-Mansiysk, Khanty-Mansi
@@ -91,8 +91,7 @@ image_refs:
   width: 1800
   height: 1202
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/83657186@N05">Pierre-Marie
-    Epiney</a>
+  author: Pierre-Marie Epiney
   source_url: https://commons.wikimedia.org/wiki/File:Cassenoix moucheté Nucifraga
     caryocatactes DSC 6800 (53018322450).jpg
   commons_filename: Cassenoix moucheté Nucifraga caryocatactes DSC 6800 (53018322450).jpg
@@ -101,8 +100,7 @@ image_refs:
   width: 1800
   height: 1199
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/83657186@N05">Pierre-Marie
-    Epiney</a>
+  author: Pierre-Marie Epiney
   source_url: https://commons.wikimedia.org/wiki/File:Cassenoix moucheté Nucifraga
     caryocatactes DSC 6760 (53018420268).jpg
   commons_filename: Cassenoix moucheté Nucifraga caryocatactes DSC 6760 (53018420268).jpg

@@ -100,7 +100,7 @@ image_refs:
   width: 2137
   height: 1421
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Sylvia atricapilla heineken.jpg
   commons_filename: Sylvia atricapilla heineken.jpg
 - role: secondary
@@ -108,8 +108,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
-    Taÿ Pamart</a>
+  author: Marie-Lan Taÿ Pamart
   source_url: https://commons.wikimedia.org/wiki/File:Sylvia atricapilla JdP 20190405
     t112815.jpg
   commons_filename: Sylvia atricapilla JdP 20190405 t112815.jpg
@@ -118,8 +117,7 @@ image_refs:
   width: 1800
   height: 1552
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Male Blackcap. Sylvia atricapilla
     - Flickr - gailhampshire.jpg
   commons_filename: Male Blackcap. Sylvia atricapilla - Flickr - gailhampshire.jpg

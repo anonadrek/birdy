@@ -1,0 +1,211 @@
+{
+  "qid": "Q203053",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "kustlabb",
+    "en": "parasitic-jaeger"
+  },
+  "names": {
+    "sv": "Kustlabb",
+    "en": "Parasitic Jaeger",
+    "scientific": "Stercorarius parasiticus"
+  },
+  "family": {
+    "latin": "Stercorariidae",
+    "sv": "Labbar"
+  },
+  "group": "gulls_terns",
+  "iucn": "LC",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q203053/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "USFWSAlaska",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Parasitic_jaeger_(51102275755).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q203053/extra.webp",
+      "width": 1200,
+      "height": 825,
+      "author": "Bouke ten Cate",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kleine_jager_-_parasitic_jaeger_-_Stercorarius_parasiticus.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q203053/voice.mp3",
+    "durationSec": 18,
+    "trimmed": false,
+    "author": "Doug Hynes",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stercorarius_parasiticus_-_Parasitic_Jaeger_XC609518.mp3",
+    "sha256": "24fe34454c4d7baeead3cf4baa7e4afec23de27d92cecff71e578e21757a0c54"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Kustlabb",
+      "revision": "59569209"
+    },
+    "en": {
+      "title": "Parasitic jaeger",
+      "revision": "1375885635"
+    },
+    "de": {
+      "title": "Schmarotzerraubmöwe",
+      "revision": "235205709"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2481621,
+    "totalReports": 35253,
+    "months": [
+      0,
+      0,
+      3,
+      25,
+      51,
+      37,
+      79,
+      100,
+      64,
+      21,
+      2,
+      1
+    ],
+    "counties": {
+      "SE-K": 97,
+      "SE-W": 1,
+      "SE-X": 15,
+      "SE-I": 86,
+      "SE-N": 63,
+      "SE-Z": 1,
+      "SE-F": 3,
+      "SE-H": 100,
+      "SE-G": 4,
+      "SE-BD": 47,
+      "SE-T": 2,
+      "SE-E": 12,
+      "SE-M": 38,
+      "SE-D": 12,
+      "SE-AB": 42,
+      "SE-C": 16,
+      "SE-S": 27,
+      "SE-AC": 66,
+      "SE-Y": 20,
+      "SE-U": 1,
+      "SE-O": 22
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i augusti.",
+        "Rapporteras sällan i november till mars.",
+        "Andelen av alla fågelrapporter är högst i Kalmar, Blekinge och Gotland."
+      ],
+      "en": [
+        "Reported most in August.",
+        "Rarely reported in November to March.",
+        "Its share of all bird reports is highest in Kalmar, Blekinge and Gotland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        287,
+        3672,
+        8495,
+        3357,
+        5450,
+        7267,
+        4821,
+        1576,
+        76,
+        8
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-H": 6142,
+        "SE-AB": 3370,
+        "SE-M": 3081,
+        "SE-O": 2532,
+        "SE-N": 2201,
+        "SE-AC": 1500,
+        "SE-I": 1201,
+        "SE-BD": 887,
+        "SE-C": 721,
+        "SE-K": 659,
+        "SE-S": 435,
+        "SE-D": 433,
+        "SE-E": 400,
+        "SE-Y": 231,
+        "SE-X": 231,
+        "SE-F": 91,
+        "SE-G": 61,
+        "SE-T": 42,
+        "SE-U": 25,
+        "SE-W": 17,
+        "SE-Z": 8
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -96,8 +96,7 @@ image_refs:
   width: 2400
   height: 2369
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Hen Harrier .Circus cyaneus
     - Flickr - gailhampshire (1).jpg
   commons_filename: Hen Harrier .Circus cyaneus - Flickr - gailhampshire (1).jpg
@@ -106,20 +105,19 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Circus cyaneus (39907167454).jpg
   commons_filename: Circus cyaneus (39907167454).jpg
 - role: secondary
   path: Q25572/secondary-2.webp
   width: 1800
-  height: 1331
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
-  source_url: https://commons.wikimedia.org/wiki/File:Hen Harrier. Circus cyaneus
-    - Flickr - gailhampshire.jpg
-  commons_filename: Hen Harrier. Circus cyaneus - Flickr - gailhampshire.jpg
+  height: 1200
+  license: CC BY-SA 4.0
+  author: Stephan Sprinz
+  source_url: https://commons.wikimedia.org/wiki/File:Weibliche Kornweihe (circus
+    cyaneus) - Spiekeroog, Nationalpark Niedersächsisches Wattenmeer.jpg
+  commons_filename: Weibliche Kornweihe (circus cyaneus) - Spiekeroog, Nationalpark
+    Niedersächsisches Wattenmeer.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-04T12:14:53.029838+00:00'

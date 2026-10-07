@@ -1,0 +1,201 @@
+{
+  "qid": "Q25769",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "jorduggla",
+    "en": "short-eared-owl"
+  },
+  "names": {
+    "sv": "Jorduggla",
+    "en": "Short-eared Owl",
+    "scientific": "Asio flammeus"
+  },
+  "family": {
+    "latin": "Strigidae",
+    "sv": "Ugglor"
+  },
+  "group": "owls",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25769/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Stephan Sprinz",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sumpfohreule_(Asio_flammeus)_auf_Spiekeroog_-_Nationalpark_niedersächsisches_Wattenmeer.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25769/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Stephan Sprinz",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sumpfohreule_(Asio_flammeus)_auf_Spiekeroog_-_Nationalpark_niedersächsisches_Wattenmeer_(1).jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Jorduggla",
+      "revision": "59567164"
+    },
+    "en": {
+      "title": "Short-eared owl",
+      "revision": "1360098826"
+    },
+    "de": {
+      "title": "Sumpfohreule",
+      "revision": "270461084"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2497295,
+    "totalReports": 25135,
+    "months": [
+      15,
+      35,
+      32,
+      71,
+      84,
+      55,
+      23,
+      6,
+      24,
+      100,
+      35,
+      18
+    ],
+    "counties": {
+      "SE-K": 41,
+      "SE-W": 41,
+      "SE-X": 20,
+      "SE-I": 31,
+      "SE-N": 42,
+      "SE-Z": 71,
+      "SE-F": 10,
+      "SE-H": 45,
+      "SE-G": 2,
+      "SE-BD": 100,
+      "SE-T": 29,
+      "SE-E": 31,
+      "SE-M": 26,
+      "SE-D": 12,
+      "SE-AB": 11,
+      "SE-C": 20,
+      "SE-S": 25,
+      "SE-AC": 79,
+      "SE-Y": 32,
+      "SE-U": 23,
+      "SE-O": 10
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i maj och oktober.",
+        "Rapporteras sällan i augusti.",
+        "Andelen av alla fågelrapporter är högst i Norrbotten, Västerbotten och Jämtland."
+      ],
+      "en": [
+        "Reported most in May and October.",
+        "Rarely reported in August.",
+        "Its share of all bird reports is highest in Norrbotten, Västerbotten and Jämtland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        554,
+        915,
+        1557,
+        5288,
+        7191,
+        2554,
+        819,
+        211,
+        926,
+        3772,
+        839,
+        345
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-H": 3436,
+        "SE-M": 2631,
+        "SE-BD": 2369,
+        "SE-AC": 2230,
+        "SE-N": 1836,
+        "SE-O": 1391,
+        "SE-E": 1230,
+        "SE-C": 1116,
+        "SE-AB": 1054,
+        "SE-W": 1000,
+        "SE-Z": 969,
+        "SE-T": 789,
+        "SE-D": 553,
+        "SE-I": 533,
+        "SE-S": 501,
+        "SE-U": 491,
+        "SE-Y": 444,
+        "SE-X": 378,
+        "SE-F": 373,
+        "SE-K": 351,
+        "SE-G": 37
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

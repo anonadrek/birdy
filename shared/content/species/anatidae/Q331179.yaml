@@ -97,20 +97,19 @@ image_refs:
 - role: hero
   path: Q331179/hero.webp
   width: 2400
-  height: 1600
-  license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/80223459@N05">Yellowstone
-    National Park</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Harlequin duck (Histrionicus
-    histrionicus) resting on a rock in Le Hardy Rapids (42879550752).jpg
-  commons_filename: Harlequin duck (Histrionicus histrionicus) resting on a rock in
-    Le Hardy Rapids (42879550752).jpg
+  height: 1601
+  license: CC BY-SA 4.0
+  author: Chuck Homler d/b/a Focus On Wildlife
+  source_url: https://commons.wikimedia.org/wiki/File:Drake Harlequin duck (Histrionicus
+    histrionicus) perched on a rock in the Barnegat Inlet, New Jersey, USA.jpg
+  commons_filename: Drake Harlequin duck (Histrionicus histrionicus) perched on a
+    rock in the Barnegat Inlet, New Jersey, USA.jpg
 - role: secondary
   path: Q331179/secondary-1.webp
   width: 1800
   height: 1201
   license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/yellowstonenps/">YellowstoneNPS</a>
+  author: YellowstoneNPS
   source_url: https://commons.wikimedia.org/wiki/File:Harlequin duck (Histrionicus
     histrionicus) pair in Soda Butte Creek (2) (52887592971).jpg
   commons_filename: Harlequin duck (Histrionicus histrionicus) pair in Soda Butte
@@ -120,8 +119,7 @@ image_refs:
   width: 1800
   height: 1201
   license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/80223459@N05">Yellowstone
-    National Park</a>
+  author: Yellowstone National Park
   source_url: https://commons.wikimedia.org/wiki/File:Harlequin duck (Histrionicus
     histrionicus) male in Soda Butte Creek - Flickr - YellowstoneNPS.jpg
   commons_filename: Harlequin duck (Histrionicus histrionicus) male in Soda Butte

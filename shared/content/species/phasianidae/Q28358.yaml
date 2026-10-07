@@ -99,7 +99,7 @@ image_refs:
   width: 2048
   height: 1365
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/tcager">tcager</a>
+  author: tcager
   source_url: https://commons.wikimedia.org/wiki/File:Coturnix coturnix, Chernozemelsky,
     Kalmykia Republic, Russia 1.jpg
   commons_filename: Coturnix coturnix, Chernozemelsky, Kalmykia Republic, Russia 1.jpg
@@ -108,8 +108,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Common quail (Coturnix coturnix)
     2019.jpg
   commons_filename: Common quail (Coturnix coturnix) 2019.jpg
@@ -118,8 +117,7 @@ image_refs:
   width: 1800
   height: 1151
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Common quail (Coturnix coturnix)
     2019 2.jpg
   commons_filename: Common quail (Coturnix coturnix) 2019 2.jpg

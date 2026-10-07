@@ -1,0 +1,199 @@
+{
+  "qid": "Q26696",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "ejder",
+    "en": "common-eider"
+  },
+  "names": {
+    "sv": "Ejder",
+    "en": "Common Eider",
+    "scientific": "Somateria mollissima"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Änder"
+  },
+  "group": "waterfowl",
+  "iucn": "NT",
+  "swedishRedList": "EN",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26696/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_eider_(Somateria_mollissima).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26696/extra.webp",
+      "width": 1200,
+      "height": 798,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Somateria_mollissima_(female)_on_the_dune,_Heligoland.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Ejder",
+      "revision": "59697419"
+    },
+    "en": {
+      "title": "Common eider",
+      "revision": "1366477457"
+    },
+    "de": {
+      "title": "Eiderente",
+      "revision": "260436170"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2498352,
+    "totalReports": 195758,
+    "months": [
+      68,
+      77,
+      100,
+      91,
+      79,
+      81,
+      88,
+      65,
+      72,
+      92,
+      68,
+      60
+    ],
+    "counties": {
+      "SE-K": 90,
+      "SE-W": 1,
+      "SE-X": 17,
+      "SE-I": 88,
+      "SE-N": 100,
+      "SE-Z": 1,
+      "SE-F": 2,
+      "SE-H": 72,
+      "SE-G": 4,
+      "SE-BD": 1,
+      "SE-T": 1,
+      "SE-E": 14,
+      "SE-M": 61,
+      "SE-D": 9,
+      "SE-AB": 30,
+      "SE-C": 4,
+      "SE-S": 4,
+      "SE-AC": 12,
+      "SE-Y": 34,
+      "SE-U": 1,
+      "SE-O": 32
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Andelen av alla fågelrapporter är högst i Halland, Blekinge och Gotland."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Its share of all bird reports is highest in Halland, Blekinge and Gotland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        12035,
+        9449,
+        22788,
+        32026,
+        32178,
+        17774,
+        14915,
+        11420,
+        13212,
+        16454,
+        7749,
+        5595
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-M": 28848,
+        "SE-H": 25687,
+        "SE-O": 21710,
+        "SE-N": 20450,
+        "SE-AB": 14016,
+        "SE-I": 7160,
+        "SE-K": 3562,
+        "SE-E": 2551,
+        "SE-Y": 2252,
+        "SE-D": 1922,
+        "SE-AC": 1613,
+        "SE-X": 1485,
+        "SE-C": 1127,
+        "SE-S": 415,
+        "SE-G": 378,
+        "SE-F": 320,
+        "SE-T": 150,
+        "SE-BD": 148,
+        "SE-W": 82,
+        "SE-U": 38,
+        "SE-Z": 10
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

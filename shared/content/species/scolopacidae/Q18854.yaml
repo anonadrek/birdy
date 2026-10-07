@@ -105,8 +105,7 @@ image_refs:
   width: 2400
   height: 1774
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Mattivirtala (page does not exist)">Matti Virtala</a>
+  author: Matti Virtala
   source_url: https://commons.wikimedia.org/wiki/File:Numenius arquata Liminka Finland
     2020-05-22.jpg
   commons_filename: Numenius arquata Liminka Finland 2020-05-22.jpg
@@ -115,20 +114,23 @@ image_refs:
   width: 1800
   height: 1295
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Numenius Arquata Simo 20110715.JPG
   commons_filename: Numenius Arquata Simo 20110715.JPG
 - role: secondary
   path: Q18854/secondary-2.webp
   width: 1800
-  height: 1800
+  height: 1194
   license: CC BY 2.0
-  author: blondinrikard
-  source_url: https://commons.wikimedia.org/wiki/File:Eurasian curlew, Numenius arquata,
-    Storspov.jpg
-  commons_filename: Eurasian curlew, Numenius arquata, Storspov.jpg
+  author: gailhampshire
+  source_url: https://commons.wikimedia.org/wiki/File:Curlew Numenius arquata (24277756187).jpg
+  commons_filename: Curlew Numenius arquata (24277756187).jpg
 review_status: approved
-review_notes: "Hero = Numenius arquata (Eurasian Curlew / Storspov); allmän men minskande häckare i SE öppen mark."
+review_notes: 'Hero = Numenius arquata (Eurasian Curlew / Storspov); allmän men minskande häckare i SE
+  öppen mark.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T21:01:18.072434+00:00'
 sources:
   wikipedia_sv_revision: '57898531'

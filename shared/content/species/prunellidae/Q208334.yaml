@@ -100,7 +100,7 @@ image_refs:
   width: 2048
   height: 1536
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/748413">yijie</a>
+  author: yijie
   source_url: https://commons.wikimedia.org/wiki/File:Prunella collaris 234140777.jpg
   commons_filename: Prunella collaris 234140777.jpg
 - role: secondary
@@ -108,7 +108,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/748413">yijie</a>
+  author: yijie
   source_url: https://commons.wikimedia.org/wiki/File:Prunella collaris 234140903.jpg
   commons_filename: Prunella collaris 234140903.jpg
 - role: secondary
@@ -116,7 +116,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/748413">yijie</a>
+  author: yijie
   source_url: https://commons.wikimedia.org/wiki/File:Prunella collaris 234141065.jpg
   commons_filename: Prunella collaris 234141065.jpg
 review_status: auto

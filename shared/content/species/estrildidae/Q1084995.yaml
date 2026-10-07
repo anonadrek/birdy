@@ -79,21 +79,18 @@ migration:
 image_refs:
 - role: hero
   path: Q1084995/hero.webp
-  width: 1827
-  height: 2240
-  license: Public domain
-  author: <bdi><a href="https://en.wikipedia.org/wiki/en:John_Gerrard_Keulemans" class="extiw"
-    title="w:en:John Gerrard Keulemans"><span title="Dutch bird artist (1842-1912)">John
-    Gerrard Keulemans</span></a></bdi>
-  source_url: https://commons.wikimedia.org/wiki/File:Estrilda melpoda 1876.jpg
-  commons_filename: Estrilda melpoda 1876.jpg
+  width: 2048
+  height: 1536
+  license: CC BY 4.0
+  author: James M. Maley
+  source_url: https://commons.wikimedia.org/wiki/File:Estrilda melpoda 133271753.jpg
+  commons_filename: Estrilda melpoda 133271753.jpg
 - role: secondary
   path: Q1084995/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/210826">James
-    M. Maley</a>
+  author: James M. Maley
   source_url: https://commons.wikimedia.org/wiki/File:Estrilda melpoda 128071692.jpg
   commons_filename: Estrilda melpoda 128071692.jpg
 - role: secondary
@@ -101,8 +98,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/210826">James
-    M. Maley</a>
+  author: James M. Maley
   source_url: https://commons.wikimedia.org/wiki/File:Estrilda melpoda 129793669.jpg
   commons_filename: Estrilda melpoda 129793669.jpg
 review_status: auto

@@ -1,0 +1,324 @@
+#!/usr/bin/env node
+// Writes TEST data for the species pages (spec 2026-09-25 appendix C and D), so the pages can be built
+// and tested before the pipeline has produced real files. Never real facts: every text says
+// "Testtext" / "Test text". Output lives under tests/fixtures/ and is only read when the build runs
+// with SPECIES_FIXTURES=1 (npm run build:fixtures). Re-run after changing this file:
+//   node tests/fixtures/make-species-fixtures.mjs
+//
+// This script DELETES and rewrites its three output folders (species/, comparisons/, species-assets/)
+// from scratch on every run: nothing hand-written can live there, it would be wiped on the next run.
+import { mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import sharp from 'sharp';
+
+const here = dirname(fileURLToPath(import.meta.url));
+const OUT = {
+  species: resolve(here, 'species'),
+  comparisons: resolve(here, 'comparisons'),
+  assets: resolve(here, 'species-assets'),
+};
+
+const COUNTY_CODES = ['SE-AB', 'SE-AC', 'SE-BD', 'SE-C', 'SE-D', 'SE-E', 'SE-F', 'SE-G', 'SE-H', 'SE-I', 'SE-K', 'SE-M', 'SE-N', 'SE-O', 'SE-S', 'SE-T', 'SE-U', 'SE-W', 'SE-X', 'SE-Y', 'SE-Z'];
+const YEAR_ROUND = [72, 58, 61, 55, 70, 79, 64, 68, 74, 100, 66, 69];
+const SUMMER = [0, 0, 1, 36, 100, 51, 49, 65, 51, 10, 1, 0];
+
+// The twelve "common species" in the footer must all be here, or the footer stops the build.
+const SPECIES = [
+  { qid: 'Q25485', sv: 'Talgoxe', en: 'Great Tit', sci: 'Parus major', fam: ['Paridae', 'Mesar'], group: 'songbirds', slug: ['talgoxe', 'great-tit'], iucn: 'LC', red: 'not_listed', id: [true, true], extra: true, audio: 'trimmed', marginalia: true, de: true, months: YEAR_ROUND, status: 'resident', size: ['Cirka 14 cm', 'About 14 cm'], look: ['Q25404'] },
+  { qid: 'Q25404', sv: 'Blåmes', en: 'Eurasian Blue Tit', sci: 'Cyanistes caeruleus', fam: ['Paridae', 'Mesar'], group: 'songbirds', slug: ['blames', 'eurasian-blue-tit'], iucn: 'LC', red: 'not_listed', id: [true, true], audio: 'full', de: true, months: YEAR_ROUND, status: 'resident', size: ['Cirka 12 cm', 'About 12 cm'], look: ['Q25485'] },
+  { qid: 'Q25234', sv: 'Koltrast', en: 'Common Blackbird', sci: 'Turdus merula', fam: ['Turdidae', 'Trastar'], group: 'songbirds', slug: ['koltrast', 'common-blackbird'], iucn: 'LC', red: 'not_listed', id: [true, true], extra: true, extraPd: true, audio: 'trimmed', de: true, months: YEAR_ROUND, status: 'resident' },
+  { qid: 'Q25334', sv: 'Rödhake', en: 'European Robin', sci: 'Erithacus rubecula', fam: ['Muscicapidae', 'Flugsnappare'], group: 'songbirds', slug: ['rodhake', 'european-robin'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'partial_migrant' },
+  { qid: 'Q14683', sv: 'Gråsparv', en: 'House Sparrow', sci: 'Passer domesticus', fam: ['Passeridae', 'Sparvfinkar'], group: 'songbirds', slug: ['grasparv', 'house-sparrow'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
+  // Skata and Kaja deliberately disagree on fam[1] (the Swedish family name), both "Corvidae" in Latin:
+  // the pipeline now guarantees one canonical Swedish name per Latin family (web/families.py, BirdLife
+  // Sverige NL20), so real data never does this, but the group page groups by family.latin as a safeguard
+  // and this divergence is kept here on purpose to exercise it (controller review, Task 8 fix wave).
+  { qid: 'Q25307', sv: 'Skata', en: 'Eurasian Magpie', sci: 'Pica pica', fam: ['Corvidae', 'Kråkfåglar'], group: 'songbirds', slug: ['skata', 'eurasian-magpie'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', look: ['Q25345384'] },
+  { qid: 'Q25345384', sv: 'Kaja', en: 'Western Jackdaw', sci: 'Coloeus monedula', fam: ['Corvidae', 'Kråkor'], group: 'songbirds', slug: ['kaja', 'western-jackdaw'], iucn: 'NE', red: 'not_listed', id: [false, true], de: true, months: YEAR_ROUND, status: 'resident', look: ['Q25307'] },
+  { qid: 'Q25383', sv: 'Bofink', en: 'Eurasian Chaffinch', sci: 'Fringilla coelebs', fam: ['Fringillidae', 'Finkar'], group: 'songbirds', slug: ['bofink', 'eurasian-chaffinch'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: SUMMER, status: 'breeding_migrant' },
+  { qid: 'Q25348', sv: 'Gräsand', en: 'Mallard', sci: 'Anas platyrhynchos', fam: ['Anatidae', 'Egentliga andfåglar'], group: 'waterfowl', slug: ['grasand', 'mallard'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
+  { qid: 'Q26427', sv: 'Fiskmås', en: 'Common Gull', sci: 'Larus canus', fam: ['Laridae', 'Måsfåglar'], group: 'gulls_terns', slug: ['fiskmas', 'common-gull'], iucn: 'LC', red: 'NT', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
+  { qid: 'Q25385', sv: 'Ormvråk', en: 'Common Buzzard', sci: 'Buteo buteo', fam: ['Accipitridae', 'Hökar'], group: 'raptors', slug: ['ormvrak', 'common-buzzard'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
+  { qid: 'Q4764', sv: 'Trana', en: 'Common Crane', sci: 'Grus grus', fam: ['Gruidae', 'Tranor'], group: 'cranes_rails', slug: ['trana', 'common-crane'], iucn: 'LC', red: 'not_listed', id: [true, false], de: true, months: SUMMER, status: 'breeding_migrant' },
+  { qid: 'Q25756', sv: 'Kattuggla', en: 'Tawny Owl', sci: 'Strix aluco', fam: ['Strigidae', 'Egentliga ugglor'], group: 'owls', slug: ['kattuggla', 'tawny-owl'], iucn: 'LC', red: 'not_listed', id: [true, true], audio: 'full', audioPd: true, de: true, months: YEAR_ROUND, status: 'resident', look: ['Strix uralensis'] },
+  { qid: 'Q25384', sv: 'Hornuggla', en: 'Long-eared Owl', sci: 'Asio otus', fam: ['Strigidae', 'Egentliga ugglor'], group: 'owls', slug: ['hornuggla', 'long-eared-owl'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', look: ['Q25769'] },
+  // Minimal record: no audio, no report data, no extra photo, no behaviour or look-alikes, no size,
+  // status or Swedish red list, Swedish article only.
+  { qid: 'Q174466', sv: 'Pärluggla', en: 'Boreal Owl', sci: 'Aegolius funereus', fam: ['Strigidae', 'Egentliga ugglor'], group: 'owls', slug: ['parluggla', 'boreal-owl'], iucn: 'LC', red: null, id: [false, false], minimal: true },
+  // The only seabird, so its group page gets noindex.
+  { qid: 'Q25440', sv: 'Storskarv', en: 'Great Cormorant', sci: 'Phalacrocorax carbo', fam: ['Phalacrocoracidae', 'Skarvar'], group: 'seabirds', slug: ['storskarv', 'great-cormorant'], iucn: 'LC', red: 'not_listed', id: [false, true], de: true, months: YEAR_ROUND, status: 'resident' },
+  // Reviewed and written but not published: only preview builds (SPECIES_PREVIEW=1) show them.
+  { qid: 'Q26209', sv: 'Större hackspett', en: 'Great Spotted Woodpecker', sci: 'Dendrocopos major', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['storre-hackspett', 'great-spotted-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', publish: false, look: ['Q210418'] },
+  { qid: 'Q210418', sv: 'Tretåig hackspett', en: 'Eurasian Three-toed Woodpecker', sci: 'Picoides tridactylus', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['tretaig-hackspett', 'eurasian-three-toed-woodpecker'], iucn: 'LC', red: 'NT', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', publish: false, look: ['Q26209'] },
+  // Absent in Sweden (controller review, Task 9): `data` exists (totalReports below the 200-report
+  // threshold, spec §9.2, plus the presence sentence that becomes a written fact), but no months/counties
+  // (so no chart or map) and no swedishRedList (a species with too few reports and no red-list entry is
+  // not assessed, spec Revision 2026-10-07). Exercises `reportData={Boolean(s.data)}` (SpeciesArticle,
+  // Task 10): the data credit must still show even though months/counties are both missing. Published
+  // since Task 10 (was `publish: false` until then), so the absent-species page is built and tested like
+  // the real ones (Koboltmes, Q10546857, is absent and written): it makes `other` an active group with one
+  // species, so Task 7's and Task 8's counts went up by one consciously (hub `.groups a` 7 to 8, hub
+  // `[data-item]` 16 to 17, a group page's `.catbar .chip` 8 to 9). Its look-alike is Större hackspett,
+  // a species with a record but no page in the normal build (same as Koboltmes' look-alike Blåmes in the
+  // real data): the name shows without a link, a photo or a comparison link.
+  { qid: 'Q25411', sv: 'Blåkråka', en: 'European Roller', sci: 'Coracias garrulus', fam: ['Coraciidae', 'Blåkråkor'], group: 'other', slug: ['blakraka', 'european-roller'], iucn: 'LC', id: [false, false], de: true, status: 'absent', absent: true, look: ['Q26209'] },
+  // Never a page: one failed, one pending (facts exist, text not written yet).
+  { qid: 'Q166171', sv: 'Gröngöling', en: 'European Green Woodpecker', sci: 'Picus viridis', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['grongoling', 'european-green-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], recordStatus: 'failed' },
+  { qid: 'Q143284', sv: 'Spillkråka', en: 'Black Woodpecker', sci: 'Dryocopus martius', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['spillkraka', 'black-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], recordStatus: 'pending' },
+];
+
+// extraPd (Koltrast's extra photo) and audioPd (Kattuggla's recording, no recordist) carry the pipeline's
+// canonical "Public domain" without a licence link, so the credit lines' "public domain" label and the
+// unknown-recordist fallback are tested on built pages (Task 9 re-review).
+const S = (text, factIds) => ({ text, factIds });
+const lowerSv = (name) => name.toLocaleLowerCase('sv');
+
+function meta(name, lang) {
+  let s = lang === 'sv'
+    ? `${name}: testtext för artsidornas bygge. Kännetecken, läte och när arten syns i Sverige, med foton och karta.`
+    : `${name}: test text for building the species pages. Field marks, call and when it is seen in Sweden, with photos.`;
+  while (s.length < 120) s += lang === 'sv' ? ' Testdata.' : ' Test data.';
+  if (s.length > 155) throw new Error(`metaDescription är ${s.length} tecken: ${s}`);
+  return s;
+}
+
+function textFor(sp, lang) {
+  const sv = lang === 'sv';
+  const name = sv ? sp.sv : sp.en;
+  return {
+    lead: [S(sv ? `Testtext: ${name} används som exempel när artsidorna byggs och testas.` : `Test text: the ${name} is used as an example when the species pages are built and tested.`, ['f01'])],
+    fieldMarks: (sv
+      ? [`Testpunkt ett om hur ${lowerSv(name)} ser ut`, 'Testpunkt två om storlek och form', 'Testpunkt tre om beteende i fält']
+      : ['Test point one about what it looks like', 'Test point two about size and shape', 'Test point three about behaviour in the field']
+    ).map((m) => S(m, ['f02'])),
+    voice: [S(sv ? 'Testtext om lätet, skriven så att sidan går att bygga utan riktig data.' : 'Test text about the call, written so the page can be built without real data.', ['f04'])],
+    whereWhen: [S(sv ? 'Testtext om var och när arten syns i Sverige.' : 'Test text about where and when it is seen in Sweden.', ['f06', 'd01'])],
+    ...(sp.minimal ? {} : { behaviour: [S(sv ? 'Testtext om föda och beteende.' : 'Test text about food and behaviour.', ['f07'])] }),
+    lookAlikes: (sp.look ?? []).map((other) => ({ other, text: [S(sv ? 'Testtext om hur de skiljer sig åt.' : 'Test text about how to tell them apart.', ['f09'])] })),
+    metaDescription: meta(name, lang),
+    facts: {
+      size: sp.size ? { value: sv ? sp.size[0] : sp.size[1], factIds: ['f03'] } : null,
+      swedenStatus: sp.status ? { value: sp.status, factIds: ['s01'] } : null,
+    },
+  };
+}
+
+function lookalikeFact(other) {
+  const known = SPECIES.find((x) => x.qid === other);
+  const scientific = known?.sci ?? (other === 'Q25769' ? 'Asio flammeus' : other);
+  return {
+    id: 'f09', topic: 'lookalike', sv: 'Testfaktum om förväxling.',
+    other: other.startsWith('Q') ? { scientific, qid: other } : { scientific },
+    sources: [{ article: 'sv', quote: 'Testcitat som bara finns i testdata.' }],
+  };
+}
+
+// Sentence wording matches the pipeline's web/datamod.py (controller review, Task 9; the fix wave of
+// 2026-10-07, after this plan was written): "Nästan aldrig" ("almost never", read as "not present then")
+// became "Rapporteras sällan" ("rarely reported", about reports, not presence), and the county sentence
+// now says "Rapporteras från alla 21 län." for a flat profile or names the top (at most three) counties
+// as a SHARE ("Andelen av alla fågelrapporter är högst i …"), never "most reports" (a common feeder bird
+// is a bigger share of a sparsely birded county's reports without being more often reported there).
+function dataFor(sp) {
+  if (sp.absent) {
+    return {
+      fetchedAt: '2026-10-15',
+      gbifTaxonKey: 1,
+      totalReports: 0,
+      sentences: {
+        sv: ['Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025.'],
+        en: ['Does not occur in Sweden: no reports in Artportalen 2016 to 2025.'],
+      },
+      statusSignal: { contradicts: null },
+    };
+  }
+  const summer = sp.months === SUMMER;
+  return {
+    fetchedAt: '2026-10-15',
+    gbifTaxonKey: 1,
+    totalReports: 1000,
+    months: sp.months,
+    counties: Object.fromEntries(COUNTY_CODES.map((c, i) => [c, (i * 37 + sp.qid.length * 11) % 101])),
+    raw: { speciesByMonth: [], allBirdsByMonth: [], speciesByCounty: {}, allBirdsByCounty: {} },
+    sentences: summer
+      ? {
+          sv: ['Rapporteras mest i maj.', 'Rapporteras sällan i november till mars.', 'Andelen av alla fågelrapporter är högst i Testlän, Provlän och Exempellän.'],
+          en: ['Reported most in May.', 'Rarely reported in November to March.', 'Its share of all bird reports is highest in Testshire, Sampleshire and Exampleshire.'],
+        }
+      : {
+          sv: ['Rapporteras året runt.', 'Rapporteras från alla 21 län.'],
+          en: ['Reported all year round.', 'Reported from all 21 counties.'],
+        },
+    statusSignal: { contradicts: null },
+  };
+}
+
+function record(sp) {
+  const status = sp.recordStatus ?? 'ok';
+  const commons = (suffix) => `https://commons.wikimedia.org/wiki/File:Fixture_${sp.qid}_${suffix}`;
+  return {
+    qid: sp.qid,
+    status,
+    publish: status === 'ok' && sp.publish !== false,
+    slug: { sv: sp.slug[0], en: sp.slug[1] },
+    names: { sv: sp.sv, en: sp.en, scientific: sp.sci },
+    family: { latin: sp.fam[0], sv: sp.fam[1] },
+    group: sp.group,
+    iucn: sp.iucn,
+    ...(sp.red ? { swedishRedList: sp.red } : {}),
+    identifiable: { photo: sp.id[0], sound: sp.id[1] },
+    ...(sp.marginalia ? { marginalia: { sv: 'Testanteckning i marginalen.', en: 'A test note in the margin.' } } : {}),
+    images: [
+      { role: 'hero', file: `${sp.qid}/hero.webp`, width: 1200, height: 800, author: 'Testfotograf', license: 'CC0', licenseUrl: null, sourceUrl: commons('hero.jpg') },
+      ...(sp.extra ? [{
+        role: 'extra', file: `${sp.qid}/extra.webp`, width: 1200, height: 800, author: 'Testfotograf två',
+        ...(sp.extraPd ? { license: 'Public domain', licenseUrl: null } : { license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/' }),
+        sourceUrl: commons('extra.jpg'),
+      }] : []),
+    ],
+    ...(sp.audio ? {
+      audio: {
+        file: `${sp.qid}/voice.mp3`, durationSec: 1, trimmed: sp.audio === 'trimmed',
+        ...(sp.audioPd
+          ? { author: null, license: 'Public domain', licenseUrl: null }
+          : { author: 'Testinspelare', license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/' }),
+        sourceUrl: commons('song.ogg'),
+      },
+    } : {}),
+    wikipedia: {
+      sv: { title: sp.sv, revision: '1000001' },
+      ...(sp.minimal ? {} : { en: { title: sp.en, revision: '2000002' } }),
+      ...(sp.de ? { de: { title: `${sp.en} (Testartikel)`, revision: '3000003' } } : {}),
+    },
+    ...(sp.months || sp.absent ? { data: dataFor(sp) } : {}),
+    facts: [
+      { id: 'f01', topic: 'appearance', sv: 'Testfaktum.', sources: [{ article: 'sv', quote: 'Testcitat som bara finns i testdata.' }] },
+      ...(sp.look ?? []).map(lookalikeFact),
+    ],
+    review: { wave: status === 'pending' ? 2 : sp.publish === false ? 2 : 1 },
+    ...(status !== 'pending' ? { verification: { method: 'auto', at: '2026-11-20', model: 'fixture', spotChecked: false } } : {}),
+    text: status === 'ok' ? { sv: textFor(sp, 'sv'), en: textFor(sp, 'en') } : null,
+    ...(status === 'failed' ? { rejectedText: null } : {}),
+    generated: {
+      facts: { model: 'fixture', prompt: 'fixture', effort: 'none', at: '2026-10-20' },
+      ...(status === 'ok' ? { text: { model: 'fixture', prompt: 'fixture', effort: 'none', checker: 'fixture', at: '2026-11-25' } } : {}),
+    },
+    errors: status === 'failed' ? ['Testfel: kontrollen failade.'] : [],
+  };
+}
+
+// a and b follow the Swedish slug order (appendix D); the file name has the QIDs in string order.
+const COMPARISONS = [
+  { file: 'Q25404_Q25485', a: 'Q25404', b: 'Q25485', slug: ['blames-eller-talgoxe', 'eurasian-blue-tit-vs-great-tit'], publish: true },
+  { file: 'Q25307_Q25345384', a: 'Q25345384', b: 'Q25307', slug: ['kaja-eller-skata', 'eurasian-magpie-vs-western-jackdaw'], publish: true },
+  { file: 'Q210418_Q26209', a: 'Q26209', b: 'Q210418', slug: ['storre-hackspett-eller-tretaig-hackspett', 'eurasian-three-toed-woodpecker-vs-great-spotted-woodpecker'], publish: false },
+  { file: 'Q25384_Q25756', a: 'Q25384', b: 'Q25756', slug: ['hornuggla-eller-kattuggla', 'long-eared-owl-vs-tawny-owl'], status: 'pending' },
+];
+
+function comparison(c) {
+  const [a, b] = [SPECIES.find((s) => s.qid === c.a), SPECIES.find((s) => s.qid === c.b)];
+  const status = c.status ?? 'ok';
+  const lang = (l) => {
+    const sv = l === 'sv';
+    const [na, nb] = sv ? [a.sv, lowerSv(b.sv)] : [a.en, b.en];
+    let metaDescription = sv
+      ? `${na} eller ${nb}? Testtext för jämförelsesidan: så skiljer du dem åt i fält, på storlek, färg och läte.`
+      : `${na} or ${nb}? Test text for the comparison page: how to tell them apart by size, colour and call.`;
+    while (metaDescription.length < 120) metaDescription += sv ? ' Testdata.' : ' Test data.';
+    if (metaDescription.length > 155) throw new Error(`jämförelsens metaDescription är ${metaDescription.length} tecken`);
+    return {
+      shortAnswer: [S(sv ? `Testtext: det kortaste svaret på hur ${lowerSv(na)} och ${nb} skiljer sig åt.` : `Test text: the shortest answer to how the ${na} and the ${nb} differ.`, ['a:f01', 'b:f01'])],
+      rows: (sv ? ['Storlek', 'Huvud', 'Läte'] : ['Size', 'Head', 'Call']).map((feature, i) => ({
+        feature,
+        a: S(sv ? `Testcell ${i + 1} för den första arten` : `Test cell ${i + 1} for the first species`, ['a:f02']),
+        b: S(sv ? `Testcell ${i + 1} för den andra arten` : `Test cell ${i + 1} for the second species`, ['b:f02']),
+      })),
+      metaDescription,
+    };
+  };
+  return {
+    a: c.a,
+    b: c.b,
+    status,
+    publish: status === 'ok' && c.publish === true,
+    slug: { sv: c.slug[0], en: c.slug[1] },
+    volumes: { sv: 100, en: 50 },
+    text: status === 'ok' ? { sv: lang('sv'), en: lang('en') } : null,
+    generated: { model: 'fixture', prompt: 'fixture', checker: 'fixture', at: '2026-11-26' },
+    errors: [],
+  };
+}
+
+// Colour alone distinguishes species and roles (no <text>): text rendering depends on which fonts
+// are installed, so an SVG with a <text> element rasterizes to different pixels (and thus different
+// WebP bytes) on Windows vs macOS vs CI. A flat-colour rectangle is byte-identical everywhere.
+// The hue is deterministic but NOT a plain "hash(qid) % 360": with only ~20 species and a
+// continuous 0-360 range, two hashes land close together often enough to make two species render
+// as the same pixel (e.g. a naive 31-multiplier hash put Q25384 and Q25385 about 1 degree apart).
+// Instead every QID gets a stable RANK (sort all QIDs by their FNV-1a hash, so the order doesn't
+// depend on SPECIES's array order) and ranks are spread evenly around the wheel, 360/count degrees
+// apart: the only spacing that is guaranteed, for any fixed count, to keep every pair as far
+// apart as possible. extra.webp is a lighter shade of the same hue as hero.webp.
+function fnv1a(str) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return h >>> 0;
+}
+function assignHues(qids) {
+  const ranked = [...qids].sort((a, b) => fnv1a(a) - fnv1a(b));
+  const step = 360 / ranked.length;
+  const hues = new Map(ranked.map((qid, i) => [qid, i * step]));
+  let minGap = Infinity;
+  const sorted = [...hues.values()].sort((a, b) => a - b);
+  for (let i = 0; i < sorted.length; i++) {
+    const next = sorted[(i + 1) % sorted.length];
+    const gap = i === sorted.length - 1 ? 360 - sorted[i] + next : next - sorted[i];
+    minGap = Math.min(minGap, gap);
+  }
+  console.log(`fixture hues: ${ranked.length} arter, minsta avstånd mellan två nyanser ${minGap.toFixed(1)} grader`);
+  if (minGap < 15) throw new Error(`fixturfärgerna ligger för tätt (${minGap.toFixed(1)} grader, krävs minst 15)`);
+  return hues;
+}
+const HUES = assignHues(SPECIES.map((sp) => sp.qid));
+function hslToHex(h, s, l) {
+  const sat = s / 100;
+  const light = l / 100;
+  const k = (n) => (n + h / 30) % 12;
+  const a = sat * Math.min(light, 1 - light);
+  const f = (n) => light - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+  const toHex = (x) => Math.round(255 * x).toString(16).padStart(2, '0');
+  return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`;
+}
+async function photo(qid, role) {
+  const dir = resolve(OUT.assets, qid);
+  mkdirSync(dir, { recursive: true });
+  const hue = HUES.get(qid);
+  const bg = role === 'hero' ? hslToHex(hue, 55, 50) : hslToHex(hue, 55, 72);
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="1200" height="800" fill="${bg}"/></svg>`;
+  await sharp(Buffer.from(svg)).webp({ quality: 60 }).toFile(resolve(dir, `${role}.webp`));
+}
+
+// About one second of silent MP3 (MPEG-1 Layer III, 128 kbit/s, 44.1 kHz, mono, empty side info):
+// the audio player needs a real file to point at, laid out like the pipeline's voice.mp3.
+function silentMp3(frames = 38) {
+  const frame = Buffer.alloc(417);
+  frame[0] = 0xff; frame[1] = 0xfb; frame[2] = 0x90; frame[3] = 0xc0;
+  return Buffer.concat(Array.from({ length: frames }, () => frame));
+}
+
+for (const dir of Object.values(OUT)) {
+  rmSync(dir, { recursive: true, force: true });
+  mkdirSync(dir, { recursive: true });
+}
+for (const sp of SPECIES) {
+  writeFileSync(resolve(OUT.species, `${sp.qid}.json`), `${JSON.stringify(record(sp), null, 2)}\n`);
+  await photo(sp.qid, 'hero');
+  if (sp.extra) await photo(sp.qid, 'extra');
+  if (sp.audio) writeFileSync(resolve(OUT.assets, sp.qid, 'voice.mp3'), silentMp3());
+}
+for (const c of COMPARISONS) writeFileSync(resolve(OUT.comparisons, `${c.file}.json`), `${JSON.stringify(comparison(c), null, 2)}\n`);
+console.log(`fixtures: ${SPECIES.length} arter och ${COMPARISONS.length} jämförelser i tests/fixtures/`);

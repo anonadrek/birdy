@@ -6,8 +6,9 @@ taxonomy:
   genus: Curruca
   ioc_order: Passeriformes
 names:
-  sv: Moltonisångare
+  sv: Rosensångare
   en: Moltoni’s Warbler
+  former_sv: Moltonisångare
 abundance: ovanlig
 iucn_status: LC
 season:
@@ -30,33 +31,33 @@ regions:
 - DK
 - DE
 description:
-  sv: '# Moltonisångare
+  sv: '# Rosensångare
 
 
-    Moltonisångare är en liten sångare från sydeuropa som nyligen klassificerades
-    som egen art, tidigare betraktad som underart till rödstrupig sångare. Fågeln
-    häckar på öar i västra Medelhavet samt i norra Italien. Arten är en långdistansflyktare
+    Rosensångare är en liten sångare från sydeuropa som nyligen klassificerades som
+    egen art, tidigare betraktad som underart till rödstrupig sångare. Fågeln häckar
+    på öar i västra Medelhavet samt i norra Italien. Arten är en långdistansflyktare
     som tillbringar vintern i Afrika söder om Sahara.
 
 
     Arten är en mycket liten och diskret sångare som främst håller sig i tätt buskigt
     vegetation. Som många små sångare är den svår att observera då den ofta förblir
-    gömnd bland lövverket. Moltonisångare är inte särskilt välkänd bland fågelskådare
+    gömnd bland lövverket. Rosensångare är inte särskilt välkänd bland fågelskådare
     och ses huvudsakligen under häckningssäsongen på sina begränsade häckningsplatser.
     IUCN kategoriserar arten som livskraftig, vilket indikerar en stabil population
     utan större hot.'
   en: ''
 migration:
-  sv: '# Moltonisångare i Skandinavien/Nordeuropa
+  sv: '# Rosensångare i Skandinavien/Nordeuropa
 
 
     Migrationsdata saknas för denna art.
 
 
-    **sv:** Moltonisångaren är en sydeuropeisk art som inte förekommer naturligt i
-    Skandinavien eller Nordeuropa. Arten häckar på öar i västra Medelhavet och norra
-    Italien, och övervintar i Afrika söder om Sahara. Det finns ingen etablerad förekomst
-    av denna art i våra nordiska regioner, varför migrationsmönster för Skandinavien/Nordeuropa
+    **sv:** Rosensångaren är en sydeuropeisk art som inte förekommer naturligt i Skandinavien
+    eller Nordeuropa. Arten häckar på öar i västra Medelhavet och norra Italien, och
+    övervintar i Afrika söder om Sahara. Det finns ingen etablerad förekomst av denna
+    art i våra nordiska regioner, varför migrationsmönster för Skandinavien/Nordeuropa
     inte är tillämpligt.'
   en: ''
 image_refs: []

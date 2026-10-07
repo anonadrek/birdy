@@ -1,0 +1,211 @@
+{
+  "qid": "Q30535",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "pilgrimsfalk",
+    "en": "peregrine-falcon"
+  },
+  "names": {
+    "sv": "Pilgrimsfalk",
+    "en": "Peregrine Falcon",
+    "scientific": "Falco peregrinus"
+  },
+  "family": {
+    "latin": "Falconidae",
+    "sv": "Falkar"
+  },
+  "group": "raptors",
+  "iucn": "LC",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q30535/hero.webp",
+      "width": 1600,
+      "height": 2400,
+      "author": "Metropolitan Transportation Authority of the State of New York",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:MPB_Papa_Falcon_(8948784670).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q30535/extra.webp",
+      "width": 1200,
+      "height": 994,
+      "author": "USFWS photo",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Falco_peregrinus_nest_USFWS.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q30535/voice.mp3",
+    "durationSec": 15,
+    "trimmed": false,
+    "author": "Sternanita3",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Halc%C3%B3n_peregrino.ogg",
+    "sha256": "008ff445061636d850820d4334b6153d98830f0e7a438af49a8065a4cdd5d9d0"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Pilgrimsfalk",
+      "revision": "59596342"
+    },
+    "en": {
+      "title": "Peregrine falcon",
+      "revision": "1373167227"
+    },
+    "de": {
+      "title": "Wanderfalke",
+      "revision": "267023252"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2481047,
+    "totalReports": 100963,
+    "months": [
+      57,
+      55,
+      31,
+      25,
+      13,
+      8,
+      24,
+      64,
+      100,
+      84,
+      60,
+      56
+    ],
+    "counties": {
+      "SE-K": 29,
+      "SE-W": 27,
+      "SE-X": 17,
+      "SE-I": 35,
+      "SE-N": 100,
+      "SE-Z": 7,
+      "SE-F": 22,
+      "SE-H": 41,
+      "SE-G": 10,
+      "SE-BD": 15,
+      "SE-T": 36,
+      "SE-E": 54,
+      "SE-M": 47,
+      "SE-D": 14,
+      "SE-AB": 9,
+      "SE-C": 42,
+      "SE-S": 34,
+      "SE-AC": 25,
+      "SE-Y": 16,
+      "SE-U": 40,
+      "SE-O": 40
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september och oktober.",
+        "Rapporteras sällan i juni.",
+        "Andelen av alla fågelrapporter är högst i Halland och Östergötland."
+      ],
+      "en": [
+        "Reported most in September and October.",
+        "Rarely reported in June.",
+        "Its share of all bird reports is highest in Halland and Östergötland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        10108,
+        6816,
+        7064,
+        8851,
+        5173,
+        1745,
+        4050,
+        11389,
+        18423,
+        15106,
+        6780,
+        5242
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 17463,
+        "SE-M": 14300,
+        "SE-N": 13058,
+        "SE-H": 9439,
+        "SE-C": 6866,
+        "SE-E": 6389,
+        "SE-T": 2957,
+        "SE-F": 2586,
+        "SE-AB": 2557,
+        "SE-U": 2532,
+        "SE-AC": 2133,
+        "SE-S": 1982,
+        "SE-W": 1962,
+        "SE-D": 1848,
+        "SE-I": 1806,
+        "SE-BD": 1076,
+        "SE-X": 939,
+        "SE-K": 740,
+        "SE-Y": 691,
+        "SE-G": 604,
+        "SE-Z": 281
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

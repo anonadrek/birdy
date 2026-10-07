@@ -16,6 +16,10 @@ data class Species(
     val migration: String?, // localized
     val images: List<SpeciesImage>,
     val marginalia: String? = null, // localized; short Caveat-rendered note shown in Profile (Plan 7c)
+    // The name Birdy used before it took BirdLife Sverige's official one ("Tidigare: Sädgås"), in
+    // the requested locale only: Swedish names were renamed, English ones were not (release 1.3.0
+    // Task 7m). Null for every species that kept its name.
+    val formerName: String? = null,
 )
 
 data class SpeciesTaxonomy(

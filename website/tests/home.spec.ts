@@ -42,7 +42,7 @@ async function textContrastAgainstBackground(page: Page, locator: Locator): Prom
 }
 
 test.describe('meny och sidfot', () => {
-  for (const [path, label, getApp] of [['/sv/', 'Så funkar det', 'Hämta appen'], ['/', 'How it works', 'Get the app']] as const) {
+  for (const [path, label, getApp] of [['/sv/', 'Arter', 'Hämta appen'], ['/', 'Species', 'Get the app']] as const) {
     test(`menyn på ${path} har nya länkar och blir espressobrun efter första vyn`, async ({ page }) => {
       const errors = trackConsoleErrors(page);
       await page.setViewportSize({ width: 1280, height: 800 });
@@ -102,22 +102,23 @@ test.describe('meny och sidfot', () => {
   test('sidfoten har kolumnerna', async ({ page }) => {
     await page.goto('/sv/');
     const footer = page.locator('footer.footer');
-    await expect(footer.locator('.fh')).toHaveText(['Utforska', 'Läs', 'Information']);
+    await expect(footer.locator('.fh')).toHaveText(['Arter', 'Utforska', 'Läs', 'Information']);
     await expect(footer.locator('a[href="/legal/privacy/"]')).toHaveText('Integritetspolicy');
   });
 
-  for (const [path, albitHref, workshop, line] of [
-    ['/sv/', 'https://www.albit.se/produkter/birdy/', 'Från samma verkstad', 'HR-verktyg för chefer i växande bolag'],
-    ['/', 'https://www.albit.se/en/products/birdy/', 'From the same workshop', 'An HR tool for managers in growing companies'],
+  for (const [path, albitHref, builtBy] of [
+    ['/sv/', 'https://www.albit.se/produkter/birdy/', 'Byggd av'],
+    ['/', 'https://www.albit.se/en/products/birdy/', 'Built by'],
   ] as const) {
-    test(`sidfoten på ${path} länkar till AlbIT och LoopLead`, async ({ page }) => {
+    test(`sidfoten på ${path} har AlbIT:s ordmärke och ingen LoopLead`, async ({ page }) => {
       await page.goto(path);
       const footer = page.locator('footer.footer');
-      await expect(footer.locator(`a[href="${albitHref}"]`)).toHaveText('AlbIT');
-      await expect(footer.locator('.sibling')).toContainText(workshop);
-      const looplead = footer.locator('a[href="https://looplead.se/"]');
-      await expect(looplead).toContainText('LoopLead');
-      await expect(looplead).toContainText(line);
+      const credit = footer.locator(`a.albit-kredit[href="${albitHref}"]`);
+      await expect(credit).toContainText(builtBy);
+      await expect(credit.locator('img[alt="AlbIT"]')).toHaveAttribute('src', '/images/albit-ordmarke-vit.png');
+      // Albin 2026-10-07: LoopLead is off Birdy's site for now.
+      await expect(footer.locator('a[href*="looplead"]')).toHaveCount(0);
+      await expect(footer).not.toContainText('LoopLead');
     });
   }
 });
@@ -469,7 +470,9 @@ test.describe('bloggen', () => {
     }
   });
 
-  test('webbplatskartan har lastmod endast för inläggen', async ({ page }) => {
+  // The species pages (Task 14) carry a lastmod of their own from their data (spec §12); every other page
+  // still has none.
+  test('webbplatskartan har lastmod för inläggen och artsidorna, inte för andra sidor', async ({ page }) => {
     const xml = await (await page.request.get('/sitemap-0.xml')).text();
     const blocks = xml.match(/<url>[\s\S]*?<\/url>/g) ?? [];
     const blockFor = (url: string) => blocks.find((b) => b.includes(`<loc>${url}</loc>`));
@@ -481,9 +484,11 @@ test.describe('bloggen', () => {
     }
     // No other URL in the whole sitemap carries a lastmod, not just the two obvious home-page checks.
     expect(blocks.length).toBeGreaterThan(postUrls.length);
+    const isSpeciesPage = (loc: string) => /^https:\/\/birdy\.community\/(sv\/arter|species)\//.test(loc);
+    expect(blockFor('https://birdy.community/sv/arter/talgoxe/')).toMatch(/<lastmod>2026-11-25/);
     for (const block of blocks) {
       const loc = block.match(/<loc>(.*?)<\/loc>/)?.[1] ?? block;
-      if (postUrls.includes(loc)) continue;
+      if (postUrls.includes(loc) || isSpeciesPage(loc)) continue;
       expect(block, loc).not.toMatch(/<lastmod>/);
     }
   });

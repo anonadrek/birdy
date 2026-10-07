@@ -1,0 +1,189 @@
+{
+  "qid": "Q214281",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "lavskrika",
+    "en": "siberian-jay"
+  },
+  "names": {
+    "sv": "Lavskrika",
+    "en": "Siberian Jay",
+    "scientific": "Perisoreus infaustus"
+  },
+  "family": {
+    "latin": "Corvidae",
+    "sv": "Kråkfåglar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q214281/hero.webp",
+      "width": 1600,
+      "height": 1202,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Perisoreus_infaustus_Kittilä_20260408_01.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q214281/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Perisoreus_infaustus_Kittilä_20260408_04.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Lavskrika",
+      "revision": "59605708"
+    },
+    "en": {
+      "title": "Siberian jay",
+      "revision": "1369159078"
+    },
+    "de": {
+      "title": "Unglückshäher (Art)",
+      "revision": "254557398"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2482449,
+    "totalReports": 27711,
+    "months": [
+      51,
+      93,
+      76,
+      22,
+      12,
+      69,
+      68,
+      55,
+      86,
+      94,
+      100,
+      65
+    ],
+    "counties": {
+      "SE-K": 0,
+      "SE-W": 33,
+      "SE-X": 11,
+      "SE-I": 0,
+      "SE-N": 1,
+      "SE-Z": 88,
+      "SE-F": 0,
+      "SE-H": 0,
+      "SE-G": 0,
+      "SE-BD": 100,
+      "SE-T": 1,
+      "SE-E": 0,
+      "SE-M": 0,
+      "SE-D": 1,
+      "SE-AB": 0,
+      "SE-C": 1,
+      "SE-S": 3,
+      "SE-AC": 42,
+      "SE-Y": 16,
+      "SE-U": 0,
+      "SE-O": 0
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i februari och september till november.",
+        "Andelen av alla fågelrapporter är högst i Norrbotten och Jämtland."
+      ],
+      "en": [
+        "Reported most in February and September to November.",
+        "Its share of all bird reports is highest in Norrbotten and Jämtland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1816,
+        2303,
+        3452,
+        1574,
+        1016,
+        3019,
+        2299,
+        1939,
+        3172,
+        3375,
+        2264,
+        1211
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-BD": 10802,
+        "SE-Z": 5524,
+        "SE-AC": 5353,
+        "SE-W": 3626,
+        "SE-Y": 1041,
+        "SE-X": 929,
+        "SE-S": 240,
+        "SE-T": 3,
+        "SE-D": 3,
+        "SE-C": 1,
+        "SE-N": 1
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "qid": "Q193192",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "hokuggla",
+    "en": "northern-hawk-owl"
+  },
+  "names": {
+    "sv": "Hökuggla",
+    "en": "Northern Hawk-Owl",
+    "scientific": "Surnia ulula"
+  },
+  "family": {
+    "latin": "Strigidae",
+    "sv": "Ugglor"
+  },
+  "group": "owls",
+  "iucn": "LC",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q193192/hero.webp",
+      "width": 1600,
+      "height": 2400,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Northern_hawk_owl_(Surnia_ulula)_(Schleswig_Hostein).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q193192/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Richard Hoeg",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hawk_Ridge,_Duluth,_United_States_(Unsplash).jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Hökuggla",
+      "revision": "59564657"
+    },
+    "en": {
+      "title": "Northern hawk-owl",
+      "revision": "1342925016"
+    },
+    "de": {
+      "title": "Sperbereule",
+      "revision": "261764933"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2497894,
+    "totalReports": 20198,
+    "months": [
+      100,
+      83,
+      26,
+      9,
+      3,
+      7,
+      4,
+      4,
+      17,
+      33,
+      59,
+      78
+    ],
+    "counties": {
+      "SE-K": 4,
+      "SE-W": 64,
+      "SE-X": 21,
+      "SE-I": 1,
+      "SE-N": 15,
+      "SE-Z": 100,
+      "SE-F": 12,
+      "SE-H": 9,
+      "SE-G": 7,
+      "SE-BD": 72,
+      "SE-T": 34,
+      "SE-E": 20,
+      "SE-M": 10,
+      "SE-D": 10,
+      "SE-AB": 11,
+      "SE-C": 28,
+      "SE-S": 51,
+      "SE-AC": 50,
+      "SE-Y": 25,
+      "SE-U": 61,
+      "SE-O": 12
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i januari och februari.",
+        "Rapporteras sällan i april till augusti.",
+        "Andelen av alla fågelrapporter är högst i Jämtland, Norrbotten och Dalarna."
+      ],
+      "en": [
+        "Reported most in January and February.",
+        "Rarely reported in April to August.",
+        "Its share of all bird reports is highest in Jämtland, Norrbotten and Dalarna."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        5472,
+        3156,
+        1826,
+        952,
+        401,
+        444,
+        214,
+        236,
+        956,
+        1850,
+        2069,
+        2249
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 1840,
+        "SE-BD": 1834,
+        "SE-C": 1674,
+        "SE-W": 1667,
+        "SE-AC": 1505,
+        "SE-Z": 1478,
+        "SE-U": 1411,
+        "SE-AB": 1198,
+        "SE-M": 1142,
+        "SE-S": 1076,
+        "SE-T": 997,
+        "SE-E": 849,
+        "SE-H": 709,
+        "SE-N": 704,
+        "SE-F": 487,
+        "SE-D": 463,
+        "SE-X": 432,
+        "SE-Y": 387,
+        "SE-G": 147,
+        "SE-K": 38,
+        "SE-I": 12
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

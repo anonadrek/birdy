@@ -1,0 +1,209 @@
+{
+  "qid": "Q28106966",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "snatterand",
+    "en": "gadwall"
+  },
+  "names": {
+    "sv": "Snatterand",
+    "en": "Gadwall",
+    "scientific": "Mareca strepera"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Änder"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q28106966/hero.webp",
+      "width": 1600,
+      "height": 997,
+      "author": "Tsyganov Sergey",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anas_strepera_Gadwall_Серая_утка_в_Санкт-Петербурге_Самец_Осень_2026_02.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q28106966/extra.webp",
+      "width": 1200,
+      "height": 801,
+      "author": "Bengt Nyman",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Snatterand,_Gadwall,_Mareca_strepera_CR5_5187_(50968941648).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q28106966/voice.mp3",
+    "durationSec": 15,
+    "trimmed": false,
+    "author": "Joost van Bruggen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mareca_strepera_-_Gadwall_XC436359.mp3",
+    "sha256": "c58406e6fcd249865208f73bf1b7cf356147ec040bcd27c0266d3fdcff079955"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Snatterand",
+      "revision": "59707986"
+    },
+    "en": {
+      "title": "Gadwall",
+      "revision": "1363113424"
+    },
+    "de": {
+      "title": "Schnatterente",
+      "revision": "267345022"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 9362027,
+    "totalReports": 254120,
+    "months": [
+      37,
+      32,
+      64,
+      100,
+      83,
+      57,
+      47,
+      55,
+      66,
+      66,
+      60,
+      47
+    ],
+    "counties": {
+      "SE-K": 59,
+      "SE-W": 36,
+      "SE-X": 30,
+      "SE-I": 61,
+      "SE-N": 75,
+      "SE-Z": 5,
+      "SE-F": 35,
+      "SE-H": 65,
+      "SE-G": 18,
+      "SE-BD": 10,
+      "SE-T": 62,
+      "SE-E": 100,
+      "SE-M": 73,
+      "SE-D": 72,
+      "SE-AB": 78,
+      "SE-C": 61,
+      "SE-S": 21,
+      "SE-AC": 7,
+      "SE-Y": 7,
+      "SE-U": 97,
+      "SE-O": 30
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        10402,
+        6286,
+        23342,
+        55971,
+        53842,
+        20102,
+        12544,
+        15405,
+        19239,
+        18732,
+        10826,
+        6920
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-AB": 35765,
+        "SE-M": 33531,
+        "SE-H": 22677,
+        "SE-O": 19623,
+        "SE-E": 18125,
+        "SE-C": 15258,
+        "SE-N": 14846,
+        "SE-D": 14639,
+        "SE-U": 9429,
+        "SE-T": 7806,
+        "SE-F": 6034,
+        "SE-I": 4864,
+        "SE-W": 3974,
+        "SE-X": 2608,
+        "SE-K": 2265,
+        "SE-S": 1925,
+        "SE-G": 1670,
+        "SE-BD": 1124,
+        "SE-AC": 902,
+        "SE-Y": 447,
+        "SE-Z": 325
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

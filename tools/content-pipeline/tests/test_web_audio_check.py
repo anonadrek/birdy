@@ -222,3 +222,36 @@ def test_a_long_error_from_the_model_is_cut_to_its_end(tmp_path: Path) -> None:
         )
     assert len(str(info.value)) <= 500
     assert str(info.value).endswith("ValueError: the real error")
+
+
+def _windows(*tops: list[tuple[str, float]]) -> AudioCheckResult:
+    return AudioCheckResult(
+        windows=[
+            {"startSec": 3.0 * i, "top": [{"qid": q, "confidence": c} for q, c in top]}
+            for i, top in enumerate(tops)
+        ]
+    )
+
+
+def test_weak_evidence_is_a_flag_not_a_strike() -> None:
+    """R3 (2026-10-07): Talgoxe's XC165660 was the model's first guess in 3 of 7 windows,
+    at only 2.3 %. That is weak evidence, not none: Albin listens and decides."""
+    talgoxe = _windows(
+        [("Q769093", 0.0075)],
+        [("Q25485", 0.0227), ("Q2609351", 0.0051)],
+        [("Q26982", 0.0069)],
+        [("Q25485", 0.0111), ("Q25404", 0.0100)],
+        [("Q2609351", 0.0101), ("Q25485", 0.0066)],
+    )
+    verdict = audio_verdict(talgoxe, "Q25485", identifiable_sound=True)
+    assert verdict.action == "flag"
+    assert verdict.reason is not None
+    assert "lyssna och besluta" in verdict.reason
+    assert "0,02" in verdict.reason
+
+
+def test_one_weak_window_or_a_too_faint_guess_is_still_a_strike() -> None:
+    once = _windows([("Q25485", 0.05)], [("Q1", 0.3)])
+    assert audio_verdict(once, "Q25485", identifiable_sound=True).action == "strike"
+    faint = _windows([("Q25485", 0.015)], [("Q25485", 0.019)])
+    assert audio_verdict(faint, "Q25485", identifiable_sound=True).action == "strike"

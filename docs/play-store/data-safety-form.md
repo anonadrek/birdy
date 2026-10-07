@@ -1,4 +1,4 @@
-# Birdy — Google Play Data Safety form answers
+# Birdy: Google Play Data Safety form answers
 
 This document captures the answers we will provide in the Google Play
 Console **Data Safety** section. Keep in sync with code reality.
@@ -6,12 +6,12 @@ Console **Data Safety** section. Keep in sync with code reality.
 Birdy is developed and operated by **AlbIT AB** (org. no. 559593-7607,
 Solna, Sweden).
 
-_Last reviewed: 2026-06-06 (v1.2, personal-finds-map) — opt-in on-device location for personal map + MapTiler tile fetching; location data never leaves the device; INTERNET + location permissions added. See Diff log entry 2026-06-06._
+_Last reviewed: 2026-10-07 (v1.3.0): Premium sold through Google Play Billing (yearly subscription or lifetime purchase), sound ID records up to 60 seconds, early users recognised on the device from the install time or the phone's network time, local notifications listed under the permissions. No form answer changes. See Diff log entries 2026-10-05 and 2026-10-07._
 
 ## Data collection and security
 
 ### Does your app collect or share any of the required user data types?
-**No** — with one nuance: the app now makes network requests to fetch
+**No**, with one nuance: the app now makes network requests to fetch
 map tile imagery from MapTiler (a third-party tile provider), but
 **user observations and their coordinates are never sent**.
 
@@ -25,12 +25,14 @@ The only data that ever leaves the device is via:
 - **Map tile requests** (new in v1.2): when a user views the personal
   finds map, the app fetches map imagery (tiles) from MapTiler. These
   requests reveal the **map viewport** (approximate geographic area
-  being viewed) to MapTiler — this is standard for any map SDK. The
+  being viewed) to MapTiler, which is standard for any map SDK. The
   user's bird observations and their stored coordinates are **never
   included** in tile requests and are **never transmitted** to
   MapTiler or anyone else.
 - Google Play Billing (purchase token; handled entirely by Google's
   SDK; we receive only purchase state, never PII).
+- Google Play In-App Review (the prompt that asks the user to rate
+  Birdy; handled entirely by Google).
 - Android Auto-Backup to Google Drive (opt-in via system settings;
   data is encrypted in transit and at rest by Google).
 - System share sheet (user-initiated; user picks the recipient).
@@ -38,16 +40,18 @@ The only data that ever leaves the device is via:
 None of these constitute "collection" or "sharing" by the Play Console
 definition because the app does not transmit user data to **our**
 servers (we don't have any). Tile requests to MapTiler convey map
-viewport only — no user-identifiable observation data.
+viewport only, no user-identifiable observation data.
 
 ### Is all of the user data collected by your app encrypted in transit?
-**N/A** — no user data is collected or transmitted. Map tile requests
-(HTTPS to MapTiler) are encrypted in transit, but those requests carry
-map viewport information only — no user data.
+**Not asked.** Play Console shows the security questions only when an
+app collects or shares user data, and Birdy answers **No** above. For
+the record: map tile requests (HTTPS to MapTiler) are encrypted in
+transit and carry only the map viewport, no user data.
 
 ### Do you provide a way for users to request that their data be deleted?
-**Yes.** Uninstalling the app removes all device-local data. Inside the
-app, users can long-press an observation to delete it individually.
+**Not asked** either, for the same reason. For the record: uninstalling
+the app removes all device-local data, and users can delete a single
+observation with Delete on its page.
 
 ## Data types (none selected)
 
@@ -61,16 +65,16 @@ in the form:
 - Messages: **No**
 - Photos and videos: **No** (user-supplied photos stay in app-private
   storage; not "collected" per Play Console definition)
-- Audio files: **No** (user-recorded 3-second audio clips stay in
-  app-private storage when attached to an observation; otherwise
-  discarded after on-device classification; never transmitted)
-- **Location: No** — the app reads the device location (approximate +
+- Audio files: **No** (user-recorded audio of up to 60 seconds is
+  classified on-device and kept only in app-private storage; never
+  transmitted)
+- **Location: No**. The app reads the device location (approximate +
   precise) only when the user has enabled "Save location with my finds"
   (Settings toggle, **off by default**). When enabled, the coordinates
   of a saved observation are stored **only in the device-local
   database**. Location data is **never transmitted** to our servers
   or to any third party. Map tile requests go to MapTiler over HTTPS
-  but carry only the map viewport — never the stored observation
+  but carry only the map viewport, never the stored observation
   coordinates. Per Play Console definitions this is **not
   "collection"** (data is not shared with or accessible by us or our
   servers). Answer on the form: **No**.
@@ -85,36 +89,48 @@ in the form:
 
 ## Security practices
 
-- Data encrypted in transit: **Yes** — map tile requests use HTTPS.
-  No user data is transmitted, but the tile channel itself is
-  encrypted. Observation data (including optional location) never
-  leaves the device.
-- Data deletion: users can request deletion via uninstall or
-  in-app long-press delete
-- Independent security review: **No**
-- Committed to Google Play's Families Policy: **No** (target audience
-  is 13+, not "directed to children")
+- Data encrypted in transit: **not asked** in the form (see "Data
+  collection and security" above). For the record: map tile requests
+  use HTTPS, no user data is transmitted, and observation data
+  (including optional location) never leaves the device.
+- Data deletion: **not asked** in the form. For the record: uninstall,
+  or Delete on an observation's page.
+- Independent security review: **No** (optional MASA declaration, not
+  done)
+- Families Policy badge: **not opted in** (set under Target audience
+  and content; the app is 13+, not "directed to children")
 
 ## Permissions disclosed
 
-- `android.permission.CAMERA` (foreground only) — used for
+- `android.permission.CAMERA` (foreground only): used for
   on-device bird ID; frames discarded after classification.
-- `android.permission.RECORD_AUDIO` (foreground only) — used for
-  on-device bird-call ID (BirdNET-Lite, 3-second clips); audio is
-  saved to your observation only if you tap save, otherwise discarded
-  after classification. Never uploaded.
-- `android.permission.INTERNET` (new in v1.2) — used to fetch map
+- `android.permission.RECORD_AUDIO` (foreground only): used for
+  on-device bird-call ID (BirdNET-Lite, recordings of up to 60
+  seconds); audio is kept only in app-private storage and never
+  uploaded.
+- `android.permission.INTERNET` (new in v1.2): used to fetch map
   tile imagery from MapTiler when the user views the personal finds
   map. No user data is transmitted; tile requests carry only the map
   viewport.
-- `android.permission.ACCESS_NETWORK_STATE` (new in v1.2) — used to
+- `android.permission.ACCESS_NETWORK_STATE` (new in v1.2): used to
   check connectivity before attempting to load map tiles; avoids
   unnecessary tile requests when offline.
 - `android.permission.ACCESS_FINE_LOCATION` + `ACCESS_COARSE_LOCATION`
-  (new in v1.2, opt-in, off by default) — used to capture the
+  (new in v1.2, opt-in, off by default): used to capture the
   device's GPS location at observation save-time, when the user has
   enabled "Save location with my finds" in Settings. Location is
   stored only on the device; never transmitted.
+- `android.permission.POST_NOTIFICATIONS`: used to show local
+  notifications (the daily Bird of the day around 08:00 with a photo of
+  the species, the weekly recap and the weekly badge progress note). On
+  Android 13 and later the user is asked after the first saved find and
+  can decline; each kind can be turned off in Settings. Scheduled on the
+  device with AndroidX WorkManager; there is no push server and nothing
+  is sent.
+- Added by libraries: WorkManager declares `RECEIVE_BOOT_COMPLETED`, so
+  the schedule survives a restart, and `WAKE_LOCK` and
+  `FOREGROUND_SERVICE`, which it can use while running scheduled work;
+  Google Play Billing declares `com.android.vending.BILLING`.
 
 We do **not** declare:
 - Photos permission (`READ_MEDIA_IMAGES` / `READ_EXTERNAL_STORAGE`):
@@ -130,14 +146,14 @@ features, provide:
 
 ## Diff log
 
-- **2026-05-15** — initial form drafted alongside v0.8.0-rc1 prep.
+- **2026-05-15**: initial form drafted alongside v0.8.0-rc1 prep.
   Status: app makes zero network calls, collects zero data.
-- **2026-05-17** — re-reviewed for v0.9.0a-billing (Plan 6b1 T4 Google
+- **2026-05-17**: re-reviewed for v0.9.0a-billing (Plan 6b1 T4 Google
   Play Billing v8 integration). No form changes needed: billing traffic
-  is handled by Google's BillingClient SDK, not by Birdy — purchase
+  is handled by Google's BillingClient SDK, not by Birdy; purchase
   tokens never reach our code (we only see acknowledged-entitlement
   state). No new permissions, no new data types, no new sharing.
-- **2026-05-22** — re-reviewed for v0.9.0b-audio (Plan 6b2 audio-ID via
+- **2026-05-22**: re-reviewed for v0.9.0b-audio (Plan 6b2 audio-ID via
   BirdNET-Lite) + Option-A BirdNET-license decision. Added
   `RECORD_AUDIO` permission disclosure. Audio recordings are
   3-second clips classified on-device by BirdNET-Lite (CC BY-NC-SA
@@ -145,7 +161,7 @@ features, provide:
   observation, otherwise discarded. Zero network calls remain.
   Audio-ID ships as a free feature for all users, not Premium-gated
   (the BirdNET license forbids commercial gating of the model).
-- **2026-06-06** — re-reviewed for personal-finds-map feature (v1.2).
+- **2026-06-06**: re-reviewed for personal-finds-map feature (v1.2).
   Added INTERNET + ACCESS_NETWORK_STATE (map tile fetching from
   MapTiler) and ACCESS_FINE_LOCATION + ACCESS_COARSE_LOCATION (opt-in,
   off by default; GPS captured at save-time for personal map). Location
@@ -156,6 +172,21 @@ features, provide:
   no sharing per Play Console definitions). Encryption-in-transit
   answer updated to **Yes** (HTTPS tile requests; no user data in
   transit).
-- **2026-09-28** — developer changed from a private person to
+- **2026-09-28**: developer changed from a private person to
   **AlbIT AB** (the Play Console account moved to the company). No
   change to any form answer.
+- **2026-10-05**: re-reviewed for v1.3.0 (vC129). Premium is now sold
+  through Google Play Billing as a yearly subscription or a one-time
+  lifetime purchase; Birdy still only sees purchase state, never
+  payment details. Sound ID now records for up to 60 seconds instead
+  of fixed short clips; recordings stay in app-private storage and are
+  never uploaded. Early users are recognised on the device from the install
+  time an earlier version stored and from the phone's network time at the
+  first start; nothing is transmitted. No change to any form answer.
+- **2026-10-07**: legal review for v1.3.0 (vC130). Added
+  `POST_NOTIFICATIONS` (local notifications, in the manifest since the
+  notification features shipped) and the permissions that libraries add
+  to the permission list. The encryption and deletion questions are not
+  asked when no data is collected or shared; the places that answered
+  them now say so, and deletion is described as it works (Delete on an
+  observation's page, not long-press). No change to any form answer.

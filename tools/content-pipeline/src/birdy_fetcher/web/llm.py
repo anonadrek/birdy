@@ -14,8 +14,9 @@ from pydantic import BaseModel, ValidationError
 
 from ..cost import CostTracker
 
-MODELS = {"opus": "claude-opus-5", "sonnet": "claude-sonnet-5"}
-COST_KEYS = {"opus": "opus5", "sonnet": "sonnet5"}
+# The keys the CLI offers are defaults.MODEL_KEYS (kept apart so --help needs no SDK).
+MODELS = {"opus": "claude-opus-5", "opus55": "claude-opus-5-5", "sonnet": "claude-sonnet-5"}
+COST_KEYS = {"opus": "opus5", "opus55": "opus55", "sonnet": "sonnet5"}
 MAX_TOKENS = 16_000
 
 

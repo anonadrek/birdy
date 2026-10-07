@@ -6,8 +6,9 @@ taxonomy:
   genus: Colinus
   ioc_order: Galliformes
 names:
-  sv: Vitstrupig vaktel
+  sv: Virginiavaktel
   en: Northern Bobwhite
+  former_sv: Vitstrupig vaktel
 abundance: ovanlig
 iucn_status: NT
 season:
@@ -30,13 +31,13 @@ regions:
 - DK
 - DE
 description:
-  sv: '# Vitstrupig vaktel
+  sv: '# Virginiavaktel
 
 
-    Vitstrupig vaktel är en medelstor vaktel inom familjen tofsvaktlar. Det är en
-    markfågel med kompakt byggnad, karakteristisk rostbrun och svart teckning på huvudet.
-    Hanen har en vit strupe och ögonbrynsstreck, medan honan är mer dov brunaktig.
-    Det är en väldig liten fågel som håller sig huvudsakligen på marken.
+    Virginiavaktel är en medelstor vaktel inom familjen tofsvaktlar. Det är en markfågel
+    med kompakt byggnad, karakteristisk rostbrun och svart teckning på huvudet. Hanen
+    har en vit strupe och ögonbrynsstreck, medan honan är mer dov brunaktig. Det är
+    en väldig liten fågel som håller sig huvudsakligen på marken.
 
 
     Arten är känd för sitt genomträngande och igenkännligt läte som låter som sitt
@@ -102,8 +103,7 @@ image_refs:
   width: 2400
   height: 1615
   license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/50838842@N06">U.S.
-    Fish and Wildlife Service Headquarters</a>
+  author: U.S. Fish and Wildlife Service Headquarters
   source_url: https://commons.wikimedia.org/wiki/File:Colinus virginianus USFWS.jpg
   commons_filename: Colinus virginianus USFWS.jpg
 - role: secondary
@@ -111,7 +111,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Missvain" title="User:Missvain">Missvain</a>
+  author: Missvain
   source_url: https://commons.wikimedia.org/wiki/File:Colinus virginianus at the Indianapolis
     Zoo - June 2022 - Sarah Stierch.jpg
   commons_filename: Colinus virginianus at the Indianapolis Zoo - June 2022 - Sarah
@@ -121,8 +121,7 @@ image_refs:
   width: 1440
   height: 1800
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/39955531@N00">Matt
-    Tillett</a> from Cumberland, MD, USA
+  author: Matt Tillett
   source_url: https://commons.wikimedia.org/wiki/File:Colinus virginianus Chincoteague.jpg
   commons_filename: Colinus virginianus Chincoteague.jpg
 review_status: auto

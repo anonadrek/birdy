@@ -65,7 +65,7 @@ image_refs:
   width: 2400
   height: 1786
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Carpodacus erythrinus Haukipudas
     20120519 05.JPG
   commons_filename: Carpodacus erythrinus Haukipudas 20120519 05.JPG
@@ -74,8 +74,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2663182">Нурхайдарова
-    Татьяна</a>
+  author: Нурхайдарова Татьяна
   source_url: https://commons.wikimedia.org/wiki/File:Carpodacus erythrinus 285729924.jpg
   commons_filename: Carpodacus erythrinus 285729924.jpg
 - role: secondary
@@ -83,8 +82,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/5801652">Шальнов
-    Кирилл</a>
+  author: Шальнов Кирилл
   source_url: https://commons.wikimedia.org/wiki/File:Carpodacus erythrinus 305390872.jpg
   commons_filename: Carpodacus erythrinus 305390872.jpg
 review_status: approved

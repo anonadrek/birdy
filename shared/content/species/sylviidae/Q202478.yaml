@@ -94,8 +94,7 @@ image_refs:
   width: 2048
   height: 1536
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/4147611">Сергей
-    Неклюдов</a>
+  author: Сергей Неклюдов
   source_url: https://commons.wikimedia.org/wiki/File:Sylvia borin 315567165.jpg
   commons_filename: Sylvia borin 315567165.jpg
 - role: secondary
@@ -103,22 +102,24 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:VezeIvan&amp;action=edit&amp;redlink=1"
-    class="new" title="User:VezeIvan (page does not exist)">Иван Везенковић</a>
+  author: Иван Везенковић
   source_url: https://commons.wikimedia.org/wiki/File:Garden Warbler Sylvia borin.jpg
   commons_filename: Garden Warbler Sylvia borin.jpg
 - role: secondary
   path: Q202478/secondary-2.webp
-  width: 1350
-  height: 1800
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Sanja_%C5%A0umanovi%C4%87&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Sanja Šumanović (page does not exist)">Sanja Šumanović</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Siva grmuša (Sylvia borin) Garden
-    Warbler.jpg
-  commons_filename: Siva grmuša (Sylvia borin) Garden Warbler.jpg
+  width: 1800
+  height: 1010
+  license: CC BY-SA 2.0
+  author: Dominic Sherony
+  source_url: https://commons.wikimedia.org/wiki/File:Garden Warbler (Sylvia borin)
+    (31633947647).jpg
+  commons_filename: Garden Warbler (Sylvia borin) (31633947647).jpg
 review_status: approved
-review_notes: "Hero = Sylvia borin (Garden Warbler / Trädgårdssångare); allmän häckare i lövskog och buskmark i hela SE."
+review_notes: 'Hero = Sylvia borin (Garden Warbler / Trädgårdssångare); allmän häckare i lövskog och buskmark
+  i hela SE.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se b54c332e; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T21:12:36.859750+00:00'
 sources:
   wikipedia_sv_revision: '58946423'

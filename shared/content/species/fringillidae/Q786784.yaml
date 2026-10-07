@@ -83,11 +83,26 @@ migration:
 image_refs:
 - role: hero
   path: Q786784/hero.webp
-  width: 1799
-  height: 2400
+  width: 1820
+  height: 1226
+  license: CC BY-SA 4.0
+  author: Azorengimpel
+  source_url: https://commons.wikimedia.org/wiki/File:Azorengimpel.jpg
+  commons_filename: Azorengimpel.jpg
+- role: secondary
+  path: Q786784/secondary-1.webp
+  width: 1600
+  height: 1066
+  license: CC BY-SA 2.0
+  author: putneymark
+  source_url: https://commons.wikimedia.org/wiki/File:Pyrrhula murina.jpg
+  commons_filename: Pyrrhula murina.jpg
+- role: secondary
+  path: Q786784/secondary-2.webp
+  width: 1349
+  height: 1800
   license: Public domain
-  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Joseph_Wolf" class="extiw"
-    title="w:en:Joseph Wolf"><span title="German artist (1820-1899)">Joseph Wolf</span></a></bdi>
+  author: Joseph Wolf
   source_url: https://commons.wikimedia.org/wiki/File:Pyrrhula murina 2.jpg
   commons_filename: Pyrrhula murina 2.jpg
 review_status: auto

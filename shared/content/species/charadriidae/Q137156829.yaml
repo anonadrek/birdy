@@ -6,10 +6,10 @@ taxonomy:
   genus: Anarhynchus
   ioc_order: Charadriiformes
 names:
-  sv: null
+  sv: Svartbent strandpipare
   en: Kentish Plover
 abundance: ovanlig
-iucn_status: NE
+iucn_status: LC
 season:
   jan: present
   feb: present
@@ -95,8 +95,7 @@ image_refs:
   width: 2181
   height: 1440
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
-    ten Cate</a>
+  author: Bouke ten Cate
   source_url: https://commons.wikimedia.org/wiki/File:Strandplevier - Kentish plover
     - Anarhynchus alexandrinus.jpg
   commons_filename: Strandplevier - Kentish plover - Anarhynchus alexandrinus.jpg
@@ -105,7 +104,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Smailtn" title="User:Smailtn">Smailtn</a>
+  author: Smailtn
   source_url: https://commons.wikimedia.org/wiki/File:Anarhynchus alexandrinus Radès
     beach.jpg
   commons_filename: Anarhynchus alexandrinus Radès beach.jpg

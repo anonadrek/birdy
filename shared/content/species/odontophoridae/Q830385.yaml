@@ -93,13 +93,7 @@ image_refs:
   width: 2294
   height: 2400
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/sloalan/">ALAN
-    SCHMIERER</a> <span class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a
-    href="//commons.wikimedia.org/wiki/File:Schopfwachtel_(Callipepla_californica),_Weibchen.jpg#P170"
-    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
-    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
-    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
-    data-file-height="20"></a></span>
+  author: ALAN SCHMIERER
   source_url: https://commons.wikimedia.org/wiki/File:Schopfwachtel (Callipepla californica),
     Weibchen.jpg
   commons_filename: Schopfwachtel (Callipepla californica), Weibchen.jpg
@@ -108,19 +102,18 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Missvain" title="User:Missvain">Missvain</a>
+  author: Missvain
   source_url: https://commons.wikimedia.org/wiki/File:Callipepla californica - June
     2023 - Sarah Stierch.jpg
   commons_filename: Callipepla californica - June 2023 - Sarah Stierch.jpg
 - role: secondary
   path: Q830385/secondary-2.webp
   width: 1800
-  height: 1350
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Missvain" title="User:Missvain">Missvain</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Callipepla californica - October
-    2023 - Sarah Stierch 01.jpg
-  commons_filename: Callipepla californica - October 2023 - Sarah Stierch 01.jpg
+  height: 1200
+  license: CC0
+  author: CautiousHabliut
+  source_url: https://commons.wikimedia.org/wiki/File:Quail in Alum Rock.jpg
+  commons_filename: Quail in Alum Rock.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T20:43:41.631164+00:00'

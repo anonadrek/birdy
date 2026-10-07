@@ -54,6 +54,7 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_badges_section
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
+import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.GearButton
 import se.birdy.app.ui.components.JournalIntro
@@ -71,6 +72,14 @@ import se.birdy.domain.badge.Badge
 import se.birdy.domain.badge.BadgeTier
 import se.birdy.domain.badge.BadgeUnlock
 
+/**
+ * The Märken tab. [now] is the moment badge dates are read against (a date shows its year only
+ * when the year differs); it defaults to the real clock, read once, and tests pin it.
+ *
+ * LongParameterList: over the threshold before 1.3.0 (baselined); adding `now` changed the
+ * baseline's exact signature match, so this is a justified suppress, not a baseline edit.
+ */
+@Suppress("LongParameterList")
 @Composable
 fun BadgesScreen(
     state: BadgesUiState,
@@ -83,9 +92,9 @@ fun BadgesScreen(
     onOpenTrophyRoom: () -> Unit,
     showPremiumTeaser: Boolean = true,
     modifier: Modifier = Modifier,
+    now: Instant = remember { Clock.System.now() },
 ) {
     var selectedLocked: LockedBadgeProgress? by remember { mutableStateOf(null) }
-    val now = remember { Clock.System.now() }
 
     JournalScaffold(modifier = modifier) { padding ->
         Box(modifier = Modifier.fillMaxSize().padding(padding)) {
@@ -149,8 +158,11 @@ private fun LoadedContent(
         }
         item(span = { GridItemSpan(maxLineSpan) }) {
             TrophyRoomEntryCard(
-                hero = state.trophyShowcase.hero,
+                recent = state.recentlyUnlocked,
                 unlockedCount = state.unlockedCount,
+                locale = locale,
+                zone = zone,
+                now = now,
                 onClick = onOpenTrophyRoom,
             )
         }
@@ -158,7 +170,12 @@ private fun LoadedContent(
             Column {
                 JournalIntro(
                     label = stringResource(Res.string.badges_journal_label, state.unlockedCount.toString()),
-                    headline = stringResource(Res.string.badges_journal_headline, state.unlockedCount.toString()),
+                    headline =
+                        pluralStringResource(
+                            Res.plurals.badges_journal_headline,
+                            state.unlockedCount,
+                            state.unlockedCount,
+                        ),
                     sub = stringResource(Res.string.badges_journal_sub, (state.totalBadges - state.unlockedCount).toString()),
                     horizontalPadding = 0,
                     topPadding = 0,

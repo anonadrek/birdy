@@ -105,32 +105,34 @@ image_refs:
   path: Q143313/hero.webp
   width: 2400
   height: 1800
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Synezis&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Synezis (page does not exist)">Synezis</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Anthus trivialis, Srbija (123).jpg
-  commons_filename: Anthus trivialis, Srbija (123).jpg
+  license: CC BY-SA 2.0
+  author: xulescu_g
+  source_url: https://commons.wikimedia.org/wiki/File:Anthus trivialis (40810566815).jpg
+  commons_filename: Anthus trivialis (40810566815).jpg
 - role: secondary
   path: Q143313/secondary-1.webp
-  width: 1350
-  height: 1800
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Sanja_%C5%A0umanovi%C4%87&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Sanja Šumanović (page does not exist)">Sanja Šumanović</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Šumska trepteljka (Anthus trivialis).jpg
-  commons_filename: Šumska trepteljka (Anthus trivialis).jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: Frank Vassen
+  source_url: https://commons.wikimedia.org/wiki/File:Baumpieper (Anthus trivialis),
+    Holzwarchetal bei Mürringen, Ostbelgien (3938435013).jpg
+  commons_filename: Baumpieper (Anthus trivialis), Holzwarchetal bei Mürringen, Ostbelgien
+    (3938435013).jpg
 - role: secondary
   path: Q143313/secondary-2.webp
   width: 1800
   height: 1199
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
-    Raju Kasambe">Dr. Raju Kasambe</a>
+  author: Dr. Raju Kasambe
   source_url: https://commons.wikimedia.org/wiki/File:Tree Pipit Anthus trivialis
     by Dr. Raju Kasambe DSCN7208 (cropped).jpg
   commons_filename: Tree Pipit Anthus trivialis by Dr. Raju Kasambe DSCN7208 (cropped).jpg
 review_status: approved
-review_notes: "Trädpiplärka — Anthus trivialis från Srbija; allmän SE-skogsmarker."
+review_notes: 'Trädpiplärka — Anthus trivialis från Srbija; allmän SE-skogsmarker.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se b54c332e; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T20:14:57.319609+00:00'
 sources:
   wikipedia_sv_revision: '58946868'

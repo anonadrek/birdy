@@ -1,0 +1,36 @@
+---
+// One recording with its credit line right under it (spec 2026-09-25 §5; deviation 8 in the plan).
+// preload="none": nothing is downloaded until the visitor presses play. Every recording is processed
+// (mono, level-normalised, re-encoded to MP3, spec Revision 2026-10-06), not only the clipped ones, so
+// the credit line always says so: "edited" or, when also clipped, "trimmed and edited" (CC BY and
+// CC BY-SA require the credit to say the work was changed).
+import { getCopy, type Locale } from '../../lib/i18n';
+import { audioHref, licenseLabel, localizedLicenseUrl, type Species } from '../../lib/species';
+
+interface Props { species: Species; locale: Locale; creditKey: string }
+const { species: s, locale, creditKey } = Astro.props;
+const t = getCopy(locale);
+const audio = s.audio;
+const src = audioHref(s);
+---
+
+{audio && src && (
+  <figure class="player" data-audio={creditKey}>
+    <audio controls preload="none" src={src} aria-label={t.species.recordingLabel.replace('{name}', s.names[locale])}></audio>
+    <figcaption data-credit-for={creditKey}>
+      {t.species.recordingCredit} {audio.author ?? t.species.unknownRecordist},{' '}
+      {/* rel="license" is reserved for the text credit's own CC BY-SA 4.0 link (controller review, Task 9);
+          "noopener" is dropped everywhere here since none of these links use target="_blank". */}
+      {audio.licenseUrl ? <a href={localizedLicenseUrl(audio.licenseUrl, locale)}>{audio.license}</a> : licenseLabel(audio.license, t)},{' '}
+      {t.species.via} <a href={audio.sourceUrl}>Wikimedia Commons</a>, {audio.trimmed ? t.species.trimmedEdited : t.species.edited}
+    </figcaption>
+  </figure>
+)}
+
+<style>
+  .player { margin: 12px 0 0; max-width: 40rem; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px 8px; }
+  .player audio { display: block; width: 100%; }
+  .player figcaption { margin-top: 6px; font-size: 12px; line-height: 1.45; color: var(--muted); }
+  .player a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+  .player a:hover { color: var(--rust); }
+</style>

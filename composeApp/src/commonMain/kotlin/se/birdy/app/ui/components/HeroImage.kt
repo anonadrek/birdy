@@ -20,6 +20,7 @@ import coil3.compose.AsyncImage
 import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.HeroMossMid
+import se.birdy.app.ui.theme.PhotoLoading
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.util.speciesImageUri
 
@@ -34,8 +35,16 @@ fun HeroImage(
         modifier =
             modifier
                 .clip(RoundedCornerShape(cornerRadius))
-                .background(
-                    Brush.linearGradient(colors = listOf(HeroMossLight, HeroMossMid, HeroMossDeep)),
+                // Behind a photo: neutral while it loads, never a green flash (2026-10-06). No
+                // photo: the moss placeholder with the camera icon, as designed.
+                .then(
+                    if (imagePath != null) {
+                        Modifier.background(PhotoLoading)
+                    } else {
+                        Modifier.background(
+                            Brush.linearGradient(colors = listOf(HeroMossLight, HeroMossMid, HeroMossDeep)),
+                        )
+                    },
                 ),
         contentAlignment = Alignment.Center,
     ) {

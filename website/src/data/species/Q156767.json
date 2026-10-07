@@ -1,0 +1,882 @@
+{
+  "qid": "Q156767",
+  "status": "ok",
+  "publish": true,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Nötväckan är en satt fågel med stort huvud, kort stjärt, lång spetsig näbb och starka fötter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det är en satt fågel, med stort huvud, kort stjärt, lång spetsig näbb och starka fötter."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Den är gråblå på ovansidan och vit undertill med svagt rostgulaktig anstrykning på bröst och mage.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Nötväckan är gråblå på ovansidan och vit undertill, med svagt rostgulaktig anstrykning på bröstet och magen."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Ett svart streck går genom ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Genom ögat går ett svart streck."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Kroppssidorna bakåt och delvis de undre stjärttäckarna är roströda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kroppens sidor bakåt och delvis de undre stjärttäckarna är roströda."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "I flykten ser den ut att ha spetsigt huvud, runda vingar och kort, tvär stjärt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In flight, they have a characteristic appearance, with a pointed head, round wings and a short, square tail."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "size",
+      "sv": "Nötväckan blir upp till 14–15 cm lång och har ett vingspann på 23–27 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Totallängden kan bli upp till 14–15 cm. Vingspannet är 23–27 cm."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "En vuxen nötväcka väger cirka 23 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En vuxen fågel kan väga cirka 23 gram."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honan liknar hanen men har något blekare ovansida, brunare ögonstreck och mattare färg på flankerna och nedre buken.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The female is similar in appearance to the male, but may be identified by her slightly paler upperparts, a browner eyestripe and a more washed-out tone to the flanks and lower belly."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Unga fåglar liknar honan men har mattare fjäderdräkt och ljusare ben.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Young birds resemble the female, although their plumage is duller and they have paler legs."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Nötväckan är mycket högljudd och märks oftast först på lätet.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Kleiber ist sehr ruffreudig und laut, daher ist er meistens zuerst an seiner Stimme zu bemerken."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Det vanliga lätet är ett högt, skarpt ”dwip”, oftast upprepat två gånger, fler gånger vid upphetsning.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The Eurasian nuthatch calls frequently, usually with a loud, sharp dwip normally repeated twice, sometimes more often if excited."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången är ljudlig och genomträngande och består av en serie visslingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången är ljudlig och genomträngande och består av en serie visslingar."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sången är ett långsamt visslat ”pii-pii-pii” med många varianter, bland annat en snabbare.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The song is a slow whistled pee-pee-pee with many variants, including a faster version, and may be intermingled with the call."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Nötväckan lever i skog, helst där höga träd blandas med lägre, men kommer också till bostadsområden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Nötväckorna lever parvis eller i mycket små sällskap i skog, helst där höga träd är blandade med lägre, men kommer också fram till bostadsområden."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "I Europa föredrar den löv- eller blandskog, särskilt med ek.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In Europe, deciduous or mixed forest is favoured, particularly when containing oak."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Parker, gamla fruktträdgårdar och andra trädmiljöer kan användas om de har minst en hektar lämpliga träd.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Parks, old orchards and other wooded habitats may be occupied as long as they have at least a 1 ha (2.5 acres) block of suitable trees."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "I Sverige är nötväckan stannfågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är arten stannfågel."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Nominatformen häckar idag glest som etablerad häckfågel över i stort sett hela norra Norrland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "idag förekommer nominatformen, om än glest, som etablerad häckfågel över stort sett hela norra Norrland."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "År 2018 uppskattades det svenska beståndet till 264 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 264 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Vid dålig kottillgång kan sibiriska nötväckor flytta västerut till norra Sverige och Finland på hösten och ibland stanna och häcka.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "if the crop fails many birds of the S. e. asiatica subspecies may move west into northern Sweden and Finland in autumn, sometimes staying to breed."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "behaviour",
+      "sv": "Bland svenska fåglar är den ensam om att kunna klättra och hoppa nedåt med huvudet före.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bland fåglar i Sverige är den ensam om att kunna klättra och t o m hoppa nedåt med huvudet före – ett bra kännetecken."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Den rör sig i träd med korta hopp och stöder sig inte på stjärten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Nuthatches move on trees with short leaps, and do not use their tails for support."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Under hösten stryker den gärna omkring tillsammans med mesar och trädkrypare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "håller sig gärna nära andra fåglar, framför allt mesar och trädkrypare, som den börjar stryka omkring med under hösten."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Nötväckan lever av insekter som den hittar i trädens barkspringor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lever av insekter som den hittar i trädens barkspringor."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "På hösten äter den även säd, fettrika frön, nötter och ollon.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På hösten äter den också av säd, frön (gärna fettrika frön som solrosfrön och körsbärskärnor), nötter, ollon och liknande."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Under vinterhalvåret besöker den gärna fågelbord.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under vinterhalvåret besöker den gärna fågelbord."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Nötter och stora insekter kilas fast i barkspringor och hackas sönder med den kraftiga näbben.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Sizeable hard food items like nuts or large insects are wedged into crevices in tree bark and smashed with the strong bill."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Till vintern samlar den förråd på flera ställen, till exempel i ihåliga träd och springor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Till vintern samlar den förråd (på flera olika ställen) i ihåliga träd, springor, tak och så vidare."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Den häckar gärna i gamla hackspettbon och murar igen för stora ingångar med våt jord eller lera.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den använder gärna gamla hackspettbon. Är ingången för stor, muras den igen med våt jord eller lera till lämplig bredd."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "breeding",
+      "sv": "Kullen består vanligen av 6–9 vita, rödprickiga ägg, ibland upp till 13.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The clutch is usually 6–9 red-speckled white eggs, although up to 13 eggs are sometimes laid."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är arten stannfågel."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november till februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Nötväckan är en satt fågel med stort huvud, kort stjärt och lång spetsig näbb.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Den lever i skog men kommer också till bostadsområden och besöker gärna fågelbord under vinterhalvåret.",
+          "factIds": [
+            "f14",
+            "f26"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Gråblå ovansida och vit undersida med svagt rostgulaktig ton på bröst och mage",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Svart streck genom ögat och roströda kroppssidor bakåt",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Honan har blekare ovansida, brunare ögonstreck och mattare flanker än hanen",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Klättrar nedåt med huvudet före och stöder sig inte på stjärten",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Nötväckan är mycket högljudd och märks oftast först på lätet.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Det vanliga lätet är ett högt, skarpt ”dwip”, oftast upprepat två gånger och fler gånger vid upphetsning.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Sången är en ljudlig serie visslingar, ett långsamt ”pii-pii-pii” med många varianter, bland annat en snabbare.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Nötväckan är stannfågel i Sverige och rapporteras från alla 21 län.",
+          "factIds": [
+            "s01",
+            "f17",
+            "d02"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i november till februari.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "År 2018 uppskattades det svenska beståndet till 264 000 par, och arten är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "f19",
+            "d03"
+          ]
+        },
+        {
+          "text": "Vid dålig kottillgång kan sibiriska nötväckor flytta västerut till norra Sverige på hösten och ibland stanna och häcka.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den rör sig i träd med korta hopp och letar insekter i barkspringor.",
+          "factIds": [
+            "f22",
+            "f24"
+          ]
+        },
+        {
+          "text": "På hösten äter den även säd, fettrika frön, nötter och ollon, och den stryker gärna omkring med mesar och trädkrypare.",
+          "factIds": [
+            "f25",
+            "f23"
+          ]
+        },
+        {
+          "text": "Nötter och stora insekter kilas fast i barkspringor och hackas sönder med den kraftiga näbben.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Till vintern samlar den förråd på flera ställen, till exempel i ihåliga träd och springor.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Nötväcka: så känner du igen den på dräkt, näbb och beteende, hur lätet och sången låter och när på året den oftast rapporteras.",
+      "facts": {
+        "size": {
+          "value": "14 till 15 cm",
+          "factIds": [
+            "f06"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Nuthatch is a stocky bird with a large head, short tail and long pointed bill.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "It lives in woodland, comes into residential areas too, and in the winter half of the year it readily visits bird tables.",
+          "factIds": [
+            "f14",
+            "f26"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Blue-grey upperparts and white underparts with a faint rusty-yellow wash on breast and belly",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Black stripe through the eye and rust-red rear flanks",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Female has paler upperparts, browner eye stripe and duller flanks than the male",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Climbs down trees head first and does not prop itself on its tail",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The Eurasian Nuthatch is very loud and is usually noticed first by its call.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "The usual call is a high, sharp \"dwip\", mostly given twice and more times when excited.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The song is a loud series of whistles, a slow \"pii-pii-pii\" with many variants, including a faster one.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Eurasian Nuthatch is a resident bird in Sweden and is reported from all 21 counties.",
+          "factIds": [
+            "s01",
+            "f17",
+            "d02"
+          ]
+        },
+        {
+          "text": "It is reported most in November to February.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "In 2018 the Swedish population was estimated at 264 000 pairs, and the species is not red-listed in the Swedish Red List 2025.",
+          "factIds": [
+            "f19",
+            "d03"
+          ]
+        },
+        {
+          "text": "When cone crops are poor, Siberian nuthatches can move west to northern Sweden in autumn and sometimes stay to breed.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It moves through trees in short hops and searches bark crevices for insects.",
+          "factIds": [
+            "f22",
+            "f24"
+          ]
+        },
+        {
+          "text": "In autumn it also eats grain, oily seeds, nuts and acorns, and often roams with tits and treecreepers.",
+          "factIds": [
+            "f25",
+            "f23"
+          ]
+        },
+        {
+          "text": "Nuts and large insects are wedged into bark crevices and hammered apart with the strong bill.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "For winter it stores food in several places, for example in hollow trees and crevices.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Eurasian Nuthatch: how to recognise it by plumage, bill and behaviour, what its call and song sound like, and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "14 to 15 cm",
+          "factIds": [
+            "f06"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "9e03924939e97b43"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:18:38.435410+00:00",
+      "factsHash": "9e03924939e97b43"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "notvacka",
+    "en": "eurasian-nuthatch"
+  },
+  "names": {
+    "sv": "Nötväcka",
+    "en": "Eurasian Nuthatch",
+    "scientific": "Sitta europaea"
+  },
+  "family": {
+    "latin": "Sittidae",
+    "sv": "Nötväckor"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q156767/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Stephan Sprinz",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kleiber_(Sitta_europaea)_im_Garten.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q156767/extra.webp",
+      "width": 1200,
+      "height": 1600,
+      "author": "Mr. Lvíčátko",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sitta_europaea_building_nest.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q156767/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Vulcano",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:76_Pista_76_converted.ogg",
+    "sha256": "ce1e20faf2ac09a19ed6d08728a8c01123514141d24da234c502026ab4284769"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Nötväcka",
+      "revision": "58491129"
+    },
+    "en": {
+      "title": "Eurasian nuthatch",
+      "revision": "1357783589"
+    },
+    "de": {
+      "title": "Kleiber (Art)",
+      "revision": "267316647"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2484916,
+    "totalReports": 473165,
+    "months": [
+      97,
+      80,
+      52,
+      34,
+      17,
+      21,
+      26,
+      33,
+      40,
+      51,
+      84,
+      100
+    ],
+    "counties": {
+      "SE-K": 62,
+      "SE-W": 70,
+      "SE-X": 86,
+      "SE-I": 28,
+      "SE-N": 30,
+      "SE-Z": 72,
+      "SE-F": 71,
+      "SE-H": 33,
+      "SE-G": 59,
+      "SE-BD": 86,
+      "SE-T": 59,
+      "SE-E": 71,
+      "SE-M": 37,
+      "SE-D": 99,
+      "SE-AB": 84,
+      "SE-C": 81,
+      "SE-S": 68,
+      "SE-AC": 99,
+      "SE-Y": 100,
+      "SE-U": 59,
+      "SE-O": 84
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november till februari.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in November to February.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        75347,
+        43323,
+        51659,
+        52195,
+        30656,
+        20145,
+        19048,
+        25296,
+        32459,
+        39972,
+        41823,
+        40866
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 94147,
+        "SE-AB": 65132,
+        "SE-C": 34718,
+        "SE-D": 34651,
+        "SE-M": 28975,
+        "SE-E": 22070,
+        "SE-AC": 21687,
+        "SE-F": 21258,
+        "SE-H": 19901,
+        "SE-BD": 15878,
+        "SE-W": 13291,
+        "SE-X": 12584,
+        "SE-T": 12523,
+        "SE-Y": 10945,
+        "SE-S": 10440,
+        "SE-N": 10121,
+        "SE-U": 9776,
+        "SE-G": 9560,
+        "SE-Z": 7692,
+        "SE-K": 4089,
+        "SE-I": 3766
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-07"
+}

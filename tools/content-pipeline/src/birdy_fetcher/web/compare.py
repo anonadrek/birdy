@@ -31,6 +31,7 @@ from .checked_writer import Checks, Written, write_checked
 from .checker import PROMPT_VERSION as CHECK_PROMPT_VERSION
 from .checker import CheckerFailed, CheckItem, SentenceChecker, meta_item
 from .checks import _style, load_banned, sentence_count
+from .defaults import TEXT_MODEL_KEY
 from .llm import MODELS, AnthropicJsonClient, JsonModelClient, ModelReply, record_cost
 from .paths import WebPaths
 from .record import Record, facts_hash, load_all, load_record, save_record
@@ -663,7 +664,7 @@ class ComparisonWriter:
     checker: SentenceChecker
     prompt_path: Path
     banned: list[str]
-    model_key: str = "opus"
+    model_key: str = TEXT_MODEL_KEY
     effort: str = "high"
 
     async def _ask(self, system: str, messages: list[MessageParam]) -> ModelReply[CompareOutput]:
@@ -702,7 +703,7 @@ class ComparisonWriter:
 @dataclass(frozen=True)
 class CompareOptions:
     top: int = TOP
-    model_key: str = "opus"
+    model_key: str = TEXT_MODEL_KEY
     effort: str = "high"
     checker_key: str = "sonnet"
     max_cost: float | None = None

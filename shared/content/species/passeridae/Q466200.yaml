@@ -92,8 +92,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/42244964@N03">Frank
-    Vassen</a> from Brussels, Belgium
+  author: Frank Vassen
   source_url: https://commons.wikimedia.org/wiki/File:Passer hispaniolensis (1).jpg
   commons_filename: Passer hispaniolensis (1).jpg
 - role: secondary
@@ -101,8 +100,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Spanish sparrow (Passer hispaniolensis)
     female ringed Malta.jpg
   commons_filename: Spanish sparrow (Passer hispaniolensis) female ringed Malta.jpg
@@ -111,8 +109,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Spanish sparrow (Passer hispaniolensis)
     male breeding plumage ringed Malta.jpg
   commons_filename: Spanish sparrow (Passer hispaniolensis) male breeding plumage

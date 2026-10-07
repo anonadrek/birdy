@@ -1,0 +1,892 @@
+{
+  "qid": "Q26205",
+  "status": "ok",
+  "publish": true,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Gulsparven är 15,5–17 centimeter lång och har ett vingspann på 23–30 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gulsparven är 15,5–17 centimeter lång och har ett vingspann på 23–30 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Gulsparven kan väga upp till 30 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vikten kan uppgå till 30 gram."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Gulsparven är långstjärtad och har i alla dräkter en ostreckad rödbrun övergump och gula inslag i fjäderdräkten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är långstjärtad och i alla dräkter har den en ostreckad rödbrun övergump och gula inslag i fjäderdräkten."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den adulta hanen har i häckningsdräkt lysande gult huvud och strupe med smalt mörkt ögonstreck bakom ögat och ganska långt mörkt mustaschstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen har i häckningsdräkt ett lysande gult huvud och strupe, med ett smalt mörkt ögonstreck bakom ögat och ett ganska långt mörkt mustaschstreck."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Hanens buk är gul, medan bröstet och kroppssidan är rostbruna med fina längsgående streck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Buken är gul medan bröstet och kroppssidan är rostbrunt med fina längsgående streck."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Ovansidan är övervägande brun och kraftigt svartfläckad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ovansidan är övervägande brun och kraftigt svartfläckad."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Stjärten är mörk med vita kanter som syns tydligt i flykten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Schwanz ist dunkel, im Flug fällt der weiße Außenrand auf."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honan är mindre kontrastrik, mer brunfärgad och kraftigare streckad undertill än hanen och har en liknande dräkt året runt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honan har en liknande fjäderdräkt året runt och är mindre kontrastrik och mer brunfärgad och kraftigare streckad undertill än hanen."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Honan saknar hanens lysande gula huvud men har tydliga ljusgula partier, exempelvis strupen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hon saknar det lysande gula huvudet men har ändå tydliga ljusgula partier som exempelvis strupen."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Vintertid liknar hanen och honan varandra mer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid påminner hanen och honan mer om varandra."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Ungfågeln är mycket mattare och mindre gul än de vuxna och har ofta ljusare övergump.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The juvenile is much duller and less yellow than the adults, and often has a paler rump."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången består av fem till elva strofer och kan beskrivas som att fågeln räknar, ungefär tju, tju, tju, tju, tju, tju, tjuuu.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess sång består av fem till elva strofer, som kan beskrivas som att fågeln räknar."
+        },
+        {
+          "article": "sv",
+          "quote": "Ett sångparti kan låta: tju, tju , tju, tju, tju, tju, tjuuu."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sången är en serie korta toner som gradvis blir starkare och avslutas med en eller två mer utdragna toner.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The song of the cock yellowhammer is a series of short notes, gradually increasing in volume and followed by one or two more protracted notes."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Bland andra läten finns ett kontaktläte zit, ett varningsläte see och ett drillande tirrr i flykten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Other vocalisations include a zit contact call, a see alarm, and a trilled tirrr given in flight."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Sången framförs från en upphöjd sittplats, till exempel en busk- eller trädtopp eller en stolpe.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Gesang wird von einer erhöhten Warte wie beispielsweise von einer Busch- oder Baumspitze oder einem Pfahl vorgetragen."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Gulsparven häckar i busk- och åkermark, skogsmark med gläntor, på hyggen samt på hedar och strandängar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gulsparven häckar i en rad olika biotoper som busk- och åkermark, skogsmark med gläntor, på hyggen men även på hedar och strandängar."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Gulsparven saknas i tätorter, skogar och våtmarker.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is absent from urban areas, forests, and wetlands."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Gulsparven häckar i stora delar av Sverige, bitvis talrikt, men inte i fjällen och allra längst norrut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gulsparven häckar i stora delar av Sverige, bitvis talrikt, förutom i fjällen och allra längst norrut."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "De nordliga häckningsområdena i inlandet överges på hösten, men längs Norrlandskusten och från Mellansverige och söderut finns arten året om.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De nordliga häckningsområdena i inlandet överges på hösten men utmed Norrlandskusten och från Mellansverige och söderut förekommer den året om."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till 533 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 533 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Den svenska häckningspopulationen bedömdes som sårbar 2015 men nedgraderades 2020 till nära hotad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den svenska häckningspopulationen bedömdes 2015 av ArtDatabanken som sårbar (VU), men nedgraderades 2020 till den lägre hotkategorin nära hotad eftersom minskningstakten har avtagit."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Häckningen startar ofta i början av maj, men i södra delarna av utbredningsområdet redan i april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Häckningen startar ofta i början av maj, men i de södra delarna av utbredningsområdet redan i april."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan bygger ett skålformigt bo på eller nära marken, vanligtvis dolt i tuvor, mot en liten vall eller lågt i en buske.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet byggs av honan, är skålformigt och placeras på eller nära marken, vanligtvis dolt i tuvor, mot en liten vall eller lågt i en buske."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Äggen är vitaktiga och vanligtvis mönstrade med ett nätverk av fina mörka linjer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen är vitaktiga och vanligtvis mönstrade med ett nätverk av fina mörka linjer."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Båda föräldrarna matar ungarna i boet, och två eller tre kullar föds upp varje år.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Båda föräldrarna matar ungarna i boet och två eller tre kullar föds upp varje år."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Gulsparven söker föda främst på marken och äter främst frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Födosökningen sker främst på marken och födan består främst av frön."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Spannmål utgör en betydande del av födan under höst och vinter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "särskilt spannmål utgör en betydande del av den föda som konsumeras under höst och vinter"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden söker gulsparven föda i flockar, ibland hundratals fåglar, ofta blandade med andra fältsparvar och finkar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utanför häckningssäsongen födosöker gulsparven i flockar som ibland kan uppgå till hundratals individer, och som ofta även innehåller individer av andra fältsparvar och finkar."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Honor och ungfåglar kan förväxlas med tallsparv men har alltid gul ton, blekare rödbrun övergump och jämnare ovansida.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "may be confused with pine buntings, but they always have a yellow tint to their plumage, a paler rufous rump, and more uniform upperparts than that species."
+        }
+      ],
+      "other": {
+        "scientific": "Emberiza leucocephalos"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Gulsparvens sång är ganska karaktäristisk men liknar tallsparvens.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången är ganska karaktäristisk, men liknar tallsparvens."
+        }
+      ],
+      "other": {
+        "scientific": "Emberiza leucocephalos"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De nordliga häckningsområdena i inlandet överges på hösten men utmed Norrlandskusten och från Mellansverige och söderut förekommer den året om."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december till februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Gulsparven är en långstjärtad fältsparv med gula inslag i fjäderdräkten.",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Den häckar i busk- och åkermark, skogsmark med gläntor, på hyggen samt på hedar och strandängar.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Ostreckad rödbrun övergump och gula inslag i alla dräkter",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Hanen i häckningsdräkt har lysande gult huvud och strupe samt smalt mörkt ögonstreck",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Honan är mer brunfärgad, kraftigare streckad undertill och saknar hanens lysande gula huvud",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "Mörk stjärt med vita kanter som syns tydligt i flykten",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången är en serie korta toner som gradvis blir starkare och avslutas med en eller två mer utdragna toner, ungefär tju, tju, tju, tju, tju, tju, tjuuu.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        },
+        {
+          "text": "Den sjungs från en upphöjd sittplats, till exempel en busktopp eller en stolpe.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Andra läten är ett kontaktläte zit, ett varningsläte see och ett drillande tirrr i flykten.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Gulsparven häckar i stora delar av Sverige, bitvis talrikt, men inte i fjällen och allra längst norrut.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Den är delvis flyttfågel: de nordliga häckningsområdena i inlandet överges på hösten, men längs Norrlandskusten och från Mellansverige och söderut finns den året om.",
+          "factIds": [
+            "s01",
+            "f19"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län och mest i december till februari.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "På svenska rödlistan 2025 är den nära hotad.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Gulsparven söker föda främst på marken och äter främst frön, och under höst och vinter är spannmål en betydande del av födan.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden söker den föda i flockar, ibland hundratals fåglar, ofta blandade med andra fältsparvar och finkar.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Honan bygger ett skålformigt bo på eller nära marken, och båda föräldrarna matar ungarna.",
+          "factIds": [
+            "f23",
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Emberiza leucocephalos",
+          "text": [
+            {
+              "text": "Honor och ungfåglar kan förväxlas med tallsparv, men gulsparven har alltid en gul ton, blekare rödbrun övergump och jämnare ovansida.",
+              "factIds": [
+                "f29"
+              ]
+            },
+            {
+              "text": "Sången är ganska karaktäristisk men liknar tallsparvens.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Gulsparv: så känner du igen hane och hona på dräkten, hur sången och lätena låter, var arten häckar och när den rapporteras mest.",
+      "facts": {
+        "size": {
+          "value": "15,5 till 17 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Yellowhammer is a long-tailed bunting with yellow tones in its plumage.",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "It breeds in scrub and farmland, woodland with clearings, clear-cuts, heaths and shore meadows.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Unstreaked rufous rump and yellow tones in every plumage",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Breeding male has a bright yellow head and throat and a thin dark eye-stripe",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Female is browner, more heavily streaked below and lacks the male's bright yellow head",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "Dark tail with white edges that show clearly in flight",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is a series of short notes that gradually get louder and end in one or two longer drawn-out notes, roughly tju, tju, tju, tju, tju, tju, tjuuu.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        },
+        {
+          "text": "It sings from a raised perch such as a bush top or a post.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Other calls include a contact call zit, an alarm call see and a trilling tirrr in flight.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It breeds across large parts of Sweden, in places in good numbers, but not in the mountains or the far north.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "A partial migrant, it leaves northern inland breeding areas in autumn but stays all year along the Norrland coast and from central Sweden southwards.",
+          "factIds": [
+            "s01",
+            "f19"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties, most in December to February.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "It is Near Threatened on the Swedish Red List 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Yellowhammer feeds mainly on the ground and eats mostly seeds, and in autumn and winter grain makes up a large part of its diet.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it feeds in flocks, sometimes hundreds of birds, often mixed with other buntings and finches.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "The female builds a cup-shaped nest on or near the ground, and both parents feed the chicks.",
+          "factIds": [
+            "f23",
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Yellowhammer: how to recognise male and female by plumage, what the song and calls sound like, where it breeds and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "15.5 to 17 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "b3d0c4af82d0d062"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "b3d0c4af82d0d062"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "gulsparv",
+    "en": "yellowhammer"
+  },
+  "names": {
+    "sv": "Gulsparv",
+    "en": "Yellowhammer",
+    "scientific": "Emberiza citrinella"
+  },
+  "family": {
+    "latin": "Emberizidae",
+    "sv": "Fältsparvar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26205/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Sunny365days",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Emberiza_citrinella_IMG_4214_01.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26205/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Donald Hobern",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Emberiza_citrinella_(19678972820).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26205/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Benoît Van Hecke",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Emberiza_citrinella_-_Yellowhammer_XC531170.mp3",
+    "sha256": "ba0ddf23330bcc5260c9c6236568c9d6959ba2df3ccc8438e7fa73e936bebc59"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Gulsparv",
+      "revision": "59563205"
+    },
+    "en": {
+      "title": "Yellowhammer",
+      "revision": "1372142940"
+    },
+    "de": {
+      "title": "Goldammer",
+      "revision": "271084056"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2491534,
+    "totalReports": 358025,
+    "months": [
+      100,
+      80,
+      70,
+      49,
+      47,
+      55,
+      43,
+      20,
+      32,
+      53,
+      69,
+      88
+    ],
+    "counties": {
+      "SE-K": 63,
+      "SE-W": 66,
+      "SE-X": 64,
+      "SE-I": 71,
+      "SE-N": 43,
+      "SE-Z": 40,
+      "SE-F": 63,
+      "SE-H": 69,
+      "SE-G": 59,
+      "SE-BD": 69,
+      "SE-T": 71,
+      "SE-E": 74,
+      "SE-M": 55,
+      "SE-D": 100,
+      "SE-AB": 78,
+      "SE-C": 95,
+      "SE-S": 72,
+      "SE-AC": 82,
+      "SE-Y": 76,
+      "SE-U": 67,
+      "SE-O": 68
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december till februari.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in December to February.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        47200,
+        26354,
+        42636,
+        45667,
+        51553,
+        32420,
+        19141,
+        9335,
+        15585,
+        25232,
+        20860,
+        21825
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 55567,
+        "SE-AB": 44159,
+        "SE-M": 31461,
+        "SE-H": 29885,
+        "SE-C": 29421,
+        "SE-D": 25311,
+        "SE-E": 16538,
+        "SE-F": 13680,
+        "SE-AC": 13033,
+        "SE-T": 10934,
+        "SE-N": 10563,
+        "SE-BD": 9135,
+        "SE-W": 8953,
+        "SE-U": 8034,
+        "SE-S": 7979,
+        "SE-I": 6928,
+        "SE-G": 6924,
+        "SE-X": 6755,
+        "SE-Y": 6013,
+        "SE-Z": 3093,
+        "SE-K": 2992
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-07"
+}

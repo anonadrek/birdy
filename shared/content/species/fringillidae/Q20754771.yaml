@@ -106,7 +106,7 @@ image_refs:
   width: 1648
   height: 2200
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Acanthis flammea Oulu 20120507
     02.jpg
   commons_filename: Acanthis flammea Oulu 20120507 02.jpg
@@ -115,8 +115,7 @@ image_refs:
   width: 1284
   height: 1800
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Mattivirtala (page does not exist)">Matti Virtala</a>
+  author: Matti Virtala
   source_url: https://commons.wikimedia.org/wiki/File:Acanthis flammea Oulu Finland
     2020-09-25.jpg
   commons_filename: Acanthis flammea Oulu Finland 2020-09-25.jpg
@@ -125,7 +124,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Cephas" title="User:Cephas">Cephas</a>
+  author: Cephas
   source_url: https://commons.wikimedia.org/wiki/File:Acanthis flammea Spinus tristis
     UL 03.jpg
   commons_filename: Acanthis flammea Spinus tristis UL 03.jpg

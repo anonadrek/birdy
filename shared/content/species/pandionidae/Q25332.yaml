@@ -101,19 +101,16 @@ image_refs:
   path: Q25332/hero.webp
   width: 2400
   height: 1600
-  license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/80223459@N05">Yellowstone
-    National Park</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Osprey (Pandion haliaetus) perched
-    along the Gardner River (29132705308).jpg
-  commons_filename: Osprey (Pandion haliaetus) perched along the Gardner River (29132705308).jpg
+  license: CC BY-SA 4.0
+  author: El Golli Mohamed
+  source_url: https://commons.wikimedia.org/wiki/File:Balbuzard pecheur Lac de Tunis.jpg
+  commons_filename: Balbuzard pecheur Lac de Tunis.jpg
 - role: secondary
   path: Q25332/secondary-1.webp
   width: 1800
   height: 1800
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/97469566@N00">Bengt
-    Nyman</a> from Vaxholm, Sweden
+  author: Bengt Nyman
   source_url: https://commons.wikimedia.org/wiki/File:Pandion haliaetus 5950 (16704998543).jpg
   commons_filename: Pandion haliaetus 5950 (16704998543).jpg
 - role: secondary
@@ -121,13 +118,16 @@ image_refs:
   width: 1800
   height: 1382
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/33466410@N00">Jerry
-    Kirkhart</a>
+  author: Jerry Kirkhart
   source_url: https://commons.wikimedia.org/wiki/File:Pandion haliaetus -Belize -two
     on nest-8.jpg
   commons_filename: Pandion haliaetus -Belize -two on nest-8.jpg
 review_status: approved
-review_notes: "Fiskgjuse — hero Osprey längs Gardner River; karakteristisk vit underside + svart ögonband; allmän SE-art över sjöar och kust."
+review_notes: 'Fiskgjuse — hero Osprey längs Gardner River; karakteristisk vit underside + svart ögonband;
+  allmän SE-art över sjöar och kust.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se b54c332e; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T19:46:04.868825+00:00'
 sources:
   wikipedia_sv_revision: '59170397'

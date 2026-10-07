@@ -1,19 +1,17 @@
 package se.birdy.app.notifications.workers
 
-import android.app.PendingIntent
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.util.Log
-import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
+import kotlinx.coroutines.CancellationException
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import se.birdy.app.AndroidAppGraphHolder
-import se.birdy.app.R
+import se.birdy.app.notifications.AndroidNotificationPayloads
+import se.birdy.app.notifications.DailyBirdNotification
 import se.birdy.app.notifications.NotificationChannels
 import se.birdy.app.notifications.NotificationPayloads
 
@@ -23,42 +21,31 @@ class DailyBirdWorker(
 ) : CoroutineWorker(context, params) {
     override suspend fun doWork(): Result {
         return try {
-            val graph = AndroidAppGraphHolder.current ?: return Result.success()
             val today =
                 Clock.System
                     .now()
                     .toLocalDateTime(TimeZone.currentSystemDefault())
                     .date
-            val content = NotificationPayloads.from(graph).dailyBird(today) ?: return Result.success()
+            val graph = AndroidAppGraphHolder.current
+            val content =
+                if (graph != null) {
+                    NotificationPayloads.from(graph).dailyBird(today)
+                } else {
+                    AndroidNotificationPayloads.fromContext(applicationContext) { it.dailyBird(today) }
+                } ?: return Result.success()
 
             NotificationChannels.ensureCreated(applicationContext)
 
-            val intent =
-                Intent(Intent.ACTION_VIEW, Uri.parse(content.deepLink))
-                    .setPackage(applicationContext.packageName)
-            val pi =
-                PendingIntent.getActivity(
-                    applicationContext,
-                    NOTIF_ID_DAILY_BIRD,
-                    intent,
-                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
-                )
-
-            val notif =
-                NotificationCompat
-                    .Builder(applicationContext, NotificationChannels.DAILY_BIRD)
-                    .setSmallIcon(R.drawable.ic_launcher_monochrome)
-                    .setContentTitle(content.title)
-                    .setContentText(content.body)
-                    .setContentIntent(pi)
-                    .setAutoCancel(true)
-                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                    .build()
+            // Release 1.3.0 Task 7d: photo + "Läs om arten" / "Lyssna efter den" (DailyBirdNotification).
+            val picture = content.imagePath?.let { DailyBirdNotification.loadPicture(applicationContext, it) }
+            val notif = DailyBirdNotification.build(applicationContext, content, picture)
 
             if (NotificationManagerCompat.from(applicationContext).areNotificationsEnabled()) {
                 NotificationManagerCompat.from(applicationContext).notify(NOTIF_ID_DAILY_BIRD, notif)
             }
             Result.success()
+        } catch (e: CancellationException) {
+            throw e
         } catch (t: Throwable) {
             Log.w("DailyBirdWorker", "fail", t)
             Result.retry()
@@ -66,6 +53,6 @@ class DailyBirdWorker(
     }
 
     companion object {
-        const val NOTIF_ID_DAILY_BIRD = 1001
+        const val NOTIF_ID_DAILY_BIRD = DailyBirdNotification.NOTIFICATION_ID
     }
 }

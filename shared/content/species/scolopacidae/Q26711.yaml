@@ -90,32 +90,27 @@ migration:
 image_refs:
 - role: hero
   path: Q26711/hero.webp
-  width: 1536
-  height: 2048
-  license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/3086182">Esa
-    Aalto</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Lymnocryptes minimus - Esa Aalto
-    - 139895612.jpeg
-  commons_filename: Lymnocryptes minimus - Esa Aalto - 139895612.jpeg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: Morhaf kamal aljanee
+  source_url: https://commons.wikimedia.org/wiki/File:Jack snipe.png
+  commons_filename: Jack snipe.png
 - role: secondary
   path: Q26711/secondary-1.webp
-  width: 1200
-  height: 1800
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Jack snipe (Lymnocryptes minimus)
-    2022.jpg
-  commons_filename: Jack snipe (Lymnocryptes minimus) 2022.jpg
+  width: 1800
+  height: 1201
+  license: CC BY-SA 4.0
+  author: Kudaibergen Amirekul
+  source_url: https://commons.wikimedia.org/wiki/File:Lymnocryptes minimus - Kudaibergen
+    Amirekul - 268957274.jpeg
+  commons_filename: Lymnocryptes minimus - Kudaibergen Amirekul - 268957274.jpeg
 - role: secondary
   path: Q26711/secondary-2.webp
   width: 1800
   height: 1192
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Burzawa_cl%C3%A9ment_PIM%27S&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Burzawa clément PIM'S (page does not exist)">Burzawa clément
-    PIM'S</a>
+  author: Burzawa clément PIM'S
   source_url: https://commons.wikimedia.org/wiki/File:Lymnocryptes minimus au sol.jpg
   commons_filename: Lymnocryptes minimus au sol.jpg
 review_status: auto

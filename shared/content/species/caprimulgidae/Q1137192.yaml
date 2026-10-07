@@ -81,8 +81,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Bagguh&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Bagguh (page does not exist)">Andre Heuzer</a>
+  author: Andre Heuzer
   source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus ruficollis, kuikens.JPG
   commons_filename: Caprimulgus ruficollis, kuikens.JPG
 - role: secondary
@@ -90,8 +89,7 @@ image_refs:
   width: 1800
   height: 1170
   license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Oliven%C3%A7a&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Olivença (page does not exist)">Olivença</a>
+  author: Olivença
   source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus ruficollis -Portugal-8.jpg
   commons_filename: Caprimulgus ruficollis -Portugal-8.jpg
 review_status: auto

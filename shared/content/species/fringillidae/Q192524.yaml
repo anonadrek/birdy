@@ -85,17 +85,18 @@ image_refs:
 - role: hero
   path: Q192524/hero.webp
   width: 2400
-  height: 1800
-  license: Public domain
-  author: Rob Hille
-  source_url: https://commons.wikimedia.org/wiki/File:Serinus canaria C.jpg
-  commons_filename: Serinus canaria C.jpg
+  height: 1600
+  license: CC BY-SA 2.0
+  author: Juan Emilio
+  source_url: https://commons.wikimedia.org/wiki/File:Canario silvestre, Serinus canaria
+    (8605576985) (2).jpg
+  commons_filename: Canario silvestre, Serinus canaria (8605576985) (2).jpg
 - role: secondary
   path: Q192524/secondary-1.webp
   width: 1800
   height: 1197
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Atlantic canary (Serinus canaria).jpg
   commons_filename: Atlantic canary (Serinus canaria).jpg
 - role: secondary
@@ -103,8 +104,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/149526">steve
-    b</a>
+  author: steve b
   source_url: https://commons.wikimedia.org/wiki/File:Serinus canaria 369321643.jpg
   commons_filename: Serinus canaria 369321643.jpg
 review_status: auto

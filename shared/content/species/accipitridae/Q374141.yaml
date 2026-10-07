@@ -70,26 +70,23 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Tawny eagle (Aquila rapax).jpg
   commons_filename: Tawny eagle (Aquila rapax).jpg
 - role: secondary
   path: Q374141/secondary-1.webp
   width: 1800
-  height: 1350
+  height: 1201
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/7874649@N03">Regina
-    Hart</a> from Industry, United States
-  source_url: https://commons.wikimedia.org/wiki/File:Aquila rapax on a tree, sunset
-    (40634036312).jpg
-  commons_filename: Aquila rapax on a tree, sunset (40634036312).jpg
+  author: Becky Matsubara
+  source_url: https://commons.wikimedia.org/wiki/File:Tawny Eagle (28168218536).jpg
+  commons_filename: Tawny Eagle (28168218536).jpg
 - role: secondary
   path: Q374141/secondary-2.webp
   width: 1366
   height: 1800
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
-    Keats</a> from Johannesburg, South Africa
+  author: Derek Keats
   source_url: https://commons.wikimedia.org/wiki/File:Tawny Eagle, Aquila rapax that
     we believe had caught a red billed buffalo weaver (Kruger National Park) (19989702949).jpg
   commons_filename: Tawny Eagle, Aquila rapax that we believe had caught a red billed

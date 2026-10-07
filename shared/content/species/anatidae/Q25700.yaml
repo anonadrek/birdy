@@ -101,7 +101,7 @@ image_refs:
   width: 2400
   height: 1596
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian teal (Anas crecca).jpg
   commons_filename: Eurasian teal (Anas crecca).jpg
 - role: secondary
@@ -109,8 +109,7 @@ image_refs:
   width: 1800
   height: 1297
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian Teal Anas crecca, male,
     RSPB Titchwell, Norfolk (33587386401).jpg
   commons_filename: Eurasian Teal Anas crecca, male, RSPB Titchwell, Norfolk (33587386401).jpg
@@ -119,8 +118,7 @@ image_refs:
   width: 1800
   height: 1319
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian Teal Anas crecca, RSPB
     Titchwell, Norfolk (33675784246).jpg
   commons_filename: Eurasian Teal Anas crecca, RSPB Titchwell, Norfolk (33675784246).jpg

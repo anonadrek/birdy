@@ -47,6 +47,7 @@ import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BackButton
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalScaffold
+import se.birdy.app.ui.components.journalAccentAnnotated
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.OffwhiteWarm
@@ -79,7 +80,8 @@ fun AudioScanScreen(
                 )
                 Spacer(Modifier.height(8.dp))
                 Text(
-                    text = stringResource(Res.string.audio_scan_marginalia_top),
+                    // The string carries `*accent*` markup; a plain Text showed its asterisks.
+                    text = journalAccentAnnotated(stringResource(Res.string.audio_scan_marginalia_top), AccentCopper),
                     fontFamily = rememberCaveat(),
                     fontStyle = FontStyle.Italic,
                     color = MarginaliaInk,

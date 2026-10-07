@@ -89,31 +89,26 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY 3.0
-  author: <a rel="nofollow" class="external text" href="http://www.hear.org/starr/">Forest
-    &amp; Kim Starr</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Starr 061017-1146 Ardenna pacifica
-    (banding).jpg
-  commons_filename: Starr 061017-1146 Ardenna pacifica (banding).jpg
+  author: Forest & Kim Starr
+  source_url: https://commons.wikimedia.org/wiki/File:Starr 061017-1165 Sporobolus
+    virginicus.jpg
+  commons_filename: Starr 061017-1165 Sporobolus virginicus.jpg
 - role: secondary
   path: Q27074601/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 3.0
-  author: <a rel="nofollow" class="external text" href="http://www.hear.org/starr/">Forest
-    &amp; Kim Starr</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Starr 061017-1147 Ardenna pacifica
-    (banding).jpg
-  commons_filename: Starr 061017-1147 Ardenna pacifica (banding).jpg
+  author: Forest & Kim Starr
+  source_url: https://commons.wikimedia.org/wiki/File:Starr 061017-1162 Ardenna pacifica.jpg
+  commons_filename: Starr 061017-1162 Ardenna pacifica.jpg
 - role: secondary
   path: Q27074601/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 3.0
-  author: <a rel="nofollow" class="external text" href="http://www.hear.org/starr/">Forest
-    &amp; Kim Starr</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Starr 061017-1148 Ardenna pacifica
-    (banding).jpg
-  commons_filename: Starr 061017-1148 Ardenna pacifica (banding).jpg
+  author: Forest & Kim Starr
+  source_url: https://commons.wikimedia.org/wiki/File:Starr 061017-1169 Scaevola taccada.jpg
+  commons_filename: Starr 061017-1169 Scaevola taccada.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T21:22:19.076787+00:00'

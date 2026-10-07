@@ -320,13 +320,29 @@ def _merge_with_existing(
     # Manual additions (entries the user added after reviewing mapping_failures) win
     # over a re-run pipeline output for any name not produced by the pipeline.
     existing_data = yaml.safe_load(existing_yaml.read_text(encoding="utf-8")) or []
+    existing_by_name = {d.get("scientific_name"): d for d in existing_data}
     pipeline_names = {e.scientific_name for e in pipeline_entries}
     manual_extras = [
         SpeciesListEntry(**d)
         for d in existing_data
         if d.get("scientific_name") not in pipeline_names
     ]
-    return pipeline_entries + manual_extras
+    # For a species the pipeline lists again, the checklists decide its own fields, and every
+    # field it does not produce (common_sv, former_sv, iucn_status, abundance, family_sv,
+    # commons_search_name, ...) is carried over from the existing file (release 1.3.0).
+    pipeline_fields = set(SpeciesListEntry.model_fields)
+    carried = [
+        SpeciesListEntry(
+            **entry.model_dump(),
+            **{
+                key: value
+                for key, value in existing_by_name.get(entry.scientific_name, {}).items()
+                if key not in pipeline_fields
+            },
+        )
+        for entry in pipeline_entries
+    ]
+    return carried + manual_extras
 
 
 async def build_species_list(

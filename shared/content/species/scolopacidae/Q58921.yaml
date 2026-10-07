@@ -68,8 +68,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mlkniemi&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Mlkniemi (page does not exist)">Mlkniemi</a>
+  author: Mlkniemi
   source_url: https://commons.wikimedia.org/wiki/File:Calidris temminckii.jpg
   commons_filename: Calidris temminckii.jpg
 - role: secondary
@@ -77,8 +76,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Calidris temminckii (33795213884).jpg
   commons_filename: Calidris temminckii (33795213884).jpg
 - role: secondary
@@ -86,8 +84,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Calidris temminckii (34638250315).jpg
   commons_filename: Calidris temminckii (34638250315).jpg
 review_status: auto

@@ -1,0 +1,9 @@
+---
+import SpeciesRoute from '../../../components/species/SpeciesRoute.astro';
+import { speciesPaths } from '../../../lib/species-routes';
+
+export async function getStaticPaths() {
+  return speciesPaths('sv');
+}
+---
+<SpeciesRoute {...Astro.props} locale="sv" />

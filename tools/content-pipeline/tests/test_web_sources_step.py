@@ -7,7 +7,7 @@ import io
 import math
 import struct
 import wave
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -126,6 +126,9 @@ async def test_sources_write_a_pending_record_with_every_source(tmp_path: Path) 
     assert record["wikipedia"]["de"] == {"title": "Kohlmeise", "revision": "3"}
     assert record["audio"]["file"] == "Q1/voice.mp3"
     assert record["audio"]["trimmed"] is True
+    # The converted file's hash: the sweep removes a voice.mp3 that is not this one.
+    voice = paths.images_out / "Q1" / "voice.mp3"
+    assert record["audio"]["mp3Sha256"] == hashlib.sha256(voice.read_bytes()).hexdigest()
     assert (paths.images_out / "Q1" / "voice.mp3").exists()
     assert (paths.images_out / "Q1" / "hero.webp").exists()
     assert any(p.name.startswith("web-sources-") for p in paths.reports.iterdir())
@@ -313,9 +316,9 @@ async def test_a_new_file_under_the_same_title_is_a_different_recording(tmp_path
     record = load_record(record_path(paths.data_out, "Q1"))
     assert record is not None
     assert record["audio"]["sha256"] == hashlib.sha256(_wav(3)).hexdigest()
-    assert {k: v for k, v in record["audio"].items() if k != "sha256"} == audio_record(
-        RECORDING, "Q1"
-    )
+    assert {
+        k: v for k, v in record["audio"].items() if k not in ("sha256", "mp3Sha256")
+    } == audio_record(RECORDING, "Q1")
     assert audio_id(record["audio"]) != audio_id(old)
     assert "audioKept" not in record["review"]
 
@@ -412,3 +415,76 @@ async def test_a_dry_run_sweeps_nothing(tmp_path: Path) -> None:
     orphan.write_bytes(b"id3")
     await run_sources(paths, SourcesOptions(dry_run=True), clients=_clients(), now=NOW)
     assert orphan.exists()
+
+
+@dataclass
+class AbsentGbif(FakeGbif):
+    """Koboltmes: an exact match, no Artportalen report, not on the red list."""
+
+    async def counts(self, qid: str, taxon_key: int, *, refresh: bool = False) -> Counts:
+        return Counts([0] * 12, {}, 0)
+
+    async def swedish_red_list(
+        self, qid: str, scientific: str, taxon_key: int, *, refresh: bool = False
+    ) -> str | None:
+        return "not_listed"
+
+
+async def test_a_species_absent_from_sweden_gets_no_red_list_row(tmp_path: Path) -> None:
+    """R3 (2026-10-07): Koboltmes's text ended "Arten är inte rödlistad i Svenska rödlistan
+    2025", as if Sweden had assessed it. Not on the list and not regular here means not
+    assessed: no `swedishRedList` (the page hides the row) and no red-list data fact."""
+    paths = make_repo(tmp_path, [("Q1", "Koboltmes", "African Blue Tit")])
+    clients = SourceClients(wiki=FakeWiki(), gbif=AbsentGbif(), audio=FakeAudio())
+    outcomes = await run_sources(paths, SourcesOptions(), clients=clients, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    assert any("inte bedömd" in n for n in outcomes[0].notes)
+    assert not any("okänd kategori" in n for n in outcomes[0].notes)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert "swedishRedList" not in record
+    assert record["data"]["sentences"]["sv"] == [
+        "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025."
+    ]
+
+
+@dataclass
+class TwoRecordings(FakeAudio):
+    async def candidates(
+        self, qid: str, scientific: str, *, refresh: bool = False
+    ) -> list[AudioCandidate]:
+        self.asked.append(qid)
+        other = replace(RECORDING, title="File:Parus major call.ogg", page_url="other")
+        return [RECORDING, other]
+
+
+async def test_a_recording_v4_struck_is_not_chosen_again(tmp_path: Path) -> None:
+    """Fix wave 2026-10-07: V4 remembers every recording it struck or tried in vain, and
+    the sources step chooses the first allowed one that is not among them."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    seeded = new_record("Q1")
+    seeded["review"] = {"audioStruckSources": [RECORDING.page_url]}
+    save_record(record_path(paths.data_out, "Q1"), seeded)
+    await run_sources(paths, SourcesOptions(), clients=_clients(TwoRecordings()), now=NOW)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["sourceUrl"] == "other"
+
+
+async def test_with_a_list_of_struck_recordings_new_uploads_are_considered(
+    tmp_path: Path,
+) -> None:
+    """Re-review 2026-10-07: V4 sets audioStruck when nothing was left, but with the
+    per-recording list a later run must look again, for a recording uploaded since. Only an
+    old record (audioStruck without the list) skips the audio step entirely."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    seeded = new_record("Q1")
+    seeded["review"] = {"audioStruck": True, "audioStruckSources": [RECORDING.page_url]}
+    save_record(record_path(paths.data_out, "Q1"), seeded)
+    audio = TwoRecordings()
+    await run_sources(paths, SourcesOptions(), clients=_clients(audio), now=NOW)
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert audio.asked == ["Q1"]
+    assert record["audio"]["sourceUrl"] == "other"
+    assert record["review"] == {"audioStruckSources": [RECORDING.page_url]}

@@ -22,6 +22,7 @@ from .checked_writer import Checks, Written, write_checked
 from .checker import PROMPT_VERSION as CHECK_PROMPT_VERSION
 from .checker import CheckerFailed, SentenceChecker, check_items
 from .checks import load_banned
+from .defaults import TEXT_MODEL_KEY
 from .facts import STATUS_SV, TOPIC_SV
 from .groups import GroupTable
 from .llm import MODELS, AnthropicJsonClient, JsonModelClient, ModelReply, record_cost
@@ -63,7 +64,7 @@ def render_write_prompt(
 ) -> tuple[str, str]:
     status = status_for_site(record)
     status_line = (
-        f"{STATUS_SV[status['value']]} (fact s01)"
+        f"{STATUS_SV[status['value']]} (fact {status['factIds'][0]})"
         if status
         else "not decided, do not state a status"
     )
@@ -89,7 +90,7 @@ class SpeciesTextWriter:
     checker: SentenceChecker
     prompt_path: Path
     banned: list[str]
-    model_key: str = "opus"
+    model_key: str = TEXT_MODEL_KEY
     effort: str = "high"
 
     async def _ask(self, system: str, messages: list[MessageParam]) -> ModelReply[WebTextV2]:
@@ -139,9 +140,10 @@ def _lookalike_qid_map(record: Record) -> dict[str, str]:
         if fact.get("topic") != "lookalike":
             continue
         other = fact.get("other") or {}
-        qid, scientific = other.get("qid"), other.get("scientific")
-        if qid and scientific:
-            mapping[scientific] = qid
+        qid = other.get("qid")
+        for name in (other.get("scientific"), other.get("written")):
+            if qid and name:
+                mapping[name] = qid
     return mapping
 
 
@@ -234,7 +236,7 @@ def apply_text(record: Record, result: Written[WebTextV2], generated: dict[str, 
 class WriteOptions:
     wave: int | None = None
     qids: tuple[str, ...] = ()
-    model_key: str = "opus"
+    model_key: str = TEXT_MODEL_KEY
     effort: str = "high"
     checker_key: str = "sonnet"
     max_cost: float | None = None

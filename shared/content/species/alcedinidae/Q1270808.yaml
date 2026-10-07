@@ -67,8 +67,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
-    Keats</a> from Johannesburg, South Africa
+  author: Derek Keats
   source_url: https://commons.wikimedia.org/wiki/File:Grey-headed kingfisher, Halcyon
     leucocephala, at Kruger National Park, South Africa (51755302302).jpg
   commons_filename: Grey-headed kingfisher, Halcyon leucocephala, at Kruger National
@@ -87,12 +86,12 @@ image_refs:
   path: Q1270808/secondary-2.webp
   width: 1800
   height: 1200
-  license: CC BY 2.0
-  author: Derek Keats
-  source_url: https://commons.wikimedia.org/wiki/File:Grey-headed kingfisher, Halcyon
-    leucocephala, at Kruger National Park, South Africa - 51756375343.jpg
-  commons_filename: Grey-headed kingfisher, Halcyon leucocephala, at Kruger National
-    Park, South Africa - 51756375343.jpg
+  license: CC BY-SA 4.0
+  author: Giles Laurent
+  source_url: https://commons.wikimedia.org/wiki/File:044 Grey-headed kingfisher at
+    Queen Elizabeth National Park Photo by Giles Laurent.jpg
+  commons_filename: 044 Grey-headed kingfisher at Queen Elizabeth National Park Photo
+    by Giles Laurent.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-06T14:12:07.063356+00:00'

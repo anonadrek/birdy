@@ -5,10 +5,18 @@ on:
     paths:
       - "tools/content-pipeline/**"
       - ".github/workflows/content-pipeline.yml"
+      # The photo checks (tests/test_species_image_refs.py) read these.
+      - "shared/content/species/**"
+      - "shared/content/images/**"
+      - "asset-pack/src/main/assets/images/**"
   pull_request:
     paths:
       - "tools/content-pipeline/**"
       - ".github/workflows/content-pipeline.yml"
+      # The photo checks (tests/test_species_image_refs.py) read these.
+      - "shared/content/species/**"
+      - "shared/content/images/**"
+      - "asset-pack/src/main/assets/images/**"
 
 permissions:
   contents: read

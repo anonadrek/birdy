@@ -1,0 +1,914 @@
+{
+  "qid": "Q26427",
+  "status": "ok",
+  "publish": true,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Den vuxna fiskmåsen har grå rygg och grå ovansida på vingarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I adult dräkt är den grå på ovansida av vingarna och på ryggen."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "De yttre handpennorna är svarta med en stor vit fläck, så kallad slant.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Svarta yttre handpennor med stor vit fläck s.k. \"slant\"."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Den vuxna fågeln har ljust gulgröna ben och gul näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ljust gulgröna ben och gul näbb."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Bröst, undergump, övergump och stjärt är vita hos den vuxna fågeln.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bröst, undergump, övergump och stjärt är vita."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Huvudet är vitt på sommaren och gråstreckat på vintern, då näbben också får ett svart streck framför den gula spetsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Huvudet är vitt på sommaren och gråstreckat på vintern, då också näbben blir grönare inne vid näbbroten, och den får ett svart streck som skiljer av den gula näbbspetsen."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "size",
+      "sv": "Fiskmåsen påminner om gråtruten men är betydligt mindre och slankare, med smalare näbb och rundare huvud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den påminner om gråtruten men är betydligt mindre och slankare."
+        },
+        {
+          "article": "sv",
+          "quote": "Den har också smalare näbb, rundare huvud och en spänstigare, snabbare flykt än gråtruten."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "Fiskmåsen är 40–46 centimeter lång och har ett vingspann på 100–115 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess längd är 40–46 centimeter och vingspannet 100–115 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Könen är lika, men honan är något mindre och har något kortare näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika men kan könsbestämmas genom att honan är något mindre."
+        },
+        {
+          "article": "sv",
+          "quote": "Bland annat skiljer sig näbblängden åt där honans näbb är något kortare."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Den unga fiskmåsen är brungrå och spräcklig på ovansidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den juvenila fiskmåsen har en brungrå spräcklig teckning på ovansidan"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Den unga fågeln har rosa ben och rosa näbb med svart spets.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess ben och näbben är rosa utom näbbspetsen som är svart."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "sex_age",
+      "sv": "Den unga fågeln har ett brett ändband på stjärten som kontrasterar mot den vita övergumpen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett brett ändband på stjärten som kontrasterar mot den vita övergumpen"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "sex_age",
+      "sv": "I första vinterdräkten har fiskmåsen fått grå rygg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fiskmåsen i sin första vinterdräkt har ruggat till en grå rygg."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "sex_age",
+      "sv": "Fiskmåsen får vuxen dräkt under sitt tredje levnadsår.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "denna dräkt ruggas sedan i omgångar tills den anlägger adult dräkt under sitt tredje levnadsår."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Lockropet är ett gnälligt ”gia”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fiskmåsen lockar med välkända gnälliga \"gia\"."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Vid oro hörs ihärdiga ”gli-u gli-u”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vid oro hörs ihärdiga \"gli-u gli-u...\"."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "voice",
+      "sv": "Alla läten är ljusare än gråtrutens motsvarande läten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Alla läten är mer ljusröstade än gråtrutens motsvarande."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Fiskmåsen häckar nära vatten, till exempel vid stora sjöar, mindre skogstjärnar och utefter kusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fiskmåsen häckar i en mängd olika biotoper i närheten av vatten som exempelvis stora sjöar, mindre skogstjärnar och utefter kusten."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Den finns också i stadsmiljö, men inte i samma utsträckning som gråtruten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den återfinns också i stadsmiljö, men inte i samma utsträckning som gråtruten."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Fiskmåsen häckar vid vatten i hela Sverige ända upp i fjällvärlden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fiskmåsen häckar vid vatten i hela Sverige ända upp i fjällvärlden."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "På vintern flyttar merparten av de svenska fiskmåsarna, men några stannar utmed Sveriges södra kuster.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern flyttar merparten av den svenska populationen, men några stannar kvar utmed Sveriges södra kuster."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Det svenska häckande beståndet har uppskattats till mellan 100 000 och 200 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det svenska beståndet av häckande fiskmåsar har uppskattats till mellan 100 000 och 200 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Fåglar från Fennoskandien övervintrar i ett område mellan Danmark och Storbritannien.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Vögel aus Fennoskandien überwintern in einem Gebiet zwischen Dänemark und Großbritannien"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Fiskmåsen häckar både i större kolonier och som enstaka par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar både i större kolonier och som enstaka par."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Ensamhäckande par kan placera boet på hustak, i träd eller på ett större stenblock på en åker.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ensamhäckande par kan placera sitt bo lite varstans, på hustak, i träd eller på ett större stenblock på en åker."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Den lägger i snitt tre ägg som båda föräldrarna ruvar i 23 till 28 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger i snitt tre ägg som paret ruvar i mellan 23 och 28 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Den lägger vanligtvis sin enda kull i början till mitten av maj.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vanligtvis lägger den sin enda kull i början till mitten av maj."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Fiskmåsen äter bland annat fisk, fiskavfall, musslor, daggmask, hushållsavfall, insekter, bär och utsäde.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den tar fisk och fiskavfall, musslor, daggmask, hushållsavfall, insekter som flygmyror, bär och utsäde."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "I odlingslandskapet söker den insekter och larver på plöjda åkrar och betesmarker.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "wo sie beim Pflügen auf Äckern oder auf Viehweiden schreitend nach Insekten und deren Larven sucht."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Kortnäbbad mås är mycket lik fiskmåsen men något mindre, med kortare näbb och mörkare grå rygg och vingovansida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kortnäbbad mås är mycket lik fiskmåsen, men är något mindre med som namnet avslöjar relativt kort näbb."
+        },
+        {
+          "article": "sv",
+          "quote": "Jämfört med nominatformen av fiskmås har den också mörkare grått på rygg och vingovansida."
+        }
+      ],
+      "other": {
+        "scientific": "Larus brachyrhynchus"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern flyttar merparten av den svenska populationen, men några stannar kvar utmed Sveriges södra kuster."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Fiskmåsen är en mås som häckar nära vatten, till exempel vid stora sjöar, mindre skogstjärnar och utefter kusten.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Den finns också i stadsmiljö.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Påminner om gråtruten men är betydligt mindre och slankare, med smalare näbb och rundare huvud",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Vuxen har grå rygg och vingovansida, svarta yttre handpennor med en stor vit fläck",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Gul näbb och ljust gulgröna ben, på vintern gråstreckat huvud och svart streck på näbben",
+          "factIds": [
+            "f03",
+            "f05"
+          ]
+        },
+        {
+          "text": "Ungfågeln är brungrå och spräcklig ovanpå, med rosa ben och rosa näbb med svart spets",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Lockropet är ett gnälligt ”gia”.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Vid oro hörs ihärdiga ”gli-u gli-u”.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "Alla läten är ljusare än gråtrutens motsvarande läten.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Fiskmåsen häckar vid vatten i hela Sverige, ända upp i fjällvärlden, och rapporteras från alla 21 län.",
+          "factIds": [
+            "f20",
+            "d02"
+          ]
+        },
+        {
+          "text": "Den är delvis flyttfågel: merparten flyttar på vintern, men några stannar utmed Sveriges södra kuster.",
+          "factIds": [
+            "s01",
+            "f21"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Det svenska häckande beståndet har uppskattats till mellan 100 000 och 200 000 par.",
+          "factIds": [
+            "f22"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Fiskmåsen äter bland annat fisk, fiskavfall, musslor, daggmask, hushållsavfall, insekter, bär och utsäde.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "I odlingslandskapet söker den insekter och larver på plöjda åkrar och betesmarker.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Den häckar både i större kolonier och som enstaka par.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Ensamma par kan lägga boet på hustak, i träd eller på ett större stenblock på en åker.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Båda föräldrarna ruvar de i snitt tre äggen i 23 till 28 dygn.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Larus brachyrhynchus",
+          "text": [
+            {
+              "text": "Kortnäbbad mås är mycket lik fiskmåsen men något mindre, med kortare näbb och mörkare grå rygg och vingovansida.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Fiskmås: lär dig känna igen den grå och vita måsen på näbb, ben och vingspetsar, hör hur lätena låter och se när den syns under året.",
+      "facts": {
+        "size": {
+          "value": "40 till 46 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Common Gull is a gull that breeds near water, for example by large lakes, small forest tarns and along the coast.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "It also occurs in towns and cities.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Like a Herring Gull but clearly smaller and slimmer, with thinner bill and rounder head",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Adults have a grey back and upperwing, black outer primaries with a large white spot",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Yellow bill, pale yellow-green legs, in winter a grey-streaked head and black bill mark",
+          "factIds": [
+            "f03",
+            "f05"
+          ]
+        },
+        {
+          "text": "Young birds are mottled brownish grey above, with pink legs and a black-tipped pink bill",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is a whining “gia”.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "When alarmed it gives persistent “gli-u gli-u” calls.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "All its calls are higher-pitched than the corresponding calls of the Herring Gull.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Common Gull breeds by water throughout Sweden, right up into the mountains, and is reported from all 21 counties.",
+          "factIds": [
+            "f20",
+            "d02"
+          ]
+        },
+        {
+          "text": "It is a partial migrant: most Swedish birds leave in winter, but some stay along the southern coasts of Sweden.",
+          "factIds": [
+            "s01",
+            "f21"
+          ]
+        },
+        {
+          "text": "It is reported all year round.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "The Swedish breeding population has been estimated at between 100 000 and 200 000 pairs.",
+          "factIds": [
+            "f22"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats fish, fish waste, mussels, earthworms, household waste, insects, berries and seed grain, among other things.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "In farmland it searches ploughed fields and pastures for insects and larvae.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "It breeds both in larger colonies and as single pairs.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Single pairs may nest on rooftops, in trees or on a large boulder in a field.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Both parents incubate the average clutch of three eggs for 23 to 28 days.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Larus brachyrhynchus",
+          "text": [
+            {
+              "text": "The Short-billed Gull is very similar but slightly smaller, with a shorter bill and a darker grey back and upperwing.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Common Gull: learn to recognise this grey and white gull by its bill, legs and wingtips, hear its calls and find out when it is seen.",
+      "facts": {
+        "size": {
+          "value": "40 to 46 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "56e2c81b5483cf55"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "56e2c81b5483cf55"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "fiskmas",
+    "en": "common-gull"
+  },
+  "names": {
+    "sv": "Fiskmås",
+    "en": "Common Gull",
+    "scientific": "Larus canus"
+  },
+  "family": {
+    "latin": "Laridae",
+    "sv": "Måsfåglar"
+  },
+  "group": "gulls_terns",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26427/hero.webp",
+      "width": 1600,
+      "height": 1210,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Larus_canus_Oulu_20150712_03.JPG"
+    },
+    {
+      "role": "extra",
+      "file": "Q26427/extra.webp",
+      "width": 1200,
+      "height": 901,
+      "author": "James T M Towill",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_Gull_(Larus_canus)_-_geograph.org.uk_-_3043508.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26427/voice.mp3",
+    "durationSec": 6,
+    "trimmed": false,
+    "author": "Ryan Hodnett",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_Gull_(Fiskem%C3%A5ke)_(Larus_canus)_-_Troms%C3%B8,_Norway_2023-07-07_(08).mp3",
+    "sha256": "a7217ba10282f2eb0806eff2ad16931d8b92b0bb5939aed70f26e527bc4af8c3"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Fiskmås",
+      "revision": "59701347"
+    },
+    "en": {
+      "title": "Common gull",
+      "revision": "1342205357"
+    },
+    "de": {
+      "title": "Sturmmöwe",
+      "revision": "261458520"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 7982160,
+    "totalReports": 424208,
+    "months": [
+      51,
+      38,
+      54,
+      80,
+      68,
+      90,
+      100,
+      56,
+      39,
+      46,
+      53,
+      46
+    ],
+    "counties": {
+      "SE-K": 57,
+      "SE-W": 70,
+      "SE-X": 95,
+      "SE-I": 59,
+      "SE-N": 55,
+      "SE-Z": 100,
+      "SE-F": 83,
+      "SE-H": 46,
+      "SE-G": 89,
+      "SE-BD": 62,
+      "SE-T": 54,
+      "SE-E": 62,
+      "SE-M": 64,
+      "SE-D": 66,
+      "SE-AB": 70,
+      "SE-C": 60,
+      "SE-S": 81,
+      "SE-AC": 65,
+      "SE-Y": 68,
+      "SE-U": 52,
+      "SE-O": 72
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        24560,
+        13014,
+        33988,
+        77632,
+        76337,
+        54079,
+        46378,
+        27199,
+        19735,
+        22715,
+        16544,
+        11827
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 65989,
+        "SE-AB": 44739,
+        "SE-M": 41084,
+        "SE-H": 22643,
+        "SE-C": 21003,
+        "SE-F": 20280,
+        "SE-D": 19048,
+        "SE-E": 15792,
+        "SE-N": 15364,
+        "SE-G": 11773,
+        "SE-AC": 11625,
+        "SE-X": 11419,
+        "SE-W": 10797,
+        "SE-S": 10204,
+        "SE-T": 9388,
+        "SE-BD": 9296,
+        "SE-Z": 8731,
+        "SE-U": 7012,
+        "SE-I": 6593,
+        "SE-Y": 6062,
+        "SE-K": 3080
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-07"
+}

@@ -76,7 +76,7 @@ image_refs:
   width: 2048
   height: 1536
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1676835">anasacuta</a>
+  author: anasacuta
   source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus inornatus 128478334.jpg
   commons_filename: Caprimulgus inornatus 128478334.jpg
 - role: secondary
@@ -84,8 +84,7 @@ image_refs:
   width: 1800
   height: 1069
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1476120">Jan
-    Ebr &amp; Ivana Ebrová</a>
+  author: Jan Ebr & Ivana Ebrová
   source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus inornatus - Jan
     Ebr and Ivana Ebrová - 177267110.jpeg
   commons_filename: Caprimulgus inornatus - Jan Ebr and Ivana Ebrová - 177267110.jpeg

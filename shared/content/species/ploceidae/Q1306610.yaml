@@ -6,8 +6,9 @@ taxonomy:
   genus: Ploceus
   ioc_order: Passeriformes
 names:
-  sv: Streckig vävare
+  sv: Streckad vävare
   en: Streaked Weaver
+  former_sv: Streckig vävare
 abundance: ovanlig
 iucn_status: LC
 season:
@@ -71,8 +72,7 @@ image_refs:
   width: 1600
   height: 2400
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
-    Thumboor</a> from Thrissur, India
+  author: Rison Thumboor
   source_url: https://commons.wikimedia.org/wiki/File:Streaked weaver (Ploceus manyar)male
     - കായലാറ്റ. (31966699943).jpg
   commons_filename: Streaked weaver (Ploceus manyar)male - കായലാറ്റ. (31966699943).jpg
@@ -81,8 +81,7 @@ image_refs:
   width: 1303
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Shino_jacob_koottanad" title="User:Shino
-    jacob koottanad">Shino jacob koottanad</a>
+  author: Shino jacob koottanad
   source_url: https://commons.wikimedia.org/wiki/File:Streaked weaver (Ploceus manyar)
     ( image).jpg
   commons_filename: Streaked weaver (Ploceus manyar) ( image).jpg
@@ -91,8 +90,7 @@ image_refs:
   width: 1167
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Shino_jacob_koottanad" title="User:Shino
-    jacob koottanad">Shino jacob koottanad</a>
+  author: Shino jacob koottanad
   source_url: https://commons.wikimedia.org/wiki/File:Streaked weaver (Ploceus manyar)
     flight.jpg
   commons_filename: Streaked weaver (Ploceus manyar) flight.jpg

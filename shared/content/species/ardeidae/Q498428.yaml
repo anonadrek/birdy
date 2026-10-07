@@ -85,19 +85,19 @@ migration:
 image_refs:
 - role: hero
   path: Q498428/hero.webp
-  width: 1787
-  height: 2400
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Vengolis" title="User:Vengolis">Vengolis</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Ardeola grayii 04726-Enhanced-NR-2.jpg
-  commons_filename: Ardeola grayii 04726-Enhanced-NR-2.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: Charles J. Sharp
+  source_url: https://commons.wikimedia.org/wiki/File:Indian pond heron (Ardeola grayii)
+    India.jpg
+  commons_filename: Indian pond heron (Ardeola grayii) India.jpg
 - role: secondary
   path: Q498428/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/27717684@N00">Prashanth
-    dotcompals</a> from Tattamangalam, India
+  author: Prashanth dotcompals
   source_url: https://commons.wikimedia.org/wiki/File:Indian Pond Heron Ardeola grayii
     (51326779697).jpg
   commons_filename: Indian Pond Heron Ardeola grayii (51326779697).jpg
@@ -106,7 +106,7 @@ image_refs:
   width: 1350
   height: 1800
   license: CC BY 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  author: Afsarnayakkan
   source_url: https://commons.wikimedia.org/wiki/File:Indian pond heron 4 breeding
     plumage (Ardeola grayii) കുളക്കൊക്ക് .jpg
   commons_filename: Indian pond heron 4 breeding plumage (Ardeola grayii) കുളക്കൊക്ക്

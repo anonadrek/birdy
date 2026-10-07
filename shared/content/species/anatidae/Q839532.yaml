@@ -89,7 +89,7 @@ image_refs:
   width: 2048
   height: 1536
   license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Magalh%C3%A3es" title="User:Magalhães">Magalhães</a>
+  author: Magalhães
   source_url: https://commons.wikimedia.org/wiki/File:Nettapus coromandelianus.jpg
   commons_filename: Nettapus coromandelianus.jpg
 - role: secondary
@@ -97,8 +97,7 @@ image_refs:
   width: 1800
   height: 1800
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/638416">renjus
-    box</a>
+  author: renjus box
   source_url: https://commons.wikimedia.org/wiki/File:Nettapus coromandelianus 339126403.jpg
   commons_filename: Nettapus coromandelianus 339126403.jpg
 - role: secondary
@@ -106,10 +105,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 3.0
-  author: '<div class="fn value">
-
-    <a rel="nofollow" class="external text" href="https://500px.com/mkopta">Martin
-    Kopta</a></div>'
+  author: Martin Kopta
   source_url: https://commons.wikimedia.org/wiki/File:Nettapus coromandelianus, Prague
     Zoo (208976825).jpg
   commons_filename: Nettapus coromandelianus, Prague Zoo (208976825).jpg

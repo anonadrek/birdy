@@ -74,7 +74,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/185252831@N05">HLI-Photography</a>
+  author: HLI-Photography
   source_url: https://commons.wikimedia.org/wiki/File:Goldfasan (Chrysolophus pictus)
     (53669151110).jpg
   commons_filename: Goldfasan (Chrysolophus pictus) (53669151110).jpg
@@ -83,19 +83,18 @@ image_refs:
   width: 1800
   height: 1800
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/53270201@N04">Shawnna</a>
-    from UK
+  author: Shawnna
   source_url: https://commons.wikimedia.org/wiki/File:Chrysolophus pictus -walking-8.jpg
   commons_filename: Chrysolophus pictus -walking-8.jpg
 - role: secondary
   path: Q335113/secondary-2.webp
   width: 1800
   height: 1200
-  license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Llez" title="User:Llez">H. Zell</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Centrochelys sulcata - Maroparque
-    01.jpg
-  commons_filename: Centrochelys sulcata - Maroparque 01.jpg
+  license: CC BY 3.0
+  author: Jmhullot
+  source_url: https://commons.wikimedia.org/wiki/File:Golden Pheasant, Tangjiahe Nature
+    Reserve.jpg
+  commons_filename: Golden Pheasant, Tangjiahe Nature Reserve.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T21:06:16.456469+00:00'

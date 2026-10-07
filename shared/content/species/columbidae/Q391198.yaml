@@ -100,7 +100,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Mostafameraji" title="User:Mostafameraji">Mostafameraji</a>
+  author: Mostafameraji
   source_url: https://commons.wikimedia.org/wiki/File:Spilopelia senegalensis In Iran-Qom-2011-Photographs
     by mostafa meraji 04.jpg
   commons_filename: Spilopelia senegalensis In Iran-Qom-2011-Photographs by mostafa
@@ -110,7 +110,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Mostafameraji" title="User:Mostafameraji">Mostafameraji</a>
+  author: Mostafameraji
   source_url: https://commons.wikimedia.org/wiki/File:Spilopelia senegalensis In Iran-Qom-2011-Photographs
     by mostafa meraji 06.jpg
   commons_filename: Spilopelia senegalensis In Iran-Qom-2011-Photographs by mostafa
@@ -120,8 +120,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Spilopelia senegalensis (14528880666).jpg
   commons_filename: Spilopelia senegalensis (14528880666).jpg
 review_status: auto

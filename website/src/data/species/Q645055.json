@@ -1,0 +1,199 @@
+{
+  "qid": "Q645055",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "storre-korsnabb",
+    "en": "parrot-crossbill"
+  },
+  "names": {
+    "sv": "Större korsnäbb",
+    "en": "Parrot Crossbill",
+    "scientific": "Loxia pytyopsittacus"
+  },
+  "family": {
+    "latin": "Fringillidae",
+    "sv": "Finkar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q645055/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "MPF",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Loxia_pytyopsittacus,_Budby_Common_1.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q645055/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "MPF",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Loxia_pytyopsittacus,_Budby_Common_3.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Större korsnäbb",
+      "revision": "56596635"
+    },
+    "en": {
+      "title": "Parrot crossbill",
+      "revision": "1365995003"
+    },
+    "de": {
+      "title": "Kiefernkreuzschnabel",
+      "revision": "262846804"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2494154,
+    "totalReports": 38812,
+    "months": [
+      38,
+      61,
+      43,
+      25,
+      14,
+      26,
+      31,
+      19,
+      45,
+      100,
+      66,
+      33
+    ],
+    "counties": {
+      "SE-K": 38,
+      "SE-W": 80,
+      "SE-X": 90,
+      "SE-I": 88,
+      "SE-N": 25,
+      "SE-Z": 73,
+      "SE-F": 43,
+      "SE-H": 44,
+      "SE-G": 44,
+      "SE-BD": 62,
+      "SE-T": 43,
+      "SE-E": 31,
+      "SE-M": 22,
+      "SE-D": 40,
+      "SE-AB": 44,
+      "SE-C": 45,
+      "SE-S": 76,
+      "SE-AC": 100,
+      "SE-Y": 35,
+      "SE-U": 55,
+      "SE-O": 31
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i oktober.",
+        "Andelen av alla fågelrapporter är högst i Västerbotten, Gävleborg och Gotland."
+      ],
+      "en": [
+        "Reported most in October.",
+        "Its share of all bird reports is highest in Västerbotten, Gävleborg and Gotland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        2919,
+        3282,
+        4228,
+        3750,
+        2415,
+        2471,
+        2294,
+        1478,
+        3604,
+        7752,
+        3250,
+        1317
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 4294,
+        "SE-AB": 4212,
+        "SE-H": 3175,
+        "SE-AC": 2668,
+        "SE-C": 2331,
+        "SE-M": 2101,
+        "SE-W": 1840,
+        "SE-D": 1707,
+        "SE-X": 1603,
+        "SE-F": 1579,
+        "SE-I": 1444,
+        "SE-S": 1412,
+        "SE-BD": 1379,
+        "SE-E": 1154,
+        "SE-T": 1127,
+        "SE-U": 1118,
+        "SE-N": 1033,
+        "SE-Z": 945,
+        "SE-G": 875,
+        "SE-Y": 466,
+        "SE-K": 309
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

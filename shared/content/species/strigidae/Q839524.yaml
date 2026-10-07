@@ -91,7 +91,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Rohitjahnavi" title="User:Rohitjahnavi">Rohitjahnavi</a>
+  author: Rohitjahnavi
   source_url: https://commons.wikimedia.org/wiki/File:Spotted Owlet (Athene brama)
     Greater Rann of Kutch, Gujarat, India DSCN7789 03.jpg
   commons_filename: Spotted Owlet (Athene brama) Greater Rann of Kutch, Gujarat, India
@@ -101,8 +101,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/39136124@N00">Paul
-    Asman and Jill Lenoble</a>
+  author: Paul Asman and Jill Lenoble
   source_url: https://commons.wikimedia.org/wiki/File:Spotted owlet Athene brama (2155234922).jpg
   commons_filename: Spotted owlet Athene brama (2155234922).jpg
 - role: secondary
@@ -110,8 +109,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
-    Kansara</a>
+  author: Parth Kansara
   source_url: https://commons.wikimedia.org/wiki/File:Athene brama 157956914.jpg
   commons_filename: Athene brama 157956914.jpg
 review_status: auto

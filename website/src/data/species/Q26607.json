@@ -1,0 +1,211 @@
+{
+  "qid": "Q26607",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "gra-flugsnappare",
+    "en": "spotted-flycatcher"
+  },
+  "names": {
+    "sv": "Grå flugsnappare",
+    "en": "Spotted Flycatcher",
+    "scientific": "Muscicapa striata"
+  },
+  "family": {
+    "latin": "Muscicapidae",
+    "sv": "Flugsnappare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26607/hero.webp",
+      "width": 1600,
+      "height": 1304,
+      "author": "gailhampshire",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spotted_Flycatcher_Muscicapa_striata,_Jimena,_Andalucia,_Spain_(1).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26607/extra.webp",
+      "width": 1200,
+      "height": 710,
+      "author": "Blondinrikard Fröberg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spotted_flycatcher,_Muscicapa_striata,_Grå_flugsnappare.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26607/voice.mp3",
+    "durationSec": 11,
+    "trimmed": false,
+    "author": "Alexander Kürthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Muscicapa_striata_-_Spotted_Flycatcher_XC342793.mp3",
+    "sha256": "69ad1225110358bee3ac35e397f8335df829ad9566c557301c2fc551331e2d14"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Grå flugsnappare",
+      "revision": "59562425"
+    },
+    "en": {
+      "title": "Spotted flycatcher",
+      "revision": "1374217120"
+    },
+    "de": {
+      "title": "Grauschnäpper",
+      "revision": "262010459"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2492576,
+    "totalReports": 99212,
+    "months": [
+      0,
+      0,
+      1,
+      1,
+      77,
+      81,
+      84,
+      100,
+      45,
+      3,
+      1,
+      0
+    ],
+    "counties": {
+      "SE-K": 58,
+      "SE-W": 65,
+      "SE-X": 69,
+      "SE-I": 88,
+      "SE-N": 26,
+      "SE-Z": 100,
+      "SE-F": 45,
+      "SE-H": 92,
+      "SE-G": 32,
+      "SE-BD": 83,
+      "SE-T": 65,
+      "SE-E": 39,
+      "SE-M": 38,
+      "SE-D": 48,
+      "SE-AB": 52,
+      "SE-C": 39,
+      "SE-S": 64,
+      "SE-AC": 100,
+      "SE-Y": 81,
+      "SE-U": 40,
+      "SE-O": 43
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juni till augusti.",
+        "Rapporteras sällan i oktober till april.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in June to August.",
+        "Rarely reported in October to April.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        3,
+        213,
+        34404,
+        19586,
+        15573,
+        19502,
+        9137,
+        688,
+        4,
+        0
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-H": 14105,
+        "SE-O": 12522,
+        "SE-AB": 10489,
+        "SE-M": 7696,
+        "SE-AC": 5628,
+        "SE-D": 4282,
+        "SE-C": 4269,
+        "SE-BD": 3915,
+        "SE-T": 3573,
+        "SE-F": 3450,
+        "SE-W": 3127,
+        "SE-E": 3107,
+        "SE-I": 3052,
+        "SE-Z": 2725,
+        "SE-X": 2593,
+        "SE-S": 2535,
+        "SE-Y": 2290,
+        "SE-N": 2287,
+        "SE-U": 1693,
+        "SE-G": 1350,
+        "SE-K": 985
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

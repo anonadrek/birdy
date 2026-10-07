@@ -3,9 +3,11 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import sharp from 'sharp';
-import { readFileSync, readdirSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname, resolve } from 'node:path';
+import { basename, dirname, resolve } from 'node:path';
+import { SHARE_QUALITY, SHARE_SIZE, assetsDir, builtSpeciesMedia, isPreview, paperColour, speciesDir } from './src/lib/species-source.mjs';
+import { readSpeciesSitemapInfo } from './src/lib/species-sitemap.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 
@@ -92,6 +94,106 @@ for (const locale of ['en', 'sv']) {
   }
 }
 
+// Species pages: lastmod from each page's data, small groups and unpublished preview pages left out (spec §12 and §14).
+const speciesInfo = readSpeciesSitemapInfo(root);
+
+// The photos and recordings of the species that get a page in this build, read once per build on first
+// use (after the content sync, so a broken record gets zod's message first). Spec 2026-09-25 §9.1 and
+// §9.9: a photo or recording is only served once a built page uses it.
+/** @type {ReturnType<typeof builtSpeciesMedia> | undefined} */
+let media;
+const speciesMedia = () => (media ??= builtSpeciesMedia(root));
+
+// Recordings live beside the photos (src/assets/species/<QID>/voice.mp3) and are copied into dist only
+// for species that get a page in this build, under the content-hashed name the page links to (the same
+// href the virtual module gives the pages), so an unpublished recording is never served (deviation 9).
+/** @type {import('astro').AstroIntegration} */
+const speciesAudio = {
+  name: 'birdy-species-audio',
+  hooks: {
+    'astro:build:done': ({ dir, logger }) => {
+      const { audio } = speciesMedia();
+      const out = fileURLToPath(new URL('audio/species/', dir));
+      if (audio.length) mkdirSync(out, { recursive: true });
+      for (const recording of audio) {
+        copyFileSync(resolve(root, assetsDir(), recording.file), resolve(out, basename(recording.href)));
+      }
+      logger.info(`${audio.length} inspelningar kopierade till audio/species/`);
+    },
+  },
+};
+
+// The share images (og:image) of the species pages: the whole hero photo letterboxed on the paper colour,
+// never cropped (sharePublicPath in species-source.mjs), drawn into dist only for species that get a page,
+// under the hashed name the page links to. Astro's getImage can't do this (its `fit: 'contain'` pads with
+// black, `background` only flattens transparency), so sharp draws them here. A drawn image is kept in
+// node_modules/.cache/birdy-share/ under the same hashed name, so a build redraws only new or changed photos.
+/** @type {import('astro').AstroIntegration} */
+const speciesShare = {
+  name: 'birdy-species-share',
+  hooks: {
+    // One line in every build log (Vercel's too): which species data the build reads, and VERCEL_ENV, which the
+    // Production guard against preview pages (isPreview) depends on. "(saknas)" on Vercel means the project's
+    // "Automatically expose System Environment Variables" is off and the guard can't see Production.
+    'astro:build:start': ({ logger }) => {
+      logger.info(`artdata ${speciesDir()}, förhandsbygge ${isPreview() ? 'på' : 'av'}, VERCEL_ENV=${process.env.VERCEL_ENV ?? '(saknas)'}`);
+    },
+    'astro:build:done': async ({ dir, logger }) => {
+      const { share } = speciesMedia();
+      const out = fileURLToPath(new URL('og/species/', dir));
+      const cache = resolve(root, 'node_modules/.cache/birdy-share');
+      if (share.length) mkdirSync(out, { recursive: true });
+      mkdirSync(cache, { recursive: true });
+      const background = paperColour(root);
+      let drawn = 0;
+      for (const image of share) {
+        const name = basename(image.href);
+        const cached = resolve(cache, name);
+        if (!existsSync(cached)) {
+          await sharp(resolve(root, assetsDir(), image.file))
+            .rotate()
+            .resize({ ...SHARE_SIZE, fit: 'contain', background })
+            .flatten({ background })
+            .jpeg({ quality: SHARE_QUALITY, mozjpeg: true })
+            .toFile(cached);
+          drawn += 1;
+        }
+        copyFileSync(cached, resolve(out, name));
+      }
+      logger.info(`${share.length} delningsbilder i og/species/ (${drawn} nyritade)`);
+    },
+  },
+};
+
+// The photos and recording links of the species that get a page, as one virtual module that
+// src/lib/species.ts imports. An import.meta.glob over src/assets/species/ would not do: Vite emits every
+// globbed image into dist/_astro/ as soon as it loads it, used or not (lazy globs too), so every
+// unpublished species' photo would go online, and a normal build would also carry every test photo under
+// tests/fixtures/ (verified with Astro 7.3.5). SPECIES_FIXTURES=1 reads the test photos instead
+// (assetsDir()), SPECIES_PREVIEW=1 adds verified unpublished species, the same rule as the pages.
+const SPECIES_MEDIA = 'virtual:birdy-species-media';
+/** @type {import('vite').Plugin} */
+const speciesMediaModule = {
+  name: 'birdy-species-media',
+  resolveId(id) {
+    return id === SPECIES_MEDIA ? `\0${SPECIES_MEDIA}` : undefined;
+  },
+  load(id) {
+    if (id !== `\0${SPECIES_MEDIA}`) return undefined;
+    const { images, audio, share } = speciesMedia();
+    // Root-relative ids ("/tests/fixtures/species-assets/Q25485/hero.webp"), which Vite resolves on every OS.
+    const imports = images.map((file, n) => `import img${n} from ${JSON.stringify(`/${assetsDir()}/${file}`)};`);
+    const entries = images.map((file, n) => `[${JSON.stringify(file)}, img${n}]`);
+    return [
+      ...imports,
+      `export const images = new Map([${entries.join(', ')}]);`,
+      `export const audio = new Map(${JSON.stringify(audio.map((a) => [a.qid, a.href]))});`,
+      `export const share = new Map(${JSON.stringify(share.map((a) => [a.qid, a.href]))});`,
+      '',
+    ].join('\n');
+  },
+};
+
 export default defineConfig({
   site: 'https://birdy.community',
   trailingSlash: 'ignore',
@@ -106,13 +208,15 @@ export default defineConfig({
     },
   },
   integrations: [sitemap({
+    filter: (page) => !speciesInfo.noindex.has(new URL(page).pathname),
     serialize(item) {
-      const d = noteDates.get(new URL(item.url).pathname);
-      if (d) item.lastmod = d;
+      const path = new URL(item.url).pathname;
+      const d = noteDates.get(path) ?? speciesInfo.lastmod.get(path);
+      if (d) item.lastmod = new Date(d).toISOString();
       return item;
     },
-  })],
+  }), speciesAudio, speciesShare],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(), speciesMediaModule],
   },
 });

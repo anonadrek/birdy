@@ -94,7 +94,7 @@ image_refs:
   width: 2400
   height: 1596
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Curruca melanocephala leucogastra.jpg
   commons_filename: Curruca melanocephala leucogastra.jpg
 - role: secondary
@@ -102,8 +102,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
-    Prego</a> from Moura, Portugal
+  author: José Prego
   source_url: https://commons.wikimedia.org/wiki/File:Toutinegra-de-cabeça-preta (Curruca
     melanocephala) (51866958399).jpg
   commons_filename: Toutinegra-de-cabeça-preta (Curruca melanocephala) (51866958399).jpg
