@@ -109,6 +109,23 @@ class SpeciesContentCorrectionsTest {
         assertTrue("medlemi" !in text && "burmannusmajan" !in text, text)
     }
 
+    // QA 2026-10-07: the English Great Tit text gave it "a white stripe running down its back". It
+    // has none; its stripe is black and runs down the yellow breast and belly.
+    @Test
+    fun `the great tit's stripe is black and runs down its breast`() {
+        val text = species("paridae/Q25485.yaml").description.getValue("en").orEmpty()
+        assertTrue("stripe running down its back" !in text, text)
+        assertTrue("yellow underparts and a bold black stripe running down the breast and belly" in text, text)
+    }
+
+    // QA 2026-10-07: "en karakteristisk långa, spetsig näbb" mixed the adjectives' forms.
+    @Test
+    fun `råkan's swedish text agrees its adjectives`() {
+        val text = species("corvidae/Q25386.yaml").description.getValue("sv").orEmpty()
+        assertTrue("med en karakteristisk lång, spetsig näbb" in text, text)
+        assertTrue("karakteristisk långa" !in text, text)
+    }
+
     private data class Renamed(
         val path: String,
         val official: String,
