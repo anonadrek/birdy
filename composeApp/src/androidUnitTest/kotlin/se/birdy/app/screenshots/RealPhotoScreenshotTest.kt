@@ -165,7 +165,17 @@ class RealPhotoScreenshotTest {
                                 speciesId = "Q27236",
                                 name = "Sävsångare",
                                 scientificName = "Acrocephalus schoenobaenus",
-                                heroImagePath = "Q27236/hero.webp",
+                                heroImage =
+                                    SpeciesImage(
+                                        role = "hero",
+                                        path = "Q27236/hero.webp",
+                                        width = 2400,
+                                        height = 1600,
+                                        license = "CC BY 4.0",
+                                        author = "Valuer Hardy",
+                                        sourceUrl = "https://commons.wikimedia.org/wiki/File:Schilfrohrsänger.jpg",
+                                        commonsFileName = "Schilfrohrsänger (Acrocephalus schoenobaenus) im Portrait.jpg",
+                                    ),
                                 caughtToday = false,
                                 daysCaught = 0,
                             ),

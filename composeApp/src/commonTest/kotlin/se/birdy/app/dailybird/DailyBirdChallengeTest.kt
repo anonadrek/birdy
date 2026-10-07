@@ -78,7 +78,7 @@ class DailyBirdChallengeTest {
                 speciesId = "Q25403",
                 name = "Sävsångare",
                 scientificName = "Acrocephalus schoenobaenus",
-                heroImagePath = null,
+                heroImage = null,
                 caughtToday = true,
                 daysCaught = 1,
             )
@@ -95,7 +95,7 @@ class DailyBirdChallengeTest {
                 speciesId = "Q25403",
                 name = "Sävsångare",
                 scientificName = "Acrocephalus schoenobaenus",
-                heroImagePath = null,
+                heroImage = null,
                 caughtToday = false,
                 daysCaught = 0,
             )

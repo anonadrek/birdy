@@ -18,12 +18,11 @@ import kotlinx.coroutines.flow.first
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
-import org.jetbrains.compose.resources.getPluralString
-import org.jetbrains.compose.resources.getString
 import se.birdy.app.badges.BadgeProgressItem
 import se.birdy.app.badges.RecalculateBadgesUseCase
 import se.birdy.app.badges.TrophyProgress
 import se.birdy.app.di.AppGraph
+import se.birdy.app.i18n.AppStrings
 import se.birdy.app.recap.WeeklyRecapBuilder
 import se.birdy.app.recap.toIsoString
 import se.birdy.app.ui.badges.BadgeStringMap
@@ -98,6 +97,7 @@ data class NotificationContent(
  * paths the workers had before this hoist (disabled toggle, no candidate, quiet
  * week with no streak risk, nothing in progress toward a badge).
  */
+@Suppress("LongParameterList") // wired by three platforms; a holder object would only move the same list
 class NotificationPayloads(
     private val prefs: UserPreferences,
     private val observationRepo: ObservationRepository,
@@ -109,6 +109,7 @@ class NotificationPayloads(
     private val dailyBirdMatchCount: suspend () -> Int,
     private val timeZone: TimeZone,
     private val clock: Clock,
+    private val strings: AppStrings,
 ) {
     /**
      * 08:00 "Dagens fågel: Sävsångare". Release 1.3.0 Task 7d: the body invites a catch instead of
@@ -127,16 +128,16 @@ class NotificationPayloads(
         // three platform wirings of this class stay as they are.
         val hero = heroOf(speciesByQid()[SpeciesId(bird.speciesId)])
         return NotificationContent(
-            title = getString(Res.string.notification_daily_bird_title_fmt, displayName),
-            body = getString(Res.string.notification_daily_bird_body),
+            title = strings.get(Res.string.notification_daily_bird_title_fmt, displayName),
+            body = strings.get(Res.string.notification_daily_bird_body),
             deepLink = speciesLink,
             imagePath = hero?.path,
             photoCredit =
-                hero?.let { getString(Res.string.notification_daily_bird_photo_credit, it.author, it.license) },
+                hero?.let { strings.get(Res.string.notification_daily_bird_photo_credit, it.author, it.license) },
             actions =
                 listOf(
-                    NotificationAction(getString(Res.string.daily_bird_read_more), speciesLink),
-                    NotificationAction(getString(Res.string.daily_bird_listen_for_it), BirdyDeepLinks.AUDIO),
+                    NotificationAction(strings.get(Res.string.daily_bird_read_more), speciesLink),
+                    NotificationAction(strings.get(Res.string.daily_bird_listen_for_it), BirdyDeepLinks.AUDIO),
                 ),
         )
     }
@@ -149,9 +150,10 @@ class NotificationPayloads(
         return when {
             !summary.isQuiet || forceForDev ->
                 NotificationContent(
-                    title = getString(Res.string.notification_recap_active_title),
+                    title = strings.get(Res.string.notification_recap_active_title),
                     body =
                         recapNotificationBody(
+                            strings = strings,
                             finds = summary.observationCount,
                             newSpecies = summary.newSpeciesCount,
                         ),
@@ -159,8 +161,8 @@ class NotificationPayloads(
                 )
             summary.streakAtRisk ->
                 NotificationContent(
-                    title = getString(Res.string.notification_recap_streak_title),
-                    body = getString(Res.string.notification_recap_streak_body),
+                    title = strings.get(Res.string.notification_recap_streak_title),
+                    body = strings.get(Res.string.notification_recap_streak_body),
                     deepLink = BirdyDeepLinks.recap(summary.week),
                 )
             // Quiet week with no streak at risk → no push (spec §3.6)
@@ -196,11 +198,11 @@ class NotificationPayloads(
             summary.closest
                 ?: (if (forceForDev) items.firstOrNull { !it.unlocked } else null)
                 ?: return null
-        val closestName = getString(BadgeStringMap.nameFor(closest.badgeId))
+        val closestName = strings.get(BadgeStringMap.nameFor(closest.badgeId))
         return NotificationContent(
-            title = getString(Res.string.notification_trophy_title),
+            title = strings.get(Res.string.notification_trophy_title),
             body =
-                getString(
+                strings.get(
                     Res.string.notification_trophy_body_fmt,
                     summary.unlockedCount.toString(),
                     summary.totalCount.toString(),
@@ -230,6 +232,7 @@ class NotificationPayloads(
                 dailyBirdMatchCount = { graph.dailyBirdHistory?.totalMatchCount() ?: 0 },
                 timeZone = graph.timeZone,
                 clock = graph.clock,
+                strings = graph.strings,
             )
 
         /** The species' hero photo, as the hero and the strips use it. */
@@ -242,11 +245,12 @@ class NotificationPayloads(
  * (release 1.3.0 Task 7g; the old text said "2 ny art" and "1 sightings").
  */
 internal suspend fun recapNotificationBody(
+    strings: AppStrings,
     finds: Int,
     newSpecies: Int,
 ): String =
-    getString(
+    strings.get(
         Res.string.notification_recap_active_body_fmt,
-        getPluralString(Res.plurals.recap_stats_finds, finds, finds),
-        getPluralString(Res.plurals.recap_stats_new_species, newSpecies, newSpecies),
+        strings.plural(Res.plurals.recap_stats_finds, finds, finds),
+        strings.plural(Res.plurals.recap_stats_new_species, newSpecies, newSpecies),
     )

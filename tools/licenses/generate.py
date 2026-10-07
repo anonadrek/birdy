@@ -120,6 +120,9 @@ DESUGAR_COMMIT = "73170c345e6a762fc6a1f0301bb15218850023ef"
 
 # The texts for libraries under a licence that is not one shared text, by `group:name`. "version"
 # pins what the text was checked for: a new version stops the generator until it is looked at.
+# The app shows the "header" and "Source of this text" lines from its own strings, in the app's
+# language (LICENSE_PREFACES in LicenseIndex.kt, license_preface_* in strings.xml); a new header
+# fails LicenseScreensTest until those strings follow.
 LIBRARY_TEXTS: dict[str, dict[str, str]] = {
     "com.android.tools:desugar_jdk_libs": {
         "version": "2.1.5",

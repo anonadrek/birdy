@@ -29,9 +29,11 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
+import se.birdy.app.i18n.AppStrings
 import se.birdy.app.notifications.recapNotificationBody
 import se.birdy.app.testing.attachComposeResourcesContext
 import se.birdy.app.ui.diary.lifelistJournalSub
+import se.birdy.content.Locale
 import kotlin.test.assertEquals
 
 /**
@@ -82,8 +84,8 @@ class CountCopyTest {
         attachComposeResourcesContext()
         assertEquals("*1* funnen.", plural(Res.plurals.badges_journal_headline, 1))
         assertEquals("*2* funna.", plural(Res.plurals.badges_journal_headline, 2))
-        assertEquals("Senaste · 1 stämpel", plural(Res.plurals.lifelist_section_recent, 1))
-        assertEquals("Senaste · 2 stämplar", plural(Res.plurals.lifelist_section_recent, 2))
+        assertEquals("Senaste · 1 fynd", plural(Res.plurals.lifelist_section_recent, 1))
+        assertEquals("Senaste · 2 fynd", plural(Res.plurals.lifelist_section_recent, 2))
         assertEquals("1 fynd den här veckan.", plural(Res.plurals.recap_summary_active_fmt, 1))
         assertEquals("2 fynd den här veckan.", plural(Res.plurals.recap_summary_active_fmt, 2))
         assertEquals("+1 fynd mot förra veckan", plural(Res.plurals.recap_delta_line, 1, "+1"))
@@ -100,8 +102,18 @@ class CountCopyTest {
         assertEquals("måndag 5 oktober, 2 fynd", pluralWith(Res.plurals.recap_day_a11y, 2, "måndag 5 oktober", 2))
         assertEquals("1 fynd med plats väntar på kartan", plural(Res.plurals.map_teaser_count, 1))
         assertEquals("2 fynd med plats väntar på kartan", plural(Res.plurals.map_teaser_count, 2))
-        assertEquals("1 fynd, 1 ny art. Se veckans uppslag.", runBlocking { recapNotificationBody(finds = 1, newSpecies = 1) })
-        assertEquals("2 fynd, 2 nya arter. Se veckans uppslag.", runBlocking { recapNotificationBody(finds = 2, newSpecies = 2) })
+        assertEquals(
+            "1 fynd, 1 ny art. Se veckans uppslag.",
+            runBlocking {
+                recapNotificationBody(AppStrings(Locale.SV), finds = 1, newSpecies = 1)
+            },
+        )
+        assertEquals(
+            "2 fynd, 2 nya arter. Se veckans uppslag.",
+            runBlocking {
+                recapNotificationBody(AppStrings(Locale.SV), finds = 2, newSpecies = 2)
+            },
+        )
     }
 
     @Test
@@ -110,8 +122,8 @@ class CountCopyTest {
         attachComposeResourcesContext()
         assertEquals("*1* found.", plural(Res.plurals.badges_journal_headline, 1))
         assertEquals("*2* found.", plural(Res.plurals.badges_journal_headline, 2))
-        assertEquals("Recent · 1 stamp", plural(Res.plurals.lifelist_section_recent, 1))
-        assertEquals("Recent · 2 stamps", plural(Res.plurals.lifelist_section_recent, 2))
+        assertEquals("Recent · 1 sighting", plural(Res.plurals.lifelist_section_recent, 1))
+        assertEquals("Recent · 2 sightings", plural(Res.plurals.lifelist_section_recent, 2))
         assertEquals("1 sighting this week.", plural(Res.plurals.recap_summary_active_fmt, 1))
         assertEquals("2 sightings this week.", plural(Res.plurals.recap_summary_active_fmt, 2))
         assertEquals("+1 sighting compared with last week", plural(Res.plurals.recap_delta_line, 1, "+1"))
@@ -126,8 +138,18 @@ class CountCopyTest {
         assertEquals("Monday 5 October, 2 sightings", pluralWith(Res.plurals.recap_day_a11y, 2, "Monday 5 October", 2))
         assertEquals("1 located find waiting on the map", plural(Res.plurals.map_teaser_count, 1))
         assertEquals("2 located finds waiting on the map", plural(Res.plurals.map_teaser_count, 2))
-        assertEquals("1 sighting, 1 new species. See this week's page.", runBlocking { recapNotificationBody(finds = 1, newSpecies = 1) })
-        assertEquals("2 sightings, 2 new species. See this week's page.", runBlocking { recapNotificationBody(finds = 2, newSpecies = 2) })
+        assertEquals(
+            "1 sighting, 1 new species. See this week's page.",
+            runBlocking {
+                recapNotificationBody(AppStrings(Locale.EN), finds = 1, newSpecies = 1)
+            },
+        )
+        assertEquals(
+            "2 sightings, 2 new species. See this week's page.",
+            runBlocking {
+                recapNotificationBody(AppStrings(Locale.EN), finds = 2, newSpecies = 2)
+            },
+        )
     }
 
     /**

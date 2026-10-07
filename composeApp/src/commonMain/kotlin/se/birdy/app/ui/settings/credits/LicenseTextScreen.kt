@@ -75,16 +75,25 @@ private fun LicenseTextBody(text: LicenseText) {
         contentPadding = PaddingValues(start = 24.dp, end = 24.dp, bottom = 40.dp),
     ) {
         item(key = "header") { LicenseTextHeader(text.entry, text.notice) }
-        itemsIndexed(text.paragraphs, key = { index, _ -> index }) { _, paragraph ->
-            Text(
-                text = linkifyUrls(paragraph),
-                color = TextOnCreme,
-                fontSize = 12.sp,
-                lineHeight = 17.sp,
-                modifier = Modifier.padding(bottom = 10.dp),
-            )
+        if (text.preface.isNotEmpty()) {
+            // Birdy's own lines about the library, in the app's language (the licence stays as written).
+            item(key = "preface") {
+                LicenseParagraph(text.preface.map { stringResource(it) }.joinToString("\n"))
+            }
         }
+        itemsIndexed(text.paragraphs, key = { index, _ -> index }) { _, paragraph -> LicenseParagraph(paragraph) }
     }
+}
+
+@Composable
+private fun LicenseParagraph(paragraph: String) {
+    Text(
+        text = linkifyUrls(paragraph),
+        color = TextOnCreme,
+        fontSize = 12.sp,
+        lineHeight = 17.sp,
+        modifier = Modifier.padding(bottom = 10.dp),
+    )
 }
 
 /** Name, version and licence, what the entry covers, its website, copyright lines and notice. */

@@ -13,6 +13,7 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
 import se.birdy.app.testing.FakeDailyBirdHistoryRepository
 import se.birdy.app.testing.FakeUserPreferences
+import se.birdy.content.model.SpeciesImage
 import se.birdy.domain.dailybird.DailyBird
 import se.birdy.domain.dailybird.SeasonTag
 import kotlin.test.Test
@@ -38,7 +39,8 @@ class DailyBirdTrackerTest {
         minute: Int = 0,
     ): Instant = LocalDateTime(date.year, date.month, date.dayOfMonth, hour, minute).toInstant(zone)
 
-    private val sedgeWarbler = DailyBirdSpecies("Sävsångare", "Acrocephalus schoenobaenus", "Q25403/hero.webp")
+    private val sedgeWarblerPhoto = SpeciesImage("hero", "Q25403/hero.webp", 2400, 1600, "CC BY 4.0", "Valuer Hardy", "u")
+    private val sedgeWarbler = DailyBirdSpecies("Sävsångare", "Acrocephalus schoenobaenus", sedgeWarblerPhoto)
     private val greatTit = DailyBirdSpecies("Talgoxe", "Parus major", null)
 
     private var now = at(tuesday, 12)
@@ -80,7 +82,7 @@ class DailyBirdTrackerTest {
                     speciesId = "Q25403",
                     name = "Sävsångare",
                     scientificName = "Acrocephalus schoenobaenus",
-                    heroImagePath = "Q25403/hero.webp",
+                    heroImage = sedgeWarblerPhoto,
                     caughtToday = false,
                     daysCaught = 0,
                     huntTarget = 3,
@@ -337,7 +339,7 @@ class DailyBirdTrackerTest {
                 speciesId = "Q25403",
                 name = "Sävsångare",
                 scientificName = "Acrocephalus schoenobaenus",
-                heroImagePath = null,
+                heroImage = null,
                 caughtToday = false,
                 daysCaught = 0,
             )

@@ -2,6 +2,8 @@ package se.birdy.app.ui.badges
 
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.test.runTest
+import se.birdy.app.i18n.AppStrings
+import se.birdy.content.Locale
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -21,7 +23,7 @@ class BadgeStringResolverTest {
     fun fallsBackToHumanizedIdWhenResourceLookupFails() =
         runTest {
             val resolved =
-                resolveBadgeString("premium_year_lister") {
+                resolveBadgeString("premium_year_lister", AppStrings(Locale.SV)) {
                     throw IllegalStateException("unknown badge id")
                 }
             assertEquals("Year Lister", resolved)
@@ -31,7 +33,7 @@ class BadgeStringResolverTest {
     fun rethrowsCancellationFromResourceLookup() =
         runTest {
             assertFailsWith<CancellationException> {
-                resolveBadgeString("first_find") { throw CancellationException("cancelled") }
+                resolveBadgeString("first_find", AppStrings(Locale.SV)) { throw CancellationException("cancelled") }
             }
         }
 }

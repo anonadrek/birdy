@@ -127,6 +127,7 @@ class CreditsRoutingTest {
         compose.waitForIdle()
         nav.isOn(AppRoute.LicenseText::class)
         compose.runOnIdle { assertEquals(id, nav.currentBackStackEntry?.toRoute<AppRoute.LicenseText>()?.entryId) }
-        awaitText("Source code: https://github.com/google/desugar_jdk_libs/tree/")
+        // Birdy's own lines above the licence are in the app's language (QA 2026-10-07).
+        awaitText("Källkod: https://github.com/google/desugar_jdk_libs/tree/")
     }
 }

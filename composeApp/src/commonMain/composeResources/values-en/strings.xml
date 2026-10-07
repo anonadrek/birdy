@@ -422,14 +422,15 @@
     <string name="lifelist_breadcrumb">LIFELIST</string>
     <string name="lifelist_headline_fallback">My collection.</string>
     <string name="lifelist_stat_species">SPECIES</string>
-    <string name="lifelist_stat_stamps">STAMPS</string>
+    <!-- The number of finds (a stamp is a badge in the trophy room; QA 2026-10-07). -->
+    <string name="lifelist_stat_finds">SIGHTINGS</string>
     <string name="lifelist_stat_streak">DAY STREAK</string>
     <string name="lifelist_stat_year">SPECIES THIS YEAR</string>
     <string name="lifelist_stat_month">SPECIES THIS MONTH</string>
     <string name="lifelist_stat_longest">LONGEST STREAK</string>
     <plurals name="lifelist_section_recent">
-        <item quantity="one">Recent · %1$d stamp</item>
-        <item quantity="other">Recent · %1$d stamps</item>
+        <item quantity="one">Recent · %1$d sighting</item>
+        <item quantity="other">Recent · %1$d sightings</item>
     </plurals>
     <string name="lifelist_sort_recent">Recent</string>
     <string name="lifelist_sort_stamp">Stamp #</string>
@@ -689,6 +690,12 @@
     <string name="licenses_error">The licenses could not be loaded.</string>
     <string name="license_text_includes">Includes: %1$s</string>
     <string name="license_text_website">Website</string>
+    <!-- Birdy's own lines before desugar_jdk_libs' licence (tools/licenses/generate.py), word for word as in the file (LicenseScreensTest). -->
+    <string name="license_preface_desugar_about">desugar_jdk_libs 2.1.5: Java library code from OpenJDK that the Android build compiles into the app, so that java.time and other Java APIs work on older Android versions. It is licensed under the GNU General Public License, version 2, with the Classpath Exception.</string>
+    <string name="license_preface_desugar_source">Source code: https://github.com/google/desugar_jdk_libs/tree/73170c345e6a762fc6a1f0301bb15218850023ef (the commit that prepared version 2.1.5, 2025-02-14)</string>
+    <string name="license_preface_desugar_text_source">Source of this text: https://raw.githubusercontent.com/google/desugar_jdk_libs/73170c345e6a762fc6a1f0301bb15218850023ef/LICENSE</string>
+    <string name="license_preface_desugar_config_about">desugar_jdk_libs_configuration 2.1.5 (the R8 project), the LICENSE in its JAR:</string>
+    <string name="license_preface_desugar_config_text_source">Source of this text: LICENSE in desugar_jdk_libs_configuration-2.1.5</string>
 
     <!-- Settings row effects (Plan 6a Task 13) -->
     <string name="settings_share_copy">Birdy — a field birder’s digital companion. Get it on Google Play: https://play.google.com/store/apps/details?id=se.birdy.android</string>

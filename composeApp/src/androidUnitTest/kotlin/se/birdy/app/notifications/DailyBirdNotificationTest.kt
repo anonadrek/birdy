@@ -14,11 +14,13 @@ import org.robolectric.RuntimeEnvironment
 import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
+import se.birdy.app.i18n.AppStrings
 import se.birdy.app.testing.FakeBadgeRepository
 import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.testing.FakeUserPreferences
 import se.birdy.app.testing.attachComposeResourcesContext
+import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
 import se.birdy.content.model.SpeciesImage
 import se.birdy.domain.badge.BadgeCatalog
@@ -43,7 +45,10 @@ import kotlin.test.assertTrue
 class DailyBirdNotificationTest {
     private val context get() = RuntimeEnvironment.getApplication()
 
-    private fun payloads(withPhotos: Boolean = true): NotificationPayloads {
+    private fun payloads(
+        withPhotos: Boolean = true,
+        appLanguage: Locale = Locale.SV,
+    ): NotificationPayloads {
         val prefs = FakeUserPreferences()
         runBlocking { prefs.setDailyBirdPushEnabled(true) }
         val repo = FakeSpeciesRepository.withDefaults()
@@ -71,6 +76,7 @@ class DailyBirdNotificationTest {
             dailyBirdMatchCount = { 0 },
             timeZone = TimeZone.of("Europe/Stockholm"),
             clock = Clock.System,
+            strings = AppStrings(appLanguage),
         )
     }
 
@@ -112,11 +118,49 @@ class DailyBirdNotificationTest {
     @Config(qualifiers = "+en")
     fun `the english content`() {
         attachComposeResourcesContext()
-        val c = runBlocking { payloads().dailyBird(LocalDate(2026, 10, 6)) }!!
+        val c = runBlocking { payloads(appLanguage = Locale.EN).dailyBird(LocalDate(2026, 10, 6)) }!!
         assertEquals("Bird of the day: Talgoxe", c.title)
         assertEquals("Can you catch it today? Camera, photo or call all count.", c.body)
         assertEquals(listOf("Read about it", "Listen for it"), c.actions.map { it.label })
         assertEquals("Photo: Derek Keats, CC BY 2.0", c.photoCredit)
+    }
+
+    /**
+     * QA 2026-10-07: with Birdy in Svenska on an English phone the notification said "Bird of the
+     * day: …" with "Read about it" and "Listen for it". The content follows the app's language,
+     * whatever the phone's is, and the other way round.
+     */
+    @Test
+    @Config(qualifiers = "+en")
+    fun `the content follows the app's language on a phone in another language`() {
+        attachComposeResourcesContext()
+        val swedish = runBlocking { payloads(appLanguage = Locale.SV).dailyBird(LocalDate(2026, 10, 6)) }!!
+        assertEquals("Dagens fågel: Talgoxe", swedish.title)
+        assertEquals("Kan du fånga den idag? Kika, foto eller läte räknas.", swedish.body)
+        assertEquals(listOf("Läs om arten", "Lyssna efter den"), swedish.actions.map { it.label })
+        assertEquals("Foto: Derek Keats, CC BY 2.0", swedish.photoCredit)
+        // Reading the app's language leaves the process default alone.
+        assertEquals(
+            "en",
+            java.util.Locale
+                .getDefault()
+                .language,
+        )
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `an english app on a swedish phone gets english content`() {
+        attachComposeResourcesContext()
+        val english = runBlocking { payloads(appLanguage = Locale.EN).dailyBird(LocalDate(2026, 10, 6)) }!!
+        assertEquals("Bird of the day: Talgoxe", english.title)
+        assertEquals(listOf("Read about it", "Listen for it"), english.actions.map { it.label })
+        assertEquals(
+            "sv",
+            java.util.Locale
+                .getDefault()
+                .language,
+        )
     }
 
     @Test

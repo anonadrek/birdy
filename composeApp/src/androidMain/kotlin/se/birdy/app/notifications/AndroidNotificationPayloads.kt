@@ -6,6 +6,7 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import se.birdy.app.SpeciesRepositoryProvider
 import se.birdy.app.badges.BadgeCatalogLoader
+import se.birdy.app.i18n.AppStrings
 import se.birdy.app.i18n.LocaleResolver
 import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.content.SpeciesId
@@ -76,6 +77,9 @@ internal object AndroidNotificationPayloads {
                     dailyBirdMatchCount = { dailyBirdHistory.totalMatchCount() },
                     timeZone = TimeZone.currentSystemDefault(),
                     clock = Clock.System,
+                    // The app's language (the stored choice), not the phone's: a fresh worker
+                    // process has no activity, so nothing else applies it.
+                    strings = AppStrings(resolvedLocale),
                 )
             return use(payloads)
         } finally {

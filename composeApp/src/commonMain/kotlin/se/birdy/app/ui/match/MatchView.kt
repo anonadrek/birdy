@@ -86,6 +86,7 @@ import se.birdy.app.ui.components.PaperSheet
 import se.birdy.app.ui.components.PaperSheetOverlap
 import se.birdy.app.ui.components.PhotoBackButton
 import se.birdy.app.ui.components.PhotoHero
+import se.birdy.app.ui.components.SpeciesPhotoAlignment
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
 import se.birdy.app.ui.components.StatusBarBand
@@ -201,6 +202,7 @@ internal fun MatchView(
                                 model = speciesImageUri(path),
                                 contentDescription = null,
                                 contentScale = ContentScale.Crop,
+                                alignment = SpeciesPhotoAlignment,
                                 modifier =
                                     Modifier
                                         .fillMaxSize()

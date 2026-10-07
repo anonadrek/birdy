@@ -35,6 +35,7 @@ import se.birdy.app.SpeciesRepositoryProvider
 import se.birdy.app.badges.BadgeCatalogLoader
 import se.birdy.app.bootstrap.SharedPrefsBadgeVersionStore
 import se.birdy.app.di.AppGraph
+import se.birdy.app.i18n.AppStrings
 import se.birdy.app.i18n.LocaleResolver
 import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.notifications.workers.TrophyProgressWorker
@@ -407,6 +408,8 @@ class MainActivity : AppCompatActivity() {
                 override = overrideTag,
                 systemTag = resources.configuration.locales[0].toLanguageTag(),
             )
+        // The PDF's badge names in the app's language, not the phone's (QA 2026-10-07).
+        val appStrings = AppStrings(resolvedLocale)
         val exportJournalUseCase =
             ExportJournalUseCase(
                 observationRepo = observationRepo,
@@ -424,8 +427,10 @@ class MainActivity : AppCompatActivity() {
                 locale = resolvedLocale,
                 // BadgeStringMap throws for badges it doesn't yet know (premium_field_member
                 // strings land in Plan 6b3 T15/T16). Until then, fall back to a humanised ID.
-                badgeNameResolver = { id -> resolveBadgeString(id) { BadgeStringMap.nameFor(id) } },
-                badgeDescriptionResolver = { id -> resolveBadgeString(id) { BadgeStringMap.descriptionFor(id) } },
+                badgeNameResolver = { id -> resolveBadgeString(id, appStrings) { BadgeStringMap.nameFor(id) } },
+                badgeDescriptionResolver = { id ->
+                    resolveBadgeString(id, appStrings) { BadgeStringMap.descriptionFor(id) }
+                },
             )
         val dailyBirdHistory =
             se.birdy.data.dailybird

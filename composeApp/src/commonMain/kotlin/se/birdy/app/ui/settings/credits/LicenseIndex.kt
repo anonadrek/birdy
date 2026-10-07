@@ -1,12 +1,18 @@
 package se.birdy.app.ui.settings.credits
 
 import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.license_preface_desugar_about
+import birdy_bird_scanner.composeapp.generated.resources.license_preface_desugar_config_about
+import birdy_bird_scanner.composeapp.generated.resources.license_preface_desugar_config_text_source
+import birdy_bird_scanner.composeapp.generated.resources.license_preface_desugar_source
+import birdy_bird_scanner.composeapp.generated.resources.license_preface_desugar_text_source
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.StringResource
 import kotlin.concurrent.Volatile
 
 /*
@@ -86,12 +92,50 @@ internal object LicenseFiles {
     }
 }
 
-/** What the licence text page shows for one entry. */
+/**
+ * What the licence text page shows for one entry. [preface]: Birdy's own lines before the licence
+ * (see [LICENSE_PREFACES]), shown in the app's language.
+ */
 internal data class LicenseText(
     val entry: LicenseEntry,
     val notice: String?,
     val paragraphs: List<String>,
+    val preface: List<StringResource> = emptyList(),
 )
+
+/**
+ * Lines Birdy writes itself at the top of a licence text file (tools/licenses/generate.py,
+ * LIBRARY_TEXTS' "header" and "Source of this text"), by file: the page shows these strings in the
+ * app's language in place of the file's English lines. The licence text itself is never translated.
+ * The English strings are the file's lines word for word (LicenseScreensTest checks it), so a new
+ * text from the generator fails that test until the strings follow.
+ */
+internal val LICENSE_PREFACES: Map<String, List<StringResource>> =
+    mapOf(
+        "desugar-jdk-libs.txt" to
+            listOf(
+                Res.string.license_preface_desugar_about,
+                Res.string.license_preface_desugar_source,
+                Res.string.license_preface_desugar_text_source,
+            ),
+        "desugar-jdk-libs-configuration.txt" to
+            listOf(
+                Res.string.license_preface_desugar_config_about,
+                Res.string.license_preface_desugar_config_text_source,
+            ),
+    )
+
+/** [text] without its first [count] lines (the file's own preface) and the blank lines after them. */
+internal fun withoutPreface(
+    text: String,
+    count: Int,
+): String =
+    text
+        .replace("\r\n", "\n")
+        .split('\n')
+        .drop(count)
+        .dropWhile { it.isBlank() }
+        .joinToString("\n")
 
 // One or more blank lines; the next paragraph keeps the indentation of its first line.
 private val BLANK_LINES = Regex("\n(?:[ \t]*\n)+")
@@ -136,11 +180,18 @@ private val STRUCTURED_LINE = Regex("""^(\d+[.)]|\([a-z0-9]+\)|[-*•=#/>|+_]|\.
 private val OWN_LINE = Regex("""^(Copyright\b|\([Cc]\) |© |[A-Z][A-Za-z0-9 ]{0,40}: \S).*""")
 private const val HEADING_MAX_LENGTH = 60
 
+// An indented line continues the one before only after a line this long: one that was wrapped at
+// the file's width (some 70 to 80 columns), not a short line of a table or a heading.
+private const val WRAPPED_LINE_MIN_LENGTH = 40
+
 /**
  * Joins the lines of a licence paragraph that were only wrapped for an 80-column file, so the text
- * wraps to the screen instead of in ragged halves. Lines that are indented, start a list item, a
- * rule, a copyright line or a "Label: value" field, or follow a rule, a heading in capitals or a line
- * ending in ":" keep their own line. The words are never changed.
+ * wraps to the screen instead of in ragged halves. That includes indented paragraphs (the Apache
+ * License's definitions, the GPL's sub-items): an indented line joins the line before it when it is
+ * indented at least as deep and that line was long enough to have been wrapped. Lines that start a
+ * list item, a rule, a copyright line or a "Label: value" field (indented or not), that are less
+ * indented than the line before, or that follow a rule, a heading in capitals or a line ending in
+ * ":" keep their own line. The words are never changed.
  */
 internal fun reflow(paragraph: String): String {
     val lines = paragraph.split('\n')
@@ -150,19 +201,33 @@ internal fun reflow(paragraph: String): String {
                 append(line)
                 return@forEachIndexed
             }
-            val previous = lines[index - 1].trim()
+            val previousLine = lines[index - 1]
+            val previous = previousLine.trim()
             val keepBreak =
-                line.isBlank() ||
-                    line.first().isWhitespace() ||
-                    STRUCTURED_LINE.matches(line) ||
-                    OWN_LINE.matches(line) ||
-                    previous.endsWith(":") ||
-                    previous.none { it.isLetterOrDigit() } ||
-                    previous.isHeading()
+                when {
+                    line.isBlank() -> true
+                    previous.endsWith(":") || previous.none { it.isLetterOrDigit() } || previous.isHeading() -> true
+                    line.first().isWhitespace() -> !continuesIndented(previousLine, line)
+                    else -> STRUCTURED_LINE.matches(line) || OWN_LINE.matches(line)
+                }
             if (keepBreak) append('\n').append(line) else append(' ').append(line.trim())
         }
     }
 }
+
+/** Whether the indented [line] only continues [previousLine], wrapped at the file's width. */
+private fun continuesIndented(
+    previousLine: String,
+    line: String,
+): Boolean {
+    val text = line.trim()
+    return line.indentation() >= previousLine.indentation() &&
+        previousLine.trim().length >= WRAPPED_LINE_MIN_LENGTH &&
+        !STRUCTURED_LINE.matches(text) &&
+        !OWN_LINE.matches(text)
+}
+
+private fun String.indentation() = indexOfFirst { !it.isWhitespace() }.let { if (it < 0) length else it }
 
 private fun String.isHeading() = length < HEADING_MAX_LENGTH && any(Char::isLetter) && none(Char::isLowerCase)
 
@@ -171,7 +236,13 @@ internal suspend fun loadLicenseText(id: String): LicenseText {
     val entry = LicenseFiles.index().entry(id) ?: error("No licence entry '$id'")
     val notice = entry.notice?.let { LicenseFiles.read(it).trim() }
     val text = LicenseFiles.read(entry.file)
+    val preface = LICENSE_PREFACES[entry.file].orEmpty()
     return withContext(Dispatchers.Default) {
-        LicenseText(entry = entry, notice = notice, paragraphs = licenseParagraphs(text))
+        LicenseText(
+            entry = entry,
+            notice = notice,
+            paragraphs = licenseParagraphs(withoutPreface(text, preface.size)),
+            preface = preface,
+        )
     }
 }

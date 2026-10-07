@@ -8,6 +8,7 @@ import androidx.compose.ui.test.performFirstLinkClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performScrollToKey
 import kotlinx.coroutines.runBlocking
+import org.jetbrains.compose.resources.getString
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -114,5 +115,81 @@ class LicenseScreensTest {
             "Copyright 2019 Google LLC\nCopyright (c) 2017 Facebook Inc. All rights reserved.",
             reflow("Copyright 2019 Google LLC\nCopyright (c) 2017 Facebook Inc.\nAll rights reserved."),
         )
+    }
+
+    /**
+     * QA 2026-10-07: the Apache License's definitions and the GPL's sub-items are indented, and each
+     * of their 80-column lines kept its own line, so they wrapped raggedly on a phone. An indented
+     * line that only continues the one before is joined; list items, copyright lines, short lines
+     * and a line less indented than the one before keep their own line.
+     */
+    @Test
+    fun `indented paragraphs wrapped for a narrow file are joined`() {
+        assertEquals(
+            "      \"License\" shall mean the terms and conditions for use, reproduction, " +
+                "and distribution as defined by Sections 1 through 9 of this document.",
+            reflow(
+                "      \"License\" shall mean the terms and conditions for use, reproduction,\n" +
+                    "      and distribution as defined by Sections 1 through 9 of this document.",
+            ),
+        )
+        // A hanging indent: the item's number, then its text indented under it.
+        assertEquals(
+            "   2. Grant of Copyright License. Subject to the terms and conditions of " +
+                "this License, each Contributor hereby grants to You a perpetual.",
+            reflow(
+                "   2. Grant of Copyright License. Subject to the terms and conditions of\n" +
+                    "      this License, each Contributor hereby grants to You a perpetual.",
+            ),
+        )
+        assertEquals(
+            "    * Redistributions of source code must retain the above copyright notice, this list.\n" +
+                "    * Redistributions in binary form must reproduce the above copyright notice.",
+            reflow(
+                "    * Redistributions of source code must retain the above copyright\n" +
+                    "      notice, this list.\n" +
+                    "    * Redistributions in binary form must reproduce the above copyright notice.",
+            ),
+        )
+        assertEquals(
+            "    Copyright 2010 The Android Open Source Project, all rights reserved here\n" +
+                "    Copyright 2011 Google LLC",
+            reflow(
+                "    Copyright 2010 The Android Open Source Project, all rights reserved here\n" +
+                    "    Copyright 2011 Google LLC",
+            ),
+        )
+        // Centred title lines: each less indented than the one before.
+        val title = "                                 Apache License\n                           Version 2.0, January 2004"
+        assertEquals(title, reflow(title))
+    }
+
+    /**
+     * The desugar libraries' texts start with lines Birdy writes itself (tools/licenses/generate.py):
+     * the page shows them from strings, in the app's language. The English strings are the file's
+     * lines word for word, so a new text from the generator fails here until the strings follow.
+     */
+    @Test
+    @Config(qualifiers = "+en")
+    fun `the english preface strings are the file's own lines`() {
+        attachComposeResourcesContext()
+        for ((file, preface) in LICENSE_PREFACES) {
+            val lines = runBlocking { LicenseFiles.read(file) }.replace("\r\n", "\n").split('\n')
+            assertEquals(lines.take(preface.size), preface.map { runBlocking { getString(it) } }, file)
+            assertTrue(lines[preface.size].isBlank(), "$file: the preface is a paragraph of its own")
+        }
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `the swedish page shows birdy's own lines in swedish and the licence as written`() {
+        attachComposeResourcesContext()
+        val text = runBlocking { loadLicenseText("lib:com.android.tools:2.1.5:desugar_jdk_libs") }
+        assertTrue(text.paragraphs.none { "Source code:" in it || "Source of this text:" in it })
+        assertEquals("The GNU General Public License (GPL)", text.paragraphs.first())
+        compose.setContent { BirdyTheme { LicenseTextScreen(state = Loadable.Loaded(text), onBack = {}) } }
+        compose.onNodeWithText("Java-bibliotekskod från OpenJDK", substring = true).assertExists()
+        compose.onNodeWithText("Källkod: https://github.com/google/desugar_jdk_libs/tree/", substring = true).assertExists()
+        compose.onNodeWithText("Källa till texten: https://raw.githubusercontent.com/", substring = true).assertExists()
     }
 }

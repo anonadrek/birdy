@@ -1,8 +1,13 @@
 package se.birdy.content.build
 
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
+import com.charleskorn.kaml.Yaml
+import com.charleskorn.kaml.YamlConfiguration
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.builtins.ListSerializer
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
@@ -13,6 +18,7 @@ import se.birdy.content.SpeciesId
 import se.birdy.content.SqlDelightSpeciesRepository
 import se.birdy.content.db.BirdyContent
 import java.nio.file.Path
+import kotlin.io.path.readText
 
 /**
  * Release 1.3.0 Task 7g item 7: hand corrections in the committed species YAML, guarded so a
@@ -107,6 +113,68 @@ class SpeciesContentCorrectionsTest {
         assertTrue("en medlem i familjen starar" in text, text)
         assertTrue("burmamajnan" in text, text)
         assertTrue("medlemi" !in text && "burmannusmajan" !in text, text)
+    }
+
+    // QA 2026-10-07: the English Great Tit text gave it "a white stripe running down its back". It
+    // has none; its stripe is black and runs down the yellow breast and belly.
+    @Test
+    fun `the great tit's stripe is black and runs down its breast`() {
+        val text = species("paridae/Q25485.yaml").description.getValue("en").orEmpty()
+        assertTrue("stripe running down its back" !in text, text)
+        assertTrue("yellow underparts and a bold black stripe running down the breast and belly" in text, text)
+    }
+
+    // QA 2026-10-07: "en karakteristisk långa, spetsig näbb" mixed the adjectives' forms.
+    @Test
+    fun `råkan's swedish text agrees its adjectives`() {
+        val text = species("corvidae/Q25386.yaml").description.getValue("sv").orEmpty()
+        assertTrue("med en karakteristisk lång, spetsig näbb" in text, text)
+        assertTrue("karakteristisk långa" !in text, text)
+    }
+
+    // QA 2026-10-07: Dagens fågel picks only species reviewed as regular in Sweden (abundance
+    // "allmän" or "mindre allmän", DailyBirdSelector). The Paridae batch had marked the whole family
+    // "allmän", three tits that never come to Sweden too: Koboltmes (Canary Islands, North Africa),
+    // Hyrkanmes (Caucasus, Iran) and Balkanmes (south-east Europe).
+    @Test
+    fun `only species regular in sweden are marked common`() {
+        val common =
+            parser
+                .parseAll(Path.of("species"))
+                .map { it.second }
+                .filter { it.abundance == "allmän" || it.abundance == "mindre allmän" }
+                .map { it.id }
+                .toSet()
+        assertEquals(177, common.size)
+        for (nonSwedish in listOf("Q10546857", "Q4967039", "Q574281")) {
+            assertTrue(nonSwedish !in common, nonSwedish)
+        }
+        assertTrue("Q25485" in common && "Q574447" in common) // Talgoxe, Lappmes
+    }
+
+    @Serializable
+    private data class ListedSpecies(
+        @SerialName("wikidata_id") val wikidataId: String,
+        val abundance: String? = null,
+    )
+
+    // The pipeline writes species_list.yaml's abundance (default "ovanlig") on a refresh, so the
+    // list and the committed YAML must agree, or a refresh changes which birds Dagens fågel picks.
+    @Test
+    fun `species_list gives every species the abundance it has in the app`() {
+        val listed =
+            Yaml(configuration = YamlConfiguration(strictMode = false))
+                .decodeFromString(
+                    ListSerializer(ListedSpecies.serializer()),
+                    Path.of("../../tools/content-pipeline/species_list.yaml").readText(Charsets.UTF_8),
+                ).associate { it.wikidataId to (it.abundance ?: "ovanlig") }
+        val differing =
+            parser
+                .parseAll(Path.of("species"))
+                .map { it.second }
+                .filter { listed[it.id] != it.abundance }
+                .map { "${it.id} ${it.names.sv}: ${it.abundance} in the app, ${listed[it.id]} in species_list.yaml" }
+        assertEquals(emptyList<String>(), differing)
     }
 
     private data class Renamed(

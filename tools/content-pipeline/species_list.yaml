@@ -3141,6 +3141,7 @@
   common_sv: Blåmes
   common_en: Eurasian Blue Tit
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q25485
   scientific_name: Parus major
   family: Paridae
@@ -3149,18 +3150,21 @@
   common_sv: Talgoxe
   common_en: Great Tit
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q191096
   scientific_name: Periparus ater
   family: Paridae
   ioc_order: Passeriformes
   common_en: Coal Tit
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q207831
   scientific_name: Lophophanes cristatus
   family: Paridae
   ioc_order: Passeriformes
   common_en: Crested Tit
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q574281
   scientific_name: Poecile lugubris
   family: Paridae
@@ -3173,6 +3177,7 @@
   ioc_order: Passeriformes
   common_en: Marsh Tit
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q4967039
   scientific_name: Poecile hyrcanus
   family: Paridae
@@ -3185,12 +3190,14 @@
   ioc_order: Passeriformes
   common_en: Willow Tit
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q574447
   scientific_name: Poecile cinctus
   family: Paridae
   ioc_order: Passeriformes
   common_en: Grey-headed Chickadee
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q192817
   scientific_name: Panurus biarmicus
   family: Panuridae

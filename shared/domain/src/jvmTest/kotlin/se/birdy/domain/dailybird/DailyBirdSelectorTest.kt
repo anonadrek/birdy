@@ -88,19 +88,50 @@ class DailyBirdSelectorTest {
             assertEquals("Q_ALWAYS", mayResult?.speciesId)
         }
 
+    /**
+     * QA 2026-10-07: on 8 October the daily bird was Östlig klippuggla (Strix butleri, the Middle
+     * East). Every species carried the Nordic regions, so a quarter of all days picked from the 659
+     * species the pipeline left as "ovanlig", most of which never come to Sweden. Only species
+     * reviewed as regular in Sweden (abundance "allmän" or "mindre allmän") are picked now.
+     */
     @Test
-    fun `selectFor weights common bucket around 75 percent`() =
+    fun `selectFor only picks species reviewed as regular in sweden`() =
         runTest {
             val common = (1..10).map { species("QC$it", abundance = Abundance.ALLMÄN) }
+            val lessCommon = (1..10).map { species("QL$it", abundance = Abundance.MINDRE_ALLMÄN) }
+            val unreviewed = (1..10).map { species("QO$it", abundance = Abundance.OVANLIG) }
             val rare = (1..10).map { species("QR$it", abundance = Abundance.SÄLLSYNT) }
-            val pool = (common + rare).toMap()
+            val pool = (common + lessCommon + unreviewed + rare).toMap()
             val selector = DailyBirdSelector { pool }
-            val results =
-                (0L until 1000L).map {
+            val picks =
+                (0L until 1000L).mapNotNull {
                     selector.selectFor(LocalDate(2026, 1, 1).plusDays(it))?.speciesId
                 }
-            val commonCount = results.count { it?.startsWith("QC") == true }
-            assertTrue(commonCount in 700..800, "Expected 70-80% common, got $commonCount/1000")
+            assertEquals(1000, picks.size)
+            assertTrue(picks.all { it.startsWith("QC") || it.startsWith("QL") }, picks.toSet().toString())
+            // Both reviewed kinds come up, spread over the whole pool.
+            assertTrue(picks.any { it.startsWith("QC") } && picks.any { it.startsWith("QL") })
+            assertEquals(20, picks.toSet().size)
+        }
+
+    @Test
+    fun `the pick does not depend on the order the species come in`() =
+        runTest {
+            val species = (1..40).map { species("Q$it") }
+            val forward = DailyBirdSelector { species.toMap() }
+            val backward = DailyBirdSelector { species.reversed().toMap() }
+            val dates = (0L until 60L).map { LocalDate(2026, 10, 1).plusDays(it) }
+            assertEquals(dates.map { forward.selectFor(it) }, dates.map { backward.selectFor(it) })
+        }
+
+    @Test
+    fun `no species reviewed as regular in sweden means no daily bird`() =
+        runTest {
+            val selector =
+                DailyBirdSelector {
+                    mapOf(species("Q_O", abundance = Abundance.OVANLIG), species("Q_R", abundance = Abundance.SÄLLSYNT))
+                }
+            assertNull(selector.selectFor(LocalDate(2026, 10, 8)))
         }
 
     @Test
@@ -135,6 +166,7 @@ class DailyBirdSelectorTest {
             val pool =
                 mapOf(
                     species("Q_LIVE_COMMON"),
+                    species("Q_LIVE_LESS_COMMON", abundance = Abundance.MINDRE_ALLMÄN),
                     species("Q_LIVE_RARE", abundance = Abundance.OVANLIG),
                     species("Q_EX_COMMON", iucnStatus = "EX"),
                     species("Q_EX_RARE", abundance = Abundance.OVANLIG, iucnStatus = "EX"),
@@ -142,7 +174,7 @@ class DailyBirdSelectorTest {
                 )
             val selector = DailyBirdSelector { pool }
             val picks = (0L until 365L).map { selector.selectFor(LocalDate(2026, 1, 1).plusDays(it))?.speciesId }
-            assertEquals(setOf("Q_LIVE_COMMON", "Q_LIVE_RARE"), picks.toSet())
+            assertEquals(setOf("Q_LIVE_COMMON", "Q_LIVE_LESS_COMMON"), picks.toSet())
         }
 
     @Test
@@ -150,10 +182,10 @@ class DailyBirdSelectorTest {
         runTest {
             val living =
                 (1..20).associate { i ->
-                    species("Q$i", abundance = if (i % 2 == 0) Abundance.ALLMÄN else Abundance.OVANLIG)
+                    species("Q$i", abundance = if (i % 2 == 0) Abundance.ALLMÄN else Abundance.MINDRE_ALLMÄN)
                 }
             val withExtinct =
-                living + mapOf(species("Q_EX", abundance = Abundance.OVANLIG, iucnStatus = "EX"))
+                living + mapOf(species("Q_EX", iucnStatus = "EX"))
             val dates = (0L until 365L).map { LocalDate(2026, 1, 1).plusDays(it) }
             val before = DailyBirdSelector { living }
             val after = DailyBirdSelector { withExtinct }

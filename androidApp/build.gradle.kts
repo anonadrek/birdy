@@ -186,6 +186,17 @@ android {
         }
     }
 
+    // The in-app language picker (intro scene 0 and Settings) can choose a language
+    // other than the phone's. Play installs only the device-language config split, so
+    // on an English phone the `sv` split was missing and choosing Svenska did nothing on
+    // API 24-32 (QA 2026-10-07). Keep every language in the base APK; the sv strings
+    // are ~16 KB.
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
     packaging {
         jniLibs {
             // Prefer our 16 KB copy (project jniLibs, from downloadFlex16kJniLibs) over
