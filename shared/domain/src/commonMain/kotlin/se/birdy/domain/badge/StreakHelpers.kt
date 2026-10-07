@@ -5,6 +5,7 @@ import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.daysUntil
+import kotlinx.datetime.isoDayNumber
 import kotlinx.datetime.toLocalDateTime
 
 /**
@@ -196,18 +197,6 @@ internal fun LocalDate.plusDays(days: Int): LocalDate {
     val daysSinceEpoch = epoch.daysUntil(this) + days
     return LocalDate.fromEpochDays(daysSinceEpoch)
 }
-
-internal val DayOfWeek.isoDayNumber: Int
-    get() =
-        when (this) {
-            DayOfWeek.MONDAY -> 1
-            DayOfWeek.TUESDAY -> 2
-            DayOfWeek.WEDNESDAY -> 3
-            DayOfWeek.THURSDAY -> 4
-            DayOfWeek.FRIDAY -> 5
-            DayOfWeek.SATURDAY -> 6
-            DayOfWeek.SUNDAY -> 7
-        }
 
 /**
  * Antal ISO-veckor i ett år: 52 normalt, 53 när 1 jan är torsdag, eller om skottår med 1 jan onsdag.
