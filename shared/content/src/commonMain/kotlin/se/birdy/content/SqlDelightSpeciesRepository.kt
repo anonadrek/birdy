@@ -21,7 +21,8 @@ import se.birdy.content.search.normalizeSearch
 /**
  * [se.birdy.content.SpeciesText] kind for the name Birdy used before it took BirdLife Sverige's
  * official Swedish one (release 1.3.0 Task 7m), stored with the locale it belongs to. A text row
- * rather than a column: no schema change, and only the 29 renamed species have one.
+ * rather than a column: no schema change, and only renamed species have one (28: Diomedeslira's
+ * former name is another species' name, so it is only a search term, see SpeciesDbBuilder).
  */
 internal const val FORMER_NAME_KIND = "former_name"
 

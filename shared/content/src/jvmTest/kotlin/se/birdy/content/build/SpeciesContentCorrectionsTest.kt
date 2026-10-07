@@ -249,14 +249,21 @@ class SpeciesContentCorrectionsTest {
         val driver = JdbcSqliteDriver("jdbc:sqlite:${db.toAbsolutePath()}")
         val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
         val firstHits =
-            listOf("sädgås", "Sädgås", "rödfody", "cettisångare", "Kap Verdepetrell", "Rüppellgam", "levantlira")
-                .associateWith { query ->
-                    repo
-                        .search(query, Locale.SV, SpeciesFilter())
-                        .first()
-                        .firstOrNull()
-                        ?.name
-                }
+            listOf(
+                "sädgås",
+                "Sädgås",
+                "rödfody",
+                "cettisångare",
+                "Kap Verdepetrell",
+                "Rüppellgam",
+                "levantlira",
+            ).associateWith { query ->
+                repo
+                    .search(query, Locale.SV, SpeciesFilter())
+                    .first()
+                    .firstOrNull()
+                    ?.name
+            }
         assertEquals(
             mapOf(
                 "sädgås" to "Skogsgås",
@@ -269,6 +276,18 @@ class SpeciesContentCorrectionsTest {
             ),
             firstHits,
         )
+        // "Gulnäbbad lira" is Calonectris borealis' current name and Diomedeslira's former one:
+        // the species that has the name comes first, and Diomedeslira's profile leaves out a
+        // "Tidigare:" line that would read as if the two were one species.
+        assertEquals(
+            listOf("Gulnäbbad lira", "Diomedeslira"),
+            repo
+                .search("gulnäbbad lira", Locale.SV, SpeciesFilter())
+                .first()
+                .take(2)
+                .map { it.name },
+        )
+        assertEquals(null, repo.getById(SpeciesId("Q216850"), Locale.SV).first()?.formerName)
         assertEquals("Sädgås", repo.getById(SpeciesId("Q26452"), Locale.SV).first()?.formerName)
         assertEquals(null, repo.getById(SpeciesId("Q26452"), Locale.EN).first()?.formerName)
         driver.close()

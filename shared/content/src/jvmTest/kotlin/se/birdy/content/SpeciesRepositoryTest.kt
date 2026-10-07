@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
+import se.birdy.content.build.NamesYaml
 import se.birdy.content.build.SpeciesDbBuilder
 import se.birdy.content.build.SpeciesYamlParser
 import se.birdy.content.db.BirdyContent
@@ -251,6 +252,37 @@ class SpeciesRepositoryTest {
         assertEquals(null, repo.getById(SpeciesId("Q25485"), Locale.EN).first()?.formerName)
         assertEquals("Stormes", repo.allByQid(Locale.SV)[SpeciesId("Q25485")]?.formerName)
         assertEquals(null, repo.allByQid(Locale.EN)[SpeciesId("Q25485")]?.formerName)
+        driver.close()
+    }
+
+    // A former name that is another species' current name (Diomedeslira was called "Gulnäbbad
+    // lira", the name of Calonectris borealis) would read as if the two were one species: the profile
+    // leaves the line out, and the old name stays a search term.
+    @Test
+    fun `a former name that is another species' name is searchable but not shown`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val talgoxe = parser.parseAll(Path.of("src/jvmTest/resources/fixtures/species")).single()
+        val renamed = talgoxe.first to talgoxe.second.copy(names = talgoxe.second.names.copy(formerSv = "Blåmes"))
+        val blames =
+            talgoxe.first.resolveSibling("Q25404.yaml") to
+                talgoxe.second.copy(
+                    id = "Q25404",
+                    scientific_name = "Cyanistes caeruleus",
+                    names = NamesYaml(sv = "Blåmes", en = "Eurasian Blue Tit"),
+                    image_refs = emptyList(),
+                )
+        val outDb = tempDir.resolve("species.db")
+        SpeciesDbBuilder().build(
+            items = listOf(renamed, blames),
+            sourceImageRoot = Path.of("src/jvmTest/resources/fixtures/images"),
+            targetDb = outDb,
+            targetImageRoot = tempDir.resolve("images"),
+        )
+        val driver = JdbcSqliteDriver("jdbc:sqlite:${outDb.toAbsolutePath()}")
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        assertEquals(null, repo.getById(SpeciesId("Q25485"), Locale.SV).first()?.formerName)
+        assertEquals(listOf("Blåmes", "Talgoxe"), repo.search("blåmes", Locale.SV, SpeciesFilter()).first().map { it.name })
         driver.close()
     }
 
