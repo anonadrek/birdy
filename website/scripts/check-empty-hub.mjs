@@ -47,6 +47,10 @@ for (const path of ['sv/arter', 'species']) {
   if (html.includes('id="species-search"')) fail(path, 'visar sökfältet trots noll byggda arter');
   if (/<li\s+data-item/.test(html)) fail(path, 'visar en art trots noll byggda arter');
   if (!html.includes('<h1')) fail(path, 'saknar h1');
+  // Second controller review, same day: the category bar's only chip at n=0 is "All species (0)" (nothing
+  // to filter into), and an ItemList with zero items would be a CollectionPage claiming a list it doesn't have.
+  if (html.includes('data-catbar')) fail(path, 'visar kategoriraden trots noll byggda arter');
+  if (html.includes('"@type":"CollectionPage"')) fail(path, 'har en ItemList i JSON-LD trots noll byggda arter');
 }
 
 const sitemap = existsSync(join(dist, 'sitemap-index.xml')) ? 'present' : 'missing';

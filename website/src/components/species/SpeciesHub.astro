@@ -31,24 +31,29 @@ const firstLetter = (name: string) => name.charAt(0).toLocaleUpperCase(locale);
 const letters = [...new Set(sorted.map((s) => firstLetter(s.names[locale])))];
 const pathname = hubHref(locale);
 const n = all.length;
-const title = t.species.titleHub.replace('{count}', countLabel(n, t));
 // Grammar for n=1 ("1 vanlig fågel", not "1 vanliga fåglar"): own copy keys, not countLabel's {n} template,
 // since these are full sentences, not just a number (controller review 2026-10-07). The title doesn't need
-// one: it already goes through countLabel ("1 art" / "16 arter"), which is correct for every n.
+// one for n=1: it already goes through countLabel ("1 art" / "16 arter"), which is correct for every n.
 // n=0 (production right after Task 15's merge, before the first species is published, spec Task 15 Step 4):
-// no count-dependent sentence reads sensibly with "0", so both get a dedicated "coming soon" line instead.
+// no count-dependent sentence reads sensibly with "0", so the title gets its own dedicated copy key too
+// (second controller review, same day) instead of rendering "...: 0 arter med foton | Birdy".
+const title = n === 0 ? t.species.titleHubEmpty : t.species.titleHub.replace('{count}', countLabel(n, t));
 const leadText = n === 0 ? t.species.hubLeadEmpty : n === 1 ? t.species.hubLeadOne : t.species.hubLead.replace('{n}', String(n));
 const description = n === 0 ? t.species.hubLeadEmpty : n === 1 ? t.species.descHubOne : t.species.descHub.replace('{n}', String(n));
 const crumbs = [
   { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
   { name: t.species.crumbHub, href: pathname },
 ];
-const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace(/ \| Birdy$/, ''), locale, sorted)];
+// At n=0 there is no list to describe: an ItemList with zero items would be a CollectionPage claiming
+// to list species it doesn't have (second controller review, same day). Breadcrumbs alone still apply.
+const jsonLd = n === 0 ? [breadcrumbJsonLd(crumbs)] : [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace(/ \| Birdy$/, ''), locale, sorted)];
 ---
 
 <Layout locale={locale} pathname={pathname} alternatePath={hubHref(other)} title={title} description={description} noindex={n === 0} jsonLd={jsonLd}>
   <Nav locale={locale} variant="solid" switchLangHref={hubHref(other)} />
-  <CategoryBar locale={locale} active="all" search={false} />
+  {/* The bar's only chip at n=0 would be "All species (0)": nothing to filter into, so it is hidden
+      along with the rest of the browsing UI below (second controller review, same day). */}
+  {n > 0 && <CategoryBar locale={locale} active="all" search={false} />}
   <main class="hub wrap">
     <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
       <ol>
@@ -161,7 +166,14 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace
     const raw = input?.value.trim() ?? '';
     if (raw) url.searchParams.set('q', raw);
     else url.searchParams.delete('q');
-    history.replaceState(null, '', url);
+    try {
+      // Safari throttles history.replaceState (SecurityError past a call-rate limit); keeping the URL
+      // in sync with the search box is a nicety, not something the filtering above depends on
+      // (second controller review, same day).
+      history.replaceState(null, '', url);
+    } catch {
+      // Filtering already happened above; losing the URL sync is harmless.
+    }
   };
   const params = new URLSearchParams(location.search);
   if (input && params.has('q')) {
@@ -174,6 +186,12 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace
 
 <style>
   .hub { padding-top: 26px; padding-bottom: 88px; }
+  /* <search> is a new HTML sectioning element: some engines don't yet default it to block, so it is set
+     explicitly. That same rule would otherwise beat the UA [hidden] rule on specificity and keep the box
+     visible before the script runs; the second declaration restores [hidden] (second controller review,
+     same day). */
+  search.hub-search { display: block; }
+  .hub-search[hidden] { display: none; }
   .hub-search { margin: 22px 0 0; max-width: 420px; }
   .hub-search input { width: 100%; box-sizing: border-box; font: inherit; font-size: 15px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--ink); }
   .hub-search input:focus-visible { outline: 3px solid var(--rust); outline-offset: 2px; }

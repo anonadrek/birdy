@@ -294,6 +294,7 @@
     "titleGroup": "{group}: {count} med foton och kännetecken | Birdy",
     "titleGroupShort": "{group}: arter och kännetecken | Birdy",
     "titleHub": "Fåglar i Sverige och Europa: {count} med foton | Birdy",
+    "titleHubEmpty": "Fåglar i Sverige och Europa: nya artsidor på väg | Birdy",
     "titleCompare": "{a} eller {b}? Så skiljer du dem åt | Birdy",
     "titleCompareShort": "{a} eller {b}? | Birdy",
     "descGroup": "{group}: {count} med foton, kännetecken och läten. Lär dig skilja dem åt i fält, och känn igen dem på plats med appen Birdy.",
