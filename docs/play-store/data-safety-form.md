@@ -95,9 +95,10 @@ in the form:
   (including optional location) never leaves the device.
 - Data deletion: **not asked** in the form. For the record: uninstall,
   or Delete on an observation's page.
-- Independent security review: **No**
-- Committed to Google Play's Families Policy: **No** (target audience
-  is 13+, not "directed to children")
+- Independent security review: **No** (optional MASA declaration, not
+  done)
+- Families Policy badge: **not opted in** (set under Target audience
+  and content; the app is 13+, not "directed to children")
 
 ## Permissions disclosed
 
