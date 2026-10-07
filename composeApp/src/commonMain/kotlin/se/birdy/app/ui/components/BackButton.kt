@@ -4,7 +4,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -69,7 +71,8 @@ fun BackButton(
 /**
  * The row a pushed paper screen's [BackButton] sits in (release 1.3.0 Task 7b): 12dp from the
  * start edge and 8dp below the top of the screen's area (the route already starts below the
- * status bar), the same place as on About, the trophy room and season statistics.
+ * status bar), the same place as on About, the trophy room and season statistics. [content]
+ * follows the button in the row (Settings puts its title there).
  *
  * Put it OUTSIDE the screen's scrolling content (above a LazyColumn or a verticalScroll
  * Column, or as a Scaffold topBar), so the way back stays in view however far the user has
@@ -80,21 +83,23 @@ fun BackTopBar(
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
     contentDescription: String = stringResource(Res.string.profile_back),
+    content: @Composable RowScope.() -> Unit = {},
 ) {
     Row(
-        // 4dp at the bottom: IconButton's 48dp minimum touch size makes the button reach 4dp
-        // past its 40dp box on every side, and the content scrolling below must not slide under it.
+        // 4dp at the bottom: IconButton's 48dp minimum touch size draws the paper disc 4dp past
+        // its 40dp box on every side, and the content scrolling below must not slide over it.
         modifier = modifier.fillMaxWidth().padding(start = 12.dp, top = 8.dp, end = 16.dp, bottom = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         BackButton(onClick = onBack, contentDescription = contentDescription)
+        content()
     }
 }
 
 /**
  * The back button on a screen whose top is a [PhotoHero] drawn behind the status bar (the
  * species profile, Match): dark glass ([BackButton] with onDark), just under the status bar and
- * 12dp from the start edge, where the profile's button has always been.
+ * 12dp from the start edge, its disc level with the paper button's (see [backButtonPlacement]).
  *
  * Call it in a Box AFTER (on top of) the screen's scrolling content, not in the hero's topBar:
  * it then stays where it is when the photo scrolls away (release 1.3.0 Task 7b). Over the paper
@@ -109,17 +114,27 @@ fun BoxScope.PhotoBackButton(
         onClick = onBack,
         contentDescription = contentDescription,
         onDark = true,
-        modifier =
-            Modifier
-                .align(Alignment.TopStart)
-                .statusBarsPadding()
-                .padding(start = 12.dp, top = GlassBackTopPadding),
+        modifier = Modifier.align(Alignment.TopStart).statusBarsPadding().backButtonPlacement(onDark = true),
     )
 }
 
 /**
- * Top padding for a dark-glass back button under the status bar: its 36dp disc sits centred in
- * a 48dp touch target, so 2dp puts the disc's top edge 8dp down, level with the paper
- * [BackButton] in [BackTopBar] (release 1.3.0 Task 7b: the same height everywhere).
+ * Where a [BackButton] goes at the top start of a screen's area, so the disc's top edge is at the
+ * same height everywhere (release 1.3.0 Task 7b):
+ * - paper ([BackTopBar], About, the trophy room, season statistics): 12dp in, 8dp down. The
+ *   paper disc is drawn 48dp wide around its 40dp box (IconButton's minimum touch size), so its
+ *   top edge is 4dp below the top of the area.
+ * - dark glass: its 36dp disc sits centred in its 48dp touch target, 6dp in from the target's
+ *   edge, so the button is moved up 2dp ([GlassBackTopOffset]) to put the disc's top edge 4dp
+ *   below the top as well.
+ * BackButtonLevelTest checks the two discs' top edges against each other.
  */
-val GlassBackTopPadding = 2.dp
+fun Modifier.backButtonPlacement(onDark: Boolean): Modifier =
+    if (onDark) {
+        padding(start = 12.dp).offset(y = GlassBackTopOffset)
+    } else {
+        padding(start = 12.dp, top = 8.dp)
+    }
+
+/** See [backButtonPlacement]: 4dp (paper disc's top) − 6dp (glass disc's inset in its touch target). */
+val GlassBackTopOffset = -2.dp

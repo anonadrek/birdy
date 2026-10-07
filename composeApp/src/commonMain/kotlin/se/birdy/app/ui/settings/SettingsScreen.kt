@@ -109,7 +109,7 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_weekly_
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.stringResource
-import se.birdy.app.ui.components.BackButton
+import se.birdy.app.ui.components.BackTopBar
 import se.birdy.app.ui.components.OrnamentRule
 import se.birdy.app.ui.components.PremiumHeroCard
 import se.birdy.app.ui.diary.HISTORICAL_SV_ONBOARDING_FALLBACK_NAME
@@ -419,16 +419,14 @@ private fun AppLanguage.labelRes(): StringResource =
         AppLanguage.SYSTEM -> Res.string.settings_language_system
     }
 
+// BackTopBar keeps 4dp under the button, so the list below never slides over the disc's lower
+// edge (Task 7b review: a hairline crossed it).
 @Composable
 private fun TopBar(onBack: () -> Unit) {
-    Row(
-        modifier = Modifier.fillMaxWidth().padding(start = 12.dp, top = 8.dp, end = 16.dp),
-        verticalAlignment = Alignment.CenterVertically,
+    BackTopBar(
+        onBack = onBack,
+        contentDescription = stringResource(Res.string.settings_back),
     ) {
-        BackButton(
-            onClick = onBack,
-            contentDescription = stringResource(Res.string.settings_back),
-        )
         Spacer(Modifier.size(8.dp))
         Text(
             text = stringResource(Res.string.settings_title),

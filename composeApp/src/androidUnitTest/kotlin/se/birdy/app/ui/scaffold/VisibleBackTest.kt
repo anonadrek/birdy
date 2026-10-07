@@ -232,6 +232,19 @@ class VisibleBackTest {
     }
 
     @Test
+    fun `the Settings list starts below the back button, so it never slides over it`() {
+        val nav = start()
+        nav.open(AppRoute.Settings)
+        val button = compose.onNodeWithContentDescription(back).fetchSemanticsNode().touchBoundsInRoot
+        val list =
+            compose
+                .onNode(hasScrollAction() and SemanticsMatcher.keyIsDefined(SemanticsProperties.VerticalScrollAxisRange))
+                .fetchSemanticsNode()
+                .boundsInRoot
+        assertTrue(button.bottom <= list.top, "the back button reaches ${button.bottom - list.top}px into the list")
+    }
+
+    @Test
     fun `the species profile keeps its back button over the photo and the text`() {
         checkBack(start(repository = repositoryWithLongProfile()), listOf(AppRoute.SpeciesProfile("Q25485")), mustScroll = true)
     }

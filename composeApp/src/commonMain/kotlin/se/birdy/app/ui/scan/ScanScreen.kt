@@ -70,8 +70,8 @@ import birdy_bird_scanner.composeapp.generated.resources.scan_top1_searching
 import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BackButton
-import se.birdy.app.ui.components.GlassBackTopPadding
 import se.birdy.app.ui.components.JournalHeadline
+import se.birdy.app.ui.components.backButtonPlacement
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.OffwhiteWarm
@@ -214,9 +214,7 @@ fun ScanScreen(
                 Modifier
                     .align(Alignment.TopStart)
                     .windowInsetsPadding(WindowInsets.statusBars)
-                    // The glass disc (36dp) sits centred in a 48dp touch target: 2dp puts its top
-                    // edge 8dp down, level with the paper button.
-                    .padding(start = 12.dp, top = if (overPaper) 8.dp else GlassBackTopPadding),
+                    .backButtonPlacement(onDark = !overPaper),
         )
     }
     if (showDemoSheet) {
