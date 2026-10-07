@@ -1,6 +1,6 @@
 {
   "qid": "Q25382",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
@@ -361,7 +361,300 @@
       "sv": "Inte rödlistad i Svenska rödlistan 2025."
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Domherren är en förhållandevis stor och robust fink som lever i barr- och blandskog.",
+          "factIds": [
+            "f05",
+            "f15"
+          ]
+        },
+        {
+          "text": "På vintern kommer den gärna till bebyggelse och fågelmatare.",
+          "factIds": [
+            "f16",
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Svart hätta, vingar och stjärt med blå metallglans",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Hanen är röd på huvudets sidor och bröstet, honan blekare och gråbrun med dragning åt lila",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Grå rygg, vitt vingband och vit övergump som syns tydligt i den vågformiga flykten",
+          "factIds": [
+            "f02",
+            "f03",
+            "f28"
+          ]
+        },
+        {
+          "text": "Kort och tjock näbb med kraftigt välvd övernäbb",
+          "factIds": [
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Det vanliga locklätet är en tyst, låg och melankolisk vissling, ungefär ”peeu” eller ”pew”.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Den nordliga underarten pyrrhula, som finns från Skandinavien till Östeuropa, har ett lockläte som påminner om en barntrumpet.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Sången är en svag vissling uppblandad med knirkande och klagande toner, och både hona och hane sjunger.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Domherren är stannfågel och finns i hela Sverige utom på högfjället.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "Den lever i barr- och blandskog, gärna på fuktig mark med rik undervegetation och i granplanteringar.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i december och januari, då den gärna kommer till bebyggelse och fågelmatare, och sällan i augusti och september.",
+          "factIds": [
+            "d01",
+            "f18",
+            "d02"
+          ]
+        },
+        {
+          "text": "Vissa år flyttar många till Danmark och Mellaneuropa.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Norrbotten, Västernorrland och Jämtland.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Domherren äter frön, knoppar, bär som rönnbär, späda blad och en del insekter.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Den rör sig oftast i par och bara sällan i grupper.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Under häckningstiden är den skygg, men resten av året är den lättare att observera.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Boet placeras oftast i unga granar eller i häckar, och honan ruvar två till tre gånger om året mellan april och augusti.",
+          "factIds": [
+            "f21",
+            "f23"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Domherre: så känner du igen hane och hona på fältet, hur locklätet och sången låter och när på året arten oftast rapporteras.",
+      "facts": {
+        "size": {
+          "value": "15 till 17 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Bullfinch is a fairly large, sturdily built finch of coniferous and mixed forest.",
+          "factIds": [
+            "f05",
+            "f15"
+          ]
+        },
+        {
+          "text": "In winter it readily comes to houses and bird feeders.",
+          "factIds": [
+            "f16",
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Black cap, wings and tail with a blue metallic sheen",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Male red on the sides of the head and breast, female paler, grey-brown tinged lilac",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Grey back, white wing bar and white rump, clear in the undulating flight",
+          "factIds": [
+            "f02",
+            "f03",
+            "f28"
+          ]
+        },
+        {
+          "text": "Short, thick bill with a strongly curved upper mandible",
+          "factIds": [
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The usual call is a quiet, low, melancholy whistle, roughly \"peeu\" or \"pew\".",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The northern subspecies pyrrhula, found from Scandinavia to Eastern Europe, has a call that recalls a toy trumpet.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The song is a weak whistling mixed with creaking and plaintive notes, and both female and male sing.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "A resident found throughout Sweden except in the high mountains.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "It lives in coniferous and mixed forest, often damp with rich undergrowth.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        },
+        {
+          "text": "It is reported most in December and January, when it visits settlements and bird feeders, and rarely in August and September.",
+          "factIds": [
+            "d01",
+            "f18",
+            "d02"
+          ]
+        },
+        {
+          "text": "In some years many move to Denmark and Central Europe.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Norrbotten, Västernorrland and Jämtland.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats seeds, buds, berries such as rowan berries, young leaves and some insects.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It usually moves in pairs and only rarely in groups.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "It is shy in the breeding season but easier to watch the rest of the year.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "The nest is usually placed in young spruces or hedges, and the female incubates two to three times a year between April and August.",
+          "factIds": [
+            "f21",
+            "f23"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Eurasian Bullfinch: how to recognise male and female in the field, what the call and song sound like and when it is most often reported.",
+      "facts": {
+        "size": {
+          "value": "15 to 17 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
@@ -373,6 +666,18 @@
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
       "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "d7ea8dd9c0854b50"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T19:02:24.943717+00:00",
       "factsHash": "d7ea8dd9c0854b50"
     }
   },
@@ -582,5 +887,11 @@
       "factId": "f09",
       "message": "f09 anger ett tal i cm som inte stämmer med de andra artiklarna (2 till 2 cm)"
     }
-  ]
+  ],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }

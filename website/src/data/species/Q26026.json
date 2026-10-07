@@ -1,6 +1,6 @@
 {
   "qid": "Q26026",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
@@ -373,9 +373,304 @@
       "topic": "data",
       "source": "rodlistan",
       "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [],
+      "edited": true
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Ringduvan är Europas största duva och finns i de flesta typer av skog.",
+          "factIds": [
+            "f08",
+            "f20"
+          ]
+        },
+        {
+          "text": "På senare år har den flyttat in i parker och trädgårdar.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Mest grå dräkt med grönblått skimmer på huvud och nacke, rosafärgat bröst",
+          "factIds": [
+            "f01",
+            "f04"
+          ]
+        },
+        {
+          "text": "Vita fläckar på halsens sidor men ingen ring, ungfåglar saknar fläckarna",
+          "factIds": [
+            "f02",
+            "f11"
+          ]
+        },
+        {
+          "text": "Vita tvärband på vingens ovansida syns tydligt i flykten",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Könen är lika, men honan har mindre rödton på bröstet och något mindre halsfläckar",
+          "factIds": [
+            "f10",
+            "f13"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången är ett ganska dovt, femstavigt hoande med betoning på första stavelsen.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Strofen upprepas cirka tre till fem gånger utan paus och avslutas med ett ko.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "När den flyger upp hörs ett intensivt smattrande från vingarna, som fungerar som varning.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Ringduvan är delvis flyttfågel och häckar i Sverige.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Den är vanlig i skogs- och jordbruksbygd från Skåne till Norrbotten och södra Lappland och rapporteras från alla 21 län.",
+          "factIds": [
+            "f21",
+            "d02"
+          ]
+        },
+        {
+          "text": "Höstflyttningen kulminerar i oktober, då stora mängder lämnar Sverige via Falsterbo.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Arten rapporteras mest i mars och april.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Den är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan är nästan helt vegetabilisk: spannmål, frukter, ärtor, frön, bär, skott och knoppar, och på vintern är bokollon och ekollon populära.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "Den söker oftast föda i flock på öppna fält och åkrar och besöker ofta fågelbord vintertid.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden ses den ofta i större flockar.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "I flyktspelet stiger den brant med ljudligt vingsmatter och glider sedan med stela vingar och utbredd stjärt.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Ringduva: så känner du igen den på dräkt, halsfläckar och vingband, hur sången och vingsmattret låter och när den ses under året.",
+      "facts": {
+        "size": {
+          "value": "Upp till 45 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Common Wood Pigeon is Europe's largest pigeon and lives in most kinds of woodland.",
+          "factIds": [
+            "f08",
+            "f20"
+          ]
+        },
+        {
+          "text": "In recent years it has moved into parks and gardens.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Mostly grey plumage with a blue-green sheen on head and neck, pink breast",
+          "factIds": [
+            "f01",
+            "f04"
+          ]
+        },
+        {
+          "text": "White patches on the neck sides but no true ring, missing in young birds",
+          "factIds": [
+            "f02",
+            "f11"
+          ]
+        },
+        {
+          "text": "White bars across the upper wing show clearly in flight",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Sexes look alike, but females show less red on the breast and slightly smaller neck patches",
+          "factIds": [
+            "f10",
+            "f13"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is a rather muffled five-syllable cooing, stressed on the first syllable.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "The phrase is repeated about three to five times without a pause and ends with a 'ko'.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "When it takes off, the wings make an intense clattering sound that serves as a warning.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Common Wood Pigeon is a partial migrant that breeds in Sweden.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "It is common in forest and farmland from Skåne to Norrbotten and southern Lapland, and is reported from all 21 counties.",
+          "factIds": [
+            "f21",
+            "d02"
+          ]
+        },
+        {
+          "text": "Autumn migration peaks in October, when large numbers leave Sweden via Falsterbo.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "It is reported most in March and April.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "It is not red-listed in the Swedish Red List 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Food is almost all plant matter: grain, fruit, peas, seeds, berries, shoots and buds, with beechnuts and acorns popular in winter.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "It usually feeds in flocks on open fields and farmland, and in winter often visits bird tables.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it is often seen in larger flocks.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "In display flight it climbs steeply with loud wing clapping, then glides on stiff wings with its tail spread.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Common Wood Pigeon: how to recognise it by plumage, neck patches and wing bars, what its song and wing clatter sound like, and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "Up to 45 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
@@ -387,7 +682,19 @@
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
       "at": "2026-10-07T18:32:32.145333+00:00",
-      "factsHash": "92e31c081792b21e"
+      "factsHash": "89e05b5487f46a68"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T19:02:24.943717+00:00",
+      "factsHash": "89e05b5487f46a68"
     }
   },
   "errors": [],
@@ -585,7 +892,7 @@
       }
     },
     "statusSignal": {
-      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+      "contradicts": null
     }
   },
   "flags": [
@@ -594,5 +901,11 @@
       "factId": "s01",
       "message": "Statusen i Sverige ströks av faktakontrollen: The quotes support that wood pigeons in Scandinavia/Sweden are migratory (Zugvögel) and that large numbers leave Sweden via Falsterbo, but none of the given quotes explicitly confirm that the species breeds in Sweden specifically (the breeding range description only mentions 'Europa' broadly without naming Scandinavia or Sweden).. Bestäm status eller lämna tom."
     }
-  ]
+  ],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }

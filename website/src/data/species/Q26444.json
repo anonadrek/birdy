@@ -1,6 +1,6 @@
 {
   "qid": "Q26444",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
@@ -338,7 +338,292 @@
       "sv": "Inte rödlistad i Svenska rödlistan 2025."
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Viggen är en and med tofs i nacken som häckar i skogssjöar, lugna åar och parkdammar, men även vid havskuster.",
+          "factIds": [
+            "f02",
+            "f16"
+          ]
+        },
+        {
+          "text": "I Sverige häckar den i stort sett i hela landet.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Tofs i nacken, lång och hängande hos häckande hanar, mindre tydlig hos honan",
+          "factIds": [
+            "f02",
+            "f08"
+          ]
+        },
+        {
+          "text": "Den adulta hanen är svart med vita sidor och vit buk",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Honan är mörkbrun på rygg och huvud, ljusare brun på sidorna",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Gul iris, ljust gråblå näbb med svart nagel och vitt vingband i flykten",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Den friande hanen och fåglar i flykten ger ett nästan kalkonlikt, fnittrande läte som faller i tonhöjd och blir snabbare.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Honan har en skorrande ramsa, ”krr krr krr krr”, snabbare än brunandens och ljusare än bergandens.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Utanför uppvaktningen är hanarna mestadels tysta.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Viggen är delvis flyttfågel och häckar i Sverige, i stort sett i hela landet.",
+          "factIds": [
+            "s01",
+            "f18"
+          ]
+        },
+        {
+          "text": "På sommaren är den vanligast i Norrland och östra Sverige.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "De flesta lämnar Sverige på vintern, men vissa övervintrar i södra Sverige.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Den häckar helst i grunda, näringsrika sjöar och vikar, i skärgården gärna i flador.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Viggen söker oftast föda på grunt vatten, dyker sällan djupare än tre meter och stannar i genomsnitt 15 sekunder under vattnet.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Viktig föda är snäckor, musslor, kräftdjur, småfisk, vatteninsekter och vattenväxter.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Den häckar gärna bland måsar och tärnor, som ger visst skydd.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "På vintern kan viggar samlas i flockar med tusentals fåglar.",
+          "factIds": [
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Vigg: så känner du igen arten på tofsen, näbben och dräkten, hur hanens och honans läten låter och när viggen ses under året.",
+      "facts": {
+        "size": {
+          "value": "40 till 47 cm",
+          "factIds": [
+            "f12"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Tufted Duck is a duck with a tuft on the nape that breeds on forest lakes, slow rivers and park ponds, and also on sea coasts.",
+          "factIds": [
+            "f02",
+            "f16"
+          ]
+        },
+        {
+          "text": "In Sweden it breeds across almost the whole country.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Tuft on the nape, long and drooping in breeding males, less obvious in females",
+          "factIds": [
+            "f02",
+            "f08"
+          ]
+        },
+        {
+          "text": "The adult male is black with white flanks and a white belly",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "The female is dark brown on back and head, paler brown on the flanks",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Yellow eye, pale grey-blue bill with a black nail, white wing bar in flight",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The courting male, and birds in flight, give an almost turkey-like giggling call that falls in pitch and speeds up: \"vip vi-vivyvyp\".",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The female has a grating series, \"krr krr krr krr\", faster than the Common Pochard's and higher than the Greater Scaup's.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Outside courtship the males are mostly silent.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Tufted Duck is a partial migrant that breeds in Sweden, across almost the whole country.",
+          "factIds": [
+            "s01",
+            "f18"
+          ]
+        },
+        {
+          "text": "In summer it is commonest in Norrland and eastern Sweden.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Most leave Sweden in winter, but some winter in southern Sweden.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "It is reported all year round and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "It prefers to breed on shallow, nutrient-rich lakes and bays, in the archipelago often in shallow coastal lagoons.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It mostly feeds in shallow water, rarely dives deeper than three metres and stays under for 15 seconds on average.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Important food is snails, mussels, crustaceans, small fish, water insects and water plants.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "It likes to breed among gulls and terns, which give it some protection.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "In winter Tufted Ducks can gather in flocks of thousands of birds.",
+          "factIds": [
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Tufted Duck: how to recognise it by its tuft, bill and plumage, what the calls of male and female sound like, and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "40 to 47 cm",
+          "factIds": [
+            "f12"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
@@ -350,6 +635,18 @@
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
       "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "b9d6133b078265d1"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T19:02:24.943717+00:00",
       "factsHash": "b9d6133b078265d1"
     }
   },
@@ -557,5 +854,11 @@
       "factId": "f12",
       "message": "f12 anger ett tal i cm som inte stämmer med de andra artiklarna (4.1 till 5.9 cm)"
     }
-  ]
+  ],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }

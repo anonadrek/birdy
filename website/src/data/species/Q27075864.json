@@ -1,6 +1,6 @@
 {
   "qid": "Q27075864",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
@@ -367,7 +367,296 @@
       "sv": "Inte rödlistad i Svenska rödlistan 2025."
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Grönsiskan är en liten fink som häckar i hela Sverige utom i fjällen.",
+          "factIds": [
+            "f01",
+            "f16"
+          ]
+        },
+        {
+          "text": "Den häckar helst i högstammig barrskog med al och björk och besöker fågelmatningar i trädgårdar.",
+          "factIds": [
+            "f14",
+            "f27"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Två ljust gulgröna vingband omgivna av svart och ljusgrön övergump i alla dräkter",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Hanen är grön på rygg och bröst, med svart hjässa och svart strupfläck",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        },
+        {
+          "text": "Hona och ungfåglar är ljust grågröna med mörk vattring, utan hanens svarta partier",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Kort, konformad och spetsig näbb samt kort, kluven stjärt",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Locklätena är tvåstaviga och visslande, ett fallande \"tilö\" och ett stigande \"tluih\".",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Den har också ett knattrande småläte.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Sången är en kvittrande och drillande ramsa med härmningar, som gång på gång avbryts av en utdragen, nästan kiknande ton.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Grönsiskor sjunger året runt, ofta i grupp.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Grönsiskan är delvis flyttfågel och häckar i hela Sverige utom i fjällen, och den är allmän i södra och mellersta Sverige.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "En del svenska grönsiskor flyttar söderut till Tyskland och Frankrike medan andra övervintrar.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län och mest i januari, februari och september.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "På vintern föredrar den stubbåkrar, odlingar och områden med fröbärande träd.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Vintertid ses grönsiskan ofta i stora flockar, ofta blandade med gråsiskor, och lever då främst av alfrön.",
+          "factIds": [
+            "f19",
+            "f28"
+          ]
+        },
+        {
+          "text": "Den äter också frön av örter och gräs samt insekter.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Den söker föda akrobatiskt och hänger ofta upp och ner som en mes.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Den drar vida omkring men är rätt oskygg, och flykten är snabb och bågformig.",
+          "factIds": [
+            "f29",
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Grönsiska: lär dig känna igen den lilla finken på dräkt och vingband, hör hur lätena och sången låter och se när den syns.",
+      "facts": {
+        "size": {
+          "value": "12 till 13 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Siskin is a small finch that breeds throughout Sweden except in the mountains.",
+          "factIds": [
+            "f01",
+            "f16"
+          ]
+        },
+        {
+          "text": "It prefers to breed in tall conifer forest with alder and birch, and it visits bird feeders in gardens.",
+          "factIds": [
+            "f14",
+            "f27"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Two pale yellow-green wing bars set in black, and a pale green rump in all plumages",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Male is green on back and breast, with black crown and black throat patch",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        },
+        {
+          "text": "Female and young lack the male's black and are pale grey-green with dark streaking",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Short, conical, pointed bill and short, forked tail",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The calls are two-syllable whistles, one falling \"tilö\", the other rising \"tluih\".",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "It also has a chattering soft call.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The song is a twittering, trilling ramble with mimicry, repeatedly broken by a drawn-out, almost wheezing note.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Siskins sing all year round, often in groups.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Eurasian Siskin is a partial migrant that breeds throughout Sweden except in the mountains, and it is common in southern and central Sweden.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "Some Swedish birds move south to Germany and France while others stay for the winter.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties, most often in January, February and September.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "In winter it prefers stubble fields, farmland and areas with seed-bearing trees.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "In winter it is often seen in large flocks, frequently mixed with redpolls, and then feeds mainly on alder seeds.",
+          "factIds": [
+            "f19",
+            "f28"
+          ]
+        },
+        {
+          "text": "It also eats seeds of herbs and grasses, and insects.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "It forages acrobatically, often hanging upside down like a tit.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "It wanders widely but is fairly tame, and its flight is fast and bounding.",
+          "factIds": [
+            "f29",
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Eurasian Siskin: learn to recognise this small finch by its plumage and wing bars, hear its calls and song, and find out when it is seen.",
+      "facts": {
+        "size": {
+          "value": "12 to 13 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
@@ -379,6 +668,18 @@
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
       "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "dd4a5b45724e6ff1"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T19:02:24.943717+00:00",
       "factsHash": "dd4a5b45724e6ff1"
     }
   },
@@ -586,5 +887,11 @@
       "factId": "f01",
       "message": "f01 anger ett tal i cm som inte stämmer med de andra artiklarna (0.2 till 1.65 cm)"
     }
-  ]
+  ],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }

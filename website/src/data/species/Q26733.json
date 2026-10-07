@@ -1,6 +1,6 @@
 {
   "qid": "Q26733",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 1
@@ -356,9 +356,320 @@
       "topic": "data",
       "source": "rodlistan",
       "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [],
+      "edited": true
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Kanadagåsen infördes till Skandinavien under 1900-talet, med början i Sverige 1929, och är i dag Sveriges vanligaste och mest utbredda gås.",
+          "factIds": [
+            "f15",
+            "f16"
+          ]
+        },
+        {
+          "text": "Den ses vid öppna sjöar och i skärgård, men också i parker och jordbruksbygd med mindre sjöar eller dammar.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Svart huvud och hals med vitt hakband från strupen till bakom ögonen",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Den svarta halsen är skarpt avgränsad mot det grå bröstet",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Beigebrun buk och sidor med tydliga tvärband, mörkare gråbrun rygg",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Vit gump, svartgrå stjärt, gråsvart näbb och fötter, könen är lika",
+          "factIds": [
+            "f04",
+            "f06",
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Det typiska lätet är ett nasalt, tvåstavigt ”år-lytt”, där andra stavelsen nästan går upp i falsett.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Den ropar särskilt flitigt i flykten.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Upprörda eller revirförsvarande gäss inleder ofta en konfrontation med ett högt väsande.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Kanadagåsen är delvis flyttfågel och häckar i Sverige, även i myrområden med större vattenspeglar.",
+          "factIds": [
+            "s01",
+            "f14"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Gäss i norra Sverige flyttar till Nordsjö- och Östersjökusterna, och många nordeuropeiska kanadagäss övervintrar kring Danmark, Nederländerna och Polen.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "På nordliga platser där vattnet hålls öppet på konstgjord väg övervintrar den ofta.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den äter främst gräs och andra växter och deras rötter, ibland även små insekter och fisk.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "När den betar vattenväxter lyfter den bakkroppen ur vattnet för att nå längre ner.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden lever den i stora flockar, där några gäss håller vakt medan de andra betar.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Den flyger i en karakteristisk V-formation, och många är halvtama och håller till i parker och dammar nära människor.",
+          "factIds": [
+            "f28",
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Branta hutchinsii",
+          "text": [
+            {
+              "text": "Polargåsen liknar en mindre kanadagås men har proportionerligt kortare hals och mindre näbb.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Kanadagås: så känner du igen den på svart hals och vitt hakband, hur lätet låter, när den ses i Sverige samt vad den äter.",
+      "facts": {
+        "size": {
+          "value": "90 till 105 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Canada Goose was introduced to Scandinavia in the 1900s, starting in Sweden in 1929, and is now Sweden's commonest and most widespread goose.",
+          "factIds": [
+            "f15",
+            "f16"
+          ]
+        },
+        {
+          "text": "It lives on open lakes and archipelagos, and in parks and farmland with smaller lakes or ponds.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Black head and neck with a white chinstrap reaching from the throat to behind the eyes",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "The black neck is sharply divided from the grey breast",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Beige-brown belly and flanks with clear bars, darker grey-brown back",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "White rump, blackish-grey tail, grey-black bill and feet, sexes alike",
+          "factIds": [
+            "f04",
+            "f06",
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The typical call is a nasal, two-syllable “år-lytt”, with the second syllable almost rising into falsetto.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "It calls especially often in flight.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Agitated or territorial geese often start a confrontation with a loud hiss.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Canada Goose is a partial migrant that breeds in Sweden, also in bogs with larger open water.",
+          "factIds": [
+            "s01",
+            "f14"
+          ]
+        },
+        {
+          "text": "It is reported all year round and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Birds from northern Sweden move to the North Sea and Baltic coasts, and many northern European Canada Geese winter around Denmark, the Netherlands and Poland.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "In northern places where water is kept open artificially, it often stays for the winter.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats mainly grass, other plants and their roots, sometimes small insects and fish.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "When grazing water plants it lifts its rear out of the water to reach deeper.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it lives in large flocks, where some geese keep watch while the others graze.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "It flies in a characteristic V formation, and many are half tame, living in parks and ponds near people.",
+          "factIds": [
+            "f28",
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Branta hutchinsii",
+          "text": [
+            {
+              "text": "Branta hutchinsii looks like a smaller Canada Goose but has a proportionally shorter neck and a smaller bill.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Canada Goose: how to recognise it by its black neck and white chinstrap, what its call sounds like, when it is seen in Sweden and what it eats.",
+      "facts": {
+        "size": {
+          "value": "90 to 105 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
@@ -370,7 +681,19 @@
       "model": "claude-sonnet-5",
       "prompt": "verify-v1",
       "at": "2026-10-07T18:32:32.145333+00:00",
-      "factsHash": "2bcc3ae04465de81"
+      "factsHash": "7dde26dd9f5a4000"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T19:02:24.943717+00:00",
+      "factsHash": "7dde26dd9f5a4000"
     }
   },
   "errors": [],
@@ -577,5 +900,11 @@
       "factId": "s01",
       "message": "Statusen i Sverige ströks av faktakontrollen: Quote supports partial migration for northern Swedish populations but does not explicitly state the species breeds in Sweden.. Bestäm status eller lämna tom."
     }
-  ]
+  ],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
 }
