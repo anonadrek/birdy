@@ -50,6 +50,9 @@ Thumbs.db
 tools/content-pipeline/.cache/
 tools/content-pipeline/.env
 tools/content-pipeline/sparse_content.yaml
+# Leftover temp files from sheet_csv.write_sheet's atomic replace, if a process ever
+# dies between the temp write and the rename (review fix 2026-10-06).
+tools/content-pipeline/review/.*.tmp
 
 # Signing keystores — never commit
 keystore/

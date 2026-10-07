@@ -376,6 +376,8 @@
     <string name="settings_name_dialog_cancel">Avbryt</string>
     <string name="settings_language_dialog_done">Klar</string>
     <string name="settings_back">Tillbaka</string>
+    <!-- The back button's label wherever a screen has no label of its own (release 1.3.0 Task 7b). -->
+    <string name="common_back">Tillbaka</string>
     <string name="menu_button">Meny</string>
 
     <!-- ===== Plan 7b: ArchiveScreen ===== -->
@@ -549,6 +551,8 @@
     <string name="settings_restore_purchases_success">Köpet är återställt.</string>
     <string name="settings_restore_purchases_empty">Inget köp att återställa.</string>
     <string name="settings_restore_purchases_unavailable">Kunde inte nå Google Play. Kontrollera anslutningen och försök igen.</string>
+    <string name="settings_row_manage_subscription">Hantera prenumeration</string>
+    <string name="settings_manage_subscription_caption">Säg upp eller ändra i Google Play.</string>
     <string name="settings_footer">— Birdy är ett fält-prospekt. —</string>
     <!-- Gear -->
     <string name="gear_content_description">Inställningar</string>

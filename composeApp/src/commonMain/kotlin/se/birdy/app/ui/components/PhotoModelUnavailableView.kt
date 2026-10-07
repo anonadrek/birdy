@@ -21,6 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.bootstrap_loading
 import birdy_bird_scanner.composeapp.generated.resources.photo_model_unavailable_body
 import birdy_bird_scanner.composeapp.generated.resources.photo_model_unavailable_title
 import birdy_bird_scanner.composeapp.generated.resources.photo_retry
@@ -86,5 +87,20 @@ fun PhotoModelUnavailableView(
                     .windowInsetsPadding(WindowInsets.statusBars)
                     .padding(start = 12.dp, top = 8.dp),
         )
+    }
+}
+
+/**
+ * Shown by [se.birdy.app.ui.scan.ScanScreenHost] and [se.birdy.app.ui.photoanalyze.PhotoAnalyzeHost]
+ * while [se.birdy.ml.ClassifierBootstrapState.Initializing]: the photo model is (re)building,
+ * e.g. after "Försök igen" above. An in-place loader scoped to the screen (not AppGate's full
+ * screen one, so the screen stays on the back stack), with the same way back as the screen
+ * itself (release 1.3.0 Task 7b: the loader had none).
+ */
+@Composable
+fun PhotoModelStartingView(onBack: () -> Unit) {
+    Column(modifier = Modifier.fillMaxSize().paperBackground()) {
+        BackTopBar(onBack = onBack, modifier = Modifier.windowInsetsPadding(WindowInsets.statusBars))
+        JournalLoading(label = stringResource(Res.string.bootstrap_loading), modifier = Modifier.weight(1f))
     }
 }

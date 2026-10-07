@@ -38,8 +38,6 @@ import kotlin.coroutines.resume
 import java.util.Base64 as JvmBase64
 
 private const val TAG = "PremiumBilling"
-private const val YEARLY_PRODUCT_ID = "premium_yearly_v1"
-private const val LIFETIME_PRODUCT_ID = "premium_lifetime_v1"
 
 // Retry backoff for a still-missing price after a product-details fetch (e.g. a flaky/offline
 // cold start): 2 s, then 5 s, then 15 s. Each named separately so the literals count as constant
@@ -199,9 +197,9 @@ actual class PremiumBillingClient(
         // failed or empty fetch keeps the previous details (Elvis fallback) — a transient
         // failure must never erase a price that was already loaded.
         suspend fun fetchPrices() {
-            yearlyDetails = querySingleProduct(YEARLY_PRODUCT_ID, BillingClient.ProductType.SUBS) ?: yearlyDetails
+            yearlyDetails = querySingleProduct(PremiumProducts.YEARLY, BillingClient.ProductType.SUBS) ?: yearlyDetails
             lifetimeDetails =
-                querySingleProduct(LIFETIME_PRODUCT_ID, BillingClient.ProductType.INAPP) ?: lifetimeDetails
+                querySingleProduct(PremiumProducts.LIFETIME, BillingClient.ProductType.INAPP) ?: lifetimeDetails
             _formattedPrices.value =
                 FormattedPrices(
                     yearly =
@@ -227,8 +225,8 @@ actual class PremiumBillingClient(
         if (!bothPricesLoaded()) {
             val missing =
                 buildList {
-                    if (_formattedPrices.value.yearly == null) add(YEARLY_PRODUCT_ID)
-                    if (_formattedPrices.value.lifetime == null) add(LIFETIME_PRODUCT_ID)
+                    if (_formattedPrices.value.yearly == null) add(PremiumProducts.YEARLY)
+                    if (_formattedPrices.value.lifetime == null) add(PremiumProducts.LIFETIME)
                 }
             Log.w(TAG, "Price(s) still missing after retries: $missing")
         }
@@ -512,8 +510,8 @@ actual class PremiumBillingClient(
     private fun Purchase.toPremiumState(): PremiumState {
         val tier =
             when {
-                products.contains(YEARLY_PRODUCT_ID) -> PremiumTier.YEARLY
-                products.contains(LIFETIME_PRODUCT_ID) -> PremiumTier.LIFETIME
+                products.contains(PremiumProducts.YEARLY) -> PremiumTier.YEARLY
+                products.contains(PremiumProducts.LIFETIME) -> PremiumTier.LIFETIME
                 else -> return PremiumState.Free
             }
         return PremiumState.Active(tier, Clock.System.now())

@@ -110,7 +110,7 @@ Avsnitt 2 (rad 2, 8, 11, 15), 7, 8, 9.4, 9.8, 14, 15, 16, 17 och bilaga E är ä
 2. **Ingångssidans rubrik är "Fåglar i Sverige och Europa".** Bland de 180 finns arter som inte förekommer i Sverige.
 3. **Brödsmulorna hoppar över familjen** (Birdy › Arter › Tättingar › Talgoxe).
 4. **Grupper med färre än tre publicerade arter får `noindex`** och ligger utanför sitemapen tills de växer.
-5. **Inspelningen klipps till högst 20 sekunder** för att hålla nere storleken. Creditraden säger att den är klippt.
+5. **Inspelningen klipps till högst 20 sekunder** för att hålla nere storleken. ~~Creditraden säger att den är klippt.~~ **Ändrat 2026-10-06 (godkänt av Albin):** varje inspelning bearbetas (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), så creditraden säger alltid att den är bearbetad: "bearbetad", eller "klippt och bearbetad" när den kortats.
 
 ## 3. Omfång
 
@@ -140,12 +140,12 @@ Avsnitt 2 (rad 2, 8, 11, 15), 7, 8, 9.4, 9.8, 14, 15, 16, 17 och bilaga E är ä
 | Ingångssida | `/sv/arter/` | `/species/` |
 | Grupp | `/sv/arter/ugglor/` | `/species/owls/` |
 | Art | `/sv/arter/talgoxe/` | `/species/great-tit/` |
-| Jämförelse | `/sv/arter/blames-eller-talgoxe/` | `/species/blue-tit-vs-great-tit/` |
+| Jämförelse | `/sv/arter/blames-eller-talgoxe/` | `/species/eurasian-blue-tit-vs-great-tit/` |
 | Om sidorna | `/sv/arter/om-artsidorna/` | `/species/about-these-pages/` |
 
 - **Alla sidtyper delar mapp.** En dynamisk route per språk (`src/pages/species/[slug].astro` och `src/pages/sv/arter/[slug].astro`) renderar art, grupp eller jämförelse. Om-sidan är en egen fil i samma mapp.
 - **Slug-regler för arter:** artens namn på språket, gemener, `å ä` → `a`, `ö` → `o`, `é è` → `e`, `ü` → `u`, mellanslag och apostrofer → `-`, `&` → `och`/`and`, övriga tecken bort.
-- **Slug-regler för jämförelser:** de två arternas slugs i bokstavsordning efter slug, sammanfogade med `-eller-` (SV) eller `-vs-` (EN). Varje par får exakt en sida per språk. Rubriken på sidan följer samma ordning.
+- **Slug-regler för jämförelser:** de två arternas slugs i bokstavsordning efter slug, sammanfogade med `-eller-` (SV) eller `-vs-` (EN). Varje par får exakt en sida per språk. Rubriken på sidan följer samma ordning. **EN-slugen är artens egen slug** ur `names.en` (t.ex. "Eurasian Blue Tit" → `eurasian-blue-tit`), inte ett förkortat visningsnamn -- exemplet i tabellen ovan rättat 2026-10-06 (Task 21-granskningen), som tidigare visade `blue-tit-vs-great-tit`.
 - **Gruppernas slugs** (fasta):
 
   | Grupp | SV | EN |
@@ -243,6 +243,8 @@ Utseendet följer fältbokens färger: inget grönt, espresso för mörka ytor, 
 
 Paren sorteras på summan av de svenska volymerna, med den engelska summan som skiljelinje. De 30 bästa får en sida. Ett par där båda summorna är noll får ingen sida. Volymerna sparas i `tools/content-pipeline/review/comparison-volumes.csv`.
 
+**Rättat 2026-10-06 (Task 21-granskningen):** den engelska skiljelinjen är **det högsta enskilda engelska sökvärdet**, inte en summa (matchar R7 i fas 1b-planen). 78 av 180 arter har ett IOC-prefix (Eurasian/Common/Northern/Western/European) som sällan skrivs i en sökruta ("eurasian blue tit vs great tit" läser nära noll i planeraren), så `queries()` mäter upp till sex engelska fraser per par -- de tre ovan plus samma fraser utan prefixet när ett namn har ett -- och skiljelinjen är den högsta av alla uppmätta.
+
 **Innehåll, uppifrån och ned:**
 
 1. Brödsmulor: Birdy › Arter › {A} eller {B}?
@@ -264,7 +266,7 @@ En sida per språk som förklarar, i sajtens ton och utan tankstreck:
 - **Källorna:** Wikipedia på tre språk, Artportalen via GBIF, Svenska rödlistan 2025, foton och inspelningar från Wikimedia Commons.
 - **Hur AI används:** en modell tar ut fakta med citat ur artiklarna, kod kontrollerar citaten, en modell skriver texten bara ur godkända fakta, en annan modell kontrollerar varje mening. Diagram, karta och rödlistestatus kommer direkt ur datan, utan modell.
 - **Kontrollen:** en andra modell kontrollerar varje faktum mot sitt citat ur artikeln, kod jämför siffror mellan artiklarna, förekomst jämförs med Artportalen och den svenska rödlistan, och inspelningen kontrolleras med Birdys egen ljudmodell. Det som inte går att avgöra automatiskt granskas av Albin Abrahamsson innan sidan publiceras. Efter publicering granskar han dessutom ett löpande stickprov av redan publicerade sidor (ändrat 2026-10-05 (b)). Datumet för den senaste kontrollen står på varje sida.
-- **Licenserna:** texterna får delas under CC BY-SA 4.0, foton och inspelningar under sina egna licenser.
+- **Licenserna:** texterna får delas under CC BY-SA 4.0, foton och inspelningar under sina egna licenser. Inspelningarna är bearbetade (tillägg 2026-10-06, godkänt av Albin): högst 20 sekunder, mono, utjämnad ljudnivå och MP3, och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet. Foton visas oförändrade, bara nedskalade.
 - **Rättelser:** mejladressen och att rättade sidor får nytt kontrolldatum.
 
 Texten skrivs i planen och godkänns av Albin. Sidan länkas från alla artsidor, jämförelsesidor och ingångssidan. JSON-LD som blogginläggen: `author` Person Albin Abrahamsson, `publisher` AlbIT AB.
@@ -333,7 +335,7 @@ Ersätter Albins manuella granskning av varje faktablad (Revision 2026-10-05). E
 
 ### 9.5 Skrivandet
 
-- **Prompt:** `prompts/web-v2.md`. Underlag: bara de godkända fakta och datafakta, namn, familj, grupp och `identifiable`. Modellen ser inte artiklarna. Modell i Opus-klass med hög tankenivå.
+- **Prompt:** `prompts/web-v2.md`. Underlag: bara de godkända fakta och datafakta, namn, familj och grupp. Modellen ser inte artiklarna. `identifiable` är INTE underlag för skrivandet (fix 2026-10-06): appens kännetecken-ruta är sajtens egen UI-text om vad appen klarar, inte något modellen ska skriva om. Modell i Opus-klass med hög tankenivå.
 - **Fält per språk** (svenska och engelska, var för sig naturligt skrivna):
 
   | Fält | Innehåll | Gräns |
@@ -389,7 +391,7 @@ Ersätter Albins manuella granskning av varje faktablad (Revision 2026-10-05). E
 
 1. **Texten** behandlas som en bearbetning av Wikipedia och delas under **CC BY-SA 4.0**. Varje sida anger de artiklar som använts (svenska, engelska och tyska, länkade till revisionen) och att texten bygger på dem. Repots LICENSE är proprietär, så mapparna `website/src/data/species/` och `website/src/data/comparisons/` får varsin `LICENSE.md` som säger att texterna där är CC BY-SA 4.0, och rotens LICENSE får en rad om undantaget.
 2. **Rapportdata och rödlista** hämtas bara med licensen CC0. Inga villkor följer med, men källan anges ändå: "Artportalen (SLU Artdatabanken) via GBIF.org" och "Rödlistade arter i Sverige 2025 (SLU Artdatabanken)".
-3. **Foton och inspelningar** används bara med licenser ur en fast tabell: CC0, public domain, CC BY 2.0, 3.0 och 4.0, CC BY-SA 2.0, 3.0 och 4.0. En creditrad per fil med upphovsperson (HTML tvättad), licens (länkad) och källsida på Commons. Foton visas oförändrade (bara nedskalade). En klippt inspelning har "klippt" i creditraden och samma licens som originalet.
+3. **Foton och inspelningar** används bara med licenser ur en fast tabell: CC0, public domain, CC BY 2.0, 3.0 och 4.0, CC BY-SA 2.0, 3.0 och 4.0. En creditrad per fil med upphovsperson (HTML tvättad), licens (länkad) och källsida på Commons. Foton visas oförändrade (bara nedskalade). ~~En klippt inspelning har "klippt" i creditraden och samma licens som originalet.~~ **Ändrat 2026-10-06 (godkänt av Albin):** varje inspelning är bearbetad (högst 20 sekunder, mono, utjämnad ljudnivå, MP3) och har "bearbetad" i creditraden, "klippt och bearbetad" när den kortats, och samma licens som originalet. En inspelning under CC BY eller CC BY-SA utan upphovsperson används inte.
 4. **Används aldrig:** xeno-cantos NonCommercial-inspelningar, Artdatabankens egna arttexter och text ur fälthandböcker.
 5. **Bygget failar** om ett foto, en inspelning, en artikel eller en datakälla som visas på en sida saknar sin creditrad (`check-seo.mjs`).
 
@@ -522,6 +524,41 @@ Faktabladen tas fram och kontrolleras automatiskt (V1 till V4) för alla 180 art
   3. Mätvärdena skrivs in i baslinjefilen efter 6 och 12 veckor och blir underlag för AlbIT-caset.
 - **Länkar efter våg 1:** agenten skriver utkast, Albin skickar i eget namn. Mottagare: en tråd på birdforum.net (skickar redan besökare), lokala ornitologiska föreningar och BirdLife Sveriges vinterräkning, svenska fågelgrupper på Facebook, lärare och naturskolor (jämförelsesidorna som gratis undervisningsmaterial) och AlbIT-caset. Utkasten sparas i `docs/marketing/2026-artsidor-utskick.md`.
 
+### 15.1 Sociala medier (beslut 2026-10-06, planeras när publiceringen startar)
+
+**Påminnelse:** när de första artsidorna publiceras på birdy.community startar Birdy ett dagligt inlägg på Facebook och Instagram (TikTok senare) om en publicerad artsida. Planeras i detalj först då; inget byggs före fas 2:s publiceringsloop.
+
+- **Ett inlägg per dag**, samma mall för alla arter: artens foto, svenskt och engelskt namn, ett eller två kontrollerade fakta ur artposten, fotografens kredit och länk till sidan. Albin väljer mallen bland 2 till 3 förslag (förhandsvisning).
+- **Konton:** Albin skapar dem själv (Facebook-sida, Instagram som företagskonto kopplat till sidan, TikTok), samma namn på alla, gärna nu så att namnet är reserverat.
+- **Schemaläggning:** steg 1 genererar en månad i taget (bild + text per dag) som Albin lägger in i Meta Business Suite; steg 2 automatiskt via Meta Graph API från ett dagligt jobb (GitHub Actions), där Albin själv lägger in åtkomstnyckeln som hemlighet. TikTok kräver att appen godkänns för publik publicering, annars utkast.
+- **Koppling till publiceringen:** varje publicerad artsida köas för ett inlägg; jämförelsesidorna kan få egna inlägg. Gärna samma art som appens Dagens fågel samma dag.
+- **Bildlicenser:** bara CC0, public domain, CC BY och CC BY-SA, aldrig NC eller ND; beskärning och text runt bilden räknas som bearbetning; krediten skrivs i bildtexten ("Foto: X, licens, via Wikimedia Commons, beskuren"). Filtret ligger i koden som väljer bild, inte i manuell kontroll.
+- **Senare:** en kort video med artens läte ("vems sång är det här?") som andra mall för Reels och TikTok.
+
+**Valt koncept (Albin 2026-10-07, efter två förhandsvisningsrundor; runda ett med statiska mallar räckte inte):** rörligt först. Dagligen "See the song": inspelningen spelas medan dess spektrogram ritas, sedan tonar fotot fram och namnet handskrivs, slutkort "Identify birds by sound". Saknas en tillåten inspelning blir dagens inlägg "The field journal comes alive" (handskrivna anteckningar ritas på fotot, linjal, månadsstaplar). Fredagar "Who is it?" (siluett, ledtrådar, läte, avslöjande); varannan söndag "Same bird?" (två förväxlingsarter, deras sånger på samma tidsaxel, kopplad till jämförelsesidorna). Rutnätet hålls som ett konstverk: den rivna papperskanten på samma höjd i varje bild. **Licensfynd:** bara cirka 45 av de 180 arterna har en inspelning som får bli video (CC0/PD/CC BY; att lägga ljud på bild är bearbetning, så CC BY-SA och NC går inte); 155 av 180 huvudfoton är CC0/PD/CC BY. Fråga inspelare om tillstånd eller spela in själva för fler. Förhandsvisningar: `docs/superpowers/specs/assets/2026-10-06-1.3-val/birdy-posts-2.html` på grenen `release/1.3.0` (privat länk https://claude.ai/artifact/LcWuBjVSxt4MG3sSW9XQHA).
+
+**Kanaler och lansering (Albins beslut 2026-10-07 kväll):** Facebook, Instagram och **YouTube Shorts** som tredje kanal (agentens val på Albins uppdrag "en tredje kanal där man kan schemalägga"): konceptet är rörligt med läte ("See the song"), YouTube tittas med ljud på, Shorts kan schemaläggas direkt i YouTube Studio och via YouTube Data API (`status.publishAt`), och videorna hittas i sök länge ("great tit song"). Alternativ om Albin hellre vill ha klick till artsidorna: Pinterest. TikTok sparas till betalda B2C-annonser senare. Facebook väntas fungera bäst för innehållet. **Allt släpps i en stöt:** appen 1.3.0 i produktion, de första artsidorna på birdy.community och de första inläggen samma dag. Albin skapar kontona själv (Facebook-sida, Instagram företagskonto kopplat till sidan i Meta Business Suite, YouTube-kanal), samma namn överallt.
+
+**Samlad lansering (Albins idé 2026-10-06):** inläggen följer artsidorna sida för sida, och starten samordnas: appen 1.3.0 ligger redan ute (med nya butiksbilder), artsidornas första publiceringar, de första inläggen och utskicken i §15 sker samma vecka, så att webben, SEO, sociala medier och den nya appen drar åt samma håll. Agenten tar fram en lanseringskalender när fas 2:s publiceringsloop är klar.
+
+**Språk (Albins beslut 2026-10-06): alla sociala kanaler är på engelska.** Bildtext och text i bilden på engelska, länken går till den engelska artsidan (`/species/<slug>/`), det svenska namnet kan stå inom parentes.
+
+**Inläggens struktur (förslag 2026-10-06, Albin väljer mall; texterna nedan blir engelska):** allt text- och bildinnehåll fylls i av kod ur den kontrollerade artposten (inga nya påståenden, inga modellanrop, ingen kostnad).
+
+- **Bild (1080 × 1350, 4:5, samma på Facebook och Instagram):** fotot över cirka 70 % av ytan (beskuret, licensfiltret ovan), under det ett pappersband i webbens färger med en liten rubrik "DAGENS FÅGEL · NR 12" (löpnummer i publiceringsordning), artnamnet i DM Serif, det vetenskapliga namnet i kursiv, en handskriven rad (Caveat) med ett kort kontrollerat faktum, och Birdys märke + "birdy.community" i hörnet.
+- **Bildtext (svenska, engelskt namn inom parentes):**
+  1. Krok: första meningen ur sidans ingress (redan kontrollerad).
+  2. "Känn igen den:" två till tre fältkännetecken ur sidan.
+  3. "När och var:" månaden med flest fynd ur Artportalen och svensk rödlistestatus om arten är rödlistad.
+  4. "Kan förväxlas med:" en förväxlingsart om sidan har en.
+  5. Uppmaning: "Läs mer på birdy.community (länk i bio)" på Instagram, direktlänk till sidan på Facebook, och "Känn igen den med Birdy-appen".
+  6. Kredit: "Foto: X, licens, via Wikimedia Commons, beskuren".
+  7. Fem till åtta hashtaggar: #fåglar #fågelskådning #svenskafåglar #birdwatching #birdy + artnamnet.
+- **Mallval:** A en bild per inlägg; B en karusell med tre bilder (namn och foto, "Känn igen den", "När och var" med månadsdiagrammet ur Artportalen); senare C en kort video med lätet.
+- **Rytm:** ett inlägg om dagen kl. 08.00 (samma tid som appens Dagens fågel-avisering), i publiceringsordning. Variation per vecka (valfritt): fredag ett "Vem är vem?"-inlägg ur en publicerad jämförelsesida (två foton), söndag "Veckans arter" som karusell.
+- **Facebook vs Instagram:** samma bild; på Facebook är länken klickbar i inlägget, på Instagram står länken i bion (en länksida på birdy.community med veckans arter).
+- **Förväntan:** jämn närvaro och igenkänning; trafiken till sidorna kommer främst från Google, inte från inläggen (länkar i Instagraminlägg är inte klickbara).
+
 ## 16. Faser och beroenden
 
 1. **Fas 1b, pipelinen** (på `main`, rör ingen befintlig webbkod): källor, datamoduler, faktablad, automatisk kontroll, undantagsark och import, skrivande, kontroll, jämförelser, provkörning, körning och kontroll av faktabladen för alla 180. Ny plan. Kodarbetet startar direkt, parallellt med 1.3.0. **Den betalda körningen väntar på API-kredit** i Anthropic Console.
@@ -604,8 +641,8 @@ Faktabladen tas fram och kontrolleras automatiskt (V1 till V4) för alla 180 art
 | Jämförelse, diagram | När ses de? | When are they seen? |
 | Jämförelse, appruta | Fortfarande osäker? | Still not sure? |
 | Fotocredit | Foto: {fotograf}, {licens}, via Wikimedia Commons | Photo: {photographer}, {license}, via Wikimedia Commons |
-| Inspelningscredit | Inspelning: {upphov}, {licens}, via Wikimedia Commons, klippt | Recording: {recordist}, {license}, via Wikimedia Commons, trimmed |
-| Inspelningscredit (inte klippt) | Inspelning: {upphov}, {licens}, via Wikimedia Commons | Recording: {recordist}, {license}, via Wikimedia Commons |
+| Inspelningscredit (klippt, ändrat 2026-10-06) | Inspelning: {upphov}, {licens}, via Wikimedia Commons, klippt och bearbetad | Recording: {recordist}, {license}, via Wikimedia Commons, trimmed and edited |
+| Inspelningscredit (inte klippt, ändrat 2026-10-06) | Inspelning: {upphov}, {licens}, via Wikimedia Commons, bearbetad | Recording: {recordist}, {license}, via Wikimedia Commons, edited |
 | Datacredit | Rapportdata: Artportalen (SLU Artdatabanken) via GBIF.org, 2016 till 2025. Rödlista: Rödlistade arter i Sverige 2025, SLU Artdatabanken. | Report data: Artportalen (SLU Swedish Species Information Centre) via GBIF.org, 2016 to 2025. Red list: The Swedish Red List 2025, SLU Swedish Species Information Centre. |
 | Textcredit | Texten bygger på artiklarna om {art i gemener} på {språk} Wikipedia och får delas under CC BY-SA 4.0. | The text is based on the articles about the {name} on {languages} Wikipedia and may be shared under CC BY-SA 4.0. |
 | Textcredit, språk | svenska, engelska och tyska (eller de som använts) | Swedish, English and German (or those used) |
@@ -732,7 +769,7 @@ Listan ligger i `prompts/web-banned-phrases.txt` (med böjningsformer sedan fas 
   "b": "Q25485",
   "status": "ok",
   "publish": false,
-  "slug": { "sv": "blames-eller-talgoxe", "en": "blue-tit-vs-great-tit" },
+  "slug": { "sv": "blames-eller-talgoxe", "en": "eurasian-blue-tit-vs-great-tit" },
   "volumes": { "sv": 1300, "en": 880 },
   "text": {
     "sv": {
@@ -757,6 +794,8 @@ Fakta-id har prefixet `a:` eller `b:` för att visa vilken arts faktablad de kom
 
 **Stickprovet** (flyttat hit från undantagsarket, 2026-10-05 (b)): en egen flik, fylld efter publicering. För var 40:e publicerade art dras 2 (sparat frö) och läggs in med hela faktabladet; för var 10:e publicerade jämförelsesida dras 1. Samma kolumner som undantagsarket, plus vilken art eller jämförelse och vilket datum den publicerades. Hittar Albin ett fel som kontrollen borde ha fångat dras två nya och missen loggas i rapporten; ett bekräftat fel ger sidan ett nytt datum på "Kontrollerad mot källorna" och publiceras om.
 
+**Ändrat 2026-10-06 (efter fas 1b:s slutgranskning):** varje dragning är en egen fil, `review/stickprov-dragning-N.csv`, och ett eget ark eller en egen flik i Drive, så att en ny dragning aldrig laddas upp över en som inte är importerad. Varje art inleds med en **artrad** (Typ `art`, Id `*`): `behåll` där gäller alla rader för arten i dragningen som Albin lämnar tomma, och ett beslut han skriver på en rad gäller före artraden. Utan `behåll` på artraden måste varje rad ha ett beslut. Sätter Albin i stickprovet (eller på en V3-flagga) en status som rapportdatan eller rödlistan motsäger på en publicerad art, avvisas importen: först `publish: false`, sedan importera igen.
+
 Kolumnerna är samma i båda flikarna:
 
 | Kolumn | Innehåll |
@@ -765,12 +804,13 @@ Kolumnerna är samma i båda flikarna:
 | QID | Wikidata-id |
 | Rad | `stickprov` eller `flagga` |
 | Kontroll | Vilken kontroll som gav flaggan: `V2`, `V3` eller `V4`. Tomt för en stickprovsrad. |
-| Typ | `faktum`, `data`, `inspelning` eller `flagga` |
-| Id | Fakta-id (`f03`, `d01`), eller tomt för en inspelningsflagga |
+| Typ | `faktum`, `data`, `inspelning` eller `flagga`, plus `art` för stickprovets artrad (2026-10-06) |
+| Id | Fakta-id (`f03`, `d01`), eller tomt för en inspelningsflagga; `*` på artraden |
 | Ämne | Ämnet på svenska |
 | Faktum | Faktumet på svenska. Albin skriver här när beslutet är `ändra`. |
 | Källa | `sv`, `en` eller `de` med länk till artikeln på rätt revision, eller `Artportalen` / `Rödlistan` / länk till inspelningens filsida |
 | Citat | Citatet ur artikeln |
-| Beslut | `behåll` (förifyllt), `stryk` eller `ändra`. Flaggor är tomma och måste fyllas i. Datarader är låsta. |
+| Beslut | `behåll` (förifyllt), `stryk` eller `ändra`. Flaggor är tomma och måste fyllas i. Datarader är låsta. **Ändrat 2026-10-06 (fas 1b:s slutgranskning I1):** inget är förifyllt i stickprovet heller; en rad utan beslut gör att arten väntar, så en import innan Albin tittat räknas aldrig som kontrollerad. Inspelningsraden tar `behåll` eller `stryk`, artraden bara `behåll` (eller tomt), och `behåll` på artraden gäller artens tomma rader i samma dragning. |
 | Kommentar | Fri text |
 | Publicerad | Bara i stickprovsfliken (2026-10-05 (b)): datumet sidan publicerades |
+| Dragning | Bara i stickprovsfliken (2026-10-06, slutgranskningen C2 och I1): vilken dragning raden hör till (`review/stickprov-state.json`). Importen tillämpar bara artens öppna dragning. |

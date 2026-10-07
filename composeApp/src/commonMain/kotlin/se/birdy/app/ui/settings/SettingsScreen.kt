@@ -24,6 +24,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.List
 import androidx.compose.material.icons.outlined.CalendarToday
+import androidx.compose.material.icons.outlined.CardMembership
 import androidx.compose.material.icons.outlined.EmojiEvents
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Language
@@ -84,12 +85,14 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_language_sv
 import birdy_bird_scanner.composeapp.generated.resources.settings_language_system
 import birdy_bird_scanner.composeapp.generated.resources.settings_location_caption
 import birdy_bird_scanner.composeapp.generated.resources.settings_location_section
+import birdy_bird_scanner.composeapp.generated.resources.settings_manage_subscription_caption
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_cancel
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_save
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_title
 import birdy_bird_scanner.composeapp.generated.resources.settings_notifications_disabled_helpline
 import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_feedback
+import birdy_bird_scanner.composeapp.generated.resources.settings_row_manage_subscription
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_privacy
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_rate
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_share
@@ -109,7 +112,7 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_weekly_
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.stringResource
-import se.birdy.app.ui.components.BackButton
+import se.birdy.app.ui.components.BackTopBar
 import se.birdy.app.ui.components.OrnamentRule
 import se.birdy.app.ui.components.PremiumHeroCard
 import se.birdy.app.ui.diary.HISTORICAL_SV_ONBOARDING_FALLBACK_NAME
@@ -123,6 +126,7 @@ import se.birdy.app.ui.theme.paperBackground
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.datastore.AppLanguage
+import se.birdy.domain.premium.PremiumTier
 
 @Composable
 fun SettingsScreen(
@@ -161,219 +165,249 @@ fun SettingsScreen(
                 SettingsEffect.ShareApp -> shareApp(shareText)
                 SettingsEffect.SendFeedback -> openMailto("albin@abrahamssons.se", feedbackSubject)
                 SettingsEffect.OpenAbout -> onNavigateToAbout()
+                is SettingsEffect.OpenManageSubscriptionUrl -> openManageSubscription(effect.sku)
             }
         }
     }
 
     Box(modifier = Modifier.fillMaxSize().paperBackground()) {
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(bottom = 32.dp),
-        ) {
-            item { TopBar(onBack = onBack) }
-            if (!state.premiumActive) {
+        // The top bar stays put above the list, so the way back never scrolls away (release
+        // 1.3.0 Task 7b; it used to be the list's first item).
+        Column(modifier = Modifier.fillMaxSize()) {
+            TopBar(onBack = onBack)
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth().weight(1f),
+                contentPadding = PaddingValues(bottom = 32.dp),
+            ) {
+                if (!state.premiumActive) {
+                    item {
+                        PremiumHeroCard(
+                            headlinePlain = stringResource(Res.string.settings_hero_plain),
+                            headlineAccent = stringResource(Res.string.settings_hero_accent),
+                            subline = stringResource(Res.string.settings_hero_subline),
+                            onClick = onPremiumClick,
+                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                        )
+                    }
+                    item { OrnamentRule() }
+                }
+                item { SectionHeader(stringResource(Res.string.settings_section_account)) }
                 item {
-                    PremiumHeroCard(
-                        headlinePlain = stringResource(Res.string.settings_hero_plain),
-                        headlineAccent = stringResource(Res.string.settings_hero_accent),
-                        subline = stringResource(Res.string.settings_hero_subline),
-                        onClick = onPremiumClick,
-                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-                    )
-                }
-                item { OrnamentRule() }
-            }
-            item { SectionHeader(stringResource(Res.string.settings_section_account)) }
-            item {
-                PaperCard {
-                    SettingsRow(
-                        icon = Icons.Outlined.Person,
-                        label = stringResource(Res.string.settings_label_name),
-                        value = displayNameOrNull(state.userName, nameMaskedNames) ?: "—",
-                        onClick = { showNameDialog = true },
-                    )
-                    DashedDivider()
-                    SettingsRow(
-                        icon = Icons.Outlined.Language,
-                        label = stringResource(Res.string.settings_label_language),
-                        value = stringResource(state.language.labelRes()),
-                        onClick = { showLanguageDialog = true },
-                    )
-                }
-            }
-            item { SectionHeader(stringResource(Res.string.settings_section_notifications)) }
-            item {
-                val dailyBirdEnabled by viewModel.dailyBirdPushEnabled.collectAsState()
-                val weeklyRecapEnabled by viewModel.weeklyRecapPushEnabled.collectAsState()
-                val trophyEnabled by viewModel.weeklyTrophyPushEnabled.collectAsState()
-                val systemNotifEnabled = viewModel.areNotificationsEnabled()
-
-                PaperCard {
-                    ToggleRow(
-                        icon = Icons.Outlined.CalendarToday,
-                        label = stringResource(Res.string.settings_toggle_daily_bird),
-                        checked = dailyBirdEnabled,
-                        onCheckedChange = viewModel::setDailyBirdPushEnabled,
-                    )
-                    DashedDivider()
-                    ToggleRow(
-                        icon = Icons.AutoMirrored.Outlined.List,
-                        label = stringResource(Res.string.settings_toggle_weekly_recap),
-                        checked = weeklyRecapEnabled,
-                        onCheckedChange = viewModel::setWeeklyRecapPushEnabled,
-                    )
-                    DashedDivider()
-                    ToggleRow(
-                        icon = Icons.Outlined.EmojiEvents,
-                        label = stringResource(Res.string.settings_toggle_trophy),
-                        checked = trophyEnabled,
-                        onCheckedChange = viewModel::setWeeklyTrophyPushEnabled,
-                    )
-                    if (!systemNotifEnabled) {
+                    // Play policy 9900533: an active yearly subscription must link to an online
+                    // way to manage or cancel it. Lifetime is a one-time purchase (nothing to
+                    // cancel) and early-member/debug overrides are not real Play subscriptions
+                    // either (see SettingsUiState.playSubscriptionTier KDoc), so the row — and
+                    // its caption below the card — only ever show for a real YEARLY tier.
+                    val showManageSubscription = state.playSubscriptionTier == PremiumTier.YEARLY
+                    PaperCard {
+                        SettingsRow(
+                            icon = Icons.Outlined.Person,
+                            label = stringResource(Res.string.settings_label_name),
+                            value = displayNameOrNull(state.userName, nameMaskedNames) ?: "—",
+                            onClick = { showNameDialog = true },
+                        )
                         DashedDivider()
                         SettingsRow(
-                            icon = Icons.Outlined.Notifications,
-                            label = stringResource(Res.string.settings_notifications_disabled_helpline),
-                            value = null,
-                            onClick = { viewModel.openAppNotificationSettings() },
+                            icon = Icons.Outlined.Language,
+                            label = stringResource(Res.string.settings_label_language),
+                            value = stringResource(state.language.labelRes()),
+                            onClick = { showLanguageDialog = true },
+                        )
+                        if (showManageSubscription) {
+                            DashedDivider()
+                            SettingsRow(
+                                icon = Icons.Outlined.CardMembership,
+                                label = stringResource(Res.string.settings_row_manage_subscription),
+                                value = null,
+                                onClick = { viewModel.openManageSubscription() },
+                            )
+                        }
+                    }
+                    // The note under the card, lined up with the section header above it (same
+                    // pattern as the Location section's caption below).
+                    if (showManageSubscription) {
+                        Text(
+                            text = stringResource(Res.string.settings_manage_subscription_caption),
+                            color = MarginaliaInk,
+                            fontSize = 12.sp,
+                            modifier = Modifier.padding(start = SectionInset, end = SectionInset, top = 6.dp),
                         )
                     }
                 }
-            }
-            item { SectionHeader(stringResource(Res.string.settings_location_section)) }
-            item {
-                val locationEnabled by viewModel.locationCaptureEnabled.collectAsState()
-                PaperCard {
-                    ToggleRow(
-                        icon = Icons.Outlined.Place,
-                        label = stringResource(Res.string.settings_toggle_location),
-                        checked = locationEnabled,
-                        onCheckedChange = { enabled ->
-                            viewModel.setLocationCaptureEnabled(enabled)
-                            if (enabled) onRequestLocationPermission()
-                        },
+                item { SectionHeader(stringResource(Res.string.settings_section_notifications)) }
+                item {
+                    val dailyBirdEnabled by viewModel.dailyBirdPushEnabled.collectAsState()
+                    val weeklyRecapEnabled by viewModel.weeklyRecapPushEnabled.collectAsState()
+                    val trophyEnabled by viewModel.weeklyTrophyPushEnabled.collectAsState()
+                    val systemNotifEnabled = viewModel.areNotificationsEnabled()
+
+                    PaperCard {
+                        ToggleRow(
+                            icon = Icons.Outlined.CalendarToday,
+                            label = stringResource(Res.string.settings_toggle_daily_bird),
+                            checked = dailyBirdEnabled,
+                            onCheckedChange = viewModel::setDailyBirdPushEnabled,
+                        )
+                        DashedDivider()
+                        ToggleRow(
+                            icon = Icons.AutoMirrored.Outlined.List,
+                            label = stringResource(Res.string.settings_toggle_weekly_recap),
+                            checked = weeklyRecapEnabled,
+                            onCheckedChange = viewModel::setWeeklyRecapPushEnabled,
+                        )
+                        DashedDivider()
+                        ToggleRow(
+                            icon = Icons.Outlined.EmojiEvents,
+                            label = stringResource(Res.string.settings_toggle_trophy),
+                            checked = trophyEnabled,
+                            onCheckedChange = viewModel::setWeeklyTrophyPushEnabled,
+                        )
+                        if (!systemNotifEnabled) {
+                            DashedDivider()
+                            SettingsRow(
+                                icon = Icons.Outlined.Notifications,
+                                label = stringResource(Res.string.settings_notifications_disabled_helpline),
+                                value = null,
+                                onClick = { viewModel.openAppNotificationSettings() },
+                            )
+                        }
+                    }
+                }
+                item { SectionHeader(stringResource(Res.string.settings_location_section)) }
+                item {
+                    val locationEnabled by viewModel.locationCaptureEnabled.collectAsState()
+                    PaperCard {
+                        ToggleRow(
+                            icon = Icons.Outlined.Place,
+                            label = stringResource(Res.string.settings_toggle_location),
+                            checked = locationEnabled,
+                            onCheckedChange = { enabled ->
+                                viewModel.setLocationCaptureEnabled(enabled)
+                                if (enabled) onRequestLocationPermission()
+                            },
+                        )
+                    }
+                    // The note under the card, lined up with the section header above it.
+                    Text(
+                        text = stringResource(Res.string.settings_location_caption),
+                        color = MarginaliaInk,
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(start = SectionInset, end = SectionInset, top = 6.dp),
                     )
                 }
-                // The note under the card, lined up with the section header above it.
-                Text(
-                    text = stringResource(Res.string.settings_location_caption),
-                    color = MarginaliaInk,
-                    fontSize = 12.sp,
-                    modifier = Modifier.padding(start = SectionInset, end = SectionInset, top = 6.dp),
-                )
-            }
-            if (viewModel.devToolsAvailable) {
-                // DEV-only tools (debug builds, gated by devToolsAvailable). Labels are
-                // intentionally English and not localized — never shown to real users.
-                item { SectionHeader("DEV TOOLS") }
+                if (viewModel.devToolsAvailable) {
+                    // DEV-only tools (debug builds, gated by devToolsAvailable). Labels are
+                    // intentionally English and not localized — never shown to real users.
+                    item { SectionHeader("DEV TOOLS") }
+                    item {
+                        PaperCard {
+                            SettingsRow(
+                                icon = Icons.Outlined.Notifications,
+                                label = "DEV: Trigger Daily Bird push",
+                                value = null,
+                                onClick = { viewModel.devTriggerDailyBirdPush() },
+                            )
+                            DashedDivider()
+                            SettingsRow(
+                                icon = Icons.Outlined.Notifications,
+                                label = stringResource(Res.string.settings_dev_trigger_recap),
+                                value = null,
+                                onClick = { viewModel.devTriggerWeeklyRecapPush() },
+                            )
+                            DashedDivider()
+                            SettingsRow(
+                                icon = Icons.Outlined.Notifications,
+                                label = "DEV: Trigger Trophy progress push",
+                                value = null,
+                                onClick = { viewModel.devTriggerTrophyProgressPush() },
+                            )
+                        }
+                    }
+                }
+                item { SectionHeader(stringResource(Res.string.settings_section_about_birdy)) }
                 item {
                     PaperCard {
                         SettingsRow(
-                            icon = Icons.Outlined.Notifications,
-                            label = "DEV: Trigger Daily Bird push",
+                            icon = Icons.Outlined.Public,
+                            label = stringResource(Res.string.settings_row_website),
                             value = null,
-                            onClick = { viewModel.devTriggerDailyBirdPush() },
+                            onClick = { viewModel.openWebsite() },
                         )
                         DashedDivider()
                         SettingsRow(
-                            icon = Icons.Outlined.Notifications,
-                            label = stringResource(Res.string.settings_dev_trigger_recap),
+                            icon = Icons.Outlined.Star,
+                            label = stringResource(Res.string.settings_row_rate),
                             value = null,
-                            onClick = { viewModel.devTriggerWeeklyRecapPush() },
+                            onClick = { viewModel.rateOnPlayStore() },
                         )
                         DashedDivider()
                         SettingsRow(
-                            icon = Icons.Outlined.Notifications,
-                            label = "DEV: Trigger Trophy progress push",
+                            icon = Icons.Outlined.Share,
+                            label = stringResource(Res.string.settings_row_share),
                             value = null,
-                            onClick = { viewModel.devTriggerTrophyProgressPush() },
+                            onClick = { viewModel.shareApp() },
+                        )
+                        DashedDivider()
+                        SettingsRow(
+                            icon = Icons.Outlined.MailOutline,
+                            label = stringResource(Res.string.settings_row_feedback),
+                            value = null,
+                            onClick = { viewModel.sendFeedback() },
+                        )
+                        DashedDivider()
+                        SettingsRow(
+                            icon = Icons.Outlined.Info,
+                            label = stringResource(Res.string.settings_label_about),
+                            value = "v$versionName",
+                            onClick = { viewModel.openAbout() },
+                        )
+                        DashedDivider()
+                        SettingsRow(
+                            icon = Icons.Outlined.Replay,
+                            label = stringResource(Res.string.settings_show_intro_again),
+                            value = null,
+                            onClick = onShowIntroAgain,
+                        )
+                        DashedDivider()
+                        SettingsRow(
+                            icon = Icons.Outlined.Refresh,
+                            label = stringResource(Res.string.settings_restore_purchases),
+                            value = null,
+                            onClick = { viewModel.restorePurchases() },
                         )
                     }
                 }
-            }
-            item { SectionHeader(stringResource(Res.string.settings_section_about_birdy)) }
-            item {
-                PaperCard {
-                    SettingsRow(
-                        icon = Icons.Outlined.Public,
-                        label = stringResource(Res.string.settings_row_website),
-                        value = null,
-                        onClick = { viewModel.openWebsite() },
-                    )
-                    DashedDivider()
-                    SettingsRow(
-                        icon = Icons.Outlined.Star,
-                        label = stringResource(Res.string.settings_row_rate),
-                        value = null,
-                        onClick = { viewModel.rateOnPlayStore() },
-                    )
-                    DashedDivider()
-                    SettingsRow(
-                        icon = Icons.Outlined.Share,
-                        label = stringResource(Res.string.settings_row_share),
-                        value = null,
-                        onClick = { viewModel.shareApp() },
-                    )
-                    DashedDivider()
-                    SettingsRow(
-                        icon = Icons.Outlined.MailOutline,
-                        label = stringResource(Res.string.settings_row_feedback),
-                        value = null,
-                        onClick = { viewModel.sendFeedback() },
-                    )
-                    DashedDivider()
-                    SettingsRow(
-                        icon = Icons.Outlined.Info,
-                        label = stringResource(Res.string.settings_label_about),
-                        value = "v$versionName",
-                        onClick = { viewModel.openAbout() },
-                    )
-                    DashedDivider()
-                    SettingsRow(
-                        icon = Icons.Outlined.Replay,
-                        label = stringResource(Res.string.settings_show_intro_again),
-                        value = null,
-                        onClick = onShowIntroAgain,
-                    )
-                    DashedDivider()
-                    SettingsRow(
-                        icon = Icons.Outlined.Refresh,
-                        label = stringResource(Res.string.settings_restore_purchases),
-                        value = null,
-                        onClick = { viewModel.restorePurchases() },
+                item { SectionHeader(stringResource(Res.string.settings_section_legal)) }
+                item {
+                    PaperCard {
+                        SettingsRow(
+                            icon = Icons.Outlined.VerifiedUser,
+                            label = stringResource(Res.string.settings_row_privacy),
+                            value = null,
+                            onClick = { viewModel.openPrivacy() },
+                        )
+                        DashedDivider()
+                        SettingsRow(
+                            icon = Icons.Outlined.VerifiedUser,
+                            label = stringResource(Res.string.settings_row_terms),
+                            value = null,
+                            onClick = { viewModel.openTerms() },
+                        )
+                    }
+                }
+                item {
+                    Text(
+                        text = stringResource(Res.string.settings_footer),
+                        fontFamily = rememberCaveat(),
+                        fontSize = 14.sp,
+                        color = MarginaliaInk,
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(top = 24.dp, bottom = 32.dp),
+                        textAlign = TextAlign.Center,
                     )
                 }
-            }
-            item { SectionHeader(stringResource(Res.string.settings_section_legal)) }
-            item {
-                PaperCard {
-                    SettingsRow(
-                        icon = Icons.Outlined.VerifiedUser,
-                        label = stringResource(Res.string.settings_row_privacy),
-                        value = null,
-                        onClick = { viewModel.openPrivacy() },
-                    )
-                    DashedDivider()
-                    SettingsRow(
-                        icon = Icons.Outlined.VerifiedUser,
-                        label = stringResource(Res.string.settings_row_terms),
-                        value = null,
-                        onClick = { viewModel.openTerms() },
-                    )
-                }
-            }
-            item {
-                Text(
-                    text = stringResource(Res.string.settings_footer),
-                    fontFamily = rememberCaveat(),
-                    fontSize = 14.sp,
-                    color = MarginaliaInk,
-                    modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .padding(top = 24.dp, bottom = 32.dp),
-                    textAlign = TextAlign.Center,
-                )
             }
         }
         SnackbarHost(
@@ -415,17 +449,16 @@ private fun AppLanguage.labelRes(): StringResource =
         AppLanguage.SYSTEM -> Res.string.settings_language_system
     }
 
+// BackTopBar keeps 4dp under the button, so the list below never slides over the disc's lower
+// edge (Task 7b review: a hairline crossed it).
 @Composable
 private fun TopBar(onBack: () -> Unit) {
-    Row(
-        modifier = Modifier.fillMaxWidth().padding(start = 12.dp, top = 8.dp, end = 16.dp),
-        verticalAlignment = Alignment.CenterVertically,
+    BackTopBar(
+        onBack = onBack,
+        contentDescription = stringResource(Res.string.settings_back),
     ) {
-        BackButton(
-            onClick = onBack,
-            contentDescription = stringResource(Res.string.settings_back),
-        )
-        Spacer(Modifier.size(8.dp))
+        // 12dp: the paper disc is drawn 4dp past its 40dp box, so 8dp left the title crowding it.
+        Spacer(Modifier.size(12.dp))
         Text(
             text = stringResource(Res.string.settings_title),
             fontFamily = rememberDmSerifDisplay(),

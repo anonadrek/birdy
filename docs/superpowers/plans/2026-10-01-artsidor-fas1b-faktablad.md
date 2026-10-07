@@ -5928,7 +5928,7 @@ def export_spot_check(
     )
 ```
 
-**Jämförelsernas stickprov** (1 av 10 publicerade jämförelser) är inte kodat här: en jämförelse har inget eget faktablad, bara en text byggd ur de två arternas fakta, så raden i arket blir annorlunda (hela jämförelsetexten, inte fakta-rad för fakta-rad) och fältet den sätter (`spotChecked` på jämförelsens post, `false` som standard, finns inte i specens bilaga D ännu) hör hemma i `compare.py` (Task 22). Läggs till av fas 2:s publiceringsloop (`docs/superpowers/plans/2026-09-25-artsidor-fas2-sidor.md` Task 17) när den byggs, med samma `SPOT_CHECK_BATCH`-mönster men batch 10 och drag 1.
+**Jämförelsernas stickprov** (1 av 10 publicerade jämförelser) är inte kodat här: en jämförelse har inget eget faktablad, bara en text byggd ur de två arternas fakta, så raden i arket blir annorlunda (hela jämförelsetexten, inte fakta-rad för fakta-rad) och fältet den sätter (`spotChecked` på jämförelsens post, `false` som standard, finns inte i specens bilaga D ännu) hör hemma i `compare.py` (Task 22). Läggs till av fas 2:s publiceringsloop (`docs/superpowers/plans/2026-09-25-artsidor-fas2-sidor.md` Task 17) när den byggs, ~~med samma `SPOT_CHECK_BATCH`-mönster men batch 10 och drag 1~~ **(ersatt 2026-10-06, slutgranskningen C2: mönstret ovan drog om efter varannan publicering när de första 40 väl var nådda, 142 av 180 arter i stället för 8. Koden använder nu tillståndsfilen `review/stickprov-state.json`, se fas 2-planens Task 16 Step 4 Tillägg; jämförelsernas stickprov ska byggas på samma sätt, batch 10 och drag 1.)**
 
 - [ ] **Step 4: Kommandona i `cli.py`**
 
@@ -6907,6 +6907,8 @@ git commit -m "feat(pipeline): text med fakta-id per mening och kodkontrollerna"
 
 ### Task 19: Skrivprompten, kontrollprompten och kontrollmodellen
 
+**Tillägg/avvikelse (2026-10-06): ersatt av 4ef97260 + denna commit: about=, värsta utlåtandet vinner, ändrade fakta utan citat, skrivprompten skärpt.** Blocket nedan är som planerat och otillräckligt; kör inte om det rakt av.
+
 **Files:**
 - Create: `prompts/web-v2.md`, `prompts/check-v1.md`, `src/birdy_fetcher/web/checker.py`
 - Test: `tests/test_web_checker.py`
@@ -7453,6 +7455,10 @@ class SpeciesTextWriter:
     async def write(self, record: Record, group_sv: str, group_en: str) -> TextResult:
         facts = writer_facts(record)
         ctx = TextContext.from_facts(facts)
+        about = (
+            f"{record['names']['sv']} / {record['names']['en']} "
+            f"({record['names']['scientific']}), familj {record['family']['sv']}"
+        )
         template = self.prompt_path.read_text(encoding="utf-8")
         system, user = render_write_prompt(template, record, facts, group_sv, group_en, self.banned)
         base: list[MessageParam] = [{"role": "user", "content": user}]
@@ -7487,7 +7493,7 @@ class SpeciesTextWriter:
             result.rejected, result.errors = text, hard
             return result
 
-        unsupported = await self.checker.check(check_items(text, ctx))
+        unsupported = await self.checker.check(check_items(text, ctx), about=about)
         if unsupported:
             result.attempts += 1
             retry: list[MessageParam] = [
@@ -7501,7 +7507,7 @@ class SpeciesTextWriter:
                 if not hard_again:
                     text = candidate
                     result.notes += removed_again
-                    unsupported = await self.checker.check(check_items(text, ctx))
+                    unsupported = await self.checker.check(check_items(text, ctx), about=about)
             if unsupported:
                 result.notes += [f"{path} togs bort: {p}" for path, p in unsupported.items()]
                 text = remove_paths(text, set(unsupported))
@@ -7987,6 +7993,10 @@ git commit -m "feat(pipeline): förväxlingspar och fil för sökvolymer"
 
 ### Task 22: Den delade skrivslingan och jämförelsetexterna, `web compare`
 
+**Tillägg (2026-10-06), Task 21-granskningen:** `read_volumes` returnerar `Pair`-objekt exakt som de står i `comparison-volumes.csv` -- normalisera ALDRIG orienteringen där (filen kan ha en hand-flippad eller whitespace-smetad rad, matchad på `frozenset`-nyckel, se `compare.py`:s `_load_old`). Innan ett `Pair` från `read_volumes` används här (t.ex. för att slå upp `records[pair.a]`/`records[pair.b]` eller bygga `comparison_slugs`/`comparison_path`), normalisera det med `ordered_pair(pair.a, pair.b, records)` och slå upp volymer med `frozenset((pair.a, pair.b))` i stället för `Pair`-objektet direkt (`comparison_slugs`/`comparison_path` sorterar redan internt och tål en flippad `Pair`, men koden som väljer och itererar par här ska inte lita på att `pair.a` är den svenska slug-ordningens första art). **I `run_compare`: filtrera `read_volumes`-resultatet till bara de par vars `frozenset((pair.a, pair.b))` finns i `candidate_pairs(records)` INNAN `select_pairs` körs** (review fix 2026-10-06, item 7) -- `comparison-volumes.csv` är en hand-redigerad fil, och en kvarglömd eller felaktigt ifylld `aktuell`-cell (eller en rad för ett par som inte längre är ett förväxlingspar) ska inte kunna gömma ett par som fortfarande är en kandidat eller smyga in ett par som inte är det i de 30 bästa.
+
+**Tillägg/avvikelse (2026-10-06):** Step 1/2 nedan är planerad mot Task 20:s FÖRE-läge (sista försöket vinner oavsett kvalitet, ingen kontrollrunda-fallback, gamla "togs bort: {p}"-notiser). Task 20:s två granskningsvågor (`6ba77bef` och en uppföljande rättningsomgång samma dag) ändrade `SpeciesTextWriter.write()` på sätt `write_checked` måste föra vidare, annars backar den delade slingan de fixarna: (1) **bästa försöket** hålls kvar över omförsöksslingan efter `settle()`, rankat på antal kvarvarande hårda problem (delat vid oavgjort går till det senare försöket) -- inte bara det sista försöket; (2) **kontrollrundans reservplan**: både omskrivningen (minus det den egna kontrollen stryker) och originalet (minus det FÖRSTA kontrollanropets stryk) byggs, omskrivningen används bara om den klarar minimikraven, annars faller den tillbaka på originalet -- aldrig bara "senaste texten minus stryk"; en kontroll som själv failar (`CheckerFailed`) på omskrivningens kontrollanrop faller tillbaka på samma sätt i stället för att fälla hela arten. `Checks[T]` behöver därför en `texts: Callable[[T], dict[str, str]]` (spegling av `path_texts`) så reservplanen kan bygga samma `'{path} togs bort ("{text}"): {problem}'`-notiser som Task 20 har, inte de gamla `"{path} togs bort: {p}"`. `_keep_old_text` (en publicerad eller fortfarande aktuell text överlever ett misslyckat omskrivningsförsök), den publicerade-sidan-citerar-en-struken-fakta-spärren (N1, i `text_step.one()`, inte i den delade slingan) och `_resolve_lookalikes` (vetenskapligt namn → QID) ligger kvar på `text_step.py`:s `apply_text`-väg och ska INTE flyttas in i `checked_writer.py` -- jämförelsesidorna har ingen `publish`-flagga eller `record["facts"]` att spärra mot på samma sätt. Skriv inte om kodblocket nedan rakt av; bygg `write_checked` från Task 20:s FAKTISKA `write()`-metod (`src/birdy_fetcher/web/text_step.py`, commits `6ba77bef` och senare) med `Checks[T]` som den generiska vändpunkten, och håll `tests/test_web_text_step.py::test_an_earlier_clean_attempt_beats_a_later_broken_one` och `::test_a_bad_rewrite_falls_back_to_removing_from_the_original` gröna genom hela flytten (kör dem direkt efter Step 2, inte bara vid Task 20).
+
 **Files:**
 - Create: `src/birdy_fetcher/web/checked_writer.py`, `prompts/compare-v1.md`
 - Modify: `src/birdy_fetcher/web/text_step.py` (använd den delade slingan), `src/birdy_fetcher/web/compare.py` (lägg till), `src/birdy_fetcher/cli.py`
@@ -8057,6 +8067,7 @@ async def write_checked[T: BaseModel](
     user: str,
     checks: Checks[T],
     checker: SentenceChecker,
+    about: str,
 ) -> Written[T]:
     result: Written[T] = Written()
     base: list[MessageParam] = [{"role": "user", "content": user}]
@@ -8090,7 +8101,7 @@ async def write_checked[T: BaseModel](
         result.rejected, result.errors = text, hard
         return result
 
-    unsupported = await checker.check(checks.items(text))
+    unsupported = await checker.check(checks.items(text), about=about)
     if unsupported:
         result.attempts += 1
         reply = await ask(
@@ -8105,7 +8116,7 @@ async def write_checked[T: BaseModel](
             if not hard_again:
                 text = candidate
                 result.notes += removed_again
-                unsupported = await checker.check(checks.items(text))
+                unsupported = await checker.check(checks.items(text), about=about)
         if unsupported:
             result.notes += [f"{path} togs bort: {p}" for path, p in unsupported.items()]
             text = checks.remove(text, set(unsupported))
@@ -8125,6 +8136,10 @@ I `text_step.py`: ta bort `RULE_ATTEMPTS`, `rules_feedback`, `support_feedback` 
     async def write(self, record: Record, group_sv: str, group_en: str) -> Written[WebTextV2]:
         facts = writer_facts(record)
         ctx = TextContext.from_facts(facts)
+        about = (
+            f"{record['names']['sv']} / {record['names']['en']} "
+            f"({record['names']['scientific']}), familj {record['family']['sv']}"
+        )
         template = self.prompt_path.read_text(encoding="utf-8")
         system, user = render_write_prompt(template, record, facts, group_sv, group_en, self.banned)
         checks: Checks[WebTextV2] = Checks(
@@ -8139,6 +8154,7 @@ I `text_step.py`: ta bort `RULE_ATTEMPTS`, `rules_feedback`, `support_feedback` 
             user=user,
             checks=checks,
             checker=self.checker,
+            about=about,
         )
 ```
 
@@ -8503,6 +8519,10 @@ class ComparisonWriter:
 
     async def write(self, a: Record, b: Record) -> Written[CompareOutput]:
         ctx = pair_context(a, b)
+        about = (
+            f"side a: {a['names']['sv']} / {a['names']['en']} ({a['names']['scientific']}); "
+            f"side b: {b['names']['sv']} / {b['names']['en']} ({b['names']['scientific']})"
+        )
         template = self.prompt_path.read_text(encoding="utf-8")
         system, user = render_compare_prompt(template, a, b, self.banned)
         checks: Checks[CompareOutput] = Checks(
@@ -8517,6 +8537,7 @@ class ComparisonWriter:
             user=user,
             checks=checks,
             checker=self.checker,
+            about=about,
         )
 
 
@@ -8723,6 +8744,8 @@ git commit -m "feat(pipeline): delad skrivslinga och jämförelsetexter för fö
 ---
 
 ### Task 23: Publicering, `web publish`
+
+**Tillägg (2026-10-06, Task 22-granskningen, I2):** `status: "ok"` räcker inte för att publicera en jämförelse. `web compare` lämnar en inaktuell jämförelse orörd när den inte skrivs om (paret väntar på ett faktablad, ligger utanför `--top` eller är inte längre ett förväxlingspar), så den kan stå kvar som `ok` med text ur gamla fakta. `publish_wave` ska därför också kräva `comparison_is_current(comparison, records)` (från `compare.py`: `generated.factsHash` är lika med båda arternas nuvarande `facts_hash`, sida a först) innan `publish` sätts. Lägg till ett test: en `ok`-jämförelse vars `generated.factsHash` inte stämmer med arternas nuvarande fakta publiceras inte, fast båda arterna är publicerade.
 
 **Files:**
 - Modify: `src/birdy_fetcher/web/waves.py` (lägg till), `src/birdy_fetcher/cli.py`
@@ -9016,22 +9039,22 @@ git push
 - [ ] `uv run birdy-fetcher web verify --species Q25485 --species Q25383 --species Q25386 --species Q10546857 --max-cost 5`
 - [ ] `uv run birdy-fetcher web write --species Q25485 --species Q25383 --species Q25386 --species Q10546857 --allow-unreviewed --max-cost 5`
 - [ ] Läs rapporterna `reports/web-facts-*.md`, `reports/web-verify-*.md` och `reports/web-text-*.md`. Räkna ut kostnad per art för faktablad, V1-kontrollen och text. Visa Albin i chatten: talgoxens faktablad (fakta med citat), vilka fakta V1 strök och varför, talgoxens text på svenska och engelska, borttagna meningar och kostnaden per art omräknad till 180 arter.
-- [ ] **Albin väljer** modell och tankenivå för faktablad, V1-kontrollen, text och textkontrollen (standard: Opus 5 `high` för faktablad och text, Sonnet 5 för V1 och textkontrollen). Ändras något: ändra standardvärdena i `cli.py` och prompterna innan R4, och kör om provkörningen.
+- [ ] **Albin väljer** modell och tankenivå för faktablad, V1-kontrollen, text och textkontrollen (standard: Opus 5 `high` för faktablad och text, Sonnet 5 för V1 och textkontrollen). Ändras något: ändra standardvärdena i `cli.py` och prompterna innan R4, och kör om provkörningen. Faktabladets val gäller också V1-omförsöket i `web verify` (tillägg 2026-10-06, slutgranskningen Minor 3 och uppföljning 7): omförsöket använder artens egen `generated.facts`-modell och effort, annars `FACTS_MODEL_KEY`/`FACTS_EFFORT` i `src/birdy_fetcher/web/defaults.py`, som också är standard för `web facts --model/--effort`. Ändra alltså bara konstanterna där; `web verify --facts-model/--facts-effort` behövs bara för att tvinga fram något annat.
 - [ ] Commit och push (texterna från provkörningen är märkta `unreviewed` och kan aldrig publiceras).
 
 ### R4: Faktablad för alla 180 (cirka 75 USD)
 
 - [ ] `uv run birdy-fetcher web facts --max-cost 120`
-- [ ] Läs rapporten. Arter med `failed`: kör om en gång med `--regenerate --species ...`. Arter som fortfarande misslyckas listas för Albin.
+- [ ] Läs rapporten. Arter med `failed`: kör om en gång med `--regenerate --max-cost 5 --species ...`. Arter som fortfarande misslyckas listas för Albin.
 - [ ] Commit och push.
 
 ### R4b: Automatisk kontroll av alla 180 (cirka 10 till 20 USD)
 
 Ny körtask 2026-10-05: ersätter Albins manuella faktabladsgranskning. Ingen Albin-tid här, bara agenten.
 
-- [ ] Kontrollera att `classify_clip.py` fungerar mot en riktig inspelning: `uv run --project tools/ml-eval/flexref python classify_clip.py <sökväg till en 20 s-inspelning från R2>` och läs av att JSON-svaret har flera fönster med rimliga värden.
+- [ ] Kontrollera att `classify_clip.py` fungerar mot en riktig inspelning: `uv run --project tools/ml-eval/flexref python classify_clip.py <sökväg till en 20 s-inspelning från R2>` och läs av att JSON-svaret har flera fönster med rimliga värden. (Tillägg 2026-10-06: `web verify` kör dessutom själv ljudmodellen en gång på `tools/ml-eval/flexref/fixtures/chirp_3s_48k.wav` innan första arten och avbryter hela körningen utan anrop och utan att skriva något om modellen inte går att köra.)
 - [ ] `uv run birdy-fetcher web verify --max-cost 25`
-- [ ] Läs rapporten `reports/web-verify-*.md`. Räkna flaggor per kontroll (V2, V3, V4) och arter med `failed` (saknar fortfarande ett obligatoriskt ämne efter V1-omförsöket). Kör om misslyckade arter en gång med `--regenerate --species ...` i `web facts` först, sedan `web verify --force --species ...`.
+- [ ] Läs rapporten `reports/web-verify-*.md`. Räkna flaggor per kontroll (V2, V3, V4) och arter med `failed` (saknar fortfarande ett obligatoriskt ämne efter V1-omförsöket). Kör om misslyckade arter en gång med `--regenerate --max-cost 5 --species ...` i `web facts` först, sedan `web verify --force --max-cost 5 --species ...`.
 - [ ] Commit och push.
 
 ### R5: Vågor och löpande undantagsgranskning (Albin, cirka 15 till 30 minuter per våg)
@@ -9041,20 +9064,22 @@ Ny körtask 2026-10-05: ersätter Albins manuella faktabladsgranskning. Ingen Al
 - [ ] `uv run birdy-fetcher web waves` och visa Albin våg 1:s 40 arter i chatten. Albin byter arter om han vill; ändra `review/waves.json` och kör `uv run birdy-fetcher web waves` igen.
 - [ ] `uv run birdy-fetcher web sheet --wave 1`
 - [ ] Ladda upp `review/undantag.csv` till Albins Google Drive som Google-kalkylark med Google Drive-verktyget, och ge Albin länken med en kort instruktion: fatta beslut (`behåll`/`stryk`, eller `ändra` med ny text) på varje flagga, och lyssna på eventuella flaggade inspelningar. Arket är löpande: nya flaggor från senare vågor läggs till i samma flik.
+  **Rundresan med Drive (tillägg 2026-10-06, uppföljning efter slutgranskningen):** när arket redan finns i Drive gäller alltid samma ordning: (1) ladda ner Drive-arket som CSV över `review/undantag.csv`; (2) `uv run birdy-fetcher web import` (kan köras om hur många gånger som helst; en art där någon flagga saknar beslut väntar, resten importeras); (3) `uv run birdy-fetcher web sheet`, som skriver om filen med bara de arter som fortfarande väntar plus nya flaggor och för över de beslut och kommentarer Albin redan skrivit på väntande arters flaggor; (4) ladda upp filen över Drive-arket. Ladda aldrig upp över ett Drive-ark som har beslut som inte är importerade, alltså aldrig steg 4 utan steg 1 och 2 först. `web sheet` stoppar utan att skriva om filen som ligger där inte går att läsa. En art vars faktablad har ändrats sedan flaggorna skrevs (väntar på `web verify`) behåller sina rader oförändrade i filen tills verify har körts; `web sheet` listar varje beslut den inte för vidare, med skäl: "redan kontrollerad" är väntat, "väntar på web verify" och "flaggan finns inte längre" kräver en titt innan uppladdningen.
 - [ ] När Albin har beslutat om en omgång: exportera kalkylarket som CSV över `review/undantag.csv`, kör `uv run birdy-fetcher web import`. Rättar Albin fel som importen hittar, kör om.
+  **Tillägg (2026-10-06, slutgranskningen I2):** importen tar bara rader för arter som fortfarande väntar (ingen `verification`) och vars flaggor kom från `web verify` på faktabladet som det ser ut nu, och bara rader som stämmer med en aktuell flagga (kontroll, fakta-id, meddelande och citat; för inspelningen filsidan). Allt annat hoppas över och listas ("Hoppade över: ..."), så det löpande arket kan importeras om hur många gånger som helst utan att något får nytt datum. En art där någon aktuell flagga saknar beslut väntar och listas ("Väntar på beslut: ..."); resten av arket importeras ändå. Ett ogiltigt beslut (fel ord, en status som inte är en av de sex, två olika beslut på samma flagga) stoppar fortfarande hela importen.
 - [ ] Commit och push.
 
 ### R6: Text (cirka 25 USD för våg 1, mindre för senare vågor)
 
 - [ ] `uv run birdy-fetcher web write --wave 1 --max-cost 40`
-- [ ] Läs rapporten. Visa Albin tre slumpvisa texter och alla arter med `failed`. Kör om misslyckade arter en gång med `--regenerate --species ...`.
+- [ ] Läs rapporten. Visa Albin tre slumpvisa texter och alla arter med `failed`. Kör om misslyckade arter en gång med `--regenerate --max-cost 5 --species ...`. **(Tillägg 2026-10-06, slutgranskningen I6 och I5:** en text som misslyckades körs inte om av en vanlig omkörning så länge faktabladet, båda prompterna och modellerna är desamma; den rapporteras som `skipped` med "misslyckades förra gången". Kör om med `--retry-failed` (bara misslyckade) eller `--regenerate --species ...`. Meta-beskrivningen kontrolleras nu också av textkontrollen mot alla fakta texten anger; stöds den inte ens efter omskrivningen får arten `failed`.)
 - [ ] Commit och push.
 
 ### R7: Jämförelser (cirka 5 USD för våg 1, mindre för senare vågor)
 
 - [ ] `uv run birdy-fetcher web compare-candidates`
-- [ ] **Fråga Albin innan** sökordsplaneraren används i hans Google Ads-konto. Fyll sedan i `sv_volume` (Sverige, svenska) och `en_volume` (Storbritannien, engelska) i `review/comparison-volumes.csv`: summan av de genomsnittliga månadssökningarna för parets fyra svenska respektive tre engelska sökningar. Ger planeraren ett intervall, använd mitten.
-- [ ] `uv run birdy-fetcher web compare --top 30 --max-cost 15` (par där båda arterna inte är kontrollerade hoppas över och skrivs när den andra arten blir klar).
+- [ ] **Fråga Albin innan** sökordsplaneraren används i hans Google Ads-konto. Fyll sedan i `sv_volume` (Sverige, svenska) i `review/comparison-volumes.csv`: summan av de genomsnittliga månadssökningarna för parets fyra svenska sökningar. **`en_volume`: det högsta värdet bland parets engelska sökningar** (ändrat 2026-10-06, Task 21-granskningen) -- inte en summa. `sv_queries`/`en_queries`-kolumnerna listar nu upp till sex engelska sökningar i stället för tre: 78 av 180 arter har ett IOC-prefix (Eurasian/Common/Northern/Western/European) som sällan skrivs i en sökruta ("eurasian blue tit vs great tit" läser nära noll i planeraren), så `queries()` lägger till samma fraser utan prefixet när ett namn har ett. De fraserna mäter delvis överlappande sökintresse, därför max och inte summa. Ger planeraren ett intervall, använd mitten. **Visar planeraren "<10" för alla fraser i ett språk, skriv "<10"** i den kolumnen i stället för att gissa ett tal (ändrat 2026-10-06, Task 21-granskningen; `_number` tolkar "<10" och "< 10" som samma sak).
+- [ ] `uv run birdy-fetcher web compare --top 30 --max-cost 15` (par där båda arterna inte är kontrollerade hoppas över och skrivs när den andra arten blir klar). **(Tillägg 2026-10-06, slutgranskningen I6:** en misslyckad jämförelse betalas inte igen vid nästa körning; försök igen med `--retry-failed`, som inte rör aktuella jämförelser. `--regenerate` skriver om alla par i topplistan och kostar därefter.)
 - [ ] Commit och push.
 
 ### R8: Överlämning till sidorna, art för art (ändrat 2026-10-05 (b), var tidigare go-live för en hel våg)
@@ -9063,6 +9088,9 @@ Det finns ingen gemensam förhandsvisning och inget Albin läser igenom före pu
 
 - [ ] Starta loopen (fas 2 Task 17) och låt den gå. Den rapporterar varje push och stoppar aldrig helt på en enskild sidas fel (nödstoppet `--max-publish` och stoppet vid flera fel i rad gäller bara systematiska problem).
 - [ ] Var 40:e publicerade art (och var 10:e publicerade jämförelse) drar loopen automatiskt ett stickprov (`uv run birdy-fetcher web spot-check`) och lägger det i Albins ark (`review/stickprov.csv`). Albin beslutar som i R5; ett bekräftat fel importeras (`uv run birdy-fetcher web import --file review/stickprov.csv`) och den sidan republiceras av loopen med nytt datum, och missen loggas i rapporten.
+  **Tillägg (2026-10-06, uppföljning efter slutgranskningen):** varje dragning skriver en egen fil, `review/stickprov-dragning-N.csv` (N står i utskriften och i tillståndsfilen). Ladda upp den som ett nytt kalkylark eller en ny flik, aldrig över en äldre dragnings flik. Varje art inleds med en artrad (Typ `art`): `behåll` där räcker när allt stämmer, och ett beslut på en enskild rad gäller före. När Albin har beslutat: ladda ner just den fliken som CSV över samma fil och kör `uv run birdy-fetcher web import --file review/stickprov-dragning-N.csv` (kan köras om; en art utan beslut väntar). En status som rapportdatan motsäger på en publicerad art avvisas av importen (sätt `publish: false` först). `web import`, `web verify` och `web sources` tar dessutom bort varje `voice.mp3` vars art saknar `audio` och avslutar `web import` med kod 1 om en fil inte gick att ta bort (till exempel låst av en annan process): ta bort den för hand innan något committas.
+  **Tillägg (2026-10-06, slutgranskningen C2 och I1):** dragningen räknas i `review/stickprov-state.json` (2 arter per 40 publicerade sedan förra dragningen, fröet sparas per dragning); committa filen, `review/stickprov.csv` och de dragna arternas JSON direkt efter dragningen. Arkets rader har kolumnen `Dragning` och ett tomt Beslut: Albin skriver `behåll`, `stryk` eller `ändra` på varje faktarad och `behåll` eller `stryk` på inspelningsraden. Importen tar bara artens öppna dragning (arket är löpande och kan importeras om utan att något äldre ändras), låter en art med tomma beslut vänta, och ger nytt kontrolldatum bara när något ströks eller ändrades.
+- [ ] **Tillägg (2026-10-06, slutgranskningen I8):** `web import` listar efter importen varje publicerad art som inte längre är klar, med de exakta kommandona (write, compare, publish --species, eller `publish: false` först), och avslutar med kod 1 när någon finns. Kör dem innan loopen fortsätter; committa stickprovets och importens ändringar i egna commits (fas 2-planens Task 16, Tillägget om I7 och I8).
 - [ ] CLAUDE.md: status uppdaterad löpande (antal publicerade sidor, kostnad), inte bara vid en vågs slut.
 
 ### R9: Våg 2 och 3

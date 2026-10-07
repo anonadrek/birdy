@@ -2,6 +2,7 @@ package se.birdy.app.ui.match
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,6 +34,8 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -82,9 +85,11 @@ import se.birdy.app.ui.components.BirdyTextButton
 import se.birdy.app.ui.components.BodyTextWithCaveatAccents
 import se.birdy.app.ui.components.PaperSheet
 import se.birdy.app.ui.components.PaperSheetOverlap
+import se.birdy.app.ui.components.PhotoBackButton
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
+import se.birdy.app.ui.components.StatusBarBand
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.AccentCopperLight
 import se.birdy.app.ui.theme.CardPaper
@@ -183,8 +188,11 @@ internal fun MatchView(
     val isSaved = state.saveStatus == MatchResultUiState.SaveStatus.Saved
     val isSaving = state.saveStatus == MatchResultUiState.SaveStatus.Saving
 
+    val scrollState = rememberScrollState()
+
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
         val photoHeight = rememberMatchPhotoHeight(viewportHeight = maxHeight)
+        val photoScrolledAway by rememberPhotoScrolledAway(scrollState, photoHeight)
         Column(
             modifier =
                 Modifier
@@ -193,7 +201,7 @@ internal fun MatchView(
                     // its own MossCreme fill or a seam of a different color shows through the
                     // corner cutouts (see PaperSheet's KDoc).
                     .background(MossCreme)
-                    .verticalScroll(rememberScrollState()),
+                    .verticalScroll(scrollState),
         ) {
             val heroImage =
                 state.species.images.firstOrNull { it.role == "hero" }
@@ -291,6 +299,11 @@ internal fun MatchView(
                 }
             }
         }
+        StatusBarBand(photoScrolledAway = photoScrolledAway, color = MossCreme)
+        // Fixed over the scrolling photo and sheet: after "Spara" the "Avbryt" button is gone and
+        // this is the way back (release 1.3.0 Task 7b). Disabled while saving, like "Avbryt"
+        // (MatchResultScreen swallows the back gesture then).
+        PhotoBackButton(onBack = onCancel, enabled = !isSaving)
         SnackbarHost(
             hostState = snackbarHost,
             modifier = Modifier.align(Alignment.BottomCenter),
@@ -310,6 +323,20 @@ internal fun MatchView(
             )
         }
     }
+}
+
+/**
+ * True once the photo at the top of the scrolling column ([photoHeight] below the status bar,
+ * drawn behind it) no longer reaches under the status bar: the same test PhotoHero uses to switch
+ * the status bar icons. Only a low window (the phone on its side, large text) scrolls that far.
+ */
+@Composable
+private fun rememberPhotoScrolledAway(
+    scrollState: ScrollState,
+    photoHeight: Dp,
+): State<Boolean> {
+    val photoPx = with(LocalDensity.current) { photoHeight.roundToPx() }
+    return remember(scrollState, photoPx) { derivedStateOf { scrollState.value >= photoPx } }
 }
 
 /** Confidence bar drawn in [PhotoHero]'s bottomContent slot (light-on-dark, spec 2026-09-24 §4.3). */

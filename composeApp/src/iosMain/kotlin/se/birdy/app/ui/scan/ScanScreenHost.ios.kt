@@ -5,13 +5,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
-import birdy_bird_scanner.composeapp.generated.resources.Res
-import birdy_bird_scanner.composeapp.generated.resources.bootstrap_loading
-import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.di.AppGraph
 import se.birdy.app.permissions.CameraPermissionStatus
 import se.birdy.app.permissions.rememberIosCameraPermissionState
-import se.birdy.app.ui.components.JournalLoading
+import se.birdy.app.ui.components.PhotoModelStartingView
 import se.birdy.app.ui.components.PhotoModelUnavailableView
 import se.birdy.ml.ClassifierBootstrapState
 
@@ -33,7 +30,7 @@ actual fun ScanScreenHost(
         // The photo model is (re)building — e.g. a retry() from the error view above. Don't
         // call graph.scanViewModel() yet (it requires Ready); show an in-place loader scoped to
         // this screen instead of AppGate's full-screen one, so Scan stays on the back stack.
-        JournalLoading(label = stringResource(Res.string.bootstrap_loading))
+        PhotoModelStartingView(onBack = onBack)
         return
     }
     val permission = rememberIosCameraPermissionState()

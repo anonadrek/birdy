@@ -363,6 +363,8 @@
     <string name="settings_name_dialog_cancel">Cancel</string>
     <string name="settings_language_dialog_done">Done</string>
     <string name="settings_back">Back</string>
+    <!-- The back button's label wherever a screen has no label of its own (release 1.3.0 Task 7b). -->
+    <string name="common_back">Back</string>
     <string name="menu_button">Menu</string>
 
     <!-- ===== Plan 7b: ArchiveScreen ===== -->
@@ -534,6 +536,8 @@
     <string name="settings_restore_purchases_success">Purchase restored.</string>
     <string name="settings_restore_purchases_empty">Nothing to restore.</string>
     <string name="settings_restore_purchases_unavailable">Couldn’t reach Google Play. Check your connection and try again.</string>
+    <string name="settings_row_manage_subscription">Manage subscription</string>
+    <string name="settings_manage_subscription_caption">Cancel or change in Google Play.</string>
     <string name="settings_footer">— Birdy is a field prospectus. —</string>
     <!-- Gear -->
     <string name="gear_content_description">Settings</string>

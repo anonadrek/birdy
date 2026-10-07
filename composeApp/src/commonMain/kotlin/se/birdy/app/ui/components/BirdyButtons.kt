@@ -41,7 +41,7 @@ private val ButtonShape = RoundedCornerShape(14.dp)
 
 // Disabled fill: dimmed but still legible against paper (not the a11y announcement — that
 // comes from clickable(enabled = false), unaffected by this purely visual alpha).
-private const val DISABLED_ALPHA = 0.45f
+internal const val DISABLED_ALPHA = 0.45f
 
 // Subtle light top line on filled buttons (mockup: inset 0 1px 0 rgba(255,255,255,.18-.35));
 // one value shared by rust and brass keeps FilledButton a single, undifferentiated renderer.

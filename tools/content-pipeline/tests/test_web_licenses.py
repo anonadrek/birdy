@@ -69,3 +69,8 @@ def test_commons_url_replaces_spaces() -> None:
         "https://commons.wikimedia.org/wiki/File:Great_tit_(Parus_major),_"
         "North_Rhine-Westphalia.jpg"
     )
+
+
+def test_an_author_never_carries_a_dash_the_site_refuses() -> None:
+    """I7: fas 2's dash guard reads the credits."""
+    assert clean_author("<a>Anna</a> \u2014 xeno-canto") == "Anna, xeno-canto"

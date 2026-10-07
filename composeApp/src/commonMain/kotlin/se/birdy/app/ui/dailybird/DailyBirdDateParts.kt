@@ -45,6 +45,8 @@ import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_sep
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.Month
+import kotlinx.datetime.isoDayNumber
+import kotlinx.datetime.number
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -69,60 +71,71 @@ internal fun dailyBirdDateParts(date: LocalDate): DailyBirdDateParts =
         monthFull = monthFullRes(date.month),
     )
 
-internal fun weekdayShortRes(day: DayOfWeek): StringResource =
-    when (day) {
-        DayOfWeek.MONDAY -> Res.string.daily_bird_weekday_mon
-        DayOfWeek.TUESDAY -> Res.string.daily_bird_weekday_tue
-        DayOfWeek.WEDNESDAY -> Res.string.daily_bird_weekday_wed
-        DayOfWeek.THURSDAY -> Res.string.daily_bird_weekday_thu
-        DayOfWeek.FRIDAY -> Res.string.daily_bird_weekday_fri
-        DayOfWeek.SATURDAY -> Res.string.daily_bird_weekday_sat
-        DayOfWeek.SUNDAY -> Res.string.daily_bird_weekday_sun
-    }
+// Lists indexed by ISO weekday (Monday = 1) and month number (January = 1), not `when` over
+// DayOfWeek/Month: those are expect enums in kotlinx-datetime's common code, where a `when`
+// without `else` doesn't compile (:composeApp:compileCommonMainKotlinMetadata).
+private val weekdayShort =
+    listOf(
+        Res.string.daily_bird_weekday_mon,
+        Res.string.daily_bird_weekday_tue,
+        Res.string.daily_bird_weekday_wed,
+        Res.string.daily_bird_weekday_thu,
+        Res.string.daily_bird_weekday_fri,
+        Res.string.daily_bird_weekday_sat,
+        Res.string.daily_bird_weekday_sun,
+    )
+
+private val weekdayFull =
+    listOf(
+        Res.string.daily_bird_weekday_full_mon,
+        Res.string.daily_bird_weekday_full_tue,
+        Res.string.daily_bird_weekday_full_wed,
+        Res.string.daily_bird_weekday_full_thu,
+        Res.string.daily_bird_weekday_full_fri,
+        Res.string.daily_bird_weekday_full_sat,
+        Res.string.daily_bird_weekday_full_sun,
+    )
 
 // Reuses the diary's short month names (the Lifelist month headers say the same "okt"/"Oct").
-internal fun monthShortRes(month: Month): StringResource =
-    when (month) {
-        Month.JANUARY -> Res.string.diary_month_short_jan
-        Month.FEBRUARY -> Res.string.diary_month_short_feb
-        Month.MARCH -> Res.string.diary_month_short_mar
-        Month.APRIL -> Res.string.diary_month_short_apr
-        Month.MAY -> Res.string.diary_month_short_may
-        Month.JUNE -> Res.string.diary_month_short_jun
-        Month.JULY -> Res.string.diary_month_short_jul
-        Month.AUGUST -> Res.string.diary_month_short_aug
-        Month.SEPTEMBER -> Res.string.diary_month_short_sep
-        Month.OCTOBER -> Res.string.diary_month_short_oct
-        Month.NOVEMBER -> Res.string.diary_month_short_nov
-        Month.DECEMBER -> Res.string.diary_month_short_dec
-    }
+private val monthShort =
+    listOf(
+        Res.string.diary_month_short_jan,
+        Res.string.diary_month_short_feb,
+        Res.string.diary_month_short_mar,
+        Res.string.diary_month_short_apr,
+        Res.string.diary_month_short_may,
+        Res.string.diary_month_short_jun,
+        Res.string.diary_month_short_jul,
+        Res.string.diary_month_short_aug,
+        Res.string.diary_month_short_sep,
+        Res.string.diary_month_short_oct,
+        Res.string.diary_month_short_nov,
+        Res.string.diary_month_short_dec,
+    )
 
-internal fun weekdayFullRes(day: DayOfWeek): StringResource =
-    when (day) {
-        DayOfWeek.MONDAY -> Res.string.daily_bird_weekday_full_mon
-        DayOfWeek.TUESDAY -> Res.string.daily_bird_weekday_full_tue
-        DayOfWeek.WEDNESDAY -> Res.string.daily_bird_weekday_full_wed
-        DayOfWeek.THURSDAY -> Res.string.daily_bird_weekday_full_thu
-        DayOfWeek.FRIDAY -> Res.string.daily_bird_weekday_full_fri
-        DayOfWeek.SATURDAY -> Res.string.daily_bird_weekday_full_sat
-        DayOfWeek.SUNDAY -> Res.string.daily_bird_weekday_full_sun
-    }
+private val monthFull =
+    listOf(
+        Res.string.daily_bird_month_full_jan,
+        Res.string.daily_bird_month_full_feb,
+        Res.string.daily_bird_month_full_mar,
+        Res.string.daily_bird_month_full_apr,
+        Res.string.daily_bird_month_full_may,
+        Res.string.daily_bird_month_full_jun,
+        Res.string.daily_bird_month_full_jul,
+        Res.string.daily_bird_month_full_aug,
+        Res.string.daily_bird_month_full_sep,
+        Res.string.daily_bird_month_full_oct,
+        Res.string.daily_bird_month_full_nov,
+        Res.string.daily_bird_month_full_dec,
+    )
 
-internal fun monthFullRes(month: Month): StringResource =
-    when (month) {
-        Month.JANUARY -> Res.string.daily_bird_month_full_jan
-        Month.FEBRUARY -> Res.string.daily_bird_month_full_feb
-        Month.MARCH -> Res.string.daily_bird_month_full_mar
-        Month.APRIL -> Res.string.daily_bird_month_full_apr
-        Month.MAY -> Res.string.daily_bird_month_full_may
-        Month.JUNE -> Res.string.daily_bird_month_full_jun
-        Month.JULY -> Res.string.daily_bird_month_full_jul
-        Month.AUGUST -> Res.string.daily_bird_month_full_aug
-        Month.SEPTEMBER -> Res.string.daily_bird_month_full_sep
-        Month.OCTOBER -> Res.string.daily_bird_month_full_oct
-        Month.NOVEMBER -> Res.string.daily_bird_month_full_nov
-        Month.DECEMBER -> Res.string.daily_bird_month_full_dec
-    }
+internal fun weekdayShortRes(day: DayOfWeek): StringResource = weekdayShort[day.isoDayNumber - 1]
+
+internal fun monthShortRes(month: Month): StringResource = monthShort[month.number - 1]
+
+internal fun weekdayFullRes(day: DayOfWeek): StringResource = weekdayFull[day.isoDayNumber - 1]
+
+internal fun monthFullRes(month: Month): StringResource = monthFull[month.number - 1]
 
 /** "tisdag 6 oktober" / "Tuesday 6 October", for TalkBack. */
 @Composable
