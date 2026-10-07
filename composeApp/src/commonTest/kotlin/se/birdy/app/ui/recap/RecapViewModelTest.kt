@@ -11,19 +11,27 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import se.birdy.app.testing.FakeBadgeRepository
 import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.content.Abundance
 import se.birdy.content.SpeciesId
 import se.birdy.content.model.SpeciesSummary
+import se.birdy.domain.badge.Badge
+import se.birdy.domain.badge.BadgeCatalog
+import se.birdy.domain.badge.BadgeCategory
+import se.birdy.domain.badge.BadgeRule
+import se.birdy.domain.badge.BadgeUnlock
 import se.birdy.domain.observation.FileCleanupRequest
 import se.birdy.domain.observation.Observation
 import se.birdy.domain.observation.ObservationRepository
+import se.birdy.domain.observation.ObservationSource
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -34,30 +42,57 @@ class RecapViewModelTest {
 
     private val fixedNow = Instant.parse("2026-05-30T12:00:00Z")
 
+    private val talgoxe =
+        SpeciesSummary(
+            id = SpeciesId("Q25485"),
+            name = "Talgoxe",
+            scientificName = "Parus major",
+            abundance = Abundance.ALLMÄN,
+            heroImagePath = "Q25485/hero.webp",
+        )
+
+    private val catalog =
+        BadgeCatalog(
+            version = 1,
+            badges =
+                listOf(
+                    Badge("novice", BadgeCategory.PROGRESSION, BadgeRule.CountUniqueSpecies(5)),
+                    Badge("weekly_streak_4", BadgeCategory.STREAK_WEEKLY, BadgeRule.WeeklyStreak(4)),
+                    Badge("premium_year", BadgeCategory.PROGRESSION, BadgeRule.CountUniqueSpecies(50), isPremium = true),
+                ),
+        )
+
     private fun vm(
         obs: FakeObservationRepository = FakeObservationRepository(),
         badges: FakeBadgeRepository = FakeBadgeRepository(),
         speciesByQid: suspend () -> Map<SpeciesId, SpeciesSummary> = { emptyMap() },
-        badgeNameFor: suspend (String) -> String = { it },
     ) = RecapViewModel(
         obsRepo = obs,
         badgeRepo = badges,
         speciesByQid = speciesByQid,
-        badgeNameFor = badgeNameFor,
+        stampFor = recapStampResolver(catalog, nameFor = { "Name $it" }, descriptionFor = { "Desc $it" }),
         zone = TimeZone.UTC,
         now = { fixedNow },
     )
 
+    private suspend fun RecapViewModel.loaded(): RecapUiState.Loaded {
+        var result: RecapUiState.Loaded? = null
+        state.test {
+            var item = awaitItem()
+            while (item is RecapUiState.Loading) item = awaitItem()
+            result = item as RecapUiState.Loaded
+            cancelAndIgnoreRemainingEvents()
+        }
+        return result!!
+    }
+
     @Test
     fun `quiet week emits Loaded with quiet summary`() =
         runTest {
-            val vm = vm()
-            vm.state.test {
-                var item = awaitItem()
-                while (item is RecapUiState.Loading) item = awaitItem()
-                val loaded = item as RecapUiState.Loaded
-                assertTrue(loaded.recap.summary.isQuiet)
-            }
+            val loaded = vm().loaded()
+            assertTrue(loaded.recap.summary.isQuiet)
+            assertEquals(7, loaded.days.size)
+            assertTrue(loaded.finds.isEmpty() && loaded.newSpecies.isEmpty() && loaded.stamps.isEmpty())
         }
 
     @Test
@@ -69,27 +104,78 @@ class RecapViewModelTest {
                 speciesId = "Q25485",
                 capturedAt = Instant.parse("2026-05-28T10:00:00Z"), // Thursday same week
             )
-            val talgoxe =
-                SpeciesSummary(
-                    id = SpeciesId("Q25485"),
-                    name = "Talgoxe",
-                    scientificName = "Parus major",
-                    abundance = Abundance.ALLMÄN,
-                    heroImagePath = null,
-                )
-            val vm =
-                vm(
-                    obs = obsRepo,
-                    speciesByQid = { mapOf(SpeciesId("Q25485") to talgoxe) },
-                    badgeNameFor = { "Badge $it" },
-                )
-            vm.state.test {
-                var item = awaitItem()
-                while (item is RecapUiState.Loading) item = awaitItem()
-                val loaded = item as RecapUiState.Loaded
-                assertEquals("Talgoxe", loaded.finds.single().speciesName)
-                assertTrue(loaded.recap.summary.observationCount >= 1)
-            }
+            val loaded = vm(obs = obsRepo, speciesByQid = { mapOf(SpeciesId("Q25485") to talgoxe) }).loaded()
+            val find = loaded.finds.single()
+            assertEquals("Talgoxe", find.speciesName)
+            assertEquals(LocalDate(2026, 5, 28), find.date)
+            assertEquals("Q25485/hero.webp", find.heroImagePath)
+            assertTrue(loaded.recap.summary.observationCount >= 1)
+        }
+
+    @Test
+    fun `the strip and the new species carry the resolved finds`() =
+        runTest {
+            val obsRepo = FakeObservationRepository()
+            obsRepo.seedObservation(speciesId = "Q25485", capturedAt = Instant.parse("2026-05-26T10:00:00Z"), id = "tue")
+            val loaded = vm(obs = obsRepo, speciesByQid = { mapOf(SpeciesId("Q25485") to talgoxe) }).loaded()
+
+            // Monday 25 May first; Tuesday has the find.
+            assertEquals(LocalDate(2026, 5, 25), loaded.days.first().date)
+            assertEquals(1, loaded.days[1].findCount)
+            assertEquals("Talgoxe", loaded.days[1].cover?.speciesName)
+            assertNull(loaded.days[0].cover)
+            // Sunday 31 May is after "now" (Saturday 30 May).
+            assertEquals(listOf(false, false, false, false, false, false, true), loaded.days.map { it.isFuture })
+
+            val new = loaded.newSpecies.single()
+            assertEquals(1, new.lifeListNumber)
+            assertEquals("tue", new.find.observationId)
+            assertEquals("Talgoxe", new.find.speciesName)
+        }
+
+    @Test
+    fun `a heard find is marked so the grid shows the plate photo`() =
+        runTest {
+            val obsRepo = FakeObservationRepository()
+            obsRepo.seedDirect(
+                Observation(
+                    id = "heard",
+                    speciesId = "Q25485",
+                    capturedAt = Instant.parse("2026-05-29T06:00:00Z"),
+                    savedAt = Instant.parse("2026-05-29T06:00:00Z"),
+                    photoPath = "/audio/heard.png",
+                    note = "",
+                    confidence = 0.8f,
+                    latitude = null,
+                    longitude = null,
+                    locationLabel = null,
+                    sourceType = ObservationSource.Audio,
+                ),
+            )
+            val loaded = vm(obs = obsRepo, speciesByQid = { mapOf(SpeciesId("Q25485") to talgoxe) }).loaded()
+            assertTrue(loaded.finds.single().isHeard)
+        }
+
+    @Test
+    fun `the week's stamps get their catalog number and words and ink with the newest first`() =
+        runTest {
+            val badges = FakeBadgeRepository()
+            badges.seedUnlocks(
+                listOf(
+                    BadgeUnlock("weekly_streak_4", Instant.parse("2026-05-26T10:00:00Z")),
+                    BadgeUnlock("premium_year", Instant.parse("2026-05-29T10:00:00Z")),
+                    BadgeUnlock("novice", Instant.parse("2026-05-01T10:00:00Z")), // an earlier week
+                    BadgeUnlock("retired_badge", Instant.parse("2026-05-27T10:00:00Z")), // no longer in the catalog
+                ),
+            )
+            val loaded = vm(badges = badges).loaded()
+            assertEquals(
+                listOf(
+                    RecapStampItem("premium_year", 3, "Name premium_year", "Desc premium_year", isPremium = true),
+                    RecapStampItem("weekly_streak_4", 2, "Name weekly_streak_4", "Desc weekly_streak_4", isPremium = false),
+                ),
+                loaded.stamps,
+            )
         }
 
     @Test
@@ -123,7 +209,7 @@ class RecapViewModelTest {
                     obsRepo = throwingObsRepo,
                     badgeRepo = FakeBadgeRepository(),
                     speciesByQid = { emptyMap() },
-                    badgeNameFor = { it },
+                    stampFor = { null },
                     zone = TimeZone.UTC,
                     now = { fixedNow },
                 )

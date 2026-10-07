@@ -778,12 +778,6 @@
         <item quantity="one">%1$d sighting this week.</item>
         <item quantity="other">%1$d sightings this week.</item>
     </plurals>
-    <plurals name="recap_summary_active_new">
-        <item quantity="one">%1$d sighting this week, and a new acquaintance.</item>
-        <item quantity="other">%1$d sightings this week, and a new acquaintance.</item>
-    </plurals>
-    <!-- %1$s = recap_stats_finds, %2$s = recap_stats_new_species, %3$s = recap_stats_week_streak. -->
-    <string name="recap_stats_fmt">%1$s · %2$s · %3$s</string>
     <plurals name="recap_stats_finds">
         <item quantity="one">%1$d sighting</item>
         <item quantity="other">%1$d sightings</item>
@@ -796,21 +790,65 @@
         <item quantity="one">%1$d week in a row</item>
         <item quantity="other">%1$d weeks in a row</item>
     </plurals>
-    <string name="recap_new_badge_fmt">New stamp: %1$s</string>
-    <!-- %1$s is the signed difference ("+2", "-1"); the quantity is its size. -->
-    <plurals name="recap_delta_fmt">
-        <item quantity="one">vs last week: %1$s sighting</item>
-        <item quantity="other">vs last week: %1$s sightings</item>
+    <!-- Release 1.3.0 Task 7j, "Uppslag 1": the week's dates under the headline. -->
+    <!-- %1$d = first day, %2$d = last day, %3$s = month ("5 to 11 October"). -->
+    <string name="recap_dates_one_month_fmt">%1$d to %2$d %3$s</string>
+    <!-- "28 September to 4 October". -->
+    <string name="recap_dates_two_months_fmt">%1$d %2$s to %3$d %4$s</string>
+    <!-- %1$s = recap_dates_*, %2$d = days with at least one sighting. -->
+    <plurals name="recap_sub_active">
+        <item quantity="one">%1$s. Out on %2$d day.</item>
+        <item quantity="other">%1$s. Out on %2$d days.</item>
     </plurals>
-    <string name="recap_empty_plate">The page is blank — no sightings yet.</string>
-    <string name="recap_new_species_tag">New species</string>
+    <string name="recap_sub_quiet">%1$s.</string>
+    <!-- The words under the three numbers in the header row (shown in caps). -->
+    <plurals name="recap_ledger_finds">
+        <item quantity="one">sighting</item>
+        <item quantity="other">sightings</item>
+    </plurals>
+    <plurals name="recap_ledger_new_species">
+        <item quantity="one">new species</item>
+        <item quantity="other">new species</item>
+    </plurals>
+    <plurals name="recap_ledger_weeks">
+        <item quantity="one">week in a row</item>
+        <item quantity="other">weeks in a row</item>
+    </plurals>
+    <!-- The header row read as one sentence: recap_stats_finds, recap_stats_new_species, recap_stats_week_streak. -->
+    <string name="recap_ledger_a11y_fmt">%1$s, %2$s, %3$s.</string>
+    <!-- %1$s is the signed difference ("+3", "-1"); the quantity is its size. -->
+    <plurals name="recap_delta_line">
+        <item quantity="one">%1$s sighting compared with last week</item>
+        <item quantity="other">%1$s sightings compared with last week</item>
+    </plurals>
+    <string name="recap_delta_same">As many sightings as last week</string>
+    <!-- A day in the Monday to Sunday strip, for TalkBack. %1$s = "Monday 5 October". -->
+    <plurals name="recap_day_a11y">
+        <item quantity="one">%1$s, %2$d sighting</item>
+        <item quantity="other">%1$s, %2$d sightings</item>
+    </plurals>
+    <string name="recap_day_none_a11y">%1$s, no sightings</string>
+    <string name="recap_day_future_a11y">%1$s, still to come</string>
+    <string name="recap_section_new">New on your life list</string>
+    <!-- %1$d = the species' number in the life list, %2$s = "Sat 10 Oct". -->
+    <string name="recap_new_lifelist_fmt">№ %1$d on your life list · %2$s</string>
+    <!-- %1$s = species, %2$d = life-list number, %3$s = "Saturday 10 October". -->
+    <string name="recap_new_a11y_fmt">%1$s, number %2$d on your life list, first seen %3$s</string>
+    <string name="recap_new_tag">New</string>
+    <string name="recap_stamp_label">New stamp</string>
+    <!-- %1$s = stamp name, %2$d = its number, %3$s = its description. -->
+    <string name="recap_stamp_a11y_fmt">New stamp: %1$s, number %2$d. %3$s</string>
+    <string name="recap_stamp_none_label">This week's stamp</string>
+    <string name="recap_stamp_none">No new stamp this week.</string>
+    <string name="recap_section_all_fmt">All sightings · %1$d</string>
+    <!-- A square in the grid: %1$s = species, %2$s = "Sunday 11 October". -->
+    <string name="recap_find_a11y_fmt">%1$s, %2$s</string>
     <string name="recap_quiet_encouragement">No rush. Ten minutes in the park is enough for the week's first line.</string>
     <string name="recap_streak_label">Your streak</string>
-    <string name="recap_streak_nudge_fmt">%1$s weeks running — keep it alive before Sunday ends. A great tit in the park is enough.</string>
-    <string name="recap_cta_open_camera">Open the camera →</string>
+    <string name="recap_streak_nudge_fmt">%1$s weeks running. Keep it alive before Sunday ends: a great tit in the park is enough.</string>
+    <string name="recap_cta_open_camera">Open the camera</string>
     <string name="recap_load_error">Couldn't open this week’s page. Try again later.</string>
     <string name="recap_lifelist_entry_title">This week's page</string>
-    <string name="recap_a11y_fmt">This week's page, week %1$s</string>
     <string name="notification_recap_active_title">Your week in the field</string>
     <!-- %1$s = recap_stats_finds, %2$s = recap_stats_new_species. -->
     <string name="notification_recap_active_body_fmt">%1$s, %2$s. See this week's page.</string>

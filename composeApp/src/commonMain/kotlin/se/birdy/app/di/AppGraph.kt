@@ -493,14 +493,28 @@ class AppGraph(
             obsRepo = observationRepository,
             badgeRepo = badgeRepository,
             speciesByQid = { repository.all(defaultLocale).first().associateBy { it.id } },
-            badgeNameFor = { id ->
-                runCatching {
-                    org.jetbrains.compose.resources.getString(
-                        se.birdy.app.ui.badges.BadgeStringMap
-                            .nameFor(id),
-                    )
-                }.getOrElse { id }
-            },
+            // resolveBadgeString rethrows cancellation and falls back to a readable title for a
+            // badge without strings (the old inline runCatching swallowed both).
+            stampFor =
+                se.birdy.app.ui.recap.recapStampResolver(
+                    catalog = badgeCatalog,
+                    nameFor = { id ->
+                        se.birdy.app.ui.badges.resolveBadgeString(id) {
+                            se.birdy.app.ui.badges.BadgeStringMap
+                                .nameFor(id)
+                        }
+                    },
+                    descriptionFor = { id ->
+                        // No readable fallback for a description: an empty line rather than the id.
+                        runCatching {
+                            org.jetbrains.compose.resources.getString(
+                                se.birdy.app.ui.badges.BadgeStringMap
+                                    .descriptionFor(id),
+                            )
+                        }.onFailure { if (it is kotlinx.coroutines.CancellationException) throw it }
+                            .getOrDefault("")
+                    },
+                ),
             zone = timeZone,
         )
 
