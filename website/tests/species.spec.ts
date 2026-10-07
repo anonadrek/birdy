@@ -582,14 +582,18 @@ test.describe('meny och sidfot för arterna', () => {
     });
   }
 
-  test('sidfotens grupplänkar och Alla arter leder till sidor som finns', async ({ page, request }) => {
+  // Only indexed groups (Task 13's review): on the test data six of the eight groups have one species each and
+  // noindex, so the column has Songbirds, Owls and All species.
+  test('sidfotens grupplänkar och Alla arter leder till indexerade sidor som finns', async ({ page, request }) => {
     await page.goto('/');
     const column = page.locator('footer.footer .col').first();
     await expect(column.locator('.fh')).toHaveText('Species');
     const links = column.locator('a');
-    await expect(links.last()).toHaveText('All species A to Z');
+    await expect(links).toHaveText(['Songbirds', 'Owls', 'All species A to Z']);
     for (const href of await links.evaluateAll((els) => els.map((e) => e.getAttribute('href')!))) {
-      expect((await request.get(href)).status(), href).toBe(200);
+      const res = await request.get(href);
+      expect(res.status(), href).toBe(200);
+      expect(await res.text(), href).not.toContain('content="noindex');
     }
   });
 
@@ -626,10 +630,14 @@ test.describe('meny och sidfot för arterna', () => {
 
   test('hoppa till innehållet: första tabbstoppet, och nästa stopp ligger i main', async ({ page }) => {
     await page.goto('/sv/arter/talgoxe/');
+    await expect(page.locator('.skip-link')).not.toBeInViewport();
     await page.keyboard.press('Tab');
     await expect(page.locator(':focus')).toHaveText('Hoppa till innehållet');
     await expect(page.locator(':focus')).toBeInViewport();
     await page.keyboard.press('Enter');
+    // main takes focus (tabindex="-1"), without a ring around the whole page (Task 13's review).
+    await expect(page.locator('main#main')).toBeFocused();
+    expect(await page.locator('main#main').evaluate((el) => getComputedStyle(el).outlineStyle)).toBe('none');
     await page.keyboard.press('Tab');
     expect(await page.evaluate(() => Boolean(document.activeElement?.closest('main#main')))).toBe(true);
     for (const path of ['/', '/sv/blog/', '/legal/privacy/']) {
@@ -638,4 +646,3 @@ test.describe('meny och sidfot för arterna', () => {
     }
   });
 });
-

@@ -2202,7 +2202,7 @@ const jsonLd = n === 0 ? [breadcrumbJsonLd(crumbs)] : [breadcrumbJsonLd(crumbs),
   {/* The bar's only chip at n=0 would be "All species (0)": nothing to filter into, so it is hidden
       along with the rest of the browsing UI below (third controller review, same day). */}
   {n > 0 && <CategoryBar locale={locale} active="all" search={false} />}
-  <main class="hub wrap">
+  <main id="main" tabindex="-1" class="hub wrap">
     <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
       <ol>
         <li><a href={crumbs[0].href} data-crumb>{crumbs[0].name}</a></li>
@@ -2508,13 +2508,14 @@ const description = members.length === 1
   ? t.species.descGroupOne.replace('{group}', group.name[locale])
   : t.species.descGroup.replace('{group}', group.name[locale]).replace('{count}', countLabel(members.length, t));
 // Grouped by family.latin in both languages (same sections in SV and EN, like related() in species.ts),
-// not by the locale's own display name: the pipeline doesn't yet guarantee one canonical Swedish family
-// name per Latin family, so two species of the same family could otherwise land in two different SV
-// sections while staying one section in EN (controller review, Task 8 fix wave). The SV label is the
-// first member's family.sv in sorted order (members is already locale-sorted, and Array#sort is stable),
-// so the choice is deterministic even while that pipeline guarantee doesn't exist yet; EN always shows
-// the Latin name itself, which is unambiguous by definition. Same rule applies to Task 10's family kicker
-// row and "Fler {family}" heading, see the note there.
+// not by the locale's own display name: the pipeline now guarantees one Swedish family name per Latin
+// family (web/families.py, BirdLife Sverige's world bird list NL20), but grouping by Latin stays as a
+// safeguard here rather than trusting that every record agrees (controller review, Task 8 fix wave; the
+// fixture generator still deliberately gives Kaja and Skata different family.sv values, both Corvidae, to
+// exercise this safeguard). The SV label is the first member's family.sv in sorted order (members is
+// already locale-sorted, and Array#sort is stable), so the choice is deterministic even if two records
+// ever disagreed; EN always shows the Latin name itself, which is unambiguous by definition. Same rule
+// applies to Task 10's family kicker row and "Fler {family}" heading, see the note there.
 const families = new Map<string, { sv: string; items: typeof members }>();
 for (const s of members) {
   const existing = families.get(s.family.latin);
@@ -2542,7 +2543,7 @@ const ogImage = photo ? await getImage({ src: photo, width: 1200, height: 630, f
 <Layout locale={locale} pathname={pathname} alternatePath={groupHref(group, other)} title={title} description={description} noindex={!isGroupIndexed(group, all)} jsonLd={jsonLd} ogImage={ogImage?.src}>
   <Nav locale={locale} variant="solid" switchLangHref={groupHref(group, other)} />
   <CategoryBar locale={locale} active={group.key} />
-  <main class="group wrap">
+  <main id="main" tabindex="-1" class="group wrap">
     <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
       <ol>
         <li><a href={crumbs[0].href} data-crumb>{crumbs[0].name}</a></li>
@@ -3377,7 +3378,7 @@ const jsonLd = [
 <Layout locale={locale} pathname={pathname} alternatePath={otherPath} title={title} description={text.metaDescription} ogImage={share} ogImageAlt={altHero} noindex={unpublished} jsonLd={jsonLd}>
   <Nav locale={locale} variant="solid" switchLangHref={otherPath} />
   <CategoryBar locale={locale} active={s.group} />
-  <main id="main" class="sp wrap" data-species-page>
+  <main id="main" tabindex="-1" class="sp wrap" data-species-page>
     {unpublished && <p class="sp-preview" data-preview-banner role="note">{t.species.previewBanner}</p>}
     <div class="spread">
       <header class="head">
@@ -3841,7 +3842,7 @@ const jsonLd = [
 <Layout locale={locale} pathname={pathname} alternatePath={otherPath} title={title} description={text.metaDescription} noindex={unpublished} jsonLd={jsonLd}>
   <Nav locale={locale} variant="solid" switchLangHref={otherPath} />
   <CategoryBar locale={locale} active={sharedGroup} />
-  <main class="cmp wrap" data-comparison-page>
+  <main id="main" tabindex="-1" class="cmp wrap" data-comparison-page>
     {unpublished && <p class="sp-preview" data-preview-banner role="note">{t.species.previewBanner}</p>}
     <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
       <ol>
@@ -4135,7 +4136,7 @@ const jsonLd = [
 
 <Layout locale={locale} pathname={pathname} alternatePath={aboutHref(other)} title={a.title} description={a.description} noindex={speciesCount === 0} jsonLd={jsonLd}>
   <Nav locale={locale} variant="solid" switchLangHref={aboutHref(other)} />
-  <main class="about wrap">
+  <main id="main" tabindex="-1" class="about wrap">
     <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
       <ol>
         <li><a href={crumbs[0].href} data-crumb>{crumbs[0].name}</a></li>
@@ -4247,14 +4248,18 @@ test.describe('meny och sidfot för arterna', () => {
     });
   }
 
-  test('sidfotens grupplänkar och Alla arter leder till sidor som finns', async ({ page, request }) => {
+  // Only indexed groups (Task 13's review): on the test data six of the eight groups have one species each and
+  // noindex, so the column has Songbirds, Owls and All species.
+  test('sidfotens grupplänkar och Alla arter leder till indexerade sidor som finns', async ({ page, request }) => {
     await page.goto('/');
     const column = page.locator('footer.footer .col').first();
     await expect(column.locator('.fh')).toHaveText('Species');
     const links = column.locator('a');
-    await expect(links.last()).toHaveText('All species A to Z');
+    await expect(links).toHaveText(['Songbirds', 'Owls', 'All species A to Z']);
     for (const href of await links.evaluateAll((els) => els.map((e) => e.getAttribute('href')!))) {
-      expect((await request.get(href)).status(), href).toBe(200);
+      const res = await request.get(href);
+      expect(res.status(), href).toBe(200);
+      expect(await res.text(), href).not.toContain('content="noindex');
     }
   });
 
@@ -4291,10 +4296,14 @@ test.describe('meny och sidfot för arterna', () => {
 
   test('hoppa till innehållet: första tabbstoppet, och nästa stopp ligger i main', async ({ page }) => {
     await page.goto('/sv/arter/talgoxe/');
+    await expect(page.locator('.skip-link')).not.toBeInViewport();
     await page.keyboard.press('Tab');
     await expect(page.locator(':focus')).toHaveText('Hoppa till innehållet');
     await expect(page.locator(':focus')).toBeInViewport();
     await page.keyboard.press('Enter');
+    // main takes focus (tabindex="-1"), without a ring around the whole page (Task 13's review).
+    await expect(page.locator('main#main')).toBeFocused();
+    expect(await page.locator('main#main').evaluate((el) => getComputedStyle(el).outlineStyle)).toBe('none');
     await page.keyboard.press('Tab');
     expect(await page.evaluate(() => Boolean(document.activeElement?.closest('main#main')))).toBe(true);
     for (const path of ['/', '/sv/blog/', '/legal/privacy/']) {
@@ -4314,11 +4323,11 @@ Expected: FAIL (ingen länk "Arter" än)
 
 **Villkor (Task 7:s granskning 2026-10-07):** "Arter" ska bara synas när det finns något att visa. Innan Task 16 publicerat den första riktiga arten (Task 15 Step 4: produktionsbygget går igenom med noll publicerade arter) är `getAllSpecies()` tom: menyn ska då se ut som i dag, utan länken, i stället för att peka på en hub som själv bara visar en "på väg"-rad.
 
-I `src/components/Nav.astro`, lägg till importen `import { getAllSpecies, hubHref } from '../lib/species';` och ersätt `const links = [ ... ];` med:
+I `src/components/Nav.astro`, lägg till importen `import { hasSpecies as anySpecies, hubHref } from '../lib/species';` och ersätt `const links = [ ... ];` med:
 
 ```ts
 const speciesHub = hubHref(locale);
-const hasSpecies = (await getAllSpecies()).length > 0;
+const hasSpecies = await anySpecies();
 const links = [
   ...(hasSpecies ? [{ href: speciesHub, label: t.nav.species }] : []),
   { href: `${home}#how-it-works`, label: t.nav.howItWorks },
@@ -4338,18 +4347,20 @@ Lägg till ett test som kör mot `npm run build:prod` (riktigt läge, `src/data/
 
 - [ ] **Step 4: Sidfoten**
 
-I `src/components/Footer.astro`, lägg till importen `import { commonSpecies, getAllSpecies, groupHref, hubHref, largestGroups, speciesHref } from '../lib/species';` och efter `const blogPrefix = ...`:
+I `src/components/Footer.astro`, lägg till importerna `import { footerSpecies } from '../lib/species-nav.mjs';` och `import { COMMON_QIDS, footerGroups, getAllSpecies, groupHref, hubHref, speciesHref } from '../lib/species';` och efter `const blogPrefix = ...`:
 
 ```ts
 const allSpecies = await getAllSpecies();
-const topGroups = largestGroups(allSpecies, 5);
-const common = commonSpecies(allSpecies);
+const { column: speciesColumn, common } = footerSpecies(allSpecies, COMMON_QIDS);
+// Indexed groups only (Task 13's review): a group under three species has noindex, so the footer of every page
+// shouldn't point there. "All species" is always there.
+const topGroups = footerGroups(allSpecies);
 ```
 
-Lägg till en ny kolumn före `<div class="col">` med `t.footer.explore`, villkorad på `allSpecies.length > 0` (samma skäl som menyns länk i Step 3: en kolumn med grupplänkar till en hub som bara visar "på väg" är värre än ingen kolumn alls, innan Task 16 publicerat den första arten):
+Lägg till en ny kolumn före `<div class="col">` med `t.footer.explore`, villkorad på `speciesColumn` (`hasSpeciesPages` i `species-nav.mjs`, samma skäl som menyns länk i Step 3: en kolumn med grupplänkar till en hub som bara visar "på väg" är värre än ingen kolumn alls, innan Task 16 publicerat den första arten):
 
 ```astro
-      {allSpecies.length > 0 && (
+      {speciesColumn && (
         <div class="col">
           <h2 class="fh">{t.footer.species}</h2>
           {topGroups.map((g) => <a href={groupHref(g, locale)}>{g.name[locale]}</a>)}
@@ -4366,7 +4377,7 @@ Lägg till före `<div class="fbot">`:
     )}
 ```
 
-**Ändrat 2026-10-07 (Task 4:s fixvåg):** `commonSpecies()` stoppar inte längre bygget när någon av de tolv saknar sida, utan returnerar de av de tolv som har en sida i bygget, i listans ordning. Arterna publiceras en i taget (Task 16) och koden ligger på `main` innan något är publicerat (Task 15 Step 4), så listan är tom eller ofullständig länge. Raden "Vanliga arter" döljs när listan är tom (villkoret ovan); testa både en tom och en ofullständig lista.
+**Ändrat 2026-10-07 (Task 4:s fixvåg; sedan Task 13:s granskning gör `footerSpecies()` i `species-nav.mjs` det, `commonSpecies()` är borttagen):** `commonSpecies()` stoppar inte längre bygget när någon av de tolv saknar sida, utan returnerar de av de tolv som har en sida i bygget, i listans ordning. Arterna publiceras en i taget (Task 16) och koden ligger på `main` innan något är publicerat (Task 15 Step 4), så listan är tom eller ofullständig länge. Raden "Vanliga arter" döljs när listan är tom (villkoret ovan); testa både en tom och en ofullständig lista.
 
 **Tillägg (Task 7:s granskning 2026-10-07, skild från ovanstående):** `common.length > 0` döljer bara raden "Vanliga arter". Den NYA kolumnen "Arter" (grupplänkarna + "Alla arter", ovan) döljs av ett eget villkor, `allSpecies.length > 0`: de två kan skilja sig åt: har bara en enda icke-vanlig art publicerats finns kolumnen (grupplänkar att visa) men inte raden (ingen av de tolv vanliga är med än). Testa alla tre lägen: noll arter (ingen kolumn, ingen rad), några arter men ingen av de tolv vanliga (kolumn, ingen rad), minst en av de tolv (kolumn och rad).
 
@@ -4382,10 +4393,10 @@ I `<style>`: ändra `.fgrid { display: grid; grid-template-columns: 1.6fr 1fr 1f
 
 - [ ] **Step 5: Startsidans länk**
 
-I `src/components/Guide.astro`, lägg till importen `import { getAllSpecies, hubHref } from '../lib/species';` och efter `<CoverageMap locale={locale} />`, villkorad på samma sätt som menyn och sidfoten (Step 3 och 4): en länk till en hub som bara säger "på väg" hjälper ingen innan Task 16 publicerat den första arten.
+I `src/components/Guide.astro`, lägg till importen `import { hasSpecies as anySpecies, hubHref } from '../lib/species';`, `const hasSpecies = await anySpecies();` i frontmattern, och efter `<CoverageMap locale={locale} />`, villkorad på samma sätt som menyn och sidfoten (Step 3 och 4): en länk till en hub som bara säger "på väg" hjälper ingen innan Task 16 publicerat den första arten.
 
 ```astro
-    {(await getAllSpecies()).length > 0 && (
+    {hasSpecies && (
       <p class="browse"><a href={hubHref(locale)}>{t.guide.browse} <span aria-hidden="true">→</span></a></p>
     )}
 ```
@@ -4397,7 +4408,7 @@ Och i komponentens `<style>`:
   .browse a { color: var(--rust); border-bottom: 1px solid currentColor; padding-bottom: 2px; }
 ```
 
-**Tillägg (Task 7:s granskning 2026-10-07): en hoppa-till-innehållet-länk.** `CategoryBar.astro` (Task 6) lägger upp till 16 chips (en per grupp) i tab-ordningen före sökfältet och sidans eget innehåll: en tangentbords- eller skärmläsaranvändare som landar på en artsida måste nu tabba genom menyn OCH hela kategoriraden innan `<main>`. Lägg till en osynlig-tills-fokuserad hoppa-länk högst upp i `Layout.astro` (den delas av alla sidor, inte bara artsidorna, men kostar inget på de andra): `<a href="#main" class="skip-link">{t.nav.skipToContent}</a>` som första barn i `<body>`, pekar på ett `id="main"` tillagt på varje sidas `<main>`-element (de delade artsides-komponenterna har redan `<main class="hub wrap">` etc.: lägg till `id="main"` där; startsidan, bloggen och juridiksidorna har sina egna `<main>`, samma sak). Nya copy-nycklar `nav.skipToContent`: "Hoppa till innehållet" / "Skip to content". Stil: `.skip-link { position: absolute; left: 12px; top: -48px; z-index: 200; background: var(--dark); color: var(--cream); padding: 12px 18px; border-radius: 8px; transition: top .2s; } .skip-link:focus { top: 12px; }` (osynlig förrän den tabbas till, dyker sedan upp överst till vänster). Test: `page.keyboard.press('Tab')` en gång på en artsida ska fokusera länken (`page.locator(':focus')` har texten "Hoppa till innehållet"), och att aktivera den (Enter eller `page.locator('#main')`-kontroll av fokus) hoppar förbi menyn och kategoriraden.
+**Tillägg (Task 7:s granskning 2026-10-07): en hoppa-till-innehållet-länk.** `CategoryBar.astro` (Task 6) lägger upp till 16 chips (en per grupp) i tab-ordningen före sökfältet och sidans eget innehåll: en tangentbords- eller skärmläsaranvändare som landar på en artsida måste nu tabba genom menyn OCH hela kategoriraden innan `<main>`. Lägg till en osynlig-tills-fokuserad hoppa-länk högst upp i `Layout.astro` (den delas av alla sidor, inte bara artsidorna, men kostar inget på de andra): `<a href="#main" class="skip-link">{t.nav.skipToContent}</a>` som första barn i `<body>`, pekar på ett `id="main"` tillagt på varje sidas `<main>`-element (de delade artsides-komponenterna har redan `<main class="hub wrap">` etc.: lägg till `id="main"` där; startsidan, bloggen och juridiksidorna har sina egna `<main>`, samma sak). Nya copy-nycklar `nav.skipToContent`: "Hoppa till innehållet" / "Skip to content". Stil (ändrad i Task 13:s granskning): `.skip-link { position: absolute; left: 12px; top: 12px; z-index: 300; ...; transform: translateY(calc(-100% - 24px)); transition: transform .2s; } .skip-link:focus { transform: none; }` (osynlig förrän den tabbas till, dyker sedan upp överst till vänster; flyttad med sin egen höjd, så att större text inte lämnar en kant synlig), och `<main id="main" tabindex="-1">` med `main[tabindex="-1"]:focus { outline: none; }` så att fokus hamnar i `main` utan en ram runt hela sidan. Test: `page.keyboard.press('Tab')` en gång på en artsida ska fokusera länken (`page.locator(':focus')` har texten "Hoppa till innehållet"), och att aktivera den (Enter eller `page.locator('#main')`-kontroll av fokus) hoppar förbi menyn och kategoriraden.
 
 - [ ] **Step 6: Kör alla webbtester**
 
@@ -4418,6 +4429,7 @@ git commit -m "feat(website): Arter i menyn, sidfoten och startsidans uppslagsve
 3. **Sidfotens rutnät** har kvar sina tre kolumner när arter saknas: `.fgrid` är `1.6fr repeat(3, 1fr)` och modifieraren `.fgrid--species` (satt när kolumnen visas) `1.6fr repeat(4, 1fr)`, i stället för att alltid ha fem spår.
 4. **`scripts/check-empty-hub.mjs`** kontrollerar nu också start- och bloggsidorna (`/`, `/sv/`, `/blog/`, `/sv/blog/`) i noll-arter-bygget: ingen länk till `/sv/arter/` eller `/species/`, ingen rad Vanliga arter, ingen artkolumn, ingen länk under kartan, och att hoppa-länken finns. Kontrollen failar med menylänken påtvingad (provat).
 5. **Hoppa-länken:** stilen ligger i `src/styles/global.css` med `top: -64px`, `z-index: 300` (menyn har 100), en apricosfärgad fokusring och ingen övergång vid reducerad rörelse. Copy-nyckeln `nav.skipToContent` ("Hoppa till innehållet" / "Skip to content") finns i båda copy-filerna och i specens bilaga A. `id="main"` på `main` i `HomePage`, `FieldNoteArticle`, `FieldNotesIndex`, `LegalLayout`, `pages/legal/index.astro` och de fyra artsidekomponenterna.
+6. **Task 13:s granskning (2026-10-07, "Approved with minors", egen commit efter Task 14):** sidfotens kolumn visar bara indexerade grupper (`footerGroups()` i `species.ts`: de fem största med minst tre arter, "Alla arter från A till Ö" alltid; testdatan ger Tättingar, Ugglor och Alla arter); mellan 761 och 1 000 px får `.fgrid--species` tre kolumner med varumärket på en egen rad (ingen överflödning i 761, 800, 880, 900 och 1 000 px, mätt); hoppa-länken göms med `transform` och `<main id="main" tabindex="-1">` tar fokus utan ram (Task 11:s `ComparisonPage`-block har fått samma attribut); en gemensam regel för "finns det arter?" (`hasSpeciesPages` i `species-nav.mjs`, `hasSpecies()` i `species.ts` för menyn och startsidan, `footerSpecies().column` för sidfoten); `commonSpecies()` borttagen (inga anrop kvar) och kommentaren står vid `COMMON_QIDS`; `check-seo.mjs` kräver exakt ett `id="main"` på varje sida med hoppa-länken. Testblocket ovan är byte-identiskt med filen igen.
 
 ---
 
@@ -4534,7 +4546,7 @@ Ersätt `integrations: [sitemap({ ... }), speciesAudio],` med:
 
 - [ ] **Step 3: SEO-skriptet**
 
-**Tillägg (2026-10-07, Task 4:s fixvåg):** sidfoten kräver inte längre alla tolv vanliga arter (`commonSpecies()` returnerar de som har en sida). Lägg i `check-seo.mjs` till en **varning, inte ett fel**, som listar de av de tolv i `species-groups.json` (`common`) som saknar sida i bygget, till exempel `check-seo: varning, 3 av 12 vanliga arter saknar sida: Q25334, Q14683, Q4764`. Den får aldrig stoppa bygget eller publiceringsloopen.
+**Tillägg (2026-10-07, Task 4:s fixvåg):** sidfoten kräver inte längre alla tolv vanliga arter (`footerSpecies()` i `species-nav.mjs` tar med de som har en sida). Lägg i `check-seo.mjs` till en **varning, inte ett fel**, som listar de av de tolv i `species-groups.json` (`common`) som saknar sida i bygget, till exempel `check-seo: varning, 3 av 12 vanliga arter saknar sida: Q25334, Q14683, Q4764`. Den får aldrig stoppa bygget eller publiceringsloopen.
 
 `scripts/check-seo.mjs`:
 
@@ -4600,6 +4612,11 @@ for (const { path, html } of pages) {
   for (const tag of html.match(/<a\b[^>]*>/g) ?? []) {
     const target = internalTarget(attr(tag, 'href') ?? '');
     if (target && !exists(target)) fail(path, `död länk till ${attr(tag, 'href')}`);
+  }
+  // The skip link (Layout.astro, Task 13) needs its target on every page that has it, new page types included.
+  if (/class="skip-link"/.test(html)) {
+    const mains = (html.match(/\sid="main"/g) ?? []).length;
+    if (mains !== 1) fail(path, `hoppa-länken behöver exakt ett id="main" (har ${mains})`);
   }
   if (!isNew) continue;
 
@@ -5043,7 +5060,7 @@ git push -u origin website/artsidor
 
 - [ ] **Step 4: Slå ihop koden till `main` (ändrat 2026-10-05 (b))**
 
-Riktig artdata går från nu på direkt till `main`, en art i taget (avsnitt 14, Task 16 och framåt). Koden måste alltså vara på `main` innan den första riktiga arten publiceras, annars finns inga mallar att rendera den med. **Produktionsbygget går igenom med noll publicerade arter** (ändrat 2026-10-07, Task 4:s fixvåg): `commonSpecies()` returnerar bara de vanliga arter som har en sida, sidfoten döljer raden när den är tom, och poster som inte byggs valideras bara mot kuvertet (id, status, namn, adresser). Vercels förhandsbygge av grenen ska alltså vara grönt redan före sammanslagningen; failar det är det ett fel, inte väntat. **Tillägg (Task 7:s granskning 2026-10-07, samma noll-arter-läge):** i det här fönstret (mellan den här sammanslagningen och Task 16:s första publicering) visar hubsidorna (`/sv/arter/`, `/species/`) och om-sidan (Task 12) `noindex` och bara sin ingress/text, inte en tom sökruta eller tomma grupplistor, och menyn, sidfoten och startsidans uppslagsverkslänk (Task 13) visar ingen väg dit alls: allt redan testat mot en avsiktligt tom testdatamapp (Task 7:s `npm run test:empty-hub`, `SPECIES_EMPTY=1` mot `tests/fixtures/empty/`, utökad i Task 14 med `check-seo.mjs`), inte mot `src/data/`s tillfälliga tomhet. Det är väntat att sidorna ser sådana ut strax efter den här sammanslagningen; det är inte ett fel att undersöka.
+Riktig artdata går från nu på direkt till `main`, en art i taget (avsnitt 14, Task 16 och framåt). Koden måste alltså vara på `main` innan den första riktiga arten publiceras, annars finns inga mallar att rendera den med. **Produktionsbygget går igenom med noll publicerade arter** (ändrat 2026-10-07, Task 4:s fixvåg): `footerSpecies()` tar bara med de vanliga arter som har en sida, sidfoten döljer raden när den är tom, och poster som inte byggs valideras bara mot kuvertet (id, status, namn, adresser). Vercels förhandsbygge av grenen ska alltså vara grönt redan före sammanslagningen; failar det är det ett fel, inte väntat. **Tillägg (Task 7:s granskning 2026-10-07, samma noll-arter-läge):** i det här fönstret (mellan den här sammanslagningen och Task 16:s första publicering) visar hubsidorna (`/sv/arter/`, `/species/`) och om-sidan (Task 12) `noindex` och bara sin ingress/text, inte en tom sökruta eller tomma grupplistor, och menyn, sidfoten och startsidans uppslagsverkslänk (Task 13) visar ingen väg dit alls: allt redan testat mot en avsiktligt tom testdatamapp (Task 7:s `npm run test:empty-hub`, `SPECIES_EMPTY=1` mot `tests/fixtures/empty/`, utökad i Task 14 med `check-seo.mjs`), inte mot `src/data/`s tillfälliga tomhet. Det är väntat att sidorna ser sådana ut strax efter den här sammanslagningen; det är inte ett fel att undersöka.
 
 ```bash
 git fetch origin && git merge origin/main

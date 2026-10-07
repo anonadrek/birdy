@@ -21,7 +21,7 @@ const pathname = locale === 'sv' ? '/sv/' : '/';
 
 <Layout locale={locale} pathname={pathname}>
   <Nav locale={locale} variant="overlay" />
-  <main id="main">
+  <main id="main" tabindex="-1">
     <Hero locale={locale} />
     <HowItWorks locale={locale} />
     <JournalSection locale={locale} />

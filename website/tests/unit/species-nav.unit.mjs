@@ -1,10 +1,17 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
-import { footerSpecies } from '../../src/lib/species-nav.mjs';
+import { footerSpecies, hasSpeciesPages } from '../../src/lib/species-nav.mjs';
 
 const { common } = JSON.parse(readFileSync(new URL('../../src/data/species-groups.json', import.meta.url), 'utf8'));
 const sp = (qid) => ({ qid });
+
+test('hasSpeciesPages: menyn, startsidan och sidfotens kolumn följer samma regel', () => {
+  assert.equal(hasSpeciesPages([]), false);
+  assert.equal(hasSpeciesPages([sp('Q25411')]), true);
+  assert.equal(footerSpecies([], common).column, hasSpeciesPages([]));
+  assert.equal(footerSpecies([sp('Q25411')], common).column, hasSpeciesPages([sp('Q25411')]));
+});
 
 test('footerSpecies: noll byggda arter ger varken kolumn eller rad', () => {
   assert.deepEqual(footerSpecies([], common), { column: false, common: [] });

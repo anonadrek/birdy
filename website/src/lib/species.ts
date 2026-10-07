@@ -6,7 +6,7 @@ import type { Copy, Locale } from './i18n';
 import { COMPARISONS_ENABLED, comparisonsDir, hasPageContract, isComparisonBuilt, isPreview, isSpeciesBuilt, speciesDir, useEmptyData, useFixtures } from './species-source.mjs';
 import type { speciesPage } from './species-schema.mjs';
 import { normalizeSearch } from './species-search.mjs';
-import { footerSpecies } from './species-nav.mjs';
+import { hasSpeciesPages } from './species-nav.mjs';
 import { audio as speciesAudio, images as speciesImages, share as speciesShare } from 'virtual:birdy-species-media';
 
 /** Any species file: the full page data for written and verified records, only the envelope for the rest. */
@@ -156,14 +156,21 @@ export function largestGroups(list: Species[], n: number): Group[] {
 }
 
 /**
- * The footer's "Common species" row: those of the twelve that have a page in this build, in the list's
- * order. Species are published one at a time (spec §14), so the list is often incomplete and empty
- * before the first publication; the footer hides the row when it is empty (Task 13).
+ * The twelve common species (species-groups.json), in the order of the footer's "Common species" row.
+ * footerSpecies() in species-nav.mjs keeps those that have a page in this build: species are published one at
+ * a time (spec §14), so the row is often incomplete and empty before the first publication, and the footer
+ * hides it when it is empty (Task 13).
  */
 export const COMMON_QIDS: readonly string[] = groupData.common;
 
-export function commonSpecies(list: Species[]): Species[] {
-  return footerSpecies(list, COMMON_QIDS).common;
+/** Whether any species page is built (menu, home page and footer; hasSpeciesPages in species-nav.mjs). */
+export async function hasSpecies(): Promise<boolean> {
+  return hasSpeciesPages(await getAllSpecies());
+}
+
+/** The footer's group links: the five largest groups that are indexed (a small group's page has noindex). */
+export function footerGroups(list: Species[]): Group[] {
+  return largestGroups(list, 5).filter((g) => isGroupIndexed(g, list));
 }
 
 /** The group's fixed photo species, or its first built species in Swedish alphabetical order (spec §6). */

@@ -29,7 +29,7 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
 
 <Layout locale={locale} pathname={pathname} title={`${title} | Birdy`} description={description} articleDate={date.toISOString()} ogImage={share.src} ogImageAlt={imageAlt}>
   <Nav locale={locale} variant="overlay" scrim switchLangHref={otherPath} />
-  <main id="main">
+  <main id="main" tabindex="-1">
     <header class="ahero">
       <Image class="ahero-img" src={image} alt={imageAlt} widths={[800, 1200, 1600]} sizes="100vw" style={imagePosition ? `object-position:${imagePosition}` : undefined} loading="eager" fetchpriority="high" decoding="async" />
       <div class="wrap">

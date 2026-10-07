@@ -5,14 +5,14 @@ import DeckleEdge from './ui/DeckleEdge.astro';
 import MarginNote from './ui/MarginNote.astro';
 import CoverageMap from './CoverageMap.astro';
 import { type Locale, getCopy } from '../lib/i18n';
-import { getAllSpecies, hubHref } from '../lib/species';
+import { hasSpecies as anySpecies, hubHref } from '../lib/species';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getCopy(locale);
 // Only once a species is built (same rule as the menu and the footer): before that the hub only says the
 // pages are on their way.
-const hasSpecies = (await getAllSpecies()).length > 0;
+const hasSpecies = await anySpecies();
 ---
 
 <section id="guide" class="sec guide">

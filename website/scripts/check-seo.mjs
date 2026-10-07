@@ -60,6 +60,11 @@ for (const { path, html } of pages) {
     const target = internalTarget(attr(tag, 'href') ?? '');
     if (target && !exists(target)) fail(path, `död länk till ${attr(tag, 'href')}`);
   }
+  // The skip link (Layout.astro, Task 13) needs its target on every page that has it, new page types included.
+  if (/class="skip-link"/.test(html)) {
+    const mains = (html.match(/\sid="main"/g) ?? []).length;
+    if (mains !== 1) fail(path, `hoppa-länken behöver exakt ett id="main" (har ${mains})`);
+  }
   if (!isNew) continue;
 
   // Comparison titles may fall back to "{A} vs {B} | Birdy", which is under 40 for short names (spec §12).

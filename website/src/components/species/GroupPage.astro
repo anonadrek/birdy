@@ -61,7 +61,7 @@ const ogImage = photo ? await getImage({ src: photo, width: 1200, height: 630, f
 <Layout locale={locale} pathname={pathname} alternatePath={groupHref(group, other)} title={title} description={description} noindex={!isGroupIndexed(group, all)} jsonLd={jsonLd} ogImage={ogImage?.src}>
   <Nav locale={locale} variant="solid" switchLangHref={groupHref(group, other)} />
   <CategoryBar locale={locale} active={group.key} />
-  <main id="main" class="group wrap">
+  <main id="main" tabindex="-1" class="group wrap">
     <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
       <ol>
         <li><a href={crumbs[0].href} data-crumb>{crumbs[0].name}</a></li>

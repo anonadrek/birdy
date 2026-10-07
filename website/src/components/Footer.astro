@@ -5,7 +5,7 @@ import { type Locale, getCopy } from '../lib/i18n';
 import { fieldNotesHref } from '../lib/field-notes';
 import { albitProductHref, CONTACT_EMAIL, LOOPLEAD_URL } from '../lib/links';
 import { footerSpecies } from '../lib/species-nav.mjs';
-import { COMMON_QIDS, getAllSpecies, groupHref, hubHref, largestGroups, speciesHref } from '../lib/species';
+import { COMMON_QIDS, footerGroups, getAllSpecies, groupHref, hubHref, speciesHref } from '../lib/species';
 
 // edgeColor: the colour of whatever sits above the footer; it tears down into the footer (spec §6).
 interface Props { locale: Locale; switchLangHref?: string; edgeColor?: string }
@@ -17,7 +17,9 @@ const blogPrefix = locale === 'sv' ? '/sv' : '';
 // (Task 7's review): species are published one at a time, so for a while there can be a column but no row.
 const allSpecies = await getAllSpecies();
 const { column: speciesColumn, common } = footerSpecies(allSpecies, COMMON_QIDS);
-const topGroups = largestGroups(allSpecies, 5);
+// Indexed groups only (Task 13's review): a group under three species has noindex, so the footer of every page
+// shouldn't point there. "All species" is always there.
+const topGroups = footerGroups(allSpecies);
 ---
 
 <footer class="footer">
@@ -101,6 +103,12 @@ const topGroups = largestGroups(allSpecies, 5);
   .sib-text { display: flex; flex-direction: column; gap: 2px; }
   .sib-text strong { font-size: 14px; font-weight: 600; color: #E9E2D2; }
   .sib-text span { font-size: 12.5px; line-height: 1.4; color: rgba(233, 226, 210, .7); }
+  /* With the species column: four link columns are too narrow next to the brand below about 1 000 px, so the
+     brand takes its own row and the links three columns (Task 13's review). */
+  @media (min-width: 761px) and (max-width: 1000px) {
+    .fgrid--species { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .fgrid--species .fbrand { grid-column: 1 / -1; }
+  }
   @media (max-width: 760px) {
     .fgrid { grid-template-columns: 1fr 1fr; }
     .fbrand { grid-column: 1 / -1; }

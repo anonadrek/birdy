@@ -3,7 +3,7 @@ import Wordmark from './ui/Wordmark.astro';
 import Icon from './ui/Icon.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 import { fieldNotesHref } from '../lib/field-notes';
-import { getAllSpecies, hubHref } from '../lib/species';
+import { hasSpecies as anySpecies, hubHref } from '../lib/species';
 
 interface Props {
   locale: Locale;
@@ -23,7 +23,7 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
 // "Species" only once there is something to show (Task 7's review): before the first species is published
 // the hub only says the pages are on their way, so the menu looks as it did before.
 const speciesHub = hubHref(locale);
-const hasSpecies = (await getAllSpecies()).length > 0;
+const hasSpecies = await anySpecies();
 const links = [
   ...(hasSpecies ? [{ href: speciesHub, label: t.nav.species }] : []),
   { href: `${home}#how-it-works`, label: t.nav.howItWorks },
