@@ -123,9 +123,9 @@ image_refs:
     NY 1.jpg
   commons_filename: Falco columbarius pair Auburn NY 1.jpg
 review_status: approved
-review_notes: "Hero = Falco columbarius USFWS-foto, matchar art. Stenfalk häckar i fjäll/myrar, vintergäst i södra SE. Beskrivning och migration (sv + en) omskrivna för hand 2026-09-27 ur de cachade Wikipediaartiklarna (sv Stenfalk rev 59603908, en Merlin (bird) rev 1367745672) eftersom pipelinen hade hämtat fel engelsk artikel (trollkarlen Merlin); väntar på Albins granskning."
+review_notes: "Hero = Falco columbarius USFWS-foto, matchar art. Stenfalk häckar i fjäll/myrar, vintergäst i södra SE. Beskrivning och migration (sv + en) omskrivna för hand 2026-09-27 ur de cachade Wikipediaartiklarna (sv Stenfalk rev 59603908, en Merlin (bird) rev 1367745672) eftersom pipelinen hade hämtat fel engelsk artikel (trollkarlen Merlin); väntar på Albins granskning. 2026-10-07 (1.3.0, 7i-fix A): sources pekar nu på de två revisionerna ovan, så att artsidans textkredit länkar rätt (tidigare sv 59194706 och en 1353678534, artikeln om trollkarlen)."
 generated_at: '2026-05-15T19:00:14.206869+00:00'
 sources:
-  wikipedia_sv_revision: '59194706'
-  wikipedia_en_revision: '1353678534'
+  wikipedia_sv_revision: '59603908'
+  wikipedia_en_revision: '1367745672'
   claude_model: claude-haiku-4-5-20251001

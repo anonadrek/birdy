@@ -299,4 +299,45 @@ class SpeciesContentCorrectionsTest {
         assertEquals(null, repo.getById(SpeciesId("Q26452"), Locale.EN).first()?.formerName)
         driver.close()
     }
+
+    // Release 1.3.0, 7i-fix A: the profile links the Wikipedia version its text was written from.
+    // Stenfalk's texts were rewritten by hand on 2026-09-27 from sv "Stenfalk" rev 59603908 and en
+    // "Merlin (bird)" rev 1367745672, but its sources kept the pipeline's revisions, and the English
+    // one (1353678534) is the article about the wizard Merlin.
+    @Test
+    fun `stenfalk's sources are the articles its texts were written from, never the wizard`() {
+        val sources = species("falconidae/Q131918.yaml").sources
+        assertEquals("59603908", sources.wikipedia_sv_revision)
+        assertEquals("1367745672", sources.wikipedia_en_revision)
+        assertTrue(sources.wikipedia_en_revision != "1353678534")
+    }
+
+    @Test
+    fun `the shipped database credits stenfalk's english text to merlin (bird)`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val shipped = Path.of("../../composeApp/src/commonMain/composeResources/files/species.db")
+        val copy =
+            java.nio.file.Files
+                .copy(shipped, tempDir.resolve("shipped.db"))
+        val driver = JdbcSqliteDriver("jdbc:sqlite:${copy.toAbsolutePath()}")
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        assertEquals(
+            listOf("https://en.wikipedia.org/w/index.php?oldid=1367745672"),
+            repo
+                .getById(SpeciesId("Q131918"), Locale.EN)
+                .first()
+                ?.textSources
+                ?.map { it.articleUrl },
+        )
+        assertEquals(
+            listOf("https://sv.wikipedia.org/w/index.php?oldid=59603908"),
+            repo
+                .getById(SpeciesId("Q131918"), Locale.SV)
+                .first()
+                ?.textSources
+                ?.map { it.articleUrl },
+        )
+        driver.close()
+    }
 }
