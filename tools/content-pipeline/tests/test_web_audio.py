@@ -324,3 +324,31 @@ def test_an_attribution_licence_without_an_author_is_rejected() -> None:
         assert reason is not None and "upphovsperson" in reason
     assert rejection(replace(BASE, license="CC0", author=None), "Parus major") is None
     assert rejection(replace(BASE, license="Public domain", author=None), "Parus major") is None
+
+
+def test_a_cc_by_recording_whose_author_is_the_unknown_template_is_rejected() -> None:
+    """Re-review 2026-10-07: Skäggdopping's recording passed with "Unknown authorUnknown
+    author" as its recordist."""
+    from birdy_fetcher.web.audio import parse_candidate, rejection
+
+    page = {
+        "title": "File:Southern-crested-grebe-song.wav",
+        "imageinfo": [
+            {
+                "url": "https://upload.wikimedia.org/x.wav",
+                "descriptionurl": "https://commons.wikimedia.org/wiki/File:x.wav",
+                "mime": "audio/wav",
+                "duration": 20.0,
+                "extmetadata": {
+                    "LicenseShortName": {"value": "CC BY 4.0"},
+                    "Artist": {"value": "Unknown authorUnknown author"},
+                },
+            }
+        ],
+        "categories": [{"title": "Category:Podiceps cristatus"}],
+    }
+    candidate = parse_candidate(page, from_wikidata=True)
+    assert candidate.author is None
+    assert rejection(candidate, "Podiceps cristatus") == (
+        "licensen kräver en upphovsperson, men filen saknar namn"
+    )
