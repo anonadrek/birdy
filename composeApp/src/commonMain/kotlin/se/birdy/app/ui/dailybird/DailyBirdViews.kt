@@ -57,6 +57,7 @@ import birdy_bird_scanner.composeapp.generated.resources.daily_bird_badge_comple
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_card_eyebrow
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_caught_today
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_challenge_a11y
+import birdy_bird_scanner.composeapp.generated.resources.daily_bird_challenge_premium_a11y
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_days_left
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_days_of_target
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_days_total
@@ -228,14 +229,20 @@ private fun HeroPill(
 /**
  * The challenge row on the hero (light on its dark text area): status with a check once caught,
  * a handwritten line on what to do, three seals and the day count. Read out as one sentence.
+ *
+ * Dagens fågel-jägare is a Premium badge (premium_badges.yaml), but the row is for everyone; with
+ * [showPremiumTag] (a user without Premium) a "Premium-märke" tag sits under the day count and is
+ * read out after it (Albin, 2026-10-07).
  */
 @Composable
 internal fun DailyBirdHeroChallengeRow(
     challenge: DailyBirdChallenge,
     modifier: Modifier = Modifier,
+    showPremiumTag: Boolean = false,
 ) {
     val texts = challengeTexts(challenge)
-    val a11y = stringResource(Res.string.daily_bird_challenge_a11y, texts.status, texts.line, texts.count)
+    val sentence = stringResource(Res.string.daily_bird_challenge_a11y, texts.status, texts.line, texts.count)
+    val a11y = if (showPremiumTag) stringResource(Res.string.daily_bird_challenge_premium_a11y, sentence) else sentence
     Row(
         modifier =
             modifier
@@ -270,6 +277,10 @@ internal fun DailyBirdHeroChallengeRow(
                 lineHeight = 12.sp,
                 letterSpacing = 0.08.em,
             )
+            if (showPremiumTag) {
+                Spacer(Modifier.height(5.dp))
+                DailyBirdPremiumBadgeTag()
+            }
         }
     }
 }

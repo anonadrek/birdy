@@ -453,7 +453,8 @@ class AppGraph(
             formattedPricesFlow = formattedPricesFlow ?: MutableStateFlow(FormattedPrices()),
         )
 
-    fun listenLauncherViewModel(): ListenLauncherViewModel = ListenLauncherViewModel(dailyBird = dailyBirdTracker.state)
+    fun listenLauncherViewModel(): ListenLauncherViewModel =
+        ListenLauncherViewModel(dailyBird = dailyBirdTracker.state, dailyBirdBadgeUnlocked = effectivePremiumActive)
 
     fun onboardingViewModel(isReplay: Boolean = false): OnboardingViewModel =
         OnboardingViewModel(prefs = userPreferences, isReplay = isReplay)
