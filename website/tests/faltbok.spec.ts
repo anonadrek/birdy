@@ -110,11 +110,11 @@ test.describe('marginalanteckningar', () => {
         await expect(el).toHaveCSS('font-family', /Caveat/);
         await expect(el).toHaveCSS('font-weight', '700');
       }
-      // Peach on the hero's wall (mockup lift-c.html), apricot on the other espresso bands.
+      // Peach on the hero's and the last section's wall (mockup lift-c.html), apricot on the Premium band.
       await expect(page.locator('[data-hero] .mnote')).toHaveCSS('color', 'rgb(253, 229, 203)');
       await expect(page.locator('#how-it-works .mnote')).toHaveCSS('color', 'rgb(154, 69, 38)');
       await expect(page.locator('#premium .mnote')).toHaveCSS('color', 'rgb(242, 178, 122)');
-      await expect(page.locator('#download .mnote')).toHaveCSS('color', 'rgb(242, 178, 122)');
+      await expect(page.locator('#download .mnote')).toHaveCSS('color', 'rgb(253, 229, 203)');
     });
   }
 });

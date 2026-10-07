@@ -1,4 +1,8 @@
 ---
+// The last section before the footer, the bookend to the hero (plan 2026-10-08 Task 5): the same espresso wall, the
+// words on the left and a bearded reedling hung as a plate on the right. Before 2026-10-08 the photo filled the section
+// under an espresso tone; the house rules allow no tone or shape over a bird photo, so it hangs beside the words now,
+// whole and untouched (CC0, src/assets/photos/SOURCES.md).
 import { Image } from 'astro:assets';
 import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
@@ -13,36 +17,64 @@ interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getCopy(locale);
 const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android';
+const name = locale === 'sv' ? 'Skäggmes' : 'Bearded Reedling';
 ---
 
 <section id="download" class="final">
   <DeckleEdge color="var(--card)" />
-  <Image class="final-bg" src={reedling} alt="" widths={[800, 1200, 1600]} sizes="(max-width: 760px) 840px, 100vw" loading="lazy" decoding="async" />
-  <div class="wrap" data-reveal>
-    <Kicker text={t.download.kicker} />
-    <JournalHeadline text={t.download.headline} level="h2" align="left" size="clamp(40px, 5.4vw, 66px)" />
-    <MarginNote text={t.download.note} />
-    <p class="sub">{t.download.sub}</p>
-    <div class="badges">
-      <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="small" />
-      <AppStoreBadge locale={locale} size="small" />
+  <div class="wall" aria-hidden="true"></div>
+  <div class="wrap grid">
+    <div class="words" data-reveal>
+      <Kicker text={t.download.kicker} />
+      <JournalHeadline text={t.download.headline} level="h2" align="left" size="clamp(40px, 5.4vw, 66px)" />
+      <MarginNote text={t.download.note} />
+      <p class="sub">{t.download.sub}</p>
+      <div class="badges">
+        <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="small" />
+        <AppStoreBadge locale={locale} size="small" />
+      </div>
     </div>
+    <figure class="fplate" data-reveal="scale">
+      <span class="nail" aria-hidden="true"></span>
+      <svg class="wire" viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M8 40 L100 5 L192 40" /></svg>
+      <div class="mat">
+        <Image src={reedling} alt={t.species.altHero.replace('{name}', name).replace('{scientific}', 'Panurus biarmicus')} widths={[400, 640, 900]} sizes="(min-width: 900px) 440px, calc(100vw - 72px)" loading="lazy" decoding="async" />
+      </div>
+      <figcaption class="flabel">
+        <b>{name}</b> <i lang="la">Panurus biarmicus</i>
+        <span>{t.species.photoCredit} Hobbyfotowiki · CC0</span>
+      </figcaption>
+    </figure>
   </div>
 </section>
 
 <style>
-  .final { position: relative; min-height: clamp(520px, 34vw, 680px); display: flex; align-items: center; color: var(--cream); background: var(--dark); --kick-color: var(--apricot); --jh-ink: var(--cream); --jh-accent: var(--apricot); --mn-color: var(--apricot); }
-  .final :global(.final-bg) { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center 32%; }
-  /* First layer: the photo melts into the espresso before the footer's torn edge instead of ending in a straight line. */
-  .final::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(0deg, var(--dark) 0, rgba(var(--dark-rgb), 0) 72px), linear-gradient(90deg, rgba(var(--dark-rgb), .94) 0%, rgba(var(--dark-rgb), .8) max(40%, 640px), rgba(var(--dark-rgb), .15) max(75%, 940px)); }
+  .final { position: relative; overflow-x: clip; color: var(--cream); background: var(--dark); padding: 120px 0 110px; --kick-color: var(--apricot); --jh-ink: var(--cream); --jh-accent: var(--apricot); --mn-color: var(--peach); }
   .final :global(:focus-visible) { outline-color: var(--apricot); }
-  .final .wrap { position: relative; z-index: 2; width: 100%; }
+  .wall { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(0deg, var(--dark) 0, rgba(var(--dark-rgb), 0) 90px), radial-gradient(60% 70% at 72% 45%, #3D2C22 0%, var(--dark) 60%); }
+  .grid { position: relative; display: grid; gap: 56px; align-items: center; }
   .final :global(.journal-headline) { max-width: 560px; }
+  /* alpha checked in scripts/check-contrast.mjs */
   .sub { font-size: 16px; color: rgba(255, 248, 238, .85); margin: 18px 0 26px; }
+
+  .fplate { position: relative; margin: 0 auto; width: min(100%, 460px); padding-top: 34px; --mat: #F3EADA; }
+  .nail { position: absolute; top: -2px; left: 50%; width: 9px; height: 9px; margin-left: -4.5px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, var(--brass-hi), var(--brass) 55%, var(--brass-ink)); box-shadow: 0 2px 3px rgba(0, 0, 0, .5); z-index: 1; }
+  .wire { position: absolute; top: 0; left: 50%; width: 46%; height: 36px; translate: -50% 0; overflow: visible; }
+  .wire path { fill: none; stroke: var(--brass); stroke-width: 1.4; vector-effect: non-scaling-stroke; opacity: .85; }
+  .mat { position: relative; padding: 14px 14px 58px; background: var(--mat); box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 2px 4px rgba(0, 0, 0, .35), 0 28px 50px -10px rgba(0, 0, 0, .6); transform: rotate(1.2deg); }
+  .mat::before { content: ''; position: absolute; inset: 7px; border: 1px solid rgba(110, 88, 75, .35); pointer-events: none; }
+  .mat :global(img) { display: block; width: 100%; height: auto; }
+  .flabel { position: relative; z-index: 2; width: min(80%, 300px); margin: -40px 0 0; padding: 12px 16px 10px; background: var(--card); color: var(--ink); box-shadow: 0 1px 2px rgba(0, 0, 0, .2), 0 14px 26px rgba(0, 0, 0, .38); transform: rotate(-1.4deg); }
+  .flabel b { font-family: var(--font-serif); font-weight: 400; font-size: 26px; line-height: 1; }
+  .flabel i { display: block; margin-top: 2px; font-family: var(--font-script); font-weight: 700; font-style: normal; font-size: 20px; color: var(--rust); }
+  .flabel span { display: block; margin-top: 6px; font-size: 10.5px; color: var(--muted); }
+
+  @media (min-width: 900px) {
+    .grid { grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: 80px; }
+    .fplate { margin: 0; }
+    .flabel { margin-left: -10px; }
+  }
   @media (max-width: 760px) {
-    .final { min-height: 560px; align-items: flex-end; }
-    .final :global(.final-bg) { object-position: 38% center; }
-    .final::before { background: linear-gradient(0deg, var(--dark) 0, rgba(var(--dark-rgb), 0) 72px), linear-gradient(0deg, rgba(var(--dark-rgb), .5) 0, rgba(var(--dark-rgb), .1) 85%); }
-    .final .wrap { padding-top: 70px; padding-bottom: 44px; background: linear-gradient(0deg, rgba(var(--dark-rgb), .95) 0, rgba(var(--dark-rgb), .9) calc(100% - 70px), rgba(var(--dark-rgb), 0) 100%); }
+    .final { padding: 90px 0 80px; }
   }
 </style>

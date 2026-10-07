@@ -636,18 +636,13 @@ test.describe('frågor, slutet och ordningen', () => {
     }
   });
 
-  test.describe('kontrast i #download mot fotot', () => {
+  test.describe('kontrast i #download mot väggen', () => {
     test.use({ contextOptions: { reducedMotion: 'reduce' } });
 
-    // Pixel-contrast guard (quality-review item 1): the scrim's stops are percentages of the
-    // section while the text column is a fixed width, so at medium/narrow widths the dark part of
-    // the gradient doesn't reach far enough under the text. Hides #download's text, screenshots
-    // the real photo behind it, and checks the kicker/sub (normal text, needs ≥4.5:1) and the
-    // headline's accent span (large text, needs ≥3:1) in both languages. Mirrors 'kickern och den
-    // första menylänken klarar 4.5:1 mot fotot' above. Widths: the review's own 390/800/1440, plus
-    // 320 — in this environment the unfixed CSS is only knife-edge (~4.5-4.6:1) at exactly
-    // 390/800/1440, not clearly red, while 320 reproducibly fails pre-fix (~4.2:1), so 320 is what
-    // makes 'must fail before fixing' provable here (see the task report for the measured numbers).
+    // Pixel-contrast guard (quality-review item 1). Since 2026-10-08 the reedling hangs beside the words as a
+    // plate instead of under them, so the text sits on the espresso wall; the guard stays so that a later change
+    // can't put the words back over a photo. Hides #download's content, screenshots what is behind the text, and
+    // checks the kicker/sub (normal text, needs 4.5:1) and the headline's accent (large text, needs 3:1).
     for (const path of ['/sv/', '/'] as const) {
       for (const width of [320, 390, 800, 1440] as const) {
         test(`kicker, underrad och rubrikaccent klarar kontrasten mot fotot i ${width}px på ${path}`, async ({ page }) => {
