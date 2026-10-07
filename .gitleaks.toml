@@ -1,0 +1,25 @@
+# Secret scan config for gitleaks (https://github.com/gitleaks/gitleaks).
+# Used by .github/workflows/secret-scan.yml; run locally with
+#   gitleaks git . --config .gitleaks.toml --log-opts="origin/main..HEAD"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "maptiler-api-key"
+description = "MapTiler API key (app and website map tiles)"
+regex = '''(?i)(?:maptiler[a-z_]*\s*[=:]\s*["'`]?|api\.maptiler\.com/[^\s"'`]*[?&]key=)([A-Za-z0-9]{20})\b'''
+secretGroup = 1
+keywords = ["maptiler"]
+
+[[rules]]
+id = "anthropic-api-key-birdy"
+description = "Anthropic API key (content pipeline)"
+regex = '''\b(sk-ant-(?:api|admin)\d{2}-[A-Za-z0-9_\-]{80,})'''
+secretGroup = 1
+keywords = ["sk-ant-"]
+
+[[allowlists]]
+description = "GBIF dataset keys are public UUIDs, not secrets"
+regexTarget = "match"
+regexes = ['''datasetKey=[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}''']

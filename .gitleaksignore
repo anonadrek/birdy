@@ -1,0 +1,4 @@
+# Findings in old commits that are already handled. New findings must be fixed, not listed here.
+# MapTiler key in a plan doc, removed in 19314767 (2026-08-21); rotation in MapTiler Cloud is Albin's step.
+10ce3e0f65db4027a92c0f831a51b2afd1c58095:docs/superpowers/plans/2026-06-08-website-coverage-map.md:maptiler-api-key:15
+10ce3e0f65db4027a92c0f831a51b2afd1c58095:docs/superpowers/plans/2026-06-08-website-coverage-map.md:maptiler-api-key:459
