@@ -29,8 +29,10 @@ private val STYLE_ID = Regex("[A-Za-z0-9_-]+")
  * The style to load: [configured] when it is a bare style id, else [DEFAULT_MAPTILER_STYLE_ID]
  * (unset, blank, or something that would break every tile request, like a pasted style URL).
  */
-fun mapTilerStyleId(configured: String?): String =
-    configured?.trim()?.takeIf { STYLE_ID.matches(it) } ?: DEFAULT_MAPTILER_STYLE_ID
+fun mapTilerStyleId(configured: String?): String {
+    val id = configured?.trim().orEmpty()
+    return if (STYLE_ID.matches(id)) id else DEFAULT_MAPTILER_STYLE_ID
+}
 
 /** Where [styleId]'s raster tiles live; [mapTilerTileUrl] appends `z/x/y@2x.png?key=…`. */
 fun mapTilerTileBaseUrl(styleId: String): String = "https://api.maptiler.com/maps/$styleId/"
