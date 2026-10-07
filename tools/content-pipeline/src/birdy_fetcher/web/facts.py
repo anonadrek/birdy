@@ -138,6 +138,11 @@ def _entry(
         written = fact.other_scientific.strip()
         evidence = " ".join([fact.sv, *(s["quote"] for s in sources)])
         found = resolve_lookalike(written, names, evidence=evidence)
+        if found.own:
+            # "Kan förväxlas med <its own subspecies>" never reaches a page (re-review
+            # 2026-10-07); code cannot tell whether the quote would carry it as another
+            # topic, so the fact goes.
+            return None, f"faktum {number} ströks: {found.note}"
         # Birdy's own name for a species it has ("Corvus corone" for "C. corone corone"),
         # else the name as the article writes it (R3, 2026-10-07).
         if found.binomial is not None and found.qid is not None:

@@ -306,29 +306,31 @@ def test_a_lookalike_birdy_does_not_have_keeps_the_name_as_written() -> None:
     assert check.facts[0]["other"] == {"scientific": "C. brachy"}
 
 
-def test_a_lookalike_that_is_the_page_species_keeps_its_name_and_says_why() -> None:
-    """Fix wave 2026-10-07: "Motacilla flava thunbergi" on Gulärla's own page."""
+def test_a_lookalike_that_is_the_page_species_is_dropped_with_a_note() -> None:
+    """Re-review 2026-10-07: "Motacilla flava thunbergi" on Gulärla's own page would give
+    "Kan förväxlas med <its own subspecies>". The fact is struck, with a note in the report
+    (code cannot tell whether the quote would carry it as an appearance fact)."""
     articles = {
-        "sv": WikiArticle("sv", "Gulärla", "1", "Underarten thunbergi har mörkgrått huvud.")
+        "en": WikiArticle("en", "Yellow wagtail", "1", "The thunbergi race has a dark grey head.")
     }
     lookalike = _fact(
         "lookalike",
         "Underarten thunbergi har mörkgrått huvud.",
-        "Underarten thunbergi har mörkgrått huvud",
-        other="Motacilla flava thunbergi",
+        "The thunbergi race has a dark grey head",
+        "en",
+        "Motacilla flava thunbergi",
     )
     check = check_fact_sheet(
-        FactSheetOutput(facts=[lookalike], sweden_status=None),
-        articles,
-        {"motacilla flava": "Q25984"},
+        FactSheetOutput(facts=[*GOOD, lookalike], sweden_status=None),
+        ARTICLES | articles,
+        {"motacilla flava": "Q25984", "cyanistes caeruleus": "Q25404"},
         subject="Motacilla flava",
         own_qid="Q25984",
     )
-    assert check.facts[0]["other"] == {"scientific": "Motacilla flava thunbergi"}
-    assert check.notes == []  # info for the report, not feedback for the model
+    assert [f["sv"] for f in check.facts] == [f.sv for f in GOOD]
     assert any(
-        "faktum 1: förväxlingsarten Motacilla flava thunbergi är arten själv" in n
-        for n in check.info
+        n.startswith("faktum 7 ströks: förväxlingsarten Motacilla flava thunbergi är arten själv")
+        for n in check.notes
     )
 
 
