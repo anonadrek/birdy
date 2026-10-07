@@ -30,9 +30,19 @@ export const speciesDir = () => (useFixtures() ? 'tests/fixtures/species' : 'src
 export const comparisonsDir = () => (useFixtures() ? 'tests/fixtures/comparisons' : 'src/data/comparisons');
 export const assetsDir = () => (useFixtures() ? 'tests/fixtures/species-assets' : 'src/assets/species');
 
+/**
+ * Written (ok) and verified (spec Revision 2026-10-05): a record the site may build, so the one held to
+ * the full page contract in src/lib/species-schema.mjs. Every other record is only checked as an envelope.
+ * @param {unknown} record
+ * @returns {boolean}
+ */
+export function hasPageContract(record) {
+  return typeof record === 'object' && record !== null && /** @type {any} */ (record).status === 'ok' && Boolean(/** @type {any} */ (record).verification);
+}
+
 /** A species page exists when its text is written (ok), its facts are verified (spec Revision 2026-10-05), and it is published or this is a preview build. */
 export function isSpeciesBuilt(record, preview = isPreview()) {
-  return record.status === 'ok' && Boolean(record.verification) && (record.publish === true || preview);
+  return hasPageContract(record) && (record.publish === true || preview);
 }
 
 /** A comparison page exists when its text is written, it is published or previewed, and both species pages exist. */

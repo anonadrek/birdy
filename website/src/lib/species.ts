@@ -1,11 +1,16 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import type { ImageMetadata } from 'astro';
+import type { z } from 'astro/zod';
 import groupData from '../data/species-groups.json';
 import type { Copy, Locale } from './i18n';
-import { audioPublicPath, isComparisonBuilt, isPreview, isSpeciesBuilt, useFixtures } from './species-source.mjs';
+import { audioPublicPath, hasPageContract, isComparisonBuilt, isPreview, isSpeciesBuilt, useFixtures } from './species-source.mjs';
+import type { speciesPage } from './species-schema.mjs';
 import speciesImages from 'virtual:birdy-species-images';
 
-export type Species = CollectionEntry<'species'>['data'];
+/** Any species file: the full page data for written and verified records, only the envelope for the rest. */
+export type SpeciesRecord = CollectionEntry<'species'>['data'];
+/** A species the site may build (status ok and verified), held to the full page contract. */
+export type Species = z.output<typeof speciesPage>;
 export type SpeciesImage = Species['images'][number];
 export type SpeciesText = NonNullable<Species['text']>['sv'];
 export type Sentence = SpeciesText['lead'][number];
@@ -56,9 +61,9 @@ export function audioHref(s: Species): string | undefined {
   return s.audio ? audioPublicPath(process.cwd(), s) : undefined;
 }
 
-let records: Species[] | undefined;
+let records: SpeciesRecord[] | undefined;
 /** Every species file, whatever its status. Used for names (look-alikes), never for pages. */
-export async function getAllRecords(): Promise<Species[]> {
+export async function getAllRecords(): Promise<SpeciesRecord[]> {
   records ??= (await getCollection('species')).map((e) => e.data);
   return records;
 }
@@ -66,7 +71,8 @@ export async function getAllRecords(): Promise<Species[]> {
 let built: Species[] | undefined;
 /** The species that get a page in this build (spec §14): written, reviewed, and published or previewed. */
 export async function getAllSpecies(): Promise<Species[]> {
-  built ??= (await getAllRecords()).filter((s) => isSpeciesBuilt(s));
+  // species-schema.mjs holds exactly the records with hasPageContract to the page contract, so these have every page field.
+  built ??= (await getAllRecords()).filter((s): s is Species => hasPageContract(s) && isSpeciesBuilt(s));
   return built;
 }
 
@@ -203,7 +209,7 @@ export interface LookAlikeView {
 }
 
 /** What the "Can be confused with" section shows for one look-alike (spec §5, deviation 7). */
-export function lookAlikeView(s: Species, item: LookAlike, locale: Locale, builtList: Species[], records: Species[], comps: Comparison[]): LookAlikeView | undefined {
+export function lookAlikeView(s: Species, item: LookAlike, locale: Locale, builtList: Species[], records: SpeciesRecord[], comps: Comparison[]): LookAlikeView | undefined {
   const isQid = /^Q\d+$/.test(item.other);
   const record = isQid ? records.find((x) => x.qid === item.other) : undefined;
   const page = isQid ? builtList.find((x) => x.qid === item.other) : undefined;
