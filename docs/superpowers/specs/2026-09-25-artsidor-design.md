@@ -282,7 +282,7 @@ Allt cachas under `.cache/` med hämtningsdatum. Revisioner och adresser sparas 
 - **Wikipedia** på svenska, engelska och tyska: hela artikeln i klartext på en fast revision. Saknas sitelinks följs P1403 som i fas 1. Saknas tyska artikeln körs arten utan den.
 - **Artportalen via GBIF:**
   - Artens taxonnyckel via `species/match` med vetenskapligt namn. Bara `matchType: EXACT` och rang `SPECIES` godkänns. Annars får arten inga datamoduler och rapporten säger varför.
-  - Filter i alla anrop: `country=SE`, `year=2016,2025`, `license=CC0_1_0`, `occurrenceStatus=PRESENT`.
+  - Filter i alla anrop: `country=SE`, `year=2016,2025`, `license=CC0_1_0`, `occurrenceStatus=PRESENT`, `datasetKey=38b4c89f-584c-41bb-bd8f-cd1def33e92f` (Artportalen). **Tillagt 2026-10-07:** utan datasetfiltret räknades även Ringmärkningscentralens fångster (6,4 procent av alla svenska fågelposter, 49,5 procent av kungsfågelns) och Svensk fågeltaxerings rutter med; ringmärkningen samlas vid fågelstationerna på hösten och snedvred månadsdiagrammet, länskartan och statussignalen, och sidorna anger Artportalen som källa. Räkningarna cachas under ett nytt namn så att de gamla aldrig läses igen.
   - Facetter: månad (12) och `GADM_LEVEL_1_GID` (21 län), för arten och för alla fåglar (`taxonKey=212`) med samma filter.
   - En fast tabell i pipelinen översätter GADM-id till länskod (ISO 3166-2:SE) och länsnamn på svenska och engelska.
 - **Svenska rödlistan 2025:** artens post i dataset `87e639cc-30a9-4007-bd2c-b0cab60326b9`, matchad på GBIF:s taxonnyckel (inte bara namnet). Kategorin översätts till `RE`, `CR`, `EN`, `VU`, `NT` eller `DD`. Finns arten inte i listan blir värdet `not_listed`.

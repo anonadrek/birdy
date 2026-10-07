@@ -13,10 +13,21 @@ from .datamod import Counts
 from .http import ThrottledHttp
 
 API = "https://api.gbif.org/v1"
-FILTERS = "country=SE&year=2016,2025&license=CC0_1_0&occurrenceStatus=PRESENT"
+# Artportalen's own dataset (checked against the GBIF API 2026-10-07: "Artportalen", CC0).
+# Without it the counts also held the Bird Ringing Centre's captures (6.4 % of all Swedish
+# bird records; 49.5 % of Kungsfågel's, 32.5 % of Rödhake's), which pile up at ringing
+# stations in autumn and skewed the month chart, the county map and the status signal,
+# and the Swedish Bird Survey's routes; the pages credit Artportalen.
+ARTPORTALEN_DATASET = "38b4c89f-584c-41bb-bd8f-cd1def33e92f"
+FILTERS = (
+    f"country=SE&year=2016,2025&license=CC0_1_0&occurrenceStatus=PRESENT"
+    f"&datasetKey={ARTPORTALEN_DATASET}"
+)
 AVES_TAXON_KEY = 212
 ALL_BIRDS_CACHE_KEY = "_aves"
-COUNTS_CACHE_NAME = "gbif-counts-2016-2025.json"
+# A new name for the Artportalen-only counts, so counts cached before the dataset filter
+# (gbif-counts-2016-2025.json) are never read again.
+COUNTS_CACHE_NAME = "gbif-counts-artportalen-2016-2025.json"
 REDLIST_DATASET = "87e639cc-30a9-4007-bd2c-b0cab60326b9"
 REDLIST_CODES = {
     "REGIONALLY_EXTINCT": "RE",
