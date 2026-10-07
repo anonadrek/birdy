@@ -37,6 +37,11 @@ fun MatchResultScreen(
     // thing, like "Avbryt", which is disabled too. Leaving mid-save is the window PR #21 closed:
     // the screen must stay until the save has succeeded (it then goes back by itself on
     // Disambig) or failed (its error is shown here).
+    // The bottom tabs and deep links (a notification tap) still leave the screen mid-save, on
+    // purpose: the save then finishes in the background, because AppScaffold keeps the
+    // ViewModel in a `remember`, not a ViewModelStore, so it is never cleared and its
+    // viewModelScope never cancelled. Only its result (the snackbar, Disambig's own way back)
+    // goes unseen.
     val saving = s.isSaving()
     PlatformBackHandler(enabled = saving) {}
     if (s is MatchResultUiState.Match) {
