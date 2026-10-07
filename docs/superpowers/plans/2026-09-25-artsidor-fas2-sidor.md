@@ -1488,7 +1488,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
   },
 ```
 
-(Rättat i efterhand, controller-granskning 2026-10-07: `trimmed`/`klippt` bytt mot `edited`/`trimmedEdited` enligt Tillägget nedan i Task 9, `unknownRecordist` bytt till "okänd upphovsperson", rubriken "Granskningen" bytt till "Kontrollen" enligt specens §8, och `hubLead`, `mapLegend[3]` samt alla fem stycken i `speciesAbout.sections` skrivna om för sanningshalt — se motsvarande ändring i Step 2 nedan och i `copy.sv.json`.)
+(Rättat i efterhand, controller-granskning 2026-10-07: `trimmed`/`klippt` bytt mot `edited`/`trimmedEdited` enligt Tillägget nedan i Task 9, `unknownRecordist` bytt till "okänd upphovsperson", rubriken "Granskningen" bytt till "Kontrollen" enligt specens §8, och `hubLead`, `mapLegend[3]` samt alla fem stycken i `speciesAbout.sections` skrivna om för sanningshalt, se motsvarande ändring i Step 2 nedan och i `copy.sv.json`.)
 
 - [ ] **Step 2: Samma nycklar i `copy.en.json`**
 
@@ -2798,7 +2798,8 @@ const marginalia = s.marginalia?.[locale];
 // "Övriga fåglar" / "Other birds", så den generiska mallen `moreGroup` ger "Fler övriga fåglar" /
 // "More other birds" oförändrad. Det låter rimligt på svenska men dubblerat och klumpigt på engelska
 // ("more ... other birds"). Specialfall gruppnyckeln `other` här (och i samma mönster på GroupPage.astro,
-// Task 8) med en egen rad, t.ex. en engelsk `moreOther`-nyckel, i stället för att köra den genom `moreGroup`.
+// Task 8) med en egen rad, t.ex. en `moreOther`-nyckel. Nyckeln måste finnas i BÅDA copy-filerna
+// (Task 5), inte bara på engelska: svensk text kan vara samma som i dag, "Fler övriga fåglar".
 
 const months = s.data?.months;
 const counties = s.data?.counties;
