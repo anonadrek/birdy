@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import se.birdy.content.db.BirdyContent
+import se.birdy.content.model.PhotoCredit
 import se.birdy.content.model.Species
 import se.birdy.content.model.SpeciesImage
 import se.birdy.content.model.SpeciesSummary
@@ -26,7 +27,9 @@ import se.birdy.content.search.normalizeSearch
  */
 internal const val FORMER_NAME_KIND = "former_name"
 
-@Suppress("LongMethod")
+// TooManyFunctions: the repository is the one place that reads species.db, by design; the photo
+// credits (release 1.3.0 Task 7e-2) are two more queries on the same tables.
+@Suppress("LongMethod", "TooManyFunctions")
 class SqlDelightSpeciesRepository(
     private val db: BirdyContent,
 ) : SpeciesRepository {
@@ -319,6 +322,33 @@ class SqlDelightSpeciesRepository(
                             formerName = formerName,
                         )
                 }.toMap()
+        }
+
+    override suspend fun photoCredits(locale: Locale): List<PhotoCredit> =
+        withContext(Dispatchers.Default) {
+            db.speciesImageQueries
+                .selectCredits(locale = locale.code)
+                .executeAsList()
+                .map { row ->
+                    PhotoCredit(
+                        speciesId = SpeciesId(row.species_id),
+                        speciesName = row.local_name ?: row.english_name ?: row.scientific_name,
+                        scientificName = row.scientific_name,
+                        role = row.role,
+                        path = row.path,
+                        license = row.license,
+                        author = row.author,
+                        commonsFileName = row.commons_filename,
+                    )
+                }
+        }
+
+    override suspend fun photoCount(): Int =
+        withContext(Dispatchers.Default) {
+            db.speciesImageQueries
+                .countAll()
+                .executeAsOne()
+                .toInt()
         }
 
     private fun summaryFor(
