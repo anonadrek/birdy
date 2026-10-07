@@ -178,6 +178,23 @@ class ProfileScreenshotTest {
         compose.onNodeWithText("Lås upp").assertExists()
     }
 
+    // Release 1.3.0 Task 7m: a species renamed to BirdLife Sverige's official name says what it was
+    // called before ("Tidigare: Sädgås") under its scientific name.
+    @Test
+    @Config(qualifiers = "+sv")
+    fun profile_former_name_sv() {
+        val skogsgas =
+            talgoxe(Locale.SV).copy(
+                id = SpeciesId("Q26452"),
+                scientificName = "Anser fabalis",
+                name = "Skogsgås",
+                formerName = "Sädgås",
+                images = listOf(heroImage("Q26452")),
+            )
+        compose.captureScreen("profile_former_name_sv") { screen(skogsgas, Locale.SV, showPremiumTeaser = false) }
+        compose.onNodeWithText("Tidigare: Sädgås").assertExists()
+    }
+
     @Test
     @Config(qualifiers = "+en")
     fun profile_long_en_130() {

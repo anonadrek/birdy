@@ -16,6 +16,7 @@
     <string name="profile_label_photos">FOTOGRAFIER</string>
     <string name="profile_back">Tillbaka</string>
     <string name="profile_iucn_description">Global rödlista (IUCN): %1$s</string>
+    <string name="profile_former_name">Tidigare: %1$s</string>
 
     <!-- Plan 7c: Profile Field Journal -->
     <string name="profile_journal_label">ART</string>
