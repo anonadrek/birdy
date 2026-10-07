@@ -3660,8 +3660,12 @@ Lägg till en ny kolumn före `<div class="col">` med `t.footer.explore`:
 Lägg till före `<div class="fbot">`:
 
 ```astro
-    <p class="fpop"><span class="fpop-h">{t.footer.commonSpecies}</span>{common.map((s) => <a href={speciesHref(s, locale)}>{s.names[locale]}</a>)}</p>
+    {common.length > 0 && (
+      <p class="fpop"><span class="fpop-h">{t.footer.commonSpecies}</span>{common.map((s) => <a href={speciesHref(s, locale)}>{s.names[locale]}</a>)}</p>
+    )}
 ```
+
+**Ändrat 2026-10-07 (Task 4:s fixvåg):** `commonSpecies()` stoppar inte längre bygget när någon av de tolv saknar sida, utan returnerar de av de tolv som har en sida i bygget, i listans ordning. Arterna publiceras en i taget (Task 16) och koden ligger på `main` innan något är publicerat (Task 15 Step 4), så listan är tom eller ofullständig länge. Raden "Vanliga arter" döljs när listan är tom (villkoret ovan); testa både en tom och en ofullständig lista.
 
 I `<style>`: ändra `.fgrid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }` till `grid-template-columns: 1.6fr repeat(4, 1fr);` och lägg till:
 
@@ -3797,6 +3801,8 @@ Ersätt `integrations: [sitemap({ ... }), speciesAudio],` med:
 ```
 
 - [ ] **Step 3: SEO-skriptet**
+
+**Tillägg (2026-10-07, Task 4:s fixvåg):** sidfoten kräver inte längre alla tolv vanliga arter (`commonSpecies()` returnerar de som har en sida). Lägg i `check-seo.mjs` till en **varning, inte ett fel**, som listar de av de tolv i `species-groups.json` (`common`) som saknar sida i bygget, till exempel `check-seo: varning, 3 av 12 vanliga arter saknar sida: Q25334, Q14683, Q4764`. Den får aldrig stoppa bygget eller publiceringsloopen.
 
 `scripts/check-seo.mjs`:
 
@@ -4151,13 +4157,15 @@ git push -u origin website/artsidor
 
 - [ ] **Step 4: Slå ihop koden till `main` (ändrat 2026-10-05 (b))**
 
-Riktig artdata går från nu på direkt till `main`, en art i taget (avsnitt 14, Task 16 och framåt). Koden måste alltså vara på `main` innan den första riktiga arten publiceras, annars finns inga mallar att rendera den med. Vercels förhandsbygge av grenen failar fram till den här sammanslagningen (sidfoten kräver de tolv vanliga arterna, som inte finns i testdata-läget på riktigt Vercel-bygge); det är väntat.
+Riktig artdata går från nu på direkt till `main`, en art i taget (avsnitt 14, Task 16 och framåt). Koden måste alltså vara på `main` innan den första riktiga arten publiceras, annars finns inga mallar att rendera den med. **Produktionsbygget går igenom med noll publicerade arter** (ändrat 2026-10-07, Task 4:s fixvåg): `commonSpecies()` returnerar bara de vanliga arter som har en sida, sidfoten döljer raden när den är tom, och poster som inte byggs valideras bara mot kuvertet (id, status, namn, adresser). Vercels förhandsbygge av grenen ska alltså vara grönt redan före sammanslagningen; failar det är det ett fel, inte väntat.
 
 ```bash
 git fetch origin && git merge origin/main
-npm ci && npm run verify:fixtures && npx astro check && npm run test:no-accuracy && PLAYWRIGHT_PORT=4327 npx playwright test
+npm ci && npm run verify:fixtures && npm run build:prod && npx astro check && npm run test:no-accuracy && PLAYWRIGHT_PORT=4327 npx playwright test
 git push
 ```
+
+`npm run build:prod` bygger i riktigt läge mot `src/data/`, där ingen art är publicerad än: det ska gå igenom utan fel.
 
 Sedan i huvudmappen för `main` (worktreen kan inte byta till `main`):
 

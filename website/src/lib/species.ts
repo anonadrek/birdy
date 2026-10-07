@@ -121,13 +121,13 @@ export function largestGroups(list: Species[], n: number): Group[] {
   return activeGroups(list).sort((a, b) => (sizes.get(b.key) ?? 0) - (sizes.get(a.key) ?? 0)).slice(0, n);
 }
 
-/** The footer's "Common species" row. A listed species without a page stops the build (all twelve are in wave 1). */
+/**
+ * The footer's "Common species" row: those of the twelve that have a page in this build, in the list's
+ * order. Species are published one at a time (spec §14), so the list is often incomplete and empty
+ * before the first publication; the footer hides the row when it is empty (Task 13).
+ */
 export function commonSpecies(list: Species[]): Species[] {
-  return groupData.common.map((qid) => {
-    const hit = list.find((s) => s.qid === qid);
-    if (!hit) throw new Error(`Vanliga arter: ${qid} saknar sida i det här bygget (skriven, kontrollerad och publicerad krävs).`);
-    return hit;
-  });
+  return groupData.common.flatMap((qid) => list.filter((s) => s.qid === qid));
 }
 
 /** The group's fixed photo species, or its first built species in Swedish alphabetical order (spec §6). */
