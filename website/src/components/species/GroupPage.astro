@@ -1,0 +1,83 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../Nav.astro';
+import Footer from '../Footer.astro';
+import Kicker from '../ui/Kicker.astro';
+import PlayStoreBadge from '../ui/PlayStoreBadge.astro';
+import CategoryBar from './CategoryBar.astro';
+import SpeciesCard from './SpeciesCard.astro';
+import { getCopy, type Locale } from '../../lib/i18n';
+import {
+  appText, breadcrumbJsonLd, countLabel, getAllSpecies, groupHref, groupTitle, hubHref, isGroupIndexed,
+  itemListJsonLd, playHref, sortByName, type Group, type Species,
+} from '../../lib/species';
+import '../../styles/species.css';
+
+interface Props { group: Group; locale: Locale }
+const { group, locale } = Astro.props;
+const t = getCopy(locale);
+const other: Locale = locale === 'sv' ? 'en' : 'sv';
+const all = await getAllSpecies();
+const members = sortByName(all.filter((s) => s.group === group.key), locale);
+const pathname = groupHref(group, locale);
+const title = groupTitle(group, members.length, locale, t);
+const description = t.species.descGroup.replace('{group}', group.name[locale]).replace('{count}', countLabel(members.length, t));
+const familyName = (s: Species) => (locale === 'sv' ? s.family.sv : s.family.latin);
+const byFamily = group.key === 'songbirds'
+  ? [...new Set(members.map(familyName))].sort((a, b) => a.localeCompare(b, locale)).map((name) => ({ name, items: members.filter((s) => familyName(s) === name) }))
+  : [];
+const crumbs = [
+  { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
+  { name: t.species.crumbHub, href: hubHref(locale) },
+  { name: group.name[locale], href: pathname },
+];
+const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, group.name[locale], locale, byFamily.length ? byFamily.flatMap((f) => f.items) : members)];
+---
+
+<Layout locale={locale} pathname={pathname} alternatePath={groupHref(group, other)} title={title} description={description} noindex={!isGroupIndexed(group, all)} jsonLd={jsonLd}>
+  <Nav locale={locale} variant="solid" switchLangHref={groupHref(group, other)} />
+  <CategoryBar locale={locale} active={group.key} />
+  <main class="group wrap">
+    <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
+      <ol>
+        <li><a href={crumbs[0].href} data-crumb>{crumbs[0].name}</a></li>
+        <li><a href={crumbs[1].href} data-crumb>{crumbs[1].name}</a></li>
+        <li><span aria-current="page" data-crumb>{crumbs[2].name}</span></li>
+      </ol>
+    </nav>
+    <Kicker text={t.species.kicker} />
+    <h1>{group.name[locale]}</h1>
+    <p class="lead">{group.intro[locale]}</p>
+
+    <h2 class="sp-h2">{t.species.groupSpecies} <span class="count">{countLabel(members.length, t)}</span></h2>
+    {byFamily.length > 0 ? (
+      byFamily.map((f) => (
+        <section class="family">
+          <h3>{f.name}</h3>
+          <ul class="sp-cards" role="list">
+            {f.items.map((s) => <li data-item><SpeciesCard species={s} locale={locale} /></li>)}
+          </ul>
+        </section>
+      ))
+    ) : (
+      <ul class="sp-cards" role="list">
+        {members.map((s) => <li data-item><SpeciesCard species={s} locale={locale} /></li>)}
+      </ul>
+    )}
+
+    <aside class="sp-app group-app">
+      <p class="sp-app-h">{t.species.appHeadline}</p>
+      <p>{appText(undefined, t)}</p>
+      <PlayStoreBadge locale={locale} href={playHref(group.slug[locale], 'group')} alt={t.alt.playStoreBadge} size="small" />
+    </aside>
+  </main>
+  <Footer locale={locale} switchLangHref={groupHref(group, other)} />
+</Layout>
+
+<style>
+  .group { padding-top: 26px; padding-bottom: 88px; }
+  h1 { font-size: clamp(38px, 5vw, 60px); line-height: 1.04; }
+  .count { font-family: var(--font-sans); font-size: 14px; color: var(--muted); margin-left: 8px; }
+  .family h3 { font-size: 22px; margin: 30px 0 12px; }
+  .group-app { margin-top: 48px; max-width: 520px; }
+</style>

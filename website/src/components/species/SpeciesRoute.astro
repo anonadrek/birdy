@@ -1,0 +1,9 @@
+---
+import GroupPage from './GroupPage.astro';
+import type { Locale } from '../../lib/i18n';
+import type { Group } from '../../lib/species';
+
+interface Props { locale: Locale; group?: Group }
+const { locale, group } = Astro.props;
+---
+{group && <GroupPage group={group} locale={locale} />}

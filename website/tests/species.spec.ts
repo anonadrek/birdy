@@ -126,3 +126,47 @@ test.describe('ingångssidan utan JavaScript', () => {
     await expect(page.locator('[data-item]:visible')).toHaveCount(total);
   });
 });
+
+test.describe('gruppsidorna', () => {
+  test('/sv/arter/ugglor/ har aktiv chip, arter och approta', async ({ page }) => {
+    const errors = trackConsoleErrors(page);
+    const res = await page.goto('/sv/arter/ugglor/');
+    expect(res?.status()).toBe(200);
+    await expect(page.locator('h1')).toHaveText('Ugglor');
+    await expect(page.locator('.catbar .chip[aria-current="page"]')).toContainText('Ugglor');
+    await expect(page.locator('.catbar .chip')).toHaveCount(8);
+    await expect(page.locator('[data-item]')).toHaveCount(3);
+    await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
+    await expect(page.locator('a[href*="utm_medium%3Dgroup"]')).toHaveCount(1);
+    await expect(page.locator('.sp-app')).toContainText('hjälper dig känna igen fåglarna');
+    expect(errors).toEqual([]);
+  });
+
+  test('Tättingar delas upp i familjer', async ({ page }) => {
+    await page.goto('/sv/arter/tattingar/');
+    await expect(page.locator('.family h3')).toHaveCount(6);
+  });
+
+  test('små grupper har noindex', async ({ page }) => {
+    await page.goto('/sv/arter/havsfaglar/');
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, follow');
+  });
+
+  test('en grupp utan byggda arter får ingen sida', async ({ page }) => {
+    expect((await page.goto('/sv/arter/hackspettar/'))?.status()).toBe(404);
+  });
+
+  test('kategoriraden sveps i sidled på 390 px utan att sidan gör det', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/sv/arter/ugglor/');
+    const [scroll, client] = await page.locator('[data-chips]').evaluate((el) => [el.scrollWidth, el.clientWidth]);
+    expect(scroll).toBeGreaterThan(client);
+    await noSideScroll(page);
+  });
+
+  test('engelska gruppsidan och språkbytet', async ({ page }) => {
+    const res = await page.goto('/species/owls/');
+    expect(res?.status()).toBe(200);
+    await expect(page.locator('link[rel="alternate"][hreflang="sv"]')).toHaveAttribute('href', 'https://birdy.community/sv/arter/ugglor/');
+  });
+});
