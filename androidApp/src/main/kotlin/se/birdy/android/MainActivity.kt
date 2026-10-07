@@ -1,6 +1,7 @@
 package se.birdy.android
 
 import android.Manifest
+import android.app.LocaleManager
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -37,6 +38,7 @@ import se.birdy.app.bootstrap.SharedPrefsBadgeVersionStore
 import se.birdy.app.di.AppGraph
 import se.birdy.app.i18n.AppStrings
 import se.birdy.app.i18n.LocaleResolver
+import se.birdy.app.i18n.appLanguageFromLocaleTags
 import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.notifications.workers.TrophyProgressWorker
 import se.birdy.app.photo.PhotoStorageProvider
@@ -58,6 +60,7 @@ import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
 import se.birdy.data.observation.SqlDelightObservationRepository
+import se.birdy.datastore.AppLanguage
 import se.birdy.datastore.UserPreferences
 import se.birdy.datastore.UserPreferencesStore
 import se.birdy.domain.premium.PremiumState
@@ -402,7 +405,7 @@ class MainActivity : AppCompatActivity() {
                 debugForceYearly = BuildConfig.DEBUG && BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE,
                 now = Clock.System.now(),
             )
-        val overrideTag = runBlocking { userPreferences.appLanguage.first() }.toLocaleTagOrNull()
+        val overrideTag = syncedAppLanguage(userPreferences).toLocaleTagOrNull()
         val resolvedLocale =
             LocaleResolver.resolve(
                 override = overrideTag,
@@ -541,6 +544,27 @@ class MainActivity : AppCompatActivity() {
                 },
             deepLinkFlow = deepLinkFlow,
         )
+    }
+
+    /**
+     * The app language, with Android's per-app language as the truth on API 33+. The language can be
+     * changed outside Birdy there (system Settings, Apps, Birdy, Language, offered because the manifest
+     * has a localeConfig); the UI follows it at once, but the saved preference did not, so species names,
+     * notifications and the PDF stayed in the old language (2026-10-07, "Råka" on an English screen).
+     * The preference is updated to match, so Settings shows the same choice. Below API 33 the
+     * preference is the truth and BirdyApplication applies it.
+     */
+    private fun syncedAppLanguage(userPreferences: UserPreferences): AppLanguage {
+        val stored = runBlocking { userPreferences.appLanguage.first() }
+        val applied =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                getSystemService(LocaleManager::class.java)?.applicationLocales
+            } else {
+                null
+            }
+        val language = applied?.let { appLanguageFromLocaleTags(it.toLanguageTags()) } ?: stored
+        if (language != stored) runBlocking { userPreferences.setAppLanguage(language) }
+        return language
     }
 
     /**
