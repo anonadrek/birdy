@@ -660,7 +660,6 @@
     <string name="about_version_prefix">Version</string>
     <string name="about_credits_label">INNEHÅLL &amp; DATA</string>
     <string name="about_licenses_label">KÄLLOR &amp; LICENSER</string>
-    <string name="about_back">Tillbaka</string>
     <string name="about_photos_title">Foton</string>
     <string name="about_photos_body">%1$s artfoton från Wikimedia Commons under CC0, public domain, CC BY eller CC BY-SA, nedskalade av Birdy. Fotograf, licens och länk till originalet för varje foto finns under Bildkällor.</string>
     <string name="about_photos_body_uncounted">Artfoton från Wikimedia Commons under CC0, public domain, CC BY eller CC BY-SA, nedskalade av Birdy. Fotograf, licens och länk till originalet för varje foto finns under Bildkällor.</string>

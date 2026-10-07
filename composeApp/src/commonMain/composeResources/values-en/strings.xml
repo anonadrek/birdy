@@ -645,7 +645,6 @@
     <string name="about_version_prefix">Version</string>
     <string name="about_credits_label">CONTENT &amp; DATA</string>
     <string name="about_licenses_label">SOURCES &amp; LICENSES</string>
-    <string name="about_back">Back</string>
     <string name="about_photos_title">Photos</string>
     <string name="about_photos_body">%1$s species photos from Wikimedia Commons under CC0, public domain, CC BY or CC BY-SA, resized by Birdy. The photographer, license and a link to the original of every photo are under Photo credits.</string>
     <string name="about_photos_body_uncounted">Species photos from Wikimedia Commons under CC0, public domain, CC BY or CC BY-SA, resized by Birdy. The photographer, license and a link to the original of every photo are under Photo credits.</string>

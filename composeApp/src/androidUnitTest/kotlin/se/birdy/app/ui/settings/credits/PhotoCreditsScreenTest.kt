@@ -1,5 +1,6 @@
 package se.birdy.app.ui.settings.credits
 
+import androidx.compose.material3.Text
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.ExperimentalTestApi
@@ -12,6 +13,7 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performCustomAccessibilityActionWithLabel
+import androidx.compose.ui.test.performFirstLinkClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performScrollToKey
 import androidx.compose.ui.test.performTouchInput
@@ -134,6 +136,19 @@ class PhotoCreditsScreenTest {
             val dp = density
             click(Offset(4 * dp, height - 26 * dp))
         }
+        compose.runOnIdle { assertEquals(listOf("https://creativecommons.org/licenses/by/2.0/"), opened) }
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `the licence in the row's line is a link to its deed`() {
+        attachComposeResourcesContext()
+        compose.setContent {
+            BirdyTheme {
+                Text(licenseLine("CC BY 2.0", "https://creativecommons.org/licenses/by/2.0/", "nedskalad") { opened += it })
+            }
+        }
+        compose.onNodeWithText("CC BY 2.0 · Wikimedia Commons · nedskalad").performFirstLinkClick()
         compose.runOnIdle { assertEquals(listOf("https://creativecommons.org/licenses/by/2.0/"), opened) }
     }
 

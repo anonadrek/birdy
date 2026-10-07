@@ -152,7 +152,7 @@ class CreditsScreenshotTest {
     }
 }
 
-/** Every photo credit in the species.db the app ships, read with the app's own query. */
+/** Every photo credit in the species.db the app ships, read with the same join as `selectCredits`. */
 private fun shippedCredits(locale: Locale): List<PhotoCredit> {
     val db =
         SQLiteDatabase.openDatabase(

@@ -19,11 +19,11 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
-import birdy_bird_scanner.composeapp.generated.resources.about_back
 import birdy_bird_scanner.composeapp.generated.resources.license_text_includes
 import birdy_bird_scanner.composeapp.generated.resources.license_text_website
 import birdy_bird_scanner.composeapp.generated.resources.licenses_error
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BackTopBar
 import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.settings.openExternalUrl
@@ -55,7 +55,7 @@ internal fun LicenseTextScreen(
 ) {
     ProvideUrlOpener(onOpenUrl) {
         JournalScaffold(
-            topBar = { CreditsTopBar(onBack = onBack, backDescription = stringResource(Res.string.about_back)) },
+            topBar = { BackTopBar(onBack = onBack) },
         ) { padding ->
             Box(modifier = Modifier.fillMaxSize().padding(padding)) {
                 when (state) {

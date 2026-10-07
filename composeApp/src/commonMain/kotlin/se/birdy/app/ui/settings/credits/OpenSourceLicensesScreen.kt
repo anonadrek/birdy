@@ -26,7 +26,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
-import birdy_bird_scanner.composeapp.generated.resources.about_back
 import birdy_bird_scanner.composeapp.generated.resources.licenses_entry_google
 import birdy_bird_scanner.composeapp.generated.resources.licenses_entry_native
 import birdy_bird_scanner.composeapp.generated.resources.licenses_error
@@ -41,6 +40,7 @@ import birdy_bird_scanner.composeapp.generated.resources.licenses_section_tensor
 import birdy_bird_scanner.composeapp.generated.resources.licenses_title
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BackTopBar
 import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.components.MicroLabel
@@ -105,11 +105,7 @@ internal fun OpenSourceLicensesScreen(
 ) {
     JournalScaffold(
         topBar = {
-            CreditsTopBar(
-                onBack = onBack,
-                backDescription = stringResource(Res.string.about_back),
-                title = stringResource(Res.string.licenses_title),
-            )
+            BackTopBar(onBack = onBack) { CreditsTitle(stringResource(Res.string.licenses_title)) }
         },
     ) { padding ->
         Box(modifier = Modifier.fillMaxSize().padding(padding)) {

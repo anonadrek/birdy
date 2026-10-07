@@ -32,7 +32,6 @@ import androidx.compose.ui.text.withLink
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
-import birdy_bird_scanner.composeapp.generated.resources.about_back
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_by
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_error
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_hero
@@ -46,8 +45,11 @@ import birdy_bird_scanner.composeapp.generated.resources.photo_credits_row_descr
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_title
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_use_model_test
 import birdy_bird_scanner.composeapp.generated.resources.photo_credits_use_premium
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BackTopBar
 import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.settings.formatCount
@@ -129,7 +131,10 @@ internal val OTHER_IMAGES =
 // The main photo first, then the others in file order ("secondary-2" before "secondary-10").
 private val PHOTO_ORDER = compareBy<PhotoCredit>({ it.role != HERO_ROLE }, { it.path.length }, { it.path })
 
-/** Groups [credits] per species (A to Ö by name), the main photo first and then in file order. */
+/**
+ * Groups [credits] per species (A to Ö by name), the main photo first and then in file order. Each
+ * name's sort key is computed once. Call it off the main thread: it sorts some 750 species.
+ */
 internal fun groupPhotoCredits(credits: List<PhotoCredit>): PhotoCredits =
     PhotoCredits(
         total = credits.size,
@@ -143,7 +148,9 @@ internal fun groupPhotoCredits(credits: List<PhotoCredit>): PhotoCredits =
                         scientificName = photos.first().scientificName,
                         photos = photos.sortedWith(PHOTO_ORDER),
                     )
-                }.sortedWith(compareBy({ swedishSortKey(it.speciesName) }, { it.speciesId.raw })),
+                }.map { group -> swedishSortKey(group.speciesName) to group }
+                .sortedWith(compareBy({ it.first }, { it.second.speciesId.raw }))
+                .map { it.second },
     )
 
 /** The photo credits read from the species database, off the main thread. */
@@ -153,7 +160,10 @@ fun PhotoCreditsRoute(
     locale: Locale,
     onBack: () -> Unit,
 ) {
-    val credits by rememberLoadable(repository to locale) { groupPhotoCredits(repository.photoCredits(locale)) }
+    val credits by rememberLoadable(repository to locale) {
+        val rows = repository.photoCredits(locale)
+        withContext(Dispatchers.Default) { groupPhotoCredits(rows) }
+    }
     PhotoCreditsScreen(state = credits, locale = locale, onBack = onBack)
 }
 
@@ -173,11 +183,7 @@ internal fun PhotoCreditsScreen(
 ) {
     JournalScaffold(
         topBar = {
-            CreditsTopBar(
-                onBack = onBack,
-                backDescription = stringResource(Res.string.about_back),
-                title = stringResource(Res.string.photo_credits_title),
-            )
+            BackTopBar(onBack = onBack) { CreditsTitle(stringResource(Res.string.photo_credits_title)) }
         },
     ) { padding ->
         Box(modifier = Modifier.fillMaxSize().padding(padding)) {
@@ -319,7 +325,7 @@ private fun PhotoCreditRow(
  * text sizes. The licence is a link of its own when it has a deed; a tap anywhere else on the row
  * opens the photo.
  */
-private fun licenseLine(
+internal fun licenseLine(
     license: String,
     licenseUrl: String?,
     resized: String,

@@ -34,7 +34,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
-import birdy_bird_scanner.composeapp.generated.resources.about_back
 import birdy_bird_scanner.composeapp.generated.resources.about_credits_label
 import birdy_bird_scanner.composeapp.generated.resources.about_eyebrow
 import birdy_bird_scanner.composeapp.generated.resources.about_headline_accent_1
@@ -62,10 +61,10 @@ import birdy_bird_scanner.composeapp.generated.resources.about_texts_title
 import birdy_bird_scanner.composeapp.generated.resources.about_version_prefix
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BackTopBar
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.components.MicroLabel
-import se.birdy.app.ui.settings.credits.CreditsTopBar
 import se.birdy.app.ui.settings.credits.Loadable
 import se.birdy.app.ui.settings.credits.ProvideUrlOpener
 import se.birdy.app.ui.settings.credits.TextLink
@@ -90,7 +89,7 @@ internal data class CreditParagraph(
 /**
  * Where the app's content comes from and under which licences (release 1.3.0, legal review 7i-fix C,
  * the proposal in docs/legal/2026-10-1.3.0-genomgang.md §5). The phrases are names, the same in
- * both languages; `AboutCreditsTest` checks that each is in the Swedish and the English text.
+ * both languages; `AboutScreenTest` checks that each is in the Swedish and the English text.
  */
 internal object AboutCredits {
     const val CC_BY_SA_4 = "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -205,7 +204,7 @@ fun AboutScreen(
 ) {
     ProvideUrlOpener(onOpenUrl) {
         JournalScaffold(
-            topBar = { CreditsTopBar(onBack = onBack, backDescription = stringResource(Res.string.about_back)) },
+            topBar = { BackTopBar(onBack = onBack) },
         ) { padding ->
             Column(
                 modifier =

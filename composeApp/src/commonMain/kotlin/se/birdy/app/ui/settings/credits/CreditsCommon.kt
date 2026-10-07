@@ -1,10 +1,9 @@
 package se.birdy.app.ui.settings.credits
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
@@ -31,7 +30,6 @@ import androidx.compose.ui.text.withLink
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.CancellationException
-import se.birdy.app.ui.components.BackButton
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.TextOnCreme
@@ -54,7 +52,7 @@ internal val CreditLinkStyles =
 
 /**
  * [text] with the first occurrence of every [links] phrase made a link. A phrase the text does not
- * contain stays plain text; `AboutCreditsTest` checks that every phrase is in both languages.
+ * contain stays plain text; `AboutScreenTest` checks that every phrase is in both languages.
  */
 internal fun linkify(
     text: String,
@@ -122,30 +120,21 @@ internal fun ProvideUrlOpener(
     CompositionLocalProvider(LocalUriHandler provides handler, content = content)
 }
 
-/** The fixed top bar of a pushed credits page: the back button and, when given, the page title. */
+/**
+ * A credits page's title in the shared [se.birdy.app.ui.components.BackTopBar] (Task 7b), after the
+ * back button, as on Settings: 12dp from the button's paper disc, wrapping when it is long.
+ */
 @Composable
-internal fun CreditsTopBar(
-    onBack: () -> Unit,
-    backDescription: String,
-    title: String? = null,
-) {
-    Row(
-        modifier = Modifier.fillMaxWidth().padding(start = 12.dp, top = 8.dp, end = 16.dp, bottom = 4.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        BackButton(onClick = onBack, contentDescription = backDescription)
-        Spacer(Modifier.size(8.dp))
-        if (title != null) {
-            Text(
-                text = title,
-                fontFamily = rememberDmSerifDisplay(),
-                fontStyle = FontStyle.Italic,
-                fontSize = 22.sp,
-                color = TextOnCreme,
-                modifier = Modifier.weight(1f).semantics { heading() },
-            )
-        }
-    }
+internal fun RowScope.CreditsTitle(title: String) {
+    Spacer(Modifier.size(12.dp))
+    Text(
+        text = title,
+        fontFamily = rememberDmSerifDisplay(),
+        fontStyle = FontStyle.Italic,
+        fontSize = 22.sp,
+        color = TextOnCreme,
+        modifier = Modifier.weight(1f).semantics { heading() },
+    )
 }
 
 /** A credits page's content while it loads, once it has, or when it could not be read. */
