@@ -9,6 +9,8 @@ from typing import Any
 
 import yaml
 
+from .families import family_sv
+
 
 class NotApprovedError(ValueError):
     pass
@@ -47,7 +49,9 @@ def _parse(data: dict[str, Any]) -> SpeciesSource:
         name_sv=data["names"]["sv"],
         name_en=data["names"]["en"],
         family=taxonomy["family"],
-        family_sv=taxonomy.get("family_sv") or taxonomy["family"],
+        # One Swedish name per family from BirdLife Sverige's list, not the species file's
+        # own `family_sv` (re-review 2026-10-07, web/families.py).
+        family_sv=family_sv(taxonomy["family"]),
         ioc_order=taxonomy["ioc_order"],
         iucn=data["iucn_status"],
         marginalia_sv=marginalia.get("sv"),
