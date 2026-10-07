@@ -1,0 +1,657 @@
+<title>See the Song, Week One</title>
+<style>
+:root {
+  --ground: #F6EFE2; --card: #FFFAF1; --ink: #2A1D17; --muted: #6E584B; --rule: #E2D5C0;
+  --accent: #9A4526; --accent-soft: #F2B27A; --ok: #4E6B3A; --wait: #9A6A1E; --chip: #EFE3CF;
+  --video-ground: #1E1410;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #1E1410; --card: #2A1D17; --ink: #F6EFE2; --muted: #C9B6A4; --rule: #45342A;
+    --accent: #F2B27A; --accent-soft: #9A4526; --ok: #A9C48F; --wait: #E2C07E; --chip: #3A2A21;
+    --video-ground: #120B08; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #1E1410; --card: #2A1D17; --ink: #F6EFE2; --muted: #C9B6A4; --rule: #45342A;
+  --accent: #F2B27A; --accent-soft: #9A4526; --ok: #A9C48F; --wait: #E2C07E; --chip: #3A2A21;
+  --video-ground: #120B08; color-scheme: dark;
+}
+body { background: var(--ground); color: var(--ink); font: 16px/1.55 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; }
+.wrap { max-width: 980px; margin: 0 auto; padding-inline: 18px; padding-block: 28px 64px; }
+header { display: grid; gap: 10px; padding-bottom: 22px; border-bottom: 1px solid var(--rule); }
+.kicker { margin: 0; font: 700 26px/1 'Caveat', 'Segoe Print', cursive; color: var(--accent); }
+h1 { margin: 0; font: 400 clamp(34px, 7vw, 54px)/1.05 'DM Serif Display', Georgia, serif; text-wrap: balance; }
+h1 em { color: var(--accent); }
+.lede { margin: 0; max-width: 62ch; color: var(--muted); }
+.lede strong { color: var(--ink); font-weight: 600; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 4px 0 0; padding: 0; list-style: none; font-size: 14px; color: var(--muted); }
+h3.section { margin: 40px 0 6px; font: 400 30px/1.1 'DM Serif Display', Georgia, serif; }
+.section-note { margin: 0 0 8px; color: var(--muted); max-width: 62ch; }
+.day { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 26px; padding-block: 30px; border-bottom: 1px solid var(--rule); }
+.media video { display: block; width: 100%; aspect-ratio: 9 / 16; max-width: 100%; background: var(--video-ground); border-radius: 10px; }
+.text { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.when { margin: 0; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+h2 { margin: 0; font: 400 36px/1.05 'DM Serif Display', Georgia, serif; text-wrap: balance; }
+.names { margin: 0; color: var(--muted); }
+.names .sv { font: 700 22px/1 'Caveat', 'Segoe Print', cursive; color: var(--accent); margin-right: 6px; }
+.facts { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 14px; color: var(--muted); }
+.page { display: flex; gap: 8px; align-items: baseline; }
+.dot { flex: none; width: 9px; height: 9px; border-radius: 50%; transform: translateY(-1px); }
+.page.ok .dot { background: var(--ok); }
+.page.wait .dot { background: var(--wait); }
+.tabs { display: flex; gap: 4px; margin-top: 6px; border-bottom: 1px solid var(--rule); }
+.tabs button { font: 600 14px/1 'Inter', system-ui, sans-serif; color: var(--muted); background: none; border: 0; border-bottom: 2px solid transparent; padding: 10px 10px 9px; cursor: pointer; }
+.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.tabs button:focus-visible, .copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.cap { display: grid; gap: 10px; }
+.cap pre { margin: 0; padding: 14px 16px; background: var(--card); border: 1px solid var(--rule); border-radius: 8px; white-space: pre-wrap; overflow-wrap: anywhere; font: 14px/1.55 'Inter', system-ui, sans-serif; color: var(--ink); max-height: 340px; overflow-y: auto; }
+.copy { justify-self: start; font: 600 14px/1 'Inter', system-ui, sans-serif; color: var(--ink); background: var(--chip); border: 1px solid var(--rule); border-radius: 999px; padding: 9px 14px; cursor: pointer; }
+.open { margin: 0; padding-left: 20px; display: grid; gap: 8px; max-width: 70ch; }
+.open li::marker { color: var(--accent); }
+@media (max-width: 640px) {
+  .day { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .media { max-width: 340px; width: 100%; justify-self: center; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;600&display=swap">
+
+<div class="wrap">
+<header>
+  <p class="kicker">See the song</p>
+  <h1>The first <em>week</em>, Fri 9 to Thu 15 Oct</h1>
+  <p class="lede">Seven videos, one a day at <strong>08:00</strong> on Facebook, Instagram Reels and YouTube Shorts, plus three reserves. Turn the sound on: the ring answers the bird, settles, one breath of stillness, then the photo and the name. The poster of each video is its cover, which never shows the bird.</p>
+  <ul class="legend">
+    <li><span class="dot" style="display:inline-block;background:var(--ok)"></span> page has passed its checks</li>
+    <li><span class="dot" style="display:inline-block;background:var(--wait)"></span> page waits for a decision in the exception sheet</li>
+  </ul>
+</header>
+
+<h3 class="section">The week</h3>
+<p class="section-note">Songbirds alternate with other birds, and the pages most likely to be live come first. If a page is not live on its morning, swap in a reserve. Captions link to birdy.community until the page is live; rerun the captions that morning and the link becomes the species page.</p>
+
+<article class="day" id="d1">
+  <div class="media">
+    <video controls playsinline preload="metadata" poster="covers/eurasian-blue-tit.jpg" src="videos/eurasian-blue-tit.mp4" aria-label="See the song: Eurasian Blue Tit"></video>
+  </div>
+  <div class="text">
+    <p class="when">Day 1 · Fri 9 Oct, 08:00</p>
+    <h2>Eurasian Blue Tit</h2>
+    <p class="names"><span class="sv">Blåmes</span> <i>Cyanistes caeruleus</i></p>
+    <ul class="facts">
+      <li>In the video: “Whose song is this?”</li>
+      <li>19.3 s in all, 11.1 s of the recording</li>
+      <li>Video licensed CC BY-SA 4.0</li>
+      <li class="page ok"><span class="dot" aria-hidden="true"></span>Species page: checked and written, no flags. It goes live when its build checks pass.</li>
+    </ul>
+    <div class="tabs" role="tablist" aria-label="Caption for Eurasian Blue Tit">
+      <button type="button" role="tab" id="d1-tab-ig" aria-controls="d1-ig" aria-selected="true" tabindex="0">Instagram</button><button type="button" role="tab" id="d1-tab-fb" aria-controls="d1-fb" aria-selected="false" tabindex="-1">Facebook</button><button type="button" role="tab" id="d1-tab-yt" aria-controls="d1-yt" aria-selected="false" tabindex="-1">YouTube</button>
+    </div>
+    <div class="cap" role="tabpanel" id="d1-ig" aria-labelledby="d1-tab-ig">
+      <pre>The Eurasian Blue Tit is a tit with a pale blue crown and upperparts and pale yellow underparts.
+
+Identify birds by sound with the free Birdy app. Link in bio.
+
+Photo: Kathy Büscher, CC BY 2.0, via Wikimedia Commons, cropped · Sound: Benoît Van Hecke, CC BY-SA 4.0, via Wikimedia Commons, edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #EurasianBlueTit</pre>
+      <button type="button" class="copy" data-for="d1-ig">Copy Instagram text</button>
+    </div><div class="cap" role="tabpanel" id="d1-fb" aria-labelledby="d1-tab-fb" hidden>
+      <pre>The Eurasian Blue Tit is a tit with a pale blue crown and upperparts and pale yellow underparts.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Kathy Büscher, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/), via Wikimedia Commons, cropped · Sound: Benoît Van Hecke, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), via Wikimedia Commons, edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #EurasianBlueTit</pre>
+      <button type="button" class="copy" data-for="d1-fb">Copy Facebook text</button>
+    </div><div class="cap" role="tabpanel" id="d1-yt" aria-labelledby="d1-tab-yt" hidden>
+      <pre>What does the Eurasian Blue Tit sound like? #shorts
+
+The Eurasian Blue Tit is a tit with a pale blue crown and upperparts and pale yellow underparts.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Kathy Büscher, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/), via Wikimedia Commons, cropped · Sound: Benoît Van Hecke, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), via Wikimedia Commons, edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #EurasianBlueTit</pre>
+      <button type="button" class="copy" data-for="d1-yt">Copy YouTube text</button>
+    </div>
+  </div>
+</article>
+
+<article class="day" id="d2">
+  <div class="media">
+    <video controls playsinline preload="metadata" poster="covers/common-crane.jpg" src="videos/common-crane.mp4" aria-label="See the song: Common Crane"></video>
+  </div>
+  <div class="text">
+    <p class="when">Day 2 · Sat 10 Oct, 08:00</p>
+    <h2>Common Crane</h2>
+    <p class="names"><span class="sv">Trana</span> <i>Grus grus</i></p>
+    <ul class="facts">
+      <li>In the video: “Whose voice is this?”</li>
+      <li>28.2 s in all, 20.0 s of the recording (trimmed)</li>
+      <li>Video licensed CC BY-SA 4.0</li>
+      <li class="page ok"><span class="dot" aria-hidden="true"></span>Species page: checked and written, no flags. It goes live when its build checks pass.</li>
+    </ul>
+    <div class="tabs" role="tablist" aria-label="Caption for Common Crane">
+      <button type="button" role="tab" id="d2-tab-ig" aria-controls="d2-ig" aria-selected="true" tabindex="0">Instagram</button><button type="button" role="tab" id="d2-tab-fb" aria-controls="d2-fb" aria-selected="false" tabindex="-1">Facebook</button><button type="button" role="tab" id="d2-tab-yt" aria-controls="d2-yt" aria-selected="false" tabindex="-1">YouTube</button>
+    </div>
+    <div class="cap" role="tabpanel" id="d2-ig" aria-labelledby="d2-tab-ig">
+      <pre>The Common Crane is a grey migrant that breeds in Sweden, usually in small swampy openings in pine forest.
+
+Identify birds by sound with the free Birdy app. Link in bio.
+
+Photo: Kandukuru Nagarjun, CC BY 2.0, via Wikimedia Commons, cropped · Sound: Pálos Lőrinc, CC BY-SA 4.0, via Wikimedia Commons, trimmed and edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #CommonCrane</pre>
+      <button type="button" class="copy" data-for="d2-ig">Copy Instagram text</button>
+    </div><div class="cap" role="tabpanel" id="d2-fb" aria-labelledby="d2-tab-fb" hidden>
+      <pre>The Common Crane is a grey migrant that breeds in Sweden, usually in small swampy openings in pine forest.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Kandukuru Nagarjun, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/), via Wikimedia Commons, cropped · Sound: Pálos Lőrinc, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), via Wikimedia Commons, trimmed and edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #CommonCrane</pre>
+      <button type="button" class="copy" data-for="d2-fb">Copy Facebook text</button>
+    </div><div class="cap" role="tabpanel" id="d2-yt" aria-labelledby="d2-tab-yt" hidden>
+      <pre>What does the Common Crane sound like? #shorts
+
+The Common Crane is a grey migrant that breeds in Sweden, usually in small swampy openings in pine forest.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Kandukuru Nagarjun, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/), via Wikimedia Commons, cropped · Sound: Pálos Lőrinc, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), via Wikimedia Commons, trimmed and edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #CommonCrane</pre>
+      <button type="button" class="copy" data-for="d2-yt">Copy YouTube text</button>
+    </div>
+  </div>
+</article>
+
+<article class="day" id="d3">
+  <div class="media">
+    <video controls playsinline preload="metadata" poster="covers/house-sparrow.jpg" src="videos/house-sparrow.mp4" aria-label="See the song: House Sparrow"></video>
+  </div>
+  <div class="text">
+    <p class="when">Day 3 · Sun 11 Oct, 08:00</p>
+    <h2>House Sparrow</h2>
+    <p class="names"><span class="sv">Gråsparv</span> <i>Passer domesticus</i></p>
+    <ul class="facts">
+      <li>In the video: “Whose song is this?”</li>
+      <li>19.5 s in all, 11.3 s of the recording</li>
+      <li>Video licensed CC BY-SA 4.0</li>
+      <li class="page ok"><span class="dot" aria-hidden="true"></span>Species page: checked and written, no flags. It goes live when its build checks pass.</li>
+    </ul>
+    <div class="tabs" role="tablist" aria-label="Caption for House Sparrow">
+      <button type="button" role="tab" id="d3-tab-ig" aria-controls="d3-ig" aria-selected="true" tabindex="0">Instagram</button><button type="button" role="tab" id="d3-tab-fb" aria-controls="d3-fb" aria-selected="false" tabindex="-1">Facebook</button><button type="button" role="tab" id="d3-tab-yt" aria-controls="d3-yt" aria-selected="false" tabindex="-1">YouTube</button>
+    </div>
+    <div class="cap" role="tabpanel" id="d3-ig" aria-labelledby="d3-tab-ig">
+      <pre>The House Sparrow is a sturdy, compact songbird with mainly grey and brown plumage.
+
+Identify birds by sound with the free Birdy app. Link in bio.
+
+Photo: Hobbyfotowiki, CC0, via Wikimedia Commons, cropped · Sound: Jonathon Jongsma, CC BY-SA 3.0, via Wikimedia Commons, edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #HouseSparrow</pre>
+      <button type="button" class="copy" data-for="d3-ig">Copy Instagram text</button>
+    </div><div class="cap" role="tabpanel" id="d3-fb" aria-labelledby="d3-tab-fb" hidden>
+      <pre>The House Sparrow is a sturdy, compact songbird with mainly grey and brown plumage.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Hobbyfotowiki, CC0 (https://creativecommons.org/publicdomain/zero/1.0/), via Wikimedia Commons, cropped · Sound: Jonathon Jongsma, CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/), via Wikimedia Commons, edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #HouseSparrow</pre>
+      <button type="button" class="copy" data-for="d3-fb">Copy Facebook text</button>
+    </div><div class="cap" role="tabpanel" id="d3-yt" aria-labelledby="d3-tab-yt" hidden>
+      <pre>What does the House Sparrow sound like? #shorts
+
+The House Sparrow is a sturdy, compact songbird with mainly grey and brown plumage.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Hobbyfotowiki, CC0 (https://creativecommons.org/publicdomain/zero/1.0/), via Wikimedia Commons, cropped · Sound: Jonathon Jongsma, CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/), via Wikimedia Commons, edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #HouseSparrow</pre>
+      <button type="button" class="copy" data-for="d3-yt">Copy YouTube text</button>
+    </div>
+  </div>
+</article>
+
+<article class="day" id="d4">
+  <div class="media">
+    <video controls playsinline preload="metadata" poster="covers/mallard.jpg" src="videos/mallard.mp4" aria-label="See the song: Mallard"></video>
+  </div>
+  <div class="text">
+    <p class="when">Day 4 · Mon 12 Oct, 08:00</p>
+    <h2>Mallard</h2>
+    <p class="names"><span class="sv">Gräsand</span> <i>Anas platyrhynchos</i></p>
+    <ul class="facts">
+      <li>In the video: “Whose voice is this?”</li>
+      <li>25.0 s in all, 16.8 s of the recording</li>
+      <li>Video licensed CC BY-SA 4.0</li>
+      <li class="page ok"><span class="dot" aria-hidden="true"></span>Species page: checked and written, no flags. It goes live when its build checks pass.</li>
+    </ul>
+    <div class="tabs" role="tablist" aria-label="Caption for Mallard">
+      <button type="button" role="tab" id="d4-tab-ig" aria-controls="d4-ig" aria-selected="true" tabindex="0">Instagram</button><button type="button" role="tab" id="d4-tab-fb" aria-controls="d4-fb" aria-selected="false" tabindex="-1">Facebook</button><button type="button" role="tab" id="d4-tab-yt" aria-controls="d4-yt" aria-selected="false" tabindex="-1">YouTube</button>
+    </div>
+    <div class="cap" role="tabpanel" id="d4-ig" aria-labelledby="d4-tab-ig">
+      <pre>The Mallard is a large, sturdy duck that breeds by almost any kind of water: forest marshes, lakes, rivers and parks, as well as brackish and salt water.
+
+Identify birds by sound with the free Birdy app. Link in bio.
+
+Photo: Alexis Lours, CC BY 4.0, via Wikimedia Commons, cropped · Sound: Jonathon Jongsma, CC BY-SA 3.0, via Wikimedia Commons, edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #Mallard</pre>
+      <button type="button" class="copy" data-for="d4-ig">Copy Instagram text</button>
+    </div><div class="cap" role="tabpanel" id="d4-fb" aria-labelledby="d4-tab-fb" hidden>
+      <pre>The Mallard is a large, sturdy duck that breeds by almost any kind of water: forest marshes, lakes, rivers and parks, as well as brackish and salt water.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Alexis Lours, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), via Wikimedia Commons, cropped · Sound: Jonathon Jongsma, CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/), via Wikimedia Commons, edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #Mallard</pre>
+      <button type="button" class="copy" data-for="d4-fb">Copy Facebook text</button>
+    </div><div class="cap" role="tabpanel" id="d4-yt" aria-labelledby="d4-tab-yt" hidden>
+      <pre>What does the Mallard sound like? #shorts
+
+The Mallard is a large, sturdy duck that breeds by almost any kind of water: forest marshes, lakes, rivers and parks, as well as brackish and salt water.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Alexis Lours, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), via Wikimedia Commons, cropped · Sound: Jonathon Jongsma, CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/), via Wikimedia Commons, edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #Mallard</pre>
+      <button type="button" class="copy" data-for="d4-yt">Copy YouTube text</button>
+    </div>
+  </div>
+</article>
+
+<article class="day" id="d5">
+  <div class="media">
+    <video controls playsinline preload="metadata" poster="covers/common-blackbird.jpg" src="videos/common-blackbird.mp4" aria-label="See the song: Common Blackbird"></video>
+  </div>
+  <div class="text">
+    <p class="when">Day 5 · Tue 13 Oct, 08:00</p>
+    <h2>Common Blackbird</h2>
+    <p class="names"><span class="sv">Koltrast</span> <i>Turdus merula</i></p>
+    <ul class="facts">
+      <li>In the video: “Whose song is this?”</li>
+      <li>28.2 s in all, 20.0 s of the recording (trimmed)</li>
+      <li>Video licensed CC BY-SA 4.0</li>
+      <li class="page ok"><span class="dot" aria-hidden="true"></span>Species page: checked and written, no flags. It goes live when its build checks pass.</li>
+    </ul>
+    <div class="tabs" role="tablist" aria-label="Caption for Common Blackbird">
+      <button type="button" role="tab" id="d5-tab-ig" aria-controls="d5-ig" aria-selected="true" tabindex="0">Instagram</button><button type="button" role="tab" id="d5-tab-fb" aria-controls="d5-fb" aria-selected="false" tabindex="-1">Facebook</button><button type="button" role="tab" id="d5-tab-yt" aria-controls="d5-yt" aria-selected="false" tabindex="-1">YouTube</button>
+    </div>
+    <div class="cap" role="tabpanel" id="d5-ig" aria-labelledby="d5-tab-ig">
+      <pre>The Common Blackbird is a thrush that breeds in Sweden and is a partial migrant.
+
+Identify birds by sound with the free Birdy app. Link in bio.
+
+Photo: Musicaline, CC BY-SA 4.0, via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons, trimmed and edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #CommonBlackbird</pre>
+      <button type="button" class="copy" data-for="d5-ig">Copy Instagram text</button>
+    </div><div class="cap" role="tabpanel" id="d5-fb" aria-labelledby="d5-tab-fb" hidden>
+      <pre>The Common Blackbird is a thrush that breeds in Sweden and is a partial migrant.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Musicaline, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons, trimmed and edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #CommonBlackbird</pre>
+      <button type="button" class="copy" data-for="d5-fb">Copy Facebook text</button>
+    </div><div class="cap" role="tabpanel" id="d5-yt" aria-labelledby="d5-tab-yt" hidden>
+      <pre>What does the Common Blackbird sound like? #shorts
+
+The Common Blackbird is a thrush that breeds in Sweden and is a partial migrant.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Musicaline, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons, trimmed and edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #CommonBlackbird</pre>
+      <button type="button" class="copy" data-for="d5-yt">Copy YouTube text</button>
+    </div>
+  </div>
+</article>
+
+<article class="day" id="d6">
+  <div class="media">
+    <video controls playsinline preload="metadata" poster="covers/common-buzzard.jpg" src="videos/common-buzzard.mp4" aria-label="See the song: Common Buzzard"></video>
+  </div>
+  <div class="text">
+    <p class="when">Day 6 · Wed 14 Oct, 08:00</p>
+    <h2>Common Buzzard</h2>
+    <p class="names"><span class="sv">Ormvråk</span> <i>Buteo buteo</i></p>
+    <ul class="facts">
+      <li>In the video: “Whose voice is this?”</li>
+      <li>28.2 s in all, 20.0 s of the recording (trimmed)</li>
+      <li>Video licensed CC BY-SA 4.0</li>
+      <li class="page ok"><span class="dot" aria-hidden="true"></span>Species page: checked and written, no flags. It goes live when its build checks pass.</li>
+    </ul>
+    <div class="tabs" role="tablist" aria-label="Caption for Common Buzzard">
+      <button type="button" role="tab" id="d6-tab-ig" aria-controls="d6-ig" aria-selected="true" tabindex="0">Instagram</button><button type="button" role="tab" id="d6-tab-fb" aria-controls="d6-fb" aria-selected="false" tabindex="-1">Facebook</button><button type="button" role="tab" id="d6-tab-yt" aria-controls="d6-yt" aria-selected="false" tabindex="-1">YouTube</button>
+    </div>
+    <div class="cap" role="tabpanel" id="d6-ig" aria-labelledby="d6-tab-ig">
+      <pre>The Common Buzzard is a compact, medium-sized bird of prey and, along with the Sparrowhawk, one of the commonest raptors in Sweden.
+
+Identify birds by sound with the free Birdy app. Link in bio.
+
+Photo: Hobbyfotowiki, CC0, via Wikimedia Commons, cropped · Sound: Benoît Van Hecke, CC BY-SA 4.0, via Wikimedia Commons, trimmed and edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #CommonBuzzard</pre>
+      <button type="button" class="copy" data-for="d6-ig">Copy Instagram text</button>
+    </div><div class="cap" role="tabpanel" id="d6-fb" aria-labelledby="d6-tab-fb" hidden>
+      <pre>The Common Buzzard is a compact, medium-sized bird of prey and, along with the Sparrowhawk, one of the commonest raptors in Sweden.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Hobbyfotowiki, CC0 (https://creativecommons.org/publicdomain/zero/1.0/), via Wikimedia Commons, cropped · Sound: Benoît Van Hecke, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), via Wikimedia Commons, trimmed and edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #CommonBuzzard</pre>
+      <button type="button" class="copy" data-for="d6-fb">Copy Facebook text</button>
+    </div><div class="cap" role="tabpanel" id="d6-yt" aria-labelledby="d6-tab-yt" hidden>
+      <pre>What does the Common Buzzard sound like? #shorts
+
+The Common Buzzard is a compact, medium-sized bird of prey and, along with the Sparrowhawk, one of the commonest raptors in Sweden.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Hobbyfotowiki, CC0 (https://creativecommons.org/publicdomain/zero/1.0/), via Wikimedia Commons, cropped · Sound: Benoît Van Hecke, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), via Wikimedia Commons, trimmed and edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #CommonBuzzard</pre>
+      <button type="button" class="copy" data-for="d6-yt">Copy YouTube text</button>
+    </div>
+  </div>
+</article>
+
+<article class="day" id="d7">
+  <div class="media">
+    <video controls playsinline preload="metadata" poster="covers/great-tit.jpg" src="videos/great-tit.mp4" aria-label="See the song: Great Tit"></video>
+  </div>
+  <div class="text">
+    <p class="when">Day 7 · Thu 15 Oct, 08:00</p>
+    <h2>Great Tit</h2>
+    <p class="names"><span class="sv">Talgoxe</span> <i>Parus major</i></p>
+    <ul class="facts">
+      <li>In the video: “Whose song is this?”</li>
+      <li>28.2 s in all, 20.0 s of the recording (trimmed)</li>
+      <li>Video licensed CC BY-SA 4.0</li>
+      <li class="page ok"><span class="dot" aria-hidden="true"></span>Species page: checked and written, no flags. It goes live when its build checks pass.</li>
+    </ul>
+    <div class="tabs" role="tablist" aria-label="Caption for Great Tit">
+      <button type="button" role="tab" id="d7-tab-ig" aria-controls="d7-ig" aria-selected="true" tabindex="0">Instagram</button><button type="button" role="tab" id="d7-tab-fb" aria-controls="d7-fb" aria-selected="false" tabindex="-1">Facebook</button><button type="button" role="tab" id="d7-tab-yt" aria-controls="d7-yt" aria-selected="false" tabindex="-1">YouTube</button>
+    </div>
+    <div class="cap" role="tabpanel" id="d7-ig" aria-labelledby="d7-tab-ig">
+      <pre>The Great Tit is a large tit found throughout Sweden and one of the commonest tits in central and southern Sweden.
+
+Identify birds by sound with the free Birdy app. Link in bio.
+
+Photo: Hobbyfotowiki, CC0, via Wikimedia Commons, cropped · Sound: Gavin Vella, CC BY-SA 3.0, via Wikimedia Commons, trimmed and edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #GreatTit</pre>
+      <button type="button" class="copy" data-for="d7-ig">Copy Instagram text</button>
+    </div><div class="cap" role="tabpanel" id="d7-fb" aria-labelledby="d7-tab-fb" hidden>
+      <pre>The Great Tit is a large tit found throughout Sweden and one of the commonest tits in central and southern Sweden.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Hobbyfotowiki, CC0 (https://creativecommons.org/publicdomain/zero/1.0/), via Wikimedia Commons, cropped · Sound: Gavin Vella, CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/), via Wikimedia Commons, trimmed and edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #GreatTit</pre>
+      <button type="button" class="copy" data-for="d7-fb">Copy Facebook text</button>
+    </div><div class="cap" role="tabpanel" id="d7-yt" aria-labelledby="d7-tab-yt" hidden>
+      <pre>What does the Great Tit sound like? #shorts
+
+The Great Tit is a large tit found throughout Sweden and one of the commonest tits in central and southern Sweden.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Hobbyfotowiki, CC0 (https://creativecommons.org/publicdomain/zero/1.0/), via Wikimedia Commons, cropped · Sound: Gavin Vella, CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/), via Wikimedia Commons, trimmed and edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #GreatTit</pre>
+      <button type="button" class="copy" data-for="d7-yt">Copy YouTube text</button>
+    </div>
+  </div>
+</article>
+
+<h3 class="section">Reserves</h3>
+<p class="section-note">Rendered and ready, in the order to use them.</p>
+
+<article class="day" id="r1">
+  <div class="media">
+    <video controls playsinline preload="metadata" poster="covers/european-robin.jpg" src="videos/european-robin.mp4" aria-label="See the song: European Robin"></video>
+  </div>
+  <div class="text">
+    <p class="when">Reserve 1</p>
+    <h2>European Robin</h2>
+    <p class="names"><span class="sv">Rödhake</span> <i>Erithacus rubecula</i></p>
+    <ul class="facts">
+      <li>In the video: “Whose song is this?”</li>
+      <li>24.5 s in all, 16.3 s of the recording</li>
+      <li>Video licensed CC BY-SA 4.0</li>
+      <li class="page ok"><span class="dot" aria-hidden="true"></span>Species page: checked and written, no flags. It goes live when its build checks pass.</li>
+    </ul>
+    <div class="tabs" role="tablist" aria-label="Caption for European Robin">
+      <button type="button" role="tab" id="r1-tab-ig" aria-controls="r1-ig" aria-selected="true" tabindex="0">Instagram</button><button type="button" role="tab" id="r1-tab-fb" aria-controls="r1-fb" aria-selected="false" tabindex="-1">Facebook</button><button type="button" role="tab" id="r1-tab-yt" aria-controls="r1-yt" aria-selected="false" tabindex="-1">YouTube</button>
+    </div>
+    <div class="cap" role="tabpanel" id="r1-ig" aria-labelledby="r1-tab-ig">
+      <pre>The European Robin is a small, round bird with a strong orange-red breast and face.
+
+Identify birds by sound with the free Birdy app. Link in bio.
+
+Photo: Rob Hille, Public domain, via Wikimedia Commons, cropped · Sound: Vladimir Yu. Arkhipov, Arkhivov, CC BY-SA 3.0, via Wikimedia Commons, edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #EuropeanRobin</pre>
+      <button type="button" class="copy" data-for="r1-ig">Copy Instagram text</button>
+    </div><div class="cap" role="tabpanel" id="r1-fb" aria-labelledby="r1-tab-fb" hidden>
+      <pre>The European Robin is a small, round bird with a strong orange-red breast and face.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Rob Hille, Public domain, via Wikimedia Commons, cropped · Sound: Vladimir Yu. Arkhipov, Arkhivov, CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/), via Wikimedia Commons, edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #EuropeanRobin</pre>
+      <button type="button" class="copy" data-for="r1-fb">Copy Facebook text</button>
+    </div><div class="cap" role="tabpanel" id="r1-yt" aria-labelledby="r1-tab-yt" hidden>
+      <pre>What does the European Robin sound like? #shorts
+
+The European Robin is a small, round bird with a strong orange-red breast and face.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Rob Hille, Public domain, via Wikimedia Commons, cropped · Sound: Vladimir Yu. Arkhipov, Arkhivov, CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/), via Wikimedia Commons, edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #EuropeanRobin</pre>
+      <button type="button" class="copy" data-for="r1-yt">Copy YouTube text</button>
+    </div>
+  </div>
+</article>
+
+<article class="day" id="r2">
+  <div class="media">
+    <video controls playsinline preload="metadata" poster="covers/eurasian-chaffinch.jpg" src="videos/eurasian-chaffinch.mp4" aria-label="See the song: Eurasian Chaffinch"></video>
+  </div>
+  <div class="text">
+    <p class="when">Reserve 2</p>
+    <h2>Eurasian Chaffinch</h2>
+    <p class="names"><span class="sv">Bofink</span> <i>Fringilla coelebs</i></p>
+    <ul class="facts">
+      <li>In the video: “Whose song is this?”</li>
+      <li>28.2 s in all, 20.0 s of the recording (trimmed)</li>
+      <li>Video licensed CC BY-SA 4.0</li>
+      <li class="page wait"><span class="dot" aria-hidden="true"></span>Species page: waits for your call on one flag (V1, a fact the checker struck).</li>
+    </ul>
+    <div class="tabs" role="tablist" aria-label="Caption for Eurasian Chaffinch">
+      <button type="button" role="tab" id="r2-tab-ig" aria-controls="r2-ig" aria-selected="true" tabindex="0">Instagram</button><button type="button" role="tab" id="r2-tab-fb" aria-controls="r2-fb" aria-selected="false" tabindex="-1">Facebook</button><button type="button" role="tab" id="r2-tab-yt" aria-controls="r2-yt" aria-selected="false" tabindex="-1">YouTube</button>
+    </div>
+    <div class="cap" role="tabpanel" id="r2-ig" aria-labelledby="r2-tab-ig">
+      <pre>Listen to the song of the Eurasian Chaffinch.
+
+Identify birds by sound with the free Birdy app. Link in bio.
+
+Photo: Ralf Hüsges, CC BY 2.0, via Wikimedia Commons, cropped · Sound: Alvaro Ortiz Troncoso, CC BY-SA 4.0, via Wikimedia Commons, trimmed and edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #EurasianChaffinch</pre>
+      <button type="button" class="copy" data-for="r2-ig">Copy Instagram text</button>
+    </div><div class="cap" role="tabpanel" id="r2-fb" aria-labelledby="r2-tab-fb" hidden>
+      <pre>Listen to the song of the Eurasian Chaffinch.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Ralf Hüsges, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/), via Wikimedia Commons, cropped · Sound: Alvaro Ortiz Troncoso, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), via Wikimedia Commons, trimmed and edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #EurasianChaffinch</pre>
+      <button type="button" class="copy" data-for="r2-fb">Copy Facebook text</button>
+    </div><div class="cap" role="tabpanel" id="r2-yt" aria-labelledby="r2-tab-yt" hidden>
+      <pre>What does the Eurasian Chaffinch sound like? #shorts
+
+Listen to the song of the Eurasian Chaffinch.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Ralf Hüsges, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0/), via Wikimedia Commons, cropped · Sound: Alvaro Ortiz Troncoso, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), via Wikimedia Commons, trimmed and edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #EurasianChaffinch</pre>
+      <button type="button" class="copy" data-for="r2-yt">Copy YouTube text</button>
+    </div>
+  </div>
+</article>
+
+<article class="day" id="r3">
+  <div class="media">
+    <video controls playsinline preload="metadata" poster="covers/common-gull.jpg" src="videos/common-gull.mp4" aria-label="See the song: Common Gull"></video>
+  </div>
+  <div class="text">
+    <p class="when">Reserve 3</p>
+    <h2>Common Gull</h2>
+    <p class="names"><span class="sv">Fiskmås</span> <i>Larus canus</i></p>
+    <ul class="facts">
+      <li>In the video: “Whose voice is this?”</li>
+      <li>13.9 s in all, 5.7 s of the recording</li>
+      <li>Video licensed CC BY-SA 4.0</li>
+      <li class="page ok"><span class="dot" aria-hidden="true"></span>Species page: checked and written, no flags. It goes live when its build checks pass.</li>
+    </ul>
+    <div class="tabs" role="tablist" aria-label="Caption for Common Gull">
+      <button type="button" role="tab" id="r3-tab-ig" aria-controls="r3-ig" aria-selected="true" tabindex="0">Instagram</button><button type="button" role="tab" id="r3-tab-fb" aria-controls="r3-fb" aria-selected="false" tabindex="-1">Facebook</button><button type="button" role="tab" id="r3-tab-yt" aria-controls="r3-yt" aria-selected="false" tabindex="-1">YouTube</button>
+    </div>
+    <div class="cap" role="tabpanel" id="r3-ig" aria-labelledby="r3-tab-ig">
+      <pre>The Common Gull is a gull that breeds near water, for example by large lakes, small forest tarns and along the coast.
+
+Identify birds by sound with the free Birdy app. Link in bio.
+
+Photo: Estormiz, CC0, via Wikimedia Commons, cropped · Sound: Ryan Hodnett, CC BY-SA 4.0, via Wikimedia Commons, edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #CommonGull</pre>
+      <button type="button" class="copy" data-for="r3-ig">Copy Instagram text</button>
+    </div><div class="cap" role="tabpanel" id="r3-fb" aria-labelledby="r3-tab-fb" hidden>
+      <pre>The Common Gull is a gull that breeds near water, for example by large lakes, small forest tarns and along the coast.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Estormiz, CC0 (https://creativecommons.org/publicdomain/zero/1.0/), via Wikimedia Commons, cropped · Sound: Ryan Hodnett, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), via Wikimedia Commons, edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #CommonGull</pre>
+      <button type="button" class="copy" data-for="r3-fb">Copy Facebook text</button>
+    </div><div class="cap" role="tabpanel" id="r3-yt" aria-labelledby="r3-tab-yt" hidden>
+      <pre>What does the Common Gull sound like? #shorts
+
+The Common Gull is a gull that breeds near water, for example by large lakes, small forest tarns and along the coast.
+
+Identify birds by sound with the free Birdy app: https://birdy.community/
+
+Photo: Estormiz, CC0 (https://creativecommons.org/publicdomain/zero/1.0/), via Wikimedia Commons, cropped · Sound: Ryan Hodnett, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), via Wikimedia Commons, edited
+Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+#birds #birdwatching #birdsong #birding #birdy #CommonGull</pre>
+      <button type="button" class="copy" data-for="r3-yt">Copy YouTube text</button>
+    </div>
+  </div>
+</article>
+
+<h3 class="section">Still open</h3>
+<ol class="open">
+  <li>Which pages are live by each morning is decided by the pipeline's checks. Waiting for your call in the exception sheet: Eurasian Chaffinch.</li>
+  <li>The Western Jackdaw was left out: its recording has a V4 flag (the sound model does not know the species), so listen and decide first.</li>
+  <li>Every video here uses CC BY-SA material, so every caption ends with “Video licensed CC BY-SA 4.0” and the licence link.</li>
+  <li>YouTube Shorts takes its thumbnail from the video: choose the first frame (no bird) if the app asks.</li>
+</ol>
+</div>
+<script>
+document.querySelectorAll('[role="tablist"]').forEach((list) => {
+  const tabs = [...list.querySelectorAll('[role="tab"]')];
+  const show = (tab) => {
+    tabs.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => show(t));
+    t.addEventListener('keydown', (e) => {
+      const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      const next = tabs[(i + d + tabs.length) % tabs.length];
+      show(next);
+      next.focus();
+    });
+  });
+});
+document.querySelectorAll('.copy').forEach((b) => {
+  b.addEventListener('click', async () => {
+    const pre = document.getElementById(b.dataset.for).querySelector('pre');
+    const label = b.textContent;
+    try {
+      await navigator.clipboard.writeText(pre.textContent);
+      b.textContent = 'Copied';
+    } catch {
+      const r = document.createRange();
+      r.selectNodeContents(pre);
+      const sel = getSelection();
+      sel.removeAllRanges();
+      sel.addRange(r);
+      b.textContent = 'Selected, copy it now';
+    }
+    setTimeout(() => (b.textContent = label), 1800);
+  });
+});
+</script>
