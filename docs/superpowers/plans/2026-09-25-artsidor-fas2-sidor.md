@@ -421,6 +421,8 @@ function comparison(c) {
   };
 }
 
+// Not what's committed: the actual generator draws a flat colour with no <text>, so the fixture
+// images are byte-identical on every OS (font rendering differs by platform); see commit 18479a11.
 async function photo(qid, role, label) {
   const dir = resolve(OUT.assets, qid);
   mkdirSync(dir, { recursive: true });

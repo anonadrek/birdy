@@ -206,13 +206,30 @@ function comparison(c) {
   };
 }
 
-// Colour alone distinguishes hero from extra (no <text>): text rendering depends on which fonts are
-// installed, so an SVG with a <text> element rasterizes to different pixels (and thus different WebP
-// bytes) on Windows vs macOS vs CI. A flat-colour rectangle is byte-identical everywhere.
+// Colour alone distinguishes species and roles (no <text>): text rendering depends on which fonts
+// are installed, so an SVG with a <text> element rasterizes to different pixels (and thus different
+// WebP bytes) on Windows vs macOS vs CI. A flat-colour rectangle is byte-identical everywhere. The
+// hue is a deterministic hash of the QID, so screenshots taken during testing can tell species
+// apart; extra.webp is a lighter shade of the same hue as hero.webp.
+function hashHue(qid) {
+  let h = 0;
+  for (let i = 0; i < qid.length; i++) h = (h * 31 + qid.charCodeAt(i)) >>> 0;
+  return h % 360;
+}
+function hslToHex(h, s, l) {
+  const sat = s / 100;
+  const light = l / 100;
+  const k = (n) => (n + h / 30) % 12;
+  const a = sat * Math.min(light, 1 - light);
+  const f = (n) => light - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+  const toHex = (x) => Math.round(255 * x).toString(16).padStart(2, '0');
+  return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`;
+}
 async function photo(qid, role) {
   const dir = resolve(OUT.assets, qid);
   mkdirSync(dir, { recursive: true });
-  const bg = role === 'hero' ? '#F2B27A' : '#FDE5CB';
+  const hue = hashHue(qid);
+  const bg = role === 'hero' ? hslToHex(hue, 55, 50) : hslToHex(hue, 55, 72);
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="1200" height="800" fill="${bg}"/></svg>`;
   await sharp(Buffer.from(svg)).webp({ quality: 60 }).toFile(resolve(dir, `${role}.webp`));
 }

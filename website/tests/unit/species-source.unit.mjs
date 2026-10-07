@@ -15,7 +15,10 @@ const ok = {
 function withEnv(vars, fn) {
   const prev = {};
   for (const k of Object.keys(vars)) prev[k] = process.env[k];
-  Object.assign(process.env, vars);
+  for (const [k, v] of Object.entries(vars)) {
+    if (v === undefined) delete process.env[k];
+    else process.env[k] = v;
+  }
   try {
     return fn();
   } finally {
