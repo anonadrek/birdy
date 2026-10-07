@@ -1,8 +1,8 @@
 // Captions for Instagram, Facebook and YouTube, built by code only from the species record:
 // no model calls, no new claims. House style: plain, short English and no dashes.
-import { heroImage, usesShareAlike, VIDEO_SA_LICENCE, VIDEO_SA_LICENCE_URL } from './licence.mjs';
+import { heroImage, licenceUrl, usesShareAlike, VIDEO_SA_LICENCE, VIDEO_SA_LICENCE_URL } from './licence.mjs';
 
-/** Added after the credits when the video contains CC BY-SA material (only possible with --share-alike). */
+/** Added after the credits when the video contains CC BY-SA material. */
 export const SHARE_ALIKE_LINE = `Video licensed ${VIDEO_SA_LICENCE} (${VIDEO_SA_LICENCE_URL})`;
 
 export const SITE = 'https://birdy.community/';
@@ -10,9 +10,9 @@ export const CTA = 'Identify birds by sound with the free Birdy app';
 export const BASE_TAGS = ['#birds', '#birdwatching', '#birdsong', '#birding', '#birdy'];
 export const YOUTUBE_TITLE_MAX = 100;
 
-const DASHES = /[\u2013\u2014]/;
+const DASHES = /[–—]/;
 
-/** "song" for the songbird group, "voice" for every other group (a cormorant does not sing). */
+/** "song" for the songbird group (the passerines), "voice" for every other group (a cormorant does not sing). */
 export function voiceWord(record) {
   return record.group === 'songbirds' ? 'song' : 'voice';
 }
@@ -30,7 +30,7 @@ export function hasApprovedText(record) {
 
 export function firstSentence(text) {
   const t = String(text).trim().replace(/\s+/g, ' ');
-  const m = t.match(/^(.+?[.!?])(?=\s+[A-Z\u00C0-\u00DE]|$)/);
+  const m = t.match(/^(.+?[.!?])(?=\s+[A-ZÀ-Þ]|$)/);
   return m ? m[1] : t;
 }
 
@@ -44,26 +44,33 @@ export function hook(record) {
 }
 
 function cleanName(name) {
-  return String(name ?? '').trim().replace(/[\u2013\u2014]/g, '-');
+  return String(name ?? '').trim().replace(/[–—]/g, '-');
 }
 
-function creditPart(label, media, edit) {
+function creditPart(label, media, edit, withUrls) {
   const author = cleanName(media.author);
-  const parts = [author, media.license.trim(), 'via Wikimedia Commons'].filter(Boolean);
-  if (edit) parts.push(edit);
-  return `${label}: ${parts.join(', ')}`;
+  const url = withUrls ? licenceUrl(media) : null;
+  const licence = url ? `${media.license.trim()} (${url})` : media.license.trim();
+  return `${label}: ${[author, licence, 'via Wikimedia Commons', edit].filter(Boolean).join(', ')}`;
 }
 
-/** "Photo: A, CC BY 4.0, via Wikimedia Commons, cropped · Sound: B, CC0, via Wikimedia Commons[, trimmed]" */
-export function creditLine(record, { trimmed = false } = {}) {
-  return [creditPart('Photo', heroImage(record), 'cropped'), creditPart('Sound', record.audio, trimmed ? 'trimmed' : '')].join(' · ');
+/**
+ * "Photo: A, CC BY 4.0, via Wikimedia Commons, cropped · Sound: B, CC0, via Wikimedia Commons, edited".
+ * The sound is always edited (levelled and faded); "trimmed and edited" when the clip in the
+ * video is shorter than the original recording. `withUrls` adds each licence's deed after its name.
+ */
+export function creditLine(record, { trimmed = false, withUrls = false } = {}) {
+  return [
+    creditPart('Photo', heroImage(record), 'cropped', withUrls),
+    creditPart('Sound', record.audio, trimmed ? 'trimmed and edited' : 'edited', withUrls),
+  ].join(' · ');
 }
 
 export function nameTag(record) {
   const words = record.names.en
     .normalize('NFKD')
-    .replace(/[\u0300-\u036F]/g, '')
-    .replace(/['\u2019]/g, '')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/['’]/g, '')
     .split(/[^A-Za-z0-9]+/)
     .filter(Boolean);
   return `#${words.map((w) => w[0].toUpperCase() + w.slice(1)).join('')}`;
@@ -78,7 +85,7 @@ export function youtubeTitle(record) {
   if (full.length <= YOUTUBE_TITLE_MAX) return full;
   const short = `What does the ${record.names.en} sound like?`;
   if (short.length <= YOUTUBE_TITLE_MAX) return short;
-  return `${record.names.en.slice(0, YOUTUBE_TITLE_MAX - 1).trimEnd()}\u2026`;
+  return `${record.names.en.slice(0, YOUTUBE_TITLE_MAX - 1).trimEnd()}…`;
 }
 
 export function assertNoDashes(label, text) {
@@ -87,23 +94,26 @@ export function assertNoDashes(label, text) {
 
 /**
  * Builds all captions for one species. `trimmed` is true when the clip in the video is shorter
- * than the original recording (the pipeline trimmed it, or the renderer cut it at 30 s).
+ * than the original recording (the pipeline trimmed it, or the renderer cut it).
+ * Facebook and YouTube links are clickable, so their credits carry the licence URLs; Instagram
+ * keeps the short credit (its only URL is the CC BY-SA line when the video needs one).
  */
 export function buildCaptions(record, { trimmed = false } = {}) {
   const link = linkFor(record);
   const credit = creditLine(record, { trimmed });
+  const creditWithUrls = creditLine(record, { trimmed, withUrls: true });
+  const sa = usesShareAlike(record);
   const tags = hashtags(record).join(' ');
   const first = hook(record);
   const ctaWithLink = record.publish === true ? `${CTA}. More about the ${record.names.en}: ${link}` : `${CTA}: ${link}`;
 
-  // The licence line follows the credits on every platform; on Instagram it is the only URL.
-  const credits = usesShareAlike(record) ? `${credit}\n${SHARE_ALIKE_LINE}` : credit;
+  const credits = (c) => (sa ? `${c}\n${SHARE_ALIKE_LINE}` : c);
 
-  const facebook = [first, ctaWithLink, credits, tags].join('\n\n');
-  const instagram = [first, `${CTA}. Link in bio.`, credits, tags].join('\n\n');
-  const youtube = { title: youtubeTitle(record), description: [first, ctaWithLink, credits, tags].join('\n\n') };
+  const facebook = [first, ctaWithLink, credits(creditWithUrls), tags].join('\n\n');
+  const instagram = [first, `${CTA}. Link in bio.`, credits(credit), tags].join('\n\n');
+  const youtube = { title: youtubeTitle(record), description: [first, ctaWithLink, credits(creditWithUrls), tags].join('\n\n') };
 
-  const out = { instagram, facebook, youtube, link, credit, videoLicence: usesShareAlike(record) ? VIDEO_SA_LICENCE : null, hashtags: hashtags(record) };
+  const out = { instagram, facebook, youtube, link, credit, creditWithUrls, videoLicence: sa ? VIDEO_SA_LICENCE : null, hashtags: hashtags(record) };
   assertNoDashes('instagram', instagram);
   assertNoDashes('facebook', facebook);
   assertNoDashes('youtube.title', youtube.title);

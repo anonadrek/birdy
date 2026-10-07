@@ -32,8 +32,8 @@ async function exists(p) {
 }
 
 /** Licence rule plus a check that the photo and recording files are on disk. */
-export async function qualifiesWithFiles(record, dataDir, opts = {}) {
-  const result = qualifies(record, opts);
+export async function qualifiesWithFiles(record, dataDir) {
+  const result = qualifies(record);
   if (!result.ok) return result;
   const reasons = [];
   const hero = heroImage(record);

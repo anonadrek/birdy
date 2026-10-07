@@ -4,38 +4,38 @@
 <meta charset="utf-8">
 <title>See the song stage</title>
 <!--
-  "See the song" video stage, 1080 x 1920. Everything on it is a pure function of the time t:
-  the renderer calls setupStage(config) once and then renderAt(t) for every frame.
+  "See the song" video stage, 1080 x 1920, style "Song halo" (Albin's choice, 2026-10-07).
+  Everything on it is a pure function of the time t: the renderer calls setupStage(config) once
+  and then renderAt(t) for every frame.
+
+  While the bird sings, a ring of bars answers the sound band by band (low notes at the bottom,
+  high at the top) around a dark circle in which the bird is only a blur. When the song ends the
+  ring settles into a still circle, one breath of stillness, then the photo sharpens, the circle
+  opens to the whole photo and the name is written by hand. End card "Identify birds by sound".
+  Nothing is drawn over the revealed photo except the brand line, which has a neutral shadow.
+
   The torn paper horizon sits at y = 1306 in every video: 74 % down the centred 3:4 crop
   (1080 x 1440, y 240 to 1680) that the Instagram grid shows, so the profile reads as one artwork.
+  Text stays left of x 918 (the Reels and Shorts buttons); the brand line ends above y 1536
+  (Instagram's own name, caption and sound rows), see lib/render.mjs.
 -->
 <style>
 :root {
-  --paper: #F6EFE2; --card: #FFFAF1; --ink: #302019; --muted: #6E584B; --rust: #9A4526;
-  --apricot: #F2B27A; --peach: #FDE5CB; --dark: #2A1D17; --dark-deep: #1E1410;
-  --brass: #B8893A; --brass-hi: #E2C07E; --cream: #FFF8EE;
+  --paper: #F6EFE2; --ink: #302019; --muted: #6E584B; --rust: #9A4526;
+  --apricot: #F2B27A; --dark: #2A1D17; --cream: #FFF8EE;
   --horizon: 1306px; --end-top: 842px;
 }
 html, body { margin: 0; padding: 0; background: #160E0A; }
 #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #170F0B; color: var(--cream); font-family: 'Inter', sans-serif; }
-.L { position: absolute; inset: 0; }
-#bg { background: radial-gradient(120% 75% at 50% 40%, #3B2920 0%, #24180F 52%, #160E0A 100%); }
+#bg { position: absolute; inset: 0; background: radial-gradient(120% 75% at 50% 40%, #3B2920 0%, #24180F 52%, #160E0A 100%); }
 #photoWrap { position: absolute; left: 0; top: 0; width: 1080px; height: var(--horizon); overflow: hidden; opacity: 0; }
 #photo { position: absolute; display: block; max-width: none; }
+#ring { position: absolute; left: 0; top: 0; filter: drop-shadow(0 0 10px rgba(242, 178, 122, .45)); }
+#qmark { position: absolute; margin: 0; transform: translate(-50%, -54%); font: italic 400 300px/1 'DM Serif Display'; color: var(--apricot); opacity: 0; }
 #kicker { position: absolute; left: 88px; top: 250px; margin: 0; font: 700 76px/1 'Caveat'; color: var(--apricot); }
-
-#axes { color: rgba(226, 192, 126, .82); font: 500 26px/1 'Inter'; }
-#axes .frame { position: absolute; border-left: 2px solid rgba(184, 137, 58, .5); border-bottom: 2px solid rgba(184, 137, 58, .5); box-sizing: border-box; }
-#axes .gl { position: absolute; height: 0; border-top: 2px dashed rgba(184, 137, 58, .24); }
-#axes .fl { position: absolute; transform: translate(-100%, -50%); }
-#axes .unit { position: absolute; }
-#axes .tl { position: absolute; transform: translateX(-50%); white-space: nowrap; }
-#axes .tl.first { transform: none; }
-#axes .tl.last { transform: translateX(-100%); }
-
-#specWrap { position: absolute; filter: drop-shadow(0 0 12px rgba(242, 178, 122, .55)); }
-#spec { display: block; }
-#ph { position: absolute; width: 6px; margin-left: -3px; border-radius: 6px; background: var(--apricot); box-shadow: 0 0 26px 5px rgba(242, 178, 122, .6); opacity: 0; }
+#brand { position: absolute; left: 88px; top: 1192px; margin: 0; display: flex; align-items: center; gap: 14px; font: 600 30px/1 'Inter'; color: rgba(255, 248, 238, .86);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .55), 0 0 14px rgba(0, 0, 0, .45); }
+#brand img { width: 44px; height: auto; display: block; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .5)); }
 
 #band { position: absolute; left: 0; right: 0; top: var(--horizon); bottom: 0; color: var(--dark);
   background-color: var(--paper); background-image: radial-gradient(rgba(48, 32, 25, .075) 2.4px, transparent 3.2px); background-size: 36.72px 36.72px; }
@@ -49,8 +49,6 @@ html, body { margin: 0; padding: 0; background: #160E0A; }
 #sub { position: absolute; left: 90px; top: 196px; margin: 0; display: flex; align-items: baseline; gap: 22px; white-space: nowrap; opacity: 0; }
 #sub .sv { font: 700 58px/1 'Caveat'; color: var(--rust); }
 #sub .lat { font: italic 400 46px/1 'DM Serif Display'; color: var(--muted); }
-#brand { position: absolute; left: 88px; bottom: 112px; margin: 0; display: flex; align-items: center; gap: 14px; font: 600 30px/1 'Inter'; color: var(--muted); }
-#brand img { width: 44px; height: auto; display: block; }
 
 #end { position: absolute; left: 0; right: 0; top: var(--end-top); bottom: 0; z-index: 20; padding: 64px 88px 0; box-sizing: border-box;
   display: flex; flex-direction: column; align-items: flex-start; gap: 20px; color: var(--dark);
@@ -67,44 +65,49 @@ html, body { margin: 0; padding: 0; background: #160E0A; }
 </head>
 <body>
 <div id="stage">
-  <div class="L" id="bg"></div>
+  <div id="bg"></div>
   <div id="photoWrap"><img id="photo" alt=""></div>
+  <canvas id="ring" width="1080" height="1306"></canvas>
+  <p id="qmark">?</p>
   <p id="kicker">Sound on</p>
-  <div class="L" id="axes"></div>
-  <div id="specWrap"><canvas id="spec"></canvas></div>
-  <i id="ph"></i>
+  <p id="brand"><img id="brandMark" alt="">birdy.community</p>
   <div id="band">
     <svg class="tear" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0 11 L11 7 L23 13 L36 8 L49 14 L62 9 L77 12 L90 6 L104 13 L118 8 L133 15 L147 7 L162 12 L176 6 L190 14 L205 8 L219 13 L234 6 L248 12 L262 7 L277 13 L290 8 L300 11 V20 H0 Z"/></svg>
     <p id="q">Whose <em id="qWord"></em> is this?</p>
     <p id="hint">listen first, the name comes next</p>
     <svg id="name" viewBox="0 0 900 190" aria-hidden="true"><text id="nameText" x="8" y="150"></text></svg>
     <p id="sub"><span class="sv" id="subSv"></span><span class="lat" id="subLat"></span></p>
-    <p id="brand"><img id="brandMark" alt="">birdy.community</p>
   </div>
   <div id="end">
     <svg class="tear" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0 11 L11 7 L23 13 L36 8 L49 14 L62 9 L77 12 L90 6 L104 13 L118 8 L133 15 L147 7 L162 12 L176 6 L190 14 L205 8 L219 13 L234 6 L248 12 L262 7 L277 13 L290 8 L300 11 V20 H0 Z"/></svg>
     <img class="mk" id="mark" alt="">
     <p class="h">Identify birds by <em>sound</em></p>
     <p class="s">Hold up your phone and let it listen.<br>Birdy names the bird.</p>
-    <p class="f">Free on Google Play &middot; birdy.community</p>
+    <p class="f" id="endLink">Free on Google Play &middot; birdy.community</p>
     <p class="cr" id="credits"></p>
   </div>
 </div>
 <script>
 'use strict';
 const W = 1080, H = 1920, HORIZON = 1306, END_TOP = 842;
-const PANEL = { x: 88, y: 430, w: 904, h: 640 };
 const TEXT_MAX = 830; // keep text clear of the Reels and Shorts buttons on the right
+// The ring sits left of centre, so its bars stay clear of the buttons too.
+const RING = { cx: 482, cy: 790, r: 210, gap: 20, lmax: 140, rest: 12, spin: 6 };
+const OPEN_R = 1400; // a circle this large shows the whole photo
 let CFG = null;
 let EL = null;
+let LEVEL = null;
 
 function clamp(x, a = 0, b = 1) { return x < a ? a : x > b ? b : x; }
 function lin(t, a, b) { return clamp((t - a) / (b - a)); }
 function eo(x) { return 1 - Math.pow(1 - x, 3); }
 function eio(x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
 function op(el, v) { el.style.opacity = String(Math.round(clamp(v) * 1000) / 1000); }
+function mixRgb(a, b, k) { return a.map((v, i) => Math.round(v + (b[i] - v) * clamp(k))); }
+const CREAM = [255, 248, 238], APRICOT = [242, 178, 122];
 
 function b64bytes(b64) { const s = atob(b64); const u = new Uint8Array(s.length); for (let i = 0; i < s.length; i++) u[i] = s.charCodeAt(i); return u; }
+function b64floats(b64) { const u = b64bytes(b64); return new Float32Array(u.buffer, u.byteOffset, u.byteLength / 4); }
 
 async function loadFonts(fonts) {
   for (const f of fonts) {
@@ -127,70 +130,25 @@ function fitSize(fontFor, text, max, min, maxWidth) {
   return Math.max(min, Math.min(max, Math.floor(max * maxWidth / w)));
 }
 
-function mix(a, b, k) { return a.map((v, i) => Math.round(v + (b[i] - v) * k)); }
-function gradientAt(y) { // cream at the top (high notes), apricot at the bottom
-  const cream = [255, 248, 238], peach = [248, 217, 178], apricot = [242, 178, 122];
-  return y < .45 ? mix(cream, peach, y / .45) : mix(peach, apricot, (y - .45) / .55);
-}
-
-function drawSpectrogram(spec) {
-  const alpha = b64bytes(spec.alphaB64);
-  const src = document.createElement('canvas');
-  src.width = spec.cols; src.height = spec.rows;
-  const sctx = src.getContext('2d');
-  const img = sctx.createImageData(spec.cols, spec.rows);
-  for (let r = 0; r < spec.rows; r++) {
-    const [cr, cg, cb] = gradientAt(spec.rows === 1 ? 0 : r / (spec.rows - 1));
-    for (let c = 0; c < spec.cols; c++) {
-      const i = (r * spec.cols + c) * 4;
-      img.data[i] = cr; img.data[i + 1] = cg; img.data[i + 2] = cb; img.data[i + 3] = alpha[r * spec.cols + c];
-    }
-  }
-  sctx.putImageData(img, 0, 0);
-  const out = EL.spec;
-  out.width = PANEL.w; out.height = PANEL.h;
-  const ctx = out.getContext('2d');
-  ctx.imageSmoothingEnabled = true;
-  ctx.imageSmoothingQuality = 'high';
-  ctx.drawImage(src, 0, 0, PANEL.w, PANEL.h);
-}
-
-function buildAxes(spec) {
-  const ax = EL.axes;
-  const add = (cls, css, text) => { const e = document.createElement(text === undefined ? 'i' : 'span'); e.className = cls; Object.assign(e.style, css); if (text !== undefined) e.textContent = text; ax.appendChild(e); return e; };
-  add('frame', { left: PANEL.x + 'px', top: PANEL.y + 'px', width: PANEL.w + 'px', height: PANEL.h + 'px' });
-  const yOf = (f) => PANEL.y + PANEL.h * (1 - (f - spec.fmin) / (spec.fmax - spec.fmin));
-  for (const tk of spec.freqTicks) {
-    const y = yOf(tk.f);
-    add('gl', { left: PANEL.x + 'px', top: y + 'px', width: PANEL.w + 'px' });
-    add('fl', { left: (PANEL.x - 16) + 'px', top: y + 'px' }, tk.label);
-  }
-  add('unit', { left: '30px', top: (PANEL.y - 44) + 'px' }, 'kHz');
-  spec.timeTicks.forEach((tk, i) => {
-    const x = PANEL.x + PANEL.w * (tk.t / spec.duration);
-    const cls = 'tl' + (i === 0 ? ' first' : Math.abs(tk.t - spec.duration) < 1e-6 ? ' last' : '');
-    add(cls, { left: x + 'px', top: (PANEL.y + PANEL.h + 18) + 'px' }, tk.label);
-  });
-}
-
 function placePhoto(photo) {
-  // Cover crop into the area above the horizon, never stretched, centred on the bird.
+  // Cover crop into the area above the horizon, never stretched, the bird as close to the
+  // ring's centre as the crop allows (it is seen there first, blurred).
   const cw = W, ch = HORIZON;
   const s = Math.max(cw / photo.width, ch / photo.height);
   const dw = photo.width * s, dh = photo.height * s;
-  const left = clamp(cw / 2 - photo.focus.x * dw, cw - dw, 0);
-  const top = clamp(ch / 2 - photo.focus.y * dh, ch - dh, 0);
+  const left = clamp(RING.cx - photo.focus.x * dw, cw - dw, 0);
+  const top = clamp(RING.cy - photo.focus.y * dh, ch - dh, 0);
   Object.assign(EL.photo.style, { width: dw + 'px', height: dh + 'px', left: left + 'px', top: top + 'px' });
   // When the end card rises, the photo slides up so the bird stays in view above it.
   const focusY = top + photo.focus.y * dh;
   CFG.photoShift = clamp(focusY - END_TOP * .5, 0, Math.max(0, ch - END_TOP));
-  return { scale: s, left, top, width: dw, height: dh };
+  return { scale: s, left, top, width: dw, height: dh, birdAt: { x: left + photo.focus.x * dw, y: focusY } };
 }
 
 async function setupStage(cfg) {
   CFG = cfg;
   EL = {};
-  for (const id of ['photoWrap', 'photo', 'kicker', 'axes', 'specWrap', 'spec', 'ph', 'q', 'qWord', 'hint', 'name', 'nameText', 'sub', 'subSv', 'subLat', 'end', 'mark', 'brandMark', 'credits']) EL[id] = document.getElementById(id);
+  for (const id of ['photoWrap', 'photo', 'ring', 'qmark', 'kicker', 'brand', 'brandMark', 'q', 'qWord', 'hint', 'name', 'nameText', 'sub', 'subSv', 'subLat', 'end', 'mark', 'endLink', 'credits']) EL[id] = document.getElementById(id);
   await loadFonts(cfg.fonts);
 
   EL.photo.src = cfg.photo.src;
@@ -203,17 +161,17 @@ async function setupStage(cfg) {
   cfg.photo.height = EL.photo.naturalHeight;
   const photoBox = placePhoto(cfg.photo);
 
-  Object.assign(EL.specWrap.style, { left: PANEL.x + 'px', top: PANEL.y + 'px', width: PANEL.w + 'px', height: PANEL.h + 'px' });
-  drawSpectrogram(cfg.spec);
-  buildAxes(cfg.spec);
-  Object.assign(EL.ph.style, { top: (PANEL.y - 12) + 'px', height: (PANEL.h + 24) + 'px' });
+  LEVEL = b64floats(cfg.halo.levelB64);
+  Object.assign(EL.qmark.style, { left: RING.cx + 'px', top: RING.cy + 'px' });
 
   // Band text: the question while the bird is heard, then the name, sized to fit.
   EL.qWord.textContent = cfg.word;
   const qSize = fitSize((s) => `400 ${s}px 'DM Serif Display'`, `Whose ${cfg.word} is this?`, 92, 60, TEXT_MAX);
   EL.q.style.fontSize = qSize + 'px';
 
-  const nameSize = fitSize((s) => `700 ${s}px 'Caveat'`, cfg.names.en, 132, 72, TEXT_MAX);
+  // The handwriting starts 2 px right of the question and its strokes overhang the measured
+  // advance a little, so the name gets a margin to stay clear of the buttons.
+  const nameSize = fitSize((s) => `700 ${s}px 'Caveat'`, cfg.names.en, 132, 72, TEXT_MAX - 30);
   EL.nameText.textContent = cfg.names.en;
   EL.nameText.setAttribute('font-size', String(nameSize));
   CFG.handLength = Math.round(cfg.names.en.length * 1.05 * nameSize);
@@ -222,11 +180,26 @@ async function setupStage(cfg) {
   EL.credits.textContent = '';
   cfg.creditLines.forEach((line, i) => { if (i) EL.credits.appendChild(document.createElement('br')); EL.credits.appendChild(document.createTextNode(line)); });
 
+  // Measure with the end card in place, then put everything back at t = 0.
+  EL.end.style.transform = 'none';
+  await new Promise((r) => requestAnimationFrame(() => r()));
+  const box = (el) => el.getBoundingClientRect();
+  const nameBox = EL.nameText.getBBox();
+  const layout = {
+    qSize, nameSize, photoBox, photoShift: CFG.photoShift,
+    brandBottom: Math.round(box(EL.brand).bottom),
+    endLinkBottom: Math.round(box(EL.endLink).bottom),
+    endContentBottom: Math.round(Math.max(...[...EL.end.children].map((c) => box(c).bottom))),
+    textRight: {
+      question: Math.round(box(EL.q).right),
+      hint: Math.round(box(EL.hint).right),
+      name: Math.round(box(EL.name).left + nameBox.x + nameBox.width),
+      sub: Math.round(box(EL.sub).right),
+    },
+  };
   renderAt(0);
   await new Promise((r) => requestAnimationFrame(() => r()));
-  const subWidth = EL.sub.getBoundingClientRect().width;
-  const endContentBottom = Math.max(...[...EL.end.children].map((c) => c.getBoundingClientRect().bottom)) - EL.end.getBoundingClientRect().top + END_TOP;
-  return { qSize, nameSize, subWidth, photoBox, photoShift: CFG.photoShift, endContentBottom };
+  return layout;
 }
 
 function hand(textEl, p) {
@@ -235,40 +208,91 @@ function hand(textEl, p) {
   textEl.style.strokeDashoffset = (L * (1 - clamp(p / .8))).toFixed(1);
   textEl.style.fillOpacity = String(Math.round(clamp((p - .4) / .6) * 1000) / 1000);
 }
-function wipe(el, p) {
+function wipe(e, p) {
   p = clamp(p);
-  el.style.clipPath = p >= 1 ? 'none' : `inset(-40% ${(100 - p * 100).toFixed(3)}% -40% -8%)`;
+  e.style.clipPath = p >= 1 ? 'none' : `inset(-40% ${(100 - p * 100).toFixed(3)}% -40% -8%)`;
 }
 
-function renderAt(t) {
-  const { A0, D } = CFG;
-  const E = A0 + D;
-  const p = lin(t, A0, E);
-  // The drawn part of the spectrogram ends exactly at the playhead: x = PANEL.x + PANEL.w * (t - A0) / D.
-  EL.spec.style.clipPath = p >= 1 ? 'none' : `inset(0 ${(100 - p * 100).toFixed(4)}% 0 0)`;
-  EL.ph.style.left = (PANEL.x + p * PANEL.w).toFixed(3) + 'px';
-  op(EL.ph, t > A0 && t < E ? Math.min(1, (t - A0) / .2, (E - t) / .3) : 0);
+/** Degrees the ring has turned: a slow turn while the bird sings that eases to a stop as it settles. */
+function ringTurn(t) {
+  const { E, settled } = CFG.times;
+  const s = settled - E;
+  const u = lin(t, E, settled);
+  return RING.spin * Math.min(t, E) + RING.spin * s / 2 * (1 - (1 - u) * (1 - u));
+}
 
-  op(EL.photoWrap, Math.max(.42 * eio(lin(t, A0 + .70 * D, A0 + .88 * D)), eio(lin(t, E + .3, E + 1.4))));
-  op(EL.specWrap, 1 - lin(t, E + .3, E + 1.0));
-  op(EL.axes, 1 - lin(t, E + .2, E + .8));
-  op(EL.kicker, 1 - lin(t, E + .2, E + .8));
-  op(EL.q, 1 - lin(t, E + .2, E + .7));
-  op(EL.hint, 1 - lin(t, E + .2, E + .7));
+function drawRing(t) {
+  const { A0, E, settled } = CFG.times;
+  const h = CFG.halo;
+  const ctx = EL.ring.getContext('2d');
+  ctx.clearRect(0, 0, W, HORIZON);
+  const k = Math.round((t - A0) * h.fps);
+  const settle = eo(lin(t, E, settled));
+  const base = RING.r + RING.gap;
+  const rot = ringTurn(t) * Math.PI / 180;
+  ctx.lineCap = 'round';
+  // The still circle: faint while the bird sings, firm once it stops.
+  ctx.beginPath();
+  ctx.arc(RING.cx, RING.cy, base - 9, 0, Math.PI * 2);
+  ctx.strokeStyle = `rgba(226,192,126,${(.3 + .55 * settle).toFixed(3)})`;
+  ctx.lineWidth = 2 + 2 * settle;
+  ctx.stroke();
+  const nb = h.bands;
+  for (let side = 0; side < 2; side++) {
+    for (let b = 0; b < nb; b++) {
+      const v = k >= 0 && k < h.frames ? LEVEL[k * nb + b] : 0;
+      let L = 6 + RING.lmax * v;
+      L += (RING.rest - L) * settle;
+      // Low bands at the bottom, high at the top; the left side mirrors the right.
+      const a0 = Math.PI / 2 - (b + .5) * (Math.PI / nb);
+      const a = (side ? Math.PI - a0 : a0) + rot;
+      const [r, g, bl] = mixRgb(APRICOT, CREAM, b / (nb - 1));
+      ctx.strokeStyle = `rgba(${r},${g},${bl},${(.55 + .45 * v * (1 - settle)).toFixed(3)})`;
+      ctx.lineWidth = 6;
+      ctx.beginPath();
+      ctx.moveTo(RING.cx + Math.cos(a) * base, RING.cy + Math.sin(a) * base);
+      ctx.lineTo(RING.cx + Math.cos(a) * (base + L), RING.cy + Math.sin(a) * (base + L));
+      ctx.stroke();
+    }
+  }
+}
 
-  const pn = lin(t, E + 1.0, E + 2.4);
+/**
+ * The stage at time t. With { cover: true } it is the cover (the renderer passes the song's
+ * fullest moment): the ring and the question as at t, the photo hidden and a question mark in
+ * the empty circle, so the thumbnail never gives the bird away.
+ */
+function renderAt(t, { cover = false } = {}) {
+  const { R } = CFG.times;
+  drawRing(t);
+  // The ring is gone before the circle opens, so it is never drawn over the photo.
+  op(EL.ring, cover ? 1 : Math.min(lin(t, 0, .4), 1 - lin(t, R + .1, R + .6)));
+  op(EL.qmark, cover ? 1 : 0);
+
+  // The bird: a dark blur inside the circle until the reveal, then sharp, then the circle opens.
+  const sharp = eio(lin(t, R, R + .8));
+  const open = eio(lin(t, R + .6, R + 1.5));
+  const pe = eo(lin(t, R + 3.0, R + 3.8)); // the end card rises
+  op(EL.photoWrap, cover ? 0 : lin(t, 0, .4));
+  EL.photo.style.filter = sharp >= 1 ? 'none' : `blur(${(24 * (1 - sharp)).toFixed(2)}px) brightness(${(.62 + .38 * sharp).toFixed(3)})`;
+  EL.photoWrap.style.clipPath = open >= 1 ? 'none' : `circle(${(RING.r + (OPEN_R - RING.r) * open).toFixed(1)}px at ${RING.cx}px ${RING.cy}px)`;
+  EL.photo.style.transform = `translateY(${(-CFG.photoShift * pe).toFixed(2)}px)`;
+
+  const ask = cover ? 1 : 1 - lin(t, R, R + .5);
+  op(EL.kicker, ask);
+  op(EL.q, ask);
+  op(EL.hint, ask);
+
+  const pn = cover ? 0 : lin(t, R + .6, R + 2.0);
   wipe(EL.name, pn);
   hand(EL.nameText, pn);
-  op(EL.sub, lin(t, E + 2.0, E + 2.5));
-
-  const pe = eo(lin(t, E + 3.4, E + 4.2));
-  EL.end.style.transform = `translateY(${((1 - pe) * 106).toFixed(3)}%)`;
-  EL.photo.style.transform = `translateY(${(-CFG.photoShift * pe).toFixed(2)}px)`;
+  op(EL.sub, cover ? 0 : lin(t, R + 1.6, R + 2.1));
+  EL.end.style.transform = `translateY(${((1 - (cover ? 0 : pe)) * 106).toFixed(3)}%)`;
 }
 
 window.setupStage = setupStage;
 window.renderAt = renderAt;
-window.stageLayout = { W, H, HORIZON, END_TOP, PANEL, TEXT_MAX };
+window.stageLayout = { W, H, HORIZON, END_TOP, TEXT_MAX, RING };
 </script>
 </body>
 </html>

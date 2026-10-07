@@ -1,9 +1,9 @@
-// Audio for the video: the recording (first 30 s at most), short fades, about -16 LUFS,
-// delayed by the lead-in and padded with silence to the exact video length.
+// Audio for the video: the recording (cut so that the whole video stays within 30 s, see
+// lib/render.mjs), short fades, about -16 LUFS, delayed by the lead-in and padded with
+// silence to the exact video length.
 import { join } from 'node:path';
 import { run, probeDuration } from './proc.mjs';
 
-export const MAX_CLIP_SEC = 30;
 export const TARGET_LUFS = -16;
 export const LIMIT_DBFS = -2;
 export const MAX_EXTRA_GAIN_DB = 2;
@@ -30,15 +30,21 @@ export async function measureLoudness(file) {
   return parseEbur128(stderr);
 }
 
+/** True when a recording of `sourceSec` is longer than the clip may be (it will be cut). */
+export function isCut(sourceSec, maxSec) {
+  return sourceSec > maxSec + 0.05;
+}
+
 /**
- * Writes <workDir>/clip.wav (48 kHz mono, faded, normalised; the spectrogram is drawn from it)
- * and returns its length and whether it was cut at 30 s. Plain gain to -16 LUFS plus a peak
+ * Writes <workDir>/clip.wav (48 kHz mono, faded, normalised; the ring is drawn from it) and
+ * returns its length and whether it was cut at `maxSec`. Plain gain to -16 LUFS plus a peak
  * limiter at -2 dBFS, so the bird's own dynamics stay as recorded (no compressor).
  */
-export async function prepareClip(src, workDir) {
+export async function prepareClip(src, workDir, { maxSec }) {
+  if (!(maxSec > 0)) throw new Error(`prepareClip needs maxSec, got ${maxSec}`);
   const full = await probeDuration(src);
-  const dur = Math.min(full, MAX_CLIP_SEC);
-  const cut = full > MAX_CLIP_SEC + 0.05;
+  const dur = Math.min(full, maxSec);
+  const cut = isCut(full, maxSec);
   const clip = join(workDir, 'clip.wav');
   const t = ['-t', dur.toFixed(3)];
   const { stderr } = await run('ffmpeg', ['-hide_banner', '-nostats', ...t, '-i', src, '-af', `${fades(dur)},ebur128`, '-f', 'null', '-']);

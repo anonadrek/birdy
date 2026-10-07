@@ -4,24 +4,55 @@
 import { chromium } from 'playwright';
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
-import { writeFile } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const here = dirname(fileURLToPath(import.meta.url));
 export const STAGE = join(here, '..', 'stage', 'see-the-song.html');
 export const FPS = 30;
-export const LEAD_SEC = 0.5; // the question is on screen this long before the bird starts
-export const TAIL_SEC = 6.6; // reveal (photo, handwritten name) and the end card after the song
 
-/** All times in seconds. The video is exactly `frames` frames long. */
+// The whole video, not just the sound, stays within 30 s.
+export const MAX_VIDEO_SEC = 30;
+export const LEAD_SEC = 0.5; // the question and the waiting ring before the bird starts
+export const SETTLE_SEC = 0.7; // when the song ends the ring settles into a still circle
+export const PAUSE_SEC = 1.0; // one breath of stillness before the reveal
+export const AFTER_REVEAL_SEC = 6.0; // the photo sharpens, the circle opens, the name is written, end card
+export const TAIL_SEC = SETTLE_SEC + PAUSE_SEC + AFTER_REVEAL_SEC;
+/** The longest clip that keeps the video within MAX_VIDEO_SEC (0.1 s spare for rounding). */
+export const MAX_CLIP_SEC = Math.floor((MAX_VIDEO_SEC - LEAD_SEC - TAIL_SEC - 0.1) * 10) / 10;
+
+// Instagram Reels and YouTube Shorts lay their own buttons along the right edge and their
+// own name, caption and sound rows over roughly the bottom fifth. The brand line and the end
+// card's "birdy.community" line must end above SAFE_BOTTOM; text stays left of SAFE_RIGHT.
+export const SAFE_BOTTOM = 1536;
+export const SAFE_RIGHT = 918;
+
+/**
+ * All times in seconds; the video is exactly `frames` frames long.
+ *   A0       the song starts
+ *   E        the song ends
+ *   settled  the ring is still
+ *   R        the reveal starts: the photo sharpens, the circle opens, the name is written
+ */
 export function timeline(clipSec) {
   const A0 = LEAD_SEC;
   const D = clipSec;
   const E = A0 + D;
+  const settled = E + SETTLE_SEC;
+  const R = settled + PAUSE_SEC;
   const frames = Math.round((E + TAIL_SEC) * FPS);
-  // Cover: the song fully drawn, the bird faint behind it, the question still on the paper.
-  return { A0, D, E, frames, T: frames / FPS, cover: E + 0.05, reveal: E + 2.6 };
+  const T = frames / FPS;
+  if (T > MAX_VIDEO_SEC + 1e-9) throw new Error(`a ${D.toFixed(2)} s clip makes a ${T.toFixed(2)} s video, over ${MAX_VIDEO_SEC} s (clips are cut at ${MAX_CLIP_SEC} s)`);
+  return { A0, D, E, settled, R, frames, T };
+}
+
+/** Layout problems: text under the platforms' own overlays. `layout` comes from setupStage. */
+export function layoutProblems(layout) {
+  const problems = [];
+  if (layout.brandBottom > SAFE_BOTTOM) problems.push(`the brand line ends at y ${layout.brandBottom}, under the Reels overlay (y ${SAFE_BOTTOM})`);
+  if (layout.endLinkBottom > SAFE_BOTTOM) problems.push(`the end card's birdy.community line ends at y ${layout.endLinkBottom}, under the Reels overlay (y ${SAFE_BOTTOM})`);
+  for (const [name, right] of Object.entries(layout.textRight ?? {})) if (right > SAFE_RIGHT) problems.push(`${name} reaches x ${right}, under the buttons (x ${SAFE_RIGHT})`);
+  return problems;
 }
 
 export async function launchBrowser() {
@@ -31,23 +62,38 @@ export async function launchBrowser() {
 
 export async function openStage(browser, config) {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
-  const errors = [];
-  page.on('pageerror', (e) => errors.push(String(e)));
-  await page.goto(pathToFileURL(STAGE).href);
-  const layout = await page.evaluate((cfg) => window.setupStage(cfg), config);
-  if (errors.length) throw new Error(`stage errors: ${errors.join('; ')}`);
-  return { page, layout };
+  try {
+    const errors = [];
+    page.on('pageerror', (e) => errors.push(String(e)));
+    await page.goto(pathToFileURL(STAGE).href);
+    const layout = await page.evaluate((cfg) => window.setupStage(cfg), config);
+    if (errors.length) throw new Error(`stage errors: ${errors.join('; ')}`);
+    const problems = layoutProblems(layout);
+    if (problems.length) throw new Error(`layout: ${problems.join('; ')}`);
+    return { page, layout };
+  } catch (e) {
+    await page.close();
+    throw e;
+  }
 }
 
-export async function frameAt(page, t, type = 'png', quality) {
-  await page.evaluate((time) => {
-    window.renderAt(time);
-    return new Promise((r) => requestAnimationFrame(() => r()));
-  }, t);
+/**
+ * The stage at time t as PNG (or JPEG). `cover: true` renders the cover: the same moment with
+ * the photo hidden (a question mark in the empty circle), so the thumbnail never gives the bird away.
+ */
+export async function frameAt(page, t, { type = 'png', quality, cover = false } = {}) {
+  const photoOpacity = await page.evaluate(
+    ({ time, asCover }) => {
+      window.renderAt(time, { cover: asCover });
+      return new Promise((r) => requestAnimationFrame(() => r(getComputedStyle(document.getElementById('photoWrap')).opacity)));
+    },
+    { time: t, asCover: cover },
+  );
+  if (cover && Number(photoOpacity) !== 0) throw new Error(`the cover shows the photo (opacity ${photoOpacity})`);
   return page.screenshot(type === 'jpeg' ? { type, quality } : { type });
 }
 
-function x264Args({ frames, trackWav, outMp4 }) {
+export function x264Args({ frames, trackWav, outMp4 }) {
   return [
     '-hide_banner', '-nostats', '-loglevel', 'error', '-y',
     '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'png', '-i', '-',
@@ -58,33 +104,54 @@ function x264Args({ frames, trackWav, outMp4 }) {
     '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-color_range', 'tv',
     '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
     '-frames:v', String(frames), '-t', (frames / FPS).toFixed(4),
-    '-movflags', '+faststart', outMp4,
+    // -f mp4: the output is written to a ".partial" name first (lib/atomic.mjs)
+    '-movflags', '+faststart', '-f', 'mp4', outMp4,
   ];
 }
 
-/** Renders every frame into ffmpeg and writes the MP4. */
-export async function encodeVideo(page, { frames, trackWav, outMp4, onProgress }) {
+/**
+ * Renders every frame into ffmpeg and writes the MP4 to `outMp4`. If ffmpeg fails (or exits
+ * early), this rejects with ffmpeg's own message instead of crashing the process: the write
+ * error on its closed stdin is caught and the frame loop stops.
+ */
+export async function encodeVideo(page, { frames, trackWav, outMp4, onProgress, frame = frameAt }) {
   const ff = spawn('ffmpeg', x264Args({ frames, trackWav, outMp4 }), { stdio: ['pipe', 'ignore', 'pipe'], windowsHide: true });
   let err = '';
   ff.stderr.on('data', (d) => {
-    err += d.toString();
+    err = (err + d.toString()).slice(-8000);
   });
+  let exited = false;
   const done = new Promise((resolve, reject) => {
-    ff.on('error', reject);
-    ff.on('close', (code) => (code === 0 ? resolve() : reject(new Error(`ffmpeg exited with ${code}\n${err.slice(-2000)}`))));
+    ff.on('error', (e) => {
+      exited = true;
+      reject(e);
+    });
+    ff.on('close', (code, signal) => {
+      exited = true;
+      if (code === 0) resolve();
+      else reject(new Error(`ffmpeg exited with ${code ?? signal}\n${err.slice(-2000)}`));
+    });
   });
+  done.catch(() => {}); // awaited below; until then a failure must not be an unhandled rejection
+  ff.stdin.on('error', () => {}); // EPIPE when ffmpeg has died; `done` carries the reason
+  let written = 0;
   try {
-    for (let f = 0; f < frames; f++) {
-      const png = await frameAt(page, f / FPS);
-      if (!ff.stdin.write(png)) await once(ff.stdin, 'drain');
+    for (let f = 0; f < frames && !exited; f++) {
+      const png = await frame(page, f / FPS);
+      if (exited) break;
+      if (!ff.stdin.write(png)) await Promise.race([once(ff.stdin, 'drain'), done]);
+      written++;
       if (onProgress && (f % 60 === 0 || f === frames - 1)) onProgress(f + 1, frames);
     }
+  } catch (e) {
+    // ffmpeg died on its own: its message says why. Otherwise (the page failed) stop ffmpeg.
+    const ffmpegDied = exited;
+    ff.kill();
+    const reason = await done.then(() => null, (x) => x);
+    throw ffmpegDied && reason ? reason : e;
   } finally {
     ff.stdin.end();
   }
   await done;
-}
-
-export async function writeCover(page, t, outJpg) {
-  await writeFile(outJpg, await frameAt(page, t, 'jpeg', 92));
+  if (written < frames) throw new Error(`ffmpeg stopped after ${written} of ${frames} frames\n${err.slice(-2000)}`);
 }

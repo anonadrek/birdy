@@ -1,14 +1,14 @@
 // Spectrogram of the clip that plays in the video: short-time Fourier transform in plain JS,
-// the background noise removed per frequency, the frequency band chosen from where the
-// sound is, and the result as an alpha matrix (0..255, top row = highest frequency).
-// Column c covers the time [c / cols * duration, (c + 1) / cols * duration).
+// the background noise measured per frequency, and the frequency band that holds the bird.
+// The ring (lib/halo.mjs) is drawn from this band.
 import { run } from './proc.mjs';
 
-export const SAMPLE_RATE = 32000;
-const HOP = 320; // 10 ms
+// The clip is written at 48 kHz (lib/audio.mjs), so the analysis reads exactly what plays and
+// one video frame at 30 fps is a whole number of samples (1600).
+export const SAMPLE_RATE = 48000;
+const HOP = 480; // 10 ms
 const NOISE_PERCENTILE = 0.2;
 const RANGE_MIN_EXCESS_DB = 12;
-const DISPLAY_FLOOR_DB = 10;
 // Birds here sing below about 10 kHz; above that there is mostly hiss and MP3 artefacts.
 const SEARCH_MAX_HZ = 10000;
 const SHOW_MAX_HZ = 11000;
@@ -113,7 +113,7 @@ function percentile(sorted, p) {
  * below the recording's typical floor minus 12 dB: above an MP3 encoder's low-pass the floor
  * is near silence, and leakage there would otherwise look as loud as the bird.
  */
-function excessOverNoise({ frames, bins, db, binHz }) {
+export function excessOverNoise({ frames, bins, db, binHz }) {
   const out = new Float32Array(frames * bins);
   const col = new Float32Array(frames);
   const floors = new Float32Array(bins);
@@ -196,62 +196,8 @@ export function roundRange(fLo, fHi, nyquist) {
   return { fmin, fmax };
 }
 
-/** Gridlines inside (fmin, fmax): 2 to 4 lines on a 0.25/0.5/1/2/4 kHz step. */
-export function freqTicks(fmin, fmax) {
-  for (const step of [250, 500, 1000, 2000, 4000]) {
-    const ticks = [];
-    for (let f = Math.floor(fmin / step) * step + step; f < fmax; f += step) if (f > fmin) ticks.push(f);
-    if (ticks.length <= 4) return ticks.map((f) => ({ f, label: String(Math.round(f) / 1000) }));
-  }
-  return [];
-}
-
-/** Time labels from 0 s on a 1/2/5/10 s step, at most 4 steps. */
-export function timeTicks(duration) {
-  const step = [1, 2, 5, 10].find((s) => Math.floor(duration / s) <= 4) ?? 10;
-  const ticks = [];
-  for (let t = 0; t <= duration + 1e-6; t += step) ticks.push({ t, label: `${t} s` });
-  return ticks;
-}
-
-/**
- * Alpha matrix for the clip `x` (mono, `sr` Hz). `cols` is the wanted width; fewer columns
- * are returned when the clip has fewer frames (the canvas stretches them smoothly).
- */
-export function spectrogramMatrix(x, { sr = SAMPLE_RATE, cols = 1808 } = {}) {
-  const duration = x.length / sr;
-  const nyquist = sr / 2;
-  const first = powerDb(x, { sr, n: 2048 });
-  const { fmin, fmax } = chooseRange(excessOverNoise(first), first, nyquist);
-  // Low, narrow bands get a longer window for finer frequency detail.
-  const spec = fmax - fmin < 3000 ? powerDb(x, { sr, n: 4096 }) : first;
-  const excess = excessOverNoise(spec);
-  const bLo = Math.round(fmin / spec.binHz);
-  const bHi = Math.round(fmax / spec.binHz);
-  const rows = bHi - bLo + 1;
-  const outCols = Math.max(1, Math.min(cols, spec.frames));
-
-  const raw = new Float32Array(outCols * rows);
-  for (let c = 0; c < outCols; c++) {
-    const t0 = (c / outCols) * duration;
-    const t1 = ((c + 1) / outCols) * duration;
-    let f0 = Math.ceil(t0 / spec.hopSec - 1e-9);
-    let f1 = Math.ceil(t1 / spec.hopSec - 1e-9) - 1;
-    if (f1 < f0) f0 = f1 = Math.min(spec.frames - 1, Math.round((t0 + t1) / 2 / spec.hopSec));
-    f1 = Math.min(f1, spec.frames - 1);
-    for (let r = 0; r < rows; r++) {
-      const b = bHi - r;
-      let m = -Infinity;
-      for (let f = f0; f <= f1; f++) m = Math.max(m, excess[f * spec.bins + b]);
-      raw[r * outCols + c] = m;
-    }
-  }
-  const sorted = Float32Array.from(raw).sort();
-  const top = Math.max(DISPLAY_FLOOR_DB + 18, percentile(sorted, 0.995));
-  const alpha = new Uint8Array(raw.length);
-  for (let i = 0; i < raw.length; i++) {
-    const v = Math.min(1, Math.max(0, (raw[i] - DISPLAY_FLOOR_DB) / (top - DISPLAY_FLOOR_DB)));
-    alpha[i] = Math.round(255 * v ** 0.8);
-  }
-  return { cols: outCols, rows, alpha, fmin, fmax, duration, freqTicks: freqTicks(fmin, fmax), timeTicks: timeTicks(duration) };
+/** The frequency band (Hz) that holds the bird in the clip `x` (mono, `sr` Hz). */
+export function bandOf(x, sr = SAMPLE_RATE) {
+  const spec = powerDb(x, { sr, n: 2048 });
+  return chooseRange(excessOverNoise(spec), spec, sr / 2);
 }

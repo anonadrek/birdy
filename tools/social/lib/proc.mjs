@@ -11,6 +11,9 @@ export function run(cmd, args, { input } = {}) {
       err += d.toString();
     });
     child.on('error', reject);
+    // A child that exits early closes its stdin; the exit code below says why, so a write
+    // error here (EPIPE) must not become an uncaught exception that ends the whole batch.
+    child.stdin.on('error', () => {});
     child.on('close', (code) => {
       const stdout = Buffer.concat(out);
       if (code === 0) resolve({ stdout, stderr: err });

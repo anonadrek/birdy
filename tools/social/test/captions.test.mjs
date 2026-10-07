@@ -1,25 +1,32 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildCaptions, creditLine, hook, linkFor, nameTag, youtubeTitle, firstSentence } from '../lib/captions.mjs';
+import { buildCaptions, creditLine, hook, linkFor, nameTag, voiceWord, youtubeTitle, firstSentence } from '../lib/captions.mjs';
 import { record, withAudio, withHero, approved } from './fixtures.mjs';
 
-test('credit line, exact string', () => {
-  assert.equal(
-    creditLine(record()),
-    'Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons',
-  );
+const CREDIT = 'Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons, edited';
+const CREDIT_TRIMMED = 'Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons, trimmed and edited';
+const CREDIT_URLS = 'Photo: Julian Herzog, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons, edited';
+const TAGS = '#birds #birdwatching #birdsong #birding #birdy #EurasianMagpie';
+
+test('credit line, exact string: the sound is always "edited"', () => {
+  assert.equal(creditLine(record()), CREDIT);
 });
 
-test('credit line says trimmed when the clip was trimmed', () => {
-  assert.equal(
-    creditLine(record(), { trimmed: true }),
-    'Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons, trimmed',
-  );
+test('credit line says "trimmed and edited" when the clip was trimmed', () => {
+  assert.equal(creditLine(record(), { trimmed: true }), CREDIT_TRIMMED);
 });
 
 test('credit line leaves out an empty author for CC0 and public domain', () => {
   const rec = withHero(withAudio(record(), { author: '', license: 'CC0' }), { author: '', license: 'Public domain' });
-  assert.equal(creditLine(rec), 'Photo: Public domain, via Wikimedia Commons, cropped · Sound: CC0, via Wikimedia Commons');
+  assert.equal(creditLine(rec), 'Photo: Public domain, via Wikimedia Commons, cropped · Sound: CC0, via Wikimedia Commons, edited');
+});
+
+test('credit line with URLs: each licence deed after its name, none for public domain', () => {
+  assert.equal(creditLine(record(), { withUrls: true }), CREDIT_URLS);
+  const rec = withAudio(record(), { author: 'Gavin Vella', license: 'CC BY-SA 3.0', licenseUrl: null });
+  assert.match(creditLine(rec, { withUrls: true, trimmed: true }), /Sound: Gavin Vella, CC BY-SA 3\.0 \(https:\/\/creativecommons\.org\/licenses\/by-sa\/3\.0\/\), via Wikimedia Commons, trimmed and edited$/);
+  const cc0 = withAudio(record(), { author: '', license: 'CC0', licenseUrl: null });
+  assert.match(creditLine(cc0, { withUrls: true }), /Sound: CC0 \(https:\/\/creativecommons\.org\/publicdomain\/zero\/1\.0\/\), via Wikimedia Commons, edited$/);
 });
 
 test('link goes to the species page only when the record is published', () => {
@@ -49,22 +56,25 @@ test('Instagram says Link in bio and has no URL', () => {
   }
 });
 
-test('captions end with the credit and then the hashtags', () => {
+test('captions end with the credit and then the hashtags; Facebook and YouTube carry the licence URLs', () => {
   const c = buildCaptions(record(), { trimmed: true });
-  const credit = 'Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons, trimmed';
-  for (const text of [c.instagram, c.facebook, c.youtube.description]) {
-    const parts = text.split('\n\n');
-    assert.equal(parts.at(-2), credit);
-    assert.equal(parts.at(-1), '#birds #birdwatching #birdsong #birding #birdy #EurasianMagpie');
-  }
+  assert.equal(c.instagram.split('\n\n').at(-2), CREDIT_TRIMMED);
+  for (const text of [c.facebook, c.youtube.description]) assert.equal(text.split('\n\n').at(-2), CREDIT_URLS.replace(', edited', ', trimmed and edited'));
+  for (const text of [c.instagram, c.facebook, c.youtube.description]) assert.equal(text.split('\n\n').at(-1), TAGS);
+  assert.equal(c.credit, CREDIT_TRIMMED);
 });
 
 test('5 to 8 hashtags, the English name as one tag', () => {
   const c = buildCaptions(record());
   assert.ok(c.hashtags.length >= 5 && c.hashtags.length <= 8);
-  assert.equal(nameTag(record({ names: { en: "Common Wood Pigeon", sv: 'Ringduva', scientific: 'Columba palumbus' } })), '#CommonWoodPigeon');
+  assert.equal(nameTag(record({ names: { en: 'Common Wood Pigeon', sv: 'Ringduva', scientific: 'Columba palumbus' } })), '#CommonWoodPigeon');
   assert.equal(nameTag(record({ names: { en: "Montagu's Harrier", sv: 'Ängshök', scientific: 'Circus pygargus' } })), '#MontagusHarrier');
   assert.equal(nameTag(record({ names: { en: 'Black-tailed Godwit', sv: 'Rödspov', scientific: 'Limosa limosa' } })), '#BlackTailedGodwit');
+});
+
+test('"song" for the passerines (the songbird group, crows included), "voice" for every other group', () => {
+  assert.equal(voiceWord(record()), 'song'); // the magpie is a passerine
+  for (const group of ['waterfowl', 'gulls_terns', 'raptors', 'cranes_rails', 'woodpeckers', 'doves', 'other']) assert.equal(voiceWord(record({ group })), 'voice', group);
 });
 
 test('hook: neutral line without approved text, "voice" outside the songbird group', () => {
@@ -81,32 +91,35 @@ test('hook: first sentence of the English lead when the text is approved', () =>
 });
 
 test('hook falls back to the neutral line if the lead has a dash', () => {
-  assert.equal(hook(approved(record(), 'It is 44\u201346 cm long.')), 'Listen to the song of the Eurasian Magpie.');
+  assert.equal(hook(approved(record(), 'It is 44–46 cm long.')), 'Listen to the song of the Eurasian Magpie.');
 });
 
 test('no dashes anywhere in generated text, even when a name has one', () => {
-  const rec = withAudio(record(), { author: 'Jean\u2013Pierre Dupont' });
+  const rec = withAudio(record(), { author: 'Jean–Pierre Dupont' });
   const c = buildCaptions(rec);
-  for (const text of [c.instagram, c.facebook, c.youtube.title, c.youtube.description]) assert.doesNotMatch(text, /[\u2013\u2014]/);
+  for (const text of [c.instagram, c.facebook, c.youtube.title, c.youtube.description]) assert.doesNotMatch(text, /[–—]/);
   assert.match(c.facebook, /Jean-Pierre Dupont/);
 });
 
-test('strict-mode captions have no video licence line', () => {
+test('without CC BY-SA material there is no video licence line', () => {
   const c = buildCaptions(record());
   assert.equal(c.videoLicence, null);
   for (const text of [c.instagram, c.facebook, c.youtube.description]) assert.doesNotMatch(text, /Video licensed/);
 });
 
 test('a video with CC BY-SA material gets the CC BY-SA 4.0 line right after the credits', () => {
-  const rec = withAudio(record(), { license: 'CC BY-SA 3.0', author: 'José Carlos Sires' });
+  const rec = withAudio(record(), { license: 'CC BY-SA 3.0', author: 'José Carlos Sires', licenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/' });
   const c = buildCaptions(rec, { trimmed: true });
   assert.equal(c.videoLicence, 'CC BY-SA 4.0');
-  const credit = 'Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons, cropped · Sound: José Carlos Sires, CC BY-SA 3.0, via Wikimedia Commons, trimmed';
-  for (const text of [c.instagram, c.facebook, c.youtube.description]) {
-    const parts = text.split('\n\n');
-    assert.equal(parts.at(-2), `${credit}\nVideo licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)`);
-    assert.equal(parts.at(-1), '#birds #birdwatching #birdsong #birding #birdy #EurasianMagpie');
+  const sa = 'Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)';
+  assert.equal(c.instagram.split('\n\n').at(-2), `Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons, cropped · Sound: José Carlos Sires, CC BY-SA 3.0, via Wikimedia Commons, trimmed and edited\n${sa}`);
+  for (const text of [c.facebook, c.youtube.description]) {
+    assert.equal(
+      text.split('\n\n').at(-2),
+      `Photo: Julian Herzog, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), via Wikimedia Commons, cropped · Sound: José Carlos Sires, CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/), via Wikimedia Commons, trimmed and edited\n${sa}`,
+    );
   }
+  for (const text of [c.instagram, c.facebook, c.youtube.description]) assert.equal(text.split('\n\n').at(-1), TAGS);
   // On Instagram the licence URL is the only URL; the app link is still "Link in bio".
   assert.deepEqual(c.instagram.match(/https?:\/\/\S+/g), ['https://creativecommons.org/licenses/by-sa/4.0/)']);
   assert.match(c.instagram, /Link in bio\./);
