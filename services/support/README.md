@@ -19,4 +19,10 @@ npm ci && npm test
 
 ## Loggar
 
-En JSON-rad per utfall i Vercel: `forwarded`, `receipt-sent`, `no-receipt` (`automated`/`recent`), `ignored`, `own-mail`, `bad-signature`, `forward-failed` (500, Resend försöker igen), `receipt-failed`, `config`. Raderna har bara meddelandets id, aldrig adresser, ämnen eller innehåll.
+En JSON-rad per utfall i Vercel: `forwarded`, `forward-replayed` (409 `invalid_idempotent_request` på en omförsökt vidarebefordran, räknas som skickad), `forward-fallback` (en 4xx-valideringsfel gav en minimal textversion i stället), `receipt-sent`, `no-receipt` (`automated`/`thread`/`unauthenticated`/`recent`), `ignored`, `own-mail`, `bad-signature`, `forward-failed` (500, Resend försöker igen), `receipt-failed`, `config`. Raderna har bara meddelandets id (och ibland `error.name`/`statusCode`), aldrig adresser, ämnen eller innehåll.
+
+## Drift
+
+- **Gmail blockerar `.apk`/`.exe`-bilagor** och studsar hela vidarebefordran om en sådan följer med — bilagan stannar ändå kvar i Resend i 30 dagar (se `Resend-id`-raden i den misslyckade vidarebefordringen, eller Resends egen logg).
+- **Sätt ingen semesterautosvarare på `FORWARD_TO`-inkorgen för `support@birdy.community`-post.** Gmails autosvar går ut från Albins privata adress, inte från `support@birdy.community` — det bryter avsändarlöftet och kan starta en autosvar-mot-autosvar-loop med en avsändares egen frånvarosvarare.
+- **Kontrollera att Vercel-projektet `birdy-support` inte har Vercel Authentication eller annat deployment protection på produktionsmiljön.** Är det på svarar `/api/inbound` med en inloggningssida i stället för att köra funktionen, och Resends webbhändelse ser ut att "fungera" (200) utan att något forwardas.

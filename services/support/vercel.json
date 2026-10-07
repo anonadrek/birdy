@@ -1,3 +1,4 @@
 {
+  "regions": ["arn1"],
   "functions": { "api/inbound.mjs": { "maxDuration": 30 } }
 }

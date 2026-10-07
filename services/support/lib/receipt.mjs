@@ -17,6 +17,11 @@ export function isAutomated({ from, headers }, supportAddress) {
   return 'list-id' in h || 'list-unsubscribe' in h;
 }
 
+/** True when the incoming mail already references a prior message (an ongoing thread) — no receipt needed, the sender already knows Birdy has it. */
+export function isThreadReply({ headers }) {
+  return 'in-reply-to' in lowerKeys(headers);
+}
+
 /** Resend's timestamps, ISO ("…Z") or Postgres style ("2026-10-07 20:00:00.123456+00"). */
 export function parseTime(value) {
   const iso = String(value).replace(' ', 'T').replace(/([+-]\d{2})$/, '$1:00').replace(/(\.\d{3})\d+/, '$1');

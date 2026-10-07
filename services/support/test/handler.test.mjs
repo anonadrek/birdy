@@ -152,6 +152,12 @@ test('no receipt when Birdy mailed the sender in the last 24 hours', async () =>
   assert.deepEqual(client.calls.send.map((c) => c.key), ['forward-em_1']);
 });
 
+test('no receipt when the incoming mail already has an In-Reply-To header (an ongoing thread)', async () => {
+  const client = fakeClient({ mail: { ...email, headers: { 'In-Reply-To': '<previous@example.se>' } } });
+  await run(client);
+  assert.deepEqual(client.calls.send.map((c) => c.key), ['forward-em_1']);
+});
+
 test('no receipt to automatic mail', async () => {
   const client = fakeClient({ mail: { ...email, headers: { 'Auto-Submitted': 'auto-replied' } } });
   await run(client);

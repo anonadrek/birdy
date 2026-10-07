@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { isAutomated, mailedRecently, parseTime, receiptMessage } from '../lib/receipt.mjs';
+import { isAutomated, isThreadReply, mailedRecently, parseTime, receiptMessage } from '../lib/receipt.mjs';
 
 const SUPPORT = 'support@birdy.community';
 const person = { from: 'Anna <anna@example.se>', headers: { 'Content-Type': 'text/plain' } };
@@ -38,6 +38,13 @@ test('system and no-reply senders, and Birdy itself, are automated', () => {
   ]) {
     assert.equal(isAutomated({ from, headers: {} }, SUPPORT), true, from);
   }
+});
+
+test('isThreadReply detects an In-Reply-To header, case-insensitively, meaning this is an ongoing thread', () => {
+  assert.equal(isThreadReply({ headers: { 'In-Reply-To': '<m0@example.se>' } }), true);
+  assert.equal(isThreadReply({ headers: { 'in-reply-to': '<m0@example.se>' } }), true);
+  assert.equal(isThreadReply({ headers: {} }), false);
+  assert.equal(isThreadReply({ headers: null }), false);
 });
 
 test("parseTime reads both of Resend's timestamp forms", () => {

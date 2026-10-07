@@ -2,7 +2,7 @@
   "name": "birdy-support",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": { "node": "22.x" },
   "scripts": { "test": "node --test test/*.test.mjs" },
   "dependencies": { "resend": "6.32.1" }
 }

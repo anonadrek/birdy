@@ -3,7 +3,7 @@
 import { addressOf } from './address.mjs';
 import { buildFallbackForward, buildForward } from './forward.mjs';
 import { labelFor } from './labels.mjs';
-import { isAutomated, mailedRecently, receiptMessage } from './receipt.mjs';
+import { isAutomated, isThreadReply, mailedRecently, receiptMessage } from './receipt.mjs';
 
 const REQUIRED = ['RESEND_API_KEY', 'RESEND_WEBHOOK_SECRET', 'SUPPORT_ADDRESS', 'FORWARD_TO'];
 
@@ -80,6 +80,8 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
     const authenticated = email.authentication?.dkim === 'pass' || email.authentication?.dmarc === 'pass';
     if (isAutomated(email, support)) {
       say({ outcome: 'no-receipt', id, reason: 'automated' });
+    } else if (isThreadReply(email)) {
+      say({ outcome: 'no-receipt', id, reason: 'thread' });
     } else if (!authenticated) {
       say({ outcome: 'no-receipt', id, reason: 'unauthenticated' });
     } else if (mailedRecently(await resolvedClient.listSent(), sender, now, env.FORWARD_TO)) {
