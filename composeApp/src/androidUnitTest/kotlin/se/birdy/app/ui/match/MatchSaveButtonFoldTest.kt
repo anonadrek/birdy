@@ -11,6 +11,7 @@ import androidx.compose.ui.test.getUnclippedBoundsInRoot
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import kotlinx.datetime.TimeZone
 import org.junit.Before
@@ -20,6 +21,7 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 import org.robolectric.annotation.Config
+import org.robolectric.annotation.GraphicsMode
 import se.birdy.app.testing.StatusBarInset
 import se.birdy.app.testing.attachComposeResourcesContext
 import se.birdy.app.ui.theme.BirdyTheme
@@ -32,6 +34,7 @@ import se.birdy.content.model.SpeciesTaxonomy
 import se.birdy.ml.Classification
 import se.birdy.ml.ClassificationResult
 import se.birdy.ml.ScanSource
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 /**
@@ -39,8 +42,13 @@ import kotlin.test.assertTrue
  * larger text (2026-10-06: the photo above the name made the hero taller). A 360x800dp phone
  * as the app really shows it: a 32dp status bar the hero draws behind, and below the screen the
  * app's 72dp bottom bar plus a 48dp three-button navigation bar (the tallest kind).
+ *
+ * NATIVE graphics, so the text has its real metrics (the default fake ones measured the content
+ * below the photo ~35dp short, 2026-10-07 review). The photo credit is one of the longest in
+ * species.db, so it takes two lines.
  */
 @RunWith(RobolectricTestRunner::class)
+@GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(sdk = [35], qualifiers = "sv-w360dp-h800dp-xhdpi")
 class MatchSaveButtonFoldTest {
     @get:Rule
@@ -64,11 +72,26 @@ class MatchSaveButtonFoldTest {
             season = emptyMap(),
             description = null,
             migration = null,
-            // A typical credit under the photo: the photographers' names are 13 characters on average.
-            images = listOf(SpeciesImage("hero", "Q25334/hero.webp", 2400, 1800, "CC BY-SA 4.0", "Hobbyfotowiki", "https://example.com")),
+            images =
+                listOf(
+                    SpeciesImage(
+                        "hero",
+                        "Q25334/hero.webp",
+                        2400,
+                        1800,
+                        "Public domain",
+                        "U.S. Fish and Wildlife Service - Midwest Region",
+                        "https://commons.wikimedia.org/wiki/File:Robin.jpg",
+                    ),
+                ),
         )
 
-    private fun assertSaveButtonInView(fontScale: Float) {
+    private class Fold(
+        val buttonOverflow: Dp,
+        val photoHeight: Dp,
+    )
+
+    private fun layOut(fontScale: Float): Fold {
         RuntimeEnvironment.setFontScale(fontScale)
         val state =
             MatchResultUiState.Match(
@@ -100,18 +123,46 @@ class MatchSaveButtonFoldTest {
         compose.waitForIdle()
         val viewport = compose.onNode(hasTestTag("viewport")).getUnclippedBoundsInRoot()
         val button = compose.onNode(hasText("Spara observation")).getUnclippedBoundsInRoot()
+        val photo = compose.onNode(hasTestTag(MATCH_PHOTO_TAG)).getUnclippedBoundsInRoot()
+        return Fold(buttonOverflow = button.bottom - viewport.bottom, photoHeight = photo.bottom - photo.top)
+    }
+
+    private fun assertSaveButtonInView(fontScale: Float) {
+        val fold = layOut(fontScale)
         assertTrue(
-            button.bottom <= viewport.bottom,
-            "at font scale $fontScale the save button ends ${button.bottom - viewport.bottom} below the visible area",
+            fold.buttonOverflow <= 0.dp,
+            "at font scale $fontScale the save button ends ${fold.buttonOverflow} below the visible area " +
+                "(photo ${fold.photoHeight})",
         )
+    }
+
+    /**
+     * Larger text on this small phone: what follows the photo is too tall for the button to fit
+     * above the fold, so the photo keeps its floor rather than being cut to a strip, and the button
+     * is a short scroll away. Measured 2026-10-07 with this two-line credit: 44dp at 130%, 239dp
+     * at 200%; at 130% even without a credit the photo was already at its floor here.
+     */
+    private fun assertPhotoKeepsItsFloor(fontScale: Float) {
+        val fold = layOut(fontScale)
+        // The photo includes the 32dp status bar it draws behind.
+        val floor = MATCH_PHOTO_MIN + 32.dp
+        if (fold.buttonOverflow > 0.dp) {
+            assertEquals(floor, fold.photoHeight, "the button is ${fold.buttonOverflow} below the fold, so the photo must be at its floor")
+        }
+        assertTrue(fold.photoHeight >= floor, "photo ${fold.photoHeight} below the floor")
     }
 
     @Test
     fun `the save button is in view at normal text size`() = assertSaveButtonInView(1f)
 
     @Test
-    fun `the save button is in view at 130 percent text`() = assertSaveButtonInView(1.3f)
+    fun `at 130 percent text the photo keeps its floor`() = assertPhotoKeepsItsFloor(1.3f)
 
     @Test
-    fun `the save button is in view at 200 percent text`() = assertSaveButtonInView(2f)
+    fun `at 200 percent text the photo keeps its floor`() = assertPhotoKeepsItsFloor(2f)
+
+    // A common phone size (412x915dp, e.g. Pixel 7 and 8) has the room at 130% text.
+    @Test
+    @Config(qualifiers = "sv-w412dp-h915dp-xhdpi")
+    fun `the save button is in view at 130 percent text on a common phone`() = assertSaveButtonInView(1.3f)
 }
