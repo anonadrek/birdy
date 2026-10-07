@@ -704,6 +704,12 @@
     <string name="licenses_error">Licenserna gick inte att läsa.</string>
     <string name="license_text_includes">Ingår: %1$s</string>
     <string name="license_text_website">Webbplats</string>
+    <!-- Birdy's own lines before desugar_jdk_libs' licence (tools/licenses/generate.py). The English ones are the file's lines word for word (LicenseScreensTest). -->
+    <string name="license_preface_desugar_about">desugar_jdk_libs 2.1.5: Java-bibliotekskod från OpenJDK som Android-bygget kompilerar in i appen, så att java.time och andra Java-API:er fungerar på äldre Android-versioner. Den är licensierad under GNU General Public License, version 2, med Classpath Exception.</string>
+    <string name="license_preface_desugar_source">Källkod: https://github.com/google/desugar_jdk_libs/tree/73170c345e6a762fc6a1f0301bb15218850023ef (committen som förberedde version 2.1.5, 2025-02-14)</string>
+    <string name="license_preface_desugar_text_source">Källa till texten: https://raw.githubusercontent.com/google/desugar_jdk_libs/73170c345e6a762fc6a1f0301bb15218850023ef/LICENSE</string>
+    <string name="license_preface_desugar_config_about">desugar_jdk_libs_configuration 2.1.5 (R8-projektet), LICENSE-filen i dess JAR:</string>
+    <string name="license_preface_desugar_config_text_source">Källa till texten: LICENSE i desugar_jdk_libs_configuration-2.1.5</string>
 
     <!-- Settings row effects (Plan 6a Task 13) -->
     <string name="settings_share_copy">Birdy — fältornitologens digitala bok. Hämta den på Google Play: https://play.google.com/store/apps/details?id=se.birdy.android</string>
