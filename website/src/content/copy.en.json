@@ -14,6 +14,7 @@
     "guide": "Field guide",
     "privacy": "Privacy",
     "faq": "FAQ",
+    "species": "Species",
     "switchLang": "SV",
     "switchLangHref": "/sv/",
     "getApp": "Get the app",
@@ -201,7 +202,8 @@
     ],
     "mapCaption": "Birdy recognises birds across Europe, from garden regulars to rare visitors.",
     "fallbackAlt": "Map of Europe with the countries Birdy covers filled in rust",
-    "attribution": "© MapTiler © OpenStreetMap contributors"
+    "attribution": "© MapTiler © OpenStreetMap contributors",
+    "browse": "Browse the species"
   },
   "premium": {
     "kicker": "Birdy Premium",
@@ -268,6 +270,164 @@
     "note": "see you out there",
     "sub": "Free to download. No account. Works without a signal."
   },
+  "species": {
+    "allChip": "All species",
+    "groupsLabel": "Groups",
+    "searchLabel": "Search species",
+    "searchPlaceholder": "Search species",
+    "searchSubmit": "Search",
+    "kicker": "Field guide",
+    "hubHeadline": "Birds of Sweden and *Europe*",
+    "hubLead": "{n} common birds with photos, field marks and calls. The same field guide as in the app, where you can also identify the bird on the spot.",
+    "hubGroups": "The groups",
+    "hubCompare": "Easy to mix up",
+    "hubAll": "All species A to Z",
+    "hubAbout": "How we make these pages",
+    "noResults": "No species match your search.",
+    "groupSpecies": "The species",
+    "countOne": "1 species",
+    "countMany": "{n} species",
+    "titleSpecies": "{name}: identification, song and photos | Birdy",
+    "titleSpeciesShort": "{name}: identification | Birdy",
+    "titleGroup": "{group}: {count} with photos and ID tips | Birdy",
+    "titleGroupShort": "{group}: species and ID tips | Birdy",
+    "titleHub": "Birds of Sweden and Europe: {count} with photos | Birdy",
+    "titleCompare": "{a} vs {b}: how to tell them apart | Birdy",
+    "titleCompareShort": "{a} vs {b} | Birdy",
+    "descGroup": "{group}: {count} with photos, field marks and calls. Learn to tell them apart, and identify them on the spot with the Birdy app.",
+    "descHub": "Browse {n} common birds of Sweden and Europe. Photos, field marks and calls, sorted in the same groups as in the Birdy app.",
+    "crumbLabel": "Breadcrumb",
+    "crumbHome": "Birdy",
+    "crumbHub": "Species",
+    "facts": {
+      "scientific": "Scientific name",
+      "family": "Family",
+      "sweden": "In Sweden",
+      "size": "Size",
+      "swedishRedList": "Swedish Red List 2025",
+      "iucn": "Global Red List (IUCN)"
+    },
+    "statusLabels": {
+      "resident": "Resident all year",
+      "breeding_migrant": "Summer visitor, breeds here",
+      "passage": "Seen on migration",
+      "winter_visitor": "Winter visitor",
+      "rare_visitor": "Rare visitor",
+      "absent": "Does not occur"
+    },
+    "redListLabels": {
+      "RE": "Regionally extinct",
+      "CR": "Critically endangered",
+      "EN": "Endangered",
+      "VU": "Vulnerable",
+      "NT": "Near threatened",
+      "DD": "Data deficient",
+      "not_listed": "Not red-listed"
+    },
+    "iucnLabels": {
+      "LC": "Least concern",
+      "NT": "Near threatened",
+      "VU": "Vulnerable",
+      "EN": "Endangered",
+      "CR": "Critically endangered",
+      "EW": "Extinct in the wild",
+      "EX": "Extinct",
+      "DD": "Data deficient"
+    },
+    "headMarks": "How to recognise it",
+    "headVoice": "Call and song",
+    "headWhere": "Where and when",
+    "headBehaviour": "Food and behaviour",
+    "headLookAlikes": "Can be confused with",
+    "compareLink": "Compare the {a} and the {b}",
+    "chartTitle": "When is it seen in Sweden?",
+    "chartCaption": "Share of all bird reports per month in Artportalen, 2016 to 2025.",
+    "mapTitle": "Where is it reported?",
+    "mapCaption": "Share of all bird reports per county in Artportalen, 2016 to 2025.",
+    "mapLegend": ["No reports", "Small share", "Medium share", "Largest share"],
+    "monthLetters": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+    "moreFamily": "More in the {family} family",
+    "moreGroup": "More {group}",
+    "appHeadline": "Not sure what you are seeing?",
+    "appTextBoth": "Birdy identifies this species from a photo or its song, right on your phone and without signal.",
+    "appTextSound": "Birdy identifies this species from its song, right on your phone and without signal.",
+    "appTextPhoto": "Birdy identifies this species from a photo, right on your phone and without signal.",
+    "appTextNone": "Birdy helps you identify the birds around you from photos and songs, right on your phone and without signal.",
+    "plate": "Pl. {n}",
+    "photoCredit": "Photo:",
+    "via": "via",
+    "unknownAuthor": "unknown photographer",
+    "recordingLabel": "Recording: {name}",
+    "recordingCredit": "Recording:",
+    "unknownRecordist": "unknown recordist",
+    "trimmed": "trimmed",
+    "textCredit": "The text is based on Wikipedia and may be shared under",
+    "sources": "Sources",
+    "articleSv": "Swedish article",
+    "articleEn": "English article",
+    "articleDe": "German article",
+    "dataCreditReports": "Report data: Artportalen (SLU Swedish Species Information Centre) via {gbif}, 2016 to 2025.",
+    "dataCreditRedList": "Red list: The Swedish Red List 2025, SLU Swedish Species Information Centre.",
+    "reviewed": "Checked against sources on {date}.",
+    "aboutLink": "How we make these pages",
+    "reportError": "Found a mistake? Write to us.",
+    "reportSubject": "Mistake on the species page: {name}",
+    "reportSubjectCompare": "Mistake on the comparison page: {name}",
+    "altHero": "{name} ({scientific})",
+    "altExtra": "{name}, another photo",
+    "previewBanner": "Preview, not published",
+    "compareKicker": "Easy to mix up",
+    "compareHeadline": "{a} or *{b}*?",
+    "compareItem": "{a} or {b}",
+    "compareTable": "How to tell them apart",
+    "compareFeature": "Feature",
+    "compareChart": "When are they seen?",
+    "compareApp": "Still not sure?",
+    "chartSeriesSentence": "{name}: {text}"
+  },
+  "speciesAbout": {
+    "title": "How we make the species pages: sources and review | Birdy",
+    "description": "How the species pages on Birdy are made: the sources, how AI is used, how the facts are checked, the licences and how to report a mistake.",
+    "crumb": "How we make these pages",
+    "headline": "How we make the *species pages*",
+    "lead": "Every species page is built from several sources and checked in several steps, mostly automatically and by a person when something needs it, before it is published. This is how it works.",
+    "sections": [
+      {
+        "heading": "The sources",
+        "paragraphs": [
+          "The texts are based on the articles about each species on Swedish, English and German Wikipedia.",
+          "The chart of when the species is seen and the map of where it is reported are calculated from Artportalen, Sweden's reporting system for sightings of plants and animals, which the SLU Swedish Species Information Centre shares through the international database GBIF. The figures show the species' share of all bird reports, so that a month or a county with many birdwatchers does not look as if it had more birds than it does.",
+          "The Swedish red list status comes from The Swedish Red List 2025 by the SLU Swedish Species Information Centre. Photos and recordings come from Wikimedia Commons."
+        ]
+      },
+      {
+        "heading": "How AI is used",
+        "paragraphs": [
+          "A language model reads the articles and picks out facts about appearance, call, habitat and occurrence in Sweden. Every fact needs a word for word quote from the article, and a program checks that the quote really is there. Facts without a valid quote are removed.",
+          "The text on the page is then written by a model that only sees the approved facts, not the articles. Another model then reads every sentence and compares it with the facts. Sentences that are not supported are rewritten or removed.",
+          "The chart, the map and the red list status are calculated directly from the data, without any language model."
+        ]
+      },
+      {
+        "heading": "The review",
+        "paragraphs": [
+          "A second model checks every fact against its quote in the article. Code compares the numbers between the different language articles, and compares the occurrence in Sweden with Artportalen and the Swedish red list. The recording is checked with Birdy's own sound model. What cannot be settled automatically is reviewed by Albin Abrahamsson, who built Birdy, before the page is published. After publishing, he also reviews an ongoing spot check of already published pages. The date of the latest check is at the bottom of every species page."
+        ]
+      },
+      {
+        "heading": "The licences",
+        "paragraphs": [
+          "The texts on the species pages are based on Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and share on the same terms. Photos and recordings have their own licences, and every page names the author, licence and source for them."
+        ]
+      },
+      {
+        "heading": "Corrections",
+        "paragraphs": [
+          "Found a mistake? Write to {email}, ideally with a link to the page. We correct the page and set a new check date."
+        ]
+      }
+    ]
+  },
   "footer": {
     "tagline": "Know the bird. Keep the moment.",
     "explore": "Explore",
@@ -282,7 +442,10 @@
     "copyright": "© 2026 Birdy · Made in Sweden",
     "builtBy": "Built by",
     "workshop": "From the same workshop",
-    "loopleadLine": "An HR tool for managers in growing companies"
+    "loopleadLine": "An HR tool for managers in growing companies",
+    "species": "Species",
+    "allSpecies": "All species A to Z",
+    "commonSpecies": "Common species"
   },
   "alt": {
     "wordmark": "Birdy wordmark",
