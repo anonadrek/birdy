@@ -143,13 +143,19 @@ class SpeciesContentCorrectionsTest {
                 .parseAll(Path.of("species"))
                 .map { it.second }
                 .filter { it.abundance == "allmän" || it.abundance == "mindre allmän" }
-                .map { it.id }
-                .toSet()
-        assertEquals(177, common.size)
+        // The premise Dagens fågel rests on: every species it can pick was reviewed by hand
+        // (review_status approved), never an unreviewed pipeline guess.
+        val unreviewed = common.filter { it.review_status != "approved" }.map { it.id }
+        assertTrue(unreviewed.isEmpty(), "marked common but not reviewed: $unreviewed")
+        // A floor, not an exact count (an exact count broke on every reviewed change): a pool this
+        // size keeps the daily bird varied, and a refresh that resets the hand-reviewed abundances
+        // to the pipeline default ("ovanlig") fails here.
+        assertTrue(common.size >= 150, "only ${common.size} species marked common")
+        val ids = common.map { it.id }.toSet()
         for (nonSwedish in listOf("Q10546857", "Q4967039", "Q574281")) {
-            assertTrue(nonSwedish !in common, nonSwedish)
+            assertTrue(nonSwedish !in ids, nonSwedish)
         }
-        assertTrue("Q25485" in common && "Q574447" in common) // Talgoxe, Lappmes
+        assertTrue("Q25485" in ids && "Q574447" in ids) // Talgoxe, Lappmes
     }
 
     @Serializable
