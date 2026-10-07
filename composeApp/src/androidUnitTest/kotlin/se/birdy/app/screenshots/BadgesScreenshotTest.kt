@@ -37,7 +37,9 @@ class BadgesScreenshotTest {
     @get:Rule
     val compose = createComposeRule()
 
+    // A fixed clock and zone: BadgesScreen reads dates against "now" (the year shows once it differs).
     private val zone = TimeZone.of("Europe/Stockholm")
+    private val now = Instant.parse("2026-10-12T10:00:00Z")
 
     // The catalog's free badges in stamp order (№1 to №27), then the seven Premium ones.
     private val regular =
@@ -136,6 +138,7 @@ class BadgesScreenshotTest {
             onSettingsClick = {},
             onPremiumClick = {},
             onOpenTrophyRoom = {},
+            now = now,
         )
     }
 
@@ -174,7 +177,21 @@ class BadgesScreenshotTest {
         capture("badges_sv_200", earned, Locale.SV)
     }
 
-    // A narrow phone at 2.0×: "8 stämplar" no longer fits on one line beside the seals, so they move below.
+    @Test
+    @Config(qualifiers = "+en")
+    fun badges_en_200() {
+        RuntimeEnvironment.setFontScale(2.0f)
+        capture("badges_en_200", earned, Locale.EN)
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun badges_empty_sv_200() {
+        RuntimeEnvironment.setFontScale(2.0f)
+        capture("badges_empty_sv_200", emptyList(), Locale.SV)
+    }
+
+    // A narrow phone at 2.0×: the text no longer fits beside the seals, so they move below it.
     @Test
     @Config(qualifiers = "+sv-w360dp")
     fun badges_w360_sv_200() {

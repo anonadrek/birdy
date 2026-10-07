@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsNode
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.getOrNull
@@ -14,6 +15,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.unit.dp
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
@@ -216,6 +218,72 @@ class TrophyRoomEntryCardTest {
         compose
             .onNodeWithContentDescription("Your trophy room. Your first stamp awaits. Open.")
             .assertHasClickAction()
+    }
+
+    private fun textNode(text: String): SemanticsNode = compose.onNodeWithText(text, useUnmergedTree = true).fetchSemanticsNode()
+
+    private fun layoutOf(text: String): TextLayoutResult {
+        val results = mutableListOf<TextLayoutResult>()
+        textNode(text).config[SemanticsActions.GetTextLayoutResult].action?.invoke(results)
+        return results.single()
+    }
+
+    /** True when the label and the badge name ("Senast: Månads-rytm,") share the first line. */
+    private fun headOnFirstLine(
+        line: String,
+        head: String,
+    ): Boolean = layoutOf(line).getLineEnd(0, visibleEnd = true) >= head.length
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `at 1_5x on a 411dp phone the seals stay beside a one-line kicker`() {
+        RuntimeEnvironment.setFontScale(1.5f)
+        show(listOf(monthlyRhythm, redlisted, bronze), count = 8)
+        assertEquals(1, layoutOf("DITT TROFÉRUM").lineCount, "the kicker stays on one line")
+        assertTrue(headOnFirstLine("Senast: Månads-rytm, 11 okt", "Senast: Månads-rytm,"), "Senast: stays with the name")
+        val text = textNode("Senast: Månads-rytm, 11 okt").boundsInRoot
+        val newest = fanSeals().last().boundsInRoot
+        assertTrue(newest.left >= text.right, "the seals sit beside the text: text $text, seal $newest")
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `at 1_0x on a 411dp phone the card keeps the design layout`() {
+        show(listOf(monthlyRhythm, redlisted, bronze), count = 8)
+        assertEquals(1, layoutOf("DITT TROFÉRUM").lineCount)
+        assertEquals(1, layoutOf("Senast: Månads-rytm, 11 okt").lineCount)
+        val text = textNode("Senast: Månads-rytm, 11 okt").boundsInRoot
+        assertTrue(fanSeals().last().boundsInRoot.left >= text.right, "the seals sit beside the text")
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `at 2_0x on a 411dp phone the kicker would wrap beside the seals, so they go below`() {
+        RuntimeEnvironment.setFontScale(2.0f)
+        show(listOf(monthlyRhythm, redlisted, bronze), count = 8)
+        assertEquals(1, layoutOf("DITT TROFÉRUM").lineCount, "the kicker stays on one line")
+        assertTrue(headOnFirstLine("Senast: Månads-rytm, 11 okt", "Senast: Månads-rytm,"), "Senast: stays with the name")
+        val text = textNode("Senast: Månads-rytm, 11 okt").boundsInRoot
+        fanSeals().forEach { seal ->
+            assertTrue(seal.boundsInRoot.top >= text.bottom, "the seals sit below the text: text $text, seal ${seal.boundsInRoot}")
+        }
+    }
+
+    @Test
+    @Config(qualifiers = "+en")
+    fun `at 2_0x on a 411dp phone the english kicker and latest line stay whole`() {
+        RuntimeEnvironment.setFontScale(2.0f)
+        show(listOf(monthlyRhythm, redlisted, bronze), count = 8, locale = Locale.EN)
+        assertEquals(1, layoutOf("YOUR TROPHY ROOM").lineCount)
+        assertTrue(headOnFirstLine("Latest: Monthly rhythm, Oct 11", "Latest: Monthly rhythm,"))
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `at 2_0x the empty card keeps its kicker on one line`() {
+        RuntimeEnvironment.setFontScale(2.0f)
+        show(emptyList())
+        assertEquals(1, layoutOf("DITT TROFÉRUM").lineCount)
     }
 
     // The longest single words among the badge names (Rödlistemästare, Rovfågelskådare,

@@ -26,7 +26,9 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
@@ -59,11 +61,16 @@ import se.birdy.content.Locale
 private val EntryShape = RoundedCornerShape(16.dp)
 private val TextToFanGap = 12.dp
 
-/** What the card says. [count] is null on the empty card, which has only the [line]. */
+/**
+ * What the card says. [count] is null on the empty card, which has only the [line]. [lineHead] is
+ * the part of the line that must stay on one line ("Senast: Månads-rytm,"; null when empty).
+ */
 @Immutable
 private data class EntryTexts(
+    val kicker: String,
     val count: String?,
     val line: String,
+    val lineHead: String?,
     val a11y: String,
 )
 
@@ -138,18 +145,24 @@ private fun entryTexts(
     zone: TimeZone,
     now: Instant,
 ): EntryTexts {
+    val kicker = stringResource(Res.string.trophy_room_entry_eyebrow)
     if (latest == null) {
         return EntryTexts(
+            kicker = kicker,
             count = null,
             line = stringResource(Res.string.trophy_room_entry_first_stamp),
+            lineHead = null,
             a11y = stringResource(Res.string.trophy_room_entry_empty_a11y),
         )
     }
     val name = stringResource(BadgeStringMap.nameFor(latest.badge.id))
     val date = formatRelativeBadgeDate(latest.unlockedAt, now, zone, locale)
     return EntryTexts(
+        kicker = kicker,
         count = pluralStringResource(Res.plurals.trophy_room_entry_stamps, unlockedCount, unlockedCount),
         line = stringResource(Res.string.trophy_room_entry_latest, name, date),
+        // The line without its date: the label and the badge name, which must not part.
+        lineHead = stringResource(Res.string.trophy_room_entry_latest, name, "").trimEnd(),
         a11y =
             pluralStringResource(Res.plurals.trophy_room_entry_stamps_a11y, unlockedCount, unlockedCount, name, date),
     )
@@ -163,7 +176,7 @@ private fun EntryTextBlock(
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        MicroLabel(stringResource(Res.string.trophy_room_entry_eyebrow))
+        MicroLabel(texts.kicker)
         if (texts.count != null) Text(text = stampCountText(texts.count), style = countStyle)
         Text(text = texts.line, style = lineStyle)
     }
@@ -196,9 +209,10 @@ private fun lineTextStyle(empty: Boolean): TextStyle {
 }
 
 /**
- * How wide the text beside the seals must be, at the current text size: the count ("8 stämplar")
- * on one line and the widest single word of the handwritten line. Narrower than that, the count
- * would split or a word would break in two, so the seals go below the text instead.
+ * How wide the text beside the seals must be, at the current text size, for each piece to stay
+ * whole: the kicker ("── DITT TROFÉRUM") and the count ("8 stämplar") on one line each, the label
+ * and the badge name ("Senast: Månads-rytm,") together, and every word of the handwritten line.
+ * Narrower than that, the seals go below the text instead.
  */
 @Composable
 private fun textNeeds(
@@ -208,12 +222,29 @@ private fun textNeeds(
 ): Dp {
     val measurer = rememberTextMeasurer()
     val density = LocalDensity.current
-    return remember(texts, countStyle, lineStyle, measurer, density) {
-        val countWidth = texts.count?.let { measurer.measure(stampCountText(it), countStyle).size.width } ?: 0
-        val lineWords = texts.line.split(' ').map { measurer.measure(it, lineStyle).size.width }
-        with(density) { maxOf(countWidth, lineWords.maxOrNull() ?: 0).toDp() }
+    val kickerStyle = LocalTextStyle.current.merge(MicroLabelMeasureStyle)
+    return remember(texts, countStyle, lineStyle, kickerStyle, measurer, density) {
+        val rule = with(density) { MicroLabelRule.roundToPx() }
+        val kicker = measurer.measure(texts.kicker.uppercase(), kickerStyle).size.width + rule
+        val count = texts.count?.let { measurer.measure(stampCountText(it), countStyle).size.width } ?: 0
+        val head = texts.lineHead?.let { measurer.measure(it, lineStyle).size.width } ?: 0
+        val words = texts.line.split(' ').maxOfOrNull { measurer.measure(it, lineStyle).size.width } ?: 0
+        with(density) { maxOf(kicker, count, head, words).toDp() }
     }
 }
+
+// MicroLabel's look (components/MicroLabel.kt): an 18dp rule and an 8dp gap before Inter caps at
+// 9.5sp, W600, 0.16em. Mirrored here only to measure it; the layout tests catch a drift (the
+// kicker must stay on one line beside the seals at 1.0x and 1.5x on 411dp).
+private val MicroLabelRule = 26.dp
+private val MicroLabelMeasureStyle =
+    TextStyle(
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 9.5.sp,
+        lineHeight = 12.sp,
+        fontWeight = FontWeight.W600,
+        letterSpacing = 0.16.em,
+    )
 
 /** "8 *stämplar*": the number upright, the word in rust italic, as in every journal headline. */
 private fun stampCountText(text: String): AnnotatedString =

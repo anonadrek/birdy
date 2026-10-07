@@ -72,6 +72,14 @@ import se.birdy.domain.badge.Badge
 import se.birdy.domain.badge.BadgeTier
 import se.birdy.domain.badge.BadgeUnlock
 
+/**
+ * The Märken tab. [now] is the moment badge dates are read against (a date shows its year only
+ * when the year differs); it defaults to the real clock, read once, and tests pin it.
+ *
+ * LongParameterList: over the threshold before 1.3.0 (baselined); adding `now` changed the
+ * baseline's exact signature match, so this is a justified suppress, not a baseline edit.
+ */
+@Suppress("LongParameterList")
 @Composable
 fun BadgesScreen(
     state: BadgesUiState,
@@ -84,9 +92,9 @@ fun BadgesScreen(
     onOpenTrophyRoom: () -> Unit,
     showPremiumTeaser: Boolean = true,
     modifier: Modifier = Modifier,
+    now: Instant = remember { Clock.System.now() },
 ) {
     var selectedLocked: LockedBadgeProgress? by remember { mutableStateOf(null) }
-    val now = remember { Clock.System.now() }
 
     JournalScaffold(modifier = modifier) { padding ->
         Box(modifier = Modifier.fillMaxSize().padding(padding)) {
