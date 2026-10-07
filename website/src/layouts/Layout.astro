@@ -8,6 +8,12 @@ interface Props {
   locale: Locale;
   pathname: string;
   noAlternateLocale?: boolean;
+  /** The other language's path when the two languages use different slugs (species pages). */
+  alternatePath?: string;
+  /** Adds `<meta name="robots" content="noindex, follow">` (small groups and unpublished preview pages). */
+  noindex?: boolean;
+  /** Extra schema.org nodes appended to the page's @graph. */
+  jsonLd?: Record<string, unknown>[];
   title?: string;
   description?: string;
   articleDate?: string;
@@ -16,12 +22,15 @@ interface Props {
   ogImageAlt?: string;
 }
 
-const { locale, pathname, noAlternateLocale = false, title, description, articleDate, ogImage, ogImageAlt } = Astro.props;
+const {
+  locale, pathname, noAlternateLocale = false, alternatePath, noindex = false, jsonLd: extraJsonLd = [],
+  title, description, articleDate, ogImage, ogImageAlt,
+} = Astro.props;
 const copy = getCopy(locale);
 const metaTitle = title ?? copy.meta.title;
 const metaDescription = description ?? copy.meta.description;
 const altLocale: Locale = locale === 'en' ? 'sv' : 'en';
-const altPath = alternateHref(locale, pathname);
+const altPath = alternatePath ?? alternateHref(locale, pathname);
 const canonical = new URL(pathname, Astro.site).toString();
 // ?v=2: the share images changed to espresso (2026-09-28); bump when they are regenerated so platforms refetch them.
 const ogImageUrl = new URL(ogImage ?? `/og-field-${locale}.png?v=2`, Astro.site).toString();
@@ -71,6 +80,7 @@ const jsonLd = {
         acceptedAnswer: { '@type': 'Answer', text: item.a },
       })),
     }] : []),
+    ...extraJsonLd,
   ],
 };
 ---
@@ -85,6 +95,7 @@ const jsonLd = {
 
     <title>{metaTitle}</title>
     <meta name="description" content={metaDescription} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
 
     <link rel="canonical" href={canonical} />
     {!noAlternateLocale && <link rel="alternate" hreflang={locale} href={canonical} />}
@@ -133,6 +144,22 @@ const jsonLd = {
   </head>
   <body>
     <slot />
+    <script is:inline>
+      // Own visits (spec 2026-09-25 §15): ?va-ignore=1 marks this browser, ?va-ignore=0 removes the mark.
+      // A marked browser sends nothing to Vercel Analytics. Runs before the analytics element below.
+      (function () {
+        try {
+          var flag = new URLSearchParams(location.search).get('va-ignore');
+          if (flag === '1') localStorage.setItem('birdy-va-ignore', '1');
+          if (flag === '0') localStorage.removeItem('birdy-va-ignore');
+          if (localStorage.getItem('birdy-va-ignore') === '1') {
+            window.webAnalyticsBeforeSend = function () { return null; };
+          }
+        } catch (e) {
+          // Storage blocked (private mode): the visit is counted as usual.
+        }
+      })();
+    </script>
     <Analytics />
     <script>
       const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
