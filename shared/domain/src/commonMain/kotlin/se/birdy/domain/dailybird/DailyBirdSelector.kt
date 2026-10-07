@@ -3,6 +3,7 @@ package se.birdy.domain.dailybird
 import kotlinx.datetime.LocalDate
 import se.birdy.content.Abundance
 import se.birdy.content.SpeciesId
+import se.birdy.content.isExtinctIucnStatus
 import se.birdy.content.model.Species
 import kotlin.random.Random
 
@@ -20,6 +21,9 @@ class DailyBirdSelector(
         val candidates =
             all.values
                 .mapNotNull { species ->
+                    // Never an extinct species: the daily bird is one to go out and find. Filtered
+                    // before the buckets: an extinct species in the data changes no other species' days.
+                    if (isExtinctIucnStatus(species.iucnStatus)) return@mapNotNull null
                     val rawTag = species.season[monthKey] ?: return@mapNotNull null
                     val tag = rawTag.toSeasonTag() ?: return@mapNotNull null
                     val nordic = species.regions.any { it in regionBucket }

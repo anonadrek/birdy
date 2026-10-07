@@ -1,5 +1,7 @@
 package se.birdy.app.util
 
+import se.birdy.content.isExtinctIucnStatus
+
 // `iucn_status` in species.db is the GLOBAL IUCN red list, not a national one — any KDoc or UI
 // label that names it should say "global rödlista (IUCN)" / "global red list (IUCN)".
 private val RED_LISTED_STATUSES = setOf("NT", "VU", "EN", "CR")
@@ -18,6 +20,7 @@ fun isRedListed(iucnStatus: String?): Boolean = iucnStatus != null && iucnStatus
 /**
  * Extinct (EX) or extinct in the wild (EW). Not red-listed in the app's sense (the badge rule and
  * the Rödlistad tag are about species you can still find); the encyclopedia tags them "Utdöd"
- * instead (release 1.3.0 Task 7g: Garfågel, Kanariestrandskata, Smalnäbbad spov).
+ * instead (release 1.3.0 Task 7g: Garfågel, Kanariestrandskata, Smalnäbbad spov). The definition
+ * lives in shared:content ([isExtinctIucnStatus]), which the daily bird's selector uses too.
  */
-fun isExtinct(iucnStatus: String?): Boolean = iucnStatus == "EX" || iucnStatus == "EW"
+fun isExtinct(iucnStatus: String?): Boolean = isExtinctIucnStatus(iucnStatus)
