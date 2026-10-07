@@ -1335,7 +1335,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "searchSubmit": "Sök",
     "kicker": "Uppslagsverket",
     "hubHeadline": "Fåglar i Sverige och *Europa*",
-    "hubLead": "{n} vanliga fåglar med foton, kännetecken och läten. Samma uppslagsverk som i appen, där du också kan känna igen fågeln på plats.",
+    "hubLead": "{n} vanliga fåglar med foton, kännetecken och läten. Alla finns också i appens uppslagsverk, och med appen kan du känna igen fåglar på plats.",
     "hubGroups": "Grupperna",
     "hubCompare": "Lätta att blanda ihop",
     "hubAll": "Alla arter från A till Ö",
@@ -1401,7 +1401,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "chartCaption": "Andel av alla fågelrapporter per månad i Artportalen 2016 till 2025.",
     "mapTitle": "Var rapporteras den?",
     "mapCaption": "Andel av alla fågelrapporter per län i Artportalen 2016 till 2025.",
-    "mapLegend": ["Inga rapporter", "Liten andel", "Mellanstor andel", "Störst andel"],
+    "mapLegend": ["Inga rapporter", "Liten andel", "Mellanstor andel", "Stor andel"],
     "monthLetters": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
     "moreFamily": "Fler {family}",
     "moreGroup": "Fler {group}",
@@ -1416,8 +1416,9 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "unknownAuthor": "okänd fotograf",
     "recordingLabel": "Inspelning: {name}",
     "recordingCredit": "Inspelning:",
-    "unknownRecordist": "okänd inspelare",
-    "trimmed": "klippt",
+    "unknownRecordist": "okänd upphovsperson",
+    "edited": "bearbetad",
+    "trimmedEdited": "klippt och bearbetad",
     "textCredit": "Texten bygger på Wikipedia och får delas under",
     "sources": "Källor",
     "articleSv": "svenska artikeln",
@@ -1447,45 +1448,47 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "description": "Så skrivs Birdys artsidor: källorna, hur AI används, hur fakta kontrolleras, vilka licenser som gäller och hur du rapporterar fel.",
     "crumb": "Så gör vi artsidorna",
     "headline": "Så gör vi *artsidorna*",
-    "lead": "Varje artsida bygger på flera källor och kontrolleras i flera steg, mest automatiskt och vid undantag av en människa, innan den publiceras. Så här går det till.",
+    "lead": "Varje artsida bygger på flera källor och kontrolleras i flera steg innan den publiceras. Det mesta sköts automatiskt, och det som sticker ut avgörs av en människa. Så här går det till.",
     "sections": [
       {
         "heading": "Källorna",
         "paragraphs": [
           "Texterna bygger på artiklarna om varje art på svenska, engelska och tyska Wikipedia.",
-          "Diagrammet över när arten syns och kartan över var den rapporteras räknas fram ur Artportalen, Sveriges rapportsystem för fynd av växter och djur, som SLU Artdatabanken delar via den internationella databasen GBIF. Siffrorna visar artens andel av alla fågelrapporter, så att en månad eller ett län med många fågelskådare inte ser ut att ha fler fåglar än det har.",
-          "Den svenska rödlistestatusen kommer från Rödlistade arter i Sverige 2025, från SLU Artdatabanken. Foton och inspelningar kommer från Wikimedia Commons."
+          "Diagrammet över när arten ses och kartan över var den rapporteras räknas fram ur Artportalen, Sveriges rapportsystem för fynd av växter, djur och svampar. SLU Artdatabanken delar rapporterna öppet via den internationella databasen GBIF. Siffrorna visar artens andel av alla fågelrapporter, så att arten inte ser vanligare ut i en viss månad eller ett visst län bara för att fler är ute och skådar där och då.",
+          "Den svenska rödlistestatusen kommer från SLU Artdatabankens Rödlistade arter i Sverige 2025 och den globala från IUCN:s rödlista via Wikidata. Foton och inspelningar kommer från Wikimedia Commons."
         ]
       },
       {
         "heading": "Så används AI",
         "paragraphs": [
-          "En språkmodell läser artiklarna och plockar ut fakta om utseende, läte, miljö och förekomst i Sverige. Varje faktum ska ha ett ordagrant citat ur artikeln, och ett program kontrollerar att citatet verkligen finns där. Fakta utan giltigt citat stryks.",
-          "Texten på sidan skrivs sedan av en modell som bara får se de fakta som har godkänts, inte artiklarna. En annan modell läser därefter varje mening och jämför den med fakta. Meningar som inte stöds skrivs om eller stryks.",
-          "Diagrammet, kartan och rödlistestatusen räknas fram direkt ur datan, utan någon språkmodell."
+          "En språkmodell läser artiklarna och plockar ut fakta om bland annat utseende, läte, miljö och förekomst i Sverige. Varje faktum ska ha ett ordagrant citat ur artikeln, och ett program kontrollerar att citatet verkligen finns där. Fakta utan giltigt citat stryks.",
+          "Texten på sidan skrivs sedan av en modell som bara får se de fakta som har godkänts, inte artiklarna. En annan modell läser därefter varje mening och jämför den med de fakta den bygger på. Meningar som inte stöds skrivs om eller stryks.",
+          "Diagrammet och kartan räknas fram, och rödlistestatusen hämtas, direkt ur datan utan någon språkmodell."
         ]
       },
       {
-        "heading": "Granskningen",
+        "heading": "Kontrollen",
         "paragraphs": [
-          "En andra modell kontrollerar varje faktum mot sitt citat i artikeln. Kod jämför siffrorna mellan de olika språkens artiklar och jämför förekomsten i Sverige med Artportalen och den svenska rödlistan. Inspelningen kontrolleras med Birdys egen ljudmodell. Det som inte går att avgöra automatiskt granskas av Albin Abrahamsson, som har byggt Birdy, innan sidan publiceras. Efter publicering granskar han dessutom ett löpande stickprov av redan publicerade sidor. Datumet för den senaste kontrollen står längst ned på varje artsida."
+          "Innan texten skrivs kontrollerar en annan modell än den som plockade ut fakta varje faktum mot citatet och stycket runt det i artikeln, och fakta som inte stöds fullt ut stryks. Kod jämför mått som längd och vikt mellan artiklarna på de olika språken, och förekomsten i Sverige med Artportalen och den svenska rödlistan. Inspelningen kontrolleras med Birdys egen ljudmodell, och känner modellen inte igen arten visas ingen inspelning. Det som inte går att avgöra automatiskt granskas av Albin Abrahamsson, som har byggt Birdy, innan sidan publiceras. Efter publiceringen läser han dessutom ett löpande stickprov av sidorna. Datumet för den senaste kontrollen står längst ned på varje artsida."
         ]
       },
       {
         "heading": "Licenserna",
         "paragraphs": [
-          "Texterna på artsidorna bygger på Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy som källa och delar vidare på samma villkor. Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem."
+          "Texterna på art- och jämförelsesidorna bygger på Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy och Wikipediaartiklarna som källor och delar vidare under samma licens. Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem. Fotona visas oförändrade, bara nedskalade. Inspelningarna är bearbetade (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet."
         ]
       },
       {
         "heading": "Rättelser",
         "paragraphs": [
-          "Hittar du ett fel? Skriv till {email}, gärna med en länk till sidan. Vi rättar sidan och sätter ett nytt kontrolldatum."
+          "Hittar du ett fel? Skriv till {email}, gärna med en länk till sidan. Stämmer det rättar vi sidan och sätter ett nytt kontrolldatum."
         ]
       }
     ]
   },
 ```
+
+(Rättat i efterhand, controller-granskning 2026-10-07: `trimmed`/`klippt` bytt mot `edited`/`trimmedEdited` enligt Tillägget nedan i Task 9, `unknownRecordist` bytt till "okänd upphovsperson", rubriken "Granskningen" bytt till "Kontrollen" enligt specens §8, och `hubLead`, `mapLegend[3]` samt alla fem stycken i `speciesAbout.sections` skrivna om för sanningshalt — se motsvarande ändring i Step 2 nedan och i `copy.sv.json`.)
 
 - [ ] **Step 2: Samma nycklar i `copy.en.json`**
 
@@ -1500,7 +1503,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "searchSubmit": "Search",
     "kicker": "Field guide",
     "hubHeadline": "Birds of Sweden and *Europe*",
-    "hubLead": "{n} common birds with photos, field marks and calls. The same field guide as in the app, where you can also identify the bird on the spot.",
+    "hubLead": "{n} common birds with photos, field marks and calls. All of them are in the app's field guide too, and with the app you can identify birds on the spot.",
     "hubGroups": "The groups",
     "hubCompare": "Easy to mix up",
     "hubAll": "All species A to Z",
@@ -1566,15 +1569,15 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "chartCaption": "Share of all bird reports per month in Artportalen, 2016 to 2025.",
     "mapTitle": "Where is it reported?",
     "mapCaption": "Share of all bird reports per county in Artportalen, 2016 to 2025.",
-    "mapLegend": ["No reports", "Small share", "Medium share", "Largest share"],
+    "mapLegend": ["No reports", "Small share", "Medium share", "Large share"],
     "monthLetters": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
     "moreFamily": "More in the {family} family",
     "moreGroup": "More {group}",
     "appHeadline": "Not sure what you are seeing?",
-    "appTextBoth": "Birdy identifies this species from a photo or its song, right on your phone and without signal.",
-    "appTextSound": "Birdy identifies this species from its song, right on your phone and without signal.",
-    "appTextPhoto": "Birdy identifies this species from a photo, right on your phone and without signal.",
-    "appTextNone": "Birdy helps you identify the birds around you from photos and songs, right on your phone and without signal.",
+    "appTextBoth": "Birdy identifies this species from a photo or its song, right on your phone and without a signal.",
+    "appTextSound": "Birdy identifies this species from its song, right on your phone and without a signal.",
+    "appTextPhoto": "Birdy identifies this species from a photo, right on your phone and without a signal.",
+    "appTextNone": "Birdy helps you identify the birds around you from photos and songs, right on your phone and without a signal.",
     "plate": "Pl. {n}",
     "photoCredit": "Photo:",
     "via": "via",
@@ -1582,7 +1585,8 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "recordingLabel": "Recording: {name}",
     "recordingCredit": "Recording:",
     "unknownRecordist": "unknown recordist",
-    "trimmed": "trimmed",
+    "edited": "edited",
+    "trimmedEdited": "trimmed and edited",
     "textCredit": "The text is based on Wikipedia and may be shared under",
     "sources": "Sources",
     "articleSv": "Swedish article",
@@ -1612,40 +1616,40 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "description": "How the species pages on Birdy are made: the sources, how AI is used, how the facts are checked, the licences and how to report a mistake.",
     "crumb": "How we make these pages",
     "headline": "How we make the *species pages*",
-    "lead": "Every species page is built from several sources and checked in several steps, mostly automatically and by a person when something needs it, before it is published. This is how it works.",
+    "lead": "Every species page is built from several sources and checked in several steps before it is published. Most of the checking is automatic, and anything that stands out is decided by a person. This is how it works.",
     "sections": [
       {
         "heading": "The sources",
         "paragraphs": [
           "The texts are based on the articles about each species on Swedish, English and German Wikipedia.",
-          "The chart of when the species is seen and the map of where it is reported are calculated from Artportalen, Sweden's reporting system for sightings of plants and animals, which the SLU Swedish Species Information Centre shares through the international database GBIF. The figures show the species' share of all bird reports, so that a month or a county with many birdwatchers does not look as if it had more birds than it does.",
-          "The Swedish red list status comes from The Swedish Red List 2025 by the SLU Swedish Species Information Centre. Photos and recordings come from Wikimedia Commons."
+          "The chart of when the species is seen and the map of where it is reported are calculated from Artportalen, Sweden's reporting system for sightings of plants, animals and fungi. The SLU Swedish Species Information Centre shares the reports openly through the international database GBIF. The figures show the species' share of all bird reports, so that it does not look more common in a month or a county just because more birdwatchers are out then or there.",
+          "The Swedish red list status comes from The Swedish Red List 2025 by the SLU Swedish Species Information Centre, and the global status from the IUCN Red List via Wikidata. Photos and recordings come from Wikimedia Commons."
         ]
       },
       {
         "heading": "How AI is used",
         "paragraphs": [
-          "A language model reads the articles and picks out facts about appearance, call, habitat and occurrence in Sweden. Every fact needs a word for word quote from the article, and a program checks that the quote really is there. Facts without a valid quote are removed.",
-          "The text on the page is then written by a model that only sees the approved facts, not the articles. Another model then reads every sentence and compares it with the facts. Sentences that are not supported are rewritten or removed.",
-          "The chart, the map and the red list status are calculated directly from the data, without any language model."
+          "A language model reads the articles and picks out facts about appearance, calls and song, habitat and occurrence in Sweden, among other things. Every fact needs a verbatim quote from the article, and a program checks that the quote really is there. Facts without a valid quote are removed.",
+          "The text on the page is then written by a model that only sees the approved facts, not the articles. Another model then reads every sentence and compares it with the facts it is based on. Sentences that are not supported are rewritten or removed.",
+          "The chart and the map are calculated, and the red list status is looked up, directly from the data, without any language model."
         ]
       },
       {
-        "heading": "The review",
+        "heading": "The checks",
         "paragraphs": [
-          "A second model checks every fact against its quote in the article. Code compares the numbers between the different language articles, and compares the occurrence in Sweden with Artportalen and the Swedish red list. The recording is checked with Birdy's own sound model. What cannot be settled automatically is reviewed by Albin Abrahamsson, who built Birdy, before the page is published. After publishing, he also reviews an ongoing spot check of already published pages. The date of the latest check is at the bottom of every species page."
+          "Before the text is written, a different model from the one that picked out the facts checks every fact against its quote and the paragraph around it in the article, and facts that are not fully supported are removed. Code compares measurements such as length and weight between the articles in the different languages, and the occurrence in Sweden with Artportalen and the Swedish red list. The recording is checked with Birdy's own sound model, and if the model does not recognise the species, no recording is shown. Anything that cannot be settled automatically is reviewed by Albin Abrahamsson, who built Birdy, before the page is published. After publication, he also reads a running sample of the pages. The date of the latest check is at the bottom of every species page."
         ]
       },
       {
         "heading": "The licences",
         "paragraphs": [
-          "The texts on the species pages are based on Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and share on the same terms. Photos and recordings have their own licences, and every page names the author, licence and source for them."
+          "The texts on the species and comparison pages are based on Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and the Wikipedia articles and share under the same licence. Photos and recordings have their own licences, and every page names the author, licence and source for them. The photos are shown unchanged, only scaled down. The recordings are edited (at most 20 seconds, mono, loudness evened out, MP3), and an edited CC BY-SA recording is shared under the same licence as the original."
         ]
       },
       {
         "heading": "Corrections",
         "paragraphs": [
-          "Found a mistake? Write to {email}, ideally with a link to the page. We correct the page and set a new check date."
+          "Found a mistake? Write to {email}, ideally with a link to the page. If we confirm it, we correct the page and set a new check date."
         ]
       }
     ]
@@ -2357,7 +2361,7 @@ git commit -m "feat(website): gruppsidorna med familjer, noindex för små grupp
 
 ### Task 9: Diagrammet, kartan, spelaren och creditblocket
 
-**Tillägg (2026-10-06, fas 1b:s slutgranskning Minor 11; ordvalet godkänt av Albin 2026-10-06, gäller):** varje inspelning är bearbetad, inte bara de klippta: pipelinen gör om den till mono, ljudnivånormaliserar och kodar om den till MP3 (`convert_to_mp3`). CC BY och CC BY-SA kräver att creditraden säger att verket är ändrat, så raden ska alltid säga det. Förslag: nycklarna `trimmed` blir `edited` ("bearbetad" / "edited") och `trimmedEdited` ("klippt och bearbetad" / "trimmed and edited"), och spelarens bildtext slutar med `, ${audio.trimmed ? t.species.trimmedEdited : t.species.edited}` i stället för `{audio.trimmed && ...}`; Playwright-kontrollen nedan letar efter "bearbetad" i stället för "klippt". Specen är ändrad på samma sätt (avsnitt 2 punkt 5, avsnitt 8 om licenserna, avsnitt 10 punkt 3 och bilaga A:s två rader för inspelningscredit). Licensstycket på "Så gör vi artsidorna" (copy-nycklarna i Task 5) får samma mening som avsnitt 8: inspelningarna är bearbetade (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), och en bearbetad CC BY-SA-inspelning delas under samma licens. Pipelinen avvisar sedan 2026-10-06 dessutom en CC BY- eller CC BY-SA-inspelning utan upphovsperson, så "okänd inspelare" förekommer bara för CC0 och public domain.
+**Tillägg (2026-10-06, fas 1b:s slutgranskning Minor 11; ordvalet godkänt av Albin 2026-10-06, gäller):** varje inspelning är bearbetad, inte bara de klippta: pipelinen gör om den till mono, ljudnivånormaliserar och kodar om den till MP3 (`convert_to_mp3`). CC BY och CC BY-SA kräver att creditraden säger att verket är ändrat, så raden ska alltid säga det. Förslag: nycklarna `trimmed` blir `edited` ("bearbetad" / "edited") och `trimmedEdited` ("klippt och bearbetad" / "trimmed and edited"), och spelarens bildtext slutar med `, ${audio.trimmed ? t.species.trimmedEdited : t.species.edited}` i stället för `{audio.trimmed && ...}`; Playwright-kontrollen nedan letar efter "bearbetad" i stället för "klippt". Specen är ändrad på samma sätt (avsnitt 2 punkt 5, avsnitt 8 om licenserna, avsnitt 10 punkt 3 och bilaga A:s två rader för inspelningscredit). Licensstycket på "Så gör vi artsidorna" (copy-nycklarna i Task 5) får samma mening som avsnitt 8: inspelningarna är bearbetade (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), och en bearbetad CC BY-SA-inspelning delas under samma licens. Pipelinen avvisar sedan 2026-10-06 dessutom en CC BY- eller CC BY-SA-inspelning utan upphovsperson, så "okänd upphovsperson" (Task 5:s `unknownRecordist`, rättad i copy-granskningen 2026-10-07) förekommer bara för CC0 och public domain.
 
 **Files:**
 - Create: `website/src/components/species/MonthChart.astro`
@@ -2482,7 +2486,7 @@ const src = audioHref(s);
     <figcaption data-credit-for={creditKey}>
       {t.species.recordingCredit} {audio.author ?? t.species.unknownRecordist},{' '}
       {audio.licenseUrl ? <a href={audio.licenseUrl} rel="license noopener">{audio.license}</a> : audio.license},{' '}
-      {t.species.via} <a href={audio.sourceUrl} rel="noopener">Wikimedia Commons</a>{audio.trimmed && `, ${t.species.trimmed}`}
+      {t.species.via} <a href={audio.sourceUrl} rel="noopener">Wikimedia Commons</a>, {audio.trimmed ? t.species.trimmedEdited : t.species.edited}
     </figcaption>
   </figure>
 )}
@@ -2615,7 +2619,7 @@ test.describe('artsidan', () => {
     const src = await audio.getAttribute('src');
     expect(src).toMatch(/^\/audio\/species\/Q25485\.[0-9a-f]{10}\.mp3$/);
     expect((await request.get(src!)).status()).toBe(200);
-    await expect(page.locator('[data-credit-for="audio"]')).toContainText('klippt');
+    await expect(page.locator('[data-credit-for="audio"]')).toContainText('bearbetad');
 
     await expect(page.locator('[data-chart] rect[data-month]')).toHaveCount(12);
     await expect(page.locator('[data-map] path[data-county]')).toHaveCount(21);
@@ -2790,6 +2794,11 @@ const moreHeading = rel.kind === 'family'
   ? t.species.moreFamily.replace('{family}', locale === 'sv' ? s.family.sv.toLocaleLowerCase('sv') : s.family.latin)
   : t.species.moreGroup.replace('{group}', group.name[locale].toLocaleLowerCase(locale));
 const marginalia = s.marginalia?.[locale];
+// Obs (controller-granskning 2026-10-07): `species-groups.json`s gruppnamn för nyckeln `other` är
+// "Övriga fåglar" / "Other birds", så den generiska mallen `moreGroup` ger "Fler övriga fåglar" /
+// "More other birds" oförändrad. Det låter rimligt på svenska men dubblerat och klumpigt på engelska
+// ("more ... other birds"). Specialfall gruppnyckeln `other` här (och i samma mönster på GroupPage.astro,
+// Task 8) med en egen rad, t.ex. en engelsk `moreOther`-nyckel, i stället för att köra den genom `moreGroup`.
 
 const months = s.data?.months;
 const counties = s.data?.counties;
@@ -4132,7 +4141,7 @@ git commit -m "feat(website): sitemap för artsidorna, SEO-reglerna som kod, axe
 - [ ] **Step 1: Alla vakter och tester**
 
 Run: `npm run verify:fixtures && npx astro check && npm run test:no-accuracy && PLAYWRIGHT_PORT=4327 npx playwright test`
-Expected: allt grönt (utom det kända typfelet i `astro.config.mjs`).
+Expected: allt grönt. (Det gamla Vite/Tailwind-typfelet i `astro.config.mjs`, som den här raden tidigare räknade bort, är borta sedan dependabot-fixen 2026-10-02 lyfte Astro till version 7: `astro check` ska rapportera noll fel. `tools/store-assets/render-feature.mjs` har fortfarande en oförändrad, orelaterad varning om `window.setScreen`.)
 
 - [ ] **Step 2: Skärmdumpar av testdatan (för ögat, committas inte)**
 
@@ -4171,7 +4180,7 @@ npm ci && npm run verify:fixtures && npx astro check && npm run test:no-accuracy
 git push
 ```
 
-`npm run build:prod` körs sist, efter Playwright, inte före: den bygger i riktigt läge mot `src/data/`, där ingen art är publicerad än, och skriver då över `dist/` med ett artlöst bygge. Körde den tidigare i kedjan skulle Playwright-testerna (som förväntar sig testdatans arter) tysta testas mot det artlösa produktionsbygget i stället för mot `verify:fixtures`s bygge. Här är den bara ett rök-test: det ska gå igenom utan fel, inget mer.
+`npm run build:prod` körs sist, efter Playwright, inte före: den bygger i riktigt läge mot `src/data/`, där ingen art är publicerad än, och skriver då över `dist/` med ett artlöst bygge. Körde den tidigare i kedjan skulle Playwright-testerna (som förväntar sig testdatans arter) i tysthet testas mot det artlösa produktionsbygget i stället för mot `verify:fixtures`s bygge. Här är den bara ett rök-test: det ska gå igenom utan fel, inget mer. **Efter detta steg står `dist/` kvar som produktionsbygget** (artlöst), inte testdatans: kör `npm run build:fixtures` igen innan nästa Playwright-körning i samma arbetspass.
 
 Sedan i huvudmappen för `main` (worktreen kan inte byta till `main`):
 

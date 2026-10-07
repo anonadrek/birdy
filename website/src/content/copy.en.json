@@ -278,7 +278,7 @@
     "searchSubmit": "Search",
     "kicker": "Field guide",
     "hubHeadline": "Birds of Sweden and *Europe*",
-    "hubLead": "{n} common birds with photos, field marks and calls. The same field guide as in the app, where you can also identify the bird on the spot.",
+    "hubLead": "{n} common birds with photos, field marks and calls. All of them are in the app's field guide too, and with the app you can identify birds on the spot.",
     "hubGroups": "The groups",
     "hubCompare": "Easy to mix up",
     "hubAll": "All species A to Z",
@@ -344,15 +344,15 @@
     "chartCaption": "Share of all bird reports per month in Artportalen, 2016 to 2025.",
     "mapTitle": "Where is it reported?",
     "mapCaption": "Share of all bird reports per county in Artportalen, 2016 to 2025.",
-    "mapLegend": ["No reports", "Small share", "Medium share", "Largest share"],
+    "mapLegend": ["No reports", "Small share", "Medium share", "Large share"],
     "monthLetters": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
     "moreFamily": "More in the {family} family",
     "moreGroup": "More {group}",
     "appHeadline": "Not sure what you are seeing?",
-    "appTextBoth": "Birdy identifies this species from a photo or its song, right on your phone and without signal.",
-    "appTextSound": "Birdy identifies this species from its song, right on your phone and without signal.",
-    "appTextPhoto": "Birdy identifies this species from a photo, right on your phone and without signal.",
-    "appTextNone": "Birdy helps you identify the birds around you from photos and songs, right on your phone and without signal.",
+    "appTextBoth": "Birdy identifies this species from a photo or its song, right on your phone and without a signal.",
+    "appTextSound": "Birdy identifies this species from its song, right on your phone and without a signal.",
+    "appTextPhoto": "Birdy identifies this species from a photo, right on your phone and without a signal.",
+    "appTextNone": "Birdy helps you identify the birds around you from photos and songs, right on your phone and without a signal.",
     "plate": "Pl. {n}",
     "photoCredit": "Photo:",
     "via": "via",
@@ -360,7 +360,8 @@
     "recordingLabel": "Recording: {name}",
     "recordingCredit": "Recording:",
     "unknownRecordist": "unknown recordist",
-    "trimmed": "trimmed",
+    "edited": "edited",
+    "trimmedEdited": "trimmed and edited",
     "textCredit": "The text is based on Wikipedia and may be shared under",
     "sources": "Sources",
     "articleSv": "Swedish article",
@@ -390,40 +391,40 @@
     "description": "How the species pages on Birdy are made: the sources, how AI is used, how the facts are checked, the licences and how to report a mistake.",
     "crumb": "How we make these pages",
     "headline": "How we make the *species pages*",
-    "lead": "Every species page is built from several sources and checked in several steps, mostly automatically and by a person when something needs it, before it is published. This is how it works.",
+    "lead": "Every species page is built from several sources and checked in several steps before it is published. Most of the checking is automatic, and anything that stands out is decided by a person. This is how it works.",
     "sections": [
       {
         "heading": "The sources",
         "paragraphs": [
           "The texts are based on the articles about each species on Swedish, English and German Wikipedia.",
-          "The chart of when the species is seen and the map of where it is reported are calculated from Artportalen, Sweden's reporting system for sightings of plants and animals, which the SLU Swedish Species Information Centre shares through the international database GBIF. The figures show the species' share of all bird reports, so that a month or a county with many birdwatchers does not look as if it had more birds than it does.",
-          "The Swedish red list status comes from The Swedish Red List 2025 by the SLU Swedish Species Information Centre. Photos and recordings come from Wikimedia Commons."
+          "The chart of when the species is seen and the map of where it is reported are calculated from Artportalen, Sweden's reporting system for sightings of plants, animals and fungi. The SLU Swedish Species Information Centre shares the reports openly through the international database GBIF. The figures show the species' share of all bird reports, so that it does not look more common in a month or a county just because more birdwatchers are out then or there.",
+          "The Swedish red list status comes from The Swedish Red List 2025 by the SLU Swedish Species Information Centre, and the global status from the IUCN Red List via Wikidata. Photos and recordings come from Wikimedia Commons."
         ]
       },
       {
         "heading": "How AI is used",
         "paragraphs": [
-          "A language model reads the articles and picks out facts about appearance, call, habitat and occurrence in Sweden. Every fact needs a word for word quote from the article, and a program checks that the quote really is there. Facts without a valid quote are removed.",
-          "The text on the page is then written by a model that only sees the approved facts, not the articles. Another model then reads every sentence and compares it with the facts. Sentences that are not supported are rewritten or removed.",
-          "The chart, the map and the red list status are calculated directly from the data, without any language model."
+          "A language model reads the articles and picks out facts about appearance, calls and song, habitat and occurrence in Sweden, among other things. Every fact needs a verbatim quote from the article, and a program checks that the quote really is there. Facts without a valid quote are removed.",
+          "The text on the page is then written by a model that only sees the approved facts, not the articles. Another model then reads every sentence and compares it with the facts it is based on. Sentences that are not supported are rewritten or removed.",
+          "The chart and the map are calculated, and the red list status is looked up, directly from the data, without any language model."
         ]
       },
       {
-        "heading": "The review",
+        "heading": "The checks",
         "paragraphs": [
-          "A second model checks every fact against its quote in the article. Code compares the numbers between the different language articles, and compares the occurrence in Sweden with Artportalen and the Swedish red list. The recording is checked with Birdy's own sound model. What cannot be settled automatically is reviewed by Albin Abrahamsson, who built Birdy, before the page is published. After publishing, he also reviews an ongoing spot check of already published pages. The date of the latest check is at the bottom of every species page."
+          "Before the text is written, a different model from the one that picked out the facts checks every fact against its quote and the paragraph around it in the article, and facts that are not fully supported are removed. Code compares measurements such as length and weight between the articles in the different languages, and the occurrence in Sweden with Artportalen and the Swedish red list. The recording is checked with Birdy's own sound model, and if the model does not recognise the species, no recording is shown. Anything that cannot be settled automatically is reviewed by Albin Abrahamsson, who built Birdy, before the page is published. After publication, he also reads a running sample of the pages. The date of the latest check is at the bottom of every species page."
         ]
       },
       {
         "heading": "The licences",
         "paragraphs": [
-          "The texts on the species pages are based on Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and share on the same terms. Photos and recordings have their own licences, and every page names the author, licence and source for them."
+          "The texts on the species and comparison pages are based on Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and the Wikipedia articles and share under the same licence. Photos and recordings have their own licences, and every page names the author, licence and source for them. The photos are shown unchanged, only scaled down. The recordings are edited (at most 20 seconds, mono, loudness evened out, MP3), and an edited CC BY-SA recording is shared under the same licence as the original."
         ]
       },
       {
         "heading": "Corrections",
         "paragraphs": [
-          "Found a mistake? Write to {email}, ideally with a link to the page. We correct the page and set a new check date."
+          "Found a mistake? Write to {email}, ideally with a link to the page. If we confirm it, we correct the page and set a new check date."
         ]
       }
     ]

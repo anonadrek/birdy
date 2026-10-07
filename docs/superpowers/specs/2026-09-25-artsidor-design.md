@@ -589,7 +589,7 @@ Faktabladen tas fram och kontrolleras automatiskt (V1 till V4) för alla 180 art
 | Sökfält | Sök art | Search species |
 | Ingång, kicker | Uppslagsverket | Field guide |
 | Ingång, h1 | Fåglar i Sverige och *Europa* | Birds of Sweden and *Europe* |
-| Ingång, ingress | {n} vanliga fåglar med foton, kännetecken och läten. Samma uppslagsverk som i appen, där du också kan känna igen fågeln på plats. | {n} common birds with photos, field marks and calls. The same field guide as in the app, where you can also identify the bird on the spot. |
+| Ingång, ingress (ändrat 2026-10-07) | {n} vanliga fåglar med foton, kännetecken och läten. Alla finns också i appens uppslagsverk, och med appen kan du känna igen fåglar på plats. | {n} common birds with photos, field marks and calls. All of them are in the app's field guide too, and with the app you can identify birds on the spot. |
 | Ingång, description | Bläddra bland {n} vanliga fåglar i Sverige och Europa. Foton, kännetecken och läten, sorterade i samma grupper som i appen Birdy. | Browse {n} common birds of Sweden and Europe. Photos, field marks and calls, sorted in the same groups as in the Birdy app. |
 | Ingång, sektion jämförelser | Lätta att blanda ihop | Easy to mix up |
 | Ingång, länk om-sidan | Så gör vi artsidorna | How we make these pages |
@@ -628,10 +628,10 @@ Faktabladen tas fram och kontrolleras automatiskt (V1 till V4) för alla 180 art
 | Rubrik fler (familj) | Fler {familj i gemener} | More in the {Latin} family |
 | Rubrik fler (grupp) | Fler {grupp i gemener} | More {group in lowercase} |
 | Appruta, rubrik | Osäker på vad du ser? | Not sure what you are seeing? |
-| Appruta, foto och läte | Birdy känner igen {art i gemener} på foto eller läte, direkt i telefonen och utan täckning. | Birdy identifies the {name} from a photo or its song, right on your phone and without signal. |
-| Appruta, bara läte | Birdy känner igen {art i gemener} på lätet, direkt i telefonen och utan täckning. | Birdy identifies the {name} from its song, right on your phone and without signal. |
-| Appruta, bara foto | Birdy känner igen {art i gemener} på foto, direkt i telefonen och utan täckning. | Birdy identifies the {name} from a photo, right on your phone and without signal. |
-| Appruta, ingen modell | Birdy hjälper dig känna igen fåglarna omkring dig på foto och läte, direkt i telefonen och utan täckning. | Birdy helps you identify the birds around you from photos and songs, right on your phone and without signal. |
+| Appruta, foto och läte (EN ändrat 2026-10-07) | Birdy känner igen {art i gemener} på foto eller läte, direkt i telefonen och utan täckning. | Birdy identifies the {name} from a photo or its song, right on your phone and without a signal. |
+| Appruta, bara läte (EN ändrat 2026-10-07) | Birdy känner igen {art i gemener} på lätet, direkt i telefonen och utan täckning. | Birdy identifies the {name} from its song, right on your phone and without a signal. |
+| Appruta, bara foto (EN ändrat 2026-10-07) | Birdy känner igen {art i gemener} på foto, direkt i telefonen och utan täckning. | Birdy identifies the {name} from a photo, right on your phone and without a signal. |
+| Appruta, ingen modell (EN ändrat 2026-10-07) | Birdy hjälper dig känna igen fåglarna omkring dig på foto och läte, direkt i telefonen och utan täckning. | Birdy helps you identify the birds around you from photos and songs, right on your phone and without a signal. |
 | Jämförelse, kicker | Lätta att blanda ihop | Easy to mix up |
 | Jämförelse, h1 | {A} eller *{B}*? | {A} or *{B}*? |
 | Jämförelse, tabellrubrik | Så skiljer du dem åt | How to tell them apart |

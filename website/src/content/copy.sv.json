@@ -278,7 +278,7 @@
     "searchSubmit": "Sök",
     "kicker": "Uppslagsverket",
     "hubHeadline": "Fåglar i Sverige och *Europa*",
-    "hubLead": "{n} vanliga fåglar med foton, kännetecken och läten. Samma uppslagsverk som i appen, där du också kan känna igen fågeln på plats.",
+    "hubLead": "{n} vanliga fåglar med foton, kännetecken och läten. Alla finns också i appens uppslagsverk, och med appen kan du känna igen fåglar på plats.",
     "hubGroups": "Grupperna",
     "hubCompare": "Lätta att blanda ihop",
     "hubAll": "Alla arter från A till Ö",
@@ -344,7 +344,7 @@
     "chartCaption": "Andel av alla fågelrapporter per månad i Artportalen 2016 till 2025.",
     "mapTitle": "Var rapporteras den?",
     "mapCaption": "Andel av alla fågelrapporter per län i Artportalen 2016 till 2025.",
-    "mapLegend": ["Inga rapporter", "Liten andel", "Mellanstor andel", "Störst andel"],
+    "mapLegend": ["Inga rapporter", "Liten andel", "Mellanstor andel", "Stor andel"],
     "monthLetters": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
     "moreFamily": "Fler {family}",
     "moreGroup": "Fler {group}",
@@ -359,8 +359,9 @@
     "unknownAuthor": "okänd fotograf",
     "recordingLabel": "Inspelning: {name}",
     "recordingCredit": "Inspelning:",
-    "unknownRecordist": "okänd inspelare",
-    "trimmed": "klippt",
+    "unknownRecordist": "okänd upphovsperson",
+    "edited": "bearbetad",
+    "trimmedEdited": "klippt och bearbetad",
     "textCredit": "Texten bygger på Wikipedia och får delas under",
     "sources": "Källor",
     "articleSv": "svenska artikeln",
@@ -390,40 +391,40 @@
     "description": "Så skrivs Birdys artsidor: källorna, hur AI används, hur fakta kontrolleras, vilka licenser som gäller och hur du rapporterar fel.",
     "crumb": "Så gör vi artsidorna",
     "headline": "Så gör vi *artsidorna*",
-    "lead": "Varje artsida bygger på flera källor och kontrolleras i flera steg, mest automatiskt och vid undantag av en människa, innan den publiceras. Så här går det till.",
+    "lead": "Varje artsida bygger på flera källor och kontrolleras i flera steg innan den publiceras. Det mesta sköts automatiskt, och det som sticker ut avgörs av en människa. Så här går det till.",
     "sections": [
       {
         "heading": "Källorna",
         "paragraphs": [
           "Texterna bygger på artiklarna om varje art på svenska, engelska och tyska Wikipedia.",
-          "Diagrammet över när arten syns och kartan över var den rapporteras räknas fram ur Artportalen, Sveriges rapportsystem för fynd av växter och djur, som SLU Artdatabanken delar via den internationella databasen GBIF. Siffrorna visar artens andel av alla fågelrapporter, så att en månad eller ett län med många fågelskådare inte ser ut att ha fler fåglar än det har.",
-          "Den svenska rödlistestatusen kommer från Rödlistade arter i Sverige 2025, från SLU Artdatabanken. Foton och inspelningar kommer från Wikimedia Commons."
+          "Diagrammet över när arten ses och kartan över var den rapporteras räknas fram ur Artportalen, Sveriges rapportsystem för fynd av växter, djur och svampar. SLU Artdatabanken delar rapporterna öppet via den internationella databasen GBIF. Siffrorna visar artens andel av alla fågelrapporter, så att arten inte ser vanligare ut i en viss månad eller ett visst län bara för att fler är ute och skådar där och då.",
+          "Den svenska rödlistestatusen kommer från SLU Artdatabankens Rödlistade arter i Sverige 2025 och den globala från IUCN:s rödlista via Wikidata. Foton och inspelningar kommer från Wikimedia Commons."
         ]
       },
       {
         "heading": "Så används AI",
         "paragraphs": [
-          "En språkmodell läser artiklarna och plockar ut fakta om utseende, läte, miljö och förekomst i Sverige. Varje faktum ska ha ett ordagrant citat ur artikeln, och ett program kontrollerar att citatet verkligen finns där. Fakta utan giltigt citat stryks.",
-          "Texten på sidan skrivs sedan av en modell som bara får se de fakta som har godkänts, inte artiklarna. En annan modell läser därefter varje mening och jämför den med fakta. Meningar som inte stöds skrivs om eller stryks.",
-          "Diagrammet, kartan och rödlistestatusen räknas fram direkt ur datan, utan någon språkmodell."
+          "En språkmodell läser artiklarna och plockar ut fakta om bland annat utseende, läte, miljö och förekomst i Sverige. Varje faktum ska ha ett ordagrant citat ur artikeln, och ett program kontrollerar att citatet verkligen finns där. Fakta utan giltigt citat stryks.",
+          "Texten på sidan skrivs sedan av en modell som bara får se de fakta som har godkänts, inte artiklarna. En annan modell läser därefter varje mening och jämför den med de fakta den bygger på. Meningar som inte stöds skrivs om eller stryks.",
+          "Diagrammet och kartan räknas fram, och rödlistestatusen hämtas, direkt ur datan utan någon språkmodell."
         ]
       },
       {
-        "heading": "Granskningen",
+        "heading": "Kontrollen",
         "paragraphs": [
-          "En andra modell kontrollerar varje faktum mot sitt citat i artikeln. Kod jämför siffrorna mellan de olika språkens artiklar och jämför förekomsten i Sverige med Artportalen och den svenska rödlistan. Inspelningen kontrolleras med Birdys egen ljudmodell. Det som inte går att avgöra automatiskt granskas av Albin Abrahamsson, som har byggt Birdy, innan sidan publiceras. Efter publicering granskar han dessutom ett löpande stickprov av redan publicerade sidor. Datumet för den senaste kontrollen står längst ned på varje artsida."
+          "Innan texten skrivs kontrollerar en annan modell än den som plockade ut fakta varje faktum mot citatet och stycket runt det i artikeln, och fakta som inte stöds fullt ut stryks. Kod jämför mått som längd och vikt mellan artiklarna på de olika språken, och förekomsten i Sverige med Artportalen och den svenska rödlistan. Inspelningen kontrolleras med Birdys egen ljudmodell, och känner modellen inte igen arten visas ingen inspelning. Det som inte går att avgöra automatiskt granskas av Albin Abrahamsson, som har byggt Birdy, innan sidan publiceras. Efter publiceringen läser han dessutom ett löpande stickprov av sidorna. Datumet för den senaste kontrollen står längst ned på varje artsida."
         ]
       },
       {
         "heading": "Licenserna",
         "paragraphs": [
-          "Texterna på artsidorna bygger på Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy som källa och delar vidare på samma villkor. Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem."
+          "Texterna på art- och jämförelsesidorna bygger på Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy och Wikipediaartiklarna som källor och delar vidare under samma licens. Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem. Fotona visas oförändrade, bara nedskalade. Inspelningarna är bearbetade (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet."
         ]
       },
       {
         "heading": "Rättelser",
         "paragraphs": [
-          "Hittar du ett fel? Skriv till {email}, gärna med en länk till sidan. Vi rättar sidan och sätter ett nytt kontrolldatum."
+          "Hittar du ett fel? Skriv till {email}, gärna med en länk till sidan. Stämmer det rättar vi sidan och sätter ett nytt kontrolldatum."
         ]
       }
     ]
