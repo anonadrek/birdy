@@ -86,6 +86,35 @@ async def test_synonym_match_uses_the_accepted_key(tmp_path: Path) -> None:
     assert await client.taxon_key("Q1", "Delichon urbica") == 6
 
 
+async def test_synonym_match_by_status_uses_the_accepted_key(tmp_path: Path) -> None:
+    """GBIF's match answer says "status": "SYNONYM" and has no "synonym" field (Fjällpipare,
+    Eudromias morinellus, cached 2026-10-07): the synonym's own key counted only the 54
+    records filed under that name, not the species' records."""
+    client, _ = _client(
+        tmp_path,
+        {
+            "species/match": {
+                "usageKey": 2480282,
+                "acceptedUsageKey": 2480281,
+                "canonicalName": "Eudromias morinellus",
+                "rank": "SPECIES",
+                "status": "SYNONYM",
+                "matchType": "EXACT",
+            }
+        },
+    )
+    assert await client.taxon_key("Q25677554", "Eudromias morinellus") == 2480281
+
+
+async def test_counts_for_a_new_taxon_key_are_not_read_from_the_old_keys_cache(
+    tmp_path: Path,
+) -> None:
+    client, http = _client(tmp_path, {"occurrence/search": COUNTS})
+    await client.counts("Q25677554", 2480282)
+    await client.counts("Q25677554", 2480281)
+    assert len(http.urls) == 2
+
+
 async def test_counts_filter_on_artportalen_cc0_and_years_and_are_cached(tmp_path: Path) -> None:
     client, http = _client(tmp_path, {"occurrence/search": COUNTS})
     first = await client.counts("Q25485", 9705453)

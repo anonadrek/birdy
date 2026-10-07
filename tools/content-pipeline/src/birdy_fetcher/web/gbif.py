@@ -89,7 +89,12 @@ class GbifClient:
         data = await self._json(qid, "gbif-match.json", url, refresh)
         if data.get("matchType") != "EXACT" or data.get("rank") != "SPECIES":
             return None
-        key = data.get("acceptedUsageKey") if data.get("synonym") else data.get("usageKey")
+        # GBIF marks a synonym with "status": "SYNONYM" (no "synonym" field in today's
+        # answers): its own key counted only the records filed under the old name (54 for
+        # Fjällpipare, Eudromias morinellus). `acceptedUsageKey` is only there for one.
+        synonym = data.get("synonym") or data.get("status") == "SYNONYM"
+        key = data.get("acceptedUsageKey") if synonym else None
+        key = key if key is not None else data.get("usageKey")
         return int(key) if key is not None else None
 
     async def counts(self, qid: str, taxon_key: int, *, refresh: bool = False) -> Counts:
@@ -103,7 +108,10 @@ class GbifClient:
             f"{API}/occurrence/search?{FILTERS}&taxonKey={taxon_key}"
             "&limit=0&facet=month&facet=gadmLevel1Gid&facetLimit=30"
         )
-        return parse_counts(await self._json(cache_key, COUNTS_CACHE_NAME, url, refresh))
+        # The taxon key is part of the name: a species whose match changes (a synonym now
+        # read as its accepted key) must not reuse the old key's counts.
+        name = COUNTS_CACHE_NAME.replace(".json", f"-{taxon_key}.json")
+        return parse_counts(await self._json(cache_key, name, url, refresh))
 
     async def swedish_red_list(
         self, qid: str, scientific: str, taxon_key: int, *, refresh: bool = False
