@@ -11,6 +11,7 @@ import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasClickAction
 import androidx.compose.ui.test.hasScrollAction
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -485,6 +486,85 @@ class VisibleBackTest {
         assertTabSelected("Mina arter")
         compose.onNodeWithText("Mina arter").performClick()
         compose.waitForIdle()
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.Lifelist::class)) }
+    }
+
+    // --- Tapping the tab you are already in (Task 7b review) ---------------------------------
+
+    private fun tapTab(label: String) {
+        compose.onNode(hasText(label) and hasClickAction()).performClick()
+        compose.waitForIdle()
+    }
+
+    @Test
+    fun `Uppslagsverk on a species opened from the list goes back to the list`() {
+        val nav = start()
+        nav.open(AppRoute.Archive)
+        val list = nav.currentBackStackEntry
+        nav.open(AppRoute.SpeciesProfile("Q25485"))
+        tapTab("Uppslagsverk")
+        compose.runOnIdle { assertSame(list, nav.currentBackStackEntry) }
+    }
+
+    @Test
+    fun `Uppslagsverk on a species brought back from another tab goes back to the list`() {
+        // What the emulator showed: the tab restored the encyclopedia with a species open, and
+        // the next tap on Uppslagsverk jumped to Identifiera.
+        val nav = start(repository = repositoryWithLongProfile())
+        tapTab("Uppslagsverk")
+        nav.open(AppRoute.SpeciesProfile("Q25485"))
+        tapTab("Mina arter")
+        tapTab("Uppslagsverk")
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.SpeciesProfile::class), "the tab brought the species back") }
+
+        tapTab("Uppslagsverk")
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.ArchiveList::class)) }
+    }
+
+    @Test
+    fun `Uppslagsverk on a species opened from Identifiera opens the list`() {
+        val nav = start()
+        // Today's bird on Identifiera opens the species straight away, without the list.
+        nav.open(AppRoute.SpeciesProfile("Q25485"))
+        tapTab("Uppslagsverk")
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.ArchiveList::class)) }
+        compose.onNodeWithText("Talgoxe").assertDoesNotExist()
+        // The list took the species' place: back goes to Identifiera.
+        compose.runOnIdle { assertTrue(nav.previousBackStackEntry?.destination?.hasRoute(AppRoute.Listen::class) == true) }
+    }
+
+    @Test
+    fun `Uppslagsverk on the list stays on the list`() {
+        val nav = start()
+        nav.open(AppRoute.Archive)
+        val list = nav.currentBackStackEntry?.id
+        tapTab("Uppslagsverk")
+        compose.runOnIdle {
+            assertTrue(nav.isOn(AppRoute.ArchiveList::class))
+            assertTrue(nav.currentBackStackEntry?.id == list, "the same list, scroll and search kept")
+        }
+    }
+
+    @Test
+    fun `the other tabs still go back to their own first screen`() {
+        val nav = start(observations = observationsWithOneFind())
+        nav.open(AppRoute.Scan)
+        tapTab("Identifiera")
+        compose.runOnIdle { assertTrue(nav.isOn(AppRoute.Listen::class)) }
+
+        nav.open(AppRoute.Lifelist)
+        val lifelist = nav.currentBackStackEntry
+        nav.open(AppRoute.ObservationDetail("obs-1"))
+        tapTab("Mina arter")
+        compose.runOnIdle { assertSame(lifelist, nav.currentBackStackEntry) }
+
+        tapTab("Märken")
+        val badges = nav.currentBackStackEntry
+        nav.open(AppRoute.TrophyRoom)
+        tapTab("Märken")
+        compose.runOnIdle { assertSame(badges, nav.currentBackStackEntry) }
+
+        tapTab("Mina arter")
         compose.runOnIdle { assertTrue(nav.isOn(AppRoute.Lifelist::class)) }
     }
 }

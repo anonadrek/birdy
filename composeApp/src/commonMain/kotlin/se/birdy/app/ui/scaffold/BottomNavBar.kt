@@ -93,6 +93,10 @@ private data class TabSpec(
     val label: StringResource,
     val icon: ImageVector,
     val ownedRoutes: Set<KClass<out AppRoute>> = setOf(route::class),
+    // The screen the tab opens on. The encyclopedia's route is its nested graph, whose first
+    // screen is the list (release 1.3.0 Task 7b review: popping to the graph itself also popped
+    // the graph, so the tab jumped to Identifiera).
+    val rootRoute: AppRoute = route,
 )
 
 private val tabs =
@@ -110,7 +114,12 @@ private val tabs =
                     AppRoute.MatchResult::class,
                 ),
         ),
-        TabSpec(AppRoute.Archive, Res.string.tab_archive, Icons.AutoMirrored.Filled.LibraryBooks),
+        TabSpec(
+            route = AppRoute.Archive,
+            label = Res.string.tab_archive,
+            icon = Icons.AutoMirrored.Filled.LibraryBooks,
+            rootRoute = AppRoute.ArchiveList,
+        ),
         // Release 1.3.0 Task 7b: the weekly recap and season statistics are opened from Mina arter,
         // so they keep its tab marked (a find, ObservationDetail, follows the screen it was opened
         // from, see tabOwnerDestination).
@@ -171,24 +180,7 @@ fun BottomNavBar(
                 tab = tab,
                 selected = selected,
                 showDot = dailyBirdDot && tab.route == AppRoute.Listen,
-                onClick = {
-                    // If already inside this tab but on a sub-screen, pop back to the tab root
-                    // so tapping the Identify tab from Scan/PhotoAnalyze/AudioScan returns to
-                    // the launcher hub. Otherwise navigate cross-tab as usual.
-                    val onTabRoot =
-                        backStackEntry?.destination?.hasRoute(tab.route::class) == true
-                    // The tab's root may not be on the back stack (the weekly recap opened from its
-                    // notification): then switch to the tab the usual way.
-                    val poppedToTabRoot =
-                        selected && !onTabRoot && navController.popBackStack(tab.route, inclusive = false)
-                    if (!poppedToTabRoot) {
-                        navController.navigate(tab.route) {
-                            popUpTo(navController.graph.startDestinationId) { saveState = true }
-                            launchSingleTop = true
-                            restoreState = true
-                        }
-                    }
-                },
+                onClick = { navController.onTabClick(tab, selected, backStackEntry?.destination) },
                 modifier = Modifier.weight(1f),
             )
         }
@@ -294,6 +286,38 @@ private fun NewDot(modifier: Modifier = Modifier) {
 }
 
 private fun NavDestination.parentChain(): Sequence<NavDestination> = generateSequence(this) { it.parent }
+
+/**
+ * A tap on [tab]. Inside the tab on a sub-screen it goes back to the tab's root screen, so
+ * tapping Identifiera on Scan/PhotoAnalyze/AudioScan returns to the launcher hub and Uppslagsverk
+ * on a species returns to the list. Otherwise it switches tab as usual.
+ */
+private fun NavHostController.onTabClick(
+    tab: TabSpec,
+    selected: Boolean,
+    current: NavDestination?,
+) {
+    val onTabRoot = current?.hasRoute(tab.rootRoute::class) == true
+    val poppedToTabRoot = selected && !onTabRoot && popBackStack(tab.rootRoute, inclusive = false)
+    when {
+        poppedToTabRoot -> Unit
+        // In the tab's nested graph without its root screen on the stack (a species opened from
+        // today's bird on Identifiera): put the root screen in place of what is open in the graph.
+        selected && !onTabRoot && tab.rootRoute != tab.route ->
+            navigate(tab.rootRoute) {
+                popUpTo(tab.route) { inclusive = false }
+                launchSingleTop = true
+            }
+        // Another tab, the tab's root itself, or a screen the tab owns without its root on the
+        // stack (the weekly recap opened from its notification): the usual tab switch.
+        else ->
+            navigate(tab.route) {
+                popUpTo(graph.startDestinationId) { saveState = true }
+                launchSingleTop = true
+                restoreState = true
+            }
+    }
+}
 
 /**
  * The destination that decides which tab is marked: the current one, except for a find
