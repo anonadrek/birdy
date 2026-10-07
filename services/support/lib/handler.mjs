@@ -5,7 +5,7 @@ import { buildFallbackForward, buildForward } from './forward.mjs';
 import { labelFor } from './labels.mjs';
 import { isAutomated, mailedRecently, receiptMessage } from './receipt.mjs';
 
-const REQUIRED = ['RESEND_WEBHOOK_SECRET', 'SUPPORT_ADDRESS', 'FORWARD_TO'];
+const REQUIRED = ['RESEND_API_KEY', 'RESEND_WEBHOOK_SECRET', 'SUPPORT_ADDRESS', 'FORWARD_TO'];
 
 export async function handleInbound({ rawBody, headers, env, client, now = Date.now(), log = console.log }) {
   const say = (fields) => log(JSON.stringify(fields));
@@ -14,10 +14,13 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
     say({ outcome: 'config', missing });
     return { status: 500 };
   }
+  // `client` may be a factory (the Vercel entry defers constructing the Resend SDK client until
+  // here, so a missing RESEND_API_KEY is caught by the check above instead of throwing on import).
+  const resolvedClient = typeof client === 'function' ? client() : client;
 
   let event;
   try {
-    event = client.verify({
+    event = resolvedClient.verify({
       payload: rawBody,
       headers: { id: headers.get('svix-id'), timestamp: headers.get('svix-timestamp'), signature: headers.get('svix-signature') },
       secret: env.RESEND_WEBHOOK_SECRET,
@@ -42,10 +45,10 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
 
   let email;
   try {
-    email = await client.getEmail(id);
-    const attachments = email.attachments?.length > 0 ? await client.listAttachments(id) : [];
+    email = await resolvedClient.getEmail(id);
+    const attachments = email.attachments?.length > 0 ? await resolvedClient.listAttachments(id) : [];
     const label = labelFor({ subject: email.subject ?? '', text: email.text ?? '' });
-    await client.send(buildForward({ email, attachments, label, supportAddress: env.SUPPORT_ADDRESS, forwardTo: env.FORWARD_TO }), `forward-${id}`);
+    await resolvedClient.send(buildForward({ email, attachments, label, supportAddress: env.SUPPORT_ADDRESS, forwardTo: env.FORWARD_TO }), `forward-${id}`);
     say({ outcome: 'forwarded', id, label, attachments: attachments.length });
   } catch (error) {
     // Resend re-fetches attachment download_url on every listAttachments() call, so a retry (Svix,
@@ -58,7 +61,7 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
       // A validation error (e.g. a broken attachment URL) on the full forward — try once more with
       // a minimal, text-only version so the message is not lost outright.
       try {
-        await client.send(buildFallbackForward({ email, supportAddress: env.SUPPORT_ADDRESS, forwardTo: env.FORWARD_TO }), `forward-fallback-${id}`);
+        await resolvedClient.send(buildFallbackForward({ email, supportAddress: env.SUPPORT_ADDRESS, forwardTo: env.FORWARD_TO }), `forward-fallback-${id}`);
         say({ outcome: 'forward-fallback', id, statusCode: error.statusCode });
       } catch (fallbackError) {
         say({ outcome: 'forward-failed', id, error: fallbackError.name, statusCode: fallbackError.statusCode });
@@ -79,12 +82,12 @@ export async function handleInbound({ rawBody, headers, env, client, now = Date.
       say({ outcome: 'no-receipt', id, reason: 'automated' });
     } else if (!authenticated) {
       say({ outcome: 'no-receipt', id, reason: 'unauthenticated' });
-    } else if (mailedRecently(await client.listSent(), sender, now, env.FORWARD_TO)) {
+    } else if (mailedRecently(await resolvedClient.listSent(), sender, now, env.FORWARD_TO)) {
       say({ outcome: 'no-receipt', id, reason: 'recent' });
     } else {
       const { subject, text } = receiptMessage(email.subject);
       const thread = email.message_id ? { 'In-Reply-To': email.message_id, References: email.message_id } : {};
-      await client.send({ from: `Birdy <${env.SUPPORT_ADDRESS}>`, to: [sender], subject, text, headers: { 'Auto-Submitted': 'auto-replied', ...thread } }, `receipt-${id}`);
+      await resolvedClient.send({ from: `Birdy <${env.SUPPORT_ADDRESS}>`, to: [sender], subject, text, headers: { 'Auto-Submitted': 'auto-replied', ...thread } }, `receipt-${id}`);
       say({ outcome: 'receipt-sent', id });
     }
   } catch (error) {

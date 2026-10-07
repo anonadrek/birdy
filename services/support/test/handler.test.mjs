@@ -5,7 +5,7 @@ import { handleInbound } from '../lib/handler.mjs';
 import { resendClient } from '../lib/client.mjs';
 import { SECRET, sign } from './sign.mjs';
 
-const env = { RESEND_WEBHOOK_SECRET: SECRET, SUPPORT_ADDRESS: 'support@birdy.community', FORWARD_TO: 'inbox@example.com' };
+const env = { RESEND_API_KEY: 're_test', RESEND_WEBHOOK_SECRET: SECRET, SUPPORT_ADDRESS: 'support@birdy.community', FORWARD_TO: 'inbox@example.com' };
 const NOW = Date.UTC(2026, 9, 8, 7, 5);
 const realVerify = resendClient(new Resend('re_test')).verify;
 
