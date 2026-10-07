@@ -1,0 +1,71 @@
+---
+import Icon from '../ui/Icon.astro';
+import { getCopy, type Locale } from '../../lib/i18n';
+import { activeGroups, getAllSpecies, groupHref, groupSizes, hubHref } from '../../lib/species';
+
+interface Props {
+  locale: Locale;
+  /** 'all' on the hub, a group key on group and species pages, '' when no chip is current. */
+  active: string;
+  /** The hub has its own search field, so it hides this one. */
+  search?: boolean;
+}
+const { locale, active, search = true } = Astro.props;
+const t = getCopy(locale);
+const all = await getAllSpecies();
+const sizes = groupSizes(all);
+const chips = [
+  { key: 'all', href: hubHref(locale), label: t.species.allChip, n: all.length },
+  ...activeGroups(all).map((g) => ({ key: g.key, href: groupHref(g, locale), label: g.name[locale], n: sizes.get(g.key) ?? 0 })),
+];
+---
+
+<div class="catbar" data-catbar>
+  <div class="catbar-inner">
+    <nav class="chips" aria-label={t.species.groupsLabel} data-chips>
+      {chips.map((c) => (
+        <a class:list={['chip', { 'is-active': c.key === active }]} href={c.href} aria-current={c.key === active ? 'page' : undefined}>
+          {c.label} <span class="n">{c.n}</span>
+        </a>
+      ))}
+    </nav>
+    {search && (
+      <form class="search" action={hubHref(locale)} method="get" role="search">
+        <label class="sr-only" for="cat-q">{t.species.searchLabel}</label>
+        <input id="cat-q" name="q" type="search" placeholder={t.species.searchPlaceholder} autocomplete="off" />
+        <button type="submit" class="search-btn" aria-label={t.species.searchSubmit}><Icon name="search" size={18} /></button>
+      </form>
+    )}
+  </div>
+</div>
+
+<script>
+  // Bring the active chip into view on narrow screens, without scrolling the page itself.
+  const chips = document.querySelector<HTMLElement>('[data-chips]');
+  const current = chips?.querySelector<HTMLElement>('.chip.is-active');
+  if (chips && current) chips.scrollLeft = current.offsetLeft - (chips.clientWidth - current.offsetWidth) / 2;
+</script>
+
+<style>
+  .catbar { position: sticky; top: 76px; z-index: 90; background: var(--card); border-bottom: 1px solid var(--line); }
+  .catbar-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 10px 44px; }
+  .chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); font-size: 13px; font-weight: 600; color: var(--ink); white-space: nowrap; transition: border-color .2s; }
+  .chip:hover { border-color: var(--rust); }
+  .chip .n { font-weight: 400; color: var(--muted); }
+  .chip.is-active { background: var(--rust); border-color: var(--rust); color: var(--cream); }
+  .chip.is-active .n { color: var(--cream); }
+  .search { flex: none; display: flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); padding: 0 4px 0 14px; }
+  .search:focus-within { outline: 3px solid var(--rust); outline-offset: 2px; }
+  .search input { border: 0; background: none; font: inherit; font-size: 13px; width: 150px; padding: 7px 0; color: var(--ink); outline: none; }
+  .search-btn { border: 0; background: none; color: var(--muted); width: 32px; height: 32px; display: grid; place-items: center; cursor: pointer; }
+  @media (max-width: 1023px) {
+    .catbar { top: 64px; }
+    .catbar-inner { padding: 8px 20px; gap: 10px; }
+  }
+  @media (max-width: 760px) {
+    .search { padding: 0; border-color: transparent; background: none; }
+    .search input { width: 0; padding: 0; }
+  }
+</style>
