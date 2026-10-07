@@ -13,6 +13,7 @@ import androidx.core.app.NotificationCompat
 import kotlinx.coroutines.CancellationException
 import se.birdy.app.R
 import java.io.IOException
+import java.io.InputStream
 import kotlin.math.max
 import kotlin.math.roundToInt
 
@@ -112,18 +113,31 @@ object DailyBirdNotification {
         assets: AssetManager,
         assetPath: String,
         maxEdgePx: Int,
+    ): Bitmap? = decodeStream(source = assetPath, maxEdgePx = maxEdgePx) { assets.open(assetPath) }
+
+    /**
+     * Decodes the image that [open] streams, sampled and scaled down to at most [maxEdgePx] on its
+     * long edge. [open] is called twice (bounds, then pixels); [source] only names the image in the
+     * log. Null when opening fails or the bytes are no image. Split out of [decodeAsset] so the unit
+     * tests can decode a photo from disk: the debug-only benchmark photos never reach the merged
+     * assets of the unit tests (1.3.0 legal review, fix F).
+     */
+    internal fun decodeStream(
+        source: String,
+        maxEdgePx: Int,
+        open: () -> InputStream,
     ): Bitmap? =
         try {
             val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
-            assets.open(assetPath).use { BitmapFactory.decodeStream(it, null, bounds) }
+            open().use { BitmapFactory.decodeStream(it, null, bounds) }
             val sample = sampleSizeFor(bounds.outWidth, bounds.outHeight, maxEdgePx)
             val decoded =
-                assets.open(assetPath).use {
+                open().use {
                     BitmapFactory.decodeStream(it, null, BitmapFactory.Options().apply { inSampleSize = sample })
                 }
             decoded?.let { scaleDown(it, maxEdgePx) }
         } catch (e: IOException) {
-            Log.i(TAG, "No photo for the notification at $assetPath: ${e.message}")
+            Log.i(TAG, "No photo for the notification at $source: ${e.message}")
             null
         }
 
