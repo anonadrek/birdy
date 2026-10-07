@@ -28,6 +28,8 @@ internal object MapTilerKey {
      * Gradle-egenskap. Saknas den (en odefinierad xcconfig-variabel blir en tom sträng) eller är
      * den inget rent stil-id: MapTilers standardstil, se [mapTilerStyleId].
      */
-    fun styleId(): String =
-        mapTilerStyleId(NSBundle.mainBundle.objectForInfoDictionaryKey("MAPTILER_STYLE_ID") as? String)
+    fun styleId(): String {
+        val configured = NSBundle.mainBundle.objectForInfoDictionaryKey("MAPTILER_STYLE_ID") as? String
+        return mapTilerStyleId(configured)
+    }
 }
