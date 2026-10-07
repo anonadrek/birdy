@@ -508,3 +508,32 @@ def test_web_sheet_prints_decisions_it_does_not_carry(
     result = CliRunner().invoke(main, ["web", "sheet"])
     assert result.exit_code == 0, result.output
     assert "väntar på web verify" in result.output
+
+
+@pytest.mark.parametrize("command", ["facts", "verify", "write", "compare"])
+def test_the_paid_commands_offer_opus55(command: str) -> None:
+    """R3 (2026-10-07): Opus 5.5 can be chosen wherever a model can, defaults unchanged."""
+    result = CliRunner().invoke(main, ["web", command, "--help"])
+    assert result.exit_code == 0
+    assert "opus55" in result.output
+
+
+def test_web_write_accepts_opus55_as_a_model() -> None:
+    # Same model for writer and checker is refused after click accepted both choices, so
+    # the message proves `opus55` passed click.Choice (an unknown value exits 2 earlier).
+    result = CliRunner().invoke(
+        main,
+        [
+            "web",
+            "write",
+            "--species",
+            "Q1",
+            "--model",
+            "opus55",
+            "--checker-model",
+            "opus55",
+            "--max-cost",
+            "1",
+        ],
+    )
+    assert "olika modeller" in result.output

@@ -8,3 +8,6 @@ from __future__ import annotations
 FACTS_MODEL_KEY = "opus"
 FACTS_EFFORT = "high"
 EFFORTS = ("low", "medium", "high")
+# Every model key the paid commands accept (llm.MODELS has the ids; a test keeps the two in
+# step). Opus 5.5 was added after the R3 trial (2026-10-07); the defaults stay Albin's call.
+MODEL_KEYS = ("opus", "opus55", "sonnet")

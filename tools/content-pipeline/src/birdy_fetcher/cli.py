@@ -13,7 +13,7 @@ import click
 from rich.console import Console
 
 from . import __version__
-from .web.defaults import EFFORTS, FACTS_EFFORT, FACTS_MODEL_KEY
+from .web.defaults import EFFORTS, FACTS_EFFORT, FACTS_MODEL_KEY, MODEL_KEYS
 from .web.paths import WebPaths
 from .web.report import StepOutcome
 
@@ -275,9 +275,7 @@ def web_sources(
 
 @web.command("facts")
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
-@click.option(
-    "--model", "model_key", type=click.Choice(["opus", "sonnet"]), default=FACTS_MODEL_KEY
-)
+@click.option("--model", "model_key", type=click.Choice(MODEL_KEYS), default=FACTS_MODEL_KEY)
 @click.option("--effort", type=click.Choice(EFFORTS), default=FACTS_EFFORT)
 @click.option(
     "--max-cost",
@@ -316,7 +314,7 @@ def web_facts(
 
 @web.command("verify")
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla med ett faktablad.")
-@click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="sonnet")
+@click.option("--model", "model_key", type=click.Choice(MODEL_KEYS), default="sonnet")
 @click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
 @click.option(
     "--max-cost",
@@ -329,7 +327,7 @@ def web_facts(
 @click.option(
     "--facts-model",
     "facts_model_key",
-    type=click.Choice(["opus", "sonnet"]),
+    type=click.Choice(MODEL_KEYS),
     default=None,
     help=(
         "Modell för V1-omförsökets nya faktablad. Standard: samma som artens faktablad, "
@@ -381,11 +379,9 @@ def web_verify(
 @web.command("write")
 @click.option("--wave", type=click.IntRange(1, 3), default=None)
 @click.option("--species", multiple=True, help="Q-ID(s) i stället för en våg.")
-@click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
+@click.option("--model", "model_key", type=click.Choice(MODEL_KEYS), default="opus")
 @click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
-@click.option(
-    "--checker-model", "checker_key", type=click.Choice(["opus", "sonnet"]), default="sonnet"
-)
+@click.option("--checker-model", "checker_key", type=click.Choice(MODEL_KEYS), default="sonnet")
 @click.option(
     "--max-cost",
     type=click.FloatRange(min=0, min_open=True),
@@ -624,11 +620,9 @@ def web_compare_candidates() -> None:
 @click.option(
     "--top", type=click.IntRange(min=1), default=30, help="Antal par med störst sökvolym."
 )
-@click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
+@click.option("--model", "model_key", type=click.Choice(MODEL_KEYS), default="opus")
 @click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
-@click.option(
-    "--checker-model", "checker_key", type=click.Choice(["opus", "sonnet"]), default="sonnet"
-)
+@click.option("--checker-model", "checker_key", type=click.Choice(MODEL_KEYS), default="sonnet")
 @click.option(
     "--max-cost",
     type=click.FloatRange(min=0, min_open=True),
