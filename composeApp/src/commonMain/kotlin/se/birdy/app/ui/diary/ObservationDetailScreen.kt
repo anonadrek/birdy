@@ -164,8 +164,8 @@ fun ObservationDetailScreen(
     }
 }
 
-// Already long before release 1.3.0 Task 7b (baselined under the old signature, which still had
-// onBack for the back button that now sits in the screen's fixed top bar).
+// Already long before release 1.3.0 Task 7b, when it was baselined under a signature with onBack
+// (for the back button that now sits in the screen's fixed top bar).
 @Suppress("LongMethod")
 @Composable
 private fun LoadedView(

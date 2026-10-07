@@ -184,8 +184,9 @@ private fun rememberPhotoScrolledAway(listState: LazyListState): State<Boolean> 
     }
 }
 
-// Moved unchanged out of ProfileContent (whose findings are in the baseline) so the back button
-// can sit over the list instead of scrolling away with it (release 1.3.0 Task 7b).
+// Moved unchanged out of ProfileContent so the back button can sit over the list instead of
+// scrolling away with it (release 1.3.0 Task 7b). ProfileContent's long-method and complexity
+// findings, baselined until then, moved with it.
 @Suppress("LongMethod", "CyclomaticComplexMethod")
 @OptIn(ExperimentalResourceApi::class)
 @Composable

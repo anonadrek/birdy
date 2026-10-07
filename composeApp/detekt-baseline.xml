@@ -15,7 +15,6 @@
     <ID>CyclomaticComplexMethod:PremiumTeaserCard.kt$@Composable fun PremiumTeaserCard( title: String, subtitle: String, cornerLabel: String, ctaLabel: String, onUnlock: () -&gt; Unit, modifier: Modifier = Modifier, premiumActive: Boolean = false, isExporting: Boolean = false, exportLabel: String? = null, exportBusyLabel: String? = null, onExport: () -&gt; Unit = {}, )</ID>
     <ID>CyclomaticComplexMethod:RecalculateBadgesUseCase.kt$RecalculateBadgesUseCase$private fun rawValue( rule: BadgeRule, observations: List&lt;Observation&gt;, speciesByQid: Map&lt;SpeciesId, Species&gt;, dailyBirdMatchCount: Int = 0, ): Int</ID>
     <ID>CyclomaticComplexMethod:SettingsScreen.kt$@Composable fun SettingsScreen( viewModel: SettingsViewModel, onBack: () -&gt; Unit, onPremiumClick: () -&gt; Unit, onNavigateToAbout: () -&gt; Unit, onShowIntroAgain: () -&gt; Unit, versionName: String, onRequestLocationPermission: () -&gt; Unit = {}, )</ID>
-    <ID>CyclomaticComplexMethod:SpeciesProfileScreen.kt$@OptIn(ExperimentalResourceApi::class) @Composable private fun ProfileContent( species: Species, locale: Locale, onBack: () -&gt; Unit, onPremiumClick: () -&gt; Unit, showPremiumTeaser: Boolean, )</ID>
     <ID>CyclomaticComplexMethod:StampSeal.kt$@Suppress("LongParameterList") @Composable fun StampSeal( state: StampSealState, modifier: Modifier = Modifier, size: Dp = 88.dp, accentColor: Color = AccentCopper, filled: Boolean = true, onClick: (() -&gt; Unit)? = null, )</ID>
     <ID>DestructuringDeclarationWithTooManyEntries:ArchiveViewModel.kt$ArchiveViewModel$(q, c, s, stamped)</ID>
     <ID>EmptyFunctionBlock:AndroidLocationProvider.kt$AndroidLocationProvider.&lt;no name provided&gt;${}</ID>
@@ -44,7 +43,6 @@
     <ID>LongMethod:MatchResultViewModel.kt$MatchResultViewModel$private suspend fun resolve()</ID>
     <ID>LongMethod:MatchView.kt$@OptIn(ExperimentalResourceApi::class) @Composable internal fun MatchView( state: MatchResultUiState.Match, onSave: (String) -&gt; Unit, onCancel: () -&gt; Unit, onDismissUnlock: () -&gt; Unit, locale: Locale, zone: TimeZone, )</ID>
     <ID>LongMethod:NoBirdView.kt$@Composable internal fun NoBirdView( state: MatchResultUiState.NoBird, onRetry: () -&gt; Unit, zone: TimeZone, )</ID>
-    <ID>LongMethod:ObservationDetailScreen.kt$@Composable private fun LoadedView( state: ObservationDetailUiState.Loaded, viewModel: ObservationDetailViewModel, onBack: () -&gt; Unit, onSpeciesClick: (String) -&gt; Unit, )</ID>
     <ID>LongMethod:ObservationDetailScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable private fun NoteSection( noteText: String, onNoteChange: (String) -&gt; Unit, isDirty: Boolean, isSaving: Boolean, onSave: () -&gt; Unit, onCancel: () -&gt; Unit, )</ID>
     <ID>LongMethod:OnboardingScreen.kt$@Composable fun OnboardingScreen( state: OnboardingUiState.Visible, onPageChange: (Int) -&gt; Unit, onNameChange: (String) -&gt; Unit, onLanguageSelect: (AppLanguage) -&gt; Unit, onComplete: () -&gt; Unit, isReplay: Boolean = false, )</ID>
     <ID>LongMethod:PhotoAnalyzeHost.android.kt$@Composable actual fun PhotoAnalyzeHost( graph: AppGraph, onLoaded: (sourceJson: String, capturedAtMs: Long) -&gt; Unit, onBack: () -&gt; Unit, )</ID>
@@ -63,7 +61,6 @@
     <ID>LongMethod:ScenePhoto.kt$@Composable fun ScenePhoto( pageOffset: Float, isActive: Boolean, )</ID>
     <ID>LongMethod:ScenePrivacy.kt$@Composable fun ScenePrivacy( pageOffset: Float, isActive: Boolean, )</ID>
     <ID>LongMethod:SettingsScreen.kt$@Composable fun SettingsScreen( viewModel: SettingsViewModel, onBack: () -&gt; Unit, onPremiumClick: () -&gt; Unit, onNavigateToAbout: () -&gt; Unit, onShowIntroAgain: () -&gt; Unit, versionName: String, onRequestLocationPermission: () -&gt; Unit = {}, )</ID>
-    <ID>LongMethod:SpeciesProfileScreen.kt$@OptIn(ExperimentalResourceApi::class) @Composable private fun ProfileContent( species: Species, locale: Locale, onBack: () -&gt; Unit, onPremiumClick: () -&gt; Unit, showPremiumTeaser: Boolean, )</ID>
     <ID>LongMethod:StampSeal.kt$@Suppress("LongParameterList") @Composable fun StampSeal( state: StampSealState, modifier: Modifier = Modifier, size: Dp = 88.dp, accentColor: Color = AccentCopper, filled: Boolean = true, onClick: (() -&gt; Unit)? = null, )</ID>
     <ID>LongMethod:TrophyRoomEntryCard.kt$@OptIn(ExperimentalResourceApi::class) @Composable fun TrophyRoomEntryCard( hero: BadgeWithUnlock?, unlockedCount: Int, onClick: () -&gt; Unit, modifier: Modifier = Modifier, )</ID>
     <ID>LongMethod:TrophyRoomScreen.kt$@Composable private fun LoadedTrophyRoom( state: BadgesUiState.Loaded, locale: Locale, zone: TimeZone, onHeroClick: (BadgeWithUnlock) -&gt; Unit, onStampClick: (BadgeWithUnlock) -&gt; Unit, )</ID>
