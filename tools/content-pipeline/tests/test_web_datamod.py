@@ -333,3 +333,22 @@ def test_rarely_sentence_can_leave_months_out() -> None:
         "Rapporteras sällan i oktober till april."
     )
     assert rarely_sentence([100] * 5 + [4] + [100] * 6, "sv", skip=BREEDING_MONTHS) is None
+
+
+def test_a_partial_migrant_agrees_with_winter_reports() -> None:
+    """Wave 1 (2026-10-07): most common Swedish birds are partial migrants (some stay, some
+    leave), so a breeding_migrant status was flagged by the winter reports and a resident
+    one struck by the fact checker. partial_migrant fits both kinds of data."""
+    assert status_contradiction("partial_migrant", KUNGSFAGEL_MONTHS, 244_744) is None
+    assert status_contradiction("partial_migrant", TALGOXE_MONTHS, 729_841) is None
+    assert status_contradiction("partial_migrant", RESIDENT, 5000) is None
+
+
+def test_a_partial_migrant_never_reported_in_winter_is_flagged() -> None:
+    reason = status_contradiction("partial_migrant", LADUSVALA_MONTHS, 334_341)
+    assert reason is not None
+    assert "delvis flyttfågel" in reason
+
+
+def test_a_partial_migrant_contradicts_zero_reports() -> None:
+    assert status_contradiction("partial_migrant", None, 0) is not None

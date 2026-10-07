@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from birdy_fetcher.web.facts import (
+    STATUS_BY_SV,
+    STATUS_SV,
     ArticleLang,
     FactSheetOutput,
     FactSource,
@@ -356,3 +358,13 @@ def test_a_breeding_season_month_is_not_given_to_the_writer_as_rare() -> None:
     assert [f["sv"] for f in data_facts(record, status="breeding_migrant")] == [
         "Rapporteras sällan i augusti till april."
     ]
+    assert [f["sv"] for f in data_facts(record, status="partial_migrant")] == [
+        "Rapporteras sällan i augusti till april."
+    ]
+
+
+def test_partial_migrant_is_a_status_with_a_swedish_label() -> None:
+    """Wave 1 (2026-10-07): the seventh status, for birds that breed here and partly stay."""
+    assert STATUS_SV["partial_migrant"] == "Delvis flyttfågel, häckar här"
+    assert STATUS_BY_SV["Delvis flyttfågel, häckar här"] == "partial_migrant"
+    assert ModelStatus(value="partial_migrant", sources=[]).value == "partial_migrant"

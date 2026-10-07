@@ -237,6 +237,9 @@ def data_sentences(months: list[int], counties: dict[str, int], lang: str) -> li
 
 RESIDENT_MIN_MONTH = 5
 MIGRANT_WINTER_MAX = 25
+# A partial migrant has some of its birds here all winter: a winter mean this low is a
+# species that leaves altogether (Ladusvala's is under 1).
+PARTIAL_MIGRANT_WINTER_MIN = 5
 WINTER_VISITOR_SUMMER_MAX = 25
 _WINTER = (11, 0, 1)
 _SUMMER = (5, 6)
@@ -249,6 +252,7 @@ def _mean(profile: list[int], months: tuple[int, ...]) -> float:
 # A status that says the species is in Sweden, with its label in the flag message.
 _PRESENT = {
     "resident": "stannfågel",
+    "partial_migrant": "delvis flyttfågel",
     "breeding_migrant": "flyttfågel som häckar här",
     "passage": "ses under flyttningen",
     "winter_visitor": "vintergäst",
@@ -278,6 +282,11 @@ def status_contradiction(
     if status == "resident" and min(months) < RESIDENT_MIN_MONTH:
         lowest = MONTHS["sv"][months.index(min(months))]
         return f"Statusen säger stannfågel, men arten rapporteras nästan aldrig i {lowest}."
+    if status == "partial_migrant" and _mean(months, _WINTER) < PARTIAL_MIGRANT_WINTER_MIN:
+        return (
+            "Statusen säger delvis flyttfågel, men arten rapporteras nästan aldrig "
+            "december till februari."
+        )
     if status == "breeding_migrant" and _mean(months, _WINTER) > MIGRANT_WINTER_MAX:
         return "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     if status == "winter_visitor" and _mean(months, _SUMMER) > WINTER_VISITOR_SUMMER_MAX:

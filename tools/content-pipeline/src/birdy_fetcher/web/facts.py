@@ -36,7 +36,13 @@ Topic = Literal[
 ]
 ArticleLang = Literal["sv", "en", "de"]
 SwedenStatus = Literal[
-    "resident", "breeding_migrant", "passage", "winter_visitor", "rare_visitor", "absent"
+    "resident",
+    "partial_migrant",
+    "breeding_migrant",
+    "passage",
+    "winter_visitor",
+    "rare_visitor",
+    "absent",
 ]
 
 
@@ -82,6 +88,10 @@ TOPIC_SV = {
 }
 STATUS_SV = {
     "resident": "Stannfågel",
+    # Wave 1 (2026-10-07): some of the Swedish birds stay over winter, some leave. Without it
+    # the model had to call Koltrast or Gräsand resident or migrant, and the checks struck
+    # or flagged 28 of wave 1's 35 flags on that alone.
+    "partial_migrant": "Delvis flyttfågel, häckar här",
     "breeding_migrant": "Flyttfågel, häckar här",
     "passage": "Ses under flyttningen",
     "winter_visitor": "Vintergäst",
@@ -263,7 +273,7 @@ def check_fact_sheet(
     return check
 
 
-BREEDS_HERE = ("resident", "breeding_migrant")
+BREEDS_HERE = ("resident", "partial_migrant", "breeding_migrant")
 
 
 def data_facts(record: Record, *, status: str | None = None) -> list[dict[str, Any]]:
