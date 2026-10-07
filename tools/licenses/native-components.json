@@ -1,0 +1,327 @@
+{
+  "about": "Native code built into the two TensorFlow libraries the app ships: libtensorflowlite_flex_jni.so (the 16 KB build of TensorFlow commit a95156b81d38, April 2026, from github.com/arxdeus/tflite_flex_16kb_android, tag tf-a95156b81d38, used for BirdNET's FlexRFFT) and libtensorflowlite_jni.so (LiteRT 1.4.1, November 2025). Versions are the ones TensorFlow pinned at a95156b81d38 (the file named in pinnedIn), which the flex library is built from. LiteRT 1.4.1 does not publish its versions; for LiteRT the texts come from the same versions, which may differ from the ones built into it. The list follows the 1.3.0 legal review (docs/legal/2026-10-1.3.0-genomgang.md, section 6), the controller's review of 7i-fix B, and strings in the arm64 libraries (libjpeg-turbo 2.1.4, libpng, KleidiAI paths in LiteRT, ml_dtypes in the flex library). pthreadpool, FXdiv and FP16 are named by no string (the libraries are stripped) and are listed because XNNPACK, which is in LiteRT, is built with them. nsync is not listed: TensorFlow at this commit has no nsync repository and the review's match was the string 'pflr_runsync'.",
+  "tensorflowCommit": "a95156b81d3899ed3fc471843aa82f3c33bc8c32",
+  "tensorflowCommitDate": "April 2026",
+  "flexTag": "tf-a95156b81d38",
+  "litertVersion": "1.4.1",
+  "litertDate": "November 2025",
+  "components": [
+    {
+      "id": "protobuf",
+      "name": "Protocol Buffers",
+      "version": "6.31.1",
+      "license": "BSD-3-Clause",
+      "in": [
+        "flex"
+      ],
+      "pinnedIn": "tensorflow/workspace2.bzl",
+      "source": "https://raw.githubusercontent.com/protocolbuffers/protobuf/v6.31.1/LICENSE",
+      "labels": [
+        "BSD"
+      ]
+    },
+    {
+      "id": "re2",
+      "name": "RE2",
+      "version": "927f5d53caf8111721e734cf24724686bb745f55",
+      "license": "BSD-3-Clause",
+      "in": [
+        "flex"
+      ],
+      "pinnedIn": "tensorflow/workspace2.bzl",
+      "source": "https://raw.githubusercontent.com/google/re2/927f5d53caf8111721e734cf24724686bb745f55/LICENSE",
+      "labels": [
+        "BSD"
+      ]
+    },
+    {
+      "id": "abseil",
+      "name": "Abseil C++",
+      "version": "LTS 20260107.1 (255c84dadd029fd8ad25c5efb5933e47beaa00c7)",
+      "license": "Apache-2.0",
+      "in": [
+        "flex"
+      ],
+      "pinnedIn": "third_party/xla/third_party/absl/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/abseil/abseil-cpp/255c84dadd029fd8ad25c5efb5933e47beaa00c7/LICENSE",
+      "labels": [
+        "Apache 2.0"
+      ]
+    },
+    {
+      "id": "ducc",
+      "name": "ducc (FFT)",
+      "version": "aa46a4c21e440b3d416c16eca3c96df19c74f316",
+      "license": "BSD-3-Clause (ducc's FFT component is offered under BSD-3-Clause or GPL-2.0-or-later; TensorFlow builds only the FFT component, used here under BSD-3-Clause)",
+      "in": [
+        "flex"
+      ],
+      "pinnedIn": "third_party/xla/third_party/ducc/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/mreineck/ducc/aa46a4c21e440b3d416c16eca3c96df19c74f316/src/ducc0/fft/fft.h",
+      "lines": [
+        1,
+        37
+      ],
+      "sourceNote": "The licence header of src/ducc0/fft/fft.h, from the GitHub mirror of gitlab.mpcdf.mpg.de/mtr/ducc (the GitLab server blocks scripted downloads).",
+      "labels": [
+        "BSD"
+      ]
+    },
+    {
+      "id": "eigen",
+      "name": "Eigen",
+      "version": "dcbaf2d608f306450f1e74949eb87e9a22a7ef4b",
+      "license": "MPL-2.0 (some files BSD, MINPACK or Apache-2.0; see the text)",
+      "in": [
+        "flex",
+        "litert"
+      ],
+      "pinnedIn": "third_party/xla/third_party/eigen3/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/tensorflow/tensorflow/a95156b81d3899ed3fc471843aa82f3c33bc8c32/third_party/xla/third_party/eigen3/LICENSE",
+      "sourceNote": "TensorFlow's own copy of Eigen's licences.",
+      "sourceCode": "https://gitlab.com/libeigen/eigen/-/tree/dcbaf2d608f306450f1e74949eb87e9a22a7ef4b",
+      "labels": [
+        "MPL 2.0",
+        "BSD",
+        "MINPACK"
+      ]
+    },
+    {
+      "id": "gemmlowp",
+      "name": "gemmlowp",
+      "version": "16e8662c34917be0065110bfcd9cc27d30f52fdf",
+      "license": "Apache-2.0",
+      "in": [
+        "flex",
+        "litert"
+      ],
+      "pinnedIn": "third_party/xla/third_party/gemmlowp/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/google/gemmlowp/16e8662c34917be0065110bfcd9cc27d30f52fdf/LICENSE",
+      "labels": [
+        "Apache 2.0"
+      ]
+    },
+    {
+      "id": "zlib",
+      "name": "zlib",
+      "version": "1.3.1",
+      "license": "Zlib",
+      "in": [
+        "flex"
+      ],
+      "pinnedIn": "tensorflow/workspace2.bzl",
+      "source": "https://raw.githubusercontent.com/madler/zlib/v1.3.1/LICENSE",
+      "labels": [
+        "zlib"
+      ]
+    },
+    {
+      "id": "snappy",
+      "name": "Snappy",
+      "version": "1.2.0",
+      "license": "BSD-3-Clause",
+      "in": [
+        "flex"
+      ],
+      "pinnedIn": "tensorflow/workspace2.bzl",
+      "source": "https://raw.githubusercontent.com/google/snappy/1.2.0/COPYING",
+      "labels": [
+        "BSD"
+      ]
+    },
+    {
+      "id": "farmhash",
+      "name": "FarmHash",
+      "version": "0d859a811870d10f53a594927d0d0b97573ad06d",
+      "license": "MIT",
+      "in": [
+        "flex"
+      ],
+      "pinnedIn": "third_party/xla/third_party/farmhash/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/google/farmhash/0d859a811870d10f53a594927d0d0b97573ad06d/COPYING",
+      "labels": [
+        "MIT"
+      ]
+    },
+    {
+      "id": "libjpeg-turbo",
+      "name": "libjpeg-turbo",
+      "version": "2.1.4",
+      "license": "IJG, BSD-3-Clause and Zlib",
+      "in": [
+        "flex"
+      ],
+      "pinnedIn": "third_party/jpeg/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/libjpeg-turbo/libjpeg-turbo/2.1.4/LICENSE.md",
+      "notice": "This software is based in part on the work of the Independent JPEG Group.",
+      "labels": [
+        "IJG",
+        "BSD",
+        "zlib"
+      ]
+    },
+    {
+      "id": "libpng",
+      "name": "libpng",
+      "version": "1.6.43",
+      "license": "PNG Reference Library License version 2",
+      "in": [
+        "flex"
+      ],
+      "pinnedIn": "third_party/png/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/glennrp/libpng/v1.6.43/LICENSE",
+      "labels": [
+        "libpng"
+      ]
+    },
+    {
+      "id": "xnnpack",
+      "name": "XNNPACK",
+      "version": "bccfe73347861f07a0257c0c546c0babcf3257b8",
+      "license": "BSD-3-Clause",
+      "in": [
+        "litert"
+      ],
+      "pinnedIn": "third_party/xla/third_party/xnnpack/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/google/XNNPACK/bccfe73347861f07a0257c0c546c0babcf3257b8/LICENSE",
+      "labels": [
+        "BSD"
+      ]
+    },
+    {
+      "id": "flatbuffers",
+      "name": "FlatBuffers",
+      "version": "25.9.23",
+      "license": "Apache-2.0",
+      "in": [
+        "litert"
+      ],
+      "pinnedIn": "third_party/flatbuffers/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/google/flatbuffers/v25.9.23/LICENSE",
+      "labels": [
+        "Apache 2.0"
+      ]
+    },
+    {
+      "id": "fft2d",
+      "name": "fft2d (Ooura FFT)",
+      "version": "1.0",
+      "license": "Ooura FFT licence (permissive)",
+      "in": [
+        "litert"
+      ],
+      "pinnedIn": "third_party/fft2d/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/tensorflow/tensorflow/a95156b81d3899ed3fc471843aa82f3c33bc8c32/third_party/fft2d/LICENSE",
+      "labels": [
+        "Ooura"
+      ]
+    },
+    {
+      "id": "ruy",
+      "name": "ruy",
+      "version": "3286a34cc8de6149ac6844107dfdffac91531e72",
+      "license": "Apache-2.0",
+      "in": [
+        "flex",
+        "litert"
+      ],
+      "pinnedIn": "third_party/ruy/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/google/ruy/3286a34cc8de6149ac6844107dfdffac91531e72/LICENSE",
+      "labels": [
+        "Apache 2.0"
+      ]
+    },
+    {
+      "id": "cpuinfo",
+      "name": "cpuinfo",
+      "version": "8a9210069b5a37dd89ed118a783945502a30a4ae",
+      "license": "BSD-2-Clause",
+      "in": [
+        "flex",
+        "litert"
+      ],
+      "pinnedIn": "third_party/xla/third_party/cpuinfo/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/pytorch/cpuinfo/8a9210069b5a37dd89ed118a783945502a30a4ae/LICENSE",
+      "labels": [
+        "BSD"
+      ]
+    },
+    {
+      "id": "kleidiai",
+      "name": "KleidiAI",
+      "version": "d41219d3db13758074a6440d7b55a87487334c8b",
+      "license": "Apache-2.0",
+      "in": [
+        "litert"
+      ],
+      "pinnedIn": "tensorflow/workspace2.bzl",
+      "source": "https://raw.githubusercontent.com/ARM-software/kleidiai/d41219d3db13758074a6440d7b55a87487334c8b/LICENSES/Apache-2.0.txt",
+      "notice": "Copyright 2024-2026 Arm Limited and/or its affiliates <open-source-office@arm.com>",
+      "evidence": "external/KleidiAI/ paths in libtensorflowlite_jni.so",
+      "labels": [
+        "Apache 2.0"
+      ]
+    },
+    {
+      "id": "ml-dtypes",
+      "name": "ml_dtypes",
+      "version": "00d98cd92ade342fef589c0470379abb27baebe9",
+      "license": "Apache-2.0",
+      "in": [
+        "flex"
+      ],
+      "pinnedIn": "third_party/py/ml_dtypes/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/jax-ml/ml_dtypes/00d98cd92ade342fef589c0470379abb27baebe9/LICENSE",
+      "notice": "Copyright 2022 The TensorFlow Authors (ml_dtypes source files)",
+      "evidence": "ml_dtypes and float8 type names in libtensorflowlite_flex_jni.so",
+      "labels": [
+        "Apache 2.0"
+      ]
+    },
+    {
+      "id": "pthreadpool",
+      "name": "pthreadpool",
+      "version": "9003ee6c137cea3b94161bd5c614fb43be523ee1",
+      "license": "BSD-2-Clause",
+      "in": [
+        "litert"
+      ],
+      "pinnedIn": "third_party/xla/third_party/pthreadpool/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/google/pthreadpool/9003ee6c137cea3b94161bd5c614fb43be523ee1/LICENSE",
+      "evidence": "no string in the stripped library names it; XNNPACK, which is in LiteRT, is built with it",
+      "labels": [
+        "BSD"
+      ]
+    },
+    {
+      "id": "fxdiv",
+      "name": "FXdiv",
+      "version": "63058eff77e11aa15bf531df5dd34395ec3017c8",
+      "license": "MIT",
+      "in": [
+        "litert"
+      ],
+      "pinnedIn": "third_party/xla/third_party/fxdiv/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/Maratyszcza/FXdiv/63058eff77e11aa15bf531df5dd34395ec3017c8/LICENSE",
+      "evidence": "no string in the stripped library names it; pthreadpool, which XNNPACK uses, is built with it",
+      "labels": [
+        "MIT"
+      ]
+    },
+    {
+      "id": "fp16",
+      "name": "FP16",
+      "version": "4dfe081cf6bcd15db339cf2680b9281b8451eeb3",
+      "license": "MIT",
+      "in": [
+        "litert"
+      ],
+      "pinnedIn": "third_party/xla/third_party/FP16/workspace.bzl",
+      "source": "https://raw.githubusercontent.com/Maratyszcza/FP16/4dfe081cf6bcd15db339cf2680b9281b8451eeb3/LICENSE",
+      "evidence": "no string in the stripped library names it; XNNPACK, which is in LiteRT, is built with it",
+      "labels": [
+        "MIT"
+      ]
+    }
+  ]
+}

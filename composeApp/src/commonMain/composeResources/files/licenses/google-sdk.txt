@@ -1,0 +1,7 @@
+Google's terms
+==============
+
+Android Software Development Kit License: https://developer.android.com/studio/terms.html
+Play Core Software Development Kit Terms of Service: https://developer.android.com/guide/playcore/license
+
+These libraries are not open source. The notices for the open-source code inside them are under "Open-source code in Google's libraries" in this list.

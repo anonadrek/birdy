@@ -9,6 +9,7 @@ import coil3.intercept.Interceptor
 import coil3.request.ImageResult
 import coil3.request.allowHardware
 import kotlinx.coroutines.Dispatchers
+import kotlinx.datetime.Clock
 import org.junit.After
 import org.junit.Rule
 import org.junit.Test
@@ -23,6 +24,7 @@ import se.birdy.app.testing.resetImageLoader
 import se.birdy.app.ui.settings.SettingsScreen
 import se.birdy.app.ui.settings.SettingsViewModel
 import se.birdy.domain.premium.PremiumState
+import se.birdy.domain.premium.PremiumTier
 import java.io.File
 
 /**
@@ -64,6 +66,48 @@ class SettingsScreenshotTest {
     @Test
     @Config(qualifiers = "+en")
     fun settings_free_en() = capture("settings_free_en")
+}
+
+/**
+ * Work package 7i-fix E: the "Hantera prenumeration" / "Manage subscription" row + caption,
+ * only shown for a real active yearly subscriber (Play policy 9900533).
+ */
+@RunWith(RobolectricTestRunner::class)
+@GraphicsMode(GraphicsMode.Mode.NATIVE)
+@Config(sdk = [35], qualifiers = "w411dp-h891dp-xxhdpi")
+class SettingsManageSubscriptionScreenshotTest {
+    @get:Rule
+    val compose = createComposeRule()
+
+    @After
+    fun tearDown() = resetImageLoader()
+
+    private fun capture(name: String) {
+        installComposeResourcesImageLoader()
+        compose.captureScreen(name) {
+            SettingsScreen(
+                viewModel =
+                    SettingsViewModel(
+                        prefs = FakeUserPreferences(),
+                        premiumRepository =
+                            FakePremiumRepository(PremiumState.Active(PremiumTier.YEARLY, Clock.System.now())),
+                    ),
+                onBack = {},
+                onPremiumClick = {},
+                onNavigateToAbout = {},
+                onShowIntroAgain = {},
+                versionName = "1.3.0",
+            )
+        }
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun settings_yearly_sv() = capture("settings_yearly_sv")
+
+    @Test
+    @Config(qualifiers = "+en")
+    fun settings_yearly_en() = capture("settings_yearly_en")
 }
 
 /**

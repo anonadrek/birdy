@@ -11,7 +11,9 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
+import kotlinx.datetime.TimeZone
 import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.data.premium.FormattedPrices
 import se.birdy.app.data.premium.PurchaseResult
@@ -80,6 +82,9 @@ internal fun testAppGraph(
     withAudio: Boolean = false,
     // birdy:// links, as a notification tap delivers them (Task 7b review).
     deepLinks: MutableSharedFlow<String>? = null,
+    // Task 7j review: the weekly recap's notification opened just after midnight.
+    clock: Clock = FakeClock(RoutingFixture.now),
+    timeZone: TimeZone = TimeZone.currentSystemDefault(),
 ): AppGraph {
     val grandfathered =
         GrandfatherPolicy.isGrandfathered(
@@ -110,7 +115,8 @@ internal fun testAppGraph(
                 now = RoutingFixture.now,
             ),
         isGrandfathered = grandfathered,
-        clock = FakeClock(RoutingFixture.now),
+        clock = clock,
+        timeZone = timeZone,
         // A real Play purchase must never start from a test. AppGraph's own default would
         // mark the fake repository as purchased.
         launchPurchase = { PurchaseResult.UserCancelled },

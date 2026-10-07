@@ -382,3 +382,71 @@ val verifyProductionRelease by tasks.registering {
 tasks.matching { it.name == "bundleRelease" || it.name == "assembleRelease" }.configureEach {
     dependsOn(verifyProductionRelease)
 }
+
+// ---- Open-source licence list guard (release 1.3.0, legal review 7i-fix B) ----------------
+// The licence list the app shows under Settings, About (composeApp's
+// composeResources/files/licenses/) is generated from the release build's dependencies by
+// tools/licenses/generate.py, which first runs writeReleaseDependencies. Both tasks read the
+// release runtime classpath and the core library desugaring library (desugar_jdk_libs, compiled into
+// the dex). verifyLicenseList fails when those dependencies no longer match
+// tools/licenses/release-dependencies.txt, the list the licence files were made from: it runs in CI and before every release bundle or APK, so a
+// release can never ship with a stale list. Both tasks only resolve the dependency graph.
+val writeReleaseDependencies by tasks.registering(se.birdy.build.WriteReleaseDependenciesTask::class) {
+    description = "Writes the release build's external dependencies for tools/licenses/generate.py."
+    rootComponent.set(
+        project.configurations
+            .named("releaseRuntimeClasspath")
+            .flatMap { it.incoming.resolutionResult.rootComponent },
+    )
+    desugaringRootComponent.set(
+        project.configurations
+            .named("coreLibraryDesugaring")
+            .flatMap { it.incoming.resolutionResult.rootComponent },
+    )
+    output.set(layout.buildDirectory.file("licenses/release-dependencies.txt"))
+}
+
+// The external dependencies' own files (AARs and JARs), for the notices inside them. Lenient and
+// limited to external modules: the project modules are this app's own code.
+val writeReleaseArtifacts by tasks.registering(se.birdy.build.WriteReleaseArtifactsTask::class) {
+    description = "Writes the files of the release build's external dependencies for tools/licenses/generate.py."
+    lines.addAll(
+        se.birdy.build.artifactLines(
+            project.configurations.named("releaseRuntimeClasspath").flatMap { configuration ->
+                configuration.incoming
+                    .artifactView {
+                        lenient(true)
+                        componentFilter { it is org.gradle.api.artifacts.component.ModuleComponentIdentifier }
+                    }.artifacts.resolvedArtifacts
+            },
+        ),
+    )
+    lines.addAll(
+        se.birdy.build.artifactLines(
+            project.configurations.named("coreLibraryDesugaring").flatMap { it.incoming.artifacts.resolvedArtifacts },
+        ),
+    )
+    output.set(layout.buildDirectory.file("licenses/release-artifacts.txt"))
+}
+
+val verifyLicenseList by tasks.registering(se.birdy.build.VerifyLicenseListTask::class) {
+    description = "Fails when the release dependencies changed since the app's licence list was generated."
+    group = "verification"
+    rootComponent.set(
+        project.configurations
+            .named("releaseRuntimeClasspath")
+            .flatMap { it.incoming.resolutionResult.rootComponent },
+    )
+    desugaringRootComponent.set(
+        project.configurations
+            .named("coreLibraryDesugaring")
+            .flatMap { it.incoming.resolutionResult.rootComponent },
+    )
+    committedList.set(rootProject.layout.projectDirectory.file("tools/licenses/release-dependencies.txt"))
+}
+
+tasks.named("check") { dependsOn(verifyLicenseList) }
+
+tasks.matching { it.name == "bundleRelease" || it.name == "assembleRelease" }.configureEach {
+    dependsOn(verifyLicenseList)
+}

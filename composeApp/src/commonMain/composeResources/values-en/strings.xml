@@ -536,6 +536,8 @@
     <string name="settings_restore_purchases_success">Purchase restored.</string>
     <string name="settings_restore_purchases_empty">Nothing to restore.</string>
     <string name="settings_restore_purchases_unavailable">Couldn’t reach Google Play. Check your connection and try again.</string>
+    <string name="settings_row_manage_subscription">Manage subscription</string>
+    <string name="settings_manage_subscription_caption">Cancel or change in Google Play.</string>
     <string name="settings_footer">— Birdy is a field prospectus. —</string>
     <!-- Gear -->
     <string name="gear_content_description">Settings</string>
@@ -642,10 +644,51 @@
     <string name="about_subline">A local journal for sightings.</string>
     <string name="about_version_prefix">Version</string>
     <string name="about_credits_label">CONTENT &amp; DATA</string>
-    <string name="about_credits_body">Bird data from Wikidata and Wikipedia under CC BY-SA. Photos from Wikimedia Commons. Map data © OpenStreetMap contributors, tiles © MapTiler. ML models: AIY Birds V1 (Google, photo) and BirdNET-Lite v2 (Cornell Lab of Ornithology, audio).</string>
-    <string name="about_licenses_label">OPEN SOURCE</string>
-    <string name="about_licenses_body">Kotlin, Compose Multiplatform — Apache 2.0\nSQLDelight — Apache 2.0\nCoil — Apache 2.0\nAndroidX — Apache 2.0\nkaml — Apache 2.0\nosmdroid — Apache 2.0\nTensorFlow Lite (AIY Birds V1) — Apache 2.0\nBirdNET-Lite v2 (Cornell Lab of Ornithology) — CC BY-NC-SA 4.0\nDM Serif Display Italic — SIL Open Font License 1.1\nCaveat — SIL Open Font License 1.1</string>
-    <string name="about_back">Back</string>
+    <string name="about_licenses_label">SOURCES &amp; LICENSES</string>
+    <string name="about_photos_title">Photos</string>
+    <string name="about_photos_body">%1$s species photos from Wikimedia Commons under CC0, public domain, CC BY or CC BY-SA, resized by Birdy. The photographer, license and a link to the original of every photo are under Photo credits.</string>
+    <string name="about_photos_body_uncounted">Species photos from Wikimedia Commons under CC0, public domain, CC BY or CC BY-SA, resized by Birdy. The photographer, license and a link to the original of every photo are under Photo credits.</string>
+    <string name="about_texts_title">Species texts</string>
+    <string name="about_texts_body">Summaries that the AI model Claude (Anthropic) wrote in 2026. The texts are based on Wikipedia articles in Swedish and English and are shared under CC BY-SA 4.0.</string>
+    <string name="about_names_title">Species list and names</string>
+    <string name="about_names_body">BirdLife Sweden’s taxonomic committee (the Western Palearctic list), IOC World Bird List v14.1 (F. Gill, D. Donsker &amp; P. Rasmussen, eds.; CC BY 3.0) and Wikidata (CC0). The red-list category is the species’ category on the IUCN’s global Red List, taken from Wikidata.</string>
+    <string name="about_map_title">Map</string>
+    <string name="about_map_body">Map tiles © MapTiler. Map data © OpenStreetMap contributors (ODbL).</string>
+    <string name="about_photo_id_title">Photo ID</string>
+    <string name="about_photo_id_body">AIY Birds V1, © Google, Apache License 2.0.</string>
+    <string name="about_sound_id_title">Sound ID</string>
+    <string name="about_sound_id_body">BirdNET-Lite, K. Lisa Yang Center for Conservation Bioacoustics, Cornell Lab of Ornithology, Cornell University. License CC BY-NC-SA 4.0, used unchanged. That is why sound ID is always free. Kahl et al. (2021), Ecological Informatics 61: 101236.</string>
+    <string name="about_row_photo_credits">Photo credits</string>
+    <string name="about_row_photo_credits_sub">Photographer and license for every photo</string>
+    <string name="about_row_licenses">Open-source licenses</string>
+    <string name="about_row_licenses_sub">Libraries, models and fonts</string>
+    <string name="photo_credits_title">Photo credits</string>
+    <string name="photo_credits_intro">All %1$s species photos in Birdy come from Wikimedia Commons and are resized. Tap a photo to open the original, or its license to read it.</string>
+    <string name="photo_credits_hero">Main photo</string>
+    <string name="photo_credits_numbered">Photo %1$s</string>
+    <string name="photo_credits_by">Photo: %1$s</string>
+    <string name="photo_credits_resized">resized</string>
+    <string name="photo_credits_row_description">%1$s, %2$s. Photo: %3$s. License: %4$s. Wikimedia Commons, resized.</string>
+    <string name="photo_credits_open_file">Open the original on Wikimedia Commons</string>
+    <string name="photo_credits_open_license">Open the license %1$s</string>
+    <string name="photo_credits_error">The photo credits could not be loaded.</string>
+    <string name="photo_credits_other_title">Other images</string>
+    <string name="photo_credits_use_premium">Premium screen</string>
+    <string name="photo_credits_use_model_test">Test image for the photo model</string>
+    <string name="licenses_title">Open-source licenses</string>
+    <string name="licenses_intro">Birdy is built on open-source code, models and fonts made by others. Their licenses and notices are here. Tap a row to read the text.</string>
+    <string name="licenses_section_models">Models</string>
+    <string name="licenses_section_fonts">Fonts</string>
+    <string name="licenses_section_tensorflow">TensorFlow Lite</string>
+    <string name="licenses_section_google">Google’s libraries</string>
+    <string name="licenses_section_libraries">Libraries</string>
+    <string name="licenses_row_version">Version %1$s</string>
+    <string name="licenses_entry_native">Native code in TensorFlow Lite, %1$s components</string>
+    <string name="licenses_entry_google">Open-source code in Google’s libraries</string>
+    <string name="licenses_open">Read the license</string>
+    <string name="licenses_error">The licenses could not be loaded.</string>
+    <string name="license_text_includes">Includes: %1$s</string>
+    <string name="license_text_website">Website</string>
 
     <!-- Settings row effects (Plan 6a Task 13) -->
     <string name="settings_share_copy">Birdy — a field birder’s digital companion. Get it on Google Play: https://play.google.com/store/apps/details?id=se.birdy.android</string>
@@ -685,7 +728,7 @@
          the target is the Daily bird hunter badge. -->
     <string name="daily_bird_card_eyebrow">Bird of the day</string>
     <string name="daily_bird_kicker_fmt">Bird of the day · %1$s</string>
-    <string name="daily_bird_date_fmt">%1$s %2$d %3$s</string>
+    <string name="daily_bird_date_fmt">%1$s %2$d&#160;%3$s</string>
     <string name="daily_bird_weekday_mon">Mon</string>
     <string name="daily_bird_weekday_tue">Tue</string>
     <string name="daily_bird_weekday_wed">Wed</string>
@@ -754,6 +797,7 @@
     <!-- Notifications -->
     <string name="notification_daily_bird_title_fmt">Bird of the day: %1$s</string>
     <string name="notification_daily_bird_body">Can you catch it today? Camera, photo or call all count.</string>
+    <string name="notification_daily_bird_photo_credit">Photo: %1$s, %2$s</string>
     <string name="daily_bird_caught_today">Caught today</string>
     <string name="daily_bird_not_caught">Not caught today</string>
     <string name="settings_toggle_trophy">Badge progress — weekly</string>
@@ -771,19 +815,13 @@
     <string name="badge_desc_daily_bird_first">Save today’s curated bird for the first time.</string>
 
     <!-- ===== v1.2 Phase B: Weekly Recap ===== -->
-    <string name="recap_eyebrow_fmt">Field report · Week %1$s</string>
+    <string name="recap_eyebrow_fmt">Field report · Week&#160;%1$s</string>
     <string name="recap_headline_active">A week in the *field*.</string>
     <string name="recap_headline_quiet">A *quiet* week.</string>
     <plurals name="recap_summary_active_fmt">
         <item quantity="one">%1$d sighting this week.</item>
         <item quantity="other">%1$d sightings this week.</item>
     </plurals>
-    <plurals name="recap_summary_active_new">
-        <item quantity="one">%1$d sighting this week, and a new acquaintance.</item>
-        <item quantity="other">%1$d sightings this week, and a new acquaintance.</item>
-    </plurals>
-    <!-- %1$s = recap_stats_finds, %2$s = recap_stats_new_species, %3$s = recap_stats_week_streak. -->
-    <string name="recap_stats_fmt">%1$s · %2$s · %3$s</string>
     <plurals name="recap_stats_finds">
         <item quantity="one">%1$d sighting</item>
         <item quantity="other">%1$d sightings</item>
@@ -796,21 +834,67 @@
         <item quantity="one">%1$d week in a row</item>
         <item quantity="other">%1$d weeks in a row</item>
     </plurals>
-    <string name="recap_new_badge_fmt">New stamp: %1$s</string>
-    <!-- %1$s is the signed difference ("+2", "-1"); the quantity is its size. -->
-    <plurals name="recap_delta_fmt">
-        <item quantity="one">vs last week: %1$s sighting</item>
-        <item quantity="other">vs last week: %1$s sightings</item>
+    <!-- Release 1.3.0 Task 7j, "Uppslag 1": the week's dates under the headline. -->
+    <!-- %1$d = first day, %2$d = last day, %3$s = month ("5 to 11 October"). -->
+    <string name="recap_dates_one_month_fmt">%1$d to %2$d&#160;%3$s</string>
+    <!-- "28 September to 4 October". -->
+    <string name="recap_dates_two_months_fmt">%1$d&#160;%2$s to %3$d&#160;%4$s</string>
+    <!-- %1$s = recap_dates_*, %2$d = days with at least one sighting. -->
+    <plurals name="recap_sub_active">
+        <item quantity="one">%1$s. Out on %2$d&#160;day.</item>
+        <item quantity="other">%1$s. Out on %2$d&#160;days.</item>
     </plurals>
-    <string name="recap_empty_plate">The page is blank — no sightings yet.</string>
-    <string name="recap_new_species_tag">New species</string>
+    <string name="recap_sub_quiet">%1$s.</string>
+    <!-- The words under the three numbers in the header row (shown in caps). -->
+    <plurals name="recap_ledger_finds">
+        <item quantity="one">sighting</item>
+        <item quantity="other">sightings</item>
+    </plurals>
+    <plurals name="recap_ledger_new_species">
+        <item quantity="one">new species</item>
+        <item quantity="other">new species</item>
+    </plurals>
+    <plurals name="recap_ledger_weeks">
+        <item quantity="one">week in a&#160;row</item>
+        <item quantity="other">weeks in a&#160;row</item>
+    </plurals>
+    <!-- The header row read as one sentence: recap_stats_finds, recap_stats_new_species, recap_stats_week_streak. -->
+    <string name="recap_ledger_a11y_fmt">%1$s, %2$s, %3$s.</string>
+    <!-- %1$s is the signed difference ("+3", "-1"); the quantity is its size. -->
+    <plurals name="recap_delta_line">
+        <item quantity="one">%1$s sighting compared with last week</item>
+        <item quantity="other">%1$s sightings compared with last week</item>
+    </plurals>
+    <string name="recap_delta_same">As many sightings as last week</string>
+    <!-- A day in the Monday to Sunday strip, for TalkBack. %1$s = "Monday 5 October". -->
+    <plurals name="recap_day_a11y">
+        <item quantity="one">%1$s, %2$d sighting</item>
+        <item quantity="other">%1$s, %2$d sightings</item>
+    </plurals>
+    <string name="recap_day_none_a11y">%1$s, no sightings</string>
+    <string name="recap_day_future_a11y">%1$s, still to come</string>
+    <string name="recap_section_new">New on your life list</string>
+    <!-- %1$d = the species' number in the life list, %2$s = "Sat 10 Oct". -->
+    <string name="recap_new_lifelist_fmt">№&#160;%1$d on your life list · %2$s</string>
+    <!-- %1$s = species, %2$d = life-list number, %3$s = "Saturday 10 October". -->
+    <string name="recap_new_a11y_fmt">%1$s, number %2$d on your life list, first seen %3$s</string>
+    <string name="recap_new_tag">New</string>
+    <string name="recap_stamp_label">New stamp</string>
+    <!-- %1$s = stamp name, %2$d = its number, %3$s = its description. -->
+    <string name="recap_stamp_a11y_fmt">New stamp: %1$s, number %2$d. %3$s</string>
+    <string name="recap_stamp_none_label">This week's stamp</string>
+    <string name="recap_stamp_none">No new stamp this week.</string>
+    <string name="recap_section_all_fmt">All sightings · %1$d</string>
+    <!-- The grid heading for TalkBack ("All sightings, 7"). -->
+    <string name="recap_section_all_a11y_fmt">All sightings, %1$d</string>
+    <!-- A square in the grid: %1$s = species, %2$s = "Sunday 11 October". -->
+    <string name="recap_find_a11y_fmt">%1$s, %2$s</string>
     <string name="recap_quiet_encouragement">No rush. Ten minutes in the park is enough for the week's first line.</string>
     <string name="recap_streak_label">Your streak</string>
-    <string name="recap_streak_nudge_fmt">%1$s weeks running — keep it alive before Sunday ends. A great tit in the park is enough.</string>
-    <string name="recap_cta_open_camera">Open the camera →</string>
+    <string name="recap_streak_nudge_fmt">%1$s weeks running. Keep it alive before Sunday ends: a great tit in the park is enough.</string>
+    <string name="recap_cta_open_camera">Open the camera</string>
     <string name="recap_load_error">Couldn't open this week’s page. Try again later.</string>
     <string name="recap_lifelist_entry_title">This week's page</string>
-    <string name="recap_a11y_fmt">This week's page, week %1$s</string>
     <string name="notification_recap_active_title">Your week in the field</string>
     <!-- %1$s = recap_stats_finds, %2$s = recap_stats_new_species. -->
     <string name="notification_recap_active_body_fmt">%1$s, %2$s. See this week's page.</string>

@@ -1,0 +1,5 @@
+AIY Birds V1, bird photo classifier (lite-model/aiy/vision/classifier/birds_V1/3), © Google.
+
+Source: https://tfhub.dev/google/lite-model/aiy/vision/classifier/birds_V1/3 (TensorFlow Hub, now Kaggle Models). Birdy ships the model file unchanged.
+
+Licence: Apache License 2.0. The model's documentation states: "This model follows Apache 2.0." The full licence text follows.

@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import se.birdy.app.data.premium.PremiumProducts
 import se.birdy.app.i18n.toLocaleTagOrEmpty
 import se.birdy.app.notifications.PlatformNotificationsApi
 import se.birdy.datastore.AppLanguage
@@ -65,7 +66,12 @@ class SettingsViewModel(
                 SettingsUiState(
                     userName = name,
                     language = lang,
+                    // Premium is active via EITHER a real purchase OR an override (grandfather,
+                    // debug). The "Manage subscription" link must only ever reflect a real Play
+                    // subscription, so it reads premium (the billing backend) directly, never
+                    // premiumOverride ?: premium — see SettingsUiState.playSubscriptionTier KDoc.
                     premiumActive = (premiumOverride ?: premium) !is PremiumState.Free,
+                    playSubscriptionTier = (premium as? PremiumState.Active)?.tier,
                 )
             }.collect { _state.value = it }
         }
@@ -108,6 +114,12 @@ class SettingsViewModel(
 
     fun openAbout() {
         viewModelScope.launch { _effects.send(SettingsEffect.OpenAbout) }
+    }
+
+    fun openManageSubscription() {
+        viewModelScope.launch {
+            _effects.send(SettingsEffect.OpenManageSubscriptionUrl(PremiumProducts.YEARLY))
+        }
     }
 
     fun setDailyBirdPushEnabled(value: Boolean) {
