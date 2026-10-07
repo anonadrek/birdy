@@ -30,6 +30,11 @@ internal const val FORMER_NAME_KIND = "former_name"
 class SqlDelightSpeciesRepository(
     private val db: BirdyContent,
 ) : SpeciesRepository {
+    // Species content does not change while the app runs, so the former names (28 rows) are read
+    // once per locale and reused by every search keystroke.
+    private val formerNamesByLocale: Map<Locale, Lazy<Map<String, String>>> =
+        Locale.entries.associateWith { locale -> lazy { db.formerNamesBySpecies(locale) } }
+
     override fun getById(
         id: SpeciesId,
         locale: Locale,
@@ -115,7 +120,7 @@ class SqlDelightSpeciesRepository(
             .asFlow()
             .mapToList(Dispatchers.Default)
             .map { rows ->
-                val formerNames = db.formerNamesBySpecies(locale)
+                val formerNames = formerNamesByLocale.getValue(locale).value
                 val hits =
                     rows
                         .distinctBy { it.species_id }

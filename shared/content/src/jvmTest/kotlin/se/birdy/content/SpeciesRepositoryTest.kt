@@ -286,6 +286,20 @@ class SpeciesRepositoryTest {
         driver.close()
     }
 
+    // Species content does not change while the app runs: the former names are read once per locale.
+    @Test
+    fun `the former names are read once per locale`() =
+        runTest {
+            val driver = RecordingDriver(JdbcSqliteDriver(JdbcSqliteDriver.IN_MEMORY))
+            BirdyContent.Schema.create(driver)
+            val db = BirdyContent(driver)
+            db.seedTalgoxe()
+            val repo = SqlDelightSpeciesRepository(db)
+            repeat(3) { repo.search("tal", Locale.SV, SpeciesFilter()).first() }
+            repo.search("tal", Locale.EN, SpeciesFilter()).first()
+            assertEquals(2, driver.queries.count { "WHERE kind = ?" in it }, driver.queries.toString())
+        }
+
     @Test
     fun `a species that was never renamed has no former name`(
         @TempDir tempDir: Path,
@@ -571,6 +585,7 @@ class SpeciesRepositoryTest {
         private val delegate: app.cash.sqldelight.db.SqlDriver,
     ) : app.cash.sqldelight.db.SqlDriver by delegate {
         val threads: MutableSet<String> = java.util.Collections.synchronizedSet(mutableSetOf())
+        val queries: MutableList<String> = java.util.Collections.synchronizedList(mutableListOf())
 
         override fun <R> executeQuery(
             identifier: Int?,
@@ -580,6 +595,7 @@ class SpeciesRepositoryTest {
             binders: (app.cash.sqldelight.db.SqlPreparedStatement.() -> Unit)?,
         ): app.cash.sqldelight.db.QueryResult<R> {
             threads += Thread.currentThread().name
+            queries += sql
             return delegate.executeQuery(identifier, sql, mapper, parameters, binders)
         }
     }
