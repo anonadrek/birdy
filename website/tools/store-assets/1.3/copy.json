@@ -1,9 +1,10 @@
 {
-  "_about": "Butiksbilder 1.3.0 (Plan 3 Task 9). Rubrikerna följer webbens ton: *ord* = handskrivet accentord. Inga tankstreck, inga offline-löften, inga precisionssiffror, inget 'gratis' i bilderna (Plays regler för butiksbilder). notes[].y = höjden i skärmdumpens egna pixlar (1080x1920) som variant B:s pil pekar på. 06-karta saknas medvetet: kartan tas om när Albins MapTiler-stil finns.",
+  "_about": "Butiksbilder 1.3.0 (Plan 3 Task 9). Albin valde variant C (Espresso) 2026-10-07. id = filnamnet i butiksordning, shot = råskärmdumpen i docs/play-store/screenshots/1.3.0/<sv|en>/. Rubrikerna följer webbens ton: *ord* = handskrivet accentord. Kickern är appens egna namn (flik, skärm eller sektion) exakt som appen skriver dem. Inga tankstreck, inga offline-löften, inga precisionssiffror, inget 'gratis' i bilderna (Plays regler för butiksbilder). notes[].y = höjden i skärmdumpens egna pixlar (1080x1920) som variant B:s pil pekar på. Kartan saknas medvetet: den läggs till när Albins MapTiler-stil finns (butikssidan kan uppdateras utan en ny appversion).",
   "cards": [
     {
       "id": "01-identifiera",
-      "kicker": { "sv": "Identifiera · i fält", "en": "Identify · in the field" },
+      "shot": "01-identifiera",
+      "kicker": { "sv": "Identifiera · Dagens fågel", "en": "Identify · Bird of the day" },
       "head": { "sv": "Se. Lyssna. *Spara.*", "en": "See. Listen. *Keep.*" },
       "note": { "sv": "kamera, foto eller läte", "en": "camera, photo or song" },
       "notes": [
@@ -12,8 +13,20 @@
       ]
     },
     {
-      "id": "02-match",
-      "kicker": { "sv": "Träff", "en": "Match" },
+      "id": "02-lyssna",
+      "shot": "07-lyssna",
+      "kicker": { "sv": "Ljud · identifiering", "en": "Audio · identification" },
+      "head": { "sv": "Låt den *sjunga.*", "en": "Let it *sing.*" },
+      "note": { "sv": "spela in sången så föreslår Birdy arten", "en": "record the song and Birdy suggests the species" },
+      "notes": [
+        { "y": 930, "sv": "spela in sången", "en": "record the song" },
+        { "y": 1180, "sv": "Birdy föreslår arten", "en": "Birdy suggests the species" }
+      ]
+    },
+    {
+      "id": "03-match",
+      "shot": "02-match",
+      "kicker": { "sv": "Match", "en": "Match" },
       "head": { "sv": "Vilken fågel *var det?*", "en": "Which bird *was that?*" },
       "note": { "sv": "Birdy svarar och säger hur säker den är", "en": "Birdy answers and says how sure it is" },
       "notes": [
@@ -22,7 +35,8 @@
       ]
     },
     {
-      "id": "03-mina-arter",
+      "id": "04-mina-arter",
+      "shot": "03-mina-arter",
       "kicker": { "sv": "Mina arter", "en": "Lifelist" },
       "head": { "sv": "Din egen *fältbok.*", "en": "Your own *field journal.*" },
       "note": { "sv": "varje fynd får en egen sida", "en": "every sighting gets its own page" },
@@ -32,8 +46,9 @@
       ]
     },
     {
-      "id": "04-uppslagsverk",
-      "kicker": { "sv": "Uppslagsverk · 839 arter", "en": "Field guide · 839 species" },
+      "id": "05-uppslagsverk",
+      "shot": "04-uppslagsverk",
+      "kicker": { "sv": "Uppslagsverk · 839 arter", "en": "Archive · 839 species" },
       "head": { "sv": "Europas fåglar, *i fickan.*", "en": "Europe's birds, *in your pocket.*" },
       "note": { "sv": "slå upp fågeln du just såg", "en": "look up the bird you just saw" },
       "notes": [
@@ -42,8 +57,9 @@
       ]
     },
     {
-      "id": "05-artprofil",
-      "kicker": { "sv": "Artprofil", "en": "Species profile" },
+      "id": "06-artprofil",
+      "shot": "05-artprofil",
+      "kicker": { "sv": "Uppslagsverk · Talgoxe", "en": "Archive · Great Tit" },
       "head": { "sv": "Lär känna dina *fåglar.*", "en": "Know your *birds.*" },
       "note": { "sv": "foto, beskrivning och rödlistning", "en": "photo, description and Red List status" },
       "notes": [
@@ -56,6 +72,7 @@
     "kicker": { "sv": "Fågelguide och fältdagbok", "en": "Bird guide and field journal" },
     "head": { "sv": "Se. Lyssna. *Spara.*", "en": "See. Listen. *Keep.*" },
     "note": { "sv": "Känn igen fågeln. Bevara stunden.", "en": "Know the bird. Keep the moment." },
+    "screens": ["01-identifiera", "02-match"],
     "plate": {
       "photo": "skaggmes-q192817.webp",
       "caption": { "sv": "Skäggmes, Panurus biarmicus", "en": "Bearded reedling, Panurus biarmicus" },
