@@ -5,14 +5,17 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
 /**
- * Delad geometri, palett, typstorlekar, strängar och datumformatterare för Fältdagbok-PDF:en.
- * Android ritar med android.graphics.pdf.PdfDocument ([JournalPdfLayout]), iOS med
+ * Delad geometri, palett, typstorlekar och datumformatterare för Fältdagbok-PDF:en. Android ritar
+ * med android.graphics.pdf.PdfDocument ([JournalPdfLayout]), iOS med
  * UIGraphicsPDFRenderer/CoreGraphics — BÅDA MÅSTE läsa alla värden härifrån så plattformarna
  * inte divergerar. Geometri + typstorlekar i pt (PDF-punkter), färger som ARGB Long.
  *
- * Strängarna är avsiktligt olokaliserade svenska — PDF:en är en Field Journal-artefakt (fysiskt
- * "papper"), inte lokaliserat app-UI. `_FMT`-strängarna innehåller `%s`-platshållare avsedda för
- * [fmt], inte `String.format` (Kotlin/Native saknar en gemensam `String.format`-implementation).
+ * De lokaliserade strängarna (titel, rubriker, etc.) flyttade till [JournalPdfStrings] när PDF:en
+ * fick engelska (bugg: en engelsk användares export fick svenska rubriker). Kvar här är bara det
+ * som INTE är per-språk-text: [COLOPHON] (varumärkesnamnet), [FOOTER_FMT] (bara ett sidnummer
+ * mellan tankstreck) och [ORNAMENT_GLYPH] (en glyf) — ingen av de tre är faktiskt översättningsbar
+ * text. `fmt`-hjälparen tar `%s`-platshållare, inte `String.format` (Kotlin/Native saknar en
+ * gemensam `String.format`-implementation); [JournalPdfStrings] använder samma hjälpare.
  */
 object JournalPdfMetrics {
     // ----- Geometri (pt) -----------------------------------------------------
@@ -54,26 +57,8 @@ object JournalPdfMetrics {
     const val SECTION_EYEBROW: Float = 18f
     const val SECTION_TITLE: Float = 36f
 
-    // ----- Strängar (svenska, avsiktligt olokaliserade) ------------------------
-    const val TITLE = "Fältdagbok"
-    const val BY_FMT = "av %s"
-    const val TEASER_FMT = "%s • %s fynd"
-    const val TEASER_SPECIES_ONE = "art sedd"
-    const val TEASER_SPECIES_OTHER = "arter sedda"
-    const val STATS_EYEBROW = "Säsongens räkning"
-    const val STATS_TITLE_FMT = "%s i siffror"
-    const val STAT_SPECIES = "Arter i år"
-    const val STAT_TOTAL = "Totala fynd"
-    const val TOPS = "Topparter"
-    const val SPECIES_EYEBROW = "Arter i fält"
-    const val SPECIES_EYEBROW_PAGED_FMT = "Arter i fält (%s/%s)"
-    const val SPECIES_TITLE = "Det jag sett"
-    const val COUNT_FMT = "%s fynd"
-    const val FIRST_FMT = "Först: %s"
-    const val BADGES_EYEBROW = "Märken jag tjänat"
-    const val BADGES_TITLE = "Stämplar i marginalen"
+    // ----- Strängar som INTE är per-språk-text (se klass-KDoc) ------------------
     const val COLOPHON = "Birdy Bird Scanner"
-    const val GENERATED_FMT = "Genererad %s"
     const val FOOTER_FMT = "— %s —"
     const val ORNAMENT_GLYPH = "❦"
 
@@ -107,18 +92,6 @@ object JournalPdfMetrics {
         val hh = ldt.hour.toString().padStart(2, '0')
         val mi = ldt.minute.toString().padStart(2, '0')
         return "${ldt.year}-$mm-$dd $hh:$mi"
-    }
-
-    /**
-     * Titelsidans rad, "3 arter sedda • 7 fynd". En art blir "1 art sedd" (release 1.3.0 Task 7g;
-     * förut "1 arter sedda"). "fynd" är samma ord i singular och plural.
-     */
-    fun teaser(
-        speciesSeen: Int,
-        finds: Int,
-    ): String {
-        val species = if (speciesSeen == 1) TEASER_SPECIES_ONE else TEASER_SPECIES_OTHER
-        return fmt(TEASER_FMT, "$speciesSeen $species", "$finds")
     }
 
     /** Ersätter `%s` i [pattern] med [args] i ordning. Enda platshållaren som stöds är `%s`. */

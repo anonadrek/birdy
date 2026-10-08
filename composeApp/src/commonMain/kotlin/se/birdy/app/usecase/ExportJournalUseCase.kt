@@ -15,6 +15,7 @@ import se.birdy.domain.observation.Observation
 import se.birdy.domain.observation.ObservationRepository
 import se.birdy.pdf.JournalPdfInput
 import se.birdy.pdf.JournalPdfRenderResult
+import se.birdy.pdf.JournalPdfStrings
 
 /**
  * Orchestrates "export Field Journal as PDF":
@@ -102,6 +103,10 @@ class ExportJournalUseCase(
                 speciesByQid = speciesByQid.mapKeys { it.key.raw },
                 stats = stats,
                 unlockedPremiumBadges = premiumBadges,
+                // The PDF's headings in the app's language, not always Swedish (QA 2026-10-07
+                // caught the equivalent bug for badge names; the PDF's own text had the same
+                // issue — see JournalPdfStrings).
+                strings = JournalPdfStrings.forLocale(locale),
             )
 
         val outputPath = outputPathFactory(now.toEpochMilliseconds())
