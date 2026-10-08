@@ -2,3 +2,5 @@
 # MapTiler key in a plan doc, removed in 19314767 (2026-08-21); rotation in MapTiler Cloud is Albin's step.
 10ce3e0f65db4027a92c0f831a51b2afd1c58095:docs/superpowers/plans/2026-06-08-website-coverage-map.md:maptiler-api-key:15
 10ce3e0f65db4027a92c0f831a51b2afd1c58095:docs/superpowers/plans/2026-06-08-website-coverage-map.md:maptiler-api-key:459
+# Not a secret: the made-up IndexNow test key '0123456789abcdef...' in a unit test (the real IndexNow key is public by design, served as website/public/<key>.txt). Came into release/1.3.0 with the merge of main on 2026-10-09.
+929fabebcb6c8918c0156c2971d8be5c3bdd0660:website/tests/unit/indexnow.unit.mjs:generic-api-key:9
