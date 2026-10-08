@@ -1,13 +1,682 @@
 {
   "qid": "Q25450",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
-    "wave": 2
+    "wave": 2,
+    "audioStruckSources": [
+      "https://commons.wikimedia.org/wiki/File:Anas_acuta_-_Northern_Pintail_XC543138.mp3"
+    ],
+    "audioStruck": true
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Hanen i praktdräkt har chokladbrunt huvud och vitt bröst med en vit rand som går upp längs halssidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen i praktdräkt går inte att ta fel på: huvudet är chokladbrunt och bröstet vitt med en vit rand som går upp på sidan av halsen."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Stjärtanden är en relativt stor and med lång, spetsig stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Detta är en relativt stor and med lång, spetsig stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Hanen har gult kloakområde som kontrasterar mot stjärtens svarta undersida, och de mellersta stjärtfjädrarna kan bli upp till tio centimeter långa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kloakområdet är gult, i kontrast mot stjärtens svarta undersida, där de mellersta fjädrarna är så långa som upp till tio centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Näbben är blåaktig och benen blågrå.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är blåaktig och benen blågrå."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Stjärtanden är något mindre och betydligt slankare än gräsanden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärtanden är något mindre och betydligt slankare än gräsanden."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "I flykten visar hanen en svart vingspegel med vit bakre kant och blekt rödaktig främre kant.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten uppvisar hanen en svart vingspegel med vit bakre kant och blekt rödaktig främre kant"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Den vuxna honan är mestadels fläckig i ljusbrunt med mer enhetligt gråbrunt huvud och kortare spetsig stjärt än hanen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honan är mestadels fläckig i ljusbrunt med ett mer enhetligt gråbrunt huvud, och dess spetsiga stjärt är kortare än hanens."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honan känns lätt igen på formen, den långa halsen och den långa grå näbben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är ändå lätt igenkännlig på sin form, långa hals och långa grå näbb."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "I eklipsdräkt liknar hanen honan men behåller övervingens mönster och de långa grå skulderfjädrarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I icke-häckningsdräkt (eklipsdräkt) liknar hanen honan, men behåller mönstret på övervingen och de långa grå skulderfjädrarna."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Unga fåglar liknar honan men är mindre rent tecknade och har blekare brun vingspegel med smalare bakre kant.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenila fåglar liknar honan, men är inte lika rent tecknade, och har en blekare brun vingspegel med en smalare bakre kant."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "size",
+      "sv": "Hanen är 59–76 centimeter lång och väger 450–1360 gram, honan är 51–64 centimeter lång och väger 454–1135 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen är 59–76 centimeter lång och väger 450–1360 gram, och är därmed betydligt större än honan, som är 51–64 centimeter lång och väger 454–1135 gram."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "size",
+      "sv": "Vingspannet är 80–95 centimeter.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "wingspan of 80–95 cm (31–37 in)"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Hanens läte är en mjuk proop-proop-vissling som liknar krickans.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanens läte är en mjuk proop-proop-vissling, som liknar krickans"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Honan har ett gräsandslikt sjunkande kvack och ett lågt kraxande när hon blir uppskrämd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "medan honan har ett gräsandslikt sjunkande kvack, och ett lågt kraxande när hon är uppskrämd."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Den häckar i öppna skoglösa våtmarker som fuktiga gräsmarker, sjöstränder eller tundra.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärtandens häckningsmiljö är öppna skoglösa våtmarker, som fuktiga gräsmarker, sjöstränder eller tundra."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "På vintern använder den öppna miljöer som skyddade estuarier, bräckta kärr och kustlaguner.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern använder den en större uppsättning öppna miljöer, som skyddade estuarier, bräckta kärr och kustlaguner."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "I Sverige finns stjärtanden främst i norra Lappland och angränsande delar av Norrbotten och Västerbotten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärtanden har sin huvudsakliga svenska utbredning i de nordligaste delarna av landet, främst i norra Lappland samt angränsande delar av Norrbotten och Västerbotten."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I södra Sverige är arten mycket sällsynt, med små bestånd på Öland och Gotland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I södra Sverige är arten numera mycket sällsynt, med små bestånd på Öland och Gotland"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Antalet reproduktiva individer i Sverige skattas till cirka 780.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "antalet reproduktiva individer skattas till cirka 780"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I svenska rödlistan 2020 uppgraderades arten från sårbar till starkt hotad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "har arten i svenska rödlistan 2020 uppgraderats från sårbar (VU) till starkt hotad (EN)"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Häckningen sker mellan april och juni.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Häckningen sker mellan april och juni."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Boet byggs på marken, gömt bland växtlighet på en torr plats, ofta en bit från vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet byggs på marken och göms bland växtlighet på en torr plats, ofta på visst avstånd från vatten."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan lägger sju till nio gräddfärgade ägg, ett om dagen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger sju till nio gräddfärgade ägg med takten ett om dagen."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Honan ruvar ensam äggen i 22 till 24 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ensam ruvar äggen i 22 till 24 dagar innan de kläcks."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Den födosöker genom att tippa ned överkroppen i grunt vatten efter växtmaterial eller mindre ryggradslösa djur.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärtanden födosöker genom att tippa ned överkroppen i grunt vatten och snappa efter växtmaterial eller mindre ryggradslösa djur."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Den födosöker mest på kvällen eller natten och vilar därför en stor del av dagen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den födosöker mestadels på kvällen eller natten och fågeln ägnar därför en stor del av dagen åt att vila."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden är den mycket sällskaplig och bildar mycket stora blandade flockar med andra änder.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är mycket sällskaplig utanför häckningssäsongen och bildar mycket stora blandade flockar med andra änder."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Den flyger mycket snabbt med vingarna något bakåtdragna, till skillnad från andra änder.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en mycket snabb flykt, med vingarna något tillbakadragna till skillnad från andra änder"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Simmande ligger den framåtlutad med halsens bas nästan i jämnhöjd med vattenytan.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In water, the swimming position is forward leaning, with the base of the neck almost flush with the water."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Den lyfter från vattnet utan ansats och startar relativt brant.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Fliegen Spießenten vom Wasser auf, so benötigen sie keine Laufphase, sondern starten relativ steil aus dem Wasser."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bidragande orsaker till beståndsnedgången tros vara jakt under flyttningen i Västeuropa samt negativa faktorer vid artens fåtaliga övervintringsplatser."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i september och oktober."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Starkt hotad (EN)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Stjärtanden är en relativt stor and med lång, spetsig stjärt.",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Den häckar i öppna skoglösa våtmarker, och i Sverige finns den främst i norra Lappland.",
+          "factIds": [
+            "f15",
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Hanen har chokladbrunt huvud och vitt bröst med vit rand upp längs halssidan",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Något mindre och betydligt slankare än gräsanden, med lång, spetsig stjärt",
+          "factIds": [
+            "f05",
+            "f02"
+          ]
+        },
+        {
+          "text": "Honan är fläckigt ljusbrun med gråbrunt huvud, lång hals och lång grå näbb",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        },
+        {
+          "text": "Hanens mellersta stjärtfjädrar kan bli upp till tio centimeter långa",
+          "factIds": [
+            "f03"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Hanen har en mjuk vissling, proop-proop, som liknar krickans.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Honan har ett sjunkande kvack som påminner om gräsandens och ett lågt kraxande när hon blir uppskrämd.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Stjärtanden är en flyttfågel som häckar i Sverige, främst i norra Lappland och angränsande delar av Norrbotten och Västerbotten.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "I södra Sverige är den mycket sällsynt, med små bestånd på Öland och Gotland.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Antalet reproduktiva individer skattas till cirka 780, och arten är starkt hotad enligt svenska rödlistan 2025.",
+          "factIds": [
+            "f19",
+            "d03"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län, mest i september och oktober.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den tippar ned överkroppen i grunt vatten efter växtmaterial och mindre ryggradslösa djur.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Mest födosöker den på kvällen eller natten och vilar en stor del av dagen.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden bildar den mycket stora blandade flockar med andra änder.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Den flyger mycket snabbt med vingarna något bakåtdragna och lyfter från vattnet utan ansats.",
+          "factIds": [
+            "f28",
+            "f30"
+          ]
+        },
+        {
+          "text": "Boet ligger på marken, och honan ruvar ensam sju till nio ägg.",
+          "factIds": [
+            "f22",
+            "f23",
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Stjärtand: lär dig känna igen hane och hona på dräkt och form, hör hur lätena låter och se när arten syns och hur den beter sig.",
+      "facts": {
+        "size": {
+          "value": "Hanen 59 till 76 cm, honan 51 till 64 cm",
+          "factIds": [
+            "f11"
+          ]
+        },
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Northern Pintail is a fairly large duck with a long, pointed tail.",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "It breeds in open treeless wetlands, and in Sweden it is found mainly in northern Lapland.",
+          "factIds": [
+            "f15",
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Male has a chocolate-brown head and white breast, with a white stripe up the neck side",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Slightly smaller and much slimmer than a Mallard, with a long, pointed tail",
+          "factIds": [
+            "f05",
+            "f02"
+          ]
+        },
+        {
+          "text": "Female is mottled pale brown with a greyish-brown head, long neck and long grey bill",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        },
+        {
+          "text": "Male's central tail feathers can grow up to ten centimetres long",
+          "factIds": [
+            "f03"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The male gives a soft whistled proop-proop, similar to a Teal's.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The female has a falling, Mallard-like quack and a low croak when flushed.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Northern Pintail is a migrant that breeds in Sweden, mainly in northern Lapland and nearby parts of Norrbotten and Västerbotten.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "In southern Sweden it is very rare, with small populations on Öland and Gotland.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "The breeding population is estimated at about 780 individuals, and the species is listed as Endangered on the Swedish Red List 2025.",
+          "factIds": [
+            "f19",
+            "d03"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties, most often in September and October.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It upends in shallow water for plant material and small invertebrates.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It feeds mostly in the evening or at night, resting much of the day.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it forms very large mixed flocks with other ducks.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "It flies very fast, wings slightly swept back, and takes off from water without a run-up.",
+          "factIds": [
+            "f28",
+            "f30"
+          ]
+        },
+        {
+          "text": "It nests on the ground, and the female alone incubates seven to nine eggs.",
+          "factIds": [
+            "f22",
+            "f23",
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Northern Pintail: learn to recognise male and female by plumage and shape, hear what the calls sound like, and find out when it is seen.",
+      "facts": {
+        "size": {
+          "value": "Male 59 to 76 cm, female 51 to 64 cm",
+          "factIds": [
+            "f11"
+          ]
+        },
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "7d74ce7a3c6e2590"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "7d74ce7a3c6e2590"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "stjartand",
@@ -51,16 +720,6 @@
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Northern_pintail_(Anas_acuta)_2023_01.jpg"
     }
   ],
-  "audio": {
-    "file": "Q25450/voice.mp3",
-    "durationSec": 4,
-    "trimmed": false,
-    "author": "Luis Alvarez Menendez",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anas_acuta_-_Northern_Pintail_XC543138.mp3",
-    "sha256": "8ac5ff13683e8f82d38199d2e5ca7f501b588e8a1f59ad6f01b3c3a3034753c3"
-  },
   "wikipedia": {
     "sv": {
       "title": "Stjärtand",
@@ -207,5 +866,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

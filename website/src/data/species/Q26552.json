@@ -1,13 +1,665 @@
 {
   "qid": "Q26552",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Mindre korsnäbb har en säregen näbb med korsande näbbspetsar, anpassad för att plocka ut frön ur kottar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "en säregen näbb med korsande näbbspetsar vilket är en anpassning för att kunna plocka ut frön från kottar"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Den är kompakt byggd med kraftigt, runt huvud, tjock böjd näbb och kort, djupt kluven stjärt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "an seinem kräftigen, runden Kopf, an seinem dicken, gebogenen Schnabel und kurzem, tief gegabelten Schwanz leicht zu erkennen"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Hjässan, bröstet och övergumpen är kraftigast färgade.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hjässan, bröstet och övergumpen är kraftigast färgade."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Vingarna och stjärten är mörkbruna på ovansidan och ljusare gråbruna på undersidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingarna och stjärten är mörkbruna på ovansidan och ljusare gråbruna på undersidan."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "I flykten syns mörka vingar utan vingband.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Im Flug sind dunkle Flügel ohne Binden zu sehen"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Den vuxna honan är grågrön till gulgrön, medan hanen från två års ålder är orange till tegelröd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honan när grågrön till gulgrön medan hanen, från två års ålder är orange till tegelröd"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Ungfågeln är gråbrun och kraftigt streckad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen är gråbrun och kraftigt streckad."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hos ungfågeln är näbben först rak, och näbbhalvorna börjar korsa varandra först efter en tid.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hos juvenilen är näbben från början rak och näbbhalvorna börjar först efter en tid att växa över varandra."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Mindre korsnäbb mäter 15–17 cm och väger upp till 40 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den mindre korsnäbben är en kraftigt byggd fink som mäter 15–17 cm och väger upp till 40 gram."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Vingbredden är 27 till 30 centimeter.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Flügelspannweite beträgt 27 bis 30 Zentimeter."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Kontaktlätet är ett hårt \"gip gip gip\" eller \"klip-klip-klip\", som ofta hörs i flykten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "ein hartes „gip gip gip“, das auch wie „klip-klip-klip“ klingt"
+        },
+        {
+          "article": "de",
+          "quote": "Häufig ertönt er während des Fluges."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Den omväxlande sången innehåller element som liknar flyglätet samt nasala ljud och hårda surrande toner.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der abwechslungsreiche Gesang enthält Elemente, die den Flugrufen ähneln, aber auch nasale Laute und harte Schnurrer"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sången har vissa likheter med grönfinkens sång.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Gewisse Ähnlichkeiten zum Gesang des Grünfinks sind festzustellen."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Mindre korsnäbb häckar i barrskogar i Europa, Asien, Nordafrika, Nordamerika och Centralamerika.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den mindre korsnäbben häckar i barrskogar i Europa, Asien, Nordafrika, Nordamerika och Centralamerika."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "I Europa är den typisk för gran- och ädelgranskogar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "In Europa ist er ein typischer Vertreter der Fichten- und Tannenwälder."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Den kan även träffas i blandskog, parker och stora trädgårdar med enstaka barrträd.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Weiterhin ist der Fichtenkreuzschnabel auch in Mischwäldern, in Parkanlagen und in großen Gärten mit vereinzelt stehenden Nadelbäumen anzutreffen."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "food",
+      "sv": "Huvudfödan hos de flesta är granfrön, men vissa populationer har specialiserat sig på tallkottar eller lärk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "huvudfödan hos merparten är granfrön men det finns populationer som istället specialiserat sig på tallkottar eller lärk"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "food",
+      "sv": "Den äter även fröer ur frukter som rönnbär samt insekter, till exempel fjärilslarver.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De äter även frön av frukt, exempelvis rönnbärsfrön och insekter, som fjärilslarver."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "breeding",
+      "sv": "Mindre korsnäbb häckar oftast på vintern eller våren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Mindre korsnäbbar häckar oftast på vintern eller våren."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Honan bygger boet av ris, strån, fjädrar och djurhår, oftast högt uppe i en gran.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan bygger ett bo av ris, strån, fjädrar och djurhår som oftast placeras högt uppe i en gran."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Honan lägger tre till fem vita ägg med bruna fläckar och ruvar dem i 14–16 dagar medan hanen matar henne.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger tre till fem ägg, som är vita med bruna fläckar, och ruvar dem sedan i 14-16 dagar, medan hanen förser henne med mat."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden bildar den flockar, ofta tillsammans med andra korsnäbbsarter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utanför häckningssäsongen bildar den flockar, ofta tillsammans med andra arter av korsnäbb."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Den är ingen flyttfågel men gör vandringar och kan vissa år dyka upp långt söder om sitt utbredningsområde.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är inte en flyttfågel men genomför vandringar, speciellt vissa år då den kan förekomma långt söder om sitt utbredningsområde."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Vid födosök är den helt tyst och klättrar omkring i grenverket med näbben som hjälp.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Fichtenkreuzschnabel verhält sich bei der Nahrungsaufnahme ganz still. Dabei turnt er, den Schnabel als drittes Greiforgan einsetzend, im Geäst herum."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "lookalike",
+      "sv": "Mindre korsnäbb liknar större korsnäbb men har proportionellt mindre huvud, smalare hals och mindre näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Mindre korsnäbb är mycket lik större korsnäbb men har proportionellt mindre huvud, smalare hals och mindre näbb."
+        }
+      ],
+      "other": {
+        "scientific": "Loxia pytyopsittacus",
+        "qid": "Q645055"
+      }
+    },
+    {
+      "id": "f26",
+      "topic": "lookalike",
+      "sv": "Mindre korsnäbbens näbb är längre än den är hög, medan större korsnäbbens näbb är tvärtom.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tumregeln är att mindre korsnäbbens näbb är längre än vad den är hög medan större korsnäbben har tvärt om."
+        }
+      ],
+      "other": {
+        "scientific": "Loxia pytyopsittacus",
+        "qid": "Q645055"
+      }
+    },
+    {
+      "id": "f27",
+      "topic": "sweden",
+      "sv": "Mindre korsnäbb är Medelpads landskapsfågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Mindre korsnäbb är det svenska landskapet Medelpads landskapsfågel."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "sweden",
+      "sv": "De skandinaviska populationerna drar vid vandringar till England, till skillnad från andra som drar mot sydväst.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Eine Ausnahme bilden die skandinavischen Populationen, die nach England ziehen."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i januari, februari, oktober och november."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Västerbotten, Jämtland och Dalarna."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Mindre korsnäbb är en fink med korsande näbbspetsar, anpassade för att plocka ut frön ur kottar.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Den häckar i barrskog och är i Europa typisk för gran- och ädelgranskogar.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Korsande näbbspetsar och en tjock, böjd näbb",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Kompakt med kraftigt, runt huvud och kort, djupt kluven stjärt",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Hanen från två års ålder orange till tegelröd, honan grågrön till gulgrön, ungfågeln gråbrun och streckad",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "I flykten syns mörka vingar utan vingband",
+          "factIds": [
+            "f05"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Kontaktlätet är ett hårt \"gip gip gip\" eller \"klip-klip-klip\" som ofta hörs i flykten.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Sången är omväxlande med element som liknar flyglätet, nasala ljud och hårda surrande toner, och har vissa likheter med grönfinkens sång.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Mindre korsnäbb rapporteras mest i januari, februari, oktober och november.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Västerbotten, Jämtland och Dalarna.",
+          "factIds": [
+            "d02"
+          ]
+        },
+        {
+          "text": "Den hör hemma i barrskog men kan också ses i blandskog, parker och stora trädgårdar med enstaka barrträd.",
+          "factIds": [
+            "f14",
+            "f16"
+          ]
+        },
+        {
+          "text": "Den är Medelpads landskapsfågel.",
+          "factIds": [
+            "f27"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Huvudfödan är för de flesta granfrön, men vissa populationer har specialiserat sig på tallkottar eller lärk.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Den äter också frön ur frukter som rönnbär samt insekter, till exempel fjärilslarver.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Vid födosök är den helt tyst och klättrar i grenverket med näbben som hjälp.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden bildar den flockar, ofta med andra korsnäbbsarter, och den flyttar inte men gör vandringar.",
+          "factIds": [
+            "f22",
+            "f23"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q645055",
+          "text": [
+            {
+              "text": "Mindre korsnäbb har proportionellt mindre huvud, smalare hals och mindre näbb än större korsnäbb.",
+              "factIds": [
+                "f25"
+              ]
+            },
+            {
+              "text": "Dess näbb är längre än den är hög, medan större korsnäbbens näbb är tvärtom.",
+              "factIds": [
+                "f26"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Mindre korsnäbb: så känner du igen den på näbben och dräkten, hur kontaktlätet och sången låter och när på året den oftast rapporteras.",
+      "facts": {
+        "size": {
+          "value": "15 till 17 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Red Crossbill is a finch with crossed bill tips, adapted for picking seeds out of cones.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "It breeds in conifer forest and in Europe is typical of spruce and fir woods.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Crossed bill tips and a thick, curved bill",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Compact, with a heavy round head and a short, deeply forked tail",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Male from two years old orange to brick-red, female grey-green to yellow-green, juvenile streaky grey-brown",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "In flight it shows dark wings with no wing bars",
+          "factIds": [
+            "f05"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The contact call is a hard \"gip gip gip\" or \"klip-klip-klip\", often heard in flight.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The varied song mixes elements like the flight call with nasal sounds and hard buzzing notes, and has some likeness to the song of the Greenfinch.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Red Crossbill is reported most in January, February, October and November.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Västerbotten, Jämtland and Dalarna.",
+          "factIds": [
+            "d02"
+          ]
+        },
+        {
+          "text": "It belongs in conifer forest but can also turn up in mixed woodland, parks and large gardens with a few conifers.",
+          "factIds": [
+            "f14",
+            "f16"
+          ]
+        },
+        {
+          "text": "It is the provincial bird of Medelpad.",
+          "factIds": [
+            "f27"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Most feed mainly on spruce seeds, but some populations specialise in pine cones or larch.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "It also eats seeds from fruits such as rowan berries, and insects like caterpillars.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "When feeding it is completely silent and climbs about the branches using its bill.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it forms flocks, often with other crossbill species, and it does not migrate but makes wandering movements.",
+          "factIds": [
+            "f22",
+            "f23"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q645055",
+          "text": [
+            {
+              "text": "The Red Crossbill has a proportionally smaller head, thinner neck and smaller bill than the Parrot Crossbill.",
+              "factIds": [
+                "f25"
+              ]
+            },
+            {
+              "text": "Its bill is longer than it is deep, while the Parrot Crossbill's bill is the reverse.",
+              "factIds": [
+                "f26"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Red Crossbill: how to recognise it by its crossed bill and plumage, what its calls and song sound like, and when in the year it is reported most.",
+      "facts": {
+        "size": {
+          "value": "15 to 17 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "8462d2529a854818"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "8462d2529a854818"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "mindre-korsnabb",
@@ -205,5 +857,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

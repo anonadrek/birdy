@@ -5,9 +5,350 @@
   "review": {
     "wave": 2
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Snatteranden är 46–56 cm lång, har ett vingspann på 78–90 cm och väger 850–1 000 gram, något mindre än gräsanden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Snatteranden är med en längd på 46–56 cm, ett vingspann på 78–90 cm och en vikt på 850–1 000 gram, något mindre än gräsanden."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Jämfört med gräsanden är snatteranden något slankare och har smalare vingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I jämförelse är snatteranden något slankare och har smalare vingar."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Snatteranden har en vitaktig buk i alla dräkter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I alla dräkter har den en vitaktig buk."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den vita vingspegeln är en av artens mest typiska kännetecken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En av dess mest arttypiska karaktärer är dess vita vingspegel"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "I flykten känns snatteranden igen på den ljusa buken och den iögonfallande vita vingspegeln.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Im Flug sind Schnatterenten an ihrem hellen Bauch und ihrem auffälligen weißen Flügelspiegel erkennbar."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Hanens svarta bakkropp räknas som viktigaste fältkännetecken och syns även när vingspegeln är dold hos vilande fåglar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Als wichtigstes Felderkennungszeichen der Schnatterenten gilt das schwarze Körperende der Männchen, das auch dann erkennbar ist, wenn bei ruhenden Schnatterenten der weiße Spiegel unter den gefalteten Flügeln verborgen ist."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hanen i praktdräkt är fint gråvattrad med matt gråbrunt huvud och stjärt samt markant svart över- och undergump.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen i praktdräkt är huvudsakligen fint gråvattrad, med matt gråbrunt huvud och stjärt, och markant svart över- och undergump."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hanen i praktdräkt har gråsvart näbb och klargula ben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är gråsvart och benen klargula."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Hona och eklipshane liknar gräsand men skiljs på vit vingspegel, mörkgrå tertialer, näbb med mörk näbbrygg och orange kanter samt ljus buk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hona, och hane i eklipsdräkt, liknar gräsand, men skiljs från den främst genom den vita vingspegeln, de mörkgrå tertialerna, den annorlunda färgade näbben med obruten mörk näbbrygg omgiven av orange kanter, och den ljusa buken."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Hos unga fåglar kan den vita vingspegeln vara mycket liten eller saknas, och den syns bäst hos adulta hanar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "men den kan vara mycket liten eller helt saknas hos juvenila fåglar och syns bäst hos adulta hanar"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Hanen låter med ett djupt, knarrande \"ährp\" och har som spelläte ett ljust visslande \"pjii\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från hanen hörs ett djupt och knarrande \"ährp\" och som spelläte ett ljust visslande \"pjii\"."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Honan kväker likt gräsandhonan men mer mekaniskt, hårdare och mindre bortdöende och fallande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan kväker likt gräsanden men mer mekaniskt, hårdare och inte lika bortdöende och fallande."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Snatteranden är i regel tystlåten utom under uppvaktningen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Gadwalls are generally quiet, except during courtship."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Snatteranden häckar vid näringsrika våtmarker och sjöar, ofta slättsjöar men även något djupare sjöar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Snatterand häckar vid näringsrika våtmarker och sjöar, ofta slättsjöar men även i något djupare sjöar."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Vintertid föredrar den slättsjöar, floder, vassrika flodmynningar och skyddade kuststräckor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid föredrar den slättsjöar, floder och vassrika flodmynningar, skyddade kuststräckor."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige häckar snatteranden vid kusten och i näringsrika sjöar i Götaland och Svealand samt mycket lokalt längs Norrlandskusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar snatteranden vid kusten och i näringsrika sjöar i Götaland och Svealand samt mycket lokalt längs Norrlandskusten."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Den svenska stammen har ökat kraftigt på senare år och uppskattas till cirka 2000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från att ha varit mycket fåtalig har den på senare år ökat kraftigt i antal. Beståndet uppskattas till cirka 2000 par."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Häckfåglarna i södra Skandinavien övervintrar främst i Nederländerna och Storbritannien, enstaka i Medelhavsområdet.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Brutvögel Norddeutschlands, Polens, Südskandinaviens und Westrusslands überwintern überwiegend in den Niederlanden und Großbritannien, vereinzelt aber auch im Mittelmeerraum."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "food",
+      "sv": "Födan består mest av växtdelar som den betar från botten genom att tippa kroppen framåt eller tar från vattenytan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess föda består till största delen av olika växtdelar, som den antingen betar från botten genom att tippa kroppen framåt, eller också betar av växtdelar som sticker upp ur vattnet."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "food",
+      "sv": "På hösten filtrerar den ofta ytvatten med näbben efter småalger.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På hösten födosöker den ofta genom att med näbben filtrera ytvatten efter småalger"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "behaviour",
+      "sv": "Snatteranden kan stjäla föda från dykande fåglar som sothöns.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "may also steal food from diving birds such as coots"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Den ses oftast i enstaka par eller små lösa grupper, men under höst och vinter kan större flockar bildas.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Snatteranden uppträder oftast som enstaka par, eller i mindre löst sammanhållna grupper, men under hösten och vintern kan den ansamlas i större flockar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Snatteränderna återvänder till häckningsområdena i mars och april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De återvänder till häckningsområdena i mars och april."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Häckningen sker generellt sent, från maj till juli.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "inträffar generellt sent, från maj till juli"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Honan bygger boet direkt på marken, väl dolt i närheten av vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet som byggs av honan placeras direkt på marken väl dolt, i närheten av vatten"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Boet ligger inte sällan på en gräsbevuxen liten ö nära måsfåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "inte sällan på en gräsbevuxen mindre ö i närheten av måsfåglar"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Honan lägger i genomsnitt 8–12 gulfärgade ägg som hon ruvar i 24–26 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger i genomsnitt 8-12 gulfärgade ägg, kullar med 5-15 ägg har observerats, vilka ruvas av honan i 24-26 dagar."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Brutvögel Norddeutschlands, Polens, Südskandinaviens und Westrusslands überwintern überwiegend in den Niederlanden und Großbritannien, vereinzelt aber auch im Mittelmeerraum."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "5fa9f59184b060b7"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "snatterand",
@@ -203,7 +544,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

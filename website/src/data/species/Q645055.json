@@ -1,13 +1,669 @@
 {
   "qid": "Q645055",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Större korsnäbb mäter 16–18 centimeter och är bara något större än mindre korsnäbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Större korsnäbb är bara något större än mindre korsnäbb och mäter 16–18 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Vingbredden är 27–31 centimeter.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "spanning 27 to 31 cm (11 to 12 in) across the wings"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "size",
+      "sv": "Den är kraftig och tung och väger 44–58,2 gram, i genomsnitt 53 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is quite bulky and heavy weighing from 44 to 58.2 g (1.55 to 2.05 oz), with an average of 53 g (1.9 oz)."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Jämfört med mindre korsnäbb har den grövre hals och proportionellt större huvud och näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är svår att skilja från mindre korsnäbb men den har grövre hals, och proportionellt större huvud och näbb."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Näbbhalvorna är korslagda och näbbens höjd är ungefär lika med underkäkens längd, med ungefär lika grova näbbhalvor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "har den korslagda näbbhalvor och dess näbb har en höjd som är ungefär lika med underkäkens längd och båda näbbhalvorna är ungefär lika grova"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Näbbens korslagda spetsar syns ofta inte tydligt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the crossed tips are often not readily apparent"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "I alla dräkter är vingar och stjärt mörka till svartaktiga med ljusgrå bräm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I alla dräkter är vingarna och stjärten mörka till svartaktiga med ljusgrå bräm."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Adulta hanar är främst tegelröda, men kan variera med grågröna, bruna eller orangegula toner.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Adulta hanar är i övrigt främst tegelröda men fjäderdräkten kan individuellt variera med mer inslag av grågröna, bruna, eller orangegula toner."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Adulta honan har grågrön ovansida, gulgrön övergump och ljusgrå undersida med grönaktig anstrykning på bröst och kroppssidor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honan har grågrön ovansida, gulgrön övergump och ljusgrå underdel, med grönaktig anstrykning på bröstet och kroppssidorna."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Ungfågeln är grönaktigt gulgrå med kraftigt svartaktigt streckad undersida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen är grönaktigt gulgrå, med kraftigt svartaktigt streckad undersida."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Större korsnäbb är talför och låter ofta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Större korsnäbb är talför och låter ofta."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Locklätet, typp-typp-typp, liknar mindre korsnäbbens men är hårdare och mörkare och saknar dess ofta inskjutna \"l\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett lockläte som är mycket likt mindre korsnäbbens, men är i genomsnitt hårdare och mörkare, utan ett inskjutet \"l\" som mindre korsnäbb ofta har: typp-typp-typp"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sången består av drillande ljud och lågt kvitter blandat med locklätet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången består av drillande ljud och lågt kvitter uppblandat med det typiska locklätet."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Den häckar i tallskog eller i blandad barrskog med rikt inslag av tall.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Större korsnäbb häckar i tallskog eller i blandad barrskog med ett rikt inslag av tall."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "sweden",
+      "sv": "Större korsnäbb häckar i Skandinavien, Baltikum och europeiska Ryssland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Större korsnäbb häckar i Skandinavien, Baltikum och i europeiska Ryssland."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige tros beståndet vara stabilt och livskraftigt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även i Sverige tros beståndet vara stabilt och livskraftigt."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "behaviour",
+      "sv": "Vissa vintrar, så kallade invasionsår, flyttar delar av populationen längre och kan nå Centraleuropa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "under vissa vintrar, vid så kallade invasionsår, gör delar av populationen längre förflyttningar och kan då uppträda så långt söderut som i Centraleuropa"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "breeding",
+      "sv": "Det skålformiga boet placeras högt upp i en tall.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den placerar sitt skålformiga bo högt upp i en tall."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "breeding",
+      "sv": "Häckningstiden infaller främst under januari till maj.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Brutzeit fällt hauptsächlich in die Monate Januar bis Mai."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Äggen ruvas av honan i 14–16 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas av honan i 14–16 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Båda föräldrarna tar hand om ungarna, som blir flygga efter ungefär 25 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När äggen kläckts tar båda föräldrarna hand om ungarna tills de är flygga efter ungefär 25 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "food",
+      "sv": "Större korsnäbb är specialiserad på att äta frön ur tallkottar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The parrot crossbill is a specialist feeder on the cones of Scots pine."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Den äter även andra barrträdsfrön, knoppar och skott samt i liten mängd insekter och larver.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "frisst Kiefern- und andere Koniferensamen und deren Knospen und Triebe, in geringem Maß auch Insekten und Larven"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden bildar den flockar, ofta tillsammans med andra korsnäbbar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Parrot crossbills will form flocks outside the breeding season, often mixed with other crossbills."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Den har setts bita av kvistar med tallkottar och bära dem till en gren.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Er wurde dabei beobachtet, wie er Zweige mit Kiefernzapfen abbeißt und sie zu einem Ast trägt."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "lookalike",
+      "sv": "Större korsnäbb är svår att skilja från skotsk korsnäbb eftersom skillnaderna i fjäderdräkt är försumbara.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "This species is difficult to separate from red and Scottish crossbills, and plumage distinctions are negligible."
+        },
+        {
+          "article": "sv",
+          "quote": "Skotsk korsnäbb (Loxia scotica) behandlas exempelvis som en egen art"
+        }
+      ],
+      "other": {
+        "scientific": "Loxia scotica",
+        "qid": "Q1143180"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Större korsnäbb häckar i Skandinavien, Baltikum och i europeiska Ryssland. Den är en stannfågel"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i oktober."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Västerbotten, Gävleborg och Gotland."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Större korsnäbb är en kraftig och tung fink som häckar i tallskog eller i blandad barrskog med rikt inslag av tall.",
+          "factIds": [
+            "f03",
+            "f14"
+          ]
+        },
+        {
+          "text": "I Sverige är den stannfågel.",
+          "factIds": [
+            "s01"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Grövre hals och proportionellt större huvud och näbb än mindre korsnäbb",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Korslagd, hög och grov näbb, men de korslagda spetsarna syns ofta inte tydligt",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Hanen är främst tegelröd, honan grågrön ovanpå med gulgrön övergump",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "Mörka till svartaktiga vingar och stjärt med ljusgrå bräm i alla dräkter",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Större korsnäbb är talför och låter ofta.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Locklätet är ett typp-typp-typp som liknar mindre korsnäbbens, men det är hårdare och mörkare och saknar dess ofta inskjutna \"l\".",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Sången består av drillande ljud och lågt kvitter blandat med locklätet.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Större korsnäbb är stannfågel i Sverige, och beståndet tros vara stabilt och livskraftigt.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i oktober.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Västerbotten, Gävleborg och Gotland.",
+          "factIds": [
+            "d02"
+          ]
+        },
+        {
+          "text": "Arten är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Större korsnäbb är specialiserad på frön ur tallkottar.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "Den äter även andra barrträdsfrön, knoppar och skott samt en liten mängd insekter och larver.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Den har setts bita av kvistar med tallkottar och bära dem till en gren.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden bildar den flockar, ofta tillsammans med andra korsnäbbar.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Vissa vintrar, så kallade invasionsår, flyttar delar av populationen längre och kan nå Centraleuropa.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q1143180",
+          "text": [
+            {
+              "text": "Större korsnäbb är svår att skilja från skotsk korsnäbb, eftersom skillnaderna i fjäderdräkt är försumbara.",
+              "factIds": [
+                "f27"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Större korsnäbb: så känner du igen den kraftiga korsnäbben på näbb och dräkt, hur locklätet och sången låter och när den rapporteras.",
+      "facts": {
+        "size": {
+          "value": "16 till 18 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Parrot Crossbill is a heavy, powerfully built finch that breeds in pine forest or in mixed conifer forest with plenty of pine.",
+          "factIds": [
+            "f03",
+            "f14"
+          ]
+        },
+        {
+          "text": "In Sweden it is a resident bird.",
+          "factIds": [
+            "s01"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Thicker neck and proportionally larger head and bill than Common Crossbill",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Crossed, deep, heavy bill, though the crossed tips are often hard to see",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Male mainly brick red, female grey-green above with a yellow-green rump",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "Dark to blackish wings and tail with pale grey edges in all plumages",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The Parrot Crossbill is talkative and calls often.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The call, typp-typp-typp, resembles that of Common Crossbill but is harder and deeper and lacks its often inserted \"l\".",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The song is made up of trilling sounds and low twittering mixed with the call.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Parrot Crossbill is resident in Sweden, and the population is thought to be stable and viable.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "It is reported most in October.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Västerbotten, Gävleborg and Gotland.",
+          "factIds": [
+            "d02"
+          ]
+        },
+        {
+          "text": "It is not on the Swedish Red List 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Parrot Crossbill specialises in seeds from pine cones.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "It also eats other conifer seeds, buds and shoots, and small amounts of insects and larvae.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "It has been seen biting off twigs with pine cones and carrying them to a branch.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it forms flocks, often with other crossbills.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Some winters, known as invasion years, part of the population moves further and can reach Central Europe.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q1143180",
+          "text": [
+            {
+              "text": "The Parrot Crossbill is hard to tell from Scottish Crossbill, since the differences in plumage are negligible.",
+              "factIds": [
+                "f27"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Parrot Crossbill: how to recognise this heavy crossbill by bill and plumage, what its call and song sound like, and when it is reported.",
+      "facts": {
+        "size": {
+          "value": "16 to 18 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "ed4978720784a0a1"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "ed4978720784a0a1"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "storre-korsnabb",
@@ -195,5 +851,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

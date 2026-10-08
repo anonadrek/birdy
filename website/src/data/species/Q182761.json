@@ -1,13 +1,657 @@
 {
   "qid": "Q182761",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Järpen är 34–39 cm lång och har ett vingspann på 48–54 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Järpen är 34–39 cm lång och har ett vingspann på 48–54 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ovansidan är grå, delvis med rödbrun anstrykning, och huvud, nacke och rygg har svartaktiga tvärstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På ovansidan är den grå, delvis med rödbrun anstrykning och på huvudet, nacken och ryggen har den svartaktiga tvärstreck."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Undersidan är spräcklig i brunt, svart och vitt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "i övrigt är de undre kroppsdelarna spräckliga i brunt, svart och vitt"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Alla stjärtpennor utom de mellersta har ett brett svart tvärband innanför den gråvita spetsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Alla stjärtpennorna, utom de mellersta, har ett brett svart tvärband innanför den gråvita spetsen."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "I flykten syns en grå stjärt med svart spets.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In flight, this species shows a black-tipped grey tail."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Hanen har svart strupe medan honan har en ljusare rostbrun strupe.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen har en svart och honan en ljusare rostbrun strupe"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hanen har en svart hakklapp med vit kant och ett fint rött ögonbrynsstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen har en svart hakklapp med vit kant och ett fint rött ögonbrynsstreck."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Den brunaktiga tofsen är tydlig hos hanen men knappast märkbar hos honan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den brunaktiga tofsen på huvudet är hos hannen tydligt framträdande, men hos honan knappast märkbar."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Sången är en visslande, rytmisk ramsa med lika hög frekvens som kungsfågelns.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en visslande sång med en rytmisk ramsa med en lika hög frekvens som exempelvis kungsfågel."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Hanen har ett högt ti-ti-ti-ti-ti-läte och honan ett flytande tettettettettet.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The male has a high-pitched ti-ti-ti-ti-ti call, and the female a liquid tettettettettet."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Lätena och det surrande vingljudet i flykten är ofta det enda tecknet på att järpen finns där.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "These calls, along with the burr of the flying birds' wings, are often the only indication of this grouse's presence"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "habitat",
+      "sv": "Järpen lever i sluten barrskog, främst granskog med inblandad björk och al, helst med kärr och bäckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Järpen lever i sluten barrskog, främst granskog med inblandad björk och al, och helst mark med kärr och bäckar."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "sweden",
+      "sv": "I Sverige förekommer järpen från Småland till Lappland, men inte i fjällen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten förekommer från Småland till Lappland, dock inte i fjällen."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "sweden",
+      "sv": "Järpen är talrikast i Norrlands skogstrakter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är talrikast i Norrlands skogstrakter."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "sweden",
+      "sv": "Järpen är den minsta skogshönan i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Järpen är den minsta skogshönan i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige häckar två underarter, bonasia i södra delen och griseonota i norra.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar två underarter av järpe, bonasia i södra delen och griseonota i norra."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Sverige har 80 000 till 120 000 häckande par.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Schweden mit 80.000 bis 120.000 Brutpaaren"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Bestånden i södra och sydvästra Sverige har gått tillbaka kraftigt under 2000-talet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "särskilt i södra och sydvästra Sverige där bestånden har gått tillbaka kraftigt under 2000-talet"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "behaviour",
+      "sv": "Järpen är mycket stationär, gör inga vandringar och samlas inte i större flockar på vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Järpen är mycket stationär, företar inga vandringar och slår sig inte heller samman i större flockar under vintern"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "behaviour",
+      "sv": "Den flyger upp med bullriga vingslag på ett tiotal meters avstånd och söker vanligen skydd i träden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "flyger den upp med bullriga vingslag när man befinner sig ett tiotal meter ifrån fågeln och den tar vanligen sin tillflykt i träden"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "behaviour",
+      "sv": "I snörika områden tillbringar järpen största delen av vinterdagen i snöhålor.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Während des Winterhalbjahres verbringen die Vögel in schneereichen Regionen den größten Teil des Tages in Schneekammern."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Redan på hösten bildar järparna par som lever tillsammans över vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Redan på hösten, sedan kullarna blivit utvuxna, fördelar sig järparna parvis och lever så över vintern."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Parningstiden börjar i april och boet är ett enkelt rede på marken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Parningstiden börjar i april och de gör sitt enkla reda på marken."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Honan lägger 8–12 brungula ägg med bruna fläckar och streck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De får 8–12 ägg, som till färgen är brungula med bruna fläckar och streck"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Ungarna kläcks efter tre veckors ruvning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Efter tre veckors ruvning kläcks ungarna"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Födan består av växtdelar som frön, bär, knoppar och späda blad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Järpens föda utgörs av åtskilliga vegetabilier, såsom frön, bär, knoppar och späda blad"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "De späda ungarna matas särskilt med insekter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "i synnerhet matas de späda ungarna med insekter"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "På vintern är björkknopp den viktigaste födan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "på vintern bildar björkknopp den förnämsta födan"
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är en stannfågel som häckar i ett bälte från Skandinavien över Ryssland"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Västerbotten, Norrbotten och Jämtland."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Järpen är en stannfågel i sluten barrskog, främst granskog med inblandad björk och al, helst med kärr och bäckar.",
+          "factIds": [
+            "s01",
+            "f12"
+          ]
+        },
+        {
+          "text": "Den är den minsta skogshönan i Sverige.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Grå ovansida med svartaktiga tvärstreck och spräcklig undersida i brunt, svart och vitt",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "I flykten syns en grå stjärt med svart spets",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Hanen har svart strupe och vitkantad svart hakklapp, honan en ljusare rostbrun strupe",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Hanen har ett fint rött ögonbrynsstreck och en tydlig brunaktig tofs",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången är en visslande, rytmisk ramsa med lika hög frekvens som kungsfågelns.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Hanen har ett högt ti-ti-ti-ti-ti-läte och honan ett flytande tettettettettet.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Lätena och det surrande vingljudet i flykten är ofta det enda tecknet på att järpen finns där.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Järpen är stannfågel och rapporteras året runt.",
+          "factIds": [
+            "s01",
+            "d01"
+          ]
+        },
+        {
+          "text": "Den förekommer från Småland till Lappland, men inte i fjällen, och är talrikast i Norrlands skogstrakter.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Västerbotten, Norrbotten och Jämtland.",
+          "factIds": [
+            "d02"
+          ]
+        },
+        {
+          "text": "Sverige har 80 000 till 120 000 häckande par, men bestånden i södra och sydvästra Sverige har gått tillbaka kraftigt under 2000-talet.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan består av frön, bär, knoppar och späda blad, och på vintern är björkknopp den viktigaste födan.",
+          "factIds": [
+            "f26",
+            "f28"
+          ]
+        },
+        {
+          "text": "De späda ungarna matas särskilt med insekter.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Järpen är mycket stationär, samlas inte i större flockar på vintern och tillbringar i snörika områden största delen av vinterdagen i snöhålor.",
+          "factIds": [
+            "f19",
+            "f21"
+          ]
+        },
+        {
+          "text": "Den flyger upp med bullriga vingslag på ett tiotal meters avstånd och söker vanligen skydd i träden.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Järpe: så känner du igen hane och hona på fjäderdräkten, hur sång och läten låter, vilken skog den lever i och när den ses.",
+      "facts": {
+        "size": {
+          "value": "34 till 39 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Hazel Grouse is a resident bird of closed conifer forest, mainly spruce forest mixed with birch and alder, preferably with bogs and streams.",
+          "factIds": [
+            "s01",
+            "f12"
+          ]
+        },
+        {
+          "text": "It is the smallest forest grouse in Sweden.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Grey upperparts with blackish bars, underparts mottled in brown, black and white",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "In flight it shows a grey tail with a black tip",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Male has a black throat and white-edged black bib, female a paler rusty brown throat",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Male has a fine red stripe above the eye and a clear brownish crest",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is a whistling, rhythmic phrase as high in pitch as a Goldcrest's.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "The male gives a high ti-ti-ti-ti-ti and the female a flowing tettettettettet.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "The calls and the whirring wing noise in flight are often the only sign that the bird is there.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Hazel Grouse is a resident bird in Sweden and is reported all year round.",
+          "factIds": [
+            "s01",
+            "d01"
+          ]
+        },
+        {
+          "text": "It occurs from Småland to Lappland, but not in the mountains, and is most numerous in the forests of Norrland.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Västerbotten, Norrbotten and Jämtland.",
+          "factIds": [
+            "d02"
+          ]
+        },
+        {
+          "text": "Sweden has 80 000 to 120 000 breeding pairs, but numbers in southern and southwestern Sweden have fallen sharply during the 2000s.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats seeds, berries, buds and young leaves, and in winter birch buds are its main food.",
+          "factIds": [
+            "f26",
+            "f28"
+          ]
+        },
+        {
+          "text": "Small chicks are fed mainly on insects.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "It is very sedentary, does not form larger winter flocks, and in snowy areas spends most of the winter day in snow holes.",
+          "factIds": [
+            "f19",
+            "f21"
+          ]
+        },
+        {
+          "text": "It flushes with noisy wingbeats at about ten metres and usually takes cover in trees.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Hazel Grouse: how to recognise male and female by plumage, what the song and calls sound like, which forest it lives in and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "34 to 39 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "002389fffb15e138"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "002389fffb15e138"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "jarpe",
@@ -204,5 +848,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

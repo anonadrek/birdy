@@ -5,9 +5,395 @@
   "review": {
     "wave": 2
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Hökugglan är 35–43 centimeter lång och har ett vingspann på 69–82 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hökuggla är 35–43 centimeter lång och har ett vingspann på 69–82 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Hannar väger i genomsnitt ungefär 270 gram och honor ungefär 320 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hannar väger i genomsnitt ungefär 270 gram och honor 320 gram."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "I flykten ger den långa stjärten och vingformen en höklik silhuett.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten har den med sin långa stjärt och vingform en höklik silhuett vilket gett den dess trivialnamn."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Hökugglan har gul iris och ljusgul näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har gul iris och ljusgul näbb."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Ansiktet är vitt med en svart kant runt om.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The northern hawk-owl has a white face with a black border"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Ovansidan är brun med vita fläckar och undersidan vit med mörka tvärlinjer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "För övrigt är den brun på ovansidan, med vita fläckar och vit på undersidan, med mörka tvärlinjer."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Stjärten är brun med vita tvärband.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten är brun med vita tvärband."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Nacken har ett svart V-format mönster.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the back of the neck which boasts a black v-shaped pattern"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Hanar och honor har likadan fjäderdräkt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "In ihrer Gefiederfärbung unterscheiden sich männliche und weibliche Vögel nicht"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Ungfågeln är något mer gråbrun och saknar tydliga linjer på undersidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen är något mer gråbrun och har inga tydliga linjer på undersidan."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Stjärtpennornas spetsar är rundade hos adulta fåglar och spetsiga hos fåglar i första året.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the tail feather tips are rounded in adults, and pointed in first-year birds"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Hanens revirsång är ett rullande ”ho ho hoho y y yyyyyy” som börjar lågmält och stiger i ljudstyrka.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången som hannen utstöter för att markera revir är distinkt och liknar ett rullande ”ho ho hoho y y yyyyyy”."
+        },
+        {
+          "article": "sv",
+          "quote": "Detta rop börjar jämförelsevis lågmält och stiger i ljudstyrka."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Under parningsleken har honan ett tiggläte som påminner om ett hest ”chät”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under parningsleken har honan ett tiggläte vilket påminner om ett hest ”chät”."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Vid fara låter den ett upprepat ”rike, rike, rike”.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "When alerting to danger, the northern hawk-owl lets out a sound similar to rike, rike, rike, rike."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Arten föredrar gles skogsmark nära öppna, gnagarrika ytor som myrar, hyggen, kraftledningsgator och brandfält.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten föredrar gles skogsmark i anslutning till öppna, gnagarrika ytor som myrar, hyggen, kraftledningsgator och brandfält."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Den finns främst i nordliga barrskogar men kan under goda gnagarår häcka i fjällbjörkskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den förekommer främst i de norra barrskogarna men kan under goda gnagarår även häcka i fjällbjörkskog."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "I Sverige häckar den från norra Värmland, mellersta Dalarna och västra Hälsingland och norrut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är den en häckfågel från norra Värmland, mellersta Dalarna och västra Hälsingland och norrut."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Under höst och vinter kan den uppträda längre söderut som strykfågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den kan dock uppträda längre söderut som strykfågel under höst och vinter."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattas till cirka 4 400 reproduktiva individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det svenska beståndet uppskattas till cirka 4 400 reproduktiva individer."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "År 2025 ändrades artens svenska bevarandestatus från livskraftig till sårbar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Artens bevarandestatus i Sverige ändrades 2025 från livskraftig (LC) till sårbar (VU)."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Hökugglan är Jämtlands landskapsfågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hökugglan är Jämtlands landskapsfågel."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Häckningen börjar i mars, främst i trädhåligheter som gamla spillkråkshål eller murkna högstubbar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Häckningen inleds i mars och sker främst i trädhåligheter, som gamla spillkråkshål eller murkna högstubbar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Den kan även häcka i knipholkar och mer sällan i gamla risbon.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten kan även nyttja knipholkar och mer sällsynt gamla risbon."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Kullstorleken varierar mellan tre och tretton ägg, vanligen fem till åtta.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Daher schwankt die Gelegegröße bei der Sperbereule zwischen drei und dreizehn Eiern."
+        },
+        {
+          "article": "de",
+          "quote": "Gewöhnlich haben Gelege eine Größe von fünf bis acht Eiern."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Huvudfödan består av små gnagare och mindre fåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "huvudfödan utgörs av små gnagare och mindre fåglar"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Hökugglan är delvis dagaktiv.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är delvis dagaktiv och lever av små gnagare och fåglar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Den sitter ofta på en utsiktsplats, till exempel en torraka, och flyger snabbt fram när den upptäcker byte.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den sitter ofta på en utsiktsplats, exempelvis en torraka."
+        },
+        {
+          "article": "sv",
+          "quote": "När den upptäckt något flyger den mycket snabbt fram och fångar det."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Den vippar upp och ned med stjärten och rör sig ryckigt i träden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den vippar upp och ned med stjärten och rör sig ryckigt i träden."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Den har god hörsel och kan fånga gnagare som rör sig inne i snön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hökugglan har god hörsel och det händer att den fångar gnagare som rör sig inne i snö."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Hökugglan liknar sparvhöken, bland annat genom den tvärbandade undersidan och i flykten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Ähnlich wie beim Sperber ist ihre Unterseite quer gebändert. Auch im Seitenprofil und im Flug erinnert sie an einen Sperber."
+        }
+      ],
+      "other": {
+        "scientific": "Accipiter nisus",
+        "qid": "Q25380"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i januari och februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i april och augusti."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Jämtland, Norrbotten och Dalarna."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Sårbar (VU)."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "99c2336852d9d0e4"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "hokuggla",
@@ -197,5 +583,12 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: Quotes show the species breeds in parts of Sweden and can appear further south as a vagrant in autumn/winter, which reflects nomadic, food-driven movement rather than a clearly stated partial migration pattern (some birds staying while others leave).. Bestäm status eller lämna tom."
+    }
+  ]
 }

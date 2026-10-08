@@ -1,13 +1,764 @@
 {
   "qid": "Q191155",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Sparvugglan är ungefär stor som en stare, mäter 15–19 centimeter, har ett vingspann på 32–39 centimeter och väger ungefär 60 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "stor som en stare, och mäter 15–19 centimeter, har ett vingspann på 32–39 centimeter och väger ungefär 60 gram"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ovansidan är gråbrun med vitaktiga prickar och undersidan vit med bruna längsgående fläckar eller streck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kroppen är gråbrun på ovansidan, med vitaktiga prickar, på undersidan vit med bruna längsgående fläckar eller streck."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Stjärten har vita tvärband.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten har vita tvärband."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Huvudet är litet och kort med vita till grå ögonbryn och gula ögon.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It has a small, short head with white to grey eyebrows and yellow eyes."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Sparvugglan saknar örontofsar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It lacks the ear tufts that many other owls have."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Den har en vit halvkrage i nacken.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "There is a white half-collar on the back of the neck."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "På bakhuvudet har den fläckar som i vissa ljusförhållanden kan se ut som ögon.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Am Hinterkopf hat er die typischen Flecken (Occipitalgesicht), die bei bestimmten Lichtverhältnissen entweder wie Augen aussehen"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "behaviour",
+      "sv": "Sparvugglan flyger i mjuka bågar likt en hackspett.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den flyger i mjuka bågar likt en hackspett."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Unga fåglar liknar adulta men saknar merparten av de vita prickarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenila fåglar är mycket lika adulta men saknar merparten av de vita prickarna."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Honor är större än hanar, honor mäter 17,4–19 centimeter och hanar 15,2–17 centimeter.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Females are 17.4 to 19 cm (6.9 to 7.5 in) long, and males are generally smaller, measuring 15.2 to 17 cm (6.0 to 6.7 in) in length."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Sången består av taktfast upprepade entoniga mjuka visslingar med cirka en sekunds mellanrum.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "består av taktfast upprepade entoniga mjuka visslingar med cirka en sekunds mellanrum"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången kan höras på 500 meters till en kilometers håll.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess sång, som kan höras på 500 meter, till en kilometers håll"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Honans läte liknar hanens men är ljusare.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The call of the female is similar, but higher in pitch."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Före och efter parningstiden ger båda könen en stigande serie på fem till sju toner.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Before and after the mating season, both males and females make a five to seven note rise on the pitch scale."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Under februari–april hävdar den revir och sjunger då ofta från toppen av en gran.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I perioden februari-april hävdar den aktivt revir inför häckningssäsongen, då man kan höra dess sång när den sitter i toppen av en gran."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Den förekommer främst i större, äldre barrblandskogar med stort inslag av lövträd som asp och björk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sparvugglan förekommer främst i större, äldre barrblandskogar med stort inslag av lövträd som asp och björk."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Den föredrar täta och varierade skogsmiljöer och saknas i mindre, isolerade skogspartier.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den föredrar täta och varierade skogsmiljöer och saknas i mindre, isolerade skogspartier."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Sverige häckar sparvugglan i barr- och blandskog från norra Skåne och norra Blekinge till Norrbotten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar sparvugglan i barr- och blandskog från norra Skåne och norra Blekinge till Norrbotten."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Den saknas på Öland och Gotland samt i fjällen och fjällnära skogar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den saknas dock på Öland och Gotland samt i fjällen och fjällnära skogar."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Sparvugglan är tillsammans med kattuggla och pärluggla en av de vanligaste ugglorna i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sparvugglan är tillsammans med kattuggla och pärluggla, en av de vanligaste ugglorna i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "År 2025 ändrades dess status i Artdatabankens rödlista från livskraftig till nära hotad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess status i Artdatabankens rödlista ändrades 2025 från livskraftig (LC) till nära hotad (NT)."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Den häckar i hål, främst övergivna bon efter större hackspett eller tretåig hackspett, ofta i aspar eller granar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten är en hålhäckare som främst nyttjar övergivna bon efter större hackspett eller tretåig hackspett, ofta i aspar eller granar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan lägger omkring fyra till sju ägg, vanligen i april.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The female lays about four to seven eggs, generally in April."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Födan är främst sorkar och näbbmöss, men när ungarna växer upp utgör småfåglar upp till traststorlek en betydande del.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Födan består huvudsakligen av sorkar och näbbmöss, men under ungarnas uppväxt utgör småfåglar upp till traststorlek, en betydande del av dieten."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Den hamstrar ofta föda i håligheter i träd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den hamstrar ofta föda i håligheter i träd."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Sparvugglan är ganska oskygg och mest aktiv i gryning och skymning men syns även dagtid.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är ganska oskygg och mest aktiv i gryning och skymning men kan även synas dagtid."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Stjärten vickas ofta från sida till sida eller reses brant upp som hos en gärdsmyg.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Oft wird er seitlich hin- und herbewegt oder nach Zaunkönigart steil aufgerichtet (gestelzt)."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Småfåglar, särskilt svartmes, reagerar mycket häftigt med läten på sparvugglans rop.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Einige Kleinvögel, allen voran die Tannenmeise, reagieren auf Sperlingskauzrufe akustisch sehr heftig"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Sparvugglan kan närmast förväxlas med pärluggla.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Am ehesten könnte er mit einem Raufußkauz (Aegolius funereus) oder im Flug mit einem dunklen Steinkauz (Athene noctua) verwechselt werden."
+        }
+      ],
+      "other": {
+        "scientific": "Aegolius funereus",
+        "qid": "Q174466"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "I flykten kan sparvugglan förväxlas med en mörk minervauggla.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Am ehesten könnte er mit einem Raufußkauz (Aegolius funereus) oder im Flug mit einem dunklen Steinkauz (Athene noctua) verwechselt werden."
+        }
+      ],
+      "other": {
+        "scientific": "Athene noctua",
+        "qid": "Q129958"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i maj till augusti."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Västmanland, Västernorrland och Jämtland."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Sparvugglan är en uggla, ungefär stor som en stare, som häckar i barr- och blandskog från norra Skåne och norra Blekinge till Norrbotten.",
+          "factIds": [
+            "f01",
+            "f18"
+          ]
+        },
+        {
+          "text": "Tillsammans med kattuggla och pärluggla är den en av de vanligaste ugglorna i Sverige.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Ungefär stor som en stare, honan större än hanen, och utan örontofsar",
+          "factIds": [
+            "f01",
+            "f10",
+            "f05"
+          ]
+        },
+        {
+          "text": "Gråbrun ovansida med vitaktiga prickar, vit undersida med bruna längsgående streck",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Litet huvud med gula ögon, vita till grå ögonbryn och vit halvkrage i nacken",
+          "factIds": [
+            "f04",
+            "f06"
+          ]
+        },
+        {
+          "text": "Stjärten har vita tvärband och vickas ofta eller reses brant upp",
+          "factIds": [
+            "f03",
+            "f27"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången är taktfast upprepade, mjuka och entoniga visslingar med cirka en sekunds mellanrum.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Den hörs på 500 meters till en kilometers håll.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Honan låter som hanen men ljusare.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Före och efter parningstiden ger båda könen en stigande serie på fem till sju toner.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "I februari till april hävdar den revir och sjunger då ofta från toppen av en gran.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Den förekommer främst i större, äldre barrblandskogar med stort inslag av lövträd som asp och björk, och saknas i mindre, isolerade skogspartier.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "Arten saknas på Öland och Gotland samt i fjällen och fjällnära skogar.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i februari och sällan i maj till augusti.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Västmanland, Västernorrland och Jämtland.",
+          "factIds": [
+            "d03"
+          ]
+        },
+        {
+          "text": "På svenska rödlistan 2025 är den klassad som nära hotad.",
+          "factIds": [
+            "d04",
+            "f21"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan är främst sorkar och näbbmöss, men när ungarna växer upp blir småfåglar upp till traststorlek en betydande del.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Den hamstrar ofta föda i håligheter i träd.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Sparvugglan är ganska oskygg och mest aktiv i gryning och skymning, men syns även dagtid.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Flykten går i mjuka bågar som hos en hackspett.",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Småfåglar, särskilt svartmes, reagerar häftigt med läten på dess rop.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q174466",
+          "text": [
+            {
+              "text": "Pärlugglan är den art som sparvugglan närmast kan förväxlas med.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q129958",
+          "text": [
+            {
+              "text": "I flykten kan sparvugglan förväxlas med en mörk minervauggla.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Sparvuggla: så känner du igen arten på fjäderdräkt och storlek, hur sången och lätena låter, vad den äter och när den syns.",
+      "facts": {
+        "size": {
+          "value": "15 till 19 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Pygmy Owl is an owl about the size of a Starling that breeds in coniferous and mixed forest from northern Skåne and northern Blekinge to Norrbotten.",
+          "factIds": [
+            "f01",
+            "f18"
+          ]
+        },
+        {
+          "text": "Together with Tawny Owl and Tengmalm's Owl it is one of the commonest owls in Sweden.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "About the size of a Starling, female larger than male, with no ear tufts",
+          "factIds": [
+            "f01",
+            "f10",
+            "f05"
+          ]
+        },
+        {
+          "text": "Grey-brown upperparts with whitish spots, white underparts with brown lengthwise streaks",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Small head with yellow eyes, white to grey eyebrows and a white half-collar",
+          "factIds": [
+            "f04",
+            "f06"
+          ]
+        },
+        {
+          "text": "White bars across the tail, which is often flicked sideways or cocked steeply",
+          "factIds": [
+            "f03",
+            "f27"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is a steady series of soft, monotone whistles about one second apart.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "It carries 500 metres to a kilometre.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The female sounds like the male but higher.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Before and after the mating season both sexes give a rising series of five to seven notes.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "In February to April it holds territory, often singing from a spruce top.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It lives mainly in larger, older mixed conifer forests with many deciduous trees such as aspen and birch.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "It is absent from small, isolated woods, Öland, Gotland, the mountains and forests near them.",
+          "factIds": [
+            "f17",
+            "f19"
+          ]
+        },
+        {
+          "text": "It is reported most in February and rarely in May to August.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Västmanland, Västernorrland and Jämtland.",
+          "factIds": [
+            "d03"
+          ]
+        },
+        {
+          "text": "It is Near Threatened on the Swedish Red List 2025.",
+          "factIds": [
+            "d04",
+            "f21"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mainly on voles and shrews, but while the young are growing, small birds up to thrush size make up a large part.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "It often stores food in holes in trees.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It is fairly tame and most active at dawn and dusk, but is also seen by day.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "It flies in soft undulations like a woodpecker.",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Small birds, especially Coal Tits, react to its call with loud alarm.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q174466",
+          "text": [
+            {
+              "text": "Tengmalm's Owl is the species the Eurasian Pygmy Owl is most easily confused with.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q129958",
+          "text": [
+            {
+              "text": "In flight the Eurasian Pygmy Owl can be mistaken for a dark Little Owl.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Eurasian Pygmy Owl: how to recognise it by plumage and size, what its song and calls sound like, what it eats and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "15 to 19 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "d1bb54a86110db62"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "d1bb54a86110db62"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "sparvuggla",
@@ -208,5 +959,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

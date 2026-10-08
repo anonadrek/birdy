@@ -5,9 +5,379 @@
   "review": {
     "wave": 2
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Gröngölingen har mörkgrön ovansida, blekt ljus- till grågrön undersida och lysande gröngul övergump som syns bra i flykten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har mörkgrön ovansida, blekt ljus- till grågrön undersida och lysande gröngul övergump, vilket syns bra i den bågiga, ofta lite långsamma flykten."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Båda könen har röd hjässa och nacke samt ett svart mustaschstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Båda könen har röd hjässa och nacke och svart mustaschstreck"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Örontäckare, haka och strupe är vitaktiga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Örontäckare, haka och strupe är däremot vitaktiga."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Ögonen är ljust blåaktiga, och den långa spetsiga näbben och fötterna är blygrå.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gröngölingens ögon är ljust blåaktiga medan den långa och spetsiga näbben och fötterna är blygrå."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "behaviour",
+      "sv": "Flykten är bågig med tre till fyra vingslag följda av en kort glidning med vingarna intill kroppen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The flight is undulating, with 3–4 wingbeats followed by a short glide when the wings are held by the body."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Hanens mustaschstreck är rött med svart kant, medan honans är enfärgat svart.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hos hanen är mustaschstrecket rött med svart kant, men hos honan är fläcken enfärgat svart."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Ungfåglar har nästan vit grundton på huvudets sidor, halsen och undersidan med mycket mörk vattring och randning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Huvudets sidor, halsen och kroppsundersidan har nästan vit grundton med mycket mörk vattring och randning."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "size",
+      "sv": "Gröngölingen är 30–36 cm lång och har ett vingspann på 45–51 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gröngölingen är 30–36 cm lång och har ett vingspann på 45–51 cm."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Fåglar fångade i Camargue vägde mellan 138 och 201 gram.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "die Spanne reichte von 138 g bis 201 g"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Revirsången låter som ett högt skratt, ”kly-kly-kly-kly-kly-kly-kly”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Denna sång låter som ett högt skratt (”kly-kly-kly-kly-kly-kly-kly”)."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Sången klingar ganska nasalt, har upp till 20 stavelser på samma tonhöjd och blir snabbare och något svagare mot slutet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången, som klingar ganska nasalt och består av upp till 20 stavelser, håller sig på en tonhöjd och blir snabbare och något svagare mot slutet."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "När gröngölingen landar yttrar den ofta ett skarpt ”kjäck”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När gröngölingen landar yttrar den ofta ett skarpt kjäck"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Gröngölingen trummar betydligt mer sällan än de flesta andra hackspettar i Europa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gröngölingar trummar betydligt mer sällan än de flesta andra hackspettarna i Europa."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Den föredrar halvöppna landskap med äldre skog, som skogsbryn, skogsdungar på fält, ängar med fruktträd, parker och stora trädgårdar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gröngölingen föredrar halvöppna landskap med vidsträckt äldre skog, framför allt skogsbryn, skogsdungar på fält, ängar med fruktträd, parker, lundar och stora trädbevuxna trädgårdar."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Arten föredrar starkt lövskog och kan vara mycket sällsynt eller saknas i vidsträckta barrskogar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten visar en stark förkärlek för lövskog, och i vidsträckta barrskogar kan den i stor utsträckning vara mycket sällsynt eller saknas helt."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige är gröngölingen vanlig upp till Värmland och Gästrikland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är den vanlig upp till Värmland och Gästrikland."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Den häckar på norra Öland men inte på södra Öland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar på norra Öland men inte på den södra delen."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattas till 10 000–18 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Antalet gröngölingar uppskattas i Sverige numera till 10 000–18 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Gröngölingen är numera Sveriges näst vanligaste hackspett.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gröngölingen är numera Sveriges näst vanligaste hackspett"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Gröngölingen har i Sverige minskat med 35–55 procent under de senaste 30 åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gröngölingen har minskat med 35–55 % de senaste 30 åren"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Honan lägger fem till sju glänsande vita ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En kort tid efter parningen lägger honan fem till sju glänsande vita ägg"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Äggen ruvas av båda föräldrarna i 17–19 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas av båda föräldrarna i 17–19 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Ungarna stannar i boet 23–27 dygn och blir flygga i juni till juli.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungfåglarna stannar i boet i 23 till 27 dygn och är flygga i juni till juli."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Gröngölingen är den hackspett i Centraleuropa som är mest specialiserad på marklevande myror.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Av alla hackspettar i Centraleuropa är gröngölingen den som är mest specialiserad på marklevande myror."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Den födosöker nästan uteslutande på marken och hackar mycket mindre i träd än andra hackspettar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gröngölingen födosöker nästan uteslutande på marken, och hackar mycket mindre i träd än de andra hackspettarna."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Myrorna fångas med en 10 centimeter lång tunga som har förhornad spets med hullingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "För att fånga insekterna i deras gångar har gröngölingen en 10 centimeter lång tunga som i spetsen är förhornad och har hullingar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Gröngölingen rör sig oftare och skickligare på marken än andra hackspettar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gröngölingen rör sig oftare och skickligare på marken än andra hackspettar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Den är skygg och hörs oftare än den syns.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "it is a shy bird, and is more often heard than seen"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Gråspetten liknar gröngölingen men har grått huvud, mörkrött öga och bara ett smalt svart mustaschstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I motsats till gröngölingen har gråspetten grått huvud, mörkrött öga och endast ett smalt svart mustaschstreck."
+        }
+      ],
+      "other": {
+        "scientific": "Picus canus",
+        "qid": "Q201106"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Gråspettens läte liknar gröngölingens men låter renare och ligger oftast något högre i tonhöjd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gråspettens mycket likartade läte låter renare och ligger oftast något högre i tonhöjd."
+        }
+      ],
+      "other": {
+        "scientific": "Picus canus",
+        "qid": "Q201106"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från 20 av 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "52437ab92f6326c1"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "grongoling",
@@ -204,5 +574,12 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: The quotes describe the species as resident across most of Europe and the western Palearctic, excluding the northernmost areas and some islands, but do not explicitly state this status applies to Sweden or Scandinavia specifically; other facts about Swedish distribution (not part of these quotes) suggest the range may not cover all of Sweden.. Bestäm status eller lämna tom."
+    }
+  ]
 }

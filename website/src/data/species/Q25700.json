@@ -5,9 +5,380 @@
   "review": {
     "wave": 2
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Krickan är 34–38 cm lång med ett vingspann på 53–59 cm och är Sveriges minsta simand.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Krickan är en liten and med en längd på 34–38 cm och ett vingspann på 53–59 cm och detta gör den till den minsta simanden i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Hanen väger i genomsnitt 360 g och honan 340 g.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "average weight of 360 g (13 oz) in drake (males) and 340 g (12 oz) in hens (females)"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Båda könen har en grön vingspegel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingspegelns översida är hos båda könen grön och undersidan svart."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "sex_age",
+      "sv": "Hanen i praktdräkt har rödbrunt huvud och hals med ett mörkgrönt band längs huvudets sida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från hösten fram till ruggningen i juni är dess huvud och hals rödbruna. Längs huvudets sida finns ett mörkgrönt band."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Hanens gröna huvudfält kantas av tunna gulvita linjer.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The patch is bordered with thin yellowish-white lines"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "På avstånd ser hanen i praktdräkt grå ut med mörkt huvud, gulaktig bakdel och en vit strimma längs sidan.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "From a distance, the drakes in breeding plumage appear grey, with a dark head, a yellowish behind, and a white stripe running along the flanks."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hanen har på var sida om den svarta bakdelen en lysande smörgul triangel.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Beiderseits am schwarz gefiederten Hinterteil des Erpels leuchtet je ein buttergelbes Dreieck."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honan är ovan brunsvart med rostbruna fjäderkanter och undertill brungul med mörka fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan är ovan brunsvart med rostbruna fjäderkanter och på undersidan brungul med mörka fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Honan har ett ljust streck ovanför ögat och ett mörkt, tydligt avgränsat streck genom ögat.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Am Kopf verlaufen ein heller Längsstreifen über dem Auge und ein dunkler, deutlich abgesetzter Längsstreifen durch das Auge."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Honans och ungfåglarnas näbb är rosa eller gulaktig vid basen och mörkgrå mot spetsen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The bill of females and immatures is pinkish or yellowish at the base, becoming dark grey towards the tip"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Efter ruggningen liknar hanen honan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Efter ruggningen liknar den honan."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Hanen har ett upprepat visslande läte, ungefär kriick, som hörs oavbrutet på våren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen har ett karakteristiskt upprepande visslande läte som hörs på våren utan uppehåll och som kan beskrivas som kriick."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Honan låter med ett kvackande \"keh\" eller \"neeh\".",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The female produces a \"keh\" or \"neeh\" quack."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Under häckningen lever den i skyddade våtmarker, som taigans mossar eller mindre sjöar och dammar med större vassområden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under häckningen förekommer den vanligtvis i skyddade våtmarker med enstaka högre vegetation, som taigans mossar eller mindre sjöar eller dammar med större vassområden."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Vintertid uppträder den ofta i brackvatten eller i skyddade vikar och laguner längs kusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid uppträder den ofta i brackvatten eller i skyddade vikar eller laguner utmed kusten."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "Krickan häckar i hela Sverige men är talrikast vid mindre insjöar i Norrland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar krickan över hela landet men är talrikast i mindre insjöar i Norrland."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Svenska krickor flyttar i september–oktober, främst till Nederländerna och Storbritannien, och återkommer vid islossningen i mars–april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den svenska populationen flyttar i september/oktober, främst till Nederländerna och Storbritannien, och återkommer vid islossningen i mars och april."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Skåne är krickan stannfågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Skåne är den dock en stannfågel."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Från 2025 års svenska rödlista klassas krickan som nära hotad (NT).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "från och med 2025 års rödlista ändrades dess status till nära hotad (NT)"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Boet är en fördjupning i marken fodrad med torra löv och dun, väl dold i tät vegetation nära vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet består av en fördjupning i marken som fodras med torra löv och dun, och placeras väl skyddat i tät vegetation i närheten av vatten."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Honan lägger vanligtvis åtta till elva grönaktiga ägg som ruvas i 21–23 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger vanligtvis åtta till elva grönaktiga ägg men kullar med fem till 16 ägg har observerats, och äggen ruvas i 21–23 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "food",
+      "sv": "Under häckningstiden äter den främst vattenlevande smådjur som kräftdjur, larver, blötdjur och maskar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under häckningsperioden lever den främst av vattenlevande insekter, som kräftdjur och dess larver, blötdjur och maskar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "food",
+      "sv": "Vintertid äter den främst växtföda som frön, vattenväxter och gräs som starr.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid lever den istället främst vegetation som frön, vattenväxter olika sorters gräs, som starrgräs."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Krickan är dagaktiv under häckningen men söker föda främst i skymningen eller på natten vintertid.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Krikan är dagaktiv under häckningssäsongen medan den främst födosöker i skymningen eller till och med nattetid under vintern."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "I flykten kan de snabba krickflockarna påminna om vadare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten kan de snabba flockarna med krickor påminna om vadare trots sina korta ben"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Krickan lyfter nästan lodrätt från vattnet.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Typisch für diese Art ist, dass sie fast senkrecht vom Wasser auffliegt."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "På vattnet simmar den oftast med indraget huvud och ser därför något undersätsig ut.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Auf dem Wasser schwimmt die Krickente meist mit eingezogenem Kopf und wirkt dadurch leicht gedrungen."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "lookalike",
+      "sv": "Simmande krickhonor visar oftast den gröna vingspegeln baktill, vilket skiljer dem från liknande årtahonor.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Bei schwimmenden weiblichen Krickenten ist der grüne Flügelspiegel im hinteren Körperbereich gewöhnlich sichtbar. Das kann als Unterscheidungsmerkmal zu den ähnlich gefärbten Weibchen der Knäkenten genutzt werden."
+        }
+      ],
+      "other": {
+        "scientific": "Spatula querquedula",
+        "qid": "Q28106902",
+        "written": "Anas querquedula"
+      }
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Amerikansk krickhane har ett vitt lodrätt band på kroppssidan, medan krickhanen har ett vitt vågrätt band.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Nordamerikanska krickor, tidigare och i viss mån fortfarande urskild som den egna arten \"amerikansk kricka\" har ett vitt vertikalt band på kroppssidan hos hanen, medan europeiska och asiatiska krickor har ett vitt horisontellt vingband när anden ses liggande."
+        }
+      ],
+      "other": {
+        "scientific": "Anas carolinensis"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den svenska populationen flyttar i september/oktober, främst till Nederländerna och Storbritannien, och återkommer vid islossningen i mars och april. I Skåne är den dock en stannfågel."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i april."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "3793c30aeacac1fb"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "kricka",
@@ -205,5 +576,12 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V4",
+      "factId": null,
+      "message": "ljudmodellen känner bara svagt igen arten i inspelningen (första gissning i 4 fönster, högst 0,04 i konfidens, gränsen är 0,10): lyssna och besluta"
+    }
+  ]
 }

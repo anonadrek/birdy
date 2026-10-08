@@ -1,13 +1,762 @@
 {
   "qid": "Q18847",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Rörhönan har genomgående mörk fjäderdräkt med breda vita sidor på undre stjärttäckarna och vita streck längs kroppssidorna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utseendet är distinkt med genomgående mörk fjäderdräkt förutom breda vita sidor på undre stjärttäckarna, vita streck längs kroppssidorna"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Näbben och näbbskölden är röda med gul näbbspets, och näbbskölden når långt upp.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "röd näbb och näbbsköld, och gul näbbspets"
+        },
+        {
+          "article": "sv",
+          "quote": "Näbbskölden når långt upp."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Benen är gulgröna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "vita streck längs kroppssidorna, gulgröna ben"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Tårna är långa och kantade med en smal hudsöm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tårna är långa och kantade med en smal hudsöm."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Vuxna fåglar har röda ögon.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Sie haben eine rote Stirnplatte, einen roten Schnabel mit gelber Schnabelspitze sowie rote Augen."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Ovanför intertarsalleden har benen ett rött band.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "oberhalb des Intertarsalgelenks haben die Beine ein rotes Band"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hane och hona ser likadana ut och skiljer sig bara obetydligt i storlek och vikt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Männchen und Weibchen sehen gleich aus, unterscheiden sich nur geringfügig durch Größe und Gewicht."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Ungfåglarna är gråbruna med vit haka och saknar den röda pannskölden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilerna är gråbruna med vit haka."
+        },
+        {
+          "article": "en",
+          "quote": "The young are browner and lack the red shield."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Nykläckta kycklingar har svart dun med grönaktig glans på ryggen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Dunenkleid ist bei frisch geschlüpften Küken schwarz mit einem grünlichen Glanz am Rücken."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Rörhönan är 31–33 cm lång och har ett vingspann på 49–53 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rörhönan är 31–33 cm lång och har ett vingspann på 49–53 cm."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "size",
+      "sv": "Vikten varierar mellan 192 och 500 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The body mass of this species can range from 192 to 500 g"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Bland lätena finns gurglande ”kjorrrl!”, skarpa ”ki-keck” och spruckna ”kreck-kreck-kreck” som upprepas länge, även nattetid i flykten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en rad olika läten, bland annat gurglande \"kjorrrl!\", skarpa \"ki-keck\" och spruckna \"kreck-kreck-kreck\" som upprepas långa stunder, även nattetid i flykten."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "När den känner sig hotad kan den väsa högt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "will emit loud hisses when threatened"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "behaviour",
+      "sv": "Rörhönan har ett knyckigt rörelsemönster och håller ofta stjärten ganska högt när den går.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rörhönan har ett typiskt knyckigt rörelsemönster och håller ofta stjärten ganska högt när den går."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "behaviour",
+      "sv": "När den simmar vippar den ständigt med den uppstjälkade stjärten och nickar rytmiskt med huvudet.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Vogel fällt auf, weil er beim Schwimmen ständig mit dem gestelzt getragenen Schwanz wippt und rhythmisch mit dem Kopf nickt."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "behaviour",
+      "sv": "Den håller sig ofta dold men kan på vissa platser vara ganska orädd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den håller sig ofta dold men kan på vissa platser uppträda ganska orädd."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "behaviour",
+      "sv": "Rörhönor flyger främst nattetid under flyttningen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Teichhühner fliegen auf ihrem Zug vor allem nachts."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Rörhönan lever vid vassrika stränder av sjöar, åar, dammar och i våtmarker.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rörhönan lever vid vassrika stränder av sjöar, åar, dammar och i våtmarker."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Den förekommer även i städer, i trädgårdar, parker och djurparker med tillräckligt vatten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "ist dort in Gärten, Parks und Zoos zu sehen, wenn diese ausreichend Wasserflächen bieten"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Sverige är den talrikast från Skåne till Uppland och finns i mindre antal till Dalarna och norrut längs Östersjökusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige förekommer den talrikast från Skåne till Uppland och vidare i mindre antal till Dalarna och norrut utmed Östersjökusten."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattas till mellan 5 000 och 7 400 häckande individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Beståndet uppskattas till mellan 5 000 och 7 400 häckande individer."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Flertalet svenska rörhönor flyttar söderut på vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flertalet flyttar söderut på vintern."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Rörhönor som häckar i Skandinavien övervintrar främst i Frankrike, Spanien och på Brittiska öarna.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Teichhühner, die in Skandinavien brüten, überwintern überwiegend in Frankreich sowie in Spanien und auf den Britischen Inseln."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Boet är korgformat och placeras direkt på marken i tät vegetation.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rörhönan bygger ett korgformat bo som den placerar direkt på marken i tät vegetation."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Första kullen läggs på vårkanten och består vanligtvis av åtta ägg, men kan variera från sex till tio.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den första kullen, som läggs på vårkanten består vanligtvis av åtta ägg men kan variera från sex till tio stycken."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Båda föräldrarna ruvar äggen i cirka tre veckor och tar sedan hand om ungarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Båda föräldrarna ruvar äggen i cirka tre veckor och tar sedan hand om ungarna."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Ungarna blir flygga efter 40–50 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna blir flygga efter 40–50 dagar"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Rörhönan äter många olika växtdelar och mindre vattenlevande djur som den söker i eller nära vattnet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lever av en mängd olika växtmaterial och mindre vattenlevande djur som den födosöker i närheten av vatten eller i vattnet."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Den liknar sothönan men har vita sidor på undre stjärttäckarna och rött, inte vitt, på näbb och pannsköld.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den liknar sothönan med huvudsakligen svart fjäderdräkt, men har vita sidor på undre stjärttäckarna och rött på näbb och pannsköld, ej vitt."
+        }
+      ],
+      "other": {
+        "scientific": "Fulica atra",
+        "qid": "Q25376"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Amerikansk rörhöna är nästan identisk men har mindre gult på näbben, högre och tvärare avskuren pannsköld och skrattande läten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den amerikanska rörhönan (G. galeata), tidigare behandlad som underart, är till utseendet närapå identisk, men har något mindre gult på näbbhalvan och pannskölden sträcker sig högre upp och är mer tvärt avskuren."
+        },
+        {
+          "article": "sv",
+          "quote": "Dess skrattande läten skiljer sig markant från rörhönans."
+        }
+      ],
+      "other": {
+        "scientific": "Gallinula galeata"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flertalet flyttar söderut på vintern."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Jönköping, Stockholm och Skåne."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Rörhönan är en mörk rall som lever vid vassrika stränder av sjöar, åar och dammar och i våtmarker.",
+          "factIds": [
+            "f01",
+            "f18"
+          ]
+        },
+        {
+          "text": "Den förekommer även i städer, i trädgårdar, parker och djurparker med tillräckligt vatten.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Mörk fjäderdräkt med vita streck längs kroppssidorna och vita sidor under stjärten",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Röd näbb och röd näbbsköld som når långt upp, med gul näbbspets",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Gulgröna ben med ett rött band ovanför intertarsalleden och långa tår",
+          "factIds": [
+            "f03",
+            "f06",
+            "f04"
+          ]
+        },
+        {
+          "text": "Hane och hona är lika, ungfåglar är gråbruna med vit haka utan röd pannsköld",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Bland lätena finns ett gurglande ”kjorrrl”, ett skarpt ”ki-keck” och ett sprucket ”kreck-kreck-kreck” som upprepas länge, även nattetid i flykten.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Känner den sig hotad kan den väsa högt.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Rörhönan häckar i Sverige och är delvis flyttfågel.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Den är talrikast från Skåne till Uppland och finns i mindre antal till Dalarna och norrut längs Östersjökusten.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Flertalet flyttar söderut på vintern, främst till Frankrike, Spanien och Brittiska öarna, men arten rapporteras året runt.",
+          "factIds": [
+            "f22",
+            "f23",
+            "d01"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Jönköping, Stockholm och Skåne.",
+          "factIds": [
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Rörhönan äter många olika växtdelar och mindre vattenlevande djur som den söker i eller nära vattnet.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Den rör sig knyckigt och håller ofta stjärten ganska högt när den går.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Den håller sig ofta dold men kan på vissa platser vara ganska orädd.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "Boet är korgformat och ligger direkt på marken i tät vegetation.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Under flyttningen flyger den främst nattetid.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25376",
+          "text": [
+            {
+              "text": "Sothönan har vitt på näbb och pannsköld, rörhönan har rött.",
+              "factIds": [
+                "f29"
+              ]
+            },
+            {
+              "text": "Rörhönan har dessutom vita sidor på undre stjärttäckarna.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Gallinula galeata",
+          "text": [
+            {
+              "text": "Amerikansk rörhöna är nästan identisk men har mindre gult på näbben och en högre, tvärare avskuren pannsköld.",
+              "factIds": [
+                "f30"
+              ]
+            },
+            {
+              "text": "Dess läten är skrattande.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Rörhöna: så känner du igen den mörka rallen med röd näbb och gul spets, hur lätena låter och när och var den brukar ses vid vatten.",
+      "facts": {
+        "size": {
+          "value": "31 till 33 cm",
+          "factIds": [
+            "f10"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Common Moorhen is a dark rail that lives along reedy shores of lakes, rivers and ponds and in wetlands.",
+          "factIds": [
+            "f01",
+            "f18"
+          ]
+        },
+        {
+          "text": "It also turns up in towns, in gardens, parks and zoos with enough water.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Dark plumage with white streaks along the flanks and white sides under the tail",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Red bill and red frontal shield reaching far up, with a yellow bill tip",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Yellow-green legs with a red band above the intertarsal joint, and long toes",
+          "factIds": [
+            "f03",
+            "f06",
+            "f04"
+          ]
+        },
+        {
+          "text": "Sexes look alike, young birds are grey-brown with a white chin and no red shield",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Its calls include a gurgling \"kjorrrl\", a sharp \"ki-keck\" and a cracked \"kreck-kreck-kreck\" repeated for a long time, also at night in flight.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "When it feels threatened it can hiss loudly.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Common Moorhen breeds in Sweden and is a partial migrant.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "It is most numerous from Skåne to Uppland and occurs in smaller numbers up to Dalarna and northwards along the Baltic coast.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Most Swedish birds move south for the winter, mainly to France, Spain and the British Isles, but the species is reported all year round.",
+          "factIds": [
+            "f22",
+            "f23",
+            "d01"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Jönköping, Stockholm and Skåne.",
+          "factIds": [
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats many different plant parts and small aquatic animals, which it finds in or near the water.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "It moves jerkily and often holds its tail fairly high when walking.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "It often keeps hidden, but in some places it can be fairly tame.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "The nest is a basket-shaped structure placed directly on the ground in dense vegetation.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "During migration it flies mainly at night.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25376",
+          "text": [
+            {
+              "text": "The Eurasian Coot has white on the bill and frontal shield, where the Common Moorhen has red.",
+              "factIds": [
+                "f29"
+              ]
+            },
+            {
+              "text": "The moorhen also shows white sides on the undertail coverts.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Gallinula galeata",
+          "text": [
+            {
+              "text": "The American Moorhen is almost identical but has less yellow on the bill and a taller, more squarely cut frontal shield.",
+              "factIds": [
+                "f30"
+              ]
+            },
+            {
+              "text": "Its calls sound like laughter.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Common Moorhen: how to recognise this dark rail with a red, yellow-tipped bill, what its calls sound like and when and where it is seen.",
+      "facts": {
+        "size": {
+          "value": "31 to 33 cm",
+          "factIds": [
+            "f10"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "389952caca4d54ed"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "389952caca4d54ed"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "rorhona",
@@ -205,5 +954,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

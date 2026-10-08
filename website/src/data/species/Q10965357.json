@@ -1,13 +1,692 @@
 {
   "qid": "Q10965357",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Vinterhämplingen saknar hämplingens röda färg på hjässan och bröstet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fjäderdräkten saknar hämplingens röda på hjässan och bröstet."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ryggen är mörkt brunsvart och undersidan vit till smutsvit.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ryggen är mörkt brunsvart och undersidan vit till smutsvit."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Näbben är gul på vintern men gråbrun på sommarhalvåret.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Om vintern är näbben gul men blir gråbrun på sommarhalvåret."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Jämfört med hämplingen har den något längre och mer kluven stjärt samt mindre huvud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "dock med något längre och mer kluven stjärt samt mindre huvud"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Huvud och strupe är rostbeige, och strupen är ofläckad.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Kopf und Kehle sind rostbeige, die Kehle ungefleckt."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Näbben är kort, ungefär som en siskas.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Schnabel ist zeisigartig kurz."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Den får adult fjäderdräkt vid tre års ålder, och hanen har då rosa övergump och rosa inslag på bröst och panna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den anlägger sin adulta fjäderdräkt vid tre års ålder och hanen har då en rosa övergump och rosa inslag på bröst och panna."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honor och unga fåglar har brun övergump i stället för hanens rosa.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "adult males also have a pink rump, immatures and females a brown rump"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungfåglarna liknar honan men är kraftigare streckade på bröstet.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Jungen ähneln wiederum dem Weibchen, sie sind lediglich an der Brust kräftiger gestreift."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Längden är mellan 12,5 och 14 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Medellängden är mellan 12,5 och 14 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "size",
+      "sv": "Vikten är 15 till 19 gram.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "das Gewicht 15 bis 19 g"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Locklätet är ett lite metalliskt, vresigt \"tweeht\" eller \"dreeht\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett lite metalliskt vresigt lockläte \"tweeht\" eller \"dreeht\""
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sången liknar mest citronsiskans, med snabba drillar och surrande ljud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången är mest lik citronsiskans, med snabba drillar och surrande ljud."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Sången känns igen på invävda knattrande \"trrrrrrr\" och ofta ansatser till locklätet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den känns igen på invävda knattrande \"trrrrrrr\" och ofta ansatser till locklätet."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Flyktlätet är oftast tre stavelser, \"tjip-ep-ep\", och hårdare än hämplingens.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Flugruf ist meist dreisilbig „tjip-ep-ep“ und härter als beim Bluthänfling."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "I Sverige häckar den i fjälltrakter i övre delarna av videbältet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "dock i Sverige i fjälltrakter i övre delarna av videbältet"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Det nordvästeuropeiska beståndet häckar huvudsakligen på kustnära karga hedar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "häckar det nordvästeuropeiska beståndet istället huvudsakligen på kustnära karga hedar"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "I Europa ses den vintertid ofta i ruderatmarker där den söker frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Europa ses den vintertid ofta i ruderatmarker på jakt efter frön."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige häckar den sällsynt i bergsbranter i västra delarna av fjällkedjan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Idag häckar vinterhämplingen sällsynt i bergsbranter i västra delarna av fjällkedjan."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Flest häckningar har rapporterats från Torne lappmark, framför allt runt Torne träsk, samt från västra Härjedalen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flest antal säkra eller troliga häckningar har rapporterats från Torne lappmark, framför allt i omgivningarna runt Torne träsk, samt från västra Härjedalen."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Den svenska häckningspopulationen uppskattas till 320–1 000 häckande individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vinterhämplingen är en ovanlig häckfågel i Sverige med en uppskattad population på 320–1 000 häckande individer."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "I södra och mellersta Sverige övervintrar den regelbundet och återvänder norrut under april och maj.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I södra och mellersta Sverige övervintrar den regelbundet och återvänder norrut under april och maj."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Vid Falsterbo minskade antalet utsträckande vinterhämplingar från i genomsnitt 4100 på 1970-talet till 1300 på 1990-talet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "från i genomsnitt 4100 utsträckande vinterhämplingar på 1970-talet, till 1700 på 1980-talet och 1300 på 1990-talet"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "sweden",
+      "sv": "På Artdatabankens rödlista är vinterhämplingen kategoriserad som sårbar (VU).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "där den kategoriserats som sårbar (VU)"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Honan bygger boet på marken eller lågt i en buske och lägger 3–6 ägg.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The female builds a nest either on the ground or low down in a bush, laying 3–6 eggs."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Bona ligger ofta i små glesa kolonier.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Nester stehen oft in kleinen lockeren Kolonien"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Äggen ruvas i tolv till 13 dygn och ungarna är flygga efter ytterligare elva till 13 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den ruvar sina ägg i tolv till 13 dygn och ungarna är flygga efter ytterligare elva till 13 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Födan består främst av frön som plockas från marken.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Nahrung besteht überwiegend aus Sämereien, die vom Boden aufgenommen werden"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden bildar den ofta stora flockar, ibland blandade med andra finkar vid kuster och strandängar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Twite often form large flocks outside the breeding season, sometimes mixed with other finches on coasts and salt marshes."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Under flyttningen är den mycket aktiv och föga skygg.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "sie sind sehr aktiv und wenig scheu"
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De nordvästeuropeiska populationerna är mer flyttningsbenägna men kategoriseras ändå som partiella flyttfåglar och på vintern återfinns den bland annat i Sverige"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i oktober och november."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i augusti och september."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Halland, Östergötland och Skåne."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Vinterhämplingen är en fink som i Sverige häckar sällsynt i fjälltrakterna och övervintrar regelbundet i södra och mellersta Sverige.",
+          "factIds": [
+            "f16",
+            "f19",
+            "f22"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Rostbeige huvud och ofläckad strupe, mörkt brunsvart rygg och vit till smutsvit undersida",
+          "factIds": [
+            "f05",
+            "f02"
+          ]
+        },
+        {
+          "text": "Kort näbb ungefär som en siskas, gul på vintern och gråbrun på sommarhalvåret",
+          "factIds": [
+            "f06",
+            "f03"
+          ]
+        },
+        {
+          "text": "Saknar hämplingens röda hjässa och bröst, har mindre huvud och något längre, mer kluven stjärt",
+          "factIds": [
+            "f01",
+            "f04"
+          ]
+        },
+        {
+          "text": "Adult hane har rosa övergump och rosa inslag på bröst och panna, honan brun övergump",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Locklätet är ett lite metalliskt, vresigt \"tweeht\" eller \"dreeht\".",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Flyktlätet är oftast tre stavelser, \"tjip-ep-ep\", och hårdare än hämplingens.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Sången liknar mest citronsiskans, med snabba drillar och surrande ljud, och känns igen på invävda knattrande \"trrrrrrr\" och ofta ansatser till locklätet.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Vinterhämplingen är delvis flyttfågel och häckar sällsynt i Sverige, i bergsbranter i västra fjällkedjan och i övre delarna av videbältet.",
+          "factIds": [
+            "s01",
+            "f19",
+            "f16"
+          ]
+        },
+        {
+          "text": "Den övervintrar regelbundet i södra och mellersta Sverige och drar norrut i april och maj.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i oktober och november och sällan i augusti och september.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Halland, Östergötland och Skåne.",
+          "factIds": [
+            "d03"
+          ]
+        },
+        {
+          "text": "På svenska rödlistan 2025 är den nära hotad (NT).",
+          "factIds": [
+            "d04"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den äter främst frön som plockas från marken, och vintertid söker den ofta frön i ruderatmarker.",
+          "factIds": [
+            "f28",
+            "f18"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden bildar den ofta stora flockar, ibland blandade med andra finkar vid kuster och strandängar.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Under flyttningen är den mycket aktiv och föga skygg.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "Honan bygger boet på marken eller lågt i en buske, ofta i små glesa kolonier.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Vinterhämpling: så känner du igen fågeln på dräkt och näbb, hur locklätet och sången låter och när under året den brukar ses.",
+      "facts": {
+        "size": {
+          "value": "12,5 till 14 cm",
+          "factIds": [
+            "f10"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Twite is a finch that breeds rarely in the Swedish mountains and winters regularly in southern and central Sweden.",
+          "factIds": [
+            "f16",
+            "f19",
+            "f22"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Rusty-buff head and unspotted throat, dark brown-black back and white to dirty white underparts",
+          "factIds": [
+            "f05",
+            "f02"
+          ]
+        },
+        {
+          "text": "Short bill much like a siskin's, yellow in winter and grey-brown in summer",
+          "factIds": [
+            "f06",
+            "f03"
+          ]
+        },
+        {
+          "text": "Lacks the Linnet's red crown and breast; smaller head, slightly longer, more forked tail",
+          "factIds": [
+            "f01",
+            "f04"
+          ]
+        },
+        {
+          "text": "Adult male: pink rump, pink on breast and forehead; female: brown rump",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is a slightly metallic, grumpy \"tweeht\" or \"dreeht\".",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The flight call usually has three syllables, \"tjip-ep-ep\", and is harder than the Linnet's.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "The song is most like a Citril Finch's, with fast trills and buzzing sounds, and is recognised by woven-in rattling \"trrrrrrr\" notes and frequent hints of the call.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "A partial migrant, it breeds rarely in Sweden, on cliffs in the western mountains and upper willow zone.",
+          "factIds": [
+            "s01",
+            "f19",
+            "f16"
+          ]
+        },
+        {
+          "text": "It winters regularly in southern and central Sweden, heading north in April and May.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "It is reported most in October and November, rarely in August and September.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Halland, Östergötland and Skåne.",
+          "factIds": [
+            "d03"
+          ]
+        },
+        {
+          "text": "It is Near Threatened (NT) on the 2025 Swedish Red List.",
+          "factIds": [
+            "d04"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mainly on seeds picked from the ground, and in winter it often looks for seeds on waste ground.",
+          "factIds": [
+            "f28",
+            "f18"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it often forms large flocks, sometimes mixed with other finches on coasts and shore meadows.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "On migration it is very active and not very shy.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "The female builds the nest on the ground or low in a bush, often in small loose colonies.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Twite: how to recognise it by plumage and bill, what its calls and song sound like, and when in the year it is usually seen.",
+      "facts": {
+        "size": {
+          "value": "12.5 to 14 cm",
+          "factIds": [
+            "f10"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "f4b1ef53f5055e30"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "f4b1ef53f5055e30"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "vinterhampling",
@@ -197,5 +876,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

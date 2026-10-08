@@ -20,108 +20,16 @@
     {
       "id": "f02",
       "topic": "size",
-      "sv": "Fjällvråken väger 600–1 660 gram, och honorna är oftast större och tyngre än hanarna.",
+      "sv": "Fjällvråken väger 600–1 660 gram.",
       "sources": [
         {
           "article": "en",
-          "quote": "Individuals can weigh from 600 to 1,660 g (1.32 to 3.66 lb) with females typically being larger and heavier than males."
+          "quote": "Individuals can weigh from 600 to 1,660 g (1.32 to 3.66 lb)"
         }
       ]
     },
     {
       "id": "f03",
-      "topic": "appearance",
-      "sv": "I alla dräkter har fjällvråken vit övergump och ett svart ändband på stjärtens ovansida.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Den har i alla dräkter vit övergump med svart ändband på ovansidan stjärten."
-        }
-      ]
-    },
-    {
-      "id": "f04",
-      "topic": "appearance",
-      "sv": "Den adulta fågeln är mest ljus på undersidan med svart ändband på stjärt och vingar, svarta handlovsfläckar och mörkt parti på buken.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "även den adulta fågeln är huvudsakligen ljus på undersidan med svart ändband på stjärt och vingar samt svarta knogar och mörkt parti på buken"
-        }
-      ]
-    },
-    {
-      "id": "f05",
-      "topic": "appearance",
-      "sv": "Näbben är förhållandevis klen för en vråk av fjällvråkens storlek.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "För att vara en vråk av denna storlek är dess näbb förhållandevis klen."
-        }
-      ]
-    },
-    {
-      "id": "f06",
-      "topic": "appearance",
-      "sv": "Benen är fjäderklädda, men kännetecknet syns oftast bara på nära håll.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Den har fjäderklädda tarser."
-        },
-        {
-          "article": "de",
-          "quote": "Die Beine sind bis zu den Zehen befiedert, doch ist dieses sichere Merkmal meist nur aus geringer Distanz erkennbar."
-        }
-      ]
-    },
-    {
-      "id": "f07",
-      "topic": "appearance",
-      "sv": "Det påfallande runda huvudet och nacken är ljusbruna till ljusgrå, ibland nästan vita.",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "Der auffallend runde Kopf und der Nacken des Raufußbussards sind hellbraun bis hellgrau, in Einzelfällen fast weiß."
-        }
-      ]
-    },
-    {
-      "id": "f08",
-      "topic": "appearance",
-      "sv": "Hos sittande fågel når vingspetsarna till eller förbi stjärtspetsen.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "The wing tips are long enough to reach or extend past the tail when it is perched."
-        }
-      ]
-    },
-    {
-      "id": "f09",
-      "topic": "sex_age",
-      "sv": "Ungfåglar är ljusare än adulta och har ännu inte ett tydligt svart ändband på stjärten.",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "Jungvögel sind heller als die Altvögel, vor allem die schwarze Endbinde des Schwanzes ist noch nicht deutlich ausgeprägt."
-        }
-      ]
-    },
-    {
-      "id": "f10",
-      "topic": "sex_age",
-      "sv": "Honans stjärt har oftast bara ett ändband, medan hanen utöver ett brett band har två till tre smalare band.",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "Der Schwanz der Weibchen schließt meist mit nur einer Endbinde ab, während bei den Männchen neben einer breiten meist noch zwei bis drei schmalere Binden zu erkennen sind."
-        }
-      ]
-    },
-    {
-      "id": "f11",
       "topic": "sex_age",
       "sv": "Honorna är något större än hanarna och upp till 20 procent tyngre.",
       "sources": [
@@ -132,9 +40,97 @@
       ]
     },
     {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "I alla dräkter har fjällvråken vit övergump och vit stjärt med svart ändband.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har i alla dräkter vit övergump med svart ändband på ovansidan stjärten."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Den vuxna fågeln är mest ljus på undersidan med svart ändband på stjärt och vingar, svarta knogar och mörkt parti på buken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "även den adulta fågeln är huvudsakligen ljus på undersidan med svart ändband på stjärt och vingar samt svarta knogar och mörkt parti på buken"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Näbben är förhållandevis klen för en vråk av denna storlek.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "För att vara en vråk av denna storlek är dess näbb förhållandevis klen."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Fjällvråken har fjäderklädda tarser.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har fjäderklädda tarser."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Det påfallande runda huvudet och nacken är ljusbruna till ljusgrå, ibland nästan vita.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der auffallend runde Kopf und der Nacken des Raufußbussards sind hellbraun bis hellgrau, in Einzelfällen fast weiß."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Buken är nästan alltid svart medan hals och bröst är tydligt ljusare.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Bauch ist fast immer schwarz, Hals und Brustbereich sind deutlich heller."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Honans stjärt har oftast bara ett ändband, medan hanen har ett brett band och oftast två till tre smalare band.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Schwanz der Weibchen schließt meist mit nur einer Endbinde ab, während bei den Männchen neben einer breiten meist noch zwei bis drei schmalere Binden zu erkennen sind."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Unga fåglar är ljusare än de vuxna och deras svarta ändband på stjärten är ännu otydligt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Jungvögel sind heller als die Altvögel, vor allem die schwarze Endbinde des Schwanzes ist noch nicht deutlich ausgeprägt."
+        }
+      ]
+    },
+    {
       "id": "f12",
       "topic": "voice",
-      "sv": "På häckplatsen är fjällvråken ljudlig med ett ormvråkslikt jamande, men gällare och något mer fallande i tonhöjd.",
+      "sv": "På häckplatsen är fjällvråken ljudlig med ett ormvråkslikt jamande, men med gällare röst och något mer fallande tonhöjd.",
       "sources": [
         {
           "article": "sv",
@@ -145,7 +141,7 @@
     {
       "id": "f13",
       "topic": "voice",
-      "sv": "Huvudlätet är ett högt, något klagande, utdraget \"pi-iii-äääh\" som på avstånd kan påminna om en katts jamande.",
+      "sv": "Huvudlätet är ett högt, något klagande, utdraget ”pi-iii-äääh” som kan påminna om en katts jamande.",
       "sources": [
         {
           "article": "de",
@@ -159,8 +155,118 @@
     },
     {
       "id": "f14",
+      "topic": "habitat",
+      "sv": "Den häckar främst på tundran och i övergången mellan skog och tundra, under goda gnagarår även i skogslandskapet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar främst på tundran och i övergångslandskapet mellan skog och tundra, under goda gnagarår även i skogslandskapet."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "I Fennoskandien häckar den på trädlösa fjäll och i glesa björkskogar i fjällbjörkzonen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "In Fennoskandien besiedelt er die baumlosen Fjällgebiete ebenso wie lockere Birkenbestände in der subalpinen Zone."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Vintertid finns den ofta i kustområden, marsklandskap, stora gräsmarker och myrar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Häufig ist er in Küstengebieten, Marschlandschaften, in ausgedehnten Grünlandgebieten und Mooren zu finden"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "I Sverige häckar fjällvråken från nordligaste Värmland till Norrbotten och upp i fjällvärlden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fjällvråk häckar i nordöstra Sverige från nordligaste Värmland till Norrbotten och upp i fjällvärlden."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "På vintern förekommer fjällvråken i södra Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern förekommer den i södra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Den svenska häckande populationen uppskattas till 3 000–5 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "med 3 000-5 000 par i Sverige"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "År 2025 ändrades fjällvråkens status i Artdatabankens rödlista från nära hotad till livskraftig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "ändrades artens status i Artdatabankens rödlista år 2025 från nära hotad (NT) till livskraftig (LC)"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Flyttande fjällvråkar samlas bland annat vid Falsterbo.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Zu Häufungen von durchziehenden Raufußbussarden kommt es unter anderem bei Falsterbo"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "food",
+      "sv": "Åkersork, gråsiding och fjällämmel utgör dess huvudföda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Åkersork, gråsiding och fjällämmel utgör dess huvudföda"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "food",
+      "sv": "Efter däggdjur är fåglar den vanligaste födan, och under dåliga gnagarår dominerar fågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utöver däggdjur är fåglar den vanligaste födan och under dåliga gnagarår dominerar fågel."
+        }
+      ]
+    },
+    {
+      "id": "f24",
       "topic": "behaviour",
-      "sv": "Till skillnad från andra större rovfåglar ryttlar fjällvråken ibland när den spanar efter byten.",
+      "sv": "Till skillnad från andra större rovfåglar ryttlar den ibland när den spanar efter byten.",
       "sources": [
         {
           "article": "sv",
@@ -169,9 +275,9 @@
       ]
     },
     {
-      "id": "f15",
+      "id": "f25",
       "topic": "behaviour",
-      "sv": "När den ryttlar ändrar den ständigt flyghöjd, och denna jojo-flykt gör att arten ofta kan bestämmas på långt avstånd.",
+      "sv": "När den ryttlar ändrar den hela tiden flyghöjd, och denna jojo-flykt gör att arten ofta kan bestämmas på långt håll.",
       "sources": [
         {
           "article": "de",
@@ -180,13 +286,13 @@
       ]
     },
     {
-      "id": "f16",
+      "id": "f26",
       "topic": "lookalike",
-      "sv": "Fjällvråken är något större och mer långvingad än ormvråken och mycket mindre varierande i färgteckningen.",
+      "sv": "Underifrån ser flygande fjällvråk mycket ljus ut, med kontrasterande svarta knogar och svart stjärtändband till skillnad från ormvråk.",
       "sources": [
         {
           "article": "de",
-          "quote": "Insgesamt ist der Raufußbussard etwas größer und langflügeliger als der Mäusebussard (Buteo buteo) und im Vergleich zu diesem in der Färbung viel weniger variabel."
+          "quote": "Von unten gesehen wirkt ein fliegender Raufußbussard sehr hell, meist grauweiß mit im Gegensatz zum Mäusebussard schwarz kontrastierendem Flügelbug und schwarzer Schwanzendbinde."
         }
       ],
       "other": {
@@ -195,9 +301,9 @@
       }
     },
     {
-      "id": "f17",
+      "id": "f27",
       "topic": "lookalike",
-      "sv": "I glidflykt har fjällvråken en synlig knyck i vingprofilen, medan ormvråken oftast håller vingarna raka eller lyfter dem i V-form.",
+      "sv": "I glidflykt visar fjällvråken en knyck i vingprofilen, medan ormvråken oftast håller vingarna raka eller lyfter dem i V-form.",
       "sources": [
         {
           "article": "de",
@@ -210,130 +316,24 @@
       }
     },
     {
-      "id": "f18",
-      "topic": "habitat",
-      "sv": "Fjällvråken häckar främst på tundran och i övergångslandskapet mellan skog och tundra, under goda gnagarår även i skogslandskapet.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Den häckar främst på tundran och i övergångslandskapet mellan skog och tundra, under goda gnagarår även i skogslandskapet."
-        }
-      ]
-    },
-    {
-      "id": "f19",
-      "topic": "habitat",
-      "sv": "I Fennoskandien häckar den både på trädlösa fjäll och i glesa björkskogar i den subalpina zonen.",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "In Fennoskandien besiedelt er die baumlosen Fjällgebiete ebenso wie lockere Birkenbestände in der subalpinen Zone."
-        }
-      ]
-    },
-    {
-      "id": "f20",
-      "topic": "habitat",
-      "sv": "Vintertid, oktober till april, föredrar den kärr, hedmark, prärie och jordbruksbygd där det finns gott om gnagare.",
+      "id": "f28",
+      "topic": "lookalike",
+      "sv": "Jämfört med ormvråk har fjällvråken längre vingar och ser mer örnlik ut.",
       "sources": [
         {
           "article": "en",
-          "quote": "During the winter months, from October to April, preferred habitats include marshes, moorland, prairies and agricultural regions where rodent prey is most abundant."
+          "quote": "rough-legged is longer-winged and more eagle-like in appearance"
         }
-      ]
-    },
-    {
-      "id": "f21",
-      "topic": "sweden",
-      "sv": "Fjällvråken häckar i nordvästra Sverige från nordligaste Värmland till Norrbotten och upp i fjällvärlden.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Fjällvråk häckar i nordöstra Sverige från nordligaste Värmland till Norrbotten och upp i fjällvärlden."
-        }
-      ]
-    },
-    {
-      "id": "f22",
-      "topic": "sweden",
-      "sv": "På vintern förekommer fjällvråken i södra Sverige.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "På vintern förekommer den i södra Sverige."
-        }
-      ]
-    },
-    {
-      "id": "f23",
-      "topic": "sweden",
-      "sv": "Det svenska beståndet uppskattas till 3 000–5 000 par.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "med 3 000-5 000 par i Sverige"
-        }
-      ]
-    },
-    {
-      "id": "f24",
-      "topic": "sweden",
-      "sv": "Antalet häckande par i Sverige varierar kraftigt mellan åren beroende på tillgången på gnagare.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Antalet häckande par i Sverige varierar kraftigt mellan olika år beroende på tillgången på gnagare"
-        }
-      ]
-    },
-    {
-      "id": "f25",
-      "topic": "sweden",
-      "sv": "År 2025 ändrades artens status i Artdatabankens rödlista från nära hotad till livskraftig.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "På grund av den stabila populationen ändrades artens status i Artdatabankens rödlista år 2025 från nära hotad (NT) till livskraftig (LC)."
-        }
-      ]
-    },
-    {
-      "id": "f26",
-      "topic": "sweden",
-      "sv": "Vid Falsterbo kan man se ansamlingar av flyttande fjällvråkar.",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "Zu Häufungen von durchziehenden Raufußbussarden kommt es unter anderem bei Falsterbo"
-        }
-      ]
-    },
-    {
-      "id": "f27",
-      "topic": "food",
-      "sv": "Huvudfödan utgörs av åkersork, gråsiding och fjällämmel.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Åkersork, gråsiding och fjällämmel utgör dess huvudföda"
-        }
-      ]
-    },
-    {
-      "id": "f28",
-      "topic": "food",
-      "sv": "Efter däggdjur är fåglar den vanligaste födan, och under dåliga gnagarår dominerar fågel.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Utöver däggdjur är fåglar den vanligaste födan och under dåliga gnagarår dominerar fågel."
-        }
-      ]
+      ],
+      "other": {
+        "scientific": "Buteo buteo",
+        "qid": "Q25385"
+      }
     },
     {
       "id": "f29",
       "topic": "breeding",
-      "sv": "Boet byggs i klippbrant, träd eller på marken, helst på klipphyllor eller klippig hällmark.",
+      "sv": "Boet byggs i en klippbrant, i ett träd eller på marken, helst på klipphyllor eller klippig hällmark.",
       "sources": [
         {
           "article": "sv",
@@ -344,31 +344,11 @@
     {
       "id": "f30",
       "topic": "breeding",
-      "sv": "Honan lägger ett till sju ägg, vanligtvis tre till fem, och ruvar minst 31 dagar medan hanen matar henne.",
+      "sv": "Honan lägger ett till sju ägg men vanligtvis tre till fem.",
       "sources": [
         {
           "article": "sv",
           "quote": "Honan kan lägga ett till sju ägg men lägger vanligtvis tre till fem stycken."
-        },
-        {
-          "article": "sv",
-          "quote": "Den ruvar i mist 31 dagar, vilket nästan enbart sköts av honan och under tiden matas hon av hanen."
-        }
-      ]
-    },
-    {
-      "id": "s01",
-      "topic": "status",
-      "value": "breeding_migrant",
-      "sv": "Flyttfågel, häckar här",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Fjällvråk häckar i nordöstra Sverige från nordligaste Värmland till Norrbotten och upp i fjällvärlden."
-        },
-        {
-          "article": "sv",
-          "quote": "Den är en utpräglad flyttfågel som häckar cirkumpolärt i de nordligaste delarna av holarktis."
         }
       ]
     },
@@ -405,7 +385,13 @@
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T16:08:41.079475+00:00"
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "80c1a6e6936f04cb"
     }
   },
   "errors": [],
@@ -597,5 +583,12 @@
     "statusSignal": {
       "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: The quote only describes migration behavior of south/central Scandinavian birds wintering in England; it does not explicitly confirm breeding in Sweden, and covers only part of the Swedish range (south/central), not the whole country or Nordic region as a whole.. Bestäm status eller lämna tom."
+    }
+  ]
 }

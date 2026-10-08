@@ -5,9 +5,388 @@
   "review": {
     "wave": 2
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Brunanden är 42–49 centimeter lång och har ett vingspann på 67–75 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Brunanden mäter 42–49 centimeter och har ett vingspann på 67–75 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Vikten, som bara uppmätts hos vinterfåglar, varierar mellan 467 och 1 240 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Its weight (which has been reported only for winter birds) ranges from 467 to 1,240 g"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Brunanden är satt och kortstjärtad med sluttande panna och relativt lång näbb.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is stocky and short-tailed, with a sloping forehead and relatively long bill."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Hanen har rödbrunt huvud och hals, svart bröst och bakparti samt grå kroppssida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har rödbrunt huvud och hals, grå kroppssida och askgrå vingspegel, svart bröst och bakparti"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Den adulta hanen har röd iris och mörkgrå till svart näbb med ett tydligt gråblått band innanför näbbspetsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som adult har hanen röd iris och mörkgrå till svart näbb med ett tydligt gråblått band innanför näbbspetsen."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Ben och fötter är grå hos båda könen och i alla åldrar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The legs and feet are grey in both sexes and all ages."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "I flykten syns diffust grå handpennor med mörka kontrasterande spetsar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten syns de diffust grå handpennorna som har mörka kontrasterande spetsar."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "När brunanden simmar ligger den djupt i vattnet.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Beim Schwimmen liegt die Art tief im Wasser."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Den adulta honan har på sommaren en genomgående mörkbrun och grå fjäderdräkt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honan har på sommaren en genomgående mörkbrun och grå fjäderdräkt."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Honans huvud är brunt, ofta med ljusare fläck vid näbbroten och ett ljust streck från ögonvrån bakåt ovanför kinden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Huvudet är brunt ofta med en ljusare fläck innanför näbbroten och ett ljust streck som sträcker sig från ögonvrån och bak ovanför kinden."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Honan har svart iris och en ljus ring runt ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan har svart iris, ljus ring runt ögat"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "sex_age",
+      "sv": "Ungfåglar liknar honor men har brun i stället för grå kropp och ser därför mer enfärgat bruna ut.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Jungvögel ähneln den Weibchen, weisen jedoch statt eines grauen einen braunen Rumpf auf und wirken dadurch deutlich einfarbiger und insgesamt brauner gefärbt."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "sex_age",
+      "sv": "I hanens eklipsdräkt ersätts det svarta på bröst och bakparti av urtvättat grått.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Schlichtkleid ähnelt dem Prachtkleid, jedoch ist das schwarze Gefieder an Brust und Steiß durch ein verwaschenes Grau ersetzt."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Brunanden är ganska tystlåten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Brunanden är ganska tystlåten."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Hanens spelläte är ett karaktäristiskt vinande som klipps av med ett gällt efterslag, likt en rikoschetterande kula.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanens spelläte är ett karaktäristiskt vinande som klipps av med ett gällt efterslag."
+        },
+        {
+          "article": "sv",
+          "quote": "Det kan beskrivas som en rikoschetterande kula."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Honan morrar lågt, ungefär krrr, när hon skräms upp.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The female growls softly—a sound transcribed as krrr—if she is flushed."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Brunanden behöver stora, näringsrika öppna vatten med ett djup på högst sex meter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Brunanden behöver stora och näringsrika öppna vatten med ett djup på max sex meter."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Vintertid samlas ofta flockar vid vikar och dammar där varmt vatten släpps ut från industrier.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid samlas ofta flockar vid vikar och dammar där varmt vatten släpps ut från industrier och dylikt."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "De flesta svenska brunänder flyttar kring september–oktober till Danmark eller västra Europa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De flesta fåglar flyttar kring september–oktober till Danmark eller västra Europa."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Många övervintrar i södra Sverige, mest i söt- eller brackvatten så länge det är isfritt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Många övervintrar dock i södra Sverige, och uppehåller sig mest i söt- eller brackvatten, så länge det är isfritt."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Flyttfåglarna anländer till Sverige i mars–april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flyttfåglarna anländer i mars–april."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Idag uppskattas cirka 1 100 par häcka i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "idag uppskattas det häcka cirka 1 100 par i Sverige"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Som häckfågel finns den idag främst på Gotland, Öland, i Östergötland och Uppland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som häckfågel påträffas den idag främst på Gotland, Öland, i Östergötland och Uppland."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "sweden",
+      "sv": "I Sverige betraktas brunanden sedan 2020 som starkt hotad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige betraktas den sedan 2020 som starkt hotad."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Honan lägger vanligtvis åtta till tio ägg, men kullar med fyra till 14 ägg förekommer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger vanligtvis åtta till tio ägg men kullar med fyra till 14 förekommer."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Äggen är blygrå till gulgröna och ruvas av honan i 26–28 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen är blygrå till gulgröna och honan ruvar dem i 26–28 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Ungarna tas om hand av honan och blir flygga efter 50–55 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna tas om hand av honan och de blir flygga efter 50–55 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Brunanden är allätare och lever av frön, rötter och vattenväxter samt insekter, blötdjur, kräftdjur, maskar, groddjur och småfisk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Brunanden är en allätare som lever av frön, rötter och andra delar av vättenväxter såväl som vattenlevande insekter och larver, blötdjur, kräftdjur, maskar, groddjur och småfisk."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "food",
+      "sv": "Födosöket sker oftast genom dykning på en till tre meters djup.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Födosöket sker oftast på ett djup av en till tre meter."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Brunänder bildar stora flockar på vintern, ofta tillsammans med andra dykänder.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "they form large flocks in winter, often mixing with other species of diving duck."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De flesta fåglar flyttar kring september–oktober till Danmark eller västra Europa. Många övervintrar dock i södra Sverige"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Östergötland, Stockholm och Skåne."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Starkt hotad (EN)."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "73ab9d676a6a0460"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "brunand",
@@ -205,5 +584,12 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V2",
+      "factId": "f25",
+      "message": "f25 anger ett tal i ägg som inte stämmer med de andra artiklarna (8 till 10 ägg)"
+    }
+  ]
 }

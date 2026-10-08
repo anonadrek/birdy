@@ -1,13 +1,660 @@
 {
   "qid": "Q174088",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Stenknäcken är 18–19 centimeter lång och väger cirka 50–60 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "en kroppslängd på 18–19 centimeter och vikt på cirka 50–60 gram"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Vingbredden är 29–33 centimeter.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "with a wingspan that ranges from 29 to 33 cm"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Stenknäcken har en mycket kraftig trekantig näbb, stort huvud, tjurnacke och kort stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en mycket kraftig trekantig näbb, stort huvud, tjurnacke och kort stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Ovansidan är brun och undersidan askgrå med rostbrun anstrykning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stenknäcken är brun på ovansidan och askgrå med rostbrun anstrykning på undersidan."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "I flykten syns ett tydligt vitt vingband på de annars metallglänsande blåsvarta vingarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten syns tydligt ett vitt vingband, även på undersidan, på de i övrigt metallglänsande blåsvarta vingarna."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Näbben är blåsvart på sommaren och benvit eller blekt gulbrun på vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På sommaren är näbben blåsvart medan den är benvit eller blekt gulbrun på vintern."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Huvudet är orangebrunt med svart ögonstreck och svart haklapp.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Its head is orange-brown with a black eyestripe and bib"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Runt ögat har stenknäcken en svart mask.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Runt ögat har stenknäcken en svart \"mask\"."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Halssidorna och nacken är grå.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The sides of its neck, as well as the back of its neck, are gray."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "appearance",
+      "sv": "Stjärten är svart till gråsvart med breda vita ändband och ser mycket kort ut i flykten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der schwarze bis grauschwarze Schwanz mit breiten, weißen Endbinden ist wenig eingekerbt."
+        },
+        {
+          "article": "en",
+          "quote": "which appears very short-tailed in flight"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "appearance",
+      "sv": "Benen är korta och ljust rosa.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It has short pinkish legs with a light hue"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "sex_age",
+      "sv": "Honan har ett grått stråk längs armpennorna, vilket är den enda synliga skillnaden mellan könen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "honan har ett grått stråk längs armpennorna, vilket är enda synliga skillnaden mellan könen"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "sex_age",
+      "sv": "Honan är ljusare och mindre intensivt färgad än hanen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Weibchen ist heller und weniger intensiv gefärbt."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "sex_age",
+      "sv": "Ungfågeln har grågult bröst och grovt mörkfläckad buk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen har grågult bröst med en grovt mörkfläckad buk."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Lätet är ett explosivt knäppande ”zick” eller ”pix”, samt ett koltrastlikt dämpat ”srri”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lätet är ett explosivt knäppande \"zick\" , eller \"pix\", samt ett koltrastlikt dämpat \"srri\"."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Sången hörs mest på våren och är lågmäld, med zick-läten varierade med knirranden och knarranden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången, som hörs mest på våren, är lågmäld och består av \"zick\"-anden varierat med knirranden och knarranden i gulsparvsliknande ramsor."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "voice",
+      "sv": "Kontaktlätet är ett hårt ”zicks” som ofta hörs även i flykten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Kernbeißer äußern als Stimmfühlungsruf ein hartes zicks, oft auch während des Fluges."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Under häckningstiden finns stenknäcken i löv- och blandskog, parker och fruktträdsodlingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under häckningsperioden förekommer den i löv- och blandskog, parker och fruktträdsodlingar."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "För häckning föredras löv- eller blandskog och parker med stora träd, särskilt avenbok.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Deciduous or mixed woodland, including parkland, with large trees – especially hornbeam – is favoured for breeding."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Sverige går nordgränsen från södra Värmland via södra Dalarna till norra Uppland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Idag utgör nordgränsen en linje från södra Värmland via södra Dalarna till norra Uppland."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Lokalt häckar stenknäcken även längs Norrlandskusten norrut till Norrbotten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lokalt häckar den även utmed Norrlandskusten norrut till Norrbotten."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Arten är särskilt talrik i lövrika områden i Skåne, Småland, Blekinge, Västergötland, Öland och Mälarlandskapen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "särskilt talrik i lövrika områden i Skåne, södra och östra Småland, Blekinge, centrala Västergötland, Öland och i Mälarlandskapen"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2012 till 17 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sveriges bestånd har senast uppskattats till 17 000 par (2012)"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "På hösten äter stenknäcken mycket gärna körsbärskärnor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På hösten äter den mycket gärna kärnor av körsbär."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Den äter även kärnor av rönnbär och oxelbär samt olika sorters frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dessutom förtär den kärnor av rönnbär, oxelbär och dylikt samt olika sorters frön."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Boet byggs i en klyka mellan grenar, vanligen högt upp i ett lövträd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet byggs i en klyka mellan några grenar, vanligen högt upp i ett lövträd"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Honan lägger tre till sex ljusblå ägg som ruvas i 13 till 14 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger tre till sex ljusblå ägg. Äggen ruvas i 13 till 14 dagar, huvudsakligen av honan."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Stenknäcken är skygg och svår att observera.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The hawfinch is a shy species, and therefore difficult to observe and study."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Den tillbringer större delen av dagen högt uppe i trädens grenar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It spends most of the day on top of high branches"
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Stenknäckar äter ofta i flock, särskilt på vintern.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The bird is known to eat in groups, especially during the winter."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december och januari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Stenknäcken har en mycket kraftig trekantig näbb, stort huvud, tjurnacke och kort stjärt.",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Under häckningstiden finns den i löv- och blandskog, parker och fruktträdsodlingar.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Mycket kraftig trekantig näbb, blåsvart på sommaren och benvit eller blekt gulbrun på vintern",
+          "factIds": [
+            "f03",
+            "f06"
+          ]
+        },
+        {
+          "text": "Orangebrunt huvud med svart mask runt ögat, svart haklapp och grå nacke",
+          "factIds": [
+            "f07",
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "I flykten syns ett tydligt vitt vingband på blåsvarta vingar och en mycket kort stjärt",
+          "factIds": [
+            "f05",
+            "f10"
+          ]
+        },
+        {
+          "text": "Honan är ljusare än hanen och har ett grått stråk längs armpennorna",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Lätet är ett explosivt knäppande ”zick” eller ”pix”, och även ett dämpat ”srri” som liknar koltrastens.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Kontaktlätet är ett hårt ”zicks” som ofta hörs även i flykten.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Sången hörs mest på våren och är lågmäld, med zick-läten varierade med knirranden och knarranden.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "I Sverige går nordgränsen från södra Värmland via södra Dalarna till norra Uppland, och lokalt häckar den längs Norrlandskusten norrut till Norrbotten.",
+          "factIds": [
+            "f20",
+            "f21"
+          ]
+        },
+        {
+          "text": "Den är särskilt talrik i lövrika områden i Skåne, Småland, Blekinge, Västergötland, Öland och Mälarlandskapen.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Det svenska beståndet uppskattades 2012 till 17 000 par.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "Arten rapporteras från alla 21 län, mest i december och januari.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "På hösten äter stenknäcken mycket gärna körsbärskärnor, och den äter även kärnor av rönnbär och oxelbär samt olika sorters frön.",
+          "factIds": [
+            "f24",
+            "f25"
+          ]
+        },
+        {
+          "text": "Den äter ofta i flock, särskilt på vintern.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "Stenknäcken är skygg och svår att observera och tillbringer större delen av dagen högt uppe i trädens grenar.",
+          "factIds": [
+            "f28",
+            "f29"
+          ]
+        },
+        {
+          "text": "Boet byggs i en klyka mellan grenar, vanligen högt upp i ett lövträd.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Stenknäck: så känner du igen arten på den kraftiga näbben och dräkten, hur sången och lätena låter och när den syns under året.",
+      "facts": {
+        "size": {
+          "value": "18 till 19 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Hawfinch has a very heavy triangular bill, a big head, a thick neck and a short tail.",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "In the breeding season it is found in deciduous and mixed woodland, parks and orchards.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Very heavy triangular bill, blue-black in summer and bone-white or pale yellowish brown in winter",
+          "factIds": [
+            "f03",
+            "f06"
+          ]
+        },
+        {
+          "text": "Orange-brown head with a black mask around the eye, black bib and grey nape",
+          "factIds": [
+            "f07",
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "In flight, a clear white wing bar on blue-black wings and a very short tail",
+          "factIds": [
+            "f05",
+            "f10"
+          ]
+        },
+        {
+          "text": "The female is paler than the male, with a grey panel along the secondaries",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is an explosive clicking \"zick\" or \"pix\", and also a soft \"srri\" that recalls a Blackbird.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "The contact call is a hard \"zicks\", often heard in flight too.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "The song is heard mostly in spring and is quiet, with zick notes mixed with creaking and grating sounds.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "In Sweden the northern limit runs from southern Värmland via southern Dalarna to northern Uppland, and it breeds locally along the Norrland coast north to Norrbotten.",
+          "factIds": [
+            "f20",
+            "f21"
+          ]
+        },
+        {
+          "text": "It is especially numerous in leafy areas of Skåne, Småland, Blekinge, Västergötland, Öland and the Mälaren provinces.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "The Swedish population was estimated in 2012 at 17 000 pairs.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties, most often in December and January.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "In autumn the Hawfinch is very fond of cherry stones, and it also eats the seeds of rowan and whitebeam berries and various other seeds.",
+          "factIds": [
+            "f24",
+            "f25"
+          ]
+        },
+        {
+          "text": "It often feeds in flocks, especially in winter.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "It is shy and hard to observe, spending most of the day high up in the branches of trees.",
+          "factIds": [
+            "f28",
+            "f29"
+          ]
+        },
+        {
+          "text": "The nest is built in a fork between branches, usually high up in a deciduous tree.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Hawfinch: how to recognise it by its heavy bill and plumage, what its song and calls sound like, and when it is seen during the year.",
+      "facts": {
+        "size": {
+          "value": "18 to 19 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "46d3f1f5b644ff7a"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "46d3f1f5b644ff7a"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "stenknack",
@@ -205,5 +852,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

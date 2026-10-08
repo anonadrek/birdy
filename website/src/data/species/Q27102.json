@@ -1,13 +1,670 @@
 {
   "qid": "Q27102",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Tordmulen är 38–43 cm lång och har ett vingspann på 60–69 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tordmulen är en stor alka med en längd på 38–43 cm och ett vingspann på 60–69 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Medelvikten ligger mellan 505 och 890 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "its mean weight ranges from 505 to 890 g"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Adulta fåglar har svart huvud, svart ovansida och vitt bröst och buk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Adulta fåglar har svart huvud, svart ovansida och vitt bröst och buk."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den grova näbben är kort och hög med vertikala räfflor och mycket trubbig spets.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den grova näbben är kort och hög, har vertikala räfflor och en mycket trubbig spets."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Näbben är svart med ett tydligt vitt streck tvärs över båda näbbhalvorna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är svart med ett tydligt vitt horisontellt streck som sträcker sig över båda näbbhalvorna."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Ett vitt streck går från övre delen av näbbasen till ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har även ett vitt vertikalt streck som sträcker sig från övre delen av näbbasen till ögat."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "I vinterdräkt är hakan, kinden och delar av huvudet vita.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I vinterdräkt är hakan, kinden och delar av huvudet vitt."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Vingarna är smala och spetsiga och räcker hopslagna över stjärtroten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har smala och spetsiga vingar som hopslagna räcker över stjärtroten"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Tordmulen har en tydligt lång stjärt, vilket är ovanligt för en alka.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "This makes the razorbill have a distinctly long tail which is not common for an auk."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "lookalike",
+      "sv": "Till skillnad från sillgrisslan har tordmulen helvit armhåla.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Till skillnad från sillgrisslan har tordmulen helvit"
+        }
+      ],
+      "other": {
+        "scientific": "Uria aalge",
+        "qid": "Q21062"
+      }
+    },
+    {
+      "id": "f11",
+      "topic": "lookalike",
+      "sv": "Tordmulens stjärt är längre än sillgrisslans.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "stjärten är längre än hos sillgrisslan"
+        }
+      ],
+      "other": {
+        "scientific": "Uria aalge",
+        "qid": "Q21062"
+      }
+    },
+    {
+      "id": "f12",
+      "topic": "lookalike",
+      "sv": "Tordmulens huvud är mörkare än sillgrisslans.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Its head is darker than that of a common murre."
+        }
+      ],
+      "other": {
+        "scientific": "Uria aalge",
+        "qid": "Q21062"
+      }
+    },
+    {
+      "id": "f13",
+      "topic": "sex_age",
+      "sv": "Hane och hona har likadan fjäderdräkt, men hanarna är oftast större än honorna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The male and female are identical in plumage; however, males are generally larger than females."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "sex_age",
+      "sv": "Unga fåglar liknar vinterdräkten men har kortare, smalare och helt svart näbb.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Jungvögel haben ein Gefieder, das dem Schlichtkleid gleicht. Ihr Schnabel ist allerdings kürzer, schmäler und rein schwarz."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Tordmulen är en ganska tystlåten alka.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tordmulen är en rätt tystlåten alka."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "I häckningskolonierna hörs djupa och knarrande \"urrr\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I häckningskolonierna hörs djupa och knarrande \"urrr\"."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Den häckar på öar, klippiga stränder och klippor längs norra Atlantens kuster.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tordmulens häckningsområden är öar, klippiga stränder och klippor belägna utmed kusterna av norra Atlanten"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Till skillnad från andra alkor söker den ofta föda i större flodmynningar med lägre salthalt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "unlike other auks, they commonly move into larger estuaries with lower salinity levels to feed"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige häckar den i klippbranter och på steniga skär i utskärgården, främst i Östersjön från Gotland och norra Småland till Ångermanland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tordmule häckar i klippbranter och på steniga skär i utskärgårdar, främst i Östersjön från Gotland och norra Småland norrut till Ångermanland."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Den häckar även i nordvästra Skåne och i Bohuslän.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar även i nordvästra Skåne samt i Bohuslän."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Stora Karlsö vid Gotland är Östersjöns största koloni, med 12 000 par 2014–2015.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Stora Karlsö, Gotland, Sweden (57°17' N), the type locality and the largest colony in the Baltic Sea, with 12,000 pairs in 2014–2015."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "I Sverige listas tordmulen som livskraftig och den ökar i antal.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även i Sverige listas tordmulen som livskraftig och är i ökande."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Den häckar i kolonier på fågelberg tillsammans med bland annat lunnefågel och sillgrissla.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar kolonivis på fågelberg tillsammans med bland annat lunnefågel, sillgrissla"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Honan lägger ett enda mycket stort, gråvitt och mörkfläckigt ägg på en klippavsats.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger ett enda, mycket stort, gråvitt och mörkfläckigt ägg på en klippavsats"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Hane och hona turas om att ruva ägget i ungefär 35 dagar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Females and males take turns incubating the egg several times daily for a total of approximately 35 days before hatching occurs."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Efter 17–23 dagar hoppar ungen från klippan och följs ut till havet av hanen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "After 17–23 days, the chick leaves the nest by jumping from a cliff, closely followed by the male parent, who will accompany the chick to sea."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Den dyker efter fisk men äter också havslevande kräftdjur och maskar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den livnär sig genom att dyka efter fisk, men också på havslevande kräftdjur och maskar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Födan består främst av stimfisk som lodda, tobis, ung torsk, skarpsill och sill.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It consists generally of mid-water schooling fish such as capelin, sandeels, juvenile cod, sprats, and herring."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Flykten är rak med snabba, surrande vingslag.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Flug dieser tag- und dämmerungsaktiven Alkenvögel ist geradlinig mit raschem, schwirrendem Flügelschlag."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "På land går och sitter tordmulen med upprätt kroppshållning.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "An Land läuft und hockt der Tordalk in aufrechter Körperhaltung."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i oktober och november."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Gotland, Kalmar och Blekinge."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Tordmulen är en svartvit alka med kort, grov och hög näbb.",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Den häckar i kolonier på klippor och öar längs norra Atlantens kuster, i Sverige främst i Östersjöns utskärgård.",
+          "factIds": [
+            "f17",
+            "f23",
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Svart huvud och ovansida, vitt bröst och vit buk, hane och hona tecknade lika",
+          "factIds": [
+            "f03",
+            "f13"
+          ]
+        },
+        {
+          "text": "Kort, hög och trubbig svart näbb med ett tydligt vitt tvärstreck",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Vitt streck från näbbasen till ögat och en tydligt lång stjärt för en alka",
+          "factIds": [
+            "f06",
+            "f09"
+          ]
+        },
+        {
+          "text": "I vinterdräkt är haka, kind och delar av huvudet vita",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Tordmulen är en ganska tystlåten alka.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "I häckningskolonierna hörs djupa och knarrande \"urrr\".",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "I Sverige häckar tordmulen i klippbranter och på steniga skär i utskärgården, främst i Östersjön från Gotland och norra Småland till Ångermanland, men också i nordvästra Skåne och Bohuslän.",
+          "factIds": [
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "Stora Karlsö vid Gotland är Östersjöns största koloni, med 12 000 par 2014 till 2015.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i oktober och november, och andelen av alla fågelrapporter är högst i Gotland, Kalmar och Blekinge.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Tordmulen dyker efter fisk, främst stimfisk som lodda, tobis, ung torsk, skarpsill och sill, och äter även kräftdjur och maskar.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        },
+        {
+          "text": "Den söker ofta föda i större flodmynningar med lägre salthalt.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Flykten är rak med snabba, surrande vingslag, och på land sitter den upprätt.",
+          "factIds": [
+            "f29",
+            "f30"
+          ]
+        },
+        {
+          "text": "Honan lägger ett enda ägg på en klippavsats, och efter 17 till 23 dagar hoppar ungen från klippan och följs ut till havet av hanen.",
+          "factIds": [
+            "f24",
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q21062",
+          "text": [
+            {
+              "text": "Tordmulen har helvit armhåla, längre stjärt och mörkare huvud än sillgrisslan.",
+              "factIds": [
+                "f10",
+                "f11",
+                "f12"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Tordmule: så känner du igen den svartvita alkan på den vita näbbteckningen och dräkten, hur lätet låter och när den syns och rapporteras.",
+      "facts": {
+        "size": {
+          "value": "38 till 43 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Razorbill is a black and white auk with a short, heavy, deep bill.",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "It breeds in colonies on cliffs and islands along the coasts of the North Atlantic, in Sweden mainly in the outer Baltic archipelago.",
+          "factIds": [
+            "f17",
+            "f23",
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Black head and upperparts, white breast and belly, male and female look alike",
+          "factIds": [
+            "f03",
+            "f13"
+          ]
+        },
+        {
+          "text": "Short, deep, blunt black bill with a clear white band across it",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "White line from bill base to eye, and a long tail for an auk",
+          "factIds": [
+            "f06",
+            "f09"
+          ]
+        },
+        {
+          "text": "In winter plumage the chin, cheek and parts of the head are white",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The Razorbill is a fairly quiet auk.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "In the breeding colonies it gives a deep, grating \"urrr\".",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "In Sweden it breeds on cliffs and rocky outer skerries, mainly in the Baltic from Gotland and northern Småland to Ångermanland, and in north-west Skåne and Bohuslän.",
+          "factIds": [
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "Stora Karlsö off Gotland is the largest colony in the Baltic, with 12 000 pairs in 2014 to 2015.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "It is reported most in October and November. Its share of all bird reports is highest in Gotland, Kalmar and Blekinge.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It often feeds in larger estuaries with lower salinity.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Flight is straight with fast, whirring wingbeats, and it sits upright on land.",
+          "factIds": [
+            "f29",
+            "f30"
+          ]
+        },
+        {
+          "text": "The female lays one egg on a cliff ledge. After 17 to 23 days the chick jumps and the male follows it to sea.",
+          "factIds": [
+            "f24",
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q21062",
+          "text": [
+            {
+              "text": "The Razorbill has an all-white armpit, a longer tail and a darker head than the Common Guillemot.",
+              "factIds": [
+                "f10",
+                "f11",
+                "f12"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Razorbill: how to recognise this black and white auk by its bill markings and plumage, what its call sounds like and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "38 to 43 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "ff5c004002e52aad"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:52:09.698207+00:00",
+      "factsHash": "ff5c004002e52aad"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "tordmule",
@@ -192,5 +849,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

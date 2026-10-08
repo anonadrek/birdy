@@ -1,13 +1,693 @@
 {
   "qid": "Q26657",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Kungsfågeln är Europas minsta fågel, 8,5–9,5 cm lång, med ett vingspann på 13,5–15,5 cm och en vikt på 4,5–7,0 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kungsfågeln är Europas minsta fågel med en längd på 8,5–9,5 centimeter, ett vingspann på 13,5–15,5 centimeter och en vikt på 4,5–7,0 gram."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Den har olivgrön ovansida, vitaktig undersida, dubbla vingband och grått ansikte med kontrasterande svart öga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "olivgrön ovansida, vitaktig undersida, dubbla vingband och grått ansikte med kontrasterande svart öga"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "På hjässan har den ett färgstarkt centralt hjässband kantat av ett ganska brett svart fält.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På hjässan har den ett färgstarkt centralt hjässband kantat av ett ganska brett svart fält."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Näbben är liten, tunn och svart, och benen är mörkbruna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en liten tunn svart näbb och mörkbruna ben."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "sex_age",
+      "sv": "Hanens hjässband är gult med orange mitt, medan honans är helt gult.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanens hjässband är gult med en orange mitt medan honans är helt gult."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Ungfågeln liknar den vuxna men har mörkare ovansida och saknar det färgstarka centrala hjässbandet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen påminner om den adulta fågeln men har mörkare ovansida och saknar den färgstarka centrala hjässbandet."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "behaviour",
+      "sv": "Flykten består av snabba, svirrande vingslag med enstaka hastiga riktningsändringar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kungsfågelns flykt är typisk och består av snabba, svirrande vingslag med enstaka hastiga riktningsändringar."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "behaviour",
+      "sv": "Den rör sig rastlöst i bladverket och kryper ofta på grenar och upp och ned längs stammar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den rör sig rastlöst ibland bladverken och kryper ofta på grenar och upp och ned för stammar."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Kontaktlätet är ett tunt, mycket högt \"zee\" som upprepas med en till fyra sekunders mellanrum, med alla toner på samma tonhöjd.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "thin, high-pitched zee given at intervals of 1–4 seconds, with all the notes at the same pitch"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Hanens sång är en mycket hög, tunn dubbelton \"cedar\" som upprepas fem till sju gånger och avslutas med en snirklig avslutning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kungsfågelhanens sång är en mycket högfrekvent, tunn dubbelton cedar, som repeteras fem till sju gånger och avslutas med ett snirkligt ornament"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Sången framförs ofta under födosöket och kan höras under årets alla månader.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången, som ofta yttras under födosöket, kan höras under årets alla månader."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sång och läten är så höga att många människor inte hör dem alls eller bara på mycket nära håll.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Gesang und die Rufe der Wintergoldhähnchen sind so hoch, dass sie von vielen Menschen gar nicht oder nur in unmittelbarer Nähe wahrgenommen werden können."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "habitat",
+      "sv": "Kungsfågeln häckar i tät barrskog på lågland och i bergsskogar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kungsfågeln häckar i tät barrskog på lågland och i bergsskogar"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Boet placeras i gran, lärk, tall, silvergran och bergtall.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den placerar sitt bo i gran, lärk, tall, silvergran och bergtall"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Efter häckningen uppträder den gärna bland lövträd och i busk- och hedmarker och andra mer öppna miljöer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När häckningen är över uppträder den gärna i habitat med lövträd, eller i busk- och hedmarker och liknande mer öppna biotoper."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige häckar den allmänt i stora delar av landet, mer sparsamt längst i norr, och saknas nästan helt i nordvästra Lappland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar den allmänt i stora delar av landet men mer sparsamt i de nordligaste delarna och saknas nästan helt i den nordvästra halvan av Lappland."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet är till stor del stannfåglar, utom längst i norr, men många flyttar till Mellaneuropa under hösten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det svenska beståndet är till stor del stannfåglar, dock ej längst i norr, men många flyttar också till Mellaneuropa under hösten."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Flyttande kungsfåglar återkommer till Sverige i april, längst i söder redan i slutet av mars.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dessa flyttfåglar återkommer till Sverige i april (i slutet av mars längst i söder)."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Fåglar i norra Fennoskandien lämnar sina revir mellan augusti och början av november.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fåglar i norra Fennoskandia och Ryssland överger sina revir mellan augusti och början av november"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattas till tre till fyra miljoner par, vilket gör den till en av Sveriges tre vanligaste fågelarter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Beståndet i Sverige uppskattas till mellan tre och fyra miljoner par, vilket gör den till Sveriges tredje vanligaste fågelart tillsammans med rödhaken."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet är en välisolerad skålformad konstruktion som byggs i tre lager.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kungsfågelns bo är en välisolerad skålformad struktur som byggs i tre lager."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "En typisk kull i Europa består av nio till elva ägg, men sex till 13 ägg har observerats.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En typisk kullstorlek i Europa är nio till elva ägg, men det finns observationer av sex till 13 ägg."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan ruvar äggen i 16–19 dagar och ungarna blir flygfärdiga efter ytterligare 17–22 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ruvar äggen i 16–19 dagar innan de kläcks och ungarna blir flygfärdiga efter ytterligare 17–22 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "En andra kull är vanlig och läggs oftast medan första kullens ungar fortfarande är små.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En andra kull är vanlig och läggs oftast när första kullens ungar fortfarande är små."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Den äter främst små leddjur med mjukt yttre skelett, som hoppstjärtar, bladlöss och spindlar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Alla kungsfågelarter är till största delen insektsätare och lever av små leddjur med mjukt yttre skelett, som hoppstjärtar, bladlöss och spindlar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Den plockar ofta föda från undersidan av grenar och blad medan den nästan står still i luften med snabba vingslag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "tar ofta sin föda genom att med snabba vingslag nästan stå still i luften och samtidigt plocka insekter och dylikt från undersidan av grenar och blad"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Vintertid ansluter den ofta till blandflockar med mesar och sångare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under sina födosök i dessa vinterrevir förenar de sig däremot ofta med andra arter, som mesar och sångare."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Utmattade flyttande kungsfåglar kan vara mycket orädda och landa nära människor i jakt på föda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "kan utmattade och felflugna kungsfåglar uppträda mycket orädda och landa nära människor i jakt på föda."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Brandkronad kungsfågel skiljs från kungsfågeln genom sitt tydliga vita ögonbrynsstreck och svarta tygel, medan kungsfågeln har helt grått ansikte.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta brandkronade kungsfågeln har dock en typisk huvudteckning med ett tydligt vitt ögonbrynsstreck och svart tygel"
+        },
+        {
+          "article": "en",
+          "quote": "It superficially resembles the common firecrest (Regulus ignicapilla)"
+        }
+      ],
+      "other": {
+        "scientific": "Regulus ignicapilla",
+        "qid": "Q27471"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det svenska beståndet är till stor del stannfåglar, dock ej längst i norr, men många flyttar också till Mellaneuropa under hösten."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i oktober."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Kungsfågeln är Europas minsta fågel och häckar i tät barrskog, både på lågland och i bergsskogar.",
+          "factIds": [
+            "f01",
+            "f13"
+          ]
+        },
+        {
+          "text": "I Sverige häckar den allmänt i stora delar av landet.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Olivgrön ovansida, vitaktig undersida och dubbla vingband",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Grått ansikte där det svarta ögat sticker ut",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Färgstarkt hjässband kantat av svart: gult med orange mitt hos hanen, helt gult hos honan",
+          "factIds": [
+            "f03",
+            "f05"
+          ]
+        },
+        {
+          "text": "Liten, tunn svart näbb och rastlösa rörelser bland grenar och stammar",
+          "factIds": [
+            "f04",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Hanens sång är en mycket hög, tunn dubbelton \"cedar\" som upprepas fem till sju gånger och avslutas snirkligt.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Kontaktlätet är ett tunt, mycket högt \"zee\" med en till fyra sekunders mellanrum.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Sången hörs under årets alla månader, ofta under födosöket.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Många hör inte lätena alls, eller bara på mycket nära håll.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Kungsfågeln är delvis flyttfågel och häckar allmänt i stora delar av Sverige, mer sparsamt längst i norr, och saknas nästan helt i nordvästra Lappland.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "Många flyttar till Mellaneuropa på hösten, och flyttarna återkommer i april, längst i söder redan i slutet av mars.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län och mest i oktober.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den äter främst små leddjur med mjukt yttre skelett, som hoppstjärtar, bladlöss och spindlar.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Ofta plockar den föda från undersidan av grenar och blad medan den nästan står still i luften.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Vintertid ansluter den ofta till blandflockar med mesar och sångare.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Utmattade flyttande kungsfåglar kan vara mycket orädda och landa nära människor i jakt på föda.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q27471",
+          "text": [
+            {
+              "text": "Brandkronad kungsfågel har ett tydligt vitt ögonbrynsstreck och svart tygel, medan kungsfågeln har helt grått ansikte.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Kungsfågel: så känner du igen den på det färgstarka hjässbandet, hur sången och kontaktlätet låter och när under året den syns.",
+      "facts": {
+        "size": {
+          "value": "8,5 till 9,5 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Goldcrest is Europe's smallest bird and breeds in dense conifer forest, both in lowlands and in mountain forests.",
+          "factIds": [
+            "f01",
+            "f13"
+          ]
+        },
+        {
+          "text": "In Sweden it breeds commonly across large parts of the country.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Olive-green upperparts, whitish underparts and two wing bars",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Grey face in which the black eye stands out",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Bright black-edged crown stripe: yellow with orange centre in males, all yellow in females",
+          "factIds": [
+            "f03",
+            "f05"
+          ]
+        },
+        {
+          "text": "Small, thin black bill and restless movement among branches and trunks",
+          "factIds": [
+            "f04",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The male's song is a very high, thin double note \"cedar\", repeated five to seven times with a twirling ending.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "The contact call is a thin, very high \"zee\", repeated every one to four seconds.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "It sings in every month, often while feeding.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Many people cannot hear these sounds at all, or only at very close range.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Goldcrest is a partial migrant that breeds commonly across large parts of Sweden, more sparsely in the far north, and is almost absent from northwestern Lapland.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "Many move to central Europe in autumn, and migrants return in April, in the far south as early as late March.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties and most often in October.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mainly on small soft-bodied arthropods such as springtails, aphids and spiders.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It often picks food from the undersides of branches and leaves while almost hovering in the air.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "In winter it often joins mixed flocks of tits and warblers.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Exhausted migrating Goldcrests can be very tame and land close to people while looking for food.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q27471",
+          "text": [
+            {
+              "text": "The Firecrest has a clear white eyebrow stripe and a black lore, while the Goldcrest has a plain grey face.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Goldcrest: how to recognise it by its bright crown stripe and plumage, what its song and calls sound like, and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "8.5 to 9.5 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "5dbb188533d87ea4"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "5dbb188533d87ea4"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "kungsfagel",
@@ -205,5 +885,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

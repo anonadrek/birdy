@@ -1,6 +1,6 @@
 {
   "qid": "Q170831",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
@@ -42,7 +42,7 @@
     {
       "id": "f04",
       "topic": "appearance",
-      "sv": "Näbben är kort och ögat svart med ett gulorange övre ögonlock.",
+      "sv": "Näbben är kort och ögat är svart med ett gulorange övre ögonlock.",
       "sources": [
         {
           "article": "sv",
@@ -64,15 +64,11 @@
     {
       "id": "f06",
       "topic": "appearance",
-      "sv": "Den nordliga underarten caudatus, som finns i Skandinavien, har rent vitt huvud skarpt avgränsat mot svart nacke.",
+      "sv": "Nordliga underarter är ljusare och har helt vitt huvud utan de mörka ögonbrynsstreck som sydliga bestånd har.",
       "sources": [
         {
-          "article": "de",
-          "quote": "Typ CC: Unterart caudatus mit reinweißem Kopf, scharfer Abgrenzung zum schwarzen Nacken, ohne Brustband"
-        },
-        {
-          "article": "sv",
-          "quote": "nordlig stjärtmes Aegithalos caudatus caudatus – Skandinavien"
+          "article": "en",
+          "quote": "Northern subspecies are paler and have completely white heads, lacking the large dark eyebrows of southern populations."
         }
       ]
     },
@@ -90,18 +86,18 @@
     {
       "id": "f08",
       "topic": "sex_age",
-      "sv": "Hane och hona ser likadana ut.",
+      "sv": "Hane och hona ser likadana ut, och ungfåglarna ruggar till adult dräkt före första vintern.",
       "sources": [
         {
           "article": "en",
-          "quote": "The sexes look the same"
+          "quote": "The sexes look the same and young birds undergo a complete moult to adult plumage before the first winter."
         }
       ]
     },
     {
       "id": "f09",
       "topic": "sex_age",
-      "sv": "Ungfåglar har svartbrunt huvud med en vit, oval hjässfläck.",
+      "sv": "Hos den kontinentala underarten har ungfåglar svartbrunt huvud med en vit, oval hjässfläck.",
       "sources": [
         {
           "article": "de",
@@ -111,19 +107,8 @@
     },
     {
       "id": "f10",
-      "topic": "sex_age",
-      "sv": "Ungfåglar har brun ovansida utan rosa skuldror.",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "Die restliche Oberseite ist braun und zeigt keine rosa Schultern."
-        }
-      ]
-    },
-    {
-      "id": "f11",
       "topic": "voice",
-      "sv": "Från flockar hörs ett trestavigt sii-sii-siih omväxlande med ett surrande tserr tserr.",
+      "sv": "Från framdragande flockar hörs ett trestavigt sii-sii-siih omväxlande med ett surrande tserr tserr.",
       "sources": [
         {
           "article": "sv",
@@ -132,9 +117,20 @@
       ]
     },
     {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Arten har tre huvudlätet: ett ensamt högt pit, en trestavig drill eez-eez-eez och ett skallrande schnuur.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They have three main calls, a single high pitched pit, a 'triple trill' eez-eez-eez, and a rattling schnuur."
+        }
+      ]
+    },
+    {
       "id": "f12",
       "topic": "voice",
-      "sv": "Flockar lockar ständigt, så fåglarna hörs ofta innan de syns.",
+      "sv": "Flockar lockar ständigt, så stjärtmesar hörs ofta innan de syns.",
       "sources": [
         {
           "article": "en",
@@ -145,17 +141,6 @@
     {
       "id": "f13",
       "topic": "voice",
-      "sv": "På nära håll hörs ett skarpt, kort och tonlöst prrt-prrt-prrt som kontaktläte.",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "Stimmfühlungslaut auf kurze Distanz ist ein scharfes, kurzes und stimmloses prrt-prrt-prrt."
-        }
-      ]
-    },
-    {
-      "id": "f14",
-      "topic": "voice",
       "sv": "Sången hörs sällan och är lågmäld och kvittrande.",
       "sources": [
         {
@@ -165,9 +150,9 @@
       ]
     },
     {
-      "id": "f15",
+      "id": "f14",
       "topic": "habitat",
-      "sv": "Stjärtmesen häckar i löv- och blandskog med rik undervegetation av hassel och sälg samt inslag av döda träd.",
+      "sv": "Stjärtmesen häckar i löv- och blandskog med rik undervegetation av hassel och sälg och inslag av döda träd.",
       "sources": [
         {
           "article": "sv",
@@ -176,18 +161,7 @@
       ]
     },
     {
-      "id": "f16",
-      "topic": "habitat",
-      "sv": "Den finns också i buskmarker, hedar, häckar, jordbruksmark, strandskog, parker och trädgårdar.",
-      "sources": [
-        {
-          "article": "en",
-          "quote": "It can also be found in scrubland, heathland with scattered trees, bushes and hedges, farmland, riverine woodland, and parks and gardens."
-        }
-      ]
-    },
-    {
-      "id": "f17",
+      "id": "f15",
       "topic": "habitat",
       "sv": "I Nordeuropa häckar den ofta i sumpmarker, myrar eller i kanten av odlingslandskapet.",
       "sources": [
@@ -198,9 +172,20 @@
       ]
     },
     {
-      "id": "f18",
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Den förekommer också i buskmarker, häckar, jordbruksmark, strandskog samt i parker och trädgårdar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It can also be found in scrubland, heathland with scattered trees, bushes and hedges, farmland, riverine woodland, and parks and gardens."
+        }
+      ]
+    },
+    {
+      "id": "f17",
       "topic": "sweden",
-      "sv": "I Sverige förekommer den i södra och mellersta delarna norrut till södra Värmland–Dalarna–Hälsingland samt längs Norrlandskusten till Norrbotten.",
+      "sv": "I Sverige förekommer stjärtmesen i södra och mellersta delarna norrut till södra Värmland–Dalarna–Hälsingland samt längs Norrlandskusten till Norrbotten.",
       "sources": [
         {
           "article": "sv",
@@ -209,7 +194,7 @@
       ]
     },
     {
-      "id": "f19",
+      "id": "f18",
       "topic": "sweden",
       "sv": "Det svenska beståndet uppskattades 2018 till 34 000 par.",
       "sources": [
@@ -220,7 +205,7 @@
       ]
     },
     {
-      "id": "f20",
+      "id": "f19",
       "topic": "sweden",
       "sv": "Den svenska populationen anses livskraftig men tros minska i antal.",
       "sources": [
@@ -231,31 +216,20 @@
       ]
     },
     {
-      "id": "f21",
-      "topic": "food",
-      "sv": "Stjärtmesen äter insekter året runt, främst leddjur, och föredrar ägg och larver av fjärilar.",
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Den äldsta ringmärkta stjärtmesen i Sverige blev 6 år och 5 månader.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Den är en insektsätare året runt som lever främst av leddjur och föredrar ägg och larver av malar och fjärilar."
+          "quote": "Den äldsta stjärtmesen som ringmärkts i Sverige är 6 år och 5 månader."
         }
       ]
     },
     {
-      "id": "f22",
-      "topic": "food",
-      "sv": "Vid vinterutfodringar tar den små bitar av nötter, talg, brödsmulor och ost.",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "Dass sie an Winterfütterungen auch kleine Stücke von Nüssen, Talg, Brotkrumen, Käse oder sonstigem annehmen"
-        }
-      ]
-    },
-    {
-      "id": "f23",
+      "id": "f21",
       "topic": "behaviour",
-      "sv": "Den klänger vigt i tunna grenar, ofta upp och ned.",
+      "sv": "Stjärtmesen klänger vigt i tunna grenar, ofta upp och ned.",
       "sources": [
         {
           "article": "sv",
@@ -264,7 +238,7 @@
       ]
     },
     {
-      "id": "f24",
+      "id": "f22",
       "topic": "behaviour",
       "sv": "Utanför häckningstiden bildar stjärtmesen kompakta flockar på tre till 30 fåglar.",
       "sources": [
@@ -275,7 +249,7 @@
       ]
     },
     {
-      "id": "f25",
+      "id": "f23",
       "topic": "behaviour",
       "sv": "Under kalla vinternätter trycker flockmedlemmarna ihop sig för att hålla värmen.",
       "sources": [
@@ -286,7 +260,7 @@
       ]
     },
     {
-      "id": "f26",
+      "id": "f24",
       "topic": "behaviour",
       "sv": "I Nord- och Östeuropa räknas stjärtmesen till invasionsfåglarna.",
       "sources": [
@@ -297,25 +271,54 @@
       ]
     },
     {
-      "id": "f27",
-      "topic": "breeding",
-      "sv": "Den bygger ett klotformat bo av lav, fjädrar, spindelväv och mossa.",
+      "id": "f25",
+      "topic": "food",
+      "sv": "Stjärtmesen äter insekter året runt, främst leddjur, och föredrar ägg och larver av fjärilar.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Den bygger ett konstrikt klotformat bo av lav, fjädrar, spindelväv och mossa."
+          "quote": "Den är en insektsätare året runt som lever främst av leddjur och föredrar ägg och larver av malar och fjärilar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Vid vinterfågelmatningar tar den små bitar av nötter, talg, brödsmulor och ost.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Dass sie an Winterfütterungen auch kleine Stücke von Nüssen, Talg, Brotkrumen, Käse oder sonstigem annehmen"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Boet är övertäckt och byggt av lav, fjädrar, spindelväv och mossa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärtmesen bygger ett konstrikt hopfogat, övertäckt bo av fyra olika material: lav, fjädrar, spindelväv och mossa."
         }
       ]
     },
     {
       "id": "f28",
       "topic": "breeding",
-      "sv": "Den lägger vanligen åtta till tolv ägg som honan ensam ruvar i 13–17 dagar.",
+      "sv": "Den lägger vanligtvis åtta till tolv ägg per kull.",
       "sources": [
         {
           "article": "sv",
           "quote": "Den lägger vanligtvis åtta till tolv ägg per kull"
-        },
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Honan ruvar äggen ensam i 13–17 dagar.",
+      "sources": [
         {
           "article": "sv",
           "quote": "honan ruvar dem ensam i 13–17 dagar"
@@ -323,13 +326,13 @@
       ]
     },
     {
-      "id": "f29",
+      "id": "f30",
       "topic": "breeding",
-      "sv": "Par vars häckning misslyckats kan försöka igen, ge upp eller hjälpa ett annat par i närheten.",
+      "sv": "Par som misslyckats med häckningen skiljs ofta åt och hjälper besläktade hanar att föda upp ungar.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Par som misslyckats med sin häckning har tre val: att försöka igen, helt överge häckningen eller hjälpa ett annat par som häckar i närheten."
+          "quote": "par som misslyckats med sin häckning skiljs åt och hjälper besläktade hanar med häckningen"
         }
       ]
     },
@@ -359,13 +362,308 @@
       "sv": "Inte rödlistad i Svenska rödlistan 2025."
     }
   ],
-  "text": null,
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Stjärtmesen är en mycket liten och rund fågel med lång stjärt.",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Den häckar i löv- och blandskog med rik undervegetation och ses också i parker och trädgårdar.",
+          "factIds": [
+            "f14",
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Liten, rund kropp och en stjärt som utgör mer än halva längden",
+          "factIds": [
+            "f03",
+            "f01"
+          ]
+        },
+        {
+          "text": "Svart rygg, vinröda eller rödbruna skuldror och vitkantad svart stjärt",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Kort näbb och svart öga med gulorange övre ögonlock",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Nordliga fåglar har helt vitt huvud utan mörka ögonbrynsstreck, hane och hona är lika",
+          "factIds": [
+            "f06",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Flockar lockar ständigt, så stjärtmesar hörs ofta innan de syns.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "De tre huvudlätena är ett ensamt högt pit, en trestavig drill eez-eez-eez och ett skallrande schnuur.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Från flockar som drar förbi hörs ett trestavigt sii-sii-siih omväxlande med ett surrande tserr tserr.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Sången hörs sällan och är lågmäld och kvittrande.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "I Sverige finns stjärtmesen i södra och mellersta delarna, norrut till södra Värmland, Dalarna och Hälsingland, samt längs Norrlandskusten till Norrbotten.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län, mest i november till februari och sällan i juli.",
+          "factIds": [
+            "d03",
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Beståndet uppskattades 2018 till 34 000 par och anses livskraftigt men tros minska.",
+          "factIds": [
+            "f18",
+            "f19"
+          ]
+        },
+        {
+          "text": "Arten är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "d04"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Stjärtmesen klänger vigt i tunna grenar, ofta upp och ned.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Den äter insekter året runt, främst leddjur, och helst ägg och larver av fjärilar.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Vid fågelmatningar på vintern tar den små bitar av nötter, talg, brödsmulor och ost.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden rör den sig i kompakta flockar på tre till 30 fåglar, och kalla vinternätter trycker de ihop sig för att hålla värmen.",
+          "factIds": [
+            "f22",
+            "f23"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Stjärtmes: så känner du igen den lilla runda fågeln med lång stjärt, hur flockarnas läten låter och när på året den rapporteras mest.",
+      "facts": {
+        "size": {
+          "value": "13 till 15 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Long-tailed Tit is a very small, round bird with a long tail.",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "It breeds in deciduous and mixed woodland with rich undergrowth and also turns up in parks and gardens.",
+          "factIds": [
+            "f14",
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Small round body with a tail making up more than half its length",
+          "factIds": [
+            "f03",
+            "f01"
+          ]
+        },
+        {
+          "text": "Black back, wine-red or reddish-brown shoulders and a white-edged black tail",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Short bill and black eye with a yellow-orange upper eyelid",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Northern birds have an all-white head without dark eyebrow stripes, sexes look alike",
+          "factIds": [
+            "f06",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Flocks call constantly, so Long-tailed Tits are often heard before they are seen.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The three main calls are a single high pit, a three-syllable trill eez-eez-eez and a rattling schnuur.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Passing flocks give a three-syllable sii-sii-siih alternating with a buzzing tserr tserr.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "The song is rarely heard and is soft and twittering.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "In Sweden it occurs in the south and centre, north to southern Värmland, Dalarna and Hälsingland, and along the Norrland coast to Norrbotten.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties, most in November to February and rarely in July.",
+          "factIds": [
+            "d03",
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "The Swedish population was estimated at 34 000 pairs in 2018 and is considered viable but thought to be declining.",
+          "factIds": [
+            "f18",
+            "f19"
+          ]
+        },
+        {
+          "text": "It is not on the Swedish Red List 2025.",
+          "factIds": [
+            "d04"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Long-tailed Tit clings nimbly to thin twigs, often upside down.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "It eats insects all year, mainly arthropods, and prefers the eggs and larvae of butterflies and moths.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "At winter feeders it takes small pieces of nuts, suet, breadcrumbs and cheese.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it forms compact flocks of three to 30 birds, which huddle together on cold winter nights to keep warm.",
+          "factIds": [
+            "f22",
+            "f23"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Long-tailed Tit: how to recognise this tiny round bird with a long tail, what its flock calls sound like and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "13 to 15 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
   "generated": {
     "facts": {
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T16:08:41.079475+00:00"
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "df53e94e380462e6"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "df53e94e380462e6"
     }
   },
   "errors": [],
@@ -567,5 +865,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

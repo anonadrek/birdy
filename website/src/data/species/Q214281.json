@@ -1,13 +1,676 @@
 {
   "qid": "Q214281",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Lavskrikan har en mycket yvig gråbrun fjäderdräkt med brunsvart hjässa och roströd övergump och stjärtsidor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess mycket yviga fjäderdräkt är gråbrun med en brunsvart hjässa och roströd övergump, liksom stjärtsidorna."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Vingknogarna är klart roströda på ovansidan, vilket syns tydligast i flykten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även vingknogarna är klart roströda på ovansidan vilket tydligast syns i flykten."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Mellersta stjärtpennparet är askgrått.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Mellersta pennparet på stjärten är askgrått."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den svarta näbben är liten och ganska kort, och fjädrarna över näsborrarna bildar en liten beige tofs vid pannan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den svarta näbben är liten och rätt kort och dess befjädring på näsborrarna bildar en liten beige tuss vid pannan"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Ögon och tarser är svarta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ögon och tars är svarta."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Könen och åldrarna är lika, men honan är något mindre och unga fåglar har något brunare rygg och mer enfärgad dräkt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen och åldrarna är lika men honan är något mindre och juvenila lavskrikor skiljer sig med ett något brunare ryggparti och mer enfärgad fjäderdräkt."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "Lavskrikan är 26–29 centimeter lång och har ett vingspann på 40–46 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en genomsnittlig längd på 26–29 centimeter, ett vingspann på 40–46 centimeter"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "size",
+      "sv": "Den är betydligt mindre än nötskrika och något större än björktrast.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är betydligt mindre än sin släkting nötskrika och något större än björktrast."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Lavskrikan är mestadels tystlåten men har ett brett register, och många läten liknar nötskrikans.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lavskrikan är mestadels tystlåten men den har trots det ett mycket brett register och många läten liknar nötskrikans."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Ibland hörs ett kort jamande ”geä”, ett uppåtböjt ”kui” och ett något tunnare ”kiij”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ibland hörs ett kort, jamande geä, ett uppåtböjt kui samt ett något tunnare kiij."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Upprörd ger den ett skränande, ljudligt ”krääh” eller ”gäääh”, likt nötskrikans men spädare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När fågeln är upprörd kan den låta höra ett skränande, ljudligt krääh eller gäääh; båda lätena har många likheter med nötskrika men lavskrikans läten är spädare."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången är en sällan hörd, jamande, kvittrande och visslande lågmäld sång som bara hörs inom cirka 20 meter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lavskrikans sång utgörs av en sällan hörd, jamande, kvittrande och visslande skuggsång som endast kan höras inom cirka 20 meters avstånd."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Lavskrikan kan härma och har hörts härma 20 fågelarter samt ekorre.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They are also adept vocal mimics, and have been recorded mimicking the vocalizations of 20 bird species as well as Eurasian red squirrels."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Lavskrikan trivs i gammal granskog rik på trädlavar men kan ses i andra typer av barrskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lavskrikan trivs i gammal granskog rik på trädlavar, arten kan dock ses i andra typer av barrskog."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Den föredrar gamla, slutna skogar, oftast äldre än 60 år.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gamla, slutna skogar, oftast äldre än 60 år, brukar föredras av lavskrikan"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige finns lavskrikan från norra Värmland och Dalarna upp till finska gränsen, tätast i norra Norrlands inland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lavskrikans utbredningsområde sträcker sig från norra Värmland och Dalarna upp till finska gränsen, med de tätaste bestånden i norra Norrlands inland."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Arten är mycket sällsynt i ett 20–50 kilometer brett bälte längs Norrlandskusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "arten är mycket sällsynt i ett 20–50 kilometer brett bälte utefter Norrlandskusten"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Lavskrikan har minskat i Sverige under 2000-talet och är rödlistad som nära hotad (NT).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten har minskat kontinuerligt i Sverige under 2000-talet och rödlistas därför som nära hotad (NT)."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2012 till 108 000 individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "År 2012 uppskattade det svenska beståndet till 108 000 individer"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Lavskrikan är Norrbottens landskapsdjur.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lavskrikan är Norrbottens landskapsdjur."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Häckningen inleds från slutet av mars till början av april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Häckningen inleds från slutet av mars - början av april."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Boet fodras med näver och fjädrar från hönsfåglar som tjäder, orre och ripa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "fodras med näver och fjädrar från olika sorters hönsfåglar som tjäder, orre och ripa"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan lägger tre till fem smutsvita ägg med grönaktig ton och grå- och grönbruna fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger tre till fem ägg som är smutsvita med grönaktig anstrykning, tecknade med grå- och grönbruna fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Lavskrikan är allätare och äter mest bär, särskilt blåbär, samt smådäggdjur, insekter, fågelungar och svamp.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lavskrikan är allätare och dess diet består till större delen av bär (mest blåbär), samt mindre däggdjur, insekter, fågelungar, och svamp"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Från juli till första snön hamstrar lavskrikan mat på många olika ställen inför vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från och med juli till den första snön faller, hamstrar lavskrikorna mat som de placerar på många olika ställen inför vintern."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Lavskrikan är orädd och kan efter kort bekantskap låta sig handmatas.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Efter bara en liten stunds bekantskap kan den vilda lavskrikan mycket väl låta sig handmatas likt en tam gråsparv."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Flykten är smidig och tystlåten med glidande inslag, och fåglarna rör sig gärna från träd till träd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flykten är smidig och tystlåten, med glidande inslag och de brukar röra sig från träd till träd."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Den kan påminna om en stor mes när den klänger upp och ned i grenarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den kan ofta påminna om en stor mes då den klänger upp och ned i grenarna."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Lavskrikor lever i små flockar om 2–7 individer.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Siberian jays live in small flocks of 2–7 individuals"
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lavskrikan är en stannfågel som förekommer över större delen av den norra barrskogsregionen från Skandinavien"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i februari och september till november."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Norrbotten och Jämtland."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Lavskrikan är en yvig gråbrun kråkfågel, något större än björktrast, som är stannfågel i Sverige.",
+          "factIds": [
+            "f01",
+            "f08",
+            "s01"
+          ]
+        },
+        {
+          "text": "Den lever i gammal granskog rik på trädlavar, från norra Värmland och Dalarna upp till finska gränsen.",
+          "factIds": [
+            "f14",
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Yvig gråbrun dräkt med brunsvart hjässa och roströd övergump och stjärtsidor",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Roströda vingknogar på ovansidan, tydligast i flykten",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Liten, ganska kort svart näbb med en liten beige tofs vid pannan",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Könen är lika men honan är något mindre, unga fåglar har brunare rygg",
+          "factIds": [
+            "f06"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Lavskrikan är mestadels tystlåten men har ett brett register.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Ibland hörs ett kort jamande ”geä”, ett uppåtböjt ”kui” och ett något tunnare ”kiij”.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Upprörd ger den ett ljudligt ”krääh” eller ”gäääh”, likt nötskrikans men spädare.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Sången är lågmäld och hörs bara inom cirka 20 meter.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Lavskrikan är stannfågel och finns från norra Värmland och Dalarna upp till finska gränsen, tätast i norra Norrlands inland.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "Längs Norrlandskusten är den mycket sällsynt.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i februari och september till november, och andelen av alla fågelrapporter är högst i Norrbotten och Jämtland.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Arten är rödlistad som nära hotad (NT).",
+          "factIds": [
+            "f18",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Lavskrikan är allätare och äter mest bär, särskilt blåbär, men också smådäggdjur, insekter, fågelungar och svamp.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Från juli till första snön hamstrar den mat på många olika ställen inför vintern.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Den lever i små flockar om 2 till 7 individer, är orädd och kan låta sig handmatas.",
+          "factIds": [
+            "f29",
+            "f26"
+          ]
+        },
+        {
+          "text": "I grenarna klänger den upp och ned som en stor mes.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Lavskrika: så känner du igen den yviga gråbruna kråkfågeln, hur dess läten och sång låter, var den lever och när den brukar ses.",
+      "facts": {
+        "size": {
+          "value": "26 till 29 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Siberian Jay is a fluffy grey-brown member of the crow family, slightly larger than a Fieldfare, and a resident bird in Sweden.",
+          "factIds": [
+            "f01",
+            "f08",
+            "s01"
+          ]
+        },
+        {
+          "text": "It lives in old spruce forest rich in tree lichens, from northern Värmland and Dalarna up to the Finnish border.",
+          "factIds": [
+            "f14",
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Fluffy grey-brown plumage with a brownish-black crown and rusty-red rump and tail sides",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Rusty-red wing bends on the upperside, clearest in flight",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Small, fairly short black bill with a little buff tuft at the forehead",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Sexes alike, but the female is slightly smaller and young birds have a browner back",
+          "factIds": [
+            "f06"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The Siberian Jay is mostly quiet but has a wide repertoire.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Sometimes a short mewing \"geä\", a rising \"kui\" and a slightly thinner \"kiij\" are heard.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "When agitated it gives a loud \"krääh\" or \"gäääh\", like the Jay's but weaker.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The song is soft and can only be heard within about 20 metres.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Siberian Jay is resident and occurs from northern Värmland and Dalarna up to the Finnish border, most densely in the inland of northern Norrland.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "Along the Norrland coast it is very rare.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "It is reported most in February and from September to November, and its share of all bird reports is highest in Norrbotten and Jämtland.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "It is red-listed as Near Threatened (NT).",
+          "factIds": [
+            "f18",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Siberian Jay is omnivorous and eats mostly berries, especially bilberries, as well as small mammals, insects, nestlings and fungi.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "From July until the first snow it stores food in many different places for the winter.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It lives in small flocks of 2 to 7 birds, is fearless and can be fed by hand.",
+          "factIds": [
+            "f29",
+            "f26"
+          ]
+        },
+        {
+          "text": "In the branches it clambers up and down like a large tit.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Siberian Jay: how to recognise this fluffy grey-brown member of the crow family, what its calls and song sound like, and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "26 to 29 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "b3d9db6c70b5efec"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:52:09.698207+00:00",
+      "factsHash": "b3d9db6c70b5efec"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "lavskrika",
@@ -185,5 +848,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

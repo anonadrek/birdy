@@ -5,9 +5,373 @@
   "review": {
     "wave": 2
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Skärpiplärkan är en rätt kraftig piplärka med en kroppslängd på 15,5–17 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skärpiplärkan är en rätt kraftig piplärka med en kroppslängd på 15,5–17 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Skärpiplärkan väger ungefär 20–30 gram.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Strandpieper wiegen etwa 20 bis 30 Gramm"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "size",
+      "sv": "Vingbredden är 23–28 cm.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Flügelspannweite beträgt 23 bis 28 cm."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den är mestadels mörkbrun på ovansidan och kraftigt streckad mattgul undertill.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "mestadels mörkbrun på ovansidan och kraftigt streckat mattgul undertill"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Skärpiplärkan är typiskt mörkt färgad med suddig teckning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är dock typiskt mörkt färgad med suddig teckning."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Den har mörka ben, gråvita stjärtsidor och en ganska lång mörk näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har mörka ben, gråvita stjärtsidor och en ganska lång mörk näbb."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Den har en ljus ögonring.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "there is a pale eye-ring"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "De mörka, inte vita, yttre stjärtpennorna skiljer skärpiplärkan från alla dess släktingar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The European rock pipit's dusky, rather than white, outer tail feathers are also a distinction from all its relatives."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Vissa nordliga fåglar kan på sommaren bli rosaaktiga på undersidan och blekare på huvudet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vissa nordliga fåglar kan bli rosaaktiga på undersidan och blekare på huvudet på sommaren"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Könen är lika; hanar är i genomsnitt något ljusare men överlappningen är fullständig.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The sexes are alike; although males average slightly brighter than females, the overlap is complete"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Unga fåglar liknar de vuxna men kan ibland vara brunare och mer streckade ovan.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Immature birds resemble the adult, although they may sometimes be browner and more streaked above"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Locklätet liknar ängspiplärkans \"viisst\" men är vassare, mer explosivt och yttras glesare och mer enstaka.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skärpiplärkans lockläte liknar ängspiplärkans, \"viisst\", men är vassare, mer explosivt och yttrat glesare och mer enstaka."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sången liknar ängspiplärkans men har en spetsigare och mer metallisk klang.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även sången liknar ängspiplärkans, men med en spetsigare och mer metallisk klang."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Sången är en serie om cirka tjugo klingande toner följd av en stigande serie tunna läten och avslutas med en kort drill.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "sequence of about twenty tinkling cheepa notes followed by a rising series of thin gee calls, and finishing with a short trill"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "behaviour",
+      "sv": "Sången framförs ofta i en klättrande och sedan dalande sångflykt med stela vingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den utförs ofta i typiskt klättrande och sedan dalande sångflykt med stela vingar."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Skärpiplärkan förekommer i klippmiljöer vid kusten, ofta på skärgårdsöar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skärpiplärkan förekommer i klippmiljöer vid kusten, ofta på skärgårdsöar."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "I övervintringsområdena håller den sig främst vid flacka kuster med öppna sand- och musselstränder.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Dort halten sie sich vor allem an flachen Küsten mit offenen Sand- und Muschelstränden auf."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Den flyttar söderut i september–oktober och återvänder i mars–april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den flyttar söderut i september-oktober och återvänder i mars–april."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Den svenska populationen uppskattas till 3 400–6 000 häckande individer eller cirka 4 600 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skärpiplärkan har ett relativt liten population i Sverige uppskattad till mellan 3 400 och 6 000 häckande individer eller cirka 4600 par."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Norge hyser hälften av världspopulationen och Sverige två procent.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Norge hyser hälften av världspopulationen och Sverige två procent av denna art."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Underarten littoralis häckar i Fennoskandien och nordvästra Ryssland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Anthus petrosus littoralis – häckar i Fennoskandia och nordvästra Ryssland"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Äggläggningen börjar från mitten av maj i södra Skandinavien och från juni i norr.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "from mid-May in southern Scandinavia, and from June in the north"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Boet är enkelt och läggs på marken, gömt bland stenar eller grästuvor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet är enkelt och läggs på marken, gömt bland stenar eller grästuvor."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Den lägger i genomsnitt tre till fem ägg som honan ruvar i cirka två veckor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger i genomsnitt tre till fem ägg som honan ruvar i cirka två veckor."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Den lever främst på små ryggradslösa djur som plockas från stenblock eller i grunt vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "livnär sig denna piplärka främst på små ryggradslösa djur som plockas från stenblock eller i grunt vatten"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Födan omfattar snäckor, maskar, små kräftdjur, flugor och skalbaggar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Food items include snails, worms, small crustaceans, flies and beetles."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Uppskrämd flyger den en ganska kort sträcka nära marken innan den landar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "If startled, it flies a fairly short distance, close to the ground, before it alights"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Skärpiplärkor är oftast ensamma och bildar bara ibland små flockar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Eurasian rock pipits are usually solitary, only occasionally forming small flocks."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Hanar kan gå in i ett angränsande revir för att hjälpa revirägaren att driva bort en inkräktare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det händer att hanar kommer in i ett angränsande revir för att hjälpa dess revirägare att avvärja en inkräktare."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "populationerna i Skandinavien, Baltikum och Ryssland flyttar söderut på vintern"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i september till november."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Halland."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "fd5996b1ce0985fd"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "skarpiplarka",
@@ -193,7 +557,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

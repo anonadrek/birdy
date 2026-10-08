@@ -1,13 +1,698 @@
 {
   "qid": "Q25376",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
-    "wave": 2
+    "wave": 2,
+    "audioStruckSources": [
+      "https://commons.wikimedia.org/wiki/File:Fulica_atra_-_Eurasian_Coot_XC432890.mp3"
+    ]
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Den vuxna sothönan är skiffersvart med vitaktig bakkant på vingarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta sothönan är skiffersvart med vitaktiga bakre kant på vingarna."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Näbben är kort och tjock, vitaktig med rosa ton.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den korta och tjocka näbben är vitaktig med en rosa ton"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Näbbryggen fortsätter upp på pannan och bildar en naken, kullrig pannplåt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den har en näbbrygg som sträcker sig upp på pannan och där utvidgar sig till en naken, kullrig plåt"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Iris är röd och benen är kraftiga och gröna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Iris är röd. Benen är kraftiga och gröna."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Sothönan saknar simhud mellan tårna och har i stället simflikar, liksom doppingarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten har inte simhud mellan de smala tårna utan istället har den, precis som doppingarna, simflikar."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Den vita kanten längs armvingens bakkant syns i flykten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "ein Merkmal, das im Flug erkennbar ist – am Hinterrand des Armflügels ein weißer Rand"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Sothönan har en avrundad kroppsform med ett litet runt huvud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta sothönan har en avrundad kroppsform med ett litet runt huvud."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "size",
+      "sv": "Den vuxna sothönan är 36–42 centimeter lång och har ett vingspann på 70–80 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som adult mäter den 36–42 centimeter lång"
+        },
+        {
+          "article": "sv",
+          "quote": "Den har ett vingspann på 70–80 centimeter"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Hanar väger 750–900 gram och honor är cirka 100 gram lättare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "hanar väger mellan 750 och 900 gram, honor är cirka 100 gram lättare"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Könen är lika i dräkten, men hanen har större pannplåt än honan.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The sexes are similar in appearance."
+        },
+        {
+          "article": "sv",
+          "quote": "Hanen har större pannplåt än honan."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Ungfågeln är gråbrun med ljusare huvudsida och bröst, saknar pannplåt och har mörk iris.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen är gråbruna med ljusare huvudsida och bröst, saknar näbbplåt och har mörk iris."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "sex_age",
+      "sv": "Dunungarna har rött huvud med ett litet blått parti ovanför ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dunungarna har rött huvud med ett litet blått parti ovanför ögat."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sothönan är ljudlig med spruckna \"köck\" och explosiva, spetsiga \"pitts!\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "med spruckna \"köck\", explosiva och spetsiga \"pitts!\""
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Under vårnätter hörs trumpetande \"pä pä-äu\", ofta från kringflygande fåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under vårnätter hörs trumpetande \"pä pä-äu\", ofta från kringflygande fåglar."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Det typiska kraxande men något melodiska \"krök\" kommer från honan.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der typische Blässhuhnruf, ein krächzendes, aber etwas melodisches krök, stammt vom Weibchen."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Hanens läten är tonlösa och smackande och liknas vid smällen från en champagnekork.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Rufe des Männchens sind hingegen stimmloser und schnalzend und werden recht treffend mit dem Knallen eines Sektkorkens verglichen."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Den häckar i grunda dammar, sjöar, våtmarker, långsamt flytande vattendrag och vid kusten med mycket vattenväxter och vass.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess häckningsbiotop utgörs av grunda dammar, sjöar, våtmarker, långsamt flytande vattendrag och utmed kusten där det finns mycket vattenväxter och vassbälten."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Sothönan finns ofta i parker och trädgårdar med tillgång till vatten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "often being found in parks and gardens with access to water"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige är den vanlig i vegetationsrika sjöar och havsvikar i Götaland och Svealand samt längs södra Norrlandskusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är den vanlig i vegetationsrika sjöar och havsvikar i Götaland och Svealand samt längs södra Norrlandskusten."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Många svenska sothönor drar sig bara undan isen och övervintrar längre söderut i hamnar, medan andra flyttar till Västeuropa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "drar sig då ofta bara undan isen och övervintrar längre söderut i hamnar, medan andra flyttar till Västeuropa"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "På vintern förekommer den så långt norrut som längs norska kusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den förekommer även så långt norrut som utmed norska kusten under vintern."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Boet är en flytande plattform av fjolårsvass i vasskanten, ofta ganska synligt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det flytande plattformsliknande boet består av fjolårsvass och placeras i vasskanten, ofta ganska synligt."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan lägger i genomsnitt sex till tio ägg som ruvas av båda föräldrarna i 21–24 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger i genomsnitt sex till tio ägg"
+        },
+        {
+          "article": "sv",
+          "quote": "som ruvas av båda föräldrarna i 21–24 dagar"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Ungarna kan flyga efter 55–60 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "kan flyga efter 55–60 dagar"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Den äter vattenväxter, alger, gräs samt smådjur som insekter och musslor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den livnär sig både av växtdelar, som vattenväxter och alger när den dyker, gräs och liknande på land, samt smådjur som exempelvis insekter och musslor."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Den nickar med huvudet när den simmar, vilket ger ett knyckigt intryck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den nickar med huvudet när den simmar vilket ger den ett knyckigt intryck"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Den gör ett litet hopp innan den dyker och stannar oftast bara kort under ytan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den gör ett litet hopp precis innan den dyker och stannar i regel endast korta perioder under ytan."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "För att lyfta springer den med trippande steg på vattenytan medan den slår med vingarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När den ska lyfta från vattnet måste den springa med trippande steg på vattenytan, samtidigt som den slår med vingarna"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden kan sothönor bilda stora flockar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "During the non-breeding season they may form large flocks"
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "På våren hävdar hanarna revir och det kan bli aggressiva strider mellan hanar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På våren hävdar hanarna revir och aggressiva strider kan uppstår mellan hanar."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Merparten av den svenska populationen är flyttfåglar, men drar sig då ofta bara undan isen och övervintrar längre söderut i hamnar"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Stockholm, Skåne och Södermanland."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Sothönan är en skiffersvart fågel med kort, ljus näbb och en naken, kullrig pannplåt.",
+          "factIds": [
+            "f01",
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Den häckar i grunda sjöar, dammar och våtmarker med mycket vass och syns ofta i parker med vatten.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Skiffersvart med avrundad kropp, litet runt huvud och vit vingbakkant i flykten",
+          "factIds": [
+            "f01",
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Kort, tjock näbb, vitaktig med rosa ton, som fortsätter i en naken pannplåt",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Röd iris och kraftiga gröna ben med simflikar i stället för simhud",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Hanen har större pannplåt än honan, ungfågeln är gråbrun utan pannplåt",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sothönan är ljudlig med spruckna \"köck\" och explosiva, spetsiga \"pitts\".",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Honan står för det kraxande men något melodiska \"krök\", medan hanens läten är tonlösa och smackande, som smällen från en champagnekork.",
+          "factIds": [
+            "f15",
+            "f16"
+          ]
+        },
+        {
+          "text": "Under vårnätter hörs trumpetande \"pä pä-äu\", ofta från kringflygande fåglar.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Sothönan är delvis flyttfågel och häckar i Sverige.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Den är vanlig i vegetationsrika sjöar och havsvikar i Götaland och Svealand samt längs södra Norrlandskusten.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Många drar sig bara undan isen och övervintrar i hamnar längre söderut, medan andra flyttar till Västeuropa.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt, och andelen av alla fågelrapporter är högst i Stockholm, Skåne och Södermanland.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den äter vattenväxter, alger, gräs och smådjur som insekter och musslor.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "När den simmar nickar den med huvudet, och före ett dyk gör den ett litet hopp och stannar oftast bara kort under ytan.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "För att lyfta springer den med trippande steg på vattenytan medan den slår med vingarna.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden kan sothönor bilda stora flockar.",
+          "factIds": [
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Sothöna: så känner du igen den skiffersvarta fågeln med ljus, kort näbb och pannplåt, hur lätena låter och när och var den syns.",
+      "facts": {
+        "size": {
+          "value": "36 till 42 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Coot is a slate-black bird with a short, pale bill and a bare, rounded frontal shield.",
+          "factIds": [
+            "f01",
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "It breeds on shallow lakes, ponds and wetlands with plenty of reeds and is often found in parks with water.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Slate-black with a rounded body, small round head and white trailing edge in flight",
+          "factIds": [
+            "f01",
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Short, thick bill, whitish with a pink tone, running up into a bare frontal shield",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Red iris and sturdy green legs with lobed toes instead of webbed feet",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Male has a larger frontal shield than female, juvenile is greyish brown without a shield",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The Eurasian Coot is noisy, giving cracked \"köck\" notes and explosive, sharp \"pitts\".",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The typical croaking but somewhat melodic \"krök\" comes from the female, while the male's calls are toneless and smacking, like a champagne cork popping.",
+          "factIds": [
+            "f15",
+            "f16"
+          ]
+        },
+        {
+          "text": "On spring nights a trumpeting \"pä pä-äu\" is heard, often from birds flying around.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Eurasian Coot is a partial migrant that breeds in Sweden.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "It is common on lakes and sea bays rich in vegetation in Götaland and Svealand and along the southern Norrland coast.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Many simply move away from the ice and winter in harbours further south, while others migrate to Western Europe.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "It is reported all year, and its share of all bird reports is highest in Stockholm, Skåne and Södermanland.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats water plants, algae, grass and small animals such as insects and mussels.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It nods its head as it swims, and before diving it makes a small jump and usually stays under only briefly.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "To take off it runs with pattering steps across the water while beating its wings.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Outside the breeding season coots can gather in large flocks.",
+          "factIds": [
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Eurasian Coot: how to recognise this slate-black bird with its pale bill and frontal shield, what its calls sound like and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "36 to 42 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "9d45ed4b81cc6a04"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "9d45ed4b81cc6a04"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "sothona",
@@ -53,13 +738,14 @@
   ],
   "audio": {
     "file": "Q25376/voice.mp3",
-    "durationSec": 20,
-    "trimmed": true,
-    "author": "Joost van Bruggen",
+    "durationSec": 5,
+    "trimmed": false,
+    "author": "Marie-Lan Taÿ Pamart",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fulica_atra_-_Eurasian_Coot_XC432890.mp3",
-    "sha256": "2aa889e4d7cb564b5be3f49f274678d44631c90ca3f3b095f4fa74c54c59fd38"
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fulica_atra_-_Eurasian_Coot_XC519437.mp3",
+    "sha256": "1e0ff05d973a01b446a08df1e92fba3a555745164ddf860010db10262c30cb1f",
+    "mp3Sha256": "2d8650a822f30dd5ecc81121f00ab0dd40a5af48e1067b2d4e9f5af35627f748"
   },
   "wikipedia": {
     "sv": {
@@ -205,5 +891,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

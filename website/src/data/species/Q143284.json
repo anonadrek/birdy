@@ -1,13 +1,679 @@
 {
   "qid": "Q143284",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Spillkråkans dräkt är nästan helt svart.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dräkten är nästan helt och hållet svart."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ögonen är ljusa och halsen är relativt lång.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ögonen är ljusa och halsen relativt lång."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Näbben är kraftig och benvit.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är kraftig och benvit."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den 5–6 cm långa näbben är bred vid basen och gråvit med tydlig mörkgrå spets.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der an der Schnabelbasis breite, etwa 5–6 cm lange Schnabel ist grauweiß mit einer deutlichen dunkelgrauen Spitze."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Hos en sittande fågel syns den långa, helsvarta och tydligt tvådelade stödstjärten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Beim sitzenden Specht ist der lange, zeichnungslos schwarze, deutlich zweigeteilte Stützschwanz auffallend."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Den är nästan lika stor som en råka men smalare och har betydligt längre stjärt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Er erreicht fast die Größe einer Saatkrähe, ist aber schlanker und bedeutend langschwänziger als diese."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Den vuxna hanen har röd panna och hjässa, medan honan redan från juvenil dräkt bara är röd i nacken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen har röd panna och hjässa, medan honan ända från juvenil dräkt endast är röd i nacken."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Ungfågeln liknar de vuxna men är mindre glansig, med mattare röd hjässa och ljusare grå strupe och näbb.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The juvenile black woodpecker is similar but is less glossy, with a duller red crown and a paler grey throat and bill"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Unga spillkråkor har elfenbensfärgad näbb och svart iris.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Schnabel der Jungspechte ist elfenbeinfarben, die Iris ist schwarz."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Spillkråkan är Europas största hackspett med en längd av 40–57 cm och ett vingspann på 67–73 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Spillkråkan är den största av Europas hackspettar med en längd av 40–57 cm och ett vingspann på 67–73 cm."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Trumningen hörs på våren, är kraftfull och rullande i mörk ton och kan höras upp till fyra kilometer bort.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Trumningen, som förekommer på våren, är kraftfull och rullande i en mörk ton och kan höras upp till 4 kilometers håll."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången hörs på våren och är ett starkt, genomträngande och gällt klyi-klyi-klyi i snabb följd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även sången hörs om våren och utgörs av ett starkt, genomträngande och gällt klyi-klyi-klyi"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Flyktlätet är ett skrikigt och ihärdigt kryck-kryck-kryck, krri-krri-krri eller prry-prry-prry med rullande r.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flyktlätet är ett skrikigt och ihärdigt kryck-kryck-kryck…, krri-krri-krri eller prry-prry-prry-prry med rullande r."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Efter landning hörs ofta ett ljudligt, visslande och utdraget kly-ääää eller kliiyy med betoning på andra stavelsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Efter en landning utstöter den ofta ett ljudligt, visslande och utdraget lockläte: kly-ääää, plyyy, kly-äh eller kliiyy med betoning på andra stavelsen."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Spillkråkan kan häcka i barr-, bland- och lövskog men är vanligast i blandskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Spillkråkan kan häcka i såväl barr-, bland- som lövskog, men är vanligast i blandskogar."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Den föredrar högstammig, talldominerad gammelskog i bergig terräng.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den föredrar högstammig, talldominerad gammelskog i bergig terräng"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Spillkråkan förekommer sparsamt, lokalt tämligen allmänt, i hela Sverige utom i fjälltrakterna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Spillkråkan förekommer sparsamt, lokalt tämligen allmänt, i hela Sverige, utom i fjälltrakterna."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2012 till 29 000 vuxna individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Beståndet uppskattades 2012 till 29 000 vuxna individer"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Från 2025 har den svenska hotstatusen ändrats från nära hotad till livskraftig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från och med 2025 har hotstatusen ändrats från nära hotad (NT) till livskraftig (LC)."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Som boträd väljs oftast ett relativt fristående träd av asp eller tall.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som boträd väljer den oftast ett relativt fristående träd av asp eller tall."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Bohålet hackas ut cirka tio meter över marken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet hackas ut cirka 10 meter över marken"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "I Sverige sker äggläggningen normalt i slutet av april eller första halvan av maj.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige sker normalt äggläggningen i slutet av april eller första halvan av maj."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Kullen består av 3–6 ägg som läggs direkt på den finputsade botten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen, 3–6 stycken, läggs direkt på den finputsade bottnen."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Ungarna stannar i boet tills de kan flyga efter 27 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna håller sig i boet tills de efter 27 dygn kan flyga"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Födan består mest av myror, särskilt hästmyror som den hackar fram ur angripna träd, stubbar eller liggande stammar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Födan består mest av myror, i synnerhet hästmyror som den hackar fram ur angripna träd, stubbar eller liggande stammar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "På sensommaren kan den även äta körsbär och blåbär.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På sensommaren kan den även äta körsbär och blåbär."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "På vintern öppnar den även myrstackar för att komma åt myrorna.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "im Winter werden auch Ameisenhaufen ausgebeutet"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Flykten är inte bågig som hos andra hackspettar utan rak och ser ostadig ut med flaxande vingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flykten är inte bågig, som hos andra hackspettar utan rak och förefaller ostadig med flaxande vingar."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Gamla spillkråkebon tas gärna över av pärluggla, skogsduva, knipa och storskrake.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gamla spillkråkebon övertas gärna av andra fåglar som pärluggla, skogsduva, knipa och storskrake."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten förekommer i Palearktis och är huvudsakligen stannfågel"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Spillkråkan är Europas största hackspett, nästan helt svart och 40 till 57 cm lång.",
+          "factIds": [
+            "f10",
+            "f01"
+          ]
+        },
+        {
+          "text": "Den häckar i skog och förekommer i hela Sverige utom i fjälltrakterna.",
+          "factIds": [
+            "f15",
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Nästan helt svart dräkt med ljusa ögon och relativt lång hals",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Kraftig, benvit näbb, bred vid basen och med tydlig mörkgrå spets",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Nästan lika stor som en råka men smalare och med betydligt längre stjärt",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Hanen har röd panna och hjässa, honan är bara röd i nacken",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången hörs på våren och är ett starkt, gällt klyi-klyi-klyi i snabb följd.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "I flykten låter den med ett skrikigt och ihärdigt kryck-kryck-kryck eller krri-krri-krri med rullande r.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Efter landning hörs ofta ett ljudligt, visslande och utdraget kliiyy.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Trumningen på våren är kraftfull och rullande och kan höras upp till fyra kilometer bort.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Spillkråkan är stannfågel och förekommer sparsamt, lokalt tämligen allmänt, i hela Sverige utom i fjälltrakterna.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Den häckar i barr-, bland- och lövskog men är vanligast i blandskog och föredrar högstammig, talldominerad gammelskog.",
+          "factIds": [
+            "f15",
+            "f16"
+          ]
+        },
+        {
+          "text": "Från 2025 har hotstatusen ändrats från nära hotad till livskraftig.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan består mest av myror, särskilt hästmyror som den hackar fram ur angripna träd, stubbar och liggande stammar.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "På vintern öppnar den även myrstackar, och på sensommaren kan den äta körsbär och blåbär.",
+          "factIds": [
+            "f27",
+            "f26"
+          ]
+        },
+        {
+          "text": "Flykten är rak och ser ostadig ut med flaxande vingar, inte bågig som hos andra hackspettar.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Bohålet hackas ut cirka tio meter över marken, oftast i en relativt fristående asp eller tall.",
+          "factIds": [
+            "f21",
+            "f20"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Spillkråka: så känner du igen den svarta hackspetten på dräkt, näbb och flykt, hur sången och lätena låter och när den ses.",
+      "facts": {
+        "size": {
+          "value": "40 till 57 cm",
+          "factIds": [
+            "f10"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Black Woodpecker is Europe's largest woodpecker, almost entirely black and 40 to 57 cm long.",
+          "factIds": [
+            "f10",
+            "f01"
+          ]
+        },
+        {
+          "text": "It breeds in forest and occurs throughout Sweden except in the mountains.",
+          "factIds": [
+            "f15",
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Almost entirely black plumage with pale eyes and a fairly long neck",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Strong, bone-white bill, broad at the base with a clear dark grey tip",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Almost as big as a Rook but slimmer, with a much longer tail",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Male has a red forehead and crown, female is red only on the nape",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is heard in spring and is a loud, shrill klyi-klyi-klyi in quick succession.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "In flight it gives a harsh, persistent kryck-kryck-kryck or krri-krri-krri with a rolling r.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "After landing a loud, whistling, drawn-out kliiyy is often heard.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "The spring drumming is powerful and rolling and can be heard up to four kilometres away.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Black Woodpecker is resident and occurs sparsely, locally fairly commonly, throughout Sweden except in the mountains.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "It is reported all year round and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "It breeds in coniferous, mixed and deciduous forest but is commonest in mixed forest, preferring tall, pine-dominated old forest.",
+          "factIds": [
+            "f15",
+            "f16"
+          ]
+        },
+        {
+          "text": "From 2025 its Swedish threat status changed from near threatened to least concern.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mostly on ants, especially carpenter ants, which it digs out of infested trees, stumps and fallen trunks.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "In winter it also opens anthills, and in late summer it may eat cherries and bilberries.",
+          "factIds": [
+            "f27",
+            "f26"
+          ]
+        },
+        {
+          "text": "Its flight is straight and looks unsteady with flapping wings, not undulating like other woodpeckers.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "The nest hole is dug about ten metres above the ground, usually in a fairly isolated aspen or pine.",
+          "factIds": [
+            "f21",
+            "f20"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Black Woodpecker: how to recognise this black woodpecker by plumage, bill and flight, what its song and calls sound like, and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "40 to 57 cm",
+          "factIds": [
+            "f10"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "a906c07132bb8636"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "a906c07132bb8636"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "spillkraka",
@@ -205,5 +871,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

@@ -1,13 +1,659 @@
 {
   "qid": "Q201831",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Strömstaren är cirka 15–18 centimeter lång och har ett vingspann på 26–30 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Strömstaren blir cirka 15–18 centimeter lång, med ett vingspann på 26–30 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "På håll ser den vuxna fågeln helsvart ut, förutom bröst och haka.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fjäderdräkten hos den adulta fågeln ser, förutom bröst och haka, helsvart ut på håll"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Bröst och haka är lysande vita.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bröst och haka är lysande vita."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Hos nominatformen är buken närmast svart, medan brittiska och centraleuropeiska fåglar har en kastanjebrun ton på buken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Buken är hos nominatformen närmast svart medan brittiska och centraleuropeiska fåglar har en kastanjebrun ton på buken"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Ben och iris är bruna och näbben är nästan svart.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ben och iris är bruna medan näbben är nästan svart."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Vuxna fåglar ser tjocka och kortbenta ut på grund av den tjocka fjäderdräkten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Adulta fåglar ser tjocka och kortbenta ut på grund av den tjocka fjäderdräkten."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Vingarna är korta och kupiga, och stjärten är kort med rak bakkant.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingarna är korta och kupiga, stjärten kort med rak bakkant."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "De långa klorna är påfallande ljusa, nästan vita.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die langen Krallen sind auffallend hell, fast weiß."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungfåglar är grå med vattring och har bara rent vitt på hakan, medan bröst och buk är vattrat ljusgrå.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenila fåglar är grå med vattring och har bara rent vitt på hakan medan bröst och buk är vattrat ljusgrå"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Sången hörs ofta mitt i vintern och är en lugnt framförd ramsa av lågmälda, ganska skrovliga och gnisslande toner.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången hörs ofta mitt i vintern och är en lugnt framförd ramsa av lågmälda toner. Dessa är ganska skrovliga och gnisslande."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Locklätet är kort och strävt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Locklätet är kort och strävt."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "I flykten ropar den ett gällt \"zil, zil, zil\".",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "calling a shrill zil, zil, zil"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "habitat",
+      "sv": "Strömstaren vistas ständigt vid vatten, helst strömmande vattendrag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Strömstaren vistas ständigt vid vatten, företrädesvis strömmande vattendrag"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Häckningsvattnen måste ha stenig eller grusig botten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Gewässer müssen einen steinigen oder kiesigen Untergrund"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Vid långsamt flytande vattendrag, sjöar och kanaler häckar den sällan men ses oftare där på vintern.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "An langsam fließenden Strömen sowie an Seen oder Kanälen erscheint die Wasseramsel nur selten als Brutvogel; häufiger ist sie im Winter in solchen Biotopen anzutreffen."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige häckar den i större delen av landet, tätast i norra halvan och särskilt vid vattendrag på fjällsluttningarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar den i större delar av landet men med en högre koncentration i norra halvan av landet, särskilt vid vattendrag på fjällens sluttningar."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "På vintern förekommer den spridd över hela Sverige, ibland ända ute i kustbandet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under vintern påträffas den spridd över hela landet, ibland ända ute i kustbandet."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet anses livskraftigt utan tecken på betydande förändringar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även i Sverige anses beståndet vara livskraftigt och det finns inga tecken på betydande populationsförändringar."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "behaviour",
+      "sv": "Flykten är snabb och rak, utan bågar eller glid, med mycket snabba vingslag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flykten är snabb och rak, utan bågar eller glid, och med mycket snabba vingslag."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "behaviour",
+      "sv": "Den simmar och dyker mycket skickligt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "simmar och dyker mycket skickligt"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Den sitter ofta på stenar i forsande vatten och niar ryckigt med den korta stjärten uppåtriktad.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It often perches bobbing spasmodically with its short tail lifted up on the rocks around which the water swirls and tumbles."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "food",
+      "sv": "I vattendraget söker den efter nattsländelarver och andra småkryp.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I vattendraget kan strömstaren springa på bottnen i jakt på nattsländelarver och andra småkryp."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "En favoritföda är det lilla kräftdjuret Gammarus, en märlkräfta.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "A favourite food is the small crustacean Gammarus, an amphipod shrimp."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Boet byggs vid strömmande vatten i stenklyftor, under broar och liknande platser.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet byggs vid strömmande vatten i stenklyftor, under broar och liknande."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Boet är förhållandevis stort och klotformat med en liten cirkelformad öppning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet är förhållandevis stort, klotformat med en liten cirkelformad öppning."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "lookalike",
+      "sv": "Där utbredningen överlappar med brun strömstare i öster lever brun strömstare ofta vid långsammare och bredare vattendrag.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "in diesen Gebieten besiedelt C. pallasii häufig langsamer fließende und breitere Gewässer als C. cinclus."
+        }
+      ],
+      "other": {
+        "scientific": "Cinclus pallasii"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under vintern påträffas den spridd över hela landet, ibland ända ute i kustbandet."
+        },
+        {
+          "article": "de",
+          "quote": "Skandinavische, nordrussische und kaukasische Wasseramseln verlassen regelmäßig ihr Brutgebiet"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december till februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i april, augusti och september."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Jämtland, Västernorrland och Dalarna."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Strömstaren är en tätting som ständigt håller till vid vatten, helst strömmande vattendrag.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "På håll ser den helsvart ut, med lysande vit haka och vitt bröst.",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Helsvart på håll, med lysande vit haka och vitt bröst",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Tjock och kortbent, med korta kupiga vingar och kort stjärt med rak bakkant",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Sitter ofta på stenar i forsen och niar ryckigt med stjärten uppåt",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Ungfåglar är vattrat grå och har rent vitt bara på hakan",
+          "factIds": [
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången hörs ofta mitt i vintern och är en lugnt framförd ramsa av lågmälda, ganska skrovliga och gnisslande toner.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Locklätet är kort och strävt, och i flykten ropar den ett gällt \"zil, zil, zil\".",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Strömstaren är delvis flyttfågel och häckar i större delen av Sverige, tätast i norra halvan och särskilt vid vattendrag på fjällsluttningarna.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "På vintern finns den spridd över hela landet, ibland ända ute i kustbandet.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i december till februari och sällan i april, augusti och september.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Jämtland, Västernorrland och Dalarna.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "I vattendraget söker den efter nattsländelarver och andra småkryp, och en favoritföda är märlkräftan Gammarus.",
+          "factIds": [
+            "f23",
+            "f24"
+          ]
+        },
+        {
+          "text": "Den simmar och dyker mycket skickligt.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Flykten är snabb och rak, utan bågar eller glid, med mycket snabba vingslag.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Boet är förhållandevis stort och klotformat med en liten rund öppning och byggs i stenklyftor, under broar och liknande platser vid strömmande vatten.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Cinclus pallasii",
+          "text": [
+            {
+              "text": "Där utbredningen överlappar i öster lever brun strömstare ofta vid långsammare och bredare vattendrag.",
+              "factIds": [
+                "f28"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Strömstare: så känner du igen den svartvita fågeln vid strömmande vatten, hur sången och locklätet låter och när på året den ses.",
+      "facts": {
+        "size": {
+          "value": "Cirka 15 till 18 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The White-throated Dipper is a songbird that always stays close to water, preferably flowing streams.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "At a distance it looks all black, with a bright white chin and breast.",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "All black at a distance, with a bright white chin and breast",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Plump and short-legged, with short rounded wings and a short square-ended tail",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Often perches on rocks in rapids, bobbing jerkily with its tail cocked",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Young birds are mottled grey with clean white only on the chin",
+          "factIds": [
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is often heard in midwinter and is a calmly delivered string of quiet, rather harsh and squeaky notes.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "The call is short and rasping, and in flight it gives a shrill \"zil, zil, zil\".",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The White-throated Dipper is a partial migrant that breeds across most of Sweden, most densely in the northern half and especially along streams on mountain slopes.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "In winter it is spread across the whole country, sometimes right out on the coast.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "It is reported most in December to February and rarely in April, August and September.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Jämtland, Västernorrland and Dalarna.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "In the stream it searches for caddisfly larvae and other small invertebrates, and a favourite food is the small crustacean Gammarus.",
+          "factIds": [
+            "f23",
+            "f24"
+          ]
+        },
+        {
+          "text": "It swims and dives very skilfully.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Its flight is fast and straight, without undulations or glides, with very rapid wingbeats.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "The fairly large, ball-shaped nest has a small round entrance and is built in rock crevices, under bridges and similar spots by flowing water.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Cinclus pallasii",
+          "text": [
+            {
+              "text": "Where their ranges overlap in the east, Brown Dipper often lives along slower and broader streams.",
+              "factIds": [
+                "f28"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "White-throated Dipper: how to recognise this dark bird of flowing streams, what its song and calls sound like and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "About 15 to 18 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "a0dcf10bfa0837e7"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "a0dcf10bfa0837e7"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "stromstare",
@@ -197,5 +843,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }
