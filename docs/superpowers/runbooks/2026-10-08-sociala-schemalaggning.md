@@ -1,0 +1,94 @@
+# See the song: schemaläggning på Facebook, Instagram, YouTube och TikTok
+
+Runbook för de 30 dagliga videorna (9 oktober till 7 november 2026, kl. 08.00 Stockholmstid) och för nästa serie. Skriven 2026-10-08 efter att de första 50 inläggen schemalagts via Chrome i Albins inloggade webbläsare.
+
+## Läget 2026-10-08 kväll
+
+| Kanal | Verktyg | Schemalagt | Kvar |
+|---|---|---|---|
+| Facebook + Instagram | Meta Business Suite (en reel, egen text per kanal) | 9 till 28 okt (20) | 29 okt till 7 nov (10) |
+| YouTube Shorts | YouTube Studio | 9 till 18 okt (10) | 19 okt till 7 nov (20) |
+| TikTok | TikTok Studio | 9 till 18 okt (10) | 19 okt till 7 nov (20) |
+
+- TikTok schemalägger bara cirka 10 dagar framåt: 19 till 28 okt kan läggas tidigast omkring 9 okt, 29 okt till 7 nov tidigast omkring 19 okt.
+- Meta slutade ta emot uppladdningar efter 20 reels i rad (förloppet stod still på 0 % för Knölsvan och Gärdsmyg). Ta resten i en ny omgång, gärna nästa dag.
+- Rutnätsraden (omslaget delat i tre bilder, `grid/` på `social/see-the-song`) publicerades på Instagram och TikTok 2026-10-08. Albin fäster de tre i apparna före den första videon fre 9 okt 08.00, i ordningen höger, mitten, vänster (den som fästs sist hamnar först). Webben har ingen fäst-knapp på någon av kanalerna.
+
+## Material
+
+- Gren `social/see-the-song`, worktree `C:/w/birdy-social`.
+- `tools/social/out/{week1,week1-reserves,oct19-nov7}/<slug>/`: `see-the-song.mp4`, `cover.jpg`, `caption.json` (`facebook`, `instagram`, `youtube.title`, `youtube.description`). Varje mapp har `schedule.csv` med datum, art, alla texter och en not om bästa omslagsruta.
+- Facebook och YouTube har en direktlänk till artsidan (`https://birdy.community/species/<slug>/`). Instagram och TikTok säger "Link in bio", eftersom länkar i bildtexten inte går att klicka där. TikTok får Instagram-texten.
+- Texterna är på engelska med artens svenska namn i parentes och `#fåglar #fågelskådning` sist. Licensraden "Video licensed CC BY-SA 4.0" finns bara när foto eller ljud är CC BY-SA.
+
+Ordningen 19 oktober till 7 november: Grågås, Ringduva, Sångsvan, Gråkråka, Större hackspett, Knipa, Nötväcka, Skata, Grönfink, Gråhäger (28 okt), Knölsvan (29 okt), Gärdsmyg, Sidensvans, Steglits, Korp, Björktrast, Domherre, Gråtrut, Gulsparv, Bergfink (7 nov).
+
+## Regler
+
+- Agenten skapar aldrig konton och skriver aldrig lösenord. Albin loggar in själv.
+- Varje publicering kräver Albins uttryckliga OK i chatten. Givet 2026-10-08 för alla 30 videor på de fyra kanalerna och för rutnätsraden. Nya inlägg utöver dessa kräver ett nytt OK.
+- Privata adresser (Business Suite-id, Studio-adresser med kanal-id) står inte i repot, som är publikt. De finns i agentens lokala minne på Windows-maskinen.
+- Bara en session åt gången får styra Chrome.
+
+## Gemensamma knep i Chrome
+
+- Filväljaren får aldrig öppnas (den blockerar automationen). Patcha `HTMLInputElement.prototype.click` så att ett klick på en filinmatning bara markerar den, och ladda sedan upp filen med `file_upload` på den ref som `find` ger:
+
+  ```js
+  const orig = HTMLInputElement.prototype.click;
+  HTMLInputElement.prototype.click = function () {
+    if (this.type === 'file') { this.setAttribute('data-claude-file', '1'); if (!this.isConnected) { this.style.display = 'none'; document.body.appendChild(this); } return; }
+    return orig.call(this);
+  };
+  ```
+
+- Ta alltid ref från den senaste `find`. En gissad ref kan peka på fel fält.
+- Klicka på riktigt i textredigerare. Fokus via JS fungerar dåligt: första tecknet hamnade sist i Business Suite.
+- Avsluta varje inlägg med en vakt i JS som läser datum, tid och text och klickar på Schemalägg bara om allt stämmer.
+- Dialogen "Lämna sidan?" undviks genom att navigera med `force: true`.
+- Skärmbilden är nedskalad (874 px bred). Koordinater från `getBoundingClientRect` räknas om med `874 / window.innerWidth`.
+
+## Meta Business Suite (Facebook och Instagram i ett inlägg)
+
+1. Öppna Business Suite och kontrollera i portföljväljaren att det står Birdy (Albin har fler företag där). Innehåll, Skapa reel.
+2. "Lägg till video" med filpatchen, sedan `file_upload`. Omslag: "Ladda upp bild", ladda upp `cover.jpg` i den andra av de två filinmatningarna.
+3. Slå på "Anpassa inlägget för Facebook och Instagram". Skriv Facebook-texten i Facebook-fliken, byt till Instagram-fliken och skriv Instagram-texten (riktigt klick i redigeraren båda gångerna).
+4. Vakt före Nästa: båda texterna börjar med artens första mening, Facebook-texten har artlänken och slutar med `#fågelskådning`, Instagram-texten har "Link in bio", texterna skiljer sig åt.
+5. Nästa (ibland två gånger), sedan Schemalägg. Det finns två datumfält (`åååå-mm-dd`) och två tidsfält, ett per kanal. För varje: trippelklick på datumfältet, ctrl+a, skriv datumet, Tab, `08`, högerpil, `00`. Tidszonen Europe/Vienna är samma som Stockholm.
+6. Vakt: båda datumfälten visar "den N oktober 2026" och båda tiderna 08:00, först då klick på Schemalägg. Bekräftelse: "Reelen är schemalagd".
+
+## YouTube Studio (Shorts)
+
+1. Studio, Skapa, Ladda upp videor. `file_upload` i filfältet.
+2. Titel: ctrl+a (Studio fyller i filnamnet) och skriv `youtube.title`. Beskrivning: `youtube.description`.
+3. "Nej, den är inte gjord för barn", Nästa tre gånger, Synlighet, Schemalägg.
+4. Datum: öppna listan och klicka dagen (`ytcp-scrollable-calendar .calendar-day` som inte är `disabled`). Tid: alternativet "08:00". Tidszon: "(GMT+02:00) Stockholm".
+5. Vakt: tiden 08:00, datumet börjar med "N okt. 2026", tidszonen Stockholm. Klicka den sista synliga Schemalägg-knappen. Bekräftelse: "Videon ställs in som" följt av schemalagd.
+6. Inga egna omslag sattes på YouTube; Shorts visar en ruta ur videon. Vill Albin byta ruta anger `note` i `schedule.csv` den bästa tidpunkten.
+
+## TikTok Studio
+
+1. `tiktok.com/tiktokstudio/upload`, `file_upload` i "Select video to upload", vänta cirka 13 sekunder.
+2. Klicka i beskrivningen (cirka 300, 285 i skärmbilden), ctrl+a, Delete och kontrollera i JS att fokus ligger i redigeraren. Skriv Instagram-texten utan hashtaggar, sedan hashtaggarna med ett mellanslag sist (annars tar förslagslistan den sista).
+3. "When to post": Schedule.
+4. Datum: klicka datumfältet, hitta dagen med `span.day.valid` och rätt siffra, räkna om koordinaterna och klicka på riktigt. Läs veckodagen ur kalendern, inte ur minnet (ett klick på fel kolumn gav 14 i stället för 13).
+5. Tid: klicka tidsfältet, kör `scrollIntoView({block: 'center'})` på `.tiktok-timepicker-left` med `08` och `.tiktok-timepicker-right` med `00`, klicka båda på riktigt och klicka sedan utanför.
+6. Vakt: värdena innehåller `08:00` och datumet, texten börjar rätt och har "Link in bio", och "Content check lite" visar "No issues found". Klicka Schedule. Kommer dialogen "Continue to post?" är kontrollen inte klar: klicka Cancel, vänta tills den är klar och klicka Schedule igen. Tryck aldrig "Post now".
+7. Kontrollera på `tiktokstudio/content` att inlägget står som "Oct N, 8:00 AM". TikTok har ett smalt mellanslag (U+202F) före AM, så matcha med `\s` i reguljära uttryck.
+
+## Profilerna
+
+- Facebook-sidan "Birdy": profilbild, omslag och intro klara. Användarnamnet (adressen facebook.com/namn) väljer Albin; sidfoten på webben länkar till sidans id-adress tills dess.
+- Instagram @app.birdy: profilbilden klar. Bion gick inte att spara på webben ("There was a problem saving your profile"); Albin klistrar in den i appen (texten i `docs/superpowers/specs/assets/2026-10-08-sociala-profiler/bios.md` på `social/see-the-song`).
+- YouTube @birdy.community: banner, profilbild, beskrivning och länk klara. Namnet "Birdy" nekades ("Det här namnet kan inte användas"), så kanalen heter birdy.community tills Albin bestämt något annat.
+- TikTok @birdy.app: profilbild och bio klara.
+- Handtagen kan inte vara lika på alla kanaler, eftersom namnen är upptagna.
+- Webben länkar till alla fyra i sidfoten och i `sameAs` (JSON-LD), live sedan `d170de09`.
+
+## Sökindex (förslag, inte byggt)
+
+Albin vill att webbens sidor och de sociala profilerna indexeras en gång i veckan.
+
+- Google: sitemapen räcker (`sitemap-index.xml` är inskickad i Search Console). Varje måndag: titta på Sidor och Prestanda i Search Console och begär indexering för nya viktiga sidor.
+- Bing och andra: IndexNow. Skicka nya och ändrade adresser efter varje publicering eller en gång i veckan. Kräver en nyckelfil i `website/public/` och ett litet skript; inte byggt än.
+- Profilerna länkas redan från webben (`sameAs` och sidfoten), vilket är det som hjälper sökmotorerna att koppla ihop dem.
