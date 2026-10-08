@@ -89,7 +89,7 @@
       { "screen": "02-match", "k": "Match", "h": "Honest about how sure it is", "p": "Birdy shows how sure it is. Save the sighting with a note of your own, or pick from more suggestions when it is unsure.", "alt": "Birdy's match screen: a great tit, with room for a note and the Save observation button" },
       { "screen": "03-mina-arter", "k": "Lifelist", "h": "Your own field journal", "p": "Every sighting is saved on your phone, and every week your sightings come together on This week's page.", "alt": "The Lifelist in Birdy: species, sightings and day streak, Bird of the day, This week's page and the latest sightings" },
       { "screen": "04-uppslagsverk", "k": "Archive", "h": "Europe's birds in your pocket", "p": "839 species. Search by name, genus or family, or browse the app's groups.", "alt": "Birdy's archive: a search field, groups such as songbirds and ducks and geese, and the list of 839 species" },
-      { "screen": "05-artprofil", "k": "Species profile", "h": "All about the species on one page", "p": "Photo, description, how common it is and its red list status.", "alt": "The species profile for the great tit in Birdy: photo, name, how common it is, red list status and description" }
+      { "screen": "05-artprofil", "k": "Species profile", "h": "All about the species on one page", "p": "Photo, description, how common it is and its status on the global Red List (IUCN).", "alt": "The species profile for the great tit in Birdy: photo, name, how common it is, red list status and description" }
     ]
   },
   "guide": {
@@ -298,6 +298,7 @@
       "bigMark": "If you started using Birdy before 17 October 2026, 00:00 Swedish time, you keep Premium for free, for as long as you have the app.",
       "bigAfter": "A thank-you for being here while Birdy was new.",
       "lead": "You don't need to do anything. Update the app, and the thank-you screen greets you the next time you open it.",
+      "leadSoon": "You don't need to do anything. When Birdy 1.3 arrives in October, update the app, and the thank-you screen greets you the next time you open it.",
       "small": "The app works this out on your phone and sends nothing anywhere. If Google's backup is on, the proof travels with it when you change phones.",
       "alt": "The thank-you screen in Birdy: Early field member, Premium is yours. Forever."
     },
@@ -307,6 +308,11 @@
       "steps": [
         "Get Birdy from Google Play.",
         "Open Premium in the app, for example under Settings.",
+        "Choose a year or for good and pay in Google Play."
+      ],
+      "stepsSoon": [
+        "Get Birdy from Google Play.",
+        "Once Birdy 1.3 is out in October, open Premium in the app, for example under Settings.",
         "Choose a year or for good and pay in Google Play."
       ],
       "faqLabel": "Questions about Premium",

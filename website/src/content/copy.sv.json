@@ -89,7 +89,7 @@
       { "screen": "02-match", "k": "Match", "h": "Ärlig om hur säker den är", "p": "Birdy visar hur säker den är. Spara fyndet med en egen anteckning, eller välj bland fler förslag när den är osäker.", "alt": "Birdys träffskärm: en talgoxe, med plats för en anteckning och knappen Spara observation" },
       { "screen": "03-mina-arter", "k": "Mina arter", "h": "Din egen fältbok", "p": "Varje fynd sparas i telefonen, och varje vecka samlas dina fynd i Veckans uppslag.", "alt": "Mina arter i Birdy: antal arter, fynd och dagars svit, Dagens fågel, Veckans uppslag och de senaste fynden" },
       { "screen": "04-uppslagsverk", "k": "Uppslagsverk", "h": "Europas fåglar i fickan", "p": "839 arter. Sök på namn, släkte eller familj, eller bläddra i appens grupper.", "alt": "Birdys uppslagsverk: sökfält, grupper som tättingar och änder och gäss, och listan med 839 arter" },
-      { "screen": "05-artprofil", "k": "Artprofil", "h": "Allt om arten på ett uppslag", "p": "Foto, beskrivning, hur vanlig arten är och dess status på rödlistan.", "alt": "Artprofilen för talgoxe i Birdy: foto, namn, hur vanlig den är, rödlistestatus och beskrivning" }
+      { "screen": "05-artprofil", "k": "Artprofil", "h": "Allt om arten på ett uppslag", "p": "Foto, beskrivning, hur vanlig arten är och dess status på den globala rödlistan (IUCN).", "alt": "Artprofilen för talgoxe i Birdy: foto, namn, hur vanlig den är, rödlistestatus och beskrivning" }
     ]
   },
   "guide": {
@@ -298,6 +298,7 @@
       "bigMark": "Började du använda Birdy före 17 oktober 2026 klockan 00.00 (svensk tid) behåller du Premium gratis, så länge du har appen.",
       "bigAfter": "Ett tack för att du var med när Birdy var ny.",
       "lead": "Du behöver inte göra något. Uppdatera appen, så möter tack-skärmen dig nästa gång du öppnar den.",
+      "leadSoon": "Du behöver inte göra något. När Birdy 1.3 kommer i oktober uppdaterar du appen, så möter tack-skärmen dig nästa gång du öppnar den.",
       "small": "Appen avgör det själv i telefonen och skickar ingenting någonstans. Har du Googles säkerhetskopia påslagen följer beviset med om du byter telefon.",
       "alt": "Tack-skärmen i Birdy: Tidig fältmedlem, Premium är ditt. För alltid."
     },
@@ -307,6 +308,11 @@
       "steps": [
         "Hämta Birdy från Google Play.",
         "Öppna Premium i appen, till exempel under Inställningar.",
+        "Välj ett år eller för alltid och betala i Google Play."
+      ],
+      "stepsSoon": [
+        "Hämta Birdy från Google Play.",
+        "När Birdy 1.3 kommer i oktober: öppna Premium i appen, till exempel under Inställningar.",
         "Välj ett år eller för alltid och betala i Google Play."
       ],
       "faqLabel": "Frågor om Premium",

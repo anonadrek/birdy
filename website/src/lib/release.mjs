@@ -36,7 +36,7 @@ export function formatLiveDate(locale) {
  * The Premium timeline's entry for Birdy 1.3 (copy premiumPage.situation.timeline[1]): before the day it says 1.3 is
  * coming (whenSoon, whatSoon, moreSoon), from the day on the date (when's {date}) and the released wording, so the
  * page never states a release that has not happened.
- * @param {Record<string, string>} entry
+ * @param {{ when: string, what: string, more: string, whenSoon?: string, whatSoon?: string, moreSoon?: string }} entry
  * @param {string} dateIso today, Europe/Stockholm (buildDate in daily-bird.mjs)
  * @param {'sv' | 'en'} locale
  * @returns {{ when: string, what: string, more: string }}
@@ -44,4 +44,17 @@ export function formatLiveDate(locale) {
 export function releaseTimelineEntry(entry, dateIso, locale) {
   if (isAppLive(dateIso)) return { when: entry.when.replace('{date}', formatLiveDate(locale)), what: entry.what, more: entry.more };
   return { when: entry.whenSoon, what: entry.whatSoon, more: entry.moreSoon };
+}
+
+/**
+ * The Premium page's other two texts that describe 1.3 (review 2026-10-08): the early users' "update the app, and the
+ * thank-you screen greets you" and the buy steps (open Premium in the app, pay in Google Play). Both are only true once
+ * 1.3 is out, so before the day the page uses the copy's leadSoon and stepsSoon ("when Birdy 1.3 arrives in October").
+ * @param {{ early: { lead: string, leadSoon: string }, buy: { steps: string[], stepsSoon: string[] } }} page copy premiumPage
+ * @param {string} dateIso today, Europe/Stockholm (buildDate in daily-bird.mjs)
+ * @returns {{ earlyLead: string, buySteps: string[] }}
+ */
+export function releaseDependentCopy(page, dateIso) {
+  const live = isAppLive(dateIso);
+  return { earlyLead: live ? page.early.lead : page.early.leadSoon, buySteps: live ? page.buy.steps : page.buy.stepsSoon };
 }

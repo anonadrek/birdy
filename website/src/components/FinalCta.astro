@@ -11,6 +11,7 @@ import MarginNote from './ui/MarginNote.astro';
 import PlayStoreBadge from './ui/PlayStoreBadge.astro';
 import AppStoreBadge from './ui/AppStoreBadge.astro';
 import reedling from '../assets/photos/skaggmes-q192817.webp';
+import PhotoCredit from './species/PhotoCredit.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 
 interface Props { locale: Locale }
@@ -42,7 +43,7 @@ const name = locale === 'sv' ? 'Skäggmes' : 'Bearded Reedling';
       </div>
       <figcaption class="flabel">
         <b>{name}</b> <i lang="la">Panurus biarmicus</i>
-        <span>{t.species.photoCredit} Hobbyfotowiki · CC0</span>
+        <span><PhotoCredit locale={locale} image={{ author: 'Hobbyfotowiki', license: 'CC0', licenseUrl: null, sourceUrl: 'https://commons.wikimedia.org/wiki/File:Bearded_reedling_(Panurus_biarmicus).jpg' }} /></span>
       </figcaption>
     </figure>
   </div>
@@ -68,6 +69,7 @@ const name = locale === 'sv' ? 'Skäggmes' : 'Bearded Reedling';
   .flabel b { font-family: var(--font-serif); font-weight: 400; font-size: 26px; line-height: 1; }
   .flabel i { display: block; margin-top: 2px; font-family: var(--font-script); font-weight: 700; font-style: normal; font-size: 20px; color: var(--rust); }
   .flabel span { display: block; margin-top: 6px; font-size: 10.5px; color: var(--muted); }
+  .flabel span :global(a) { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 
   @media (min-width: 900px) {
     .grid { grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: 80px; }

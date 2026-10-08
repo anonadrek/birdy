@@ -58,6 +58,17 @@ test.describe('Premium-sidan', () => {
     await expect(page.locator('[data-timeline-release] .what')).toHaveText('Birdy 1.3.');
   });
 
+  // On the live date (the fixture build's 2026-10-15) the early users' lead and the buy steps are 1.3's own wording;
+  // before it they say 1.3 is coming (releaseDependentCopy, tests/unit/release.unit.mjs; review 2026-10-08).
+  test('löftet och köpstegen har 1.3-orden från lanseringsdagen', async ({ page }) => {
+    await page.goto('/sv/premium/');
+    await expect(page.locator('[data-early-lead]')).toHaveText('Du behöver inte göra något. Uppdatera appen, så möter tack-skärmen dig nästa gång du öppnar den.');
+    await expect(page.locator('[data-buy-steps] li')).toHaveText(['Hämta Birdy från Google Play.', 'Öppna Premium i appen, till exempel under Inställningar.', 'Välj ett år eller för alltid och betala i Google Play.']);
+    await page.goto('/premium/');
+    await expect(page.locator('[data-early-lead]')).toHaveText("You don't need to do anything. Update the app, and the thank-you screen greets you the next time you open it.");
+    await expect(page.locator('[data-buy-steps] li')).toHaveText(['Get Birdy from Google Play.', 'Open Premium in the app, for example under Settings.', 'Choose a year or for good and pay in Google Play.']);
+  });
+
   test('regeln för tidiga användare säger "började använda" och tiden', async ({ page }) => {
     await page.goto('/sv/premium/');
     await expect(page.locator('[data-early-rule]')).toContainText('Började du använda Birdy före 17 oktober 2026 klockan 00.00 (svensk tid)');
