@@ -1,0 +1,36 @@
+# Weekly IndexNow ping for birdy.community (runbook docs/superpowers/runbooks/2026-10-08-sociala-schemalaggning.md,
+# Sökindex). Albin wants the site indexed once a week: Google reads the sitemap on its own (Search Console), and this
+# job tells the IndexNow engines (Bing, Yandex, Seznam, Naver and others) about every address in the live sitemap.
+# The key file is website/public/<key>.txt and is public by design, so the job needs no secret. Node 22 has fetch, so
+# the script runs without npm install.
+#
+# Monday 05:00 UTC is 07:00 Swedish summer time and 06:00 in winter. Scheduled workflows only run on the default
+# branch; run it by hand from the Actions tab after a big publishing round.
+name: Weekly IndexNow
+
+on:
+  schedule:
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: weekly-indexnow
+  cancel-in-progress: false
+
+jobs:
+  indexnow:
+    name: Send the sitemap's addresses to IndexNow
+    if: github.repository == 'anonadrek/birdy'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Submit every address in the live sitemap
+        working-directory: website
+        run: node scripts/indexnow.mjs --all
