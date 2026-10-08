@@ -6,7 +6,8 @@ import {
   KotlinRandom, NORDIC_BUCKET, REGULAR_IN_SWEDEN, buildDate, cropImage, dateParts, javaHashCode, loadAppSpecies, loadAppSpeciesSnapshot,
   parseSpeciesYaml, plateImage, selectAppDailyBird, siteDailyBird,
 } from '../../src/lib/daily-bird.mjs';
-import { APP_1_3_LIVE_FROM } from '../../src/lib/release.mjs';
+// A release day for the tests; the site's own APP_1_3_LIVE_FROM has no date while Albin waits for BirdNET (2026-10-08).
+const LIVE = '2026-10-15';
 
 // Written by the app's own Kotlin DailyBirdSelector and kotlin.random.Random (see the file's _about).
 const golden = JSON.parse(readFileSync(new URL('../fixtures/daily-bird-golden.json', import.meta.url), 'utf8'));
@@ -89,12 +90,14 @@ test('selectAppDailyBird: ordningen arterna läses i spelar ingen roll', () => {
 test('siteDailyBird: appens fågel när den har en sida, raden om appen först från 1.3.0-dagen', () => {
   const before = day('2026-10-14');
   const appBefore = golden.days[before.iso];
-  const out = siteDailyBird({ appQid: selectAppDailyBird(golden.species, before), pageQids: ['Q25485', appBefore], date: before });
+  const out = siteDailyBird({ appQid: selectAppDailyBird(golden.species, before), pageQids: ['Q25485', appBefore], date: before, liveFrom: LIVE });
   assert.deepEqual(out, { qid: appBefore, appQid: appBefore, sameAsApp: false });
 
-  const from = day(APP_1_3_LIVE_FROM);
+  const from = day(LIVE);
   const appFrom = golden.days[from.iso];
-  assert.deepEqual(siteDailyBird({ appQid: selectAppDailyBird(golden.species, from), pageQids: [appFrom], date: from }), { qid: appFrom, appQid: appFrom, sameAsApp: true });
+  assert.deepEqual(siteDailyBird({ appQid: selectAppDailyBird(golden.species, from), pageQids: [appFrom], date: from, liveFrom: LIVE }), { qid: appFrom, appQid: appFrom, sameAsApp: true });
+  // Without a release day the line never shows, however late the date.
+  assert.equal(siteDailyBird({ appQid: selectAppDailyBird(golden.species, from), pageQids: [appFrom], date: from, liveFrom: null }).sameAsApp, false);
 });
 
 test('siteDailyBird: utan sida för appens fågel väljs en art med sida, samma hela dagen och utan raden', () => {

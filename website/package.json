@@ -14,7 +14,7 @@
     "test:no-dashes": "node scripts/check-no-dashes.mjs",
     "test:palette": "node scripts/check-palette.mjs",
     "test:smoke": "playwright test",
-    "build:fixtures": "node scripts/env-run.mjs SPECIES_FIXTURES=1 BIRDY_TODAY=2026-10-15 -- astro build --force",
+    "build:fixtures": "node scripts/env-run.mjs SPECIES_FIXTURES=1 BIRDY_TODAY=2026-10-15 BIRDY_APP_LIVE_FROM=2026-10-15 -- astro build --force",
     "build:preview-fixtures": "node scripts/env-run.mjs SPECIES_FIXTURES=1 SPECIES_PREVIEW=1 -- astro build --force --outDir dist-preview",
     "build:prod": "node scripts/env-run.mjs SPECIES_FIXTURES=0 SPECIES_PREVIEW=0 -- astro build --force",
     "build:empty": "node scripts/env-run.mjs SPECIES_FIXTURES=0 SPECIES_PREVIEW=0 SPECIES_EMPTY=1 -- astro build --force --outDir dist-empty",

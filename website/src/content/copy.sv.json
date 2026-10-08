@@ -55,8 +55,8 @@
     "lead": "Samma tre ingångar som i appen. Birdy visar alltid hur säker den är, och det är du som bestämmer vad som sparas.",
     "free": "Gratis",
     "rows": [
-      { "title": "Live med kameran", "body": "Rikta mot fågeln. Birdy tittar flera gånger i sekunden och visar vilken art den ser." },
-      { "title": "Från ett foto", "body": "Välj en bild ur galleriet, beskär runt fågeln och låt Birdy titta." },
+      { "title": "Live med kameran", "body": "Rikta mot fågeln. Birdy tittar flera gånger i sekunden och visar vilken art den ser.", "free": true },
+      { "title": "Från ett foto", "body": "Välj en bild ur galleriet, beskär runt fågeln och låt Birdy titta.", "free": true },
       { "title": "Lyssna på lätet", "body": "Spela in sången så föreslår Birdy arten. Ljud-ID är gratis för alla.", "free": true }
     ]
   },
@@ -206,15 +206,10 @@
         {
           "when": "{date}",
           "what": "Birdy 1.3.",
-          "more": "Premium går att köpa i Google Play, för ett år eller för alltid.",
-          "whenSoon": "Oktober 2026",
+          "more": "Premium går att köpa i Google Play, för ett år eller för alltid. Den som använde Birdy före 1.3 behåller Premium gratis.",
+          "whenSoon": "Härnäst",
           "whatSoon": "Birdy 1.3 kommer.",
-          "moreSoon": "Då går Premium att köpa i Google Play, för ett år eller för alltid."
-        },
-        {
-          "when": "17 oktober 2026, klockan 00.00",
-          "what": "Gränsen för tidiga fältmedlemmar.",
-          "more": "Började du använda Birdy före dess behåller du Premium gratis."
+          "moreSoon": "Då går Premium att köpa i Google Play, för ett år eller för alltid. Den som använde Birdy före 1.3 behåller Premium gratis."
         },
         {
           "when": "Snart",
@@ -295,11 +290,11 @@
       "seal": "Tidig fältmedlem",
       "headline": "Var du med *från början?*",
       "bigBefore": "Då är Premium redan ditt.",
-      "bigMark": "Började du använda Birdy före 17 oktober 2026 klockan 00.00 (svensk tid) behåller du Premium gratis, så länge du har appen.",
+      "bigMark": "Använde du Birdy före version 1.3 behåller du Premium gratis, så länge du har appen.",
       "bigAfter": "Ett tack för att du var med när Birdy var ny.",
       "lead": "Du behöver inte göra något. Uppdatera appen, så möter tack-skärmen dig nästa gång du öppnar den.",
-      "leadSoon": "Du behöver inte göra något. När Birdy 1.3 kommer i oktober uppdaterar du appen, så möter tack-skärmen dig nästa gång du öppnar den.",
-      "small": "Appen avgör det själv i telefonen och skickar ingenting någonstans. Har du Googles säkerhetskopia påslagen följer beviset med om du byter telefon.",
+      "leadSoon": "Du behöver inte göra något. När Birdy 1.3 kommer uppdaterar du appen, så möter tack-skärmen dig nästa gång du öppnar den.",
+      "small": "Appen avgör det själv i telefonen och skickar ingenting någonstans. Har du Googles säkerhetskopia påslagen följer beviset med om du byter telefon. Avinstallerar du appen utan säkerhetskopia, eller rensar appens data, försvinner beviset.",
       "alt": "Tack-skärmen i Birdy: Tidig fältmedlem, Premium är ditt. För alltid."
     },
     "buy": {
@@ -312,7 +307,7 @@
       ],
       "stepsSoon": [
         "Hämta Birdy från Google Play.",
-        "När Birdy 1.3 kommer i oktober: öppna Premium i appen, till exempel under Inställningar.",
+        "När Birdy 1.3 kommer: öppna Premium i appen, till exempel under Inställningar.",
         "Välj ett år eller för alltid och betala i Google Play."
       ],
       "faqLabel": "Frågor om Premium",

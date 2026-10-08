@@ -56,6 +56,10 @@ test.describe('Premium-sidan', () => {
     await page.goto('/premium/');
     await expect(page.locator('[data-timeline-release] .when')).toHaveText('15 October 2026');
     await expect(page.locator('[data-timeline-release] .what')).toHaveText('Birdy 1.3.');
+    // The 1.3 entry is the highlighted one (it carries the early users' promise); the iPhone entry is only "soon".
+    await expect(page.locator('.timeline li.key')).toHaveCount(1);
+    await expect(page.locator('.timeline li.key')).toHaveAttribute('data-timeline-release', '');
+    await expect(page.locator('.timeline li.soon')).not.toHaveClass(/\bkey\b/);
   });
 
   // On the live date (the fixture build's 2026-10-15) the early users' lead and the buy steps are 1.3's own wording;
@@ -69,11 +73,14 @@ test.describe('Premium-sidan', () => {
     await expect(page.locator('[data-buy-steps] li')).toHaveText(['Get Birdy from Google Play.', 'Open Premium in the app, for example under Settings.', 'Choose a year or for good and pay in Google Play.']);
   });
 
-  test('regeln för tidiga användare säger "började använda" och tiden', async ({ page }) => {
+  // Albin's choice b (2026-10-08): the rule names the version, not a date, so it stays true wherever the release day lands.
+  test('regeln för tidiga användare säger "använde Birdy före version 1.3", utan datum', async ({ page }) => {
     await page.goto('/sv/premium/');
-    await expect(page.locator('[data-early-rule]')).toContainText('Började du använda Birdy före 17 oktober 2026 klockan 00.00 (svensk tid)');
+    await expect(page.locator('[data-early-rule]')).toHaveText('Använde du Birdy före version 1.3 behåller du Premium gratis, så länge du har appen.');
+    await expect(page.locator('body')).not.toContainText('17 oktober');
     await page.goto('/premium/');
-    await expect(page.locator('[data-early-rule]')).toContainText('started using Birdy before 17 October 2026, 00:00 Swedish time');
+    await expect(page.locator('[data-early-rule]')).toHaveText('If you used Birdy before version 1.3, you keep Premium for free, for as long as you have the app.');
+    await expect(page.locator('body')).not.toContainText('17 October');
   });
 
   test('Se priserna hoppar till priserna', async ({ page }) => {

@@ -306,7 +306,8 @@ test.describe('så funkar det och fältboken', () => {
       await page.goto(path);
       await expect(page.locator('#how-it-works h2')).toHaveText(how);
       await expect(page.locator('#how-it-works .row')).toHaveCount(3);
-      await expect(page.locator('#how-it-works .row:nth-child(3) .free')).toHaveText(free);
+      // All three ways in are free (Albin 2026-10-08): camera, photo and sound.
+      await expect(page.locator('#how-it-works .row .free')).toHaveText([free, free, free]);
       await expect(page.locator('#journal h2')).toHaveText(journal);
       await expect(page.locator('#journal .facts dt')).toHaveText(['34', '27', '0']);
       await expect(page.locator('#journal .facts dd').first()).toHaveText(label);
