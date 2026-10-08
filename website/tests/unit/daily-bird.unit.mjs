@@ -3,7 +3,8 @@ import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import {
-  KotlinRandom, SAME_AS_APP_FROM, buildDate, cropImage, dateParts, javaHashCode, loadAppSpecies, parseSpeciesYaml, plateImage, selectAppDailyBird, siteDailyBird,
+  KotlinRandom, NORDIC_BUCKET, REGULAR_IN_SWEDEN, SAME_AS_APP_FROM, buildDate, cropImage, dateParts, javaHashCode, loadAppSpecies, loadAppSpeciesSnapshot,
+  parseSpeciesYaml, plateImage, selectAppDailyBird, siteDailyBird,
 } from '../../src/lib/daily-bird.mjs';
 
 // Written by the app's own Kotlin DailyBirdSelector and kotlin.random.Random (see the file's _about).
@@ -41,14 +42,35 @@ test('selectAppDailyBird: 2026-10-07 är Gulärla med 1.3.0-regeln (Råka var de
   assert.equal(selectAppDailyBird(golden.species, day('2026-10-07')), 'Q25984');
 });
 
+// The shipped app's list (review C1): the site must pick from what the phones run, not from the branch's YAML. The days
+// come from Kotlin over the app's species.db, so reproducing them from the snapshot is a real check, not a tautology.
+test('appens lista: ögonblicksbilden ger samma fågel som appen alla 457 dagar', () => {
+  const snapshot = loadAppSpeciesSnapshot(websiteRoot);
+  const wrong = Object.entries(golden.days).filter(([iso, qid]) => selectAppDailyBird(snapshot, day(iso)) !== qid);
+  assert.deepEqual(wrong, []);
+});
+
+test('appens lista: 839 arter med fem fält, tolv månader, 177 regelbundna nordiska kandidater', () => {
+  const snapshot = loadAppSpeciesSnapshot(websiteRoot);
+  assert.equal(snapshot.length, 839);
+  assert.equal(new Set(snapshot.map((s) => s.id)).size, 839);
+  for (const s of snapshot) {
+    assert.deepEqual(Object.keys(s).sort(), ['abundance', 'id', 'iucn_status', 'regions', 'season'], s.id);
+    assert.equal(Object.keys(s.season).length, 12, s.id);
+  }
+  const candidates = snapshot.filter((s) => REGULAR_IN_SWEDEN.has(s.abundance) && !['EX', 'EW'].includes(s.iucn_status) && s.regions.some((r) => NORDIC_BUCKET.has(r)));
+  assert.equal(candidates.length, 177);
+  for (const qid of ['Q10546857', 'Q4967039', 'Q574281']) assert.equal(snapshot.find((s) => s.id === qid)?.abundance, 'ovanlig', qid); // the three tits 12c7526f set to ovanlig
+});
+
 test('selectAppDailyBird: bara regelbundna, levande, nordiska arter med säsong för månaden', () => {
-  const base = { abundance: 'allmän', iucn: 'LC', regions: ['SE'], season: { oct: 'present' } };
+  const base = { abundance: 'allmän', iucn_status: 'LC', regions: ['SE'], season: { oct: 'present' } };
   const only = (s) => selectAppDailyBird([s], day('2026-10-08'));
   assert.equal(only({ ...base, id: 'Q1' }), 'Q1');
   assert.equal(only({ ...base, id: 'Q1', abundance: 'mindre allmän' }), 'Q1');
   assert.equal(only({ ...base, id: 'Q1', abundance: 'ovanlig' }), null);
-  assert.equal(only({ ...base, id: 'Q1', iucn: 'EX' }), null);
-  assert.equal(only({ ...base, id: 'Q1', iucn: 'EW' }), null);
+  assert.equal(only({ ...base, id: 'Q1', iucn_status: 'EX' }), null);
+  assert.equal(only({ ...base, id: 'Q1', iucn_status: 'EW' }), null);
   assert.equal(only({ ...base, id: 'Q1', regions: ['DE'] }), null);
   assert.equal(only({ ...base, id: 'Q1', season: { nov: 'present' } }), null);
   assert.equal(only({ ...base, id: 'Q1', season: { oct: 'absent' } }), null);
@@ -157,7 +179,7 @@ test('parseSpeciesYaml: läser fälten som väljaren använder', () => {
     'review_notes: "x: y"',
   ].join('\n');
   assert.deepEqual(parseSpeciesYaml(text), {
-    id: 'Q25386', abundance: 'allmän', iucn: 'LC', regions: ['SE', 'NO', 'DK'], season: { jan: 'present', oct: 'breeding' },
+    id: 'Q25386', abundance: 'allmän', iucn_status: 'LC', regions: ['SE', 'NO', 'DK'], season: { jan: 'present', oct: 'breeding' },
   });
   assert.deepEqual(parseSpeciesYaml('id: Q1\nabundance: \'mindre allmän\'\niucn_status: "NE"\nseason: {}\nregions: []\n').regions, []);
   assert.throws(() => parseSpeciesYaml('id: Q1\niucn_status: LC\n'), /abundance saknas/);
@@ -165,7 +187,7 @@ test('parseSpeciesYaml: läser fälten som väljaren använder', () => {
   assert.throws(() => parseSpeciesYaml('id: Q1\nabundance: allmän\niucn_status: LC\nseason: {jan: present}\n'), /på en rad/);
 });
 
-test('loadAppSpecies: läser appens arter ur shared/content/species/', () => {
+test('loadAppSpecies: läser grenens arter ur shared/content/species/ (för check:app-species)', () => {
   const species = loadAppSpecies(websiteRoot);
   assert.ok(species.length >= 839, String(species.length));
   assert.ok(species.every((s) => /^Q\d+$/.test(s.id) && s.regions.length > 0 && Object.keys(s.season).length > 0));

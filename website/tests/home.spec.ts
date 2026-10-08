@@ -137,9 +137,9 @@ test.describe('utan JavaScript', () => {
 test.describe('första vyn', () => {
   test.use({ contextOptions: { reducedMotion: 'reduce' } });
 
-  // The fixture build pins BIRDY_TODAY=2026-10-15 (package.json build:fixtures) and reads the app's species from the
-  // golden file, so the app's Dagens fågel is Hornuggla (Q25384), which has a fixture page with a CC0 photo, on the day
-  // 1.3.0 goes out: the plate shows it with the line about the app.
+  // The fixture build pins BIRDY_TODAY=2026-10-15 (package.json build:fixtures); every build picks from the shipped app's
+  // list (src/data/app-species-1.3.0.json), so the app's Dagens fågel is Hornuggla (Q25384), which has a fixture page, on
+  // the day 1.3.0 goes out: the plate shows it with the line about the app.
   for (const [path, line1, line2, kicker, plate, name, same, credit] of [
     ['/sv/', 'Känn igen fågeln.', 'Bevara stunden.', 'Fågelguide och fältdagbok', 'Dagens fågel · tors 15 okt', 'Hornuggla', 'samma fågel som i appen i dag', 'Foto: Testfotograf, CC BY 4.0, via Wikimedia Commons, nedskalad'],
     ['/', 'Know the bird.', 'Keep the moment.', 'Bird guide and field journal', 'Bird of the day · Thu 15 Oct', 'Long-eared Owl', 'the same bird as in the app today', 'Photo: Testfotograf, CC BY 4.0, via Wikimedia Commons, resized'],

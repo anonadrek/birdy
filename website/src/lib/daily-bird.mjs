@@ -8,10 +8,14 @@
 // Java's String.hashCode and Kotlin's XorWow generator reimplemented below. tests/unit/daily-bird.unit.mjs checks
 // this file against a golden file written by the Kotlin code itself (tests/fixtures/daily-bird-golden.json).
 //
-// The species list is the app's own content, shared/content/species/**/<QID>.yaml, read when the site is built.
+// The species list the site picks from is the shipped app's, frozen per app release in src/data/app-species-<version>.json
+// (loadAppSpeciesSnapshot), never the YAML on the branch being built: main and release/1.3.0 disagreed on three tits'
+// abundance, which changed every day's bird. The YAML reader (loadAppSpecies) serves scripts/check-app-species-snapshot.mjs,
+// which guards that the YAML and the snapshot agree on the release branch.
 // Plain JS, so the unit tests run it with node --test and the Astro components import it as is.
 import { readdirSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { appSpeciesSnapshotPath } from './release.mjs';
 
 export const MONTH_KEYS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 export const NORDIC_BUCKET = new Set(['SE', 'NO', 'FI', 'DK']);
@@ -98,20 +102,20 @@ export function daySeed({ year, month, day }) {
   return javaHashCode(`${year}-${month}-${day}-${REGION_SEED}`);
 }
 
-const isExtinct = (iucn) => iucn === 'EX' || iucn === 'EW';
+const isExtinct = (iucnStatus) => iucnStatus === 'EX' || iucnStatus === 'EW';
 // Kotlin's sortedBy on String compares UTF-16 code units, which is what JS's < on strings does.
 const byCodeUnits = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 
 /**
  * The app's Dagens fågel for a date, as a QID, or null when no species qualifies.
- * @param {{ id: string, abundance: string, iucn: string, regions: string[], season: Record<string, string> }[]} species
+ * @param {{ id: string, abundance: string, iucn_status: string, regions: string[], season: Record<string, string> }[]} species
  * @param {{ year: number, month: number, day: number }} date
  */
 export function selectAppDailyBird(species, date) {
   const monthKey = MONTH_KEYS[date.month - 1];
   const candidates = species
     .filter((s) => {
-      if (isExtinct(s.iucn)) return false;
+      if (isExtinct(s.iucn_status)) return false;
       if (!REGULAR_IN_SWEDEN.has(s.abundance)) return false;
       const tag = s.season?.[monthKey];
       if (tag === undefined || !SEASON_TAGS.has(tag.toLowerCase())) return false;
@@ -238,7 +242,7 @@ const REGION_LINE = /^(?: {2})?- (.+)$/;
 /**
  * @param {string} text one species file
  * @param {string} [where] the file, for error messages
- * @returns {{ id: string, abundance: string, iucn: string, regions: string[], season: Record<string, string> }}
+ * @returns {{ id: string, abundance: string, iucn_status: string, regions: string[], season: Record<string, string> }}
  */
 export function parseSpeciesYaml(text, where = 'species YAML') {
   const lines = text.replace(/^﻿/, '').split(/\r?\n/);
@@ -281,7 +285,7 @@ export function parseSpeciesYaml(text, where = 'species YAML') {
   for (const key of Object.keys(season)) {
     if (!MONTH_KEYS.includes(key)) throw new Error(`${where}: okänd månad i season: ${key}`);
   }
-  return { id: top.id, abundance: top.abundance, iucn: top.iucn_status, regions, season };
+  return { id: top.id, abundance: top.abundance, iucn_status: top.iucn_status, regions, season };
 }
 
 /** Every *.yaml under a folder, at any depth. */
@@ -292,20 +296,24 @@ function yamlFiles(dir) {
 }
 
 /**
- * The app's species as frozen in the golden file (release 1.3.0), for test builds (SPECIES_FIXTURES=1): with the date
- * pinned by BIRDY_TODAY the fixture build always gets the same app bird, whatever happens to the YAML later.
+ * The shipped app's species list, frozen per app release (src/data/app-species-<version>.json, written from the golden
+ * file by scripts/app-species-snapshot.mjs; APP_VERSION in release.mjs names it). This is what every build, production
+ * and test, picks Dagens fågel from: the branch's YAML is not what people's phones run.
  * @param {string} websiteRoot
+ * @returns {ReturnType<typeof parseSpeciesYaml>[]}
  */
-export function loadFixtureAppSpecies(websiteRoot) {
-  const golden = JSON.parse(readFileSync(resolve(websiteRoot, 'tests', 'fixtures', 'daily-bird-golden.json'), 'utf8'));
-  return /** @type {ReturnType<typeof parseSpeciesYaml>[]} */ (golden.species);
+export function loadAppSpeciesSnapshot(websiteRoot) {
+  const file = appSpeciesSnapshotPath(websiteRoot);
+  const data = JSON.parse(readFileSync(file, 'utf8'));
+  if (!Array.isArray(data.species) || data.species.length === 0) throw new Error(`${file}: species saknas eller är tom`);
+  return data.species;
 }
 
 /** @type {{ root: string, species: ReturnType<typeof parseSpeciesYaml>[] } | undefined} */
 let cached;
 /**
- * The app's species, read from shared/content/species/ in the repository (the website root is website/, so one
- * level up). Read once per build.
+ * The branch's species, read from shared/content/species/ in the repository (the website root is website/, so one
+ * level up). Only scripts/check-app-species-snapshot.mjs reads this: the site itself reads the snapshot above.
  * @param {string} websiteRoot
  */
 export function loadAppSpecies(websiteRoot) {
