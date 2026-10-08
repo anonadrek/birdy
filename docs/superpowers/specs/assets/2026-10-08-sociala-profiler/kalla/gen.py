@@ -257,12 +257,70 @@ def bez(p0, p1, p2, p3, t):
     return (a * p0[0] + b * p1[0] + c * p2[0] + d * p3[0], a * p0[1] + b * p1[1] + c * p2[1] + d * p3[1])
 
 
-def flock(name, cx, cy, radius, seed, size_k, n_stream=0, curve=None, lead=()):
+def catmull(points, per_segment=120):
+    """A smooth polyline through the points (Catmull-Rom, end points repeated)."""
+    pts = [points[0]] + list(points) + [points[-1]]
+    out = []
+    for i in range(1, len(pts) - 2):
+        p0, p1, p2, p3 = pts[i - 1], pts[i], pts[i + 1], pts[i + 2]
+        for s in range(per_segment):
+            u = s / per_segment
+            out.append(tuple(
+                0.5 * (2 * p1[j] + (-p0[j] + p2[j]) * u + (2 * p0[j] - 5 * p1[j] + 4 * p2[j] - p3[j]) * u * u
+                       + (-p0[j] + 3 * p1[j] - 3 * p2[j] + p3[j]) * u ** 3)
+                for j in (0, 1)))
+    out.append(tuple(points[-1]))
+    return out
+
+
+class Polyline:
+    """Position and direction at a share t (0..1) of the length along a polyline."""
+
+    def __init__(self, pts):
+        self.pts = pts
+        self.cum = [0.0]
+        for a, b in zip(pts, pts[1:]):
+            self.cum.append(self.cum[-1] + math.dist(a, b))
+
+    def at(self, t):
+        s = max(0.0, min(1.0, t)) * self.cum[-1]
+        i = max(0, min(len(self.pts) - 2, next((k for k, c in enumerate(self.cum) if c >= s), len(self.cum) - 1) - 1))
+        (ax, ay), (bx, by) = self.pts[i], self.pts[i + 1]
+        seg = (self.cum[i + 1] - self.cum[i]) or 1
+        u = (s - self.cum[i]) / seg
+        return (ax + (bx - ax) * u, ay + (by - ay) * u), math.atan2(by - ay, bx - ax)
+
+
+def murmuration(rng, line, n, base, width_px, phase):
+    """A stream that swells into a cloud halfway (the middle tile of the grid row) and narrows into the bird."""
+    birds = []
+    for _ in range(n):
+        r = rng.random()
+        if r < 0.35:
+            t = rng.random() ** 0.8
+        elif r < 0.88:
+            t = min(1.0, max(0.0, rng.gauss(0.5, 0.12)))
+        else:
+            t = 0.82 + 0.18 * rng.random() ** 0.8
+        (X, Y), ang = line.at(t)
+        w = (18 + width_px * math.exp(-((t - 0.5) / 0.19) ** 2)) * (1 - 0.5 * t ** 10)
+        off = rng.gauss(0, w * 0.5) + 30 * math.sin(t * math.pi * 4 + phase)
+        X += -math.sin(ang) * off
+        Y += math.cos(ang) * off
+        core = abs(off) / (w * 0.5 + 1e-6)
+        c = 2 if core < 0.5 and rng.random() < 0.5 else (1 if rng.random() < 0.75 else 0)
+        size = base * (0.5 + 0.5 * t) * rng.uniform(0.88, 1.08)
+        birds.append([round(X, 1), round(Y, 1), round(size, 1), round(math.degrees(ang) - HEADING + rng.gauss(0, 10), 1), c, round(0.55 + 0.45 * t, 2)])
+    return birds
+
+
+def flock(name, cx, cy, radius, seed, size_k, n_stream=0, curve=None, lead=(), spline=None, lead_px=(), cloud=230, merge=(520, 760)):
     """SPECIES birds: an edge along the mark's outline, an even fill inside it and optionally a stream flying in
-    along a curve plus a few birds out in front. Each bird is [x, y, width, turn, colour, opacity]."""
+    (along a Bezier curve, or along a spline that swells into a cloud) plus a few birds out in front.
+    Each bird is [x, y, width, turn, colour, opacity]."""
     rng = random.Random(seed)
     to_px, k = place(cx, cy, radius)
-    n_body = SPECIES - n_stream - len(lead)
+    n_body = SPECIES - n_stream - len(lead) - len(lead_px)
     area = MASK.sum() / SCALE ** 2
     unit = math.sqrt(area / n_body)            # spacing inside the mark, path units
     base = unit * k * size_k                    # bird width, pixels
@@ -275,7 +333,10 @@ def flock(name, cx, cy, radius, seed, size_k, n_stream=0, curve=None, lead=()):
     for (x, y) in edge:
         X, Y = to_px(x, y)
         birds.append([round(X, 1), round(Y, 1), round(base * rng.uniform(0.98, 1.14), 1), round(rng.gauss(0, 5), 1), colour(min(1, shade(x, y, rng) + 0.15)), 1])
-    if n_stream:
+    if n_stream and spline:
+        line = Polyline(catmull(list(spline) + [to_px(*merge)]))
+        birds += murmuration(rng, line, n_stream, base, cloud, rng.uniform(0, math.pi))
+    elif n_stream:
         p0, p1, p2 = curve
         p3 = to_px(520, 760)
         phase = rng.uniform(0, math.pi)
@@ -300,6 +361,8 @@ def flock(name, cx, cy, radius, seed, size_k, n_stream=0, curve=None, lead=()):
     for (x, y) in lead:
         X, Y = to_px(x, y)
         birds.append([round(X + rng.gauss(0, 5), 1), round(Y + rng.gauss(0, 5), 1), round(base * rng.uniform(1.05, 1.22), 1), round(rng.gauss(0, 5), 1), 1 if rng.random() < 0.7 else 2, 1])
+    for (X, Y) in lead_px:
+        birds.append([X, Y, round(base * rng.uniform(1.05, 1.2), 1), round(rng.gauss(0, 5), 1), 1 if rng.random() < 0.7 else 2, 1])
     assert len(birds) == SPECIES, (name, len(birds))
     return {'birds': birds, 'big': {'cx': cx, 'cy': cy, 'r': radius}, 'edge': len(edge)}
 
@@ -309,6 +372,10 @@ FLOCKS = {
     'profile-flock': flock('profile', 540, 540, 505, 11, 1.42),
     'facebook-cover-flock': flock('facebook', 1162, 344, 300, 23, 1.42, 150, [(-80, 800), (380, 760), (760, 600)], LEAD),
     'youtube-banner-flock': flock('youtube', 846, 716, 214, 37, 1.34, 260, [(-140, 1340), (110, 1030), (440, 915)], LEAD[:3]),
+    # The grid row for Instagram and TikTok: 3240 x 1440 cut into three 1080 x 1440 tiles. The stream starts under the
+    # slogan in tile 1, swells into a cloud in tile 2 and forms the bird in tile 3; only birds cross the seams.
+    'grid-flock': flock('grid', 2668, 600, 410, 53, 1.42, 360, spline=[(640, 1330), (1050, 1230), (1400, 940), (1650, 700), (1950, 690), (2250, 840), (2540, 930)],
+                        lead_px=[(3066, 445), (3100, 402), (3088, 505)], cloud=175, merge=(585, 690)),
 }
 
 out = {

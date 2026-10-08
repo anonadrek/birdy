@@ -199,6 +199,24 @@ p, h1, h2 { margin: 0; }
   <svg class="full" width="2560" height="1440" data-arrow='{"d":[1204,884,1140,900,1060,880,1004,806],"w":3.6,"head":22}'></svg>
 </section>
 
+<!-- ================= GRID ROW for Instagram and TikTok: one 3240 x 1440 picture, three 1080 x 1440 tiles =================
+     Cut into tiles by split-grid.py. Seams at x 1080 and 2160: every word sits inside one tile (slogan in tile 1, signature in tile 2, note in tile 3);
+     only the flock crosses them. Corners kept clear: Instagram's pin icon (top right), TikTok's Pinned label (top left)
+     and view count (bottom left), TikTok's buttons over the right edge of a photo in the feed. -->
+<section class="art" id="grid-row" data-dir="grid" style="width:3240px;height:1440px">
+  <div class="peach" style="background: radial-gradient(70% 120% at 52% 42%, #FEEBD6 0%, #FDE5CB 48%, #F6CDA2 100%)"></div>
+  <div data-bird='{"cx":2668,"cy":600,"r":410,"color":"#A8552D","opacity":0.13}'></div>
+  <svg class="full" width="3240" height="1440" data-flock="grid-flock"></svg>
+  <p class="kick" style="left:118px;top:296px;color:var(--rust);font-size:32px"><i></i>Camera, photo or song</p>
+  <h1 class="head" style="left:108px;top:346px;font-size:212px;line-height:.92;color:var(--dark)">Know<br>the bird.</h1>
+  <p class="hand" style="left:114px;top:768px;font-size:184px;line-height:.9;color:var(--rust);transform:rotate(-2deg);transform-origin:left">Keep the<br>moment.</p>
+  <div class="abs" style="left:1080px;top:1272px;width:1080px;display:flex;justify-content:center">
+    <p class="url" style="position:static;font-size:44px;color:var(--rust-deep)"><svg viewBox="0 0 1000 964.5"><use href="#bird" fill="#A8552D"/></svg>birdy.community</p>
+  </div>
+  <p class="hand" style="left:2530px;top:1098px;font-size:54px;line-height:1.08;color:var(--muted);transform:rotate(-1.6deg);transform-origin:left">one bird in this flock<br>for every species in Birdy</p>
+  <svg class="full" width="3240" height="1440" data-arrow='{"d":[2986,1126,3046,1090,3052,930,2962,846],"w":4.4,"head":26}'></svg>
+</section>
+
 <script src="data.js"></script>
 <script>
 'use strict';
@@ -399,6 +417,7 @@ document.querySelectorAll('[data-flock]').forEach(drawFlock);
 document.querySelectorAll('[data-torn]').forEach(drawTorn);
 document.querySelectorAll('[data-arrow]').forEach(drawArrow);
 document.querySelectorAll('[data-bird]').forEach((el) => placeBird(el, JSON.parse(el.dataset.bird)));
+
 window.ready = Promise.all([document.fonts.ready, ...[...document.querySelectorAll('.photo-circle, .plate-photo')].map((el) => new Promise((res) => {
   const img = new Image(); img.onload = res; img.onerror = res; img.src = el.style.backgroundImage.slice(5, -2);
 }))]);

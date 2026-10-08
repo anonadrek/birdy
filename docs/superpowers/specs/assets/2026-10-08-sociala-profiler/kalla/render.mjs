@@ -21,11 +21,13 @@ await page.goto(pathToFileURL(path.join(here, 'brand-kit.html')).href);
 await page.evaluate(() => window.ready);
 await page.waitForTimeout(250);
 // Archived artboards (directions A and B) render only when asked for by id.
-const ids = await page.locator(only.length ? 'section.art' : 'section.art:not([data-archived])').evaluateAll((els) => els.map((e) => e.id));
-for (const id of ids) {
+const items = await page.locator(only.length ? 'section.art' : 'section.art:not([data-archived])').evaluateAll((els) => els.map((e) => ({ id: e.id, dir: e.dataset.dir || '' })));
+for (const { id, dir } of items) {
   if (only.length && !only.includes(id)) continue;
-  const file = path.join(outDir, `${id}.png`);
+  // data-dir puts an artboard in a subfolder (the grid row and its tiles go to grid/).
+  const file = path.join(outDir, dir, `${id}.png`);
+  fs.mkdirSync(path.dirname(file), { recursive: true });
   await page.locator(`#${id}`).screenshot({ path: file, animations: 'disabled' });
-  console.log(`${id}.png  ${(fs.statSync(file).size / 1024).toFixed(0)} KB`);
+  console.log(`${path.join(dir, id)}.png  ${(fs.statSync(file).size / 1024).toFixed(0)} KB`);
 }
 await browser.close();
