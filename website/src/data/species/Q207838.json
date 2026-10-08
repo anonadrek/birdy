@@ -3,7 +3,12 @@
   "status": "ok",
   "publish": true,
   "review": {
-    "wave": 1
+    "wave": 1,
+    "spotCheck": {
+      "draw": 1,
+      "factsHash": "efc978a3693cdef6",
+      "audio": "c42795d7423f13bb"
+    }
   },
   "facts": [
     {
@@ -913,7 +918,7 @@
     "method": "auto",
     "at": "2026-10-07",
     "model": "claude-sonnet-5",
-    "spotChecked": false
+    "spotChecked": true
   },
   "publishedAt": "2026-10-07"
 }
