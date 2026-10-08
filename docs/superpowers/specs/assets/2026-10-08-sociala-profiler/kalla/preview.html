@@ -1,0 +1,523 @@
+<title>Birdys sociala profiler</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;600&display=swap">
+<style>
+:root {
+  --ground: #F6EFE2; --card: #FFFAF1; --ink: #2A1D17; --muted: #6E584B; --rule: #E2D5C0;
+  --accent: #9A4526; --accent-ink: #FFF8EE; --hand: #9A4526; --chip: #EFE3CF; --stage: #EBE0CD; --focus: #9A4526;
+  --ok: #3F6A33; --ok-bg: #E3EDD8; --no: #8E3B1F; --no-bg: #F6DDD0; --unk: #7A5A12; --unk-bg: #F3E6C4;
+  --shadow: 0 1px 2px rgba(42, 29, 23, .08), 0 10px 28px rgba(42, 29, 23, .12);
+  --serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --script: 'Caveat', 'Segoe Print', 'Bradley Hand', cursive;
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #1A120E; --card: #251A15; --ink: #F6EFE2; --muted: #C9B6A4; --rule: #3E2F26;
+    --accent: #F2B27A; --accent-ink: #1E1410; --hand: #F2B27A; --chip: #33251D; --stage: #2A1F19; --focus: #F2B27A;
+    --ok: #B5D29A; --ok-bg: #2B3A22; --no: #F4A98A; --no-bg: #43251B; --unk: #E8CB88; --unk-bg: #3D311A;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 12px 30px rgba(0, 0, 0, .35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #1A120E; --card: #251A15; --ink: #F6EFE2; --muted: #C9B6A4; --rule: #3E2F26;
+  --accent: #F2B27A; --accent-ink: #1E1410; --hand: #F2B27A; --chip: #33251D; --stage: #2A1F19; --focus: #F2B27A;
+  --ok: #B5D29A; --ok-bg: #2B3A22; --no: #F4A98A; --no-bg: #43251B; --unk: #E8CB88; --unk-bg: #3D311A;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 12px 30px rgba(0, 0, 0, .35);
+  color-scheme: dark;
+}
+/*{{IMAGES}}*/
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 16px/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 18px; padding-block: 30px 90px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+code { font: 600 .86em/1.4 ui-monospace, 'Cascadia Mono', Consolas, monospace; background: var(--chip); padding: .1em .4em; border-radius: 5px; overflow-wrap: anywhere; }
+
+/* ---------- Head of the page ---------- */
+.top { display: grid; gap: 14px; padding-bottom: 26px; border-bottom: 1px solid var(--rule); }
+.kicker { font: 700 26px/1 var(--script); color: var(--hand); }
+h1 { font-size: clamp(36px, 6.4vw, 60px); line-height: 1.02; letter-spacing: -.01em; }
+h1 em { color: var(--accent); }
+.lede { max-width: 64ch; color: var(--muted); font-size: 17px; }
+.rec { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: baseline; max-width: 72ch; padding: 14px 16px; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; }
+.rec-tag { flex: none; font: 600 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); background: var(--accent); padding: 6px 9px; border-radius: 999px; }
+.rec p { flex: 1 1 30ch; }
+.jump { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 15px; }
+.jump a { font-weight: 600; }
+.toggle { display: inline-flex; gap: 8px; align-items: center; margin-left: auto; font-size: 14px; color: var(--muted); cursor: pointer; }
+.toggle input { width: 18px; height: 18px; accent-color: var(--accent); }
+
+.sec { font-size: clamp(28px, 4.2vw, 38px); line-height: 1.08; margin-top: 56px; }
+.sec-note { margin-top: 8px; max-width: 66ch; color: var(--muted); }
+
+/* ---------- Small avatars ---------- */
+.cmp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 18px; margin-top: 20px; }
+.cmp { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 16px; display: grid; gap: 12px; align-content: start; }
+.cmp h3 { font-size: 26px; display: flex; gap: 10px; align-items: baseline; }
+.letter { font-family: var(--serif); font-style: italic; color: var(--accent); }
+.cmp p { color: var(--muted); font-size: 15px; }
+.sizes { display: flex; align-items: center; gap: 16px; padding: 14px; border-radius: 10px; }
+.sizes.light { background: #FFFFFF; border: 1px solid #E6E1D9; }
+.sizes.dark { background: #121212; }
+.sizes small { margin-left: auto; font: 600 11px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: #8A8178; }
+.av { display: block; flex: none; border-radius: 50%; background-size: cover; background-position: center; }
+.s110 { width: 110px; height: 110px; } .s56 { width: 56px; height: 56px; } .s40 { width: 40px; height: 40px; } .s32 { width: 32px; height: 32px; }
+
+/* ---------- A direction ---------- */
+.dir { margin-top: 72px; padding-top: 36px; border-top: 1px solid var(--rule); }
+.dir-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 22px; align-items: start; }
+.dir-letter { font: italic 400 clamp(76px, 12vw, 128px)/.8 var(--serif); color: var(--accent); }
+.dir-copy { display: grid; gap: 10px; }
+.dir-copy h2 { font-size: clamp(34px, 5vw, 48px); line-height: 1; }
+.dir-hand { font: 700 25px/1.1 var(--script); color: var(--hand); transform: rotate(-1.2deg); transform-origin: left; }
+.dir-text { max-width: 66ch; }
+.pros { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 10px 22px; margin: 4px 0 0; max-width: 900px; }
+.pros div { padding-top: 8px; border-top: 1px solid var(--rule); }
+.pros dt { font: 600 12px/1.4 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.pros dd { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
+@media (max-width: 560px) { .dir-head { grid-template-columns: minmax(0, 1fr); } }
+
+.stage { margin-top: 26px; padding: 26px 22px; background: var(--stage); border-radius: 18px; display: grid; gap: 30px; }
+figure { margin: 0; display: grid; gap: 10px; align-content: start; min-width: 0; }
+figcaption { font-size: 14px; color: var(--muted); }
+figcaption b { color: var(--ink); font-weight: 600; }
+
+/* Phones: three in a row, a scrolling row on narrow screens. */
+.phones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+@media (max-width: 820px) {
+  .phones { grid-template-columns: repeat(3, minmax(250px, 1fr)); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; margin-inline: -22px; padding-inline: 22px; scroll-padding-inline: 22px; }
+  .phones > figure { scroll-snap-align: start; }
+}
+.phone { width: 100%; max-width: 300px; margin-inline: auto; aspect-ratio: 9 / 17.6; overflow: hidden; border-radius: 30px; border: 7px solid #17110E; background: #FFFFFF; color: #0F0F0F; box-shadow: var(--shadow); container-type: inline-size; }
+.ph { font: 400 4.15cqw/1.35 var(--ui); height: 100%; }
+.ph-bar { display: flex; justify-content: space-between; align-items: center; height: 2.3em; padding: 0 1.4em; font-weight: 600; font-size: .95em; }
+.ph-bat { width: 1.9em; height: .9em; border: 1.5px solid currentColor; border-radius: .25em; position: relative; }
+.ph-bat::after { content: ''; position: absolute; inset: 1.5px; right: 35%; background: currentColor; border-radius: .1em; }
+
+/* Instagram */
+.ig-top { display: flex; align-items: center; gap: .35em; padding: .3em 1.1em .7em; font-weight: 700; font-size: 1.2em; }
+.ig-top i { width: .45em; height: .45em; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translateY(-.15em); }
+.ig-head { display: flex; align-items: center; gap: 1.2em; padding: 0 1.1em; }
+.ig-av { width: 6.6em; height: 6.6em; }
+.ig-stats { display: flex; flex: 1; justify-content: space-around; text-align: center; }
+.ig-stats b { display: block; font-size: 1.15em; }
+.ig-stats span { font-size: .92em; }
+.ig-txt { padding: .7em 1.1em 0; display: grid; gap: .1em; }
+.ig-name { font-weight: 700; }
+.ig-cat { color: #737373; }
+.ig-link { color: #00376B; font-weight: 600; display: flex; gap: .35em; align-items: center; }
+.ig-link svg { width: .95em; height: .95em; flex: none; }
+.ig-btns { display: grid; grid-template-columns: 1fr 1fr; gap: .45em; padding: .8em 1.1em; }
+.ig-btns span { text-align: center; font-weight: 600; padding: .5em 0; border-radius: .6em; background: #EFEFEF; }
+.ig-btns .pri { background: #0095F6; color: #FFFFFF; }
+.ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: .5em; }
+.ig-grid i { display: block; aspect-ratio: 3 / 4; background-size: cover; background-position: center; }
+
+/* Facebook, phone */
+.fb-cover { aspect-ratio: 16 / 9; background-size: auto 100%; background-position: center; background-repeat: no-repeat; }
+.fb-av { width: 34%; aspect-ratio: 1; height: auto; margin: -17% 0 0 4%; border: 4px solid #FFFFFF; position: relative; }
+.fb-txt { padding: .5em 1.1em 0; display: grid; gap: .25em; }
+.fb-name { font-weight: 700; font-size: 1.6em; line-height: 1.15; }
+.fb-meta { color: #65676B; }
+.fb-btns { display: grid; grid-template-columns: 1fr 1fr; gap: .45em; padding: .8em 1.1em; }
+.fb-btns span { text-align: center; font-weight: 600; padding: .55em 0; border-radius: .5em; background: #E4E6EB; }
+.fb-btns .pri { background: #0866FF; color: #FFFFFF; }
+.tabs { display: flex; gap: 1.2em; padding: .2em 1.1em 0; border-bottom: 1px solid #DADDE1; color: #65676B; font-weight: 600; white-space: nowrap; overflow: hidden; }
+.tabs span { padding: .6em 0; }
+.tabs .on { color: #0F0F0F; box-shadow: inset 0 -2px 0 currentColor; }
+.fb .tabs .on { color: #0866FF; }
+
+/* YouTube, phone */
+.yt-banner { margin: .6em .9em 0; aspect-ratio: 1546 / 423; border-radius: .7em; background-size: 165.6% auto; background-position: center; background-repeat: no-repeat; }
+.yt-id { display: flex; gap: .9em; align-items: center; padding: .9em .9em 0; }
+.yt-av { width: 5.4em; height: 5.4em; }
+.yt-name { font-weight: 700; font-size: 1.55em; line-height: 1.15; }
+.yt-meta { color: #606060; font-size: .92em; }
+.yt-desc { padding: .6em .9em 0; color: #606060; }
+.yt-desc b, .ytd-desc b { color: #0F0F0F; }
+.yt-links { padding: .25em .9em 0; color: #065FD4; font-weight: 600; font-size: .92em; }
+.yt-sub { display: block; margin: .8em .9em; padding: .6em 0; text-align: center; font-weight: 600; color: #FFFFFF; background: #0F0F0F; border-radius: 999px; }
+.shelf { padding: .8em .9em 0; }
+.shelf-h { font-weight: 700; font-size: 1.15em; margin-bottom: .5em; }
+.shorts { display: grid; grid-template-columns: repeat(3, 1fr); gap: .4em; }
+.shorts i { display: block; aspect-ratio: 9 / 16; border-radius: .6em; background-size: cover; background-position: center; }
+.post { margin-top: .5em; border-top: .45em solid #F0F2F5; padding-top: .7em; }
+.post-h { display: flex; gap: .6em; align-items: center; padding: 0 1.1em; }
+.post-h .av { width: 2.6em; height: 2.6em; }
+.post-h b { display: block; }
+.post-h span { color: #65676B; font-size: .9em; }
+.post p { padding: .5em 1.1em; }
+.post i.pic { display: block; aspect-ratio: 4 / 5; background-size: cover; background-position: center; }
+
+/* Desktop pages */
+.desks { display: grid; gap: 30px; }
+.desk { background: #FFFFFF; color: #050505; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); container-type: inline-size; }
+.dk { font: 400 1.3cqw/1.35 var(--ui); }
+.fbd-cover { aspect-ratio: 820 / 312; background-size: 100% auto; background-position: center; background-repeat: no-repeat; border-radius: 0 0 .9em .9em; }
+.fbd-id { display: flex; align-items: flex-end; gap: 1.4em; padding: 0 3.2% 1.2em; }
+.fbd-av { width: 13.4%; aspect-ratio: 1; height: auto; margin-top: -4%; border: .35em solid #FFFFFF; flex: none; }
+.fbd-name { font-weight: 700; font-size: 2.6em; line-height: 1.1; }
+.fbd-meta { color: #65676B; font-weight: 600; font-size: 1.15em; }
+.fbd-txt { flex: 1; min-width: 0; padding-bottom: .4em; }
+.fbd-btns { display: flex; gap: .6em; padding-bottom: .6em; }
+.fbd-btns span { font-weight: 600; font-size: 1.1em; padding: .55em 1.2em; border-radius: .5em; background: #E4E6EB; }
+.fbd-btns .pri { background: #0866FF; color: #FFFFFF; }
+.desk .tabs { padding: 0 3.2%; font-size: 1.15em; gap: 2em; }
+.ytd-banner { margin: 1.6em 2.4% 0; aspect-ratio: 2560 / 423; border-radius: 1.2em; background-size: 100% auto; background-position: center; background-repeat: no-repeat; }
+.ytd-id { display: flex; gap: 1.8em; align-items: center; padding: 1.6em 2.4% 1.2em; }
+.ytd-av { width: 12.5%; aspect-ratio: 1; height: auto; flex: none; }
+.ytd-txt { display: grid; gap: .3em; min-width: 0; }
+.ytd-name { font-weight: 700; font-size: 3em; line-height: 1.1; }
+.ytd-meta { color: #606060; font-size: 1.1em; }
+.ytd-meta b { color: #0F0F0F; }
+.ytd-desc { color: #606060; font-size: 1.1em; }
+.ytd-links { color: #065FD4; font-weight: 600; font-size: 1.1em; }
+.ytd-sub { justify-self: start; margin-top: .5em; padding: .6em 1.3em; font-weight: 600; font-size: 1.1em; color: #FFFFFF; background: #0F0F0F; border-radius: 999px; }
+
+/* Whole files with their safe areas */
+.fulls { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 24px; }
+.full { position: relative; width: 100%; background-size: 100% 100%; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+.full.fb { aspect-ratio: 1640 / 720; }
+.full.yt { aspect-ratio: 2560 / 1440; }
+.g { position: absolute; pointer-events: none; }
+.g.cut { background: repeating-linear-gradient(135deg, rgba(10, 6, 4, .58) 0 6px, rgba(10, 6, 4, .38) 6px 12px); }
+.g.cut.soft { background: repeating-linear-gradient(135deg, rgba(10, 6, 4, .34) 0 6px, rgba(10, 6, 4, .16) 6px 12px); }
+.g.safe { border: 2px dashed #FFE27A; box-shadow: 0 0 0 1px rgba(0, 0, 0, .55); border-radius: 2px; }
+.g.ring { border: 2px dashed #9EE6FF; border-radius: 50%; box-shadow: 0 0 0 1px rgba(0, 0, 0, .45); }
+.g-tag { position: absolute; font: 600 10px/1.2 var(--sans); color: #FFF8EE; background: rgba(12, 8, 6, .78); padding: 3px 6px; border-radius: 4px; white-space: nowrap; pointer-events: none; }
+.hide-guides .g, .hide-guides .g-tag { display: none; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--muted); }
+.legend i { display: inline-block; width: 22px; height: 12px; vertical-align: -1px; margin-right: 6px; border-radius: 2px; }
+.lg-cut { background: repeating-linear-gradient(135deg, #3A2A21 0 4px, #8B7869 4px 8px); }
+.lg-safe { border: 2px dashed #C89B00; }
+.lg-ring { border: 2px dashed #1F8FB8; border-radius: 50% !important; width: 14px !important; }
+.files { font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 14px; }
+
+/* ---------- Pick ---------- */
+.tbl-wrap { overflow-x: auto; margin-top: 18px; border: 1px solid var(--rule); border-radius: 14px; background: var(--card); }
+table { border-collapse: collapse; width: 100%; min-width: 640px; }
+th, td { padding: 12px 14px; text-align: left; vertical-align: middle; border-bottom: 1px solid var(--rule); }
+tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+thead th { font: 600 12px/1.3 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+thead th .letter { font-size: 22px; letter-spacing: 0; text-transform: none; margin-right: 4px; }
+tbody th { font-weight: 600; font-size: 15px; }
+tbody th span { display: block; font-weight: 400; font-size: 13px; color: var(--muted); }
+.opt { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 6px; border-radius: 10px; border: 2px solid transparent; }
+.opt:has(input:checked) { border-color: var(--accent); background: var(--chip); }
+.opt input { width: 18px; height: 18px; accent-color: var(--accent); flex: none; }
+.thumb { display: block; border-radius: 4px; background-size: cover; background-position: center; flex: none; box-shadow: 0 0 0 1px rgba(0, 0, 0, .12); }
+.thumb.fb { width: 92px; aspect-ratio: 1640 / 720; }
+.thumb.yt { width: 92px; aspect-ratio: 16 / 9; }
+.all-btn { font: 600 14px/1 var(--sans); color: var(--ink); background: var(--chip); border: 1px solid var(--rule); border-radius: 999px; padding: 9px 14px; cursor: pointer; }
+.all-btn:hover { border-color: var(--accent); }
+.pick-foot { display: grid; gap: 10px; margin-top: 18px; max-width: 760px; }
+.pick-foot label { font-weight: 600; font-size: 15px; }
+textarea { font: 15px/1.5 var(--sans); color: var(--ink); background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 10px 12px; resize: vertical; width: 100%; }
+.answer { margin: 0; padding: 14px 16px; background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--accent); border-radius: 10px; white-space: pre-wrap; overflow-wrap: anywhere; font: 15px/1.55 var(--sans); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.btn { font: 600 15px/1 var(--sans); color: var(--accent-ink); background: var(--accent); border: 0; border-radius: 999px; padding: 12px 18px; cursor: pointer; }
+.status { font-size: 14px; color: var(--muted); }
+
+/* ---------- Texts ---------- */
+.bios { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; margin-top: 18px; align-items: start; }
+.bios.long { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+.bio { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 16px; display: grid; gap: 10px; align-content: start; }
+.bio header { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.bio h3 { font-size: 22px; }
+.count { font: 600 12px/1 var(--sans); font-variant-numeric: tabular-nums; color: var(--ok); background: var(--ok-bg); padding: 5px 8px; border-radius: 999px; white-space: nowrap; }
+.bio-text { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 15px; }
+.bio-extra { font-size: 13px; color: var(--muted); }
+.copy { justify-self: start; font: 600 14px/1 var(--sans); color: var(--ink); background: var(--chip); border: 1px solid var(--rule); border-radius: 999px; padding: 9px 14px; cursor: pointer; }
+
+/* ---------- Handles ---------- */
+.chip { display: inline-block; font: 600 12px/1.2 var(--sans); padding: 4px 8px; border-radius: 999px; white-space: nowrap; }
+.chip.ok { color: var(--ok); background: var(--ok-bg); }
+.chip.no { color: var(--no); background: var(--no-bg); }
+.chip.unk { color: var(--unk); background: var(--unk-bg); }
+.handles td small { display: block; margin-top: 4px; font-size: 13px; color: var(--muted); max-width: 52ch; }
+.handles td small b { color: var(--ink); }
+
+/* ---------- Specs ---------- */
+.specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 16px; margin-top: 18px; align-items: start; }
+.spec { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 16px; display: grid; gap: 8px; align-content: start; }
+.spec h3 { font-size: 22px; }
+.spec ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 15px; }
+.spec li::marker { color: var(--accent); }
+.fine { margin-top: 26px; font-size: 13px; color: var(--muted); max-width: 80ch; }
+
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap" id="page">
+<header class="top">
+  <p class="kicker">Facebook, Instagram och YouTube</p>
+  <h1>Välj Birdys <em>ansikte</em> i sociala medier</h1>
+  <p class="lede">Tre riktningar för profilbild, Facebook-omslag och YouTube-banner, var och en i sidramar som liknar mobilen och datorn. Alla nio filer är klara att ladda upp i rätt storlek, med text och logga inom de säkra ytorna. Välj längst ned, blanda gärna, och kopiera svaret.</p>
+  <div class="rec">
+    <span class="rec-tag">Mitt förslag</span>
+    <p><b>C Flocken för alla tre.</b> Modigast, helt Birdys egen och den enda vars profilbild lyser upp ovanför videornas mörka rutnät. Vill du att profilen ska se ut precis som videorna, ta <b>A Sånghalon</b>.</p>
+  </div>
+  <nav class="jump" aria-label="På sidan">
+    <a href="#halo">A Sånghalon</a><a href="#plansch">B Fältplanschen</a><a href="#flock">C Flocken</a><a href="#valj">Välj</a><a href="#texter">Texterna</a><a href="#namn">Konton</a><a href="#matt">Mått och källor</a>
+    <label class="toggle" for="guides"><input type="checkbox" id="guides" checked> Visa säkra ytor</label>
+  </nav>
+</header>
+
+<h2 class="sec" id="jamfor">Profilbilden i liten storlek</h2>
+<p class="sec-note">Profilbilden syns oftast liten: runt 110 px på Instagram-profilen, 40 px i kommentarer och 32 px bredvid inlägg i flödet. Samma fil används på alla plattformar och beskärs till en cirkel.</p>
+<div class="cmp-grid">
+  <article class="cmp">
+    <div class="sizes light"><i class="av s110 i-av-halo" role="img" aria-label="Profilbild A, 110 px"></i><i class="av s56 i-av-halo"></i><i class="av s32 i-av-halo"></i><small>Ljust</small></div>
+    <div class="sizes dark"><i class="av s110 i-av-halo" role="img" aria-label="Profilbild A på mörkt, 110 px"></i><i class="av s56 i-av-halo"></i><i class="av s32 i-av-halo"></i><small>Mörkt</small></div>
+    <h3><span class="letter">A</span> Sånghalon</h3>
+    <p>Ringen från videorna med fågeln i mitten. Tydlig i alla storlekar, men mörk mot mörkt.</p>
+  </article>
+  <article class="cmp">
+    <div class="sizes light"><i class="av s110 i-av-plansch" role="img" aria-label="Profilbild B, 110 px"></i><i class="av s56 i-av-plansch"></i><i class="av s32 i-av-plansch"></i><small>Ljust</small></div>
+    <div class="sizes dark"><i class="av s110 i-av-plansch" role="img" aria-label="Profilbild B på mörkt, 110 px"></i><i class="av s56 i-av-plansch"></i><i class="av s32 i-av-plansch"></i><small>Mörkt</small></div>
+    <h3><span class="letter">B</span> Fältplanschen</h3>
+    <p>Appens präglade sigill. Skarpast av de tre i 32 px.</p>
+  </article>
+  <article class="cmp">
+    <div class="sizes light"><i class="av s110 i-av-flock" role="img" aria-label="Profilbild C, 110 px"></i><i class="av s56 i-av-flock"></i><i class="av s32 i-av-flock"></i><small>Ljust</small></div>
+    <div class="sizes dark"><i class="av s110 i-av-flock" role="img" aria-label="Profilbild C på mörkt, 110 px"></i><i class="av s56 i-av-flock"></i><i class="av s32 i-av-flock"></i><small>Mörkt</small></div>
+    <h3><span class="letter">C</span> Flocken</h3>
+    <p>Fågeln av 839 små fåglar. Lyser mest, men blir kornig i 32 px.</p>
+  </article>
+</div>
+
+<section class="dir" id="halo" aria-labelledby="halo-h">
+  <div class="dir-head">
+    <p class="dir-letter" aria-hidden="true">A</p>
+    <div class="dir-copy">
+      <h2 id="halo-h">Sånghalon</h2>
+      <p class="dir-hand">profilen ser ut som videorna</p>
+      <p class="dir-text">Ringen från <i>See the song</i> blir Birdys ansikte. Profilbilden är ringen med fågeln i mitten, och omslagen fångar ögonblicket då sången får en bild: en rörsångare som sjunger mitt i ringen. Espresso och aprikos, precis som videorna i flödet. Rubriken är videornas egen fråga, <i>Whose song is this?</i></p>
+      <dl class="pros">
+        <div><dt>Styrka</dt><dd>Profil och flöde blir ett verk: den som har sett en video känner igen profilbilden direkt.</dd></div>
+        <div><dt>Risk</dt><dd>Mörk profilbild ovanför ett mörkt rutnät, så profilen sticker ut minst av de tre. Varumärket knyts till en videoserie.</dd></div>
+      </dl>
+    </div>
+  </div>
+<!--{{MOCKS:halo}}-->
+</section>
+
+<section class="dir" id="plansch" aria-labelledby="plansch-h">
+  <div class="dir-head">
+    <p class="dir-letter" aria-hidden="true">B</p>
+    <div class="dir-copy">
+      <h2 id="plansch-h">Fältplanschen</h2>
+      <p class="dir-hand">fältboken, sigillet och en riktig fågel</p>
+      <p class="dir-text">Fältbokens papper med en utriven plansch: en domherre i snön på Facebook och en talgoxe på YouTube, båda fotona CC0. Profilbilden är appens präglade sigill i koppar, med <i>Bird guide, Field journal, Birdy</i> runt kanten. Rubriken är webbens <i>Know the bird. Keep the moment.</i></p>
+      <dl class="pros">
+        <div><dt>Styrka</dt><dd>Riktiga fåglar säger direkt vad Birdy är, och sigillet är den tydligaste profilbilden av de tre i små storlekar.</dd></div>
+        <div><dt>Risk</dt><dd>Den mest väntade av de tre, närmast webben. Utan texten är omslaget en vacker fågelbild bland andra.</dd></div>
+      </dl>
+    </div>
+  </div>
+<!--{{MOCKS:plansch}}-->
+</section>
+
+<section class="dir" id="flock" aria-labelledby="flock-h">
+  <div class="dir-head">
+    <p class="dir-letter" aria-hidden="true">C</p>
+    <div class="dir-copy">
+      <h2 id="flock-h">Flocken</h2>
+      <p class="dir-hand">839 fåglar, en för varje art</p>
+      <p class="dir-text">Birdys fågel byggd av en flock: exakt 839 små fåglar, en för varje art i appen, i koppar, mässing och rost på persika. På omslagen strömmar flocken in från vänster som en starflock i skymningen och blir till märket. Inga foton, bara Birdys egen form, och rubriken <i>Europe’s birds, in your pocket.</i></p>
+      <dl class="pros">
+        <div><dt>Styrka</dt><dd>Mest egen och mest modig, och idén går att berätta: en fågel för varje art. Den ljusa profilbilden lyser upp ovanför videornas mörka rutnät.</dd></div>
+        <div><dt>Risk</dt><dd>Profilbilden är mönstrad och blir kornig i 32 px. Utan foto säger omslaget mindre om riktiga fåglar.</dd></div>
+      </dl>
+    </div>
+  </div>
+<!--{{MOCKS:flock}}-->
+</section>
+
+<section aria-labelledby="valj">
+  <h2 class="sec" id="valj">Välj</h2>
+  <p class="sec-note">Förvalt efter mitt förslag. Blanda gärna, till exempel profilbilden från en riktning och omslagen från en annan. Svaret nedan följer med när du väljer; kopiera det och klistra in i chatten.</p>
+  <div class="tbl-wrap">
+    <table class="pick">
+      <thead>
+        <tr><th scope="col">Del</th><th scope="col"><span class="letter">A</span> Sånghalon</th><th scope="col"><span class="letter">B</span> Fältplanschen</th><th scope="col"><span class="letter">C</span> Flocken</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Allt från samma riktning</th>
+          <td><button type="button" class="all-btn" data-all="A">A för allt</button></td>
+          <td><button type="button" class="all-btn" data-all="B">B för allt</button></td>
+          <td><button type="button" class="all-btn" data-all="C">C för allt</button></td>
+        </tr>
+        <tr>
+          <th scope="row">Profilbild<span>1080 × 1080, alla plattformar</span></th>
+          <td><label class="opt" for="p-profil-A"><input type="radio" name="profil" id="p-profil-A" value="A"><i class="av s40 i-av-halo"></i>A</label></td>
+          <td><label class="opt" for="p-profil-B"><input type="radio" name="profil" id="p-profil-B" value="B"><i class="av s40 i-av-plansch"></i>B</label></td>
+          <td><label class="opt" for="p-profil-C"><input type="radio" name="profil" id="p-profil-C" value="C" checked><i class="av s40 i-av-flock"></i>C</label></td>
+        </tr>
+        <tr>
+          <th scope="row">Facebook-omslag<span>1640 × 720</span></th>
+          <td><label class="opt" for="p-fb-A"><input type="radio" name="fb" id="p-fb-A" value="A"><i class="thumb fb i-fb-halo"></i>A</label></td>
+          <td><label class="opt" for="p-fb-B"><input type="radio" name="fb" id="p-fb-B" value="B"><i class="thumb fb i-fb-plansch"></i>B</label></td>
+          <td><label class="opt" for="p-fb-C"><input type="radio" name="fb" id="p-fb-C" value="C" checked><i class="thumb fb i-fb-flock"></i>C</label></td>
+        </tr>
+        <tr>
+          <th scope="row">YouTube-banner<span>2560 × 1440</span></th>
+          <td><label class="opt" for="p-yt-A"><input type="radio" name="yt" id="p-yt-A" value="A"><i class="thumb yt i-yt-halo"></i>A</label></td>
+          <td><label class="opt" for="p-yt-B"><input type="radio" name="yt" id="p-yt-B" value="B"><i class="thumb yt i-yt-plansch"></i>B</label></td>
+          <td><label class="opt" for="p-yt-C"><input type="radio" name="yt" id="p-yt-C" value="C" checked><i class="thumb yt i-yt-flock"></i>C</label></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pick-foot">
+    <label for="pick-note">Kommentar (valfri)</label>
+    <textarea id="pick-note" rows="2" placeholder="Till exempel: byt fågel i omslaget, eller ändra en text"></textarea>
+    <p class="answer" id="pick-answer" aria-live="polite"></p>
+    <div class="btn-row"><button type="button" class="btn" id="pick-copy">Kopiera svaret</button><span class="status" id="pick-status" role="status"></span></div>
+  </div>
+</section>
+
+<section aria-labelledby="texter">
+  <h2 class="sec" id="texter">Profiltexterna</h2>
+  <p class="sec-note">På engelska, som allt i kanalerna, och bara sådant som stämmer: identifiering och ljud-ID är gratis, Premium är ett tillval, appen laddar inte upp dina fynd, iPhone kommer. Inga löften om träffsäkerhet. Samma texter finns i <code>bios.md</code> i mappen.</p>
+  <div class="bios">
+<!--{{BIOS_SHORT}}-->
+  </div>
+  <div class="bios long">
+<!--{{BIOS_LONG}}-->
+  </div>
+</section>
+
+<section aria-labelledby="namn">
+  <h2 class="sec" id="namn">Konton och användarnamn</h2>
+  <p class="sec-note">Läget 8 oktober. Mitt förslag: <b>birdy.community</b> överallt. Det är redan webbadressen, YouTube-namnet och raden i slutet av varje video, så folk hittar Birdy under samma namn var de än ser det.</p>
+  <div class="tbl-wrap">
+    <table class="handles">
+      <thead><tr><th scope="col">Plattform</th><th scope="col">Nu</th><th scope="col">Förslag</th></tr></thead>
+      <tbody>
+        <tr>
+          <th scope="row">Facebook</th>
+          <td><span class="chip ok">Klar</span><small>Sidan <b>Birdy</b>, kategori Applikationssida, inget användarnamn än: <a href="https://www.facebook.com/profile.php?id=61595339305266">profile.php?id=61595339305266</a></small></td>
+          <td><small>Sätt användarnamnet <b>birdy.community</b> (Facebook bortser från punkter, så det räknas som birdycommunity). Säger Facebook nej, behåll nummerlänken tills vidare.</small></td>
+        </tr>
+        <tr>
+          <th scope="row">Instagram</th>
+          <td><span class="chip ok">Klar</span><small><b>@app.birdy</b>, kopplat till Facebook-sidan.</small></td>
+          <td><small>Byt till <b>@birdy.community</b> i dag, före första inlägget fredag 08.00, om namnet är ledigt (Instagram kollar det medan du skriver). Är det upptaget, behåll @app.birdy här och kör birdy.community på resten.</small></td>
+        </tr>
+        <tr>
+          <th scope="row">YouTube</th>
+          <td><span class="chip ok">Klar</span><small><b>@birdy.community</b>, din kanal.</small></td>
+          <td><small>Behåll.</small></td>
+        </tr>
+        <tr>
+          <th scope="row">TikTok</th>
+          <td><span class="chip unk">Inte skapat</span><small>@birdy.community var ledigt 8 oktober; @birdyapp är upptaget.</small></td>
+          <td><small>Registrera <b>@birdy.community</b> nu, även om kontot får vänta. Undvik birdycommunity: en kryptovaluta som heter Birdy använder det på TikTok.</small></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sec-note" style="margin-top:16px">Inläggen: allt på engelska, med fågelns svenska namn inom parentes efter det engelska och #fåglar #fågelskådning bland hashtaggarna, till exempel <i>The Eurasian Blue Tit (Blåmes) is a tit with a pale blue crown…</i></p>
+</section>
+
+<section aria-labelledby="matt">
+  <h2 class="sec" id="matt">Mått och källor</h2>
+  <div class="specs">
+    <article class="spec">
+      <h3>Profilbild</h3>
+      <ul>
+        <li><code>profile-*.png</code> 1080 × 1080, under 0,7 MB, långt under plattformarnas gränser. Samma fil fungerar för Instagram, Facebook, YouTube och senare TikTok.</li>
+        <li>Alla fyra beskär till en cirkel; märket ligger inom en cirkel med radien 505 px.</li>
+        <li>Instagram visar den runt 110 px på profilen, så den är byggd för att läsas i 32 px.</li>
+      </ul>
+    </article>
+    <article class="spec">
+      <h3>Facebook-omslag</h3>
+      <ul>
+        <li><code>facebook-cover-*.png</code> 1640 × 720, PNG eftersom omslaget har text (Meta rekommenderar PNG för text och logga).</li>
+        <li>Dator visar 820 × 312, alltså hela bredden men inte de översta och nedersta 48 px. Mobilen visar 640 × 360, alltså hela höjden men inte 180 px på var sida.</li>
+        <li>Säker yta 1280 × 624 i mitten. I mobilen täcker profilbilden nedre vänstra hörnet, så där finns ingen text.</li>
+        <li>Ladda upp och låt den ligga centrerad, dra inte i den.</li>
+      </ul>
+    </article>
+    <article class="spec">
+      <h3>YouTube-banner</h3>
+      <ul>
+        <li><code>youtube-banner-*.png</code> 2560 × 1440, under 1 MB (gränsen är 6 MB).</li>
+        <li>All text och loggan ligger inom den säkra ytan 1546 × 423 i mitten, det enda som syns i mobilen.</li>
+        <li>Datorn visar hela bredden i mittbandet (2560 × 423), TV visar hela bilden.</li>
+        <li>Godta YouTubes förhandsvisning som den är när du laddar upp.</li>
+      </ul>
+    </article>
+    <article class="spec">
+      <h3>Bildkällor</h3>
+      <ul>
+        <li>Rörsångare (A): Hobbyfotowiki, CC0, <a href="https://commons.wikimedia.org/wiki/File:Common_Reed_Warbler_(Acrocephalus_scirpaceus).jpg">Wikimedia Commons</a>.</li>
+        <li>Domherre (B, Facebook): Estormiz, CC0, <a href="https://commons.wikimedia.org/wiki/File:Pyrrhula_Pyrrhula_Kittil%C3%A4_20170408_01.jpg">Wikimedia Commons</a>.</li>
+        <li>Talgoxe (B, YouTube): Hobbyfotowiki, CC0, <a href="https://commons.wikimedia.org/wiki/File:Great_tit_(Parus_major),_North_Rhine-Westphalia.jpg">Wikimedia Commons</a>.</li>
+        <li>Licensen kontrollerad mot Commons i dag. Bara CC0 där text eller logga ligger nära ett foto, ingen ton över något foto och inga AI-fåglar. C har inga foton alls.</li>
+      </ul>
+    </article>
+  </div>
+  <p class="fine">Måtten kontrollerade 8 oktober 2026 mot flera aktuella storleksguider som citerar Meta och YouTube (Metas egna siffror: 820 × 312 på dator och 640 × 360 i mobilen; YouTubes: 2560 × 1440, säker yta 1546 × 423, max 6 MB). Var profilbilden hamnar över Facebook-omslaget i mobilen är uppmätt ungefär och kan skilja lite mellan telefoner. Fågelmärket är vektoriserat från appens egen bild (<code>kalla/birdy-bird.svg</code>), och filerna renderas om med <code>node kalla/render.mjs</code>. Rutnätet i Instagram-skissen visar omslagen från veckans videor.</p>
+</section>
+</div>
+
+<script>
+'use strict';
+(function () {
+  const NAMES = { A: 'A Sånghalon', B: 'B Fältplanschen', C: 'C Flocken' };
+  const FILES = { A: 'halo', B: 'plansch', C: 'flock' };
+  const page = document.getElementById('page');
+  const guides = document.getElementById('guides');
+  guides.addEventListener('change', () => page.classList.toggle('hide-guides', !guides.checked));
+
+  const answer = document.getElementById('pick-answer');
+  const note = document.getElementById('pick-note');
+  const val = (name) => (document.querySelector(`input[name="${name}"]:checked`) || {}).value;
+  function update() {
+    const p = val('profil'), f = val('fb'), y = val('yt');
+    const lines = [
+      'Sociala profiler:',
+      `Profilbild: ${NAMES[p]} (profile-${FILES[p]}.png)`,
+      `Facebook-omslag: ${NAMES[f]} (facebook-cover-${FILES[f]}.png)`,
+      `YouTube-banner: ${NAMES[y]} (youtube-banner-${FILES[y]}.png)`,
+    ];
+    if (note.value.trim()) lines.push(`Kommentar: ${note.value.trim()}`);
+    answer.textContent = lines.join('\n');
+  }
+  document.querySelectorAll('.pick input').forEach((i) => i.addEventListener('change', update));
+  note.addEventListener('input', update);
+  document.querySelectorAll('[data-all]').forEach((b) => b.addEventListener('click', () => {
+    for (const n of ['profil', 'fb', 'yt']) document.getElementById(`p-${n}-${b.dataset.all}`).checked = true;
+    update();
+  }));
+  update();
+
+  function selectText(el) {
+    const r = document.createRange(); r.selectNodeContents(el);
+    const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  function copy(el, statusEl, done) {
+    const text = el.textContent;
+    const fallback = () => { selectText(el); statusEl.textContent = 'Markerat. Tryck Ctrl+C (Cmd+C på Mac) för att kopiera.'; };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => { statusEl.textContent = done; }, fallback);
+    } else fallback();
+  }
+  document.getElementById('pick-copy').addEventListener('click', () => copy(answer, document.getElementById('pick-status'), 'Kopierat. Klistra in svaret i chatten.'));
+  document.querySelectorAll('.copy').forEach((b) => {
+    const status = b.nextElementSibling;
+    b.addEventListener('click', () => copy(document.getElementById(b.dataset.copy), status, 'Kopierat.'));
+  });
+})();
+</script>
