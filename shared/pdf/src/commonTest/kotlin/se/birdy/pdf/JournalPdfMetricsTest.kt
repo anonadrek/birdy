@@ -22,19 +22,7 @@ class JournalPdfMetricsTest {
     @Test
     fun fmt_replaces_placeholders_in_order() = assertEquals("3 av 7", JournalPdfMetrics.fmt("%s av %s", "3", "7"))
 
-    // Release 1.3.0 Task 7g: "1 arter sedda" on the title page.
-    @Test
-    fun teaser_says_one_species_seen_in_the_singular() {
-        assertEquals("1 art sedd • 1 fynd", JournalPdfMetrics.teaser(speciesSeen = 1, finds = 1))
-    }
-
-    @Test
-    fun teaser_says_several_species_seen_in_the_plural() {
-        assertEquals("3 arter sedda • 7 fynd", JournalPdfMetrics.teaser(speciesSeen = 3, finds = 7))
-    }
-
-    @Test
-    fun teaser_says_no_species_seen_in_the_plural() {
-        assertEquals("0 arter sedda • 0 fynd", JournalPdfMetrics.teaser(speciesSeen = 0, finds = 0))
-    }
+    // teaser() moved to JournalPdfStrings when the PDF's text became per-locale (an English
+    // user's export was printing Swedish headings) — see JournalPdfStringsTest for its coverage,
+    // including the Task 7g singular/plural rule this test used to cover here.
 }

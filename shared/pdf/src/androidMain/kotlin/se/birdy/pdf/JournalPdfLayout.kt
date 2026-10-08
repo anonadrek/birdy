@@ -42,10 +42,15 @@ internal object JournalPdfLayout {
 
         val titlePaint =
             dmSerifItalicPaint(textSize = JournalPdfMetrics.TITLE_SIZE, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)
-        canvas.drawText(JournalPdfMetrics.TITLE, JournalPdfMetrics.PAGE_W / 2f, JournalPdfMetrics.MARGIN_TOP + 150f, titlePaint)
+        canvas.drawText(
+            input.strings.title,
+            JournalPdfMetrics.PAGE_W / 2f,
+            JournalPdfMetrics.MARGIN_TOP + 150f,
+            titlePaint,
+        )
 
         val subPaint = caveatPaint(textSize = JournalPdfMetrics.TITLE_SUB, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)
-        val byline = JournalPdfMetrics.fmt(JournalPdfMetrics.BY_FMT, input.displayName)
+        val byline = JournalPdfMetrics.fmt(input.strings.byFmt, input.displayName)
         canvas.drawText(byline, JournalPdfMetrics.PAGE_W / 2f, JournalPdfMetrics.MARGIN_TOP + 188f, subPaint)
 
         val yearPaint =
@@ -56,7 +61,7 @@ internal object JournalPdfLayout {
 
         val teaserPaint = caveatPaint(textSize = JournalPdfMetrics.TITLE_TEASER, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)
         val teaserText =
-            JournalPdfMetrics.teaser(
+            input.strings.teaser(
                 speciesSeen = input.stats.speciesSeenThisYear,
                 finds = input.stats.totalObservationsThisYear,
             )
@@ -78,8 +83,8 @@ internal object JournalPdfLayout {
         val year = JournalPdfMetrics.yearOf(input.generatedAtMs, TimeZone.currentSystemDefault())
         drawSectionHeader(
             canvas,
-            eyebrow = JournalPdfMetrics.STATS_EYEBROW,
-            title = JournalPdfMetrics.fmt(JournalPdfMetrics.STATS_TITLE_FMT, "$year"),
+            eyebrow = input.strings.statsEyebrow,
+            title = JournalPdfMetrics.fmt(input.strings.statsTitleFmt, "$year"),
         )
 
         val bigNumberPaint =
@@ -90,16 +95,16 @@ internal object JournalPdfLayout {
 
         val statsY = JournalPdfMetrics.MARGIN_TOP + 200f
         canvas.drawText("${input.stats.speciesSeenThisYear}", JournalPdfMetrics.MARGIN_X + 10f, statsY, bigNumberPaint)
-        canvas.drawText(JournalPdfMetrics.STAT_SPECIES, JournalPdfMetrics.MARGIN_X + 10f, statsY + 22f, captionPaint)
+        canvas.drawText(input.strings.statSpecies, JournalPdfMetrics.MARGIN_X + 10f, statsY + 22f, captionPaint)
         canvas.drawText("${input.stats.totalObservationsThisYear}", JournalPdfMetrics.MARGIN_X + colW + 10f, statsY, bigNumberPaint)
-        canvas.drawText(JournalPdfMetrics.STAT_TOTAL, JournalPdfMetrics.MARGIN_X + colW + 10f, statsY + 22f, captionPaint)
+        canvas.drawText(input.strings.statTotal, JournalPdfMetrics.MARGIN_X + colW + 10f, statsY + 22f, captionPaint)
 
         // Top species bar chart (max 5)
         if (input.stats.topSpecies.isNotEmpty()) {
             val chartTop = statsY + 80f
             val topsHeaderPaint =
                 dmSerifItalicPaint(textSize = JournalPdfMetrics.TOPS_HEADER, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)
-            canvas.drawText(JournalPdfMetrics.TOPS, JournalPdfMetrics.MARGIN_X, chartTop, topsHeaderPaint)
+            canvas.drawText(input.strings.tops, JournalPdfMetrics.MARGIN_X, chartTop, topsHeaderPaint)
 
             val barAreaX = JournalPdfMetrics.MARGIN_X + 140f
             val barAreaW = JournalPdfMetrics.PAGE_W - barAreaX - JournalPdfMetrics.MARGIN_X
@@ -152,11 +157,11 @@ internal object JournalPdfLayout {
 
         val eyebrow =
             if (totalSpeciesPages > 1) {
-                JournalPdfMetrics.fmt(JournalPdfMetrics.SPECIES_EYEBROW_PAGED_FMT, "${pageIndex + 1}", "$totalSpeciesPages")
+                JournalPdfMetrics.fmt(input.strings.speciesEyebrowPagedFmt, "${pageIndex + 1}", "$totalSpeciesPages")
             } else {
-                JournalPdfMetrics.SPECIES_EYEBROW
+                input.strings.speciesEyebrow
             }
-        drawSectionHeader(canvas, eyebrow = eyebrow, title = JournalPdfMetrics.SPECIES_TITLE)
+        drawSectionHeader(canvas, eyebrow = eyebrow, title = input.strings.speciesTitle)
 
         val rowTop = JournalPdfMetrics.MARGIN_TOP + 170f
         val rowH = 24f
@@ -192,9 +197,9 @@ internal object JournalPdfLayout {
                 canvas.drawText(row.scientificName, JournalPdfMetrics.MARGIN_X + 26f, y + 12f, sciPaint)
             }
 
-            val countText = JournalPdfMetrics.fmt(JournalPdfMetrics.COUNT_FMT, "${row.count}")
+            val countText = JournalPdfMetrics.fmt(input.strings.countFmt, "${row.count}")
             val firstSeenDate = JournalPdfMetrics.formatDate(row.firstSeenMs, TimeZone.currentSystemDefault())
-            val firstSeenText = JournalPdfMetrics.fmt(JournalPdfMetrics.FIRST_FMT, firstSeenDate)
+            val firstSeenText = JournalPdfMetrics.fmt(input.strings.firstFmt, firstSeenDate)
             val rightX = JournalPdfMetrics.PAGE_W - JournalPdfMetrics.MARGIN_X - 120f
             canvas.drawText(countText, rightX, y, countPaint)
             canvas.drawText(firstSeenText, rightX, y + 12f, datePaint)
@@ -216,7 +221,7 @@ internal object JournalPdfLayout {
         val canvas = page.canvas
         paintPaperBg(canvas)
 
-        drawSectionHeader(canvas, eyebrow = JournalPdfMetrics.BADGES_EYEBROW, title = JournalPdfMetrics.BADGES_TITLE)
+        drawSectionHeader(canvas, eyebrow = input.strings.badgesEyebrow, title = input.strings.badgesTitle)
 
         val rowTop = JournalPdfMetrics.MARGIN_TOP + 180f
         val rowH = 48f
@@ -268,7 +273,7 @@ internal object JournalPdfLayout {
         val genPaint = caveatPaint(textSize = JournalPdfMetrics.COLOPHON_GEN, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)
         val generatedAt = JournalPdfMetrics.formatDateTime(input.generatedAtMs, TimeZone.currentSystemDefault())
         canvas.drawText(
-            JournalPdfMetrics.fmt(JournalPdfMetrics.GENERATED_FMT, generatedAt),
+            JournalPdfMetrics.fmt(input.strings.generatedFmt, generatedAt),
             JournalPdfMetrics.PAGE_W / 2f,
             JournalPdfMetrics.PAGE_H / 2f + 28f,
             genPaint,

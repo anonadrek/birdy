@@ -11,6 +11,11 @@ data class JournalPdfInput(
     val speciesByQid: Map<String, Species>,
     val stats: Stats,
     val unlockedPremiumBadges: List<BadgeRef>,
+    // Defaults to Swedish only so fixtures that don't care about language (pagination, early-
+    // return tests) don't all need updating. The real production path, ExportJournalUseCase,
+    // always passes this explicitly from the already-resolved app locale — never relies on the
+    // default.
+    val strings: JournalPdfStrings = JournalPdfStrings.SV,
 ) {
     data class Stats(
         val speciesSeenThisYear: Int,
