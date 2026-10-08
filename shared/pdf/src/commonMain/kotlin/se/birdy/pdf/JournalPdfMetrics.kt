@@ -25,6 +25,15 @@ object JournalPdfMetrics {
     const val MARGIN_TOP: Float = 60f
     const val MARGIN_BOTTOM: Float = 60f
 
+    /** Topparternas staplar börjar så här långt in från MARGIN_X; etiketterna står i kolumnen före. */
+    const val TOPS_BAR_OFFSET: Float = 140f
+
+    /** Luft mellan en etikett och stapeln, så att etiketten aldrig rör stapeln. */
+    const val TOPS_LABEL_GAP: Float = 8f
+
+    /** Minsta skala för en lång etikett innan den kortas med "…" ([fitLabel]). */
+    const val LABEL_MIN_SCALE: Float = 0.75f
+
     // ----- Palett (ARGB Long) — Field Journal "Mossa, rost & mässing" (1.3.0) -------------------
     const val COLOR_PAPER_BG: Long = 0xFFF6EFE2 // MossCreme
     const val COLOR_PAPER_EDGE: Long = 0xFFDFD2BA // Hairline
