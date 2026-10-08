@@ -520,7 +520,9 @@
     "builtBy": "Byggd av",
     "species": "Arter",
     "allSpecies": "Alla arter från A till Ö",
-    "commonSpecies": "Vanliga arter"
+    "commonSpecies": "Vanliga arter",
+    "follow": "Följ Birdy",
+    "followOn": "Birdy på {network}"
   },
   "alt": {
     "wordmark": "Birdys ordbild",

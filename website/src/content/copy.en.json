@@ -520,7 +520,9 @@
     "builtBy": "Built by",
     "species": "Species",
     "allSpecies": "All species A to Z",
-    "commonSpecies": "Common species"
+    "commonSpecies": "Common species",
+    "follow": "Follow Birdy",
+    "followOn": "Birdy on {network}"
   },
   "alt": {
     "wordmark": "Birdy wordmark",
