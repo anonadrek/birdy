@@ -1,13 +1,660 @@
 {
   "qid": "Q26961",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Sävsparven är en medelstor sparv som mäter 13,5–15,5 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sävsparven är en medelstor sparv, som mäter 13,5–15,5 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Sävsparven väger 10–28 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "13.5–15.5 cm (5.3–6.1 in) long and weighing 10–28 g"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Fjäderdräkten är mest brun och beigevit, med vita stjärtsidor och mörk längsstreckning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fjäderdräkten är mest brun och beigevit, med vita stjärtsidor och mörk längssträckning."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "sex_age",
+      "sv": "Hanen i häckningsdräkt har svart huvud, vitt halsband och vitt mustaschstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hane i häckningsdräkt är lätt att känna igen med svart huvud, vitt halsband och vitt mustaschstreck."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "I övriga dräkter har sävsparven beigefärgat ögonbrynsstreck och gråbrunt på hjässan och kinden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I övriga dräkter har den beigefärgat ögonbrynsstreck och gråbrunt på hjässan och kinden."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Honans strupe är ofläckat beigevit med svarta strupsidestreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "honans ofläckat beigevit med svarta strupsidestreck"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Sävsparven har karakteristiska rödbruna mindre vingtäckare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Karakteristiskt är också rödbruna mindre vingtäckare"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Näbben är mörk och vanligen liten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är mörk och vanligen liten"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Efter höstruggningen döljs hanens kontrastrika teckning av grå fjäderkanter, som slits bort under vintern.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Nach der Herbstmauser ist diese kontrastreiche Färbung durch graue Federsäume verdeckt und kommt im Verlauf des Winters nach Verschleiß der Federränder wieder zum Vorschein."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Ungfåglar liknar den vuxna honan.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Jungvögel gleichen dem adulten Weibchen."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Bland lätena finns mjuka ”siy” och orena ”bzy”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bland lätena förekommer dels mjuka \"siy\" och orena \"bzy\"."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången är ett ganska monotont upprepat ”zripp zripp zryy”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången är ett ganska monotont upprepat \"zripp zripp zryy\"."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "behaviour",
+      "sv": "Hanen sjunger från en upphöjd plats, ofta snett på ett strå med utbredd stjärt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "an erhöhter Stelle – häufig schräg an einem Halm – mit gespreiztem Schwanz sitzen, wenn sie ihren Gesang vortragen"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Sävsparven föredrar busksnår och bladvassbälten vid sjöar, dammar och vattendrag samt buskrika sumpmarker.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sävsparven föredrar busksnår och bladvassbälten i anslutning till sjöar, dammar och vattendrag samt buskrika sumpmarker."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "I fjällområden är sävsparven talrik i fjällbjörkskogen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I fjällområden är den talrik i fjällbjörkskogen"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Övervintringen sker i vegetationsrika våtmarker eller på jordbruksmark.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Övervintringen sker i vegetationsrika våtmarker eller på jordbruksmark."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Sävsparven anländer till Sverige runt mars–april och flyttar till Medelhavsländerna i oktober–november.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den anländer runt mars–april och flyttar till Medelhavsländerna i oktober–november."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Den högsta beståndstätheten i Sverige finns i fjällen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den högsta beståndstätheten förekommer i fjällen."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Lokalt finns mycket täta bestånd vid slättsjöarna i södra och mellersta Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lokalt finns även mycket täta bestånd vid slättsjöarna i södra och mellersta delarna av landet."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Den svenska populationen minskade med 35 procent mellan 2000 och 2014.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Mellan 2000 och 2014 minskade dock populationen med hela 35 %"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "I 2025 års svenska rödlista kategoriseras sävsparven som livskraftig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "har i och med 2025 års rödslista åter kategoriserats som livskraftig (LC)"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Boet placeras vanligtvis på marken, dolt av en starrtuva eller annan tät växtlighet, men kan byggas lågt i buskar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet placeras vanligtvis direkt på marken, dolt av en starrtuva eller annan tät växtlighet, men kan även byggas lågt i buskar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Kullen består oftast av fem till sex ägg som läggs i maj eller början av juni och ruvas av honan cirka 13 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kullen består oftast av fem till sex ägg som läggs i maj eller början av juni och ruvas av honan i cirka 13 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "I Skandinavien har sävsparven oftast bara en kull per år.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "in Skandinavien dagegen meistens nur eine Jahresbrut"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Sävsparven lever av insekter på sommaren och av frön resten av året.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lever av insekter på sommaren och övrig tid av frön."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "För att avleda rovdjur från boet fladdrar sävsparven längs marken som om den hade en skadad vinge.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "verleiten Rohrammern d. h., sie flattern wie flügellahm am Boden entlang"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Sävsparven flyttar dagtid, liksom andra fröätare.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "wandert die Rohrammer wie die anderen Samenfresser tagsüber"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Under uppvaktningen reser hanen ibland sitt vita halsband.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "richtet das Männchen gelegentlich seinen auffallend weißen Kragen auf"
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sävsparven är främst en sommargäst i Sverige men kan också övervintra."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i mars till juni och september."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Sävsparven är en medelstor sparv som häckar i Sverige.",
+          "factIds": [
+            "f01",
+            "s01"
+          ]
+        },
+        {
+          "text": "Den håller gärna till i busksnår och bladvassbälten vid sjöar, dammar och vattendrag samt i buskrika sumpmarker.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Hanen i häckningsdräkt har svart huvud, vitt halsband och vitt mustaschstreck",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Honan har ofläckat beigevit strupe med svarta strupsidestreck, ungfåglar liknar honan",
+          "factIds": [
+            "f06",
+            "f10"
+          ]
+        },
+        {
+          "text": "Mest brun och beigevit fjäderdräkt med mörk längsstreckning och vita stjärtsidor",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Rödbruna mindre vingtäckare och en mörk, vanligen liten näbb",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången är ett ganska monotont upprepat ”zripp zripp zryy”.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Bland lätena finns mjuka ”siy” och orena ”bzy”.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Hanen sjunger från en upphöjd plats, ofta snett på ett strå med utbredd stjärt.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Sävsparven är delvis flyttfågel och häckar i Sverige.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Den anländer runt mars till april och flyttar till Medelhavsländerna i oktober till november.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i mars till juni och september, och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Beståndstätheten är högst i fjällen, där den är talrik i fjällbjörkskogen.",
+          "factIds": [
+            "f18",
+            "f15"
+          ]
+        },
+        {
+          "text": "Lokalt finns mycket täta bestånd vid slättsjöarna i södra och mellersta Sverige.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "På sommaren äter sävsparven insekter och resten av året frön.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Den flyttar dagtid, liksom andra fröätare.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Under uppvaktningen reser hanen ibland sitt vita halsband.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "För att locka bort rovdjur från boet fladdrar den längs marken som om den hade en skadad vinge.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Sävsparv: så känner du igen hane, hona och ungfågel, hur sången och lätena låter, var den håller till och när den ses under året.",
+      "facts": {
+        "size": {
+          "value": "13,5 till 15,5 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Common Reed Bunting is a medium-sized bunting that breeds in Sweden.",
+          "factIds": [
+            "f01",
+            "s01"
+          ]
+        },
+        {
+          "text": "It favours scrub and reed beds by lakes, ponds and streams, and marshes with plenty of bushes.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Breeding male has a black head, white collar and white moustachial stripe",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Female has an unspotted buff-white throat with black throat-side stripes, young birds look like her",
+          "factIds": [
+            "f06",
+            "f10"
+          ]
+        },
+        {
+          "text": "Mostly brown and buff-white plumage with dark streaking and white tail sides",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Rufous lesser wing coverts and a dark, usually small bill",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is a fairly monotonous, repeated \"zripp zripp zryy\".",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Calls include a soft \"siy\" and a rough \"bzy\".",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The male sings from a raised perch, often clinging at an angle to a stem with his tail spread.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It is a partial migrant that breeds in Sweden.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "It arrives around March to April and leaves for the Mediterranean countries in October to November.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "It is reported most in March to June and September, and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "The highest density is in the mountains, where it is numerous in mountain birch forest.",
+          "factIds": [
+            "f18",
+            "f15"
+          ]
+        },
+        {
+          "text": "Locally, very dense populations occur at lowland lakes in southern and central Sweden.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "In summer it eats insects, and seeds the rest of the year.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Like other seed-eaters, it migrates by day.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "During courtship the male sometimes raises his white collar.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "To lure predators away from the nest, it flutters along the ground as if it had an injured wing.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Common Reed Bunting: how to recognise male, female and young birds, what the song and calls sound like, where it lives and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "13.5 to 15.5 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "e2025af54a92e40c"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "e2025af54a92e40c"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "savsparv",
@@ -205,5 +852,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

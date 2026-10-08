@@ -1,13 +1,736 @@
 {
   "qid": "Q129059",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Tuppen har huvud, nacke, strupe och övre bröst fint vattrade i svart och ljusgrått med blåaktig skimmer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanens huvud, nacke, framrygg, strupe och övre delen av bröstet är fint vattrade i svart, ljusgrått och mer eller mindre skimrande i blått."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Tuppens främre bröst är grönaktigt med stark metallglans.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bröstets främre del är grönaktig med stark metallglans"
+        },
+        {
+          "article": "en",
+          "quote": "the breast feathers are dark metallic green"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Tjädern har ett rött, svullet ögonbryn av naken hud ovanför ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett rött svullet ögonbryn."
+        },
+        {
+          "article": "en",
+          "quote": "There is a bright red spot of naked skin above each eye."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Näbben är gulvit hos äldre fåglar och mörkare hos yngre.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är hos äldre individer gulvit, hos yngre mörkare."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Tuppens stjärt är svart, ofta med vita tvärgående fläckar på mitten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten är svart, ofta med vita horisontella fläckar på mitten."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Könen skiljer sig i både storlek och färg, och tuppen är betydligt större än hönan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är olika såväl i storlek som färg där hanen är betydligt större."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hönan är spräcklig i brunsvart, rostgult, grått och vitt med enfärgat orangebrun strupe och bröst.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan är spräcklig i brunsvart, rostgult, grått och vitt. Dess strupe och bröst är enfärgat orangebruna."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hönans stjärt är rostbrun med grova svarta tvärband och ett smalt vitt yttre band.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten är rostbrun med grova svarta tvärband och ett smalt vitt yttre stjärtband."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungtuppen känns igen på fint vattrat huvud och hals i ljusgrått och svartbrunt samt mörkare rygg än hönan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "dock igenkänns ungtuppen på att huvudet och halsen är fint vattrade av ljusgrått och svartbrunt och att rygg och skuldror är mörkare än hos hönan."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Tuppen är 74–90 cm lång med ett vingspann på omkring 115 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Längden är 74–90 cm och vingspannet omkring 115 cm."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "size",
+      "sv": "Hönan är i genomsnitt 54–63 cm lång med ett vingspann på omkring 95 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den mäter i genomsnitt 54–63 cm på längden och har ett vingspann på omkring 95 cm."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "size",
+      "sv": "Tuppen väger i genomsnitt 4,1 kg.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Cocks (males) typically range from 74 to 85 centimetres (29 to 33 in) in length with wingspan of 90 to 125 cm (35 to 49 in) and an average weight of 4.1 kg"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "size",
+      "sv": "Hönan väger 1,5–2,5 kg, i genomsnitt 1,8 kg.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "weighs 1.5–2.5 kg (3 lb 5 oz – 5 lb 8 oz), with an average of 1.8 kg"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Tjädern är vanligen tystlåten utom på våren när tupparna spelar inför häckningen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tjädern är vanligtvis tystlåten under året förutom på våren när de spelar inför häckningen"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Spelet börjar med knäppningar som låter som tunna träpinnar som slås ihop, upprepade 8–10 gånger i allt snabbare takt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Knäppningarna, som liknar det ljud som uppkommer när tunna träpinnar slås mot varandra. Dessa upprepas 8–10 gånger i allt hastigare takt."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Efter knäppningarna följer klunken, som låter som en kork som dras ur en flaska.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Därefter följer klunken, som liknar ljudet av en kork som dras ur en flaska."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "voice",
+      "sv": "Spelet avslutas med sisningar som liknar det väsande ljudet av en lie som slipas.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Slutligen kommer sisningarna som liknar det väsande ljudet av en lie som slipas."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "voice",
+      "sv": "Klunken hörs bäst av spelets ljud, i lugnt väder upp till 100–150 meter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Av dessa ljud hörs klunken bäst, i lugnt väder upp till 100–150 meter."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Tjädern lever i öppen äldre barrskog och föredrar skog som är över 90 år.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tjädern förekommer i öppen äldre barrskog."
+        },
+        {
+          "article": "sv",
+          "quote": "föredrar helst skog som är över 90 år"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "habitat",
+      "sv": "Den undviker torra ljunghedar, hyggen, planteringar, öppna mossar och ängar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "undviker torra ljunghedar, avverkningsområden, planteringar, öppna mossar och ängar"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "I Sverige finns tjädern i alla större barrskogar från norra Skåne upp till barrskogsgränsen i de lappländska fjällen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige finns tjädern av underarten T. u. urogallus i alla större barrskogar från norra Skåne upp till barrskogsgränsen i de lappländska fjällen."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "En fjärdedel av Europas tjäderbestånd finns i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En fjärdedel av det europeiska beståndet av tjäder finns i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Tjädern är den största vilda hönsfågeln i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tjädern är den största vilda hönsfågeln i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Under vintern är tallbarr den huvudsakliga födan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under vintern utgör tallbarr den huvudsakliga födan."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Den viktigaste födan på barmark är blåbär, där tjädern äter alla delar av plantan inklusive bladen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den viktigaste barmarksfödan är blåbär där alla delar av plantan, inklusive blad, nyttjas av tjädern."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Tjädertupparna samlas vanligen i början av april till lek för att spela.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "vanligen i början av april samlas tjädertupparna till sin lek för att spela"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Hönan lägger 8–9 ägg på marken i en enkel fördjupning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tjäderhönan lägger 8–9 ägg på marken i en enkel fördjupning."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Under spelet bär tuppen stjärten solfjäderlikt utspärrad och släpar vingarna i marken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under spelet bär tuppen stjärten solfjäderlikt utspärrad och släpar vingarna i marken."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Sommartid vistas tjädern mest på marken men tillbringar natten i träd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sommartid vistas den mest på marken men tillbringar alltid natten i träd"
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "När tjädern lyfter ger den upphov till ett plötsligt dånande ljud.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "While taking off they produce a sudden thundering noise that deters predators."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The capercaillie is a non-migratory sedentary species"
+        },
+        {
+          "article": "sv",
+          "quote": "I norra Sverige jagar man även tjäder med kulvapen på vintern"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Jämtland, Norrbotten och Dalarna."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Tjädern är den största vilda hönsfågeln i Sverige.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "Den lever i öppen äldre barrskog, och en fjärdedel av Europas tjäderbestånd finns i Sverige.",
+          "factIds": [
+            "f19",
+            "f22"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Tuppen är betydligt större än hönan och har grönaktigt bröst med stark metallglans",
+          "factIds": [
+            "f06",
+            "f02"
+          ]
+        },
+        {
+          "text": "Tuppens huvud, strupe och övre bröst är fint vattrade i svart och ljusgrått",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Hönan är spräcklig i brunsvart, rostgult och grått med enfärgat orangebrunt bröst",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Rött, svullet ögonbryn av naken hud och gulvit näbb hos äldre fåglar",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Tjädern är vanligen tystlåten utom på våren, när tupparna spelar.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Spelet börjar med knäppningar, som tunna träpinnar som slås ihop, 8 till 10 gånger i allt snabbare takt.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Sedan följer klunken, som en kork som dras ur en flaska, och sist väsande sisningar som en lie som slipas.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "Klunken hörs bäst, i lugnt väder upp till 100 till 150 meter.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Tjädern är stannfågel och rapporteras året runt.",
+          "factIds": [
+            "s01",
+            "d01"
+          ]
+        },
+        {
+          "text": "Den finns i alla större barrskogar från norra Skåne upp till barrskogsgränsen i de lappländska fjällen.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Den föredrar öppen skog som är över 90 år och undviker hyggen, planteringar, öppna mossar och ängar.",
+          "factIds": [
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Jämtland, Norrbotten och Dalarna.",
+          "factIds": [
+            "d02"
+          ]
+        },
+        {
+          "text": "Den är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "På vintern äter tjädern främst tallbarr, och på barmark är blåbär viktigast: den äter hela plantan, även bladen.",
+          "factIds": [
+            "f24",
+            "f25"
+          ]
+        },
+        {
+          "text": "Sommartid håller den sig mest på marken men tillbringar natten i träd.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "När den lyfter hörs ett plötsligt dånande ljud.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "Tupparna samlas vanligen i början av april till lek och spelar med solfjäderlikt utspärrad stjärt och släpande vingar.",
+          "factIds": [
+            "f26",
+            "f28"
+          ]
+        },
+        {
+          "text": "Hönan lägger 8 till 9 ägg i en enkel fördjupning på marken.",
+          "factIds": [
+            "f27"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Tjäder: så känner du igen tupp och höna, hur spelet låter på våren, vad den äter och var och när tjädern kan ses under året.",
+      "facts": {
+        "size": {
+          "value": "Tupp 74 till 90 cm, höna 54 till 63 cm",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Western Capercaillie is the largest wild gamebird in Sweden.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "It lives in open, old conifer forest, and a quarter of Europe's capercaillie population is found in Sweden.",
+          "factIds": [
+            "f19",
+            "f22"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Male much larger than female, with a greenish breast showing strong metallic gloss",
+          "factIds": [
+            "f06",
+            "f02"
+          ]
+        },
+        {
+          "text": "Male's head, throat and upper breast finely vermiculated black and pale grey",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Female mottled blackish brown, rusty yellow and grey, with a plain orange-brown breast",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Red, swollen bare-skin eyebrow and a yellowish white bill on older birds",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "It is usually silent except in spring, when the males display.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "The display opens with clicks like thin wooden sticks knocked together, 8 to 10 times, ever faster.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Then comes a pop like a cork pulled from a bottle, then hissing like a scythe being sharpened.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "The pop carries best, up to 100 to 150 metres in calm weather.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It is a resident and is reported all year round.",
+          "factIds": [
+            "s01",
+            "d01"
+          ]
+        },
+        {
+          "text": "It occurs in all larger conifer forests from northern Skåne up to the conifer tree line in the Lapland mountains.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "It prefers open forest over 90 years old and avoids clear-cuts, plantations, open bogs and meadows.",
+          "factIds": [
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Jämtland, Norrbotten and Dalarna.",
+          "factIds": [
+            "d02"
+          ]
+        },
+        {
+          "text": "It is not red-listed in the Swedish Red List 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "In winter it eats mainly pine needles.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "On bare ground bilberry matters most, the whole plant including leaves.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "In summer it stays mostly on the ground but spends the night in trees.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Taking off, it makes a sudden roaring sound.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "Males usually gather at leks in early April, displaying with fanned tail and dragging wings.",
+          "factIds": [
+            "f26",
+            "f28"
+          ]
+        },
+        {
+          "text": "The female lays 8 to 9 eggs in a simple ground hollow.",
+          "factIds": [
+            "f27"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Western Capercaillie: how to recognise the male and female, what the spring display sounds like, what it eats and where and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "Male 74 to 90 cm, female 54 to 63 cm",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "c873312fe90b9a14"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "c873312fe90b9a14"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "tjader",
@@ -204,5 +927,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

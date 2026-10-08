@@ -1,13 +1,694 @@
 {
   "qid": "Q79915",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Kungsfiskaren är blågrön på ovansidan och orange på undersidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är blågrön på ovansidan och orange på undersidan."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Den har kort stjärt, kompakt kropp, små fötter, kort hals, stort huvud och en oproportionerligt lång, rak och dolkformad näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Denna art har en typisk profil för en kungsfiskare med sin korta stjärt, kompakta kropp, små fötter, korta hals, stora huvud och oproportionerligt långa, raka och dolkformade näbb."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Hanen av den västeuropeiska underarten har grönblå hjässa, nacke och vingar samt klart ljusblå rygg och övergump.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen av den västeuropeiska underarten A. a. ispida har grönblå hjässa, nacke, vingar och stjärtspets, klart ljusblå (skiftar från azur till kobolt) rygg och övergump."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Undersidan och kindfläcken är varmt orange, medan strupen och en fläck på halssidan bak mot nacken är kritvita.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Undersidan och kindfläcken (örontäckarna) är varmt orangefärgade medan strupen och en fläck som sträcker sig bak mot nacken på halssidan är kritvit."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Fötterna är röda och näbben är helsvart.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fötterna är röda och näbben helsvart."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "I Europa är kungsfiskaren den enda blå kungsfiskaren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Nordafrika, Europa och Asien norr om Himalaya är detta den enda blå kungsfiskaren."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "Kroppslängden är 17–19,5 cm, varav näbben omkring 4 cm, vingspannet 24–26 cm och vikten 34–46 g.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en kroppslängd på 17–19,5 cm varav näbben utgör omkring 4 cm, har ett vingspann på 24–26 cm och väger 34–46 g."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honan liknar hanen men har under häckningstiden en orangeröd bas på undre näbbhalvan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan är identisk med hanen förutom att hennes undre näbbhalva under häckningstiden har en orangeröd bas."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungfågeln liknar de vuxna men har dovare fjäderdräkt med grönare ovansida och ljusare undersida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen är lik de adulta men med en dovare fjäderdräkt, med en grönare ovansida och ljusare undersida."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "behaviour",
+      "sv": "Flykten är snabb, rak och sker ofta lågt över vattnet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess flykt är snabb, rak och sker ofta lågt över vattnet."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "behaviour",
+      "sv": "I flykten svirrar de korta rundade vingarna snabbt, och då syns den ljusblå ryggen bäst.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den slår de korta rundade vingarna så fort att det svirrar och det är då man bäst ser den ljusblå ryggen."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "behaviour",
+      "sv": "Den sitter upprätt och ofta mycket stilla när den spanar efter fisk, som den fångar genom att dyka lodrätt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den sitter upprätt, ofta mycket stilla när den spanar efter fisk vilken den fångar genom att lodrätt dyka i vattnet."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "behaviour",
+      "sv": "Kungsfiskaren lever ensam större delen av året.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De lever ensamma största delen av året."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Locklätet hörs ofta i flykten och är ett kort, vasst visslande zii eller chee, ibland zii-ti.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Locklätet yttras ofta i flykten och består av ett kort, vasst visslande zii eller chee, och ibland zii-ti."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Vid upphetsning upprepas lätet i kortare serier och kan bli ett hårdare shrit-it-it.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vid upphetsning upprepas lätet i kortare serier och de kan då också ha ett hårdare shrit-it-it."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Den bebor klara, långsamrinnande floder och åar samt sjöar med väl bevuxna strandbrinkar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I tempererade områden bebor kungsfiskaren klara, långsamrinnande vattendrag som floder och åar, men även sjöar, där strandbrinken är väl bevuxen."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Vintertid uppträder den oftare nära kusten och söker föda vid flodmynningar, hamnar och klippiga kustremsor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid uppträder oftare närmare kusterna där den födosöker vid flodmynningar, hamnar och klippiga kustremsor."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Sverige sågs arten första gången 1835 och första konstaterade häckningen skedde 1872.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige observerades arten första gången 1835 och den första konstaterade häckningen skedde 1872."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Kärnan i det svenska häckningsområdet ligger i Östergötland, Småland och Skåne.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kärnan i det svenska häckningsområdet finns i södra delarna av landet i Östergötland, Småland och Skåne"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "På vintern drar sig svenska kungsfiskare undan isen och ses då oftare vid åmynningar närmare kusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern drar de sig undan is och snö och förekommer då oftare vid åmynningar och dylikt närmare kusten där isen inte lägger sig."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Under kalla vintrar kan det svenska beståndet vissa år minska med upp till 90–95 procent.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under kalla vintrar skattas beståndet hårt och kan vissa år tappa upp till 90–95% av individerna."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Den svenska populationen skattas till cirka 780 reproduktiva individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Populationen, som skattas till cirka 780 reproduktiva individer"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "I 2025 års rödlista nedgraderades kungsfiskaren från sårbar till nära hotad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "i 2025 års rödlista nedgraderades kungsfiskaren från sårbar (VU) till nära hotad (NT)"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Boet ligger i slutet av en rak, svagt uppåtsluttande tunnel som normalt är 60–90 cm lång.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den raka, svagt uppåtsluttande tunneln är normalt 60–90 cm lång och avslutas med en bohåla."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Kungsfiskaren lägger normalt fem till sju högblanka vita ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kungsfiskaren lägger normalt mellan fem och sju högblanka vita ägg."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Äggen kläcks efter 19 till 21 dagar och ungarna stannar i boet ungefär 24–25 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen kläcks efter 19 till 21 dagar, och de hjälplösa ungarna stannar i boet i ungefär 24–25 dagar, ofta längre."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Typiska byten är elritsa, spigg, små mörtar och öring.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Minnows, sticklebacks, small roach and trout are typical prey."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Den tar också vatteninsekter som trollsländelarver och vattenskalbaggar, och på vintern kräftdjur.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "this kingfisher also catches aquatic insects such as dragonfly larvae and water beetles, and, in winter, crustaceans including freshwater shrimps"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "food",
+      "sv": "Kungsfiskaren måste äta cirka 60 procent av sin kroppsvikt varje dag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kungsfiskaren måste äta cirka 60% av sin kroppsvikt varje dag."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "I södra Asien kan den förväxlas med juvenil menintingkungsfiskare, som också har orange örontäckare; de skiljs på detaljer i huvudteckningen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "dess orangefärgade örontäckare skiljer den från alla andra arter förutom den juvenila, närbesläktade menintingkungsfiskare (A. meninting), och i områden där båda arter förekommer kan de bara skiljas i fält genom mindre tydliga skillnader i huvudteckning"
+        }
+      ],
+      "other": {
+        "scientific": "A. meninting"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern drar de sig undan is och snö och förekommer då oftare vid åmynningar och dylikt närmare kusten där isen inte lägger sig."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december och januari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Östergötland, Skåne och Västmanland."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Kungsfiskaren är en blågrön och orange fågel med lång, dolkformad näbb.",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Den lever vid klara, långsamrinnande floder, åar och sjöar och uppträder vintertid oftare nära kusten.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Blågrön ovansida, varmt orange undersida och kindfläck, kritvit strupe och vit fläck på halssidan",
+          "factIds": [
+            "f01",
+            "f04"
+          ]
+        },
+        {
+          "text": "Kompakt kropp, stort huvud, kort stjärt, röda fötter och lång, helsvart, dolkformad näbb",
+          "factIds": [
+            "f02",
+            "f05"
+          ]
+        },
+        {
+          "text": "Honan har under häckningstiden en orangeröd bas på undre näbbhalvan",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Snabb, rak flykt lågt över vattnet, då syns den ljusblå ryggen bäst",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Locklätet hörs ofta i flykten och är ett kort, vasst visslande zii eller chee, ibland zii-ti.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Vid upphetsning upprepas lätet i kortare serier och kan bli ett hårdare shrit-it-it.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Kungsfiskaren är stannfågel i Sverige och klassas som nära hotad i 2025 års rödlista.",
+          "factIds": [
+            "s01",
+            "d03"
+          ]
+        },
+        {
+          "text": "Kärnan i häckningsområdet ligger i Östergötland, Småland och Skåne.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "På vintern drar den sig undan isen och ses då oftare vid åmynningar närmare kusten.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i december och januari, och andelen av alla fågelrapporter är högst i Östergötland, Skåne och Västmanland.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den sitter upprätt och ofta mycket stilla när den spanar efter fisk, som den fångar genom att dyka lodrätt.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Typiska byten är elritsa, spigg, små mörtar och öring, och den tar också vatteninsekter och på vintern kräftdjur.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        },
+        {
+          "text": "Den måste äta cirka 60 procent av sin kroppsvikt varje dag och lever ensam större delen av året.",
+          "factIds": [
+            "f29",
+            "f13"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "A. meninting",
+          "text": [
+            {
+              "text": "I södra Asien kan den förväxlas med juvenil menintingkungsfiskare, som också har orange örontäckare.",
+              "factIds": [
+                "f30"
+              ]
+            },
+            {
+              "text": "De skiljs på detaljer i huvudteckningen.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Kungsfiskare: så känner du igen den på dräkt, näbb och flykt, hur locklätet låter, vad den äter och när den oftast rapporteras.",
+      "facts": {
+        "size": {
+          "value": "17 till 19,5 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Common Kingfisher is a blue-green and orange bird with a long, dagger-shaped bill.",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "It lives by clear, slow-flowing rivers, streams and lakes, and in winter turns up more often near the coast.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Blue-green upperparts, warm orange underparts and cheek patch, chalk-white throat and neck-side patch",
+          "factIds": [
+            "f01",
+            "f04"
+          ]
+        },
+        {
+          "text": "Compact body, large head, short tail, red feet and long, all-black, dagger-shaped bill",
+          "factIds": [
+            "f02",
+            "f05"
+          ]
+        },
+        {
+          "text": "In the breeding season the female has an orange-red base to the lower mandible",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Fast, straight flight low over water, when the pale blue back shows best",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is often heard in flight: a short, sharp whistled zii or chee, sometimes zii-ti.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "When excited it repeats the call in short series, which can turn into a harder shrit-it-it.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It is resident in Sweden and listed as Near Threatened on the 2025 Red List.",
+          "factIds": [
+            "s01",
+            "d03"
+          ]
+        },
+        {
+          "text": "Its Swedish breeding core is Östergötland, Småland and Skåne.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "In winter it avoids the ice and is seen more often at river mouths nearer the coast.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "It is reported most in December and January, and its share of all bird reports is highest in Östergötland, Skåne and Västmanland.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It sits upright and often very still while watching for fish, which it catches by diving straight down.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Typical prey are minnow, stickleback, small roach and trout, and it also takes aquatic insects and, in winter, crustaceans.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        },
+        {
+          "text": "It must eat about 60 percent of its body weight every day and lives alone for most of the year.",
+          "factIds": [
+            "f29",
+            "f13"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "A. meninting",
+          "text": [
+            {
+              "text": "In southern Asia it can be confused with juvenile A. meninting, which also has orange ear coverts.",
+              "factIds": [
+                "f30"
+              ]
+            },
+            {
+              "text": "The two are told apart by details of the head pattern.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Common Kingfisher: how to recognise it by plumage, bill and flight, what its call sounds like, what it eats and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "17 to 19.5 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "41d7fcbff0f1b220"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "41d7fcbff0f1b220"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "kungsfiskare",
@@ -205,5 +886,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

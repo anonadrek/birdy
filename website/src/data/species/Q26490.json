@@ -1,13 +1,666 @@
 {
   "qid": "Q26490",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Tornfalken är en medelstor falk med lång stjärt och långa vingar som är smala vid basen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tornfalken är en medelstor falk med en lång stjärt och långa vingar som är smala vid basen"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Rygg och övre vingtäckare är ljust rostbruna med svarta fläckar, och vingpennorna är svarta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tornfalkens rygg och övre vingtäckare är ljust rostbruna med svarta fläckar och svarta vingpennor."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Stjärten har ett mörkt band i bakkanten med ett smalt vitt ändband.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten har ett mörkt band i bakkanten, med ett vitt smalt ändband."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Tornfalken har ett ganska mörkt mustaschstreck, svart öga inramat med gult och gula fötter med svarta klor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en ganska mörk falkmustasch, ögat är svart och inramat med gult och den har gula fötter med svarta klor."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "sex_age",
+      "sv": "Den adulta hanen har grått huvud samt grå, ofläckad övergump och stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen har grått huvud och en grå ofläckad övergump och stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Den adulta honan har rostbrunt huvud, grå vattrad övergump och stjärt tvärstreckad med svart och rostbrunt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honan har rostbrunt huvud, grå vattrad övergump och en stjärt som är tvärstreckad med svart och rostbrunt"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Ungfåglar liknar honan men är gulrödare ovan och har bredare, diffusare mörka streck på bröstet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenila fåglar är lika honorna men är gulrödare på ovansidan, har bredare, diffusare mörka streck på bröstet"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "size",
+      "sv": "Hos den europeiska underarten är hanarna i genomsnitt 34,5 centimeter långa och honorna 36 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "hos den europeiska nominatformen F. t. tinnunculus når hanarna i genomsnitt en längd på 34,5 centimeter och honorna mäter 36 centimeter"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Vingspannet är 65–82 centimeter.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "with a wingspan of 65–82 cm"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Hanarna väger normalt ungefär 200 gram och honorna i snitt 20 gram mer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Normalt väger hanarna ungefär 200 gram medan honorna i snitt väger 20 gram mer."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Det vanligaste lätet är en snabb, gäll ramsa, ki-ki-ki-ki, som fungerar som varningsläte.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tornfalkens vanligaste läte är en snabb, gäll ramsa som utgör varningsläte: ki-ki-ki-ki."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Ungfåglar och honan tigger med ett drillande kirrl, kirrl som upprepas flera gånger.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungfåglarna och honan tigger med ett drillande kirrl, kirrl som upprepas ett antal gånger."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "lookalike",
+      "sv": "Rödfalken liknar en mindre tornfalk men saknar svarta partier på ovansidan utom på vingarna och stjärten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rödfalk (F. naumanni) som mycket starkt påminner om en mindre tornfalk men som saknar svarta partier på ovansidan förutom på vingarna och stjärten"
+        }
+      ],
+      "other": {
+        "scientific": "Falco naumanni",
+        "qid": "Q229408",
+        "written": "F. naumanni"
+      }
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Tornfalken ses ofta ryttla över fält och öppna ytor som kalhyggen och myrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "ofta ses ryttla över fält och öppna ytor, som kalhyggen och myrar"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Arten föredrar öppna marker som fält, hedar, buskmarker och våtmarker.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "prefers open habitat such as fields, heaths, shrubland and marshland"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Tornfalkar undviker både täta, slutna skogar och helt trädlösa stäpper.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Generell meiden Turmfalken sowohl dichte geschlossene Waldbestände als auch völlig baumlose Steppen."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Tornfalken är Sveriges vanligaste falk, trots en betydande minskning av beståndet sedan 1940-talet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Trots en betydande minskning av beståndet sedan 1940-talet, är tornfalken Sveriges vanligaste falk."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Beståndet har på senare år spridit sig norrut ända upp till fjällens björkskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Beståndet har på senare år spridit sig norrut, ända upp till fjällens björkskog."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige övervintrar tornfalken i Skåne och på västkusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige övervintrar den i Skåne och på västkusten."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I övriga Sverige flyttar tornfalken söderut i augusti–november och återkommer i mars–april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I övriga landet flyttar den söderut i augusti - november, för att återkomma i mars - april."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Skandinaviska tornfalkar övervintrar normalt i västra eller sydvästra Europa, men även i Centraleuropa och Danmark.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skandinaviska fåglar övervintrar normalt i västra eller sydvästra Europa, men även i centraleuropa samt Danmark."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Tornfalken bygger inget eget bo utan använder övergivna risbon och holkar, främst från kråkor eller duvor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den bygger inget eget bo, och boplatsen varierar. Den kan nyttja övergivna fågelbon (risbon) och holkar, då främst från kråkor eller duvor."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan lägger vanligtvis tre till sex ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger vanligtvis tre till sex ägg"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "I stora delar av Skandinavien sker äggläggningen i slutet av maj, i Norrland i början av juni.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "äggläggningen sker i stora delar av Skandinavien i slutet av maj men i exempelvis Norrland inträffar den i början av juni"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Honan ruvar kullen i 27–31 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kullen ruvas i 27–31 dagar av honan."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Födan består främst av möss och andra små gnagare, men även groddjur, ödlor, skalbaggar och gräshoppor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tornfalkens föda består främst av möss och andra små gnagare, men även groddjur, ödlor, skalbaggar och gräshoppor."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "När tornfalken ryttlar står den cirka 20 meter över marken med snabba vingslag och solfjäderlikt utfälld stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den stannar då vid en höjd på cirka 20 meter över marken och spanar efter ett lämpligt byte. Vingslagen är snabba och stjärten är utfälld, likt en solfjäder"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Tornfalken jagar också från sittplatser som stängselstolpar, telefonstolpar eller grenar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Jagd erfolgt teilweise als sogenannte Ansitzjagd, bei der der Falke von Weidepfählen, Telegrafenmasten oder Ästen aus nach Beute späht."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Tornfalkar ses ofta jaga längs vägkanter och motorvägar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Kestrels can often be found hunting along the sides of roads and motorways"
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige övervintrar den i Skåne och på västkusten. I övriga landet flyttar den söderut i augusti - november, för att återkomma i mars - april."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i augusti och september."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Tornfalken är en medelstor falk med lång stjärt och långa vingar, och Sveriges vanligaste falk.",
+          "factIds": [
+            "f01",
+            "f17"
+          ]
+        },
+        {
+          "text": "Den ses ofta ryttla över fält och öppna ytor som kalhyggen och myrar.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Ljust rostbrun rygg med svarta fläckar och svarta vingpennor",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Hanen har grått huvud och grå, ofläckad övergump och stjärt",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Honan har rostbrunt huvud och stjärt tvärstreckad med svart och rostbrunt",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Mörkt band i stjärtens bakkant, smalt vitt ändband och ganska mörkt mustaschstreck",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Det vanligaste lätet är en snabb, gäll ramsa, ki-ki-ki-ki, som fungerar som varningsläte.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Honan och ungfåglarna tigger med ett drillande kirrl, kirrl som upprepas flera gånger.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Tornfalken är delvis flyttfågel och häckar i Sverige.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Den finns i öppna marker som fält, hedar, buskmarker och våtmarker, och har på senare år spridit sig norrut upp till fjällens björkskog.",
+          "factIds": [
+            "f15",
+            "f18"
+          ]
+        },
+        {
+          "text": "I Skåne och på västkusten övervintrar den, i övriga landet flyttar den söderut i augusti till november och återkommer i mars till april.",
+          "factIds": [
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län och mest i augusti och september.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan är främst möss och andra små gnagare, men även groddjur, ödlor, skalbaggar och gräshoppor.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "När den ryttlar står den cirka 20 meter över marken med snabba vingslag och solfjäderlikt utfälld stjärt.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Den jagar också från stängselstolpar, telefonstolpar och grenar, och ses ofta jaga längs vägkanter och motorvägar.",
+          "factIds": [
+            "f28",
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q229408",
+          "text": [
+            {
+              "text": "Rödfalken liknar en mindre tornfalk men saknar svarta partier på ovansidan utom på vingarna och stjärten.",
+              "factIds": [
+                "f13"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Tornfalk: så känner du igen falken på fjäderdräkt och ryttlande jakt, hur lätena låter, vad den äter och när under året den syns.",
+      "facts": {
+        "size": {
+          "value": "Hane i snitt 34,5 cm, hona 36 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Common Kestrel is a medium-sized falcon with a long tail and long wings, and the most common falcon in Sweden.",
+          "factIds": [
+            "f01",
+            "f17"
+          ]
+        },
+        {
+          "text": "It is often seen hovering over fields and open ground such as clear-fellings and bogs.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Pale rufous-brown back with black spots and black flight feathers",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Male has a grey head and plain grey rump and tail",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Female has a rufous-brown head and a tail barred black and rufous-brown",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Dark tail band with a narrow white tip, and a fairly dark moustache stripe",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The most common call is a fast, shrill series, ki-ki-ki-ki, used as an alarm call.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The female and young birds beg with a trilling kirrl, kirrl repeated several times.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Common Kestrel is a partial migrant that breeds in Sweden.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "It uses open country such as fields, heaths, scrub and wetlands, and has recently spread north as far as the mountain birch forest.",
+          "factIds": [
+            "f15",
+            "f18"
+          ]
+        },
+        {
+          "text": "It winters in Skåne and on the west coast; elsewhere it moves south in August to November and returns in March to April.",
+          "factIds": [
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties, mostly in August and September.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mainly on mice and other small rodents, and also takes amphibians, lizards, beetles and grasshoppers.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "When hovering it holds itself about 20 metres above the ground with fast wingbeats and a fanned tail.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "It also hunts from fence posts, telephone poles and branches, and is often seen hunting along roadsides and motorways.",
+          "factIds": [
+            "f28",
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q229408",
+          "text": [
+            {
+              "text": "The Lesser Kestrel looks like a smaller Common Kestrel but lacks black on the upperparts except on the wings and tail.",
+              "factIds": [
+                "f13"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Common Kestrel: how to recognise this falcon by its plumage and hovering hunt, what its calls sound like, what it eats and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "Male on average 34.5 cm, female 36 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "6182a1434e5d4420"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "6182a1434e5d4420"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "tornfalk",
@@ -205,5 +858,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

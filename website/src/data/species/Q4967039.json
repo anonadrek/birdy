@@ -1,13 +1,610 @@
 {
   "qid": "Q4967039",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Hyrkanmesen är omkring 12,5–14 centimeter lång och något mindre än balkanmesen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hyrkanmesen är en 12,5 centimeter lång mes"
+        },
+        {
+          "article": "de",
+          "quote": "Sie wird 12,5 bis 14 cm groß und ist etwas kleiner als die Balkanmeise (Poecile lugubris)."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "En vuxen hyrkanmes väger mellan 18 och 20 gram.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Ihr adultes Gewicht beträgt zwischen 18 und 20 g."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Hyrkanmesen har mörkbrun hjässa och haklapp samt brun under- och ovansida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Denna art har mörkbrun hjässa och haklapp samt brun under- och ovansida"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Fjäderdräkten är skärbeige när den är fräsch men blir blekare och gråare när den är sliten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "skärbeige i fräsch dräkt men blekare och gråare i mer sliten"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Den mörka hjässan kontrasterar mot vita kinder och örontäckare.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Dazu kontrastieren die weißen Wangen und Ohrdecken."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Näbben är kraftig och grå.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Neben einem kräftigen, grauen Schnabel"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Benen är korta och grå till mörkgrå.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Beine sind kurz und grau bis dunkelgrau gefärbt."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Könen är lika, men ungfåglarna är något mattare i färgerna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The sexes are similar, but juveniles are somewhat duller."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungfåglar känns igen på matt sotsvart hjässa, brunsvart strupfläck, gråare ovansida och knappt beigetonad undersida.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Jungvögel sind an der matt rußschwarzen Kappe, dem braunschwarzen Kehlfleck, der graueren Oberseite und der kaum beige getönten Unterseite erkenntlich."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Hyrkanmesen är rätt tystlåten men avger ett tunt ”zsit” eller ett nasalt ”chev chev”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hyrkanmesen är rätt tystlåten, men avger ett tunt zsit eller ett nasalt chev chev."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Vid fara upprepas ett abrupt, nasalt ”chev-chev”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Bei Gefahr wird ein wiederholtes, abruptes, nasales „chev-chev“ wiedergegeben."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången består av ett klart ”tiu-tiu-tiu-tiu-tiu” eller ett ”ziuw-ziuw-ziuw-su”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Gesang besteht aus einem klaren „tiu-tiu-tiu-tiu-tiu“ oder einem leicht angepassten „ziuw-ziuw-ziuw-su“."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "habitat",
+      "sv": "Hyrkanmesen förekommer endast i berglövskogar i norra Iran och närliggande Azerbajdzjan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den förekommer endast i berglövskogar i norra Iran och närliggande Azerbajdzjan."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Den lever på höjder mellan 400 och 2000 meter.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Sie besiedelt Lebensräume in Höhenlagen von 400 bis 2.000 m."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Som ersättningsmiljö används anlagda trädgårdar och parker.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Als Ersatzlebensraum werden von Menschen angelegte Gärten und Parkanlagen angenommen."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "breeding",
+      "sv": "Hyrkanmesen hackar ut sitt eget bo, oftast i en rutten stubbe eller ett ruttet träd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den hackar ut sitt eget bo, (likt talltita men olikt balkanmesen) oftast i en rutten stubbe eller ruttet träd."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "breeding",
+      "sv": "Båda könen hackar ut boet.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Both sexes excavate the nesting hole in a live or a rotten tree."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "breeding",
+      "sv": "De flesta bon fodras med päls, hår och träflisor, ibland även fjädrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De flesta bon fodras med päls, hår och träflisor, men fjädrar kan också användas."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "breeding",
+      "sv": "Honan lägger fem till sju vita, svagt rödfläckiga ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger fem till sju ägg som är vita och svagt rödfläckiga."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "food",
+      "sv": "Hyrkanmesen lever av fjärilslarver, andra insekter och frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten lever av fjärilslarver, andra insekter och frön."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "food",
+      "sv": "Den söker i träd efter larver och bladlöss.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "sucht auf Bäumen nach Larven und Blattläusen"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "lookalike",
+      "sv": "Balkanmesen är mycket lik men har svart hjässa som når kortare ner på manteln, tydligare avgränsad haklapp och längre stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "men denna har svart hjässa som inte sträcker sig lika långt ner på manteln, tydligare avgränsad haklapp och längre stjärt"
+        }
+      ],
+      "other": {
+        "scientific": "Poecile lugubris",
+        "qid": "Q574281"
+      }
+    },
+    {
+      "id": "f23",
+      "topic": "lookalike",
+      "sv": "Talltitan är en liknande art men förekommer inte i hyrkanmesens livsmiljö.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Eine ähnliche Art ist neben der Balkanmeise, die Weidenmeise (Poecile montanus). Beide Meisenarten kommen jedoch nicht im Lebensraum der Elbursmeise vor."
+        }
+      ],
+      "other": {
+        "scientific": "Poecile montanus",
+        "qid": "Q215211"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "absent",
+      "sv": "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Hyrkanmesen är en mes som bara förekommer i berglövskogar i norra Iran och närliggande Azerbajdzjan.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Den lever på 400 till 2 000 meters höjd och använder även anlagda trädgårdar och parker.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Mörkbrun hjässa och haklapp som kontrasterar mot vita kinder och örontäckare",
+          "factIds": [
+            "f03",
+            "f05"
+          ]
+        },
+        {
+          "text": "Brun ovansida och undersida, skärbeige i fräsch dräkt men blekare och gråare när den är sliten",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Kraftig grå näbb och korta, grå till mörkgrå ben",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Könen är lika, ungfåglar har matt sotsvart hjässa och gråare ovansida",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Hyrkanmesen är rätt tystlåten men låter ett tunt ”zsit” eller ett nasalt ”chev chev”.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Vid fara upprepas ett abrupt, nasalt ”chev-chev”.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Sången är ett klart ”tiu-tiu-tiu-tiu-tiu” eller ett ”ziuw-ziuw-ziuw-su”.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Hyrkanmesen förekommer inte i Sverige och har inte rapporterats i Artportalen 2016 till 2025.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Den finns bara i norra Iran och närliggande Azerbajdzjan.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Hyrkanmesen äter fjärilslarver, andra insekter och frön, och söker i träd efter larver och bladlöss.",
+          "factIds": [
+            "f20",
+            "f21"
+          ]
+        },
+        {
+          "text": "Båda könen hackar ut boet, oftast i en rutten stubbe eller ett ruttet träd.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "De flesta bon fodras med päls, hår och träflisor, ibland även fjädrar, och honan lägger fem till sju vita, svagt rödfläckiga ägg.",
+          "factIds": [
+            "f18",
+            "f19"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q574281",
+          "text": [
+            {
+              "text": "Balkanmesen är mycket lik men har svart hjässa som når kortare ner på manteln, tydligare avgränsad haklapp och längre stjärt.",
+              "factIds": [
+                "f22"
+              ]
+            },
+            {
+              "text": "Hyrkanmesen är något mindre.",
+              "factIds": [
+                "f01"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q215211",
+          "text": [
+            {
+              "text": "Talltitan liknar hyrkanmesen men förekommer inte i dess livsmiljö.",
+              "factIds": [
+                "f23"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Hyrkanmes (Poecile hyrcanus): så känner du igen den på hjässa, kinder och näbb, hur lätet och sången låter och var arten förekommer.",
+      "facts": {
+        "size": {
+          "value": "Cirka 12,5 till 14 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "absent",
+          "factIds": [
+            "d01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Caspian Tit is a tit found only in mountain broadleaf forests in northern Iran and neighbouring Azerbaijan.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "It lives at 400 to 2 000 metres and also uses planted gardens and parks.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Dark brown cap and bib contrasting with white cheeks and ear coverts",
+          "factIds": [
+            "f03",
+            "f05"
+          ]
+        },
+        {
+          "text": "Brown upperparts and underparts, pinkish beige when fresh, paler and greyer when worn",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Strong grey bill and short legs, grey to dark grey",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Sexes alike, young birds show a dull sooty black cap and greyer upperparts",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The Caspian Tit is fairly quiet but gives a thin \"zsit\" or a nasal \"chev chev\".",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "When alarmed it repeats an abrupt, nasal \"chev-chev\".",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The song is a clear \"tiu-tiu-tiu-tiu-tiu\" or a \"ziuw-ziuw-ziuw-su\".",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Caspian Tit does not occur in Sweden and has not been reported in Artportalen from 2016 to 2025.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "It is found only in northern Iran and neighbouring Azerbaijan.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats caterpillars, other insects and seeds, and searches trees for larvae and aphids.",
+          "factIds": [
+            "f20",
+            "f21"
+          ]
+        },
+        {
+          "text": "Both sexes excavate the nest, usually in a rotten stump or a rotten tree.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "Most nests are lined with fur, hair and wood chips, sometimes feathers, and the female lays five to seven white eggs with faint red spots.",
+          "factIds": [
+            "f18",
+            "f19"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q574281",
+          "text": [
+            {
+              "text": "The Sombre Tit is very similar but has a black cap reaching less far down the mantle, a more sharply defined bib and a longer tail.",
+              "factIds": [
+                "f22"
+              ]
+            },
+            {
+              "text": "The Caspian Tit is slightly smaller.",
+              "factIds": [
+                "f01"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q215211",
+          "text": [
+            {
+              "text": "The Willow Tit looks similar but does not occur in the Caspian Tit's habitat.",
+              "factIds": [
+                "f23"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Caspian Tit (Poecile hyrcanus): how to recognise it by its cap, cheeks and bill, what its calls and song sound like, and where it occurs.",
+      "facts": {
+        "size": {
+          "value": "About 12.5 to 14 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "absent",
+          "factIds": [
+            "d01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "ff3f6635de923240"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "ff3f6635de923240"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "hyrkanmes",
@@ -123,5 +720,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

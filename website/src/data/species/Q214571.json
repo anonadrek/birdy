@@ -1,13 +1,622 @@
 {
   "qid": "Q214571",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Tallbiten är en stor och trastlik fink som är 19–22 cm lång.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tallbiten är en stor (19–22 cm) och trastlik fink."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Tallbiten väger 52–78 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "weighs from 52 to 78 g (1.8 to 2.8 oz)"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "size",
+      "sv": "Vingbredden är omkring 33 cm.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The pine grosbeak's wingspan is 13.0 in (33 cm)."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Tallbiten har kraftig kropp, lång stjärt och grov näbb med krökt näbbrygg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har kraftig kropp, lång stjärt och grov näbb med krökt näbbrygg."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "I alla dräkter har den dubbla vita vingband och vita kanter på tertialerna mot en svartaktig vinge.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I alla dräkter har den dubbla vita vingband och vita kanter på tertialerna som kontrasterar med den svartaktiga vingen."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Den svartgrå stjärten är kluven i spetsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den svartgrå stjärten är kluven i spetsen."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hanen är vanligen mörkt rosenröd med grå och svarta inslag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen är vanligen mörkt rosenröd med grå och svarta inslag"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honans fjäderdräkt är övervägande grågul.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honans fjäderdräkt är övervägande grågul."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Hos äldre honor och unga hanar går de färgade partierna i orange eller brunaktigt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Bei den intermediären Kleidern (ältere Weibchen und junge Männchen) spielen diese Partien ins Orange oder Bräunliche."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Unga fåglar har en överlag mindre kontrastrik fjäderdräkt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Young birds have a less contrasting plumage overall"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "behaviour",
+      "sv": "Flykten är snabb, kraftfull och går i bågar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flykten är snabb, kraftfull och går i bågar."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "I flykten hörs flöjtande och klara \"plyit\" och \"dju-djy\", från flockar mer lågmälda \"bytt-bytt-bytt\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten hörs flöjtande och klara \"plyit\" och \"dju-djy\", från flockar mer lågmälda \"bytt-bytt-bytt...\"."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sången har ödslig klang, en kort strof på ett par toner som något påminner om grönbenans spelläte.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången har ödslig klang, en kort strof som skyttlar på ett par toner, något påminnande om grönbenans spelläte."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Tallbiten häckar i gamla och orörda barrskogar med inslag av björkar och bärris.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tallbiten häckar i gamla och orörda barrskogar med inslag av björkar och bärris."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Trots namnet är den inte bunden till tall utan ses oftare i granskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är trots namnet inte bunden till tall utan ses oftare i granskog."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "Den normala sydgränsen i Sverige går troligen i höjd med Siljan i Dalarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den normala sydgränsen i Sverige går troligen i höjd med Siljan i Dalarna."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Den verkar vara regelbunden i västra Medelpad, Ångermanland och Västerbotten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "är till synes regelbunden i västra delarna av Medelpad, Ångermanland och Västerbotten"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Norrbotten förekommer den i nästan hela landskapet men är sällsynt nära kusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Norrbotten förekommer den i nästan hela landskapet, dock sällsynt nära kusten."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattas till cirka 19 200 reproduktiva individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det svenska beståndet uppskattas till cirka 19 200 reproduktiva individer."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Sverige klassas tallbiten sedan 2025 som livskraftig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "klassas sedan 2025 som livskraftig (LC)"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "food",
+      "sv": "Födan består av frön, knoppar, skott och bär som rönnbär, lingon och blåbär.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Födan består av frön, knoppar, skott och bär som rönnbär, lingon och blåbär."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Vintertid kan den uppträda helt orädd när den äter rönnbär, ibland mitt inne i samhällen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "kan vintertid uppträda helt orädd när den äter rönnbär, ibland mitt inne i samhällen"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Under vissa invasionsår uppträder den längre söderut än vanligt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "under vissa invasionsår uppträder den också längre söderut"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden söker den ofta föda i flockar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Outside of the nesting season, they often feed in flocks."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Boet byggs av fina kvistar, fodras med strån och placeras intill en trädstam, ofta en gran.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet tillverkat av fina kvistar och fodrat med strån placeras intill en trädstam, ofta gran."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Honan lägger tre till fyra ljusgröna ägg med grå och svarta fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Däri lägger den tre till fyra ljusgröna, med grå och svarta fläckar försedda ägg."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Honan ruvar äggen i 13–15 dagar och matas under tiden av hanen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Weibchen bebrütet drei bis vier Eier 13 bis 15 Tage lang und wird in dieser Zeit vom Männchen mit Futter versorgt."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Under häckningen utvecklar båda könen strupsäckar där de lagrar frön åt ungarna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "When breeding both sexes develop gular pouches which they use to store seeds before feeding them to the young."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i mars till september."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Norrbotten, Västerbotten och Dalarna."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Tallbiten är en stor och trastlik fink som häckar i gamla, orörda barrskogar med inslag av björk och bärris.",
+          "factIds": [
+            "f01",
+            "f14"
+          ]
+        },
+        {
+          "text": "Trots namnet är den inte bunden till tall utan ses oftare i granskog.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Kraftig kropp, lång stjärt och grov näbb med krökt näbbrygg",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Dubbla vita vingband och vita tertialkanter mot en svartaktig vinge i alla dräkter",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Hanen är vanligen mörkt rosenröd med grå och svarta inslag",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Honan är övervägande grågul, hos äldre honor och unga hanar går färgen i orange eller brunaktigt",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "I flykten hörs flöjtande och klara \"plyit\" och \"dju-djy\", medan flockar låter mer lågmält \"bytt-bytt-bytt\".",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Sången har en ödslig klang: en kort strof på ett par toner som något påminner om grönbenans spelläte.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Den normala sydgränsen i Sverige går troligen i höjd med Siljan i Dalarna.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "Den verkar vara regelbunden i västra Medelpad, Ångermanland och Västerbotten, och i Norrbotten finns den i nästan hela landskapet men är sällsynt nära kusten.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "Vissa invasionsår dyker den upp längre söderut än vanligt.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i december och sällan i mars till september.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan består av frön, knoppar, skott och bär som rönnbär, lingon och blåbär.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden söker den ofta föda i flockar, och vintertid kan den vara helt orädd när den äter rönnbär, ibland mitt inne i samhällen.",
+          "factIds": [
+            "f24",
+            "f22"
+          ]
+        },
+        {
+          "text": "Flykten är snabb, kraftfull och går i bågar.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Under häckningen får båda könen strupsäckar där de lagrar frön åt ungarna.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Tallbit: så känner du igen arten på fjäderdräkt och näbb, hur lätena låter, vad den äter och var och när den ses under året.",
+      "facts": {
+        "size": {
+          "value": "19 till 22 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Pine Grosbeak is a large, thrush-like finch that breeds in old, undisturbed conifer forest with some birch and berry shrubs.",
+          "factIds": [
+            "f01",
+            "f14"
+          ]
+        },
+        {
+          "text": "Despite its name it is not tied to pine and is more often seen in spruce forest.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Heavy body, long tail and a stout bill with a curved ridge",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Two white wing bars and white tertial edges on a blackish wing in all plumages",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Male usually dark rose red with grey and black areas",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Female mostly greyish yellow, older females and young males show orange or brownish colouring",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "In flight it gives fluty, clear \"plyit\" and \"dju-djy\" calls, while flocks give a softer \"bytt-bytt-bytt\".",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The song has a desolate ring: a short phrase of a couple of notes, somewhat like the display call of the Wood Sandpiper.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Its normal southern limit in Sweden probably lies at the level of Siljan in Dalarna.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "It seems to be regular in western Medelpad, Ångermanland and Västerbotten, and in Norrbotten it occurs over almost the whole province but is rare near the coast.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "In some invasion years it turns up further south than usual.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "It is reported most in December and rarely reported from March to September.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds on seeds, buds, shoots and berries such as rowan berries, lingonberries and bilberries.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it often feeds in flocks, and in winter it can be completely fearless while eating rowan berries, sometimes right inside towns and villages.",
+          "factIds": [
+            "f24",
+            "f22"
+          ]
+        },
+        {
+          "text": "Its flight is fast, powerful and bounding.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "During breeding both sexes develop throat pouches where they store seeds for the young.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Pine Grosbeak: how to recognise it by plumage and bill, what its calls sound like, what it eats and where and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "19 to 22 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "c0623d1a30d8fa28"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "c0623d1a30d8fa28"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "tallbit",
@@ -197,5 +806,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

@@ -1,13 +1,674 @@
 {
   "qid": "Q26114",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
-    "wave": 2
+    "wave": 2,
+    "audioStruckSources": [
+      "https://commons.wikimedia.org/wiki/File:Chocha_perdiz_(Scolopax_rusticola)_y_Mosquitero_com%C3%BAn_(Phylloscopus_collybita).mp3"
+    ],
+    "audioStruck": true
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Morkullan är en rund och kraftig fågel med lång, rak näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Morkullan är en rund och kraftig fågel, med en lång rak näbb."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ovansidan är spräcklig i svart, askgrått och rödbrunt, och den vitaktiga undersidan har rostgul anstrykning och bruna, vågiga streck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Morkullan är spräcklig i svart, askgrått och rödbrunt på ovansidan, med vitaktig undersida, som har rostgul anstrykning och bruna, vågiga streck."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Näbben är blekt köttfärgad med svart, rundad spets.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är blekt köttfärgad, med svart och rundad spets."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Ögonen är stora och sitter mycket långt bak på huvudet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ögonen är stora och är placerade mycket långt bak på huvudet"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Huvudet och nacken har tvärgående svart teckning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Huvudets och nackens svarta teckning är tvärgående."
+        },
+        {
+          "article": "en",
+          "quote": "The head is barred with black, not striped like that of its close relatives, the snipe."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Vingarna är rundade.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The wings are rounded and the base of the bill is flesh-coloured with a dark tip."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Benen är brungrå och hela underbenet är befjädrat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Benen är brungrå och hela underbenet är befjädrat."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "size",
+      "sv": "Vuxna fåglar är 33–38 cm långa inklusive den 6–8 cm långa näbben, med ett vingspann på 55–65 cm.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Adults are 33–38 cm (13–15 in) in length, including the 6–8 cm (2.4–3.1 in) long straight bill, and have a 55–65 cm (22–26 in) wingspan."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Morkullan väger ungefär 300 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingspannet är 56–60 cm och den väger ungefär 300 gram."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Hanen är mycket större än honan, men könen kan inte skiljas åt i fält.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The species is sexually dimorphic, with the male much larger than the female, although the sexes cannot be separated in the field."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Hane och hona har samma färgteckning.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Männchen und Weibchen haben die gleiche Färbung."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Spellätet i spelflykten består av tre till fyra dämpade, knorrande ljud som avslutas med ett spetsigt, explosivt ljud: \"oårt oårt oårt pissp!\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "tre till fyra dämpade, knorrande ljud som avslutas med ett spetsigt, explosivt: \"oårt oårt oårt pissp!\""
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Lätet låter skarpt och högt, ungefär \"ziwitz\", omväxlande med ett utdraget, grodlikt \"quorr\".",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Ihr Ruf klingt scharf und hoch, in etwa wie „ziwitz“, abwechselnd mit langgezogenem, froschartigem „quorr“."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Morkullan lever i skogs- och buskmark, både i löv- och barrskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lever i skogs- och buskmark, både i löv- och barrskog."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Häckningsreviret behöver torra, varma viloplatser, fuktiga födosöksområden och gläntor för flykt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Breeding territories must include a mix of dry, warm resting places, damp areas for feeding, and clearings for flight."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "Morkullan häckar i hela Sverige men är vanligare i de mellersta delarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Morkullan häckar i hela Sverige, men är vanligare i de mellersta delarna."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Den återkommer till Skåne mot slutet av mars och till mellersta Sverige i början av april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Till Skåne återkommer den mot slutet av mars, och till mellersta Sverige anländer den i början av april."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I oktober och november flyttar den från Sverige till sydligare breddgrader.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På senhösten, i oktober och november, flyttar den åter till sydligare breddgrader."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Endast enstaka individer försöker övervintra i södra Sverige vissa vintrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "endast enstaka individer försöker övervintra i södra Sverige vissa vintrar"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till 580 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 580 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "behaviour",
+      "sv": "Morkullan är nattaktiv och revirhävdande och ligger gömd i buskar och snår under dagen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Morkullan är en nattaktiv, revirhävdande fågel, som under dagen ligger gömd i buskar och snår."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "När den stöts upp flyger den iväg med ett surrande vingljud.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "rarely active during the day unless flushed, when they fly off with a whirring wing noise"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Inne i skogen flyger den oregelbundet med vridningar och fladder.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "fly erratically with twisting and fluttering once in woodland"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Vuxna fåglar flyger upp först i sista stund när en människa närmar sig.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Altvögel fliegen beim Herannahen eines störenden Menschen erst im letzten Moment auf"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Vid morkulledraget flyger hanen i skymningen flera gånger fram och tillbaka över reviret och låter höra sin lockton.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "då hanen flyger i skymningen flera gånger fram och tillbaka över reviret och låter höra sin lockton"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Morkullan är polygam, och en dominant hane parar sig med flera honor i sitt revir.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Morkullan är polygam och en dominant hane parar sig med flera honor i sitt revir."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Honan lägger fyra gråaktigt rödgula ägg med leverbruna och askgrå fläckar i en grop bäddad med löv, strån eller mossa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger fyra gråaktigt rödgula ägg med leverbruna och askgrå fläckar."
+        },
+        {
+          "article": "sv",
+          "quote": "De läggs i en grop som är bäddad med några löv, strån eller mossa."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Honan ruvar ensam äggen i 21 till 24 dagar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "incubation is performed by the female for between 21 and 24 days"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "food",
+      "sv": "Morkullan äter främst daggmaskar, men också insekter och deras larver, sötvattensblötdjur och vissa fröer.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They mainly eat earthworms, but also insects and their larvae, freshwater molluscs and some plant seeds."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det svenska beståndet är flyttfåglar och endast enstaka individer försöker övervintra i södra Sverige vissa vintrar."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i juni."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i januari, augusti och september."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Morkullan är en rund och kraftig fågel med lång, rak näbb som lever i skogs- och buskmark, både i löv- och barrskog.",
+          "factIds": [
+            "f01",
+            "f14"
+          ]
+        },
+        {
+          "text": "Den är en flyttfågel som häckar i hela Sverige.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Rund och kraftig med lång, rak näbb som är blekt köttfärgad med svart spets",
+          "factIds": [
+            "f01",
+            "f03"
+          ]
+        },
+        {
+          "text": "Spräcklig ovansida i svart, askgrått och rödbrunt, tvärgående svart teckning på huvud och nacke",
+          "factIds": [
+            "f02",
+            "f05"
+          ]
+        },
+        {
+          "text": "Stora ögon som sitter mycket långt bak på huvudet",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Hane och hona har samma färgteckning och kan inte skiljas åt i fält",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "I spelflykten hörs tre till fyra dämpade, knorrande ljud som avslutas med ett spetsigt, explosivt ljud: \"oårt oårt oårt pissp\".",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Lätet är skarpt och högt, ungefär \"ziwitz\", omväxlande med ett utdraget, grodlikt \"quorr\".",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Morkullan är en flyttfågel som häckar i hela Sverige men är vanligare i de mellersta delarna.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "Den återkommer till Skåne mot slutet av mars och till mellersta Sverige i början av april, och flyttar söderut i oktober och november.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i juni och sällan i januari, augusti och september.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Endast enstaka individer försöker övervintra i södra Sverige vissa vintrar.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Morkullan är nattaktiv och ligger gömd i buskar och snår under dagen.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Vuxna fåglar flyger upp först i sista stund när en människa närmar sig och far iväg med ett surrande vingljud.",
+          "factIds": [
+            "f24",
+            "f22"
+          ]
+        },
+        {
+          "text": "Vid morkulledraget flyger hanen i skymningen flera gånger fram och tillbaka över reviret och låter höra sin lockton.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Födan är främst daggmaskar, men också insekter och deras larver, sötvattensblötdjur och vissa fröer.",
+          "factIds": [
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Morkulla: så känner du igen den runda skogsfågeln med lång, rak näbb, hur dess läten låter och när på året den brukar ses.",
+      "facts": {
+        "size": {
+          "value": "33 till 38 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Woodcock is a round, stocky bird with a long, straight bill that lives in woodland and scrub, in both deciduous and coniferous forest.",
+          "factIds": [
+            "f01",
+            "f14"
+          ]
+        },
+        {
+          "text": "It is a migrant that breeds throughout Sweden.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Round and stocky with a long, straight, pale flesh-coloured bill with a black tip",
+          "factIds": [
+            "f01",
+            "f03"
+          ]
+        },
+        {
+          "text": "Upperparts mottled black, ash-grey and rufous, with black bars across head and nape",
+          "factIds": [
+            "f02",
+            "f05"
+          ]
+        },
+        {
+          "text": "Large eyes set very far back on the head",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Male and female share the same plumage and cannot be told apart in the field",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "In the display flight it gives three to four muffled, grunting notes ending in a sharp, explosive sound: \"oårt oårt oårt pissp\".",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The call is sharp and loud, roughly \"ziwitz\", alternating with a drawn-out, frog-like \"quorr\".",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Eurasian Woodcock is a migrant that breeds throughout Sweden but is commoner in the central parts.",
+          "factIds": [
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "It returns to Skåne in late March and central Sweden in early April, and moves south in October and November.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "It is reported most in June and rarely in January, August and September.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Only a few individuals try to winter in southern Sweden in some winters.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Eurasian Woodcock is active at night and spends the day hidden in bushes and thickets.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Adults flush only at the last moment when a person approaches and fly off with a whirring wing sound.",
+          "factIds": [
+            "f24",
+            "f22"
+          ]
+        },
+        {
+          "text": "During roding the male flies back and forth over the territory several times at dusk, calling.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It feeds mainly on earthworms, and also takes insects and their larvae, freshwater molluscs and some seeds.",
+          "factIds": [
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Eurasian Woodcock: how to recognise this round woodland bird with a long, straight bill, what its calls sound like and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "33 to 38 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "b40a6418f8b50409"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "b40a6418f8b50409"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "morkulla",
@@ -51,16 +712,6 @@
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_woodcock,_Scolopax_rusticola,_Morkulla_-_50939378612.jpg"
     }
   ],
-  "audio": {
-    "file": "Q26114/voice.mp3",
-    "durationSec": 6,
-    "trimmed": false,
-    "author": "ChristianSW",
-    "license": "CC0",
-    "licenseUrl": null,
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chocha_perdiz_(Scolopax_rusticola)_y_Mosquitero_com%C3%BAn_(Phylloscopus_collybita).mp3",
-    "sha256": "6a9b0ba2d0b973f7e25b83f4f61fe6ae87978d5f8de791b51e29a29d88c8fe36"
-  },
   "wikipedia": {
     "sv": {
       "title": "Morkulla",
@@ -207,5 +858,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

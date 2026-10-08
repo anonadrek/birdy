@@ -1,13 +1,679 @@
 {
   "qid": "Q26691",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Smålommen är 55–67 cm lång, har ett vingspann på 91–110 cm och väger i genomsnitt 1,4 kg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Smålommen blir 55–67 cm lång, har ett vingspann på 91–110 cm och väger i genomsnitt 1,4 kg."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Smålommen är den minsta och lättaste av lommarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är den minsta och lättaste av lommarna."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "I sommardräkt är smålommen askgrå på huvud och hals med en stor rödbrun fläck på framsidan av halsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På sommaren är den askgrå på huvud och hals, med en stor rödbrun fläck på framsidan av halsen."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Smålommen är den enda lommen med helt mörk rygg i häckningsdräkt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is the only loon with an all-dark back in breeding plumage."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "I vinterdräkt är smålommen mörkgrå med små ljusa prickar på ovansidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I vinterdräkten är den mörkgrå med små ljusa prickar på ovansidan."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "I vinterdräkt har den grå hjässa och halsbaksida samt vit undersida, strupe och ansikte.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har grå hjässa, grå halsbaksida och vit undersida, strupe och ansikte."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Simmande håller smålommen ofta huvud och näbb påtagligt uppåtriktade.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Simmande håller den ofta huvud och näbb påtagligt uppåtriktade."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Näbben är tunn, rak och spetsig och hålls ofta uppåtlutad.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Its bill is thin, straight, and sharp, and often held at an uptilted angle."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "behaviour",
+      "sv": "I flykten höjer och sänker smålommen ofta huvudet och flyger annars ofta med sänkt huvud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den höjer och sänker ofta huvudet i flykten och flyger i övrigt ofta med sänkt huvud."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Könen är lika till utseendet, men hanar är ofta något större och tyngre än honor.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The sexes are similar in appearance, although males tend to be slightly larger and heavier than females."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Många unga fåglar blir snart nästan omöjliga att skilja från vuxna, utom genom sin ljusare näbb.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Though some young birds hold this plumage until mid-winter, many quickly become virtually indistinguishable from adults, except for their paler bills."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Paret ropar tillsammans i revirropet: hanen a'roo, a'roo och honan ett mer långsträckt aaarooo, aarooo.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen ropar a'roo, a'roo, honan ett mera långsträckt aaarooo, aarooo."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "I flykten ger den en snabb men rytmisk serie gåslika kacklande läten, kak-kak-kak, ungefär fem per sekund.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "it gives a series of rapid yet rhythmic goose-like cackles—kaa-kaa-kaa or kak-kak-kak, at roughly five calls per second."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Varningslätet är ett djupt skorrande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Varningslätet är ett djupt skorrande, och i flykten hörs ofta ett kacklande läte."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Under vintern är smålommen oftast tyst.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Während des Winters geben Sterntaucher überwiegend keine Laute."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Smålommen bygger boet vid små skogsomslutna vatten, ofta vid gungflystränder med omgivande våtmarker.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De bygger sitt bo vid små skogsomslutna vattendrag, ofta vid gungflystränder med omgivande våtmarker"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Under vinterhalvåret lämnar smålommarna sötvattnet och övervintrar i kustområden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under vinterhalvåret lämnar alla fåglar sina sötvattensområden och övervintrar i kustområden."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "food",
+      "sv": "Födan hämtas inte i häckningsvattnet utan i större sjöar, floder eller i havet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "boreviret inte är näringsrevir, födan hämtas i större sjöar, floder eller i havet."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "food",
+      "sv": "Smålommen är en utpräglad fiskätare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som de andra arterna inom familjen så är smålommen en utpräglad fiskätare"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "food",
+      "sv": "Smålommen flyger ofta upp till 4–5 km för att hämta föda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lommen måste därför flyga långa sträckor, inte sällan upp till 4–5 km för att få tag på föda"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "behaviour",
+      "sv": "Vid födosök dyker smålommen 2–9 meter djupt och stannar i genomsnitt en minut under vattnet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vid födosök under vatten dyker den mellan 2 och 9 meter djupt och stannar i genomsnitt under vattnet i en minut."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Smålommen är den enda lommen som kan lyfta direkt från marken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Smålommen är den enda lommen som kan ta till vingar direkt från marken."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Smålommen häckar i norra och mellersta Sverige söderut till en linje från mellersta Dalsland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Smålommen häckar i norra och mellersta Sverige söderut till en linje från mellersta Dalsland"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "sweden",
+      "sv": "Den högsta tätheten i Sverige finns i Värmland, Bergslagen och Dalarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den högsta koncentrationen förekommer i Värmland, Bergslagen och Dalarna."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "sweden",
+      "sv": "Vissa smålommar övervintrar i södra Sverige medan andra flyttar längre söderut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vissa övervintrar i de södra delarna av Sverige, medan andra flyttar längre söderut."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "sweden",
+      "sv": "Antalet reproduktiva smålommar i Sverige uppskattas till cirka 4 200.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Antalet reproduktiva individer i Sverige uppskattas till cirka 4 200, inom ett intervall på 3 200–5 000."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "sweden",
+      "sv": "Smålommen är Värmlands landskapsfågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Smålommen är Värmlands landskapsfågel."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "I Skandinavien läggs äggen från början av maj till början av juli.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Eiablage erfolgt in Schottland und Skandinavien schon ab Anfang Mai bis Anfang Juli"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Honan lägger oftast två ägg som ruvas i 24–29 dygn, främst av honan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger som oftast två ägg, men kullar med 1–3 ägg har rapporterats, och dessa ruvas i 24–29 dygn, främst av honan."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "breeding",
+      "sv": "Boet placeras inom en halvmeter från ett mindre vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet placeras inom en halvmeter från ett mindre vattendrag."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vissa övervintrar i de södra delarna av Sverige, medan andra flyttar längre söderut."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Jämtland, Dalarna och Halland."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Smålommen är den minsta och lättaste av lommarna.",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Den häckar vid små skogsomslutna vatten i norra och mellersta Sverige och övervintrar i kustområden.",
+          "factIds": [
+            "f16",
+            "f23",
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Sommardräkt: askgrått huvud och hals med en stor rödbrun fläck på framhalsen",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Den enda lommen med helt mörk rygg i häckningsdräkt",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Vinterdräkt: mörkgrå ovansida med små ljusa prickar, vitt ansikte, vit strupe och undersida",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Tunn, rak och spetsig näbb som simmande ofta hålls påtagligt uppåtriktad",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "I revirropet ropar paret tillsammans: hanen a'roo, a'roo och honan ett mer långsträckt aaarooo, aarooo.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "I flykten hörs en snabb men rytmisk serie gåslika kacklande läten, kak-kak-kak, ungefär fem per sekund.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Varningslätet är ett djupt skorrande, och under vintern är den oftast tyst.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Smålommen är delvis flyttfågel och häckar i norra och mellersta Sverige söderut till mellersta Dalsland.",
+          "factIds": [
+            "s01",
+            "f23"
+          ]
+        },
+        {
+          "text": "Tätheten är högst i Värmland, Bergslagen och Dalarna.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Vissa övervintrar i södra Sverige, andra flyttar längre söderut.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt, och andelen av alla fågelrapporter är högst i Jämtland, Dalarna och Halland.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Smålommen är en utpräglad fiskätare som hämtar födan i större sjöar, floder eller havet, inte i häckningsvattnet.",
+          "factIds": [
+            "f19",
+            "f18"
+          ]
+        },
+        {
+          "text": "Den flyger ofta 4 till 5 km för att hämta föda.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Den dyker 2 till 9 meter djupt och stannar i genomsnitt en minut under vattnet.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Som enda lom kan den lyfta direkt från marken, och i flykten höjer och sänker den ofta huvudet.",
+          "factIds": [
+            "f22",
+            "f09"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Smålom: så känner du igen den i sommar- och vinterdräkt, hur revirropet och flyktlätet låter och var och när den ses under året.",
+      "facts": {
+        "size": {
+          "value": "55 till 67 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Red-throated Loon is the smallest and lightest of the loons.",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "It breeds by small forest-ringed waters in northern and central Sweden and winters in coastal areas.",
+          "factIds": [
+            "f16",
+            "f23",
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Summer plumage: ash-grey head and neck with a large red-brown patch on the foreneck",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "The only loon with a wholly dark back in breeding plumage",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Winter plumage: dark grey upperparts with small pale spots, white face, throat and underparts",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Thin, straight, pointed bill, often held clearly tilted upwards while swimming",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "In the territorial call the pair calls together: the male a'roo, a'roo and the female a longer aaarooo, aarooo.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "In flight it gives a fast but rhythmic series of goose-like cackling calls, kak-kak-kak, about five per second.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The alarm call is a deep rattle, and in winter it is mostly silent.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Red-throated Loon is a partial migrant that breeds in northern and central Sweden south to central Dalsland.",
+          "factIds": [
+            "s01",
+            "f23"
+          ]
+        },
+        {
+          "text": "Density is highest in Värmland, Bergslagen and Dalarna.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Some winter in southern Sweden, while others move further south.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It is reported all year, and its share of all bird reports is highest in Jämtland, Dalarna and Halland.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Red-throated Loon is a dedicated fish-eater that feeds in larger lakes, rivers or the sea, not in its breeding pool.",
+          "factIds": [
+            "f19",
+            "f18"
+          ]
+        },
+        {
+          "text": "It often flies 4 to 5 km to fetch food.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "It dives 2 to 9 metres deep and stays under for one minute on average.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "It is the only loon that can take off directly from land, and in flight it often raises and lowers its head.",
+          "factIds": [
+            "f22",
+            "f09"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Red-throated Loon: how to recognise it in summer and winter plumage, what its territorial and flight calls sound like, and where and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "55 to 67 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "70d600a53b432fd7"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "70d600a53b432fd7"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "smalom",
@@ -205,5 +871,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }

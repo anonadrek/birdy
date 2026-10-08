@@ -1,13 +1,663 @@
 {
   "qid": "Q26140",
-  "status": "pending",
+  "status": "ok",
   "publish": false,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Skogsduvan är övervägande blågrå med metallgrön glans på halsens sidor och på ryggen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skogsduvan är övervägande blågrå med metallgrön glans på halsens sidor och ryggen."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Framsidan av halsen och främre bröstet är gråaktigt purpurröda, och undersidan är vit.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På framsidan av halsen och på främre bröst gråaktigt purpurröd samt undertill vit."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Vingen har två korta mörkgrå till svartaktiga vingband, och stjärten har ett brett mörkgrått band längst ut.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "two short dark grey to blackish wingbars on the tertials and greater coverts, and a broad dark grey bar at the tip of the tail"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Skogsduvan har grå övergump och ofullständiga vingband.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the rump of the stock dove is grey and its wing bars are incomplete"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Ögonen är mörka och näbben är rosa med gul spets.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The eyes are dark, and the bill pink with a yellow tip."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "I flykten visar de grå vingarna en mörk bakkant, och vingens undersida är mörkgrå, till skillnad från klippduvans vita.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In flight, the grey wings show a dark trailing edge; the underwing is also dark grey, unlike the white underwing of the rock dove."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "Skogsduvan är 30–35 centimeter lång och har ett vingspann på 62–68 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är 30–35 centimeter lång och har ett vingspann på 62–68 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "size",
+      "sv": "Hanar väger 303–365 gram och honor 286–290 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "a weight of 303–365 g in males, 286–290 g in females"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Hane och hona har likadan fjäderdräkt men hanen är något större; ungfåglar saknar den skimrande halsfläcken.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The male and female are indistinguishable on plumage, though males are slightly larger; juveniles are also similar, but lack the iridescent neck patch."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Lätet är ett kort \"hu\" som ofta upprepas.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lätet är ett kort \"hu\", som ofta upprepas."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Det korta, djupa och grymtande lätet skiljer sig tydligt från ringduvans modulerade kuttrande.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The short, deep, \"grunting\" Ooo-uu-ooh call is quite distinct from the modulated cooing notes of the common wood pigeon."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "habitat",
+      "sv": "Skogsduvan häckar främst i större löv- eller blandskogar men kan ovanligtvis även finnas i barrskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skogsduvan häckar företrädesvis i större löv- eller blandskogar men kan ovanligtvis även påträffas i barrskog"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "habitat",
+      "sv": "Favoritmiljöerna är ekskog och aspdungar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Favoritbiotoperna är annars ekskogen och aspdungar."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Skogsduvan är också vanlig vid kuster där klippor ger lämpliga boplatser.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is also common on coasts, where cliffs provide suitable nesting sites."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "breeding",
+      "sv": "Boet ligger oftast i trädhål men ibland i bergskrevor eller hål i murar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den bygger oftast sitt bo i håligheter i träd men även ibland i en bergskreva, eller håligheter i murar och liknande."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "breeding",
+      "sv": "I barrskog häckar den ofta i ett spillkråkshål i en sparad tall vid ett hygge eller en sjö.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "ofta i ett spillkråkshål i en sparad tall invid ett hygge eller sjö"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "breeding",
+      "sv": "Honan lägger vanligtvis två helvita glansiga ägg som ruvas i 16–18 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger vanligtvis två helvita glansiga ägg som hon ruvar mycket hårt i 16–18 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "breeding",
+      "sv": "Ungarna matas av båda föräldrarna i boet tills de är flygga efter 25–30 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De stannar sedan i boet där de matas av båda föräldrar tills de är flygga efter 25–30 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "breeding",
+      "sv": "Skogsduvan lägger två till tre kullar per år, och häckningssäsongen i Sverige varar från mitten av april till september.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skogsduvan lägger två till tre kullar varje år och häckningssäsongen varar i Sverige från mitten av april till september."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "food",
+      "sv": "Skogsduvan äter frön som raps och åkerogräs samt bär, säd och ärtor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skogsduvan äter frön, exempelvis raps och åkerogräs, bär, säd, ärtor"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "food",
+      "sv": "Den söker föda främst på öppna fält och åkrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den födosöker främst på öppna fält och åkrar"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "I Sverige häckar skogsduvan sparsamt från Skåne till mellersta Värmland, sydöstra Dalarna och Gästrikland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar skogsduvan sparsamt från Skåne i söder till mellersta Värmland, sydöstra Dalarna och Gästrikland"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Den är mycket vanligare i södra och östra Sverige än i de västra delarna av landet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Jämfört med de västra delarna av landet är den mycket vanligare i de södra och östra delarna."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "sweden",
+      "sv": "Den skandinaviska populationen flyttar söderut i september och oktober till södra Frankrike och norra Spanien.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den skandinaviska populationen flyger söderut under september och oktober till vinterkvarter i södra Frankrike och norra Spanien."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "sweden",
+      "sv": "Ett fåtal stannar i södra Sverige över vintern, och fåglarna återkommer till häckplatserna i mars och april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ett fåtal individer stannar kvar i södra Sverige under vintern och de återkommer till sina häckningslokaler under mars och april."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "sweden",
+      "sv": "År 2018 uppskattades det svenska beståndet till 12 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 12 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Skogsduvan är en ganska skygg art.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skogsduvan är en ganska skygg art som främst lever av frön."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Den bildar oftast flockar på några få till några tiotal fåglar, mycket sällan hundratals.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It typically forms flocks of a few to a few tens, very rarely hundreds"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Den håller ofta sällskap med ringduvor och ibland med klippduvor.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It often associates with wood pigeons and, occasionally, with rock doves."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Under den kretsande vårflykten smäller vingarna som en piska.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "During the circling spring flight, its wings crack smartly like a whip."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ett fåtal individer stannar kvar i södra Sverige under vintern och de återkommer till sina häckningslokaler under mars och april."
+        },
+        {
+          "article": "sv",
+          "quote": "Den skandinaviska populationen flyger söderut under september och oktober till vinterkvarter i södra Frankrike och norra Spanien."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i mars."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i december."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Skogsduvan är en blågrå duva som häckar i större löv- och blandskogar och vid kuster där klippor ger boplatser.",
+          "factIds": [
+            "f01",
+            "f12",
+            "f14"
+          ]
+        },
+        {
+          "text": "Den söker främst föda på öppna fält och åkrar.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Blågrå med grön halsglans, gråaktigt purpurröd framhals, vit undersida och rosa näbb med gul spets",
+          "factIds": [
+            "f01",
+            "f02",
+            "f05"
+          ]
+        },
+        {
+          "text": "Två korta mörka vingband, grå övergump och brett mörkt band längst ut på stjärten",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "I flykten mörk bakkant på vingen och mörkgrå vingundersida, inte vit som hos klippduvan",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Hane och hona är lika men hanen är något större, ungfåglar saknar skimrande halsfläck",
+          "factIds": [
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Lätet är ett kort \"hu\" som ofta upprepas.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Det korta, djupa och grymtande lätet skiljer sig tydligt från ringduvans modulerade kuttrande.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Skogsduvan häckar sparsamt i Sverige från Skåne till mellersta Värmland, sydöstra Dalarna och Gästrikland, och är mycket vanligare i söder och öster än i väster.",
+          "factIds": [
+            "f22",
+            "f23"
+          ]
+        },
+        {
+          "text": "Den återkommer i mars och april och flyttar i september och oktober till södra Frankrike och norra Spanien, men ett fåtal övervintrar i södra Sverige.",
+          "factIds": [
+            "f24",
+            "f25",
+            "s01"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i mars, sällan i december, och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Skogsduvan äter frön som raps och åkerogräs samt bär, säd och ärtor, och söker främst föda på öppna fält och åkrar.",
+          "factIds": [
+            "f20",
+            "f21"
+          ]
+        },
+        {
+          "text": "Den är ganska skygg och ses oftast i flockar på några få till några tiotal fåglar, ofta tillsammans med ringduvor.",
+          "factIds": [
+            "f27",
+            "f28",
+            "f29"
+          ]
+        },
+        {
+          "text": "Boet ligger oftast i trädhål, och under den kretsande vårflykten smäller vingarna som en piska.",
+          "factIds": [
+            "f15",
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Skogsduva: så känner du igen den på fjäderdräkt och flyktbild, hur det korta, grymtande lätet låter och när den ses under året.",
+      "facts": {
+        "size": {
+          "value": "30 till 35 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Stock Dove is a blue-grey dove that breeds in larger deciduous and mixed woods and on coasts where cliffs offer nest sites.",
+          "factIds": [
+            "f01",
+            "f12",
+            "f14"
+          ]
+        },
+        {
+          "text": "It feeds mainly on open fields and farmland.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Blue-grey with green neck sheen, greyish purple-red foreneck, white underparts and pink bill with yellow tip",
+          "factIds": [
+            "f01",
+            "f02",
+            "f05"
+          ]
+        },
+        {
+          "text": "Two short dark wing bars, grey rump and a broad dark band at the tail tip",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "In flight a dark trailing edge and dark grey underwing, not white as in Rock Dove",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Sexes look alike, the male slightly larger; juveniles lack the glossy neck patch",
+          "factIds": [
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is a short \"hu\", often repeated.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "This short, deep, grunting call is clearly different from the modulated cooing of the Woodpigeon.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "In Sweden the Stock Dove breeds sparsely from Skåne to central Värmland, south-eastern Dalarna and Gästrikland, and is much commoner in the south and east than in the west.",
+          "factIds": [
+            "f22",
+            "f23"
+          ]
+        },
+        {
+          "text": "It returns in March and April and leaves in September and October for southern France and northern Spain, though a few winter in southern Sweden.",
+          "factIds": [
+            "f24",
+            "f25",
+            "s01"
+          ]
+        },
+        {
+          "text": "It is reported most in March, rarely in December, and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats seeds such as rape and arable weeds, along with berries, grain and peas, and feeds mainly on open fields and farmland.",
+          "factIds": [
+            "f20",
+            "f21"
+          ]
+        },
+        {
+          "text": "It is fairly shy and usually seen in flocks of a few to a few dozen birds, often with Woodpigeons.",
+          "factIds": [
+            "f27",
+            "f28",
+            "f29"
+          ]
+        },
+        {
+          "text": "The nest is usually in a tree hole, and in the circling spring flight the wings crack like a whip.",
+          "factIds": [
+            "f15",
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Stock Dove: how to recognise it by plumage and flight pattern, what its short, grunting call sounds like and when it is seen during the year.",
+      "facts": {
+        "size": {
+          "value": "30 to 35 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "2730b8f3866a7a06"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "2730b8f3866a7a06"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "skogsduva",
@@ -207,5 +857,12 @@
     "statusSignal": {
       "contradicts": null
     }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
   }
 }
