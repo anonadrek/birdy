@@ -104,10 +104,11 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
         </div>
         <ol class="timeline" aria-label={p.situation.timelineLabel} data-reveal style="--rd:120ms">
           {p.situation.timeline.map((entry, i) => {
-            // Entry 1 is Birdy 1.3: "kommer" until the live date in release.mjs, the date from then on.
+            // Entry 1 is Birdy 1.3: "kommer" until the live date in release.mjs, the date from then on. It also carries the
+            // early users' promise since the cutoff row went (2026-10-08), so it is the highlighted one.
             const e = i === 1 ? releaseTimelineEntry(entry, date.iso, locale) : entry;
             return (
-              <li class:list={{ key: i === 2, soon: i === p.situation.timeline.length - 1 }} data-timeline-release={i === 1 ? '' : undefined}>
+              <li class:list={{ key: i === 1, soon: i === p.situation.timeline.length - 1 }} data-timeline-release={i === 1 ? '' : undefined}>
                 {i === p.situation.timeline.length - 1 && <span class="tbird" aria-hidden="true"></span>}
                 <p class="when">{e.when}</p>
                 <p class="what">{e.what}</p>

@@ -56,6 +56,10 @@ test.describe('Premium-sidan', () => {
     await page.goto('/premium/');
     await expect(page.locator('[data-timeline-release] .when')).toHaveText('15 October 2026');
     await expect(page.locator('[data-timeline-release] .what')).toHaveText('Birdy 1.3.');
+    // The 1.3 entry is the highlighted one (it carries the early users' promise); the iPhone entry is only "soon".
+    await expect(page.locator('.timeline li.key')).toHaveCount(1);
+    await expect(page.locator('.timeline li.key')).toHaveAttribute('data-timeline-release', '');
+    await expect(page.locator('.timeline li.soon')).not.toHaveClass(/\bkey\b/);
   });
 
   // On the live date (the fixture build's 2026-10-15) the early users' lead and the buy steps are 1.3's own wording;
