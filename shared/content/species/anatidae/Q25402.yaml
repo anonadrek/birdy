@@ -50,7 +50,7 @@ description:
   en: '# Mute Swan
 
 
-    The mute swan is a large, unmistakable waterfowl measuring 140–160 cm in length.
+    The mute swan is a large, unmistakable waterfowl measuring 140 to 160 cm in length.
     It is entirely white with a striking orange beak bordered in black, topped by
     a pronounced knob that is noticeably larger in males. This distinctive facial
     feature makes it easily identifiable even at a distance.
@@ -86,11 +86,11 @@ migration:
     Europe. In southern Scandinavia, many populations are resident year-round, remaining
     on ice-free lakes and coastal waters during winter. However, northern populations
     show more pronounced migration patterns, with birds departing in autumn as waters
-    freeze and returning in spring (March–April). Winter movements are often driven
+    freeze and returning in spring (March to April). Winter movements are often driven
     by ice formation rather than temperature alone, with birds relocating to unfrozen
     waters in milder regions or moving southward. Arrival of spring migrants typically
-    occurs from late February onwards, while autumn departure peaks in October–November
-    as ice threatens their habitats.'
+    occurs from late February onwards, while autumn departure peaks in October to
+    November as ice threatens their habitats.'
 image_refs:
 - role: hero
   path: Q25402/hero.webp
@@ -120,8 +120,8 @@ image_refs:
     olor) (07).jpg
   commons_filename: Cygne tuberculé juvénile (Cygnus olor) (07).jpg
 review_status: approved
-review_notes: '2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller
-  tidigare bilder.'
+review_notes: '2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar
+  ovan gäller tidigare bilder.'
 generated_at: '2026-05-03T21:30:19.711428+00:00'
 sources:
   wikipedia_sv_revision: '59207363'

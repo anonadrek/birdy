@@ -40,10 +40,10 @@ description:
 
 
     Arten är känd för sitt extraordinära flyttbeteende och genomför världens längsta
-    djurmigration – från häckningskolonierma i arktiska och subarktiska områden i
-    Europa, Asien och Nordamerika till Antarktis och tillbaka. De populationer som
-    flyttar längst färdas årligen cirka 90 000 kilometer. Denna imponerande vandring
-    innebär att silvertärnan upplever fler soltimmar än någon annan organism på jorden.
+    djurmigration, från häckningskolonierma i arktiska och subarktiska områden i Europa,
+    Asien och Nordamerika till Antarktis och tillbaka. De populationer som flyttar
+    längst färdas årligen cirka 90 000 kilometer. Denna imponerande vandring innebär
+    att silvertärnan upplever fler soltimmar än någon annan organism på jorden.
 
 
     Silvertärnan häckar i kolonier under nordliga somrar och är därmed närvaro i många
@@ -62,7 +62,7 @@ description:
 
     This species is renowned for undertaking the longest migration of any animal on
     Earth. It achieves two summers annually by migrating from its northern breeding
-    grounds to the Antarctic coast and back again—a round-trip journey of between
+    grounds to the Antarctic coast and back again, a round-trip journey of between
     48,700 and 96,000 km depending on breeding location. This extraordinary feat takes
     approximately six months in each direction, allowing the bird to experience extended
     periods of daylight and abundant food resources in both polar regions.
@@ -127,7 +127,8 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Sterna paradisaea (32909400627).jpg
   commons_filename: Sterna paradisaea (32909400627).jpg
 review_status: approved
-review_notes: "Silvertärna — Sterna paradisaea hero med klassisk dräkt; allmän SE-art kustkolonier + skärgård."
+review_notes: Silvertärna — Sterna paradisaea hero med klassisk dräkt; allmän SE-art
+  kustkolonier + skärgård.
 generated_at: '2026-05-15T20:03:48.688839+00:00'
 sources:
   wikipedia_sv_revision: '58696772'

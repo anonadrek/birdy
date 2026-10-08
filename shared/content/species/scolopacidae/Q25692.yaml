@@ -41,7 +41,7 @@ description:
 
     Under häckningsperioden är arten känd för sin spektakulära spelflykt, där hanen
     störtdyker mot marken. De utbredda stjärtfjädrarna vibrerar under dykningen och
-    skapar ett karakteristiskt brummande, mekaniskt ljud – en helt unik ljud­framställning
+    skapar ett karakteristiskt brummande, mekaniskt ljud, en helt unik ljud­framställning
     för arten. Detta display­beteende är särskilt framträdande tidigt på säsongen.
 
 
@@ -61,7 +61,7 @@ description:
 
     During breeding season, males perform a distinctive courtship display called "winnowing."
     They climb high into the sky in wide circles before diving sharply, vibrating
-    their tail feathers to produce a rapid drumming or bleating sound—an arresting
+    their tail feathers to produce a rapid drumming or bleating sound: an arresting
     acoustic display that can be heard from considerable distances. This behaviour
     is one of the most reliable ways to detect the species during the breeding season.
 
@@ -86,14 +86,14 @@ migration:
 
 
     The Common Snipe is a migratory wader throughout Northern Europe and Scandinavia.
-    Breeding populations arrive in spring (March–April) to occupy marshes, bogs, and
-    wet meadows across the region. During summer months, they perform elaborate courtship
-    displays with characteristic "winnowing" sounds produced by diving with vibrating
-    tail feathers. As autumn approaches (August–September), populations begin their
-    southward migration, with most birds departing Scandinavia by October to overwinter
-    in southern Europe, the Mediterranean, and North Africa. Some individuals may
-    remain in milder coastal areas during winter if conditions permit. Spring return
-    migration occurs from February onwards, completing their annual cycle.'
+    Breeding populations arrive in spring (March to April) to occupy marshes, bogs,
+    and wet meadows across the region. During summer months, they perform elaborate
+    courtship displays with characteristic "winnowing" sounds produced by diving with
+    vibrating tail feathers. As autumn approaches (August to September), populations
+    begin their southward migration, with most birds departing Scandinavia by October
+    to overwinter in southern Europe, the Mediterranean, and North Africa. Some individuals
+    may remain in milder coastal areas during winter if conditions permit. Spring
+    return migration occurs from February onwards, completing their annual cycle.'
 image_refs:
 - role: hero
   path: Q25692/hero.webp
@@ -124,7 +124,8 @@ image_refs:
     2020.jpg
   commons_filename: Common snipe (Gallinago gallinago) 2020.jpg
 review_status: approved
-review_notes: "Hero = Gallinago gallinago (Common Snipe / Enkelbeckasin); allmän våtmarksfågel i SE, häckar i myrar och kärr."
+review_notes: Hero = Gallinago gallinago (Common Snipe / Enkelbeckasin); allmän våtmarksfågel
+  i SE, häckar i myrar och kärr.
 generated_at: '2026-05-15T21:01:14.415381+00:00'
 sources:
   wikipedia_sv_revision: '59194823'

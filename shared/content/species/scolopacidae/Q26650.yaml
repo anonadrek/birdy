@@ -87,7 +87,7 @@ migration:
 
 
     The Dunlin is a migratory wader that occurs throughout Scandinavia in varying
-    numbers depending on the season. During breeding season (April–August), populations
+    numbers depending on the season. During breeding season (April to August), populations
     are found across northern Scandinavia and Russia, where they nest in arctic and
     subarctic wetlands. In autumn, these breeding birds migrate southward, with peak
     passage occurring in August and September. Some individuals remain in Scandinavia
@@ -124,7 +124,8 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Dunlin (Calidris alpina) (15402301464).jpg
   commons_filename: Dunlin (Calidris alpina) (15402301464).jpg
 review_status: approved
-review_notes: "Hero = Calidris alpina (Dunlin / Kärrsnäppa); allmän kustfågel under flyttning och häckar i fjällen."
+review_notes: Hero = Calidris alpina (Dunlin / Kärrsnäppa); allmän kustfågel under
+  flyttning och häckar i fjällen.
 generated_at: '2026-05-15T21:00:51.173095+00:00'
 sources:
   wikipedia_sv_revision: '57938212'

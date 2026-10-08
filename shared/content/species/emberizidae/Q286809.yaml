@@ -35,7 +35,7 @@ description:
 
     Videsparv är en liten fågel som tillhör familjen fältsparvar. Den häckar på den
     sibiriska tajgan i ett vidsträckt område från Skandinavien och österut. Arten
-    är migrationsbenägen och flyttar långväga vintertid – en del populationer reser
+    är migrationsbenägen och flyttar långväga vintertid. En del populationer reser
     hela vägen till östra Kina för att tillbringa de kallare månaderna.
 
 
@@ -106,11 +106,11 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Emberiza rustica 430410539.jpg
   commons_filename: Emberiza rustica 430410539.jpg
 review_status: approved
-review_notes: 'Hero = Rustic Bunting foto med japansk filtitel (arten övervintrar i östra Asien), matchar
-  Emberiza rustica. Videsparv häckar i norrlandssumpar.
+review_notes: 'Hero = Rustic Bunting foto med japansk filtitel (arten övervintrar
+  i östra Asien), matchar Emberiza rustica. Videsparv häckar i norrlandssumpar.
 
-  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
-  bilder.'
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan
+  gäller tidigare bilder.'
 generated_at: '2026-05-15T18:39:48.231803+00:00'
 sources:
   wikipedia_sv_revision: '59193509'

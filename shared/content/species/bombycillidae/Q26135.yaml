@@ -58,7 +58,7 @@ description:
     that makes it unmistakable in the field. It displays buff-grey upperparts contrasting
     with black face markings and a pointed crest. The wings are particularly eye-catching,
     featuring white and bright yellow patterning, while some flight feathers are tipped
-    with red—a feature that inspired the bird''s common name, as these tips resemble
+    with red. This feature inspired the bird''s common name, as these tips resemble
     sealing wax. Females are similarly plumaged to males, though young birds appear
     duller with reduced white and yellow markings, and lack the characteristic waxy
     red wingtips.
@@ -94,9 +94,10 @@ migration:
     America. During autumn, typically from September onwards, they migrate southwestward
     from breeding grounds, reaching Scandinavia and Northern Europe as winters approach.
     Their presence is highly unpredictable, influenced by berry crop availability
-    in their breeding regions—abundant food sources may keep populations further north,
-    while poor harvests trigger more southerly movements. Most individuals retreat
-    northward again by spring, typically March-April, returning to breeding territories.'
+    in their breeding regions: abundant food sources may keep populations further
+    north, while poor harvests trigger more southerly movements. Most individuals
+    retreat northward again by spring, typically March-April, returning to breeding
+    territories.'
 image_refs:
 - role: hero
   path: Q26135/hero.webp
@@ -123,7 +124,8 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Bombycilla garrulus Kiev6.jpg
   commons_filename: Bombycilla garrulus Kiev6.jpg
 review_status: approved
-review_notes: 'Hero visar tydlig sidensvans med crest, svart ögonmask, rönnbär i bakgrunden — bra ID-foto.'
+review_notes: Hero visar tydlig sidensvans med crest, svart ögonmask, rönnbär i bakgrunden
+  — bra ID-foto.
 generated_at: '2026-05-07T10:58:29.095682+00:00'
 sources:
   wikipedia_sv_revision: '58515218'

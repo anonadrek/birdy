@@ -34,7 +34,7 @@ description:
 
 
     Dalripa är en medelstor hönsfågel som förekommer över stora delar av norra halvklotet.
-    Det mest karakteristiska för arten är dess dramatiska säsongsväxling – sommartid
+    Det mest karakteristiska för arten är dess dramatiska säsongsväxling: sommartid
     bär den brunspräcklig dräkt som ger utmärkt kamouflage bland stenar och vegetation,
     medan det under vintern blir helt vit för att smälta in i snölandskapet. Denna
     anpassning gör arten svårfotograferad men också spännande att iaktta under olika
@@ -100,7 +100,7 @@ migration:
     shifting to lower elevations or more sheltered areas during harsh winter conditions.
     In spring, they return to upland breeding territories as snow melts. Populations
     remain largely sedentary within their northern range, relying on their remarkable
-    plumage changes—molting into white winter plumage for camouflage and reverting
+    plumage changes: molting into white winter plumage for camouflage and reverting
     to mottled brown breeding plumage in summer.'
 image_refs:
 - role: hero
@@ -129,7 +129,8 @@ image_refs:
     2018 2.jpg
   commons_filename: Willow ptarmigan (Lagopus lagopus) 2018 2.jpg
 review_status: approved
-review_notes: "Hero = Lagopus lagopus (Willow Ptarmigan / Dalripa); allmän i fjällbjörkskog och tundra i norra SE."
+review_notes: Hero = Lagopus lagopus (Willow Ptarmigan / Dalripa); allmän i fjällbjörkskog
+  och tundra i norra SE.
 generated_at: '2026-05-15T21:06:47.500532+00:00'
 sources:
   wikipedia_sv_revision: '58684163'

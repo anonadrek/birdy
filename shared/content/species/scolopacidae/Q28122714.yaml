@@ -33,7 +33,7 @@ description:
   sv: '# Brushane
 
 
-    Brushane är en snäppa med slående sexuell dimorfism – hanen är betydligt större
+    Brushane är en snäppa med slående sexuell dimorfism: hanen är betydligt större
     än honan och bär under häckningstiden en unik praktdräkt med stora, individuellt
     varierande halskragar i många färger. Denna variation mellan hanarna är mycket
     ovanlig bland fåglar. Honan är däremot diskret färgad i brunt och beige. Arten
@@ -86,7 +86,10 @@ image_refs:
     Mumbai DSCN0762 (2).jpg
   commons_filename: Ruff Calidris pugnax female Mumbai DSCN0762 (2).jpg
 review_status: auto
-review_notes: "2026-10-07 (1.3.0, 7i-fix A): wikipedia_en_revision borttagen. Den sparade revisionen 1321407778 var \"Ruff\", en förgreningssida (disambiguation), inte artikeln om arten, så artsidans textkredit länkar i stället artens artikel via Wikidata (WikipediaLinks.articleUrl)."
+review_notes: '2026-10-07 (1.3.0, 7i-fix A): wikipedia_en_revision borttagen. Den
+  sparade revisionen 1321407778 var "Ruff", en förgreningssida (disambiguation), inte
+  artikeln om arten, så artsidans textkredit länkar i stället artens artikel via Wikidata
+  (WikipediaLinks.articleUrl).'
 generated_at: '2026-05-15T21:01:29.291382+00:00'
 sources:
   wikipedia_sv_revision: '58520102'
