@@ -169,19 +169,19 @@
     <string name="diary_save_error_photo">Could not save the photo</string>
     <string name="diary_save_error_storage">Storage is full</string>
     <string name="diary_save_error_db">Could not save the observation</string>
-    <string name="diary_save_error_frame_unavailable">The photo is no longer available. Scan again</string>
+    <string name="diary_save_error_frame_unavailable">The photo is no longer available. Scan again.</string>
     <string name="diary_saved_indicator">Saved ✓</string>
     <string name="diary_note_label">Note</string>
     <string name="diary_note_save">Save note</string>
     <string name="diary_note_cancel">Cancel</string>
     <string name="diary_note_save_success">Note saved</string>
-    <string name="diary_note_save_error">Could not save the note. Try again</string>
+    <string name="diary_note_save_error">Could not save the note. Try again.</string>
     <string name="diary_delete_button">Delete</string>
     <string name="diary_delete_confirm_title">Delete observation?</string>
     <string name="diary_delete_confirm_body">This cannot be undone.</string>
     <string name="diary_delete_confirm_yes">Delete</string>
     <string name="diary_delete_confirm_no">Cancel</string>
-    <string name="diary_delete_failed">Couldn't delete. Try again</string>
+    <string name="diary_delete_failed">Couldn't delete. Try again.</string>
     <string name="diary_detail_not_found">This observation no longer exists</string>
     <string name="diary_detail_unknown_species">Unknown species</string>
     <string name="diary_detail_load_error">Could not load the observation</string>
@@ -212,7 +212,7 @@
     <!-- ===== Plan 5b: Badges UI ===== -->
     <string name="badges_section_recently_unlocked">Recently discovered</string>
     <string name="badges_locked_tooltip">Secret, keep birding</string>
-    <string name="badges_load_error">Could not load badges. Try again</string>
+    <string name="badges_load_error">Could not load badges. Try again.</string>
     <string name="badges_load_error_retry">Try again</string>
 
     <string name="unlock_label">New *badge*!</string>
@@ -313,7 +313,7 @@
     <string name="onboarding_s3_headline">Or *listen*.</string>
     <string name="onboarding_s3_sub">Record the song and Birdy suggests the species. Free, always.</string>
     <string name="onboarding_s3_free_pill">FREE</string>
-    <string name="onboarding_s3_species_demo">Great Tit 94%</string>
+    <string name="onboarding_s3_species_demo">Great Tit · 94%</string>
 
     <string name="onboarding_s4_eyebrow">THE JOURNAL · NO 4</string>
     <string name="onboarding_s4_headline">Every find, *a page*.</string>

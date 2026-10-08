@@ -181,19 +181,19 @@
     <string name="diary_save_error_photo">Kunde inte spara fotot</string>
     <string name="diary_save_error_storage">Lagringsutrymmet är fullt</string>
     <string name="diary_save_error_db">Kunde inte spara observationen</string>
-    <string name="diary_save_error_frame_unavailable">Fotot är inte längre tillgängligt. Skanna igen</string>
+    <string name="diary_save_error_frame_unavailable">Fotot är inte längre tillgängligt. Skanna igen.</string>
     <string name="diary_saved_indicator">Sparad ✓</string>
     <string name="diary_note_label">Anteckning</string>
     <string name="diary_note_save">Spara anteckning</string>
     <string name="diary_note_cancel">Avbryt</string>
     <string name="diary_note_save_success">Anteckning sparad</string>
-    <string name="diary_note_save_error">Kunde inte spara anteckningen. Försök igen</string>
+    <string name="diary_note_save_error">Kunde inte spara anteckningen. Försök igen.</string>
     <string name="diary_delete_button">Ta bort</string>
     <string name="diary_delete_confirm_title">Ta bort observation?</string>
     <string name="diary_delete_confirm_body">Detta går inte att ångra.</string>
     <string name="diary_delete_confirm_yes">Ta bort</string>
     <string name="diary_delete_confirm_no">Avbryt</string>
-    <string name="diary_delete_failed">Kunde inte ta bort. Försök igen</string>
+    <string name="diary_delete_failed">Kunde inte ta bort. Försök igen.</string>
     <string name="diary_detail_not_found">Observationen finns inte längre</string>
     <string name="diary_detail_unknown_species">Okänd art</string>
     <string name="diary_detail_load_error">Kunde inte ladda observationen</string>
@@ -224,7 +224,7 @@
     <!-- ===== Plan 5b: Badges UI ===== -->
     <string name="badges_section_recently_unlocked">Senast upptäckta</string>
     <string name="badges_locked_tooltip">Hemligt, fortsätt skåda</string>
-    <string name="badges_load_error">Kunde inte ladda märken. Försök igen</string>
+    <string name="badges_load_error">Kunde inte ladda märken. Försök igen.</string>
     <string name="badges_load_error_retry">Försök igen</string>
 
     <string name="unlock_label">Nytt *märke*!</string>
@@ -326,7 +326,7 @@
     <string name="onboarding_s3_headline">Eller *lyssna*.</string>
     <string name="onboarding_s3_sub">Spela in sången så föreslår Birdy arten. Gratis, alltid.</string>
     <string name="onboarding_s3_free_pill">GRATIS</string>
-    <string name="onboarding_s3_species_demo">Talgoxe 94%</string>
+    <string name="onboarding_s3_species_demo">Talgoxe · 94%</string>
 
     <string name="onboarding_s4_eyebrow">FÄLTBOKEN · NO 4</string>
     <string name="onboarding_s4_headline">Varje fynd, *en sida*.</string>
