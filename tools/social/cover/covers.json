@@ -1,17 +1,17 @@
 {
   "Q25404": {
-    "clue": "Small, blue cap, and bold at every feeder.",
-    "factId": null,
+    "clue": "Often hangs upside down to find food.",
+    "factId": "f27",
     "silhouette": { "author": "Wouter Koch", "licence": "CC0", "url": "https://www.phylopic.org/images/069c4833-e1ac-48e7-90d5-f7bd11000588", "note": "own species" }
   },
   "Q4764": {
-    "clue": "Trumpets over the bog every spring.",
-    "factId": null,
+    "clue": "Its trumpeting call carries far.",
+    "factId": "f11",
     "silhouette": { "author": "Andy Wilson", "licence": "CC0", "url": "https://www.phylopic.org/images/abfaf52a-6fa1-48b7-91ba-b65d369a2fe2", "note": "own species" }
   },
   "Q14683": {
-    "clue": "Lives wherever people live.",
-    "factId": null,
+    "clue": "Hops on the ground instead of walking.",
+    "factId": "f26",
     "silhouette": { "author": "Andy Wilson", "licence": "CC0", "url": "https://www.phylopic.org/images/3a4cdd72-e553-40ad-838e-3b23037b2010", "note": "own species" }
   },
   "Q25348": {
@@ -20,28 +20,28 @@
     "silhouette": { "author": "Andy Wilson", "licence": "CC0", "url": "https://www.phylopic.org/images/97f833ff-fcd8-4113-8948-721c75372462", "note": "own species" }
   },
   "Q25234": {
-    "clue": "Sings from the rooftop at dusk.",
-    "factId": null,
+    "clue": "Sings from rooftops just before sunrise.",
+    "factId": "f12",
     "silhouette": { "author": "Anthony Caravaggi", "licence": "CC0", "url": "https://www.phylopic.org/images/ec11f62e-ed3e-49bb-bcff-4e47b281d378", "note": "own species" }
   },
   "Q25385": {
-    "clue": "Circles over open fields, mewing.",
-    "factId": null,
+    "clue": "Its mewing call is often heard in flight.",
+    "factId": "f12",
     "silhouette": { "author": "Andy Wilson", "licence": "CC0", "url": "https://www.phylopic.org/images/673ec775-5d61-46dd-8606-a21edcbbb823", "note": "own species" }
   },
   "Q25485": {
-    "clue": "Calls teacher, teacher in late winter.",
-    "factId": null,
+    "clue": "Sounds like a squeaky wheelbarrow.",
+    "factId": "f10",
     "silhouette": { "author": "Andy Wilson", "licence": "CC0", "url": "https://www.phylopic.org/images/037d72a3-1289-4717-83b1-edaffeee4f38", "note": "genus" }
   },
   "Q25334": {
-    "clue": "Still singing when autumn comes.",
-    "factId": null,
+    "clue": "Its song ripples like a little brook.",
+    "factId": "f12",
     "silhouette": { "author": "Anthony Caravaggi", "licence": "CC0", "url": "https://www.phylopic.org/images/b0d54194-4105-4694-b670-b693df1640cf", "note": "own species" }
   },
   "Q25383": {
-    "clue": "Ends its song with a flourish.",
-    "factId": null,
+    "clue": "Its song has regional dialects.",
+    "factId": "f15",
     "silhouette": { "author": "Maxime Dahirel", "licence": "CC BY 3.0", "url": "https://www.phylopic.org/images/0b72dd38-2dc1-4675-990e-a46259855ce1", "note": "own species" }
   },
   "Q26427": {
@@ -70,7 +70,7 @@
     "silhouette": { "author": "Marie Attard", "licence": "Public domain mark", "url": "https://www.phylopic.org/images/1042852a-ac13-4679-8d57-c31c2dce8513", "note": "genus" }
   },
   "Q26209": {
-    "clue": "Drums ten to sixteen times each second.",
+    "clue": "Drums about 10 to 16 times a second.",
     "factId": "f13",
     "silhouette": { "author": "Steven Traver", "licence": "CC0", "url": "https://www.phylopic.org/images/ddd5783c-ded5-48f2-a07d-cc37c83b227b", "note": "own species" }
   },
@@ -85,7 +85,7 @@
     "silhouette": { "author": "robin_24", "licence": "CC BY 4.0", "url": "https://www.phylopic.org/images/aadf897b-a2be-44cf-9720-c3610947c991", "note": "own species" }
   },
   "Q25307": {
-    "clue": "Its tail is as long as the rest of its body.",
+    "clue": "Tail often as long as the rest of the body.",
     "factId": "f02",
     "silhouette": { "author": "Guillaume Dera", "licence": "CC0", "url": "https://www.phylopic.org/images/1f3bf322-4ca3-402f-80c9-0260843de5e4", "note": "own species" }
   },
@@ -100,7 +100,7 @@
     "silhouette": { "author": "Nina Skinner", "licence": "CC BY 3.0", "url": "https://www.phylopic.org/images/c91c655d-a2d6-485d-8702-b3143e1eaf81", "note": "own species" }
   },
   "Q25402": {
-    "clue": "Its wings make a constant humming sound.",
+    "clue": "In flight, its wings whoosh constantly.",
     "factId": "f11",
     "silhouette": { "author": "Andy Wilson", "licence": "CC0", "url": "https://www.phylopic.org/images/95f4447f-2ef4-4061-ad9f-3de17e71afeb", "note": "own species" }
   },
@@ -125,7 +125,7 @@
     "silhouette": { "author": "Andy Wilson", "licence": "CC0", "url": "https://www.phylopic.org/images/04b74e8b-4ab9-45a4-aef8-47acbf72809c", "note": "own species" }
   },
   "Q25777": {
-    "clue": "Flocks together with redwings in winter.",
+    "clue": "Often flocks with redwings in winter.",
     "factId": "f30",
     "silhouette": { "author": "Sharon Wegner-Larsen", "licence": "CC0", "url": "https://www.phylopic.org/images/fc1d469f-e1d7-47f2-a796-38bdebd62d2c", "note": "own species" }
   },

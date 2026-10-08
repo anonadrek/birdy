@@ -83,7 +83,7 @@
     return new Promise(function (done) {
       var img = new Image();
       img.onload = function () {
-        var box = { x: 90, y: 330, w: 900, h: 860 };
+        var box = { x: 90, y: 410, w: 900, h: 810 };
         var ar = img.naturalWidth / img.naturalHeight;
         var w = box.w, h = w / ar;
         if (h > box.h) { h = box.h; w = h * ar; }
@@ -139,8 +139,11 @@
         edge.forEach(function (p) { bird(ctx, p[0], p[1], 19 + r() * 7, -8 + (r() - 0.5) * 36, pick([0.05, 0.2, 0.5, 0.25]), 0.9 + r() * 0.1); });
         // A few leaving the flock from its highest point; they fly towards the side with more
         // room, so they never pile up against the edge.
-        var topP = edge.reduce(function (a, p) { return p[1] < a[1] ? p : a; }, edge[0]);
-        var way = topP[0] > 600 ? -1 : 1;
+        // They leave from the highest point of the right half (away from "sound on" at the top left).
+        var right = edge.filter(function (p) { return p[0] > 520; });
+        var from = right.length ? right : edge;
+        var topP = from.reduce(function (a, p) { return p[1] < a[1] ? p : a; }, from[0]);
+        var way = topP[0] > 900 ? -1 : 1;
         for (var n = 0; n < LEAVE; n++) {
           var lx = topP[0] + way * (34 + n * 30 + r() * 16), ly = topP[1] - 26 - n * 20 - r() * 14;
           bird(ctx, lx, ly, 12 + r() * 6, (way > 0 ? -28 : 28) + (r() - 0.5) * 24, COLOURS[1 + Math.floor(r() * 2)], 0.6 + r() * 0.3);
@@ -179,7 +182,7 @@
       var entry = covers[qid];
       if (!entry) throw new Error('no covers.json entry for qid=' + qid);
       var sp = { qid: qid, clue: entry.clue };
-      var credit = entry.silhouette.author + ', ' + entry.silhouette.licence;
+      var credit = entry.silhouette.author + ', ' + entry.silhouette.licence + (/^CC BY/.test(entry.silhouette.licence) ? ', adapted' : '');
       document.body.appendChild(el('div', 'clue', sp.clue));
       document.body.appendChild(el('div', 'clue-ask', 'Whose song is this?'));
       document.body.appendChild(el('div', 'sil-credit', 'Silhouette: ' + credit + ', via PhyloPic'));
