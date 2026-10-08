@@ -15,6 +15,7 @@ from birdy_fetcher.app_dashes import (
     dump_species,
     is_hidden_heading,
     is_no_data_heading,
+    is_no_data_text,
     rule_fix,
     scan_species,
     split_sentences,
@@ -29,12 +30,30 @@ NO_DATA_HEADING_WITH_DASH_PARAGRAPH = (
     "# Migration data unavailable for this species.\n\nLätet — ett vasst pip — hörs i maj."
 )
 
+# A REAL title heading (not itself a no-data heading, so is_no_data_heading on its own misses
+# this) followed by a body that OPENS with the no-data sentinel; the real corpus shape behind
+# this fix (Q891376 migration.en, Q27074601 migration.en: a title, then "Migration data
+# unavailable for this species.", then a real paragraph that happens to have a dash).
+HEADING_THEN_NO_DATA_BODY_WITH_DASH_PARAGRAPH = (
+    "# Testmes – Förekomst i Skandinavien\n\n"
+    "Migration data unavailable for this species.\n\n"
+    "Lätet — ett vasst pip — hörs i maj."
+)
+
+# No heading at all; the sentinel is the very first line (the real corpus shape behind this
+# fix for Q611324 migration.sv: no "#"/"**" heading, the text opens directly with "Migrations-
+# data saknas för denna art.", then a real paragraph with a dash).
+NO_DATA_BODY_NO_HEADING_WITH_DASH_PARAGRAPH = (
+    "Migrationsdata saknas för denna art.\n\nLätet — ett vasst pip — hörs i maj."
+)
+
 
 def write_species(
     tmp_path: Path,
     description_sv: str,
     description_en: str = "A plain text.",
     migration_en: str | None = None,
+    migration_sv: str | None = None,
 ) -> Path:
     data: dict[str, Any] = {
         "id": "Q1",
@@ -47,6 +66,8 @@ def write_species(
     }
     if migration_en is not None:
         data["migration"]["en"] = migration_en
+    if migration_sv is not None:
+        data["migration"]["sv"] = migration_sv
     path = tmp_path / "paridae" / "Q1.yaml"
     path.parent.mkdir(parents=True, exist_ok=True)
     dump_species(data, path)
@@ -120,6 +141,74 @@ def test_scan_skips_a_whole_field_behind_a_no_data_heading(tmp_path: Path) -> No
     )
     assert not any(s.field == "migration" and s.lang == "en" for s in scan.sentences)
     assert ("migration", "en") not in scan.fixed
+
+
+def test_is_no_data_text_matches_the_app_cleaner() -> None:
+    # Mirrors SpeciesTextCleanerTest.kt's isNoDataText-covering cases: the heading form is
+    # test_is_no_data_heading_matches_the_app_cleaner above, and the trailing-paragraph form
+    # (isTrailingNoDataParagraph) stays unported, so neither is repeated here.
+    assert is_no_data_text("Migration data unavailable for this species.")
+    assert is_no_data_text("Migrationsdata saknas för denna art.")
+    assert is_no_data_text(
+        "Migration data unavailable for this species.\n\n"
+        "The provided source text contains no information about migration."
+    )
+    assert is_no_data_text("The source text provides no information about migration.")
+    assert is_no_data_text("the source text provides no information about migration.")
+    assert is_no_data_text("The provided source text contains only taxonomy.")
+    assert is_no_data_text("The Wikipedia source text provided contains no information.")
+    assert is_no_data_text("Källtexten innehåller ingen information om flyttning.")
+    assert is_no_data_text("källtexten innehåller ingen information om flyttning.")
+    assert is_no_data_text("sv: Migrationsdata saknas för denna art.")
+    assert is_no_data_text(
+        'sv: "Migrationsdata saknas för denna art."\n\n'
+        'en: "Migration data unavailable for this species."'
+    )
+    assert is_no_data_text(
+        "**Migrationsdata saknas för denna art.**\n\nKälltexten nämner inget om flyttning."
+    )
+    assert not is_no_data_text("Stenfalken häckar i fjällen.")
+    assert not is_no_data_text(
+        "The Iago sparrow does not occur in Scandinavia.\n\n"
+        "Migration data unavailable for this species in a Northern European context."
+    )
+    assert not is_no_data_text("The sourcebook describes the species well.")
+
+
+def test_scan_skips_a_whole_field_behind_a_real_heading_over_a_no_data_body(tmp_path: Path) -> None:
+    # The finding this fix closes: a REAL title heading (kept hidden either way) followed by a
+    # body that opens with the no-data sentinel. is_no_data_heading alone misses this because
+    # the heading itself is not a no-data heading; the dash paragraph after the sentinel must
+    # stay invisible too, because the app collapses the WHOLE field, not just the sentinel line.
+    scan = scan_species(
+        write_species(
+            tmp_path,
+            HEADING_AND_TWO_DASHES,
+            migration_en=HEADING_THEN_NO_DATA_BODY_WITH_DASH_PARAGRAPH,
+        )
+    )
+    assert not any(s.field == "migration" and s.lang == "en" for s in scan.sentences)
+    assert ("migration", "en") not in scan.fixed
+    # description.sv is unrelated prose and keeps scanning normally: the fix is scoped to the
+    # no-data field, not to the species as a whole.
+    assert any(s.field == "description" and s.lang == "sv" for s in scan.sentences)
+
+
+def test_scan_skips_a_whole_field_with_no_heading_at_all_over_a_no_data_body(
+    tmp_path: Path,
+) -> None:
+    # Same finding, no-heading shape: the text opens directly with the sentinel (no "#"/"**"
+    # line at all), so is_hidden_heading(lines[0]) is False and the WHOLE text is the body.
+    scan = scan_species(
+        write_species(
+            tmp_path,
+            HEADING_AND_TWO_DASHES,
+            migration_sv=NO_DATA_BODY_NO_HEADING_WITH_DASH_PARAGRAPH,
+        )
+    )
+    assert not any(s.field == "migration" and s.lang == "sv" for s in scan.sentences)
+    assert ("migration", "sv") not in scan.fixed
+    assert any(s.field == "description" and s.lang == "sv" for s in scan.sentences)
 
 
 def test_check_rewrite_accepts_a_plain_rewrite() -> None:

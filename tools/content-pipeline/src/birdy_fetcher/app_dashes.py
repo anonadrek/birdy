@@ -50,13 +50,15 @@ _MIN_LENGTH_RATIO = 0.7
 _MAX_LENGTH_RATIO = 1.4
 
 # SpeciesTextNoData.kt: sentences the content pipeline writes when Wikipedia has no data, and
-# openings of model meta-commentary about its source instead of species content. Only the
-# HEADING form (isNoDataHeadingLine) is ported here, as is_no_data_heading below: a heading
-# that IS one of these collapses the WHOLE field, same as the app
-# (SpeciesTextCleaner.cleanSpeciesText). isNoDataText (the sentinel as a plain opening
-# paragraph, no heading) and isTrailingNoDataParagraph (the sentinel as the paragraph at the
-# END of an otherwise real text) are deliberately not ported: no real species text combines
-# either of those with a dash.
+# openings of model meta-commentary about its source instead of species content. Both the
+# HEADING form (isNoDataHeadingLine, as is_no_data_heading below) and the OPENING form
+# (isNoDataText, as is_no_data_text below) are ported: a heading that IS one of these, or a
+# body that OPENS with one once the heading (if any) and the blank lines after it are gone,
+# collapses the WHOLE field, same as the app (SpeciesTextCleaner.cleanSpeciesText);
+# visible_line_indexes uses both. isTrailingNoDataParagraph (the sentinel or a labelled remark
+# as the paragraph at the END of an otherwise real text, T11f) stays unported: a known narrow
+# gap, not a verified impossibility (343 corpus matches measured 2026-10-08, none with a dash
+# in the real content kept before the trailing paragraph).
 _NO_DATA_SENTINELS = (
     "Migration data unavailable for this species.",
     "Migrationsdata saknas för denna art.",
@@ -67,6 +69,8 @@ _SOURCE_META_OPENINGS = (
     "The Wikipedia source text",
     "Källtexten",
 )
+_LANGUAGE_LABEL_PREFIXES = ("sv:", "en:")
+_OPENING_QUOTES = '"\u201c\u201d\u201e'
 
 
 def is_hidden_heading(line: str) -> bool:
@@ -104,14 +108,68 @@ def is_no_data_heading(line: str) -> bool:
     return any(normalized.startswith(opening.lower()) for opening in _SOURCE_META_OPENINGS)
 
 
+def _opening_for_no_data_check(body: str) -> str:
+    """SpeciesTextNoData.openingForNoDataCheck: `body` with every bold marker removed, then
+    one leading language label (`"sv:"`/`"en:"`, case-insensitive) and one leading opening
+    quote (`_OPENING_QUOTES`) trimmed off the front, in that order."""
+    opening = body.replace("**", "").lstrip()
+    for label in _LANGUAGE_LABEL_PREFIXES:
+        if opening[: len(label)].lower() == label:
+            opening = opening[len(label) :].lstrip()
+            break
+    if opening and opening[0] in _OPENING_QUOTES:
+        opening = opening[1:]
+    return opening
+
+
+def _starts_with_first_letter_ignoring_case(text: str, prefix: str) -> bool:
+    """SpeciesTextNoData.startsWithFirstLetterIgnoringCase: `text` starts with `prefix`,
+    case-insensitively on the first character and case-sensitively on the rest (a markdown
+    heading capitalises every word of `prefix`, so this never matches a heading on its own;
+    `is_no_data_heading` covers the heading form separately, by lowercasing the whole line)."""
+    return (
+        len(text) >= len(prefix)
+        and text[0].lower() == prefix[0].lower()
+        and text.startswith(prefix[1:], 1)
+    )
+
+
+def is_no_data_text(body: str) -> bool:
+    """SpeciesTextNoData.isNoDataText: true when `body` opens with a `_NO_DATA_SENTINELS`
+    sentence or a `_SOURCE_META_OPENINGS` phrase, once `_opening_for_no_data_check` has
+    trimmed bold markers, a language label and an opening quote off its start. `body` here is
+    whatever `cleanSpeciesText` built: the text with a real (non-no-data) heading and the
+    blank lines after it removed, or the WHOLE text when there was no heading to remove.
+    """
+    opening = _opening_for_no_data_check(body)
+    sentinel_match = any(
+        _starts_with_first_letter_ignoring_case(opening, s) for s in _NO_DATA_SENTINELS
+    )
+    meta_match = any(
+        _starts_with_first_letter_ignoring_case(opening, s) for s in _SOURCE_META_OPENINGS
+    )
+    return sentinel_match or meta_match
+
+
 def visible_line_indexes(lines: list[str]) -> range:
-    """The lines the app shows: all, except a first line that is a heading. When that
-    heading is a no-data heading (`is_no_data_heading`), the app collapses the WHOLE field to
-    its own empty-state text instead (SpeciesTextCleaner.cleanSpeciesText), so nothing is
-    visible, not even the paragraph that follows.
+    """The lines the app shows. A first line that is a heading is always hidden. Beyond that,
+    SpeciesTextCleaner.cleanSpeciesText collapses the WHOLE field to its own empty-state text,
+    so NOTHING is visible (not even the paragraph after the heading), when: that heading is
+    itself a no-data heading (`is_no_data_heading`); or the body after the heading and the
+    blank lines that followed it opens with a no-data sentinel or source-meta phrase
+    (`is_no_data_text`); or, when there is no heading at all, the WHOLE text opens with one.
     """
     if lines and is_hidden_heading(lines[0]):
-        return range(0, 0) if is_no_data_heading(lines[0]) else range(1, len(lines))
+        if is_no_data_heading(lines[0]):
+            return range(0, 0)
+        body_start = 1
+        while body_start < len(lines) and not lines[body_start].strip():
+            body_start += 1
+        if is_no_data_text("\n".join(lines[body_start:])):
+            return range(0, 0)
+        return range(1, len(lines))
+    if is_no_data_text("\n".join(lines)):
+        return range(0, 0)
     return range(0, len(lines))
 
 
