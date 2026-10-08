@@ -146,6 +146,8 @@ test.describe('första vyn', () => {
   ] as const) {
     test(`rubrik, kicker och Dagens fågel som plansch på ${path}`, async ({ page, request }) => {
       const errors = trackConsoleErrors(page);
+      // The browser's day is the build's day, so the stale-day guard (hero/same-as-app-guard.ts) keeps the app line.
+      await page.clock.setFixedTime(new Date('2026-10-15T12:00:00+02:00'));
       await page.goto(path);
       const hero = page.locator('[data-hero]');
       await expect(hero.locator('h1')).toContainText(line1);
@@ -170,6 +172,7 @@ test.describe('första vyn', () => {
       expect(href).toMatch(path === '/sv/' ? /^\/sv\/arter\/hornuggla\/$/ : /^\/species\/long-eared-owl\/$/);
       expect((await request.get(href!)).status()).toBe(200);
       await expect(hero.locator('[data-same-as-app]')).toHaveText(same);
+      await expect(hero.locator('[data-same-as-app]')).toBeVisible();
       // The app's bird on a live day: the handwritten note is the one that says so (review I4; the empty build checks
       // the other note, without "och i appen", in scripts/check-empty-hub.mjs).
       await expect(hero.locator('.intro .mnote')).toHaveText(path === '/sv/' ? 'en ny fågel varje dag, här och i appen' : 'a new bird every day, here and in the app');
@@ -182,6 +185,16 @@ test.describe('första vyn', () => {
       expect(errors).toEqual([]);
     });
   }
+
+  // A page built yesterday (the nightly build did not run) must not claim today's bird is the app's: the guard hides the
+  // line when the browser's day in Stockholm is not the build's day (review 2026-10-08).
+  test('raden "samma fågel som i appen i dag" döljs när bygget är från en annan dag', async ({ page }) => {
+    await page.clock.setFixedTime(new Date('2026-10-16T09:00:00+02:00'));
+    await page.goto('/sv/');
+    const line = page.locator('[data-hero] [data-same-as-app]');
+    await expect(line).toHaveCount(1);
+    await expect(line).toBeHidden();
+  });
 
   for (const width of [320, 390, 768, 1024, 1280, 1440, 1920]) {
     test(`fotot visas helt och etiketten ligger bara på passepartouten i ${width} px`, async ({ page }) => {

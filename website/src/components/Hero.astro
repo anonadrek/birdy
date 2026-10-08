@@ -87,6 +87,7 @@ const note = sameAsApp ? t.hero.note : t.hero.noteFallback;
 
 <script>
   import './hero/hero-motion';
+  import './hero/same-as-app-guard';
 </script>
 
 <style>
@@ -107,6 +108,7 @@ const note = sameAsApp ? t.hero.note : t.hero.noteFallback;
   .note :global(.mnote) { margin-top: 12px; }
   .sub { max-width: 30rem; margin: 0; font-size: 15.5px; line-height: 1.65; color: rgba(255, 248, 238, .86); }
   .badges { margin-top: 22px; }
+  .same[hidden] { display: none; }
   .same { display: flex; align-items: center; gap: 12px; margin: 30px 0 0; font-family: var(--font-script); font-weight: 700; font-size: 25px; line-height: 1.05; color: var(--peach); }
   .same span { transform: rotate(-2deg); }
   .same-arrow { flex: none; width: 56px; height: 36px; overflow: visible; transform: rotate(58deg); }

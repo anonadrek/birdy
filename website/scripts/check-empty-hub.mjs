@@ -106,7 +106,9 @@ for (const [path, locale] of [['sv', 'sv'], ['', 'en']]) {
   const shown = html.match(/<p class="mnote[^"]*"[^>]*>([^<]*)<\/p>/)?.[1];
   if (shown !== note) fail(where, `heronoten är "${shown}", ska vara reservnoten "${note}" när planschen inte visar appens fågel`);
   if (/och i appen|and in the app/.test(shown ?? '')) fail(where, 'heronoten säger "och i appen" fast planschen inte visar appens fågel');
-  if (html.includes('data-same-as-app')) fail(where, 'raden "samma fågel som i appen" visas utan appens fågel');
+  // Markup only: the hero's inlined guard script (hero/same-as-app-guard.ts) names the attribute in a selector.
+  const markup = html.replace(/<script\b[\s\S]*?<\/script>/gi, '');
+  if (markup.includes('data-same-as-app')) fail(where, 'raden "samma fågel som i appen" visas utan appens fågel');
 }
 
 const sitemap = existsSync(join(dist, 'sitemap-index.xml')) ? 'present' : 'missing';

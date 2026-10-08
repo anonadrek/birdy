@@ -7,9 +7,9 @@
 # GitHub may start scheduled runs some minutes late; that only delays the switch to the new day.
 #
 # Setup (not done by this file): create a deploy hook for the main branch in Vercel (Project → Settings → Git →
-# Deploy Hooks) and store its URL as the repository secret VERCEL_DEPLOY_HOOK_BIRDY. Without the secret the job
-# writes a notice and succeeds, so it never fails before the hook exists. Scheduled workflows only run on the
-# default branch.
+# Deploy Hooks) and store its URL as the repository secret VERCEL_DEPLOY_HOOK_BIRDY. Without the secret the job fails
+# with an error (review 2026-10-08): a silently skipped build would leave yesterday's Dagens fågel on the site, so a
+# missing hook has to show up as a red run and GitHub's failure mail. Scheduled workflows only run on the default branch.
 name: Nightly site build
 
 on:
@@ -36,8 +36,8 @@ jobs:
           VERCEL_DEPLOY_HOOK_BIRDY: ${{ secrets.VERCEL_DEPLOY_HOOK_BIRDY }}
         run: |
           if [ -z "${VERCEL_DEPLOY_HOOK_BIRDY}" ]; then
-            echo "::notice title=Nightly site build skipped::The secret VERCEL_DEPLOY_HOOK_BIRDY is not set, so no build was started. Create a deploy hook in Vercel and add it as a repository secret."
-            exit 0
+            echo "::error title=Nightly site build not started::The secret VERCEL_DEPLOY_HOOK_BIRDY is not set, so the site was not rebuilt for the new day. Create a deploy hook for main in Vercel and add it as a repository secret."
+            exit 1
           fi
           # -f fails on an HTTP error, the body (the job id) is not printed so the hook URL never ends up in the log.
           curl --fail --silent --show-error --request POST --retry 3 --retry-delay 15 --max-time 30 \
