@@ -39,6 +39,7 @@
   .credit { position: absolute; right: 28px; bottom: 12px; font: 500 19px/1 var(--sans); color: var(--muted); opacity: .85; }
   /* C: the clue under the flock. */
   .clue { position: absolute; left: 110px; right: 110px; top: 1250px; text-align: center; font: 700 92px/1.02 var(--hand); color: var(--ink); text-wrap: balance; }
+  .sil-credit { position: absolute; left: 0; right: 0; top: 1650px; text-align: center; font: 500 19px/1 var(--sans); color: var(--muted); opacity: .85; }
   .clue-ask { position: absolute; left: 0; right: 0; top: 1500px; text-align: center; font: 600 30px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--rust); }
 </style>
 </head>
@@ -58,6 +59,12 @@
     { qid: 'Q25334', en: 'European Robin', sv: 'Rödhake', w: 1600, h: 1200, by: 'Rob Hille, public domain', clue: 'Still singing when autumn comes.' },
     { qid: 'Q25383', en: 'Eurasian Chaffinch', sv: 'Bofink', w: 1600, h: 1067, by: 'Ralf Hüsges, CC BY 2.0', clue: 'Ends its song with a flourish.' }
   ];
+  // D (C with Albin's twist): the flock forms this species' own silhouette (PhyloPic, free licences).
+  var SIL = {
+    Q25404: 'Wouter Koch, CC0', Q4764: 'Andy Wilson, CC0', Q14683: 'Andy Wilson, CC0', Q25348: 'Andy Wilson, CC0',
+    Q25234: 'Anthony Caravaggi, CC0', Q25385: 'Andy Wilson, CC0', Q25485: 'Andy Wilson, CC0 (tit family)',
+    Q25334: 'Anthony Caravaggi, CC0', Q25383: 'Maxime Dahirel, CC BY 3.0'
+  };
   var TILT = [-2.4, 1.8, -1.2, 2.6, -1.8, 1.2, -2.8, 2.2, -0.8];
   var COLOURS = ['#B8893A', '#A8552D', '#72301A', '#4A1F12'];
 
@@ -135,6 +142,89 @@
     bird(ctx, x, y, size, L[3], '#9A4526', 1);
   }
 
+  // D: exactly 839 birds (one per species in Birdy) fill the silhouette: a darker outline of birds
+  // along the edge, the rest inside, a few leaving the flock, and this species' bird lit.
+  function silhouetteFlock() {
+    return new Promise(function (done) {
+      var img = new Image();
+      img.onload = function () {
+        var box = { x: 90, y: 330, w: 900, h: 860 };
+        var ar = img.naturalWidth / img.naturalHeight;
+        var w = box.w, h = w / ar;
+        if (h > box.h) { h = box.h; w = h * ar; }
+        var x0 = box.x + (box.w - w) / 2, y0 = box.y + (box.h - h) / 2;
+        var m = document.createElement('canvas');
+        m.width = 1080; m.height = 1920;
+        var mg = m.getContext('2d');
+        mg.drawImage(img, x0, y0, w, h);
+        var px = mg.getImageData(0, 0, 1080, 1920).data;
+        function inside(x, y) {
+          x = Math.round(x); y = Math.round(y);
+          if (x < 0 || y < 0 || x >= 1080 || y >= 1920) return false;
+          return px[(y * 1080 + x) * 4 + 3] > 128;
+        }
+        var r = rng(7919 + idx);
+        // Spatial hash for minimum distances.
+        var CELL = 8, hash = {};
+        function near(x, y, d) {
+          var cx = Math.floor(x / CELL), cy = Math.floor(y / CELL), k = Math.ceil(d / CELL);
+          for (var i = -k; i <= k; i++) for (var j = -k; j <= k; j++) {
+            var list = hash[(cx + i) + ',' + (cy + j)];
+            if (!list) continue;
+            for (var n = 0; n < list.length; n++) { var p = list[n]; if ((p[0] - x) * (p[0] - x) + (p[1] - y) * (p[1] - y) < d * d) return true; }
+          }
+          return false;
+        }
+        function add(x, y) { var key = Math.floor(x / CELL) + ',' + Math.floor(y / CELL); (hash[key] = hash[key] || []).push([x, y]); }
+        // Outline birds.
+        var cand = [];
+        for (var y = Math.floor(y0); y < y0 + h; y += 2) for (var x = Math.floor(x0); x < x0 + w; x += 2) {
+          if (!inside(x, y)) continue;
+          if (!inside(x - 5, y) || !inside(x + 5, y) || !inside(x, y - 5) || !inside(x, y + 5)) cand.push([x, y]);
+        }
+        for (var s = cand.length - 1; s > 0; s--) { var t = Math.floor(r() * (s + 1)); var tmp = cand[s]; cand[s] = cand[t]; cand[t] = tmp; }
+        var edge = [];
+        cand.forEach(function (p) { if (!near(p[0], p[1], 15)) { edge.push(p); add(p[0], p[1]); } });
+        // Interior: a jittered grid, the cell chosen so outline + interior + leavers come to 839.
+        var LEAVE = 7, TOTAL = 839, inner = [];
+        for (var cell = 30; cell > 8; cell -= 0.5) {
+          inner = [];
+          for (var gy = y0; gy < y0 + h; gy += cell) for (var gx = x0; gx < x0 + w; gx += cell) {
+            var jx = gx + (r() - 0.5) * cell * 0.8, jy = gy + (r() - 0.5) * cell * 0.8;
+            if (inside(jx, jy) && inside(jx - 4, jy) && inside(jx + 4, jy) && !near(jx, jy, 11)) inner.push([jx, jy]);
+          }
+          if (edge.length + inner.length + LEAVE >= TOTAL) break;
+        }
+        while (edge.length + inner.length + LEAVE > TOTAL) {
+          if (inner.length) inner.splice(Math.floor(r() * inner.length), 1); else edge.pop();
+        }
+        var lit = inner.length ? inner.splice(keyIndex(sp.qid, inner.length), 1)[0] : edge.pop();
+        var pick = function (weights) { var u = r(), a = 0; for (var i = 0; i < weights.length; i++) { a += weights[i]; if (u < a) return COLOURS[i]; } return COLOURS[1]; };
+        inner.forEach(function (p) { bird(ctx, p[0], p[1], 13 + r() * 12, -8 + (r() - 0.5) * 44, pick([0.25, 0.4, 0.25, 0.1]), 0.72 + r() * 0.28); });
+        edge.forEach(function (p) { bird(ctx, p[0], p[1], 19 + r() * 7, -8 + (r() - 0.5) * 36, pick([0.05, 0.2, 0.5, 0.25]), 0.9 + r() * 0.1); });
+        // A few leaving the flock from its highest point, the way the profile banner's do; they fly
+        // towards the side with more room, so they never pile up against the edge.
+        var topP = edge.reduce(function (a, p) { return p[1] < a[1] ? p : a; }, edge[0]);
+        var way = topP[0] > 600 ? -1 : 1;
+        for (var n = 0; n < LEAVE; n++) {
+          var lx = topP[0] + way * (34 + n * 30 + r() * 16), ly = topP[1] - 26 - n * 20 - r() * 14;
+          bird(ctx, lx, ly, 12 + r() * 6, (way > 0 ? -28 : 28) + (r() - 0.5) * 24, COLOURS[1 + Math.floor(r() * 2)], 0.6 + r() * 0.3);
+        }
+        var size = 44;
+        ctx.save();
+        ctx.beginPath(); ctx.arc(lit[0], lit[1], size * 0.95, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFFAF1'; ctx.fill();
+        ctx.lineWidth = 5; ctx.strokeStyle = '#9A4526'; ctx.stroke();
+        ctx.restore();
+        bird(ctx, lit[0], lit[1], size, -8, '#9A4526', 1);
+        window.__count = edge.length + inner.length + 1 + LEAVE;
+        done();
+      };
+      img.onerror = function () { done(); };
+      img.src = 'sil/' + sp.qid + '.svg';
+    });
+  }
+
   function polaroid(words) {
     var ph = Math.round(820 * sp.h / sp.w);
     var cardH = 40 + ph + 214;
@@ -184,6 +274,11 @@
     ask.appendChild(el('span', 'accent', 'song'));
     ask.appendChild(document.createTextNode(' is this?'));
     polaroid([ask, el('div', 'hint', 'listen first, the name comes next')]);
+  } else if (dir === 'D') {
+    fitted = silhouetteFlock();
+    document.body.appendChild(el('div', 'clue', sp.clue));
+    document.body.appendChild(el('div', 'clue-ask', 'Whose song is this?'));
+    document.body.appendChild(el('div', 'sil-credit', 'Silhouette: ' + SIL[sp.qid] + ', via PhyloPic'));
   } else {
     flock();
     document.body.appendChild(el('div', 'clue', sp.clue));
