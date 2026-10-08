@@ -145,9 +145,7 @@ internal object JournalPdfLayout {
         input.stats.topSpecies.take(5).forEachIndexed { i, (name, count) ->
             val y = chartTop + 24f + i * rowH
             val label = fitLabel(name, labelMaxW, JournalPdfMetrics.LABEL_MIN_SCALE) { labelPaint.measureText(it) }
-            val labelSize = JournalPdfMetrics.BAR_LABEL * label.scale
-            val paint = if (label.scale == 1f) labelPaint else Paint(labelPaint).apply { textSize = labelSize }
-            canvas.drawText(label.text, JournalPdfMetrics.MARGIN_X, y + 14f, paint)
+            canvas.drawText(label.text, JournalPdfMetrics.MARGIN_X, y + 14f, scaled(labelPaint, label.scale))
             val barY = y + 6f
             val barH = 14f
             canvas.drawRect(barAreaX, barY, barAreaX + barAreaW, barY + barH, barBgPaint)
@@ -206,15 +204,22 @@ internal object JournalPdfLayout {
             val thumbRect = RectF(JournalPdfMetrics.MARGIN_X, y - 12f, JournalPdfMetrics.MARGIN_X + 18f, y + 6f)
             canvas.drawRect(thumbRect, thumbPaint)
 
-            canvas.drawText(row.nameLocalized, JournalPdfMetrics.MARGIN_X + 26f, y, namePaint)
+            // Release 1.3.1 part 8: a long name shrinks, then shortens, before the count column.
+            val textX = JournalPdfMetrics.MARGIN_X + JournalPdfMetrics.SPECIES_TEXT_INSET
+            val maxW = JournalPdfMetrics.SPECIES_TEXT_MAX_W
+            val name =
+                fitLabel(row.nameLocalized, maxW, JournalPdfMetrics.LABEL_MIN_SCALE) { namePaint.measureText(it) }
+            canvas.drawText(name.text, textX, y, scaled(namePaint, name.scale))
             if (row.scientificName.isNotEmpty()) {
-                canvas.drawText(row.scientificName, JournalPdfMetrics.MARGIN_X + 26f, y + 12f, sciPaint)
+                val sci =
+                    fitLabel(row.scientificName, maxW, JournalPdfMetrics.LABEL_MIN_SCALE) { sciPaint.measureText(it) }
+                canvas.drawText(sci.text, textX, y + 12f, scaled(sciPaint, sci.scale))
             }
 
             val countText = input.strings.findCount(row.count)
             val firstSeenDate = JournalPdfMetrics.formatDate(row.firstSeenMs, TimeZone.currentSystemDefault())
             val firstSeenText = JournalPdfMetrics.fmt(input.strings.firstFmt, firstSeenDate)
-            val rightX = JournalPdfMetrics.PAGE_W - JournalPdfMetrics.MARGIN_X - 120f
+            val rightX = JournalPdfMetrics.PAGE_W - JournalPdfMetrics.MARGIN_X - JournalPdfMetrics.SPECIES_RIGHT_COLUMN
             canvas.drawText(countText, rightX, y, countPaint)
             canvas.drawText(firstSeenText, rightX, y + 12f, datePaint)
 
@@ -255,11 +260,22 @@ internal object JournalPdfLayout {
             val y = rowTop + i * rowH
             // Stamp circle
             canvas.drawCircle(JournalPdfMetrics.MARGIN_X + 16f, y + 6f, 14f, stampPaint)
-            canvas.drawText(badge.nameLocalized, JournalPdfMetrics.MARGIN_X + 44f, y, namePaint)
-            canvas.drawText(badge.descriptionLocalized, JournalPdfMetrics.MARGIN_X + 44f, y + 16f, descPaint)
+            // Release 1.3.1 part 8: name and description shrink, then shorten, before the date column.
+            val textX = JournalPdfMetrics.MARGIN_X + JournalPdfMetrics.BADGE_TEXT_INSET
+            val maxW = JournalPdfMetrics.BADGE_TEXT_MAX_W
+            val name =
+                fitLabel(badge.nameLocalized, maxW, JournalPdfMetrics.LABEL_MIN_SCALE) { namePaint.measureText(it) }
+            canvas.drawText(name.text, textX, y, scaled(namePaint, name.scale))
+            val desc =
+                fitLabel(
+                    badge.descriptionLocalized,
+                    maxW,
+                    JournalPdfMetrics.LABEL_MIN_SCALE,
+                ) { descPaint.measureText(it) }
+            canvas.drawText(desc.text, textX, y + 16f, scaled(descPaint, desc.scale))
             canvas.drawText(
                 JournalPdfMetrics.formatDate(badge.unlockedAt.toEpochMilliseconds(), TimeZone.currentSystemDefault()),
-                JournalPdfMetrics.PAGE_W - JournalPdfMetrics.MARGIN_X - 90f,
+                JournalPdfMetrics.PAGE_W - JournalPdfMetrics.MARGIN_X - JournalPdfMetrics.BADGE_DATE_COLUMN,
                 y + 4f,
                 datePaint,
             )
@@ -395,4 +411,10 @@ internal object JournalPdfLayout {
             isAntiAlias = true
             if (center) textAlign = Paint.Align.CENTER
         }
+
+    /** [paint] at [scale] of its own size; the same object when nothing needs shrinking (the usual case). */
+    private fun scaled(
+        paint: Paint,
+        scale: Float,
+    ): Paint = if (scale == 1f) paint else Paint(paint).apply { textSize = paint.textSize * scale }
 }

@@ -291,15 +291,34 @@ internal object JournalPdfLayoutIos {
             // Thumbnail-placeholder rect: Android RectF(MARGIN_X, y-12f, MARGIN_X+18f, y+6f) → 18×18.
             fillRect(M.MARGIN_X.toDouble(), y - 12.0, 18.0, 18.0, M.COLOR_PAPER_EDGE)
 
-            drawText(row.nameLocalized, M.MARGIN_X + 26.0, y, IosPdfFonts.dmSerifItalic(M.SPECIES_NAME.toDouble()), M.COLOR_INK)
+            // Androids drawSpeciesPage: ett långt namn krymps och kortas av [fitLabel] (release 1.3.1 del 8).
+            val textX = M.MARGIN_X + M.SPECIES_TEXT_INSET.toDouble()
+            val maxW = M.SPECIES_TEXT_MAX_W
+            val nameFont = IosPdfFonts.dmSerifItalic(M.SPECIES_NAME.toDouble())
+            val name = fitLabel(row.nameLocalized, maxW, M.LABEL_MIN_SCALE) { textWidth(it, nameFont).toFloat() }
+            drawText(
+                name.text,
+                textX,
+                y,
+                IosPdfFonts.dmSerifItalic(M.SPECIES_NAME.toDouble() * name.scale),
+                M.COLOR_INK,
+            )
             if (row.scientificName.isNotEmpty()) {
-                drawText(row.scientificName, M.MARGIN_X + 26.0, y + 12.0, IosPdfFonts.caveat(M.SPECIES_SCI.toDouble()), M.COLOR_INK)
+                val sciFont = IosPdfFonts.caveat(M.SPECIES_SCI.toDouble())
+                val sci = fitLabel(row.scientificName, maxW, M.LABEL_MIN_SCALE) { textWidth(it, sciFont).toFloat() }
+                drawText(
+                    sci.text,
+                    textX,
+                    y + 12.0,
+                    IosPdfFonts.caveat(M.SPECIES_SCI.toDouble() * sci.scale),
+                    M.COLOR_INK,
+                )
             }
 
             val countText = input.strings.findCount(row.count)
             val firstSeenDate = M.formatDate(row.firstSeenMs, zone)
             val firstSeenText = M.fmt(input.strings.firstFmt, firstSeenDate)
-            val rightX = M.PAGE_W - M.MARGIN_X - 120.0
+            val rightX = M.PAGE_W - M.MARGIN_X - M.SPECIES_RIGHT_COLUMN.toDouble()
             drawText(countText, rightX, y, IosPdfFonts.dmSerifItalic(M.SPECIES_COUNT.toDouble()), M.COLOR_COPPER)
             drawText(firstSeenText, rightX, y + 12.0, IosPdfFonts.caveat(M.SPECIES_DATE.toDouble()), M.COLOR_INK)
 
@@ -325,11 +344,31 @@ internal object JournalPdfLayoutIos {
             val y = rowTop + i * rowH
             // Stamp circle
             strokeCircle(M.MARGIN_X + 16.0, y + 6.0, 14.0, M.COLOR_NAVY, 1.5)
-            drawText(badge.nameLocalized, M.MARGIN_X + 44.0, y, IosPdfFonts.dmSerifItalic(M.BADGE_NAME.toDouble()), M.COLOR_INK)
-            drawText(badge.descriptionLocalized, M.MARGIN_X + 44.0, y + 16.0, IosPdfFonts.caveat(M.BADGE_DESC.toDouble()), M.COLOR_INK)
+            // Androids drawBadgesPage: namn och beskrivning krymps och kortas av [fitLabel] (release 1.3.1 del 8).
+            val textX = M.MARGIN_X + M.BADGE_TEXT_INSET.toDouble()
+            val maxW = M.BADGE_TEXT_MAX_W
+            val nameFont = IosPdfFonts.dmSerifItalic(M.BADGE_NAME.toDouble())
+            val name = fitLabel(badge.nameLocalized, maxW, M.LABEL_MIN_SCALE) { textWidth(it, nameFont).toFloat() }
+            drawText(
+                name.text,
+                textX,
+                y,
+                IosPdfFonts.dmSerifItalic(M.BADGE_NAME.toDouble() * name.scale),
+                M.COLOR_INK,
+            )
+            val descFont = IosPdfFonts.caveat(M.BADGE_DESC.toDouble())
+            val desc =
+                fitLabel(badge.descriptionLocalized, maxW, M.LABEL_MIN_SCALE) { textWidth(it, descFont).toFloat() }
+            drawText(
+                desc.text,
+                textX,
+                y + 16.0,
+                IosPdfFonts.caveat(M.BADGE_DESC.toDouble() * desc.scale),
+                M.COLOR_INK,
+            )
             drawText(
                 M.formatDate(badge.unlockedAt.toEpochMilliseconds(), zone),
-                M.PAGE_W - M.MARGIN_X - 90.0,
+                M.PAGE_W - M.MARGIN_X - M.BADGE_DATE_COLUMN.toDouble(),
                 y + 4.0,
                 IosPdfFonts.caveat(M.BADGE_DATE.toDouble()),
                 M.COLOR_COPPER,
