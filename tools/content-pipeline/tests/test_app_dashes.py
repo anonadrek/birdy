@@ -20,6 +20,17 @@ from birdy_fetcher.app_dashes import (
     scan_species,
     split_sentences,
 )
+from birdy_fetcher.app_dashes_run import (
+    CheckReply,
+    DashOptions,
+    Rewrite,
+    RewriteReply,
+    Verdict,
+    run_app_dashes,
+)
+from birdy_fetcher.web.llm import MODELS
+
+from .web_fakes import FakeJsonClient, reply
 
 HEADING_AND_TWO_DASHES = (
     "# Testmes – Förekomst\n\nDen är 12–14 cm lång. "
@@ -256,3 +267,93 @@ def test_dump_species_round_trips(tmp_path: Path) -> None:
     before = path.read_text(encoding="utf-8")
     dump_species(data, path)
     assert path.read_text(encoding="utf-8") == before
+
+
+GOOD = "Lätet, ett vasst pip, hörs i maj."
+
+
+def options(tmp_path: Path, **overrides: Any) -> DashOptions:
+    values: dict[str, Any] = {
+        "species_root": tmp_path,
+        "reports": tmp_path / "reports",
+        "max_cost": 5.0,
+    }
+    values.update(overrides)
+    return DashOptions(**values)
+
+
+async def test_an_accepted_rewrite_is_written(tmp_path: Path) -> None:
+    path = write_species(tmp_path, HEADING_AND_TWO_DASHES)
+    key = scan_species(path).sentences[0].key
+    client = FakeJsonClient(
+        [
+            reply(RewriteReply(rewrites=[Rewrite(id=key, text=GOOD)])),
+            reply(CheckReply(verdicts=[Verdict(id=key, same_meaning=True, reason="samma")])),
+        ]
+    )
+    result = await run_app_dashes(options(tmp_path), client)
+    data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    assert GOOD in data["description"]["sv"]
+    assert "12 till 14 cm" in data["description"]["sv"]
+    assert data["migration"]["sv"] == "Flyttar i mars till april."
+    assert data["review_notes"] == "Anteckning — rörs inte."
+    assert client.models == [MODELS["opus55"], MODELS["sonnet"]]
+    assert result.outcomes[0].written
+    assert [new for _, new in result.outcomes[0].rewritten] == [GOOD]
+    assert GOOD in result.report.read_text(encoding="utf-8")
+
+
+async def test_a_rewrite_the_checker_rejects_keeps_its_dash(tmp_path: Path) -> None:
+    path = write_species(tmp_path, HEADING_AND_TWO_DASHES)
+    key = scan_species(path).sentences[0].key
+    client = FakeJsonClient(
+        [
+            reply(RewriteReply(rewrites=[Rewrite(id=key, text=GOOD)])),
+            reply(CheckReply(verdicts=[Verdict(id=key, same_meaning=False, reason="pip saknas")])),
+        ]
+    )
+    result = await run_app_dashes(options(tmp_path), client)
+    text = yaml.safe_load(path.read_text(encoding="utf-8"))["description"]["sv"]
+    assert "Lätet — ett vasst pip — hörs i maj." in text
+    assert "12 till 14 cm" in text  # the rule fixes are still written
+    assert result.outcomes[0].failed[0][1] == "kontrollen: pip saknas"
+
+
+async def test_a_rewrite_failing_code_checks_skips_the_checker(tmp_path: Path) -> None:
+    path = write_species(tmp_path, HEADING_AND_TWO_DASHES)
+    key = scan_species(path).sentences[0].key
+    client = FakeJsonClient(
+        [reply(RewriteReply(rewrites=[Rewrite(id=key, text="Lätet hörs i maj 2026.")]))]
+    )
+    result = await run_app_dashes(options(tmp_path), client)
+    assert len(client.calls) == 1
+    assert "talen skiljer sig" in result.outcomes[0].failed[0][1]
+
+
+async def test_a_dry_run_writes_nothing_and_calls_no_model(tmp_path: Path) -> None:
+    path = write_species(tmp_path, HEADING_AND_TWO_DASHES)
+    before = path.read_text(encoding="utf-8")
+    result = await run_app_dashes(options(tmp_path, dry_run=True), None)
+    assert path.read_text(encoding="utf-8") == before
+    assert result.outcomes[0].rule_fixes == 2
+    assert result.outcomes[0].failed[0][1] == "torrkörning"
+    assert not result.outcomes[0].written
+
+
+async def test_the_cost_cap_stops_the_run_without_writing(tmp_path: Path) -> None:
+    path = write_species(tmp_path, HEADING_AND_TWO_DASHES)
+    before = path.read_text(encoding="utf-8")
+    key = scan_species(path).sentences[0].key
+    client = FakeJsonClient([reply(RewriteReply(rewrites=[Rewrite(id=key, text=GOOD)]))])
+    result = await run_app_dashes(options(tmp_path, max_cost=0.0001), client)
+    assert result.stopped_by_cost
+    assert path.read_text(encoding="utf-8") == before
+
+
+async def test_species_without_dashes_are_left_alone(tmp_path: Path) -> None:
+    path = write_species(tmp_path, "Inga streck här.")
+    data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    data["migration"] = {"sv": "Flyttar i mars."}
+    dump_species(data, path)
+    result = await run_app_dashes(options(tmp_path), FakeJsonClient([]))
+    assert result.outcomes == []
