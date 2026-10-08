@@ -19,6 +19,10 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const copy = {
+  sv: JSON.parse(readFileSync(resolve(root, 'src/content/copy.sv.json'), 'utf8')),
+  en: JSON.parse(readFileSync(resolve(root, 'src/content/copy.en.json'), 'utf8')),
+};
 const dist = resolve(root, 'dist-empty');
 if (!existsSync(dist)) {
   console.error(`check-empty-hub: ${dist} saknas (npm run build:empty)`);
@@ -88,6 +92,21 @@ for (const path of ['', 'sv', 'blog', 'sv/blog']) {
   if (html.includes('fgrid--species')) fail(where, 'sidfoten har kolumnen Arter trots noll byggda arter');
   if (html.includes('class="browse"')) fail(where, 'startsidan länkar till arterna trots noll byggda arter');
   if (!html.includes('class="skip-link"')) fail(where, 'saknar hoppa-till-innehållet-länken');
+}
+
+// The home page's Dagens fågel with zero species pages (plan 2026-10-08 Task 2, review I4): no page can hang on the
+// wall, so the site shows another bird than the app's, and the handwritten note under the headline must then be the
+// one without "och i appen" / "and in the app" (it only says that on days the plate shows the app's bird, from the day
+// 1.3 is live). The same-as-app line is never shown here.
+for (const [path, locale] of [['sv', 'sv'], ['', 'en']]) {
+  const html = page(path);
+  const where = path || '/';
+  const note = copy[locale].hero.noteFallback;
+  if (!note) fail(where, 'copy saknar hero.noteFallback');
+  const shown = html.match(/<p class="mnote[^"]*"[^>]*>([^<]*)<\/p>/)?.[1];
+  if (shown !== note) fail(where, `heronoten är "${shown}", ska vara reservnoten "${note}" när planschen inte visar appens fågel`);
+  if (/och i appen|and in the app/.test(shown ?? '')) fail(where, 'heronoten säger "och i appen" fast planschen inte visar appens fågel');
+  if (html.includes('data-same-as-app')) fail(where, 'raden "samma fågel som i appen" visas utan appens fågel');
 }
 
 const sitemap = existsSync(join(dist, 'sitemap-index.xml')) ? 'present' : 'missing';

@@ -52,7 +52,9 @@ if (species) {
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Great_tit_(Parus_major),_North_Rhine-Westphalia.jpg',
   };
 }
+// The note under the headline says "och i appen" only when the plate shows the app's bird on a day 1.3 is live (review I4).
 const sameAsApp = pick?.sameAsApp ?? false;
+const note = sameAsApp ? t.hero.note : t.hero.noteFallback;
 ---
 
 <header class="hero" data-hero data-daily-bird={species?.qid ?? ''} data-app-bird={appQid ?? ''} data-date={date.iso}>
@@ -62,7 +64,7 @@ const sameAsApp = pick?.sameAsApp ?? false;
       <span class="nav-until" data-nav-until aria-hidden="true"></span>
       <Kicker text={t.hero.kicker} />
       <h1><span class="h1-a">{t.hero.headline}</span> <em>{t.hero.line2}</em></h1>
-      <div class="note"><MarginNote text={t.hero.note} /></div>
+      <div class="note"><MarginNote text={note} /></div>
     </div>
     <div class="plate">
       <DailyBirdPlate locale={locale} bird={bird} date={date} />

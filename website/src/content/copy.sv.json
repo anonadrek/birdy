@@ -27,6 +27,7 @@
     "headline": "Känn igen fågeln.",
     "line2": "Bevara stunden.",
     "note": "en ny fågel varje dag, här och i appen",
+    "noteFallback": "en ny fågel varje dag",
     "sub": "Rikta kameran, välj ett foto eller låt fågeln sjunga. Birdy föreslår arten direkt i telefonen, och du sparar fyndet i din egen fältdagbok."
   },
   "daily": {

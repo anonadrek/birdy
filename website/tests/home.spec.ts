@@ -170,6 +170,9 @@ test.describe('första vyn', () => {
       expect(href).toMatch(path === '/sv/' ? /^\/sv\/arter\/hornuggla\/$/ : /^\/species\/long-eared-owl\/$/);
       expect((await request.get(href!)).status()).toBe(200);
       await expect(hero.locator('[data-same-as-app]')).toHaveText(same);
+      // The app's bird on a live day: the handwritten note is the one that says so (review I4; the empty build checks
+      // the other note, without "och i appen", in scripts/check-empty-hub.mjs).
+      await expect(hero.locator('.intro .mnote')).toHaveText(path === '/sv/' ? 'en ny fågel varje dag, här och i appen' : 'a new bird every day, here and in the app');
       const img = hero.locator('.dp-photo img');
       await expect(img).toHaveAttribute('loading', 'eager');
       await expect(img).toHaveAttribute('fetchpriority', 'high');
