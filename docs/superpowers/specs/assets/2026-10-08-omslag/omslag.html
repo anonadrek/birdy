@@ -1,0 +1,152 @@
+<title>Flockens omslag</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap">
+<style>
+  /* One deliberate look (the Flock profiles' peach paper), painted explicitly in both themes. */
+  :root {
+    color-scheme: light;
+    --page: #F6EFE2; --peach: #FDE5CB; --card: #FFFAF1; --line: #DFD2BA;
+    --ink: #302019; --muted: #6E584B; --rust: #9A4526; --copper: #A8552D; --brass: #B8893A; --dark: #2A1D17;
+    --serif: "DM Serif Display", Georgia, "Times New Roman", serif;
+    --sans: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+    --hand: Caveat, "Segoe Print", "Bradley Hand", cursive;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink); font: 400 16px/1.55 var(--sans); }
+  .wrap { max-width: 1060px; margin: 0 auto; padding-inline: 20px; padding-block: 44px 72px; }
+  .kicker { display: flex; align-items: center; gap: 10px; font: 600 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--rust); margin: 0; }
+  .kicker::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+  h1 { font: 400 clamp(38px, 6vw, 60px)/1.02 var(--serif); margin: 14px 0 0; text-wrap: balance; }
+  h1 .hand, h2 .hand { font-family: var(--hand); font-weight: 700; color: var(--rust); }
+  .lead { max-width: 62ch; color: var(--muted); margin: 16px 0 0; }
+  section.opt { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .opt-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .letter { font: 700 44px/1 var(--hand); color: var(--rust); min-width: 1.2em; }
+  h2 { font: 400 clamp(28px, 4vw, 38px)/1.05 var(--serif); margin: 0; }
+  .rec { font: 600 11px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--card); background: var(--rust); padding: 6px 9px; border-radius: 99px; align-self: center; }
+  .opt p.desc { max-width: 62ch; color: var(--muted); margin: 10px 0 0; }
+  .show { display: grid; grid-template-columns: minmax(0, 390px) minmax(0, 270px); gap: 36px; align-items: start; margin-top: 24px; }
+  /* A plain phone with the profile grid: pinned row first, then newest first, 3:4 tiles. */
+  .phone { background: var(--card); border: 1px solid var(--line); border-radius: 30px; padding: 14px 10px 18px; box-shadow: 0 18px 40px rgba(60, 34, 20, .12); }
+  .handle { display: flex; align-items: center; gap: 8px; padding: 2px 6px 12px; font: 600 14px/1 var(--sans); }
+  .handle i { width: 26px; height: 26px; border-radius: 50%; background: var(--peach); border: 1px solid var(--line); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .grid figure { margin: 0; position: relative; aspect-ratio: 3 / 4; overflow: hidden; background: var(--peach); }
+  .grid img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .grid .pin::after { content: ""; position: absolute; top: 6px; right: 6px; width: 9px; height: 9px; border-radius: 50%; background: var(--card); box-shadow: 0 0 0 2px rgba(48, 32, 25, .55); }
+  .big figure { margin: 0; }
+  .big img { width: 100%; max-width: 270px; aspect-ratio: 9 / 16; display: block; border-radius: 14px; box-shadow: 0 18px 40px rgba(60, 34, 20, .16); }
+  .big figcaption { font: 600 19px/1.2 var(--hand); color: var(--muted); margin-top: 10px; }
+  table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 15px; }
+  .tablebox { overflow-x: auto; margin-top: 18px; }
+  th, td { text-align: left; vertical-align: top; padding: 12px 14px 12px 0; border-bottom: 1px solid var(--line); }
+  th { font: 600 11px/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  td b { font-weight: 600; }
+  .notes { margin-top: 44px; display: grid; gap: 12px; max-width: 70ch; color: var(--muted); }
+  .notes p { margin: 0; }
+  .answer { margin-top: 40px; background: var(--rust); color: var(--card); border-radius: 18px; padding: 22px 24px; }
+  .answer h2 { color: var(--card); font-size: 30px; }
+  .answer p { margin: 8px 0 0; max-width: 62ch; }
+  @media (max-width: 760px) {
+    .show { grid-template-columns: minmax(0, 1fr); }
+    .big img { max-width: 220px; }
+  }
+</style>
+
+<div class="wrap">
+  <p class="kicker">Förslag · 8 oktober 2026</p>
+  <h1>Omslagen i <span class="hand">flocken</span></h1>
+  <p class="lead">Varje video får ett eget omslag i samma look som profilen, och det som skiljer dem åt är fågeln. Så här ser Instagram-profilen ut efter de nio första inläggen (omkring 17 oktober): de tre fästa rutorna överst, sedan nyast först. Rutnätet visar mitten av omslaget; hela omslaget syns i Reels-fliken och på TikTok.</p>
+
+  <section class="opt" id="nu">
+    <div class="opt-head"><span class="letter">Nu</span><h2>Som i dag</h2></div>
+    <p class="desc">Samma mörka ruta med frågetecken i alla inlägg. Bara ringens form skiljer, så rutnätet ser ut som ett inlägg upprepat nio gånger.</p>
+    <div class="show">
+      <div class="phone"><div class="handle"><i></i>app.birdy</div><div class="grid" data-set="now"></div></div>
+      <div class="big"><figure><img src="img/now-big.jpg" alt="Dagens omslag för blåmesen: mörk ruta med frågetecken i en ljudring"><figcaption>hela omslaget, blåmesen 9 okt</figcaption></figure></div>
+    </div>
+  </section>
+
+  <section class="opt" id="a">
+    <div class="opt-head"><span class="letter">A</span><h2>Polaroiden</h2><span class="rec">Min rekommendation</span></div>
+    <p class="desc">Fågeln som en tejpad polaroid på persikopapper, namnet handskrivet på kortet och flocken som flyger förbi bakom. Samma polaroid som Dagens fågel på webben. Profilen blir en fältbok där varje ruta är en ny art.</p>
+    <div class="show">
+      <div class="phone"><div class="handle"><i></i>app.birdy</div><div class="grid" data-set="A"></div></div>
+      <div class="big"><figure><img src="img/A-big.jpg" alt="Omslag A för blåmesen: polaroid med blåmesen och namnet Eurasian Blue Tit, Blåmes"><figcaption>hela omslaget, blåmesen 9 okt</figcaption></figure></div>
+    </div>
+  </section>
+
+  <section class="opt" id="b">
+    <div class="opt-head"><span class="letter">B</span><h2>Gissa fågeln</h2></div>
+    <p class="desc">Samma polaroid, men kortet frågar "Whose song is this?" i stället för att säga namnet. Varje ruta är fortfarande en ny fågel, och namnet kommer först i videon, som i dag.</p>
+    <div class="show">
+      <div class="phone"><div class="handle"><i></i>app.birdy</div><div class="grid" data-set="B"></div></div>
+      <div class="big"><figure><img src="img/B-big.jpg" alt="Omslag B för blåmesen: polaroid med blåmesen och frågan Whose song is this?"><figcaption>hela omslaget, blåmesen 9 okt</figcaption></figure></div>
+    </div>
+  </section>
+
+  <section class="opt" id="c">
+    <div class="opt-head"><span class="letter">C</span><h2>Ledtråden</h2></div>
+    <p class="desc">Inget foto. Flocken som Birdys fågel med artens egen fågel tänd, och en handskriven ledtråd om arten. Hela gåtan finns kvar, men rutorna liknar varandra igen: bara texten skiljer.</p>
+    <div class="show">
+      <div class="phone"><div class="handle"><i></i>app.birdy</div><div class="grid" data-set="C"></div></div>
+      <div class="big"><figure><img src="img/C-big.jpg" alt="Omslag C för blåmesen: flocken som Birdys fågel med en tänd fågel och ledtråden Small, blue cap, and bold at every feeder."><figcaption>hela omslaget, blåmesen 9 okt</figcaption></figure></div>
+    </div>
+  </section>
+
+  <section class="opt" id="valj">
+    <div class="opt-head"><h2>Välj</h2></div>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>Förslag</th><th>Rutnätet</th><th>Gåtan i videon</th><th>Passar med</th></tr></thead>
+        <tbody>
+          <tr><td><b>Nu</b>, som i dag</td><td>Alla rutor lika</td><td>Kvar</td><td>Inget av det nya</td></tr>
+          <tr><td><b>A</b>, polaroiden</td><td>Ny fågel och namn i varje ruta</td><td>Namnet syns före låten</td><td>Webbens Dagens fågel och flockraden överst</td></tr>
+          <tr><td><b>B</b>, gissa fågeln</td><td>Ny fågel i varje ruta</td><td>Namnet kommer i videon</td><td>Videons fråga, kommentarer med gissningar</td></tr>
+          <tr><td><b>C</b>, ledtråden</td><td>Samma flock, olika text</td><td>Hela gåtan kvar</td><td>Webbens idé om en fågel per art</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="notes">
+    <p><b>Var de hamnar.</b> De nya omslagen läggs på de omkring 50 inlägg som inte är schemalagda än: YouTube och TikTok från 19 oktober, Facebook och Instagram från 29 oktober. För de 40 som redan ligger schemalagda kollar jag om omslaget går att byta utan att schemalägga om.</p>
+    <p><b>Fotona.</b> Samma foton som på artsidorna, alltid hela bilden och aldrig text på fotot. Fotografen och licensen står på kortet och i bildtexten, som i dag.</p>
+    <p><b>Ledtrådarna i C är exempel.</b> Väljer du C hämtas de ur artsidornas kontrollerade fakta.</p>
+  </div>
+
+  <div class="answer">
+    <h2>Vilket blir det?</h2>
+    <p>Svara med A, B, C eller Nu. Vill du ha något emellan, till exempel A med ett mindre namn, säg bara till.</p>
+  </div>
+</div>
+
+<script>
+  // Grid order on the profile: the pinned row, then the newest post first (17 Oct back to 9 Oct).
+  var ORDER = [8, 7, 6, 5, 4, 3, 2, 1, 0];
+  var NAMES = ['Blåmes', 'Trana', 'Gråsparv', 'Gräsand', 'Koltrast', 'Ormvråk', 'Talgoxe', 'Rödhake', 'Bofink'];
+  var PINNED = ['tile-1-left', 'tile-2-middle', 'tile-3-right'];
+  document.querySelectorAll('.grid').forEach(function (grid) {
+    var set = grid.getAttribute('data-set');
+    PINNED.forEach(function (t, k) {
+      var f = document.createElement('figure');
+      f.className = 'pin';
+      var im = document.createElement('img');
+      im.src = 'img/' + t + '.jpg';
+      im.alt = k === 0 ? 'Fäst rad: Know the bird. Keep the moment. med flocken' : '';
+      im.loading = 'lazy';
+      f.appendChild(im);
+      grid.appendChild(f);
+    });
+    ORDER.forEach(function (i) {
+      var f = document.createElement('figure');
+      var im = document.createElement('img');
+      im.src = 'img/' + (set === 'now' ? 'now' : set) + '-' + i + '.jpg';
+      im.alt = NAMES[i];
+      im.loading = 'lazy';
+      f.appendChild(im);
+      grid.appendChild(f);
+    });
+  });
+</script>
