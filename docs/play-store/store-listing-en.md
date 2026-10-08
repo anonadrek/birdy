@@ -1,7 +1,7 @@
 # Birdy — Play Store Listing (English)
 
 ## App title
-Birdy — Bird Identify & Guide
+Birdy: Bird Identify & Guide
 
 ## Short description (max 80 chars)
 Identify birds by photo & sound. Offline field guide & private journal.

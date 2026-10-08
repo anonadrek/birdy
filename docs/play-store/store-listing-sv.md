@@ -1,7 +1,7 @@
 # Birdy — Play Store-listning (svenska)
 
 ## App-titel
-Birdy — Fågel-ID & Guide
+Birdy: Fågel-ID & Guide
 
 ## Kort beskrivning (max 80 tecken)
 Identifiera fåglar på foto & ljud. Offline fågelguide & privat fågeldagbok.

@@ -46,7 +46,8 @@ språken) i samma upload:
   (bara 4 av 839 arter har en) och texterna "bygger på Wikipedia" / "are based on Wikipedia" i
   stället för "text från Wikipedia".
 - Alla tankstreck i den långa beskrivningen är ersatta med kolon, kommatecken eller punkt.
-  Apptiteln ("Birdy — Fågel-ID & Guide" / "Birdy — Bird Identify & Guide") är oförändrad.
+  Apptiteln får kolon i stället för tankstreck (Albin 2026-10-08): "Birdy: Fågel-ID & Guide" och
+  "Birdy: Bird Identify & Guide". Orden är desamma, så sökningen i Play påverkas inte.
 
 Längd: SV 2 412 tecken, EN 2 451 (gränsen är 4 000). Den korta beskrivningen är oförändrad.
 
