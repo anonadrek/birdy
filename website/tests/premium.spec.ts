@@ -48,6 +48,16 @@ test.describe('Premium-sidan', () => {
     await expect(page.locator('main')).toContainText('in your currency');
   });
 
+  // The fixture build's date (2026-10-15) is the live date, so the timeline shows the date, injected from release.mjs.
+  test('tidslinjen visar lanseringsdatumet från release.mjs på båda språken', async ({ page }) => {
+    await page.goto('/sv/premium/');
+    await expect(page.locator('[data-timeline-release] .when')).toHaveText('15 oktober 2026');
+    await expect(page.locator('[data-timeline-release] .what')).toHaveText('Birdy 1.3.');
+    await page.goto('/premium/');
+    await expect(page.locator('[data-timeline-release] .when')).toHaveText('15 October 2026');
+    await expect(page.locator('[data-timeline-release] .what')).toHaveText('Birdy 1.3.');
+  });
+
   test('regeln för tidiga användare säger "började använda" och tiden', async ({ page }) => {
     await page.goto('/sv/premium/');
     await expect(page.locator('[data-early-rule]')).toContainText('Började du använda Birdy före 17 oktober 2026 klockan 00.00 (svensk tid)');

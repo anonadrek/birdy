@@ -15,7 +15,7 @@
 // Plain JS, so the unit tests run it with node --test and the Astro components import it as is.
 import { readdirSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
-import { appSpeciesSnapshotPath } from './release.mjs';
+import { appSpeciesSnapshotPath, isAppLive } from './release.mjs';
 
 export const MONTH_KEYS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 export const NORDIC_BUCKET = new Set(['SE', 'NO', 'FI', 'DK']);
@@ -23,12 +23,6 @@ export const NORDIC_BUCKET = new Set(['SE', 'NO', 'FI', 'DK']);
 export const REGULAR_IN_SWEDEN = new Set(['allmän', 'mindre allmän']);
 const SEASON_TAGS = new Set(['breeding', 'present', 'migrating']);
 const REGION_SEED = 'NORDIC';
-
-/**
- * The first day the website may say "the same bird as in the app today": the day Birdy 1.3.0 goes out on
- * Google Play with this rule. Before it, the app in people's phones (1.2) still picks with the old rule.
- */
-export const SAME_AS_APP_FROM = '2026-10-15';
 
 /** Java's String.hashCode (UTF-16 code units, 32-bit overflow), which Kotlin/JVM's String.hashCode is. */
 export function javaHashCode(text) {
@@ -129,14 +123,14 @@ export function selectAppDailyBird(species, date) {
 
 /**
  * What the home page shows (plan Task 1): the app's bird (`appQid`, from selectAppDailyBird) when it has a species
- * page in this build, with the line "the same bird as in the app today" from SAME_AS_APP_FROM on. Otherwise a pick
- * among the species with a page, with the same seed, so it stays the same all day, and without that line. Null when
- * no species has a page.
+ * page in this build, with the line "the same bird as in the app today" from the day 1.3 is live (APP_1_3_LIVE_FROM
+ * in release.mjs; before it the phones run 1.2's old picker). Otherwise a pick among the species with a page, with
+ * the same seed, so it stays the same all day, and without that line. Null when no species has a page.
  * @param {{ appQid: string | null, pageQids: string[], date: { year: number, month: number, day: number, iso: string } }} input
  * @returns {{ qid: string, appQid: string | null, sameAsApp: boolean } | null}
  */
 export function siteDailyBird({ appQid, pageQids, date }) {
-  if (appQid && pageQids.includes(appQid)) return { qid: appQid, appQid, sameAsApp: date.iso >= SAME_AS_APP_FROM };
+  if (appQid && pageQids.includes(appQid)) return { qid: appQid, appQid, sameAsApp: isAppLive(date.iso) };
   if (pageQids.length === 0) return null;
   const sorted = [...pageQids].sort(byCodeUnits);
   return { qid: sorted[new KotlinRandom(daySeed(date)).nextInt(sorted.length)], appQid, sameAsApp: false };

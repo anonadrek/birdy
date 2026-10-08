@@ -3,9 +3,10 @@ import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import {
-  KotlinRandom, NORDIC_BUCKET, REGULAR_IN_SWEDEN, SAME_AS_APP_FROM, buildDate, cropImage, dateParts, javaHashCode, loadAppSpecies, loadAppSpeciesSnapshot,
+  KotlinRandom, NORDIC_BUCKET, REGULAR_IN_SWEDEN, buildDate, cropImage, dateParts, javaHashCode, loadAppSpecies, loadAppSpeciesSnapshot,
   parseSpeciesYaml, plateImage, selectAppDailyBird, siteDailyBird,
 } from '../../src/lib/daily-bird.mjs';
+import { APP_1_3_LIVE_FROM } from '../../src/lib/release.mjs';
 
 // Written by the app's own Kotlin DailyBirdSelector and kotlin.random.Random (see the file's _about).
 const golden = JSON.parse(readFileSync(new URL('../fixtures/daily-bird-golden.json', import.meta.url), 'utf8'));
@@ -91,7 +92,7 @@ test('siteDailyBird: appens fågel när den har en sida, raden om appen först f
   const out = siteDailyBird({ appQid: selectAppDailyBird(golden.species, before), pageQids: ['Q25485', appBefore], date: before });
   assert.deepEqual(out, { qid: appBefore, appQid: appBefore, sameAsApp: false });
 
-  const from = day(SAME_AS_APP_FROM);
+  const from = day(APP_1_3_LIVE_FROM);
   const appFrom = golden.days[from.iso];
   assert.deepEqual(siteDailyBird({ appQid: selectAppDailyBird(golden.species, from), pageQids: [appFrom], date: from }), { qid: appFrom, appQid: appFrom, sameAsApp: true });
 });

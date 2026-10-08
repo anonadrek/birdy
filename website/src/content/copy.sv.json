@@ -203,9 +203,12 @@
           "more": "Premium är öppet för alla under lanseringen."
         },
         {
-          "when": "15 oktober 2026",
+          "when": "{date}",
           "what": "Birdy 1.3.",
-          "more": "Premium går att köpa i Google Play, för ett år eller för alltid."
+          "more": "Premium går att köpa i Google Play, för ett år eller för alltid.",
+          "whenSoon": "Oktober 2026",
+          "whatSoon": "Birdy 1.3 kommer.",
+          "moreSoon": "Då går Premium att köpa i Google Play, för ett år eller för alltid."
         },
         {
           "when": "17 oktober 2026, klockan 00.00",

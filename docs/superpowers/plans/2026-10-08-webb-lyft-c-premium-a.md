@@ -80,4 +80,5 @@
 
 ### Att komma ihåg (releasechecklistan, Plan 3 Task 11 och varje apprelease efter den)
 
+- **Lanseringsdagen:** `APP_1_3_LIVE_FROM` i `website/src/lib/release.mjs` (2026-10-15) styr heroraden "samma fågel som i appen" och Premium-sidans tidslinje ("Birdy 1.3 kommer" tills dagen är inne, sedan datumet). Slirar go-live: flytta den. Flyttas brytpunkten (17 oktober 2026 kl. 00.00) ändras också texterna om den i båda copy-filerna (Premium-sidans tidslinje och löftet till tidiga användare).
 - **Appens artlista:** regenerera golden-filen på release-grenen (`BIRDY_GOLDEN_OUT=website/tests/fixtures/daily-bird-golden.json ./gradlew :shared:domain:jvmTest --tests "*DailyBirdGoldenGenerator*"`, ett Gradle-jobb åt gången), höj `APP_VERSION` i `website/src/lib/release.mjs`, kör `npm run app-species:snapshot` och sedan `npm run check:app-species`. Det sista ska vara grönt på release-grenen och på main efter sammanslagningen; rött på main dessförinnan är väntat och stoppar inte bygget.

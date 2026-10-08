@@ -11,3 +11,37 @@ export const APP_VERSION = '1.3.0';
  * @param {string} websiteRoot
  */
 export const appSpeciesSnapshotPath = (websiteRoot) => resolve(websiteRoot, 'src', 'data', `app-species-${APP_VERSION}.json`);
+
+/**
+ * The day Birdy 1.3 goes out on Google Play (Europe/Stockholm). Two things on the site turn on it: the hero's "samma
+ * fågel som i appen" line (before it, the phones run 1.2's old picker, so the app's bird is not the one the site
+ * computes) and the Premium page's timeline entry for 1.3 ("kommer" until the day, the date from then on). The
+ * release checklist flips it if go-live slips (plan "Att komma ihåg").
+ */
+export const APP_1_3_LIVE_FROM = '2026-10-15';
+
+/** Whether the app this site describes is in people's phones on `iso` (YYYY-MM-DD, Europe/Stockholm). */
+export const isAppLive = (iso) => iso >= APP_1_3_LIVE_FROM;
+
+/**
+ * APP_1_3_LIVE_FROM in words, "15 oktober 2026" or "15 October 2026".
+ * @param {'sv' | 'en'} locale
+ */
+export function formatLiveDate(locale) {
+  return new Intl.DateTimeFormat(locale === 'sv' ? 'sv-SE' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
+    .format(new Date(`${APP_1_3_LIVE_FROM}T00:00:00Z`));
+}
+
+/**
+ * The Premium timeline's entry for Birdy 1.3 (copy premiumPage.situation.timeline[1]): before the day it says 1.3 is
+ * coming (whenSoon, whatSoon, moreSoon), from the day on the date (when's {date}) and the released wording, so the
+ * page never states a release that has not happened.
+ * @param {Record<string, string>} entry
+ * @param {string} dateIso today, Europe/Stockholm (buildDate in daily-bird.mjs)
+ * @param {'sv' | 'en'} locale
+ * @returns {{ when: string, what: string, more: string }}
+ */
+export function releaseTimelineEntry(entry, dateIso, locale) {
+  if (isAppLive(dateIso)) return { when: entry.when.replace('{date}', formatLiveDate(locale)), what: entry.what, more: entry.more };
+  return { when: entry.whenSoon, what: entry.whatSoon, more: entry.moreSoon };
+}

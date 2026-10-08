@@ -17,6 +17,8 @@ import PlayStoreBadge from '../ui/PlayStoreBadge.astro';
 import AppStoreBadge from '../ui/AppStoreBadge.astro';
 import { type Locale, getCopy } from '../../lib/i18n';
 import { premiumHref } from '../../lib/links';
+import { releaseTimelineEntry } from '../../lib/release.mjs';
+import { date } from 'virtual:birdy-daily-bird';
 import { SITE, breadcrumbJsonLd, playHref } from '../../lib/species';
 import { parseHeadline } from '../../lib/headline';
 
@@ -99,14 +101,18 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
           <div class="story">{p.situation.story.map((s) => <p>{s}</p>)}</div>
         </div>
         <ol class="timeline" aria-label={p.situation.timelineLabel} data-reveal style="--rd:120ms">
-          {p.situation.timeline.map((e, i) => (
-            <li class:list={{ key: i === 2, soon: i === p.situation.timeline.length - 1 }}>
-              {i === p.situation.timeline.length - 1 && <span class="tbird" aria-hidden="true"></span>}
-              <p class="when">{e.when}</p>
-              <p class="what">{e.what}</p>
-              {e.more && <p class="more">{e.more}</p>}
-            </li>
-          ))}
+          {p.situation.timeline.map((entry, i) => {
+            // Entry 1 is Birdy 1.3: "kommer" until the live date in release.mjs, the date from then on.
+            const e = i === 1 ? releaseTimelineEntry(entry, date.iso, locale) : entry;
+            return (
+              <li class:list={{ key: i === 2, soon: i === p.situation.timeline.length - 1 }} data-timeline-release={i === 1 ? '' : undefined}>
+                {i === p.situation.timeline.length - 1 && <span class="tbird" aria-hidden="true"></span>}
+                <p class="when">{e.when}</p>
+                <p class="what">{e.what}</p>
+                {e.more && <p class="more">{e.more}</p>}
+              </li>
+            );
+          })}
         </ol>
       </div>
     </section>
