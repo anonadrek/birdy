@@ -116,10 +116,6 @@
     <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText(M.STAT_SPECIES, M.MARGIN_X + 10.0, statsY + 22.0, IosPdfFonts.caveat(M.STAT_CAPTION.toDouble()), M.COLOR_INK)</ID>
     <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText(M.STAT_TOTAL, M.MARGIN_X + colW + 10.0, statsY + 22.0, IosPdfFonts.caveat(M.STAT_CAPTION.toDouble()), M.COLOR_INK)</ID>
     <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText(M.TOPS, M.MARGIN_X.toDouble(), chartTop, IosPdfFonts.dmSerifItalic(M.TOPS_HEADER.toDouble()), M.COLOR_INK)</ID>
-    <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText(badge.descriptionLocalized, M.MARGIN_X + 44.0, y + 16.0, IosPdfFonts.caveat(M.BADGE_DESC.toDouble()), M.COLOR_INK)</ID>
-    <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText(badge.nameLocalized, M.MARGIN_X + 44.0, y, IosPdfFonts.dmSerifItalic(M.BADGE_NAME.toDouble()), M.COLOR_INK)</ID>
-    <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText(row.nameLocalized, M.MARGIN_X + 26.0, y, IosPdfFonts.dmSerifItalic(M.SPECIES_NAME.toDouble()), M.COLOR_INK)</ID>
-    <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText(row.scientificName, M.MARGIN_X + 26.0, y + 12.0, IosPdfFonts.caveat(M.SPECIES_SCI.toDouble()), M.COLOR_INK)</ID>
     <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$strokeLine(M.MARGIN_X.toDouble(), y + 14.0, M.PAGE_W - M.MARGIN_X.toDouble(), y + 14.0, M.COLOR_PAPER_EDGE, 0.5)</ID>
     <ID>MaxLineLength:JournalPdfRenderer.ios.kt$JournalPdfRenderer$(NSFileManager.defaultManager.attributesOfItemAtPath(outputPath, error = null)?.get(NSFileSize) as? NSNumber)</ID>
     <ID>MaxLineLength:JournalPdfRenderer.ios.kt$JournalPdfRenderer$JournalPdfLayoutIos.drawSpeciesPage(input, rows, pageNum, idx, speciesPages.size, zone)</ID>

@@ -284,6 +284,8 @@ internal object JournalPdfLayoutIos {
 
         val rowTop = M.MARGIN_TOP + 170.0
         val rowH = 24.0
+        val nameFont = IosPdfFonts.dmSerifItalic(M.SPECIES_NAME.toDouble())
+        val sciFont = IosPdfFonts.caveat(M.SPECIES_SCI.toDouble())
 
         rows.forEachIndexed { i, row ->
             val y = rowTop + i * rowH
@@ -294,23 +296,21 @@ internal object JournalPdfLayoutIos {
             // Androids drawSpeciesPage: ett långt namn krymps och kortas av [fitLabel] (release 1.3.1 del 8).
             val textX = M.MARGIN_X + M.SPECIES_TEXT_INSET.toDouble()
             val maxW = M.SPECIES_TEXT_MAX_W
-            val nameFont = IosPdfFonts.dmSerifItalic(M.SPECIES_NAME.toDouble())
             val name = fitLabel(row.nameLocalized, maxW, M.LABEL_MIN_SCALE) { textWidth(it, nameFont).toFloat() }
             drawText(
                 name.text,
                 textX,
                 y,
-                IosPdfFonts.dmSerifItalic(M.SPECIES_NAME.toDouble() * name.scale),
+                if (name.scale == 1f) nameFont else IosPdfFonts.dmSerifItalic(M.SPECIES_NAME.toDouble() * name.scale),
                 M.COLOR_INK,
             )
             if (row.scientificName.isNotEmpty()) {
-                val sciFont = IosPdfFonts.caveat(M.SPECIES_SCI.toDouble())
                 val sci = fitLabel(row.scientificName, maxW, M.LABEL_MIN_SCALE) { textWidth(it, sciFont).toFloat() }
                 drawText(
                     sci.text,
                     textX,
                     y + 12.0,
-                    IosPdfFonts.caveat(M.SPECIES_SCI.toDouble() * sci.scale),
+                    if (sci.scale == 1f) sciFont else IosPdfFonts.caveat(M.SPECIES_SCI.toDouble() * sci.scale),
                     M.COLOR_INK,
                 )
             }
@@ -339,6 +339,8 @@ internal object JournalPdfLayoutIos {
 
         val rowTop = M.MARGIN_TOP + 180.0
         val rowH = 48.0
+        val nameFont = IosPdfFonts.dmSerifItalic(M.BADGE_NAME.toDouble())
+        val descFont = IosPdfFonts.caveat(M.BADGE_DESC.toDouble())
 
         input.unlockedPremiumBadges.take(10).forEachIndexed { i, badge ->
             val y = rowTop + i * rowH
@@ -347,23 +349,21 @@ internal object JournalPdfLayoutIos {
             // Androids drawBadgesPage: namn och beskrivning krymps och kortas av [fitLabel] (release 1.3.1 del 8).
             val textX = M.MARGIN_X + M.BADGE_TEXT_INSET.toDouble()
             val maxW = M.BADGE_TEXT_MAX_W
-            val nameFont = IosPdfFonts.dmSerifItalic(M.BADGE_NAME.toDouble())
             val name = fitLabel(badge.nameLocalized, maxW, M.LABEL_MIN_SCALE) { textWidth(it, nameFont).toFloat() }
             drawText(
                 name.text,
                 textX,
                 y,
-                IosPdfFonts.dmSerifItalic(M.BADGE_NAME.toDouble() * name.scale),
+                if (name.scale == 1f) nameFont else IosPdfFonts.dmSerifItalic(M.BADGE_NAME.toDouble() * name.scale),
                 M.COLOR_INK,
             )
-            val descFont = IosPdfFonts.caveat(M.BADGE_DESC.toDouble())
             val desc =
                 fitLabel(badge.descriptionLocalized, maxW, M.LABEL_MIN_SCALE) { textWidth(it, descFont).toFloat() }
             drawText(
                 desc.text,
                 textX,
                 y + 16.0,
-                IosPdfFonts.caveat(M.BADGE_DESC.toDouble() * desc.scale),
+                if (desc.scale == 1f) descFont else IosPdfFonts.caveat(M.BADGE_DESC.toDouble() * desc.scale),
                 M.COLOR_INK,
             )
             drawText(
