@@ -124,3 +124,17 @@ jobs:
             -configuration Debug \
             -destination "id=$UDID" \
             CODE_SIGNING_ALLOWED=NO
+
+  support:
+    name: Support function (services/support)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/support
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm test
