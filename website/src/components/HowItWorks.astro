@@ -13,7 +13,7 @@ const icons = ['camera', 'photo', 'wave'] as const;
 ---
 
 <section id="how-it-works" class="sec how">
-  <DeckleEdge color="var(--dark)" />
+  <DeckleEdge color="var(--dark-deep)" />
   <div class="wrap grid">
     <div data-reveal>
       <Kicker text={t.howItWorks.kicker} />
@@ -43,7 +43,5 @@ const icons = ['camera', 'photo', 'wave'] as const;
   .ic { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; color: var(--rust); background: var(--card); box-shadow: inset 0 0 0 1px var(--line); flex: none; }
   h3 { font-size: 22px; line-height: 1.1; }
   .row p { margin: 6px 0 0; color: var(--muted); font-size: 14.5px; line-height: 1.55; }
-  /* Below 1280 px the hero phone hangs into this section (see Hero.astro). */
-  @media (max-width: 1279px) { .grid { padding-top: 110px; } }
-  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; gap: 30px; padding-top: 150px; } }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; gap: 30px; } }
 </style>

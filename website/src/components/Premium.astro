@@ -5,6 +5,7 @@ import DeckleEdge from './ui/DeckleEdge.astro';
 import MarginNote from './ui/MarginNote.astro';
 import Icon from './ui/Icon.astro';
 import { type Locale, getCopy } from '../lib/i18n';
+import { premiumHref } from '../lib/links';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -23,6 +24,7 @@ const icons = ['map', 'pdf', 'chart', 'badge'] as const;
       <p class="lead">{t.premium.lead}</p>
       <p class="alw"><b>{t.premium.alwaysFreeLabel}</b> {t.premium.alwaysFree}</p>
       <p class="pnote">{t.premium.purchaseNote}</p>
+      <a class="pmore" href={premiumHref(locale)} data-premium-link>{t.premium.more} <span aria-hidden="true">→</span></a>
     </div>
     <ul class="feats" role="list">
       {t.premium.features.map((f, i) => (
@@ -44,6 +46,8 @@ const icons = ['map', 'pdf', 'chart', 'badge'] as const;
   .alw b { color: var(--cream); font-weight: 600; }
   /* alpha checked in scripts/check-contrast.mjs */
   .pnote { font-size: 12.5px; color: rgba(242, 234, 220, .62); margin: 16px 0 0; }
+  .pmore { display: inline-flex; align-items: center; gap: 6px; margin-top: 22px; height: 46px; padding: 0 20px; border-radius: 12px; background: linear-gradient(135deg, var(--brass-hi), var(--brass)); color: var(--brass-ink); font-weight: 600; font-size: 14.5px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 8px 18px rgba(0, 0, 0, .3); transition: transform .25s var(--ease-paper); }
+  .pmore:hover { transform: translateY(-2px); }
   .feat { display: flex; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); }
   .feat:first-child { padding-top: 4px; }
   .fic { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(226, 192, 126, .45); color: var(--brass-hi); display: grid; place-items: center; flex: none; }

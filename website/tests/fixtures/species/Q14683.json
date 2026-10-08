@@ -29,9 +29,19 @@
       "width": 1200,
       "height": 800,
       "author": "Testfotograf",
-      "license": "CC0",
-      "licenseUrl": null,
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fixture_Q14683_hero.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q14683/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Testfotograf två",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fixture_Q14683_extra.jpg"
     }
   ],
   "wikipedia": {

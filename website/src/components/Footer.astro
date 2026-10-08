@@ -3,7 +3,7 @@ import Wordmark from './ui/Wordmark.astro';
 import DeckleEdge from './ui/DeckleEdge.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 import { fieldNotesHref } from '../lib/field-notes';
-import { albitProductHref, CONTACT_EMAIL } from '../lib/links';
+import { albitProductHref, CONTACT_EMAIL, premiumHref } from '../lib/links';
 import { footerSpecies } from '../lib/species-nav.mjs';
 import { COMMON_QIDS, footerGroups, getAllSpecies, groupHref, hubHref, speciesHref } from '../lib/species';
 
@@ -41,7 +41,7 @@ const topGroups = footerGroups(allSpecies);
         <h2 class="fh">{t.footer.explore}</h2>
         <a href={`${home}#how-it-works`}>{t.nav.howItWorks}</a>
         <a href={`${home}#app`}>{t.nav.app}</a>
-        <a href={`${home}#premium`}>{t.nav.premium}</a>
+        <a href={premiumHref(locale)}>{t.nav.premium}</a>
         <a href={`${home}#faq`}>{t.nav.faq}</a>
       </div>
       <div class="col">

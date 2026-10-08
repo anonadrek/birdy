@@ -137,58 +137,82 @@ test.describe('utan JavaScript', () => {
 test.describe('första vyn', () => {
   test.use({ contextOptions: { reducedMotion: 'reduce' } });
 
-  for (const [path, line1, line2, kicker] of [
-    ['/sv/', 'Känn igen fågeln.', 'Bevara stunden.', 'Fågelguide och fältdagbok'],
-    ['/', 'Know the bird.', 'Keep the moment.', 'Bird guide and field journal'],
+  // The fixture build pins BIRDY_TODAY=2026-10-15 (package.json build:fixtures); every build picks from the shipped app's
+  // list (src/data/app-species-1.3.0.json), so the app's Dagens fågel is Hornuggla (Q25384), which has a fixture page, on
+  // the day 1.3.0 goes out: the plate shows it with the line about the app.
+  for (const [path, line1, line2, kicker, plate, name, same, credit] of [
+    ['/sv/', 'Känn igen fågeln.', 'Bevara stunden.', 'Fågelguide och fältdagbok', 'Dagens fågel · tors 15 okt', 'Hornuggla', 'samma fågel som i appen i dag', 'Foto: Testfotograf, CC BY 4.0, via Wikimedia Commons, nedskalad'],
+    ['/', 'Know the bird.', 'Keep the moment.', 'Bird guide and field journal', 'Bird of the day · Thu 15 Oct', 'Long-eared Owl', 'the same bird as in the app today', 'Photo: Testfotograf, CC BY 4.0, via Wikimedia Commons, resized'],
   ] as const) {
-    test(`rubrik, kicker, metarad och telefon på ${path}`, async ({ page }) => {
+    test(`rubrik, kicker och Dagens fågel som plansch på ${path}`, async ({ page, request }) => {
       const errors = trackConsoleErrors(page);
+      // The browser's day is the build's day, so the stale-day guard (hero/same-as-app-guard.ts) keeps the app line.
+      await page.clock.setFixedTime(new Date('2026-10-15T12:00:00+02:00'));
       await page.goto(path);
       const hero = page.locator('[data-hero]');
       await expect(hero.locator('h1')).toContainText(line1);
       await expect(hero.locator('h1 em')).toHaveText(line2);
-      await expect(hero.locator('.copy .kick')).toHaveText(kicker);
-      await expect(hero.locator('.meta li')).toHaveCount(3);
-      await expect(hero.locator('[data-hero-phone] .ph[role="img"]')).toHaveCount(1);
-      await expect(hero.locator('[data-robin] img').first()).toBeVisible();
+      await expect(hero.locator('.intro .kick')).toHaveText(kicker);
+      await expect(hero).toHaveAttribute('data-date', '2026-10-15');
+      await expect(hero).toHaveAttribute('data-app-bird', 'Q25384');
+      await expect(hero).toHaveAttribute('data-daily-bird', 'Q25384');
+      await expect(hero.locator('.dp-top .kick')).toHaveText(plate);
+      await expect(hero.locator('.dp-no')).toHaveText('Pl. 288');
+      await expect(hero.locator('.dp-name')).toHaveText(name);
+      await expect(hero.locator('.dp-lat')).toHaveText('Asio otus');
+      await expect(hero.locator('.dp-bars i')).toHaveCount(12);
+      await expect(hero.locator('.dp-bars i.now')).toHaveCount(1);
+      await expect(hero.locator('.dp-letters .now')).toHaveText('O');
+      // Hornuggla's test photo is CC BY and the only one it has: allowed on the plate, which shows the photo whole,
+      // and credited exactly like the species page (photographer, linked licence, source).
+      await expect(hero.locator('[data-credit]')).toHaveText(credit);
+      await expect(hero.locator('[data-credit] a[href^="https://creativecommons.org/licenses/by/4.0/"]')).toHaveText('CC BY 4.0');
+      await expect(hero.locator('[data-credit] a[href^="https://commons.wikimedia.org/"]')).toHaveCount(1);
+      const href = await hero.locator('.dp-read').getAttribute('href');
+      expect(href).toMatch(path === '/sv/' ? /^\/sv\/arter\/hornuggla\/$/ : /^\/species\/long-eared-owl\/$/);
+      expect((await request.get(href!)).status()).toBe(200);
+      await expect(hero.locator('[data-same-as-app]')).toHaveText(same);
+      await expect(hero.locator('[data-same-as-app]')).toBeVisible();
+      // The app's bird on a live day: the handwritten note is the one that says so (review I4; the empty build checks
+      // the other note, without "och i appen", in scripts/check-empty-hub.mjs).
+      await expect(hero.locator('.intro .mnote')).toHaveText(path === '/sv/' ? 'en ny fågel varje dag, här och i appen' : 'a new bird every day, here and in the app');
+      const img = hero.locator('.dp-photo img');
+      await expect(img).toHaveAttribute('loading', 'eager');
+      await expect(img).toHaveAttribute('fetchpriority', 'high');
+      await expect(img).toHaveAttribute('width', /^\d+$/);
+      await expect(img).toHaveAttribute('height', /^\d+$/);
       await expect(hero.locator('[data-birdy] .birdy-shape')).toHaveCSS('opacity', '1');
       expect(errors).toEqual([]);
     });
   }
 
-  for (const width of [390, 1024, 1280, 1440, 1920]) {
-    test(`telefonen täcker inte rödhaken och rödhaken syns helt i ${width} px`, async ({ page }) => {
+  // A page built yesterday (the nightly build did not run) must not claim today's bird is the app's: the guard hides the
+  // line when the browser's day in Stockholm is not the build's day (review 2026-10-08).
+  test('raden "samma fågel som i appen i dag" döljs när bygget är från en annan dag', async ({ page }) => {
+    await page.clock.setFixedTime(new Date('2026-10-16T09:00:00+02:00'));
+    await page.goto('/sv/');
+    const line = page.locator('[data-hero] [data-same-as-app]');
+    await expect(line).toHaveCount(1);
+    await expect(line).toBeHidden();
+  });
+
+  for (const width of [320, 390, 768, 1024, 1280, 1440, 1920]) {
+    test(`fotot visas helt och etiketten ligger bara på passepartouten i ${width} px`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 });
       await page.goto('/sv/');
-      const phone = (await page.locator('[data-hero-phone] .ph').boundingBox())!;
-      const robin = (await page.locator('[data-robin]').boundingBox())!;
-      const overlaps = phone.x < robin.x + robin.width && robin.x < phone.x + phone.width
-        && phone.y < robin.y + robin.height && robin.y < phone.y + phone.height;
-      expect(overlaps, `telefon ${JSON.stringify(phone)} rödhake ${JSON.stringify(robin)}`).toBe(false);
-      expect(robin.x).toBeGreaterThanOrEqual(0);
-      expect(robin.x + robin.width).toBeLessThanOrEqual(width);
-    });
-  }
-
-  for (const [width, height] of [[1280, 720], [1366, 768], [1536, 730], [1600, 720], [1650, 700], [1920, 800], [1999, 800], [2000, 960], [2560, 1300]] as const) {
-    test(`korta och breda fönster: telefonen går fri och fötterna syns i ${width}×${height}`, async ({ page }) => {
-      await page.setViewportSize({ width, height });
-      await page.goto('/sv/');
-      const phone = (await page.locator('[data-hero-phone] .ph').boundingBox())!;
-      const robin = (await page.locator('[data-robin]').boundingBox())!;
-      const photo = (await page.locator('[data-hero] .photo').boundingBox())!;
-      const overlaps = phone.x < robin.x + robin.width && robin.x < phone.x + phone.width
-        && phone.y < robin.y + robin.height && robin.y < phone.y + phone.height;
-      expect(overlaps, `telefon ${JSON.stringify(phone)} rödhake ${JSON.stringify(robin)}`).toBe(false);
-      expect(robin.y + robin.height, 'fötterna ryms i fotot').toBeLessThanOrEqual(photo.y + photo.height);
-      expect(robin.x + robin.width).toBeLessThanOrEqual(width);
-      const last = (await page.locator('[data-hero] .meta li').last().boundingBox())!;
-      const hits = await page.evaluate(({ x, ys }) => ys.map((y) => !!document.elementFromPoint(x, y)?.closest('[data-hero-phone]')),
-        { x: last.x + last.width + 16, ys: [last.y + 1, last.y + last.height / 2, last.y + last.height - 1] });
-      expect(hits, 'metaraden har minst 8 px synlig luft till telefonen').toEqual([false, false, false]);
-      const copyBottom = await page.locator('[data-hero] .copy').evaluate((c) => c.getBoundingClientRect().bottom);
-      const metaTop = await page.locator('[data-hero] .meta').evaluate((m) => m.getBoundingClientRect().top);
-      expect(copyBottom, 'herotexten når aldrig metaraden').toBeLessThan(metaTop);
+      const img = page.locator('[data-hero] .dp-photo img');
+      await img.evaluate((i: HTMLImageElement) => i.decode());
+      const { ratio, natural } = await img.evaluate((i: HTMLImageElement) => {
+        const r = i.getBoundingClientRect();
+        return { ratio: r.width / r.height, natural: i.naturalWidth / i.naturalHeight };
+      });
+      expect(Math.abs(ratio - natural), 'inte beskuret').toBeLessThan(0.02);
+      const photo = (await img.boundingBox())!;
+      const label = (await page.locator('[data-hero] .dp-label').boundingBox())!;
+      expect(label.y, 'etiketten börjar under fotot').toBeGreaterThan(photo.y + photo.height + 4);
+      const frame = (await page.locator('[data-hero] .dp-frame').boundingBox())!;
+      expect(frame.x).toBeGreaterThanOrEqual(0);
+      expect(frame.x + frame.width).toBeLessThanOrEqual(width);
     });
   }
 
@@ -198,49 +222,79 @@ test.describe('första vyn', () => {
       await page.goto('/sv/');
       const nav = page.locator('#site-nav');
       const navH = await nav.evaluate((n) => n.getBoundingClientRect().height);
-      const copyTop = await page.locator('[data-hero] .copy').evaluate((c) => c.getBoundingClientRect().top + scrollY);
+      const top = await page.locator('[data-hero] .intro').evaluate((c) => c.getBoundingClientRect().top + scrollY);
       const settle = () => page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
-      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), Math.max(0, copyTop - navH - 30));
+      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), Math.max(0, top - navH - 30));
       await settle();
       await expect(nav).not.toHaveClass(/is-solid/);
-      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), copyTop - navH + 2);
+      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), top - navH + 2);
       await expect(nav).toHaveClass(/is-solid/);
     });
   }
 
-  test('rödhakens ruta börjar under menyn i 1920 px', async ({ page }) => {
-    await page.setViewportSize({ width: 1920, height: 900 });
-    await page.goto('/sv/');
-    const nav = (await page.locator('#site-nav').boundingBox())!;
-    const robin = (await page.locator('[data-robin]').boundingBox())!;
-    expect(robin.y).toBeGreaterThanOrEqual(nav.y + nav.height);
-  });
-
-  test('rubriken ryms på två rader på dator', async ({ page }) => {
+  test('planschen börjar under menyn och den handskrivna raden ryms på en rad på dator', async ({ page }) => {
     for (const path of ['/sv/', '/']) {
       for (const width of [1024, 1280, 1440, 1920]) {
         await page.setViewportSize({ width, height: 900 });
         await page.goto(path);
         await page.evaluate(() => document.fonts.ready);
-        const lines = await page.locator('[data-hero] h1').evaluate((h) => Math.round(h.getBoundingClientRect().height / parseFloat(getComputedStyle(h).lineHeight)));
-        expect(lines, `${path} ${width} px`).toBeLessThanOrEqual(2);
+        const nav = (await page.locator('#site-nav').boundingBox())!;
+        const plate = (await page.locator('[data-hero] .dp-top').boundingBox())!;
+        expect(plate.y, `${path} ${width} px`).toBeGreaterThanOrEqual(nav.y + nav.height);
+        const em = await page.locator('[data-hero] h1 em').evaluate((e) => ({
+          lines: Math.round(e.getBoundingClientRect().height / parseFloat(getComputedStyle(e).lineHeight)),
+          over: e.scrollWidth - (e.parentElement as HTMLElement).clientWidth,
+        }));
+        expect(em.lines, `${path} ${width} px`).toBe(1);
+        expect(em.over, `${path} ${width} px: raden går utanför spalten`).toBeLessThanOrEqual(0);
       }
     }
   });
 });
 
 test.describe('Birdy-fågeln flyger', () => {
-  test('fågeln flyger iväg vid scroll och kommer tillbaka', async ({ page }) => {
+  test('fågeln landar på planschen, flyger iväg vid scroll och kommer tillbaka', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/sv/');
     const bird = page.locator('[data-birdy]');
-    await expect(bird.locator('.birdy-shape')).toHaveCSS('opacity', '1');
+    await expect(bird.locator('.birdy-shape')).toHaveCSS('opacity', '1', { timeout: 8000 });
     await page.evaluate(() => window.scrollTo({ top: 320, behavior: 'instant' }));
     await expect.poll(() => bird.evaluate((b) => Number(getComputedStyle(b).opacity))).toBeLessThan(0.05);
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
     await expect.poll(() => bird.evaluate((b) => getComputedStyle(b).opacity)).toBe('1');
     await expect.poll(() => bird.evaluate((b) => getComputedStyle(b).transform)).toMatch(/^(none|matrix\(1, 0, 0, 1, 0, 0\))$/);
   });
+});
+
+test.describe('fåglarna i månaden', () => {
+  // Fixture build, 15 October: every fixture species with a free photo and report data has the same October share,
+  // above its yearly mean, so the four come in QID order (ties by QID, src/lib/month-birds.mjs).
+  for (const [path, heading, names] of [
+    ['/sv/', 'Fåglarna i oktober.', ['Gråsparv', 'Koltrast', 'Skata', 'Rödhake']],
+    ['/', 'Birds in October.', ['House Sparrow', 'Common Blackbird', 'Eurasian Magpie', 'European Robin']],
+  ] as const) {
+    test(`fyra arter med sida, foto och staplar på ${path}`, async ({ page, request }) => {
+      await page.goto(path);
+      const section = page.locator('[data-month-birds]');
+      await expect(section.locator('h2')).toHaveText(heading);
+      const cards = section.locator('.spec');
+      await expect(cards).toHaveCount(4);
+      await expect(section.locator('.spec-name')).toHaveText([...names]);
+      await expect(cards.first().locator('.spec-bars i.now')).toHaveCount(1);
+      for (const href of await section.locator('.spec-link').evaluateAll((as) => as.map((a) => a.getAttribute('href')!))) {
+        expect((await request.get(href)).status(), href).toBe(200);
+      }
+      // The cards crop the photo, so a CC BY-SA photo never hangs there: Gråsparv's test hero is CC BY-SA and the card
+      // shows its CC BY extra instead, credited like the species page; Koltrast's CC0 hero is fine as it is.
+      const sparrow = section.locator('.spec', { has: page.locator('[data-qid="Q14683"]') });
+      await expect(sparrow.locator('img')).toHaveAttribute('src', /\/extra\./);
+      await expect(sparrow.locator('.spec-credit')).toContainText('CC BY 2.0');
+      await expect(sparrow.locator('.spec-credit a[href^="https://creativecommons.org/licenses/by/2.0/"]')).toHaveCount(1);
+      await expect(section.locator('.spec', { has: page.locator('[data-qid="Q25234"]') }).locator('.spec-credit')).toContainText('CC0');
+      for (const text of await section.locator('.spec-credit').allTextContents()) expect(text).not.toMatch(/BY-SA/);
+      expect((await request.get((await section.locator('a.all').getAttribute('href'))!)).status()).toBe(200);
+    });
+  }
 });
 
 test.describe('så funkar det och fältboken', () => {
@@ -260,17 +314,8 @@ test.describe('så funkar det och fältboken', () => {
     });
   }
 
-  test.describe('telefonen och smala skärmar', () => {
+  test.describe('smala skärmar', () => {
     test.use({ contextOptions: { reducedMotion: 'reduce' } });
-    for (const [width, height] of [[390, 844], [1024, 900], [1279, 900], [1280, 720]] as const) {
-      test(`herotelefonen slutar ovanför Så funkar det i ${width}×${height}`, async ({ page }) => {
-        await page.setViewportSize({ width, height });
-        await page.goto('/sv/');
-        const phone = (await page.locator('[data-hero-phone] .ph').boundingBox())!;
-        const kick = (await page.locator('#how-it-works .kick').first().boundingBox())!;
-        expect(phone.y + phone.height, 'telefonens underkant').toBeLessThan(kick.y);
-      });
-    }
     for (const width of [320, 360]) {
       test(`inget sidledes scroll på ${width} px`, async ({ page }) => {
         await page.setViewportSize({ width, height: 780 });
@@ -284,33 +329,35 @@ test.describe('så funkar det och fältboken', () => {
 });
 
 test.describe('appkarusellen', () => {
-  test('åtta telefoner och pilarna byter text (SV)', async ({ page }) => {
+  test('sex riktiga skärmar och pilarna byter text (SV)', async ({ page }) => {
     const errors = trackConsoleErrors(page);
     await page.goto('/sv/');
     const tour = page.locator('#app');
-    await expect(tour.locator('.slide')).toHaveCount(8);
-    await expect(tour.locator('.slide .ph[role="img"]')).toHaveCount(8);
+    await expect(tour.locator('.slide')).toHaveCount(6);
+    await expect(tour.locator('.slide .phone picture source[type="image/avif"]')).toHaveCount(6);
+    await expect(tour.locator('.plno span')).toHaveText(['Identifiera', 'Ljud-ID', 'Match', 'Mina arter', 'Uppslagsverk', 'Artprofil']);
+    await expect(tour.locator('.plno b')).toHaveText(['Pl. I', 'Pl. II', 'Pl. III', 'Pl. IV', 'Pl. V', 'Pl. VI']);
     await tour.scrollIntoViewIfNeeded();
     const title = tour.locator('[data-ch]');
     await expect(title).toHaveText('Tre sätt att fånga');
-    await expect(tour.locator('[data-cp]')).toBeHidden();
+    await tour.locator('[data-next]').click();
+    await expect(title).toHaveText('Lyssna efter sång');
     await tour.locator('[data-next]').click();
     await expect(title).toHaveText('Ärlig om hur säker den är');
-    await tour.locator('[data-next]').click();
-    await expect(title).toHaveText('Lyssna på lätet');
     await tour.locator('[data-prev]').click();
-    await expect(title).toHaveText('Ärlig om hur säker den är');
+    await expect(title).toHaveText('Lyssna efter sång');
+    await tour.locator('[data-track]').press('End');
+    await expect(title).toHaveText('Allt om arten på ett uppslag');
     expect(errors).toEqual([]);
   });
 
-  test('sista skärmen är märkt Premium (EN)', async ({ page }) => {
-    await page.goto('/');
-    const tour = page.locator('#app');
-    await tour.scrollIntoViewIfNeeded();
-    await tour.locator('[data-track]').evaluate((t) => t.scrollTo({ left: t.scrollWidth }));
-    await expect(tour.locator('[data-ch]')).toHaveText('A year in the field');
-    await expect(tour.locator('[data-cp]')).toBeVisible();
-    await expect(tour.locator('[data-cp]')).toHaveText('Premium');
+  test('svenska sidan visar svenska skärmar, engelska sidan engelska, och aldrig kartan', async ({ page }) => {
+    for (const [path, lang] of [['/sv/', 'sv'], ['/', 'en']] as const) {
+      await page.goto(path);
+      const screens = await page.locator('#app .slide').evaluateAll((els) => els.map((e) => (e as HTMLElement).dataset.screen));
+      expect(screens).toEqual(['01-identifiera', '07-lyssna', '02-match', '03-mina-arter', '04-uppslagsverk', '05-artprofil']);
+      await expect(page.locator('#app .phone img').first()).toHaveAttribute('alt', lang === 'sv' ? /Identifiera/ : /Identify/);
+    }
   });
 
   test('alla telefonbilder är laddade när man når karusellen', async ({ page }) => {
@@ -330,7 +377,7 @@ test.describe('appkarusellen', () => {
     const neighbor = tour.locator('.slide').nth(1);
     const box = (await neighbor.boundingBox())!;
     await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
-    await expect(tour.locator('[data-ch]')).toHaveText('Ärlig om hur säker den är');
+    await expect(tour.locator('[data-ch]')).toHaveText('Lyssna efter sång');
   });
 
   for (const width of [320, 390]) {
@@ -342,7 +389,7 @@ test.describe('appkarusellen', () => {
         await tour.scrollIntoViewIfNeeded();
         const cap = tour.locator('.cap');
         const heights: number[] = [(await cap.boundingBox())!.height];
-        for (let i = 1; i <= 7; i++) {
+        for (let i = 1; i <= 5; i++) {
           await tour.locator('[data-next]').click();
           const expected = await tour.locator('.slide').nth(i).getAttribute('data-h');
           await expect(tour.locator('[data-ch]')).toHaveText(expected ?? '');
@@ -369,7 +416,7 @@ test.describe('appkarusellen', () => {
 
   test.describe('med minskad rörelse', () => {
     test.use({ contextOptions: { reducedMotion: 'reduce' } });
-    test('karusellen och rödhaken står still', async ({ page }) => {
+    test('karusellen och planschen står still', async ({ page }) => {
       await page.goto('/sv/');
       await page.locator('#app').scrollIntoViewIfNeeded();
       const transforms = await page.locator('#app .slide').evaluateAll((els) => els.map((e) => getComputedStyle(e).transform));
@@ -381,9 +428,9 @@ test.describe('appkarusellen', () => {
 
   test.describe('utan JavaScript', () => {
     test.use({ javaScriptEnabled: false });
-    test('bildtextlistan visar alla åtta skärmar', async ({ page }) => {
+    test('bildtextlistan visar alla sex skärmar', async ({ page }) => {
       await page.goto('/sv/');
-      await expect(page.locator('#app .cap-list li')).toHaveCount(8);
+      await expect(page.locator('#app .cap-list li')).toHaveCount(6);
       await expect(page.locator('#app .foot')).toBeHidden();
     });
   });
@@ -532,12 +579,12 @@ test.describe('bloggen', () => {
     });
   });
 
-  test('listkickern är apricot (espresso) och karusellkickern är rost (persika), inte bladets stil', async ({ page }) => {
+  test('listkickern och karusellkickern är apricot (espresso), inte bladets stil', async ({ page }) => {
     await page.goto('/sv/blog/');
     await expect(page.locator('.bhead .kick').first()).toHaveCSS('color', 'rgb(242, 178, 122)');
 
     await page.goto('/sv/');
-    await expect(page.locator('.tour-head .kick').first()).toHaveCSS('color', 'rgb(154, 69, 38)');
+    await expect(page.locator('.tour-head .kick').first()).toHaveCSS('color', 'rgb(242, 178, 122)');
   });
 
   for (const [prefix, home] of [['/sv', '/sv/'], ['', '/']] as const) {
@@ -557,7 +604,7 @@ test.describe('frågor, slutet och ordningen', () => {
       await page.goto(path);
       await expect(page.locator('main > header.hero:first-child')).toHaveCount(1);
       const ids = await page.locator('main > section[id]').evaluateAll((els) => els.map((e) => e.id));
-      expect(ids).toEqual(['how-it-works', 'journal', 'app', 'guide', 'premium', 'privacy', 'field-notes', 'faq', 'download']);
+      expect(ids).toEqual(['season', 'app', 'how-it-works', 'journal', 'guide', 'premium', 'privacy', 'field-notes', 'faq', 'download']);
     }
   });
 
@@ -615,18 +662,13 @@ test.describe('frågor, slutet och ordningen', () => {
     }
   });
 
-  test.describe('kontrast i #download mot fotot', () => {
+  test.describe('kontrast i #download mot väggen', () => {
     test.use({ contextOptions: { reducedMotion: 'reduce' } });
 
-    // Pixel-contrast guard (quality-review item 1): the scrim's stops are percentages of the
-    // section while the text column is a fixed width, so at medium/narrow widths the dark part of
-    // the gradient doesn't reach far enough under the text. Hides #download's text, screenshots
-    // the real photo behind it, and checks the kicker/sub (normal text, needs ≥4.5:1) and the
-    // headline's accent span (large text, needs ≥3:1) in both languages. Mirrors 'kickern och den
-    // första menylänken klarar 4.5:1 mot fotot' above. Widths: the review's own 390/800/1440, plus
-    // 320 — in this environment the unfixed CSS is only knife-edge (~4.5-4.6:1) at exactly
-    // 390/800/1440, not clearly red, while 320 reproducibly fails pre-fix (~4.2:1), so 320 is what
-    // makes 'must fail before fixing' provable here (see the task report for the measured numbers).
+    // Pixel-contrast guard (quality-review item 1). Since 2026-10-08 the reedling hangs beside the words as a
+    // plate instead of under them, so the text sits on the espresso wall; the guard stays so that a later change
+    // can't put the words back over a photo. Hides #download's content, screenshots what is behind the text, and
+    // checks the kicker/sub (normal text, needs 4.5:1) and the headline's accent (large text, needs 3:1).
     for (const path of ['/sv/', '/'] as const) {
       for (const width of [320, 390, 800, 1440] as const) {
         test(`kicker, underrad och rubrikaccent klarar kontrasten mot fotot i ${width}px på ${path}`, async ({ page }) => {

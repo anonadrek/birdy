@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from './Nav.astro';
 import Hero from './Hero.astro';
+import MonthBirds from './MonthBirds.astro';
 import HowItWorks from './HowItWorks.astro';
 import JournalSection from './JournalSection.astro';
 import AppTour from './AppTour.astro';
@@ -23,9 +24,10 @@ const pathname = locale === 'sv' ? '/sv/' : '/';
   <Nav locale={locale} variant="overlay" />
   <main id="main" tabindex="-1">
     <Hero locale={locale} />
+    <MonthBirds locale={locale} />
+    <AppTour locale={locale} />
     <HowItWorks locale={locale} />
     <JournalSection locale={locale} />
-    <AppTour locale={locale} />
     <Guide locale={locale} />
     <Premium locale={locale} />
     <Privacy locale={locale} />

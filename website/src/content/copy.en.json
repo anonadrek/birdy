@@ -26,119 +26,23 @@
     "kicker": "Bird guide and field journal",
     "headline": "Know the bird.",
     "line2": "Keep the moment.",
-    "note": "See. Listen. Keep.",
-    "sub": "Point the camera, pick a photo or let the bird sing. Birdy suggests the species right on your phone, and you save the sighting in your own field journal.",
-    "metaLabel": "Birdy at a glance",
-    "meta": ["839 European species", "Works without a signal", "No account"]
+    "note": "a new bird every day, here and in the app",
+    "noteFallback": "a new bird every day",
+    "sub": "Point the camera, pick a photo or let the bird sing. Birdy suggests the species right on your phone, and you save the sighting in your own field journal."
   },
-  "phone": {
-    "match": {
-      "label": "Birdy's match screen: European robin, a confident 94 percent match, first in the field journal",
-      "kicker": "Match · Find no. 12",
-      "species": "European Robin",
-      "latin": "Erithacus rubecula",
-      "confidence": "Confident match · 94%",
-      "newSpecies": "New species",
-      "first": "First in your field journal!",
-      "seal": "No. 12",
-      "note": "Add a note",
-      "save": "Save to field journal",
-      "more": "Not it? See more suggestions"
-    },
-    "matchTour": {
-      "label": "Birdy's match screen: Eurasian bullfinch, a confident 91 percent match",
-      "kicker": "Match · Find no. 24",
-      "species": "Eurasian Bullfinch",
-      "latin": "Pyrrhula pyrrhula",
-      "confidence": "Confident match · 91%",
-      "seal": "No. 24"
-    },
-    "identify": {
-      "label": "Birdy's Identify screen with the bird of the day, a long-tailed tit",
-      "dailyBird": "Bird of the day",
-      "species": "Long-tailed Tit",
-      "status": "here right now.",
-      "latin": "Aegithalos caudatus",
-      "caught": "Not caught yet",
-      "kicker": "Identify",
-      "headline": "Three ways to *catch it.*",
-      "weekNote": "7 sightings this week",
-      "startCamera": "Start the camera",
-      "photoTitle": "From a photo",
-      "photoBody": "Pick a picture from your gallery",
-      "listenTitle": "Listen to the song",
-      "listenBody": "Record a song or call"
-    },
-    "listen": {
-      "label": "Birdy's sound ID listening and hearing a common blackbird",
-      "kicker": "Listening",
-      "headline": "Let it *sing.*",
-      "hearing": "Hearing: Common Blackbird",
-      "hint1": "Hold the phone still.",
-      "hint2": "Birdy stops by itself when it is sure."
-    },
-    "journal": {
-      "label": "Birdy's field journal with 24 species and this week's page",
-      "kicker": "Lifelist",
-      "headline": "Your *field journal.*",
-      "stats": [
-        { "value": "24", "label": "species" },
-        { "value": "9", "label": "stamps" },
-        { "value": "5", "label": "day streak" }
-      ],
-      "weekLabel": "This week's page",
-      "weekSpecies": "Eurasian Bullfinch",
-      "entries": [
-        { "no": "24", "species": "Eurasian Bullfinch", "when": "12 Jan · Hagaparken" },
-        { "no": "23", "species": "Great Tit", "when": "10 Jan · Trädgården" },
-        { "no": "22", "species": "Bohemian Waxwing", "when": "8 Jan · Centrum" },
-        { "no": "21", "species": "Long-tailed Tit", "when": "6 Jan · Skogsstigen" }
-      ]
-    },
-    "species": {
-      "label": "Birdy's species profile for the great tit, stamped with 12 sightings",
-      "family": "Tits · Paridae",
-      "name": "Great Tit",
-      "latin": "Parus major",
-      "stamped": "Stamped · 12 sightings",
-      "abundance": "Common",
-      "status": "Least Concern (LC)",
-      "aboutLabel": "About the species",
-      "about": "The great tit is a small, strikingly patterned passerine with distinctive markings that make it easy to identify. It is highly adaptable and readily visits gardens and parks.",
-      "seasonLabel": "In Sweden",
-      "months": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
-    },
-    "badges": {
-      "label": "Birdy's badges with the trophy room and twelve stamps",
-      "kicker": "Badges · Trophy room",
-      "headline": "Come home with a *badge.*",
-      "roomLabel": "Your trophy room",
-      "rank": "Field member",
-      "trophies": "3 trophies",
-      "unlocked": "unlocked",
-      "remaining": "left to find"
-    },
-    "map": {
-      "label": "Birdy's finds map with four sightings shown as seals",
-      "kicker": "Finds map",
-      "headline": "Everywhere you have *been.*"
-    },
-    "season": {
-      "label": "Birdy's season statistics for 2026 with 23 species and 57 observations",
-      "kicker": "Season 2026",
-      "headline": "A *year* in the field.",
-      "species": "species",
-      "observations": "observations",
-      "perMonth": "Observations per month",
-      "perSeason": "By season",
-      "seasons": ["Winter 7", "Spring 22", "Summer 17", "Autumn 11"],
-      "mostSeen": "Most seen",
-      "top": [
-        { "name": "Great Tit", "count": "12" },
-        { "name": "Common Blackbird", "count": "8" }
-      ]
-    },
-    "premiumBadge": "Premium"
+  "daily": {
+    "kicker": "Bird of the day",
+    "weekdays": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    "readMore": "Read about it",
+    "sameAsApp": "the same bird as in the app today",
+    "chartLabel": "Share of all bird reports per month in Artportalen, highest in {month}"
+  },
+  "monthBirds": {
+    "kicker": "The season right now",
+    "headline": "Birds in *{month}.*",
+    "note": "from the reports in Artportalen",
+    "lead": "Species reported more in {month} than the rest of the year in Artportalen, Sweden's bird reporting system. The list changes every month and leads to the species pages, with photos, field marks and calls."
   },
   "appStoreBadge": {
     "top": "Coming soon to the",
@@ -175,20 +79,17 @@
     "kicker": "The app",
     "headline": "A tour of *the field journal.*",
     "note": "straight from the app",
-    "lead": "From the first match to your own field guide. This is Birdy on your phone.",
+    "lead": "From the first match to your own field guide. The screens are taken from Birdy 1.3.",
     "label": "Screens from the app",
     "prev": "Previous screen",
     "next": "Next screen",
-    "premium": "Premium",
     "slides": [
-      { "k": "Identify", "h": "Three ways to catch it", "p": "Camera, photo or song. Bird of the day shows a species you can find in Sweden right now.", "premium": false },
-      { "k": "Match", "h": "Honest about how sure it is", "p": "Birdy shows its confidence clearly. When it is unsure, you get more suggestions to choose from.", "premium": false },
-      { "k": "Sound ID · free", "h": "Listen to the song", "p": "Record the song and Birdy suggests the species. Sound identification is free for everyone.", "premium": false },
-      { "k": "Field journal", "h": "Your own field journal", "p": "Every sighting is saved on your phone. New species get an embossed stamp.", "premium": false },
-      { "k": "Species profile", "h": "Everything about a species on one spread", "p": "Photos, a description and when the species is in Sweden. You see right away if you have stamped it.", "premium": false },
-      { "k": "Badges", "h": "Come home with a badge", "p": "34 badges to collect, 27 of them free. The trophy room shows everything you have tracked down.", "premium": false },
-      { "k": "Finds map", "h": "Everywhere you have been", "p": "Your sightings on a map of their own. The location is only saved if you want, and only on your phone.", "premium": true },
-      { "k": "Season", "h": "A year in the field", "p": "Big numbers and calm charts. See the patterns in your sightings, month by month.", "premium": true }
+      { "screen": "01-identifiera", "k": "Identify", "h": "Three ways to catch it", "p": "Camera, photo or call. Bird of the day waits at the top, a new species every day.", "alt": "Birdy's Identify screen: Bird of the day at the top, a rook, and below it Three ways to catch" },
+      { "screen": "07-lyssna", "k": "Audio ID", "h": "Listen for a song", "p": "Hold your phone still and let the bird sing, and Birdy suggests the species. Audio ID is free for everyone.", "alt": "Birdy's audio ID: Listen for a song, with a sound wave and a button to tap" },
+      { "screen": "02-match", "k": "Match", "h": "Honest about how sure it is", "p": "Birdy shows how sure it is. Save the sighting with a note of your own, or pick from more suggestions when it is unsure.", "alt": "Birdy's match screen: a great tit, with room for a note and the Save observation button" },
+      { "screen": "03-mina-arter", "k": "Lifelist", "h": "Your own field journal", "p": "Every sighting is saved on your phone, and every week your sightings come together on This week's page.", "alt": "The Lifelist in Birdy: species, sightings and day streak, Bird of the day, This week's page and the latest sightings" },
+      { "screen": "04-uppslagsverk", "k": "Archive", "h": "Europe's birds in your pocket", "p": "839 species. Search by name, genus or family, or browse the app's groups.", "alt": "Birdy's archive: a search field, groups such as songbirds and ducks and geese, and the list of 839 species" },
+      { "screen": "05-artprofil", "k": "Species profile", "h": "All about the species on one page", "p": "Photo, description, how common it is and its status on the global Red List (IUCN).", "alt": "The species profile for the great tit in Birdy: photo, name, how common it is, red list status and description" }
     ]
   },
   "guide": {
@@ -214,6 +115,7 @@
     "alwaysFreeLabel": "Always free:",
     "alwaysFree": "identification with camera, photo and sound · the field journal · 839 species · 27 badges",
     "purchaseNote": "Purchases and prices are handled in the app, through Google Play.",
+    "more": "All about Premium",
     "seal": "Premium",
     "features": [
       { "title": "Finds map", "body": "See where you have seen your birds" },
@@ -254,6 +156,7 @@
     "indexDescription": "Read how Birdy is built, how the app works and the birds you can discover with it. Articles and guides in English."
   },
   "faq": {
+    "premiumLink": "Prices and what is included",
     "kicker": "Questions",
     "headline": "Before you *download.*",
     "note": "what people usually ask",
@@ -261,7 +164,7 @@
       { "q": "Does Birdy work without a signal?", "a": "Yes. Identification with the camera, photos and sound runs on your phone, and the guide and journal are always there. Only the map tiles in the Premium map need a connection." },
       { "q": "Do I need an account?", "a": "No. Open the app and start. Your journal lives on your phone." },
       { "q": "How sure is the identification?", "a": "Good enough to learn from, and honest when it is unsure. Every match shows how sure Birdy is, and you always confirm before anything is saved." },
-      { "q": "What does Birdy cost?", "a": "Birdy is free to download and use. Premium is an optional upgrade with the map, PDF export, season statistics and extra badges. You see the price in the app." },
+      { "q": "What does Birdy cost?", "a": "Birdy is free to download and use. Premium is an optional upgrade with the map, PDF export, season statistics and extra badges. You see the price in the app.", "premium": true },
       { "q": "Is Birdy available for iPhone?", "a": "The iPhone app is on its way. The Android app is available now, and the App Store link will appear here when the iPhone version is out." }
     ]
   },
@@ -270,6 +173,168 @@
     "headline": "Take Birdy *into the field.*",
     "note": "see you out there",
     "sub": "Free to download. No account. Works without a signal."
+  },
+  "premiumPage": {
+    "title": "Premium: season statistics, PDF export and map | Birdy",
+    "description": "Birdy Premium adds season statistics, your field journal as a PDF, seven extra badges and a map of your finds. Audio ID and the rest stay free.",
+    "shareAlt": "Birdy Premium: the year ring from the season statistics in the app beside the words A whole year as a field birder.",
+    "crumbHome": "Birdy",
+    "crumb": "Premium",
+    "crumbLabel": "Breadcrumbs",
+    "kicker": "Birdy Premium",
+    "headline": "A whole year as a *field birder.*",
+    "note": "an extra, never a must",
+    "lead": "Everything you need to identify and save birds is free. Premium is for when you want to see your year in the field: the year ring, your field journal as a PDF, seven extra badges and the map of your finds.",
+    "seePrices": "See prices",
+    "heroSeal": "Premium",
+    "heroHand": "your year as a ring",
+    "heroAlt": "The season statistics in Birdy: the year's sightings as a ring, month by month",
+    "situation": {
+      "kicker": "Where we stand",
+      "headline": "Where things stand, *honestly.*",
+      "story": [
+        "Birdy is a small, independent app made by AlbIT AB in Solna, Sweden. The app has no ads, no tracking and no account, and your field journal stays on your phone.",
+        "When Birdy launched in June, Premium was open to everyone. From Birdy 1.3, Premium is bought in Google Play. Premium is what lets us keep building Birdy, and the next big step is the iPhone app."
+      ],
+      "timelineLabel": "Birdy's year",
+      "timeline": [
+        {
+          "when": "June 2026",
+          "what": "Birdy launches on Google Play.",
+          "more": "Premium is open to everyone during the launch."
+        },
+        {
+          "when": "{date}",
+          "what": "Birdy 1.3.",
+          "more": "Premium can be bought in Google Play, for a year or for good.",
+          "whenSoon": "October 2026",
+          "whatSoon": "Birdy 1.3 is coming.",
+          "moreSoon": "Premium can then be bought in Google Play, for a year or for good."
+        },
+        {
+          "when": "17 October 2026, 00:00 Swedish time",
+          "what": "The cutoff for early field members.",
+          "more": "If you started using Birdy before then, you keep Premium for free."
+        },
+        {
+          "when": "Soon",
+          "what": "Birdy for iPhone.",
+          "more": ""
+        }
+      ]
+    },
+    "gets": {
+      "kicker": "With Premium",
+      "headline": "What you get *today.*",
+      "note": "screens straight from the app",
+      "features": [
+        {
+          "tag": "Season statistics",
+          "title": "The year ring",
+          "body": "Your whole year as a ring, month by month. See your best months, how your sightings spread over the seasons and which species are new this year.",
+          "alt": "The season statistics in Birdy: A year in the field, 33 species and 46 sightings in a ring of the year's months"
+        },
+        {
+          "tag": "Export",
+          "title": "Your field journal as a PDF",
+          "body": "Your whole journal on paper: the year in numbers, every species you have seen and the stamps you have earned. Save it, print it or send it on.",
+          "alt": "Three pages from the field journal as a PDF: the cover, 2026 in numbers and the stamps"
+        },
+        {
+          "tag": "Badges",
+          "title": "Seven brass badges",
+          "body": "Extra stamps for birding all year round: Dawn chorus, Early pilgrim, Winter wanderer, Sunday birder and three more. They sit in the trophy room next to your other badges.",
+          "alt": "The trophy room in Birdy with the latest badge won, Winter wanderer, in brass"
+        },
+        {
+          "tag": "Map",
+          "title": "Your finds map",
+          "body": "Your finds on a map of their own. Location is only saved if you turn it on, and then only on your phone.",
+          "alt": ""
+        }
+      ],
+      "mapNote": "The map is getting a new style. The picture comes when it is ready.",
+      "mapSmall": "Preview"
+    },
+    "free": {
+      "kicker": "Without Premium",
+      "headline": "This is *always free.*",
+      "audio": "Audio ID is free for everyone, always.",
+      "audioWhy": "The model that recognises bird song, BirdNET from the Cornell Lab of Ornithology, may only be used non-commercially, so it never goes behind Premium.",
+      "items": [
+        "Identification by camera and photo",
+        "Audio ID: record the song and Birdy suggests the species",
+        "The field journal with all your finds",
+        "The field guide with 839 European species",
+        "27 badges and the trophy room",
+        "Bird of the day, every day"
+      ]
+    },
+    "prices": {
+      "kicker": "Prices",
+      "headline": "A year or *for good.*",
+      "cards": [
+        {
+          "label": "Yearly",
+          "amount": "1 year",
+          "unit": "renews yearly",
+          "body": "Cancel any time in Google Play, and Premium stays until the end of the year you paid for.",
+          "hand": ""
+        },
+        {
+          "label": "Lifetime",
+          "amount": "For good",
+          "unit": "pay once",
+          "body": "Pay once and keep Premium for as long as you have Birdy. Nothing renews.",
+          "hand": "once and done"
+        }
+      ],
+      "fine": "Prices are shown in Google Play, in your currency. Google Play also handles the payment, and refunds follow Google Play's policy."
+    },
+    "early": {
+      "seal": "Early field member",
+      "headline": "Here from *the start?*",
+      "bigBefore": "Then Premium is already yours.",
+      "bigMark": "If you started using Birdy before 17 October 2026, 00:00 Swedish time, you keep Premium for free, for as long as you have the app.",
+      "bigAfter": "A thank-you for being here while Birdy was new.",
+      "lead": "You don't need to do anything. Update the app, and the thank-you screen greets you the next time you open it.",
+      "leadSoon": "You don't need to do anything. When Birdy 1.3 arrives in October, update the app, and the thank-you screen greets you the next time you open it.",
+      "small": "The app works this out on your phone and sends nothing anywhere. If Google's backup is on, the proof travels with it when you change phones.",
+      "alt": "The thank-you screen in Birdy: Early field member, Premium is yours. Forever."
+    },
+    "buy": {
+      "kicker": "Buy",
+      "headline": "How to get *Premium.*",
+      "steps": [
+        "Get Birdy from Google Play.",
+        "Open Premium in the app, for example under Settings.",
+        "Choose a year or for good and pay in Google Play."
+      ],
+      "stepsSoon": [
+        "Get Birdy from Google Play.",
+        "Once Birdy 1.3 is out in October, open Premium in the app, for example under Settings.",
+        "Choose a year or for good and pay in Google Play."
+      ],
+      "faqLabel": "Questions about Premium",
+      "faq": [
+        {
+          "q": "Can I cancel?",
+          "a": "Yes. You cancel the yearly subscription in Google Play under Payments and subscriptions. Premium stays until the end of the year you paid for."
+        },
+        {
+          "q": "What happens to my finds if I stop paying?",
+          "a": "Nothing. The field journal is free and your finds stay on your phone. Only the Premium parts close."
+        },
+        {
+          "q": "What if I change phones?",
+          "a": "The purchase belongs to your Google account and comes with you to the new phone. If Premium doesn't turn on by itself, choose Restore purchases in Settings."
+        },
+        {
+          "q": "Does the purchase work on iPhone?",
+          "a": "No. A purchase in Google Play is for the Android app, and since Birdy has no accounts it cannot move to the iPhone app when that comes."
+        }
+      ]
+    }
   },
   "species": {
     "allChip": "All species",
@@ -466,6 +531,6 @@
     "wordmark": "Birdy wordmark",
     "playStoreBadge": "Get it on Google Play",
     "appStoreBadge": "Coming soon to the App Store",
-    "panorama": "A European robin in warm light with the words Know the bird. Keep the moment."
+    "shareImage": "A photo of a European robin, framed as a plate on a dark wall, beside the words Know the bird. Keep the moment."
   }
 }

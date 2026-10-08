@@ -31,11 +31,13 @@ test.describe('espresso i stället för mossa', () => {
     await expect(page.locator('body')).toHaveCSS('color', 'rgb(48, 32, 25)');
   });
 
-  test('telefonerna visar appens egna färger (mossgrön Lyssna, olivbläck)', async ({ page }) => {
+  test('telefonerna i karusellen är riktiga skärmbilder ur appen, inga ritade', async ({ page }) => {
     await page.goto('/sv/');
-    const bg = await page.locator('#app .ph-listen').first().evaluate((el) => getComputedStyle(el).backgroundImage);
-    expect(bg).toContain('rgb(31, 42, 25)');
-    await expect(page.locator('#app .ph').first()).toHaveCSS('color', 'rgb(38, 48, 31)');
+    await expect(page.locator('#app .phone img')).toHaveCount(6);
+    await expect(page.locator('#app .ph')).toHaveCount(0);
+    for (const alt of await page.locator('#app .phone img').evaluateAll((imgs) => imgs.map((i) => i.getAttribute('alt') ?? ''))) {
+      expect(alt.length).toBeGreaterThan(20);
+    }
   });
 
   test('bloggens rubrikband är espresso', async ({ page }) => {
@@ -44,15 +46,15 @@ test.describe('espresso i stället för mossa', () => {
   });
 });
 
-test.describe('persika bakom karusellen', () => {
-  test('karusellbandet är persika med mörk text', async ({ page }) => {
+test.describe('galleriväggen bakom karusellen', () => {
+  test('karusellen hänger på en mörk vägg med ljus text och en fastnålad bildtext', async ({ page }) => {
     await page.goto('/sv/');
     const tour = page.locator('#app');
-    await expect(tour).toHaveCSS('background-color', 'rgb(253, 229, 203)');
-    await expect(tour.locator('.tour-lead')).toHaveCSS('color', 'rgb(110, 88, 75)');
-    await expect(tour.locator('.tour-head .journal-headline')).toHaveCSS('color', 'rgb(48, 32, 25)');
-    const shadow = await tour.locator('.ph').first().evaluate((el) => getComputedStyle(el).boxShadow);
-    expect(shadow).toContain('rgba(42, 29, 23, 0.22)');
+    const bg = await tour.evaluate((el) => getComputedStyle(el).backgroundImage);
+    expect(bg).toContain(ESPRESSO_DEEP);
+    await expect(tour.locator('.tour-head .journal-headline')).toHaveCSS('color', 'rgb(255, 248, 238)');
+    await expect(tour.locator('.cap')).toHaveCSS('background-color', 'rgb(255, 250, 241)');
+    await expect(tour.locator('.plno b').first()).toHaveText('Pl. I');
   });
 });
 
@@ -91,8 +93,8 @@ test.describe('handskrivna accentord', () => {
 
 test.describe('marginalanteckningar', () => {
   const notes = {
-    '/sv/': [copy.sv.hero.note, copy.sv.howItWorks.note, copy.sv.tour.note, copy.sv.guide.note, copy.sv.premium.note, copy.sv.privacy.note, copy.sv.fieldNotes.note, copy.sv.faq.note, copy.sv.download.note],
-    '/': [copy.en.hero.note, copy.en.howItWorks.note, copy.en.tour.note, copy.en.guide.note, copy.en.premium.note, copy.en.privacy.note, copy.en.fieldNotes.note, copy.en.faq.note, copy.en.download.note],
+    '/sv/': [copy.sv.hero.note, copy.sv.monthBirds.note, copy.sv.tour.note, copy.sv.howItWorks.note, copy.sv.guide.note, copy.sv.premium.note, copy.sv.privacy.note, copy.sv.fieldNotes.note, copy.sv.faq.note, copy.sv.download.note],
+    '/': [copy.en.hero.note, copy.en.monthBirds.note, copy.en.tour.note, copy.en.howItWorks.note, copy.en.guide.note, copy.en.premium.note, copy.en.privacy.note, copy.en.fieldNotes.note, copy.en.faq.note, copy.en.download.note],
   } as const;
   for (const [path, texts] of Object.entries(notes)) {
     test(`en handskriven rad under varje rubrik på ${path}`, async ({ page }) => {
@@ -108,10 +110,11 @@ test.describe('marginalanteckningar', () => {
         await expect(el).toHaveCSS('font-family', /Caveat/);
         await expect(el).toHaveCSS('font-weight', '700');
       }
-      await expect(page.locator('[data-hero] .mnote')).toHaveCSS('color', 'rgb(242, 178, 122)');
+      // Peach on the hero's and the last section's wall (mockup lift-c.html), apricot on the Premium band.
+      await expect(page.locator('[data-hero] .mnote')).toHaveCSS('color', 'rgb(253, 229, 203)');
       await expect(page.locator('#how-it-works .mnote')).toHaveCSS('color', 'rgb(154, 69, 38)');
       await expect(page.locator('#premium .mnote')).toHaveCSS('color', 'rgb(242, 178, 122)');
-      await expect(page.locator('#download .mnote')).toHaveCSS('color', 'rgb(242, 178, 122)');
+      await expect(page.locator('#download .mnote')).toHaveCSS('color', 'rgb(253, 229, 203)');
     });
   }
 });
@@ -177,29 +180,22 @@ test.describe('rivna papperskanter', () => {
     // Named per section so a failure points straight at the broken edge, and a total-count
     // assertion so an extra/missing edge fails even if every named one still matches.
     const edges: [string, string][] = [
-      ['#how-it-works > .deckle path', 'rgb(42, 29, 23)'],    // hero → Tre sätt att fånga
-      ['#app > .deckle path', 'rgb(255, 250, 241)'],          // Fältboken → karusellen
-      ['#guide > .deckle path', 'rgb(253, 229, 203)'],        // karusellen → Uppslagsverket
+      ['#season > .deckle path', 'rgb(42, 29, 23)'],          // hero → Fåglarna i oktober
+      ['#app > .deckle path', 'rgb(246, 239, 226)'],          // Fåglarna i oktober → karusellen
+      ['#how-it-works > .deckle path', 'rgb(30, 20, 16)'],    // karusellen → Tre sätt att fånga
+      ['#guide > .deckle path', 'rgb(255, 250, 241)'],        // Fältboken → Uppslagsverket
       ['#premium > .deckle path', 'rgb(246, 239, 226)'],      // Uppslagsverket → Premium
       ['#privacy > .deckle path', 'rgb(30, 20, 16)'],         // Premium → Integritet
       ['#download > .deckle path', 'rgb(255, 250, 241)'],     // Frågor → Ta med Birdy
       ['footer.footer > .deckle path', 'rgb(42, 29, 23)'],    // Ta med Birdy → sidfot
     ];
-    await expect(page.locator('.deckle')).toHaveCount(7);
+    await expect(page.locator('.deckle')).toHaveCount(8);
     for (const [selector, expected] of edges) {
       await expect(page.locator(selector), selector).toHaveCSS('fill', expected);
     }
     const sealZ = await page.locator('#premium .pseal').evaluate((el) => Number(getComputedStyle(el).zIndex));
     const edgeZ = await page.locator('#premium .deckle').evaluate((el) => Number(getComputedStyle(el).zIndex));
     expect(sealZ).toBeGreaterThan(edgeZ);
-  });
-
-  test('herotelefonen ligger ovanför kanten mot Så funkar det i 1024×768', async ({ page }) => {
-    await page.setViewportSize({ width: 1024, height: 768 });
-    await page.goto('/sv/');
-    const phoneZ = await page.locator('.phone-slot').evaluate((el) => Number(getComputedStyle(el).zIndex));
-    const edgeZ = await page.locator('#how-it-works > .deckle').evaluate((el) => Number(getComputedStyle(el).zIndex));
-    expect(phoneZ).toBeGreaterThan(edgeZ);
   });
 
   test('bloggen och juridiken', async ({ page }) => {
@@ -215,12 +211,12 @@ test.describe('rivna papperskanter', () => {
 test.describe('delningsbilder', () => {
   const shares = {
     '/sv/': {
-      alt: copy.sv.alt.panorama,
-      image: /\/og-field-sv\.png\?v=2$/,
+      alt: copy.sv.alt.shareImage,
+      image: /\/og-field-sv\.jpg\?v=3$/,
     },
     '/': {
-      alt: copy.en.alt.panorama,
-      image: /\/og-field-en\.png\?v=2$/,
+      alt: copy.en.alt.shareImage,
+      image: /\/og-field-en\.jpg\?v=3$/,
     },
   } as const;
   for (const [path, { alt, image }] of Object.entries(shares)) {
