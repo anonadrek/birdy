@@ -1,0 +1,1735 @@
+<title>Birdys levande karusell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;600&display=swap">
+<style>
+  /* ---------- Page tokens (the page frame follows the viewer's theme) ---------- */
+  :root {
+    color-scheme: light;
+    --bg: #F6EFE2; --surface: #FFFAF1; --ink: #302019; --muted: #6E584B; --line: #DFD2BA;
+    --accent: #9A4526; --on-accent: #FFF8EE; --chip: #FDE5CB; --chip-ink: #72301A;
+    --band: #2A1D17; --band-ink: #FFF8EE; --band-accent: #F2B27A; --band-muted: #D9C6B4;
+    --shadow: 0 10px 24px rgba(42, 29, 23, .14);
+    /* The site's own colours. The prototypes are dark sections on the live site, so they keep these in both themes. */
+    --paper: #F6EFE2; --card: #FFFAF1; --cream: #FFF8EE; --rust: #9A4526; --rust-deep: #72301A;
+    --apricot: #F2B27A; --peach: #FDE5CB; --dark: #2A1D17; --dark-deep: #1E1410; --brass: #B8893A;
+    --site-ink: #302019; --site-muted: #6E584B;
+    --serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+    --hand: 'Caveat', 'Segoe Print', 'Bradley Hand', cursive;
+    --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --ease-paper: cubic-bezier(.22, 1, .36, 1);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #150E0A; --surface: #241913; --ink: #FFF8EE; --muted: #CDB8A6; --line: #3E2E25;
+      --accent: #F2B27A; --on-accent: #1E1410; --chip: #33241C; --chip-ink: #F2B27A;
+      --band: #2A1D17; --shadow: 0 10px 24px rgba(0, 0, 0, .4);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #150E0A; --surface: #241913; --ink: #FFF8EE; --muted: #CDB8A6; --line: #3E2E25;
+    --accent: #F2B27A; --on-accent: #1E1410; --chip: #33241C; --chip-ink: #F2B27A;
+    --band: #2A1D17; --shadow: 0 10px 24px rgba(0, 0, 0, .4);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
+  p { margin: 0; }
+  h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; margin: 0; line-height: 1.06; letter-spacing: -.01em; text-wrap: balance; }
+  a { color: var(--accent); }
+  button { font: inherit; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 18px; }
+  .acc { font-family: var(--hand); font-weight: 700; font-size: 1.16em; letter-spacing: 0; color: var(--accent); }
+  .kicker { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; font-size: 11.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+  .kicker::before { content: ''; width: 22px; height: 2px; background: currentColor; flex: none; }
+
+  /* ---------- Header ---------- */
+  .band { position: relative; background: var(--band); color: var(--band-ink); padding-block: 46px 74px; --accent: var(--band-accent); overflow: hidden; }
+  .band::before { content: ''; position: absolute; inset: -30% -10% auto auto; width: 70vmax; height: 70vmax; border-radius: 50%; background: radial-gradient(closest-side, rgba(242, 178, 122, .16), transparent 70%); pointer-events: none; }
+  .band .wrap { position: relative; }
+  .band h1 { font-size: clamp(44px, 8.4vw, 84px); color: var(--band-ink); max-width: 13ch; line-height: 1; }
+  .band .lead { margin-top: 18px; max-width: 62ch; color: var(--band-muted); font-size: 16.5px; }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; align-items: center; }
+  .jump a { display: inline-block; padding: 9px 15px; border-radius: 999px; border: 1px solid rgba(255, 248, 238, .3); color: var(--band-ink); text-decoration: none; font-weight: 600; font-size: 13.5px; }
+  .jump a:hover { background: rgba(255, 248, 238, .08); border-color: var(--band-accent); }
+  .jump .hint { font-family: var(--hand); font-weight: 700; font-size: 22px; color: var(--band-accent); transform: rotate(-1.5deg); margin-left: 6px; }
+  .tear { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 22px; display: block; }
+  .tear path { fill: var(--bg); }
+
+  /* ---------- Intro ---------- */
+  .intro { padding-block: 40px 0; }
+  .intro h2 { font-size: clamp(28px, 5vw, 40px); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-top: 18px; }
+  .cards > div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .cards b { display: block; font-family: var(--serif); font-weight: 400; font-size: 19px; margin-bottom: 4px; }
+  .cards p { color: var(--muted); font-size: 14px; }
+
+  /* ---------- Option heads ---------- */
+  .opt { margin-top: 80px; scroll-margin-top: 12px; }
+  .opt-head { padding-bottom: 30px; }
+  .oh-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+  .letter { display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font-family: var(--serif); font-size: 25px; flex: none; }
+  .letter.zero { background: var(--muted); color: var(--bg); }
+  .opt-head h2 { font-size: clamp(34px, 6.4vw, 54px); }
+  .pill { display: inline-block; padding: 4px 11px; border-radius: 999px; font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--line); color: var(--muted); }
+  .pill.rec { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .pitch { margin-top: 14px; max-width: 66ch; font-size: 16.5px; }
+  .why { margin: 12px 0 0; padding-left: 18px; color: var(--muted); max-width: 66ch; }
+  .why li { margin-top: 5px; }
+  .why li::marker { color: var(--accent); }
+  .try { margin-top: 16px; font-family: var(--hand); font-weight: 700; font-size: 25px; line-height: 1.1; color: var(--accent); transform: rotate(-1.2deg); width: fit-content; }
+
+  /* ---------- Shared: the dark gallery wall (Nu, A, C) ---------- */
+  .tour, .desk { position: relative; overflow-x: clip; color: var(--cream); background: radial-gradient(70% 55% at 50% 52%, #33251D 0%, var(--dark-deep) 70%); padding-block: 100px 84px; --kick-color: var(--apricot); }
+  .tour :focus-visible, .desk :focus-visible { outline-color: var(--apricot); }
+  .deckle { position: absolute; left: 0; right: 0; z-index: 2; line-height: 0; pointer-events: none; }
+  .deckle svg { display: block; width: 100%; height: clamp(14px, 2vw, 26px); }
+  .deckle path { fill: var(--bg); }
+  .deckle.top { top: -1px; }
+  .deckle.bot { bottom: -1px; transform: scaleY(-1); }
+  .tour-head { position: relative; text-align: center; padding: 0 24px; }
+  .kick { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 0 14px; font-size: 11px; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--kick-color); }
+  .kick .kl { width: 22px; height: 1px; background: currentColor; flex: none; }
+  .jh { font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 4.6vw, 56px); line-height: 1.02; letter-spacing: -.018em; color: var(--cream); margin: 0; text-wrap: balance; }
+  .jh .acc { font-family: var(--hand); font-weight: 700; font-size: 1.18em; letter-spacing: 0; line-height: .9; color: var(--apricot); }
+  .mnote { width: fit-content; max-width: 100%; margin: 12px auto 0; font-family: var(--hand); font-weight: 700; font-size: clamp(20px, 2vw, 24px); line-height: 1.15; color: var(--peach); transform: rotate(-1.4deg); text-wrap: balance; }
+  .tour-lead { margin: 14px auto 0; max-width: 500px; font-size: 15.5px; line-height: 1.6; color: rgba(255, 248, 238, .78); }
+
+  .track { --w: 222px; --gap: 30px; position: relative; display: flex; gap: var(--gap); overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; margin: 0; padding: 46px calc(50% - var(--w) / 2) 44px; scrollbar-width: none; cursor: grab; overscroll-behavior-x: contain; list-style: none; }
+  .track::-webkit-scrollbar { display: none; }
+  .track:focus-visible { outline-offset: -3px; }
+  .track.dragging { cursor: grabbing; scroll-snap-type: none; }
+  .slide { flex: 0 0 var(--w); scroll-snap-align: center; will-change: transform, opacity; transform-origin: 50% 60%; }
+  .plate { margin: 0; }
+  .phone { padding: 8px; border-radius: 30px; background: #17100C; box-shadow: inset 0 0 0 1.5px rgba(255, 248, 238, .12), 0 16px 24px rgba(0, 0, 0, .5); }
+  .screen { position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: #F6EFE2; isolation: isolate; }
+  .screen > img { display: block; width: 100%; height: 100%; user-select: none; -webkit-user-drag: none; }
+  .plno { display: flex; flex-direction: column; align-items: flex-start; margin-top: 14px; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 248, 238, .78); }
+  .plno b { font-family: var(--hand); font-weight: 700; font-size: 23px; line-height: 1; letter-spacing: 0; text-transform: none; color: var(--apricot); transform: rotate(-3deg); }
+  .foot { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; align-items: center; gap: 18px; max-width: 660px; margin: 6px auto 0; padding: 0 24px; }
+  .arrow { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255, 248, 238, .45); background: transparent; color: var(--cream); display: grid; place-items: center; cursor: pointer; transition: background .25s, border-color .25s, transform .25s; }
+  .arrow:hover:not([aria-disabled="true"]) { background: rgba(255, 248, 238, .08); border-color: var(--apricot); }
+  .arrow:active { transform: scale(.94); }
+  .arrow[aria-disabled="true"] { opacity: .35; cursor: default; }
+  .arrow svg, .i { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .cap { position: relative; display: grid; text-align: center; min-height: 92px; padding: 18px 22px 16px; background: var(--card); color: var(--site-ink); box-shadow: 0 1px 2px rgba(0, 0, 0, .25), 0 16px 30px rgba(0, 0, 0, .4); transform: rotate(-.5deg); }
+  .cap > :not(.cap-pin) { grid-area: 1 / 1; }
+  .cap-pin { position: absolute; top: -6px; left: 50%; width: 13px; height: 13px; margin-left: -6.5px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F4DDA9, var(--brass) 55%, #7A5A22); box-shadow: 0 2px 3px rgba(0, 0, 0, .35); }
+  .cap-inner { transition: opacity .35s var(--ease-paper), transform .35s var(--ease-paper); }
+  .cap-inner.out { opacity: 0; transform: translateY(6px); }
+  .cap-sizer { visibility: hidden; pointer-events: none; }
+  .cap h4, .cap-h { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 25px; line-height: 1.15; color: var(--site-ink); text-wrap: balance; }
+  .cap-text { margin: 6px 0 0; font-size: 14px; color: var(--site-muted); line-height: 1.5; text-wrap: pretty; }
+  .rail { position: relative; width: 200px; height: 2px; margin: 26px auto 0; background: rgba(255, 248, 238, .18); border-radius: 2px; overflow: hidden; }
+  .rail span { position: absolute; top: 0; bottom: 0; width: calc(100% / 6); background: var(--apricot); border-radius: 2px; transform: translateX(calc(var(--p, 0) * 100%)); }
+  @media (min-width: 761px) { .track { --w: 252px; --gap: 40px; } }
+  @media (max-width: 760px) { .foot { gap: 10px; padding: 0 16px; } .cap { padding: 16px 14px 14px; } .cap h4, .cap-h { font-size: 22px; } }
+
+  /* ---------- Living screens: slices of the real screenshot on a clean plate ---------- */
+  .pc { position: absolute; background-repeat: no-repeat; pointer-events: none; }
+  .pc-roll { overflow: hidden; }
+  .pc-in { position: absolute; inset: 0; background-repeat: no-repeat; }
+  .pc-write { -webkit-mask-image: linear-gradient(90deg, #000 50%, transparent 54.5%); mask-image: linear-gradient(90deg, #000 50%, transparent 54.5%); -webkit-mask-size: 220% 100%; mask-size: 220% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: 0 0; mask-position: 0 0; }
+  .wave { position: absolute; pointer-events: none; }
+  .sq { position: absolute; left: 50.24%; top: 48.32%; width: 12.5%; height: 12.5%; background: #fff; border-radius: 1.5px; transform: translate(-50%, -50%); opacity: 0; transition: opacity .2s; }
+  .rec .sq { opacity: 1; }
+  .hit { position: absolute; border: 0; padding: 0; margin: 0; background: transparent; border-radius: 50%; cursor: pointer; pointer-events: none; }
+  .slide.on .hit { pointer-events: auto; }
+  .ink-ring { position: absolute; border: 2px solid rgba(154, 69, 38, .6); border-radius: 50%; pointer-events: none; }
+  .caret { position: absolute; background: #9A4526; opacity: 0; pointer-events: none; }
+  .caret.on { animation: blink 1.06s infinite; }
+  @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+  /* The great tit: a real button on the museum label while Lyssna is in the middle (A and C). */
+  .cap-audio { display: flex; flex-direction: column; align-items: center; margin-top: 10px; }
+  .cap-audio[hidden] { display: none; }
+  .hear { display: inline-flex; align-items: center; gap: 8px; padding: 8px 15px 8px 11px; border-radius: 999px; border: 1px solid rgba(154, 69, 38, .55); background: transparent; color: var(--rust); font: 600 13px/1.2 var(--sans); cursor: pointer; transition: background .2s, color .2s; }
+  .hear:hover { background: rgba(154, 69, 38, .08); }
+  .hear:focus-visible { outline-color: var(--rust); }
+  .hear[aria-pressed="true"] { background: var(--rust); border-color: var(--rust); color: var(--cream); }
+  .hear .i { width: 16px; height: 16px; }
+  .hear .i-play { fill: currentColor; stroke: none; }
+  .hear .i-stop { display: none; fill: currentColor; stroke: none; }
+  .hear[aria-pressed="true"] .i-play { display: none; }
+  .hear[aria-pressed="true"] .i-stop { display: block; }
+  .credit { display: block; margin-top: 6px; font-size: 11px; color: var(--site-muted); }
+  .tour--a .cap, .tour--c .cap { align-items: center; }
+
+  /* ---------- A: the plates hang on nails and swing ---------- */
+  .tour--a .track { padding-top: 70px; }
+  .hang { position: relative; transform-origin: 50% 4px; }
+  .cord { display: block; width: 100%; height: 40px; overflow: visible; }
+  .cord path { fill: none; stroke: rgba(255, 248, 238, .38); stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+  .nail { position: absolute; left: 50%; top: 0; width: 11px; height: 11px; margin: -1px 0 0 -5.5px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F4DDA9, var(--brass) 55%, #7A5A22); box-shadow: 0 2px 3px rgba(0, 0, 0, .45); }
+
+  /* ---------- C: a day in the field ---------- */
+  .tour--c { background: var(--dark-deep); --rim: rgba(253, 229, 203, .16); }
+  .sky { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+  .glow { position: absolute; left: 0; top: 0; border-radius: 50%; opacity: 0; will-change: transform, opacity; }
+  .g-dawn, .g-dusk { width: min(1800px, 260vw); aspect-ratio: 1.9; }
+  .g-day { width: min(1300px, 200vw); aspect-ratio: 1; }
+  .g-dawn { background: radial-gradient(closest-side, rgba(253, 229, 203, .46), rgba(242, 178, 122, .2) 42%, transparent 74%); }
+  .g-day { background: radial-gradient(closest-side, rgba(255, 248, 238, .26), rgba(226, 192, 126, .12) 46%, transparent 72%); }
+  .g-dusk { background: radial-gradient(closest-side, rgba(176, 78, 40, .78), rgba(242, 178, 122, .2) 44%, transparent 74%); }
+  .stars { position: absolute; left: 0; top: 0; width: 2px; height: 2px; border-radius: 50%; opacity: 0; transition: opacity 1.2s ease; }
+  .tour--c.is-night .stars { opacity: 1; }
+  .night { position: absolute; inset: 0; background: radial-gradient(40% 30% at 50% 12%, rgba(255, 248, 238, .07), transparent 70%), rgba(6, 4, 3, .55); opacity: 0; transition: opacity 1s ease; }
+  .tour--c.is-night .night { opacity: 1; }
+  .tour--c > :not(.sky):not(.deckle) { position: relative; z-index: 1; }
+  .tour--c .track { transition: opacity .45s ease; }
+  .tour--c.fade .track { opacity: 0; }
+  .tour--c .slide.on .phone { box-shadow: inset 0 0 0 1.5px rgba(255, 248, 238, .14), 0 16px 24px rgba(0, 0, 0, .5), 0 0 70px 6px var(--rim); transition: box-shadow 1.2s ease; }
+  .arc-wrap { position: relative; max-width: 1100px; margin: 34px auto 0; padding-inline: 16px; }
+  .arc { display: block; width: 100%; height: 240px; overflow: visible; touch-action: pan-y; cursor: pointer; }
+  .arc .path { fill: none; stroke: rgba(255, 248, 238, .34); stroke-width: 1.6; stroke-dasharray: 2 8; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+  .arc .horizon { stroke: rgba(255, 248, 238, .16); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .arc .tick { fill: rgba(255, 248, 238, .45); transition: fill .4s; }
+  .arc .tick.on { fill: var(--apricot); }
+  .arc .lbl { font-family: var(--hand); font-weight: 700; font-size: 25px; fill: rgba(255, 248, 238, .5); text-anchor: middle; transition: fill .4s; }
+  .arc .lbl.on { fill: var(--apricot); }
+  .sun-g { cursor: grab; outline: none; }
+  .sun-ring { fill: none; stroke: transparent; stroke-width: 2.5; }
+  .sun-g:focus-visible .sun-ring { stroke: var(--apricot); }
+  .sun-hit { fill: transparent; }
+  .moon { opacity: 0; transition: opacity 1s ease; }
+  .tour--c.is-night .moon { opacity: 1; }
+  .daybtn { position: absolute; right: 16px; top: -6px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 11px; border-radius: 999px; border: 1px solid rgba(255, 248, 238, .4); background: rgba(30, 20, 16, .55); color: var(--cream); font: 600 13px/1.2 var(--sans); cursor: pointer; z-index: 2; }
+  .daybtn:hover { border-color: var(--apricot); background: rgba(255, 248, 238, .08); }
+  .daybtn .i-play { display: none; }
+  .daybtn.paused .i-play { display: block; }
+  .daybtn.paused .i-pause { display: none; }
+  .diary { margin: 14px auto 0; padding-inline: 20px; max-width: 760px; min-height: 1.2em; text-align: center; font-family: var(--hand); font-weight: 700; font-size: clamp(25px, 3vw, 34px); line-height: 1.15; color: var(--peach); transform: rotate(-1deg); text-wrap: balance; }
+  .diary .dp { color: var(--apricot); }
+  .diary.w { -webkit-mask-image: linear-gradient(90deg, #000 50%, transparent 54.5%); mask-image: linear-gradient(90deg, #000 50%, transparent 54.5%); -webkit-mask-size: 220% 100%; mask-size: 220% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: 0 0; mask-position: 0 0; }
+  .tour--c .track { padding-top: 26px; }
+  @media (max-width: 640px) { .arc .lbl { display: none; } .daybtn { position: relative; right: auto; top: auto; display: flex; margin: 0 auto 10px; width: fit-content; } }
+
+  /* ---------- B: the field journal ---------- */
+  .desk { background: radial-gradient(80% 60% at 50% 56%, #3A2A20 0%, var(--dark-deep) 72%); padding-block: 100px 76px; }
+  .book-stage { position: relative; margin: 64px auto 0; padding-inline: 16px; display: flex; justify-content: center; }
+  .book { position: relative; width: min(1060px, 100%); aspect-ratio: 1060 / 660; perspective: 3600px; container-type: inline-size; touch-action: pan-y; user-select: none; -webkit-user-select: none; outline-offset: 10px; cursor: grab; }
+  .book.grabbing { cursor: grabbing; }
+  .book::before { content: ''; position: absolute; inset: 1.5% .6% -1.4%; border-radius: 12px; box-shadow: 0 34px 60px rgba(0, 0, 0, .6), 0 8px 18px rgba(0, 0, 0, .35); pointer-events: none; }
+  .page, .face { position: absolute; top: 0; bottom: 0; width: 50%; overflow: hidden; color: var(--site-ink); }
+  .page { --cast: 0; }
+  .page-l, .face.back { left: 0; border-radius: 9px 2px 2px 9px; background:
+      linear-gradient(270deg, rgba(48, 32, 25, .2), rgba(48, 32, 25, .05) 5%, transparent 12%),
+      linear-gradient(270deg, rgba(0, 0, 0, calc(var(--cast, 0) * .3)), transparent calc(20% + var(--cast, 0) * 40%)),
+      radial-gradient(rgba(110, 88, 75, .17) 1px, transparent 1.5px) 0 0 / 18px 18px,
+      var(--paper);
+    box-shadow: -1px 0 0 #E7DCC6, -2px 1px 0 #D9CCB2, -3px 2px 0 #E7DCC6, -4px 3px 0 #D2C3A7; }
+  .page-r, .face.front { right: 0; border-radius: 2px 9px 9px 2px; background:
+      linear-gradient(90deg, rgba(48, 32, 25, .2), rgba(48, 32, 25, .05) 5%, transparent 12%),
+      linear-gradient(90deg, rgba(0, 0, 0, calc(var(--cast, 0) * .3)), transparent calc(20% + var(--cast, 0) * 40%)),
+      radial-gradient(rgba(110, 88, 75, .17) 1px, transparent 1.5px) 0 0 / 18px 18px,
+      var(--paper);
+    box-shadow: 1px 0 0 #E7DCC6, 2px 1px 0 #D9CCB2, 3px 2px 0 #E7DCC6, 4px 3px 0 #D2C3A7; }
+  .page-r::after { content: ''; position: absolute; right: 0; bottom: 0; width: 4.2cqw; height: 4.2cqw; background: linear-gradient(225deg, transparent 49%, #D9CCB2 50%, #EFE6D3 72%, #F6EFE2); border-top-left-radius: 3px; box-shadow: -2px -2px 5px rgba(48, 32, 25, .12); pointer-events: none; }
+  .leaf { position: absolute; top: 0; bottom: 0; left: 50%; width: 50%; transform-origin: 0 50%; transform-style: preserve-3d; z-index: 3; pointer-events: none; }
+  .leaf .face { left: 0; right: 0; width: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; --cast: var(--lift, 0); }
+  .leaf .face.back { transform: rotateY(180deg); }
+  .ink { position: absolute; left: 0; top: 0; z-index: 4; pointer-events: none; overflow: visible; transition: opacity .15s; }
+  .ink.hide { opacity: 0; }
+  .ink .line { fill: none; stroke: #9A4526; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .ink .under { fill: none; stroke: rgba(246, 239, 226, .9); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+  .pg { position: absolute; inset: 0; }
+  .pg-col { position: absolute; left: 4.6cqw; top: 4.6cqw; width: 21.5cqw; }
+  .pg-pl { display: inline-block; font-family: var(--hand); font-weight: 700; font-size: 2.8cqw; line-height: 1; color: var(--rust); transform: rotate(-3deg); }
+  .pg-kick { display: flex; align-items: center; gap: .9cqw; margin-top: 1.5cqw; font-size: clamp(9.5px, 1.05cqw, 11.5px); font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--rust); }
+  .pg-kick span { width: 2cqw; height: 1px; background: currentColor; }
+  .pg-h { margin-top: 1.2cqw; font-size: 3.5cqw; line-height: 1.04; color: var(--site-ink); letter-spacing: -.015em; }
+  .pg-p { margin-top: 1.6cqw; font-size: clamp(13px, 1.5cqw, 16px); line-height: 1.6; color: var(--site-muted); }
+  .pg-notes { position: absolute; left: 27.8cqw; right: 2.2cqw; top: 0; bottom: 0; }
+  .note { position: absolute; left: 0; right: 0; margin: 0; font-family: var(--hand); font-weight: 700; font-size: 2.15cqw; line-height: 1.06; color: var(--rust-deep); text-align: right; transform: rotate(-1.4deg); text-wrap: balance; }
+  .nt.w { -webkit-mask-image: linear-gradient(90deg, #000 50%, transparent 54.5%); mask-image: linear-gradient(90deg, #000 50%, transparent 54.5%); -webkit-mask-size: 220% 100%; mask-size: 220% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: 0 0; mask-position: 0 0; display: inline-block; }
+  .folio { position: absolute; bottom: 2.3cqw; font-size: clamp(9px, 1cqw, 11px); font-weight: 600; letter-spacing: .14em; color: var(--site-muted); font-variant-numeric: tabular-nums; }
+  .folio.fl { left: 4.6cqw; }
+  .folio.fr { right: 5.6cqw; }
+  .pg-phone .phone { position: absolute; left: 10cqw; top: 4.4cqw; width: 24cqw; padding: .75cqw; border-radius: 2.9cqw; box-shadow: inset 0 0 0 1.5px rgba(255, 248, 238, .12), 0 1.4cqw 2.4cqw rgba(48, 32, 25, .32); }
+  .pg-phone .screen { border-radius: 2.1cqw; }
+  .tape { position: absolute; width: 7cqw; height: 2cqw; background: repeating-linear-gradient(90deg, rgba(253, 229, 203, .86) 0 6px, rgba(242, 178, 122, .7) 6px 12px); box-shadow: 0 1px 2px rgba(48, 32, 25, .18); opacity: .92; }
+  .pg-phone .tape.t1 { left: 18.5cqw; top: 2.9cqw; transform: rotate(-2deg); }
+  .pg-phone .tape.t2 { left: 18.5cqw; top: 45.5cqw; transform: rotate(1.6deg); }
+  .pg-cap { position: absolute; left: 10cqw; width: 24cqw; top: 48.6cqw; text-align: center; font-family: var(--hand); font-weight: 700; font-size: 2.2cqw; color: var(--rust); transform: rotate(-1deg); }
+  .book-foot { display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; align-items: center; gap: 16px; max-width: 520px; margin: 34px auto 0; padding-inline: 16px; }
+  .count { text-align: center; font-family: var(--hand); font-weight: 700; font-size: 26px; color: var(--peach); font-variant-numeric: tabular-nums; }
+  /* One page at a time on a phone. */
+  .book.single { width: min(440px, 100%); aspect-ratio: 100 / 192; perspective: 1500px; }
+  .book.single .page-l { display: none; }
+  .book.single .page-r, .book.single .leaf { left: 0; right: auto; width: 100%; }
+  .book.single .page-r, .book.single .face.front { border-radius: 4px 10px 10px 4px; }
+  .book.single .face.back { border-radius: 10px 4px 4px 10px; }
+  .book.single .page-r::after { width: 9cqw; height: 9cqw; }
+  .pg-single { display: flex; flex-direction: column; align-items: center; padding: 6.5cqw 6cqw 0; }
+  .ps-head { align-self: stretch; display: flex; align-items: baseline; gap: 3cqw; }
+  .pg-single .pg-pl { font-size: 7.2cqw; }
+  .pg-single .pg-kick { margin: 0; font-size: 2.9cqw; }
+  .pg-single .pg-kick span { width: 4cqw; }
+  .pg-single .pg-h { align-self: stretch; margin-top: 2.4cqw; font-size: 7.6cqw; }
+  .ps-phone { position: relative; width: 58cqw; margin-top: 6cqw; }
+  .pg-single .phone { position: relative; padding: 2.2cqw; border-radius: 8cqw; box-shadow: inset 0 0 0 1.5px rgba(255, 248, 238, .12), 0 3cqw 5cqw rgba(48, 32, 25, .3); }
+  .pg-single .screen { border-radius: 6cqw; }
+  .pg-single .tape.t1 { left: 50%; top: -3.6cqw; width: 18cqw; height: 5cqw; margin-left: -9cqw; transform: rotate(-2deg); }
+  .ps-notes { display: grid; gap: 2.6cqw; justify-items: center; width: 52cqw; margin-top: 5cqw; }
+  .pg-single .note { position: static; text-align: center; font-size: 5.3cqw; transform: rotate(-1.2deg); }
+  .pg-single .folio { bottom: 4cqw; font-size: 2.8cqw; }
+  .pg-single .folio.fr { right: 7cqw; }
+  .face.back.blank { background: linear-gradient(270deg, rgba(48, 32, 25, .16), transparent 12%), radial-gradient(rgba(110, 88, 75, .12) 1px, transparent 1.5px) 0 0 / 18px 18px, #F1E8D8; }
+
+  /* ---------- Choose ---------- */
+  .valj { padding-block: 84px 20px; scroll-margin-top: 12px; }
+  .valj h2 { font-size: clamp(34px, 6.4vw, 54px); }
+  .desc { margin-top: 10px; max-width: 70ch; color: var(--muted); }
+  .cmp { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .cmp th, .cmp td { text-align: left; vertical-align: top; padding: 15px 16px; border-bottom: 1px solid var(--line); font-size: 14px; line-height: 1.5; }
+  .cmp thead th { font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); background: var(--bg); }
+  .cmp tbody tr:last-child > * { border-bottom: 0; }
+  .cmp tbody th { font-family: var(--serif); font-weight: 400; font-size: 21px; line-height: 1.1; min-width: 9.5em; }
+  .cmp tbody th small { display: block; margin-top: 4px; font-family: var(--sans); font-size: 12px; color: var(--muted); }
+  .cmp td.eff { white-space: nowrap; font-weight: 600; }
+  .cmp tr.rec-row th { color: var(--accent); }
+  @media (max-width: 760px) {
+    .cmp thead { display: none; }
+    .cmp, .cmp tbody, .cmp tr, .cmp th, .cmp td { display: block; }
+    .cmp tbody tr { border-bottom: 1px solid var(--line); padding-block: 6px 10px; }
+    .cmp tbody tr:last-child { border-bottom: 0; }
+    .cmp th, .cmp td { border: 0; padding: 6px 16px; }
+    .cmp td.eff { white-space: normal; }
+    .cmp td::before { content: attr(data-l); display: block; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+  }
+  .rec-box { margin-top: 30px; background: var(--chip); border-radius: 14px; padding: 20px 20px 18px; border: 1px solid var(--line); }
+  .rec-box h3 { font-size: clamp(26px, 4.4vw, 34px); }
+  .rec-box p { margin-top: 10px; max-width: 72ch; }
+  .rec-box .note-h { margin-top: 12px; font-family: var(--hand); font-weight: 700; font-size: 23px; color: var(--accent); transform: rotate(-1deg); width: fit-content; }
+  .choose { margin-top: 26px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .crow { display: grid; gap: 10px; padding: 16px; border-bottom: 1px solid var(--line); }
+  .crow > b, .crow > label.lab { font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opts label { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; font-weight: 600; font-size: 14px; background: var(--bg); }
+  .opts input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .opts label:has(input:checked) { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .opts label:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .opts .r { font-family: var(--hand); font-weight: 700; font-size: 17px; opacity: .85; }
+  .crow textarea { width: 100%; min-height: 64px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); font: 14px var(--sans); resize: vertical; }
+  .answer { display: grid; gap: 10px; padding: 16px; background: var(--chip); }
+  .answer output { display: block; font-family: var(--serif); font-size: 22px; line-height: 1.25; overflow-wrap: anywhere; user-select: all; }
+  .answer .btns { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .copy { font: 600 14px var(--sans); background: var(--accent); color: var(--on-accent); border: 0; border-radius: 10px; padding: 11px 18px; cursor: pointer; }
+  .copied { font-family: var(--hand); font-weight: 700; font-size: 21px; color: var(--accent); }
+  .page-foot { margin-top: 56px; padding-block: 18px 40px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+  .page-foot code { font: 12.5px ui-monospace, 'Cascadia Mono', Consolas, monospace; background: var(--chip); color: var(--chip-ink); padding: 1px 6px; border-radius: 6px; overflow-wrap: anywhere; }
+  @media (min-width: 900px) { .wrap { padding-inline: 28px; } .crow { grid-template-columns: 170px 1fr; align-items: center; } }
+  @media (prefers-reduced-motion: reduce) {
+    .slide { will-change: auto; }
+    .cap-inner, .tour--c .track, .night, .moon, .arc .tick, .arc .lbl, .ink, .daybtn, .hear { transition: none; }
+    .caret.on { animation: none; opacity: 1; }
+  }
+</style>
+
+<header class="band" id="top">
+  <div class="wrap">
+    <p class="kicker">birdy.community · appkarusellen · förslag 8 okt</p>
+    <h1>Karusellen ska <span class="acc">leva.</span></h1>
+    <p class="lead">Karusellen på startsidan visar sex riktiga skärmar ur Birdy 1.3, men allt står still tills någon drar. Här är den som den ser ut i dag, och tre djärva sätt att få den att leva. Alla tre är fungerande prototyper med de riktiga skärmbilderna: prova pilarna, dra och tryck. Välj längst ned.</p>
+    <nav class="jump" aria-label="Avsnitt"><a href="#nu">Nu</a><a href="#a">A · Skärmarna spelar</a><a href="#b">B · Fältboken</a><a href="#c">C · En dag i fält</a><a href="#valj">Välj</a><span class="hint">ha ljudet på i A och C</span></nav>
+  </div>
+  <svg class="tear" viewBox="0 0 1440 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26 V13 L30 7 L64 17 L100 9 L136 16 L172 5 L206 14 L240 8 L276 18 L312 9 L346 16 L382 6 L418 15 L452 8 L488 19 L524 10 L558 17 L596 6 L630 15 L664 9 L700 18 L738 7 L774 16 L810 10 L846 19 L884 8 L918 14 L952 6 L988 16 L1024 9 L1060 20 L1098 10 L1132 17 L1170 5 L1206 15 L1236 8 L1272 18 L1310 9 L1342 16 L1370 6 L1404 14 L1440 8 V26 Z"/></svg>
+</header>
+
+<main>
+  <section class="wrap intro" aria-labelledby="intro-h">
+    <h2 id="intro-h">Det här gäller <span class="acc">alla tre</span></h2>
+    <div class="cards">
+      <div><b>Bara riktiga skärmar</b><p>Allt som rör sig i telefonerna är bitar av skärmbilderna ur 1.3, aldrig ritade kopior. När rörelsen är klar är det exakt samma bild som i dag.</p></div>
+      <div><b>Inget över fåglarna</b><p>Ingen färg, ton, tejp eller pil hamnar över ett fågelfoto. Pilarna i B stannar vid fotots kant.</p></div>
+      <div><b>Tangentbord och lugnt läge</b><p>Pilar, tangenterna ← → Home End och dra fungerar i alla. Med "minska rörelse" står allt still och inget spelar själv.</p></div>
+      <div><b>Mobilen först</b><p>Byggt för 390 px och 1440 px. Sveper du i sidled bläddrar du; sidan rullar fortfarande uppåt och nedåt som vanligt.</p></div>
+    </div>
+  </section>
+
+  <!-- ===================== NU ===================== -->
+  <article class="opt" id="nu" aria-labelledby="nu-h">
+    <div class="wrap opt-head">
+      <div class="oh-row"><span class="letter zero" aria-hidden="true">0</span><h2 id="nu-h">Nu</h2><span class="pill">birdy.community i dag</span></div>
+      <p class="pitch">Sex riktiga skärmar ur 1.3, hängda som planscher på en mörk vägg. Pilar, tangenter och dra fungerar, och etiketten följer skärmen i mitten. Snyggt och lugnt, men inget i telefonerna rör sig, och den som inte drar får bara se första skärmen ordentligt.</p>
+    </div>
+    <section class="tour tour--nu" data-tour="nu" aria-label="Nu: karusellen som den ser ut i dag">
+      <div class="deckle top" aria-hidden="true"><svg viewBox="0 0 1440 26" preserveAspectRatio="none"><path d="M0 0 H1440 V8 L1404 14 L1370 6 L1342 16 L1310 9 L1272 18 L1236 8 L1206 15 L1170 5 L1132 17 L1098 10 L1060 20 L1024 9 L988 16 L952 6 L918 14 L884 8 L846 19 L810 10 L774 16 L738 7 L700 18 L664 9 L630 15 L596 6 L558 17 L524 10 L488 19 L452 8 L418 15 L382 6 L346 16 L312 9 L276 18 L240 8 L206 14 L172 5 L136 16 L100 9 L64 17 L30 7 L0 13 Z"/></svg></div>
+      <div class="tour-head">
+        <p class="kick"><span class="kl"></span>Appen<span class="kl"></span></p>
+        <h3 class="jh">Ett varv i <span class="acc">fältboken.</span></h3>
+        <p class="mnote">rakt ur appen</p>
+        <p class="tour-lead">Från första träffen till ditt eget uppslagsverk. Skärmarna är tagna ur Birdy 1.3.</p>
+      </div>
+      <ul class="track" tabindex="0" role="list" aria-label="Skärmar ur appen" data-track></ul>
+      <div class="foot">
+        <button class="arrow" type="button" data-prev aria-label="Föregående skärm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="cap" aria-live="polite" aria-atomic="true"><span class="cap-pin" aria-hidden="true"></span><div class="cap-inner" data-cap><h4 data-ch></h4><p class="cap-text" data-cp></p></div></div>
+        <button class="arrow" type="button" data-next aria-label="Nästa skärm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="rail" data-rail aria-hidden="true"><span></span></div>
+      <div class="deckle bot" aria-hidden="true"><svg viewBox="0 0 1440 26" preserveAspectRatio="none"><path d="M0 0 H1440 V8 L1404 14 L1370 6 L1342 16 L1310 9 L1272 18 L1236 8 L1206 15 L1170 5 L1132 17 L1098 10 L1060 20 L1024 9 L988 16 L952 6 L918 14 L884 8 L846 19 L810 10 L774 16 L738 7 L700 18 L664 9 L630 15 L596 6 L558 17 L524 10 L488 19 L452 8 L418 15 L382 6 L346 16 L312 9 L276 18 L240 8 L206 14 L172 5 L136 16 L100 9 L64 17 L30 7 L0 13 Z"/></svg></div>
+    </section>
+  </article>
+
+  <!-- ===================== A ===================== -->
+  <article class="opt" id="a" aria-labelledby="a-h">
+    <div class="wrap opt-head">
+      <div class="oh-row"><span class="letter" aria-hidden="true">A</span><h2 id="a-h">Skärmarna spelar</h2><span class="pill">Insats: medel, ca 1,5 dag</span></div>
+      <p class="pitch">Telefonen i mitten gör det den är till för. Träffen glider upp och stämpeln landar, vågformen andas som i appen, siffrorna i fältboken rullar fram och uppslagsverket stämplar arterna du har. Allt som rör sig är bitar ur den riktiga skärmbilden, så när rörelsen är klar är bilden exakt som i dag. Planscherna hänger på spik och gungar när du drar.</p>
+      <ul class="why">
+        <li>Tryck på den röda knappen i Lyssna, så sjunger en riktig talgoxe och vågformen följer sången med appens egen formel.</li>
+        <li>Varje rörelse är ett par sekunder och spelas bara för skärmen i mitten. Klicka på telefonen i mitten så spelas den igen.</li>
+        <li>Närmast dagens karusell: samma vägg, samma etikett, samma kod i botten.</li>
+      </ul>
+      <p class="try">↓ dra snabbt och släpp, och titta på spikarna</p>
+    </div>
+    <section class="tour tour--a" data-tour="a" aria-label="Förslag A: Skärmarna spelar">
+      <div class="deckle top" aria-hidden="true"><svg viewBox="0 0 1440 26" preserveAspectRatio="none"><path d="M0 0 H1440 V8 L1404 14 L1370 6 L1342 16 L1310 9 L1272 18 L1236 8 L1206 15 L1170 5 L1132 17 L1098 10 L1060 20 L1024 9 L988 16 L952 6 L918 14 L884 8 L846 19 L810 10 L774 16 L738 7 L700 18 L664 9 L630 15 L596 6 L558 17 L524 10 L488 19 L452 8 L418 15 L382 6 L346 16 L312 9 L276 18 L240 8 L206 14 L172 5 L136 16 L100 9 L64 17 L30 7 L0 13 Z"/></svg></div>
+      <div class="tour-head">
+        <p class="kick"><span class="kl"></span>Appen<span class="kl"></span></p>
+        <h3 class="jh">Ett varv i <span class="acc">fältboken.</span></h3>
+        <p class="mnote">rakt ur appen, och den rör sig</p>
+        <p class="tour-lead">Från första träffen till ditt eget uppslagsverk. Skärmarna är tagna ur Birdy 1.3.</p>
+      </div>
+      <ul class="track" tabindex="0" role="list" aria-label="Skärmar ur appen" data-track></ul>
+      <div class="foot">
+        <button class="arrow" type="button" data-prev aria-label="Föregående skärm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="cap" aria-live="polite" aria-atomic="true"><span class="cap-pin" aria-hidden="true"></span><div class="cap-inner" data-cap><h4 data-ch></h4><p class="cap-text" data-cp></p></div></div>
+        <button class="arrow" type="button" data-next aria-label="Nästa skärm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="rail" data-rail aria-hidden="true"><span></span></div>
+      <div class="deckle bot" aria-hidden="true"><svg viewBox="0 0 1440 26" preserveAspectRatio="none"><path d="M0 0 H1440 V8 L1404 14 L1370 6 L1342 16 L1310 9 L1272 18 L1236 8 L1206 15 L1170 5 L1132 17 L1098 10 L1060 20 L1024 9 L988 16 L952 6 L918 14 L884 8 L846 19 L810 10 L774 16 L738 7 L700 18 L664 9 L630 15 L596 6 L558 17 L524 10 L488 19 L452 8 L418 15 L382 6 L346 16 L312 9 L276 18 L240 8 L206 14 L172 5 L136 16 L100 9 L64 17 L30 7 L0 13 Z"/></svg></div>
+    </section>
+  </article>
+
+  <!-- ===================== B ===================== -->
+  <article class="opt" id="b" aria-labelledby="b-h">
+    <div class="wrap opt-head">
+      <div class="oh-row"><span class="letter" aria-hidden="true">B</span><h2 id="b-h">Fältboken</h2><span class="pill">Insats: hög, 2,5 till 3 dagar</span></div>
+      <p class="pitch">Rubriken lovar ett varv i fältboken, så karusellen blir en. En uppslagen fältbok på ett mörkt skrivbord: till vänster vad skärmen gör, till höger telefonen, fasttejpad. Sidan vänds på riktigt när du drar i hörnet, och pennan skriver anteckningar med pilar rakt på knappen eller fältet de handlar om.</p>
+      <ul class="why">
+        <li>Den mest annorlunda av de tre; ingen annan appsajt ser ut så här.</li>
+        <li>Pilarna går aldrig in över ett fågelfoto, de stannar vid kanten. Tejpen sitter på telefonens ram, inte på skärmen.</li>
+        <li>På mobilen blir det en sida i taget som vänds åt vänster, med anteckningarna under telefonen.</li>
+      </ul>
+      <p class="try">↓ ta tag i sidan och dra åt vänster</p>
+    </div>
+    <section class="desk" data-book aria-label="Förslag B: Fältboken">
+      <div class="deckle top" aria-hidden="true"><svg viewBox="0 0 1440 26" preserveAspectRatio="none"><path d="M0 0 H1440 V8 L1404 14 L1370 6 L1342 16 L1310 9 L1272 18 L1236 8 L1206 15 L1170 5 L1132 17 L1098 10 L1060 20 L1024 9 L988 16 L952 6 L918 14 L884 8 L846 19 L810 10 L774 16 L738 7 L700 18 L664 9 L630 15 L596 6 L558 17 L524 10 L488 19 L452 8 L418 15 L382 6 L346 16 L312 9 L276 18 L240 8 L206 14 L172 5 L136 16 L100 9 L64 17 L30 7 L0 13 Z"/></svg></div>
+      <div class="tour-head">
+        <p class="kick"><span class="kl"></span>Appen<span class="kl"></span></p>
+        <h3 class="jh">Ett varv i <span class="acc">fältboken.</span></h3>
+        <p class="mnote">dra i hörnet och bläddra</p>
+        <p class="tour-lead">Från första träffen till ditt eget uppslagsverk. Skärmarna är tagna ur Birdy 1.3.</p>
+      </div>
+      <div class="book-stage">
+        <div class="book" tabindex="0" role="region" aria-roledescription="karusell" aria-label="Fältboken med sex skärmar ur appen. Bläddra med vänster- och högerpil.">
+          <div class="page page-l"></div>
+          <div class="page page-r"></div>
+          <div class="leaf" hidden aria-hidden="true"><div class="face front"></div><div class="face back"></div></div>
+          <svg class="ink" aria-hidden="true"></svg>
+        </div>
+      </div>
+      <div class="book-foot">
+        <button class="arrow" type="button" data-prev aria-label="Föregående uppslag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <p class="count" data-count aria-hidden="true">uppslag 1 av 6</p>
+        <button class="arrow" type="button" data-next aria-label="Nästa uppslag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <p class="sr" aria-live="polite" data-live></p>
+      <div class="deckle bot" aria-hidden="true"><svg viewBox="0 0 1440 26" preserveAspectRatio="none"><path d="M0 0 H1440 V8 L1404 14 L1370 6 L1342 16 L1310 9 L1272 18 L1236 8 L1206 15 L1170 5 L1132 17 L1098 10 L1060 20 L1024 9 L988 16 L952 6 L918 14 L884 8 L846 19 L810 10 L774 16 L738 7 L700 18 L664 9 L630 15 L596 6 L558 17 L524 10 L488 19 L452 8 L418 15 L382 6 L346 16 L312 9 L276 18 L240 8 L206 14 L172 5 L136 16 L100 9 L64 17 L30 7 L0 13 Z"/></svg></div>
+    </section>
+  </article>
+
+  <!-- ===================== C ===================== -->
+  <article class="opt" id="c" aria-labelledby="c-h">
+    <div class="wrap opt-head">
+      <div class="oh-row"><span class="letter" aria-hidden="true">C</span><h2 id="c-h">En dag i fält</h2><span class="pill rec">Mitt val</span><span class="pill">Insats: medel till hög, ca 2 dagar</span></div>
+      <p class="pitch">Sex skärmar, en dag. Karusellen spelar sig själv: ljuset på väggen går från gryning till kväll, solen vandrar längs bågen och en handskriven rad berättar vad som händer. Efter kvällen kommer natten, och sedan en ny dag. Dra i solen för att spola. Skärmarna spelar som i A, och talgoxen finns med.</p>
+      <ul class="why">
+        <li>Den enda som visar alla sex skärmarna för den som bara rullar förbi. De flesta drar aldrig i en karusell.</li>
+        <li>Stannar när du pekar på den, trycker eller tabbar in, och har en synlig pausknapp.</li>
+        <li>Ingen klocktid: alla skärmbilder visar 9.30 i statusraden, så dagen anges med ord.</li>
+      </ul>
+      <p class="try">↓ luta dig tillbaka, eller dra i solen</p>
+    </div>
+    <section class="tour tour--c" data-tour="c" aria-label="Förslag C: En dag i fält" aria-roledescription="karusell">
+      <div class="sky" aria-hidden="true"><div class="glow g-dawn"></div><div class="glow g-day"></div><div class="glow g-dusk"></div><div class="night"></div><div class="stars"></div></div>
+      <div class="deckle top" aria-hidden="true"><svg viewBox="0 0 1440 26" preserveAspectRatio="none"><path d="M0 0 H1440 V8 L1404 14 L1370 6 L1342 16 L1310 9 L1272 18 L1236 8 L1206 15 L1170 5 L1132 17 L1098 10 L1060 20 L1024 9 L988 16 L952 6 L918 14 L884 8 L846 19 L810 10 L774 16 L738 7 L700 18 L664 9 L630 15 L596 6 L558 17 L524 10 L488 19 L452 8 L418 15 L382 6 L346 16 L312 9 L276 18 L240 8 L206 14 L172 5 L136 16 L100 9 L64 17 L30 7 L0 13 Z"/></svg></div>
+      <div class="tour-head">
+        <p class="kick"><span class="kl"></span>Appen<span class="kl"></span></p>
+        <h3 class="jh">En dag med <span class="acc">Birdy.</span></h3>
+        <p class="mnote">från gryning till kväll, rakt ur appen</p>
+        <p class="tour-lead">Sex skärmar ur Birdy 1.3, i den ordning en dag i fält brukar gå.</p>
+      </div>
+      <div class="arc-wrap">
+        <button class="daybtn" type="button" data-daybtn><svg class="i i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg><svg class="i i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><span data-daylbl>Pausa dagen</span></button>
+        <svg class="arc" viewBox="0 0 1000 240" focusable="false">
+          <defs>
+            <radialGradient id="sunGlow"><stop offset="0" stop-color="#FFF8EE" stop-opacity=".55"/><stop offset=".35" stop-color="#F2B27A" stop-opacity=".24"/><stop offset="1" stop-color="#F2B27A" stop-opacity="0"/></radialGradient>
+            <radialGradient id="sunCore" cx=".4" cy=".35"><stop offset="0" stop-color="#FFF8EE"/><stop offset=".6" stop-color="#FDE5CB"/><stop offset="1" stop-color="#F2B27A"/></radialGradient>
+            <clipPath id="aboveHorizon"><rect data-clip x="-400" y="-400" width="1800" height="590"/></clipPath>
+          </defs>
+          <line class="horizon" data-horizon x1="0" y1="190" x2="1000" y2="190"/>
+          <path class="path" data-path d="M44 190 Q500 -82 956 190"/>
+          <g data-ticks></g>
+          <g class="moon" data-moon transform="translate(500 70)"><circle r="15" fill="#FFF8EE" opacity=".9"/><circle r="13" cx="7" cy="-4" fill="#1E1410"/></g>
+          <g clip-path="url(#aboveHorizon)"><g class="sun-g" tabindex="0" role="slider" aria-label="Tid på dagen" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Gryning: Identifiera"><circle class="sun-glow" r="72" fill="url(#sunGlow)"/><circle class="sun-hit" r="44"/><circle class="sun-core" r="14" fill="url(#sunCore)"/><circle class="sun-ring" r="21"/></g></g>
+        </svg>
+      </div>
+      <p class="diary" data-diary aria-hidden="true"><span class="dp">Gryning.</span> <span data-dl>Dagens fågel väntar redan.</span></p>
+      <ul class="track" tabindex="0" role="list" aria-label="Skärmar ur appen" data-track></ul>
+      <div class="foot">
+        <button class="arrow" type="button" data-prev aria-label="Föregående skärm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="cap" aria-live="off" aria-atomic="true"><span class="cap-pin" aria-hidden="true"></span><div class="cap-inner" data-cap><h4 data-ch></h4><p class="cap-text" data-cp></p></div></div>
+        <button class="arrow" type="button" data-next aria-label="Nästa skärm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="deckle bot" aria-hidden="true"><svg viewBox="0 0 1440 26" preserveAspectRatio="none"><path d="M0 0 H1440 V8 L1404 14 L1370 6 L1342 16 L1310 9 L1272 18 L1236 8 L1206 15 L1170 5 L1132 17 L1098 10 L1060 20 L1024 9 L988 16 L952 6 L918 14 L884 8 L846 19 L810 10 L774 16 L738 7 L700 18 L664 9 L630 15 L596 6 L558 17 L524 10 L488 19 L452 8 L418 15 L382 6 L346 16 L312 9 L276 18 L240 8 L206 14 L172 5 L136 16 L100 9 L64 17 L30 7 L0 13 Z"/></svg></div>
+    </section>
+  </article>
+
+  <!-- ===================== VÄLJ ===================== -->
+  <section class="wrap valj" id="valj" aria-labelledby="valj-h">
+    <p class="kicker">Välj</p>
+    <h2 id="valj-h">Vilken ska <span class="acc">upp?</span></h2>
+    <p class="desc">Alla tre bygger på dagens karusell (samma skärmbilder, samma plats på startsidan) och fungerar på svenska och engelska. Insatsen räknar med bygge, test på telefon och tangentbord, och engelska skärmbilder.</p>
+    <table class="cmp">
+      <thead><tr><th scope="col">Förslag</th><th scope="col">Vad ändras</th><th scope="col">Insats</th><th scope="col">Risker</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Nu<small>Behåll</small></th><td data-l="Vad ändras">Inget. Sex skärmar på väggen som rör sig när man drar.</td><td class="eff" data-l="Insats">Ingen</td><td data-l="Risker">Visar inte vad appen gör. Den som inte drar ser bara första skärmen ordentligt.</td></tr>
+        <tr><th scope="row">A · Skärmarna spelar<small>Rörelse i skärmarna</small></th><td data-l="Vad ändras">Skärmen i mitten spelar sitt ögonblick: träffen glider upp, stämplarna landar, siffrorna rullar fram, vågformen andas. Planscherna hänger på spik och gungar. Knappen i Lyssna spelar en riktig talgoxe.</td><td class="eff" data-l="Insats">Medel, ca 1,5 dag</td><td data-l="Risker">Bitarnas koordinater hör till varje skärmbild (svenska och engelska) och görs om när skärmbilderna byts; ett litet skript gör de rena bakgrunderna. Ljudfilen (160 kB) hämtas först vid tryck och kräver namnet på inspelaren. Lätt för telefonen: mest transform och opacitet.</td></tr>
+        <tr><th scope="row">B · Fältboken<small>Bläddra i en bok</small></th><td data-l="Vad ändras">Karusellen blir en uppslagen fältbok. Sidan vänds i 3D med pilar, tangenter eller genom att dra. Handskrivna anteckningar skriver sig själva, med pilar till det de beskriver.</td><td class="eff" data-l="Insats">Hög, 2,5 till 3 dagar</td><td data-l="Risker">Att dra med fingret måste samsas med att rulla sidan. 3D-vändningen behöver provas på äldre Android-telefoner. Anteckningarna är ny text att översätta och hålla sann. Den som inte bläddrar ser bara första uppslaget.</td></tr>
+        <tr class="rec-row"><th scope="row">C · En dag i fält<small>Mitt val</small></th><td data-l="Vad ändras">Karusellen spelar sig själv genom en dag: ljuset på väggen går från gryning till kväll, solen följer en båge man kan dra i, en handskriven rad berättar dagen. Skärmarna spelar som i A.</td><td class="eff" data-l="Insats">Medel till hög, ca 2 dagar</td><td data-l="Risker">Spelar själv, så den måste ha synlig paus och stanna vid pekare, fokus och utanför skärmen (finns i prototypen). Ljuset är tre stora lager som bara flyttas och tonas; behöver provas på en billig Android. Ingen klocktid eftersom skärmbilderna visar 9.30.</td></tr>
+      </tbody>
+    </table>
+    <div class="rec-box">
+      <h3>Mitt val: <span class="acc">C, En dag i fält</span></h3>
+      <p>De flesta som rullar förbi en karusell rör den aldrig. C visar ändå alla sex skärmarna, i en ordning som berättar något, och släpper taget så fort någon vill styra själv. Eftersom skärmarna spelar som i A får du A:s rörelser på köpet, och dagen börjar med Dagens fågel, precis som appen.</p>
+      <p>B är djärvast i formen och den jag tror folk minns längst, men den kräver att man bläddrar och är mest jobb. Vill du ha det säkraste steget först: A nu, C ovanpå om en vecka.</p>
+      <p class="note-h">spikarna i A kan följa med till C om du vill</p>
+    </div>
+    <form class="choose" id="choose-form">
+      <div class="crow"><b>Karusellen</b>
+        <div class="opts">
+          <label><input type="radio" name="pick" id="pick-a" value="A, Skärmarna spelar">A · Skärmarna spelar</label>
+          <label><input type="radio" name="pick" id="pick-b" value="B, Fältboken">B · Fältboken</label>
+          <label><input type="radio" name="pick" id="pick-c" value="C, En dag i fält" checked>C · En dag i fält <span class="r">mitt val</span></label>
+          <label><input type="radio" name="pick" id="pick-0" value="behåll dagens">Behåll dagens</label>
+        </div>
+      </div>
+      <div class="crow"><b>Talgoxen</b>
+        <div class="opts">
+          <label><input type="radio" name="bird" id="bird-yes" value="med talgoxen" checked>Med ljud på tryck</label>
+          <label><input type="radio" name="bird" id="bird-no" value="utan ljud">Utan ljud</label>
+        </div>
+      </div>
+      <div class="crow"><b>Kör</b>
+        <div class="opts">
+          <label><input type="radio" name="go" id="go-yes" value="kör" checked>Kör</label>
+          <label><input type="radio" name="go" id="go-wait" value="vänta, jag har ändringar">Vänta, jag har ändringar</label>
+        </div>
+      </div>
+      <div class="crow"><label class="lab" for="note-in">Ändringar (valfritt)</label><textarea id="note-in" name="note" placeholder="t.ex. C men med spikarna från A, långsammare dag"></textarea></div>
+      <div class="answer">
+        <output id="answer" for="choose-form" aria-live="polite"></output>
+        <div class="btns"><button class="copy" type="button" id="copy-btn">Kopiera svaret</button><span class="copied" id="copied" hidden>kopierat, klistra in till mig</span></div>
+      </div>
+    </form>
+  </section>
+
+  <footer class="wrap page-foot">
+    Skärmbilderna är Birdy 1.3 på svenska (<code>website/src/assets/screens/1.3.0/sv/</code>), nedskalade till 720 px. Bitarna som rör sig och de rena bakgrunderna görs av <code>make-assets.py</code> i repot (<code>docs/superpowers/specs/assets/2026-10-08-karusell/</code>); vågformen i Lyssna ritas med appens egen formel (<code>WaveformBars.kt</code>). Talgoxen: Gavin Vella, xeno-canto XC129643, CC BY-SA 3.0 via Wikimedia Commons, samma inspelning som på artsidan. Inget på birdy.community är ändrat.
+  </footer>
+</main>
+
+<script>
+(() => {
+  'use strict';
+  document.documentElement.lang = 'sv';
+  const RM = matchMedia('(prefers-reduced-motion: reduce)');
+  const CHOREO = /*CHOREO*/{"01-identifiera":[{"id":"kick","box":[56,1214,350,1252],"anim":"wipe","at":0,"dur":520},{"id":"h1","box":[58,1280,436,1376],"anim":"rise","dy":70,"at":140,"dur":640},{"id":"h2","box":[436,1276,666,1378],"anim":"write","at":520,"dur":700},{"id":"hand","box":[58,1386,882,1446],"anim":"write","at":900,"dur":1500},{"id":"ornL","box":[56,1484,510,1524],"anim":"grow","origin":"right","at":1500,"dur":600},{"id":"flower","box":[512,1484,566,1524],"anim":"pop","at":1420,"dur":520},{"id":"ornR","box":[566,1484,1024,1524],"anim":"grow","origin":"left","at":1500,"dur":600},{"id":"card","box":[18,1600,1062,1668],"anim":"rise","dy":66,"at":1750,"dur":700},{"id":"nav","box":[0,1668,1080,1920],"anim":"static"}],"07-lyssna":[{"id":"top","box":[262,684,824,744],"anim":"write","at":100,"dur":1300},{"id":"bars","box":[56,876,1024,982],"anim":"none"},{"id":"btn","box":[436,1084,644,1292],"anim":"hold"},{"id":"cta","box":[400,1324,690,1378],"anim":"hold"}],"02-match":[{"id":"sheet","box":[0,1021,1080,1668],"src":"l","anim":"sheet","dy":560,"at":0,"dur":900},{"id":"bar","box":[54,936,250,954],"anim":"wipe","at":650,"dur":800},{"id":"hand","box":[44,1110,214,1150],"anim":"write","at":820,"dur":700},{"id":"seal","box":[838,1062,1040,1262],"anim":"stamp","at":1300,"dur":560},{"id":"nav","box":[0,1668,1080,1920],"anim":"static"}],"03-mina-arter":[{"id":"d1","box":[164,224,220,298],"anim":"roll","at":0,"dur":620},{"id":"d2","box":[464,224,518,298],"anim":"roll","at":130,"dur":620},{"id":"d3","box":[820,224,862,298],"anim":"roll","at":260,"dur":620},{"id":"labels","box":[140,322,940,354],"anim":"fade","at":320,"dur":500},{"id":"card1","box":[26,386,1054,628],"anim":"slide","dx":-90,"at":440,"dur":700},{"id":"card2","box":[34,650,1046,892],"anim":"slide","dx":90,"at":580,"dur":700},{"id":"senaste","box":[34,920,1046,1024],"anim":"fade","at":780,"dur":500},{"id":"r1","box":[20,1150,1070,1316],"anim":"rise","dy":50,"at":900,"dur":600},{"id":"r2","box":[20,1334,1070,1500],"anim":"rise","dy":50,"at":1020,"dur":600},{"id":"r3","box":[20,1518,1070,1668],"anim":"rise","dy":50,"at":1140,"dur":600},{"id":"nav","box":[0,1668,1080,1920],"anim":"static"}],"04-uppslagsverk":[{"id":"s1","box":[962,1068,1046,1152],"anim":"stamp","at":350,"dur":520},{"id":"s2","box":[962,1246,1046,1330],"anim":"stamp","at":640,"dur":520},{"id":"s3","box":[962,1424,1046,1508],"anim":"stamp","at":930,"dur":520},{"id":"s4","box":[962,1602,1046,1668],"anim":"stamp","at":1220,"dur":520},{"id":"nav","box":[0,1668,1080,1920],"anim":"static"}],"05-artprofil":[{"id":"p1","box":[54,1200,218,1262],"anim":"pop","at":160,"dur":520},{"id":"p2","box":[224,1200,464,1262],"anim":"pop","at":300,"dur":520},{"id":"sheet","box":[0,1306,1080,1668],"src":"l","anim":"sheet","dy":360,"at":420,"dur":820},{"id":"kick2","box":[40,1350,318,1386],"anim":"wipe","at":1080,"dur":460},{"id":"l1","box":[44,1438,1026,1540],"anim":"rise","dy":30,"at":1220,"dur":520},{"id":"l2","box":[44,1546,956,1600],"anim":"rise","dy":30,"at":1360,"dur":520},{"id":"l3","box":[44,1606,982,1658],"anim":"rise","dy":30,"at":1500,"dur":520},{"id":"nav","box":[0,1668,1080,1920],"anim":"static"}]}/*END*/;
+  const SLIDES = [
+    { id: '01-identifiera', k: 'Identifiera', h: 'Tre sätt att fånga', p: 'Kamera, foto eller läte. Överst står Dagens fågel, en ny art varje dag.', alt: 'Birdys startskärm Identifiera: Dagens fågel överst, en råka, och under den Tre sätt att fånga', part: 'Gryning', diary: 'Dagens fågel väntar redan.' },
+    { id: '07-lyssna', k: 'Ljud-ID', h: 'Lyssna efter sång', p: 'Håll telefonen stilla och låt fågeln sjunga, så föreslår Birdy arten. Ljud-ID är gratis för alla.', alt: 'Birdys ljud-ID: Lyssna efter sång, med en ljudvåg och en knapp att trycka på', part: 'Morgon', diary: 'Något sjunger i häcken.' },
+    { id: '02-match', k: 'Match', h: 'Ärlig om hur säker den är', p: 'Birdy visar hur säker den är. Spara fyndet med en egen anteckning, eller välj bland fler förslag när den är osäker.', alt: 'Birdys träffskärm: en talgoxe, med plats för en anteckning och knappen Spara observation', part: 'Förmiddag', diary: 'En talgoxe satt still länge nog.' },
+    { id: '03-mina-arter', k: 'Mina arter', h: 'Din egen fältbok', p: 'Varje fynd sparas i telefonen, och varje vecka samlas dina fynd i Veckans uppslag.', alt: 'Mina arter i Birdy: antal arter, fynd och dagars svit, Dagens fågel, Veckans uppslag och de senaste fynden', part: 'Lunch', diary: 'Fyra arter i boken redan.' },
+    { id: '04-uppslagsverk', k: 'Uppslagsverk', h: 'Europas fåglar i fickan', p: '839 arter. Sök på namn, släkte eller familj, eller bläddra i appens grupper.', alt: 'Birdys uppslagsverk: sökfält, grupper som tättingar och änder och gäss, och listan med 839 arter', part: 'Eftermiddag', diary: 'Bläddrar lite i väntan på bussen.' },
+    { id: '05-artprofil', k: 'Artprofil', h: 'Allt om arten på ett uppslag', p: 'Foto, beskrivning, hur vanlig arten är och dess status på den globala rödlistan (IUCN).', alt: 'Artprofilen för talgoxe i Birdy: foto, namn, hur vanlig den är, rödlistestatus och beskrivning', part: 'Kväll', diary: 'Läser om talgoxen i soffan.' },
+  ];
+  // B's notes. x, y: the point in the 1080 x 1920 screenshot the arrow points at. edge: the point is on a
+  // photo, so the arrow stops at the phone's edge. via: routed above the first row to reach the stamp.
+  const NOTES = {
+    '01-identifiera': [{ t: 'Dagens fågel: en ny art varje dag.', x: 0, y: 508, edge: 1 }, { t: 'Kamera, foto eller läte.', x: 50, y: 1330 }],
+    '07-lyssna': [{ t: 'Håll telefonen stilla.', x: 256, y: 714 }, { t: 'Ljudet stannar i telefonen.', x: 52, y: 929 }, { t: 'Gratis för alla.', x: 448, y: 1181 }],
+    '02-match': [{ t: 'Birdy säger hur säker den är.', x: 50, y: 945 }, { t: 'Plats för din egen anteckning.', x: 66, y: 1404 }, { t: 'Ett tryck, så står den i fältboken.', x: 66, y: 1578 }],
+    '03-mina-arter': [{ t: 'Arter, fynd och dagar i rad.', x: 158, y: 262 }, { t: 'Veckans uppslag, varje vecka.', x: 28, y: 770 }, { t: 'Allt sparas i telefonen.', x: 28, y: 1233 }],
+    '04-uppslagsverk': [{ t: 'Sök på namn, släkte eller familj.', x: 62, y: 201 }, { t: '839 arter i appens egna grupper.', x: 40, y: 358 }, { t: 'Stämpeln: arten finns i din bok.', x: 1004, y: 1110, via: 1 }],
+    '05-artprofil': [{ t: 'Fotografen och licensen står med.', x: 256, y: 877 }, { t: 'Hur vanlig den är, och rödlistan.', x: 50, y: 1231 }, { t: 'Hela beskrivningen på ett uppslag.', x: 44, y: 1572 }],
+  };
+  const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI'];
+  const N = SLIDES.length;
+  // The great tit's loudness, 50 values a second, already through the app's own boost (rms x 4, clamped).
+  const ENV = Uint8Array.from(atob('AAMDAwMDAwQEAwMDAwMEAwMEBAMEBAQDBAMEBAQDAwMDAwULDgoHCAYFBAMEBwoLCwgHBgkMBQUEBAQEAwMDBQ4NFxwhIRsbCAQJChMYICMgIycWCQYFBgQFBQQIDA4gICwkFRgNB1uX5v9O5f//ig8NCQkHBgYGBlan1N+afDwMDglCk4POVSiPZU4oFgwEBAYIBgQEBQQFBAQEBAMDAwQDAwMEBAMDBAQFBAQDBAQEBAQEBAQEBAQDBAMEBAQEBQUEBQUFBQQGBQUFBAQDBAQEBAUEBQUFBQQFBQUFBQUGBQUGBQYHBxAPCQkJCAcHBwgHBwgHCQkJCAkJCQkJCggJCQkJCQoJCQsKCQsJCgkJCQkKCQsICQkICAkJCQgICQkKCQoMDQwLCwoJCQkKCgkJCQoKCwkJCg4ODAsLDAoLCgoLCgkJCQkKCgoLCQsLDAsLDAwLCgoKCAkLCwoKCwwKCQkKCQkJCQoLCgoKCwoKCgoKCgkLCgoLCwoLCgkLCQoJCQoJCQsMDAoKCQkJCQcICgkJCAkMCwwMCgsKCgkKCQgKCAkICgsQDg8KCgsKCQoLCQ4PCwkKCQkJCQkICgkKCQoICQoKCAkJCAkJCAoICAkKCAgICAcIBggHBwcGBgYGBgYGBgUFBQUFBgUIBQUGBQUFRF9saWBOEAoGBS1Tf7plFpCjXgkHBAcEBQUFBA6EtaCxrKlTEQoHKman23gm0+eTDAYJCQcGBQYFHo6y////4EoQCAhAasayM3a2njcUDAYGBQQFBASCwf////yYCAcFNE55okIuhohrGRIICQUFBgUSnv/////STQsHCT1oc4A3JH+BYwsKCwYGBwYEBQYDBAQEAwMDBAMDAwMDAwMDAwIDBAMDAwMDAwMDAwQDAwMDAwMEBAMDBAQDBAMDAwMDAwQEBAQEAwQEBAQEBAQEBAQEBAUEBAQFBgUFBQUGBQYGBgcHBgcGBgYIBwgIBwYIBwYHBwcHCAcHCAkJCAkKCgkJBwkJBwcIBgcGBwYIBwcHBggICAgJCA0SCw0OCwkNCgcIBwgICAgHCAgICAgJCggICQgGBwcHCAcJCAkICwkKDAgIBwgIBwgHBgcHCAgICAgICQcICAcIBgcHCAcICgkICggICQgICgkJCQcICAgJCAgKCAkICAkHCQgJCAkICQgICQgIBwgICAkICAkJCQcICAcICgkJBwkJCAcJBwcICAkICAcICAcHGwoLCAgKCAgKCQkLCggMCggJCAgHCAkHBwcICAgIBwgICgkJCQgHCAgHCAgICQgICQgICAkICAgIBwcHBwcHBwgICAgICQkICA=='), (c) => c.charCodeAt(0));
+  const SONG = [1.6, 13.4]; // the part of the 20 s recording that is played: both phrases, little silence
+  // The 48 bars of the Lyssna screen, left edge and width in screenshot pixels (heights come from the formula).
+  const BARS = [[63, 13], [84, 13]].concat(Array.from({ length: 46 }, (_, k) => [105 + 20 * k, 12]));
+  const SVGNS = 'http://www.w3.org/2000/svg';
+
+  const pct = (v) => `${(v * 100).toFixed(4)}%`;
+  // Small DOM builders (all text goes in as textContent).
+  const h = (tag, props, ...kids) => {
+    const n = document.createElement(tag);
+    for (const [k, v] of Object.entries(props || {})) {
+      if (k === 'class') n.className = v;
+      else if (k === 'text') n.textContent = v;
+      else n.setAttribute(k, v);
+    }
+    kids.forEach((c) => { if (c != null) n.append(c); });
+    return n;
+  };
+  const s = (tag, attrs, ...kids) => {
+    const n = document.createElementNS(SVGNS, tag);
+    for (const [k, v] of Object.entries(attrs || {})) n.setAttribute(k, v);
+    kids.forEach((c) => n.append(c));
+    return n;
+  };
+  const icon = (cls, d) => s('svg', { class: `i ${cls}`, viewBox: '0 0 24 24', 'aria-hidden': 'true' }, s('path', { d }));
+  const place = (n, [x0, y0, x1, y1]) => Object.assign(n.style, { left: pct(x0 / 1080), top: pct(y0 / 1920), width: pct((x1 - x0) / 1080), height: pct((y1 - y0) / 1920) });
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  const WRITE = [{ maskPosition: '100% 0', webkitMaskPosition: '100% 0' }, { maskPosition: '0% 0', webkitMaskPosition: '0% 0' }];
+  const writeOn = (n, delay = 0, dur = 700) => (RM.matches ? null : n.animate(WRITE, { duration: dur, delay, fill: 'backwards', easing: 'cubic-bezier(.45,.05,.55,.95)' }));
+  const screenImg = (src, alt) => { const img = h('img', { src, alt, width: 720, height: 1280, decoding: 'async' }); img.draggable = false; return img; };
+
+  /* ---------- The great tit (one shared player) ---------- */
+  const Talgoxe = (() => {
+    let audio = null;
+    let owner = null;
+    const get = () => {
+      if (!audio) {
+        audio = new Audio('ljud/talgoxe.mp3');
+        audio.preload = 'auto';
+        audio.addEventListener('ended', () => stop());
+        audio.addEventListener('timeupdate', () => { if (audio.currentTime >= SONG[1]) stop(); });
+      }
+      return audio;
+    };
+    function rms() {
+      if (!audio || audio.paused) return 0;
+      return (ENV[Math.floor(audio.currentTime * 50)] || 0) / 255;
+    }
+    async function play(who) {
+      const a = get();
+      if (owner && owner !== who) owner.audio(false);
+      owner = who;
+      try {
+        a.currentTime = SONG[0];
+        await a.play();
+        if (owner === who) who.audio(true);
+      } catch (e) {
+        if (owner === who) owner = null;
+        who.audio(false);
+      }
+    }
+    function stop() {
+      if (audio) audio.pause();
+      const o = owner;
+      owner = null;
+      if (o) o.audio(false);
+    }
+    return { play, stop, rms, owns: (who) => owner === who };
+  })();
+
+  /* ---------- Screens ---------- */
+  function stillScreen(sl) {
+    return { el: h('div', { class: 'screen' }, screenImg(`img/${sl.id}.webp`, sl.alt)), play() {}, stop() {}, setActive() {} };
+  }
+
+  function pieceEl(id, p) {
+    const [x0, y0, x1, y1] = p.box;
+    const w = x1 - x0;
+    const hh = y1 - y0;
+    const d = h('div', { class: `pc pc-${p.anim}`, 'aria-hidden': 'true' });
+    place(d, p.box);
+    const url = `img/${id}${p.src === 'l' ? '-layer' : ''}.webp`;
+    const paint = (n) => Object.assign(n.style, {
+      backgroundImage: `url("${url}")`,
+      backgroundSize: `${pct(1080 / w)} ${pct(1920 / hh)}`,
+      backgroundPosition: `${w >= 1080 ? '0%' : pct(x0 / (1080 - w))} ${hh >= 1920 ? '0%' : pct(y0 / (1920 - hh))}`,
+    });
+    if (p.anim === 'roll') { const inner = h('div', { class: 'pc-in' }); paint(inner); d.append(inner); } else paint(d);
+    if (p.anim === 'grow') d.style.transformOrigin = p.origin === 'right' ? '100% 50%' : '0% 50%';
+    return d;
+  }
+
+  function animatePiece(d, p, sc) {
+    const t = { duration: p.dur || 600, delay: p.at || 0, fill: 'backwards', easing: 'cubic-bezier(.22,1,.36,1)' };
+    switch (p.anim) {
+      case 'rise': return d.animate([{ transform: `translateY(${(p.dy || 40) * sc}px)`, opacity: 0 }, { transform: 'translateY(0)', opacity: 1 }], t);
+      case 'slide': return d.animate([{ transform: `translateX(${(p.dx || 60) * sc}px)`, opacity: 0 }, { transform: 'translateX(0)', opacity: 1 }], t);
+      case 'fade': return d.animate([{ opacity: 0 }, { opacity: 1 }], t);
+      case 'wipe': return d.animate([{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)' }], { ...t, easing: 'cubic-bezier(.4,0,.2,1)' });
+      case 'write': return d.animate(WRITE, { ...t, easing: 'cubic-bezier(.45,.05,.55,.95)' });
+      case 'grow': return d.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], t);
+      case 'pop': return d.animate([{ transform: 'scale(.3)', opacity: 0 }, { transform: 'scale(1.08)', opacity: 1, offset: 0.7 }, { transform: 'scale(1)', opacity: 1 }], t);
+      case 'roll': return d.firstChild.animate([{ transform: 'translateY(100%)' }, { transform: 'translateY(0)' }], { ...t, easing: 'cubic-bezier(.2,1.3,.4,1)' });
+      case 'stamp': return d.animate([
+        { transform: 'scale(2.4) rotate(-16deg)', opacity: 0 },
+        { transform: 'scale(.9) rotate(3deg)', opacity: 1, offset: 0.62 },
+        { transform: 'scale(1.04) rotate(-1deg)', opacity: 1, offset: 0.82 },
+        { transform: 'scale(1) rotate(0deg)', opacity: 1 },
+      ], { ...t, easing: 'cubic-bezier(.3,.7,.4,1)' });
+      case 'sheet': return d.animate([{ transform: `translateY(${(p.dy || 300) * sc}px)` }, { transform: 'translateY(0)' }], t);
+      default: return null;
+    }
+  }
+
+  // Lyssna: the waveform is the app's own WaveformBars (idle pulse: a sine wave travelling over 48 bars every
+  // 1.8 s; with sound, the boosted loudness lifts the bars). At phase 0 and no sound it is the screenshot exactly.
+  function listenCtl(scr, map) {
+    const cv = h('canvas', { class: 'wave', 'aria-hidden': 'true' });
+    place(cv, [40, 820, 1040, 1040]);
+    scr.insertBefore(cv, scr.children[1] || null);
+    const ctx = cv.getContext('2d');
+    const btn = map.btn;
+    const cta = map.cta;
+    btn.style.transformOrigin = '49.76% 46.63%';
+    btn.append(h('span', { class: 'sq' }));
+    const hit = h('button', { class: 'hit', type: 'button', tabindex: '-1', 'aria-hidden': 'true' });
+    place(hit, [456, 1097, 624, 1265]);
+    scr.append(hit);
+    let on = false;
+    let rec = false;
+    let raf = 0;
+    let t0 = 0;
+    let phase = 0;
+    let level = 0;
+    let stopAt = 0;
+    let pulse = null;
+    let ctaAnim = null;
+    const api = { onChange: null };
+    function size() {
+      const r = cv.getBoundingClientRect();
+      if (!r.width) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+      cv.width = Math.round(r.width * dpr);
+      cv.height = Math.round(r.height * dpr);
+      draw();
+    }
+    function draw() {
+      const W = cv.width;
+      if (!W) return;
+      const k = W / 1000;
+      ctx.clearRect(0, 0, W, cv.height);
+      ctx.fillStyle = '#A85E41';
+      for (let i = 0; i < 48; i++) {
+        const ps = (Math.sin(phase * 2 * Math.PI + i * 0.35) + 1) / 2;
+        const hf = clamp(0.2 + 0.25 * ps + level * (0.3 + 0.5 * ps), 0.1, 1);
+        const half = 105 * hf;
+        const [x, w] = BARS[i];
+        const rx = (x - 40) * k;
+        const rw = w * k;
+        const ry = (929 - half - 820) * k;
+        const rh = 2 * half * k;
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(rx, ry, rw, rh, Math.min(5.25 * k, rw / 2)); else ctx.rect(rx, ry, rw, rh);
+        ctx.fill();
+      }
+    }
+    function tick(now) {
+      raf = 0;
+      if (!RM.matches && (on || rec || stopAt)) {
+        if (stopAt && !on && !rec && now >= stopAt) { phase = 0; stopAt = 0; } else phase = ((now - t0) / 1800) % 1;
+      } else if (!on && !rec) phase = 0;
+      const target = rec ? Talgoxe.rms() : 0;
+      level += (target - level) * (target > level ? 0.42 : 0.16);
+      if (!rec && level < 0.002) level = 0;
+      draw();
+      if (on || rec || stopAt || level > 0) raf = requestAnimationFrame(tick);
+    }
+    const run = () => { if (!raf) raf = requestAnimationFrame(tick); };
+    api.setActive = (v) => {
+      if (v === on) return;
+      on = v;
+      if (v) {
+        if (!stopAt) t0 = performance.now(); // restart from the screenshot's own frame
+        stopAt = 0;
+        run();
+      } else {
+        if (rec) Talgoxe.stop();
+        const now = performance.now();
+        if (!RM.matches && phase > 0) stopAt = t0 + Math.ceil((now - t0) / 1800) * 1800;
+        run();
+      }
+    };
+    api.audio = (isOn) => {
+      rec = isOn;
+      scr.classList.toggle('rec', isOn);
+      if (pulse) pulse.cancel();
+      pulse = null;
+      if (ctaAnim) ctaAnim.cancel();
+      ctaAnim = null;
+      if (isOn) {
+        if (!RM.matches) pulse = btn.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.15)' }], { duration: 1200, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' });
+        ctaAnim = cta.animate([{ opacity: 1 }, { opacity: 0 }], { duration: RM.matches ? 1 : 250, fill: 'forwards' });
+      }
+      if (api.onChange) api.onChange(isOn);
+      run();
+    };
+    api.toggle = () => (rec ? Talgoxe.stop() : Talgoxe.play(api));
+    hit.addEventListener('click', (e) => { e.stopPropagation(); api.toggle(); });
+    new ResizeObserver(size).observe(cv);
+    return api;
+  }
+
+  function aliveScreen(sl) {
+    const id = sl.id;
+    const scr = h('div', { class: 'screen' }, screenImg(`img/${id}-plate.webp`, sl.alt));
+    const map = {};
+    const parts = [];
+    for (const p of CHOREO[id] || []) {
+      if (p.anim === 'none') continue;
+      const d = pieceEl(id, p);
+      scr.append(d);
+      map[p.id] = d;
+      if (p.anim !== 'static' && p.anim !== 'hold') parts.push({ d, p });
+    }
+    let anims = [];
+    let timers = [];
+    const api = { el: scr, phone: null, listen: null, caret: null };
+    if (id === '07-lyssna') api.listen = listenCtl(scr, map);
+    if (id === '04-uppslagsverk') {
+      api.caret = h('span', { class: 'caret', 'aria-hidden': 'true' });
+      place(api.caret, [175, 184, 179, 226]);
+      scr.append(api.caret);
+    }
+    function stampFx(p, sc) {
+      const [x0, y0, x1, y1] = p.box;
+      const r = h('span', { class: 'ink-ring' });
+      const size = (x1 - x0) * 0.86 * sc;
+      Object.assign(r.style, { left: pct((x0 + x1) / 2 / 1080), top: pct((y0 + y1) / 2 / 1920), width: `${size}px`, height: `${size}px` });
+      scr.append(r);
+      r.animate([{ transform: 'translate(-50%,-50%) scale(.75)', opacity: 0.8 }, { transform: 'translate(-50%,-50%) scale(1.8)', opacity: 0 }], { duration: 560, easing: 'cubic-bezier(.2,.8,.3,1)', fill: 'forwards' }).onfinish = () => r.remove();
+      if (api.phone) {
+        api.phone.animate([
+          { transform: 'translate(0,0)' }, { transform: 'translate(-1.6px,1px) rotate(-.5deg)' }, { transform: 'translate(1.4px,-1px) rotate(.35deg)' },
+          { transform: 'translate(-.6px,0)' }, { transform: 'translate(0,0)' },
+        ], { duration: 280, easing: 'ease-out' });
+      }
+    }
+    api.stop = () => {
+      anims.forEach((a) => a.cancel());
+      anims = [];
+      timers.forEach(clearTimeout);
+      timers = [];
+      scr.querySelectorAll('.ink-ring').forEach((n) => n.remove());
+    };
+    api.play = () => {
+      api.stop();
+      if (RM.matches) return;
+      const sc = scr.clientWidth / 1080;
+      if (!sc) return;
+      for (const { d, p } of parts) {
+        const a = animatePiece(d, p, sc);
+        if (a) anims.push(a);
+        if (p.anim === 'stamp') timers.push(setTimeout(() => stampFx(p, sc), (p.at || 0) + (p.dur || 520) * 0.62));
+      }
+    };
+    api.setActive = (v) => {
+      if (api.listen) api.listen.setActive(v);
+      if (api.caret) api.caret.classList.toggle('on', v);
+      if (!v) api.stop();
+    };
+    return api;
+  }
+
+  /* ---------- The carousel (a port of website/src/components/app-tour.ts) ---------- */
+  function depthNu(el, d) {
+    const a = Math.min(Math.abs(d), 1.4);
+    el.style.transform = `translate3d(0, ${(a * 22).toFixed(2)}px, 0) scale(${(1 - a * 0.13).toFixed(4)}) rotate(${(clamp(d, -1.4, 1.4) * -2.2).toFixed(2)}deg)`;
+    el.style.opacity = (1 - Math.min(a, 1) * 0.42).toFixed(3);
+  }
+
+  function tourEngine(root, o) {
+    const track = root.querySelector('[data-track]');
+    const slides = [...track.querySelectorAll('.slide')];
+    const prevBtn = root.querySelector('[data-prev]');
+    const nextBtn = root.querySelector('[data-next]');
+    let active = 0;
+    let pending = null;
+    let raf = 0;
+    let moved = false;
+    let settleTimer = 0;
+    const centerOf = (el) => el.offsetLeft + el.offsetWidth / 2;
+    const stepW = () => (slides.length > 1 ? centerOf(slides[1]) - centerOf(slides[0]) : 1);
+    const nearest = () => {
+      const mid = track.scrollLeft + track.clientWidth / 2;
+      const st = stepW();
+      let best = 0;
+      let bd = Infinity;
+      slides.forEach((el, i) => { const d = Math.abs((centerOf(el) - mid) / st); if (d < bd) { bd = d; best = i; } });
+      return best;
+    };
+    const setArrows = (i) => {
+      if (prevBtn) prevBtn.setAttribute('aria-disabled', i <= 0 ? 'true' : 'false');
+      if (nextBtn) nextBtn.setAttribute('aria-disabled', i >= slides.length - 1 && !o.loop ? 'true' : 'false');
+    };
+    const frame = () => {
+      raf = 0;
+      const mid = track.scrollLeft + track.clientWidth / 2;
+      const st = stepW();
+      const ds = slides.map((el) => (centerOf(el) - mid) / st);
+      let best = 0;
+      ds.forEach((d, i) => { if (Math.abs(d) < Math.abs(ds[best])) best = i; });
+      const max = Math.max(1, track.scrollWidth - track.clientWidth);
+      const pos = (track.scrollLeft / max) * (slides.length - 1);
+      if (!RM.matches) slides.forEach((el, i) => depthNu(el, ds[i]));
+      else slides.forEach((el) => { el.style.transform = ''; el.style.opacity = ''; });
+      if (o.onFrame) o.onFrame(pos);
+      if (best !== active) {
+        slides[active].classList.remove('on');
+        active = best;
+        slides[active].classList.add('on');
+        if (o.onActive) o.onActive(best);
+      }
+    };
+    const schedule = () => { if (!raf) raf = requestAnimationFrame(frame); };
+    const go = (i, instant) => {
+      if (o.loop && i > slides.length - 1) { if (o.onWrap) o.onWrap(); return; }
+      pending = clamp(i, 0, slides.length - 1);
+      setArrows(pending);
+      track.scrollTo({ left: centerOf(slides[pending]) - track.clientWidth / 2, behavior: RM.matches || instant ? 'auto' : 'smooth' });
+    };
+    const settle = () => { pending = null; const n = nearest(); setArrows(n); if (o.onSettle) o.onSettle(n); };
+    const user = () => { pending = null; if (o.onUser) o.onUser(); };
+    track.addEventListener('scroll', () => { schedule(); if (o.onScroll) o.onScroll(); }, { passive: true });
+    if ('onscrollend' in window) track.addEventListener('scrollend', settle);
+    else track.addEventListener('scroll', () => { clearTimeout(settleTimer); settleTimer = setTimeout(settle, 180); }, { passive: true });
+    addEventListener('resize', schedule, { passive: true });
+    if (RM.addEventListener) RM.addEventListener('change', schedule);
+    track.addEventListener('pointerdown', user, { passive: true });
+    track.addEventListener('wheel', user, { passive: true });
+    track.addEventListener('touchstart', user, { passive: true });
+    if (prevBtn) prevBtn.addEventListener('click', () => { if (o.onUser) o.onUser(); go((pending ?? nearest()) - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { if (o.onUser) o.onUser(); go((pending ?? nearest()) + 1); });
+    track.addEventListener('keydown', (e) => {
+      if (e.altKey || e.ctrlKey || e.metaKey) return;
+      const k = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+      if (k) { e.preventDefault(); if (o.onUser) o.onUser(); go((pending ?? nearest()) + k); }
+      else if (e.key === 'Home') { e.preventDefault(); if (o.onUser) o.onUser(); go(0); }
+      else if (e.key === 'End') { e.preventDefault(); if (o.onUser) o.onUser(); go(slides.length - 1); }
+    });
+    // Pointer capture during a mouse drag sends the click to the track, so find the slide under the pointer.
+    track.addEventListener('click', (e) => {
+      if (moved || (e.target.closest && e.target.closest('button'))) return;
+      const hitEl = document.elementFromPoint(e.clientX, e.clientY);
+      const el = hitEl ? hitEl.closest('.slide') : null;
+      const i = el ? slides.indexOf(el) : -1;
+      if (i >= 0 && i !== active) go(i);
+      else if (i === active && o.onTapActive) o.onTapActive(i);
+    });
+    let down = false;
+    let startX = 0;
+    let startLeft = 0;
+    let lastX = 0;
+    let lastT = 0;
+    let velocity = 0;
+    track.addEventListener('pointerdown', (e) => {
+      if (e.pointerType !== 'mouse' || e.button !== 0 || e.target.closest('button')) return;
+      down = true; moved = false; startX = lastX = e.clientX; startLeft = track.scrollLeft; lastT = performance.now(); velocity = 0;
+      track.setPointerCapture(e.pointerId);
+    });
+    track.addEventListener('pointermove', (e) => {
+      if (!down) return;
+      const dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) > 4) { moved = true; track.classList.add('dragging'); }
+      if (!moved) return;
+      track.scrollLeft = startLeft - dx;
+      const now = performance.now();
+      velocity = (e.clientX - lastX) / Math.max(1, now - lastT);
+      lastX = e.clientX; lastT = now;
+    });
+    const end = () => {
+      if (!down) return;
+      down = false;
+      if (!moved) return;
+      const mid = track.scrollLeft + track.clientWidth / 2 - velocity * 180;
+      let best = 0;
+      let bd = Infinity;
+      slides.forEach((el, i) => { const d = Math.abs(centerOf(el) - mid); if (d < bd) { bd = d; best = i; } });
+      go(best);
+      track.classList.remove('dragging');
+      setTimeout(() => { moved = false; }, 50);
+    };
+    track.addEventListener('pointerup', end);
+    track.addEventListener('pointercancel', end);
+    slides[0].classList.add('on');
+    setArrows(0);
+    frame();
+    return { go, nearest, slides, track, schedule, get active() { return active; } };
+  }
+
+  /* ---------- A: the plates swing on their nails ---------- */
+  function swing(track, hangs) {
+    const th = hangs.map(() => 0);
+    const om = hangs.map(() => 0);
+    const K = hangs.map((_, i) => 0.0125 * (1 + 0.09 * ((i % 3) - 1)));
+    let lastX = 0;
+    let lastV = 0;
+    let raf = 0;
+    let quiet = 0;
+    function tick() {
+      raf = 0;
+      const x = track.scrollLeft;
+      const v = x - lastX;
+      const acc = v - lastV;
+      lastX = x; lastV = v;
+      let energy = 0;
+      hangs.forEach((el, i) => {
+        om[i] += -K[i] * th[i] - 0.075 * om[i] - acc * 0.042;
+        th[i] = clamp(th[i] + om[i], -12, 12);
+        energy += Math.abs(th[i]) + Math.abs(om[i]);
+        el.style.transform = `rotate(${th[i].toFixed(3)}deg)`;
+      });
+      quiet = Math.abs(v) < 0.05 ? quiet + 1 : 0;
+      if (energy > 0.015 || quiet < 3) raf = requestAnimationFrame(tick);
+      else hangs.forEach((el, i) => { th[i] = 0; om[i] = 0; el.style.transform = ''; });
+    }
+    return () => {
+      if (RM.matches || raf) return;
+      lastX = track.scrollLeft; lastV = 0; quiet = 0;
+      raf = requestAnimationFrame(tick);
+    };
+  }
+
+  /* ---------- Build a gallery wall (Nu, A, C) ---------- */
+  function buildTour(root, kind) {
+    const track = root.querySelector('[data-track]');
+    const cap = root.querySelector('.cap');
+    const capInner = root.querySelector('[data-cap]');
+    const ch = root.querySelector('[data-ch]');
+    const cp = root.querySelector('[data-cp]');
+    const rail = root.querySelector('[data-rail]');
+    const ctls = [];
+    const hangs = [];
+    const st = { visible: false, kind, ctls, eng: null, hooks: {} };
+    SLIDES.forEach((sl, i) => {
+      const li = h('li', { class: 'slide', 'aria-roledescription': 'bild', 'aria-label': `${i + 1} av ${N}: ${sl.k}` });
+      const fig = h('figure', { class: 'plate' });
+      const ctl = kind === 'nu' ? stillScreen(sl) : aliveScreen(sl);
+      const phone = h('div', { class: 'phone' }, ctl.el);
+      ctl.phone = phone;
+      const fc = h('figcaption', { class: 'plno' }, h('b', { text: kind === 'c' ? sl.part : `Pl. ${ROMAN[i]}` }), h('span', { text: sl.k }));
+      if (kind === 'a') {
+        const hang = h('div', { class: 'hang' },
+          s('svg', { class: 'cord', viewBox: '0 0 100 40', preserveAspectRatio: 'none', 'aria-hidden': 'true' }, s('path', { d: 'M14 40 L50 4 L86 40' })),
+          h('span', { class: 'nail' }), phone, fc);
+        fig.append(hang);
+        hangs.push(hang);
+      } else fig.append(phone, fc);
+      li.append(fig);
+      track.append(li);
+      ctls.push(ctl);
+    });
+    // The great tit's button lives on the museum label and shows while Lyssna is in the middle.
+    const listen = ctls.find((c) => c.listen)?.listen;
+    let capAudio = null;
+    const audioRow = () => {
+      const label = h('span', { text: 'Lyssna på en talgoxe' });
+      const pill = h('button', { class: 'hear', type: 'button', 'aria-pressed': 'false' }, icon('i-play', 'M8 5.5v13l11-6.5z'), icon('i-stop', 'M7 7h10v10H7z'), label);
+      return { row: h('div', { class: 'cap-audio' }, pill, h('small', { class: 'credit', text: 'Ljud: Gavin Vella · CC BY-SA 3.0' })), pill, label };
+    };
+    if (listen) {
+      const a = audioRow();
+      capAudio = a.row;
+      capAudio.hidden = true;
+      capInner.append(capAudio);
+      listen.onChange = (isOn) => {
+        a.pill.setAttribute('aria-pressed', String(isOn));
+        a.label.textContent = isOn ? 'Stoppa talgoxen' : 'Lyssna på en talgoxe';
+      };
+      a.pill.addEventListener('click', () => listen.toggle());
+    }
+    SLIDES.forEach((sl) => {
+      const z = h('div', { class: 'cap-sizer', 'aria-hidden': 'true' }, h('p', { class: 'cap-h', text: sl.h }), h('p', { class: 'cap-text', text: sl.p }));
+      if (listen && sl.id === '07-lyssna') z.append(audioRow().row);
+      cap.append(z);
+    });
+    ch.textContent = SLIDES[0].h;
+    cp.textContent = SLIDES[0].p;
+    let capTimer = 0;
+    const setCaption = (i) => {
+      const apply = () => {
+        ch.textContent = SLIDES[i].h;
+        cp.textContent = SLIDES[i].p;
+        if (capAudio) capAudio.hidden = SLIDES[i].id !== '07-lyssna';
+        capInner.classList.remove('out');
+      };
+      clearTimeout(capTimer);
+      if (RM.matches) { apply(); return; }
+      capInner.classList.add('out');
+      capTimer = setTimeout(apply, 160);
+    };
+    let playTimer = 0;
+    const activate = (i) => {
+      clearTimeout(playTimer);
+      ctls.forEach((c, k) => { if (k !== i) c.setActive(false); });
+      playTimer = setTimeout(() => {
+        if (!st.visible) return;
+        ctls[i].setActive(true);
+        ctls[i].play();
+      }, 160);
+    };
+    const kick = kind === 'a' ? swing(track, hangs) : null;
+    st.eng = tourEngine(root, {
+      loop: kind === 'c',
+      onActive: (i) => { setCaption(i); activate(i); if (st.hooks.onActive) st.hooks.onActive(i); },
+      onFrame: (pos) => { if (rail) rail.style.setProperty('--p', pos.toFixed(4)); if (st.hooks.onFrame) st.hooks.onFrame(pos); },
+      onScroll: () => { if (kick) kick(); },
+      onSettle: (i) => { if (st.hooks.onSettle) st.hooks.onSettle(i); },
+      onUser: () => { if (st.hooks.onUser) st.hooks.onUser(); },
+      onWrap: () => { if (st.hooks.onWrap) st.hooks.onWrap(); },
+      onTapActive: (i) => { if (kind !== 'nu') { ctls[i].setActive(true); ctls[i].play(); } },
+    });
+    st.show = (v) => {
+      st.visible = v;
+      const c = ctls[st.eng.active];
+      if (v) { c.setActive(true); c.play(); } else c.setActive(false);
+    };
+    return st;
+  }
+
+  /* ---------- C: the day ---------- */
+  function setupDay(root, st) {
+    const eng = st.eng;
+    const svg = root.querySelector('.arc');
+    const sun = root.querySelector('.sun-g');
+    const ticksG = root.querySelector('[data-ticks]');
+    const pathEl = root.querySelector('[data-path]');
+    const horizon = root.querySelector('[data-horizon]');
+    const clipRect = root.querySelector('[data-clip]');
+    const moon = root.querySelector('[data-moon]');
+    const glows = [...root.querySelectorAll('.glow')];
+    const stars = root.querySelector('.stars');
+    const btn = root.querySelector('[data-daybtn]');
+    const btnLbl = root.querySelector('[data-daylbl]');
+    const diary = root.querySelector('[data-diary]');
+    const dp = diary.querySelector('.dp');
+    const dl = diary.querySelector('[data-dl]');
+    const cap = root.querySelector('.cap');
+    const stage = [root.querySelector('.arc-wrap'), eng.track, root.querySelector('.foot')];
+    const DWELL = 6500;
+    const rims = ['rgba(253,229,203,.2)', 'rgba(242,178,122,.18)', 'rgba(255,248,238,.15)', 'rgba(255,248,238,.17)', 'rgba(226,192,126,.2)', 'rgba(176,78,40,.48)'];
+    // The arc is drawn in the SVG's own pixels, so it keeps its height on a phone.
+    let A = null;
+    const ax = (t) => A.x0 + (A.x1 - A.x0) * t;
+    const ay = (t) => (1 - t) * (1 - t) * A.yH + 2 * t * (1 - t) * A.yC + t * t * A.yH;
+    let ticks = [];
+    let lbls = [];
+    function buildArc() {
+      const W = Math.max(280, Math.round(svg.getBoundingClientRect().width) || 1000);
+      const wide = W >= 640;
+      const H = wide ? 240 : 150;
+      const yH = wide ? 190 : 118;
+      const apex = wide ? 50 : 34;
+      const x0 = wide ? 44 : 24;
+      A = { W, H, yH, yC: 2 * apex - yH, x0, x1: W - x0, wide };
+      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+      svg.style.height = `${H}px`;
+      [['x1', 0], ['y1', yH], ['x2', W], ['y2', yH]].forEach(([k, v]) => horizon.setAttribute(k, v));
+      pathEl.setAttribute('d', `M${A.x0} ${yH} Q${W / 2} ${A.yC} ${A.x1} ${yH}`);
+      clipRect.setAttribute('width', W + 800);
+      clipRect.setAttribute('height', yH + 400);
+      moon.setAttribute('transform', `translate(${W / 2} ${apex + (wide ? 2 : 6)})`);
+      const r = wide ? 1 : 0.78;
+      [['.sun-glow', 72], ['.sun-hit', 44], ['.sun-core', 14], ['.sun-ring', 21]].forEach(([sel, v]) => sun.querySelector(sel).setAttribute('r', (v * r).toFixed(1)));
+      ticksG.replaceChildren();
+      ticks = [];
+      lbls = [];
+      for (let k = 0; k < N; k++) {
+        const t = k / (N - 1);
+        const c = s('circle', { class: 'tick', cx: ax(t), cy: ay(t), r: wide ? 4.5 : 3.5 });
+        ticksG.append(c);
+        ticks.push(c);
+        if (wide) {
+          const l = s('text', { class: 'lbl', x: ax(t), y: Math.min(ay(t) + 40, H - 8) });
+          l.textContent = SLIDES[k].part.toLowerCase();
+          ticksG.append(l);
+          lbls.push(l);
+        }
+      }
+      shownIdx = -1;
+    }
+    let playing = !RM.matches;
+    let hover = false;
+    let focus = false;
+    let holdUntil = 0;
+    let dragging = false;
+    let elapsed = 0;
+    let last = 0;
+    let raf = 0;
+    let scrollPos = 0;
+    let shown = 0;
+    let floor = -Infinity;
+    let night = false;
+    let nightTarget = 0;
+    let geo = null;
+    let shownIdx = -1;
+    const running = () => playing && !hover && !focus && st.visible && !document.hidden && !dragging && performance.now() > holdUntil && !RM.matches;
+    const settled = () => Math.abs(scrollPos - eng.active) < 0.02;
+    function measure() {
+      buildArc();
+      const r = root.getBoundingClientRect();
+      const sv = svg.getBoundingClientRect();
+      const t = eng.track.getBoundingClientRect();
+      geo = { w: r.width, h: r.height, sx: sv.left - r.left, sy: sv.top - r.top, mid: t.top - r.top + t.height * 0.4, gw: glows.map((g) => [g.offsetWidth, g.offsetHeight]) };
+      // A sprinkle of stars for the night, in the upper part of the wall.
+      let seed = 7;
+      const rnd = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+      const dots = [];
+      for (let k = 0; k < 46; k++) dots.push(`${(rnd() * geo.w).toFixed(0)}px ${(geo.sy * 0.25 + rnd() * (geo.mid - geo.sy * 0.25) * 0.85).toFixed(0)}px 0 ${rnd() > 0.82 ? 1 : 0}px rgba(255,248,238,${(0.25 + rnd() * 0.55).toFixed(2)})`);
+      stars.style.boxShadow = dots.join(',');
+    }
+    function setLabel() {
+      btn.classList.toggle('paused', !playing);
+      btnLbl.textContent = playing ? 'Pausa dagen' : 'Spela dagen';
+      cap.setAttribute('aria-live', running() ? 'off' : 'polite');
+    }
+    function setDiary(i, nightText) {
+      dp.textContent = nightText ? 'Natt.' : `${SLIDES[i].part}.`;
+      dl.textContent = nightText || SLIDES[i].diary;
+      diary.classList.add('w');
+      writeOn(diary, 120, 900);
+    }
+    function render() {
+      if (!geo) measure();
+      const t = shown / (N - 1);
+      const x = ax(t);
+      const y = ay(t);
+      sun.setAttribute('transform', `translate(${x.toFixed(2)} ${y.toFixed(2)})`);
+      const px = geo.sx + x;
+      const py = geo.sy + y;
+      const hy = geo.sy + A.yH;
+      // Dawn and dusk lie low along the horizon under the sun; the day light falls on the wall behind the phones.
+      const pos = [
+        [px, hy + 40],
+        [geo.w / 2 + (px - geo.w / 2) * 0.55, py + (geo.mid - py) * 0.55],
+        [px, hy + 40],
+      ];
+      const d = shown;
+      const dim = night ? 0 : 1;
+      const w = [clamp(1 - Math.abs(d - 0.1) / 1.7, 0, 1), clamp(1 - Math.abs(d - 2.5) / 2, 0, 1), clamp(1 - Math.abs(d - 5) / 1.6, 0, 1)];
+      glows.forEach((g, k) => {
+        const [gw, gh] = geo.gw[k];
+        g.style.transform = `translate3d(${(pos[k][0] - gw / 2).toFixed(1)}px, ${(pos[k][1] - gh / 2).toFixed(1)}px, 0)`;
+        g.style.opacity = (w[k] * dim).toFixed(3);
+      });
+      const idx = clamp(Math.round(d), 0, N - 1);
+      if (idx !== shownIdx) {
+        shownIdx = idx;
+        ticks.forEach((c, k) => c.classList.toggle('on', k === idx));
+        lbls.forEach((c, k) => c.classList.toggle('on', k === idx));
+        root.style.setProperty('--rim', rims[idx]);
+      }
+    }
+    function loop(now) {
+      raf = 0;
+      const dt = Math.min(100, now - (last || now));
+      last = now;
+      if (running() && !night && settled()) {
+        elapsed += dt;
+        if (elapsed >= DWELL) { elapsed = 0; advance(); }
+      }
+      const creep = !night && settled() ? Math.min(1, elapsed / DWELL) * 0.42 : 0;
+      const target = night ? nightTarget : Math.max(scrollPos + creep, floor);
+      shown += (target - shown) * (RM.matches ? 1 : 0.12);
+      render();
+      if (st.visible) raf = requestAnimationFrame(loop);
+    }
+    const start = () => { if (!raf) { last = 0; raf = requestAnimationFrame(loop); } };
+    function advance() {
+      if (eng.active < N - 1) { floor = shown; eng.go(eng.active + 1); } else startNight();
+    }
+    function startNight() {
+      if (night) return;
+      night = true;
+      floor = -Infinity;
+      nightTarget = 5.8;
+      root.classList.add('is-night');
+      setDiary(0, 'I morgon väntar en ny fågel.');
+      const quick = RM.matches;
+      setTimeout(() => { root.classList.add('fade'); }, quick ? 0 : 1500);
+      setTimeout(() => { eng.go(0, true); shown = -0.8; nightTarget = -0.8; }, quick ? 0 : 2000);
+      setTimeout(() => { root.classList.remove('fade', 'is-night'); nightTarget = 0; }, quick ? 0 : 2500);
+      setTimeout(() => { night = false; elapsed = 0; setDiary(0); }, quick ? 0 : 3300);
+    }
+    st.hooks.onFrame = (pos) => { scrollPos = pos; };
+    st.hooks.onSettle = () => { floor = -Infinity; };
+    st.hooks.onActive = (i) => {
+      elapsed = 0;
+      if (!night) setDiary(i);
+      sun.setAttribute('aria-valuenow', String(i + 1));
+      sun.setAttribute('aria-valuetext', `${SLIDES[i].part}: ${SLIDES[i].k}`);
+    };
+    st.hooks.onUser = () => { holdUntil = performance.now() + 6000; floor = -Infinity; setLabel(); };
+    st.hooks.onWrap = () => startNight();
+    btn.addEventListener('click', () => { playing = !playing; holdUntil = 0; elapsed = 0; setLabel(); });
+    stage.forEach((n) => {
+      n.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { hover = true; setLabel(); } });
+      n.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { hover = false; setLabel(); } });
+    });
+    root.addEventListener('focusin', () => { focus = true; setLabel(); });
+    root.addEventListener('focusout', (e) => { if (!root.contains(e.relatedTarget)) { focus = false; setLabel(); } });
+    root.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') holdUntil = performance.now() + 7000; }, { passive: true });
+    // Drag the sun (or tap the arc) to move through the day.
+    const tAt = (clientX) => clamp((clientX - svg.getBoundingClientRect().left - A.x0) / (A.x1 - A.x0), 0, 1);
+    const scrub = (t) => { eng.track.scrollLeft = t * (eng.track.scrollWidth - eng.track.clientWidth); };
+    let dragId = null;
+    let downX = 0;
+    svg.addEventListener('pointerdown', (e) => {
+      if (night || !A) return;
+      dragId = e.pointerId;
+      downX = e.clientX;
+      dragging = e.pointerType === 'mouse';
+      if (dragging) { svg.setPointerCapture(e.pointerId); eng.track.classList.add('dragging'); scrub(tAt(e.clientX)); }
+    });
+    svg.addEventListener('pointermove', (e) => {
+      if (e.pointerId !== dragId) return;
+      if (!dragging && Math.abs(e.clientX - downX) > 6) { dragging = true; svg.setPointerCapture(e.pointerId); eng.track.classList.add('dragging'); }
+      if (dragging) scrub(tAt(e.clientX));
+    });
+    svg.addEventListener('pointerup', (e) => {
+      if (e.pointerId !== dragId) return;
+      dragId = null;
+      dragging = false;
+      eng.track.classList.remove('dragging');
+      holdUntil = performance.now() + 5000;
+      floor = -Infinity;
+      eng.go(Math.round(tAt(e.clientX) * (N - 1)));
+      setLabel();
+    });
+    svg.addEventListener('pointercancel', (e) => {
+      if (e.pointerId !== dragId) return;
+      dragId = null;
+      dragging = false;
+      eng.track.classList.remove('dragging');
+      eng.go(eng.nearest());
+    });
+    sun.addEventListener('keydown', (e) => {
+      const k = { ArrowRight: 1, ArrowUp: 1, ArrowLeft: -1, ArrowDown: -1 }[e.key];
+      if (k) { e.preventDefault(); st.hooks.onUser(); eng.go(eng.active + k); }
+      else if (e.key === 'Home') { e.preventDefault(); st.hooks.onUser(); eng.go(0); }
+      else if (e.key === 'End') { e.preventDefault(); st.hooks.onUser(); eng.go(N - 1); }
+    });
+    addEventListener('resize', () => { geo = null; if (!raf) render(); }, { passive: true });
+    document.addEventListener('visibilitychange', setLabel);
+    if (RM.addEventListener) RM.addEventListener('change', () => { if (RM.matches) playing = false; setLabel(); });
+    setLabel();
+    st.dayStart = () => { geo = null; start(); setLabel(); };
+    render();
+  }
+
+  /* ---------- B: the field journal ---------- */
+  function setupBook(root) {
+    const book = root.querySelector('.book');
+    const L = book.querySelector('.page-l');
+    const R = book.querySelector('.page-r');
+    const leaf = book.querySelector('.leaf');
+    const front = leaf.querySelector('.front');
+    const back = leaf.querySelector('.back');
+    const ink = book.querySelector('.ink');
+    const prev = root.querySelector('[data-prev]');
+    const next = root.querySelector('[data-next]');
+    const count = root.querySelector('[data-count]');
+    const live = root.querySelector('[data-live]');
+    const mq = matchMedia('(max-width: 859px)');
+    let idx = 0;
+    let single = mq.matches;
+    let busy = false;
+    let visible = false;
+    let seen = false;
+    let angle = 0;
+    let anims = [];
+    const noteEl = (n) => {
+      const p = h('p', { class: 'note', 'data-tx': n.x, 'data-ty': n.y }, h('span', { class: 'nt', text: n.t }));
+      if (n.edge) p.dataset.edge = '1';
+      if (n.via) p.dataset.via = '1';
+      return p;
+    };
+    const phoneEl = (sl) => h('div', { class: 'phone' }, h('div', { class: 'screen' }, screenImg(`img/${sl.id}.webp`, sl.alt)));
+    const kickEl = (sl) => h('p', { class: 'pg-kick' }, h('span'), sl.k);
+    const textPage = (i) => h('div', { class: 'pg pg-text' },
+      h('div', { class: 'pg-col' }, h('p', { class: 'pg-pl', text: `Pl. ${ROMAN[i]}` }), kickEl(SLIDES[i]), h('h4', { class: 'pg-h', text: SLIDES[i].h }), h('p', { class: 'pg-p', text: SLIDES[i].p })),
+      h('div', { class: 'pg-notes' }, ...NOTES[SLIDES[i].id].map(noteEl)),
+      h('span', { class: 'folio fl', text: String(2 * i + 1) }));
+    const phonePage = (i) => h('div', { class: 'pg pg-phone' },
+      h('span', { class: 'tape t1' }), phoneEl(SLIDES[i]), h('span', { class: 'tape t2' }),
+      h('p', { class: 'pg-cap', text: SLIDES[i].k }), h('span', { class: 'folio fr', text: String(2 * i + 2) }));
+    const singlePage = (i) => h('div', { class: 'pg pg-single' },
+      h('div', { class: 'ps-head' }, h('p', { class: 'pg-pl', text: `Pl. ${ROMAN[i]}` }), kickEl(SLIDES[i])),
+      h('h4', { class: 'pg-h', text: SLIDES[i].h }),
+      h('div', { class: 'ps-phone' }, h('span', { class: 'tape t1' }), phoneEl(SLIDES[i])),
+      h('div', { class: 'ps-notes' }, ...NOTES[SLIDES[i].id].map(noteEl)),
+      h('span', { class: 'folio fr', text: String(i + 1) }));
+    const screenRect = () => {
+      const sc = R.querySelector('.screen');
+      const b = book.getBoundingClientRect();
+      const r = sc.getBoundingClientRect();
+      return { x: r.left - b.left, y: r.top - b.top, w: r.width, h: r.height, pad: (sc.parentElement.offsetWidth - sc.offsetWidth) / 2 };
+    };
+    // Each note sits at the height of what it points at; notes never overlap.
+    function placeNotes(page) {
+      if (single) return;
+      const notes = [...page.querySelectorAll('.note')];
+      if (!notes.length) return;
+      const sr = screenRect();
+      const H = book.clientHeight;
+      const items = notes.map((n) => {
+        const lh = parseFloat(getComputedStyle(n).lineHeight) || 20;
+        return { n, ty: sr.y + (+n.dataset.ty / 1920) * sr.h, hh: n.offsetHeight, lh };
+      }).sort((a, b) => a.ty - b.ty);
+      let min = H * 0.05;
+      items.forEach((it) => { it.top = Math.max(it.ty - it.lh / 2, min); min = it.top + it.hh + 12; });
+      let max = H * 0.93;
+      for (let k = items.length - 1; k >= 0; k--) { const it = items[k]; if (it.top + it.hh > max) it.top = max - it.hh; max = it.top - 12; }
+      items.forEach((it) => { it.n.style.top = `${it.top.toFixed(1)}px`; });
+    }
+    function headPath(e, p) {
+      const dx = e.x - p.x;
+      const dy = e.y - p.y;
+      const l = Math.hypot(dx, dy) || 1;
+      const ux = dx / l;
+      const uy = dy / l;
+      const a = 0.46;
+      const z = 9;
+      const r1 = { x: e.x - z * (ux * Math.cos(a) - uy * Math.sin(a)), y: e.y - z * (uy * Math.cos(a) + ux * Math.sin(a)) };
+      const r2 = { x: e.x - z * (ux * Math.cos(-a) - uy * Math.sin(-a)), y: e.y - z * (uy * Math.cos(-a) + ux * Math.sin(-a)) };
+      return `M${r1.x.toFixed(1)},${r1.y.toFixed(1)} L${e.x.toFixed(1)},${e.y.toFixed(1)} L${r2.x.toFixed(1)},${r2.y.toFixed(1)}`;
+    }
+    function drawInk(animate) {
+      anims.forEach((a) => a.cancel());
+      anims = [];
+      const W = book.clientWidth;
+      const H = book.clientHeight;
+      ink.setAttribute('width', W);
+      ink.setAttribute('height', H);
+      ink.setAttribute('viewBox', `0 0 ${W} ${H}`);
+      ink.replaceChildren();
+      ink.classList.remove('hide');
+      const b = book.getBoundingClientRect();
+      const sr = screenRect();
+      const notes = [...(single ? R : L).querySelectorAll('.note')];
+      notes.forEach((n, k) => {
+        const tx = +n.dataset.tx;
+        const ty = +n.dataset.ty;
+        const t = n.querySelector('.nt');
+        const tr = t.getBoundingClientRect();
+        const lh = parseFloat(getComputedStyle(n).lineHeight) || 20;
+        const yT = sr.y + (ty / 1920) * sr.h;
+        let d;
+        let from;
+        let end;
+        if (!single) {
+          const st0 = { x: tr.right - b.left + 7, y: tr.top - b.top + lh * 0.55 };
+          if (n.dataset.via) {
+            const entry = { x: sr.x - 2, y: sr.y + (1012 / 1920) * sr.h };
+            const mid = { x: sr.x + (930 / 1080) * sr.w, y: entry.y };
+            end = { x: sr.x + (1004 / 1080) * sr.w, y: sr.y + (1060 / 1920) * sr.h };
+            from = { x: end.x, y: mid.y };
+            d = `M${st0.x},${st0.y} C${st0.x + (entry.x - st0.x) * 0.5},${st0.y} ${entry.x - 30},${entry.y} ${entry.x},${entry.y} L${mid.x},${mid.y} Q${end.x},${mid.y} ${end.x},${end.y}`;
+          } else {
+            end = n.dataset.edge ? { x: sr.x - sr.pad - 3, y: yT } : { x: sr.x + (tx / 1080) * sr.w, y: yT };
+            const dx = end.x - st0.x;
+            from = { x: end.x - Math.max(30, dx * 0.35), y: end.y };
+            d = `M${st0.x},${st0.y} C${st0.x + dx * 0.45},${st0.y + (end.y - st0.y) * 0.08} ${from.x},${from.y} ${end.x},${end.y}`;
+          }
+        } else {
+          const left = n.dataset.via ? false : k % 2 === 0;
+          const st0 = left ? { x: tr.left - b.left - 6, y: tr.top - b.top + lh * 0.55 } : { x: tr.right - b.left + 6, y: tr.top - b.top + lh * 0.55 };
+          const edgeX = left ? sr.x - sr.pad - 3 : sr.x + sr.w + sr.pad + 3;
+          const lane = left ? sr.x - sr.pad - 12 - k * 5 : sr.x + sr.w + sr.pad + 12 + k * 5;
+          end = { x: edgeX, y: yT };
+          from = { x: lane, y: yT };
+          d = `M${st0.x},${st0.y} C${lane},${st0.y} ${lane},${st0.y} ${lane},${st0.y - 24} L${lane + (left ? -2 : 2)},${yT + 26} Q${lane},${yT} ${edgeX},${yT}`;
+        }
+        const under = s('path', { class: 'under', d });
+        const line = s('path', { class: 'line', d });
+        const hd = s('path', { class: 'line', d: headPath(end, from) });
+        ink.append(s('g', {}, under, line, hd));
+        if (animate && !RM.matches) {
+          const delay = 380 + k * 520;
+          t.classList.add('w');
+          const wa = writeOn(t, k * 520, 520);
+          if (wa) anims.push(wa);
+          const len = line.getTotalLength();
+          [under, line].forEach((pth) => {
+            pth.style.strokeDasharray = `${len}`;
+            anims.push(pth.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }], { duration: 560, delay, fill: 'backwards', easing: 'cubic-bezier(.45,.05,.55,.95)' }));
+          });
+          anims.push(hd.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 120, delay: delay + 520, fill: 'backwards' }));
+        }
+      });
+    }
+    function update() {
+      count.textContent = `uppslag ${idx + 1} av ${N}`;
+      prev.setAttribute('aria-disabled', idx <= 0 ? 'true' : 'false');
+      next.setAttribute('aria-disabled', idx >= N - 1 ? 'true' : 'false');
+      live.textContent = `Uppslag ${idx + 1} av ${N}: ${SLIDES[idx].h}. ${NOTES[SLIDES[idx].id].map((n) => n.t).join(' ')}`;
+    }
+    function paint(animate) {
+      if (single) { L.replaceChildren(); R.replaceChildren(singlePage(idx)); } else { L.replaceChildren(textPage(idx)); R.replaceChildren(phonePage(idx)); }
+      requestAnimationFrame(() => { placeNotes(L); drawInk(animate); });
+      update();
+    }
+    function setAngle(a) {
+      angle = a;
+      leaf.style.transform = `rotateY(${a.toFixed(2)}deg)`;
+      const lift = Math.sin((Math.abs(a) * Math.PI) / 180);
+      leaf.style.setProperty('--lift', lift.toFixed(3));
+      R.style.setProperty('--cast', (a > -90 ? lift : 0).toFixed(3));
+      L.style.setProperty('--cast', (a < -90 ? lift : 0).toFixed(3));
+    }
+    function setupLeaf(dir, to) {
+      ink.classList.add('hide');
+      leaf.hidden = false;
+      front.className = 'face front';
+      back.className = 'face back';
+      if (single) {
+        back.classList.add('blank');
+        back.replaceChildren();
+        if (dir === 1) { front.replaceChildren(singlePage(idx)); R.replaceChildren(singlePage(to)); setAngle(0); }
+        else { front.replaceChildren(singlePage(to)); setAngle(-180); }
+      } else if (dir === 1) {
+        front.replaceChildren(phonePage(idx));
+        back.replaceChildren(textPage(to));
+        R.replaceChildren(phonePage(to));
+        placeNotes(back);
+        setAngle(0);
+      } else {
+        front.replaceChildren(phonePage(to));
+        back.replaceChildren(textPage(idx));
+        L.replaceChildren(textPage(to));
+        placeNotes(back);
+        placeNotes(L);
+        setAngle(-180);
+      }
+    }
+    function finish(dir, to) {
+      if (single) { if (dir === -1) R.replaceChildren(singlePage(to)); }
+      else if (dir === 1) { L.replaceChildren(textPage(to)); placeNotes(L); }
+      else R.replaceChildren(phonePage(to));
+      leaf.hidden = true;
+      setAngle(0);
+      R.style.setProperty('--cast', 0);
+      L.style.setProperty('--cast', 0);
+      idx = to;
+      busy = false;
+      update();
+      requestAnimationFrame(() => { if (!busy) drawInk(visible); });
+    }
+    function cancel(dir) {
+      if (single) { if (dir === 1) R.replaceChildren(singlePage(idx)); }
+      else if (dir === 1) R.replaceChildren(phonePage(idx));
+      else { L.replaceChildren(textPage(idx)); placeNotes(L); }
+      leaf.hidden = true;
+      setAngle(0);
+      R.style.setProperty('--cast', 0);
+      L.style.setProperty('--cast', 0);
+      busy = false;
+      requestAnimationFrame(() => { if (!busy) drawInk(false); });
+    }
+    // Every leaf animation gets a token; starting a new one stops the old (a flip can take over a peek).
+    let token = 0;
+    let peeking = false;
+    function animateLeaf(from, to, dur, done) {
+      const my = ++token;
+      if (RM.matches) { setAngle(to); done(); return; }
+      const t0 = performance.now();
+      const step = (now) => {
+        if (my !== token) return;
+        const p = Math.min(1, (now - t0) / dur);
+        setAngle(from + (to - from) * ease(p));
+        if (p < 1) requestAnimationFrame(step); else done();
+      };
+      requestAnimationFrame(step);
+    }
+    function stopPeek() {
+      if (!peeking) return;
+      peeking = false;
+      token++;
+      cancel(1);
+    }
+    function flip(dir) {
+      if (peeking) {
+        peeking = false;
+        if (dir === 1) { const to = idx + 1; animateLeaf(angle, -180, 620, () => finish(1, to)); return true; }
+        token++;
+        cancel(1);
+      }
+      const to = idx + dir;
+      if (busy || to < 0 || to >= N) return false;
+      busy = true;
+      setupLeaf(dir, to);
+      animateLeaf(dir === 1 ? 0 : -180, dir === 1 ? -180 : 0, 860, () => finish(dir, to));
+      return true;
+    }
+    function jump(to) {
+      stopPeek();
+      if (busy || to === idx) return;
+      idx = to;
+      paint(visible);
+    }
+    // The page lifts a little the first time the book is seen, so people see it can be turned.
+    function peek() {
+      if (RM.matches || busy || idx >= N - 1) return;
+      busy = true;
+      peeking = true;
+      setupLeaf(1, idx + 1);
+      animateLeaf(0, -26, 620, () => animateLeaf(-26, 0, 760, () => { peeking = false; cancel(1); }));
+    }
+    let drag = null;
+    let suppress = false;
+    book.addEventListener('pointerdown', (e) => {
+      stopPeek();
+      if (busy || (e.pointerType === 'mouse' && e.button !== 0)) return;
+      drag = { x: e.clientX, y: e.clientY, id: e.pointerId, dir: 0, lx: e.clientX, t: performance.now(), v: 0 };
+    });
+    book.addEventListener('pointermove', (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const dx = e.clientX - drag.x;
+      const dy = e.clientY - drag.y;
+      if (!drag.dir) {
+        if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy) * 1.2) { if (Math.abs(dy) > 12) drag = null; return; }
+        const dir = dx < 0 ? 1 : -1;
+        const to = idx + dir;
+        if (busy || to < 0 || to >= N) { drag = null; return; }
+        busy = true;
+        setupLeaf(dir, to);
+        drag.dir = dir;
+        book.setPointerCapture(e.pointerId);
+        book.classList.add('grabbing');
+      }
+      const span = book.clientWidth * (single ? 0.95 : 0.9);
+      const f = clamp(Math.abs(dx) / span, 0, 1);
+      setAngle(drag.dir === 1 ? -180 * f : -180 + 180 * f);
+      const now = performance.now();
+      drag.v = (e.clientX - drag.lx) / Math.max(1, now - drag.t);
+      drag.lx = e.clientX;
+      drag.t = now;
+    });
+    const end = (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const d = drag;
+      drag = null;
+      book.classList.remove('grabbing');
+      if (!d.dir) return;
+      suppress = true;
+      setTimeout(() => { suppress = false; }, 60);
+      const progress = d.dir === 1 ? -angle / 180 : (angle + 180) / 180;
+      const flick = d.dir === 1 ? d.v < -0.45 : d.v > 0.45;
+      const to = idx + d.dir;
+      if (e.type !== 'pointercancel' && (progress > 0.36 || flick)) animateLeaf(angle, d.dir === 1 ? -180 : 0, 200 + 520 * (1 - progress), () => finish(d.dir, to));
+      else animateLeaf(angle, d.dir === 1 ? 0 : -180, 360, () => cancel(d.dir));
+    };
+    book.addEventListener('pointerup', end);
+    book.addEventListener('pointercancel', end);
+    book.addEventListener('click', (e) => {
+      if (suppress || busy || single) return;
+      const r = book.getBoundingClientRect();
+      flip(e.clientX - r.left > r.width / 2 ? 1 : -1);
+    });
+    book.addEventListener('keydown', (e) => {
+      if (e.altKey || e.ctrlKey || e.metaKey) return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); flip(1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); flip(-1); }
+      else if (e.key === 'Home') { e.preventDefault(); jump(0); }
+      else if (e.key === 'End') { e.preventDefault(); jump(N - 1); }
+    });
+    prev.addEventListener('click', () => flip(-1));
+    next.addEventListener('click', () => flip(1));
+    const relayout = () => {
+      if (busy) return;
+      single = mq.matches;
+      book.classList.toggle('single', single);
+      paint(false);
+    };
+    if (mq.addEventListener) mq.addEventListener('change', relayout);
+    let rt = 0;
+    addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (!busy) { placeNotes(L); drawInk(false); } }, 120); }, { passive: true });
+    book.classList.toggle('single', single);
+    paint(false);
+    return {
+      show(v) {
+        visible = v;
+        if (v && !seen) {
+          seen = true;
+          if (!busy) drawInk(true);
+          setTimeout(peek, RM.matches ? 0 : 2600);
+        }
+      },
+    };
+  }
+
+  /* ---------- Wire up ---------- */
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => window.dispatchEvent(new Event('resize')));
+  const tours = [...document.querySelectorAll('[data-tour]')].map((root) => {
+    const st = buildTour(root, root.dataset.tour);
+    if (root.dataset.tour === 'c') setupDay(root, st);
+    return { root, st };
+  });
+  const bookRoot = document.querySelector('[data-book]');
+  const bk = setupBook(bookRoot);
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      const v = en.isIntersecting;
+      if (en.target === bookRoot) { bk.show(v); return; }
+      const t = tours.find((x) => x.root === en.target);
+      if (!t || t.st.visible === v) return;
+      t.st.show(v);
+      if (v && t.st.dayStart) t.st.dayStart();
+      if (!v) t.st.ctls.forEach((c) => { if (c.listen && Talgoxe.owns(c.listen)) Talgoxe.stop(); });
+    });
+  }, { threshold: 0.3 });
+  tours.forEach((t) => io.observe(t.root));
+  io.observe(bookRoot);
+  if (RM.addEventListener) RM.addEventListener('change', () => { if (RM.matches) tours.forEach((t) => t.st.ctls.forEach((c) => c.stop && c.stop())); });
+
+  /* ---------- Choose and copy ---------- */
+  const form = document.getElementById('choose-form');
+  const out = document.getElementById('answer');
+  const answer = () => {
+    const f = new FormData(form);
+    const note = (f.get('note') || '').toString().trim();
+    const pick = f.get('pick');
+    let txt = pick === 'behåll dagens' ? `Karusellen: behåll dagens, ${f.get('go')}` : `Karusell ${pick}, ${f.get('bird')}, ${f.get('go')}`;
+    if (note) txt += `. Ändringar: ${note}`;
+    return txt;
+  };
+  const render = () => { out.textContent = answer(); };
+  form.addEventListener('input', render);
+  form.addEventListener('change', render);
+  form.addEventListener('submit', (e) => e.preventDefault());
+  render();
+  const copied = document.getElementById('copied');
+  document.getElementById('copy-btn').addEventListener('click', () => {
+    const text = answer();
+    const done = (msg) => { copied.textContent = msg; copied.hidden = false; setTimeout(() => { copied.hidden = true; }, 3500); };
+    const fallback = () => {
+      const r = document.createRange();
+      r.selectNodeContents(out);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(r);
+      done('markerat, kopiera det själv');
+    };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(() => done('kopierat, klistra in till mig'), fallback);
+      else fallback();
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
