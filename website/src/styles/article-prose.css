@@ -12,6 +12,14 @@
 .article-prose strong { font-weight: 600; color: var(--ink); }
 .article-prose blockquote { margin: 34px 0; padding: 6px 0 6px 24px; border-left: 2px solid var(--rust); font-family: var(--font-serif); font-style: italic; font-size: 27px; line-height: 1.25; color: var(--rust-deep); }
 .article-prose blockquote p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
+/* A vertical video (raw HTML in the note: <figure class="note-video">) in a narrow centred column, with its credit
+   right under it in the species pages' credit style: small, muted, underlined links, one line per source. */
+.article-prose .note-video { max-width: 340px; margin: 34px auto 30px; }
+.article-prose .note-video video { display: block; width: 100%; height: auto; border-radius: 18px; background: var(--dark); box-shadow: 0 0 0 1px var(--line), 0 18px 36px rgba(var(--dark-rgb), .16); }
+.article-prose .note-video figcaption { margin-top: 12px; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
+.article-prose .note-video figcaption span { display: block; margin-bottom: 3px; }
+.article-prose .note-video figcaption a { color: var(--muted); font-weight: 400; }
+.article-prose .note-video figcaption a:hover { color: var(--rust); }
 @media (max-width: 760px) {
   .article-prose { font-size: 16px; }
   .article-prose > p:first-child { font-size: 18px; }

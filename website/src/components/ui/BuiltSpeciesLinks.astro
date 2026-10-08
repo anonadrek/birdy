@@ -1,0 +1,12 @@
+---
+// Shows a field note's body with every link to a species page this build doesn't have turned into plain text
+// (src/lib/note-links.mjs says why). The note itself renders as usual (<Content /> in the slot), then this checks
+// its links against the pages that are really built, in both languages.
+import { unwrapUnbuiltSpeciesLinks } from '../../lib/note-links.mjs';
+import { builtSpeciesHrefs } from '../../lib/species-routes';
+
+const built = new Set([...(await builtSpeciesHrefs('sv')), ...(await builtSpeciesHrefs('en'))]);
+const html = await Astro.slots.render('default');
+---
+
+<Fragment set:html={unwrapUnbuiltSpeciesLinks(html, built)} />

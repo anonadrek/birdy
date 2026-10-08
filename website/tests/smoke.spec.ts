@@ -51,7 +51,7 @@ test.describe('Field Notes', () => {
   test('pages fit a narrow mobile viewport (SV and EN)', async ({ page }) => {
     for (const width of [360, 390]) {
       await page.setViewportSize({ width, height: 844 });
-      for (const path of ['/sv/', '/sv/blog/', '/sv/blog/why-birdy/', '/', '/blog/', '/blog/why-birdy/']) {
+      for (const path of ['/sv/', '/sv/blog/', '/sv/blog/why-birdy/', '/sv/blog/see-the-song/', '/', '/blog/', '/blog/why-birdy/', '/blog/see-the-song/']) {
         await page.goto(path);
         const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
         expect(scrollWidth, `${path} at ${width}px should not overflow horizontally`).toBeLessThanOrEqual(width);
