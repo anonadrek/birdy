@@ -95,6 +95,13 @@ export async function frameAt(page, t, { type = 'png', quality, cover = false } 
   return page.screenshot(type === 'jpeg' ? { type, quality } : { type });
 }
 
+// The video encode settings, shared with cover/title-card.mjs so the title card it overlays on
+// top of an already-rendered video re-encodes with exactly the same settings as the original.
+export const VIDEO_ENCODE_ARGS = [
+  '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-profile:v', 'high', '-g', '60', '-r', String(FPS),
+  '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-color_range', 'tv',
+];
+
 export function x264Args({ frames, trackWav, outMp4 }) {
   return [
     '-hide_banner', '-nostats', '-loglevel', 'error', '-y',
@@ -102,8 +109,7 @@ export function x264Args({ frames, trackWav, outMp4 }) {
     '-i', trackWav,
     '-map', '0:v:0', '-map', '1:a:0',
     '-vf', 'scale=out_color_matrix=bt709:out_range=tv,format=yuv420p',
-    '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-profile:v', 'high', '-g', '60', '-r', String(FPS),
-    '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-color_range', 'tv',
+    ...VIDEO_ENCODE_ARGS,
     '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
     '-frames:v', String(frames), '-t', (frames / FPS).toFixed(4),
     // -f mp4: the output is written to a ".partial" name first (lib/atomic.mjs)

@@ -35,6 +35,48 @@ test('credit line with URLs: the licence deed after its name and the Commons fil
   assert.doesNotMatch(creditLine(record()), /https?:/);
 });
 
+// The cover's flock artwork credits its PhyloPic silhouette (Albin 2026-10-08: "Go for it").
+const SILHOUETTE_CC0 = { author: 'Guillaume Dera', licence: 'CC0', url: 'https://www.phylopic.org/images/1f3bf322-4ca3-402f-80c9-0260843de5e4', note: 'own species' };
+const SILHOUETTE_CC_BY = { author: 'Maxime Dahirel', licence: 'CC BY 3.0', url: 'https://www.phylopic.org/images/0b72dd38-2dc1-4675-990e-a46259855ce1', note: 'own species' };
+const SILHOUETTE_PD_MARK = { author: 'Marie Attard', licence: 'Public domain mark', url: 'https://www.phylopic.org/images/1042852a-ac13-4679-8d57-c31c2dce8513', note: 'genus' };
+
+test('credit line without a silhouette is unchanged (the default)', () => {
+  assert.equal(creditLine(record()), CREDIT);
+  assert.equal(creditLine(record(), { silhouette: null }), CREDIT);
+});
+
+test('credit line adds the silhouette credit last; CC0 gets no "adapted"', () => {
+  assert.equal(creditLine(record(), { silhouette: SILHOUETTE_CC0 }), `${CREDIT} · Silhouette: Guillaume Dera, CC0, via PhyloPic`);
+});
+
+test('credit line: a CC BY silhouette gets ", adapted" (the flock artwork recolours and resizes it)', () => {
+  assert.equal(creditLine(record(), { silhouette: SILHOUETTE_CC_BY }), `${CREDIT} · Silhouette: Maxime Dahirel, CC BY 3.0, via PhyloPic, adapted`);
+});
+
+test('credit line: the public domain mark gets no "adapted" either', () => {
+  assert.equal(creditLine(record(), { silhouette: SILHOUETTE_PD_MARK }), `${CREDIT} · Silhouette: Marie Attard, Public domain mark, via PhyloPic`);
+});
+
+test('credit line: the silhouette credit is the same with or without withUrls (PhyloPic gets no deed link)', () => {
+  const withUrls = creditLine(record(), { withUrls: true, silhouette: SILHOUETTE_CC_BY });
+  assert.ok(withUrls.endsWith('Silhouette: Maxime Dahirel, CC BY 3.0, via PhyloPic, adapted'));
+});
+
+test('silhouette author with a dash is cleaned the same way as the other credits', () => {
+  const c = buildCaptions(record(), { silhouette: { author: 'Jean–Pierre Dupont', licence: 'CC0' } });
+  for (const text of [c.instagram, c.facebook, c.youtube.description]) assert.doesNotMatch(text, /[–—]/);
+  assert.match(c.facebook, /Silhouette: Jean-Pierre Dupont, CC0, via PhyloPic/);
+});
+
+test('buildCaptions carries the silhouette credit into every caption field that has one', () => {
+  const c = buildCaptions(record(), { silhouette: SILHOUETTE_CC_BY });
+  const expected = `${CREDIT} · Silhouette: Maxime Dahirel, CC BY 3.0, via PhyloPic, adapted`;
+  assert.equal(c.credit, expected);
+  assert.equal(c.creditWithUrls, `${CREDIT_URLS} · Silhouette: Maxime Dahirel, CC BY 3.0, via PhyloPic, adapted`);
+  assert.equal(c.instagram.split('\n\n').at(-2), expected);
+  for (const text of [c.facebook, c.youtube.description]) assert.match(text, /Silhouette: Maxime Dahirel, CC BY 3\.0, via PhyloPic, adapted$/m);
+});
+
 test('Commons links are made safe for captions: parentheses and dashes in file names are encoded', () => {
   const rec = withAudio(record(), { sourceUrl: 'https://commons.wikimedia.org/wiki/File:Common_Gull_(Fiskem%C3%A5ke)_(Larus_canus)_\u2013_Tromsø.ogg' });
   const c = buildCaptions(rec);

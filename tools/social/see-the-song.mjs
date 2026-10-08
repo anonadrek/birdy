@@ -70,6 +70,9 @@ if (!isValidIsoDate(opt.start)) {
 }
 
 const overrides = JSON.parse(await readFile(join(here, 'overrides.json'), 'utf8'));
+// cover/covers.json: the flock cover's clue and PhyloPic silhouette credit, keyed by QID; the
+// silhouette credit (when there is one) goes at the end of the caption credit line.
+const covers = JSON.parse(await readFile(join(here, 'cover', 'covers.json'), 'utf8'));
 const records = await loadRecords(opt.data);
 const byQid = new Map(records.map((r) => [r.qid, r]));
 
@@ -180,16 +183,17 @@ function captionJson(rec, captions) {
 async function renderSpecies(rec, out, work, assets) {
   const label = `${rec.qid} ${rec.names.en}`;
   const audioSrc = mediaPath(opt.data, rec.audio.file);
+  const silhouette = covers[rec.qid]?.silhouette ?? null;
   if (opt['captions-only']) {
     const trimmed = rec.audio.trimmed === true || isCut(await probeDuration(audioSrc), MAX_CLIP_SEC);
-    const captions = buildCaptions(rec, { trimmed });
+    const captions = buildCaptions(rec, { trimmed, silhouette });
     await out.write('caption.json', captionJson(rec, captions));
     return { captions, info: await readInfo(join(opt.out, rec.slug.en)), line: `${label}: captions written` };
   }
 
   const clip = await prepareClip(audioSrc, work, { maxSec: MAX_CLIP_SEC });
   const trimmed = rec.audio.trimmed === true || clip.cut;
-  const captions = buildCaptions(rec, { trimmed });
+  const captions = buildCaptions(rec, { trimmed, silhouette });
   const samples = await decodeMono(clip.clip);
   const D = samples.length / SAMPLE_RATE;
   const tl = timeline(D);

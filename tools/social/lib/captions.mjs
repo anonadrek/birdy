@@ -67,17 +67,34 @@ function creditPart(label, media, edit, withUrls) {
 }
 
 /**
+ * "Silhouette: A, CC0, via PhyloPic" or "Silhouette: B, CC BY 3.0, via PhyloPic, adapted". The
+ * cover's flock-of-birds artwork recolours and resizes the PhyloPic silhouette, which is an
+ * adaptation under a CC BY (or CC BY-SA) licence; CC0 and the public domain mark place no such
+ * condition on a recolour, so they get no "adapted". PhyloPic has no licence deed URL to add.
+ */
+function silhouetteCreditPart(silhouette) {
+  const author = cleanName(silhouette.author);
+  const licence = String(silhouette.licence ?? '').trim();
+  const adapted = /^cc by\b/i.test(licence) ? ', adapted' : '';
+  return `Silhouette: ${[author, licence].filter(Boolean).join(', ')}, via PhyloPic${adapted}`;
+}
+
+/**
  * "Photo: A, CC BY 4.0, via Wikimedia Commons, cropped · Sound: B, CC0, via Wikimedia Commons, edited".
  * The sound is always edited (levelled and faded); "trimmed and edited" when the clip in the
  * video is shorter than the original recording. `withUrls` adds each licence's deed after its
  * name and the Commons file page after "via Wikimedia Commons" (CC BY and BY-SA 4.0 ask for a
- * link to the material itself, section 3(a)(1)(A)(v)).
+ * link to the material itself, section 3(a)(1)(A)(v)). `silhouette` (cover/covers.json's
+ * `silhouette` object for the species) adds the cover artwork's PhyloPic credit at the end, in
+ * both the short and the `withUrls` form; omitted when there is no silhouette credit to give.
  */
-export function creditLine(record, { trimmed = false, withUrls = false } = {}) {
-  return [
+export function creditLine(record, { trimmed = false, withUrls = false, silhouette = null } = {}) {
+  const parts = [
     creditPart('Photo', heroImage(record), 'cropped', withUrls),
     creditPart('Sound', record.audio, trimmed ? 'trimmed and edited' : 'edited', withUrls),
-  ].join(' · ');
+  ];
+  if (silhouette) parts.push(silhouetteCreditPart(silhouette));
+  return parts.join(' · ');
 }
 
 export function nameTag(record) {
@@ -124,14 +141,16 @@ export function assertNoDashes(label, text) {
 
 /**
  * Builds all captions for one species. `trimmed` is true when the clip in the video is shorter
- * than the original recording (the pipeline trimmed it, or the renderer cut it).
+ * than the original recording (the pipeline trimmed it, or the renderer cut it). `silhouette` is
+ * the species' `cover/covers.json` silhouette object, when the video has the flock-cover title
+ * card; it is credited at the end of the credit line, in every caption field that carries one.
  * Facebook and YouTube links are clickable, so their credits carry the licence URLs; Instagram
  * keeps the short credit (its only URL is the CC BY-SA line when the video needs one).
  */
-export function buildCaptions(record, { trimmed = false } = {}) {
+export function buildCaptions(record, { trimmed = false, silhouette = null } = {}) {
   const link = linkFor(record);
-  const credit = creditLine(record, { trimmed });
-  const creditWithUrls = creditLine(record, { trimmed, withUrls: true });
+  const credit = creditLine(record, { trimmed, silhouette });
+  const creditWithUrls = creditLine(record, { trimmed, withUrls: true, silhouette });
   const sa = usesShareAlike(record);
   const tags = hashtags(record).join(' ');
   const first = withSwedishName(hook(record), record);
