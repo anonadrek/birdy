@@ -41,7 +41,7 @@
     <string name="a11y_stamp_number">Badge number %1$d</string>
     <string name="a11y_stamp_track">%1$d of %2$d badges earned</string>
     <string name="a11y_crop_hint">Drag the corners to crop the image</string>
-    <string name="onboarding_hero_image_cd">Birdy — the app's bird mascot</string>
+    <string name="onboarding_hero_image_cd">Birdy, the app's bird mascot</string>
 
     <!-- IUCN red-list status labels -->
     <string name="iucn_lc">Least concern</string>
@@ -79,7 +79,7 @@
     <string name="photo_pick_from_gallery">Pick from gallery</string>
     <string name="photo_take_photo">Take photo</string>
     <string name="photo_analyzing">Analyzing photo…</string>
-    <string name="photo_loaded_navigating">Done — navigating…</string>
+    <string name="photo_loaded_navigating">Done, navigating…</string>
     <string name="photo_error_too_small">The image is too small.</string>
     <string name="photo_error_decode">Could not read the image.</string>
     <string name="photo_error_classifier">The classifier failed.</string>
@@ -101,6 +101,7 @@
     <string name="match_sub_confidence">A %1$s match.</string>
     <string name="match_marginalia_first_sighting">*NEW SPECIES*</string>
     <string name="match_marginalia_repeat">SIGHT *#%1$d* · FIRST SEEN: %2$s</string>
+    <string name="match_first_seen_unknown">UNKNOWN</string>
     <string name="match_marginalia_manual_pick">your choice</string>
     <!-- Plan 6b2 T6: source-aware marginalia (photo vs audio) -->
     <string name="match_marginalia_captured_photo">captured on camera</string>
@@ -108,7 +109,7 @@
     <string name="match_stamp_caption_pending">awaiting your signature</string>
     <string name="match_save_cta">Save observation</string>
     <string name="match_cancel_cta">Cancel</string>
-    <string name="match_saved_text">Saved to the field journal — go back</string>
+    <string name="match_saved_text">Saved to the field journal, go back</string>
 
     <!-- Disambig screen (top-1 0.35–0.50) -->
     <string name="disambig_eyebrow_one">ONE CANDIDATE · NO %1$d</string>
@@ -135,7 +136,7 @@
     <string name="nobird_tip_closer_sub">~3 m usually works</string>
     <string name="nobird_tip_center_sub">Centre the frame</string>
     <string name="nobird_tip_light_sub">Avoid backlight</string>
-    <string name="nobird_top_guess_hint">the model thought it saw a *possible %1$s* (%2$s) — get closer?</string>
+    <string name="nobird_top_guess_hint">the model thought it saw a *possible %1$s* (%2$s). Get closer?</string>
     <!-- Plan 6b2 T6: NoBird audio-specific hints -->
     <string name="audio_no_bird_hint_1">try a quieter spot</string>
     <string name="audio_no_bird_hint_2">point the mic at the bird</string>
@@ -149,14 +150,14 @@
     <string name="scan_permission_denied_body">Camera is blocked. Enable in settings to scan.</string>
     <string name="scan_permission_open_settings">Open settings</string>
     <string name="scan_error_classifier_failed">Classifier failed repeatedly.</string>
-    <string name="demo_mode_banner">DEMO — model missing, fake data shown</string>
+    <string name="demo_mode_banner">DEMO: model missing, fake data shown</string>
     <!-- Plan 6a Task 10.8: DEMO banner tap → explanatory bottom-sheet -->
     <string name="demo_sheet_title">Demo mode</string>
-    <string name="demo_sheet_body">Birdy couldn't load the bird model at startup, so we're showing sample data. Restart the app to try again — or send us a report if it keeps happening.</string>
+    <string name="demo_sheet_body">Birdy couldn't load the bird model at startup, so we're showing sample data. Restart the app to try again, or send us a report if it keeps happening.</string>
     <string name="demo_sheet_close">Close</string>
     <string name="demo_sheet_report">Report</string>
     <!-- Plan 6a Task 10.9: Permission hero copy + photo-fallback -->
-    <string name="permission_hero_caveat">Birdy only sees birds — no photos are saved without your choice.</string>
+    <string name="permission_hero_caveat">Birdy only sees birds. No photos are saved without your choice.</string>
     <string name="permission_grant_cta">Allow camera</string>
     <string name="permission_denied_photo_fallback">Analyze a photo instead</string>
 
@@ -168,19 +169,19 @@
     <string name="diary_save_error_photo">Could not save the photo</string>
     <string name="diary_save_error_storage">Storage is full</string>
     <string name="diary_save_error_db">Could not save the observation</string>
-    <string name="diary_save_error_frame_unavailable">The photo is no longer available — scan again</string>
+    <string name="diary_save_error_frame_unavailable">The photo is no longer available. Scan again</string>
     <string name="diary_saved_indicator">Saved ✓</string>
     <string name="diary_note_label">Note</string>
     <string name="diary_note_save">Save note</string>
     <string name="diary_note_cancel">Cancel</string>
     <string name="diary_note_save_success">Note saved</string>
-    <string name="diary_note_save_error">Could not save the note — try again</string>
+    <string name="diary_note_save_error">Could not save the note. Try again</string>
     <string name="diary_delete_button">Delete</string>
     <string name="diary_delete_confirm_title">Delete observation?</string>
     <string name="diary_delete_confirm_body">This cannot be undone.</string>
     <string name="diary_delete_confirm_yes">Delete</string>
     <string name="diary_delete_confirm_no">Cancel</string>
-    <string name="diary_delete_failed">Couldn't delete — try again</string>
+    <string name="diary_delete_failed">Couldn't delete. Try again</string>
     <string name="diary_detail_not_found">This observation no longer exists</string>
     <string name="diary_detail_unknown_species">Unknown species</string>
     <string name="diary_detail_load_error">Could not load the observation</string>
@@ -210,8 +211,8 @@
 
     <!-- ===== Plan 5b: Badges UI ===== -->
     <string name="badges_section_recently_unlocked">Recently discovered</string>
-    <string name="badges_locked_tooltip">Secret — keep birding</string>
-    <string name="badges_load_error">Could not load badges — try again</string>
+    <string name="badges_locked_tooltip">Secret, keep birding</string>
+    <string name="badges_load_error">Could not load badges. Try again</string>
     <string name="badges_load_error_retry">Try again</string>
 
     <string name="unlock_label">New *badge*!</string>
@@ -221,7 +222,7 @@
     <!-- ===== Badge names + descriptions ===== -->
     <!-- Progression -->
     <string name="badge_name_novice">Novice</string>
-    <string name="badge_desc_novice">The foundation it all rests on — the first species you learn to know.</string>
+    <string name="badge_desc_novice">The foundation it all rests on: the first species you learn to know.</string>
     <string name="badge_name_birder_bronze">Birder</string>
     <string name="badge_desc_birder_bronze">You&#8217;re starting to see patterns, not just individual birds.</string>
     <string name="badge_name_birder_silver">Experienced birder</string>
@@ -231,51 +232,51 @@
     <string name="badge_name_weekly_streak_4">Monthly rhythm</string>
     <string name="badge_desc_weekly_streak_4">You have birded four weeks in a row.</string>
     <string name="badge_name_weekly_streak_12">Quarter-faithful</string>
-    <string name="badge_desc_weekly_streak_12">12 weeks in a row — you have a rhythm.</string>
+    <string name="badge_desc_weekly_streak_12">12 weeks in a row. You have a rhythm.</string>
     <string name="badge_name_weekly_streak_52">Year-round birder</string>
-    <string name="badge_desc_weekly_streak_52">52 weeks in a row — a full year unbroken.</string>
+    <string name="badge_desc_weekly_streak_52">52 weeks in a row, a full year unbroken.</string>
 
     <!-- Streaks monthly -->
     <string name="badge_name_monthly_streak_3">Season birder</string>
-    <string name="badge_desc_monthly_streak_3">Three months in a row — at least one obs each month.</string>
+    <string name="badge_desc_monthly_streak_3">Three months in a row, at least one obs each month.</string>
     <string name="badge_name_monthly_streak_12">All year</string>
     <string name="badge_desc_monthly_streak_12">Twelve months with at least one observation each.</string>
 
     <!-- Family -->
     <string name="badge_name_family_anatidae">Wildfowler</string>
-    <string name="badge_desc_family_anatidae">Ducks and geese — the field&#8217;s first lesson in patience.</string>
+    <string name="badge_desc_family_anatidae">Ducks and geese: the field&#8217;s first lesson in patience.</string>
     <string name="badge_name_family_paridae">Tit collector</string>
     <string name="badge_desc_family_paridae">Tits are your window into the woodland&#8217;s small birds.</string>
     <string name="badge_name_family_accipitridae">Raptor watcher</string>
     <string name="badge_desc_family_accipitridae">Raptors are read by silhouette and wingbeat, rarely up close.</string>
     <string name="badge_name_family_fringillidae">Finch collector</string>
-    <string name="badge_desc_family_fringillidae">Finches teach you to listen — the flight call gives them away.</string>
+    <string name="badge_desc_family_fringillidae">Finches teach you to listen. The flight call gives them away.</string>
     <string name="badge_name_family_scolopacidae">Wader watcher</string>
     <string name="badge_desc_family_scolopacidae">Waders separate the birder from the onlooker.</string>
     <string name="badge_name_family_strigidae">Owl watcher</string>
-    <string name="badge_desc_family_strigidae">Owls are seldom seen, more often heard — a hunt at dusk.</string>
+    <string name="badge_desc_family_strigidae">Owls are seldom seen, more often heard. A hunt at dusk.</string>
     <string name="badge_name_family_songbirds">Warbler collector</string>
-    <string name="badge_desc_family_songbirds">Warblers hide in the masses — telling them apart is real skill.</string>
+    <string name="badge_desc_family_songbirds">Warblers hide in the masses. Telling them apart is real skill.</string>
 
     <!-- DP D: new/updated badges -->
     <string name="badge_name_birder_gold">Seasoned birder</string>
     <string name="badge_desc_birder_gold">This is no longer beginner country.</string>
     <string name="badge_name_birder_legend">Master birder</string>
-    <string name="badge_desc_birder_legend">Few birders ever get this far — a life&#8217;s work.</string>
+    <string name="badge_desc_birder_legend">Few birders ever get this far. A life&#8217;s work.</string>
     <string name="badge_name_breadth_families_20">Family spanner</string>
-    <string name="badge_desc_breadth_families_20">Breadth, not just depth — you range across the whole field.</string>
+    <string name="badge_desc_breadth_families_20">Breadth, not just depth: you range across the whole field.</string>
     <string name="badge_name_breadth_families_50">Family connoisseur</string>
     <string name="badge_desc_breadth_families_50">Few birders range across so many families.</string>
     <string name="badge_name_breadth_orders_20">Order traveller</string>
-    <string name="badge_desc_breadth_orders_20">From seabirds to passerines — you cover the breadth of bird life.</string>
+    <string name="badge_desc_breadth_orders_20">From seabirds to passerines: you cover the breadth of bird life.</string>
     <string name="badge_name_redlisted_1">Red-listed</string>
     <string name="badge_desc_redlisted_1">Red-listed species are the ones birders travel for.</string>
     <string name="badge_name_redlisted_5">Rarity hunter</string>
     <string name="badge_desc_redlisted_5">Every threatened bird you see is a meeting that grows rarer.</string>
     <string name="badge_name_redlisted_15">Red-list master</string>
-    <string name="badge_desc_redlisted_15">You seek the ones at risk of vanishing — and find them.</string>
+    <string name="badge_desc_redlisted_15">You seek the ones at risk of vanishing, and find them.</string>
     <string name="badge_name_season_all_year">Year-round</string>
-    <string name="badge_desc_season_all_year">The birding year has four faces — you&#8217;ve seen them all.</string>
+    <string name="badge_desc_season_all_year">The birding year has four faces, and you&#8217;ve seen them all.</string>
     <string name="badge_name_season_faithful">Faithful companion</string>
     <string name="badge_desc_season_faithful">Following one species through the year is how you truly come to know it.</string>
     <string name="badge_name_audio_scholar">Sound birder</string>
@@ -300,7 +301,7 @@
     <!-- Onboarding v2 (Plan 2026-05-25 onboarding-scroll-story) -->
     <string name="onboarding_s1_eyebrow">BIRD ID + FIELD JOURNAL · NO 1</string>
     <string name="onboarding_s1_headline">*Birdy.*</string>
-    <string name="onboarding_s1_sub">Identify birds in the field — photo or sound, on-device, no internet.</string>
+    <string name="onboarding_s1_sub">Identify birds in the field: photo or sound, on-device, no internet.</string>
 
     <string name="onboarding_s2_eyebrow">PHOTO · NO 2</string>
     <string name="onboarding_s2_headline">*Aim*. Tap. Stamp.</string>
@@ -309,20 +310,20 @@
     <string name="onboarding_s2_species_demo">Great Tit</string>
 
     <string name="onboarding_s3_eyebrow">SOUND · NO 3</string>
-    <string name="onboarding_s3_headline">Or — *listen*.</string>
+    <string name="onboarding_s3_headline">Or *listen*.</string>
     <string name="onboarding_s3_sub">Record the song and Birdy suggests the species. Free, always.</string>
     <string name="onboarding_s3_free_pill">FREE</string>
-    <string name="onboarding_s3_species_demo">Great Tit — 94%</string>
+    <string name="onboarding_s3_species_demo">Great Tit 94%</string>
 
     <string name="onboarding_s4_eyebrow">THE JOURNAL · NO 4</string>
-    <string name="onboarding_s4_headline">Every find — *a page*.</string>
+    <string name="onboarding_s4_headline">Every find, *a page*.</string>
     <string name="onboarding_s4_sub">Your collection grows with every bird. PDF export when you want.</string>
     <string name="onboarding_s4_marginalia">May 16 · Hyde Park</string>
     <string name="onboarding_s4_species">Common Swift</string>
 
     <string name="onboarding_s5_eyebrow">BADGES · NO 5</string>
     <string name="onboarding_s5_headline">*Earn* badges.</string>
-    <string name="onboarding_s5_sub">Life list, families, rarities — milestones worth reaching.</string>
+    <string name="onboarding_s5_sub">Life list, families, rarities: milestones worth reaching.</string>
 
     <string name="onboarding_s6_eyebrow">PRIVACY · NO 6</string>
     <string name="onboarding_s6_headline">*Stays* on your device.</string>
@@ -332,7 +333,7 @@
     <string name="onboarding_s7_headline">*Who* writes?</string>
     <string name="onboarding_s7_sub">Shown in your journal.</string>
     <string name="onboarding_s7_input_placeholder">Alex</string>
-    <string name="onboarding_s7_input_helper">Leave blank if you&#8217;d rather — we&#8217;ll call you &#8216;Field birder&#8217;.</string>
+    <string name="onboarding_s7_input_helper">Leave blank if you&#8217;d rather, and we&#8217;ll call you &#8216;Field birder&#8217;.</string>
     <string name="onboarding_s7_cta">*Begin* the journal</string>
 
     <string name="onboarding_close_replay">Close</string>
@@ -341,7 +342,7 @@
     <!-- ===== Plan 7b: ListenLauncherScreen ===== -->
     <string name="listen_journal_label">CATCH · IN THE FIELD</string>
     <string name="listen_journal_headline">Three ways to *catch.*</string>
-    <string name="listen_journal_sub">Camera, photo or call — the bird turns up in your field book.</string>
+    <string name="listen_journal_sub">Camera, photo or call: the bird turns up in your field book.</string>
     <string name="listen_card_audio_title">Listen</string>
     <string name="listen_card_audio_body">Record a song or call.</string>
     <string name="listen_card_camera_title">Look</string>
@@ -353,6 +354,7 @@
     <string name="settings_title">Settings</string>
     <string name="settings_menu_item">Settings</string>
     <string name="settings_label_name">Name</string>
+    <string name="settings_name_not_set">Not set</string>
     <string name="settings_label_language">Language</string>
     <string name="settings_label_about">About</string>
     <string name="settings_language_sv">Svenska</string>
@@ -387,7 +389,7 @@
     <string name="archive_chip_woodpeckers">Woodpeckers</string>
     <string name="archive_chip_cranes_rails">Cranes &amp; rails</string>
     <string name="archive_chip_other">Other</string>
-    <string name="archive_sort_alpha">A–Z</string>
+    <string name="archive_sort_alpha">A to Z</string>
     <string name="archive_sort_family">Family</string>
     <string name="archive_sort_recent">Recently added</string>
     <string name="archive_sort_relevance">Relevance</string>
@@ -466,7 +468,7 @@
     <string name="lifelist_empty_caveat_cta">*Scan* first bird</string>
     <!-- Plan 6a Task 10.3: Diary empty-state redesign -->
     <string name="lifelist_empty_stamp_name">First sighting</string>
-    <string name="lifelist_empty_marginalia">Your field journal is empty — \nscan to write the first page.</string>
+    <string name="lifelist_empty_marginalia">Your field journal is empty.\nScan to write the first page.</string>
     <plurals name="lifelist_month_header">
         <item quantity="one">%1$s · %2$s entry</item>
         <item quantity="other">%1$s · %2$s entries</item>
@@ -539,7 +541,7 @@
     <string name="settings_restore_purchases_unavailable">Couldn’t reach Google Play. Check your connection and try again.</string>
     <string name="settings_row_manage_subscription">Manage subscription</string>
     <string name="settings_manage_subscription_caption">Cancel or change in Google Play.</string>
-    <string name="settings_footer">— Birdy is a field prospectus. —</string>
+    <string name="settings_footer">Birdy is a field prospectus.</string>
     <!-- Gear -->
     <string name="gear_content_description">Settings</string>
     <!-- Per-tab markers -->
@@ -639,7 +641,7 @@
 
     <!-- About screen (Plan 6a Task 13) -->
     <string name="about_eyebrow">ABOUT</string>
-    <string name="about_headline_plain_1">Birdy —</string>
+    <string name="about_headline_plain_1">Birdy:</string>
     <string name="about_headline_accent_1">a field birder’s</string>
     <string name="about_headline_plain_2">digital companion.</string>
     <string name="about_subline">A local journal for sightings.</string>
@@ -698,8 +700,8 @@
     <string name="license_preface_desugar_config_text_source">Source of this text: LICENSE in desugar_jdk_libs_configuration-2.1.5</string>
 
     <!-- Settings row effects (Plan 6a Task 13) -->
-    <string name="settings_share_copy">Birdy — a field birder’s digital companion. Get it on Google Play: https://play.google.com/store/apps/details?id=se.birdy.android</string>
-    <string name="settings_feedback_subject">Birdy v%1$s — feedback</string>
+    <string name="settings_share_copy">Birdy, a field birder’s digital companion. Get it on Google Play: https://play.google.com/store/apps/details?id=se.birdy.android</string>
+    <string name="settings_feedback_subject">Birdy v%1$s: feedback</string>
 
     <!-- ===== Plan 6b2 T5: Audio-scan strings ===== -->
     <string name="audio_scan_headline">*Listen* for a song</string>
@@ -707,15 +709,15 @@
     <string name="audio_scan_journal_sub">Tap to listen</string>
     <string name="audio_scan_marginalia_top">Hold your phone still and *let it sing*</string>
     <string name="audio_scan_cta_idle">Tap to listen</string>
-    <string name="audio_scan_cta_recording">Listening — tap to stop</string>
+    <string name="audio_scan_cta_recording">Listening. Tap to stop</string>
     <string name="audio_scan_analyzing">Analyzing…</string>
     <string name="audio_scan_permission_title">Listen for a song</string>
-    <string name="audio_scan_permission_body">Birdy needs your microphone to identify bird songs — audio stays only on your phone.</string>
+    <string name="audio_scan_permission_body">Birdy needs your microphone to identify bird songs. Audio stays only on your phone.</string>
     <string name="audio_scan_permission_grant">Grant permission</string>
     <string name="audio_scan_permission_open_settings">Open settings</string>
     <string name="audio_scan_recording_failed">Microphone failed to start.</string>
     <string name="audio_scan_bootstrap_failed">Audio identification could not start on this device.</string>
-    <string name="audio_scan_demo_banner">Demo mode — the real model could not load</string>
+    <string name="audio_scan_demo_banner">Demo mode: the real model could not load</string>
     <string name="audio_scan_analyze_failed">Couldn't identify the sound.</string>
     <string name="audio_scan_retry">Try again</string>
     <string name="audio_scan_mic_cd_idle">Start recording</string>
@@ -723,7 +725,7 @@
     <string name="audio_scan_mic_cd_analyzing">Analyzing</string>
     <string name="audio_scan_hearing_chip">Hearing: %1$s · %2$s</string>
     <string name="audio_scan_cancel">Cancel</string>
-    <string name="audio_scan_cta_recording_locked">Listening — stop available in %1$s s</string>
+    <string name="audio_scan_cta_recording_locked">Listening. Stop available in %1$s s</string>
     <string name="audio_noBird_hint1">Move closer to the bird.</string>
     <string name="audio_noBird_hint2">Reduce wind noise behind you.</string>
     <string name="audio_noBird_hint3">Record while the bird is actually singing.</string>
@@ -798,7 +800,7 @@
 
     <!-- Settings — Notifications -->
     <string name="settings_section_notifications">NOTIFICATIONS</string>
-    <string name="settings_toggle_daily_bird">Bird of the day — daily reminder</string>
+    <string name="settings_toggle_daily_bird">Bird of the day, daily reminder</string>
     <string name="settings_notifications_disabled_helpline">Notifications disabled in Android system settings →</string>
 
     <!-- Notifications -->
@@ -807,7 +809,7 @@
     <string name="notification_daily_bird_photo_credit">Photo: %1$s, %2$s</string>
     <string name="daily_bird_caught_today">Caught today</string>
     <string name="daily_bird_not_caught">Not caught today</string>
-    <string name="settings_toggle_trophy">Badge progress — weekly</string>
+    <string name="settings_toggle_trophy">Badge progress, weekly</string>
     <string name="notification_trophy_title">Toward your next badge</string>
     <string name="notification_trophy_body_fmt">%1$s of %2$s badges unlocked. Closest: %3$s (%4$s/%5$s).</string>
 
@@ -906,8 +908,8 @@
     <!-- %1$s = recap_stats_finds, %2$s = recap_stats_new_species. -->
     <string name="notification_recap_active_body_fmt">%1$s, %2$s. See this week's page.</string>
     <string name="notification_recap_streak_title">Only the evening left</string>
-    <string name="notification_recap_streak_body">A great tit in the park is enough — keep your streak going.</string>
-    <string name="settings_toggle_weekly_recap">Weekly recap — Sunday evening</string>
+    <string name="notification_recap_streak_body">A great tit in the park is enough. Keep your streak going.</string>
+    <string name="settings_toggle_weekly_recap">Weekly recap, Sunday evening</string>
     <string name="settings_location_section">Location</string>
     <string name="settings_toggle_location">Save location with my finds</string>
     <string name="settings_location_caption">Stored only on your phone. Needed for the map.</string>
@@ -937,7 +939,7 @@
     <!-- DP D card: templates (pre-format numbers in Kotlin, no %%) -->
     <string name="badge_progress_counted">%1$s of %2$s %3$s</string>
     <string name="badge_next_tier_label">Next level</string>
-    <string name="badge_next_tier_value">%1$s — %2$s to go</string>
+    <string name="badge_next_tier_value">%1$s, %2$s to go</string>
     <!-- ===== Badges v2: Trophy room ===== -->
     <string name="trophy_room_intro_eyebrow">Birder profile</string>
     <string name="trophy_room_headline">Your *trophy room*.</string>

@@ -45,7 +45,7 @@
     <string name="a11y_stamp_number">Märke nummer %1$d</string>
     <string name="a11y_stamp_track">%1$d av %2$d märken intjänade</string>
     <string name="a11y_crop_hint">Dra i hörnen för att beskära bilden</string>
-    <string name="onboarding_hero_image_cd">Birdy — appens fågelmaskot</string>
+    <string name="onboarding_hero_image_cd">Birdy, appens fågelmaskot</string>
 
     <!-- IUCN red-list status labels -->
     <string name="iucn_lc">Livskraftig</string>
@@ -90,7 +90,7 @@
     <string name="photo_pick_from_gallery">Välj från galleri</string>
     <string name="photo_take_photo">Ta foto</string>
     <string name="photo_analyzing">Analyserar foto…</string>
-    <string name="photo_loaded_navigating">Klar — navigerar…</string>
+    <string name="photo_loaded_navigating">Klar, navigerar…</string>
     <string name="photo_error_too_small">Bilden är för liten.</string>
     <string name="photo_error_decode">Kunde inte läsa bilden.</string>
     <string name="photo_error_classifier">Klassificeraren misslyckades.</string>
@@ -112,6 +112,7 @@
     <string name="match_sub_confidence">En %1$s match.</string>
     <string name="match_marginalia_first_sighting">*NY ART*</string>
     <string name="match_marginalia_repeat">OBS *#%1$d* · FÖRSTA SÅGS: %2$s</string>
+    <string name="match_first_seen_unknown">OKÄNT</string>
     <string name="match_marginalia_manual_pick">ditt val</string>
     <!-- Plan 6b2 T6: source-aware marginalia (foto vs ljud) -->
     <string name="match_marginalia_captured_photo">fångad på bild</string>
@@ -119,7 +120,7 @@
     <string name="match_stamp_caption_pending">väntar på din signatur</string>
     <string name="match_save_cta">Spara observation</string>
     <string name="match_cancel_cta">Avbryt</string>
-    <string name="match_saved_text">Sparad i fältdagboken — gå tillbaka</string>
+    <string name="match_saved_text">Sparad i fältdagboken, gå tillbaka</string>
 
     <!-- Disambig-skärm (top-1 0.35–0.50) -->
     <string name="disambig_eyebrow_one">EN KANDIDAT · NO %1$d</string>
@@ -146,7 +147,7 @@
     <string name="nobird_tip_closer_sub">~3 m räcker oftast</string>
     <string name="nobird_tip_center_sub">Mitt i bildrutan</string>
     <string name="nobird_tip_light_sub">Undvik motljus</string>
-    <string name="nobird_top_guess_hint">modellen tyckte den såg en *möjlig %1$s* (%2$s) — kom närmare?</string>
+    <string name="nobird_top_guess_hint">modellen tyckte den såg en *möjlig %1$s* (%2$s). Kom närmare?</string>
     <!-- Plan 6b2 T6: NoBird audio-specifika hints -->
     <string name="audio_no_bird_hint_1">prova en lugnare plats</string>
     <string name="audio_no_bird_hint_2">vänd mikrofonen mot fågeln</string>
@@ -161,14 +162,14 @@
     <string name="scan_permission_denied_body">Kameran är blockerad. Aktivera i inställningar för att skanna.</string>
     <string name="scan_permission_open_settings">Öppna inställningar</string>
     <string name="scan_error_classifier_failed">Klassificeraren misslyckades upprepade gånger</string>
-    <string name="demo_mode_banner">DEMO — modell saknas, fake-data visas</string>
+    <string name="demo_mode_banner">DEMO: modell saknas, fake-data visas</string>
     <!-- Plan 6a Task 10.8: DEMO banner tap → explanatory bottom-sheet -->
     <string name="demo_sheet_title">Demo-läge</string>
-    <string name="demo_sheet_body">Birdy kunde inte ladda fågel-modellen vid uppstart, så vi visar exempeldata. Starta om appen för att försöka igen — eller skicka oss en rapport om problemet kvarstår.</string>
+    <string name="demo_sheet_body">Birdy kunde inte ladda fågel-modellen vid uppstart, så vi visar exempeldata. Starta om appen för att försöka igen, eller skicka oss en rapport om problemet kvarstår.</string>
     <string name="demo_sheet_close">Stäng</string>
     <string name="demo_sheet_report">Rapportera</string>
     <!-- Plan 6a Task 10.9: Permission hero copy + photo-fallback -->
-    <string name="permission_hero_caveat">Birdy ser bara fåglar — inga foton sparas utan ditt val.</string>
+    <string name="permission_hero_caveat">Birdy ser bara fåglar. Inga foton sparas utan ditt val.</string>
     <string name="permission_grant_cta">Tillåt kamera</string>
     <string name="permission_denied_photo_fallback">Analysera ett foto i stället</string>
 
@@ -180,19 +181,19 @@
     <string name="diary_save_error_photo">Kunde inte spara fotot</string>
     <string name="diary_save_error_storage">Lagringsutrymmet är fullt</string>
     <string name="diary_save_error_db">Kunde inte spara observationen</string>
-    <string name="diary_save_error_frame_unavailable">Fotot är inte längre tillgängligt — skanna igen</string>
+    <string name="diary_save_error_frame_unavailable">Fotot är inte längre tillgängligt. Skanna igen</string>
     <string name="diary_saved_indicator">Sparad ✓</string>
     <string name="diary_note_label">Anteckning</string>
     <string name="diary_note_save">Spara anteckning</string>
     <string name="diary_note_cancel">Avbryt</string>
     <string name="diary_note_save_success">Anteckning sparad</string>
-    <string name="diary_note_save_error">Kunde inte spara anteckningen — försök igen</string>
+    <string name="diary_note_save_error">Kunde inte spara anteckningen. Försök igen</string>
     <string name="diary_delete_button">Ta bort</string>
     <string name="diary_delete_confirm_title">Ta bort observation?</string>
     <string name="diary_delete_confirm_body">Detta går inte att ångra.</string>
     <string name="diary_delete_confirm_yes">Ta bort</string>
     <string name="diary_delete_confirm_no">Avbryt</string>
-    <string name="diary_delete_failed">Kunde inte ta bort — försök igen</string>
+    <string name="diary_delete_failed">Kunde inte ta bort. Försök igen</string>
     <string name="diary_detail_not_found">Observationen finns inte längre</string>
     <string name="diary_detail_unknown_species">Okänd art</string>
     <string name="diary_detail_load_error">Kunde inte ladda observationen</string>
@@ -222,8 +223,8 @@
 
     <!-- ===== Plan 5b: Badges UI ===== -->
     <string name="badges_section_recently_unlocked">Senast upptäckta</string>
-    <string name="badges_locked_tooltip">Hemligt — fortsätt skåda</string>
-    <string name="badges_load_error">Kunde inte ladda märken — försök igen</string>
+    <string name="badges_locked_tooltip">Hemligt, fortsätt skåda</string>
+    <string name="badges_load_error">Kunde inte ladda märken. Försök igen</string>
     <string name="badges_load_error_retry">Försök igen</string>
 
     <string name="unlock_label">Nytt *märke*!</string>
@@ -233,7 +234,7 @@
     <!-- ===== Badge names + descriptions ===== -->
     <!-- Progression -->
     <string name="badge_name_novice">Nybörjare</string>
-    <string name="badge_desc_novice">Grunden allt vilar på — de första arterna du lär dig känna igen.</string>
+    <string name="badge_desc_novice">Grunden allt vilar på: de första arterna du lär dig känna igen.</string>
     <string name="badge_name_birder_bronze">Skådare</string>
     <string name="badge_desc_birder_bronze">Du börjar se mönster, inte bara enskilda fåglar.</string>
     <string name="badge_name_birder_silver">Erfaren skådare</string>
@@ -243,51 +244,51 @@
     <string name="badge_name_weekly_streak_4">Månads-rytm</string>
     <string name="badge_desc_weekly_streak_4">Du har skådat fåglar fyra veckor i rad.</string>
     <string name="badge_name_weekly_streak_12">Kvartals-trogen</string>
-    <string name="badge_desc_weekly_streak_12">12 veckor i rad — du har hittat din rutin.</string>
+    <string name="badge_desc_weekly_streak_12">12 veckor i rad. Du har hittat din rutin.</string>
     <string name="badge_name_weekly_streak_52">Årets skådare</string>
-    <string name="badge_desc_weekly_streak_52">52 veckor i rad — ett helt år utan paus.</string>
+    <string name="badge_desc_weekly_streak_52">52 veckor i rad, ett helt år utan paus.</string>
 
     <!-- Streaks månader -->
     <string name="badge_name_monthly_streak_3">Säsong-skådare</string>
-    <string name="badge_desc_monthly_streak_3">Tre månader i rad — minst en obs varje månad.</string>
+    <string name="badge_desc_monthly_streak_3">Tre månader i rad, minst en obs varje månad.</string>
     <string name="badge_name_monthly_streak_12">Året runt</string>
     <string name="badge_desc_monthly_streak_12">Tolv månader med minst en obs varje.</string>
 
     <!-- Familjer -->
     <string name="badge_name_family_anatidae">Andsamlare</string>
-    <string name="badge_desc_family_anatidae">Änder och gäss — fältets första lektion i tålamod.</string>
+    <string name="badge_desc_family_anatidae">Änder och gäss: fältets första lektion i tålamod.</string>
     <string name="badge_name_family_paridae">Messamlare</string>
     <string name="badge_desc_family_paridae">Mesarna är fönstret in i skogens småfåglar.</string>
     <string name="badge_name_family_accipitridae">Rovfågelskådare</string>
     <string name="badge_desc_family_accipitridae">Rovfåglar läses på silhuett och vingslag, sällan på nära håll.</string>
     <string name="badge_name_family_fringillidae">Finksamlare</string>
-    <string name="badge_desc_family_fringillidae">Finkarna lär dig lyssna — flyktlätet avslöjar dem.</string>
+    <string name="badge_desc_family_fringillidae">Finkarna lär dig lyssna. Flyktlätet avslöjar dem.</string>
     <string name="badge_name_family_scolopacidae">Vadarvän</string>
     <string name="badge_desc_family_scolopacidae">Vadare skiljer skådaren från betraktaren.</string>
     <string name="badge_name_family_strigidae">Uggleskådare</string>
-    <string name="badge_desc_family_strigidae">Ugglor ses sällan, hörs oftare — en jakt i skymningen.</string>
+    <string name="badge_desc_family_strigidae">Ugglor ses sällan, hörs oftare. En jakt i skymningen.</string>
     <string name="badge_name_family_songbirds">Sångarsamlare</string>
-    <string name="badge_desc_family_songbirds">Sångarna göms i massan — den som skiljer dem kan sin sak.</string>
+    <string name="badge_desc_family_songbirds">Sångarna göms i massan. Den som skiljer dem kan sin sak.</string>
 
     <!-- DP D: nya/ändrade märken -->
     <string name="badge_name_birder_gold">Rutinerad skådare</string>
     <string name="badge_desc_birder_gold">Det här är inte längre nybörjarland.</string>
     <string name="badge_name_birder_legend">Mästarskådare</string>
-    <string name="badge_desc_birder_legend">Få skådare når så långt — en livsgärning.</string>
+    <string name="badge_desc_birder_legend">Få skådare når så långt. En livsgärning.</string>
     <string name="badge_name_breadth_families_20">Familjespanare</string>
-    <string name="badge_desc_breadth_families_20">Bredd, inte bara djup — du rör dig över hela fältet.</string>
+    <string name="badge_desc_breadth_families_20">Bredd, inte bara djup: du rör dig över hela fältet.</string>
     <string name="badge_name_breadth_families_50">Familjekännare</string>
     <string name="badge_desc_breadth_families_50">Få skådare rör sig över så många familjer.</string>
     <string name="badge_name_breadth_orders_20">Ordningsresenär</string>
-    <string name="badge_desc_breadth_orders_20">Från sjöfågel till tätting — du täcker fågelvärldens bredd.</string>
+    <string name="badge_desc_breadth_orders_20">Från sjöfågel till tätting: du täcker fågelvärldens bredd.</string>
     <string name="badge_name_redlisted_1">Rödlistad</string>
     <string name="badge_desc_redlisted_1">Rödlistade arter är dem skådare reser för.</string>
     <string name="badge_name_redlisted_5">Raritetsjägare</string>
     <string name="badge_desc_redlisted_5">Varje hotad art du ser är ett möte som blir ovanligare.</string>
     <string name="badge_name_redlisted_15">Rödlistemästare</string>
-    <string name="badge_desc_redlisted_15">Du jagar dem som riskerar att försvinna — och hittar dem.</string>
+    <string name="badge_desc_redlisted_15">Du jagar dem som riskerar att försvinna, och hittar dem.</string>
     <string name="badge_name_season_all_year">Året runt</string>
-    <string name="badge_desc_season_all_year">Fågelåret har fyra ansikten — du har sett dem alla.</string>
+    <string name="badge_desc_season_all_year">Fågelåret har fyra ansikten, och du har sett dem alla.</string>
     <string name="badge_name_season_faithful">Trogen följeslagare</string>
     <string name="badge_desc_season_faithful">Att följa en art genom året är att verkligen lära känna den.</string>
     <string name="badge_name_audio_scholar">Ljudskådare</string>
@@ -313,7 +314,7 @@
     <!-- Onboarding v2 (Plan 2026-05-25 onboarding-scroll-story) -->
     <string name="onboarding_s1_eyebrow">FÅGEL-ID + FÄLTDAGBOK · NO 1</string>
     <string name="onboarding_s1_headline">*Birdy.*</string>
-    <string name="onboarding_s1_sub">Identifiera fåglar i fält — foto eller ljud, på enheten, utan internet.</string>
+    <string name="onboarding_s1_sub">Identifiera fåglar i fält: foto eller ljud, på enheten, utan internet.</string>
 
     <string name="onboarding_s2_eyebrow">FOTO · NO 2</string>
     <string name="onboarding_s2_headline">*Rikta*. Tryck. Stämpla.</string>
@@ -322,20 +323,20 @@
     <string name="onboarding_s2_species_demo">Talgoxe</string>
 
     <string name="onboarding_s3_eyebrow">LJUD · NO 3</string>
-    <string name="onboarding_s3_headline">Eller — *lyssna*.</string>
+    <string name="onboarding_s3_headline">Eller *lyssna*.</string>
     <string name="onboarding_s3_sub">Spela in sången så föreslår Birdy arten. Gratis, alltid.</string>
     <string name="onboarding_s3_free_pill">GRATIS</string>
-    <string name="onboarding_s3_species_demo">Talgoxe — 94%</string>
+    <string name="onboarding_s3_species_demo">Talgoxe 94%</string>
 
     <string name="onboarding_s4_eyebrow">FÄLTBOKEN · NO 4</string>
-    <string name="onboarding_s4_headline">Varje fynd — *en sida*.</string>
+    <string name="onboarding_s4_headline">Varje fynd, *en sida*.</string>
     <string name="onboarding_s4_sub">Din samling växer med varje fågel. PDF-export när du vill.</string>
     <string name="onboarding_s4_marginalia">16 maj · Norra Djurgården</string>
     <string name="onboarding_s4_species">Tornseglare</string>
 
     <string name="onboarding_s5_eyebrow">MÄRKEN · NO 5</string>
     <string name="onboarding_s5_headline">*Förtjäna* märken.</string>
-    <string name="onboarding_s5_sub">Livslista, familjer, rariteter — milstolpar värda att nå.</string>
+    <string name="onboarding_s5_sub">Livslista, familjer, rariteter: milstolpar värda att nå.</string>
 
     <string name="onboarding_s6_eyebrow">PRIVATLIV · NO 6</string>
     <string name="onboarding_s6_headline">*Stannar* på enheten.</string>
@@ -345,7 +346,7 @@
     <string name="onboarding_s7_headline">*Vem* skriver?</string>
     <string name="onboarding_s7_sub">Namnet visas i dagboken.</string>
     <string name="onboarding_s7_input_placeholder">Albin</string>
-    <string name="onboarding_s7_input_helper">Lämna tomt om du vill — vi kallar dig &#8216;Fältornitolog&#8217;.</string>
+    <string name="onboarding_s7_input_helper">Lämna tomt om du vill, så kallar vi dig &#8216;Fältornitolog&#8217;.</string>
     <string name="onboarding_s7_cta">*Börja* dagboken</string>
 
     <string name="onboarding_close_replay">Stäng</string>
@@ -354,7 +355,7 @@
     <!-- ===== Plan 7b: ListenLauncherScreen ===== -->
     <string name="listen_journal_label">FÅNGA · I FÄLT</string>
     <string name="listen_journal_headline">Tre sätt att *fånga.*</string>
-    <string name="listen_journal_sub">Kamera, foto eller läte — arten dyker upp i din fältbok.</string>
+    <string name="listen_journal_sub">Kamera, foto eller läte: arten dyker upp i din fältbok.</string>
     <string name="listen_card_audio_title">Lyssna</string>
     <string name="listen_card_audio_body">Spela in sång eller läte.</string>
     <string name="listen_card_camera_title">Kika</string>
@@ -366,6 +367,7 @@
     <string name="settings_title">Inställningar</string>
     <string name="settings_menu_item">Inställningar</string>
     <string name="settings_label_name">Namn</string>
+    <string name="settings_name_not_set">Inte angivet</string>
     <string name="settings_label_language">Språk</string>
     <string name="settings_label_about">Om appen</string>
     <string name="settings_language_sv">Svenska</string>
@@ -400,7 +402,7 @@
     <string name="archive_chip_woodpeckers">Hackspettar</string>
     <string name="archive_chip_cranes_rails">Tranor &amp; rallar</string>
     <string name="archive_chip_other">Övriga</string>
-    <string name="archive_sort_alpha">A–Ö</string>
+    <string name="archive_sort_alpha">A till Ö</string>
     <string name="archive_sort_family">Familj</string>
     <string name="archive_sort_recent">Senast tillagd</string>
     <string name="archive_sort_relevance">Relevans</string>
@@ -480,7 +482,7 @@
     <string name="lifelist_empty_caveat_cta">*Skanna* första fågeln</string>
     <!-- Plan 6a Task 10.3: Diary empty-state redesign -->
     <string name="lifelist_empty_stamp_name">Första fyndet</string>
-    <string name="lifelist_empty_marginalia">Din fältbok är tom — \nskanna för att skriva första sidan.</string>
+    <string name="lifelist_empty_marginalia">Din fältbok är tom.\nSkanna för att skriva första sidan.</string>
     <!-- "fynd" is invariant in Swedish (same word 1 or N) — both quantities render identically. -->
     <plurals name="lifelist_month_header">
         <item quantity="one">%1$s · %2$s fynd</item>
@@ -554,7 +556,7 @@
     <string name="settings_restore_purchases_unavailable">Kunde inte nå Google Play. Kontrollera anslutningen och försök igen.</string>
     <string name="settings_row_manage_subscription">Hantera prenumeration</string>
     <string name="settings_manage_subscription_caption">Säg upp eller ändra i Google Play.</string>
-    <string name="settings_footer">— Birdy är ett fält-prospekt. —</string>
+    <string name="settings_footer">Birdy är ett fält-prospekt.</string>
     <!-- Gear -->
     <string name="gear_content_description">Inställningar</string>
     <!-- Per-tab markers -->
@@ -654,7 +656,7 @@
 
     <!-- About screen (Plan 6a Task 13) -->
     <string name="about_eyebrow">OM</string>
-    <string name="about_headline_plain_1">Birdy —</string>
+    <string name="about_headline_plain_1">Birdy:</string>
     <string name="about_headline_accent_1">fältornitologens</string>
     <string name="about_headline_plain_2">digitala bok.</string>
     <string name="about_subline">En lokal följeslagare för fynd.</string>
@@ -713,8 +715,8 @@
     <string name="license_preface_desugar_config_text_source">Källa till texten: LICENSE i desugar_jdk_libs_configuration-2.1.5</string>
 
     <!-- Settings row effects (Plan 6a Task 13) -->
-    <string name="settings_share_copy">Birdy — fältornitologens digitala bok. Hämta den på Google Play: https://play.google.com/store/apps/details?id=se.birdy.android</string>
-    <string name="settings_feedback_subject">Birdy v%1$s — feedback</string>
+    <string name="settings_share_copy">Birdy, fältornitologens digitala bok. Hämta den på Google Play: https://play.google.com/store/apps/details?id=se.birdy.android</string>
+    <string name="settings_feedback_subject">Birdy v%1$s: feedback</string>
 
     <!-- ===== Plan 6b2 T5: Audio-scan strings ===== -->
     <string name="audio_scan_headline">*Lyssna* efter sång</string>
@@ -722,15 +724,15 @@
     <string name="audio_scan_journal_sub">Tryck för att lyssna</string>
     <string name="audio_scan_marginalia_top">Håll telefonen stilla och *låt den sjunga*</string>
     <string name="audio_scan_cta_idle">Tryck för att lyssna</string>
-    <string name="audio_scan_cta_recording">Lyssnar — tryck för att stoppa</string>
+    <string name="audio_scan_cta_recording">Lyssnar. Tryck för att stoppa</string>
     <string name="audio_scan_analyzing">Analyserar…</string>
     <string name="audio_scan_permission_title">Lyssna efter sång</string>
-    <string name="audio_scan_permission_body">Birdy behöver mikrofonen för att identifiera fågelsång — ljudet sparas bara lokalt på din telefon.</string>
+    <string name="audio_scan_permission_body">Birdy behöver mikrofonen för att identifiera fågelsång. Ljudet sparas bara lokalt på din telefon.</string>
     <string name="audio_scan_permission_grant">Ge tillstånd</string>
     <string name="audio_scan_permission_open_settings">Öppna inställningar</string>
     <string name="audio_scan_recording_failed">Mikrofonen kunde inte startas.</string>
     <string name="audio_scan_bootstrap_failed">Ljud-identifieringen kunde inte starta på den här enheten.</string>
-    <string name="audio_scan_demo_banner">Demoläge — riktiga modellen kunde inte laddas</string>
+    <string name="audio_scan_demo_banner">Demoläge: riktiga modellen kunde inte laddas</string>
     <string name="audio_scan_analyze_failed">Kunde inte identifiera ljudet.</string>
     <string name="audio_scan_retry">Försök igen</string>
     <string name="audio_scan_mic_cd_idle">Starta inspelning</string>
@@ -738,7 +740,7 @@
     <string name="audio_scan_mic_cd_analyzing">Analyserar</string>
     <string name="audio_scan_hearing_chip">Hör: %1$s · %2$s</string>
     <string name="audio_scan_cancel">Avbryt</string>
-    <string name="audio_scan_cta_recording_locked">Lyssnar — stopp möjligt om %1$s s</string>
+    <string name="audio_scan_cta_recording_locked">Lyssnar. Stopp möjligt om %1$s s</string>
     <string name="audio_noBird_hint1">Kom närmare fågeln.</string>
     <string name="audio_noBird_hint2">Sänk vindbruset bakom dig.</string>
     <string name="audio_noBird_hint3">Spela in när fågeln faktiskt sjunger.</string>
@@ -813,7 +815,7 @@
 
     <!-- Settings — Aviseringar -->
     <string name="settings_section_notifications">AVISERINGAR</string>
-    <string name="settings_toggle_daily_bird">Dagens fågel — daglig påminnelse</string>
+    <string name="settings_toggle_daily_bird">Dagens fågel, daglig påminnelse</string>
     <string name="settings_notifications_disabled_helpline">Aviseringar avstängda i Androids systeminställningar →</string>
 
     <!-- Notifications -->
@@ -822,7 +824,7 @@
     <string name="notification_daily_bird_photo_credit">Foto: %1$s, %2$s</string>
     <string name="daily_bird_caught_today">Fångad idag</string>
     <string name="daily_bird_not_caught">Inte fångad idag</string>
-    <string name="settings_toggle_trophy">Märkesprogression — veckovis</string>
+    <string name="settings_toggle_trophy">Märkesprogression, veckovis</string>
     <string name="notification_trophy_title">Mot nästa märke</string>
     <string name="notification_trophy_body_fmt">%1$s av %2$s märken upplåsta. Närmast: %3$s (%4$s/%5$s).</string>
 
@@ -922,8 +924,8 @@
     <!-- %1$s = recap_stats_finds, %2$s = recap_stats_new_species. -->
     <string name="notification_recap_active_body_fmt">%1$s, %2$s. Se veckans uppslag.</string>
     <string name="notification_recap_streak_title">Bara kvällen kvar</string>
-    <string name="notification_recap_streak_body">En talgoxe i parken räcker — fortsätt din streak.</string>
-    <string name="settings_toggle_weekly_recap">Veckans recap — söndag kväll</string>
+    <string name="notification_recap_streak_body">En talgoxe i parken räcker. Fortsätt din streak.</string>
+    <string name="settings_toggle_weekly_recap">Veckans recap, söndag kväll</string>
     <string name="settings_location_section">Plats</string>
     <string name="settings_toggle_location">Spara plats med mina fynd</string>
     <string name="settings_location_caption">Lagras bara på din telefon. Behövs för kartan.</string>
@@ -953,7 +955,7 @@
     <!-- DP D kort: mallar (förformatera tal i Kotlin, ej %%) -->
     <string name="badge_progress_counted">%1$s av %2$s %3$s</string>
     <string name="badge_next_tier_label">Nästa nivå</string>
-    <string name="badge_next_tier_value">%1$s — %2$s kvar</string>
+    <string name="badge_next_tier_value">%1$s, %2$s kvar</string>
     <!-- ===== Badges v2: Troférummet ===== -->
     <string name="trophy_room_intro_eyebrow">Skådar-profil</string>
     <string name="trophy_room_headline">Ditt *troférum*.</string>

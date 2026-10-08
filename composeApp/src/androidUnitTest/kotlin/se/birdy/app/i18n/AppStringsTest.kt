@@ -49,7 +49,7 @@ class AppStringsTest {
         val swedish = AppStrings(Locale.SV)
         assertEquals("Nybörjare", runBlocking { resolveBadgeString("novice", swedish) { BadgeStringMap.nameFor("novice") } })
         assertEquals(
-            "Grunden allt vilar på — de första arterna du lär dig känna igen.",
+            "Grunden allt vilar på: de första arterna du lär dig känna igen.",
             runBlocking { swedish.get(BadgeStringMap.descriptionFor("novice")) },
         )
         assertEquals(
