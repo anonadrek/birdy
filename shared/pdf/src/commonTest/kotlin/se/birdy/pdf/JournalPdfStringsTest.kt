@@ -43,7 +43,7 @@ class JournalPdfStringsTest {
         val sv = JournalPdfStrings.SV
         assertEquals("Fältdagbok", sv.title)
         assertEquals("av %s", sv.byFmt)
-        assertEquals("%s • %s fynd", sv.teaserFmt)
+        assertEquals("%s • %s", sv.teaserFmt)
         assertEquals("art sedd", sv.teaserSpeciesOne)
         assertEquals("arter sedda", sv.teaserSpeciesOther)
         assertEquals("Säsongens räkning", sv.statsEyebrow)
@@ -54,7 +54,8 @@ class JournalPdfStringsTest {
         assertEquals("Arter i fält", sv.speciesEyebrow)
         assertEquals("Arter i fält (%s/%s)", sv.speciesEyebrowPagedFmt)
         assertEquals("Det jag sett", sv.speciesTitle)
-        assertEquals("%s fynd", sv.countFmt)
+        assertEquals("fynd", sv.findOne)
+        assertEquals("fynd", sv.findOther)
         assertEquals("Först: %s", sv.firstFmt)
         assertEquals("Märken jag tjänat", sv.badgesEyebrow)
         assertEquals("Stämplar i marginalen", sv.badgesTitle)
@@ -67,7 +68,7 @@ class JournalPdfStringsTest {
         val en = JournalPdfStrings.EN
         assertEquals("Field journal", en.title)
         assertEquals("by %s", en.byFmt)
-        assertEquals("%s • %s finds", en.teaserFmt)
+        assertEquals("%s • %s", en.teaserFmt)
         assertEquals("The season's count", en.statsEyebrow)
         assertEquals("%s in numbers", en.statsTitleFmt)
         assertEquals("Species this year", en.statSpecies)
@@ -76,7 +77,8 @@ class JournalPdfStringsTest {
         assertEquals("Species in the field", en.speciesEyebrow)
         assertEquals("Species in the field (%s/%s)", en.speciesEyebrowPagedFmt)
         assertEquals("What I have seen", en.speciesTitle)
-        assertEquals("%s finds", en.countFmt)
+        assertEquals("find", en.findOne)
+        assertEquals("finds", en.findOther)
         assertEquals("First: %s", en.firstFmt)
         assertEquals("Badges I have earned", en.badgesEyebrow)
         assertEquals("Stamps in the margin", en.badgesTitle)
@@ -100,9 +102,27 @@ class JournalPdfStringsTest {
         assertEquals("species seen", JournalPdfStrings.EN.teaserSpeciesOne)
     }
 
+    // Swedish "fynd" doesn't inflect, so the rendered text is exactly what the PDF printed before
+    // the per-locale sets existed ("%s fynd" on the species page).
+    @Test
+    fun swedish_find_count_is_unchanged() {
+        assertEquals("1 fynd", JournalPdfStrings.SV.findCount(1))
+        assertEquals("7 fynd", JournalPdfStrings.SV.findCount(7))
+        assertEquals("0 fynd", JournalPdfStrings.SV.findCount(0))
+    }
+
+    // English "find" does inflect, like the app's own stats plurals ("1 find", "N finds"); the
+    // first version printed "1 finds" (review 2026-10-08).
+    @Test
+    fun english_find_count_inflects() {
+        assertEquals("1 find", JournalPdfStrings.EN.findCount(1))
+        assertEquals("7 finds", JournalPdfStrings.EN.findCount(7))
+        assertEquals("0 finds", JournalPdfStrings.EN.findCount(0))
+    }
+
     @Test
     fun english_teaser_reads_naturally_for_one_and_many() {
-        assertEquals("1 species seen • 1 finds", JournalPdfStrings.EN.teaser(speciesSeen = 1, finds = 1))
+        assertEquals("1 species seen • 1 find", JournalPdfStrings.EN.teaser(speciesSeen = 1, finds = 1))
         assertEquals("3 species seen • 7 finds", JournalPdfStrings.EN.teaser(speciesSeen = 3, finds = 7))
         assertEquals("0 species seen • 0 finds", JournalPdfStrings.EN.teaser(speciesSeen = 0, finds = 0))
     }
@@ -122,7 +142,8 @@ class JournalPdfStringsTest {
             strings.speciesEyebrow,
             strings.speciesEyebrowPagedFmt,
             strings.speciesTitle,
-            strings.countFmt,
+            strings.findOne,
+            strings.findOther,
             strings.firstFmt,
             strings.badgesEyebrow,
             strings.badgesTitle,

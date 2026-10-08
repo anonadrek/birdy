@@ -277,7 +277,7 @@ internal object JournalPdfLayoutIos {
                 drawText(row.scientificName, M.MARGIN_X + 26.0, y + 12.0, IosPdfFonts.caveat(M.SPECIES_SCI.toDouble()), M.COLOR_INK)
             }
 
-            val countText = M.fmt(input.strings.countFmt, "${row.count}")
+            val countText = input.strings.findCount(row.count)
             val firstSeenDate = M.formatDate(row.firstSeenMs, zone)
             val firstSeenText = M.fmt(input.strings.firstFmt, firstSeenDate)
             val rightX = M.PAGE_W - M.MARGIN_X - 120.0

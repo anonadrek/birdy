@@ -36,25 +36,33 @@ data class JournalPdfStrings(
     val speciesEyebrow: String,
     val speciesEyebrowPagedFmt: String,
     val speciesTitle: String,
-    val countFmt: String,
+    val findOne: String,
+    val findOther: String,
     val firstFmt: String,
     val badgesEyebrow: String,
     val badgesTitle: String,
     val generatedFmt: String,
 ) {
     /**
+     * "N fynd" / "N find(s)": the count on the species page and the second half of the title
+     * page's teaser. English inflects ("1 find", "7 finds", like the app's own stats plurals);
+     * Swedish "fynd" doesn't, so [findOne] and [findOther] are the same string there.
+     */
+    fun findCount(n: Int): String = "$n ${if (n == 1) findOne else findOther}"
+
+    /**
      * Title page's "N species seen • M finds" line. Swedish inflects the species word for
      * singular/plural ("1 art sedd" vs "3 arter sedda", release 1.3.0 Task 7g); English "species"
      * doesn't inflect, so [teaserSpeciesOne] and [teaserSpeciesOther] are deliberately the same
      * string there — see `english_teaser_species_word_is_identical_for_singular_and_plural` in
-     * JournalPdfStringsTest.
+     * JournalPdfStringsTest. The finds half is [findCount].
      */
     fun teaser(
         speciesSeen: Int,
         finds: Int,
     ): String {
         val species = if (speciesSeen == 1) teaserSpeciesOne else teaserSpeciesOther
-        return JournalPdfMetrics.fmt(teaserFmt, "$speciesSeen $species", "$finds")
+        return JournalPdfMetrics.fmt(teaserFmt, "$speciesSeen $species", findCount(finds))
     }
 
     companion object {
@@ -69,7 +77,7 @@ data class JournalPdfStrings(
             JournalPdfStrings(
                 title = "Fältdagbok",
                 byFmt = "av %s",
-                teaserFmt = "%s • %s fynd",
+                teaserFmt = "%s • %s",
                 teaserSpeciesOne = "art sedd",
                 teaserSpeciesOther = "arter sedda",
                 statsEyebrow = "Säsongens räkning",
@@ -80,7 +88,8 @@ data class JournalPdfStrings(
                 speciesEyebrow = "Arter i fält",
                 speciesEyebrowPagedFmt = "Arter i fält (%s/%s)",
                 speciesTitle = "Det jag sett",
-                countFmt = "%s fynd",
+                findOne = "fynd",
+                findOther = "fynd",
                 firstFmt = "Först: %s",
                 badgesEyebrow = "Märken jag tjänat",
                 badgesTitle = "Stämplar i marginalen",
@@ -91,7 +100,7 @@ data class JournalPdfStrings(
             JournalPdfStrings(
                 title = "Field journal",
                 byFmt = "by %s",
-                teaserFmt = "%s • %s finds",
+                teaserFmt = "%s • %s",
                 teaserSpeciesOne = "species seen",
                 teaserSpeciesOther = "species seen",
                 statsEyebrow = "The season's count",
@@ -102,7 +111,8 @@ data class JournalPdfStrings(
                 speciesEyebrow = "Species in the field",
                 speciesEyebrowPagedFmt = "Species in the field (%s/%s)",
                 speciesTitle = "What I have seen",
-                countFmt = "%s finds",
+                findOne = "find",
+                findOther = "finds",
                 firstFmt = "First: %s",
                 badgesEyebrow = "Badges I have earned",
                 badgesTitle = "Stamps in the margin",

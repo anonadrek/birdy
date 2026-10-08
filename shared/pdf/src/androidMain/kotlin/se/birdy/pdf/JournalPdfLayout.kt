@@ -198,7 +198,7 @@ internal object JournalPdfLayout {
                 canvas.drawText(row.scientificName, JournalPdfMetrics.MARGIN_X + 26f, y + 12f, sciPaint)
             }
 
-            val countText = JournalPdfMetrics.fmt(input.strings.countFmt, "${row.count}")
+            val countText = input.strings.findCount(row.count)
             val firstSeenDate = JournalPdfMetrics.formatDate(row.firstSeenMs, TimeZone.currentSystemDefault())
             val firstSeenText = JournalPdfMetrics.fmt(input.strings.firstFmt, firstSeenDate)
             val rightX = JournalPdfMetrics.PAGE_W - JournalPdfMetrics.MARGIN_X - 120f
