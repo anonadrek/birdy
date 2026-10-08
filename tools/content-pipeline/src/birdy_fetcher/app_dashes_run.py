@@ -123,6 +123,10 @@ async def run_app_dashes(opts: DashOptions, client: JsonModelClient | None = Non
                 outcomes.append(await _species(scan, client, opts, cost))
             except MaxCostExceeded:
                 stopped = True
+            except Exception as exc:  # one species' error must not stop the run
+                outcome = SpeciesOutcome(scan.qid, scan.rule_fixes)
+                outcome.failed += [(s, f"fel: {type(exc).__name__}: {exc}") for s in scan.sentences]
+                outcomes.append(outcome)
 
     try:
         await asyncio.gather(*(one(s) for s in scans))
@@ -175,7 +179,9 @@ async def _rewrite(
     for s in scan.sentences:
         text = proposals.get(s.key)
         if text is None:
-            outcome.failed.append((s, f"modellen svarade inte ({written.stop_reason})"))
+            outcome.failed.append(
+                (s, f"modellen svarade inte ({written.stop_reason or 'okänd orsak'})")
+            )
         elif problems := check_rewrite(s.text, text):
             outcome.failed.append((s, ", ".join(problems)))
         else:
@@ -202,7 +208,9 @@ async def _rewrite(
             continue
         verdict = verdicts.get(s.key)
         if verdict is None:
-            outcome.failed.append((s, f"kontrollen svarade inte ({checked.stop_reason})"))
+            outcome.failed.append(
+                (s, f"kontrollen svarade inte ({checked.stop_reason or 'okänd orsak'})")
+            )
         elif not verdict.same_meaning:
             outcome.failed.append((s, f"kontrollen: {verdict.reason}"))
         else:

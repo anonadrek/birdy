@@ -357,3 +357,12 @@ async def test_species_without_dashes_are_left_alone(tmp_path: Path) -> None:
     dump_species(data, path)
     result = await run_app_dashes(options(tmp_path), FakeJsonClient([]))
     assert result.outcomes == []
+
+
+async def test_an_error_in_one_species_does_not_stop_the_run(tmp_path: Path) -> None:
+    path = write_species(tmp_path, HEADING_AND_TWO_DASHES)
+    before = path.read_text(encoding="utf-8")
+    result = await run_app_dashes(options(tmp_path), FakeJsonClient([]))  # the first call raises
+    assert path.read_text(encoding="utf-8") == before
+    assert result.outcomes[0].failed[0][1].startswith("fel: IndexError")
+    assert "fel: IndexError" in result.report.read_text(encoding="utf-8")
