@@ -52,6 +52,16 @@ internal object JournalPdfLayoutIos {
         ns.drawAtPoint(CGPointMake(originX, baselineY - font.ascender), withAttributes = attrs)
     }
 
+    /** [text]s bredd i [font], samma mått som [drawText] använder för centrering. */
+    @Suppress("CAST_NEVER_SUCCEEDS")
+    private fun textWidth(
+        text: String,
+        font: UIFont,
+    ): Double {
+        val attrs: Map<Any?, *> = mapOf(NSFontAttributeName to font)
+        return (text as NSString).sizeWithAttributes(attrs).useContents { width }
+    }
+
     private fun fillRect(
         x: Double,
         y: Double,
@@ -221,29 +231,38 @@ internal object JournalPdfLayoutIos {
         drawText(input.strings.statTotal, M.MARGIN_X + colW + 10.0, statsY + 22.0, captionFont, M.COLOR_INK)
 
         // Top species bar chart (max 5)
-        if (input.stats.topSpecies.isNotEmpty()) {
-            val chartTop = statsY + 80.0
-            val topsFont = IosPdfFonts.dmSerifItalic(M.TOPS_HEADER.toDouble())
-            drawText(input.strings.tops, M.MARGIN_X.toDouble(), chartTop, topsFont, M.COLOR_INK)
-
-            val barAreaX = M.MARGIN_X + 140.0
-            val barAreaW = M.PAGE_W - barAreaX - M.MARGIN_X
-            val rowH = 28.0
-            val maxCount = (input.stats.topSpecies.maxOfOrNull { it.second } ?: 1).coerceAtLeast(1)
-
-            input.stats.topSpecies.take(5).forEachIndexed { i, (name, count) ->
-                val y = chartTop + 24.0 + i * rowH
-                drawText(name, M.MARGIN_X.toDouble(), y + 14.0, IosPdfFonts.caveat(M.BAR_LABEL.toDouble()), M.COLOR_INK)
-                val barY = y + 6.0
-                val barH = 14.0
-                fillRect(barAreaX, barY, barAreaW, barH, M.COLOR_PAPER_EDGE)
-                val filled = barAreaW * (count.toDouble() / maxCount)
-                fillRect(barAreaX, barY, filled, barH, M.COLOR_COPPER)
-                drawText("$count", barAreaX + filled + 6.0, barY + 12.0, IosPdfFonts.caveat(M.BAR_VALUE.toDouble()), M.COLOR_COPPER)
-            }
-        }
+        if (input.stats.topSpecies.isNotEmpty()) drawTopSpecies(input, chartTop = statsY + 80.0)
 
         drawPageFooter(pageNum)
+    }
+
+    /** Androids drawTopSpecies rad för rad: en för lång etikett krymps och kortas av [fitLabel] (2026-10-08). */
+    private fun drawTopSpecies(
+        input: JournalPdfInput,
+        chartTop: Double,
+    ) {
+        val topsFont = IosPdfFonts.dmSerifItalic(M.TOPS_HEADER.toDouble())
+        drawText(input.strings.tops, M.MARGIN_X.toDouble(), chartTop, topsFont, M.COLOR_INK)
+
+        val barAreaX = M.MARGIN_X + M.TOPS_BAR_OFFSET.toDouble()
+        val barAreaW = M.PAGE_W - barAreaX - M.MARGIN_X
+        val labelMaxW = M.TOPS_BAR_OFFSET - M.TOPS_LABEL_GAP
+        val rowH = 28.0
+        val labelFont = IosPdfFonts.caveat(M.BAR_LABEL.toDouble())
+        val maxCount = (input.stats.topSpecies.maxOfOrNull { it.second } ?: 1).coerceAtLeast(1)
+
+        input.stats.topSpecies.take(5).forEachIndexed { i, (name, count) ->
+            val y = chartTop + 24.0 + i * rowH
+            val label = fitLabel(name, labelMaxW, M.LABEL_MIN_SCALE) { textWidth(it, labelFont).toFloat() }
+            val font = if (label.scale == 1f) labelFont else IosPdfFonts.caveat(M.BAR_LABEL.toDouble() * label.scale)
+            drawText(label.text, M.MARGIN_X.toDouble(), y + 14.0, font, M.COLOR_INK)
+            val barY = y + 6.0
+            val barH = 14.0
+            fillRect(barAreaX, barY, barAreaW, barH, M.COLOR_PAPER_EDGE)
+            val filled = barAreaW * (count.toDouble() / maxCount)
+            fillRect(barAreaX, barY, filled, barH, M.COLOR_COPPER)
+            drawText("$count", barAreaX + filled + 6.0, barY + 12.0, IosPdfFonts.caveat(M.BAR_VALUE.toDouble()), M.COLOR_COPPER)
+        }
     }
 
     fun drawSpeciesPage(

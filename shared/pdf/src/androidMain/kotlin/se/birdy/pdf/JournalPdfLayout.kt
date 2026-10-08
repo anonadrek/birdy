@@ -101,47 +101,60 @@ internal object JournalPdfLayout {
         canvas.drawText(input.strings.statTotal, JournalPdfMetrics.MARGIN_X + colW + 10f, statsY + 22f, captionPaint)
 
         // Top species bar chart (max 5)
-        if (input.stats.topSpecies.isNotEmpty()) {
-            val chartTop = statsY + 80f
-            val topsHeaderPaint =
-                dmSerifItalicPaint(textSize = JournalPdfMetrics.TOPS_HEADER, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)
-            canvas.drawText(input.strings.tops, JournalPdfMetrics.MARGIN_X, chartTop, topsHeaderPaint)
-
-            val barAreaX = JournalPdfMetrics.MARGIN_X + 140f
-            val barAreaW = JournalPdfMetrics.PAGE_W - barAreaX - JournalPdfMetrics.MARGIN_X
-            val rowH = 28f
-            val labelPaint =
-                caveatPaint(textSize = JournalPdfMetrics.BAR_LABEL, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)
-            val valuePaint =
-                caveatPaint(textSize = JournalPdfMetrics.BAR_VALUE, color = JournalPdfMetrics.COLOR_COPPER.toInt(), center = false)
-            val barPaint =
-                Paint().apply {
-                    color = JournalPdfMetrics.COLOR_COPPER.toInt()
-                    style = Paint.Style.FILL
-                    isAntiAlias = true
-                }
-            val barBgPaint =
-                Paint().apply {
-                    color = JournalPdfMetrics.COLOR_PAPER_EDGE.toInt()
-                    style = Paint.Style.FILL
-                    isAntiAlias = true
-                }
-            val maxCount = (input.stats.topSpecies.maxOfOrNull { it.second } ?: 1).coerceAtLeast(1)
-
-            input.stats.topSpecies.take(5).forEachIndexed { i, (name, count) ->
-                val y = chartTop + 24f + i * rowH
-                canvas.drawText(name, JournalPdfMetrics.MARGIN_X, y + 14f, labelPaint)
-                val barY = y + 6f
-                val barH = 14f
-                canvas.drawRect(barAreaX, barY, barAreaX + barAreaW, barY + barH, barBgPaint)
-                val filled = barAreaW * (count.toFloat() / maxCount)
-                canvas.drawRect(barAreaX, barY, barAreaX + filled, barY + barH, barPaint)
-                canvas.drawText("$count", barAreaX + filled + 6f, barY + 12f, valuePaint)
-            }
-        }
+        if (input.stats.topSpecies.isNotEmpty()) drawTopSpecies(canvas, input, chartTop = statsY + 80f)
 
         drawPageFooter(canvas, pageNum)
         doc.finishPage(page)
+    }
+
+    /**
+     * The stats page's top-species chart. A label longer than its column (the English "Great Spotted Woodpecker") is
+     * shrunk, then cut, by [fitLabel] so it never runs into its bar (2026-10-08).
+     */
+    private fun drawTopSpecies(
+        canvas: Canvas,
+        input: JournalPdfInput,
+        chartTop: Float,
+    ) {
+        val topsHeaderPaint =
+            dmSerifItalicPaint(textSize = JournalPdfMetrics.TOPS_HEADER, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)
+        canvas.drawText(input.strings.tops, JournalPdfMetrics.MARGIN_X, chartTop, topsHeaderPaint)
+
+        val barAreaX = JournalPdfMetrics.MARGIN_X + JournalPdfMetrics.TOPS_BAR_OFFSET
+        val barAreaW = JournalPdfMetrics.PAGE_W - barAreaX - JournalPdfMetrics.MARGIN_X
+        val labelMaxW = JournalPdfMetrics.TOPS_BAR_OFFSET - JournalPdfMetrics.TOPS_LABEL_GAP
+        val rowH = 28f
+        val labelPaint =
+            caveatPaint(textSize = JournalPdfMetrics.BAR_LABEL, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)
+        val valuePaint =
+            caveatPaint(textSize = JournalPdfMetrics.BAR_VALUE, color = JournalPdfMetrics.COLOR_COPPER.toInt(), center = false)
+        val barPaint =
+            Paint().apply {
+                color = JournalPdfMetrics.COLOR_COPPER.toInt()
+                style = Paint.Style.FILL
+                isAntiAlias = true
+            }
+        val barBgPaint =
+            Paint().apply {
+                color = JournalPdfMetrics.COLOR_PAPER_EDGE.toInt()
+                style = Paint.Style.FILL
+                isAntiAlias = true
+            }
+        val maxCount = (input.stats.topSpecies.maxOfOrNull { it.second } ?: 1).coerceAtLeast(1)
+
+        input.stats.topSpecies.take(5).forEachIndexed { i, (name, count) ->
+            val y = chartTop + 24f + i * rowH
+            val label = fitLabel(name, labelMaxW, JournalPdfMetrics.LABEL_MIN_SCALE) { labelPaint.measureText(it) }
+            val labelSize = JournalPdfMetrics.BAR_LABEL * label.scale
+            val paint = if (label.scale == 1f) labelPaint else Paint(labelPaint).apply { textSize = labelSize }
+            canvas.drawText(label.text, JournalPdfMetrics.MARGIN_X, y + 14f, paint)
+            val barY = y + 6f
+            val barH = 14f
+            canvas.drawRect(barAreaX, barY, barAreaX + barAreaW, barY + barH, barBgPaint)
+            val filled = barAreaW * (count.toFloat() / maxCount)
+            canvas.drawRect(barAreaX, barY, barAreaX + filled, barY + barH, barPaint)
+            canvas.drawText("$count", barAreaX + filled + 6f, barY + 12f, valuePaint)
+        }
     }
 
     fun drawSpeciesPage(
