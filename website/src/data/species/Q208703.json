@@ -1,13 +1,693 @@
 {
   "qid": "Q208703",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
-    "wave": 2
+    "wave": 2,
+    "audioStruckSources": [
+      "https://commons.wikimedia.org/wiki/File:Calcarius_lapponicus_30352.wav"
+    ],
+    "audioStruck": true
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Lappsparven har en lång bakklo som är längre än baktån och mindre böjd än hos fältsparvarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den utmärker sig genom en lång bakklo, som är längre än själva baktån och mindre böjd än hos fältsparvarna."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Lappsparven är kraftigt byggd och har en ganska kort stjärt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Spornammer ist knapp goldammergroß, kräftig gebaut und besitzt einen eher kurzen Schwanz."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Hos den adulta hanen är hjässa, kind, strupe och övre bröst helsvarta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hos den adulta hanen är hjässa, kind, strupe och övre bröst helsvart."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Ett ljust ögonbrynsstreck går från näbbroten bakom de svarta örontäckarna ned på halsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från näbbroten sträcker sig ett ljust ögonbrynsstreck som löper bakom de svarta örontäckarna ned på halsen."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Nacken är rostbrun och rygg, skuldror och vingtäckare är spräckliga i svart och rostbrunt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Nacken är rostbrun. Ryggen, skuldrorna och vingtäckarna är spräckliga i svart och rostbrunt."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Undersidan är vit med rostgul anstrykning och sidorna har svarta fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Undersidan är vit, med rostgul anstrykning. Sidorna är tecknade med svarta fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Benen är mörka och näbben är halmgul med svart spets.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Beine sind dunkel, der Schnabel zeigt eine strohgelbe Färbung mit schwarzer Spitze."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "I vingen syns ett rostrött fält som inramas av ett vitt vingband ovanför och ett nedanför.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Im Flügel ist ein rostrotes Feld zu erkennen, das oben und unten von je einer weißen Flügelbinde eingerahmt wird."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Honan saknar det svarta på huvud, strupe och kroppssidor och är i allmänhet blekare och mer rostbrun.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hos honan saknas det svarta på huvudet, strupen och kroppssidorna, och hennes färg är i allmänhet blekare och mer rostbrun."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Honan har ett ljust bröst med svarta fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hon har ett svartfläckat ljust bröst."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Unga fåglar skiljer sig ofta från adulta genom mer eller mindre tydliga gula fjäderkanter.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Jungvögel sind häufig an den mehr oder weniger stark ausgeprägten, gelben Federrändern von adulten Tieren zu unterscheiden."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "size",
+      "sv": "Lappsparven har en kroppslängd på 14–15,5 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lappsparven är en rätt kraftig sparv men en kroppslängd på 14–15,5 cm."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "size",
+      "sv": "Vingbredden är 22–29 cm och vikten 22,3–33,1 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Wingspan: 8.7–11.4 in (22–29 cm)"
+        },
+        {
+          "article": "en",
+          "quote": "Weight: 0.8–1.2 oz (22.3–33.1 g)"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "På sträck och vid uppflog hörs ett torrt \"pr'r'r'rt\", hårdare och torrare än snösparvens läte.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På sträck och ofta vid uppflog hörs ett torrt \"pr'r'r'rt\", både hårdare och torrare än snösparvens läte."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Den låter även med korta visslande \"tju\" eller sträva \"tjyb\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även korta och visslande \"tju\" eller sträva \"tjyb\" kan höras."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Sången är en kort strof med ödslig klang, något lik berglärkans sång men utan dess stakande inledning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången är en kort strof med ödslig klang, något påminnande om berglärkans sång men utan dennas stakande inledning."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "behaviour",
+      "sv": "Ibland sjunger den i en ryttlande sångflykt med utbredd stjärt, och då blir stroferna längre.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ibland utför den en ryttlande sångflykt med utbredd stjärt, och då blir stroferna längre."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "I Sverige häckar den på fjällhedar med lågväxande dvärgbjörk, videbuskar och örter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar den på hedar med lågväxande dvärgbjörk, videbuskar och örter i fjälltrakterna"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Under flyttningen rastar den gärna på stubbåkrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under flyttningen äter den mestadels frön och rastar då gärna på stubbåkrar."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "habitat",
+      "sv": "Den övervintrar i jordbruksmark och i västra Europa även på saltängar och strandängar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Övervintring sker också i jordbruksmark, i västra Europa även på saltängar eller strandängar."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "I Sverige häckar lappsparven i fjällkedjan från norra Dalarna till Torne lappmark, ovanför trädgränsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lappsparven häckar i fjällkedjan från norra Dalarna till Torne Lappmark, ovanför trädgränsen"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Lappsparven anländer till häckningsområdena i slutet av april eller början av maj.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I slutet av april eller början av maj anländer lappsparven till sina häckningsområden."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Lappsparven flyttar i augusti och början av september, och flertalet svenska fåglar flyttar mot sydost.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den flyttar i augusti och början av september."
+        },
+        {
+          "article": "sv",
+          "quote": "Flertalet svenska lappsparvar flyttar mot sydost."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "sweden",
+      "sv": "På våren rastar den relativt talrikt vid Västerbottens och Norrbottens kuster men är sparsam i södra Sverige under flyttningen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under våren rastar den relativt talrikt i Västerbottens och Norrbottens kusttrakter, medan den är sparsam i södra Sverige under flyttningen."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Boet byggs av fina kvistar, gräs och mossa, fodras med fjädrar och placeras på fuktiga ställen på marken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet, som byggs av fina kvistar, gräs och mossa samt inuti är fodrat med fjädrar, placeras på fuktiga ställen på marken"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "I början av juni lägger honan fyra till sex gråaktiga, gulaktiga eller ljusbruna ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I början av juni lägger honan fyra till sex gråaktiga, gulaktiga eller ljusbruna ägg"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Äggen ruvas i ungefär två veckor och ungarna är flygga redan i mitten av juli.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas i ungefär två veckor och redan i mitten av juli är ungarna utflugna."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "På sommaren äter lappsparven främst insekter och under flyttningen mest frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På sommaren består deras föda huvudsakligen av insekter."
+        },
+        {
+          "article": "sv",
+          "quote": "Under flyttningen äter den mestadels frön och rastar då gärna på stubbåkrar."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "På vintern bildar den ofta blandflockar tillsammans med berglärkor och snösparvar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Lapland longspurs often form mixed-species flocks in winter, where they are regularly accompanied by horned larks and snow buntings."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den flyttar i augusti och början av september."
+        },
+        {
+          "article": "sv",
+          "quote": "Fåglar häckande i Skandinavien övervintrar i två områden"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i juni och september."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i december."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Jämtland och Västerbotten."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Lappsparven är en kraftigt byggd tätting som häckar på fjällhedar ovanför trädgränsen i fjällkedjan.",
+          "factIds": [
+            "f02",
+            "f18",
+            "f21"
+          ]
+        },
+        {
+          "text": "Under flyttningen rastar den gärna på stubbåkrar.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Den adulta hanen har helsvart hjässa, kind, strupe och övre bröst samt rostbrun nacke",
+          "factIds": [
+            "f03",
+            "f05"
+          ]
+        },
+        {
+          "text": "Ljust ögonbrynsstreck som går bakom de svarta örontäckarna ned på halsen",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Halmgul näbb med svart spets och rostrött vingfält mellan två vita vingband",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        },
+        {
+          "text": "Honan saknar det svarta på huvudet och är blekare, med svartfläckigt ljust bröst",
+          "factIds": [
+            "f09",
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "På sträck och vid uppflog hörs ett torrt \"pr'r'r'rt\", hårdare och torrare än snösparvens läte.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Den låter också med korta visslande \"tju\" eller sträva \"tjyb\".",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Sången är en kort strof med ödslig klang, något lik berglärkans men utan dess stakande inledning.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Lappsparven är en flyttfågel som häckar i fjällkedjan från norra Dalarna till Torne lappmark, ovanför trädgränsen.",
+          "factIds": [
+            "s01",
+            "f21"
+          ]
+        },
+        {
+          "text": "Den anländer i slutet av april eller början av maj och flyttar i augusti och början av september, de flesta mot sydost.",
+          "factIds": [
+            "f22",
+            "f23"
+          ]
+        },
+        {
+          "text": "På våren rastar den relativt talrikt vid Västerbottens och Norrbottens kuster men är sparsam i södra Sverige.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i juni och september och sällan i december.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "På sommaren äter den främst insekter och under flyttningen mest frön.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "På vintern bildar den ofta blandflockar med berglärkor och snösparvar.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Ibland sjunger den i ryttlande sångflykt med utbredd stjärt, och då blir stroferna längre.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Boet läggs på fuktiga ställen på marken.",
+          "factIds": [
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Lappsparv: lär dig känna igen hane och hona på dräkten och näbben, hör hur lätena och sången låter och se när arten brukar synas.",
+      "facts": {
+        "size": {
+          "value": "14 till 15,5 cm",
+          "factIds": [
+            "f12"
+          ]
+        },
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Lapland Longspur is a stocky songbird that breeds on mountain heaths above the tree line in Sweden's mountain chain.",
+          "factIds": [
+            "f02",
+            "f18",
+            "f21"
+          ]
+        },
+        {
+          "text": "On migration it likes to stop on stubble fields.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Adult male has an all-black crown, cheek, throat and upper breast, and a rufous nape",
+          "factIds": [
+            "f03",
+            "f05"
+          ]
+        },
+        {
+          "text": "Pale supercilium runs behind the black ear coverts and down onto the neck",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Straw-yellow bill with a black tip, and a rufous wing panel between two white bars",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        },
+        {
+          "text": "Female lacks the black on the head and is paler, with a pale, black-spotted breast",
+          "factIds": [
+            "f09",
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "In flight and when flushed it gives a dry \"pr'r'r'rt\", harder and drier than the Snow Bunting's call.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "It also gives short whistled \"tju\" or harsh \"tjyb\" notes.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "The song is a short phrase with a desolate ring, somewhat like the Horned Lark's song but without its halting start.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "A migrant, it breeds in the mountains from northern Dalarna to Torne lappmark, above the tree line.",
+          "factIds": [
+            "s01",
+            "f21"
+          ]
+        },
+        {
+          "text": "It arrives in late April or early May and leaves in August and early September, most Swedish birds heading southeast.",
+          "factIds": [
+            "f22",
+            "f23"
+          ]
+        },
+        {
+          "text": "In spring it stops in fair numbers on the Västerbotten and Norrbotten coasts but is scarce in southern Sweden.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "It is reported most in June and September and rarely in December.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "In summer it eats mainly insects, and on migration mostly seeds.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "In winter it often forms mixed flocks with Horned Larks and Snow Buntings.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "It sometimes sings in a hovering song flight with its tail spread, and the phrases then get longer.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "The nest is placed in damp spots on the ground.",
+          "factIds": [
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Lapland Longspur: learn to tell male and female apart by plumage and bill, hear its calls and song, and find out when it is usually seen.",
+      "facts": {
+        "size": {
+          "value": "14 to 15.5 cm",
+          "factIds": [
+            "f12"
+          ]
+        },
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "f6ac79b83dc26f3e"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "f6ac79b83dc26f3e"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "lappsparv",
@@ -51,16 +731,6 @@
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lapland_longspur_(Calcarius_lapponicus)_2023_4.jpg"
     }
   ],
-  "audio": {
-    "file": "Q208703/voice.mp3",
-    "durationSec": 8,
-    "trimmed": false,
-    "author": "Thomas Koffel",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Calcarius_lapponicus_30352.wav",
-    "sha256": "cf5d35636b628fd6435d84e9be038ea50e538213839462980b158699a0955267"
-  },
   "wikipedia": {
     "sv": {
       "title": "Lappsparv",
@@ -207,5 +877,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

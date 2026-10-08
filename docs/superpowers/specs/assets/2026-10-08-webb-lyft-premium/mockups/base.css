@@ -1,0 +1,81 @@
+/* Shared base for the 2026-10-08 website lift + Premium page mockups. Same fonts and tokens as
+   birdy.community (website/src/styles/tokens.css). The fonts are the site's own self-hosted files.
+   These pages are rendered to images by ../render.cjs; they are design mockups, not site code. */
+@font-face { font-family: 'DM Serif Display'; font-style: normal; font-weight: 400; src: url('../../../../../../website/public/fonts/dm-serif-display-regular.woff2') format('woff2'); }
+@font-face { font-family: 'DM Serif Display'; font-style: italic; font-weight: 400; src: url('../../../../../../website/public/fonts/dm-serif-display-italic.woff2') format('woff2'); }
+@font-face { font-family: 'Caveat'; font-weight: 400; src: url('../../../../../../website/public/fonts/caveat-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Caveat'; font-weight: 700; src: url('../../../../../../website/public/fonts/caveat-bold.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-weight: 400; src: url('../../../../../../website/public/fonts/inter-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-weight: 600; src: url('../../../../../../website/public/fonts/inter-semibold.woff2') format('woff2'); }
+
+:root {
+  --paper: #F6EFE2; --card: #FFFAF1; --ink: #302019; --muted: #6E584B; --line: #DFD2BA;
+  --rust: #9A4526; --rust-deep: #72301A; --apricot: #F2B27A; --peach: #FDE5CB;
+  --dark: #2A1D17; --dark-deep: #1E1410; --dark-rgb: 42, 29, 23; --dark-hi: #3A2A21;
+  --brass: #B8893A; --brass-hi: #E2C07E; --brass-ink: #241B0C; --cream: #FFF8EE; --navy: #1F3A5F;
+  --bezel: #17100C;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --script: 'Caveat', cursive;
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font-family: var(--sans); color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; overflow-x: clip; font-synthesis: none; }
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; margin: 0; line-height: 1.04; letter-spacing: -.015em; text-wrap: balance; }
+p { margin: 0; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1160px; margin: 0 auto; padding-inline: 20px; }
+@media (min-width: 900px) { .wrap { padding-inline: 44px; } }
+
+.acc { font-family: var(--script); font-weight: 700; font-style: normal; font-size: 1.18em; letter-spacing: 0; line-height: .9; color: var(--acc, var(--rust)); }
+.kick { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--kick, var(--rust)); }
+.kick::before { content: ''; width: 22px; height: 1px; background: currentColor; flex: none; }
+.note { font-family: var(--script); font-weight: 700; font-size: clamp(21px, 2vw, 25px); line-height: 1.12; color: var(--note, var(--rust)); transform: rotate(-1.4deg); width: fit-content; max-width: 100%; text-wrap: balance; }
+.lead { font-size: 15.5px; line-height: 1.65; color: var(--lead, var(--muted)); max-width: 34rem; }
+@media (min-width: 900px) { .lead { font-size: 16.5px; } }
+
+/* Torn paper edge: filled with the upper band's colour, sits at the top of the lower band. */
+.deckle { position: absolute; left: 0; right: 0; z-index: 2; line-height: 0; pointer-events: none; }
+.deckle svg { display: block; width: 100%; height: clamp(14px, 2vw, 26px); }
+.deckle.top { top: -1px; }
+.deckle.bottom { bottom: -1px; transform: scaleY(-1); }
+
+/* Header bar (simplified site nav). */
+.nav { position: relative; z-index: 20; display: flex; align-items: center; justify-content: space-between; padding-block: 18px; }
+.wm { font-family: var(--script); font-weight: 700; font-size: 34px; line-height: 1; color: var(--wm, var(--apricot)); display: inline-flex; align-items: center; gap: 6px; }
+.nav-links { display: none; gap: 26px; font-size: 13.5px; font-weight: 600; color: var(--navc, var(--cream)); }
+.nav-links .cur { border-bottom: 2px solid var(--apricot); padding-bottom: 3px; }
+.nav-cta { display: none; padding: 10px 16px; border-radius: 10px; background: linear-gradient(135deg, var(--rust), var(--rust-deep)); color: var(--cream); font-size: 13px; font-weight: 600; }
+.menu-btn { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--menubg, rgba(30, 20, 16, .55)); }
+.menu-btn i { display: block; width: 18px; height: 2px; background: var(--navc, var(--cream)); box-shadow: 0 6px 0 var(--navc, var(--cream)); transform: translateY(-3px); }
+@media (min-width: 900px) {
+  .nav { padding-block: 22px; }
+  .nav-links { display: flex; }
+  .nav-cta { display: inline-block; }
+  .menu-btn { display: none; }
+  .nav-right { display: flex; align-items: center; gap: 26px; }
+}
+
+/* Store badges. */
+.badges { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.play { height: 50px; width: auto; }
+.appstore { height: 50px; display: inline-flex; align-items: center; gap: 9px; padding: 0 14px 0 12px; border-radius: 9px; background: #000; border: 1px solid rgba(255, 255, 255, .28); color: #fff; opacity: .78; }
+.appstore svg { width: 20px; height: 24px; fill: #fff; }
+.appstore span { display: flex; flex-direction: column; line-height: 1.05; font-size: 10px; }
+.appstore b { font-size: 17px; font-weight: 600; letter-spacing: -.01em; }
+
+/* The phone: warm near-black bezel, the screenshot untouched inside. */
+.phone { position: relative; padding: var(--bz, 9px); border-radius: calc(var(--r, 30px) + var(--bz, 9px)); background: var(--bezel); box-shadow: inset 0 0 0 1.5px rgba(255, 248, 238, .12), var(--psh, 0 30px 60px rgba(30, 20, 16, .35)); width: var(--pw, 250px); flex: none; }
+.phone img { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; object-position: top; border-radius: var(--r, 30px); }
+
+.seal { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; color: var(--cream); position: relative; transform: rotate(-9deg); background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .25), transparent 55%), var(--rust); box-shadow: 0 4px 10px rgba(var(--dark-rgb), .3); font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1; text-align: center; }
+.seal::before { content: ''; position: absolute; inset: 4px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .42); }
+.seal.brass { background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .45), transparent 55%), var(--brass); color: var(--brass-ink); }
+.seal.brass::before { border-color: rgba(36, 27, 12, .3); }
+
+.credit { font-size: 11px; color: var(--muted); }
+.credit u { text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.bird { display: inline-block; width: .9em; height: .87em; background: url('media/bird-apricot.png') center / contain no-repeat; }
+.bird.rust { background-image: url('media/bird-rust.png'); }
+.bird.brass { background-image: url('media/bird-brass.png'); }

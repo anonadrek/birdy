@@ -36,10 +36,11 @@ When you add a file of this kind, add a row here (or in the folder's own `SOURCE
 
 ## AI-generated images
 
+The website no longer uses any AI-generated image: the AI robin that the 1.3 hero was built on was removed from the site on 2026-10-08 (`website/src/assets/hero-robin.webp`, the hero layers made from it and the `og-field-{sv,en}.png` share images are deleted; the share images are now `website/public/og-field-{sv,en}.jpg`, made from the public domain robin photo `rodhake-q25334.webp` by `website/tools/generate-og.mjs`). Copies remain only as design history in the docs:
+
 | Files | Source |
 |---|---|
-| `website/src/assets/hero-robin.webp` | **AI-generated robin.** The tool is not known (Albin, 2026-10-07). Added in `46b80fbb` (2026-09-24). |
-| Made from it: `website/src/assets/hero/{robin-plate.webp,robin-layer.png,phone-robin.webp}`, `website/public/og-field-{sv,en}.png` (`website/tools/generate-og.mjs`), and in `docs/superpowers/specs/assets/2026-09-24-website-1-3-lyft/`: `robin-hero.jpg`, `robin-plate.jpg`, `robin-layer.webp`, `rodhake-utklipp/*` | Cut out and recoloured with the scripts in `rodhake-utklipp/` (`mask-isnet-general-use.png` is the cut-out mask). |
+| `docs/superpowers/specs/assets/2026-09-24-website-1-3-lyft/`: `robin-hero.jpg`, `robin-plate.jpg`, `robin-layer.webp`, `rodhake-utklipp/*` | **AI-generated robin** and the layers cut from it (the tool is not known, Albin 2026-10-07; added in `46b80fbb`, 2026-09-24). Not published anywhere. |
 | The launcher icon bird | See "Birdy's own artwork". |
 
 ## Copies of species photos outside the photo set

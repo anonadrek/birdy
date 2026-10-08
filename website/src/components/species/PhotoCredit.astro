@@ -1,0 +1,19 @@
+---
+// One photo's credit line, the same wherever a photo is shown: the species pages' credits (Credits.astro wraps it in
+// its <p data-credit-for>), the home page's Dagens fågel plate and its month cards. Photographer, the licence (linked
+// to the localized deed when it has one, "public domain" in lower case when it has none), the Commons source, and
+// that the photo is resized. The parent styles the links with :global(a): this component has no scope of its own.
+import { getCopy, type Locale } from '../../lib/i18n';
+import { licenseLabel, localizedLicenseUrl, type SpeciesImage } from '../../lib/species';
+
+interface Props {
+  locale: Locale;
+  image: Pick<SpeciesImage, 'author' | 'license' | 'licenseUrl' | 'sourceUrl'>;
+}
+const { locale, image } = Astro.props;
+const t = getCopy(locale);
+---
+
+{t.species.photoCredit} {image.author ?? t.species.unknownAuthor},{' '}
+{image.licenseUrl ? <a href={localizedLicenseUrl(image.licenseUrl, locale)}>{image.license}</a> : licenseLabel(image.license, t)},{' '}
+{t.species.via} <a href={image.sourceUrl}>Wikimedia Commons</a>, {t.species.resized}

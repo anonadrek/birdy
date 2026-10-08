@@ -4,6 +4,7 @@ import Icon from './ui/Icon.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 import { fieldNotesHref } from '../lib/field-notes';
 import { hasSpecies as anySpecies, hubHref } from '../lib/species';
+import { premiumHref } from '../lib/links';
 
 interface Props {
   locale: Locale;
@@ -28,7 +29,7 @@ const links = [
   ...(hasSpecies ? [{ href: speciesHub, label: t.nav.species }] : []),
   { href: `${home}#how-it-works`, label: t.nav.howItWorks },
   { href: `${home}#app`, label: t.nav.app },
-  { href: `${home}#premium`, label: t.nav.premium },
+  { href: premiumHref(locale), label: t.nav.premium },
   { href: fieldNotesHref(locale), label: t.nav.fieldNotes },
 ];
 // "Species" is current on the hub, group, species, comparison and about pages.

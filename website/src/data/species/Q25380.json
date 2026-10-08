@@ -20,27 +20,16 @@
     {
       "id": "f02",
       "topic": "appearance",
-      "sv": "Alla sparvhökar har långa, smala, gula ben med svarta klor.",
+      "sv": "Alla sparvhökar har långa, smala, gula ben med svarta klor, och stjärten har 4–5 glesa mörka tvärband.",
       "sources": [
         {
           "article": "sv",
-          "quote": "De har alla långa, smala, gula ben med svarta klor"
+          "quote": "De har alla långa, smala, gula ben med svarta klor, och stjärten har hos båda könen 4-5 glesa mörka tvärband."
         }
       ]
     },
     {
       "id": "f03",
-      "topic": "appearance",
-      "sv": "Stjärten har hos båda könen fyra till fem glesa mörka tvärband.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "stjärten har hos båda könen 4-5 glesa mörka tvärband"
-        }
-      ]
-    },
-    {
-      "id": "f04",
       "topic": "appearance",
       "sv": "Näbben är svart med blågrå bas.",
       "sources": [
@@ -51,7 +40,7 @@
       ]
     },
     {
-      "id": "f05",
+      "id": "f04",
       "topic": "sex_age",
       "sv": "Den adulta hanen är blygrå till gråblå ovan och fint rödbandad på vit botten under, vilket ser orangefärgat ut på håll.",
       "sources": [
@@ -62,9 +51,9 @@
       ]
     },
     {
-      "id": "f06",
+      "id": "f05",
       "topic": "sex_age",
-      "sv": "Hanens iris är orangegul till orangeröd.",
+      "sv": "Hanen har orangegul till orangeröd iris.",
       "sources": [
         {
           "article": "sv",
@@ -73,7 +62,7 @@
       ]
     },
     {
-      "id": "f07",
+      "id": "f06",
       "topic": "sex_age",
       "sv": "Honan har grå till gråbrun ovansida, gråbrunt tvärvattrad undersida och klargul iris.",
       "sources": [
@@ -84,7 +73,7 @@
       ]
     },
     {
-      "id": "f08",
+      "id": "f07",
       "topic": "sex_age",
       "sv": "Ungfågeln är mörkbrun med rostig ton ovan, grovt och ojämnt mörkbrunt vattrad under och har ljusgul iris.",
       "sources": [
@@ -95,7 +84,7 @@
       ]
     },
     {
-      "id": "f09",
+      "id": "f08",
       "topic": "sex_age",
       "sv": "Honorna kan bli upp till 25 procent större än hanarna.",
       "sources": [
@@ -106,9 +95,9 @@
       ]
     },
     {
-      "id": "f10",
+      "id": "f09",
       "topic": "size",
-      "sv": "Den adulta hanen är 29–34 cm lång, har ett vingspann på 58–65 cm och väger 131–180 gram.",
+      "sv": "Den adulta hanen är 29–34 cm lång, har 58–65 cm vingspann och väger 131–180 gram.",
       "sources": [
         {
           "article": "sv",
@@ -117,9 +106,9 @@
       ]
     },
     {
-      "id": "f11",
+      "id": "f10",
       "topic": "size",
-      "sv": "Honan är 35–41 cm lång, har ett vingspann på 67–80 cm och väger 186–345 gram.",
+      "sv": "Honan är 35–41 cm lång, har 67–80 cm vingspann och väger 186–345 gram.",
       "sources": [
         {
           "article": "sv",
@@ -128,29 +117,7 @@
       ]
     },
     {
-      "id": "f12",
-      "topic": "behaviour",
-      "sv": "Flykten består av några snabba vingslag följda av glidflykt, vilket ger en lätt bågformad flykt.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Flykten är karaktäristisk med några snabba vingslag följt av glidflykt, där glidflykten ger den en lätt bågformad flykt."
-        }
-      ]
-    },
-    {
-      "id": "f13",
-      "topic": "behaviour",
-      "sv": "Den flyger ofta tätt över marken och kan förfölja byten till fots in under buskar.",
-      "sources": [
-        {
-          "article": "sv",
-          "quote": "Den flyger ofta tätt över marken och kan till och med förfölja byten till fots in under buskar och dylikt."
-        }
-      ]
-    },
-    {
-      "id": "f14",
+      "id": "f11",
       "topic": "voice",
       "sv": "Sparvhöken är tystlåten, även under häckningen.",
       "sources": [
@@ -161,9 +128,9 @@
       ]
     },
     {
-      "id": "f15",
+      "id": "f12",
       "topic": "voice",
-      "sv": "Det vanligaste lätet är ett kacklande ”kjukjukjukjukju…”.",
+      "sv": "Det vanligaste lätet är ett kacklande \"kjukjukjukjukju...\".",
       "sources": [
         {
           "article": "sv",
@@ -172,9 +139,9 @@
       ]
     },
     {
-      "id": "f16",
+      "id": "f13",
       "topic": "voice",
-      "sv": "Honan tigger med ett klagande ”pii-ih”.",
+      "sv": "Honan tigger med ett klagande \"pii-ih\".",
       "sources": [
         {
           "article": "sv",
@@ -183,20 +150,20 @@
       ]
     },
     {
-      "id": "f17",
+      "id": "f14",
       "topic": "voice",
-      "sv": "Mest märkbara är de utflugna ungarnas tiggläten, ett ”kiäh-kiäh” som liknar unga duvhökars.",
+      "sv": "Vid störning hörs ett kort, snabbt upprepat \"ki-ki-ki-ki\".",
       "sources": [
         {
           "article": "de",
-          "quote": "Vergleichsweise am auffälligsten sind die Bettelrufe der ausgeflogenen Jungvögel, sie klingen ähnlich wie die junger Habichte wie „kiäh-kiäh“"
+          "quote": "Bei Störungen ertönt ein kurzes, schnell gereihtes „ki-ki-ki-ki“."
         }
       ]
     },
     {
-      "id": "f18",
+      "id": "f15",
       "topic": "habitat",
-      "sv": "Sparvhöken är vanlig i de flesta skogstyper men även i mer öppna landskap med enstaka träd.",
+      "sv": "Sparvhöken är vanlig i de flesta skogsmiljöer men även i öppnare landskap med enstaka träd.",
       "sources": [
         {
           "article": "sv",
@@ -205,7 +172,7 @@
       ]
     },
     {
-      "id": "f19",
+      "id": "f16",
       "topic": "habitat",
       "sv": "Till skillnad från duvhöken förekommer den i trädgårdar och stadsmiljöer och häckar till och med i stadsparker.",
       "sources": [
@@ -216,8 +183,8 @@
       ]
     },
     {
-      "id": "f20",
-      "topic": "breeding",
+      "id": "f17",
+      "topic": "habitat",
       "sv": "Den häckar i frodiga, större skogsområden, ofta med barrskog eller blandskog.",
       "sources": [
         {
@@ -227,50 +194,68 @@
       ]
     },
     {
-      "id": "f21",
-      "topic": "breeding",
-      "sv": "Ett nytt bo byggs varje år, och hanen gör merparten av arbetet.",
+      "id": "f18",
+      "topic": "behaviour",
+      "sv": "Flykten består av några snabba vingslag följda av glidflykt, vilket ger en lätt bågformad flykt.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Den bygger ett nytt bo varje år, där hanen gör merparten av jobbet."
+          "quote": "Flykten är karaktäristisk med några snabba vingslag följt av glidflykt, där glidflykten ger den en lätt bågformad flykt."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "behaviour",
+      "sv": "Den flyger ofta tätt över marken och kan förfölja byten till fots in under buskar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den flyger ofta tätt över marken och kan till och med förfölja byten till fots in under buskar och dylikt."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "behaviour",
+      "sv": "Den gömmer sig och väntar på att fåglar ska komma nära, och flyger sedan ut snabbt och lågt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den gömmer sig och väntar på att fåglar ska komma nära. När ett byte är tillräckligt nära, flyger den ut snabbt och lågt."
         }
       ]
     },
     {
       "id": "f22",
       "topic": "breeding",
-      "sv": "Den lägger en kull per säsong med fyra till fem ägg, som ruvas i genomsnitt 33 dagar.",
+      "sv": "Den bygger ett nytt bo varje år, helst i barrträd, och hanen gör merparten av arbetet.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Den lägger en kull per häckningssäsong som består av fyra till fem ägg."
-        },
-        {
-          "article": "sv",
-          "quote": "Äggen ruvas i genomsnitt 33 dagar."
+          "quote": "Den föredrar att placera sitt bo i barrträd. Den bygger ett nytt bo varje år, där hanen gör merparten av jobbet."
         }
       ]
     },
     {
       "id": "f23",
-      "topic": "food",
-      "sv": "Hanar tar främst mesar, finkar, sparvar och pilfinkar, medan honor ofta tar trastar och starar.",
+      "topic": "breeding",
+      "sv": "Den lägger en kull per säsong med fyra till fem ägg.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Hanar tar främst mesar, finkar, sparvar och fältsparvar. Honor tar ofta trastar och starar."
+          "quote": "Den lägger en kull per häckningssäsong som består av fyra till fem ägg."
         }
       ]
     },
     {
       "id": "f24",
-      "topic": "food",
-      "sv": "Den gömmer sig och väntar på att fåglar kommer nära, och flyger sedan ut snabbt och lågt.",
+      "topic": "breeding",
+      "sv": "Äggen ruvas i genomsnitt 33 dagar och ungarna blir flygga efter 27–31 dagar.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Den gömmer sig och väntar på att fåglar ska komma nära. När ett byte är tillräckligt nära, flyger den ut snabbt och lågt."
+          "quote": "Äggen ruvas i genomsnitt 33 dagar. Ungarna kläcks duniga, är bostannare och blir flygga efter 27–31 dagar."
         }
       ]
     },
@@ -288,7 +273,7 @@
     {
       "id": "f26",
       "topic": "sweden",
-      "sv": "Den svenska populationen minskade kraftigt från 1950-talet men återhämtade sig efter förbudet mot organoklorföreningar på 1970-talet.",
+      "sv": "I Sverige minskade beståndet kraftigt från 1950-talet men återhämtade sig när organoklorföreningar förbjöds på 1970-talet.",
       "sources": [
         {
           "article": "en",
@@ -303,36 +288,28 @@
       "sources": [
         {
           "article": "de",
-          "quote": "Vollständig geräumt wird im Winter das mittlere und nördliche Skandinavien"
+          "quote": "Vollständig geräumt wird im Winter das mittlere und nördliche Skandinavien sowie fast ganz Russland."
         }
       ]
     },
     {
       "id": "f28",
       "topic": "lookalike",
-      "sv": "Till skillnad från balkanhök saknar sparvhöken mörkt strupband.",
+      "sv": "Sparvhöken liknar balkanhöken i storlek men saknar till skillnad från den ett mörkt strupband.",
       "sources": [
         {
           "article": "sv",
-          "quote": "Till skillnad från många av de arter som den kan förväxlas med i sitt utbredningsområde, som balkanhök, besra och tajgahök så saknar sparvhöken mörkt strupband."
+          "quote": "Storleksmässigt är den lik balkanhöken (Tachyspiza brevipes)"
+        },
+        {
+          "article": "sv",
+          "quote": "som balkanhök, besra och tajgahök så saknar sparvhöken mörkt strupband."
         }
       ],
       "other": {
         "scientific": "Tachyspiza brevipes",
         "qid": "Q114338"
       }
-    },
-    {
-      "id": "s01",
-      "topic": "status",
-      "value": "breeding_migrant",
-      "sv": "Flyttfågel, häckar här",
-      "sources": [
-        {
-          "article": "de",
-          "quote": "Vollständig geräumt wird im Winter das mittlere und nördliche Skandinavien"
-        }
-      ]
     },
     {
       "id": "d01",
@@ -359,7 +336,13 @@
       "model": "claude-opus-5-5",
       "prompt": "facts-v1",
       "effort": "high",
-      "at": "2026-10-07T16:08:41.079475+00:00"
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "3df2b2be7d719843"
     }
   },
   "errors": [],
@@ -559,7 +542,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+      "contradicts": null
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: The quote only states that mid and northern Scandinavia are fully vacated in winter (suggesting full migration there), with no mention of breeding in Sweden or a mixed pattern of some birds staying while others leave, so it does not support a 'partial migrant, breeds here' status.. Bestäm status eller lämna tom."
+    }
+  ]
 }

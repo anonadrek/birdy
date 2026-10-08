@@ -1,13 +1,649 @@
 {
   "qid": "Q188877",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Bergfinken har i alla dräkter vit övergump och ett mer eller mindre orangefärgat bröst, vilket skiljer den från bofinken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "skiljer sig från den i alla dräkter genom sin vita övergump och att den i olika grad har ett orangefärgat bröst"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Bergfinken saknar bofinkens vita yttre stjärtpennor.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "bramblings lack the white outer tail feathers of common chaffinches."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "På vintern har båda könen en konformad halmgul näbb med svart spets.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern är den konformiga näbben halmgul med svart spets hos båda könen"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "size",
+      "sv": "Bergfinken mäter 14–16 centimeter och väger 17–30 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den mäter 14–16 centimeter och väger 17–30 gram."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "sex_age",
+      "sv": "Den adulta hanen har på sommaren glänsande blåsvart huvud, nacke och mantel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen har på sommaren en kontrastrik teckning med glänsande blåsvart huvud, nacke och mantel."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Hanen har ofläckat roströd strupe och bröst, vit buk och ofta mörka fläckar på kroppssidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Strupen, bröstet och mindre vingtäckarna är ofläckat roströda medan buken är vit, ofta med cirkelformade mörka fläckar på kroppssidan."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Adult hane i sommardräkt har svart näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "medan adult hane i sommardräkt har svart näbb"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "På vintern har hanen brungrått huvud, nacke och framrygg.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Im Winterhalbjahr zeigt der männliche Bergfink einen bräunlichgrau gefiederten Kopf, Nacken und Vorderrücken."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Den adulta honan har grått och brunt huvud och nacke med två svagt svarta längsgående ränder på hjässan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honans huvud och nacke är grått och brunt med två svagt svarta längsgående ränder på hjässan."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Honan har orangebeige strupe och bröst och varmbrun mantel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Strupe och bröst är orangebeige, manteln varmbrun och mindre täckarna rostbruna."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Sången är monoton och ödslig och påminner om en sekundlång rak surrande summerton.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess sång är ganska monoton och ödslig, och påminner om en sekundlång rak surrande summerton."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Ornitologen Erik Rosenberg jämförde sången med en liten cirkelsåg i fjärran.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ornitologen Erik Rosenberg jämförde den med en liten cirkelsåg i fjärran."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Locklätet är ljudligt och karaktäristiskt med en nasalt kväkande karaktär.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess ljudliga lockläte är karaktäristiskt och har en nasalt kväkande karaktär."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "I flykten hörs korta läten som återges tk-tk.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "während des Flugs – die kurzen Laute tk-tk"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "behaviour",
+      "sv": "Under vår- och höststräcket ses stora flockar som rör sig på ett märkligt rullande sätt över stubbåkrar och fält.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under vår- och höststräcket kan man se stora flockar med bergfinkar som rör sig på ett märkligt rullande sätt över stubbåkrar och fält."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "behaviour",
+      "sv": "Bergfinken lever likt bofinken och de två uppträder ofta tillsammans.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess levnadssätt är likt bofinkens och de uppträder också ofta tillsammans"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Bergfinken häckar i barrskog, björkskog och blandskog med barr- och lövträd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bergfinken häckar i barrskog, björkskog och i blandskog med barr- och lövträd."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Utanför häckningstid håller den främst till i lövträdsområden, i synnerhet med bok eller avenbok.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utanför häckningstid förekommer den främst i lövträdsområden, alltifrån tät skog till små skogsdungar och trädridåer, i synnerhet de som innehåller bok eller avenbok"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige häckar bergfinken främst i Norrlands skogs- och fjälltrakter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bergfinken har en nordlig häckningsutbredning i Sverige, främst i Norrlands skogs- och fjälltrakter."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet varierar kraftigt men uppskattas till cirka 2 miljoner par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det svenska beståndet varierar kraftigt men uppskattas till ca 2 miljoner par."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Bergfinken övervintrar normalt i Centraleuropa, men vid god tillgång på mat kan stora mängder övervintra i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bergfinken övervintrar normalt främst i Centraleuropa, men om tillgången på mat är god kan även stora mängder övervintra i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "På vintern är bergfinken en relativt vanlig gäst vid fågelmatningar i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under vintern är den en relativt vanlig gäst vid fågelmatningar"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Under bokollonår kan flera miljoner bergfinkar övervintra i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under bokollonår kan flera miljoner övervintra i landet"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Bergfinken häckar från maj till början av augusti.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar från maj till början av augusti."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Boet byggs av gräs, mossa och bark, fodras med fjäder eller hår och placeras i en trädklyka.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet byggs av gräs, mossa och bark och fodras med fjäder eller hår och placeras i en trädklyka"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Honan lägger normalt fem till sju ägg som hon ruvar i elva till tolv dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger normalt fem till sju ägg"
+        },
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas i elva till tolv dagar av honan."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Bergfinken lever främst av frön och bär, men ungarna matas med insekter, särskilt fjärilslarver.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lever främst av frön och bär men ungarna matas med insekter, speciellt fjärilslarver."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "I vinterkvarteren är bergfinken specialiserad på bokollon.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I sina vinterkvarter är den specialiserad på bokollon."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är en utpräglad flyttfågel men det förekommer ett litet antal i Skandinavien som är stannfåglar eller lever som strykfåglar vintertid."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i oktober och december."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Norrbotten, Jämtland och Västerbotten."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Bergfinken är en fink som häckar i barrskog, björkskog och blandskog, i Sverige främst i Norrlands skogs- och fjälltrakter.",
+          "factIds": [
+            "f17",
+            "f19"
+          ]
+        },
+        {
+          "text": "På vintern är den en relativt vanlig gäst vid fågelmatningar.",
+          "factIds": [
+            "f22"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Vit övergump och mer eller mindre orangefärgat bröst i alla dräkter",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Saknar bofinkens vita yttre stjärtpennor",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Hanen i sommardräkt har glänsande blåsvart huvud, nacke och mantel samt svart näbb",
+          "factIds": [
+            "f05",
+            "f07"
+          ]
+        },
+        {
+          "text": "Honan har grått och brunt huvud, orangebeige bröst och varmbrun mantel",
+          "factIds": [
+            "f09",
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången är en monoton och ödslig, sekundlång surrande ton som ornitologen Erik Rosenberg jämförde med en liten cirkelsåg i fjärran.",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        },
+        {
+          "text": "Locklätet är ljudligt och karaktäristiskt, med nasalt kväkande klang.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "I flykten hörs korta läten som låter tk-tk.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Bergfinken är delvis flyttfågel och häckar i Sverige, främst i Norrlands skogs- och fjälltrakter, från maj till början av augusti.",
+          "factIds": [
+            "s01",
+            "f19",
+            "f24"
+          ]
+        },
+        {
+          "text": "Den övervintrar normalt i Centraleuropa, men vid god tillgång på mat kan stora mängder stanna i Sverige, under bokollonår flera miljoner.",
+          "factIds": [
+            "f21",
+            "f23"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i oktober och december.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Norrbotten, Jämtland och Västerbotten.",
+          "factIds": [
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Bergfinken lever främst av frön och bär, men ungarna matas med insekter, särskilt fjärilslarver.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "I vinterkvarteren är den specialiserad på bokollon och håller främst till i lövträdsområden, i synnerhet med bok eller avenbok.",
+          "factIds": [
+            "f28",
+            "f18"
+          ]
+        },
+        {
+          "text": "Under vår- och höststräcket ses stora flockar som rör sig på ett märkligt rullande sätt över stubbåkrar och fält, ofta tillsammans med bofinkar.",
+          "factIds": [
+            "f15",
+            "f16"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Bergfink: så känner du igen hane och hona på dräkt och näbb, hur sången och locklätet låter och när under året den ses oftast.",
+      "facts": {
+        "size": {
+          "value": "14 till 16 cm",
+          "factIds": [
+            "f04"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Brambling is a finch that breeds in coniferous, birch and mixed forest, in Sweden mainly in the forests and mountains of Norrland.",
+          "factIds": [
+            "f17",
+            "f19"
+          ]
+        },
+        {
+          "text": "In winter it is a fairly common visitor to bird feeders.",
+          "factIds": [
+            "f22"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "White rump and a more or less orange breast in all plumages",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Lacks the white outer tail feathers of the Chaffinch",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Summer male has a glossy blue-black head, nape and mantle and a black bill",
+          "factIds": [
+            "f05",
+            "f07"
+          ]
+        },
+        {
+          "text": "Female has a grey and brown head, orange-buff breast and warm brown mantle",
+          "factIds": [
+            "f09",
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is a monotonous, desolate buzzing tone a second long, which the ornithologist Erik Rosenberg likened to a small circular saw in the distance.",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        },
+        {
+          "text": "The call is loud and characteristic, with a nasal, croaking quality.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "In flight it gives short calls written tk-tk.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Brambling is a partial migrant that breeds in Sweden, mainly in the forests and mountains of Norrland, from May to early August.",
+          "factIds": [
+            "s01",
+            "f19",
+            "f24"
+          ]
+        },
+        {
+          "text": "It normally winters in Central Europe, but when food is plentiful large numbers stay in Sweden, and in beechmast years several million may winter there.",
+          "factIds": [
+            "f21",
+            "f23"
+          ]
+        },
+        {
+          "text": "It is reported most in October and December.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Norrbotten, Jämtland and Västerbotten.",
+          "factIds": [
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mainly on seeds and berries, but the young are fed insects, especially caterpillars.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "In its winter quarters it specialises in beechmast and keeps mainly to broadleaved woodland, especially with beech or hornbeam.",
+          "factIds": [
+            "f28",
+            "f18"
+          ]
+        },
+        {
+          "text": "On spring and autumn migration large flocks move in a curious rolling way over stubble and other fields, often together with Chaffinches.",
+          "factIds": [
+            "f15",
+            "f16"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Brambling: how to recognise male and female by plumage and bill, what the song and call sound like, and when in the year it is seen most.",
+      "facts": {
+        "size": {
+          "value": "14 to 16 cm",
+          "factIds": [
+            "f04"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "20296bae78271b56"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "20296bae78271b56"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "bergfink",
@@ -205,5 +841,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

@@ -107,6 +107,15 @@ const compositedPairs = [
   { label: 'Footer .sib-kick', fg: [233, 226, 210], alpha: 0.6, bg: darkDeep, min: 4.5 },
   { label: 'Premium .pnote', fg: [242, 234, 220], alpha: 0.62, bg: premiumGradientLight, min: 4.5 },
   { label: 'Premium .feat p', fg: [242, 234, 220], alpha: 0.66, bg: premiumGradientLight, min: 4.5 },
+  // AppTour.astro: the lead and the plate labels on the gallery wall, over its lightest point (#33251D).
+  { label: 'AppTour .tour-lead / .plno', fg: [255, 248, 238], alpha: 0.78, bg: [51, 37, 29], min: 4.5 },
+  // Hero.astro .sub (.86) and FinalCta.astro .sub (.85) on the espresso wall, over its lightest point (#3D2C22).
+  { label: 'Hero/FinalCta .sub', fg: [255, 248, 238], alpha: 0.85, bg: [61, 44, 34], min: 4.5 },
+  // PremiumPage.astro: the faintest text (.fine, .66) on the dark bands, the card text (.78) on the chosen price card's
+  // brass tint, and the breadcrumbs (.78) in the hero's brass glow.
+  { label: 'PremiumPage .fine', fg: [242, 234, 220], alpha: 0.66, bg: premiumGradientLight, min: 4.5 },
+  { label: 'PremiumPage .pcard.sel', fg: [242, 234, 220], alpha: 0.78, bg: tokens.dark ? compositeOver([226, 192, 126], 0.07, hexToRgb(tokens.dark)) : null, min: 4.5 },
+  { label: 'PremiumPage .crumbs', fg: [242, 234, 220], alpha: 0.78, bg: tokens.dark ? compositeOver([226, 192, 126], 0.14, hexToRgb(tokens.dark)) : null, min: 4.5 },
 ];
 
 for (const { label, fg, alpha, bg, min } of compositedPairs) {

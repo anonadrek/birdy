@@ -1,13 +1,733 @@
 {
   "qid": "Q18854",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Storspoven har långa ben och en lång näbb som böjer av nedåt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har långa ben och en lång näbb som böjer av nedåt."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Den är brungråspräcklig med en smal vit triangel från stjärtens bas upp på ryggen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är brungråspräcklig med en smal vit triangel från stjärtens bas upp på ryggen."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Benen är gråblå.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is mainly greyish brown, with a white back, greyish-blue legs and a very long curved bill."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Kinderna är mörkt streckade och kontrasterar mot en ljus fläck på haka och strupe.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Wangen sind dunkel gestrichelt und kontrastieren dadurch mit dem hellen Kinn- und Kehlfleck."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "I flykten syns den vita övergumpen, som tillsammans med den vita ryggen bildar en vit kil.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Im Flug wird der weiße Bürzel sichtbar, der mit dem weißen Rücken einen weißen Keil bildet."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Könen ser likadana ut, men den vuxna honan har längst näbb.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Males and females look identical, but the bill is longest in the adult female."
+        },
+        {
+          "article": "sv",
+          "quote": "Honorna har ofta urskiljbart längre näbb."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Honan är något större än hanen och har en tydligt mer böjd och längre näbb.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Weibchen ist etwas größer als das Männchen und hat einen deutlich stärker gebogenen und längeren Schnabel."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Ungarnas näbb är först kort och rak, och hos flygga ungar redan något längre och lätt böjd.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Schnabel ist anfangs kurz und gerade und bei flüggen Jungvögeln bereits etwas länger und leicht gebogen."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Storspoven är ungefär 50–55 cm lång och har ett vingspann på omkring 100 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storspoven är ungefär 50–55 cm lång, och har ett vingspann på omkring 100 cm."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Den väger 410–1 360 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "weighs 410–1,360 g (0.90–3.00 lb)"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Sången är stark och rytmiskt drillande och börjar med några ödsliga och dystra toner.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess karaktäristiska starka rytmiskt drillande sång som börjar med några ödsliga och dystra toner"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Locklätet är en stark uppåtkrökt vissling med ödslig klang.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Locklätet är en stark uppåtkrökt vissling, även den med en ödslig klang."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Det välkända lätet är ett högt ”curloo-oo”.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The familiar call is a loud curloo-oo."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "I flykten låter den ”tlüih”, som vid upphetsning blir ”tüi-tüi-tüi”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Beim Fliegen geben große Brachvögel ein „tlüih“ von sich, das bei Erregung zu einem „tüi-tüi-tüi“ wird."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Den häckar i Europa och Asien i jordbruksmark och på myrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar i Europa och Asien i jordbruksmark och på myrar."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "På vintern lever den vid kuster och på tidvattenslätter, men även inåt landet på fält och fuktängar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Im Winter leben die Brachvögel an den Küsten und im Watt, außerdem im Binnenland auf Feldern und Feuchtwiesen."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "I Sverige häckar storspoven på öppna myrar, ängar, hedar och jordbruksmark över större delen av landet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storspoven häckar på öppna myrar, ängar, hedar och jordbruksmark över större delen av landet."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Den saknas i fjällen och i fjällnära områden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den saknas dock i fjällen och i fjällnära områden."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2008 till endast 9 000 par, mot 22 000–25 000 par i mitten av 1980-talet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I mitten av 1980-talet uppskattades det svenska beståndet till mellan 22 000 och 25 000 par, 1999 till 10 500–13 000 par och 2008 till endast 9 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "På Artdatabankens rödlista uppgraderades storspoven till starkt hotad 2020.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "uppgraderades den till starkt hotad (EN) i 2020 års upplaga"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "behaviour",
+      "sv": "Storspoven är ganska skygg för människan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storspoven är ganska skygg för människan."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Utanför häckningssäsongen är den mycket social och ses ofta i sällskap med flera individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bortsett från häckningssäsongen är den mycket social och ses ofta tillsammans med flera individer."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Den ses ofta högre upp på åkrar och fält än många andra vadare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den ses ofta högre upp på åkrar och fält än många andra vadare."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Den söker främst efter ryggradslösa djur i mjuka lerbottnar med sin långa krökta näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storspoven födosöker främst genom att med sin långa krökta näbb leta efter ryggradslösa djur i mjuka lerbottnar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Den kan också ta krabbor och daggmaskar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storspoven kan också vid tillfälle plocka krabbor och daggmaskar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Boet är en enkel tillplattad yta på marken och rymmer vanligtvis tre till sex ägg, som ruvas i ungefär en månad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet är en enkel tillplattad yta på tajga, äng eller liknande plats och rymmer vanligtvis tre till sex ägg. Äggen ruvas i ungefär en månad."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Äggen läggs i april eller maj och båda föräldrarna ruvar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Curlews lay four eggs in April or May, and both adults incubate them for four weeks"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Ungarna blir flygga vid ungefär fem till sex veckors ålder.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Mit etwa fünf bis sechs Wochen sind sie flügge."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Småspoven liknar storspoven men är mindre och har kortare näbb med en knyck i stället för en jämn böj.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The whimbrel is smaller and has a shorter bill with a kink rather than a smooth curve."
+        }
+      ],
+      "other": {
+        "scientific": "Numenius phaeopus",
+        "qid": "Q18858"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Myrspoven kan likna storspoven i flykten men har mindre kropp, lätt uppåtböjd näbb och ben som inte sticker ut bakom stjärten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Curlews in winter plumage may also resemble bar-tailed godwits (Limosa lapponica) in flight; however, the latter have a smaller body, a slightly upturned beak, and legs that do not extend beyond their tail tips."
+        }
+      ],
+      "other": {
+        "scientific": "Limosa lapponica",
+        "qid": "Q18864"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i april."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Halland, Västerbotten och Norrbotten."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Starkt hotad (EN)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Storspoven är en vadare med långa ben och en lång näbb som böjer av nedåt.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "I Sverige häckar den på öppna myrar, ängar, hedar och jordbruksmark över större delen av landet.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Lång näbb som böjer av nedåt och långa, gråblå ben",
+          "factIds": [
+            "f01",
+            "f03"
+          ]
+        },
+        {
+          "text": "Brungråspräcklig dräkt med mörkt streckade kinder mot ljus haka och strupe",
+          "factIds": [
+            "f02",
+            "f04"
+          ]
+        },
+        {
+          "text": "I flykten syns en vit kil från övergumpen upp på ryggen",
+          "factIds": [
+            "f02",
+            "f05"
+          ]
+        },
+        {
+          "text": "Könen är lika, men honan är något större och har längre, mer böjd näbb",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Det välkända lätet är ett högt ”curloo-oo”.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Sången är stark och rytmiskt drillande och börjar med några ödsliga och dystra toner.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Locklätet är en stark, uppåtkrökt vissling med ödslig klang.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "I flykten låter den ”tlüih”, som blir ”tüi-tüi-tüi” när den är upphetsad.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "I Sverige häckar storspoven över större delen av landet, men den saknas i fjällen och fjällnära områden.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i april.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Halland, Västerbotten och Norrbotten.",
+          "factIds": [
+            "d02"
+          ]
+        },
+        {
+          "text": "Beståndet uppskattades 2008 till 9 000 par, mot 22 000 till 25 000 par i mitten av 1980-talet.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "På svenska rödlistan 2025 är den klassad som starkt hotad.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Storspoven söker främst efter ryggradslösa djur i mjuka lerbottnar med sin långa, krökta näbb och kan också ta krabbor och daggmaskar.",
+          "factIds": [
+            "f24",
+            "f25"
+          ]
+        },
+        {
+          "text": "Den är ganska skygg för människor.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden är den mycket social och ses ofta tillsammans med flera andra.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Den ses ofta högre upp på åkrar och fält än många andra vadare.",
+          "factIds": [
+            "f23"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q18858",
+          "text": [
+            {
+              "text": "Småspoven är mindre och har kortare näbb med en knyck i stället för storspovens jämna böj.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q18864",
+          "text": [
+            {
+              "text": "Myrspoven kan likna storspoven i flykten men har mindre kropp, lätt uppåtböjd näbb och ben som inte sticker ut bakom stjärten.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Storspov: så känner du igen den på den långa böjda näbben och dräkten, hur sången och lätena låter och när den ses i Sverige.",
+      "facts": {
+        "size": {
+          "value": "50 till 55 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Curlew is a wader with long legs and a long bill that curves downwards.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "In Sweden it breeds on open bogs, meadows, heaths and farmland across most of the country.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Long, downcurved bill and long, grey-blue legs",
+          "factIds": [
+            "f01",
+            "f03"
+          ]
+        },
+        {
+          "text": "Brownish-grey speckled plumage with dark-streaked cheeks against a pale chin and throat",
+          "factIds": [
+            "f02",
+            "f04"
+          ]
+        },
+        {
+          "text": "In flight a white wedge shows from the rump up onto the back",
+          "factIds": [
+            "f02",
+            "f05"
+          ]
+        },
+        {
+          "text": "Sexes look alike, but the female is slightly larger with a longer, more curved bill",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The well-known call is a loud \"curloo-oo\".",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The song is strong and rhythmically trilling, opening with a few lonely, mournful notes.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The contact call is a strong, upward-curving whistle with a lonely ring.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "In flight it gives \"tlüih\", which becomes \"tüi-tüi-tüi\" when the bird is excited.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "In Sweden it breeds across most of the country but is absent from the mountains and nearby areas.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "It is reported most in April.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Halland, Västerbotten and Norrbotten.",
+          "factIds": [
+            "d02"
+          ]
+        },
+        {
+          "text": "The population was estimated at 9 000 pairs in 2008, against 22 000 to 25 000 in the mid 1980s.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "On the 2025 Swedish Red List it is Endangered.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It mainly searches for invertebrates in soft mud with its long, curved bill, and can also take crabs and earthworms.",
+          "factIds": [
+            "f24",
+            "f25"
+          ]
+        },
+        {
+          "text": "It is fairly shy of people.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it is very social and is often seen with several others.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "It is often seen higher up on fields and farmland than many other waders.",
+          "factIds": [
+            "f23"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q18858",
+          "text": [
+            {
+              "text": "The Whimbrel is smaller and has a shorter bill with a kink instead of the curlew's even curve.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q18864",
+          "text": [
+            {
+              "text": "The Bar-tailed Godwit can look similar in flight but has a smaller body, a slightly upturned bill and legs that do not project beyond the tail.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Eurasian Curlew: how to recognise it by its long curved bill and plumage, what its song and calls sound like, and when it is seen in Sweden.",
+      "facts": {
+        "size": {
+          "value": "50 to 55 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "6395ae6d45690126"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "6395ae6d45690126"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "storspov",
@@ -205,5 +925,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

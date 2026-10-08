@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lyft A · Flygvägen</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  /* ---------- Lyft A: Flygvägen. Samma espresso, samma stora handskrivna ord och samma prickade
+     flyglinje som butiksbilderna och annonserna, så att annons, Google Play och webben ser ut som
+     en och samma sak. Telefonerna visar råa skärmdumpar ur 1.3.0. ---------- */
+  .hero { position: relative; background: radial-gradient(120% 70% at 18% 8%, var(--dark-hi) 0%, var(--dark) 48%, var(--dark-deep) 100%); color: var(--cream); --kick: var(--apricot); --note: var(--peach); --lead: rgba(255, 248, 238, .84); overflow: visible; }
+  .hero .wrap { position: relative; z-index: 3; }
+  .flight { position: absolute; top: 0; left: 50%; z-index: 1; pointer-events: none; overflow: visible; }
+  .flight path { fill: none; stroke: var(--apricot); stroke-opacity: .72; stroke-linecap: round; }
+  .flight .bird { position: absolute; color: var(--apricot); }
+  .fl-m { width: 390px; height: 1240px; margin-left: -195px; }
+  .fl-d { display: none; width: 1440px; height: 900px; margin-left: -720px; }
+  .hb { position: absolute; z-index: 2; color: var(--apricot); font-size: 44px; }
+  .hb.m { left: calc(50% + 136px); top: 552px; font-size: 36px; transform: rotate(-14deg); }
+  .hb.d { display: none; }
+
+  .copy { padding-top: 22px; }
+  .copy .kick { margin-bottom: 16px; }
+  h1 { font-size: 58px; line-height: .98; color: var(--cream); letter-spacing: -.025em; }
+  h1 .l1 { display: block; }
+  h1 .big { display: block; width: max-content; font-family: var(--script); font-weight: 700; font-size: 168px; line-height: .78; letter-spacing: 0; color: var(--apricot); transform: rotate(-3deg); transform-origin: 0 60%; margin: 14px 0 0 -6px; }
+  .copy .note { margin: 18px 0 0 auto; text-align: right; font-size: 25px; }
+  .copy .lead { margin-top: 20px; }
+  .copy .badges { margin-top: 24px; }
+
+  .phones { position: relative; height: 410px; margin: 84px 0 -170px; }
+  .phones .phone { position: absolute; --pw: 196px; --r: 24px; --bz: 7px; }
+  .phones .p1 { left: 6px; top: 40px; transform: rotate(-5deg); }
+  .phones .p2 { right: 4px; top: 0; transform: rotate(3.5deg); --pw: 206px; z-index: 2; }
+
+  /* Ett varv i fältboken: butiksbilderna precis som i Google Play, kant i kant så att flyglinjen
+     löper vidare från bild till bild. */
+  .tour { position: relative; background: var(--peach); padding: 210px 0 76px; }
+  .tour::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(154, 69, 38, .1) 1.6px, transparent 2px); background-size: 26px 26px; pointer-events: none; }
+  .tour .head { position: relative; text-align: center; display: grid; justify-items: center; gap: 12px; }
+  .tour .kick { justify-content: center; }
+  .tour .kick::after { content: ''; width: 22px; height: 1px; background: currentColor; }
+  .tour h2 { font-size: 40px; }
+  .tour .note { margin: 0 auto; }
+  .strip { position: relative; display: flex; gap: 6px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 34px 20px 10px; scrollbar-width: none; }
+  .strip img { flex: 0 0 272px; width: 272px; aspect-ratio: 9 / 16; border-radius: 6px; scroll-snap-align: center; box-shadow: 0 18px 34px rgba(42, 29, 23, .22); }
+  .strip img:first-child { border-radius: 16px 6px 6px 16px; }
+  .strip img:last-child { border-radius: 6px 16px 16px 6px; }
+  .tour .hint { position: relative; text-align: center; margin-top: 14px; font-family: var(--script); font-weight: 700; font-size: 22px; color: var(--rust); }
+
+  /* Premium-länken på startsidan. */
+  .prem { position: relative; background: linear-gradient(180deg, var(--dark) 0%, var(--dark-deep) 100%); color: var(--cream); padding: 86px 0 84px; --kick: var(--brass-hi); --acc: var(--brass-hi); --note: var(--apricot); --lead: rgba(242, 234, 220, .78); }
+  .prem .seal { position: absolute; right: 22px; top: -34px; z-index: 3; width: 78px; height: 78px; font-size: 15px; }
+  .prem h2 { font-size: 40px; margin-top: 14px; color: var(--cream); }
+  .prem .note { margin-top: 10px; }
+  .prem .lead { margin-top: 16px; }
+  .prem .early { margin-top: 24px; padding: 16px 0; border-top: 1px solid rgba(255, 255, 255, .14); border-bottom: 1px solid rgba(255, 255, 255, .14); font-size: 14.5px; line-height: 1.6; color: rgba(242, 234, 220, .86); }
+  .prem .early b { color: var(--brass-hi); font-weight: 600; }
+  .prem .go { display: inline-flex; align-items: center; gap: 10px; margin-top: 24px; padding: 13px 20px; border-radius: 12px; background: linear-gradient(135deg, var(--brass-hi), var(--brass)); color: var(--brass-ink); font-weight: 600; font-size: 14.5px; }
+  .prem .grid { display: grid; gap: 34px; }
+  .prem .thumbs { display: flex; gap: 12px; }
+  .prem .thumbs .phone { --pw: 150px; --r: 18px; --bz: 6px; --psh: 0 20px 40px rgba(0, 0, 0, .35); }
+  .prem .thumbs .phone:nth-child(2) { margin-top: 30px; }
+
+  @media (min-width: 900px) {
+    .fl-m, .hb.m { display: none; }
+    .fl-d { display: block; }
+    .hb.d { display: block; left: calc(50% + 432px); top: 96px; font-size: 54px; transform: rotate(-14deg); }
+    .hero-grid { position: relative; min-height: 700px; }
+    .copy { max-width: 560px; padding-top: 70px; }
+    h1 { font-size: 84px; }
+    h1 .big { font-size: 232px; }
+    .copy .note { margin-right: 20px; font-size: 30px; }
+    .phones { position: absolute; left: 600px; top: 60px; width: 520px; height: 640px; margin: 0; }
+    .phones .p1 { left: 0; top: 120px; --pw: 250px; --r: 30px; --bz: 9px; }
+    .phones .p2 { left: 236px; right: auto; top: 30px; --pw: 280px; --r: 32px; --bz: 9px; }
+    .tour { padding: 200px 0 90px; }
+    .tour h2 { font-size: 54px; }
+    .strip { justify-content: center; gap: 8px; padding: 46px 0 10px; overflow: visible; }
+    .strip img { flex-basis: 220px; width: 220px; }
+    .prem { padding: 110px 0; }
+    .prem .grid { grid-template-columns: 1.1fr .9fr; align-items: center; gap: 70px; }
+    .prem h2 { font-size: 54px; }
+    .prem .seal { right: max(8%, calc((100% - 1160px) / 2)); top: -46px; width: 96px; height: 96px; font-size: 18px; }
+    .prem .thumbs { justify-content: flex-end; }
+    .prem .thumbs .phone { --pw: 190px; --r: 22px; --bz: 7px; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <svg class="flight fl-m" viewBox="0 0 390 1240" aria-hidden="true"><path stroke-width="4.5" stroke-dasharray="0.1 13" d="M-14 640 C 90 664, 190 648, 250 620 C 290 602, 312 590, 330 580"/></svg>
+  <span class="bird hb m" aria-hidden="true"></span>
+  <svg class="flight fl-d" viewBox="0 0 1440 900" aria-hidden="true"><path stroke-width="5" stroke-dasharray="0.1 16" d="M-30 760 C 200 800, 500 770, 650 700 C 760 650, 790 560, 790 470 C 790 330, 980 300, 1080 210 C 1110 180, 1130 150, 1146 128"/></svg>
+  <span class="bird hb d" aria-hidden="true"></span>
+  <div class="wrap">
+    <nav class="nav"><span class="wm">Birdy.</span><div class="nav-right"><div class="nav-links"><span>Arter</span><span>Så funkar det</span><span>Appen</span><span>Premium</span><span>Fältanteckningar</span><span>EN</span></div><span class="nav-cta">Hämta appen</span><span class="menu-btn"><i></i></span></div></nav>
+    <div class="hero-grid">
+      <div class="copy">
+        <p class="kick">Fågelguide och fältdagbok</p>
+        <h1><span class="l1">Se. Lyssna.</span><span class="big">Spara.</span></h1>
+        <p class="note">Känn igen fågeln. Bevara stunden.</p>
+        <p class="lead">Rikta kameran, välj ett foto eller låt fågeln sjunga. Birdy föreslår arten direkt i telefonen, och du sparar fyndet i din egen fältdagbok.</p>
+        <div class="badges"><img class="play" src="media/play-badge-sv.png" alt="Ladda ned på Google Play"><span data-appstore="sv"></span></div>
+      </div>
+      <div class="phones">
+        <div class="phone p1"><img src="media/scr-sv-01-identifiera.jpg" alt="Identifiera med Dagens fågel"></div>
+        <div class="phone p2"><img src="media/scr-sv-02-match.jpg" alt="Match: talgoxe"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="tour">
+  <div data-deckle="#1E1410"></div>
+  <div class="wrap head">
+    <p class="kick">Appen</p>
+    <h2>Ett varv i <span class="acc">fältboken.</span></h2>
+    <p class="note">rakt ur appen, samma bilder som i Google Play</p>
+  </div>
+  <div class="strip">
+    <img src="media/store-sv-01-identifiera.jpg" alt="Se. Lyssna. Spara.">
+    <img src="media/store-sv-02-lyssna.jpg" alt="Låt den sjunga.">
+    <img src="media/store-sv-03-match.jpg" alt="Vilken fågel var det?">
+    <img src="media/store-sv-04-mina-arter.jpg" alt="Din egen fältbok.">
+    <img src="media/store-sv-05-uppslagsverk.jpg" alt="Europas fåglar, i fickan.">
+    <img src="media/store-sv-06-artprofil.jpg" alt="Lär känna dina fåglar.">
+  </div>
+  <p class="hint">svep, linjen fortsätter</p>
+</section>
+
+<section class="prem">
+  <div data-deckle="#FDE5CB"></div>
+  <span class="seal brass">Premium</span>
+  <div class="wrap grid">
+    <div>
+      <p class="kick">Birdy Premium</p>
+      <h2>Hela året som <span class="acc">fältornitolog.</span></h2>
+      <p class="note">nu med en egen sida</p>
+      <p class="lead">Årsringen, fältdagboken som PDF, sju extra märken och kartan över dina fynd. Allt som behövs för att känna igen och spara fåglar är fortfarande gratis.</p>
+      <p class="early"><b>Började du använda Birdy före 17 oktober?</b> Då är Premium redan ditt, gratis, för alltid.</p>
+      <a class="go">Så funkar Premium <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="thumbs">
+      <div class="phone"><img src="media/emu-stats-sv-1.jpg" alt="Säsongsstatistik"></div>
+      <div class="phone"><img src="media/emu-trophy-sv-1.jpg" alt="Troférummet"></div>
+    </div>
+  </div>
+</section>
+<script src="common.js"></script>
+</body>
+</html>

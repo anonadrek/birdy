@@ -1,13 +1,691 @@
 {
   "qid": "Q26612",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Tretåig mås är 37–42 centimeter lång och har ett vingspann på 93–105 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En adult tretåig mås blir mellan 37 och 42 centimeter lång och har ett vingspann på 93 till 105 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Den väger 305–525 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "a body mass of 305–525 g"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Den adulta fågeln liknar fiskmåsen med vitt huvud, vit hals, vit undersida, vit övergump och vit stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta fågeln är lik fiskmåsen med huvud, hals, undersida, övergump och stjärt som är vita."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Vingovansidan har två grå nyanser och helsvarta vingspetsar, så vingen ser trefärgad ut på håll.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingovansidan går i två grå nyanser och vingspetsarna är helsvarta vilket gör att vingen ser trefärgad ut på håll."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Den adulta fågelns näbb är enfärgat grönaktigt gul.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Schnabel ist einfarbig grünlichgelb."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Benen är korta och mörka till svarta i alla dräkter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har korta ben som är mörka till svarta i alla dräkter"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Svalget och ögonringen är lysande röda och ögat är mörkt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Rachen und Augenring sind leuchtend rot, die Iris ist dunkel."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Baktån är tillbakabildad till en liten klump, vilket gett arten dess namn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "dess baktå är tillbakabildad och endast utgör en liten klump"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "I vinterdräkt har adulta fåglar en grå halsboa om nacken och en halvmåneformad mörk fläck vid örontäckarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I vinterdräkt är de adulta fåglarnas dräkter nästan samma som i sommardräkt förutom att de har en grå halsboa om nacken och en halvmåneformad mörk fläck vid örontäckarna."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Könen är lika tecknade, men hanarna är i genomsnitt något större och tyngre än honorna.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Geschlechter sind gleich gefärbt, Männchen sind im Mittel jedoch etwas größer und schwerer als Weibchen."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Unga fåglar i juvenil dräkt och första vinterdräkt har svartgrå näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I juvenil dräkt och i första vinterdräkt har de svartgrå näbb."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "sex_age",
+      "sv": "Unga fåglar har svarta band på vingovansidan som bildar ett stort W-tecken mot de vita armpennorna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "svarta band på vingovansidan vilket, i kontrast med de helvita armpennorna och vingfönstret, bildar ett stort W-tecken som bryts i mitten av ryggens grå färg"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "sex_age",
+      "sv": "Unga fåglar har en svart triangelformad avslutning på stjärten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De har också en svart triangelformad avslutning på stjärten."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "sex_age",
+      "sv": "Juvenila fåglar har en kraftig svart halsboa om nacken och svart öronfläck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "juvenilen har en kraftig, svart halsboa om nacken och svart öronfläck"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Lätet låter ungefär ”kittee-wa-aaake, kitte-wa-aaake”, vilket gett arten dess engelska namn Kittiwake.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lätet är ungefär \"kittee-wa-aaake, kitte-wa-aaake\""
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Varningslätet är ett klagande ”ök ök”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Alarmruf ist ein klagendes „ök ök“."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "voice",
+      "sv": "Utanför häckningstiden och ute på öppet hav är den mestadels tyst.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Außerhalb der Brutzeit und auf dem offenen Meer sind Dreizehenmöwen meist stumm"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Den häckar i kolonier på branta klippor, så kallade fågelberg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar i kolonier på branta klippor, så kallade fågelberg"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Från augusti till april, utanför häckningstiden, finns den uteslutande på öppet hav.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "från augusti till april (utanför häckningstiden) finns den uteslutande på öppet hav"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "behaviour",
+      "sv": "Flykten är stel och spänstig och påminner mer om en tärnas än om andra måsars.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en stel och spänstig flykt vilket får den att påminna om en tärna mer än om andra måsar."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "I Sverige häckar den bara på ön Nidingen utanför norra Halland, där häckning först observerades 1967.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "som häckfågel i Sverige är den begränsad till ön Nidingen utanför norra Halland, där den första gången observerades som häckfågel 1967"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Det svenska häckningsbeståndet på Nidingen består av endast 90 reproduktiva individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det svenska häckningsbeståndet på Nidingen är mycket litet, bestående av endast 90 reproduktiva individer."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "På hösten ses tidvis stora mängder längs västkusten, särskilt vid starka västliga vindar, med upp till cirka 10 000 fåglar på en dag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Idag ses på hösten tidvis stora mängder tretåiga måsar förflytta sig utmed svenska västkusten, särskilt vid starka västliga vindar, och cirka 10 000 fåglar har noterats under en enda dag."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "sweden",
+      "sv": "Arten är klassad som starkt hotad på Artdatabankens rödlista.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är upptagen som starkt hotad på Artdatabankens rödlista."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Häckningstiden sträcker sig från maj till juli.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Häckningstiden sträcker sig från maj till juli."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Honan lägger en till tre ägg i ett bo som paret bygger av jord, slam och växtdelar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger en till tre ägg som är cirka sex centimeter stora i ett bo som byggs gemensamt av paret."
+        },
+        {
+          "article": "sv",
+          "quote": "Boet byggs av jord, slam och växtdelar"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Den lever främst av små pelagiska fiskar som sill, skarpsill, tobis och små torskfiskar, men även blötdjur och kräftdjur.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tretåiga måsen livnär sig främst av små pelagisk småfisk som sill, skarpsill, tobis och små torskfiskar, men även blötdjur och kräftdjur."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Den följer fiskebåtar och tar fisk och fiskavfall.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den flyger även efter fiskebåtar och tar fisk och fiskavfall när tillfälle bjuds."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Vanligaste jaktmetoden är stötdykning från en sökflykt på 10 till 25 meters höjd.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Häufigste Jagdmethode ist das Stoßtauchen aus einem 10 bis 25 m hohen Suchflug heraus"
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Beringmås skiljer sig i adult dräkt genom korallröda ben, mörkare grå ovansida och kortare, kraftigare näbb.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "hat im Gegensatz zur Dreizehenmöwe im Prachtkleid korallenrote Beine und außerdem eine dunkle graue Oberseite sowie einen kürzeren und kräftigeren Schnabel"
+        }
+      ],
+      "other": {
+        "scientific": "Rissa brevirostris"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i mars till juni."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Halland."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Starkt hotad (EN)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Tretåig mås är en mås som häckar i kolonier på branta klippor, så kallade fågelberg, och som utanför häckningstiden lever ute på öppet hav.",
+          "factIds": [
+            "f18",
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Vitt huvud och vit undersida, grå vingovansida i två nyanser och helsvarta vingspetsar",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Enfärgat grönaktigt gul näbb och korta, mörka till svarta ben",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Unga fåglar har svartgrå näbb och ett stort svart W-tecken över vingovansidan",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        },
+        {
+          "text": "Könen är lika tecknade, men hanen är i genomsnitt något större och tyngre",
+          "factIds": [
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Lätet låter ungefär ”kittee-wa-aaake, kitte-wa-aaake”, vilket har gett arten dess engelska namn Kittiwake.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Varningslätet är ett klagande ”ök ök”.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden och ute på öppet hav är den mestadels tyst.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "I Sverige häckar den bara på Nidingen utanför norra Halland, med endast 90 reproduktiva individer.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        },
+        {
+          "text": "På hösten ses tidvis stora mängder längs västkusten vid starka västliga vindar, upp till cirka 10 000 fåglar på en dag.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i november och sällan i mars till juni.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Halland.",
+          "factIds": [
+            "d03"
+          ]
+        },
+        {
+          "text": "Arten är starkt hotad på svenska rödlistan.",
+          "factIds": [
+            "f24",
+            "d04"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den lever främst av små pelagiska fiskar som sill, skarpsill, tobis och små torskfiskar, men tar även blötdjur och kräftdjur.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Vanligaste jaktmetoden är stötdykning från en sökflykt på 10 till 25 meters höjd.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Den följer också fiskebåtar och tar fisk och fiskavfall.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Flykten är stel och spänstig och påminner mer om en tärnas än om andra måsars.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Rissa brevirostris",
+          "text": [
+            {
+              "text": "Adult beringmås har korallröda ben, mörkare grå ovansida och kortare, kraftigare näbb.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Tretåig mås: så känner du igen den på dräkt, näbb och ben, så låter lätet, vad den äter och när under året den oftast rapporteras.",
+      "facts": {
+        "size": {
+          "value": "37 till 42 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Black-legged Kittiwake is a gull that breeds in colonies on steep cliffs, known as bird cliffs, and spends the time outside the breeding season out on the open sea.",
+          "factIds": [
+            "f18",
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "White head and underparts, upperwing in two shades of grey and all-black wingtips",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Plain greenish yellow bill and short legs, dark to black",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Young birds have a blackish grey bill and a large black W across the upperwing",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        },
+        {
+          "text": "Sexes look alike, but males are on average slightly larger and heavier",
+          "factIds": [
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call sounds roughly like \"kittee-wa-aaake, kitte-wa-aaake\", which gave the species its English name Kittiwake.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "The alarm call is a plaintive \"ök ök\".",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "Outside the breeding season and out on the open sea it is mostly silent.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "In Sweden it breeds only on Nidingen off northern Halland: just 90 breeding individuals.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        },
+        {
+          "text": "In autumn, up to about 10 000 birds a day are sometimes seen along the west coast in strong westerly winds.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "It is reported most in November and rarely in March to June.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Halland.",
+          "factIds": [
+            "d03"
+          ]
+        },
+        {
+          "text": "It is Endangered on the Swedish Red List.",
+          "factIds": [
+            "f24",
+            "d04"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mainly on small pelagic fish such as herring, sprat, sand eels and small cod fish, and also takes molluscs and crustaceans.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Its most common hunting method is plunge-diving from a search flight 10 to 25 metres up.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "It also follows fishing boats and takes fish and fish waste.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "The flight is stiff and springy, more like a tern's than other gulls'.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Rissa brevirostris",
+          "text": [
+            {
+              "text": "Adult Rissa brevirostris has coral-red legs, darker grey upperparts and a shorter, stouter bill.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Black-legged Kittiwake: how to recognise it by plumage, bill and legs, what its call sounds like, what it eats and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "37 to 42 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "708e92bca4f368f3"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "708e92bca4f368f3"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "tretaig-mas",
@@ -206,5 +884,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

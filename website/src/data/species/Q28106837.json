@@ -5,9 +5,380 @@
   "review": {
     "wave": 2
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Bläsanden är en medelstor and med en längd på 42–50 cm och ett vingspann på 75–87 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bläsanden är en medelstor and med en längd på 42–50 cm och ett vingspann 75–87 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Bläsanden väger 500–1073 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "a weight of 500–1,073 g (1–2 lb)"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Bläsanden har kort hals, ett förhållandevis stort och runt huvud och spetsig stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har kort hals och ett förhållandevis stort och runt huvud, och spetsig stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Näbben är liten och ljusgrå med svart underdel och svart näbbnagel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en liten ljusgrå näbb med svart underdel och svart näbbnagel."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Hanen i häckningsdräkt har rödbrunt huvud med beige bläs i pannan, rosaaktigt bröst och vit buk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bröstet är rosaaktigt, buken vit, och huvudet är rödbrunt med en beige bläs i pannan."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Hanen i häckningsdräkt är vattrad i mörkgrått och vitt, med svart stjärt, mörkgrön vingspegel och en kritvit fläck på vingens ovansida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I häckningsdräkt är hanen vattrad i mörkgrått och vitt på ovansidan och på sidorna, med svart stjärt, mörkgrön vingspegel och med en kritvit fläck på ovansidan vingen."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "I eklipsdräkt liknar hanen mer honan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I eklipsdräkt är hanen mer lik honan."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Den adulta honan och ungfågeln har brunt huvud, vattrad brungrå rygg, rostbrunt bröst och kroppssida samt vit buk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honan och juvenilen har brunt huvud, vattrad brungrå rygg, rostbrunt bröst och kroppssida och vit buk."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Honans vingovansida är gråvattrad och saknar helt hanens vita fält.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingovansidan är gråvattrad och saknar helt det vita fältet som hanen uppvisar."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "lookalike",
+      "sv": "Amerikansk bläsand liknar särskilt i honfärgad dräkt, men har ljusare grått huvud där den mörka ögontrakten framträder tydligare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "men skiljs ifrån denna då den amerikanska arten har ett ljusare grått huvud där den mörka ögontrakten framträder på ett tydligare sätt"
+        }
+      ],
+      "other": {
+        "scientific": "Mareca americana",
+        "qid": "Q28106685"
+      }
+    },
+    {
+      "id": "f11",
+      "topic": "lookalike",
+      "sv": "Amerikansk bläsand har en mer kontrastrik dräkt och tydligare vit armhåla, medan bläsandens armhåla brukar vara gråare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den amerikanska bläsanden har även en mer kontrastrik fjäderdräkt och uppvisar en tydligare vit \"armhåla\" än bläsanden, vars \"armhåla\" brukar vara gråare."
+        }
+      ],
+      "other": {
+        "scientific": "Mareca americana",
+        "qid": "Q28106685"
+      }
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Hanen har en karaktäristisk klar, stigande vissling som avslutas med en kort torr drill.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen har en karaktäristisk klar stigande vissling som avslutas med en kort torr drill."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Honan har ett lågt skorrande läte som påminner om karr-karr-karr.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan har ett lågt skorrande läte som påminner om karr-karr-karr."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Flygande bläsänder känns igen på ett högt, visslande vingljud.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Fliegende Pfeifenten sind an ihrem hohen, pfeifend klingenden Fluggeräusch zu erkennen, das von den Schwingen erzeugt wird."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Bläsanden häckar främst i öppna våtmarker, slättsjöar och långsamrinnande större floder.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bläsanden häckar främst i öppna våtmarker, slättsjöar, långsamrinnande större floder"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Arten undviker tundra, tät skog, bergsområden och snabbt strömmande vattendrag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten undviker tundra, tät skog, bergsområden och snabbt strömmande vattendrag."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Utanför häckningstiden lever bläsanden i kustnära, saltare men skyddade miljöer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utanför häckningstiden lever den i kustnära saltare, men skyddade miljöer."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Sverige häckar arten spritt från Dalarna till Torne lappmark, främst i skogslandets sjöar och våtmarker rika på fräken och starr.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten häckar spritt över norra Sverige, från Dalarna till Torne lappmark, med tyngdpunkt i skogslandets sjöar och våtmarker rika på fräken och starr."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I södra Sverige förekommer bläsanden numera endast sällsynt och lokalt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I södra Sverige förekommer arten numera endast sällsynt och lokalt."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "År 2018 uppskattades det svenska beståndet till 17 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 17 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "I Sverige rödlistas bläsanden sedan 2025 som nära hotad (NT).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige kategoriseras arten sedan 2025 som nära hotad (NT)"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Bläsanden lämnar häckningsområdena i september och når vinterkvarteren i oktober och november.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lämnar häckningsområdena i september och når vinterkvarteren i oktober och november."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Vårflyttningen börjar i mars och april, och de nordligaste häckningsområdena nås under andra halvan av maj.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vårflytten påbörjas i mars och april och de når de nordligaste häckningsområdena i andra halvan av maj."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstid är bläsanden mycket social och uppträder i stora flockar under flyttningen och vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utanför häckningstid är den mycket social, och under flyttningen och i vinterkvarteren uppträder den i stora flockar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Boet är en uppskrapning i marken som göms väl nära vatten, till exempel i en tuva.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet, som består av en uppskrapning i marken, göms väl i närheten av vatten, exempelvis i en tuva."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Honan lägger vanligtvis 8–9 gulvita ägg i maj eller juni.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den lägger vanligtvis 8–9 gulvita ägg i maj eller juni"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Honan ruvar ensam i cirka 24–25 dygn och tar hand om ungarna, som blir flygga efter 40–45 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ruvar äggen i cirka 24–25 dygn och det är också honan som ensam tar hand om ungarna som blir flygga efter 40–45 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Den adulta bläsanden lever nästan uteslutande av vegetarisk föda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta bläsanden lever nästan uteslutande av en vegetarisk kost."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "food",
+      "sv": "Bläsanden betar gräs och örter längs strandkanten och bandtång vid havet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den betar också gräs och örter som den finner längs strandkanten, och bandtång vid havet."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bläsanden är en flyttfågel som häckar i sjöar i taigaområdena på Island, i norra Europa och norra Asien"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i september och oktober."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "58d21388ee58db92"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "blasand",
@@ -203,7 +574,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

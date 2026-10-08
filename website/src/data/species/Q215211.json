@@ -1,13 +1,604 @@
 {
   "qid": "Q215211",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Talltitan är 11–14 centimeter lång och väger 8–14 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Talltitan är 11–14 centimeter lång och väger 8–14 gram."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Vingbredden är 17–20,5 centimeter.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "has a wingspan of 17–20.5 cm (6.7–8.1 in)"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Talltitan har gråbrun rygg, vitaktig buk samt mattsvart hjässa och haklapp.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har gråbrun rygg, vitaktig buk och mattsvart hjässa och haklapp."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Näbben är kort, knubbig, vass och svart, irisen är svart och benen grå.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en kort knubbig och vass näbb som är svart, svart iris och grå ben."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Kinderna är rent vita ända bak till nacken.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Wangen sind bis in den Nacken hinein rein weiß."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Talltitan har ofta en kraftig nacke som brukar beskrivas som en tjurnacke.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Huvudformen skiljer sig också genom att talltitan ofta har en kraftigare nacke, som brukar beskrivas som en \"tjurnacke\"."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Ljusa kanter på armpennorna bildar en ljus vingspegel på den hopfällda vingen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "talltitans armpennor har en ljus kant vilket skapar en ljus vingspegel på ovansidan av den hopfällda vingen"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Könen är lika och ungfåglarna liknar de vuxna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika och juvenilen liknar de adulta individerna."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Varningslätet är ett utdraget ”tsitsidäää”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Varninglätet är ett utdraget \"tsitsidäää\"."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Sången består av klagande pipanden, ”dju-dju-dju-dju-dju”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången består av \"klagande\" pipanden \"dju-dju-dju-dju-dju\"."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Sången består av fem till sex fallande visseltoner som låter melankoliska.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Gesang besteht aus fünf bis sechs absinkenden – daher melancholisch anmutenden – Pfeiflauten"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Det vanligaste lätet är ett nasalt ”zee, zee, zee”.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The commonest call is a nasal zee, zee, zee"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "habitat",
+      "sv": "Talltitan förekommer i blandskog och barrskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Talltitan förekommer i blandskog och barrskog."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Arten föredrar fuktiga områden med murkna träd.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "bevorzugt allgemein feuchte Gebiete mit morschen Gehölzen"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "sweden",
+      "sv": "I Sverige förekommer talltitan allmänt i nästan hela landet, utom på Gotland och i delar av Skåne.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige förekommer den allmänt i nästan hela landet, förutom på Gotland och i delar av Skåne."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige har talltitan minskat markant sedan 1970-talet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige har den dock minskat markant sedan 1970-talet"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Sedan 2020 är talltitan rödlistad i Sverige som nära hotad (NT).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sedan 2020 upptas den på Artdatabankens rödlista som nära hotad (NT)."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till 542 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 542 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "behaviour",
+      "sv": "Talltitorna håller sig till reviret året runt och strövar mindre än blåmesar och talgoxar på vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fåglarna håller sig till reviret året runt och drar inte runt lika mycket som blåmesar och talgoxar gör under vintern."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "behaviour",
+      "sv": "Ofta lever två par tillsammans i samma revir, ett alfa-par och ett beta-par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "ofta lever två par tillsammans – ett alfa-par och ett beta-par"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Talltitan gräver ofta ut sitt eget bohål, oftast i en rutten stubbe eller ett murknat träd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Talltitan gräver ofta ut sitt eget bohål och kan till och med tränga igenom hård bark, oftast i en rutten stubbe eller ett mer eller mindre murknat träd."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Kullen består av sex till nio ägg med rödaktiga prickar eller fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen, sex till nio till antalet, har rödaktiga prickar eller fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan ruvar i cirka två veckor och båda föräldrarna matar ungarna i 16 till 19 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ruvar äggen i cirka två veckor, och efter kläckningen matas ungarna av båda föräldrarna i 16 till 19 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Talltitan får bara en kull per säsong.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Only a single brood is raised each season."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Talltitan äter skalbaggar, insekter, spindeldjur och frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fåglarna livnär sig av skalbaggar, insekter, spindeldjur och frön, ungefär som andra mesar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "På vintern lever talltitan till stor del av frön som den hamstrat under hösten i barkspringor och under lavar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under vintern är talltitan stationär i sitt revir och lever då till stor del av frön som den hamstrat under hösten."
+        },
+        {
+          "article": "sv",
+          "quote": "Fröna placeras ett och ett i barkspringor, under lavar och på liknande ställen"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Talltitan besöker fågelbord.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "talltitan visst besöker fågelbord"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november till februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Norrbotten, Jämtland och Västerbotten."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Talltitan är en mes som lever i blandskog och barrskog, gärna i fuktiga områden med murkna träd.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        },
+        {
+          "text": "I Sverige förekommer den allmänt i nästan hela landet.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Mattsvart hjässa och haklapp, gråbrun rygg och vitaktig buk",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Rent vita kinder som når ända bak till nacken",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Kraftig nacke, ofta kallad tjurnacke, och kort, knubbig svart näbb",
+          "factIds": [
+            "f06",
+            "f04"
+          ]
+        },
+        {
+          "text": "Ljus vingspegel på den hopfällda vingen, och könen är lika",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Det vanligaste lätet är ett nasalt ”zee, zee, zee”, och varningslätet är ett utdraget ”tsitsidäää”.",
+          "factIds": [
+            "f12",
+            "f09"
+          ]
+        },
+        {
+          "text": "Sången består av fem till sex fallande visseltoner som låter melankoliska, klagande pipanden som ”dju-dju-dju-dju-dju”.",
+          "factIds": [
+            "f11",
+            "f10"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Talltitan förekommer allmänt i nästan hela Sverige, utom på Gotland och i delar av Skåne.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Beståndet uppskattades 2018 till 542 000 par, men arten har minskat markant sedan 1970-talet.",
+          "factIds": [
+            "f18",
+            "f16"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i november till februari, och andelen av alla fågelrapporter är högst i Norrbotten, Jämtland och Västerbotten.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Talltitan äter skalbaggar, insekter, spindeldjur och frön.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "På vintern lever den till stor del av frön som den hamstrat under hösten i barkspringor och under lavar.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Den håller sig till reviret året runt, ofta lever två par i samma revir, och den besöker fågelbord.",
+          "factIds": [
+            "f19",
+            "f20",
+            "f27"
+          ]
+        },
+        {
+          "text": "Bohålet gräver den ofta ut själv, oftast i en rutten stubbe eller ett murknat träd.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Talltita: så känner du igen arten på mattsvart hjässa och vita kinder, hur sången och lätena låter och när den oftast rapporteras.",
+      "facts": {
+        "size": {
+          "value": "11 till 14 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Willow Tit is a tit of mixed and coniferous forest, preferring damp areas with rotting trees.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        },
+        {
+          "text": "In Sweden it occurs commonly across almost the whole country.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Matt black cap and bib, grey-brown back and whitish belly",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Pure white cheeks reaching all the way back to the nape",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Thick neck, often described as a bull neck, and short, stubby black bill",
+          "factIds": [
+            "f06",
+            "f04"
+          ]
+        },
+        {
+          "text": "Pale wing panel on the folded wing, and the sexes look alike",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The most common call is a nasal \"zee, zee, zee\", and the alarm call is a drawn-out \"tsitsidäää\".",
+          "factIds": [
+            "f12",
+            "f09"
+          ]
+        },
+        {
+          "text": "The song is five to six falling whistled notes that sound melancholy, plaintive piping like \"dju-dju-dju-dju-dju\".",
+          "factIds": [
+            "f11",
+            "f10"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Willow Tit occurs commonly in almost all of Sweden, except on Gotland and in parts of Skåne.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "The population was estimated at 542 000 pairs in 2018, but it has declined markedly since the 1970s.",
+          "factIds": [
+            "f18",
+            "f16"
+          ]
+        },
+        {
+          "text": "It is reported most from November to February, and its share of all bird reports is highest in Norrbotten, Jämtland and Västerbotten.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Willow Tit eats beetles, insects, spiders and their relatives, and seeds.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "In winter it lives largely on seeds it stored in autumn in bark crevices and under lichens.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "It keeps to its territory all year, often two pairs share one territory, and it visits bird tables.",
+          "factIds": [
+            "f19",
+            "f20",
+            "f27"
+          ]
+        },
+        {
+          "text": "It often digs out its own nest hole, usually in a rotten stump or a decaying tree.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Willow Tit: how to recognise it by its matt black cap and white cheeks, what its song and calls sound like and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "11 to 14 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "666dcb0822652166"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "666dcb0822652166"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "talltita",
@@ -205,5 +796,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

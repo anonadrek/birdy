@@ -1,13 +1,623 @@
 {
   "qid": "Q26698",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Järnsparven liknar en brunaktig sparv men har tunn insektsätarnäbb och järngrått huvud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Järnsparven påminner om en brunaktig sparv men med tunn insektsätande näbb och järngrått huvud."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Hjässan, ögonbrynet, nacken, strupen och bröstet är blygrå.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hjässan, ögonbrynet, nacken, strupen och bröstet är blygrått."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Kroppen är mörk och enfärgad med djupt mörkbrun, svartstreckad rygg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kroppen är mörk och enfärgad med djupt mörkbrun och svartstreckad rygg."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Näbben är mörk och benen är rödbruna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är mörk och benen rödbruna."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "sex_age",
+      "sv": "Könen är mycket lika, men hanen har i genomsnitt lite mer blygrått på huvud och hals än honan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är mycket lika men hanen har i genomsnitt lite mer blygrått på huvud och hals än honan."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Ungfågeln är mer distinkt tecknad och kraftigt streckad även på halsen och bröstet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen är mer distinkt tecknad och kraftigt streckad även på halsen och bröstet."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "Järnsparven är 14,5 centimeter lång och väger cirka 20 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Järnsparven är 14,5 centimeter lång och väger cirka 20 gram."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "voice",
+      "sv": "Locklätet är ett tunt, högt ”tih”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Locklätet är ett tunt, högt \"tih\""
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Sången är snabb, enkel, högfrekvent och silvrigt klirrande och kan påminna om kungsfågelns.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den snabba, enkla högfrekventa sången är silvrigt klirrande och kan påminna om kungsfågelns."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "behaviour",
+      "sv": "Järnsparven håller sig ofta dold i täta buskage och ses främst när den sjunger, då den sitter mer öppet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Järnsparven lever i skogsmarker och håller sig ofta dold i täta buskage. Den observeras främst när den sjunger då den tenderar att sitta mer öppet."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "behaviour",
+      "sv": "Järnsparven slår ofta med vingarna, särskilt vid revirstrider eller konkurrens om parning.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "dunnocks exhibit frequent wing flicking, especially when engaged in territorial disputes or when competing for mating rights"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "behaviour",
+      "sv": "Järnsparven söker vanligen föda på marken.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "where they typically feed on the ground"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "habitat",
+      "sv": "Järnsparven häckar i skogsmarker, trädgårdar, parker och fjällskog, ofta med unga granar, täta buskage och snår.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Järnsparven häckar i skogsmarker, trädgårdar, parker och fjällskog, ofta i habitat med unga granar, täta buskage och snår."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "sweden",
+      "sv": "I Sverige förekommer järnsparven allmänt i hela landet, undantagsvis i fjälltrakterna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige förekommer järnsparven allmänt i hela landet, undantagsvis i fjälltrakterna."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "sweden",
+      "sv": "Den svenska populationen flyttar i september–november till västra och sydvästra Europa och återkommer i början av april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den svenska populationen flyttar i september-november till västra och sydvästra Europa och återkommer i början av april."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "Enstaka individer kan övervintra i södra Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Enstaka individer kan övervintra i södra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "År 2025 togs järnsparven upp på den svenska rödlistan som nära hotad (NT).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2025 togs den med på rödlistan som nära hotad (NT)"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Den svenska populationen beräknas ha minskat med cirka 32,5 procent under de senaste tio åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under de senaste tio åren beräknas populationen ha minskat med cirka 32,5 %."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Sverige hör till länderna med mer än en miljon häckande par järnsparv.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Zu den Ländern mit mehr als einer Million Brutpaaren zählen Finnland, Russland, Großbritannien, Schweden, Deutschland und Norwegen."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Boet byggs av honan och placeras lågt över marken, gömt i täta snår.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet byggs av honan och placeras lågt över marken gömt i täta snår."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Kullen består av tre till sex grönblå ägg som ruvas i 13 till 14 dagar, främst av honan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kullen består av tre till sex grönblå ägg som ruvas i 13 till 14 dagar, främst av honan."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Ungarna matas av båda föräldrarna i 11 till 14 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna utfodras sedan av båda föräldrar i 11 till 14 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Järnsparven har ett polyandriskt parningssystem där honan parar sig med flera hanar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Järnsparven uppvisar ett polyandriskt parningssystem där honan parar sig med flera hanar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Järnsparven kan genomföra två häckningar per år, i april och i juni.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "det förekommer att den genomför två häckningar per år, i april och i juni"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "På sommaren äter järnsparven insekter som små skalbaggar, larver och puppor samt spindlar och daggmaskar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Födan består på sommaren av insekter som små skalbaggar, larver och puppor, samt spindlar och daggmaskar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "På vintern äter järnsparven även bär och frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern äter den även bär och frön."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den svenska populationen flyttar i september-november till västra och sydvästra Europa och återkommer i början av april."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i april."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i februari."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Järnsparven liknar en brunaktig sparv men har tunn insektsätarnäbb och järngrått huvud.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Den häckar i skogsmarker, trädgårdar, parker och fjällskog, ofta med unga granar, täta buskage och snår.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Blygrå hjässa, ögonbryn, nacke, strupe och bröst",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Mörk och enfärgad kropp med djupt mörkbrun, svartstreckad rygg",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Tunn, mörk näbb och rödbruna ben",
+          "factIds": [
+            "f01",
+            "f04"
+          ]
+        },
+        {
+          "text": "Hanen har i genomsnitt lite mer blygrått på huvud och hals än honan",
+          "factIds": [
+            "f05"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången är snabb, enkel, högfrekvent och silvrigt klirrande och kan påminna om kungsfågelns.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Locklätet är ett tunt, högt ”tih”.",
+          "factIds": [
+            "f08"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Järnsparven är en flyttfågel som häckar här och förekommer allmänt i hela landet, undantagsvis i fjälltrakterna.",
+          "factIds": [
+            "s01",
+            "f14"
+          ]
+        },
+        {
+          "text": "Den flyttar i september till november till västra och sydvästra Europa och återkommer i början av april, då den rapporteras mest.",
+          "factIds": [
+            "f15",
+            "d01"
+          ]
+        },
+        {
+          "text": "Enstaka individer kan övervintra i södra Sverige, och arten rapporteras sällan i februari.",
+          "factIds": [
+            "f16",
+            "d02"
+          ]
+        },
+        {
+          "text": "År 2025 togs den upp på svenska rödlistan som nära hotad (NT).",
+          "factIds": [
+            "f17",
+            "d04"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Järnsparven håller sig ofta dold i täta buskage och sitter mer öppet när den sjunger.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Den söker vanligen föda på marken.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "På sommaren äter den insekter som små skalbaggar, larver och puppor samt spindlar och daggmaskar, på vintern även bär och frön.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "Den slår ofta med vingarna, särskilt vid revirstrider eller konkurrens om parning.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Järnsparv: så känner du igen den på blygrått huvud och streckad rygg, hur sången och locklätet låter, vad den äter och när den ses.",
+      "facts": {
+        "size": {
+          "value": "14,5 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Dunnock looks like a brownish sparrow but has a thin, insect-eater's bill and an iron-grey head.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "It breeds in woodland, gardens, parks and mountain forest, often with young spruces, dense bushes and thickets.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Lead-grey crown, eyebrow, nape, throat and breast",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Dark, plain body with a deep dark brown, black-streaked back",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Thin dark bill and reddish-brown legs",
+          "factIds": [
+            "f01",
+            "f04"
+          ]
+        },
+        {
+          "text": "The male averages slightly more lead-grey on head and neck than the female",
+          "factIds": [
+            "f05"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is fast, simple, high-pitched and silvery tinkling, and can recall that of the Goldcrest.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "The call is a thin, high \"tih\".",
+          "factIds": [
+            "f08"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Dunnock is a migrant that breeds in Sweden and is common across the country, only exceptionally in the mountains.",
+          "factIds": [
+            "s01",
+            "f14"
+          ]
+        },
+        {
+          "text": "It leaves in September to November for western and southwestern Europe and returns in early April, when it is reported most.",
+          "factIds": [
+            "f15",
+            "d01"
+          ]
+        },
+        {
+          "text": "A few may winter in southern Sweden, and it is rarely reported in February.",
+          "factIds": [
+            "f16",
+            "d02"
+          ]
+        },
+        {
+          "text": "In 2025 it was added to the Swedish Red List as Near Threatened (NT).",
+          "factIds": [
+            "f17",
+            "d04"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Dunnock often keeps hidden in dense bushes and sits more in the open when it sings.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "It usually feeds on the ground.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "In summer it eats insects such as small beetles, larvae and pupae, plus spiders and earthworms, and in winter also berries and seeds.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "It often flicks its wings, especially during territorial disputes or competition for mating.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Dunnock: how to recognise it by its lead-grey head and streaked back, what its song and call sound like, what it eats and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "14.5 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "4eb851cd512cbb35"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "4eb851cd512cbb35"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "jarnsparv",
@@ -207,5 +817,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

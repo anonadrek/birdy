@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Palettvakt (spec 2026-09-28-webb-faltboksfarger §3): webbens egen yta har inget mossgrönt och
-// ingen olivton. Appens färger får bara finnas i telefonerna (src/styles/phone.css och
-// src/components/phone/), som visar appen som den är. Skannar src/ och tools/ (bl.a.
+// ingen olivton. Appens färger syns bara i de riktiga skärmbilderna (src/assets/screens/), inte i
+// webbens kod: de ritade telefonerna togs bort 2026-10-08. Skannar src/ och tools/ (bl.a.
 // delningsbild-generatorn), kodfiler (.astro/.css/.ts/.mjs/.js) och .svg. tools/store-assets/*.html
 // är MEDVETET oskannade — de mallarna använder appens egen Play Store-palett med --moss, så .html
 // finns inte med i filtret av den anledningen.
@@ -11,7 +11,8 @@ import { dirname, resolve, join } from 'node:path';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const scanDirs = ['src', 'tools'];
-const allowed = (rel) => rel === 'src/styles/phone.css' || rel.startsWith('src/components/phone/');
+// Nothing is exempt any more (the drawn phones that showed the app's greens are gone).
+const allowed = () => false;
 const banned = [
   [/#1f2a19/i, 'appens mossa #1F2A19'],
   [/#2b3a23/i, 'appens mossa-2 #2B3A23'],
@@ -44,4 +45,4 @@ if (hits.length) {
   for (const h of hits) console.error(`  ${h}`);
   process.exit(1);
 }
-console.log(`palette-guard OK (${files.length} filer, mossgrönt bara i telefonerna)`);
+console.log(`palette-guard OK (${files.length} filer, inget mossgrönt)`);

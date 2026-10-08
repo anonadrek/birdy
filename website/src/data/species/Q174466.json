@@ -1,13 +1,670 @@
 {
   "qid": "Q174466",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Pärlugglan är 24–26 cm lång.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Pärlugglan har en kroppslängd på 24–26 cm"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Vingspannet är 54–62 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "ett vingspann på 54–62 cm"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "size",
+      "sv": "Hanen väger 90–113 gram, medan honan oftast väger 126–194 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen väger mellan 90 och 113 gram medan honan vanligtvis varierar mellan 126 och 194 gram"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Ovansidan är brun med vita fläckar, så kallade pärlor, på skuldrorna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är brun på ovansidan med vita fläckar (pärlor) på skuldrorna."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Undersidan är vitaktig med bruna streck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Undertill är den vitaktig med bruna streck."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Huvudet är stort med gula ögon och ett vitt, runt ansikte som ger ett förvånat uttryck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Huvudet är stort, med gula ögon och ett vitt runt ansikte och ett \"förvånat\" uttryck."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Den vitaktiga ansiktsskivan har en mörk kant.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The dull white facial disc is framed with a dark border"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Näbben är ljusgul.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The beak is light yellow"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "De korta fötterna är befjädrade ända ut till klorna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De korta fötterna är befjädrade ut till klorna."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Hane och hona är lika i färg och form.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Till färg och form är de båda könen lika."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Ungfåglar är mörkbruna med vita fält i ansiktet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungfåglar är mörkbruna utom i ansiktet där de har vita fält"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Hanens rop är en serie av tre till tio starka poande, ”po-på-på-på-på-på”, som upprepas och hörs mycket långt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lätet är mycket karakteristiskt och består av en serie om tre till tio starka poande, \"po-på-på-på-på-på\", som upprepas många gånger och kan höras kilometerlångt."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "I Sverige hörs hanens revirrop vanligtvis från slutet av februari till maj.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Pärlugglehanens revirrop hörs i Sverige vanligtvis från slutet av februari till maj"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Den sjunger nästan bara efter mörkrets inbrott.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den sjunger nästan uteslutande efter mörkrets inbrott."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Andra läten är ett ekorrliknande smackande och ett mjukt läte som påminner om kajans kontaktläte.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "ett ekorrliknande smackande och ett mjukt läte som påminner om kajans kontaktläte"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Pärlugglan häckar i täta barr- eller blandskogar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Pärlugglan häckar i täta barr- eller blandskogar i norra Eurasien och Nordamerika"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Pärlugglan finns över större delen av Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den finns över större delen av landet"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Den är talrikast på taiga med många uppsatta holkar, till exempel i Västerbotten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som talrikast är den på taiga i områden med mycket uppsatta holkar, exempelvis i Västerbotten."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Pärlugglan bedöms som starkt hotad (EN) i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Pärluggla bedöms som starkt hotad (EN) i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet har minskat med cirka 60 procent under de senaste 15 åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Minskningstakten uppskattas till cirka 60 % under de senaste 15 åren"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "behaviour",
+      "sv": "Pärlugglan är nattaktiv och vilar på dagen, helst i en tät gran.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Pärlugglan är uteslutande nattaktiv och vilar på dagen, helst i en tät gran."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Flykten är tyst, rak, snabb och lite fladdermuslik.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flykten är tyst, rak, snabb och lite fladdermuslik."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "När den vilar sitter den upprätt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När ugglan vilar sitter den upprätt."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Den visar ofta liten eller ingen rädsla för människor.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "it is often extremely confident, showing little or no fear of people"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Den jagar i tät skog, främst från nedhängande grangrenar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Pärlugglan jagar i tät skog, främst från nedhängande grenar av gran"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Den häckar i trädhål, oftast gamla bohål av spillkråka, eller i holkar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Pärlugglan häckar uteslutande i hålrum i träd, oftast gamla bohål av spillkråka, eller lämpliga holkar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "I Skandinavien börjar häckningen normalt i april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "men i Skandinavien är det normalt att de påbörjas i april"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Honan lägger oftast 3–7 nästan klotrunda vita ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger i allmänhet 3-7 nästan klotrunda vita ägg"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Äggen ruvas i cirka 26 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas i cirka 26 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "food",
+      "sv": "Den äter främst sorkar, skogsmöss, skogslämlar och andra små däggdjur, men också små fåglar och större insekter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "särskilt sorkar, skogsmöss, skogslämlar och andra små däggdjur, men också små fåglar och större insekter"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i februari och mars."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i maj till december."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Jämtland, Västernorrland och Västerbotten."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Starkt hotad (EN)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Pärlugglan är en uggla som häckar i täta barr- eller blandskogar över större delen av Sverige.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "Den är nattaktiv och sjunger nästan bara efter mörkrets inbrott.",
+          "factIds": [
+            "f21",
+            "f14"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Brun ovansida med vita fläckar, så kallade pärlor, på skuldrorna",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Stort huvud med gula ögon och ett vitt, runt ansikte med mörk kant",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Vitaktig undersida med bruna streck och ljusgul näbb",
+          "factIds": [
+            "f05",
+            "f08"
+          ]
+        },
+        {
+          "text": "Hane och hona är lika, ungfåglar är mörkbruna med vita fält i ansiktet",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Hanens rop är en serie av tre till tio starka poande, ”po-på-på-på-på-på”, som upprepas och hörs mycket långt.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "I Sverige hörs revirropet vanligtvis från slutet av februari till maj, nästan bara efter mörkrets inbrott.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        },
+        {
+          "text": "Andra läten är ett ekorrliknande smackande och ett mjukt läte som påminner om kajans kontaktläte.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Pärlugglan finns över större delen av Sverige och är talrikast på taiga med många uppsatta holkar, till exempel i Västerbotten.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i februari och mars och sällan i maj till december.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Jämtland, Västernorrland och Västerbotten.",
+          "factIds": [
+            "d03"
+          ]
+        },
+        {
+          "text": "Arten bedöms som starkt hotad (EN) i Sverige och beståndet har minskat med cirka 60 procent under de senaste 15 åren.",
+          "factIds": [
+            "f19",
+            "f20",
+            "d04"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Pärlugglan vilar på dagen, helst i en tät gran, och sitter då upprätt.",
+          "factIds": [
+            "f21",
+            "f23"
+          ]
+        },
+        {
+          "text": "Den jagar i tät skog, främst från nedhängande grangrenar, och äter främst sorkar, skogsmöss, skogslämlar och andra små däggdjur, men också små fåglar och större insekter.",
+          "factIds": [
+            "f25",
+            "f30"
+          ]
+        },
+        {
+          "text": "Flykten är tyst, rak, snabb och lite fladdermuslik.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Den visar ofta liten eller ingen rädsla för människor.",
+          "factIds": [
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Pärluggla: så känner du igen ugglan på dräkten och ansiktet, hur hanens rop och andra läten låter och när den oftast rapporteras.",
+      "facts": {
+        "size": {
+          "value": "24 till 26 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Boreal Owl is an owl that breeds in dense coniferous or mixed forest across most of Sweden.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "It is active at night and sings almost only after dark.",
+          "factIds": [
+            "f21",
+            "f14"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Brown upperparts with white spots, known as pearls, on the shoulders",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Large head with yellow eyes and a white, round face with a dark rim",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Whitish underparts with brown streaks and a pale yellow bill",
+          "factIds": [
+            "f05",
+            "f08"
+          ]
+        },
+        {
+          "text": "Male and female look alike, young birds are dark brown with white facial patches",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The male's call is a series of three to ten strong hoots, \"po-på-på-på-på-på\", repeated and carrying a very long way.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "In Sweden the territorial call is usually heard from late February to May, almost only after dark.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        },
+        {
+          "text": "Other sounds include a squirrel-like smacking and a soft note that recalls the contact call of a Jackdaw.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Boreal Owl occurs across most of Sweden and is most numerous in taiga with many nest boxes, for example in Västerbotten.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "It is reported most in February and March, rarely from May to December.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Jämtland, Västernorrland and Västerbotten.",
+          "factIds": [
+            "d03"
+          ]
+        },
+        {
+          "text": "It is Endangered (EN) in Sweden, and the population has fallen by about 60 percent in the last 15 years.",
+          "factIds": [
+            "f19",
+            "f20",
+            "d04"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Boreal Owl rests by day, preferably in a dense spruce, and sits upright when resting.",
+          "factIds": [
+            "f21",
+            "f23"
+          ]
+        },
+        {
+          "text": "It hunts in dense forest, mainly from drooping spruce branches, and eats mostly voles, wood mice, wood lemmings and other small mammals, as well as small birds and larger insects.",
+          "factIds": [
+            "f25",
+            "f30"
+          ]
+        },
+        {
+          "text": "Its flight is silent, straight, fast and a little bat-like.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "It often shows little or no fear of people.",
+          "factIds": [
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Boreal Owl: how to recognise it by its plumage and face, what the male's call and other sounds are like, and when it is most often reported.",
+      "facts": {
+        "size": {
+          "value": "24 to 26 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "37e3e6c77624736e"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "37e3e6c77624736e"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "parluggla",
@@ -207,5 +864,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

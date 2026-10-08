@@ -1,13 +1,666 @@
 {
   "qid": "Q178702",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Dalripan mäter i genomsnitt 35–43 cm på längden och har ett vingspann på 55–66 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dalripan är en medelstor fälthöna som i genomsnitt mäter 35–43 cm på längden och har ett vingspann på 55–66 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Dalripan väger 430–810 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Its weight is 430 to 810 g (15 to 29 oz)."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Dalripan har rund kroppsform med lång hals, litet huvud och en kort, grov och mörk näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en rund kroppsform med lång hals, litet huvud och en kort, grov och mörk näbb."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den har fjäderklädda ben och tår samt en kort stjärt som den spärrar ut i flykten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har fjäderklädda tarser och tår och en kort stjärt som den spärrar ut i flykten."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "I alla dräkter har dalripan vit ögonring och nästan helvita vingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I alla dräkter har den vit ögonring och i det närmaste helvita vingar."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "På sommaren är hanen marmorerat brun med rödaktig hals och bröst, svart stjärt samt vita vingar och undersida.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In the summer, the male's plumage is marbled brown, with a reddish hue to the neck and breast, a black tail, and white wings and underparts."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "På vintern är båda könen vita, utom stjärten som är svart längst ut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern blir båda könens fjäderdräkter vita, med undantag endast för stjärten, som då är svart längst ut."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Om våren har den vuxna hanen mörkt rödbrunt huvud, hals och övre bröst med en stor röd kam ovanför varje öga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Om våren (maj/juni) har den adulta hanen en mättat mörkt rödbrun fjäderdräkt på övre delen av bröstet, halsen och huvudet med en stor röd kam ovanför varje öga."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Honan liknar hanen men saknar de stora röda kammarna och har bara ett svagt rött streck ovanför ögonringen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan har liknande dräkt som hanen men saknar den stora röda kammarna på hjässan och har i alla dräkter bara ett svagt rött streck ovanför ögonringen."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Unga fåglar liknar de vuxna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Immature birds resemble the adults."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "lookalike",
+      "sv": "Dalripan skiljs från fjällripan genom sin högre vikt och tjockare näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den skiljs från fjällripan genom sin högre vikt och tjockare näbb."
+        }
+      ],
+      "other": {
+        "scientific": "Lagopus muta",
+        "qid": "Q205930"
+      }
+    },
+    {
+      "id": "f12",
+      "topic": "lookalike",
+      "sv": "På vintern saknar dalripans hane fjällripans svarta streck mellan öga och näbb.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "in the winter, the male willow ptarmigan lacks the rock ptarmigan's black stripe between the eyes and bill"
+        }
+      ],
+      "other": {
+        "scientific": "Lagopus muta",
+        "qid": "Q205930"
+      }
+    },
+    {
+      "id": "f13",
+      "topic": "lookalike",
+      "sv": "Dalripan finns oftast inte ovanför trädgränsen, medan fjällripan föredrar högre, kalare miljöer.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "because it is not generally found above the tree line, while the rock ptarmigan prefers more elevated, barren habitat"
+        }
+      ],
+      "other": {
+        "scientific": "Lagopus muta",
+        "qid": "Q205930"
+      }
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Lätet är lågt och strävt med skrockande och upprepade kluckande ljud.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The voice is low-pitched and guttural and includes chuckles, repeated clucking sounds, and expostulations."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Under spelet ger hanen ifrån sig skallrande och skällande ljud.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "When displaying, the male makes rattles and barking noises."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Dalripan lever i glesa tall- och björkskogar, snår med vide och al, ljunghedar, tundra och fjällsluttningar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It primarily occupies subalpine and subarctic habitats such as sparse pine and birch forests, thickets with willow and alder trees, heather moors, tundra, and mountain slopes."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Dalripan är vanlig i de svenska fjällen, främst på de lägre sluttningarna bland vide och björk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är vanligt förekommande i de svenska fjällen och uppehåller sig där huvudsakligen på de lägre sluttningarna, helst bland vide och björk."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Sverige har dalripan sin sydgräns i Dalarna, Värmland, Västmanland och norra Hälsingland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sin sydgräns har den i Dalarna, Värmland, Västmanland och norra Hälsingland."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet har minskat med 50–70 procent under de senaste tolv åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De senaste tolv åren har beståndet minskat med hela 50–70 %."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Norden jagas dalripa främst från slutet av augusti till början av oktober.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Norden jagas dalripa främst under förhösten (slutet av augusti till början av oktober)."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet byggs direkt på marken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet byggs direkt på marken."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Honan lägger i genomsnitt sex till elva rostgula ägg med stora svartbruna fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger i genomsnitt sex till elva ägg"
+        },
+        {
+          "article": "sv",
+          "quote": "Äggen är rostgula med stora svartbruna fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan ruvar äggen i 19 till 25 dygn medan tuppen håller vakt i närheten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas av honan i 19 till 25 dygn medan tuppen finns i närheten och håller vakt."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Dalripan är huvudsakligen växtätare, men ungarna kan också äta insekter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dalripan är huvudsakligen växtätare, men de uppväxande ungarna kan också äta insekter."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Vinterfödan består nästan helt av skottspetsar och knoppar av vide och björk.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Winternahrung des Moorschneehuhns besteht fast ausschließlich aus den Endtrieben und Knospen von Weiden und Birken"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Vintertid håller dalripan oftast till på lägre nivåer i skyddade omgivningar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "men vintertid befinner den sig oftast på lägre nivåer i skyddade omgivningar"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "På vintern tillbringar dalriporna större delen av dagen i små flockar om fem till 15 fåglar i snöhålor.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Sie verbringen in dieser Zeit den größten Teil des Tages in kleinen Trupps von fünf bis 15 Vögeln in Schneekammern."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Flykten växlar mellan snabba vingslag och glidflykt på utbredda, nedåtböjda vingar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Flug ist raufußhuhntypisch mit einem Wechsel schneller Flügelschläge und einem Gleiten auf ausgebreiteten und nach unten durchgebogenen Flügeln."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Föräldrarna kan locka bort angripare genom att låtsas ha en bruten vinge.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "lure attackers away by pretending to have a broken wing"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i juni."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i oktober och november."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Jämtland och Norrbotten."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Dalripan lever i glesa tall- och björkskogar, snår med vide och al, ljunghedar, tundra och fjällsluttningar.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "I Sverige är den vanlig i fjällen, främst på de lägre sluttningarna bland vide och björk.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Rund kropp, litet huvud och en kort, grov och mörk näbb",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Vit ögonring och nästan helvita vingar i alla dräkter",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Vintertid är båda könen vita, utom stjärten som är svart längst ut",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Vårhanen har mörkt rödbrunt huvud och stora röda kammar, honan bara ett svagt rött streck",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Lätet är lågt och strävt, med skrockande och upprepade kluckande ljud.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Under spelet låter hanen skallrande och skällande.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Dalripan är vanlig i de svenska fjällen och har sin sydgräns i Dalarna, Värmland, Västmanland och norra Hälsingland.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i juni och sällan i oktober och november.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Jämtland och Norrbotten.",
+          "factIds": [
+            "d03"
+          ]
+        },
+        {
+          "text": "Det svenska beståndet har minskat med 50 till 70 procent under de senaste tolv åren.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Dalripan är huvudsakligen växtätare, men ungarna kan också äta insekter.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Vinterfödan består nästan helt av skottspetsar och knoppar av vide och björk.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Vintertid håller den oftast till på lägre nivåer i skyddade omgivningar och tillbringar större delen av dagen i små flockar om fem till 15 fåglar i snöhålor.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Föräldrarna kan locka bort angripare genom att låtsas ha en bruten vinge.",
+          "factIds": [
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q205930",
+          "text": [
+            {
+              "text": "Dalripan är tyngre och har tjockare näbb, och vinterhanen saknar fjällripans svarta streck mellan öga och näbb.",
+              "factIds": [
+                "f11",
+                "f12"
+              ]
+            },
+            {
+              "text": "Fjällripan föredrar högre och kalare miljöer, dalripan finns oftast under trädgränsen.",
+              "factIds": [
+                "f13"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Dalripa: så känner du igen hane och hona i sommar- och vinterdräkt, hur lätet låter, vad den äter och när den brukar ses i fält.",
+      "facts": {
+        "size": {
+          "value": "35 till 43 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Willow Ptarmigan lives in open pine and birch woods, willow and alder thickets, heather moors, tundra and mountain slopes.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "In Sweden it is common in the mountains, mainly on the lower slopes among willow and birch.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Round body, small head and a short, thick, dark bill",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "White eye-ring and almost all-white wings in every plumage",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "In winter both sexes are white, except for the black tip of the tail",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Spring male has dark red-brown head and large red combs, female only a faint red line",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is low and rough, with cackling and repeated clucking sounds.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "During display the male gives rattling and barking calls.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Willow Ptarmigan is common in the Swedish mountains and reaches its southern limit in Dalarna, Värmland, Västmanland and northern Hälsingland.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "It is reported most in June and rarely reported in October and November.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Jämtland and Norrbotten.",
+          "factIds": [
+            "d03"
+          ]
+        },
+        {
+          "text": "The Swedish population has fallen by 50 to 70 percent over the last twelve years.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It is mainly a plant eater, though the chicks may also eat insects.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Winter food is almost entirely shoot tips and buds of willow and birch.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "In winter it usually keeps to lower, sheltered ground and spends most of the day in small flocks of five to 15 birds in snow holes.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Parents can lure predators away by pretending to have a broken wing.",
+          "factIds": [
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Willow Ptarmigan: how to recognise male and female in summer and winter plumage, what the call sounds like, what it eats and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "35 to 43 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "d3cf308b6d3987ee"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "d3cf308b6d3987ee"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "dalripa",
@@ -185,5 +838,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

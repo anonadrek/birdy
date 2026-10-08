@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Analytics from '@vercel/analytics/astro';
 import { getCopy, alternateHref, type Locale } from '../lib/i18n';
-import { ALBIT_URL, ALBIN_URL } from '../lib/links';
+import { ALBIT_URL, ALBIN_URL, SOCIAL_PROFILES } from '../lib/links';
 import { serializeJsonLd } from '../lib/json-ld.mjs';
 
 interface Props {
@@ -33,9 +33,10 @@ const metaDescription = description ?? copy.meta.description;
 const altLocale: Locale = locale === 'en' ? 'sv' : 'en';
 const altPath = alternatePath ?? alternateHref(locale, pathname);
 const canonical = new URL(pathname, Astro.site).toString();
-// ?v=2: the share images changed to espresso (2026-09-28); bump when they are regenerated so platforms refetch them.
-const ogImageUrl = new URL(ogImage ?? `/og-field-${locale}.png?v=2`, Astro.site).toString();
-const ogAlt = ogImageAlt ?? (ogImage ? metaTitle : copy.alt.panorama);
+// ?v=3: the share images (tools/generate-og.mjs) became a real robin photo hung as a plate (2026-10-08, the AI robin
+// retired); bump when they are regenerated so platforms refetch them.
+const ogImageUrl = new URL(ogImage ?? `/og-field-${locale}.jpg?v=3`, Astro.site).toString();
+const ogAlt = ogImageAlt ?? (ogImage ? metaTitle : copy.alt.shareImage);
 const englishPath = locale === 'en' ? pathname : altPath;
 const albit = { '@type': 'Organization', name: 'AlbIT AB', url: ALBIT_URL };
 
@@ -60,6 +61,8 @@ const jsonLd = {
       inLanguage: locale,
       image: ogImageUrl,
       creator: albit,
+      // Birdy's own channels (the footer's follow row). On the app, not on AlbIT: they are Birdy's accounts.
+      sameAs: SOCIAL_PROFILES.map((s) => s.href),
     }] : []),
     ...(articleDate ? [{
       '@type': 'BlogPosting',

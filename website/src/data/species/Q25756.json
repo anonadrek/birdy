@@ -1,13 +1,771 @@
 {
   "qid": "Q25756",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Kattugglan är 37–43 centimeter lång och har ett vingspann på 81–96 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kattugglan är en robust fågel, 37–43 centimeter lång med ett vingspann på 81–96 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Kattugglan väger 400–500 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den väger 400-500 gram."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "size",
+      "sv": "Skandinaviska kattugglor är 12 procent större, 40 procent tyngre och har 13 procent längre vingar än västeuropeiska fåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De sibiriska och skandinaviska underarterna är 12 % större, 40 % tyngre, och har 13 % längre vingar än västeuropeiska fåglar"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Kattugglan har ett ganska platt ansikte och saknar örontofsar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett ganska platt ansikte och saknar örontofsar."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Huvudet är stort och rundat, och ansiktsrundeln kring de mörkbruna ögonen är vanligen ganska omönstrad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Huvudet är stort och rundat och ansiktsrundeln som omger de mörkbruna ögonen är vanligen ganska omönstrad."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Det finns en form med rödbrun ovansida och en med gråbrun ovansida, och mellanformer förekommer också.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den ena har rödbrun ovansida och den andra gråbrun, men mellanformer förekommer också."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Undersidan är vitaktig med bruna strimmor hos båda färgformerna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Båda morfernas undersidor är vitaktiga och brunstrimmiga."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honan är betydligt större än hanen, cirka 5 procent längre och mer än 25 procent tyngre.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten uppvisar könsdimorfism då honan är betydligt större än hanen, 5 % längre och mer än 25 % tyngre."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Nykläckta ungar har tät och relativt kort gråvit dun.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Frisch geschlüpfte Küken sind dicht und verhältnismäßig kurz grauweiß bedunt."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Det vanligaste lätet är ett gällt kontaktläte, ke-vitt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det vanligaste är kontaktlätet som består av ett gällt ke-vitt"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Hanen meddelar sin närvaro med ett dallrande hoo ... ho, ho, hoo-hoo-hoo-hoo.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "hanens dallrande hoo ... ho, ho, hoo-hoo-hoo-hoo för att meddela sin närvaro"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Det typiska lätet är en duett där honan ropar ke-vitt och hanen svarar med sitt hoande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Detta typiska läte är faktiskt en duett, där honan gör ke-vitt-ljudet, och hanen svarar med sitt hoande."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Hanens revirsång hörs vida omkring från september till november och tidigt på våren.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Von September bis November sowie im zeitigen Frühjahr ist der Reviergesang des Männchens weithin hörbar."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Kattugglan lever i lövskog och blandskog, ibland i mogna barrträdsplanteringar, och föredrar platser med tillgång till vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten återfinns i lövskog och blandskog, och ibland i mogna barrträdsplanteringar. Den föredrar lägen med tillgång till vatten."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Begravningsplatser, trädgårdar och parker har gjort att kattugglan spridit sig in i stadsområden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Begravningsplatser, trädgårdar och parker har givit den möjlighet att sprida sig i stadsområden."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige förekommer kattugglan norrut till södra Västerbotten och är tillsammans med pärlugglan Sveriges vanligaste uggla.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kattugglan förekommer i Sverige så långt norrut som till södra Västerbotten, och är den vanligaste av Sveriges ugglor tillsammans med pärlugglan."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Den svenska populationen uppskattas till 10 000–20 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Populationen i Sverige uppskattas till 10 000–20 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Enligt Svensk Fågeltaxering har kattugglan minskat signifikant i Sverige under 2010-talet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kattugglan visar signifikant minskning så här långt under 2010-talet"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Skandinavien börjar kattugglan sällan bygga bo före mitten av mars.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "men sällan före mitten av mars i Skandinavien"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Kattugglan häckar vanligen i trädhål men använder även gamla skatbon, ekorrbon, hål i byggnader och gärna fågelholkar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kattuggla häckar vanligen i ett hål i ett träd, men använder även gamla skatbon, ekorrbon eller hål i byggnader, och använder gärna fågelholkar."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "En kull består vanligen av två eller tre ägg som enbart honan ruvar i 30 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En genomsnittlig kull består av två eller tre ägg, som ruvas av enbart honan i 30 dagar innan de kläcks."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "food",
+      "sv": "Födan är främst skogsgnagare men även andra däggdjur upp till kaninunges storlek, fåglar, daggmaskar och skalbaggar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten tar en stor uppsättning bytesdjur, främst skogsgnagare, men även andra däggdjur upp till en kaninunges storlek, samt fåglar, daggmaskar och skalbaggar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Kattugglan spanar från en gren och störtar eller glider sedan tyst ned på bytet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den spanar från en gren innan den störtar eller glider tyst ned på sitt offer"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "På dagen håller sig kattugglan gömd och först i skymningen ger den sig ut på jakt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På dagen håller kattugglan sig gömd. Först i skymningen beger den sig ut på jakt."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Kattugglan flyger med långa glidningar på kupade vingar, mindre vågformigt och med färre vingslag än andra eurasiska ugglor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kattugglan flyger med långa glidningar på kupade vingar, mindre vågformigt och med färre vingslag än andra eurasiska ugglor"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Vid boet kan kattugglan attackera hundar, katter och människor, ibland oprovocerat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hundar, katter och människor kan bli attackerade, ibland oprovocerat."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "lookalike",
+      "sv": "Lappugglan liknar kattugglan i formen men är mycket större.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the great grey owl (Strix nebulosa), Eurasian eagle-owl (Bubo bubo) and Ural owl (Strix uralensis) are similar in shape, but much larger."
+        },
+        {
+          "article": "sv",
+          "quote": "Lappuggla, berguv och slaguggla är likartade i formen, men är mycket större."
+        }
+      ],
+      "other": {
+        "scientific": "Strix nebulosa",
+        "qid": "Q200724"
+      }
+    },
+    {
+      "id": "f28",
+      "topic": "lookalike",
+      "sv": "Berguven liknar kattugglan i formen men är mycket större.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the great grey owl (Strix nebulosa), Eurasian eagle-owl (Bubo bubo) and Ural owl (Strix uralensis) are similar in shape, but much larger."
+        },
+        {
+          "article": "sv",
+          "quote": "Lappuggla, berguv och slaguggla är likartade i formen, men är mycket större."
+        }
+      ],
+      "other": {
+        "scientific": "Bubo bubo",
+        "qid": "Q130933"
+      }
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Slagugglan liknar kattugglan i formen men är mycket större.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the great grey owl (Strix nebulosa), Eurasian eagle-owl (Bubo bubo) and Ural owl (Strix uralensis) are similar in shape, but much larger."
+        },
+        {
+          "article": "sv",
+          "quote": "Lappuggla, berguv och slaguggla är likartade i formen, men är mycket större."
+        }
+      ],
+      "other": {
+        "scientific": "Strix uralensis",
+        "qid": "Q190083"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Jämfört med hornugglan saknar kattugglan örontofsar och ser i flykten klumpigare, mer långstjärtad och bredvingad ut.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Ihr Flugbild ist verglichen mit dem der Waldohreule plumper, langschwänziger und breitflügliger."
+        },
+        {
+          "article": "de",
+          "quote": "Federohren wie bei der Waldohreule fehlen."
+        }
+      ],
+      "other": {
+        "scientific": "Asio otus",
+        "qid": "Q25384"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Västmanland, Örebro och Kronoberg."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Kattugglan är en uggla utan örontofsar som lever i lövskog och blandskog, gärna nära vatten.",
+          "factIds": [
+            "f04",
+            "f14"
+          ]
+        },
+        {
+          "text": "Begravningsplatser, trädgårdar och parker har gjort att den spridit sig in i stadsområden.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Stort, rundat huvud med ganska platt ansikte och inga örontofsar",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Mörkbruna ögon i en vanligen ganska omönstrad ansiktsrundel",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Ovansidan rödbrun eller gråbrun, undersidan vitaktig med bruna strimmor",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Honan är betydligt större än hanen och mer än 25 procent tyngre",
+          "factIds": [
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Det vanligaste lätet är ett gällt kontaktläte, ke-vitt.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Hanen hörs med ett dallrande hoo ... ho, ho, hoo-hoo-hoo-hoo.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Typiskt är en duett där honan ropar ke-vitt och hanen svarar med sitt hoande.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Hanens revirsång hörs vida omkring från september till november och tidigt på våren.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "I Sverige förekommer kattugglan norrut till södra Västerbotten, och beståndet uppskattas till 10 000 till 20 000 par.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "Enligt Svensk Fågeltaxering minskade den signifikant under 2010-talet.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i februari.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Västmanland, Örebro och Kronoberg.",
+          "factIds": [
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "På dagen håller den sig gömd och ger sig ut på jakt först i skymningen.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Den spanar från en gren och störtar eller glider sedan tyst ned på bytet.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "Födan är främst skogsgnagare men även andra däggdjur upp till kaninunges storlek, fåglar, daggmaskar och skalbaggar.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Vid boet kan den attackera hundar, katter och människor, ibland oprovocerat.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25384",
+          "text": [
+            {
+              "text": "Hornugglan har örontofsar, vilket kattugglan saknar.",
+              "factIds": [
+                "f30"
+              ]
+            },
+            {
+              "text": "I flykten ser kattugglan klumpigare, mer långstjärtad och bredvingad ut.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q190083",
+          "text": [
+            {
+              "text": "Slagugglan liknar kattugglan i formen men är mycket större.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q200724",
+          "text": [
+            {
+              "text": "Lappugglan liknar kattugglan i formen men är mycket större.",
+              "factIds": [
+                "f27"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Kattuggla: så känner du igen den på utseende, hur hanens hoande och honans ke-vitt låter, var den lever och när den oftast rapporteras.",
+      "facts": {
+        "size": {
+          "value": "37 till 43 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Tawny Owl is an owl without ear tufts that lives in broadleaf and mixed woodland, preferably near water.",
+          "factIds": [
+            "f04",
+            "f14"
+          ]
+        },
+        {
+          "text": "Cemeteries, gardens and parks have let it spread into urban areas.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Large, rounded head with a fairly flat face and no ear tufts",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Dark brown eyes in a facial disc that is usually fairly plain",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Upperparts rufous brown or greyish brown, underparts whitish with brown streaks",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "The female is clearly larger than the male and more than 25 percent heavier",
+          "factIds": [
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The commonest call is a shrill contact call, ke-vitt.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "The male announces himself with a quavering hoo ... ho, ho, hoo-hoo-hoo-hoo.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Typical is a duet where the female calls ke-vitt and the male answers with his hooting.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The male's territorial song carries far from September to November and in early spring.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "In Sweden the Tawny Owl occurs north to southern Västerbotten, and the population is estimated at 10 000 to 20 000 pairs.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "According to the Swedish Bird Survey it declined significantly during the 2010s.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "It is reported most in February.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Västmanland, Örebro and Kronoberg.",
+          "factIds": [
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "By day it stays hidden and only sets out to hunt at dusk.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "It watches from a branch and then drops or glides silently down onto its prey.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "Its food is mainly woodland rodents, along with other mammals up to the size of a young rabbit, birds, earthworms and beetles.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Near the nest it may attack dogs, cats and people, sometimes unprovoked.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25384",
+          "text": [
+            {
+              "text": "The Long-eared Owl has ear tufts, which the Tawny Owl lacks.",
+              "factIds": [
+                "f30"
+              ]
+            },
+            {
+              "text": "In flight the Tawny Owl looks bulkier, longer tailed and broader winged.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q190083",
+          "text": [
+            {
+              "text": "The Ural Owl resembles the Tawny Owl in shape but is much larger.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q200724",
+          "text": [
+            {
+              "text": "The Great Grey Owl resembles the Tawny Owl in shape but is much larger.",
+              "factIds": [
+                "f27"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Tawny Owl: how to recognise it by its plumage, what the male's hooting and the female's ke-vitt sound like, where it lives and when it is reported.",
+      "facts": {
+        "size": {
+          "value": "37 to 43 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "9eb0e73d8d10435f"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "9eb0e73d8d10435f"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "kattuggla",
@@ -205,5 +963,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { basename, dirname, resolve } from 'node:path';
 import { SHARE_QUALITY, SHARE_SIZE, assetsDir, builtSpeciesMedia, isPreview, paperColour, speciesDir } from './src/lib/species-source.mjs';
 import { readSpeciesSitemapInfo } from './src/lib/species-sitemap.mjs';
+import { buildDate, loadAppSpeciesSnapshot, selectAppDailyBird } from './src/lib/daily-bird.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 
@@ -194,6 +195,29 @@ const speciesMediaModule = {
   },
 };
 
+// Dagens fågel (plan 2026-10-08 Task 1): today's date in Europe/Stockholm and the app's pick for it, worked out once
+// per build from the shipped app's frozen species list (src/data/app-species-<version>.json, src/lib/daily-bird.mjs),
+// never from the branch's YAML, which is not what people's phones run (npm run check:app-species tells whether the two
+// agree). A virtual module, so the list is read here in Node and never enters Vite's module graph; the home page
+// combines the pick with the species that have a page in this build. The nightly rebuild
+// (.github/workflows/daily-site-build.yml) moves it to the next day.
+const DAILY_BIRD = 'virtual:birdy-daily-bird';
+/** @type {import('vite').Plugin} */
+const dailyBirdModule = {
+  name: 'birdy-daily-bird',
+  resolveId(id) {
+    return id === DAILY_BIRD ? `\0${DAILY_BIRD}` : undefined;
+  },
+  load(id) {
+    if (id !== `\0${DAILY_BIRD}`) return undefined;
+    const date = buildDate();
+    const appQid = selectAppDailyBird(loadAppSpeciesSnapshot(root), date);
+    const pinned = process.env.BIRDY_TODAY ? ', BIRDY_TODAY' : '';
+    console.log(`[birdy-daily-bird] ${date.iso} (Europe/Stockholm${pinned}): appens Dagens fågel ${appQid ?? 'ingen'}`);
+    return [`export const date = ${JSON.stringify(date)};`, `export const appQid = ${JSON.stringify(appQid)};`, ''].join('\n');
+  },
+};
+
 export default defineConfig({
   site: 'https://birdy.community',
   trailingSlash: 'ignore',
@@ -217,6 +241,6 @@ export default defineConfig({
     },
   }), speciesAudio, speciesShare],
   vite: {
-    plugins: [tailwindcss(), speciesMediaModule],
+    plugins: [tailwindcss(), speciesMediaModule, dailyBirdModule],
   },
 });

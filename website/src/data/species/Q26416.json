@@ -1,13 +1,661 @@
 {
   "qid": "Q26416",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Snösparven är en trind och långvingad sparv med svarta ben och kontrastrik fjäderdräkt i svart, vitt, brunt och grått.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är en trind och långvingad sparv, har svarta ben och en kontrastrik fjäderdräkt i svart, vitt, brunt och grått."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "I häckningsdräkt är näbben svart, medan den är gul med svart spets i vinterdräkt och hos ungfåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I häckningsdräkt har den svart näbb medan den har gul näbb med svart spets i vinterdräkt och som juvenil."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "I flykten känns den främst igen på stora vita vingfält i kontrast till de mörka handpennorna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten känns den främst igen på sina stora vita vingfält i kontrast till de mörka handpennorna."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "På vintern får fjädrarna på huvud, rygg, skuldror och övergump rostbruna kanter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern får fjädrarna på huvud, rygg, skuldror och övergump rostbruna kanter."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Till skillnad från de flesta tättingar har snösparven fjäderklädda tarser, en anpassning till den kalla miljön.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Unlike most passerines, it has feathered tarsi, an adaptation to its harsh cold environment."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "size",
+      "sv": "Snösparven mäter 15,5–18 centimeter, har ett vingspann på 32–38 centimeter och väger 26–40 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta fågeln mäter mellan 15,5–18 centimeter, har ett vingspann på 32–38 centimeter och väger 26–40 gram."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hanen i häckningsdräkt har vitt huvud, vit hals, vit övergump och vit undersida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen i häckningsdräkt är omisskännlig med vitt huvud, hals, övergump och undersida."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honan i häckningsdräkt har gråbrun hjässa, nacke och örontäckare samt bruna anstrykningar på ryggen och det annars vita bröstet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honan har i häckningsdräkt gråbrun hjässa, nacke och örontäckare och även bruna anstrykningar på ryggen och på det annars vita bröstet."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Det tar två år innan unga hanar får fullt utvecklad vit dräkt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Es dauert jedoch zwei Jahre, bis sich dieses Weiß bei Jungvögeln voll ausgebildet hat."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Locklätena är dels ett puttrigt ”per'r'r'rit” likt tofsmesens, dels en mjuk vissling ”pjyu” som liknar mindre strandpipare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "dels ett tofsmeslikt puttrigt \"per'r'r'rit\", dels en mjuk vissling, \"pjyu\", liknande mindre strandpipare"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Sången är kort och kvittrande med klar röst och ödslig klang, likt lappsparvens.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången är kort och kvittrande med klar röst och liksom lappsparven med ödslig klang."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "I flock hörs drillande lockrop som ”tirr”, ”diüh” eller ”tsrr”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "In der Gruppe stoßen sie trillernde Rufe wie \"tirr\", \"diüh\" oder \"tsrr\" aus."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "habitat",
+      "sv": "Häckningsmiljön är tundra, trädlösa hedar och kalfjäll.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Häckningsbiotopen är tundra, trädlösa hedar och kalfjäll."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Vintertid ses den i större flockar, ofta vid sandiga kuster eller låga bergstrakter och mer sällan på stubbåkrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Om vintern förekommer den i större flockar, ofta vid sandiga kustområden eller låga bergstrakter och mer sällan på stubbåkrar."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "sweden",
+      "sv": "I Skandinavien häckar snösparven i fjälltrakterna och vid Norges nordliga kuster.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Skandinavien häckar den i fjälltrakterna och vid Norges nordliga kuster."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "På vintern flyttar merparten av Skandinaviens snösparvar till södra Sverige, Danmark och länderna vid Nordsjön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern flyttar merparten av Skandinaviens population till södra Sverige, Danmark och länderna vid Nordsjön."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "I södra Sverige är snösparven vintergäst.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Im nördlichen Deutschland bis Frankreich und Polen sowie im südlichen Schweden sind sie Wintergäste."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till 26 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 26 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige har snösparven minskat med 10–40 procent under de senaste 30 åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även i Sverige minskar snösparven i antal, de senaste 30 åren med mellan 10–40 %."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Boet byggs under en sten eller i en klippskreva.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet byggs under en sten eller i en klippskreva."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Honan lägger fem till sju grönblå ägg med brunaktiga fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hon lägger fem till sju ägg, som är 21 millimeter stora och grönblå med brunaktiga fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Honan ruvar äggen i 10–13 dagar och ungarna blir flygfärdiga efter omkring två veckor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas av honan i 10–13 dagar. Ungarna blir flygfärdiga efter omkring två veckor."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "food",
+      "sv": "Snösparven lever av frön och på sommaren även av insekter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Snösparven livnär sig av frön och på sommaren av insekter."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Vintertid söker den föda i snön och plockar frön från låga stjälkar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "During this season it will forage in the snow collecting seeds from lower stems."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Snösparven lever på marken där den går, springer och vid behov hoppar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is ground-dwelling, and walks, runs and can hop if needed."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Den flyttar i små flockar med böljande flykt på måttlig höjd.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They tend to migrate in small flocks and have an undulating flight at a moderate height."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Hanarna anländer först till häckningsområdet och honorna kommer fyra till sex veckor senare.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Females will arrive four to six weeks later, when the snow starts to melt."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "lookalike",
+      "sv": "Beringsnösparven liknar snösparven och kan förväxlas med den, men har ännu mer vitt i dräkten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "This species is easily confused with McKay's bunting due to the similarity of their plumage and the occurrence of hybrids."
+        },
+        {
+          "article": "en",
+          "quote": "which differs in having even more white in the plumage"
+        }
+      ],
+      "other": {
+        "scientific": "Plectrophenax hyperboreus"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern flyttar merparten av Skandinaviens population till södra Sverige, Danmark och länderna vid Nordsjön."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i augusti och september."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Norrbotten, Västerbotten och Halland."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Snösparven är en trind och långvingad sparv med kontrastrik dräkt i svart, vitt, brunt och grått.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Den häckar på tundra och kalfjäll och ses på vintern i flockar, ofta vid sandiga kuster.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Hanen i häckningsdräkt har vitt huvud, vit hals, vit övergump och vit undersida",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Honan i häckningsdräkt har gråbrun hjässa och nacke samt bruna anstrykningar på bröstet",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Näbben är svart i häckningsdräkt men gul med svart spets på vintern",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "I flykten syns stora vita vingfält mot mörka handpennor",
+          "factIds": [
+            "f03"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Locklätena är dels ett puttrigt ”per'r'r'rit” likt tofsmesens, dels en mjuk vissling ”pjyu” som påminner om mindre strandpipare.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "I flock hörs drillande rop som ”tirr”, ”diüh” eller ”tsrr”.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Sången är kort och kvittrande med klar röst och ödslig klang, likt lappsparvens.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Snösparven är delvis flyttfågel och häckar i Sverige, i fjälltrakterna.",
+          "factIds": [
+            "s01",
+            "f15"
+          ]
+        },
+        {
+          "text": "I södra Sverige är den vintergäst, ofta vid sandiga kuster och mer sällan på stubbåkrar.",
+          "factIds": [
+            "f17",
+            "f14"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i november och sällan i augusti och september.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Norrbotten, Västerbotten och Halland.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Snösparven lever av frön och på sommaren även av insekter.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "På vintern söker den föda i snön och plockar frön från låga stjälkar.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Den håller till på marken, där den går, springer och vid behov hoppar.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Hanarna kommer först till häckningsområdet och honorna fyra till sex veckor senare.",
+          "factIds": [
+            "f27"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Snösparv: så känner du igen den på dräkt, näbb och vita vingfält, hur locklätena och sången låter och när under året den ses.",
+      "facts": {
+        "size": {
+          "value": "15,5 till 18 cm",
+          "factIds": [
+            "f06"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Snow Bunting is a plump, long-winged songbird with contrasting plumage in black, white, brown and grey.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "It breeds on tundra and bare mountains and in winter is seen in flocks, often on sandy coasts.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Breeding male has a white head, throat, rump and underparts",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Breeding female has a grey-brown crown and nape and a brownish wash on the breast",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Bill is black in breeding plumage, yellow with a black tip in winter",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "In flight, large white wing patches contrast with dark primaries",
+          "factIds": [
+            "f03"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Calls include a rippling “per'r'r'rit” like a Crested Tit and a soft whistled “pjyu” recalling Little Ringed Plover.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Flocks give trilling calls such as “tirr”, “diüh” or “tsrr”.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The song is short and twittering, with a clear voice and a lonely ring, like that of Lapland Bunting.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Snow Bunting is a partial migrant that breeds in Sweden, in the mountains.",
+          "factIds": [
+            "s01",
+            "f15"
+          ]
+        },
+        {
+          "text": "In southern Sweden it is a winter visitor, often on sandy coasts and less often on stubble fields.",
+          "factIds": [
+            "f17",
+            "f14"
+          ]
+        },
+        {
+          "text": "It is reported most in November and rarely in August and September.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Norrbotten, Västerbotten and Halland.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds on seeds, and in summer also on insects.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "In winter it searches for food in the snow and picks seeds from low stems.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "It lives on the ground, where it walks, runs and hops when needed.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Males arrive first on the breeding grounds and females follow four to six weeks later.",
+          "factIds": [
+            "f27"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Snow Bunting: how to recognise it by plumage, bill and white wing patches, what its calls and song sound like, and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "15.5 to 18 cm",
+          "factIds": [
+            "f06"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "9037a26ba803b959"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "9037a26ba803b959"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "snosparv",
@@ -207,5 +855,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

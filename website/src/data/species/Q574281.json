@@ -1,13 +1,682 @@
 {
   "qid": "Q574281",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Balkanmesen är 13–14 centimeter lång och liknar en talgoxe i storlek och proportioner.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Balkanmesen påminner om en talgoxe i storlek (13–14 centimeter) och proportioner"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Den har en bruntonad gråsvart hätta som går långt ner på huvudet och en mycket stor svart haklapp.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "har den dock en bruntonad gråsvart hätta som går lite längre ner på huvudet och en mycket större svart haklapp"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Den vita kinden blir på grund av den stora haklappen bara en smal kil.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På så sätt blir den vita kinden snarare som en smal kil."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Näbben är relativt kraftig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är också relativt kraftig."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Hanen är sotigt brunsvart på hjässa och nacke, medan honan är mer chokladbrun där.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Am Scheitel und Nacken ist das Männchen rußig bräunlich-schwarz, das Weibchen mehr schokoladenbraun."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Ungfåglarna är mattare och mer brunaktiga än de vuxna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The juveniles are duller and tinged with brown than the adults."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "lookalike",
+      "sv": "Den liknar talltitan i färg men har större svart haklapp, hätta längre ner på huvudet och ofta toppigt huvud.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The head is often peaked when the bird is in an upright stance, unlike the willow tit."
+        },
+        {
+          "article": "sv",
+          "quote": "har den dock en bruntonad gråsvart hätta som går lite längre ner på huvudet och en mycket större svart haklapp"
+        }
+      ],
+      "other": {
+        "scientific": "Poecile montanus",
+        "qid": "Q215211"
+      }
+    },
+    {
+      "id": "f09",
+      "topic": "lookalike",
+      "sv": "Jämfört med entitan har balkanmesen en proportionellt längre stjärt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Compared to the sympatric marsh tit (P. palustris) the sombre tit has a proportionately longer tail."
+        }
+      ],
+      "other": {
+        "scientific": "Poecile palustris",
+        "qid": "Q207838",
+        "written": "P. palustris"
+      }
+    },
+    {
+      "id": "f10",
+      "topic": "lookalike",
+      "sv": "Lappmesen är en liknande art men skiljer sig från balkanmesen genom fjäderdräktens färger.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "die Lapplandmeise (Poecile cinctus), welche sich jedoch durch ihre Gefiederfärbung von der Balkanmeise unterscheiden"
+        }
+      ],
+      "other": {
+        "scientific": "Poecile cinctus",
+        "qid": "Q574447"
+      }
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Locklätena är blåmeslika och sparvlikt grälande, ibland med en mer rivig ton.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Locklätena är blåmeslika och sparvlikt grälande, ibland med en mer rivig ton"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Den enkla sången liknar entitans men med oren röst, ungefär \"tjriv-tjriv-tjriv\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den enkla sången liknar entitans fast med en oren röst: \"tjriv-tjriv-tjriv\""
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Ett kännetecknande läte är ett surrande \"tschrrrr\".",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Ihr Ruf ist ein kennzeichnendes „tschrrrr“"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Den har också ett ganska djupt, talgoxelikt varnande \"tchetchetche\".",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Sie äußert auch ein ziemlich tiefes, kohlmeisenartiges Zetern"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "behaviour",
+      "sv": "Jämfört med andra mesar är den relativt tystlåten och tillbakadragen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Jämfört med andra mesar är den relativt tystlåten och tillbakadragen."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "behaviour",
+      "sv": "Den är stannfågel men kan i delar av utbredningsområdet flytta till lägre belägna områden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är en stannfågel, men det finns tecken på att den förflyttar sig till lägre belägna områden i delar av utbredningsområdet."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Den trivs i macchia med spridda träd och buskar, bland annat olivlundar, plommonodlingar och andra fruktträd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Balkanmesen trivs i macchia med spridda träd och buskar, bland annat olivlundar, plommonodlingar och andra fruktträd."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Den ses också i öppet parkliknande landskap, särskilt i bergig kalkstensterräng.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den ses också i öppet parkliknande landskap med ek, bok, pil, poppelträd och barrträd"
+        },
+        {
+          "article": "sv",
+          "quote": "i synnerhet i bergig kalkstensterräng"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Den förekommer från havsnivå upp till 2 300 meters höjd.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Sie besiedelt Lebensräume von Meereshöhe bis 2.300 m."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Den häckar från mars till tidigt i augusti i hål i ruttnande fruktträd, i holk eller i klippskrevor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "häckar från mars till tidigt i augusti i hål i ruttnande fruktträd, men också i holk eller i klippskrevor"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet är en skål av ull, växtmaterial, bark, djurhår och fjädrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet är en skål gjord av ull, växtmaterial, bark, djurhår och fjädrar."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Kullen består av fem till sju vita ägg med små rödaktiga fläckar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Gelege besteht aus 5 bis 7 weißen Eiern mit kleinen rötlichen Flecken."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan ruvar ensam i 12 till 14 dagar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Brutdauer beträgt 12 bis 14 Tage und das Weibchen brütet alleine."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Båda föräldrarna matar ungarna, som stannar upp till 22 dagar i boet.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Beide Altvögel füttern die Küken, die bis zu 22 Tage im Nest bleiben"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Balkanmesen är monogam.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fågeln är monogam och häckar från mars till tidigt i augusti"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Födan består främst av insekter, särskilt fjärilslarver och andra larver.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Their diet mainly consists of insects, especially caterpillars and other larvae."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Den söker föda på marken och i lägre grenar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It forages on the ground and in lower branches."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "absent",
+      "sv": "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Balkanmesen är en mes som trivs i macchia med spridda träd och buskar, bland annat olivlundar, plommonodlingar och andra fruktträd.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Den ses också i öppet parkliknande landskap, särskilt i bergig kalkstensterräng.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Mycket stor svart haklapp som gör den vita kinden till en smal kil",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Bruntonad gråsvart hätta som går långt ner på huvudet",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Hanen är sotigt brunsvart på hjässa och nacke, honan mer chokladbrun där",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Talgoxens storlek och proportioner, med relativt kraftig näbb",
+          "factIds": [
+            "f01",
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Den enkla sången liknar entitans men med oren röst, ungefär \"tjriv-tjriv-tjriv\".",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Locklätena är blåmeslika och sparvlikt grälande, ibland med en mer rivig ton.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Ett kännetecknande läte är ett surrande \"tschrrrr\", och den varnar med ett ganska djupt, talgoxelikt \"tchetchetche\".",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Balkanmesen förekommer inte i Sverige, och det finns inga rapporter i Artportalen 2016 till 2025.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Den är stannfågel men kan i delar av utbredningsområdet flytta till lägre belägna områden.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "Den förekommer från havsnivå upp till 2 300 meters höjd.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan består främst av insekter, särskilt fjärilslarver och andra larver, som den söker på marken och i lägre grenar.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Jämfört med andra mesar är den relativt tystlåten och tillbakadragen.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Den häckar från mars till tidigt i augusti i hål i ruttnande fruktträd, i holk eller i klippskrevor.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Honan ruvar ensam fem till sju ägg i 12 till 14 dagar, och båda föräldrarna matar ungarna.",
+          "factIds": [
+            "f22",
+            "f23",
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q215211",
+          "text": [
+            {
+              "text": "Talltitan liknar balkanmesen i färg, men balkanmesen har större svart haklapp, hätta som går längre ner på huvudet och ofta toppigt huvud.",
+              "factIds": [
+                "f08"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q207838",
+          "text": [
+            {
+              "text": "Jämfört med entitan har balkanmesen en proportionellt längre stjärt.",
+              "factIds": [
+                "f09"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q574447",
+          "text": [
+            {
+              "text": "Lappmesen är en liknande art men skiljer sig från balkanmesen genom fjäderdräktens färger.",
+              "factIds": [
+                "f10"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Balkanmes: lär dig känna igen den på hätta, haklapp och kind, hör hur sången och lätena låter och läs om var och när den förekommer.",
+      "facts": {
+        "size": {
+          "value": "13 till 14 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "absent",
+          "factIds": [
+            "d01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Sombre Tit is a tit that favours macchia with scattered trees and bushes, including olive groves, plum orchards and other fruit trees.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "It is also seen in open park-like country, especially in mountainous limestone terrain.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Very large black bib that leaves the white cheek as only a narrow wedge",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Brown-tinged greyish black cap reaching far down the head",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Male sooty brownish black on crown and nape, female more chocolate brown there",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Size and proportions of a Great Tit, with a fairly strong bill",
+          "factIds": [
+            "f01",
+            "f04"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The simple song resembles a Marsh Tit's but with an impure voice, roughly \"tjriv-tjriv-tjriv\".",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Calls are Blue Tit-like and scolding like a sparrow, sometimes with a harsher tone.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "A characteristic call is a buzzing \"tschrrrr\", and the alarm is a fairly deep, Great Tit-like \"tchetchetche\".",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Sombre Tit does not occur in Sweden, and there are no reports in Artportalen from 2016 to 2025.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "It is resident but may move to lower areas in parts of its range.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "It occurs from sea level up to 2 300 metres.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mainly on insects, especially caterpillars and other larvae, searching on the ground and in lower branches.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Compared with other tits it is fairly quiet and retiring.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "It breeds from March to early August in holes in rotting fruit trees, in nest boxes or in rock crevices.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "The female alone incubates five to seven eggs for 12 to 14 days, and both parents feed the young.",
+          "factIds": [
+            "f22",
+            "f23",
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q215211",
+          "text": [
+            {
+              "text": "The Willow Tit is similar in colour, but the Sombre Tit has a larger black bib, a cap reaching further down the head and often a peaked crown.",
+              "factIds": [
+                "f08"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q207838",
+          "text": [
+            {
+              "text": "Compared with the Marsh Tit, the Sombre Tit has a proportionally longer tail.",
+              "factIds": [
+                "f09"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q574447",
+          "text": [
+            {
+              "text": "The Siberian Tit is a similar species but differs from the Sombre Tit in the colours of its plumage.",
+              "factIds": [
+                "f10"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Sombre Tit: learn to recognise it by its cap, bib and cheek, hear what its song and calls sound like, and read where and when it occurs.",
+      "facts": {
+        "size": {
+          "value": "13 to 14 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "absent",
+          "factIds": [
+            "d01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "32ba3cddb86467a4"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "32ba3cddb86467a4"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "balkanmes",
@@ -137,5 +806,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

@@ -1,13 +1,659 @@
 {
   "qid": "Q192817",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
-    "wave": 2
+    "wave": 2,
+    "audioStruckSources": [
+      "https://commons.wikimedia.org/wiki/File:Panurus.ogg"
+    ],
+    "audioStruck": true
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Skäggmesen blir cirka 16 centimeter lång.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skäggmesen blir cirka 16 centimeter lång"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Skäggmesen är en liten fågel som är 14,5–17 centimeter lång.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "This is a small bird, 14.5–17 cm (5.7–6.7 in) in length"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Skäggmesen är ljust kanelbrun på ryggen och sidorna, askgrå på huvud och nacke samt vitaktig undertill.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "är ljust kanelbrun på ryggen och sidorna, askgrå på huvudet och nacken samt vitaktig på kroppens undre sida"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Skäggmesen har lång stjärt och en böljande flykt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "with a long tail and an undulating flight"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Stjärten är rostgul med vita spetsar på de yttre pennorna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "stjärten rostgul med vita spetsar på de yttre pennorna"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "De inre vingpennorna är svarta med rostgula kanter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Inre vingpennorna är svarta med rostgula kanter"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Den vuxna hanen har grått huvud, svarta mustascher och svarta undre stjärttäckare.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The adult male has a grey head, black \"moustaches\" (not a beard) and black undertail coverts."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honan saknar förlängda kindfjädrar och har blekt rostgula undre stjärttäckare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan saknar förlängda fjädrar på kinderna och dess undre stjärttäckare är blekt rostgula."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Den vuxna hanen har klart orangegul näbb, medan honans näbb ofta är något mattare.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The adult female's bill is often somewhat duller that the adult male's bright orange-yellow bill."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Ungfåglar liknar vuxna honor men har svart mitt på manteln och svarta partier i stjärten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Jungvögel ähneln adulten Weibchen, haben jedoch eine schwarze Mantelmitte und schwarze Bereiche im Schwanz."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Lätena är snabbt upprepade ping och tjing som ibland följs av ett utdraget tjirr.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skäggmesens läten är snabbt upprepade ping och tjing som ibland följs av ett utdraget tjirr"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Det karakteristiska metalliska ping-lätet används som kontaktläte och avslöjar ofta fågeln.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "their presence is often revealed by their characteristic metallic \"ping\" call, which is used by bearded reedlings to maintain contact with each other"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Hanens sång har beskrivits som ett melodiskt ”tschin-schik-schra”.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The male's song has been described as a tuneful \"tschin-schik-schra\"."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "behaviour",
+      "sv": "I flykten ger de korta vingarna ett surrande ljud.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "During flight, their short wings give a whirring sound."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Skäggmesen är helt beroende av hög och tät bladvass.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är helt beroende av hög och tät bladvass (Phragmites australis)."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Den förekommer bland rörväxter och videbuskar vid sjöar och våtmarker.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skäggmesen förekommer bland rörväxter och videbuskar vid sjöar och våtmarker."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "behaviour",
+      "sv": "Tack vare kamouflerande dräkt och tät vassmiljö förbises skäggmesen lätt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Because of their well-camouflaged plumage and dense reed bed habitat, they are easily overlooked"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "behaviour",
+      "sv": "Den hoppar gärna på marken, särskilt på sumpiga ställen eller vid vattenkanten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "it readily hops on the ground, especially in swampy places or at water's edge"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden ses den oftast i grupper på upp till några tiotal fåglar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "during the non-breeding season it is usually seen in groups of up to a few tens of birds"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "behaviour",
+      "sv": "Paren håller i regel ihop livet ut och är tillsammans hela året.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Once formed, a pairing is generally life-long and they stay together throughout the year"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "food",
+      "sv": "Skäggmesen lever av insekter och på vintern även av olika frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "lever av insekter, om vintern även av allehanda frön"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "food",
+      "sv": "På sommaren äter den främst små ryggradslösa djur och på vintern vassfrön.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They mainly feed on small invertebrates in summer and reed (Phragmites australis) seeds in winter."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Första kullen startas i mars–april och följs av en till tre kullar fram till augusti–september.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Första kullen startas redan i mars–april och följs sedan av en, två eller ibland eventuellt tre kullar fram till augusti–september."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Båda föräldrarna ruvar de 3 till 11, oftast 4 till 8, äggen i upp till två veckor.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Both sexes participate in the up to two week long incubation of the 3 to 11 (usually 4 to 8) eggs"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Båda könen bygger det skålformade boet.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Both sexes participate in the building of the cup-shaped nest"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "sweden",
+      "sv": "Första svenska observationen gjordes vid Hammarsjön 1965, där arten även häckade året efter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Första observationen gjordes vid Hammarsjön 1965 där den även häckade året efter."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "sweden",
+      "sv": "Hösten 1975 uppskattades beståndet i Tåkern till 20 000 individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "hösten 1975 uppskattades beståndet till hela 20 000 individer"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "sweden",
+      "sv": "I Sverige häckar den årsvis norrut till södra Värmland, Västmanland och Uppland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Idag häckar den årsvis i Sverige så långt norrut som södra Värmland, Västmanland och Uppland"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "sweden",
+      "sv": "Tåkern, Dettern i Västergötland och Kvismaren i Närke är starka fästen i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tåkern är tillsammans Dettern i Västergötland och Kvismaren i Närke starka fästen."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattas till mellan 6 000 och 12 000 häckande individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det svenska beståndet uppskattas bestå av mellan 6 000 och 12 000 häckande individer."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i oktober och november."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Uppsala, Halland och Örebro."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Skäggmesen är en liten fågel med lång stjärt som är helt beroende av hög och tät bladvass.",
+          "factIds": [
+            "f02",
+            "f04",
+            "f15"
+          ]
+        },
+        {
+          "text": "Den förekommer bland rörväxter och videbuskar vid sjöar och våtmarker.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Ljust kanelbrun på ryggen och sidorna, askgrå på huvud och nacke, vitaktig undertill",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Lång rostgul stjärt med vita spetsar på de yttre pennorna och böljande flykt",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Hanen har grått huvud, svarta mustascher, svarta undre stjärttäckare och klart orangegul näbb",
+          "factIds": [
+            "f07",
+            "f09"
+          ]
+        },
+        {
+          "text": "Honan saknar förlängda kindfjädrar och har blekt rostgula undre stjärttäckare och ofta mattare näbb",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Lätena är snabbt upprepade ping och tjing, som ibland följs av ett utdraget tjirr.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Det metalliska ping-lätet används som kontaktläte och avslöjar ofta fågeln.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Hanens sång har beskrivits som ett melodiskt ”tschin-schik-schra”.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "I Sverige häckar den årsvis norrut till södra Värmland, Västmanland och Uppland.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Tåkern, Dettern i Västergötland och Kvismaren i Närke är starka fästen.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Det svenska beståndet uppskattas till mellan 6 000 och 12 000 häckande individer.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i oktober och november, och andelen av alla fågelrapporter är högst i Uppsala, Halland och Örebro.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "På sommaren äter den främst insekter och andra små ryggradslösa djur, på vintern vassfrön och andra frön.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        },
+        {
+          "text": "Den hoppar gärna på marken, särskilt på sumpiga ställen eller vid vattenkanten.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden ses den oftast i grupper på upp till några tiotal fåglar, och paren håller i regel ihop livet ut.",
+          "factIds": [
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "I flykten ger de korta vingarna ett surrande ljud.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Skäggmes: så känner du igen hane och hona på dräkt och näbb, hur ping-lätet låter och när arten oftast rapporteras under året.",
+      "facts": {
+        "size": {
+          "value": "14,5 till 17 cm",
+          "factIds": [
+            "f02"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Bearded Reedling is a small, long-tailed bird that depends entirely on tall, dense reed beds.",
+          "factIds": [
+            "f02",
+            "f04",
+            "f15"
+          ]
+        },
+        {
+          "text": "It lives among reeds and willow scrub by lakes and wetlands.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Pale cinnamon back and flanks, ash-grey head and nape, whitish underparts",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Long rusty-yellow tail with white tips to the outer feathers, and a bounding flight",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Male has a grey head, black moustaches, black undertail coverts and a bright orange-yellow bill",
+          "factIds": [
+            "f07",
+            "f09"
+          ]
+        },
+        {
+          "text": "Female lacks the long cheek feathers, has pale rusty-yellow undertail coverts and often a duller bill",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The calls are rapidly repeated ping and tching notes, sometimes followed by a drawn-out tchirr.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The metallic ping is used as a contact call and often gives the bird away.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The male's song has been described as a melodious \"tschin-schik-schra\".",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "In Sweden it breeds in some years north to southern Värmland, Västmanland and Uppland.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Tåkern, Dettern in Västergötland and Kvismaren in Närke are strongholds.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "The Swedish population is estimated at between 6 000 and 12 000 breeding individuals.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "It is reported most in October and November, and its share of all bird reports is highest in Uppsala, Halland and Örebro.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "In summer it eats mainly insects and other small invertebrates, in winter reed seeds and other seeds.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        },
+        {
+          "text": "It often hops on the ground, especially in marshy spots or at the water's edge.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it is usually seen in groups of up to a few dozen birds, and pairs usually stay together for life.",
+          "factIds": [
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "In flight the short wings make a whirring sound.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Bearded Reedling: how to recognise male and female by plumage and bill, what the ping call sounds like and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "14.5 to 17 cm",
+          "factIds": [
+            "f02"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "dc6025c6e74b2703"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "dc6025c6e74b2703"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "skaggmes",
@@ -51,16 +697,6 @@
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bearded_reedling_2_(Panurus_biarmicus).jpg"
     }
   ],
-  "audio": {
-    "file": "Q192817/voice.mp3",
-    "durationSec": 7,
-    "trimmed": false,
-    "author": "Bubulcus",
-    "license": "CC BY 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Panurus.ogg",
-    "sha256": "68c45b7759c2360cb99ba86bfbcdcc3937c8daecd9cfa0db12806d641ac36457"
-  },
   "wikipedia": {
     "sv": {
       "title": "Skäggmes",
@@ -202,5 +838,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

@@ -9,7 +9,8 @@
 // in this component: none of these links use target="_blank", so it has no effect.
 import { getCopy, type Locale } from '../../lib/i18n';
 import { CONTACT_EMAIL } from '../../lib/links';
-import { aboutHref, formatDate, licenseLabel, localizedLicenseUrl, wikiUrl, type SpeciesImage, type WikiLang, type WikiRef } from '../../lib/species';
+import PhotoCredit from './PhotoCredit.astro';
+import { aboutHref, formatDate, localizedLicenseUrl, wikiUrl, type SpeciesImage, type WikiLang, type WikiRef } from '../../lib/species';
 
 // GBIF dataset pages (not just the GBIF.org front page, controller review, Task 9), verified against the
 // GBIF API (api.gbif.org/v1/dataset/<key>) 2026-10-07: 38b4c89f… is "Artportalen" (SLU Swedish Species
@@ -39,11 +40,7 @@ const [reviewedBefore, reviewedAfter] = t.species.reviewed.split('{date}');
 
 <div class="credits">
   {photos.map(({ key, image }) => (
-    <p data-credit-for={key}>
-      {t.species.photoCredit} {image.author ?? t.species.unknownAuthor},{' '}
-      {image.licenseUrl ? <a href={localizedLicenseUrl(image.licenseUrl, locale)}>{image.license}</a> : licenseLabel(image.license, t)},{' '}
-      {t.species.via} <a href={image.sourceUrl}>Wikimedia Commons</a>, {t.species.resized}
-    </p>
+    <p data-credit-for={key}><PhotoCredit locale={locale} image={image} /></p>
   ))}
   <p data-wiki-credit>
     {t.species.textCredit} <a href={localizedLicenseUrl(CC_BY_SA_4, locale)} rel="license">CC BY-SA 4.0</a>.
@@ -69,8 +66,9 @@ const [reviewedBefore, reviewedAfter] = t.species.reviewed.split('{date}');
 <style>
   .credits { margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 12.5px; line-height: 1.6; color: var(--muted); }
   .credits p { margin: 0 0 6px; }
-  .credits a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
-  .credits a:hover { color: var(--rust); }
+  /* :global, so the links PhotoCredit.astro renders (its own component, outside this scope) are styled too. */
+  .credits :global(a) { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+  .credits :global(a:hover) { color: var(--rust); }
   .reviewed { margin-top: 12px !important; color: var(--ink); }
   .reviewed a { color: var(--rust); }
   .report { margin-top: 12px !important; font-weight: 600; }

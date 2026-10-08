@@ -1,13 +1,677 @@
 {
   "qid": "Q26696",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Ejdern är en av de största dykänderna och mäter 60–70 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ejdern är en av de största dykänderna och mäter 60–70 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Vingspannet är 95–105 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingspannet ligger på 95–105 cm."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "size",
+      "sv": "Ejdern väger 0,81–3,04 kg.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "weighs 0.81 to 3.04 kg"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Ejdern är kraftigt byggd med kort hals, stort huvud och en lång kilformad näbb som är fjäderklädd på sidorna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är kraftigt byggd med kort hals, stort huvud utan knöl och en lång kilformad näbb som är fjäderbeklädd på sidorna"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Huvudprofilen är karaktäristisk eftersom näbben bildar en rak linje mot pannan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ejderns huvudprofil är karaktäristisk och näbben bildar en rak linje mot pannan"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "I flykten känns ejdern igen på den kraftiga kroppen, den tjocka korta halsen och den iögonfallande huvudformen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Während des Fluges ist die Eiderente an ihrer kräftigen Gestalt, dem dicken und kurzen Hals sowie der auffallenden Kopfform deutlich zu erkennen."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Den adulta hanen i praktdräkt har svart hjässa, övergump och buk, blek näbbspets, ljusgrön nackfläck och är i övrigt vit med rödrosa bröst.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "med svart hjässa, övergump och buk, blek näbbspets, ljusgrön nackfläck och är i övrigt vit, med rödrosa anstrykning på bröstet"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honan är rostgrå och brun med svart tvärvattring, och vingspegeln kantas av två vita band.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan är rostgrå och brun med svart tvärvattring och dess vingspegel kantas av två vita band"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungfågeln liknar honan men saknar vitkantad vingspegel, är diffusare tecknad och har ett ljust ögonbrynsstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen påminner om honan men saknar den vitkantade vingspegeln och är diffusare tecknad och har ett ljust ögonbrynsstreck."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Hanen i eklipsdräkt är mindre kontrastrik, mörkare och saknar den gröna nacken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Adult hane i eklipsdräkt är mindre kontrastrik, mörkare och saknar det gröna nackpartiet."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Unga hanar får fullt utvecklad praktdräkt först under tredje eller fjärde levnadsåret.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Junge Erpel tragen das voll ausgebildete Prachtkleid des Männchens erst im dritten oder vierten Lebensjahr."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Ejdern är talför under häckningstiden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ejdern är talför under häckningstiden."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Hanen har ett vittljudande och mjukt rop, ”a-ooh-å”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "vittljudande och mjuka rop, \"a-ooh-å\""
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Honan skrockar med ett ”gak-ak-ak-ak...”, som liknats vid ljudet från en avlägsen fiskekutter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan skrockar med ett \"gak-ak-ak-ak...\", beskrivet som ljudet från en avlägen fiskekutter"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Ejdern förekommer främst i marina miljöer men besöker tillfälligtvis sötvatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den förekommer främst i marina miljöer men besöker invatten tillfälligtvis."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Som häckplatser används kala klippöar och skär, bevuxna eller skogklädda öar samt skyddade lugna havsvikar med flacka stränder.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Als Brutplätze nutzt die Eiderente kleine vegetationslose Felseninseln und Schären, bewachsene oder bewaldete Inseln, geschützte und ruhige Meeresbuchten mit flachen Ufern."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Ejdern häckar allmänt vid Sveriges havskuster.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ejdern häckar allmänt vid Sveriges havskuster."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Det största svenska beståndet finns i Stockholms skärgård.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Största beståndet finns i Stockholms skärgård."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige häckar ejderparen var för sig snarare än i täta kolonier.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På andra platser, exempelvis i Sverige, häckar paren skilda åt."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Ejdern anses starkt hotad i Sverige, där den minskat kraftigt, troligen på grund av tiaminbrist.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "anses vara starkt hotad i Sverige där den minskat kraftigt, troligen till följd av tiaminbrist"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet läggs vanligen i lä mellan grästuvor, i en skreva eller bakom en sten, men ibland helt öppet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet läggs vanligen i lä mellan några grästuvor, i en skreva eller bakom en sten, men ibland helt öppet."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Boet tätas med dun som honan plockar från sin egen kropp, främst från bröstet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Därefter tätas boet med ejderdunet som honan plockar från sin egen kropp, främst ifrån bröstet"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan lägger vanligtvis fyra till sex grågröna ägg som hon ruvar ensam i 25–30 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ejdern lägger vanligtvis fyra till sex grågröna ägg som honan ruvar själv 25–30 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Hanarna lämnar honorna ganska snart efter äggläggningen och drar långt ut till havs.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ganska snart efter äggläggningsperioden som pågår fram till mitten av april lämnar hanarna honorna och ger sig långt ut till havs."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Flera honor går ofta samman och tar hand om ungarna gemensamt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "crèching, where female eiders team up and share the work of rearing ducklings"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Ejdern lever av kräftdjur och blötdjur, och den viktigaste födan är musslor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lever av kräftdjur och blötdjur och den viktigaste födan utgörs av musslor."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Ejdern dyker efter föda ner till 20 meters djup eller plockar föda från botten på grunt vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ejdern födosöker antingen genom att dyka, upp till 20 meters djup, eller genom att i ytläge på grunt vatten plocka föda på bottnen."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Musslor sväljs hela och skalen krossas sedan i kråsen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The eider will eat mussels by swallowing them whole; the shells are then crushed in their gizzard and excreted."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "För att lyfta från vattnet måste ejdern först springa på vattenytan för att få fart.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "För att ejdern ska kunna lyfta från vattnet måste den först springa på vattenytan för att få fart."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Vintertid uppehåller sig ejdern ofta ute på öppna havet i stora flockar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under vintern uppehåller sig ejdern ofta ute på öppna havet, ofta i stora flockar."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Cramp & Simons 1977 uppger att fåglar som häckar i Danmark, Tyskland, västra Sverige, och Nederländerna är stannfåglar eller partiella flyttfåglar medan häckpopulationerna i norra Norge, östra Sverige, Finland och Baltikum är flyttfåglar."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Halland, Blekinge och Gotland."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Starkt hotad (EN)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Ejdern är en kraftigt byggd dykand som främst lever i marina miljöer.",
+          "factIds": [
+            "f01",
+            "f04",
+            "f15"
+          ]
+        },
+        {
+          "text": "Den häckar allmänt vid Sveriges havskuster men anses starkt hotad i Sverige.",
+          "factIds": [
+            "f17",
+            "f20"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Lång kilformad näbb som bildar en rak linje mot pannan",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Hanen i praktdräkt är vit med svart hjässa, rödrosa bröst och ljusgrön nackfläck",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Honan är rostgrå och brun med svart tvärvattring, vingspegeln kantas av två vita band",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "I flykten syns den kraftiga kroppen, den tjocka korta halsen och huvudformen",
+          "factIds": [
+            "f06"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Ejdern är talför under häckningstiden.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Hanen har ett vittljudande och mjukt rop, ”a-ooh-å”.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Honan skrockar med ett ”gak-ak-ak-ak...”, som liknats vid ljudet från en avlägsen fiskekutter.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Ejdern är delvis flyttfågel och häckar allmänt vid Sveriges havskuster, med det största svenska beståndet i Stockholms skärgård.",
+          "factIds": [
+            "s01",
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt, och andelen av alla fågelrapporter är högst i Halland, Blekinge och Gotland.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "På Svenska rödlistan 2025 klassas den som starkt hotad (EN), och den har minskat kraftigt, troligen på grund av tiaminbrist.",
+          "factIds": [
+            "d03",
+            "f20"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Ejdern lever av kräftdjur och blötdjur, och den viktigaste födan är musslor.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Musslorna sväljs hela och skalen krossas sedan i kråsen.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Den dyker efter föda ner till 20 meters djup eller plockar föda från botten på grunt vatten.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "För att lyfta från vattnet springer den först på vattenytan för att få fart.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Vintertid håller den ofta till ute på öppna havet i stora flockar.",
+          "factIds": [
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Ejder: så känner du igen hane och hona i fält, hur hanens rop och honans skrockande låter och när under året ejdern brukar ses.",
+      "facts": {
+        "size": {
+          "value": "60 till 70 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Common Eider is a heavily built diving duck that lives mainly in marine habitats.",
+          "factIds": [
+            "f01",
+            "f04",
+            "f15"
+          ]
+        },
+        {
+          "text": "It breeds commonly along Sweden's sea coasts but is considered endangered in Sweden.",
+          "factIds": [
+            "f17",
+            "f20"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Long wedge-shaped bill forming a straight line with the forehead",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Breeding male is white with black crown, pinkish-red breast and pale green nape patch",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Female is rusty grey and brown with black barring, speculum edged by two white bars",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "In flight, note the heavy body, thick short neck and striking head shape",
+          "factIds": [
+            "f06"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The Common Eider is vocal during the breeding season.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The male has a soft, far-carrying call, \"a-ooh-å\".",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The female cackles \"gak-ak-ak-ak...\", a sound likened to a distant fishing boat.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Common Eider is a partial migrant that breeds commonly along Sweden's sea coasts, and the largest Swedish population is in the Stockholm archipelago.",
+          "factIds": [
+            "s01",
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "It is reported all year round, and its share of all bird reports is highest in Halland, Blekinge and Gotland.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "The Swedish Red List 2025 classes it as Endangered (EN), and it has declined sharply, probably because of thiamine deficiency.",
+          "factIds": [
+            "d03",
+            "f20"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds on crustaceans and molluscs, and mussels are its most important food.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Mussels are swallowed whole and the shells crushed in the gizzard.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "It dives for food down to 20 metres or picks it from the bottom in shallow water.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "To take off it first runs along the water surface to gain speed.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "In winter it often stays out on the open sea in large flocks.",
+          "factIds": [
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Common Eider: how to recognise the male and female in the field, how the male's call and the female's cackle sound, and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "60 to 70 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "d37eee7a24a62937"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "d37eee7a24a62937"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "ejder",
@@ -195,5 +859,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

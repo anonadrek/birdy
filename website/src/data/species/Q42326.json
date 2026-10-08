@@ -1,13 +1,612 @@
 {
   "qid": "Q42326",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Klippduvan är 30–35 cm lång och har ett vingspann på 60–68 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En adult klippduva av nominatformen är 30–35 cm lång med ett vingspann på 60–68 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Vilda och förvildade klippduvor väger 238–380 g.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Weight for wild or feral rock doves ranges from 238–380 g"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "size",
+      "sv": "Klippduvan är tydligt mindre än ringduvan men större än turkduvan.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Damit ist sie deutlich kleiner als die Ringeltaube, aber größer als die Türkentaube."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Huvud, hals och bröst är mörkt blågrå med glänsande gulaktig, grönaktig och rödviolett irisering längs halsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har mörkt blågrått huvud, hals, och bröst med glänsande gulaktig, grönaktig och rödviolett irisering längs halsen och vingfjädrarna."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Den vita nedre ryggen är den rena klippduvans bästa kännetecken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den vita nedre ryggen på den rena klippduvan är dess bästa kännemärke för identifiering."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Klippduvan har två svarta tvärband på vingarna och grå stjärt med svart ändband.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har två svarta tvärband på vingarna och grå stjärt med svart ändband."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Stjärtfjädrarnas ytterfan har vita kanter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten har ett svart band på änden och stjärtfjädrarnas ytterfan har vita kanter."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Näbben är gråsvart med framträdande smutsvit vaxhud och fötterna är rosaröda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är gråsvart med framträdande smutsvit vaxhud, och fötterna är rosaröda."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Ögat är orange, rött eller guldgult med en blekare inre ring.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ögat är orange, rött eller guldgult med en blekare inre ring"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "appearance",
+      "sv": "Den ljusa undervingen syns tydligt när en flygande klippduva ses underifrån.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fågelns ljusa undervinge är tydlig när en flygande fågel betraktas underifrån."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "behaviour",
+      "sv": "Klippduvan glidflyger ofta och håller då vingarna i en tydlig V-form.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "glidflyger den ofta, och håller då vingarna i en tydlig V-form."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "appearance",
+      "sv": "Tamduvan är mycket variabel och kan vara brokig, helt mörkgrå, vit, rödbrun eller likna den ursprungliga klippduvan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tamduvan är mycket variabel i färg och mönster och kan vara brokig i vitt, ljusgrått, mörkgrått, rödbrunt, vara helt mörkgrå, vita eller se ut som den ursprungliga klippduvan."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "sex_age",
+      "sv": "Honan är nästan lik hanen, men iriseringen på halsen är svagare och mer begränsad till baksidan och sidorna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honan är nästan identisk med hanen, men iriseringen på halsen är mindre intensiv och mer begränsad till baksidan och sidorna"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "sex_age",
+      "sv": "Ungfågeln har mindre glans och är mattare i färgen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen uppvisar mindre glans och är mattare i färgen."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Lätet är ett mjukt, lätt darrande kuttrande \"crruoo-u\", likt stadsduvans.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The call is a soft, slightly wavering, coo \"crruoo-u\", similar to feral pigeons."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Varningslätet, som ges vid åsyn av rovdjur, är ett grymtande \"oorhh\".",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The alarm call, given at sight of predators, is a grunt-like oorhh."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "voice",
+      "sv": "Vid uppvisning åtföljs sången av uppblåst strupe, utbredd stjärt, stoltserande gång och bugningar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "When displaying, songs are partly sexual, partly threatening. They are accompanied by an inflated throat, tail fanning, strutting, and bowing."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "behaviour",
+      "sv": "När den störs flyger den, ofta i grupp, upp med ett kraftigt klappande ljud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När den blir störd flyger den, ofta i grupp, upp med ett kraftigt klappande ljud."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Klippduvans ursprungliga livsmiljö är klippor, vanligen vid kuster.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Klippduvans ursprungliga livsmiljö är klippor, vanligen vid kuster."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "habitat",
+      "sv": "Stadsduvan lever i halvöppna miljöer som jordbrukslandskap och i städer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stadsduvan lever i halvöppna miljöer som jordbrukslandskap och i städer och förekommer över stora delar av världen."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "habitat",
+      "sv": "Klippduvan undviker helst tät vegetation.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They prefer to avoid dense vegetation."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Boet är en bräcklig plattform av strån och pinnar på en skyddad avsats, ofta i fönsternischer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet som byggs är en bräcklig plattform av strån och pinnar, som placeras på en avsats, under skydd. Ofta används fönsternischer på byggnader."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan lägger två vita ägg som båda föräldrarna ruvar i 17–19 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger två vita ägg som ruvas av båda föräldrarna i sjutton till nitton dagar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Klippduvan kan häcka när som helst under året, men mest på våren och sommaren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Klippduvan häckar när som helst under året, men toppar är våren och sommaren."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Ungarna matas med krävmjölk och stannar i boet i 30 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungen stannar i boet i 30 dagar."
+        },
+        {
+          "article": "sv",
+          "quote": "I början matar föräldrarna ungarna med krävmjölk"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Klippduvan äter främst växtföda som frukt och säd.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Rock doves are omnivorous, but prefer plant matter: chiefly fruit and grains."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Födan omfattar sädeskorn, ekollon, barrträdsfrön, knoppar och bär, ibland även snäckor, insekter och maskar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Felsentauben ernähren sich von Getreidesamen, Eicheln und Samen von Koniferen, Knospen, Beeren und vereinzelt auch von Schnecken, Insekten und Würmern."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Klippduvor söker föda på marken i grupper eller ensamma.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Duvor söker föda på marken i grupper eller individuellt."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Klippduvan kan dricka kontinuerligt med näbben i vattnet utan att böja huvudet bakåt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När de dricker kan duvorna, i motsats till de flesta fåglar, sänka ned näbben i vattnet och dricka kontinuerligt utan att behöva böja huvudet bakåt."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Klippduvor lever ofta i flockar på 50 till 500 fåglar beroende på födotillgången.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "but are often gregarious, living in flocks of 50 to 500 birds (dependent on the food supply)"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i januari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Klippduvan är en duva vars ursprungliga livsmiljö är klippor, vanligen vid kuster.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Den undviker helst tät vegetation.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Vit nedre rygg, den rena klippduvans bästa kännetecken",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Två svarta tvärband på vingen och grå stjärt med svart ändband",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Mörkt blågrått huvud, hals och bröst med gulaktig, grönaktig och rödviolett glans på halsen",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Honan liknar hanen men har svagare halsglans, mest på halsens baksida och sidor",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Lätet är ett mjukt, lätt darrande kuttrande \"crruoo-u\", likt stadsduvans.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Vid åsyn av rovdjur ger den ett grymtande \"oorhh\" som varning.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Klippduvan rapporteras från alla 21 län och rapporteras mest i januari.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Den är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den äter främst växtföda som frukt, sädeskorn, ekollon, barrträdsfrön, knoppar och bär, ibland även snäckor, insekter och maskar.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Den söker föda på marken, ensam eller i grupp, och lever ofta i flockar på 50 till 500 fåglar.",
+          "factIds": [
+            "f28",
+            "f30"
+          ]
+        },
+        {
+          "text": "Störd flyger den upp med ett kraftigt klappande ljud.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "I glidflykt håller den vingarna i en tydlig V-form.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Klippduva: så känner du igen den på vit nedre rygg och två svarta vingband, hur lätena låter och när på året den rapporteras.",
+      "facts": {
+        "size": {
+          "value": "30 till 35 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Rock Dove is a pigeon whose original habitat is cliffs, usually on coasts.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "It prefers to avoid dense vegetation.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "White lower back, the best field mark of the pure Rock Dove",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Two black bars across the wing and a grey tail with a black tip band",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Dark blue-grey head, neck and breast with yellowish, greenish and red-violet sheen on the neck",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Female resembles the male, with weaker neck sheen mostly on the back and sides",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is a soft, slightly tremulous cooing \"crruoo-u\", like that of the feral pigeon.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "On seeing a predator it gives a grunting alarm call, \"oorhh\".",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Rock Dove is reported from all 21 counties and is reported most in January.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "It is not red-listed in the Swedish Red List 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats mainly plant food such as fruit, grain, acorns, conifer seeds, buds and berries, and sometimes snails, insects and worms.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "It feeds on the ground, alone or in groups, and often lives in flocks of 50 to 500 birds.",
+          "factIds": [
+            "f28",
+            "f30"
+          ]
+        },
+        {
+          "text": "When disturbed it takes off with a loud clapping sound.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "When gliding it holds its wings in a clear V shape.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Rock Dove: how to recognise it by its white lower back and two black wing bars, what its calls sound like and when it is reported.",
+      "facts": {
+        "size": {
+          "value": "30 to 35 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "eb64060d9253eb66"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "eb64060d9253eb66"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "klippduva",
@@ -205,5 +804,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

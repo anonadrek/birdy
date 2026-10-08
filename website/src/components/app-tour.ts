@@ -1,4 +1,4 @@
-// App tour carousel (ported from the approved mockup): scroll-snap track with depth (neighbours
+// App tour carousel (ported from the approved mockup; real 1.3.0 screens since 2026-10-08): scroll-snap track with depth (neighbours
 // scale, tilt and fade), a caption that follows the centred phone, arrows, arrow keys,
 // click-to-centre and mouse drag with momentum. Touch uses native scrolling.
 const root = document.querySelector<HTMLElement>('[data-tour]');
@@ -8,10 +8,8 @@ if (root && track) {
   const slides = [...track.querySelectorAll<HTMLElement>('.slide')];
   const rail = root.querySelector<HTMLElement>('[data-rail]');
   const capInner = root.querySelector<HTMLElement>('[data-cap]');
-  const ck = root.querySelector<HTMLElement>('[data-ck]');
   const ch = root.querySelector<HTMLElement>('[data-ch]');
   const cpp = root.querySelector<HTMLElement>('[data-cpp]');
-  const cp = root.querySelector<HTMLElement>('[data-cp]');
   const prevBtn = root.querySelector<HTMLButtonElement>('[data-prev]');
   const nextBtn = root.querySelector<HTMLButtonElement>('[data-next]');
   const rm = matchMedia('(prefers-reduced-motion: reduce)');
@@ -42,10 +40,8 @@ if (root && track) {
   const setCaption = (i: number) => {
     const s = slides[i];
     const apply = () => {
-      if (ck) ck.textContent = s.dataset.k ?? '';
       if (ch) ch.textContent = s.dataset.h ?? '';
       if (cpp) cpp.textContent = s.dataset.p ?? '';
-      if (cp) cp.hidden = !s.dataset.premium;
       capInner?.classList.remove('out');
     };
     clearTimeout(capTimer);
@@ -81,8 +77,8 @@ if (root && track) {
         const d = ds[i];
         const a = Math.min(Math.abs(d), 1.4);
         s.style.transform = `translate3d(0, ${(a * 22).toFixed(2)}px, 0) scale(${(1 - a * 0.13).toFixed(4)}) rotate(${(Math.max(-1.4, Math.min(1.4, d)) * -2.2).toFixed(2)}deg)`;
-        // Light fade only: on the peach band a stronger fade washes the screens out (khaki Listen screen).
-        s.style.opacity = (1 - Math.min(a, 1) * 0.3).toFixed(3);
+        // The neighbours step back into the dark gallery wall.
+        s.style.opacity = (1 - Math.min(a, 1) * 0.42).toFixed(3);
       });
     } else {
       // Reduced motion, possibly switched on mid-visit: drop any depth styling written earlier.

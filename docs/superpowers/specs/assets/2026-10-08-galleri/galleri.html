@@ -1,0 +1,173 @@
+<title>Skärmarna i galleriet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap">
+<style>
+  /* The start page's gallery wall: espresso ground, paper labels. One deliberate look in both themes. */
+  :root {
+    color-scheme: dark;
+    --wall: #1E1410; --wall-hi: #2A1D17; --card: #FFFAF1; --paper: #F6EFE2; --line: rgba(253, 229, 203, .16);
+    --ink: #302019; --text: #F6EFE2; --muted: #CDB8A3; --rust: #C4643A; --rust-deep: #9A4526; --brass: #D9A64E;
+    --serif: "DM Serif Display", Georgia, "Times New Roman", serif;
+    --sans: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+    --hand: Caveat, "Segoe Print", "Bradley Hand", cursive;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: radial-gradient(ellipse at 50% 0%, var(--wall-hi), var(--wall) 60%) fixed, var(--wall); color: var(--text); font: 400 16px/1.55 var(--sans); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 18px; padding-block: 40px 140px; }
+  .kicker { display: flex; align-items: center; gap: 10px; font: 600 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--brass); margin: 0; }
+  .kicker::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+  h1 { font: 400 clamp(36px, 6vw, 56px)/1.04 var(--serif); margin: 14px 0 0; text-wrap: balance; }
+  h1 .hand { font-family: var(--hand); font-weight: 700; color: var(--rust); }
+  .lead { max-width: 64ch; color: var(--muted); margin: 14px 0 0; }
+  .lead b { color: var(--text); font-weight: 600; }
+  .screens { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 22px 16px; }
+  .screens button { all: unset; box-sizing: border-box; display: grid; gap: 8px; width: 100%; cursor: pointer; border-radius: 16px; padding: 8px; position: relative; }
+  .screens button:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
+  .shot { position: relative; border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 12px 26px rgba(0, 0, 0, .45); }
+  .shot img { display: block; width: 100%; height: auto; }
+  .num { position: absolute; left: 8px; top: 8px; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 99px; display: grid; place-items: center; font: 600 14px/1 var(--sans); color: var(--ink); background: var(--paper); box-shadow: 0 2px 6px rgba(0, 0, 0, .35); }
+  .order { position: absolute; inset: 0; display: grid; place-items: center; font: 700 64px/1 var(--hand); color: var(--card); background: rgba(154, 69, 38, .55); opacity: 0; transition: opacity .15s; }
+  .label { font: 600 14px/1.3 var(--sans); color: var(--text); }
+  .now { font: 600 18px/1 var(--hand); color: var(--brass); }
+  button[aria-pressed="true"] .shot { box-shadow: 0 0 0 3px var(--rust), 0 12px 26px rgba(0, 0, 0, .45); }
+  button[aria-pressed="true"] .order { opacity: 1; }
+  .notes { margin-top: 40px; display: grid; gap: 10px; max-width: 68ch; color: var(--muted); }
+  .notes p { margin: 0; }
+  .notes b { color: var(--text); font-weight: 600; }
+  /* The answer bar: what is picked, in order, and a copy button. */
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; padding: 12px 18px calc(12px + env(safe-area-inset-bottom, 0px)); background: var(--paper); color: var(--ink); box-shadow: 0 -10px 30px rgba(0, 0, 0, .35); }
+  .bar-in { max-width: 1120px; margin: 0 auto; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .picked { flex: 1 1 220px; font: 600 15px/1.35 var(--sans); }
+  .picked span { color: #6E584B; font-weight: 500; }
+  .bar button { all: unset; cursor: pointer; font: 600 14px/1 var(--sans); padding: 12px 16px; border-radius: 99px; }
+  .copy { background: var(--rust-deep); color: var(--card); }
+  .clear { color: var(--ink); box-shadow: inset 0 0 0 1px #DFD2BA; }
+  .bar button:focus-visible { outline: 2px solid var(--rust-deep); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { .order { transition: none; } }
+</style>
+
+<div class="wrap">
+  <p class="kicker">Startsidan · galleriet</p>
+  <h1>Välj skärmarna till <span class="hand">galleriet</span></h1>
+  <p class="lead">Galleriet på startsidan visar i dag sex skärmar, märkta <b>i galleriet nu</b>. Tryck på skärmarna du vill ha, i den ordning de ska hänga, och kopiera svaret längst ned. Sex är lagom på en telefon; fler går bra, karusellen rullar.</p>
+
+  <ul class="screens" id="screens" role="list"></ul>
+
+  <div class="notes">
+    <p><b>Samma val på engelska.</b> Engelska sidorna får samma skärmar med appen på engelska.</p>
+    <p><b>Rena bilder.</b> Skärm 1 till 6 är butiksbilderna med ren statusrad. Väljer du någon av de andra tar jag om den på emulatorn på samma sätt, så att alla hänger i samma format.</p>
+    <p><b>Kartan saknas med flit.</b> Den kommer tillbaka när den nya kartstilen finns i appen.</p>
+  </div>
+</div>
+
+<div class="bar" role="region" aria-label="Ditt val">
+  <div class="bar-in">
+    <p class="picked" id="picked" aria-live="polite"><span>Inget valt än.</span></p>
+    <button class="clear" id="clear" type="button">Rensa</button>
+    <button class="copy" id="copy" type="button">Kopiera svaret</button>
+  </div>
+</div>
+
+<script>
+  var SCREENS = [
+    ['Identifiera, med Dagens fågel', true],
+    ['Lyssna', true],
+    ['Träff: talgoxe', true],
+    ['Mina arter', true],
+    ['Uppslagsverket', true],
+    ['Artprofil: talgoxe', true],
+    ['Identifiera, Dagens fågel sävsångare', false],
+    ['Lyssna, under inspelning', false],
+    ['Beskär ett foto', false],
+    ['Fynd med anteckning', false],
+    ['Fyndet: sädesärla', false],
+    ['Veckans uppslag', false],
+    ['Märkena', false],
+    ['Troférummet', false],
+    ['Säsongsstatistik', false],
+    ['Uppslagsverket: vadare', false],
+    ['Tack: Premium för alltid', false]
+  ];
+  var chosen = [];
+  var list = document.getElementById('screens');
+  var picked = document.getElementById('picked');
+
+  SCREENS.forEach(function (s, i) {
+    var n = i + 1;
+    var li = document.createElement('li');
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-pressed', 'false');
+    b.dataset.n = n;
+    var shot = document.createElement('span');
+    shot.className = 'shot';
+    var img = document.createElement('img');
+    img.src = 'img/s' + String(n).padStart(2, '0') + '.jpg';
+    img.alt = s[0];
+    shot.appendChild(img);
+    var num = document.createElement('span');
+    num.className = 'num';
+    num.textContent = n;
+    shot.appendChild(num);
+    var ord = document.createElement('span');
+    ord.className = 'order';
+    ord.setAttribute('aria-hidden', 'true');
+    shot.appendChild(ord);
+    var label = document.createElement('span');
+    label.className = 'label';
+    label.textContent = n + '. ' + s[0];
+    b.appendChild(shot);
+    b.appendChild(label);
+    if (s[1]) {
+      var now = document.createElement('span');
+      now.className = 'now';
+      now.textContent = 'i galleriet nu';
+      b.appendChild(now);
+    }
+    b.addEventListener('click', function () { toggle(n); });
+    li.appendChild(b);
+    list.appendChild(li);
+  });
+
+  function toggle(n) {
+    var at = chosen.indexOf(n);
+    if (at >= 0) chosen.splice(at, 1); else chosen.push(n);
+    render();
+  }
+  function answer() { return 'Galleriet: ' + chosen.join(', '); }
+  function render() {
+    list.querySelectorAll('button').forEach(function (b) {
+      var n = +b.dataset.n, at = chosen.indexOf(n);
+      b.setAttribute('aria-pressed', at >= 0 ? 'true' : 'false');
+      b.querySelector('.order').textContent = at >= 0 ? String(at + 1) : '';
+    });
+    picked.textContent = '';
+    if (!chosen.length) {
+      var e = document.createElement('span');
+      e.textContent = 'Inget valt än.';
+      picked.appendChild(e);
+      return;
+    }
+    picked.appendChild(document.createTextNode(answer()));
+    var c = document.createElement('span');
+    c.textContent = '  (' + chosen.length + ' skärmar)';
+    picked.appendChild(c);
+  }
+  document.getElementById('clear').addEventListener('click', function () { chosen = []; render(); });
+  document.getElementById('copy').addEventListener('click', function () {
+    var btn = this, text = chosen.length ? answer() : 'Galleriet: som i dag';
+    var done = function () { btn.textContent = 'Kopierat'; setTimeout(function () { btn.textContent = 'Kopiera svaret'; }, 1800); };
+    try {
+      navigator.clipboard.writeText(text).then(done, function () { select(); });
+    } catch (e) { select(); }
+    function select() {
+      var r = document.createRange();
+      r.selectNodeContents(picked);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(r);
+      btn.textContent = 'Markerat, kopiera själv';
+    }
+  });
+</script>

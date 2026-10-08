@@ -1,13 +1,794 @@
 {
   "qid": "Q25384",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
-    "wave": 2
+    "wave": 2,
+    "audioStruckSources": [
+      "https://commons.wikimedia.org/wiki/File:Asio_otus_-_Long-eared_Owl_XC513606.mp3",
+      "https://commons.wikimedia.org/wiki/File:Asio_otus_-_Long-eared_Owl_XC513604.mp3"
+    ]
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Hornugglan är en medelstor uggla som mäter 31–37 cm, har ett vingspann på 86–98 cm och väger 245–400 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hornugglan är en medelstor uggla som mäter 31–37 cm, har ett vingspann på 86–98 cm och väger 245–400 gram."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Hornugglan har långa örontofsar som kan resas och riktas uppåt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har långa örontofsar som kan resas och riktas uppåt."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Ovansidan är spräcklig och vattrad i svartbrunt, rostgult och vitt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fågeln är spräcklig och vattrad i svartbrunt, rostgult och vitt på ovansidan."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Bröst och buk är rostgula och vita med svartbruna längsfläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bröst och buk är rostgula och vita med svartbruna längsfläckar."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Ett kännetecken är den orangefärgade, lysande irisen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ett kännetecken är också dess orangefärgade lysande iris."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Tarsen och tårna är helt fjäderklädda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tarsen och tårna är helt fjäderklädda."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Undersidan av vingen har tydlig bandning och mörka kommaformade fläckar vid handleden.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The underwing has distinctive barring and dark comma-like markings at the wrist"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Honan är större än hanen och har mörkare fjäderdräkt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan är större än hanen och har mörkare fjäderdräkt."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "I den ljusbruna mellandräkten bär ungarna en iögonfallande svart ansiktsmask.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "bei dem die jungen Waldohreulen eine auffällige, schwarze Gesichtsmaske tragen"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "behaviour",
+      "sv": "Dagtid sitter hornugglan kamouflerad på en trädgren tätt intill stammen och drar ihop sig så att den ser mycket smal och avlång ut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "kamouflerar sig genom att sitta på en trädgren tätt intill stammen"
+        },
+        {
+          "article": "sv",
+          "quote": "Den drar då ihop fjäderdräkten och kroppen vilket ger den ett mycket smalt och avlångt utseende."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden kan hornugglor samlas i gemensamma viloplatser med 6 till 50 ugglor.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "long-eared owls in the non-breeding season may form aggregations of owls while roosting. Such groupings may include 6 to 50 owls"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "behaviour",
+      "sv": "Hornugglan är nattaktiv.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Long-eared owls are nocturnal."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Hanens sång är ett djupt ”oh” som upprepas var 2,5 sekund.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "sången från hanen ett djupt \"oh\" som upprepas var 2,5 sekund"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Honan låter med ett svagt och nasalt ”peh-äv”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "med ett svagt och nasalt \"peh-äv\" från honan"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Ungarnas tiggläte är ett tvåstavigt, klagande ”pii-eh” som kan höras över en kilometer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Desto ljudligare är ungarnas tiggläte, ett tvåstavigt, klagande \"pii-eh\" som kan höras över en kilometer."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Under uppvaktningen flyger hanen omkring och slår ihop vingarna så att det hörs ett klappande ljud.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "During the period of courtship the male flies around and flaps its wing around, producing a clapping sound."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Hornugglan föredrar öppna marker med låg vegetation och gott om byten, med skog eller träddungar för vila och häckning.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Optimal habitat has access to open spaces with short vegetation and abundant prey and wooded cover for roosting and nesting."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Hornugglan kan också påträffas på kyrkogårdar, i parker och i trädgårdar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Außerdem ist sie auf Friedhöfen sowie in Parkanlagen und Gärten anzutreffen."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Hornugglan är ganska vanlig i södra och mellersta Sverige, upp till ungefär 62° nordlig bredd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hornugglan är ganska vanlig i södra och mellersta Sverige, upp till ungefär 62° nordlig bredd."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Större delen av den svenska stammen flyttar söderut på hösten, men några övervintrar i södra Sverige, främst i Skåne.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Större delen av den svenska stammen flyttar söderut på hösten men några övervintrar i södra Sverige, främst i Skåne."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet har mer än halverats under de senaste 15 åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "beståndet mer än halverats under de senaste 15 åren"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "På den svenska rödlistan har hornugglan flyttats från nära hotad (NT) till starkt hotad (EN).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "har hornugglans status i rödlistan ändrats från nära hotad (NT) till starkt hotad (EN)"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "food",
+      "sv": "Födan består framför allt av mindre däggdjur som sorkar, men även insekter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "som framför allt består av mindre däggdjur som sork men även insekter"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Hornugglan häckar i övergivna bon efter andra fåglar, som kråkfåglar eller hökar, oftast i barrträd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den placerar sitt rede i övergivna bon efter andra fåglar, exempelvis av kråkfåglar eller hökar och allra oftast i barrträd."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Honan lägger i snitt tre till fem ägg som hon ruvar i 25–30 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger i snitt tre till fem ägg som ruvas av honan i 25–30 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "lookalike",
+      "sv": "Jorduggla har gul iris, medan hornugglan ofta har orange iris.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The iris-colour differs: yellow in short-eared, and often orange in long-eared."
+        }
+      ],
+      "other": {
+        "scientific": "Asio flammeus",
+        "qid": "Q25769"
+      }
+    },
+    {
+      "id": "f28",
+      "topic": "lookalike",
+      "sv": "Jorduggla har ofta ett brett vitt band längs vingens bakkant, vilket hornugglan saknar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Short-eared owls often have a broad white band along the rear edge of the wing, which is not shown by long-eared owls."
+        }
+      ],
+      "other": {
+        "scientific": "Asio flammeus",
+        "qid": "Q25769"
+      }
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Kattugglan saknar örontofsar, har svartbruna ögon och relativt kortare vingar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The tawny owl has no ear-tufts, eyes of blackish-brown colour and relatively shorter wings."
+        }
+      ],
+      "other": {
+        "scientific": "Strix aluco",
+        "qid": "Q25756"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Berguven är större, med kraftigare fötter och ett stort fyrkantigt huvud där örontofsarna sitter närmare kanten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The Eurasian eagle-owl (Bubo bubo) is larger than a long-eared owl with more powerful-looking feet and talons and a huge squared-off-looking head with the ear-tufts set nearer to the edge."
+        }
+      ],
+      "other": {
+        "scientific": "Bubo bubo",
+        "qid": "Q130933"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Större delen av den svenska stammen flyttar söderut på hösten men några övervintrar i södra Sverige, främst i Skåne."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i juni."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i augusti och september."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Starkt hotad (EN)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Hornugglan är en medelstor, nattaktiv uggla med långa örontofsar.",
+          "factIds": [
+            "f01",
+            "f02",
+            "f12"
+          ]
+        },
+        {
+          "text": "Den häckar i Sverige och trivs i öppna marker med skog eller träddungar, men kan också påträffas på kyrkogårdar, i parker och i trädgårdar.",
+          "factIds": [
+            "s01",
+            "f17",
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Långa örontofsar som kan resas och riktas uppåt",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Orangefärgad, lysande iris",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Rostgul och vit undersida med svartbruna längsfläckar, spräcklig och vattrad ovansida",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Honan är större och mörkare än hanen, ungarna har en svart ansiktsmask",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Hanens sång är ett djupt ”oh” som upprepas var 2,5 sekund.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Honan låter med ett svagt och nasalt ”peh-äv”.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Ungarnas tiggläte är ett klagande, tvåstavigt ”pii-eh” som kan höras över en kilometer.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Under uppvaktningen flyger hanen omkring och slår ihop vingarna så att det hörs ett klappande ljud.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Hornugglan häckar i Sverige och är ganska vanlig i södra och mellersta Sverige, upp till ungefär 62° nordlig bredd.",
+          "factIds": [
+            "s01",
+            "f19"
+          ]
+        },
+        {
+          "text": "Större delen flyttar söderut på hösten, men några övervintrar i södra Sverige, främst i Skåne.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län, mest i juni och sällan i augusti och september.",
+          "factIds": [
+            "d03",
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Arten är starkt hotad (EN) på rödlistan 2025, och beståndet har mer än halverats de senaste 15 åren.",
+          "factIds": [
+            "d04",
+            "f21"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Hornugglan är nattaktiv och lever framför allt av mindre däggdjur som sorkar, men även insekter.",
+          "factIds": [
+            "f12",
+            "f23"
+          ]
+        },
+        {
+          "text": "Dagtid sitter den kamouflerad på en gren tätt intill stammen och drar ihop sig så att den ser mycket smal och avlång ut.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden kan 6 till 50 ugglor samlas på gemensamma viloplatser.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Den häckar i övergivna bon efter kråkfåglar eller hökar, oftast i barrträd.",
+          "factIds": [
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25769",
+          "text": [
+            {
+              "text": "Jorduggla har gul iris, medan hornugglan ofta har orange.",
+              "factIds": [
+                "f27"
+              ]
+            },
+            {
+              "text": "Jorduggla har också ofta ett brett vitt band längs vingens bakkant, vilket hornugglan saknar.",
+              "factIds": [
+                "f28"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q25756",
+          "text": [
+            {
+              "text": "Kattugglan saknar örontofsar och har svartbruna ögon och relativt kortare vingar.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q130933",
+          "text": [
+            {
+              "text": "Berguven är större, med kraftigare fötter och ett stort fyrkantigt huvud där örontofsarna sitter närmare kanten.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Hornuggla: så känner du igen den på örontofsarna och den orange, lysande irisen, hur sång och läten låter och när på året den ses.",
+      "facts": {
+        "size": {
+          "value": "31 till 37 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Long-eared Owl is a medium-sized, nocturnal owl with long ear tufts.",
+          "factIds": [
+            "f01",
+            "f02",
+            "f12"
+          ]
+        },
+        {
+          "text": "It breeds in Sweden and favours open country with woods or copses, but can also turn up in churchyards, parks and gardens.",
+          "factIds": [
+            "s01",
+            "f17",
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Long ear tufts that can be raised and pointed upwards",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Glowing orange iris",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Rusty yellow and white underparts with blackish brown streaks, mottled upperparts",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Female larger and darker than male, young birds show a black facial mask",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The male's song is a deep \"oh\" repeated every 2.5 seconds.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The female gives a weak, nasal \"peh-äv\".",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "The young beg with a plaintive, two-syllable \"pii-eh\" that can be heard over a kilometre away.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "During courtship the male flies around striking its wings together, making a clapping sound.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It breeds in Sweden and is fairly common in the south and centre, up to about 62° north.",
+          "factIds": [
+            "s01",
+            "f19"
+          ]
+        },
+        {
+          "text": "Most birds move south in autumn, but some winter in southern Sweden, mainly in Skåne.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties, most in June and rarely in August and September.",
+          "factIds": [
+            "d03",
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "It is Endangered (EN) on the 2025 Red List, and numbers have more than halved over the last 15 years.",
+          "factIds": [
+            "d04",
+            "f21"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It is nocturnal and feeds mainly on small mammals such as voles, as well as insects.",
+          "factIds": [
+            "f12",
+            "f23"
+          ]
+        },
+        {
+          "text": "By day it sits camouflaged on a branch close to the trunk, drawing itself in so it looks very slim and elongated.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Outside the breeding season 6 to 50 owls may gather at shared roosts.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "It nests in abandoned nests of other birds such as corvids or hawks, usually in conifers.",
+          "factIds": [
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25769",
+          "text": [
+            {
+              "text": "The Short-eared Owl has a yellow iris, while the Long-eared Owl often has an orange one.",
+              "factIds": [
+                "f27"
+              ]
+            },
+            {
+              "text": "It also often shows a broad white trailing edge to the wing, which the Long-eared Owl lacks.",
+              "factIds": [
+                "f28"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q25756",
+          "text": [
+            {
+              "text": "The Tawny Owl has no ear tufts, blackish brown eyes and relatively shorter wings.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q130933",
+          "text": [
+            {
+              "text": "The Eagle-Owl is larger, with heavier feet and a big square head where the ear tufts sit closer to the edge.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Long-eared Owl: how to recognise it by its ear tufts and glowing orange iris, what its song and calls sound like, and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "31 to 37 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "2574d20e57d99558"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "2574d20e57d99558"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "hornuggla",
@@ -55,11 +836,12 @@
     "file": "Q25384/voice.mp3",
     "durationSec": 20,
     "trimmed": true,
-    "author": "JACOB Hervé",
+    "author": "Phoenicurus ochruros",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Asio_otus_-_Long-eared_Owl_XC513606.mp3",
-    "sha256": "61c96bd7d491757fcf78d3cd1baddab0d98080b72c34b8315647f77567e36fa4"
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Asio_otus_-_Long-eared_Owl_XC423552.mp3",
+    "sha256": "72e63ced6027bb42773f348e8c6c5fe18dbe7ec2464d01e5226fe012834f9380",
+    "mp3Sha256": "64d5aca3ce94b633f57346e3b7d2a9dddb13935b11257c1cd955942c7d9ea8a3"
   },
   "wikipedia": {
     "sv": {
@@ -207,5 +989,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

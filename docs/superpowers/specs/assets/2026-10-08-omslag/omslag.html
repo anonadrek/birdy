@@ -1,0 +1,128 @@
+<title>Flockens omslag</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap">
+<style>
+  /* One deliberate look (the Flock profiles' peach paper), painted explicitly in both themes. */
+  :root {
+    color-scheme: light;
+    --page: #F6EFE2; --peach: #FDE5CB; --card: #FFFAF1; --line: #DFD2BA;
+    --ink: #302019; --muted: #6E584B; --rust: #9A4526; --copper: #A8552D; --brass: #B8893A; --dark: #2A1D17;
+    --serif: "DM Serif Display", Georgia, "Times New Roman", serif;
+    --sans: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+    --hand: Caveat, "Segoe Print", "Bradley Hand", cursive;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink); font: 400 16px/1.55 var(--sans); }
+  .wrap { max-width: 1060px; margin: 0 auto; padding-inline: 20px; padding-block: 44px 72px; }
+  .kicker { display: flex; align-items: center; gap: 10px; font: 600 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--rust); margin: 0; }
+  .kicker::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+  h1 { font: 400 clamp(38px, 6vw, 60px)/1.02 var(--serif); margin: 14px 0 0; text-wrap: balance; }
+  h1 .hand, h2 .hand { font-family: var(--hand); font-weight: 700; color: var(--rust); }
+  .lead { max-width: 62ch; color: var(--muted); margin: 16px 0 0; }
+  section.opt { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .opt-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .letter { font: 700 44px/1 var(--hand); color: var(--rust); min-width: 1.2em; }
+  h2 { font: 400 clamp(28px, 4vw, 38px)/1.05 var(--serif); margin: 0; }
+  .rec { font: 600 11px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--card); background: var(--rust); padding: 6px 9px; border-radius: 99px; align-self: center; }
+  .opt p.desc { max-width: 62ch; color: var(--muted); margin: 10px 0 0; }
+  .show { display: grid; grid-template-columns: minmax(0, 390px) minmax(0, 270px); gap: 36px; align-items: start; margin-top: 24px; }
+  /* A plain phone with the profile grid: pinned row first, then newest first, 3:4 tiles. */
+  .phone { background: var(--card); border: 1px solid var(--line); border-radius: 30px; padding: 14px 10px 18px; box-shadow: 0 18px 40px rgba(60, 34, 20, .12); }
+  .handle { display: flex; align-items: center; gap: 8px; padding: 2px 6px 12px; font: 600 14px/1 var(--sans); }
+  .handle i { width: 26px; height: 26px; border-radius: 50%; background: var(--peach); border: 1px solid var(--line); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .grid figure { margin: 0; position: relative; aspect-ratio: 3 / 4; overflow: hidden; background: var(--peach); }
+  .grid img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .grid .pin::after { content: ""; position: absolute; top: 6px; right: 6px; width: 9px; height: 9px; border-radius: 50%; background: var(--card); box-shadow: 0 0 0 2px rgba(48, 32, 25, .55); }
+  .big figure { margin: 0; }
+  .big img { width: 100%; max-width: 270px; aspect-ratio: 9 / 16; display: block; border-radius: 14px; box-shadow: 0 18px 40px rgba(60, 34, 20, .16); }
+  .big figcaption { font: 600 19px/1.2 var(--hand); color: var(--muted); margin-top: 10px; }
+  table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 15px; }
+  .tablebox { overflow-x: auto; margin-top: 18px; }
+  th, td { text-align: left; vertical-align: top; padding: 12px 14px 12px 0; border-bottom: 1px solid var(--line); }
+  th { font: 600 11px/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  td b { font-weight: 600; }
+  .notes { margin-top: 44px; display: grid; gap: 12px; max-width: 70ch; color: var(--muted); }
+  .notes p { margin: 0; }
+  .answer { margin-top: 40px; background: var(--rust); color: var(--card); border-radius: 18px; padding: 22px 24px; }
+  .answer h2 { color: var(--card); font-size: 30px; }
+  .answer p { margin: 8px 0 0; max-width: 62ch; }
+  @media (max-width: 760px) {
+    .show { grid-template-columns: minmax(0, 1fr); }
+    .big img { max-width: 220px; }
+  }
+</style>
+
+<div class="wrap">
+  <p class="kicker">Förslag · 8 oktober 2026</p>
+  <h1>Flocken blir <span class="hand">fågeln</span></h1>
+  <p class="lead">Du valde C med en tvist: i varje omslag bildar flocken fågeln i just den videon. 839 små fåglar, en för varje art i Birdy, formar trana, gräsand, ormvråk eller rödhake, och artens egen fågel lyser. Formen är första ledtråden, den handskrivna raden den andra och låten i videon svaret. Så här ser Instagram-profilen ut efter de nio första inläggen (omkring 17 oktober): de tre fästa rutorna överst, sedan nyast först.</p>
+
+  <section class="opt" id="tvist">
+    <div class="opt-head"><span class="letter">C</span><h2>Med din tvist</h2><span class="rec">Nytt</span></div>
+    <p class="desc">Samma papper, flock och ledtråd som C, men formen byts för varje inlägg, så ingen ruta i rutnätet är den andra lik.</p>
+    <div class="show">
+      <div class="phone"><div class="handle"><i></i>app.birdy</div><div class="grid" data-set="D"></div></div>
+      <div class="big"><figure><img src="img/D-big.jpg" alt="Omslag för koltrasten: 839 små fåglar formar en koltrast, en fågel lyser, ledtråden Sings from the rooftop at dusk."><figcaption>hela omslaget, koltrasten 13 okt</figcaption></figure></div>
+    </div>
+  </section>
+
+  <section class="opt" id="c">
+    <div class="opt-head"><span class="letter">C</span><h2>Som förut</h2></div>
+    <p class="desc">Birdys fågel i varje ruta. Bara texten skiljer, därför tvisten.</p>
+    <div class="show">
+      <div class="phone"><div class="handle"><i></i>app.birdy</div><div class="grid" data-set="C"></div></div>
+      <div class="big"><figure><img src="img/C-big.jpg" alt="Omslag C för blåmesen: flocken som Birdys fågel med en tänd fågel och ledtråden Small, blue cap, and bold at every feeder."><figcaption>hela omslaget, blåmesen 9 okt</figcaption></figure></div>
+    </div>
+  </section>
+
+  <section class="opt" id="nu">
+    <div class="opt-head"><span class="letter">Nu</span><h2>Som i dag</h2></div>
+    <p class="desc">Samma mörka ruta med frågetecken i alla inlägg.</p>
+    <div class="show">
+      <div class="phone"><div class="handle"><i></i>app.birdy</div><div class="grid" data-set="now"></div></div>
+      <div class="big"><figure><img src="img/now-big.jpg" alt="Dagens omslag för blåmesen: mörk ruta med frågetecken i en ljudring"><figcaption>hela omslaget, blåmesen 9 okt</figcaption></figure></div>
+    </div>
+  </section>
+
+  <div class="notes">
+    <p><b>Formerna.</b> Silhuetterna kommer från PhyloPic, ett fritt arkiv med silhuetter som tecknare själva lagt ut (CC0 eller CC BY), aldrig AI-ritade fåglar. Tecknaren står längst ned i omslaget. Talgoxen har ingen egen silhuett där och lånar mesarnas form; så gör alla arter som saknar en egen.</p>
+    <p><b>Ledtrådarna är exempel.</b> De skarpa tas ur artsidornas kontrollerade fakta, en kort mening per art.</p>
+    <p><b>Var de hamnar.</b> De omkring 50 inlägg som inte är schemalagda än får de nya omslagen direkt: YouTube och TikTok från 19 oktober, Facebook och Instagram från 29 oktober. För de 40 schemalagda kollar jag om omslaget går att byta utan att schemalägga om.</p>
+  </div>
+
+  <div class="answer">
+    <h2>Ser det rätt ut?</h2>
+    <p>Säg till om något ska ändras, till exempel större ledtråd, ingen tänd fågel eller inga fåglar som lämnar flocken. Annars gör jag omslagen till alla inlägg som är kvar.</p>
+  </div>
+</div>
+
+<script>
+  // Grid order on the profile: the pinned row, then the newest post first (17 Oct back to 9 Oct).
+  var ORDER = [8, 7, 6, 5, 4, 3, 2, 1, 0];
+  var NAMES = ['Blåmes', 'Trana', 'Gråsparv', 'Gräsand', 'Koltrast', 'Ormvråk', 'Talgoxe', 'Rödhake', 'Bofink'];
+  var PINNED = ['tile-1-left', 'tile-2-middle', 'tile-3-right'];
+  document.querySelectorAll('.grid').forEach(function (grid) {
+    var set = grid.getAttribute('data-set');
+    PINNED.forEach(function (t, k) {
+      var f = document.createElement('figure');
+      f.className = 'pin';
+      var im = document.createElement('img');
+      im.src = 'img/' + t + '.jpg';
+      im.alt = k === 0 ? 'Fäst rad: Know the bird. Keep the moment. med flocken' : '';
+      im.loading = 'lazy';
+      f.appendChild(im);
+      grid.appendChild(f);
+    });
+    ORDER.forEach(function (i) {
+      var f = document.createElement('figure');
+      var im = document.createElement('img');
+      im.src = 'img/' + (set === 'now' ? 'now' : set) + '-' + i + '.jpg';
+      im.alt = NAMES[i];
+      im.loading = 'lazy';
+      f.appendChild(im);
+      grid.appendChild(f);
+    });
+  });
+</script>

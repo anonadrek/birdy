@@ -1,13 +1,642 @@
 {
   "qid": "Q54696",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Turkduvan är en liten långsträckt duva som mäter 29–33 centimeter med ett vingspann på 48–53 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Turkduvan är en liten långsträckt duva som mäter 29–33 centimeter och har ett vingspann på 48–53 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Turkduvan väger 125–240 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "a wingspan of 47–55 cm (19–22 in) and a weight of 125–240 g (4.4–8.5 oz)"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Turkduvan är övervägande ljust beigegrå med något mörkare brun rygg och mindre vingtäckare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är övervägande ljust beigegrå med något mörkare brun rygg och mindre vingtäckare"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den långa stjärten har en bred vit kant, utom de centrala stjärtfjädrarna som är beige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den långa stjärten har en bred vit kant förutom de centrala stjärtfjädrarna som över gumpen är beigea."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Den adulta fågeln har ett karakteristiskt svart, vitkantat halvband i nacken.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It has a black half-collar edged with white on its nape."
+        },
+        {
+          "article": "sv",
+          "quote": "På halssidan har adulten ett karakteristiskt svart vitkantat streck"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Turkduvan har korta rödrosa ben, mörkgrå näbb och röd iris.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De korta benen är rödrosa, näbben mörgrå och iris röd."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Det rödaktiga ögat har en smal vit ögonring.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das rötliche Auge hat einen schmalen weißen Augenring."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hanar och honor ser likadana ut; ungfåglar har dåligt utvecklat nackband och brun iris.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The two sexes are identical; juveniles only differ in having a poorly developed collar, and a brown iris."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Ungfåglar saknar på hösten det svarta vitkantade strecket på halssidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På halssidan har adulten ett karakteristiskt svart vitkantat streck vilket juvenilen saknar på hösten"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Sången är ett monotont do doo-do med utdragen och betonad andra ton och en lägre tredje ton.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången är ett monotont do doo-do med utdragen och betonad andra ton och en lägre tredje ton."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "I flykten, särskilt strax före landning, utstöter turkduvan ett hest, skränande ljud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ett annat ljud som turkduvan gör är att den utstöter ett hest ljud i flykten."
+        },
+        {
+          "article": "en",
+          "quote": "It also makes a harsh loud screeching call chrrai-chrrai lasting about two seconds, particularly in flight just before landing."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "habitat",
+      "sv": "Turkduvan uppträder främst i tätorter med äldre villabebyggelse, men också i mindre samhällen och vid gårdar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Turkduvan uppträder främst i tätorter, gärna med äldre villabebyggelse men förekommer också i mindre samhällen och vid ansamlingar av gårdar."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "habitat",
+      "sv": "Den föredrar lummiga trädgårdar, parker och alléer med högvuxna äldre träd, gärna ädelgran och alm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den föredrar lummiga trädgårdar, parker och alléer med högvuxna äldre träd, gärna ädelgran, alm och liknande."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "sweden",
+      "sv": "I Sverige finns turkduvan i städer och samhällen i södra och mellersta delarna samt lokalt i Norrlands kustland norrut till Luleå.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige förekommer turkduvan i städer och samhällen i södra och mellersta delarna samt lokalt i Norrlands kustland, norrut till Luleå."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "sweden",
+      "sv": "Det första svenska fyndet av turkduva gjordes 1949.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det första svenska fyndet av arten gjordes 1949"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "Den svenska populationen uppskattas till cirka 6 200 reproduktiva individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Populationen uppskattas till cirka 6 200 reproduktiva individer."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "År 2025 ändrades turkduvans svenska rödlistestatus från livskraftig (LC) till nära hotad (NT).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "År 2025 ändrades statusen från livskraftig (LC) till nära hotad (NT)."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "breeding",
+      "sv": "Paret bygger ett enkelt plattformsliknande bo av kvistar i träd eller buske, ibland på byggnader.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Paret bygger ett enkelt plattformsliknande bo av kvistar som placeras i träd eller buske, men ibland även på byggnader."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "breeding",
+      "sv": "Honan lägger två vita ägg som båda föräldrarna ruvar i 14–16 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger två vita ägg som ruvas av båda föräldrarna i 14–16 dagar"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Häckningssäsongen är lång och turkduvan lägger vanligtvis två till fyra kullar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess häckningssäsong är lång och den lägger flera kullar, vanligtvis två till fyra"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "food",
+      "sv": "Turkduvan äter främst frön, groddar och gröna blad, och i städer matrester som bröd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Främst äter den frön, groddar, gröna blad och i städer matrester som bröd och liknande."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Betydande flockar kan samlas där det finns god tillgång på mat, till exempel säd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Betydande flockar kan samlas där det finns god tillgång på mat, till exempel säd."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Hanens spelflykt består av en snabb, nästan lodrät stigning följd av en lång glidning nedåt i en cirkel.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The male's mating display is a ritual flight, consisting of a rapid, near-vertical climb to height followed by a long glide downward in a circle"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "lookalike",
+      "sv": "Burmaduvan är generellt mindre och mörkare än turkduvan och har gulare orbitalring runt ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Burmaduvan (S. xanthocycla) som tidigare kategoriserades som underart till turkduvan är generellt mindre, mörkare och har gulare orbitalring runt ögat."
+        }
+      ],
+      "other": {
+        "scientific": "S. xanthocycla"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The Eurasian collared dove is resident in Europe from Scandinavia and central Europe and eastwards to the Levant"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Gotland, Kalmar och Blekinge."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Turkduvan är en liten, långsträckt duva och stannfågel i Sverige.",
+          "factIds": [
+            "f01",
+            "s01"
+          ]
+        },
+        {
+          "text": "Den håller främst till i tätorter med äldre villabebyggelse, men också i mindre samhällen och vid gårdar.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Övervägande ljust beigegrå med något mörkare brun rygg och mindre vingtäckare",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Svart, vitkantat halvband i nacken, könen ser likadana ut och ungfåglar har svagt nackband",
+          "factIds": [
+            "f05",
+            "f08"
+          ]
+        },
+        {
+          "text": "Lång stjärt med bred vit kant, de centrala stjärtfjädrarna är beige",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Röd iris med smal vit ögonring, mörkgrå näbb och korta rödrosa ben",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången är ett monotont do doo-do, där den andra tonen är utdragen och betonad och den tredje lägre.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "I flykten, särskilt strax före landning, hörs ett hest, skränande ljud.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Turkduvan är stannfågel och rapporteras året runt.",
+          "factIds": [
+            "s01",
+            "d01"
+          ]
+        },
+        {
+          "text": "Den finns i städer och samhällen i södra och mellersta Sverige och lokalt i Norrlands kustland norrut till Luleå.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Den trivs i lummiga trädgårdar, parker och alléer med högvuxna äldre träd.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Gotland, Kalmar och Blekinge.",
+          "factIds": [
+            "d02"
+          ]
+        },
+        {
+          "text": "På svenska rödlistan 2025 är arten nära hotad (NT).",
+          "factIds": [
+            "d03",
+            "f17"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Turkduvan äter främst frön, groddar och gröna blad, och i städer även matrester som bröd.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Där det finns gott om mat, till exempel säd, kan betydande flockar samlas.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Hanen spelflyger med en snabb, nästan lodrät stigning och glider sedan länge nedåt i en cirkel.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "Boet är en enkel plattform av kvistar i träd, buske eller ibland på byggnader, och paret lägger vanligtvis två till fyra kullar.",
+          "factIds": [
+            "f18",
+            "f20"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "S. xanthocycla",
+          "text": [
+            {
+              "text": "Burmaduvan är generellt mindre och mörkare än turkduvan och har en gulare ring runt ögat.",
+              "factIds": [
+                "f24"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Turkduva: så känner du igen den på det svarta nackbandet och den ljusa dräkten, hur sången och lätena låter och när den syns.",
+      "facts": {
+        "size": {
+          "value": "29 till 33 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Collared Dove is a small, slender dove and a resident bird in Sweden.",
+          "factIds": [
+            "f01",
+            "s01"
+          ]
+        },
+        {
+          "text": "It is mainly found in towns with older residential areas of detached houses, as well as in smaller communities and on farms.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Mostly pale beige-grey with a slightly darker brown back and lesser wing coverts",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Black, white-edged half-collar on the nape, sexes look alike, juveniles have a weak collar",
+          "factIds": [
+            "f05",
+            "f08"
+          ]
+        },
+        {
+          "text": "Long tail with a broad white edge, the central tail feathers are beige",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Red iris with a narrow white eye-ring, dark grey bill and short reddish-pink legs",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is a monotonous do doo-do, with a drawn-out, stressed second note and a lower third note.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "In flight, especially just before landing, it gives a hoarse, harsh call.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It is resident and reported all year round.",
+          "factIds": [
+            "s01",
+            "d01"
+          ]
+        },
+        {
+          "text": "It lives in towns and villages in southern and central Sweden and locally along the Norrland coast north to Luleå.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "It favours leafy gardens, parks and avenues with tall, old trees.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Gotland, Kalmar and Blekinge.",
+          "factIds": [
+            "d02"
+          ]
+        },
+        {
+          "text": "It is listed as Near Threatened (NT) on the 2025 Swedish Red List.",
+          "factIds": [
+            "d03",
+            "f17"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats mainly seeds, sprouts and green leaves, and in towns scraps such as bread.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Large flocks can gather where food is plentiful, for example grain.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "The male's display flight is a fast, almost vertical climb followed by a long, circling glide downwards.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "The pair builds a simple twig nest in a tree or bush, sometimes on a building, and usually lays two to four clutches.",
+          "factIds": [
+            "f18",
+            "f20"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "S. xanthocycla",
+          "text": [
+            {
+              "text": "S. xanthocycla is generally smaller and darker than the Eurasian Collared Dove and has a yellower ring around the eye.",
+              "factIds": [
+                "f24"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Eurasian Collared Dove: how to recognise it by its black neck half-collar and pale plumage, what its song and calls sound like, and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "29 to 33 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "a56dd641fb72ec9e"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "a56dd641fb72ec9e"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "turkduva",
@@ -205,5 +834,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

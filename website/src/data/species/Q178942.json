@@ -1,13 +1,733 @@
 {
   "qid": "Q178942",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Dubbeltrasten är 26–29 centimeter lång och väger upp till 140 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dubbeltrasten är mellan 26 och 29 centimeter lång och väger upp till 140 gram."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Vingbredden är omkring 45 centimeter.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "with a 45 cm (18 in) wingspan"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Jämfört med taltrasten är dubbeltrasten större, mer långstjärtad och ljusare och står mer upprätt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den liknar taltrasten, men är större, mer långstjärtad, ljusare i fjäderdräkten och står mer upprätt."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Rygg och skuldror är gråbruna med olivbrun anstrykning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dubbeltrastens rygg och skuldror är gråbruna med olivbrun anstrykning"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Hals, bröst, buk och undergump är vita med svartaktiga runda fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Halsen, bröstet, buken och undergumpen är vita med svartaktiga runda fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Strupens mitt är ofläckad och den har ofta en mörk fläck på vardera sidan av bröstet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Strupens mitt är dock ofläckad och den har ofta en mörk fläck på vardera sidan av bröstet i ovankanten av vingen."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "De undre vingtäckarna är vita.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "de undre vingtäckarna är vita"
+        },
+        {
+          "article": "en",
+          "quote": "the underwing coverts are white"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Den långa stjärten har vita spetsar på de yttre pennorna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The long tail has white tips on the outer feathers"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Hanne och hona har likadan fjäderdräkt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "There are no plumage differences between the sexes."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Ungfåglar har ljusare ovansida med gräddfärgade droppformade fjädercentrum och mindre fläckar på den gulaktiga undersidan.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Juveniles are similar to adults, but they have paler upperparts with creamy 'teardrop' centres to many of the feathers and smaller spots on the yellowish underparts."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Locklätet låter \"trr\" eller \"zrr\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Locklätet låter \"trr\" eller \"zrr\"."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Huvudlätet är ett torrt skrattande krrrr som ofta liknas vid ljudet från en skallra.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The main call, given by both sexes, is a dry chattering krrrr"
+        },
+        {
+          "article": "en",
+          "quote": "It is often likened to the sound of a football rattle"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sången är mycket ljudlig och hörs ofta upp till två kilometer bort.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The song is, however, much louder, often audible up to 2 km (2,000 yd) away."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Sången framförs från en trädtopp eller annan hög plats, främst från november till början av juni.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The song is given from a treetop or other elevated position mainly from November to early June."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Den sjunger gärna efter och ibland under blåsigt och regnigt väder.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "its tendency to sing after, and sometimes during, wet and windy weather"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "lookalike",
+      "sv": "Sången liknar koltrastens men är kortare och gällare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången liknar koltrastens men är kortare och gällare."
+        },
+        {
+          "article": "en",
+          "quote": "such as the blackbird (T. merula)"
+        }
+      ],
+      "other": {
+        "scientific": "Turdus merula",
+        "qid": "Q25234",
+        "written": "T. merula"
+      }
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Dubbeltrasten trivs bäst i skogsmark, helst hällmarkstallskog med åkerlyckor och gläntor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dubbeltrasten trivs bäst i skogsmark, helst hällmarkstallskog med åkerlyckor och gläntor."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Vintertid och under flyttningen utnyttjas öppnare marker som jordbruksmark, hedar och gräsbevuxna kullar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "More open habitats, such as agricultural land, moors and grassy hills, are extensively used in winter or on migration."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Den häckar i nästan hela Sverige utom i fjälltrakterna och de nordligaste delarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar i nästan hela Sverige utom i fjälltrakterna och i de nordligaste delarna."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Sverige är den flyttfågel och sommargäst mellan april och oktober, med vinterkvarter i södra Europa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är den en flyttfågel och en sommargäst mellan april och oktober och den har sina vinterkvarter i södra Europa."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Skandinaviska fåglar börjar flytta söderut från mitten av september.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Scandinavian and Russian birds start moving south from mid-September onwards"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till 470 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Beståndet uppskattades 2018 till 470 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Boet byggs tidigt på våren högt eller lågt i träd av lavar, kvistar och gräs.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dubbeltrasten bygger sitt bo tidigt på våren, mer eller mindre högt uppe i träden, av lavar, kvistar och gräs"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Den lägger vanligen fem grönvita ägg med violetta och rödbruna fläckar och prickar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den lägger där vanligen fem ägg som är grönvita med violetta och rödbruna fläckar och prickar"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Honan ruvar ensam äggen i cirka två veckor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ensam ruvar äggen i cirka två veckor."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Födan består av maskar, larver, insekter och många slags bär, särskilt mistelbär.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess föda utgörs av maskar, larver, insekter och åtskilliga slags bär, i synnerhet mistel-bär och så vidare."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Den försvarar ett eller flera bärande träd under hela vintern.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Individuals or pairs will defend one or more fruit-bearing trees throughout the winter"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Flykten är kraftfull med längre bågar än taltrastens.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten är den kraftfullare och flyger i längre bågar än taltrasten."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "På marken hoppar den med huvudet högt och kroppen upprätt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The mistle thrush is quite terrestrial, hopping with its head held up and body erect"
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Hanen angriper inkräktare vid boet, även rovfåglar, kråkfåglar och ibland katter eller människor.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The male will attack intruders into its breeding area, including birds of prey and corvids, and sometimes cats or humans."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är den en flyttfågel och en sommargäst mellan april och oktober och den har sina vinterkvarter i södra Europa."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i mars."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Dubbeltrasten är en trast som häckar i nästan hela Sverige och trivs bäst i skogsmark, helst hällmarkstallskog med åkerlyckor och gläntor.",
+          "factIds": [
+            "f19",
+            "f17"
+          ]
+        },
+        {
+          "text": "Den ljudliga sången framförs från en trädtopp eller annan hög plats.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Större, mer långstjärtad och ljusare än taltrasten, med mer upprätt hållning",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Vit undersida med svartaktiga runda fläckar, ofläckad strupmitt och ofta mörk fläck vid bröstsidan",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Gråbrun rygg med olivbrun ton, vita undre vingtäckare och vita spetsar på stjärtens yttre pennor",
+          "factIds": [
+            "f04",
+            "f07",
+            "f08"
+          ]
+        },
+        {
+          "text": "Hane och hona är lika, ungfåglar har gräddfärgade droppfläckar ovan och gulaktig undersida",
+          "factIds": [
+            "f09",
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Locklätet låter \"trr\" eller \"zrr\", och huvudlätet är ett torrt, skrattande krrrr som ofta liknas vid en skallra.",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        },
+        {
+          "text": "Sången är mycket ljudlig och hörs ofta upp till två kilometer bort.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Den sjunger från en trädtopp eller annan hög plats, främst från november till början av juni, gärna efter och ibland under blåsigt och regnigt väder.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Dubbeltrasten är flyttfågel och sommargäst mellan april och oktober och häckar i nästan hela Sverige utom fjälltrakterna och de nordligaste delarna.",
+          "factIds": [
+            "s01",
+            "f20",
+            "f19"
+          ]
+        },
+        {
+          "text": "Den trivs bäst i skogsmark, helst hällmarkstallskog med gläntor.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Under flyttningen utnyttjar den öppnare marker som jordbruksmark, hedar och gräsbevuxna kullar.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Flytten mot vinterkvarteren i södra Europa börjar från mitten av september.",
+          "factIds": [
+            "f20",
+            "f21"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i mars och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan består av maskar, larver, insekter och många slags bär, särskilt mistelbär.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Under vintern försvarar den ett eller flera bärande träd.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "På marken hoppar den med huvudet högt och kroppen upprätt, och flykten är kraftfull med längre bågar än taltrastens.",
+          "factIds": [
+            "f29",
+            "f28"
+          ]
+        },
+        {
+          "text": "Hanen angriper inkräktare vid boet, även rovfåglar, kråkfåglar och ibland katter eller människor.",
+          "factIds": [
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25234",
+          "text": [
+            {
+              "text": "Koltrastens sång liknar dubbeltrastens, men dubbeltrastens sång är kortare och gällare.",
+              "factIds": [
+                "f16"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Dubbeltrast: så känner du igen den på fjäderdräkten och hållningen, hur sången och lätena låter och när och var den brukar ses.",
+      "facts": {
+        "size": {
+          "value": "26 till 29 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Mistle Thrush is a thrush that breeds in almost all of Sweden and does best in woodland, preferably rocky pine forest with small fields and clearings.",
+          "factIds": [
+            "f19",
+            "f17"
+          ]
+        },
+        {
+          "text": "Its loud song is delivered from a treetop or another high perch.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Larger, longer-tailed and paler than a Song Thrush, standing more upright",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "White underparts with blackish spots, plain mid-throat and often a dark patch each side of breast",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Grey-brown back with an olive tinge, white underwing coverts and white tips to outer tail feathers",
+          "factIds": [
+            "f04",
+            "f07",
+            "f08"
+          ]
+        },
+        {
+          "text": "Male and female look alike, juveniles have cream teardrop markings above and yellowish underparts",
+          "factIds": [
+            "f09",
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The contact call is \"trr\" or \"zrr\", and the main call is a dry, laughing krrrr, often likened to a rattle.",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        },
+        {
+          "text": "The very loud song often carries up to two kilometres.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "It sings from a treetop or other high perch, mainly from November to early June, readily after and sometimes during wind and rain.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Mistle Thrush is a migrant and summer visitor between April and October, breeding in almost all of Sweden except the mountains and the far north.",
+          "factIds": [
+            "s01",
+            "f20",
+            "f19"
+          ]
+        },
+        {
+          "text": "On migration it uses more open ground such as farmland, heaths and grassy hills.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Departure towards wintering grounds in southern Europe begins from mid-September.",
+          "factIds": [
+            "f20",
+            "f21"
+          ]
+        },
+        {
+          "text": "It is reported most in March and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds on worms, larvae, insects and many kinds of berries, especially mistletoe berries.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "In winter it defends one or more fruiting trees.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "On the ground it hops with its head held high and body upright, and its flight is powerful with longer undulations than a Song Thrush's.",
+          "factIds": [
+            "f29",
+            "f28"
+          ]
+        },
+        {
+          "text": "The male attacks intruders at the nest, including birds of prey, crows and sometimes cats or people.",
+          "factIds": [
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25234",
+          "text": [
+            {
+              "text": "The Blackbird's song is similar, but the Mistle Thrush's song is shorter and shriller.",
+              "factIds": [
+                "f16"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Mistle Thrush: how to recognise it by plumage and posture, what its song and calls sound like, and when and where it is seen.",
+      "facts": {
+        "size": {
+          "value": "26 to 29 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "0a01b5e285d5a5e8"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "0a01b5e285d5a5e8"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "dubbeltrast",
@@ -205,5 +925,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

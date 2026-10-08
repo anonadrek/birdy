@@ -1,13 +1,748 @@
 {
   "qid": "Q26629",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Havstruten är en stor, bredvingad och grov trut med tjock hals och mycket grov näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Havstruten är en stor, bredvingad och grov trut med tjock hals och mycket grov näbb."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Den adulta fågeln har svartaktig ovansida och helvit undersida, bröst, huvud, stjärt och övergump.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta fågeln har svartaktig ovansida och helvit undersida, bröst, huvud, stjärt och övergump."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Vingspetsarna har vita fläckar, som syns som stora vita fläckar på vingpennorna när fågeln sitter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den har en vit slant längst ut på vingspetsen vilket gör att den får stora vita fläckar på vingpennorna i sittande ställning"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den adulta fågelns näbb är gul med en tydlig röd prick vid gonysvinkeln.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är gul med en tydlig röd prick vid gonysvinkeln."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Den adulta fågeln har röd orbitalring och gul iris.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har röd orbitalring och gul iris."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "behaviour",
+      "sv": "I flykten verkar havstruten lugn med långsamma vingslag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten verkar den lugn med sina långsamma vingslag."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "Havstruten är 61–74 cm lång, har ett vingspann på 144–166 cm och väger ungefär 1800 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hela fågelns längd är 61–74 cm, vingspannet 144–166 cm och den väger ungefär 1800 gram."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Fågeln får adult dräkt under det fjärde levnadsåret, och färgen på näbb, öga och orbitalring förändras gradvis fram till dess.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Färgen på näbb, öga och orbitalring förändras gradvis under perioden fram till att fågeln anlägger adult dräkt under det fjärde levnadsåret."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "I juvenil dräkt har havstruten helsvart näbb och brun iris.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I juvenil dräkt har den helsvart näbb och brun iris."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Könen kan inte skiljas på fjäderdräkten, men honor blir ofta bara lika stora som gråtrutar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Weibchen erreichen oft nur die Größe von Silbermöwen"
+        },
+        {
+          "article": "de",
+          "quote": "Am Gefieder sind die Geschlechter nicht zu unterscheiden."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "lookalike",
+      "sv": "Havstruten har gråskära ben i alla åldrar, medan den adulta silltruten har gula ben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I alla åldrar har den gråskära ben, vilket skiljer den från den adulta silltrutens gula ben."
+        }
+      ],
+      "other": {
+        "scientific": "Larus fuscus",
+        "qid": "Q27160"
+      }
+    },
+    {
+      "id": "f12",
+      "topic": "lookalike",
+      "sv": "Den unga havstruten är tydligt svart- och vitvattrad och inte grådaskig som den unga gråtruten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I juvenil dräkt är havstruten tydligt svart- och vitvattrad och inte grådaskig som gråtruten."
+        }
+      ],
+      "other": {
+        "scientific": "Larus argentatus",
+        "qid": "Q28236"
+      }
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Lätet liknar silltrutens och gråtrutens men är mycket mörkare och typiskt hest och skrovligt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lätet är likt silltrutens och gråtrutens, men är mycket mörkare och typiskt hest och skrovligt."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Det skrattande spellätet är kortare och långsammare än hos silltrut och gråtrut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det skrattande spellätet är också kortare och långsammare."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Huvudlätet är ett djupt, ofta hest och ibland högt ljudande \"kau\" eller \"krau\".",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Hauptruf ist ein tiefes, oft heiseres und manchmal laut schallendes kau oder krau."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Vanligast bygger paret sitt bo på en klippö i yttre havsbandet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vanligast är att paret bygger sitt bo på en klippö i yttre havsbandet."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Vintertid förekommer havstruten ute till havs och utefter kusterna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid förekommer den ute till havs och utefter kusterna."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Sverige häckar havstruten vid kusterna och håller helst till på de yttre holmarna och skären.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar den vid kusterna och håller helst till på de yttre holmarna och skären."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Den påträffas mera sällan i det inre av landet, men häckar vid de större sjöarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Mera sällan påträffas den i det inre av landet, men häckar vid de större sjöarna."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Havstruten övervintrar i Sverige så länge det finns öppet vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Så länge det finns öppet vatten övervintrar den i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "I Sverige är havstruten mindre talrik än både fiskmås och gråtrut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är mindre talrik än både fiskmås och gråtrut."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet skattas till cirka 13 200 reproduktiva individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det totala beståndet i Sverige skattas till cirka 13 200 reproduktiva individer."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Den svenska populationen har minskat med 62,5 % de senaste 30 åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige visar studier att havstrutspopulationen minskar kraftigt, de senaste 30 åren med hela 62,5 %."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "sweden",
+      "sv": "På Artdatabankens rödlista listades havstruten 2020 som sårbar och 2025 som starkt hotad (EN).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "År 2020 listades den som sårbar på Artdatabankens rödlista och 2025 som starkt hotad (EN)."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Boet placeras vanligtvis direkt på marken, ofta i skydd av en klippa, i en spricka eller mot ett träd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den placerar vanligtvis det omfångsrika boet direkt på marken, ofta i skydd av en klippa, i en spricka, eller mot ett träd."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Honan lägger i genomsnitt två till tre ägg, men kullar med upp till fem har observerats.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger i genomsnitt två till tre ägg, men kullar med upp till fem har observerats."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Det tar cirka 26 till 28 dygn innan äggen kläcks.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "det tar cirka 26 till 28 dygn innan äggen kläcks"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Havstruten lever främst av fisk som den fångar levande, men anpassar födan efter förhållandena.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lever främst av fisk, som den fångar levande, men kan anpassa sin föda utifrån förhållanden."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "food",
+      "sv": "Den kan döda försvagade sjöfåglar som alkor, mindre trutar och liror.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "kan döda andra försvagade sjöfåglar som alkor, mindre trutar och liror"
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Havstruten är skygg och vaksam och mer av en enstöring än många andra trutar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Havstruten är skygg och vaksam – en enstöring i jämförelse med många andra arter inom släktet."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Andra är stannfåglar, eller flyttar bara kortare sträckor, som exempelvis populationerna utmed södra Östersjön, på Norges och Sveriges västkust"
+        },
+        {
+          "article": "sv",
+          "quote": "men även populationen som häckar utefter norra Östersjöns kuster"
+        },
+        {
+          "article": "sv",
+          "quote": "Så länge det finns öppet vatten övervintrar den i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Starkt hotad (EN)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Havstruten är en stor, bredvingad och grov trut med tjock hals och mycket grov näbb.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "I Sverige häckar den vid kusterna och håller helst till på de yttre holmarna och skären.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Den adulta fågeln har svartaktig ovansida och helvit undersida, bröst, huvud, stjärt och övergump",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Gul näbb med tydlig röd prick vid gonysvinkeln, röd orbitalring och gul iris",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Stora vita fläckar på vingpennorna syns när fågeln sitter",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Könen är lika i dräkten, men honor blir ofta bara lika stora som gråtrutar",
+          "factIds": [
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Huvudlätet är ett djupt, ofta hest och ibland högt ljudande \"kau\" eller \"krau\".",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Lätet liknar silltrutens och gråtrutens men är mycket mörkare och typiskt hest och skrovligt.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Det skrattande spellätet är kortare och långsammare än hos silltrut och gråtrut.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Havstruten är delvis flyttfågel och häckar vid de svenska kusterna, helst på yttre holmar och skär.",
+          "factIds": [
+            "s01",
+            "f18"
+          ]
+        },
+        {
+          "text": "Inne i landet påträffas den mera sällan, men den häckar vid de större sjöarna.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Vintertid finns den till havs och längs kusterna, så länge det finns öppet vatten.",
+          "factIds": [
+            "f17",
+            "f20"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "På svenska rödlistan 2025 klassas den som starkt hotad (EN).",
+          "factIds": [
+            "d03",
+            "f24"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Havstruten lever främst av fisk som den fångar levande, men anpassar födan efter förhållandena.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Den kan döda försvagade sjöfåglar som alkor, mindre trutar och liror.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Den är skygg och vaksam och mer av en enstöring än många andra trutar.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "I flykten verkar den lugn, med långsamma vingslag.",
+          "factIds": [
+            "f06"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q27160",
+          "text": [
+            {
+              "text": "Havstruten har gråskära ben i alla åldrar, medan den adulta silltruten har gula ben.",
+              "factIds": [
+                "f11"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q28236",
+          "text": [
+            {
+              "text": "Den unga havstruten är tydligt svart- och vitvattrad, medan den unga gråtruten är grådaskig.",
+              "factIds": [
+                "f12"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Havstrut: så känner du igen den grova truten med svartaktig ovansida och vit undersida, hur lätet låter och när den kan ses under året.",
+      "facts": {
+        "size": {
+          "value": "61 till 74 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Great Black-backed Gull is a large, broad-winged and heavily built gull with a thick neck and a very heavy bill.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "In Sweden it breeds along the coasts and prefers the outer islets and skerries.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Adults have blackish upperparts and white underparts, breast, head, tail and rump",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Yellow bill with a clear red spot at the gonys, red orbital ring and yellow iris",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Large white spots on the flight feathers show when the bird is perched",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Sexes look alike, but females are often only as large as Herring Gulls",
+          "factIds": [
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The main call is a deep, often hoarse and sometimes loud \"kau\" or \"krau\".",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "It resembles the calls of Lesser Black-backed and Herring Gulls but is much darker, typically hoarse and gravelly.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The laughing display call is shorter and slower than in Lesser Black-backed and Herring Gulls.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "A partial migrant, it breeds on Swedish coasts, preferably on outer islets and skerries.",
+          "factIds": [
+            "s01",
+            "f18"
+          ]
+        },
+        {
+          "text": "Inland it is found less often, but it breeds by the larger lakes.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "In winter it occurs at sea and along the coasts, as long as there is open water.",
+          "factIds": [
+            "f17",
+            "f20"
+          ]
+        },
+        {
+          "text": "It is reported all year and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "The Swedish Red List 2025 lists it as Endangered (EN).",
+          "factIds": [
+            "d03",
+            "f24"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mainly on fish caught alive, but adapts its diet to conditions.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "It can kill weakened seabirds such as auks, smaller gulls and shearwaters.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "It is shy and watchful, and more of a loner than many other gulls.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "In flight it looks calm, with slow wingbeats.",
+          "factIds": [
+            "f06"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q27160",
+          "text": [
+            {
+              "text": "The Great Black-backed Gull has greyish pink legs at all ages, while the adult Lesser Black-backed Gull has yellow legs.",
+              "factIds": [
+                "f11"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q28236",
+          "text": [
+            {
+              "text": "Young Great Black-backed Gulls are clearly chequered black and white, not dull greyish like young Herring Gulls.",
+              "factIds": [
+                "f12"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Great Black-backed Gull: how to recognise this heavy gull with blackish upperparts and white underparts, what its call sounds like and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "61 to 74 cm",
+          "factIds": [
+            "f07"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "6149bd3cce527ddd"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "6149bd3cce527ddd"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "havstrut",
@@ -205,5 +940,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }

@@ -3,11 +3,370 @@
   "status": "pending",
   "publish": false,
   "review": {
-    "wave": 2
+    "wave": 2,
+    "audioStruckSources": [
+      "https://commons.wikimedia.org/wiki/File:Motacilla_cinerea_-_Grey_Wagtail_XC128136.ogg"
+    ]
   },
-  "facts": [],
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Forsärlan är slank och 17–20 cm lång.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är slank och 17–20 cm lång."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ovansidan är blågrå och gumpen gröngul.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ovansidan är blågrå, vid gumpen gröngul."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Undersidan är lysande gul på sommaren och gulaktigt brunaktig på vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Undersidan är på sommaren lysande gul, på vintern gulaktig-brunaktig."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Stjärten är svart med gul undersida och vita ytterfjädrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten är svart med gul undersida och har vita ytterfjädrar."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Forsärlan har längst stjärt av Europas ärlor och vippar ofta med den.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Forsärlan är den av Europas ärlor som har längst stjärt och den vippar ofta med denna."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Den har ett smalt vitt ögonbrynsstreck och en bruten ögonring.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "This slim wagtail has a narrow white supercilium and a broken eye ring."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Näbben är svart och ben och fötter är köttfärgade till brunaktigt hornfärgade.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der schwarze Schnabel misst zwischen 15 und 17 mm, die Beine und Füße sind fleischfarben bis bräunlich hornfarben."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "I flykten syns ett vitt vingband.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "im Flug aber als weißes Flügelband sichtbar wird"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Den häckande vuxna hanen har svart strupe kantad av vitaktiga mustaschstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckande vuxne hanen har svart strupe."
+        },
+        {
+          "article": "en",
+          "quote": "The breeding male has a black throat that is edged by whitish moustachial stripes."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Honan har oftast vitaktig strupe, till skillnad från hanen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Meist ist die Kehle im Unterschied zu der des Männchens weißlich"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Ungfåglar liknar honan i vinterdräkt men har brunare och ljusare huvud och rygg.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Jugendkleid ähnelt dem Schlichtkleid des Weibchens, jedoch sind die Kopfpartie und der Rücken bräunlicher und heller"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Lätet är ett hårt, metalliskt ”tsitsitt” eller ”tsetsetse”, skarpare än sädesärlans.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lätet är en skarpare variant av sädesärlans, ett hårt, metalliskt \"tsitsitt\" eller \"tsetsetse\"."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sången består av drillar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They have a clear sharp call note and the song consists of trills."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Forsärlan håller till vid snabbt strömmande vattendrag men flyttar på vintern till långsammare låglandsvatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Forsärlan håller till i snabbt strömmande vattendrag, men på vintern flyttar den till långsammare låglandsvatten."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Bäst trivs den vid skogsomgivna, skuggiga, snabbt strömmande bäckar och åar med sten- och grusstränder.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Optimale Habitate sind von Wald umgebene, schattige, schnell fließende Bäche und Flüsse mit Geröll- und Kiesufern"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Utanför häckningstiden kan den även ses vid sjöar, kuster och andra vattenmiljöer.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Outside the breeding season, they may also be seen around lakes, coasts and other watery habitats."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "food",
+      "sv": "Den äter insekter vid vatten, som flugor, små skalbaggar och trollsländelarver, samt små kräftdjur och blötdjur.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den livnär sig på insekter som den finner vid vattnen - flugor, små skalbaggar, trollsländelarver, men också små kräftdjur och små blötdjur."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "behaviour",
+      "sv": "Den vadar genom vattnet och pickar i det när den söker föda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fågeln vadar också genom vattnet och pickar i det i jakt på föda."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "behaviour",
+      "sv": "Flykten är jämn och vågformig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flykten är jämn och vågformig."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "behaviour",
+      "sv": "Hanen spelar genom att flyga upp och sakta dala ned med fladdrande flykt under en snabb serie höga toner.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The male in display, makes short flights up into the air and descends slowly with fluttering flight accompanied by a rapid series of chipping high notes."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet placeras bland stenar eller klippor och ofta i dammbyggnader nära vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet placeras bland stenar eller klippor och inte sällan i dammbyggnader i närheten av vatten."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Honan lägger tre till sex gråbruna fläckiga ägg en till två gånger per häckningssäsong.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger en till två gånger per häckningssäsong tre till sex gråbruna fläckiga ägg"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Äggen ruvas i tolv till 14 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "som hon eller båda föräldrarna ruvar i tolv till 14 dagar"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "sweden",
+      "sv": "I Sverige finns den i hela Götaland och Svealand, längs Norrlandskusten till Ångermanland och längs fjällkedjan till Torne lappmark.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Numera finns i hela Götaland och Svealand, utmed Norrlandskusten till Ångermanland samt längs fjällkedjan till Torne Lappmark."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "sweden",
+      "sv": "Den är sparsam från östra Småland till Stockholmstrakten och saknas på Öland och Gotland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är dock sparsam från östra Småland till Stockholmstrakten och saknas helt på Öland och Gotland."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "sweden",
+      "sv": "Svenska forsärlor flyttar i september–oktober till västra och sydvästra Europa och återvänder i mars–april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det svenska beståndet flyttar i september-oktober till västra och sydvästra Europa och de återvänder i mars–april."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till 11 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 11 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "sweden",
+      "sv": "Den svenska populationen har på 30 år ökat med 300–500 procent.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "sedan 30 år tillbaka med hela 300–500 %"
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det svenska beståndet flyttar i september-oktober till västra och sydvästra Europa och de återvänder i mars–april."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i september."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
   "text": null,
-  "generated": {},
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "000e8eac62fcbb4f"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "forsarla",
@@ -53,13 +412,14 @@
   ],
   "audio": {
     "file": "Q201316/voice.mp3",
-    "durationSec": 5,
-    "trimmed": false,
-    "author": "Sudipto Roy",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Motacilla_cinerea_-_Grey_Wagtail_XC128136.ogg",
-    "sha256": "94f11afc68e73d167ab14d6b6313e360a23867c24753daf89b43f0ea5ab0b81b"
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Pascal Christe",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Motacilla_cinerea_-_Grey_Wagtail_XC596811.mp3",
+    "sha256": "c3a11d261607dc3d26008f03936dcccfff0dbe93ad9baa5887fea9179e2c7972",
+    "mp3Sha256": "6948f7ca48ffabc0885393c6196e4b06bb456e16dcaed8f8809a1912cfddc35a"
   },
   "wikipedia": {
     "sv": {
@@ -203,7 +563,14 @@
       }
     },
     "statusSignal": {
-      "contradicts": null
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
     }
-  }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
 }

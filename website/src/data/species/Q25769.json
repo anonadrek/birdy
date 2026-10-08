@@ -1,13 +1,745 @@
 {
   "qid": "Q25769",
-  "status": "pending",
-  "publish": false,
+  "status": "ok",
+  "publish": true,
   "review": {
     "wave": 2
   },
-  "facts": [],
-  "text": null,
-  "generated": {},
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Jordugglan är 33–40 cm lång och har ett vingspann på 95–105 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Nominatformen mäter 33–40 cm och har ett vingspann på 95–105 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Jordugglan väger 206–475 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vikten varierar från 206–475 gram."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Jordugglan är en medelstor uggla med mycket långa, smala och ganska spetsiga vingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Jordugglan är en medelstor uggla med mycket långa och smala, och ganska spetsiga vingar."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den har ljust ansikte och gula ögon omringade av svart.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "ljust ansikte, gula ögon omringade av svart"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Jordugglan har minimala örontofsar som oftast inte syns.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den har minimala örontofsar som oftast inte syns"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Ovansidan och bröstet är grovt mörkmönstrade på gulbrun botten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ovansidan och bröstet är grovt mörkmönstrad med gulbrun bas."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Undersidan är mycket ljus, och den ljusa buken kontrasterar mot det grovt streckade bröstet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Undersidan är mycket ljus och den ljusa buken kontrasterar mot det grovt streckade bröstet."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Vingspetsarna är svarta och vingovansidan har en bred vit bakkant.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingspetsarna är svarta och på vingovansidan har den en bred vit bakkant."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Stjärten är grovt mörkbandad på både över- och undersidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten är grovt mörkbandad på både över- och undersidan."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "appearance",
+      "sv": "Jordugglan har en markant mörk, halvmåneformad fläck vid handloven.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Markant ist ein dunkler, halbmondförmiger Handwurzelfleck."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Hane och hona skiljer sig inte åt i färgen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Geschlechter unterscheiden sich in der Färbung nicht"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "behaviour",
+      "sv": "Jordugglan har en lätt och graciös, nästan slowmotionartad flykt och glidflyger ofta på stela vingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Jordugglan har en lätt och graciös flykt, nästan som i slowmotion, och den glidflyger ofta på stela vingar."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Hanens sång, ofta framförd i flykten högt upp, är en snabb serie djupa po-po-po, oftast 6 till 20 stavelser.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanens sång framförs ofta flygande på hög och består av en snabb serie med djupa po-po-po-po-po-po..., ofta mellan 6 och 20 stavelser"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Honan tigger med ett hest, utdraget tjerr-app och varnar med ett raspigt tjeff-tjeff-tjeff.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan har ett hest tjerr-app som dras ut när hon tigger och hon varnar med ett raspigt tjeff-tjeff-tjeff."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Jordugglan slår ihop vingarna i snabb följd, vilket ger ett smattrande ljud som påminner om en fladdrande flagga.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Zusammenschlagen der Flügel in rascher Abfolge erzeugt ein knatterndes, an Fahnenknattern erinnerndes Geräusch."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Jordugglor är tysta i vinterkvarteren.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "short-eared owls are silent on the wintering grounds"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Jordugglan föredrar hedmark, myrar, mossar och hyggen men häckar även på kala skärgårdsöar och grusiga höjdplatåer i fjällen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den föredrar hedmark, myrar, mossar och hyggen men kan även häcka på kala skärgårdsöar och häckar även på grusiga höjdplatåer i fjällen."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Vintertid uppträder jordugglan ofta vid åkrar och våtmarker.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid uppträder den ofta vid åkrar och våtmarker."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige häckar jordugglan främst i norra halvan av landet, särskilt i Norrland, men även på hyggen i Mellansverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar den främst i norra hälften av landet, främst i Norrland men även på hyggen i Mellansverige."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Den häckar även på södra Öland samt på kala skärgårdsöar och kusthedar i södra Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar även på södra Öland och på kala skärgårdsöar och kusthedar i södra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "På vintern flyttar den skandinaviska populationen till Väst- och Sydeuropa och till Nordafrika.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern flyttar den Skandinaviska populationen till Väst- och Sydeuropa men även till Nordafrika."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Vissa individer övervintrar i Syd- och Mellansverige, som nordligast i höjd med Småland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vissa individer övervintrar i Syd- och Mellansverige, som nordligast i höjd med Småland."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Jordugglan återkommer till Sverige i april–maj.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Om våren återkommer jordugglan till Sverige i april–maj."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "sweden",
+      "sv": "Beståndet av jorduggla fortsätter att minska i Sverige.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "nur in Großbritannien, den Niederlanden, in Schweden und in Belarus geht er weiter zurück"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Boet är en fördjupning i marken som ibland skyddas av en grästuva eller en buske.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet är en fördjupning i marken som ibland skyddas av en grästuva eller en buske"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Jordugglan lägger vanligtvis 6–9 helvita, glansiga ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Jordugglan lägger vanligtvis 6–9 helvita glansiga ägg"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Honan ruvar äggen i 24–28 dygn medan hanen matar henne.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ruvar äggen i 24–28 dygn och hanen matar henne."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Jordugglan fångar främst små gnagare, särskilt sork, men även andra smådjur samt fåglar och deras ungar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den fångar framför allt små gnagare, främst sork men kan också fånga andra smådjur och fåglar och deras ungar."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Jordugglan jagar mest i skymningen och på morgonen och är mer dagaktiv än många andra ugglor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Jordugglan jagar för det mesta i skymningen och på morgonen och är mer dagaktiv än många andra ugglor."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Strimuggla kan förväxlas med jorduggla men har ständigt synliga örontofsar, brett svartkantad ansiktsskiva och är något mindre.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Für Verwechslungen kommen die Waldohreule und die Schreieule (Asio clamator) in Frage. Beide Eulen haben markante, immer sichtbare Federohren."
+        },
+        {
+          "article": "de",
+          "quote": "Die Schreieule unterscheidet sich abgesehen von den arttypischen Lautäußerungen vor allem durch den breiten, schwarz gerandeten Gesichtsschleier und die etwas geringere Größe."
+        }
+      ],
+      "other": {
+        "scientific": "Asio clamator"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern flyttar den Skandinaviska populationen till Väst- och Sydeuropa men även till Nordafrika. Vissa individer övervintrar i Syd- och Mellansverige, som nordligast i höjd med Småland."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i maj och oktober."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i augusti."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Norrbotten, Västerbotten och Jämtland."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Jordugglan är en medelstor uggla med mycket långa, smala vingar.",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Den häckar på hedmark, myrar, mossar och hyggen, i Sverige främst i norra halvan av landet.",
+          "factIds": [
+            "f17",
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Mycket långa, smala och ganska spetsiga vingar med svarta vingspetsar",
+          "factIds": [
+            "f03",
+            "f08"
+          ]
+        },
+        {
+          "text": "Ljust ansikte och gula ögon omringade av svart, örontofsarna syns oftast inte",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Grovt streckat bröst på gulbrun botten som kontrasterar mot den ljusa buken",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Mörk halvmåneformad fläck vid handloven, hane och hona är lika färgade",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Hanens sång, ofta framförd högt upp i flykten, är en snabb serie djupa po-po-po, oftast 6 till 20 stavelser.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Honan tigger med ett hest, utdraget tjerr-app och varnar med ett raspigt tjeff-tjeff-tjeff.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Ugglan slår också ihop vingarna i snabb följd, ett smattrande ljud som påminner om en fladdrande flagga.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "I vinterkvarteren är den tyst.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Jordugglan är delvis flyttfågel och häckar i Sverige, främst i Norrland men även på hyggen i Mellansverige, på södra Öland och på kala skärgårdsöar i söder.",
+          "factIds": [
+            "s01",
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "Den återkommer i april till maj och rapporteras mest i maj och oktober.",
+          "factIds": [
+            "f23",
+            "d01"
+          ]
+        },
+        {
+          "text": "Vissa individer övervintrar i Syd- och Mellansverige, som nordligast i höjd med Småland.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Arten är rödlistad som nära hotad och beståndet minskar.",
+          "factIds": [
+            "d04",
+            "f24"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Jordugglan fångar främst små gnagare, särskilt sork, men även andra smådjur samt fåglar och deras ungar.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Den jagar mest i skymningen och på morgonen och är mer dagaktiv än många andra ugglor.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Flykten är lätt och nästan slowmotionartad, ofta med glidflykt på stela vingar.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Boet är en fördjupning i marken, och honan ruvar medan hanen matar henne.",
+          "factIds": [
+            "f25",
+            "f27"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Asio clamator",
+          "text": [
+            {
+              "text": "Strimugglan har ständigt synliga örontofsar och en brett svartkantad ansiktsskiva, medan jordugglans örontofsar oftast inte syns.",
+              "factIds": [
+                "f30",
+                "f05"
+              ]
+            },
+            {
+              "text": "Strimugglan är också något mindre.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Jorduggla: så känner du igen den på vingar, ansikte och fjäderdräkt, hur sången och lätena låter och när på året den brukar ses.",
+      "facts": {
+        "size": {
+          "value": "33 till 40 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Short-eared Owl is a medium-sized owl with very long, narrow wings.",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "It breeds on heaths, bogs, mires and clear-cuts, in Sweden mainly in the northern half of the country.",
+          "factIds": [
+            "f17",
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Very long, narrow and fairly pointed wings with black wingtips",
+          "factIds": [
+            "f03",
+            "f08"
+          ]
+        },
+        {
+          "text": "Pale face and yellow eyes ringed with black, ear tufts usually not visible",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Coarsely streaked breast on a buff ground, contrasting with the pale belly",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Dark crescent-shaped patch at the wrist, male and female alike in colour",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The male's song, often given high up in flight, is a rapid series of deep po-po-po, usually 6 to 20 syllables.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The female begs with a hoarse, drawn-out tjerr-app and gives a rasping tjeff-tjeff-tjeff in alarm.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "It also claps its wings together in quick succession, a rattling sound like a flapping flag.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "It is silent in its winter quarters.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It is a partial migrant that breeds in Sweden, mainly in Norrland, and also on clear-cuts in central Sweden, on southern Öland and on bare archipelago islands in the south.",
+          "factIds": [
+            "s01",
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "It returns in April to May and is reported most in May and October.",
+          "factIds": [
+            "f23",
+            "d01"
+          ]
+        },
+        {
+          "text": "Some birds winter in southern and central Sweden, north to about the latitude of Småland.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "It is red-listed as Near Threatened and declining.",
+          "factIds": [
+            "d04",
+            "f24"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It mainly catches small rodents, especially voles, and also other small animals as well as birds and their young.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "It hunts mostly at dusk and in the morning and is more active by day than many other owls.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Its flight is light and almost slow-motion, often gliding on stiff wings.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The nest is a hollow in the ground, and the female incubates while the male feeds her.",
+          "factIds": [
+            "f25",
+            "f27"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Asio clamator",
+          "text": [
+            {
+              "text": "Asio clamator always shows its ear tufts and has a broadly black-edged facial disc, while the Short-eared Owl's ear tufts are usually not visible.",
+              "factIds": [
+                "f30",
+                "f05"
+              ]
+            },
+            {
+              "text": "It is also slightly smaller.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Short-eared Owl: how to recognise it by its long wings, pale face and streaked breast, what its song and calls sound like and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "33 to 40 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "bca468d198a86f92"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "bca468d198a86f92"
+    }
+  },
   "errors": [],
   "slug": {
     "sv": "jorduggla",
@@ -197,5 +929,13 @@
     "statusSignal": {
       "contradicts": null
     }
-  }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
 }
