@@ -1,6 +1,6 @@
 # Startsidans hjälte: Flocken lyfter (design, 2026-10-09)
 
-**Status:** förslag till Albin. Bygger på rörelseprototypen som Albin godkände 2026-10-08 ("Ser kanon ut", "Sen är vi nöjda", "Mycket vackert"): `docs/superpowers/specs/assets/2026-10-08-flocken-webben/flocken-lyfter.html` (version 3, utan pilen), publicerad som https://claude.ai/artifact/Y9PWpnzdTSkPrgyGoYtgY1. Albin 2026-10-09: "När gör vi flocken lyfter?" och "viktigt att ha lite kodat ... så den rör sig, lite sånt överallt, speciellt på landningssidan".
+**Status:** godkänd av Albin 2026-10-09 ("remove, yes": ingen handskriven rad bredvid flocken; rubriken är sloganen). Bygger på rörelseprototypen som Albin godkände 2026-10-08 ("Ser kanon ut", "Sen är vi nöjda", "Mycket vackert"): `docs/superpowers/specs/assets/2026-10-08-flocken-webben/flocken-lyfter.html` (version 3, utan pilen), publicerad som https://claude.ai/artifact/Y9PWpnzdTSkPrgyGoYtgY1. Albin 2026-10-09: "När gör vi flocken lyfter?" och "viktigt att ha lite kodat ... så den rör sig, lite sånt överallt, speciellt på landningssidan".
 
 ## Vad som byggs
 
@@ -8,7 +8,7 @@ Startsidans första vy (`website/src/components/Hero.astro`, båda språken) byt
 
 1. Persikopapper (de sociala profilernas färger: persika, espresso, rost, koppar, mässing, aprikos).
 2. Rubriken till vänster (under flocken på telefon): kickern "Kamera, foto eller läte", rubriken "Känn igen fågeln." och den handskrivna raden "Bevara stunden." (engelska: "Know the bird." / "Keep the moment.", samma slogan som profilerna), brödtexten och Play- och App Store-märkena som i dag.
-3. **Rörelsen, en gång per sidvisning:** 839 små fåglar (en per art i Birdy) flyger in nerifrån vänster längs strömmen under texten, virvlar kort och landar som Birdys fågel. Dagens fågel landar sist och tänds. Sedan lyfter Dagens fågel-fotot ur just den fågeln, flyger till sin plats, framkallas som en polaroid och tejpas fast. Därefter står allt still. Ingen pil och ingen anteckning ovanpå flocken; den handskrivna raden "en fågel i flocken för varje art i Birdy" står bredvid flocken som i prototypen.
+3. **Rörelsen, en gång per sidvisning:** 839 små fåglar (en per art i Birdy) flyger in nerifrån vänster längs strömmen under texten, virvlar kort och landar som Birdys fågel. Dagens fågel landar sist och tänds. Sedan lyfter Dagens fågel-fotot ur just den fågeln, flyger till sin plats, framkallas som en polaroid och tejpas fast. Därefter står allt still. Ingen pil och ingen anteckning ovanpå eller bredvid flocken: prototypens handskrivna rad "en fågel i flocken för varje art i Birdy" tas bort (Albin 2026-10-09). Idén bärs av rörelsen och av canvasens tillgängliga text.
 4. **Minskade rörelser** (`prefers-reduced-motion`) och sidan utan JavaScript visar slutbilden direkt: flocken som Birdys fågel med dagens fågel tänd och polaroiden på plats.
 
 ## Dagens fågel
@@ -36,7 +36,7 @@ Startsidans första vy (`website/src/components/Hero.astro`, båda språken) byt
 
 Menyns och sidfotens nya stil, inläggen, artsidorna, övriga sektioner på startsidan och galleriets små rörelser (egna steg i Flock-looken). Den öppna frågan om vad flocken betyder på de andra sidorna (fråga 1 i brainstormen) påverkar inte hjälten.
 
-## Frågor till Albin
+## Albins svar 2026-10-09
 
-1. Ska den handskrivna raden "en fågel i flocken för varje art i Birdy" stå kvar bredvid flocken (som i version 3) eller bort?
-2. Rubriken: "Känn igen fågeln. Bevara stunden." (sloganen från profilerna) i stället för dagens rubrik. Rätt?
+1. Den handskrivna raden bredvid flocken: bort.
+2. Rubriken "Känn igen fågeln. Bevara stunden." / "Know the bird. Keep the moment.": ja.
