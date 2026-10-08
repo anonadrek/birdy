@@ -201,6 +201,8 @@ internal object JournalPdfLayoutIos {
 
         val colW = (M.PAGE_W - 2 * M.MARGIN_X) / 2.0
         val statsY = M.MARGIN_TOP + 200.0
+        // Delad bildtextfont för båda talen, som Androids `captionPaint`.
+        val captionFont = IosPdfFonts.caveat(M.STAT_CAPTION.toDouble())
         drawText(
             "${input.stats.speciesSeenThisYear}",
             M.MARGIN_X + 10.0,
@@ -208,13 +210,7 @@ internal object JournalPdfLayoutIos {
             IosPdfFonts.dmSerifItalic(M.STAT_NUMBER.toDouble()),
             M.COLOR_COPPER,
         )
-        drawText(
-            input.strings.statSpecies,
-            M.MARGIN_X + 10.0,
-            statsY + 22.0,
-            IosPdfFonts.caveat(M.STAT_CAPTION.toDouble()),
-            M.COLOR_INK,
-        )
+        drawText(input.strings.statSpecies, M.MARGIN_X + 10.0, statsY + 22.0, captionFont, M.COLOR_INK)
         drawText(
             "${input.stats.totalObservationsThisYear}",
             M.MARGIN_X + colW + 10.0,
@@ -222,24 +218,13 @@ internal object JournalPdfLayoutIos {
             IosPdfFonts.dmSerifItalic(M.STAT_NUMBER.toDouble()),
             M.COLOR_COPPER,
         )
-        drawText(
-            input.strings.statTotal,
-            M.MARGIN_X + colW + 10.0,
-            statsY + 22.0,
-            IosPdfFonts.caveat(M.STAT_CAPTION.toDouble()),
-            M.COLOR_INK,
-        )
+        drawText(input.strings.statTotal, M.MARGIN_X + colW + 10.0, statsY + 22.0, captionFont, M.COLOR_INK)
 
         // Top species bar chart (max 5)
         if (input.stats.topSpecies.isNotEmpty()) {
             val chartTop = statsY + 80.0
-            drawText(
-                input.strings.tops,
-                M.MARGIN_X.toDouble(),
-                chartTop,
-                IosPdfFonts.dmSerifItalic(M.TOPS_HEADER.toDouble()),
-                M.COLOR_INK,
-            )
+            val topsFont = IosPdfFonts.dmSerifItalic(M.TOPS_HEADER.toDouble())
+            drawText(input.strings.tops, M.MARGIN_X.toDouble(), chartTop, topsFont, M.COLOR_INK)
 
             val barAreaX = M.MARGIN_X + 140.0
             val barAreaW = M.PAGE_W - barAreaX - M.MARGIN_X

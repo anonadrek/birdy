@@ -8,10 +8,11 @@ import kotlinx.datetime.TimeZone
 
 /**
  * Layout helpers for the Field Journal PDF. A4 portrait, 595×842pt. All drawing is plain
- * [Canvas]/[Paint] over [PdfDocument]. Geometry, palette, type sizes and strings all come from
- * [JournalPdfMetrics] (commonMain) — this object is pure indirection over those values plus the
- * Android-only [Paint]/[Canvas] drawing calls, so the iOS renderer (CoreGraphics) can reproduce
- * the same layout from the same source of truth without duplicating a single literal.
+ * [Canvas]/[Paint] over [PdfDocument]. Geometry, palette and type sizes come from
+ * [JournalPdfMetrics] (commonMain) and every piece of text from [JournalPdfInput.strings] (the
+ * per-locale [JournalPdfStrings] set) — this object is pure indirection over those values plus
+ * the Android-only [Paint]/[Canvas] drawing calls, so the iOS renderer (CoreGraphics) can
+ * reproduce the same layout from the same source of truth without duplicating a single literal.
  *
  * Page composition (in order):
  *  1. Title page

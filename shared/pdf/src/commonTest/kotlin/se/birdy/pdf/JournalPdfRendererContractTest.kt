@@ -25,20 +25,22 @@ class JournalPdfRendererContractTest {
         }
 
     // Bug: an English user's exported PDF printed Swedish headings (JournalPdfMetrics held the
-    // PDF's text as fixed Swedish constants). This renders an English journal and checks the
-    // title and badges heading the platform layouts (JournalPdfLayout/JournalPdfLayoutIos) draw
-    // verbatim from input.strings — the real testable boundary, since android.graphics.pdf.
-    // PdfDocument has no JVM/Robolectric backend (see JournalPdfRendererAndroidTest's KDoc), so
-    // the actual Canvas/CoreGraphics pixels are verified on-device, not here.
+    // PDF's text as fixed Swedish constants). The platform layouts (JournalPdfLayout /
+    // JournalPdfLayoutIos) draw every heading verbatim from input.strings, so these pin what an
+    // English and a Swedish input hand them. They do NOT render: android.graphics.pdf.PdfDocument
+    // has no JVM/Robolectric backend (see JournalPdfRendererAndroidTest's KDoc) and the JVM actual
+    // returns Failed for any non-empty input. The real English render is
+    // JournalPdfRendererIosTest.renders_real_english_pdf_including_badges_page (iosTest, run by
+    // CI's macOS job); the Android pixels are checked on-device.
     @Test
-    fun renders_english_journal_with_english_title_and_badges_heading() {
+    fun english_input_carries_english_title_and_badges_heading() {
         val input = sampleInput(locale = Locale.EN)
         assertEquals("Field journal", input.strings.title)
         assertEquals("Stamps in the margin", input.strings.badgesTitle)
     }
 
     @Test
-    fun renders_swedish_journal_with_swedish_title_and_badges_heading() {
+    fun swedish_input_carries_swedish_title_and_badges_heading() {
         val input = sampleInput(locale = Locale.SV)
         assertEquals("Fältdagbok", input.strings.title)
         assertEquals("Stämplar i marginalen", input.strings.badgesTitle)
