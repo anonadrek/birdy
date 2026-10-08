@@ -90,7 +90,7 @@
   <header class="intro">
     <p class="kick">Rörelseprototyp · 8 oktober 2026</p>
     <h1>Flocken <em>lyfter</em></h1>
-    <p>Startsidans enda stora rörelse. Flocken flyger in längs strömmen, virvlar en kort stund och landar som Birdys fågel: 839 fåglar, en för varje art. Dagens fågel landar sist och tänds. Sedan står allt still och sidan läses som vanligt.</p>
+    <p>Startsidans enda stora rörelse. Flocken flyger in längs strömmen, virvlar en kort stund och landar som Birdys fågel: 839 fåglar, en för varje art. Dagens fågel landar sist och tänds, och dagens foto lyfter ur just den fågeln, framkallas som en polaroid och tejpas fast. Sedan står allt still och sidan läses som vanligt.</p>
     <button class="replay" id="replay" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg><span>Spela igen</span></button>
   </header>
 
@@ -116,7 +116,7 @@
 
   <section class="notes" aria-label="Så beter den sig">
     <div class="noteCard"><b>en gång per besök</b><p>Flocken flyger in när startsidan öppnas, tar cirka fyra sekunder och står sedan still. Inget rör sig medan du läser.</p></div>
-    <div class="noteCard"><b>dagens fågel landar sist</b><p>Varje dag tänds en annan fågel i flocken, samma art som Dagens fågel i appen.</p></div>
+    <div class="noteCard"><b>dagens fågel kommer efter</b><p>Den tända fågeln blir dagens foto: planschen flyger ut ur den, framkallas och tejpas fast. Varje dag en annan art, samma som Dagens fågel i appen.</p></div>
     <div class="noteCard"><b>still för den som vill</b><p>Har du valt minskade rörelser i telefonen, eller saknar webbläsaren JavaScript, syns den färdiga flocken direkt.</p></div>
     <div class="noteCard"><b>lätt för telefonen</b><p>Fåglarna ritas på en canvas ur samma data som de sociala bilderna, cirka 25 kB, och rör sig mjukt även på äldre telefoner.</p></div>
   </section>
@@ -139,6 +139,12 @@
     var todayBox = document.getElementById('today');
     var todaySvg = todayBox.querySelector('svg');
     var todayText = todayBox.querySelector('span');
+    var plate = hero.querySelector('.plate');
+    var plateImg = plate.querySelector('img');
+    var plateCap = plate.querySelector('.cap');
+    var tape = hero.querySelector('.tape');
+    var arrowPaths = [];
+    var revealed = false;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var NS = 'http://www.w3.org/2000/svg';
     var TODAY = 'Q26026'; // Ringduva, Dagens fågel on 8 October
@@ -258,27 +264,39 @@
       return false;
     }
 
+    function easeOutBack(k) {
+      var c1 = 1.70158, c3 = c1 + 1;
+      return 1 + c3 * Math.pow(k - 1, 3) + c1 * Math.pow(k - 1, 2);
+    }
+
     function frame(now) {
       var t = now - t0;
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (var i = 0; i < plan.length; i++) fly(plan[i], t, 1, plan[i].sprite);
-      var landed = t >= total;
-      if (!landed) {
+      if (t < total) {
+        for (var i = 0; i < plan.length; i++) fly(plan[i], t, 1, plan[i].sprite);
         fly(lit, t, 1.25, LIT);
         raf = requestAnimationFrame(frame);
-      } else {
-        drawLit();
-        done = true;
-        todayBox.classList.add('on');
+        return;
       }
+      // Landed: the flock is still; today's bird pops its ring once, and its photo comes out of it.
+      var k = Math.min(1, (t - total) / 480);
+      drawFlockStill();
+      drawLit(Math.max(0, easeOutBack(k)));
+      if (!revealed) { revealed = true; revealToday(); }
+      if (k < 1) raf = requestAnimationFrame(frame); else done = true;
     }
 
-    function drawLit() {
+    function drawFlockStill() {
+      for (var i = 0; i < plan.length; i++) drawBird(plan[i].fx, plan[i].fy, plan[i].size, plan[i].rot, plan[i].sprite, plan[i].op);
+    }
+
+    function drawLit(ring) {
+      var r = ring == null ? 1 : ring;
       ctx.globalAlpha = 1;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.beginPath();
-      ctx.arc(lit.fx, lit.fy, lit.size * 1.6, 0, Math.PI * 2);
+      ctx.arc(lit.fx, lit.fy, lit.size * 1.6 * r, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(255,248,238,.96)';
       ctx.fill();
       ctx.lineWidth = Math.max(1.8, lit.size * 0.14);
@@ -287,13 +305,50 @@
       drawBird(lit.fx, lit.fy, lit.size * 1.8, lit.rot, LIT, 1);
     }
 
+    // The finished picture, without motion (reduced motion, or a redraw after a resize).
     function drawStill() {
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (var i = 0; i < plan.length; i++) drawBird(plan[i].fx, plan[i].fy, plan[i].size, plan[i].rot, plan[i].sprite, plan[i].op);
-      drawLit();
+      drawFlockStill();
+      drawLit(1);
       done = true;
+      plate.style.visibility = 'visible';
+      tape.style.visibility = 'visible';
       todayBox.classList.add('on');
+    }
+
+    // Dagens fågel arrives after the flock: the photo lifts out of the lit bird and flies to its place,
+    // develops like a polaroid, the tape lands on it, and the handwritten label and arrow follow.
+    function revealToday() {
+      var hr = hero.getBoundingClientRect(), pr = plate.getBoundingClientRect();
+      var dx = lit.fx - (pr.left - hr.left + pr.width / 2);
+      var dy = lit.fy - (pr.top - hr.top + pr.height / 2);
+      plate.style.visibility = 'visible';
+      tape.style.visibility = 'visible';
+      plate.animate([
+        { transform: 'translate(' + dx.toFixed(1) + 'px, ' + dy.toFixed(1) + 'px) scale(.06) rotate(-16deg)', opacity: 0 },
+        { opacity: 1, offset: 0.18 },
+        { transform: 'translate(0px, 0px) scale(1.035) rotate(3.4deg)', offset: 0.76 },
+        { transform: 'translate(0px, 0px) scale(1) rotate(2deg)', opacity: 1 },
+      ], { duration: 1100, delay: 140, easing: 'cubic-bezier(.22, .9, .24, 1)', fill: 'both' });
+      plateImg.animate([
+        { filter: 'saturate(0) brightness(1.55) contrast(.7)', opacity: 0.3 },
+        { filter: 'saturate(0) brightness(1.55) contrast(.7)', opacity: 0.3, offset: 0.3 },
+        { filter: 'saturate(1) brightness(1) contrast(1)', opacity: 1 },
+      ], { duration: 2000, delay: 140, easing: 'ease-out', fill: 'both' });
+      plateCap.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500, delay: 1150, fill: 'both' });
+      tape.animate([
+        { transform: 'translateY(-18px) rotate(-16deg) scale(1.25)', opacity: 0 },
+        { transform: 'translateY(0px) rotate(-6deg) scale(1)', opacity: 0.94 },
+      ], { duration: 360, delay: 1100, easing: 'cubic-bezier(.3, 1.5, .5, 1)', fill: 'both' });
+      setTimeout(function () {
+        todayBox.classList.add('on');
+        arrowPaths.forEach(function (p, i) {
+          var len = p.getTotalLength();
+          p.style.strokeDasharray = len + ' ' + len;
+          p.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }], { duration: i === 0 ? 560 : 200, delay: i === 0 ? 0 : 520, easing: 'ease-out', fill: 'both' });
+        });
+      }, 1300);
     }
 
     // The handwritten label and its arrow, placed beside today's bird in page pixels.
@@ -311,7 +366,8 @@
       var ang = Math.atan2(ey - cy, ex - cx), len = 12;
       var head = document.createElementNS(NS, 'path');
       head.setAttribute('d', 'M' + (ex - len * Math.cos(ang - 0.5)) + ' ' + (ey - len * Math.sin(ang - 0.5)) + ' L' + ex + ' ' + ey + ' L' + (ex - len * Math.cos(ang + 0.5)) + ' ' + (ey - len * Math.sin(ang + 0.5)));
-      [path, head].forEach(function (p) {
+      arrowPaths = [path, head];
+      arrowPaths.forEach(function (p) {
         p.setAttribute('fill', 'none'); p.setAttribute('stroke', '#9A4526'); p.setAttribute('stroke-width', '2.2');
         p.setAttribute('stroke-linecap', 'round'); p.setAttribute('stroke-linejoin', 'round');
         todaySvg.appendChild(p);
@@ -321,7 +377,11 @@
     function play() {
       cancelAnimationFrame(raf);
       done = false;
+      revealed = false;
       todayBox.classList.remove('on');
+      [plate, plateImg, plateCap, tape].concat(arrowPaths).forEach(function (n) { n.getAnimations().forEach(function (a) { a.cancel(); }); });
+      plate.style.visibility = 'hidden';
+      tape.style.visibility = 'hidden';
       // Start a little way in, so the very first frame already shows the river of birds arriving.
       t0 = performance.now() - 450;
       raf = requestAnimationFrame(frame);
