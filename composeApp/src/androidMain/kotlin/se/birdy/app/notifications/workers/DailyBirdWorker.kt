@@ -9,11 +9,8 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
-import se.birdy.app.AndroidAppGraphHolder
-import se.birdy.app.notifications.AndroidNotificationPayloads
 import se.birdy.app.notifications.DailyBirdNotification
-import se.birdy.app.notifications.NotificationChannels
-import se.birdy.app.notifications.NotificationPayloads
+import se.birdy.app.notifications.withWorkerPayloads
 
 class DailyBirdWorker(
     context: Context,
@@ -26,15 +23,8 @@ class DailyBirdWorker(
                     .now()
                     .toLocalDateTime(TimeZone.currentSystemDefault())
                     .date
-            val graph = AndroidAppGraphHolder.current
             val content =
-                if (graph != null) {
-                    NotificationPayloads.from(graph).dailyBird(today)
-                } else {
-                    AndroidNotificationPayloads.fromContext(applicationContext) { it.dailyBird(today) }
-                } ?: return Result.success()
-
-            NotificationChannels.ensureCreated(applicationContext)
+                withWorkerPayloads(applicationContext) { it.dailyBird(today) } ?: return Result.success()
 
             // Release 1.3.0 Task 7d: photo + "Läs om arten" / "Lyssna efter den" (DailyBirdNotification).
             val picture = content.imagePath?.let { DailyBirdNotification.loadPicture(applicationContext, it) }

@@ -813,6 +813,14 @@
     <string name="notification_trophy_title">Toward your next badge</string>
     <string name="notification_trophy_body_fmt">%1$s of %2$s badges unlocked. Closest: %3$s (%4$s/%5$s).</string>
 
+    <!-- Notification channels (Settings → Apps → Birdy → Notifications) -->
+    <string name="notification_channel_daily_bird_name">Bird of the day</string>
+    <string name="notification_channel_daily_bird_description">A species to look out for, every morning.</string>
+    <string name="notification_channel_weekly_recap_name">Weekly recap</string>
+    <string name="notification_channel_weekly_recap_description">Your week in the field, Sunday evening.</string>
+    <string name="notification_channel_trophy_progress_name">Badge progress</string>
+    <string name="notification_channel_trophy_progress_description">Once a week: how close you are to your next badge.</string>
+
     <!-- Badges -->
     <string name="badge_premium_early_pilgrim_name">Early pilgrim</string>
     <string name="badge_premium_early_pilgrim_desc">Save an observation between 05:00 and 07:00.</string>

@@ -280,6 +280,10 @@ class MainActivity : AppCompatActivity() {
             intent?.let { handleDeepLink(it) }
         }
         lifecycleScope.launch {
+            // The channel names and descriptions show in Android's settings even when
+            // notifications are off (1.3.1 punkt 12), so this runs unconditionally.
+            se.birdy.app.notifications.NotificationChannels
+                .createOrUpdate(applicationContext, appGraph.strings)
             val prefs = appGraph.userPreferences
             val notificationsOn =
                 NotificationManagerCompat.from(this@MainActivity).areNotificationsEnabled()

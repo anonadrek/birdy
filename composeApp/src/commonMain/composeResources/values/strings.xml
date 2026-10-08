@@ -828,6 +828,14 @@
     <string name="notification_trophy_title">Mot nästa märke</string>
     <string name="notification_trophy_body_fmt">%1$s av %2$s märken upplåsta. Närmast: %3$s (%4$s/%5$s).</string>
 
+    <!-- Notification channels (Inställningar → Appar → Birdy → Aviseringar) -->
+    <string name="notification_channel_daily_bird_name">Dagens fågel</string>
+    <string name="notification_channel_daily_bird_description">En art att hålla utkik efter, varje morgon.</string>
+    <string name="notification_channel_weekly_recap_name">Veckans recap</string>
+    <string name="notification_channel_weekly_recap_description">Din vecka i fält, söndag kväll.</string>
+    <string name="notification_channel_trophy_progress_name">Märkesprogression</string>
+    <string name="notification_channel_trophy_progress_description">En gång i veckan: hur nära du är nästa märke.</string>
+
     <!-- Badges -->
     <string name="badge_premium_early_pilgrim_name">Tidig pilgrim</string>
     <string name="badge_premium_early_pilgrim_desc">Spara en observation mellan 05:00 och 07:00.</string>
