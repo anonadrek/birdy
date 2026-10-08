@@ -121,6 +121,49 @@ test.describe('meny och sidfot', () => {
       await expect(footer).not.toContainText('LoopLead');
     });
   }
+
+  // Birdy's channels (2026-10-08). The addresses are written out here rather than read from src/lib/links.ts, so a
+  // typo there fails the test. Instagram is @app.birdy: @birdy.community on Instagram belongs to someone else.
+  const channels = [
+    ['Instagram', 'https://www.instagram.com/app.birdy/'],
+    ['Facebook', 'https://www.facebook.com/profile.php?id=61595339305266'],
+    ['YouTube', 'https://www.youtube.com/@birdy.community'],
+    ['TikTok', 'https://www.tiktok.com/@birdy.app'],
+  ] as const;
+
+  for (const [path, follow, on] of [['/sv/', 'Följ Birdy', 'på'], ['/', 'Follow Birdy', 'on']] as const) {
+    test(`sidfoten på ${path} länkar till Birdys fyra kanaler, och appens JSON-LD har dem som sameAs`, async ({ page }) => {
+      await page.goto(path);
+      const row = page.locator('footer.footer ul.fsoc');
+      await expect(page.locator('footer.footer .fsoc-h')).toHaveText(follow);
+      await expect(row).toHaveAccessibleName(follow);
+      const links = row.locator('a');
+      await expect(links).toHaveCount(channels.length);
+      for (const [i, [network, href]] of channels.entries()) {
+        const link = links.nth(i);
+        await expect(link).toHaveAttribute('href', href);
+        await expect(link).toHaveAccessibleName(`Birdy ${on} ${network}`);
+        // The same new-tab behaviour as the footer's other external link (the AlbIT credit), plus rel="me".
+        await expect(link).toHaveAttribute('target', '_blank');
+        expect((await link.getAttribute('rel'))?.split(/\s+/), `${network}: rel`).toEqual(expect.arrayContaining(['me', 'noopener']));
+        await expect(link.locator('svg')).toBeVisible();
+      }
+      await expect(page.locator('a[href*="instagram.com/birdy.community"]')).toHaveCount(0);
+
+      const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent()) ?? '{}');
+      const app = ld['@graph'].find((n: { '@type': string }) => n['@type'] === 'MobileApplication');
+      expect(app.sameAs).toEqual(channels.map(([, href]) => href));
+    });
+  }
+
+  test('kanalerna finns i sidfoten på alla sorters sidor', async ({ page }) => {
+    for (const path of ['/blog/', '/sv/blog/why-birdy/', '/premium/', '/sv/premium/', '/legal/', '/legal/privacy/', '/species/', '/sv/arter/talgoxe/']) {
+      await page.goto(path);
+      const links = page.locator('footer.footer ul.fsoc a');
+      await expect(links, path).toHaveCount(channels.length);
+      expect(await links.evaluateAll((els) => els.map((a) => a.getAttribute('href'))), path).toEqual(channels.map(([, href]) => href));
+    }
+  });
 });
 
 test.describe('utan JavaScript', () => {

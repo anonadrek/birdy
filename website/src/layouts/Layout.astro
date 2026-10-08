@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Analytics from '@vercel/analytics/astro';
 import { getCopy, alternateHref, type Locale } from '../lib/i18n';
-import { ALBIT_URL, ALBIN_URL } from '../lib/links';
+import { ALBIT_URL, ALBIN_URL, SOCIAL_PROFILES } from '../lib/links';
 import { serializeJsonLd } from '../lib/json-ld.mjs';
 
 interface Props {
@@ -61,6 +61,8 @@ const jsonLd = {
       inLanguage: locale,
       image: ogImageUrl,
       creator: albit,
+      // Birdy's own channels (the footer's follow row). On the app, not on AlbIT: they are Birdy's accounts.
+      sameAs: SOCIAL_PROFILES.map((s) => s.href),
     }] : []),
     ...(articleDate ? [{
       '@type': 'BlogPosting',
