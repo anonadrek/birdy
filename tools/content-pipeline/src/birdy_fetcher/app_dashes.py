@@ -30,8 +30,17 @@ _MONTHS = {
         "|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sept|Sep|Oct|Nov|Dec"
     ),
 }
+# A number or month range only becomes "till"/"to" (rule_fix below, on this regex and the
+# month one it builds) when a digit, or a month name, touches the dash (U+2013/U+2014) on
+# BOTH sides. A bare year next to an aside remark that happens to be set off by a dash is not
+# a range and is left for the model step in app_dashes_run.py on purpose.
 _NUMBER_RANGE = re.compile(r"(?<=\d)\s*[\u2013\u2014]\s*(?=\d)")
 _NUMBER = re.compile(r"\d+(?:[.,]\d+)?")
+# A space, no-break space (U+00A0) or narrow no-break space (U+202F) used as a thousands
+# grouping ("1 000"); folded away before counting digits in check_rewrite so a rewrite that
+# groups the same number differently (or not at all, "1000") is not rejected as "talen
+# skiljer sig".
+_THOUSANDS_GROUP_SPACE = re.compile(r"(?<=\d)[ \u00a0\u202f](?=\d{3}\b)")
 # The sentence boundary of web/checks.py (punctuation, space, capital letter, so "bl.a." and "e.g."
 # do not end a sentence), captured so a paragraph can be put back together byte for byte.
 _SENTENCE_BOUNDARY = re.compile(r"((?<=[.?!])\s+(?=[A-ZÅÄÖ]))")
@@ -39,6 +48,25 @@ _ATX_HEADING_MAX_HASHES = 6
 _BOLD_HEADING_MIN_LENGTH = 5
 _MIN_LENGTH_RATIO = 0.7
 _MAX_LENGTH_RATIO = 1.4
+
+# SpeciesTextNoData.kt: sentences the content pipeline writes when Wikipedia has no data, and
+# openings of model meta-commentary about its source instead of species content. Only the
+# HEADING form (isNoDataHeadingLine) is ported here, as is_no_data_heading below: a heading
+# that IS one of these collapses the WHOLE field, same as the app
+# (SpeciesTextCleaner.cleanSpeciesText). isNoDataText (the sentinel as a plain opening
+# paragraph, no heading) and isTrailingNoDataParagraph (the sentinel as the paragraph at the
+# END of an otherwise real text) are deliberately not ported: no real species text combines
+# either of those with a dash.
+_NO_DATA_SENTINELS = (
+    "Migration data unavailable for this species.",
+    "Migrationsdata saknas för denna art.",
+)
+_SOURCE_META_OPENINGS = (
+    "The source text",
+    "The provided source text",
+    "The Wikipedia source text",
+    "Källtexten",
+)
 
 
 def is_hidden_heading(line: str) -> bool:
@@ -56,10 +84,35 @@ def is_hidden_heading(line: str) -> bool:
     return False
 
 
+def is_no_data_heading(line: str) -> bool:
+    """SpeciesTextNoData.isNoDataHeadingLine: `line` is already known to be a heading
+    (`is_hidden_heading`); true when its text, with the `#`/`**` wrapping removed and a
+    trailing dot or space trimmed, IS one of the `_NO_DATA_SENTINELS` (case-insensitively) or
+    opens with one of the `_SOURCE_META_OPENINGS` phrases, e.g. "# Migration Data Unavailable
+    for This Species" or "# Migration data unavailable for this species.".
+    """
+    inner = line.strip()
+    if inner.startswith("#"):
+        inner = inner.lstrip("#").strip()
+    elif inner.startswith("**") and inner.endswith("**"):
+        inner = inner[2:-2].strip()
+    normalized = inner.rstrip(". ").lower()
+    if not normalized:
+        return False
+    if any(normalized == sentinel.rstrip(".").lower() for sentinel in _NO_DATA_SENTINELS):
+        return True
+    return any(normalized.startswith(opening.lower()) for opening in _SOURCE_META_OPENINGS)
+
+
 def visible_line_indexes(lines: list[str]) -> range:
-    """The lines the app shows: all, except a first line that is a heading."""
-    start = 1 if lines and is_hidden_heading(lines[0]) else 0
-    return range(start, len(lines))
+    """The lines the app shows: all, except a first line that is a heading. When that
+    heading is a no-data heading (`is_no_data_heading`), the app collapses the WHOLE field to
+    its own empty-state text instead (SpeciesTextCleaner.cleanSpeciesText), so nothing is
+    visible, not even the paragraph that follows.
+    """
+    if lines and is_hidden_heading(lines[0]):
+        return range(0, 0) if is_no_data_heading(lines[0]) else range(1, len(lines))
+    return range(0, len(lines))
 
 
 def rule_fix(line: str, lang: str) -> str:
@@ -126,12 +179,19 @@ def scan_species(path: Path) -> SpeciesScan:
     return SpeciesScan(str(data["id"]), path, data, fixed, sentences, rule_fixes)
 
 
+def _grouped_numbers(text: str) -> list[str]:
+    """`_NUMBER.findall`, after folding away a thousands-grouping space
+    (`_THOUSANDS_GROUP_SPACE`) so "1 000" counts as the same number as "1000".
+    """
+    return _NUMBER.findall(_THOUSANDS_GROUP_SPACE.sub("", text))
+
+
 def check_rewrite(original: str, rewritten: str) -> list[str]:
     """Code checks on a model's rewrite of one sentence; empty when it may be used."""
     problems: list[str] = []
     if DASH.search(rewritten):
         problems.append("tankstreck kvar")
-    if Counter(_NUMBER.findall(original)) != Counter(_NUMBER.findall(rewritten)):
+    if Counter(_grouped_numbers(original)) != Counter(_grouped_numbers(rewritten)):
         problems.append("talen skiljer sig")
     if original.count("*") != rewritten.count("*"):
         problems.append("betoningen (*) skiljer sig")
@@ -166,7 +226,11 @@ def apply_rewrites(scan: SpeciesScan, rewrites: dict[str, str]) -> dict[str, Any
 
 
 def dump_species(data: dict[str, Any], path: Path) -> None:
-    """The settings of yaml_writer.write_species_yaml, so a field nobody touched keeps its form."""
+    """The same settings as yaml_writer.write_species_yaml, so a field nobody touched keeps
+    its form: a file written by write_species_yaml round-trips byte for byte. A file whose
+    long lines were wrapped by another tool may be rewrapped at 80 columns, with the parsed
+    data identical either way.
+    """
     path.write_text(
         yaml.safe_dump(data, sort_keys=False, allow_unicode=True, default_flow_style=False),
         encoding="utf-8",

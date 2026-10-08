@@ -14,6 +14,7 @@ from birdy_fetcher.app_dashes import (
     check_rewrite,
     dump_species,
     is_hidden_heading,
+    is_no_data_heading,
     rule_fix,
     scan_species,
     split_sentences,
@@ -24,9 +25,16 @@ HEADING_AND_TWO_DASHES = (
     "Lätet — ett vasst pip — hörs i maj. Den häckar i skog."
 )
 
+NO_DATA_HEADING_WITH_DASH_PARAGRAPH = (
+    "# Migration data unavailable for this species.\n\nLätet — ett vasst pip — hörs i maj."
+)
+
 
 def write_species(
-    tmp_path: Path, description_sv: str, description_en: str = "A plain text."
+    tmp_path: Path,
+    description_sv: str,
+    description_en: str = "A plain text.",
+    migration_en: str | None = None,
 ) -> Path:
     data: dict[str, Any] = {
         "id": "Q1",
@@ -37,6 +45,8 @@ def write_species(
         "marginalia": {"sv": None},
         "review_notes": "Anteckning — rörs inte.",
     }
+    if migration_en is not None:
+        data["migration"]["en"] = migration_en
     path = tmp_path / "paridae" / "Q1.yaml"
     path.parent.mkdir(parents=True, exist_ok=True)
     dump_species(data, path)
@@ -53,6 +63,17 @@ def test_hidden_heading_follows_the_app_cleaner() -> None:
     assert not is_hidden_heading("**Talgoxen är en vanlig fågel.**")
     assert not is_hidden_heading("**Talgoxen** är en **vanlig** fågel")
     assert not is_hidden_heading("")
+
+
+def test_is_no_data_heading_matches_the_app_cleaner() -> None:
+    # Real corpus forms (Q3178456.yaml, Q85758401.yaml): title case without a trailing dot, and
+    # sentence case with one.
+    assert is_no_data_heading("# Migration Data Unavailable for This Species")
+    assert is_no_data_heading("# Migration data unavailable for this species.")
+    assert is_no_data_heading("# Migrationsdata saknas för denna art.")
+    assert is_no_data_heading("# The provided source text contains only taxonomy.")
+    assert not is_no_data_heading("# Talgoxe – Förekomst i Skandinavien och Nordeuropa")
+    assert not is_no_data_heading("# Flyttning")
 
 
 def test_rule_fix_turns_number_and_month_ranges_into_words() -> None:
@@ -91,6 +112,16 @@ def test_scan_skips_the_hidden_heading_and_applies_the_rules(tmp_path: Path) -> 
     assert scan.fixed[("migration", "sv")] == "Flyttar i mars till april."
 
 
+def test_scan_skips_a_whole_field_behind_a_no_data_heading(tmp_path: Path) -> None:
+    scan = scan_species(
+        write_species(
+            tmp_path, HEADING_AND_TWO_DASHES, migration_en=NO_DATA_HEADING_WITH_DASH_PARAGRAPH
+        )
+    )
+    assert not any(s.field == "migration" and s.lang == "en" for s in scan.sentences)
+    assert ("migration", "en") not in scan.fixed
+
+
 def test_check_rewrite_accepts_a_plain_rewrite() -> None:
     assert check_rewrite("Lätet — ett pip — hörs i maj.", "Lätet, ett pip, hörs i maj.") == []
 
@@ -107,6 +138,16 @@ def test_check_rewrite_names_each_problem() -> None:
     assert any(
         p.startswith("längden") for p in check_rewrite("Lätet — ett pip — hörs i maj.", "Ja.")
     )
+
+
+def test_check_rewrite_folds_a_space_grouped_thousands_separator() -> None:
+    assert check_rewrite("Cirka 1 000 individer.", "Cirka 1000 individer.") == []
+    assert "talen skiljer sig" in check_rewrite("Cirka 1 000 individer.", "Cirka 100 individer.")
+
+
+def test_check_rewrite_folds_a_no_break_space_thousands_separator() -> None:
+    assert check_rewrite("Cirka 1 000 individer.", "Cirka 1000 individer.") == []
+    assert check_rewrite("Cirka 1 000 individer.", "Cirka 1000 individer.") == []
 
 
 def test_apply_rewrites_changes_only_the_target_sentence(tmp_path: Path) -> None:
