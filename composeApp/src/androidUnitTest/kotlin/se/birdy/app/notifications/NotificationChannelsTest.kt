@@ -33,14 +33,17 @@ class NotificationChannelsTest {
         val daily = manager.getNotificationChannel(NotificationChannels.DAILY_BIRD)
         assertEquals("Bird of the day", daily.name)
         assertEquals("A species to look out for, every morning.", daily.description)
+        assertEquals(NotificationManager.IMPORTANCE_DEFAULT, daily.importance)
 
         val recap = manager.getNotificationChannel(NotificationChannels.WEEKLY_RECAP)
         assertEquals("Weekly recap", recap.name)
         assertEquals("Your week in the field, Sunday evening.", recap.description)
+        assertEquals(NotificationManager.IMPORTANCE_DEFAULT, recap.importance)
 
         val trophy = manager.getNotificationChannel(NotificationChannels.TROPHY_PROGRESS)
         assertEquals("Badge progress", trophy.name)
         assertEquals("Once a week: how close you are to your next badge.", trophy.description)
+        assertEquals(NotificationManager.IMPORTANCE_DEFAULT, trophy.importance)
     }
 
     @Test
@@ -77,9 +80,12 @@ class NotificationChannelsTest {
         val daily = manager.getNotificationChannel(NotificationChannels.DAILY_BIRD)
         assertEquals("Bird of the day", daily.name)
         assertEquals("A species to look out for, every morning.", daily.description)
-        // Confirmed empirically (this Robolectric version): ShadowNotificationManager models the
-        // update on an existing channel id as real Android does, keeping importance and updating
-        // only name/description, rather than replacing the stored channel outright.
+        // Confirmed empirically (this Robolectric version): ShadowNotificationManager's update on
+        // an existing channel id sets name and description and lowers importance whenever the
+        // requested value is lower than the current one — it does not model Android's real
+        // user-locked fields, where importance never changes on an update at all. Both keep LOW
+        // here only because the app requests DEFAULT, which is higher than the LOW set above;
+        // this assertion checks Robolectric's update rule, not the app's code.
         assertEquals(
             NotificationManager.IMPORTANCE_LOW,
             daily.importance,

@@ -19,6 +19,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.play.core.review.ReviewManagerFactory
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +30,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import kotlinx.datetime.Clock
 import se.birdy.app.App
 import se.birdy.app.SpeciesRepositoryProvider
@@ -281,9 +283,23 @@ class MainActivity : AppCompatActivity() {
         }
         lifecycleScope.launch {
             // The channel names and descriptions show in Android's settings even when
-            // notifications are off (1.3.1 punkt 12), so this runs unconditionally.
-            se.birdy.app.notifications.NotificationChannels
-                .createOrUpdate(applicationContext, appGraph.strings)
+            // notifications are off (1.3.1 punkt 12), so this runs unconditionally, in its
+            // own launch, off the main thread: a rename failure (binder/OEM failure, a
+            // future empty translation) must never crash the app or skip the scheduling
+            // below, which runs in its own unchanged launch.
+            @Suppress("TooGenericExceptionCaught") // A channel rename is cosmetic; it must never take the app down.
+            try {
+                withContext(Dispatchers.IO) {
+                    se.birdy.app.notifications.NotificationChannels
+                        .createOrUpdate(applicationContext, appGraph.strings)
+                }
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                android.util.Log.w("Birdy", "Notification channel rename failed", e)
+            }
+        }
+        lifecycleScope.launch {
             val prefs = appGraph.userPreferences
             val notificationsOn =
                 NotificationManagerCompat.from(this@MainActivity).areNotificationsEnabled()
