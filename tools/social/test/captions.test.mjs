@@ -1,13 +1,13 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildCaptions, creditLine, hook, linkFor, nameTag, voiceWord, youtubeTitle, firstSentence } from '../lib/captions.mjs';
+import { buildCaptions, creditLine, hook, linkFor, nameTag, voiceWord, youtubeTitle, firstSentence, withSwedishName } from '../lib/captions.mjs';
 import { record, withAudio, withHero, approved } from './fixtures.mjs';
 
 const CREDIT = 'Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons, edited';
 const CREDIT_TRIMMED = 'Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons, trimmed and edited';
 const CREDIT_URLS =
   'Photo: Julian Herzog, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:x.jpg), cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Pica_pica.ogg), edited';
-const TAGS = '#birds #birdwatching #birdsong #birding #birdy #EurasianMagpie';
+const TAGS = '#birds #birdwatching #birdsong #birding #birdy #EurasianMagpie #fåglar #fågelskådning';
 
 test('credit line, exact string: the sound is always "edited"', () => {
   assert.equal(creditLine(record()), CREDIT);
@@ -146,4 +146,26 @@ test('YouTube title is at most 100 characters', () => {
   const huge = record({ names: { en: 'B'.repeat(140), sv: 'x', scientific: 'y' } });
   assert.ok(youtubeTitle(huge).length <= 100);
   for (const r of [record(), long, huge]) assert.ok(buildCaptions(r).youtube.title.length <= 100);
+});
+
+// Albin 2026-10-08: everything in English, with the bird's Swedish name in brackets after the English one.
+test('withSwedishName: the Swedish name in brackets after the first mention of the English name', () => {
+  assert.equal(withSwedishName('The Eurasian Magpie is a black and white crow.', record()), 'The Eurasian Magpie (Skata) is a black and white crow.');
+  assert.equal(withSwedishName('Listen to the song of the Eurasian Magpie.', record()), 'Listen to the song of the Eurasian Magpie (Skata).');
+  // The lead may write the name in lower case.
+  assert.equal(withSwedishName('The eurasian magpie nests in tall trees.', record()), 'The eurasian magpie (Skata) nests in tall trees.');
+  // A sentence that does not name the bird gets the Swedish name as its own short line.
+  assert.equal(withSwedishName('It is about 44 cm long.', record()), 'It is about 44 cm long. Swedish name: Skata.');
+  // No Swedish name, or the same as the English one: unchanged.
+  assert.equal(withSwedishName('The Eurasian Magpie is a crow.', record({ names: { en: 'Eurasian Magpie', sv: '', scientific: 'Pica pica' } })), 'The Eurasian Magpie is a crow.');
+});
+
+test('every caption opens with the Swedish name and ends with the Swedish hashtags', () => {
+  const c = buildCaptions(approved(record({ publish: true }), 'The Eurasian Magpie is a black and white crow. It has a long tail.'));
+  for (const text of [c.instagram, c.facebook, c.youtube.description]) {
+    assert.match(text, /^The Eurasian Magpie \(Skata\) is a black and white crow\.\n\n/);
+    assert.match(text, /#fåglar #fågelskådning$/);
+  }
+  // The YouTube title stays short English.
+  assert.equal(c.youtube.title, 'What does the Eurasian Magpie sound like? #shorts');
 });

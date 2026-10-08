@@ -8,6 +8,8 @@ export const SHARE_ALIKE_LINE = `Video licensed ${VIDEO_SA_LICENCE} (${VIDEO_SA_
 export const SITE = 'https://birdy.community/';
 export const CTA = 'Identify birds by sound with the free Birdy app';
 export const BASE_TAGS = ['#birds', '#birdwatching', '#birdsong', '#birding', '#birdy'];
+/** The captions are English; these two keep Birdy findable for Swedish birders (Albin 2026-10-08). */
+export const SWEDISH_TAGS = ['#fåglar', '#fågelskådning'];
 export const YOUTUBE_TITLE_MAX = 100;
 
 const DASHES = /[\u2013\u2014]/;
@@ -89,7 +91,23 @@ export function nameTag(record) {
 }
 
 export function hashtags(record) {
-  return [...BASE_TAGS, nameTag(record)];
+  return [...BASE_TAGS, nameTag(record), ...SWEDISH_TAGS];
+}
+
+/**
+ * The bird's Swedish name in brackets after the first mention of its English name (Albin 2026-10-08: all
+ * captions in English, with the Swedish name), "The Eurasian Magpie (Skata) is a crow". A sentence that does
+ * not name the bird gets "Swedish name: Skata." after it. Unchanged when there is no Swedish name, or it is
+ * the same as the English one.
+ */
+export function withSwedishName(text, record) {
+  const en = String(record.names?.en ?? '').trim();
+  const sv = String(record.names?.sv ?? '').trim();
+  if (!sv || sv.toLowerCase() === en.toLowerCase()) return text;
+  const at = en ? text.toLowerCase().indexOf(en.toLowerCase()) : -1;
+  if (at < 0) return `${text} Swedish name: ${sv}.`;
+  const end = at + en.length;
+  return `${text.slice(0, end)} (${sv})${text.slice(end)}`;
 }
 
 export function youtubeTitle(record) {
@@ -116,7 +134,7 @@ export function buildCaptions(record, { trimmed = false } = {}) {
   const creditWithUrls = creditLine(record, { trimmed, withUrls: true });
   const sa = usesShareAlike(record);
   const tags = hashtags(record).join(' ');
-  const first = hook(record);
+  const first = withSwedishName(hook(record), record);
   const ctaWithLink = record.publish === true ? `${CTA}. More about the ${record.names.en}: ${link}` : `${CTA}: ${link}`;
 
   const credits = (c) => (sa ? `${c}\n${SHARE_ALIKE_LINE}` : c);
