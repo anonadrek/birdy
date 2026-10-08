@@ -15,7 +15,7 @@
 // Plain JS, so the unit tests run it with node --test and the Astro components import it as is.
 import { readdirSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
-import { appSpeciesSnapshotPath, isAppLive } from './release.mjs';
+import { APP_1_3_LIVE_FROM, appSpeciesSnapshotPath, isAppLive } from './release.mjs';
 
 export const MONTH_KEYS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 export const NORDIC_BUCKET = new Set(['SE', 'NO', 'FI', 'DK']);
@@ -124,13 +124,14 @@ export function selectAppDailyBird(species, date) {
 /**
  * What the home page shows (plan Task 1): the app's bird (`appQid`, from selectAppDailyBird) when it has a species
  * page in this build, with the line "the same bird as in the app today" from the day 1.3 is live (APP_1_3_LIVE_FROM
- * in release.mjs; before it the phones run 1.2's old picker). Otherwise a pick among the species with a page, with
- * the same seed, so it stays the same all day, and without that line. Null when no species has a page.
- * @param {{ appQid: string | null, pageQids: string[], date: { year: number, month: number, day: number, iso: string } }} input
+ * in release.mjs, `liveFrom` here; before it, and while 1.3 has no date, the phones run 1.2's old picker). Otherwise a
+ * pick among the species with a page, with the same seed, so it stays the same all day, and without that line. Null
+ * when no species has a page.
+ * @param {{ appQid: string | null, pageQids: string[], date: { year: number, month: number, day: number, iso: string }, liveFrom?: string | null }} input
  * @returns {{ qid: string, appQid: string | null, sameAsApp: boolean } | null}
  */
-export function siteDailyBird({ appQid, pageQids, date }) {
-  if (appQid && pageQids.includes(appQid)) return { qid: appQid, appQid, sameAsApp: isAppLive(date.iso) };
+export function siteDailyBird({ appQid, pageQids, date, liveFrom = APP_1_3_LIVE_FROM }) {
+  if (appQid && pageQids.includes(appQid)) return { qid: appQid, appQid, sameAsApp: isAppLive(date.iso, liveFrom) };
   if (pageQids.length === 0) return null;
   const sorted = [...pageQids].sort(byCodeUnits);
   return { qid: sorted[new KotlinRandom(daySeed(date)).nextInt(sorted.length)], appQid, sameAsApp: false };

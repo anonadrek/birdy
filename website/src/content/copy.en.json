@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Birdy: Identify birds and keep a field journal",
-    "description": "Identify 839 European bird species by photo, camera or song. Save sightings in a private field journal, explore the bird guide and use Birdy offline. Available for Android; coming to iPhone.",
+    "description": "Identify 839 European bird species by photo, camera or song. Save sightings in a private field journal and explore the bird guide offline. Available for Android; coming to iPhone.",
     "ogLocale": "en_US",
     "htmlLang": "en"
   },
@@ -55,8 +55,8 @@
     "lead": "The same three ways in as in the app. Birdy always shows how sure it is, and you decide what gets saved.",
     "free": "Free",
     "rows": [
-      { "title": "Live with the camera", "body": "Point at the bird. Birdy looks several times a second and shows the species it sees." },
-      { "title": "From a photo", "body": "Pick a picture from your gallery, crop around the bird and let Birdy take a look." },
+      { "title": "Live with the camera", "body": "Point at the bird. Birdy looks several times a second and shows the species it sees.", "free": true },
+      { "title": "From a photo", "body": "Pick a picture from your gallery, crop around the bird and let Birdy take a look.", "free": true },
       { "title": "Listen to the song", "body": "Record the song and Birdy suggests the species. Sound ID is free for everyone.", "free": true }
     ]
   },
@@ -206,15 +206,10 @@
         {
           "when": "{date}",
           "what": "Birdy 1.3.",
-          "more": "Premium can be bought in Google Play, for a year or for good.",
-          "whenSoon": "October 2026",
+          "more": "Premium can be bought in Google Play, for a year or for good. Anyone who used Birdy before 1.3 keeps Premium for free.",
+          "whenSoon": "Next",
           "whatSoon": "Birdy 1.3 is coming.",
-          "moreSoon": "Premium can then be bought in Google Play, for a year or for good."
-        },
-        {
-          "when": "17 October 2026, 00:00 Swedish time",
-          "what": "The cutoff for early field members.",
-          "more": "If you started using Birdy before then, you keep Premium for free."
+          "moreSoon": "Premium can then be bought in Google Play, for a year or for good. Anyone who used Birdy before 1.3 keeps Premium for free."
         },
         {
           "when": "Soon",
@@ -295,11 +290,11 @@
       "seal": "Early field member",
       "headline": "Here from *the start?*",
       "bigBefore": "Then Premium is already yours.",
-      "bigMark": "If you started using Birdy before 17 October 2026, 00:00 Swedish time, you keep Premium for free, for as long as you have the app.",
+      "bigMark": "If you used Birdy before version 1.3, you keep Premium for free, for as long as you have the app.",
       "bigAfter": "A thank-you for being here while Birdy was new.",
       "lead": "You don't need to do anything. Update the app, and the thank-you screen greets you the next time you open it.",
-      "leadSoon": "You don't need to do anything. When Birdy 1.3 arrives in October, update the app, and the thank-you screen greets you the next time you open it.",
-      "small": "The app works this out on your phone and sends nothing anywhere. If Google's backup is on, the proof travels with it when you change phones.",
+      "leadSoon": "You don't need to do anything. When Birdy 1.3 arrives, update the app, and the thank-you screen greets you the next time you open it.",
+      "small": "The app works this out on your phone and sends nothing anywhere. If Google's backup is on, the proof travels with it when you change phones. If you uninstall the app without a backup, or clear the app's data, the proof is gone.",
       "alt": "The thank-you screen in Birdy: Early field member, Premium is yours. Forever."
     },
     "buy": {
@@ -312,7 +307,7 @@
       ],
       "stepsSoon": [
         "Get Birdy from Google Play.",
-        "Once Birdy 1.3 is out in October, open Premium in the app, for example under Settings.",
+        "Once Birdy 1.3 is out, open Premium in the app, for example under Settings.",
         "Choose a year or for good and pay in Google Play."
       ],
       "faqLabel": "Questions about Premium",
