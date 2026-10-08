@@ -71,32 +71,33 @@ image_refs:
 - role: hero
   path: Q25634/hero.webp
   width: 2400
-  height: 1600
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/22539273@N00">Guilhem
-    Vellut</a> from Annecy, France
-  source_url: https://commons.wikimedia.org/wiki/File:Chroicocephalus ridibundus (46028272474).jpg
-  commons_filename: Chroicocephalus ridibundus (46028272474).jpg
+  height: 1590
+  license: CC BY-SA 3.0
+  author: ArildV
+  source_url: https://commons.wikimedia.org/wiki/File:Chroicocephalus ridibundus 2012a.jpg
+  commons_filename: Chroicocephalus ridibundus 2012a.jpg
 - role: secondary
   path: Q25634/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
-    Lours">Alexis Lours</a>
+  author: Alexis Lours
   source_url: https://commons.wikimedia.org/wiki/File:Black-headed Gull 2025 10 18.jpg
   commons_filename: Black-headed Gull 2025 10 18.jpg
 - role: secondary
   path: Q25634/secondary-2.webp
   width: 1800
-  height: 1350
+  height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
-  source_url: https://commons.wikimedia.org/wiki/File:Chroicocephalus ridibundus (19544550212).jpg
-  commons_filename: Chroicocephalus ridibundus (19544550212).jpg
+  author: Becky Matsubara
+  source_url: https://commons.wikimedia.org/wiki/File:Black-headed Gull (breeding
+    plumage) (48025438576).jpg
+  commons_filename: Black-headed Gull (breeding plumage) (48025438576).jpg
 review_status: approved
-review_notes: "Skrattmås — Chroicocephalus ridibundus i sommardräkt; allmän SE-art överallt vid vatten."
+review_notes: 'Skrattmås — Chroicocephalus ridibundus i sommardräkt; allmän SE-art överallt vid vatten.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T20:01:57.743435+00:00'
 sources:
   wikipedia_sv_revision: '58974944'

@@ -3,11 +3,18 @@ import '../styles/global.css';
 import Analytics from '@vercel/analytics/astro';
 import { getCopy, alternateHref, type Locale } from '../lib/i18n';
 import { ALBIT_URL, ALBIN_URL } from '../lib/links';
+import { serializeJsonLd } from '../lib/json-ld.mjs';
 
 interface Props {
   locale: Locale;
   pathname: string;
   noAlternateLocale?: boolean;
+  /** The other language's path when the two languages use different slugs (species pages). */
+  alternatePath?: string;
+  /** Adds `<meta name="robots" content="noindex, follow">` (small groups and unpublished preview pages). */
+  noindex?: boolean;
+  /** Extra schema.org nodes appended to the page's @graph. */
+  jsonLd?: Record<string, unknown>[];
   title?: string;
   description?: string;
   articleDate?: string;
@@ -16,16 +23,20 @@ interface Props {
   ogImageAlt?: string;
 }
 
-const { locale, pathname, noAlternateLocale = false, title, description, articleDate, ogImage, ogImageAlt } = Astro.props;
+const {
+  locale, pathname, noAlternateLocale = false, alternatePath, noindex = false, jsonLd: extraJsonLd = [],
+  title, description, articleDate, ogImage, ogImageAlt,
+} = Astro.props;
 const copy = getCopy(locale);
 const metaTitle = title ?? copy.meta.title;
 const metaDescription = description ?? copy.meta.description;
 const altLocale: Locale = locale === 'en' ? 'sv' : 'en';
-const altPath = alternateHref(locale, pathname);
+const altPath = alternatePath ?? alternateHref(locale, pathname);
 const canonical = new URL(pathname, Astro.site).toString();
-// ?v=2: the share images changed to espresso (2026-09-28); bump when they are regenerated so platforms refetch them.
-const ogImageUrl = new URL(ogImage ?? `/og-field-${locale}.png?v=2`, Astro.site).toString();
-const ogAlt = ogImageAlt ?? (ogImage ? metaTitle : copy.alt.panorama);
+// ?v=3: the share images (tools/generate-og.mjs) became a real robin photo hung as a plate (2026-10-08, the AI robin
+// retired); bump when they are regenerated so platforms refetch them.
+const ogImageUrl = new URL(ogImage ?? `/og-field-${locale}.jpg?v=3`, Astro.site).toString();
+const ogAlt = ogImageAlt ?? (ogImage ? metaTitle : copy.alt.shareImage);
 const englishPath = locale === 'en' ? pathname : altPath;
 const albit = { '@type': 'Organization', name: 'AlbIT AB', url: ALBIT_URL };
 
@@ -71,6 +82,7 @@ const jsonLd = {
         acceptedAnswer: { '@type': 'Answer', text: item.a },
       })),
     }] : []),
+    ...extraJsonLd,
   ],
 };
 ---
@@ -85,6 +97,7 @@ const jsonLd = {
 
     <title>{metaTitle}</title>
     <meta name="description" content={metaDescription} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
 
     <link rel="canonical" href={canonical} />
     {!noAlternateLocale && <link rel="alternate" hreflang={locale} href={canonical} />}
@@ -129,10 +142,41 @@ const jsonLd = {
 
     <meta name="theme-color" content="#2A1D17" />
 
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script is:inline type="application/ld+json" set:html={serializeJsonLd(jsonLd)} />
   </head>
   <body>
+    {/* Past the menu (and the species pages' category bar) to the page's own <main id="main"> (Task 7's review). */}
+    <a href="#main" class="skip-link">{copy.nav.skipToContent}</a>
     <slot />
+    {/*
+      Own visits (spec 2026-09-25 §15): ?va-ignore=1 marks this browser, ?va-ignore=0 removes the mark.
+      A marked browser sends nothing to Vercel Analytics. Runs before the analytics element below.
+      The va-ignore parameter is stripped from the address bar once read, so it does not linger
+      in the URL (shared links, browser history). The cleanup has its own try and runs before
+      any storage access, so the address is cleaned even when storage is blocked. If storage is
+      blocked (some private-browsing modes throw on access), the second catch leaves the visit
+      counted as usual.
+    */}
+    <script is:inline>
+      (function () {
+        var flag = null;
+        try {
+          flag = new URLSearchParams(location.search).get('va-ignore');
+          if (flag !== null) {
+            var u = new URL(location.href);
+            u.searchParams.delete('va-ignore');
+            history.replaceState(history.state, '', u);
+          }
+        } catch (e) {}
+        try {
+          if (flag === '1') localStorage.setItem('birdy-va-ignore', '1');
+          if (flag === '0') localStorage.removeItem('birdy-va-ignore');
+          if (localStorage.getItem('birdy-va-ignore') === '1') {
+            window.webAnalyticsBeforeSend = function () { return null; };
+          }
+        } catch (e) {}
+      })();
+    </script>
     <Analytics />
     <script>
       const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;

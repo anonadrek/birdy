@@ -177,10 +177,9 @@ internal object JournalPdfLayoutIos {
         )
         drawOrnamentRule(M.MARGIN_TOP + 280.0)
         drawText(
-            M.fmt(
-                M.TEASER_FMT,
-                input.stats.speciesSeenThisYear.toString(),
-                input.stats.totalObservationsThisYear.toString(),
+            M.teaser(
+                speciesSeen = input.stats.speciesSeenThisYear,
+                finds = input.stats.totalObservationsThisYear,
             ),
             M.PAGE_W / 2.0,
             M.MARGIN_TOP + 322.0,

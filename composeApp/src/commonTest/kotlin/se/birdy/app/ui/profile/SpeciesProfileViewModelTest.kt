@@ -70,4 +70,27 @@ class SpeciesProfileViewModelTest {
                 cancelAndConsumeRemainingEvents()
             }
         }
+
+    @Test
+    fun openingTheProfileReportsTheOpenOnce() =
+        runTest {
+            var opens = 0
+            SpeciesProfileViewModel(FakeSpeciesRepository(), SpeciesId("Q25485"), Locale.SV, onOpened = { opens++ })
+            assertEquals(1, opens)
+        }
+
+    @Test
+    fun aFailingOpenReportStillShowsTheProfile() =
+        runTest {
+            val repo =
+                FakeSpeciesRepository().apply {
+                    byId.value = mapOf(SpeciesId("Q25485") to talgoxe)
+                }
+            val vm =
+                SpeciesProfileViewModel(repo, SpeciesId("Q25485"), Locale.SV, onOpened = { error("prefs unavailable") })
+            vm.uiState.test {
+                assertEquals(SpeciesProfileUiState.Loaded(talgoxe), awaitItem())
+                cancelAndConsumeRemainingEvents()
+            }
+        }
 }

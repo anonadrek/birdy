@@ -66,6 +66,24 @@ def test_round_trip(tmp_path: Path) -> None:
     assert parsed["abundance"] == "allmän"
 
 
+def test_names_carry_no_former_name_unless_the_species_was_renamed(tmp_path: Path) -> None:
+    out_path = tmp_path / "Q25485.yaml"
+    write_species_yaml(make_data(), out_path)
+    parsed = yaml.safe_load(out_path.read_text(encoding="utf-8"))
+    assert parsed["names"] == {"sv": "Talgoxe", "en": "Great Tit"}
+
+
+def test_a_renamed_species_keeps_its_former_swedish_name(tmp_path: Path) -> None:
+    """Release 1.3.0 Task 7m: the app searches it and shows it as "Tidigare: Sädgås"."""
+    data = make_data()
+    data.common_sv = "Skogsgås"
+    data.former_sv = "Sädgås"
+    out_path = tmp_path / "Q26452.yaml"
+    write_species_yaml(data, out_path)
+    parsed = yaml.safe_load(out_path.read_text(encoding="utf-8"))
+    assert parsed["names"] == {"sv": "Skogsgås", "en": "Great Tit", "former_sv": "Sädgås"}
+
+
 def test_overrides_replace_description() -> None:
     data = make_data()
     overrides = {

@@ -1,0 +1,863 @@
+{
+  "qid": "Q212055",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "I sommardräkt är tobisgrisslan helt svart med en stor vit vingfläck och röda ben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Om sommaren är fjäderdräkten helt svart utom en stor vit vingfläck och röda ben."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Den har spetsig näbb, päronformad kropp och ett relativt litet huvud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har spetsig näbb, päronformad kropp och relativt litet huvud."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "På vintern blir huvudet och undersidan vita medan ovansidan är tvärvattrad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern skiftar färgen på huvudet och undersidan till vitt, medan ovansidan är tvärvattrad."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Vingarna behåller sina färger även i vinterdräkt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingarna behåller dock sina färger."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Näbben är svart med ett rött gap.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Schnabel ist schwarz mit einem roten Schlund."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Undre vingtäckarna och armhålefjädrarna är till största delen vita.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Unterflügeldecken und Achselfedern sind überwiegend weiß."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hane och hona ser likadana ut och kan inte skiljas åt i fält.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "there is no sexual difference in this that can be identified in the field"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Ungfåglar liknar vuxna i vinterdräkt men har mörkare och brunare ovansida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I juvenil dräkt påminner den om adult i vinterdräkt, men ovansidan är mörkare och brunare."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Unga fåglar känns igen på att den vita vingfläcken är fläckig av grå eller bruna fjädrar, vilket syns även på långt håll.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Juveniles and immatures can easily be identified by the spotting of the white wing patch with grey or brown feathers and is easy to see even at far distances in the field."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Tobisgrisslan är 34–37 cm lång och har ett vingspann på 52–58 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tobisgrisslan är med kroppslängden 34–37 cm och vingspannet 52–58 cm"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "size",
+      "sv": "Den väger mellan 300 och 460 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The bodyweight can range from 300 to 460 grams"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Spelande hanar låter med ramsor av fint pipiga ”sipp-sipp-sipp”, ibland sågande ”sipp-sy-sipp-sy” och utdragna ”siiiiiyy”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från spelande hanar hörs ramsor av fint pipiga \"sipp-sipp-sipp-...\", ibland även sågande \"sipp-sy-sipp-sy-sipp-sy...\" och utdragna \"siiiiiyy\"."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Under häckningstiden är lätet en hög vissling.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The call in the breeding season is a high whistle."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Tobisgrisslan häckar på steniga stränder, klippor och öar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tobisgrisslan häckar på steniga stränder, klippor och öar i norra Atlanten"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Under häckningstiden söker den mest föda i kustnära vatten grundare än 50 meter.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "in the breeding season mostly in inshore waters less than 50m in depth"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige häckar atlanttobisgrissla på Västkusten från Bohuslän till nordvästra Skåne.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar dels atlanttobisgrissla (arcticus) på Västkusten, från Bohuslän till nordvästra Skåne"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Östersjötobisgrissla häckar i Östersjön, på Gotland och från Östergötland norrut till finska gränsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "dels östersjötobisgrissla (grylle) i Östersjön, på Gotland och norrut från Östergötland till finska gränsen"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Östersjöfåglarna övervintrar i södra och mellersta Östersjön, medan Västkustens fåglar till stor del flyttar till danska vatten i Kattegatt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Östersjötobisgrissla övervintrar i södra och mellersta delen av Östersjön, medan de på Västkusten i stor utsträckning flyttar till danska farvatten i Kattegatt."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige har minken trängt ut arten till ytterskärgårdar och öar långt från fastlandet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige har den på grund av minken trängts ut till ytterskärgårdar eller öar långt utanför fastlandet."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Från 2025 klassas arten i Sverige som livskraftig i stället för nära hotad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Artens hotstatus i Sverige har från 2025 ändrats från nära hotad (NT) till livskraftig"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Den häckar i små kolonier eller som enstaka par i stenskravel och klippskrevor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tobisgrisslan häckar i små kolonier eller enstaka par i stenskravel och klippskrevor"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Den lägger två ägg, oftast i en bergsspricka eller i en hålighet under en sten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger två ägg oftast i en spricka i berget eller i en hålighet under en sten"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Äggen läggs i maj och ruvas i 28–29 dygn, varefter ungarna stannar i boet ytterligare 35 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen värps i maj, ruvas i 28–29 dygn och ungarna stannar i boet ytterligare 35 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Arten är mycket ortstrogen och paren håller ihop i flera år.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fågeln är mycket ortstrogen och häckar monogamt i par som håller ihop i flera år."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Födan är främst fisk och kräftdjur men också blötdjur, insekter och växtdelar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "huvudsakligen fisk och kräftdjur men också en del blötdjur, insekter och växtdelar"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Viktigaste bytet är tånglake i Östersjön och tejstefisk på svenska västkusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Viktigaste bytet i Östersjön är tånglaken och på Sveriges västkust tejstefisk."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Den flyger tätt över vattnet med snabba, svirrande vingslag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Liksom andra alkor flyger den tätt över vattnet med snabba, svirrande vingslag."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Den dyker från ytan och simmar under vattnet efter föda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tobisgrisslan dyker från ytan och simmar under vattnet efter födan"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Före dykning sticker den ofta ner huvudet i vattnet till ovanför ögonen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Vor dem Tauchen strecken sie häufig den Kopf bis über die Augen ins Wasser."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Östersjötobisgrissla övervintrar i södra och mellersta delen av Östersjön, medan de på Västkusten i stor utsträckning flyttar till danska farvatten i Kattegatt."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Halland, Gotland och Kalmar."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Tobisgrisslan häckar på steniga stränder, klippor och öar, i Sverige både på Västkusten och i Östersjön.",
+          "factIds": [
+            "f14",
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "Minken har trängt ut den till ytterskärgårdar och öar långt från fastlandet.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "I sommardräkt helt svart med stor vit vingfläck och röda ben",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "På vintern vitt huvud och vit undersida, tvärvattrad ovansida, vingarna behåller sina färger",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Spetsig svart näbb med rött gap, päronformad kropp och relativt litet huvud",
+          "factIds": [
+            "f02",
+            "f05"
+          ]
+        },
+        {
+          "text": "Hane och hona är lika, unga fåglar har fläckig vit vingfläck",
+          "factIds": [
+            "f07",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Spelande hanar låter med ramsor av fint pipiga ”sipp-sipp-sipp”, ibland sågande ”sipp-sy-sipp-sy” och utdragna ”siiiiiyy”.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Under häckningstiden är lätet en hög vissling.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Tobisgrisslan är delvis flyttfågel och häckar i Sverige, och den rapporteras året runt.",
+          "factIds": [
+            "s01",
+            "d01"
+          ]
+        },
+        {
+          "text": "Atlanttobisgrissla häckar på Västkusten från Bohuslän till nordvästra Skåne, östersjötobisgrissla i Östersjön, på Gotland och från Östergötland norrut till finska gränsen.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "Östersjöfåglarna övervintrar i södra och mellersta Östersjön, medan Västkustens fåglar till stor del flyttar till danska vatten i Kattegatt.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Halland, Gotland och Kalmar.",
+          "factIds": [
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan är främst fisk och kräftdjur men också blötdjur, insekter och växtdelar.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Viktigaste bytet är tånglake i Östersjön och tejstefisk på västkusten.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Den dyker från ytan och simmar under vattnet efter föda, och före dykningen sticker den ofta ner huvudet i vattnet till ovanför ögonen.",
+          "factIds": [
+            "f28",
+            "f29"
+          ]
+        },
+        {
+          "text": "Den flyger tätt över vattnet med snabba, svirrande vingslag.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Den häckar i små kolonier eller som enstaka par.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Tobisgrissla: så känner du igen arten i sommar- och vinterdräkt, hur lätet låter, vad den äter och var och när den ses i Sverige.",
+      "facts": {
+        "size": {
+          "value": "34 till 37 cm",
+          "factIds": [
+            "f10"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Black Guillemot breeds on stony shores, cliffs and islands, in Sweden both on the west coast and in the Baltic.",
+          "factIds": [
+            "f14",
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "Mink have pushed it out to the outer archipelagos and islands far from the mainland.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "In summer plumage all black with a large white wing patch and red legs",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "In winter white head and underparts, barred upperparts, wings keep their colours",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Pointed black bill with a red gape, pear-shaped body and fairly small head",
+          "factIds": [
+            "f02",
+            "f05"
+          ]
+        },
+        {
+          "text": "Male and female look alike, young birds have a mottled white wing patch",
+          "factIds": [
+            "f07",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Displaying males give series of thin, piping \"sipp-sipp-sipp\", sometimes a sawing \"sipp-sy-sipp-sy\" and drawn-out \"siiiiiyy\".",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "In the breeding season the call is a high whistle.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It is a partial migrant that breeds in Sweden and is reported all year round.",
+          "factIds": [
+            "s01",
+            "d01"
+          ]
+        },
+        {
+          "text": "It breeds on the west coast from Bohuslän to northwest Skåne, on Gotland and from Östergötland north to the Finnish border.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "Baltic birds winter in the southern and central Baltic, west coast birds largely in the Kattegat in Danish waters.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Halland, Gotland and Kalmar.",
+          "factIds": [
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats mainly fish and crustaceans, and also molluscs, insects and plant material.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "The main prey is eelpout in the Baltic and butterfish on the west coast.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "It dives from the surface and swims underwater for food, often first dipping its head in up to above the eyes.",
+          "factIds": [
+            "f28",
+            "f29"
+          ]
+        },
+        {
+          "text": "It flies low over the water with fast, whirring wingbeats.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "It breeds in small colonies or as single pairs.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Black Guillemot: how to recognise it in summer and winter plumage, what its calls sound like, what it eats and where and when it is seen in Sweden.",
+      "facts": {
+        "size": {
+          "value": "34 to 37 cm",
+          "factIds": [
+            "f10"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "af41ba3982a5068b"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "af41ba3982a5068b"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "tobisgrissla",
+    "en": "black-guillemot"
+  },
+  "names": {
+    "sv": "Tobisgrissla",
+    "en": "Black Guillemot",
+    "scientific": "Cepphus grylle"
+  },
+  "family": {
+    "latin": "Alcidae",
+    "sv": "Alkor"
+  },
+  "group": "auks",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q212055/hero.webp",
+      "width": 1600,
+      "height": 1152,
+      "author": "Jacob Spinks",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cepphus_grylle,_Oban_Harbour_1.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q212055/extra.webp",
+      "width": 1200,
+      "height": 866,
+      "author": "gailhampshire",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Black_Guillemots_Cepphus_grylle_(24146121487).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q212055/voice.mp3",
+    "durationSec": 8,
+    "trimmed": false,
+    "author": "Gunther Tschuch",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Papa_Westray_Cepphus_grylle.wav",
+    "sha256": "7e81cf45849461258f30295a0c2740ce5a9b20521eb192359f917d922de67a41"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Tobisgrissla",
+      "revision": "59702618"
+    },
+    "en": {
+      "title": "Black guillemot",
+      "revision": "1357252582"
+    },
+    "de": {
+      "title": "Gryllteiste",
+      "revision": "261286750"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2481312,
+    "totalReports": 47959,
+    "months": [
+      61,
+      76,
+      67,
+      62,
+      67,
+      64,
+      98,
+      62,
+      61,
+      96,
+      100,
+      60
+    ],
+    "counties": {
+      "SE-K": 39,
+      "SE-W": 0,
+      "SE-X": 26,
+      "SE-I": 67,
+      "SE-N": 100,
+      "SE-Z": 0,
+      "SE-F": 0,
+      "SE-H": 57,
+      "SE-G": 0,
+      "SE-BD": 13,
+      "SE-T": 0,
+      "SE-E": 7,
+      "SE-M": 32,
+      "SE-D": 10,
+      "SE-AB": 42,
+      "SE-C": 13,
+      "SE-S": 1,
+      "SE-AC": 29,
+      "SE-Y": 52,
+      "SE-U": 0,
+      "SE-O": 29
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Andelen av alla fågelrapporter är högst i Halland, Gotland och Kalmar."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Its share of all bird reports is highest in Halland, Gotland and Kalmar."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        3010,
+        2610,
+        4246,
+        6055,
+        7615,
+        3930,
+        4630,
+        3082,
+        3108,
+        4810,
+        3161,
+        1556
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-H": 5699,
+        "SE-N": 5690,
+        "SE-O": 5513,
+        "SE-AB": 5438,
+        "SE-M": 4226,
+        "SE-I": 1515,
+        "SE-AC": 1063,
+        "SE-Y": 949,
+        "SE-C": 937,
+        "SE-X": 631,
+        "SE-D": 566,
+        "SE-K": 428,
+        "SE-BD": 403,
+        "SE-E": 372,
+        "SE-S": 3
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

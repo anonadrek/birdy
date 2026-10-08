@@ -1,0 +1,851 @@
+{
+  "qid": "Q25432",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Hanen är övervägande brungul i kroppen med glänsande grönblått huvud och hals.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fasanhannen har en övervägande brungul kroppsfärg med huvud och hals glänsande grönblå."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Stjärten är smal, mycket lång och kilformad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten, som har 16 eller 18 pennor, är smal, mycket lång, kilformad och svagt takformigt hoptryckt."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Hanens huvud är flaskgrönt med en liten tofs och tydliga röda hudflikar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The head is bottle green with a small crest and distinctive red wattle."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Hanar av torquatus-typ har en mer eller mindre tydlig vit halsring.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der torquatus-Typ („Chinesischer Reisfasan“) zeigt einen mehr oder weniger ausgeprägten weißen Halsring"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "sex_age",
+      "sv": "Hanen har en sporre på tarsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tarsen hos hannen är försedd med sporre."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Honan och ungfåglarna är mycket mindre färggranna, med en mattare, fläckigt brun dräkt överallt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The female (hen) and juveniles are much less showy, with a duller mottled brown plumage all over"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Ungfåglar liknar honan men har kortare stjärt, tills unga hanar vid cirka tio veckors ålder får färgglada fjädrar på bröst, huvud och rygg.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Juvenile birds have the appearance of the female with a shorter tail until young males begin to grow characteristic bright feathers on the breast, head and back at about 10 weeks after hatching."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "size",
+      "sv": "Fasanen blir 53–85 cm lång med ett vingspann på 70–90 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den blir 53–85 cm lång, med ett vingspann på 70–90 cm."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Vikten varierar från 0,5 till 3 kg; hanar väger i genomsnitt 1,2 kg och honor 0,9 kg.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Body weight can range from 0.5 to 3 kg (1 to 7 lb), with males averaging 1.2 kg (2 lb 10 oz) and females averaging 0.9 kg (2 lb 0 oz)."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Hanens rop är ett högt, karakteristiskt och ofta upprepat ”gö-göck”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Ruf des Hahns ist ein lautes, charakteristisches und oft gereihtes gö-göck"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Hanens vanligaste rop är revirropet, ett tvåstavigt, högt och omelodiskt ”göö-gock” eller ”kotock”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "ein zweisilbiges, lautes und unmelodisches göö-gock oder kotock"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Hanen ledsagar sitt höga revirrop med ett långt hörbart vingsurr.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "lässt neben einem lauten Go-gock ein weithin hörbares „Flügelpurren“ hören"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Skrämd flyger fasanen upp med ett surrande vingljud och låter ofta ”kok kok kok”.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "with a distinctive \"whirring\" wing sound and often giving kok kok kok calls to alert conspecifics"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Honornas läten är föga iögonfallande och hörs sällan.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Lautäußerungen der Hennen sind wenig auffällig und selten zu vernehmen."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Fasanen vistas helst i lundar och täta snår omgivna av ängar och fält med tillgång till vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fasanen vistas helst i lundar och täta snår, som omges av ängar och fält och erbjuder tillgång till vatten."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Arten finns i skog, jordbruksmark, buskmarker och våtmarker.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "These birds are found in woodland, farmland, scrub, and wetlands."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Fasanen infördes till svenska slottsmiljöer på 1700-talet och har sedan förvildats och fått stor spridning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "på 1700-talet,  men har sedan förvildats och fått stor spridning."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Sverige förekommer den i södra halvan av landet, på Öland och Gotland samt i norr främst längs Östersjökusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige förekommer den i södra halvan av landet, på Öland och Gotland, och i norr, främst utmed Östersjökusten."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Den förvildade svenska populationen anses nå norrut till Medelpad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den förvildade populationen anses förekomma så långt norrut som till Medelpad."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Fasanen saknas nästan helt i norra Fennoskandien.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Auf der iberischen Halbinsel sowie im Norden Fennoskandiens fehlt sie fast ganz."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet är en uppskrapning i marken som kan fodras med torra växtdelar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet består av en uppskrapning i marken, som kan fodras med torra växtdelar"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Honan lägger sju till 17 olivfärgade ägg som hon ruvar i 24–25 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "där honan lägger sju till 17 olivfärgade ägg som hon ruvar i 24–25 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Hanarna lever i månggifte och är mycket stridslystna under häckningstiden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanarna lever i månggifte och är under häckningsperioden mycket stridslystna."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Ungarna växer snabbt, kan flyga efter 12–14 dagar och liknar vuxna redan vid 15 veckors ålder.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "After hatching they grow quickly, flying after 12–14 days, resembling adults by only 15 weeks of age."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Födan, som söks på marken, består av insekter, maskar, bär och frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "som utgörs av insekter, maskar, bär och frön."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Under de första fyra levnadsveckorna äter ungarna främst insekter.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Lediglich in den ersten vier Lebenswochen besteht sie überwiegend aus Insekten"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Fasanen håller sig på marken under dagen och söker först på kvällen upp träd för att övernatta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Först på kvällen uppsöker de lämpliga träd för att övernatta."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Fasanen kan flyga korta sträckor men springer helst.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "While common pheasants are able short-distance fliers, they prefer to run."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden bildar fasaner lösa flockar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Common pheasants are gregarious birds and outside the breeding season form loose flocks."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Grön fasan är mycket lik, men hanen har kortare stjärt, mörkt enhetligt flaskgrönt bröst och buk och saknar alltid halsring.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Green pheasant males on average have a shorter tail than the common pheasant and have darker plumage that is uniformly bottle-green on the breast and belly; they always lack a neck ring."
+        }
+      ],
+      "other": {
+        "scientific": "P. versicolor"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i april och december till februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Södermanland, Gotland och Uppsala."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Fasanen är en hönsfågel som infördes till svenska slottsmiljöer på 1700-talet och sedan har förvildats och fått stor spridning.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Den trivs helst i lundar och täta snår omgivna av ängar och fält med tillgång till vatten.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Hanen är brungul i kroppen med glänsande grönblått huvud och hals",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Stjärten är smal, mycket lång och kilformad",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Hanens flaskgröna huvud har en liten tofs och tydliga röda hudflikar",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Honan är mycket mindre färggrann, med en mattare, fläckigt brun dräkt överallt",
+          "factIds": [
+            "f06"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Hanens vanligaste rop är revirropet, ett högt, tvåstavigt och omelodiskt ”göö-gock” eller ”kotock” som ofta upprepas.",
+          "factIds": [
+            "f11",
+            "f10"
+          ]
+        },
+        {
+          "text": "Ropet åtföljs av ett långt hörbart vingsurr.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "En skrämd fasan flyger upp med surrande vingljud och låter ofta ”kok kok kok”.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Honornas läten hörs sällan.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "I Sverige finns fasanen i södra halvan av landet, på Öland och Gotland och i norr främst längs Östersjökusten, ungefär upp till Medelpad.",
+          "factIds": [
+            "f18",
+            "f19"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i april och december till februari.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Södermanland, Gotland och Uppsala.",
+          "factIds": [
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan söks på marken och består av insekter, maskar, bär och frön.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Fasanen håller sig på marken under dagen och flyger upp i träd först på kvällen för att övernatta.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Den kan flyga korta sträckor men springer helst.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Hanarna är mycket stridslystna under häckningstiden, och utanför den bildar fasaner lösa flockar.",
+          "factIds": [
+            "f23",
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Fasan: så känner du igen hane och hona, hur revirropet och andra läten låter, var den trivs och när arten rapporteras mest.",
+      "facts": {
+        "size": {
+          "value": "53 till 85 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Common Pheasant is a gamebird that was introduced to Swedish castle grounds in the 1700s and has since gone feral and spread widely.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "It prefers groves and dense thickets surrounded by meadows and fields with access to water.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Male has a mainly buff-brown body with a glossy green-blue head and neck",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Tail is narrow, very long and wedge-shaped",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Male's bottle-green head has a small tuft and clear red facial wattles",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Female is far less colourful, with a duller, mottled brown plumage all over",
+          "factIds": [
+            "f06"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The male's most frequent call is the territorial call, a loud, two-syllable, unmusical \"göö-gock\" or \"kotock\", often repeated.",
+          "factIds": [
+            "f11",
+            "f10"
+          ]
+        },
+        {
+          "text": "It is followed by a long, audible whirr of the wings.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "When flushed, it takes off with a whirring of wings and often calls \"kok kok kok\".",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Females are rarely heard.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "In Sweden it lives in the southern half of the country, on Öland and Gotland, and further north mainly along the Baltic coast, reaching about as far as Medelpad.",
+          "factIds": [
+            "f18",
+            "f19"
+          ]
+        },
+        {
+          "text": "It is reported most in April and from December to February.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Södermanland, Gotland and Uppsala.",
+          "factIds": [
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds on the ground on insects, worms, berries and seeds.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It stays on the ground by day and only flies up into trees in the evening to roost.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "It can fly short distances but prefers to run.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Males are very aggressive in the breeding season, and outside it pheasants gather in loose flocks.",
+          "factIds": [
+            "f23",
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Common Pheasant: how to recognise the male and female, what its territorial call sounds like, where it lives and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "53 to 85 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "0a0e973c2059ba8b"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "0a0e973c2059ba8b"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "fasan",
+    "en": "common-pheasant"
+  },
+  "names": {
+    "sv": "Fasan",
+    "en": "Common Pheasant",
+    "scientific": "Phasianus colchicus"
+  },
+  "family": {
+    "latin": "Phasianidae",
+    "sv": "Fasanfåglar"
+  },
+  "group": "gamebirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25432/hero.webp",
+      "width": 1600,
+      "height": 995,
+      "author": "Tlusťa",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Phasianus_colchicus_Konopiste.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25432/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "U.S. Fish and Wildlife Service - Midwest Region",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ring-necked_Pheasant_(27430208127).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25432/voice.mp3",
+    "durationSec": 17,
+    "trimmed": false,
+    "author": "SanoAK: Alexander Kürthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:PhasianusColchicusSlovakia.ogg",
+    "sha256": "1d9b9d4f8520df198c96283c2765c5d009ede2c289d9a3ac41f766eacd373ee2"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Fasan",
+      "revision": "58510647"
+    },
+    "en": {
+      "title": "Common pheasant",
+      "revision": "1372984964"
+    },
+    "de": {
+      "title": "Fasan",
+      "revision": "269917917"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 9752149,
+    "totalReports": 139885,
+    "months": [
+      100,
+      82,
+      78,
+      88,
+      76,
+      55,
+      35,
+      29,
+      37,
+      51,
+      75,
+      88
+    ],
+    "counties": {
+      "SE-K": 84,
+      "SE-W": 7,
+      "SE-X": 11,
+      "SE-I": 95,
+      "SE-N": 74,
+      "SE-Z": 1,
+      "SE-F": 12,
+      "SE-H": 62,
+      "SE-G": 22,
+      "SE-BD": 4,
+      "SE-T": 62,
+      "SE-E": 45,
+      "SE-M": 91,
+      "SE-D": 100,
+      "SE-AB": 58,
+      "SE-C": 93,
+      "SE-S": 11,
+      "SE-AC": 2,
+      "SE-Y": 9,
+      "SE-U": 41,
+      "SE-O": 38
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april och december till februari.",
+        "Andelen av alla fågelrapporter är högst i Södermanland, Gotland och Uppsala."
+      ],
+      "en": [
+        "Reported most in April and December to February.",
+        "Its share of all bird reports is highest in Södermanland, Gotland and Uppsala."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        15189,
+        8661,
+        15295,
+        26497,
+        26491,
+        10397,
+        5017,
+        4365,
+        5839,
+        7828,
+        7247,
+        7003
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-M": 26128,
+        "SE-AB": 16555,
+        "SE-O": 15676,
+        "SE-C": 14503,
+        "SE-H": 13433,
+        "SE-D": 12799,
+        "SE-N": 9189,
+        "SE-E": 5120,
+        "SE-T": 4837,
+        "SE-I": 4683,
+        "SE-U": 2469,
+        "SE-K": 2028,
+        "SE-F": 1351,
+        "SE-G": 1315,
+        "SE-X": 604,
+        "SE-S": 595,
+        "SE-W": 494,
+        "SE-Y": 346,
+        "SE-BD": 263,
+        "SE-AC": 131,
+        "SE-Z": 8
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

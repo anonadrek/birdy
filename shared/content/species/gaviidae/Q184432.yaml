@@ -86,36 +86,33 @@ migration:
 image_refs:
 - role: hero
   path: Q184432/hero.webp
-  width: 2400
-  height: 1600
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Black-throated loon (Gavia arctica)
-    2022.jpg
-  commons_filename: Black-throated loon (Gavia arctica) 2022.jpg
+  width: 2117
+  height: 1588
+  license: CC BY 2.0
+  author: Bengt Nyman
+  source_url: https://commons.wikimedia.org/wiki/File:Gavia arctica EM1B1934 (48009481846).jpg
+  commons_filename: Gavia arctica EM1B1934 (48009481846).jpg
 - role: secondary
   path: Q184432/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/73440891@N05">Daniel
-    Thornton</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Bled - polarni slapnik (Gavia
-    arctica) 1.jpg
-  commons_filename: Bled - polarni slapnik (Gavia arctica) 1.jpg
+  author: Kathy Büscher
+  source_url: https://commons.wikimedia.org/wiki/File:Prachttaucher (1) (34640349480).jpg
+  commons_filename: Prachttaucher (1) (34640349480).jpg
 - role: secondary
   path: Q184432/secondary-2.webp
   width: 1800
-  height: 1350
-  license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/73440891@N05">Daniel
-    Thornton</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Bled - polarni slapnik (Gavia
-    arctica) 2.jpg
-  commons_filename: Bled - polarni slapnik (Gavia arctica) 2.jpg
+  height: 1192
+  license: CC BY 4.0
+  author: Олег Марцун
+  source_url: https://commons.wikimedia.org/wiki/File:Гагара чорношия.jpg
+  commons_filename: Гагара чорношия.jpg
 review_status: approved
-review_notes: "Storlom — hero med vit halsband + grå nacke + svart strupe; allmän SE-art i klara skogssjöar."
+review_notes: 'Storlom — hero med vit halsband + grå nacke + svart strupe; allmän SE-art i klara skogssjöar.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T19:31:30.430502+00:00'
 sources:
   wikipedia_sv_revision: '57937282'

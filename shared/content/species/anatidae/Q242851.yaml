@@ -98,8 +98,7 @@ image_refs:
   width: 2400
   height: 1452
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Wilfredor" class="mw-redirect"
-    title="User:Wilfredor">Wilfredor</a>
+  author: Wilfredor
   source_url: https://commons.wikimedia.org/wiki/File:Cairina moschata momelanotus
     head.jpg
   commons_filename: Cairina moschata momelanotus head.jpg
@@ -108,8 +107,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 3.0
-  author: <a rel="nofollow" class="external text" href="https://web.archive.org/web/20161031041731/http://www.panoramio.com/user/6452510?with_photo_id=115289668">lienyuan
-    lee</a>
+  author: lienyuan lee
   source_url: https://commons.wikimedia.org/wiki/File:紅面鴨 Cairina moschata - panoramio.jpg
   commons_filename: 紅面鴨 Cairina moschata - panoramio.jpg
 - role: secondary
@@ -117,8 +115,7 @@ image_refs:
   width: 1800
   height: 1352
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Nizzan_Cohen" title="User:Nizzan
-    Cohen">Nizzan Cohen</a>
+  author: Nizzan Cohen
   source_url: https://commons.wikimedia.org/wiki/File:Cairina moschata in Ramat Gan
     National Park.jpg
   commons_filename: Cairina moschata in Ramat Gan National Park.jpg

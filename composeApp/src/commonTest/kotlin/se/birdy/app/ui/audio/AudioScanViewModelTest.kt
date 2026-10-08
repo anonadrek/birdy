@@ -90,6 +90,33 @@ private class MultiResultClassifier(
     override fun close() {}
 }
 
+/**
+ * [AudioRecorderApi.start] is not a cancellation point. Invoking [cancelDuringStart] before
+ * returning the handle models Back / DisposableEffect running [AudioScanViewModel.cancelRecording]
+ * while AudioRecord / AVAudioEngine init is still in flight and the VM's handle is still null.
+ */
+private class CancelDuringStartRecorder : AudioRecorderApi {
+    var cancelCount = 0
+        private set
+    lateinit var cancelDuringStart: () -> Unit
+
+    override fun start(
+        onChunk: (samples: ShortArray, rms: Float, totalSamplesSoFar: Int) -> Unit,
+        onCapReached: () -> Unit,
+        onError: (Throwable) -> Unit,
+        maxDurationMs: Long,
+    ): RecorderHandle {
+        cancelDuringStart()
+        return object : RecorderHandle {
+            override suspend fun stopAndFlush(): ShortArray = ShortArray(0)
+
+            override fun cancel() {
+                cancelCount++
+            }
+        }
+    }
+}
+
 @OptIn(ExperimentalCoroutinesApi::class)
 class AudioScanViewModelTest {
     private val stubNormalizer: (ShortArray) -> FloatArray = { FloatArray(it.size) }
@@ -140,6 +167,30 @@ class AudioScanViewModelTest {
                 "auto-stop must reach NavigateToMatch (Analyzing-hang = L1 self-cancel bug), got ${vm.state.value}",
             )
             assertTrue(classifier.callInputs.size >= 2, "classifier called ${classifier.callInputs.size} times")
+        }
+
+    /**
+     * Release 1.3.0 Plan 3 Task 7 review: digital silence (exact zeros: the mic privacy toggle,
+     * another app holding the mic, the emulator) makes BirdNET return NaN for every class. Since
+     * 09a6e0db drops non-finite scores, such a session ended on NoBird with photo tips after up to
+     * 60 s. It is a recording fault: RecordingFailed, and no inference on silent windows.
+     */
+    @Test
+    fun digitalSilence_endsOnRecordingFailed_notNavigateToMatch() =
+        runTest {
+            val classifier = ScriptedClassifier(confidencesPerCall = listOf(0.45f, 0.50f))
+            val recorder = FakeStreamingRecorder(sampleValue = 0)
+            val (vm, _) = makeVm(classifier = classifier, recorder = recorder)
+            vm.onPermissionState(PermissionState.Granted)
+
+            vm.startRecording()
+            recorder.emitChunks(150)
+            advanceUntilIdle()
+            vm.stopRecording()
+            advanceUntilIdle()
+
+            assertEquals(AudioScanState.Error.RecordingFailed, vm.state.value)
+            assertEquals(0, classifier.callInputs.size, "silent windows must not be classified")
         }
 
     @Test
@@ -223,6 +274,21 @@ class AudioScanViewModelTest {
 
             assertEquals(AudioScanState.Idle, vm.state.value)
             assertEquals(0, classifier.callInputs.size)
+        }
+
+    @Test
+    fun cancelRecording_duringStart_cancelsTheHandle() =
+        runTest {
+            val recorder = CancelDuringStartRecorder()
+            val (vm, _) = makeVm(recorder = recorder)
+            recorder.cancelDuringStart = { vm.cancelRecording() }
+            vm.onPermissionState(PermissionState.Granted)
+
+            vm.startRecording()
+            advanceUntilIdle()
+
+            assertEquals(1, recorder.cancelCount)
+            assertEquals(AudioScanState.Idle, vm.state.value)
         }
 
     @Test

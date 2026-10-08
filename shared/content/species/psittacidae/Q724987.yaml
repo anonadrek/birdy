@@ -97,8 +97,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Raf24~commonswiki&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Raf24~commonswiki (page does not exist)">Raf24~commonswiki</a>
+  author: Raf24
   source_url: https://commons.wikimedia.org/wiki/File:Myiopsitta monachus, Barcelona.jpg
   commons_filename: Myiopsitta monachus, Barcelona.jpg
 - role: secondary
@@ -106,8 +105,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/25897810@N00">David
-    Berkowitz</a> from New York, NY, USA
+  author: David Berkowitz
   source_url: https://commons.wikimedia.org/wiki/File:Myiopsitta monachus -Santiago,
     Chile -nest-8 (2).jpg
   commons_filename: Myiopsitta monachus -Santiago, Chile -nest-8 (2).jpg
@@ -116,8 +114,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Patriziastrippoli&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Patriziastrippoli (page does not exist)">Patrizia Strippoli</a>
+  author: Patrizia Strippoli
   source_url: https://commons.wikimedia.org/wiki/File:Myiopsitta monachus, feral,
     Italy.jpg
   commons_filename: Myiopsitta monachus, feral, Italy.jpg

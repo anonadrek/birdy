@@ -1,0 +1,225 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../Nav.astro';
+import Footer from '../Footer.astro';
+import Kicker from '../ui/Kicker.astro';
+import JournalHeadline from '../ui/JournalHeadline.astro';
+import CategoryBar from './CategoryBar.astro';
+import { getCopy, type Locale } from '../../lib/i18n';
+import {
+  aboutHref, activeGroups, breadcrumbJsonLd, comparisonHref, comparisonPair, countLabel, getAllSpecies, getComparisons,
+  groupHref, groupPhoto, groupSizes, hubHref, itemListJsonLd, pairNames, searchKey, sortByName, speciesHref,
+} from '../../lib/species';
+import '../../styles/species.css';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getCopy(locale);
+const other: Locale = locale === 'sv' ? 'en' : 'sv';
+const all = await getAllSpecies();
+const sizes = groupSizes(all);
+const groups = activeGroups(all);
+const sorted = sortByName(all, locale);
+const comparisons = (await getComparisons())
+  .map((c) => {
+    const names = pairNames(comparisonPair(c, locale, all), locale);
+    return { href: comparisonHref(c, locale), label: t.species.compareItem.replace('{a}', names[0]).replace('{b}', names[1]) };
+  })
+  .sort((a, b) => a.label.localeCompare(b.label, locale));
+const firstLetter = (name: string) => name.charAt(0).toLocaleUpperCase(locale);
+const letters = [...new Set(sorted.map((s) => firstLetter(s.names[locale])))];
+const pathname = hubHref(locale);
+const n = all.length;
+// Grammar for n=1 ("1 vanlig fågel", not "1 vanliga fåglar"): own copy keys, not countLabel's {n} template,
+// since these are full sentences, not just a number (controller review 2026-10-07). The title doesn't need
+// one for n=1: it already goes through countLabel ("1 art" / "16 arter"), which is correct for every n.
+// n=0 (production right after Task 15's merge, before the first species is published, spec Task 15 Step 4):
+// no count-dependent sentence reads sensibly with "0", so the title gets its own dedicated copy key too
+// (third controller review, same day) instead of rendering "...: 0 arter med foton | Birdy".
+const title = n === 0 ? t.species.titleHubEmpty : t.species.titleHub.replace('{count}', countLabel(n, t));
+const leadText = n === 0 ? t.species.hubLeadEmpty : n === 1 ? t.species.hubLeadOne : t.species.hubLead.replace('{n}', String(n));
+// descHubEmpty, not hubLeadEmpty reused: the English lead ran to 156 characters, one over spec §12's
+// 120-to-155 cap on meta descriptions (Task 8 fix wave); its own, shorter copy key stays in range.
+const description = n === 0 ? t.species.descHubEmpty : n === 1 ? t.species.descHubOne : t.species.descHub.replace('{n}', String(n));
+const crumbs = [
+  { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
+  { name: t.species.crumbHub, href: pathname },
+];
+// At n=0 there is no list to describe: an ItemList with zero items would be a CollectionPage claiming
+// to list species it doesn't have (third controller review, same day). Breadcrumbs alone still apply.
+const jsonLd = n === 0 ? [breadcrumbJsonLd(crumbs)] : [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace(/ \| Birdy$/, ''), locale, sorted)];
+---
+
+<Layout locale={locale} pathname={pathname} alternatePath={hubHref(other)} title={title} description={description} noindex={n === 0} jsonLd={jsonLd}>
+  <Nav locale={locale} variant="solid" switchLangHref={hubHref(other)} />
+  {/* The bar's only chip at n=0 would be "All species (0)": nothing to filter into, so it is hidden
+      along with the rest of the browsing UI below (third controller review, same day). */}
+  {n > 0 && <CategoryBar locale={locale} active="all" search={false} />}
+  <main id="main" tabindex="-1" class="hub wrap">
+    <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
+      <ol>
+        <li><a href={crumbs[0].href} data-crumb>{crumbs[0].name}</a></li>
+        <li><span aria-current="page" data-crumb>{crumbs[1].name}</span></li>
+      </ol>
+    </nav>
+    <Kicker text={t.species.kicker} />
+    <JournalHeadline text={t.species.hubHeadline} level="h1" align="left" size="clamp(38px, 5vw, 60px)" />
+    <p class="lead">{leadText}</p>
+
+    {n > 0 && (
+      <Fragment>
+        {/* Hidden by default: without JavaScript this box can neither filter (the script below) nor
+            submit (it isn't a <form>), so a no-JS visitor gets the plain A-to-Z list below instead of a
+            dead control (controller review 2026-10-07). The script unhides it. A native <search> landmark,
+            not a styling div. */}
+        <search class="hub-search" data-hub-search hidden>
+          <label class="sr-only" for="species-search">{t.species.searchLabel}</label>
+          <input id="species-search" name="q" type="search" placeholder={t.species.searchPlaceholder} autocomplete="off" />
+        </search>
+        {/* Always in the DOM (not inserted by the script), so a screen reader has it registered before the
+            first count change and can announce the ones after (controller review 2026-10-07). Empty, and
+            so silent, outside of a search. */}
+        <p class="sr-only" role="status" data-count data-count-one={t.species.countOne} data-count-many={t.species.countMany}></p>
+
+        {/* The group grid and the comparison list are tall enough to push a short set of search results
+            below the fold on a phone, so the script hides this block entirely while there's a query
+            (controller review 2026-10-07): the A-to-Z results then sit right under the search field. */}
+        <div data-browse>
+          <h2 class="sp-h2">{t.species.hubGroups}</h2>
+          <ul class="groups" role="list">
+            {groups.map((g) => {
+              const photo = groupPhoto(g, all);
+              return (
+                <li>
+                  <a class="gcard" href={groupHref(g, locale)}>
+                    {photo && <Image src={photo} alt="" width={480} widths={[320, 480]} sizes="(max-width: 760px) 45vw, 200px" loading="lazy" decoding="async" />}
+                    <span class="gcard-name">{g.name[locale]}</span>
+                    <span class="gcard-n">{countLabel(sizes.get(g.key) ?? 0, t)}</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+
+          {comparisons.length > 0 && (
+            <Fragment>
+              <h2 class="sp-h2">{t.species.hubCompare}</h2>
+              <ul class="compare-list" role="list">
+                {comparisons.map((c) => <li><a href={c.href} data-compare-link>{c.label}</a></li>)}
+              </ul>
+            </Fragment>
+          )}
+        </div>
+
+        <h2 class="sp-h2" id="a-o">{t.species.hubAll}</h2>
+        <p class="no-results" data-no-results hidden>{t.species.noResults}</p>
+        {letters.map((letter) => (
+          <section class="letter" data-letter>
+            <h3>{letter}</h3>
+            <ul role="list">
+              {sorted.filter((s) => firstLetter(s.names[locale]) === letter).map((s) => (
+                <li data-item data-search={searchKey(s)}>
+                  <a href={speciesHref(s, locale)}><span>{s.names[locale]}</span> <i lang="la">{s.names.scientific}</i></a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+
+        <p class="about-link"><a href={aboutHref(locale)}>{t.species.hubAbout}</a></p>
+      </Fragment>
+    )}
+  </main>
+  <Footer locale={locale} switchLangHref={hubHref(other)} />
+</Layout>
+
+<script>
+  import { matchesSearch, normalizeSearch } from '../../lib/species-search.mjs';
+
+  const wrap = document.querySelector<HTMLElement>('[data-hub-search]');
+  const input = document.querySelector<HTMLInputElement>('#species-search');
+  const browse = document.querySelector<HTMLElement>('[data-browse]');
+  const items = [...document.querySelectorAll<HTMLElement>('[data-search]')];
+  const sections = [...document.querySelectorAll<HTMLElement>('[data-letter]')];
+  const empty = document.querySelector<HTMLElement>('[data-no-results]');
+  const status = document.querySelector<HTMLElement>('[data-count]');
+
+  // The search box only works with JavaScript running (see the markup comment above), so it starts
+  // hidden and is unhidden here, the moment we know the filtering below can actually do something.
+  if (wrap) wrap.hidden = false;
+
+  const apply = () => {
+    const q = normalizeSearch(input?.value ?? '');
+    let shown = 0;
+    for (const item of items) {
+      const hit = matchesSearch(item.dataset.search ?? '', q);
+      item.hidden = !hit;
+      if (hit) shown += 1;
+    }
+    for (const section of sections) section.hidden = !section.querySelector('[data-item]:not([hidden])');
+    if (empty) empty.hidden = shown > 0;
+    if (browse) browse.hidden = Boolean(q);
+    if (status) {
+      const tpl = shown === 1 ? status.dataset.countOne : status.dataset.countMany?.replace('{n}', String(shown));
+      status.textContent = q ? (tpl ?? '') : '';
+    }
+    const url = new URL(location.href);
+    const raw = input?.value.trim() ?? '';
+    if (raw) url.searchParams.set('q', raw);
+    else url.searchParams.delete('q');
+    try {
+      // Safari throttles history.replaceState (SecurityError past a call-rate limit); keeping the URL
+      // in sync with the search box is a nicety, not something the filtering above depends on
+      // (third controller review, same day).
+      history.replaceState(null, '', url);
+    } catch {
+      // Filtering already happened above; losing the URL sync is harmless.
+    }
+  };
+  const params = new URLSearchParams(location.search);
+  if (input && params.has('q')) {
+    input.value = params.get('q') ?? '';
+    input.focus();
+  }
+  apply();
+  input?.addEventListener('input', apply);
+</script>
+
+<style>
+  .hub { padding-top: 26px; padding-bottom: 88px; }
+  /* <search> is a new HTML sectioning element: some engines don't yet default it to block, so it is set
+     explicitly. That same rule would otherwise beat the UA [hidden] rule on specificity and keep the box
+     visible before the script runs; the second declaration restores [hidden] (third controller review,
+     same day). */
+  search.hub-search { display: block; }
+  .hub-search[hidden] { display: none; }
+  .hub-search { margin: 22px 0 0; max-width: 420px; }
+  .hub-search input { width: 100%; box-sizing: border-box; font: inherit; font-size: 15px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--ink); }
+  .hub-search input:focus-visible { outline: 3px solid var(--rust); outline-offset: 2px; }
+  .hub-search input::placeholder { color: var(--muted); opacity: 1; }
+  .groups { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+  .gcard { display: block; height: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 6px; transition: transform .25s var(--ease-paper), box-shadow .25s var(--ease-paper); }
+  .gcard:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(var(--dark-rgb), .12); }
+  .gcard :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
+  .gcard-name { display: block; margin: 8px 4px 0; font-weight: 600; font-size: 14px; }
+  .gcard-n { display: block; margin: 0 4px 4px; font-size: 12.5px; color: var(--muted); }
+  .compare-list { list-style: none; margin: 0; padding: 0; columns: 2 260px; column-gap: 28px; }
+  .compare-list li { break-inside: avoid; padding: 6px 0; border-bottom: 1px dotted var(--line); font-size: 15px; }
+  .compare-list a:hover { color: var(--rust); }
+  .letter { margin-top: 22px; }
+  .letter h3 { font-size: 26px; color: var(--rust); margin: 0 0 8px; }
+  .letter ul { list-style: none; margin: 0; padding: 0; columns: 3 220px; column-gap: 28px; }
+  .letter li { break-inside: avoid; padding: 5px 0; border-bottom: 1px dotted var(--line); font-size: 14.5px; }
+  .letter li[hidden], .letter[hidden] { display: none; }
+  .letter a:hover span { color: var(--rust); }
+  .letter i { font-family: var(--font-script); font-style: normal; font-size: 16px; color: var(--muted); margin-left: 4px; }
+  .no-results { color: var(--muted); }
+  .about-link { margin: 48px 0 0; font-weight: 600; }
+  .about-link a { color: var(--rust); border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+  @media (max-width: 760px) {
+    .groups { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    /* 16px, not the 15px above: below that iOS Safari zooms the page in on focus (controller review 2026-10-07). */
+    .hub-search input { font-size: 16px; }
+  }
+</style>

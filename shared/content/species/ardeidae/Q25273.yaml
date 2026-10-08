@@ -98,7 +98,7 @@ image_refs:
   width: 2009
   height: 2368
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jebulon" title="User:Jebulon">Jebulon</a>
+  author: Jebulon
   source_url: https://commons.wikimedia.org/wiki/File:Héron cendré Ardea cinerea Tiergarten
     Schönbrunn.jpg
   commons_filename: Héron cendré Ardea cinerea Tiergarten Schönbrunn.jpg
@@ -107,8 +107,7 @@ image_refs:
   width: 1800
   height: 1202
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
-    Nivis</a>
+  author: Flocci Nivis
   source_url: https://commons.wikimedia.org/wiki/File:20200720 Ardea cinerea 02.jpg
   commons_filename: 20200720 Ardea cinerea 02.jpg
 - role: secondary
@@ -116,8 +115,7 @@ image_refs:
   width: 1200
   height: 1800
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Stephan_Sprinz" title="User:Stephan
-    Sprinz">Stephan Sprinz</a>
+  author: Stephan Sprinz
   source_url: https://commons.wikimedia.org/wiki/File:Graureiher (Ardea cinerea) auf
     gefrorenem Teich.jpg
   commons_filename: Graureiher (Ardea cinerea) auf gefrorenem Teich.jpg

@@ -97,7 +97,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Sunny365days" title="User:Sunny365days">Sunny365days</a>
+  author: Sunny365days
   source_url: https://commons.wikimedia.org/wiki/File:Emberiza citrinella IMG 4214
     01.jpg
   commons_filename: Emberiza citrinella IMG 4214 01.jpg
@@ -106,8 +106,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Emberiza citrinella (19678972820).jpg
   commons_filename: Emberiza citrinella (19678972820).jpg
 - role: secondary
@@ -115,8 +114,7 @@ image_refs:
   width: 1303
   height: 1800
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
-    Lours">Alexis Lours</a>
+  author: Alexis Lours
   source_url: https://commons.wikimedia.org/wiki/File:Yellowhammer (Emberiza citrinella).jpg
   commons_filename: Yellowhammer (Emberiza citrinella).jpg
 review_status: approved

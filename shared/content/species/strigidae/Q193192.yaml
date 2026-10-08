@@ -98,30 +98,33 @@ image_refs:
   width: 1600
   height: 2400
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Northern hawk owl (Surnia ulula)
     (Schleswig Hostein).jpg
   commons_filename: Northern hawk owl (Surnia ulula) (Schleswig Hostein).jpg
 - role: secondary
   path: Q193192/secondary-1.webp
-  width: 1350
-  height: 1800
+  width: 1800
+  height: 1350
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Daderot" title="User:Daderot">Daderot</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Surnia ulula - Finnish Museum
-    of Natural History - DSC04619.JPG
-  commons_filename: Surnia ulula - Finnish Museum of Natural History - DSC04619.JPG
+  author: Richard Hoeg
+  source_url: https://commons.wikimedia.org/wiki/File:Hawk Ridge, Duluth, United States
+    (Unsplash).jpg
+  commons_filename: Hawk Ridge, Duluth, United States (Unsplash).jpg
 - role: secondary
   path: Q193192/secondary-2.webp
   width: 1800
   height: 1200
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Northern hawk owl with pray
     (Surnia ulula).jpg
   commons_filename: Northern hawk owl with pray (Surnia ulula).jpg
 review_status: approved
-review_notes: "Hero = Surnia ulula (Northern Hawk-Owl / Hökuggla); dagaktiv uggla i barrskog i norra SE."
+review_notes: 'Hero = Surnia ulula (Northern Hawk-Owl / Hökuggla); dagaktiv uggla i barrskog i norra SE.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T21:17:43.914372+00:00'
 sources:
   wikipedia_sv_revision: '59226024'

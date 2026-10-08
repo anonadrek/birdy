@@ -114,8 +114,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Shore Lark (Eremophila alpestris
     flava), Helgoland 2021.jpg
   commons_filename: Shore Lark (Eremophila alpestris flava), Helgoland 2021.jpg
@@ -124,8 +123,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Eremophila alpestris (26611497328).jpg
   commons_filename: Eremophila alpestris (26611497328).jpg
 - role: secondary
@@ -133,8 +131,7 @@ image_refs:
   width: 1800
   height: 1440
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Stephan_Sprinz" title="User:Stephan
-    Sprinz">Stephan Sprinz</a>
+  author: Stephan Sprinz
   source_url: https://commons.wikimedia.org/wiki/File:Horned lark (eremophila alpestris)
     01.jpg
   commons_filename: Horned lark (eremophila alpestris) 01.jpg

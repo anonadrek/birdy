@@ -93,20 +93,17 @@ image_refs:
   path: Q334183/hero.webp
   width: 2400
   height: 1600
-  license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Carduelis carduelis & Emberiza
-    melanocephala, Peštersko Polјe, Serbia 140.jpg
-  commons_filename: Carduelis carduelis & Emberiza melanocephala, Peštersko Polјe,
-    Serbia 140.jpg
+  license: CC BY-SA 4.0
+  author: Tisha Mukherjee
+  source_url: https://commons.wikimedia.org/wiki/File:Black-headed Bunting by Tisha
+    Mukherjee 10.jpg
+  commons_filename: Black-headed Bunting by Tisha Mukherjee 10.jpg
 - role: secondary
   path: Q334183/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
-    Kansara</a>
+  author: Parth Kansara
   source_url: https://commons.wikimedia.org/wiki/File:Emberiza melanocephala 237307853.jpg
   commons_filename: Emberiza melanocephala 237307853.jpg
 - role: secondary
@@ -114,8 +111,7 @@ image_refs:
   width: 1440
   height: 1800
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mdkshots&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Mdkshots (page does not exist)">Mdkshots</a>
+  author: Mdkshots
   source_url: https://commons.wikimedia.org/wiki/File:Black-headed bunting (Emberiza
     melanocephala).jpg
   commons_filename: Black-headed bunting (Emberiza melanocephala).jpg

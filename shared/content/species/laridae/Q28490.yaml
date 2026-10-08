@@ -91,8 +91,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
-    Raju Kasambe">Dr. Raju Kasambe</a>
+  author: Dr. Raju Kasambe
   source_url: https://commons.wikimedia.org/wiki/File:Bridled Tern Onychoprion anaethetus
     04.jpg
   commons_filename: Bridled Tern Onychoprion anaethetus 04.jpg
@@ -101,8 +100,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
-    Raju Kasambe">Dr. Raju Kasambe</a>
+  author: Dr. Raju Kasambe
   source_url: https://commons.wikimedia.org/wiki/File:Bridled Tern Onychoprion anaethetus
     05.jpg
   commons_filename: Bridled Tern Onychoprion anaethetus 05.jpg
@@ -110,12 +108,10 @@ image_refs:
   path: Q28490/secondary-2.webp
   width: 1800
   height: 1350
-  license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
-    Raju Kasambe">Dr. Raju Kasambe</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Lesser Noddy Anous tenuirostris
-    15.jpg
-  commons_filename: Lesser Noddy Anous tenuirostris 15.jpg
+  license: CC BY 2.0
+  author: Greg Schechter
+  source_url: https://commons.wikimedia.org/wiki/File:Tern - Flickr - GregTheBusker.jpg
+  commons_filename: Tern - Flickr - GregTheBusker.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T20:05:20.285676+00:00'

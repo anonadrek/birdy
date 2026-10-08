@@ -14,129 +14,35 @@
     "guide": "Uppslagsverket",
     "privacy": "Integritet",
     "faq": "Frågor",
+    "species": "Arter",
     "switchLang": "EN",
     "switchLangHref": "/",
     "getApp": "Hämta appen",
     "menuOpen": "Öppna menyn",
-    "menuClose": "Stäng menyn"
+    "menuClose": "Stäng menyn",
+    "skipToContent": "Hoppa till innehållet"
   },
   "hero": {
     "kicker": "Fågelguide och fältdagbok",
     "headline": "Känn igen fågeln.",
     "line2": "Bevara stunden.",
-    "note": "Se. Lyssna. Spara.",
-    "sub": "Rikta kameran, välj ett foto eller låt fågeln sjunga. Birdy föreslår arten direkt i telefonen, och du sparar fyndet i din egen fältdagbok.",
-    "metaLabel": "Birdy i korthet",
-    "meta": ["839 europeiska arter", "Fungerar utan täckning", "Inget konto"]
+    "note": "en ny fågel varje dag, här och i appen",
+    "noteFallback": "en ny fågel varje dag",
+    "sub": "Rikta kameran, välj ett foto eller låt fågeln sjunga. Birdy föreslår arten direkt i telefonen, och du sparar fyndet i din egen fältdagbok."
   },
-  "phone": {
-    "match": {
-      "label": "Birdys träffskärm: rödhake, säker match 94 procent, första i fältboken",
-      "kicker": "Match · Fynd nr 12",
-      "species": "Rödhake",
-      "latin": "Erithacus rubecula",
-      "confidence": "Säker match · 94 %",
-      "newSpecies": "Ny art",
-      "first": "Första i din fältbok!",
-      "seal": "Nr 12",
-      "note": "Lägg till en anteckning",
-      "save": "Spara i fältboken",
-      "more": "Inte den? Se fler förslag"
-    },
-    "matchTour": {
-      "label": "Birdys träffskärm: domherre, säker match 91 procent",
-      "kicker": "Match · Fynd nr 24",
-      "species": "Domherre",
-      "latin": "Pyrrhula pyrrhula",
-      "confidence": "Säker match · 91 %",
-      "seal": "Nr 24"
-    },
-    "identify": {
-      "label": "Birdys startskärm Identifiera med dagens fågel, en stjärtmes",
-      "dailyBird": "Dagens fågel",
-      "species": "Stjärtmes",
-      "status": "här just nu.",
-      "latin": "Aegithalos caudatus",
-      "caught": "Inte fångad än",
-      "kicker": "Identifiera",
-      "headline": "Tre sätt att *fånga.*",
-      "weekNote": "7 fynd den här veckan",
-      "startCamera": "Starta kameran",
-      "photoTitle": "Från ett foto",
-      "photoBody": "Välj en bild i galleriet",
-      "listenTitle": "Lyssna på lätet",
-      "listenBody": "Spela in sång eller läte"
-    },
-    "listen": {
-      "label": "Birdys ljud-ID som lyssnar och hör en koltrast",
-      "kicker": "Lyssnar",
-      "headline": "Låt den *sjunga.*",
-      "hearing": "Hör: Koltrast",
-      "hint1": "Håll telefonen stilla.",
-      "hint2": "Birdy stannar själv när den är säker."
-    },
-    "journal": {
-      "label": "Birdys fältbok med 24 arter och veckans uppslag",
-      "kicker": "Mina arter",
-      "headline": "Din *fältbok.*",
-      "stats": [
-        { "value": "24", "label": "arter" },
-        { "value": "9", "label": "stämplar" },
-        { "value": "5", "label": "dagars svit" }
-      ],
-      "weekLabel": "Veckans uppslag",
-      "weekSpecies": "Domherre",
-      "entries": [
-        { "no": "24", "species": "Domherre", "when": "12 jan · Hagaparken" },
-        { "no": "23", "species": "Talgoxe", "when": "10 jan · Trädgården" },
-        { "no": "22", "species": "Sidensvans", "when": "8 jan · Centrum" },
-        { "no": "21", "species": "Stjärtmes", "when": "6 jan · Skogsstigen" }
-      ]
-    },
-    "species": {
-      "label": "Birdys artprofil för talgoxe, stämplad med 12 fynd",
-      "family": "Mesar · Paridae",
-      "name": "Talgoxe",
-      "latin": "Parus major",
-      "stamped": "Stämplad · 12 fynd",
-      "abundance": "Allmän",
-      "status": "Livskraftig (LC)",
-      "aboutLabel": "Om arten",
-      "about": "Talgoxen är en vanlig fågel som förekommer över stora delar av Europa. Den är mycket anpassningsbar och trivs i alla slags skogslandskap, från täta lövskogar till öppnare terränger.",
-      "seasonLabel": "Finns i Sverige",
-      "months": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
-    },
-    "badges": {
-      "label": "Birdys märken med troférummet och tolv stämplar",
-      "kicker": "Märken · Troférum",
-      "headline": "Kom hem med ett *märke.*",
-      "roomLabel": "Ditt troférum",
-      "rank": "Fältmedlem",
-      "trophies": "3 troféer",
-      "unlocked": "upplåsta",
-      "remaining": "kvar att jaga"
-    },
-    "map": {
-      "label": "Birdys fynd-karta med fyra fynd som sigill",
-      "kicker": "Fynd-kartan",
-      "headline": "Överallt du *varit.*"
-    },
-    "season": {
-      "label": "Birdys säsongsstatistik för 2026 med 23 arter och 57 observationer",
-      "kicker": "Säsong 2026",
-      "headline": "Ett *år* i fält.",
-      "species": "arter",
-      "observations": "observationer",
-      "perMonth": "Observationer per månad",
-      "perSeason": "Per säsong",
-      "seasons": ["Vinter 7", "Vår 22", "Sommar 17", "Höst 11"],
-      "mostSeen": "Mest sedda",
-      "top": [
-        { "name": "Talgoxe", "count": "12" },
-        { "name": "Koltrast", "count": "8" }
-      ]
-    },
-    "premiumBadge": "Premium"
+  "daily": {
+    "kicker": "Dagens fågel",
+    "weekdays": ["mån", "tis", "ons", "tors", "fre", "lör", "sön"],
+    "months": ["jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"],
+    "readMore": "Läs om arten",
+    "sameAsApp": "samma fågel som i appen i dag",
+    "chartLabel": "Andel av alla fågelrapporter per månad i Artportalen, högst i {month}"
+  },
+  "monthBirds": {
+    "kicker": "Säsongen just nu",
+    "headline": "Fåglarna i *{month}.*",
+    "note": "ur rapporterna i Artportalen",
+    "lead": "Arter som rapporteras mer i {month} än under resten av året. Listan byts varje månad och leder till artsidorna, med foton, kännetecken och läten."
   },
   "appStoreBadge": {
     "top": "Snart på",
@@ -149,8 +55,8 @@
     "lead": "Samma tre ingångar som i appen. Birdy visar alltid hur säker den är, och det är du som bestämmer vad som sparas.",
     "free": "Gratis",
     "rows": [
-      { "title": "Live med kameran", "body": "Rikta mot fågeln. Birdy tittar flera gånger i sekunden och visar vilken art den ser." },
-      { "title": "Från ett foto", "body": "Välj en bild ur galleriet, beskär runt fågeln och låt Birdy titta." },
+      { "title": "Live med kameran", "body": "Rikta mot fågeln. Birdy tittar flera gånger i sekunden och visar vilken art den ser.", "free": true },
+      { "title": "Från ett foto", "body": "Välj en bild ur galleriet, beskär runt fågeln och låt Birdy titta.", "free": true },
       { "title": "Lyssna på lätet", "body": "Spela in sången så föreslår Birdy arten. Ljud-ID är gratis för alla.", "free": true }
     ]
   },
@@ -173,20 +79,17 @@
     "kicker": "Appen",
     "headline": "Ett varv i *fältboken.*",
     "note": "rakt ur appen",
-    "lead": "Från första träffen till ditt eget uppslagsverk. Så här ser Birdy ut i telefonen.",
+    "lead": "Från första träffen till ditt eget uppslagsverk. Skärmarna är tagna ur Birdy 1.3.",
     "label": "Skärmar ur appen",
     "prev": "Föregående skärm",
     "next": "Nästa skärm",
-    "premium": "Premium",
     "slides": [
-      { "k": "Identifiera", "h": "Tre sätt att fånga", "p": "Kamera, foto eller läte. Dagens fågel visar en art som finns i Sverige just nu.", "premium": false },
-      { "k": "Träff", "h": "Ärlig om hur säker den är", "p": "Birdy visar säkerheten tydligt. Är den osäker får du fler förslag att välja mellan.", "premium": false },
-      { "k": "Ljud-ID · gratis", "h": "Lyssna på lätet", "p": "Spela in sången så föreslår Birdy arten. Ljudidentifieringen är gratis för alla.", "premium": false },
-      { "k": "Fältboken", "h": "Din egen fältbok", "p": "Varje fynd sparas i telefonen. Nya arter får en präglad stämpel.", "premium": false },
-      { "k": "Artprofil", "h": "Allt om arten på ett uppslag", "p": "Foton, beskrivning och när arten finns i Sverige. Du ser direkt om du har stämplat den.", "premium": false },
-      { "k": "Märken", "h": "Kom hem med ett märke", "p": "34 märken att samla, 27 av dem gratis. Troférummet visar allt du har jagat ihop.", "premium": false },
-      { "k": "Fynd-kartan", "h": "Överallt du har varit", "p": "Dina fynd på en egen karta. Platsen sparas bara om du vill, och bara i telefonen.", "premium": true },
-      { "k": "Säsong", "h": "Ett år i fält", "p": "Stora siffror och lugna diagram. Se mönstren i dina fynd, månad för månad.", "premium": true }
+      { "screen": "01-identifiera", "k": "Identifiera", "h": "Tre sätt att fånga", "p": "Kamera, foto eller läte. Överst står Dagens fågel, en ny art varje dag.", "alt": "Birdys startskärm Identifiera: Dagens fågel överst, en råka, och under den Tre sätt att fånga" },
+      { "screen": "07-lyssna", "k": "Ljud-ID", "h": "Lyssna efter sång", "p": "Håll telefonen stilla och låt fågeln sjunga, så föreslår Birdy arten. Ljud-ID är gratis för alla.", "alt": "Birdys ljud-ID: Lyssna efter sång, med en ljudvåg och en knapp att trycka på" },
+      { "screen": "02-match", "k": "Match", "h": "Ärlig om hur säker den är", "p": "Birdy visar hur säker den är. Spara fyndet med en egen anteckning, eller välj bland fler förslag när den är osäker.", "alt": "Birdys träffskärm: en talgoxe, med plats för en anteckning och knappen Spara observation" },
+      { "screen": "03-mina-arter", "k": "Mina arter", "h": "Din egen fältbok", "p": "Varje fynd sparas i telefonen, och varje vecka samlas dina fynd i Veckans uppslag.", "alt": "Mina arter i Birdy: antal arter, fynd och dagars svit, Dagens fågel, Veckans uppslag och de senaste fynden" },
+      { "screen": "04-uppslagsverk", "k": "Uppslagsverk", "h": "Europas fåglar i fickan", "p": "839 arter. Sök på namn, släkte eller familj, eller bläddra i appens grupper.", "alt": "Birdys uppslagsverk: sökfält, grupper som tättingar och änder och gäss, och listan med 839 arter" },
+      { "screen": "05-artprofil", "k": "Artprofil", "h": "Allt om arten på ett uppslag", "p": "Foto, beskrivning, hur vanlig arten är och dess status på den globala rödlistan (IUCN).", "alt": "Artprofilen för talgoxe i Birdy: foto, namn, hur vanlig den är, rödlistestatus och beskrivning" }
     ]
   },
   "guide": {
@@ -201,7 +104,8 @@
     ],
     "mapCaption": "Birdy känner igen fåglar i hela Europa, från trädgårdens stammisar till sällsynta gäster.",
     "fallbackAlt": "Karta över Europa där länderna som Birdy täcker är ifyllda i rost",
-    "attribution": "© MapTiler © OpenStreetMap contributors"
+    "attribution": "© MapTiler © OpenStreetMap contributors",
+    "browse": "Bläddra bland arterna"
   },
   "premium": {
     "kicker": "Birdy Premium",
@@ -211,6 +115,7 @@
     "alwaysFreeLabel": "Alltid gratis:",
     "alwaysFree": "identifiering med kamera, foto och ljud · fältdagboken · 839 arter · 27 märken",
     "purchaseNote": "Köp och priser sköts i appen, via Google Play.",
+    "more": "Allt om Premium",
     "seal": "Premium",
     "features": [
       { "title": "Fynd-kartan", "body": "Se var du har sett dina fåglar" },
@@ -251,6 +156,7 @@
     "indexDescription": "Läs om hur Birdy byggs, hur appen fungerar och fåglarna du kan upptäcka med den. Artiklar och guider på svenska."
   },
   "faq": {
+    "premiumLink": "Priser och vad som ingår",
     "kicker": "Frågor",
     "headline": "Innan du *laddar ner.*",
     "note": "det folk brukar undra",
@@ -258,7 +164,7 @@
       { "q": "Fungerar Birdy utan täckning?", "a": "Ja. Identifiering med kamera, foto och ljud körs i telefonen, och guiden och dagboken finns alltid med. Bara kartbilderna i Premium-kartan behöver uppkoppling." },
       { "q": "Behöver jag ett konto?", "a": "Nej. Öppna appen och börja. Din dagbok finns i telefonen." },
       { "q": "Hur säker är identifieringen?", "a": "Tillräckligt bra för att lära sig av, och ärlig när den är osäker. Varje träff visar hur säker Birdy är, och du bekräftar alltid innan något sparas." },
-      { "q": "Vad kostar Birdy?", "a": "Birdy är gratis att ladda ner och använda. Premium är ett tillval med kartan, PDF-export, säsongsstatistik och extra märken. Priset ser du i appen." },
+      { "q": "Vad kostar Birdy?", "a": "Birdy är gratis att ladda ner och använda. Premium är ett tillval med kartan, PDF-export, säsongsstatistik och extra märken. Priset ser du i appen.", "premium": true },
       { "q": "Finns Birdy för iPhone?", "a": "iPhone-appen är på väg. Android-appen finns att hämta nu, och länken till App Store dyker upp här när iPhone-versionen är ute." }
     ]
   },
@@ -267,6 +173,337 @@
     "headline": "Ta med Birdy *ut i fält.*",
     "note": "vi ses därute",
     "sub": "Gratis att ladda ner. Inget konto. Fungerar utan täckning."
+  },
+  "premiumPage": {
+    "title": "Premium: säsongsstatistik, PDF och fynd-karta | Birdy",
+    "description": "Birdy Premium ger dig säsongsstatistik, fältdagboken som PDF, sju extra märken och kartan över dina fynd. Ljud-ID och allt annat är alltid gratis.",
+    "shareAlt": "Birdy Premium: säsongsstatistikens årsring i appen bredvid orden Hela året som fältornitolog.",
+    "crumbHome": "Birdy",
+    "crumb": "Premium",
+    "crumbLabel": "Brödsmulor",
+    "kicker": "Birdy Premium",
+    "headline": "Hela året som *fältornitolog.*",
+    "note": "ett tillval, aldrig ett måste",
+    "lead": "Allt du behöver för att känna igen och spara fåglar är gratis. Premium är för dig som vill se ditt år i fält: årsringen, fältdagboken som PDF, sju extra märken och kartan över dina fynd.",
+    "seePrices": "Se priserna",
+    "heroSeal": "Premium",
+    "heroHand": "ditt år som en ring",
+    "heroAlt": "Säsongsstatistiken i Birdy: årets fynd som en ring, månad för månad",
+    "situation": {
+      "kicker": "Läget",
+      "headline": "Så ligger det till, *ärligt talat.*",
+      "story": [
+        "Birdy är en liten, självständig app från AlbIT AB i Solna. Appen har ingen reklam, ingen spårning och inget konto, och din fältdagbok stannar i din telefon.",
+        "När Birdy kom ut i juni var Premium öppet för alla. Från och med Birdy 1.3 köper man Premium i Google Play. Det är Premium som gör att vi kan fortsätta bygga Birdy, och nästa stora steg är appen för iPhone."
+      ],
+      "timelineLabel": "Birdys år",
+      "timeline": [
+        {
+          "when": "Juni 2026",
+          "what": "Birdy kommer ut på Google Play.",
+          "more": "Premium är öppet för alla under lanseringen."
+        },
+        {
+          "when": "{date}",
+          "what": "Birdy 1.3.",
+          "more": "Premium går att köpa i Google Play, för ett år eller för alltid. Den som använde Birdy före 1.3 behåller Premium gratis.",
+          "whenSoon": "Härnäst",
+          "whatSoon": "Birdy 1.3 kommer.",
+          "moreSoon": "Då går Premium att köpa i Google Play, för ett år eller för alltid. Den som använde Birdy före 1.3 behåller Premium gratis."
+        },
+        {
+          "when": "Snart",
+          "what": "Birdy för iPhone.",
+          "more": ""
+        }
+      ]
+    },
+    "gets": {
+      "kicker": "Med Premium",
+      "headline": "Det här får du *i dag.*",
+      "note": "skärmar rakt ur appen",
+      "features": [
+        {
+          "tag": "Säsongsstatistik",
+          "title": "Årsringen",
+          "body": "Hela året som en ring, månad för månad. Se dina bästa månader, hur fynden fördelar sig på årstiderna och vilka arter som är nya för året.",
+          "alt": "Säsongsstatistiken i Birdy: Ett år i fält, 33 arter och 46 fynd i en ring med årets månader"
+        },
+        {
+          "tag": "Export",
+          "title": "Fältdagboken som PDF",
+          "body": "Hela fältboken på papper: året i siffror, alla arter du har sett och stämplarna du har tagit. Spara den, skriv ut den eller skicka den vidare.",
+          "alt": "Tre sidor ur fältdagboken som PDF: försättsbladet, 2026 i siffror och stämplarna"
+        },
+        {
+          "tag": "Märken",
+          "title": "Sju märken i mässing",
+          "body": "Extra stämplar för dig som skådar året runt: Gryningskör, Tidig pilgrim, Vintervandrare, Söndagsskådare och tre till. De hamnar i troférummet bredvid dina andra märken.",
+          "alt": "Troférummet i Birdy med det senast vunna märket, Vintervandrare, i mässing"
+        },
+        {
+          "tag": "Karta",
+          "title": "Fynd-kartan",
+          "body": "Dina fynd på en egen karta. Platsen sparas bara om du slår på det, och då bara i telefonen.",
+          "alt": ""
+        }
+      ],
+      "mapNote": "Kartan får en ny stil. Bilden kommer när den är klar.",
+      "mapSmall": "Förhandsvisning"
+    },
+    "free": {
+      "kicker": "Utan Premium",
+      "headline": "Det här är *alltid gratis.*",
+      "audio": "Ljud-ID är gratis för alla, alltid.",
+      "audioWhy": "Modellen som känner igen lätena, BirdNET från Cornell Lab of Ornithology, får bara användas icke-kommersiellt, så den hamnar aldrig bakom Premium.",
+      "items": [
+        "Identifiering med kamera och foto",
+        "Ljud-ID: spela in sången så föreslår Birdy arten",
+        "Fältdagboken med alla dina fynd",
+        "Uppslagsverket med 839 europeiska arter",
+        "27 märken och troférummet",
+        "Dagens fågel, varje dag"
+      ]
+    },
+    "prices": {
+      "kicker": "Priser",
+      "headline": "Ett år eller *för alltid.*",
+      "cards": [
+        {
+          "label": "1 år",
+          "amount": "199 kr",
+          "unit": "per år",
+          "body": "Förnyas varje år. Avsluta när du vill i Google Play, så gäller Premium året ut.",
+          "hand": ""
+        },
+        {
+          "label": "För alltid",
+          "amount": "499 kr",
+          "unit": "en gång",
+          "body": "Betala en gång och ha Premium så länge du har Birdy. Inget som förnyas.",
+          "hand": "en gång för alla"
+        }
+      ],
+      "fine": "Priserna gäller i Sverige och inkluderar moms. I appen ser du alltid priset direkt från Google Play, som också sköter betalningen. Återbetalning följer Google Plays regler."
+    },
+    "early": {
+      "seal": "Tidig fältmedlem",
+      "headline": "Var du med *från början?*",
+      "bigBefore": "Då är Premium redan ditt.",
+      "bigMark": "Använde du Birdy före version 1.3 behåller du Premium gratis, så länge du har appen.",
+      "bigAfter": "Ett tack för att du var med när Birdy var ny.",
+      "lead": "Du behöver inte göra något. Uppdatera appen, så möter tack-skärmen dig nästa gång du öppnar den.",
+      "leadSoon": "Du behöver inte göra något. När Birdy 1.3 kommer uppdaterar du appen, så möter tack-skärmen dig nästa gång du öppnar den.",
+      "small": "Appen avgör det själv i telefonen och skickar ingenting någonstans. Har du Googles säkerhetskopia påslagen följer beviset med om du byter telefon. Avinstallerar du appen utan säkerhetskopia, eller rensar appens data, försvinner beviset.",
+      "alt": "Tack-skärmen i Birdy: Tidig fältmedlem, Premium är ditt. För alltid."
+    },
+    "buy": {
+      "kicker": "Köp",
+      "headline": "Så köper du *Premium.*",
+      "steps": [
+        "Hämta Birdy från Google Play.",
+        "Öppna Premium i appen, till exempel under Inställningar.",
+        "Välj ett år eller för alltid och betala i Google Play."
+      ],
+      "stepsSoon": [
+        "Hämta Birdy från Google Play.",
+        "När Birdy 1.3 kommer: öppna Premium i appen, till exempel under Inställningar.",
+        "Välj ett år eller för alltid och betala i Google Play."
+      ],
+      "faqLabel": "Frågor om Premium",
+      "faq": [
+        {
+          "q": "Kan jag avsluta?",
+          "a": "Ja. Årsprenumerationen avslutar du i Google Play under Betalningar och prenumerationer. Premium gäller till slutet av året du har betalat för."
+        },
+        {
+          "q": "Vad händer med mina fynd om jag slutar betala?",
+          "a": "Ingenting. Fältdagboken är gratis och dina fynd stannar i telefonen. Det är bara Premium-delarna som stängs."
+        },
+        {
+          "q": "Byter jag telefon?",
+          "a": "Köpet hör till ditt Google-konto och följer med till den nya telefonen. Slås Premium inte på av sig självt väljer du Återställ köp i Inställningar."
+        },
+        {
+          "q": "Gäller köpet på iPhone?",
+          "a": "Nej. Ett köp i Google Play gäller Android-appen, och eftersom Birdy inte har några konton kan det inte följa med till iPhone-appen när den kommer."
+        }
+      ]
+    }
+  },
+  "species": {
+    "allChip": "Alla arter",
+    "groupsLabel": "Grupper",
+    "searchLabel": "Sök art",
+    "searchPlaceholder": "Sök art",
+    "searchSubmit": "Sök",
+    "kicker": "Uppslagsverket",
+    "hubHeadline": "Fåglar i Sverige och *Europa*",
+    "hubLead": "{n} vanliga fåglar med foton, kännetecken och läten. Alla finns också i appens uppslagsverk, och med appen kan du känna igen fåglar på plats.",
+    "hubLeadOne": "1 vanlig fågel med foton, kännetecken och läten. Den finns också i appens uppslagsverk, och med appen kan du känna igen fåglar på plats.",
+    "hubLeadEmpty": "De första artsidorna är på väg: korta, källgranskade porträtt av Sveriges och Europas vanligaste fåglar, med foton, kännetecken och läten.",
+    "hubGroups": "Grupperna",
+    "hubCompare": "Lätta att blanda ihop",
+    "hubAll": "Alla arter från A till Ö",
+    "hubAbout": "Så gör vi artsidorna",
+    "noResults": "Ingen art matchar sökningen.",
+    "groupSpecies": "Arterna",
+    "countOne": "1 art",
+    "countMany": "{n} arter",
+    "titleSpecies": "{name}: kännetecken, läte och foton | Birdy",
+    "titleSpeciesShort": "{name}: kännetecken och läte | Birdy",
+    "titleGroup": "{group}: {count} med foton och kännetecken | Birdy",
+    "titleGroupShort": "{group}: arter och kännetecken | Birdy",
+    "titleHub": "Fåglar i Sverige och Europa: {count} med foton | Birdy",
+    "titleHubEmpty": "Fåglar i Sverige och Europa: nya artsidor på väg | Birdy",
+    "titleCompare": "{a} eller {b}? Så skiljer du dem åt | Birdy",
+    "titleCompareShort": "{a} eller {b}? | Birdy",
+    "descGroup": "{group}: {count} med foton, kännetecken och läten. Lär dig skilja dem åt i fält, och känn igen dem på plats med appen Birdy.",
+    "descGroupOne": "{group}: 1 art med foton, kännetecken och läten. Lär dig känna igen den i fält, och identifiera den på plats med appen Birdy.",
+    "descHub": "Bläddra bland {n} vanliga fåglar i Sverige och Europa. Foton, kännetecken och läten, sorterade i samma grupper som i appen Birdy.",
+    "descHubOne": "Bläddra bland 1 vanlig fågel i Sverige och Europa. Foton, kännetecken och läten, sorterade i samma grupper som i appen Birdy.",
+    "descHubEmpty": "Artsidor för Sveriges och Europas vanligaste fåglar är på väg: foton, kännetecken och läten, sorterade i samma grupper som i appen Birdy.",
+    "crumbLabel": "Brödsmulor",
+    "crumbHome": "Birdy",
+    "crumbHub": "Arter",
+    "facts": {
+      "scientific": "Vetenskapligt namn",
+      "family": "Familj",
+      "sweden": "I Sverige",
+      "size": "Storlek",
+      "swedishRedList": "Svenska rödlistan 2025",
+      "iucn": "Global rödlista (IUCN)"
+    },
+    "statusLabels": {
+      "resident": "Stannfågel",
+      "breeding_migrant": "Flyttfågel, häckar här",
+      "partial_migrant": "Delvis flyttfågel, häckar här",
+      "passage": "Ses under flyttningen",
+      "winter_visitor": "Vintergäst",
+      "rare_visitor": "Sällsynt gäst",
+      "absent": "Förekommer inte"
+    },
+    "redListLabels": {
+      "RE": "Nationellt utdöd",
+      "CR": "Akut hotad",
+      "EN": "Starkt hotad",
+      "VU": "Sårbar",
+      "NT": "Nära hotad",
+      "DD": "Kunskapsbrist",
+      "not_listed": "Inte rödlistad"
+    },
+    "iucnLabels": {
+      "LC": "Livskraftig",
+      "NT": "Nära hotad",
+      "VU": "Sårbar",
+      "EN": "Starkt hotad",
+      "CR": "Akut hotad",
+      "EW": "Utdöd i vilt tillstånd",
+      "EX": "Utdöd",
+      "DD": "Kunskapsbrist"
+    },
+    "headMarks": "Så känner du igen den",
+    "headVoice": "Läte",
+    "headWhere": "Var och när",
+    "headBehaviour": "Föda och beteende",
+    "headLookAlikes": "Kan förväxlas med",
+    "compareLink": "Jämför {a} och {b}",
+    "chartTitle": "När ses den i Sverige?",
+    "chartCaption": "Andel av alla fågelrapporter per månad i Artportalen 2016 till 2025.",
+    "mapTitle": "Var rapporteras den?",
+    "mapCaption": "Andel av alla fågelrapporter per län i Artportalen 2016 till 2025.",
+    "mapLegend": ["Inga rapporter", "Liten andel", "Mellanstor andel", "Stor andel"],
+    "monthLetters": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+    "monthNames": ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"],
+    "moreFamily": "Fler {family}",
+    "moreGroup": "Fler {group}",
+    "moreOther": "Fler övriga fåglar",
+    "appHeadline": "Osäker på vad du ser?",
+    "appTextBoth": "Birdy känner igen arten på foto eller läte, direkt i telefonen och utan täckning.",
+    "appTextSound": "Birdy känner igen arten på lätet, direkt i telefonen och utan täckning.",
+    "appTextPhoto": "Birdy känner igen arten på foto, direkt i telefonen och utan täckning.",
+    "appTextNone": "Birdy hjälper dig känna igen fåglarna omkring dig på foto och läte, direkt i telefonen och utan täckning.",
+    "plate": "Pl. {n}",
+    "photoCredit": "Foto:",
+    "via": "via",
+    "unknownAuthor": "okänd fotograf",
+    "recordingLabel": "Inspelning: {name}",
+    "recordingCredit": "Inspelning:",
+    "unknownRecordist": "okänd upphovsperson",
+    "edited": "bearbetad",
+    "trimmedEdited": "klippt och bearbetad",
+    "resized": "nedskalad",
+    "licensePublicDomain": "public domain",
+    "textCredit": "Texten är skriven med AI ur fakta från Wikipedia och får delas under",
+    "sources": "Källor",
+    "articleSv": "svenska artikeln",
+    "articleEn": "engelska artikeln",
+    "articleDe": "tyska artikeln",
+    "dataCreditReports": "Rapportdata: Artportalen (SLU Artdatabanken) via {gbif}, 2016 till 2025.",
+    "dataCreditRedList": "Rödlista: Rödlistade arter i Sverige 2025, SLU Artdatabanken via {gbif}.",
+    "reviewed": "Kontrollerad mot källorna {date}.",
+    "aboutLink": "Så gör vi artsidorna",
+    "reportError": "Hittade du ett fel? Skriv till oss.",
+    "reportSubject": "Fel på artsidan: {name}",
+    "reportSubjectCompare": "Fel på jämförelsesidan: {name}",
+    "altHero": "{name} ({scientific})",
+    "altExtra": "{name}, ytterligare foto",
+    "previewBanner": "Förhandsvisning, inte publicerad",
+    "compareKicker": "Lätta att blanda ihop",
+    "compareHeadline": "{a} eller *{b}*?",
+    "compareItem": "{a} eller {b}",
+    "compareTable": "Så skiljer du dem åt",
+    "compareFeature": "Kännetecken",
+    "compareChart": "När ses de?",
+    "compareApp": "Fortfarande osäker?",
+    "chartSeriesSentence": "{name}: {text}"
+  },
+  "speciesAbout": {
+    "title": "Så gör vi artsidorna: källor och kontroll | Birdy",
+    "description": "Så skrivs Birdys artsidor: källorna, hur AI används, hur fakta kontrolleras, vilka licenser som gäller och hur du rapporterar fel.",
+    "crumb": "Så gör vi artsidorna",
+    "headline": "Så gör vi *artsidorna*",
+    "lead": "Varje artsida bygger på flera källor och kontrolleras i flera steg innan den publiceras. Det mesta sköts automatiskt, och det som sticker ut avgörs av en människa. Så här går det till.",
+    "sections": [
+      {
+        "heading": "Källorna",
+        "paragraphs": [
+          "Texterna bygger på Wikipedias artiklar om arten på svenska, engelska och tyska, i den mån arten har en artikel på språket.",
+          "Diagrammet över när arten ses och kartan över var den rapporteras räknas fram ur fågelrapporterna i Artportalen 2016 till 2025. Artportalen är Sveriges rapportsystem för fynd av växter, djur och svampar, och SLU Artdatabanken delar rapporterna öppet via den internationella databasen GBIF. Siffrorna visar artens andel av alla fågelrapporter, så att arten inte ser vanligare ut i en viss månad eller ett visst län bara för att fler är ute och skådar där och då. Har arten färre än 200 rapporter visas varken diagram eller karta.",
+          "Den svenska rödlistestatusen kommer från SLU Artdatabankens Rödlistade arter i Sverige 2025, också via GBIF, och den globala från IUCN:s rödlista via Wikidata. Foton och inspelningar kommer från Wikimedia Commons."
+        ]
+      },
+      {
+        "heading": "Så används AI",
+        "paragraphs": [
+          "Språkmodellen Claude Opus 5.5 från Anthropic läser artiklarna och plockar ut fakta om bland annat utseende, läte, miljö och förekomst i Sverige. Varje faktum ska ha ett ordagrant citat ur någon av artiklarna, och ett program kontrollerar att citatet verkligen finns där. Fakta utan giltigt citat stryks. Blir det fler än 30 behåller programmet 30 och tar dem turvis från ämnena, så att inget ämne trängs ut.",
+          "Texten på sidan skrivs sedan av samma modell, som bara får se de fakta som har klarat kontrollen nedan, inte artiklarna. En annan modell, Claude Sonnet 5, läser därefter varje mening och jämför den med de fakta och citat den bygger på. En mening som inte stöds skrivs om en gång, och stöds den fortfarande inte stryks den.",
+          "Diagrammet, kartan och meningarna under dem räknas fram av kod direkt ur datan, och rödlistestatusen hämtas på samma sätt, utan någon språkmodell."
+        ]
+      },
+      {
+        "heading": "Kontrollen",
+        "paragraphs": [
+          "Innan texten skrivs kontrollerar Claude Sonnet 5, alltså en annan modell än den som plockade ut fakta, varje faktum mot dess citat och stycket runt citatet i artikeln. Fakta som inte stöds fullt ut stryks. Kod jämför dessutom tal som längd, vingbredd, vikt och antal ägg mellan artiklarna på de olika språken, och artens status i Sverige, till exempel stannfågel eller vintergäst, med rapporterna i Artportalen och den svenska rödlistan.",
+          "Inspelningen kontrolleras med ljudmodellen som känner igen läten i Birdy-appen. Känner modellen inte igen arten prövas upp till tre andra inspelningar från Wikimedia Commons, och annars visas ingen inspelning.",
+          "En sida där ingen kontroll hittar något publiceras automatiskt. Det som inte går att avgöra automatiskt väntar på ett beslut av Albin Abrahamsson, som har byggt Birdy, innan sidan publiceras: till exempel en status som kontrollen strök, tal som skiljer sig mellan artiklarna, en status som inte stämmer med rapporterna, eller en art som ljudmodellen inte känner till eller bara känner igen svagt. Efter publiceringen läser han dessutom ett löpande stickprov, två av varje 40 publicerade artsidor. Datumet för den senaste kontrollen står längst ned på varje artsida."
+        ]
+      },
+      {
+        "heading": "Licenserna",
+        "paragraphs": [
+          "Texterna på art- och jämförelsesidorna är skrivna med AI ur fakta från Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy och Wikipediaartiklarna som källor och delar vidare under samma licens. Varje sida länkar till artiklarna i den version texten bygger på.",
+          "Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem. Fotona är nedskalade, i övrigt oförändrade. Inspelningarna är bearbetade (högst 20 sekunder, mono, utjämnad ljudnivå, MP3), och en bearbetad inspelning under CC BY-SA delas under samma licens som originalet.",
+          "Rapportdatan från Artportalen och den svenska rödlistan är fri att använda under CC0 och hämtas via GBIF. CC0 kräver ingen källhänvisning, men varje sida anger ändå källan."
+        ]
+      },
+      {
+        "heading": "Rättelser",
+        "paragraphs": [
+          "Längst ned på varje artsida finns länken ”Hittade du ett fel? Skriv till oss.” Du kan också skriva direkt till {email}, gärna med en länk till sidan. Stämmer det rättar vi sidan och sätter ett nytt kontrolldatum."
+        ]
+      }
+    ]
   },
   "footer": {
     "tagline": "Känn igen fågeln. Bevara stunden.",
@@ -281,13 +518,14 @@
     "otherLanguage": "English",
     "copyright": "© 2026 Birdy · Skapad i Sverige",
     "builtBy": "Byggd av",
-    "workshop": "Från samma verkstad",
-    "loopleadLine": "HR-verktyg för chefer i växande bolag"
+    "species": "Arter",
+    "allSpecies": "Alla arter från A till Ö",
+    "commonSpecies": "Vanliga arter"
   },
   "alt": {
     "wordmark": "Birdys ordbild",
     "playStoreBadge": "Hämta den på Google Play",
     "appStoreBadge": "Snart på App Store",
-    "panorama": "En rödhake i varmt ljus med orden Känn igen fågeln. Bevara stunden."
+    "shareImage": "Ett foto av en rödhake, inramat som en plansch på en mörk vägg, bredvid orden Känn igen fågeln. Bevara stunden."
   }
 }

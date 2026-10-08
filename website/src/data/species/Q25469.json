@@ -1,0 +1,919 @@
+{
+  "qid": "Q25469",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Staren är 19–22 cm lång och har ett vingspann på 37–42 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Staren har en kroppslängd på 19 till 22 cm, och ett vingspann på 37–42 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Staren väger i genomsnitt 82 gram, och honorna är i genomsnitt något lättare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den väger i genomsnitt 82 gram, där honorna genomsnittligt är något lättare."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Staren har kort stjärt, och i flykten ser vingarna trekantiga och spetsiga ut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en kort stjärt och i flykten verkar vingarna trekantiga och spetsiga."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "I vinterdräkt är kroppen svartaktig med grön eller purpurfärgad metallglans och vita till beige fjäderspetsar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I vinterdräkt är kroppen svartaktig med metalliskt grön eller purpurfärgad glans och fjädrarna har vita till beigefärgade spetsar."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Häckningsdräkten uppstår när de ljusa spetsfläckarna nöts bort, och kroppen blir då helt svartaktig och metalliskt glänsande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Häckningsdräkten framträder tidigt på året genom nötning av de ljusa spetsfläckarna på kroppsfjädrarna."
+        },
+        {
+          "article": "sv",
+          "quote": "Kroppen är då i sin helhet svartaktig och metalliskt glänsande."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Näbben är gul i häckningsdräkt och svartaktig i vinterdräkt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är gul i häckningsdräkt och svartaktig i vinterdräkt."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Benen är kraftiga och rosa- till gråröda under häckningstiden, något mörkare på vintern.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The legs are stout, pinkish- or greyish-red in the breding season, and slightly darker in winter."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hanen har mörkbrun regnbågshinna medan honans är ljus.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ögonens regnbågshinna är mörkbrun hos hanen och ljus hos honan."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "I häckningsdräkt är undernäbbens bas blågrå hos hanen men gulvit eller svagt rosa hos honan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Undernäbbens bas är hos hanen i häckningsdräkt blågrå medan den hos honan är gulvit eller svagt rosa."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Ungfåglar saknar metallglans och är gråbruna med något ljusare strupe.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenila starar saknar metallglans, kroppen är gråbrun men strupen något ljusare."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "behaviour",
+      "sv": "På marken går staren i stället för att hoppa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På marken går staren snarare än hoppar."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången är ihållande och pladdrande med stigande och fallande piptoner, smack-, visslings- och skallerljud samt härmade ljud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den ihållande, pladdrande sången består av ett flertal stigande eller fallande piptoner, smack-, visslings- och skallerljud, samt imitationer av olika former av ljud som fågel- och andra djurläten eller ljud från människan och staden."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Staren härmar ofta läten från vaktel, ormvråk och tofsvipa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ofta efterhärmas exempelvis vaktelns, ormvråkens eller tofsvipans läten."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Mot flygande fiender varnar staren med ett snabbt upprepat, skarpt och mycket kort ”spett, spett”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "För flygande fiender (kråkor, rovfåglar och så vidare) varnas med ett snabbt upprepat, skarpt, mycket kort \"spett, spett\""
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Mot fiender på marken varnar staren med ett upprepat, långt utdraget ”brrrrrrrt” eller ”tschrrr”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "för fiender på marken med ett upprepat, långt utdraget \"brrrrrrrt\" eller \"tschrrr\""
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "När en starflock flyger ger vingslagen ett tydligt susande ljud som hörs hundratals meter bort.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the synchronised movements of the birds' wings make a distinctive whooshing sound that can be heard hundreds of metres away"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Staren är tätast i områden med hålrika trädgrupper och angränsande ängsmark för födosök.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den högsta tätheten uppnås i områden med hålrika trädgrupper och angränsande ängsmark för födosök."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Staren saknas i Europa bara inne i stora slutna skogar, i helt utrymda jordbrukslandskap och över ungefär 1500 meters höjd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den saknas endast i det inre av stora slutna skogsområden, i fullständigt utrymda jordbrukslandskap samt i höjdlägen från ungefär 1500 meter och uppåt."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Staren söker ofta föda på kortklippta gräsytor som jordbruksmark, betesmarker, idrottsplatser, golfbanor och flygfält.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the birds commonly feed in grassy areas such as farmland, grazing pastures, playing fields, golf courses and airfields where short grass makes foraging easy"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Staren är sedan 2015 rödlistad som sårbar (VU) i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten är sedan 2015 rödlistad som sårbar (VU) i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till drygt 400 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till drygt 400 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Starar i södra Skandinavien gör redan i juli en mellanflyttning till Tyskland och Danmark.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stararna i södra Skandinavien gör en så kallad mellanflyttning redan i juli, kort efter midsommar, till områden i Tyskland och Danmark."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Återflyttningen börjar i februari och är i norra Europa avslutad först i början av maj.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Återflyttningen börjar i februari och är i Centraleuropa oftast avslutad i slutet av mars och i norra Europa först i början av maj."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Boet läggs främst i trädhålor, men även i klippskrevor, fågelholkar och hålrum i byggnader.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Övervägande används trädhålor, men även klippskrevor och i bebodda områden fågelholkar och hålrum på byggnader av alla sorter som häckningsplats."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "I södra Skandinavien läggs äggen till förstakullen oftast mellan 10 och 30 april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "För förstahäckningarna i norra halvan av Europa och i södra Skandinavien sker äggläggningen koncentrerat, oftast mellan den 10 och 30 april"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Kullen består vanligen av 5–6 ägg som ruvas av båda föräldrarna i 11–13 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kullen består vanligtvis av 5–6 ägg, men kan variera från tre till nio, och ruvas av båda föräldrarna i 11–13 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "På våren och försommaren äter staren främst marklevande ryggradslösa djur som insekter, larver, daggmaskar och små snäckor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På våren och början av sommaren förtärs framförallt marklevande ryggradslösa djur, särskilt insekter, insektslarver, daggmaskar och små snäckor."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Under resten av året äter staren mest frukt och bär av alla slag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under övriga delar av året äter staren övervägande frukt och bär av alla sorter"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Stararna övernattar gemensamt, främst i större vassområden men också i träddungar, täta buskage och stadscentrum.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dessa sovplatser ligger framförallt i större vassområden, men även i träddungar och täta buskage, ofta även i stadscentrum."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Den närbesläktade svartstaren skiljs från staren genom att sakna ljusa fjäderspetsar i vuxen häckningsdräkt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "although the closely related spotless starling may be distinguished by the lack of pale feather tip spots in adult breeding plumage"
+        },
+        {
+          "article": "sv",
+          "quote": "Den europeiska staren bildar tillsammans med svartstare (Sturnus unicolor) en superart"
+        }
+      ],
+      "other": {
+        "scientific": "Sturnus unicolor",
+        "qid": "Q836833"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I norra Skandinavien, Finland, östra Polen, Ryssland och norra Ukraina flyttar nästan hela populationerna på hösten men mindre grupper kan stanna kvar ute vid kusterna i de sydligare områdena."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i mars."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Sårbar (VU)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Staren är en tätting i familjen starar som häckar i Sverige och delvis är flyttfågel.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Den ses ofta söka föda på kortklippta gräsytor som jordbruksmark, betesmarker, idrottsplatser och golfbanor.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Svartaktig med grön eller purpurfärgad metallglans, på vintern med vita till beige fjäderspetsar",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Gul näbb i häckningsdräkt, svartaktig näbb i vinterdräkt",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Kort stjärt och trekantiga, spetsiga vingar i flykten",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Hanen har mörkbrun regnbågshinna och honan ljus, ungfåglar är gråbruna utan metallglans",
+          "factIds": [
+            "f08",
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången är ihållande och pladdrande, med stigande och fallande piptoner, smack-, visslings- och skallerljud och härmade läten, ofta av vaktel, ormvråk och tofsvipa.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        },
+        {
+          "text": "Mot flygande fiender varnar den med ett snabbt upprepat, skarpt ”spett, spett”, mot fiender på marken med ett utdraget ”brrrrrrrt” eller ”tschrrr”.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        },
+        {
+          "text": "En flygande flock hörs på vingslagens susande ljud hundratals meter bort.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Staren häckar i Sverige och är delvis flyttfågel. Den rapporteras från alla 21 län och mest i mars.",
+          "factIds": [
+            "s01",
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Återflyttningen börjar i februari, och redan i juli gör starar i södra Skandinavien en mellanflyttning till Tyskland och Danmark.",
+          "factIds": [
+            "f23",
+            "f22"
+          ]
+        },
+        {
+          "text": "Den är tätast där hålrika trädgrupper gränsar till ängsmark.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Arten är rödlistad som sårbar (VU), och beståndet uppskattades 2018 till drygt 400 000 par.",
+          "factIds": [
+            "f20",
+            "d03",
+            "f21"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "På våren och försommaren äter staren främst insekter, larver, daggmaskar och små snäckor, resten av året mest frukt och bär.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        },
+        {
+          "text": "På marken går den i stället för att hoppa.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Stararna övernattar tillsammans, främst i större vassområden men också i träddungar, täta buskage och stadscentrum.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Boet läggs främst i trädhålor, men även i fågelholkar och hålrum i byggnader.",
+          "factIds": [
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q836833",
+          "text": [
+            {
+              "text": "Den närbesläktade svartstaren skiljs från staren genom att den saknar ljusa fjäderspetsar i vuxen häckningsdräkt.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Stare: så känner du igen den på dräkt, näbb och flyktbild, hur sången och varningslätena låter och när under året den syns.",
+      "facts": {
+        "size": {
+          "value": "19 till 22 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Common Starling is a songbird of the starling family that breeds in Sweden and is partly migratory.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "It is often seen feeding on short grass such as farmland, pastures, sports fields and golf courses.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Blackish with green or purple metallic gloss, in winter with white to buff feather tips",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Yellow bill in breeding plumage, blackish bill in winter plumage",
+          "factIds": [
+            "f06"
+          ]
+        },
+        {
+          "text": "Short tail and triangular, pointed wings in flight",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Male has a dark brown iris and female a pale one, juveniles are grey-brown without gloss",
+          "factIds": [
+            "f08",
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is sustained and chattering, with rising and falling piping notes, smacking, whistling and rattling sounds and mimicry, often of quail, buzzard and lapwing.",
+          "factIds": [
+            "f12",
+            "f13"
+          ]
+        },
+        {
+          "text": "It warns of flying predators with a rapidly repeated, sharp “spett, spett” and of ground predators with a drawn-out “brrrrrrrt” or “tschrrr”.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        },
+        {
+          "text": "A flying flock's whooshing wingbeats carry hundreds of metres.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It breeds in Sweden and is partly migratory, and is reported from all 21 counties, most in March.",
+          "factIds": [
+            "s01",
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Return migration starts in February, and in July starlings in southern Scandinavia already move to Germany and Denmark.",
+          "factIds": [
+            "f23",
+            "f22"
+          ]
+        },
+        {
+          "text": "It is densest where groups of trees with holes border meadows.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "It is red-listed as Vulnerable (VU), with just over 400 000 pairs estimated in 2018.",
+          "factIds": [
+            "f20",
+            "d03",
+            "f21"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "In spring and early summer it mainly eats insects, larvae, earthworms and small snails, the rest of the year mostly fruit and berries.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        },
+        {
+          "text": "On the ground it walks rather than hops.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Starlings roost together, mainly in large reedbeds, and also in groves, dense thickets and town centres.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "The nest is mainly placed in tree holes, though nest boxes and cavities in buildings are used too.",
+          "factIds": [
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q836833",
+          "text": [
+            {
+              "text": "The closely related Spotless Starling differs from the Common Starling by lacking pale feather tips in adult breeding plumage.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Common Starling: how to recognise it by plumage, bill and flight, what its song and alarm calls sound like, and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "19 to 22 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "bef9535cc5a50f60"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "bef9535cc5a50f60"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "stare",
+    "en": "common-starling"
+  },
+  "names": {
+    "sv": "Stare",
+    "en": "Common Starling",
+    "scientific": "Sturnus vulgaris"
+  },
+  "family": {
+    "latin": "Sturnidae",
+    "sv": "Starar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25469/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Judy Gallagher",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:European_Starling_-_Sturnus_vulgaris,_Veteran's_Park,_Woodbridge,_Virginia_(25823769668).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25469/extra.webp",
+      "width": 1200,
+      "height": 956,
+      "author": "gailhampshire",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Starling._Sturnus_vulgaris_-_Flickr_-_gailhampshire.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25469/voice.mp3",
+    "durationSec": 19,
+    "trimmed": false,
+    "author": "Kfrommolt",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sturnus_vulgaris_juveniles_sound_recording.ogg",
+    "sha256": "b70f725f5f3c662000478354fd23d22a1f5e2d917de2095162e5d6947b95d7a8"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Stare",
+      "revision": "59698526"
+    },
+    "en": {
+      "title": "Common starling",
+      "revision": "1375763236"
+    },
+    "de": {
+      "title": "Star (Art)",
+      "revision": "268356619"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 9809229,
+    "totalReports": 400324,
+    "months": [
+      28,
+      46,
+      100,
+      73,
+      54,
+      55,
+      42,
+      42,
+      45,
+      57,
+      38,
+      31
+    ],
+    "counties": {
+      "SE-K": 91,
+      "SE-W": 73,
+      "SE-X": 72,
+      "SE-I": 86,
+      "SE-N": 86,
+      "SE-Z": 40,
+      "SE-F": 81,
+      "SE-H": 83,
+      "SE-G": 89,
+      "SE-BD": 37,
+      "SE-T": 79,
+      "SE-E": 97,
+      "SE-M": 83,
+      "SE-D": 100,
+      "SE-AB": 91,
+      "SE-C": 100,
+      "SE-S": 83,
+      "SE-AC": 57,
+      "SE-Y": 71,
+      "SE-U": 66,
+      "SE-O": 96
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i mars.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in March.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        14899,
+        17218,
+        68367,
+        77003,
+        65940,
+        36484,
+        21427,
+        22078,
+        24627,
+        30437,
+        12940,
+        8678
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 69382,
+        "SE-AB": 45911,
+        "SE-M": 42241,
+        "SE-H": 31963,
+        "SE-C": 27647,
+        "SE-D": 22563,
+        "SE-E": 19435,
+        "SE-N": 18947,
+        "SE-F": 15695,
+        "SE-T": 10981,
+        "SE-G": 9284,
+        "SE-W": 8893,
+        "SE-S": 8193,
+        "SE-AC": 8021,
+        "SE-I": 7488,
+        "SE-U": 7099,
+        "SE-X": 6818,
+        "SE-Y": 4993,
+        "SE-BD": 4456,
+        "SE-K": 3890,
+        "SE-Z": 2722
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

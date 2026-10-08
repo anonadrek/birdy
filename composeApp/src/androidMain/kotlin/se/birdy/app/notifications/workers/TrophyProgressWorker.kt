@@ -9,8 +9,10 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
+import kotlinx.coroutines.CancellationException
 import se.birdy.app.AndroidAppGraphHolder
 import se.birdy.app.R
+import se.birdy.app.notifications.AndroidNotificationPayloads
 import se.birdy.app.notifications.NotificationChannels
 import se.birdy.app.notifications.NotificationPayloads
 
@@ -20,9 +22,14 @@ class TrophyProgressWorker(
 ) : CoroutineWorker(context, params) {
     override suspend fun doWork(): Result {
         return try {
-            val graph = AndroidAppGraphHolder.current ?: return Result.success()
             val forceForDev = inputData.getBoolean(KEY_FORCE_FOR_DEV, false)
-            val content = NotificationPayloads.from(graph).trophyProgress(forceForDev) ?: return Result.success()
+            val graph = AndroidAppGraphHolder.current
+            val content =
+                if (graph != null) {
+                    NotificationPayloads.from(graph).trophyProgress(forceForDev)
+                } else {
+                    AndroidNotificationPayloads.fromContext(applicationContext) { it.trophyProgress(forceForDev) }
+                } ?: return Result.success()
 
             NotificationChannels.ensureCreated(applicationContext)
 
@@ -53,6 +60,8 @@ class TrophyProgressWorker(
                 NotificationManagerCompat.from(applicationContext).notify(NOTIF_ID_TROPHY_PROGRESS, notif)
             }
             Result.success()
+        } catch (e: CancellationException) {
+            throw e
         } catch (t: Throwable) {
             Log.w("TrophyProgressWorker", "fail", t)
             Result.retry()

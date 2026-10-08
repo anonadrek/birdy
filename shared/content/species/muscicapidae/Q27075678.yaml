@@ -93,8 +93,7 @@ image_refs:
   width: 2048
   height: 1335
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/3138967">Юрий
-    Носков</a>
+  author: Юрий Носков
   source_url: https://commons.wikimedia.org/wiki/File:Calliope calliope 241712738.jpg
   commons_filename: Calliope calliope 241712738.jpg
 - role: secondary
@@ -102,8 +101,7 @@ image_refs:
   width: 1800
   height: 1800
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2497873">Валерия
-    Ковалева</a>
+  author: Валерия Ковалева
   source_url: https://commons.wikimedia.org/wiki/File:Calliope calliope 201092723.jpg
   commons_filename: Calliope calliope 201092723.jpg
 - role: secondary
@@ -111,8 +109,7 @@ image_refs:
   width: 1800
   height: 1555
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/506512">Rejoice
-    Gassah</a>
+  author: Rejoice Gassah
   source_url: https://commons.wikimedia.org/wiki/File:Calliope calliope 176230137.jpg
   commons_filename: Calliope calliope 176230137.jpg
 review_status: auto

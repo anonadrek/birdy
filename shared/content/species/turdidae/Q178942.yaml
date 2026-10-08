@@ -72,8 +72,7 @@ image_refs:
   width: 1711
   height: 2400
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jamshid_Nurkulov" title="User:Jamshid
-    Nurkulov">Jamshid Nurkulov</a>
+  author: Jamshid Nurkulov
   source_url: https://commons.wikimedia.org/wiki/File:Turdus viscivorus 10.jpg
   commons_filename: Turdus viscivorus 10.jpg
 - role: secondary
@@ -81,8 +80,7 @@ image_refs:
   width: 1800
   height: 1259
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/92163630@N00">David
-    Friel</a>
+  author: David Friel
   source_url: https://commons.wikimedia.org/wiki/File:Turdus viscivorus juv.jpg
   commons_filename: Turdus viscivorus juv.jpg
 - role: secondary
@@ -90,8 +88,7 @@ image_refs:
   width: 1800
   height: 1215
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jamshid_Nurkulov" title="User:Jamshid
-    Nurkulov">Jamshid Nurkulov</a>
+  author: Jamshid Nurkulov
   source_url: https://commons.wikimedia.org/wiki/File:Turdus viscivorus 04.jpg
   commons_filename: Turdus viscivorus 04.jpg
 review_status: approved

@@ -1,0 +1,571 @@
+{
+  "qid": "Q184825",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Rödvingetrasten är en rätt liten trast med en kroppslängd på 19–23 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rödvingetrast är en rätt liten trast med en kroppslängd på 19–23 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Vingbredden är 33–34,5 cm och vikten 50–75 g.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "with a wingspan of 33–34.5 cm and a weight of 50–75 g"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Rödvingetrasten är kortstjärtad och kompakt med förhållandevis stort huvud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I formen är den kortstjärtad och kompakt med förhållandevis stort huvud."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den har brun rygg och streckad vit undersida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "med brun rygg och streckad vit undersida"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Tydligaste kännetecknen är bröstets röda sidor, de roströda undre vingtäckarna och det vita ögonbrynsstrecket.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De tydligaste kännetecknet är bröstets röda sidor, de undre roströda vingtäckarna och det vita ögonbrynsstrecket."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "De rostfärgade vingundersidorna syns väl i flykten, och även sittande syns det röda på flankerna.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Flügelunterseiten sind rostrot gefärbt, was im Flug gut erkennbar ist, und auch im Sitzen kann man noch das Rot an den Flanken erkennen."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hane och hona ser likadana ut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika, med brun rygg"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Nykläckta ungar har tätt beigefärgat dun på huvud, rygg, skuldror och vingar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Frisch geschlüpfte Rotdrosseln sind auf dem Kopf, dem Rücken, den Schultern und den Flügeln dicht beigefarben bedunt."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Sången är kort och varierad, en kort fallande skala av flöjtande toner som avslutas med ett lågmält gnissel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången är varierad och kort och består av en kort fallande skala av flöjtande toner som avslutas med ett lågmält gnissel."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Varningslätet är ett smattrande ”tret-tret-tret-tret”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Varningslätet är ett smattrande \"tret-tret-tret-tret...\""
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "I flykten hörs ett utdraget och strävt, nästan sugande ”styyyf”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten hörs ett karakteristiskt utdraget och strävt, nästan sugande \"styyyf\"."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Det utdragna lätet hörs särskilt vid uppflog eller som nattligt flyglåt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Er ist besonders beim Abflug oder als nächtlicher Flugruf zu vernehmen."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sången har tydliga dialekter, så fåglar inom ett lokalt bestånd sjunger mycket likt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Redwings show a distinct dialectic variation in song, having a considerable similarity in song patterns among birds within a local population."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Rödvingetrasten häckar främst i barrskog, björkskog på tundra och fjällbjörkskog, men även i de flesta skogsmiljöer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rödvingetrast häckar främst i barrskog och björkskog på tundra, och i fjällbjörkskog, men förekommer som häckfågel i de flesta skogsmiljöer."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Under flyttiden uppehåller den sig främst i parker, glesa skogs- och buskmarker samt vid skogsbryn.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Sie halten sich dann vor allem in Parks, aufgelockerten Wald- und Buschlandschaften sowie an Waldrändern auf"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I fjällen häckar rödvingetrasten allmänt i fjällbjörkskogen, där den ofta är karaktärsart.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I fjällen häckar arten allmänt i fjällbjörkskogen, där den ofta är karaktärsart."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Rödvingetrasten är den minsta trasten som häckar i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är den minsta fågeln i familjen trastar som häckar i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Arten saknas idag i delar av södra Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I delar av södra Sverige saknas den dock idag."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "År 2018 uppskattades det svenska beståndet till 797 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades beståndet till 797 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Sedan 2020 listas rödvingetrasten som nära hotad på Artdatabankens svenska rödlista.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige listas den sedan 2020 som nära hotad på svenska Artdatabankens rödlista."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet ligger oftast lågt och byggs av honan, gärna i en stamklyka på fjällbjörk, i en låg tät unggran eller på en stubbe.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet brukar ligga lågt och byggs av honan, gärna i stamklykan på en knotig fjällbjörk, intill stammen på en låg och tät unggran eller på en stubbe."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "De sex till sju äggen är tätt brunfläckade på grågrön botten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De sex till sju äggen är tätt brunfläckade på grågrön botten."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "I Mellansverige läggs äggen i maj, och andrakullar i juli förekommer ofta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Mellansverige läggs äggen i maj, men andrakullar under juli förekommer ofta."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Rödvingetrasten är allätare och äter främst maskar, sniglar, blötdjur och insekter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rödvingetrasten är en allätare och äter framför allt maskar, sniglar, blötdjur och insekter i alla utvecklingsstadier."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Under höst och vinter äter den även bär, särskilt av rönn och hagtorn.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "supplemented by berries in autumn and winter, particularly of rowan Sorbus aucuparia and hawthorn Crataegus monogyna"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Flyttande och övervintrande rödvingetrastar bildar ofta stora flockar, ofta tillsammans med björktrastar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flyttfåglar och övervintrande fåglar bildar ofta stora flockar, ofta tillsammans med björktrastar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Flytten sker mellan hösten och tidig vinter, och fåglarna flyttar ofta på natten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Migration occurs between autumn and early winter, and the birds often move at night."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är den minsta fågeln i familjen trastar som häckar i Sverige."
+        },
+        {
+          "article": "sv",
+          "quote": "Den är till största delen flyttfågel och mestparten av världspopulationen flyttar söderut på vintern."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i april och oktober."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i februari och augusti."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Norrbotten, Jämtland och Västerbotten."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": null,
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "49a8c2f8fa437e27"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "rodvingetrast",
+    "en": "redwing"
+  },
+  "names": {
+    "sv": "Rödvingetrast",
+    "en": "Redwing",
+    "scientific": "Turdus iliacus"
+  },
+  "family": {
+    "latin": "Turdidae",
+    "sv": "Trastar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q184825/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Redwing_(Turdus_iliacus)_2021.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q184825/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Redwing_(Turdus_iliacus)_2022.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q184825/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Vladimir Yu. Arkhipov, Arkhivov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turdus_iliacus.ogg",
+    "sha256": "d83552c7f117d51b232bdd7d6b092bde03caadb99cef882c8aed0d0d6eb5d24e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Rödvingetrast",
+      "revision": "59707541"
+    },
+    "en": {
+      "title": "Redwing",
+      "revision": "1318090248"
+    },
+    "de": {
+      "title": "Rotdrossel",
+      "revision": "267739015"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2490781,
+    "totalReports": 202045,
+    "months": [
+      32,
+      10,
+      31,
+      94,
+      39,
+      59,
+      21,
+      9,
+      26,
+      100,
+      69,
+      66
+    ],
+    "counties": {
+      "SE-K": 23,
+      "SE-W": 51,
+      "SE-X": 56,
+      "SE-I": 20,
+      "SE-N": 15,
+      "SE-Z": 94,
+      "SE-F": 39,
+      "SE-H": 22,
+      "SE-G": 35,
+      "SE-BD": 100,
+      "SE-T": 33,
+      "SE-E": 21,
+      "SE-M": 26,
+      "SE-D": 20,
+      "SE-AB": 32,
+      "SE-C": 29,
+      "SE-S": 44,
+      "SE-AC": 84,
+      "SE-Y": 74,
+      "SE-U": 25,
+      "SE-O": 33
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april och oktober.",
+        "Rapporteras sällan i februari och augusti.",
+        "Andelen av alla fågelrapporter är högst i Norrbotten, Jämtland och Västerbotten."
+      ],
+      "en": [
+        "Reported most in April and October.",
+        "Rarely reported in February and August.",
+        "Its share of all bird reports is highest in Norrbotten, Jämtland and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        9741,
+        2128,
+        12281,
+        56611,
+        27098,
+        22070,
+        6138,
+        2606,
+        8295,
+        30662,
+        13347,
+        10527
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 30276,
+        "SE-AB": 20750,
+        "SE-M": 16898,
+        "SE-BD": 15237,
+        "SE-AC": 15198,
+        "SE-H": 10592,
+        "SE-C": 10142,
+        "SE-F": 9580,
+        "SE-Z": 8325,
+        "SE-W": 7984,
+        "SE-X": 6751,
+        "SE-Y": 6677,
+        "SE-D": 5883,
+        "SE-T": 5793,
+        "SE-S": 5527,
+        "SE-E": 5473,
+        "SE-G": 4752,
+        "SE-N": 4131,
+        "SE-U": 3492,
+        "SE-I": 2208,
+        "SE-K": 1233
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
+}

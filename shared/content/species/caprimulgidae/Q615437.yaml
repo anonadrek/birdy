@@ -87,11 +87,12 @@ image_refs:
 - role: hero
   path: Q615437/hero.webp
   width: 2400
-  height: 1805
-  license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Yuriy75" title="User:Yuriy75">Yuriy75</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus aegyptius distr.png
-  commons_filename: Caprimulgus aegyptius distr.png
+  height: 1271
+  license: CC BY-SA 4.0
+  author: Irvin calicut
+  source_url: https://commons.wikimedia.org/wiki/File:Egyptian nightjar by irvin calicut
+    DSCN3202.JPG
+  commons_filename: Egyptian nightjar by irvin calicut DSCN3202.JPG
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-07T23:00:54.366383+00:00'

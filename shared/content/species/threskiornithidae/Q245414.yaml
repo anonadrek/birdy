@@ -9,7 +9,7 @@ names:
   sv: Eremitibis
   en: Northern Bald Ibis
 abundance: ovanlig
-iucn_status: NE
+iucn_status: EN
 season:
   jan: present
   feb: present
@@ -91,7 +91,7 @@ image_refs:
   width: 2400
   height: 1800
   license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Vassil" title="User:Vassil">Vassil</a>
+  author: Vassil
   source_url: https://commons.wikimedia.org/wiki/File:Doué 21 06 2010 09 Geronticus
     eremita 3.jpg
   commons_filename: Doué 21 06 2010 09 Geronticus eremita 3.jpg
@@ -100,7 +100,7 @@ image_refs:
   width: 1800
   height: 1200
   license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Vassil" title="User:Vassil">Vassil</a>
+  author: Vassil
   source_url: https://commons.wikimedia.org/wiki/File:Doué 21 06 2010 09 Geronticus
     eremita 2.jpg
   commons_filename: Doué 21 06 2010 09 Geronticus eremita 2.jpg
@@ -109,8 +109,7 @@ image_refs:
   width: 1800
   height: 1781
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1432726">Jochen
-    Essig</a>
+  author: Jochen Essig
   source_url: https://commons.wikimedia.org/wiki/File:Geronticus eremita 202197859.jpg
   commons_filename: Geronticus eremita 202197859.jpg
 review_status: auto

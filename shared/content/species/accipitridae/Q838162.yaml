@@ -9,7 +9,7 @@ names:
   sv: Örongam
   en: Lappet-faced Vulture
 abundance: ovanlig
-iucn_status: NE
+iucn_status: EN
 season:
   jan: present
   feb: present
@@ -86,8 +86,7 @@ image_refs:
   width: 1800
   height: 1198
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/7017570">Dirk
-    Froebel</a>
+  author: Dirk Froebel
   source_url: https://commons.wikimedia.org/wiki/File:Torgos tracheliotos 288878816.jpg
   commons_filename: Torgos tracheliotos 288878816.jpg
 review_status: auto

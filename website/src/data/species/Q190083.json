@@ -1,0 +1,958 @@
+{
+  "qid": "Q190083",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Slagugglan är 50–59 cm lång och har ett vingspann på 103–124 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är 50–59 cm lång och har ett vingspann på 103–124 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Den vuxna honan väger 950–1150 gram, medan den mindre hanen väger 600–850 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den vuxna honan väger 950–1150 gram, medan hanen som är mindre väger 600–850 gram."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Slagugglan är ljust gråbrunbeige och ljusare än kattugglan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Slagugglan är ljust gråbrunbeige, det vill säga ljusare än kattugglan."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den har ett runt huvud med en ganska platt ansiktsrundel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett runt huvud med en ganska platt ansiktsrundel."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Slagugglan har små svarta ögon och orangegul näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har små svarta ögon och orangegul näbb."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Stjärten är kilformad och på ovansidan jämnt tvärbandad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten är kilformad och övre delen är jämnt tvärbandad."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Undersidan är vitaktig med smala, bruna längsgående fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kroppsundersidan är vitaktig med smala, bruna längsgående fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Flykten påminner om en ormvråks men med djupare och mer avslappnade vingslag.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Their flight style is reminiscent of a buzzard, but with deeper, more relaxed wing beats"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Könen är lika färgade, men honan är något större och i genomsnitt betydligt tyngre.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Geschlechter unterscheiden sich in der Färbung nicht, Weibchen sind jedoch etwas größer, vor allem aber im Durchschnitt wesentlich schwerer."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Redan i första dräkten är unga fåglar svåra att skilja från vuxna.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Bereits im ersten Alterskleid sind Jungvögel nur schwer von Altvögeln zu unterscheiden."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Hanens sång är ett sjustavigt, rytmiskt och djupt hoande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanens sång består av ett sjustavigt rytmiskt djupt hoande."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Locklätet och varningslätet har en skorrande, nasal karaktär som liknar hundskall.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Både dess lockläte och varningsläte har en skorrande hundskallsliknande nasal karaktär."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Honans sång liknar hanens men är hesare och något ljusare.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The female has a similar but hoarser and slightly higher pitched song"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "I norr lever den i tajga med grovstammiga träd och myrar, ofta nära hyggen eller öppet vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den norra populationen förekommer på tajga med grovstammiga träd och myrar, ofta i närheten av hyggen eller öppet vatten."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Den förekommer också där skog möter jordbruksbygd och undviker tät skog, särskilt barrskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den förekommer också i kanten där skogen möter jordbruksbygd och undviker tät skog, speciellt barrskogar."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige förekommer slagugglan från norra Västmanland till Lule lappmark.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige förekommer slagugglan från norra Västmanland till Lule lappmark."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Den är talrikast från Uppland till Medelpad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sin tätaste förekomst har den från Uppland till Medelpad."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Norr om polcirkeln är den mycket sällsynt och häckningar har inte rapporterats på senare tid.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Norr om Polcirkeln är den mycket sällsynt och häckningar har inte rapporterats under senare tid."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattas till cirka 5 000 reproduktiva individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det nationella beståndet uppskattas till cirka 5 000 reproduktiva individer."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Slagugglan är Hälsinglands landskapsfågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Slagugglan är Hälsinglands landskapsfågel."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Den häckar i grova höga stubbar, sällan i övergivna rovfågelbon, men idag oftast i holkar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Slagugglan häckar normalt i grova höga stubbar eller sällsynt i övergivna rovfågelbon men idag oftast i specialgjorda holkar."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Kullen består oftast av 3–4 rent vita och ganska runda ägg.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The clutch size is typically 3-4 (rarely from as few as 1 to as many as 6), with the eggs being pure white and quite rounded."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "I Fennoskandien läggs äggen i genomsnitt mellan mitten av mars och slutet av april.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The mean egg laying dates in Fennoscandia are between mid-March and late April."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Den är mycket aggressiv när ungarna lämnar boet och kan attackera människor som kommer nära.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "är mycket aggressiv när dess ungar lämnar boet och kan attackera närgångna människor"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Det är honan som försvarar reviret medan hanen skaffar föda åt familjen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det är honan som försvarar reviret och är aggressiv medan hanen skaffar föda åt familjen."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Under den varma årstiden är slagugglan inte sällan aktiv mitt på dagen när den har ungar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Ural owls are not infrequently fully active during daylight hours during the warmer months, while brooding young."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Slagugglan äter främst smågnagare, groddjur och insekter men även fåglar och andra ugglor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Slagugglan äter främst smågnagare, groddjur och insekter men även fåglar och till och med andra ugglor."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "lookalike",
+      "sv": "Kattugglan är mycket mindre, har tydligt kortare stjärt och relativt större huvud.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The tawny owl is much smaller with a conspicuously shorter tail and a relatively larger head."
+        }
+      ],
+      "other": {
+        "scientific": "Strix aluco",
+        "qid": "Q25756"
+      }
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Kattugglan har undersida med mörka streck och tvärband, medan slagugglan har kraftiga raka längsstreck.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "has underparts with dark shaft-streaks and crossbars, as opposed to the heavy but straight streaking of the Ural owl"
+        }
+      ],
+      "other": {
+        "scientific": "Strix aluco",
+        "qid": "Q25756"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Lappugglan är större med enormt huvud, små gula ögon och tydliga koncentriska ringar i ansiktsrundeln.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The great grey owl is larger than the Ural owl with a huge head and relatively even smaller yellow eyes while their facial disc has strong concentric lines."
+        }
+      ],
+      "other": {
+        "scientific": "Strix nebulosa",
+        "qid": "Q200724"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Slagugglan är en stannfågel med en stor utbredning i Europa och norra Asien, från Sachalin, Japan och Korea i öster till Skandinavien i väst."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i februari och mars."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i augusti och september."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Uppsala, Västmanland och Dalarna."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Slagugglan är en ljust gråbrunbeige uggla och stannfågel i Sverige, där den förekommer från norra Västmanland till Lule lappmark.",
+          "factIds": [
+            "f03",
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "Den lever i tajga med grovstammiga träd och myrar och där skog möter jordbruksbygd.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Ljust gråbrunbeige, ljusare än kattugglan, med runt huvud och ganska platt ansiktsrundel",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Små svarta ögon och orangegul näbb",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Vitaktig undersida med smala, bruna längsfläckar och kilformad, jämnt tvärbandad stjärt",
+          "factIds": [
+            "f07",
+            "f06"
+          ]
+        },
+        {
+          "text": "Könen är lika färgade, men honan är något större och i genomsnitt betydligt tyngre",
+          "factIds": [
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Hanens sång är ett sjustavigt, rytmiskt och djupt hoande.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "Honans sång liknar hanens men är hesare och något ljusare.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Lock- och varningslätet är skorrande och nasala och liknar hundskall.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Slagugglan är stannfågel i Sverige och förekommer från norra Västmanland till Lule lappmark, talrikast från Uppland till Medelpad.",
+          "factIds": [
+            "s01",
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "Norr om polcirkeln är den mycket sällsynt.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i februari och mars och sällan i augusti och september.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Uppsala, Västmanland och Dalarna.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Slagugglan äter främst smågnagare, groddjur och insekter men även fåglar och andra ugglor.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Honan försvarar reviret medan hanen skaffar föda åt familjen.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "När ungarna lämnar boet är den mycket aggressiv och kan attackera människor som kommer nära.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Med ungar är den under den varma årstiden inte sällan aktiv mitt på dagen.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "I flykten påminner den om en ormvråk men med djupare och mer avslappnade vingslag.",
+          "factIds": [
+            "f08"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25756",
+          "text": [
+            {
+              "text": "Kattugglan är mycket mindre, med tydligt kortare stjärt och relativt större huvud.",
+              "factIds": [
+                "f28"
+              ]
+            },
+            {
+              "text": "Dess undersida har mörka streck och tvärband, medan slagugglan har kraftiga raka längsstreck.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q200724",
+          "text": [
+            {
+              "text": "Lappugglan är större, med enormt huvud, små gula ögon och tydliga koncentriska ringar i ansiktsrundeln.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Slaguggla: så känner du igen ugglan på dräkt, ögon och stjärt, hur sången och lätena låter, var den lever och när den rapporteras mest.",
+      "facts": {
+        "size": {
+          "value": "50 till 59 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Ural Owl is a pale greyish brown owl and a resident in Sweden, where it occurs from northern Västmanland to Lule lappmark.",
+          "factIds": [
+            "f03",
+            "s01",
+            "f16"
+          ]
+        },
+        {
+          "text": "It lives in taiga with thick-trunked trees and bogs, and where forest meets farmland.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Pale greyish brown, paler than Tawny Owl, round head and fairly flat facial disc",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Small black eyes and an orange-yellow bill",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "Whitish underparts with narrow brown streaks and a wedge-shaped, evenly barred tail",
+          "factIds": [
+            "f07",
+            "f06"
+          ]
+        },
+        {
+          "text": "The sexes look alike, but the female is slightly larger and on average much heavier",
+          "factIds": [
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The male's song is a deep, rhythmic hooting of seven syllables.",
+          "factIds": [
+            "f11"
+          ]
+        },
+        {
+          "text": "The female's song is similar but hoarser and slightly higher.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The contact and alarm calls are harsh and nasal and sound like a barking dog.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Ural Owl is a resident in Sweden and occurs from northern Västmanland to Lule lappmark, most numerous from Uppland to Medelpad.",
+          "factIds": [
+            "s01",
+            "f16",
+            "f17"
+          ]
+        },
+        {
+          "text": "North of the Arctic Circle it is very rare.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "It is reported most in February and March and rarely reported in August and September.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Uppsala, Västmanland and Dalarna.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The female defends the territory while the male brings food for the family.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It is very aggressive when the young leave the nest and may attack people nearby.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "With young in the warm season, it is often active at midday.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Its flight recalls a Common Buzzard, with deeper, more relaxed wingbeats.",
+          "factIds": [
+            "f08"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25756",
+          "text": [
+            {
+              "text": "The Tawny Owl is much smaller, with a clearly shorter tail and a relatively larger head.",
+              "factIds": [
+                "f28"
+              ]
+            },
+            {
+              "text": "Its underparts have dark streaks and bars, while the Ural Owl has bold straight streaks.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q200724",
+          "text": [
+            {
+              "text": "The Great Grey Owl is larger, with a huge head, small yellow eyes and clear concentric rings in the facial disc.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Ural Owl: how to recognise it by plumage, eyes and tail, what its song and calls sound like, where it lives and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "50 to 59 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "375e5a9119c554c8"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "375e5a9119c554c8"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "slaguggla",
+    "en": "ural-owl"
+  },
+  "names": {
+    "sv": "Slaguggla",
+    "en": "Ural Owl",
+    "scientific": "Strix uralensis"
+  },
+  "family": {
+    "latin": "Strigidae",
+    "sv": "Ugglor"
+  },
+  "group": "owls",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q190083/hero.webp",
+      "width": 1600,
+      "height": 2350,
+      "author": "Andrew Kalinin",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Night_hunter.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q190083/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Divlja Srbija",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dugorepa_sova_(Strix_uralensis).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q190083/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Alexander Kürthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Strix_uralensis_-_Ural_Owl_XC314566.mp3",
+    "sha256": "7193d207d3298b60bc73fe49b27e733a21f971475aab0a9e906ceffa81a0f429"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Slaguggla",
+      "revision": "59704866"
+    },
+    "en": {
+      "title": "Ural owl",
+      "revision": "1372789337"
+    },
+    "de": {
+      "title": "Habichtskauz",
+      "revision": "269822938"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2497509,
+    "totalReports": 7624,
+    "months": [
+      37,
+      100,
+      83,
+      25,
+      13,
+      16,
+      9,
+      7,
+      9,
+      25,
+      58,
+      31
+    ],
+    "counties": {
+      "SE-K": 0,
+      "SE-W": 89,
+      "SE-X": 55,
+      "SE-I": 0,
+      "SE-N": 1,
+      "SE-Z": 16,
+      "SE-F": 0,
+      "SE-H": 0,
+      "SE-G": 0,
+      "SE-BD": 22,
+      "SE-T": 26,
+      "SE-E": 0,
+      "SE-M": 0,
+      "SE-D": 1,
+      "SE-AB": 17,
+      "SE-C": 100,
+      "SE-S": 24,
+      "SE-AC": 17,
+      "SE-Y": 23,
+      "SE-U": 92,
+      "SE-O": 7
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i februari och mars.",
+        "Rapporteras sällan i juli till september.",
+        "Andelen av alla fågelrapporter är högst i Uppsala, Västmanland och Dalarna."
+      ],
+      "en": [
+        "Reported most in February and March.",
+        "Rarely reported in July to September.",
+        "Its share of all bird reports is highest in Uppsala, Västmanland and Dalarna."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        663,
+        1258,
+        1923,
+        904,
+        560,
+        360,
+        155,
+        131,
+        173,
+        461,
+        667,
+        294
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-C": 2581,
+        "SE-W": 1017,
+        "SE-U": 923,
+        "SE-AB": 803,
+        "SE-O": 497,
+        "SE-X": 483,
+        "SE-T": 332,
+        "SE-BD": 245,
+        "SE-AC": 228,
+        "SE-S": 223,
+        "SE-Y": 149,
+        "SE-Z": 105,
+        "SE-D": 22,
+        "SE-N": 1
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

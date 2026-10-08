@@ -94,19 +94,18 @@ image_refs:
 - role: hero
   path: Q26629/hero.webp
   width: 2400
-  height: 1800
-  license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Botteville" title="User:Botteville">Botteville</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Larus marinus at Sandy Point,
-    Ipswich, MA.jpg
-  commons_filename: Larus marinus at Sandy Point, Ipswich, MA.jpg
+  height: 1600
+  license: CC BY 2.0
+  author: Andrew C
+  source_url: https://commons.wikimedia.org/wiki/File:Great Black-backed Gull (Larus
+    marinus) (15898029627).jpg
+  commons_filename: Great Black-backed Gull (Larus marinus) (15898029627).jpg
 - role: secondary
   path: Q26629/secondary-1.webp
   width: 1800
   height: 1198
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:GRDN711" title="User:GRDN711">Gordon
-    Leggett</a>
+  author: Gordon Leggett
   source_url: https://commons.wikimedia.org/wiki/File:2024-06-01 02 Great black-backed
     gull (Larus marinus) pair with chicks -.jpg
   commons_filename: 2024-06-01 02 Great black-backed gull (Larus marinus) pair with
@@ -116,13 +115,15 @@ image_refs:
   width: 1800
   height: 1129
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Great black-backed gull (Larus
     marinus) 2020.jpg
   commons_filename: Great black-backed gull (Larus marinus) 2020.jpg
 review_status: approved
-review_notes: "Havstrut — Larus marinus Sandy Point (Ipswich, MA); allmän SE-art längs kust + skärgård."
+review_notes: 'Havstrut — Larus marinus Sandy Point (Ipswich, MA); allmän SE-art längs kust + skärgård.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se b54c332e; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T20:04:47.943235+00:00'
 sources:
   wikipedia_sv_revision: '59210950'

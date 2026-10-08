@@ -78,12 +78,11 @@ class BadgesViewModel(
 
         val allUnlocked =
             unlocks
-                .sortedByDescending { it.unlockedAt }
                 .mapNotNull { u ->
                     catalog.findById(u.badgeId)?.let { b ->
                         BadgeWithUnlock(b, u.unlockedAt, stampNumbersById[b.id] ?: 0)
                     }
-                }
+                }.sortedWith(NewestStampFirst)
         val recentlyUnlocked = allUnlocked.take(5)
 
         val locked =

@@ -99,7 +99,7 @@ image_refs:
   width: 2400
   height: 1667
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Dinkum" title="User:Dinkum">Dinkum</a>
+  author: Dinkum
   source_url: https://commons.wikimedia.org/wiki/File:Anser indicus (captive).jpg
   commons_filename: Anser indicus (captive).jpg
 - role: secondary
@@ -107,8 +107,7 @@ image_refs:
   width: 1200
   height: 1800
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/41018892@N00">David
-    Long</a> from London, United Kingdom
+  author: David Long
   source_url: https://commons.wikimedia.org/wiki/File:Anser indicus -Beale Park, Berkshire,
     England-8a.jpg
   commons_filename: Anser indicus -Beale Park, Berkshire, England-8a.jpg
@@ -117,8 +116,7 @@ image_refs:
   width: 1200
   height: 1800
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/41018892@N00">David
-    Long</a> from London, United Kingdom
+  author: David Long
   source_url: https://commons.wikimedia.org/wiki/File:Anser indicus -Beale Park, Berkshire,
     England -head-8a.jpg
   commons_filename: Anser indicus -Beale Park, Berkshire, England -head-8a.jpg

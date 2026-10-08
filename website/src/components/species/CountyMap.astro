@@ -1,0 +1,61 @@
+---
+// Sweden's 21 counties shaded by the species' share of all bird reports (spec 2026-09-25 §5 and §9.2).
+// Geometry: src/data/sweden-counties.json (npm run assets:counties). Four shades: no reports (a hatch
+// pattern, not a flat colour, controller review Task 9: a solid --card tile reads as "unstyled", not
+// "zero"), 1 to 33, 34 to 66 and 67 to 100 per cent of the highest county.
+import counties from '../../data/sweden-counties.json';
+import type { Locale } from '../../lib/i18n';
+
+interface Props { id: string; values: Record<string, number>; locale: Locale; title: string; legend: string[]; describedBy: string }
+const { id, values, locale, title, legend, describedBy } = Astro.props;
+const bucket = (v: number | undefined) => (!v ? 0 : v <= 33 ? 1 : v <= 66 ? 2 : 3);
+const hatchId = `${id}-hatch`;
+// The light counties (no reports, small share) get a darker border than the paper-coloured one, or two
+// such neighbours merge into one patch (Task 9 re-review). Neighbours share a border, so the later path's
+// stroke is the one that shows: the light counties are drawn last, so their borders win.
+const drawOrder = [...counties.counties].sort((a, b) => bucket(values[b.code]) - bucket(values[a.code]));
+---
+
+<div class="cmap" data-map={id}>
+  <svg viewBox={counties.viewBox} role="img" aria-labelledby={`${id}-t`} aria-describedby={describedBy}>
+    <title id={`${id}-t`}>{title}</title>
+    <defs>
+      <pattern id={hatchId} width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="5" height="5" fill="var(--card)" />
+        <line x1="0" y1="0" x2="0" y2="5" stroke="var(--muted)" stroke-width="1.5" />
+      </pattern>
+    </defs>
+    {drawOrder.map((c) => {
+      const b = bucket(values[c.code]);
+      const name = locale === 'sv' ? c.sv : c.en;
+      return (
+        <path d={c.d} class={`b${b}`} fill={b === 0 ? `url(#${hatchId})` : undefined} data-county={c.code}>
+          <title>{`${name}: ${legend[b].toLowerCase()}`}</title>
+        </path>
+      );
+    })}
+  </svg>
+  <ul class="legend" role="list">
+    {legend.map((label, i) => <li><span class={`sw b${i}`} aria-hidden="true"></span>{label}</li>)}
+  </ul>
+</div>
+
+<style>
+  .cmap svg { display: block; width: 100%; height: auto; max-height: 420px; }
+  /* A light border (--paper, the page background) so two adjacent --rust (b3) counties stay visually
+     distinct from each other, not just from their neighbours (controller review, Task 9).
+     vector-effect keeps the line the same width however the SVG is scaled. */
+  path { stroke: var(--paper); stroke-width: .75px; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+  path.b0, path.b1 { stroke: color-mix(in srgb, var(--muted) 45%, var(--paper)); }
+  .b1 { fill: var(--peach); }
+  .b2 { fill: var(--apricot); }
+  .b3 { fill: var(--rust); }
+  .legend { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 12px; color: var(--muted); }
+  .legend li { display: inline-flex; align-items: center; gap: 6px; }
+  .sw { width: 12px; height: 12px; border-radius: 3px; border: 1px solid var(--muted); }
+  /* -45deg: the same slant as the map's hatch pattern (rotate(45) on a vertical line, Task 9 re-review). */
+  .sw.b0 { background: repeating-linear-gradient(-45deg, var(--card) 0 2px, var(--muted) 2px 3px); }
+  .sw.b1 { background: var(--peach); }
+  .sw.b2 { background: var(--apricot); }
+  .sw.b3 { background: var(--rust); }
+</style>

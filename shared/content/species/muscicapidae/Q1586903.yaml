@@ -66,8 +66,7 @@ image_refs:
   width: 2400
   height: 1704
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/79382895@N08">PsJeremy</a>
-    from Melbourne, Australia
+  author: PsJeremy
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe lugens Petra, Jordan
     1.jpg
   commons_filename: Oenanthe lugens Petra, Jordan 1.jpg
@@ -76,8 +75,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
-    title="User:מינוזיג">מינוזיג - MinoZig</a>
+  author: מינוזיג - MinoZig
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe lugens 2.jpg
   commons_filename: Oenanthe lugens 2.jpg
 - role: secondary
@@ -85,8 +83,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
-    title="User:מינוזיג">מינוזיג - MinoZig</a>
+  author: מינוזיג - MinoZig
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe lugens 1.jpg
   commons_filename: Oenanthe lugens 1.jpg
 review_status: auto

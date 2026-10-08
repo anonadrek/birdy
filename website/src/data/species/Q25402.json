@@ -1,0 +1,942 @@
+{
+  "qid": "Q25402",
+  "status": "ok",
+  "publish": true,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Adulta knölsvanar har helt vit fjäderdräkt och en orange och svart näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De adulta fåglarna har en vit fjäderdräkt, och näbben är orange och svart."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Knölsvanen har en svart knöl på ovansidan av näbbroten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har också en svart knöl på ovansidan av näbbroten."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Vid näbbroten bildas en svart triangel med spetsen mot ögat, som har en svart ring.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Mot ögat, som har en svart orbitalring, bildar näbbroten en svart triangel med spetsen mot ögat."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Knölsvanen har stor kropp, lång böjlig hals, litet huvud och svartgrå ben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De har en stor kropp och en lång böjlig hals, litet huvud, svartgrå ben"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Knölsvanen håller ofta halsen böjd i en S-form.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Höckerschwäne tragen ihren Hals häufig S-förmig gebogen."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Könen är lika, men hanens näbbknöl är större.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika men hanens näbbknöl är större."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Unga knölsvanar är gråbrunvita och har först en gråsvart näbb som blir alltmer skär.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilerna är gråbrunvita och har först en gråsvart näbb som blir mer och mer skär."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Unga fåglar får vit fjäderdräkt under första levnadsårets sommar eller andra levnadsårets höst.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De anlägger vit fjäderdräkt under det första levnadsårets sommar eller under det andra levnadsårets höst."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Knölsvanen är runt 140 cm lång och har ett vingspann på drygt 2 meter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Knölsvanarna är runt 140 cm långa och har ett vingspann på drygt 2 meter."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Adulta hanar väger i snitt tolv kilo, vilket gör knölsvanen till en av de tyngsta flygande fåglarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Adulta hanar väger i snitt tolv kilo vilket gör att de hör till de tyngsta fåglarna som kan flyga."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "I flykten hörs ett konstant vingbrus som är typiskt för arten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten har knölsvanen ett konstant, artspecifikt vingbrus."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Vingljudet i flykten kan höras på 1 till 2 kilometers avstånd.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "can be heard from a range of 1 to 2 km (0.6 to 1 mi)"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Knölsvanens läten beskrivs som grymtande, hest visslande och fnysande.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "often described as \"grunting, hoarse whistling, and snorting noises\""
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Upphetsade knölsvanar ger ett hårt, högt \"hueiarr\" eller \"kiorr\".",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Erregte Schwäne geben ein hartes, lautes hueiarr oder kiorr von sich."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Knölsvanen väser ofta mot konkurrenter och inkräktare i reviret.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Mute swans usually hiss at competitors or intruders trying to enter their territory."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Knölsvanen lever i sötvattensmiljöer som laguner, sjöar och långsamt flytande vattendrag.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Mute swans generally inhabit various freshwater areas, including lagoons, lakes, and slow-flowing rivers"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Knölsvanen föredrar näringsrika grunda sjöar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Sie präferieren grundsätzlich eutrophe Flachseen."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Sverige förekommer knölsvanen runt kusterna och i vassrika sjöar från Skåne till mellersta Norrland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige förekommer de runt kusterna och i vassrika sjöar från Skåne till mellersta Norrland."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I södra Sverige är knölsvanen stannfågel, medan den längs norrlandskusten ofta är flyttfågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I söder är de stannfåglar, längs norrlandskusten ofta flyttfåglar."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Knölsvan och sångsvan är de enda häckande svanarna i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tillsammans med sångsvan är knölsvan de enda häckande svanarna i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Vid Ottenby på södra Öland finns en koloni bland de största, med över 100 par.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The largest colonies have over 100 pairs, such as at the colony at Abbotsbury Swannery in Southern England and at the southern tip of Öland, Ottenby Preserve"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Boet är stort, byggt av vass och placeras på vassbäddar, bankar i grunda sjöar eller på land, främst på öar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Knölsvanen bygger ett stort bo av vass som placeras på vassbäddar, på bankar i grunda sjöar eller direkt på land och främst då på öar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Knölsvanen häckar även långt ut i skärgården på kala skär och holmar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De häckar även längre ut i skärgården på kala skär och holmar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "I maj och juni lägger knölsvanen fem till nio grågröna ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I maj och juni lägger knölsvanen fem till nio grågröna ägg"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Äggen ruvas i cirka 34–38 dygn och ungarna blir flygfärdiga efter cirka 120 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas i cirka 34–38 dygn"
+        },
+        {
+          "article": "sv",
+          "quote": "Flygfärdiga blir de först efter cirka 120 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Knölsvanen äter vattenväxter som den betar från sjöbottnen med hjälp av sin långa hals.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De äter vattenväxter som de \"betar\" från sjöbottnen och som de kan nå med hjälp av sina långa halsar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Knölsvanen kan nå botten vid vattendjup ned till omkring 1,5 meter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vid vattendjup ned till omkring 1,5 meter kan de nå botten."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "När knölsvanen känner sig hotad eller hävdar revir lyfter den vingarna och sänker huvudet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När knölsvanen känner sig hotad, eller ska hävda sitt revir, lyfter den vingarna och sänker huvudet."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Knölsvanen försvarar sitt revir hårt och kan attackera människor som kommer för nära.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Svanarna håller mycket hårt på sina revir och kan till och med attackera människor om man kommer för nära."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Knölsvanens metalliskt susande vingljud i flykten saknas hos sångsvan.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Arttypisch sind ihre metallisch sausenden bis singenden Fluggeräusche, die bei Sing- und Zwergschwänen fehlen."
+        },
+        {
+          "article": "sv",
+          "quote": "I områden där häckningsförekomst av knölsvan och sångsvan (Cygnus cygnus) överlappar varandra"
+        }
+      ],
+      "other": {
+        "scientific": "Cygnus cygnus",
+        "qid": "Q25612"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I söder är de stannfåglar, längs norrlandskusten ofta flyttfåglar."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Knölsvanen är en stor vit svan med orange och svart näbb och en svart knöl vid näbbroten.",
+          "factIds": [
+            "f01",
+            "f02",
+            "f04"
+          ]
+        },
+        {
+          "text": "Den lever vid sötvatten som sjöar, laguner och långsamt flytande vattendrag, och i Sverige runt kusterna och i vassrika sjöar.",
+          "factIds": [
+            "f16",
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Adulta fåglar är helt vita, näbben är orange och svart med svart knöl vid roten",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Svart triangel vid näbbroten med spetsen mot ögat, som har en svart ring",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Lång böjlig hals som ofta hålls i S-form, litet huvud och svartgrå ben",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Hanens knöl är större än honans, ungfåglar är gråbrunvita med gråsvart näbb som blir alltmer skär",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "I flykten hörs ett konstant, metalliskt susande vingbrus som kan höras på 1 till 2 kilometers avstånd.",
+          "factIds": [
+            "f11",
+            "f12",
+            "f30"
+          ]
+        },
+        {
+          "text": "Lätena beskrivs som grymtande, hest visslande och fnysande.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Upphetsade fåglar ger ett hårt, högt \"hueiarr\" eller \"kiorr\", och mot inkräktare i reviret väser den ofta.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Knölsvanen häckar i Sverige och är delvis flyttfågel.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Den finns runt kusterna och i vassrika sjöar från Skåne till mellersta Norrland.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "I södra Sverige är den stannfågel, medan den längs norrlandskusten ofta är flyttfågel.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Arten rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Vid Ottenby på södra Öland finns en koloni med över 100 par.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Den är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Knölsvanen betar vattenväxter från sjöbottnen med sin långa hals och når botten ned till omkring 1,5 meters djup.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "Den försvarar sitt revir hårt och kan attackera människor som kommer för nära.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Känner den sig hotad lyfter den vingarna och sänker huvudet.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "I maj och juni lägger den fem till nio grågröna ägg i ett stort bo av vass.",
+          "factIds": [
+            "f22",
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25612",
+          "text": [
+            {
+              "text": "Knölsvanen har ett metalliskt susande vingljud i flykten, något som saknas hos sångsvanen.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Knölsvan: så känner du igen den stora vita svanen på näbben och knölen, hur vingbruset och lätena låter och när under året den ses.",
+      "facts": {
+        "size": {
+          "value": "Cirka 140 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Mute Swan is a large white swan with an orange and black bill and a black knob at its base.",
+          "factIds": [
+            "f01",
+            "f02",
+            "f04"
+          ]
+        },
+        {
+          "text": "It lives on lakes, lagoons and slow rivers, in Sweden around the coasts and in reedy lakes.",
+          "factIds": [
+            "f16",
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Adults are all white, the bill orange and black with a black knob at the base",
+          "factIds": [
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Black triangle at the bill base points towards the eye, which has a black ring",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Long flexible neck often held in an S-curve, small head and blackish-grey legs",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Male has a larger knob; young are greyish brown-white, bill grey-black turning pinker",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "In flight the wings make a constant, metallic swishing sound that can be heard 1 to 2 kilometres away.",
+          "factIds": [
+            "f11",
+            "f12",
+            "f30"
+          ]
+        },
+        {
+          "text": "Its calls are described as grunting, hoarse whistling and snorting.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Excited birds give a hard, loud \"hueiarr\" or \"kiorr\", and it often hisses at rivals and intruders in its territory.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Mute Swan breeds in Sweden and is partly migratory.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "It occurs around the coasts and in reedy lakes from Skåne to central Norrland.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "In southern Sweden it is resident, along the Norrland coast often migratory.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "It is reported all year round and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "At Ottenby on southern Öland there is a colony of over 100 pairs.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Mute Swan grazes water plants from the bottom with its long neck and can reach the bottom in water down to about 1.5 metres deep.",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        },
+        {
+          "text": "It defends its territory hard and may attack people who come too close.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "When it feels threatened it raises its wings and lowers its head.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "In May and June it lays five to nine grey-green eggs in a large nest of reeds.",
+          "factIds": [
+            "f22",
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25612",
+          "text": [
+            {
+              "text": "The Mute Swan's wings make a metallic swishing sound in flight, which the Whooper Swan lacks.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Mute Swan: how to recognise this large white swan by its bill and knob, what its wingbeats and calls sound like, and when in the year it is seen.",
+      "facts": {
+        "size": {
+          "value": "About 140 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "dc5dd64e51c62d40"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "dc5dd64e51c62d40"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "knolsvan",
+    "en": "mute-swan"
+  },
+  "names": {
+    "sv": "Knölsvan",
+    "en": "Mute Swan",
+    "scientific": "Cygnus olor"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Änder"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25402/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Charles J. Sharp",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mute_swan_(Cygnus_olor)_taking_off.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25402/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Gzen92",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cygne_tuberculé_(Cygnus_olor)_-_tête_(2).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25402/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Joost van Bruggen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cygnus_olor_-_Mute_Swan_XC434964.mp3",
+    "sha256": "1d202c2eb86b1c2828b82f97e1758e99392020d7bcfeaeeef0a6d1560c7dc00e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Knölsvan",
+      "revision": "59568452"
+    },
+    "en": {
+      "title": "Mute swan",
+      "revision": "1374078477"
+    },
+    "de": {
+      "title": "Höckerschwan",
+      "revision": "261156108"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2498343,
+    "totalReports": 430314,
+    "months": [
+      100,
+      95,
+      78,
+      56,
+      47,
+      52,
+      56,
+      47,
+      56,
+      66,
+      84,
+      96
+    ],
+    "counties": {
+      "SE-K": 79,
+      "SE-W": 52,
+      "SE-X": 43,
+      "SE-I": 75,
+      "SE-N": 59,
+      "SE-Z": 2,
+      "SE-F": 58,
+      "SE-H": 63,
+      "SE-G": 48,
+      "SE-BD": 1,
+      "SE-T": 56,
+      "SE-E": 89,
+      "SE-M": 88,
+      "SE-D": 76,
+      "SE-AB": 100,
+      "SE-C": 58,
+      "SE-S": 32,
+      "SE-AC": 18,
+      "SE-Y": 58,
+      "SE-U": 33,
+      "SE-O": 70
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        48961,
+        32409,
+        48922,
+        54581,
+        52716,
+        31770,
+        25985,
+        22909,
+        28256,
+        32479,
+        26242,
+        24598
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 60281,
+        "SE-AB": 59364,
+        "SE-M": 52559,
+        "SE-H": 28419,
+        "SE-E": 20911,
+        "SE-D": 20240,
+        "SE-C": 18835,
+        "SE-N": 15105,
+        "SE-F": 13108,
+        "SE-T": 9147,
+        "SE-I": 7688,
+        "SE-W": 7402,
+        "SE-G": 5926,
+        "SE-Y": 4835,
+        "SE-X": 4814,
+        "SE-U": 4112,
+        "SE-K": 3951,
+        "SE-S": 3712,
+        "SE-AC": 3040,
+        "SE-Z": 191,
+        "SE-BD": 180
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-07"
+}

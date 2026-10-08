@@ -39,7 +39,8 @@ class TextContext:
         for fact in facts:
             if fact.get("topic") == "lookalike":
                 other = fact.get("other", {})
-                others.update(v for v in (other.get("qid"), other.get("scientific")) if v)
+                names = (other.get("qid"), other.get("scientific"), other.get("written"))
+                others.update(v for v in names if v)
         return cls({f["id"]: f for f in facts}, frozenset(others))
 
 
@@ -48,6 +49,14 @@ _NUMBER = re.compile(r"\d+(?:[.,]\d+)?")
 # prompts say "13 till 15" / "13 to 15" (Minor 6, final review 2026-10-06).
 _HYPHEN_RANGE = re.compile(r"\d\s*[-\u2010\u2011\u2012\u2212]\s*\d")
 HYPHEN_RANGE_MESSAGE = "skriver ett intervall med bindestreck, skriv till eller to"
+# A county share (datamod.COUNTIES_SHARE) stays a share: from "Vanligast i rapporterna från
+# Norrbotten ..." the R3 writer made "flest rapporter kommer från Norrbotten" (2026-10-07).
+# Inside a word too ("rapportandelen"); English "share" or "proportion" (fix wave 2026-10-07).
+_SHARE_WORD = {
+    "sv": re.compile("andel", re.IGNORECASE),
+    "en": re.compile("share|proportion", re.IGNORECASE),
+}
+SHARE_MESSAGE = "anger länsandelen utan att säga andel (share): det är ingen uppgift om antal"
 
 
 def _merge_space_grouped_thousands(text: str) -> str:
@@ -124,6 +133,9 @@ def sentence_issues(
             *issues,
             TextIssue(path, f"anger fakta som inte finns här: {', '.join(unknown)}", True),
         ]
+    cites_share = any(ctx.facts_by_id[f].get("kind") == "countyShare" for f in sentence.fact_ids)
+    if cites_share and not _SHARE_WORD[lang].search(sentence.text):
+        issues.append(TextIssue(path, SHARE_MESSAGE, True))
     corpus = " ".join(fact_corpus(ctx.facts_by_id[f]) for f in sentence.fact_ids)
     missing = sorted(numbers(sentence.text) - numbers(corpus))
     if missing:

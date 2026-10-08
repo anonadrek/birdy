@@ -1,0 +1,894 @@
+{
+  "qid": "Q189609",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Småskraken är 52–59 cm lång och har ett vingspann på 67–82 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Längden ligger mellan 52 och 59 cm och den har ett vingspann på 67–82 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Hanen väger 950–1 350 g och honan 800–1 100 g.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "weighing 950–1,350 g (34–48 oz), compared to female weight of 800–1,100 g (28–39 oz)"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Hanen i praktdräkt har lång nacktofs och svart huvud och övre hals med grönaktig glans.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hane i praktdräkt har lång nacktofs och dess huvud och övre delen av halsen är svart med grönaktig glans."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Hanen i praktdräkt har ett brett vitt halsband och rostbrunt bröst.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Halsring ist breit und weiß. Die Brust ist rostbraun"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Hanens rygg är svart medan undergump och vingspegel är vita.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ryggen är svart och undergumpen samt vingspegeln är vita."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Honans huvud och övre hals är rödbruna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honans huvud och övre delen av halsen är rödbrun."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Honan saknar vit hakfläck.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "durch das Fehlen des weißen Kinnflecks"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Den långa, smala och raka näbben är röd med svart överdel, och fötterna är röda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den långa, smala och raka näbben är röd med svart överdel och fötterna är röda."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Småskraken har en spretig tofs och en lång, tunn röd näbb med sågtandade kanter.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It has a spiky crest and long thin red bill with serrated edges."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "appearance",
+      "sv": "Småskraken har svarta streck på den vita vingspegeln.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dessutom har småskraken svarta streck på den vita vingspegeln."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Hanen i eklipsdräkt liknar honan men har en stor vit vingfläck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen i eklipsdräkt ser ungefär ut som honan men har en stor vit vingfläck."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "sex_age",
+      "sv": "Ungfåglar liknar honor men har kortare tofs och något mindre vita vingfläckar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Juveniles look similar to females, but have a shorter crest, and marginally smaller white wing patches."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Honan har ett ofta hört skorrande läte, \"prrak prrak prrak\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "ett ofta hört skorrande läte, \"prrak prrak prrak...\""
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Hanens spelläte hörs sällan och är mycket svagt, som en rytmisk hickning och en nysning med paus emellan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanens spelläte hörs sällan och är mycket svagt. Det brukar beskrivas som en rytmisk hickning tillsammans med en nysning med paus emellan"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "I flykten ger honan ett strävt \"gruk\", annars är arten mest tyst.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In flight, the female makes a harsh gruk. At other times this species is largely silent."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Den häckar på stränder vid klarvattensjöar och floder, men även vid skyddade havsvikar och flodmynningar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "på stränder, gärna sandiga och trädbevuxna, vid klarvattensjöar och floder, men även vid skyddade havsvikar och flodmynningar"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Småskraken övervintrar vid havskuster.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "häckar cirkumpolärt i norra Palearktis och Nordamerika och övervintrar vid havskuster"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till 21 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 21 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "En del småskrakar övervintrar nära häckningsområdena, bland annat vid Sveriges västkust.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "eller övervintrar i anslutning till sina häckningsområden, som vid Alaskas sydkust, på Island, Norges sydkust, Sveriges västkust"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Sverige räknas småskraken som livskraftig och finns inte på Artdatabankens rödlista.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även i Sverige behandlas den som livskraftig och tas inte upp på Artdatabankens rödlista."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet byggs i skydd av en sten eller under en buske.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet byggs i skydd av någon sten eller under en buske."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Honan lägger i snitt åtta till tio grågula ägg som hon ensam ruvar i cirka 30 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger i snitt åtta till tio ägg (max 14) som är grågula och som hon ensam ruvar i cirka 30 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan tar hand om ungarna i ungefär 60–65 dygn tills de är flygfärdiga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "ungarna tas om hand av honan i ungefär 60-65 dygn tills de är flygfärdiga"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Hanarna lämnar häckningsområdet i juni och samlas i mindre grupper vid kusten för att rugga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanarna lämnar häckningsområdet i juni och samlas i mindre grupper vid kusten för att rugga."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Höstflytten börjar i september och vissa återvänder till häckningsområdet redan i februari.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Höstflytten påbörjas i september och vissa flyttar tillbaka till häckningsområdet redan i februari."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "I vinterkvarter och under flytten uppträder den ofta i flockar på upp till hundra fåglar eller fler.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I vinterkvarter och under flytten uppträder den ofta i grupp, och flockar på upp till hundra, eller fler förekommer"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Bytet jagas ofta av flera skrakar tillsammans och fångas genom dykning.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Beute wird oft von mehreren Sägern gejagt und nach einer Treibjagd im Tauchen gefangen."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Under spelet sträcker, böjer och drar hanarna ihop halsen, ofta flera hanar samtidigt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "in which they stretch, bend and contract their necks, often in synchrony by several males together"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "food",
+      "sv": "Födan består mest av små stimbildande fiskar men även växtmaterial och ryggradslösa vattendjur.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Småskrakens föda består till största delen av små, stimbildande fisk men även en mindre del växtmaterial och vattenlevande ryggradslösa djur"
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "eller övervintrar i anslutning till sina häckningsområden, som vid Alaskas sydkust, på Island, Norges sydkust, Sveriges västkust"
+        },
+        {
+          "article": "sv",
+          "quote": "Småskraken är en flyttfågel vars häckningsutbredning är cirkumpolär och som sträcker sig genom Nordamerika, södra Grönland, norra Europa och Skandinavien"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Småskraken är en and med lång, tunn röd näbb som häckar på stränder vid klarvattensjöar och floder, men även vid skyddade havsvikar och flodmynningar.",
+          "factIds": [
+            "f09",
+            "f16"
+          ]
+        },
+        {
+          "text": "På vintern håller den till vid havskuster.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Hanen i praktdräkt: svart huvud med grönaktig glans, lång nacktofs, vitt halsband och rostbrunt bröst",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Honan har rödbrunt huvud och övre hals men saknar vit hakfläck",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Lång, smal och rak röd näbb med sågtandade kanter, röda fötter och spretig tofs",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "Vit vingspegel med svarta streck, hanen i eklipsdräkt liknar honan men har stor vit vingfläck",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Arten är mest tyst.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Honans skorrande \"prrak prrak prrak\" hörs ofta, och i flykten ger hon ett strävt \"gruk\".",
+          "factIds": [
+            "f13",
+            "f15"
+          ]
+        },
+        {
+          "text": "Hanens spelläte hörs sällan och är mycket svagt, som en rytmisk hickning och en nysning med en paus emellan.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Småskraken är delvis flyttfågel och häckar i Sverige.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Beståndet uppskattades 2018 till 21 000 par.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Höstflytten börjar i september och vissa återvänder redan i februari.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Hanarna lämnar häckningsområdet i juni för att rugga i mindre grupper vid kusten.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "En del övervintrar nära häckningsområdena, bland annat vid västkusten.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan är mest små stimbildande fiskar, men även växtmaterial och ryggradslösa vattendjur.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Flera skrakar jagar ofta tillsammans och fångar bytet genom att dyka.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Under flytten och i vinterkvarteren ses den ofta i flockar på upp till hundra fåglar eller fler.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Vid spelet sträcker, böjer och drar hanarna ihop halsen, ofta flera samtidigt.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Småskrake: så känner du igen hane och hona, hur lätena låter och när arten ses under året, med fakta om miljö, föda och beteende.",
+      "facts": {
+        "size": {
+          "value": "52 till 59 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Red-breasted Merganser is a duck with a long, thin red bill that breeds on the shores of clear lakes and rivers, and also by sheltered sea bays and estuaries.",
+          "factIds": [
+            "f09",
+            "f16"
+          ]
+        },
+        {
+          "text": "In winter it is found along sea coasts.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Breeding male: black head with a greenish gloss, long crest, white collar and rusty breast",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Female has a reddish-brown head and upper neck but no white chin patch",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Long, slim, straight red bill with serrated edges, red feet and a ragged crest",
+          "factIds": [
+            "f08",
+            "f09"
+          ]
+        },
+        {
+          "text": "Black bars on white wing patch, eclipse male resembles female but with large white wing patch",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "It is mostly silent.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "The female's rolling \"prrak prrak prrak\" is often heard, and in flight she gives a harsh \"gruk\".",
+          "factIds": [
+            "f13",
+            "f15"
+          ]
+        },
+        {
+          "text": "The male's display call is rarely heard and very faint, like a rhythmic hiccup and a sneeze with a pause between.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It is a partial migrant that breeds in Sweden.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "It is reported all year and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "The population was estimated at 21 000 pairs in 2018.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Autumn migration starts in September, and some return as early as February.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "In June males leave to moult in small groups on the coast.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Some winter near the breeding areas, for example on the west coast.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mostly on small schooling fish, as well as plant material and aquatic invertebrates.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Several mergansers often hunt together and catch their prey by diving.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "On migration and in winter quarters it often gathers in flocks of up to a hundred birds or more.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "In display the males stretch, bend and pull in their necks, often several at once.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Red-breasted Merganser: how to recognise male and female, what the calls sound like and when it is seen through the year, plus food and behaviour.",
+      "facts": {
+        "size": {
+          "value": "52 to 59 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "64e809cc5fc56dc4"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "64e809cc5fc56dc4"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "smaskrake",
+    "en": "red-breasted-merganser"
+  },
+  "names": {
+    "sv": "Småskrake",
+    "en": "Red-breasted Merganser",
+    "scientific": "Mergus serrator"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Änder"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q189609/hero.webp",
+      "width": 1600,
+      "height": 1189,
+      "author": "ALAN SCHMIERER",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:063_-_RED-BREASTED_MERGANSER_(4-20-12)_south_padre_island,_tx_(8717956869).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q189609/extra.webp",
+      "width": 1200,
+      "height": 933,
+      "author": "peggycadigan",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mergus_serrator_in_water_02.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q189609/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Jonathon Jongsma",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mergus_serrator_-_Red-breasted_Merganser_XC139389.ogg",
+    "sha256": "86f8c45ced911d54aaf6cc57d3db2cdec6a80f24b53d20783c30ca535802424f"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Småskrake",
+      "revision": "57950240"
+    },
+    "en": {
+      "title": "Red-breasted merganser",
+      "revision": "1356931841"
+    },
+    "de": {
+      "title": "Mittelsäger",
+      "revision": "262751574"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2498375,
+    "totalReports": 182717,
+    "months": [
+      80,
+      74,
+      58,
+      78,
+      78,
+      68,
+      69,
+      45,
+      64,
+      100,
+      95,
+      76
+    ],
+    "counties": {
+      "SE-K": 78,
+      "SE-W": 27,
+      "SE-X": 43,
+      "SE-I": 100,
+      "SE-N": 77,
+      "SE-Z": 55,
+      "SE-F": 39,
+      "SE-H": 81,
+      "SE-G": 42,
+      "SE-BD": 56,
+      "SE-T": 21,
+      "SE-E": 39,
+      "SE-M": 69,
+      "SE-D": 12,
+      "SE-AB": 36,
+      "SE-C": 13,
+      "SE-S": 52,
+      "SE-AC": 61,
+      "SE-Y": 53,
+      "SE-U": 29,
+      "SE-O": 53
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        14489,
+        9381,
+        13649,
+        28201,
+        32737,
+        15405,
+        11924,
+        8124,
+        12003,
+        18384,
+        11008,
+        7213
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 23466,
+        "SE-M": 21530,
+        "SE-H": 18979,
+        "SE-AB": 11128,
+        "SE-N": 10326,
+        "SE-I": 5369,
+        "SE-AC": 5293,
+        "SE-E": 4840,
+        "SE-F": 4675,
+        "SE-BD": 4084,
+        "SE-S": 3143,
+        "SE-G": 2701,
+        "SE-X": 2496,
+        "SE-Z": 2316,
+        "SE-Y": 2305,
+        "SE-C": 2157,
+        "SE-K": 2042,
+        "SE-W": 2042,
+        "SE-U": 1892,
+        "SE-T": 1749,
+        "SE-D": 1712
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

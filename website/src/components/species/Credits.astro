@@ -1,0 +1,76 @@
+---
+// Credits for every photo, the Wikipedia articles, the data sources, the verification line
+// (spec Revision 2026-10-05: "Kontrollerad mot källorna {date}", no name) and the report link
+// (spec 2026-09-25 §5, §7 and §10). scripts/check-seo.mjs fails the build when one is missing.
+//
+// rel="license" is used only on the text credit's own CC BY-SA 4.0 link (controller review, Task 9):
+// it marks THIS page's own licence, not every external resource a photo or recording happens to be
+// under, so it does not belong on the photo/recording licence links. "noopener" is dropped everywhere
+// in this component: none of these links use target="_blank", so it has no effect.
+import { getCopy, type Locale } from '../../lib/i18n';
+import { CONTACT_EMAIL } from '../../lib/links';
+import PhotoCredit from './PhotoCredit.astro';
+import { aboutHref, formatDate, localizedLicenseUrl, wikiUrl, type SpeciesImage, type WikiLang, type WikiRef } from '../../lib/species';
+
+// GBIF dataset pages (not just the GBIF.org front page, controller review, Task 9), verified against the
+// GBIF API (api.gbif.org/v1/dataset/<key>) 2026-10-07: 38b4c89f… is "Artportalen" (SLU Swedish Species
+// Information Centre), 87e639cc… is "The Swedish Red List 2025" (same publisher).
+const GBIF_REPORTS_URL = 'https://www.gbif.org/dataset/38b4c89f-584c-41bb-bd8f-cd1def33e92f';
+const GBIF_RED_LIST_URL = 'https://www.gbif.org/dataset/87e639cc-30a9-4007-bd2c-b0cab60326b9';
+const CC_BY_SA_4 = 'https://creativecommons.org/licenses/by-sa/4.0/';
+
+interface Props {
+  locale: Locale;
+  photos: { key: string; image: SpeciesImage }[];
+  /** `name` tells two species' articles apart on comparison pages. */
+  articles: { lang: WikiLang; ref: WikiRef; name?: string }[];
+  reportData: boolean;
+  redList: boolean;
+  /** YYYY-MM-DD */
+  reviewedAt: string;
+  reportSubject: string;
+}
+const { locale, photos, articles, reportData, redList, reviewedAt, reportSubject } = Astro.props;
+const t = getCopy(locale);
+const labels: Record<WikiLang, string> = { sv: t.species.articleSv, en: t.species.articleEn, de: t.species.articleDe };
+const [gbifReportsBefore, gbifReportsAfter] = t.species.dataCreditReports.split('{gbif}');
+const [gbifRedListBefore, gbifRedListAfter] = t.species.dataCreditRedList.split('{gbif}');
+const [reviewedBefore, reviewedAfter] = t.species.reviewed.split('{date}');
+---
+
+<div class="credits">
+  {photos.map(({ key, image }) => (
+    <p data-credit-for={key}><PhotoCredit locale={locale} image={image} /></p>
+  ))}
+  <p data-wiki-credit>
+    {t.species.textCredit} <a href={localizedLicenseUrl(CC_BY_SA_4, locale)} rel="license">CC BY-SA 4.0</a>.
+    {' '}{t.species.sources}:{' '}
+    {articles.map((a, i) => (
+      <Fragment>{i > 0 && ', '}<a href={wikiUrl(a.lang, a.ref)} data-wiki={a.lang}>{a.name ? `${labels[a.lang]} (${a.name})` : labels[a.lang]}</a></Fragment>
+    ))}
+  </p>
+  {(reportData || redList) && (
+    <p data-data-credit>
+      {reportData && <Fragment>{gbifReportsBefore}<a href={GBIF_REPORTS_URL}>GBIF.org</a>{gbifReportsAfter}</Fragment>}
+      {reportData && redList && ' '}
+      {redList && <Fragment>{gbifRedListBefore}<a href={GBIF_RED_LIST_URL}>GBIF.org</a>{gbifRedListAfter}</Fragment>}
+    </p>
+  )}
+  <p class="reviewed">
+    <span data-checked>{reviewedBefore}<time datetime={reviewedAt} data-reviewed>{formatDate(reviewedAt, locale)}</time>{reviewedAfter}</span>
+    {' '}<a href={aboutHref(locale)}>{t.species.aboutLink}</a>
+  </p>
+  <p class="report"><a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(reportSubject)}`}>{t.species.reportError}</a></p>
+</div>
+
+<style>
+  .credits { margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 12.5px; line-height: 1.6; color: var(--muted); }
+  .credits p { margin: 0 0 6px; }
+  /* :global, so the links PhotoCredit.astro renders (its own component, outside this scope) are styled too. */
+  .credits :global(a) { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+  .credits :global(a:hover) { color: var(--rust); }
+  .reviewed { margin-top: 12px !important; color: var(--ink); }
+  .reviewed a { color: var(--rust); }
+  .report { margin-top: 12px !important; font-weight: 600; }
+  .report a { color: var(--rust); }
+</style>

@@ -93,27 +93,35 @@ marginalia:
 image_refs:
 - role: hero
   path: Q574281/hero.webp
-  width: 2400
-  height: 1800
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Aporia.j&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Aporia.j (page does not exist)">Aporia.j</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Poecile lugubris, Vlasinska
-    visoravan i Vlasinsko jezero, Srbija (147).jpg
-  commons_filename: Poecile lugubris, Vlasinska visoravan i Vlasinsko jezero, Srbija
-    (147).jpg
+  width: 2048
+  height: 1365
+  license: CC BY 4.0
+  author: Christoph Moning
+  source_url: https://commons.wikimedia.org/wiki/File:Poecile lugubris in Türkiye.jpg
+  commons_filename: Poecile lugubris in Türkiye.jpg
 - role: secondary
   path: Q574281/secondary-1.webp
   width: 1800
   height: 1336
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Nikola_Veljkovi%C4%87&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Nikola Veljković (page does not exist)">Nikola Veljković</a>
+  author: Nikola Veljković
   source_url: https://commons.wikimedia.org/wiki/File:Senica šljivarka (Poecile lugubris)
     Sombre Tit.jpg
   commons_filename: Senica šljivarka (Poecile lugubris) Sombre Tit.jpg
+- role: secondary
+  path: Q574281/secondary-2.webp
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: Kostikidis Georgios
+  source_url: https://commons.wikimedia.org/wiki/File:Κλειδωνάς στην Εορδαία.jpg
+  commons_filename: Κλειδωνάς στην Εορδαία.jpg
 review_status: approved
-review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons hero, no manual review checkpoint'
+review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons
+  hero, no manual review checkpoint
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se b54c332e; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-04T10:01:05.041302+00:00'
 sources:
   wikipedia_sv_revision: '58368879'

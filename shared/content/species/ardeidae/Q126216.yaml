@@ -72,8 +72,7 @@ image_refs:
   width: 1600
   height: 2400
   license: Public domain
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q26235785" class="extiw" title="d:Q26235785"><span
-    title="photographer">David Menke</span></a></bdi>
+  author: David Menke
   source_url: https://commons.wikimedia.org/wiki/File:Nycticorax nycticorax FWS.jpg
   commons_filename: Nycticorax nycticorax FWS.jpg
 - role: secondary
@@ -81,7 +80,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/29310050@N04">yamatsu</a>
+  author: yamatsu
   source_url: https://commons.wikimedia.org/wiki/File:ゴイサギ(五位鷺)(Nycticorax nycticorax
     nycticorax)-幼鳥(ホシゴイ) (7254286006).jpg
   commons_filename: ゴイサギ(五位鷺)(Nycticorax nycticorax nycticorax)-幼鳥(ホシゴイ) (7254286006).jpg

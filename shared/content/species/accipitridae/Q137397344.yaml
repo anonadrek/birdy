@@ -6,10 +6,10 @@ taxonomy:
   genus: Tachyspiza
   ioc_order: Accipitriformes
 names:
-  sv: null
+  sv: Shikra
   en: Shikra
 abundance: ovanlig
-iucn_status: NE
+iucn_status: LC
 season:
   jan: present
   feb: present
@@ -93,7 +93,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Rohitjahnavi" title="User:Rohitjahnavi">Rohitjahnavi</a>
+  author: Rohitjahnavi
   source_url: https://commons.wikimedia.org/wiki/File:Shikra (Tachyspiza badia) in
     Little Rann of Kutch, Gujarat, India DSCN8550 01.jpg
   commons_filename: Shikra (Tachyspiza badia) in Little Rann of Kutch, Gujarat, India
@@ -103,7 +103,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Rohitjahnavi" title="User:Rohitjahnavi">Rohitjahnavi</a>
+  author: Rohitjahnavi
   source_url: https://commons.wikimedia.org/wiki/File:Shikra (Tachyspiza badia) in
     Little Rann of Kutch, Gujarat, India DSCN8550 02.jpg
   commons_filename: Shikra (Tachyspiza badia) in Little Rann of Kutch, Gujarat, India
@@ -113,7 +113,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Rohitjahnavi" title="User:Rohitjahnavi">Rohitjahnavi</a>
+  author: Rohitjahnavi
   source_url: https://commons.wikimedia.org/wiki/File:Shikra (Tachyspiza badia) in
     Little Rann of Kutch, Gujarat, India DSCN8550 03.jpg
   commons_filename: Shikra (Tachyspiza badia) in Little Rann of Kutch, Gujarat, India

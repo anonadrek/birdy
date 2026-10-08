@@ -75,10 +75,11 @@ fun LiveStatsPreview(
             )
             Spacer(Modifier.width(4.dp))
             Text(
-                // T12c C1: was Res.string.stats_section_top ("Most-seen species") — reading
-                // "3 Most-seen species" next to totalSpeciesThisYear is false; this label exists
-                // only to caption the count, not to name the section (the section's real title
-                // is drawn separately, above this card, by LifelistScreen).
+                // T12c C1: was Res.string.stats_section_top, the stats screen's section title
+                // ("Mest sedda" / "Most seen" since 1.3.0 Task 7c): "3 Most seen" next to
+                // totalSpeciesThisYear reads false; this label exists only to caption the count,
+                // not to name the section (the section's real title is drawn separately, above
+                // this card, by LifelistScreen).
                 // T12d Important 3: plural — "1 arter i år" read wrong for a first-species year.
                 text =
                     pluralStringResource(

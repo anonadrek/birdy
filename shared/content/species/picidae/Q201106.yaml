@@ -69,8 +69,7 @@ image_refs:
   width: 2400
   height: 1800
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
-    Vassen</a> from Brussels, Belgium
+  author: Frank Vassen
   source_url: https://commons.wikimedia.org/wiki/File:Grey-headed Woodpecker (Picus
     canus), Białowieża, Poland (4664122321).jpg
   commons_filename: Grey-headed Woodpecker (Picus canus), Białowieża, Poland (4664122321).jpg
@@ -79,8 +78,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
-    Vassen</a> from Brussels, Belgium
+  author: Frank Vassen
   source_url: https://commons.wikimedia.org/wiki/File:Picus canus, Białowieża 1.jpg
   commons_filename: Picus canus, Białowieża 1.jpg
 - role: secondary
@@ -88,8 +86,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2840555">Ксения
-    Волянская</a>
+  author: Ксения Волянская
   source_url: https://commons.wikimedia.org/wiki/File:Picus canus 624178174.jpg
   commons_filename: Picus canus 624178174.jpg
 review_status: auto

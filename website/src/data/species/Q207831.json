@@ -1,0 +1,544 @@
+{
+  "qid": "Q207831",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Tofsmesen är 10,5–12 cm lång, har ett vingspann på 17–20 cm och väger ungefär 11 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tofsmesen är 10,5–12 cm lång, har ett vingspann på 17–20 cm och väger ungefär 11 gram."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Hanarna väger i genomsnitt 11,5 gram och honorna 10,8 gram.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Männchen wiegen im Durchschnitt 11,5, die Weibchen 10,8 Gramm."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Tofsmesen är gråbrun med ljusare mage.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är gråbrun med ljusare mage"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den har en tydlig vit krage runt halsen, avgränsad nedtill av ett svart band som framtill bildar en triangelformad haklapp.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "har en tydligt markerad vit krage runt halsen som avgränsas nedtill av ett svart band som framtill bildar en triangelformad haklapp"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Tofsen på hjässan är mönstrad i svart och vitt och gör arten lätt att känna igen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har dessutom en tofs på hjässan elegant mönstrad i svart och vitt som gör den lätt att känna igen."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Tofsen kan resas och spetsen är ofta bakåtböjd.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "besides its erectile crest, the tip of which is often recurved"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Huvud- och halssidorna är vita och inramas av ett halvmåneformat svart band som börjar bakom ögat.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Kopf- und Halsseiten sind weiß, eingefasst in ein hinter dem Auge beginnendes, halbmondförmiges schwarzes Band."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hane och hona ser likadana ut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "elegant mönstrad i svart och vitt som gör den lätt att känna igen. Könen är lika."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Tofsmesen är talför och har ett eget, puttrigt ”burrurret”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som många andra mesar är den talför och ger ifrån sig ett helt eget, puttrigt \"burrurret\"."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Det vanligaste lätet är ett rullande ”zizigürrrr” eller ”gürrrr”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der häufigste Ruf ist ein unverkennbares, rollendes „zizigürrrr“ oder „gürrrr“."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Den ger också spetsiga ”zit”-läten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även spetsiga \"zit\" hörs."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången är en snabb serie av locklätet och andra spetsiga toner.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången består av en serie innehållande locklätet och andra spetsiga toner som framförs i rask takt."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "habitat",
+      "sv": "Den lever gärna i gammal granskog rik på mossor och lavar eller i tallskog på hällmark.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "gärna i gammal granskog rik på mossor och lavar eller i tallskog på hällmark"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "Den föredrar skog med mycket murket virke och grenverk som når långt ner.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Sie bevorzugt Bestände mit viel morschem Holz und tief hinabreichendem Astwerk."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "sweden",
+      "sv": "Tofsmesen förekommer i hela Sverige utom på Öland och Gotland, men sparsamt i Lappland och norra Norrbotten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den förekommer hela landet utom på Öland och Gotland, i Lappland och norra Norrbotten dock sparsamt."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till 527 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Beståndet uppskattades 2018 till 527 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "I Sverige anses tofsmesen livskraftig och tros öka i antal.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även i Sverige anses tofsmesen livskraftig, men tros öka i antal."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "food",
+      "sv": "Födan består av larver, insekter och frön som den ofta plockar på marken eller på låga grenar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tofsmesens föda består av larver, insekter och frön som den ofta plockar på marken eller låga grenar."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "food",
+      "sv": "Under vår och sommar äter den främst leddjur, från sensommaren även frön, särskilt från barrträd.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Haubenmeise ernährt sich im Frühjahr und Sommer hauptsächlich von Arthropoden (Gliederfüßern), ab Spätsommer auch von Sämereien, vor allem von Koniferen."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "behaviour",
+      "sv": "På vintern ses den ofta i stora blandflockar med mesar, men bara när de rör sig i barrskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern observeras den ofta i stora blandflockar med mesar, men endast när dessa rör sig i barrskog."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "behaviour",
+      "sv": "Den besöker sällan fågelbord och är svår att komma nära, men inte direkt skygg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den besöker sällan fågelbord och är oftast svår att komma nära, men är inte direkt skygg."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Den håller sig ofta långt ner i träden när den söker föda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "håller sig ofta långt ner i träden för att äta"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Tofsmesen bygger bo i murkna stubbar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tofsmesarna bygger bon i murkna stubbar"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Holkar används bara undantagsvis.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Künstliche Nistkästen werden offenbar nur ausnahmsweise angenommen"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Honan lägger vanligen sex till sju ägg som hon ruvar i 13–18 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger vanligtvis sex till sju ägg (extremfall tre till nio) som ruvas av honan i 13–18 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Båda föräldrarna tar hand om ungarna i 18–22 dagar tills de kan flyga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Efter att ungarna kläckts tas de om hand av båda föräldrar i 18–22 dagar tills de kan flyga."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Häckningssäsongen, med en kull per år eller en omläggning, sträcker sig från mars till juni.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Saison für die eine Jahresbrut oder bei deren Verlust für ein mögliches Nachgelege ist von März bis Juni."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november till februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från 20 av 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": null,
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "39420360c49d406f"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "tofsmes",
+    "en": "crested-tit"
+  },
+  "names": {
+    "sv": "Tofsmes",
+    "en": "Crested Tit",
+    "scientific": "Lophophanes cristatus"
+  },
+  "family": {
+    "latin": "Paridae",
+    "sv": "Mesar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q207831/hero.webp",
+      "width": 1600,
+      "height": 2400,
+      "author": "Gonçalo Vila Ferraz",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lophophanes_cristatus,_Parque_Biológico_de_Gaia,_Porto.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q207831/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Marie-Lan Taÿ Pamart",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lophophanes_cristatus_Gran_Paradiso_20190908.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q207831/voice.mp3",
+    "durationSec": 12,
+    "trimmed": false,
+    "author": "Alexander Kurthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lophophanes_cristatus_-_European_Crested_Tit_XC108346.mp3",
+    "sha256": "0c34d428e860cbdafebf5607d052a74a6441aeb76ebd36164ac45b57321168d1"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Tofsmes",
+      "revision": "56667392"
+    },
+    "en": {
+      "title": "Crested tit",
+      "revision": "1357526590"
+    },
+    "de": {
+      "title": "Haubenmeise",
+      "revision": "249904567"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2487883,
+    "totalReports": 135767,
+    "months": [
+      100,
+      88,
+      48,
+      21,
+      11,
+      23,
+      33,
+      33,
+      43,
+      51,
+      85,
+      96
+    ],
+    "counties": {
+      "SE-K": 42,
+      "SE-W": 100,
+      "SE-X": 89,
+      "SE-I": 0,
+      "SE-N": 24,
+      "SE-Z": 68,
+      "SE-F": 52,
+      "SE-H": 27,
+      "SE-G": 77,
+      "SE-BD": 62,
+      "SE-T": 82,
+      "SE-E": 46,
+      "SE-M": 13,
+      "SE-D": 100,
+      "SE-AB": 85,
+      "SE-C": 71,
+      "SE-S": 88,
+      "SE-AC": 50,
+      "SE-Y": 77,
+      "SE-U": 82,
+      "SE-O": 52
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november till februari.",
+        "Rapporteras från 20 av 21 län."
+      ],
+      "en": [
+        "Reported most in November to February.",
+        "Reported from 20 of the 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        23209,
+        14242,
+        14225,
+        9518,
+        6140,
+        6622,
+        7262,
+        7599,
+        10294,
+        11984,
+        12702,
+        11714
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-AB": 22799,
+        "SE-O": 20026,
+        "SE-D": 12015,
+        "SE-C": 10476,
+        "SE-W": 6448,
+        "SE-T": 6040,
+        "SE-H": 5611,
+        "SE-F": 5323,
+        "SE-E": 4918,
+        "SE-U": 4678,
+        "SE-S": 4647,
+        "SE-X": 4466,
+        "SE-G": 4273,
+        "SE-BD": 3890,
+        "SE-AC": 3750,
+        "SE-M": 3617,
+        "SE-Y": 2907,
+        "SE-N": 2795,
+        "SE-Z": 2496,
+        "SE-K": 955
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: Quotes describe the species as a widespread resident across central and northern Europe generally, but do not specifically mention Sweden, Scandinavia, or Fennoscandia, so the Swedish status is not directly confirmed.. Bestäm status eller lämna tom."
+    }
+  ]
+}

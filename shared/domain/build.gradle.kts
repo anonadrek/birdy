@@ -17,6 +17,8 @@ kotlin {
         }
         jvmTest.dependencies {
             implementation(libs.kotlinx.coroutines.test)
+            // DailyBirdGoldenGenerator reads the app's species.db (the website's golden file).
+            implementation(libs.sqldelight.sqlite.driver)
         }
     }
 }

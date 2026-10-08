@@ -6,8 +6,9 @@ taxonomy:
   genus: Mirafra
   ioc_order: Passeriformes
 names:
-  sv: Australisk lärka
+  sv: Drillärka
   en: Singing Bush Lark
+  former_sv: Australisk lärka
 abundance: ovanlig
 iucn_status: LC
 season:

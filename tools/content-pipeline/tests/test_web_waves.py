@@ -741,3 +741,26 @@ def test_publish_a_malformed_comparison_outside_the_named_pair_is_not_attempted(
     by_qid = {o.qid: o for o in outcomes}
     assert by_qid["Q1_Q2"].status == "failed"
     assert by_qid["Q1_Q2"].attempted is False
+
+
+def test_a_species_whose_voice_file_is_not_its_recording_is_not_ready(tmp_path: Path) -> None:
+    """Re-review 2026-10-07: publish must never ship an old voice.mp3 under a new
+    recording's credits. With audio.mp3Sha256 the file must exist and match."""
+    import hashlib
+
+    from birdy_fetcher.web.waves import unready_reasons
+
+    images_out = tmp_path / "img"
+    record = _ready("Q1", "Talgoxe", 1)
+    assert unready_reasons(record, images_out=images_out) == []
+    record["audio"] = {
+        "file": "Q1/voice.mp3",
+        "mp3Sha256": hashlib.sha256(b"new").hexdigest(),
+    }
+    assert any("saknas" in r for r in unready_reasons(record, images_out=images_out))
+    voice = images_out / "Q1" / "voice.mp3"
+    voice.parent.mkdir(parents=True)
+    voice.write_bytes(b"old")
+    assert any("inte den" in r for r in unready_reasons(record, images_out=images_out))
+    voice.write_bytes(b"new")
+    assert unready_reasons(record, images_out=images_out) == []

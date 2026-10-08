@@ -9,7 +9,7 @@ names:
   sv: Kaja
   en: Western Jackdaw
 abundance: allmän
-iucn_status: NE
+iucn_status: LC
 season:
   jan: present
   feb: present
@@ -97,8 +97,7 @@ image_refs:
   width: 1800
   height: 2400
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:ChoucasChoucas&amp;action=edit&amp;redlink=1"
-    class="new" title="User:ChoucasChoucas (page does not exist)">ChoucasChoucas</a>
+  author: ChoucasChoucas
   source_url: https://commons.wikimedia.org/wiki/File:Choucas (Coloeus monedula) à
     5080 Emines 01.jpg
   commons_filename: Choucas (Coloeus monedula) à 5080 Emines 01.jpg
@@ -107,7 +106,7 @@ image_refs:
   width: 1800
   height: 1800
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Coloeus monedula Oulu 20250503
     02.jpg
   commons_filename: Coloeus monedula Oulu 20250503 02.jpg
@@ -116,7 +115,7 @@ image_refs:
   width: 1800
   height: 1349
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Coloeus monedula Oulu 20250503
     03.jpg
   commons_filename: Coloeus monedula Oulu 20250503 03.jpg

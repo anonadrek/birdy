@@ -78,7 +78,8 @@ test.describe('Field Notes', () => {
       await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute('href', 'https://birdy.community/blog/why-birdy/');
       await expect(page.locator('link[rel="alternate"][hreflang="sv"]')).toHaveAttribute('href', 'https://birdy.community/sv/blog/why-birdy/');
       const albitHref = locale === 'sv' ? 'https://www.albit.se/produkter/birdy/' : 'https://www.albit.se/en/products/birdy/';
-      await expect(page.locator(`footer a[href="${albitHref}"]`)).toHaveText('AlbIT');
+      // Since dce1bdc7 the link is "Byggd av"/"Built by" and AlbIT's wordmark, so its name comes from the image's alt.
+      await expect(page.locator(`footer a[href="${albitHref}"]`)).toHaveAccessibleName(locale === 'sv' ? 'Byggd av AlbIT' : 'Built by AlbIT');
       expect(consoleErrors).toEqual([]);
     });
   }

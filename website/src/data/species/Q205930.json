@@ -1,0 +1,184 @@
+{
+  "qid": "Q205930",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "fjallripa",
+    "en": "rock-ptarmigan"
+  },
+  "names": {
+    "sv": "Fjällripa",
+    "en": "Rock Ptarmigan",
+    "scientific": "Lagopus muta"
+  },
+  "family": {
+    "latin": "Phasianidae",
+    "sv": "Fasanfåglar"
+  },
+  "group": "gamebirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q205930/hero.webp",
+      "width": 1600,
+      "height": 1064,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rock_ptarmigan_(Lagopus_muta)_1.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q205930/extra.webp",
+      "width": 1200,
+      "height": 888,
+      "author": "Bouke ten Cate",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alpensneeuwhoen_-_rock_ptarmigan_-_Lagopus_muta_2.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Fjällripa",
+      "revision": "59701825"
+    },
+    "en": {
+      "title": "Rock ptarmigan",
+      "revision": "1367877718"
+    },
+    "de": {
+      "title": "Alpenschneehuhn",
+      "revision": "265782820"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 5227679,
+    "totalReports": 5607,
+    "months": [
+      3,
+      13,
+      13,
+      13,
+      6,
+      100,
+      71,
+      19,
+      8,
+      2,
+      1,
+      4
+    ],
+    "counties": {
+      "SE-K": 0,
+      "SE-W": 20,
+      "SE-X": 0,
+      "SE-I": 0,
+      "SE-N": 0,
+      "SE-Z": 100,
+      "SE-F": 0,
+      "SE-H": 0,
+      "SE-G": 0,
+      "SE-BD": 24,
+      "SE-T": 0,
+      "SE-E": 0,
+      "SE-M": 0,
+      "SE-D": 0,
+      "SE-AB": 0,
+      "SE-C": 0,
+      "SE-S": 0,
+      "SE-AC": 18,
+      "SE-Y": 0,
+      "SE-U": 0,
+      "SE-O": 0
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juni.",
+        "Rapporteras sällan i maj och september till januari.",
+        "Andelen av alla fågelrapporter är högst i Jämtland."
+      ],
+      "en": [
+        "Reported most in June.",
+        "Rarely reported in May and September to January.",
+        "Its share of all bird reports is highest in Jämtland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        66,
+        179,
+        329,
+        485,
+        248,
+        2368,
+        1296,
+        372,
+        160,
+        39,
+        16,
+        39
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-Z": 2614,
+        "SE-BD": 1084,
+        "SE-AC": 971,
+        "SE-W": 935
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

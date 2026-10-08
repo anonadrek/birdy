@@ -3,6 +3,8 @@ import Wordmark from './ui/Wordmark.astro';
 import Icon from './ui/Icon.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 import { fieldNotesHref } from '../lib/field-notes';
+import { hasSpecies as anySpecies, hubHref } from '../lib/species';
+import { premiumHref } from '../lib/links';
 
 interface Props {
   locale: Locale;
@@ -19,12 +21,19 @@ const home = locale === 'sv' ? '/sv/' : '/';
 const langHref = switchLangHref ?? t.nav.switchLangHref;
 const langAttr = locale === 'sv' ? 'en' : 'sv';
 const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+// "Species" only once there is something to show (Task 7's review): before the first species is published
+// the hub only says the pages are on their way, so the menu looks as it did before.
+const speciesHub = hubHref(locale);
+const hasSpecies = await anySpecies();
 const links = [
+  ...(hasSpecies ? [{ href: speciesHub, label: t.nav.species }] : []),
   { href: `${home}#how-it-works`, label: t.nav.howItWorks },
   { href: `${home}#app`, label: t.nav.app },
-  { href: `${home}#premium`, label: t.nav.premium },
+  { href: premiumHref(locale), label: t.nav.premium },
   { href: fieldNotesHref(locale), label: t.nav.fieldNotes },
 ];
+// "Species" is current on the hub, group, species, comparison and about pages.
+const isCurrent = (href: string) => href === here || (hasSpecies && href === speciesHub && here.startsWith(speciesHub));
 const mobileOnly = [
   { href: `${home}#guide`, label: t.nav.guide },
   { href: `${home}#privacy`, label: t.nav.privacy },
@@ -36,7 +45,7 @@ const mobileOnly = [
   <div class="nav-inner">
     <a href={home} class="brand" aria-label="Birdy"><Wordmark size="32px" alt={t.alt.wordmark} color="var(--cream)" /></a>
     <div class="links">
-      {links.map((l) => <a href={l.href} aria-current={l.href === here ? 'page' : undefined}>{l.label}</a>)}
+      {links.map((l) => <a href={l.href} aria-current={isCurrent(l.href) ? 'page' : undefined}>{l.label}</a>)}
       <a class="lang" href={langHref} lang={langAttr}>{t.nav.switchLang}</a>
     </div>
     <a class="btn nav-cta" href={`${home}#download`}>{t.nav.getApp}</a>
@@ -45,7 +54,7 @@ const mobileOnly = [
     </button>
   </div>
   <div id="mobile-menu" class="mobile-menu" hidden>
-    {[...links, ...mobileOnly].map((l) => <a href={l.href} aria-current={l.href === here ? 'page' : undefined}>{l.label}</a>)}
+    {[...links, ...mobileOnly].map((l) => <a href={l.href} aria-current={isCurrent(l.href) ? 'page' : undefined}>{l.label}</a>)}
     <a href={langHref} lang={langAttr}>{t.nav.switchLang}</a>
     <a class="btn" href={`${home}#download`}>{t.nav.getApp}</a>
   </div>

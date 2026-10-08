@@ -23,6 +23,7 @@ class DailyBirdSelectorTest {
         abundance: Abundance = Abundance.ALLMÄN,
         regions: List<String> = listOf("SE"),
         seasonByMonth: Map<String, String> = (1..12).associate { monthKey(it) to "present" },
+        iucnStatus: String = "LC",
     ): Pair<SpeciesId, Species> =
         SpeciesId(id) to
             Species(
@@ -31,7 +32,7 @@ class DailyBirdSelectorTest {
                 taxonomy = SpeciesTaxonomy("Testidae", "Testfåglar", "Testus", "Test"),
                 name = id,
                 abundance = abundance,
-                iucnStatus = "LC",
+                iucnStatus = iucnStatus,
                 regions = regions,
                 season = seasonByMonth,
                 description = null,
@@ -124,6 +125,46 @@ class DailyBirdSelectorTest {
             val result = selector.selectFor(LocalDate(2026, 5, 15))
             assertNotNull(result)
             assertTrue(result.seasonTag == SeasonTag.BREEDING || result.seasonTag == SeasonTag.MIGRATING)
+        }
+
+    // Release 1.3.0: Garfågel, Kanariestrandskata and Smalnäbbad spov are extinct (IUCN EX). The
+    // daily bird is one to go out and find, and catching it counts towards a badge.
+    @Test
+    fun `selectFor never picks an extinct species`() =
+        runTest {
+            val pool =
+                mapOf(
+                    species("Q_LIVE_COMMON"),
+                    species("Q_LIVE_RARE", abundance = Abundance.OVANLIG),
+                    species("Q_EX_COMMON", iucnStatus = "EX"),
+                    species("Q_EX_RARE", abundance = Abundance.OVANLIG, iucnStatus = "EX"),
+                    species("Q_EW_RARE", abundance = Abundance.SÄLLSYNT, iucnStatus = "EW"),
+                )
+            val selector = DailyBirdSelector { pool }
+            val picks = (0L until 365L).map { selector.selectFor(LocalDate(2026, 1, 1).plusDays(it))?.speciesId }
+            assertEquals(setOf("Q_LIVE_COMMON", "Q_LIVE_RARE"), picks.toSet())
+        }
+
+    @Test
+    fun `an extinct species in the pool changes no other day's bird`() =
+        runTest {
+            val living =
+                (1..20).associate { i ->
+                    species("Q$i", abundance = if (i % 2 == 0) Abundance.ALLMÄN else Abundance.OVANLIG)
+                }
+            val withExtinct =
+                living + mapOf(species("Q_EX", abundance = Abundance.OVANLIG, iucnStatus = "EX"))
+            val dates = (0L until 365L).map { LocalDate(2026, 1, 1).plusDays(it) }
+            val before = DailyBirdSelector { living }
+            val after = DailyBirdSelector { withExtinct }
+            assertEquals(dates.map { before.selectFor(it) }, dates.map { after.selectFor(it) })
+        }
+
+    @Test
+    fun `only extinct species means no daily bird`() =
+        runTest {
+            val selector = DailyBirdSelector { mapOf(species("Q_EX", iucnStatus = "EX")) }
+            assertNull(selector.selectFor(LocalDate(2026, 5, 25)))
         }
 }
 

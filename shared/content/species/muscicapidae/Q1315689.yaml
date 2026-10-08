@@ -72,8 +72,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Joselodos&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Joselodos (page does not exist)">Joselodos</a>
+  author: Joselodos
   source_url: https://commons.wikimedia.org/wiki/File:Saxicola torquatus on a green
     twig.jpg
   commons_filename: Saxicola torquatus on a green twig.jpg
@@ -82,8 +81,7 @@ image_refs:
   width: 1800
   height: 1800
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/552380">Henry
-    de Lange</a>
+  author: Henry de Lange
   source_url: https://commons.wikimedia.org/wiki/File:Saxicola torquatus - Henry de
     Lange - 466318311.jpeg
   commons_filename: Saxicola torquatus - Henry de Lange - 466318311.jpeg
@@ -92,8 +90,7 @@ image_refs:
   width: 1800
   height: 1800
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/552380">Henry
-    de Lange</a>
+  author: Henry de Lange
   source_url: https://commons.wikimedia.org/wiki/File:Saxicola torquatus - Henry de
     Lange - 466320819.jpeg
   commons_filename: Saxicola torquatus - Henry de Lange - 466320819.jpeg

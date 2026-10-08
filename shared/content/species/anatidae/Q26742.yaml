@@ -104,8 +104,7 @@ image_refs:
   width: 2400
   height: 1480
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/44093058@N06">Blondinrikard
-    Fröberg</a>
+  author: Blondinrikard Fröberg
   source_url: https://commons.wikimedia.org/wiki/File:Common pochard, Aythya ferina,
     Brunand (50829034922).jpg
   commons_filename: Common pochard, Aythya ferina, Brunand (50829034922).jpg
@@ -114,8 +113,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/38584744@N00">Richard
-    Barrett-Small</a> from London, United Kingdom
+  author: Richard Barrett-Small
   source_url: https://commons.wikimedia.org/wiki/File:Aythya ferina Finsbury 1.jpg
   commons_filename: Aythya ferina Finsbury 1.jpg
 - role: secondary
@@ -123,8 +121,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37413900@N04">Maxwell
-    Hamilton</a> from Greater London, England United Kingdom
+  author: Maxwell Hamilton
   source_url: https://commons.wikimedia.org/wiki/File:Aythya ferina Bushy Park 1.jpg
   commons_filename: Aythya ferina Bushy Park 1.jpg
 review_status: approved

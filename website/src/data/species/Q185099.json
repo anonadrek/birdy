@@ -1,0 +1,932 @@
+{
+  "qid": "Q185099",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Vattenrallen är 23–26 centimeter lång och därmed något mindre än en rörhöna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vattenrallen är 23–26 centimeter lång och därmed något mindre än rörhönan."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Vattenrallen väger ungefär 100–190 gram och har ett vingspann på 40–45 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den väger ungefär 100–190 gram och har ett vingspann på 40–45 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Vattenrallen har kort stjärt och en lätt nedåtböjd, rödaktig näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vattenrallen har kort stjärt och lätt nedåtböjd, rödaktig näbb."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Ansikte, hals och bröst är gråblå.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ansikte, hals och bröst är gråblå."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Ryggen är mörkbrun med svarta streck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ryggen är mörkbrun med svarta streck."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Kroppssidorna är svartvitt mönstrade.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sidorna är svartvitmönstrade."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Undergumpen är vit med några mörkare streck.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the undertail is white with some darker streaks"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Ögonen är rödaktiga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ögonen är rödaktiga."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Hane och hona har samma teckning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hane och hona har samma teckning."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Ungarna är till största delen svarta och har ljus näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna är till största delen svarta och har ljus näbb."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Ungfågeln har beigea eller vita undersidor med mörkare band, och flankerna är bruna och beige i stället för svartvita.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The underparts are buff or white with darker bars, and the flank markings are brown and buff, rather than black and white."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Det mest hörda lätet brukar jämföras med det snabbt bortklingande grymtandet från en missnöjd gris.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "brukar jämföras vid det snabbt bortklingande ljudet av grymtandet från en missnöjd gris"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Huvudlätet är en serie grymtningar följda av ett högt, griskultingliknande skrik som avslutas med fler grymtningar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "This is a series of grunts followed by a high-pitched piglet-like squeal and ending in more grunts."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Hanens spelläte är ett envetet hamrande \"kypp kypp kypp\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanens spelläte är ett envetet hamrande \"kypp kypp kypp...\"."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Vattenrallen hittas i tät vass i grunda sjöar men också i havsvikar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vattenrallen hittas i tät vass i grunda sjöar, men också havsvikar."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Vid kyla kan vattenrallar tvingas ut till mer öppna platser som diken, soptippar och trädgårdar, eller ut på isen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Freezing condition may force birds into more open locations such as ditches, rubbish dumps and gardens, or even out onto exposed ice."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "I Sverige finns vattenrallen i vassjöar och havsvikar i Götaland, Svealand och längs Norrlandskusten upp till Västerbotten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige finns den i vassjöar och havsvikar i Götaland, Svealand och längs Norrlandskusten upp till Västerbotten"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattas till mellan 5 000 och 11 000 häckande individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Beståndet uppskattas bestå av mellan 5 000 och 11 000 häckande individer."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "De flesta vattenrallar flyttar söderut och befinner sig i vinterkvarter i september till november.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De flesta vattenrallar flyttar söderut och befinner sig i vinterkvarter i september till november."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Vissa vattenrallar övervintrar så långt norrut som i södra Sverige, Norge och Finland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Europa förekommer det att vissa övervintrar så långt norr ut som i södra Sverige, Norge och Finland."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "behaviour",
+      "sv": "Vattenrallen lever undanskymt och märks mest på lätet, men kan ibland ses springa förbi i en vassglänta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Där lever den undanskymt och märks mest på grund av lätet, men kan ibland ses springa förbi i en vassglänta."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Den flyger korta sträckor lågt över vassen med de långa benen dinglande.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "it flies short distances low over the reeds with its long legs dangling"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Överraskad ute i det öppna kan vattenrallen stelna och stå helt stilla.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "it will \"freeze\" if surprised in the open"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Vattenrallen äter små fiskar, kräftdjur, blötdjur, insekter och deras larver.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den livnär sig av små fiskar, kräftdjur, blötdjur, insekter och deras larver."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "På hösten och vintern äter den mer växtföda, som knoppar, blommor, skott och frön av vattenväxter samt bär och frukt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Plant food, which is consumed more in autumn and winter, includes the buds, flowers, shoots and seeds of water plants, berries and fruit."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Häckningstiden sträcker sig från april till augusti.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Häckningstiden sträcker sig från april till augusti."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Boet är ett flytande, skålformat bo av gräs, strån och andra växtdelar, väl gömt i tät våtmarksvegetation.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Båda könen bygger ett flytande skålformat bo av gräs, strån och andra växtdelar och gömmer det väl i tät våtmarksvegetation."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Honan lägger sex till elva ägg som ruvas av båda föräldrarna i tre veckor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger sex till elva ägg som är ungefär 35 millimeter och som ruvas av båda föräldrar i tre veckor tills de kläcks."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Vattenrallen lägger oftast två kullar per häckningssäsong.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vattenrallen lägger oftast två kullar per häckningssäsong."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Sibirisk rall skiljer sig från vattenrallen genom ett brett brunt ögonstreck, mer vitt på strupen och tydligt mörkare brun hjässa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sibirisk rall (Rallus indicus), tidigare behandlad som underart till vattenrallen, har ett brett brunt ögonstreck, mer vitt på strupen och vitare ögonbrynsstreck framför ögat och tydligt mörkare brun hjässa."
+        }
+      ],
+      "other": {
+        "scientific": "Rallus indicus"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Europa förekommer det att vissa övervintrar så långt norr ut som i södra Sverige, Norge och Finland."
+        },
+        {
+          "article": "sv",
+          "quote": "De flesta vattenrallar flyttar söderut och befinner sig i vinterkvarter i september till november."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Vattenrallen är en rall som lever undanskymt i tät vass i grunda sjöar och havsvikar.",
+          "factIds": [
+            "f15",
+            "f21"
+          ]
+        },
+        {
+          "text": "Den märks mest på lätet men kan ibland ses springa förbi i en vassglänta.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Gråblått ansikte, hals och bröst, mörkbrun rygg med svarta streck",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Lätt nedåtböjd, rödaktig näbb, rödaktiga ögon och kort stjärt",
+          "factIds": [
+            "f03",
+            "f08"
+          ]
+        },
+        {
+          "text": "Svartvitt mönstrade kroppssidor och vit undergump med några mörkare streck",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Något mindre än en rörhöna, hane och hona har samma teckning",
+          "factIds": [
+            "f01",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Det mest hörda lätet brukar liknas vid det snabbt bortklingande grymtandet från en missnöjd gris.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Huvudlätet är en serie grymtningar, sedan ett högt skrik som av en griskulting och till sist fler grymtningar.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Hanens spelläte är ett envetet hamrande \"kypp kypp kypp\".",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Vattenrallen häckar i Sverige och är delvis flyttfågel.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Den finns i vassjöar och havsvikar i Götaland, Svealand och längs Norrlandskusten upp till Västerbotten.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "De flesta flyttar söderut och är i vinterkvarteren i september till november, men vissa övervintrar i södra Sverige.",
+          "factIds": [
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "Häckningstiden är april till augusti.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Arten rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Vattenrallen äter små fiskar, kräftdjur, blötdjur, insekter och deras larver.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "På hösten och vintern äter den mer växtföda, som knoppar, skott och frön av vattenväxter samt bär och frukt.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Den flyger korta sträckor lågt över vassen med de långa benen dinglande.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Överraskad i det öppna kan den stelna och stå helt stilla.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "Vid kyla kan den tvingas ut till diken, soptippar, trädgårdar eller ut på isen.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Rallus indicus",
+          "text": [
+            {
+              "text": "Sibirisk rall har ett brett brunt ögonstreck, mer vitt på strupen och en tydligt mörkare brun hjässa än vattenrallen.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Vattenrall: så känner du igen den på fjäderdräkt och näbb, hur de grymtande lätena låter, vad den äter och när den ses under året.",
+      "facts": {
+        "size": {
+          "value": "23 till 26 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Water Rail is a secretive rail of dense reeds in shallow lakes and sea bays.",
+          "factIds": [
+            "f15",
+            "f21"
+          ]
+        },
+        {
+          "text": "It is mostly noticed by its call, but is sometimes seen running across a gap in the reeds.",
+          "factIds": [
+            "f21"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Blue-grey face, neck and breast, with a dark brown back streaked black",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Slightly downcurved reddish bill, reddish eyes and a short tail",
+          "factIds": [
+            "f03",
+            "f08"
+          ]
+        },
+        {
+          "text": "Black-and-white patterned flanks and a white undertail with a few darker streaks",
+          "factIds": [
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Slightly smaller than a Moorhen, male and female look alike",
+          "factIds": [
+            "f01",
+            "f09"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call heard most often is usually likened to the quickly fading grunting of a disgruntled pig.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The main call is a series of grunts, then a loud squeal like a piglet, ending in more grunts.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The male's display call is a persistent hammering \"kypp kypp kypp\".",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Water Rail breeds in Sweden and is a partial migrant.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "It lives in reedy lakes and sea bays in Götaland, Svealand and along the Norrland coast up to Västerbotten.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Most move south and are in their wintering areas in September to November, though some winter in southern Sweden.",
+          "factIds": [
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "The breeding season runs from April to August.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "It is reported all year round and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Water Rail eats small fish, crustaceans, molluscs, insects and their larvae.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "In autumn and winter it eats more plant food: buds, shoots and seeds of water plants, berries and fruit.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It flies short distances low over the reeds with its long legs dangling.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Surprised in the open, it can freeze and stand completely still.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "In cold weather it may be forced into ditches, rubbish tips, gardens or onto ice.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Rallus indicus",
+          "text": [
+            {
+              "text": "Rallus indicus has a broad brown eye stripe, more white on the throat and a clearly darker brown crown than the Water Rail.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Water Rail: how to recognise it by plumage and bill, what its grunting calls sound like, what it eats and when it is seen through the year.",
+      "facts": {
+        "size": {
+          "value": "23 to 26 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "e167cc4784a3a4e9"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "e167cc4784a3a4e9"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "vattenrall",
+    "en": "water-rail"
+  },
+  "names": {
+    "sv": "Vattenrall",
+    "en": "Water Rail",
+    "scientific": "Rallus aquaticus"
+  },
+  "family": {
+    "latin": "Rallidae",
+    "sv": "Rallar"
+  },
+  "group": "cranes_rails",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q185099/hero.webp",
+      "width": 1600,
+      "height": 1064,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Water_rail_(Rallus_aquaticus).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q185099/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "keith gallie",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Water_rail_Rallus_aquaticus_(37337411980).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q185099/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Franz Lindinger",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rallus_aquaticus_-_Water_Rail_XC387327.mp3",
+    "sha256": "7d8fa0c581478fd00e4b61bb43c8b81bcc7adf19b3e138c5d3e0b6cf4059b65e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Vattenrall",
+      "revision": "59709788"
+    },
+    "en": {
+      "title": "Water rail",
+      "revision": "1372863112"
+    },
+    "de": {
+      "title": "Wasserralle",
+      "revision": "243463934"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2474831,
+    "totalReports": 116222,
+    "months": [
+      82,
+      61,
+      59,
+      93,
+      97,
+      85,
+      73,
+      99,
+      100,
+      73,
+      74,
+      85
+    ],
+    "counties": {
+      "SE-K": 28,
+      "SE-W": 37,
+      "SE-X": 44,
+      "SE-I": 72,
+      "SE-N": 66,
+      "SE-Z": 5,
+      "SE-F": 56,
+      "SE-H": 55,
+      "SE-G": 48,
+      "SE-BD": 5,
+      "SE-T": 88,
+      "SE-E": 43,
+      "SE-M": 58,
+      "SE-D": 76,
+      "SE-AB": 73,
+      "SE-C": 100,
+      "SE-S": 67,
+      "SE-AC": 8,
+      "SE-Y": 18,
+      "SE-U": 66,
+      "SE-O": 55
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        8162,
+        4265,
+        7568,
+        18356,
+        22260,
+        10548,
+        7004,
+        9926,
+        10373,
+        7330,
+        4709,
+        4442
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 17049,
+        "SE-AB": 15666,
+        "SE-M": 12596,
+        "SE-C": 11741,
+        "SE-H": 8923,
+        "SE-D": 7292,
+        "SE-N": 6120,
+        "SE-T": 5188,
+        "SE-F": 4595,
+        "SE-E": 3668,
+        "SE-U": 2987,
+        "SE-S": 2814,
+        "SE-I": 2686,
+        "SE-G": 2132,
+        "SE-W": 1917,
+        "SE-X": 1776,
+        "SE-Y": 553,
+        "SE-K": 500,
+        "SE-AC": 455,
+        "SE-BD": 230,
+        "SE-Z": 137
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

@@ -98,7 +98,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Great cormorant (Phalacrocorax
     carbo), Travemünde.jpg
   commons_filename: Great cormorant (Phalacrocorax carbo), Travemünde.jpg
@@ -107,7 +107,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Great cormorant (Phalacrocorax
     carbo) in flight, Travemünde.jpg
   commons_filename: Great cormorant (Phalacrocorax carbo) in flight, Travemünde.jpg
@@ -116,8 +116,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Korinna&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Korinna (page does not exist)">Korinna</a>
+  author: Korinna
   source_url: https://commons.wikimedia.org/wiki/File:Phalacrocorax carbo or the great
     cormorant.jpg
   commons_filename: Phalacrocorax carbo or the great cormorant.jpg

@@ -39,7 +39,7 @@ async def test_a_good_text_is_saved_with_the_status_from_the_fact_sheet(tmp_path
     client = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
     outcomes = await run_write(paths, WriteOptions(wave=1), client=client, now=NOW)
     assert [o.status for o in outcomes] == ["ok"]
-    assert client.models == ["claude-opus-5", "claude-sonnet-5"]
+    assert client.models == ["claude-opus-5-5", "claude-sonnet-5"]  # Albin's choice
     record = load_record(record_path(paths.data_out, "Q25485"))
     assert record is not None
     assert record["status"] == "ok"
@@ -664,3 +664,61 @@ async def test_a_failed_text_is_tried_again_after_the_banned_list_changes(
     redo = FakeJsonClient([reply(VALID), reply(_verdicts(VALID))])
     outcomes = await run_write(paths, WriteOptions(wave=1), client=redo, now=NOW)
     assert [o.status for o in outcomes] == ["ok"]
+
+
+def test_the_writer_prompt_keeps_a_county_share_a_share() -> None:
+    """R3 (2026-10-07): "Vanligast i rapporterna från Norrbotten ..." became "flest rapporter
+    kommer från Norrbotten" in A's Bofink text."""
+    template = (Path(__file__).resolve().parents[1] / "prompts/web-v2.md").read_text(
+        encoding="utf-8"
+    )
+    assert "keep the word andel in Swedish and share in English" in template
+    assert "never write that the most reports come from those counties" in template
+
+
+def test_the_writer_prompt_says_when_a_species_is_not_in_sweden() -> None:
+    template = (Path(__file__).resolve().parents[1] / "prompts/web-v2.md").read_text(
+        encoding="utf-8"
+    )
+    assert "does not occur in Sweden, or is rare there, say so in where_when" in template
+
+
+def test_the_status_line_names_the_fact_the_status_comes_from() -> None:
+    from birdy_fetcher.web.text_step import render_write_prompt
+
+    record = reviewed_record()
+    record["facts"] = [f for f in record["facts"] if f["topic"] != "status"]
+    record["facts"].append(
+        {
+            "id": "d09",
+            "topic": "data",
+            "source": "artportalen",
+            "kind": "absent",
+            "sv": "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025.",
+        }
+    )
+    template = "System: s\n\nUser: {status_line}"
+    _, user = render_write_prompt(template, record, [], "", "", [])
+    assert user == "Förekommer inte (fact d09)"
+
+
+def test_a_lookalike_echoed_with_its_written_name_gets_its_qid() -> None:
+    from birdy_fetcher.web.text_step import _lookalike_qid_map
+
+    record = {
+        "facts": [
+            {
+                "id": "f09",
+                "topic": "lookalike",
+                "other": {"scientific": "Corvus corone", "qid": "Q26198", "written": "C. corone"},
+            }
+        ]
+    }
+    assert _lookalike_qid_map(record) == {"Corvus corone": "Q26198", "C. corone": "Q26198"}
+
+
+def test_the_writer_prompt_reads_month_data_as_reports() -> None:
+    template = (Path(__file__).resolve().parents[1] / "prompts/web-v2.md").read_text(
+        encoding="utf-8"
+    )
+    assert "how often the bird is reported, not whether it is there" in template

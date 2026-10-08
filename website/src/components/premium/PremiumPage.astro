@@ -1,0 +1,364 @@
+---
+// The Premium page, /premium/ and /sv/premium/ (plan 2026-10-08 Task 6, mockups premium-a.html and premium-a-en.html):
+// espresso and brass like the app's own Premium and thank-you screens. The facts follow docs/play-store/terms.md §5 and
+// privacy-policy.md §1, §4 and §5 on release/1.3.0: Premium is the finds map, the journal as a PDF, season statistics
+// and seven badges, bought as a year or for good in Google Play; audio ID is never part of it (BirdNET's licence).
+// Prices only on the Swedish page (Play shows the local price elsewhere); no Offer/Product JSON-LD, since Play sets them.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../Nav.astro';
+import Footer from '../Footer.astro';
+import Kicker from '../ui/Kicker.astro';
+import JournalHeadline from '../ui/JournalHeadline.astro';
+import MarginNote from '../ui/MarginNote.astro';
+import DeckleEdge from '../ui/DeckleEdge.astro';
+import PlayStoreBadge from '../ui/PlayStoreBadge.astro';
+import AppStoreBadge from '../ui/AppStoreBadge.astro';
+import { type Locale, getCopy } from '../../lib/i18n';
+import { premiumHref } from '../../lib/links';
+import { releaseDependentCopy, releaseTimelineEntry } from '../../lib/release.mjs';
+import { date } from 'virtual:birdy-daily-bird';
+import { SITE, breadcrumbJsonLd, playHref } from '../../lib/species';
+import { parseHeadline } from '../../lib/headline';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getCopy(locale);
+const p = t.premiumPage;
+// The early users' lead and the buy steps describe 1.3, so before the day they say it is coming (review 2026-10-08).
+const { earlyLead, buySteps } = releaseDependentCopy(p, date.iso);
+const pathname = premiumHref(locale);
+const home = locale === 'sv' ? '/sv/' : '/';
+const pricesId = locale === 'sv' ? 'priser' : 'prices';
+const play = playHref('premium', 'premium');
+
+const shots = import.meta.glob<ImageMetadata>('../../assets/premium/*.jpg', { eager: true, import: 'default' });
+const shot = (name: string): ImageMetadata => {
+  const hit = shots[`../../assets/premium/${name}.jpg`];
+  if (!hit) throw new Error(`Premiumbilden saknas: src/assets/premium/${name}`);
+  return hit;
+};
+const stats = shot(`emu-stats-${locale}-1`);
+const trophy = shot(`emu-trophy-${locale}-1`);
+const thanks = shot(`emu-tack-${locale}`);
+const pdfPages = ['1', '2', '5'].map((n) => shot(`pdf-${locale}-${n}`));
+
+const crumbs = [
+  { name: p.crumbHome, href: home },
+  { name: p.crumb, href: pathname },
+];
+const jsonLd = [
+  {
+    '@type': 'WebPage',
+    name: p.title.replace(/ \| Birdy$/, ''),
+    description: p.description,
+    url: new URL(pathname, SITE).toString(),
+    inLanguage: locale,
+    isPartOf: { '@type': 'WebSite', name: 'Birdy', url: new URL('/', SITE).toString() },
+  },
+  breadcrumbJsonLd(crumbs),
+];
+const accent = (s: string) => parseHeadline(s);
+const phoneSizes = '(min-width: 900px) 270px, 230px';
+---
+
+<Layout locale={locale} pathname={pathname} title={p.title} description={p.description} ogImage={`/og-premium-${locale}.jpg?v=1`} ogImageAlt={p.shareAlt} jsonLd={jsonLd}>
+  <Nav locale={locale} variant="overlay" />
+  <main id="main" tabindex="-1" class="pp" data-premium-page>
+    <header class="dark hero">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="wrap grid">
+        <div class="hero-words">
+          <span class="nav-until" data-nav-until aria-hidden="true"></span>
+          <nav class="crumbs" aria-label={p.crumbLabel}>
+            <ol>
+              <li><a href={crumbs[0].href} data-crumb>{crumbs[0].name}</a></li>
+              <li><span aria-current="page" data-crumb>{crumbs[1].name}</span></li>
+            </ol>
+          </nav>
+          <Kicker text={p.kicker} />
+          <h1>{accent(p.headline).map((tok) => (tok.kind === 'plain' ? tok.text : <em>{tok.text}</em>))}</h1>
+          <MarginNote text={p.note} />
+          <p class="lead">{p.lead}</p>
+          <div class="ctas">
+            <a class="btn-brass" href={`#${pricesId}`}>{p.seePrices}</a>
+            <PlayStoreBadge locale={locale} href={play} alt={t.alt.playStoreBadge} size="small" loading="eager" />
+          </div>
+        </div>
+        <div class="hero-phone">
+          <div class="pphone tilt"><Image src={stats} alt={p.heroAlt} widths={[300, 450, 600]} sizes="(min-width: 900px) 290px, 250px" loading="eager" fetchpriority="high" decoding="async" /></div>
+          <span class="seal seal--brass hseal" aria-hidden="true">{p.heroSeal}</span>
+          <span class="hand" aria-hidden="true">{p.heroHand}</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="paper situation">
+      <DeckleEdge color="var(--dark-deep)" />
+      <div class="wrap grid">
+        <div data-reveal>
+          <Kicker text={p.situation.kicker} />
+          <JournalHeadline text={p.situation.headline} level="h2" align="left" size="clamp(36px, 4.6vw, 54px)"/>
+          <div class="story">{p.situation.story.map((s) => <p>{s}</p>)}</div>
+        </div>
+        <ol class="timeline" aria-label={p.situation.timelineLabel} data-reveal style="--rd:120ms">
+          {p.situation.timeline.map((entry, i) => {
+            // Entry 1 is Birdy 1.3: "kommer" until the live date in release.mjs, the date from then on. It also carries the
+            // early users' promise since the cutoff row went (2026-10-08), so it is the highlighted one.
+            const e = i === 1 ? releaseTimelineEntry(entry, date.iso, locale) : entry;
+            return (
+              <li class:list={{ key: i === 1, soon: i === p.situation.timeline.length - 1 }} data-timeline-release={i === 1 ? '' : undefined}>
+                {i === p.situation.timeline.length - 1 && <span class="tbird" aria-hidden="true"></span>}
+                <p class="when">{e.when}</p>
+                <p class="what">{e.what}</p>
+                {e.more && <p class="more">{e.more}</p>}
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </section>
+
+    <section class="dark gets">
+      <DeckleEdge color="var(--paper)" />
+      <div class="wrap">
+        <div data-reveal>
+          <Kicker text={p.gets.kicker} />
+          <JournalHeadline text={p.gets.headline} level="h2" align="left" size="clamp(36px, 4.6vw, 54px)" />
+          <MarginNote text={p.gets.note} />
+        </div>
+        {p.gets.features.map((f, i) => (
+          <div class:list={['feat', { flip: i % 2 === 1 }]} data-feature={i}>
+            <div class="txt" data-reveal>
+              <span class="tag">{f.tag}</span>
+              <h3>{f.title}</h3>
+              <p>{f.body}</p>
+            </div>
+            <div class="vis" data-reveal="scale">
+              {i === 0 && <div class="pphone"><Image src={stats} alt={f.alt} widths={[300, 450, 600]} sizes={phoneSizes} loading="lazy" decoding="async" /></div>}
+              {i === 1 && (
+                <div class="pages" role="img" aria-label={f.alt}>
+                  {pdfPages.map((img) => <Image src={img} alt="" widths={[260, 400, 520]} sizes="(min-width: 900px) 250px, 200px" loading="lazy" decoding="async" />)}
+                </div>
+              )}
+              {i === 2 && <div class="pphone"><Image src={trophy} alt={f.alt} widths={[300, 450, 600]} sizes={phoneSizes} loading="lazy" decoding="async" /></div>}
+              {i === 3 && (
+                <div class="maph" data-map-placeholder>
+                  <span>{p.gets.mapNote}<small>{p.gets.mapSmall}</small></span>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="freeband">
+      <DeckleEdge color="var(--dark-deep)" />
+      <div class="wrap grid">
+        <div data-reveal>
+          <Kicker text={p.free.kicker} />
+          <JournalHeadline text={p.free.headline} level="h2" align="left" size="clamp(36px, 4.6vw, 54px)" />
+          <p class="bn" data-audio-free><b>{p.free.audio}</b> {p.free.audioWhy}</p>
+        </div>
+        <ul class="checks" role="list" data-reveal style="--rd:120ms">{p.free.items.map((item) => <li>{item}</li>)}</ul>
+      </div>
+    </section>
+
+    <section class="dark prices" id={pricesId}>
+      <DeckleEdge color="var(--peach)" />
+      <div class="wrap">
+        <div data-reveal>
+          <Kicker text={p.prices.kicker} />
+          <JournalHeadline text={p.prices.headline} level="h2" align="left" size="clamp(36px, 4.6vw, 54px)" />
+        </div>
+        <div class="cards">
+          {p.prices.cards.map((c, i) => (
+            <div class:list={['pcard', { sel: i === 0 }]} data-reveal="scale" style={`--rd:${i * 110}ms`} data-price-card>
+              {c.hand && <span class="phand" aria-hidden="true">{c.hand}</span>}
+              <h3 class="lab">{c.label}</h3>
+              <p class="amt">{c.amount}<small>{c.unit}</small></p>
+              <p>{c.body}</p>
+            </div>
+          ))}
+        </div>
+        <p class="fine" data-reveal>{p.prices.fine}</p>
+      </div>
+    </section>
+
+    <section class="paper early">
+      <DeckleEdge color="var(--dark-deep)" />
+      <div class="wrap grid">
+        <div data-reveal>
+          <span class="seal seal--brass eseal" aria-hidden="true">{p.early.seal}</span>
+          <JournalHeadline text={p.early.headline} level="h2" align="left" size="clamp(36px, 4.6vw, 54px)" />
+          <p class="big">{p.early.bigBefore} <mark data-early-rule>{p.early.bigMark}</mark> {p.early.bigAfter}</p>
+          <p class="lead" data-early-lead>{earlyLead}</p>
+          <p class="small">{p.early.small}</p>
+        </div>
+        <div class="pphone early-phone" data-reveal="scale"><Image src={thanks} alt={p.early.alt} widths={[300, 450, 600]} sizes={phoneSizes} loading="lazy" decoding="async" /></div>
+      </div>
+    </section>
+
+    <section class="dark buy">
+      <DeckleEdge color="var(--paper)" />
+      <div class="wrap grid">
+        <div data-reveal>
+          <Kicker text={p.buy.kicker} />
+          <JournalHeadline text={p.buy.headline} level="h2" align="left" size="clamp(36px, 4.6vw, 54px)" />
+          <ol class="steps" data-buy-steps>{buySteps.map((s) => <li>{s}</li>)}</ol>
+          <div class="badges">
+            <PlayStoreBadge locale={locale} href={play} alt={t.alt.playStoreBadge} size="small" />
+            <AppStoreBadge locale={locale} size="small" />
+          </div>
+        </div>
+        <div class="faq" aria-label={p.buy.faqLabel} role="region" data-reveal style="--rd:120ms">
+          {p.buy.faq.map((f) => (
+            <div><h3>{f.q}</h3><p>{f.a}</p></div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} edgeColor="var(--dark-deep)" />
+</Layout>
+
+<style>
+  .pp { --brass-glow: rgba(226, 192, 126, .14); }
+  .pp :global(.wrap) { position: relative; }
+  .dark { position: relative; color: var(--cream); background: linear-gradient(180deg, var(--dark) 0%, var(--dark-deep) 100%); --kick-color: var(--brass-hi); --jh-ink: var(--cream); --jh-accent: var(--brass-hi); --mn-color: var(--apricot); }
+  .dark :global(:focus-visible) { outline-color: var(--apricot); }
+  .paper { position: relative; background: var(--paper); }
+
+  /* Hero: brass light behind the phone, the app's own headline. */
+  .hero { overflow: hidden; padding: 104px 0 70px; }
+  .glow { position: absolute; inset: 0; background: radial-gradient(60% 55% at 78% 34%, var(--brass-glow), transparent 62%); pointer-events: none; }
+  .hero .grid { position: relative; display: grid; gap: 40px; }
+  .hero-words { position: relative; }
+  .nav-until { position: absolute; left: 0; bottom: 100%; width: 1px; height: 100vh; pointer-events: none; }
+  .crumbs ol { display: flex; gap: 8px; list-style: none; margin: 0 0 22px; padding: 0; font-size: 12px; font-weight: 600; letter-spacing: .06em; color: rgba(242, 234, 220, .78); }
+  .crumbs li + li::before { content: '›'; margin-right: 8px; color: var(--brass-hi); }
+  .crumbs a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(226, 192, 126, .5); }
+  .crumbs a:hover { color: var(--cream); }
+  h1 { margin-top: 2px; font-size: clamp(46px, 7.4vw, 82px); line-height: .98; letter-spacing: -.02em; color: var(--cream); text-wrap: balance; }
+  h1 em { display: block; margin-top: 4px; font-family: var(--font-script); font-weight: 700; font-style: normal; font-size: 1.16em; letter-spacing: 0; line-height: .95; color: var(--brass-hi); }
+  /* alpha checked in scripts/check-contrast.mjs */
+  .hero .lead { --lead-color: rgba(242, 234, 220, .82); max-width: 32rem; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 26px; }
+  .btn-brass { display: inline-flex; align-items: center; height: 50px; padding: 0 22px; border-radius: 12px; background: linear-gradient(135deg, var(--brass-hi), var(--brass)); color: var(--brass-ink); font-weight: 600; font-size: 15px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 8px 18px rgba(0, 0, 0, .3); transition: transform .25s var(--ease-paper); }
+  .btn-brass:hover { transform: translateY(-2px); }
+  .hero-phone { position: relative; width: 250px; margin: 20px auto 44px; }
+  .pphone { width: 100%; max-width: var(--pw, 250px); padding: 8px; border-radius: 34px; background: #17100C; box-shadow: inset 0 0 0 1.5px rgba(255, 248, 238, .12), var(--psh, 0 30px 60px rgba(0, 0, 0, .5)); }
+  .pphone :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 26px; }
+  .tilt { --pw: 250px; transform: rotate(-3deg); --psh: 0 34px 70px rgba(0, 0, 0, .5); }
+  .hseal { position: absolute; right: -28px; top: 40px; z-index: 3; width: 86px; height: 86px; font-size: 16px; transform: rotate(-9deg); }
+  .hand { position: absolute; left: -26px; bottom: -44px; z-index: 3; font-family: var(--font-script); font-weight: 700; font-size: 25px; line-height: 1; color: var(--apricot); transform: rotate(-4deg); white-space: nowrap; }
+
+  /* Läget: the story and the timeline down a dotted line. */
+  .situation { padding: 92px 0 84px; }
+  .situation .grid { display: grid; gap: 40px; }
+  .story { margin-top: 20px; display: grid; gap: 14px; font-size: 16px; line-height: 1.68; color: var(--ink); max-width: 36rem; }
+  .story p { margin: 0; }
+  .timeline { position: relative; list-style: none; margin: 0; padding: 4px 0 0 36px; display: grid; gap: 28px; }
+  .timeline::before { content: ''; position: absolute; left: 9px; top: 10px; bottom: 6px; width: 4px; background-image: radial-gradient(circle, var(--rust) 1.6px, transparent 2px); background-size: 4px 11px; background-repeat: repeat-y; opacity: .7; }
+  .timeline li { position: relative; }
+  .timeline li::before { content: ''; position: absolute; left: -34px; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--paper); border: 2px solid var(--rust); }
+  .timeline li.key::before { background: var(--brass); border-color: var(--brass); box-shadow: 0 0 0 4px rgba(184, 137, 58, .22); }
+  .timeline li.soon::before { border-style: dashed; }
+  .when { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--rust); }
+  .what { margin: 4px 0 0; font-family: var(--font-serif); font-size: 23px; line-height: 1.15; color: var(--ink); }
+  .more { margin: 4px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--muted); max-width: 30rem; }
+  .tbird { position: absolute; left: -38px; top: -34px; width: 26px; height: 25px; background: var(--rust); -webkit-mask: url('/brand/birdy-bird.png') center / contain no-repeat; mask: url('/brand/birdy-bird.png') center / contain no-repeat; transform: rotate(-12deg); }
+
+  /* Det här får du i dag: text and real screens, alternating. */
+  .gets { padding: 104px 0 90px; }
+  .feat { display: grid; gap: 30px; margin-top: 64px; align-items: center; }
+  .tag { display: inline-block; margin-bottom: 12px; padding: 3px 11px; border: 1px solid rgba(226, 192, 126, .5); border-radius: 999px; font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--brass-hi); }
+  .feat h3 { font-size: clamp(30px, 3.4vw, 42px); line-height: 1.04; color: var(--cream); }
+  /* alpha checked in scripts/check-contrast.mjs */
+  .feat .txt p { margin: 12px 0 0; font-size: 15.5px; line-height: 1.62; color: rgba(242, 234, 220, .8); max-width: 30rem; }
+  .vis { display: flex; justify-content: center; }
+  .vis .pphone { --pw: 240px; }
+  /* Three loose pages fanned out; sized in percent so they fit a 320 px screen. */
+  .pages { position: relative; width: min(300px, 100%); aspect-ratio: 300 / 330; }
+  .pages :global(img) { position: absolute; width: 65%; height: auto; aspect-ratio: 900 / 1274; box-shadow: 0 20px 40px rgba(0, 0, 0, .45); }
+  .pages :global(img:nth-child(1)) { left: 0; top: 9%; transform: rotate(-8deg); }
+  .pages :global(img:nth-child(2)) { left: 17.5%; top: 2.5%; transform: rotate(-1deg); }
+  .pages :global(img:nth-child(3)) { left: 35%; top: 10%; transform: rotate(7deg); }
+  .maph { width: 240px; aspect-ratio: 9 / 16; border: 2px dashed rgba(226, 192, 126, .45); border-radius: 34px; display: grid; place-items: center; text-align: center; padding: 26px; font-family: var(--font-script); font-weight: 700; font-size: 25px; line-height: 1.12; color: var(--apricot); }
+  .maph small { display: block; margin-top: 14px; font-family: var(--font-sans); font-weight: 600; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: rgba(242, 234, 220, .78); }
+
+  /* Alltid gratis, on peach. */
+  .freeband { position: relative; background: var(--peach); padding: 92px 0 86px; }
+  .freeband .grid { display: grid; gap: 30px; }
+  .bn { margin: 22px 0 0; font-size: 15px; line-height: 1.62; color: var(--muted); max-width: 34rem; }
+  .bn b { color: var(--ink); font-weight: 600; }
+  .checks { list-style: none; margin: 0; padding: 0; }
+  .checks li { display: flex; gap: 12px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid rgba(154, 69, 38, .2); font-size: 16px; color: var(--ink); }
+  .checks li::before { content: '✓'; color: var(--rust); font-weight: 600; }
+
+  /* Priser: the app's two cards. */
+  .prices { padding: 104px 0 92px; }
+  .cards { display: grid; gap: 16px; margin-top: 34px; }
+  .pcard { position: relative; padding: 24px 24px 22px; border-radius: 16px; border: 1px solid rgba(226, 192, 126, .35); background: rgba(255, 255, 255, .03); }
+  .pcard.sel { border: 2px solid var(--brass-hi); background: rgba(226, 192, 126, .07); }
+  /* alpha checked in scripts/check-contrast.mjs */
+  .pcard .lab { font-family: var(--font-sans); font-size: 11.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(242, 234, 220, .78); }
+  .amt { margin: 10px 0 0; font-family: var(--font-serif); font-size: clamp(42px, 5vw, 54px); line-height: 1; color: var(--cream); font-variant-numeric: tabular-nums; }
+  .amt small { margin-left: 8px; font-family: var(--font-sans); font-size: 15px; color: rgba(242, 234, 220, .78); }
+  .pcard p:not(.amt) { margin: 12px 0 0; font-size: 14.5px; line-height: 1.55; color: rgba(242, 234, 220, .8); }
+  .phand { position: absolute; right: 18px; top: 14px; font-family: var(--font-script); font-weight: 700; font-size: 22px; color: var(--apricot); transform: rotate(-4deg); }
+  .fine { margin: 20px 0 0; font-size: 13px; line-height: 1.6; color: rgba(242, 234, 220, .66); max-width: 42rem; }
+
+  /* Tidiga fältmedlemmar. */
+  .early { padding: 96px 0 90px; }
+  .early .grid { display: grid; gap: 40px; }
+  .eseal { width: 112px; height: 112px; font-size: 17px; line-height: 1.1; text-align: center; margin-bottom: 18px; }
+  .big { margin: 18px 0 0; font-size: 18px; line-height: 1.62; color: var(--ink); max-width: 36rem; }
+  .big mark { background: linear-gradient(transparent 58%, rgba(226, 192, 126, .6) 58%); color: inherit; font-weight: 600; }
+  .early .lead { margin-top: 14px; }
+  .small { margin: 14px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted); max-width: 34rem; }
+  .early-phone { --pw: 240px; margin: 0 auto; }
+
+  /* Så köper du + frågor. */
+  .buy { padding: 100px 0 100px; }
+  .buy .grid { display: grid; gap: 44px; }
+  .steps { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 16px; counter-reset: s; }
+  .steps li { counter-increment: s; display: flex; gap: 14px; align-items: baseline; font-size: 16px; line-height: 1.5; color: rgba(242, 234, 220, .9); }
+  .steps li::before { content: counter(s); flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--brass-hi); color: var(--brass-ink); font-family: var(--font-serif); font-size: 16px; transform: translateY(4px); }
+  .buy .badges { margin-top: 30px; }
+  .faq { border-top: 1px solid rgba(255, 255, 255, .14); }
+  .faq div { padding: 18px 0; border-bottom: 1px solid rgba(255, 255, 255, .14); }
+  .faq h3 { font-size: 20px; line-height: 1.2; color: var(--cream); }
+  /* alpha checked in scripts/check-contrast.mjs */
+  .faq p { margin: 6px 0 0; font-size: 14.5px; line-height: 1.62; color: rgba(242, 234, 220, .74); }
+
+  @media (min-width: 900px) {
+    .hero { padding: 0; }
+    .hero .grid { grid-template-columns: minmax(0, 1fr) 360px; gap: 60px; align-items: center; min-height: clamp(640px, 88svh, 760px); padding-top: 76px; }
+    .hero-phone { width: 290px; margin: 30px 0 -40px auto; }
+    .tilt { --pw: 290px; }
+    .situation, .freeband, .early { padding: 120px 0 108px; }
+    .situation .grid, .freeband .grid, .buy .grid { grid-template-columns: 1fr 1fr; gap: 80px; }
+    .timeline { margin-top: 64px; }
+    .gets, .prices { padding: 124px 0 110px; }
+    .feat { grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 96px; }
+    .feat.flip .vis { order: -1; }
+    .vis .pphone { --pw: 270px; }
+    .pages { width: 380px; }
+    .maph { width: 270px; }
+    .cards { grid-template-columns: 1fr 1fr; gap: 20px; max-width: 860px; }
+    .early .grid { grid-template-columns: 1fr 300px; gap: 80px; align-items: center; }
+    .early-phone { --pw: 280px; }
+    .buy { padding: 116px 0; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-phone { animation: pp-rise 1s .15s var(--ease-paper) both; }
+    .hseal { animation: pp-stamp .55s .9s cubic-bezier(.2, 1.4, .4, 1) both; }
+    .hand { animation: pp-write 1s 1.2s cubic-bezier(.45, .05, .35, 1) both; }
+  }
+  @keyframes pp-rise { from { transform: translateY(40px) rotate(2deg); } }
+  @keyframes pp-stamp { from { opacity: 0; transform: scale(1.7) rotate(-20deg); } }
+  @keyframes pp-write { from { clip-path: inset(-20% 100% -20% 0); } to { clip-path: inset(-20% -2% -20% 0); } }
+</style>

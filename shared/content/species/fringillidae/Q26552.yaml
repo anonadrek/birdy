@@ -102,13 +102,7 @@ image_refs:
   width: 2400
   height: 1600
   license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/usfwsmidwest/">USFWS
-    Midwest Region</a> <span class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a
-    href="//commons.wikimedia.org/wiki/File:Fichtenkreuzschnabel_(Loxia_curvirostra),_m%C3%A4nnlich_im_St._Louis_County_(Minnesota).jpg#P170"
-    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
-    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail"
-    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
-    data-file-height="20"></a></span>
+  author: USFWS Midwest Region
   source_url: https://commons.wikimedia.org/wiki/File:Fichtenkreuzschnabel (Loxia
     curvirostra), männlich im St. Louis County (Minnesota).jpg
   commons_filename: Fichtenkreuzschnabel (Loxia curvirostra), männlich im St. Louis
@@ -118,8 +112,7 @@ image_refs:
   width: 1800
   height: 1349
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:VezeIvan&amp;action=edit&amp;redlink=1"
-    class="new" title="User:VezeIvan (page does not exist)">Иван Везенковић</a>
+  author: Иван Везенковић
   source_url: https://commons.wikimedia.org/wiki/File:Red Crossbill (Phantom or type
     D) Loxia curvirostra.jpg
   commons_filename: Red Crossbill (Phantom or type D) Loxia curvirostra.jpg
@@ -128,7 +121,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/59161444@N05">xulescu_g</a>
+  author: xulescu_g
   source_url: https://commons.wikimedia.org/wiki/File:Loxia curvirostra (12559525625).jpg
   commons_filename: Loxia curvirostra (12559525625).jpg
 review_status: approved

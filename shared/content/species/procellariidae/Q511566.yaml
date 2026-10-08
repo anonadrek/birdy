@@ -6,8 +6,9 @@ taxonomy:
   genus: Puffinus
   ioc_order: Procellariiformes
 names:
-  sv: Levantlira
+  sv: Medelhavslira
   en: Mediterranean Shearwater
+  former_sv: Levantlira
 abundance: ovanlig
 iucn_status: VU
 season:
@@ -72,8 +73,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Mediterranean shearwater (Puffinus
     yelkouan mauretanicus) 2020 2.jpg
   commons_filename: Mediterranean shearwater (Puffinus yelkouan mauretanicus) 2020
@@ -83,8 +83,7 @@ image_refs:
   width: 1340
   height: 1800
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Mediterreanean shearwater (Puffinus
     yelkouan) 2020.jpg
   commons_filename: Mediterreanean shearwater (Puffinus yelkouan) 2020.jpg
@@ -93,8 +92,7 @@ image_refs:
   width: 1800
   height: 1184
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Mediterranean shearwater (Puffinus
     yelkouan mauretanicus) 2020.jpg
   commons_filename: Mediterranean shearwater (Puffinus yelkouan mauretanicus) 2020.jpg

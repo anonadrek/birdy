@@ -9,7 +9,7 @@ names:
   sv: Smalnäbbad spov
   en: Slender-billed Curlew
 abundance: ovanlig
-iucn_status: NE
+iucn_status: EX
 season:
   jan: present
   feb: present
@@ -86,13 +86,11 @@ image_refs:
 - role: hero
   path: Q76411/hero.webp
   width: 2400
-  height: 2400
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Federigo_Federighi" title="User:Federigo
-    Federighi">Federigo Federighi</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Numenius tenuirostris at University
-    of Pisa Natural History Museum.jpg
-  commons_filename: Numenius tenuirostris at University of Pisa Natural History Museum.jpg
+  height: 1800
+  license: CC BY 4.0
+  author: C messier
+  source_url: https://commons.wikimedia.org/wiki/File:Λα Σπέκολα - λεπτομύτα 1005.jpg
+  commons_filename: Λα Σπέκολα - λεπτομύτα 1005.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T21:00:45.182210+00:00'

@@ -1,0 +1,902 @@
+{
+  "qid": "Q25404",
+  "status": "ok",
+  "publish": true,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Blåmesen har ljusblå hjässa och ovansida, en färg som ingen annan tätting i Mellaneuropa har.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De ljusblå delarna av fjäderdräkten på huvudet och ovansidan förekommer inte hos någon annan tätting i Mellaneuropa"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Den har mörkblå ögonmask och blå hjässa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en mörkblå ögonmask och hjässan är blå."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "En mörkblå krage sträcker sig runt hela huvudet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en mörkblå krage som sträcker sig runt hela huvudet."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "De vita kinderna avgränsas framtill av en svart strupfläck och mot bröstet av en svartblå halsring.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De likaså vita kinderna avgränsas framtill av en svart strupfläck och åt bröstet av en svartblå halsring."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Bröst, buk och undergump är ljusgula.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess bröst, buk och undergump är ljusgul."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Mitt på undersidan finns ett svart längsstreck, som ibland kan döljas av omgivande gula fjädrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På mitten av undersidan finns ett svart längsstreck, som dock ibland kan vara täckt av de omgivande gula fjädrarna."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Ryggen och axlarna är dovt grönaktiga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ryggen och axlarna är dovt grönaktiga"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Vingarna är blå på ovansidan med ett vitt vingband.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingarna är på ovansidan blå med ett vitt vingband"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Näbben är mörkt hornbrun och kort och hög jämfört med besläktade arters.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den mörkt hornbruna näbben är jämfört med de besläktade arternas kort och hög."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Vuxna fåglar har vita kinder och vitt ovanför ögonmasken, medan unga fåglar är ljusgula på dessa ställen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta fågeln har vita kinder och vitt ovanför ögonmasken medan juvenilen, på dessa ställen, är färgad i ljusgult."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Könen är lika, men hanen har mer vitt på panna, vingband och stjärtfjädrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dessutom har hanen mer vitt på panna, vingband och stjärtfjädrar."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "size",
+      "sv": "Blåmesen är 10,5–12 cm lång, har ett vingspann på 18–20 cm och väger cirka 11 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är mellan 10,5 och 12 cm lång, har ett vingspann på 18 till 20 cm och väger cirka 11 gram."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Revirsången börjar med två till tre höga, lika toner, ofta återgivna som \"sisi\" eller \"sisisi\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Blåmesens typiska revirsång börjar med två till tre höga (runt 8 kHz), mycket lika läten som ofta transkriberas med \"sisi\" eller \"sisisi\"."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Efter de inledande tonerna följer en drill i något djupare tonläge.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På dessa följer en drill i något djupare tonläge"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Varningslätet vid flygande rovfåglar är ett mycket högt, långt utdraget \"ii\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Varningslätet vid flygande predatorer är ett mycket högt, långt utdraget \"ii\"."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Vid fågelmatare kan den höras ropa \"tee, tee, tee\" eller ett skällande \"churr\".",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "calling \"tee, tee, tee\" or a scolding \"churr\""
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Blåmesen lever i löv- och blandskog men finns också i parker och trädgårdar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Blåmesens habitat är löv- och blandskog, men den återfinns också i parker och trädgårdar."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "I rena barrskogar saknas blåmesen eller finns bara i skogsbrynen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I rena barrskogar saknas blåmesen eller bebor bara skogsbrynen."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige når det sammanhängande häckningsområdet ungefär 61° nordlig bredd, längs kusten upp till 65°.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "i Sverige räcker det slutna häckningsområdet i blandskogarna till ungefär 61°, vid kustområdet i en avsmalnande remsa till 65° nordlig bredd."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till 774 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 774 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "I Sverige har utbredningen expanderat kraftigt norrut under de senaste decennierna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige har utbredningen expanderat kraftigt åt norr under de senaste decennierna."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Blåmesen häckar oftast i trädhål men även i fågelholkar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Blåmesar häckar oftast i trädhål, men även fågelholkar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Holkar med 26–28 millimeters ingångshål föredras, eftersom de stänger ute talgoxen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sådana med en inflygningsöppning på 26 till 28 millimeters diameter föredras, vilka utesluter huvudkonkurrenten talgoxen."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "En genomsnittlig kull består av 6 till 12 ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den genomsnittliga kullen ligger mellan 6 och 12 ägg."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Blåmesen föredrar animalisk föda, framför allt insekter och spindlar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Blåmesen föredrar animalisk föda, framför allt insekter och spindlar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Utanför häckningstiden äter den mer frön och annan vegetabilisk föda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utanför häckningsperioden ökar betydelsen av frön och annan vegetabilisk föda."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Den klamrar sig fast vid trädens yttersta grenar och hänger ofta upp och ner när den söker föda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den kan klamra sig fast vid de yttersta grenarna på träd och även hänga upp och ner när den söker föda."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "På vintern ses blåmesar oftare nära människor och är vanliga gäster vid fågelmatare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I allmänhet påträffas blåmesarna på vintern oftare i närheten av människan och är en vanlig gäst vid fågelmatare."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Flykten är bågformig och relativt långsam.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flykten är bågformig och relativt långsam."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Blåmesen är betydligt mindre än talgoxen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är betydligt mindre än talgoxen."
+        },
+        {
+          "article": "en",
+          "quote": "the larger, somewhat more common great tits (Parus major)"
+        }
+      ],
+      "other": {
+        "scientific": "Parus major",
+        "qid": "Q25485"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november till februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Blåmesen är en mes med ljusblå hjässa och ovansida och ljusgul undersida.",
+          "factIds": [
+            "f01",
+            "f05"
+          ]
+        },
+        {
+          "text": "Den lever i löv- och blandskog men finns också i parker och trädgårdar, och på vintern är den vanlig gäst vid fågelmatare.",
+          "factIds": [
+            "f17",
+            "f28"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Ljusblå hjässa och ovansida, mörkblå ögonmask och mörkblå krage runt hela huvudet",
+          "factIds": [
+            "f01",
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Vita kinder hos vuxna, ljusgula hos unga, inramade av svart strupfläck och svartblå halsring",
+          "factIds": [
+            "f04",
+            "f10"
+          ]
+        },
+        {
+          "text": "Ljusgul undersida med svart längsstreck i mitten och dovt grönaktig rygg",
+          "factIds": [
+            "f05",
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Blå vingar med vitt vingband, hanen har mer vitt på panna och vingband",
+          "factIds": [
+            "f08",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Revirsången börjar med två till tre höga, lika toner, ofta återgivna som \"sisi\" eller \"sisisi\", följda av en drill i något djupare tonläge.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        },
+        {
+          "text": "Vid flygande rovfåglar varnar den med ett mycket högt, långt utdraget \"ii\".",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Vid fågelmatare hörs \"tee, tee, tee\" eller ett skällande \"churr\".",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "I Sverige når det sammanhängande häckningsområdet ungefär 61° nordlig bredd, längs kusten upp till 65°, och utbredningen har expanderat kraftigt norrut under de senaste decennierna.",
+          "factIds": [
+            "f19",
+            "f21"
+          ]
+        },
+        {
+          "text": "Det svenska beståndet uppskattades 2018 till 774 000 par.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Arten rapporteras från alla 21 län och rapporteras mest i november till februari.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Blåmesen föredrar insekter och spindlar, men utanför häckningstiden äter den mer frön och annan vegetabilisk föda.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "Den klamrar sig fast vid trädens yttersta grenar och hänger ofta upp och ner när den söker föda.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "På vintern ses den oftare nära människor.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Flykten är bågformig och relativt långsam.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Den häckar oftast i trädhål men även i fågelholkar.",
+          "factIds": [
+            "f22"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25485",
+          "text": [
+            {
+              "text": "Blåmesen är betydligt mindre än talgoxen.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Blåmes: lär dig känna igen arten på dräkten, hör hur sången och varningslätet låter och se när på året den rapporteras mest.",
+      "facts": {
+        "size": {
+          "value": "10,5 till 12 cm",
+          "factIds": [
+            "f12"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Blue Tit is a tit with a pale blue crown and upperparts and pale yellow underparts.",
+          "factIds": [
+            "f01",
+            "f05"
+          ]
+        },
+        {
+          "text": "It lives in deciduous and mixed woodland as well as in parks and gardens, and in winter it is a common visitor to bird feeders.",
+          "factIds": [
+            "f17",
+            "f28"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Pale blue crown and upperparts, dark blue eye mask and dark blue collar round the head",
+          "factIds": [
+            "f01",
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "White cheeks, pale yellow in young, bordered by black throat patch and blue-black neck ring",
+          "factIds": [
+            "f04",
+            "f10"
+          ]
+        },
+        {
+          "text": "Pale yellow underparts with a black central stripe and a dull greenish back",
+          "factIds": [
+            "f05",
+            "f06",
+            "f07"
+          ]
+        },
+        {
+          "text": "Blue wings with white wing bar, male shows more white on forehead and wing bar",
+          "factIds": [
+            "f08",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The territorial song starts with two to three high, even notes, often written \"sisi\" or \"sisisi\", followed by a trill at a slightly lower pitch.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        },
+        {
+          "text": "When birds of prey fly over it gives a very high, long drawn-out \"ii\" alarm.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "At feeders it calls \"tee, tee, tee\" or a scolding \"churr\".",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "In Sweden the continuous breeding range reaches about 61° north, and up to 65° along the coast, and the range has spread strongly northwards in recent decades.",
+          "factIds": [
+            "f19",
+            "f21"
+          ]
+        },
+        {
+          "text": "The Swedish population was estimated in 2018 at 774 000 pairs.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties and is reported most from November to February.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It prefers insects and spiders, but outside the breeding season it eats more seeds and other plant food.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "It clings to the outermost branches of trees and often hangs upside down while looking for food.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "In winter it is seen more often close to people.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "The flight is bounding and fairly slow.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "It usually nests in tree holes, and it uses nest boxes too.",
+          "factIds": [
+            "f22"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q25485",
+          "text": [
+            {
+              "text": "The Eurasian Blue Tit is clearly smaller than the Great Tit.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Eurasian Blue Tit: learn to recognise it by its plumage, hear how its song and alarm call sound, and see when in the year it is reported most.",
+      "facts": {
+        "size": {
+          "value": "10.5 to 12 cm",
+          "factIds": [
+            "f12"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "39633324e1baaddb"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:21:06.173812+00:00",
+      "factsHash": "39633324e1baaddb"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "blames",
+    "en": "eurasian-blue-tit"
+  },
+  "names": {
+    "sv": "Blåmes",
+    "en": "Eurasian Blue Tit",
+    "scientific": "Cyanistes caeruleus"
+  },
+  "family": {
+    "latin": "Paridae",
+    "sv": "Mesar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "marginalia": {
+    "sv": "Blåmesen hänger gärna upp och ned från en kvist.",
+    "en": "The blue tit will hang upside-down from a twig without hesitation."
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25404/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Kathy Büscher",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blaumeise_(64)_(34633517080).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25404/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Kathy Büscher",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blaumeise_(67)_(35020838535).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25404/voice.mp3",
+    "durationSec": 11,
+    "trimmed": false,
+    "author": "Benoît Van Hecke",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cyanistes_caeruleus_-_Eurasian_Blue_Tit_XC538220.mp3",
+    "sha256": "0f108876f58113e48771c1721dc5c6062a6e74712b7b5e8635dd5b962decb08a"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Blåmes",
+      "revision": "59325080"
+    },
+    "en": {
+      "title": "Eurasian blue tit",
+      "revision": "1374417094"
+    },
+    "de": {
+      "title": "Blaumeise",
+      "revision": "266641831"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2487879,
+    "totalReports": 643562,
+    "months": [
+      100,
+      87,
+      54,
+      36,
+      26,
+      24,
+      22,
+      25,
+      36,
+      52,
+      82,
+      100
+    ],
+    "counties": {
+      "SE-K": 58,
+      "SE-W": 61,
+      "SE-X": 89,
+      "SE-I": 43,
+      "SE-N": 40,
+      "SE-Z": 61,
+      "SE-F": 69,
+      "SE-H": 41,
+      "SE-G": 54,
+      "SE-BD": 88,
+      "SE-T": 50,
+      "SE-E": 71,
+      "SE-M": 52,
+      "SE-D": 100,
+      "SE-AB": 81,
+      "SE-C": 83,
+      "SE-S": 60,
+      "SE-AC": 77,
+      "SE-Y": 100,
+      "SE-U": 56,
+      "SE-O": 80
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november till februari.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in November to February.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        101528,
+        61983,
+        71017,
+        72167,
+        60109,
+        30202,
+        21149,
+        25488,
+        38460,
+        54082,
+        53546,
+        53602
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 119900,
+        "SE-AB": 84593,
+        "SE-M": 54047,
+        "SE-C": 47528,
+        "SE-D": 46639,
+        "SE-H": 32225,
+        "SE-E": 29441,
+        "SE-F": 27683,
+        "SE-AC": 22472,
+        "SE-BD": 21664,
+        "SE-N": 18287,
+        "SE-X": 17371,
+        "SE-W": 15374,
+        "SE-Y": 14573,
+        "SE-T": 14228,
+        "SE-U": 12317,
+        "SE-S": 12271,
+        "SE-G": 11682,
+        "SE-Z": 8648,
+        "SE-I": 7717,
+        "SE-K": 5137
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-07"
+}

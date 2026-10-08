@@ -1,0 +1,936 @@
+{
+  "qid": "Q25348",
+  "status": "ok",
+  "publish": true,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Gräsanden är en stor och kraftig and som mäter 55–60 cm med ett vingspann på 81–95 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gräsanden är en stor och kraftig and som mäter 55–60 cm och har ett vingspann på 81–95 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Gräsanden väger 0,7–1,6 kg.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "it weighs 0.7–1.6 kg (1.5–3.5 lb)"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "I alla dräkter har gräsanden en mörkblå iriserande vingspegel kantad av först ett svart och sedan ett brett vitt band.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I alla dräkter har den en mörkblå iriserande vingspegel omgiven av först ett svart och sedan ett brett vitt band."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Benen är gula eller gulröda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Benen är gula eller gulröda."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Den adulta hanen har i häckningsdräkt mörkgrönt, lätt skimrande huvud och hals.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen har i häckningsdräkt mörkgrönt, lätt skimrande huvud och hals."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Hanen har en smal vit halsring som skiljer det gröna huvudet från det lilatonade kastanjebruna bröstet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en smal vit halsring som avgränsar det gröna från det lilatonade kastanjebruna bröstet."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Hanens akter är svart och några övre stjärttäckare har uppkrullade svarta spetsar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Aktern är svart och de yttre stjärtpennorna beigevita."
+        },
+        {
+          "article": "sv",
+          "quote": "Några av de övre stjärttäckarna har uppkrullade svarta spetsar."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Gräsandshanen har en enfärgat mattgul näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gräsandshanen har en enfärgat mattgul näbb."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Honan är brunvattrad ovan, ljusbrun under och har orange näbb med mörkgrå näbbrygg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan är vattrad i brunt på ovansidan, i ljusbrunt på undersidan och har en orange näbb med mörkgrå näbbrygg."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Hanen i eklipsdräkt är honlik men skiljs från honan på sin enfärgat mattgula näbb.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under perioden då gräsandshanen ruggar sina vingpennor anlägger den en eklipsdräkt som är mer honlik men skiljs ifrån honan på att näbben är enfärgat mattgul"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Den unga fågeln är mycket lik den adulta honan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juvenilen är mycket lik den adulta honan."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Hanen låter med dämpade och nasala \"vähp\", som ofta upprepas när fågeln är oroad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från hanen görs dämpade och nasala \"vähp\" som ofta upprepas av en oroad fågel."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "När hanen uppvaktar honan hörs en kort vissling, \"pjy\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vid uppvaktning av honan hörs en kort vissling, \"pjy\"."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Honan kväker med en ljudlig serie som successivt avtar i styrka.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan kväker med en ljudlig serie som successivt avtar i styrka."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "När gräsanden lyfter ger vingarna ifrån sig ett svagt visslande ljud.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "When taking off, the wings of a mallard produce a characteristic faint whistling noise."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "I Sverige häckar gräsanden allmänt i hela landet utom i fjällmiljön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar gräsanden allmänt i hela landet."
+        },
+        {
+          "article": "sv",
+          "quote": "Det enda ställe i Sverige där gräsanden inte förekommer är i fjällmiljön."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "I Sverige föds varje år 400 000 gräsänder upp i fångenskap.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bara i Sverige föds varje år upp 400 000 gräsänder i fångenskap"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Gräsanden häckar vid nästan alla typer av vatten, som skogskärr, sjöar, åar och parker samt i bräckt och salt vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gräsanden kan förekomma som häckfågel vid nästan vilken typ av vatten som helst, som små skogskärr, sjöar, åar, i parker, i bräckt och salt vatten."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Gräsanden föredrar vattendjup under 0,9 meter.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Water depths of less than 0.9 metres (3.0 ft) are preferred"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "food",
+      "sv": "Gräsanden är allätare och mycket flexibel i sitt val av föda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Gräsanden är allätare och mycket flexibel i sitt val av föda."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "food",
+      "sv": "Växtmaterial utgör en stor del av födan, särskilt under höstflytten och vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Växtmaterial utgör en stor del av dess föda, speciellt under höstflytten och vintern."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Gräsanden söker oftast föda genom att tippa kroppen framåt och snappa eller beta växtmaterial under vattnet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den födosöker oftast genom att tippa kroppen framåt och snappa, eller beta efter växtmaterial under vattnet."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstid är gräsanden mycket social och bildar stora flockar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utanför häckningstid är den mycket social och bildar stora flockar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Gräsanden lyfter nästan lodrätt och flyger snabbt och rakt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Stockenten fliegen fast senkrecht auf. Der Flug ist schnell und gerade."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Under ruggningen är gräsänderna oförmögna att flyga i cirka en månad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under denna ruggningsperiod är gräsänderna flygoförmögna i cirka en månad."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Boet ligger ofta väl dolt i en tät tuva eller under en buske.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "ofta väl dolt i en tät tuva eller under en buske"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Äggläggningen kan ske från mars till juli.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den kan lägga ägg så tidigt som i mars, och så sent som i juli."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Honan lägger i genomsnitt nio till 13 vitaktiga ägg utan fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger i genomsnitt nio till 13 ägg"
+        },
+        {
+          "article": "sv",
+          "quote": "Äggen är vitaktiga och saknar fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Äggen ruvas i 21–28 dagar och ungarna är flygfärdiga efter 50–60 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De ruvas i 21–28 dagar"
+        },
+        {
+          "article": "sv",
+          "quote": "Ungarna är flygfärdiga efter 50–60 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Snatterandhonan liknar gräsandshonan men är mindre, har vit buk och svartvit vingspegel som syns som en vit fläck i flykten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The female gadwall (Mareca strepera) has an orange-lined bill, white belly, black and white speculum that is seen as a white square on the wings in flight, and is a smaller bird."
+        }
+      ],
+      "other": {
+        "scientific": "Mareca strepera",
+        "qid": "Q28106966"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Gräsanden är en stor och kraftig and som häckar vid nästan alla typer av vatten: skogskärr, sjöar, åar och parker, men även i bräckt och salt vatten.",
+          "factIds": [
+            "f01",
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Hanen har mörkgrönt, lätt skimrande huvud, smal vit halsring och lilatonat kastanjebrunt bröst",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Honan är brunvattrad ovan, ljusbrun under och har orange näbb med mörkgrå näbbrygg",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "I alla dräkter en mörkblå, skimrande vingspegel kantad av svart och sedan brett vitt band",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Hanen i eklipsdräkt liknar honan men har enfärgat mattgul näbb",
+          "factIds": [
+            "f10",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Hanen låter med dämpade, nasala \"vähp\", som ofta upprepas när fågeln är oroad.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "När han uppvaktar honan hörs en kort vissling, \"pjy\".",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Honan kväker i en ljudlig serie som successivt avtar i styrka.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "När gräsanden lyfter ger vingarna ifrån sig ett svagt visslande ljud.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Gräsanden häckar allmänt i hela landet utom i fjällmiljön.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "Den rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Den föredrar vattendjup under 0,9 meter, och äggläggningen kan ske från mars till juli.",
+          "factIds": [
+            "f19",
+            "f27"
+          ]
+        },
+        {
+          "text": "Varje år föds 400 000 gräsänder upp i fångenskap i Sverige.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "Arten är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Gräsanden är en flexibel allätare, och växtmaterial utgör en stor del av födan, särskilt under höstflytten och vintern.",
+          "factIds": [
+            "f20",
+            "f21"
+          ]
+        },
+        {
+          "text": "Oftast söker den föda genom att tippa kroppen framåt och snappa eller beta växter under vattnet.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Utanför häckningstid är den mycket social och bildar stora flockar.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "Den lyfter nästan lodrätt och flyger snabbt och rakt.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Under ruggningen kan den inte flyga på cirka en månad.",
+          "factIds": [
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q28106966",
+          "text": [
+            {
+              "text": "Snatterandhonan liknar gräsandshonan men är mindre och har vit buk.",
+              "factIds": [
+                "f30"
+              ]
+            },
+            {
+              "text": "Hennes vingspegel är svartvit och syns som en vit fläck i flykten, medan gräsanden har mörkblå vingspegel.",
+              "factIds": [
+                "f30",
+                "f03"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Gräsand: så känner du igen hane och hona på dräkt och näbb, hur lätena låter, vad den äter, hur den beter sig och när den ses under året.",
+      "facts": {
+        "size": {
+          "value": "55 till 60 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Mallard is a large, sturdy duck that breeds by almost any kind of water: forest marshes, lakes, rivers and parks, as well as brackish and salt water.",
+          "factIds": [
+            "f01",
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Male has a dark green, slightly glossy head, thin white collar and purple-tinged chestnut breast",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Female is mottled brown above, pale brown below, with an orange bill and dark grey ridge",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "In all plumages, a dark blue glossy speculum bordered by black, then broad white",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Eclipse male looks like the female but has a plain dull yellow bill",
+          "factIds": [
+            "f10",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The male gives muffled, nasal \"vähp\" calls, often repeated when the bird is alarmed.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "When courting the female he gives a short whistle, \"pjy\".",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The female quacks in a loud series that gradually fades.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "As a Mallard takes off, its wings make a faint whistling sound.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Mallard breeds commonly throughout Sweden except in the mountains.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "It is reported all year round and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "It prefers water less than 0.9 metres deep, and egg laying can take place from March to July.",
+          "factIds": [
+            "f19",
+            "f27"
+          ]
+        },
+        {
+          "text": "Every year 400 000 Mallards are reared in captivity in Sweden.",
+          "factIds": [
+            "f17"
+          ]
+        },
+        {
+          "text": "It is not listed on the Swedish Red List 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Mallard is a flexible omnivore, and plant material makes up a large part of its diet, especially during autumn migration and winter.",
+          "factIds": [
+            "f20",
+            "f21"
+          ]
+        },
+        {
+          "text": "It usually feeds by tipping its body forward to snap or graze plants under water.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it is very social and forms large flocks.",
+          "factIds": [
+            "f23"
+          ]
+        },
+        {
+          "text": "It takes off almost vertically and flies fast and straight.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "During moult it cannot fly for about a month.",
+          "factIds": [
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q28106966",
+          "text": [
+            {
+              "text": "The female Gadwall resembles the female Mallard but is smaller, with a white belly.",
+              "factIds": [
+                "f30"
+              ]
+            },
+            {
+              "text": "Its speculum is black and white and shows as a white patch in flight, while the Mallard's is dark blue.",
+              "factIds": [
+                "f30",
+                "f03"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Mallard: how to recognise male and female by plumage and bill, what the calls sound like, what it eats, how it behaves and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "55 to 60 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "34f048a8dc264534"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "34f048a8dc264534"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "grasand",
+    "en": "mallard"
+  },
+  "names": {
+    "sv": "Gräsand",
+    "en": "Mallard",
+    "scientific": "Anas platyrhynchos"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Änder"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25348/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mallard_(Anas_platyrhynchos)_male_head.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25348/extra.webp",
+      "width": 1200,
+      "height": 655,
+      "author": "Calle Eklund/V-wolf",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anas_platyrhynchos_Vikmanshyttan_02.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25348/voice.mp3",
+    "durationSec": 17,
+    "trimmed": false,
+    "author": "Jonathon Jongsma",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anas_platyrhynchos_-_Mallard_-_XC112828.ogg",
+    "sha256": "8e67444536642af9a3764e37d0248f678a3ca761b6ddf767c815f173c2c2db0e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Gräsand",
+      "revision": "59562543"
+    },
+    "en": {
+      "title": "Mallard",
+      "revision": "1374348462"
+    },
+    "de": {
+      "title": "Stockente",
+      "revision": "270645289"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 9761484,
+    "totalReports": 638450,
+    "months": [
+      100,
+      84,
+      77,
+      66,
+      53,
+      56,
+      55,
+      53,
+      54,
+      63,
+      84,
+      92
+    ],
+    "counties": {
+      "SE-K": 68,
+      "SE-W": 71,
+      "SE-X": 87,
+      "SE-I": 56,
+      "SE-N": 66,
+      "SE-Z": 68,
+      "SE-F": 96,
+      "SE-H": 50,
+      "SE-G": 100,
+      "SE-BD": 73,
+      "SE-T": 65,
+      "SE-E": 83,
+      "SE-M": 87,
+      "SE-D": 90,
+      "SE-AB": 89,
+      "SE-C": 80,
+      "SE-S": 71,
+      "SE-AC": 75,
+      "SE-Y": 67,
+      "SE-U": 65,
+      "SE-O": 86
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        70129,
+        41226,
+        69255,
+        91871,
+        85886,
+        49126,
+        36988,
+        37466,
+        39324,
+        45028,
+        37902,
+        33959
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 101944,
+        "SE-AB": 73405,
+        "SE-M": 72384,
+        "SE-C": 36344,
+        "SE-D": 33306,
+        "SE-H": 31603,
+        "SE-F": 30483,
+        "SE-E": 27291,
+        "SE-N": 23754,
+        "SE-AC": 17408,
+        "SE-G": 17157,
+        "SE-T": 14600,
+        "SE-W": 14166,
+        "SE-BD": 14149,
+        "SE-X": 13557,
+        "SE-S": 11502,
+        "SE-U": 11389,
+        "SE-I": 7993,
+        "SE-Y": 7733,
+        "SE-Z": 7641,
+        "SE-K": 4720
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-07"
+}

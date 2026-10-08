@@ -71,7 +71,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:IMGP5370Snow goose (Anser caerulescens),
     white morph.jpg
   commons_filename: IMGP5370Snow goose (Anser caerulescens), white morph.jpg
@@ -80,7 +80,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Snow goose (Anser caerulescens),
     blue morph.jpg
   commons_filename: Snow goose (Anser caerulescens), blue morph.jpg
@@ -89,8 +89,7 @@ image_refs:
   width: 1800
   height: 1092
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/52450054@N04">Judy
-    Gallagher</a>
+  author: Judy Gallagher
   source_url: https://commons.wikimedia.org/wiki/File:040 366 - Snow Geese - Anser
     caerulescens, Middle Creek Wildlife Management Area, Stevens, Pennsylvania, February
     9, 2024 (53519898401).jpg

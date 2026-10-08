@@ -40,12 +40,16 @@ import birdy_bird_scanner.composeapp.generated.resources.recap_load_error
 import birdy_bird_scanner.composeapp.generated.resources.recap_new_badge_fmt
 import birdy_bird_scanner.composeapp.generated.resources.recap_new_species_tag
 import birdy_bird_scanner.composeapp.generated.resources.recap_quiet_encouragement
+import birdy_bird_scanner.composeapp.generated.resources.recap_stats_finds
 import birdy_bird_scanner.composeapp.generated.resources.recap_stats_fmt
+import birdy_bird_scanner.composeapp.generated.resources.recap_stats_new_species
+import birdy_bird_scanner.composeapp.generated.resources.recap_stats_week_streak
 import birdy_bird_scanner.composeapp.generated.resources.recap_streak_label
 import birdy_bird_scanner.composeapp.generated.resources.recap_streak_nudge_fmt
 import birdy_bird_scanner.composeapp.generated.resources.recap_summary_active_fmt
 import birdy_bird_scanner.composeapp.generated.resources.recap_summary_active_new
 import coil3.compose.AsyncImage
+import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.JournalHeadline
 import se.birdy.app.ui.components.JournalLoading
@@ -56,6 +60,7 @@ import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.paperBackground
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.util.speciesImageUri
+import kotlin.math.abs
 
 @Composable
 fun RecapScreen(
@@ -140,9 +145,9 @@ private fun ActiveBody(
 
     Text(
         if (s.newSpeciesCount > 0) {
-            stringResource(Res.string.recap_summary_active_new, s.observationCount.toString())
+            pluralStringResource(Res.plurals.recap_summary_active_new, s.observationCount, s.observationCount)
         } else {
-            stringResource(Res.string.recap_summary_active_fmt, s.observationCount.toString())
+            pluralStringResource(Res.plurals.recap_summary_active_fmt, s.observationCount, s.observationCount)
         },
         color = MarginaliaInk,
         fontFamily = caveat,
@@ -154,12 +159,7 @@ private fun ActiveBody(
     OrnamentRule()
     Spacer(modifier = Modifier.height(8.dp))
     Text(
-        stringResource(
-            Res.string.recap_stats_fmt,
-            s.observationCount.toString(),
-            s.newSpeciesCount.toString(),
-            s.weeklyStreak.toString(),
-        ),
+        recapStatsLine(finds = s.observationCount, newSpecies = s.newSpeciesCount, weekStreak = s.weeklyStreak),
         color = AccentCopper,
         fontFamily = caveat,
         fontSize = 20.sp,
@@ -176,7 +176,7 @@ private fun ActiveBody(
         )
     }
     Text(
-        stringResource(Res.string.recap_delta_fmt, formatSigned(s.deltaVsLastWeek)),
+        pluralStringResource(Res.plurals.recap_delta_fmt, abs(s.deltaVsLastWeek), formatSigned(s.deltaVsLastWeek)),
         color = MarginaliaInk,
         fontFamily = caveat,
         fontSize = 16.sp,
@@ -306,3 +306,20 @@ private fun QuietBody(
 }
 
 private fun formatSigned(n: Int): String = if (n >= 0) "+$n" else "$n"
+
+/**
+ * "3 fynd · 1 ny art · 2 veckor i rad": each count has its own plural, so a single new species or a
+ * one-week streak reads naturally (release 1.3.0 Task 7g; was "1 ny art" for two and "1 v streak").
+ */
+@Composable
+internal fun recapStatsLine(
+    finds: Int,
+    newSpecies: Int,
+    weekStreak: Int,
+): String =
+    stringResource(
+        Res.string.recap_stats_fmt,
+        pluralStringResource(Res.plurals.recap_stats_finds, finds, finds),
+        pluralStringResource(Res.plurals.recap_stats_new_species, newSpecies, newSpecies),
+        pluralStringResource(Res.plurals.recap_stats_week_streak, weekStreak, weekStreak),
+    )

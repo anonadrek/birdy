@@ -1,0 +1,869 @@
+{
+  "qid": "Q25440",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Storskarven är cirka 80–95 cm lång, har ett vingspann på 130–160 cm och väger ungefär 2,5 kg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta storskarven är cirka 80–95 centimeter lång, har ett vingspann på 130–160 centimeter och väger ungefär 2,5 kilo."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Storskarven är en stor, ganska långhalsad fågel som i adult dräkt är svartglänsande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storskarven är en stor, ganska långhalsad fågel som i adult dräkt är svartglänsande."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Näbben är lång och grå, gul vid näbbroten, och överdelen är nedböjd i en hake över underdelens spets.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en lång grå näbb, som är gul längst in vid näbbroten och vars överdel är nedböjd i en hake över underdelens spets."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Vid näbbroten har den en gul, ibland röd, fläck av bar hud på strupen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "it also has a yellow, or sometimes red, patch of bare gular skin on the throat at the base of the bill"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Benen är korta och sitter långt bak på kroppen, och de mörka fötterna har simhud mellan alla fyra tår.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har korta ben som sitter långt bak på kroppen och de mörka fötterna har simhud mellan alla fyra tår."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "I häckningsdräkt är den svart med blåaktig glans, har en bred vit fläck på strupen, vitgrå nacke och en vit fläck på låret.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta storskarven i häckningsdräkt är svart med blåaktig glans. Den har en bred distinkt vit fläck på strupen, vitgrå i nacken, har långa nackfjädrar och en vit fläck på låret."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Utanför häckningstiden saknar adulta fåglar den vita lårfläcken, har mindre blåaktig glans och mörk nacke.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De adulta icke-häckande fåglarna saknar den vita lårfläcken, har inte lika blåaktig glans, är mörk i nacken och har mindre nackfjädrar."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Unga fåglar är brunsvarta och har vitt bröst.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De juvenila fåglarna är brunsvarta och har vitt bröst."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Hanen är något större än honan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta storskarven är cirka 80–95 centimeter lång, har ett vingspann på 130–160 centimeter och väger ungefär 2,5 kilo. Hanen är något större än honan."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Adulta fåglar har djupt havsgröna ögon, medan unga fåglar har mattare mörkgrå ögon.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The eyes are a striking deep sea-green in adults, duller dark grey in juveniles."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Unga fåglar har ljus till vitaktig undersida och får adult dräkt vid 3–4 års ålder.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Juveniles and immatures have pale to whitish underparts, becoming browner in their second year and reaching adult plumage when 3–4 years old."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "behaviour",
+      "sv": "För att torka fjäderdräkten sitter den med utbredda vingar och stödjer kroppen på den styva stjärten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "För att torka sätter den sig med utbredda vingar och stödjer kroppen på den styva stjärten."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "behaviour",
+      "sv": "Den sitter ganska upprätt och använder den styva stjärten som ett tredje ben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den sitter ganska upprätt och stödjer sig då med hjälp av den styva stjärten, som fungerar som ett tredje ben."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "behaviour",
+      "sv": "Den flyger ofta långa sträckor i större flockar för att söka föda och kan även födosöka i flock.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den flyger ofta långa sträckor, gärna i större flockar, för att söka föda och kan även födosöka i flock."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Storskarven är tyst utom vid häckningskolonierna, där den har olika gutturala läten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storskarven är en tyst fågel förutom vid häckning i sina kolonier då den har olika gutturala läten."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Lätena i kolonierna är djupa och strävt kraxande, och det vanligaste låter ungefär som ”chrochrochro”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Rufe in den Kolonien sind tief und kehlig krächzend. Der häufigste Ruf klingt etwa wie „chrochrochro“; dieser Ruf wird variiert."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Storskarven lever vid salt, bräckt och sött vatten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storskarven lever både vid salt, bräckt och sött vatten."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Vid kusten uppträder den i skyddade områden som flodmynningar, deltaområden och vikar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ute vid kusten uppträder de vid skyddade områden som exempelvis flodmynningar, mangroveträsk, deltaområden och vikar."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Häckningsöar känns lätt igen på döda träd med stora svarta fåglar i och brist på annan växtlighet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Man känner lätt igen dessa öar på de döda träden med stora svarta fåglar i, och bristen på annan växtlighet."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Sverige häckar mellanskarven längs väst-, syd- och östkusten upp längs Norrlandskusten samt vid sjöar och våtmarker i inlandet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar utmed västkusten, södra Sveriges kust och uppför östkusten och Norrlandskusten. Den häckar även i inlandet vid sjöar och våtmarker."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "En stor del av de svenska häckfåglarna flyttar till Medelhavet, men allt fler övervintrar i södra Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En stor del av det svenska häckningsbeståndet av P. c. sinensis är flyttfåglar och övervintrar längre söderut i Europa till Medelhavet, men ett ökande antal har börjat övervintra i södra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Nominatformen atlantstorskarv är främst vintergäst i Sverige längs Västkusten och i Östersjön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den andra underarten som förekommer i Sverige, är nominatformen P. c. carbo, vilken huvudsakligen är en vintergäst och då förekommer längs Västkusten och i Östersjön."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "De övervintrande atlantstorskarvarna anländer på hösten och stannar till mars–april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den anländer sina vinterkvarter i Sverige under hösten och stannar till mars–april."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "sweden",
+      "sv": "Åren 2006–2009 häckade ungefär 44 000 par årligen i Sverige, och 2012 var antalet 40 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Perioden 2006 till 2009 häckade ungefär 44 000 par årligen i hela landet, medan siffran 2012 var 40 000, det vill säga en minskning med 10 %."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Den häckar i kolonier som oftast omfattar mellan 10 och 500 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kolonierna omfattar oftast mellan 10 och 500 par och i extremfall uppemot 1 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Boet byggs av tång och pinnar och placeras på branta klippavsatser eller i träd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bona, som består av tång och pinnar, placeras på branta klippavsatser eller i träd."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Den lägger i genomsnitt 4–5 ägg, men kullar med 2–6 ägg förekommer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skarven lägger i genomsnitt 4–5 ägg, men kullar med 2–6 förekommer."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Båda föräldrarna ruvar i 27–31 dagar, och ungarna blir flygga efter ytterligare 50 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Båda föräldrarna ruvar äggen, vilket tar 27–31 dagar, och tar sedan tillsammans hand om ungarna som blir flygga efter ytterligare 50 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "food",
+      "sv": "I Sverige består födan främst av tånglake, abborre, mört och rötsimpa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Studier av den svenska populationen visar att dess föda främst består av tånglake, abborre, mört och rötsimpa."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "food",
+      "sv": "Den tar bytet vid botten, oftast på grunt vatten, och dyker till högst tio till tolv meters djup.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storskarven fångar sitt byte från botten, ibland på djupare vatten, men oftast i grundare vatten och den dyker till max tio till tolv meters djup."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En stor del av det svenska häckningsbeståndet av P. c. sinensis är flyttfåglar och övervintrar längre söderut i Europa till Medelhavet, men ett ökande antal har börjat övervintra i södra Sverige."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Storskarven är en stor, ganska långhalsad och svartglänsande fågel som lever vid salt, bräckt och sött vatten.",
+          "factIds": [
+            "f02",
+            "f17"
+          ]
+        },
+        {
+          "text": "Vid kusten ses den i skyddade områden som flodmynningar, deltaområden och vikar.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Svartglänsande och ganska långhalsad, i häckningsdräkt med vit strupfläck, vitgrå nacke och vit lårfläck",
+          "factIds": [
+            "f02",
+            "f06"
+          ]
+        },
+        {
+          "text": "Lång grå näbb med hake i spetsen och gul, ibland röd, bar hud vid näbbroten",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Adulta har djupt havsgröna ögon, unga fåglar är brunsvarta med ljus undersida",
+          "factIds": [
+            "f10",
+            "f08",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Storskarven är tyst utom vid häckningskolonierna.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "Där hörs djupa, strävt kraxande gutturala läten, och det vanligaste låter ungefär som ”chrochrochro”.",
+          "factIds": [
+            "f15",
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Storskarven är delvis flyttfågel och häckar i Sverige.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Mellanskarven häckar längs väst-, syd- och östkusten upp längs Norrlandskusten samt vid sjöar och våtmarker i inlandet.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "En stor del av häckfåglarna flyttar till Medelhavet, men allt fler övervintrar i södra Sverige.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Atlantstorskarven är främst vintergäst längs Västkusten och i Östersjön, från hösten till mars eller april.",
+          "factIds": [
+            "f22",
+            "f23"
+          ]
+        },
+        {
+          "text": "Arten rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den flyger ofta långa sträckor i större flockar för att söka föda och kan även födosöka i flock.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Bytet tas vid botten, oftast på grunt vatten, och den dyker till högst tio till tolv meters djup.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "I Sverige äter den främst tånglake, abborre, mört och rötsimpa.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Den häckar i kolonier på oftast 10 till 500 par, med bo av tång och pinnar på branta klippavsatser eller i träd.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Storskarv: så känner du igen den på dräkt och näbb, hur lätet låter vid kolonierna, när den ses under året och vad den äter.",
+      "facts": {
+        "size": {
+          "value": "80 till 95 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Great Cormorant is a large, fairly long-necked, glossy black bird that lives by salt, brackish and fresh water.",
+          "factIds": [
+            "f02",
+            "f17"
+          ]
+        },
+        {
+          "text": "On the coast it is found in sheltered places such as estuaries, deltas and bays.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Glossy black, fairly long-necked, breeding birds with white throat patch, whitish-grey nape, white thigh patch",
+          "factIds": [
+            "f02",
+            "f06"
+          ]
+        },
+        {
+          "text": "Long grey bill with a hooked tip and yellow, sometimes red, bare skin at the base",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Adults have deep sea-green eyes, young birds are brownish black with pale underparts",
+          "factIds": [
+            "f10",
+            "f08",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The Great Cormorant is silent except at its breeding colonies.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "There it gives deep, harsh, croaking guttural calls, the most frequent sounding roughly like \"chrochrochro\".",
+          "factIds": [
+            "f15",
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Great Cormorant is a partial migrant breeding in Sweden.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Mellanskarv breeds along the west, south and east coasts, up the Norrland coast, and at inland lakes and wetlands.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Many migrate to the Mediterranean, but more and more winter in southern Sweden.",
+          "factIds": [
+            "f21"
+          ]
+        },
+        {
+          "text": "Atlantstorskarv mainly winters on the west coast and in the Baltic, from autumn to March or April.",
+          "factIds": [
+            "f22",
+            "f23"
+          ]
+        },
+        {
+          "text": "It is reported all year from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It often flies long distances in larger flocks to find food and can also feed in flocks.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "It takes prey on the bottom, usually in shallow water, diving to at most ten to twelve metres.",
+          "factIds": [
+            "f30"
+          ]
+        },
+        {
+          "text": "In Sweden it mainly eats eelpout, perch, roach and shorthorn sculpin.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "It breeds in colonies of usually 10 to 500 pairs, with nests of seaweed and sticks on steep rock ledges or in trees.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Great Cormorant: how to recognise it by plumage and bill, what its calls sound like at colonies, when it is seen and what it eats.",
+      "facts": {
+        "size": {
+          "value": "80 to 95 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "32db8d05a7c09a82"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "32db8d05a7c09a82"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "storskarv",
+    "en": "great-cormorant"
+  },
+  "names": {
+    "sv": "Storskarv",
+    "en": "Great Cormorant",
+    "scientific": "Phalacrocorax carbo"
+  },
+  "family": {
+    "latin": "Phalacrocoracidae",
+    "sv": "Skarvar"
+  },
+  "group": "seabirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25440/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Great_cormorant_(Phalacrocorax_carbo),_Travemünde.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25440/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Great_cormorant_(Phalacrocorax_carbo)_in_flight,_Travemünde.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25440/voice.mp3",
+    "durationSec": 13,
+    "trimmed": false,
+    "author": "Sonothèque ADVL",
+    "license": "CC0",
+    "licenseUrl": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cormor%C3%A1n_grande_(Phalacrocorax_carbo).mp3",
+    "sha256": "b892c0e17ab3926e9d5e7edf750f7a13f29d3fa2a139a07f4e254245d1187fca"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Storskarv",
+      "revision": "58850386"
+    },
+    "en": {
+      "title": "Great cormorant",
+      "revision": "1339370010"
+    },
+    "de": {
+      "title": "Kormoran (Art)",
+      "revision": "268396955"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2481890,
+    "totalReports": 370197,
+    "months": [
+      75,
+      65,
+      79,
+      64,
+      43,
+      41,
+      70,
+      92,
+      100,
+      96,
+      92,
+      76
+    ],
+    "counties": {
+      "SE-K": 64,
+      "SE-W": 25,
+      "SE-X": 39,
+      "SE-I": 51,
+      "SE-N": 63,
+      "SE-Z": 4,
+      "SE-F": 72,
+      "SE-H": 42,
+      "SE-G": 100,
+      "SE-BD": 21,
+      "SE-T": 42,
+      "SE-E": 53,
+      "SE-M": 69,
+      "SE-D": 51,
+      "SE-AB": 61,
+      "SE-C": 38,
+      "SE-S": 47,
+      "SE-AC": 15,
+      "SE-Y": 38,
+      "SE-U": 71,
+      "SE-O": 63
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        29229,
+        17435,
+        39282,
+        49123,
+        38017,
+        19531,
+        25812,
+        35584,
+        40211,
+        37479,
+        22883,
+        15392
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 58403,
+        "SE-M": 44552,
+        "SE-AB": 39228,
+        "SE-H": 20411,
+        "SE-F": 17701,
+        "SE-N": 17517,
+        "SE-D": 14639,
+        "SE-E": 13512,
+        "SE-G": 13357,
+        "SE-C": 13305,
+        "SE-U": 9637,
+        "SE-T": 7354,
+        "SE-S": 5965,
+        "SE-I": 5740,
+        "SE-X": 4706,
+        "SE-W": 3912,
+        "SE-K": 3490,
+        "SE-Y": 3442,
+        "SE-BD": 3170,
+        "SE-AC": 2696,
+        "SE-Z": 392
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

@@ -92,31 +92,31 @@ migration:
 image_refs:
 - role: hero
   path: Q27129/hero.webp
-  width: 2265
-  height: 2153
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Forestowlet" title="User:Forestowlet">Forestowlet</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Hydroprogne caspia-Caspian Tern
-    01.JPG
-  commons_filename: Hydroprogne caspia-Caspian Tern 01.JPG
+  width: 2400
+  height: 1573
+  license: Public domain
+  author: U.S. Environmental Protection Agency
+  source_url: https://commons.wikimedia.org/wiki/File:Environmental Images (Birds)
+    - DPLA - 9ea0f3c4dfac31c22985295b5aa1853f.jpg
+  commons_filename: Environmental Images (Birds) - DPLA - 9ea0f3c4dfac31c22985295b5aa1853f.jpg
 - role: secondary
   path: Q27129/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104269801@N02">Andrew
-    C</a>
+  author: Andrew C
   source_url: https://commons.wikimedia.org/wiki/File:Caspian Tern (Hydroprogne caspia)
     (19394275675).jpg
   commons_filename: Caspian Tern (Hydroprogne caspia) (19394275675).jpg
 - role: secondary
   path: Q27129/secondary-2.webp
-  width: 1205
+  width: 1800
   height: 1800
-  license: CC BY 4.0
-  author: Auckland War Memorial Museum
-  source_url: https://commons.wikimedia.org/wiki/File:Hydroprogne caspia (AM LB1898-5).jpg
-  commons_filename: Hydroprogne caspia (AM LB1898-5).jpg
+  license: CC BY 2.0
+  author: lwolfartist
+  source_url: https://commons.wikimedia.org/wiki/File:Caspian tern merritt island
+    nwr 1.22.24 DSC 1798-topaz-denoiseraw-sharpen.jpg
+  commons_filename: Caspian tern merritt island nwr 1.22.24 DSC 1798-topaz-denoiseraw-sharpen.jpg
 review_status: auto
 review_notes: ''
 generated_at: '2026-05-15T20:02:53.105815+00:00'

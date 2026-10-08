@@ -1,0 +1,896 @@
+{
+  "qid": "Q26680",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Vitkindad gås är en kompakt och ganska korthalsad gås med svart, vit och grå fjäderdräkt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vitkindad gås är en kompakt, ganska korthalsad gås med svart, vit och grå fjäderdräkt."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Den har vita huvudsidor och vit panna, vilket ger ett svart streck mellan näbbroten och ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den vitkindade gåsen har även en vit panna vilket resulterar i ett svart streck som går mellan näbbroten och ögat"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Hjässa, nacke, hals och bröst är svarta i stark kontrast till den vita buken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hjässan, nacken, halsen och bröstet är svart i stark kontrast till den vita buken."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den har runt huvud, liten svart näbb och mörkgrå ben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "med en ganska kort hals, runt huvud och liten näbb som är svart. Dess ben är mörkgrå."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Övre armtäckarna är bandade i svart, grått och lite vitt, vilket ger den stående fågeln en tvärrandad översida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De övre armtäckarna är bandade i svart, grått och lite vitt vilket ger den stående fågeln en tvärrandad översida."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Stjärten är vit med ett brett svart ändband.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten har samma teckning som kanadagåsens, det vill säga vit med ett brett svart ändband."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "I flykten syns en V-formad vit övergumpsfläck och silvergrå undre vingtäckare.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "During flight, a V-shaped white rump patch and the silver-grey underwing linings are visible."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hane och hona har samma färger.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Beide Geschlechter sind farbgleich."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Adulta fåglar har tydliga ljusgrå vertikala ränder på kroppssidan, medan unga fåglar är mer otydligt gråvita där.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Adulta fåglar har tydliga ljusgrå vertikala ränder på kroppssidan medan de juvenila fåglarna är mer otydligt gråvita."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Ungfåglarnas dräkt är brunare, med breda bruna ändkanter på skulderfjädrar och vingtäckare.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Es ist allerdings insgesamt brauner. Speziell die Schulterfedern und die Flügeldecken weisen noch breite braune Endbinden auf."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "size",
+      "sv": "Längden är 58–70 cm och vingspannet 120–142 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "en längd på 58–70 cm och ett vingspann på 120–142 cm"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "size",
+      "sv": "Den väger 1,21–2,23 kg.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "a weight of 1.21–2.23 kg"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Vitkindad gås är ljudlig och har ett enstavigt skällande ”ka”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vitkindad gås är en ljudlig fågel, med enstavigt skällande \"ka\"."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "I stora flockar bildar lätena en kör i olika tonlägen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I stora flockar bildar lätena en kör i olika tonlägen."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "På avstånd kan lätet förväxlas med hundskall.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Aus der Ferne kann der Ruf mit Hundegebell verwechselt werden."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Den häckar nära kusten på klipphyllor, gräsiga stränder, låga öar och flacka sandrevlar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar i nära anslutning till kusten och uppträder i många olika typer av häckningsbiotoper som klipphyllor, gräsiga stränder, låga öar och flacka sandrevlar."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Arten är starkt knuten till havskuster, särskilt på vintern.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Zu den Merkmalen dieser Gänseart zählt eine enge Bindung an die Meeresküsten, die besonders im Winter ausgeprägt ist."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Första konstaterade häckningen i Sverige skedde i Härjedalen 1952, och sedan 1971 häckar arten årligen i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den första konstaterade häckningen i Sverige skedde istället i Härjedalen 1952 och sedan 1971 häckar den årligen i Sverige"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige häckar den numera på östkusten upp till Norrbotten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "numera häckar den på östkusten upp till Norrbotten"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Sedan slutet av 1990-talet häckar den även på svenska västkusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sedan slutet av 1990-talet har den också börjat häcka på västkusten."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Antalet reproduktiva individer i Sverige uppskattas till 4 800–6 800.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Antalet reproduktiva individer uppskattas till 4 800–6 800"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet har minskat med 30–50 % de senaste tolv åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "men har minskat med 30–50 % de senaste tolv åren"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Honan lägger i snitt 3–5 gråvita ägg som ruvas i cirka 24 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger i snitt mellan 3 och 5 gråvita ägg"
+        },
+        {
+          "article": "sv",
+          "quote": "ruvningen som tar cirka 24 dygn"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Boet är en grund fördjupning som används flera år i rad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet, som används flera år i rad, är en grund fördjupning som gässen själv sparkar upp"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Den häckar både i stora kolonier och ensamma.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar både i stora kolonier och ensamma."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Efter kläckningen tar föräldrarna nästan genast med sig ungarna till vattnet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Efter kläckning tar föräldrarna nästan genast med sig ungarna till vattnet."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Den äter växter, bland annat vide.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den äter växter, bland annat vide."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "På vintern lever den främst av kort gräs.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Weißwangengänse leben im Winter vorwiegend von kurzem Gras"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstiden lever den i flockar och ansluter sig ofta till andra gåsarter.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Weißwangengänse sind gesellig, außerhalb der Paarungs- und Brutzeit leben sie in mehr oder weniger großen Schwärmen. Dabei schließen sie sich oft anderen Gänsearten an."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Vitkindad gås kan misstas för kanadagås men är klart mindre och har dessutom vit panna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vitkindad gås kan misstas för kanadagås (Branta canadensis) men den är klart mindre"
+        },
+        {
+          "article": "sv",
+          "quote": "den vitkindade gåsen har även en vit panna"
+        }
+      ],
+      "other": {
+        "scientific": "Branta canadensis",
+        "qid": "Q26733"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "on islands and coasts of the southern North Sea (Estonia, Finland, Sweden, Denmark, the Netherlands, Germany and Belgium). Winters in or near breeding range or moves to the Wadden Sea."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i oktober."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Blekinge, Halland och Gotland."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Vitkindad gås är en kompakt och ganska korthalsad gås i svart, vitt och grått.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Den är starkt knuten till havskuster och häckar i Sverige på både öst- och västkusten.",
+          "factIds": [
+            "f17",
+            "f19",
+            "f20"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Vita huvudsidor och vit panna, med ett svart streck mellan näbbroten och ögat",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Svart hjässa, hals och bröst i stark kontrast mot den vita buken",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Tvärrandad grå översida, i flykten syns en V-formad vit övergumpsfläck",
+          "factIds": [
+            "f05",
+            "f07"
+          ]
+        },
+        {
+          "text": "Hane och hona har samma färger, ungfåglar är brunare med otydligare sidoränder",
+          "factIds": [
+            "f08",
+            "f09",
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Den är ljudlig och har ett enstavigt, skällande ”ka”.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "I stora flockar blir lätena en kör i olika tonlägen, och på avstånd kan de förväxlas med hundskall.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Vitkindad gås är delvis flyttfågel och häckar i Sverige, numera på östkusten upp till Norrbotten och sedan slutet av 1990-talet även på västkusten.",
+          "factIds": [
+            "s01",
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "Den häckar nära kusten på klipphyllor, gräsiga stränder, låga öar och flacka sandrevlar.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "Arten rapporteras mest i oktober.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Blekinge, Halland och Gotland.",
+          "factIds": [
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den äter växter, bland annat vide, och på vintern främst kort gräs.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden lever den i flockar och ansluter sig ofta till andra gåsarter.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Den häckar i stora kolonier eller ensam, och föräldrarna tar med ungarna till vattnet nästan genast efter kläckningen.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q26733",
+          "text": [
+            {
+              "text": "Kanadagås är klart större än vitkindad gås, som dessutom har vit panna.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Vitkindad gås: så känner du igen den på svartvita huvudet och fjäderdräkten, hur det skällande lätet låter och när den syns.",
+      "facts": {
+        "size": {
+          "value": "58 till 70 cm",
+          "factIds": [
+            "f11"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Barnacle Goose is a compact, fairly short-necked goose in black, white and grey.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "It is closely tied to sea coasts and breeds in Sweden on both the east and west coasts.",
+          "factIds": [
+            "f17",
+            "f19",
+            "f20"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "White sides of the head and white forehead, with a black line from bill to eye",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Black crown, neck and breast in strong contrast to the white belly",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Barred grey upperparts, and a white V-shaped rump patch in flight",
+          "factIds": [
+            "f05",
+            "f07"
+          ]
+        },
+        {
+          "text": "Male and female look alike, young birds are browner with less distinct flank bars",
+          "factIds": [
+            "f08",
+            "f09",
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "It is noisy, with a single barking “ka”.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "In large flocks the calls form a chorus at different pitches, and from a distance they can be mistaken for dogs barking.",
+          "factIds": [
+            "f14",
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Barnacle Goose is a partial migrant that breeds in Sweden, now along the east coast up to Norrbotten and since the late 1990s also on the west coast.",
+          "factIds": [
+            "s01",
+            "f19",
+            "f20"
+          ]
+        },
+        {
+          "text": "It nests near the coast on rock ledges, grassy shores, low islands and flat sandbars.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "It is reported most in October.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Blekinge, Halland and Gotland.",
+          "factIds": [
+            "d02"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats plants, including willow, and in winter mainly short grass.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it lives in flocks and often joins other goose species.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "It nests in large colonies or alone, and the parents take the young to the water almost straight after hatching.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q26733",
+          "text": [
+            {
+              "text": "The Canada Goose is clearly larger, and the Barnacle Goose also has a white forehead.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Barnacle Goose: how to recognise it by its black and white head and plumage, what its barking call sounds like and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "58 to 70 cm",
+          "factIds": [
+            "f11"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "d7c25d1383069bcd"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "d7c25d1383069bcd"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "vitkindad-gas",
+    "en": "barnacle-goose"
+  },
+  "names": {
+    "sv": "Vitkindad gås",
+    "en": "Barnacle Goose",
+    "scientific": "Branta leucopsis"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Änder"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26680/hero.webp",
+      "width": 1600,
+      "height": 1600,
+      "author": "Tsyganov Sergey",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Branta_leucopsis_Белощёкая_казарка_в_Санкт-Петербурге_03.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26680/extra.webp",
+      "width": 1200,
+      "height": 709,
+      "author": "Tsyganov Sergey",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Branta_leucopsis_Белощёкая_казарка_в_Санкт-Петербурге_05.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26680/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Joost van Bruggen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Branta_leucopsis_-_Barnacle_Goose_XC433386.mp3",
+    "sha256": "f05705cb2a16a435bf69281edabc6c601d4a406a4f0e805851f3c04f16c3718d"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Vitkindad gås",
+      "revision": "59709568"
+    },
+    "en": {
+      "title": "Barnacle goose",
+      "revision": "1369802615"
+    },
+    "de": {
+      "title": "Weißwangengans",
+      "revision": "270913170"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 5232464,
+    "totalReports": 280869,
+    "months": [
+      28,
+      42,
+      66,
+      66,
+      59,
+      41,
+      38,
+      45,
+      44,
+      100,
+      61,
+      35
+    ],
+    "counties": {
+      "SE-K": 100,
+      "SE-W": 41,
+      "SE-X": 37,
+      "SE-I": 82,
+      "SE-N": 93,
+      "SE-Z": 27,
+      "SE-F": 30,
+      "SE-H": 79,
+      "SE-G": 36,
+      "SE-BD": 13,
+      "SE-T": 43,
+      "SE-E": 47,
+      "SE-M": 81,
+      "SE-D": 27,
+      "SE-AB": 45,
+      "SE-C": 37,
+      "SE-S": 29,
+      "SE-AC": 28,
+      "SE-Y": 29,
+      "SE-U": 45,
+      "SE-O": 43
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i oktober.",
+        "Andelen av alla fågelrapporter är högst i Blekinge, Halland och Gotland."
+      ],
+      "en": [
+        "Reported most in October.",
+        "Its share of all bird reports is highest in Blekinge, Halland and Gotland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        10595,
+        11022,
+        31846,
+        49146,
+        51226,
+        19150,
+        13611,
+        16988,
+        17341,
+        38102,
+        14624,
+        6908
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-M": 44213,
+        "SE-O": 33572,
+        "SE-H": 32423,
+        "SE-AB": 24427,
+        "SE-N": 21750,
+        "SE-C": 10869,
+        "SE-E": 10115,
+        "SE-I": 7669,
+        "SE-D": 6465,
+        "SE-T": 6390,
+        "SE-F": 6141,
+        "SE-W": 5405,
+        "SE-U": 5157,
+        "SE-K": 4576,
+        "SE-AC": 4240,
+        "SE-G": 4080,
+        "SE-X": 3735,
+        "SE-S": 3129,
+        "SE-Y": 2230,
+        "SE-Z": 2005,
+        "SE-BD": 1643
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

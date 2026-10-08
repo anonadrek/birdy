@@ -96,33 +96,35 @@ image_refs:
 - role: hero
   path: Q26578/hero.webp
   width: 2400
-  height: 1647
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Luscinia svecica Oulu 20180907
-    02.jpg
-  commons_filename: Luscinia svecica Oulu 20180907 02.jpg
+  height: 1602
+  license: CC BY 4.0
+  author: Sultanjenin2018
+  source_url: https://commons.wikimedia.org/wiki/File:هزار أزرق الزور Luscinia svecica
+    2.jpg
+  commons_filename: هزار أزرق الزور Luscinia svecica 2.jpg
 - role: secondary
   path: Q26578/secondary-1.webp
   width: 1800
-  height: 1246
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Luscinia svecica Oulu 20180907
-    01.jpg
-  commons_filename: Luscinia svecica Oulu 20180907 01.jpg
+  height: 1200
+  license: CC BY-SA 4.0
+  author: El Golli Mohamed
+  source_url: https://commons.wikimedia.org/wiki/File:Bluethroat (Luscinia svecica)
+    at Ichkeul NP.jpg
+  commons_filename: Bluethroat (Luscinia svecica) at Ichkeul NP.jpg
 - role: secondary
   path: Q26578/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
-    Nguyen</a>
+  author: Marie-Lan Nguyen
   source_url: https://commons.wikimedia.org/wiki/File:Luscinia svecica Jardin des
     Grands moulins 2018-03-29 n04.jpg
   commons_filename: Luscinia svecica Jardin des Grands moulins 2018-03-29 n04.jpg
 review_status: approved
-review_notes: "Blåhake — Luscinia svecica från Oulu; allmän N SE-art i fjällbjörkskog."
+review_notes: 'Blåhake — Luscinia svecica från Oulu; allmän N SE-art i fjällbjörkskog.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se b54c332e; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T20:21:36.266095+00:00'
 sources:
   wikipedia_sv_revision: '59210860'

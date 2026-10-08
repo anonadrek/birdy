@@ -101,7 +101,7 @@ image_refs:
   width: 2400
   height: 1350
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Common tern (Sterna hirundo),
     Hallig Hooge.jpg
   commons_filename: Common tern (Sterna hirundo), Hallig Hooge.jpg
@@ -110,8 +110,7 @@ image_refs:
   width: 1800
   height: 1251
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
-    Vassen</a> from Brussels, Belgium
+  author: Frank Vassen
   source_url: https://commons.wikimedia.org/wiki/File:Sterna hirundo, Quiberon, Brittany,
     France (14834195197).jpg
   commons_filename: Sterna hirundo, Quiberon, Brittany, France (14834195197).jpg
@@ -120,8 +119,7 @@ image_refs:
   width: 1800
   height: 900
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/97469566@N00">Bengt
-    Nyman</a> from Vaxholm, Sweden
+  author: Bengt Nyman
   source_url: https://commons.wikimedia.org/wiki/File:Sterna hirundo EM1B2476 (43321425232).jpg
   commons_filename: Sterna hirundo EM1B2476 (43321425232).jpg
 review_status: approved

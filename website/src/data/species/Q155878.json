@@ -1,0 +1,612 @@
+{
+  "qid": "Q155878",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Orrtuppen är mellan 49 och 58 cm lång och har ett vingspann på runt 75–80 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Orrtuppen, också kallad orrhane, är mellan 49 och 58 cm"
+        },
+        {
+          "article": "sv",
+          "quote": "Vingspannet är runt 75–80 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Tuppen väger omkring 1 100–1 250 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "males measuring roughly around 60 centimetres (24 inches) in length and weighing 1,100–1,250 g"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "size",
+      "sv": "Orrhönan blir 40–45 cm lång och har ett vingspann på 65–70 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hönan blir 40–45 cm och väger omkring 750"
+        },
+        {
+          "article": "sv",
+          "quote": "där ligger vingspannet på 65–70 cm"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "sex_age",
+      "sv": "Könens fjäderdräkter skiljer sig nästan helt åt och tuppen är betydligt större än hönan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könens fjäderdräkter skiljer sig nästan helt åt och hanen är betydligt större än honan."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Tuppen är i stort sett helsvart med blålila fjädrar på halsen och bröstet samt röda ögonbryn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Tuppen är i stort sett helsvart med blålila, eller blåvioletta fjädrar på halsen och bröstet (varierar med underart), samt ett par röda ögonbryn."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Tuppens kluvna stjärt är lyrformad med vit undersida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den karaktäristiska kluvna stjärten är lyrformad med en vit undersida."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Tuppen har två vita band och en vit fläck på vingen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har även två vita band och en vit fläck på vingen."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Båda könen har vita vingband som syns i flykten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Beide Geschlechter besitzen weiße Flügelbinden (= Spiegel), die im Flug zu sehen sind."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Näbben är kort, kraftig och hornsvart, och fötterna är brunaktiga.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der kurze und kräftige Schnabel ist hornschwarz und die Füße sind bräunlich."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Orrhönan är brunspräcklig, något mörkare ovan och ljusare under, och har en relativt kort stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hönan, eller orrhöna, är brunspräcklig, är något mörkare på ovansidan och ljusare"
+        },
+        {
+          "article": "sv",
+          "quote": "Stjärten är dessutom relativt kort."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Ungen har svarta och rostgula tvärband ovan, svartspräckliga ving- och stjärtpennor och är ljusare undertill.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungen är på ovansidan tecknad med svarta och rostgula tvärband, svartspräcklig på ving- och stjärtpennor och ljusare undertill."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Orrens spel är starkt, bubblande och något duvlikt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Orrens spel är starkt, bubblande och något duvlikt."
+        },
+        {
+          "article": "en",
+          "quote": "Their song consists of a long, bubbling coo or murmur."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Spelande tuppar växlar mellan kuttrande och fräsande, blåsande läten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "dabei geben sie abwechselnd „kullernde“ und zischende Laute von sich."
+        },
+        {
+          "article": "sv",
+          "quote": "Under spelet blåser och kuttrar de"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Hönan har ett kacklande eller kvittrande läte.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The female is greyish-brown and has a cackling or warbling call."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Orren trivs bäst där björk- och barrskog omväxlar med hagar, ängar, mossar och bergig mark.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den trivs bäst i trakter där björk- och barrskog omväxlar med hagar, ängar, mossar och bergig mark."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Orren finns också i enbusksnår och på ljunghedar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den finns också i enbusksnår och på ljunghedar."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Orren häckar i hela Sverige utom på Öland, från Skåne till långt upp i Lappland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Orren häckar i hela Sverige, förutom på Öland, från Skåne till långt upp i Lappland."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "De flesta svenska orrar finns i Norrland eftersom beståndet i södra Sverige minskat sedan 1970-talet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Majoriteten av de svenska orrarna återfinns i Norrland då beståndet i landets södra delar minskat sedan 1970-talet."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Lappland kan orren ses på fjällsluttningarna upp i björkregionen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Lappland kan den ses på fjällsluttningarna upp i björkregionen."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Den fennoskandiska orrpopulationen har länge visat en negativ trend.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den fennoskandiska populationen har emellertid länge påvisat en negativ trend."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "behaviour",
+      "sv": "Tidiga vårmorgnar före soluppgången spelar tupparna på spelplatser som mossar, frusna kärr eller sjöar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under tidiga vårmorgnar innan soluppgången stoltserar de omkring på spelplatsen (till exempel på mossar, frusna kärr eller sjöar)"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Under spelet låter tupparna vingarna hänga och reser och breder ut stjärten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "låter vingarna hänga ned och reser upp och breder ut stjärten"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "I soluppgången flyger tupparna upp i träden och spelar även där.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I soluppgången flyger tupparna upp i träden och spelar även där."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Vintertid bäddar orren ibland ned sig i snön för att skydda sig mot stark köld och hård vind.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid bäddar orren ibland ned sig i snön för att skydda sig mot stark köld och hård vind."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "På vintern uppehåller sig orrtupparna ofta i björktopparna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "då orrtupparna ofta uppehåller sig i björktopparna"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Blåbärsskott är viktig föda på våren, medan björkknopp är huvudföda på vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Blåbärsskott är en viktig del av dieten under våren."
+        },
+        {
+          "article": "sv",
+          "quote": "På vintern utgör björkknopp den huvudsakliga födan."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Orren äter även insekter, larver och maskar, och särskilt ungarna får insekter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den äter även insekter, larver och maskar, särskilt ungarna får insekter att äta."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Hönan lägger vanligen 6–8 gulaktiga, brunfläckiga ägg i ett enkelt rede på marken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hönan lägger i ett enkelt rede på marken vanligen 6–8, undantagsvis ända upp till 16, ägg, som till färgen är gulaktiga med små bruna fläckar och punkter."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Kycklingarna kläcks efter omkring tre veckors ruvning och tuppen deltar inte i vården av ungarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Efter omkring tre veckors ruvning kläcks kycklingarna"
+        },
+        {
+          "article": "sv",
+          "quote": "tar hanen ingen del i vården av ungarna"
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Orren är en stannfågel som förekommer i norra Palearktis"
+        },
+        {
+          "article": "sv",
+          "quote": "Orren häckar i hela Sverige, förutom på Öland, från Skåne till långt upp i Lappland."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i april."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Jämtland, Västerbotten och Norrbotten."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": null,
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "7d7615171ce8a925"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "orre",
+    "en": "black-grouse"
+  },
+  "names": {
+    "sv": "Orre",
+    "en": "Black Grouse",
+    "scientific": "Lyrurus tetrix"
+  },
+  "family": {
+    "latin": "Phasianidae",
+    "sv": "Fasanfåglar"
+  },
+  "group": "gamebirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": false
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q155878/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Spjutkastare",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Orrtuppen.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q155878/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Spjutkastare",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Orrtupp.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q155878/voice.mp3",
+    "durationSec": 4,
+    "trimmed": false,
+    "author": "Carl Steinbeißer",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Black_grouse_-_rolling_and_hissing_sounds.ogg",
+    "sha256": "b228ec7fc709874b1e85b8f491e78edada0509082ed0c56f6c7f86ba6531ff44"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Orre",
+      "revision": "59691878"
+    },
+    "en": {
+      "title": "Black grouse",
+      "revision": "1371788242"
+    },
+    "de": {
+      "title": "Birkhuhn",
+      "revision": "269264612"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2473682,
+    "totalReports": 69976,
+    "months": [
+      70,
+      77,
+      70,
+      100,
+      56,
+      33,
+      17,
+      17,
+      37,
+      43,
+      63,
+      73
+    ],
+    "counties": {
+      "SE-K": 2,
+      "SE-W": 59,
+      "SE-X": 58,
+      "SE-I": 1,
+      "SE-N": 8,
+      "SE-Z": 100,
+      "SE-F": 32,
+      "SE-H": 8,
+      "SE-G": 54,
+      "SE-BD": 78,
+      "SE-T": 42,
+      "SE-E": 14,
+      "SE-M": 1,
+      "SE-D": 7,
+      "SE-AB": 2,
+      "SE-C": 24,
+      "SE-S": 46,
+      "SE-AC": 81,
+      "SE-Y": 61,
+      "SE-U": 57,
+      "SE-O": 13
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april.",
+        "Andelen av alla fågelrapporter är högst i Jämtland, Västerbotten och Norrbotten."
+      ],
+      "en": [
+        "Reported most in April.",
+        "Its share of all bird reports is highest in Jämtland, Västerbotten and Norrbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        6283,
+        4786,
+        7997,
+        17723,
+        11520,
+        3662,
+        1438,
+        1489,
+        3407,
+        3867,
+        3619,
+        3448
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-AC": 7894,
+        "SE-O": 6760,
+        "SE-BD": 6393,
+        "SE-W": 4973,
+        "SE-Z": 4751,
+        "SE-C": 4526,
+        "SE-U": 4218,
+        "SE-F": 4207,
+        "SE-T": 3989,
+        "SE-G": 3902,
+        "SE-X": 3821,
+        "SE-S": 3129,
+        "SE-Y": 2975,
+        "SE-H": 1989,
+        "SE-E": 1878,
+        "SE-N": 1269,
+        "SE-D": 1149,
+        "SE-AB": 530,
+        "SE-M": 478,
+        "SE-I": 85,
+        "SE-K": 56
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [
+    {
+      "check": "V4",
+      "factId": null,
+      "message": "ljudmodellen täcker inte arten: lyssna och besluta"
+    }
+  ]
+}

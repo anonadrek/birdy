@@ -1,0 +1,587 @@
+{
+  "qid": "Q28106837",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Bläsanden är en medelstor and med en längd på 42–50 cm och ett vingspann på 75–87 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bläsanden är en medelstor and med en längd på 42–50 cm och ett vingspann 75–87 cm."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Bläsanden väger 500–1073 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "a weight of 500–1,073 g (1–2 lb)"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Bläsanden har kort hals, ett förhållandevis stort och runt huvud och spetsig stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har kort hals och ett förhållandevis stort och runt huvud, och spetsig stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Näbben är liten och ljusgrå med svart underdel och svart näbbnagel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en liten ljusgrå näbb med svart underdel och svart näbbnagel."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Hanen i häckningsdräkt har rödbrunt huvud med beige bläs i pannan, rosaaktigt bröst och vit buk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bröstet är rosaaktigt, buken vit, och huvudet är rödbrunt med en beige bläs i pannan."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Hanen i häckningsdräkt är vattrad i mörkgrått och vitt, med svart stjärt, mörkgrön vingspegel och en kritvit fläck på vingens ovansida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I häckningsdräkt är hanen vattrad i mörkgrått och vitt på ovansidan och på sidorna, med svart stjärt, mörkgrön vingspegel och med en kritvit fläck på ovansidan vingen."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "I eklipsdräkt liknar hanen mer honan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I eklipsdräkt är hanen mer lik honan."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Den adulta honan och ungfågeln har brunt huvud, vattrad brungrå rygg, rostbrunt bröst och kroppssida samt vit buk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honan och juvenilen har brunt huvud, vattrad brungrå rygg, rostbrunt bröst och kroppssida och vit buk."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Honans vingovansida är gråvattrad och saknar helt hanens vita fält.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingovansidan är gråvattrad och saknar helt det vita fältet som hanen uppvisar."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "lookalike",
+      "sv": "Amerikansk bläsand liknar särskilt i honfärgad dräkt, men har ljusare grått huvud där den mörka ögontrakten framträder tydligare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "men skiljs ifrån denna då den amerikanska arten har ett ljusare grått huvud där den mörka ögontrakten framträder på ett tydligare sätt"
+        }
+      ],
+      "other": {
+        "scientific": "Mareca americana",
+        "qid": "Q28106685"
+      }
+    },
+    {
+      "id": "f11",
+      "topic": "lookalike",
+      "sv": "Amerikansk bläsand har en mer kontrastrik dräkt och tydligare vit armhåla, medan bläsandens armhåla brukar vara gråare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den amerikanska bläsanden har även en mer kontrastrik fjäderdräkt och uppvisar en tydligare vit \"armhåla\" än bläsanden, vars \"armhåla\" brukar vara gråare."
+        }
+      ],
+      "other": {
+        "scientific": "Mareca americana",
+        "qid": "Q28106685"
+      }
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Hanen har en karaktäristisk klar, stigande vissling som avslutas med en kort torr drill.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen har en karaktäristisk klar stigande vissling som avslutas med en kort torr drill."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Honan har ett lågt skorrande läte som påminner om karr-karr-karr.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan har ett lågt skorrande läte som påminner om karr-karr-karr."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Flygande bläsänder känns igen på ett högt, visslande vingljud.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Fliegende Pfeifenten sind an ihrem hohen, pfeifend klingenden Fluggeräusch zu erkennen, das von den Schwingen erzeugt wird."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Bläsanden häckar främst i öppna våtmarker, slättsjöar och långsamrinnande större floder.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bläsanden häckar främst i öppna våtmarker, slättsjöar, långsamrinnande större floder"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Arten undviker tundra, tät skog, bergsområden och snabbt strömmande vattendrag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten undviker tundra, tät skog, bergsområden och snabbt strömmande vattendrag."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Utanför häckningstiden lever bläsanden i kustnära, saltare men skyddade miljöer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utanför häckningstiden lever den i kustnära saltare, men skyddade miljöer."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "I Sverige häckar arten spritt från Dalarna till Torne lappmark, främst i skogslandets sjöar och våtmarker rika på fräken och starr.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten häckar spritt över norra Sverige, från Dalarna till Torne lappmark, med tyngdpunkt i skogslandets sjöar och våtmarker rika på fräken och starr."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I södra Sverige förekommer bläsanden numera endast sällsynt och lokalt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I södra Sverige förekommer arten numera endast sällsynt och lokalt."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "År 2018 uppskattades det svenska beståndet till 17 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 17 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "I Sverige rödlistas bläsanden sedan 2025 som nära hotad (NT).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige kategoriseras arten sedan 2025 som nära hotad (NT)"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Bläsanden lämnar häckningsområdena i september och når vinterkvarteren i oktober och november.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lämnar häckningsområdena i september och når vinterkvarteren i oktober och november."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Vårflyttningen börjar i mars och april, och de nordligaste häckningsområdena nås under andra halvan av maj.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vårflytten påbörjas i mars och april och de når de nordligaste häckningsområdena i andra halvan av maj."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Utanför häckningstid är bläsanden mycket social och uppträder i stora flockar under flyttningen och vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utanför häckningstid är den mycket social, och under flyttningen och i vinterkvarteren uppträder den i stora flockar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Boet är en uppskrapning i marken som göms väl nära vatten, till exempel i en tuva.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet, som består av en uppskrapning i marken, göms väl i närheten av vatten, exempelvis i en tuva."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Honan lägger vanligtvis 8–9 gulvita ägg i maj eller juni.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den lägger vanligtvis 8–9 gulvita ägg i maj eller juni"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Honan ruvar ensam i cirka 24–25 dygn och tar hand om ungarna, som blir flygga efter 40–45 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ruvar äggen i cirka 24–25 dygn och det är också honan som ensam tar hand om ungarna som blir flygga efter 40–45 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Den adulta bläsanden lever nästan uteslutande av vegetarisk föda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta bläsanden lever nästan uteslutande av en vegetarisk kost."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "food",
+      "sv": "Bläsanden betar gräs och örter längs strandkanten och bandtång vid havet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den betar också gräs och örter som den finner längs strandkanten, och bandtång vid havet."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bläsanden är en flyttfågel som häckar i sjöar i taigaområdena på Island, i norra Europa och norra Asien"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i september och oktober."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": null,
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "58d21388ee58db92"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "blasand",
+    "en": "eurasian-wigeon"
+  },
+  "names": {
+    "sv": "Bläsand",
+    "en": "Eurasian Wigeon",
+    "scientific": "Mareca penelope"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Änder"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q28106837/hero.webp",
+      "width": 1600,
+      "height": 1201,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mareca_penelope_Oulu_20110515_02.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q28106837/extra.webp",
+      "width": 1200,
+      "height": 902,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mareca_penelope_Oulu_20110515_01.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q28106837/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Bird Boy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mareca_penelope_-_Eurasian_Wigeon_XC507245.mp3",
+    "sha256": "59f1dc35a9b1ace66e9a25e78bfa1db104e8a7bfbb7eb8143257f43ade0d4a68"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Bläsand",
+      "revision": "59481004"
+    },
+    "en": {
+      "title": "Eurasian wigeon",
+      "revision": "1371443283"
+    },
+    "de": {
+      "title": "Pfeifente",
+      "revision": "267345015"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 8000602,
+    "totalReports": 292860,
+    "months": [
+      31,
+      33,
+      52,
+      61,
+      30,
+      29,
+      22,
+      29,
+      88,
+      100,
+      65,
+      38
+    ],
+    "counties": {
+      "SE-K": 46,
+      "SE-W": 67,
+      "SE-X": 42,
+      "SE-I": 56,
+      "SE-N": 90,
+      "SE-Z": 78,
+      "SE-F": 70,
+      "SE-H": 62,
+      "SE-G": 57,
+      "SE-BD": 73,
+      "SE-T": 67,
+      "SE-E": 74,
+      "SE-M": 100,
+      "SE-D": 42,
+      "SE-AB": 51,
+      "SE-C": 51,
+      "SE-S": 65,
+      "SE-AC": 68,
+      "SE-Y": 37,
+      "SE-U": 80,
+      "SE-O": 51
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september och oktober.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in September and October.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        13797,
+        10223,
+        30100,
+        54836,
+        30864,
+        16002,
+        9545,
+        12933,
+        40978,
+        45565,
+        18812,
+        8984
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-M": 44822,
+        "SE-O": 32850,
+        "SE-AB": 22631,
+        "SE-H": 21109,
+        "SE-N": 17356,
+        "SE-E": 13097,
+        "SE-C": 12472,
+        "SE-F": 11868,
+        "SE-AC": 8520,
+        "SE-D": 8441,
+        "SE-T": 8165,
+        "SE-BD": 7715,
+        "SE-U": 7536,
+        "SE-W": 7227,
+        "SE-S": 5720,
+        "SE-G": 5246,
+        "SE-Z": 4718,
+        "SE-I": 4338,
+        "SE-X": 3535,
+        "SE-Y": 2304,
+        "SE-K": 1717
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
+}

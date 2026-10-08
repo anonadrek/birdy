@@ -1,0 +1,940 @@
+{
+  "qid": "Q26956",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 2,
+    "audioStruckSources": [
+      "https://commons.wikimedia.org/wiki/File:Anthus_pratensis_-_Meadow_Pipit_XC501787.mp3"
+    ]
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Ängspiplärkan är knappt 15 centimeter lång.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ängspiplärkan är knappt 15 centimeter lång"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Den väger 15–22 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "weighing 15–22 g (0.53–0.78 oz)"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Fjäderdräkten är huvudsakligen brun ovan och beigegul under, med mörkare streck på större delen av fjäderdräkten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "mainly brown above and buff below, with darker barring on most of its plumage"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Stjärten är brun med smala vita ytterkanter.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the tail is brown, with narrow white lateral edges"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Benen är rödaktiga och näbben är tunn och spetsig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Benen är rödaktiga och näbben är tunn och spetsig."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Bakklon är påfallande lång, längre än resten av baktån.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the rear claw is conspicuously long, longer than the rest of the rear toes"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Ögonbrynsstrecket är vitaktigt och de yttersta stjärtpennorna är vita.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Überaugenstreif ist weißlich und die äußersten Schwanzfedern sind weiß."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Hane och hona har likadan fjäderdräkt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Gefieder weist keine geschlechtsspezifischen Unterschiede auf."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Locklätet är ett skarpt \"ist\" eller \"ististist\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ängspiplärkans lockläte är ett skarpt \"ist\" eller \"ististist\""
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Nära boet låter den ofta ihållande och monotont \"tlitlitli\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "i närheten av boet ofta ihållande och monotont \"tlitlitli\""
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Sången är hög och tunn och framförs i korta sångflykter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången, som den framför i korta sångflykter, är hög och tunn."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "behaviour",
+      "sv": "I sångflykten stiger den oftast från en upphöjning i marken och återvänder i regel inte till utgångspunkten när den glider ner.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "stiger sedan oftast upp från en upphöjning i marken och återvänder i regel inte till utgångspunkten när den glider ner"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "behaviour",
+      "sv": "Den söker alltid föda på marken men använder buskar, staket eller ledningar som utkiksplatser för att hålla utkik efter rovdjur.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "always feeding on the ground, but using elevated perches such as shrubs, fence lines, or electric wires as vantage points to watch for predators"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "lookalike",
+      "sv": "Jämfört med trädpiplärkan är ängspiplärkan generellt gråare, med mindre gulaktigt och finare streckat bröst.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I jämförelse är ängspiplärkan generellt gråare och bröstet är mindre gulaktigt och finare streckat."
+        }
+      ],
+      "other": {
+        "scientific": "Anthus trivialis",
+        "qid": "Q143313",
+        "written": "A. trivialis"
+      }
+    },
+    {
+      "id": "f15",
+      "topic": "lookalike",
+      "sv": "Ängspiplärkans bakklo är mycket längre än trädpiplärkans.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bakklon hos ängspiplärkan är också mycket längre än trädpiplärkans."
+        }
+      ],
+      "other": {
+        "scientific": "Anthus trivialis",
+        "qid": "Q143313",
+        "written": "A. trivialis"
+      }
+    },
+    {
+      "id": "f16",
+      "topic": "lookalike",
+      "sv": "Ängspiplärkans sång blir snabbare mot slutet, medan trädpiplärkans sång saktar ner.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The song of the meadow pipit accelerates towards the end, while that of the tree pipit slows down."
+        }
+      ],
+      "other": {
+        "scientific": "Anthus trivialis",
+        "qid": "Q143313",
+        "written": "A. trivialis"
+      }
+    },
+    {
+      "id": "f17",
+      "topic": "lookalike",
+      "sv": "Trädpiplärkan ses ofta sittande på grenar, medan ängspiplärkan oftast håller sig på marken.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Während Baumpieper oft auf Baumästen sitzend zu sehen sind, halten sich Wiesenpieper meist auf dem Boden auf"
+        }
+      ],
+      "other": {
+        "scientific": "Anthus trivialis",
+        "qid": "Q143313",
+        "written": "A. trivialis"
+      }
+    },
+    {
+      "id": "f18",
+      "topic": "lookalike",
+      "sv": "Rödstrupig piplärka liknar ängspiplärkan men är kraftigare streckad och har på sommaren orangeröd strupe.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is similar to the red-throated pipit A. cervinus, which is more heavily barred and (in summer only) has an orange-red throat"
+        }
+      ],
+      "other": {
+        "scientific": "Anthus cervinus",
+        "qid": "Q241347",
+        "written": "A. cervinus"
+      }
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Den häckar på fuktiga ängar och betesmarker, på myrar och i berglandskap.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ängspiplärkan häckar på fuktiga ängar och betesmarker, på myrar och i berglandskap."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "habitat",
+      "sv": "Under flyttningen söderut ses den ofta i större flockar på fält och vid dammar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under flyttningen söderut ser man den ofta i större skaror på fält och vid dammar."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "I Sverige förekommer ängspiplärkan i hela landet men särskilt i fjällen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige förekommer ängspiplärkan i hela landet men särskilt i fjällen."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "I Sverige flyttar den i september–oktober och återkommer i mars–april.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den flyttar i september–oktober och återkommer i mars–april."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "I norra Skandinavien häckar upp till 80 par per kvadratkilometer.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Breeding densities range from 80 pairs/km2 (210 pairs/sq mi) in northern Scandinavia"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "sweden",
+      "sv": "I Sverige var den nära hotad på rödlistan 2015 men klassades 2020 åter som livskraftig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även i Sverige listades den som nära hotad i 2015 års rödlista, men har 2020 nedgraderats till livskraftig igen."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Boet läggs på marken och är ett oansenligt bygge av strån och mossa, fodrat med hår.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet läggs på marken och är ett oansenligt bygge av strån och mossa som fodras med hår."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Honan lägger vanligen fyra till sex ljusgrå ägg som i regel ruvas i 13 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger i vanliga fall fyra till sex ägg som är ljusgrå och som i regel ruvas i 13 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Vanligen föds två kullar upp varje år.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Two broods are usually raised each year."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Ängspiplärkan är ofta värdfågel för gökens unge.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ängspiplärkan är en art som ofta får agera värddjur för gökens unge."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "food",
+      "sv": "På sommaren äter den främst små dagaktiva insekter och spindeldjur, på vintern även små snäckor och frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ängspiplärkor livnär sig under sommarhalvåret huvudsakligen på små dagaktiva insekter och spindeldjur av alla sorter, under vinterhalvåret dessutom på små snäckor och frön."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den flyttar i september–oktober och återkommer i mars–april."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i september."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Ängspiplärkan är en brun och streckad flyttfågel som häckar i hela Sverige, särskilt i fjällen.",
+          "factIds": [
+            "f03",
+            "f21",
+            "s01"
+          ]
+        },
+        {
+          "text": "Man möter den på fuktiga ängar och betesmarker, på myrar och i berglandskap.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Brun ovan och beigegul under, med mörkare streck över större delen av dräkten",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Vitaktigt ögonbrynsstreck och brun stjärt med smala vita ytterkanter",
+          "factIds": [
+            "f04",
+            "f07"
+          ]
+        },
+        {
+          "text": "Rödaktiga ben, tunn och spetsig näbb samt påfallande lång bakklo",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Hane och hona är lika, och födan söks alltid på marken",
+          "factIds": [
+            "f08",
+            "f13"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Locklätet är ett skarpt \"ist\" eller \"ististist\".",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Nära boet låter den ofta ihållande och monotont \"tlitlitli\".",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Sången är hög och tunn och framförs i korta sångflykter, där den oftast stiger från en upphöjning i marken.",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Ängspiplärkan är en flyttfågel som häckar i Sverige och finns i hela landet, särskilt i fjällen.",
+          "factIds": [
+            "s01",
+            "f21"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län.",
+          "factIds": [
+            "d02"
+          ]
+        },
+        {
+          "text": "Den flyttar i september till oktober och återkommer i mars till april, och den rapporteras mest i september.",
+          "factIds": [
+            "f22",
+            "d01"
+          ]
+        },
+        {
+          "text": "Under flyttningen söderut ses den ofta i större flockar på fält och vid dammar.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "På sommaren äter den främst små dagaktiva insekter och spindeldjur, på vintern även små snäckor och frön.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "Den söker alltid föda på marken men sitter på buskar, staket eller ledningar och håller utkik efter rovdjur.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "När den glider ner efter sångflykten återvänder den i regel inte till utgångspunkten.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Ängspiplärkan är ofta värdfågel för gökens unge.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q143313",
+          "text": [
+            {
+              "text": "Jämfört med trädpiplärkan är ängspiplärkan generellt gråare, med mindre gulaktigt och finare streckat bröst, och har mycket längre bakklo.",
+              "factIds": [
+                "f14",
+                "f15"
+              ]
+            },
+            {
+              "text": "Den håller sig oftast på marken, och sången blir snabbare mot slutet medan trädpiplärkans saktar ner.",
+              "factIds": [
+                "f16",
+                "f17"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q241347",
+          "text": [
+            {
+              "text": "Rödstrupig piplärka är kraftigare streckad och har på sommaren orangeröd strupe.",
+              "factIds": [
+                "f18"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Ängspiplärka: så känner du igen den på dräkt, ben och bakklo, hur locklätet och sången låter, vad den äter och när den ses under året.",
+      "facts": {
+        "size": {
+          "value": "Knappt 15 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Meadow Pipit is a brown, streaked migrant that breeds throughout Sweden, especially in the mountains.",
+          "factIds": [
+            "f03",
+            "f21",
+            "s01"
+          ]
+        },
+        {
+          "text": "It is met on damp meadows and pastures, on bogs and in rocky upland landscapes.",
+          "factIds": [
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Brown above and buff-yellow below, with darker streaks over most of the plumage",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Whitish eyebrow stripe and brown tail with narrow white outer edges",
+          "factIds": [
+            "f04",
+            "f07"
+          ]
+        },
+        {
+          "text": "Reddish legs, a thin pointed bill and a strikingly long hind claw",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Male and female look alike, and it always feeds on the ground",
+          "factIds": [
+            "f08",
+            "f13"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is a sharp \"ist\" or \"ististist\".",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Near the nest it often gives a persistent, monotonous \"tlitlitli\".",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "The song is high and thin and delivered in short song flights, usually starting from a raised spot on the ground.",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Meadow Pipit is a migrant that breeds in Sweden and occurs across the whole country, especially in the mountains.",
+          "factIds": [
+            "s01",
+            "f21"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties.",
+          "factIds": [
+            "d02"
+          ]
+        },
+        {
+          "text": "It leaves in September to October and returns in March to April, and it is reported most in September.",
+          "factIds": [
+            "f22",
+            "d01"
+          ]
+        },
+        {
+          "text": "On migration south it is often seen in larger flocks on fields and by ponds.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "In summer it mainly eats small day-active insects and arachnids, and in winter also small snails and seeds.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "It always feeds on the ground but uses bushes, fences or wires as lookouts to watch for predators.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "When it glides down after a song flight, it usually does not return to where it started.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "The Meadow Pipit is often a host for the young of the cuckoo.",
+          "factIds": [
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q241347",
+          "text": [
+            {
+              "text": "The Red-throated Pipit is more heavily streaked and has an orange-red throat in summer.",
+              "factIds": [
+                "f18"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Meadow Pipit: how to recognise it by plumage, legs and hind claw, what its call and song sound like, what it eats and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "Just under 15 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "breeding_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "34694fd6b1dca867"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "34694fd6b1dca867"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "angspiplarka",
+    "en": "meadow-pipit"
+  },
+  "names": {
+    "sv": "Ängspiplärka",
+    "en": "Meadow Pipit",
+    "scientific": "Anthus pratensis"
+  },
+  "family": {
+    "latin": "Motacillidae",
+    "sv": "Ärlor"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26956/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Donald Hobern",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anthus_pratensis_(33752471506).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26956/extra.webp",
+      "width": 1200,
+      "height": 1800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Meadow_pipit_(Anthus_pratensis)_2022.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26956/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Marie-Lan Taÿ Pamart",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anthus_pratensis_-_Meadow_Pipit_XC493970.mp3",
+    "sha256": "f3a7fade85197639e4e403c1a35c3f146f106b7b90b031185aa0d0e2951bf8cc",
+    "mp3Sha256": "cdec071cab704c2f362f5a93bf2130cc01dbb61b9052b3c85369ac7999de12f6"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Ängspiplärka",
+      "revision": "59477389"
+    },
+    "en": {
+      "title": "Meadow pipit",
+      "revision": "1361100973"
+    },
+    "de": {
+      "title": "Wiesenpieper",
+      "revision": "266195746"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2490266,
+    "totalReports": 250000,
+    "months": [
+      17,
+      13,
+      33,
+      60,
+      31,
+      33,
+      29,
+      27,
+      100,
+      75,
+      26,
+      17
+    ],
+    "counties": {
+      "SE-K": 54,
+      "SE-W": 56,
+      "SE-X": 40,
+      "SE-I": 44,
+      "SE-N": 89,
+      "SE-Z": 100,
+      "SE-F": 54,
+      "SE-H": 48,
+      "SE-G": 42,
+      "SE-BD": 78,
+      "SE-T": 43,
+      "SE-E": 50,
+      "SE-M": 59,
+      "SE-D": 33,
+      "SE-AB": 49,
+      "SE-C": 51,
+      "SE-S": 63,
+      "SE-AC": 72,
+      "SE-Y": 38,
+      "SE-U": 33,
+      "SE-O": 70
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in September.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        7506,
+        4041,
+        19092,
+        53531,
+        31465,
+        18047,
+        12348,
+        12245,
+        46350,
+        33671,
+        7425,
+        3927
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 45716,
+        "SE-M": 26939,
+        "SE-AB": 22034,
+        "SE-N": 17422,
+        "SE-H": 16477,
+        "SE-C": 12495,
+        "SE-F": 9415,
+        "SE-AC": 9150,
+        "SE-E": 8914,
+        "SE-BD": 8272,
+        "SE-D": 6768,
+        "SE-Z": 6160,
+        "SE-W": 6117,
+        "SE-S": 5557,
+        "SE-T": 5327,
+        "SE-G": 3956,
+        "SE-I": 3453,
+        "SE-X": 3360,
+        "SE-U": 3139,
+        "SE-Y": 2430,
+        "SE-K": 2047
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

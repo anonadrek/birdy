@@ -9,8 +9,10 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
+import kotlinx.coroutines.CancellationException
 import se.birdy.app.AndroidAppGraphHolder
 import se.birdy.app.R
+import se.birdy.app.notifications.AndroidNotificationPayloads
 import se.birdy.app.notifications.NotificationChannels
 import se.birdy.app.notifications.NotificationPayloads
 
@@ -20,9 +22,14 @@ class WeeklyRecapWorker(
 ) : CoroutineWorker(context, params) {
     override suspend fun doWork(): Result {
         return try {
-            val graph = AndroidAppGraphHolder.current ?: return Result.success()
             val forceForDev = inputData.getBoolean(KEY_FORCE_FOR_DEV, false)
-            val content = NotificationPayloads.from(graph).weeklyRecap(forceForDev) ?: return Result.success()
+            val graph = AndroidAppGraphHolder.current
+            val content =
+                if (graph != null) {
+                    NotificationPayloads.from(graph).weeklyRecap(forceForDev)
+                } else {
+                    AndroidNotificationPayloads.fromContext(applicationContext) { it.weeklyRecap(forceForDev) }
+                } ?: return Result.success()
 
             NotificationChannels.ensureCreated(applicationContext)
 
@@ -52,6 +59,8 @@ class WeeklyRecapWorker(
                 NotificationManagerCompat.from(applicationContext).notify(NOTIF_ID_WEEKLY_RECAP, notif)
             }
             Result.success()
+        } catch (e: CancellationException) {
+            throw e
         } catch (t: Throwable) {
             Log.w("WeeklyRecapWorker", "fail", t)
             Result.retry()

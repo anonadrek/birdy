@@ -20,6 +20,8 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import platform.AVFoundation.AVCaptureConnection
 import platform.AVFoundation.AVCaptureDevice
@@ -76,6 +78,13 @@ import kotlin.concurrent.Volatile
  *
  * Simulator/kameralös enhet: start() hittar ingen device → loggar, lämnar ZoomState.NONE,
  * inga frames — skärmen visar svart preview + "searching…" (medveten tyst modell, spec §5).
+ *
+ * start()/stop() racar likadant som Android: ScanViewModel start:ar på viewModelScope
+ * och stop:ar från GlobalScope i onCleared. `startRunning()` är blockerande och inte
+ * ett cancellation-point — utan en terminal [stopped]-flagga kan stop() se sessionen
+ * som inte-running och returnera, varefter start() tänder kameran mot en redan
+ * lämnad Scan-skärm (grön statusbar-prick kvar). [stopped] sätts FÖRE mutex så en
+ * in-flight startRunning stannar sig själv.
  */
 class IosCameraSource : CameraSource {
     // Skapas eagert så CameraPreviewHost kan koppla sin AVCaptureVideoPreviewLayer innan
@@ -91,6 +100,10 @@ class IosCameraSource : CameraSource {
     private val outputFlow = MutableStateFlow<AVCaptureVideoDataOutput?>(null)
     private val _zoom = MutableStateFlow(ZoomState.NONE)
     override val zoom: StateFlow<ZoomState> = _zoom.asStateFlow()
+    private val lifecycleMutex = Mutex()
+
+    @Volatile
+    private var stopped = false
 
     private val frameQueue = dispatch_queue_create("se.birdy.camera.frames", null)
 
@@ -115,25 +128,35 @@ class IosCameraSource : CameraSource {
 
     override suspend fun start(): Unit =
         withContext(Dispatchers.Default) {
-            val cam =
-                AVCaptureDevice.defaultDeviceWithDeviceType(
-                    deviceType = AVCaptureDeviceTypeBuiltInWideAngleCamera,
-                    mediaType = AVMediaTypeVideo,
-                    position = AVCaptureDevicePositionBack,
-                )
-            if (cam == null) {
-                println("IosCameraSource: no back wide-angle camera (simulator?) — no frames will flow")
-                return@withContext
-            }
-            if (!configured && !configureSession(cam)) return@withContext
-            device = cam
-            // startRunning blockerar → körs på Default-dispatchern, aldrig main.
-            captureSession.startRunning()
-            val max = cam.activeFormat.videoMaxZoomFactor.toFloat()
-            _zoom.value = ZoomState(ratio = 1f, minRatio = 1f, maxRatio = max)
-            if (cam.lockForConfiguration(null)) {
-                cam.videoZoomFactor = 1.0
-                cam.unlockForConfiguration()
+            if (stopped) return@withContext
+            lifecycleMutex.withLock {
+                if (stopped) return@withLock
+                val cam =
+                    AVCaptureDevice.defaultDeviceWithDeviceType(
+                        deviceType = AVCaptureDeviceTypeBuiltInWideAngleCamera,
+                        mediaType = AVMediaTypeVideo,
+                        position = AVCaptureDevicePositionBack,
+                    )
+                if (cam == null) {
+                    println("IosCameraSource: no back wide-angle camera (simulator?) — no frames will flow")
+                    return@withLock
+                }
+                if (!configured && !configureSession(cam)) return@withLock
+                device = cam
+                // startRunning blockerar → körs på Default-dispatchern, aldrig main.
+                captureSession.startRunning()
+                if (stopped) {
+                    if (captureSession.isRunning()) captureSession.stopRunning()
+                    device = null
+                    _zoom.value = ZoomState.NONE
+                    return@withLock
+                }
+                val max = cam.activeFormat.videoMaxZoomFactor.toFloat()
+                _zoom.value = ZoomState(ratio = 1f, minRatio = 1f, maxRatio = max)
+                if (cam.lockForConfiguration(null)) {
+                    cam.videoZoomFactor = 1.0
+                    cam.unlockForConfiguration()
+                }
             }
         }
 
@@ -177,9 +200,12 @@ class IosCameraSource : CameraSource {
 
     override suspend fun stop(): Unit =
         withContext(Dispatchers.Default) {
-            if (captureSession.isRunning()) captureSession.stopRunning()
-            device = null
-            _zoom.value = ZoomState.NONE
+            stopped = true
+            lifecycleMutex.withLock {
+                if (captureSession.isRunning()) captureSession.stopRunning()
+                device = null
+                _zoom.value = ZoomState.NONE
+            }
         }
 
     override fun setZoomRatio(ratio: Float) {

@@ -17,6 +17,7 @@ import se.birdy.app.testing.FakePhotoStorage
 import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.usecase.SaveObservationUseCase
 import se.birdy.content.Locale
+import se.birdy.content.SpeciesId
 import se.birdy.domain.badge.Badge
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeCategory
@@ -226,14 +227,56 @@ class MatchResultViewModelTest {
         }
 
     @Test
-    fun resolve_all_unresolved_returns_error_parse_failed() =
+    fun resolve_no_prediction_in_the_species_catalog_returns_nobird_not_error() =
         runTest(dispatcher) {
-            val vm = makeVm("Q_BOGUS1:87/100,Q_BOGUS2:5/100")
+            // The photo model knows 954 species worldwide, Birdy's catalog 839 European ones (only
+            // 251 of the model's species). A photo can score only species outside the catalog, e.g.
+            // a crop of mostly background (1.3.0 device walkthrough, API 36 emulator). That is "no
+            // bird we know here", not a failure: it used to end on a bare "Inga arter kunde matchas
+            // mot databasen." error text with no way to try again.
+            val vm = makeVm("Q_NOT_IN_CATALOG1:87/100,Q_NOT_IN_CATALOG2:5/100")
+            vm.state.test {
+                assertIs<MatchResultUiState.Loading>(awaitItem())
+                val nobird = awaitItem()
+                assertIs<MatchResultUiState.NoBird>(nobird)
+                assertEquals("/cache/scan-frames/x.jpg", nobird.frameJpegPath)
+                assertEquals(capturedAtMs, nobird.capturedAtMs)
+                assertNull(nobird.topPrediction)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    /**
+     * Release 1.3.0 Plan 3 Task 7 review: since 535305e5 an empty resolved list means NoBird, and
+     * lookups that throw were swallowed into "not found". A database failing for every id would
+     * have been a silent NoBird. It is an error, and each failure is logged.
+     */
+    @Test
+    fun resolve_every_species_lookup_failing_returns_error_not_nobird() =
+        runTest(dispatcher) {
+            val speciesRepo = FakeSpeciesRepository.withDefaults()
+            speciesRepo.failingIds.value = setOf(SpeciesId("Q25485"), SpeciesId("Q25234"))
+            val vm = makeVm("Q25485:87/100,Q25234:8/100", speciesRepo = speciesRepo)
             vm.state.test {
                 assertIs<MatchResultUiState.Loading>(awaitItem())
                 val err = awaitItem()
                 assertIs<MatchResultUiState.Error>(err)
                 assertEquals(MatchResultUiState.Error.Kind.ParseFailed, err.kind)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun resolve_one_failing_lookup_still_matches_the_species_that_resolved() =
+        runTest(dispatcher) {
+            val speciesRepo = FakeSpeciesRepository.withDefaults()
+            speciesRepo.failingIds.value = setOf(SpeciesId("Q25234"))
+            val vm = makeVm("Q25485:87/100,Q25234:8/100", speciesRepo = speciesRepo)
+            vm.state.test {
+                assertIs<MatchResultUiState.Loading>(awaitItem())
+                val match = awaitItem()
+                assertIs<MatchResultUiState.Match>(match)
+                assertEquals("Q25485", match.species.id.raw)
                 cancelAndIgnoreRemainingEvents()
             }
         }

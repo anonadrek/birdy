@@ -93,3 +93,14 @@ def test_filter_by_qid_and_reject_unapproved(tmp_path: Path) -> None:
         load_approved(tmp_path, qids=("Q2",))
     with pytest.raises(KeyError, match="Q9"):
         load_approved(tmp_path, qids=("Q9",))
+
+
+def test_the_swedish_family_comes_from_the_table_not_the_species_file(tmp_path: Path) -> None:
+    """Re-review 2026-10-07: the app's family_sv said "Mesfåglar" for some tits and "Mesar"
+    for others; the page always gets the table's one name."""
+    text = YAML_TEMPLATE.format(qid="Q1", sv="X", en="X", status="approved", marginalia="")
+    text = text.replace("family_sv: Mesar", "family_sv: Mesfåglar")
+    path = tmp_path / "x" / "Q1.yaml"
+    path.parent.mkdir(parents=True)
+    path.write_text(text, encoding="utf-8")
+    assert load_approved(tmp_path)[0].family_sv == "Mesar"

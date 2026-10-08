@@ -1,0 +1,925 @@
+{
+  "qid": "Q184508",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Varfågeln är 22–26 centimeter lång.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Varfågeln mäter 22–26 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Vingbredden är 30–36 centimeter.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Wingspan can range from 30 to 36 cm (12 to 14 in)."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "size",
+      "sv": "Varfågeln väger vanligen omkring 60–70 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It typically weighs around 60 to 70 g (2.1 to 2.5 oz)"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Ovansidan är ljust askgrå med en svart ögonmask från näbben till örontäckarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ovansidan av dess fjäderdräkt är ljust askgrå, med en svart ögonmask som går från näbben till örontäckarna."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Skulderfjädrarna är vita och vingarna svartvita med en eller två vita handbasfläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skulderfjädrarna är vita, och vingarna är svartvita med en eller två vita handbasfläckar."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Stjärten är lång och svartvit.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den långa stjärten är svartvit."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Undersidan är mestadels vit med en svag grå ton.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Undersidan är mestadels vit men skiftar svagt i grått."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Näbben är nästan svart med ljusare bas på undernäbben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är i det närmaste svart men undre näbbasen är ljusare."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Honans undersida är gråare och svagt vattrad i gråbrunt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honans underdelar är gråare och svagt vattrade i gråbrunt."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "I flykten är hanens vita vingfält ungefär lika brett, medan honans smalnar av tydligt mot kroppen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Beim Männchen bleibt das weiße, sichelförmige Flügelfeld etwa gleich breit, beim Weibchen wird es zum Körper hin deutlich schmäler."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Unga fåglar är gråbruna med otydlig vattring på ovansidan och tydlig vattring på undersidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Juveniler är gråbruna med otydlig vattring på ovansidan och tydlig vattring på undersidan."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Hanens sång består av korta, behagliga kvittrande strofer blandade med flytande visslingar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The male's song consists of short pleasant warbling strophes, interspersed with fluid whistles."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Vid störning ger den ett skärande, nötskrikeliknande varningsläte, ofta upprepat två gånger.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "When disturbed, its alarm note is a harsh jay-like k(w)eee, greee or jaaa, often repeated twice."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "När den upptäcker en rovfågel varnar den med ett skarpt skrik.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När den varseblir någon rovfågel varnar den med ett skarpt skrik."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "I Sverige häckar varfågeln i tallskog på myrar och i öppen skogsmark, bland annat hyggen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Varfågeln häckar sommartid i tallskog på myrar och i öppen skogsmark, bland annat hyggen"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Den föredrar öppen gräsmark, gärna med inslag av buskar och närliggande utkiksplatser.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The preferred habitat is generally open grassland, perhaps with shrubs interspersed, and adjacent lookout points."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "I Sverige häckar den från norra Värmland, mellersta Dalarna, västra Hälsingland och Medelpad och norrut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "från en linje norra Värmland till mellersta Dalarna, västra Hälsingland och Medelpad och norrut."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "När vintern närmar sig drar större delen av den svenska populationen söderut i landet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "När vintern närmar sig drar större delen av populationen söderut i landet."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattas till 12 000 vuxna individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är varfågeln en relativt fåtalig art med ett uppskattat bestånd på 12 000 vuxna individer."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Skandinaviska varfåglar verkar främst övervintra i Storbritannien.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Skandinavische Vögel scheinen vor allem in Großbritannien zu überwintern"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "food",
+      "sv": "Den lever mest av insekter och smågnagare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lever mest av insekter och smågnagare"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "behaviour",
+      "sv": "Den lägger ofta upp förråd genom att spetsa byten på törnetaggar eller kvistar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "lägger ofta upp förråd genom att spetsa sina byten på törnetaggar eller kvistar"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Under jakt ryttlar den ofta.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under jakt ryttlar den ofta."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Vid jakt sitter den på översta grenen i ett träd, en stolpe eller liknande upphöjd plats.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "To hunt, this bird perches on the topmost branch of a tree, utility pole or similar elevated spot"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Den flyger oftast lågt och landar på sittplatsen med en uppåtgående sväng.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It will usually stay low above the ground in flight, approaching perches from below and landing in an upward swoop."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Den kan jaga bort och förfölja rovfåglar, korpar och kråkor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den kan också jaga bort och förfölja rovfåglar, korpar och kråkor."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Honan lägger fem till sju vitaktiga ägg med brunaktiga fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger fem till sju ägg som är vitaktiga med brunaktiga fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Boet byggs i april eller maj i träd, mer än en meter över marken.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Nests are built in April or May more than 1 m (3.3 ft) above ground in trees."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Ruvningen tar 15–17 dagar beroende på vädret.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Brutdauer liegt – abhängig von der Witterung – zwischen 15 und 17 Tagen."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Svartpannad törnskata är mindre och kortstjärtad, med en stor svart fläck ovanför näbben som når nästan till pannan.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The lesser grey shrike is a smaller and comparatively short-tailed bird. It can best be recognised by the rather large black area above the bill, almost reaching to the forehead"
+        }
+      ],
+      "other": {
+        "scientific": "Lanius minor",
+        "qid": "Q239393"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Många är stannfåglar, medan några flyttar ned på kontinenten."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i oktober till februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i augusti."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Västmanland, Värmland och Dalarna."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Varfågeln har ljust askgrå ovansida och en svart ögonmask från näbben till örontäckarna.",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "I Sverige häckar den i tallskog på myrar och i öppen skogsmark, bland annat hyggen.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Ljust askgrå ovansida och svart ögonmask från näbben till örontäckarna",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Svartvita vingar med vita skulderfjädrar och lång svartvit stjärt",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Mestadels vit undersida, hos honan gråare och svagt vattrad i gråbrunt",
+          "factIds": [
+            "f07",
+            "f09"
+          ]
+        },
+        {
+          "text": "Sitter ofta högst upp i träd eller på stolpe och ryttlar under jakt",
+          "factIds": [
+            "f24",
+            "f23"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Hanens sång består av korta, behagliga kvittrande strofer blandade med flytande visslingar.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Vid störning hörs ett skärande, nötskrikeliknande varningsläte, ofta upprepat två gånger.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Upptäcker den en rovfågel varnar den med ett skarpt skrik.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Varfågeln är delvis flyttfågel och häckar i Sverige, från norra Värmland, mellersta Dalarna, västra Hälsingland och Medelpad och norrut.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "Inför vintern drar större delen av beståndet söderut i landet.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Beståndet uppskattas till 12 000 vuxna individer.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i oktober till februari och sällan i augusti.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Västmanland, Värmland och Dalarna.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den lever mest av insekter och smågnagare och spetsar ofta byten på törnetaggar eller kvistar som förråd.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        },
+        {
+          "text": "Den flyger oftast lågt och landar på sittplatsen med en uppåtgående sväng.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Rovfåglar, korpar och kråkor kan den jaga bort och förfölja.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q239393",
+          "text": [
+            {
+              "text": "Svartpannad törnskata är mindre och kortstjärtad.",
+              "factIds": [
+                "f30"
+              ]
+            },
+            {
+              "text": "Den har en stor svart fläck ovanför näbben som når nästan till pannan.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Varfågel: så känner du igen den på den svarta ögonmasken och de svartvita vingarna, hur sången och varningslätena låter och när den syns.",
+      "facts": {
+        "size": {
+          "value": "22 till 26 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Great Grey Shrike has pale ash-grey upperparts and a black eye mask from the bill to the ear coverts.",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "In Sweden it breeds in pine forest on bogs and in open woodland, including clear-cuts.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Pale ash-grey upperparts and a black mask from the bill to the ear coverts",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Black-and-white wings with white scapulars and a long black-and-white tail",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Mostly white underparts, greyer and faintly barred grey-brown in the female",
+          "factIds": [
+            "f07",
+            "f09"
+          ]
+        },
+        {
+          "text": "Often perches at the very top of a tree or post and hovers when hunting",
+          "factIds": [
+            "f24",
+            "f23"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The male's song is made up of short, pleasant twittering phrases mixed with flowing whistles.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "When disturbed it gives a harsh, jay-like alarm call, often repeated twice.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "On spotting a bird of prey it warns with a sharp scream.",
+          "factIds": [
+            "f14"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Great Grey Shrike is a partial migrant that breeds in Sweden, from northern Värmland, central Dalarna, western Hälsingland and Medelpad northwards.",
+          "factIds": [
+            "s01",
+            "f17"
+          ]
+        },
+        {
+          "text": "As winter approaches, most of the population moves south within the country.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "The Swedish population is estimated at 12 000 adult birds.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "It is reported most from October to February and rarely in August.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Västmanland, Värmland and Dalarna.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mostly on insects and small rodents, and often stores prey by impaling it on thorns or twigs.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        },
+        {
+          "text": "It usually flies low and lands on its perch with an upward swoop.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "It may chase off and pursue birds of prey, ravens and crows.",
+          "factIds": [
+            "f26"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q239393",
+          "text": [
+            {
+              "text": "The Lesser Grey Shrike is smaller and shorter-tailed.",
+              "factIds": [
+                "f30"
+              ]
+            },
+            {
+              "text": "It has a large black patch above the bill that reaches almost to the forehead.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Great Grey Shrike: how to recognise it by its black eye mask and black-and-white wings, what its song and alarm calls sound like and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "22 to 26 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "ee375b6fab94d76a"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "ee375b6fab94d76a"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "varfagel",
+    "en": "great-grey-shrike"
+  },
+  "names": {
+    "sv": "Varfågel",
+    "en": "Great Grey Shrike",
+    "scientific": "Lanius excubitor"
+  },
+  "family": {
+    "latin": "Laniidae",
+    "sv": "Törnskator"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q184508/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Tisha Mukherjee",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Great_Grey_Shrike_in_Bhigwan_August_2025_by_Tisha_Mukherjee_02.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q184508/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Jaana Siitonen",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lanius_excubitor_DSCN7720-01.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q184508/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Pascal Christe",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lanius_excubitor_-_Great_Grey_Shrike_XC595816.mp3",
+    "sha256": "900d71b463015fb02cf2dea6305ed9490abdfc76bdaf863ac277ba71c1cfea78"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Varfågel",
+      "revision": "58478974"
+    },
+    "en": {
+      "title": "Great grey shrike",
+      "revision": "1365750987"
+    },
+    "de": {
+      "title": "Raubwürger",
+      "revision": "261390572"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 9444556,
+    "totalReports": 116867,
+    "months": [
+      82,
+      100,
+      62,
+      21,
+      2,
+      2,
+      3,
+      4,
+      23,
+      82,
+      82,
+      82
+    ],
+    "counties": {
+      "SE-K": 34,
+      "SE-W": 74,
+      "SE-X": 39,
+      "SE-I": 44,
+      "SE-N": 26,
+      "SE-Z": 20,
+      "SE-F": 60,
+      "SE-H": 45,
+      "SE-G": 56,
+      "SE-BD": 32,
+      "SE-T": 73,
+      "SE-E": 37,
+      "SE-M": 29,
+      "SE-D": 45,
+      "SE-AB": 53,
+      "SE-C": 45,
+      "SE-S": 75,
+      "SE-AC": 40,
+      "SE-Y": 45,
+      "SE-U": 100,
+      "SE-O": 39
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i oktober till februari.",
+        "Rapporteras sällan i maj till augusti.",
+        "Andelen av alla fågelrapporter är högst i Västmanland, Värmland och Dalarna."
+      ],
+      "en": [
+        "Reported most in October to February.",
+        "Rarely reported in May to August.",
+        "Its share of all bird reports is highest in Västmanland, Värmland and Dalarna."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        19646,
+        16643,
+        18978,
+        9776,
+        885,
+        571,
+        788,
+        984,
+        5733,
+        19870,
+        12490,
+        10245
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 16103,
+        "SE-AB": 15134,
+        "SE-H": 9795,
+        "SE-M": 8232,
+        "SE-C": 6945,
+        "SE-F": 6507,
+        "SE-U": 6019,
+        "SE-D": 5681,
+        "SE-T": 5680,
+        "SE-W": 5059,
+        "SE-S": 4193,
+        "SE-E": 4187,
+        "SE-G": 3298,
+        "SE-N": 3201,
+        "SE-AC": 3184,
+        "SE-I": 2147,
+        "SE-BD": 2121,
+        "SE-X": 2083,
+        "SE-Y": 1797,
+        "SE-K": 823,
+        "SE-Z": 760
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

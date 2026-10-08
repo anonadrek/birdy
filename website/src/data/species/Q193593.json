@@ -1,0 +1,895 @@
+{
+  "qid": "Q193593",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Trädkryparen har böjd näbb, mönstrad brun ovansida, vitaktig undersida och långa styva stjärtpennor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "med böjd näbb, mönstrad brun ovansida, vitaktig undersida och långa styva stjärtpennor som den använder för att kunna balansera upprätt på trädstammar och grenar"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ovansidan är varmt brun och fint mönstrad i svart, brungult och vitt, och stjärten är enfärgat brun.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har varmt brun ovansida som är intrikat mönstrad i svart, brungult och vitt, och enfärgat brun stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Buken, sidorna och kloakområdet har en brungul ton.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Buken, sidorna och kloakområdet skiftar i brungult."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Undersidan är vit, ovansidan barkfärgad och ögonbrynsstrecket vitt.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Körperunterseite ist weiß, die Oberseite rindenfarbig und der Überaugenstreif weiß."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "size",
+      "sv": "Trädkryparen är 12,5 cm lång och väger 7,0–12,9 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Trädkryparen är 12,5 cm lång och väger 7,0–12,9 gram."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "sex_age",
+      "sv": "Könen är lika, men ungfågeln har mattare ovansida och matt vit undersida med fina mörka fläckar på sidorna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika, men ungfågeln har mattare ovansida än den adulta fågeln, och dess undersida är matt vit med mörka fina fläckar på sidorna."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "voice",
+      "sv": "Kontaktlätet är ett mycket lågmält, tunt och gällt ”sit”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kontaktlätet är ett mycket lågmält, tunt och gällt sit"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "voice",
+      "sv": "Det mest utmärkande lätet är ett genomträngande ”tsri”, ibland upprepat i en serie.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "det mest utmärkande lätet är genomträngande tsri, ibland upprepat som en serie noter"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Hanens sång börjar med ”srrih, srrih”, följt av kvitter, ett fallande porlande och en vissling som faller och sedan stiger.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The male's song begins with srrih, srrih followed in turn by a few twittering notes, a longer descending ripple, and a whistle that falls and then rises."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Den korta sångstrofen påminner om läten från blåmes och lövsångare.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "erinnert an die Lautäußerungen von Blaumeise und Fitis"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "habitat",
+      "sv": "Trädkryparen föredrar mogna träd och finns där den delar område med trädgårdsträdkryparen främst i barrskog, särskilt gran.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "föredrar mogna träd. Där den delar utbredningsområde med trädgårdsträdkrypare, vilket är större delen av Europa, tenderar den att finnas främst i barrskog, särskilt gran och ädelgran"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "habitat",
+      "sv": "Den förekommer också i parker och stora trädgårdar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is also found in parks and large gardens."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "sweden",
+      "sv": "I Sverige är trädkryparen vanlig i barrskogar och blandskogar i större delen av landet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige är den vanlig i barrskogar och blandskogar i större delen av landet."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till cirka 1,1 miljoner par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till cirka 1,1 miljoner par."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "sweden",
+      "sv": "I Sverige har arten efter en tidigare minskning åter ökat, de senaste tio åren med 11–42 procent.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Från att tidigare ha minskat i antal ökar den återigen, de senaste tio åren med 11–42 %."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "breeding",
+      "sv": "Boet byggs i sprickor i träd eller bakom barkstycken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet byggs i sprickor i träd eller bakom barkstycken."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "breeding",
+      "sv": "I Europa läggs vanligen fem till sex ägg mellan mars och juni.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Europa läggs vanligen fem till sex ägg mellan mars och juni"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "breeding",
+      "sv": "Äggen är vita med mycket fina rosaaktiga prickar, främst vid den breda änden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen är vita med mycket fina rosaaktiga prickar främst vid den breda änden"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "breeding",
+      "sv": "Endast honan ruvar äggen, i 13–17 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas av enbart honan i 13–17 dagar"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Ungarna matas av båda föräldrarna och blir flygga efter ytterligare 15–17 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De utfodras sedan av båda föräldrar, men värms av endast honan, i ytterligare 15–17 dagar tills de blir flygga."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "food",
+      "sv": "Med sin långa tunna näbb drar den ut insekter och spindlar ur sprickor i barken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den använder sin långa tunna näbb till att dra ut insekter och spindlar från sprickor i barken."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "food",
+      "sv": "Under de kallare månaderna kan den komplettera födan med frön från barrträd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "kan utöka sin föda med frön från barrträd under de kallare månaderna"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Den hoppar muslikt uppför trädstammar i korta skutt med stöd av den styva stjärten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "då den hoppar muslikt uppför en trädstam, i korta skutt där den använder sin styva stjärt och brett utspärrade ben som stöd"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Till skillnad från nötväckan klättrar den inte nedför med huvudet först, utan flyger till basen av ett annat träd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Till skillnad från nötväckan klättrar den inte nedför träd med huvudet före, utan flyger till basen av ett annat träd i närheten."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Flykten är ojämn och vågformig, med fladdrande fjärilslika vingslag som växlar med glidningar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en utmärkande ojämn och vågformig flykt, där fladdrande fjärilslika vingslag växlar med vingglidningar."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "Trädkryparen är inte skygg och bryr sig i stort sett inte om människor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ändå är den inte skygg och är i stor utsträckning likgiltig inför mänsklig närvaro."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "På vintern ansluter den sig ibland till meståg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Trädkrypare ansluter sig ibland till flockar av olika fågelarter på vintern (meståg)"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "I kallt väder kan ett dussin eller fler fåglar sova tillsammans i en skyddad hålighet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "i kallt väder kan upp till ett dussin eller fler fåglar sova tillsammans i en lämplig skyddad hålighet"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Jämfört med trädgårdsträdkryparen är trädkryparen vitare under, varmare och fläckigare ovan, med vitare ögonbrynsstreck, kortare näbb och längre bakklo.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Jämfört med denna är trädkryparen vitare på undersidan, varmare och mer fläckig ovan, har vitare ögonbrynsstreck, något kortare näbb och längre bakklo."
+        }
+      ],
+      "other": {
+        "scientific": "Certhia brachydactyla",
+        "qid": "Q125895",
+        "written": "C. brachydactyla"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Trädgårdsträdkryparen skiljs bäst på sången, en serie jämnt fördelade toner som låter annorlunda än trädkryparens sång.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En sjungande trädkrypare kan vanligen identifieras, eftersom trädgårdsträdkryparen har en utmärkande serie jämnt fördelade noter som låter ganska annorlunda jämfört med trädkryparens sång."
+        }
+      ],
+      "other": {
+        "scientific": "Certhia brachydactyla",
+        "qid": "Q125895",
+        "written": "C. brachydactyla"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november till februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Trädkryparen är en tätting med böjd näbb som hoppar uppför trädstammar i korta skutt.",
+          "factIds": [
+            "f01",
+            "f23"
+          ]
+        },
+        {
+          "text": "I Sverige är den vanlig i barrskogar och blandskogar i större delen av landet.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Böjd näbb och barkfärgad brun ovansida, fint mönstrad i svart, brungult och vitt",
+          "factIds": [
+            "f01",
+            "f02",
+            "f04"
+          ]
+        },
+        {
+          "text": "Vit undersida med brungul ton på buken, sidorna och kloakområdet",
+          "factIds": [
+            "f04",
+            "f03"
+          ]
+        },
+        {
+          "text": "Vitt ögonbrynsstreck och långa styva stjärtpennor i enfärgat brunt",
+          "factIds": [
+            "f04",
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Könen är lika, ungfågeln är mattare med fina mörka fläckar på sidorna",
+          "factIds": [
+            "f06"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Kontaktlätet är ett mycket lågmält, tunt och gällt ”sit”.",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "Mest utmärkande är ett genomträngande ”tsri”, ibland upprepat i en serie.",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Hanens sång börjar med ”srrih, srrih”, följt av kvitter, ett fallande porlande och en vissling som faller och sedan stiger.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Den korta strofen påminner om läten från blåmes och lövsångare.",
+          "factIds": [
+            "f10"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "I Sverige är trädkryparen vanlig i barrskogar och blandskogar i större delen av landet och rapporteras från alla 21 län.",
+          "factIds": [
+            "f13",
+            "d02"
+          ]
+        },
+        {
+          "text": "Den föredrar mogna träd och finns också i parker och stora trädgårdar.",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        },
+        {
+          "text": "Arten rapporteras mest i november till februari.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Beståndet uppskattades 2018 till cirka 1,1 miljoner par, och arten är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "f14",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Med den långa tunna näbben drar den ut insekter och spindlar ur sprickor i barken, och under kallare månader kan den äta frön från barrträd.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        },
+        {
+          "text": "Den hoppar muslikt uppför stammen med stöd av stjärten och flyger sedan till basen av ett annat träd.",
+          "factIds": [
+            "f23",
+            "f24"
+          ]
+        },
+        {
+          "text": "Den är inte skygg, ansluter ibland till meståg på vintern och kan i kallt väder sova ett dussin eller fler tillsammans i en skyddad hålighet.",
+          "factIds": [
+            "f26",
+            "f27",
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q125895",
+          "text": [
+            {
+              "text": "Jämfört med trädgårdsträdkryparen är trädkryparen vitare under, varmare och fläckigare ovan, med vitare ögonbrynsstreck, kortare näbb och längre bakklo.",
+              "factIds": [
+                "f29"
+              ]
+            },
+            {
+              "text": "Trädgårdsträdkryparen skiljs bäst på sången, en serie jämnt fördelade toner.",
+              "factIds": [
+                "f30"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Trädkrypare: så känner du igen arten på näbb och fjäderdräkt, hur läten och sång låter, var den lever och när den rapporteras mest.",
+      "facts": {
+        "size": {
+          "value": "12,5 cm",
+          "factIds": [
+            "f05"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Treecreeper is a songbird with a curved bill that hops up tree trunks in short jumps.",
+          "factIds": [
+            "f01",
+            "f23"
+          ]
+        },
+        {
+          "text": "In Sweden it is common in coniferous and mixed forest across most of the country.",
+          "factIds": [
+            "f13"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Curved bill and bark-coloured brown upperparts, finely patterned in black, buff and white",
+          "factIds": [
+            "f01",
+            "f02",
+            "f04"
+          ]
+        },
+        {
+          "text": "White underparts with a buff tone on the belly, flanks and vent",
+          "factIds": [
+            "f04",
+            "f03"
+          ]
+        },
+        {
+          "text": "White eyebrow and long stiff tail feathers in plain brown",
+          "factIds": [
+            "f04",
+            "f01",
+            "f02"
+          ]
+        },
+        {
+          "text": "Sexes alike, juveniles duller with fine dark spots on the flanks",
+          "factIds": [
+            "f06"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The contact call is a very quiet, thin, high \"sit\".",
+          "factIds": [
+            "f07"
+          ]
+        },
+        {
+          "text": "The most distinctive call is a piercing \"tsri\", sometimes repeated in a series.",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "The male's song starts with \"srrih, srrih\", followed by twittering, a falling ripple and a whistle that falls and then rises.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "The short phrase recalls calls of Blue Tit and Willow Warbler.",
+          "factIds": [
+            "f10"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "In Sweden the Eurasian Treecreeper is common in coniferous and mixed forest across most of the country and is reported from all 21 counties.",
+          "factIds": [
+            "f13",
+            "d02"
+          ]
+        },
+        {
+          "text": "It prefers mature trees and also occurs in parks and large gardens.",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        },
+        {
+          "text": "It is reported most in November to February.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "The population was estimated in 2018 at about 1.1 million pairs, and it is not red-listed in the Swedish Red List 2025.",
+          "factIds": [
+            "f14",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "With its long thin bill it pulls insects and spiders out of cracks in the bark, and in colder months it may eat conifer seeds.",
+          "factIds": [
+            "f21",
+            "f22"
+          ]
+        },
+        {
+          "text": "It hops up the trunk like a mouse, braced on its tail, then flies to the base of another tree.",
+          "factIds": [
+            "f23",
+            "f24"
+          ]
+        },
+        {
+          "text": "It is not shy, sometimes joins tit flocks in winter and in cold weather a dozen or more may roost together in a sheltered hole.",
+          "factIds": [
+            "f26",
+            "f27",
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Eurasian Treecreeper: how to recognise it by bill and plumage, what its calls and song sound like, where it lives and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "12.5 cm",
+          "factIds": [
+            "f05"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "3ad1c20c5a0f8558"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "3ad1c20c5a0f8558"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "tradkrypare",
+    "en": "eurasian-treecreeper"
+  },
+  "names": {
+    "sv": "Trädkrypare",
+    "en": "Eurasian Treecreeper",
+    "scientific": "Certhia familiaris"
+  },
+  "family": {
+    "latin": "Certhiidae",
+    "sv": "Trädkrypare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q193593/hero.webp",
+      "width": 1600,
+      "height": 2366,
+      "author": "Estormiz",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Certhia_familiaris_Rome_20130304.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q193593/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Rory",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Certhia_familiaris_(38141380871).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q193593/voice.mp3",
+    "durationSec": 4,
+    "trimmed": false,
+    "author": "Alexander Kürthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Certhia_familiaris_-_Eurasian_Treecreeper_XC309079.mp3",
+    "sha256": "d2fca1e35147ed9def0c99d7f6a255be9d6383e55e486b487dc5ec57bb45b0d7"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Trädkrypare",
+      "revision": "59705208"
+    },
+    "en": {
+      "title": "Eurasian treecreeper",
+      "revision": "1358318920"
+    },
+    "de": {
+      "title": "Waldbaumläufer",
+      "revision": "251014249"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2487603,
+    "totalReports": 190704,
+    "months": [
+      100,
+      93,
+      70,
+      40,
+      30,
+      24,
+      28,
+      29,
+      43,
+      66,
+      80,
+      86
+    ],
+    "counties": {
+      "SE-K": 88,
+      "SE-W": 72,
+      "SE-X": 92,
+      "SE-I": 58,
+      "SE-N": 41,
+      "SE-Z": 38,
+      "SE-F": 73,
+      "SE-H": 72,
+      "SE-G": 85,
+      "SE-BD": 33,
+      "SE-T": 95,
+      "SE-E": 75,
+      "SE-M": 58,
+      "SE-D": 91,
+      "SE-AB": 100,
+      "SE-C": 81,
+      "SE-S": 78,
+      "SE-AC": 75,
+      "SE-Y": 58,
+      "SE-U": 82,
+      "SE-O": 86
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november till februari.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in November to February.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        27359,
+        17836,
+        24653,
+        21959,
+        18638,
+        8188,
+        7293,
+        7992,
+        12128,
+        18181,
+        13971,
+        12385
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 34262,
+        "SE-AB": 27691,
+        "SE-M": 16290,
+        "SE-H": 15239,
+        "SE-C": 12263,
+        "SE-D": 11285,
+        "SE-E": 8244,
+        "SE-F": 7713,
+        "SE-T": 7214,
+        "SE-AC": 5844,
+        "SE-N": 4893,
+        "SE-G": 4892,
+        "SE-U": 4816,
+        "SE-W": 4805,
+        "SE-X": 4774,
+        "SE-S": 4266,
+        "SE-I": 2774,
+        "SE-Y": 2236,
+        "SE-BD": 2135,
+        "SE-K": 2053,
+        "SE-Z": 1453
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

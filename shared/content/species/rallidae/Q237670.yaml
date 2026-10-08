@@ -59,7 +59,7 @@ image_refs:
   width: 2400
   height: 1563
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:SVKMBFLY" title="User:SVKMBFLY">SVKMBFLY</a>
+  author: SVKMBFLY
   source_url: https://commons.wikimedia.org/wiki/File:ছোট খৈড় (Zapornia pusilla),বারুইপুর,
     দঃ২৪ পরগনা, পশ্চিমবঙ্গ. DSC1458.jpg
   commons_filename: ছোট খৈড় (Zapornia pusilla),বারুইপুর, দঃ২৪ পরগনা, পশ্চিমবঙ্গ.
@@ -69,8 +69,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Pdhang&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Pdhang (page does not exist)">Pdhang</a>
+  author: Pdhang
   source_url: https://commons.wikimedia.org/wiki/File:Baillons-crake(Zapornia pusilla))Purbasthali
     West Bengal India.jpg
   commons_filename: Baillons-crake(Zapornia pusilla))Purbasthali West Bengal India.jpg
@@ -79,8 +78,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/572037">Jacob
-    Littlejohn</a>
+  author: Jacob Littlejohn
   source_url: https://commons.wikimedia.org/wiki/File:Zapornia pusilla affinis 243630954.jpg
   commons_filename: Zapornia pusilla affinis 243630954.jpg
 review_status: auto

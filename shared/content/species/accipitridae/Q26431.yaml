@@ -107,19 +107,19 @@ image_refs:
 - role: hero
   path: Q26431/hero.webp
   width: 2400
-  height: 1800
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Nikolam993&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Nikolam993 (page does not exist)">Nikolam993</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Eja močvarica (Circus aeruginosus).jpg
-  commons_filename: Eja močvarica (Circus aeruginosus).jpg
+  height: 1560
+  license: CC BY 2.0
+  author: Luiz Lapa
+  source_url: https://commons.wikimedia.org/wiki/File:Tartaranhão-ruivo-dos-pauis,
+    Águia-sapeira(ocidental), (Western) Marsh Harrier (54466566761).jpg
+  commons_filename: Tartaranhão-ruivo-dos-pauis, Águia-sapeira(ocidental), (Western)
+    Marsh Harrier (54466566761).jpg
 - role: secondary
   path: Q26431/secondary-1.webp
   width: 1800
   height: 1095
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
-    Cebeci</a>
+  author: Zeynel Cebeci
   source_url: https://commons.wikimedia.org/wiki/File:Circus aeruginosus - Western
     Marsh Harrier 2021-03-27.jpg
   commons_filename: Circus aeruginosus - Western Marsh Harrier 2021-03-27.jpg
@@ -128,13 +128,15 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Marsh harrier (Circus aeruginosus)
     male Danube delta.jpg
   commons_filename: Marsh harrier (Circus aeruginosus) male Danube delta.jpg
 review_status: approved
-review_notes: Hero approved 2026-05-04 via hero_review HTML.
+review_notes: 'Hero approved 2026-05-04 via hero_review HTML.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se b54c332e; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-04T12:14:53.088672+00:00'
 sources:
   wikipedia_sv_revision: '56065211'

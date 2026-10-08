@@ -4,8 +4,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -30,8 +33,11 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BirdyPremiumButton
 import se.birdy.app.ui.components.HeadlineSegment
+import se.birdy.app.ui.components.PaperSheetOverlap
+import se.birdy.app.ui.components.PaperSheetTop
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.PlatformBackHandler
+import se.birdy.app.ui.components.ReportStatusBarBackdrop
 import se.birdy.app.ui.components.parseJournalHeadline
 import se.birdy.app.ui.theme.BrassLight
 import se.birdy.app.ui.theme.HeroMossDeep
@@ -48,10 +54,15 @@ internal const val PREMIUM_THANKS_BODY_ALPHA = 0.85f
 @Composable
 fun PremiumThankYouScreen(onClose: () -> Unit) {
     PlatformBackHandler(enabled = true, onBack = onClose)
+    // The whole screen is dark moss, even after scroll (spec §5.2).
+    ReportStatusBarBackdrop(isDark = true)
     val (plain, accent) = thanksHeadlineParts(stringResource(Res.string.premium_thanks_headline))
     LazyColumn(
         modifier = Modifier.fillMaxSize().background(HeroMossDeep),
-        contentPadding = PaddingValues(bottom = 32.dp),
+        // The bottom bar is hidden on this screen; content must not end up under the gesture
+        // bar or nav buttons, and the dark background now fills all the way down (Plan 3 Task 6).
+        contentPadding =
+            PaddingValues(bottom = 32.dp + WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()),
     ) {
         item {
             ThanksHero(
@@ -60,13 +71,16 @@ fun PremiumThankYouScreen(onClose: () -> Unit) {
                 accent = accent,
             )
         }
+        // The photo ends under the moss page's rounded edge, not on a hard line (2026-10-06).
+        // The edge itself leaves 24dp above the body, like a PaperSheet's padding.
+        item { PaperSheetTop(color = HeroMossDeep) }
         item {
             Text(
                 text = stringResource(Res.string.premium_thanks_body),
                 color = TextOnHero.copy(alpha = PREMIUM_THANKS_BODY_ALPHA),
                 fontSize = 14.sp,
                 lineHeight = 21.sp,
-                modifier = Modifier.padding(horizontal = 22.dp, vertical = 16.dp),
+                modifier = Modifier.padding(start = 22.dp, end = 22.dp, bottom = 16.dp),
             )
         }
         items(premiumFeatures) { feature -> ThanksFeatureRow(feature.title) }
@@ -105,7 +119,10 @@ private fun ThanksHero(
         kicker = kicker,
         title = plain,
         titleAccent = accent,
-        height = 280.dp,
+        // 280dp + the 24dp the moss page's rounded edge (PaperSheetTop) rides up over the photo.
+        height = 304.dp,
+        bottomPadding = PaperSheetOverlap + 18.dp,
+        drawBehindStatusBar = true,
         image = { PremiumHeroPhoto() },
     )
 }

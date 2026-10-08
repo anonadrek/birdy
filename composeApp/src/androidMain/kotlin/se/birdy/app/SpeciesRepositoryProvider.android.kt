@@ -16,6 +16,10 @@ private const val SQLITE_HEADER_BYTES = 100
 private const val APPLICATION_ID_OFFSET = 68
 
 actual object SpeciesRepositoryProvider {
+    // WorkManager (DailyBirdWorker etc.) can call get() on a worker thread while
+    // MainActivity calls it on main; without synchronization two callers can both see a
+    // null instance and race to copy/truncate species.db at once after an update.
+    @Volatile
     private var instance: SpeciesRepository? = null
     private lateinit var appContext: Context
 
@@ -23,6 +27,7 @@ actual object SpeciesRepositoryProvider {
         appContext = context.applicationContext
     }
 
+    @Synchronized
     actual fun get(): SpeciesRepository {
         instance?.let { return it }
         val dbFile = appContext.getDatabasePath("species.db")

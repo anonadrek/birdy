@@ -66,7 +66,7 @@ image_refs:
   width: 2400
   height: 1800
   license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Monedula" title="User:Monedula">User:Monedula</a>
+  author: Monedula
   source_url: https://commons.wikimedia.org/wiki/File:Corvus frugilegus 001.jpg
   commons_filename: Corvus frugilegus 001.jpg
 - role: secondary
@@ -74,8 +74,7 @@ image_refs:
   width: 2400
   height: 1350
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Mi%C5%82o%C5%9Bnik_Zwierz%C4%85t974"
-    title="User:Miłośnik Zwierząt974">Miłośnik Zwierząt974</a>
+  author: Miłośnik Zwierząt974
   source_url: https://commons.wikimedia.org/wiki/File:Corvus frugilegus nestling.jpg
   commons_filename: Corvus frugilegus nestling.jpg
 - role: secondary
@@ -83,8 +82,7 @@ image_refs:
   width: 1483
   height: 1800
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%D7%99%D7%A2%D7%A7%D7%91&amp;action=edit&amp;redlink=1"
-    class="new" title="User:יעקב (page does not exist)">יעקב</a>
+  author: יעקב
   source_url: https://commons.wikimedia.org/wiki/File:Corvus frugilegus (Rook) 4065.jpg
   commons_filename: Corvus frugilegus (Rook) 4065.jpg
 review_status: approved

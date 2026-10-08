@@ -1,22 +1,24 @@
 # Billing-verify + go-live runbook (v1.0)
 
-> **Uppdatering 2026-09-25 (release 1.3.0):** Appen ligger nu på AB:s utvecklarkonto. `PREMIUM_OPEN_FOR_LAUNCH=false` och grandfather-regeln (§5) är implementerade i 1.3.0 (`GrandfatherPolicy`, brytpunkt `GRANDFATHER_CUTOFF_MS` = 2026-10-16 00:00 Stockholm (flyttad 2026-10-01 från 2026-10-02, för go-live senast 2026-10-14), tack-skärm en gång för tidiga användare). Köptestet körs med **vC128 byggt med `-Pbirdy.grandfatherCutoffMs=0 -Pbirdy.billingTestBuild=true`** (versionsnamnet blir `1.3.0-koptest`; flaggorna gäller bara på kommandoraden, aldrig i gradle.properties): ingen är grandfathered, så betalväggen syns även på Albins gamla installation. **vC128 får ALDRIG befordras till produktion.** Produktionsbygget blir vC129 med standardbrytpunkten; bygget skriver ut `Birdy release config: … GRANDFATHER_CUTOFF_MS=1792101600000 billingTestBuild=false`, kontrollera den raden.
+> **Uppdatering 2026-09-25 (release 1.3.0):** Appen ligger nu på AB:s utvecklarkonto. `PREMIUM_OPEN_FOR_LAUNCH=false` och grandfather-regeln (§5) är implementerade i 1.3.0 (`GrandfatherPolicy`, brytpunkt `GRANDFATHER_CUTOFF_MS` = 2026-10-16 00:00 Stockholm (flyttad 2026-10-01 från 2026-10-02, för go-live senast 2026-10-14), tack-skärm en gång för tidiga användare). Köptestet körs med **vC129 byggt med `-Pbirdy.grandfatherCutoffMs=0 -Pbirdy.billingTestBuild=true`** (versionsnamnet blir `1.3.0-koptest`; flaggorna gäller bara på kommandoraden, aldrig i gradle.properties): ingen är grandfathered, så betalväggen syns även på Albins gamla installation. **vC129 får ALDRIG befordras till produktion.** Produktionsbygget blir vC130 med standardbrytpunkten; bygget skriver ut `Birdy release config: … GRANDFATHER_CUTOFF_MS=1792101600000 billingTestBuild=false`, kontrollera den raden.
+>
+> **Uppdatering 2026-10-06:** vC128 (byggt 2026-09-25) kraschade vid start på Android 12+ (`values-v31/Theme.Birdy` var inte ett AppCompat-tema; fixat i `dbdd0148`). vC128 laddades aldrig upp till produktion, men var redan uppladdad till Intern testning, så den behövde en högre versionCode för att ersättas. Köptestbygget är därför nu **vC129**, och produktionsbygget blir **vC130**. Allt nedan är omnumrerat i enlighet med detta.
 >
 > **Förberedelser i Play Console (AB):**
 > 1. Skapa `premium_yearly_v1` (prenumeration med EN basplan: 1 år, förnyas automatiskt, eftersom appen säger "Förnyas årligen till <pris>") och `premium_lifetime_v1` (engångsköp). Sätt priser och aktivera båda.
 > 2. Kontrollera att licensnyckeln under Monetization setup → Licensing är samma som `BIRDY_PLAY_LICENSE_KEY` i `~/.gradle/gradle.properties`. Klistra in den på nytt om du är osäker, och bygg om. **Fel nyckel betyder att varje riktigt köp misslyckas signaturkontrollen: kunden debiteras, ser "Köpet gick inte igenom", köpet kvitteras aldrig och Play återbetalar automatiskt efter 3 dagar.**
 > 3. Lägg till ditt Google-konto som licenstestare och logga in med det på Galaxyn.
-> 4. Ladda upp `birdy-1.3.0-vc128-KOPTEST-EJ-PRODUKTION.aab` (skrivbordet) till **Intern testning** och installera från Play.
+> 4. Ladda upp `birdy-1.3.0-vc129-KOPTEST-EJ-PRODUKTION.aab` (skrivbordet) till **Intern testning** och installera från Play.
 >
-> **HÅRD GRIND före vC129:** ett riktigt köp i vC128 ska ge Premium (skärmen stänger med "Välkommen, fältmedlem.") och `adb logcat -s PremiumBilling` får INTE visa `Signature verification failed`. Visas raden: stoppa, rätta licensnyckeln och bygg om. Produktionsbygget kräver också en NY MapTiler-nyckel (bygget stoppar med den läckta) och signeringsnyckeln.
+> **HÅRD GRIND före vC130:** ett riktigt köp i vC129 ska ge Premium (skärmen stänger med "Välkommen, fältmedlem.") och `adb logcat -s PremiumBilling` får INTE visa `Signature verification failed`. Visas raden: stoppa, rätta licensnyckeln och bygg om. Produktionsbygget kräver också en NY MapTiler-nyckel (bygget stoppar med den läckta) och signeringsnyckeln.
 >
-> **Checklista för produktionsbygget vC129:**
-> 1. Höj `releaseVersionCode` till 129 i `androidApp/build.gradle.kts`.
+> **Checklista för produktionsbygget vC130:**
+> 1. Höj `releaseVersionCode` till 130 i `androidApp/build.gradle.kts`.
 > 2. Bygg från en vanlig terminal med `./gradlew :androidApp:bundleRelease` utan några `-P`-argument (inte heller i IDE:ns fält). Bygg aldrig via `packageReleaseBundle` direkt, eftersom skyddet sitter på `bundleRelease`/`assembleRelease`.
-> 3. Kontrollera raden i byggutskriften: `Birdy release config: versionCode=129 versionName=1.3.0 GRANDFATHER_CUTOFF_MS=1792101600000 billingTestBuild=false`. Står det `-koptest` eller `GRANDFATHER_CUTOFF_MS=0`: stoppa.
+> 3. Kontrollera raden i byggutskriften: `Birdy release config: versionCode=130 versionName=1.3.0 GRANDFATHER_CUTOFF_MS=1792101600000 billingTestBuild=false`. Står det `-koptest` eller `GRANDFATHER_CUTOFF_MS=0`: stoppa.
 > 4. Versionsnamnet i Console får inte sluta på `-koptest`.
 > 5. Slirar go-live: flytta brytpunkten (go-live + 48 h) FÖRE uploaden, aldrig efter.
-> 6. När vC129 är i produktion: ta bort vC128 från intern testning (eller befordra vC129 dit). Ett senare köptestbygge måste ha en versionCode över produktionens och behålla `-koptest`.
+> 6. När vC130 är i produktion: ta bort vC129 från intern testning (eller befordra vC130 dit). Ett senare köptestbygge måste ha en versionCode över produktionens och behålla `-koptest`.
 >
 > **Extra rutor för 1.3.0** (på svenska OCH engelska, Inställningar → Språk):
 > - **Grund:** [ ] Premium-skärmen visar Plays priser (inte "Hämtar pris…" efter några sekunder); [ ] köpknappen är grå tills priset syns; [ ] texten under knappen visar rätt årspris respektive "Engångsköp. Ingen prenumeration."; [ ] avbrutet köp: skärmen står kvar, ingen välkomsttext; [ ] genomfört köp: skärmen stänger och "Välkommen, fältmedlem." visas; [ ] köp, avbryt, köp igen.
@@ -27,12 +29,12 @@
 > - **3-D Secure / nytt betalsätt:** [ ] en välkomst, inget Premium-flimmer efteråt.
 > - **Språkbyte:** [ ] byt språk med Premium aktivt: Premium kvar, ingen gammal aviseringslänk öppnas igen.
 > - **Tidig användare** (debugbygge: Diagnostics → "Simulate early user", starta om): [ ] tack-skärmen visas en gång, dubbeltryck på Fortsätt ger ingen tom skärm, nästa start visar den inte; [ ] med "Skip premium override" på visas betalväggen i stället.
-> - **Bevis i stället för klocka** (härdningen 2026-10-01, spec §5.1 tillägget): [ ] Galaxyn med 1.2.x/vC128 från före brytpunkten uppdaterad till vC129: tidig användare (tack-skärmen en gång). [ ] Efter brytpunkten, på Android 13 eller senare och utan tidigare Birdy-backup på kontot (t.ex. emulatorn; annars återställer installationen det gamla beviset): avinstallera, ställ datumet till före brytpunkten, installera och starta: INTE tidig användare; ställ tillbaka datumet och starta igen: fortfarande inte.
+> - **Bevis i stället för klocka** (härdningen 2026-10-01, spec §5.1 tillägget): [ ] Galaxyn med 1.2.x/vC128 från före brytpunkten uppdaterad till vC130: tidig användare (tack-skärmen en gång). [ ] Efter brytpunkten, på Android 13 eller senare och utan tidigare Birdy-backup på kontot (t.ex. emulatorn; annars återställer installationen det gamla beviset): avinstallera, ställ datumet till före brytpunkten, installera och starta: INTE tidig användare; ställ tillbaka datumet och starta igen: fortfarande inte.
 > - **Felsökning:** om priserna aldrig syns, kör `adb logcat -s PremiumBilling` och leta efter `unfetched=` (produkten saknas eller är inaktiv i Console) eller `responseCode=`.
 
 > **När:** Innan vi flippar `PREMIUM_OPEN_FOR_LAUNCH=false` och släpper Birdy i produktion på Google Play.
 > **Varför:** Override:n `premiumOverride = Active(LIFETIME)` som ligger på under closed testing maskerar hela "no premium → köpflöde → state-flip till Active"-vägen. Den vägen måste verifieras isär från overriden innan den möter riktiga betalande användare.
-> **Status:** Item 1 (debug-toggle) **DONE 2026-06-17** (commit `c027a6f6`). Item 3 (BirdNET-licensguard) **DONE 2026-05-26**. Item 5 (grandfather) **implementerad i 1.3.0** (Plan 1, 2026-09-24/25; härdad 2026-10-01 mot bakåtställd klocka: sparat bevis i stället för klocktider, alltså installationstiden som 1.2.x/vC128 skrev, fångad en gång, plus nätverkstiden på Android 13+; "rensa data" efter uppdateringen tappar beviset; se spec §5.1 tillägget; tack-skärm; samma bygge som `PREMIUM_OPEN_FOR_LAUNCH=false`). **Kvar:** item 2 (köptestet med vC128 på AB-kontot, se uppdateringen överst) och item 4 (uppföljning efter release).
+> **Status:** Item 1 (debug-toggle) **DONE 2026-06-17** (commit `c027a6f6`). Item 3 (BirdNET-licensguard) **DONE 2026-05-26**. Item 5 (grandfather) **implementerad i 1.3.0** (Plan 1, 2026-09-24/25; härdad 2026-10-01 mot bakåtställd klocka: sparat bevis i stället för klocktider, alltså installationstiden som 1.2.x/vC128 skrev, fångad en gång, plus nätverkstiden på Android 13+; "rensa data" efter uppdateringen tappar beviset; se spec §5.1 tillägget; tack-skärm; samma bygge som `PREMIUM_OPEN_FOR_LAUNCH=false`). **Kvar:** item 2 (köptestet med vC129 på AB-kontot, se uppdateringen överst) och item 4 (uppföljning efter release).
 
 ---
 

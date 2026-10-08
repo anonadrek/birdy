@@ -1,0 +1,211 @@
+{
+  "qid": "Q208710",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "grashoppsangare",
+    "en": "common-grasshopper-warbler"
+  },
+  "names": {
+    "sv": "Gräshoppsångare",
+    "en": "Common Grasshopper Warbler",
+    "scientific": "Locustella naevia"
+  },
+  "family": {
+    "latin": "Locustellidae",
+    "sv": "Gräsfåglar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q208710/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "keith gallie",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grasshopper_Warbler_(Locustella_naevia)_(34231783040).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q208710/extra.webp",
+      "width": 1200,
+      "height": 899,
+      "author": "Иван Везенковић",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_grasshopper_warbler_Locustella_naevia.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q208710/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Tommy Andriollo",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Locustella_naevia_-_Common_Grasshopper_Warbler_XC553214.mp3",
+    "sha256": "4c8d2e5a657c12e5ffa1882c86a897b6918f80742fe6b81b13e77d158817cb7c"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Gräshoppsångare",
+      "revision": "59562547"
+    },
+    "en": {
+      "title": "Common grasshopper warbler",
+      "revision": "1361101315"
+    },
+    "de": {
+      "title": "Feldschwirl",
+      "revision": "258734034"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2493548,
+    "totalReports": 42550,
+    "months": [
+      0,
+      0,
+      0,
+      1,
+      71,
+      100,
+      27,
+      5,
+      3,
+      1,
+      0,
+      0
+    ],
+    "counties": {
+      "SE-K": 9,
+      "SE-W": 53,
+      "SE-X": 31,
+      "SE-I": 19,
+      "SE-N": 34,
+      "SE-Z": 3,
+      "SE-F": 8,
+      "SE-H": 11,
+      "SE-G": 3,
+      "SE-BD": 2,
+      "SE-T": 57,
+      "SE-E": 41,
+      "SE-M": 33,
+      "SE-D": 13,
+      "SE-AB": 14,
+      "SE-C": 100,
+      "SE-S": 45,
+      "SE-AC": 8,
+      "SE-Y": 11,
+      "SE-U": 71,
+      "SE-O": 22
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juni.",
+        "Rapporteras sällan i augusti till april.",
+        "Andelen av alla fågelrapporter är högst i Uppsala, Västmanland och Örebro."
+      ],
+      "en": [
+        "Reported most in June.",
+        "Rarely reported in August to April.",
+        "Its share of all bird reports is highest in Uppsala, Västmanland and Örebro."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        0,
+        301,
+        20877,
+        15719,
+        3275,
+        631,
+        363,
+        71,
+        0,
+        0
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-C": 9209,
+        "SE-M": 5580,
+        "SE-O": 5386,
+        "SE-E": 2731,
+        "SE-T": 2632,
+        "SE-U": 2526,
+        "SE-N": 2489,
+        "SE-AB": 2280,
+        "SE-W": 2166,
+        "SE-S": 1471,
+        "SE-H": 1377,
+        "SE-X": 986,
+        "SE-D": 960,
+        "SE-I": 559,
+        "SE-F": 546,
+        "SE-AC": 361,
+        "SE-Y": 258,
+        "SE-K": 132,
+        "SE-BD": 99,
+        "SE-G": 99,
+        "SE-Z": 58
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -98,7 +98,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian oystercatcher (Haematopus
     ostralegus) at Amrum.jpg
   commons_filename: Eurasian oystercatcher (Haematopus ostralegus) at Amrum.jpg
@@ -107,7 +107,7 @@ image_refs:
   width: 1800
   height: 1196
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian oystercatcher (Haematopus
     ostralegus).jpg
   commons_filename: Eurasian oystercatcher (Haematopus ostralegus).jpg
@@ -116,8 +116,7 @@ image_refs:
   width: 1800
   height: 1310
   license: CC0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Mattivirtala (page does not exist)">Matti Virtala</a>
+  author: Matti Virtala
   source_url: https://commons.wikimedia.org/wiki/File:Haematopus ostralegus Oulu Finland
     2021-05-08.jpg
   commons_filename: Haematopus ostralegus Oulu Finland 2021-05-08.jpg

@@ -91,20 +91,18 @@ image_refs:
 - role: hero
   path: Q10965357/hero.webp
   width: 2400
-  height: 1323
+  height: 1350
   license: CC BY 2.0
-  author: blondinrikard
-  source_url: https://commons.wikimedia.org/wiki/File:Twite, Linaria flavirostris,
-    Carduelis flavirostris, Vinterhämpling - 49321273173.jpg
-  commons_filename: Twite, Linaria flavirostris, Carduelis flavirostris, Vinterhämpling
-    - 49321273173.jpg
+  author: Hans Norelius
+  source_url: https://commons.wikimedia.org/wiki/File:Vinterhämpling, Uppsala, Uppland,
+    Februari 2018 (28072290378).jpg
+  commons_filename: Vinterhämpling, Uppsala, Uppland, Februari 2018 (28072290378).jpg
 - role: secondary
   path: Q10965357/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2401694">William
-    Stephens</a>
+  author: William Stephens
   source_url: https://commons.wikimedia.org/wiki/File:Linaria flavirostris 200495342.jpg
   commons_filename: Linaria flavirostris 200495342.jpg
 - role: secondary
@@ -112,12 +110,14 @@ image_refs:
   width: 1800
   height: 1287
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
-    Moning</a>
+  author: Christoph Moning
   source_url: https://commons.wikimedia.org/wiki/File:Linaria flavirostris 91062737.jpg
   commons_filename: Linaria flavirostris 91062737.jpg
 review_status: approved
-review_notes: "Vinterhämpling — hero ID via canonical filename, lekfullt italienskt foto med subtle artkarakteristika."
+review_notes: 'Vinterhämpling — hero ID via canonical filename, lekfullt italienskt foto med subtle artkarakteristika.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T19:15:49.569439+00:00'
 sources:
   wikipedia_sv_revision: '56596662'

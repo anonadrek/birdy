@@ -93,7 +93,7 @@ image_refs:
   width: 1267
   height: 2048
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/wizz1">Kevin</a>
+  author: Kevin
   source_url: https://commons.wikimedia.org/wiki/File:Curruca hortensis by Kevin.jpg
   commons_filename: Curruca hortensis by Kevin.jpg
 - role: secondary
@@ -101,8 +101,7 @@ image_refs:
   width: 1800
   height: 1095
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
-    DUPONT</a> from FRANCE
+  author: Bernard DUPONT
   source_url: https://commons.wikimedia.org/wiki/File:Western Orphean Warbler (Curruca
     hortensis) (52613237933).jpg
   commons_filename: Western Orphean Warbler (Curruca hortensis) (52613237933).jpg

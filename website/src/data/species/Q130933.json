@@ -1,0 +1,975 @@
+{
+  "qid": "Q130933",
+  "status": "ok",
+  "publish": true,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Berguven är 59–73 cm lång, har ett vingspann på 138–170 cm och väger 2–4 kilo.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Berguven är 59–73 cm lång, dess vingspann är 138–170 cm och den väger 2–4 kilo."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Berguven känns igen på tydliga örontofsar, orangegul iris, stort huvud och yvig fjäderdräkt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utmärkande för berguven är dess tydliga örontofsar och orangegul iris, samt det stora huvudet och den yviga fjäderdräkten."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Bröstet är kraftigt svartstreckat på gulbrun botten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bröstet är kraftigt svartstreckat ovanpå en gulbrun grundton."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Magen är rostgul med smala svarta streck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Magen är rostgul med smala, svarta streck."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Ovansidan är mörkbrun med grova fläckar och svart tvärvattring.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ovansidan är mörkbrun och har grova fläckar samt en tvärvattring i svart."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Strupen är vit men syns bara när fågeln ropar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Strupen är vit och ses bara när fågeln ropar."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Näbben och fötterna är svarta.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The bill and feet are black."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "behaviour",
+      "sv": "Örontofsarna hålls lågt åt sidorna när ugglan är avspänd och reses när den ropar eller är upprörd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Örontofsarna hålls lågt åt sidorna när uven är avspänd, uppresta när uven ropar eller är upprörd."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Örontofsarna syns inte när berguven flyger.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Örontofsarna syns inte när den flyger."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Hanens sång är ett mycket djupt tvåstavigt hoande, där andra stavelsen är betydligt lägre.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "är ett mycket djupt tvåstavigt hoande"
+        },
+        {
+          "article": "sv",
+          "quote": "Andra stavelsen på ropet är betydligt lägre."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Sången hörs främst på vårvintern men ibland även på hösten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "hörs främst på vårvintern (men även ibland på hösten)"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången kan höras upp till 4 kilometer bort vid goda väderförhållanden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången kan höras upp till 4 kilometer vid goda väderförhållanden."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Honans lockläte är ett skrovligt skällande läte, rhäeff.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Locklätet hörs av honan och är ett skrovligt skällande läte, rhäeff"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Honans revirläte är ljusare och något mer utdraget än hanens.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "a more high-pitched and slightly more drawn-out uh-hu for the female"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Ungarna tigger mat med ett ljudligt tju-ysch som hörs under nätter i augusti.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna tigger efter mat med ett ljudligt tju-ysch, som hörs under nätter i augusti."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Berguven trivs i bergiga skogstrakter, på stupande bergsbranter och på klippiga skärgårdsöar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Berguven trivs i bergiga skogstrakter, på stupande bergsbranter och klippiga skärgårdsöar"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Den förekommer även i städer, främst i industriområden eller nära soptippar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "förekommer de även i städer och då främst i industriområden eller i närheten av soptippar"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "behaviour",
+      "sv": "Berguven är nattaktiv och kan dagtid sitta stilla på något undangömt ställe.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Berguven är nattaktiv."
+        },
+        {
+          "article": "sv",
+          "quote": "kan dagtid ses sitta stilla på något undangömt ställe"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "I Sverige häckar berguven lokalt i södra och mellersta Sverige, på Gotland och i stora delar av Norrland, främst i kustlandet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar berguven i lokalt i södra och mellersta Sverige, på Gotland och i stora delar av Norrland, men främst i kustlandet."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I början av 2000-talet uppskattades den svenska populationen till cirka 500 frihäckande par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I början av 2000-talet uppskattades populationen bestå av cirka 500 frihäckande par."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "På Artdatabankens rödlista från 2020 klassas berguven som sårbar (VU).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Artdatabankens rödlista från 2020 kategoriseras den som Sårbar (VU)."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "food",
+      "sv": "Berguven lever främst av gnagare som brunråtta och vattensork.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "lever främst av gnagare som brunråtta och vattensork"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "food",
+      "sv": "Den tar också hare, kanin, änder samt kråk- och måsfåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den tar också byten som hare, kanin, änder, kråk- och måsfåglar."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Boet läggs ofta på en klipphylla med ett stup nedanför.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet läggs ofta på en klipphylla med ett stup nedanför"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Honan lägger två till tre ägg i mars–april och ruvar dem i drygt en månad.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger två till tre ägg i mars-april som ruvas av honan i drygt en månad."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "sex_age",
+      "sv": "Honan är tydligt större än hanen.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Weibchen sind deutlich größer als Männchen"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "sex_age",
+      "sv": "Unga fåglar har fortfarande dun på huvudet och kan kännas igen på sina relativt små tofsar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "dock är huvudet fortfarande beklätt med dun, och de kan igenkännas genom sina relativt små tofsar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "lookalike",
+      "sv": "Slagugglan saknar örontofsar och har ett tydligt runt huvud, till skillnad från berguvens kantiga huvud.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Ural owl (Strix uralensis), both of which have no ear tufts and have a distinctly rounded head"
+        }
+      ],
+      "other": {
+        "scientific": "Strix uralensis",
+        "qid": "Q190083"
+      }
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Hornugglan har liknande fjäderdräkt men är betydligt mindre än berguven.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The long-eared owl has a somewhat similar plumage to the eagle-owl, but is considerably smaller"
+        }
+      ],
+      "other": {
+        "scientific": "Asio otus",
+        "qid": "Q25384"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Berguven är huvudsakligen en stannfågel men ungfåglar kan göra milslånga förflyttningar."
+        },
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar berguven i lokalt i södra och mellersta Sverige"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i januari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i augusti."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Dalarna och Skåne."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Sårbar (VU)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Berguven är en uggla med tydliga örontofsar, orangegul iris och stort huvud.",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Den trivs i bergiga skogstrakter, på stupande bergsbranter och klippiga skärgårdsöar, och förekommer även i städer, främst i industriområden eller nära soptippar.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Tydliga örontofsar, orangegul iris och stort huvud, tofsarna syns inte i flykt",
+          "factIds": [
+            "f02",
+            "f09"
+          ]
+        },
+        {
+          "text": "Bröstet kraftigt svartstreckat på gulbrun botten, magen rostgul med smala svarta streck",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Mörkbrun ovansida med grova fläckar och svart tvärvattring, svart näbb och svarta fötter",
+          "factIds": [
+            "f05",
+            "f07"
+          ]
+        },
+        {
+          "text": "Honan är tydligt större än hanen, unga fåglar har relativt små tofsar och dun på huvudet",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Hanens sång är ett mycket djupt tvåstavigt hoande där andra stavelsen är betydligt lägre.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "Den hörs främst på vårvintern, ibland på hösten, och kan i goda väderförhållanden höras upp till 4 kilometer bort.",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        },
+        {
+          "text": "Honan har ett skrovligt skällande lockläte, rhäeff.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Ungarna tigger mat med ett ljudligt tju-ysch under nätter i augusti.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Berguven är stannfågel i Sverige och häckar lokalt i södra och mellersta Sverige, på Gotland och i stora delar av Norrland, främst i kustlandet.",
+          "factIds": [
+            "s01",
+            "f19"
+          ]
+        },
+        {
+          "text": "I början av 2000-talet uppskattades beståndet till cirka 500 frihäckande par.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Den klassas som sårbar (VU) på svenska rödlistan.",
+          "factIds": [
+            "f21",
+            "d04"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i januari och sällan i augusti.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Dalarna och Skåne.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Berguven är nattaktiv och kan dagtid sitta stilla på något undangömt ställe.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Den lever främst av gnagare som brunråtta och vattensork men tar också hare, kanin, änder samt kråk- och måsfåglar.",
+          "factIds": [
+            "f22",
+            "f23"
+          ]
+        },
+        {
+          "text": "Örontofsarna hålls lågt åt sidorna när den är avspänd och reses när den ropar eller är upprörd.",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Boet ligger ofta på en klipphylla, och honan lägger två till tre ägg i mars till april.",
+          "factIds": [
+            "f24",
+            "f25"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q190083",
+          "text": [
+            {
+              "text": "Slagugglan saknar örontofsar och har ett tydligt runt huvud, medan berguven har örontofsar och ett kantigt huvud.",
+              "factIds": [
+                "f28",
+                "f02"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q25384",
+          "text": [
+            {
+              "text": "Hornugglan har liknande fjäderdräkt men är betydligt mindre än berguven.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Berguv: så känner du igen den på örontofsar och fjäderdräkt, hur sången och lätena låter och när på året den rapporteras mest.",
+      "facts": {
+        "size": {
+          "value": "59 till 73 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Eurasian Eagle-Owl is an owl with clear ear tufts, orange-yellow eyes and a big head.",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "It lives in hilly forest country, on steep cliffs and rocky archipelago islands, and also turns up in towns, mainly in industrial areas or near rubbish tips.",
+          "factIds": [
+            "f16",
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Clear ear tufts, orange-yellow iris and a big head, tufts not visible in flight",
+          "factIds": [
+            "f02",
+            "f09"
+          ]
+        },
+        {
+          "text": "Breast heavily streaked black on yellowish brown, belly rusty yellow with fine black streaks",
+          "factIds": [
+            "f03",
+            "f04"
+          ]
+        },
+        {
+          "text": "Dark brown upperparts with coarse spots and black barring, black bill and feet",
+          "factIds": [
+            "f05",
+            "f07"
+          ]
+        },
+        {
+          "text": "Female clearly larger than male, young birds have fairly small tufts and down on the head",
+          "factIds": [
+            "f26",
+            "f27"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The male's song is a very deep two-syllable hooting, the second syllable clearly lower.",
+          "factIds": [
+            "f10"
+          ]
+        },
+        {
+          "text": "It is heard mainly in late winter, sometimes in autumn, and can carry up to 4 kilometres in good weather.",
+          "factIds": [
+            "f11",
+            "f12"
+          ]
+        },
+        {
+          "text": "The female's call is a hoarse barking rhäeff.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Young birds beg for food with a loud tju-ysch heard on August nights.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "It is resident in Sweden, breeding locally in southern and central Sweden, on Gotland and in much of Norrland, mainly near the coast.",
+          "factIds": [
+            "s01",
+            "f19"
+          ]
+        },
+        {
+          "text": "In the early 2000s the population was estimated at about 500 free-breeding pairs.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "It is listed as Vulnerable (VU) on the Swedish Red List.",
+          "factIds": [
+            "f21",
+            "d04"
+          ]
+        },
+        {
+          "text": "It is reported most in January and rarely in August.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Dalarna and Skåne.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It is active at night and by day may sit still in some hidden spot.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "It feeds mainly on rodents such as brown rats and water voles, and also takes hares, rabbits, ducks, corvids and gulls.",
+          "factIds": [
+            "f22",
+            "f23"
+          ]
+        },
+        {
+          "text": "Its ear tufts are held low to the sides when relaxed and raised when it calls or is agitated.",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "The nest is often on a cliff ledge.",
+          "factIds": [
+            "f24"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q190083",
+          "text": [
+            {
+              "text": "The Ural Owl has no ear tufts and a distinctly round head, while the Eurasian Eagle-Owl has ear tufts and an angular head.",
+              "factIds": [
+                "f28",
+                "f02"
+              ]
+            }
+          ]
+        },
+        {
+          "other": "Q25384",
+          "text": [
+            {
+              "text": "The Long-eared Owl has similar plumage but is much smaller than the Eurasian Eagle-Owl.",
+              "factIds": [
+                "f29"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Eurasian Eagle-Owl: how to recognise it by its ear tufts and plumage, what its song and calls sound like, and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "59 to 73 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "1700a265dd84006d"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "1700a265dd84006d"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "berguv",
+    "en": "eurasian-eagle-owl"
+  },
+  "names": {
+    "sv": "Berguv",
+    "en": "Eurasian Eagle-Owl",
+    "scientific": "Bubo bubo"
+  },
+  "family": {
+    "latin": "Strigidae",
+    "sv": "Ugglor"
+  },
+  "group": "owls",
+  "iucn": "LC",
+  "swedishRedList": "VU",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q130933/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "JarroNevsbaru",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_eagle_owl_(Bubo_bubo)_2024.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q130933/extra.webp",
+      "width": 1200,
+      "height": 795,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_eagle-owl_(Bubo_bubo).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q130933/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Mirko Tomasi",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bubo_bubo_-_Eurasian_Eagle-Owl_XC461330.mp3",
+    "sha256": "1354a5e9a5d6537a2467f04e7b2ecde821c1bd08a13cf8af5d45c942f5b6c927"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Berguv",
+      "revision": "59392182"
+    },
+    "en": {
+      "title": "Eurasian eagle-owl",
+      "revision": "1375870499"
+    },
+    "de": {
+      "title": "Uhu",
+      "revision": "269833471"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 5959092,
+    "totalReports": 5359,
+    "months": [
+      100,
+      70,
+      31,
+      16,
+      12,
+      13,
+      14,
+      6,
+      11,
+      49,
+      77,
+      70
+    ],
+    "counties": {
+      "SE-K": 11,
+      "SE-W": 100,
+      "SE-X": 21,
+      "SE-I": 11,
+      "SE-N": 14,
+      "SE-Z": 0,
+      "SE-F": 15,
+      "SE-H": 7,
+      "SE-G": 4,
+      "SE-BD": 5,
+      "SE-T": 30,
+      "SE-E": 22,
+      "SE-M": 63,
+      "SE-D": 6,
+      "SE-AB": 27,
+      "SE-C": 3,
+      "SE-S": 4,
+      "SE-AC": 3,
+      "SE-Y": 9,
+      "SE-U": 16,
+      "SE-O": 22
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i januari.",
+        "Rapporteras sällan i augusti.",
+        "Andelen av alla fågelrapporter är högst i Dalarna och Skåne."
+      ],
+      "en": [
+        "Reported most in January.",
+        "Rarely reported in August.",
+        "Its share of all bird reports is highest in Dalarna and Skåne."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1238,
+        606,
+        500,
+        387,
+        354,
+        196,
+        160,
+        77,
+        142,
+        611,
+        610,
+        455
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-M": 1672,
+        "SE-O": 836,
+        "SE-AB": 695,
+        "SE-W": 632,
+        "SE-E": 230,
+        "SE-T": 216,
+        "SE-N": 161,
+        "SE-F": 153,
+        "SE-H": 145,
+        "SE-X": 103,
+        "SE-U": 90,
+        "SE-D": 66,
+        "SE-I": 51,
+        "SE-C": 36,
+        "SE-Y": 33,
+        "SE-BD": 28,
+        "SE-K": 25,
+        "SE-S": 22,
+        "SE-G": 22,
+        "SE-AC": 21
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
+}

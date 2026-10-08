@@ -96,31 +96,33 @@ image_refs:
 - role: hero
   path: Q191096/hero.webp
   width: 2400
-  height: 1800
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Calandrella" title="User:Calandrella">Calandrella</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Periparus ater ringed by Landsort
-    Bird Observatory-10.JPG
-  commons_filename: Periparus ater ringed by Landsort Bird Observatory-10.JPG
+  height: 1708
+  license: CC BY 2.0
+  author: Luiz Lapa
+  source_url: https://commons.wikimedia.org/wiki/File:Chapim-carvoeiro, Coal Tit (50587266376).jpg
+  commons_filename: Chapim-carvoeiro, Coal Tit (50587266376).jpg
 - role: secondary
   path: Q191096/secondary-1.webp
   width: 1800
-  height: 1350
-  license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Calandrella" title="User:Calandrella">Calandrella</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Periparus ater ringed by Landsort
-    Bird Observatory-6.JPG
-  commons_filename: Periparus ater ringed by Landsort Bird Observatory-6.JPG
+  height: 1210
+  license: CC BY 4.0
+  author: TRinaud
+  source_url: https://commons.wikimedia.org/wiki/File:Coal tit (Periparus ater) 2019.jpg
+  commons_filename: Coal tit (Periparus ater) 2019.jpg
 - role: secondary
   path: Q191096/secondary-2.webp
   width: 1800
   height: 1800
   license: CC BY 2.0
-  author: blondinrikard
+  author: Blondinrikard Fröberg
   source_url: https://commons.wikimedia.org/wiki/File:Coal tit, Periparus ater, Svartmes.jpg
   commons_filename: Coal tit, Periparus ater, Svartmes.jpg
 review_status: approved
-review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons hero, no manual review checkpoint'
+review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons
+  hero, no manual review checkpoint
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-04T10:01:08.509284+00:00'
 sources:
   wikipedia_sv_revision: '57738243'

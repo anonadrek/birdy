@@ -60,8 +60,7 @@ image_refs:
   width: 2048
   height: 1538
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
-    Judas</a>
+  author: Jacky Judas
   source_url: https://commons.wikimedia.org/wiki/File:Hippolais languida 121276391.jpg
   commons_filename: Hippolais languida 121276391.jpg
 - role: secondary
@@ -69,8 +68,7 @@ image_refs:
   width: 1800
   height: 1352
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
-    Judas</a>
+  author: Jacky Judas
   source_url: https://commons.wikimedia.org/wiki/File:Hippolais languida 121276401.jpg
   commons_filename: Hippolais languida 121276401.jpg
 review_status: auto

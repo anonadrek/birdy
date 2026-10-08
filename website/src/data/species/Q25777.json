@@ -1,0 +1,887 @@
+{
+  "qid": "Q25777",
+  "status": "ok",
+  "publish": true,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Björktrasten är en långstjärtad och kraftigt byggd trast.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Björktrasten är en långstjärtad och kraftigt byggd trast."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Nacke, övergump, nedre delen av ryggen, hjässan och kroppssidorna är askgrå.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess nacke, övergump, nedre delen av ryggen, huvudets ovansida och kroppssidorna är askgrå."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Skuldrorna och övre delen av ryggen är kastanjebruna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skuldrorna och övre delen av ryggen är kastanjebruna"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "De undre vingtäckarna är vita och syns tydligt i flykten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "de undre vingtäckarna är vita"
+        },
+        {
+          "article": "en",
+          "quote": "In flight, its white under wing-coverts and axillaries are conspicuous."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Bröstet är orangebeige med längsgående mörka streck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bröstet är orangebeige och också vattrad med längsgående mörka streck."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Buk och undergump är vita, och kroppssidorna har pilspetsformade svarta fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Buk och undergump är vit och den är kraftigt vattrad med pilspetsformade svarta fläckar på kroppssidorna under vingarna."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Den har ett ljust ögonbrynsstreck och är mörk mellan ögat och näbben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har ett ljust ögonbrynsstreck, är mörkfärgad mellan ögat och näbben"
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Näbben är gulorange med grå spets.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "näbben som är gulorange med en grå näbbspets"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Längden är 22–27 cm och vingspannet 39–42 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Längden är 22–27 cm och vingspannet 39–42 cm."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "size",
+      "sv": "Björktrasten väger cirka 100 gram, med en variation från 80 till 140 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fågeln väger cirka 100 gram."
+        },
+        {
+          "article": "en",
+          "quote": "weight ranges from 80 to 140 g"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Könen är lika, men honan är något brunare.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The sexes are similar in appearance but the females are slightly more brown."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "sex_age",
+      "sv": "Unga fåglar i första vinterdräkt känns igen på vita fjäderspetsar på de övre vingtäckarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Unga fåglar i första vinterdräkt går att särskilja genom de vita fjäderspetsarna på de övre vingtäckarna."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Det vanligaste lätet är ett skränigt upprepat ”schäckande”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess vanligaste läte är ett skränigt upprepat ”schäckande”."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "I flykten hörs ett upprepat ”tjackande” i några sekunder och ett tunt, högt ”giih”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Locklätet i flykten är också ett liknande upprepat ”tjackande” som pågår i några sekunder, men även ett tunt, högt ”giih”."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Hanens sång är svag och föga melodisk och framförs ofta i flykten under häckningstiden.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The male has a rather feeble song that he sings in the breeding season."
+        },
+        {
+          "article": "de",
+          "quote": "Der wenig melodische Gesang wird überwiegend im Flug vorgetragen."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "behaviour",
+      "sv": "Den använder gärna sitt tjatter för att varna för kattugglor, katter eller andra faror.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I allmänhet är den inte sen att använda sitt tjatter för att varna för kattugglor, katter eller andra faror."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "lookalike",
+      "sv": "Varningslätena påminner om dubbeltrastens.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "When angry or alarmed they emit various warning sounds reminiscent of the mistle thrush (Turdus viscivorus)."
+        }
+      ],
+      "other": {
+        "scientific": "Turdus viscivorus",
+        "qid": "Q178942"
+      }
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Den häckar i skogsmark och busksly, till exempel fjällbjörkskog, löv- och blandskog, parker och trädgårdar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den häckar i olika slags skogsmark och busksly som till exempel fjällbjörkskog, löv- och blandskog, parker och trädgårdar."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "På vintern finns flockar främst i öppet landskap, jordbruksmark, fruktodlingar och gles skog.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In the winter, groups of fieldfares are chiefly found in open country, agricultural land, orchards and open woodland."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Björktrasten häckar i stort antal över hela Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Björktrasten häckar i stort antal över hela landet."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Grovt sett flyttar de björktrastar som häckar norr om Mora söderut om vintern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Grovt taget kan man säga att de björktrastar som häckar norr om Mora flyttar söderut om vintern."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattades 2018 till 594 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "2018 uppskattades det svenska beståndet till 594 000 par."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Arten har minskat i Sverige och är sedan 2020 rödlistad som nära hotad (NT).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är sedan 2020 upptagen på Artdatabankens rödlista som nära hotad (NT)."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Björktrasten häckar oftast i små kolonier men ibland enstaka par.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Die Wacholderdrossel brütet meist in kleinen Kolonien, aber auch einzeln."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Det öppna boet byggs i en trädkrona.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet som byggs i en trädkrona är öppet."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Honan lägger vanligtvis 5–6 ljusgröna ägg med bruna fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger vanligtvis 5–6 ägg som är ljusgröna med bruna fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "De vuxna försvarar boet aggressivt genom att släppa spillning på rovdjur.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The adults will defend the nest aggressively by dropping faeces on the predators"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Den föredrar daggmask men äter även andra smådjur som insekter och spindlar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Björktrasten föredrar daggmask men livnär sig även på många andra sorters smådjur, till exempel insekter och spindlar."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "food",
+      "sv": "På hösten och vintern äter den främst rönnbär, enbär, lingon och fallfrukt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På hösten och vintern livnär de sig företrädesvis av rönnbär, enbär, lingon, fallfrukt och dylikt."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Flyttande och övervintrande fåglar bildar ofta stora flockar, ofta tillsammans med rödvingetrastar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Migrating birds and wintering birds often form large flocks, often in the company of redwings."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Grovt taget kan man säga att de björktrastar som häckar norr om Mora flyttar söderut om vintern."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december och januari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Björktrasten är en långstjärtad och kraftigt byggd trast som häckar i stort antal över hela Sverige.",
+          "factIds": [
+            "f01",
+            "f20"
+          ]
+        },
+        {
+          "text": "Den häckar i skogsmark, parker och trädgårdar, och på vintern ses flockar i öppet landskap och på jordbruksmark.",
+          "factIds": [
+            "f18",
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Askgrå hjässa, nacke och övergump mot kastanjebruna skuldror och övre rygg",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Orangebeige bröst med mörka streck, vit buk och svarta pilspetsfläckar på sidorna",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Gulorange näbb med grå spets, ljust ögonbrynsstreck och mörkt mellan öga och näbb",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        },
+        {
+          "text": "Vita undre vingtäckare syns tydligt i flykten, könen är lika men honan något brunare",
+          "factIds": [
+            "f04",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Det vanligaste lätet är ett skränigt, upprepat ”schäckande”.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "I flykten hörs ett upprepat ”tjackande” i några sekunder och ett tunt, högt ”giih”.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Hanens sång är svag och föga melodisk och framförs ofta i flykten under häckningstiden.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Björktrasten är delvis flyttfågel och häckar i stort antal över hela Sverige, men grovt sett flyttar de som häckar norr om Mora söderut om vintern.",
+          "factIds": [
+            "s01",
+            "f20",
+            "f21"
+          ]
+        },
+        {
+          "text": "Den rapporteras från alla 21 län och mest i december och januari.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Beståndet uppskattades 2018 till 594 000 par, men arten har minskat och är rödlistad som nära hotad (NT).",
+          "factIds": [
+            "f22",
+            "f23",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den föredrar daggmask men äter även insekter och spindlar, och på hösten och vintern främst rönnbär, enbär, lingon och fallfrukt.",
+          "factIds": [
+            "f28",
+            "f29"
+          ]
+        },
+        {
+          "text": "Den häckar oftast i små kolonier och försvarar boet aggressivt genom att släppa spillning på rovdjur.",
+          "factIds": [
+            "f24",
+            "f27"
+          ]
+        },
+        {
+          "text": "Tjattret används gärna för att varna för kattugglor, katter och andra faror.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "Flyttande och övervintrande fåglar bildar ofta stora flockar, ofta tillsammans med rödvingetrastar.",
+          "factIds": [
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Björktrast: så känner du igen arten på dräkt, näbb och flyktbild, hur det skräniga lätet låter och när på året den brukar ses.",
+      "facts": {
+        "size": {
+          "value": "22 till 27 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Fieldfare is a long-tailed, heavily built thrush that breeds in large numbers all over Sweden.",
+          "factIds": [
+            "f01",
+            "f20"
+          ]
+        },
+        {
+          "text": "It breeds in woodland, parks and gardens, and in winter flocks are found in open country and on farmland.",
+          "factIds": [
+            "f18",
+            "f19"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Ash-grey crown, nape and rump against chestnut-brown shoulders and upper back",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Orange-buff breast with dark streaks, white belly and black arrowhead spots on the flanks",
+          "factIds": [
+            "f05",
+            "f06"
+          ]
+        },
+        {
+          "text": "Yellow-orange bill with a grey tip, pale eyebrow and dark between eye and bill",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        },
+        {
+          "text": "White underwing coverts show clearly in flight, sexes alike but female slightly browner",
+          "factIds": [
+            "f04",
+            "f11"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The commonest call is a harsh, repeated chattering ”schäck”.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "In flight it gives a repeated ”tjack” for a few seconds and a thin, high ”giih”.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "The male's song is weak and not very melodic, and is often given in flight during the breeding season.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Fieldfare is a partial migrant that breeds in large numbers all over Sweden, though roughly speaking birds breeding north of Mora move south for the winter.",
+          "factIds": [
+            "s01",
+            "f20",
+            "f21"
+          ]
+        },
+        {
+          "text": "It is reported from all 21 counties and most in December and January.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "The population was estimated at 594 000 pairs in 2018, but the species has declined and is red-listed as Near Threatened (NT).",
+          "factIds": [
+            "f22",
+            "f23",
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It usually breeds in small colonies and defends the nest aggressively by dropping droppings on predators.",
+          "factIds": [
+            "f24",
+            "f27"
+          ]
+        },
+        {
+          "text": "It readily uses its chatter to warn of tawny owls, cats and other dangers.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "Migrating and wintering birds often form large flocks, often together with Redwings.",
+          "factIds": [
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Fieldfare: how to recognise it by plumage, bill and flight pattern, what its harsh chattering call sounds like and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "22 to 27 cm",
+          "factIds": [
+            "f09"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "c22493908c63b787"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:38:22.652418+00:00",
+      "factsHash": "c22493908c63b787"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "bjorktrast",
+    "en": "fieldfare"
+  },
+  "names": {
+    "sv": "Björktrast",
+    "en": "Fieldfare",
+    "scientific": "Turdus pilaris"
+  },
+  "family": {
+    "latin": "Turdidae",
+    "sv": "Trastar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25777/hero.webp",
+      "width": 1600,
+      "height": 1189,
+      "author": "Kathy Büscher",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Drossel_(1)_(35020696255).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25777/extra.webp",
+      "width": 1200,
+      "height": 773,
+      "author": "Martin Olsson",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fieldfare_aka_Turdus_pilaris.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25777/voice.mp3",
+    "durationSec": 16,
+    "trimmed": false,
+    "author": "Benoît Van Hecke",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turdus_pilaris_-_Fieldfare_XC531160.mp3",
+    "sha256": "3d0e41f018dd4f30ec3f88738040961230c1099671a3a3382ba2e8ffe9622d0b"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Björktrast",
+      "revision": "59480920"
+    },
+    "en": {
+      "title": "Fieldfare",
+      "revision": "1371937958"
+    },
+    "de": {
+      "title": "Wacholderdrossel",
+      "revision": "264174367"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2490737,
+    "totalReports": 381618,
+    "months": [
+      89,
+      53,
+      29,
+      36,
+      27,
+      37,
+      22,
+      14,
+      26,
+      56,
+      79,
+      100
+    ],
+    "counties": {
+      "SE-K": 25,
+      "SE-W": 60,
+      "SE-X": 77,
+      "SE-I": 36,
+      "SE-N": 25,
+      "SE-Z": 100,
+      "SE-F": 68,
+      "SE-H": 29,
+      "SE-G": 58,
+      "SE-BD": 97,
+      "SE-T": 47,
+      "SE-E": 54,
+      "SE-M": 35,
+      "SE-D": 54,
+      "SE-AB": 72,
+      "SE-C": 67,
+      "SE-S": 55,
+      "SE-AC": 94,
+      "SE-Y": 90,
+      "SE-U": 42,
+      "SE-O": 59
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december och januari.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in December and January.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        60264,
+        25127,
+        25319,
+        47821,
+        42324,
+        31256,
+        14377,
+        9337,
+        17842,
+        38283,
+        33956,
+        35405
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 64625,
+        "SE-AB": 54681,
+        "SE-C": 27670,
+        "SE-M": 26367,
+        "SE-AC": 20004,
+        "SE-F": 19811,
+        "SE-D": 18190,
+        "SE-BD": 17293,
+        "SE-H": 16984,
+        "SE-E": 16143,
+        "SE-X": 10961,
+        "SE-W": 10913,
+        "SE-Z": 10332,
+        "SE-T": 9750,
+        "SE-Y": 9565,
+        "SE-G": 9060,
+        "SE-S": 8178,
+        "SE-N": 8125,
+        "SE-U": 6710,
+        "SE-I": 4794,
+        "SE-K": 1581
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-07"
+}

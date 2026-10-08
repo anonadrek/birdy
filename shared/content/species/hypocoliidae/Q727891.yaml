@@ -94,7 +94,7 @@ image_refs:
   width: 2048
   height: 1244
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/spint">spint</a>
+  author: spint
   source_url: https://commons.wikimedia.org/wiki/File:Hypocolius ampelinus, Al Jahra,
     Kuwait 448001931.jpg
   commons_filename: Hypocolius ampelinus, Al Jahra, Kuwait 448001931.jpg
@@ -103,8 +103,7 @@ image_refs:
   width: 1800
   height: 1013
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1188725">Nishant
-    Purushottam Berde</a>
+  author: Nishant Purushottam Berde
   source_url: https://commons.wikimedia.org/wiki/File:Hypocolius ampelinus in Rann
     of Kutch, Gujarat, India.jpg
   commons_filename: Hypocolius ampelinus in Rann of Kutch, Gujarat, India.jpg

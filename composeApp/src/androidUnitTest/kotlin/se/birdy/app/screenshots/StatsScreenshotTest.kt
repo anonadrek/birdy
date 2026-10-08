@@ -2,21 +2,10 @@ package se.birdy.app.screenshots
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.semantics.SemanticsActions
-import androidx.compose.ui.semantics.getOrNull
-import androidx.compose.ui.test.SemanticsMatcher
-import androidx.compose.ui.test.assert
-import androidx.compose.ui.test.isHeading
-import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.text.TextLayoutResult
-import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
-import kotlinx.datetime.TimeZone
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
+import org.junit.After
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -26,31 +15,26 @@ import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.app.testing.FakeSpeciesRepository
-import se.birdy.app.ui.components.hasForcedMidWordBreak
+import se.birdy.app.testing.assertNoTextLayoutRegressions
+import se.birdy.app.testing.installAssetPackImageLoader
+import se.birdy.app.testing.resetImageLoader
+import se.birdy.app.ui.stats.SeasonStatsFixtures
 import se.birdy.app.ui.stats.SeasonStatsScreen
-import se.birdy.app.ui.stats.SeasonStatsViewModel
 import se.birdy.content.Locale
 
 /**
- * Säsongsstatistik (spec 2026-09-24, Plan 2 T12): mässingspill i introns hörn, stora DM
- * Serif-siffror i totalraden, varje diagram i sitt eget [se.birdy.app.ui.components.SectionCard]
- * och en mässingsfärgad aktuell månad i månadsraden. Fem arter (samma fixtur som
- * [ArchiveScreenshotTest]/[LifelistScreenshotTest]: Talgoxe/Koltrast/Blåmes/Knölsvan/Tornfalk,
- * [FakeSpeciesRepository.withDefaults]) spridda över åtta av tolv månader 2026 med sinsemellan
- * olika antal (5/4/3/2/1) så månadsstaplarna, säsongsdonuten (alla fyra säsonger > 0), topplistans
- * mossfärgade stapel (moss only — mässing/brass finns bara i säsongsdonuten och den aktuella
- * månadens stapel/etikett) och den kumulativa linjen alla får meningsfull, olikstor data att
- * rita — se [seededObservationRepo] för exakt fördelning.
+ * Säsongsstatistik, release 1.3.0 Task 7c (design option B, "the year ring and a journal of
+ * firsts", approved by Albin 2026-10-06): the intro sentence, the year ring with the season sums,
+ * the timeline of this year's first finds and the three most seen species as photo seals.
  *
- * Klockan är FAST (2026-08-20, inte [Clock.System]) eftersom "aktuell månad" annars hade drivit
- * i takt med riktig tid — samma skäl som varför den här skärmen redan tar in [Clock] som
- * konstruktorparameter i produktionskoden.
+ * The data is [SeasonStatsFixtures]: the approved mockup's own year (15 finds, five species, May
+ * the best month, October in progress) on a FIXED clock, so "the current month" never drifts with
+ * real time. The species' real plate photos come from the asset pack via
+ * [installAssetPackImageLoader] (test-only), so the PNGs can be compared with the mockup.
  *
- * [SeasonStatsViewModel.onEnter] kör sin `viewModelScope.launch` utan någon `delay()` — till
- * skillnad från [ArchiveScreenshotTest]s sökdebounce behövs ingen [captureScreen] `settle`-hook
- * här (samma icke-behov som [LifelistScreenshotTest]). [stats_sv_tall] finns eftersom
- * `LazyColumn` är virtualiserad: allt under den fasta w411dp-h891dp-vyn (topplistan, den
- * kumulativa linjen) komponeras aldrig alls annars.
+ * `_tall` variants use a 2600dp viewport because the screen is a virtualized `LazyColumn`: at the
+ * normal w411dp-h891dp height the timeline and the seals are never composed at all. The large-text
+ * guards with assertions live in the gated `SeasonStatsScreenTest`; this suite only renders.
  */
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
@@ -59,226 +43,85 @@ class StatsScreenshotTest {
     @get:Rule
     val compose = createComposeRule()
 
-    /**
-     * Talgoxe(Q25485)=5, Koltrast(Q25234)=4, Blåmes(Q25404)=3, Knölsvan(Q25402)=2,
-     * Tornfalk(Q26490)=1 — 15 observationer, fem unika arter, spridda jan–okt 2026 så alla fyra
-     * meteorologiska säsonger (vinter/vår/sommar/höst) och den kumulativa unika-arter-linjen
-     * (2→3→4→4→4→5→…→5) får icke-trivial data.
-     */
-    private fun seededObservationRepo(): FakeObservationRepository =
-        FakeObservationRepository().apply {
-            seedObservation("Q25485", Instant.parse("2026-01-10T08:00:00Z"))
-            seedObservation("Q25485", Instant.parse("2026-02-05T08:00:00Z"))
-            seedObservation("Q25485", Instant.parse("2026-03-12T08:00:00Z"))
-            seedObservation("Q25485", Instant.parse("2026-05-20T08:00:00Z"))
-            seedObservation("Q25485", Instant.parse("2026-08-08T08:00:00Z"))
-            seedObservation("Q25234", Instant.parse("2026-01-15T08:00:00Z"))
-            seedObservation("Q25234", Instant.parse("2026-04-03T08:00:00Z"))
-            seedObservation("Q25234", Instant.parse("2026-06-10T08:00:00Z"))
-            seedObservation("Q25234", Instant.parse("2026-10-05T08:00:00Z"))
-            seedObservation("Q25404", Instant.parse("2026-02-20T08:00:00Z"))
-            seedObservation("Q25404", Instant.parse("2026-05-05T08:00:00Z"))
-            seedObservation("Q25404", Instant.parse("2026-07-15T08:00:00Z"))
-            seedObservation("Q25402", Instant.parse("2026-03-25T08:00:00Z"))
-            seedObservation("Q25402", Instant.parse("2026-08-15T08:00:00Z"))
-            seedObservation("Q26490", Instant.parse("2026-06-25T08:00:00Z"))
-        }
+    @Before
+    fun setUp() = installAssetPackImageLoader()
 
-    private fun fixedClock(iso: String): Clock {
-        val instant = Instant.parse(iso)
-        return object : Clock {
-            override fun now(): Instant = instant
-        }
-    }
-
-    private fun viewModel(
-        locale: Locale,
-        observationRepo: FakeObservationRepository,
-    ) = SeasonStatsViewModel(
-        observationRepo = observationRepo,
-        speciesRepo = FakeSpeciesRepository.withDefaults(),
-        clock = fixedClock("2026-08-20T08:00:00Z"),
-        zone = TimeZone.UTC,
-        locale = locale,
-    )
+    @After
+    fun tearDown() = resetImageLoader()
 
     @Composable
     private fun screen(
         locale: Locale,
-        observationRepo: FakeObservationRepository = seededObservationRepo(),
+        observationRepo: FakeObservationRepository = SeasonStatsFixtures.mockupYearRepo(),
+        speciesRepo: FakeSpeciesRepository = SeasonStatsFixtures.speciesWithPhotos(),
     ) {
-        val vm = remember { viewModel(locale, observationRepo) }
+        val vm = remember { SeasonStatsFixtures.viewModel(locale, observationRepo, speciesRepo) }
         SeasonStatsScreen(viewModel = vm, onBack = {})
     }
 
-    /**
-     * [se.birdy.app.ui.stats.SeasonStatsScreen]'s content is a `LazyColumn` taller than the
-     * fixed w411dp-h891dp viewport — [ArchiveScreenshotTest]/[LifelistScreenshotTest]'s "assert
-     * a name exists" pattern only works for content that fits above the fold. "15" (total
-     * observations) is the first proof that `Loaded` (not `Loading`) actually rendered; it's
-     * visible without scrolling in every variant below.
-     */
     @Test
     @Config(qualifiers = "+sv")
     fun stats_sv() {
         compose.captureScreen("stats_sv") { screen(Locale.SV) }
-        compose.onNodeWithText("15").assertExists()
-        // T12c I-A: MicroLabel's `heading()` modifier landed on a Row that doesn't merge its
-        // children, so the node TalkBack would find via this exact text had no `heading()` on
-        // it — the merged-tree node carrying "OBSERVATIONER PER MÅNAD" (MicroLabel's uppercased
-        // stats_section_months) must itself report isHeading().
-        compose.onNodeWithText("OBSERVATIONER PER MÅNAD").assert(isHeading())
-        // T12e Minor 1: at 1.0x (MonthLabelMode.FULL) the month axis renders the full 3-letter
-        // label as visible text (not just a contentDescription, unlike INITIAL mode below) — a
-        // direct, positive proof that the axis-decision-once fix from T12d still renders the
-        // ordinary case unchanged.
-        compose.onNodeWithText("MAR").assertExists()
-    }
-
-    /**
-     * T12c M2: with the PREMIUM badge eating into the top bar's width, the single-word title
-     * "Säsongsstatistik" wrapped mid-word at a narrow phone width under a large system font
-     * scale before the top bar's title switched to `BasicText` + `TextAutoSize.StepBased`
-     * (same pattern as [se.birdy.app.ui.premium.PremiumScreen]'s price line). "15" existing
-     * without wrapping/clipping is the visual proof; there's no production testTag to assert
-     * a single-line layout directly.
-     */
-    @Test
-    @Config(qualifiers = "+sv-w360dp")
-    fun stats_w360_sv_150() {
-        RuntimeEnvironment.setFontScale(1.5f)
-        compose.captureScreen("stats_w360_sv_150") { screen(Locale.SV) }
-        compose.onNodeWithText("15").assertExists()
-        compose.assertNoTextLayoutRegressions()
-    }
-
-    /**
-     * T12e Minor 2: [MonthLabelMode.MEDIUM] (9.5sp month labels) is reached at 1.3x-1.5x on a
-     * w360dp phone (measured in the T12d re-review's Robolectric probe), but no screenshot
-     * exercised it: [stats_w360_sv_150] is already past it, in the one-letter INITIAL axis, so
-     * 1.3x is the only capture that shows the 9.5sp three-letter row.
-     */
-    @Test
-    @Config(qualifiers = "+sv-w360dp")
-    fun stats_w360_sv_130() {
-        RuntimeEnvironment.setFontScale(1.3f)
-        compose.captureScreen("stats_w360_sv_130") { screen(Locale.SV) }
-        compose.onNodeWithText("15").assertExists()
-        compose.onNodeWithText("MAR").assertExists()
-        compose.assertNoTextLayoutRegressions()
-    }
-
-    /**
-     * T12d Important 1: the re-review measured that 3-letter month labels (MAR/MAY) and the
-     * "OBSERVATIONER"/"OBSERVATIONS" totals label both force a mid-word break at large system
-     * font scales on a narrow phone — [stats_w360_sv_150] asserted only that "15" rendered, so
-     * the broken labels went uncaught. 2.0x is the largest scale the review measured (also the
-     * first case that exercises the top bar title's own autosize floor) — this is the ceiling
-     * this wave targets, not merely one more step past 1.5x.
-     */
-    @Test
-    @Config(qualifiers = "+sv-w360dp")
-    fun stats_w360_sv_200() {
-        RuntimeEnvironment.setFontScale(2.0f)
-        compose.captureScreen("stats_w360_sv_200") { screen(Locale.SV) }
-        compose.onNodeWithText("15").assertExists()
-        compose.assertNoTextLayoutRegressions()
-        // T12e Minor 1: at 2.0x (MonthLabelMode.INITIAL) the month axis shortens to one letter
-        // on screen and moves the full abbreviation to contentDescription instead — a direct,
-        // positive proof that TalkBack still hears "JAN", not "J" (see the fixed comment on
-        // MonthLabelsRow's clearAndSetSemantics call).
-        compose.onNodeWithContentDescription("JAN").assertExists()
+        compose.onNodeWithText("15 fynd. Maj var din bästa månad.").assertExists()
     }
 
     @Test
     @Config(qualifiers = "+en")
     fun stats_en() {
         compose.captureScreen("stats_en") { screen(Locale.EN) }
-        compose.onNodeWithText("15").assertExists()
+        compose.onNodeWithText("15 finds. May was your best month.").assertExists()
     }
 
-    /**
-     * A tall-viewport variant so the whole screen composes in one go — [SeasonStatsScreen]'s
-     * `LazyColumn` is virtualized, so a scroll-based capture at the normal w411dp-h891dp height
-     * would need a real [androidx.compose.ui.test.performScrollToIndex] (which needs a
-     * `testTag` this production screen doesn't otherwise need); a taller Robolectric qualifier
-     * is a test-only knob and reaches the same goal without touching production code. This is
-     * the only way to see "Mest sedda arter"'s new mossfärgade progress-bar rows and the
-     * cumulative-line [se.birdy.app.ui.components.SectionCard] in a screenshot at all.
-     */
     @Test
     @Config(qualifiers = "+sv-h2600dp")
     fun stats_sv_tall() {
         compose.captureScreen("stats_sv_tall") { screen(Locale.SV) }
-        compose.onNodeWithText("Tornfalk").assertExists()
+        compose.onNodeWithText("MEST SEDDA").assertExists()
+    }
+
+    @Test
+    @Config(qualifiers = "+en-h2600dp")
+    fun stats_en_tall() {
+        compose.captureScreen("stats_en_tall") { screen(Locale.EN) }
+        compose.onNodeWithText("MOST SEEN").assertExists()
     }
 
     @Test
     @Config(qualifiers = "+sv")
     fun stats_empty_sv() {
-        compose.captureScreen("stats_empty_sv") {
-            screen(Locale.SV, observationRepo = FakeObservationRepository())
-        }
-        // T12b: "Talgoxe" absent would also pass while the screen is still Loading — assert the
-        // empty-state headline itself ("Inget att *kartlägga* ännu.") to prove Empty actually
-        // rendered. "kartlägga" is JournalHeadline's one accent segment (parseJournalHeadline
-        // splits on the `*...*` markers with no surrounding whitespace inside the word itself).
+        compose.captureScreen("stats_empty_sv") { screen(Locale.SV, observationRepo = FakeObservationRepository()) }
         compose.onNodeWithText("kartlägga").assertExists()
-        compose.onNodeWithText("Talgoxe").assertDoesNotExist()
     }
 
-    /**
-     * T12d Important 1 / T12e Minor 1: generic guard for the whole composed screen, not just the
-     * month labels/totals label this wave fixes — walks every node that carries a
-     * `GetTextLayoutResult` semantics action (i.e. every laid-out [Text]/[BasicText]), fetches
-     * its real [TextLayoutResult] and checks three ways a label can silently lose content:
-     * 1. [hasForcedMidWordBreak] (promoted from `private` to `internal` in `PhotoHero.kt` for
-     *    this): the wrap broke mid-word rather than at a space.
-     * 2. A single-line node (`maxLines == 1`, e.g. the top bar title's `BasicText` autosize)
-     *    exceeded that line and got clipped (`multiParagraph.didExceedMaxLines`).
-     * 3. A `softWrap = false` node (e.g. the month labels) needs more width for its text
-     *    (`multiParagraph.maxIntrinsicWidth`) than the box Compose actually gave it. Neither
-     *    `hasVisualOverflow` (true for nearly all ordinary `Text`) nor `multiParagraph.width`
-     *    works here: in a fixed-size box `multiParagraph.width` equals `size.width`, so it never
-     *    fails, and in a wider box it reports the box, not the text (T11f/T12e re-review).
-     *
-     * T12d's original version of this guard only checked (1), so it caught a regression in
-     * `hasForcedMidWordBreak`'s own logic but not a `maxLines`/`softWrap` regression elsewhere —
-     * both real render-time failure modes for the exact labels this wave fixed. Renamed from
-     * `assertNoForcedMidWordBreaks` since it now checks more than that one thing.
-     * `useUnmergedTree = true` so a merged container (e.g. a card
-     * `semantics(mergeDescendants = true)`) doesn't hide a child's own layout node.
-     */
-    private fun ComposeContentTestRule.assertNoTextLayoutRegressions() {
-        val layoutResults = mutableListOf<TextLayoutResult>()
-        val nodes =
-            onAllNodes(SemanticsMatcher.keyIsDefined(SemanticsActions.GetTextLayoutResult), useUnmergedTree = true)
-                .fetchSemanticsNodes()
-        assertTrue("expected at least one laid-out text node", nodes.isNotEmpty())
-        nodes.forEach { node ->
-            val action = node.config.getOrNull(SemanticsActions.GetTextLayoutResult)?.action ?: return@forEach
-            layoutResults.clear()
-            action(layoutResults)
-            layoutResults.forEach { result ->
-                val text = result.layoutInput.text.text
-                assertFalse(
-                    "\"$text\" has a forced mid-word break",
-                    result.hasForcedMidWordBreak(text),
-                )
-                if (result.layoutInput.maxLines == 1) {
-                    assertFalse(
-                        "\"$text\" exceeded its single line and was clipped",
-                        result.multiParagraph.didExceedMaxLines,
-                    )
-                }
-                if (!result.layoutInput.softWrap) {
-                    assertTrue(
-                        "\"$text\" needs ${result.multiParagraph.maxIntrinsicWidth}px, " +
-                            "more than its softWrap=false box (${result.size.width}px)",
-                        result.multiParagraph.maxIntrinsicWidth <= result.size.width,
-                    )
-                }
-            }
-        }
+    @Test
+    @Config(qualifiers = "+sv-h1600dp")
+    fun stats_one_find_sv() {
+        compose.captureScreen("stats_one_find_sv") { screen(Locale.SV, observationRepo = SeasonStatsFixtures.singleFindRepo()) }
+        compose.onNodeWithText("Ditt första fynd i år kom i mars.").assertExists()
+    }
+
+    @Test
+    @Config(qualifiers = "+sv-h1600dp")
+    fun stats_two_finds_sv() {
+        compose.captureScreen("stats_two_finds_sv") { screen(Locale.SV, observationRepo = SeasonStatsFixtures.twoFindsRepo()) }
+        compose.onNodeWithText("2 fynd hittills i år.").assertExists()
+    }
+
+    /** 1.3x and 2.0x on a narrow phone, with a long one-word species name in the timeline and the seals. */
+    @Test
+    @Config(qualifiers = "+sv-w360dp-h2600dp")
+    fun stats_w360_sv_130() {
+        RuntimeEnvironment.setFontScale(1.3f)
+        compose.captureScreen("stats_w360_sv_130") { screen(Locale.SV, speciesRepo = SeasonStatsFixtures.speciesWithLongName()) }
+        compose.assertNoTextLayoutRegressions()
+    }
+
+    @Test
+    @Config(qualifiers = "+sv-w360dp-h2600dp")
+    fun stats_w360_sv_200() {
+        RuntimeEnvironment.setFontScale(2.0f)
+        compose.captureScreen("stats_w360_sv_200") { screen(Locale.SV, speciesRepo = SeasonStatsFixtures.speciesWithLongName()) }
+        compose.assertNoTextLayoutRegressions()
     }
 }

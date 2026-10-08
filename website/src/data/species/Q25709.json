@@ -1,0 +1,588 @@
+{
+  "qid": "Q25709",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Fjäderdräkten är spräcklig i gult, rostbrunt och svart.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess fjäderdräkt är spräcklig i gult, rostbrunt och svart."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Näbben och fötterna är gröngula.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben och fötterna är gröngula."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Hjässan och nacken är svarta.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The crown and nape are black"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Huvudet har ett gulbeige ögonbrynsstreck och ett brunsvart mustaschstreck.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The head has a yellowish-buff superciliary stripe and a brownish-black moustachial stripe."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "I flykten påminner den om en rovfågel eller uggla med sina breda vingar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten påminner den snarast om en rovfågel eller uggla med sina breda vingar."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "I flykten ser den framtung ut, fötterna sticker ut bakom och ovansidan är jämnmörk.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dock ser den framtung ut i flykten, dess fötter spretar ut bakom den, och man kan lägga märke till dess jämnmörka ovansida."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "behaviour",
+      "sv": "Halsen är utsträckt när den lyfter men dras in när den fått upp farten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Its neck is extended when it takes off, but is retracted when it has picked up speed."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "size",
+      "sv": "Den vuxna fågeln är 69–81 centimeter lång och har ett vingspann på 100–130 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "som adult mäter 69–81 centimeter och har ett vingspann på 100–130 centimeter"
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Den väger 0,87–1,94 kilo.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "a body mass of 0.87–1.94 kg"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Könen är lika, men hanen är större.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika men hanen är större."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Ungfåglar liknar de vuxna men är något blekare med otydligare teckning.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Juveniles have similar plumage to adults but are somewhat paler with less distinct markings."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Lätet är ett dovt tutande som påminner om ljudet när man blåser över mynningen på en tom flaska.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rördrommen har ett karakteristiskt dovt tutande läte som påminner om det ljud som uppstår när man blåser över mynningen på en tomflaska."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Lätet är starkt och kan ibland höras mer än fem kilometer bort.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lätet är starkt och kan höras på långt avstånd, ibland mer än fem kilometer."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Hanens läte hörs främst mellan januari och april under parningstiden.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The call is mainly given between January and April during the mating season."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Den lever i våtmarker och håller sig oftast dold i tät vass.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rördromen förekommer i våtmarker och håller sig oftast dold i tät vass"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "För häckning föredrar den stora vassbälten på minst 20 hektar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "chooses large reed beds of at least 20 hectares (50 acres) in which to breed"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "I Sverige häckar den ganska sällsynt på spridda ställen, mest i de södra och mellersta delarna av landet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige häckar den ganska sällsynt på spridda ställen, mest i de södra och mellersta delarna av landet."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Den tätaste koncentrationen i Sverige finns i det mellansvenska slättsjöområdet, bland annat vid Tåkern.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den tätaste koncentrationen finns i det mellansvenska slättsjöområdet, bland annat vid fågelsjön Tåkern."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Vid riksinventeringen år 2000 räknades omkring 650 spelande hanar i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vid riksinventeringen år 2000 räknade man omkring 650 spelande hanar i hela Sverige"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Vissa individer drar sig bara undan isen och kan övervintra i södra Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "vissa individer drar sig bara undan isen och kan övervintra i exempelvis de södra delarna av Sverige"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "De nordliga häckfåglarna flyttar i september–november till sydligare delar av Europa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den nordligt häckande populationen är flyttfåglar som i september-november flyttar till sydligare delar av Europa."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "I Artdatabankens rödlista från 2020 klassas den som nära hotad (NT).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Artdatabankens rödlista från 2020 kategoriseras den som nära hotad (NT)."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Vid fara står den orörlig med indragen hals och näbben rakt upp, så kallad pålställning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vid hotande fara ställer den sig orörlig med indragen hals och näbben riktad rakt upp i så kallad pålställning."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Den är mest aktiv i gryning och skymning men söker ibland föda på dagen.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is most active at dawn and dusk, but also sometimes forages by day."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Födan består främst av fisk och grodor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Födan utgörs främst av fisk och grodor."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Boet är plattformsliknande och byggs direkt på marken bland tät vass.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den bygger sitt plattformsliknande bo direkt på marken"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Kullen består vanligtvis av fyra till fem grågröna ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "lägger en kull med vanligtvis fyra till fem grågröna ägg"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Honan ruvar äggen i genomsnitt 25–26 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ruvar äggen i genomsnitt 25–26 dygn."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "breeding",
+      "sv": "Hanen kan ha flera honor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Hanen kan ha flera honor."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "breeding",
+      "sv": "Ungarna blir fullt flygga vid ungefär åtta veckors ålder.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They become fully fledged at about eight weeks."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i april och maj."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i augusti till januari."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Värmland, Västmanland och Örebro."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": null,
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "bc14c480477ee444"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "rordrom",
+    "en": "eurasian-bittern"
+  },
+  "names": {
+    "sv": "Rördrom",
+    "en": "Eurasian Bittern",
+    "scientific": "Botaurus stellaris"
+  },
+  "family": {
+    "latin": "Ardeidae",
+    "sv": "Hägrar"
+  },
+  "group": "herons_storks",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25709/hero.webp",
+      "width": 1600,
+      "height": 1109,
+      "author": "caroline legg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bittern_(M)_-_Botaurus_stellaris_(52911849783).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25709/extra.webp",
+      "width": 1200,
+      "height": 801,
+      "author": "Jo Garbutt",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Botaurus_stellaris_-Minsmere_RSPB_reserve,_Suffolk,_England-8.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25709/voice.mp3",
+    "durationSec": 14,
+    "trimmed": false,
+    "author": "Miro Demko",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Botaurus_stellaris_-_Eurasian_Bittern_XC362697.mp3",
+    "sha256": "ecf2b874c12fe2ca4c7a9bd4837702c1dce91bf9676d62eb7b97959e146f363e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Rördrom",
+      "revision": "59481698"
+    },
+    "en": {
+      "title": "Eurasian bittern",
+      "revision": "1376023720"
+    },
+    "de": {
+      "title": "Rohrdommel",
+      "revision": "267377467"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2480910,
+    "totalReports": 68531,
+    "months": [
+      7,
+      18,
+      48,
+      100,
+      93,
+      54,
+      6,
+      2,
+      2,
+      2,
+      3,
+      7
+    ],
+    "counties": {
+      "SE-K": 4,
+      "SE-W": 38,
+      "SE-X": 35,
+      "SE-I": 25,
+      "SE-N": 5,
+      "SE-Z": 1,
+      "SE-F": 34,
+      "SE-H": 9,
+      "SE-G": 28,
+      "SE-BD": 8,
+      "SE-T": 78,
+      "SE-E": 65,
+      "SE-M": 19,
+      "SE-D": 60,
+      "SE-AB": 35,
+      "SE-C": 67,
+      "SE-S": 100,
+      "SE-AC": 1,
+      "SE-Y": 20,
+      "SE-U": 86,
+      "SE-O": 28
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april och maj.",
+        "Rapporteras sällan i juli till januari.",
+        "Andelen av alla fågelrapporter är högst i Värmland, Västmanland och Örebro."
+      ],
+      "en": [
+        "Reported most in April and May.",
+        "Rarely reported in July to January.",
+        "Its share of all bird reports is highest in Värmland, Västmanland and Örebro."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        811,
+        1423,
+        7143,
+        22805,
+        24547,
+        7675,
+        695,
+        278,
+        240,
+        205,
+        237,
+        446
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 9033,
+        "SE-C": 8393,
+        "SE-AB": 7952,
+        "SE-D": 6092,
+        "SE-E": 5893,
+        "SE-T": 4828,
+        "SE-S": 4469,
+        "SE-M": 4316,
+        "SE-U": 4134,
+        "SE-F": 3001,
+        "SE-W": 2088,
+        "SE-H": 1588,
+        "SE-X": 1514,
+        "SE-G": 1337,
+        "SE-I": 990,
+        "SE-Y": 639,
+        "SE-N": 479,
+        "SE-BD": 417,
+        "SE-K": 85,
+        "SE-AC": 73,
+        "SE-Z": 2
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: The quote confirms partial migration (some individuals overwinter in southern Sweden) but does not state that the species breeds in Sweden, so the 'häckar här' part is unsupported by this quote/paragraph.. Bestäm status eller lämna tom."
+    }
+  ]
+}

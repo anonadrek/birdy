@@ -8,7 +8,7 @@ from typing import Any, cast
 from pydantic import BaseModel
 
 from birdy_fetcher.cost import CostTracker
-from birdy_fetcher.web.llm import AnthropicJsonClient, ModelReply, record_cost
+from birdy_fetcher.web.llm import COST_KEYS, MODELS, AnthropicJsonClient, ModelReply, record_cost
 
 
 class Answer(BaseModel):
@@ -92,3 +92,21 @@ def test_record_cost_uses_the_model_price() -> None:
     record_cost(cost, "opus", ModelReply(None, "", 1_000_000, 0, "end_turn"))
     record_cost(cost, "sonnet", ModelReply(None, "", 0, 1_000_000, "end_turn"))
     assert round(cost.total_usd, 2) == 15.00
+
+
+def test_opus55_is_a_model_with_its_own_price() -> None:
+    """R3 (2026-10-07): Opus 5.5 as an option next to Opus 5, at $4 / $20 per Mtok."""
+    assert MODELS["opus55"] == "claude-opus-5-5"
+    cost = CostTracker(max_usd=None)
+    record_cost(cost, "opus55", ModelReply(None, "", 1_000_000, 1_000_000, "end_turn"))
+    assert round(cost.total_usd, 2) == 24.00
+
+
+def test_every_model_key_has_a_price() -> None:
+    assert set(COST_KEYS) == set(MODELS)
+
+
+def test_the_cli_model_keys_are_the_models() -> None:
+    from birdy_fetcher.web.defaults import MODEL_KEYS
+
+    assert set(MODEL_KEYS) == set(MODELS)

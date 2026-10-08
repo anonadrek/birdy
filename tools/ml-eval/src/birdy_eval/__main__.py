@@ -102,7 +102,7 @@ def run(
     "--photos-dir",
     required=True,
     type=click.Path(exists=True, file_okay=False, path_type=Path),
-    help="Corpus JPEGs dir (e.g. composeApp/src/androidMain/assets/benchmark/).",
+    help="Corpus JPEGs dir (e.g. composeApp/src/androidDebug/assets/benchmark/).",
 )
 @click.option(
     "--photos",

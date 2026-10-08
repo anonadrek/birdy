@@ -1,0 +1,852 @@
+{
+  "qid": "Q184432",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Storlommen är 65–74 centimeter lång och har ett vingspann på 105–125 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kroppslängden är 65–74 centimeter och vingspannet 105–125 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Storlommen kan väga mellan 1,3 och 3,4 kilo.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storlommen är cirka 70 cm lång och kan väga mellan 1,3 och 3,4 kg."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "size",
+      "sv": "Storlommen är något större än en gräsand men betydligt mer långsmal.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storlommen är något större än en gräsand men betydligt mer långsmal."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "I sommardräkt har storlommen askgrått huvud och hals samt violettglänsande svart strupe och framhals.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I sommardräkt har den askgrått huvud och hals. Strupen och framhalsen är violettglänsande svarta."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "I sommardräkt är ovansidan svart med två avlånga fält av fyrkantiga vita fläckar på vardera sidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kroppen är rent svart på ovansidan med två avlånga fält på vardera sidan, bildade av fyrkantiga vita fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Halsens, krävans och bröstets sidor har svarta och vita längdstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Halsens, krävans och bröstets sidor har svarta och vita längdstreck."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Storlommen har en dolkformad näbb som oftast hålls horisontellt när fågeln simmar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har en dolkformad näbb som oftast hålls horisontell när man ser fågeln simma."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "I vinterdräkt är storlommen ljusgrå på hjässa och bakhals, brunaktigt svartgrå ovan och vit på haka, strupe, bröst och undersida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I vinterdräkt är storlommen ljusgrå på ovansidan av huvudet och baksidan av halsen, jämnt brunaktigt svartgrå på kroppens översida och vit på haka, strupe, bröst och undersida."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Den vuxna storlommens ögon är djupt brunröda.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The irides are a deep brown-red."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Hane och hona ser likadana ut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika. Den har en dolkformad näbb"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Ungfåglar liknar vuxna i vinterdräkt men är mer bruna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De unga har liknande teckning som de icke-häckande adulta, men med mer brunt."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Revirropet låter ku-u-í-ki, kuí-ki, kuí-ki.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Revirropet är ett ku-u-í-ki, kuí-ki, kuí-ki."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Varningslätet är ett djupt knarrande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Varningslätet är ett djupt knarrande"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Hanen sjunger under häckningstiden en hög, rytmisk och visslande sång.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The male, when breeding, vocalizes a loud and rhythmic"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "I flykten ger storlommen ett skällande ”kwow”.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "While flying, it makes a barking \"kwow\" flight call."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Under häckningen håller storlommen till vid avskilda, djupa sötvattensjöar större än 0,1 kvadratkilometer.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "When breeding, it is found in the area around isolated, deep freshwater lakes larger than 0.1 square kilometres"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Vintertid lever storlommen oftast i kustnära vatten längs skyddade kuster.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "During this time, its habitat is usually inshore waters along sheltered coasts"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Storlommen häckar i hela Sverige utom på Öland, Gotland och i Skåne.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storlom häckar över hela Sverige förutom på Öland, Gotland och i Skåne."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Sjön Båven i Sörmland har historiskt haft omkring 50 till 60 par storlom.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Historiskt sett är exempelvis sjön Båven i Sörmland en av de mest storlomstäta sjöarna i Sverige med omkring 50 till 60 par."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Storlommen är Gästriklands landskapsfågel.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den är Gästriklands landskapsfågel."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "Boet läggs direkt på marken, ofta på en tuva i strandkanten, ofta på samma plats år efter år.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger sitt bo direkt på marken, ofta på en tuva i strandkanten eller en liten bit upp på land, ofta på samma plats år efter år."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Kullen består vanligen av två, sällan ett eller tre, brungröna ägg med mörka fläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den lägger vanligtvis en kull av två, sällan ett eller tre, brun-gröna ägg med mörka fläckar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Båda föräldrarna tar hand om ungarna, som blir flygfärdiga efter cirka 60 till 65 dygn.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Paret tar tillsammans hand om ungarna som är flygfärdiga efter cirka 60 till 65 dygn"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Storlommen äter fisk och ibland insekter, blötdjur, kräftdjur och växtdelar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "this bird feeds on fish and sometimes insects, molluscs, crustaceans, and plant matter."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Storlommen dyker från vattenytan efter föda och går inte djupare än 5 meter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den dyker från vattenytan och går inte djupare än 5 meter."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "I flykten sticker fötterna ut långt, så att vingarna ser ut att sitta mitt på kroppen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I flykten sticker fötterna ut långt vilket gör att vingarna ser ut att sitta på mitten av kroppen"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Storlommen lyfter genom att springa längs vattenytan som på en startbana.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "it takes off by pattering on a \"runway\" of water."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Lommar ligger ganska lågt i vattnet jämfört med andra sjöfåglar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Jämfört med andra sjöfåglar ligger lommar ganska lågt i vattnet."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Storlommen lever i par, oftast för livet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Storlommen är parbildande, oftast för livet."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i april och juli till september."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i februari."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Dalarna, Kronoberg och Jämtland."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Storlommen är en lom som under häckningen håller till vid avskilda, djupa sötvattensjöar.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "Vintertid lever den oftast i kustnära vatten längs skyddade kuster.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Något större än en gräsand men betydligt mer långsmal",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Sommardräkt: askgrått huvud och hals, violettglänsande svart strupe, svart ovansida med vita fläckfält",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Vinterdräkt: ljusgrå hjässa och bakhals, mörk ovansida, vit strupe och undersida",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Dolkformad näbb som oftast hålls horisontellt när den simmar, hane och hona lika",
+          "factIds": [
+            "f07",
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Revirropet låter ku-u-í-ki, kuí-ki, kuí-ki.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "Under häckningstiden sjunger hanen en hög, rytmisk och visslande sång.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Varningslätet är ett djupt knarrande, och i flykten hörs ett skällande ”kwow”.",
+          "factIds": [
+            "f13",
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Storlommen häckar i hela Sverige utom på Öland, Gotland och i Skåne.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i april och juli till september och sällan i februari.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Dalarna, Kronoberg och Jämtland.",
+          "factIds": [
+            "d03"
+          ]
+        },
+        {
+          "text": "Storlommen är Gästriklands landskapsfågel.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den äter fisk och ibland insekter, blötdjur, kräftdjur och växtdelar.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "Födan hämtas genom dyk från vattenytan, och den går inte djupare än 5 meter.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Lommar ligger ganska lågt i vattnet, och storlommen lyfter genom att springa längs ytan som på en startbana.",
+          "factIds": [
+            "f28",
+            "f27"
+          ]
+        },
+        {
+          "text": "I flykten sticker fötterna ut långt, så att vingarna ser ut att sitta mitt på kroppen.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "Storlommen lever i par, oftast för livet.",
+          "factIds": [
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Storlom: så känner du igen den i sommar- och vinterdräkt, hur revirropet och sången låter, var den häckar och när under året den syns.",
+      "facts": {
+        "size": {
+          "value": "65 till 74 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Black-throated Loon is a loon that breeds on secluded, deep freshwater lakes.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "In winter it usually lives in coastal waters along sheltered coasts.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Slightly larger than a Mallard but much more slender",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Summer: ash-grey head and neck, purple-glossed black throat, black back with white spot patches",
+          "factIds": [
+            "f04",
+            "f05"
+          ]
+        },
+        {
+          "text": "Winter: pale grey crown and nape, dark upperparts, white throat and underparts",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Dagger-shaped bill usually held horizontal when swimming, male and female look alike",
+          "factIds": [
+            "f07",
+            "f10"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The territorial call sounds like ku-u-í-ki, kuí-ki, kuí-ki.",
+          "factIds": [
+            "f12"
+          ]
+        },
+        {
+          "text": "In the breeding season the male sings a high, rhythmic, whistling song.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "The alarm call is a deep creaking, and in flight it gives a barking “kwow”.",
+          "factIds": [
+            "f13",
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Black-throated Loon breeds throughout Sweden except on Öland, Gotland and in Skåne.",
+          "factIds": [
+            "f18"
+          ]
+        },
+        {
+          "text": "It is reported most in April and from July to September, and rarely reported in February.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Dalarna, Kronoberg and Jämtland.",
+          "factIds": [
+            "d03"
+          ]
+        },
+        {
+          "text": "It is the provincial bird of Gästrikland.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats fish and sometimes insects, molluscs, crustaceans and plant material.",
+          "factIds": [
+            "f24"
+          ]
+        },
+        {
+          "text": "It dives from the surface for food, never deeper than 5 metres.",
+          "factIds": [
+            "f25"
+          ]
+        },
+        {
+          "text": "Loons sit fairly low in the water, and it takes off by running along the surface as if on a runway.",
+          "factIds": [
+            "f28",
+            "f27"
+          ]
+        },
+        {
+          "text": "In flight the feet stick out far, so the wings look placed mid-body.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "It lives in pairs, usually for life.",
+          "factIds": [
+            "f29"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Black-throated Loon: how to recognise it in summer and winter plumage, what its call and song sound like, where it breeds and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "65 to 74 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "9135f3adc9ac4a4e"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "9135f3adc9ac4a4e"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "storlom",
+    "en": "black-throated-loon"
+  },
+  "names": {
+    "sv": "Storlom",
+    "en": "Black-throated Loon",
+    "scientific": "Gavia arctica"
+  },
+  "family": {
+    "latin": "Gaviidae",
+    "sv": "Lommar"
+  },
+  "group": "grebes_divers",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q184432/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "Bengt Nyman",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gavia_arctica_EM1B1934_(48009481846).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q184432/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Kathy Büscher",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Prachttaucher_(1)_(34640349480).jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Storlom",
+      "revision": "57937282"
+    },
+    "en": {
+      "title": "Black-throated loon",
+      "revision": "1354909991"
+    },
+    "de": {
+      "title": "Prachttaucher",
+      "revision": "251575238"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2481959,
+    "totalReports": 180597,
+    "months": [
+      12,
+      10,
+      20,
+      87,
+      75,
+      78,
+      100,
+      85,
+      82,
+      55,
+      31,
+      15
+    ],
+    "counties": {
+      "SE-K": 43,
+      "SE-W": 100,
+      "SE-X": 46,
+      "SE-I": 43,
+      "SE-N": 30,
+      "SE-Z": 91,
+      "SE-F": 84,
+      "SE-H": 60,
+      "SE-G": 94,
+      "SE-BD": 48,
+      "SE-T": 50,
+      "SE-E": 32,
+      "SE-M": 25,
+      "SE-D": 40,
+      "SE-AB": 38,
+      "SE-C": 10,
+      "SE-S": 78,
+      "SE-AC": 52,
+      "SE-Y": 55,
+      "SE-U": 36,
+      "SE-O": 42
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april och juli till september.",
+        "Rapporteras sällan i februari.",
+        "Andelen av alla fågelrapporter är högst i Dalarna, Kronoberg och Jämtland."
+      ],
+      "en": [
+        "Reported most in April and July to September.",
+        "Rarely reported in February.",
+        "Its share of all bird reports is highest in Dalarna, Kronoberg and Jämtland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        2574,
+        1496,
+        5650,
+        37000,
+        37434,
+        20827,
+        20540,
+        18347,
+        18368,
+        12023,
+        4259,
+        1662
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 25227,
+        "SE-H": 18819,
+        "SE-AB": 15659,
+        "SE-F": 13310,
+        "SE-M": 10278,
+        "SE-W": 10023,
+        "SE-G": 8068,
+        "SE-D": 7413,
+        "SE-S": 6352,
+        "SE-AC": 6042,
+        "SE-T": 5656,
+        "SE-N": 5398,
+        "SE-E": 5271,
+        "SE-Z": 5167,
+        "SE-BD": 4676,
+        "SE-X": 3556,
+        "SE-Y": 3208,
+        "SE-U": 3174,
+        "SE-I": 3096,
+        "SE-C": 2248,
+        "SE-K": 1496
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

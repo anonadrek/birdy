@@ -85,6 +85,13 @@ interface UserPreferences {
      */
     val grandfatherTrustedFirstSeenMs: Flow<Long?>
 
+    /**
+     * The local date (ISO `yyyy-MM-dd`) on which the user last opened that day's Dagens fågel
+     * (release 1.3.0 Task 7d); null = never. The Identify tab shows a dot while this differs from
+     * today's date, so it resets on its own when the date changes.
+     */
+    val dailyBirdOpenedDate: Flow<String?>
+
     suspend fun setUserName(name: String)
 
     suspend fun setHasSeenOnboarding(value: Boolean)
@@ -133,4 +140,6 @@ interface UserPreferences {
     suspend fun captureGrandfatherLegacy(installMs: Long?)
 
     suspend fun setGrandfatherTrustedFirstSeenMs(ms: Long)
+
+    suspend fun setDailyBirdOpenedDate(date: String)
 }

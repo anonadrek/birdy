@@ -1,0 +1,569 @@
+{
+  "qid": "Q21062",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Sillgrisslan är svart eller mörkbrun på rygg, huvud och vingarnas ovansida, vilket kontrasterar mot den vita buken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Båda könen är svarta eller mörkbruna på ryggen, huvudet och översidan av vingarna vilket kontrasterar mot den vita buken."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Näbben är lång och spetsig, och i flykten sticker de gråsvarta fötterna ut bakom fågeln.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är lång och spetsig och när den flyger sticker de gråsvarta fötterna ut bakom fågeln."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "I vinterdräkt är även hakan och området bakom ögat vitt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern är även hakan och området bakom ögat vitt."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Efter häckningsruggningen är ansiktet vitt med en mörk strimma bakom ögat, och flankerna har ofta mörka streck.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "After the post-breeding moult, the face is white with a dark spur behind the eye, and there are often dark streaks on the flanks."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "En del sillgrisslor, så kallade ringvior, har en vit ring runt ögat och ett vitt streck bakåt över kinden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "har en vit ring runt ögat och ett vitt streck bakåt över kinden kallas för \"ringvia\""
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Ringviavarianten blir vanligare ju längre norrut fåglarna häckar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "a polymorphism that becomes more common the farther north the birds breed"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "size",
+      "sv": "Sillgrisslan är 38–46 centimeter lång, plus fötterna som sticker ut cirka 4 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sillgrisslan är mellan 38 och 46 centimeter lång plus fötterna som sticker ut cirka 4 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "size",
+      "sv": "Vingspannet är 61–73 centimeter och en vuxen fågel väger normalt runt ett kilo.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingspannet är 61–73 cm och en adult fågel väger normalt runt ett kilo."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Hane och hona går inte att skilja åt i fält.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Male and female are indistinguishable in the field"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Hanar har i genomsnitt en något större näbb än honor.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Männchen haben im Durchschnitt einen etwas größeren Schnabel als die Weibchen."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Fåglar i sin första vinter har samma dräkt som vuxna i vinterdräkt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The plumage of first winter birds is the same as the adult winter plumage."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Vid kolonierna låter sillgrisslan främst ett upprepat nasalt wha wha wha som övergår i ett råmande läte.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Främst utstöter de ett upprepande nasalt wha wha wha som går över i ett råmande läte."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Sillgrisslorna är mycket talföra vid kolonierna men tysta i flykten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vid kolonierna är sillgrisslorna mycket talföra."
+        },
+        {
+          "article": "sv",
+          "quote": "I flykten är den tyst."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Ungarna tigger mat med en hög, långt bärande vissling, ”willee”.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "the chicks have a food-begging call, a high-pitched whistle \"willee\", with considerable carrying power"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "habitat",
+      "sv": "Sillgrisslan tillbringar mest tid till havs och kommer bara i land för att häcka på klippstränder eller öar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It spends most of its time at sea, only coming to land to breed on rocky cliff shores or islands."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Den häckar på öar, klippiga stränder, klippor och klippstackar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The breeding habitat is islands, rocky shores, cliffs and sea stacks."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "sweden",
+      "sv": "Sveriges största koloni finns på Karlsöarna utanför Gotlands sydvästkust.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På Karlsöarna utanför Gotlands sydvästkust finns Sveriges största koloni."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "sweden",
+      "sv": "Utöver Karlsöarna häckar sillgrisslan utmed Västerbottenkusten och på platser i Uppland och Södermanland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Utöver Karlsöarna, häckar sillgrisslan även utmed Västerbottenkusten och på platser i Uppland och Södermanland."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "De flesta sillgrisslor som häckar i Östersjön övervintrar i dess allra sydligaste delar, till exempel Gdanskbukten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Merparten av alla sillgrisslor som häckar i Östersjön övervintrar i de allra sydligaste delarna av Östersjön som exempelvis i Gdansk-bukten."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "Räkningar längs svenska kusten visar en tydlig ökning av sillgrisslor de senaste åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Räkningar längs svenska kusten visar på en tydlig ökning av sillgrisslor de senaste åren."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Sillgrisslor har etablerat nya kolonier nära skarvkolonier, till exempel i Södermanlands och Stockholms skärgårdar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Man har noterat att sillgrisslor har nyetablerat kolonier i direkt närhet till skarvkolonier, exempelvis i Södermanlands och Stockholms skärgårdar"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Sillgrisslan är den fågel i Sverige som i genomsnitt blir äldst.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sillgrisslan är den fågel i Sverige som i genomsnitt blir äldst."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Sillgrisslan häckar i kolonier, ofta på tusentals par, på branta fågelberg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sillgrisslan häckar i kolonier, som ofta uppgår till tusentals par, på branta så kallade fågelberg."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Det enda, päronformade ägget läggs direkt på berghällen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det enda ägget, som är päronformat, läggs direkt på berghällen."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Ungarna lämnar häckningslokalen i regel i slutet av juni eller början av juli.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De lämnar i regel häckningslokalen under slutet av juni eller i början av juli."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Efter att ungen lämnat boplatsen är det hanen som tar hand om den tills den klarar sig själv.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det är sedan hanen som tar hand om ungen tills den är stor nog att klara sig själv."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Sillgrisslan lever av småfisk, i Skandinavien främst skarpsill, men även maskar och andra undervattensdjur.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fågeln livnär sig på småfisk, i Skandinavien främst skarpsill, men även maskar och andra undervattensdjur."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Sillgrisslan kan dyka ner till 80 meters djup, med ett noterat rekord på 180 meter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sillgrisslor kan dyka ner till 80 meters djup i sin jakt, med ett noterat rekord på 180 meter."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Grupper av sillgrisslor ses ofta flyga i en linje strax ovanför havsytan.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Groups of birds are often seen flying together in a line just above the sea surface."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Sillgrisslan ses ofta bära en fisk i näbben med stjärten hängande ut.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is often seen carrying fish in its bill with the tail hanging out."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i oktober och november."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Halland, Gotland och Kalmar."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": null,
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "026a4fd9a80acfdb"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "sillgrissla",
+    "en": "common-murre"
+  },
+  "names": {
+    "sv": "Sillgrissla",
+    "en": "Common Murre",
+    "scientific": "Uria aalge"
+  },
+  "family": {
+    "latin": "Alcidae",
+    "sv": "Alkor"
+  },
+  "group": "auks",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q21062/hero.webp",
+      "width": 1600,
+      "height": 1064,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_guillemot_(Uria_aalge).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q21062/extra.webp",
+      "width": 1200,
+      "height": 798,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_guillemot_(Uria_aalge),_Heligoland.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Sillgrissla",
+      "revision": "59461284"
+    },
+    "en": {
+      "title": "Common murre",
+      "revision": "1362495741"
+    },
+    "de": {
+      "title": "Trottellumme",
+      "revision": "266320101"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2481342,
+    "totalReports": 42562,
+    "months": [
+      32,
+      46,
+      14,
+      15,
+      29,
+      24,
+      28,
+      11,
+      30,
+      100,
+      97,
+      43
+    ],
+    "counties": {
+      "SE-K": 34,
+      "SE-W": 1,
+      "SE-X": 3,
+      "SE-I": 82,
+      "SE-N": 100,
+      "SE-Z": 0,
+      "SE-F": 0,
+      "SE-H": 56,
+      "SE-G": 1,
+      "SE-BD": 1,
+      "SE-T": 0,
+      "SE-E": 4,
+      "SE-M": 52,
+      "SE-D": 2,
+      "SE-AB": 11,
+      "SE-C": 1,
+      "SE-S": 1,
+      "SE-AC": 1,
+      "SE-Y": 2,
+      "SE-U": 0,
+      "SE-O": 38
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i oktober och november.",
+        "Andelen av alla fågelrapporter är högst i Halland, Gotland och Kalmar."
+      ],
+      "en": [
+        "Reported most in October and November.",
+        "Its share of all bird reports is highest in Halland, Gotland and Kalmar."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        2905,
+        2954,
+        1631,
+        2720,
+        6127,
+        2742,
+        2421,
+        991,
+        2884,
+        9318,
+        5734,
+        2087
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 8029,
+        "SE-M": 7621,
+        "SE-N": 6374,
+        "SE-H": 6236,
+        "SE-I": 2077,
+        "SE-AB": 1670,
+        "SE-K": 424,
+        "SE-E": 216,
+        "SE-D": 149,
+        "SE-C": 91,
+        "SE-X": 84,
+        "SE-Y": 49,
+        "SE-AC": 45,
+        "SE-G": 23,
+        "SE-BD": 21,
+        "SE-S": 16,
+        "SE-W": 8
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: The quote says only 'most' (not all) Baltic-breeding birds winter in the southernmost Baltic, suggesting a partial migration pattern rather than a full 'Flyttfågel' status; the claim overstates this as complete migration without acknowledging the mixed pattern.. Bestäm status eller lämna tom."
+    }
+  ]
+}

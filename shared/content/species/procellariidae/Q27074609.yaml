@@ -74,8 +74,7 @@ image_refs:
   width: 2400
   height: 1487
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Great shearwater (Ardenna gravis)
     2017.jpg
   commons_filename: Great shearwater (Ardenna gravis) 2017.jpg
@@ -84,8 +83,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1733946">Ryan
-    F. Mandelbaum</a>
+  author: Ryan F. Mandelbaum
   source_url: https://commons.wikimedia.org/wiki/File:Great Shearwater, Ardenna gravis.jpg
   commons_filename: Great Shearwater, Ardenna gravis.jpg
 - role: secondary
@@ -93,8 +91,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Greater shearwater (Ardenna
     gravis) Sagres.jpg
   commons_filename: Greater shearwater (Ardenna gravis) Sagres.jpg

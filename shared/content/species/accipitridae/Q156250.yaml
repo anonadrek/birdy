@@ -9,7 +9,7 @@ names:
   sv: Röd glada
   en: Red Kite
 abundance: ovanlig
-iucn_status: NE
+iucn_status: LC
 season:
   jan: present
   feb: present
@@ -96,7 +96,7 @@ image_refs:
   width: 2400
   height: 1601
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/185252831@N05">HLI-Photography</a>
+  author: HLI-Photography
   source_url: https://commons.wikimedia.org/wiki/File:Rotmilan (Milvus milvus) (53662507778).jpg
   commons_filename: Rotmilan (Milvus milvus) (53662507778).jpg
 - role: secondary
@@ -104,7 +104,7 @@ image_refs:
   width: 1800
   height: 1599
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Red Kite. Milvus milvus (51920791502).jpg
   commons_filename: Red Kite. Milvus milvus (51920791502).jpg
 - role: secondary
@@ -112,8 +112,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/73433109@N07">Synaptic
-    Refuge</a>
+  author: Synaptic Refuge
   source_url: https://commons.wikimedia.org/wiki/File:Milvus milvus, Deadmans Hill,
     Herts 1.jpg
   commons_filename: Milvus milvus, Deadmans Hill, Herts 1.jpg

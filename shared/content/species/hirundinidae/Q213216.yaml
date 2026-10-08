@@ -93,26 +93,23 @@ image_refs:
   width: 2048
   height: 1536
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/4514772">Olivier
-    Morel</a>
+  author: Olivier Morel
   source_url: https://commons.wikimedia.org/wiki/File:Ptyonoprogne rupestris 241864842.jpg
   commons_filename: Ptyonoprogne rupestris 241864842.jpg
 - role: secondary
   path: Q213216/secondary-1.webp
   width: 1800
-  height: 1331
-  license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Petit_colibri&amp;action=edit&amp;redlink=1"
-    class="new" title="User:Petit colibri (page does not exist)">Aline Deflorenne</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Hirondelle de rochers Ptyonoprogne
-    rupestris.jpg
-  commons_filename: Hirondelle de rochers Ptyonoprogne rupestris.jpg
+  height: 1200
+  license: CC BY 4.0
+  author: Mourad Harzallah
+  source_url: https://commons.wikimedia.org/wiki/File:Ptyonoprogne rupestris 479681011.jpg
+  commons_filename: Ptyonoprogne rupestris 479681011.jpg
 - role: secondary
   path: Q213216/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Amikosik" title="User:Amikosik">Amikosik</a>
+  author: Amikosik
   source_url: https://commons.wikimedia.org/wiki/File:Ptyonoprogne rupestris in flight
     AM 1.JPG
   commons_filename: Ptyonoprogne rupestris in flight AM 1.JPG

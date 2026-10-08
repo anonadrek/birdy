@@ -81,6 +81,7 @@ import birdy_bird_scanner.composeapp.generated.resources.archive_empty_group_tit
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_body
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_retry
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_title
+import birdy_bird_scanner.composeapp.generated.resources.archive_extinct_tag
 import birdy_bird_scanner.composeapp.generated.resources.archive_family_header_description
 import birdy_bird_scanner.composeapp.generated.resources.archive_journal_headline
 import birdy_bird_scanner.composeapp.generated.resources.archive_journal_label
@@ -91,6 +92,7 @@ import birdy_bird_scanner.composeapp.generated.resources.archive_section_count
 import birdy_bird_scanner.composeapp.generated.resources.archive_sort_alpha
 import birdy_bird_scanner.composeapp.generated.resources.archive_sort_family
 import birdy_bird_scanner.composeapp.generated.resources.archive_sort_recent
+import birdy_bird_scanner.composeapp.generated.resources.archive_sort_relevance
 import birdy_bird_scanner.composeapp.generated.resources.menu_button
 import birdy_bird_scanner.composeapp.generated.resources.premium_archive_subtitle
 import birdy_bird_scanner.composeapp.generated.resources.premium_archive_title
@@ -134,12 +136,17 @@ import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.app.usecase.JournalExportResult
+import se.birdy.app.util.isExtinct
 import se.birdy.app.util.isRedListed
 import se.birdy.app.util.speciesImageUri
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
 import se.birdy.datastore.ArchiveSort
 
+// Pre-existing debt (LongParameterList/LongMethod/CyclomaticComplexMethod in detekt-baseline.xml): detekt keys
+// baseline entries by the signature text, so Task 7d's two daily-bird parameters re-key them without
+// changing the function's real size. Suppressed here instead of growing the baseline (AppScaffold precedent).
+@Suppress("LongParameterList", "LongMethod", "CyclomaticComplexMethod")
 @OptIn(ExperimentalMaterial3Api::class, androidx.compose.foundation.ExperimentalFoundationApi::class)
 @Composable
 fun ArchiveScreen(
@@ -155,6 +162,8 @@ fun ArchiveScreen(
     showDebugDiagnostics: Boolean = false,
     onDebugDiagnosticsClick: () -> Unit = {},
     onSettingsClick: () -> Unit = {},
+    dailyBird: se.birdy.app.dailybird.DailyBirdToday? = null,
+    onDailyBirdClick: (speciesId: String) -> Unit = {},
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val query by viewModel.query.collectAsStateWithLifecycle()
@@ -233,6 +242,17 @@ fun ArchiveScreen(
                 }
             }
 
+            // Release 1.3.0 Task 7d (design option B): the Dagens fågel strip, above the search field.
+            if (dailyBird != null) {
+                item(key = "daily-bird") {
+                    se.birdy.app.ui.dailybird.DailyBirdStrip(
+                        bird = dailyBird,
+                        onClick = { onDailyBirdClick(dailyBird.speciesId) },
+                        modifier = Modifier.padding(bottom = 12.dp),
+                    )
+                }
+            }
+
             // Spec gap B (2026-09-24 §3 item 6): search field sits right below the header, then
             // group pills, then sorting — matching the approved spec's reading order. The premium
             // teaser moved below sorting, before the results (was between header and search).
@@ -268,7 +288,7 @@ fun ArchiveScreen(
                     horizontalArrangement = Arrangement.End,
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    SortChip(sort = sort, onClick = viewModel::onSortToggle)
+                    SortChip(sort = sort, searching = query.isNotBlank(), onClick = viewModel::onSortToggle)
                 }
             }
 
@@ -619,13 +639,19 @@ private fun ChipBar(
 @Composable
 private fun SortChip(
     sort: ArchiveSort,
+    searching: Boolean,
     onClick: () -> Unit,
 ) {
     val label =
-        when (sort) {
-            ArchiveSort.ALPHA -> stringResource(Res.string.archive_sort_alpha)
-            ArchiveSort.FAMILY -> stringResource(Res.string.archive_sort_family)
-            ArchiveSort.RECENT -> stringResource(Res.string.archive_sort_recent)
+        if (searching && sort == ArchiveSort.ALPHA) {
+            // While a query is typed the hits are ranked by match, not A-Ö (release 1.3.0 Task 7g).
+            stringResource(Res.string.archive_sort_relevance)
+        } else {
+            when (sort) {
+                ArchiveSort.ALPHA -> stringResource(Res.string.archive_sort_alpha)
+                ArchiveSort.FAMILY -> stringResource(Res.string.archive_sort_family)
+                ArchiveSort.RECENT -> stringResource(Res.string.archive_sort_recent)
+            }
         }
     BirdyPill(
         text = label,
@@ -690,10 +716,7 @@ private fun SpeciesRow(
             )
         }
         // Spec gap C: iucn_status is the GLOBAL IUCN red list (not a national one).
-        if (isRedListed(summary.iucnStatus)) {
-            Spacer(Modifier.width(8.dp))
-            RedListedTag()
-        }
+        StatusTag(summary.iucnStatus)
         if (isStamped && stampNumber != null) {
             Spacer(Modifier.width(8.dp))
             MiniStamp(number = stampNumber, size = 26.dp)
@@ -701,8 +724,19 @@ private fun SpeciesRow(
     }
 }
 
+/**
+ * "Rödlistad" for a red-listed species, "Utdöd" for an extinct one (release 1.3.0 Task 7g:
+ * Garfågel, Kanariestrandskata, Smalnäbbad spov), nothing otherwise; with its own leading gap.
+ */
 @Composable
-private fun RedListedTag() {
+private fun StatusTag(iucnStatus: String) {
+    val text =
+        when {
+            isRedListed(iucnStatus) -> stringResource(Res.string.archive_red_listed_tag)
+            isExtinct(iucnStatus) -> stringResource(Res.string.archive_extinct_tag)
+            else -> null
+        } ?: return
+    Spacer(Modifier.width(8.dp))
     Box(
         modifier =
             Modifier
@@ -711,7 +745,7 @@ private fun RedListedTag() {
                 .padding(horizontal = 6.dp, vertical = 3.dp),
     ) {
         Text(
-            text = stringResource(Res.string.archive_red_listed_tag),
+            text = text,
             color = StampNavy,
             fontWeight = FontWeight.W600,
             fontSize = 9.5.sp,

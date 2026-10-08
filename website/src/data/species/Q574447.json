@@ -1,0 +1,809 @@
+{
+  "qid": "Q574447",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Lappmesen är en ganska långstjärtad och stor mes som mäter 12–14 cm och väger 11–14 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lappmesen är en rätt långstjärtad och stor mes som mäter 12–14 cm och väger 11–14 gram."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Hättan är mörkt gråbrun och inte svart, utom närmast ögat och näbben.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "hättan är mörkt gråbrun och inte svart, utom närmast ögat och näbben"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Lappmesen har vita kinder och svart haka.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kinderna är vita och hakan svart."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Ryggen är varmt brun, kroppssidan rostbrun och buken ljusgrå.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ryggen har en varmt brun ton, kroppssidan är rostbrun och buken ljusgrå."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Stjärt- och vingpennor har tydliga vita bräm, vilket ger vinge och stjärt en ljusare grå nyans.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "stjärt- och vingpennor har tydliga vita bräm vilket ger dem, som helhet, en ljusare grå nyans"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Fjäderdräkten är yvigare än hos titorna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den påminner om titorna, men dess fjäderdräkt är yvigare"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Ögat är svart och näbben är svart, liten och spetsig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ögat är svart, likaså näbben som är liten och spetsig."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "voice",
+      "sv": "Sången består dels av ett surrande \"tji-yrr tji-yrr tji-yrr...\", dels av ett entitelikt \"tje-tje-tje-tje-...\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången består av dels ett surrande \"tji-yrr tji-yrr tji-yrr...\", dels ett entitelikt \"tje-tje-tje-tje-...\"."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Locklätet liknar talltitans, ett \"zi-zi täh täh täh täh\", men tonerna är inte lika utdragna och betonade.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Locklätet är mycket likt talltitans, ett \"zi-zi täh täh täh täh\", men med inte lika utdragdna och betonade toner."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Bland lätena finns ett utdraget \"dih\" som upprepas fyra till fem gånger.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "ein langgezogenes „dih“, das vier- bis fünfmal wiederholt wird"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "habitat",
+      "sv": "Lappmesen påträffas huvudsakligen i gammal, gles barrskog men även i viss utsträckning i fjällbjörkskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fågeln påträffas huvudsakligen i gammal, gles barrskog, men även i viss utsträckning i fjällbjörkskog."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "habitat",
+      "sv": "Den europeiska underarten föredrar glesa barrskogar med rikt lövinslag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "föredrar glesa barrskogar med rikt lövinslag"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "sweden",
+      "sv": "I Sverige förekommer lappmesen dels från nordvästra Dalarna till mellersta Härjedalen, dels norrut från Hotagen–Strömsund i norra Jämtland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "dels från nordvästra Dalarna norrut till i höjd med Funäsdalen i mellersta Härjedalen, dels norrut från Hotagen–Strömsund i norra Jämtland"
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "sweden",
+      "sv": "Den svenska populationen uppskattas till 34 000–78 000 par.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sverige 34 000–78 000 par"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "sweden",
+      "sv": "I 2020 års svenska rödlista klassas lappmesen som nära hotad (NT).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "i 2020 års rödlista nedgraderats till nära hotad (NT)"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "behaviour",
+      "sv": "De flesta lappmesar är stannfåglar, men ungfåglar kan vissa år vandra i stor omfattning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Merparten är stannfåglar, men ungfåglar kan vissa år vandra i stor omfattning."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "food",
+      "sv": "Lappmesen lever främst av ryggradslösa djur men äter även frön och fett.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lappmesen lever främst av ryggradslösa djur men äter även frön, fett och andra animaliska produkter"
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "food",
+      "sv": "På hösten och vintern äter den dessutom oljehaltiga frön, särskilt från barrträd.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "im Herbst und Winter zusätzlich von ölhaltigen Samen, vor allem von Nadelbäumen"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "behaviour",
+      "sv": "I häckningsreviret hamstrar den mat i grenspetsar, grenklykor, barrbaser och under barkflagor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I häckningsreviret hamstrar den mat i grenspetsar, grenklykor, barrbaser och under barkflagor."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "behaviour",
+      "sv": "Lappmesen födosöker sällan på marken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dock födosöker den sällan på marken."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "behaviour",
+      "sv": "Vintertid uppträder den ibland i födosökande blandflockar, så kallade meståg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid uppträder den ibland i födosökande blandflockar, så kallade meståg."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "breeding",
+      "sv": "Boet placeras i naturliga håligheter och hackspetthål i stående träd och högstubbar, men även i holkar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Lappmesen placerar boet i naturliga håligheter och hackspetthål i stående träd och högstubbar men även i holkar."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Boet består av hoplagd mossa, renhår och liknande material.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet består av hoplagd mossa, renhår och liknande."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Vintertid använder lappmesen håligheter som sovplatser.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid nyttjas även liknade håligheter som sovplatser."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "resident",
+      "sv": "Stannfågel",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is a widespread resident breeder throughout subarctic Scandinavia"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i november till februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Norrbotten."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Lappmesen är en ganska långstjärtad och stor mes.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "Den påträffas huvudsakligen i gammal, gles barrskog men även i viss utsträckning i fjällbjörkskog.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Mörkt gråbrun hätta, inte svart utom närmast ögat och näbben",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Vita kinder och svart haka",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Varmt brun rygg, rostbrun kroppssida och ljusgrå buk",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Vita bräm på stjärt- och vingpennor ger vinge och stjärt en ljusare grå nyans",
+          "factIds": [
+            "f05"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången är dels ett surrande \"tji-yrr tji-yrr tji-yrr\", dels ett entitelikt \"tje-tje-tje-tje\".",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "Locklätet, ett \"zi-zi täh täh täh täh\", liknar talltitans men tonerna är inte lika utdragna och betonade.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Den har också ett utdraget \"dih\" som upprepas fyra till fem gånger.",
+          "factIds": [
+            "f10"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Lappmesen är stannfågel i Sverige.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Den förekommer dels från nordvästra Dalarna till mellersta Härjedalen, dels norrut från Hotagen och Strömsund i norra Jämtland.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "Beståndet uppskattas till 34 000 till 78 000 par.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Andelen av alla fågelrapporter är högst i Norrbotten, och den rapporteras mest i november till februari.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "Den är nära hotad (NT) i svenska rödlistan 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Lappmesen lever främst av ryggradslösa djur men äter även frön och fett, på hösten och vintern särskilt oljehaltiga frön från barrträd.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "I häckningsreviret hamstrar den mat i grenspetsar, grenklykor, barrbaser och under barkflagor.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Den födosöker sällan på marken.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "Vintertid följer den ibland med i meståg och sover i håligheter.",
+          "factIds": [
+            "f21",
+            "f25"
+          ]
+        },
+        {
+          "text": "De flesta är stannfåglar, men ungfåglar kan vissa år vandra i stor omfattning.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Lappmes: så känner du igen den på hättan och de vita kinderna, hur sång och lockläte låter och när på året den rapporteras mest.",
+      "facts": {
+        "size": {
+          "value": "12 till 14 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Grey-headed Chickadee is a fairly long-tailed, large tit.",
+          "factIds": [
+            "f01"
+          ]
+        },
+        {
+          "text": "It is found mainly in old, open conifer forest, and to some extent in mountain birch forest.",
+          "factIds": [
+            "f11"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Dark greyish-brown cap, not black except closest to the eye and bill",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "White cheeks and a black chin",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Warm brown back, rusty brown flanks and pale grey belly",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "White edges to tail and wing feathers give wings and tail a paler grey tone",
+          "factIds": [
+            "f05"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is partly a buzzing \"tji-yrr tji-yrr tji-yrr\", partly a Marsh Tit-like \"tje-tje-tje-tje\".",
+          "factIds": [
+            "f08"
+          ]
+        },
+        {
+          "text": "The call, \"zi-zi täh täh täh täh\", resembles a Willow Tit's, but the notes are less drawn out and stressed.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "It also gives a drawn-out \"dih\" repeated four to five times.",
+          "factIds": [
+            "f10"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Grey-headed Chickadee is resident in Sweden.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "It occurs from north-western Dalarna to central Härjedalen, and from Hotagen and Strömsund in northern Jämtland northwards.",
+          "factIds": [
+            "f13"
+          ]
+        },
+        {
+          "text": "The Swedish population is estimated at 34 000 to 78 000 pairs.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Its share of all bird reports is highest in Norrbotten, and it is reported most from November to February.",
+          "factIds": [
+            "d02",
+            "d01"
+          ]
+        },
+        {
+          "text": "It is Near Threatened (NT) on the 2025 Swedish Red List.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It feeds mainly on invertebrates, plus seeds and fat, in autumn and winter especially oily conifer seeds.",
+          "factIds": [
+            "f17",
+            "f18"
+          ]
+        },
+        {
+          "text": "In its breeding territory it stores food in twig tips, branch forks, needle bases and under bark flakes.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "It rarely forages on the ground.",
+          "factIds": [
+            "f20"
+          ]
+        },
+        {
+          "text": "In winter it sometimes joins mixed foraging flocks and roosts in holes.",
+          "factIds": [
+            "f21",
+            "f25"
+          ]
+        },
+        {
+          "text": "Most are resident, though young birds can wander in large numbers in some years.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Grey-headed Chickadee: how to recognise it by its cap and white cheeks, what its song and call sound like and when it is reported most.",
+      "facts": {
+        "size": {
+          "value": "12 to 14 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "79000108875b9ae6"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "79000108875b9ae6"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "lappmes",
+    "en": "grey-headed-chickadee"
+  },
+  "names": {
+    "sv": "Lappmes",
+    "en": "Grey-headed Chickadee",
+    "scientific": "Poecile cinctus"
+  },
+  "family": {
+    "latin": "Paridae",
+    "sv": "Mesar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q574447/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Lucwrte",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Siberian_Tit_(Poecile_cinctus)_in_Sodankylä,_Finland.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q574447/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Ron Knight",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Siberian_Tit_(Poecile_cinctus)_(13667826373).jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Lappmes",
+      "revision": "59570174"
+    },
+    "en": {
+      "title": "Grey-headed chickadee",
+      "revision": "1374261617"
+    },
+    "de": {
+      "title": "Lapplandmeise",
+      "revision": "270502975"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2487862,
+    "totalReports": 5447,
+    "months": [
+      96,
+      86,
+      56,
+      34,
+      9,
+      51,
+      38,
+      33,
+      39,
+      73,
+      98,
+      100
+    ],
+    "counties": {
+      "SE-K": 0,
+      "SE-W": 6,
+      "SE-X": 1,
+      "SE-I": 0,
+      "SE-N": 0,
+      "SE-Z": 2,
+      "SE-F": 0,
+      "SE-H": 1,
+      "SE-G": 0,
+      "SE-BD": 100,
+      "SE-T": 0,
+      "SE-E": 0,
+      "SE-M": 0,
+      "SE-D": 0,
+      "SE-AB": 1,
+      "SE-C": 1,
+      "SE-S": 1,
+      "SE-AC": 5,
+      "SE-Y": 5,
+      "SE-U": 0,
+      "SE-O": 0
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november till februari.",
+        "Rapporteras sällan i maj.",
+        "Andelen av alla fågelrapporter är högst i Norrbotten."
+      ],
+      "en": [
+        "Reported most in November to February.",
+        "Rarely reported in May.",
+        "Its share of all bird reports is highest in Norrbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        768,
+        477,
+        574,
+        535,
+        160,
+        507,
+        292,
+        266,
+        322,
+        586,
+        498,
+        419
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-BD": 4559,
+        "SE-AC": 284,
+        "SE-W": 283,
+        "SE-Y": 133,
+        "SE-Z": 63,
+        "SE-C": 4,
+        "SE-X": 4,
+        "SE-AB": 3,
+        "SE-S": 2,
+        "SE-H": 1
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

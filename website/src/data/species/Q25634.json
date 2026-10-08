@@ -1,0 +1,897 @@
+{
+  "qid": "Q25634",
+  "status": "ok",
+  "publish": false,
+  "review": {
+    "wave": 2,
+    "audioStruckSources": [
+      "https://commons.wikimedia.org/wiki/File:Chroicocephalus_ridibundus_-_Black-headed_Gull_XC432995.mp3"
+    ]
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Skrattmåsen är 35–39 cm lång, har ett vingspann på 86–99 cm och väger ungefär 250 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skrattmåsen är 35–39 cm lång, har ett vingspann på 86–99 cm, väger ungefär 250 gram"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Den vuxna skrattmåsen i sommardräkt har mörkt, chokladbrunt huvud som ser svart ut på avstånd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta skrattmåsen i sommardräkt har mörkt huvud med röd näbb."
+        },
+        {
+          "article": "en",
+          "quote": "The summer adult has a chocolate-brown head (not black, although does look black from a distance)"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "I sommardräkt är näbben och benen röda.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Der Schnabel und die Beine sind rot."
+        },
+        {
+          "article": "en",
+          "quote": "black tips to the primary wing feathers, and red bill and legs"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Nacke, bröst, buk och undergump är vita, manteln är ljusgrå och stjärten och övergumpen är helvita.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Nacke, bröst, buk och undergump är vita, manteln är ljusgrå och stjärten och övergumpen är helvita."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Vingens framkant på ovansidan är vit från vingknogen ut till de svarta handpennespetsarna, ett bra kännetecken i flykten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Framkanten på ovansidan av vingen är vit från vingknogen och ut till handpennespetsarna vilka är svarta."
+        },
+        {
+          "article": "en",
+          "quote": "In flight, the white leading edge of the outer wing (the outer primaries) is a good field mark"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Handpennorna på vingens undersida är mörkt grå eller svarta, utom den yttersta som är ljus.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Handpennorna på undersidan av vingen är mörkt grå eller svarta förutom den yttersta handpennan som är ljus."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "I vinterdräkt saknas det mörka huvudet och fågeln har bara ett suddigt mörkt band ovanför ögat och en svart prick bakom ögat.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Till vintern har skrattmåsen ruggat de mörka fjädrarna på huvudet och den har bara ett mörkt suddigt vertikalt band ovanför ögat och en svart prick bakom ögat."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "I vinterdräkt är näbben ljusare röd vid roten och har svart spets.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Näbben är ljusare röd vid näbbroten och spetsen är svart."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Juvenila skrattmåsar har gulorange ben och ett svart stjärtband som kontrasterar mot den vita övergumpen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som juvenil har skrattmåsen gulorange ben, ett svart stjärtband som kontrasterar mot den vita övergumpen"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Den juvenila skrattmåsen har gul näbb med svart spets.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har gul näbb med svart spets."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "I första sommardräkt har fågeln slitna stjärt- och vingpennor och svart huvud med inslag av vitt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I första sommardräkt har den fortfarande kvar de nu slitna stjärt- och vingpennorna och den har svart huvud men med inslag av vitt."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "sex_age",
+      "sv": "Hanar och honor har likadan fjäderdräkt.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "There is no difference in plumage between the sexes."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "sex_age",
+      "sv": "Skrattmåsen blir fullt utfärgad vid två års ålder.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Black-headed gulls take two years to reach maturity."
+        },
+        {
+          "article": "de",
+          "quote": "Im Alter von zwei Jahren sind die Vögel ausgefärbt."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Skrattmåsen är högljudd, särskilt i häckningskolonierna, och dess läte är ett skränigt ”krii-arr”.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skrattmåsen är en högljudd fågel, speciellt när den är på plats i sina häckningskolonier."
+        },
+        {
+          "article": "sv",
+          "quote": "Dess läte är ett skränigt \"krii-arr\"."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Utanför häckningstiden hörs vid födoplatser ofta ett skarpt, genomträngande ”kriiiärr” och ett kort, skarpt ”kik”.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Außerhalb der Brutzeit an Futterstellen ist häufig ein scharfes, durchdringendes „kriiiärr“ in vielen Variationen zu hören, daneben auch ein kurzes und scharfes „kik“."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "habitat",
+      "sv": "Skrattmåsen häckar i kolonier i sjöar, kärr och i anslutning till kusten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Skrattmåsen häckar i kolonier i sjöar, kärr och i anslutning till kusten."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "På vintern söker den sig till kortklippta gräsmattor, åkrar, soptippar, reningsverk, hamnar och vatten i städer.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Im Winter werden günstige Nahrungshabitate aller Art aufgesucht, dazu zählen kurzrasige Wiesen, Ackerflächen, Müllkippen, Kläranlagen, Häfen sowie Gewässer in Städten."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Skrattmåsen är ingen havsfågel och ses sällan till havs långt från kusten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is not a pelagic species and is rarely seen at sea far from coasts."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "sweden",
+      "sv": "Arten förekommer i stora delar av Sverige, men glesare i Norrlands inland och inte i fjällen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Idag förekommer arten över stora delar av Sverige, men glesare i Norrlands inland, och inte i fjällen."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Norden hör skrattmåsen tillsammans med fiskmås och gråtrut till de vanligaste måsfåglarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Norden är idag skrattmås tillsammans med fiskmås och gråtrut de vanligaste arterna inom denna familj."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "I början av 1700-talet häckade skrattmåsen inte alls i Sverige.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I början av 1700-talet häckade inte skrattmåsen alls i Sverige."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Sedan 2020 står skrattmåsen på Artdatabankens svenska rödlista som nära hotad (NT).",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sedan 2020 upptas skrattmåsen på svenska Artdatabankens rödlista över hotade arter, som nära hotad (NT)."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "I Skåne har antalet skrattmåsar minskat med 85 procent sedan mitten av 1970-talet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Skåne har antalet skrattmåsar minskat med 85 procent sedan mitten av 1970-talet."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Äggen ruvas under maj och ungarna matas i juni.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas under maj månad och i juni matas ungar."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Kullen består oftast av tre ägg som ruvas av båda föräldrarna i 22–23 dagar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Gelege besteht meist aus drei Eiern"
+        },
+        {
+          "article": "de",
+          "quote": "Beide Partner brüten, die Brutzeit beträgt 22 bis 23 Tage."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Den äter insekter, fisk, frön, maskar, matrester och as i städer samt ryggradslösa djur på plöjda åkrar.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It eats insects, fish, seeds, worms, scraps, and carrion in towns, or invertebrates in ploughed fields with equal facility."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "På sommaren ses skrattmåsar ofta på ängar och samlas i flockar kring traktorer som plöjer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På sommaren ser man dem ofta på ängar och de flockas kring traktorer som plöjer upp en åker."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Skrattmåsar kan försvara sina bon mycket aggressivt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "då de kan försvara sina bon mycket aggressivt"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "behaviour",
+      "sv": "Strax efter att ungarna blivit flygga flyttar skrattmåsen mot sydväst.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Strax efter att ungarna blivit flygga flyttar skrattmåsen mot sydväst."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "På vintern är skrattmåsen mycket sällskaplig, både vid födosök och på gemensamma kvällsövernattningsplatser.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Like most gulls, it is highly gregarious in winter, both when feeding and in evening roosts."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Många av de skrattmåsar som häckar norrut är flyttfåglar men i varmare trakter, kring kusterna i Skandinavien, Storbritannien och främst Västeuropa stannar den ofta på samma plats året om."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Skrattmåsen är en måsfågel som häckar i kolonier i sjöar, kärr och i anslutning till kusten.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "På vintern söker den sig till kortklippta gräsmattor, åkrar, soptippar, reningsverk, hamnar och vatten i städer.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Hane och hona är lika, i sommardräkt med chokladbrunt huvud som ser svart ut på avstånd",
+          "factIds": [
+            "f02",
+            "f12"
+          ]
+        },
+        {
+          "text": "Röd näbb och röda ben i sommardräkt",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Vit framkant på vingens ovansida, ett bra kännetecken i flykten",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "I vinterdräkt bara ett suddigt band ovanför ögat och en svart prick bakom ögat",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Skrattmåsen är högljudd, särskilt i häckningskolonierna, och lätet är ett skränigt ”krii-arr”.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden hörs vid födoplatser ofta ett skarpt, genomträngande ”kriiiärr” och ett kort, skarpt ”kik”.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Skrattmåsen är delvis flyttfågel och häckar i Sverige.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Den förekommer i stora delar av landet, men glesare i Norrlands inland och inte i fjällen.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "Arten rapporteras året runt och från alla 21 län.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "På svenska rödlistan 2025 står den som nära hotad (NT), och i Skåne har antalet minskat med 85 procent sedan mitten av 1970-talet.",
+          "factIds": [
+            "d03",
+            "f23"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Den äter insekter, fisk, frön, maskar, matrester och as i städer samt ryggradslösa djur på plöjda åkrar.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "På sommaren samlas skrattmåsar ofta i flockar kring traktorer som plöjer.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "Vid boet kan de vara mycket aggressiva.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Strax efter att ungarna blivit flygga flyttar arten mot sydväst.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "På vintern är den mycket sällskaplig, både vid födosök och på gemensamma övernattningsplatser om kvällen.",
+          "factIds": [
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Skrattmås: så känner du igen arten på huvud, näbb och vingar, hur lätet låter, vad den äter och var och när den ses i Sverige.",
+      "facts": {
+        "size": {
+          "value": "35 till 39 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Black-headed Gull is a gull that breeds in colonies on lakes, marshes and along the coast.",
+          "factIds": [
+            "f16"
+          ]
+        },
+        {
+          "text": "In winter it moves to short lawns, fields, rubbish tips, sewage works, harbours and town waters.",
+          "factIds": [
+            "f17"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Sexes alike, in summer with a chocolate-brown head that looks black at a distance",
+          "factIds": [
+            "f02",
+            "f12"
+          ]
+        },
+        {
+          "text": "Red bill and red legs in summer plumage",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "White leading edge to the upper wing, a good mark in flight",
+          "factIds": [
+            "f05"
+          ]
+        },
+        {
+          "text": "In winter just a smudgy dark band above the eye and a black spot behind it",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The Black-headed Gull is noisy, especially in breeding colonies, with a harsh \"krii-arr\" call.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Outside the breeding season, a sharp, piercing \"kriiiärr\" and a short, sharp \"kik\" are often heard at feeding sites.",
+          "factIds": [
+            "f15"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Black-headed Gull is a partial migrant that breeds in Sweden.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "It occurs across large parts of the country, but more thinly in the Norrland interior and not in the mountains.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "It is reported all year round and from all 21 counties.",
+          "factIds": [
+            "d01",
+            "d02"
+          ]
+        },
+        {
+          "text": "On the 2025 Swedish Red List it is Near Threatened (NT), and in Skåne numbers have fallen by 85 percent since the mid 1970s.",
+          "factIds": [
+            "d03",
+            "f23"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "It eats insects, fish, seeds, worms, food scraps and carrion in towns, and invertebrates on ploughed fields.",
+          "factIds": [
+            "f26"
+          ]
+        },
+        {
+          "text": "In summer flocks often gather around tractors ploughing the fields.",
+          "factIds": [
+            "f27"
+          ]
+        },
+        {
+          "text": "It can defend its nest very aggressively.",
+          "factIds": [
+            "f28"
+          ]
+        },
+        {
+          "text": "Soon after the young have fledged, it migrates southwest.",
+          "factIds": [
+            "f29"
+          ]
+        },
+        {
+          "text": "In winter it is very sociable, both when feeding and at shared evening roosts.",
+          "factIds": [
+            "f30"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Black-headed Gull: how to recognise it by head, bill and wings, what its calls sound like, what it eats and where and when it is seen in Sweden.",
+      "facts": {
+        "size": {
+          "value": "35 to 39 cm",
+          "factIds": [
+            "f01"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "9068e02d73623762"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-08T09:30:23.088900+00:00",
+      "factsHash": "9068e02d73623762"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "skrattmas",
+    "en": "black-headed-gull"
+  },
+  "names": {
+    "sv": "Skrattmås",
+    "en": "Black-headed Gull",
+    "scientific": "Chroicocephalus ridibundus"
+  },
+  "family": {
+    "latin": "Laridae",
+    "sv": "Måsfåglar"
+  },
+  "group": "gulls_terns",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25634/hero.webp",
+      "width": 1600,
+      "height": 1060,
+      "author": "ArildV",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chroicocephalus_ridibundus_2012a.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25634/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Alexis Lours",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Black-headed_Gull_2025_10_18.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25634/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Dan Stowell",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chroicocephalus_ridibundus_-_Black-headed_Gull_XC143894.mp3",
+    "sha256": "ea06c6423e6386301d64d8d6017fde2905563d92fc4a76f690ce28f926def71b",
+    "mp3Sha256": "b73bf3e4fe401d45738d2fb4a67f7207b6b3a075b327683f540aa762100f4405"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Skrattmås",
+      "revision": "59706906"
+    },
+    "en": {
+      "title": "Black-headed gull",
+      "revision": "1366354308"
+    },
+    "de": {
+      "title": "Lachmöwe",
+      "revision": "270408443"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 6065824,
+    "totalReports": 386100,
+    "months": [
+      36,
+      30,
+      81,
+      95,
+      70,
+      82,
+      100,
+      62,
+      42,
+      44,
+      39,
+      32
+    ],
+    "counties": {
+      "SE-K": 74,
+      "SE-W": 74,
+      "SE-X": 96,
+      "SE-I": 87,
+      "SE-N": 84,
+      "SE-Z": 76,
+      "SE-F": 87,
+      "SE-H": 74,
+      "SE-G": 79,
+      "SE-BD": 60,
+      "SE-T": 71,
+      "SE-E": 82,
+      "SE-M": 100,
+      "SE-D": 77,
+      "SE-AB": 89,
+      "SE-C": 95,
+      "SE-S": 72,
+      "SE-AC": 70,
+      "SE-Y": 72,
+      "SE-U": 84,
+      "SE-O": 67
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        15312,
+        8924,
+        45017,
+        80775,
+        68996,
+        43662,
+        41046,
+        26459,
+        18566,
+        19022,
+        10736,
+        7168
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-M": 46896,
+        "SE-O": 44993,
+        "SE-AB": 41230,
+        "SE-H": 26348,
+        "SE-C": 24218,
+        "SE-N": 17090,
+        "SE-D": 16002,
+        "SE-F": 15593,
+        "SE-E": 15252,
+        "SE-T": 9121,
+        "SE-AC": 9108,
+        "SE-X": 8401,
+        "SE-U": 8346,
+        "SE-W": 8273,
+        "SE-G": 7617,
+        "SE-I": 7014,
+        "SE-BD": 6623,
+        "SE-S": 6597,
+        "SE-Z": 4820,
+        "SE-Y": 4736,
+        "SE-K": 2900
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-08",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  }
+}

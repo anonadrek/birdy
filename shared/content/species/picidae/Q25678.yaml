@@ -101,8 +101,7 @@ image_refs:
   width: 2400
   height: 1599
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Jynx torquilla (33693877994).jpg
   commons_filename: Jynx torquilla (33693877994).jpg
 - role: secondary
@@ -110,8 +109,7 @@ image_refs:
   width: 1800
   height: 1264
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Jynx torquilla (34375689462).jpg
   commons_filename: Jynx torquilla (34375689462).jpg
 - role: secondary
@@ -119,8 +117,7 @@ image_refs:
   width: 1800
   height: 1264
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
-    Hobern</a> from Copenhagen, Denmark
+  author: Donald Hobern
   source_url: https://commons.wikimedia.org/wiki/File:Jynx torquilla (34495193666).jpg
   commons_filename: Jynx torquilla (34495193666).jpg
 review_status: auto

@@ -89,27 +89,25 @@ image_refs:
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
-  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
-    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  author: Charles J. Sharp
   source_url: https://commons.wikimedia.org/wiki/File:Palestine sunbird (Cinnyris
     osea osea) male in flight.jpg
   commons_filename: Palestine sunbird (Cinnyris osea osea) male in flight.jpg
 - role: secondary
   path: Q1528819/secondary-1.webp
   width: 1800
-  height: 1284
-  license: CC BY-SA 4.0
-  author: Saudi press Agency (SPA)
-  source_url: https://commons.wikimedia.org/wiki/File:Arabian Sunbird (Cinnyris hellmayri),
-    Aseer, Saudi Arabia (2024).jpg
-  commons_filename: Arabian Sunbird (Cinnyris hellmayri), Aseer, Saudi Arabia (2024).jpg
+  height: 1200
+  license: CC BY 4.0
+  author: Sultanjenin2018
+  source_url: https://commons.wikimedia.org/wiki/File:تمير فلسطين (الاسم العلمي Cinnyris
+    osea)، عصفور الشمس.jpg
+  commons_filename: تمير فلسطين (الاسم العلمي Cinnyris osea)، عصفور الشمس.jpg
 - role: secondary
   path: Q1528819/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Yair-haklai" title="User:Yair-haklai">Yair
-    Haklai</a>
+  author: Yair Haklai
   source_url: https://commons.wikimedia.org/wiki/File:Cinnyris osea-Ornithophily-Bignoniaceae-Jerusalem.jpg
   commons_filename: Cinnyris osea-Ornithophily-Bignoniaceae-Jerusalem.jpg
 review_status: auto

@@ -90,8 +90,7 @@ image_refs:
   width: 2048
   height: 1366
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/139364">Andy
-    Wilson</a>
+  author: Andy Wilson
   source_url: https://commons.wikimedia.org/wiki/File:Lanius phoenicuroides 221320163.jpg
   commons_filename: Lanius phoenicuroides 221320163.jpg
 - role: secondary
@@ -99,8 +98,7 @@ image_refs:
   width: 1439
   height: 1800
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
-    Kansara</a>
+  author: Parth Kansara
   source_url: https://commons.wikimedia.org/wiki/File:Lanius phoenicuroides 233992158.jpg
   commons_filename: Lanius phoenicuroides 233992158.jpg
 - role: secondary
@@ -108,13 +106,7 @@ image_refs:
   width: 1800
   height: 1417
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.geograph.org.uk/profile/3176">Hugh
-    Venables</a> <span class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a
-    href="//commons.wikimedia.org/wiki/File:Red-tailed_Shrike_(Lanius_phoenicuroides),_Dunwich_Heath_-_geograph.org.uk_-_8186469.jpg#P170"
-    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
-    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail"
-    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
-    data-file-height="20"></a></span>
+  author: Hugh Venables
   source_url: https://commons.wikimedia.org/wiki/File:Red-tailed Shrike (Lanius phoenicuroides),
     Dunwich Heath - geograph.org.uk - 8186469.jpg
   commons_filename: Red-tailed Shrike (Lanius phoenicuroides), Dunwich Heath - geograph.org.uk

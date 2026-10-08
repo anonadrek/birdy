@@ -3,8 +3,10 @@ interface Props {
   question: string;
   answer: string;
   open?: boolean;
+  /** A link after the answer (the price question links to the Premium page). */
+  link?: { href: string; text: string };
 }
-const { question, answer, open = false } = Astro.props;
+const { question, answer, open = false, link } = Astro.props;
 ---
 
 <details class="faq-item" open={open}>
@@ -13,6 +15,7 @@ const { question, answer, open = false } = Astro.props;
     <span class="toggle" aria-hidden="true">+</span>
   </summary>
   <p class="a">{answer}</p>
+  {link && <p class="a-more"><a href={link.href} data-faq-link>{link.text} <span aria-hidden="true">→</span></a></p>}
 </details>
 
 <style>
@@ -27,5 +30,9 @@ const { question, answer, open = false } = Astro.props;
   .faq-item::details-content { block-size: 0; overflow: hidden; transition: block-size .4s var(--ease-paper), content-visibility .4s allow-discrete; }
   .faq-item[open]::details-content { block-size: auto; }
   .a { margin: 0 0 22px; color: var(--muted); font-size: 15px; line-height: 1.65; max-width: 62ch; }
+  /* The link sits in its own paragraph, so .a stays the same text as the FAQPage JSON-LD. */
+  .a-more { margin: -10px 0 22px; font-size: 15px; }
+  .a-more a { font-weight: 600; color: var(--rust-deep); text-decoration: underline; text-decoration-color: var(--rust); text-underline-offset: 3px; }
+  .a-more a:hover { color: var(--rust); }
   @media (max-width: 760px) { .q { font-size: 18px; } }
 </style>

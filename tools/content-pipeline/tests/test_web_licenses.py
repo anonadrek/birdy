@@ -74,3 +74,36 @@ def test_commons_url_replaces_spaces() -> None:
 def test_an_author_never_carries_a_dash_the_site_refuses() -> None:
     """I7: fas 2's dash guard reads the credits."""
     assert clean_author("<a>Anna</a> \u2014 xeno-canto") == "Anna, xeno-canto"
+
+
+# Re-review 2026-10-07: credits as they stood on data/artsidor after R2.
+def test_an_unknown_author_template_is_no_author() -> None:
+    """Skäggdopping's CC BY 4.0 recording: Commons' {{Unknown|author}} rendered twice. As
+    None, the CC BY rule rejects the file and the next allowed recording is used."""
+    assert clean_author("Unknown authorUnknown author") is None
+    assert clean_author("Unknown author") is None
+    assert clean_author("<span>Unknown author</span> / Okänd upphovsman") is None
+    assert clean_author("Anonymous") is None
+    assert clean_author("Unknown Pleasures Records") == "Unknown Pleasures Records"
+
+
+def test_an_author_assumed_from_copyright_claims_is_unwrapped() -> None:
+    raw = "No machine-readable author provided. Mdf assumed (based on copyright claims)."
+    assert clean_author(raw) == "Mdf"
+
+
+def test_a_signature_suffix_is_stripped() -> None:
+    assert clean_author("Rabe19 (Diskussion)") == "Rabe19"
+    assert clean_author("Anna Svensson (talk)") == "Anna Svensson"
+    assert clean_author("Rabe19 (Diskussion · Beiträge)") == "Rabe19"
+    assert clean_author("Kim (talk · contribs)") == "Kim"
+
+
+def test_a_name_is_taken_from_created_by_user_at_a_site() -> None:
+    raw = (
+        "This image is created by user Justin Jansen at Waarneming.nl, a source of nature "
+        "observations in the Netherlands."
+    )
+    assert clean_author(raw) == "Justin Jansen"
+    # Unsure what the name is: no name rather than a sentence as the credit.
+    assert clean_author("This file was created by the team of a large project at night.") is None

@@ -60,8 +60,7 @@ image_refs:
   width: 2048
   height: 1366
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
-    Kansara</a>
+  author: Parth Kansara
   source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus mahrattensis 236702298.jpg
   commons_filename: Caprimulgus mahrattensis 236702298.jpg
 - role: secondary
@@ -69,7 +68,7 @@ image_refs:
   width: 1800
   height: 1129
   license: CC BY-SA 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Pkspks" title="User:Pkspks">Pkspks</a>
+  author: Pkspks
   source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus mahrattensis.JPG
   commons_filename: Caprimulgus mahrattensis.JPG
 review_status: auto

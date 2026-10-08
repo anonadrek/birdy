@@ -107,7 +107,7 @@ image_refs:
   width: 2300
   height: 2092
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  author: Estormiz
   source_url: https://commons.wikimedia.org/wiki/File:Pyrrhula Pyrrhula Kittilä 20170408
     01.jpg
   commons_filename: Pyrrhula Pyrrhula Kittilä 20170408 01.jpg
@@ -116,8 +116,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC BY 4.0
-  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
-    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  author: TRinaud
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian bullfinch (Pyrrhula
     pyrrhula) 2022.jpg
   commons_filename: Eurasian bullfinch (Pyrrhula pyrrhula) 2022.jpg
@@ -126,8 +125,7 @@ image_refs:
   width: 1800
   height: 1432
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
-    from Cradley, Malvern, U.K
+  author: gailhampshire
   source_url: https://commons.wikimedia.org/wiki/File:Bullfinches Pyrrhula pyrrhula
     (24208777577).jpg
   commons_filename: Bullfinches Pyrrhula pyrrhula (24208777577).jpg

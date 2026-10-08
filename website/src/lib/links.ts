@@ -1,11 +1,12 @@
 import type { Locale } from './i18n';
 
-// Links to AlbIT (the company behind Birdy) and its sister product LoopLead.
+// Links to AlbIT, the company behind Birdy.
 // Plain follow links with the brand as anchor text (agreed with albit.se).
 export const albitProductHref = (locale: Locale): string =>
   locale === 'sv' ? 'https://www.albit.se/produkter/birdy/' : 'https://www.albit.se/en/products/birdy/';
 
-export const LOOPLEAD_URL = 'https://looplead.se/';
+/** The Premium page (plan 2026-10-08 Task 6). */
+export const premiumHref = (locale: Locale): string => (locale === 'sv' ? '/sv/premium/' : '/premium/');
 
 /** Contact address on the site. A bridge until feedback@birdy.community exists (CLAUDE.md, follow-up #2). */
 export const CONTACT_EMAIL = 'albin@abrahamssons.se';

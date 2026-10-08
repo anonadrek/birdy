@@ -1,0 +1,606 @@
+{
+  "qid": "Q184518",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Mindre hackspett är Europas minsta hackspett, cirka 15 cm lång och ungefär lika stor som en gråsparv.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "den minsta av Europas hackspettar med sin längd på cirka 15 cm, vilket gör den jämnstor med gråsparven"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Den är cirka 14–16,5 cm lång och har ett vingspann på cirka 24–29 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Mindre hackspett är cirka 14-16,5 centimeter lång och har ett vingspann på cirka 24–29 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "size",
+      "sv": "Båda könen väger mellan 20 och 25 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Båda könens vikt varierar mellan 20 och 25 gram."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den är den enda arten i sitt släkte i Europa som saknar rött eller rosa på undergumpen och undre stjärttäckarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Mindre hackspett är den enda arten i sitt släkte i Europa och västra Asien som inte har något rött eller rosa på undergumpen eller på de undre stjärttäckarna."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Den saknar de vita skulderfläckar som andra arter i släktet har, utom vitryggig hackspett.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten saknar även de vita skulderfläckar som i övrigt är påfallande bland alla arter i släktet, förutom hos vitryggig hackspett."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Ryggsidan är jämnt svartvitbandad med vågräta vita streck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ryggsidan är jämnt svartvitbandad."
+        },
+        {
+          "article": "sv",
+          "quote": "Liksom den vitryggiga hackspetten har den vågräta, vita streck på ryggen."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Fågeln är kompakt, korthalsad och rundaktig och verkar större än sin domherrestorlek.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fastän den endast är av en domherres storlek verkar den kompakta, korthalsade, rundaktiga fågeln tyngre och större."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Vingpennornas ovansida är tydligt vitt bandad på svart botten.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ovansidan av hand- och armpennorna är tydligt vitt bandad på svart botten."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Undersidan är vit med streck på flankerna, och näbb och ben är skiffergrå.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The under parts are white with streaks on the flanks. The bill and legs are slate-grey."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Honan är helt svartvit medan hanen har röd hjässa.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan går helt i svartvitt medan hanen har en röd hjässa."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Ungfåglarnas fjäderdräkt liknar honans men är blekare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den juvenila fjäderdräkten liknar honans fjäderdräkt, men är blekare."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Huvudlätet är ett upprepat, ljust kikikiki på samma tonhöjd med minst 8 och upp till 20 element.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Båda könens huvudläte, men framför allt hanens, är ett upprepat, ljust kikikiki, som förblir på samma tonhöjd och består av minst 8, men oftast fler (upp till 20) enskilda beståndsdelar."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Lätet påminner om tornfalkens men är svagare och högre, med snabbare följande element.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det påminner avlägset om tornfalkens läte, men är något svagare och högre och de enskilda elementen följer snabbare på varandra."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Kontaktlätet är ett enkelt, kort tjack eller tjick som bara hörs på nära håll.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det typiska kontaktlätet, som dock endast kan uppfattas från omedelbar närhet, är ett enkelt, kort tjack, ibland även tjick."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Trumvirvlarna är svaga, höga, mycket snabba och likformiga med 10–30 slag under nästan 2 sekunder.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De svaga, höga, mycket snabba och likformiga trumvirvlarna består av 10 till 30 slag och varar nästan 2 sekunder."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Den trummar ofta på våren, inte lika högt som större hackspett men mer ihållande.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den trummar ofta på våren, dock inte så högt som den större hackspetten, men mer ihållande."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Den föredrar skog och småskog med gott bestånd av gamla, grovbarkiga lövträd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den föredrar skogsområden och småskog med ett gott bestånd av gamla, grovbarkiga lövträd."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "I norr bebor den glesare björk- och alskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I norr och i östra tajgan bebor den glesare björk- och alskog"
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Den kan även leva i parker, fruktträdsängar, begravningsplatser och ibland större trädgårdar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Som sekundärhabitat bebor mindre hackspett parker, fruktträdsängar, begravningsplatser, ibland till och med större trädgårdar"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Sverige finns de flesta i södra och mellersta delarna där det finns äldre lövrika blandskogar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "De flesta fåglar finns koncentrerade i områden i södra och mellersta Sverige där det finns äldre vildvuxna lövrika blandskogar."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "Den förekommer i hela Sverige men har minskat i antal.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den förekommer i hela Sverige, men har minskat i antal."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "I Sverige klassas den som nära hotad i ArtDatabankens rödlista från 2015.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige kategoriseras den som nära hotad i ArtDatabankens rödlista från 2015."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Många svenska och norska mindre hackspettar övervintrar på Jylland och i norra Tyskland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Många svenska och norska mindre hackspettar övervintrar på Jylland och i norra Tyskland."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "Boet hackas ut i ett murket lövträd, ofta på cirka 5 meters höjd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet placeras i ett murket lövträd, på cirka 5 meters höjd."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "I Nordeuropa börjar äggläggningen tidigast i början av maj och pågår in i juni.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Nordeuropa och Sibirien börjar äggläggningsperioden tidigast i början av maj och räcker till i juni"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Kullen består av fyra till sex, i undantagsfall upp till nio, ägg.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kullen utgörs av fyra till sex, i undantagsfall upp till nio, ägg."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Äggen kläcks efter i genomsnitt 11 dagar och ungarna stannar i boet ungefär 20 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Efter i genomsnitt 11 dagar kläcks äggen."
+        },
+        {
+          "article": "sv",
+          "quote": "Ungarna är kvar i boet i ungefär 20 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Under senvår och sommar kan bladlöss bli huvudföda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Under senvår och sommar kan olika arter av bladlöss bli huvudföda"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "food",
+      "sv": "På vintern besöker den ibland fågelbord och äter då främst talgbollar och solrosfrön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På vintern uppträder mindre hackspettar sporadiskt vid fågelbord, där de i synnerhet äter fett från talgbollar och solrosfrön."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "behaviour",
+      "sv": "Den födosöker främst i trädkronorna, ofta på tunna yttre grenar, och hänger gärna med huvudet nedåt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Mindre hackspett födosöker framför allt i området för trädkronorna, mycket ofta på tunna, yttre grenar."
+        },
+        {
+          "article": "sv",
+          "quote": "Mycket ofta hänger hackspetten med huvudet nedåt på en tunn gren för att kunna avsöka blad på undersidan."
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Nordiska populationer flyttar regelmässigt söderut."
+        },
+        {
+          "article": "sv",
+          "quote": "Många svenska och norska mindre hackspettar övervintrar på Jylland och i norra Tyskland."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i mars och april."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Svenska rödlistan 2025: Nära hotad (NT)."
+    }
+  ],
+  "text": null,
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "5de9c9160f1e711c"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "mindre-hackspett",
+    "en": "lesser-spotted-woodpecker"
+  },
+  "names": {
+    "sv": "Mindre hackspett",
+    "en": "Lesser Spotted Woodpecker",
+    "scientific": "Dryobates minor"
+  },
+  "family": {
+    "latin": "Picidae",
+    "sv": "Hackspettar"
+  },
+  "group": "woodpeckers",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q184518/hero.webp",
+      "width": 1600,
+      "height": 1068,
+      "author": "RaunoK",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_lesser_spotted_woodpecker_(Dryobates_minor)_-_Väike-kirjurähn.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q184518/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lesser_spotted_woodpecker_(Dryobates_minor)_2021.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q184518/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Hannu Varkki",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dryobates_minor_-_Lesser_Spotted_Woodpecker_XC470657.mp3",
+    "sha256": "ab961ad768b1164daa967e73c0d8f4505c58da5f3a713ed33c03a12752fbd876"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Mindre hackspett",
+      "revision": "58945715"
+    },
+    "en": {
+      "title": "Lesser spotted woodpecker",
+      "revision": "1357638893"
+    },
+    "de": {
+      "title": "Kleinspecht",
+      "revision": "269208789"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 9015784,
+    "totalReports": 127690,
+    "months": [
+      27,
+      54,
+      100,
+      96,
+      46,
+      34,
+      34,
+      42,
+      66,
+      44,
+      32,
+      24
+    ],
+    "counties": {
+      "SE-K": 84,
+      "SE-W": 100,
+      "SE-X": 78,
+      "SE-I": 42,
+      "SE-N": 33,
+      "SE-Z": 20,
+      "SE-F": 63,
+      "SE-H": 60,
+      "SE-G": 84,
+      "SE-BD": 30,
+      "SE-T": 99,
+      "SE-E": 58,
+      "SE-M": 32,
+      "SE-D": 56,
+      "SE-AB": 75,
+      "SE-C": 57,
+      "SE-S": 92,
+      "SE-AC": 41,
+      "SE-Y": 71,
+      "SE-U": 59,
+      "SE-O": 66
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i mars och april.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in March and April.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        4518,
+        6260,
+        21531,
+        31878,
+        17817,
+        7022,
+        5439,
+        6982,
+        11440,
+        7493,
+        3481,
+        2108
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 22633,
+        "SE-AB": 17795,
+        "SE-H": 10828,
+        "SE-M": 7548,
+        "SE-C": 7393,
+        "SE-T": 6403,
+        "SE-D": 5975,
+        "SE-F": 5750,
+        "SE-W": 5724,
+        "SE-E": 5433,
+        "SE-S": 4287,
+        "SE-G": 4119,
+        "SE-X": 3459,
+        "SE-N": 3448,
+        "SE-U": 2978,
+        "SE-AC": 2749,
+        "SE-Y": 2375,
+        "SE-I": 1720,
+        "SE-BD": 1689,
+        "SE-K": 1684,
+        "SE-Z": 644
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  },
+  "flags": [
+    {
+      "check": "V3",
+      "factId": "s01",
+      "message": "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    }
+  ]
+}

@@ -181,3 +181,58 @@ def test_the_sweep_does_nothing_without_any_records(tmp_path: Path) -> None:
     (tmp_path / "empty").mkdir()
     assert sweep_orphan_voices(tmp_path / "empty", images_out).removed == []
     assert voice.exists()
+
+
+def test_the_sweep_removes_a_recording_that_is_not_the_one_its_record_names(
+    tmp_path: Path,
+) -> None:
+    """Re-review 2026-10-07: a crash between saving a record with a new recording and
+    moving its file into place leaves the old voice.mp3 under the new credits. Its hash
+    (audio.mp3Sha256) gives it away: the file goes, the record loses its verification and
+    gets a V4 flag, and the sweep reports it."""
+    data_out, images_out = tmp_path / "data", tmp_path / "img"
+    record = new_record("Q1")
+    record["audio"] = {"file": "Q1/voice.mp3", "mp3Sha256": file_sha256_of(b"new")}
+    record["verification"] = {"method": "auto", "at": "2026-10-07"}
+    record["flags"] = []
+    save_record(record_path(data_out, "Q1"), record)
+    stale = _voice(images_out, "Q1")  # b"id3", not b"new"
+    sweep = sweep_orphan_voices(data_out, images_out)
+    assert not stale.exists()
+    assert len(sweep.errors) == 1 and "Q1" in sweep.errors[0]
+    saved = load_record(record_path(data_out, "Q1"))
+    assert saved is not None
+    assert "verification" not in saved
+    assert [f["check"] for f in saved["flags"]] == ["V4"]
+
+
+def test_the_sweep_keeps_a_recording_that_matches_or_has_no_hash(tmp_path: Path) -> None:
+    data_out, images_out = tmp_path / "data", tmp_path / "img"
+    matching, old = new_record("Q1"), new_record("Q2")
+    matching["audio"] = {"file": "Q1/voice.mp3", "mp3Sha256": file_sha256_of(b"id3")}
+    old["audio"] = {"file": "Q2/voice.mp3"}  # written before the hash was stored
+    save_record(record_path(data_out, "Q1"), matching)
+    save_record(record_path(data_out, "Q2"), old)
+    first, second = _voice(images_out, "Q1"), _voice(images_out, "Q2")
+    sweep = sweep_orphan_voices(data_out, images_out)
+    assert sweep.removed == [] and sweep.errors == []
+    assert first.exists() and second.exists()
+
+
+def test_the_sweep_removes_a_staged_file_left_behind(tmp_path: Path) -> None:
+    data_out, images_out = tmp_path / "data", tmp_path / "img"
+    record = new_record("Q1")
+    record["audio"] = {"file": "Q1/voice.mp3"}
+    save_record(record_path(data_out, "Q1"), record)
+    voice = _voice(images_out, "Q1")
+    staged = voice.with_name("voice.mp3.new")
+    staged.write_bytes(b"half")
+    sweep = sweep_orphan_voices(data_out, images_out)
+    assert not staged.exists() and voice.exists()
+    assert sweep.removed == ["Q1/voice.mp3.new"]
+
+
+def file_sha256_of(content: bytes) -> str:
+    import hashlib
+
+    return hashlib.sha256(content).hexdigest()

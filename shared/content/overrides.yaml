@@ -144,6 +144,7 @@ species:
   Q772286:
     description_accept_missing: [sv]  # Cypsiurus parvus (African Palm Swift) — afrikansk, ingen svwiki
   Q1096617:
+    hero_min_side: 1000  # 1024 px photo; otherwise only a drawing
     description_accept_missing: [sv]  # Apus unicolor (Plain Swift) — Madeira/Kanarie endemic
   Q1264567:
     description_accept_missing: [sv, en]  # Apus berliozi (Forbes-Watson's Swift) — afrikansk, båda wikis sparse
@@ -536,6 +537,7 @@ species:
     description_accept_missing: [sv]  # Brown-throated Martin — afrikansk
   # Fringillidae batch (2026-05-15): svwiki kort/saknas för många arter.
   Q1143180:
+    hero_min_side: 1000  # 1024 px male; the only 2048 px photo is washed out and the bird obscured
     description_accept_missing: [sv]  # Trumpetargimpel (Trumpeter Finch) — kort svwiki
   Q120964621:
     description_accept_missing: [sv]  # Spansk korsnäbb-art — sparse svwiki
@@ -559,6 +561,7 @@ species:
     description_accept_missing: [sv]  # Bofink — sparse svwiki (allmän SE)
   # Fringillidae batch (2026-05-15): enwiki kort.
   Q130241:
+    hero_min_side: 1000  # 1534 px photo; otherwise only a Smit plate
     description_accept_missing: [en]  # Sparse enwiki
   Q46143:
     description_accept_missing: [en]  # Sparse enwiki
@@ -702,6 +705,7 @@ species:
   Q40655821:
     description_accept_missing: [sv]  # Red Grouse — sparse svwiki
   Q492684:
+    hero_min_side: 1000  # 1000 px close-up; the 2048+ px photo shows a tiny bird on a wall
     description_accept_missing: [sv]  # Rock Partridge — sparse svwiki
   Q845408:
     description_accept_missing: [sv]
@@ -813,7 +817,9 @@ species:
     description_accept_missing: [sv]
     allow_missing_images: true  # Cape Verde Shearwater — sparse svwiki + no images
   Q216850:
-    description_accept_missing: [en]  # Scopoli's Shearwater — sparse enwiki
+    # Diomedeslira (Scopoli's Shearwater): sparse enwiki. The Swedish text was about Gulnäbbad lira
+    # (C. borealis) and is cleared until a refresh writes one from the article Diomedeslira (Task 7m).
+    description_accept_missing: [en, sv]
   Q26896:
     description_accept_missing: [sv]  # Northern Fulmar — sparse svwiki (72w)
   Q27074603:
@@ -835,6 +841,7 @@ species:
   Q1318437:
     allow_missing_images: true  # Dead Sea Sparrow — no suitable Commons images
   Q1318638:
+    hero_min_side: 1000  # 1000 px photo; 2048+ px files are a sunset silhouette and a Wolf plate
     description_accept_missing: [sv]  # Pale Rockfinch — sparse svwiki
   Q15731602:
     description_accept_missing: [sv, en]  # Zarudny's Sparrow — sparse on both
@@ -932,3 +939,10 @@ species:
     allow_missing_images: true  # Yemen Thrush — sparse svwiki + no images
   Q949662:
     description_accept_missing: [en]  # White's Thrush — sparse enwiki
+  # Release 1.3.0 photo review (2026-10-06): a real photo below 2048 px beats a
+  # 19th-century plate as the hero. hero_min_side documents each exception;
+  # the validator never goes below 1000 px.
+  Q3729103:
+    hero_min_side: 1000  # 2000 px photo; otherwise only a Mützel plate (Kashmirgransångare)
+  Q786784:
+    hero_min_side: 1000  # 1820 px photo; otherwise only a Wolf plate (Azordomherre)

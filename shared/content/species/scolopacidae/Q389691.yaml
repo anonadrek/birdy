@@ -107,8 +107,7 @@ image_refs:
   width: 2400
   height: 1600
   license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/80223459@N05">Yellowstone
-    National Park</a>
+  author: Yellowstone National Park
   source_url: https://commons.wikimedia.org/wiki/File:Spotted sandpiper (Actitis macularius)
     looking for food along the Yellowstone River (41114085810).jpg
   commons_filename: Spotted sandpiper (Actitis macularius) looking for food along
@@ -116,19 +115,17 @@ image_refs:
 - role: secondary
   path: Q389691/secondary-1.webp
   width: 1800
-  height: 1200
-  license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/80223459@N05">Yellowstone
-    National Park</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Spotted sandpiper (Actitis macularius)
-    nest (28202030197).jpg
-  commons_filename: Spotted sandpiper (Actitis macularius) nest (28202030197).jpg
+  height: 1800
+  license: CC BY 2.0
+  author: lwolfartist
+  source_url: https://commons.wikimedia.org/wiki/File:Anzalduas park 4.6.23 DSC 4664-topaz-denoiseraw-sharpen.jpg
+  commons_filename: Anzalduas park 4.6.23 DSC 4664-topaz-denoiseraw-sharpen.jpg
 - role: secondary
   path: Q389691/secondary-2.webp
   width: 1800
   height: 1201
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Spotted sandpiper (Actitis macularius).jpg
   commons_filename: Spotted sandpiper (Actitis macularius).jpg
 review_status: auto

@@ -5,14 +5,18 @@ import DeckleEdge from './ui/DeckleEdge.astro';
 import MarginNote from './ui/MarginNote.astro';
 import CoverageMap from './CoverageMap.astro';
 import { type Locale, getCopy } from '../lib/i18n';
+import { hasSpecies as anySpecies, hubHref } from '../lib/species';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getCopy(locale);
+// Only once a species is built (same rule as the menu and the footer): before that the hub only says the
+// pages are on their way.
+const hasSpecies = await anySpecies();
 ---
 
 <section id="guide" class="sec guide">
-  <DeckleEdge color="var(--peach)" />
+  <DeckleEdge color="var(--card)" />
   <div class="wrap">
     <div class="head" data-reveal>
       <div>
@@ -33,6 +37,9 @@ const t = getCopy(locale);
       ))}
     </ul>
     <CoverageMap locale={locale} />
+    {hasSpecies && (
+      <p class="browse"><a href={hubHref(locale)}>{t.guide.browse} <span aria-hidden="true">→</span></a></p>
+    )}
   </div>
 </section>
 
@@ -62,6 +69,8 @@ const t = getCopy(locale);
 
 <style>
   .guide { position: relative; }
+  .browse { margin: 28px 0 0; font-weight: 600; }
+  .browse a { color: var(--rust); border-bottom: 1px solid currentColor; padding-bottom: 2px; }
   .head { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: end; }
   .stats { display: flex; margin: 44px 0 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .stats li { flex: 1; padding: 18px 6px; text-align: center; }

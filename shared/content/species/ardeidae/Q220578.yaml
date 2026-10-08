@@ -94,7 +94,7 @@ image_refs:
   width: 2400
   height: 1600
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Black-headed Heron (Ardea melanocephala)
     in Serengeti National Park, Tanzania.jpg
   commons_filename: Black-headed Heron (Ardea melanocephala) in Serengeti National
@@ -104,7 +104,7 @@ image_refs:
   width: 1800
   height: 1202
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Black-headed heron (Ardea melanocephala),
     Kenya.jpg
   commons_filename: Black-headed heron (Ardea melanocephala), Kenya.jpg
@@ -113,8 +113,7 @@ image_refs:
   width: 1800
   height: 1058
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/5819835">Ansel
-    Archives</a>
+  author: Ansel Archives
   source_url: https://commons.wikimedia.org/wiki/File:Ardea melanocephala 374512233.jpg
   commons_filename: Ardea melanocephala 374512233.jpg
 review_status: auto

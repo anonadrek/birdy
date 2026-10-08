@@ -31,6 +31,7 @@ import birdy_bird_scanner.composeapp.generated.resources.map_teaser_count
 import birdy_bird_scanner.composeapp.generated.resources.map_teaser_cta
 import birdy_bird_scanner.composeapp.generated.resources.map_teaser_title
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_badge
+import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.premiumGlow
 import se.birdy.app.ui.theme.AccentCopper
@@ -83,7 +84,7 @@ fun MapPremiumTeaser(
                     modifier = Modifier.padding(top = 6.dp),
                 )
                 Text(
-                    stringResource(Res.string.map_teaser_count, state.locatedCount.toString()),
+                    pluralStringResource(Res.plurals.map_teaser_count, state.locatedCount, state.locatedCount),
                     fontFamily = rememberCaveat(),
                     fontSize = 15.sp,
                     color = MarginaliaInk,

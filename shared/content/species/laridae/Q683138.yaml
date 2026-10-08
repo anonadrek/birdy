@@ -85,18 +85,17 @@ image_refs:
 - role: hero
   path: Q683138/hero.webp
   width: 2400
-  height: 1994
+  height: 1600
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:O%27micron" title="User:O'micron">O'micron</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Larus armenicus range map in
-    Armenia (Armenian).png
-  commons_filename: Larus armenicus range map in Armenia (Armenian).png
+  author: Dav Sargsyan
+  source_url: https://commons.wikimedia.org/wiki/File:Armenian gull 12.jpg
+  commons_filename: Armenian gull 12.jpg
 - role: secondary
   path: Q683138/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Beko" title="User:Beko">Beko</a>
+  author: Beko
   source_url: https://commons.wikimedia.org/wiki/File:Հայկական որոր (Larus armenicus)
     Սևանի ազգային պարկում, ՄԲ 14.jpg
   commons_filename: Հայկական որոր (Larus armenicus) Սևանի ազգային պարկում, ՄԲ 14.jpg
@@ -105,7 +104,7 @@ image_refs:
   width: 1800
   height: 1073
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Beko" title="User:Beko">Beko</a>
+  author: Beko
   source_url: https://commons.wikimedia.org/wiki/File:Հայկական որոր (Larus armenicus)
     Սևանի ազգային պարկում, ՄԲ 07.jpg
   commons_filename: Հայկական որոր (Larus armenicus) Սևանի ազգային պարկում, ՄԲ 07.jpg

@@ -41,7 +41,7 @@ image_refs:
   width: 1596
   height: 2400
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Tristram's starling (Onychognathus
     tristramii), Oman.jpg
   commons_filename: Tristram's starling (Onychognathus tristramii), Oman.jpg
@@ -50,8 +50,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Eitan_f" title="User:Eitan f">Eitan
-    Ferman</a>
+  author: Eitan Ferman
   source_url: https://commons.wikimedia.org/wiki/File:Onychognathus tristramii - female.JPG
   commons_filename: Onychognathus tristramii - female.JPG
 - role: secondary
@@ -59,8 +58,7 @@ image_refs:
   width: 1800
   height: 1350
   license: CC BY-SA 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/86124626@N00">Shanthanu
-    Bhardwaj</a>
+  author: Shanthanu Bhardwaj
   source_url: https://commons.wikimedia.org/wiki/File:Onychognathus tristramii -Israel
     -female-8.jpg
   commons_filename: Onychognathus tristramii -Israel -female-8.jpg

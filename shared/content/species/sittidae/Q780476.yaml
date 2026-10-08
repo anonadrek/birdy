@@ -9,7 +9,7 @@ names:
   sv: Kabylnötväcka
   en: Algerian Nuthatch
 abundance: ovanlig
-iucn_status: NE
+iucn_status: EN
 season:
   jan: present
   feb: present
@@ -99,7 +99,7 @@ image_refs:
   width: 2048
   height: 1748
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">mourad-harzallah</a>
+  author: Mourad Harzallah
   source_url: https://commons.wikimedia.org/wiki/File:Sitta ledanti 180233129.jpg
   commons_filename: Sitta ledanti 180233129.jpg
 - role: secondary
@@ -107,7 +107,7 @@ image_refs:
   width: 1800
   height: 1443
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">mourad-harzallah</a>
+  author: Mourad Harzallah
   source_url: https://commons.wikimedia.org/wiki/File:Sitta ledanti 180233164.jpg
   commons_filename: Sitta ledanti 180233164.jpg
 - role: secondary
@@ -115,7 +115,7 @@ image_refs:
   width: 1800
   height: 1433
   license: CC BY 4.0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">mourad-harzallah</a>
+  author: Mourad Harzallah
   source_url: https://commons.wikimedia.org/wiki/File:Sitta ledanti 177820211.jpg
   commons_filename: Sitta ledanti 177820211.jpg
 review_status: auto

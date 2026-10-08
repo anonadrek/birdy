@@ -1,0 +1,404 @@
+<title>Birdy Web Lift</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=DM+Serif+Display&family=Inter:wght@400;600&display=swap">
+<style>
+  :root {
+    --bg: #F6EFE2; --surface: #FFFAF1; --ink: #302019; --muted: #6E584B; --line: #DFD2BA;
+    --accent: #9A4526; --accent-deep: #72301A; --chip: #FDE5CB; --chip-ink: #72301A; --brass: #B8893A;
+    --band: #2A1D17; --band-ink: #FFF8EE; --band-accent: #F2B27A; --band-muted: #D9C6B4;
+    --frame: #17100C; --shadow: 0 10px 24px rgba(42, 29, 23, .16);
+    --serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+    --hand: 'Caveat', 'Segoe Print', cursive;
+    --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #1E1410; --surface: #2A1D17; --ink: #FFF8EE; --muted: #CDB8A6; --line: #4A372C;
+      --accent: #F2B27A; --accent-deep: #F2B27A; --chip: #3B2A21; --chip-ink: #F2B27A;
+      --band: #140D0A; --frame: #000; --shadow: 0 10px 24px rgba(0, 0, 0, .4);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #1E1410; --surface: #2A1D17; --ink: #FFF8EE; --muted: #CDB8A6; --line: #4A372C;
+    --accent: #F2B27A; --accent-deep: #F2B27A; --chip: #3B2A21; --chip-ink: #F2B27A;
+    --band: #140D0A; --frame: #000; --shadow: 0 10px 24px rgba(0, 0, 0, .4);
+  }
+
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.55; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding-inline: 18px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.05; letter-spacing: -.01em; text-wrap: balance; margin: 0; }
+  .acc { font-family: var(--hand); font-weight: 700; font-size: 1.16em; color: var(--accent); letter-spacing: 0; }
+  .kick { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; font-size: 11.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+  .kick::before { content: ''; width: 22px; height: 2px; background: currentColor; flex: none; }
+  p { margin: 0; }
+  code { font: 12.5px ui-monospace, 'Cascadia Mono', Consolas, monospace; background: var(--chip); color: var(--chip-ink); padding: 1px 6px; border-radius: 6px; overflow-wrap: anywhere; }
+  a { color: var(--accent); }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+  header { position: relative; background: var(--band); color: var(--band-ink); padding-block: 40px 62px; --accent: var(--band-accent); }
+  header h1 { font-size: clamp(36px, 7vw, 64px); color: var(--band-ink); }
+  header .lead { margin-top: 16px; max-width: 66ch; color: var(--band-muted); font-size: 16px; }
+  header code { background: rgba(242, 178, 122, .16); color: var(--band-accent); }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .jump a { display: inline-block; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(255, 248, 238, .32); color: var(--band-ink); text-decoration: none; font-weight: 600; font-size: 13px; }
+  .jump a:hover { background: rgba(255, 248, 238, .08); }
+  .jump .hint { align-self: center; font-family: var(--hand); font-weight: 700; font-size: 21px; color: var(--band-accent); transform: rotate(-1.5deg); margin-left: 4px; }
+  .tear { position: absolute; left: 0; right: 0; bottom: -1px; height: 22px; display: block; width: 100%; }
+  .tear path { fill: var(--bg); }
+
+  main { padding-block: 30px 80px; }
+  section.part { margin-top: 64px; scroll-margin-top: 16px; }
+  section.part:first-child { margin-top: 0; }
+  .part > h2 { font-size: clamp(32px, 6vw, 48px); }
+  .desc { margin-top: 10px; max-width: 72ch; color: var(--muted); }
+  .desc b { color: var(--ink); font-weight: 600; }
+  .note { margin-top: 8px; font-family: var(--hand); font-weight: 700; font-size: 22px; color: var(--accent); transform: rotate(-1deg); width: fit-content; }
+  .h-small { font-size: clamp(24px, 4.4vw, 32px); margin-top: 40px; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 18px; }
+  .cards > div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .cards b { display: block; font-family: var(--serif); font-weight: 400; font-size: 19px; margin-bottom: 4px; }
+  .cards p { color: var(--muted); font-size: 14px; }
+
+  .strip { display: flex; gap: 6px; overflow-x: auto; padding: 16px 2px 10px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+  .strip button { flex: 0 0 clamp(118px, 32vw, 150px); padding: 0; border: 0; background: none; cursor: zoom-in; scroll-snap-align: start; border-radius: 8px; }
+  .strip img { display: block; width: 100%; aspect-ratio: 9 / 16; border-radius: 8px; box-shadow: var(--shadow); }
+
+  /* A direction: name, pitch, then the 390 px page in a phone you can scroll, and the 1440 px page. */
+  .dir { margin-top: 34px; padding-top: 26px; border-top: 1px solid var(--line); scroll-margin-top: 16px; }
+  .dir-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .letter { display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--accent); color: var(--bg); font-family: var(--serif); font-size: 22px; flex: none; }
+  .dir-head h3 { font-size: clamp(28px, 5.4vw, 38px); }
+  .dir-head h3 small { font-family: var(--hand); font-weight: 700; font-size: .62em; color: var(--muted); margin-left: 6px; }
+  .pill { display: inline-block; padding: 3px 11px; border-radius: 999px; font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--line); color: var(--muted); }
+  .pill.rec { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .pitch { margin-top: 12px; max-width: 70ch; font-size: 15.5px; }
+  .why { margin: 10px 0 0; padding-left: 18px; color: var(--muted); max-width: 70ch; }
+  .why li { margin-top: 4px; }
+  .views { display: grid; gap: 18px; margin-top: 18px; align-items: start; }
+  .views figure { margin: 0; }
+  .views figcaption { margin-top: 8px; font-size: 12.5px; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px; }
+  .scroller { width: 100%; max-width: 392px; height: min(660px, 76vh); overflow-y: auto; border-radius: 30px; border: 8px solid var(--frame); background: var(--frame); box-shadow: var(--shadow); overscroll-behavior: contain; }
+  .scroller img { display: block; width: 100%; }
+  .scroller.short { height: auto; }
+  .desk { display: block; width: 100%; padding: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); cursor: zoom-in; overflow: hidden; box-shadow: var(--shadow); }
+  .desk img { display: block; width: 100%; }
+  .desk.crop { max-height: 560px; position: relative; }
+  .desk.crop::after { content: 'tap to see the whole page'; position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 12px 10px; background: linear-gradient(transparent, var(--surface) 70%); font-family: var(--hand); font-weight: 700; font-size: 20px; color: var(--accent); text-align: center; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; margin-top: 14px; }
+  .seg button { font: 600 13px var(--sans); color: var(--ink); background: transparent; border: 0; border-radius: 999px; padding: 7px 14px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--accent); color: var(--bg); }
+
+  .rec-box { margin-top: 40px; background: var(--chip); border-radius: 14px; padding: 18px 18px 16px; border: 1px solid var(--line); }
+  .rec-box h3 { font-size: 26px; }
+  .rec-box p { margin-top: 8px; max-width: 72ch; }
+  .rec-box .note { margin-top: 10px; }
+
+  .qs { margin: 16px 0 0; padding-left: 22px; display: grid; gap: 12px; max-width: 78ch; }
+  .qs li::marker { font-family: var(--serif); color: var(--accent); }
+  .qs b { font-weight: 600; }
+  .facts { margin: 14px 0 0; padding-left: 18px; color: var(--muted); max-width: 78ch; display: grid; gap: 6px; }
+  .facts b { color: var(--ink); font-weight: 600; }
+
+  /* Choose */
+  .choose { margin-top: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .crow { display: grid; gap: 10px; padding: 16px; border-bottom: 1px solid var(--line); }
+  .crow > b { font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opts label { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; font-weight: 600; font-size: 14px; background: var(--bg); }
+  .opts input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .opts label:has(input:checked) { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .opts label:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .opts .r { font-family: var(--hand); font-weight: 700; font-size: 17px; opacity: .85; }
+  .crow textarea { width: 100%; min-height: 64px; box-sizing: border-box; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); font: 14px var(--sans); resize: vertical; }
+  .answer { display: grid; gap: 10px; padding: 16px; background: var(--chip); }
+  .answer output { display: block; font-family: var(--serif); font-size: 22px; line-height: 1.25; overflow-wrap: anywhere; user-select: all; }
+  .answer .btns { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .copy { font: 600 14px var(--sans); background: var(--accent); color: var(--bg); border: 0; border-radius: 10px; padding: 11px 18px; cursor: pointer; }
+  .copied { font-family: var(--hand); font-weight: 700; font-size: 20px; color: var(--accent); }
+
+  footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+
+  /* Lightbox: the whole image, scrollable. */
+  .lb { position: fixed; inset: 0; z-index: 10; background: rgba(20, 13, 10, .95); overflow: auto; padding: calc(env(safe-area-inset-top, 0px) + 64px) 12px calc(env(safe-area-inset-bottom, 0px) + 30px); }
+  .lb img { display: block; margin: 0 auto; width: 100%; max-width: var(--lbw, 1440px); border-radius: 8px; }
+  .lb p { color: #FFF8EE; font-size: 13px; text-align: center; margin: 0 0 12px; }
+  .lb button { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 10px); right: 12px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 248, 238, .4); background: rgba(42, 29, 23, .9); color: #FFF8EE; font-size: 22px; cursor: pointer; }
+
+  @media (min-width: 900px) {
+    .wrap { padding-inline: 28px; }
+    .views { grid-template-columns: 392px 1fr; gap: 28px; }
+    .crow { grid-template-columns: 170px 1fr; align-items: center; }
+  }
+  @media (prefers-reduced-motion: no-preference) { .strip img, .desk img { transition: transform .2s ease; } .desk:hover img { transform: translateY(-2px); } }
+</style>
+
+<header>
+  <div class="wrap">
+    <p class="kick">birdy.community · before 1.3.0 goes out Thursday 15 Oct</p>
+    <h1>Lift the site. Give Premium <span class="acc">its own page.</span></h1>
+    <p class="lead">Three bold directions for the home page and three for the new Premium page, all in the site's espresso, peach and handwriting, all with the new Play Store images and real 1.3.0 screens. The mockups are in Swedish; the Premium page in direction A is also in English. Pick at the bottom and copy your answer. Nothing on the live site has changed.</p>
+    <nav class="jump" aria-label="Sections"><a href="#lift">A · Home lift</a><a href="#premium">B · Premium page</a><a href="#choose">C · Choose</a><span class="hint">scroll inside the phones</span></nav>
+  </div>
+  <svg class="tear" viewBox="0 0 1440 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26 V13 L30 7 L64 17 L100 9 L136 16 L172 5 L206 14 L240 8 L276 18 L312 9 L346 16 L382 6 L418 15 L452 8 L488 19 L524 10 L558 17 L596 6 L630 15 L664 9 L700 18 L738 7 L774 16 L810 10 L846 19 L884 8 L918 14 L952 6 L988 16 L1024 9 L1060 20 L1098 10 L1132 17 L1170 5 L1206 15 L1236 8 L1272 18 L1310 9 L1342 16 L1370 6 L1404 14 L1440 8 V26 Z"/></svg>
+</header>
+
+<main class="wrap">
+  <section class="part" aria-labelledby="all-h">
+    <h2 id="all-h">In every <span class="acc">direction</span></h2>
+    <p class="desc">Whichever you pick, these four things change.</p>
+    <div class="cards">
+      <div><b>Real screens only</b><p>Every phone shows a 1.3.0 screenshot or the exact Play Store image. The phones drawn in HTML go, and with them words the app doesn't have ("Inte den? Se fler förslag", "Starta kameran").</p></div>
+      <div><b>A real bird in the hero</b><p>Today's hero robin is AI-generated (the site's own SOURCES.md says so). Every direction uses a real CC0 or public-domain photo with the photographer's name. Nothing is drawn or tinted over a bird photo.</p></div>
+      <div><b>Premium gets a page</b><p><code>/sv/premium/</code> and <code>/premium/</code>, in the menu, linked from the home page's Premium band and from the FAQ answer "Vad kostar Birdy?".</p></div>
+      <div><b>The map waits</b><p>No map screenshot until your MapTiler style is in the app next week. The Premium mockups hold its place with a note.</p></div>
+    </div>
+    <p class="h-small" style="font-family: var(--serif)">The Play images the site reuses</p>
+    <p class="desc">Your approved set (C, Espresso), Swedish. Tap one to see it large.</p>
+    <div class="strip" id="store-strip"></div>
+  </section>
+
+  <section class="part" id="lift" aria-labelledby="lift-h">
+    <p class="kick">A · The home page</p>
+    <h2 id="lift-h">The website <span class="acc">lift</span></h2>
+    <p class="desc">Hero plus one or two key sections in each direction, at 390 px (scroll inside the phone) and 1440 px (tap to enlarge). Mobile first.</p>
+
+    <article class="dir" id="now">
+      <div class="dir-head"><span class="letter" style="background: var(--muted)">0</span><h3>Now <small>birdy.community today</small></h3></div>
+      <p class="pitch">The 1.3 layout in espresso and peach (live since 28 Sep). It works, but the hero bird is AI-generated, the phones are HTML drawings, and Premium is one dark section near the bottom.</p>
+      <div class="views">
+        <figure><div class="scroller short"><img src="img/now-sv-m-hero.jpg" alt="Today's home page at 390 px: AI robin photo, headline Känn igen fågeln. Bevara stunden."></div><figcaption><span>390 px · first screen</span></figcaption></figure>
+        <figure><button class="desk" type="button" data-src="img/now-sv-d-hero.jpg" data-cap="Now · 1440 px · hero"><img src="img/now-sv-d-hero.jpg" alt="Today's home page at 1440 px"></button><figcaption><span>1440 px · first screen</span></figcaption>
+          <button class="desk" type="button" style="margin-top:14px" data-src="img/now-sv-d-premium.jpg" data-cap="Now · 1440 px · the Premium section"><img src="img/now-sv-d-premium.jpg" alt="Today's Premium section at 1440 px"></button><figcaption><span>Today's Premium section</span></figcaption></figure>
+      </div>
+    </article>
+
+    <article class="dir" id="lift-a">
+      <div class="dir-head"><span class="letter">A</span><h3>Flygvägen <small>the flight path</small></h3><span class="pill">Effort: low, about half a day</span></div>
+      <p class="pitch">The site becomes the Play listing and the ads. Espresso, a huge handwritten "Spara.", the dotted flight line that ends in the Birdy bird, two real phones. The app section is the six Play images edge to edge on peach, so the flight line carries on from image to image.</p>
+      <ul class="why"><li>Ad, Play listing and website look like one thing on launch day.</li><li>Least work: the images already exist.</li><li>Bold through scale, not through new ideas.</li></ul>
+      <div class="views">
+        <figure><div class="scroller" tabindex="0" aria-label="Lift A at 390 px, scrollable"><img src="img/lift-a-m.jpg" alt="Lift A, Flygvägen, at 390 px"></div><figcaption><span>390 px · scroll inside</span></figcaption></figure>
+        <figure><button class="desk" type="button" data-src="img/lift-a-d.jpg" data-cap="Lift A · Flygvägen · 1440 px"><img src="img/lift-a-d.jpg" alt="Lift A at 1440 px"></button><figcaption><span>1440 px · tap to enlarge</span></figcaption></figure>
+      </div>
+    </article>
+
+    <article class="dir" id="lift-b">
+      <div class="dir-head"><span class="letter">B</span><h3>Fältbladet <small>the field sheet</small></h3><span class="pill">Effort: medium, about a day</span></div>
+      <p class="pitch">The home page is an open field journal on a dark desk: ruled paper, a red margin line, a taped-in CC0 bearded reedling and handwritten arrows to the real Match screen. "Tre sätt att fånga" becomes three taped screenshots, and Premium is a P.S. note on the desk.</p>
+      <ul class="why"><li>No other app site looks like a notebook someone actually writes in.</li><li>The most handwriting of the three, still readable: the body text stays print.</li><li>Tape and arrows only touch paper and bezels, never a photo or a screen.</li></ul>
+      <div class="views">
+        <figure><div class="scroller" tabindex="0" aria-label="Lift B at 390 px, scrollable"><img src="img/lift-b-m.jpg" alt="Lift B, Fältbladet, at 390 px"></div><figcaption><span>390 px · scroll inside</span></figcaption></figure>
+        <figure><button class="desk" type="button" data-src="img/lift-b-d.jpg" data-cap="Lift B · Fältbladet · 1440 px"><img src="img/lift-b-d.jpg" alt="Lift B at 1440 px"></button><figcaption><span>1440 px · tap to enlarge</span></figcaption></figure>
+      </div>
+    </article>
+
+    <article class="dir" id="lift-c">
+      <div class="dir-head"><span class="letter">C</span><h3>Dagens fågel <small>bird of the day</small></h3><span class="pill rec">Recommended</span><span class="pill">Effort: medium, 1 to 1.5 days</span></div>
+      <p class="pitch">The site changes every night. The hero is a framed plate of the day's bird, the same bird as the app's Dagens fågel, with a museum label: Artportalen's month bars, the photographer and a link to the species page. The plate number is the day of the year (Pl. 280 is 7 Oct). Below: "Fåglarna i oktober", four species that are reported more in October than the rest of the year, from the species pages' own data. The Play images hang as plates with labels.</p>
+      <ul class="why"><li>Only Birdy can do this: it is the app's own feature, on the web.</li><li>A reason to come back daily, and a fresh link into the new species pages every day (good for Google).</li><li>The app's daily pick is deterministic (date and species list), so the site can compute the same bird when it builds. The mockup uses 7 Oct, whose bird was a rook (photo: public domain).</li></ul>
+      <div class="views">
+        <figure><div class="scroller" tabindex="0" aria-label="Lift C at 390 px, scrollable"><img src="img/lift-c-m.jpg" alt="Lift C, Dagens fågel, at 390 px"></div><figcaption><span>390 px · scroll inside</span></figcaption></figure>
+        <figure><button class="desk" type="button" data-src="img/lift-c-d.jpg" data-cap="Lift C · Dagens fågel · 1440 px"><img src="img/lift-c-d.jpg" alt="Lift C at 1440 px"></button><figcaption><span>1440 px · tap to enlarge</span></figcaption></figure>
+      </div>
+    </article>
+  </section>
+
+  <section class="part" id="premium" aria-labelledby="prem-h">
+    <p class="kick">B · /sv/premium/ and /premium/</p>
+    <h2 id="prem-h">The Premium <span class="acc">page</span></h2>
+    <p class="desc">The same facts in all three, told three ways: <b>where things stand</b> (a small independent app from AlbIT AB in Solna, open to everyone at launch, bought in Google Play from 1.3, iPhone on its way), <b>what you get today</b> with real 1.3.0 screens, <b>the prices</b> (199 kr a year or 499 kr once, incl. VAT; the English page says prices are shown in Google Play in your currency), <b>the early-user promise</b> with the exact cutoff, <b>audio ID is always free</b> with the BirdNET reason, and <b>how to buy</b>.</p>
+    <p class="desc">The Premium screens come from the API 36 emulator with a demo journal I entered for the screenshots (46 sightings of 33 species, January to October). The emulator is back to how it was.</p>
+
+    <article class="dir" id="prem-a">
+      <div class="dir-head"><span class="letter">A</span><h3>Mässing <small>brass</small></h3><span class="pill rec">Recommended</span><span class="pill">Also in English</span></div>
+      <p class="pitch">Espresso and brass, the same look as the app's own Premium and thank-you screens, and the app's own headline "Hela året som fältornitolog." The situation is a timeline down the dotted line; the features alternate text and real screens; the prices are the app's two cards; a big "Tidig fältmedlem" seal sits next to the real thank-you screen.</p>
+      <ul class="why"><li>People see the same thing on the web and in the app, where they actually buy.</li><li>The clearest path to buying, with the honest part up front.</li></ul>
+      <div class="seg" role="group" aria-label="Language of Premium A"><button type="button" id="pa-sv" aria-pressed="true" data-lang="sv">Svenska</button><button type="button" id="pa-en" aria-pressed="false" data-lang="en">English</button></div>
+      <div class="views">
+        <figure><div class="scroller" tabindex="0" aria-label="Premium A at 390 px, scrollable"><img id="pa-m" src="img/premium-a-m.jpg" alt="Premium A, Mässing, at 390 px"></div><figcaption><span>390 px · scroll inside</span></figcaption></figure>
+        <figure><button class="desk crop" id="pa-d" type="button" data-src="img/premium-a-d.jpg" data-cap="Premium A · Mässing · 1440 px"><img src="img/premium-a-d.jpg" alt="Premium A at 1440 px"></button><figcaption><span>1440 px · tap for the whole page</span></figcaption></figure>
+      </div>
+    </article>
+
+    <article class="dir" id="prem-b">
+      <div class="dir-head"><span class="letter">B</span><h3>Brevet <small>the letter</small></h3></div>
+      <p class="pitch">The page opens with a letter from you on ruled paper, "Solna, oktober 2026", that tells the situation straight and is signed Albin. Then Premium laid out on the desk: taped screens, loose PDF pages, two price cards and a certificate for early field members with the brass seal.</p>
+      <ul class="why"><li>The most honest and personal; nobody sells an upgrade with a letter.</li><li>Needs your OK, since the words are in your name.</li></ul>
+      <div class="views">
+        <figure><div class="scroller" tabindex="0" aria-label="Premium B at 390 px, scrollable"><img src="img/premium-b-m.jpg" alt="Premium B, Brevet, at 390 px"></div><figcaption><span>390 px · scroll inside</span></figcaption></figure>
+        <figure><button class="desk crop" type="button" data-src="img/premium-b-d.jpg" data-cap="Premium B · Brevet · 1440 px"><img src="img/premium-b-d.jpg" alt="Premium B at 1440 px"></button><figcaption><span>1440 px · tap for the whole page</span></figcaption></figure>
+      </div>
+    </article>
+
+    <article class="dir" id="prem-c">
+      <div class="dir-head"><span class="letter">C</span><h3>Årsringen <small>the year ring</small></h3></div>
+      <p class="pitch">The year ring is Premium's flagship, so the situation is drawn as a ring over Birdy's first year: apricot from 17 June (open to everyone), brass from 15 October (Google Play), a brass mark at 17 October 00.00 (the cutoff). The features hang as plates Pl. I to IV with museum labels, and the prices are two tickets.</p>
+      <ul class="why"><li>One picture explains the whole situation.</li><li>Pairs naturally with home lift C.</li></ul>
+      <div class="views">
+        <figure><div class="scroller" tabindex="0" aria-label="Premium C at 390 px, scrollable"><img src="img/premium-c-m.jpg" alt="Premium C, Årsringen, at 390 px"></div><figcaption><span>390 px · scroll inside</span></figcaption></figure>
+        <figure><button class="desk crop" type="button" data-src="img/premium-c-d.jpg" data-cap="Premium C · Årsringen · 1440 px"><img src="img/premium-c-d.jpg" alt="Premium C at 1440 px"></button><figcaption><span>1440 px · tap for the whole page</span></figcaption></figure>
+      </div>
+    </article>
+
+    <div class="rec-box">
+      <h3>My pick: <span class="acc">Lift C + Premium A</span></h3>
+      <p><b>Lift C</b> is the one only Birdy can make: the app's Dagens fågel on the web, a new real bird every morning, a daily link into the species pages, and the AI robin retired. <b>Premium A</b> because a page that sells should look like the place you buy, which is the app's brass Premium screen, and its timeline tells the situation without fuss.</p>
+      <p>If Thursday gets tight: Lift A is the safe bold choice (the images are done), and C can follow the week after on top of it.</p>
+      <p class="note">B's letter is lovely, but only if you'd write it yourself</p>
+    </div>
+  </section>
+
+  <section class="part" aria-labelledby="q-h">
+    <h2 id="q-h">Open <span class="acc">questions</span></h2>
+    <ol class="qs">
+      <li><b>The early-user wording.</b> The app recognises early users from proof: the install time 1.2 saved, or the network time at the first start on Android 13 or newer. A brand new install on Android 12 or older on 15 or 16 Oct gets no proof, and neither does someone who installed 1.2 but never opened it. The mockups therefore say "började använda Birdy före..." (started using). Keep that, or should the code also cover old Android? Until it does, don't use "ladda ned före 17 oktober" as an ad hook.</li>
+      <li><b>"För alltid".</b> The thank-you screen says "För alltid" in the headline and "så länge du har appen" in the text. The privacy policy describes the early-user rule; the terms don't mention it. Keep "för alltid" on the web, and add a line to the terms?</li>
+      <li><b>iPhone.</b> The FAQ says a Google Play purchase does not carry over to the iPhone app, because Birdy has no accounts. True by design; fine to say now?</li>
+      <li><b>Lift C's bird.</b> Same bird as the app every day (port the app's picker to the site build)? And when the day's bird has no published species page yet, or only a CC BY photo: show it without a link, or pick from published species with CC0/PD photos only?</li>
+      <li><b>Premium B</b> is written in your name. Edit freely if you pick it.</li>
+      <li><b>The PDF.</b> In the emulator export the species pages show empty photo boxes and very tight rows, so the mockups only show the cover, "2026 i siffror" and the stamps page. Worth a look before people print it.</li>
+      <li><b>Where Premium lives in the app.</b> "Öppna Premium i appen, under Mina arter eller Inställningar": I used the Mina arter entry (Säsongsstatistik, PREMIUM) on the emulator, and the Settings card for free users from the 1.3 screenshots. Right?</li>
+      <li><b>Monthly.</b> The 49 kr monthly plan comes in 1.3.1, so the pages say "ett år eller för alltid" now and get a third card then. OK?</li>
+    </ol>
+    <p class="h-small" style="font-family: var(--serif)">Checked against</p>
+    <ul class="facts">
+      <li><b>Premium contents:</b> terms §5 on <code>release/1.3.0</code> (map, PDF, season statistics, seven badges) and the app's own Premium screen.</li>
+      <li><b>Audio always free:</b> terms §4 and the privacy policy (BirdNET, CC BY-NC-SA 4.0).</li>
+      <li><b>Prices:</b> 199 kr a year, 499 kr once, incl. VAT, as set up in Play Console; the app always shows Play's price.</li>
+      <li><b>Cutoff:</b> 17 Oct 2026 00.00 Stockholm, the build constant for vC130.</li>
+      <li><b>No ads or tracking, journal stays on the phone:</b> privacy policy §1 and §4. No "offline" and no accuracy claims anywhere, and no dashes in the copy.</li>
+      <li><b>Photos:</b> skäggmes, rook, bläsand, vitkindad gås and sillgrissla are CC0 or public domain, named on the pages. Bird photos inside app screens are the app's own.</li>
+    </ul>
+  </section>
+
+  <section class="part" id="choose" aria-labelledby="choose-h">
+    <p class="kick">C · Your answer</p>
+    <h2 id="choose-h">Choose and <span class="acc">copy</span></h2>
+    <p class="desc">Recommended options are preselected. Change what you like, add a note, copy, and paste it to me. Or just write it like "Lift C, Premium A, kör".</p>
+    <form class="choose" id="choose-form">
+      <div class="crow"><b>Home lift</b>
+        <div class="opts">
+          <label><input type="radio" name="lift" id="lift-opt-a" value="Lift A">A · Flygvägen</label>
+          <label><input type="radio" name="lift" id="lift-opt-b" value="Lift B">B · Fältbladet</label>
+          <label><input type="radio" name="lift" id="lift-opt-c" value="Lift C" checked>C · Dagens fågel <span class="r">rec.</span></label>
+          <label><input type="radio" name="lift" id="lift-opt-0" value="Lift: keep today's, only new images">Keep today's, only new images</label>
+        </div>
+      </div>
+      <div class="crow"><b>Premium page</b>
+        <div class="opts">
+          <label><input type="radio" name="prem" id="prem-opt-a" value="Premium A" checked>A · Mässing <span class="r">rec.</span></label>
+          <label><input type="radio" name="prem" id="prem-opt-b" value="Premium B">B · Brevet</label>
+          <label><input type="radio" name="prem" id="prem-opt-c" value="Premium C">C · Årsringen</label>
+        </div>
+      </div>
+      <div class="crow"><b>Go</b>
+        <div class="opts">
+          <label><input type="radio" name="go" id="go-yes" value="kör" checked>Kör, build it for Thursday</label>
+          <label><input type="radio" name="go" id="go-wait" value="vänta, jag har ändringar">Wait, I have changes</label>
+        </div>
+      </div>
+      <div class="crow"><b><label for="note-in">Changes (optional)</label></b><textarea id="note-in" name="note" placeholder="t.ex. Lift C men med A:s butiksremsa, Premium A utan FAQ"></textarea></div>
+      <div class="answer">
+        <output id="answer" for="choose-form" aria-live="polite"></output>
+        <div class="btns"><button class="copy" type="button" id="copy-btn">Copy answer</button><span class="copied" id="copied" hidden>copied, paste it to me</span></div>
+      </div>
+    </form>
+  </section>
+
+  <footer>Sources and renders: <code>docs/superpowers/specs/assets/2026-10-08-webb-lyft-premium/</code> on branch <code>website/1.3-premium</code> (mockups/*.html, rendered by render.cjs). The live site is unchanged.</footer>
+</main>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Large image">
+  <p id="lb-cap"></p>
+  <img id="lb-img" alt="">
+  <button type="button" id="lb-close" aria-label="Close">×</button>
+</div>
+
+<script>
+  // Play images strip
+  const store = ['01-identifiera', '02-lyssna', '03-match', '04-mina-arter', '05-uppslagsverk', '06-artprofil'];
+  const strip = document.getElementById('store-strip');
+  store.forEach((id, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'store';
+    b.dataset.src = `mockups/media/store-sv-${id}.jpg`;
+    b.dataset.cap = `Play image ${i + 1} · Svenska`;
+    b.dataset.w = '540';
+    const img = document.createElement('img');
+    img.src = b.dataset.src;
+    img.alt = `Play Store image ${i + 1}`;
+    img.loading = 'lazy';
+    b.append(img);
+    strip.append(b);
+  });
+
+  // Premium A language toggle
+  const paM = document.getElementById('pa-m'), paD = document.getElementById('pa-d');
+  document.querySelectorAll('[data-lang]').forEach((btn) => btn.addEventListener('click', () => {
+    const en = btn.dataset.lang === 'en';
+    paM.src = en ? 'img/premium-a-en-m.jpg' : 'img/premium-a-m.jpg';
+    paD.dataset.src = en ? 'img/premium-a-en-d.jpg' : 'img/premium-a-d.jpg';
+    paD.dataset.cap = en ? 'Premium A · Brass · English · 1440 px' : 'Premium A · Mässing · 1440 px';
+    paD.querySelector('img').src = paD.dataset.src;
+    document.querySelectorAll('[data-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+  }));
+
+  // Lightbox
+  const lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCap = document.getElementById('lb-cap');
+  let opener = null;
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('.desk, .store');
+    if (!b) return;
+    opener = b;
+    lbImg.src = b.dataset.src;
+    lbImg.alt = b.querySelector('img').alt;
+    lb.style.setProperty('--lbw', `${b.dataset.w || 1440}px`);
+    lbCap.textContent = b.dataset.cap || '';
+    lb.hidden = false;
+    lb.scrollTop = 0;
+    document.getElementById('lb-close').focus();
+  });
+  function closeLb() { lb.hidden = true; if (opener) opener.focus(); }
+  document.getElementById('lb-close').addEventListener('click', closeLb);
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) closeLb(); });
+
+  // Choose and copy
+  const form = document.getElementById('choose-form'), out = document.getElementById('answer');
+  function answer() {
+    const f = new FormData(form);
+    const note = (f.get('note') || '').toString().trim();
+    let s = `${f.get('lift')}, ${f.get('prem')}, ${f.get('go')}`;
+    if (note) s += `. Ändringar: ${note}`;
+    return s;
+  }
+  function render() { out.textContent = answer(); }
+  form.addEventListener('input', render);
+  form.addEventListener('change', render);
+  form.addEventListener('submit', (e) => e.preventDefault());
+  render();
+  const copied = document.getElementById('copied');
+  document.getElementById('copy-btn').addEventListener('click', () => {
+    const text = answer();
+    const done = () => { copied.hidden = false; setTimeout(() => { copied.hidden = true; }, 3000); };
+    const fallback = () => {
+      const r = document.createRange();
+      r.selectNodeContents(out);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(r);
+      copied.textContent = 'selected, copy it with your phone';
+      copied.hidden = false;
+    };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => { copied.textContent = 'copied, paste it to me'; done(); }, fallback);
+      } else { fallback(); }
+    } catch (err) { fallback(); }
+  });
+</script>

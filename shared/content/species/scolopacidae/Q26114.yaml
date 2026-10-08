@@ -96,35 +96,38 @@ image_refs:
 - role: hero
   path: Q26114/hero.webp
   width: 2048
-  height: 1536
+  height: 1365
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/dmitry_tikhonov">dmitry_tikhonov</a>
+  author: tcager
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian Woodcock Scolopax rusticola,
-    Smolenskoye Poozer'e, Russia 207906425.jpg
-  commons_filename: Eurasian Woodcock Scolopax rusticola, Smolenskoye Poozer'e, Russia
-    207906425.jpg
+    Sverdlovsky District, Perm, Russia 423261431.jpg
+  commons_filename: Eurasian Woodcock Scolopax rusticola, Sverdlovsky District, Perm,
+    Russia 423261431.jpg
 - role: secondary
   path: Q26114/secondary-1.webp
-  width: 1350
-  height: 1800
-  license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/dmitry_tikhonov">dmitry_tikhonov</a>
-  source_url: https://commons.wikimedia.org/wiki/File:Eurasian Woodcock Scolopax rusticola,
-    Smolenskoye Poozer'e, Russia 207906517.jpg
-  commons_filename: Eurasian Woodcock Scolopax rusticola, Smolenskoye Poozer'e, Russia
-    207906517.jpg
+  width: 1800
+  height: 1307
+  license: CC BY 2.0
+  author: Blondinrikard Fröberg
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian woodcock, Scolopax
+    rusticola, Morkulla - 50939378612.jpg
+  commons_filename: Eurasian woodcock, Scolopax rusticola, Morkulla - 50939378612.jpg
 - role: secondary
   path: Q26114/secondary-2.webp
   width: 1800
   height: 1201
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/tcager">tcager</a>
+  author: tcager
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian Woodcock Scolopax rusticola,
     Sverdlovsky District, Perm, Russia 423809263.jpg
   commons_filename: Eurasian Woodcock Scolopax rusticola, Sverdlovsky District, Perm,
     Russia 423809263.jpg
 review_status: approved
-review_notes: "Hero = Scolopax rusticola (Eurasian Woodcock); allmän skogsfågel i SE, häckar i fuktig blandskog och löv-skog över hela landet."
+review_notes: 'Hero = Scolopax rusticola (Eurasian Woodcock); allmän skogsfågel i SE, häckar i fuktig
+  blandskog och löv-skog över hela landet.
+
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
+  bilder.'
 generated_at: '2026-05-15T20:59:55.418122+00:00'
 sources:
   wikipedia_sv_revision: '58627786'

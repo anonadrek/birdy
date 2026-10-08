@@ -42,12 +42,6 @@ import birdy_bird_scanner.composeapp.generated.resources.badge_uncommon
 import birdy_bird_scanner.composeapp.generated.resources.empty_description
 import birdy_bird_scanner.composeapp.generated.resources.empty_migration
 import birdy_bird_scanner.composeapp.generated.resources.empty_photos
-import birdy_bird_scanner.composeapp.generated.resources.iucn_cr
-import birdy_bird_scanner.composeapp.generated.resources.iucn_dd
-import birdy_bird_scanner.composeapp.generated.resources.iucn_en
-import birdy_bird_scanner.composeapp.generated.resources.iucn_lc
-import birdy_bird_scanner.composeapp.generated.resources.iucn_nt
-import birdy_bird_scanner.composeapp.generated.resources.iucn_vu
 import birdy_bird_scanner.composeapp.generated.resources.not_found_body
 import birdy_bird_scanner.composeapp.generated.resources.not_found_title
 import birdy_bird_scanner.composeapp.generated.resources.premium_species_subtitle
@@ -139,8 +133,12 @@ private fun ProfileContent(
                 kicker = kicker,
                 title = species.name,
                 latinName = species.scientificName,
-                height = 320.dp,
+                // The photo keeps the top 280dp and the name sits below it, so the whole bird
+                // is in view (2026-10-06): a 3:2 photo is ~274dp tall on a 411dp-wide phone.
+                height = 280.dp,
                 bottomPadding = PaperSheetOverlap + 18.dp,
+                drawBehindStatusBar = true,
+                textBelowPhoto = true,
                 image =
                     heroImage?.let { img ->
                         {
@@ -161,6 +159,7 @@ private fun ProfileContent(
                     )
                 },
                 bottomContent = {
+                    species.formerName?.let { FormerNameLine(formerName = it) }
                     Spacer(Modifier.height(10.dp))
                     ProfilePillRow(species = species)
                 },
@@ -260,16 +259,7 @@ private fun ProfilePillRow(species: Species) {
     // missing context. The mapped word gets its code appended ("Livskraftig (LC)"); an
     // unmapped/unknown status falls back to the raw code alone (no word to pair it with).
     val iucnCode = species.iucnStatus.uppercase()
-    val iucnWord =
-        when (iucnCode) {
-            "LC" -> stringResource(Res.string.iucn_lc)
-            "NT" -> stringResource(Res.string.iucn_nt)
-            "VU" -> stringResource(Res.string.iucn_vu)
-            "EN" -> stringResource(Res.string.iucn_en)
-            "CR" -> stringResource(Res.string.iucn_cr)
-            "DD" -> stringResource(Res.string.iucn_dd)
-            else -> null
-        }
+    val iucnWord = iucnStatusLabel(iucnCode)?.let { stringResource(it) }
     val iucnPillText = iucnWord?.let { "$it ($iucnCode)" } ?: species.iucnStatus
 
     FlowRow(

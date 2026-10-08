@@ -1,0 +1,557 @@
+{
+  "qid": "Q26106",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Rapphönan är 28–32 cm lång och har ett vingspann på 45–48 cm.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rapphönan blir 28–32 cm lång och har ett vingspann på 45–48"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Nominatformen väger 320–455 gram.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Weight (P. p. perdix): 320–455 g (11.3–16.0 oz)"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Rapphönan är en satt fågel med korta ben, kort rund stjärt och korta runda vingar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Rebhuhn ist wie alle Vertreter der Gattung von gedrungener Gestalt mit kurzen Beinen, kurzem runden Schwanz und kurzen runden Flügeln."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "På avstånd ser rapphönor enfärgat grå ut, vilket hjälper dem att smälta in.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Aus der Ferne wirken Rebhühner eintönig grau, was zu ihrer Tarnung beiträgt."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Den vuxna hanen är grå med fina, vågiga svarta tvärstreck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta hanen är grå, vattrad med fina, vågiga och svarta tvärstreck."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Ansiktet och strupen är brungula.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ansiktet och strupen är brungula."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Kroppssidorna har stora rödbruna tvärfläckar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Kroppens sidor har stora, rödbruna tvärfläckar."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Hanen har vit undersida med en stor, hästskoformad kastanjebrun fläck på bröstet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Bröstet och buken är vita, det förra med en stor, hästskoformig, kastanjebrun fläck."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "appearance",
+      "sv": "Stjärten är rödbrun, men de fyra mellersta stjärtpennorna är spräckliga i grått och svart.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärten är rödbrun, med de fyra mellersta pennorna spräckliga i grått och svart."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Honan har svarta i stället för rödbruna tvärband på ryggen och övergumpen och en otydligare eller saknad bröstfläck.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta honan har svarta (i stället för rödbruna) tvärband på ryggen och övergumpen samt otydligare, eller ingen bröstfläck."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Ungfåglarna är gulbruna och saknar de vuxnas tydliga teckning i ansiktet och på undersidan.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Young grey partridges are mostly yellow-brown and lack the distinctive face and underpart markings."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Båda könen sjunger, ofta nattetid, ett hest och tvärt avklippt \"kieerrr-ik\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Båda könen sjunger, ofta nattetid, ett hest och tvärt avklippt \"kieerrr-ik\"."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Revirlätet jämförs ibland med gnisslet från ett rostigt dörrgångjärn.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Dieser von Individuum zu Individuum leicht unterschiedliche Ruf wird gelegentlich mit dem Knarren einer rostigen Türangel verglichen."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Vid uppflog hörs ett skärrande \"prri prri prri...\".",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vid uppflog hörs skärrande \"prri prri prri...\"."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "behaviour",
+      "sv": "Rapphönan springer snabbt, flyger upp bullrigt och flyger med hastiga vingslag men sällan långa sträckor.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rapphönan löper snabbt och flyger upp bullrigt. Den flyger snabbt med hastiga vingslag, men sällan långa sträckor."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "behaviour",
+      "sv": "På marken gömmer den sig skickligt och kan vara svår att upptäcka även på helt öppen mark.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "På marken gömmer den sig skickligt, och även när den trycker på en fullkomligt öppen och kal plats kan den vara svår att upptäcka."
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "behaviour",
+      "sv": "Under sommar och höst lever rapphönor i familjer, och på vintern bildar de i regel större flockar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rapphönan lever under sommaren och hösten i familjer och under vintern bildar de i regel större flockar."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "Rapphönan är bunden till öppna kulturlandskap, men helst inte alltför intensivt uppodlade områden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rapphöna är bunden till öppna kulturlandskap, men då främst inte i alltför intensivt uppodlade områden."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Den förekommer på slättland men föredrar områden med skogsbackar, busksnår och häckar som skydd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den förekommer på slättland, men föredrar områden med skogsbackar, busksnår och häckar för skydd."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "habitat",
+      "sv": "Fram till skörden håller flockarna till i sädesfält och därefter bland annat på stubbåkrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fram till skördetid håller sig flockarna huvudsakligen i sädesfält, därefter på stubbåkrar"
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "På 1930- och 1940-talen häckade rapphönan allmänt i Götaland och Svealand och sparsammare i Norrland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Rapphönan häckade under 1930-talet och 1940-talet allmänt i Götaland och Svealand, sparsammare i Norrland ända upp till Norrbotten."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Sedan 1950-talet har beståndet minskat och arten försvunnit från norra Sverige samt från Dalarna och Värmland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sedan 1950-talet har populationen minskat och rapphönan har försvunnit från norra Sverige, men även Dalarna och Värmland."
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "sweden",
+      "sv": "Det svenska beståndet uppskattas till cirka 12 000 reproduktiva individer.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Det nationella beståndet uppskattas till cirka 12 000 reproduktiva individer."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "sweden",
+      "sv": "Rapphöns sätts ut i stor omfattning på många platser i Götaland och Svealand, tillfälligt även i Norrland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Omfattande utplantering av rapphöns sker på många platser i Götaland och Svealand, tillfälligt även i Norrland."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "breeding",
+      "sv": "Kullen på tio till 20 ägg läggs i en liten fördjupning i marken.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen, som varierar mellan tio och 20 stycken, läggs i en liten fördjupning i marken."
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Honan ruvar ensam, men båda föräldrarna tar hand om ungarna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan ruvar ensam äggen, men ungarna vårdas av båda föräldrarna."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Efter kläckningen äter ungarna enbart insekter och småkryp.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Efter kläckningen består ungarnas föda uteslutande av insekter och småkryp"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "Senare övergår kosten till växtföda som klöver, gräs och frön.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Därefter övergår dieten successivt till en proteinfattigare vegetabilisk kost som består av klövrar, gräs och frön"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras året runt."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Gotland, Kalmar och Östergötland."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": null,
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-08T08:51:46.196108+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-08T09:08:32.041631+00:00",
+      "factsHash": "9393cd9bc790c576"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "rapphona",
+    "en": "grey-partridge"
+  },
+  "names": {
+    "sv": "Rapphöna",
+    "en": "Grey Partridge",
+    "scientific": "Perdix perdix"
+  },
+  "family": {
+    "latin": "Phasianidae",
+    "sv": "Fasanfåglar"
+  },
+  "group": "gamebirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26106/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grey_partridge_(Perdix_perdix)_2020.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26106/extra.webp",
+      "width": 1200,
+      "height": 799,
+      "author": "Hyppolyte de Saint-Rambert",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Noironte_(Doubs)_Perdrix_grise_hdsr_Vlux5_L1021006.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26106/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Jochem Verweij",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Perdiz_pardilla_(Perdix_perdix).mp3",
+    "sha256": "eb40dc3547591d59278840b2e138ec230d98b319a169f8d96ca1945512cf82c9"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Rapphöna",
+      "revision": "59223071"
+    },
+    "en": {
+      "title": "Grey partridge",
+      "revision": "1359878014"
+    },
+    "de": {
+      "title": "Rebhuhn",
+      "revision": "269250800"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2473958,
+    "totalReports": 35082,
+    "months": [
+      100,
+      93,
+      45,
+      41,
+      69,
+      59,
+      46,
+      38,
+      31,
+      48,
+      39,
+      63
+    ],
+    "counties": {
+      "SE-K": 18,
+      "SE-W": 3,
+      "SE-X": 1,
+      "SE-I": 100,
+      "SE-N": 22,
+      "SE-Z": 1,
+      "SE-F": 4,
+      "SE-H": 95,
+      "SE-G": 2,
+      "SE-BD": 1,
+      "SE-T": 16,
+      "SE-E": 54,
+      "SE-M": 31,
+      "SE-D": 4,
+      "SE-AB": 2,
+      "SE-C": 19,
+      "SE-S": 5,
+      "SE-AC": 1,
+      "SE-Y": 1,
+      "SE-U": 1,
+      "SE-O": 5
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Andelen av alla fågelrapporter är högst i Gotland, Kalmar och Östergötland."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Its share of all bird reports is highest in Gotland, Kalmar and Östergötland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        4605,
+        2995,
+        2670,
+        3779,
+        7320,
+        3391,
+        2007,
+        1728,
+        1461,
+        2249,
+        1141,
+        1535
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-H": 13516,
+        "SE-M": 5808,
+        "SE-E": 3972,
+        "SE-I": 3229,
+        "SE-C": 1920,
+        "SE-N": 1751,
+        "SE-O": 1437,
+        "SE-T": 832,
+        "SE-AB": 450,
+        "SE-D": 310,
+        "SE-K": 285,
+        "SE-F": 254,
+        "SE-S": 177,
+        "SE-W": 148,
+        "SE-G": 64,
+        "SE-U": 47,
+        "SE-Y": 25,
+        "SE-AC": 17,
+        "SE-X": 13,
+        "SE-Z": 12,
+        "SE-BD": 3
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: The quote says the species is a resident ('stannfågel') across large parts of Europe except the northernmost areas, but does not explicitly confirm this status for Sweden, Scandinavia, or Fennoscandia, leaving ambiguity about whether Sweden falls within the excluded northern regions.. Bestäm status eller lämna tom."
+    }
+  ]
+}

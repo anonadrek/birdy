@@ -38,29 +38,27 @@ migration:
 image_refs:
 - role: hero
   path: Q128002/hero.webp
-  width: 1936
-  height: 2400
-  license: Public domain
-  author: Adolf Bernhard Meyer (1840-1911)
-  source_url: https://commons.wikimedia.org/wiki/File:Syrrhaptes paradoxus 128.jpg
-  commons_filename: Syrrhaptes paradoxus 128.jpg
+  width: 2048
+  height: 1366
+  license: CC BY-SA 4.0
+  author: Kudaibergen Amirekul
+  source_url: https://commons.wikimedia.org/wiki/File:Syrrhaptes paradoxus 332693418.jpg
+  commons_filename: Syrrhaptes paradoxus 332693418.jpg
 - role: secondary
   path: Q128002/secondary-1.webp
   width: 1800
-  height: 1533
-  license: Public domain
-  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Alfred_Newton" class="extiw"
-    title="w:en:Alfred Newton"><span title="English zoologist and ornithologist (1829-1907)">Alfred
-    Newton</span></a></bdi>
-  source_url: https://commons.wikimedia.org/wiki/File:Map illustrating the irruption
-    of Syrrhaptes paradoxus in 1863.jpg
-  commons_filename: Map illustrating the irruption of Syrrhaptes paradoxus in 1863.jpg
+  height: 1199
+  license: CC BY-SA 3.0
+  author: Tomju48
+  source_url: https://commons.wikimedia.org/wiki/File:Groupe de Syrrhaptes paradoxal,
+    désert de Gobi.jpg
+  commons_filename: Groupe de Syrrhaptes paradoxal, désert de Gobi.jpg
 - role: secondary
   path: Q128002/secondary-2.webp
   width: 1800
   height: 1359
   license: Public domain
-  author: <a href="//commons.wikimedia.org/wiki/User:Bogomolov.PL" title="User:Bogomolov.PL">Bogomolov.PL</a>
+  author: Bogomolov.PL
   source_url: https://commons.wikimedia.org/wiki/File:Syrrhaptes paradoxus 1.JPG
   commons_filename: Syrrhaptes paradoxus 1.JPG
 review_status: auto

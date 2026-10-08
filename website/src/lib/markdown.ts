@@ -23,21 +23,21 @@ export const LEGAL_DOCS: readonly LegalDoc[] = [
     filename: 'privacy-policy.md',
     title: 'Privacy Policy',
     description: 'What Birdy collects (almost nothing) and where your data lives (your phone).',
-    lastUpdated: '2026-05-15',
+    lastUpdated: '2026-10-07',
   },
   {
     slug: 'terms',
     filename: 'terms.md',
     title: 'Terms of Use',
     description: 'The straightforward rules for using Birdy.',
-    lastUpdated: '2026-05-15',
+    lastUpdated: '2026-10-07',
   },
   {
     slug: 'data-safety',
     filename: 'data-safety-form.md',
     title: 'Data Safety',
     description: 'A complete record of what data Birdy collects, why, and how it is protected.',
-    lastUpdated: '2026-05-17',
+    lastUpdated: '2026-10-07',
   },
 ] as const;
 

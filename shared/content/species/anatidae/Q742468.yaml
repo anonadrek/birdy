@@ -95,13 +95,7 @@ image_refs:
   width: 2400
   height: 1648
   license: Public domain
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/usfwspacific/">USFWS
-    - Pacific Region</a> <span class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a
-    href="//commons.wikimedia.org/wiki/File:Brillenente_(Melanitta_perspicillata),_weiblich_nahe_Westport,_Washington,_Vereinigte_Staaten.jpg#P170"
-    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
-    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
-    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
-    data-file-height="20"></a></span>
+  author: USFWS - Pacific Region
   source_url: https://commons.wikimedia.org/wiki/File:Brillenente (Melanitta perspicillata),
     weiblich nahe Westport, Washington, Vereinigte Staaten.jpg
   commons_filename: Brillenente (Melanitta perspicillata), weiblich nahe Westport,
@@ -120,8 +114,7 @@ image_refs:
   width: 1800
   height: 1200
   license: CC0
-  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/8375047">Chris
-    Spain</a>
+  author: Chris Spain
   source_url: https://commons.wikimedia.org/wiki/File:Melanitta perspicillata 414951750.jpg
   commons_filename: Melanitta perspicillata 414951750.jpg
 review_status: auto

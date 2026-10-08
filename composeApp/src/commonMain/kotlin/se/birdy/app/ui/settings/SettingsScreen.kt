@@ -254,11 +254,12 @@ fun SettingsScreen(
                         },
                     )
                 }
+                // The note under the card, lined up with the section header above it.
                 Text(
                     text = stringResource(Res.string.settings_location_caption),
                     color = MarginaliaInk,
                     fontSize = 12.sp,
-                    modifier = Modifier.padding(horizontal = 14.dp, vertical = 2.dp),
+                    modifier = Modifier.padding(start = SectionInset, end = SectionInset, top = 6.dp),
                 )
             }
             if (viewModel.devToolsAvailable) {
@@ -435,15 +436,20 @@ private fun TopBar(onBack: () -> Unit) {
     }
 }
 
+// Section headers and the note under a section's card share one inset (release 1.3.0 Task 7g:
+// the Location note used to start 10 dp left of the headers).
+private val SectionInset = 24.dp
+
+/** Always in capitals, whatever the string resource says ("Plats" once slipped through). */
 @Composable
 private fun SectionHeader(label: String) {
     Text(
-        text = label,
+        text = label.uppercase(),
         fontSize = 10.sp,
         fontWeight = FontWeight.W600,
         letterSpacing = 0.16.em,
         color = MarginaliaInk,
-        modifier = Modifier.padding(start = 24.dp, top = 18.dp, bottom = 8.dp),
+        modifier = Modifier.padding(start = SectionInset, top = 18.dp, bottom = 8.dp),
     )
 }
 

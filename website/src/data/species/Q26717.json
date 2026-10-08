@@ -1,0 +1,211 @@
+{
+  "qid": "Q26717",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "nattskarra",
+    "en": "european-nightjar"
+  },
+  "names": {
+    "sv": "Nattskärra",
+    "en": "European Nightjar",
+    "scientific": "Caprimulgus europaeus"
+  },
+  "family": {
+    "latin": "Caprimulgidae",
+    "sv": "Nattskärror"
+  },
+  "group": "other",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26717/hero.webp",
+      "width": 1600,
+      "height": 1141,
+      "author": "Mourad Harzallah",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_nightjar_(Caprimulgus_europaeus)_in_Algeria.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26717/extra.webp",
+      "width": 1200,
+      "height": 892,
+      "author": "Hans Norelius",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nattskärra,_Gotland,_Augusti_2017_(38640216582)_(cropped_2).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26717/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Benoît Van Hecke",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Caprimulgus_europaeus_-_European_Nightjar_XC561322.mp3",
+    "sha256": "6e187cdac556ac172643398640eccc9a894a426896e35095759767f931e4d336"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Nattskärra",
+      "revision": "59539071"
+    },
+    "en": {
+      "title": "European nightjar",
+      "revision": "1370910523"
+    },
+    "de": {
+      "title": "Nachtschwalbe",
+      "revision": "270980322"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 8109681,
+    "totalReports": 44374,
+    "months": [
+      0,
+      0,
+      0,
+      1,
+      28,
+      100,
+      24,
+      14,
+      10,
+      1,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 50,
+      "SE-W": 26,
+      "SE-X": 27,
+      "SE-I": 100,
+      "SE-N": 26,
+      "SE-Z": 1,
+      "SE-F": 32,
+      "SE-H": 72,
+      "SE-G": 49,
+      "SE-BD": 1,
+      "SE-T": 37,
+      "SE-E": 26,
+      "SE-M": 15,
+      "SE-D": 31,
+      "SE-AB": 17,
+      "SE-C": 22,
+      "SE-S": 46,
+      "SE-AC": 2,
+      "SE-Y": 11,
+      "SE-U": 66,
+      "SE-O": 41
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juni.",
+        "Rapporteras sällan i september till april.",
+        "Andelen av alla fågelrapporter är högst i Gotland, Kalmar och Västmanland."
+      ],
+      "en": [
+        "Reported most in June.",
+        "Rarely reported in September to April.",
+        "Its share of all bird reports is highest in Gotland, Kalmar and Västmanland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        0,
+        73,
+        11954,
+        22729,
+        4259,
+        2555,
+        1909,
+        211,
+        14,
+        1
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 9071,
+        "SE-H": 8468,
+        "SE-I": 2693,
+        "SE-AB": 2620,
+        "SE-M": 2401,
+        "SE-U": 2163,
+        "SE-D": 2123,
+        "SE-F": 1922,
+        "SE-C": 1833,
+        "SE-N": 1723,
+        "SE-E": 1610,
+        "SE-G": 1588,
+        "SE-T": 1560,
+        "SE-S": 1394,
+        "SE-W": 983,
+        "SE-X": 777,
+        "SE-K": 657,
+        "SE-Y": 233,
+        "SE-AC": 68,
+        "SE-Z": 11,
+        "SE-BD": 3
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

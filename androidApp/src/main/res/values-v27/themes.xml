@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- API 27+ (values-v31 does not override it): dark navigation bar icons on the paper launch
+         window too (android:windowLightNavigationBar is API 27+). Release 1.3.0 Task 7g. -->
+    <style name="Theme.Birdy.Starting" parent="Theme.Birdy.Starting.Base">
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>

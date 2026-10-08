@@ -69,7 +69,7 @@ image_refs:
   width: 1600
   height: 2400
   license: CC0
-  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  author: Hobbyfotowiki
   source_url: https://commons.wikimedia.org/wiki/File:Yellow-billed stork (Mycteria
     ibis).jpg
   commons_filename: Yellow-billed stork (Mycteria ibis).jpg
@@ -78,8 +78,7 @@ image_refs:
   width: 1800
   height: 1192
   license: CC BY 2.0
-  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/13456343@N00">Benjamin
-    Hollis</a> from Seattle, WA, USA
+  author: Benjamin Hollis
   source_url: https://commons.wikimedia.org/wiki/File:Mycteria ibis -near Kwara Camp,
     North-West District, Botswana -flying-8.jpg
   commons_filename: Mycteria ibis -near Kwara Camp, North-West District, Botswana
@@ -89,8 +88,7 @@ image_refs:
   width: 1800
   height: 1196
   license: CC BY 3.0
-  author: <a href="//commons.wikimedia.org/wiki/User:Morray" title="User:Morray">Philipp
-    Weigell</a>
+  author: Philipp Weigell
   source_url: https://commons.wikimedia.org/wiki/File:Mycteria ibis et al..JPG
   commons_filename: Mycteria ibis et al..JPG
 review_status: auto
