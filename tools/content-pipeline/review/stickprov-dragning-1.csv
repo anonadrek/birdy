@@ -1,5 +1,5 @@
 ﻿Art,QID,Rad,Kontroll,Typ,Id,Ämne,Faktum,Källa,Citat,Beslut,Kommentar,Publicerad,Dragning
-Entita,Q207838,stickprov,,art,*,hela arten,behåll här gäller alla rader nedan som lämnas tomma,,,,,2026-10-07,1
+Entita,Q207838,stickprov,,art,*,hela arten,behåll här gäller alla rader nedan som lämnas tomma,,,behåll,,2026-10-07,1
 Entita,Q207838,stickprov,,faktum,f01,storlek,"Entitan är 11,5–13 centimeter lång, har ett vingspann på 18–20 centimeter och väger cirka 11 gram.",sv: https://sv.wikipedia.org/w/index.php?oldid=59400833,"Den har en längd på 11,5–13 centimeter, ett vingspann på 18–20 centimeter och en vikt på cirka 11 gram.",,,2026-10-07,1
 Entita,Q207838,stickprov,,faktum,f02,storlek,I storlek ligger entitan mellan talgoxe och blåmes.,de: https://de.wikipedia.org/w/index.php?oldid=265343303,"Die Sumpfmeise steht mit 11,5 bis 13 cm Körperlänge in der Größe zwischen Kohl- und Blaumeise.",,,2026-10-07,1
 Entita,Q207838,stickprov,,faktum,f03,utseende,Entitan är en liten kompakt fågel med proportionellt stort huvud och fyllig nacke.,sv: https://sv.wikipedia.org/w/index.php?oldid=59400833,"Entitan är en liten kompakt fågel, med ett proportionellt stort huvud och fyllig nacke.",,,2026-10-07,1
@@ -35,7 +35,7 @@ Entita,Q207838,stickprov,,data,d01,data,Rapporteras mest i december och januari.
 Entita,Q207838,stickprov,,data,d02,data,Rapporteras från 19 av 21 län.,Artportalen via GBIF,,(data),,2026-10-07,1
 Entita,Q207838,stickprov,,data,d03,data,Svenska rödlistan 2025: Nära hotad (NT).,Svenska rödlistan 2025,,(data),,2026-10-07,1
 Entita,Q207838,stickprov,,inspelning,a01,inspelning,"Vladimir Yu. Arkhipov, Arkhivov, CC BY-SA 3.0, 20 s",https://commons.wikimedia.org/wiki/File:Poecile_palustris.ogg,,,,2026-10-07,1
-Ormvråk,Q25385,stickprov,,art,*,hela arten,behåll här gäller alla rader nedan som lämnas tomma,,,,,2026-10-07,1
+Ormvråk,Q25385,stickprov,,art,*,hela arten,behåll här gäller alla rader nedan som lämnas tomma,,,behåll,,2026-10-07,1
 Ormvråk,Q25385,stickprov,,faktum,f01,storlek,"Ormvråken är 45–58 cm lång, har ett vingspann på 110–132 cm och väger ungefär 1 kg.",sv: https://sv.wikipedia.org/w/index.php?oldid=57876994,Den mäter 45–58 cm med ett vingspann på 110–132 cm och väger ungefär 1 kg.,,,2026-10-07,1
 Ormvråk,Q25385,stickprov,,faktum,f02,utseende,"Ormvråken är en kompakt, medelstor rovfågel med breda vingar, satt kropp, kort hals och medellång stjärt.",sv: https://sv.wikipedia.org/w/index.php?oldid=57876994,"Ormvråken är en kompakt medelstor rovfågel med breda vingar och satt kroppsbyggnad, med kort hals och medellång stjärt.",,,2026-10-07,1
 Ormvråk,Q25385,stickprov,,faktum,f03,utseende,Dräkten är oftast brun med spräckliga eller vattrade partier men varierar mycket mellan individer.,sv: https://sv.wikipedia.org/w/index.php?oldid=57876994,Dräkten är oftast brun med spräckliga eller vattrade kroppsdelar men varierar mycket.,,,2026-10-07,1
