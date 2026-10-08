@@ -55,14 +55,9 @@
   .plate { position: absolute; z-index: 3; margin: 0; width: min(260px, 32%); right: 31%; bottom: 44px; background: var(--card); padding: 10px 10px 30px; box-shadow: 0 14px 34px rgba(60, 34, 20, .22); transform: rotate(2deg); }
   .plate img { display: block; width: 100%; height: auto; }
   .plate .cap { position: absolute; left: 12px; right: 12px; bottom: 7px; display: flex; justify-content: space-between; gap: 8px; font: 500 15px/1 var(--hand); color: var(--muted); }
-  .tape { position: absolute; z-index: 4; width: 92px; height: 26px; right: calc(31% + 84px); bottom: 258px; transform: rotate(-6deg); background: linear-gradient(180deg, #F5C99B, #F0BB86); box-shadow: 0 1px 3px rgba(80, 50, 30, .2); opacity: .94; }
+  /* The tape sits on the photo's top edge, so it lands in the right place at every width. */
+  .plate .tape { position: absolute; width: 92px; height: 26px; top: -18px; left: 50%; margin-left: -46px; transform: rotate(-8deg); background: linear-gradient(180deg, #F5C99B, #F0BB86); box-shadow: 0 1px 3px rgba(80, 50, 30, .2); opacity: .94; }
   .note { position: absolute; z-index: 4; right: 6%; bottom: 40px; font: 700 22px/1.08 var(--hand); color: var(--muted); transform: rotate(-1.5deg); }
-
-  /* "dagens fågel": appears when today's bird has landed */
-  #today { position: absolute; inset: 0; z-index: 4; pointer-events: none; opacity: 0; transition: opacity .7s ease; }
-  #today.on { opacity: 1; }
-  #today svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-  #today span { position: absolute; font: 700 24px/1 var(--hand); color: var(--rust); transform: rotate(-4deg); white-space: nowrap; }
 
   .notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
   .noteCard { background: var(--cream); border-radius: 14px; padding: 16px 18px; display: grid; gap: 6px; }
@@ -76,8 +71,9 @@
     .links { display: none; }
     .hero { min-height: 0; }
     .hero-text { padding-bottom: 330px; }
-    .plate { width: 44%; right: 8%; bottom: 24px; }
-    .tape { right: calc(8% + 60px); bottom: 196px; }
+    .plate { width: 52%; right: 6%; bottom: 24px; padding-bottom: 42px; }
+    .plate .tape { width: 70px; height: 22px; margin-left: -35px; top: -15px; }
+    .plate .cap { flex-direction: column; gap: 3px; font-size: 14px; }
     .note { display: none; }
   }
   @media (max-width: 480px) {
@@ -106,10 +102,8 @@
           <p class="body">Rikta kameran, välj ett foto eller låt fågeln sjunga. Birdy föreslår arten direkt i telefonen, och du sparar fyndet i din egen fältdagbok.</p>
           <div class="badges"><span class="badge"><small>LADDA NED PÅ</small>Google Play</span><span class="badge soon"><small>SNART PÅ</small>App Store</span></div>
         </div>
-        <span class="tape"></span>
-        <figure class="plate"><img src="img/ringduva.webp" alt="Ringduva på stenar vid vatten"><span class="cap"><span>Dagens fågel: Ringduva</span><span>Foto: Ott Rebane</span></span></figure>
+        <figure class="plate"><img src="img/ringduva.webp" alt="Ringduva på stenar vid vatten"><span class="cap"><span>Dagens fågel: Ringduva</span><span>Foto: Ott Rebane</span></span><span class="tape"></span></figure>
         <p class="note">en fågel i flocken<br>för varje art i Birdy</p>
-        <div id="today" aria-hidden="true"><svg></svg><span>dagens fågel</span></div>
       </div>
     </div>
   </div>
@@ -136,17 +130,12 @@
     var hero = document.getElementById('hero');
     var canvas = document.getElementById('flock');
     var ctx = canvas.getContext('2d');
-    var todayBox = document.getElementById('today');
-    var todaySvg = todayBox.querySelector('svg');
-    var todayText = todayBox.querySelector('span');
     var plate = hero.querySelector('.plate');
     var plateImg = plate.querySelector('img');
     var plateCap = plate.querySelector('.cap');
-    var tape = hero.querySelector('.tape');
-    var arrowPaths = [];
+    var tape = plate.querySelector('.tape');
     var revealed = false;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var NS = 'http://www.w3.org/2000/svg';
     var TODAY = 'Q26026'; // Ringduva, Dagens fågel on 8 October
 
     // Seeded randomness, so the flight is the same every time.
@@ -231,7 +220,6 @@
       lit.delay = latest - lit.dur * 0.35 + 250;
       lit.dur = 1800;
       total = lit.delay + lit.dur;
-      placeToday();
     }
 
     function drawBird(x, y, sizePx, rotDeg, img, alpha) {
@@ -314,11 +302,10 @@
       done = true;
       plate.style.visibility = 'visible';
       tape.style.visibility = 'visible';
-      todayBox.classList.add('on');
     }
 
     // Dagens fågel arrives after the flock: the photo lifts out of the lit bird and flies to its place,
-    // develops like a polaroid, the tape lands on it, and the handwritten label and arrow follow.
+    // develops like a polaroid, and the tape lands on it.
     function revealToday() {
       var hr = hero.getBoundingClientRect(), pr = plate.getBoundingClientRect();
       var dx = lit.fx - (pr.left - hr.left + pr.width / 2);
@@ -337,49 +324,18 @@
         { filter: 'saturate(1) brightness(1) contrast(1)', opacity: 1 },
       ], { duration: 2000, delay: 140, easing: 'ease-out', fill: 'both' });
       plateCap.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500, delay: 1150, fill: 'both' });
+      // The tape is part of the photo, which leans 2 degrees, so -8 here is -6 on the page.
       tape.animate([
-        { transform: 'translateY(-18px) rotate(-16deg) scale(1.25)', opacity: 0 },
-        { transform: 'translateY(0px) rotate(-6deg) scale(1)', opacity: 0.94 },
+        { transform: 'translateY(-18px) rotate(-18deg) scale(1.25)', opacity: 0 },
+        { transform: 'translateY(0px) rotate(-8deg) scale(1)', opacity: 0.94 },
       ], { duration: 360, delay: 1100, easing: 'cubic-bezier(.3, 1.5, .5, 1)', fill: 'both' });
-      setTimeout(function () {
-        todayBox.classList.add('on');
-        arrowPaths.forEach(function (p, i) {
-          var len = p.getTotalLength();
-          p.style.strokeDasharray = len + ' ' + len;
-          p.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }], { duration: i === 0 ? 560 : 200, delay: i === 0 ? 0 : 520, easing: 'ease-out', fill: 'both' });
-        });
-      }, 1300);
-    }
-
-    // The handwritten label and its arrow, placed beside today's bird in page pixels.
-    function placeToday() {
-      while (todaySvg.firstChild) todaySvg.removeChild(todaySvg.firstChild);
-      var above = lit.fy > H * 0.34;
-      var lx = Math.max(16, lit.fx - 250), ly = above ? lit.fy - 120 : lit.fy + 110;
-      todayText.style.left = lx + 'px';
-      todayText.style.top = (ly - 20) + 'px';
-      var sx = lx + 150, sy = above ? ly + 8 : ly - 26;
-      var ex = lit.fx - lit.size * 1.8, ey = above ? lit.fy - lit.size * 1.1 : lit.fy + lit.size * 1.1;
-      var cx = sx + 40, cy = above ? ey - 34 : ey + 34;
-      var path = document.createElementNS(NS, 'path');
-      path.setAttribute('d', 'M' + sx + ' ' + sy + ' Q' + cx + ' ' + cy + ' ' + ex + ' ' + ey);
-      var ang = Math.atan2(ey - cy, ex - cx), len = 12;
-      var head = document.createElementNS(NS, 'path');
-      head.setAttribute('d', 'M' + (ex - len * Math.cos(ang - 0.5)) + ' ' + (ey - len * Math.sin(ang - 0.5)) + ' L' + ex + ' ' + ey + ' L' + (ex - len * Math.cos(ang + 0.5)) + ' ' + (ey - len * Math.sin(ang + 0.5)));
-      arrowPaths = [path, head];
-      arrowPaths.forEach(function (p) {
-        p.setAttribute('fill', 'none'); p.setAttribute('stroke', '#9A4526'); p.setAttribute('stroke-width', '2.2');
-        p.setAttribute('stroke-linecap', 'round'); p.setAttribute('stroke-linejoin', 'round');
-        todaySvg.appendChild(p);
-      });
     }
 
     function play() {
       cancelAnimationFrame(raf);
       done = false;
       revealed = false;
-      todayBox.classList.remove('on');
-      [plate, plateImg, plateCap, tape].concat(arrowPaths).forEach(function (n) { n.getAnimations().forEach(function (a) { a.cancel(); }); });
+      [plate, plateImg, plateCap, tape].forEach(function (n) { n.getAnimations().forEach(function (a) { a.cancel(); }); });
       plate.style.visibility = 'hidden';
       tape.style.visibility = 'hidden';
       // Start a little way in, so the very first frame already shows the river of birds arriving.
