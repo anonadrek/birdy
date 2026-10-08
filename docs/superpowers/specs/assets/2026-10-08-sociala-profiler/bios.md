@@ -1,6 +1,6 @@
 # Birdy on social media: bios and handles
 
-Written 8 October 2026 for Birdy's Facebook page, Instagram account and YouTube channel (TikTok later). Everything here is true today: identification by camera, photo and sound is free, Premium is an optional extra, Birdy does not upload your sightings, Android is live and the iPhone app is coming. No promises about accuracy. The decision page with the artwork is `index.html` in this folder.
+Written 8 October 2026 for Birdy's Facebook page, Instagram account and YouTube channel (TikTok later). Everything here is true today: identification by camera, photo and sound is free, Premium is an optional extra, Birdy does not upload your sightings, Android is live and the iPhone app is coming. No promises about accuracy, and nothing that ties Birdy to one region or to a species count. The artwork (direction C, Flocken) and the slogan choice are in `index.html` in this folder.
 
 ## Accounts and handles
 
@@ -45,12 +45,12 @@ Intro, the short bio (88 of 101 characters):
 Identify birds by camera, photo or song. Free on Android, iPhone coming. birdy.community
 ```
 
-About, the longer description (782 characters):
+About, the longer description (787 characters):
 
 ```text
 Birdy is a bird guide and field journal for your phone. Point the camera at a bird, pick a photo or let it sing, and Birdy suggests the species right on your phone and shows how sure it is. Identification by camera, photo and sound is free for everyone.
 
-The guide covers 839 European bird species with photos and descriptions. Save what you see in your own field journal, with the date, a note and the place if you like. Your journal stays on your phone: no account, no ads, and Birdy does not upload your sightings.
+The field guide covers hundreds of bird species with photos and descriptions. Save what you see in your own field journal, with the date, a note and the place if you like. Your journal stays on your phone: no account, no ads, and Birdy does not upload your sightings.
 
 Birdy Premium is an optional extra with a map of your finds, your journal as a PDF, season statistics and seven extra badges.
 
@@ -65,10 +65,10 @@ Website: `https://birdy.community`
 
 Channel name: **Birdy**. Handle: **@birdy.community**.
 
-Description (684 of 1,000 characters):
+Description (675 of 1,000 characters):
 
 ```text
-See the song: short videos where you hear a European bird first and meet it after. Turn the sound on, listen and guess, then see the bird and its name.
+See the song: short videos where you hear a bird first and meet it after. Turn the sound on, listen and guess, then see the bird and its name.
 
 The videos come from Birdy, a bird guide and field journal for your phone. Point the camera at a bird, pick a photo or record its song, and Birdy suggests the species and shows how sure it is. Identification, sound ID included, is free. Your field journal stays on your phone: no account and no ads. Birdy Premium is an optional extra.
 

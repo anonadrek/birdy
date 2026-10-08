@@ -1,8 +1,10 @@
-"""Data for Birdy's social profile artwork (2026-10-08).
+"""Data for Birdy's social profile artwork (2026-10-08, direction C "Flocken").
 
 Reads the traced bird mark (birdy-bird.svg), rasterises it and writes data.js for brand-kit.html:
-the mark's path, its smallest enclosing circle (to fit the mark in round crops) and the flocks for
-direction C ("Flocken"): 839 small birds per artboard, one for each species in Birdy's field guide.
+the mark's path, its smallest enclosing circle (to fit the mark in round crops) and the flocks: one small
+bird for each species in Birdy's field guide (SPECIES, today 839; the artwork never prints the number).
+Each flock has an edge of birds along the mark's outline (so the shape holds at 32 px), an even fill inside
+it and, on the covers, a stream flying in plus a few birds out in front.
 
 Run: python gen.py   (Python 3, numpy, Pillow). Deterministic: fixed seeds.
 """
@@ -20,7 +22,7 @@ SVG = (HERE / 'birdy-bird.svg').read_text(encoding='utf-8')
 PATH = re.search(r' d="([^"]+)"', SVG).group(1)
 VB = [float(v) for v in re.search(r'viewBox="([^"]+)"', SVG).group(1).split()]
 BW, BH = VB[2], VB[3]
-SPECIES = 839  # species in Birdy's field guide; every flock has exactly this many birds
+SPECIES = 839  # species in Birdy's field guide today: one bird each
 
 
 def flatten(d, steps=14):
@@ -58,14 +60,32 @@ ImageDraw.Draw(mask_img).polygon([(x * SCALE, y * SCALE) for x, y in POLY], fill
 MASK = np.array(mask_img) > 127
 
 
+def inside_mask(mask, x, y):
+    px, py = int(x * SCALE), int(y * SCALE)
+    return 0 <= px < mask.shape[1] and 0 <= py < mask.shape[0] and bool(mask[py, px])
+
+
 def inside(x, y):
     """Is the path point (x, y) inside the mark?"""
-    px, py = int(x * SCALE), int(y * SCALE)
-    return 0 <= px < MASK.shape[1] and 0 <= py < MASK.shape[0] and MASK[py, px]
+    return inside_mask(MASK, x, y)
+
+
+def erode(mask, r):
+    """Shrink the mark by about r mask pixels (alternating 4- and 8-neighbour steps, close to a disc)."""
+    m = mask.copy()
+    for i in range(int(r)):
+        n = m & np.roll(m, 1, 0) & np.roll(m, -1, 0) & np.roll(m, 1, 1) & np.roll(m, -1, 1)
+        if i % 2:
+            for dy in (1, -1):
+                for dx in (1, -1):
+                    n &= np.roll(np.roll(m, dy, 0), dx, 1)
+        m = n
+    return m
 
 
 def hull(points):
     pts = sorted(set(points))
+
     def cross(o, a, b):
         return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
     lower, upper = [], []
@@ -90,7 +110,9 @@ def enclosing_circle(points):
         return cx, cy, math.dist(a, (cx, cy))
 
     def circle3(a, b, c):
-        ax, ay = a; bx, by = b; cx, cy = c
+        ax, ay = a
+        bx, by = b
+        cx, cy = c
         d = 2 * (ax * (by - cy) + bx * (cy - ay) + cx * (ay - by))
         if abs(d) < 1e-9:
             return None
@@ -124,21 +146,22 @@ MEC = enclosing_circle(hull(POLY))
 HEADING = math.degrees(math.atan2(230 - 955, 960 - 530))
 
 
-def poisson(n_target, seed):
-    """Exactly n_target points spread evenly inside the mark (path units): Bridson's disc sampling with a
+def poisson(n_target, seed, mask):
+    """Exactly n_target points spread evenly inside mask (path units): Bridson's disc sampling with a
     slightly small radius, then the most crowded points are removed one by one."""
     rng = random.Random(seed)
-    area = MASK.sum() / SCALE ** 2
+    area = mask.sum() / SCALE ** 2
     r = math.sqrt(area / n_target) * 0.76
     cell = r / math.sqrt(2)
-    gw, gh = int(BW / cell) + 1, int(BH / cell) + 1
     grid = {}
     pts, active = [], []
     while True:
         x, y = rng.uniform(0, BW), rng.uniform(0, BH)
-        if inside(x, y):
+        if inside_mask(mask, x, y):
             break
-    pts.append((x, y)); active.append(0); grid[(int(x / cell), int(y / cell))] = 0
+    pts.append((x, y))
+    active.append(0)
+    grid[(int(x / cell), int(y / cell))] = 0
     while active:
         idx = active[rng.randrange(len(active))]
         px, py = pts[idx]
@@ -147,21 +170,18 @@ def poisson(n_target, seed):
             a = rng.uniform(0, 2 * math.pi)
             rr = rng.uniform(r, 2 * r)
             x, y = px + rr * math.cos(a), py + rr * math.sin(a)
-            if not (0 <= x < BW and 0 <= y < BH) or not inside(x, y):
+            if not (0 <= x < BW and 0 <= y < BH) or not inside_mask(mask, x, y):
                 continue
             gx, gy = int(x / cell), int(y / cell)
-            near = False
-            for ix in range(gx - 2, gx + 3):
-                for iy in range(gy - 2, gy + 3):
-                    j = grid.get((ix, iy))
-                    if j is not None and math.dist(pts[j], (x, y)) < r:
-                        near = True
-                        break
-                if near:
-                    break
+            near = any(
+                (j := grid.get((ix, iy))) is not None and math.dist(pts[j], (x, y)) < r
+                for ix in range(gx - 2, gx + 3) for iy in range(gy - 2, gy + 3)
+            )
             if near:
                 continue
-            pts.append((x, y)); active.append(len(pts) - 1); grid[(gx, gy)] = len(pts) - 1
+            pts.append((x, y))
+            active.append(len(pts) - 1)
+            grid[(gx, gy)] = len(pts) - 1
             placed = True
             break
         if not placed:
@@ -181,6 +201,38 @@ def poisson(n_target, seed):
     return [tuple(v) for v in p[alive]]
 
 
+def perimeter():
+    return sum(math.dist(POLY[i], POLY[(i + 1) % len(POLY)]) for i in range(len(POLY)))
+
+
+def outline(n, inset, seed):
+    """n points evenly along the mark's edge, moved `inset` path units inwards: the birds that draw the edge."""
+    rng = random.Random(seed)
+    seg = [(POLY[i], POLY[(i + 1) % len(POLY)]) for i in range(len(POLY))]
+    lens = [math.dist(a, b) for a, b in seg]
+    total = sum(lens)
+    step = total / n
+    s, i, acc, out = rng.uniform(0, step), 0, 0.0, []
+    while len(out) < n and s < total:
+        while acc + lens[i] < s:
+            acc += lens[i]
+            i += 1
+        (ax, ay), (bx, by) = seg[i]
+        u = (s - acc) / lens[i] if lens[i] else 0
+        x, y = ax + (bx - ax) * u, ay + (by - ay) * u
+        tx, ty = (bx - ax) / (lens[i] or 1), (by - ay) / (lens[i] or 1)
+        nx, ny = -ty, tx
+        if not inside(x + nx * 3, y + ny * 3):
+            nx, ny = -nx, -ny
+        for f in (1, .75, .5, .3):
+            qx, qy = x + nx * inset * f, y + ny * inset * f
+            if inside(qx, qy):
+                out.append((qx, qy))
+                break
+        s += step
+    return out
+
+
 def place(cx, cy, radius):
     """Path units to artboard pixels: the mark's enclosing circle lands on (cx, cy) with this radius."""
     k = radius / MEC[2]
@@ -188,7 +240,7 @@ def place(cx, cy, radius):
 
 
 def shade(x, y, rng):
-    """0 = lit (brass), 1 = deep shadow (espresso): light from the upper left, with a little noise."""
+    """0 = lit (brass), 1 = deep shadow: light from the upper left, with a little noise."""
     u = (x - MEC[0]) / MEC[2]
     v = (y - MEC[1]) / MEC[2]
     s = 0.48 + 0.32 * (0.55 * u + 0.85 * v) + rng.gauss(0, 0.16)
@@ -196,7 +248,7 @@ def shade(x, y, rng):
 
 
 def colour(s):
-    # 0 brass, 1 copper, 2 rust-deep, 3 espresso (brand-kit.html maps them per direction)
+    # 0 brass, 1 copper, 2 rust-deep, 3 darkest rust (brand-kit.html maps them)
     return 0 if s < 0.14 else 1 if s < 0.6 else 2 if s < 0.9 else 3
 
 
@@ -205,46 +257,58 @@ def bez(p0, p1, p2, p3, t):
     return (a * p0[0] + b * p1[0] + c * p2[0] + d * p3[0], a * p0[1] + b * p1[1] + c * p2[1] + d * p3[1])
 
 
-def flock(name, cx, cy, radius, n_stream, curve, n_lead, seed, size_k=0.95):
+def flock(name, cx, cy, radius, seed, size_k, n_stream=0, curve=None, lead=()):
+    """SPECIES birds: an edge along the mark's outline, an even fill inside it and optionally a stream flying in
+    along a curve plus a few birds out in front. Each bird is [x, y, width, turn, colour, opacity]."""
     rng = random.Random(seed)
-    n_in = SPECIES - n_stream - n_lead
     to_px, k = place(cx, cy, radius)
+    n_body = SPECIES - n_stream - len(lead)
     area = MASK.sum() / SCALE ** 2
-    base = math.sqrt(area / n_in) * k * size_k  # a bird about as wide as the spacing
+    unit = math.sqrt(area / n_body)            # spacing inside the mark, path units
+    base = unit * k * size_k                    # bird width, pixels
+    edge = outline(int(perimeter() / (unit * 0.9)), unit * 0.4, seed)
+    inner = poisson(n_body - len(edge), seed, erode(MASK, unit * 0.62 * SCALE))
     birds = []
-    for (x, y) in poisson(n_in, seed):
+    for (x, y) in inner:
         X, Y = to_px(x, y)
-        s = shade(x, y, rng)
-        birds.append([round(X, 1), round(Y, 1), round(base * rng.uniform(0.78, 1.12), 1), round(rng.gauss(0, 7), 1), colour(s)])
+        birds.append([round(X, 1), round(Y, 1), round(base * rng.uniform(0.82, 1.1), 1), round(rng.gauss(0, 6), 1), colour(shade(x, y, rng)), 1])
+    for (x, y) in edge:
+        X, Y = to_px(x, y)
+        birds.append([round(X, 1), round(Y, 1), round(base * rng.uniform(0.98, 1.14), 1), round(rng.gauss(0, 5), 1), colour(min(1, shade(x, y, rng) + 0.15)), 1])
     if n_stream:
         p0, p1, p2 = curve
         p3 = to_px(520, 760)
-        for i in range(n_stream):
-            t = rng.random() ** 0.75
+        phase = rng.uniform(0, math.pi)
+        for _ in range(n_stream):
+            r = rng.random()
+            # Most of the stream bunches up where it reaches the bird; two looser pulses further back.
+            if r < 0.58:
+                t = rng.random() ** 0.55
+            else:
+                t = min(1.0, max(0.0, rng.gauss(0.4, 0.06) if r < 0.82 else rng.gauss(0.7, 0.045)))
             X, Y = bez(p0, p1, p2, p3, t)
-            # Spread across the stream: wide in the middle, narrow where it joins the bird.
-            dx, dy = (bez(p0, p1, p2, p3, min(1, t + 0.01))[0] - X, bez(p0, p1, p2, p3, min(1, t + 0.01))[1] - Y)
-            ang = math.atan2(dy, dx)
-            width = radius * (0.10 + 0.22 * math.sin(math.pi * min(1, t * 1.15)))
-            off = rng.gauss(0, width * 0.55)
-            X += -math.sin(ang) * off + rng.gauss(0, 4)
-            Y += math.cos(ang) * off + rng.gauss(0, 4)
-            rot = math.degrees(ang) - HEADING + rng.gauss(0, 9)
-            size = base * (0.55 + 0.5 * t) * rng.uniform(0.85, 1.1)
-            c = 1 if rng.random() < 0.62 else (0 if rng.random() < 0.5 else 2)
-            birds.append([round(X, 1), round(Y, 1), round(size, 1), round(rot, 1), c])
-    lead = [(1150, 130), (1235, 50), (1205, 205), (1300, 150), (1110, 25), (1290, 255)]
-    for (x, y) in lead[:n_lead]:
+            X2, Y2 = bez(p0, p1, p2, p3, min(1.0, t + 0.01))
+            ang = math.atan2(Y2 - Y, X2 - X) if t < 0.99 else math.atan2(p3[1] - p2[1], p3[0] - p2[0])
+            width = radius * (0.04 + 0.2 * math.sin(math.pi * min(1.0, t * 1.1))) * (1 - 0.55 * t ** 6)
+            off = rng.gauss(0, width * 0.5) + radius * 0.05 * math.sin(t * math.pi * 3 + phase)
+            X += -math.sin(ang) * off
+            Y += math.cos(ang) * off
+            rot = math.degrees(ang) - HEADING + rng.gauss(0, 8)
+            size = base * (0.42 + 0.6 * t) * rng.uniform(0.88, 1.08)
+            c = (0 if rng.random() < 0.4 else 1) if t < 0.45 else (1 if rng.random() < 0.7 else 2)
+            birds.append([round(X, 1), round(Y, 1), round(size, 1), round(rot, 1), c, round(0.5 + 0.5 * t, 2)])
+    for (x, y) in lead:
         X, Y = to_px(x, y)
-        birds.append([round(X + rng.gauss(0, 6), 1), round(Y + rng.gauss(0, 6), 1), round(base * rng.uniform(1.05, 1.3), 1), round(rng.gauss(0, 6), 1), 1 if rng.random() < 0.7 else 2])
+        birds.append([round(X + rng.gauss(0, 5), 1), round(Y + rng.gauss(0, 5), 1), round(base * rng.uniform(1.05, 1.22), 1), round(rng.gauss(0, 5), 1), 1 if rng.random() < 0.7 else 2, 1])
     assert len(birds) == SPECIES, (name, len(birds))
-    return {'birds': birds, 'big': {'cx': cx, 'cy': cy, 'r': radius}}
+    return {'birds': birds, 'big': {'cx': cx, 'cy': cy, 'r': radius}, 'edge': len(edge)}
 
 
+LEAD = [(1150, 130), (1240, 60), (1215, 215), (1305, 150)]
 FLOCKS = {
-    'profile-flock': flock('profile', 540, 540, 505, 0, None, 0, 11, size_k=1.32),
-    'facebook-cover-flock': flock('facebook', 1150, 340, 296, 139, [(-70, 790), (360, 742), (720, 600)], 6, 23, size_k=1.4),
-    'youtube-banner-flock': flock('youtube', 850, 716, 212, 273, [(-120, 1330), (120, 1010), (430, 905)], 6, 37, size_k=1.25),
+    'profile-flock': flock('profile', 540, 540, 505, 11, 1.42),
+    'facebook-cover-flock': flock('facebook', 1162, 344, 300, 23, 1.42, 150, [(-80, 800), (380, 760), (760, 600)], LEAD),
+    'youtube-banner-flock': flock('youtube', 846, 716, 214, 37, 1.34, 260, [(-140, 1340), (110, 1030), (440, 915)], LEAD[:3]),
 }
 
 out = {
@@ -257,4 +321,4 @@ out = {
 (HERE / 'data.js').write_text('window.BIRDY = ' + json.dumps(out, separators=(',', ':')) + ';\n', encoding='utf-8')
 print('MEC', out['mec'], 'heading', round(HEADING, 1))
 for k, v in FLOCKS.items():
-    print(k, len(v['birds']))
+    print(k, len(v['birds']), 'edge', v['edge'])

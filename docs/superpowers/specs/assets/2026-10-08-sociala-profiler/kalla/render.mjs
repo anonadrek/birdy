@@ -20,7 +20,8 @@ page.on('pageerror', (e) => console.error('page error:', e.message));
 await page.goto(pathToFileURL(path.join(here, 'brand-kit.html')).href);
 await page.evaluate(() => window.ready);
 await page.waitForTimeout(250);
-const ids = await page.locator('section.art').evaluateAll((els) => els.map((e) => e.id));
+// Archived artboards (directions A and B) render only when asked for by id.
+const ids = await page.locator(only.length ? 'section.art' : 'section.art:not([data-archived])').evaluateAll((els) => els.map((e) => e.id));
 for (const id of ids) {
   if (only.length && !only.includes(id)) continue;
   const file = path.join(outDir, `${id}.png`);
