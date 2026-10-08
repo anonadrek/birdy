@@ -12,7 +12,7 @@ Runbook för de 30 dagliga videorna (9 oktober till 7 november 2026, kl. 08.00 S
 
 - TikTok schemalägger bara cirka 10 dagar framåt: 19 till 28 okt kan läggas tidigast omkring 9 okt, 29 okt till 7 nov tidigast omkring 19 okt.
 - Meta slutade ta emot uppladdningar efter 20 reels i rad (förloppet stod still på 0 % för Knölsvan och Gärdsmyg). Ta resten i en ny omgång, gärna nästa dag.
-- Rutnätsraden (omslaget delat i tre bilder, `grid/` på `social/see-the-song`) publicerades på Instagram och TikTok 2026-10-08. Albin fäster de tre i apparna före den första videon fre 9 okt 08.00, i ordningen höger, mitten, vänster (den som fästs sist hamnar först). Webben har ingen fäst-knapp på någon av kanalerna.
+- Rutnätsraden (omslaget delat i tre bilder, `grid/` på `social/see-the-song`) publicerades på Instagram och TikTok 2026-10-08. De tre fästs före den första videon fre 9 okt 08.00, i ordningen höger, mitten, vänster (den som fästs sist hamnar först). **TikTok: fästa av agenten 2026-10-08 kväll** i TikTok Studio (se steg 8 under TikTok Studio); Studio visar nu Pinned i ordningen vänster, mitten, höger. **Instagram: Albin fäster i appen** (⋯, "Pin to your profile"), eftersom varken instagram.com eller Business Suite har någon fäst-knapp.
 
 ## Material
 
@@ -47,6 +47,7 @@ Ordningen 19 oktober till 7 november: Grågås, Ringduva, Sångsvan, Gråkråka,
 - Avsluta varje inlägg med en vakt i JS som läser datum, tid och text och klickar på Schemalägg bara om allt stämmer.
 - Dialogen "Lämna sidan?" undviks genom att navigera med `force: true`.
 - Skärmbilden är nedskalad (874 px bred). Koordinater från `getBoundingClientRect` räknas om med `874 / window.innerWidth`.
+- När Chrome-fönstret är skymt eller minimerat (`document.visibilityState` är `hidden`) tar skärmbilder timeout. Arbeta då med `javascript_tool` och `get_page_text`, och undvik kedjade `setTimeout`: Chrome stryper dolda flikar till ett anrop per minut, så en loop med korta väntetider ger timeout efter 45 sekunder.
 
 ## Meta Business Suite (Facebook och Instagram i ett inlägg)
 
@@ -75,6 +76,7 @@ Ordningen 19 oktober till 7 november: Grågås, Ringduva, Sångsvan, Gråkråka,
 5. Tid: klicka tidsfältet, kör `scrollIntoView({block: 'center'})` på `.tiktok-timepicker-left` med `08` och `.tiktok-timepicker-right` med `00`, klicka båda på riktigt och klicka sedan utanför.
 6. Vakt: värdena innehåller `08:00` och datumet, texten börjar rätt och har "Link in bio", och "Content check lite" visar "No issues found". Klicka Schedule. Kommer dialogen "Continue to post?" är kontrollen inte klar: klicka Cancel, vänta tills den är klar och klicka Schedule igen. Tryck aldrig "Post now".
 7. Kontrollera på `tiktokstudio/content` att inlägget står som "Oct N, 8:00 AM". TikTok har ett smalt mellanslag (U+202F) före AM, så matcha med `\s` i reguljära uttryck.
+8. Fästa ett inlägg: på `tiktokstudio/content` har varje publicerad rad en meny (radens sista knapp) med "Pin to top", "Download" och "Delete". Listan laddar raderna efter hand, så skrolla ned tills raden finns. Menyn renderas utanför raden i DOM:en: kontrollera att den sitter vid rätt rad innan klicket (från radens knapp till "Pin to top" var det +53 px när menyn öppnades nedåt och -115 px när den öppnades uppåt). Bekräftelse: "Pinned to top" och etiketten Pinned i raden. Fäst i omvänd ordning, eftersom den som fästs sist visas först. Profilsidan på tiktok.com har ingen fäst-knapp.
 
 ## Profilerna
 
@@ -85,10 +87,12 @@ Ordningen 19 oktober till 7 november: Grågås, Ringduva, Sångsvan, Gråkråka,
 - Handtagen kan inte vara lika på alla kanaler, eftersom namnen är upptagna.
 - Webben länkar till alla fyra i sidfoten och i `sameAs` (JSON-LD), live sedan `d170de09`.
 
-## Sökindex (förslag, inte byggt)
+## Sökindex (förslag, väntar på Albins OK)
 
 Albin vill att webbens sidor och de sociala profilerna indexeras en gång i veckan.
 
-- Google: sitemapen räcker (`sitemap-index.xml` är inskickad i Search Console). Varje måndag: titta på Sidor och Prestanda i Search Console och begär indexering för nya viktiga sidor.
-- Bing och andra: IndexNow. Skicka nya och ändrade adresser efter varje publicering eller en gång i veckan. Kräver en nyckelfil i `website/public/` och ett litet skript; inte byggt än.
-- Profilerna länkas redan från webben (`sameAs` och sidfoten), vilket är det som hjälper sökmotorerna att koppla ihop dem.
+- **Läget i Search Console 2026-10-08 kväll:** 4 sidor indexerade, 10 inte (3 omdirigeringar, 1 alternativ sida med korrekt kanonisk tagg, 6 upptäckta men inte indexerade). Sitemapen lästes senast 7 okt, då med 10 adresser. I dag har den 208: alla publicerade artsidor på båda språken, gruppsidorna, hubbarna och de vanliga sidorna. Google läser om den själv; en ny inskickning skyndar på.
+- Google: sitemapen räcker för alla sidor. Begär indexering (Googles gräns är ungefär 10 adresser per dag och egendom) bara för hubbarna `/sv/arter/` och `/species/` och de mest sökta arterna. Varje måndag: titta på Sidor och Prestanda.
+- Bing och andra: IndexNow. Skicka nya och ändrade adresser efter varje publicering eller en gång i veckan (upp till 10 000 per anrop). Kräver en nyckelfil i `website/public/` och ett litet skript; inte byggt än. Bing ligger bakom sökningen i ChatGPT, Copilot och DuckDuckGo.
+- **Plattformsegendomar i Search Console (nytt i juli 2026):** Instagram, TikTok, X och YouTube kan läggas till som egna egendomar (Lägg till egendom, kopplas med plattformens egen inloggning). De visar vilka sökningar på Google som leder till inläggen (klick, visningar, position), indexerar inget och påverkar inte rankningen. Facebook stöds inte. Kandidater: @app.birdy, @birdy.app, @birdy.community och AlbIT:s Instagram @albit.ab. Kopplingen är en OAuth-behörighet och kräver Albins OK. Källor: Googles blogg juli 2026 ("See how content from social and video platforms performs on Google Search") och hjälpsidan "About platform properties in Search Console".
+- Profilerna länkas redan från webben (`sameAs` och sidfoten), vilket är det som hjälper sökmotorerna att koppla ihop dem med Birdy.
