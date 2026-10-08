@@ -14,7 +14,7 @@ Två spår kan gå parallellt (olika filer och worktrees), men högst ett tungt 
 | Spår | Var | Läge | Nästa |
 |---|---|---|---|
 | Webben i Flock-looken | `docs/superpowers/specs/assets/2026-10-08-flocken-webben/` | utkast 1 gillat, utkast 2 avvisat, rörelsen godkänd | brainstorm, spec, plan, bygge |
-| 1.3.1 del 7 och 8 | `C:/w/birdy-streck`, `feature/1.3.1-tankstreck` | Task 1 klar, Task 2 godkänd med småfynd | fixrunda, Task 3 till 6 |
+| 1.3.1 del 7 och 8 | `C:/w/birdy-streck`, `feature/1.3.1-tankstreck` | Task 1 klar, Task 2 godkänd med småfynd | fixrunda, Task 2b, Task 3 till 6 |
 | 1.3.1 i stort | `release/1.3.0`, `docs/superpowers/plans/2026-10-08-1.3.1-samlad-release.md` | planen godkänd av Albin | grindarna nedan |
 | Artsidorna | loopen i `C:/w/birdy-publish` | 100 av 180 live, paus | tidigast tors 15 okt |
 | Sökindex | Search Console, IndexNow | sitemaps inskickade, 11 adresser begärda | cirka 10 om dagen |
@@ -78,6 +78,10 @@ Besluten 1 till 6 står i mappens README.
 
 **Därefter:**
 
+- **Task 2b, ny (Albin 2026-10-08: "they have to be translated"):** notiskanalernas namn och beskrivningar på appens språk. Det är punkt 12 i den samlade planen på `release/1.3.0` (`22d5b928`). Skriv uppgiftens text först. Ledgern har de tekniska anteckningarna:
+  - I dag står svenska namn och engelska beskrivningar direkt i `NotificationChannels.kt`, och kanalerna skapas bara om de saknas.
+  - Texterna ska tas fram på samma väg som notisernas egna texter (`AppStrings(resolvedLocale)`).
+  - `createNotificationChannel` ska anropas vid varje start och språkbyte, så att namnen uppdateras.
 - **Task 3:** `app_dashes.py`.
 - **Task 4:** körningen och kommandot `birdy-fetcher app-dashes`.
 - **Task 5:** den styrande agenten kör `uv run birdy-fetcher app-dashes --max-cost 12` själv, handrättar raderna märkta KVAR och kontrollerar att en torrkörning visar 0 arter.
@@ -141,10 +145,13 @@ Fredag 9 okt efter 08.00: kontrollera att de första inläggen gick ut på alla 
 5. Karusellens val A, B eller C: ersätts troligen av Flock-looken. Fråga innan något byggs.
 6. Köptestet med vC129, MapTiler Flex, Resend och BirdNET:s svar.
 7. API-gränsen för våg 3.
-8. Play-titeln "Birdy — Bird Identify & Guide" har ett tankstreck. Gäller regeln även butikstiteln? Titeln är viktig för sökningen i Play.
-9. Kanalnamnen för notiser visas bara på svenska i Androids inställningar, en äldre lucka. Ska de med i 1.3.1?
-10. Undantagens standardval för våg 2 kan ändras före 15 okt.
-11. Simkontrollerna på Macen (i2c, i3, i4) när det passar.
+8. Undantagens standardval för våg 2 kan ändras före 15 okt.
+9. Simkontrollerna på Macen (i2c, i3, i4) när det passar.
+
+**Besvarat i kväll (2026-10-08):**
+
+- Play-titeln får kolon i stället för tankstreck vid 1.3.1-uppladdningen: "Birdy: Bird Identify & Guide" och "Birdy: Fågel-ID & Guide". Det är punkt 13 i den samlade planen.
+- Notiskanalernas namn översätts i 1.3.1. Det är Task 2b ovan.
 
 ## 7. Rutiner
 
