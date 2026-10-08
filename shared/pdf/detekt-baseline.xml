@@ -12,7 +12,6 @@
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$10</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$100f</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$10f</ID>
-    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$120f</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$12f</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$140f</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$14f</ID>
@@ -26,12 +25,10 @@
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$22f</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$240f</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$24f</ID>
-    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$26f</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$28f</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$30f</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$322f</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$40f</ID>
-    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$44f</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$48f</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$4f</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$5</ID>
@@ -39,7 +36,6 @@
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$5f</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$6f</ID>
     <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$80f</ID>
-    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$90f</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$0.5</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$0.6</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$1.5</ID>
@@ -47,7 +43,6 @@
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$10.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$100.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$12.0</ID>
-    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$120.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$130.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$14.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$140.0</ID>
@@ -61,14 +56,12 @@
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$22.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$24.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$240.0</ID>
-    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$26.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$28.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$280.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$30.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$322.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$4.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$40.0</ID>
-    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$44.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$48.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$5</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$5.0</ID>
@@ -76,7 +69,6 @@
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$6.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$70.0</ID>
     <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$80.0</ID>
-    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$90.0</ID>
     <ID>MatchingDeclarationName:JournalPdfRenderer.android.kt$JournalPdfRenderer</ID>
     <ID>MatchingDeclarationName:JournalPdfRenderer.ios.kt$JournalPdfRenderer</ID>
     <ID>MatchingDeclarationName:JournalPdfRenderer.jvm.kt$JournalPdfRenderer</ID>
