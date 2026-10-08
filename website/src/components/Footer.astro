@@ -31,9 +31,10 @@ const topGroups = footerGroups(allSpecies);
       <div class="fbrand">
         <a href={home} aria-label="Birdy"><Wordmark size="38px" alt={t.alt.wordmark} color="var(--apricot)" /></a>
         <p class="tag">{t.footer.tagline}</p>
-        {/* Birdy's channels (2026-10-08), on every page. They open in a new tab like the footer's other external link. */}
-        <h2 class="fsoc-h" id="follow-birdy">{t.footer.follow}</h2>
-        <ul class="fsoc" role="list" aria-labelledby="follow-birdy">
+        {/* Birdy's channels (2026-10-08), on every page. They open in a new tab like the footer's other external link.
+            The id is not "follow-birdy": a field note's own "Follow Birdy" heading gets that id from its text. */}
+        <h2 class="fsoc-h" id="footer-follow">{t.footer.follow}</h2>
+        <ul class="fsoc" role="list" aria-labelledby="footer-follow">
           {SOCIAL_PROFILES.map((s) => (
             <li>
               <a href={s.href} target="_blank" rel="me noopener" data-social={s.network.toLowerCase()}>

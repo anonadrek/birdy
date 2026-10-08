@@ -7,6 +7,7 @@ import Footer from './Footer.astro';
 import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import PlayStoreBadge from './ui/PlayStoreBadge.astro';
+import BuiltSpeciesLinks from './ui/BuiltSpeciesLinks.astro';
 import { fieldNoteHref, fieldNotesHref, formatNoteDate, readingMinutes, type FieldNote } from '../lib/field-notes';
 import { getCopy } from '../lib/i18n';
 import { albitProductHref } from '../lib/links';
@@ -44,7 +45,7 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
       {imageCaption && <span class="cap" aria-hidden="true">{imageCaption}</span>}
     </header>
     <article class="asheet">
-      <div class="article-prose"><Content /></div>
+      <div class="article-prose"><BuiltSpeciesLinks><Content /></BuiltSpeciesLinks></div>
       <aside class="aend">
         <div>
           <JournalHeadline text={t.blog.endHeadline} level="h2" align="left" size="28px" />

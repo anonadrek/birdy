@@ -14,7 +14,7 @@
 //
 // The about pages (Task 12) follow the same zero-species noindex rule, but nothing on them depends on the
 // species list, so their content must stay: all five sections and the mail link.
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -84,7 +84,13 @@ for (const path of ['sv/arter/om-artsidorna', 'species/about-these-pages']) {
 
 // The menu, the footer and the home page's field guide section (Task 13) link to the species pages only once
 // a species is built: at zero no page on the site may link to them (the hub only says they are coming).
-for (const path of ['', 'sv', 'blog', 'sv/blog']) {
+// The field notes too (2026-10-08): a note links to species pages from its Markdown, and the links to pages a build
+// doesn't have become plain text (src/lib/note-links.mjs), so at zero a note has none left.
+const notePages = readdirSync(join(dist, 'blog'), { withFileTypes: true })
+  .filter((d) => d.isDirectory())
+  .flatMap((d) => [`blog/${d.name}`, `sv/blog/${d.name}`]);
+if (notePages.length === 0) fail('blog', 'inga inlägg byggda');
+for (const path of ['', 'sv', 'blog', 'sv/blog', ...notePages]) {
   const html = page(path);
   const where = path || '/';
   if (/href="\/(sv\/arter|species)\//.test(html)) fail(where, 'länkar till artsidorna trots noll byggda arter');

@@ -6,6 +6,15 @@ import { DISC_SCALE, fitView, landing } from '../src/components/hero/flock.mjs';
 
 type Box = { left: number; top: number; right: number; bottom: number };
 
+// Birdy's channels (2026-10-08). The addresses are written out here rather than read from src/lib/links.ts, so a
+// typo there fails the test. Instagram is @app.birdy: @birdy.community on Instagram belongs to someone else.
+const channels = [
+  ['Instagram', 'https://www.instagram.com/app.birdy/'],
+  ['Facebook', 'https://www.facebook.com/profile.php?id=61595339305266'],
+  ['YouTube', 'https://www.youtube.com/@birdy.community'],
+  ['TikTok', 'https://www.tiktok.com/@birdy.app'],
+] as const;
+
 // WCAG contrast helpers for the pixel-contrast test (1c): hide the text, screenshot the real
 // background behind it, composite the text's own colour (and any element opacity) over that
 // measured background, and compute the standard relative-luminance contrast ratio. Mirrors the
@@ -201,15 +210,6 @@ test.describe('meny och sidfot', () => {
       await expect(footer).not.toContainText('LoopLead');
     });
   }
-
-  // Birdy's channels (2026-10-08). The addresses are written out here rather than read from src/lib/links.ts, so a
-  // typo there fails the test. Instagram is @app.birdy: @birdy.community on Instagram belongs to someone else.
-  const channels = [
-    ['Instagram', 'https://www.instagram.com/app.birdy/'],
-    ['Facebook', 'https://www.facebook.com/profile.php?id=61595339305266'],
-    ['YouTube', 'https://www.youtube.com/@birdy.community'],
-    ['TikTok', 'https://www.tiktok.com/@birdy.app'],
-  ] as const;
 
   for (const [path, follow, on] of [['/sv/', 'Följ Birdy', 'på'], ['/', 'Follow Birdy', 'on']] as const) {
     test(`sidfoten på ${path} länkar till Birdys fyra kanaler, och appens JSON-LD har dem som sameAs`, async ({ page }) => {
@@ -1185,10 +1185,69 @@ test.describe('bloggen', () => {
     });
   }
 
-  for (const [path, href] of [['/sv/', '/sv/blog/why-birdy/'], ['/', '/blog/why-birdy/']] as const) {
+  // The newest note is the list's big first card (FieldNotesIndex sorts by date), and the home page shows the same one.
+  for (const [path, prefix, newest] of [['/sv/', '/sv', '/sv/blog/see-the-song/'], ['/', '', '/blog/see-the-song/']] as const) {
     test(`startsidan visar senaste inlägget som fotokort på ${path}`, async ({ page }) => {
+      await page.goto(`${prefix}/blog/`);
+      const latest = page.locator('main .first a.ncard');
+      await expect(latest).toHaveAttribute('href', newest);
       await page.goto(path);
-      await expect(page.locator(`#field-notes a.ncard[href="${href}"] img`)).toBeVisible();
+      await expect(page.locator('#field-notes a.ncard')).toHaveCount(1);
+      await expect(page.locator(`#field-notes a.ncard[href="${newest}"] img`)).toBeVisible();
+    });
+  }
+
+  // The note about the See the song videos (2026-10-09): one self-hosted video (no third-party player), its credit
+  // right under it, the four channels and the first week's species pages.
+  for (const [prefix, lang, minRead, photo, recording, deed, species] of [
+    ['/sv', 'sv', 'min läsning', 'Foto: Kathy Büscher', 'Inspelning: Benoît Van Hecke', 'deed.sv',
+      ['/sv/arter/blames/', '/sv/arter/trana/', '/sv/arter/grasparv/', '/sv/arter/grasand/', '/sv/arter/koltrast/', '/sv/arter/ormvrak/', '/sv/arter/talgoxe/']],
+    ['', 'en', 'min read', 'Photo: Kathy Büscher', 'Recording: Benoît Van Hecke', '',
+      ['/species/eurasian-blue-tit/', '/species/common-crane/', '/species/house-sparrow/', '/species/mallard/', '/species/common-blackbird/', '/species/common-buzzard/', '/species/great-tit/']],
+  ] as const) {
+    test(`inlägget See the song har videon med krediten, kanalerna och artlänkarna (${lang})`, async ({ page }) => {
+      const errors = trackConsoleErrors(page);
+      await page.goto(`${prefix}/blog/see-the-song/`);
+      await expect(page.locator('.ahero img')).toBeVisible();
+      await expect(page.locator('.ahero .ameta')).toContainText(minRead);
+      await expect(page.locator('.aby a')).toHaveText('Albin Abrahamsson, AlbIT');
+      await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\/_astro\/see-the-song-blames-q25404[^/]*\.jpg$/);
+
+      // Nothing plays, and nothing but the poster loads, until the visitor presses play; it plays inline on phones.
+      const figure = page.locator('.article-prose figure.note-video');
+      const video = figure.locator('video');
+      await expect(video).toHaveCount(1);
+      await expect(page.locator('iframe')).toHaveCount(0);
+      expect(await video.evaluate((v) => ({
+        controls: v.hasAttribute('controls'), autoplay: v.hasAttribute('autoplay'), muted: v.hasAttribute('muted'),
+        playsinline: v.hasAttribute('playsinline'), preload: v.getAttribute('preload'), poster: v.getAttribute('poster'),
+      }))).toEqual({ controls: true, autoplay: false, muted: false, playsinline: true, preload: 'none', poster: '/video/see-the-song/eurasian-blue-tit.jpg' });
+      await expect(video.locator('source')).toHaveAttribute('src', '/video/see-the-song/eurasian-blue-tit.mp4');
+      await expect(video.locator('track')).toHaveAttribute('kind', 'captions');
+      await expect(video.locator('track')).toHaveAttribute('srclang', lang);
+      for (const url of ['/video/see-the-song/eurasian-blue-tit.mp4', '/video/see-the-song/eurasian-blue-tit.jpg', `/video/see-the-song/eurasian-blue-tit.${lang}.vtt`]) {
+        expect((await page.request.get(url)).status(), url).toBe(200);
+      }
+
+      // The credit right under the video, as on the species pages: who, the licence (linked) and the Commons file.
+      const caption = figure.locator('figcaption');
+      await expect(caption).toContainText(photo);
+      await expect(caption).toContainText(recording);
+      await expect(caption.locator('a[href="https://commons.wikimedia.org/wiki/File:Blaumeise_%2864%29_%2834633517080%29.jpg"]')).toHaveText('Wikimedia Commons');
+      await expect(caption.locator('a[href="https://commons.wikimedia.org/wiki/File:Cyanistes_caeruleus_-_Eurasian_Blue_Tit_XC538220.mp3"]')).toHaveText('Wikimedia Commons');
+      await expect(caption.locator(`a[href="https://creativecommons.org/licenses/by/2.0/${deed}"]`)).toHaveText('CC BY 2.0');
+      await expect(caption.locator(`a[href="https://creativecommons.org/licenses/by-sa/4.0/${deed}"]`)).toHaveText(['CC BY-SA 4.0', 'CC BY-SA 4.0']);
+
+      for (const [, href] of channels) await expect(page.locator(`.article-prose a[href="${href}"]`)).toHaveCount(1);
+      await expect(page.locator('.article-prose a[href*="instagram.com/birdy.community"]')).toHaveCount(0);
+      // All seven are built in the test data as well as on the live site; a page this build lacks would be plain text.
+      const speciesLinks = page.locator('.article-prose a[href^="/sv/arter/"], .article-prose a[href^="/species/"]');
+      expect(await speciesLinks.evaluateAll((els) => els.map((a) => a.getAttribute('href')))).toEqual([...species]);
+      for (const href of species) expect((await page.request.get(href)).status(), href).toBe(200);
+      // The note's own "Follow Birdy" heading and the footer's must not share an id (the footer's list is named by its id).
+      const ids = await page.locator('[id]').evaluateAll((els) => els.map((el) => el.id));
+      expect(ids.filter((id, i) => ids.indexOf(id) !== i), 'dubbla id').toEqual([]);
+      expect(errors).toEqual([]);
     });
   }
 
@@ -1207,19 +1266,25 @@ test.describe('bloggen', () => {
     const xml = await (await page.request.get('/sitemap-0.xml')).text();
     const blocks = xml.match(/<url>[\s\S]*?<\/url>/g) ?? [];
     const blockFor = (url: string) => blocks.find((b) => b.includes(`<loc>${url}</loc>`));
-    const postUrls = ['https://birdy.community/blog/why-birdy/', 'https://birdy.community/sv/blog/why-birdy/'];
-    for (const url of postUrls) {
+    const postDates = [
+      ['https://birdy.community/blog/why-birdy/', '2026-09-24'],
+      ['https://birdy.community/sv/blog/why-birdy/', '2026-09-24'],
+      ['https://birdy.community/blog/see-the-song/', '2026-10-09'],
+      ['https://birdy.community/sv/blog/see-the-song/', '2026-10-09'],
+    ] as const;
+    for (const [url, date] of postDates) {
       const block = blockFor(url);
       expect(block, url).toBeTruthy();
-      expect(block, url).toMatch(/<lastmod>2026-09-24/);
+      expect(block, url).toMatch(new RegExp(`<lastmod>${date}`));
     }
     // No other URL in the whole sitemap carries a lastmod, not just the two obvious home-page checks.
-    expect(blocks.length).toBeGreaterThan(postUrls.length);
+    expect(blocks.length).toBeGreaterThan(postDates.length);
     const isSpeciesPage = (loc: string) => /^https:\/\/birdy\.community\/(sv\/arter|species)\//.test(loc);
+    const isPost = (loc: string) => /^https:\/\/birdy\.community\/(sv\/)?blog\/[^/]+\/$/.test(loc);
     expect(blockFor('https://birdy.community/sv/arter/talgoxe/')).toMatch(/<lastmod>2026-11-25/);
     for (const block of blocks) {
       const loc = block.match(/<loc>(.*?)<\/loc>/)?.[1] ?? block;
-      if (postUrls.includes(loc) || isSpeciesPage(loc)) continue;
+      if (isPost(loc) || isSpeciesPage(loc)) continue;
       expect(block, loc).not.toMatch(/<lastmod>/);
     }
   });
@@ -1248,19 +1313,21 @@ test.describe('bloggen', () => {
     // apricot kicker, and the first transparent nav link) clear WCAG AA at load (scrollY 0, before
     // the nav has flipped solid) at 1440×900. The full sweep across widths/locales/scroll steps
     // that justified the chosen scrim values lives in the PR report, not in CI, to keep this fast.
-    test('kickern och den första menylänken klarar 4.5:1 mot fotot', async ({ page }) => {
-      await page.setViewportSize({ width: 1440, height: 900 });
-      await page.goto('/sv/blog/why-birdy/');
-      await page.addStyleTag({ content: '.ahero .in * { visibility: hidden !important; } #site-nav .links a { visibility: hidden !important; }' });
-      await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
-      await expect(page.locator('#site-nav')).not.toHaveClass(/is-solid/);
+    for (const post of ['/sv/blog/why-birdy/', '/sv/blog/see-the-song/'] as const) {
+      test(`kickern och den första menylänken klarar 4.5:1 mot fotot på ${post}`, async ({ page }) => {
+        await page.setViewportSize({ width: 1440, height: 900 });
+        await page.goto(post);
+        await page.addStyleTag({ content: '.ahero .in * { visibility: hidden !important; } #site-nav .links a { visibility: hidden !important; }' });
+        await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+        await expect(page.locator('#site-nav')).not.toHaveClass(/is-solid/);
 
-      const kickerRatio = await textContrastAgainstBackground(page, page.locator('.ahero .in .kick'));
-      expect(kickerRatio, `kicker mot fotot: ${kickerRatio.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
+        const kickerRatio = await textContrastAgainstBackground(page, page.locator('.ahero .in .kick'));
+        expect(kickerRatio, `kicker mot fotot: ${kickerRatio.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
 
-      const navLinkRatio = await textContrastAgainstBackground(page, page.locator('#site-nav .links a').first());
-      expect(navLinkRatio, `första menylänken mot fotot: ${navLinkRatio.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
-    });
+        const navLinkRatio = await textContrastAgainstBackground(page, page.locator('#site-nav .links a').first());
+        expect(navLinkRatio, `första menylänken mot fotot: ${navLinkRatio.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
+      });
+    }
   });
 
   // The gallery wall turned light on 2026-10-10, so its kicker is the light sections' rust; the blog's band is still espresso.

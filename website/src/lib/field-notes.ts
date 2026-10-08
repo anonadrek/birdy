@@ -27,9 +27,10 @@ export async function getFieldNotes(locale: Locale): Promise<FieldNote[]> {
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
 
-/** Minutes to read a note's markdown body at 200 words per minute, at least 1. */
+/** Minutes to read a note's markdown body at 200 words per minute, at least 1. HTML tags in the body (a video, say)
+ * are not words: only the text between them counts. */
 export function readingMinutes(body: string | undefined): number {
-  const words = (body ?? '').replace(/[#>*_`[\]()!]/g, ' ').split(/\s+/).filter(Boolean).length;
+  const words = (body ?? '').replace(/<[^>]*>/g, ' ').replace(/[#>*_`[\]()!]/g, ' ').split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.ceil(words / 200));
 }
 

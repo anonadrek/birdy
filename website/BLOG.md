@@ -10,6 +10,8 @@ Put the photo in `src/assets/photos/` and point to it with a path relative to th
 
 The body goes below the frontmatter and may use headings, lists, links and one quote (`> ...`), which is shown as a large pull quote. The first paragraph is shown as the lead. Reading time is calculated from the text.
 
+Links to species pages (`/species/<slug>/`, `/sv/arter/<slug>/`) are fine: in a build that doesn't have that page, the link is shown as plain text instead (`src/lib/note-links.mjs`). A vertical video goes in `public/video/` and into the body as raw HTML, `<figure class="note-video">` with a `<video controls playsinline preload="none" poster="...">` and its credit in `<figcaption>`, one `<span>` per source (see `see-the-song.md`); keep the figure free of blank lines, or Markdown ends the HTML block early. Never embed a third-party player.
+
 New posts appear automatically at `/blog/` and `/sv/blog/`, newest first. The latest post appears on both homepages. Titles, descriptions, canonical URLs, language alternatives and article metadata come from the frontmatter. Use a specific title and description for each language, and check all links and product claims before publishing.
 
 Use the Swedish and English writing on `albit.se` as the tone reference. Write directly about what Birdy does, who it helps and why a feature matters. Avoid dash punctuation in public copy in both languages (`npm run test:no-dashes` checks it).

@@ -1,5 +1,5 @@
 import type { Locale } from './i18n';
-import { ABOUT_SLUG, GROUPS, activeGroups, assertUniqueSlugs, getAllRecords, getAllSpecies } from './species';
+import { ABOUT_SLUG, GROUPS, aboutHref, activeGroups, assertUniqueSlugs, getAllRecords, getAllSpecies, hubHref } from './species';
 import { hasPageContract } from './species-source.mjs';
 
 /** Every page under /species/ and /sv/arter/ except the hub and the about page (spec §4). */
@@ -17,4 +17,10 @@ export async function speciesPaths(locale: Locale) {
     ...all.map((species) => ({ params: { slug: species.slug[locale] }, props: { species } })),
     ...groups.map((group) => ({ params: { slug: group.slug[locale] }, props: { group } })),
   ];
+}
+
+/** Every page this build has under /species/ or /sv/arter/: the hub, the about page, and the species and groups above. */
+export async function builtSpeciesHrefs(locale: Locale): Promise<Set<string>> {
+  const hub = hubHref(locale);
+  return new Set([hub, aboutHref(locale), ...(await speciesPaths(locale)).map((p) => `${hub}${p.params.slug}/`)]);
 }
