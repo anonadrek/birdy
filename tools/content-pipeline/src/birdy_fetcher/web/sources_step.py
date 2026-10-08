@@ -14,7 +14,13 @@ from typing import Any, Protocol
 from ..cache import Cache
 from .audio import AudioCandidate, CommonsAudioClient, audio_record, choose, convert_to_mp3
 from .checks import without_dashes
-from .datamod import MIN_REPORTS, Counts, build_data, record_status_contradiction
+from .datamod import (
+    MIN_REPORTS,
+    Counts,
+    build_data,
+    record_status_contradiction,
+    red_list_for_page,
+)
 from .facts import data_facts
 from .gbif import GbifClient
 from .groups import GroupTable
@@ -25,6 +31,7 @@ from .record import (
     Record,
     audio_id,
     delete_voice,
+    file_sha256,
     image_dict,
     is_reviewed,
     load_record,
@@ -134,11 +141,22 @@ async def _data_and_red_list(
     )
     if red is None:
         notes.append("okänd kategori i Svenska rödlistan")
-    return data, red
+    page_red = red_list_for_page(red, counts.total)
+    if red is not None and page_red is None:
+        notes.append(
+            f"inte bedömd i Svenska rödlistan ({counts.total} rapporter): "
+            "sidan visar ingen rödlistekategori"
+        )
+    return data, page_red
 
 
 async def _audio(
-    source: SpeciesSource, ctx: _Context, notes: list[str], *, skip: bool
+    source: SpeciesSource,
+    ctx: _Context,
+    notes: list[str],
+    *,
+    skip: bool,
+    struck: frozenset[str] = frozenset(),
 ) -> dict[str, Any] | None:
     voice = ctx.paths.images_out / source.qid / "voice.mp3"
     audio: dict[str, Any] | None = None
@@ -147,6 +165,9 @@ async def _audio(
         candidates = await ctx.clients.audio.candidates(
             source.qid, source.scientific_name, refresh=refresh
         )
+        # A recording V4 struck or tried in vain is never chosen again (fix wave
+        # 2026-10-07): V4 may have replaced it with a later one, which this keeps.
+        candidates = [c for c in candidates if c.page_url not in struck]
         chosen, rejected = choose(candidates, source.scientific_name)
         notes.extend(f"inspelning avvisad: {r}" for r in rejected[:5])
         if chosen is None:
@@ -158,7 +179,13 @@ async def _audio(
             # the same title is a different recording, so `audio_id` and with it Albin's
             # `audioKept` follow the content, not just the metadata. Hashed before ffmpeg,
             # so it is the same on every machine.
-            audio = {**audio_record(chosen, source.qid), "sha256": hashlib.sha256(raw).hexdigest()}
+            audio = {
+                **audio_record(chosen, source.qid),
+                "sha256": hashlib.sha256(raw).hexdigest(),
+                # The converted file's own hash: the sweep removes a voice.mp3 that is not
+                # this one (re-review 2026-10-07).
+                "mp3Sha256": file_sha256(voice),
+            }
     if audio is None and not ctx.options.dry_run:
         error = delete_voice(ctx.paths.images_out, source.qid)
         if error:
@@ -167,14 +194,18 @@ async def _audio(
 
 
 async def _collect(
-    source: SpeciesSource, ctx: _Context, *, skip_audio: bool
+    source: SpeciesSource,
+    ctx: _Context,
+    *,
+    skip_audio: bool,
+    struck_audio: frozenset[str] = frozenset(),
 ) -> tuple[dict[str, Any], list[str]]:
     notes: list[str] = []
     articles = await ctx.clients.wiki.articles(source.qid, refresh=ctx.options.refresh)
     if not articles:
         notes.append("ingen Wikipediaartikel")
     data, red = await _data_and_red_list(source, ctx, notes)
-    audio = await _audio(source, ctx, notes, skip=skip_audio)
+    audio = await _audio(source, ctx, notes, skip=skip_audio, struck=struck_audio)
     images: list[ImageOut] = []
     if not ctx.options.dry_run:
         images = await asyncio.to_thread(
@@ -237,7 +268,8 @@ def _forget_checks_of_old_sources(record: Record) -> None:
         review.pop("audioKept")
     if record.get("facts"):
         kept = [f for f in record["facts"] if f.get("topic") != "data"]
-        record["facts"] = kept + data_facts(record)
+        status = next((f["value"] for f in kept if f.get("topic") == "status"), None)
+        record["facts"] = kept + data_facts(record, status=status)
 
 
 async def run_sources(
@@ -286,11 +318,24 @@ async def run_sources(
                         "failed",
                         ["publicerad: sätt publish: false först"],
                     )
-                skip_audio = bool(existing and existing.get("review", {}).get("audioStruck"))
-                collected, notes = await _collect(source, ctx, skip_audio=skip_audio)
+                review = (existing or {}).get("review", {})
+                # Only an old record (struck before V4 kept a list of the recordings it
+                # struck) skips the audio step; with the list a later run looks again, for
+                # a recording uploaded since (re-review 2026-10-07).
+                skip_audio = bool(review.get("audioStruck")) and not review.get(
+                    "audioStruckSources"
+                )
+                collected, notes = await _collect(
+                    source,
+                    ctx,
+                    skip_audio=skip_audio,
+                    struck_audio=frozenset(review.get("audioStruckSources", [])),
+                )
                 if options.dry_run:
                     return StepOutcome(source.qid, source.name_sv, "dry-run", notes=notes)
                 record = merge_sources(existing, source.qid, collected)
+                if record.get("audio"):
+                    record.setdefault("review", {}).pop("audioStruck", None)
                 if record.get("data"):
                     # build_data resets the signal; keep it true to the facts already there.
                     record["data"]["statusSignal"] = {

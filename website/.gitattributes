@@ -1,0 +1,2 @@
+# Bash runs the publish loop: keep LF on Windows checkouts too (core.autocrlf would give it CRLF and break bash).
+scripts/publish-loop.sh text eol=lf

@@ -5,13 +5,19 @@ in the exception sheet at all (Task 16)."""
 from __future__ import annotations
 
 import asyncio
-from dataclasses import dataclass, replace
+import contextlib
+import hashlib
+import os
+import shutil
+import tempfile
+from dataclasses import dataclass, field, replace
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
 from ..cache import Cache
 from ..cost import CostTracker, MaxCostExceeded
+from .audio import audio_record, convert_to_mp3, rejection
 from .audio_check import AudioCheckFailed, AudioVerdict, audio_verdict, classify_clip
 from .checks import without_dashes
 from .defaults import EFFORTS, FACTS_EFFORT, FACTS_MODEL_KEY
@@ -21,18 +27,21 @@ from .facts_step import FactExtractor, facts_generated
 from .llm import MODELS, AnthropicJsonClient, JsonModelClient
 from .paths import WebPaths
 from .record import (
+    STAGED_VOICE_FILE,
+    VOICE_FILE,
     Record,
     audio_id,
     delete_voice,
     facts_hash,
+    file_sha256,
     load_record,
     record_path,
     save_record,
     sweep_orphan_voices,
 )
 from .report import StepOutcome, render_step_report, sweep_outcome, write_step_report
-from .source import SpeciesSource, load_approved, load_scientific_index
-from .sources_step import ArticleSource
+from .source import SpeciesSource, load_approved, load_name_index
+from .sources_step import ArticleSource, AudioSource
 from .verify import (
     FactChecker,
     missing_required_topics,
@@ -47,6 +56,9 @@ PROMPT_VERSION = "verify-v1"
 # A short tracked clip the audio model is run on once before any species (follow-up 3, wave
 # A review): it proves ffmpeg, uv and TensorFlow work, and does the first `uv sync`.
 PREFLIGHT_CLIP = Path("fixtures") / "chirp_3s_48k.wav"
+# How many other allowed Commons recordings V4 tries when the model does not keep the
+# species' recording (fix wave 2026-10-07).
+MAX_ALTERNATIVES = 3
 
 
 class AudioPreflightFailed(RuntimeError):  # noqa: N818
@@ -150,8 +162,11 @@ async def run_verify(
     *,
     client: JsonModelClient | None = None,
     wiki: ArticleSource | None = None,
+    audio: AudioSource | None = None,
     now: datetime | None = None,
 ) -> list[StepOutcome]:
+    """`audio` (Commons, from the CLI) lets V4 try the species' next allowed recording when
+    the model does not keep the current one; without it a miss is struck as before."""
     now = now or datetime.now(UTC)
     cache = Cache(paths.pipeline_root / ".cache")
     sources = load_approved(paths.species_root, options.qids)
@@ -170,19 +185,22 @@ async def run_verify(
         model_key=options.model_key,
         effort=options.effort,
     )
+    names = load_name_index(paths.species_root)
     extractor = FactExtractor(
         cache=cache,
         cost=cost,
         client=model_client,
         prompt_path=paths.prompt_file(FACTS_PROMPT_VERSION),
-        scientific_index=load_scientific_index(paths.species_root),
+        scientific_index=names.qids,
+        scientific_families=names.families,
+        scientific_common=names.common,
     )
     stop = asyncio.Event()
     semaphore = asyncio.Semaphore(options.workers)
 
     async def one(source: SpeciesSource) -> StepOutcome:
         async with semaphore:
-            return await _one(source, paths, options, wiki, checker, extractor, stop, now)
+            return await _one(source, paths, options, wiki, checker, extractor, stop, now, audio)
 
     try:
         outcomes = list(await asyncio.gather(*(one(s) for s in sources)))
@@ -210,39 +228,228 @@ async def run_verify(
     return outcomes
 
 
+@dataclass
+class Replacement:
+    """Another allowed Commons recording V4 took instead of the species' own: its `audio`
+    object, the converted file (moved to voice.mp3 once the record is saved) and the
+    recordings it replaces (the old one and any alternative tried in vain)."""
+
+    audio: dict[str, Any]
+    mp3: Path
+    title: str
+    struck: list[str]
+
+
+@dataclass
+class AudioOutcome:
+    verdict: AudioVerdict | str | None
+    replacement: Replacement | None = None
+    tried: list[str] = field(default_factory=list)
+    notes: list[str] = field(default_factory=list)
+    # Why voice.mp3 (missing, or not the recording the record names) could not be fetched
+    # again: a flag, and the model never hears the file (re-review 2026-10-07).
+    missing: str | None = None
+
+
 async def _audio_check(
-    record: Record, source: SpeciesSource, paths: WebPaths
-) -> AudioVerdict | str | None:
+    record: Record,
+    source: SpeciesSource,
+    paths: WebPaths,
+    audio_source: AudioSource | None,
+    workdir: Path,
+) -> AudioOutcome:
     """V4, run before the paid V1 call (I4, final review 2026-10-06) so an audio problem
     never wastes V1 work, and in a thread so the subprocess does not block the other
-    workers. None without a recording or for one Albin kept, the verdict, or the reason the
-    model could not run.
-    Only the verdict is computed here; the record is changed after V1, as before."""
-    if not record.get("audio") or _audio_kept(record):
-        return None
+    workers. No verdict without a recording or for one Albin kept; a string when the model
+    could not run.
+    Only the verdict is computed here; the record is changed after V1, as before.
+    Re-review 2026-10-07: a voice.mp3 that is missing or not the recording the record names
+    (a failed swap, the sweep) is first fetched again from Commons, as the same recording;
+    when that is not possible the wrong file goes and the species gets a flag."""
+    if not record.get("audio"):
+        return AudioOutcome(None)
+    restored: list[str] = []
+    if not _voice_matches(record, paths.images_out / source.qid / VOICE_FILE):
+        why = (
+            await _restore_voice(record, source, paths, audio_source, workdir)
+            if audio_source is not None
+            else "ingen förbindelse med Commons i den här körningen"
+        )
+        if why is not None:
+            delete_voice(paths.images_out, source.qid)  # a wrong file never stays
+            return AudioOutcome(None, missing=why)
+        restored.append("inspelningsfilen hämtades igen från Commons")
+    outcome = await _judge_voice(record, source, paths, audio_source, workdir)
+    outcome.notes[:0] = restored
+    return outcome
+
+
+def _voice_matches(record: Record, voice: Path) -> bool:
+    """voice.mp3 is there and, when the record has its hash, is that file."""
+    if not voice.exists():
+        return False
+    expected = record["audio"].get("mp3Sha256")
+    return expected is None or file_sha256(voice) == expected
+
+
+async def _restore_voice(
+    record: Record,
+    source: SpeciesSource,
+    paths: WebPaths,
+    audio_source: AudioSource,
+    workdir: Path,
+) -> str | None:
+    """Fetches the recording the record names (by its Commons page) again, checks that it is
+    the same recording (the raw file's hash), converts it and puts it in place. Returns why
+    not, or None. The new file's hash replaces `mp3Sha256`: another machine's ffmpeg may
+    encode the same recording differently."""
+    audio = record["audio"]
+    try:
+        candidates = await audio_source.candidates(source.qid, source.scientific_name)
+    except Exception as exc:  # Commons down: the flag says so
+        return f"Commons svarade inte ({type(exc).__name__})"
+    named = next((c for c in candidates if c.page_url == audio.get("sourceUrl")), None)
+    if named is None:
+        return "inspelningen finns inte längre bland artens filer på Commons"
+    try:
+        raw = await audio_source.download(source.qid, named)
+        if audio.get("sha256") and hashlib.sha256(raw).hexdigest() != audio["sha256"]:
+            return "filen på Commons är inte längre samma inspelning"
+        mp3 = workdir / "restored.mp3"
+        await asyncio.to_thread(convert_to_mp3, raw, mp3)
+    except Exception as exc:  # a download or ffmpeg error: the flag says so
+        return f"inspelningen kunde inte hämtas och kodas om ({type(exc).__name__})"
+    error = _place_voice(paths.images_out, source.qid, mp3)
+    if error is not None:
+        return error
+    audio["mp3Sha256"] = file_sha256(mp3)
+    return None
+
+
+async def _judge_voice(
+    record: Record,
+    source: SpeciesSource,
+    paths: WebPaths,
+    audio_source: AudioSource | None,
+    workdir: Path,
+) -> AudioOutcome:
+    """V4 on a voice.mp3 that is the record's recording."""
+    if _audio_kept(record):
+        return AudioOutcome(None)
     if not record.get("identifiable", {}).get("sound"):
         # Not covered: the verdict is a flag whatever the model says (follow-up 3).
-        return audio_verdict(None, source.qid, identifiable_sound=False)
+        return AudioOutcome(audio_verdict(None, source.qid, identifiable_sound=False))
     try:
         result = await asyncio.to_thread(
-            classify_clip, paths.images_out / source.qid / "voice.mp3", paths.flexref
+            classify_clip, paths.images_out / source.qid / VOICE_FILE, paths.flexref
         )
     except AudioCheckFailed as exc:
-        return str(exc)
-    return audio_verdict(result, source.qid, identifiable_sound=True)
+        return AudioOutcome(str(exc))
+    verdict = audio_verdict(result, source.qid, identifiable_sound=True)
+    if verdict.action == "keep" or audio_source is None:
+        return AudioOutcome(verdict)
+    return await _try_other_recordings(record, source, paths, audio_source, workdir, verdict)
+
+
+async def _try_other_recordings(
+    record: Record,
+    source: SpeciesSource,
+    paths: WebPaths,
+    audio_source: AudioSource,
+    workdir: Path,
+    verdict: AudioVerdict,
+) -> AudioOutcome:
+    """Up to MAX_ALTERNATIVES other allowed Commons recordings, in the sources step's
+    order, skipping every one struck before. The first the model keeps replaces the
+    recording; otherwise a weak original stays (flag), else the first weak alternative
+    replaces it (flag), else the strike stands. Downloads come from the cache when there."""
+    current = str(record["audio"].get("sourceUrl", ""))
+    struck = set(record.get("review", {}).get("audioStruckSources", []))
+    notes: list[str] = []
+    try:
+        candidates = await audio_source.candidates(source.qid, source.scientific_name)
+    except Exception as exc:  # Commons down: V4 decides on the recording it has
+        notes.append(f"andra inspelningar kunde inte hämtas ({type(exc).__name__})")
+        return AudioOutcome(verdict, notes=notes)
+    others = [
+        c
+        for c in candidates
+        if rejection(c, source.scientific_name) is None
+        and c.page_url != current
+        and c.page_url not in struck
+    ][:MAX_ALTERNATIVES]
+    tried: list[str] = []
+    weak: tuple[AudioVerdict, Replacement] | None = None
+    for number, candidate in enumerate(others):
+        try:
+            raw = await audio_source.download(source.qid, candidate)
+            mp3 = workdir / f"alternative-{number}.mp3"
+            await asyncio.to_thread(convert_to_mp3, raw, mp3)
+            result = await asyncio.to_thread(classify_clip, mp3, paths.flexref)
+        except Exception as exc:  # one broken alternative must not end the others
+            notes.append(f"{candidate.title} kunde inte prövas ({type(exc).__name__})")
+            continue
+        alternative = audio_verdict(result, source.qid, identifiable_sound=True)
+        replacement = Replacement(
+            audio={
+                **audio_record(candidate, source.qid),
+                "sha256": hashlib.sha256(raw).hexdigest(),
+                "mp3Sha256": file_sha256(mp3),
+            },
+            mp3=mp3,
+            title=candidate.title,
+            struck=[current, *tried],
+        )
+        if alternative.action == "keep":
+            return AudioOutcome(alternative, replacement, notes=notes)
+        if alternative.action == "flag" and weak is None:
+            weak = (alternative, replacement)
+        tried.append(candidate.page_url)
+    if verdict.action == "flag":
+        # The species' own recording is as good as anything else: Albin listens to it.
+        return AudioOutcome(verdict, tried=tried, notes=notes)
+    if weak is not None:
+        alternative, replacement = weak
+        replacement.struck = [current, *(t for t in tried if t != replacement.audio["sourceUrl"])]
+        return AudioOutcome(alternative, replacement, notes=notes)
+    return AudioOutcome(verdict, tried=tried, notes=notes)
+
+
+def _remember_struck(record: Record, urls: list[str]) -> None:
+    """Every recording V4 struck or tried in vain, so neither V4 nor `web sources` chooses
+    it again (fix wave 2026-10-07)."""
+    struck = record.setdefault("review", {}).setdefault("audioStruckSources", [])
+    struck.extend(u for u in urls if u and u not in struck)
 
 
 def _apply_audio(
     record: Record,
-    audio: AudioVerdict | str | None,
+    outcome: AudioOutcome,
     flags: list[dict[str, Any]],
     notes: list[str],
-) -> bool:
-    """Writes V4's verdict into the record and the flags; True when the recording was
+) -> Path | bool:
+    """Writes V4's verdict into the record and the flags. True when the recording was
     struck, so its file is deleted once the record is saved (Minor 11, final review
-    2026-10-06: a struck voice.mp3 left on disk could be committed without credits)."""
+    2026-10-06: a struck voice.mp3 left on disk could be committed without credits); the
+    new file's path when another recording replaced it, moved into place after the save."""
+    audio = outcome.verdict
+    notes.extend(outcome.notes)
+    if outcome.missing is not None:
+        flags.append(
+            {"check": "V4", "factId": None, "message": RESTORE_FAILED_FLAG.format(outcome.missing)}
+        )
+        return False
     if audio is None:
         return False
+    if outcome.replacement is not None:
+        replacement = outcome.replacement
+        _remember_struck(record, replacement.struck)
+        record["audio"] = replacement.audio
+        record["review"].pop("audioStruck", None)
+        notes.append(f"inspelningen byttes mot {replacement.title}")
+        if isinstance(audio, AudioVerdict) and audio.action == "flag":
+            flags.append({"check": "V4", "factId": None, "message": audio.reason})
+        return replacement.mp3
     if isinstance(audio, str):
         flags.append(
             {
@@ -255,6 +462,7 @@ def _apply_audio(
             }
         )
     elif audio.action == "strike":
+        _remember_struck(record, [str(record["audio"].get("sourceUrl", "")), *outcome.tried])
         record.pop("audio", None)
         record.setdefault("review", {})["audioStruck"] = True
         notes.append(f"inspelningen ströks: {audio.reason}")
@@ -262,6 +470,42 @@ def _apply_audio(
     elif audio.action == "flag":
         flags.append({"check": "V4", "factId": None, "message": audio.reason})
     return False
+
+
+PLACE_FAILED_FLAG = (
+    "Den nya inspelningen kunde inte läggas på plats (filen var låst) och den gamla togs "
+    "bort. Kör web verify --force för arten: den hämtar inspelningen igen från Commons "
+    "och kontrollerar den."
+)
+RESTORE_FAILED_FLAG = (
+    "Inspelningsfilen saknades eller var inte den artposten anger, och den kunde inte "
+    "hämtas igen ({}). Kör web sources --force och sedan web verify --force för arten, "
+    "så väljs och kontrolleras en inspelning."
+)
+
+
+def _swap(staged: Path, voice: Path) -> None:
+    os.replace(staged, voice)
+
+
+def _place_voice(images_out: Path, qid: str, mp3: Path) -> str | None:
+    """Moves a replacement recording into place after its record was saved. On failure the
+    old file is deleted rather than left under the new credits (if that fails too, the
+    sweep removes it by its hash), and nothing staged is left; returns why."""
+    voice = images_out / qid / VOICE_FILE
+    staged = voice.with_name(STAGED_VOICE_FILE)
+    try:
+        shutil.copyfile(mp3, staged)
+        _swap(staged, voice)
+    except OSError as exc:
+        with contextlib.suppress(OSError):  # else the sweep at the end of the run does
+            staged.unlink(missing_ok=True)
+        error = delete_voice(images_out, qid)
+        return (
+            f"{qid}: den nya inspelningen kunde inte läggas på plats "
+            f"({type(exc).__name__}: {exc})" + (f"; {error}" if error else "")
+        )
+    return None
 
 
 def _fail(record: Record, path: Path, kept: list[dict[str, Any]], missing: list[str]) -> None:
@@ -295,6 +539,27 @@ async def _one(
     extractor: FactExtractor,
     stop: asyncio.Event,
     now: datetime,
+    audio_source: AudioSource | None = None,
+) -> StepOutcome:
+    # Alternative recordings are converted here; a file Windows still holds must not turn
+    # into an error after the species is done.
+    with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as tmp:
+        return await _one_in(
+            source, paths, options, wiki, checker, extractor, stop, now, audio_source, Path(tmp)
+        )
+
+
+async def _one_in(
+    source: SpeciesSource,
+    paths: WebPaths,
+    options: VerifyOptions,
+    wiki: ArticleSource,
+    checker: FactChecker,
+    extractor: FactExtractor,
+    stop: asyncio.Event,
+    now: datetime,
+    audio_source: AudioSource | None,
+    workdir: Path,
 ) -> StepOutcome:
     def out(
         status: str, errors: list[str] | None = None, notes: list[str] | None = None
@@ -312,7 +577,7 @@ async def _one(
             return out("skipped", ["kostnadstaket nåddes: körs vid nästa körning"])
         articles = await wiki.articles(source.qid)
         about = species_about(source)
-        audio = await _audio_check(record, source, paths)
+        audio = await _audio_check(record, source, paths, audio_source, workdir)
         if stop.is_set():
             # Another worker reached the cap while the audio model ran.
             return out("skipped", ["kostnadstaket nåddes: körs vid nästa körning"])
@@ -367,7 +632,7 @@ async def _one(
         if status_flag:
             flags.append(status_flag)
 
-        audio_struck = _apply_audio(record, audio, flags, notes)
+        audio_change = _apply_audio(record, audio, flags, notes)
 
         # V1's reason and an audio error are free text; fas 2's dash guard reads the
         # record (I7, final review 2026-10-06).
@@ -393,7 +658,19 @@ async def _one(
                 "spotChecked": False,
             }
         save_record(path, record)
-        if audio_struck:
+        if isinstance(audio_change, Path):
+            error = _place_voice(paths.images_out, source.qid, audio_change)
+            if error:
+                # The saved record names the new recording, which is not in place: it must
+                # not stay verified (re-review 2026-10-07).
+                notes.append(error)
+                record.pop("verification", None)
+                record["flags"] = [
+                    *record["flags"],
+                    {"check": "V4", "factId": None, "message": PLACE_FAILED_FLAG},
+                ]
+                save_record(path, record)
+        elif audio_change:
             error = delete_voice(paths.images_out, source.qid)
             if error:
                 notes.append(error)  # the sweep at the end tries again and reports it

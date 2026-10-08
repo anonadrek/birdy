@@ -1,0 +1,211 @@
+{
+  "qid": "Q155869",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "buskskvatta",
+    "en": "whinchat"
+  },
+  "names": {
+    "sv": "Buskskvätta",
+    "en": "Whinchat",
+    "scientific": "Saxicola rubetra"
+  },
+  "family": {
+    "latin": "Muscicapidae",
+    "sv": "Flugsnappare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q155869/hero.webp",
+      "width": 1600,
+      "height": 1160,
+      "author": "Matti Virtala",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saxicola_rubetra_Oulu_Finland_2020-07-19.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q155869/extra.webp",
+      "width": 1200,
+      "height": 837,
+      "author": "Frank Vassen",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Braunkehlchen_(Saxicola_rubetra),_Warchetal_bei_Hünningen,_Ostbelgien_(19134054681).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q155869/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Olivier Grimm",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saxicola_rubetra_-_Whinchat_XC486281.mp3",
+    "sha256": "e9237c266ec444c6700af87d58134cb6a8189261f4d2cc2c0d75a5f7892292f0"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Buskskvätta",
+      "revision": "59481728"
+    },
+    "en": {
+      "title": "Whinchat",
+      "revision": "1375721097"
+    },
+    "de": {
+      "title": "Braunkehlchen",
+      "revision": "261912873"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2492521,
+    "totalReports": 147520,
+    "months": [
+      1,
+      1,
+      1,
+      17,
+      100,
+      79,
+      54,
+      81,
+      41,
+      2,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 40,
+      "SE-W": 100,
+      "SE-X": 61,
+      "SE-I": 42,
+      "SE-N": 49,
+      "SE-Z": 60,
+      "SE-F": 97,
+      "SE-H": 49,
+      "SE-G": 81,
+      "SE-BD": 58,
+      "SE-T": 80,
+      "SE-E": 59,
+      "SE-M": 44,
+      "SE-D": 64,
+      "SE-AB": 47,
+      "SE-C": 67,
+      "SE-S": 89,
+      "SE-AC": 72,
+      "SE-Y": 79,
+      "SE-U": 63,
+      "SE-O": 75
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i maj och augusti.",
+        "Rapporteras sällan i oktober till mars.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in May and August.",
+        "Rarely reported in October to March.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        41,
+        12,
+        2,
+        9302,
+        62926,
+        26672,
+        14132,
+        22092,
+        11523,
+        593,
+        111,
+        6
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 27850,
+        "SE-AB": 12131,
+        "SE-M": 11365,
+        "SE-H": 9610,
+        "SE-F": 9511,
+        "SE-C": 9376,
+        "SE-D": 7361,
+        "SE-W": 6207,
+        "SE-E": 5989,
+        "SE-T": 5628,
+        "SE-N": 5479,
+        "SE-AC": 5211,
+        "SE-S": 4503,
+        "SE-G": 4336,
+        "SE-BD": 3496,
+        "SE-U": 3456,
+        "SE-X": 2948,
+        "SE-Y": 2855,
+        "SE-Z": 2115,
+        "SE-I": 1882,
+        "SE-K": 861
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

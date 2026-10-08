@@ -1,0 +1,204 @@
+{
+  "qid": "Q190083",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "slaguggla",
+    "en": "ural-owl"
+  },
+  "names": {
+    "sv": "Slaguggla",
+    "en": "Ural Owl",
+    "scientific": "Strix uralensis"
+  },
+  "family": {
+    "latin": "Strigidae",
+    "sv": "Ugglor"
+  },
+  "group": "owls",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q190083/hero.webp",
+      "width": 1600,
+      "height": 2350,
+      "author": "Andrew Kalinin",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Night_hunter.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q190083/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Divlja Srbija",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dugorepa_sova_(Strix_uralensis).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q190083/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Alexander Kürthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Strix_uralensis_-_Ural_Owl_XC314566.mp3",
+    "sha256": "7193d207d3298b60bc73fe49b27e733a21f971475aab0a9e906ceffa81a0f429"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Slaguggla",
+      "revision": "59704866"
+    },
+    "en": {
+      "title": "Ural owl",
+      "revision": "1372789337"
+    },
+    "de": {
+      "title": "Habichtskauz",
+      "revision": "269822938"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2497509,
+    "totalReports": 7624,
+    "months": [
+      37,
+      100,
+      83,
+      25,
+      13,
+      16,
+      9,
+      7,
+      9,
+      25,
+      58,
+      31
+    ],
+    "counties": {
+      "SE-K": 0,
+      "SE-W": 89,
+      "SE-X": 55,
+      "SE-I": 0,
+      "SE-N": 1,
+      "SE-Z": 16,
+      "SE-F": 0,
+      "SE-H": 0,
+      "SE-G": 0,
+      "SE-BD": 22,
+      "SE-T": 26,
+      "SE-E": 0,
+      "SE-M": 0,
+      "SE-D": 1,
+      "SE-AB": 17,
+      "SE-C": 100,
+      "SE-S": 24,
+      "SE-AC": 17,
+      "SE-Y": 23,
+      "SE-U": 92,
+      "SE-O": 7
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i februari och mars.",
+        "Rapporteras sällan i juli till september.",
+        "Andelen av alla fågelrapporter är högst i Uppsala, Västmanland och Dalarna."
+      ],
+      "en": [
+        "Reported most in February and March.",
+        "Rarely reported in July to September.",
+        "Its share of all bird reports is highest in Uppsala, Västmanland and Dalarna."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        663,
+        1258,
+        1923,
+        904,
+        560,
+        360,
+        155,
+        131,
+        173,
+        461,
+        667,
+        294
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-C": 2581,
+        "SE-W": 1017,
+        "SE-U": 923,
+        "SE-AB": 803,
+        "SE-O": 497,
+        "SE-X": 483,
+        "SE-T": 332,
+        "SE-BD": 245,
+        "SE-AC": 228,
+        "SE-S": 223,
+        "SE-Y": 149,
+        "SE-Z": 105,
+        "SE-D": 22,
+        "SE-N": 1
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

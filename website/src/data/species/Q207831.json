@@ -1,0 +1,208 @@
+{
+  "qid": "Q207831",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tofsmes",
+    "en": "crested-tit"
+  },
+  "names": {
+    "sv": "Tofsmes",
+    "en": "Crested Tit",
+    "scientific": "Lophophanes cristatus"
+  },
+  "family": {
+    "latin": "Paridae",
+    "sv": "Mesar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q207831/hero.webp",
+      "width": 1600,
+      "height": 2400,
+      "author": "Gonçalo Vila Ferraz",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lophophanes_cristatus,_Parque_Biológico_de_Gaia,_Porto.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q207831/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Marie-Lan Taÿ Pamart",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lophophanes_cristatus_Gran_Paradiso_20190908.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q207831/voice.mp3",
+    "durationSec": 12,
+    "trimmed": false,
+    "author": "Alexander Kurthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lophophanes_cristatus_-_European_Crested_Tit_XC108346.mp3",
+    "sha256": "0c34d428e860cbdafebf5607d052a74a6441aeb76ebd36164ac45b57321168d1"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Tofsmes",
+      "revision": "56667392"
+    },
+    "en": {
+      "title": "Crested tit",
+      "revision": "1357526590"
+    },
+    "de": {
+      "title": "Haubenmeise",
+      "revision": "249904567"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2487883,
+    "totalReports": 135767,
+    "months": [
+      100,
+      88,
+      48,
+      21,
+      11,
+      23,
+      33,
+      33,
+      43,
+      51,
+      85,
+      96
+    ],
+    "counties": {
+      "SE-K": 42,
+      "SE-W": 100,
+      "SE-X": 89,
+      "SE-I": 0,
+      "SE-N": 24,
+      "SE-Z": 68,
+      "SE-F": 52,
+      "SE-H": 27,
+      "SE-G": 77,
+      "SE-BD": 62,
+      "SE-T": 82,
+      "SE-E": 46,
+      "SE-M": 13,
+      "SE-D": 100,
+      "SE-AB": 85,
+      "SE-C": 71,
+      "SE-S": 88,
+      "SE-AC": 50,
+      "SE-Y": 77,
+      "SE-U": 82,
+      "SE-O": 52
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i november till februari.",
+        "Rapporteras från 20 av 21 län."
+      ],
+      "en": [
+        "Reported most in November to February.",
+        "Reported from 20 of the 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        23209,
+        14242,
+        14225,
+        9518,
+        6140,
+        6622,
+        7262,
+        7599,
+        10294,
+        11984,
+        12702,
+        11714
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-AB": 22799,
+        "SE-O": 20026,
+        "SE-D": 12015,
+        "SE-C": 10476,
+        "SE-W": 6448,
+        "SE-T": 6040,
+        "SE-H": 5611,
+        "SE-F": 5323,
+        "SE-E": 4918,
+        "SE-U": 4678,
+        "SE-S": 4647,
+        "SE-X": 4466,
+        "SE-G": 4273,
+        "SE-BD": 3890,
+        "SE-AC": 3750,
+        "SE-M": 3617,
+        "SE-Y": 2907,
+        "SE-N": 2795,
+        "SE-Z": 2496,
+        "SE-K": 955
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

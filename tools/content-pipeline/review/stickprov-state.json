@@ -1,0 +1,18 @@
+{
+  "publishedAtLastDraw": 0,
+  "counted": [],
+  "draws": [
+    {
+      "id": 1,
+      "seed": 859179,
+      "at": "2026-10-08",
+      "batches": 0,
+      "forced": true,
+      "extra": [],
+      "species": [
+        "Q207838",
+        "Q25385"
+      ]
+    }
+  ]
+}

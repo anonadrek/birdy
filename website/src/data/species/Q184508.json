@@ -1,0 +1,211 @@
+{
+  "qid": "Q184508",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "varfagel",
+    "en": "great-grey-shrike"
+  },
+  "names": {
+    "sv": "Varfågel",
+    "en": "Great Grey Shrike",
+    "scientific": "Lanius excubitor"
+  },
+  "family": {
+    "latin": "Laniidae",
+    "sv": "Törnskator"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q184508/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Tisha Mukherjee",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Great_Grey_Shrike_in_Bhigwan_August_2025_by_Tisha_Mukherjee_02.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q184508/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Jaana Siitonen",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lanius_excubitor_DSCN7720-01.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q184508/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Pascal Christe",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lanius_excubitor_-_Great_Grey_Shrike_XC595816.mp3",
+    "sha256": "900d71b463015fb02cf2dea6305ed9490abdfc76bdaf863ac277ba71c1cfea78"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Varfågel",
+      "revision": "58478974"
+    },
+    "en": {
+      "title": "Great grey shrike",
+      "revision": "1365750987"
+    },
+    "de": {
+      "title": "Raubwürger",
+      "revision": "261390572"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 9444556,
+    "totalReports": 116867,
+    "months": [
+      82,
+      100,
+      62,
+      21,
+      2,
+      2,
+      3,
+      4,
+      23,
+      82,
+      82,
+      82
+    ],
+    "counties": {
+      "SE-K": 34,
+      "SE-W": 74,
+      "SE-X": 39,
+      "SE-I": 44,
+      "SE-N": 26,
+      "SE-Z": 20,
+      "SE-F": 60,
+      "SE-H": 45,
+      "SE-G": 56,
+      "SE-BD": 32,
+      "SE-T": 73,
+      "SE-E": 37,
+      "SE-M": 29,
+      "SE-D": 45,
+      "SE-AB": 53,
+      "SE-C": 45,
+      "SE-S": 75,
+      "SE-AC": 40,
+      "SE-Y": 45,
+      "SE-U": 100,
+      "SE-O": 39
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i oktober till februari.",
+        "Rapporteras sällan i maj till augusti.",
+        "Andelen av alla fågelrapporter är högst i Västmanland, Värmland och Dalarna."
+      ],
+      "en": [
+        "Reported most in October to February.",
+        "Rarely reported in May to August.",
+        "Its share of all bird reports is highest in Västmanland, Värmland and Dalarna."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        19646,
+        16643,
+        18978,
+        9776,
+        885,
+        571,
+        788,
+        984,
+        5733,
+        19870,
+        12490,
+        10245
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 16103,
+        "SE-AB": 15134,
+        "SE-H": 9795,
+        "SE-M": 8232,
+        "SE-C": 6945,
+        "SE-F": 6507,
+        "SE-U": 6019,
+        "SE-D": 5681,
+        "SE-T": 5680,
+        "SE-W": 5059,
+        "SE-S": 4193,
+        "SE-E": 4187,
+        "SE-G": 3298,
+        "SE-N": 3201,
+        "SE-AC": 3184,
+        "SE-I": 2147,
+        "SE-BD": 2121,
+        "SE-X": 2083,
+        "SE-Y": 1797,
+        "SE-K": 823,
+        "SE-Z": 760
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

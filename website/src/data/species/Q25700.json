@@ -1,0 +1,209 @@
+{
+  "qid": "Q25700",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "kricka",
+    "en": "green-winged-teal"
+  },
+  "names": {
+    "sv": "Kricka",
+    "en": "Green-winged Teal",
+    "scientific": "Anas crecca"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Änder"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25700/hero.webp",
+      "width": 1600,
+      "height": 1064,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_teal_(Anas_crecca).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25700/extra.webp",
+      "width": 1200,
+      "height": 865,
+      "author": "gailhampshire",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eurasian_Teal_Anas_crecca,_male,_RSPB_Titchwell,_Norfolk_(33587386401).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25700/voice.mp3",
+    "durationSec": 16,
+    "trimmed": false,
+    "author": "Mikko Heikkinen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anas_crecca_-_Eurasian_Teal_XC467849.mp3",
+    "sha256": "31d82551f50a909d1b1e4d4d44d40ba9ebf6fa9df4037a6ba6ac190de2789731"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Kricka",
+      "revision": "59568822"
+    },
+    "en": {
+      "title": "Eurasian teal",
+      "revision": "1374542889"
+    },
+    "de": {
+      "title": "Krickente",
+      "revision": "264653141"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 8214667,
+    "totalReports": 400889,
+    "months": [
+      26,
+      29,
+      73,
+      100,
+      50,
+      47,
+      50,
+      66,
+      71,
+      66,
+      48,
+      29
+    ],
+    "counties": {
+      "SE-K": 60,
+      "SE-W": 78,
+      "SE-X": 61,
+      "SE-I": 57,
+      "SE-N": 93,
+      "SE-Z": 73,
+      "SE-F": 100,
+      "SE-H": 58,
+      "SE-G": 94,
+      "SE-BD": 61,
+      "SE-T": 74,
+      "SE-E": 78,
+      "SE-M": 86,
+      "SE-D": 70,
+      "SE-AB": 70,
+      "SE-C": 78,
+      "SE-S": 83,
+      "SE-AC": 68,
+      "SE-Y": 52,
+      "SE-U": 71,
+      "SE-O": 76
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in April.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        12959,
+        10027,
+        46361,
+        97992,
+        56468,
+        28549,
+        23465,
+        32463,
+        36435,
+        33109,
+        15280,
+        7446
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 59368,
+        "SE-M": 46511,
+        "SE-AB": 37790,
+        "SE-H": 24006,
+        "SE-C": 23028,
+        "SE-N": 21766,
+        "SE-F": 20668,
+        "SE-D": 16967,
+        "SE-E": 16788,
+        "SE-T": 10919,
+        "SE-G": 10540,
+        "SE-AC": 10317,
+        "SE-W": 10183,
+        "SE-S": 8784,
+        "SE-U": 8102,
+        "SE-BD": 7734,
+        "SE-X": 6191,
+        "SE-Z": 5379,
+        "SE-I": 5300,
+        "SE-Y": 3924,
+        "SE-K": 2743
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

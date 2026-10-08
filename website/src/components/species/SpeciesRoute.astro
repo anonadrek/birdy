@@ -1,0 +1,11 @@
+---
+import GroupPage from './GroupPage.astro';
+import SpeciesArticle from './SpeciesArticle.astro';
+import type { Locale } from '../../lib/i18n';
+import type { Group, Species } from '../../lib/species';
+
+interface Props { locale: Locale; species?: Species; group?: Group }
+const { locale, species, group } = Astro.props;
+---
+{species && <SpeciesArticle species={species} locale={locale} />}
+{group && <GroupPage group={group} locale={locale} />}

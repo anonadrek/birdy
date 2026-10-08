@@ -1,0 +1,207 @@
+{
+  "qid": "Q210418",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tretaig-hackspett",
+    "en": "eurasian-three-toed-woodpecker"
+  },
+  "names": {
+    "sv": "Tretåig hackspett",
+    "en": "Eurasian Three-toed Woodpecker",
+    "scientific": "Picoides tridactylus"
+  },
+  "family": {
+    "latin": "Picidae",
+    "sv": "Hackspettar"
+  },
+  "group": "woodpeckers",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q210418/hero.webp",
+      "width": 1600,
+      "height": 1066,
+      "author": "Ron Knight",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Picoides_tridactylus,_Belarus_1.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q210418/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Ron Knight",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Picoides_tridactylus,_Belarus_5.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q210418/voice.mp3",
+    "durationSec": 17,
+    "trimmed": false,
+    "author": "Alexander Kurthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Picoides_tridactylus_-_Eurasian_Three-toed_Woodpecker_XC103682.mp3",
+    "sha256": "ee97d3e38afc13ab0f3568917ab1656218f0ead06604e07927611586721278ee"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Tretåig hackspett",
+      "revision": "59695681"
+    },
+    "en": {
+      "title": "Eurasian three-toed woodpecker",
+      "revision": "1370956445"
+    },
+    "de": {
+      "title": "Dreizehenspecht",
+      "revision": "261391096"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2477804,
+    "totalReports": 53161,
+    "months": [
+      24,
+      46,
+      36,
+      22,
+      19,
+      58,
+      58,
+      77,
+      91,
+      100,
+      73,
+      47
+    ],
+    "counties": {
+      "SE-K": 0,
+      "SE-W": 19,
+      "SE-X": 6,
+      "SE-I": 1,
+      "SE-N": 0,
+      "SE-Z": 100,
+      "SE-F": 1,
+      "SE-H": 1,
+      "SE-G": 1,
+      "SE-BD": 18,
+      "SE-T": 5,
+      "SE-E": 1,
+      "SE-M": 1,
+      "SE-D": 1,
+      "SE-AB": 1,
+      "SE-C": 1,
+      "SE-S": 5,
+      "SE-AC": 28,
+      "SE-Y": 35,
+      "SE-U": 3,
+      "SE-O": 1
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september och oktober.",
+        "Andelen av alla fågelrapporter är högst i Jämtland."
+      ],
+      "en": [
+        "Reported most in September and October.",
+        "Its share of all bird reports is highest in Jämtland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        1860,
+        2542,
+        3628,
+        3412,
+        3415,
+        5726,
+        4369,
+        6095,
+        7503,
+        7998,
+        3710,
+        1967
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-Z": 17663,
+        "SE-AC": 10148,
+        "SE-Y": 6277,
+        "SE-W": 6078,
+        "SE-BD": 5553,
+        "SE-T": 1670,
+        "SE-S": 1350,
+        "SE-X": 1341,
+        "SE-U": 811,
+        "SE-O": 540,
+        "SE-C": 507,
+        "SE-F": 122,
+        "SE-AB": 95,
+        "SE-D": 56,
+        "SE-E": 52,
+        "SE-H": 8,
+        "SE-M": 1,
+        "SE-I": 1,
+        "SE-G": 1
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,284 @@
+{
+  "qid": "Q26427",
+  "status": "ok",
+  "publish": true,
+  "slug": {
+    "sv": "fiskmas",
+    "en": "common-gull"
+  },
+  "names": {
+    "sv": "Fiskmås",
+    "en": "Common Gull",
+    "scientific": "Larus canus"
+  },
+  "family": {
+    "latin": "Laridae",
+    "sv": "Måsfåglar"
+  },
+  "group": "gulls_terns",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26427/hero.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Testfotograf",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fixture_Q26427_hero.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Fiskmås",
+      "revision": "1000001"
+    },
+    "en": {
+      "title": "Common Gull",
+      "revision": "2000002"
+    },
+    "de": {
+      "title": "Common Gull (Testartikel)",
+      "revision": "3000003"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-15",
+    "gbifTaxonKey": 1,
+    "totalReports": 1000,
+    "months": [
+      72,
+      58,
+      61,
+      55,
+      70,
+      79,
+      64,
+      68,
+      74,
+      100,
+      66,
+      69
+    ],
+    "counties": {
+      "SE-AB": 66,
+      "SE-AC": 2,
+      "SE-BD": 39,
+      "SE-C": 76,
+      "SE-D": 12,
+      "SE-E": 49,
+      "SE-F": 86,
+      "SE-G": 22,
+      "SE-H": 59,
+      "SE-I": 96,
+      "SE-K": 32,
+      "SE-M": 69,
+      "SE-N": 5,
+      "SE-O": 42,
+      "SE-S": 79,
+      "SE-T": 15,
+      "SE-U": 52,
+      "SE-W": 89,
+      "SE-X": 25,
+      "SE-Y": 62,
+      "SE-Z": 99
+    },
+    "raw": {
+      "speciesByMonth": [],
+      "allBirdsByMonth": [],
+      "speciesByCounty": {},
+      "allBirdsByCounty": {}
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Testfaktum.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Testcitat som bara finns i testdata."
+        }
+      ]
+    }
+  ],
+  "review": {
+    "wave": 1
+  },
+  "verification": {
+    "method": "auto",
+    "at": "2026-11-20",
+    "model": "fixture",
+    "spotChecked": false
+  },
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Testtext: Fiskmås används som exempel när artsidorna byggs och testas.",
+          "factIds": [
+            "f01"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Testpunkt ett om hur fiskmås ser ut",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Testpunkt två om storlek och form",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Testpunkt tre om beteende i fält",
+          "factIds": [
+            "f02"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Testtext om lätet, skriven så att sidan går att bygga utan riktig data.",
+          "factIds": [
+            "f04"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Testtext om var och när arten syns i Sverige.",
+          "factIds": [
+            "f06",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Testtext om föda och beteende.",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Fiskmås: testtext för artsidornas bygge. Kännetecken, läte och när arten syns i Sverige, med foton och karta. Testdata. Testdata.",
+      "facts": {
+        "size": null,
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "Test text: the Common Gull is used as an example when the species pages are built and tested.",
+          "factIds": [
+            "f01"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Test point one about what it looks like",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Test point two about size and shape",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Test point three about behaviour in the field",
+          "factIds": [
+            "f02"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Test text about the call, written so the page can be built without real data.",
+          "factIds": [
+            "f04"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Test text about where and when it is seen in Sweden.",
+          "factIds": [
+            "f06",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Test text about food and behaviour.",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Common Gull: test text for building the species pages. Field marks, call and when it is seen in Sweden, with photos. Test data.",
+      "facts": {
+        "size": null,
+        "swedenStatus": {
+          "value": "resident",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "fixture",
+      "prompt": "fixture",
+      "effort": "none",
+      "at": "2026-10-20"
+    },
+    "text": {
+      "model": "fixture",
+      "prompt": "fixture",
+      "effort": "none",
+      "checker": "fixture",
+      "at": "2026-11-25"
+    }
+  },
+  "errors": []
+}

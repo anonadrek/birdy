@@ -1,0 +1,211 @@
+{
+  "qid": "Q184820",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "notkraka",
+    "en": "northern-nutcracker"
+  },
+  "names": {
+    "sv": "Nötkråka",
+    "en": "Northern Nutcracker",
+    "scientific": "Nucifraga caryocatactes"
+  },
+  "family": {
+    "latin": "Corvidae",
+    "sv": "Kråkfåglar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q184820/hero.webp",
+      "width": 1600,
+      "height": 1066,
+      "author": "tls-60",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nucifraga_caryocatactes_macrorhynchos,_Khanty-Mansiysk,_Khanty-Mansi_Autonomous_Okrug,_Russia_1.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q184820/extra.webp",
+      "width": 1200,
+      "height": 801,
+      "author": "Pierre-Marie Epiney",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cassenoix_moucheté_Nucifraga_caryocatactes_DSC_6800_(53018322450).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q184820/voice.mp3",
+    "durationSec": 7,
+    "trimmed": false,
+    "author": "Alexander Kürthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nucifraga_caryocatactes_-_Spotted_Nutcracker_XC441534.mp3",
+    "sha256": "55df6064a53c8afa7c89c4407d1fffeea5dac73b10216a1280ae4bad8fccc6e4"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Nötkråka",
+      "revision": "59281102"
+    },
+    "en": {
+      "title": "Northern nutcracker",
+      "revision": "1370115032"
+    },
+    "de": {
+      "title": "Tannenhäher",
+      "revision": "270660637"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2482613,
+    "totalReports": 61743,
+    "months": [
+      43,
+      40,
+      19,
+      7,
+      5,
+      11,
+      52,
+      94,
+      100,
+      72,
+      68,
+      54
+    ],
+    "counties": {
+      "SE-K": 10,
+      "SE-W": 43,
+      "SE-X": 37,
+      "SE-I": 2,
+      "SE-N": 5,
+      "SE-Z": 49,
+      "SE-F": 16,
+      "SE-H": 9,
+      "SE-G": 25,
+      "SE-BD": 100,
+      "SE-T": 20,
+      "SE-E": 10,
+      "SE-M": 6,
+      "SE-D": 8,
+      "SE-AB": 7,
+      "SE-C": 24,
+      "SE-S": 19,
+      "SE-AC": 67,
+      "SE-Y": 67,
+      "SE-U": 14,
+      "SE-O": 15
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i augusti och september.",
+        "Rapporteras sällan i april och maj.",
+        "Andelen av alla fågelrapporter är högst i Norrbotten, Västerbotten och Västernorrland."
+      ],
+      "en": [
+        "Reported most in August and September.",
+        "Rarely reported in April and May.",
+        "Its share of all bird reports is highest in Norrbotten, Västerbotten and Västernorrland."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        5008,
+        3261,
+        2914,
+        1669,
+        1314,
+        1566,
+        5835,
+        10978,
+        12144,
+        8479,
+        5059,
+        3316
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-BD": 8701,
+        "SE-O": 8149,
+        "SE-AC": 6935,
+        "SE-C": 4750,
+        "SE-W": 3874,
+        "SE-Y": 3472,
+        "SE-AB": 2644,
+        "SE-X": 2565,
+        "SE-H": 2489,
+        "SE-Z": 2481,
+        "SE-F": 2226,
+        "SE-M": 2160,
+        "SE-T": 2043,
+        "SE-G": 1938,
+        "SE-E": 1484,
+        "SE-S": 1378,
+        "SE-D": 1343,
+        "SE-U": 1104,
+        "SE-N": 836,
+        "SE-K": 324,
+        "SE-I": 103
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

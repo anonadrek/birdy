@@ -1,0 +1,277 @@
+{
+  "qid": "Q25411",
+  "status": "ok",
+  "publish": true,
+  "slug": {
+    "sv": "blakraka",
+    "en": "european-roller"
+  },
+  "names": {
+    "sv": "Blåkråka",
+    "en": "European Roller",
+    "scientific": "Coracias garrulus"
+  },
+  "family": {
+    "latin": "Coraciidae",
+    "sv": "Blåkråkor"
+  },
+  "group": "other",
+  "iucn": "LC",
+  "identifiable": {
+    "photo": false,
+    "sound": false
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25411/hero.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Testfotograf",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fixture_Q25411_hero.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Blåkråka",
+      "revision": "1000001"
+    },
+    "en": {
+      "title": "European Roller",
+      "revision": "2000002"
+    },
+    "de": {
+      "title": "European Roller (Testartikel)",
+      "revision": "3000003"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-15",
+    "gbifTaxonKey": 1,
+    "totalReports": 0,
+    "sentences": {
+      "sv": [
+        "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025."
+      ],
+      "en": [
+        "Does not occur in Sweden: no reports in Artportalen 2016 to 2025."
+      ]
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Testfaktum.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Testcitat som bara finns i testdata."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "lookalike",
+      "sv": "Testfaktum om förväxling.",
+      "other": {
+        "scientific": "Dendrocopos major",
+        "qid": "Q26209"
+      },
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Testcitat som bara finns i testdata."
+        }
+      ]
+    }
+  ],
+  "review": {
+    "wave": 1
+  },
+  "verification": {
+    "method": "auto",
+    "at": "2026-11-20",
+    "model": "fixture",
+    "spotChecked": false
+  },
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Testtext: Blåkråka används som exempel när artsidorna byggs och testas.",
+          "factIds": [
+            "f01"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Testpunkt ett om hur blåkråka ser ut",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Testpunkt två om storlek och form",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Testpunkt tre om beteende i fält",
+          "factIds": [
+            "f02"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Testtext om lätet, skriven så att sidan går att bygga utan riktig data.",
+          "factIds": [
+            "f04"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Testtext om var och när arten syns i Sverige.",
+          "factIds": [
+            "f06",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Testtext om föda och beteende.",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q26209",
+          "text": [
+            {
+              "text": "Testtext om hur de skiljer sig åt.",
+              "factIds": [
+                "f09"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "Blåkråka: testtext för artsidornas bygge. Kännetecken, läte och när arten syns i Sverige, med foton och karta. Testdata.",
+      "facts": {
+        "size": null,
+        "swedenStatus": {
+          "value": "absent",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "Test text: the European Roller is used as an example when the species pages are built and tested.",
+          "factIds": [
+            "f01"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Test point one about what it looks like",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Test point two about size and shape",
+          "factIds": [
+            "f02"
+          ]
+        },
+        {
+          "text": "Test point three about behaviour in the field",
+          "factIds": [
+            "f02"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Test text about the call, written so the page can be built without real data.",
+          "factIds": [
+            "f04"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Test text about where and when it is seen in Sweden.",
+          "factIds": [
+            "f06",
+            "d01"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Test text about food and behaviour.",
+          "factIds": [
+            "f07"
+          ]
+        }
+      ],
+      "lookAlikes": [
+        {
+          "other": "Q26209",
+          "text": [
+            {
+              "text": "Test text about how to tell them apart.",
+              "factIds": [
+                "f09"
+              ]
+            }
+          ]
+        }
+      ],
+      "metaDescription": "European Roller: test text for building the species pages. Field marks, call and when it is seen in Sweden, with photos.",
+      "facts": {
+        "size": null,
+        "swedenStatus": {
+          "value": "absent",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "fixture",
+      "prompt": "fixture",
+      "effort": "none",
+      "at": "2026-10-20"
+    },
+    "text": {
+      "model": "fixture",
+      "prompt": "fixture",
+      "effort": "none",
+      "checker": "fixture",
+      "at": "2026-11-25"
+    }
+  },
+  "errors": []
+}

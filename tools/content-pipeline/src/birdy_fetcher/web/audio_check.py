@@ -12,9 +12,16 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 from subprocess import CompletedProcess, TimeoutExpired
-from typing import Literal
+from typing import Literal, cast
 
 CONFIDENCE_THRESHOLD = 0.10
+# Weak evidence (fix wave 2026-10-07): the species is the model's first guess in at least
+# WEAK_WINDOWS windows, with at least WEAK_THRESHOLD somewhere. Over the 152 covered R2
+# recordings the model often had no confident answer at all (Talgoxe's XC165660: first
+# guess in 3 of 7 windows at 2.3 %, nothing else above 2 %): that is a flag for Albin to
+# listen to, not a strike.
+WEAK_THRESHOLD = 0.02
+WEAK_WINDOWS = 2
 FFMPEG_TIMEOUT = 120  # seconds; MP3 to WAV conversion should complete quickly
 CLASSIFY_TIMEOUT = 900  # seconds; first run may install TensorFlow via uv sync
 STDERR_TAIL = 500
@@ -37,6 +44,27 @@ class AudioCheckResult:
             for entry in window["top"]  # type: ignore[attr-defined]
         )
 
+    def best(self, qid: str) -> float:
+        """The species' highest confidence in any window's top 3 (0 when never there)."""
+        return max(
+            (
+                float(entry["confidence"])
+                for window in self.windows
+                for entry in window["top"]  # type: ignore[attr-defined]
+                if entry["qid"] == qid
+            ),
+            default=0.0,
+        )
+
+    def first_guesses(self, qid: str) -> int:
+        """In how many windows the species is the model's first guess."""
+        count = 0
+        for window in self.windows:
+            top = cast(list[dict[str, object]], window["top"])
+            if top and top[0]["qid"] == qid:
+                count += 1
+        return count
+
 
 @dataclass(frozen=True)
 class AudioVerdict:
@@ -49,11 +77,23 @@ def audio_verdict(
 ) -> AudioVerdict:
     if not identifiable_sound:
         return AudioVerdict("flag", "ljudmodellen täcker inte arten: lyssna och besluta")
-    if result is None or not result.matches(qid):
+    if result is not None and result.matches(qid):
+        return AudioVerdict("keep")
+    if (
+        result is not None
+        and result.first_guesses(qid) >= WEAK_WINDOWS
+        and result.best(qid) >= WEAK_THRESHOLD
+    ):
+        best = f"{result.best(qid):.2f}".replace(".", ",")
         return AudioVerdict(
-            "strike", "ljudmodellen hittade inte arten i inspelningen (minst 0,10 i konfidens)"
+            "flag",
+            f"ljudmodellen känner bara svagt igen arten i inspelningen (första gissning i "
+            f"{result.first_guesses(qid)} fönster, högst {best} i konfidens, gränsen är "
+            "0,10): lyssna och besluta",
         )
-    return AudioVerdict("keep")
+    return AudioVerdict(
+        "strike", "ljudmodellen hittade inte arten i inspelningen (minst 0,10 i konfidens)"
+    )
 
 
 def _default_to_wav(mp3_path: Path, wav_path: Path) -> None:

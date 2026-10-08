@@ -1,0 +1,110 @@
+---
+import { getImage } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../Nav.astro';
+import Footer from '../Footer.astro';
+import Kicker from '../ui/Kicker.astro';
+import PlayStoreBadge from '../ui/PlayStoreBadge.astro';
+import CategoryBar from './CategoryBar.astro';
+import SpeciesCard from './SpeciesCard.astro';
+import { getCopy, type Locale } from '../../lib/i18n';
+import {
+  appText, breadcrumbJsonLd, countLabel, getAllSpecies, groupHref, groupPhoto, groupTitle, hubHref, isGroupIndexed,
+  itemListJsonLd, playHref, sortByName, type Group,
+} from '../../lib/species';
+import '../../styles/species.css';
+
+interface Props { group: Group; locale: Locale }
+const { group, locale } = Astro.props;
+const t = getCopy(locale);
+const other: Locale = locale === 'sv' ? 'en' : 'sv';
+const all = await getAllSpecies();
+const members = sortByName(all.filter((s) => s.group === group.key), locale);
+const pathname = groupHref(group, locale);
+const title = groupTitle(group, members.length, locale, t);
+const description = members.length === 1
+  ? t.species.descGroupOne.replace('{group}', group.name[locale])
+  : t.species.descGroup.replace('{group}', group.name[locale]).replace('{count}', countLabel(members.length, t));
+// Grouped by family.latin in both languages (same sections in SV and EN, like related() in species.ts),
+// not by the locale's own display name: the pipeline now guarantees one Swedish family name per Latin
+// family (web/families.py, BirdLife Sverige's world bird list NL20), but grouping by Latin stays as a
+// safeguard here rather than trusting that every record agrees (controller review, Task 8 fix wave; the
+// fixture generator still deliberately gives Kaja and Skata different family.sv values, both Corvidae, to
+// exercise this safeguard). The SV label is the first member's family.sv in sorted order (members is
+// already locale-sorted, and Array#sort is stable), so the choice is deterministic even if two records
+// ever disagreed; EN always shows the Latin name itself, which is unambiguous by definition. Same rule
+// applies to Task 10's family kicker row and "Fler {family}" heading, see the note there.
+const families = new Map<string, { sv: string; items: typeof members }>();
+for (const s of members) {
+  const existing = families.get(s.family.latin);
+  if (existing) existing.items.push(s);
+  else families.set(s.family.latin, { sv: s.family.sv, items: [s] });
+}
+const byFamily = group.key === 'songbirds'
+  ? [...families.entries()]
+      .map(([latin, { sv, items }]) => ({ name: locale === 'sv' ? sv : latin, items }))
+      .sort((a, b) => a.name.localeCompare(b.name, locale))
+  : [];
+const renderOrder = byFamily.length ? byFamily.flatMap((f) => f.items) : members;
+// Only the species cards likely above the fold skip native lazy-loading (controller review, Task 8 fix wave).
+const eagerQids = new Set(renderOrder.slice(0, 4).map((s) => s.qid));
+const crumbs = [
+  { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
+  { name: t.species.crumbHub, href: hubHref(locale) },
+  { name: group.name[locale], href: pathname },
+];
+const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, group.name[locale], locale, renderOrder)];
+const photo = groupPhoto(group, all);
+const ogImage = photo ? await getImage({ src: photo, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 82 }) : undefined;
+---
+
+<Layout locale={locale} pathname={pathname} alternatePath={groupHref(group, other)} title={title} description={description} noindex={!isGroupIndexed(group, all)} jsonLd={jsonLd} ogImage={ogImage?.src}>
+  <Nav locale={locale} variant="solid" switchLangHref={groupHref(group, other)} />
+  <CategoryBar locale={locale} active={group.key} />
+  <main id="main" tabindex="-1" class="group wrap">
+    <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
+      <ol>
+        <li><a href={crumbs[0].href} data-crumb>{crumbs[0].name}</a></li>
+        <li><a href={crumbs[1].href} data-crumb>{crumbs[1].name}</a></li>
+        <li><span aria-current="page" data-crumb>{crumbs[2].name}</span></li>
+      </ol>
+    </nav>
+    <Kicker text={t.species.kicker} />
+    <h1>{group.name[locale]}</h1>
+    <p class="lead">{group.intro[locale]}</p>
+
+    <h2 class="sp-h2">{t.species.groupSpecies} <span class="count">{countLabel(members.length, t)}</span></h2>
+    {byFamily.length > 0 ? (
+      byFamily.map((f) => (
+        <section class="family">
+          {/* f.name is always Latin in English (the group key by definition), Swedish on the Swedish
+              page: tagged for pronunciation on the English page only (controller review, Task 8 fix wave,
+              same pattern as SpeciesCard's scientific name). */}
+          <h3 lang={locale === 'en' ? 'la' : undefined}>{f.name}</h3>
+          <ul class="sp-cards" role="list">
+            {f.items.map((s) => <li data-item><SpeciesCard species={s} locale={locale} loading={eagerQids.has(s.qid) ? 'eager' : 'lazy'} /></li>)}
+          </ul>
+        </section>
+      ))
+    ) : (
+      <ul class="sp-cards" role="list">
+        {members.map((s) => <li data-item><SpeciesCard species={s} locale={locale} loading={eagerQids.has(s.qid) ? 'eager' : 'lazy'} /></li>)}
+      </ul>
+    )}
+
+    <aside class="sp-app group-app">
+      <p class="sp-app-h">{t.species.appHeadline}</p>
+      <p>{appText(undefined, t)}</p>
+      <PlayStoreBadge locale={locale} href={playHref(group.slug[locale], 'group')} alt={t.alt.playStoreBadge} size="small" />
+    </aside>
+  </main>
+  <Footer locale={locale} switchLangHref={groupHref(group, other)} />
+</Layout>
+
+<style>
+  .group { padding-top: 26px; padding-bottom: 88px; }
+  h1 { font-size: clamp(38px, 5vw, 60px); line-height: 1.04; }
+  .count { font-family: var(--font-sans); font-size: 14px; color: var(--muted); margin-left: 8px; }
+  .family h3 { font-size: 22px; margin: 30px 0 12px; }
+  .group-app { margin-top: 48px; max-width: 520px; }
+</style>

@@ -1,0 +1,211 @@
+{
+  "qid": "Q174466",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "parluggla",
+    "en": "boreal-owl"
+  },
+  "names": {
+    "sv": "Pärluggla",
+    "en": "Boreal Owl",
+    "scientific": "Aegolius funereus"
+  },
+  "family": {
+    "latin": "Strigidae",
+    "sv": "Ugglor"
+  },
+  "group": "owls",
+  "iucn": "LC",
+  "swedishRedList": "EN",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q174466/hero.webp",
+      "width": 1600,
+      "height": 1165,
+      "author": "Denali National Park and Preserve",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aegolius_funereus_Denali_NP.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q174466/extra.webp",
+      "width": 1200,
+      "height": 959,
+      "author": "Denali National Park and Preserve",
+      "license": "Public domain",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Boreal_Owl_(Aegolius_funereus)_(8615263478).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q174466/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Alexander Kurthy",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aegolius_funereus_-_Boreal_Owl_XC103673.mp3",
+    "sha256": "669b813c8a4a9ebc58cae994cd849ee5f81420ec2d15316ed33754d14faeb555"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Pärluggla",
+      "revision": "59622797"
+    },
+    "en": {
+      "title": "Boreal owl",
+      "revision": "1372695257"
+    },
+    "de": {
+      "title": "Raufußkauz",
+      "revision": "267229346"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 5739298,
+    "totalReports": 18706,
+    "months": [
+      12,
+      87,
+      100,
+      26,
+      9,
+      9,
+      2,
+      2,
+      7,
+      8,
+      4,
+      7
+    ],
+    "counties": {
+      "SE-K": 16,
+      "SE-W": 57,
+      "SE-X": 30,
+      "SE-I": 27,
+      "SE-N": 5,
+      "SE-Z": 100,
+      "SE-F": 17,
+      "SE-H": 10,
+      "SE-G": 39,
+      "SE-BD": 48,
+      "SE-T": 21,
+      "SE-E": 9,
+      "SE-M": 7,
+      "SE-D": 4,
+      "SE-AB": 2,
+      "SE-C": 19,
+      "SE-S": 28,
+      "SE-AC": 68,
+      "SE-Y": 90,
+      "SE-U": 44,
+      "SE-O": 6
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i februari och mars.",
+        "Rapporteras sällan i maj till december.",
+        "Andelen av alla fågelrapporter är högst i Jämtland, Västernorrland och Västerbotten."
+      ],
+      "en": [
+        "Reported most in February and March.",
+        "Rarely reported in May to December.",
+        "Its share of all bird reports is highest in Jämtland, Västernorrland and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        709,
+        3582,
+        7568,
+        2994,
+        1161,
+        628,
+        101,
+        120,
+        448,
+        497,
+        162,
+        205
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-AC": 2203,
+        "SE-W": 1595,
+        "SE-Z": 1576,
+        "SE-Y": 1455,
+        "SE-BD": 1296,
+        "SE-C": 1223,
+        "SE-U": 1085,
+        "SE-O": 1059,
+        "SE-G": 941,
+        "SE-H": 853,
+        "SE-M": 766,
+        "SE-F": 730,
+        "SE-X": 660,
+        "SE-T": 653,
+        "SE-S": 641,
+        "SE-I": 549,
+        "SE-E": 432,
+        "SE-N": 275,
+        "SE-D": 215,
+        "SE-AB": 186,
+        "SE-K": 152
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

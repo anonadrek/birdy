@@ -241,3 +241,84 @@ def test_a_question_in_the_species_meta_description_is_a_hard_issue() -> None:
     text = _with_sv(meta_description=meta)
     issues = [i for i in check_text(text, CTX, BANNED) if i.path == "sv.meta_description"]
     assert issues and not any(i.removable for i in issues)
+
+
+SHARE_FACT = {
+    "id": "d02",
+    "topic": "data",
+    "source": "artportalen",
+    "kind": "countyShare",
+    "sv": "Andelen av alla fågelrapporter är högst i Halland, Gotland och Kalmar.",
+}
+
+
+def test_a_county_share_must_stay_a_share() -> None:
+    """R3 (2026-10-07): from "Vanligast i rapporterna från Norrbotten ..." the writer wrote
+    "flest rapporter kommer från Norrbotten", and the text check let it through. A sentence
+    that cites the county share must say andel/share, or it is removed."""
+    ctx = TextContext.from_facts([*FACTS, SHARE_FACT])
+    wrong = _with_sv(where_when=[S("Flest rapporter kommer från Halland och Gotland.", "d02")])
+    issues = check_text(wrong, ctx, BANNED)
+    assert [(i.path, i.removable) for i in issues] == [("sv.where_when[0]", True)]
+    assert "andel" in issues[0].message
+    right = _with_sv(
+        where_when=[S("Andelen av alla fågelrapporter är högst i Halland och Gotland.", "d02")]
+    )
+    assert check_text(right, ctx, BANNED) == []
+
+
+def test_an_english_county_share_must_say_share() -> None:
+    ctx = TextContext.from_facts([*FACTS, SHARE_FACT])
+    wrong = WebTextV2(
+        sv=SV,
+        en=EN.model_copy(
+            update={"where_when": [S("Most reports come from Halland and Gotland.", "d02")]}
+        ),
+    )
+    assert [i.path for i in check_text(wrong, ctx, BANNED)] == ["en.where_when[0]"]
+    right = WebTextV2(
+        sv=SV,
+        en=EN.model_copy(
+            update={
+                "where_when": [S("Its share of all bird reports is highest in Halland.", "d02")]
+            }
+        ),
+    )
+    assert check_text(right, ctx, BANNED) == []
+
+
+def test_a_species_with_no_status_and_no_reports_shows_does_not_occur() -> None:
+    """R3 (2026-10-07): no article mentions Sweden for Koboltmes, so it has no status fact;
+    the data say it has no reports in ten years, so the page's "I Sverige" row says
+    "Förekommer inte", citing that data fact."""
+    record = reviewed_record()
+    record["facts"] = [f for f in record["facts"] if f["topic"] != "status"]
+    record["facts"].append(
+        {
+            "id": "d09",
+            "topic": "data",
+            "source": "artportalen",
+            "kind": "absent",
+            "sv": "Förekommer inte i Sverige: inga rapporter i Artportalen 2016 till 2025.",
+        }
+    )
+    assert status_for_site(record) == {"value": "absent", "factIds": ["d09"]}
+    record["facts"].pop()
+    assert status_for_site(record) is None
+
+
+def test_a_county_share_may_be_said_as_a_proportion() -> None:
+    """Fix wave 2026-10-07: "proportion" counts as well as "share", and the Swedish word
+    may sit inside a compound ("rapportandelen")."""
+    ctx = TextContext.from_facts([*FACTS, SHARE_FACT])
+    en = WebTextV2(
+        sv=SV.model_copy(
+            update={"where_when": [S("Rapportandelen är högst i Halland och Gotland.", "d02")]}
+        ),
+        en=EN.model_copy(
+            update={
+                "where_when": [S("The proportion of bird reports is highest in Halland.", "d02")]
+            }
+        ),
+    )
+    assert check_text(en, ctx, BANNED) == []

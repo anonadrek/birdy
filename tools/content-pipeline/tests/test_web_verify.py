@@ -113,6 +113,66 @@ def test_render_facts_for_check_labels_the_status_fact() -> None:
     assert "<claim>Status i Sverige: Stannfågel</claim>" in text
 
 
+STATUS_SV = WikiArticle(
+    "sv",
+    "Talgoxe",
+    "1",
+    "Talgoxen finns i hela Sverige och är en av de vanligaste mesarna.\n\n"
+    "Par stannar vanligen nära eller inom sitt revir hela året runt, även i norr. "
+    "Ungfåglar sprider sig på hösten.",
+)
+STATUS_DE = WikiArticle(
+    "de", "Kohlmeise", "2", "In Europa harren viele Kohlmeisen in den Brutgebieten aus."
+)
+TWO_QUOTE_STATUS: dict[str, Any] = {
+    "id": "s01",
+    "topic": "status",
+    "value": "resident",
+    "sv": "Stannfågel",
+    "sources": [
+        {"article": "sv", "quote": "Talgoxen finns i hela Sverige"},
+        {"article": "sv", "quote": "Par stannar vanligen nära eller inom sitt revir"},
+        {"article": "sv", "quote": "Ungfåglar sprider sig på hösten"},
+        {"article": "de", "quote": "In Europa harren viele Kohlmeisen"},
+    ],
+}
+
+
+def test_render_facts_for_check_shows_every_quote_with_its_language() -> None:
+    """R3 (2026-10-07): V1 saw only a fact's first quote, so a status backed by its second
+    quote ("Par stannar ... hela året runt") was struck for all three Swedish species."""
+    text = render_facts_for_check([TWO_QUOTE_STATUS], {"sv": STATUS_SV, "de": STATUS_DE})
+    for source in TWO_QUOTE_STATUS["sources"]:
+        assert f'<quote article="{source["article"]}">{source["quote"]}</quote>' in text
+    assert "Par stannar vanligen nära eller inom sitt revir hela året runt, även i norr." in text
+    assert "In Europa harren viele Kohlmeisen in den Brutgebieten aus." in text
+
+
+def test_render_facts_for_check_shows_a_shared_paragraph_once() -> None:
+    """Two quotes from one paragraph: the paragraph is sent once, not twice."""
+    text = render_facts_for_check([TWO_QUOTE_STATUS], {"sv": STATUS_SV, "de": STATUS_DE})
+    assert text.count("Par stannar vanligen nära eller inom sitt revir hela året runt") == 1
+    assert text.count("<paragraph>") == 3
+
+
+def test_the_verify_prompt_judges_all_quotes_of_a_fact_together() -> None:
+    template = (PIPELINE / "prompts/verify-v1.md").read_text(encoding="utf-8")
+    system, _ = _split_prompt(template, about=ABOUT, facts="")
+    assert "several sources" in system
+    assert "all of a fact's quotes and paragraphs together" in system
+
+
+def test_a_changed_second_quote_makes_the_verification_stale() -> None:
+    """Facts are verified again only when they change: every quote counts, not just the
+    first (facts_hash covers the whole facts list)."""
+    from birdy_fetcher.web.record import facts_hash
+
+    record: dict[str, Any] = {"facts": [TWO_QUOTE_STATUS]}
+    before = facts_hash(record)
+    changed = {**TWO_QUOTE_STATUS, "sources": [*TWO_QUOTE_STATUS["sources"][:1]]}
+    assert facts_hash({"facts": [changed]}) != before
+
+
 def test_the_verify_prompt_lets_a_lookalike_fact_describe_the_other_species() -> None:
     template = (PIPELINE / "prompts/verify-v1.md").read_text(encoding="utf-8")
     system, user = _split_prompt(template, about=ABOUT, facts="")
@@ -493,3 +553,21 @@ def test_the_verify_prompt_accepts_scandinavia_and_translated_names_and_units() 
         assert place in system
     assert '"blue tit"' in system
     assert '"14 cm"' in system
+
+
+def test_render_facts_for_check_shows_how_the_article_writes_the_lookalike() -> None:
+    lookalike = {
+        "id": "f03",
+        "topic": "lookalike",
+        "sv": "Kråkan är helsvart.",
+        "sources": [{"article": "sv", "quote": "ringande ti-ta ti-ta"}],
+        "other": {"scientific": "Corvus corone", "qid": "Q26198", "written": "C. corone"},
+    }
+    text = render_facts_for_check([lookalike], {"sv": ARTICLE})
+    assert '<fact id="f03" topic="lookalike" other="Corvus corone" written="C. corone">' in text
+
+
+def test_the_verify_prompt_explains_the_written_attribute() -> None:
+    template = (PIPELINE / "prompts/verify-v1.md").read_text(encoding="utf-8")
+    system, _ = _split_prompt(template, about=ABOUT, facts="")
+    assert "the written attribute" in system

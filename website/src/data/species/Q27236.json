@@ -1,0 +1,600 @@
+{
+  "qid": "Q27236",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Sävsångaren är en medelstor sångare som mäter 11,5–13 centimeter på längden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sävsångaren är en medelstor sångare som mäter 11,5–13 centimeter på längden"
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "size",
+      "sv": "Vingspannet är 17–21 centimeter.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "hat eine Flügelspannweite von 17 bis 21 cm"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "size",
+      "sv": "Sävsångaren väger cirka 10–15 gram.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Das Gewicht beträgt etwa 10 bis 15 Gramm."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Den adulta fågeln har kraftigt streckad brungrå rygg och ljus, gulaktig undersida.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den adulta fågeln har en kraftigt streckad brungrå rygg och ljus gulaktig undersida."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Pannan är platt med framträdande gulbeige ögonbrynsstreck, svart hjässidesband och brunsvart centralt hjässband.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Pannan är platt med ett framträdande gulbeiget ögonbrynstreck, svart hjässidesband och ett brunsvart centralt hjässband."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Strupen är vitaktig och näbben är kraftig och spetsig.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Strupen är vitaktig och näbben är kraftig och spetsig."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Övergumpen är varmt brun och ostreckad och kontrasterar mot de mattare vingarna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The rump is warm brown and unstreaked, contrasting with the duller wings."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "appearance",
+      "sv": "Benen är gråaktiga.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The legs are greyish."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "sex_age",
+      "sv": "Hane och hona har likadan fjäderdräkt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika, som hos de flesta sångare"
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Ungfåglar har fläckar på bröstet.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "men ungfåglar är fläckade på bröstet"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Sången är mycket omväxlande, ett snabbt tjattrande jirra-jirra-jirra som avbryts av visslingar och härmningar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Dess sång är mycket omväxlande och består av ett snabbt, tjattrande jirra-jirra-jirra som avbryts av typiska visslingar och härmljud."
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Sången består av fraser i slumpvis ordning, så den låter aldrig likadant.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It is composed of phrases in random order, so that it is never the same."
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "voice",
+      "sv": "Kontaktlätet beskrivs som chirr eller kerr, och upprepat snabbt blir det ett skallrande varningsläte.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Contact calls are described as chirr or kerr; and these calls are repeated quickly to form a rattling alarm call."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "behaviour",
+      "sv": "Hanen sjunger från en bar sittplats som ett vasstrå eller en buske.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The song is given from a bare perch such as a reed stem or bush"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "behaviour",
+      "sv": "I sångflykten stiger fågeln 2–5 meter, flyger en kort cirkel och singlar sedan långsamt ned.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "rises to a height of around 2–5 metres (6.6–16.4 ft) and then after a short circling flight, makes a slow, 'parachuting' descent"
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "behaviour",
+      "sv": "Hanen slutar sjunga så snart han har funnit en partner.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "is stopped as soon as a mate is found"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "habitat",
+      "sv": "Sävsångaren påträffas i vassnår med buskar i våtmarker.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sävsångaren påträffas i vassnår med buskar i våtmarker."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "habitat",
+      "sv": "I fjällen håller den till i fuktiga videsnår.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I fjällen brukar den hålla till i fuktiga videsnår."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "habitat",
+      "sv": "Den kan häcka 500 meter eller mer från vatten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "it can breed 500 metres (1,600 ft) or more away from water"
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "sweden",
+      "sv": "I Sverige finns den i två områden: södra och mellersta Sverige upp längs Norrlandskusten, samt fjälltrakterna.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige förekommer den i stora delar av landet i två utbredningsområden, dels i södra och mellersta Sverige samt vidare upp utmed Norrlandskusten, dels i fjälltrakterna."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "I Sverige anses beståndet livskraftigt men tros minska i antal.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Även i Sverige anses beståndet livskraftigt, men den tros minska i antal."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Ringmärkta sävsångare från Sverige har återfunnits i Centraleuropa och Italien.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "birds from Sweden are recovered in central Europe and Italy"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "behaviour",
+      "sv": "Sävsångaren är flyttfågel och övervintrar i Afrika söder om Sahara.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Arten är en flyttfågel som övervintrar i Afrika söder om Sahara."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "behaviour",
+      "sv": "Den flyttar i augusti–oktober och återkommer till häckningsplatserna i maj.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den flyttar i augusti–oktober och återkommer till sina häckningsplatser i maj."
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Sävsångaren flyttar nattetid och lägger upp fettreserver inför flytten.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "legt der Nachtzieher Fettreserven an"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "breeding",
+      "sv": "Honan lägger oftast fem eller sex ägg i ett bo nära marken i tät vass eller en buske.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger oftast fem eller sex ägg i ett rede nära marken i tät vass eller en buske."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "breeding",
+      "sv": "Äggen ruvas i cirka 14 dagar, mest av honan, och ungarna blir flygfärdiga efter 13–14 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Föräldrarna, mestadels honan, ruvar i cirka 14 dagar och ungarna blir sedan flygfärdiga efter 13 till 14 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "breeding",
+      "sv": "Äggen är grönaktigt gula med brun marmorering.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "greenish-yellow and brown-mottled eggs are laid"
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "food",
+      "sv": "Den äter främst insekter men även bär och ibland andra växtdelar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Liksom de flesta sångare livnär den sig på insekter, men äter även bär och tillfällig andra växtdelar."
+        }
+      ]
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Ungfåglar kan förväxlas med vattensångare, eftersom de kan visa ett ljust centralt hjässband mot mörkare sidor.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "They can be easier to confuse with aquatic warblers due to an apparent pale central crown stripe contrasting with the darker edges."
+        },
+        {
+          "article": "sv",
+          "quote": "vattensångare (A. paludicola)"
+        }
+      ],
+      "other": {
+        "scientific": "Acrocephalus paludicola",
+        "qid": "Q242599",
+        "written": "A. paludicola"
+      }
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "breeding_migrant",
+      "sv": "Flyttfågel, häckar här",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I Sverige förekommer den i stora delar av landet i två utbredningsområden"
+        },
+        {
+          "article": "en",
+          "quote": "birds from Sweden are recovered in central Europe and Italy"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i maj och juni."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "rarelyReported",
+      "sv": "Rapporteras sällan i oktober till april."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "artportalen",
+      "kind": "countyShare",
+      "sv": "Andelen av alla fågelrapporter är högst i Uppsala, Södermanland och Örebro."
+    },
+    {
+      "id": "d04",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": null,
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T16:08:41.079475+00:00"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "savsangare",
+    "en": "sedge-warbler"
+  },
+  "names": {
+    "sv": "Sävsångare",
+    "en": "Sedge Warbler",
+    "scientific": "Acrocephalus schoenobaenus"
+  },
+  "family": {
+    "latin": "Acrocephalidae",
+    "sv": "Rörsångare"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q27236/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Valuer Hardy",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Schilfrohrsänger_(Acrocephalus_schoenobaenus)_im_Portrait.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q27236/extra.webp",
+      "width": 1200,
+      "height": 956,
+      "author": "gailhampshire",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sedge_Warbler._Acrocephalus_schoenobaenus_-_Flickr_-_gailhampshire_(2).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q27236/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Hannu Varkki",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Acrocephalus_schoenobaenus_-_Sedge_Warbler_XC489903.mp3",
+    "sha256": "1d621f16df626d0eb1cc13280de56232f6d6daf3d84487d11a5b9b1aa8d329db"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Sävsångare",
+      "revision": "59701441"
+    },
+    "en": {
+      "title": "Sedge warbler",
+      "revision": "1315258838"
+    },
+    "de": {
+      "title": "Schilfrohrsänger",
+      "revision": "252817056"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2493129,
+    "totalReports": 110395,
+    "months": [
+      0,
+      0,
+      1,
+      9,
+      99,
+      100,
+      47,
+      27,
+      14,
+      1,
+      1,
+      0
+    ],
+    "counties": {
+      "SE-K": 11,
+      "SE-W": 56,
+      "SE-X": 57,
+      "SE-I": 21,
+      "SE-N": 42,
+      "SE-Z": 3,
+      "SE-F": 39,
+      "SE-H": 22,
+      "SE-G": 31,
+      "SE-BD": 28,
+      "SE-T": 83,
+      "SE-E": 78,
+      "SE-M": 43,
+      "SE-D": 90,
+      "SE-AB": 65,
+      "SE-C": 100,
+      "SE-S": 66,
+      "SE-AC": 29,
+      "SE-Y": 62,
+      "SE-U": 70,
+      "SE-O": 37
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i maj och juni.",
+        "Rapporteras sällan i oktober till april.",
+        "Andelen av alla fågelrapporter är högst i Uppsala, Södermanland och Örebro."
+      ],
+      "en": [
+        "Reported most in May and June.",
+        "Rarely reported in October to April.",
+        "Its share of all bird reports is highest in Uppsala, Södermanland and Örebro."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        0,
+        1,
+        4318,
+        54799,
+        29899,
+        10896,
+        6528,
+        3475,
+        172,
+        1,
+        0
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-AB": 15651,
+        "SE-C": 13127,
+        "SE-O": 12858,
+        "SE-M": 10307,
+        "SE-D": 9642,
+        "SE-E": 7425,
+        "SE-T": 5435,
+        "SE-N": 4373,
+        "SE-H": 4017,
+        "SE-F": 3593,
+        "SE-U": 3582,
+        "SE-W": 3241,
+        "SE-S": 3127,
+        "SE-X": 2586,
+        "SE-Y": 2067,
+        "SE-AC": 1978,
+        "SE-BD": 1579,
+        "SE-G": 1562,
+        "SE-I": 873,
+        "SE-K": 222,
+        "SE-Z": 87
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

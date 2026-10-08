@@ -1,0 +1,728 @@
+{
+  "1": [
+    {
+      "qid": "Q25485",
+      "name": "Talgoxe"
+    },
+    {
+      "qid": "Q25404",
+      "name": "Blåmes"
+    },
+    {
+      "qid": "Q25234",
+      "name": "Koltrast"
+    },
+    {
+      "qid": "Q25334",
+      "name": "Rödhake"
+    },
+    {
+      "qid": "Q14683",
+      "name": "Gråsparv"
+    },
+    {
+      "qid": "Q25307",
+      "name": "Skata"
+    },
+    {
+      "qid": "Q25345384",
+      "name": "Kaja"
+    },
+    {
+      "qid": "Q25383",
+      "name": "Bofink"
+    },
+    {
+      "qid": "Q25348",
+      "name": "Gräsand"
+    },
+    {
+      "qid": "Q26427",
+      "name": "Fiskmås"
+    },
+    {
+      "qid": "Q25385",
+      "name": "Ormvråk"
+    },
+    {
+      "qid": "Q4764",
+      "name": "Trana"
+    },
+    {
+      "qid": "Q25382",
+      "name": "Domherre"
+    },
+    {
+      "qid": "Q26209",
+      "name": "Större hackspett"
+    },
+    {
+      "qid": "Q156767",
+      "name": "Nötväcka"
+    },
+    {
+      "qid": "Q25612",
+      "name": "Sångsvan"
+    },
+    {
+      "qid": "Q25405",
+      "name": "Gråkråka"
+    },
+    {
+      "qid": "Q27075785",
+      "name": "Grönfink"
+    },
+    {
+      "qid": "Q29865",
+      "name": "Knipa"
+    },
+    {
+      "qid": "Q25438",
+      "name": "Havsörn"
+    },
+    {
+      "qid": "Q25777",
+      "name": "Björktrast"
+    },
+    {
+      "qid": "Q25357",
+      "name": "Korp"
+    },
+    {
+      "qid": "Q180991",
+      "name": "Storskrake"
+    },
+    {
+      "qid": "Q25402",
+      "name": "Knölsvan"
+    },
+    {
+      "qid": "Q25968",
+      "name": "Pilfink"
+    },
+    {
+      "qid": "Q26205",
+      "name": "Gulsparv"
+    },
+    {
+      "qid": "Q25882",
+      "name": "Grågås"
+    },
+    {
+      "qid": "Q25740",
+      "name": "Gärdsmyg"
+    },
+    {
+      "qid": "Q28236",
+      "name": "Gråtrut"
+    },
+    {
+      "qid": "Q20754771",
+      "name": "Gråsiska"
+    },
+    {
+      "qid": "Q27075864",
+      "name": "Grönsiska"
+    },
+    {
+      "qid": "Q26135",
+      "name": "Sidensvans"
+    },
+    {
+      "qid": "Q207838",
+      "name": "Entita"
+    },
+    {
+      "qid": "Q25418",
+      "name": "Steglits"
+    },
+    {
+      "qid": "Q26444",
+      "name": "Vigg"
+    },
+    {
+      "qid": "Q25354",
+      "name": "Nötskrika"
+    },
+    {
+      "qid": "Q26733",
+      "name": "Kanadagås"
+    },
+    {
+      "qid": "Q191096",
+      "name": "Svartmes"
+    },
+    {
+      "qid": "Q25273",
+      "name": "Gråhäger"
+    },
+    {
+      "qid": "Q26026",
+      "name": "Ringduva"
+    }
+  ],
+  "2": [
+    {
+      "qid": "Q574281",
+      "name": "Balkanmes"
+    },
+    {
+      "qid": "Q188877",
+      "name": "Bergfink"
+    },
+    {
+      "qid": "Q130933",
+      "name": "Berguv"
+    },
+    {
+      "qid": "Q28106837",
+      "name": "Bläsand"
+    },
+    {
+      "qid": "Q26742",
+      "name": "Brunand"
+    },
+    {
+      "qid": "Q178702",
+      "name": "Dalripa"
+    },
+    {
+      "qid": "Q178942",
+      "name": "Dubbeltrast"
+    },
+    {
+      "qid": "Q26696",
+      "name": "Ejder"
+    },
+    {
+      "qid": "Q25432",
+      "name": "Fasan"
+    },
+    {
+      "qid": "Q26407",
+      "name": "Fjällvråk"
+    },
+    {
+      "qid": "Q201316",
+      "name": "Forsärla"
+    },
+    {
+      "qid": "Q25761",
+      "name": "Gravand"
+    },
+    {
+      "qid": "Q166171",
+      "name": "Gröngöling"
+    },
+    {
+      "qid": "Q26629",
+      "name": "Havstrut"
+    },
+    {
+      "qid": "Q25384",
+      "name": "Hornuggla"
+    },
+    {
+      "qid": "Q4967039",
+      "name": "Hyrkanmes"
+    },
+    {
+      "qid": "Q193192",
+      "name": "Hökuggla"
+    },
+    {
+      "qid": "Q25769",
+      "name": "Jorduggla"
+    },
+    {
+      "qid": "Q26698",
+      "name": "Järnsparv"
+    },
+    {
+      "qid": "Q182761",
+      "name": "Järpe"
+    },
+    {
+      "qid": "Q25756",
+      "name": "Kattuggla"
+    },
+    {
+      "qid": "Q42326",
+      "name": "Klippduva"
+    },
+    {
+      "qid": "Q10546857",
+      "name": "Koboltmes"
+    },
+    {
+      "qid": "Q25700",
+      "name": "Kricka"
+    },
+    {
+      "qid": "Q79915",
+      "name": "Kungsfiskare"
+    },
+    {
+      "qid": "Q26657",
+      "name": "Kungsfågel"
+    },
+    {
+      "qid": "Q574447",
+      "name": "Lappmes"
+    },
+    {
+      "qid": "Q208703",
+      "name": "Lappsparv"
+    },
+    {
+      "qid": "Q214281",
+      "name": "Lavskrika"
+    },
+    {
+      "qid": "Q184518",
+      "name": "Mindre hackspett"
+    },
+    {
+      "qid": "Q26552",
+      "name": "Mindre korsnäbb"
+    },
+    {
+      "qid": "Q26114",
+      "name": "Morkulla"
+    },
+    {
+      "qid": "Q184820",
+      "name": "Nötkråka"
+    },
+    {
+      "qid": "Q155878",
+      "name": "Orre"
+    },
+    {
+      "qid": "Q30535",
+      "name": "Pilgrimsfalk"
+    },
+    {
+      "qid": "Q174466",
+      "name": "Pärluggla"
+    },
+    {
+      "qid": "Q26106",
+      "name": "Rapphöna"
+    },
+    {
+      "qid": "Q25386",
+      "name": "Råka"
+    },
+    {
+      "qid": "Q184825",
+      "name": "Rödvingetrast"
+    },
+    {
+      "qid": "Q25709",
+      "name": "Rördrom"
+    },
+    {
+      "qid": "Q18847",
+      "name": "Rörhöna"
+    },
+    {
+      "qid": "Q21062",
+      "name": "Sillgrissla"
+    },
+    {
+      "qid": "Q26140",
+      "name": "Skogsduva"
+    },
+    {
+      "qid": "Q25634",
+      "name": "Skrattmås"
+    },
+    {
+      "qid": "Q25422",
+      "name": "Skäggdopping"
+    },
+    {
+      "qid": "Q192817",
+      "name": "Skäggmes"
+    },
+    {
+      "qid": "Q642685",
+      "name": "Skärpiplärka"
+    },
+    {
+      "qid": "Q190083",
+      "name": "Slaguggla"
+    },
+    {
+      "qid": "Q26691",
+      "name": "Smålom"
+    },
+    {
+      "qid": "Q189609",
+      "name": "Småskrake"
+    },
+    {
+      "qid": "Q28106966",
+      "name": "Snatterand"
+    },
+    {
+      "qid": "Q26416",
+      "name": "Snösparv"
+    },
+    {
+      "qid": "Q25376",
+      "name": "Sothöna"
+    },
+    {
+      "qid": "Q25380",
+      "name": "Sparvhök"
+    },
+    {
+      "qid": "Q191155",
+      "name": "Sparvuggla"
+    },
+    {
+      "qid": "Q143284",
+      "name": "Spillkråka"
+    },
+    {
+      "qid": "Q25469",
+      "name": "Stare"
+    },
+    {
+      "qid": "Q174088",
+      "name": "Stenknäck"
+    },
+    {
+      "qid": "Q25450",
+      "name": "Stjärtand"
+    },
+    {
+      "qid": "Q170831",
+      "name": "Stjärtmes"
+    },
+    {
+      "qid": "Q184432",
+      "name": "Storlom"
+    },
+    {
+      "qid": "Q25440",
+      "name": "Storskarv"
+    },
+    {
+      "qid": "Q18854",
+      "name": "Storspov"
+    },
+    {
+      "qid": "Q201831",
+      "name": "Strömstare"
+    },
+    {
+      "qid": "Q645055",
+      "name": "Större korsnäbb"
+    },
+    {
+      "qid": "Q26961",
+      "name": "Sävsparv"
+    },
+    {
+      "qid": "Q25961",
+      "name": "Sånglärka"
+    },
+    {
+      "qid": "Q214571",
+      "name": "Tallbit"
+    },
+    {
+      "qid": "Q215211",
+      "name": "Talltita"
+    },
+    {
+      "qid": "Q129059",
+      "name": "Tjäder"
+    },
+    {
+      "qid": "Q212055",
+      "name": "Tobisgrissla"
+    },
+    {
+      "qid": "Q207831",
+      "name": "Tofsmes"
+    },
+    {
+      "qid": "Q25392",
+      "name": "Tofsvipa"
+    },
+    {
+      "qid": "Q27102",
+      "name": "Tordmule"
+    },
+    {
+      "qid": "Q26490",
+      "name": "Tornfalk"
+    },
+    {
+      "qid": "Q210418",
+      "name": "Tretåig hackspett"
+    },
+    {
+      "qid": "Q26612",
+      "name": "Tretåig mås"
+    },
+    {
+      "qid": "Q193593",
+      "name": "Trädkrypare"
+    },
+    {
+      "qid": "Q54696",
+      "name": "Turkduva"
+    },
+    {
+      "qid": "Q184508",
+      "name": "Varfågel"
+    },
+    {
+      "qid": "Q185099",
+      "name": "Vattenrall"
+    },
+    {
+      "qid": "Q10965357",
+      "name": "Vinterhämpling"
+    },
+    {
+      "qid": "Q26680",
+      "name": "Vitkindad gås"
+    },
+    {
+      "qid": "Q26956",
+      "name": "Ängspiplärka"
+    }
+  ],
+  "3": [
+    {
+      "qid": "Q25909",
+      "name": "Backsvala"
+    },
+    {
+      "qid": "Q26578",
+      "name": "Blåhake"
+    },
+    {
+      "qid": "Q26431",
+      "name": "Brun kärrhök"
+    },
+    {
+      "qid": "Q155869",
+      "name": "Buskskvätta"
+    },
+    {
+      "qid": "Q18850",
+      "name": "Drillsnäppa"
+    },
+    {
+      "qid": "Q25692",
+      "name": "Enkelbeckasin"
+    },
+    {
+      "qid": "Q25332",
+      "name": "Fiskgjuse"
+    },
+    {
+      "qid": "Q18875",
+      "name": "Fisktärna"
+    },
+    {
+      "qid": "Q25677554",
+      "name": "Fjällpipare"
+    },
+    {
+      "qid": "Q205930",
+      "name": "Fjällripa"
+    },
+    {
+      "qid": "Q18840",
+      "name": "Gluttsnäppa"
+    },
+    {
+      "qid": "Q185784",
+      "name": "Gransångare"
+    },
+    {
+      "qid": "Q208710",
+      "name": "Gräshoppsångare"
+    },
+    {
+      "qid": "Q26607",
+      "name": "Grå flugsnappare"
+    },
+    {
+      "qid": "Q18837",
+      "name": "Grönbena"
+    },
+    {
+      "qid": "Q27075477",
+      "name": "Grönsångare"
+    },
+    {
+      "qid": "Q25984",
+      "name": "Gulärla"
+    },
+    {
+      "qid": "Q18845",
+      "name": "Gök"
+    },
+    {
+      "qid": "Q26055",
+      "name": "Hussvala"
+    },
+    {
+      "qid": "Q27075852",
+      "name": "Hämpling"
+    },
+    {
+      "qid": "Q27674",
+      "name": "Härmsångare"
+    },
+    {
+      "qid": "Q104867606",
+      "name": "Höksångare"
+    },
+    {
+      "qid": "Q203053",
+      "name": "Kustlabb"
+    },
+    {
+      "qid": "Q26650",
+      "name": "Kärrsnäppa"
+    },
+    {
+      "qid": "Q25429",
+      "name": "Ladusvala"
+    },
+    {
+      "qid": "Q21148",
+      "name": "Ljungpipare"
+    },
+    {
+      "qid": "Q25876",
+      "name": "Lärkfalk"
+    },
+    {
+      "qid": "Q27239",
+      "name": "Lövsångare"
+    },
+    {
+      "qid": "Q26717",
+      "name": "Nattskärra"
+    },
+    {
+      "qid": "Q206130",
+      "name": "Näktergal"
+    },
+    {
+      "qid": "Q46143",
+      "name": "Rosenfink"
+    },
+    {
+      "qid": "Q18859",
+      "name": "Rödbena"
+    },
+    {
+      "qid": "Q26620",
+      "name": "Rödstjärt"
+    },
+    {
+      "qid": "Q241347",
+      "name": "Rödstrupig piplärka"
+    },
+    {
+      "qid": "Q159080",
+      "name": "Rörsångare"
+    },
+    {
+      "qid": "Q27160",
+      "name": "Silltrut"
+    },
+    {
+      "qid": "Q26800",
+      "name": "Silvertärna"
+    },
+    {
+      "qid": "Q28106731",
+      "name": "Skedand"
+    },
+    {
+      "qid": "Q26147",
+      "name": "Skärfläcka"
+    },
+    {
+      "qid": "Q131918",
+      "name": "Stenfalk"
+    },
+    {
+      "qid": "Q26420",
+      "name": "Stenskvätta"
+    },
+    {
+      "qid": "Q25928",
+      "name": "Strandskata"
+    },
+    {
+      "qid": "Q26816",
+      "name": "Större strandpipare"
+    },
+    {
+      "qid": "Q188446",
+      "name": "Svarthätta"
+    },
+    {
+      "qid": "Q27442",
+      "name": "Svartvit flugsnappare"
+    },
+    {
+      "qid": "Q25399",
+      "name": "Sädesärla"
+    },
+    {
+      "qid": "Q27236",
+      "name": "Sävsångare"
+    },
+    {
+      "qid": "Q26349",
+      "name": "Taltrast"
+    },
+    {
+      "qid": "Q25377",
+      "name": "Tornseglare"
+    },
+    {
+      "qid": "Q202478",
+      "name": "Trädgårdssångare"
+    },
+    {
+      "qid": "Q26969",
+      "name": "Trädlärka"
+    },
+    {
+      "qid": "Q143313",
+      "name": "Trädpiplärka"
+    },
+    {
+      "qid": "Q26671",
+      "name": "Törnskata"
+    },
+    {
+      "qid": "Q110257516",
+      "name": "Törnsångare"
+    },
+    {
+      "qid": "Q286809",
+      "name": "Videsparv"
+    },
+    {
+      "qid": "Q110257504",
+      "name": "Ärtsångare"
+    }
+  ]
+}

@@ -3,12 +3,13 @@
 from __future__ import annotations
 
 import threading
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
 
+from birdy_fetcher.web.audio import AudioCandidate
 from birdy_fetcher.web.audio_check import AudioCheckFailed, AudioCheckResult
 from birdy_fetcher.web.facts import FactSheetOutput
 from birdy_fetcher.web.facts_step import FactsOptions
@@ -20,6 +21,7 @@ from birdy_fetcher.web.record import (
     merge_sources,
     record_path,
     save_record,
+    sweep_orphan_voices,
 )
 from birdy_fetcher.web.verify import FactVerdict, FactVerifyOutput
 from birdy_fetcher.web.verify_step import AudioPreflightFailed, VerifyOptions, run_verify
@@ -1030,3 +1032,293 @@ async def test_verify_sweeps_a_recording_left_without_audio(tmp_path: Path) -> N
     sweep = next(o for o in outcomes if o.qid == "voice.mp3")
     assert sweep.status == "ok" and any("Q2" in n for n in sweep.notes)
     assert not orphan.exists()
+
+
+# V4 falls back to the species' next allowed Commons recording (fix wave 2026-10-07).
+def _candidate(name: str) -> AudioCandidate:
+    return AudioCandidate(
+        title=f"File:Parus major {name}.ogg",
+        url=f"https://upload.wikimedia.org/{name}.ogg",
+        page_url=name,
+        mime="application/ogg",
+        duration=25.0,
+        license="CC BY-SA 4.0",
+        author="Anna",
+        categories=("Category:Parus major",),
+        from_wikidata=True,
+    )
+
+
+@dataclass
+class FakeCommons:
+    cands: list[AudioCandidate]
+    downloaded: list[str] = field(default_factory=list)
+
+    async def candidates(
+        self, qid: str, scientific: str, *, refresh: bool = False
+    ) -> list[AudioCandidate]:
+        return self.cands
+
+    async def download(
+        self, qid: str, candidate: AudioCandidate, *, refresh: bool = False
+    ) -> bytes:
+        self.downloaded.append(candidate.page_url)
+        return candidate.page_url.encode()
+
+
+KEEP = AudioCheckResult(windows=[{"startSec": 0.0, "top": [{"qid": "Q1", "confidence": 0.9}]}])
+WEAK = AudioCheckResult(
+    windows=[
+        {"startSec": 0.0, "top": [{"qid": "Q1", "confidence": 0.03}]},
+        {"startSec": 3.0, "top": [{"qid": "Q1", "confidence": 0.025}]},
+    ]
+)
+NONE = AudioCheckResult(windows=[{"startSec": 0.0, "top": []}])
+
+
+def _fake_model(monkeypatch: pytest.MonkeyPatch, results: dict[bytes, AudioCheckResult]) -> None:
+    """classify_clip answers by the file's bytes: b"id3" is the seeded voice.mp3, an
+    alternative's bytes are its page url (FakeCommons.download + the fake converter)."""
+
+    def fake_classify_clip(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        if mp3_path.suffix == ".wav":
+            return OK_PREFLIGHT
+        return results[mp3_path.read_bytes()]
+
+    def fake_convert(raw: bytes, out_path: Path) -> None:
+        out_path.write_bytes(raw)
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", fake_classify_clip)
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.convert_to_mp3", fake_convert)
+
+
+async def _verify_with(paths: WebPaths, commons: FakeCommons) -> list[str]:
+    client = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(
+        paths, VerifyOptions(), client=client, wiki=FakeWiki(), audio=commons, now=NOW
+    )
+    assert [o.status for o in outcomes] == ["ok"]
+    return outcomes[0].notes
+
+
+async def test_a_struck_recording_gives_way_to_the_next_allowed_one(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _fake_model(monkeypatch, {b"id3": NONE, b"alt1": NONE, b"alt2": KEEP})
+    commons = FakeCommons([_candidate("x"), _candidate("alt1"), _candidate("alt2")])
+    notes = await _verify_with(paths, commons)
+    assert commons.downloaded == ["alt1", "alt2"]  # the current one is never fetched again
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["sourceUrl"] == "alt2"
+    assert record["audio"]["author"] == "Anna"
+    assert record["review"]["audioStruckSources"] == ["x", "alt1"]
+    assert "audioStruck" not in record["review"]
+    assert record["flags"] == []
+    assert (paths.images_out / "Q1" / "voice.mp3").read_bytes() == b"alt2"
+    assert any("byttes" in n for n in notes)
+
+
+async def test_a_weak_recording_is_replaced_by_one_the_model_keeps(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _fake_model(monkeypatch, {b"id3": WEAK, b"alt1": KEEP})
+    await _verify_with(paths, FakeCommons([_candidate("alt1")]))
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["sourceUrl"] == "alt1"
+    assert record["flags"] == []
+
+
+async def test_a_weak_recording_with_nothing_better_is_a_flag_and_stays(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _fake_model(monkeypatch, {b"id3": WEAK, b"alt1": NONE})
+    await _verify_with(paths, FakeCommons([_candidate("alt1")]))
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["sourceUrl"] == "x"
+    assert [f["check"] for f in record["flags"]] == ["V4"]
+    assert "lyssna och besluta" in record["flags"][0]["message"]
+    assert (paths.images_out / "Q1" / "voice.mp3").read_bytes() == b"id3"
+
+
+async def test_with_no_recording_left_the_strike_remembers_every_one_tried(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _fake_model(monkeypatch, {b"id3": NONE, b"alt1": NONE, b"alt2": NONE})
+    await _verify_with(paths, FakeCommons([_candidate("alt1"), _candidate("alt2")]))
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert "audio" not in record
+    assert record["review"]["audioStruck"] is True
+    assert record["review"]["audioStruckSources"] == ["x", "alt1", "alt2"]
+    assert not (paths.images_out / "Q1" / "voice.mp3").exists()
+
+
+async def test_a_locked_voice_file_leaves_the_species_unverified_with_a_flag(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Re-review 2026-10-07: when the new recording cannot be put in place (Windows lock on
+    os.replace), the record that names it is saved again without verification and with a
+    V4 flag, the old file does not stay under the new credits, and no .new is left."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _fake_model(monkeypatch, {b"id3": NONE, b"alt1": KEEP})
+
+    def locked(src: object, dst: object) -> None:
+        raise PermissionError("filen används av en annan process")
+
+    # Only the swap of voice.mp3 is locked, not the record's own atomic save.
+    monkeypatch.setattr("birdy_fetcher.web.verify_step._swap", locked)
+    notes = await _verify_with(paths, FakeCommons([_candidate("alt1")]))
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["sourceUrl"] == "alt1"
+    assert "verification" not in record
+    assert [f["check"] for f in record["flags"]] == ["V4"]
+    assert "kunde inte läggas på plats" in record["flags"][0]["message"]
+    voice = paths.images_out / "Q1" / "voice.mp3"
+    assert not voice.exists()
+    assert not voice.with_name("voice.mp3.new").exists()
+    assert any("kunde inte läggas på plats" in n for n in notes)
+
+
+async def test_a_crash_between_save_and_swap_is_caught_by_the_next_sweep(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The process dies after the record with the new recording is saved and before the
+    file is swapped in: the next sweep (any step's end) removes the old file and the stray
+    .new, and the record loses its verification."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _fake_model(monkeypatch, {b"id3": NONE, b"alt1": KEEP})
+
+    class PowerCut(BaseException):
+        """The process dies: nothing after this line of the step runs (a BaseException
+        other than SystemExit, which asyncio would re-raise past the test)."""
+
+    def crash(images_out: Path, qid: str, mp3: Path) -> str | None:
+        (images_out / qid / "voice.mp3.new").write_bytes(b"alt1")
+        raise PowerCut
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step._place_voice", crash)
+    with pytest.raises(PowerCut):
+        await _verify_with(paths, FakeCommons([_candidate("alt1")]))
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["sourceUrl"] == "alt1" and "verification" in record
+    voice = paths.images_out / "Q1" / "voice.mp3"
+    assert voice.read_bytes() == b"id3"  # the old recording under the new credits
+
+    sweep = sweep_orphan_voices(paths.data_out, paths.images_out)
+    assert not voice.exists() and not voice.with_name("voice.mp3.new").exists()
+    assert sweep.errors and "Q1" in sweep.errors[0]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert "verification" not in record
+    assert [f["check"] for f in record["flags"]] == ["V4"]
+
+
+async def test_a_replacement_records_the_hash_of_its_file(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import hashlib
+
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _fake_model(monkeypatch, {b"id3": NONE, b"alt1": KEEP})
+    await _verify_with(paths, FakeCommons([_candidate("alt1")]))
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["mp3Sha256"] == hashlib.sha256(b"alt1").hexdigest()
+
+
+def _named_recording(paths: WebPaths, qid: str, raw: bytes, voice: bytes | None) -> None:
+    """The record names the recording `raw` (its Commons page "x"); voice.mp3 holds `voice`
+    (None: no file). The fake converter writes the raw bytes, so its mp3 hash is raw's."""
+    import hashlib
+
+    path = record_path(paths.data_out, qid)
+    record = load_record(path)
+    assert record is not None
+    digest = hashlib.sha256(raw).hexdigest()
+    record["audio"] = {"file": f"{qid}/voice.mp3", "sourceUrl": "x", "sha256": digest}
+    record["audio"]["mp3Sha256"] = digest
+    save_record(path, record)
+    file = paths.images_out / qid / "voice.mp3"
+    if voice is None:
+        file.unlink(missing_ok=True)
+    else:
+        file.write_bytes(voice)
+
+
+@pytest.mark.parametrize("voice", [None, b"id3"], ids=["missing", "not-its-file"])
+async def test_verify_fetches_the_named_recording_again_before_v4(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, voice: bytes | None
+) -> None:
+    """Re-review 2026-10-07: after a hash mismatch or a failed swap, voice.mp3 is gone or
+    wrong. `web verify` fetches the recording the record names from Commons, checks that
+    it is the same recording, puts it in place and only then runs V4 on it."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _named_recording(paths, "Q1", b"x", voice)
+    _fake_model(monkeypatch, {b"x": KEEP})
+    notes = await _verify_with(paths, FakeCommons([_candidate("x")]))
+    file = paths.images_out / "Q1" / "voice.mp3"
+    assert file.read_bytes() == b"x"
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["audio"]["sourceUrl"] == "x"
+    assert record["flags"] == []
+    assert "verification" in record
+    assert any("hämtades igen" in n for n in notes)
+
+
+async def test_a_recording_that_cannot_be_fetched_again_is_a_flag_not_a_v4_run(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The Commons file is now another recording (its bytes changed): nothing is placed,
+    the model never hears the wrong file, and the species gets a V4 flag and stays
+    unverified; the wrong file is removed by the sweep."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True)
+    _named_recording(paths, "Q1", b"the old upload", b"id3")
+    heard: list[bytes] = []
+
+    def fake_classify_clip(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        if mp3_path.suffix == ".wav":
+            return OK_PREFLIGHT
+        heard.append(mp3_path.read_bytes())
+        return KEEP
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", fake_classify_clip)
+    monkeypatch.setattr(
+        "birdy_fetcher.web.verify_step.convert_to_mp3",
+        lambda raw, out: out.write_bytes(raw),
+    )
+    await _verify_with(paths, FakeCommons([_candidate("x")]))
+    assert heard == []
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert "verification" not in record
+    assert [f["check"] for f in record["flags"]] == ["V4"]
+    assert "kunde inte hämtas igen" in record["flags"][0]["message"]
+    assert not (paths.images_out / "Q1" / "voice.mp3").exists()
+
+
+def test_the_recovery_flags_say_what_recovers() -> None:
+    from birdy_fetcher.web.record import MISMATCH_FLAG
+    from birdy_fetcher.web.verify_step import PLACE_FAILED_FLAG
+
+    for flag in (MISMATCH_FLAG, PLACE_FAILED_FLAG):
+        assert "web verify --force" in flag
+        assert "hämtar inspelningen igen" in flag

@@ -1,0 +1,813 @@
+{
+  "qid": "Q191096",
+  "status": "ok",
+  "publish": true,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "size",
+      "sv": "Svartmesen är Sveriges minsta mes, ungefär elva centimeter lång och väger åtta till tio gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Svartmesen är Sveriges minsta mes, med en längd på endast elva centimeter och en vikt på åtta till tio gram."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Svartmesen har svart huvud med en tydlig vit fläck i nacken, beigevit undersida och kort stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den har svart huvud med en tydlig vit fläck i nacken, beigevit undersida och kort stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Svartmesen har vita eller vitaktiga kinder och en svart haklapp.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Sie hat weiße oder weißliche Wangen und einen schwarzen Kinnlatz."
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Ryggen är blåaktigt svart och vingen har två vita vingband.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ryggen är blåaktigt svart och vingen har två vita band."
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Undersidan är vitaktig och övergår i beige till rostbrunt på kroppssidorna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The underparts are whitish, shading from buff to rufous on the flanks."
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Näbben är svart, benen blygrå och ögonen mörkbruna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The bill is black, the legs are lead-coloured, and the irides are dark brown."
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "sex_age",
+      "sv": "Hane och hona hos svartmesen ser likadana ut.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ryggen är blåaktigt svart och vingen har två vita band. Könen är lika."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "sex_age",
+      "sv": "Unga fåglar är mattare än vuxna, saknar glansigt svart huvud och har gulaktig ton på nackfläcken och kinderna.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "Juvenile birds have duller plumage than adults. They lack the glossy black head of adults and the white nape and cheeks are tinged yellow."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "voice",
+      "sv": "Locklätet är ett tuii eller sii.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Locklätet är ett tuii eller sii."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "voice",
+      "sv": "Sången liknar talgoxens men är snabbare och ljusare.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Sången liknar talgoxens men är snabbare."
+        },
+        {
+          "article": "en",
+          "quote": "It resembles the song of the great tit, but is much faster and higher in pitch."
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "voice",
+      "sv": "Sången är ett gällt upprepat if-he, if-he, if-he som hörs mest från januari till juni men även på hösten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "is a strident if-he, if-he, if-he, most frequently heard from January to June, but also in autumn"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "voice",
+      "sv": "Flockar som söker föda håller kontakt med oavbrutna korta dee- eller see-see-läten.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "flocks of coal tits maintain contact with incessant short dee or see-see calls"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "habitat",
+      "sv": "Svartmesen föredrar barrskog.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Svartmesen föredrar barrskog."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "habitat",
+      "sv": "I blandskog söker svartmesen sig till barrträden.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "In Mischwäldern suchen sie die Nadelbäume."
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "sweden",
+      "sv": "Svartmesen förekommer i hela Sverige utom längst i norr.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Svartmesen förekommer i hela Sverige förutom längst i norr."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "sweden",
+      "sv": "Den svenska stammen har minskat med 32–49 procent på 30 år men varit ungefär stabil de senaste tio åren.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Svartmesen har de senaste 30 åren minskat med mellan 32 och 49 %, men beståndet har varit mer eller mindre stabilt de senaste tio åren"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "breeding",
+      "sv": "Honan bygger ett bo av mossa fodrat med ull och hår i håligheter i marken, i berg eller i trädstammar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan bygger ett bo av mossa som fodras med ull och hår och placeras i håligheter i marken, i berg och i trädstammar."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "breeding",
+      "sv": "Honan lägger sju till elva vita ägg med rödaktiga prickar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Honan lägger sju till elva ägg som är vita med rödaktiga prickar."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "breeding",
+      "sv": "Honan ruvar äggen i 14–16 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Äggen ruvas av honan i 14–16 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "breeding",
+      "sv": "Ungarna matas av båda föräldrarna i 16–19 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ungarna matas sedan av båda föräldrarna i 16–19 dagar."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "breeding",
+      "sv": "I norra delen av utbredningsområdet häckar svartmesen vanligen en gång om året.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I den norra delen av utbredningsområdet brukar en häckning om året ske"
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "food",
+      "sv": "Svartmesen äter frön, insekter och spindlar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "där den äter frön, insekter och spindlar"
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "food",
+      "sv": "Svartmesen besöker trädgårdar för föda, särskilt solrosfrön.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "it will visit gardens to feed on a variety of foods, particularly sunflower seeds"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "behaviour",
+      "sv": "Svartmesen håller sig ofta högt uppe i träden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Svartmesen befinner sig ofta högt uppe i träd"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "behaviour",
+      "sv": "På vintern bildar svartmesar små flockar tillsammans med andra mesarter.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "In winter, coal tits form small flocks in winter with other tit species."
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "behaviour",
+      "sv": "Den sitter oftare än andra mesar på trädstammar och påminner då med sina små hopp om en trädkrypare.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "it more frequently perches on a trunk and, with its little hops, resembles a treecreeper (Certhia)"
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "behaviour",
+      "sv": "Svartmesen ansluter sig till gråsiskor och grönsiskor i al och björk.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "It also joins Carduelis redpolls and siskins in alders (Alnus) and birches (Betula)."
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i december till februari."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Svartmesen är Sveriges minsta mes och lever helst i barrskog.",
+          "factIds": [
+            "f01",
+            "f13"
+          ]
+        },
+        {
+          "text": "Den finns i hela Sverige utom längst i norr och besöker gärna trädgårdar för solrosfrön.",
+          "factIds": [
+            "f15",
+            "f24"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Svart huvud med tydlig vit nackfläck, vitaktiga kinder och svart haklapp",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Blåaktigt svart rygg och två vita vingband på vingen",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Vitaktig undersida som övergår i beige till rostbrunt på kroppssidorna, kort stjärt",
+          "factIds": [
+            "f05",
+            "f02"
+          ]
+        },
+        {
+          "text": "Hane och hona är lika, unga fåglar är mattare med gulaktig nackfläck och kinder",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Locklätet är ett tuii eller sii.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "Sången är ett gällt, upprepat if-he, if-he, if-he, snabbare och ljusare än talgoxens, och hörs mest från januari till juni men även på hösten.",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        },
+        {
+          "text": "Flockar som letar föda håller kontakt med korta dee- eller see-see-läten.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Svartmesen förekommer i hela Sverige utom längst i norr och rapporteras från alla 21 län.",
+          "factIds": [
+            "f15",
+            "d02"
+          ]
+        },
+        {
+          "text": "Den rapporteras mest i december till februari.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Den håller till i barrskog, och i blandskog söker den sig till barrträden.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        },
+        {
+          "text": "Stammen har minskat med 32 till 49 procent på 30 år men varit ungefär stabil de senaste tio åren.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Svartmesen äter frön, insekter och spindlar och besöker trädgårdar för föda, särskilt solrosfrön.",
+          "factIds": [
+            "f22",
+            "f24"
+          ]
+        },
+        {
+          "text": "Den håller sig ofta högt uppe i träden och sitter oftare än andra mesar på trädstammar, där de små hoppen påminner om en trädkrypare.",
+          "factIds": [
+            "f25",
+            "f27"
+          ]
+        },
+        {
+          "text": "På vintern bildar den små flockar med andra mesarter och ansluter sig till gråsiskor och grönsiskor i al och björk.",
+          "factIds": [
+            "f26",
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Svartmes: så känner du igen den på vit nackfläck och svart haklapp, hur sången och locklätet låter och när den syns under året.",
+      "facts": {
+        "size": null,
+        "swedenStatus": null
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Coal Tit is the smallest tit in Sweden and prefers conifer forest.",
+          "factIds": [
+            "f01",
+            "f13"
+          ]
+        },
+        {
+          "text": "It occurs throughout Sweden except the far north and often visits gardens for sunflower seeds.",
+          "factIds": [
+            "f15",
+            "f24"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Black head with a clear white nape patch, whitish cheeks and a black bib",
+          "factIds": [
+            "f02",
+            "f03"
+          ]
+        },
+        {
+          "text": "Bluish black back and two white wing bars",
+          "factIds": [
+            "f04"
+          ]
+        },
+        {
+          "text": "Whitish underparts turning beige to rusty brown on the flanks, short tail",
+          "factIds": [
+            "f05",
+            "f02"
+          ]
+        },
+        {
+          "text": "Male and female look alike, young birds are duller with a yellowish nape patch and cheeks",
+          "factIds": [
+            "f07",
+            "f08"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The call is a tuii or sii.",
+          "factIds": [
+            "f09"
+          ]
+        },
+        {
+          "text": "The song is a shrill, repeated if-he, if-he, if-he, faster and higher than the Great Tit's, heard mostly from January to June and in autumn as well.",
+          "factIds": [
+            "f10",
+            "f11"
+          ]
+        },
+        {
+          "text": "Foraging flocks keep in touch with constant short dee or see-see calls.",
+          "factIds": [
+            "f12"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Coal Tit occurs throughout Sweden except the far north and is reported from all 21 counties.",
+          "factIds": [
+            "f15",
+            "d02"
+          ]
+        },
+        {
+          "text": "It is reported most in December to February.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "It keeps to conifer forest, and in mixed woodland it seeks out the conifers.",
+          "factIds": [
+            "f13",
+            "f14"
+          ]
+        },
+        {
+          "text": "The Swedish population has fallen by 32 to 49 percent over 30 years but has been roughly stable for the last ten years.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "The Coal Tit eats seeds, insects and spiders and visits gardens for food, especially sunflower seeds.",
+          "factIds": [
+            "f22",
+            "f24"
+          ]
+        },
+        {
+          "text": "It often stays high in the trees and perches on tree trunks more often than other tits, where its small hops recall a treecreeper.",
+          "factIds": [
+            "f25",
+            "f27"
+          ]
+        },
+        {
+          "text": "In winter it forms small flocks with other tit species and joins redpolls and siskins in alder and birch.",
+          "factIds": [
+            "f26",
+            "f28"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Coal Tit: how to recognise it by the white nape patch and black bib, what its song and calls sound like and when it is seen.",
+      "facts": {
+        "size": null,
+        "swedenStatus": null
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:01:38.342955+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:08:57.902786+00:00",
+      "factsHash": "249f09f62929e251"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T18:18:38.435410+00:00",
+      "factsHash": "249f09f62929e251"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "svartmes",
+    "en": "coal-tit"
+  },
+  "names": {
+    "sv": "Svartmes",
+    "en": "Coal Tit",
+    "scientific": "Periparus ater"
+  },
+  "family": {
+    "latin": "Paridae",
+    "sv": "Mesar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q191096/hero.webp",
+      "width": 1600,
+      "height": 1139,
+      "author": "Luiz Lapa",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chapim-carvoeiro,_Coal_Tit_(50587266376).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q191096/extra.webp",
+      "width": 1200,
+      "height": 807,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Coal_tit_(Periparus_ater)_2019.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q191096/voice.mp3",
+    "durationSec": 12,
+    "trimmed": false,
+    "author": "Vladimir Yu. Arkhipov, Arkhivov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Periparus_ater.ogg",
+    "sha256": "0ea73b43d20ecf7165bac2103f0b2e9c540e40f22250d172cbd1b5cc24f0abed"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Svartmes",
+      "revision": "59705839"
+    },
+    "en": {
+      "title": "Coal tit",
+      "revision": "1368773832"
+    },
+    "de": {
+      "title": "Tannenmeise",
+      "revision": "270804252"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2487871,
+    "totalReports": 191372,
+    "months": [
+      100,
+      91,
+      54,
+      30,
+      15,
+      16,
+      16,
+      19,
+      35,
+      47,
+      74,
+      97
+    ],
+    "counties": {
+      "SE-K": 53,
+      "SE-W": 78,
+      "SE-X": 84,
+      "SE-I": 100,
+      "SE-N": 36,
+      "SE-Z": 78,
+      "SE-F": 68,
+      "SE-H": 38,
+      "SE-G": 81,
+      "SE-BD": 78,
+      "SE-T": 80,
+      "SE-E": 48,
+      "SE-M": 33,
+      "SE-D": 80,
+      "SE-AB": 72,
+      "SE-C": 60,
+      "SE-S": 90,
+      "SE-AC": 92,
+      "SE-Y": 88,
+      "SE-U": 78,
+      "SE-O": 80
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i december till februari.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in December to February.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        34018,
+        21488,
+        23488,
+        20510,
+        11784,
+        6549,
+        5315,
+        6349,
+        12219,
+        16207,
+        16026,
+        17308
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 37322,
+        "SE-AB": 23174,
+        "SE-D": 11675,
+        "SE-M": 10776,
+        "SE-C": 10724,
+        "SE-H": 9368,
+        "SE-F": 8371,
+        "SE-AC": 8334,
+        "SE-T": 7051,
+        "SE-E": 6150,
+        "SE-W": 6138,
+        "SE-BD": 5968,
+        "SE-S": 5725,
+        "SE-I": 5619,
+        "SE-G": 5436,
+        "SE-U": 5325,
+        "SE-X": 5098,
+        "SE-N": 5003,
+        "SE-Y": 4012,
+        "SE-Z": 3430,
+        "SE-K": 1449
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-07"
+}

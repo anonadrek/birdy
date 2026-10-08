@@ -1,0 +1,139 @@
+---
+import Icon from '../ui/Icon.astro';
+import { getCopy, type Locale } from '../../lib/i18n';
+import { activeGroups, countLabel, getAllSpecies, groupHref, groupSizes, hubHref } from '../../lib/species';
+
+interface Props {
+  locale: Locale;
+  /** 'all' on the hub, a group key on group and species pages, '' when no chip is current. */
+  active: string;
+  /** The hub has its own search field, so it hides this one. */
+  search?: boolean;
+}
+const { locale, active, search = true } = Astro.props;
+const t = getCopy(locale);
+const all = await getAllSpecies();
+const sizes = groupSizes(all);
+const chips = [
+  { key: 'all', href: hubHref(locale), label: t.species.allChip, n: all.length },
+  ...activeGroups(all).map((g) => ({ key: g.key, href: groupHref(g, locale), label: g.name[locale], n: sizes.get(g.key) ?? 0 })),
+];
+// Mirrors Nav.astro's `here`: a chip is the literal current page (aria-current="page") only when its
+// href is the page we're actually on (the hub chip on the hub, a group chip on its own group page).
+// Elsewhere "active" marks the current section without being the page itself (controller review 2026-10-07).
+const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+---
+
+<div class="catbar" data-catbar>
+  <div class="catbar-inner">
+    <nav class="chips" aria-label={t.species.groupsLabel} data-chips>
+      {chips.map((c) => (
+        <a
+          class:list={['chip', { 'is-active': c.key === active }]}
+          href={c.href}
+          aria-current={c.key === active ? (c.href === here ? 'page' : 'true') : undefined}
+          aria-label={`${c.label}, ${countLabel(c.n, t)}`}
+        >
+          {c.label} <span class="n">{c.n}</span>
+        </a>
+      ))}
+    </nav>
+    {search && (
+      <form class="search" action={hubHref(locale)} method="get" role="search">
+        <label class="sr-only" for="cat-q">{t.species.searchLabel}</label>
+        <input id="cat-q" name="q" type="search" placeholder={t.species.searchPlaceholder} autocomplete="off" />
+        <button type="submit" class="search-btn" aria-label={t.species.searchSubmit}><Icon name="search" size={18} /></button>
+      </form>
+    )}
+  </div>
+</div>
+
+<script>
+  // Bring the active chip into view on narrow screens, without scrolling the page itself, and show an
+  // edge fade + scrollbar hint while the chip row overflows (controller review 2026-10-07).
+  const chips = document.querySelector<HTMLElement>('[data-chips]');
+  const current = chips?.querySelector<HTMLElement>('.chip.is-active');
+  /** Width of the right-edge fade (the mask in the styles below) and the clear margin at the left edge. */
+  const FADE = 32;
+  const EDGE = 6;
+
+  const updateFade = () => {
+    if (!chips) return;
+    const overflowing = chips.scrollWidth > chips.clientWidth + 1;
+    const atEnd = chips.scrollLeft + chips.clientWidth >= chips.scrollWidth - 1;
+    chips.classList.toggle('has-overflow', overflowing && !atEnd);
+  };
+
+  // The active chip must end up fully visible and clear of the fade, at either end of the row (controller
+  // review 2026-10-07: the last chip was left half under the fade). Centred when it isn't, clamped to the
+  // row's scroll range, so the first chip lands at the start and the last at the end, where there is no
+  // fade. Instant, never smooth, so reduced motion needs nothing extra.
+  const revealActive = () => {
+    if (!chips || !current) return;
+    const c = chips.getBoundingClientRect();
+    const a = current.getBoundingClientRect();
+    if (a.left >= c.left + EDGE && a.right <= c.right - FADE) return;
+    const max = chips.scrollWidth - chips.clientWidth;
+    const target = chips.scrollLeft + a.left - c.left - (c.width - a.width) / 2;
+    chips.scrollLeft = Math.max(0, Math.min(max, target));
+    updateFade();
+  };
+  revealActive();
+  updateFade();
+  // The web fonts change the chips' widths after this first pass, which left the last chip under the fade.
+  // Run it again once they have loaded, unless the visitor has already scrolled the row.
+  let touched = false;
+  for (const type of ['pointerdown', 'wheel', 'keydown']) chips?.addEventListener(type, () => { touched = true; }, { once: true, passive: true });
+  document.fonts?.ready.then(() => { if (!touched) revealActive(); updateFade(); });
+  chips?.addEventListener('scroll', updateFade);
+  window.addEventListener('resize', updateFade);
+
+  // Scroll a focused chip into view inside the row itself, not the page (controller review 2026-10-07).
+  chips?.addEventListener('focusin', (e) => {
+    const el = (e.target as HTMLElement).closest('.chip');
+    if (!el || !chips) return;
+    const c = chips.getBoundingClientRect();
+    const a = el.getBoundingClientRect();
+    if (a.right > c.right - 40) chips.scrollLeft += a.right - (c.right - 40);
+    else if (a.left < c.left + 6) chips.scrollLeft -= c.left + 6 - a.left;
+  });
+</script>
+
+<style>
+  .catbar { position: sticky; top: 76px; z-index: 90; background: var(--card); border-bottom: 1px solid var(--line); }
+  .catbar-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 4px 44px; }
+  .chips { display: flex; flex-wrap: nowrap; gap: 8px; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; padding: 6px; margin-inline: -6px; scroll-padding-inline: 6px; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chips.has-overflow { mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
+  @media (hover: hover) and (pointer: fine) {
+    .chips { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+  }
+  .chip { position: relative; flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); font-size: 13px; font-weight: 600; color: var(--ink); white-space: nowrap; transition: border-color .2s; }
+  .chip::after { content: ''; position: absolute; inset: -7px 0; }
+  .chip:hover { border-color: var(--rust); }
+  .chip .n { font-weight: 400; color: var(--muted); }
+  .chip.is-active { background: var(--rust); border-color: var(--rust); color: var(--cream); }
+  .chip.is-active .n { color: var(--cream); }
+  .search { flex: none; display: flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); padding: 0 4px 0 14px; }
+  .search:focus-within { outline: 3px solid var(--rust); outline-offset: 2px; }
+  .search input { border: 0; background: none; font: inherit; font-size: 13px; width: 150px; padding: 7px 0; color: var(--ink); outline: none; }
+  .search input::placeholder { color: var(--muted); opacity: 1; }
+  .search input::-webkit-search-cancel-button { appearance: none; }
+  .search-btn { border: 0; background: none; color: var(--muted); width: 32px; height: 32px; display: grid; place-items: center; cursor: pointer; }
+  @media (max-width: 1023px) {
+    .catbar { top: 64px; }
+    .catbar-inner { padding: 2px 20px; gap: 10px; }
+  }
+  @media (max-width: 760px) {
+    .search { padding: 0; border-color: transparent; background: none; }
+    /* 16px, not the 13px above: below that iOS Safari zooms the page in on focus (controller review 2026-10-07). */
+    .search input { width: 0; padding: 0; font-size: 16px; }
+    .search:has(input:focus) { padding: 0 4px 0 14px; border-color: var(--line); background: var(--paper); }
+    .search:has(input:focus) input { width: 120px; padding: 7px 0; }
+    .search-btn { width: 44px; height: 44px; }
+  }
+  :global(html:has(.catbar)) { scroll-padding-top: 9.25rem; }
+  @media (max-width: 1023px) {
+    :global(html:has(.catbar)) { scroll-padding-top: 8rem; }
+  }
+</style>

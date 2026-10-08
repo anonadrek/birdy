@@ -1,0 +1,209 @@
+{
+  "qid": "Q25756",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "kattuggla",
+    "en": "tawny-owl"
+  },
+  "names": {
+    "sv": "Kattuggla",
+    "en": "Tawny Owl",
+    "scientific": "Strix aluco"
+  },
+  "family": {
+    "latin": "Strigidae",
+    "sv": "Ugglor"
+  },
+  "group": "owls",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25756/hero.webp",
+      "width": 1600,
+      "height": 1600,
+      "author": "Aneta p",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Puszczyk_zwyczajny.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25756/extra.webp",
+      "width": 1200,
+      "height": 1600,
+      "author": "WaldFeewald",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dösender_Waldkauz.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25756/voice.mp3",
+    "durationSec": 16,
+    "trimmed": false,
+    "author": "Jugrü",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Waldkauz.ogg",
+    "sha256": "5b5847d48a8e73289f7b2623ddf7ecd890a5b7d7fda5d0f826eb77f6a5b248e2"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Kattuggla",
+      "revision": "59567878"
+    },
+    "en": {
+      "title": "Tawny owl",
+      "revision": "1376631633"
+    },
+    "de": {
+      "title": "Waldkauz",
+      "revision": "268742156"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 9282206,
+    "totalReports": 126097,
+    "months": [
+      60,
+      100,
+      77,
+      31,
+      32,
+      46,
+      20,
+      25,
+      29,
+      26,
+      41,
+      55
+    ],
+    "counties": {
+      "SE-K": 68,
+      "SE-W": 48,
+      "SE-X": 34,
+      "SE-I": 14,
+      "SE-N": 33,
+      "SE-Z": 4,
+      "SE-F": 60,
+      "SE-H": 52,
+      "SE-G": 76,
+      "SE-BD": 1,
+      "SE-T": 83,
+      "SE-E": 47,
+      "SE-M": 38,
+      "SE-D": 47,
+      "SE-AB": 68,
+      "SE-C": 71,
+      "SE-S": 72,
+      "SE-AC": 4,
+      "SE-Y": 43,
+      "SE-U": 100,
+      "SE-O": 58
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i februari.",
+        "Andelen av alla fågelrapporter är högst i Västmanland, Örebro och Kronoberg."
+      ],
+      "en": [
+        "Reported most in February.",
+        "Its share of all bird reports is highest in Västmanland, Örebro and Kronoberg."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        12957,
+        15141,
+        21519,
+        13553,
+        16109,
+        12457,
+        4231,
+        5498,
+        6601,
+        5717,
+        5642,
+        6277
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 22849,
+        "SE-AB": 18615,
+        "SE-H": 10923,
+        "SE-C": 10769,
+        "SE-M": 10569,
+        "SE-F": 6341,
+        "SE-T": 6256,
+        "SE-U": 5851,
+        "SE-D": 5846,
+        "SE-E": 5193,
+        "SE-G": 4345,
+        "SE-N": 4004,
+        "SE-S": 3893,
+        "SE-W": 3225,
+        "SE-X": 1783,
+        "SE-Y": 1667,
+        "SE-K": 1574,
+        "SE-I": 671,
+        "SE-AC": 295,
+        "SE-Z": 132,
+        "SE-BD": 61
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

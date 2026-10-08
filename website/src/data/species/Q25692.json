@@ -1,0 +1,211 @@
+{
+  "qid": "Q25692",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "enkelbeckasin",
+    "en": "common-snipe"
+  },
+  "names": {
+    "sv": "Enkelbeckasin",
+    "en": "Common Snipe",
+    "scientific": "Gallinago gallinago"
+  },
+  "family": {
+    "latin": "Scolopacidae",
+    "sv": "Snäppor"
+  },
+  "group": "waders",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25692/hero.webp",
+      "width": 1600,
+      "height": 1066,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_snipe_(Gallinago_gallinago)_in_courtship_flight.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25692/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_snipe_(Gallinago_gallinago)_in_courtship_flight,_Seltjarnarnes,_Iceland.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25692/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Joost van Bruggen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gallinago_gallinago_-_Common_Snipe_XC433287.mp3",
+    "sha256": "ebf920b7467b1428937303d06c203e0bb80f515bd131112f41a9c27a366735bd"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Enkelbeckasin",
+      "revision": "59194823"
+    },
+    "en": {
+      "title": "Common snipe",
+      "revision": "1357301114"
+    },
+    "de": {
+      "title": "Bekassine",
+      "revision": "266468818"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2481819,
+    "totalReports": 245727,
+    "months": [
+      8,
+      5,
+      39,
+      100,
+      69,
+      61,
+      59,
+      94,
+      85,
+      63,
+      30,
+      12
+    ],
+    "counties": {
+      "SE-K": 35,
+      "SE-W": 73,
+      "SE-X": 53,
+      "SE-I": 50,
+      "SE-N": 69,
+      "SE-Z": 86,
+      "SE-F": 69,
+      "SE-H": 63,
+      "SE-G": 75,
+      "SE-BD": 69,
+      "SE-T": 80,
+      "SE-E": 76,
+      "SE-M": 54,
+      "SE-D": 62,
+      "SE-AB": 70,
+      "SE-C": 83,
+      "SE-S": 100,
+      "SE-AC": 66,
+      "SE-Y": 42,
+      "SE-U": 79,
+      "SE-O": 68
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april, augusti och september.",
+        "Rapporteras sällan i januari och februari.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in April, August and September.",
+        "Rarely reported in January and February.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        2394,
+        1103,
+        15158,
+        59250,
+        47351,
+        22407,
+        16845,
+        28078,
+        26262,
+        19111,
+        5689,
+        1847
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 37749,
+        "SE-AB": 26981,
+        "SE-M": 21073,
+        "SE-H": 18346,
+        "SE-C": 17585,
+        "SE-E": 11535,
+        "SE-N": 11507,
+        "SE-D": 10756,
+        "SE-F": 10104,
+        "SE-T": 8382,
+        "SE-S": 7555,
+        "SE-AC": 7092,
+        "SE-W": 6758,
+        "SE-U": 6463,
+        "SE-BD": 6302,
+        "SE-G": 6021,
+        "SE-Z": 4500,
+        "SE-X": 3834,
+        "SE-I": 3326,
+        "SE-Y": 2245,
+        "SE-K": 1130
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "qid": "Q184825",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "rodvingetrast",
+    "en": "redwing"
+  },
+  "names": {
+    "sv": "Rödvingetrast",
+    "en": "Redwing",
+    "scientific": "Turdus iliacus"
+  },
+  "family": {
+    "latin": "Turdidae",
+    "sv": "Trastar"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "NT",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q184825/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Redwing_(Turdus_iliacus)_2021.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q184825/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Redwing_(Turdus_iliacus)_2022.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q184825/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Vladimir Yu. Arkhipov, Arkhivov",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turdus_iliacus.ogg",
+    "sha256": "d83552c7f117d51b232bdd7d6b092bde03caadb99cef882c8aed0d0d6eb5d24e"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Rödvingetrast",
+      "revision": "59707541"
+    },
+    "en": {
+      "title": "Redwing",
+      "revision": "1318090248"
+    },
+    "de": {
+      "title": "Rotdrossel",
+      "revision": "267739015"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2490781,
+    "totalReports": 202045,
+    "months": [
+      32,
+      10,
+      31,
+      94,
+      39,
+      59,
+      21,
+      9,
+      26,
+      100,
+      69,
+      66
+    ],
+    "counties": {
+      "SE-K": 23,
+      "SE-W": 51,
+      "SE-X": 56,
+      "SE-I": 20,
+      "SE-N": 15,
+      "SE-Z": 94,
+      "SE-F": 39,
+      "SE-H": 22,
+      "SE-G": 35,
+      "SE-BD": 100,
+      "SE-T": 33,
+      "SE-E": 21,
+      "SE-M": 26,
+      "SE-D": 20,
+      "SE-AB": 32,
+      "SE-C": 29,
+      "SE-S": 44,
+      "SE-AC": 84,
+      "SE-Y": 74,
+      "SE-U": 25,
+      "SE-O": 33
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i april och oktober.",
+        "Rapporteras sällan i februari och augusti.",
+        "Andelen av alla fågelrapporter är högst i Norrbotten, Jämtland och Västerbotten."
+      ],
+      "en": [
+        "Reported most in April and October.",
+        "Rarely reported in February and August.",
+        "Its share of all bird reports is highest in Norrbotten, Jämtland and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        9741,
+        2128,
+        12281,
+        56611,
+        27098,
+        22070,
+        6138,
+        2606,
+        8295,
+        30662,
+        13347,
+        10527
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 30276,
+        "SE-AB": 20750,
+        "SE-M": 16898,
+        "SE-BD": 15237,
+        "SE-AC": 15198,
+        "SE-H": 10592,
+        "SE-C": 10142,
+        "SE-F": 9580,
+        "SE-Z": 8325,
+        "SE-W": 7984,
+        "SE-X": 6751,
+        "SE-Y": 6677,
+        "SE-D": 5883,
+        "SE-T": 5793,
+        "SE-S": 5527,
+        "SE-E": 5473,
+        "SE-G": 4752,
+        "SE-N": 4131,
+        "SE-U": 3492,
+        "SE-I": 2208,
+        "SE-K": 1233
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

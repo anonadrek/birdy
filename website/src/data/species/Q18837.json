@@ -1,0 +1,211 @@
+{
+  "qid": "Q18837",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "gronbena",
+    "en": "wood-sandpiper"
+  },
+  "names": {
+    "sv": "Grönbena",
+    "en": "Wood Sandpiper",
+    "scientific": "Tringa glareola"
+  },
+  "family": {
+    "latin": "Scolopacidae",
+    "sv": "Snäppor"
+  },
+  "group": "waders",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q18837/hero.webp",
+      "width": 1600,
+      "height": 2400,
+      "author": "Rison Thumboor",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wood_sandpiper_(Tringa_glareola)_പുള്ളിക്കാടക്കൊക്ക്._(32089301224).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q18837/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Afsarnayakkan",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wood_sandpiper_(Tringa_glareola)_പുള്ളിക്കാടക്കൊക്ക്_22.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q18837/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Sudipto Roy",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tringa_glareola_-_Wood_Sandpiper_XC128179.ogg",
+    "sha256": "ef0d100568c8d1b8c25518752a53bb717f8d29fd763d448154ade075c40767e1"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Grönbena",
+      "revision": "59562781"
+    },
+    "en": {
+      "title": "Wood sandpiper",
+      "revision": "1376061434"
+    },
+    "de": {
+      "title": "Bruchwasserläufer",
+      "revision": "236653075"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2481713,
+    "totalReports": 198526,
+    "months": [
+      1,
+      1,
+      1,
+      15,
+      63,
+      40,
+      100,
+      86,
+      11,
+      1,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 32,
+      "SE-W": 65,
+      "SE-X": 34,
+      "SE-I": 43,
+      "SE-N": 56,
+      "SE-Z": 89,
+      "SE-F": 44,
+      "SE-H": 48,
+      "SE-G": 35,
+      "SE-BD": 100,
+      "SE-T": 63,
+      "SE-E": 55,
+      "SE-M": 42,
+      "SE-D": 41,
+      "SE-AB": 42,
+      "SE-C": 56,
+      "SE-S": 66,
+      "SE-AC": 73,
+      "SE-Y": 43,
+      "SE-U": 72,
+      "SE-O": 35
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i juli och augusti.",
+        "Rapporteras sällan i oktober till mars.",
+        "Andelen av alla fågelrapporter är högst i Norrbotten, Jämtland och Västerbotten."
+      ],
+      "en": [
+        "Reported most in July and August.",
+        "Rarely reported in October to March.",
+        "Its share of all bird reports is highest in Norrbotten, Jämtland and Västerbotten."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        5,
+        4,
+        5,
+        13774,
+        68963,
+        23397,
+        45367,
+        40746,
+        5397,
+        307,
+        73,
+        75
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 20774,
+        "SE-M": 17543,
+        "SE-AB": 17495,
+        "SE-H": 15205,
+        "SE-C": 12746,
+        "SE-N": 10125,
+        "SE-BD": 9757,
+        "SE-E": 9102,
+        "SE-AC": 8499,
+        "SE-D": 7630,
+        "SE-T": 7171,
+        "SE-F": 7009,
+        "SE-W": 6499,
+        "SE-U": 6278,
+        "SE-S": 5333,
+        "SE-Z": 5028,
+        "SE-I": 3093,
+        "SE-G": 2968,
+        "SE-X": 2676,
+        "SE-Y": 2486,
+        "SE-K": 1102
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

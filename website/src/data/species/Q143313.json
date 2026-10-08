@@ -1,0 +1,211 @@
+{
+  "qid": "Q143313",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 3
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tradpiplarka",
+    "en": "tree-pipit"
+  },
+  "names": {
+    "sv": "Trädpiplärka",
+    "en": "Tree Pipit",
+    "scientific": "Anthus trivialis"
+  },
+  "family": {
+    "latin": "Motacillidae",
+    "sv": "Ärlor"
+  },
+  "group": "songbirds",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": false,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q143313/hero.webp",
+      "width": 1600,
+      "height": 1200,
+      "author": "xulescu_g",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anthus_trivialis_(40810566815).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q143313/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Frank Vassen",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Baumpieper_(Anthus_trivialis),_Holzwarchetal_bei_Mürringen,_Ostbelgien_(3938435013).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q143313/voice.mp3",
+    "durationSec": 20,
+    "trimmed": true,
+    "author": "Benoît Van Hecke",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anthus_trivialis_-_Tree_Pipit_XC543234.mp3",
+    "sha256": "2949d7bb1fb775ea4ab2baf6fd4c5a6909e64a26411caaea125e548180ec92a2"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Trädpiplärka",
+      "revision": "59699072"
+    },
+    "en": {
+      "title": "Tree pipit",
+      "revision": "1365997034"
+    },
+    "de": {
+      "title": "Baumpieper",
+      "revision": "263242793"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2490246,
+    "totalReports": 159661,
+    "months": [
+      0,
+      1,
+      1,
+      41,
+      100,
+      85,
+      33,
+      77,
+      69,
+      6,
+      1,
+      1
+    ],
+    "counties": {
+      "SE-K": 63,
+      "SE-W": 73,
+      "SE-X": 69,
+      "SE-I": 67,
+      "SE-N": 51,
+      "SE-Z": 86,
+      "SE-F": 81,
+      "SE-H": 72,
+      "SE-G": 75,
+      "SE-BD": 100,
+      "SE-T": 77,
+      "SE-E": 52,
+      "SE-M": 59,
+      "SE-D": 74,
+      "SE-AB": 58,
+      "SE-C": 51,
+      "SE-S": 80,
+      "SE-AC": 92,
+      "SE-Y": 56,
+      "SE-U": 58,
+      "SE-O": 65
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i maj och juni.",
+        "Rapporteras sällan i oktober till mars.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in May and June.",
+        "Rarely reported in October to March.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        0,
+        1,
+        14,
+        21526,
+        60780,
+        27749,
+        8365,
+        20335,
+        18880,
+        1604,
+        11,
+        1
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 24895,
+        "SE-M": 15878,
+        "SE-AB": 15282,
+        "SE-H": 14482,
+        "SE-D": 8785,
+        "SE-F": 8226,
+        "SE-C": 7392,
+        "SE-AC": 6858,
+        "SE-BD": 6265,
+        "SE-N": 5926,
+        "SE-T": 5581,
+        "SE-E": 5506,
+        "SE-W": 4712,
+        "SE-S": 4189,
+        "SE-G": 4124,
+        "SE-X": 3458,
+        "SE-U": 3285,
+        "SE-Z": 3122,
+        "SE-I": 3076,
+        "SE-Y": 2092,
+        "SE-K": 1404
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

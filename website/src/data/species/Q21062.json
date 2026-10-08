@@ -1,0 +1,195 @@
+{
+  "qid": "Q21062",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "sillgrissla",
+    "en": "common-murre"
+  },
+  "names": {
+    "sv": "Sillgrissla",
+    "en": "Common Murre",
+    "scientific": "Uria aalge"
+  },
+  "family": {
+    "latin": "Alcidae",
+    "sv": "Alkor"
+  },
+  "group": "auks",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q21062/hero.webp",
+      "width": 1600,
+      "height": 1064,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_guillemot_(Uria_aalge).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q21062/extra.webp",
+      "width": 1200,
+      "height": 798,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_guillemot_(Uria_aalge),_Heligoland.jpg"
+    }
+  ],
+  "wikipedia": {
+    "sv": {
+      "title": "Sillgrissla",
+      "revision": "59461284"
+    },
+    "en": {
+      "title": "Common murre",
+      "revision": "1362495741"
+    },
+    "de": {
+      "title": "Trottellumme",
+      "revision": "266320101"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2481342,
+    "totalReports": 42562,
+    "months": [
+      32,
+      46,
+      14,
+      15,
+      29,
+      24,
+      28,
+      11,
+      30,
+      100,
+      97,
+      43
+    ],
+    "counties": {
+      "SE-K": 34,
+      "SE-W": 1,
+      "SE-X": 3,
+      "SE-I": 82,
+      "SE-N": 100,
+      "SE-Z": 0,
+      "SE-F": 0,
+      "SE-H": 56,
+      "SE-G": 1,
+      "SE-BD": 1,
+      "SE-T": 0,
+      "SE-E": 4,
+      "SE-M": 52,
+      "SE-D": 2,
+      "SE-AB": 11,
+      "SE-C": 1,
+      "SE-S": 1,
+      "SE-AC": 1,
+      "SE-Y": 2,
+      "SE-U": 0,
+      "SE-O": 38
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i oktober och november.",
+        "Andelen av alla fågelrapporter är högst i Halland, Gotland och Kalmar."
+      ],
+      "en": [
+        "Reported most in October and November.",
+        "Its share of all bird reports is highest in Halland, Gotland and Kalmar."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        2905,
+        2954,
+        1631,
+        2720,
+        6127,
+        2742,
+        2421,
+        991,
+        2884,
+        9318,
+        5734,
+        2087
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 8029,
+        "SE-M": 7621,
+        "SE-N": 6374,
+        "SE-H": 6236,
+        "SE-I": 2077,
+        "SE-AB": 1670,
+        "SE-K": 424,
+        "SE-E": 216,
+        "SE-D": 149,
+        "SE-C": 91,
+        "SE-X": 84,
+        "SE-Y": 49,
+        "SE-AC": 45,
+        "SE-G": 23,
+        "SE-BD": 21,
+        "SE-S": 16,
+        "SE-W": 8
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "qid": "Q212055",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "tobisgrissla",
+    "en": "black-guillemot"
+  },
+  "names": {
+    "sv": "Tobisgrissla",
+    "en": "Black Guillemot",
+    "scientific": "Cepphus grylle"
+  },
+  "family": {
+    "latin": "Alcidae",
+    "sv": "Alkor"
+  },
+  "group": "auks",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q212055/hero.webp",
+      "width": 1600,
+      "height": 1152,
+      "author": "Jacob Spinks",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cepphus_grylle,_Oban_Harbour_1.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q212055/extra.webp",
+      "width": 1200,
+      "height": 866,
+      "author": "gailhampshire",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Black_Guillemots_Cepphus_grylle_(24146121487).jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q212055/voice.mp3",
+    "durationSec": 8,
+    "trimmed": false,
+    "author": "Gunther Tschuch",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Papa_Westray_Cepphus_grylle.wav",
+    "sha256": "7e81cf45849461258f30295a0c2740ce5a9b20521eb192359f917d922de67a41"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Tobisgrissla",
+      "revision": "59702618"
+    },
+    "en": {
+      "title": "Black guillemot",
+      "revision": "1357252582"
+    },
+    "de": {
+      "title": "Gryllteiste",
+      "revision": "261286750"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2481312,
+    "totalReports": 47959,
+    "months": [
+      61,
+      76,
+      67,
+      62,
+      67,
+      64,
+      98,
+      62,
+      61,
+      96,
+      100,
+      60
+    ],
+    "counties": {
+      "SE-K": 39,
+      "SE-W": 0,
+      "SE-X": 26,
+      "SE-I": 67,
+      "SE-N": 100,
+      "SE-Z": 0,
+      "SE-F": 0,
+      "SE-H": 57,
+      "SE-G": 0,
+      "SE-BD": 13,
+      "SE-T": 0,
+      "SE-E": 7,
+      "SE-M": 32,
+      "SE-D": 10,
+      "SE-AB": 42,
+      "SE-C": 13,
+      "SE-S": 1,
+      "SE-AC": 29,
+      "SE-Y": 52,
+      "SE-U": 0,
+      "SE-O": 29
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras året runt.",
+        "Andelen av alla fågelrapporter är högst i Halland, Gotland och Kalmar."
+      ],
+      "en": [
+        "Reported all year round.",
+        "Its share of all bird reports is highest in Halland, Gotland and Kalmar."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        3010,
+        2610,
+        4246,
+        6055,
+        7615,
+        3930,
+        4630,
+        3082,
+        3108,
+        4810,
+        3161,
+        1556
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-H": 5699,
+        "SE-N": 5690,
+        "SE-O": 5513,
+        "SE-AB": 5438,
+        "SE-M": 4226,
+        "SE-I": 1515,
+        "SE-AC": 1063,
+        "SE-Y": 949,
+        "SE-C": 937,
+        "SE-X": 631,
+        "SE-D": 566,
+        "SE-K": 428,
+        "SE-BD": 403,
+        "SE-E": 372,
+        "SE-S": 3
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}

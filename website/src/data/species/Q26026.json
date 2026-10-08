@@ -1,0 +1,912 @@
+{
+  "qid": "Q26026",
+  "status": "ok",
+  "publish": true,
+  "review": {
+    "wave": 1
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "topic": "appearance",
+      "sv": "Fjäderdräkten är mest grå, ljusare över ryggen, med grönblått skimmer främst på huvud och nacke.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Fjäderdräkten är mest grå (ljusare över ryggen) med grönblåskimrande inslag, främst på huvud och nacke."
+        }
+      ]
+    },
+    {
+      "id": "f02",
+      "topic": "appearance",
+      "sv": "Ringduvan har vita fläckar på halsens sidor men ingen egentlig ring runt halsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vidare har den vita fläckar på halsens sidor (ingen egentlig \"ring\" alltså)"
+        }
+      ]
+    },
+    {
+      "id": "f03",
+      "topic": "appearance",
+      "sv": "Vita tvärband på vingens ovansida syns tydligt när fågeln flyger.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "vita tvärband på vingöversidan som väl syns i flykten"
+        }
+      ]
+    },
+    {
+      "id": "f04",
+      "topic": "appearance",
+      "sv": "Bröstet är rosafärgat och övergår i ljusgrått på undersidan.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "bröstet är rosafärgat övergående i ljusgrått på undersidan"
+        }
+      ]
+    },
+    {
+      "id": "f05",
+      "topic": "appearance",
+      "sv": "Stjärt och vingar har tydliga svarta markeringar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Stjärt och vingar har tydliga svarta markeringar"
+        }
+      ]
+    },
+    {
+      "id": "f06",
+      "topic": "appearance",
+      "sv": "Den vuxna fågelns näbb är gul med rödaktig vaxhud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En adult fågels näbb är gul med rödaktig vaxhud"
+        }
+      ]
+    },
+    {
+      "id": "f07",
+      "topic": "appearance",
+      "sv": "Benen är korta, relativt kraftiga och brunaktigt skära.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Benen är korta, relativt kraftiga och brunaktigt skära."
+        }
+      ]
+    },
+    {
+      "id": "f08",
+      "topic": "size",
+      "sv": "Ringduvan är Europas största duva med en kroppslängd på upp till 45 centimeter.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ringduvan är den största av de europeiska duvarterna med en kroppslängd uppemot 45 centimeter."
+        }
+      ]
+    },
+    {
+      "id": "f09",
+      "topic": "size",
+      "sv": "Vingspannet är cirka 65–80 cm och vikten ungefär 400–550 gram.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vingspannet varierar mellan cirka 65 och 80 cm och fågelns vikt uppskattas till mellan 400 och 550 gram."
+        }
+      ]
+    },
+    {
+      "id": "f10",
+      "topic": "sex_age",
+      "sv": "Könen är lika i storlek och utseende.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Könen är lika till storlek och utseende"
+        }
+      ]
+    },
+    {
+      "id": "f11",
+      "topic": "sex_age",
+      "sv": "Unga fåglar har mer rosa i dräkten och saknar vita halsfläckar, som gradvis kommer från ungefär sjätte levnadsmånaden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "unga individer har större rosa inslag i dräkten och saknar vita halsfläckar vilka vanligen uppträder gradvis från och med sjätte levnadsmånaden"
+        }
+      ]
+    },
+    {
+      "id": "f12",
+      "topic": "sex_age",
+      "sv": "Hos ungfågeln är näbb och vaxhud gråaktiga.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "medan näbb och vaxhud hos juvenilen är gråaktiga"
+        }
+      ]
+    },
+    {
+      "id": "f13",
+      "topic": "sex_age",
+      "sv": "Honor har mindre rödton på bröstet och något mindre vita halsfläckar än hanar.",
+      "sources": [
+        {
+          "article": "de",
+          "quote": "Weibchen zeigen an der Brust eine weniger starke Rotfärbung, und die weißen Flecken an den Halsseiten sind etwas kleiner."
+        }
+      ]
+    },
+    {
+      "id": "f14",
+      "topic": "voice",
+      "sv": "Sången är ett ganska dovt femstavigt hoande med betoning på första stavelsen.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ringduvans sång utgörs av ett ganska dovt femstavigt hoande med betoning på första stavelsen"
+        }
+      ]
+    },
+    {
+      "id": "f15",
+      "topic": "voice",
+      "sv": "Strofen upprepas cirka tre till fem gånger utan paus och avslutas med ett ko.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Denna strof upprepas sedan cirka tre till fem gånger utan paus. Den sista strofen avslutas med ett ko."
+        }
+      ]
+    },
+    {
+      "id": "f16",
+      "topic": "voice",
+      "sv": "Vid uppflog hörs ett intensivt smattrande ljud från vingarna som fungerar som varning.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ett annat läte är det intensiva smattrande ljud som hörs vid uppflog"
+        }
+      ]
+    },
+    {
+      "id": "f17",
+      "topic": "behaviour",
+      "sv": "Flykten är snabb med regelbundna klippande vingslag.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flykten är snabb och sker med regelbundna klippande vingslag."
+        }
+      ]
+    },
+    {
+      "id": "f18",
+      "topic": "behaviour",
+      "sv": "I flyktspelet stiger fågeln brant med ljudligt vingsmatter och glider sedan med stela vingar och utbredd stjärt.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flyktspelet är karaktäristiskt och inleds med en brant stigning under ljudligt vingsmatter, följt av glidflykt med stela vingar och utbredd stjärt."
+        }
+      ]
+    },
+    {
+      "id": "f19",
+      "topic": "behaviour",
+      "sv": "Ringduvan är social och ses ofta i större flockar utanför häckningstiden.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ringduvan är en social fågel och ses ofta i större flockar när den inte häckar."
+        }
+      ]
+    },
+    {
+      "id": "f20",
+      "topic": "habitat",
+      "sv": "Ringduvan finns i de flesta typer av skog och har på senare år flyttat in i parker och trädgårdar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Ringduvan förekommer i de flesta typer av skog och har på senare år förflyttat sig till mänsklig bebyggelse, såsom parker och trädgårdar."
+        }
+      ]
+    },
+    {
+      "id": "f21",
+      "topic": "sweden",
+      "sv": "I Sverige är ringduvan vanlig i skogs- och jordbruksbygd från Skåne till Norrbotten och södra Lappland.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Den hittas i skogs- och jordbruksbygd från Skåne i söder till Norrbotten och södra Lappland i norr."
+        }
+      ]
+    },
+    {
+      "id": "f22",
+      "topic": "sweden",
+      "sv": "Höstflyttningen kulminerar i oktober och stora mängder lämnar Sverige via Falsterbo.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Flyttsträcket kulminerar i oktober"
+        },
+        {
+          "article": "sv",
+          "quote": "Stora mängder sträcker ut ur Sverige i Falsterbo"
+        }
+      ]
+    },
+    {
+      "id": "f23",
+      "topic": "breeding",
+      "sv": "Boet är en slarvig konstruktion av kvistar som helst byggs i täta barrträd.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Boet, en ganska slarvigt tillverkad konstruktion av kvistar, byggs företrädesvis i täta barrträd."
+        }
+      ]
+    },
+    {
+      "id": "f24",
+      "topic": "breeding",
+      "sv": "En kull består normalt av två vita ägg som ruvas av båda föräldrarna i 15–19 dagar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "En kull består normalt av två ägg"
+        },
+        {
+          "article": "sv",
+          "quote": "De ruvas av båda föräldrarna i 15–19 dagar"
+        },
+        {
+          "article": "sv",
+          "quote": "Äggen är vita, nästan klotformiga"
+        }
+      ]
+    },
+    {
+      "id": "f25",
+      "topic": "food",
+      "sv": "Födan är nästan helt vegetabilisk, som spannmål, frukter, ärtor, frön, bär, skott och knoppar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "lever nästan uteslutande av växtföda som spannmål, frukter, ärtor, frön, bär, skott och knoppar"
+        }
+      ]
+    },
+    {
+      "id": "f26",
+      "topic": "food",
+      "sv": "Vintertid är bokollon och ekollon populär föda.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "vintertid utgör bokollon- och ekollon en populär föda"
+        }
+      ]
+    },
+    {
+      "id": "f27",
+      "topic": "food",
+      "sv": "Ringduvan söker oftast föda i flock på öppna fält och åkrar.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "I allmänhet söker ringduvan föda i flock på öppna fält och åkrar."
+        }
+      ]
+    },
+    {
+      "id": "f28",
+      "topic": "food",
+      "sv": "På vintern besöker små flockar eller enstaka ringduvor ofta fågelbord.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Vintertid är det inte ovanligt att smärre flockar eller ensamma individer besöker fågelbord och andra matningsplatser."
+        }
+      ]
+    },
+    {
+      "id": "f29",
+      "topic": "lookalike",
+      "sv": "Ringduvan skiljs från tamduvan genom större storlek, större bröst, längre stjärt och proportionellt mindre huvud.",
+      "sources": [
+        {
+          "article": "sv",
+          "quote": "Förutom sin storlek särskiljs ringduvan från tamduvan bland annat genom ett större bröst, längre stjärt, och ett proportionellt mindre huvud."
+        }
+      ],
+      "other": {
+        "scientific": "Columba livia",
+        "qid": "Q42326"
+      }
+    },
+    {
+      "id": "f30",
+      "topic": "lookalike",
+      "sv": "Ringduvans öga är blekgult, medan klippduvans öga är orangerött.",
+      "sources": [
+        {
+          "article": "en",
+          "quote": "The eye colour is a pale yellow, in contrast to that of rock doves, which is orange-red"
+        }
+      ],
+      "other": {
+        "scientific": "Columba livia",
+        "qid": "Q42326"
+      }
+    },
+    {
+      "id": "d01",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras mest i mars och april."
+    },
+    {
+      "id": "d02",
+      "topic": "data",
+      "source": "artportalen",
+      "sv": "Rapporteras från alla 21 län."
+    },
+    {
+      "id": "d03",
+      "topic": "data",
+      "source": "rodlistan",
+      "sv": "Inte rödlistad i Svenska rödlistan 2025."
+    },
+    {
+      "id": "s01",
+      "topic": "status",
+      "value": "partial_migrant",
+      "sv": "Delvis flyttfågel, häckar här",
+      "sources": [],
+      "edited": true
+    }
+  ],
+  "text": {
+    "sv": {
+      "lead": [
+        {
+          "text": "Ringduvan är Europas största duva och finns i de flesta typer av skog.",
+          "factIds": [
+            "f08",
+            "f20"
+          ]
+        },
+        {
+          "text": "På senare år har den flyttat in i parker och trädgårdar.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Mest grå dräkt med grönblått skimmer på huvud och nacke, rosafärgat bröst",
+          "factIds": [
+            "f01",
+            "f04"
+          ]
+        },
+        {
+          "text": "Vita fläckar på halsens sidor men ingen ring, ungfåglar saknar fläckarna",
+          "factIds": [
+            "f02",
+            "f11"
+          ]
+        },
+        {
+          "text": "Vita tvärband på vingens ovansida syns tydligt i flykten",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Könen är lika, men honan har mindre rödton på bröstet och något mindre halsfläckar",
+          "factIds": [
+            "f10",
+            "f13"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "Sången är ett ganska dovt, femstavigt hoande med betoning på första stavelsen.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "Strofen upprepas cirka tre till fem gånger utan paus och avslutas med ett ko.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "När den flyger upp hörs ett intensivt smattrande från vingarna, som fungerar som varning.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "Ringduvan är delvis flyttfågel och häckar i Sverige.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "Den är vanlig i skogs- och jordbruksbygd från Skåne till Norrbotten och södra Lappland och rapporteras från alla 21 län.",
+          "factIds": [
+            "f21",
+            "d02"
+          ]
+        },
+        {
+          "text": "Höstflyttningen kulminerar i oktober, då stora mängder lämnar Sverige via Falsterbo.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "Arten rapporteras mest i mars och april.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "Den är inte rödlistad i Svenska rödlistan 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Födan är nästan helt vegetabilisk: spannmål, frukter, ärtor, frön, bär, skott och knoppar, och på vintern är bokollon och ekollon populära.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "Den söker oftast föda i flock på öppna fält och åkrar och besöker ofta fågelbord vintertid.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        },
+        {
+          "text": "Utanför häckningstiden ses den ofta i större flockar.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "I flyktspelet stiger den brant med ljudligt vingsmatter och glider sedan med stela vingar och utbredd stjärt.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Ringduva: så känner du igen den på dräkt, halsfläckar och vingband, hur sången och vingsmattret låter och när den ses under året.",
+      "facts": {
+        "size": {
+          "value": "Upp till 45 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    },
+    "en": {
+      "lead": [
+        {
+          "text": "The Common Wood Pigeon is Europe's largest pigeon and lives in most kinds of woodland.",
+          "factIds": [
+            "f08",
+            "f20"
+          ]
+        },
+        {
+          "text": "In recent years it has moved into parks and gardens.",
+          "factIds": [
+            "f20"
+          ]
+        }
+      ],
+      "fieldMarks": [
+        {
+          "text": "Mostly grey plumage with a blue-green sheen on head and neck, pink breast",
+          "factIds": [
+            "f01",
+            "f04"
+          ]
+        },
+        {
+          "text": "White patches on the neck sides but no true ring, missing in young birds",
+          "factIds": [
+            "f02",
+            "f11"
+          ]
+        },
+        {
+          "text": "White bars across the upper wing show clearly in flight",
+          "factIds": [
+            "f03"
+          ]
+        },
+        {
+          "text": "Sexes look alike, but females show less red on the breast and slightly smaller neck patches",
+          "factIds": [
+            "f10",
+            "f13"
+          ]
+        }
+      ],
+      "voice": [
+        {
+          "text": "The song is a rather muffled five-syllable cooing, stressed on the first syllable.",
+          "factIds": [
+            "f14"
+          ]
+        },
+        {
+          "text": "The phrase is repeated about three to five times without a pause and ends with a 'ko'.",
+          "factIds": [
+            "f15"
+          ]
+        },
+        {
+          "text": "When it takes off, the wings make an intense clattering sound that serves as a warning.",
+          "factIds": [
+            "f16"
+          ]
+        }
+      ],
+      "whereWhen": [
+        {
+          "text": "The Common Wood Pigeon is a partial migrant that breeds in Sweden.",
+          "factIds": [
+            "s01"
+          ]
+        },
+        {
+          "text": "It is common in forest and farmland from Skåne to Norrbotten and southern Lapland, and is reported from all 21 counties.",
+          "factIds": [
+            "f21",
+            "d02"
+          ]
+        },
+        {
+          "text": "Autumn migration peaks in October, when large numbers leave Sweden via Falsterbo.",
+          "factIds": [
+            "f22"
+          ]
+        },
+        {
+          "text": "It is reported most in March and April.",
+          "factIds": [
+            "d01"
+          ]
+        },
+        {
+          "text": "It is not red-listed in the Swedish Red List 2025.",
+          "factIds": [
+            "d03"
+          ]
+        }
+      ],
+      "behaviour": [
+        {
+          "text": "Food is almost all plant matter: grain, fruit, peas, seeds, berries, shoots and buds, with beechnuts and acorns popular in winter.",
+          "factIds": [
+            "f25",
+            "f26"
+          ]
+        },
+        {
+          "text": "It usually feeds in flocks on open fields and farmland, and in winter often visits bird tables.",
+          "factIds": [
+            "f27",
+            "f28"
+          ]
+        },
+        {
+          "text": "Outside the breeding season it is often seen in larger flocks.",
+          "factIds": [
+            "f19"
+          ]
+        },
+        {
+          "text": "In display flight it climbs steeply with loud wing clapping, then glides on stiff wings with its tail spread.",
+          "factIds": [
+            "f18"
+          ]
+        }
+      ],
+      "lookAlikes": [],
+      "metaDescription": "Common Wood Pigeon: how to recognise it by plumage, neck patches and wing bars, what its song and wing clatter sound like, and when it is seen.",
+      "facts": {
+        "size": {
+          "value": "Up to 45 cm",
+          "factIds": [
+            "f08"
+          ]
+        },
+        "swedenStatus": {
+          "value": "partial_migrant",
+          "factIds": [
+            "s01"
+          ]
+        }
+      }
+    }
+  },
+  "generated": {
+    "facts": {
+      "model": "claude-opus-5-5",
+      "prompt": "facts-v1",
+      "effort": "high",
+      "at": "2026-10-07T18:25:23.683515+00:00"
+    },
+    "verify": {
+      "model": "claude-sonnet-5",
+      "prompt": "verify-v1",
+      "at": "2026-10-07T18:32:32.145333+00:00",
+      "factsHash": "89e05b5487f46a68"
+    },
+    "text": {
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "checker": "claude-sonnet-5",
+      "promptHash": "1c3ac394",
+      "checkerPromptHash": "f2b1831c",
+      "bannedHash": "44609988",
+      "prompt": "web-v2",
+      "checkerPrompt": "check-v1",
+      "at": "2026-10-07T19:02:24.943717+00:00",
+      "factsHash": "89e05b5487f46a68"
+    }
+  },
+  "errors": [],
+  "slug": {
+    "sv": "ringduva",
+    "en": "common-wood-pigeon"
+  },
+  "names": {
+    "sv": "Ringduva",
+    "en": "Common Wood Pigeon",
+    "scientific": "Columba palumbus"
+  },
+  "family": {
+    "latin": "Columbidae",
+    "sv": "Duvor"
+  },
+  "group": "doves",
+  "iucn": "LC",
+  "swedishRedList": "not_listed",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q26026/hero.webp",
+      "width": 1600,
+      "height": 1060,
+      "author": "Ott Rebane",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2018-05-15_Kaelustuvi.jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q26026/extra.webp",
+      "width": 1200,
+      "height": 900,
+      "author": "Аимаина хикари",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Columba_palumbus_Moczydło.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q26026/voice.mp3",
+    "durationSec": 12,
+    "trimmed": false,
+    "author": "Oona Räisänen (Mysid)",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Columba_palumbus_birdsong.ogg",
+    "sha256": "aaf7f25693e645d5e9144a118bbd338680393ecd398c5251c436b64d9282efe5"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Ringduva",
+      "revision": "59692692"
+    },
+    "en": {
+      "title": "Common wood pigeon",
+      "revision": "1358214024"
+    },
+    "de": {
+      "title": "Ringeltaube",
+      "revision": "262871775"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2495455,
+    "totalReports": 563738,
+    "months": [
+      45,
+      68,
+      100,
+      83,
+      62,
+      70,
+      75,
+      75,
+      70,
+      56,
+      29,
+      38
+    ],
+    "counties": {
+      "SE-K": 60,
+      "SE-W": 57,
+      "SE-X": 81,
+      "SE-I": 68,
+      "SE-N": 60,
+      "SE-Z": 51,
+      "SE-F": 84,
+      "SE-H": 55,
+      "SE-G": 91,
+      "SE-BD": 52,
+      "SE-T": 59,
+      "SE-E": 87,
+      "SE-M": 83,
+      "SE-D": 99,
+      "SE-AB": 93,
+      "SE-C": 91,
+      "SE-S": 64,
+      "SE-AC": 61,
+      "SE-Y": 59,
+      "SE-U": 64,
+      "SE-O": 100
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i mars och april.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in March and April.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        27344,
+        28781,
+        77902,
+        99821,
+        86416,
+        52643,
+        43300,
+        45270,
+        44179,
+        34446,
+        11213,
+        12181
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-O": 111448,
+        "SE-AB": 72126,
+        "SE-M": 64990,
+        "SE-C": 38750,
+        "SE-D": 34489,
+        "SE-H": 32628,
+        "SE-E": 26765,
+        "SE-F": 24784,
+        "SE-N": 20270,
+        "SE-G": 14580,
+        "SE-AC": 13158,
+        "SE-T": 12480,
+        "SE-X": 11746,
+        "SE-W": 10692,
+        "SE-U": 10492,
+        "SE-S": 9794,
+        "SE-BD": 9584,
+        "SE-I": 9109,
+        "SE-Y": 6361,
+        "SE-Z": 5352,
+        "SE-K": 3957
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  },
+  "flags": [
+    {
+      "check": "V1",
+      "factId": "s01",
+      "message": "Statusen i Sverige ströks av faktakontrollen: The quotes support that wood pigeons in Scandinavia/Sweden are migratory (Zugvögel) and that large numbers leave Sweden via Falsterbo, but none of the given quotes explicitly confirm that the species breeds in Sweden specifically (the breeding range description only mentions 'Europa' broadly without naming Scandinavia or Sweden).. Bestäm status eller lämna tom."
+    }
+  ],
+  "verification": {
+    "method": "auto",
+    "at": "2026-10-07",
+    "model": "claude-sonnet-5",
+    "spotChecked": false
+  },
+  "publishedAt": "2026-10-08"
+}

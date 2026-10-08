@@ -1,0 +1,211 @@
+{
+  "qid": "Q25450",
+  "status": "pending",
+  "publish": false,
+  "review": {
+    "wave": 2
+  },
+  "facts": [],
+  "text": null,
+  "generated": {},
+  "errors": [],
+  "slug": {
+    "sv": "stjartand",
+    "en": "northern-pintail"
+  },
+  "names": {
+    "sv": "Stjärtand",
+    "en": "Northern Pintail",
+    "scientific": "Anas acuta"
+  },
+  "family": {
+    "latin": "Anatidae",
+    "sv": "Änder"
+  },
+  "group": "waterfowl",
+  "iucn": "LC",
+  "swedishRedList": "EN",
+  "identifiable": {
+    "photo": true,
+    "sound": true
+  },
+  "images": [
+    {
+      "role": "hero",
+      "file": "Q25450/hero.webp",
+      "width": 1600,
+      "height": 1067,
+      "author": "Hobbyfotowiki",
+      "license": "CC0",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flock_Of_Northern_Pintail_Ducks_(Anas_acuta).jpg"
+    },
+    {
+      "role": "extra",
+      "file": "Q25450/extra.webp",
+      "width": 1200,
+      "height": 800,
+      "author": "TRinaud",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Northern_pintail_(Anas_acuta)_2023_01.jpg"
+    }
+  ],
+  "audio": {
+    "file": "Q25450/voice.mp3",
+    "durationSec": 4,
+    "trimmed": false,
+    "author": "Luis Alvarez Menendez",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anas_acuta_-_Northern_Pintail_XC543138.mp3",
+    "sha256": "8ac5ff13683e8f82d38199d2e5ca7f501b588e8a1f59ad6f01b3c3a3034753c3"
+  },
+  "wikipedia": {
+    "sv": {
+      "title": "Stjärtand",
+      "revision": "59698282"
+    },
+    "en": {
+      "title": "Northern pintail",
+      "revision": "1368362958"
+    },
+    "de": {
+      "title": "Spießente",
+      "revision": "263923659"
+    }
+  },
+  "data": {
+    "fetchedAt": "2026-10-07T14:04:21.518452+00:00",
+    "gbifTaxonKey": 2498112,
+    "totalReports": 125110,
+    "months": [
+      22,
+      29,
+      58,
+      75,
+      27,
+      9,
+      8,
+      37,
+      100,
+      86,
+      35,
+      23
+    ],
+    "counties": {
+      "SE-K": 63,
+      "SE-W": 46,
+      "SE-X": 25,
+      "SE-I": 66,
+      "SE-N": 87,
+      "SE-Z": 24,
+      "SE-F": 42,
+      "SE-H": 87,
+      "SE-G": 43,
+      "SE-BD": 63,
+      "SE-T": 75,
+      "SE-E": 83,
+      "SE-M": 84,
+      "SE-D": 22,
+      "SE-AB": 36,
+      "SE-C": 52,
+      "SE-S": 46,
+      "SE-AC": 64,
+      "SE-Y": 25,
+      "SE-U": 100,
+      "SE-O": 45
+    },
+    "sentences": {
+      "sv": [
+        "Rapporteras mest i september och oktober.",
+        "Rapporteras sällan i juni och juli.",
+        "Rapporteras från alla 21 län."
+      ],
+      "en": [
+        "Reported most in September and October.",
+        "Rarely reported in June and July.",
+        "Reported from all 21 counties."
+      ]
+    },
+    "raw": {
+      "speciesByMonth": [
+        4461,
+        4084,
+        15295,
+        30550,
+        12721,
+        2228,
+        1631,
+        7683,
+        21330,
+        17833,
+        4658,
+        2429
+      ],
+      "allBirdsByMonth": [
+        3077833,
+        2146249,
+        3959913,
+        6108282,
+        7092460,
+        3816969,
+        2935995,
+        3076360,
+        3194785,
+        3112681,
+        1970498,
+        1616846
+      ],
+      "speciesByCounty": {
+        "SE-M": 17136,
+        "SE-H": 13448,
+        "SE-O": 13101,
+        "SE-N": 7695,
+        "SE-AB": 7377,
+        "SE-E": 6711,
+        "SE-C": 5824,
+        "SE-U": 4311,
+        "SE-T": 4156,
+        "SE-AC": 3661,
+        "SE-F": 3303,
+        "SE-BD": 3036,
+        "SE-I": 2329,
+        "SE-W": 2274,
+        "SE-D": 1978,
+        "SE-S": 1850,
+        "SE-G": 1814,
+        "SE-K": 1082,
+        "SE-X": 966,
+        "SE-Y": 709,
+        "SE-Z": 677
+      },
+      "allBirdsByCounty": {
+        "SE-O": 6341271,
+        "SE-M": 4435788,
+        "SE-AB": 4402531,
+        "SE-H": 3356474,
+        "SE-C": 2414385,
+        "SE-D": 1975678,
+        "SE-N": 1914432,
+        "SE-E": 1750032,
+        "SE-F": 1687368,
+        "SE-AC": 1237358,
+        "SE-T": 1206932,
+        "SE-W": 1064443,
+        "SE-BD": 1039536,
+        "SE-U": 935009,
+        "SE-G": 916021,
+        "SE-S": 865850,
+        "SE-X": 827881,
+        "SE-I": 764767,
+        "SE-Y": 617963,
+        "SE-Z": 601519,
+        "SE-K": 372574
+      }
+    },
+    "statusSignal": {
+      "contradicts": null
+    }
+  }
+}
