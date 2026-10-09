@@ -68,6 +68,13 @@
       ]
     }
   ],
+  "flock": {
+    "_about": "Variant F (Flocken) för 1.3.1, webbens Flock-look sedan 2026-10-09. Korten använder cards ovan oförändrade; feature-grafiken bär sloganen (samma som profilerna och startsidan) och flocken som bildar Birdys fågel.",
+    "feature": {
+      "kicker": { "sv": "Fågelguide och fältdagbok", "en": "Bird guide and field journal" },
+      "head": { "sv": "Känn igen fågeln. *Bevara stunden.*", "en": "Know the bird. *Keep the moment.*" }
+    }
+  },
   "feature": {
     "kicker": { "sv": "Fågelguide och fältdagbok", "en": "Bird guide and field journal" },
     "head": { "sv": "Se. Lyssna. *Spara.*", "en": "See. Listen. *Keep.*" },

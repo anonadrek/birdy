@@ -8,6 +8,8 @@
 //     [--out=tools/store-assets/1.3/out] [--preview=../docs/superpowers/specs/assets/2026-10-08-butiksbilder/img]
 // The upload set (Albin chose C, 2026-10-07), one folder per language, store order in the file names:
 //   node tools/store-assets/1.3/render.mjs --final --variants=c --out=../docs/play-store/store-assets/1.3.0
+// Variant F (Flocken, 1.3.1: the website's Flock look) the same way:
+//   node tools/store-assets/1.3/render.mjs --final --variants=f --out=../docs/play-store/store-assets/1.3.1-flock
 import { chromium } from 'playwright';
 import sharp from 'sharp';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
@@ -64,7 +66,7 @@ try {
       }
       if (what !== 'cards') {
         await page.evaluate((o) => window.render(o), {
-          mode: 'feature', variant, locale, feature: copy.feature, photo: photoUrl,
+          mode: 'feature', variant, locale, feature: copy.feature, flock: copy.flock.feature, photo: photoUrl,
           screens: copy.feature.screens.map((shot) => screenUrl(locale, shot)),
         });
         const name = final ? `${locale}/feature-graphic` : `${variant}-${locale}-feature`;
