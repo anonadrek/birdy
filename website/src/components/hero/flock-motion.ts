@@ -10,7 +10,7 @@
 // by run() below as its first act) so a CSS-only fallback can reveal the card on its own after about 3 s if this
 // module never runs at all (review fix: a dropped connection, a parse failure). A keydown anywhere, a click anywhere
 // on the hero, or a focus landing inside it (a keyboard user tabbing through while still hidden), skips straight to
-// the end (review fix: WCAG 2.2.2, the flight runs about 6.8 s).
+// the end (review fix: WCAG 2.2.2, the flight runs about 6.8 s); so does reduced motion switched on mid-flight.
 import { MARK } from './flock-data.mjs';
 import { COLOURS, DISC_SCALE, LIT, LIT_SCALE, fitView, flightPlan } from './flock.mjs';
 
@@ -40,6 +40,7 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
       document.removeEventListener('keydown', onKeydown);
       hero.removeEventListener('focusin', skipToEnd);
       hero.removeEventListener('click', skipToEnd);
+      reduceMotionQuery.removeEventListener('change', onReduceMotionChange);
     }
   };
   const litIndex = Number(hero.dataset.flockIndex);
@@ -243,6 +244,14 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
     skipToEnd();
   };
 
+  // Reduced motion switched on mid-flight (a settings change, not just at load) gets the same snap-to-end as a
+  // keydown or a click (review fix): the flight must never be the only way someone who has just asked for less
+  // motion can reach the end. The same query's .matches decides below whether to run the flight at all.
+  const reduceMotionQuery = matchMedia('(prefers-reduced-motion: reduce)');
+  const onReduceMotionChange = (e: MediaQueryListEvent) => {
+    if (e.matches) skipToEnd();
+  };
+
   // A new size moves the fit box: lay the flock out again. canvas.width/height resets (clears) the canvas, so the
   // current instant is redrawn at once, in the same task, rather than leaving a blank frame until the next natural
   // tick, but ONLY while the loop is actually still running (raf): once a skip has stopped it mid-flight, t0 is still
@@ -263,7 +272,7 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
 
   // The fallback above (Hero.astro) may already have revealed the card if this module loaded slowly but not never:
   // run() still gets to run, just too late to matter, and the flight must not disappear the card and replay it.
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches || fallbackAlreadyRevealed) {
+  if (reduceMotionQuery.matches || fallbackAlreadyRevealed) {
     drawStill();
     setState('done');
   } else {
@@ -273,6 +282,7 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
     // touch-scroll (the earlier decision): a click event does not fire for a scroll gesture, so scrolling past the
     // hero on a phone still does not cut the motion short.
     hero.addEventListener('click', skipToEnd);
+    reduceMotionQuery.addEventListener('change', onReduceMotionChange);
     if ('IntersectionObserver' in window) {
       // Once, when the hero reaches the middle band of the viewport: a hero much taller than the viewport (a short,
       // wide window) never reaches a fixed share of its OWN area visible, so the threshold watches the root's shrunk

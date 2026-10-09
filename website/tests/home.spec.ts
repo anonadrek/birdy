@@ -689,6 +689,20 @@ test.describe('flocken lyfter', () => {
     expect(await flockLog()).toEqual(['waiting', 'flying', 'done']);
   });
 
+  // Reduced motion switched on mid-flight (a settings change, not just at load) gets the same snap-to-end as a
+  // keydown or a click: the flight must never be the only way to reach the end for someone who has just asked for
+  // less motion.
+  test('minskad rörelse som slås på mitt i flykten hoppar till slutet', async ({ page }) => {
+    const flockLog = await trackFlockState(page);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    await expect.poll(async () => (await flockLog()).includes('flying')).toBe(true);
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await expect(hero).toHaveAttribute('data-flock', 'done');
+    expect(await flockLog()).toEqual(['waiting', 'flying', 'done']);
+  });
+
   // Review fix: the resize handler used to redraw "now - t0" whenever t0 was set, even after a skip had stopped the
   // loop, so a skip followed soon after by a resize (zoom, F11, a docked DevTools panel, Win+arrow) froze the canvas
   // on a stray mid-air instant instead of keeping the already-landed picture.
