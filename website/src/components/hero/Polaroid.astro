@@ -34,7 +34,10 @@ const caption = t.daily.polaroid.replace('{name}', bird.name);
 const ratio = bird.image.width / bird.image.height;
 const alt = t.species.altHero.replace('{name}', bird.name).replace('{scientific}', bird.scientific);
 const widths = [240, 360, 480, 640];
-const sizes = '(min-width: 1024px) 216px, 200px';
+// The photo's width on the page (the CSS below): the card's inner width, at most 216 px from 1024 px and 200 px below,
+// or less for a tall photo (--pol-ph × ratio), so a portrait photo does not fetch a needlessly large file.
+const shown = (innerWidth: number, maxHeight: number) => Math.ceil(Math.min(innerWidth, maxHeight * ratio));
+const sizes = `(min-width: 1024px) ${shown(216, 180)}px, ${shown(200, 150)}px`;
 ---
 
 <figure class="polaroid" data-polaroid style={`--ar:${ratio.toFixed(4)}`}>
@@ -63,7 +66,9 @@ const sizes = '(min-width: 1024px) 216px, 200px';
   .pol-photo :global(img) { display: block; width: min(100%, calc(var(--pol-ph) * var(--ar))); height: auto; margin: 0 auto; }
   .pol-cap { display: grid; gap: 3px; padding: 8px 2px 11px; }
   .pol-name { font-family: var(--font-script); font-weight: 700; font-size: 21px; line-height: 1.05; color: var(--ink); }
-  a.pol-name:hover { color: var(--rust); }
+  /* A link like the site's other text links (legal-prose.css): a soft rust underline, so it reads as one on touch too. */
+  a.pol-name { text-decoration: underline; text-decoration-color: rgba(154, 69, 38, .4); text-underline-offset: 3px; }
+  a.pol-name:hover { color: var(--rust); text-decoration-color: currentColor; }
   .pol-same { margin: 0; font-family: var(--font-script); font-weight: 700; font-size: 17px; line-height: 1.05; color: var(--rust); }
   .pol-same[hidden] { display: none; }
   .pol-credit { margin: 3px 0 0; font-size: 10.5px; line-height: 1.45; color: var(--muted); }
