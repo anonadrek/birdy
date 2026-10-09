@@ -10,6 +10,9 @@
   --rust-deep: #72301A;
   --apricot: #F2B27A;
   --peach: #FDE5CB;
+  /* The home hero's peach paper (spec 2026-10-09): lighter where the light falls, deeper at the edges. */
+  --peach-hi: #FEEBD6;
+  --peach-lo: #F8D6B4;
   --dark: #2A1D17;
   --dark-deep: #1E1410;
   --dark-rgb: 42, 29, 23;

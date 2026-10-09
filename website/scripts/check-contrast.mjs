@@ -64,6 +64,10 @@ const pairs = [
   ['ink', 'paper', 4.5], ['muted', 'paper', 4.5], ['rust', 'paper', 4.5],
   ['ink', 'card', 4.5], ['muted', 'card', 4.5], ['rust', 'card', 4.5],
   ['ink', 'peach', 4.5], ['muted', 'peach', 4.5], ['rust', 'peach', 4.5],
+  // The home hero's peach paper (spec 2026-10-09-startsidan-flocken-lyfter): the words sit on it from its lightest
+  // tone to its deepest.
+  ['ink', 'peach-hi', 4.5], ['muted', 'peach-hi', 4.5], ['rust', 'peach-hi', 4.5],
+  ['ink', 'peach-lo', 4.5], ['muted', 'peach-lo', 4.5], ['rust', 'peach-lo', 4.5],
   ['cream', 'dark', 4.5], ['apricot', 'dark', 4.5], ['brass-hi', 'dark', 4.5],
   ['cream', 'dark-deep', 4.5], ['apricot', 'dark-deep', 4.5],
   ['cream', 'rust', 4.5], ['cream', 'rust-deep', 4.5],
@@ -109,8 +113,8 @@ const compositedPairs = [
   { label: 'Premium .feat p', fg: [242, 234, 220], alpha: 0.66, bg: premiumGradientLight, min: 4.5 },
   // AppTour.astro: the lead and the plate labels on the gallery wall, over its lightest point (#33251D).
   { label: 'AppTour .tour-lead / .plno', fg: [255, 248, 238], alpha: 0.78, bg: [51, 37, 29], min: 4.5 },
-  // Hero.astro .sub (.86) and FinalCta.astro .sub (.85) on the espresso wall, over its lightest point (#3D2C22).
-  { label: 'Hero/FinalCta .sub', fg: [255, 248, 238], alpha: 0.85, bg: [61, 44, 34], min: 4.5 },
+  // FinalCta.astro .sub (.85) on the espresso wall, over its lightest point (#3D2C22). The hero left the wall on 2026-10-09.
+  { label: 'FinalCta .sub', fg: [255, 248, 238], alpha: 0.85, bg: [61, 44, 34], min: 4.5 },
   // PremiumPage.astro: the faintest text (.fine, .66) on the dark bands, the card text (.78) on the chosen price card's
   // brass tint, and the breadcrumbs (.78) in the hero's brass glow.
   { label: 'PremiumPage .fine', fg: [242, 234, 220], alpha: 0.66, bg: premiumGradientLight, min: 4.5 },
