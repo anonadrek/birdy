@@ -253,47 +253,46 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
     if (e.matches) skipToEnd();
   };
 
-  // A new size moves the fit box: lay the flock out again. canvas.width/height resets (clears) the canvas, so the
-  // current instant is redrawn at once, in the same task, rather than leaving a blank frame until the next natural
-  // tick, but ONLY while the loop is actually still running (raf): once a skip has stopped it mid-flight, t0 is still
-  // set (review fix), so recomputing "now - t0" would redraw a stray mid-air instant on top of the already-landed
-  // still picture rather than keep it. Once the loop has stopped, landed/done redraws the finished still picture.
+  // Three different events can make the canvas stale: a new size moves the fit box, a devicePixelRatio change (the
+  // window dragged to another monitor, a browser zoom) leaves it drawn at the old resolution, and a lost-then-
+  // restored canvas context leaves it blank outright (review fix: a DPR change used to be ignored outright while
+  // waiting or flying, so the flight and the landed still frame kept the old resolution until the next resize gave
+  // it a free pass). All three share one response: lay the flock out again, then redraw exactly what belongs on
+  // screen right now. canvas.width/height resets (clears) the canvas, so without an immediate redraw in the same
+  // task there would be one blank frame until the next natural tick. That immediate redraw only happens while the
+  // loop is actually still running (raf && t0 !== null): once a skip has stopped it mid-flight, t0 is still set
+  // (review fix), so this never redraws a stray mid-air instant on top of an already-landed still picture. Once the
+  // loop has stopped, landed/done redraws the finished still picture; waiting only re-lays-out, and the next
+  // natural event (the IntersectionObserver firing) takes it from there. All three stay armed after done, since any
+  // of them can happen at any point in the page's life.
+  const relayout = () => {
+    plan = layout();
+    if (raf && t0 !== null) renderFrame(performance.now() - t0);
+    else if (hero.dataset.flock === 'landed' || hero.dataset.flock === 'done') drawStill();
+  };
   if ('ResizeObserver' in window) {
     let pending = 0;
     new ResizeObserver(() => {
       if (pending) return;
       pending = requestAnimationFrame(() => {
         pending = 0;
-        plan = layout();
-        if (raf && t0 !== null) renderFrame(performance.now() - t0);
-        else if (hero.dataset.flock === 'landed' || hero.dataset.flock === 'done') drawStill();
+        relayout();
       });
     }).observe(hero);
   }
-
-  // The still picture can also go stale without ever resizing: a devicePixelRatio change (the window dragged to
-  // another monitor, a browser zoom) leaves it drawn at the old resolution, and a lost-then-restored canvas context
-  // leaves it blank outright. Only once landed or done, the same guard the resize handler above uses (mid-flight the
-  // next natural frame repaints anyway); both stay armed after done, like the ResizeObserver above, since either can
-  // happen at any point in the page's life.
-  const redrawIfSettled = () => {
-    if (hero.dataset.flock !== 'landed' && hero.dataset.flock !== 'done') return;
-    plan = layout();
-    drawStill();
-  };
   // A single MediaQueryList only ever fires once (its query is pinned to the ratio at the time it was created), so
   // each firing re-arms a fresh one for the ratio now in effect.
   const watchDevicePixelRatio = () => {
     const mq = matchMedia(`(resolution: ${devicePixelRatio}dppx)`);
     const onChange = () => {
       mq.removeEventListener('change', onChange);
-      redrawIfSettled();
+      relayout();
       watchDevicePixelRatio();
     };
     mq.addEventListener('change', onChange);
   };
   watchDevicePixelRatio();
-  canvas.addEventListener('contextrestored', redrawIfSettled);
+  canvas.addEventListener('contextrestored', relayout);
 
   // The fallback above (Hero.astro) may already have revealed the card if this module loaded slowly but not never:
   // run() still gets to run, just too late to matter, and the flight must not disappear the card and replay it.
