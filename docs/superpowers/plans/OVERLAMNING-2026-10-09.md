@@ -1,5 +1,26 @@
 # Överlämning 2026-10-09 eftermiddag (Windows)
 
+## Kvällen 9 okt (läs först; resten av filen är eftermiddagens läge)
+
+**Albins svar 9 okt:** visningsnamnet "Birdy: Bird ID" får agenten ordna, liksom TikTok-företagskontot och YouTube-verifieringen; **telefonordningen A** (orden först, flocken under, som byggt); **klippsidan: "kör"**; Märken 1a i 1.3.1: agentens rekommendation (ja, ihop med 1b; "Nära att låsa upp" flyttar till fliken Märken som "Inom räckhåll") väntar på hans svar. Han bad också agenten "delete the double posts".
+
+**Gjort:**
+- **Visningsnamnet "Birdy: Bird ID":** TikTok, Instagram (via Kontocenter) och YouTube klara; Facebook-sidan begärd (Albin klickade "Begär ändring", granskas upp till 3 dagar, sedan låst 60 dagar). Business Suite visar redan det nya namnet.
+- **YouTube-kanalen telefonverifierad** (Albin skrev in koden). Den höjde inte dagsgränsen nog: efter 11 uppladdningar 9 okt kom "Daglig uppladdningsgräns uppnådd" igen.
+- **YouTube:** 19–28 okt schemalagda 08.00 Stockholm (tidszonen vald uttryckligen, så att 26–28 okt efter sommartidens slut också går ut 08.00). Listan kontrollerad: 9 okt publicerad, 10–28 okt en per dag. **Kvar: 29 okt–7 nov (10)**, tidigast när gränsen släppt (cirka 19.15 lör 10 okt).
+- **Meta, dubbletterna:** de gamla versionerna 12–22 okt (FB + IG, 22 st) flyttade till Utkast med guard per rad och kontrollerade efter omladdning. Röda rader "Det gick inte att publicera" står kvar i Schemalagt (publiceras inte). 23–28 okt har fortfarande bara gamla versioner.
+- **TikTok, dubbletterna:** agenten kan inte avplanera där (bara "Delete" finns, och permanent radering gör Albin). Albins lista: för varje datum 11–18 okt, behåll den översta raden och ta bort resten (9 inlägg). **Första tidsgränsen lör 11 okt 08.00.**
+- **Telefonordningen:** jämförelsesidan `docs/superpowers/specs/assets/2026-10-09-telefonordning/` (artefakt FPNbw3BDY9QSLj5DizZZGb), specen uppdaterad.
+- **Flocken lyfter** (`C:/w/birdy-flock`): Task 5 (rörelsen) klar efter två fixrundor (`8fa3c722`, `e683a103`, `f4fbc52f`: startar vid alla höjder och zoomnivåer, en tangent eller fokus i hjälten hoppar till slutet, polaroiden finns kvar för skärmläsare under flykten, inga frusna rutor vid storleksändring). Task 6 (menyn på persikan, `19194e3b`) och Task 7 (kontrasttester, `d8a39833`) klara och granskade. Task 8 (delningsbilderna) pågick vid överlämningen. Smoke 240 gröna efter Task 7. Småsaker till slutstädningen står i ledgern.
+- **Klippsidan** (`C:/w/birdy-klipp`, gren `website/klipp`, lokal): spec `28a5b748` (på main), plan `2e88b8ae` (6 tasks, delad i `C:/w/birdy-klipp-qa/tasks/`). Task 1 baslinje (unit 98, Playwright 209), Task 2 klippdatan `b7c066bb` (30 klipp 9 okt–7 nov, 30 flockomslag, 5 CC BY-silhuetter märkta bearbetade) granskad "Ready" + en liten fixrunda (`.DS_Store`-filter, datumkoll, felmeddelanden, omslagsväg). **Notering:** vid push hamnar alla 30 omslag i det publika repot före sina dagar; ledtrådarna finns redan publikt på `social/see-the-song`, så det accepterades. Kvar: Task 3–6, sedan Vercel-förhandsvisning till Albin.
+
+**Nästa session, i ordning:**
+1. Påminn om TikTok-städningen (lör 11 okt 08.00 för 11 okt).
+2. YouTube 29 okt–7 nov när gränsen släppt (receptet i runbooken, avsnittet "Kvällen 9 okt"; Chrome-fönstret ska ligga framme, eftersom ett skymt fönster inte ritas om, och tryck aldrig Escape i uppladdningsdialogen).
+3. Meta 23 okt–7 nov (16) när Meta tar uppladdningar igen, sedan de gamla 23–28 okt till Utkast.
+4. Flocken lyfter Task 8 (granskning) till Task 11 (push och Vercel-förhandsvisning till Albin), och klippsidan Task 3–6, båda med SDD, ett tungt jobb åt gången.
+5. När klippsidan är live: Albin lägger `birdy.community/clips/` i bion på Instagram och, efter bytet till företagskonto, TikTok (båda bara i appen).
+
 Albin bad om en ny session ("Se till så vi kan dra igång i en ny session"). Läs den här filen först, sedan de översta posterna i CLAUDE.md. Börja med `git pull` i huvudklonen. Överlämningen från 2026-10-08 (`OVERLAMNING-2026-10-08.md`) gäller fortfarande för artsidorna, sökindex och rutinerna; det som har ändrats sedan dess står här.
 
 ## Börja här
