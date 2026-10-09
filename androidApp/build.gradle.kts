@@ -92,6 +92,12 @@ val releaseVersionNameBase = "1.3.1"
 // versionName suffix and must never be promoted to production.
 val cutoffOverride = releaseFlagFromCommandLineOnly("birdy.grandfatherCutoffMs")
 val billingTestBuild = releaseFlagFromCommandLineOnly("birdy.billingTestBuild") == "true"
+
+// 1.3.1 (Albin 2026-10-09): MapTiler Free allows one own key and the website uses it, so 1.3.1
+// ships with the leaked Default key, locked in MapTiler Cloud the same evening to user agents
+// containing "se.birdy." (osmdroid sends the package name, iOS sends se.birdy.ios). Rotate it
+// with the paid release once Flex is bought. Only this command-line flag lets it through.
+val leakedMapTilerKeyLocked = releaseFlagFromCommandLineOnly("birdy.leakedMapTilerKeyLocked") == "true"
 if (cutoffOverride != null && !billingTestBuild) {
     error(
         "birdy.grandfatherCutoffMs may only be set together with -Pbirdy.billingTestBuild=true " +
@@ -387,6 +393,7 @@ val verifyProductionRelease by tasks.registering {
         "Fails a PRODUCTION bundle/APK when MAPTILER_API_KEY is the key that leaked in " +
         "git history, or the release keystore isn't configured."
     inputs.property("billingTestBuild", billingTestBuild)
+    inputs.property("leakedMapTilerKeyLocked", leakedMapTilerKeyLocked)
     inputs.property(
         "mapTilerKeyIsLeaked",
         providers.gradleProperty("MAPTILER_API_KEY").orElse("").map { raw ->
@@ -408,10 +415,18 @@ val verifyProductionRelease by tasks.registering {
                 logger.lifecycle("verifyProductionRelease: skipped (billing-test build, not production).")
             } else {
                 if (inputs.properties["mapTilerKeyIsLeaked"] as Boolean) {
-                    error(
-                        "MAPTILER_API_KEY is the key that leaked in git history; create a new key " +
-                            "in MapTiler Cloud and put it in ~/.gradle/gradle.properties (spec §8.4)",
-                    )
+                    if (inputs.properties["leakedMapTilerKeyLocked"] as Boolean) {
+                        logger.warn(
+                            "verifyProductionRelease: MAPTILER_API_KEY is the leaked key, allowed because " +
+                                "it is locked to the se.birdy. user agent in MapTiler Cloud " +
+                                "(-Pbirdy.leakedMapTilerKeyLocked=true). Rotate it with the paid release.",
+                        )
+                    } else {
+                        error(
+                            "MAPTILER_API_KEY is the key that leaked in git history; create a new key " +
+                                "in MapTiler Cloud and put it in ~/.gradle/gradle.properties (spec §8.4)",
+                        )
+                    }
                 }
                 if (!(inputs.properties["keystoreConfigured"] as Boolean)) {
                     error("production bundles must be signed")
