@@ -314,6 +314,28 @@ export function licenseLabel(license: string, t: Copy): string {
   return license === 'Public domain' ? t.species.licensePublicDomain : license;
 }
 
+/** The pipeline stores a deed URL only for CC BY* licences. CC0 and public domain photos have their own
+ * canonical pages, and Google's image metadata asks for `license` on every image (Search Console
+ * 2026-10-09: "Fältet license saknas" on the CC0 and public domain photos). */
+const PUBLIC_LICENSE_URLS: Record<string, string> = {
+  CC0: 'https://creativecommons.org/publicdomain/zero/1.0/',
+  'Public domain': 'https://creativecommons.org/publicdomain/mark/1.0/',
+};
+
+/** `license` for a photo's structured data: the stored deed, or the CC0 / public domain mark page. */
+export function structuredLicenseUrl(img: Pick<SpeciesImage, 'license' | 'licenseUrl'>): string | undefined {
+  return img.licenseUrl ?? PUBLIC_LICENSE_URLS[img.license];
+}
+
+/** `copyrightNotice` for a photo's structured data, the same facts as the visible credit line
+ * (Search Console 2026-10-09: "Fältet copyrightNotice saknas" on every photo). CC0 and public domain
+ * photos have no rights holder to put a © in front of. */
+export function copyrightNotice(img: Pick<SpeciesImage, 'license' | 'author'>): string {
+  const free = img.license in PUBLIC_LICENSE_URLS;
+  if (!img.author) return img.license;
+  return free ? `${img.author}, ${img.license}` : `© ${img.author}, ${img.license}`;
+}
+
 /** The Wikipedia articles a species' text is based on, in the order Swedish, English, German. */
 export function wikiSources(s: Species): { lang: WikiLang; ref: WikiRef }[] {
   return (['sv', 'en', 'de'] as const).flatMap((lang) => {

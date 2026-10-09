@@ -401,12 +401,25 @@ test.describe('artsidan', () => {
     expect(web.lastReviewed).toBe('2026-11-20');
     expect(web).not.toHaveProperty('reviewedBy');
     expect(web.about).toMatchObject({ '@type': 'Taxon', name: 'Parus major', sameAs: 'https://www.wikidata.org/wiki/Q25485' });
-    expect(web.primaryImageOfPage).toMatchObject({ '@type': 'ImageObject', creditText: 'Testfotograf' });
+    // Search Console's image metadata (2026-10-09): `license` and `copyrightNotice` on every photo, the
+    // CC0 deed when the data has no URL.
+    expect(web.primaryImageOfPage).toMatchObject({
+      '@type': 'ImageObject',
+      creditText: 'Testfotograf',
+      license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+      copyrightNotice: 'Testfotograf, CC0',
+    });
     const src = await page.locator('audio').getAttribute('src');
     expect(web.associatedMedia).toMatchObject({ '@type': 'AudioObject', contentUrl: `https://birdy.community${src}`, license: 'https://creativecommons.org/licenses/by-sa/4.0/' });
     await page.goto('/sv/arter/parluggla/');
     const plain = (JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)['@graph'] as Record<string, any>[]).find((n) => n['@type'] === 'WebPage')!;
     expect(plain).not.toHaveProperty('associatedMedia');
+    await page.goto('/sv/arter/grasparv/');
+    const byPage = (JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)['@graph'] as Record<string, any>[]).find((n) => n['@type'] === 'WebPage')!;
+    expect(byPage.primaryImageOfPage).toMatchObject({
+      license: 'https://creativecommons.org/licenses/by-sa/4.0/',
+      copyrightNotice: '© Testfotograf, CC BY-SA 4.0',
+    });
   });
 
   test('public domain: "public domain" i gemener utan licenslänk, okänd upphovsperson när namnet saknas', async ({ page }) => {

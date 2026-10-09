@@ -14,9 +14,9 @@ import MonthChart from './MonthChart.astro';
 import CountyMap from './CountyMap.astro';
 import { getCopy, type Locale } from '../../lib/i18n';
 import {
-  SITE, appText, audioJsonLd, breadcrumbJsonLd, comparisonHref, comparisonPair, getAllRecords, getAllSpecies, getComparisons,
-  groupByKey, groupHref, heroOf, hubHref, isUnpublished, joinSentences, lookAlikeView, pairNames, playHref, related,
-  reviewDate, shareHref, speciesHref, speciesImage, speciesTitle, taxonJsonLd, wikiSources,
+  SITE, appText, audioJsonLd, breadcrumbJsonLd, comparisonHref, comparisonPair, copyrightNotice, getAllRecords, getAllSpecies,
+  getComparisons, groupByKey, groupHref, heroOf, hubHref, isUnpublished, joinSentences, lookAlikeView, pairNames, playHref,
+  related, reviewDate, shareHref, speciesHref, speciesImage, speciesTitle, structuredLicenseUrl, taxonJsonLd, wikiSources,
   type Comparison, type LookAlikeView, type Species,
 } from '../../lib/species';
 import '../../styles/species.css';
@@ -84,6 +84,7 @@ const compareText = (c: Comparison): string => {
 const lookPhoto = (view: LookAlikeView) => (view.species ? speciesImage(heroOf(view.species).file) : undefined);
 const reviewed = reviewDate(s);
 const audioNode = audioJsonLd(s);
+const heroLicense = structuredLicenseUrl(hero);
 
 const crumbs = [
   { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
@@ -102,8 +103,9 @@ const jsonLd = [
     primaryImageOfPage: {
       '@type': 'ImageObject',
       contentUrl: new URL(content.src, SITE).toString(),
-      ...(hero.licenseUrl ? { license: hero.licenseUrl } : {}),
+      ...(heroLicense ? { license: heroLicense } : {}),
       acquireLicensePage: hero.sourceUrl,
+      copyrightNotice: copyrightNotice(hero),
       ...(hero.author ? { creator: { '@type': 'Person', name: hero.author }, creditText: hero.author } : {}),
     },
     ...(audioNode ? { associatedMedia: audioNode } : {}),
