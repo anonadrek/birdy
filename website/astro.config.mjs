@@ -199,13 +199,12 @@ const speciesMediaModule = {
 // Today's date in Europe/Stockholm, worked out once per build and shared by both plugins below: Dagens fågel and
 // the clips page each read it, and two separate buildDate() calls could straddle midnight mid-build (one plugin
 // loading just before 00.00, the other just after) and show one day's Dagens fågel next to the next day's clips.
-// Memoised so the second reader gets the exact same value the first one computed, not a fresh "now".
+// Memoised so the second reader gets the exact same value the first one computed, not a fresh "now". In `astro dev`
+// this is once per server start, not once per request: a dev server left running across midnight keeps showing the
+// previous day's date until it is restarted.
 /** @type {ReturnType<typeof buildDate> | undefined} */
 let cachedBuildDate;
-function sharedBuildDate() {
-  if (!cachedBuildDate) cachedBuildDate = buildDate();
-  return cachedBuildDate;
-}
+const sharedBuildDate = () => (cachedBuildDate ??= buildDate());
 
 // Dagens fågel (plan 2026-10-08 Task 1): today's date (sharedBuildDate above) and the app's pick for it, worked out
 // from the shipped app's frozen species list (src/data/app-species-<version>.json, src/lib/daily-bird.mjs), never
