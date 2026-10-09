@@ -9,6 +9,7 @@ import { basename, dirname, resolve } from 'node:path';
 import { SHARE_QUALITY, SHARE_SIZE, assetsDir, builtSpeciesMedia, isPreview, paperColour, speciesDir } from './src/lib/species-source.mjs';
 import { readSpeciesSitemapInfo } from './src/lib/species-sitemap.mjs';
 import { buildDate, loadAppSpeciesSnapshot, selectAppDailyBird } from './src/lib/daily-bird.mjs';
+import { clipsDataFile, clipsModuleSource, loadClips } from './src/lib/clips.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 
@@ -195,9 +196,19 @@ const speciesMediaModule = {
   },
 };
 
-// Dagens fågel (plan 2026-10-08 Task 1): today's date in Europe/Stockholm and the app's pick for it, worked out once
-// per build from the shipped app's frozen species list (src/data/app-species-<version>.json, src/lib/daily-bird.mjs),
-// never from the branch's YAML, which is not what people's phones run (npm run check:app-species tells whether the two
+// Today's date in Europe/Stockholm, worked out once per build and shared by both plugins below: Dagens fågel and
+// the clips page each read it, and two separate buildDate() calls could straddle midnight mid-build (one plugin
+// loading just before 00.00, the other just after) and show one day's Dagens fågel next to the next day's clips.
+// Memoised so the second reader gets the exact same value the first one computed, not a fresh "now". In `astro dev`
+// this is once per server start, not once per request: a dev server left running across midnight keeps showing the
+// previous day's date until it is restarted.
+/** @type {ReturnType<typeof buildDate> | undefined} */
+let cachedBuildDate;
+const sharedBuildDate = () => (cachedBuildDate ??= buildDate());
+
+// Dagens fågel (plan 2026-10-08 Task 1): today's date (sharedBuildDate above) and the app's pick for it, worked out
+// from the shipped app's frozen species list (src/data/app-species-<version>.json, src/lib/daily-bird.mjs), never
+// from the branch's YAML, which is not what people's phones run (npm run check:app-species tells whether the two
 // agree). A virtual module, so the list is read here in Node and never enters Vite's module graph; the home page
 // combines the pick with the species that have a page in this build. The nightly rebuild
 // (.github/workflows/daily-site-build.yml) moves it to the next day.
@@ -210,11 +221,34 @@ const dailyBirdModule = {
   },
   load(id) {
     if (id !== `\0${DAILY_BIRD}`) return undefined;
-    const date = buildDate();
+    const date = sharedBuildDate();
     const appQid = selectAppDailyBird(loadAppSpeciesSnapshot(root), date);
     const pinned = process.env.BIRDY_TODAY ? ', BIRDY_TODAY' : '';
     console.log(`[birdy-daily-bird] ${date.iso} (Europe/Stockholm${pinned}): appens Dagens fågel ${appQid ?? 'ingen'}`);
     return [`export const date = ${JSON.stringify(date)};`, `export const appQid = ${JSON.stringify(appQid)};`, ''].join('\n');
+  },
+};
+
+// The clips page (spec 2026-10-09-klippsidan): the See the song clips posted on or before the build's date, newest
+// first, with the same date as Dagens fågel above (sharedBuildDate: Europe/Stockholm, BIRDY_TODAY in test builds), so
+// the nightly rebuild adds each day's clip by itself. A virtual module, like the species photos', because Vite emits
+// every image a module imports into dist/_astro/, used or not: only the shown clips' covers are imported
+// (clipsModuleSource), so a later clip's cover is not online before its day. The resolved id carries Vite's NUL
+// prefix, as above.
+const CLIPS = 'virtual:birdy-clips';
+const RESOLVED_CLIPS = `${String.fromCharCode(0)}${CLIPS}`;
+const CLIPS_DATA_FILE = clipsDataFile(root);
+/** @type {import('vite').Plugin} */
+const clipsModule = {
+  name: 'birdy-clips',
+  resolveId(id) {
+    return id === CLIPS ? RESOLVED_CLIPS : undefined;
+  },
+  load(id) {
+    if (id !== RESOLVED_CLIPS) return undefined;
+    // So the dev server reloads this virtual module whenever scripts/import-clips.mjs rewrites clips.json.
+    this.addWatchFile(CLIPS_DATA_FILE);
+    return clipsModuleSource(loadClips(root), sharedBuildDate().iso);
   },
 };
 
@@ -241,6 +275,6 @@ export default defineConfig({
     },
   }), speciesAudio, speciesShare],
   vite: {
-    plugins: [tailwindcss(), speciesMediaModule, dailyBirdModule],
+    plugins: [tailwindcss(), speciesMediaModule, dailyBirdModule, clipsModule],
   },
 });

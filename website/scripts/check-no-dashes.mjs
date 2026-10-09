@@ -79,6 +79,8 @@ const walkRendered = (value, path, cb) => {
 const dataDirs = ['src/data/species', 'src/data/comparisons', 'tests/fixtures/species', 'tests/fixtures/comparisons'];
 const dataFiles = [
   'src/data/species-groups.json',
+  // The clips page's data (scripts/import-clips.mjs): the bird names and silhouette credits are shown on the page.
+  'src/data/clips.json',
   ...dataDirs.flatMap((dir) => (existsSync(resolve(root, dir)) ? readdirSync(resolve(root, dir)).filter((f) => f.endsWith('.json')).map((f) => join(dir, f)) : [])),
 ];
 // The publish loop (scripts/publish-next.mjs) checks only what goes online: the published records in src/data/

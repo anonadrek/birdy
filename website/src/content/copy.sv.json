@@ -500,6 +500,23 @@
       }
     ]
   },
+  "clips": {
+    "title": "See the song: alla klipp och fåglarnas sidor | Birdy",
+    "description": "Alla klipp i See the song från Instagram, TikTok, Facebook och YouTube, de nyaste först. Hör fågeln, se den och läs sedan mer på artens sida.",
+    "crumbHome": "Birdy",
+    "crumb": "Klipp",
+    "crumbLabel": "Brödsmulor",
+    "kicker": "Klipp",
+    "headline": "See the *song*",
+    "note": "hör fågeln först, se den sedan",
+    "lead": "Korta videor på Instagram, Facebook, YouTube och TikTok. Varje video spelar fågelns sång eller läte först och visar fågeln efter en kort paus. Här är alla klipp hittills, de nyaste först, med länkar till fåglarnas sidor.",
+    "posted": "Publicerat {date}",
+    "coverAlt": "Klippets omslag: en flock små fåglar i form av en {name} och raden ”{clue}”",
+    "silhouette": "Siluett",
+    "adapted": "bearbetad",
+    "empty": "Det första klippet kommer snart.",
+    "footerLink": "Klipp"
+  },
   "footer": {
     "tagline": "Känn igen fågeln. Bevara stunden.",
     "explore": "Utforska",

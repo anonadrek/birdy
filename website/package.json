@@ -28,6 +28,7 @@
     "test:unit": "node --test \"tests/unit/*.unit.mjs\"",
     "check:app-species": "node scripts/check-app-species-snapshot.mjs",
     "app-species:snapshot": "node scripts/app-species-snapshot.mjs",
+    "clips:import": "node scripts/import-clips.mjs",
     "assets:clean": "node tools/store-assets/clean-sources.mjs",
     "assets:render": "node tools/store-assets/render.mjs --locale=en",
     "assets:render:sv": "node tools/store-assets/render.mjs --locale=sv",

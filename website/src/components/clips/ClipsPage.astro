@@ -1,0 +1,132 @@
+---
+// The clips page, /clips/ and /sv/klipp/ (spec docs/superpowers/specs/2026-10-09-klippsidan-design.md): every See the
+// song clip posted so far, newest first, and the bio link on Instagram and TikTok, where a caption can't link. A card
+// has the clip's flock cover, the bird's name, the day the clip was posted and, when this build has the bird's page, a
+// link to it over the whole card; the silhouette's credit sits under the card. No players, scripts or cookies from the
+// platforms (spec, "Ramar").
+import { Image } from 'astro:assets';
+import { clips } from 'virtual:birdy-clips';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../Nav.astro';
+import Footer from '../Footer.astro';
+import Kicker from '../ui/Kicker.astro';
+import JournalHeadline from '../ui/JournalHeadline.astro';
+import MarginNote from '../ui/MarginNote.astro';
+import DeckleEdge from '../ui/DeckleEdge.astro';
+import { type Locale, getCopy } from '../../lib/i18n';
+import { clipLink, clipsHref, creditParts } from '../../lib/clips.mjs';
+import { SITE, breadcrumbJsonLd, formatDate, getAllSpecies, speciesHref } from '../../lib/species';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getCopy(locale);
+const c = t.clips;
+const other: Locale = locale === 'sv' ? 'en' : 'sv';
+const pathname = clipsHref(locale);
+// The species with a page in this build, by QID. A clip links to its bird's page only when that page exists, the same
+// rule as the field notes' species links, so a clip whose bird has no page yet shows its name without a link.
+const built = new Map((await getAllSpecies()).map((s) => [s.qid, s]));
+const [postedBefore, postedAfter] = c.posted.split('{date}');
+const cards = clips.map((clip, i) => {
+  const { name, href } = clipLink(clip, built.get(clip.qid), locale, speciesHref);
+  return {
+    clip,
+    name,
+    href,
+    alt: c.coverAlt.replace('{name}', locale === 'sv' ? name.toLocaleLowerCase('sv') : name).replace('{clue}', clip.clue),
+    credit: creditParts(clip.silhouette, locale, { label: c.silhouette, adapted: c.adapted }),
+    // The first row loads at once (four cards on a wide screen), the rest as they come into view.
+    loading: i < 4 ? ('eager' as const) : ('lazy' as const),
+  };
+});
+const crumbs = [
+  { name: c.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
+  { name: c.crumb, href: pathname },
+];
+const jsonLd = [
+  {
+    '@type': 'CollectionPage',
+    name: c.title.replace(/ \| Birdy$/, ''),
+    description: c.description,
+    url: new URL(pathname, SITE).toString(),
+    inLanguage: locale,
+    isPartOf: { '@type': 'WebSite', name: 'Birdy', url: new URL('/', SITE).toString() },
+  },
+  breadcrumbJsonLd(crumbs),
+];
+---
+
+<Layout locale={locale} pathname={pathname} alternatePath={clipsHref(other)} title={c.title} description={c.description} jsonLd={jsonLd}>
+  <Nav locale={locale} variant="solid" switchLangHref={clipsHref(other)} />
+  <main id="main" tabindex="-1" class="clips-page" data-clips-page>
+    <DeckleEdge color="var(--dark)" />
+    <div class="wrap">
+      <nav class="crumbs" aria-label={c.crumbLabel}>
+        <ol>
+          <li><a href={crumbs[0].href} data-crumb>{crumbs[0].name}</a></li>
+          <li><span aria-current="page" data-crumb>{crumbs[1].name}</span></li>
+        </ol>
+      </nav>
+      <Kicker text={c.kicker} />
+      {/* "See the song" is the series' English name on both pages (spec, like the blog post); on the Swedish page it
+          should be read as English, not guessed at with Swedish pronunciation rules. */}
+      <div lang={locale === 'sv' ? 'en' : undefined}>
+        <JournalHeadline text={c.headline} level="h1" align="left" size="clamp(44px, 7vw, 80px)" />
+      </div>
+      <MarginNote text={c.note} />
+      <p class="lead">{c.lead}</p>
+      {cards.length === 0 ? (
+        <p class="empty" data-clips-empty>{c.empty}</p>
+      ) : (
+        <ol class="grid" role="list">
+          {cards.map(({ clip, name, href, alt, credit, loading }) => (
+            <li class="clip" data-clip={clip.slug}>
+              <div class:list={['card', { linked: !!href }]}>
+                <Image src={clip.cover} alt={alt} width={540} widths={[240, 360, 540]} sizes="(min-width: 1160px) 236px, (min-width: 900px) 22vw, (min-width: 640px) 30vw, 44vw" loading={loading} decoding="async" />
+                <h2 class="name">{href ? <a href={href} data-clip-link>{name}</a> : name}</h2>
+                <p class="date" data-clip-date>{postedBefore}<time datetime={clip.date}>{formatDate(clip.date, locale)}</time>{postedAfter}</p>
+              </div>
+              <p class="credit" data-clip-credit>{credit.map((part) => (part.href ? <a href={part.href}>{part.text}</a> : part.text))}</p>
+            </li>
+          ))}
+        </ol>
+      )}
+    </div>
+  </main>
+  <Footer locale={locale} switchLangHref={clipsHref(other)} edgeColor="var(--peach)" />
+</Layout>
+
+<style>
+  /* Peach paper like the social profiles; text only in --ink, --muted and --rust (pairs checked in check-contrast.mjs). */
+  .clips-page { position: relative; background: var(--peach); padding: 64px 0 104px; }
+  .crumbs ol { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0 0 22px; padding: 0; font-size: 12.5px; color: var(--muted); }
+  .crumbs li + li::before { content: '›'; margin-right: 6px; }
+  .crumbs a { text-decoration: underline; text-underline-offset: 3px; }
+  .crumbs a:hover { color: var(--rust); }
+  .lead { max-width: 38rem; }
+  .empty { margin: 44px 0 0; font-family: var(--font-script); font-weight: 700; font-size: 26px; color: var(--rust); }
+  .grid { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 14px; }
+  /* A card is a sheet of the site's card paper, so the peach cover stands out from the peach page. */
+  .card { position: relative; padding: 8px 8px 14px; background: var(--card); border-radius: 14px; box-shadow: 0 0 0 1px var(--line); }
+  .card :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 9px; }
+  .name { margin: 12px 6px 0; font-size: clamp(19px, 2vw, 23px); line-height: 1.1; color: var(--ink); overflow-wrap: anywhere; hyphens: auto; }
+  .name a { text-decoration: underline; text-decoration-color: rgba(154, 69, 38, .45); text-underline-offset: 4px; }
+  /* The name's link covers the whole card, cover and date too: one link per card, named after the bird. */
+  .name a::after { content: ''; position: absolute; inset: 0; border-radius: 14px; }
+  .linked { transition: transform .3s var(--ease-paper), box-shadow .3s var(--ease-paper); }
+  .linked:is(:hover, :has(a:focus-visible)) { transform: translateY(-3px); box-shadow: 0 0 0 1px var(--line), 0 16px 32px rgba(var(--dark-rgb), .12); }
+  .linked:is(:hover, :has(a:focus-visible)) .name a { color: var(--rust); }
+  .date { margin: 6px 6px 0; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .credit { margin: 10px 4px 0; font-size: 12px; line-height: 1.5; color: var(--muted); }
+  .credit a { text-decoration: underline; text-underline-offset: 2px; }
+  .credit a:hover { color: var(--rust); }
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 22px; }
+  }
+  @media (min-width: 900px) {
+    .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+  @media (max-width: 760px) {
+    .clips-page { padding: 48px 0 84px; }
+  }
+</style>
