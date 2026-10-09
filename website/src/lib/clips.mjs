@@ -21,12 +21,23 @@ const PDM_DEED = 'https://creativecommons.org/publicdomain/mark/1.0/';
 export const clipsHref = (locale) => (locale === 'sv' ? '/sv/klipp/' : '/clips/');
 
 /**
+ * src/data/clips.json's path under `websiteRoot`. The one place this path is written, so loadClips below and
+ * astro.config.mjs's file watch (clipsModule, which rebuilds virtual:birdy-clips whenever the import script
+ * rewrites this file) can never quietly drift apart and watch the wrong file.
+ * @param {string} websiteRoot
+ * @returns {string}
+ */
+export function clipsDataFile(websiteRoot) {
+  return resolve(websiteRoot, 'src', 'data', 'clips.json');
+}
+
+/**
  * src/data/clips.json's clips, oldest first as the import script writes them.
  * @param {string} websiteRoot
  * @returns {ClipData[]}
  */
 export function loadClips(websiteRoot) {
-  const file = resolve(websiteRoot, 'src', 'data', 'clips.json');
+  const file = clipsDataFile(websiteRoot);
   const data = JSON.parse(readFileSync(file, 'utf8'));
   if (!Array.isArray(data.clips)) throw new Error(`${file}: clips saknas (kör npm run clips:import)`);
   return data.clips;

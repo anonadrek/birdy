@@ -9,7 +9,7 @@ import { basename, dirname, resolve } from 'node:path';
 import { SHARE_QUALITY, SHARE_SIZE, assetsDir, builtSpeciesMedia, isPreview, paperColour, speciesDir } from './src/lib/species-source.mjs';
 import { readSpeciesSitemapInfo } from './src/lib/species-sitemap.mjs';
 import { buildDate, loadAppSpeciesSnapshot, selectAppDailyBird } from './src/lib/daily-bird.mjs';
-import { clipsModuleSource, loadClips } from './src/lib/clips.mjs';
+import { clipsDataFile, clipsModuleSource, loadClips } from './src/lib/clips.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 
@@ -237,7 +237,7 @@ const dailyBirdModule = {
 // prefix, as above.
 const CLIPS = 'virtual:birdy-clips';
 const RESOLVED_CLIPS = `${String.fromCharCode(0)}${CLIPS}`;
-const CLIPS_DATA_FILE = resolve(root, 'src', 'data', 'clips.json');
+const CLIPS_DATA_FILE = clipsDataFile(root);
 /** @type {import('vite').Plugin} */
 const clipsModule = {
   name: 'birdy-clips',
