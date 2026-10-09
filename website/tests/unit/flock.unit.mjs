@@ -23,12 +23,13 @@ test('flockIndexFor: appens arter sprids över hela hjärtat, grannar hamnar is�
   const perBird = new Array(FLOCK.edge).fill(0);
   for (const s of appSpecies) perBird[flockIndexFor(s.id)] += 1;
   // This holds for the 1.3.0 snapshot (839 species against 178 birds in the heart); nothing in flockIndexFor
-  // guarantees every heart bird gets at least one species if the species count ever changes.
+  // guarantees every heart bird gets at least one species. A swap that keeps the same count can still leave one empty.
   assert.equal(perBird.filter((n) => n > 0).length, FLOCK.edge, 'varje fågel i hjärtat står för minst en art');
   assert.ok(Math.max(...perBird) <= 14, `högst ${Math.max(...perBird)} arter på samma fågel (snitt ${(appSpecies.length / FLOCK.edge).toFixed(1)})`);
   const neighbours = ['Q25480', 'Q25481', 'Q25482', 'Q25483', 'Q25484', 'Q25485', 'Q25486', 'Q25487', 'Q25488', 'Q25489'].map(flockIndexFor);
-  // Not just distinct (an old scheme assigning index+1 per neighbour would pass that too): every pair must be
-  // more than one bird apart, or the light would sit next to another lit species' bird in the heart.
+  // Not just distinct (an old scheme assigning index+1 per neighbour would pass that too): a weak hash could still
+  // map consecutive QIDs to adjacent birds, and only one bird is lit per day, so every pair here must land more
+  // than one bird apart.
   for (let i = 0; i < neighbours.length; i += 1) {
     for (let j = i + 1; j < neighbours.length; j += 1) {
       assert.ok(Math.abs(neighbours[i] - neighbours[j]) > 1, `QID som skiljer på en siffra hamnar inte bredvid varandra (${neighbours[i]} och ${neighbours[j]})`);
@@ -155,8 +156,13 @@ test('flightPlan: höjd 0 (fönstret inte uppmätt än) ger inga NaN eller Infin
 test('flockSvg: fel index kastar ett tydligt fel, inte en rå TypeError på odefinierad fågel', () => {
   assert.throws(() => flockSvg({ litIndex: 9999 }), /ingen fågel/);
   assert.throws(() => flockSvg({ litIndex: -1 }), /ingen fågel/);
+  // FLOCK.birds.length is 839, so the last valid index is 838: catches a > vs >= off-by-one in the guard.
+  assert.throws(() => flockSvg({ litIndex: 839 }), /ingen fågel/);
 });
 
 test('flockSvg: otillåtet className kastar, det går oskyddat in i sidans markup via set:html', () => {
   assert.throws(() => flockSvg({ litIndex: 0, className: '"><script>' }), /className/);
+  // Pins the regex's anchors: a half-anchored check (missing ^ or $) would accept text with valid characters
+  // before or after the attack, such as this one.
+  assert.throws(() => flockSvg({ litIndex: 0, className: 'a" onload="b' }), /className/);
 });

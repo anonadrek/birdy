@@ -11,7 +11,7 @@ export const COLOURS = ['#B8893A', '#A8552D', '#72301A', '#4A1F12'];
 export const LIT = { bird: '#9A4526', disc: 'rgba(255, 248, 238, 0.96)', ring: '#A8552D' };
 /** Today's bird is drawn this many times its size in the flock. */
 export const LIT_SCALE = 1.8;
-/** Today's bird's ring (the disc behind it) is drawn this many times its size in radius. */
+/** Today's bird's disc (the ring is its stroke, not a separate shape behind it) is drawn this many times its size in radius. */
 export const DISC_SCALE = 1.6;
 
 /** The part of the flock (flock units) that every layout fits into its box: Birdy's bird with a little air. */
@@ -165,8 +165,8 @@ function markMatrix(x, y, size, rot) {
 /**
  * The landed flock with today's bird lit, as SVG markup in VIEW's coordinates. The box it is drawn in decides the size;
  * preserveAspectRatio matches fitView, so it lands where the canvas draws the same frame. Birds outside VIEW (the river
- * trailing off to the left, a few lead birds right of it, and the tail below it) are drawn too and would show if the
- * svg's overflow were visible; the hero clips them with overflow hidden.
+ * trailing off to the left, a few lead birds right of it, and the tail below it) are drawn too: they show where the
+ * svg's overflow is visible (Hero.astro sets it), and the hero's overflow hidden clips whatever falls outside the hero.
  * @param {{ litIndex: number, className?: string }} input
  * @returns {string}
  */
