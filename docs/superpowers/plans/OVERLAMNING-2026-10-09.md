@@ -9,7 +9,7 @@
 - **YouTube-kanalen telefonverifierad** (Albin skrev in koden). Den höjde inte dagsgränsen nog: efter 11 uppladdningar 9 okt kom "Daglig uppladdningsgräns uppnådd" igen.
 - **YouTube:** 19–28 okt schemalagda 08.00 Stockholm (tidszonen vald uttryckligen, så att 26–28 okt efter sommartidens slut också går ut 08.00). Listan kontrollerad: 9 okt publicerad, 10–28 okt en per dag. **Kvar: 29 okt–7 nov (10)**, tidigast när gränsen släppt (cirka 19.15 lör 10 okt).
 - **Meta, dubbletterna:** de gamla versionerna 12–22 okt (FB + IG, 22 st) flyttade till Utkast med guard per rad och kontrollerade efter omladdning. Röda rader "Det gick inte att publicera" står kvar i Schemalagt (publiceras inte). 23–28 okt har fortfarande bara gamla versioner.
-- **TikTok, dubbletterna:** agenten kan inte avplanera där (bara "Delete" finns, och permanent radering gör Albin). Albins lista: för varje datum 11–18 okt, behåll den översta raden och ta bort resten (9 inlägg). **Första tidsgränsen lör 11 okt 08.00.**
+- **TikTok, dubbletterna:** agenten kan inte avplanera där (bara "Delete" finns, och permanent radering gör Albin). Albins lista: för varje datum 11–18 okt, behåll den översta raden och ta bort resten (9 inlägg). **Första tidsgränsen sön 11 okt 08.00.**
 - **Telefonordningen:** jämförelsesidan `docs/superpowers/specs/assets/2026-10-09-telefonordning/` (artefakt FPNbw3BDY9QSLj5DizZZGb), specen uppdaterad.
 - **Flocken lyfter** (`C:/w/birdy-flock`): Task 5 (rörelsen) klar efter två fixrundor (`8fa3c722`, `e683a103`, `f4fbc52f`: startar vid alla höjder och zoomnivåer, en tangent eller fokus i hjälten hoppar till slutet, polaroiden finns kvar för skärmläsare under flykten, inga frusna rutor vid storleksändring). Task 6 (menyn på persikan, `19194e3b`) och Task 7 (kontrasttester, `d8a39833`) klara och granskade. Task 8 (delningsbilderna) pågick vid överlämningen. Smoke 240 gröna efter Task 7. Småsaker till slutstädningen står i ledgern.
 - **Klippsidan** (`C:/w/birdy-klipp`, gren `website/klipp`, lokal): spec `28a5b748` (på main), plan `2e88b8ae` (6 tasks, delad i `C:/w/birdy-klipp-qa/tasks/`). Task 1 baslinje (unit 98, Playwright 209), Task 2 klippdatan `b7c066bb` (30 klipp 9 okt–7 nov, 30 flockomslag, 5 CC BY-silhuetter märkta bearbetade) granskad "Ready" + en liten fixrunda (`.DS_Store`-filter, datumkoll, felmeddelanden, omslagsväg). **Notering:** vid push hamnar alla 30 omslag i det publika repot före sina dagar; ledtrådarna finns redan publikt på `social/see-the-song`, så det accepterades. Kvar: Task 3–6, sedan Vercel-förhandsvisning till Albin.
@@ -26,7 +26,7 @@
 - **LIVE 20.53.** Albin: "Ser kanon ut". Båda grenarna slogs ihop med `main` i en integrationsgren (`integration/webb-lyft` i `C:/w/birdy-flock`), hela grinden kördes på den kombinationen (verify:fixtures, accuracy, Playwright 270/0, tomma hubben, astro check 0/0/1) och `main` snabbspolades till `c805e7dd`. Live efter cirka 60 s (`/sv/` har flockens canvas, `/clips/` och `/sv/klipp/` svarar 200). Grenarna krockade inte med varandra; `website/socials` provmergar fortfarande rent.
 
 **Nästa session, i ordning:**
-1. Påminn om TikTok-städningen (lör 11 okt 08.00 för 11 okt).
+1. Påminn om TikTok-städningen (sön 11 okt 08.00 för 11 okt).
 2. YouTube 29 okt–7 nov när gränsen släppt (cirka 19.15 lör 10 okt; receptet i runbooken, avsnittet "Kvällen 9 okt"; tryck aldrig Escape i uppladdningsdialogen).
 3. Albin lägger `birdy.community/clips/` i bion på Instagram och, efter bytet till företagskonto, TikTok (båda bara i appen).
 4. Öppna småfrågor om hjälten (från slutgranskningen): starta rörelsen när flockscenen syns i stället för hjälten (på telefon kan lyftet ske under vecket), långa artnamn som bryts vid bindestreck i polaroiden, `theme-color` espresso på Android. Valfritt för Albin: Facebooks Sharing Debugger för `/` och `/sv/` så att de nya delningskorten (`og-field-*.jpg?v=4`) syns.
@@ -35,7 +35,7 @@ Albin bad om en ny session ("Se till så vi kan dra igång i en ny session"). L�
 
 ## Börja här
 
-1. **Albins städlista har tidsgränser.** Ligger en gammal version av ett inlägg kvar när dagen kommer går båda ut kl. 08.00. Första gränsen är **lör 11 okt 08.00** (TikTok). Fråga Albin om listan är gjord. Agenten tar inte bort inlägg själv: Albin vill göra det sist, och Claude Codes säkerhetskontroll stoppar ofta borttagning. Se avsnitt 3.
+1. **Albins städlista har tidsgränser.** Ligger en gammal version av ett inlägg kvar när dagen kommer går båda ut kl. 08.00. Första gränsen är **sön 11 okt 08.00** (TikTok). Fråga Albin om listan är gjord. Agenten tar inte bort inlägg själv: Albin vill göra det sist, och Claude Codes säkerhetskontroll stoppar ofta borttagning. Se avsnitt 3.
 2. **Flocken lyfter, Task 5 (rörelsen)** med SDD i `C:/w/birdy-flock`. Se avsnitt 1.
 3. **De sociala uppladdningarna som återstår** (Chrome, Albins inloggade webbläsare): YouTube 19 okt till 7 nov när dagsgränsen har släppt, Meta 23 okt till 7 nov när strypningen har släppt. Se avsnitt 2.
 
@@ -47,7 +47,7 @@ Kör högst ett tungt jobb åt gången (Gradle, emulator eller Lighthouse) och h
 |---|---|---|---|
 | Flocken lyfter | `C:/w/birdy-flock`, gren `website/flocken-lyfter` (lokal, inte pushad) | Task 0 till 4 klara och granskade (`b507a789`) | Task 5 till 11 |
 | Sociala: nya omslag och loop | runbooken, avsnittet "Omplaneringen med flockomslagen" | TikTok klart, Meta klart till 22 okt, YouTube inget nytt | Meta 23 okt till 7 nov, YouTube 19 okt till 7 nov |
-| Albins städlista | avsnitt 3 | okänt om något är gjort | påminn före lör 11 okt 08.00 |
+| Albins städlista | avsnitt 3 | okänt om något är gjort | påminn före sön 11 okt 08.00 |
 | 1.3.1 | `release/1.3.0` (`56efe9f8`) och `docs/superpowers/plans/2026-10-08-1.3.1-samlad-release.md` där | punkt 7, 8 och 12 klara; länkarna i Märken 1b beslutade (A) | punkt 6, sedan 2 till 5 |
 | Klippsidan | förslag, avsnitt 5 | väntar på Albins "kör" | sidan först, länkarna sedan |
 | Galleriet på startsidan | `docs/superpowers/specs/assets/2026-10-08-galleri/` | ordningen vald, fyra nya skärmar tagna | skärm 12 om, sedan in i `AppTour` |
@@ -126,8 +126,8 @@ Albin tar bort de gamla själv. Ligger en gammal version kvar när dagen kommer 
 
 | Senast | TikTok | Facebook + Instagram |
 |---|---|---|
-| lör 11 okt 08.00 | 11 okt: den nedre gråsparven (flock utan loop) | 11 okt: den röda raden "Det gick inte att publicera" (inlägget ligger redan i Utkast) |
-| sön 12 okt 08.00 | 12 okt: behåll den översta gräsanden, ta bort de två andra | 12 okt: de två med mörk "?"-miniatyr |
+| sön 11 okt 08.00 | 11 okt: den nedre gråsparven (flock utan loop) | 11 okt: den röda raden "Det gick inte att publicera" (inlägget ligger redan i Utkast) |
+| mån 12 okt 08.00 | 12 okt: behåll den översta gräsanden, ta bort de två andra | 12 okt: de två med mörk "?"-miniatyr |
 | 08.00 varje dag 13 till 18 okt | den gamla utan "Silhouette:" i texten (6 st) | de två med mörk "?"-miniatyr (12 st) |
 | 08.00 varje dag 19 till 22 okt | inget | de två med mörk "?"-miniatyr (8 st) |
 | 23 till 28 okt | inget | vänta tills de nya är uppe, ta sedan bort de gamla |
@@ -172,7 +172,7 @@ Albin frågade 9 okt om klippen ska länka till artsidorna. Förslaget:
 
 - **Fre 9 okt 08.00:** de första inläggen (Blåmes) var schemalagda. Meta visade dem som publicerade under dagen; TikTok och YouTube är inte kontrollerade.
 - **Cirka 01.00 lör 10 okt:** YouTubes dagsgräns släpper.
-- **Lör 11 okt 08.00:** första tidsgränsen i städlistan. **Sön 12 okt 08.00:** den andra.
+- **Sön 11 okt 08.00:** första tidsgränsen i städlistan. **Mån 12 okt 08.00:** den andra.
 - **Mån 12 okt:** IndexNow körs automatiskt. Titta på Sidor och Prestanda i Search Console.
 - **Nästa vecka:** Slack Pro, MapTiler Flex och Resend.
 - **Tidigast tors 15 okt:** artsidorna igen (Search Console först, sedan de 2 klara, undantagen och cirka 3 arter om dagen).
