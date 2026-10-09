@@ -59,7 +59,7 @@ val flexJniLibsDir = layout.buildDirectory.dir("flex16k/jniLibs")
 // ---- Release build safety guards (Task 12a, final review of Plan 1, 2026-09-25) ----
 // vC128 (purchase-test build, uploaded to internal testing only) is built with
 // -Pbirdy.grandfatherCutoffMs=0 -Pbirdy.billingTestBuild=true so nobody is
-// grandfathered and purchases can be tested; vC129 (production) is the plain default.
+// grandfathered and purchases can be tested; vC130 (1.3.1, production) is the plain default.
 // providers.gradleProperty(name) resolves the SAME effective value whether it came
 // from -P on the command line, gradle.properties (project root or GRADLE_USER_HOME),
 // an ORG_GRADLE_PROJECT_* env var, or a -D system property — it cannot tell the
@@ -83,8 +83,8 @@ fun releaseFlagFromCommandLineOnly(name: String): String? {
     return fromCommandLine
 }
 
-val releaseVersionCode = 129
-val releaseVersionNameBase = "1.3.0"
+val releaseVersionCode = 130
+val releaseVersionNameBase = "1.3.1"
 
 // A cutoff override requires BOTH -Pbirdy.grandfatherCutoffMs=<ms> AND
 // -Pbirdy.billingTestBuild=true — the second flag exists so a cutoff override can
@@ -100,13 +100,24 @@ if (cutoffOverride != null && !billingTestBuild) {
 }
 val releaseVersionName = releaseVersionNameBase + (if (billingTestBuild) "-koptest" else "")
 
+// 1.3.1 ships FREE (Albin 2026-10-09): Premium is open for everyone, as in 1.2, and payment
+// turns on in a later release once BirdNET has answered. While Premium is open nobody is
+// grandfathered (cutoff 0), so the early-member thank-you ("before Birdy started charging")
+// never shows; GrandfatherStartup still stores every install proof for that later release.
+val premiumOpenForLaunch = true
+
 // Early-user cutoff (spec §5.1): installs before this instant keep Premium forever.
-// Default = planned go-live + 48 h, rounded up to midnight = 2026-10-17T00:00
-// Europe/Stockholm (2026-10-16T22:00:00Z), for go-live on Thursday 2026-10-15. Moved
-// 2026-10-01 from 2026-10-02 to 2026-10-16, then 2026-10-07 to 2026-10-17 when the launch
-// day was set (Albin's call); move it again BEFORE building vC130 if go-live slips past
-// 2026-10-15. NEVER change it after 1.3.0 ships.
-val grandfatherCutoffMs = cutoffOverride ?: "1792188000000"
+// The release that turns payment on sets it to 1.3.1's go-live + 48 h, rounded up to
+// midnight Europe/Stockholm (the website promises Premium to everyone who "used Birdy before
+// version 1.3"), together with premiumOpenForLaunch = false. Until then it is 0 and has no
+// effect. NEVER change it after that paid release ships.
+val grandfatherCutoffMs =
+    cutoffOverride
+        ?: if (premiumOpenForLaunch) {
+            "0"
+        } else {
+            error("Set the early-user cutoff (1.3.1 go-live + 48 h) before turning payment on.")
+        }
 
 android {
     namespace = "se.birdy.android"
@@ -137,7 +148,7 @@ android {
             "\"${project.findProperty("BIRDY_PLAY_LICENSE_KEY") ?: ""}\"",
         )
         // Monetisation is live from 1.3.0 (spec 2026-09-24): no launch-period override.
-        buildConfigField("Boolean", "PREMIUM_OPEN_FOR_LAUNCH", "false")
+        buildConfigField("Boolean", "PREMIUM_OPEN_FOR_LAUNCH", "${premiumOpenForLaunch && !billingTestBuild}")
         // Cutoff/test-build override logic + the "NEVER change it after ships" rule live
         // in the "Release build safety guards" block above defaultConfig, so both this
         // block and verifyReleaseKeys/verifyProductionRelease share one computation.
@@ -318,6 +329,7 @@ val verifyReleaseKeys by tasks.registering {
     inputs.property("releaseVersionName", releaseVersionName)
     inputs.property("grandfatherCutoffMs", grandfatherCutoffMs)
     inputs.property("billingTestBuild", billingTestBuild)
+    inputs.property("premiumOpenForLaunch", premiumOpenForLaunch && !billingTestBuild)
     // The map's MapTiler style (composeApp bakes it into BuildConfig and rejects a malformed id).
     // Not a secret; printed so the vC130 build log shows which style ships. Unset is legal (the
     // app falls back to MapTiler's stock style), so it only warns, never fails.
@@ -333,6 +345,7 @@ val verifyReleaseKeys by tasks.registering {
                     "versionName=${inputs.properties["releaseVersionName"]} " +
                     "GRANDFATHER_CUTOFF_MS=${inputs.properties["grandfatherCutoffMs"]} " +
                     "billingTestBuild=${inputs.properties["billingTestBuild"]} " +
+                    "PREMIUM_OPEN_FOR_LAUNCH=${inputs.properties["premiumOpenForLaunch"]} " +
                     "MAPTILER_STYLE_ID=${mapTilerStyleId.ifEmpty { "unset" }}",
             )
             if (mapTilerStyleId.isEmpty()) {
