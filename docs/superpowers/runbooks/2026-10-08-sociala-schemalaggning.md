@@ -39,6 +39,25 @@ Albin ville ha ett eget omslag per inlägg ("C med en tvist": flocken formar var
 - **YouTube, beprövat recept i skymt fönster:** fokusera titel och beskrivning med `el.focus()` (fältens `aria-label` börjar med "Lägg till en titel" respektive "Berätta för tittarna") och skriv med riktiga tangenttryck; radio, Nästa, Schemalägg-panelen, datumet (`.calendar-day` under rätt `.calendar-month-label`), tiden och tidszonen går med JS-klick, en åtgärd per JS-anrop med zoom emellan. **Tryck aldrig Escape i uppladdningsdialogen**: den stängs och videon blir ett utkast. Välj tidszonen "(GMT+02:00) Stockholm" uttryckligen så att inlägg efter sommartidens slut (25 okt) också går ut 08.00.
 - **När flikgruppen tappas** (till exempel när den sista fliken stängs) skapar `tabs_context_mcp` ett nytt fönster som kan hamna minimerat; Albin får då ta fram det.
 
+## Meta klart till 7 nov (9 okt kväll, ca 18.40 till 21.30)
+
+- **Läget:** Facebook + Instagram har de nya versionerna (flockomslag, loop) varje dag 10 okt till 7 nov. 16 nya reels laddades upp i kväll (23 okt till 7 nov) utan att Meta strypte. De gamla 23–28 okt (12 st, FB + IG) är flyttade till Utkast. Kontroll efter omladdning av Schemalagt: 29 dagar, varje dag exakt ett FB- och ett IG-inlägg som inte är rött, alla med ljus miniatyr (nya); 11 röda rester ("Det gick inte att publicera") publiceras inte. Albin kan radera utkasten och de röda raderna när han vill.
+- **Hjälpskriptet** för bildtexter: `python cap.py <slug>` i en lokal hjälpmapp (skriver FB, IG och TikTok-texten som JSON-strängar). Vakten före Nästa jämför editorns `innerText` med förväntad text efter att alla blanktecken slagits ihop till ett mellanslag.
+- **Facebook-sidans namn** är nu "Birdy: Bird ID" (syns i Business Suite; "Publicera i" säger "Birdy: Bird ID och app.birdy").
+- **Brambling (7 nov)** har ingen publicerad artsida, så Facebook-texten länkar till `https://birdy.community/` i stället; vakten ska då leta efter den länken.
+- **Fällor i Business Suite i kväll:**
+  - "Lägg till video" flyttar sig medan WhatsApp-banderollen överst laddar: klicka knappen med JS (den synliga `div` som är 142×36 och har texten "Lägg till video"); filpatchen fångar filinmatningen ändå.
+  - I skymt fönster: reglaget "Anpassa inlägget", flikarna Facebook/Instagram, Nästa, Textning (`input[type=checkbox]` i raden), alternativet Schemalägg och knappen Schemalägg går alla med JS-klick. Textredigerarna kräver riktiga klick: kontrollera först med `elementFromPoint` att redigeraren ligger under punkten; Instagram-redigeraren hamnar på olika höjd, så kör `scrollIntoView({block: 'center'})` på den först.
+  - Datum och tid: `focus()` på datumfältet med JS (det går då i redigeringsläge), sedan ctrl+a, skriv `ÅÅÅÅ-MM-DD`, Tab (fokus hamnar i timmar), `08`, högerpil, `00`. Instagram först, sedan Facebook. En röd felrad under tiden medan datumet är ändrat men tiden inte är det är normal.
+  - **Långa batcher tar timeout** (över cirka 60 steg med zoomar), men batchen fortsätter i bakgrunden. Läs alltid läget med JS innan något görs om, annars schemaläggs samma reel två gånger. Dela upp i två batcher: texterna, sedan Nästa till Schemalägg.
+- **Fällor i Schemalagt (Flytta till utkast):**
+  - Tabellen (`table`) är själv det som skrollar; nya rader laddas bara när sidan ritas, så zooma mellan skrollningarna i skymt fönster.
+  - Gamla och nya Instagram-rader heter båda "Din reel"; Facebooks gamla rader visar bildtexten. Miniatyrens ljushet är den säkra skillnaden.
+  - **"Publicera nu" står i panelen även för schemalagda inlägg**: det säger inget om utkast, och knappen ska aldrig tryckas. Bara schemalagda inlägg har menyvalet "Flytta till utkast", så det är vakten.
+  - Bekräftelsedialogen "Vill du avbryta det schemalagda publiceringsdatumet?" ligger kvar i DOM:en efter varje flytt, så det blir flera staplade kopior. Klicka bara knappen i den översta (den som `elementFromPoint` träffar).
+  - Efter flytten: Facebook-raden blir en röd rest, Instagram-raden försvinner ur Schemalagt.
+  - `javascript_tool` väntar inte in promises: lägg resultatet på `window` och läs det i nästa anrop.
+
 ## Material
 
 - Gren `social/see-the-song`, worktree `C:/w/birdy-social`.
