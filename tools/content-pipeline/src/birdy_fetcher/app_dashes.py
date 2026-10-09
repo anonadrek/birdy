@@ -2,8 +2,9 @@
 species texts the app shows. The app shows `description`, `migration` and `marginalia`
 (SpeciesDbBuilder.kt) through SpeciesTextCleaner.kt, which hides the first line when it is a
 heading and shows every other line. Number and month ranges get a rule ("12 till 14 cm",
-"mars till april"); every other sentence that still has a dash goes to the model step in
-app_dashes_run.py. `review_notes` and `image_refs` are never shown and never touched."""
+"mars till april", "mellan 40 och 50 cm" after "mellan"/"between"); every other sentence that
+still has a dash goes to the model step in app_dashes_run.py. `review_notes` and `image_refs`
+are never shown and never touched."""
 
 from __future__ import annotations
 
@@ -20,6 +21,11 @@ DASH = re.compile("[\u2013\u2014]")
 TEXT_FIELDS = ("description", "migration", "marginalia")
 
 _RANGE_WORD = {"sv": "till", "en": "to"}
+# "mellan 40-50 cm" and "between 24-39.5 grams" read wrong as "mellan 40 till 50"/"between 24
+# to 39.5": rule_fix uses these instead of _RANGE_WORD when the range sits right after
+# "mellan"/"between" (case-insensitively), for both the number and the month branch.
+_RANGE_WORD_AFTER_BETWEEN = {"sv": "och", "en": "and"}
+_BETWEEN_WORD = {"sv": "mellan", "en": "between"}
 _MONTHS = {
     "sv": (
         "januari|februari|mars|april|maj|juni|juli|augusti|september|oktober|november|december"
@@ -31,9 +37,10 @@ _MONTHS = {
     ),
 }
 # A number or month range only becomes "till"/"to" (rule_fix below, on this regex and the
-# month one it builds) when a digit, or a month name, touches the dash (U+2013/U+2014) on
-# BOTH sides. A bare year next to an aside remark that happens to be set off by a dash is not
-# a range and is left for the model step in app_dashes_run.py on purpose.
+# month one it builds, via _join_word) when a digit, or a month name, touches the dash
+# (U+2013/U+2014) on BOTH sides -- "och"/"and" instead when "mellan"/"between" sits right
+# before the range. A bare year next to an aside remark that happens to be set off by a dash
+# is not a range and is left for the model step in app_dashes_run.py on purpose.
 _NUMBER_RANGE = re.compile(r"(?<=\d)\s*[\u2013\u2014]\s*(?=\d)")
 _NUMBER = re.compile(r"\d+(?:[.,]\d+)?")
 # A space, no-break space (U+00A0) or narrow no-break space (U+202F) used as a thousands
@@ -173,14 +180,28 @@ def visible_line_indexes(lines: list[str]) -> range:
     return range(0, len(lines))
 
 
+def _join_word(text_before_range: str, lang: str) -> str:
+    """The joining word for one range: "och"/"and" when `text_before_range` (everything up to
+    the start of the range; for the number-range branch that is right after the range's first
+    number, not right before it, so the optional number group below skips over it) ends with
+    "mellan"/"between" as its own word, case-insensitively; "till"/"to" otherwise."""
+    pattern = rf"\b{_BETWEEN_WORD[lang]}\s+(?:\d+(?:[.,]\d+)?\s*)?$"
+    if re.search(pattern, text_before_range, re.IGNORECASE):
+        return _RANGE_WORD_AFTER_BETWEEN[lang]
+    return _RANGE_WORD[lang]
+
+
 def rule_fix(line: str, lang: str) -> str:
     """Number ranges ("12–14 cm") and month ranges ("mars–april") read the same with a word
-    instead of the dash: "12 till 14 cm", "mars till april" ("to" in English)."""  # noqa: RUF002
-    word = _RANGE_WORD[lang]
-    line = _NUMBER_RANGE.sub(f" {word} ", line)
+    instead of the dash: "12 till 14 cm", "mars till april" ("to" in English); "och"/"and"
+    instead when the range sits right after "mellan"/"between" ("mellan 40 och 50 cm", "between
+    24 and 39.5 grams"), so the sentence never reads "mellan 40 till 50"."""  # noqa: RUF002
+    fixed = _NUMBER_RANGE.sub(lambda m: f" {_join_word(line[: m.start()], lang)} ", line)
     months = _MONTHS[lang]
     month_range = re.compile(rf"\b({months})\s*[\u2013\u2014]\s*({months})\b", re.IGNORECASE)
-    return month_range.sub(rf"\1 {word} \2", line)
+    return month_range.sub(
+        lambda m: f"{m.group(1)} {_join_word(fixed[: m.start()], lang)} {m.group(2)}", fixed
+    )
 
 
 def split_sentences(paragraph: str) -> list[str]:

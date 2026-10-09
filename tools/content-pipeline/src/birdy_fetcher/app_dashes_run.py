@@ -8,9 +8,11 @@ from __future__ import annotations
 
 import asyncio
 import json
+import re
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 
 from pydantic import BaseModel
 
@@ -67,6 +69,39 @@ fine. Give a short reason either way.
 """.strip()
 
 CHECKER_EFFORT = "medium"
+
+# SpeciesValidator.kt's description-too-short rule (validateSpeciesData): split on a run of
+# whitespace, drop the blanks, need >=80 of what is left. Kotlin's default `Regex("\\s+")`
+# (no UNICODE_CHARACTER_CLASS) matches only ASCII whitespace, not Python's wider Unicode `\s`
+# (which also splits on U+00A0/U+202F, used here for thousands grouping) -- this mirrors the
+# validator exactly rather than Python's default, so the two never disagree on a borderline
+# description.
+_MIN_DESCRIPTION_WORDS = 80
+_VALIDATOR_WHITESPACE = re.compile("[ \t\n\x0b\x0c\r]+")
+_WORD_COUNT_FAIL_REASON = "för få ord (validateSpeciesData kräver 80)"
+
+
+def _word_count(text: object) -> int:
+    """The validator's word count for one `description.<lang>` value: 0 for anything that
+    is not a string (missing/None, same as `(text ?: "").split(...)` on the Kotlin side)."""
+    if not isinstance(text, str):
+        return 0
+    return len([w for w in _VALIDATOR_WHITESPACE.split(text) if w.strip()])
+
+
+def _description_word_count_regressions(scan: SpeciesScan, new_data: dict[str, Any]) -> list[str]:
+    """Languages whose `description` had >=80 words before this run (scan.data, untouched)
+    and would drop under 80 after it (new_data, rule fixes + accepted rewrites applied); empty
+    when every language is still fine, or was already short before this run started (that is
+    a pre-existing gap for a human to close, not something app-dashes caused)."""
+    before = scan.data.get("description") or {}
+    after = new_data.get("description") or {}
+    return [
+        lang
+        for lang, old_text in before.items()
+        if _word_count(old_text) >= _MIN_DESCRIPTION_WORDS
+        and _word_count(after.get(lang)) < _MIN_DESCRIPTION_WORDS
+    ]
 
 
 @dataclass
@@ -150,7 +185,16 @@ async def _species(
         assert client is not None
         accepted = await _rewrite(scan, client, opts, cost, outcome)
     if scan.fixed or accepted:
-        dump_species(apply_rewrites(scan, accepted), scan.path)
+        new_data = apply_rewrites(scan, accepted)
+        if _description_word_count_regressions(scan, new_data):
+            # Not written at all: the rule fixes alone can only add words (a dash becomes
+            # "till"/"to"/"och"/"and"), so a drop under 80 always traces back to an accepted
+            # rewrite that removed a spaced dash without replacing it with its own word. Every
+            # sentence keeps its dash either way, so a human can fix the wording by hand.
+            outcome.rewritten = []
+            outcome.failed = [(s, _WORD_COUNT_FAIL_REASON) for s in scan.sentences]
+            return outcome
+        dump_species(new_data, scan.path)
         outcome.written = True
     return outcome
 

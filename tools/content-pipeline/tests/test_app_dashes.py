@@ -21,6 +21,7 @@ from birdy_fetcher.app_dashes import (
     split_sentences,
 )
 from birdy_fetcher.app_dashes_run import (
+    _WORD_COUNT_FAIL_REASON,
     CheckReply,
     DashOptions,
     Rewrite,
@@ -110,11 +111,23 @@ def test_is_no_data_heading_matches_the_app_cleaner() -> None:
 
 def test_rule_fix_turns_number_and_month_ranges_into_words() -> None:
     assert rule_fix("Den är 12–14 cm.", "sv") == "Den är 12 till 14 cm."
-    assert rule_fix("Mellan 1990—2000 ökade den.", "sv") == "Mellan 1990 till 2000 ökade den."
     assert rule_fix("Den flyttar i mars–april.", "sv") == "Den flyttar i mars till april."
     assert rule_fix("It is 12–14 cm long.", "en") == "It is 12 to 14 cm long."
     assert rule_fix("It passes in Oct–Nov.", "en") == "It passes in Oct to Nov."
     assert rule_fix("The call—a sharp pip—carries.", "en") == "The call—a sharp pip—carries."
+
+
+def test_rule_fix_uses_and_och_right_after_between_mellan() -> None:
+    # The bug this closes: "mellan 40–50" became "mellan 40 till 50" and "between 24–39.5"
+    # became "between 24 to 39.5" -- both read wrong. "Mellan 1990—2000" is the same shape
+    # (mellan directly before a number range), so it is no longer an exception either, unlike
+    # the plain "Den är 12–14 cm." case above where no mellan/between precedes the range.
+    assert rule_fix("between 24–39.5 grams", "en") == "between 24 and 39.5 grams"
+    assert rule_fix("mellan 40–50 cm", "sv") == "mellan 40 och 50 cm"
+    assert rule_fix("mellan mars–april", "sv") == "mellan mars och april"
+    assert rule_fix("Mellan 1990—2000 ökade den.", "sv") == "Mellan 1990 och 2000 ökade den."
+    # "about"/"ungefär" right before the range is not "mellan"/"between", so unaffected.
+    assert rule_fix("about 24–39.5 grams", "en") == "about 24 to 39.5 grams"
 
 
 def test_split_sentences_puts_the_paragraph_back_byte_for_byte() -> None:
@@ -301,6 +314,38 @@ async def test_an_accepted_rewrite_is_written(tmp_path: Path) -> None:
     assert result.outcomes[0].written
     assert [new for _, new in result.outcomes[0].rewritten] == [GOOD]
     assert GOOD in result.report.read_text(encoding="utf-8")
+
+
+# SpeciesValidator.kt's validateSpeciesData requires >=80 words per description language.
+# 72 filler words + the 9-word dash sentence ("Lätet", "—", "ett", "vasst", "pip", "—", "hörs",
+# "i", "maj.") is 81 before; GOOD turns the sentence into 7 words (its two spaced dashes were
+# their own whitespace-delimited token each, and the commas that replace them attach to the
+# word before instead of standing alone), landing at 79 after -- a regression even though the
+# rewrite itself passes both check_rewrite and the checker model.
+_WORD_COUNT_FILLER = " ".join(["Detta är en testmening."] * 18)  # 72 words
+DESCRIPTION_SV_81_WORDS = f"{_WORD_COUNT_FILLER} Lätet — ett vasst pip — hörs i maj."
+
+
+async def test_a_rewrite_that_would_drop_the_description_under_80_words_is_not_written(
+    tmp_path: Path,
+) -> None:
+    path = write_species(tmp_path, DESCRIPTION_SV_81_WORDS)
+    scan = scan_species(path)
+    assert len(scan.sentences) == 1
+    key = scan.sentences[0].key
+    client = FakeJsonClient(
+        [
+            reply(RewriteReply(rewrites=[Rewrite(id=key, text=GOOD)])),
+            reply(CheckReply(verdicts=[Verdict(id=key, same_meaning=True, reason="samma")])),
+        ]
+    )
+    before = path.read_text(encoding="utf-8")
+    result = await run_app_dashes(options(tmp_path), client)
+    assert path.read_text(encoding="utf-8") == before  # nothing written, not even the rule fixes
+    outcome = result.outcomes[0]
+    assert not outcome.written
+    assert outcome.rewritten == []
+    assert outcome.failed == [(scan.sentences[0], _WORD_COUNT_FAIL_REASON)]
 
 
 async def test_a_rewrite_the_checker_rejects_keeps_its_dash(tmp_path: Path) -> None:
