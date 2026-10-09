@@ -68,7 +68,11 @@ const jsonLd = [
         </ol>
       </nav>
       <Kicker text={c.kicker} />
-      <JournalHeadline text={c.headline} level="h1" align="left" size="clamp(44px, 7vw, 80px)" />
+      {/* "See the song" is the series' English name on both pages (spec, like the blog post); on the Swedish page it
+          should be read as English, not guessed at with Swedish pronunciation rules. */}
+      <div lang={locale === 'sv' ? 'en' : undefined}>
+        <JournalHeadline text={c.headline} level="h1" align="left" size="clamp(44px, 7vw, 80px)" />
+      </div>
       <MarginNote text={c.note} />
       <p class="lead">{c.lead}</p>
       {cards.length === 0 ? (
