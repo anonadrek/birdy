@@ -246,6 +246,53 @@ test.describe('meny och sidfot', () => {
   });
 });
 
+test.describe('menyn över persikopappret', () => {
+  for (const [path, label] of [['/sv/', 'Arter'], ['/', 'Species']] as const) {
+    test(`menyn på ${path} har mörk text över hjälten och ljus text när den blir espressobrun`, async ({ page }) => {
+      await page.setViewportSize({ width: 1280, height: 800 });
+      await page.goto(path);
+      const nav = page.locator('#site-nav');
+      await expect(nav).not.toHaveClass(/is-solid/);
+      await expect(nav.locator('.links a').first()).toHaveText(label);
+      await expect(nav.locator('.links a').first()).toHaveCSS('color', 'rgb(48, 32, 25)');
+      await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(48, 32, 25)');
+      await page.evaluate(() => window.scrollTo({ top: 3000, behavior: 'instant' }));
+      await expect(nav).toHaveClass(/is-solid/);
+      await expect(nav.locator('.links a').first()).toHaveCSS('color', 'rgb(255, 248, 238)');
+      await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(255, 248, 238)');
+    });
+  }
+
+  test('menyknappen på mobilen är mörk och utan espressoskiva över hjälten', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/sv/');
+    const toggle = page.locator('#site-nav .menu-toggle');
+    await expect(toggle).toHaveCSS('color', 'rgb(48, 32, 25)');
+    await expect(toggle).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+  });
+
+  test('Premium-sidans meny behåller ljus text över sin mörka hjälte', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/sv/premium/');
+    await expect(page.locator('#site-nav')).not.toHaveClass(/is-solid/);
+    await expect(page.locator('#site-nav .links a').first()).toHaveCSS('color', 'rgb(255, 248, 238)');
+  });
+
+  test.describe('kontrast', () => {
+    test.use({ contextOptions: { reducedMotion: 'reduce' } });
+
+    test('den första menylänken klarar 4.5:1 mot hjälten', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto('/sv/');
+      await page.addStyleTag({ content: '#site-nav .links a { visibility: hidden !important; }' });
+      await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+      await expect(page.locator('#site-nav')).not.toHaveClass(/is-solid/);
+      const ratio = await textContrastAgainstBackground(page, page.locator('#site-nav .links a').first());
+      expect(ratio, `första menylänken mot hjälten: ${ratio.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
+    });
+  });
+});
+
 test.describe('utan JavaScript', () => {
   test.use({ javaScriptEnabled: false });
 
