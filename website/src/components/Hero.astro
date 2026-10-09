@@ -61,7 +61,7 @@ const litIndex = flockIndexFor(species?.qid ?? 'Q25485');
 const flockLabel = t.hero.flockLabel.replace('{name}', bird.name);
 ---
 
-<header class="hero" data-hero data-daily-bird={species?.qid ?? ''} data-app-bird={appQid ?? ''} data-date={date.iso} data-flock-index={litIndex}>
+<header class="hero" data-hero data-daily-bird={species?.qid ?? ''} data-app-bird={appQid ?? ''} data-date={date.iso} data-flock-index={litIndex} data-flock="waiting">
   <div class="wrap words">
     <div class="intro">
       <span class="nav-until" data-nav-until aria-hidden="true"></span>
@@ -82,6 +82,7 @@ const flockLabel = t.hero.flockLabel.replace('{name}', bird.name);
 </header>
 
 <script>
+  import './hero/flock-motion';
   import './hero/same-as-app-guard';
 </script>
 
@@ -124,5 +125,11 @@ const flockLabel = t.hero.flockLabel.replace('{name}', bird.name);
     .stage { position: absolute; top: calc(76px + 12px); bottom: 12px; right: max(12px, calc((100% - 1320px) / 2)); display: block; width: auto; height: min(calc(100% - 128px), calc(50vw - 40px)); aspect-ratio: 680 / 720; margin: auto 0; padding: 0; }
     .fit { inset: 0; width: 100%; height: 100%; aspect-ratio: auto; }
     .stage :global(.polaroid) { position: absolute; right: 68%; bottom: 3%; margin: 0; }
+  }
+
+  /* Until the flock has landed the polaroid waits out of sight (hero/flock-motion.ts lifts it out of the lit bird). Only
+     with JavaScript and motion: reduced motion and no JavaScript show it at once. */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html.js) .hero:is([data-flock='waiting'], [data-flock='flying']) :global(.polaroid) { visibility: hidden; }
   }
 </style>

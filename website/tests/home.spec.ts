@@ -455,6 +455,94 @@ test.describe('första vyn', () => {
   });
 });
 
+test.describe('flocken lyfter', () => {
+  test.describe('med minskad rörelse', () => {
+    test.use({ contextOptions: { reducedMotion: 'reduce' } });
+
+    test('flocken står landad direkt, med dagens fågel tänd', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto('/sv/');
+      const hero = page.locator('[data-hero]');
+      await expect(hero).toHaveAttribute('data-flock', 'done');
+      await expect(hero.locator('[data-polaroid]')).toBeVisible();
+      const geo = await page.evaluate(() => {
+        const c = (document.querySelector('[data-flock-canvas]') as HTMLElement).getBoundingClientRect();
+        const f = (document.querySelector('[data-flock-fit]') as HTMLElement).getBoundingClientRect();
+        return { left: f.left - c.left, top: f.top - c.top, width: f.width, height: f.height };
+      });
+      const lit = landing(FLOCK.birds[2], fitView(geo));
+      const alpha = (x: number, y: number) =>
+        page.locator('[data-flock-canvas]').evaluate((canvas: HTMLCanvasElement, [px, py]) => {
+          const k = canvas.width / canvas.getBoundingClientRect().width;
+          return canvas.getContext('2d')!.getImageData(Math.round(px * k), Math.round(py * k), 1, 1).data[3];
+        }, [x, y] as const);
+      expect(await alpha(lit.x, lit.y), 'dagens fågel är ritad').toBeGreaterThan(230);
+      expect(await alpha(2, 2), 'resten av ytan är tom').toBe(0);
+      expect(await hero.evaluate((h) => h.getAnimations({ subtree: true }).length), 'inget rör sig').toBe(0);
+    });
+  });
+
+  test('flocken flyger in en gång, landar och står sedan still', async ({ page }) => {
+    const errors = trackConsoleErrors(page);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    await expect(hero).toHaveAttribute('data-flock', 'flying');
+    await expect(hero.locator('[data-polaroid]')).toBeHidden();
+    await expect(hero).toHaveAttribute('data-flock', 'done', { timeout: 15_000 });
+    await expect(hero.locator('[data-polaroid]')).toBeVisible();
+    expect(await hero.evaluate((h) => h.getAnimations({ subtree: true }).length), 'inga animationer kvar').toBe(0);
+    const frame = () => page.locator('[data-flock-canvas]').evaluate((c: HTMLCanvasElement) => c.toDataURL());
+    const landed = await frame();
+    await page.waitForTimeout(600);
+    expect(await frame(), 'inget ritas om efter landningen').toBe(landed);
+    const shift = await page.evaluate(() => new Promise<number>((resolve) => {
+      let sum = 0;
+      new PerformanceObserver((list) => {
+        for (const e of list.getEntries() as (PerformanceEntry & { value: number; hadRecentInput: boolean })[]) if (!e.hadRecentInput) sum += e.value;
+      }).observe({ type: 'layout-shift', buffered: true });
+      setTimeout(() => resolve(sum), 50);
+    }));
+    expect(shift, 'inga layoutskift').toBeLessThan(0.01);
+    expect(errors).toEqual([]);
+  });
+
+  test('flocken väntar tills hjälten syns', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    // Scrolled to the bottom before the page's scripts run, as when a link opens the page further down. (A #fragment
+    // does not do: Chrome reports the top as visible for a frame before it scrolls.)
+    await page.addInitScript(() => {
+      document.addEventListener('readystatechange', () => {
+        if (document.readyState !== 'interactive') return;
+        document.documentElement.style.scrollBehavior = 'auto';
+        window.scrollTo(0, document.documentElement.scrollHeight);
+      });
+    });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    await page.waitForTimeout(1000);
+    await expect(hero).toHaveAttribute('data-flock', 'waiting');
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+    await expect(hero).toHaveAttribute('data-flock', /^(flying|landed|done)$/);
+  });
+
+  for (const [width, height] of [[390, 844], [1440, 900]] as const) {
+    test(`det största innehållet är orden, inte fotot (${width}×${height})`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto('/sv/');
+      await expect(page.locator('[data-hero]')).toHaveAttribute('data-flock', 'done', { timeout: 15_000 });
+      const lcp = await page.evaluate(() => new Promise<string>((resolve) => {
+        new PerformanceObserver((list) => {
+          const entries = list.getEntries() as (PerformanceEntry & { element?: Element | null })[];
+          const el = entries[entries.length - 1]?.element;
+          resolve(!el ? 'inget' : el.closest('[data-hero] .intro') ? 'orden' : el.closest('[data-polaroid]') ? 'fotot' : el.tagName);
+        }).observe({ type: 'largest-contentful-paint', buffered: true });
+      }));
+      expect(lcp).toBe('orden');
+    });
+  }
+});
+
 test.describe('fåglarna i månaden', () => {
   // Fixture build, 15 October: every fixture species with a free photo and report data has the same October share,
   // above its yearly mean, so the four come in QID order (ties by QID, src/lib/month-birds.mjs).
