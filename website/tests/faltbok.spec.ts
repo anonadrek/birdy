@@ -215,11 +215,11 @@ test.describe('delningsbilder', () => {
   const shares = {
     '/sv/': {
       alt: copy.sv.alt.shareImage,
-      image: /\/og-field-sv\.jpg\?v=3$/,
+      image: /\/og-field-sv\.jpg\?v=4$/,
     },
     '/': {
       alt: copy.en.alt.shareImage,
-      image: /\/og-field-en\.jpg\?v=3$/,
+      image: /\/og-field-en\.jpg\?v=4$/,
     },
   } as const;
   for (const [path, { alt, image }] of Object.entries(shares)) {

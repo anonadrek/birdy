@@ -1,7 +1,8 @@
 // Share images (1200×630), drawn in Chrome with the site's own fonts:
-//   og-field-{en,sv}.jpg   the home pages and every page without its own: the espresso wall with a real, public domain
-//                          robin photo hung as a plate beside the words. Nothing is laid over the photo (plan
-//                          2026-10-08 house rules), and the photo is shown whole.
+//   og-field-{en,sv}.jpg   the home pages and every page without its own: the home page's first view in the Flock look
+//                          (spec 2026-10-09): peach paper, the slogan, the landed flock as Birdy's bird (flockSvg in
+//                          src/components/hero/flock.mjs, the frame the page shows) with the robin's own bird lit, and
+//                          a real, public domain robin photo as a taped polaroid, shown whole with nothing on it.
 //   og-premium-{en,sv}.jpg the Premium page: espresso and brass like the app's Premium screen, with the app's own
 //                          season statistics screen in a phone and a brass Premium seal.
 // Run: npm run assets:og   (bump ?v= where the images are linked afterwards: Layout.astro, PremiumPage.astro)
@@ -11,6 +12,7 @@ import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { flockIndexFor, flockSvg } from '../src/components/hero/flock.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const asset = (p) => pathToFileURL(resolve(root, p)).href;
@@ -31,28 +33,28 @@ h1 { position: absolute; left: 74px; top: 232px; width: 640px; font-family: 'DM 
 h1 em { display: block; margin-top: 6px; font-family: 'Caveat'; font-weight: 700; font-style: normal; font-size: 96px; line-height: .95; letter-spacing: 0; }
 .url { position: absolute; left: 78px; bottom: 58px; font-weight: 600; font-size: 19px; letter-spacing: .04em; color: rgba(255, 248, 238, .78); }`;
 
+// The robin's own bird in the flock (flockIndexFor), lit like Dagens fågel on the page.
+const robinFlock = flockSvg({ litIndex: flockIndexFor('Q25334') });
+
 const field = (v) => `<style>${fonts}
-#card { background: radial-gradient(60% 75% at 74% 46%, #3D2C22 0%, #2A1D17 55%, #1E1410 100%); }
-.wm, .kick, h1 em { color: #F2B27A; }
-.hang { position: absolute; right: 78px; top: 40px; width: 404px; }
-.wire { position: absolute; left: 50%; top: 0; width: 200px; height: 40px; translate: -50% 0; }
-.nail { position: absolute; left: 50%; top: -4px; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #E2C07E, #B8893A 55%, #241B0C); }
-.frame { position: relative; margin-top: 38px; padding: 16px 16px 64px; background: #F3EADA; box-shadow: 0 2px 4px rgba(0,0,0,.35), 0 30px 50px -10px rgba(0,0,0,.6); }
-.frame::before { content: ''; position: absolute; inset: 8px; border: 1px solid rgba(110, 88, 75, .35); }
-.frame img { display: block; width: 100%; height: auto; }
-.label { position: absolute; right: -26px; bottom: -38px; width: 250px; padding: 14px 18px 12px; background: #FFFAF1; color: #302019; transform: rotate(1.2deg); box-shadow: 0 16px 30px rgba(0,0,0,.4); }
-.label b { display: block; font-family: 'DM Serif Display'; font-weight: 400; font-size: 34px; line-height: 1; }
-.label i { display: block; margin-top: 2px; font-family: 'Caveat'; font-weight: 700; font-style: normal; font-size: 22px; color: #9A4526; }
+#card { color: #302019; background: radial-gradient(130% 120% at 70% 40%, #FEEBD6 0%, #FDE5CB 45%, #F8D6B4 100%); }
+.wm { color: #302019; }
+.kick { top: 168px; color: #9A4526; }
+h1 { top: 206px; width: 560px; font-size: 74px; }
+h1 em { color: #9A4526; font-size: 84px; transform: rotate(-1.6deg); transform-origin: left; }
+.url { color: #6E584B; }
+.fit { position: absolute; right: 34px; top: 22px; width: 552px; height: 584px; }
+.fit svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.pol { position: absolute; right: 67%; bottom: 4%; width: 230px; padding: 12px 10px 0; background: #FFFAF1; box-shadow: 0 14px 34px rgba(60, 34, 20, .22), 0 1px 3px rgba(60, 34, 20, .14); transform: rotate(2deg); }
+.pol img { display: block; width: 100%; height: auto; }
+.pol b { display: block; padding: 8px 2px 12px; font-family: 'Caveat'; font-weight: 700; font-size: 26px; line-height: 1; color: #302019; }
+.tape { position: absolute; top: -18px; left: 50%; width: 84px; height: 22px; margin-left: -42px; transform: rotate(-8deg); background: linear-gradient(180deg, #F5C99B, #F0BB86); box-shadow: 0 1px 3px rgba(80, 50, 30, .2); opacity: .94; }
 </style><div id="card">
 <div class="wm">Birdy.</div>
 <p class="kick">${v.kicker}</p>
 <h1>${v.line1}<em>${v.line2}</em></h1>
 <p class="url">birdy.community</p>
-<div class="hang">
-  <svg class="wire" viewBox="0 0 200 40"><path d="M6 40 L100 3 L194 40" fill="none" stroke="#B8893A" stroke-width="1.6"/></svg>
-  <span class="nail"></span>
-  <div class="frame"><img src="${robin}" alt=""><div class="label"><b>${v.label}</b><i>${v.latin}</i></div></div>
-</div>
+<div class="fit">${robinFlock}<figure class="pol"><img src="${robin}" alt=""><b>${v.label}</b><span class="tape"></span></figure></div>
 </div>`;
 
 const premium = (v) => `<style>${fonts}
@@ -74,8 +76,8 @@ h1 { top: 228px; }
 </div>`;
 
 const jobs = [
-  { file: 'og-field-en.jpg', html: field({ locale: 'en', kicker: 'Bird guide and field journal', line1: 'Know the bird.', line2: 'Keep the moment.', label: 'European Robin', latin: 'Erithacus rubecula' }) },
-  { file: 'og-field-sv.jpg', html: field({ locale: 'sv', kicker: 'Fågelguide och fältdagbok', line1: 'Känn igen fågeln.', line2: 'Bevara stunden.', label: 'Rödhake', latin: 'Erithacus rubecula' }) },
+  { file: 'og-field-en.jpg', html: field({ kicker: 'Camera, photo or song', line1: 'Know the bird.', line2: 'Keep the moment.', label: 'European Robin' }) },
+  { file: 'og-field-sv.jpg', html: field({ kicker: 'Kamera, foto eller läte', line1: 'Känn igen fågeln.', line2: 'Bevara stunden.', label: 'Rödhake' }) },
   { file: 'og-premium-en.jpg', html: premium({ locale: 'en', line1: 'A whole year as a', line2: 'field birder.' }) },
   { file: 'og-premium-sv.jpg', html: premium({ locale: 'sv', line1: 'Hela året som', line2: 'fältornitolog.' }) },
 ];
