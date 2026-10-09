@@ -704,6 +704,36 @@ test.describe('flocken lyfter', () => {
     expect(alpha, 'dagens fågel är fortfarande ritad efter storleksändringen').toBeGreaterThan(230);
   });
 
+  // Review fix (important): the polaroid must not stay invisible forever, its still-focusable link unreachable by a
+  // pointer, if the module that drives the flight never runs at all (a dropped mobile connection, a parse failure).
+  // Hero.astro's CSS-only fallback reveals the card on its own, with no module in the loop, within about 3 s.
+  test('polaroidens länk blir synlig och går att klicka även om hjältens skript aldrig körs', async ({ page }) => {
+    await page.route('**/Hero.astro_astro_type_script*', (route) => route.abort());
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const polaroid = page.locator('[data-hero] [data-polaroid]');
+    await expect(polaroid).toHaveCSS('opacity', '1', { timeout: 4_000 });
+    const hit = await polaroid.locator('a.pol-name').evaluate((link) => {
+      const r = link.getBoundingClientRect();
+      const el = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+      return el === link || !!el?.closest('a.pol-name');
+    });
+    expect(hit, 'länken tar emot klick i mitten, inte bara synlig för en skärmläsare').toBe(true);
+  });
+
+  // The fallback above must never win a race with the module when it does load in time: the card stays hidden for
+  // the whole flight, exactly as before the fallback existed, and only reveals through the normal landing.
+  test('fallbacken poppar inte upp kortet i förtid när skriptet körs som vanligt', async ({ page }) => {
+    const flockLog = await trackFlockState(page);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    await expect.poll(async () => (await flockLog()).includes('flying')).toBe(true);
+    await page.waitForTimeout(3_300);
+    await expect(hero).toHaveAttribute('data-flock', 'flying');
+    await expect(hero.locator('[data-polaroid]')).toHaveCSS('opacity', '0');
+  });
+
   for (const [width, height] of [[390, 844], [1440, 900]] as const) {
     test(`det största innehållet är orden, inte fotot (${width}×${height})`, async ({ page }) => {
       await page.setViewportSize({ width, height });

@@ -6,7 +6,9 @@
 // version 3), on a canvas with one bitmap of the mark per colour, at most devicePixelRatio 2. Reduced motion draws the
 // landed flock at once; without JavaScript the hero's <noscript> SVG shows the same frame. data-flock on the hero says
 // where it is (waiting, flying, landed, done); the hero's CSS hides the polaroid until the flock has landed (review
-// fix: by opacity, not visibility, so it stays in the accessibility tree throughout). A keydown anywhere, or a focus
+// fix: by opacity, not visibility, so it stays in the accessibility tree throughout), gated on [data-flock-live] (set
+// by run() below as its first act) so a CSS-only fallback can reveal the card on its own after about 3 s if this
+// module never runs at all (review fix: a dropped connection, a parse failure). A keydown anywhere, or a focus
 // landing inside the hero (a keyboard user tabbing through while still hidden), skips straight to the end.
 import { MARK } from './flock-data.mjs';
 import { COLOURS, DISC_SCALE, LIT, LIT_SCALE, fitView, flightPlan } from './flock.mjs';
@@ -25,6 +27,12 @@ const easeOut = (u: number) => 1 - Math.pow(1 - u, 3);
 const easeOutBack = (k: number) => 1 + 2.70158 * Math.pow(k - 1, 3) + 1.70158 * Math.pow(k - 1, 2);
 
 function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, polaroid: HTMLElement, ctx: CanvasRenderingContext2D) {
+  // Read before marking the hero live (next line): once [data-flock-live] is set, Hero.astro's CSS swaps from the
+  // fallback animation to the live hide rule, which would force the computed opacity back to 0 and hide that the
+  // fallback had already revealed the card (review fix). Marking the hero live is otherwise the first act of run(),
+  // so the fallback's own CSS rule stops applying as soon as the module is actually in charge.
+  const fallbackAlreadyRevealed = parseFloat(getComputedStyle(polaroid).opacity) > 0;
+  hero.dataset.flockLive = '';
   const setState = (state: 'flying' | 'landed' | 'done') => {
     hero.dataset.flock = state;
     if (state === 'done') {
@@ -250,7 +258,9 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
     }).observe(hero);
   }
 
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  // The fallback above (Hero.astro) may already have revealed the card if this module loaded slowly but not never:
+  // run() still gets to run, just too late to matter, and the flight must not disappear the card and replay it.
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || fallbackAlreadyRevealed) {
     drawStill();
     setState('done');
   } else {

@@ -132,8 +132,23 @@ const flockLabel = t.hero.flockLabel.replace('{name}', bird.name);
   /* Until the flock has landed the polaroid waits out of sight (hero/flock-motion.ts lifts it out of the lit bird). Only
      with JavaScript and motion: reduced motion and no JavaScript show it at once. Opacity, not visibility (review fix):
      the polaroid stays in the accessibility tree and reachable by Tab throughout, so a keyboard user who tabs in before
-     the flight finishes can still reach it (flock-motion.ts then jumps straight to the end on that same keydown/focus). */
+     the flight finishes can still reach it (flock-motion.ts then jumps straight to the end on that same keydown/focus).
+     Gated on [data-flock-live], which run() sets as its very first act (review fix): if the module never runs at all
+     (a dropped mobile connection, a parse failure), this rule never matches, so the fallback below reveals the card
+     on its own instead of leaving it, and its still-focusable link, hidden forever. */
   @media (prefers-reduced-motion: no-preference) {
-    :global(html.js) .hero:is([data-flock='waiting'], [data-flock='flying']) :global(.polaroid) { opacity: 0; pointer-events: none; }
+    :global(html.js) .hero[data-flock-live]:is([data-flock='waiting'], [data-flock='flying']) :global(.polaroid) { opacity: 0; pointer-events: none; }
+
+    /* The fallback: hidden the same way, but for at most about 3 s, then a short fade reveals it regardless of whether
+       the module ever runs. animation-fill-mode: both holds the "from" keyframe during the delay and the "to" keyframe
+       after the animation ends, so there is nothing to clean up. Once the module does go live in time,
+       [data-flock-live] makes the rule above match instead; this rule's own selector then stops matching, so the
+       animation is removed outright, mid "from", with the same opacity (0) the rule above also sets, hence no flash. */
+    :global(html.js) .hero:not([data-flock-live]) :global(.polaroid) { animation: flock-fallback-reveal .3s 3s both; }
+  }
+
+  @keyframes flock-fallback-reveal {
+    from { opacity: 0; pointer-events: none; }
+    to { opacity: 1; pointer-events: auto; }
   }
 </style>
