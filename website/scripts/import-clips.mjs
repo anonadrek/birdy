@@ -156,7 +156,12 @@ export function importClips(source, websiteRoot) {
   if (!existsSync(out) || !existsSync(coversFile)) {
     throw new Error(`${source} har inte out/ och cover/covers.json: ange mappen tools/social på grenen social/see-the-song`);
   }
-  const covers = JSON.parse(readFileSync(coversFile, 'utf8'));
+  let covers;
+  try {
+    covers = JSON.parse(readFileSync(coversFile, 'utf8'));
+  } catch (e) {
+    throw new Error(`cover/covers.json: ${e instanceof Error ? e.message : e}`);
+  }
   const groups = readdirSync(out, { withFileTypes: true })
     .filter((d) => d.isDirectory() && existsSync(join(out, d.name, 'schedule.csv')))
     .map((d) => d.name)
@@ -166,16 +171,34 @@ export function importClips(source, websiteRoot) {
   const coverFiles = new Map();
   for (const group of groups) {
     const dir = join(out, group);
-    for (const row of csvRecords(readFileSync(join(dir, 'schedule.csv'), 'utf8'))) {
-      if (basename(row.cover ?? '') !== 'cover.jpg') throw new Error(`${group}: ${row.slug} har omslaget ${row.cover}, ska vara flockomslaget cover.jpg`);
+    const scheduleFile = `${group}/schedule.csv`;
+    let rows;
+    try {
+      rows = csvRecords(readFileSync(join(dir, 'schedule.csv'), 'utf8'));
+    } catch (e) {
+      throw new Error(`${scheduleFile}: ${e instanceof Error ? e.message : e}`);
+    }
+    for (const row of rows) {
+      if (basename(row.cover ?? '') !== 'cover.jpg') throw new Error(`${scheduleFile}: ${row.slug} har omslaget ${row.cover}, ska vara flockomslaget cover.jpg`);
+      if (row.cover !== `${row.slug}/cover.jpg`) throw new Error(`${scheduleFile}: ${row.slug} pekar på ett annat klipps omslag (${row.cover})`);
       const coverFile = join(dir, row.cover);
-      if (!existsSync(coverFile)) throw new Error(`${group}: omslaget ${row.cover} saknas`);
-      const caption = JSON.parse(readFileSync(join(dir, row.caption_json), 'utf8'));
+      if (!existsSync(coverFile)) throw new Error(`${scheduleFile}: omslaget ${row.cover} saknas`);
+      let caption;
+      try {
+        caption = JSON.parse(readFileSync(join(dir, row.caption_json), 'utf8'));
+      } catch (e) {
+        throw new Error(`${group}/${row.caption_json}: ${e instanceof Error ? e.message : e}`);
+      }
       clips.push(clipFromSources(row, caption, covers[row.qid]));
       coverFiles.set(row.slug, coverFile);
     }
   }
-  const sorted = sortClips(clips);
+  let sorted;
+  try {
+    sorted = sortClips(clips);
+  } catch (e) {
+    throw new Error(`${out}: ${e instanceof Error ? e.message : e}`);
+  }
   if (sorted.length === 0) throw new Error(`${out}: inget schema har några klipp`);
 
   const assets = join(websiteRoot, 'src', 'assets', 'clips');

@@ -139,19 +139,121 @@ test('importClips: utan källmappen, eller utan klipp, skrivs ingenting', () => 
   }
 });
 
-// The data the script wrote from the real schedule (Step 5). The first 30 days are pinned here; later clips must keep
-// one a day, in order, each with its cover.
-const isoDay = (offset) => new Date(Date.UTC(2026, 9, 9 + offset)).toISOString().slice(0, 10);
+test('importClips: trasig CSV i ett schema namnger gruppen och filen i felet', () => {
+  const social = mkdtempSync(join(tmpdir(), 'birdy-social-'));
+  const site = mkdtempSync(join(tmpdir(), 'birdy-site-'));
+  try {
+    mkdirSync(join(social, 'out', 'week1'), { recursive: true });
+    mkdirSync(join(social, 'cover'), { recursive: true });
+    writeFileSync(join(social, 'out', 'week1', 'schedule.csv'), `date,qid,slug${LF}"ostängt citat`);
+    writeFileSync(join(social, 'cover', 'covers.json'), '{}');
+    assert.throws(() => importClips(social, site), /week1\/schedule\.csv:.*citattecken/);
+  } finally {
+    rmSync(social, { recursive: true, force: true });
+    rmSync(site, { recursive: true, force: true });
+  }
+});
+
+test('importClips: trasig caption.json namnger gruppen och filen i felet', () => {
+  const social = mkdtempSync(join(tmpdir(), 'birdy-social-'));
+  const site = mkdtempSync(join(tmpdir(), 'birdy-site-'));
+  const write = (path, text) => {
+    mkdirSync(dirname(join(social, path)), { recursive: true });
+    writeFileSync(join(social, path), text);
+  };
+  try {
+    write('out/week1/schedule.csv', `date,qid,slug,name_en,name_sv,cover,caption_json${LF}2026-10-09,Q25404,eurasian-blue-tit,Eurasian Blue Tit,Blåmes,eurasian-blue-tit/cover.jpg,eurasian-blue-tit/caption.json${LF}`);
+    write('out/week1/eurasian-blue-tit/cover.jpg', 'omslag');
+    write('out/week1/eurasian-blue-tit/caption.json', '{inte json');
+    write('cover/covers.json', '{}');
+    assert.throws(() => importClips(social, site), /week1\/eurasian-blue-tit\/caption\.json:/);
+  } finally {
+    rmSync(social, { recursive: true, force: true });
+    rmSync(site, { recursive: true, force: true });
+  }
+});
+
+test('importClips: trasig covers.json namnger filen i felet', () => {
+  const social = mkdtempSync(join(tmpdir(), 'birdy-social-'));
+  const site = mkdtempSync(join(tmpdir(), 'birdy-site-'));
+  try {
+    mkdirSync(join(social, 'out', 'week1'), { recursive: true });
+    mkdirSync(join(social, 'cover'), { recursive: true });
+    writeFileSync(join(social, 'out', 'week1', 'schedule.csv'), 'date,qid,slug');
+    writeFileSync(join(social, 'cover', 'covers.json'), '{inte json');
+    assert.throws(() => importClips(social, site), /cover\/covers\.json:/);
+  } finally {
+    rmSync(social, { recursive: true, force: true });
+    rmSync(site, { recursive: true, force: true });
+  }
+});
+
+test('importClips: två klipp med samma datum i olika grupper namnger out-mappen i felet', () => {
+  const social = mkdtempSync(join(tmpdir(), 'birdy-social-'));
+  const site = mkdtempSync(join(tmpdir(), 'birdy-site-'));
+  const write = (path, text) => {
+    mkdirSync(dirname(join(social, path)), { recursive: true });
+    writeFileSync(join(social, path), text);
+  };
+  try {
+    const header = 'date,qid,slug,name_en,name_sv,cover,caption_json';
+    write('out/week1/schedule.csv', `${header}${LF}2026-10-09,Q25404,eurasian-blue-tit,Eurasian Blue Tit,Blåmes,eurasian-blue-tit/cover.jpg,eurasian-blue-tit/caption.json${LF}`);
+    write('out/week1-reserves/schedule.csv', `${header}${LF}2026-10-09,Q25348,mallard,Mallard,Gräsand,mallard/cover.jpg,mallard/caption.json${LF}`);
+    for (const [slug, qid, en, sv, scientific, group] of [
+      ['eurasian-blue-tit', 'Q25404', 'Eurasian Blue Tit', 'Blåmes', 'Cyanistes caeruleus', 'week1'],
+      ['mallard', 'Q25348', 'Mallard', 'Gräsand', 'Anas platyrhynchos', 'week1-reserves'],
+    ]) {
+      write(`out/${group}/${slug}/cover.jpg`, `omslaget för ${slug}`);
+      write(`out/${group}/${slug}/caption.json`, JSON.stringify({ qid, names: { sv, en, scientific } }));
+    }
+    write('cover/covers.json', JSON.stringify({
+      Q25404: { silhouette: { author: 'Wouter Koch', licence: 'CC0', url: 'https://www.phylopic.org/images/069c4833-e1ac-48e7-90d5-f7bd11000588' } },
+      Q25348: { silhouette: { author: 'Andy Wilson', licence: 'CC0', url: 'https://www.phylopic.org/images/97f833ff-fcd8-4113-8948-721c75372462' } },
+    }));
+    assert.throws(() => importClips(social, site), (err) => err instanceof Error && err.message.startsWith(`${join(social, 'out')}:`) && /samma date/.test(err.message));
+  } finally {
+    rmSync(social, { recursive: true, force: true });
+    rmSync(site, { recursive: true, force: true });
+  }
+});
+
+test('importClips: ett klipp vars omslag pekar på ett annat klipps slug är ett fel', () => {
+  const social = mkdtempSync(join(tmpdir(), 'birdy-social-'));
+  const site = mkdtempSync(join(tmpdir(), 'birdy-site-'));
+  const write = (path, text) => {
+    mkdirSync(dirname(join(social, path)), { recursive: true });
+    writeFileSync(join(social, path), text);
+  };
+  try {
+    write('out/week1/schedule.csv', `date,qid,slug,name_en,name_sv,cover,caption_json${LF}2026-10-09,Q25404,eurasian-blue-tit,Eurasian Blue Tit,Blåmes,mallard/cover.jpg,eurasian-blue-tit/caption.json${LF}`);
+    write('out/week1/eurasian-blue-tit/caption.json', JSON.stringify({ qid: 'Q25404', names: { sv: 'Blåmes', en: 'Eurasian Blue Tit', scientific: 'Cyanistes caeruleus' } }));
+    write('out/week1/mallard/cover.jpg', 'omslaget för mallard');
+    write('cover/covers.json', JSON.stringify({ Q25404: { silhouette: { author: 'Wouter Koch', licence: 'CC0', url: 'https://www.phylopic.org/images/069c4833-e1ac-48e7-90d5-f7bd11000588' } } }));
+    assert.throws(() => importClips(social, site), /eurasian-blue-tit.*mallard\/cover\.jpg/);
+  } finally {
+    rmSync(social, { recursive: true, force: true });
+    rmSync(site, { recursive: true, force: true });
+  }
+});
+
+// The data the script wrote from the real schedule (Step 5): every clip must be exactly one day after the one
+// before it, starting at the first clip, so a deleted render folder that silently drops an already-posted clip
+// (a gap, not just a reorder) fails this test.
+const addDays = (isoDate, days) => {
+  const date = new Date(`${isoDate}T00:00:00Z`);
+  date.setUTCDate(date.getUTCDate() + days);
+  return date.toISOString().slice(0, 10);
+};
 
 test('src/data/clips.json: ett klipp om dagen 9 oktober till 7 november, ett omslag per klipp och inga andra', () => {
   const { clips } = JSON.parse(readFileSync(join(websiteRoot, 'src', 'data', 'clips.json'), 'utf8'));
   assert.ok(clips.length >= 30, `${clips.length} klipp`);
-  assert.deepEqual(clips.slice(0, 30).map((c) => c.date), Array.from({ length: 30 }, (_, i) => isoDay(i)));
-  for (let i = 1; i < clips.length; i += 1) assert.ok(clips[i - 1].date < clips[i].date, `${clips[i].slug} efter ${clips[i - 1].slug}`);
+  assert.equal(clips[0].date, '2026-10-09');
+  assert.deepEqual(clips.map((c) => c.date), clips.map((_, i) => addDays(clips[0].date, i)));
   const at = (date) => clips.find((c) => c.date === date);
   assert.deepEqual([at('2026-10-09').qid, at('2026-10-09').names.sv, at('2026-10-09').silhouette.author], ['Q25404', 'Blåmes', 'Wouter Koch']);
   assert.deepEqual([at('2026-10-17').names.sv, at('2026-10-17').silhouette.licence, at('2026-10-17').silhouette.adapted], ['Bofink', 'CC BY 3.0', true]);
   assert.deepEqual([at('2026-11-07').slug, at('2026-11-07').names.scientific], ['brambling', 'Fringilla montifringilla']);
   for (const c of clips) assert.equal(c.silhouette.adapted, isAdapted(c.silhouette.licence), c.slug);
-  assert.deepEqual(readdirSync(join(websiteRoot, 'src', 'assets', 'clips')).sort(), clips.map((c) => `${c.slug}.jpg`).sort());
+  assert.deepEqual(readdirSync(join(websiteRoot, 'src', 'assets', 'clips')).filter((f) => f.endsWith('.jpg')).sort(), clips.map((c) => `${c.slug}.jpg`).sort());
 });
