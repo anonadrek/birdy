@@ -1,7 +1,8 @@
 // Flocken lyfter (spec docs/superpowers/specs/2026-10-09-startsidan-flocken-lyfter-design.md): once per page view, when
 // the hero comes into sight, the 839 birds fly in from below left, under the words, and land as Birdy's bird; today's
 // bird lands last and lights up, and Dagens fågel's photo lifts out of it, develops like a polaroid and is taped down.
-// Then nothing moves: no loop and no timer is left (the ResizeObserver only redraws the still frame after a resize).
+// Then nothing moves: no loop and no timer is left (the ResizeObserver, a devicePixelRatio change and the canvas's
+// own contextrestored event only redraw the still frame, when one of them happens).
 // The motion is the approved prototype's (docs/superpowers/specs/assets/2026-10-08-flocken-webben/flocken-lyfter.html,
 // version 3), on a canvas with one bitmap of the mark per colour, at most devicePixelRatio 2. Reduced motion draws the
 // landed flock at once; without JavaScript the hero's <noscript> SVG shows the same frame. data-flock on the hero says
@@ -269,6 +270,30 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
       });
     }).observe(hero);
   }
+
+  // The still picture can also go stale without ever resizing: a devicePixelRatio change (the window dragged to
+  // another monitor, a browser zoom) leaves it drawn at the old resolution, and a lost-then-restored canvas context
+  // leaves it blank outright. Only once landed or done, the same guard the resize handler above uses (mid-flight the
+  // next natural frame repaints anyway); both stay armed after done, like the ResizeObserver above, since either can
+  // happen at any point in the page's life.
+  const redrawIfSettled = () => {
+    if (hero.dataset.flock !== 'landed' && hero.dataset.flock !== 'done') return;
+    plan = layout();
+    drawStill();
+  };
+  // A single MediaQueryList only ever fires once (its query is pinned to the ratio at the time it was created), so
+  // each firing re-arms a fresh one for the ratio now in effect.
+  const watchDevicePixelRatio = () => {
+    const mq = matchMedia(`(resolution: ${devicePixelRatio}dppx)`);
+    const onChange = () => {
+      mq.removeEventListener('change', onChange);
+      redrawIfSettled();
+      watchDevicePixelRatio();
+    };
+    mq.addEventListener('change', onChange);
+  };
+  watchDevicePixelRatio();
+  canvas.addEventListener('contextrestored', redrawIfSettled);
 
   // The fallback above (Hero.astro) may already have revealed the card if this module loaded slowly but not never:
   // run() still gets to run, just too late to matter, and the flight must not disappear the card and replay it.
