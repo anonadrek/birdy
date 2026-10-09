@@ -115,7 +115,7 @@ class NotificationPayloads(
     private val dailyBirdMatchCount: suspend () -> Int,
     private val timeZone: TimeZone,
     private val clock: Clock,
-    private val strings: AppStrings,
+    internal val strings: AppStrings,
 ) {
     /**
      * 08:00 "Dagens fågel: Sävsångare". Release 1.3.0 Task 7d: the body invites a catch instead of

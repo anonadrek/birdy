@@ -32,8 +32,8 @@ regions:
 description:
   sv: 'Stenfalken är en kompakt liten falk med ganska breda vingar och lång stjärt.
     Den förväxlas ibland med småhökar som sparvhök, men har till skillnad från dem
-    spetsiga vingar. En vuxen hane blir 25–30 centimeter lång och har ett vingspann
-    på 50–65 centimeter. Honan är något större och tyngre än hanen.
+    spetsiga vingar. En vuxen hane blir 25 till 30 centimeter lång och har ett vingspann
+    på 50 till 65 centimeter. Honan är något större och tyngre än hanen.
 
 
     Den vuxna hanen har blågrå rygg och stjärt, mörka vingspetsar och ljus undersida
@@ -53,8 +53,8 @@ description:
   en: 'The merlin is a small, compact falcon with fairly broad but pointed wings and
     a long tail. It is more robust and heavily built than most other small falcons,
     and its pointed wings separate it from small hawks such as the sparrowhawk, with
-    which it is sometimes confused. It measures 24–33 cm with a wingspan of 50–73
-    cm, and females are slightly larger and heavier than males.
+    which it is sometimes confused. It measures 24 to 33 cm with a wingspan of 50
+    to 73 cm, and females are slightly larger and heavier than males.
 
 
     The adult male has a blue-grey back and tail, dark wingtips and pale underparts
@@ -81,7 +81,7 @@ migration:
     Medelhavsområdet ända bort till Iran, och nordeuropeiska fåglar drar till södra
     Europa och Nordafrika. Vårflyttningen börjar i slutet av februari, de flesta fåglarna
     passerar Centraleuropa i mars och april och de sista når häckningsområdena mot
-    slutet av maj. Äggen läggs i maj–juni. Höstflyttningen når sin topp i augusti
+    slutet av maj. Äggen läggs i maj till juni. Höstflyttningen når sin topp i augusti
     och september. I södra Sverige förekommer stenfalken också som vintergäst, och
     vintertid övernattar stenfalkar i Europa ofta tillsammans, gärna med blå kärrhök.
   en: In Sweden the merlin breeds in coniferous forest from northern Dalarna northwards
@@ -123,7 +123,13 @@ image_refs:
     NY 1.jpg
   commons_filename: Falco columbarius pair Auburn NY 1.jpg
 review_status: approved
-review_notes: "Hero = Falco columbarius USFWS-foto, matchar art. Stenfalk häckar i fjäll/myrar, vintergäst i södra SE. Beskrivning och migration (sv + en) omskrivna för hand 2026-09-27 ur de cachade Wikipediaartiklarna (sv Stenfalk rev 59603908, en Merlin (bird) rev 1367745672) eftersom pipelinen hade hämtat fel engelsk artikel (trollkarlen Merlin); väntar på Albins granskning. 2026-10-07 (1.3.0, 7i-fix A): sources pekar nu på de två revisionerna ovan, så att artsidans textkredit länkar rätt (tidigare sv 59194706 och en 1353678534, artikeln om trollkarlen)."
+review_notes: 'Hero = Falco columbarius USFWS-foto, matchar art. Stenfalk häckar i
+  fjäll/myrar, vintergäst i södra SE. Beskrivning och migration (sv + en) omskrivna
+  för hand 2026-09-27 ur de cachade Wikipediaartiklarna (sv Stenfalk rev 59603908,
+  en Merlin (bird) rev 1367745672) eftersom pipelinen hade hämtat fel engelsk artikel
+  (trollkarlen Merlin); väntar på Albins granskning. 2026-10-07 (1.3.0, 7i-fix A):
+  sources pekar nu på de två revisionerna ovan, så att artsidans textkredit länkar
+  rätt (tidigare sv 59194706 och en 1353678534, artikeln om trollkarlen).'
 generated_at: '2026-05-15T19:00:14.206869+00:00'
 sources:
   wikipedia_sv_revision: '59603908'

@@ -67,9 +67,44 @@ class JournalPdfRendererIosTest {
             assertTrue(result.sizeBytes > 0)
         }
 
+    // Release 1.3.1 del 8 (fixomgång): ett artnamn och ett vetenskapligt namn på ~60 tecken samt
+    // en märkesbeskrivning på ~120 tecken tvingar BÅDE krymp- och kortningsvägen i [fitLabel] —
+    // genom den riktiga CoreGraphics-renderaren (macOS CI), inte bara commonMain-matematiken.
+    @Test
+    fun renders_real_pdf_with_long_labels_that_shrink_and_cut() =
+        runTest {
+            val longName = "The Great Spotted Long-Named Testing Woodpecker Species Q1"
+            val longSci = "Testus scientificus verylongus nominus exampleus speciesia"
+            val longDesc =
+                "This premium field badge has an unusually long description, written to test the PDF label-fitting logic end to end on iOS"
+            val badge =
+                JournalPdfInput.BadgeRef(
+                    id = "premium_field_member",
+                    nameLocalized = "Field member",
+                    descriptionLocalized = longDesc,
+                    unlockedAt = Instant.fromEpochMilliseconds(1_716_000_000_000L),
+                )
+            val input =
+                sampleInput(
+                    strings = JournalPdfStrings.EN,
+                    badges = listOf(badge),
+                    speciesName = longName,
+                    scientificName = longSci,
+                )
+            val path = NSTemporaryDirectory() + "i4_test_long_${Random.nextInt(100000)}.pdf"
+            val result = JournalPdfRenderer().render(input, path)
+            // titel + stats + 1 artsida + märken + colophon = 5
+            assertTrue(result is JournalPdfRenderResult.Success, "got: $result")
+            assertEquals(5, (result as JournalPdfRenderResult.Success).pageCount)
+            assertTrue(NSFileManager.defaultManager.fileExistsAtPath(path))
+            assertTrue(result.sizeBytes > 0)
+        }
+
     private fun sampleInput(
         strings: JournalPdfStrings,
         badges: List<JournalPdfInput.BadgeRef>,
+        speciesName: String = "Art-Q1",
+        scientificName: String = "Scientific Q1",
     ): JournalPdfInput {
         val captured = Instant.fromEpochMilliseconds(1_716_000_000_000L)
         val observation =
@@ -90,9 +125,9 @@ class JournalPdfRendererIosTest {
         val species =
             Species(
                 id = SpeciesId("Q1"),
-                scientificName = "Scientific Q1",
+                scientificName = scientificName,
                 taxonomy = SpeciesTaxonomy(family = "F", familySv = "F", genus = "G", iocOrder = "0"),
-                name = "Art-Q1",
+                name = speciesName,
                 abundance = Abundance.ALLMÄN,
                 iucnStatus = "LC",
                 regions = listOf("EU"),
@@ -110,7 +145,7 @@ class JournalPdfRendererIosTest {
                 JournalPdfInput.Stats(
                     speciesSeenThisYear = 1,
                     totalObservationsThisYear = 1,
-                    topSpecies = listOf("Art-Q1" to 1),
+                    topSpecies = listOf(speciesName to 1),
                 ),
             unlockedPremiumBadges = badges,
             strings = strings,

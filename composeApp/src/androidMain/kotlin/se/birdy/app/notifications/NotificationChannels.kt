@@ -5,41 +5,58 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import androidx.core.content.getSystemService
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.notification_channel_daily_bird_description
+import birdy_bird_scanner.composeapp.generated.resources.notification_channel_daily_bird_name
+import birdy_bird_scanner.composeapp.generated.resources.notification_channel_trophy_progress_description
+import birdy_bird_scanner.composeapp.generated.resources.notification_channel_trophy_progress_name
+import birdy_bird_scanner.composeapp.generated.resources.notification_channel_weekly_recap_description
+import birdy_bird_scanner.composeapp.generated.resources.notification_channel_weekly_recap_name
+import se.birdy.app.i18n.AppStrings
 
 object NotificationChannels {
     const val DAILY_BIRD = "daily_bird"
     const val WEEKLY_RECAP = "weekly_recap"
     const val TROPHY_PROGRESS = "trophy_progress"
 
-    fun ensureCreated(context: Context) {
+    /**
+     * Creates the three channels, or renames them, in [strings]' language. On an existing id
+     * Android updates only the name and description and keeps the user's own settings, so this
+     * runs on every app start, after every language change and before every notification.
+     */
+    suspend fun createOrUpdate(
+        context: Context,
+        strings: AppStrings,
+    ) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
         val mgr = context.getSystemService<NotificationManager>() ?: return
-        if (mgr.getNotificationChannel(DAILY_BIRD) == null) {
-            mgr.createNotificationChannel(
-                NotificationChannel(
+        mgr.createNotificationChannels(
+            listOf(
+                channel(
                     DAILY_BIRD,
-                    "Dagens fågel",
-                    NotificationManager.IMPORTANCE_DEFAULT,
-                ).apply { description = "Daily curated bird suggestion." },
-            )
-        }
-        if (mgr.getNotificationChannel(WEEKLY_RECAP) == null) {
-            mgr.createNotificationChannel(
-                NotificationChannel(
+                    strings.get(Res.string.notification_channel_daily_bird_name),
+                    strings.get(Res.string.notification_channel_daily_bird_description),
+                ),
+                channel(
                     WEEKLY_RECAP,
-                    "Veckans recap",
-                    NotificationManager.IMPORTANCE_DEFAULT,
-                ).apply { description = "Sunday-evening recap of your week." },
-            )
-        }
-        if (mgr.getNotificationChannel(TROPHY_PROGRESS) == null) {
-            mgr.createNotificationChannel(
-                NotificationChannel(
+                    strings.get(Res.string.notification_channel_weekly_recap_name),
+                    strings.get(Res.string.notification_channel_weekly_recap_description),
+                ),
+                channel(
                     TROPHY_PROGRESS,
-                    "Märkesprogression",
-                    NotificationManager.IMPORTANCE_DEFAULT,
-                ).apply { description = "Weekly nudge toward your next badge." },
-            )
-        }
+                    strings.get(Res.string.notification_channel_trophy_progress_name),
+                    strings.get(Res.string.notification_channel_trophy_progress_description),
+                ),
+            ),
+        )
     }
+
+    private fun channel(
+        id: String,
+        name: String,
+        description: String,
+    ): NotificationChannel =
+        NotificationChannel(id, name, NotificationManager.IMPORTANCE_DEFAULT).apply {
+            this.description = description
+        }
 }

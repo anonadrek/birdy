@@ -41,8 +41,8 @@ description:
 
     Arten förekommer cirkumpolärt i norra regioner och häckar i trädhål vid floder,
     sjöar och våtmarker. Knipan är en skicklig dykare som söker sin föda under ytan.
-    Under flygningen hörs ett mycket karakteristiskt, högt visslande ljud från vingarna
-    – ett distinkt kännetecken som gör arten lätt att identifiera även på avstånd.
+    Under flygningen hörs ett mycket karakteristiskt, högt visslande ljud från vingarna,
+    ett distinkt kännetecken som gör arten lätt att identifiera även på avstånd.
 
 
     Knipan är en talrik art med ett livskraftigt bestånd. Den ses ofta på större vattensystem
@@ -123,8 +123,8 @@ image_refs:
 review_status: approved
 review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)
 
-  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
-  bilder.'
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan
+  gäller tidigare bilder.'
 generated_at: '2026-05-06T12:50:20.087088+00:00'
 sources:
   wikipedia_sv_revision: '57169142'

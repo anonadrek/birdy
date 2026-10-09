@@ -89,6 +89,7 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_manage_subscri
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_cancel
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_save
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_title
+import birdy_bird_scanner.composeapp.generated.resources.settings_name_not_set
 import birdy_bird_scanner.composeapp.generated.resources.settings_notifications_disabled_helpline
 import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_feedback
@@ -208,7 +209,9 @@ fun SettingsScreen(
                         SettingsRow(
                             icon = Icons.Outlined.Person,
                             label = stringResource(Res.string.settings_label_name),
-                            value = displayNameOrNull(state.userName, nameMaskedNames) ?: "—",
+                            value =
+                                displayNameOrNull(state.userName, nameMaskedNames)
+                                    ?: stringResource(Res.string.settings_name_not_set),
                             onClick = { showNameDialog = true },
                         )
                         DashedDivider()

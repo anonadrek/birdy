@@ -35,8 +35,8 @@ description:
 
     Sångsvan är en mycket stor vit andfågel som tillhör familjen egentliga andfåglar.
     Det är en imponerande fågel med långt hals och vit fjäderdräkt. Arten häckar i
-    norra Europa och Asien och är känd för sitt kraftiga och sorl ande läte – ett
-    karaktäristiskt samband mellan artens namn och dess ljudgivning.
+    norra Europa och Asien och är känd för sitt kraftiga och sorl ande läte, ett karaktäristiskt
+    samband mellan artens namn och dess ljudgivning.
 
 
     Från att ha varit nästan utdöd i Sverige i början av 1900-talet har sångsvan ökat
@@ -50,7 +50,7 @@ description:
     serving as the Eurasian equivalent of the North American trumpeter swan. It is
     one of the heaviest flying birds, with pure white plumage and a distinctive long
     neck held upright. Adults feature a striking black and yellow bill pattern, with
-    the yellow extending from the nostrils to beyond the eye—a key identification
+    the yellow extending from the nostrils to beyond the eye. This is a key identification
     feature that distinguishes it from the similar mute swan, which has an orange
     bill.
 
@@ -126,7 +126,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Cygnus cygnus Oulu 20170417.jpg
   commons_filename: Cygnus cygnus Oulu 20170417.jpg
 review_status: approved
-review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+review_notes: auto-pick OK (sjöfågel, klar identifierbar)
 generated_at: '2026-05-06T12:50:48.748597+00:00'
 sources:
   wikipedia_sv_revision: '58510681'

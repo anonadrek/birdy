@@ -49,7 +49,7 @@ description:
 
 
     The water rail is a secretive rail inhabiting well-vegetated wetlands across Europe,
-    Asia and North Africa. It measures 23–28 cm long with a distinctively flattened
+    Asia and North Africa. It measures 23 to 28 cm long with a distinctively flattened
     body that allows it to slip easily through dense reed beds. Adults display brown
     upperparts contrasting with blue-grey underparts, black barring on the flanks,
     long toes, a short tail and a long reddish bill. Immature birds resemble adults
@@ -93,10 +93,10 @@ migration:
     Europe, with populations showing distinct seasonal movements. Northern and eastern
     populations, including those breeding in Scandinavia, are migratory and vacate
     their breeding grounds during winter, moving southward to milder regions. Birds
-    typically depart breeding territories in autumn (September–October) and return
-    in spring (March–April) to establish territories in well-vegetated wetlands. However,
-    some individuals may overwinter in northern regions during mild winters if water
-    bodies remain partially ice-free.
+    typically depart breeding territories in autumn (September to October) and return
+    in spring (March to April) to establish territories in well-vegetated wetlands.
+    However, some individuals may overwinter in northern regions during mild winters
+    if water bodies remain partially ice-free.
 
 
     In the warmer southern parts of Europe and North Africa, Water Rails are permanent
@@ -132,7 +132,8 @@ image_refs:
     (33187617930).jpg
   commons_filename: Rallus aquaticus. Water Rail (33187617930).jpg
 review_status: approved
-review_notes: "Hero = Rallus aquaticus (Water Rail / Vattenrall); allmän i vassbälten i hela SE."
+review_notes: Hero = Rallus aquaticus (Water Rail / Vattenrall); allmän i vassbälten
+  i hela SE.
 generated_at: '2026-05-15T21:32:33.806756+00:00'
 sources:
   wikipedia_sv_revision: '58510877'

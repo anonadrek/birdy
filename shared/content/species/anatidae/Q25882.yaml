@@ -52,7 +52,7 @@ description:
   en: '# Greylag Goose
 
 
-    The greylag goose is a large waterfowl measuring 74–91 centimetres in length,
+    The greylag goose is a large waterfowl measuring 74 to 91 centimetres in length,
     weighing around 3.3 kilograms. It displays mottled and barred grey and white plumage,
     with a distinctive orange beak and pink legs. Its robust build and substantial
     size make it one of the more impressive goose species encountered in the wild.
@@ -128,8 +128,8 @@ image_refs:
 review_status: approved
 review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)
 
-  2026-10-06 (1.3.0 fotogranskning): foton bytta, se b54c332e; fotobeskrivningar ovan gäller tidigare
-  bilder.'
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se b54c332e; fotobeskrivningar ovan
+  gäller tidigare bilder.'
 generated_at: '2026-05-06T12:51:01.007182+00:00'
 sources:
   wikipedia_sv_revision: '58506894'

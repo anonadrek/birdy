@@ -78,9 +78,9 @@ migration:
     inklusive Skandinavien, på myrar i skogslandskap. Arten ankommer till häckningsområdena
     på våren och återvänder till sina övervintringsplatser i södra världsdelar under
     hösten. Som långflyttare är gluttsnäppan endast närvarande under häckningssäsongen
-    i nordiska regioner. Arten ses regelbundet på vårvandringen april–maj och på höstvandringen
-    juli–september när den passerar genom området mellan sina nordiska häckningsplatser
-    och mediterranea övervintringsområden.'
+    i nordiska regioner. Arten ses regelbundet på vårvandringen april till maj och
+    på höstvandringen juli till september när den passerar genom området mellan sina
+    nordiska häckningsplatser och mediterranea övervintringsområden.'
   en: '# Common Greenshank (Tringa nebularia) in Northern Europe
 
 
@@ -123,7 +123,8 @@ image_refs:
   commons_filename: Common Greenshank, Tringa nebularia (I think) at Borakalalo National
     Park (25081215708).jpg
 review_status: approved
-review_notes: "Hero = Tringa nebularia (Common Greenshank / Gluttsnäppa); allmän myrfågel i norra SE."
+review_notes: Hero = Tringa nebularia (Common Greenshank / Gluttsnäppa); allmän myrfågel
+  i norra SE.
 generated_at: '2026-05-15T21:00:01.728709+00:00'
 sources:
   wikipedia_sv_revision: '58511928'

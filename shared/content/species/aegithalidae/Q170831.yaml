@@ -45,10 +45,9 @@ description:
     natur och håller ihop i lösa grupper under mycket av året.
 
 
-    Boet är anmärkningsvärt konstruerat – ett litet, klotformat byggnadskonstverk
-    tillverkat av lav, fjädrar, spindelväv och mossa. Denna konstruktion ger både
-    isolering och flexibilitet. Arten är allmänt utbredd och kategoriseras av IUCN
-    som livskraftig.'
+    Boet är anmärkningsvärt konstruerat: ett litet, klotformat byggnadskonstverk tillverkat
+    av lav, fjädrar, spindelväv och mossa. Denna konstruktion ger både isolering och
+    flexibilitet. Arten är allmänt utbredd och kategoriseras av IUCN som livskraftig.'
   en: '# Long-tailed Tit
 
 
@@ -124,7 +123,7 @@ image_refs:
     caudatus.jpg
   commons_filename: 2 Long Tailed Tits - Aegithalos caudatus.jpg
 review_status: approved
-review_notes: 'auto-pick OK (distinkt liten tätting, lång stjärt, klar identifierbar)'
+review_notes: auto-pick OK (distinkt liten tätting, lång stjärt, klar identifierbar)
 generated_at: '2026-05-06T13:41:17.376389+00:00'
 sources:
   wikipedia_sv_revision: '59030935'

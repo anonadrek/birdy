@@ -34,10 +34,10 @@ description:
 
 
     Rödhaken är en liten och knubbig fågel som återfinns över hela Sverige. Det är
-    ungefär 12,5–14 centimeter långt och kännetecknas av sitt karakteristiska orangerött
-    bröst och ansikte, som kontrasterar vackert mot den grå till bruna ovansidan och
-    vitaktiga buken. Huvudet är relativt stort i förhållande till kroppen, och stjärten
-    är kort. Både honor och hanar har samma fjäderdräkt.
+    ungefär 12,5 till 14 centimeter långt och kännetecknas av sitt karakteristiska
+    orangerött bröst och ansikte, som kontrasterar vackert mot den grå till bruna
+    ovansidan och vitaktiga buken. Huvudet är relativt stort i förhållande till kroppen,
+    och stjärten är kort. Både honor och hanar har samma fjäderdräkt.
 
 
     Rödhaken är en vanlig och välkänd fågel som uppsöker trädgårdar, parker och skogsbryn.
@@ -60,9 +60,9 @@ description:
 
 
     The robin''s call is a sharp, distinctive "tic-tic" alarm note, while its song
-    is a cheerful, warbling melody delivered year-round—unusual among European songbirds.
-    The song is often heard in autumn and winter despite the species'' association
-    with winter in popular culture.
+    is a cheerful, warbling melody delivered year-round, which is unusual among European
+    songbirds. The song is often heard in autumn and winter despite the species''
+    association with winter in popular culture.
 
 
     Found across Europe from Western Siberia to North Africa, the robin''s distribution
@@ -122,7 +122,8 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Erithacus rubecula 2026-01-02.jpg
   commons_filename: Erithacus rubecula 2026-01-02.jpg
 review_status: approved
-review_notes: "Rödhake — Erithacus rubecula klassisk röd bröst; allmän SE-art året runt i skog + trädgårdar."
+review_notes: Rödhake — Erithacus rubecula klassisk röd bröst; allmän SE-art året
+  runt i skog + trädgårdar.
 generated_at: '2026-05-15T20:24:19.305121+00:00'
 sources:
   wikipedia_sv_revision: '57929084'

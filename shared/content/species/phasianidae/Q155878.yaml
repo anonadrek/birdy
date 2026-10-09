@@ -60,7 +60,7 @@ description:
 
     This sedentary species inhabits moorland and steppe habitats during the breeding
     season, typically near wooded areas. In winter, it retreats to dense coniferous
-    forests, where it feeds almost exclusively on conifer needles—an unusual diet
+    forests, where it feeds almost exclusively on conifer needles, an unusual diet
     among grouse. The species is found across the Palearctic region, adapting its
     habitat use seasonally to exploit available food sources and shelter.
 
@@ -117,10 +117,11 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Birkhenne im Habitat.jpg
   commons_filename: Birkhenne im Habitat.jpg
 review_status: approved
-review_notes: 'Hero = Lyrurus tetrix (Black Grouse / Orre); allmän i skogs- och hedmark över hela SE.
+review_notes: 'Hero = Lyrurus tetrix (Black Grouse / Orre); allmän i skogs- och hedmark
+  över hela SE.
 
-  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
-  bilder.'
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan
+  gäller tidigare bilder.'
 generated_at: '2026-05-15T21:05:26.810469+00:00'
 sources:
   wikipedia_sv_revision: '59049422'

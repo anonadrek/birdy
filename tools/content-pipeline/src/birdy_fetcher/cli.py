@@ -750,5 +750,55 @@ def web_publish(
         raise click.exceptions.Exit(1)
 
 
+@main.command("app-dashes")
+@click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla arter.")
+@click.option("--model", "model_key", type=click.Choice(MODEL_KEYS), default=TEXT_MODEL_KEY)
+@click.option("--effort", type=click.Choice(EFFORTS), default="medium")
+@click.option("--checker-model", "checker_key", type=click.Choice(MODEL_KEYS), default="sonnet")
+@click.option(
+    "--max-cost",
+    type=click.FloatRange(min=0, min_open=True),
+    required=True,
+    help="Kostnadstak i USD för körningen (krävs).",
+)
+@click.option("--workers", type=click.IntRange(min=1), default=4)
+@click.option("--dry-run", is_flag=True, help="Räkna bara: inga modellanrop, inga filer skrivs.")
+def app_dashes(
+    species: tuple[str, ...],
+    model_key: str,
+    effort: str,
+    checker_key: str,
+    max_cost: float,
+    workers: int,
+    dry_run: bool,
+) -> None:
+    """Release 1.3.1 del 7: tar bort tankstreck ur arttexterna som appen visar. Kostar pengar
+    utan --dry-run."""
+    from .app_dashes_run import DashOptions, run_app_dashes
+
+    if model_key == checker_key:
+        raise click.UsageError("Skribent och kontroll måste vara olika modeller.")
+    if not dry_run:
+        _require_api_key()
+    paths = _web_paths()
+    options = DashOptions(
+        species_root=paths.species_root,
+        reports=paths.reports,
+        qids=species,
+        model_key=model_key,
+        effort=effort,
+        checker_key=checker_key,
+        max_cost=max_cost,
+        workers=workers,
+        dry_run=dry_run,
+    )
+    result = asyncio.run(run_app_dashes(options))
+    click.echo(
+        f"Klart: {len(result.outcomes)} arter, ${result.cost_usd:.2f}. Rapport: {result.report}"
+    )
+    if result.stopped_by_cost:
+        raise click.exceptions.Exit(4)
+
+
 if __name__ == "__main__":
     main()

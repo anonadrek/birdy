@@ -94,7 +94,7 @@ migration:
     Europe. It breeds primarily in steppe regions of Scandinavia during spring and
     summer months, typically arriving in April and May. The species winters farther
     south and west, vacating Scandinavian breeding grounds in autumn as temperatures
-    drop. Migration occurs in autumn (September–October) when pochards depart northerly
+    drop. Migration occurs in autumn (September to October) when pochards depart northerly
     breeding areas, with populations moving toward milder wintering grounds in central
     and western Europe. Return migration to Scandinavian breeding territories begins
     in early spring as ice melts and water bodies become accessible again.'
@@ -125,7 +125,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Aythya ferina Bushy Park 1.jpg
   commons_filename: Aythya ferina Bushy Park 1.jpg
 review_status: approved
-review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+review_notes: auto-pick OK (sjöfågel, klar identifierbar)
 generated_at: '2026-05-06T12:50:19.751217+00:00'
 sources:
   wikipedia_sv_revision: '57972229'

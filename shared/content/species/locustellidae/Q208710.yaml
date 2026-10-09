@@ -35,7 +35,7 @@ description:
 
     Gräshoppsångaren är en liten, diskret fågel som tillhör familjen gräsfåglar. Den
     är svårupptäckt på grund av sin returhållna natur och föredrar att stanna gömd
-    i tätt växtlighet. Fågeln är bäst känd för sin karakteristiska sång – en långdragen,
+    i tätt växtlighet. Fågeln är bäst känd för sin karakteristiska sång: en långdragen,
     insektsliknande svirr som kan pågå i flera minuter utan avbrott. Denna säregna
     lyd är ofta det enda som avslöjar fågelns närvaro.
 
@@ -61,7 +61,7 @@ description:
 
     This warbler is notoriously difficult to observe in the field, as it prefers to
     remain hidden in dense vegetation. It is perhaps best identified by its distinctive
-    call—a prolonged, mechanical reeling or buzzing sound reminiscent of an insect,
+    call: a prolonged, mechanical reeling or buzzing sound reminiscent of an insect,
     which gives the species its name. The call can be sustained for long periods,
     especially during breeding season. The bird''s appearance is subtle, with streaked
     plumage that provides excellent camouflage in grassland and scrub habitats.
@@ -122,7 +122,8 @@ image_refs:
     naevia) 14.jpg
   commons_filename: Common grasshopper warbler (Locustella naevia) 14.jpg
 review_status: approved
-review_notes: "Gräshoppsångare — Locustella naevia hero med sångpose; regelbunden SE-art i fuktiga gräsmarker."
+review_notes: Gräshoppsångare — Locustella naevia hero med sångpose; regelbunden SE-art
+  i fuktiga gräsmarker.
 generated_at: '2026-05-15T20:12:28.715630+00:00'
 sources:
   wikipedia_sv_revision: '59227582'

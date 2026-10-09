@@ -50,7 +50,7 @@ description:
     The common merganser is a large diving duck inhabiting rivers and lakes throughout
     forested regions of the Northern Hemisphere. It is a specialized fish-eater with
     a streamlined body, long neck, and distinctive long, narrow bill with serrated
-    edges—perfectly adapted for gripping slippery prey. Males display striking plumage
+    edges, perfectly adapted for gripping slippery prey. Males display striking plumage
     with dark green heads, white bodies, and black backs, while females are more subdued
     with reddish-brown heads and grey bodies. Both sexes show a white wing patch in
     flight.
@@ -118,7 +118,7 @@ image_refs:
     (5561934028).jpg
   commons_filename: Mergus merganser merganser 2124 (5561934028).jpg
 review_status: approved
-review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+review_notes: auto-pick OK (sjöfågel, klar identifierbar)
 generated_at: '2026-05-06T12:52:54.500581+00:00'
 sources:
   wikipedia_sv_revision: '56498031'

@@ -42,7 +42,7 @@ description:
 
     Det är en mycket ljudlig fågel, särskilt när den uppehåller sig i flockar. Sången
     är omusikalisk men väldigt varierad, och staren är känd för sin utmärkta förmåga
-    att härma olika ljud från sin omgivning – en egenskap som omtalas redan i klassisk
+    att härma olika ljud från sin omgivning, en egenskap som omtalas redan i klassisk
     litteratur.
 
 
@@ -61,8 +61,8 @@ description:
 
 
     This species is renowned for its exceptional vocal abilities. It is a skilled
-    mimic, capable of imitating other bird species and various sounds from its environment—a
-    talent documented since ancient times in classical literature. Its natural calls
+    mimic, capable of imitating other bird species and various sounds from its environment,
+    a talent documented since ancient times in classical literature. Its natural calls
     include whistles and varied chattering notes, often delivered from prominent perches
     or in flight.
 
@@ -128,7 +128,8 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Sturnus vulgaris -California-8.jpg
   commons_filename: Sturnus vulgaris -California-8.jpg
 review_status: approved
-review_notes: "Hero = Sturnus vulgaris (Common Starling / Stare); allmän stadsbofågel och fältfågel i hela SE."
+review_notes: Hero = Sturnus vulgaris (Common Starling / Stare); allmän stadsbofågel
+  och fältfågel i hela SE.
 generated_at: '2026-05-15T21:36:39.680960+00:00'
 sources:
   wikipedia_sv_revision: '58946302'

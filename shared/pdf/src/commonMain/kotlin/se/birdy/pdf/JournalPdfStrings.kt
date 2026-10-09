@@ -19,7 +19,7 @@ import se.birdy.content.Locale
  * `_Fmt` strings use the `%s` placeholder consumed by [JournalPdfMetrics.fmt] (Kotlin/Native has
  * no shared `String.format`). [JournalPdfMetrics.COLOPHON], [JournalPdfMetrics.FOOTER_FMT] and
  * [JournalPdfMetrics.ORNAMENT_GLYPH] stay on [JournalPdfMetrics], unchanged for both languages:
- * the colophon is the brand name, the footer is just a page number between dashes, and the
+ * the colophon is the brand name, the footer is just a page number, and the
  * ornament is a glyph — none of the three is actually translatable text.
  */
 data class JournalPdfStrings(

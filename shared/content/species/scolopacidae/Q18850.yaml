@@ -35,7 +35,7 @@ description:
 
     Drillsnäppa är en liten vadare som förekommer vid steniga stränder i Europa och
     Asien. Arten är lätt att känna igen på sina karakteristiska gungande kroppsrörelser
-    när den rör sig på marken. I flykten är drillsnäppan mycket distinktiv – den flyger
+    när den rör sig på marken. I flykten är drillsnäppan mycket distinktiv: den flyger
     lågt och stelt tätt ovanför vattenytan med snabba vingslag.
 
 
@@ -118,7 +118,8 @@ image_refs:
   commons_filename: Common Sandpiper, Actitis hypoleucos, Chobe National Park, Botswana
     (31558465823).jpg
 review_status: approved
-review_notes: "Hero = Actitis hypoleucos (Common Sandpiper / Drillsnäppa); allmän vid sjöar och vattendrag i hela SE."
+review_notes: Hero = Actitis hypoleucos (Common Sandpiper / Drillsnäppa); allmän vid
+  sjöar och vattendrag i hela SE.
 generated_at: '2026-05-15T21:02:54.458863+00:00'
 sources:
   wikipedia_sv_revision: '59205984'

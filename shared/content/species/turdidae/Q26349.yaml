@@ -86,9 +86,9 @@ migration:
 
 
     The Song Thrush is a summer breeding visitor to Scandinavia and much of Northern
-    Europe, arriving in spring (typically March–April) to establish territories in
-    woodland, gardens, and hedgerows. Populations breed throughout the region during
-    the warmer months. As autumn approaches (August–September), northern breeding
+    Europe, arriving in spring (typically March to April) to establish territories
+    in woodland, gardens, and hedgerows. Populations breed throughout the region during
+    the warmer months. As autumn approaches (August to September), northern breeding
     birds migrate southwestward to winter in milder regions of western and southern
     Europe, the Mediterranean basin, and North Africa. However, some individuals,
     particularly from southern breeding populations, may remain year-round in sheltered
@@ -123,7 +123,8 @@ image_refs:
     (52656473356).jpg
   commons_filename: Tordo-comum "Turdus philomelos" (52656473356).jpg
 review_status: approved
-review_notes: "Hero = Turdus philomelos (Song Thrush / Taltrast); allmän i skog och trädgårdar i hela SE."
+review_notes: Hero = Turdus philomelos (Song Thrush / Taltrast); allmän i skog och
+  trädgårdar i hela SE.
 generated_at: '2026-05-15T21:36:32.541621+00:00'
 sources:
   wikipedia_sv_revision: '57776507'

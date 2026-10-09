@@ -62,6 +62,7 @@ import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_storag
 import birdy_bird_scanner.composeapp.generated.resources.diary_save_success
 import birdy_bird_scanner.composeapp.generated.resources.match_cancel_cta
 import birdy_bird_scanner.composeapp.generated.resources.match_eyebrow
+import birdy_bird_scanner.composeapp.generated.resources.match_first_seen_unknown
 import birdy_bird_scanner.composeapp.generated.resources.match_marginalia_captured_audio
 import birdy_bird_scanner.composeapp.generated.resources.match_marginalia_captured_photo
 import birdy_bird_scanner.composeapp.generated.resources.match_marginalia_first_sighting
@@ -442,7 +443,7 @@ private fun MatchMarginalia(
                     val month = monthShortUppercase(dt.monthNumber)
                     "${dt.dayOfMonth} $month ${dt.year}"
                 } else {
-                    "—"
+                    stringResource(Res.string.match_first_seen_unknown)
                 }
             BodyTextWithCaveatAccents(
                 text = stringResource(Res.string.match_marginalia_repeat, state.sightingCount, dateLabel),

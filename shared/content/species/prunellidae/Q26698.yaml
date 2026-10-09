@@ -41,7 +41,7 @@ description:
 
     Denna art är väl anpassad för liv bland täta snår, där den ofta håller sig dold.
     Det är framför allt under sångtillfällena som järnsparven blir mer synlig. Sången
-    är karakteristisk – monoton och silvrig med höga frekvenser som skiljer den från
+    är karakteristisk: monoton och silvrig med höga frekvenser som skiljer den från
     många andra små fåglar.
 
 
@@ -59,8 +59,8 @@ description:
 
 
     This compact bird presents subtle plumage featuring grey-brown tones that blend
-    easily into hedgerows and garden settings. Its understated appearance—lacking
-    bold markings or vibrant colours—contributes to its often-overlooked status despite
+    easily into hedgerows and garden settings. Its understated appearance (lacking
+    bold markings or vibrant colours) contributes to its often-overlooked status despite
     being relatively common across its range.
 
 
@@ -124,7 +124,9 @@ image_refs:
     post.jpg
   commons_filename: Prunella modularis on a fence post.jpg
 review_status: approved
-review_notes: "Hero = Prunella modularis (Hobbyfotowiki CC0); klassisk fältidentifiering med grå hals/bröst + brun streckad rygg. SV+EN beskrivning båda ≥80 ord. Allmän häckfågel i hela Sverige."
+review_notes: Hero = Prunella modularis (Hobbyfotowiki CC0); klassisk fältidentifiering
+  med grå hals/bröst + brun streckad rygg. SV+EN beskrivning båda ≥80 ord. Allmän
+  häckfågel i hela Sverige.
 generated_at: '2026-05-15T20:53:11.746940+00:00'
 sources:
   wikipedia_sv_revision: '59225230'

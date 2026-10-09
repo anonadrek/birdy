@@ -66,8 +66,8 @@ description:
     in the same territory year-round or making only short-distance movements.
 
 
-    The call is a soft, subdued whistle—quite unlike the cheerful songs of many other
-    finches—making it easy to overlook. It prefers woodland edges, parks, gardens,
+    The call is a soft, subdued whistle (quite unlike the cheerful songs of many other
+    finches), making it easy to overlook. It prefers woodland edges, parks, gardens,
     and areas with scattered trees and hedgerows. The Eurasian bullfinch''s combination
     of elegant appearance and quiet, unobtrusive behaviour makes it a rewarding species
     for patient observers.'
@@ -91,16 +91,16 @@ migration:
     behavior depending on weather severity and food availability. Northern populations
     tend to be more migratory, moving southwestward during harsh winters, while southern
     Scandinavian birds are often year-round residents. Birds typically return to breeding
-    territories in March–April and may undertake local movements in autumn and winter,
-    particularly in response to seed crop failures that force populations to seek
-    food elsewhere in the region.
+    territories in March to April and may undertake local movements in autumn and
+    winter, particularly in response to seed crop failures that force populations
+    to seek food elsewhere in the region.
 
 
     The species'' presence in Scandinavia varies seasonally; winter months see influxes
     from eastern populations supplementing resident birds, creating noticeable population
     increases. This irruptive migration pattern is driven by climatic conditions and
-    the availability of seeds from rowan, hawthorn, and fruit buds—key winter food
-    sources in the Nordic region.'
+    the availability of seeds from rowan, hawthorn, and fruit buds, which are key
+    winter food sources in the Nordic region.'
 image_refs:
 - role: hero
   path: Q25382/hero.webp
@@ -130,7 +130,7 @@ image_refs:
     (24208777577).jpg
   commons_filename: Bullfinches Pyrrhula pyrrhula (24208777577).jpg
 review_status: approved
-review_notes: "Bergfink — hero med klar art-ID, allmän SE-fågel."
+review_notes: Bergfink — hero med klar art-ID, allmän SE-fågel.
 generated_at: '2026-05-15T19:13:47.794760+00:00'
 sources:
   wikipedia_sv_revision: '55576523'
