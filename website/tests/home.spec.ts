@@ -772,6 +772,10 @@ test.describe('flocken lyfter', () => {
     await page.goto('/sv/');
     const hero = page.locator('[data-hero]');
     await expect(hero).toHaveAttribute('data-flock', 'done');
+    // Deterministic, not timing-dependent (review fix): this no-context path only reveals the card promptly because
+    // it sets data-flock-live itself (flock-motion.ts's final else-branch) before falling back to "done", so this is
+    // red against a regression that drops that line regardless of how fast or slow the page happens to load.
+    await expect(hero).toHaveAttribute('data-flock-live', '');
     // Well under the fallback's own ~3 s delay (review fix: before it, this stayed at opacity 0 until the fallback's
     // timer caught up, even though the hero had already finished).
     await expect(hero.locator('[data-polaroid]')).toHaveCSS('opacity', '1', { timeout: 1_500 });
@@ -787,21 +791,14 @@ test.describe('flocken lyfter', () => {
     const polaroid = hero.locator('[data-polaroid]');
     await expect.poll(async () => (await flockLog()).includes('flying')).toBe(true);
     // Deterministic, not timing-dependent (review fix): data-flock-live is always set before the flight can reach
-    // "flying" (run()'s own first act), so Hero.astro's CSS fallback rule has already stopped matching by here, and
-    // its named animation must never be among the polaroid's animations, whatever the flight's own timing does below.
+    // "flying" (run()'s own first act) and is never removed again, so Hero.astro's CSS fallback rule has stopped
+    // matching for good by here, whatever the flight's own timing does below. The card's reveal only starts at
+    // landing, so while flying it must carry no animation at all yet, not merely lack the fallback's name by itself
+    // (stricter check, review fix: this also survives a keyframes rename).
     await expect(hero).toHaveAttribute('data-flock-live', '');
     const names = await polaroid.evaluate((el) => el.getAnimations().map((a) => (a instanceof CSSAnimation ? a.animationName : '')));
-    expect(names, 'fallbackens animation får inte finnas när modulen redan är live').not.toContain('flock-fallback-reveal');
+    expect(names, 'kortet ska inte ha några animationer medan flocken flyger').toEqual([]);
     await expect(polaroid).toHaveCSS('opacity', '0');
-    // The wait below only means something while the flight is still running; a slow worker can let it land before we
-    // get here, which is not the bug this test guards against, so skip just that one assertion, not the whole test.
-    if ((await hero.getAttribute('data-flock')) === 'flying') {
-      await page.waitForTimeout(3_300);
-      await expect(hero).toHaveAttribute('data-flock', 'flying');
-      await expect(polaroid).toHaveCSS('opacity', '0');
-    } else {
-      test.info().annotations.push({ type: 'skip', description: 'flykten hann landa före den tidsstyrda kontrollen; täckt av kontrollerna ovan i stället' });
-    }
   });
 
   for (const [width, height] of [[390, 844], [1440, 900]] as const) {
