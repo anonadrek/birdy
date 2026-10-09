@@ -14,6 +14,18 @@ Runbook för de 30 dagliga videorna (9 oktober till 7 november 2026, kl. 08.00 S
 - Meta slutade ta emot uppladdningar efter 20 reels i rad (förloppet stod still på 0 % för Knölsvan och Gärdsmyg). Ta resten i en ny omgång, gärna nästa dag.
 - Rutnätsraden (omslaget delat i tre bilder, `grid/` på `social/see-the-song`) publicerades på Instagram och TikTok 2026-10-08. De tre fästs före den första videon fre 9 okt 08.00, i ordningen höger, mitten, vänster (den som fästs sist hamnar först). **TikTok: fästa av agenten 2026-10-08 kväll** i TikTok Studio (se steg 8 under TikTok Studio); Studio visar nu Pinned i ordningen vänster, mitten, höger. **Instagram: Albin fäster i appen** (⋯, "Pin to your profile"), eftersom varken instagram.com eller Business Suite har någon fäst-knapp.
 
+## Omplaneringen med flockomslagen (2026-10-09)
+
+Albin ville ha ett eget omslag per inlägg ("C med en tvist": flocken formar varje videos fågel) och att slutet loopar in i början. Hans OK: "Go for it", "you have go ahead"; "re upload and ill remove all the old ones last". Videorna ligger i samma mappar: `see-the-song.mp4` = titelkort + loop (8cd2e9a3), `cover.jpg` = flockomslaget, `-v1`-filerna är de gamla.
+
+- **Meta kan inte byta omslag på ett schemalagt inlägg** (bara trimma och beskära), så nya inlägg laddas upp och de gamla tas bort av Albin. Meta slår på **automatisk textning** ("Textning") som standard: bocka ur den i varje inlägg och kontrollera att texten "Automatiskt genererad textning är aktiverad" är borta.
+- **TikTok tar nu hela oktober** i kalendern (kontrollerat 9 okt; förut cirka 10 dagar). Omslaget på TikTok är videons första ruta, alltså titelkortet: ingen omslagsuppladdning behövs.
+- **TikToks "Content check lite" tar ibland lång tid** ("about 10 minutes"): tranan hängde två gånger i över 25 minuter, hackspetten och nötväckan flera minuter, medan andra blev klara på sekunder. Sidan frågar kontroll-API:t var tionde sekund (syns i nätverksfliken), så det är TikToks kö och inget fel i sidan. Lämna uppladdningen öppen och vänta, eller kassera den och ta en annan art under tiden.
+- **Gamla och nya är lätta att skilja åt:** de nya bildtexterna har "Silhouette:" i krediten. På TikTok står den nyast skapade överst bland inlägg med samma tid. På Meta har de gamla en mörk "?"-miniatyr och Instagram-raderna heter "Din reel".
+- **Loop eller inte (Meta):** öppna raden i Innehåll, Schemalagt (panelen Inläggsdetaljer visar inläggets id). Sätt videons `currentTime` till slutet med JS och titta: loopversionen slutar på omslaget, den gamla på slutkortet "Identify birds by sound". Panelens meny Åtgärder har "Flytta till utkast" (ångringsbart). När ett Instagram-inlägg flyttades till utkast blev en röd rad "Det gick inte att publicera" kvar i Schemalagt; själva inlägget låg i Utkast.
+- **Kontrollera att inget publicerats av misstag** i fliken Publicerat efter större omtag.
+- **Ett andra flikfönster går inte att använda** för Meta medan TikTok väntar: en flik som inte syns får `visibilityState` hidden och Business Suite slutar ladda miniatyrerna.
+
 ## Material
 
 - Gren `social/see-the-song`, worktree `C:/w/birdy-social`.
