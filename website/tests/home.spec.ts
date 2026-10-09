@@ -272,13 +272,17 @@ test.describe('menyn över persikopappret', () => {
   });
 
   // Review fix nit: .is-open is excluded from the peach-over-transparent selector, so an open mobile menu
-  // falls back to the espresso bar + cream text, same as scrolled-past. Not checked until now.
+  // falls back to the espresso bar + cream text, same as scrolled-past.
   test('mobilmenyn över hjälten blir espressobrun med ljus text på ordmärket', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/sv/');
-    await page.locator('#site-nav .menu-toggle').click();
-    await expect(page.locator('#site-nav')).toHaveClass(/is-open/);
-    await expect(page.locator('#site-nav .brand .wordmark')).toHaveCSS('color', 'rgb(255, 248, 238)');
+    const nav = page.locator('#site-nav');
+    await expect(nav).not.toHaveClass(/is-solid/);
+    await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(48, 32, 25)');
+    await nav.locator('.menu-toggle').click();
+    await expect(nav).toHaveClass(/is-open/);
+    await expect(nav).toHaveCSS('background-color', 'rgb(42, 29, 23)');
+    await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(255, 248, 238)');
   });
 
   test('Premium-sidans meny behåller ljus text över sin mörka hjälte', async ({ page }) => {
@@ -425,9 +429,8 @@ test.describe('första vyn', () => {
         await expect(page.locator('[data-hero] [data-same-as-app]')).toBeVisible();
         const sv = path === '/sv/';
         await page.locator('[data-hero] [data-polaroid]').evaluate((card: HTMLElement, text) => {
-          // Reduced motion still runs a 0.01 ms transition on every style change (global.css), and the geometry
-          // read right after this callback never waits a frame for it to finish: transitions off, so the new
-          // sizes apply at once.
+          // Reduced motion still runs a 0.01 ms transition on every style change (global.css), and nothing makes
+          // the geometry read below wait a frame for it to finish: transitions off, so the new sizes apply at once.
           for (const el of [card, ...card.querySelectorAll<HTMLElement>('*')]) el.style.transition = 'none';
           card.style.setProperty('--ar', '0.47');
           (card.querySelector('img') as HTMLImageElement).style.aspectRatio = '0.47';

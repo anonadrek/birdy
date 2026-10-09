@@ -92,7 +92,9 @@ const flockLabel = t.hero.flockLabel.replace('{name}', bird.name);
      --peach at alpha 0, not the transparent keyword: old WebKit interpolates transparent as black at alpha 0, which
      would show here as a faint grey band. */
   /* overflow: hidden first, a fallback for Safari older than 16 (no support for the overflow: clip value); the
-     second declaration wins everywhere that understands it. */
+     second declaration wins everywhere that understands it. hidden is safe here: the torn edge below belongs to
+     MonthBirds.astro (its own overlap, not this section's), nothing in the hero is sticky, and nothing in it
+     overflows down or to the right, so the hero itself never needs to scroll. */
   .hero { position: relative; overflow: hidden; overflow: clip; padding-top: 64px; color: var(--ink); background-color: var(--peach); background-image: linear-gradient(0deg, var(--peach) 0, rgb(253 229 203 / 0) 120px), radial-gradient(130% 120% at 70% 40%, var(--peach-hi) 0%, var(--peach) 45%, var(--peach-lo) 100%); }
   /* The canvas covers the whole hero: the birds fly in from below left, under the words, to Birdy's bird. It comes after
      the words in the source, so a screen reader reads the headline before the flock; its z-index keeps it under them. */

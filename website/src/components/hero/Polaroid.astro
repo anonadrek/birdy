@@ -36,7 +36,7 @@ const alt = t.species.altHero.replace('{name}', bird.name).replace('{scientific}
 const widths = [240, 360, 480, 640];
 // The photo's width on the page (the CSS below): the card's inner width, at most 216 px from 1024 px and 200 px below,
 // or less for a tall photo (--pol-ph × ratio), so a portrait photo does not fetch a needlessly large file.
-const shown = (cardWidth: number, maxHeight: number) => Math.ceil(Math.min(cardWidth, maxHeight * ratio));
+const shown = (innerCardWidth: number, maxHeight: number) => Math.ceil(Math.min(innerCardWidth, maxHeight * ratio));
 const sizes = `(min-width: 1024px) ${shown(216, 180)}px, ${shown(200, 150)}px`;
 ---
 
