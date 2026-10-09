@@ -345,4 +345,11 @@ if (hero && canvas && fitBox && polaroid && ctx) {
   } catch {
     hero.dataset.flock = 'done';
   }
-} else if (hero) hero.dataset.flock = 'done';
+} else if (hero) {
+  // Review fix: unlike the catch block above (where run() has always already set data-flock-live itself, as its
+  // very first act, before anything inside it could throw), this path never calls run() at all, so flock-live has
+  // to be set here explicitly. Otherwise Hero.astro's CSS fallback rule keeps matching and the card sits hidden
+  // for its own ~3 s delay even though the hero has already finished, synchronously, right now.
+  hero.dataset.flockLive = '';
+  hero.dataset.flock = 'done';
+}

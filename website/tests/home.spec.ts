@@ -752,6 +752,31 @@ test.describe('flocken lyfter', () => {
     expect(hit, 'länken tar emot klick i mitten, inte bara synlig för en skärmläsare').toBe(true);
   });
 
+  // Review fix (minor A, a regression from the previous round): the module's own no-2D-context path (an old or
+  // locked-down browser) never calls run(), so it must set data-flock-live itself before falling back to "done".
+  // Otherwise Hero.astro's CSS fallback rule keeps matching and the card stays hidden for its own ~3 s delay even
+  // though the hero already finished synchronously, on page load.
+  test('kortet syns direkt när kanvasen saknar en 2d-kontext, utan fallbackens fördröjning', async ({ page }) => {
+    await page.addInitScript(() => {
+      type GetContext = (type: string, ...rest: unknown[]) => unknown;
+      // Only the flock's own canvas reports no context; every other canvas on the page (sprite canvases, the
+      // coverage map further down) keeps behaving normally.
+      const proto = HTMLCanvasElement.prototype as unknown as { getContext: GetContext };
+      const raw = proto.getContext;
+      proto.getContext = function (this: HTMLCanvasElement, type: string, ...rest: unknown[]) {
+        if (type === '2d' && this.hasAttribute('data-flock-canvas')) return null;
+        return raw.apply(this, [type, ...rest]);
+      };
+    });
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    await expect(hero).toHaveAttribute('data-flock', 'done');
+    // Well under the fallback's own ~3 s delay (review fix: before it, this stayed at opacity 0 until the fallback's
+    // timer caught up, even though the hero had already finished).
+    await expect(hero.locator('[data-polaroid]')).toHaveCSS('opacity', '1', { timeout: 1_500 });
+  });
+
   // The fallback above must never win a race with the module when it does load in time: the card stays hidden for
   // the whole flight, exactly as before the fallback existed, and only reveals through the normal landing.
   test('fallbacken poppar inte upp kortet i förtid när skriptet körs som vanligt', async ({ page }) => {
