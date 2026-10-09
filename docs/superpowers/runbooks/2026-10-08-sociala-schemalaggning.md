@@ -39,7 +39,7 @@ Albin ville ha ett eget omslag per inlägg ("C med en tvist": flocken formar var
 - **YouTube, beprövat recept i skymt fönster:** fokusera titel och beskrivning med `el.focus()` (fältens `aria-label` börjar med "Lägg till en titel" respektive "Berätta för tittarna") och skriv med riktiga tangenttryck; radio, Nästa, Schemalägg-panelen, datumet (`.calendar-day` under rätt `.calendar-month-label`), tiden och tidszonen går med JS-klick, en åtgärd per JS-anrop med zoom emellan. **Tryck aldrig Escape i uppladdningsdialogen**: den stängs och videon blir ett utkast. Välj tidszonen "(GMT+02:00) Stockholm" uttryckligen så att inlägg efter sommartidens slut (25 okt) också går ut 08.00.
 - **När flikgruppen tappas** (till exempel när den sista fliken stängs) skapar `tabs_context_mcp` ett nytt fönster som kan hamna minimerat; Albin får då ta fram det.
 
-## Meta klart till 7 nov (9 okt kväll, ca 18.40 till 21.30)
+## Meta klart till 7 nov (9 okt kväll, ca 17.20 till 18.40)
 
 - **Läget:** Facebook + Instagram har de nya versionerna (flockomslag, loop) varje dag 10 okt till 7 nov. 16 nya reels laddades upp i kväll (23 okt till 7 nov) utan att Meta strypte. De gamla 23–28 okt (12 st, FB + IG) är flyttade till Utkast. Kontroll efter omladdning av Schemalagt: 29 dagar, varje dag exakt ett FB- och ett IG-inlägg som inte är rött, alla med ljus miniatyr (nya); 11 röda rester ("Det gick inte att publicera") publiceras inte. Albin kan radera utkasten och de röda raderna när han vill.
 - **Hjälpskriptet** för bildtexter: `python cap.py <slug>` i en lokal hjälpmapp (skriver FB, IG och TikTok-texten som JSON-strängar). Vakten före Nästa jämför editorns `innerText` med förväntad text efter att alla blanktecken slagits ihop till ett mellanslag.
