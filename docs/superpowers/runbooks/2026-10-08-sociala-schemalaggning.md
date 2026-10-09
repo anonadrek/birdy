@@ -25,6 +25,9 @@ Albin ville ha ett eget omslag per inlägg ("C med en tvist": flocken formar var
 - **Loop eller inte (Meta):** öppna raden i Innehåll, Schemalagt (panelen Inläggsdetaljer visar inläggets id). Sätt videons `currentTime` till slutet med JS och titta: loopversionen slutar på omslaget, den gamla på slutkortet "Identify birds by sound". Panelens meny Åtgärder har "Flytta till utkast" (ångringsbart). När ett Instagram-inlägg flyttades till utkast blev en röd rad "Det gick inte att publicera" kvar i Schemalagt; själva inlägget låg i Utkast.
 - **Kontrollera att inget publicerats av misstag** i fliken Publicerat efter större omtag.
 - **Ett andra flikfönster går inte att använda** för Meta medan TikTok väntar: en flik som inte syns får `visibilityState` hidden och Business Suite slutar ladda miniatyrerna.
+- **TikToks "Content check lite" har en daglig gräns** ("You've reached your check limit for today"): efter cirka 30 uppladdningar 9 okt kom den inte längre igång. Schemaläggningen fungerar ändå; TikTok granskar inlägget när det publiceras. Hänger kontrollen i mer än 10 minuter går det att slå av reglaget för just det inlägget (sidan säger då "We'll check your content for For You Feed eligibility").
+- **Chrome har zoom per webbplats:** tiktok.com bytte till 75 % mitt i arbetet (innerWidth 1440 i stället för 1080), Business Suite låg kvar. Räkna alltid om koordinaterna med `874 / window.innerWidth` och hitta beskrivningsrutan med `getBoundingClientRect` i stället för fasta koordinater.
+- **Läget 9 okt cirka 14.30:** TikTok klart 10 okt till 7 nov. Facebook + Instagram klart till och med 22 okt (Meta strypte vid 23 okt, uppladdningen stod på 0 %). YouTube: dagsgränsen gäller till cirka 01.00 10 okt (24 timmar efter att den nåddes); 19 okt till 7 nov saknas helt där och laddas upp först, sedan eventuellt bytet av 10 till 18 okt.
 
 ## Material
 
