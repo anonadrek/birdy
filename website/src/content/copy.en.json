@@ -79,14 +79,16 @@
     "prev": "Previous screen",
     "next": "Next screen",
     "slides": [
-      { "screen": "07-identifiera-savsangare", "k": "Bird of the day", "h": "A new bird every day", "p": "Bird of the day waits at the top of the app. Today it's a sedge warbler, tomorrow a different species.", "alt": "Birdy's Identify screen with Bird of the day, a sedge warbler, at the top" },
       { "screen": "01-identifiera", "k": "Identify", "h": "Three ways to catch it", "p": "Camera, photo or call. Bird of the day waits at the top, a new species every day.", "alt": "Birdy's Identify screen: Bird of the day at the top, a rook, and below it Three ways to catch" },
       { "screen": "05-artprofil", "k": "Species profile", "h": "All about the species on one page", "p": "Photo, description, how common it is and its status on the global Red List (IUCN).", "alt": "The species profile for the great tit in Birdy: photo, name, how common it is, red list status and description" },
       { "screen": "03-mina-arter", "k": "Lifelist", "h": "Your own field journal", "p": "Every sighting is saved on your phone, and every week your sightings come together on This week's page.", "alt": "The Lifelist in Birdy: species, sightings and day streak, Bird of the day, This week's page and the latest sightings" },
       { "screen": "07-lyssna", "k": "Audio ID", "h": "Listen for a song", "p": "Hold your phone still and let the bird sing, and Birdy suggests the species. Audio ID is free for everyone.", "alt": "Birdy's audio ID: Listen for a song, with a sound wave and a button to tap" },
       { "screen": "12-veckans-uppslag", "k": "This week's page", "h": "A week gathered on one page", "p": "Birdy gathers the week's sightings on one page, with new species in your life list at the top.", "alt": "This week's page in Birdy: a week in the field with each day's sightings and new species in the life list" },
       { "screen": "14-troferum", "k": "Trophy room", "h": "Badges you collect along the way", "p": "Every badge celebrates something you did in the field, from your first sighting to long day streaks.", "alt": "Birdy's trophy room: a grid of numbered badges in rust and brass" },
-      { "screen": "16-uppslagsverk-vadare", "k": "Archive", "h": "Browse by group, like waders", "p": "Pick a group, like waders, and browse straight through the family without typing a search word.", "alt": "Birdy's archive with the Waders group selected and a list of wader species" }
+      { "screen": "16-uppslagsverk-vadare", "k": "Archive", "h": "Browse by group, like waders", "p": "Pick a group, like waders, and browse straight through the family without typing a search word.", "alt": "Birdy's archive with the Waders group selected and a list of wader species" },
+      { "screen": "17-fynd-karta", "k": "Premium", "premium": true, "h": "Your finds on a map", "p": "Premium draws a map of where you have seen your birds, private and your own.", "alt": "Birdy's finds map in Premium: pins on a map of the places where the birds were found" },
+      { "screen": "18-sasongsstatistik", "k": "Premium", "premium": true, "h": "The year as a ring", "p": "Premium draws your year as a ring, month by month, with your busiest months in brass.", "alt": "Birdy's season statistics in Premium: a year ring with the months and your most seen species" },
+      { "screen": "19-exportera-pdf", "k": "Premium", "premium": true, "h": "Your field journal as a PDF", "p": "Premium exports your whole field journal as a PDF, ready to save or share.", "alt": "The title page of Birdy's field journal as a PDF: Field journal by Birdy, 2026, 13 species seen and 20 finds" }
     ]
   },
   "guide": {

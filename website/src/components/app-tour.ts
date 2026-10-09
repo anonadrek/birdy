@@ -85,6 +85,10 @@ if (root && track) {
       slides.forEach((s) => { s.style.transform = ''; s.style.opacity = ''; });
     }
     rail?.style.setProperty('--p', (progress * (slides.length - 1)).toFixed(4));
+    // Unconditional (not gated on best !== active) so slide 0 is marked active on the very first
+    // frame too. Drives .wave-bar's animation-play-state (AppTour.astro) — only the centred card's
+    // sound wave moves, cheap enough to toggle every frame since frame() only runs while scrolling.
+    slides.forEach((s, i) => s.classList.toggle('is-active', i === best));
     if (best !== active) { active = best; setCaption(best); }
   };
   const schedule = () => { if (!raf) raf = requestAnimationFrame(frame); };
