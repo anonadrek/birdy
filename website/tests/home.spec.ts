@@ -579,28 +579,62 @@ test.describe('flocken lyfter', () => {
 
   // Review fix: Chrome never reports isIntersecting at the old threshold (0.2 of the target's own area) for a hero
   // much taller than the viewport, since the hero's visible share never reaches a fifth of itself; the fix watches
-  // the viewport's own middle band instead (rootMargin), which the hero reaches at any height.
-  test('flocken startar även när hjälten är mycket högre än skärmen (320×170, ungefär 400 % zoom)', async ({ page }) => {
-    await page.setViewportSize({ width: 320, height: 170 });
-    await page.goto('/sv/');
-    const hero = page.locator('[data-hero]');
-    await expect(hero).toHaveAttribute('data-flock', 'done', { timeout: 15_000 });
-    await expect(hero.locator('[data-polaroid]')).toBeVisible();
-  });
+  // the viewport's own middle band instead (rootMargin), which the hero reaches at any height. 320×170 is a short,
+  // wide window (about 400 % zoom); 1440×3000 is the opposite, a window far taller than the hero itself, where a
+  // percentage-only inset (30 % of 3000 px) would again overshoot the hero and never reach it (review fix: capped in
+  // px).
+  for (const [width, height] of [[320, 170], [1440, 3000]] as const) {
+    test(`flocken startar även när hjälten är mycket högre än skärmen (${width}×${height})`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto('/sv/');
+      const hero = page.locator('[data-hero]');
+      await expect(hero).toHaveAttribute('data-flock', 'done', { timeout: 15_000 });
+      await expect(hero.locator('[data-polaroid]')).toBeVisible();
+    });
+  }
 
   // Review fix: any keydown anywhere (here, Tab) skips straight to the end, so a keyboard user never has to wait out
   // the flight. The link was never removed from the accessibility tree while hidden (opacity, not visibility), so it
-  // can still be focused afterwards.
+  // can still be focused afterwards. Waits for "flying" via the MutationObserver log (review fix), not by polling the
+  // live attribute right after goto, which assumes timing.
   test('en tangenttryckning under flykten hoppar till slutet, och polaroidens länk går att fokusera', async ({ page }) => {
+    const flockLog = await trackFlockState(page);
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/sv/');
     const hero = page.locator('[data-hero]');
-    await expect(hero).toHaveAttribute('data-flock', 'flying');
+    await expect.poll(async () => (await flockLog()).includes('flying')).toBe(true);
     await page.keyboard.press('Tab');
     await expect(hero).toHaveAttribute('data-flock', 'done');
     const link = hero.locator('[data-polaroid] a.pol-name');
     await link.focus();
     await expect(link).toBeFocused();
+  });
+
+  // Review fix: the resize handler used to redraw "now - t0" whenever t0 was set, even after a skip had stopped the
+  // loop, so a skip followed soon after by a resize (zoom, F11, a docked DevTools panel, Win+arrow) froze the canvas
+  // on a stray mid-air instant instead of keeping the already-landed picture.
+  test('ett tangenttryck under flykten följt av en storleksändring visar ändå den landade flocken', async ({ page }) => {
+    const flockLog = await trackFlockState(page);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    await expect.poll(async () => (await flockLog()).includes('flying')).toBe(true);
+    await page.keyboard.press('Tab');
+    await expect(hero).toHaveAttribute('data-flock', 'done');
+    await page.setViewportSize({ width: 1024, height: 768 });
+    // Lets the ResizeObserver's own debounced rAF callback run (same wait as the landing-redraw test above).
+    await page.waitForTimeout(600);
+    const geo = await page.evaluate(() => {
+      const c = (document.querySelector('[data-flock-canvas]') as HTMLElement).getBoundingClientRect();
+      const f = (document.querySelector('[data-flock-fit]') as HTMLElement).getBoundingClientRect();
+      return { left: f.left - c.left, top: f.top - c.top, width: f.width, height: f.height };
+    });
+    const lit = landing(FLOCK.birds[2], fitView(geo));
+    const alpha = await page.locator('[data-flock-canvas]').evaluate((canvas: HTMLCanvasElement, [px, py]) => {
+      const k = canvas.width / canvas.getBoundingClientRect().width;
+      return canvas.getContext('2d')!.getImageData(Math.round(px * k), Math.round(py * k), 1, 1).data[3];
+    }, [lit.x, lit.y] as const);
+    expect(alpha, 'dagens fågel är fortfarande ritad efter storleksändringen').toBeGreaterThan(230);
   });
 
   for (const [width, height] of [[390, 844], [1440, 900]] as const) {

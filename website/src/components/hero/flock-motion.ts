@@ -28,7 +28,7 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
   const setState = (state: 'flying' | 'landed' | 'done') => {
     hero.dataset.flock = state;
     if (state === 'done') {
-      document.removeEventListener('keydown', skipToEnd);
+      document.removeEventListener('keydown', onKeydown);
       hero.removeEventListener('focusin', skipToEnd);
     }
   };
@@ -54,6 +54,8 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
   let t0: number | null = null;
   let raf = 0;
   let io: IntersectionObserver | null = null;
+  /** The reveal's own animations, while they are running (state 'landed'): a skip then jumps them to their end. */
+  let revealRuns: Animation[] = [];
   // The canvas covers the hero; the flock fits the [data-flock-fit] box, the same box as the <noscript> SVG.
   const layout = (): Plan => {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -159,9 +161,11 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
         { transform: 'translateY(0px) rotate(-8deg) scale(1)', opacity: 0.94 },
       ], { duration: 360, delay: 1100, easing: 'cubic-bezier(.3, 1.5, .5, 1)', fill: 'both' }));
     }
+    revealRuns = runs;
     // Landed: the animations let go (the CSS rest state is the same frame), so nothing is left running.
     const settle = () => {
       for (const a of runs) a.cancel();
+      revealRuns = [];
       setState('done');
     };
     Promise.all(runs.map((a) => a.finished)).then(settle, settle);
@@ -201,7 +205,14 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
   // reached before the flight has finished; this jumps the visuals to match. Never wired to pointer, touch or wheel:
   // touch-scrolling past the hero on a phone must not cut the motion short.
   const skipToEnd = () => {
-    if (hero.dataset.flock !== 'waiting' && hero.dataset.flock !== 'flying') return;
+    const state = hero.dataset.flock;
+    if (state === 'landed') {
+      // The reveal is already under way: jump its animations to their end (each one's `finished` promise then
+      // resolves, which runs the normal settle() above and reaches done) instead of cutting it off mid-reveal.
+      for (const a of revealRuns) a.finish();
+      return;
+    }
+    if (state !== 'waiting' && state !== 'flying') return;
     io?.disconnect();
     if (raf) cancelAnimationFrame(raf);
     raf = 0;
@@ -209,9 +220,23 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
     setState('done');
   };
 
+  // Only a plain keypress counts as "the user is doing something": a bare modifier (Shift/Control/Alt/Meta) is not a
+  // skip on its own, and a Ctrl/Alt/Meta combo is a browser or OS shortcut, not page navigation (Shift alone, as in
+  // Shift+Tab, still skips). While waiting (the hero off-screen) a keydown is ignored outright: the same keys are
+  // ordinary page-scrolling there, and a keyboard user actually tabbing into the hero early is already covered by the
+  // focusin listener below.
+  const onKeydown = (e: KeyboardEvent) => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.key === 'Shift' || e.key === 'Control' || e.key === 'Alt' || e.key === 'Meta') return;
+    if (hero.dataset.flock === 'waiting') return;
+    skipToEnd();
+  };
+
   // A new size moves the fit box: lay the flock out again. canvas.width/height resets (clears) the canvas, so the
-  // current instant (or, once the flight itself never ran, the finished still picture) is redrawn at once, in the
-  // same task, rather than leaving a blank frame until the next natural tick.
+  // current instant is redrawn at once, in the same task, rather than leaving a blank frame until the next natural
+  // tick, but ONLY while the loop is actually still running (raf): once a skip has stopped it mid-flight, t0 is still
+  // set (review fix), so recomputing "now - t0" would redraw a stray mid-air instant on top of the already-landed
+  // still picture rather than keep it. Once the loop has stopped, landed/done redraws the finished still picture.
   if ('ResizeObserver' in window) {
     let pending = 0;
     new ResizeObserver(() => {
@@ -219,7 +244,7 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
       pending = requestAnimationFrame(() => {
         pending = 0;
         plan = layout();
-        if (t0 !== null) renderFrame(performance.now() - t0);
+        if (raf && t0 !== null) renderFrame(performance.now() - t0);
         else if (hero.dataset.flock === 'landed' || hero.dataset.flock === 'done') drawStill();
       });
     }).observe(hero);
@@ -229,18 +254,21 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
     drawStill();
     setState('done');
   } else {
-    document.addEventListener('keydown', skipToEnd);
+    document.addEventListener('keydown', onKeydown);
     hero.addEventListener('focusin', skipToEnd);
     if ('IntersectionObserver' in window) {
       // Once, when the hero reaches the middle band of the viewport: a hero much taller than the viewport (a short,
       // wide window) never reaches a fixed share of its OWN area visible, so the threshold watches the root's shrunk
-      // area instead (review fix: the old { threshold: 0.2 } never fired for a hero over five viewports tall).
+      // area instead (review fix: the old { threshold: 0.2 } never fired for a hero over five viewports tall). The
+      // inset is capped in px (review fix): on a very tall viewport, 30 % of its height can exceed the hero's own
+      // height, so a percentage-only inset would again never reach it.
+      const m = Math.min(innerHeight * 0.3, 200);
       io = new IntersectionObserver((entries) => {
         if (!entries.some((e) => e.isIntersecting)) return;
         io?.disconnect();
         setState('flying');
         raf = requestAnimationFrame(frame);
-      }, { rootMargin: '-30% 0px -30% 0px', threshold: 0 });
+      }, { rootMargin: `-${m}px 0px -${m}px 0px`, threshold: 0 });
       io.observe(hero);
     } else {
       setState('flying');
