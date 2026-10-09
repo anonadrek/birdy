@@ -652,6 +652,9 @@ test.describe('flocken lyfter', () => {
     await expect.poll(async () => (await flockLog()).includes('flying')).toBe(true);
     await page.keyboard.press('Tab');
     await expect(hero).toHaveAttribute('data-flock', 'done');
+    // The skip jumps straight from flying to done (review fix nit): fails if the flight had already
+    // reached its own natural "landed" or "done" state before the key press.
+    expect(await flockLog()).toEqual(['waiting', 'flying', 'done']);
     const link = hero.locator('[data-polaroid] a.pol-name');
     await link.focus();
     await expect(link).toBeFocused();
@@ -668,6 +671,8 @@ test.describe('flocken lyfter', () => {
     await expect.poll(async () => (await flockLog()).includes('flying')).toBe(true);
     await page.keyboard.press('Tab');
     await expect(hero).toHaveAttribute('data-flock', 'done');
+    // Same nit as the skip test above: fails if the flight had already ended before the key press.
+    expect(await flockLog()).toEqual(['waiting', 'flying', 'done']);
     await page.setViewportSize({ width: 1024, height: 768 });
     // Lets the ResizeObserver's own debounced rAF callback run (same wait as the landing-redraw test above).
     await page.waitForTimeout(600);
