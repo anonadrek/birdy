@@ -291,6 +291,9 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
       // height, so a percentage-only inset would again never reach it.
       const m = Math.min(innerHeight * 0.3, 200);
       io = new IntersectionObserver((entries) => {
+        // Only while still waiting (review fix): disconnect() does not always cancel a notification already queued,
+        // so a focusin skip racing one in flight must not have it send the state back to flying afterwards.
+        if (hero.dataset.flock !== 'waiting') return;
         if (!entries.some((e) => e.isIntersecting)) return;
         io?.disconnect();
         setState('flying');
