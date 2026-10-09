@@ -160,7 +160,8 @@ test.describe('Klippsidan: sidfoten, nätet, smala skärmar och bygget', () => {
     const files = readdirSync(resolve(websiteRoot, 'dist', '_astro'));
     const { clips } = JSON.parse(readFileSync(resolve(websiteRoot, 'src', 'data', 'clips.json'), 'utf8')) as { clips: { date: string; slug: string }[] };
     for (const c of clips) {
-      const emitted = files.filter((f) => f.startsWith(`${c.slug}.`));
+      const slugPattern = c.slug.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&');
+      const emitted = files.filter((f) => new RegExp(`^${slugPattern}\\.[^.]+\\.webp$`).test(f));
       if (c.date <= '2026-10-15') expect(emitted.length, c.slug).toBeGreaterThan(0);
       else expect(emitted, c.slug).toEqual([]);
     }
