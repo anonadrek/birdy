@@ -22,10 +22,18 @@ test('flockIndexFor: appens arter sprids över hela hjärtat, grannar hamnar is�
   assert.equal(appSpecies.length, FLOCK.birds.length, 'en fågel i flocken för varje art i appen');
   const perBird = new Array(FLOCK.edge).fill(0);
   for (const s of appSpecies) perBird[flockIndexFor(s.id)] += 1;
+  // This holds for the 1.3.0 snapshot (839 species against 178 birds in the heart); nothing in flockIndexFor
+  // guarantees every heart bird gets at least one species if the species count ever changes.
   assert.equal(perBird.filter((n) => n > 0).length, FLOCK.edge, 'varje fågel i hjärtat står för minst en art');
   assert.ok(Math.max(...perBird) <= 14, `högst ${Math.max(...perBird)} arter på samma fågel (snitt ${(appSpecies.length / FLOCK.edge).toFixed(1)})`);
   const neighbours = ['Q25480', 'Q25481', 'Q25482', 'Q25483', 'Q25484', 'Q25485', 'Q25486', 'Q25487', 'Q25488', 'Q25489'].map(flockIndexFor);
-  assert.equal(new Set(neighbours).size, neighbours.length, 'QID som skiljer på en siffra får olika fåglar');
+  // Not just distinct (an old scheme assigning index+1 per neighbour would pass that too): every pair must be
+  // more than one bird apart, or the light would sit next to another lit species' bird in the heart.
+  for (let i = 0; i < neighbours.length; i += 1) {
+    for (let j = i + 1; j < neighbours.length; j += 1) {
+      assert.ok(Math.abs(neighbours[i] - neighbours[j]) > 1, `QID som skiljer på en siffra hamnar inte bredvid varandra (${neighbours[i]} och ${neighbours[j]})`);
+    }
+  }
 });
 
 test('fitView: VIEW i en ruta som xMidYMid meet', () => {
@@ -77,7 +85,7 @@ test('flockSvg: den landade flocken med dagens fågel tänd, i VIEW:s koordinate
   for (const colour of COLOURS) assert.ok(svg.includes(`<g fill="${colour}">`), colour);
   assert.ok(!svg.includes('NaN'));
   const [x, y, size, rot] = FLOCK.birds[2];
-  assert.ok(svg.includes(`<circle cx="${x}" cy="${y}" r="${Math.round(size * DISC_SCALE * 100) / 100}" fill="${LIT.disc}" stroke="${LIT.ring}"`));
+  assert.ok(svg.includes(`<circle cx="${x}" cy="${y}" r="${Math.round(size * DISC_SCALE * 100) / 100}" fill="${LIT.disc}" stroke="${LIT.ring}" stroke-width="2" vector-effect="non-scaling-stroke"/>`));
   // Today's bird is drawn last, bigger, in rust: its matrix puts the mark's centre on the bird's place.
   const m = svg.match(/<use href="#flock-mark" fill="#9A4526" transform="matrix\(([^)]+)\)"\/><\/svg>$/);
   assert.ok(m, 'dagens fågel sist');
@@ -86,4 +94,69 @@ test('flockSvg: den landade flocken med dagens fågel tänd, i VIEW:s koordinate
   assert.ok(Math.abs(b * MARK.cx + d * MARK.cy + f - y) < 0.05, 'y');
   assert.ok(Math.abs(Math.hypot(a, b) - (size * LIT_SCALE) / MARK.w) < 1e-4, 'storlek');
   assert.ok(Math.abs((Math.atan2(b, a) * 180) / Math.PI - rot) < 0.01, 'vridning');
+});
+
+test('COLOURS och LIT: den godkända paletten, dagens fågel i rost på en varm vit platta', () => {
+  assert.deepEqual(COLOURS, ['#B8893A', '#A8552D', '#72301A', '#4A1F12']);
+  assert.deepEqual(LIT, { bird: '#9A4526', disc: 'rgba(255, 248, 238, 0.96)', ring: '#A8552D' });
+});
+
+test('flightPlan: exakta värden ur prototypens formler, varje annan fågel på landing()s plats med rätt färg och opacitet', () => {
+  const fit = fitView({ left: 700, top: 100, width: 654, height: 692 });
+  const plan = flightPlan({ fit, width: 1440, height: 820, litIndex: 2 });
+  // Pinned to the prototype's buildPlan (seed 839, same order of random numbers). Only +, -, *, / and min/max are
+  // involved, so these doubles are exact on every engine.
+  assert.equal(plan.total, 4967.277437498409);
+  assert.deepEqual(plan.birds[0], {
+    fx: 1063.7144444444443, fy: 439.65666666666664, size: 18.261111111111113, rot: 12, colour: 1, op: 1,
+    sx: -406.62228888086975, sy: 723.9004262106494, cx: 671.561277910886, cy: 657.3559759320691,
+    delay: 1383.9299808702829, dur: 1847.5389748811722, amp: 16.1052699200809, freq: 0.9702341575175524, phase: 1.968890657867771,
+  });
+  // Every landed bird where landing() puts it, with its own colour and opacity (what the canvas draws when still).
+  FLOCK.birds.forEach((b, i) => {
+    if (i === 2) return;
+    const p = plan.birds[i < 2 ? i : i - 1];
+    assert.deepEqual({ x: p.fx, y: p.fy, size: p.size, rot: p.rot }, landing(b, fit), `bird ${i}`);
+    assert.equal(p.colour, b[4], `bird ${i} colour`);
+    assert.equal(p.op, b[5], `bird ${i} opacity`);
+  });
+});
+
+test('flockSvg: varje annan fågel i rätt färg, plats, storlek, vridning och opacitet (inte bara antalet use)', () => {
+  const svg = flockSvg({ litIndex: 2 });
+  const groups = [...svg.matchAll(/<g fill="([^"]+)">(.*?)<\/g>/g)];
+  const drawn = groups.flatMap(([, fill, body]) =>
+    [...body.matchAll(/<use href="#flock-mark" transform="matrix\(([^)]+)\)"(?: fill-opacity="([^"]+)")?\/>/g)].map(([, m, op]) => {
+      const [a, b, c, d, e, f] = m.split(' ').map(Number);
+      return { fill, x: a * MARK.cx + c * MARK.cy + e, y: b * MARK.cx + d * MARK.cy + f, size: Math.hypot(a, b) * MARK.w, rot: (Math.atan2(b, a) * 180) / Math.PI, op: op === undefined ? 1 : Number(op) };
+    }),
+  );
+  assert.equal(drawn.length, FLOCK.birds.length - 1);
+  FLOCK.birds.forEach((bird, i) => {
+    if (i === 2) return;
+    const [x, y, size, rot, colour, op] = bird;
+    const hit = drawn.find((u) => Math.abs(u.x - x) < 0.05 && Math.abs(u.y - y) < 0.05 && Math.abs(u.size - size) < 0.01 && Math.abs(u.rot - rot) < 0.05);
+    assert.ok(hit, `bird ${i} drawn at its place, size and rotation`);
+    assert.equal(hit.fill, COLOURS[colour], `bird ${i} colour`);
+    assert.equal(hit.op, op, `bird ${i} opacity`);
+  });
+});
+
+test('flightPlan: höjd 0 (fönstret inte uppmätt än) ger inga NaN eller Infinity', () => {
+  const fit = fitView({ left: 0, top: 0, width: 680, height: 720 });
+  const plan = flightPlan({ fit, width: 1440, height: 0, litIndex: 0 });
+  // height = 0 makes sy = 0 too, so phase's sy / height is 0 / 0 before the guard; every other field is finite
+  // regardless of height.
+  for (const p of [...plan.birds, plan.lit]) {
+    for (const [key, v] of Object.entries(p)) assert.ok(Number.isFinite(v), `${key} = ${v}`);
+  }
+});
+
+test('flockSvg: fel index kastar ett tydligt fel, inte en rå TypeError på odefinierad fågel', () => {
+  assert.throws(() => flockSvg({ litIndex: 9999 }), /ingen fågel/);
+  assert.throws(() => flockSvg({ litIndex: -1 }), /ingen fågel/);
+});
+
+test('flockSvg: otillåtet className kastar, det går oskyddat in i sidans markup via set:html', () => {
+  assert.throws(() => flockSvg({ litIndex: 0, className: '"><script>' }), /className/);
 });

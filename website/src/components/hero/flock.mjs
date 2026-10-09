@@ -9,8 +9,9 @@ import { FLOCK, MARK } from './flock-data.mjs';
 export const COLOURS = ['#B8893A', '#A8552D', '#72301A', '#4A1F12'];
 /** Today's bird: rust, on a cream disc with a copper ring. */
 export const LIT = { bird: '#9A4526', disc: 'rgba(255, 248, 238, 0.96)', ring: '#A8552D' };
-/** Today's bird is drawn this many times its size in the flock, on a disc of this many times its size in radius. */
+/** Today's bird is drawn this many times its size in the flock. */
 export const LIT_SCALE = 1.8;
+/** Today's bird's ring (the disc behind it) is drawn this many times its size in radius. */
 export const DISC_SCALE = 1.6;
 
 /** The part of the flock (flock units) that every layout fits into its box: Birdy's bird with a little air. */
@@ -33,7 +34,7 @@ export const VIEW = { x: 830, y: 0, w: 680, h: 720 };
  * @property {number} dur ms in the air
  * @property {number} amp the wave's amplitude in px
  * @property {number} freq the wave's frequency in Hz
- * @property {number} phase the wave's phase, close for neighbours, so the flock moves as one body
+ * @property {number} phase the wave's phase in cycles, close for neighbours, so the flock moves as one body
  */
 
 /**
@@ -131,7 +132,7 @@ export function flightPlan({ fit, width, height, litIndex }) {
     const p = {
       fx, fy, size: b[2] * fit.s, rot: b[3], colour: b[4], op: b[5],
       sx, sy, cx, cy, delay, dur,
-      amp: 6 + r() * 16, freq: 0.7 + r() * 0.6, phase: (sy / height) * 2.2 + r() * 0.25,
+      amp: 6 + r() * 16, freq: 0.7 + r() * 0.6, phase: (height > 0 ? sy / height : 0) * 2.2 + r() * 0.25,
     };
     if (i === litIndex) {
       lit = p;
@@ -163,12 +164,19 @@ function markMatrix(x, y, size, rot) {
 
 /**
  * The landed flock with today's bird lit, as SVG markup in VIEW's coordinates. The box it is drawn in decides the size;
- * preserveAspectRatio matches fitView, so it lands where the canvas draws the same frame. Birds outside VIEW (the river)
- * are drawn too and show when the svg's overflow is visible.
+ * preserveAspectRatio matches fitView, so it lands where the canvas draws the same frame. Birds outside VIEW (the river
+ * trailing off to the left, a few lead birds right of it, and the tail below it) are drawn too and would show if the
+ * svg's overflow were visible; the hero clips them with overflow hidden.
  * @param {{ litIndex: number, className?: string }} input
  * @returns {string}
  */
 export function flockSvg({ litIndex, className = 'flock-still' }) {
+  if (!Number.isInteger(litIndex) || litIndex < 0 || litIndex >= FLOCK.birds.length) {
+    throw new Error(`flockSvg: ingen fågel med index ${litIndex}`);
+  }
+  // className is interpolated into markup that Astro writes with set:html (Task 4), so only the characters a CSS
+  // class name needs are allowed; anything else throws instead of reaching the page unescaped.
+  if (!/^[\w-]+$/.test(className)) throw new Error(`flockSvg: className "${className}" innehåller otillåtna tecken`);
   const groups = COLOURS.map((colour, ci) => {
     const uses = FLOCK.birds
       .map((b, i) => (i === litIndex || b[4] !== ci ? '' : `<use href="#flock-mark" transform="${markMatrix(b[0], b[1], b[2], b[3])}"${b[5] < 1 ? ` fill-opacity="${b[5]}"` : ''}/>`))
