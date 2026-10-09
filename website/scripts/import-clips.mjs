@@ -11,6 +11,7 @@
 import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { clipsDataFile } from '../src/lib/clips.mjs';
 
 export const DEFAULT_SOURCE = 'C:/w/birdy-social/tools/social';
 const ABOUT = 'Written by scripts/import-clips.mjs from the See the song schedule (tools/social on the branch social/see-the-song). Do not edit by hand: run the script again when the schedule changes.';
@@ -209,7 +210,7 @@ export function importClips(source, websiteRoot) {
   const removed = readdirSync(assets).filter((f) => f.endsWith('.jpg') && !coverFiles.has(f.slice(0, -'.jpg'.length))).sort();
   for (const f of removed) rmSync(join(assets, f));
 
-  const dataFile = join(websiteRoot, 'src', 'data', 'clips.json');
+  const dataFile = clipsDataFile(websiteRoot);
   mkdirSync(dirname(dataFile), { recursive: true });
   writeFileSync(dataFile, `${JSON.stringify({ _about: ABOUT, clips: sorted }, null, 2)}${LF}`);
   return { clips: sorted, removed };
