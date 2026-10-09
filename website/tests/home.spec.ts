@@ -701,6 +701,31 @@ test.describe('flocken lyfter', () => {
   }
 });
 
+test.describe('kontrast i hjälten mot persikopappret', () => {
+  test.use({ contextOptions: { reducedMotion: 'reduce' } });
+
+  // Pixel contrast (like the #download guard): hide the hero's words, screenshot what lies behind them (peach, and any
+  // bird of the landed flock), and check the kicker and the sub text (4.5:1) and the handwritten line (large, 3:1).
+  for (const path of ['/sv/', '/'] as const) {
+    for (const width of [390, 1024, 1440] as const) {
+      test(`kicker, underrad och handskriven rad klarar kontrasten i ${width}px på ${path}`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(path);
+        const hero = page.locator('[data-hero]');
+        await expect(hero).toHaveAttribute('data-flock', 'done');
+        await page.addStyleTag({ content: '[data-hero] .intro * { visibility: hidden !important; }' });
+        await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+        const kick = await textContrastAgainstBackground(page, hero.locator('.intro .kick'));
+        expect(kick, `kicker: ${kick.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
+        const sub = await textContrastAgainstBackground(page, hero.locator('.intro .sub'));
+        expect(sub, `underrad: ${sub.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
+        const em = await textContrastAgainstBackground(page, hero.locator('h1 em'));
+        expect(em, `handskriven rad: ${em.toFixed(2)}:1`).toBeGreaterThanOrEqual(3);
+      });
+    }
+  }
+});
+
 test.describe('fåglarna i månaden', () => {
   // Fixture build, 15 October: every fixture species with a free photo and report data has the same October share,
   // above its yearly mean, so the four come in QID order (ties by QID, src/lib/month-birds.mjs).
