@@ -784,10 +784,24 @@ test.describe('flocken lyfter', () => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/sv/');
     const hero = page.locator('[data-hero]');
+    const polaroid = hero.locator('[data-polaroid]');
     await expect.poll(async () => (await flockLog()).includes('flying')).toBe(true);
-    await page.waitForTimeout(3_300);
-    await expect(hero).toHaveAttribute('data-flock', 'flying');
-    await expect(hero.locator('[data-polaroid]')).toHaveCSS('opacity', '0');
+    // Deterministic, not timing-dependent (review fix): data-flock-live is always set before the flight can reach
+    // "flying" (run()'s own first act), so Hero.astro's CSS fallback rule has already stopped matching by here, and
+    // its named animation must never be among the polaroid's animations, whatever the flight's own timing does below.
+    await expect(hero).toHaveAttribute('data-flock-live', '');
+    const names = await polaroid.evaluate((el) => el.getAnimations().map((a) => (a instanceof CSSAnimation ? a.animationName : '')));
+    expect(names, 'fallbackens animation får inte finnas när modulen redan är live').not.toContain('flock-fallback-reveal');
+    await expect(polaroid).toHaveCSS('opacity', '0');
+    // The wait below only means something while the flight is still running; a slow worker can let it land before we
+    // get here, which is not the bug this test guards against, so skip just that one assertion, not the whole test.
+    if ((await hero.getAttribute('data-flock')) === 'flying') {
+      await page.waitForTimeout(3_300);
+      await expect(hero).toHaveAttribute('data-flock', 'flying');
+      await expect(polaroid).toHaveCSS('opacity', '0');
+    } else {
+      test.info().annotations.push({ type: 'skip', description: 'flykten hann landa före den tidsstyrda kontrollen; täckt av kontrollerna ovan i stället' });
+    }
   });
 
   for (const [width, height] of [[390, 844], [1440, 900]] as const) {
