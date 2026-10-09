@@ -675,6 +675,20 @@ test.describe('flocken lyfter', () => {
     await expect(link).toBeFocused();
   });
 
+  // WCAG 2.2.2 (the motion runs about 6.8 s): a click anywhere on the hero skips to the end exactly like a keydown.
+  // Never wired to touch-scroll, though (the earlier decision): a click event does not fire for a scroll gesture, so
+  // scrolling past the hero on a phone still does not cut the motion short.
+  test('ett klick på hjälten under flykten hoppar till slutet', async ({ page }) => {
+    const flockLog = await trackFlockState(page);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    await expect.poll(async () => (await flockLog()).includes('flying')).toBe(true);
+    await hero.locator('.intro h1').click();
+    await expect(hero).toHaveAttribute('data-flock', 'done');
+    expect(await flockLog()).toEqual(['waiting', 'flying', 'done']);
+  });
+
   // Review fix: the resize handler used to redraw "now - t0" whenever t0 was set, even after a skip had stopped the
   // loop, so a skip followed soon after by a resize (zoom, F11, a docked DevTools panel, Win+arrow) froze the canvas
   // on a stray mid-air instant instead of keeping the already-landed picture.

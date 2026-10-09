@@ -8,8 +8,9 @@
 // where it is (waiting, flying, landed, done); the hero's CSS hides the polaroid until the flock has landed (review
 // fix: by opacity, not visibility, so it stays in the accessibility tree throughout), gated on [data-flock-live] (set
 // by run() below as its first act) so a CSS-only fallback can reveal the card on its own after about 3 s if this
-// module never runs at all (review fix: a dropped connection, a parse failure). A keydown anywhere, or a focus
-// landing inside the hero (a keyboard user tabbing through while still hidden), skips straight to the end.
+// module never runs at all (review fix: a dropped connection, a parse failure). A keydown anywhere, a click anywhere
+// on the hero, or a focus landing inside it (a keyboard user tabbing through while still hidden), skips straight to
+// the end (review fix: WCAG 2.2.2, the flight runs about 6.8 s).
 import { MARK } from './flock-data.mjs';
 import { COLOURS, DISC_SCALE, LIT, LIT_SCALE, fitView, flightPlan } from './flock.mjs';
 
@@ -38,6 +39,7 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
     if (state === 'done') {
       document.removeEventListener('keydown', onKeydown);
       hero.removeEventListener('focusin', skipToEnd);
+      hero.removeEventListener('click', skipToEnd);
     }
   };
   const litIndex = Number(hero.dataset.flockIndex);
@@ -208,10 +210,11 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
     raf = renderFrame(t) ? 0 : requestAnimationFrame(frame);
   };
 
-  // A keyboard user (keydown anywhere, or focus landing inside the hero while tabbing through) skips straight to the
-  // end: the polaroid stays in the accessibility tree throughout (opacity, not visibility, Hero.astro), so it can be
-  // reached before the flight has finished; this jumps the visuals to match. Never wired to pointer, touch or wheel:
-  // touch-scrolling past the hero on a phone must not cut the motion short.
+  // A keyboard user (keydown anywhere, or focus landing inside the hero while tabbing through), or a click anywhere
+  // on the hero (review fix, WCAG 2.2.2), skips straight to the end: the polaroid stays in the accessibility tree
+  // throughout (opacity, not visibility, Hero.astro), so it can be reached before the flight has finished; this jumps
+  // the visuals to match. Never wired to a bare pointerdown, touch or wheel: a click event only fires for an actual
+  // tap or click, so touch-scrolling past the hero on a phone still does not cut the motion short.
   const skipToEnd = () => {
     const state = hero.dataset.flock;
     if (state === 'landed') {
@@ -266,6 +269,10 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
   } else {
     document.addEventListener('keydown', onKeydown);
     hero.addEventListener('focusin', skipToEnd);
+    // WCAG 2.2.2 (the flight runs about 6.8 s): a click anywhere on the hero skips to the end too. Never wired to
+    // touch-scroll (the earlier decision): a click event does not fire for a scroll gesture, so scrolling past the
+    // hero on a phone still does not cut the motion short.
+    hero.addEventListener('click', skipToEnd);
     if ('IntersectionObserver' in window) {
       // Once, when the hero reaches the middle band of the viewport: a hero much taller than the viewport (a short,
       // wide window) never reaches a fixed share of its OWN area visible, so the threshold watches the root's shrunk
