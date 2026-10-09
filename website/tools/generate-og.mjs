@@ -42,10 +42,10 @@ const field = (v) => `<style>${fonts}
 .kick { top: 168px; color: #9A4526; }
 h1 { top: 206px; width: 560px; font-size: 74px; }
 h1 em { color: #9A4526; font-size: 84px; transform: rotate(-1.6deg); transform-origin: left; }
-.url { color: #6E584B; }
+.url { top: 396px; bottom: auto; color: #6E584B; }
 .fit { position: absolute; right: 34px; top: 22px; width: 552px; height: 584px; }
 .fit svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.pol { position: absolute; right: 67%; bottom: 4%; width: 230px; padding: 12px 10px 0; background: #FFFAF1; box-shadow: 0 14px 34px rgba(60, 34, 20, .22), 0 1px 3px rgba(60, 34, 20, .14); transform: rotate(2deg); }
+.pol { position: absolute; right: 68%; bottom: 3%; width: 230px; padding: 12px 10px 0; background: #FFFAF1; box-shadow: 0 14px 34px rgba(60, 34, 20, .22), 0 1px 3px rgba(60, 34, 20, .14); transform: rotate(2deg); }
 .pol img { display: block; width: 100%; height: auto; }
 .pol b { display: block; padding: 8px 2px 12px; font-family: 'Caveat'; font-weight: 700; font-size: 26px; line-height: 1; color: #302019; }
 .tape { position: absolute; top: -18px; left: 50%; width: 84px; height: 22px; margin-left: -42px; transform: rotate(-8deg); background: linear-gradient(180deg, #F5C99B, #F0BB86); box-shadow: 0 1px 3px rgba(80, 50, 30, .2); opacity: .94; }
