@@ -907,25 +907,34 @@ test.describe('så funkar det och fältboken', () => {
 });
 
 test.describe('appkarusellen', () => {
-  test('sex riktiga skärmar och pilarna byter text (SV)', async ({ page }) => {
+  test('åtta riktiga skärmar och pilarna byter text (SV)', async ({ page }) => {
     const errors = trackConsoleErrors(page);
     await page.goto('/sv/');
     const tour = page.locator('#app');
-    await expect(tour.locator('.slide')).toHaveCount(6);
-    await expect(tour.locator('.slide .phone picture source[type="image/avif"]')).toHaveCount(6);
-    await expect(tour.locator('.plno span')).toHaveText(['Identifiera', 'Ljud-ID', 'Match', 'Mina arter', 'Uppslagsverk', 'Artprofil']);
-    await expect(tour.locator('.plno b')).toHaveText(['Pl. I', 'Pl. II', 'Pl. III', 'Pl. IV', 'Pl. V', 'Pl. VI']);
+    await expect(tour.locator('.slide')).toHaveCount(8);
+    await expect(tour.locator('.slide .phone picture source[type="image/avif"]')).toHaveCount(8);
+    await expect(tour.locator('.plno span')).toHaveText([
+      'Dagens fågel',
+      'Identifiera',
+      'Artprofil',
+      'Mina arter',
+      'Ljud-ID',
+      'Veckans uppslag',
+      'Troférummet',
+      'Uppslagsverk',
+    ]);
+    await expect(tour.locator('.plno b')).toHaveText(['Pl. I', 'Pl. II', 'Pl. III', 'Pl. IV', 'Pl. V', 'Pl. VI', 'Pl. VII', 'Pl. VIII']);
     await tour.scrollIntoViewIfNeeded();
     const title = tour.locator('[data-ch]');
+    await expect(title).toHaveText('En ny fågel varje dag');
+    await tour.locator('[data-next]').click();
     await expect(title).toHaveText('Tre sätt att fånga');
     await tour.locator('[data-next]').click();
-    await expect(title).toHaveText('Lyssna efter sång');
-    await tour.locator('[data-next]').click();
-    await expect(title).toHaveText('Ärlig om hur säker den är');
-    await tour.locator('[data-prev]').click();
-    await expect(title).toHaveText('Lyssna efter sång');
-    await tour.locator('[data-track]').press('End');
     await expect(title).toHaveText('Allt om arten på ett uppslag');
+    await tour.locator('[data-prev]').click();
+    await expect(title).toHaveText('Tre sätt att fånga');
+    await tour.locator('[data-track]').press('End');
+    await expect(title).toHaveText('Bläddra gruppvis, som vadare');
     expect(errors).toEqual([]);
   });
 
@@ -933,7 +942,16 @@ test.describe('appkarusellen', () => {
     for (const [path, lang] of [['/sv/', 'sv'], ['/', 'en']] as const) {
       await page.goto(path);
       const screens = await page.locator('#app .slide').evaluateAll((els) => els.map((e) => (e as HTMLElement).dataset.screen));
-      expect(screens).toEqual(['01-identifiera', '07-lyssna', '02-match', '03-mina-arter', '04-uppslagsverk', '05-artprofil']);
+      expect(screens).toEqual([
+        '07-identifiera-savsangare',
+        '01-identifiera',
+        '05-artprofil',
+        '03-mina-arter',
+        '07-lyssna',
+        '12-veckans-uppslag',
+        '14-troferum',
+        '16-uppslagsverk-vadare',
+      ]);
       await expect(page.locator('#app .phone img').first()).toHaveAttribute('alt', lang === 'sv' ? /Identifiera/ : /Identify/);
     }
   });
@@ -955,7 +973,7 @@ test.describe('appkarusellen', () => {
     const neighbor = tour.locator('.slide').nth(1);
     const box = (await neighbor.boundingBox())!;
     await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
-    await expect(tour.locator('[data-ch]')).toHaveText('Lyssna efter sång');
+    await expect(tour.locator('[data-ch]')).toHaveText('Tre sätt att fånga');
   });
 
   for (const width of [320, 390]) {
@@ -967,7 +985,7 @@ test.describe('appkarusellen', () => {
         await tour.scrollIntoViewIfNeeded();
         const cap = tour.locator('.cap');
         const heights: number[] = [(await cap.boundingBox())!.height];
-        for (let i = 1; i <= 5; i++) {
+        for (let i = 1; i <= 7; i++) {
           await tour.locator('[data-next]').click();
           const expected = await tour.locator('.slide').nth(i).getAttribute('data-h');
           await expect(tour.locator('[data-ch]')).toHaveText(expected ?? '');
@@ -1006,9 +1024,9 @@ test.describe('appkarusellen', () => {
 
   test.describe('utan JavaScript', () => {
     test.use({ javaScriptEnabled: false });
-    test('bildtextlistan visar alla sex skärmar', async ({ page }) => {
+    test('bildtextlistan visar alla åtta skärmar', async ({ page }) => {
       await page.goto('/sv/');
-      await expect(page.locator('#app .cap-list li')).toHaveCount(6);
+      await expect(page.locator('#app .cap-list li')).toHaveCount(8);
       await expect(page.locator('#app .foot')).toBeHidden();
     });
   });

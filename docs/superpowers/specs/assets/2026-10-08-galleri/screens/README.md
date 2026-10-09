@@ -6,6 +6,11 @@ Fyra skärmar ur Birdy-appen, på svenska och engelska, tagna på emulatorn `pg-
 (`release/1.3.0`, debug-bygget `se.birdy.android.debug`) installerat över emulatorns
 befintliga data (QA-fynd och märken från tidigare sessioner, orörda).
 
+**Skärm 12 är omtagen 2026-10-10** med en annan metod (data seedad direkt i
+appens databas i stället för att återanvända gamla QA-fynd) för att fixa ett
+licensproblem — se "Skärm 12 omtagen" nedan. De tre andra (07, 14, 16) är
+oförändrade sedan 2026-10-09 och beskrivs som de ursprungligen togs.
+
 Varje PNG har en matchande `.xml` bredvid sig (en `uiautomator dump` av samma skärm)
 för exakta elementkoordinater om någon vill bygga animationer senare.
 
@@ -14,7 +19,7 @@ för exakta elementkoordinater om någon vill bygga animationer senare.
 | Fil | Visar | Datum/tillstånd |
 |---|---|---|
 | `07-identifiera-savsangare.png` | Identifiera-fliken (Identify) med Dagens fågel (Bird of the day) = **Sävsångare** / **Sedge Warbler** | Enhetens klocka tillfälligt satt till tis 6 okt 2026 (`daily_bird_history`-tabellen i appens egen databas kopplar Sävsångare till just det datumet; appen startades om kallt för att läsa av det), sedan återställd till riktig tid efteråt. |
-| `12-veckans-uppslag.png` | Fältrapport/Field report, "En vecka i fält" / "A week in the field", vecka 41 (5–11 okt) | Enhetens riktiga datum (8 okt kväll). |
+| `12-veckans-uppslag.png` | Fältrapport/Field report, "En vecka i fält" / "A week in the field", vecka 41 (5–11 okt) | **Omtagen 2026-10-10**, se avsnittet "Skärm 12 omtagen" nedan — de ursprungliga fynd-fotona hade okänd licens. |
 | `14-troferum.png` | Ditt troférum / Your trophy room, märkesrutnätet | Enhetens riktiga datum. Inga artfoton på den här skärmen (bara numrerade stämpelcirklar). |
 | `16-uppslagsverk-vadare.png` | Uppslagsverket/Archive med gruppchippet **Vadare**/**Waders** valt, listan nedskrollad en bit så artrader syns | Enhetens riktiga datum. Chip-filtret "Vadare" visade sig vara sparat sedan en tidigare session (persisteras i appens inställningar) — ingen tryckning behövdes på nytt. |
 
@@ -38,35 +43,61 @@ CC BY-SA, NC eller annat). Kontrollerat mot `shared/content/species/**/Q*.yaml`
 
 Inga andra artfoton synliga på den här skärmen.
 
-### Skärm 12 — Veckans uppslag/This week's page
+### Skärm 12 — Veckans uppslag/This week's page (omtagen 2026-10-10)
 
-**OBS, viktigt:** de runda foton som syns här (dag-cirklarna för mån/tis/ons och
-"Nya i livslistan"/"New on your life list"-radernas tumnaglar) är **inte** appens
-redaktionella artfoton ur innehållspipelinen. De är de faktiska fynd-fotona som
-sparats i just den här emulatorns egen databas (`birdy-observations.db`,
-`observation.photo_path` pekar på filer i appens egna `files/observations/`), det
-vill säga bilder från tidigare QA-sessioner, inte licenskontrollerade Wikimedia
-Commons-foton. Jag kan inte verifiera CC0/PD/CC BY-status för dem — de ligger
-utanför `shared/content/species`-pipelinen helt.
+**Den ursprungliga 2026-10-09-versionen är ersatt.** De runda fynd-foton som syntes
+där kom ur emulatorns egen, redan befintliga QA-data (`birdy-observations.db`,
+`observation.photo_path` pekade på filer i appens egna `files/observations/`) —
+foton med okänd licens, inte Wikimedia Commons-bilder. Skärmen gick därför inte att
+publicera som den var; se "Skärm 12 omtagen" nedan för hur den gjordes om.
 
-Arterna som syns (samma sexart-mängd på båda språken, bara olika ordning/avskurna
-rader):
+### Skärm 12 omtagen — metod och licenskontroll (2026-10-10)
 
-- Koltrast / Common Blackbird (Q25234) — eget fynd-foto, okänd licens
-- Blåmes / Eurasian Blue Tit (Q25382) — eget fynd-foto, okänd licens
-- Talgoxe / Great Tit (Q25485) — eget fynd-foto, okänd licens
-- Större hackspett / Great Spotted Woodpecker (Q26209) — eget fynd-foto, okänd
-  licens (bara en smal strimma synlig längst ned, avskuren av navigeringsfältet)
-- Domherre / Eurasian Bullfinch (Q25404) — syns i dag-cirkeln för måndag (ej i den
-  synliga delen av listan, men samma fotokälla)
-- Rödhake / European Robin (Q25334) — syns i dag-cirkeln för måndag, samma sak
+**Metod:** i stället för att skanna in fysiska foton via galleriet skrevs sex
+observationsrader direkt in i `birdy-observations.db` (debug-appen,
+`adb root` + `run-as` tillgängligt på `pg-api36`), en per dag måndag till lördag
+(5–10 okt, vecka 41). De gamla QA-raderna i `observation` och `badge_unlock`
+rensades först (`DELETE FROM observation; DELETE FROM badge_unlock;`) så inga
+gamla fynd-foton med okänd licens kunde synas. Varje ny rad har `photo_path = ''`
+(tom sträng): appens egen `recapImageModel`/`RecapPhoto` (se
+`composeApp/.../ui/recap/RecapFinds.kt`) faller då tillbaka på **artens egen
+redaktionella plansch-bild** (`heroImagePath`, samma bild som Artprofilen och
+Uppslagsverket använder, `speciesImageUri`) i stället för ett eget fynd-foto.
+Resultatet är alltså den riktiga appvyn, byggd av riktiga, redan
+licenskontrollerade artbilder — inte en mockup. Databasfilen pullades med
+`adb pull`, redigerades med Pythons inbyggda `sqlite3`-modul, och pushades
+tillbaka (ägare/rättigheter återställda med `chown`/`chmod` efteråt).
 
-**Rekommendation till Albin:** om den här skärmen ska användas publikt på
-webben, bekräfta att de här fynd-fotona verkligen är dina egna (och inte t.ex.
-bilder du använt för att simulera ett fynd under ett QA-pass) innan de
-publiceras. Om osäkert går det att byta till en emulator/session utan sparade
-fynd, eller fylla på fält-dagboken med foton du vet härstammar från Commons
-under rätt licens, och ta om skärmen.
+Arterna valdes bland de vars **plansch-hero är CC0 eller Public domain** (aldrig
+CC BY, för att helt slippa krav på synlig kredit i de små runda tumnaglarna), ur
+`shared/content/species/**/Q*.yaml` (`image_refs`, `role: hero`):
+
+| Dag (2026) | Art (SV) | Art (EN) | QID | Licens | Fotograf |
+|---|---|---|---|---|---|
+| mån 5 okt | Talgoxe | Great Tit | Q25485 | CC0 | Hobbyfotowiki |
+| tis 6 okt | Rödhake | European Robin | Q25334 | Public domain | Rob Hille |
+| ons 7 okt | Större hackspett | Great Spotted Woodpecker | Q26209 | CC0 | Hobbyfotowiki |
+| tors 8 okt | Gråsparv | House Sparrow | Q14683 | CC0 | Hobbyfotowiki |
+| fre 9 okt | Domherre | Eurasian Bullfinch | Q25382 | CC0 | Estormiz |
+| lör 10 okt | Sädesärla | White Wagtail | Q25399 | CC0 | Hobbyfotowiki |
+
+Samtliga sex arter syns i dag-remsan (måndag till lördag, söndag korrekt tom/
+"inte än") och i "Nya i livslistan"/"New on your life list" (alla sex är nya
+den här första veckan på en nollställd app, № 1 till 6). SV- och EN-bilden visar
+samma sex arter i samma dagordning (till skillnad från skärm 16 sorteras inte
+den här listan alfabetiskt, utan efter fyndtid). Ingen kredit krävs i bilden för
+CC0/Public domain, så inget synligt licenstexttillägg behövdes.
+
+**Känd avvikelse, ofarlig:** emulatorns systemklocka stod på fre 9 okt (inte
+den verkliga sessionsdagen lör 10 okt) när skärmarna togs — `adb shell date`
+bekräftade detta, demo-lägets klockvisning ("9:30") styr bara statusradens
+text, inte den riktiga klockan som `captured_at_ms`/"idag" räknas mot. Det
+påverkar inte utseendet: en dag med fynd ritas likadant oavsett om den räknas
+som "framtida" eller ej (se `DayCell`/`isFuture` i `RecapWeek.kt`), och både
+lör 10 okt och sön 11 okt ligger ändå kvar i samma vecka 41. Systemklockan
+rördes medvetet inte (för att inte riskera sidoeffekter på annat i appen);
+bara databasens tidsstämplar sattes explicit (klockan 12:00 UTC per dag,
+emulatorns tidszon är GMT).
 
 ### Skärm 14 — Troférum/Trophy room
 
@@ -107,8 +138,9 @@ ligger överst på den här skärmen men är helt bortskrollat i den sparade bil
 | Black-winged Pratincole | Derek Keats | CC BY 2.0 | `16-uppslagsverk-vadare.png` (en), smal strimma |
 
 Inga CC BY-SA-, NC- eller på annat sätt olicensierade pipeline-foton upptäcktes i
-någon av de åtta bilderna. Det enda öppna licensfrågetecknet är de egna
-fynd-fotona i `12-veckans-uppslag.png` (se ovan).
+någon av de åtta bilderna. Skärm 12:s tidigare öppna licensfrågetecken (egna
+fynd-foton med okänd licens) är löst genom omtagningen 2026-10-10 ovan: skärmen
+visar nu bara artbilder som redan är CC0/Public domain-kontrollerade.
 
 ## Tekniska anteckningar
 
