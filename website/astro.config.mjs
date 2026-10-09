@@ -9,6 +9,7 @@ import { basename, dirname, resolve } from 'node:path';
 import { SHARE_QUALITY, SHARE_SIZE, assetsDir, builtSpeciesMedia, isPreview, paperColour, speciesDir } from './src/lib/species-source.mjs';
 import { readSpeciesSitemapInfo } from './src/lib/species-sitemap.mjs';
 import { buildDate, loadAppSpeciesSnapshot, selectAppDailyBird } from './src/lib/daily-bird.mjs';
+import { clipsModuleSource, loadClips } from './src/lib/clips.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 
@@ -218,6 +219,25 @@ const dailyBirdModule = {
   },
 };
 
+// The clips page (spec 2026-10-09-klippsidan): the See the song clips posted on or before the build's date, newest
+// first, with the same date as Dagens fågel above (buildDate: Europe/Stockholm, BIRDY_TODAY in test builds), so the
+// nightly rebuild adds each day's clip by itself. A virtual module, like the species photos', because Vite emits every
+// image a module imports into dist/_astro/, used or not: only the shown clips' covers are imported (clipsModuleSource),
+// so a later clip's cover is not online before its day. The resolved id carries Vite's NUL prefix, as above.
+const CLIPS = 'virtual:birdy-clips';
+const RESOLVED_CLIPS = `${String.fromCharCode(0)}${CLIPS}`;
+/** @type {import('vite').Plugin} */
+const clipsModule = {
+  name: 'birdy-clips',
+  resolveId(id) {
+    return id === CLIPS ? RESOLVED_CLIPS : undefined;
+  },
+  load(id) {
+    if (id !== RESOLVED_CLIPS) return undefined;
+    return clipsModuleSource(loadClips(root), buildDate().iso);
+  },
+};
+
 export default defineConfig({
   site: 'https://birdy.community',
   trailingSlash: 'ignore',
@@ -241,6 +261,6 @@ export default defineConfig({
     },
   }), speciesAudio, speciesShare],
   vite: {
-    plugins: [tailwindcss(), speciesMediaModule, dailyBirdModule],
+    plugins: [tailwindcss(), speciesMediaModule, dailyBirdModule, clipsModule],
   },
 });
