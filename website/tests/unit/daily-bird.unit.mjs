@@ -114,7 +114,7 @@ test('siteDailyBird: utan sida för appens fågel väljs en art med sida, samma 
 });
 
 // Albin's photo rules (plan, house rules; decided 2026-10-08): CC0, public domain and CC BY always; CC BY-SA only when
-// the photo is shown whole with nothing drawn on it. The plate shows the photo whole, the month cards crop it.
+// the photo is shown whole with nothing drawn on it. The polaroid shows the photo whole, the month cards crop it.
 const hero = (license) => ({ role: 'hero', license });
 const extra = (license) => ({ role: 'extra', license });
 

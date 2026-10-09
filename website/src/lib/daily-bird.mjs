@@ -146,7 +146,7 @@ const WHOLE_ONLY = /^CC BY-SA \d\.\d$/;
 
 /** Whether a photo under this licence may be shown cropped (the month cards). */
 export const mayCrop = (license) => CROP_OK.test(license);
-/** Whether a photo under this licence may be shown whole with nothing on it (the plate). */
+/** Whether a photo under this licence may be shown whole with nothing on it (the home page's polaroid). */
 export const mayShowWhole = (license) => CROP_OK.test(license) || WHOLE_ONLY.test(license);
 
 /**
@@ -159,8 +159,8 @@ export const mayShowWhole = (license) => CROP_OK.test(license) || WHOLE_ONLY.tes
 const pickImage = (images, allowed) => images.find((i) => i.role === 'hero' && allowed(i.license)) ?? images.find((i) => allowed(i.license));
 
 /**
- * The photo the home page's plate shows whole: CC0, public domain, CC BY or CC BY-SA. Undefined when the species has
- * none; the plate then shows another species (siteDailyBird).
+ * The photo the home page's polaroid shows whole: CC0, public domain, CC BY or CC BY-SA. Undefined when the species has
+ * none; the polaroid then shows another species (siteDailyBird).
  * @template {{ role: string, license: string }} T
  * @param {T[]} images
  * @returns {T | undefined}

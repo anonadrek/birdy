@@ -1,6 +1,10 @@
 import { test, expect, type Locator, type Page } from '@playwright/test';
 import sharp from 'sharp';
 import { trackConsoleErrors } from './test-helpers';
+import { FLOCK } from '../src/components/hero/flock-data.mjs';
+import { DISC_SCALE, fitView, landing } from '../src/components/hero/flock.mjs';
+
+type Box = { left: number; top: number; right: number; bottom: number };
 
 // WCAG contrast helpers for the pixel-contrast test (1c): hide the text, screenshot the real
 // background behind it, composite the text's own colour (and any element opacity) over that
@@ -39,6 +43,82 @@ async function textContrastAgainstBackground(page: Page, locator: Locator): Prom
   const alpha = colorAlpha * opacity;
   const effective = [0, 1, 2].map((i) => alpha * fg[i] + (1 - alpha) * bg[i]);
   return contrastRatio(effective, bg);
+}
+
+// The first view's geometry (the 'första vyn' tests): every box in page coordinates, and the tape and the photo also
+// in the polaroid's own frame. Bird positions come from the same fitView as the canvas and the <noscript> SVG.
+async function heroGeometry(page: Page) {
+  await page.evaluate(() => document.fonts.ready);
+  await page.locator('[data-hero] [data-polaroid] img').evaluate((i: HTMLImageElement) => i.decode());
+  return page.evaluate(() => {
+    const box = (el: Element) => {
+      const r = el.getBoundingClientRect();
+      return { left: r.left, top: r.top + scrollY, right: r.right, bottom: r.bottom + scrollY };
+    };
+    const $ = (selector: string) => document.querySelector(selector) as HTMLElement;
+    const card = $('[data-hero] [data-polaroid]');
+    const img = card.querySelector('img') as HTMLImageElement;
+    const tape = card.querySelector('.tape') as HTMLElement;
+    const out = {
+      hero: box($('[data-hero]')),
+      canvas: box($('[data-hero] [data-flock-canvas]')),
+      fit: box($('[data-hero] [data-flock-fit]')),
+      navHeight: $('#site-nav').getBoundingClientRect().height,
+      words: ['.intro .kick', 'h1', '.intro .sub', '.intro .badges'].map((s) => box($(`[data-hero] ${s}`))),
+      card: box(card),
+      tape: box(tape),
+      photo: { width: img.offsetWidth, height: img.offsetHeight, ratio: img.naturalWidth / img.naturalHeight },
+      scrollWidth: document.documentElement.scrollWidth,
+    };
+    // The tape against the photo in the card's own frame (the card leans 2 degrees on the page).
+    // Reduced motion still runs a 0.01 ms transition (global.css), so turn transitions off to read the card's own frame.
+    card.style.transition = 'none';
+    card.style.transform = 'none';
+    const own = { tape: box(tape), photo: box(img) };
+    card.style.transform = '';
+    card.style.transition = '';
+    return { ...out, own };
+  });
+}
+
+const overlaps = (a: Box, b: Box, gap: number) => a.left < b.right + gap && a.right > b.left - gap && a.top < b.bottom + gap && a.bottom > b.top - gap;
+const touches = (x: number, y: number, r: number, b: Box) => {
+  const cx = Math.max(b.left, Math.min(x, b.right));
+  const cy = Math.max(b.top, Math.min(y, b.bottom));
+  return (x - cx) ** 2 + (y - cy) ** 2 < r * r;
+};
+
+// What every layout of the first view must keep: the polaroid (with its tape) inside the hero, under the menu and off
+// the words; every bird that can be lit (the FLOCK.edge birds of the heart, one of which stands for each species)
+// inside the hero and out from under the polaroid; no landed bird under the words; no sideways scroll. `where` prefixes
+// the messages when one test checks several pages or sizes.
+function expectHeroClear(g: Awaited<ReturnType<typeof heroGeometry>>, width: number, where = '') {
+  const card: Box = {
+    left: Math.min(g.card.left, g.tape.left),
+    top: Math.min(g.card.top, g.tape.top),
+    right: Math.max(g.card.right, g.tape.right),
+    bottom: Math.max(g.card.bottom, g.tape.bottom),
+  };
+  expect(card.left, `${where}polaroiden inom hjälten`).toBeGreaterThanOrEqual(0);
+  expect(card.right, `${where}polaroiden inom hjälten`).toBeLessThanOrEqual(width);
+  expect(card.top, `${where}polaroiden under menyn`).toBeGreaterThanOrEqual(g.hero.top + g.navHeight);
+  expect(card.bottom, `${where}polaroiden inom hjälten`).toBeLessThanOrEqual(g.hero.bottom);
+  for (const [i, word] of g.words.entries()) expect(overlaps(card, word, 8), `${where}polaroiden över orden (${i})`).toBe(false);
+  const fit = fitView({ left: g.fit.left - g.canvas.left, top: g.fit.top - g.canvas.top, width: g.fit.right - g.fit.left, height: g.fit.bottom - g.fit.top });
+  for (let i = 0; i < FLOCK.edge; i += 1) {
+    const b = landing(FLOCK.birds[i], fit);
+    const x = b.x + g.canvas.left;
+    const y = b.y + g.canvas.top;
+    const r = b.size * DISC_SCALE + 3;
+    expect(touches(x, y, r, card), `${where}fågel ${i} under polaroiden`).toBe(false);
+    expect(x - r >= 0 && x + r <= width && y - r >= g.hero.top + g.navHeight && y + r <= g.hero.bottom, `${where}fågel ${i} inom hjälten`).toBe(true);
+  }
+  const under = FLOCK.birds.filter((bird) => {
+    const b = landing(bird, fit);
+    return g.words.some((word) => touches(b.x + g.canvas.left, b.y + g.canvas.top, b.size / 2, word));
+  });
+  expect(under.length, `${where}landade fåglar under orden`).toBe(0);
+  expect(g.scrollWidth, `${where}inget sidledes scroll`).toBeLessThanOrEqual(width);
 }
 
 test.describe('meny och sidfot', () => {
@@ -166,6 +246,68 @@ test.describe('meny och sidfot', () => {
   });
 });
 
+test.describe('menyn över persikopappret', () => {
+  for (const [path, label] of [['/sv/', 'Arter'], ['/', 'Species']] as const) {
+    test(`menyn på ${path} har mörk text över hjälten och ljus text när den blir espressobrun`, async ({ page }) => {
+      await page.setViewportSize({ width: 1280, height: 800 });
+      await page.goto(path);
+      const nav = page.locator('#site-nav');
+      await expect(nav).not.toHaveClass(/is-solid/);
+      await expect(nav.locator('.links a').first()).toHaveText(label);
+      await expect(nav.locator('.links a').first()).toHaveCSS('color', 'rgb(48, 32, 25)');
+      await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(48, 32, 25)');
+      await page.evaluate(() => window.scrollTo({ top: 3000, behavior: 'instant' }));
+      await expect(nav).toHaveClass(/is-solid/);
+      await expect(nav.locator('.links a').first()).toHaveCSS('color', 'rgb(255, 248, 238)');
+      await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(255, 248, 238)');
+    });
+  }
+
+  test('menyknappen på mobilen är mörk och utan espressoskiva över hjälten', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/sv/');
+    const toggle = page.locator('#site-nav .menu-toggle');
+    await expect(toggle).toHaveCSS('color', 'rgb(48, 32, 25)');
+    await expect(toggle).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+  });
+
+  // Review fix nit: .is-open is excluded from the peach-over-transparent selector, so an open mobile menu
+  // falls back to the espresso bar + cream text, same as scrolled-past.
+  test('mobilmenyn över hjälten blir espressobrun med ljus text på ordmärket', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/sv/');
+    const nav = page.locator('#site-nav');
+    await expect(nav).not.toHaveClass(/is-solid/);
+    await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(48, 32, 25)');
+    await nav.locator('.menu-toggle').click();
+    await expect(nav).toHaveClass(/is-open/);
+    await expect(nav).toHaveCSS('background-color', 'rgb(42, 29, 23)');
+    await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(255, 248, 238)');
+  });
+
+  test('Premium-sidans meny behåller ljus text över sin mörka hjälte', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/sv/premium/');
+    await expect(page.locator('#site-nav')).not.toHaveClass(/is-solid/);
+    await expect(page.locator('#site-nav .links a').first()).toHaveCSS('color', 'rgb(255, 248, 238)');
+    await expect(page.locator('#site-nav .brand .wordmark')).toHaveCSS('color', 'rgb(255, 248, 238)');
+  });
+
+  test.describe('kontrast', () => {
+    test.use({ contextOptions: { reducedMotion: 'reduce' } });
+
+    test('den första menylänken klarar 4.5:1 mot hjälten', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto('/sv/');
+      await page.addStyleTag({ content: '#site-nav .links a { visibility: hidden !important; }' });
+      await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+      await expect(page.locator('#site-nav')).not.toHaveClass(/is-solid/);
+      const ratio = await textContrastAgainstBackground(page, page.locator('#site-nav .links a').first());
+      expect(ratio, `första menylänken mot hjälten: ${ratio.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
+    });
+  });
+});
+
 test.describe('utan JavaScript', () => {
   test.use({ javaScriptEnabled: false });
 
@@ -174,6 +316,28 @@ test.describe('utan JavaScript', () => {
     await page.goto('/sv/');
     await expect(page.locator('#site-nav')).toHaveCSS('background-color', 'rgb(42, 29, 23)');
     await expect(page.locator('#site-nav .menu-toggle')).toBeHidden();
+    // The peach-over-transparent rule is gated on html.js (review fix nit): without it, the bar stays
+    // espresso and the wordmark keeps the base cream color, never the ink override.
+    await expect(page.locator('#site-nav .brand .wordmark')).toHaveCSS('color', 'rgb(255, 248, 238)');
+  });
+
+  // Without JavaScript the <noscript> SVG shows the landed flock with Hornuggla's bird lit, in exactly the fit box the
+  // canvas uses, and the polaroid hangs at once.
+  test('hjälten visar den landade flocken och polaroiden utan JavaScript', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const still = page.locator('[data-hero] [data-flock-fit] svg.flock-still');
+    await expect(still).toBeVisible();
+    await expect(still.locator('use')).toHaveCount(FLOCK.birds.length);
+    // The one lit disc sits on Hornuggla's own bird, index 2 (flockIndexFor in hero/flock.mjs).
+    await expect(page.locator('[data-hero]')).toHaveAttribute('data-flock-index', '2');
+    const disc = still.locator('circle');
+    await expect(disc).toHaveCount(1);
+    await expect(disc).toHaveAttribute('cx', String(FLOCK.birds[2][0]));
+    await expect(disc).toHaveAttribute('cy', String(FLOCK.birds[2][1]));
+    expect(await still.boundingBox()).toEqual(await page.locator('[data-hero] [data-flock-fit]').boundingBox());
+    await expect(page.locator('[data-hero] [data-polaroid]')).toBeVisible();
+    await expect(page.locator('[data-hero] [data-polaroid] .pol-name')).toHaveText('Dagens fågel: Hornuggla');
   });
 });
 
@@ -182,12 +346,12 @@ test.describe('första vyn', () => {
 
   // The fixture build pins BIRDY_TODAY=2026-10-15 (package.json build:fixtures); every build picks from the shipped app's
   // list (src/data/app-species-1.3.0.json), so the app's Dagens fågel is Hornuggla (Q25384), which has a fixture page, on
-  // the day 1.3.0 goes out: the plate shows it with the line about the app.
-  for (const [path, line1, line2, kicker, plate, name, same, credit] of [
-    ['/sv/', 'Känn igen fågeln.', 'Bevara stunden.', 'Fågelguide och fältdagbok', 'Dagens fågel · tors 15 okt', 'Hornuggla', 'samma fågel som i appen i dag', 'Foto: Testfotograf, CC BY 4.0, via Wikimedia Commons, nedskalad'],
-    ['/', 'Know the bird.', 'Keep the moment.', 'Bird guide and field journal', 'Bird of the day · Thu 15 Oct', 'Long-eared Owl', 'the same bird as in the app today', 'Photo: Testfotograf, CC BY 4.0, via Wikimedia Commons, resized'],
+  // the day 1.3.0 goes out: the polaroid shows it with the line about the app.
+  for (const [path, line1, line2, kicker, caption, same, credit, label] of [
+    ['/sv/', 'Känn igen fågeln.', 'Bevara stunden.', 'Kamera, foto eller läte', 'Dagens fågel: Hornuggla', 'samma fågel som i appen i dag', 'Foto: Testfotograf, CC BY 4.0, via Wikimedia Commons, nedskalad', 'Dagens fågel, Hornuggla, lyser i flocken.'],
+    ['/', 'Know the bird.', 'Keep the moment.', 'Camera, photo or song', 'Bird of the day: Long-eared Owl', 'the same bird as in the app today', 'Photo: Testfotograf, CC BY 4.0, via Wikimedia Commons, resized', 'The bird of the day, Long-eared Owl, is lit up in the flock.'],
   ] as const) {
-    test(`rubrik, kicker och Dagens fågel som plansch på ${path}`, async ({ page, request }) => {
+    test(`rubrik, flocken och Dagens fågel som polaroid på ${path}`, async ({ page, request }) => {
       const errors = trackConsoleErrors(page);
       // The browser's day is the build's day, so the stale-day guard (hero/same-as-app-guard.ts) keeps the app line.
       await page.clock.setFixedTime(new Date('2026-10-15T12:00:00+02:00'));
@@ -199,32 +363,31 @@ test.describe('första vyn', () => {
       await expect(hero).toHaveAttribute('data-date', '2026-10-15');
       await expect(hero).toHaveAttribute('data-app-bird', 'Q25384');
       await expect(hero).toHaveAttribute('data-daily-bird', 'Q25384');
-      await expect(hero.locator('.dp-top .kick')).toHaveText(plate);
-      await expect(hero.locator('.dp-no')).toHaveText('Pl. 288');
-      await expect(hero.locator('.dp-name')).toHaveText(name);
-      await expect(hero.locator('.dp-lat')).toHaveText('Asio otus');
-      await expect(hero.locator('.dp-bars i')).toHaveCount(12);
-      await expect(hero.locator('.dp-bars i.now')).toHaveCount(1);
-      await expect(hero.locator('.dp-letters .now')).toHaveText('O');
-      // Hornuggla's test photo is CC BY and the only one it has: allowed on the plate, which shows the photo whole,
-      // and credited exactly like the species page (photographer, linked licence, source).
-      await expect(hero.locator('[data-credit]')).toHaveText(credit);
-      await expect(hero.locator('[data-credit] a[href^="https://creativecommons.org/licenses/by/4.0/"]')).toHaveText('CC BY 4.0');
-      await expect(hero.locator('[data-credit] a[href^="https://commons.wikimedia.org/"]')).toHaveCount(1);
-      const href = await hero.locator('.dp-read').getAttribute('href');
+      // Hornuggla's own bird in the flock (flockIndexFor in hero/flock.mjs, pinned in tests/unit/flock.unit.mjs).
+      await expect(hero).toHaveAttribute('data-flock-index', '2');
+      const canvas = hero.locator('canvas[data-flock-canvas]');
+      await expect(canvas).toHaveAttribute('role', 'img');
+      expect(await canvas.getAttribute('aria-label')).toContain(label);
+      const polaroid = hero.locator('[data-polaroid]');
+      await expect(polaroid).toBeVisible();
+      await expect(polaroid.locator('.pol-name')).toHaveText(caption);
+      const href = await polaroid.locator('a.pol-name').getAttribute('href');
       expect(href).toMatch(path === '/sv/' ? /^\/sv\/arter\/hornuggla\/$/ : /^\/species\/long-eared-owl\/$/);
       expect((await request.get(href!)).status()).toBe(200);
+      await expect(polaroid.locator('a.pol-photo')).toHaveAttribute('href', href!);
+      // Hornuggla's test photo is CC BY and the only one it has: it may hang whole, credited like the species page.
+      await expect(polaroid.locator('[data-credit]')).toHaveText(credit);
+      await expect(polaroid.locator('[data-credit] a[href^="https://creativecommons.org/licenses/by/4.0/"]')).toHaveText('CC BY 4.0');
+      await expect(polaroid.locator('[data-credit] a[href^="https://commons.wikimedia.org/"]')).toHaveCount(1);
       await expect(hero.locator('[data-same-as-app]')).toHaveText(same);
       await expect(hero.locator('[data-same-as-app]')).toBeVisible();
-      // The app's bird on a live day: the handwritten note is the one that says so (review I4; the empty build checks
-      // the other note, without "och i appen", in scripts/check-empty-hub.mjs).
-      await expect(hero.locator('.intro .mnote')).toHaveText(path === '/sv/' ? 'en ny fågel varje dag, här och i appen' : 'a new bird every day, here and in the app');
-      const img = hero.locator('.dp-photo img');
-      await expect(img).toHaveAttribute('loading', 'eager');
-      await expect(img).toHaveAttribute('fetchpriority', 'high');
+      const img = polaroid.locator('img');
       await expect(img).toHaveAttribute('width', /^\d+$/);
       await expect(img).toHaveAttribute('height', /^\d+$/);
-      await expect(hero.locator('[data-birdy] .birdy-shape')).toHaveCSS('opacity', '1');
+      // The words are the page's largest content, not the photo (spec): the photo loads early but never first.
+      await expect(img).toHaveAttribute('fetchpriority', 'low');
+      // Nothing is written next to or over the flock (Albin 2026-10-09): no margin note.
+      await expect(hero.locator('.mnote')).toHaveCount(0);
       expect(errors).toEqual([]);
     });
   }
@@ -239,23 +402,85 @@ test.describe('första vyn', () => {
     await expect(line).toBeHidden();
   });
 
-  for (const width of [320, 390, 768, 1024, 1280, 1440, 1920]) {
-    test(`fotot visas helt och etiketten ligger bara på passepartouten i ${width} px`, async ({ page }) => {
-      await page.setViewportSize({ width, height: 900 });
-      await page.goto('/sv/');
-      const img = page.locator('[data-hero] .dp-photo img');
-      await img.evaluate((i: HTMLImageElement) => i.decode());
-      const { ratio, natural } = await img.evaluate((i: HTMLImageElement) => {
-        const r = i.getBoundingClientRect();
-        return { ratio: r.width / r.height, natural: i.naturalWidth / i.naturalHeight };
+  // Every width (spec: no layout shift, the photo whole, the tape never on it, nothing over the words): the photo keeps
+  // its shape, the tape sits above it, and everything expectHeroClear checks holds.
+  for (const path of ['/sv/', '/'] as const) {
+    for (const [width, height] of [[320, 700], [390, 844], [768, 1024], [1024, 768], [1280, 800], [1440, 900], [1920, 1080]] as const) {
+      test(`polaroiden, flocken och orden går fria från varandra på ${path} i ${width}×${height}`, async ({ page }) => {
+        await page.setViewportSize({ width, height });
+        await page.goto(path);
+        const g = await heroGeometry(page);
+        expect(Math.abs(g.photo.width / g.photo.height - g.photo.ratio), 'fotot visas helt').toBeLessThan(0.02);
+        expect(g.own.tape.bottom, 'tejpen sitter på kortets kant, ovanför fotot').toBeLessThanOrEqual(g.own.photo.top);
+        expectHeroClear(g, width);
       });
-      expect(Math.abs(ratio - natural), 'inte beskuret').toBeLessThan(0.02);
-      const photo = (await img.boundingBox())!;
-      const label = (await page.locator('[data-hero] .dp-label').boundingBox())!;
-      expect(label.y, 'etiketten börjar under fotot').toBeGreaterThan(photo.y + photo.height + 4);
-      const frame = (await page.locator('[data-hero] .dp-frame').boundingBox())!;
-      expect(frame.x).toBeGreaterThanOrEqual(0);
-      expect(frame.x + frame.width).toBeLessThanOrEqual(width);
+    }
+  }
+
+  // What the fixture's 3:2 photo cannot show (review 2026-10-09): a tall photo (Turkduva's is 0.47), a long name and a
+  // long credit make the card much taller. Forced from the test, with the line about the app showing too; the card
+  // still keeps off the words and the lightable birds, inside the hero, and nothing scrolls sideways.
+  test('en hög polaroid med långt namn och lång fotokredit går också fri', async ({ page }) => {
+    await page.clock.setFixedTime(new Date('2026-10-15T12:00:00+02:00'));
+    for (const path of ['/sv/', '/'] as const) {
+      for (const [width, height] of [[1024, 600], [390, 844]] as const) {
+        await page.setViewportSize({ width, height });
+        await page.goto(path);
+        await expect(page.locator('[data-hero] [data-same-as-app]')).toBeVisible();
+        const sv = path === '/sv/';
+        await page.locator('[data-hero] [data-polaroid]').evaluate((card: HTMLElement, text) => {
+          // Reduced motion still runs a 0.01 ms transition on every style change (global.css), and nothing makes
+          // the geometry read below wait a frame for it to finish: transitions off, so the new sizes apply at once.
+          for (const el of [card, ...card.querySelectorAll<HTMLElement>('*')]) el.style.transition = 'none';
+          card.style.setProperty('--ar', '0.47');
+          (card.querySelector('img') as HTMLImageElement).style.aspectRatio = '0.47';
+          (card.querySelector('.pol-name') as HTMLElement).textContent = text.caption;
+          (card.querySelector('[data-credit]') as HTMLElement).textContent = text.credit;
+        }, {
+          caption: `${sv ? 'Dagens fågel' : 'Bird of the day'}: Eurasian Three-toed Woodpecker`,
+          credit: `${sv ? 'Foto' : 'Photo'}: Ruth Annabelle Featherstonehaugh-Marjoribanks (Västergötlands Ornitologiska Förening), CC BY-SA 4.0, via Wikimedia Commons, ${sv ? 'nedskalad' : 'resized'}`,
+        });
+        const g = await heroGeometry(page);
+        const where = `${path} ${width}×${height}: `;
+        expect(g.photo.height / g.photo.width, `${where}fotot står på höjden`).toBeGreaterThan(2);
+        expectHeroClear(g, width, where);
+      }
+    }
+  });
+
+  // The words stand in the page's column: from 1280 px the headline starts where the next section's text does (review
+  // 2026-10-09: the site-wide .lead class on the words' wrapper had pinned them to x = 44 at every width).
+  test('orden står i samma spalt som resten av sidan', async ({ page }) => {
+    for (const path of ['/sv/', '/']) {
+      for (const width of [1280, 1440, 1920]) {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(path);
+        const h1 = await page.locator('[data-hero] h1').evaluate((e) => e.getBoundingClientRect().left);
+        const column = await page.locator('#season .wrap').evaluate((e) => e.getBoundingClientRect().left + parseFloat(getComputedStyle(e).paddingLeft));
+        expect(h1, `${path} ${width} px`).toBeCloseTo(column, 1);
+      }
+    }
+  });
+
+  // Nothing invisible lies over the polaroid (review 2026-10-09: the words' wrapper had a z-index and covered the photo's
+  // left edge at 1024 px): fifteen points across the photo, its middle included, all hit the photo's link. They stay 8 px
+  // in from the sides and 10 px from the top and bottom, inside the photo although the card leans 2 degrees.
+  for (const [width, height] of [[1024, 768], [1440, 900]] as const) {
+    test(`hela fotot i polaroiden är fotots länk i ${width}×${height}`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto('/sv/');
+      const img = page.locator('[data-hero] [data-polaroid] img');
+      await img.evaluate((i: HTMLImageElement) => i.decode());
+      const misses = await img.evaluate((i) => {
+        const r = i.getBoundingClientRect();
+        const xs = [r.left + 8, r.left + r.width / 4, r.left + r.width / 2, r.right - r.width / 4, r.right - 8];
+        const ys = [r.top + 10, r.top + r.height / 2, r.bottom - 10];
+        return xs.flatMap((x) => ys.map((y) => {
+          const el = document.elementFromPoint(x, y);
+          return el?.closest('[data-polaroid] a.pol-photo') ? '' : `(${Math.round(x)}, ${Math.round(y)}): ${el ? `${el.tagName.toLowerCase()}.${[...el.classList].join('.')}` : 'inget'}`;
+        })).filter(Boolean);
+      });
+      expect(misses).toEqual([]);
     });
   }
 
@@ -275,17 +500,17 @@ test.describe('första vyn', () => {
     });
   }
 
-  test('planschen börjar under menyn och den handskrivna raden ryms på en rad på dator', async ({ page }) => {
+  test('orden börjar under menyn och den handskrivna raden ryms på en rad på dator', async ({ page }) => {
     for (const path of ['/sv/', '/']) {
       for (const width of [1024, 1280, 1440, 1920]) {
         await page.setViewportSize({ width, height: 900 });
         await page.goto(path);
         await page.evaluate(() => document.fonts.ready);
         const nav = (await page.locator('#site-nav').boundingBox())!;
-        const plate = (await page.locator('[data-hero] .dp-top').boundingBox())!;
-        expect(plate.y, `${path} ${width} px`).toBeGreaterThanOrEqual(nav.y + nav.height);
+        const kick = (await page.locator('[data-hero] .intro .kick').boundingBox())!;
+        expect(kick.y, `${path} ${width} px`).toBeGreaterThanOrEqual(nav.y + nav.height);
         const em = await page.locator('[data-hero] h1 em').evaluate((e) => ({
-          lines: Math.round(e.getBoundingClientRect().height / parseFloat(getComputedStyle(e).lineHeight)),
+          lines: Math.round((e as HTMLElement).offsetHeight / parseFloat(getComputedStyle(e).lineHeight)),
           over: e.scrollWidth - (e.parentElement as HTMLElement).clientWidth,
         }));
         expect(em.lines, `${path} ${width} px`).toBe(1);
@@ -295,18 +520,327 @@ test.describe('första vyn', () => {
   });
 });
 
-test.describe('Birdy-fågeln flyger', () => {
-  test('fågeln landar på planschen, flyger iväg vid scroll och kommer tillbaka', async ({ page }) => {
+// Wraps requestAnimationFrame before any of the page's own scripts run, so a test can prove that nothing is scheduled
+// any more once the flock has settled (a frozen canvas alone could in principle be redrawn with identical pixels).
+async function trackRaf(page: Page): Promise<() => Promise<number>> {
+  await page.addInitScript(() => {
+    (window as unknown as { __rafCalls: number }).__rafCalls = 0;
+    const raw = window.requestAnimationFrame.bind(window);
+    window.requestAnimationFrame = (cb: FrameRequestCallback) => {
+      (window as unknown as { __rafCalls: number }).__rafCalls += 1;
+      return raw(cb);
+    };
+  });
+  return () => page.evaluate(() => (window as unknown as { __rafCalls: number }).__rafCalls);
+}
+
+// Records every value the hero's data-flock attribute takes, from a MutationObserver attached before the hero element
+// even exists, so a test can assert the exact order (waiting, flying, landed, done) instead of racing the
+// IntersectionObserver/rAF timing by polling for one value right after goto.
+async function trackFlockState(page: Page): Promise<() => Promise<string[]>> {
+  await page.addInitScript(() => {
+    const log: string[] = [];
+    (window as unknown as { __flockLog: string[] }).__flockLog = log;
+    const push = (el: Element) => {
+      const value = el.getAttribute('data-flock');
+      if (value && log[log.length - 1] !== value) log.push(value);
+    };
+    new MutationObserver((records) => {
+      for (const record of records) {
+        if (record.type === 'attributes' && record.target instanceof Element) push(record.target);
+        if (record.type === 'childList') {
+          for (const node of Array.from(record.addedNodes)) {
+            if (!(node instanceof Element)) continue;
+            const hero = node.matches('[data-hero]') ? node : node.querySelector('[data-hero]');
+            if (hero) push(hero);
+          }
+        }
+      }
+      // document, not document.documentElement: an init script runs this early enough that <html> may not exist yet.
+    }).observe(document, { subtree: true, childList: true, attributes: true, attributeFilter: ['data-flock'] });
+  });
+  return () => page.evaluate(() => (window as unknown as { __flockLog: string[] }).__flockLog);
+}
+
+test.describe('flocken lyfter', () => {
+  test.describe('med minskad rörelse', () => {
+    test.use({ contextOptions: { reducedMotion: 'reduce' } });
+
+    test('flocken står landad direkt, med dagens fågel tänd', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto('/sv/');
+      const hero = page.locator('[data-hero]');
+      await expect(hero).toHaveAttribute('data-flock', 'done');
+      await expect(hero.locator('[data-polaroid]')).toBeVisible();
+      const geo = await page.evaluate(() => {
+        const c = (document.querySelector('[data-flock-canvas]') as HTMLElement).getBoundingClientRect();
+        const f = (document.querySelector('[data-flock-fit]') as HTMLElement).getBoundingClientRect();
+        return { left: f.left - c.left, top: f.top - c.top, width: f.width, height: f.height };
+      });
+      const lit = landing(FLOCK.birds[2], fitView(geo));
+      const alpha = (x: number, y: number) =>
+        page.locator('[data-flock-canvas]').evaluate((canvas: HTMLCanvasElement, [px, py]) => {
+          const k = canvas.width / canvas.getBoundingClientRect().width;
+          return canvas.getContext('2d')!.getImageData(Math.round(px * k), Math.round(py * k), 1, 1).data[3];
+        }, [x, y] as const);
+      expect(await alpha(lit.x, lit.y), 'dagens fågel är ritad').toBeGreaterThan(230);
+      expect(await alpha(2, 2), 'resten av ytan är tom').toBe(0);
+      expect(await hero.evaluate((h) => h.getAnimations({ subtree: true }).length), 'inget rör sig').toBe(0);
+    });
+  });
+
+  test('flocken flyger in en gång, landar och står sedan still', async ({ page }) => {
+    const errors = trackConsoleErrors(page);
+    const flockLog = await trackFlockState(page);
+    const rafCalls = await trackRaf(page);
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/sv/');
-    const bird = page.locator('[data-birdy]');
-    await expect(bird.locator('.birdy-shape')).toHaveCSS('opacity', '1', { timeout: 8000 });
-    await page.evaluate(() => window.scrollTo({ top: 320, behavior: 'instant' }));
-    await expect.poll(() => bird.evaluate((b) => Number(getComputedStyle(b).opacity))).toBeLessThan(0.05);
-    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
-    await expect.poll(() => bird.evaluate((b) => getComputedStyle(b).opacity)).toBe('1');
-    await expect.poll(() => bird.evaluate((b) => getComputedStyle(b).transform)).toMatch(/^(none|matrix\(1, 0, 0, 1, 0, 0\))$/);
+    const hero = page.locator('[data-hero]');
+    const polaroid = hero.locator('[data-polaroid]');
+    // Opacity, not visibility (review fix: the polaroid must stay in the accessibility tree while hidden), so
+    // Playwright's own visible/hidden check (which does not look at opacity) cannot see the hidden state.
+    await expect(polaroid).toHaveCSS('opacity', '0');
+    await expect(hero).toHaveAttribute('data-flock', 'done', { timeout: 15_000 });
+    await expect(polaroid).toHaveCSS('opacity', '1');
+    // The exact order, from a MutationObserver attached before the page's own scripts ran, not from catching "flying"
+    // by polling right after goto (races the IntersectionObserver/rAF timing).
+    expect(await flockLog()).toEqual(['waiting', 'flying', 'landed', 'done']);
+    expect(await hero.evaluate((h) => h.getAnimations({ subtree: true }).length), 'inga animationer kvar').toBe(0);
+    const frame = () => page.locator('[data-flock-canvas]').evaluate((c: HTMLCanvasElement) => c.toDataURL());
+    const landed = await frame();
+    const scheduledAtLanding = await rafCalls();
+    await page.waitForTimeout(600);
+    expect(await frame(), 'inget ritas om efter landningen').toBe(landed);
+    expect(await rafCalls(), 'inget requestAnimationFrame schemaläggs efter landningen').toBe(scheduledAtLanding);
+    const shift = await page.evaluate(() => new Promise<number>((resolve) => {
+      let sum = 0;
+      new PerformanceObserver((list) => {
+        for (const e of list.getEntries() as (PerformanceEntry & { value: number; hadRecentInput: boolean })[]) if (!e.hadRecentInput) sum += e.value;
+      }).observe({ type: 'layout-shift', buffered: true });
+      setTimeout(() => resolve(sum), 50);
+    }));
+    expect(shift, 'inga layoutskift').toBeLessThan(0.01);
+    expect(errors).toEqual([]);
   });
+
+  test('flocken väntar tills hjälten syns', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    // Scrolled to the bottom before the page's scripts run, as when a link opens the page further down. (A #fragment
+    // does not do: Chrome reports the top as visible for a frame before it scrolls.)
+    await page.addInitScript(() => {
+      document.addEventListener('readystatechange', () => {
+        if (document.readyState !== 'interactive') return;
+        document.documentElement.style.scrollBehavior = 'auto';
+        window.scrollTo(0, document.documentElement.scrollHeight);
+      });
+    });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    await page.waitForTimeout(1000);
+    await expect(hero).toHaveAttribute('data-flock', 'waiting');
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+    await expect(hero).toHaveAttribute('data-flock', /^(flying|landed|done)$/);
+  });
+
+  // Review fix: Chrome never reports isIntersecting at the old threshold (0.2 of the target's own area) for a hero
+  // much taller than the viewport, since the hero's visible share never reaches a fifth of itself; the fix watches
+  // the viewport's own middle band instead (rootMargin), which the hero reaches at any height. 320×170 is a short,
+  // wide window (about 400 % zoom); 1440×3000 is the opposite, a window far taller than the hero itself, where a
+  // percentage-only inset (30 % of 3000 px) would again overshoot the hero and never reach it (review fix: capped in
+  // px).
+  for (const [width, height] of [[320, 170], [1440, 3000]] as const) {
+    test(`flocken startar även när hjälten är mycket högre än skärmen (${width}×${height})`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto('/sv/');
+      const hero = page.locator('[data-hero]');
+      await expect(hero).toHaveAttribute('data-flock', 'done', { timeout: 15_000 });
+      await expect(hero.locator('[data-polaroid]')).toBeVisible();
+    });
+  }
+
+  // Review fix: any keydown anywhere (here, Tab) skips straight to the end, so a keyboard user never has to wait out
+  // the flight. The link was never removed from the accessibility tree while hidden (opacity, not visibility), so it
+  // can still be focused afterwards. Waits for "flying" via the MutationObserver log (review fix), not by polling the
+  // live attribute right after goto, which assumes timing.
+  test('en tangenttryckning under flykten hoppar till slutet, och polaroidens länk går att fokusera', async ({ page }) => {
+    const flockLog = await trackFlockState(page);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    await expect.poll(async () => (await flockLog()).includes('flying')).toBe(true);
+    await page.keyboard.press('Tab');
+    await expect(hero).toHaveAttribute('data-flock', 'done');
+    // The skip jumps straight from flying to done (review fix nit): fails if the flight had already
+    // reached its own natural "landed" or "done" state before the key press.
+    expect(await flockLog()).toEqual(['waiting', 'flying', 'done']);
+    const link = hero.locator('[data-polaroid] a.pol-name');
+    await link.focus();
+    await expect(link).toBeFocused();
+  });
+
+  // WCAG 2.2.2 (the motion runs about 6.8 s): a click anywhere on the hero skips to the end exactly like a keydown.
+  // Never wired to touch-scroll, though (the earlier decision): a click event does not fire for a scroll gesture, so
+  // scrolling past the hero on a phone still does not cut the motion short.
+  test('ett klick på hjälten under flykten hoppar till slutet', async ({ page }) => {
+    const flockLog = await trackFlockState(page);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    await expect.poll(async () => (await flockLog()).includes('flying')).toBe(true);
+    await hero.locator('.intro h1').click();
+    await expect(hero).toHaveAttribute('data-flock', 'done');
+    expect(await flockLog()).toEqual(['waiting', 'flying', 'done']);
+  });
+
+  // Reduced motion switched on mid-flight (a settings change, not just at load) gets the same snap-to-end as a
+  // keydown or a click: the flight must never be the only way to reach the end for someone who has just asked for
+  // less motion.
+  test('minskad rörelse som slås på mitt i flykten hoppar till slutet', async ({ page }) => {
+    const flockLog = await trackFlockState(page);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    await expect.poll(async () => (await flockLog()).includes('flying')).toBe(true);
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await expect(hero).toHaveAttribute('data-flock', 'done');
+    expect(await flockLog()).toEqual(['waiting', 'flying', 'done']);
+  });
+
+  // Review fix: the resize handler used to redraw "now - t0" whenever t0 was set, even after a skip had stopped the
+  // loop, so a skip followed soon after by a resize (zoom, F11, a docked DevTools panel, Win+arrow) froze the canvas
+  // on a stray mid-air instant instead of keeping the already-landed picture.
+  test('ett tangenttryck under flykten följt av en storleksändring visar ändå den landade flocken', async ({ page }) => {
+    const flockLog = await trackFlockState(page);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    await expect.poll(async () => (await flockLog()).includes('flying')).toBe(true);
+    await page.keyboard.press('Tab');
+    await expect(hero).toHaveAttribute('data-flock', 'done');
+    // Same nit as the skip test above: fails if the flight had already ended before the key press.
+    expect(await flockLog()).toEqual(['waiting', 'flying', 'done']);
+    await page.setViewportSize({ width: 1024, height: 768 });
+    // Lets the ResizeObserver's own debounced rAF callback run (same wait as the landing-redraw test above).
+    await page.waitForTimeout(600);
+    const geo = await page.evaluate(() => {
+      const c = (document.querySelector('[data-flock-canvas]') as HTMLElement).getBoundingClientRect();
+      const f = (document.querySelector('[data-flock-fit]') as HTMLElement).getBoundingClientRect();
+      return { left: f.left - c.left, top: f.top - c.top, width: f.width, height: f.height };
+    });
+    const lit = landing(FLOCK.birds[2], fitView(geo));
+    const alpha = await page.locator('[data-flock-canvas]').evaluate((canvas: HTMLCanvasElement, [px, py]) => {
+      const k = canvas.width / canvas.getBoundingClientRect().width;
+      return canvas.getContext('2d')!.getImageData(Math.round(px * k), Math.round(py * k), 1, 1).data[3];
+    }, [lit.x, lit.y] as const);
+    expect(alpha, 'dagens fågel är fortfarande ritad efter storleksändringen').toBeGreaterThan(230);
+  });
+
+  // Review fix (important): the polaroid must not stay invisible forever, its still-focusable link unreachable by a
+  // pointer, if the module that drives the flight never runs at all (a dropped mobile connection, a parse failure).
+  // Hero.astro's CSS-only fallback reveals the card on its own, with no module in the loop, within about 3 s.
+  test('polaroidens länk blir synlig och går att klicka även om hjältens skript aldrig körs', async ({ page }) => {
+    await page.route('**/Hero.astro_astro_type_script*', (route) => route.abort());
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const polaroid = page.locator('[data-hero] [data-polaroid]');
+    await expect(polaroid).toHaveCSS('opacity', '1', { timeout: 4_000 });
+    const hit = await polaroid.locator('a.pol-name').evaluate((link) => {
+      const r = link.getBoundingClientRect();
+      const el = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+      return el === link || !!el?.closest('a.pol-name');
+    });
+    expect(hit, 'länken tar emot klick i mitten, inte bara synlig för en skärmläsare').toBe(true);
+  });
+
+  // Review fix (minor A, a regression from the previous round): the module's own no-2D-context path (an old or
+  // locked-down browser) never calls run(), so it must set data-flock-live itself before falling back to "done".
+  // Otherwise Hero.astro's CSS fallback rule keeps matching and the card stays hidden for its own ~3 s delay even
+  // though the hero already finished synchronously, on page load.
+  test('kortet syns direkt när kanvasen saknar en 2d-kontext, utan fallbackens fördröjning', async ({ page }) => {
+    await page.addInitScript(() => {
+      type GetContext = (type: string, ...rest: unknown[]) => unknown;
+      // Only the flock's own canvas reports no context; every other canvas on the page (sprite canvases, the
+      // coverage map further down) keeps behaving normally.
+      const proto = HTMLCanvasElement.prototype as unknown as { getContext: GetContext };
+      const raw = proto.getContext;
+      proto.getContext = function (this: HTMLCanvasElement, type: string, ...rest: unknown[]) {
+        if (type === '2d' && this.hasAttribute('data-flock-canvas')) return null;
+        return raw.apply(this, [type, ...rest]);
+      };
+    });
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    await expect(hero).toHaveAttribute('data-flock', 'done');
+    // Deterministic, not timing-dependent (review fix): this no-context path only reveals the card promptly because
+    // it sets data-flock-live itself (flock-motion.ts's final else-branch) before falling back to "done", so this is
+    // red against a regression that drops that line regardless of how fast or slow the page happens to load.
+    await expect(hero).toHaveAttribute('data-flock-live', '');
+    // Well under the fallback's own ~3 s delay (review fix: before it, this stayed at opacity 0 until the fallback's
+    // timer caught up, even though the hero had already finished).
+    await expect(hero.locator('[data-polaroid]')).toHaveCSS('opacity', '1', { timeout: 1_500 });
+  });
+
+  // The fallback above must never win a race with the module when it does load in time: the card stays hidden for
+  // the whole flight, exactly as before the fallback existed, and only reveals through the normal landing.
+  test('fallbacken poppar inte upp kortet i förtid när skriptet körs som vanligt', async ({ page }) => {
+    const flockLog = await trackFlockState(page);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    const polaroid = hero.locator('[data-polaroid]');
+    await expect.poll(async () => (await flockLog()).includes('flying')).toBe(true);
+    // Deterministic, not timing-dependent (review fix): data-flock-live is always set before the flight can reach
+    // "flying" (run()'s own first act) and is never removed again, so Hero.astro's CSS fallback rule has stopped
+    // matching for good by here, whatever the flight's own timing does below. The card's reveal only starts at
+    // landing, so while flying it must carry no animation at all yet, not merely lack the fallback's name by itself
+    // (stricter check, review fix: this also survives a keyframes rename).
+    await expect(hero).toHaveAttribute('data-flock-live', '');
+    const names = await polaroid.evaluate((el) => el.getAnimations().map((a) => (a instanceof CSSAnimation ? a.animationName : '')));
+    expect(names, 'kortet ska inte ha några animationer medan flocken flyger').toEqual([]);
+    await expect(polaroid).toHaveCSS('opacity', '0');
+  });
+
+  for (const [width, height] of [[390, 844], [1440, 900]] as const) {
+    test(`det största innehållet är orden, inte fotot (${width}×${height})`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto('/sv/');
+      await expect(page.locator('[data-hero]')).toHaveAttribute('data-flock', 'done', { timeout: 15_000 });
+      const lcp = await page.evaluate(() => new Promise<string>((resolve) => {
+        new PerformanceObserver((list) => {
+          const entries = list.getEntries() as (PerformanceEntry & { element?: Element | null })[];
+          const el = entries[entries.length - 1]?.element;
+          resolve(!el ? 'inget' : el.closest('[data-hero] .intro') ? 'orden' : el.closest('[data-polaroid]') ? 'fotot' : el.tagName);
+        }).observe({ type: 'largest-contentful-paint', buffered: true });
+      }));
+      expect(lcp).toBe('orden');
+    });
+  }
+});
+
+test.describe('kontrast i hjälten mot persikopappret', () => {
+  test.use({ contextOptions: { reducedMotion: 'reduce' } });
+
+  // Pixel contrast (like the #download guard): hide the hero's words, screenshot what lies behind them (peach, and any
+  // bird of the landed flock), and check the kicker and the sub text (4.5:1) and the handwritten line (large, 3:1).
+  for (const path of ['/sv/', '/'] as const) {
+    for (const width of [390, 1024, 1440] as const) {
+      test(`kicker, underrad och handskriven rad klarar kontrasten i ${width}px på ${path}`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(path);
+        const hero = page.locator('[data-hero]');
+        await expect(hero).toHaveAttribute('data-flock', 'done');
+        await page.addStyleTag({ content: '[data-hero] .intro * { visibility: hidden !important; }' });
+        await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+        const kick = await textContrastAgainstBackground(page, hero.locator('.intro .kick'));
+        expect(kick, `kicker: ${kick.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
+        const sub = await textContrastAgainstBackground(page, hero.locator('.intro .sub'));
+        expect(sub, `underrad: ${sub.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
+        const em = await textContrastAgainstBackground(page, hero.locator('h1 em'));
+        expect(em, `handskriven rad: ${em.toFixed(2)}:1`).toBeGreaterThanOrEqual(3);
+      });
+    }
+  }
 });
 
 test.describe('fåglarna i månaden', () => {
@@ -460,7 +994,7 @@ test.describe('appkarusellen', () => {
 
   test.describe('med minskad rörelse', () => {
     test.use({ contextOptions: { reducedMotion: 'reduce' } });
-    test('karusellen och planschen står still', async ({ page }) => {
+    test('karusellen och polaroiden står still', async ({ page }) => {
       await page.goto('/sv/');
       await page.locator('#app').scrollIntoViewIfNeeded();
       const transforms = await page.locator('#app .slide').evaluateAll((els) => els.map((e) => getComputedStyle(e).transform));

@@ -6,6 +6,8 @@ import { test, expect } from '@playwright/test';
 // Webben i fältbokens färger (docs/superpowers/specs/2026-09-28-webb-faltboksfarger-design.md).
 const ESPRESSO = 'rgb(42, 29, 23)';
 const ESPRESSO_DEEP = 'rgb(30, 20, 16)';
+// The home page's hero is peach paper since 2026-10-09 (spec 2026-10-09-startsidan-flocken-lyfter).
+const PEACH = 'rgb(253, 229, 203)';
 
 // Läs copy-texterna direkt så framtida ordbyten inte kräver testredigering (spec 2026-09-28 §fixrunda).
 const contentDir = resolve(dirname(fileURLToPath(import.meta.url)), '../src/content');
@@ -15,9 +17,9 @@ const copy = {
 } as const;
 
 test.describe('espresso i stället för mossa', () => {
-  test('de mörka partierna på /sv/ är espresso', async ({ page }) => {
+  test('hjälten på /sv/ är persikopapper och de mörka partierna espresso', async ({ page }) => {
     await page.goto('/sv/');
-    await expect(page.locator('[data-hero]')).toHaveCSS('background-color', ESPRESSO);
+    await expect(page.locator('[data-hero]')).toHaveCSS('background-color', PEACH);
     await expect(page.locator('#download')).toHaveCSS('background-color', ESPRESSO);
     await expect(page.locator('footer.footer')).toHaveCSS('background-color', ESPRESSO_DEEP);
     const prem = await page.locator('#premium').evaluate((el) => getComputedStyle(el).backgroundImage);
@@ -93,8 +95,8 @@ test.describe('handskrivna accentord', () => {
 
 test.describe('marginalanteckningar', () => {
   const notes = {
-    '/sv/': [copy.sv.hero.note, copy.sv.monthBirds.note, copy.sv.tour.note, copy.sv.howItWorks.note, copy.sv.guide.note, copy.sv.premium.note, copy.sv.privacy.note, copy.sv.fieldNotes.note, copy.sv.faq.note, copy.sv.download.note],
-    '/': [copy.en.hero.note, copy.en.monthBirds.note, copy.en.tour.note, copy.en.howItWorks.note, copy.en.guide.note, copy.en.premium.note, copy.en.privacy.note, copy.en.fieldNotes.note, copy.en.faq.note, copy.en.download.note],
+    '/sv/': [copy.sv.monthBirds.note, copy.sv.tour.note, copy.sv.howItWorks.note, copy.sv.guide.note, copy.sv.premium.note, copy.sv.privacy.note, copy.sv.fieldNotes.note, copy.sv.faq.note, copy.sv.download.note],
+    '/': [copy.en.monthBirds.note, copy.en.tour.note, copy.en.howItWorks.note, copy.en.guide.note, copy.en.premium.note, copy.en.privacy.note, copy.en.fieldNotes.note, copy.en.faq.note, copy.en.download.note],
   } as const;
   for (const [path, texts] of Object.entries(notes)) {
     test(`en handskriven rad under varje rubrik på ${path}`, async ({ page }) => {
@@ -110,8 +112,9 @@ test.describe('marginalanteckningar', () => {
         await expect(el).toHaveCSS('font-family', /Caveat/);
         await expect(el).toHaveCSS('font-weight', '700');
       }
-      // Peach on the hero's and the last section's wall (mockup lift-c.html), apricot on the Premium band.
-      await expect(page.locator('[data-hero] .mnote')).toHaveCSS('color', 'rgb(253, 229, 203)');
+      // Peach on the last section's wall (mockup lift-c.html), apricot on the Premium band. The hero has no margin note
+      // since 2026-10-09: nothing is written next to the flock.
+      await expect(page.locator('[data-hero] .mnote')).toHaveCount(0);
       await expect(page.locator('#how-it-works .mnote')).toHaveCSS('color', 'rgb(154, 69, 38)');
       await expect(page.locator('#premium .mnote')).toHaveCSS('color', 'rgb(242, 178, 122)');
       await expect(page.locator('#download .mnote')).toHaveCSS('color', 'rgb(253, 229, 203)');
@@ -180,7 +183,7 @@ test.describe('rivna papperskanter', () => {
     // Named per section so a failure points straight at the broken edge, and a total-count
     // assertion so an extra/missing edge fails even if every named one still matches.
     const edges: [string, string][] = [
-      ['#season > .deckle path', 'rgb(42, 29, 23)'],          // hero → Fåglarna i oktober
+      ['#season > .deckle path', PEACH],                      // hero (persikopapper) → Fåglarna i oktober
       ['#app > .deckle path', 'rgb(246, 239, 226)'],          // Fåglarna i oktober → karusellen
       ['#how-it-works > .deckle path', 'rgb(30, 20, 16)'],    // karusellen → Tre sätt att fånga
       ['#guide > .deckle path', 'rgb(255, 250, 241)'],        // Fältboken → Uppslagsverket
@@ -212,11 +215,11 @@ test.describe('delningsbilder', () => {
   const shares = {
     '/sv/': {
       alt: copy.sv.alt.shareImage,
-      image: /\/og-field-sv\.jpg\?v=3$/,
+      image: /\/og-field-sv\.jpg\?v=4$/,
     },
     '/': {
       alt: copy.en.alt.shareImage,
-      image: /\/og-field-en\.jpg\?v=3$/,
+      image: /\/og-field-en\.jpg\?v=4$/,
     },
   } as const;
   for (const [path, { alt, image }] of Object.entries(shares)) {

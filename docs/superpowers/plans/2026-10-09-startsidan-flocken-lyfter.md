@@ -673,6 +673,8 @@ git commit -m "feat(webb): persikopapprets toner som tokens, kontrastvakten täc
 
 (Line numbers in this task refer to the files as they are before the task; the edits are anchored on the quoted text.)
 
+> **After the review (2026-10-09):** the committed tests go further than the text below, and `website/tests/home.spec.ts` on the branch is the reference. The geometry measurement lives in two helpers after `textContrastAgainstBackground`, `heroGeometry` and `expectHeroClear`, and turns transitions off while it reads the polaroid in its own frame (reduced motion still runs a 0.01 ms transition, `global.css`). The no-JavaScript test also checks that the lit disc sits on bird 2. The `.same-arrow` assertion is gone (no such element exists). Three tests were added: `en hög polaroid med långt namn och lång fotokredit går också fri` (a 0.47 photo, a long name and a long credit at 1024×600 and 390×844), `orden står i samma spalt som resten av sidan` (from 1280 px the headline starts at `#season .wrap`'s content edge) and `hela fotot i polaroiden är fotots länk i …` (`elementFromPoint` over the photo at 1024×768 and 1440×900). The carousel's reduced-motion test is named `karusellen och polaroiden står still`.
+
 At the top of `website/tests/home.spec.ts`, replace
 
 ```ts
@@ -1050,7 +1052,10 @@ const caption = t.daily.polaroid.replace('{name}', bird.name);
 const ratio = bird.image.width / bird.image.height;
 const alt = t.species.altHero.replace('{name}', bird.name).replace('{scientific}', bird.scientific);
 const widths = [240, 360, 480, 640];
-const sizes = '(min-width: 1024px) 216px, 200px';
+// The photo's width on the page (the CSS below): the card's inner width, at most 216 px from 1024 px and 200 px below,
+// or less for a tall photo (--pol-ph × ratio), so a portrait photo does not fetch a needlessly large file.
+const shown = (innerWidth: number, maxHeight: number) => Math.ceil(Math.min(innerWidth, maxHeight * ratio));
+const sizes = `(min-width: 1024px) ${shown(216, 180)}px, ${shown(200, 150)}px`;
 ---
 
 <figure class="polaroid" data-polaroid style={`--ar:${ratio.toFixed(4)}`}>
@@ -1079,7 +1084,9 @@ const sizes = '(min-width: 1024px) 216px, 200px';
   .pol-photo :global(img) { display: block; width: min(100%, calc(var(--pol-ph) * var(--ar))); height: auto; margin: 0 auto; }
   .pol-cap { display: grid; gap: 3px; padding: 8px 2px 11px; }
   .pol-name { font-family: var(--font-script); font-weight: 700; font-size: 21px; line-height: 1.05; color: var(--ink); }
-  a.pol-name:hover { color: var(--rust); }
+  /* A link like the site's other text links (legal-prose.css): a soft rust underline, so it reads as one on touch too. */
+  a.pol-name { text-decoration: underline; text-decoration-color: rgba(154, 69, 38, .4); text-underline-offset: 3px; }
+  a.pol-name:hover { color: var(--rust); text-decoration-color: currentColor; }
   .pol-same { margin: 0; font-family: var(--font-script); font-weight: 700; font-size: 17px; line-height: 1.05; color: var(--rust); }
   .pol-same[hidden] { display: none; }
   .pol-credit { margin: 3px 0 0; font-size: 10.5px; line-height: 1.45; color: var(--muted); }
@@ -1162,8 +1169,7 @@ const flockLabel = t.hero.flockLabel.replace('{name}', bird.name);
 ---
 
 <header class="hero" data-hero data-daily-bird={species?.qid ?? ''} data-app-bird={appQid ?? ''} data-date={date.iso} data-flock-index={litIndex}>
-  <canvas class="flock-canvas" data-flock-canvas role="img" aria-label={flockLabel}></canvas>
-  <div class="wrap lead">
+  <div class="wrap words">
     <div class="intro">
       <span class="nav-until" data-nav-until aria-hidden="true"></span>
       <Kicker text={t.hero.kicker} />
@@ -1175,6 +1181,7 @@ const flockLabel = t.hero.flockLabel.replace('{name}', bird.name);
       </div>
     </div>
   </div>
+  <canvas class="flock-canvas" data-flock-canvas role="img" aria-label={flockLabel}></canvas>
   <div class="stage">
     <div class="fit" data-flock-fit><noscript set:html={flockSvg({ litIndex })} /></div>
     <Polaroid locale={locale} bird={bird} sameAsApp={sameAsApp} />
@@ -1188,11 +1195,15 @@ const flockLabel = t.hero.flockLabel.replace('{name}', bird.name);
 <style>
   /* Peach paper, lighter where the light falls (the social profiles' colours). The last 120 px fade to plain peach, the
      colour of the torn edge the next section tears down from (MonthBirds.astro's DeckleEdge). */
-  .hero { position: relative; overflow: hidden; padding-top: 64px; color: var(--ink); background-color: var(--peach); background-image: linear-gradient(0deg, var(--peach) 0, rgba(253, 229, 203, 0) 120px), radial-gradient(130% 120% at 70% 40%, var(--peach-hi) 0%, var(--peach) 45%, var(--peach-lo) 100%); }
-  /* The canvas covers the whole hero: the birds fly in from below left, under the words, to Birdy's bird. */
+  .hero { position: relative; overflow: clip; padding-top: 64px; color: var(--ink); background-color: var(--peach); background-image: linear-gradient(0deg, var(--peach) 0, transparent 120px), radial-gradient(130% 120% at 70% 40%, var(--peach-hi) 0%, var(--peach) 45%, var(--peach-lo) 100%); }
+  /* The canvas covers the whole hero: the birds fly in from below left, under the words, to Birdy's bird. It comes after
+     the words in the source, so a screen reader reads the headline before the flock; its z-index keeps it under them. */
   .flock-canvas { position: absolute; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; pointer-events: none; }
-  .lead { position: relative; z-index: 2; padding-top: 40px; }
-  .intro { position: relative; }
+  /* The words' wrapper is the page's .wrap, so the words line up with the sections below (never .lead: global.css's
+     lead paragraph class would override .wrap's centring). Only .intro lies above the canvas and the stage, so no
+     invisible box covers the polaroid. */
+  .words { padding-top: 40px; }
+  .intro { position: relative; z-index: 2; }
   .nav-until { position: absolute; left: 0; bottom: 100%; width: 1px; height: 100vh; pointer-events: none; }
   h1 { margin-top: 2px; font-size: clamp(42px, 11vw, 56px); line-height: .98; letter-spacing: -.02em; color: var(--ink); text-wrap: balance; }
   /* The handwritten half of the slogan, the same accent as JournalHeadline's (spec §5.1), tilted like on the profiles. */
@@ -1212,7 +1223,7 @@ const flockLabel = t.hero.flockLabel.replace('{name}', bird.name);
      tests/home.spec.ts checks the geometry at seven widths. */
   @media (min-width: 1024px) {
     .hero { padding-top: 76px; min-height: clamp(660px, calc(100svh - 40px), 820px); }
-    .lead { padding-top: 56px; }
+    .words { padding-top: 56px; }
     .intro { max-width: clamp(420px, 34vw, 480px); }
     h1 { font-size: clamp(48px, 5vw, 72px); }
     h1 em { font-size: 1.04em; margin-top: 8px; white-space: nowrap; }
@@ -1253,13 +1264,16 @@ In `website/scripts/check-empty-hub.mjs`, replace the block from `// The home pa
 ```js
 // The home page's Dagens fågel with zero species pages (spec 2026-10-09-startsidan-flocken-lyfter): no page can hang in
 // the polaroid, so the site shows its own great tit, without a link (the check above already fails on any species link),
-// and never the line about the app.
+// lights the great tit's own bird in the flock, and never shows the line about the app.
 for (const [path, locale] of [['sv', 'sv'], ['', 'en']]) {
   const html = page(path);
   const where = path || '/';
   const caption = copy[locale].daily.polaroid.replace('{name}', locale === 'sv' ? 'Talgoxe' : 'Great Tit');
   const shown = html.match(/<span class="pol-name"[^>]*>([^<]*)<\/span>/)?.[1];
   if (shown !== caption) fail(where, `polaroiden säger "${shown}", ska vara "${caption}" när ingen art har en sida`);
+  // The great tit's own bird lights up in the flock (flockIndexFor('Q25485') = 107, pinned in tests/unit/flock.unit.mjs).
+  const lit = html.match(/<header class="hero"[^>]*\sdata-flock-index="(\d+)"/)?.[1];
+  if (lit !== '107') fail(where, `flocken tänder fågel ${lit}, ska vara talgoxens fågel 107 när ingen art har en sida`);
   // Markup only: the hero's inlined guard script (hero/same-as-app-guard.ts) names the attribute in a selector.
   const markup = html.replace(/<script\b[\s\S]*?<\/script>/gi, '');
   if (markup.includes('data-same-as-app')) fail(where, 'raden "samma fågel som i appen" visas utan appens fågel');
@@ -1282,7 +1296,7 @@ Then:
 cd C:/w/birdy-flock/website && PLAYWRIGHT_CHANNEL=chrome PLAYWRIGHT_PORT=4741 npx playwright test tests/home.spec.ts tests/faltbok.spec.ts tests/premium.spec.ts --workers=2
 ```
 
-Expected: all pass, including the 14 geometry tests, the no-JavaScript test, the axe tests on `/` and `/sv/` at 390 and 1440 px (premium.spec.ts) and the reduced-motion carousel test (`karusellen och planschen står still`). If a geometry test fails, read the message (which bird, which word), adjust only the knobs named in the Context section, rebuild and rerun.
+Expected: all pass, including the 14 geometry tests, the no-JavaScript test, the axe tests on `/` and `/sv/` at 390 and 1440 px (premium.spec.ts) and the reduced-motion carousel test (`karusellen och polaroiden står still`). If a geometry test fails, read the message (which bird, which word), adjust only the knobs named in the Context section, rebuild and rerun.
 
 - [ ] **Step 11: Commit**
 
