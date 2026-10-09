@@ -5,7 +5,9 @@
 // The motion is the approved prototype's (docs/superpowers/specs/assets/2026-10-08-flocken-webben/flocken-lyfter.html,
 // version 3), on a canvas with one bitmap of the mark per colour, at most devicePixelRatio 2. Reduced motion draws the
 // landed flock at once; without JavaScript the hero's <noscript> SVG shows the same frame. data-flock on the hero says
-// where it is (waiting, flying, landed, done); the hero's CSS hides the polaroid until the flock has landed.
+// where it is (waiting, flying, landed, done); the hero's CSS hides the polaroid until the flock has landed (review
+// fix: by opacity, not visibility, so it stays in the accessibility tree throughout). A keydown anywhere, or a focus
+// landing inside the hero (a keyboard user tabbing through while still hidden), skips straight to the end.
 import { MARK } from './flock-data.mjs';
 import { COLOURS, DISC_SCALE, LIT, LIT_SCALE, fitView, flightPlan } from './flock.mjs';
 
@@ -25,6 +27,10 @@ const easeOutBack = (k: number) => 1 + 2.70158 * Math.pow(k - 1, 3) + 1.70158 * 
 function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, polaroid: HTMLElement, ctx: CanvasRenderingContext2D) {
   const setState = (state: 'flying' | 'landed' | 'done') => {
     hero.dataset.flock = state;
+    if (state === 'done') {
+      document.removeEventListener('keydown', skipToEnd);
+      hero.removeEventListener('focusin', skipToEnd);
+    }
   };
   const litIndex = Number(hero.dataset.flockIndex);
   const mark = new Path2D(MARK.path);
@@ -45,8 +51,9 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
   const litSprite = sprite(LIT.bird);
 
   let dpr = 1;
-  let t0 = -1;
+  let t0: number | null = null;
   let raf = 0;
+  let io: IntersectionObserver | null = null;
   // The canvas covers the hero; the flock fits the [data-flock-fit] box, the same box as the <noscript> SVG.
   const layout = (): Plan => {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -141,7 +148,7 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
       runs.push(img.animate([
         { filter: 'saturate(0) brightness(1.55) contrast(.7)', opacity: 0.3 },
         { filter: 'saturate(0) brightness(1.55) contrast(.7)', opacity: 0.3, offset: 0.3 },
-        { filter: 'saturate(1) brightness(1) contrast(1)', opacity: 1 },
+        { filter: 'none', opacity: 1 },
       ], { duration: 2000, delay: 140, easing: 'ease-out', fill: 'both' }));
     }
     if (caption) runs.push(caption.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500, delay: 1150, fill: 'both' }));
@@ -160,15 +167,16 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
     Promise.all(runs.map((a) => a.finished)).then(settle, settle);
   };
 
-  const frame = (now: number) => {
-    if (t0 < 0) t0 = now - HEAD_START;
-    const t = now - t0;
+  // Draws the flock at elapsed time t (ms since the flight started); true once the ring has fully popped, so the
+  // caller knows nothing more needs to be scheduled. Kept separate from frame() so a mid-flight resize can redraw this
+  // exact instant at once (review fix: canvas.width/height resets and clears the canvas, so without an immediate
+  // redraw in the same task there is one blank frame until the next natural tick).
+  const renderFrame = (t: number): boolean => {
     if (t < plan.total) {
       clear();
       for (const p of plan.birds) fly(p, t, 1, sprites[p.colour]);
       fly(plan.lit, t, 1.25, litSprite);
-      raf = requestAnimationFrame(frame);
-      return;
+      return false;
     }
     // Landed: the flock is still; today's bird pops its ring once, and its photo comes out of it.
     const k = Math.min(1, (t - plan.total) / RING_MS);
@@ -179,10 +187,31 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
       setState('landed');
       reveal();
     }
-    raf = k < 1 ? requestAnimationFrame(frame) : 0;
+    return k >= 1;
   };
 
-  // A new size moves the fit box: lay the flock out again, and redraw the still frame once it has landed.
+  const frame = (now: number) => {
+    if (t0 === null) t0 = now - HEAD_START;
+    const t = now - t0;
+    raf = renderFrame(t) ? 0 : requestAnimationFrame(frame);
+  };
+
+  // A keyboard user (keydown anywhere, or focus landing inside the hero while tabbing through) skips straight to the
+  // end: the polaroid stays in the accessibility tree throughout (opacity, not visibility, Hero.astro), so it can be
+  // reached before the flight has finished; this jumps the visuals to match. Never wired to pointer, touch or wheel:
+  // touch-scrolling past the hero on a phone must not cut the motion short.
+  const skipToEnd = () => {
+    if (hero.dataset.flock !== 'waiting' && hero.dataset.flock !== 'flying') return;
+    io?.disconnect();
+    if (raf) cancelAnimationFrame(raf);
+    raf = 0;
+    drawStill();
+    setState('done');
+  };
+
+  // A new size moves the fit box: lay the flock out again. canvas.width/height resets (clears) the canvas, so the
+  // current instant (or, once the flight itself never ran, the finished still picture) is redrawn at once, in the
+  // same task, rather than leaving a blank frame until the next natural tick.
   if ('ResizeObserver' in window) {
     let pending = 0;
     new ResizeObserver(() => {
@@ -190,7 +219,8 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
       pending = requestAnimationFrame(() => {
         pending = 0;
         plan = layout();
-        if (!raf && (hero.dataset.flock === 'landed' || hero.dataset.flock === 'done')) drawStill();
+        if (t0 !== null) renderFrame(performance.now() - t0);
+        else if (hero.dataset.flock === 'landed' || hero.dataset.flock === 'done') drawStill();
       });
     }).observe(hero);
   }
@@ -198,18 +228,24 @@ function run(hero: HTMLElement, canvas: HTMLCanvasElement, fitBox: HTMLElement, 
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
     drawStill();
     setState('done');
-  } else if ('IntersectionObserver' in window) {
-    // Once, when a fifth of the hero is in sight.
-    const io = new IntersectionObserver((entries) => {
-      if (!entries.some((e) => e.isIntersecting)) return;
-      io.disconnect();
+  } else {
+    document.addEventListener('keydown', skipToEnd);
+    hero.addEventListener('focusin', skipToEnd);
+    if ('IntersectionObserver' in window) {
+      // Once, when the hero reaches the middle band of the viewport: a hero much taller than the viewport (a short,
+      // wide window) never reaches a fixed share of its OWN area visible, so the threshold watches the root's shrunk
+      // area instead (review fix: the old { threshold: 0.2 } never fired for a hero over five viewports tall).
+      io = new IntersectionObserver((entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        io?.disconnect();
+        setState('flying');
+        raf = requestAnimationFrame(frame);
+      }, { rootMargin: '-30% 0px -30% 0px', threshold: 0 });
+      io.observe(hero);
+    } else {
       setState('flying');
       raf = requestAnimationFrame(frame);
-    }, { threshold: 0.2 });
-    io.observe(hero);
-  } else {
-    setState('flying');
-    raf = requestAnimationFrame(frame);
+    }
   }
 }
 
@@ -218,6 +254,12 @@ const canvas = hero?.querySelector<HTMLCanvasElement>('[data-flock-canvas]');
 const fitBox = hero?.querySelector<HTMLElement>('[data-flock-fit]');
 const polaroid = hero?.querySelector<HTMLElement>('[data-polaroid]');
 const ctx = canvas?.getContext('2d');
-if (hero && canvas && fitBox && polaroid && ctx) run(hero, canvas, fitBox, polaroid, ctx);
-// Without a canvas to draw on, the polaroid is shown at once rather than kept waiting.
-else if (hero) hero.dataset.flock = 'done';
+if (hero && canvas && fitBox && polaroid && ctx) {
+  // The hero must never stay empty: anything that throws during setup falls back to the done state at once (review
+  // fix), the same state the page would be in if the flight had already finished.
+  try {
+    run(hero, canvas, fitBox, polaroid, ctx);
+  } catch {
+    hero.dataset.flock = 'done';
+  }
+} else if (hero) hero.dataset.flock = 'done';

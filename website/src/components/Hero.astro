@@ -128,8 +128,10 @@ const flockLabel = t.hero.flockLabel.replace('{name}', bird.name);
   }
 
   /* Until the flock has landed the polaroid waits out of sight (hero/flock-motion.ts lifts it out of the lit bird). Only
-     with JavaScript and motion: reduced motion and no JavaScript show it at once. */
+     with JavaScript and motion: reduced motion and no JavaScript show it at once. Opacity, not visibility (review fix):
+     the polaroid stays in the accessibility tree and reachable by Tab throughout, so a keyboard user who tabs in before
+     the flight finishes can still reach it (flock-motion.ts then jumps straight to the end on that same keydown/focus). */
   @media (prefers-reduced-motion: no-preference) {
-    :global(html.js) .hero:is([data-flock='waiting'], [data-flock='flying']) :global(.polaroid) { visibility: hidden; }
+    :global(html.js) .hero:is([data-flock='waiting'], [data-flock='flying']) :global(.polaroid) { opacity: 0; pointer-events: none; }
   }
 </style>

@@ -455,6 +455,48 @@ test.describe('första vyn', () => {
   });
 });
 
+// Wraps requestAnimationFrame before any of the page's own scripts run, so a test can prove that nothing is scheduled
+// any more once the flock has settled (a frozen canvas alone could in principle be redrawn with identical pixels).
+async function trackRaf(page: Page): Promise<() => Promise<number>> {
+  await page.addInitScript(() => {
+    (window as unknown as { __rafCalls: number }).__rafCalls = 0;
+    const raw = window.requestAnimationFrame.bind(window);
+    window.requestAnimationFrame = (cb: FrameRequestCallback) => {
+      (window as unknown as { __rafCalls: number }).__rafCalls += 1;
+      return raw(cb);
+    };
+  });
+  return () => page.evaluate(() => (window as unknown as { __rafCalls: number }).__rafCalls);
+}
+
+// Records every value the hero's data-flock attribute takes, from a MutationObserver attached before the hero element
+// even exists, so a test can assert the exact order (waiting, flying, landed, done) instead of racing the
+// IntersectionObserver/rAF timing by polling for one value right after goto.
+async function trackFlockState(page: Page): Promise<() => Promise<string[]>> {
+  await page.addInitScript(() => {
+    const log: string[] = [];
+    (window as unknown as { __flockLog: string[] }).__flockLog = log;
+    const push = (el: Element) => {
+      const value = el.getAttribute('data-flock');
+      if (value && log[log.length - 1] !== value) log.push(value);
+    };
+    new MutationObserver((records) => {
+      for (const record of records) {
+        if (record.type === 'attributes' && record.target instanceof Element) push(record.target);
+        if (record.type === 'childList') {
+          for (const node of Array.from(record.addedNodes)) {
+            if (!(node instanceof Element)) continue;
+            const hero = node.matches('[data-hero]') ? node : node.querySelector('[data-hero]');
+            if (hero) push(hero);
+          }
+        }
+      }
+      // document, not document.documentElement: an init script runs this early enough that <html> may not exist yet.
+    }).observe(document, { subtree: true, childList: true, attributes: true, attributeFilter: ['data-flock'] });
+  });
+  return () => page.evaluate(() => (window as unknown as { __flockLog: string[] }).__flockLog);
+}
+
 test.describe('flocken lyfter', () => {
   test.describe('med minskad rörelse', () => {
     test.use({ contextOptions: { reducedMotion: 'reduce' } });
@@ -484,18 +526,27 @@ test.describe('flocken lyfter', () => {
 
   test('flocken flyger in en gång, landar och står sedan still', async ({ page }) => {
     const errors = trackConsoleErrors(page);
+    const flockLog = await trackFlockState(page);
+    const rafCalls = await trackRaf(page);
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/sv/');
     const hero = page.locator('[data-hero]');
-    await expect(hero).toHaveAttribute('data-flock', 'flying');
-    await expect(hero.locator('[data-polaroid]')).toBeHidden();
+    const polaroid = hero.locator('[data-polaroid]');
+    // Opacity, not visibility (review fix: the polaroid must stay in the accessibility tree while hidden), so
+    // Playwright's own visible/hidden check (which does not look at opacity) cannot see the hidden state.
+    await expect(polaroid).toHaveCSS('opacity', '0');
     await expect(hero).toHaveAttribute('data-flock', 'done', { timeout: 15_000 });
-    await expect(hero.locator('[data-polaroid]')).toBeVisible();
+    await expect(polaroid).toHaveCSS('opacity', '1');
+    // The exact order, from a MutationObserver attached before the page's own scripts ran, not from catching "flying"
+    // by polling right after goto (races the IntersectionObserver/rAF timing).
+    expect(await flockLog()).toEqual(['waiting', 'flying', 'landed', 'done']);
     expect(await hero.evaluate((h) => h.getAnimations({ subtree: true }).length), 'inga animationer kvar').toBe(0);
     const frame = () => page.locator('[data-flock-canvas]').evaluate((c: HTMLCanvasElement) => c.toDataURL());
     const landed = await frame();
+    const scheduledAtLanding = await rafCalls();
     await page.waitForTimeout(600);
     expect(await frame(), 'inget ritas om efter landningen').toBe(landed);
+    expect(await rafCalls(), 'inget requestAnimationFrame schemaläggs efter landningen').toBe(scheduledAtLanding);
     const shift = await page.evaluate(() => new Promise<number>((resolve) => {
       let sum = 0;
       new PerformanceObserver((list) => {
@@ -524,6 +575,32 @@ test.describe('flocken lyfter', () => {
     await expect(hero).toHaveAttribute('data-flock', 'waiting');
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
     await expect(hero).toHaveAttribute('data-flock', /^(flying|landed|done)$/);
+  });
+
+  // Review fix: Chrome never reports isIntersecting at the old threshold (0.2 of the target's own area) for a hero
+  // much taller than the viewport, since the hero's visible share never reaches a fifth of itself; the fix watches
+  // the viewport's own middle band instead (rootMargin), which the hero reaches at any height.
+  test('flocken startar även när hjälten är mycket högre än skärmen (320×170, ungefär 400 % zoom)', async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 170 });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    await expect(hero).toHaveAttribute('data-flock', 'done', { timeout: 15_000 });
+    await expect(hero.locator('[data-polaroid]')).toBeVisible();
+  });
+
+  // Review fix: any keydown anywhere (here, Tab) skips straight to the end, so a keyboard user never has to wait out
+  // the flight. The link was never removed from the accessibility tree while hidden (opacity, not visibility), so it
+  // can still be focused afterwards.
+  test('en tangenttryckning under flykten hoppar till slutet, och polaroidens länk går att fokusera', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const hero = page.locator('[data-hero]');
+    await expect(hero).toHaveAttribute('data-flock', 'flying');
+    await page.keyboard.press('Tab');
+    await expect(hero).toHaveAttribute('data-flock', 'done');
+    const link = hero.locator('[data-polaroid] a.pol-name');
+    await link.focus();
+    await expect(link).toBeFocused();
   });
 
   for (const [width, height] of [[390, 844], [1440, 900]] as const) {
