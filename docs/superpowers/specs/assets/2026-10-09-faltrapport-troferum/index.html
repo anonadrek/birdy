@@ -1,0 +1,551 @@
+<title>Fältrapport och Troférum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#ECE3CF;--panel:#F6EFE2;--ink:#26301F;--muted:#5B6350;--rule:#D6C7A8;
+  --accent:#9A4526;--brass:#805F28;--code-bg:#E3D8C1;--rec-bg:#1F2A19;--rec-tint:rgba(184,137,58,.12);
+  --mark:#F2B27A;--shadow:rgba(31,42,25,.38);
+  /* the app's own colours: the phones show the app, so these never change with the theme */
+  --a-top:#F8F2E7;--a-bot:#F2E9D8;--a-paper:#F6EFE2;--a-card:#FFFAF1;--a-hair:#DFD2BA;
+  --a-ink:#26301F;--a-muted:#5B6350;--a-marg:#3F4A33;--a-rust:#9A4526;--a-brass:#B8893A;
+  --a-navy:#1F3A5F;--a-lock:#CDBB9C;--a-bezel:#1F2A19;--a-shelf:#C9A562;--a-on:#FFF8EE;
+  --serif:"DM Serif Display",Georgia,"Times New Roman",serif;
+  --hand:Caveat,"Segoe Print","Bradley Hand",cursive;
+  --sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#121910;--panel:#1B2416;--ink:#EFE7D8;--muted:#B7B19D;--rule:#33402B;
+    --accent:#F2B27A;--brass:#E2C07E;--code-bg:#243020;--rec-bg:#22301C;--rec-tint:rgba(242,178,122,.08);
+    --shadow:rgba(0,0,0,.6);color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121910;--panel:#1B2416;--ink:#EFE7D8;--muted:#B7B19D;--rule:#33402B;
+  --accent:#F2B27A;--brass:#E2C07E;--code-bg:#243020;--rec-bg:#22301C;--rec-tint:rgba(242,178,122,.08);
+  --shadow:rgba(0,0,0,.6);color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:44px 72px}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+p{margin:0}
+
+/* ---------- page ---------- */
+.kick{display:flex;align-items:center;gap:10px;font:600 12px/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.kick::before{content:"";width:28px;height:1px;background:currentColor;flex:none}
+h1{font:400 clamp(36px,5.6vw,60px)/1.02 var(--serif);letter-spacing:-.015em;margin:14px 0 18px;text-wrap:balance}
+h1 em,h2 em{font-style:italic;color:var(--accent)}
+.lede{font-size:clamp(17px,1.6vw,19px);line-height:1.55;max-width:62ch}
+.note{font-size:14.5px;color:var(--muted);max-width:68ch;margin-top:12px}
+.legend{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:22px;font-size:14px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:10px}
+.lg-link{width:34px;height:20px;border-radius:6px;outline:1.6px dashed var(--mark);background:rgba(242,178,122,.2);position:relative;flex:none}
+.lg-link::after{content:"1";position:absolute;top:-8px;right:-8px;width:15px;height:15px;border-radius:5px;background:var(--mark);color:#1F2A19;font:700 9px/15px var(--sans);text-align:center}
+.lg-ring{width:18px;height:18px;border-radius:50%;background:#9A4526;box-shadow:0 0 0 2px var(--bg),0 0 0 4.5px var(--mark),0 0 12px 4px rgba(242,178,122,.55);flex:none;margin:0 4px}
+
+.tbl{overflow-x:auto;margin-top:34px;border:1px solid var(--rule);border-radius:16px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14.5px;line-height:1.4}
+th,td{padding:12px 16px;text-align:left;vertical-align:top;border-top:1px solid var(--rule)}
+thead th{border-top:0;font:400 18px/1.2 var(--serif);padding-top:16px}
+thead th a{text-decoration:none}
+thead th small{display:block;font:600 10.5px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-top:4px}
+tbody th{font:600 11px/1.35 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);width:19%}
+.rc{background:var(--rec-tint)}
+
+.opt{border-top:1px solid var(--rule);margin-top:60px;padding-top:52px}
+.oh{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.lt{position:relative;flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 36% 30%,rgba(255,255,255,.22),transparent 50%),#9A4526;color:#FFF8EE;font:italic 400 26px/1 var(--serif);transform:rotate(-4deg);box-shadow:0 2px 4px rgba(38,48,31,.3)}
+.lt::after{content:"";position:absolute;inset:5px;border-radius:50%;border:1px solid rgba(255,248,238,.45)}
+h2{font:400 clamp(28px,3.6vw,40px)/1.05 var(--serif);letter-spacing:-.01em;margin:0}
+.pick{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--brass);border:1px solid currentColor;border-radius:999px;padding:6px 10px}
+.concept{font:italic 400 clamp(19px,2vw,22px)/1.4 var(--serif);max-width:48ch;margin:18px 0 32px;text-wrap:pretty}
+.og{display:grid;grid-template-columns:auto minmax(0,1fr);gap:32px 48px;align-items:start}
+.phones{display:flex;gap:22px;flex-wrap:wrap}
+figure{margin:0}
+figcaption{font-size:13px;line-height:1.45;color:var(--muted);margin-top:12px;max-width:300px}
+.tx{max-width:68ch}
+.tx h3{font:600 11.5px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.steps{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:12px}
+.steps li{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start}
+.mk{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;background:var(--mark);color:#1F2A19;font:700 11px/1 var(--sans);vertical-align:-3px}
+.steps .mk{margin-top:2px}
+.sv{font-style:italic;font-family:var(--serif);font-size:1.04em;white-space:nowrap}
+.edges{margin:0 0 26px;display:grid;gap:18px}
+.edges dt{font-weight:600;margin-bottom:3px}
+.edges dd{margin:0}
+.aside{color:var(--muted);font-size:15px;margin-bottom:14px}
+.work{font-size:15px;border-top:1px solid var(--rule);padding-top:14px}
+.work b{font-weight:700}
+
+.rec{margin-top:72px;border-radius:24px;background:var(--rec-bg);color:#F3EBDD;padding:clamp(24px,4vw,46px);display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px 34px;align-items:start;border:1px solid var(--rule)}
+.rec .kick{color:#F2B27A}
+.rec h2{color:#F6EFE2;margin:10px 0 14px}
+.rec h2 em{color:#F2B27A}
+.rec p{font-size:17px;line-height:1.6;max-width:64ch;color:#E6DECB}
+.rec p+p{margin-top:12px}
+.rec .lt{width:64px;height:64px;font-size:32px}
+
+.hood{margin-top:60px}
+.hood h2{font-size:clamp(24px,2.8vw,30px)}
+.hood ul{list-style:none;padding:0;margin:22px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px 36px}
+.hood li{font-size:14.5px;line-height:1.55;color:var(--muted);border-top:1px solid var(--rule);padding-top:12px}
+.hood li b{color:var(--ink);font-weight:600}
+code{font:500 12.5px/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--ink);background:var(--code-bg);padding:1px 5px;border-radius:5px;overflow-wrap:anywhere}
+.foot{margin-top:44px;font-size:13px;color:var(--muted)}
+
+.mcap{display:none}
+@media (min-width:1081px){.phones{position:sticky;top:24px}}
+@media (max-width:1080px){.og{grid-template-columns:1fr}}
+@media (max-width:700px){
+  .rec{grid-template-columns:1fr}.phones{justify-content:center}figcaption{margin-inline:auto}
+  /* the comparison reads as one block per question on a phone */
+  .tbl{overflow:visible}
+  table,tbody,tr,th,td,caption.mcap{display:block;width:auto;min-width:0}
+  thead{display:none}
+  caption.mcap{text-align:left;padding:14px 16px 4px;font-size:14px;color:var(--muted)}
+  tbody tr{padding:12px 16px;border-top:1px solid var(--rule)}
+  tbody th{padding:0 0 6px;border:0;width:auto}
+  tbody td{position:relative;padding:3px 0 3px 26px;border:0;background:none}
+  tbody td::before{content:attr(data-o);position:absolute;left:0;top:2px;font:italic 400 16px/1.3 var(--serif);color:var(--accent)}
+  tbody td.rc{font-weight:600}
+}
+
+/* ---------- the phones (app colours only) ---------- */
+.dev{width:300px;max-width:100%;border-radius:40px;background:var(--a-bezel);padding:9px;box-shadow:0 30px 50px -28px var(--shadow),0 2px 6px rgba(31,42,25,.2)}
+.scr{position:relative;height:560px;border-radius:31px;overflow:hidden;background:linear-gradient(var(--a-top),var(--a-bot));color:var(--a-ink);display:flex;flex-direction:column;font:400 10px/1.35 var(--sans)}
+.sb{display:flex;justify-content:space-between;align-items:center;padding:10px 20px 4px;font:600 9.5px/1 var(--sans)}
+.sbi{display:flex;gap:4px;align-items:center}
+.sbi::before{content:"";width:11px;height:8px;background:linear-gradient(to top right,var(--a-ink) 50%,transparent 50%)}
+.sbi::after{content:"";width:14px;height:7px;border-radius:2px;background:var(--a-ink)}
+.bd{position:relative;flex:1;overflow:hidden;padding:2px 15px 0}
+.bd::after{content:"";position:absolute;left:0;right:0;bottom:0;height:40px;background:linear-gradient(rgba(242,233,216,0),var(--a-bot));pointer-events:none}
+.bk{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1.3px solid var(--a-rust);background:var(--a-card);color:var(--a-rust);font:500 14px/1 var(--sans);margin:2px 0 9px}
+.k{display:flex;align-items:center;gap:6px;font:600 7.5px/1.25 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--a-rust)}
+.k::before{content:"";width:14px;height:1px;background:currentColor;flex:none}
+.k.nr::before{display:none}
+.k.mu{color:var(--a-muted)}
+.h{font:400 24px/1.05 var(--serif);letter-spacing:-.01em;margin:6px 0 4px;color:var(--a-ink)}
+.h em{font-style:italic;color:var(--a-rust)}
+.h.s{font-size:19px;margin:0}
+.cv{font:400 13.5px/1.15 var(--hand);color:var(--a-marg)}
+.dl{color:var(--a-rust);text-align:center;margin-top:3px}
+.led{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;margin-top:11px;font:600 6.5px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--a-muted)}
+.led b{display:block;font:400 25px/1 var(--serif);letter-spacing:0;color:var(--a-rust);margin-bottom:3px}
+.orn{display:flex;align-items:center;gap:8px;color:var(--a-rust);font-size:10px;line-height:1;margin:9px 0}
+.orn::before,.orn::after{content:"";flex:1;height:1px;background:var(--a-hair)}
+.wk{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;margin-bottom:11px}
+.wk p{display:grid;justify-items:center;gap:3px}
+.wk i{font:600 7px/1 var(--sans);font-style:normal;color:var(--a-muted)}
+.wk u{position:relative;display:block;width:26px;height:26px;border-radius:50%;border:1.2px dashed var(--a-lock);text-decoration:none}
+.wk u.on{border:1.4px solid var(--a-rust);background:radial-gradient(circle at 38% 32%,#E8DDC6,#BFAF8E 72%)}
+.wk u[data-c]::after{content:attr(data-c);position:absolute;top:-4px;right:-6px;width:12px;height:12px;border-radius:50%;background:var(--a-rust);color:var(--a-on);font:700 7px/12px var(--sans)}
+.wk s{text-decoration:none;font:400 10.5px/1 var(--hand);color:var(--a-marg)}
+.nr2{display:flex;align-items:center;gap:9px;padding:7px 0;margin-top:3px}
+.nr2 i{width:30px;height:30px;border-radius:50%;flex:none;background:radial-gradient(circle at 38% 32%,#E8DDC6,#B3A584 72%)}
+.nr2 p{font:400 7.5px/1.3 var(--sans);color:var(--a-muted)}
+.nr2 b{display:block;font:400 12.5px/1.1 var(--serif);color:var(--a-ink)}
+.tag{margin-left:auto;font:700 6.5px/1 var(--sans);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--a-on);background:var(--a-rust);border-radius:2px;padding:3px 4px}
+.card{background:var(--a-card);border:1px solid var(--a-hair);border-radius:12px;padding:11px 12px;margin-top:8px}
+.st{display:flex;gap:11px;align-items:center}
+.st>div{flex:1;min-width:0}
+.sn{display:block;font:400 14px/1.15 var(--serif);color:var(--a-ink);margin-top:3px}
+.ds{display:block;font:400 8.5px/1.35 var(--sans);color:var(--a-muted);margin-top:1px}
+.ds2{font:400 9.5px/1.35 var(--sans);color:var(--a-muted);margin-top:3px}
+.al{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-top:7px;padding-top:6px;border-top:1px solid var(--a-hair);font:600 8.5px/1.2 var(--sans);color:var(--a-rust)}
+.al::after{content:"\203A";font:400 15px/.6 var(--sans)}
+.chev{font:400 18px/1 var(--sans);color:var(--a-rust);flex:none}
+.gap{margin-top:14px}
+.gr{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+.gr i{aspect-ratio:1;border-radius:6px;background:linear-gradient(150deg,#E5D9C0,#C2B394)}
+.seal{--s:40px;--c:var(--a-rust);position:relative;flex:none;width:var(--s);height:var(--s);border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 36% 32%,rgba(255,255,255,.24),transparent 46%),var(--c);color:var(--a-on);font:italic 400 calc(var(--s)*.27)/1 var(--serif);box-shadow:0 2px 3px rgba(38,48,31,.3);transform:rotate(-3deg)}
+.seal::after{content:"";position:absolute;inset:4px;border-radius:50%;border:1px solid rgba(255,255,255,.42)}
+.seal.navy{--c:var(--a-navy)}
+.seal.sm{--s:30px}
+.seal.lg{--s:58px}
+.seal.lk{background:none;border:1.3px dashed var(--a-lock);color:var(--a-lock);box-shadow:none;transform:none}
+.seal.pg{background:var(--a-card);border:1.4px solid rgba(154,69,38,.6);color:var(--a-rust);box-shadow:none;transform:none;display:flex;flex-direction:column;justify-content:center;gap:1px;font-size:calc(var(--s)*.24)}
+.seal.lk::after,.seal.pg::after{display:none}
+.seal.pg small{font:600 7px/1 var(--sans)}
+.seal.hi{box-shadow:0 0 0 3px var(--a-top),0 0 0 5.5px var(--mark),0 0 16px 7px rgba(242,178,122,.6)}
+.tabs{display:flex;gap:6px;margin:10px 0 2px}
+.tabs span{font:600 7.5px/1 var(--sans);padding:5px 10px;border-radius:999px;border:1px solid var(--a-hair);color:var(--a-muted)}
+.tabs .on{background:var(--a-ink);color:var(--a-paper);border-color:var(--a-ink)}
+.mo{font:400 13px/1 var(--hand);color:var(--a-muted);margin:10px 0 4px}
+.rw{display:flex;gap:10px;align-items:flex-end;padding:6px 4px 6px;border-bottom:3px solid var(--a-shelf);box-shadow:0 5px 6px -4px rgba(90,64,20,.45);min-height:84px}
+.cell{display:grid;justify-items:center;gap:3px;width:70px;text-align:center}
+.cell b{font:400 9px/1.1 var(--serif);color:var(--a-ink);margin-top:3px}
+.dt{display:flex;align-items:center;gap:4px;font:400 11px/1 var(--hand);color:var(--a-marg)}
+.wkt{font:600 7px/1 var(--sans);color:var(--a-rust);border:1px solid rgba(154,69,38,.55);border-radius:6px;padding:2px 4px;background:var(--a-card)}
+.wc .row2{display:flex;align-items:center;gap:9px;margin-top:7px}
+.nv{display:flex;justify-content:space-around;padding:6px 2px 12px;background:var(--a-paper);border-top:1px solid var(--a-hair)}
+.nv span{display:grid;justify-items:center;gap:3px;font:500 6.5px/1 var(--sans);color:var(--a-muted)}
+.nv svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round}
+.nv .on{color:var(--a-rust);font-weight:600}
+.dim{position:absolute;inset:0;background:rgba(18,24,14,.5)}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--a-top);border-radius:20px 20px 0 0;padding:8px 16px 16px;display:grid;justify-items:center;gap:5px;text-align:center}
+.grab{width:30px;height:3px;border-radius:2px;background:var(--a-hair);margin-bottom:5px}
+.sheet .seal{margin-bottom:4px}
+.fld{width:100%;display:flex;align-items:center;gap:9px;text-align:left;padding:7px 10px;border:1px solid var(--a-hair);border-radius:10px;background:var(--a-card)}
+.fld i{width:26px;height:26px;border-radius:50%;flex:none;background:radial-gradient(circle at 38% 32%,#E8DDC6,#B3A584 72%)}
+.fld p{flex:1;min-width:0}
+.fld b{display:block;font:400 11.5px/1.15 var(--serif);color:var(--a-ink)}
+.lb{display:block;font:600 6.5px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--a-muted)}
+.lrow{width:100%;display:flex;justify-content:space-between;align-items:center;padding:9px 11px;border:1px solid var(--a-hair);border-radius:10px;background:var(--a-card);font:600 9px/1.2 var(--sans);color:var(--a-rust);text-align:left}
+.lrow::after{content:"\203A";font:400 15px/.6 var(--sans)}
+.btns{display:flex;gap:8px;width:100%;margin-top:4px}
+.btns span{flex:1;padding:8px;border-radius:999px;border:1px solid var(--a-rust);font:600 8.5px/1 var(--sans);color:var(--a-rust)}
+.btns .pri{background:var(--a-rust);color:var(--a-on)}
+/* link annotation: dashed apricot outline + number in tap order */
+.lnk{position:relative;outline:1.6px dashed var(--mark);outline-offset:3px;box-shadow:0 0 0 7px rgba(242,178,122,.2)}
+.lnk[data-n]::before{content:attr(data-n);position:absolute;top:-10px;right:-9px;z-index:2;width:16px;height:16px;border-radius:5px;background:var(--mark);color:#1F2A19;font:700 9.5px/16px var(--sans);text-align:center;letter-spacing:0}
+.wkt.lnk[data-n]::before{top:-3px;right:-24px}
+.snip{max-width:300px;margin-top:12px;padding:6px 12px 12px;border-radius:16px;border:1px solid var(--a-hair);background:linear-gradient(var(--a-top),var(--a-bot));color:var(--a-ink);font:400 10px/1.35 var(--sans)}
+.snip .nb{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.snip .nb .al{margin:0;padding:0;border:0}
+.nbr{display:flex;gap:16px;margin-top:8px}
+.nbr span{display:grid;justify-items:center;gap:3px;font:400 11px/1 var(--hand);color:var(--a-marg)}
+.opt-line{opacity:.7;border-top-style:dashed}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 9V5h4M16 5h4v4M20 15v4h-4M8 19H4v-4"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 9h6M9 13h6"/></symbol>
+  <symbol id="i-album" viewBox="0 0 24 24"><rect x="7" y="4" width="13" height="13" rx="2"/><path d="M4 8v12h12"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.6l1.4 2.9 3.1.4-2.3 2.2.6 3.1-2.8-1.5-2.8 1.5.6-3.1-2.3-2.2 3.1-.4z"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2zM9 4v14M15 6v14"/></symbol>
+</svg>
+
+<main class="wrap">
+
+<header>
+  <p class="kick">Birdy 1.3.1 · Märken 1b</p>
+  <h1>Two screens, one <em>stamp</em>.</h1>
+  <p class="lede">You asked for the weekly Fältrapport and the Troférum to point at each other. Here are three ways to do it, drawn on the screens as they will look in 1.3.1, with my pick at the end. None of them adds a screen.</p>
+  <p class="note">The Troférum is drawn as Märken 1b's brass shelves, one per month, and a stamp's card as its certificate. The links work on today's layout too. In-app text is Swedish; the sketches show week 41 (5 to 11 October), when Månads-rytm was won.</p>
+  <div class="legend" aria-hidden="true">
+    <span><i class="lg-link"></i>A new link, numbered in tap order</span>
+    <span><i class="lg-ring"></i>Where a link lands</span>
+  </div>
+
+  <div class="tbl" role="region" aria-label="The three options side by side" tabindex="0">
+    <table>
+      <caption class="mcap">A is Stämpeln som bro (recommended), B is Veckans rad i troférummet, C is Ett stämpelkort.</caption>
+      <thead>
+        <tr>
+          <th scope="col"><span class="sr">&nbsp;</span></th>
+          <th scope="col" class="rc"><a href="#a">A · Stämpeln som bro</a><small>Recommended</small></th>
+          <th scope="col"><a href="#b">B · Veckans rad i troférummet</a></th>
+          <th scope="col"><a href="#c">C · Ett stämpelkort</a></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Report to Troférum</th><td class="rc" data-o="A">1 tap, lands on the stamp</td><td data-o="B">1 tap, lands at the top</td><td data-o="C">2 taps: the stamp, then a row</td></tr>
+        <tr><th scope="row">Troférum to report</th><td class="rc" data-o="A">1 tap on a stamp's week, any week</td><td data-o="B">1 tap, this week only</td><td data-o="C">2 taps, any week</td></tr>
+        <tr><th scope="row">Week without a stamp</th><td class="rc" data-o="A">Names the closest stamp</td><td data-o="B">Shows the stamps in reach</td><td data-o="C">No link, unless added</td></tr>
+        <tr><th scope="row">New on screen</th><td class="rc" data-o="A">A week tag per stamp, a line on the card</td><td data-o="B">A new card in the Troférum</td><td data-o="C">Two rows on the stamp's certificate</td></tr>
+        <tr><th scope="row">Work</th><td class="rc" data-o="A">Medium</td><td data-o="B">Medium</td><td data-o="C">Small</td></tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+<!-- ================= A ================= -->
+<section class="opt" id="a" aria-labelledby="a-h">
+  <div class="oh"><span class="lt" aria-hidden="true">A</span><h2 id="a-h">Stämpeln som bro</h2><span class="pick">Recommended</span></div>
+  <p class="concept">The stamp is the bridge. Tap it in the report to find it on its shelf; tap its week on the shelf to read that week's report.</p>
+  <div class="og">
+    <div class="phones">
+      <figure>
+        <div class="dev" role="img" aria-label="Fältrapport, vecka 41: the Ny stämpel card for Månads-rytm, number 23, ends in a new line, Se den i troférummet, marked as link 1.">
+          <div class="scr">
+            <div class="sb"><span>10:24</span><span class="sbi"></span></div>
+            <div class="bd">
+              <span class="bk">&#8592;</span>
+              <p class="k">Fältrapport · Vecka 41</p>
+              <p class="h">En vecka i <em>fält</em>.</p>
+              <p class="cv">5 till 11 oktober. 5 dagar ute.</p>
+              <div class="led"><p><b>7</b>Fynd</p><p><b>3</b>Nya arter</p><p><b>4</b>Veckor i rad</p></div>
+              <p class="cv dl">+3 fynd mot förra veckan</p>
+              <p class="orn">&#10086;</p>
+              <div class="wk"><p><i>M</i><u class="on"></u><s>5</s></p><p><i>T</i><u class="on"></u><s>6</s></p><p><i>O</i><u></u><s>7</s></p><p><i>T</i><u class="on"></u><s>8</s></p><p><i>F</i><u></u><s>9</s></p><p><i>L</i><u class="on" data-c="2"></u><s>10</s></p><p><i>S</i><u class="on" data-c="2"></u><s>11</s></p></div>
+              <p class="k">Nya i livslistan</p>
+              <div class="nr2"><i></i><p><b>Sidensvans</b>№ 31 i livslistan · lör 10 okt</p><em class="tag">Ny</em></div>
+              <div class="card st lnk" data-n="1"><span class="seal">№23</span><div><p class="k nr">Ny stämpel</p><b class="sn">Månads-rytm</b><span class="ds">Du har skådat fåglar fyra veckor i rad.</span><p class="al">Se den i troférummet</p></div></div>
+              <p class="k gap">Alla fynd · 7</p>
+              <div class="gr"><i></i><i></i><i></i><i></i></div>
+            </div>
+            <nav class="nv" aria-hidden="true"><span><svg><use href="#i-scan"/></svg>Identifiera</span><span><svg><use href="#i-book"/></svg>Uppslagsverk</span><span class="on"><svg><use href="#i-album"/></svg>Mina arter</span><span><svg><use href="#i-star"/></svg>Märken</span><span><svg><use href="#i-map"/></svg>Karta</span></nav>
+          </div>
+        </div>
+        <figcaption>Fältrapport, vecka 41. <span class="mk">1</span> is the new last line of the stamp card.</figcaption>
+      </figure>
+      <figure>
+        <div class="dev" role="img" aria-label="Troférum on brass shelves by month. Månads-rytm, number 23, on the October shelf is ringed after arriving from the report. Every stamp shows its date and a week tag; the tag v. 41 is marked as link 2.">
+          <div class="scr">
+            <div class="sb"><span>10:24</span><span class="sbi"></span></div>
+            <div class="bd">
+              <span class="bk">&#8592;</span>
+              <p class="k">Skådar-profil</p>
+              <p class="h">Ditt <em>troférum</em>.</p>
+              <p class="cv">8 stämplar sedan 2 juni.</p>
+              <div class="tabs"><span class="on">2026</span><span>Alla år</span></div>
+              <p class="mo">Oktober</p>
+              <div class="rw"><div class="cell"><span class="seal hi">№23</span><b>Månads-rytm</b><span class="dt">11 okt <span class="wkt lnk" data-n="2">v. 41</span></span></div></div>
+              <p class="mo">September</p>
+              <div class="rw"><div class="cell"><span class="seal">№2</span><b>Skådare</b><span class="dt">26 sep <span class="wkt">v. 39</span></span></div><div class="cell"><span class="seal navy">№17</span><b>Rödlistad</b><span class="dt">2 sep <span class="wkt">v. 36</span></span></div></div>
+              <p class="mo">Augusti</p>
+              <div class="rw"><div class="cell"><span class="seal">№22</span><b>Ljudskådare</b><span class="dt">20 aug <span class="wkt">v. 34</span></span></div><div class="cell"><span class="seal">№11</span><b>Messamlare</b><span class="dt">3 aug <span class="wkt">v. 32</span></span></div><div class="cell"><span class="seal">№26</span><b>Säsong-skådare</b><span class="dt">1 aug <span class="wkt">v. 31</span></span></div></div>
+            </div>
+            <nav class="nv" aria-hidden="true"><span><svg><use href="#i-scan"/></svg>Identifiera</span><span><svg><use href="#i-book"/></svg>Uppslagsverk</span><span><svg><use href="#i-album"/></svg>Mina arter</span><span class="on"><svg><use href="#i-star"/></svg>Märken</span><span><svg><use href="#i-map"/></svg>Karta</span></nav>
+          </div>
+        </div>
+        <figcaption>Troférum after <span class="mk">1</span>: the stamp is ringed on its shelf. <span class="mk">2</span> Every week tag is a link.</figcaption>
+      </figure>
+    </div>
+
+    <div class="tx">
+      <h3>What happens</h3>
+      <ol class="steps">
+        <li><span class="mk">1</span><span>The <span class="sv">Ny stämpel</span> card ends in a line, <span class="sv">Se den i troférummet</span>. It opens the Troférum at the stamp's shelf and rings the stamp for a moment.</span></li>
+        <li><span class="mk">2</span><span>Every stamp on the shelves gets its week next to the date. Tapping <span class="sv">v. 41</span> opens that week's Fältrapport, also for weeks long past.</span></li>
+      </ol>
+      <h3>Edge cases</h3>
+      <dl class="edges">
+        <div>
+          <dt>No new stamp this week</dt>
+          <dd>The card keeps <span class="sv">Ingen ny stämpel den här veckan.</span> and names the stamp closest to unlocking, which opens the Troférum. Only on the current week's report: an old report would show today's progress.
+            <div class="snip" role="img" aria-label="The stamp card in a week without a stamp: an open seal number 14 at 18 of 20, Veckans stämpel, Ingen ny stämpel den här veckan, and a link Närmast: Familjespanare, 18 av 20 familjer.">
+              <div class="card st lnk" data-n="1"><span class="seal pg">№14<small>18/20</small></span><div><p class="k nr mu">Veckans stämpel</p><p class="ds2">Ingen ny stämpel den här veckan.</p><p class="al">Närmast: Familjespanare, 18 av 20 familjer</p></div></div>
+            </div>
+          </dd>
+        </div>
+        <div>
+          <dt>Won before weekly reports existed</dt>
+          <dd>Works. A report is built from your saved finds when you open it, so <span class="sv">v. 23</span> on Nybörjare, won 2 June before Birdy had weekly reports, opens a full week 23. A week from another year shows the year: <span class="sv">v. 41, 2025</span>.</dd>
+        </div>
+        <div>
+          <dt>Won in a week with no other finds</dt>
+          <dd>A stamp's week is when the app handed it out, the same rule the report uses to list it, so the link always lands on a report that shows the stamp. Fältmedlem arrives when Premium turns on and can fall in an empty week; that report reads <span class="sv">En lugn vecka.</span> with the stamp card, as it does today.</dd>
+        </div>
+      </dl>
+      <p class="work"><b>Work: medium.</b> The Troférum learns which stamp to ring, the report's stamp card becomes a button, each stamp on the shelves gets a week tag with a full-size touch area (the shelves grow a little), and the report needs badge progress for <span class="sv">Närmast</span>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= B ================= -->
+<section class="opt" id="b" aria-labelledby="b-h">
+  <div class="oh"><span class="lt" aria-hidden="true">B</span><h2 id="b-h">Veckans rad i troférummet</h2></div>
+  <p class="concept">Each screen borrows a band from the other: the Troférum shows this week, the report shows the stamps in reach.</p>
+  <div class="og">
+    <div class="phones">
+      <figure>
+        <div class="dev" role="img" aria-label="Troférum with a new card above the shelves, Den här veckan, vecka 41: one new stamp, Månads-rytm, and the link Läs veckans uppslag, marked as link 1. The same stamp also stands on the October shelf below.">
+          <div class="scr">
+            <div class="sb"><span>10:24</span><span class="sbi"></span></div>
+            <div class="bd">
+              <span class="bk">&#8592;</span>
+              <p class="k">Skådar-profil</p>
+              <p class="h">Ditt <em>troférum</em>.</p>
+              <p class="cv">8 stämplar sedan 2 juni.</p>
+              <div class="card wc lnk" data-n="1">
+                <p class="k nr">Den här veckan · Vecka 41</p>
+                <div class="row2"><span class="seal sm">№23</span><p><b class="sn">Månads-rytm</b><span class="ds">1 ny stämpel</span></p></div>
+                <p class="al">Läs veckans uppslag</p>
+              </div>
+              <div class="tabs"><span class="on">2026</span><span>Alla år</span></div>
+              <p class="mo">Oktober</p>
+              <div class="rw"><div class="cell"><span class="seal">№23</span><b>Månads-rytm</b><span class="dt">11 okt</span></div></div>
+              <p class="mo">September</p>
+              <div class="rw"><div class="cell"><span class="seal">№2</span><b>Skådare</b><span class="dt">26 sep</span></div><div class="cell"><span class="seal navy">№17</span><b>Rödlistad</b><span class="dt">2 sep</span></div></div>
+            </div>
+            <nav class="nv" aria-hidden="true"><span><svg><use href="#i-scan"/></svg>Identifiera</span><span><svg><use href="#i-book"/></svg>Uppslagsverk</span><span><svg><use href="#i-album"/></svg>Mina arter</span><span class="on"><svg><use href="#i-star"/></svg>Märken</span><span><svg><use href="#i-map"/></svg>Karta</span></nav>
+          </div>
+        </div>
+        <figcaption>Troférum with the week card <span class="mk">1</span>. Månads-rytm now shows twice.</figcaption>
+      </figure>
+      <figure>
+        <div class="dev" role="img" aria-label="Fältrapport, vecka 41: the Ny stämpel card ends in Till troférummet, marked as link 2.">
+          <div class="scr">
+            <div class="sb"><span>10:24</span><span class="sbi"></span></div>
+            <div class="bd">
+              <span class="bk">&#8592;</span>
+              <p class="k">Fältrapport · Vecka 41</p>
+              <p class="h">En vecka i <em>fält</em>.</p>
+              <p class="cv">5 till 11 oktober. 5 dagar ute.</p>
+              <div class="led"><p><b>7</b>Fynd</p><p><b>3</b>Nya arter</p><p><b>4</b>Veckor i rad</p></div>
+              <p class="cv dl">+3 fynd mot förra veckan</p>
+              <p class="orn">&#10086;</p>
+              <div class="wk"><p><i>M</i><u class="on"></u><s>5</s></p><p><i>T</i><u class="on"></u><s>6</s></p><p><i>O</i><u></u><s>7</s></p><p><i>T</i><u class="on"></u><s>8</s></p><p><i>F</i><u></u><s>9</s></p><p><i>L</i><u class="on" data-c="2"></u><s>10</s></p><p><i>S</i><u class="on" data-c="2"></u><s>11</s></p></div>
+              <p class="k">Nya i livslistan</p>
+              <div class="nr2"><i></i><p><b>Sidensvans</b>№ 31 i livslistan · lör 10 okt</p><em class="tag">Ny</em></div>
+              <div class="card st lnk" data-n="2"><span class="seal">№23</span><div><p class="k nr">Ny stämpel</p><b class="sn">Månads-rytm</b><span class="ds">Du har skådat fåglar fyra veckor i rad.</span><p class="al">Till troférummet</p></div></div>
+              <p class="k gap">Alla fynd · 7</p>
+              <div class="gr"><i></i><i></i><i></i><i></i></div>
+            </div>
+            <nav class="nv" aria-hidden="true"><span><svg><use href="#i-scan"/></svg>Identifiera</span><span><svg><use href="#i-book"/></svg>Uppslagsverk</span><span class="on"><svg><use href="#i-album"/></svg>Mina arter</span><span><svg><use href="#i-star"/></svg>Märken</span><span><svg><use href="#i-map"/></svg>Karta</span></nav>
+          </div>
+        </div>
+        <figcaption>Fältrapport, vecka 41. <span class="mk">2</span> opens the top of the Troférum.</figcaption>
+      </figure>
+    </div>
+
+    <div class="tx">
+      <h3>What happens</h3>
+      <ol class="steps">
+        <li><span class="mk">1</span><span>A <span class="sv">Den här veckan</span> card above the shelves shows the week's new stamps and opens the current Fältrapport.</span></li>
+        <li><span class="mk">2</span><span>The report's stamp card ends in <span class="sv">Till troférummet</span>. In a week without a stamp, the two stamps closest to unlocking take the card's place.</span></li>
+      </ol>
+      <h3>Edge cases</h3>
+      <dl class="edges">
+        <div>
+          <dt>No new stamp this week</dt>
+          <dd>The Troférum card reads <span class="sv">Ingen ny stämpel än den här veckan.</span> and still opens the report. Most weeks look like this.
+            <div class="snip" role="img" aria-label="The report in a week without a stamp: the empty stamp card, then a band Nära att låsa upp with Familjespanare at 18 of 20 and Raritetsjägare at 3 of 5, each 2 kvar, and the link Till troférummet marked as link 2.">
+              <div class="card st"><span class="seal lk">?</span><div><p class="k nr mu">Veckans stämpel</p><p class="ds2">Ingen ny stämpel den här veckan.</p></div></div>
+              <div class="nb"><p class="k">Nära att låsa upp</p><p class="al lnk" data-n="2">Till troférummet</p></div>
+              <div class="nbr"><span><span class="seal pg">№14<small>18/20</small></span>2 kvar</span><span><span class="seal pg">№18<small>3/5</small></span>2 kvar</span></div>
+            </div>
+          </dd>
+        </div>
+        <div>
+          <dt>Won before weekly reports existed</dt>
+          <dd>Not linked. Only the current week has a way to its report; older stamps sit on their shelves without one.</dd>
+        </div>
+        <div>
+          <dt>Won in a week with no other finds</dt>
+          <dd>The card shows the stamp, for example Fältmedlem, and its report opens as <span class="sv">En lugn vecka.</span> with it.</dd>
+        </div>
+      </dl>
+      <p class="aside">In a week with a stamp, the newest stamp shows twice at the top of the Troférum: in the card and on the October shelf.</p>
+      <p class="work"><b>Work: medium.</b> A new card in the Troférum, a link and a band in the report, and the same badge progress as A. No route change: the link always opens the current week.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= C ================= -->
+<section class="opt" id="c" aria-labelledby="c-h">
+  <div class="oh"><span class="lt" aria-hidden="true">C</span><h2 id="c-h">Ett stämpelkort</h2></div>
+  <p class="concept">One card holds both ways. Tap a stamp anywhere and its certificate, which Märken 1b builds anyway, offers the week's report and the Troférum.</p>
+  <div class="og">
+    <div class="phones">
+      <figure>
+        <div class="dev" role="img" aria-label="Fältrapport, vecka 41: the whole Ny stämpel card is a button with a chevron, marked as link 1.">
+          <div class="scr">
+            <div class="sb"><span>10:24</span><span class="sbi"></span></div>
+            <div class="bd">
+              <span class="bk">&#8592;</span>
+              <p class="k">Fältrapport · Vecka 41</p>
+              <p class="h">En vecka i <em>fält</em>.</p>
+              <p class="cv">5 till 11 oktober. 5 dagar ute.</p>
+              <div class="led"><p><b>7</b>Fynd</p><p><b>3</b>Nya arter</p><p><b>4</b>Veckor i rad</p></div>
+              <p class="cv dl">+3 fynd mot förra veckan</p>
+              <p class="orn">&#10086;</p>
+              <div class="wk"><p><i>M</i><u class="on"></u><s>5</s></p><p><i>T</i><u class="on"></u><s>6</s></p><p><i>O</i><u></u><s>7</s></p><p><i>T</i><u class="on"></u><s>8</s></p><p><i>F</i><u></u><s>9</s></p><p><i>L</i><u class="on" data-c="2"></u><s>10</s></p><p><i>S</i><u class="on" data-c="2"></u><s>11</s></p></div>
+              <p class="k">Nya i livslistan</p>
+              <div class="nr2"><i></i><p><b>Sidensvans</b>№ 31 i livslistan · lör 10 okt</p><em class="tag">Ny</em></div>
+              <div class="card st lnk" data-n="1"><span class="seal">№23</span><div><p class="k nr">Ny stämpel</p><b class="sn">Månads-rytm</b><span class="ds">Du har skådat fåglar fyra veckor i rad.</span></div><span class="chev">&#8250;</span></div>
+              <p class="k gap">Alla fynd · 7</p>
+              <div class="gr"><i></i><i></i><i></i><i></i></div>
+            </div>
+            <nav class="nv" aria-hidden="true"><span><svg><use href="#i-scan"/></svg>Identifiera</span><span><svg><use href="#i-book"/></svg>Uppslagsverk</span><span class="on"><svg><use href="#i-album"/></svg>Mina arter</span><span><svg><use href="#i-star"/></svg>Märken</span><span><svg><use href="#i-map"/></svg>Karta</span></nav>
+          </div>
+        </div>
+        <figcaption>Fältrapport, vecka 41. <span class="mk">1</span> The whole stamp card opens the certificate.</figcaption>
+      </figure>
+      <figure>
+        <div class="dev" role="img" aria-label="The stamp's certificate as a sheet over the report: seal number 23, Intyg, Månads-rytm, Utfärdat 11 oktober 2026, the find that earned it, the next level, and two link rows: Vecka 41, Läs veckans uppslag, marked 2, and Se alla i troférummet, marked 3.">
+          <div class="scr">
+            <div class="sb"><span>10:24</span><span class="sbi"></span></div>
+            <div class="bd">
+              <span class="bk">&#8592;</span>
+              <p class="k">Fältrapport · Vecka 41</p>
+              <p class="h">En vecka i <em>fält</em>.</p>
+              <p class="cv">5 till 11 oktober. 5 dagar ute.</p>
+              <div class="led"><p><b>7</b>Fynd</p><p><b>3</b>Nya arter</p><p><b>4</b>Veckor i rad</p></div>
+            </div>
+            <div class="dim"></div>
+            <div class="sheet">
+              <span class="grab"></span>
+              <span class="seal lg">№23</span>
+              <p class="k nr">Intyg · Vecko-vana</p>
+              <p class="h s">Månads-rytm</p>
+              <p class="cv">Utfärdat 11 oktober 2026</p>
+              <p class="ds">Du har skådat fåglar fyra veckor i rad.</p>
+              <div class="fld"><i></i><p><span class="lb">Fyndet som gav stämpeln</span><b>Talgoxe</b><span class="ds">sön 11 okt</span></p></div>
+              <div class="fld"><p><span class="lb">Nästa nivå</span><b>Kvartals-trogen</b></p><span class="cv">8 kvar</span></div>
+              <p class="lrow lnk" data-n="2">Vecka 41 · Läs veckans uppslag</p>
+              <p class="lrow lnk" data-n="3">Se alla i troférummet</p>
+              <div class="btns"><span>Dela intyget</span><span class="pri">Stäng</span></div>
+            </div>
+          </div>
+        </div>
+        <figcaption>The certificate, opened from the report. <span class="mk">2</span> and <span class="mk">3</span> are the two new rows.</figcaption>
+      </figure>
+    </div>
+
+    <div class="tx">
+      <h3>What happens</h3>
+      <ol class="steps">
+        <li><span class="mk">1</span><span>The <span class="sv">Ny stämpel</span> card in the report opens the stamp's certificate, as a stamp on the shelves or on Märken already does.</span></li>
+        <li><span class="mk">2</span><span><span class="sv">Vecka 41 · Läs veckans uppslag</span> opens the report for the week the stamp was won.</span></li>
+        <li><span class="mk">3</span><span><span class="sv">Se alla i troférummet</span> opens the shelves. The row for the screen you came from is hidden.</span></li>
+      </ol>
+      <h3>Edge cases</h3>
+      <dl class="edges">
+        <div>
+          <dt>No new stamp this week</dt>
+          <dd>Nothing to tap, so the two screens don't meet that week, unless the empty card gets a plain <span class="sv">Till troférummet</span>.
+            <div class="snip" role="img" aria-label="The stamp card in a week without a stamp, with an optional dashed link Till troférummet.">
+              <div class="card st"><span class="seal lk">?</span><div><p class="k nr mu">Veckans stämpel</p><p class="ds2">Ingen ny stämpel den här veckan.</p><p class="al opt-line">Till troférummet (optional)</p></div></div>
+            </div>
+          </dd>
+        </div>
+        <div>
+          <dt>Won before weekly reports existed</dt>
+          <dd>Works as in A: the week row rebuilds that week's report from your saved finds.</dd>
+        </div>
+        <div>
+          <dt>Won in a week with no other finds</dt>
+          <dd>As in A: the report opens as <span class="sv">En lugn vecka.</span> with the stamp.</dd>
+        </div>
+      </dl>
+      <p class="aside">It also retires an old oddity: today the card says <span class="sv">Nytt märke!</span> even for a stamp won in June.</p>
+      <p class="work"><b>Work: small.</b> Two rows on the certificate and a tappable stamp card in the report. The cost: one more tap, and the links stay out of sight until you open a stamp.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= pick ================= -->
+<section class="rec" aria-labelledby="rec-h">
+  <span class="lt" aria-hidden="true">A</span>
+  <div>
+    <p class="kick">My pick</p>
+    <h2 id="rec-h">A, <em>Stämpeln som bro</em>.</h2>
+    <p>It is the only option where you see the link on both screens without opening anything, and the link is information in itself: each stamp's week, in the unit the report already speaks. It adds no screen and leans on what exists. The report can already open any past week, and on Märken 1b's shelves every stamp has a place to be ringed.</p>
+    <p>It is the most work of the three, but each piece is small. If you want the smallest change, take C. A and C share their plumbing, so the certificate can get C's week row later for almost nothing.</p>
+  </div>
+</section>
+
+<!-- ================= code ================= -->
+<section class="hood" aria-labelledby="hood-h">
+  <p class="kick">For the plan</p>
+  <h2 id="hood-h">What the code already gives us</h2>
+  <ul>
+    <li><b>Any past week opens.</b> The report's route takes an ISO week, <code>AppRoute.WeeklyRecap(week)</code> (<code>AppRoute.kt:90</code>), and the builder rebuilds that week from saved finds with the streak as it stood then (<code>WeeklyRecapBuilder.kt:61</code>). A and C link to old weeks for free.</li>
+    <li><b>A stamp's week is its unlock time.</b> The report lists stamps unlocked in its week (<code>RecapViewModel.kt:71</code>). The unlock time is when the app hands the stamp out (<code>RecalculateBadgesUseCase.kt:30</code>), also after an app update or when Premium turns on.</li>
+    <li><b>The Troférum route takes nothing.</b> <code>data object TrophyRoom</code> (<code>AppRoute.kt:44</code>) needs the stamp to ring for A; one call site (<code>AppScaffold.kt:508</code>) and one test (<code>VisibleBackTest.kt:576</code>).</li>
+    <li><b>Today's Troférum shows only the five newest stamps</b> plus the red-listed ones (<code>BadgesViewModel.kt:86</code>, <code>TrophyShowcase.kt:27</code>). Ringing an older stamp needs Märken 1b's shelves; on today's layout A opens the stamp's card instead.</li>
+    <li><b>Progress is only computed for Märken</b> (<code>BadgesViewModel.kt:135</code>), so A's <span class="sv">Närmast</span> and B's band need it in the report too. It counts species, families or weeks, not finds: the line reads <span class="sv">18 av 20 familjer</span> (the existing <code>badge_progress_counted</code>), not "2 fynd kvar".</li>
+    <li><b>The report's stamp card is not tappable yet</b> (<code>RecapEntries.kt:171</code>), and the stamp sheet says <span class="sv">Nytt märke!</span> for every stamp, old or new (<code>UnlockBottomSheet.kt:165</code>).</li>
+    <li><b>Two tabs meet.</b> The report belongs to Mina arter, the Troférum to Märken (<code>BottomNavBar.kt:132</code>, <code>:138</code>). A link should open on top of the current screen so Back returns, and step back instead of stacking a loop when its target is already below.</li>
+  </ul>
+</section>
+
+<p class="foot">Sketch for Albin, 9 October 2026. Drawn from <code>release/1.3.0</code> at 7359f24e and the approved Märken 1 design (section C of the 1.3 choices page). No bird photos: plain discs stand in for them.</p>
+
+</main>
