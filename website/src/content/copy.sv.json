@@ -109,7 +109,7 @@
     "lead": "Allt du behöver för att känna igen och spara fåglar är gratis. Premium lägger till fyra saker för dig som vill följa ditt år i fält.",
     "alwaysFreeLabel": "Alltid gratis:",
     "alwaysFree": "identifiering med kamera, foto och ljud · fältdagboken · 839 arter · 27 märken",
-    "purchaseNote": "Köp och priser sköts i appen, via Google Play.",
+    "purchaseNote": "Premium är gratis för alla tills vidare. Köp i Google Play kommer i en senare version.",
     "more": "Allt om Premium",
     "seal": "Premium",
     "features": [
@@ -159,7 +159,7 @@
       { "q": "Fungerar Birdy utan täckning?", "a": "Ja. Identifiering med kamera, foto och ljud körs i telefonen, och guiden och dagboken finns alltid med. Bara kartbilderna i Premium-kartan behöver uppkoppling." },
       { "q": "Behöver jag ett konto?", "a": "Nej. Öppna appen och börja. Din dagbok finns i telefonen." },
       { "q": "Hur säker är identifieringen?", "a": "Tillräckligt bra för att lära sig av, och ärlig när den är osäker. Varje träff visar hur säker Birdy är, och du bekräftar alltid innan något sparas." },
-      { "q": "Vad kostar Birdy?", "a": "Birdy är gratis att ladda ner och använda. Premium är ett tillval med kartan, PDF-export, säsongsstatistik och extra märken. Priset ser du i appen.", "premium": true },
+      { "q": "Vad kostar Birdy?", "a": "Birdy är gratis att ladda ner och använda. Premium är ett tillval med kartan, PDF-export, säsongsstatistik och extra märken. Det är gratis för alla tills vidare, och köp i Google Play kommer i en senare version.", "premium": true },
       { "q": "Finns Birdy för iPhone?", "a": "iPhone-appen är på väg. Android-appen finns att hämta nu, och länken till App Store dyker upp här när iPhone-versionen är ute." }
     ]
   },
@@ -189,7 +189,7 @@
       "headline": "Så ligger det till, *ärligt talat.*",
       "story": [
         "Birdy är en liten, självständig app från AlbIT AB i Solna. Appen har ingen reklam, ingen spårning och inget konto, och din fältdagbok stannar i din telefon.",
-        "När Birdy kom ut i juni var Premium öppet för alla. Från och med Birdy 1.3 köper man Premium i Google Play. Det är Premium som gör att vi kan fortsätta bygga Birdy, och nästa stora steg är appen för iPhone."
+        "När Birdy kom ut i juni var Premium öppet för alla, och det är det fortfarande i Birdy 1.3. I en senare version köper man Premium i Google Play. Det är Premium som gör att vi kan fortsätta bygga Birdy, och nästa stora steg är appen för iPhone."
       ],
       "timelineLabel": "Birdys år",
       "timeline": [
@@ -201,10 +201,15 @@
         {
           "when": "{date}",
           "what": "Birdy 1.3.",
-          "more": "Premium går att köpa i Google Play, för ett år eller för alltid. Den som använde Birdy före 1.3 behåller Premium gratis.",
+          "more": "Nytt utseende, språkval i introt och ett ljud-ID som lyssnar längre. Premium är fortsatt gratis för alla tills vidare, och den som använde Birdy före 1.3 behåller det gratis när det börjar kosta.",
           "whenSoon": "Härnäst",
           "whatSoon": "Birdy 1.3 kommer.",
-          "moreSoon": "Då går Premium att köpa i Google Play, för ett år eller för alltid. Den som använde Birdy före 1.3 behåller Premium gratis."
+          "moreSoon": "Nytt utseende, språkval i introt och ett ljud-ID som lyssnar längre. Premium är fortsatt gratis för alla tills vidare, och den som använde Birdy före 1.3 behåller det gratis när det börjar kosta."
+        },
+        {
+          "when": "Senare",
+          "what": "Premium i Google Play.",
+          "more": "För ett år eller för alltid."
         },
         {
           "when": "Snart",
@@ -287,8 +292,8 @@
       "bigBefore": "Då är Premium redan ditt.",
       "bigMark": "Använde du Birdy före version 1.3 behåller du Premium gratis, så länge du har appen.",
       "bigAfter": "Ett tack för att du var med när Birdy var ny.",
-      "lead": "Du behöver inte göra något. Uppdatera appen, så möter tack-skärmen dig nästa gång du öppnar den.",
-      "leadSoon": "Du behöver inte göra något. När Birdy 1.3 kommer uppdaterar du appen, så möter tack-skärmen dig nästa gång du öppnar den.",
+      "lead": "Du behöver inte göra något. När Premium börjar kosta uppdaterar du appen, så möter tack-skärmen dig nästa gång du öppnar den.",
+      "leadSoon": "Du behöver inte göra något. När Premium börjar kosta uppdaterar du appen, så möter tack-skärmen dig nästa gång du öppnar den.",
       "small": "Appen avgör det själv i telefonen och skickar ingenting någonstans. Har du Googles säkerhetskopia påslagen följer beviset med om du byter telefon. Avinstallerar du appen utan säkerhetskopia, eller rensar appens data, försvinner beviset.",
       "alt": "Tack-skärmen i Birdy: Tidig fältmedlem, Premium är ditt. För alltid."
     },
@@ -297,12 +302,12 @@
       "headline": "Så köper du *Premium.*",
       "steps": [
         "Hämta Birdy från Google Play.",
-        "Öppna Premium i appen, till exempel under Inställningar.",
+        "När Premium går att köpa: öppna det i appen, till exempel under Inställningar.",
         "Välj ett år eller för alltid och betala i Google Play."
       ],
       "stepsSoon": [
         "Hämta Birdy från Google Play.",
-        "När Birdy 1.3 kommer: öppna Premium i appen, till exempel under Inställningar.",
+        "När Premium går att köpa: öppna det i appen, till exempel under Inställningar.",
         "Välj ett år eller för alltid och betala i Google Play."
       ],
       "faqLabel": "Frågor om Premium",

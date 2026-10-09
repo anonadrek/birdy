@@ -43,23 +43,40 @@ test('Premium-tidslinjen: "Härnäst" före dagen och utan datum, datumet från 
   assert.equal(releaseTimelineEntry(copy.en.premiumPage.situation.timeline[1], '2026-11-01', 'en', LIVE).when, '15 October 2026');
 });
 
-test('Premium-sidans löfte och köpsteg: 1.3-orden först från dagen, före den och utan datum "när Birdy 1.3 kommer"', () => {
+test('Premium-sidans löfte och köpsteg: samma text oavsett releasedag, eftersom Birdy 1.3 kommer gratis och betalningen flyttas till en senare, onämnd version (review 2026-10-09)', () => {
   for (const locale of ['sv', 'en']) {
     const page = copy[locale].premiumPage;
     assert.equal(page.buy.stepsSoon.length, page.buy.steps.length, locale);
+    // 1.3 ships with Premium free for everyone, so there is no longer a "before/after 1.3" difference: the promise
+    // and the steps read the same whether 1.3 is still "soon" or already out.
+    assert.equal(page.early.leadSoon, page.early.lead, locale);
+    assert.deepEqual(page.buy.stepsSoon, page.buy.steps, locale);
     for (const before of [releaseDependentCopy(page, '2026-10-14', LIVE), releaseDependentCopy(page, '2027-06-01', null)]) {
       assert.equal(before.earlyLead, page.early.leadSoon);
       assert.deepEqual(before.buySteps, page.buy.stepsSoon);
-      // Before the day neither text may tell people to update to, or buy in, an app version that is not out yet,
-      // and neither names a month the release may slip past.
-      assert.match(before.earlyLead, /1\.3/);
-      assert.ok(before.buySteps.some((step) => /1\.3/.test(step)), locale);
-      assert.doesNotMatch(before.earlyLead, /^(Du behöver inte göra något\. Uppdatera appen|You don't need to do anything\. Update the app)/);
+      // Neither text may tie the price to version 1.3 (1.3 itself is free) or name a month the later version may
+      // slip past.
+      assert.doesNotMatch(before.earlyLead, /1\.3/, locale);
+      assert.ok(!before.buySteps.some((step) => /1\.3/.test(step)), locale);
       assert.doesNotMatch(before.earlyLead + before.buySteps.join(' '), /oktober|october/i);
     }
     const after = releaseDependentCopy(page, LIVE, LIVE);
     assert.equal(after.earlyLead, page.early.lead);
     assert.deepEqual(after.buySteps, page.buy.steps);
+    assert.doesNotMatch(after.earlyLead, /1\.3/, locale);
+    assert.ok(!after.buySteps.some((step) => /1\.3/.test(step)), locale);
+  }
+});
+
+test('Premium-tidslinjens nya rad: Premium i Google Play, senare, mellan 1.3-raden och iPhone-raden, på båda språken', () => {
+  for (const locale of ['sv', 'en']) {
+    const timeline = copy[locale].premiumPage.situation.timeline;
+    assert.equal(timeline.length, 4, locale);
+    const later = timeline[2];
+    assert.equal(later.when, locale === 'sv' ? 'Senare' : 'Later', locale);
+    assert.equal(later.what, locale === 'sv' ? 'Premium i Google Play.' : 'Premium in Google Play.', locale);
+    // A plain entry like the iPhone row after it: no release-day switching, since "later" names no version.
+    assert.ok(!('whenSoon' in later) && !('whatSoon' in later) && !('moreSoon' in later), locale);
   }
 });
 
