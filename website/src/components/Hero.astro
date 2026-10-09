@@ -88,10 +88,12 @@ const flockLabel = t.hero.flockLabel.replace('{name}', bird.name);
 
 <style>
   /* Peach paper, lighter where the light falls (the social profiles' colours). The last 120 px fade to plain peach, the
-     colour of the torn edge the next section tears down from (MonthBirds.astro's DeckleEdge). */
+     colour of the torn edge the next section tears down from (MonthBirds.astro's DeckleEdge). rgb(253 229 203 / 0) is
+     --peach at alpha 0, not the transparent keyword: old WebKit interpolates transparent as black at alpha 0, which
+     would show here as a faint grey band. */
   /* overflow: hidden first, a fallback for Safari older than 16 (no support for the overflow: clip value); the
      second declaration wins everywhere that understands it. */
-  .hero { position: relative; overflow: hidden; overflow: clip; padding-top: 64px; color: var(--ink); background-color: var(--peach); background-image: linear-gradient(0deg, var(--peach) 0, transparent 120px), radial-gradient(130% 120% at 70% 40%, var(--peach-hi) 0%, var(--peach) 45%, var(--peach-lo) 100%); }
+  .hero { position: relative; overflow: hidden; overflow: clip; padding-top: 64px; color: var(--ink); background-color: var(--peach); background-image: linear-gradient(0deg, var(--peach) 0, rgb(253 229 203 / 0) 120px), radial-gradient(130% 120% at 70% 40%, var(--peach-hi) 0%, var(--peach) 45%, var(--peach-lo) 100%); }
   /* The canvas covers the whole hero: the birds fly in from below left, under the words, to Birdy's bird. It comes after
      the words in the source, so a screen reader reads the headline before the flock; its z-index keeps it under them. */
   .flock-canvas { position: absolute; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; pointer-events: none; }
