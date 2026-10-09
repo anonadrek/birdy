@@ -271,11 +271,22 @@ test.describe('menyn över persikopappret', () => {
     await expect(toggle).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
   });
 
+  // Review fix nit: .is-open is excluded from the peach-over-transparent selector, so an open mobile menu
+  // falls back to the espresso bar + cream text, same as scrolled-past. Not checked until now.
+  test('mobilmenyn över hjälten blir espressobrun med ljus text på ordmärket', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/sv/');
+    await page.locator('#site-nav .menu-toggle').click();
+    await expect(page.locator('#site-nav')).toHaveClass(/is-open/);
+    await expect(page.locator('#site-nav .brand .wordmark')).toHaveCSS('color', 'rgb(255, 248, 238)');
+  });
+
   test('Premium-sidans meny behåller ljus text över sin mörka hjälte', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto('/sv/premium/');
     await expect(page.locator('#site-nav')).not.toHaveClass(/is-solid/);
     await expect(page.locator('#site-nav .links a').first()).toHaveCSS('color', 'rgb(255, 248, 238)');
+    await expect(page.locator('#site-nav .brand .wordmark')).toHaveCSS('color', 'rgb(255, 248, 238)');
   });
 
   test.describe('kontrast', () => {
@@ -301,6 +312,9 @@ test.describe('utan JavaScript', () => {
     await page.goto('/sv/');
     await expect(page.locator('#site-nav')).toHaveCSS('background-color', 'rgb(42, 29, 23)');
     await expect(page.locator('#site-nav .menu-toggle')).toBeHidden();
+    // The peach-over-transparent rule is gated on html.js (review fix nit): without it, the bar stays
+    // espresso and the wordmark keeps the base cream color, never the ink override.
+    await expect(page.locator('#site-nav .brand .wordmark')).toHaveCSS('color', 'rgb(255, 248, 238)');
   });
 
   // Without JavaScript the <noscript> SVG shows the landed flock with Hornuggla's bird lit, in exactly the fit box the
