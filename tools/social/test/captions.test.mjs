@@ -180,11 +180,17 @@ test('a video with CC BY-SA material gets the CC BY-SA 4.0 line right after the 
   assert.match(c.instagram, /Link in bio\./);
 });
 
-test('YouTube title is at most 100 characters', () => {
-  assert.equal(youtubeTitle(record()), 'What does the Eurasian Magpie sound like? #shorts');
+// Albin 2026-10-10: the title opens with a hook question, then both names so it is found in search.
+test('YouTube title is the hook question with both names, at most 100 characters', () => {
+  assert.equal(youtubeTitle(record()), 'Would you recognise this bird by its sound? Eurasian Magpie (Skata) #shorts');
+  // Same name in both languages: the brackets are left out.
+  assert.equal(
+    youtubeTitle(record({ names: { en: 'Mallard', sv: 'mallard', scientific: 'Anas platyrhynchos' } })),
+    'Would you recognise this bird by its sound? Mallard #shorts',
+  );
   const long = record({ names: { en: 'A'.repeat(70), sv: 'x', scientific: 'y' } });
   assert.ok(youtubeTitle(long).length <= 100);
-  assert.equal(youtubeTitle(long), `What does the ${'A'.repeat(70)} sound like?`);
+  assert.equal(youtubeTitle(long), `${'A'.repeat(70)} (x) #shorts`);
   const huge = record({ names: { en: 'B'.repeat(140), sv: 'x', scientific: 'y' } });
   assert.ok(youtubeTitle(huge).length <= 100);
   for (const r of [record(), long, huge]) assert.ok(buildCaptions(r).youtube.title.length <= 100);
@@ -208,6 +214,6 @@ test('every caption opens with the Swedish name and ends with the Swedish hashta
     assert.match(text, /^The Eurasian Magpie \(Skata\) is a black and white crow\.\n\n/);
     assert.match(text, /#fåglar #fågelskådning$/);
   }
-  // The YouTube title stays short English.
-  assert.equal(c.youtube.title, 'What does the Eurasian Magpie sound like? #shorts');
+  // The YouTube title is the hook question with both names.
+  assert.equal(c.youtube.title, 'Would you recognise this bird by its sound? Eurasian Magpie (Skata) #shorts');
 });

@@ -127,12 +127,23 @@ export function withSwedishName(text, record) {
   return `${text.slice(0, end)} (${sv})${text.slice(end)}`;
 }
 
+// Albin 2026-10-10: a hook question first, then the English and the Swedish name, so the Short is
+// both something to guess and something people find when they search for the bird in either language.
+const YOUTUBE_HOOK = 'Would you recognise this bird by its sound?';
+
 export function youtubeTitle(record) {
-  const full = `What does the ${record.names.en} sound like? #shorts`;
-  if (full.length <= YOUTUBE_TITLE_MAX) return full;
-  const short = `What does the ${record.names.en} sound like?`;
-  if (short.length <= YOUTUBE_TITLE_MAX) return short;
-  return `${record.names.en.slice(0, YOUTUBE_TITLE_MAX - 1).trimEnd()}…`;
+  const en = String(record.names?.en ?? '').trim();
+  const sv = String(record.names?.sv ?? '').trim();
+  const name = sv && sv.toLowerCase() !== en.toLowerCase() ? `${en} (${sv})` : en;
+  const candidates = [
+    `${YOUTUBE_HOOK} ${name} #shorts`,
+    `${YOUTUBE_HOOK} ${name}`,
+    `${YOUTUBE_HOOK} ${en}`,
+    `${name} #shorts`,
+    en,
+  ];
+  const fits = candidates.find((title) => title.length <= YOUTUBE_TITLE_MAX);
+  return fits ?? `${en.slice(0, YOUTUBE_TITLE_MAX - 1).trimEnd()}…`;
 }
 
 export function assertNoDashes(label, text) {
