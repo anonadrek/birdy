@@ -1,5 +1,11 @@
+import { readdirSync, readFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 import { trackConsoleErrors } from './test-helpers';
+
+const websiteRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
 // The clips page (spec docs/superpowers/specs/2026-10-09-klippsidan-design.md). The fixture build (npm run
 // build:fixtures) pins BIRDY_TODAY=2026-10-15, so the page shows the first week, 9 to 15 October, and nothing later.
@@ -99,4 +105,77 @@ test.describe('Klippsidan', () => {
     expect(xml).toContain('<loc>https://birdy.community/clips/</loc>');
     expect(xml).toContain('<loc>https://birdy.community/sv/klipp/</loc>');
   });
+});
+
+test.describe('Klippsidan: sidfoten, nätet, smala skärmar och bygget', () => {
+  for (const [path, href, text] of [
+    ['/', '/clips/', 'Clips'],
+    ['/sv/', '/sv/klipp/', 'Klipp'],
+    ['/clips/', '/clips/', 'Clips'],
+    ['/sv/klipp/', '/sv/klipp/', 'Klipp'],
+    ['/premium/', '/clips/', 'Clips'],
+    ['/sv/arter/talgoxe/', '/sv/klipp/', 'Klipp'],
+  ] as const) {
+    test(`sidfoten på ${path} länkar till klippsidan bredvid kanalerna`, async ({ page }) => {
+      await page.goto(path);
+      const link = page.locator('footer.footer .fbrand [data-footer-clips]');
+      await expect(link).toHaveAttribute('href', href);
+      await expect(link).toHaveText(text);
+      // Next to the channels, not one of them: the follow row still has exactly the four channels.
+      await expect(page.locator('footer.footer ul.fsoc a')).toHaveCount(4);
+    });
+  }
+
+  for (const path of ['/clips/', '/sv/klipp/']) {
+    test(`${path} hämtar inget från andra värdar och har inga spelare`, async ({ page, baseURL }) => {
+      const hosts = new Set<string>();
+      page.on('request', (req) => {
+        const url = new URL(req.url());
+        if (url.protocol === 'http:' || url.protocol === 'https:') hosts.add(url.host);
+      });
+      await page.goto(path);
+      // The lazy covers too: scroll to the footer and let the network settle.
+      await page.locator('footer.footer').scrollIntoViewIfNeeded();
+      await page.waitForLoadState('networkidle');
+      expect([...hosts]).toEqual([new URL(baseURL!).host]);
+      await expect(page.locator('iframe, video, audio, object, embed')).toHaveCount(0);
+    });
+  }
+
+  for (const width of [320, 390]) {
+    test(`inget sidledes scroll på klippsidan i ${width} px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 800 });
+      for (const path of ['/clips/', '/sv/klipp/']) {
+        await page.goto(path);
+        expect(await page.evaluate(() => document.documentElement.scrollWidth), path).toBeLessThanOrEqual(width);
+      }
+    });
+  }
+
+  // Only the shown clips' covers reach the build (virtual:birdy-clips imports nothing else), so a later clip's cover is
+  // not online before its day. Astro names an image's files after it: <slug>.<hash>_<hash>.webp.
+  test('bara de visade klippens omslag finns i bygget', () => {
+    const files = readdirSync(resolve(websiteRoot, 'dist', '_astro'));
+    const { clips } = JSON.parse(readFileSync(resolve(websiteRoot, 'src', 'data', 'clips.json'), 'utf8')) as { clips: { date: string; slug: string }[] };
+    for (const c of clips) {
+      const emitted = files.filter((f) => f.startsWith(`${c.slug}.`));
+      if (c.date <= '2026-10-15') expect(emitted.length, c.slug).toBeGreaterThan(0);
+      else expect(emitted, c.slug).toEqual([]);
+    }
+  });
+});
+
+test.describe('axe på klippsidan', () => {
+  // Reduced motion, as in the other axe runs: every element in its final colours.
+  test.use({ contextOptions: { reducedMotion: 'reduce' } });
+  for (const path of ['/clips/', '/sv/klipp/']) {
+    for (const width of [390, 1440]) {
+      test(`axe: ${path} i ${width} px`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(path);
+        const results = await new AxeBuilder({ page }).analyze();
+        expect(results.violations, JSON.stringify(results.violations, null, 2)).toEqual([]);
+      });
+    }
+  }
 });

@@ -5,6 +5,7 @@ import { type Locale, getCopy } from '../lib/i18n';
 import { fieldNotesHref } from '../lib/field-notes';
 import { albitProductHref, CONTACT_EMAIL, premiumHref, SOCIAL_PROFILES } from '../lib/links';
 import { SOCIAL_ICON_PATHS } from '../lib/social-icons';
+import { clipsHref } from '../lib/clips.mjs';
 import { footerSpecies } from '../lib/species-nav.mjs';
 import { COMMON_QIDS, footerGroups, getAllSpecies, groupHref, hubHref, speciesHref } from '../lib/species';
 
@@ -42,6 +43,8 @@ const topGroups = footerGroups(allSpecies);
             </li>
           ))}
         </ul>
+        {/* The clips page (spec 2026-10-09-klippsidan) next to the channels: every See the song clip with its bird's page. */}
+        <a class="fclips" href={clipsHref(locale)} data-footer-clips>{t.clips.footerLink}</a>
       </div>
       {speciesColumn && (
         <div class="col">
@@ -99,6 +102,10 @@ const topGroups = footerGroups(allSpecies);
   .fsoc a { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(233, 226, 210, .3); color: rgba(233, 226, 210, .82); transition: color .2s, border-color .2s; }
   .fsoc a:hover { color: var(--apricot); border-color: var(--apricot); }
   .fsoc svg { display: block; }
+  /* The clips link under the channels, in the link colour of .col a (lighter than .fbot's .55, which
+     scripts/check-contrast.mjs checks on --dark-deep), padded to a comfortable target. */
+  .fclips { display: inline-block; margin-top: 10px; padding: 4px 0; font-size: 14px; color: rgba(233, 226, 210, .82); text-decoration: underline; text-decoration-color: rgba(233, 226, 210, .3); text-underline-offset: 3px; transition: color .2s; }
+  .fclips:hover { color: var(--apricot); }
   @media (prefers-reduced-motion: reduce) {
     .fsoc a { transition: none; }
   }
