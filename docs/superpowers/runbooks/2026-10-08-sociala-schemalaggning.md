@@ -29,6 +29,10 @@ Albin ville ha ett eget omslag per inlägg ("C med en tvist": flocken formar var
 - **Chrome har zoom per webbplats:** tiktok.com bytte till 75 % mitt i arbetet (innerWidth 1440 i stället för 1080), Business Suite låg kvar. Räkna alltid om koordinaterna med `874 / window.innerWidth` och hitta beskrivningsrutan med `getBoundingClientRect` i stället för fasta koordinater.
 - **Läget 9 okt cirka 14.30:** TikTok klart 10 okt till 7 nov. Facebook + Instagram klart till och med 22 okt (Meta strypte vid 23 okt, uppladdningen stod på 0 %). YouTube: dagsgränsen gäller till cirka 01.00 10 okt (24 timmar efter att den nåddes); 19 okt till 7 nov saknas helt där och laddas upp först, sedan eventuellt bytet av 10 till 18 okt.
 
+## 10 okt: nya YouTube-titlar
+
+Albin 2026-10-10 ("rubrikerna för korta för att bli virala"): YouTube-titeln är nu en fråga följd av båda namnen, "Would you recognise this bird by its sound? Grey Heron (Gråhäger) #shorts" (`youtubeTitle` i `tools/social/lib/captions.mjs` på `social/see-the-song`). Alla 20 Shorts (9 till 28 okt) bytta i YouTube Studio och kontrollerade i listan; `caption.json` för 19 okt till 7 nov omskrivna med `--captions-only`, så uppladdningen 29 okt till 7 nov får den nya titeln direkt. Titeln går att byta även på schemalagda Shorts: fältet `#title-textarea #textbox`, `execCommand('insertText')`, sedan `ytcp-button#save` och vänta tills knappen blir inaktiv (några sekunder).
+
 ## Kvällen 9 okt: städningen, YouTube och nya fällor
 
 - **Läget kl. 17.15:** YouTube 9 okt publicerad, 10–28 okt schemalagda (en per dag, nya versioner från 19 okt), **29 okt–7 nov saknas** (dagsgränsen nådd igen efter 11 uppladdningar, trots att Albin telefonverifierade kanalen; Studio erbjuder en "engångsverifiering" för högre gräns). Meta: de gamla versionerna 12–22 okt (FB + IG, 22 st) flyttade till Utkast och kontrollerade efter omladdning; 23–28 okt har fortfarande bara gamla (byts när de nya är uppe); 29 okt–7 nov saknas. TikTok: oförändrat, Albins städning kvar (nedan).
