@@ -125,6 +125,7 @@ export function clipFromSources(row, caption, cover) {
   if (!url.startsWith('https://www.phylopic.org/')) throw new Error(`${where}: silhuettens adress ska vara en sida på PhyloPic, inte ${url}`);
   const clue = String(cover?.clue ?? '').trim();
   if (!clue) throw new Error(`${where}: covers.json saknar ledtråden (clue) för ${row.qid}`);
+  if (HAS_DASH.test(clue)) throw new Error(`${where}: ledtråden (clue) för ${row.qid} har ett tankstreck`);
   return { date: row.date, qid: row.qid, slug: row.slug, names, silhouette: { author, licence, url, adapted: isAdapted(licence) }, clue };
 }
 

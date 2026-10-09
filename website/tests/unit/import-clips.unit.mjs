@@ -54,6 +54,11 @@ test('clipFromSources: ett tankstreck i upphovspersonens namn blir bindestreck, 
   assert.equal(clipFromSources(row, caption, dashed).silhouette.author, 'Anna-Lena Berg');
 });
 
+test('clipFromSources: ett tankstreck i ledtråden (clue) stoppar importen', () => {
+  const dashedClue = { ...cover, clue: `Tips forward${EN_DASH}like to feed underwater.` };
+  assert.throws(() => clipFromSources(row, caption, dashedClue), /tankstreck/);
+});
+
 test('clipFromSources: det sidan skulle visa fel stoppar importen', () => {
   assert.throws(() => clipFromSources({ ...row, date: '17 okt' }, caption, cover), /YYYY-MM-DD/);
   assert.throws(() => clipFromSources(row, { ...caption, qid: 'Q1' }, cover), /Q1/);
