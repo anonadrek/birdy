@@ -134,7 +134,9 @@ test.describe('Klippsidan: sidfoten, nätet, smala skärmar och bygget', () => {
         if (url.protocol === 'http:' || url.protocol === 'https:') hosts.add(url.host);
       });
       await page.goto(path);
-      // The lazy covers too: scroll to the footer and let the network settle.
+      // Scrolling to the footer fires whichever lazy covers load along the way, but a long build can still skip
+      // some middle cards before the network goes idle; what this actually guarantees is that every request the
+      // page makes is same-origin (covers are always served from /_astro/).
       await page.locator('footer.footer').scrollIntoViewIfNeeded();
       await page.waitForLoadState('networkidle');
       expect([...hosts]).toEqual([new URL(baseURL!).host]);
