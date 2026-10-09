@@ -72,7 +72,7 @@ const SPECIES = [
 // canonical "Public domain" without a licence link, so the credit lines' "public domain" label and the
 // unknown-recordist fallback are tested on built pages (Task 9 re-review). heroLicense and extraLicense
 // (Hornuggla's CC BY hero, Gråsparv's CC BY-SA hero with a CC BY extra) are the home page's photo rules
-// (plan 2026-10-08): the plate shows any of CC0, public domain, CC BY and CC BY-SA whole, the month
+// (plan 2026-10-08): the polaroid shows any of CC0, public domain, CC BY and CC BY-SA whole, the month
 // cards crop and so never show CC BY-SA. The licence URLs are the pipeline's canonical deed URLs.
 const LICENSE_URLS = {
   'CC0': null,

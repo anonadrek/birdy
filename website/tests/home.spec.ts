@@ -425,8 +425,9 @@ test.describe('första vyn', () => {
         await expect(page.locator('[data-hero] [data-same-as-app]')).toBeVisible();
         const sv = path === '/sv/';
         await page.locator('[data-hero] [data-polaroid]').evaluate((card: HTMLElement, text) => {
-          // Reduced motion still runs a 0.01 ms transition on every style change, and with the clock fixed, waiting for
-          // frames does not let it finish: transitions off, so the new sizes apply at once.
+          // Reduced motion still runs a 0.01 ms transition on every style change (global.css), and the geometry
+          // read right after this callback never waits a frame for it to finish: transitions off, so the new
+          // sizes apply at once.
           for (const el of [card, ...card.querySelectorAll<HTMLElement>('*')]) el.style.transition = 'none';
           card.style.setProperty('--ar', '0.47');
           (card.querySelector('img') as HTMLImageElement).style.aspectRatio = '0.47';
