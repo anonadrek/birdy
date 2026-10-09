@@ -1,0 +1,485 @@
+{
+  "_about": "Written by scripts/import-clips.mjs from the See the song schedule (tools/social on the branch social/see-the-song). Do not edit by hand: run the script again when the schedule changes.",
+  "clips": [
+    {
+      "date": "2026-10-09",
+      "qid": "Q25404",
+      "slug": "eurasian-blue-tit",
+      "names": {
+        "sv": "Blåmes",
+        "en": "Eurasian Blue Tit",
+        "scientific": "Cyanistes caeruleus"
+      },
+      "silhouette": {
+        "author": "Wouter Koch",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/069c4833-e1ac-48e7-90d5-f7bd11000588",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-10",
+      "qid": "Q4764",
+      "slug": "common-crane",
+      "names": {
+        "sv": "Trana",
+        "en": "Common Crane",
+        "scientific": "Grus grus"
+      },
+      "silhouette": {
+        "author": "Andy Wilson",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/abfaf52a-6fa1-48b7-91ba-b65d369a2fe2",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-11",
+      "qid": "Q14683",
+      "slug": "house-sparrow",
+      "names": {
+        "sv": "Gråsparv",
+        "en": "House Sparrow",
+        "scientific": "Passer domesticus"
+      },
+      "silhouette": {
+        "author": "Andy Wilson",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/3a4cdd72-e553-40ad-838e-3b23037b2010",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-12",
+      "qid": "Q25348",
+      "slug": "mallard",
+      "names": {
+        "sv": "Gräsand",
+        "en": "Mallard",
+        "scientific": "Anas platyrhynchos"
+      },
+      "silhouette": {
+        "author": "Andy Wilson",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/97f833ff-fcd8-4113-8948-721c75372462",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-13",
+      "qid": "Q25234",
+      "slug": "common-blackbird",
+      "names": {
+        "sv": "Koltrast",
+        "en": "Common Blackbird",
+        "scientific": "Turdus merula"
+      },
+      "silhouette": {
+        "author": "Anthony Caravaggi",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/ec11f62e-ed3e-49bb-bcff-4e47b281d378",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "qid": "Q25385",
+      "slug": "common-buzzard",
+      "names": {
+        "sv": "Ormvråk",
+        "en": "Common Buzzard",
+        "scientific": "Buteo buteo"
+      },
+      "silhouette": {
+        "author": "Andy Wilson",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/673ec775-5d61-46dd-8606-a21edcbbb823",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-15",
+      "qid": "Q25485",
+      "slug": "great-tit",
+      "names": {
+        "sv": "Talgoxe",
+        "en": "Great Tit",
+        "scientific": "Parus major"
+      },
+      "silhouette": {
+        "author": "Andy Wilson",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/037d72a3-1289-4717-83b1-edaffeee4f38",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-16",
+      "qid": "Q25334",
+      "slug": "european-robin",
+      "names": {
+        "sv": "Rödhake",
+        "en": "European Robin",
+        "scientific": "Erithacus rubecula"
+      },
+      "silhouette": {
+        "author": "Anthony Caravaggi",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/b0d54194-4105-4694-b670-b693df1640cf",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-17",
+      "qid": "Q25383",
+      "slug": "eurasian-chaffinch",
+      "names": {
+        "sv": "Bofink",
+        "en": "Eurasian Chaffinch",
+        "scientific": "Fringilla coelebs"
+      },
+      "silhouette": {
+        "author": "Maxime Dahirel",
+        "licence": "CC BY 3.0",
+        "url": "https://www.phylopic.org/images/0b72dd38-2dc1-4675-990e-a46259855ce1",
+        "adapted": true
+      }
+    },
+    {
+      "date": "2026-10-18",
+      "qid": "Q26427",
+      "slug": "common-gull",
+      "names": {
+        "sv": "Fiskmås",
+        "en": "Common Gull",
+        "scientific": "Larus canus"
+      },
+      "silhouette": {
+        "author": "Ferran Sayol",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/35f902d0-c82d-40d5-8c9b-42a76223edc2",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-19",
+      "qid": "Q25882",
+      "slug": "greylag-goose",
+      "names": {
+        "sv": "Grågås",
+        "en": "Greylag Goose",
+        "scientific": "Anser anser"
+      },
+      "silhouette": {
+        "author": "Wouter Koch",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/81083a2f-0c73-4d5b-92ff-f1e79dfd2c3e",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "qid": "Q26026",
+      "slug": "common-wood-pigeon",
+      "names": {
+        "sv": "Ringduva",
+        "en": "Common Wood Pigeon",
+        "scientific": "Columba palumbus"
+      },
+      "silhouette": {
+        "author": "Andy Wilson",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/2537ef77-46e5-47c8-864e-f126cd37a109",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "qid": "Q25612",
+      "slug": "whooper-swan",
+      "names": {
+        "sv": "Sångsvan",
+        "en": "Whooper Swan",
+        "scientific": "Cygnus cygnus"
+      },
+      "silhouette": {
+        "author": "Andrew Cho",
+        "licence": "CC BY 4.0",
+        "url": "https://www.phylopic.org/images/95d0aee0-c15a-40a1-b77f-de8bc1359713",
+        "adapted": true
+      }
+    },
+    {
+      "date": "2026-10-22",
+      "qid": "Q25405",
+      "slug": "hooded-crow",
+      "names": {
+        "sv": "Gråkråka",
+        "en": "Hooded Crow",
+        "scientific": "Corvus cornix"
+      },
+      "silhouette": {
+        "author": "Marie Attard",
+        "licence": "Public domain mark",
+        "url": "https://www.phylopic.org/images/1042852a-ac13-4679-8d57-c31c2dce8513",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "qid": "Q26209",
+      "slug": "great-spotted-woodpecker",
+      "names": {
+        "sv": "Större hackspett",
+        "en": "Great Spotted Woodpecker",
+        "scientific": "Dendrocopos major"
+      },
+      "silhouette": {
+        "author": "Steven Traver",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/ddd5783c-ded5-48f2-a07d-cc37c83b227b",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-24",
+      "qid": "Q29865",
+      "slug": "common-goldeneye",
+      "names": {
+        "sv": "Knipa",
+        "en": "Common Goldeneye",
+        "scientific": "Bucephala clangula"
+      },
+      "silhouette": {
+        "author": "Andy Wilson",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/ee1c2958-650b-4ef0-aec5-b63dadfdf934",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-25",
+      "qid": "Q156767",
+      "slug": "eurasian-nuthatch",
+      "names": {
+        "sv": "Nötväcka",
+        "en": "Eurasian Nuthatch",
+        "scientific": "Sitta europaea"
+      },
+      "silhouette": {
+        "author": "robin_24",
+        "licence": "CC BY 4.0",
+        "url": "https://www.phylopic.org/images/aadf897b-a2be-44cf-9720-c3610947c991",
+        "adapted": true
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "qid": "Q25307",
+      "slug": "eurasian-magpie",
+      "names": {
+        "sv": "Skata",
+        "en": "Eurasian Magpie",
+        "scientific": "Pica pica"
+      },
+      "silhouette": {
+        "author": "Guillaume Dera",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/1f3bf322-4ca3-402f-80c9-0260843de5e4",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "qid": "Q27075785",
+      "slug": "european-greenfinch",
+      "names": {
+        "sv": "Grönfink",
+        "en": "European Greenfinch",
+        "scientific": "Chloris chloris"
+      },
+      "silhouette": {
+        "author": "Mathieu Pélissié",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/0580ee17-1897-4e87-ad2e-0644a36cdce8",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "qid": "Q25273",
+      "slug": "grey-heron",
+      "names": {
+        "sv": "Gråhäger",
+        "en": "Grey Heron",
+        "scientific": "Ardea cinerea"
+      },
+      "silhouette": {
+        "author": "Nina Skinner",
+        "licence": "CC BY 3.0",
+        "url": "https://www.phylopic.org/images/c91c655d-a2d6-485d-8702-b3143e1eaf81",
+        "adapted": true
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "qid": "Q25402",
+      "slug": "mute-swan",
+      "names": {
+        "sv": "Knölsvan",
+        "en": "Mute Swan",
+        "scientific": "Cygnus olor"
+      },
+      "silhouette": {
+        "author": "Andy Wilson",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/95f4447f-2ef4-4061-ad9f-3de17e71afeb",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "qid": "Q25740",
+      "slug": "eurasian-wren",
+      "names": {
+        "sv": "Gärdsmyg",
+        "en": "Eurasian Wren",
+        "scientific": "Troglodytes troglodytes"
+      },
+      "silhouette": {
+        "author": "Anthony Caravaggi",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/e38c264a-8989-4e69-a6c1-7778b919980d",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "qid": "Q26135",
+      "slug": "bohemian-waxwing",
+      "names": {
+        "sv": "Sidensvans",
+        "en": "Bohemian Waxwing",
+        "scientific": "Bombycilla garrulus"
+      },
+      "silhouette": {
+        "author": "Andy Wilson",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/16384f43-91b0-40fe-80ab-fb52901747e3",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "qid": "Q25418",
+      "slug": "european-goldfinch",
+      "names": {
+        "sv": "Steglits",
+        "en": "European Goldfinch",
+        "scientific": "Carduelis carduelis"
+      },
+      "silhouette": {
+        "author": "Andy Wilson",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/0fb8f5c4-3191-4bb8-a5aa-c1cb3fe17eb2",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "qid": "Q25357",
+      "slug": "northern-raven",
+      "names": {
+        "sv": "Korp",
+        "en": "Northern Raven",
+        "scientific": "Corvus corax"
+      },
+      "silhouette": {
+        "author": "Andy Wilson",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/04b74e8b-4ab9-45a4-aef8-47acbf72809c",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "qid": "Q25777",
+      "slug": "fieldfare",
+      "names": {
+        "sv": "Björktrast",
+        "en": "Fieldfare",
+        "scientific": "Turdus pilaris"
+      },
+      "silhouette": {
+        "author": "Sharon Wegner-Larsen",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/fc1d469f-e1d7-47f2-a796-38bdebd62d2c",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "qid": "Q25382",
+      "slug": "eurasian-bullfinch",
+      "names": {
+        "sv": "Domherre",
+        "en": "Eurasian Bullfinch",
+        "scientific": "Pyrrhula pyrrhula"
+      },
+      "silhouette": {
+        "author": "Ferran Sayol",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/45438f27-d4d3-4fb4-bc7c-a4a9375a8547",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "qid": "Q28236",
+      "slug": "european-herring-gull",
+      "names": {
+        "sv": "Gråtrut",
+        "en": "European Herring Gull",
+        "scientific": "Larus argentatus"
+      },
+      "silhouette": {
+        "author": "Andy Wilson",
+        "licence": "CC0",
+        "url": "https://www.phylopic.org/images/1e45eae7-b1eb-4a08-9e1f-4f34f2fb7710",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "qid": "Q26205",
+      "slug": "yellowhammer",
+      "names": {
+        "sv": "Gulsparv",
+        "en": "Yellowhammer",
+        "scientific": "Emberiza citrinella"
+      },
+      "silhouette": {
+        "author": "Matti Virtala",
+        "licence": "Public domain mark",
+        "url": "https://www.phylopic.org/images/74656b4c-c2e6-4a80-94d2-a917d105724b",
+        "adapted": false
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "qid": "Q188877",
+      "slug": "brambling",
+      "names": {
+        "sv": "Bergfink",
+        "en": "Brambling",
+        "scientific": "Fringilla montifringilla"
+      },
+      "silhouette": {
+        "author": "Maxime Dahirel",
+        "licence": "CC BY 3.0",
+        "url": "https://www.phylopic.org/images/0b72dd38-2dc1-4675-990e-a46259855ce1",
+        "adapted": true
+      }
+    }
+  ]
+}
