@@ -11,7 +11,7 @@ const PDM_DEED = 'https://creativecommons.org/publicdomain/mark/1.0/';
 
 /**
  * @typedef {{ author: string, licence: string, url: string, adapted: boolean }} Silhouette
- * @typedef {{ date: string, qid: string, slug: string, names: { sv: string, en: string, scientific: string }, silhouette: Silhouette }} ClipData
+ * @typedef {{ date: string, qid: string, slug: string, names: { sv: string, en: string, scientific: string }, silhouette: Silhouette, clue: string }} ClipData
  */
 
 /**

@@ -516,7 +516,7 @@
     "note": "hör fågeln först, se den sedan",
     "lead": "Korta videor på Instagram, Facebook, YouTube och TikTok. Varje video spelar fågelns sång eller läte först och visar fågeln efter en kort paus. Här är alla klipp hittills, de nyaste först, med länkar till fåglarnas sidor.",
     "posted": "Publicerat {date}",
-    "coverAlt": "Klippets omslag: en flock små fåglar i form av en {name}",
+    "coverAlt": "Klippets omslag: en flock små fåglar i form av en {name} och raden ”{clue}”",
     "silhouette": "Siluett",
     "adapted": "bearbetad",
     "empty": "Det första klippet kommer snart.",

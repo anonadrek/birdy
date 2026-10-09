@@ -22,14 +22,14 @@ const PAGES = [
     name: (c: Clip) => c.en,
     href: (c: Clip) => `/species/${c.slug}/`,
     posted: (c: Clip) => `Posted ${Number(c.date.slice(8))} October 2026`,
-    firstAlt: "The clip's cover: a flock of small birds in the shape of the Great Tit",
+    firstAlt: "The clip's cover: a flock of small birds in the shape of the Great Tit, with the line “Sounds like a squeaky wheelbarrow.”",
   },
   {
     path: '/sv/klipp/', other: '/clips/', locale: 'sv', crumb: 'Klipp', silhouette: 'Siluett', deedSuffix: 'deed.sv',
     name: (c: Clip) => c.sv,
     href: (c: Clip) => `/sv/arter/${c.svSlug}/`,
     posted: (c: Clip) => `Publicerat ${Number(c.date.slice(8))} oktober 2026`,
-    firstAlt: 'Klippets omslag: en flock små fåglar i form av en talgoxe',
+    firstAlt: 'Klippets omslag: en flock små fåglar i form av en talgoxe och raden ”Sounds like a squeaky wheelbarrow.”',
   },
 ] as const;
 

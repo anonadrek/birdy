@@ -5,7 +5,7 @@
 // social-folder is tools/social on the branch social/see-the-song (default: the worktree C:/w/birdy-social on Albin's
 // Windows machine). The script reads out/<group>/schedule.csv for every scheduled group (a schedule.csv straight in
 // out/ belongs to a test render and is never read), each clip's out/<group>/<slug>/caption.json (the names, the
-// scientific one included) and cover/covers.json (the silhouette's credit). It writes src/data/clips.json, oldest
+// scientific one included) and cover/covers.json (the silhouette's credit and the cover's clue). It writes src/data/clips.json, oldest
 // first, and copies each clip's flock cover (out/<group>/<slug>/cover.jpg) to src/assets/clips/<slug>.jpg. A cover
 // that no clip uses any more is removed, so the script can simply be run again when the schedule grows.
 import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
@@ -99,7 +99,7 @@ export const cleanName = (name) => String(name ?? '').trim().replace(ALL_DASHES,
  * the clip, on anything the page would show wrong.
  * @param {Record<string, string>} row
  * @param {{ qid?: string, names?: { sv?: string, en?: string, scientific?: string } }} caption
- * @param {{ silhouette?: { author?: string, licence?: string, url?: string } } | undefined} cover
+ * @param {{ clue?: string, silhouette?: { author?: string, licence?: string, url?: string } } | undefined} cover
  */
 export function clipFromSources(row, caption, cover) {
   const where = `${row.date} ${row.slug}`;
@@ -122,7 +122,9 @@ export function clipFromSources(row, caption, cover) {
   const url = String(s.url ?? '').trim();
   if (!author || !licence) throw new Error(`${where}: silhuetten saknar upphovsperson eller licens`);
   if (!url.startsWith('https://www.phylopic.org/')) throw new Error(`${where}: silhuettens adress ska vara en sida på PhyloPic, inte ${url}`);
-  return { date: row.date, qid: row.qid, slug: row.slug, names, silhouette: { author, licence, url, adapted: isAdapted(licence) } };
+  const clue = String(cover?.clue ?? '').trim();
+  if (!clue) throw new Error(`${where}: covers.json saknar ledtråden (clue) för ${row.qid}`);
+  return { date: row.date, qid: row.qid, slug: row.slug, names, silhouette: { author, licence, url, adapted: isAdapted(licence) }, clue };
 }
 
 /**

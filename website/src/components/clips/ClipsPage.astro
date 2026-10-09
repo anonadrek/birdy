@@ -33,7 +33,7 @@ const cards = clips.map((clip, i) => {
     clip,
     name,
     href,
-    alt: c.coverAlt.replace('{name}', locale === 'sv' ? name.toLocaleLowerCase('sv') : name),
+    alt: c.coverAlt.replace('{name}', locale === 'sv' ? name.toLocaleLowerCase('sv') : name).replace('{clue}', clip.clue),
     credit: creditParts(clip.silhouette, locale, { label: c.silhouette, adapted: c.adapted }),
     // The first row loads at once (four cards on a wide screen), the rest as they come into view.
     loading: i < 4 ? ('eager' as const) : ('lazy' as const),

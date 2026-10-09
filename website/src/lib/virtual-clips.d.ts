@@ -7,6 +7,7 @@ declare module 'virtual:birdy-clips' {
     slug: string;
     names: { sv: string; en: string; scientific: string };
     silhouette: { author: string; licence: string; url: string; adapted: boolean };
+    clue: string;
     cover: import('astro').ImageMetadata;
   }[];
 }
