@@ -1,0 +1,77 @@
+---
+// Dagens fågel as a polaroid (spec docs/superpowers/specs/2026-10-09-startsidan-flocken-lyfter-design.md): the photo
+// whole on a cream card, never cropped and with nothing drawn on it, which is why CC0, public domain, CC BY and CC BY-SA
+// photos may all hang here (plateImage in src/lib/daily-bird.mjs); under it "Dagens fågel: {name}" linking to the
+// species page, the line about the app on the days it is true, and the species page's photo credit (PhotoCredit.astro).
+// The tape sits on the card's top edge, above the photo. hero/flock-motion.ts lifts the card out of today's bird.
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import PhotoCredit from '../species/PhotoCredit.astro';
+import { getCopy, type Locale } from '../../lib/i18n';
+
+export interface PolaroidBird {
+  name: string;
+  scientific: string;
+  /** Species page, when the bird has one in this build. */
+  href?: string;
+  image: ImageMetadata;
+  author: string | null;
+  license: string;
+  licenseUrl: string | null;
+  sourceUrl: string;
+}
+
+interface Props {
+  locale: Locale;
+  bird: PolaroidBird;
+  /** Show "samma fågel som i appen i dag" (hero/same-as-app-guard.ts hides it again on a page built another day). */
+  sameAsApp: boolean;
+}
+const { locale, bird, sameAsApp } = Astro.props;
+const t = getCopy(locale);
+const caption = t.daily.polaroid.replace('{name}', bird.name);
+// A tall photo gets narrower inside the card instead of taller than --pol-ph (the photo is never cropped).
+const ratio = bird.image.width / bird.image.height;
+const alt = t.species.altHero.replace('{name}', bird.name).replace('{scientific}', bird.scientific);
+const widths = [240, 360, 480, 640];
+const sizes = '(min-width: 1024px) 216px, 200px';
+---
+
+<figure class="polaroid" data-polaroid style={`--ar:${ratio.toFixed(4)}`}>
+  {bird.href ? (
+    <a class="pol-photo" href={bird.href} tabindex="-1" aria-hidden="true">
+      <Picture src={bird.image} formats={['avif', 'webp']} widths={widths} sizes={sizes} alt="" loading="eager" fetchpriority="low" decoding="async" />
+    </a>
+  ) : (
+    <div class="pol-photo">
+      <Picture src={bird.image} formats={['avif', 'webp']} widths={widths} sizes={sizes} alt={alt} loading="eager" fetchpriority="low" decoding="async" />
+    </div>
+  )}
+  <figcaption class="pol-cap">
+    {bird.href ? <a class="pol-name" href={bird.href}>{caption}</a> : <span class="pol-name">{caption}</span>}
+    {sameAsApp && <p class="pol-same" data-same-as-app>{t.daily.sameAsApp}</p>}
+    <p class="pol-credit" data-credit><PhotoCredit locale={locale} image={bird} /></p>
+  </figcaption>
+  <span class="tape" aria-hidden="true"></span>
+</figure>
+
+<style>
+  /* A cream card leaning 2 degrees, the photo on top and the caption in the wide bottom margin. --ar is the photo's
+     width / height; --pol-ph caps the photo's height. The hero places the card (Hero.astro). */
+  .polaroid { position: relative; z-index: 3; width: clamp(172px, 48%, 220px); margin: 0; padding: 12px 10px 0; background: var(--card); box-shadow: 0 14px 34px rgba(60, 34, 20, .22), 0 1px 3px rgba(60, 34, 20, .14); transform: rotate(2deg); --pol-ph: 150px; }
+  .pol-photo { display: block; }
+  .pol-photo :global(img) { display: block; width: min(100%, calc(var(--pol-ph) * var(--ar))); height: auto; margin: 0 auto; }
+  .pol-cap { display: grid; gap: 3px; padding: 8px 2px 11px; }
+  .pol-name { font-family: var(--font-script); font-weight: 700; font-size: 21px; line-height: 1.05; color: var(--ink); }
+  a.pol-name:hover { color: var(--rust); }
+  .pol-same { margin: 0; font-family: var(--font-script); font-weight: 700; font-size: 17px; line-height: 1.05; color: var(--rust); }
+  .pol-same[hidden] { display: none; }
+  .pol-credit { margin: 3px 0 0; font-size: 10.5px; line-height: 1.45; color: var(--muted); }
+  .pol-credit :global(a) { text-decoration: underline; text-underline-offset: 2px; }
+  .pol-credit :global(a:hover) { color: var(--rust); }
+  /* On the card's top edge: the card's 12 px top padding keeps the tilted tape off the photo (tests/home.spec.ts). */
+  .tape { position: absolute; top: -18px; left: 50%; width: 84px; height: 22px; margin-left: -42px; transform: rotate(-8deg); background: linear-gradient(180deg, #F5C99B, #F0BB86); box-shadow: 0 1px 3px rgba(80, 50, 30, .2); opacity: .94; pointer-events: none; }
+  @media (min-width: 1024px) {
+    .polaroid { width: clamp(190px, 16vw, 236px); --pol-ph: 180px; }
+  }
+</style>

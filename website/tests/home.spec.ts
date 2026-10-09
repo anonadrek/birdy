@@ -1,6 +1,10 @@
 import { test, expect, type Locator, type Page } from '@playwright/test';
 import sharp from 'sharp';
 import { trackConsoleErrors } from './test-helpers';
+import { FLOCK } from '../src/components/hero/flock-data.mjs';
+import { DISC_SCALE, fitView, landing } from '../src/components/hero/flock.mjs';
+
+type Box = { left: number; top: number; right: number; bottom: number };
 
 // WCAG contrast helpers for the pixel-contrast test (1c): hide the text, screenshot the real
 // background behind it, composite the text's own colour (and any element opacity) over that
@@ -175,6 +179,20 @@ test.describe('utan JavaScript', () => {
     await expect(page.locator('#site-nav')).toHaveCSS('background-color', 'rgb(42, 29, 23)');
     await expect(page.locator('#site-nav .menu-toggle')).toBeHidden();
   });
+
+  // Without JavaScript the <noscript> SVG shows the landed flock with Hornuggla's bird lit, in exactly the fit box the
+  // canvas uses, and the polaroid hangs at once.
+  test('hjälten visar den landade flocken och polaroiden utan JavaScript', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const still = page.locator('[data-hero] [data-flock-fit] svg.flock-still');
+    await expect(still).toBeVisible();
+    await expect(still.locator('use')).toHaveCount(FLOCK.birds.length);
+    await expect(still.locator('circle')).toHaveCount(1);
+    expect(await still.boundingBox()).toEqual(await page.locator('[data-hero] [data-flock-fit]').boundingBox());
+    await expect(page.locator('[data-hero] [data-polaroid]')).toBeVisible();
+    await expect(page.locator('[data-hero] [data-polaroid] .pol-name')).toHaveText('Dagens fågel: Hornuggla');
+  });
 });
 
 test.describe('första vyn', () => {
@@ -182,12 +200,12 @@ test.describe('första vyn', () => {
 
   // The fixture build pins BIRDY_TODAY=2026-10-15 (package.json build:fixtures); every build picks from the shipped app's
   // list (src/data/app-species-1.3.0.json), so the app's Dagens fågel is Hornuggla (Q25384), which has a fixture page, on
-  // the day 1.3.0 goes out: the plate shows it with the line about the app.
-  for (const [path, line1, line2, kicker, plate, name, same, credit] of [
-    ['/sv/', 'Känn igen fågeln.', 'Bevara stunden.', 'Fågelguide och fältdagbok', 'Dagens fågel · tors 15 okt', 'Hornuggla', 'samma fågel som i appen i dag', 'Foto: Testfotograf, CC BY 4.0, via Wikimedia Commons, nedskalad'],
-    ['/', 'Know the bird.', 'Keep the moment.', 'Bird guide and field journal', 'Bird of the day · Thu 15 Oct', 'Long-eared Owl', 'the same bird as in the app today', 'Photo: Testfotograf, CC BY 4.0, via Wikimedia Commons, resized'],
+  // the day 1.3.0 goes out: the polaroid shows it with the line about the app.
+  for (const [path, line1, line2, kicker, caption, same, credit, label] of [
+    ['/sv/', 'Känn igen fågeln.', 'Bevara stunden.', 'Kamera, foto eller läte', 'Dagens fågel: Hornuggla', 'samma fågel som i appen i dag', 'Foto: Testfotograf, CC BY 4.0, via Wikimedia Commons, nedskalad', 'Dagens fågel, Hornuggla, lyser i flocken.'],
+    ['/', 'Know the bird.', 'Keep the moment.', 'Camera, photo or song', 'Bird of the day: Long-eared Owl', 'the same bird as in the app today', 'Photo: Testfotograf, CC BY 4.0, via Wikimedia Commons, resized', 'The bird of the day, Long-eared Owl, is lit up in the flock.'],
   ] as const) {
-    test(`rubrik, kicker och Dagens fågel som plansch på ${path}`, async ({ page, request }) => {
+    test(`rubrik, flocken och Dagens fågel som polaroid på ${path}`, async ({ page, request }) => {
       const errors = trackConsoleErrors(page);
       // The browser's day is the build's day, so the stale-day guard (hero/same-as-app-guard.ts) keeps the app line.
       await page.clock.setFixedTime(new Date('2026-10-15T12:00:00+02:00'));
@@ -199,32 +217,32 @@ test.describe('första vyn', () => {
       await expect(hero).toHaveAttribute('data-date', '2026-10-15');
       await expect(hero).toHaveAttribute('data-app-bird', 'Q25384');
       await expect(hero).toHaveAttribute('data-daily-bird', 'Q25384');
-      await expect(hero.locator('.dp-top .kick')).toHaveText(plate);
-      await expect(hero.locator('.dp-no')).toHaveText('Pl. 288');
-      await expect(hero.locator('.dp-name')).toHaveText(name);
-      await expect(hero.locator('.dp-lat')).toHaveText('Asio otus');
-      await expect(hero.locator('.dp-bars i')).toHaveCount(12);
-      await expect(hero.locator('.dp-bars i.now')).toHaveCount(1);
-      await expect(hero.locator('.dp-letters .now')).toHaveText('O');
-      // Hornuggla's test photo is CC BY and the only one it has: allowed on the plate, which shows the photo whole,
-      // and credited exactly like the species page (photographer, linked licence, source).
-      await expect(hero.locator('[data-credit]')).toHaveText(credit);
-      await expect(hero.locator('[data-credit] a[href^="https://creativecommons.org/licenses/by/4.0/"]')).toHaveText('CC BY 4.0');
-      await expect(hero.locator('[data-credit] a[href^="https://commons.wikimedia.org/"]')).toHaveCount(1);
-      const href = await hero.locator('.dp-read').getAttribute('href');
+      // Hornuggla's own bird in the flock (flockIndexFor in hero/flock.mjs, pinned in tests/unit/flock.unit.mjs).
+      await expect(hero).toHaveAttribute('data-flock-index', '2');
+      const canvas = hero.locator('canvas[data-flock-canvas]');
+      await expect(canvas).toHaveAttribute('role', 'img');
+      expect(await canvas.getAttribute('aria-label')).toContain(label);
+      const polaroid = hero.locator('[data-polaroid]');
+      await expect(polaroid).toBeVisible();
+      await expect(polaroid.locator('.pol-name')).toHaveText(caption);
+      const href = await polaroid.locator('a.pol-name').getAttribute('href');
       expect(href).toMatch(path === '/sv/' ? /^\/sv\/arter\/hornuggla\/$/ : /^\/species\/long-eared-owl\/$/);
       expect((await request.get(href!)).status()).toBe(200);
+      await expect(polaroid.locator('a.pol-photo')).toHaveAttribute('href', href!);
+      // Hornuggla's test photo is CC BY and the only one it has: it may hang whole, credited like the species page.
+      await expect(polaroid.locator('[data-credit]')).toHaveText(credit);
+      await expect(polaroid.locator('[data-credit] a[href^="https://creativecommons.org/licenses/by/4.0/"]')).toHaveText('CC BY 4.0');
+      await expect(polaroid.locator('[data-credit] a[href^="https://commons.wikimedia.org/"]')).toHaveCount(1);
       await expect(hero.locator('[data-same-as-app]')).toHaveText(same);
       await expect(hero.locator('[data-same-as-app]')).toBeVisible();
-      // The app's bird on a live day: the handwritten note is the one that says so (review I4; the empty build checks
-      // the other note, without "och i appen", in scripts/check-empty-hub.mjs).
-      await expect(hero.locator('.intro .mnote')).toHaveText(path === '/sv/' ? 'en ny fågel varje dag, här och i appen' : 'a new bird every day, here and in the app');
-      const img = hero.locator('.dp-photo img');
-      await expect(img).toHaveAttribute('loading', 'eager');
-      await expect(img).toHaveAttribute('fetchpriority', 'high');
+      const img = polaroid.locator('img');
       await expect(img).toHaveAttribute('width', /^\d+$/);
       await expect(img).toHaveAttribute('height', /^\d+$/);
-      await expect(hero.locator('[data-birdy] .birdy-shape')).toHaveCSS('opacity', '1');
+      // The words are the page's largest content, not the photo (spec): the photo loads early but never first.
+      await expect(img).toHaveAttribute('fetchpriority', 'low');
+      // Nothing is written next to or over the flock (Albin 2026-10-09): no margin note, no arrow.
+      await expect(hero.locator('.mnote')).toHaveCount(0);
+      await expect(hero.locator('.same-arrow')).toHaveCount(0);
       expect(errors).toEqual([]);
     });
   }
@@ -239,24 +257,82 @@ test.describe('första vyn', () => {
     await expect(line).toBeHidden();
   });
 
-  for (const width of [320, 390, 768, 1024, 1280, 1440, 1920]) {
-    test(`fotot visas helt och etiketten ligger bara på passepartouten i ${width} px`, async ({ page }) => {
-      await page.setViewportSize({ width, height: 900 });
-      await page.goto('/sv/');
-      const img = page.locator('[data-hero] .dp-photo img');
-      await img.evaluate((i: HTMLImageElement) => i.decode());
-      const { ratio, natural } = await img.evaluate((i: HTMLImageElement) => {
-        const r = i.getBoundingClientRect();
-        return { ratio: r.width / r.height, natural: i.naturalWidth / i.naturalHeight };
+  // Every width (spec: no layout shift, the photo whole, the tape never on it, nothing over the words): the polaroid stays
+  // inside the hero and off the words; every bird that can be lit (the FLOCK.edge birds of the heart, one of which stands
+  // for each species) stays inside the hero and out from under the polaroid; no landed bird lies under the words.
+  // Positions come from the same fitView as the canvas and the <noscript> SVG (hero/flock.mjs).
+  for (const path of ['/sv/', '/'] as const) {
+    for (const [width, height] of [[320, 700], [390, 844], [768, 1024], [1024, 768], [1280, 800], [1440, 900], [1920, 1080]] as const) {
+      test(`polaroiden, flocken och orden går fria från varandra på ${path} i ${width}×${height}`, async ({ page }) => {
+        await page.setViewportSize({ width, height });
+        await page.goto(path);
+        await page.evaluate(() => document.fonts.ready);
+        await page.locator('[data-hero] [data-polaroid] img').evaluate((i: HTMLImageElement) => i.decode());
+        const g = await page.evaluate(() => {
+          const box = (el: Element) => {
+            const r = el.getBoundingClientRect();
+            return { left: r.left, top: r.top + scrollY, right: r.right, bottom: r.bottom + scrollY };
+          };
+          const $ = (selector: string) => document.querySelector(selector) as HTMLElement;
+          const card = $('[data-hero] [data-polaroid]');
+          const img = card.querySelector('img') as HTMLImageElement;
+          const tape = card.querySelector('.tape') as HTMLElement;
+          const out = {
+            hero: box($('[data-hero]')),
+            canvas: box($('[data-hero] [data-flock-canvas]')),
+            fit: box($('[data-hero] [data-flock-fit]')),
+            navHeight: $('#site-nav').getBoundingClientRect().height,
+            words: ['.intro .kick', 'h1', '.intro .sub', '.intro .badges'].map((s) => box($(`[data-hero] ${s}`))),
+            card: box(card),
+            tape: box(tape),
+            photo: { width: img.offsetWidth, height: img.offsetHeight, ratio: img.naturalWidth / img.naturalHeight },
+            scrollWidth: document.documentElement.scrollWidth,
+          };
+          // The tape against the photo in the card's own frame (the card leans 2 degrees on the page).
+          // Reduced motion still runs a 0.01 ms transition (global.css), so turn transitions off to read the card's own frame.
+          card.style.transition = 'none';
+          card.style.transform = 'none';
+          const own = { tape: box(tape), photo: box(img) };
+          card.style.transform = '';
+          card.style.transition = '';
+          return { ...out, own };
+        });
+        const overlaps = (a: Box, b: Box, gap: number) => a.left < b.right + gap && a.right > b.left - gap && a.top < b.bottom + gap && a.bottom > b.top - gap;
+        const touches = (x: number, y: number, r: number, b: Box) => {
+          const cx = Math.max(b.left, Math.min(x, b.right));
+          const cy = Math.max(b.top, Math.min(y, b.bottom));
+          return (x - cx) ** 2 + (y - cy) ** 2 < r * r;
+        };
+        expect(Math.abs(g.photo.width / g.photo.height - g.photo.ratio), 'fotot visas helt').toBeLessThan(0.02);
+        expect(g.own.tape.bottom, 'tejpen sitter på kortets kant, ovanför fotot').toBeLessThanOrEqual(g.own.photo.top);
+        const card: Box = {
+          left: Math.min(g.card.left, g.tape.left),
+          top: Math.min(g.card.top, g.tape.top),
+          right: Math.max(g.card.right, g.tape.right),
+          bottom: Math.max(g.card.bottom, g.tape.bottom),
+        };
+        expect(card.left, 'polaroiden inom hjälten').toBeGreaterThanOrEqual(0);
+        expect(card.right, 'polaroiden inom hjälten').toBeLessThanOrEqual(width);
+        expect(card.top, 'polaroiden under menyn').toBeGreaterThanOrEqual(g.hero.top + g.navHeight);
+        expect(card.bottom, 'polaroiden inom hjälten').toBeLessThanOrEqual(g.hero.bottom);
+        for (const [i, word] of g.words.entries()) expect(overlaps(card, word, 8), `polaroiden över orden (${i})`).toBe(false);
+        const fit = fitView({ left: g.fit.left - g.canvas.left, top: g.fit.top - g.canvas.top, width: g.fit.right - g.fit.left, height: g.fit.bottom - g.fit.top });
+        for (let i = 0; i < FLOCK.edge; i += 1) {
+          const b = landing(FLOCK.birds[i], fit);
+          const x = b.x + g.canvas.left;
+          const y = b.y + g.canvas.top;
+          const r = b.size * DISC_SCALE + 3;
+          expect(touches(x, y, r, card), `fågel ${i} under polaroiden`).toBe(false);
+          expect(x - r >= 0 && x + r <= width && y - r >= g.hero.top + g.navHeight && y + r <= g.hero.bottom, `fågel ${i} inom hjälten`).toBe(true);
+        }
+        const under = FLOCK.birds.filter((bird) => {
+          const b = landing(bird, fit);
+          return g.words.some((word) => touches(b.x + g.canvas.left, b.y + g.canvas.top, b.size / 2, word));
+        });
+        expect(under.length, 'landade fåglar under orden').toBe(0);
+        expect(g.scrollWidth, 'inget sidledes scroll').toBeLessThanOrEqual(width);
       });
-      expect(Math.abs(ratio - natural), 'inte beskuret').toBeLessThan(0.02);
-      const photo = (await img.boundingBox())!;
-      const label = (await page.locator('[data-hero] .dp-label').boundingBox())!;
-      expect(label.y, 'etiketten börjar under fotot').toBeGreaterThan(photo.y + photo.height + 4);
-      const frame = (await page.locator('[data-hero] .dp-frame').boundingBox())!;
-      expect(frame.x).toBeGreaterThanOrEqual(0);
-      expect(frame.x + frame.width).toBeLessThanOrEqual(width);
-    });
+    }
   }
 
   for (const [width, height] of [[390, 844], [1024, 768], [1440, 900]] as const) {
@@ -275,37 +351,23 @@ test.describe('första vyn', () => {
     });
   }
 
-  test('planschen börjar under menyn och den handskrivna raden ryms på en rad på dator', async ({ page }) => {
+  test('orden börjar under menyn och den handskrivna raden ryms på en rad på dator', async ({ page }) => {
     for (const path of ['/sv/', '/']) {
       for (const width of [1024, 1280, 1440, 1920]) {
         await page.setViewportSize({ width, height: 900 });
         await page.goto(path);
         await page.evaluate(() => document.fonts.ready);
         const nav = (await page.locator('#site-nav').boundingBox())!;
-        const plate = (await page.locator('[data-hero] .dp-top').boundingBox())!;
-        expect(plate.y, `${path} ${width} px`).toBeGreaterThanOrEqual(nav.y + nav.height);
+        const kick = (await page.locator('[data-hero] .intro .kick').boundingBox())!;
+        expect(kick.y, `${path} ${width} px`).toBeGreaterThanOrEqual(nav.y + nav.height);
         const em = await page.locator('[data-hero] h1 em').evaluate((e) => ({
-          lines: Math.round(e.getBoundingClientRect().height / parseFloat(getComputedStyle(e).lineHeight)),
+          lines: Math.round((e as HTMLElement).offsetHeight / parseFloat(getComputedStyle(e).lineHeight)),
           over: e.scrollWidth - (e.parentElement as HTMLElement).clientWidth,
         }));
         expect(em.lines, `${path} ${width} px`).toBe(1);
         expect(em.over, `${path} ${width} px: raden går utanför spalten`).toBeLessThanOrEqual(0);
       }
     }
-  });
-});
-
-test.describe('Birdy-fågeln flyger', () => {
-  test('fågeln landar på planschen, flyger iväg vid scroll och kommer tillbaka', async ({ page }) => {
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto('/sv/');
-    const bird = page.locator('[data-birdy]');
-    await expect(bird.locator('.birdy-shape')).toHaveCSS('opacity', '1', { timeout: 8000 });
-    await page.evaluate(() => window.scrollTo({ top: 320, behavior: 'instant' }));
-    await expect.poll(() => bird.evaluate((b) => Number(getComputedStyle(b).opacity))).toBeLessThan(0.05);
-    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
-    await expect.poll(() => bird.evaluate((b) => getComputedStyle(b).opacity)).toBe('1');
-    await expect.poll(() => bird.evaluate((b) => getComputedStyle(b).transform)).toMatch(/^(none|matrix\(1, 0, 0, 1, 0, 0\))$/);
   });
 });
 

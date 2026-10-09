@@ -23,20 +23,15 @@
     "skipToContent": "Hoppa till innehållet"
   },
   "hero": {
-    "kicker": "Fågelguide och fältdagbok",
+    "kicker": "Kamera, foto eller läte",
     "headline": "Känn igen fågeln.",
     "line2": "Bevara stunden.",
-    "note": "en ny fågel varje dag, här och i appen",
-    "noteFallback": "en ny fågel varje dag",
-    "sub": "Rikta kameran, välj ett foto eller låt fågeln sjunga. Birdy föreslår arten direkt i telefonen, och du sparar fyndet i din egen fältdagbok."
+    "sub": "Rikta kameran, välj ett foto eller låt fågeln sjunga. Birdy föreslår arten direkt i telefonen, och du sparar fyndet i din egen fältdagbok.",
+    "flockLabel": "En flock små fåglar, en för varje art i Birdy, som tillsammans bildar Birdys fågel. Dagens fågel, {name}, lyser i flocken."
   },
   "daily": {
-    "kicker": "Dagens fågel",
-    "weekdays": ["mån", "tis", "ons", "tors", "fre", "lör", "sön"],
-    "months": ["jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"],
-    "readMore": "Läs om arten",
-    "sameAsApp": "samma fågel som i appen i dag",
-    "chartLabel": "Andel av alla fågelrapporter per månad i Artportalen, högst i {month}"
+    "polaroid": "Dagens fågel: {name}",
+    "sameAsApp": "samma fågel som i appen i dag"
   },
   "monthBirds": {
     "kicker": "Säsongen just nu",
