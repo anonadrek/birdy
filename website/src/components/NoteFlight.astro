@@ -1,7 +1,8 @@
 ---
 // The flight between the notes' pictures (spec 2026-10-10, "Bloggen som en flygväg"): one decorative SVG layer per
 // list marked data-note-flight, drawn from src/lib/note-flight.mjs. The cards' text lies in front of the flight, so the
-// birds go behind it and come out in the next picture. Without JavaScript the cards are as before.
+// birds go behind it and come out in the next picture; where a card's text stands right across the way (stacked
+// cards), they climb the page's right margin instead. Without JavaScript the cards are as before.
 import { MARK } from './hero/flock-data.mjs';
 ---
 
@@ -10,11 +11,12 @@ import { MARK } from './hero/flock-data.mjs';
 </svg>
 
 <script>
-  import { pairFlights, at, flightCurve, birdsAlong, clearOf, birdTransform } from '../lib/note-flight.mjs';
+  import { pairFlights, at, flightCurve, textInTheWay, nearestTheMargin, marginLane, laneFlight, birdsAlong, clearOf, birdTransform } from '../lib/note-flight.mjs';
 
   const NS = 'http://www.w3.org/2000/svg';
   type Rect = { x: number; y: number; w: number; h: number };
   type Point = { x: number; y: number };
+  type Cubic = [Point, Point, Point, Point];
 
   const json = <T,>(s: string | undefined): T | null => {
     try { return s ? (JSON.parse(s) as T) : null; } catch { return null; }
@@ -24,9 +26,24 @@ import { MARK } from './hero/flock-data.mjs';
   const isPt = (p: Point | null | undefined): p is Point => !!p && finite(p.x) && finite(p.y);
   const isRect = (r: Rect | null | undefined): r is Rect => !!r && finite(r.x) && finite(r.y) && finite(r.w) && finite(r.h);
 
-  function rectIn(el: Element, origin: DOMRect): Rect {
+  /**
+   * Where an element sits in the list, from its layout offsets rather than its painted box: the front page's reveal
+   * slides the cards up 20px as they come into view, and a card lifts under the pointer, and the layer must match
+   * where the cards come to rest, not where they happened to be when it was drawn.
+   */
+  function rectIn(el: HTMLElement, list: HTMLElement): Rect {
+    let x = 0;
+    let y = 0;
+    let n: Element | null = el;
+    while (n instanceof HTMLElement && n !== list) {
+      x += n.offsetLeft;
+      y += n.offsetTop;
+      n = n.offsetParent;
+    }
+    if (n === list) return { x, y, w: el.offsetWidth, h: el.offsetHeight };
+    const o = list.getBoundingClientRect();
     const r = el.getBoundingClientRect();
-    return { x: r.left - origin.left, y: r.top - origin.top, w: r.width, h: r.height };
+    return { x: r.left - o.left, y: r.top - o.top, w: r.width, h: r.height };
   }
 
   /** Whether a point drawn from the picture's own coordinates still lands inside the box that clips it. */
@@ -67,48 +84,57 @@ import { MARK } from './hero/flock-data.mjs';
 
   function draw(list: HTMLElement) {
     list.querySelector(':scope > svg.nflight')?.remove();
-    const origin = list.getBoundingClientRect();
     const arts = [...list.querySelectorAll<HTMLElement>('[data-flight-art]')];
-    const rects = arts.map((el) => rectIn(el, origin));
+    const rects = arts.map((el) => rectIn(el, list));
     const drawn = arts.map((el, i) => drawnRect(rects[i], el));
-    const blockers: Rect[] = [...list.querySelectorAll('.ncard-body, .ctitle')].map((el) => rectIn(el, origin));
+    const texts = [...list.querySelectorAll<HTMLElement>('.ncard-body')].map((el) => rectIn(el, list));
+    const cardsRight = Math.max(...[...list.querySelectorAll<HTMLElement>('.ncard')].map((el) => { const r = rectIn(el, list); return r.x + r.w; }));
+    // The page's own edges, in the list's coordinates: a bird never reaches past them (nor into a scrollbar).
+    const left = list.getBoundingClientRect().left + list.clientLeft;
+    const pageLeft = 2 - left;
+    const pageRight = document.documentElement.clientWidth - 2 - left;
+    const blockers: Rect[] = [
+      ...texts,
+      { x: pageLeft - 1e5, y: -1e5, w: 1e5, h: 2e5 },
+      { x: pageRight, y: -1e5, w: 1e5, h: 2e5 },
+    ];
     arts.forEach((el, i) => {
       for (const a of (json<Rect[]>(el.dataset.avoid) ?? []).filter(isRect)) {
         blockers.push({ x: drawn[i].x + a.x * drawn[i].w, y: drawn[i].y + a.y * drawn[i].h, w: a.w * drawn[i].w, h: a.h * drawn[i].h });
       }
     });
+    const lane = marginLane(cardsRight, pageRight);
 
-    type Flight = { start: Point; end: Point; dir: 'up' | 'right' };
+    /** Where picture k's own trail leaves it, when its data is sound and the point lies inside the picture's box. */
+    const exitOf = (k: number): Point | null => {
+      const e = json<Point>(arts[k].dataset.exit);
+      const p = isPt(e) ? at(drawn[k], e) : null;
+      return p && within(p, rects[k]) ? p : null;
+    };
+
+    type Flight = { path: Cubic | Cubic[]; size: number; gap: number; thin: number };
     const flights: Flight[] = [];
-    // Too short to read as a flight at all (also covers the logo flight's own, stricter check below).
-    const tooClose = (a: Point, b: Point) => Math.hypot(b.x - a.x, b.y - a.y) < 60;
-
-    if (list.dataset.noteFlight === 'logo') {
-      // A single note: its picture's own trail rises on toward Birdy's logo and goes in under the menu bar.
-      const brand = document.querySelector('.nav .brand');
-      const nav = document.querySelector('.nav');
-      const exit = arts[0] && json<Point>(arts[0].dataset.exit);
-      if (brand && nav && isPt(exit)) {
-        const start = at(drawn[0], exit);
-        if (within(start, rects[0])) {
-          const b = rectIn(brand, origin);
-          const n = rectIn(nav, origin);
-          const end = { x: b.x + b.w / 2, y: n.y + n.h - 4 };
-          // The logo flight must read as a climb: skip when there is not at least 40px of lift above the start.
-          if (start.y - end.y >= 40 && !tooClose(start, end)) flights.push({ start, end, dir: 'up' });
+    for (const p of pairFlights(rects)) {
+      const start = exitOf(p.from);
+      const land = json<Point>(arts[p.to].dataset.land);
+      const end = isPt(land) ? at(drawn[p.to], land) : null;
+      if (!start || !end || !within(end, rects[p.to])) continue;
+      // Too short to read as a flight at all.
+      if (Math.hypot(end.x - start.x, end.y - start.y) < 60) continue;
+      // Stacked cards: the upper card's text stands right across the way, so the birds climb the margin past it,
+      // leaving from the picture nearest the margin and crossing its empty top to get there (or, with no margin to
+      // climb, there is no flight rather than a few stray birds).
+      const box = p.dir === 'up' ? textInTheWay(start, end, texts) : null;
+      if (box) {
+        const from = nearestTheMargin(rects, p.from);
+        const out = exitOf(from);
+        if (lane && out) {
+          const level = Math.max(out.y, rects[from].y + 12);
+          flights.push({ path: laneFlight(out, end, box, lane.x, level), size: lane.size, gap: 34, thin: 0.45 });
         }
+        continue;
       }
-    } else {
-      for (const p of pairFlights(rects)) {
-        const exit = json<Point>(arts[p.from].dataset.exit);
-        const land = json<Point>(arts[p.to].dataset.land);
-        if (!isPt(exit) || !isPt(land)) continue;
-        const start = at(drawn[p.from], exit);
-        const end = at(drawn[p.to], land);
-        if (!within(start, rects[p.from]) || !within(end, rects[p.to])) continue;
-        if (tooClose(start, end)) continue;
-        flights.push({ start, end, dir: p.dir });
-      }
+      flights.push({ path: flightCurve(start, end, p.dir), size: 11, gap: 26, thin: 0 });
     }
     if (!flights.length) return;
 
@@ -119,7 +145,7 @@ import { MARK } from './hero/flock-data.mjs';
     flights.forEach((f, fi) => {
       const g = document.createElementNS(NS, 'g');
       g.setAttribute('class', 'nf-flight');
-      const birds = clearOf(birdsAlong(flightCurve(f.start, f.end, f.dir), { seed: 101 + fi * 7 }), blockers);
+      const birds = clearOf(birdsAlong(f.path, { size: f.size, gap: f.gap, thin: f.thin, seed: 101 + fi * 7 }), blockers);
       birds.forEach((bird, i) => {
         const use = document.createElementNS(NS, 'use');
         use.setAttribute('href', '#nf-mark');
@@ -142,8 +168,23 @@ import { MARK } from './hero/flock-data.mjs';
     document.fonts?.ready.then(redraw);
     const ro = new ResizeObserver(redraw);
     lists.forEach((l) => ro.observe(l));
+    // The page's width (and so the margin the birds may climb) can change without the list changing size. Only the
+    // width: a phone's address bar sliding away changes the height alone and must not redraw the birds.
+    let width = document.documentElement.clientWidth;
+    window.addEventListener('resize', () => {
+      if (document.documentElement.clientWidth === width) return;
+      width = document.documentElement.clientWidth;
+      redraw();
+    });
+    // The birds fade in once, when the list comes into view; a later redraw (a picture loading further down, a turned
+    // phone) shows them at once instead of fading them in again.
     const io = new IntersectionObserver((entries) => {
-      for (const e of entries) if (e.isIntersecting) { e.target.classList.add('nflight-go'); io.unobserve(e.target); }
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        e.target.classList.add('nflight-go');
+        io.unobserve(e.target);
+        setTimeout(() => e.target.classList.add('nflight-flown'), 2500);
+      }
     }, { threshold: 0.2 });
     lists.forEach((l) => io.observe(l));
     // Redraw once a picture finishes loading, so the drawn rect uses its real naturalWidth and naturalHeight rather
@@ -159,8 +200,8 @@ import { MARK } from './hero/flock-data.mjs';
   [data-note-flight] { position: relative; }
   [data-note-flight] > svg.nflight { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 1; }
   @media (prefers-reduced-motion: no-preference) {
-    html.motion-ready [data-note-flight] > svg.nflight use { opacity: 0; }
-    html.motion-ready [data-note-flight].nflight-go > svg.nflight use { animation: nf-in .5s ease-out both; animation-delay: calc(var(--i) * 70ms); }
+    html.motion-ready [data-note-flight]:not(.nflight-flown) > svg.nflight use { opacity: 0; }
+    html.motion-ready [data-note-flight].nflight-go:not(.nflight-flown) > svg.nflight use { animation: nf-in .5s ease-out both; animation-delay: calc(var(--i) * 70ms); }
   }
   @keyframes nf-in { from { opacity: 0; } to { opacity: 1; } }
 </style>
