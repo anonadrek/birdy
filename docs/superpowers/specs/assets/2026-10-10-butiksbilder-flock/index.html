@@ -1,0 +1,218 @@
+<title>Birdy Flock Store Images</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=DM+Serif+Display&family=Inter:wght@400;600&display=swap">
+<style>
+  :root {
+    --bg: #E7E4DF; --surface: #F2EFEB; --ink: #24201D; --muted: #625A53; --line: #CDC6BD;
+    --accent: #9A4526; --tag: #DCD6CE; --on-accent: #FFF8EE;
+    --shadow: 0 8px 22px rgba(40, 30, 24, .14);
+    --serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+    --hand: 'Caveat', 'Segoe Print', cursive;
+    --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #1A1918; --surface: #232120; --ink: #EEEAE5; --muted: #ABA39B; --line: #3B3734;
+      --accent: #F2B27A; --tag: #2E2B29; --on-accent: #241B0C; --shadow: 0 8px 22px rgba(0, 0, 0, .45);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #1A1918; --surface: #232120; --ink: #EEEAE5; --muted: #ABA39B; --line: #3B3734;
+    --accent: #F2B27A; --tag: #2E2B29; --on-accent: #241B0C; --shadow: 0 8px 22px rgba(0, 0, 0, .45);
+  }
+
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.55; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 72px; }
+  h1, h2 { font-family: var(--serif); font-weight: 400; line-height: 1.05; letter-spacing: -.01em; text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+  code { font: 13px ui-monospace, 'Cascadia Mono', Consolas, monospace; background: var(--tag); padding: 1px 6px; border-radius: 6px; overflow-wrap: anywhere; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+  .kick { display: flex; align-items: center; gap: 10px; font-size: 11.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+  .kick::before { content: ''; width: 22px; height: 2px; background: currentColor; }
+  header h1 { margin-top: 12px; font-size: clamp(36px, 6vw, 58px); }
+  header h1 em { font-family: var(--hand); font-style: normal; font-weight: 700; font-size: 1.12em; color: var(--accent); letter-spacing: 0; }
+  .lead { margin-top: 14px; max-width: 68ch; font-size: 16.5px; }
+
+  .bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 18px; margin-top: 26px; padding-block: 12px; background: var(--bg); border-bottom: 1px solid var(--line); }
+  .seg { display: inline-flex; padding: 3px; gap: 3px; background: var(--tag); border-radius: 999px; }
+  .seg button { appearance: none; border: 0; background: none; color: var(--ink); font: 600 13px/1 var(--sans); letter-spacing: .04em; padding: 9px 16px; border-radius: 999px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+  .bar p { color: var(--muted); font-size: 13px; }
+
+  main { display: grid; gap: 54px; margin-top: 34px; }
+  .sec-h { font-size: clamp(26px, 4vw, 36px); }
+  .sec-sub { margin-top: 6px; color: var(--muted); max-width: 72ch; }
+
+  .shot { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 10px; }
+  .shot img { display: block; width: 100%; height: auto; max-width: 100%; border-radius: 10px; box-shadow: var(--shadow); background: var(--line); }
+  .strip { margin-top: 18px; overflow-x: auto; padding-bottom: 6px; }
+  .strip .shot { width: max(100%, 1100px); }
+
+  .cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px 22px; margin-top: 22px; }
+  .card { margin: 0; display: grid; gap: 10px; align-content: start; }
+  .card figcaption { display: grid; gap: 3px; }
+  .card .num { font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .card .hl { font-family: var(--serif); font-size: 19px; line-height: 1.15; text-wrap: balance; }
+  .card .what { font-size: 13.5px; color: var(--muted); }
+  .feature { margin-top: 18px; max-width: 760px; }
+
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px 28px; margin-top: 16px; }
+  .box { padding: 16px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+  .box h3 { margin: 0 0 8px; font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .box ul { margin: 0; padding-left: 18px; }
+  .box li + li { margin-top: 6px; }
+  .box.ask { border-color: var(--accent); }
+
+  @media (max-width: 980px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 760px) { .wrap { padding-inline: 16px; padding-block: 28px 56px; } .cards { gap: 24px 14px; } }
+
+  .lb { position: fixed; inset: 0; z-index: 10; display: grid; grid-template-rows: 1fr auto; place-items: center; gap: 10px; padding: calc(env(safe-area-inset-top, 0px) + 58px) 14px calc(env(safe-area-inset-bottom, 0px) + 18px); background: rgba(18, 16, 15, .94); }
+  .lb[hidden] { display: none; }
+  .lb img { max-width: 100%; max-height: calc(100vh - 140px); max-height: calc(100dvh - 140px); border-radius: 10px; }
+  .lb p { color: #F2EFEB; font-size: 13px; text-align: center; }
+  .lb button { position: absolute; top: calc(env(safe-area-inset-top, 0px) + 10px); right: 12px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(242, 239, 235, .4); background: rgba(36, 32, 29, .85); color: #F2EFEB; font: 600 20px/1 var(--sans); cursor: pointer; }
+  @media (prefers-reduced-motion: no-preference) { .shot img { transition: transform .2s ease; } .shot:hover img { transform: translateY(-2px); } }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="kick">Birdy 1.3.1 · Google Play</p>
+    <h1>Eight screens from <em>1.3.1</em>, in the Flock look</h1>
+    <p class="lead">Fresh captures from the 1.3.1 build, now with the season statistics, the map and the encyclopedia search, in Swedish and English. Each image has one idea, the whole phone on peach paper, and nothing drawn over the screen. Nothing is in Play Console yet.</p>
+  </header>
+
+  <div class="bar">
+    <div class="seg" role="group" aria-label="Language">
+      <button type="button" id="lang-sv" data-lang="sv" aria-pressed="true">Svenska</button>
+      <button type="button" id="lang-en" data-lang="en" aria-pressed="false">English</button>
+    </div>
+    <p>Tap any image to see it large.</p>
+  </div>
+
+  <main>
+    <section aria-labelledby="strip-h">
+      <h2 class="sec-h" id="strip-h">As Play lists them</h2>
+      <p class="sec-sub">Side by side, the flock’s small birds fly from one phone to the next and lift away after the last one.</p>
+      <div class="strip">
+        <button type="button" class="shot" data-l="sv" data-cap="The eight screenshots side by side (SV)"><img src="img/sv-strip.jpg" alt="The eight Swedish screenshots side by side" width="2590" height="560"></button>
+        <button type="button" class="shot" data-l="en" data-cap="The eight screenshots side by side (EN)" hidden><img src="img/en-strip.jpg" alt="The eight English screenshots side by side" width="2590" height="560"></button>
+      </div>
+    </section>
+
+    <section aria-labelledby="cards-h">
+      <h2 class="sec-h" id="cards-h">Image by image</h2>
+      <div class="cards" id="cards"></div>
+    </section>
+
+    <section aria-labelledby="fg-h">
+      <h2 class="sec-h" id="fg-h">Feature graphic</h2>
+      <p class="sec-sub">The 839 birds form Birdy’s bird beside the slogan, as on the website. The wordmark is now the rust of the handwritten words.</p>
+      <div class="feature">
+        <button type="button" class="shot" data-l="sv" data-cap="Feature graphic (SV)"><img src="img/sv-feature.jpg" alt="Swedish feature graphic: Känn igen fågeln. Bevara stunden." width="1024" height="500"></button>
+        <button type="button" class="shot" data-l="en" data-cap="Feature graphic (EN)" hidden><img src="img/en-feature.jpg" alt="English feature graphic: Know the bird. Keep the moment." width="1024" height="500"></button>
+      </div>
+    </section>
+
+    <section aria-labelledby="notes-h">
+      <h2 class="sec-h" id="notes-h">What changed, and what the screens show</h2>
+      <div class="cols">
+        <div class="box">
+          <h3>Since last night</h3>
+          <ul>
+            <li>All sixteen screens are new captures from the 1.3.1 build (version 130). Last night’s set used 1.3.0 captures.</li>
+            <li>Two new cards: the season statistics and the map, both marked Premium in the small line above the headline.</li>
+            <li>The first card carries the slogan, as the website and the feature graphic do.</li>
+            <li>The encyclopedia card no longer says “839 species” or “Europe’s birds”, so Birdy isn’t tied to Europe.</li>
+            <li>The Birdy wordmark is rust, bird and name, like on the website.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>The demo season on the screens</h3>
+          <ul>
+            <li>46 finds of 40 species from January to today, seeded on the emulator. No real finds of yours.</li>
+            <li>Every bird photo on the screens is CC0 or public domain. The app shows the photographer on screen, for example Hobbyfotowiki and Estormiz.</li>
+            <li>The map pins sit at public birding spots in Skaraborg (Hornborgasjön, Kinnekulle, the Vänern shore at Lidköping), never at a private address.</li>
+          </ul>
+        </div>
+        <div class="box ask">
+          <h3>Your call</h3>
+          <ul>
+            <li><b>OK?</b> Then I put the eight screenshots and the feature graphic into the Play draft for English and Swedish.</li>
+            <li>The order runs Identify, Listen, Match, Species, Lifelist, Statistics, Map, Encyclopedia. Play shows the first three or four on the listing.</li>
+            <li>Any headline you want changed, tell me which card.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image, large">
+  <button type="button" id="lb-close" aria-label="Close">×</button>
+  <img id="lb-img" alt="">
+  <p id="lb-cap"></p>
+</div>
+
+<script>
+  (() => {
+    const CARDS = [
+      { id: '01-identifiera', sv: ['Identifiera · Dagens fågel', 'Känn igen fågeln. Bevara stunden.', 'Dagens fågel, en strandskata, och de tre sätten att fånga.'],
+        en: ['Identify · Bird of the day', 'Know the bird. Keep the moment.', 'The bird of the day, an oystercatcher, and the three ways to catch.'] },
+      { id: '02-lyssna', sv: ['Ljud · identifiering', 'Låt den sjunga.', 'Ljud-ID, redo att lyssna.'], en: ['Audio · identification', 'Let it sing.', 'Sound ID, ready to listen.'] },
+      { id: '03-match', sv: ['Match', 'Vilken fågel var det?', 'En talgoxe med 93 % match, först sedd 6 januari.'], en: ['Match', 'Which bird was that?', 'A great tit at a 93% match, first seen on 6 January.'] },
+      { id: '04-artprofil', sv: ['Uppslagsverk · Tallbit', 'Lär känna dina fåglar.', 'Tallbiten bland rönnbär, med fotografen på bilden.'], en: ['Encyclopedia · Pine Grosbeak', 'Know your birds.', 'A pine grosbeak among rowan berries, photographer credited.'] },
+      { id: '05-mina-arter', sv: ['Mina arter', 'Din egen fältbok.', '40 arter, 46 fynd och veckans uppslag.'], en: ['Lifelist', 'Your own field journal.', '40 species, 46 sightings and this week’s page.'] },
+      { id: '06-statistik', sv: ['Säsongsstatistik · Premium', 'Ditt år som en ring.', 'Året som en ring, maj var bästa månaden.'], en: ['Season statistics · Premium', 'Your year as a ring.', 'The year as a ring; May was the best month.'] },
+      { id: '07-karta', sv: ['Karta · Premium', 'Varje fynd på kartan.', 'Fynden på åtta lokaler i Skaraborg.'], en: ['Map · Premium', 'Every find on the map.', 'The finds at eight spots in Skaraborg.'] },
+      { id: '08-uppslagsverk', sv: ['Uppslagsverk', 'Slå upp fågeln du såg.', 'Sökningen ”skrake” med Dagens fågel ovanför.'], en: ['Encyclopedia', 'Look up the bird you saw.', 'A search for “merganser” under the bird of the day.'] },
+    ];
+    const grid = document.getElementById('cards');
+    const make = (tag, cls, text) => { const el = document.createElement(tag); if (cls) el.className = cls; if (text) el.textContent = text; return el; };
+    CARDS.forEach((c, i) => {
+      ['sv', 'en'].forEach((l) => {
+        const [kick, hl, what] = c[l];
+        const fig = make('figure', 'card');
+        fig.dataset.l = l;
+        if (l === 'en') fig.hidden = true;
+        const btn = make('button', 'shot');
+        btn.type = 'button';
+        btn.dataset.cap = `${String(i + 1).padStart(2, '0')} · ${hl}`;
+        const img = make('img');
+        img.src = `img/${l}-${c.id}.jpg`; img.alt = `${kick}: ${hl}`; img.width = 720; img.height = 1280; img.loading = 'lazy';
+        btn.append(img);
+        const cap = make('figcaption');
+        cap.append(make('span', 'num', `${String(i + 1).padStart(2, '0')} · ${kick}`), make('span', 'hl', hl), make('span', 'what', what));
+        fig.append(btn, cap);
+        grid.append(fig);
+      });
+    });
+
+    const setLang = (l) => {
+      document.querySelectorAll('[data-l]').forEach((el) => { el.hidden = el.dataset.l !== l; });
+      document.querySelectorAll('.seg button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === l)));
+      try { localStorage.setItem('birdy-store-lang', l); } catch (e) { /* storage unavailable */ }
+    };
+    document.querySelectorAll('.seg button').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
+    let saved = null;
+    try { saved = localStorage.getItem('birdy-store-lang'); } catch (e) { saved = null; }
+    if (saved === 'en' || saved === 'sv') setLang(saved);
+
+    const lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCap = document.getElementById('lb-cap'), close = document.getElementById('lb-close');
+    let opener = null;
+    const hide = () => { lb.hidden = true; lbImg.removeAttribute('src'); if (opener) opener.focus(); };
+    document.addEventListener('click', (e) => {
+      const b = e.target.closest('.shot');
+      if (!b) return;
+      const im = b.querySelector('img');
+      opener = b; lbImg.src = im.src; lbImg.alt = im.alt; lbCap.textContent = b.dataset.cap || '';
+      lb.hidden = false; close.focus();
+    });
+    close.addEventListener('click', hide);
+    lb.addEventListener('click', (e) => { if (e.target === lb) hide(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) hide(); });
+  })();
+</script>

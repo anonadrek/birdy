@@ -8,6 +8,8 @@
 //     [--out=tools/store-assets/1.3/out] [--preview=../docs/superpowers/specs/assets/2026-10-08-butiksbilder/img]
 // The upload set (Albin chose C, 2026-10-07), one folder per language, store order in the file names:
 //   node tools/store-assets/1.3/render.mjs --final --variants=c --out=../docs/play-store/store-assets/1.3.0
+// Variant F (Flocken, 1.3.1: the website's Flock look) the same way:
+//   node tools/store-assets/1.3/render.mjs --final --variants=f --out=../docs/play-store/store-assets/1.3.1-flock
 import { chromium } from 'playwright';
 import sharp from 'sharp';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
@@ -27,7 +29,10 @@ if (final && variants.length !== 1) throw new Error('--final takes exactly one v
 
 const copy = JSON.parse(await readFile(join(here, 'copy.json'), 'utf8'));
 const repo = resolve(here, '../../../..');
-const screenUrl = (loc, id) => pathToFileURL(join(repo, 'docs/play-store/screenshots/1.3.0', loc, `${id}.png`)).href;
+// Variant F has its own eight cards and the 1.3.1 captures (copy.flock); --shots points it elsewhere while designing.
+const cardsFor = (variant) => (variant === 'f' ? copy.flock.cards : copy.cards);
+const shotsFor = (variant) => resolve(repo, variant === 'f' ? arg('shots', copy.flock.shots) : 'docs/play-store/screenshots/1.3.0');
+const screenUrl = (loc, id, variant = 'c') => pathToFileURL(join(shotsFor(variant), loc, `${id}.png`)).href;
 const photoUrl = pathToFileURL(join(repo, 'website/src/assets/photos', copy.feature.plate.photo)).href;
 
 await mkdir(outDir, { recursive: true });
@@ -53,10 +58,11 @@ try {
     for (const locale of locales) {
       console.log(`variant ${variant} / ${locale}`);
       if (what !== 'feature') {
-        for (const [index, card] of copy.cards.entries()) {
+        const cards = cardsFor(variant);
+        for (const [index, card] of cards.entries()) {
           await page.evaluate((o) => window.render(o), {
-            mode: 'card', variant, locale, card, index, last: index === copy.cards.length - 1,
-            screen: screenUrl(locale, card.shot),
+            mode: 'card', variant, locale, card, index, last: index === cards.length - 1,
+            screen: screenUrl(locale, card.shot, variant),
           });
           const name = final ? `${locale}/${card.id}` : `${variant}-${locale}-${card.id}`;
           await save(await page.locator('#c').screenshot(), name, 1080, 1920);
@@ -64,7 +70,7 @@ try {
       }
       if (what !== 'cards') {
         await page.evaluate((o) => window.render(o), {
-          mode: 'feature', variant, locale, feature: copy.feature, photo: photoUrl,
+          mode: 'feature', variant, locale, feature: copy.feature, flock: copy.flock.feature, photo: photoUrl,
           screens: copy.feature.screens.map((shot) => screenUrl(locale, shot)),
         });
         const name = final ? `${locale}/feature-graphic` : `${variant}-${locale}-feature`;
