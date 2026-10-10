@@ -3,6 +3,8 @@ import { Image } from 'astro:assets';
 import Kicker from './ui/Kicker.astro';
 import { fieldNoteHref, formatNoteDate, readingMinutes, type FieldNote } from '../lib/field-notes';
 import { getCopy } from '../lib/i18n';
+import noteArt from '../data/note-art.json';
+import { artKey } from '../lib/note-flight.mjs';
 
 interface Props {
   note: FieldNote;
@@ -22,10 +24,23 @@ const minutes = t.blog.minRead.replace('{n}', String(readingMinutes(note.body)))
 // The card's whole surface is the link; without this its accessible name is every descendant's
 // text (kicker + title + description + meta, 256+ characters). Point it at the title alone instead.
 const titleId = `nc-title-${note.id.replace(/[^a-zA-Z0-9_-]+/g, '-')}`;
+
+// The picture's flight data (spec 2026-10-10 "Bloggen som en flygväg"): where its own trail leaves, where arriving
+// birds land, and the words to fly behind. Read through artKey so it survives both the build's hashed filenames and
+// the dev server's query strings. A picture outside note-art.json (none today) simply carries no flight, and the
+// flights on either side of it are skipped too, rather than jumping over it to connect its neighbours.
+type NoteArt = { exit: { x: number; y: number }; land: { x: number; y: number }; avoid: { x: number; y: number; w: number; h: number }[] };
+const art = (noteArt as Record<string, NoteArt>)[artKey(image.src)];
 ---
 
 <a class:list={['ncard', `ncard--${size}`]} href={fieldNoteHref(note)} aria-labelledby={titleId}>
-  <div class="ncard-img">
+  <div
+    class="ncard-img"
+    data-flight-art={art ? '' : undefined}
+    data-exit={art ? JSON.stringify(art.exit) : undefined}
+    data-land={art ? JSON.stringify(art.land) : undefined}
+    data-avoid={art ? JSON.stringify(art.avoid) : undefined}
+  >
     <Image
       src={image}
       alt={imageAlt}
