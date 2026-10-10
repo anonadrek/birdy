@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>See the song stage</title>
+<!--
+  "See the song" video stage, 1080 x 1920, style "Song halo" (Albin's choice, 2026-10-07).
+  Everything on it is a pure function of the time t: the renderer calls setupStage(config) once
+  and then renderAt(t) for every frame.
+
+  While the bird sings, a ring of bars answers the sound band by band (low notes at the bottom,
+  high at the top) around a dark circle in which the bird is only a blur. When the song ends the
+  ring settles into a still circle, one breath of stillness, then the photo sharpens, the circle
+  opens to the whole photo and the name is written by hand. End card "Identify birds by sound".
+  Nothing is drawn over the revealed photo except the brand line, which has a neutral shadow.
+
+  The torn paper horizon sits at y = 1306 in every video: 74 % down the centred 3:4 crop
+  (1080 x 1440, y 240 to 1680) that the Instagram grid shows, so the profile reads as one artwork.
+  Text stays left of x 918 (the Reels and Shorts buttons) and above y 1536 (Instagram's own
+  name, caption and sound rows), see lib/render.mjs. The brand line and its bird mark fade out
+  with the ring, before the circle opens, so no shape is ever drawn over the revealed photo.
+-->
+<style>
+:root {
+  --paper: #F6EFE2; --ink: #302019; --muted: #6E584B; --rust: #9A4526;
+  --apricot: #F2B27A; --dark: #2A1D17; --cream: #FFF8EE;
+  --horizon: 1306px; --end-top: 792px;
+}
+html, body { margin: 0; padding: 0; background: #160E0A; }
+#stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #170F0B; color: var(--cream); font-family: 'Inter', sans-serif; }
+#bg { position: absolute; inset: 0; background: radial-gradient(120% 75% at 50% 40%, #3B2920 0%, #24180F 52%, #160E0A 100%); }
+#photoWrap { position: absolute; left: 0; top: 0; width: 1080px; height: var(--horizon); overflow: hidden; opacity: 0; }
+#photo { position: absolute; display: block; max-width: none; }
+#ring { position: absolute; left: 0; top: 0; filter: drop-shadow(0 0 10px rgba(242, 178, 122, .45)); }
+#qmark { position: absolute; margin: 0; transform: translate(-50%, -54%); font: italic 400 300px/1 'DM Serif Display'; color: var(--apricot); opacity: 0; }
+#kicker { position: absolute; left: 88px; top: 250px; margin: 0; font: 700 76px/1 'Caveat'; color: var(--apricot); }
+#brand { position: absolute; left: 88px; top: 1192px; margin: 0; display: flex; align-items: center; gap: 14px; font: 600 30px/1 'Inter'; color: rgba(255, 248, 238, .86);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .55), 0 0 14px rgba(0, 0, 0, .45); }
+#brand img { width: 44px; height: auto; display: block; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .5)); }
+
+#band { position: absolute; left: 0; right: 0; top: var(--horizon); bottom: 0; color: var(--dark);
+  background-color: var(--paper); background-image: radial-gradient(rgba(48, 32, 25, .075) 2.4px, transparent 3.2px); background-size: 36.72px 36.72px; }
+.tear { position: absolute; left: 0; width: 100%; height: 32px; fill: currentColor; display: block; }
+#band .tear { top: -31px; color: var(--paper); }
+#q { position: absolute; left: 88px; top: 60px; margin: 0; font: 400 92px/1 'DM Serif Display'; color: var(--dark); white-space: nowrap; }
+#q em { font-style: italic; color: var(--rust); }
+#hint { position: absolute; left: 90px; top: 170px; margin: 0; font: 700 54px/1 'Caveat'; color: var(--rust); white-space: nowrap; }
+#name { position: absolute; left: 82px; top: -8px; width: 900px; height: 190px; overflow: visible; color: var(--dark); }
+#name text { font-family: 'Caveat'; font-weight: 700; fill: currentColor; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
+#sub { position: absolute; left: 90px; top: 170px; margin: 0; display: flex; align-items: baseline; gap: 22px; white-space: nowrap; opacity: 0; }
+#sub .sv { font: 700 58px/1 'Caveat'; color: var(--rust); }
+#sub .lat { font: italic 400 46px/1 'DM Serif Display'; color: var(--muted); }
+
+#end { position: absolute; left: 0; right: 0; top: var(--end-top); bottom: 0; z-index: 20; padding: 64px 88px 0; box-sizing: border-box;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 20px; color: var(--dark);
+  background-color: var(--paper); background-image: radial-gradient(rgba(48, 32, 25, .07) 2.4px, transparent 3.2px); background-size: 36.72px 36.72px;
+  transform: translateY(106%); }
+#end .tear { top: -31px; color: var(--paper); }
+#end .mk { width: 116px; height: auto; display: block; }
+#end .h { margin: 0; font: 400 98px/1.03 'DM Serif Display'; max-width: 830px; text-wrap: balance; }
+#end .h em { font-style: italic; color: var(--rust); }
+#end .s { margin: 0; font: 400 38px/1.4 'Inter'; color: #5E4A3E; max-width: 830px; text-wrap: pretty; }
+#end .f { margin: 4px 0 0; font: 600 34px/1.3 'Inter'; color: var(--rust); }
+#end .cr { margin: 8px 0 0; font: 400 21px/1.4 'Inter'; color: var(--muted); max-width: 830px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div id="photoWrap"><img id="photo" alt=""></div>
+  <canvas id="ring" width="1080" height="1306"></canvas>
+  <p id="qmark">?</p>
+  <p id="kicker">Sound on</p>
+  <p id="brand"><img id="brandMark" alt="">birdy.community</p>
+  <div id="band">
+    <svg class="tear" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0 11 L11 7 L23 13 L36 8 L49 14 L62 9 L77 12 L90 6 L104 13 L118 8 L133 15 L147 7 L162 12 L176 6 L190 14 L205 8 L219 13 L234 6 L248 12 L262 7 L277 13 L290 8 L300 11 V20 H0 Z"/></svg>
+    <p id="q">Whose <em id="qWord"></em> is this?</p>
+    <p id="hint">listen first, the name comes next</p>
+    <svg id="name" viewBox="0 0 900 190" aria-hidden="true"><text id="nameText" x="8" y="150"></text></svg>
+    <p id="sub"><span class="sv" id="subSv"></span><span class="lat" id="subLat"></span></p>
+  </div>
+  <div id="end">
+    <svg class="tear" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M0 11 L11 7 L23 13 L36 8 L49 14 L62 9 L77 12 L90 6 L104 13 L118 8 L133 15 L147 7 L162 12 L176 6 L190 14 L205 8 L219 13 L234 6 L248 12 L262 7 L277 13 L290 8 L300 11 V20 H0 Z"/></svg>
+    <img class="mk" id="mark" alt="">
+    <p class="h">Identify birds by <em>sound</em></p>
+    <p class="s">Hold up your phone and let it listen.<br>Birdy names the bird.</p>
+    <p class="f" id="endLink">Free on Google Play &middot; birdy.community</p>
+    <p class="cr" id="credits"></p>
+  </div>
+</div>
+<script>
+'use strict';
+const W = 1080, H = 1920, HORIZON = 1306, END_TOP = 792;
+const TEXT_MAX = 830; // keep text clear of the Reels and Shorts buttons on the right
+// The ring sits left of centre, so its bars stay clear of the buttons too.
+const RING = { cx: 482, cy: 790, r: 210, gap: 20, lmax: 140, rest: 12, spin: 6 };
+const OPEN_R = 1400; // a circle this large shows the whole photo
+let CFG = null;
+let EL = null;
+let LEVEL = null;
+
+function clamp(x, a = 0, b = 1) { return x < a ? a : x > b ? b : x; }
+function lin(t, a, b) { return clamp((t - a) / (b - a)); }
+function eo(x) { return 1 - Math.pow(1 - x, 3); }
+function eio(x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+function op(el, v) { el.style.opacity = String(Math.round(clamp(v) * 1000) / 1000); }
+function mixRgb(a, b, k) { return a.map((v, i) => Math.round(v + (b[i] - v) * clamp(k))); }
+const CREAM = [255, 248, 238], APRICOT = [242, 178, 122];
+
+function b64bytes(b64) { const s = atob(b64); const u = new Uint8Array(s.length); for (let i = 0; i < s.length; i++) u[i] = s.charCodeAt(i); return u; }
+function b64floats(b64) { const u = b64bytes(b64); return new Float32Array(u.buffer, u.byteOffset, u.byteLength / 4); }
+
+async function loadFonts(fonts) {
+  for (const f of fonts) {
+    const face = new FontFace(f.family, b64bytes(f.b64).buffer, { weight: f.weight, style: f.style });
+    await face.load();
+    document.fonts.add(face);
+  }
+  await document.fonts.ready;
+}
+
+function textWidth(font, text) {
+  const c = document.createElement('canvas').getContext('2d');
+  c.font = font;
+  return c.measureText(text).width;
+}
+
+/** Largest size from `max` down to `min` at which `text` fits `maxWidth`. */
+function fitSize(fontFor, text, max, min, maxWidth) {
+  const w = textWidth(fontFor(max), text);
+  return Math.max(min, Math.min(max, Math.floor(max * maxWidth / w)));
+}
+
+function placePhoto(photo) {
+  // The open layout: a cover crop into the area above the horizon, never stretched, the bird as
+  // close to the ring's centre as the crop allows.
+  const cw = W, ch = HORIZON;
+  const s = Math.max(cw / photo.width, ch / photo.height);
+  const dw = photo.width * s, dh = photo.height * s;
+  const left = clamp(RING.cx - photo.focus.x * dw, cw - dw, 0);
+  const top = clamp(RING.cy - photo.focus.y * dh, ch - dh, 0);
+  Object.assign(EL.photo.style, { width: dw + 'px', height: dh + 'px', left: left + 'px', top: top + 'px' });
+  // The circle layout: while the bird is only seen through the circle, the photo is moved so the
+  // bird sits right at the ring's centre (a landscape photo cannot move up or down in the open
+  // layout), keeping the circle covered. It eases back to the open layout as the circle opens.
+  const circleLeft = clamp(RING.cx - photo.focus.x * dw, RING.cx + RING.r - dw, RING.cx - RING.r);
+  const circleTop = clamp(RING.cy - photo.focus.y * dh, RING.cy + RING.r - dh, RING.cy - RING.r);
+  CFG.circleOffset = { x: circleLeft - left, y: circleTop - top };
+  // When the end card rises, the photo slides up so the bird stays in view above it.
+  const focusY = top + photo.focus.y * dh;
+  CFG.photoShift = clamp(focusY - END_TOP * .5, 0, Math.max(0, ch - END_TOP));
+  return { scale: s, left, top, width: dw, height: dh, birdAt: { x: left + photo.focus.x * dw, y: focusY }, circleOffset: CFG.circleOffset };
+}
+
+async function setupStage(cfg) {
+  CFG = cfg;
+  EL = {};
+  for (const id of ['photoWrap', 'photo', 'ring', 'qmark', 'kicker', 'brand', 'brandMark', 'q', 'qWord', 'hint', 'name', 'nameText', 'sub', 'subSv', 'subLat', 'end', 'mark', 'endLink', 'credits']) EL[id] = document.getElementById(id);
+  await loadFonts(cfg.fonts);
+
+  EL.photo.src = cfg.photo.src;
+  EL.mark.src = cfg.markSrc;
+  EL.brandMark.src = cfg.markSrc;
+  await EL.photo.decode();
+  await EL.mark.decode();
+  await EL.brandMark.decode();
+  cfg.photo.width = EL.photo.naturalWidth;
+  cfg.photo.height = EL.photo.naturalHeight;
+  const photoBox = placePhoto(cfg.photo);
+
+  LEVEL = b64floats(cfg.halo.levelB64);
+  Object.assign(EL.qmark.style, { left: RING.cx + 'px', top: RING.cy + 'px' });
+
+  // Band text: the question while the bird is heard, then the name, sized to fit.
+  EL.qWord.textContent = cfg.word;
+  const qSize = fitSize((s) => `400 ${s}px 'DM Serif Display'`, `Whose ${cfg.word} is this?`, 92, 60, TEXT_MAX);
+  EL.q.style.fontSize = qSize + 'px';
+
+  // The handwriting starts 2 px right of the question and its strokes overhang the measured
+  // advance a little, so the name gets a margin to stay clear of the buttons.
+  const nameSize = fitSize((s) => `700 ${s}px 'Caveat'`, cfg.names.en, 132, 72, TEXT_MAX - 30);
+  EL.nameText.textContent = cfg.names.en;
+  EL.nameText.setAttribute('font-size', String(nameSize));
+  CFG.handLength = Math.round(cfg.names.en.length * 1.05 * nameSize);
+  EL.subSv.textContent = `(${cfg.names.sv})`;
+  EL.subLat.textContent = cfg.names.scientific;
+  EL.credits.textContent = '';
+  cfg.creditLines.forEach((line, i) => { if (i) EL.credits.appendChild(document.createElement('br')); EL.credits.appendChild(document.createTextNode(line)); });
+
+  // Measure with the end card in place, then put everything back at t = 0.
+  EL.end.style.transform = 'none';
+  await new Promise((r) => requestAnimationFrame(() => r()));
+  const box = (el) => el.getBoundingClientRect();
+  const nameBox = EL.nameText.getBBox();
+  const nameTop = box(EL.name).top;
+  const layout = {
+    qSize, nameSize, photoBox, photoShift: CFG.photoShift,
+    textBottom: {
+      brand: Math.round(box(EL.brand).bottom),
+      question: Math.round(box(EL.q).bottom),
+      hint: Math.round(box(EL.hint).bottom),
+      name: Math.round(nameTop + nameBox.y + nameBox.height),
+      sub: Math.round(box(EL.sub).bottom),
+      endLink: Math.round(box(EL.endLink).bottom),
+    },
+    endContentBottom: Math.round(Math.max(...[...EL.end.children].map((c) => box(c).bottom))),
+    textRight: {
+      question: Math.round(box(EL.q).right),
+      hint: Math.round(box(EL.hint).right),
+      name: Math.round(box(EL.name).left + nameBox.x + nameBox.width),
+      sub: Math.round(box(EL.sub).right),
+    },
+  };
+  renderAt(0);
+  await new Promise((r) => requestAnimationFrame(() => r()));
+  return layout;
+}
+
+function hand(textEl, p) {
+  const L = CFG.handLength;
+  textEl.style.strokeDasharray = `${L} ${L}`;
+  textEl.style.strokeDashoffset = (L * (1 - clamp(p / .8))).toFixed(1);
+  textEl.style.fillOpacity = String(Math.round(clamp((p - .4) / .6) * 1000) / 1000);
+}
+function wipe(e, p) {
+  p = clamp(p);
+  e.style.clipPath = p >= 1 ? 'none' : `inset(-40% ${(100 - p * 100).toFixed(3)}% -40% -8%)`;
+}
+
+/** Degrees the ring has turned: a slow turn while the bird sings that eases to a stop as it settles. */
+function ringTurn(t) {
+  const { E, settled } = CFG.times;
+  const s = settled - E;
+  const u = lin(t, E, settled);
+  return RING.spin * Math.min(t, E) + RING.spin * s / 2 * (1 - (1 - u) * (1 - u));
+}
+
+function drawRing(t) {
+  const { A0, E, settled } = CFG.times;
+  const h = CFG.halo;
+  const ctx = EL.ring.getContext('2d');
+  ctx.clearRect(0, 0, W, HORIZON);
+  const k = Math.round((t - A0) * h.fps);
+  const settle = eo(lin(t, E, settled));
+  const base = RING.r + RING.gap;
+  const rot = ringTurn(t) * Math.PI / 180;
+  ctx.lineCap = 'round';
+  // The still circle: faint while the bird sings, firm once it stops.
+  ctx.beginPath();
+  ctx.arc(RING.cx, RING.cy, base - 9, 0, Math.PI * 2);
+  ctx.strokeStyle = `rgba(226,192,126,${(.3 + .55 * settle).toFixed(3)})`;
+  ctx.lineWidth = 2 + 2 * settle;
+  ctx.stroke();
+  const nb = h.bands;
+  for (let side = 0; side < 2; side++) {
+    for (let b = 0; b < nb; b++) {
+      const v = k >= 0 && k < h.frames ? LEVEL[k * nb + b] : 0;
+      let L = 6 + RING.lmax * v;
+      L += (RING.rest - L) * settle;
+      // Low bands at the bottom, high at the top; the left side mirrors the right.
+      const a0 = Math.PI / 2 - (b + .5) * (Math.PI / nb);
+      const a = (side ? Math.PI - a0 : a0) + rot;
+      const [r, g, bl] = mixRgb(APRICOT, CREAM, b / (nb - 1));
+      ctx.strokeStyle = `rgba(${r},${g},${bl},${(.55 + .45 * v * (1 - settle)).toFixed(3)})`;
+      ctx.lineWidth = 6;
+      ctx.beginPath();
+      ctx.moveTo(RING.cx + Math.cos(a) * base, RING.cy + Math.sin(a) * base);
+      ctx.lineTo(RING.cx + Math.cos(a) * (base + L), RING.cy + Math.sin(a) * (base + L));
+      ctx.stroke();
+    }
+  }
+}
+
+/**
+ * The stage at time t. With { cover: true } it is the cover (the renderer passes the song's
+ * fullest moment): the ring and the question as at t, the photo hidden and a question mark in
+ * the empty circle, so the thumbnail never gives the bird away.
+ */
+function renderAt(t, { cover = false } = {}) {
+  const { R } = CFG.times;
+  drawRing(t);
+  // The ring is gone before the circle opens, so it is never drawn over the photo.
+  op(EL.ring, cover ? 1 : Math.min(lin(t, 0, .4), 1 - lin(t, R + .1, R + .6)));
+  // The brand line goes with the ring: no mark over the photo (the end card names the site).
+  op(EL.brand, cover ? 1 : 1 - lin(t, R + .1, R + .6));
+  op(EL.qmark, cover ? 1 : 0);
+
+  // The bird: a dark blur inside the circle until the reveal, then sharp, then the circle opens.
+  const sharp = eio(lin(t, R, R + .8));
+  const open = eio(lin(t, R + .6, R + 1.5));
+  const pe = eo(lin(t, R + 3.0, R + 3.8)); // the end card rises
+  op(EL.photoWrap, cover ? 0 : lin(t, 0, .4));
+  EL.photo.style.filter = sharp >= 1 ? 'none' : `blur(${(24 * (1 - sharp)).toFixed(2)}px) brightness(${(.62 + .38 * sharp).toFixed(3)})`;
+  EL.photoWrap.style.clipPath = open >= 1 ? 'none' : `circle(${(RING.r + (OPEN_R - RING.r) * open).toFixed(1)}px at ${RING.cx}px ${RING.cy}px)`;
+  // From the circle layout to the open layout, done before the opening circle reaches the edge.
+  const away = cover ? 1 : 1 - eo(lin(t, R + .6, R + 1.1));
+  const dx = CFG.circleOffset.x * away;
+  const dy = CFG.circleOffset.y * away - CFG.photoShift * pe;
+  EL.photo.style.transform = `translate(${dx.toFixed(2)}px, ${dy.toFixed(2)}px)`;
+
+  const ask = cover ? 1 : 1 - lin(t, R, R + .5);
+  op(EL.kicker, ask);
+  op(EL.q, ask);
+  op(EL.hint, ask);
+
+  const pn = cover ? 0 : lin(t, R + .6, R + 2.0);
+  wipe(EL.name, pn);
+  hand(EL.nameText, pn);
+  op(EL.sub, cover ? 0 : lin(t, R + 1.6, R + 2.1));
+  EL.end.style.transform = `translateY(${((1 - (cover ? 0 : pe)) * 106).toFixed(3)}%)`;
+}
+
+window.setupStage = setupStage;
+window.renderAt = renderAt;
+window.stageLayout = { W, H, HORIZON, END_TOP, TEXT_MAX, RING };
+</script>
+</body>
+</html>

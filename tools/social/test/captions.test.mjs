@@ -1,0 +1,219 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { buildCaptions, creditLine, hook, linkFor, nameTag, voiceWord, youtubeTitle, firstSentence, withSwedishName } from '../lib/captions.mjs';
+import { record, withAudio, withHero, approved } from './fixtures.mjs';
+
+const CREDIT = 'Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons, edited';
+const CREDIT_TRIMMED = 'Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons, cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons, trimmed and edited';
+const CREDIT_URLS =
+  'Photo: Julian Herzog, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:x.jpg), cropped · Sound: Oona Räisänen (Mysid), Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Pica_pica.ogg), edited';
+const TAGS = '#birds #birdwatching #birdsong #birding #birdy #EurasianMagpie #fåglar #fågelskådning';
+
+test('credit line, exact string: the sound is always "edited"', () => {
+  assert.equal(creditLine(record()), CREDIT);
+});
+
+test('credit line says "trimmed and edited" when the clip was trimmed', () => {
+  assert.equal(creditLine(record(), { trimmed: true }), CREDIT_TRIMMED);
+});
+
+test('credit line leaves out an empty author for CC0 and public domain', () => {
+  const rec = withHero(withAudio(record(), { author: '', license: 'CC0' }), { author: '', license: 'Public domain' });
+  assert.equal(creditLine(rec), 'Photo: Public domain, via Wikimedia Commons, cropped · Sound: CC0, via Wikimedia Commons, edited');
+});
+
+test('credit line with URLs: the licence deed after its name and the Commons file after "via Wikimedia Commons"', () => {
+  assert.equal(creditLine(record(), { withUrls: true }), CREDIT_URLS);
+  const rec = withAudio(record(), { author: 'Gavin Vella', license: 'CC BY-SA 3.0', licenseUrl: null, sourceUrl: 'https://commons.wikimedia.org/wiki/File:Parus_major_-_Great_Tit_XC129643.ogg' });
+  assert.match(
+    creditLine(rec, { withUrls: true, trimmed: true }),
+    /Sound: Gavin Vella, CC BY-SA 3\.0 \(https:\/\/creativecommons\.org\/licenses\/by-sa\/3\.0\/\), via Wikimedia Commons \(https:\/\/commons\.wikimedia\.org\/wiki\/File:Parus_major_-_Great_Tit_XC129643\.ogg\), trimmed and edited$/,
+  );
+  const cc0 = withAudio(record(), { author: '', license: 'CC0', licenseUrl: null, sourceUrl: undefined });
+  assert.match(creditLine(cc0, { withUrls: true }), /Sound: CC0 \(https:\/\/creativecommons\.org\/publicdomain\/zero\/1\.0\/\), via Wikimedia Commons, edited$/);
+  // Instagram's short form has no links at all.
+  assert.doesNotMatch(creditLine(record()), /https?:/);
+});
+
+// The cover's flock artwork credits its PhyloPic silhouette (Albin 2026-10-08: "Go for it").
+const SILHOUETTE_CC0 = { author: 'Guillaume Dera', licence: 'CC0', url: 'https://www.phylopic.org/images/1f3bf322-4ca3-402f-80c9-0260843de5e4', note: 'own species' };
+const SILHOUETTE_CC_BY = { author: 'Maxime Dahirel', licence: 'CC BY 3.0', url: 'https://www.phylopic.org/images/0b72dd38-2dc1-4675-990e-a46259855ce1', note: 'own species' };
+const SILHOUETTE_PD_MARK = { author: 'Marie Attard', licence: 'Public domain mark', url: 'https://www.phylopic.org/images/1042852a-ac13-4679-8d57-c31c2dce8513', note: 'genus' };
+
+test('credit line without a silhouette is unchanged (the default)', () => {
+  assert.equal(creditLine(record()), CREDIT);
+  assert.equal(creditLine(record(), { silhouette: null }), CREDIT);
+});
+
+test('credit line adds the silhouette credit last; CC0 gets no "adapted"', () => {
+  assert.equal(creditLine(record(), { silhouette: SILHOUETTE_CC0 }), `${CREDIT} · Silhouette: Guillaume Dera, CC0, via PhyloPic`);
+});
+
+test('credit line: a CC BY silhouette gets ", adapted" (the flock artwork recolours and resizes it)', () => {
+  assert.equal(creditLine(record(), { silhouette: SILHOUETTE_CC_BY }), `${CREDIT} · Silhouette: Maxime Dahirel, CC BY 3.0, via PhyloPic, adapted`);
+});
+
+test('credit line: the public domain mark gets no "adapted" either', () => {
+  assert.equal(creditLine(record(), { silhouette: SILHOUETTE_PD_MARK }), `${CREDIT} · Silhouette: Marie Attard, Public domain mark, via PhyloPic`);
+});
+
+test('credit line: the silhouette credit is the same with or without withUrls (PhyloPic gets no deed link)', () => {
+  const withUrls = creditLine(record(), { withUrls: true, silhouette: SILHOUETTE_CC_BY });
+  assert.ok(withUrls.endsWith('Silhouette: Maxime Dahirel, CC BY 3.0, via PhyloPic, adapted'));
+});
+
+test('silhouette author with a dash is cleaned the same way as the other credits', () => {
+  const c = buildCaptions(record(), { silhouette: { author: 'Jean–Pierre Dupont', licence: 'CC0' } });
+  for (const text of [c.instagram, c.facebook, c.youtube.description]) assert.doesNotMatch(text, /[–—]/);
+  assert.match(c.facebook, /Silhouette: Jean-Pierre Dupont, CC0, via PhyloPic/);
+});
+
+test('buildCaptions carries the silhouette credit into every caption field that has one', () => {
+  const c = buildCaptions(record(), { silhouette: SILHOUETTE_CC_BY });
+  const expected = `${CREDIT} · Silhouette: Maxime Dahirel, CC BY 3.0, via PhyloPic, adapted`;
+  assert.equal(c.credit, expected);
+  assert.equal(c.creditWithUrls, `${CREDIT_URLS} · Silhouette: Maxime Dahirel, CC BY 3.0, via PhyloPic, adapted`);
+  assert.equal(c.instagram.split('\n\n').at(-2), expected);
+  for (const text of [c.facebook, c.youtube.description]) assert.match(text, /Silhouette: Maxime Dahirel, CC BY 3\.0, via PhyloPic, adapted$/m);
+});
+
+test('Commons links are made safe for captions: parentheses and dashes in file names are encoded', () => {
+  const rec = withAudio(record(), { sourceUrl: 'https://commons.wikimedia.org/wiki/File:Common_Gull_(Fiskem%C3%A5ke)_(Larus_canus)_\u2013_Tromsø.ogg' });
+  const c = buildCaptions(rec);
+  assert.match(c.facebook, /via Wikimedia Commons \(https:\/\/commons\.wikimedia\.org\/wiki\/File:Common_Gull_%28Fiskem%C3%A5ke%29_%28Larus_canus%29_%E2%80%93_Troms%C3%B8\.ogg\), edited/);
+  for (const text of [c.facebook, c.youtube.description]) assert.doesNotMatch(text, /[\u2013\u2014]/);
+});
+
+test('link goes to the species page only when the record is published', () => {
+  assert.equal(linkFor(record()), 'https://birdy.community/');
+  assert.equal(linkFor(record({ publish: true })), 'https://birdy.community/species/eurasian-magpie/');
+  assert.equal(linkFor(record({ publish: 'true' })), 'https://birdy.community/');
+});
+
+test('unpublished: Facebook and YouTube link the home page, never the species page', () => {
+  const c = buildCaptions(record());
+  assert.match(c.facebook, /Identify birds by sound with the free Birdy app: https:\/\/birdy\.community\/\n/);
+  assert.doesNotMatch(c.facebook + c.youtube.description, /\/species\//);
+  assert.match(c.youtube.description, /https:\/\/birdy\.community\//);
+});
+
+test('published: Facebook and YouTube link the species page', () => {
+  const c = buildCaptions(record({ publish: true }));
+  assert.match(c.facebook, /More about the Eurasian Magpie: https:\/\/birdy\.community\/species\/eurasian-magpie\//);
+  assert.match(c.youtube.description, /https:\/\/birdy\.community\/species\/eurasian-magpie\//);
+});
+
+test('Instagram says Link in bio and has no URL', () => {
+  for (const rec of [record(), record({ publish: true })]) {
+    const c = buildCaptions(rec);
+    assert.match(c.instagram, /Identify birds by sound with the free Birdy app\. Link in bio\./);
+    assert.doesNotMatch(c.instagram, /https?:\/\/|birdy\.community/);
+  }
+});
+
+test('captions end with the credit and then the hashtags; Facebook and YouTube carry the licence URLs', () => {
+  const c = buildCaptions(record(), { trimmed: true });
+  assert.equal(c.instagram.split('\n\n').at(-2), CREDIT_TRIMMED);
+  for (const text of [c.facebook, c.youtube.description]) assert.equal(text.split('\n\n').at(-2), CREDIT_URLS.replace(', edited', ', trimmed and edited'));
+  for (const text of [c.instagram, c.facebook, c.youtube.description]) assert.equal(text.split('\n\n').at(-1), TAGS);
+  assert.equal(c.credit, CREDIT_TRIMMED);
+});
+
+test('5 to 8 hashtags, the English name as one tag', () => {
+  const c = buildCaptions(record());
+  assert.ok(c.hashtags.length >= 5 && c.hashtags.length <= 8);
+  assert.equal(nameTag(record({ names: { en: 'Common Wood Pigeon', sv: 'Ringduva', scientific: 'Columba palumbus' } })), '#CommonWoodPigeon');
+  assert.equal(nameTag(record({ names: { en: "Montagu's Harrier", sv: 'Ängshök', scientific: 'Circus pygargus' } })), '#MontagusHarrier');
+  assert.equal(nameTag(record({ names: { en: 'Black-tailed Godwit', sv: 'Rödspov', scientific: 'Limosa limosa' } })), '#BlackTailedGodwit');
+});
+
+test('"song" for the passerines (the songbird group, crows included), "voice" for every other group', () => {
+  assert.equal(voiceWord(record()), 'song'); // the magpie is a passerine
+  for (const group of ['waterfowl', 'gulls_terns', 'raptors', 'cranes_rails', 'woodpeckers', 'doves', 'other']) assert.equal(voiceWord(record({ group })), 'voice', group);
+});
+
+test('hook: neutral line without approved text, "voice" outside the songbird group', () => {
+  assert.equal(hook(record()), 'Listen to the song of the Eurasian Magpie.');
+  assert.equal(hook(record({ group: 'seabirds', names: { en: 'Great Cormorant', sv: 'Storskarv', scientific: 'Phalacrocorax carbo' } })), 'Listen to the voice of the Great Cormorant.');
+  // Text without a verification stamp is not approved.
+  const unverified = { ...approved(record(), 'The Eurasian Magpie is a black and white crow.'), verification: undefined };
+  assert.equal(hook(unverified), 'Listen to the song of the Eurasian Magpie.');
+});
+
+test('hook: first sentence of the English lead when the text is approved', () => {
+  assert.equal(hook(approved(record(), 'The Eurasian Magpie is a black and white crow. It has a long tail.')), 'The Eurasian Magpie is a black and white crow.');
+  assert.equal(firstSentence('It is about 14 cm long. It sings.'), 'It is about 14 cm long.');
+});
+
+test('hook falls back to the neutral line if the lead has a dash', () => {
+  assert.equal(hook(approved(record(), 'It is 44\u201346 cm long.')), 'Listen to the song of the Eurasian Magpie.');
+});
+
+test('no dashes anywhere in generated text, even when a name has one', () => {
+  const rec = withAudio(record(), { author: 'Jean\u2013Pierre Dupont' });
+  const c = buildCaptions(rec);
+  for (const text of [c.instagram, c.facebook, c.youtube.title, c.youtube.description]) assert.doesNotMatch(text, /[\u2013\u2014]/);
+  assert.match(c.facebook, /Jean-Pierre Dupont/);
+});
+
+test('without CC BY-SA material there is no video licence line', () => {
+  const c = buildCaptions(record());
+  assert.equal(c.videoLicence, null);
+  for (const text of [c.instagram, c.facebook, c.youtube.description]) assert.doesNotMatch(text, /Video licensed/);
+});
+
+test('a video with CC BY-SA material gets the CC BY-SA 4.0 line right after the credits', () => {
+  const rec = withAudio(record(), { license: 'CC BY-SA 3.0', author: 'José Carlos Sires', licenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/' });
+  const c = buildCaptions(rec, { trimmed: true });
+  assert.equal(c.videoLicence, 'CC BY-SA 4.0');
+  const sa = 'Video licensed CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)';
+  assert.equal(c.instagram.split('\n\n').at(-2), `Photo: Julian Herzog, CC BY 4.0, via Wikimedia Commons, cropped · Sound: José Carlos Sires, CC BY-SA 3.0, via Wikimedia Commons, trimmed and edited\n${sa}`);
+  for (const text of [c.facebook, c.youtube.description]) {
+    assert.equal(
+      text.split('\n\n').at(-2),
+      `Photo: Julian Herzog, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:x.jpg), cropped · Sound: José Carlos Sires, CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/), via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Pica_pica.ogg), trimmed and edited\n${sa}`,
+    );
+  }
+  for (const text of [c.instagram, c.facebook, c.youtube.description]) assert.equal(text.split('\n\n').at(-1), TAGS);
+  // On Instagram the licence URL is the only URL; the app link is still "Link in bio".
+  assert.deepEqual(c.instagram.match(/https?:\/\/\S+/g), ['https://creativecommons.org/licenses/by-sa/4.0/)']);
+  assert.match(c.instagram, /Link in bio\./);
+});
+
+// Albin 2026-10-10: the title opens with a hook question, then both names so it is found in search.
+test('YouTube title is the hook question with both names, at most 100 characters', () => {
+  assert.equal(youtubeTitle(record()), 'Would you recognise this bird by its sound? Eurasian Magpie (Skata) #shorts');
+  // Same name in both languages: the brackets are left out.
+  assert.equal(
+    youtubeTitle(record({ names: { en: 'Mallard', sv: 'mallard', scientific: 'Anas platyrhynchos' } })),
+    'Would you recognise this bird by its sound? Mallard #shorts',
+  );
+  const long = record({ names: { en: 'A'.repeat(70), sv: 'x', scientific: 'y' } });
+  assert.ok(youtubeTitle(long).length <= 100);
+  assert.equal(youtubeTitle(long), `${'A'.repeat(70)} (x) #shorts`);
+  const huge = record({ names: { en: 'B'.repeat(140), sv: 'x', scientific: 'y' } });
+  assert.ok(youtubeTitle(huge).length <= 100);
+  for (const r of [record(), long, huge]) assert.ok(buildCaptions(r).youtube.title.length <= 100);
+});
+
+// Albin 2026-10-08: everything in English, with the bird's Swedish name in brackets after the English one.
+test('withSwedishName: the Swedish name in brackets after the first mention of the English name', () => {
+  assert.equal(withSwedishName('The Eurasian Magpie is a black and white crow.', record()), 'The Eurasian Magpie (Skata) is a black and white crow.');
+  assert.equal(withSwedishName('Listen to the song of the Eurasian Magpie.', record()), 'Listen to the song of the Eurasian Magpie (Skata).');
+  // The lead may write the name in lower case.
+  assert.equal(withSwedishName('The eurasian magpie nests in tall trees.', record()), 'The eurasian magpie (Skata) nests in tall trees.');
+  // A sentence that does not name the bird gets the Swedish name as its own short line.
+  assert.equal(withSwedishName('It is about 44 cm long.', record()), 'It is about 44 cm long. Swedish name: Skata.');
+  // No Swedish name, or the same as the English one: unchanged.
+  assert.equal(withSwedishName('The Eurasian Magpie is a crow.', record({ names: { en: 'Eurasian Magpie', sv: '', scientific: 'Pica pica' } })), 'The Eurasian Magpie is a crow.');
+});
+
+test('every caption opens with the Swedish name and ends with the Swedish hashtags', () => {
+  const c = buildCaptions(approved(record({ publish: true }), 'The Eurasian Magpie is a black and white crow. It has a long tail.'));
+  for (const text of [c.instagram, c.facebook, c.youtube.description]) {
+    assert.match(text, /^The Eurasian Magpie \(Skata\) is a black and white crow\.\n\n/);
+    assert.match(text, /#fåglar #fågelskådning$/);
+  }
+  // The YouTube title is the hook question with both names.
+  assert.equal(c.youtube.title, 'Would you recognise this bird by its sound? Eurasian Magpie (Skata) #shorts');
+});

@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Birdy social artboards</title>
+<!--
+  Birdy's social profile artwork, 2026-10-08: three directions (halo, plansch, flock), each as a
+  profile picture (1080 x 1080, read as a circle), a Facebook cover (1640 x 720) and a YouTube banner
+  (2560 x 1440). render.mjs screenshots every section.art at its own size into the folder above.
+
+  Safe areas (checked 2026-10-08):
+  - Facebook cover: shown 820 x 312 on computers and 640 x 360 on phones (Meta). On a 1640 x 720
+    canvas, computers show y 48 to 672 and phones x 180 to 1460, so text stays in x 180..1460,
+    y 48..672, and out of the bottom left, where the page's profile picture sits on phones.
+  - YouTube banner: text and logo inside the centre 1546 x 423 (x 507..2053, y 508..931); computers
+    show the full-width strip y 508..931, TVs the whole canvas.
+  - Profile picture: every platform crops to a circle (Instagram shows it at about 110 px), so the
+    mark stays inside a circle of radius 505.
+
+  Photos: CC0 only, from the species pages (website/src/data/species/*.json). Nothing tints a photo.
+-->
+<style>
+@font-face { font-family: 'DM Serif Display'; font-style: normal; font-weight: 400; src: url('../../../../../../website/public/fonts/dm-serif-display-regular.woff2') format('woff2'); }
+@font-face { font-family: 'DM Serif Display'; font-style: italic; font-weight: 400; src: url('../../../../../../website/public/fonts/dm-serif-display-italic.woff2') format('woff2'); }
+@font-face { font-family: 'Caveat'; font-style: normal; font-weight: 400; src: url('../../../../../../website/public/fonts/caveat-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Caveat'; font-style: normal; font-weight: 700; src: url('../../../../../../website/public/fonts/caveat-bold.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; src: url('../../../../../../website/public/fonts/inter-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; src: url('../../../../../../website/public/fonts/inter-semibold.woff2') format('woff2'); }
+
+:root {
+  --paper: #F6EFE2; --card: #FFFAF1; --ink: #302019; --muted: #6E584B; --line: #DFD2BA;
+  --rust: #9A4526; --rust-deep: #72301A; --copper: #A8552D; --apricot: #F2B27A; --peach: #FDE5CB;
+  --dark: #2A1D17; --dark-deep: #1E1410; --night: #160E0A; --brass: #B8893A; --brass-hi: #E2C07E; --cream: #FFF8EE;
+  --serif: 'DM Serif Display', Georgia, serif; --hand: 'Caveat', cursive; --sans: 'Inter', system-ui, sans-serif;
+  --photo-dir: '../../../../../../website/src/assets/species/';
+}
+html, body { margin: 0; background: #7a7a7a; }
+body { padding: 40px; display: grid; gap: 60px; justify-content: start; }
+.art { position: relative; overflow: hidden; flex: none; }
+.abs { position: absolute; }
+svg.full { position: absolute; left: 0; top: 0; overflow: visible; }
+.bird-el { position: absolute; display: block; overflow: visible; }
+p, h1, h2 { margin: 0; }
+
+/* Shared type */
+.kick { position: absolute; display: flex; align-items: center; gap: .62em; font: 600 24px/1 var(--sans); letter-spacing: .19em; text-transform: uppercase; white-space: nowrap; }
+.kick i { display: block; width: 1.5em; height: 2px; background: currentColor; }
+.head { position: absolute; font: 400 100px/.98 var(--serif); letter-spacing: -.022em; white-space: nowrap; }
+.head em { font-style: italic; }
+.hand { position: absolute; font: 700 56px/1 var(--hand); white-space: nowrap; }
+.url { position: absolute; display: flex; align-items: center; gap: .55em; font: 600 26px/1 var(--sans); white-space: nowrap; }
+.url svg { width: 1.5em; height: auto; display: block; }
+
+/* ---------- A. Sånghalon ---------- */
+.night { position: absolute; inset: 0; }
+.halo-disc { position: absolute; border-radius: 50%; }
+.photo-circle { position: absolute; border-radius: 50%; overflow: hidden; background-repeat: no-repeat; }
+.a-cream { color: var(--cream); }
+.a-head em { color: var(--apricot); }
+
+/* ---------- B. Fältplanschen ---------- */
+.paper { position: absolute; inset: 0; background-color: var(--paper);
+  background-image: radial-gradient(rgba(48, 32, 25, .085) 2.3px, transparent 3.1px); background-size: 32px 32px; background-position: 6px 10px; }
+.plate-photo { position: absolute; background-repeat: no-repeat; }
+.tear-v { position: absolute; top: 0; height: 100%; overflow: visible; filter: drop-shadow(5px 0 5px rgba(48, 28, 16, .28)); }
+.tear-h { position: absolute; left: 0; width: 100%; overflow: visible; }
+.seal { position: absolute; border-radius: 50%; display: grid; place-items: center;
+  background: radial-gradient(circle at 34% 28%, rgba(255, 255, 255, .26), transparent 56%), radial-gradient(circle at 50% 50%, #A8552D 0%, #9A4526 62%, #7E3A1E 100%);
+  box-shadow: 0 6px 16px rgba(48, 24, 12, .32), inset 0 -6px 14px rgba(60, 20, 8, .28); }
+.seal::before { content: ''; position: absolute; inset: 7%; border-radius: 50%; border: 2px solid rgba(255, 238, 220, .45); }
+.label { position: absolute; font: 600 21px/1.35 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--rust); white-space: nowrap; }
+.label span { font: italic 400 26px/1 var(--serif); letter-spacing: 0; text-transform: none; color: var(--muted); }
+.tape { position: absolute; background: linear-gradient(180deg, #F5C99B, #F0BB86); box-shadow: 0 1px 3px rgba(80, 50, 30, .2); }
+.torn { position: absolute; filter: drop-shadow(0 10px 14px rgba(48, 28, 16, .26)) drop-shadow(0 1px 1px rgba(48, 28, 16, .2)); }
+.torn > .plate-photo { position: absolute; }
+
+/* ---------- C. Flocken ---------- */
+.acc { font-family: var(--hand); font-weight: 700; font-style: normal; color: var(--rust); font-size: 1.2em; letter-spacing: 0; display: inline-block; transform: rotate(-2.5deg) translateY(.03em); }
+.peach { position: absolute; inset: 0; background: radial-gradient(130% 120% at 70% 40%, #FEEBD6 0%, #FDE5CB 45%, #F8D6B4 100%); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="bird" viewBox="0 0 1000 964.5"><path id="bird-path"/></symbol></defs></svg>
+
+<!-- ================= A. SÅNGHALON ================= -->
+<section class="art" data-archived id="profile-halo" style="width:1080px;height:1080px">
+  <div class="night" style="background: radial-gradient(70% 70% at 50% 47%, #3D2B21 0%, #2A1D17 46%, #1A110C 78%, #130C08 100%)"></div>
+  <svg class="full" width="1080" height="1080" data-halo='{"cx":540,"cy":540,"r":252,"gap":32,"n":44,"w":12,"lmin":20,"lmax":168,"env":"profile"}'></svg>
+  <div class="halo-disc" style="left:288px;top:288px;width:504px;height:504px;background:radial-gradient(circle at 50% 42%, #3E2C22 0%, #2C1F18 62%, #241812 100%);box-shadow: 0 0 40px rgba(0,0,0,.35)"></div>
+  <div data-bird='{"cx":540,"cy":546,"r":226,"color":"#F2B27A","rot":0}'></div>
+</section>
+
+<section class="art" data-archived id="facebook-cover-halo" style="width:1640px;height:720px">
+  <div class="night" style="background: radial-gradient(60% 95% at 69% 50%, #3D2B21 0%, #2A1D17 40%, #1D130E 75%, #150D09 100%)"></div>
+  <svg class="full" width="1640" height="720" data-halo='{"cx":1122,"cy":360,"r":168,"gap":26,"n":44,"w":8,"lmin":12,"lmax":142,"env":"cover"}'></svg>
+  <div class="photo-circle" data-photo='{"q":"Q159080","w":1600,"h":1714,"cx":1122,"cy":360,"r":168,"fx":0.585,"fy":0.40,"show":0.56}'></div>
+  <p class="kick" style="left:200px;top:112px;color:var(--apricot)"><i></i>See the song</p>
+  <h1 class="head a-cream a-head" style="left:194px;top:158px;font-size:108px">Whose <em>song</em><br>is this?</h1>
+  <p class="hand" style="left:200px;top:376px;font-size:50px;color:var(--peach);transform:rotate(-1.6deg);transform-origin:left">listen first, the name comes next</p>
+</section>
+
+<section class="art" data-archived id="youtube-banner-halo" style="width:2560px;height:1440px">
+  <div class="night" style="background: radial-gradient(48% 70% at 50.8% 50%, #3D2B21 0%, #2A1D17 42%, #1D130E 78%, #140C08 100%)"></div>
+  <svg class="full" width="2560" height="1440" data-ribbon='{"y":720,"left":[70,470],"right":[2090,2490],"h":110,"w":9,"step":22}'></svg>
+  <svg class="full" width="2560" height="1440" data-halo='{"cx":1300,"cy":720,"r":116,"gap":18,"n":44,"w":7,"lmin":10,"lmax":70,"env":"cover"}'></svg>
+  <div class="photo-circle" data-photo='{"q":"Q159080","w":1600,"h":1714,"cx":1300,"cy":720,"r":116,"fx":0.585,"fy":0.40,"show":0.56}'></div>
+  <p class="kick" style="left:560px;top:584px;color:var(--apricot);font-size:28px"><i></i>See the song</p>
+  <h1 class="head a-cream a-head" style="left:553px;top:628px;font-size:92px">Whose <em>song</em><br>is this?</h1>
+  <p class="hand" style="left:1590px;top:604px;font-size:60px;color:var(--peach);transform:rotate(-1.6deg);transform-origin:left;line-height:1.04">listen first,<br>the name comes next</p>
+  <p class="url" style="left:1594px;top:790px;font-size:34px;color:rgba(255,248,238,.86)"><svg viewBox="0 0 1000 964.5"><use href="#bird" fill="#F2B27A"/></svg>birdy.community</p>
+</section>
+
+<!-- ================= B. FÄLTPLANSCHEN ================= -->
+<section class="art" data-archived id="profile-plansch" style="width:1080px;height:1080px">
+  <div class="abs" style="inset:0;background:radial-gradient(circle at 34% 28%, #C4683A 0%, #A8552D 36%, #93461F 66%, #6F3118 100%)"></div>
+  <div class="abs" style="inset:0;background:radial-gradient(circle at 50% 50%, transparent 60%, rgba(40,12,4,.30) 100%)"></div>
+  <svg class="full" width="1080" height="1080" viewBox="0 0 1080 1080">
+    <defs><path id="legend-ring" d="M540,540 m-451,0 a451,451 0 1,1 902,0 a451,451 0 1,1 -902,0"/></defs>
+    <circle cx="540" cy="540" r="506" fill="none" stroke="rgba(255,236,214,.34)" stroke-width="3"/>
+    <circle cx="540" cy="540" r="398" fill="none" stroke="rgba(255,236,214,.48)" stroke-width="3"/>
+    <text font-family="Inter" font-weight="600" font-size="35" letter-spacing="9" fill="rgba(255,240,224,.74)">
+      <textPath href="#legend-ring" startOffset="0" textLength="2826" lengthAdjust="spacing">BIRD GUIDE · FIELD JOURNAL · BIRDY · BIRD GUIDE · FIELD JOURNAL · BIRDY ·</textPath>
+    </text>
+  </svg>
+  <div data-bird='{"cx":548,"cy":552,"r":322,"color":"#FFF8EE","rot":-8,"emboss":true}'></div>
+</section>
+
+<section class="art" data-archived id="facebook-cover-plansch" style="width:1640px;height:720px">
+  <div class="paper"></div>
+  <div class="plate-photo" data-cover='{"q":"Q25382","w":1600,"h":1455,"x":930,"y":0,"bw":710,"bh":720,"fx":0.47,"fy":0.42}'></div>
+  <svg class="tear-v" style="left:900px;width:60px" viewBox="0 0 60 720" preserveAspectRatio="none" data-tear='{"side":"right","x0":0,"x1":46,"h":720,"seed":5,"fill":"#F6EFE2"}'></svg>
+  <p class="kick" style="left:200px;top:120px;color:var(--rust)"><i></i>Bird guide and field journal</p>
+  <h1 class="head" style="left:194px;top:166px;font-size:104px;color:var(--dark)">Know the bird.</h1>
+  <p class="hand" style="left:198px;top:268px;font-size:112px;color:var(--rust);transform:rotate(-1.4deg);transform-origin:left">Keep the moment.</p>
+  <p class="label" style="left:202px;top:424px">Pl. I &nbsp;·&nbsp; Eurasian Bullfinch &nbsp;<span>Pyrrhula pyrrhula</span></p>
+  <div class="seal" style="left:862px;top:516px;width:126px;height:126px;transform:rotate(-10deg)"><div data-bird='{"inline":true,"size":70,"color":"#FFF8EE"}'></div></div>
+</section>
+
+<section class="art" data-archived id="youtube-banner-plansch" style="width:2560px;height:1440px">
+  <div class="paper" style="background-size:40px 40px"></div>
+  <div class="torn" style="left:1300px;top:452px;width:750px;height:536px" data-torn='{"seed":12,"amp":14}'>
+    <div class="plate-photo" data-cover='{"q":"Q25485","w":1600,"h":1067,"x":0,"y":0,"bw":750,"bh":536,"fx":0.55,"fy":0.5}'></div>
+  </div>
+  <div class="tape" style="left:1250px;top:430px;width:156px;height:48px;transform:rotate(-8deg)"></div>
+  <div class="tape" style="left:1950px;top:960px;width:156px;height:48px;transform:rotate(-6deg)"></div>
+  <p class="kick" style="left:560px;top:590px;color:var(--rust);font-size:28px"><i></i>Bird guide and field journal</p>
+  <h1 class="head" style="left:553px;top:634px;font-size:96px;color:var(--dark)">Know the bird.</h1>
+  <p class="hand" style="left:556px;top:730px;font-size:104px;color:var(--rust);transform:rotate(-1.4deg);transform-origin:left">Keep the moment.</p>
+  <p class="label" style="left:560px;top:872px;font-size:24px">Pl. II &nbsp;·&nbsp; Great Tit &nbsp;<span style="font-size:29px">Parus major</span></p>
+  <div class="seal" style="left:1232px;top:794px;width:116px;height:116px;transform:rotate(-10deg)"><div data-bird='{"inline":true,"size":64,"color":"#FFF8EE"}'></div></div>
+</section>
+
+<!-- ================= C. FLOCKEN, chosen 2026-10-08 (A and B above are archived: render.mjs skips them) ================= -->
+<section class="art" id="profile-flock" style="width:1080px;height:1080px">
+  <div class="peach" style="background: radial-gradient(90% 90% at 40% 30%, #FEEBD6 0%, #FDE5CB 50%, #F7D2AC 100%)"></div>
+  <div data-bird='{"cx":540,"cy":540,"r":505,"color":"#A8552D","opacity":0.24}'></div>
+  <svg class="full" width="1080" height="1080" data-flock="profile-flock"></svg>
+</section>
+
+<section class="art" id="facebook-cover-flock-know" style="width:1640px;height:720px">
+  <div class="peach"></div>
+  <div data-bird='{"cx":1162,"cy":344,"r":300,"color":"#A8552D","opacity":0.13}'></div>
+  <svg class="full" width="1640" height="720" data-flock="facebook-cover-flock"></svg>
+  <p class="kick" style="left:200px;top:104px;color:var(--rust)"><i></i>Camera, photo or song</p>
+  <h1 class="head" style="left:194px;top:146px;font-size:106px;color:var(--dark)">Know the bird.</h1>
+  <p class="hand" style="left:197px;top:250px;font-size:114px;color:var(--rust);transform:rotate(-1.6deg);transform-origin:left">Keep the moment.</p>
+  <p class="hand" style="left:202px;top:392px;font-size:40px;line-height:1.08;color:var(--muted);transform:rotate(-1.4deg);transform-origin:left">one bird in this flock<br>for every species in Birdy</p>
+  <svg class="full" width="1640" height="720" data-arrow='{"d":[508,422,680,436,870,392,978,292],"w":3.2,"head":20}'></svg>
+</section>
+
+<section class="art" id="facebook-cover-flock-name" style="width:1640px;height:720px">
+  <div class="peach"></div>
+  <div data-bird='{"cx":1162,"cy":344,"r":300,"color":"#A8552D","opacity":0.13}'></div>
+  <svg class="full" width="1640" height="720" data-flock="facebook-cover-flock"></svg>
+  <p class="kick" style="left:200px;top:104px;color:var(--rust)"><i></i>Camera, photo or song</p>
+  <h1 class="head" style="left:194px;top:146px;font-size:106px;line-height:1;color:var(--dark)">Every bird<br>has a <span class="acc">name.</span></h1>
+  <p class="hand" style="left:202px;top:392px;font-size:40px;line-height:1.08;color:var(--muted);transform:rotate(-1.4deg);transform-origin:left">one bird in this flock<br>for every species in Birdy</p>
+  <svg class="full" width="1640" height="720" data-arrow='{"d":[508,422,680,436,870,392,978,292],"w":3.2,"head":20}'></svg>
+</section>
+
+<section class="art" id="youtube-banner-flock-know" style="width:2560px;height:1440px">
+  <div class="peach" style="background: radial-gradient(60% 80% at 45% 50%, #FEEBD6 0%, #FDE5CB 50%, #F6CFA6 100%)"></div>
+  <div data-bird='{"cx":846,"cy":716,"r":214,"color":"#A8552D","opacity":0.13}'></div>
+  <svg class="full" width="2560" height="1440" data-flock="youtube-banner-flock"></svg>
+  <p class="kick" style="left:1222px;top:582px;color:var(--rust);font-size:28px"><i></i>Camera, photo or song</p>
+  <h1 class="head" style="left:1215px;top:620px;font-size:100px;color:var(--dark)">Know the bird.</h1>
+  <p class="hand" style="left:1218px;top:712px;font-size:106px;color:var(--rust);transform:rotate(-1.6deg);transform-origin:left">Keep the moment.</p>
+  <p class="hand" style="left:1224px;top:858px;font-size:38px;color:var(--muted);transform:rotate(-1.2deg);transform-origin:left">one bird in this flock for every species in Birdy</p>
+  <svg class="full" width="2560" height="1440" data-arrow='{"d":[1204,884,1140,900,1060,880,1004,806],"w":3.6,"head":22}'></svg>
+</section>
+
+<section class="art" id="youtube-banner-flock-name" style="width:2560px;height:1440px">
+  <div class="peach" style="background: radial-gradient(60% 80% at 45% 50%, #FEEBD6 0%, #FDE5CB 50%, #F6CFA6 100%)"></div>
+  <div data-bird='{"cx":846,"cy":716,"r":214,"color":"#A8552D","opacity":0.13}'></div>
+  <svg class="full" width="2560" height="1440" data-flock="youtube-banner-flock"></svg>
+  <p class="kick" style="left:1222px;top:582px;color:var(--rust);font-size:28px"><i></i>Camera, photo or song</p>
+  <h1 class="head" style="left:1215px;top:620px;font-size:100px;line-height:1;color:var(--dark)">Every bird<br>has a <span class="acc">name.</span></h1>
+  <p class="hand" style="left:1224px;top:858px;font-size:38px;color:var(--muted);transform:rotate(-1.2deg);transform-origin:left">one bird in this flock for every species in Birdy</p>
+  <svg class="full" width="2560" height="1440" data-arrow='{"d":[1204,884,1140,900,1060,880,1004,806],"w":3.6,"head":22}'></svg>
+</section>
+
+<!-- ================= GRID ROW for Instagram and TikTok: one 3240 x 1440 picture, three 1080 x 1440 tiles =================
+     Cut into tiles by split-grid.py. Seams at x 1080 and 2160: every word sits inside one tile (slogan in tile 1, signature in tile 2, note in tile 3);
+     only the flock crosses them. Corners kept clear: Instagram's pin icon (top right), TikTok's Pinned label (top left)
+     and view count (bottom left), TikTok's buttons over the right edge of a photo in the feed. -->
+<section class="art" id="grid-row" data-dir="grid" style="width:3240px;height:1440px">
+  <div class="peach" style="background: radial-gradient(70% 120% at 52% 42%, #FEEBD6 0%, #FDE5CB 48%, #F6CDA2 100%)"></div>
+  <div data-bird='{"cx":2668,"cy":600,"r":410,"color":"#A8552D","opacity":0.13}'></div>
+  <svg class="full" width="3240" height="1440" data-flock="grid-flock"></svg>
+  <p class="kick" style="left:118px;top:296px;color:var(--rust);font-size:32px"><i></i>Camera, photo or song</p>
+  <h1 class="head" style="left:108px;top:346px;font-size:212px;line-height:.92;color:var(--dark)">Know<br>the bird.</h1>
+  <p class="hand" style="left:114px;top:768px;font-size:184px;line-height:.9;color:var(--rust);transform:rotate(-2deg);transform-origin:left">Keep the<br>moment.</p>
+  <div class="abs" style="left:1080px;top:1272px;width:1080px;display:flex;justify-content:center">
+    <p class="url" style="position:static;font-size:44px;color:var(--rust-deep)"><svg viewBox="0 0 1000 964.5"><use href="#bird" fill="#A8552D"/></svg>birdy.community</p>
+  </div>
+  <p class="hand" style="left:2530px;top:1098px;font-size:54px;line-height:1.08;color:var(--muted);transform:rotate(-1.6deg);transform-origin:left">one bird in this flock<br>for every species in Birdy</p>
+  <svg class="full" width="3240" height="1440" data-arrow='{"d":[2986,1126,3046,1090,3052,930,2962,846],"w":4.4,"head":26}'></svg>
+</section>
+
+<script src="data.js"></script>
+<script>
+'use strict';
+const B = window.BIRDY;
+const MEC = B.mec;
+const NS = 'http://www.w3.org/2000/svg';
+const PHOTO = '../../../../../../website/src/assets/species/';
+document.getElementById('bird-path').setAttribute('d', B.path);
+document.querySelector('#bird').setAttribute('viewBox', `0 0 ${B.w} ${B.h}`);
+
+function rng(seed) { let s = seed >>> 0; return () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const mix = (a, b, k) => a.map((v, i) => Math.round(v + (b[i] - v) * k));
+const CREAM = [255, 248, 238], APRICOT = [242, 178, 122];
+
+/** A bird mark whose enclosing circle lands on (cx, cy) with radius r. */
+function placeBird(host, o) {
+  const svg = document.createElementNS(NS, 'svg');
+  svg.setAttribute('viewBox', `0 0 ${B.w} ${B.h}`);
+  svg.classList.add('bird-el');
+  if (o.inline) {
+    svg.style.position = 'static';
+    svg.style.width = o.size + 'px';
+    svg.style.height = (o.size * B.h / B.w) + 'px';
+  } else {
+    const k = o.r / MEC.r;
+    Object.assign(svg.style, { width: B.w * k + 'px', height: B.h * k + 'px', left: (o.cx - MEC.cx * k) + 'px', top: (o.cy - MEC.cy * k) + 'px',
+      transformOrigin: `${MEC.cx * k}px ${MEC.cy * k}px`, transform: `rotate(${o.rot || 0}deg)` });
+  }
+  const use = document.createElementNS(NS, 'use');
+  use.setAttribute('href', '#bird');
+  use.setAttribute('fill', o.color);
+  svg.appendChild(use);
+  if (o.opacity != null) svg.style.opacity = String(o.opacity);
+  if (o.emboss) svg.style.filter = 'drop-shadow(-2px -3px 0 rgba(255,236,214,.34)) drop-shadow(6px 9px 7px rgba(52,16,6,.48))';
+  host.replaceWith(svg);
+}
+
+/** Song envelope: one value 0..1 per band, bottom (0) to top (n - 1). Deterministic per kind. */
+function envelope(kind, n) {
+  const r = rng(kind === 'profile' ? 31 : kind === 'cover' ? 57 : 83);
+  const v = [];
+  for (let b = 0; b < n; b++) {
+    const u = b / (n - 1);
+    let base;
+    if (kind === 'banner') {
+      // Long at the top (they leave the strip on computers and phones), short at the sides where the words are.
+      base = .06 + .9 * Math.pow(clamp((u - .55) / .45), 1.2) + .16 * Math.exp(-((u - .5) ** 2) / .004);
+    } else {
+      base = .12 + .55 * Math.pow(u, 1.1) + .32 * Math.exp(-((u - .62) ** 2) / .02) + .22 * Math.exp(-((u - .9) ** 2) / .006);
+    }
+    v.push(base);
+  }
+  // A song is never smooth: neighbouring bands differ, as in the videos.
+  return v.map((x, i) => clamp(x * (.72 + .5 * r()) + (i % 3 === 0 ? .06 : 0)));
+}
+
+function drawHalo(svg) {
+  const o = JSON.parse(svg.dataset.halo);
+  const env = envelope(o.env, o.n);
+  const g = document.createElementNS(NS, 'g');
+  g.setAttribute('stroke-linecap', 'round');
+  g.style.filter = `drop-shadow(0 0 ${o.w * 1.6}px rgba(242,178,122,.42))`;
+  const ring = document.createElementNS(NS, 'circle');
+  Object.entries({ cx: o.cx, cy: o.cy, r: o.r + o.gap * .42, fill: 'none', stroke: 'rgba(226,192,126,.78)', 'stroke-width': Math.max(2.5, o.w * .36) }).forEach(([k, val]) => ring.setAttribute(k, val));
+  g.appendChild(ring);
+  const base = o.r + o.gap;
+  for (let side = 0; side < 2; side++) {
+    for (let b = 0; b < o.n; b++) {
+      const v = env[b];
+      const L = o.lmin + o.lmax * v;
+      const a0 = Math.PI / 2 - (b + .5) * (Math.PI / o.n);
+      const a = side ? Math.PI - a0 : a0;
+      const [cr, cg, cb] = mix(APRICOT, CREAM, b / (o.n - 1));
+      const line = document.createElementNS(NS, 'line');
+      Object.entries({ x1: o.cx + Math.cos(a) * base, y1: o.cy + Math.sin(a) * base, x2: o.cx + Math.cos(a) * (base + L), y2: o.cy + Math.sin(a) * (base + L),
+        stroke: `rgba(${cr},${cg},${cb},${(.6 + .4 * v).toFixed(3)})`, 'stroke-width': o.w }).forEach(([k, val]) => line.setAttribute(k, val));
+      g.appendChild(line);
+    }
+  }
+  svg.appendChild(g);
+}
+
+/** The song unrolled: short bars along a line outside the safe area (seen on computers and TVs). */
+function drawRibbon(svg) {
+  const o = JSON.parse(svg.dataset.ribbon);
+  const r = rng(101);
+  const g = document.createElementNS(NS, 'g');
+  g.setAttribute('stroke-linecap', 'round');
+  for (const [x0, x1, dir] of [[o.left[0], o.left[1], -1], [o.right[0], o.right[1], 1]]) {
+    for (let x = x0; x <= x1; x += o.step) {
+      // Taller near the words, fading out towards the edge of the banner.
+      const near = dir < 0 ? (x - x0) / (x1 - x0) : 1 - (x - x0) / (x1 - x0);
+      const h = o.h * (.18 + .82 * near) * (.35 + .65 * r());
+      const line = document.createElementNS(NS, 'line');
+      const [cr, cg, cb] = mix(APRICOT, CREAM, r() * .6);
+      Object.entries({ x1: x, y1: o.y - h / 2, x2: x, y2: o.y + h / 2, stroke: `rgba(${cr},${cg},${cb},${(.18 + .5 * near).toFixed(3)})`, 'stroke-width': o.w }).forEach(([k, val]) => line.setAttribute(k, val));
+      g.appendChild(line);
+    }
+  }
+  svg.appendChild(g);
+}
+
+/** A photo cropped into a circle, the bird's focus point at the centre. `show` = share of the photo's width the circle spans. */
+function drawPhotoCircle(el) {
+  const o = JSON.parse(el.dataset.photo);
+  const d = o.r * 2;
+  const w = d / o.show;
+  const h = w * o.h / o.w;
+  Object.assign(el.style, { left: (o.cx - o.r) + 'px', top: (o.cy - o.r) + 'px', width: d + 'px', height: d + 'px',
+    backgroundImage: `url(${PHOTO}${o.q}/hero.webp)`, backgroundSize: `${w}px ${h}px`,
+    backgroundPosition: `${(o.r - o.fx * w).toFixed(1)}px ${(o.r - o.fy * h).toFixed(1)}px` });
+}
+
+/** A photo filling a box (cover), the focus point as near the box's middle as the crop allows. */
+function drawCover(el) {
+  const o = JSON.parse(el.dataset.cover);
+  const s = Math.max(o.bw / o.w, o.bh / o.h);
+  const w = o.w * s, h = o.h * s;
+  const left = clamp(o.bw / 2 - o.fx * w, o.bw - w, 0);
+  const top = clamp(o.bh / 2 - o.fy * h, o.bh - h, 0);
+  Object.assign(el.style, { left: o.x + 'px', top: o.y + 'px', width: o.bw + 'px', height: o.bh + 'px',
+    backgroundImage: `url(${PHOTO}${o.q}/hero.webp)`, backgroundSize: `${w}px ${h}px`, backgroundPosition: `${left.toFixed(1)}px ${top.toFixed(1)}px` });
+}
+
+/** Torn paper edge: paper on one side of a ragged line. */
+function drawTear(svg) {
+  const o = JSON.parse(svg.dataset.tear);
+  const r = rng(o.seed);
+  const path = document.createElementNS(NS, 'path');
+  let d;
+  if (o.side === 'right') {
+    // Vertical tear: paper fills from the left edge to a ragged line between x0 and x1.
+    const pts = [];
+    for (let y = 0; y <= o.h; y += 9 + r() * 14) pts.push([o.x0 + (o.x1 - o.x0) * (.35 + .65 * r()), y]);
+    pts.push([o.x0 + (o.x1 - o.x0) * .6, o.h]);
+    d = `M0 0 L${pts.map((p) => p.map((v) => v.toFixed(1)).join(' ')).join(' L')} L0 ${o.h} Z`;
+  } else {
+    // Horizontal tear inside the viewBox height h, from x0 to x1: paper above (side bottom) or below (side top).
+    const pts = [];
+    for (let x = o.x0; x <= o.x1; x += 10 + r() * 16) pts.push([x, o.h * (.3 + .45 * r())]);
+    pts.push([o.x1, o.h * .5]);
+    const line = pts.map((p) => p.map((v) => v.toFixed(1)).join(' ')).join(' L');
+    d = o.side === 'bottom' ? `M${o.x0} 0 L${line} L${o.x1} 0 Z` : `M${o.x0} ${o.h} L${line} L${o.x1} ${o.h} Z`;
+  }
+  path.setAttribute('d', d);
+  path.setAttribute('fill', o.fill);
+  svg.appendChild(path);
+}
+
+/** A photo torn out on all four sides: a ragged clip-path on the photo, the wrapper casts the shadow. */
+function drawTorn(el) {
+  const o = JSON.parse(el.dataset.torn);
+  const r = rng(o.seed);
+  const W = parseFloat(el.style.width), H = parseFloat(el.style.height), a = o.amp;
+  const pts = [];
+  for (let x = 0; x < W; x += 9 + r() * 15) pts.push([x, a * r()]);
+  for (let y = 0; y < H; y += 9 + r() * 15) pts.push([W - a * r(), y]);
+  for (let x = W; x > 0; x -= 9 + r() * 15) pts.push([x, H - a * r()]);
+  for (let y = H; y > 0; y -= 9 + r() * 15) pts.push([a * r(), y]);
+  el.firstElementChild.style.clipPath = `polygon(${pts.map(([x, y]) => `${x.toFixed(1)}px ${y.toFixed(1)}px`).join(', ')})`;
+}
+
+/** A hand-drawn arrow: one cubic curve and a two-stroke head at its end. */
+function drawArrow(svg) {
+  const o = JSON.parse(svg.dataset.arrow);
+  const [x0, y0, c1x, c1y, c2x, c2y, x1, y1] = o.d;
+  const a = Math.atan2(y1 - c2y, x1 - c2x);
+  const h = (da) => `M${x1} ${y1} l${(-Math.cos(a + da) * o.head).toFixed(1)} ${(-Math.sin(a + da) * o.head).toFixed(1)}`;
+  const path = document.createElementNS(NS, 'path');
+  path.setAttribute('d', `M${x0} ${y0} C${c1x} ${c1y} ${c2x} ${c2y} ${x1} ${y1} ${h(0.5)} ${h(-0.5)}`);
+  Object.entries({ fill: 'none', stroke: o.color || '#9A4526', 'stroke-width': o.w, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }).forEach(([k, v]) => path.setAttribute(k, v));
+  svg.appendChild(path);
+}
+
+const FLOCK_COLOURS = ['#B8893A', '#A8552D', '#72301A', '#4A1F12'];
+function drawFlock(svg) {
+  const f = B.flocks[svg.dataset.flock];
+  const g = document.createElementNS(NS, 'g');
+  for (const [x, y, size, rot, c, op = 1] of f.birds) {
+    const s = size / B.w;
+    const use = document.createElementNS(NS, 'use');
+    use.setAttribute('href', '#bird');
+    use.setAttribute('fill', FLOCK_COLOURS[c]);
+    if (op < 1) use.setAttribute('fill-opacity', op);
+    use.setAttribute('transform', `translate(${x} ${y}) rotate(${rot}) scale(${s.toFixed(4)}) translate(${-MEC.cx} ${-MEC.cy})`);
+    g.appendChild(use);
+  }
+  svg.appendChild(g);
+}
+
+document.querySelectorAll('[data-halo]').forEach(drawHalo);
+document.querySelectorAll('[data-ribbon]').forEach(drawRibbon);
+document.querySelectorAll('[data-photo]').forEach(drawPhotoCircle);
+document.querySelectorAll('[data-cover]').forEach(drawCover);
+document.querySelectorAll('[data-tear]').forEach(drawTear);
+document.querySelectorAll('[data-flock]').forEach(drawFlock);
+document.querySelectorAll('[data-torn]').forEach(drawTorn);
+document.querySelectorAll('[data-arrow]').forEach(drawArrow);
+document.querySelectorAll('[data-bird]').forEach((el) => placeBird(el, JSON.parse(el.dataset.bird)));
+
+window.ready = Promise.all([document.fonts.ready, ...[...document.querySelectorAll('.photo-circle, .plate-photo')].map((el) => new Promise((res) => {
+  const img = new Image(); img.onload = res; img.onerror = res; img.src = el.style.backgroundImage.slice(5, -2);
+}))]);
+</script>
+</body>
+</html>

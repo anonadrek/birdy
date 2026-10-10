@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>cover</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@500;600&display=swap">
+<style>
+  :root {
+    --peach: #FDE5CB; --peach-hi: #FEEBD6; --peach-lo: #F8D6B4;
+    --card: #FFFAF1; --ink: #302019; --muted: #6E584B; --rust: #9A4526; --copper: #A8552D;
+    --serif: "DM Serif Display", Georgia, serif;
+    --sans: Inter, "Segoe UI", system-ui, sans-serif;
+    --hand: Caveat, "Segoe Print", cursive;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body {
+    position: relative;
+    background:
+      radial-gradient(circle at 18% 12%, rgba(255, 255, 255, .55), transparent 46%),
+      radial-gradient(circle at 85% 88%, rgba(232, 176, 128, .28), transparent 50%),
+      linear-gradient(170deg, var(--peach-hi), var(--peach) 48%, var(--peach-lo));
+    font-family: var(--sans); color: var(--ink);
+  }
+  canvas { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  .kicker { position: absolute; left: 96px; top: 300px; font: 700 66px/1 var(--hand); color: var(--rust); transform: rotate(-3deg); }
+  .brand { position: absolute; left: 0; right: 0; top: 1584px; display: flex; justify-content: center; align-items: center; gap: 14px; font: 600 34px/1 var(--sans); color: var(--ink); letter-spacing: .01em; }
+  .brand canvas { position: static; width: 50px; height: 48px; }
+  /* The clue under the flock, the question, and the tiny silhouette credit. */
+  .clue { position: absolute; left: 110px; right: 110px; top: 1250px; text-align: center; font: 700 92px/1.02 var(--hand); color: var(--ink); text-wrap: balance; }
+  .clue-ask { position: absolute; left: 0; right: 0; top: 1500px; text-align: center; font: 600 30px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--rust); }
+  .sil-credit { position: absolute; left: 0; right: 0; top: 1650px; text-align: center; font: 500 19px/1 var(--sans); color: var(--muted); opacity: .85; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="flock-data.js"></script>
+<script>
+  // Direction D: the whole flock (one bird per species in Birdy, 839 in total) fills this
+  // species' own silhouette, a darker outline of birds along the edge, a few leaving from its
+  // highest point, and this species' own bird lit. The clue is the first hint, the shape the
+  // second, the song the answer.
+  var COLOURS = ['#B8893A', '#A8552D', '#72301A', '#4A1F12'];
+
+  var qid = new URLSearchParams(location.search).get('qid');
+  var F = window.FLOCK;
+  var mark = new Path2D(F.path);
+  var ctx = document.getElementById('c').getContext('2d');
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function rng(seed) {
+    var s = seed >>> 0;
+    return function () { s = (s + 0x6D2B79F5) >>> 0; var t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  }
+  function bird(g, x, y, size, rot, colour, alpha) {
+    var k = size / F.w;
+    g.save();
+    g.globalAlpha = alpha;
+    g.translate(x, y);
+    g.rotate(rot * Math.PI / 180);
+    g.scale(k, k);
+    g.translate(-F.mec.cx, -F.mec.cy);
+    g.fillStyle = colour;
+    g.fill(mark);
+    g.restore();
+  }
+  // A stable, species-specific integer: picks the lit bird and seeds the layout, so the same
+  // QID always renders the same flock (no external index needed).
+  function keyIndex(key, n) {
+    var h = 0;
+    for (var i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) >>> 0;
+    return n > 0 ? h % n : h;
+  }
+
+  // Exactly 839 birds (one per species in Birdy) fill the silhouette: a darker outline of birds
+  // along the edge, the rest inside, a few leaving the flock, and this species' bird lit.
+  function silhouetteFlock(sp) {
+    return new Promise(function (done) {
+      var img = new Image();
+      img.onload = function () {
+        var box = { x: 90, y: 410, w: 900, h: 810 };
+        var ar = img.naturalWidth / img.naturalHeight;
+        var w = box.w, h = w / ar;
+        if (h > box.h) { h = box.h; w = h * ar; }
+        var x0 = box.x + (box.w - w) / 2, y0 = box.y + (box.h - h) / 2;
+        var m = document.createElement('canvas');
+        m.width = 1080; m.height = 1920;
+        var mg = m.getContext('2d');
+        mg.drawImage(img, x0, y0, w, h);
+        var px = mg.getImageData(0, 0, 1080, 1920).data;
+        function inside(x, y) {
+          x = Math.round(x); y = Math.round(y);
+          if (x < 0 || y < 0 || x >= 1080 || y >= 1920) return false;
+          return px[(y * 1080 + x) * 4 + 3] > 128;
+        }
+        var r = rng(7919 ^ keyIndex(sp.qid, 0));
+        // Spatial hash for minimum distances.
+        var CELL = 8, hash = {};
+        function near(x, y, d) {
+          var cx = Math.floor(x / CELL), cy = Math.floor(y / CELL), k = Math.ceil(d / CELL);
+          for (var i = -k; i <= k; i++) for (var j = -k; j <= k; j++) {
+            var list = hash[(cx + i) + ',' + (cy + j)];
+            if (!list) continue;
+            for (var n = 0; n < list.length; n++) { var p = list[n]; if ((p[0] - x) * (p[0] - x) + (p[1] - y) * (p[1] - y) < d * d) return true; }
+          }
+          return false;
+        }
+        function add(x, y) { var key = Math.floor(x / CELL) + ',' + Math.floor(y / CELL); (hash[key] = hash[key] || []).push([x, y]); }
+        // Outline birds.
+        var cand = [];
+        for (var y = Math.floor(y0); y < y0 + h; y += 2) for (var x = Math.floor(x0); x < x0 + w; x += 2) {
+          if (!inside(x, y)) continue;
+          if (!inside(x - 5, y) || !inside(x + 5, y) || !inside(x, y - 5) || !inside(x, y + 5)) cand.push([x, y]);
+        }
+        for (var s = cand.length - 1; s > 0; s--) { var t = Math.floor(r() * (s + 1)); var tmp = cand[s]; cand[s] = cand[t]; cand[t] = tmp; }
+        var edge = [];
+        cand.forEach(function (p) { if (!near(p[0], p[1], 15)) { edge.push(p); add(p[0], p[1]); } });
+        // Interior: a jittered grid, the cell chosen so outline + interior + leavers come to 839.
+        var LEAVE = 7, TOTAL = 839, inner = [];
+        for (var cell = 30; cell > 8; cell -= 0.5) {
+          inner = [];
+          for (var gy = y0; gy < y0 + h; gy += cell) for (var gx = x0; gx < x0 + w; gx += cell) {
+            var jx = gx + (r() - 0.5) * cell * 0.8, jy = gy + (r() - 0.5) * cell * 0.8;
+            if (inside(jx, jy) && inside(jx - 4, jy) && inside(jx + 4, jy) && !near(jx, jy, 11)) inner.push([jx, jy]);
+          }
+          if (edge.length + inner.length + LEAVE >= TOTAL) break;
+        }
+        while (edge.length + inner.length + LEAVE > TOTAL) {
+          if (inner.length) inner.splice(Math.floor(r() * inner.length), 1); else edge.pop();
+        }
+        var lit = inner.length ? inner.splice(keyIndex(sp.qid, inner.length), 1)[0] : edge.pop();
+        var pick = function (weights) { var u = r(), a = 0; for (var i = 0; i < weights.length; i++) { a += weights[i]; if (u < a) return COLOURS[i]; } return COLOURS[1]; };
+        inner.forEach(function (p) { bird(ctx, p[0], p[1], 13 + r() * 12, -8 + (r() - 0.5) * 44, pick([0.25, 0.4, 0.25, 0.1]), 0.72 + r() * 0.28); });
+        edge.forEach(function (p) { bird(ctx, p[0], p[1], 19 + r() * 7, -8 + (r() - 0.5) * 36, pick([0.05, 0.2, 0.5, 0.25]), 0.9 + r() * 0.1); });
+        // A few leaving the flock from its highest point; they fly towards the side with more
+        // room, so they never pile up against the edge.
+        // They leave from the highest point of the right half (away from "sound on" at the top left).
+        var right = edge.filter(function (p) { return p[0] > 520; });
+        var from = right.length ? right : edge;
+        var topP = from.reduce(function (a, p) { return p[1] < a[1] ? p : a; }, from[0]);
+        var way = topP[0] > 900 ? -1 : 1;
+        for (var n = 0; n < LEAVE; n++) {
+          var lx = topP[0] + way * (34 + n * 30 + r() * 16), ly = topP[1] - 26 - n * 20 - r() * 14;
+          bird(ctx, lx, ly, 12 + r() * 6, (way > 0 ? -28 : 28) + (r() - 0.5) * 24, COLOURS[1 + Math.floor(r() * 2)], 0.6 + r() * 0.3);
+        }
+        var size = 44;
+        ctx.save();
+        ctx.beginPath(); ctx.arc(lit[0], lit[1], size * 0.95, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFFAF1'; ctx.fill();
+        ctx.lineWidth = 5; ctx.strokeStyle = '#9A4526'; ctx.stroke();
+        ctx.restore();
+        bird(ctx, lit[0], lit[1], size, -8, '#9A4526', 1);
+        window.__count = edge.length + inner.length + 1 + LEAVE;
+        done();
+      };
+      img.onerror = function () { done(); };
+      img.src = 'sil/' + sp.qid + '.svg';
+    });
+  }
+
+  // Kicker and brand (the brand mark drawn from the same path as the flock).
+  document.body.appendChild(el('div', 'kicker', 'sound on'));
+  var brand = el('div', 'brand');
+  var logo = document.createElement('canvas');
+  logo.width = 100; logo.height = 96;
+  var lg = logo.getContext('2d');
+  lg.scale(100 / F.w, 100 / F.w);
+  lg.fillStyle = '#A8552D';
+  lg.fill(mark);
+  brand.appendChild(logo);
+  brand.appendChild(el('span', null, 'birdy.community'));
+  document.body.appendChild(brand);
+
+  window.__ready = fetch('covers.json')
+    .then(function (res) { return res.json(); })
+    .then(function (covers) {
+      var entry = covers[qid];
+      if (!entry) throw new Error('no covers.json entry for qid=' + qid);
+      var sp = { qid: qid, clue: entry.clue };
+      var credit = entry.silhouette.author + ', ' + entry.silhouette.licence + (/^CC BY/.test(entry.silhouette.licence) ? ', adapted' : '');
+      document.body.appendChild(el('div', 'clue', sp.clue));
+      document.body.appendChild(el('div', 'clue-ask', 'Whose song is this?'));
+      document.body.appendChild(el('div', 'sil-credit', 'Silhouette: ' + credit + ', via PhyloPic'));
+      return Promise.all([document.fonts.ready, silhouetteFlock(sp)]);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<title>Birdys sociala profiler</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;600&display=swap">
+<style>
+:root {
+  --ground: #F6EFE2; --card: #FFFAF1; --ink: #2A1D17; --muted: #6E584B; --rule: #E2D5C0;
+  --accent: #9A4526; --accent-ink: #FFF8EE; --hand: #9A4526; --chip: #EFE3CF; --stage: #EBE0CD; --focus: #9A4526;
+  --ok: #3F6A33; --ok-bg: #E3EDD8; --no: #8E3B1F; --no-bg: #F6DDD0; --unk: #7A5A12; --unk-bg: #F3E6C4;
+  --shadow: 0 1px 2px rgba(42, 29, 23, .08), 0 10px 28px rgba(42, 29, 23, .12);
+  --serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --script: 'Caveat', 'Segoe Print', 'Bradley Hand', cursive;
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #1A120E; --card: #251A15; --ink: #F6EFE2; --muted: #C9B6A4; --rule: #3E2F26;
+    --accent: #F2B27A; --accent-ink: #1E1410; --hand: #F2B27A; --chip: #33251D; --stage: #2A1F19; --focus: #F2B27A;
+    --ok: #B5D29A; --ok-bg: #2B3A22; --no: #F4A98A; --no-bg: #43251B; --unk: #E8CB88; --unk-bg: #3D311A;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 12px 30px rgba(0, 0, 0, .35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #1A120E; --card: #251A15; --ink: #F6EFE2; --muted: #C9B6A4; --rule: #3E2F26;
+  --accent: #F2B27A; --accent-ink: #1E1410; --hand: #F2B27A; --chip: #33251D; --stage: #2A1F19; --focus: #F2B27A;
+  --ok: #B5D29A; --ok-bg: #2B3A22; --no: #F4A98A; --no-bg: #43251B; --unk: #E8CB88; --unk-bg: #3D311A;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 12px 30px rgba(0, 0, 0, .35);
+  color-scheme: dark;
+}
+/*{{IMAGES}}*/
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 16px/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 18px; padding-block: 30px 90px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+code { font: 600 .86em/1.4 ui-monospace, 'Cascadia Mono', Consolas, monospace; background: var(--chip); padding: .1em .4em; border-radius: 5px; overflow-wrap: anywhere; }
+[hidden] { display: none !important; }
+
+/* ---------- Head of the page ---------- */
+.top { display: grid; gap: 14px; padding-bottom: 26px; border-bottom: 1px solid var(--rule); }
+.kicker { font: 700 26px/1 var(--script); color: var(--hand); }
+h1 { font-size: clamp(36px, 6.4vw, 60px); line-height: 1.02; letter-spacing: -.01em; }
+h1 em { color: var(--accent); }
+.lede { max-width: 64ch; color: var(--muted); font-size: 17px; }
+.jump { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 15px; }
+.jump a { font-weight: 600; }
+.toggle { display: inline-flex; gap: 8px; align-items: center; margin-left: auto; font-size: 14px; color: var(--muted); cursor: pointer; }
+.toggle input { width: 18px; height: 18px; accent-color: var(--accent); }
+.sec { font-size: clamp(28px, 4.2vw, 38px); line-height: 1.08; margin-top: 56px; }
+.sec-note { margin-top: 8px; max-width: 66ch; color: var(--muted); }
+
+/* ---------- Profile picture ---------- */
+.prof { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 22px; align-items: center; margin-top: 20px; }
+.prof-big { justify-items: center; }
+.prof-big .av { width: min(240px, 100%); aspect-ratio: 1; height: auto; box-shadow: var(--shadow); }
+.prof-sizes { display: grid; gap: 14px; min-width: 0; }
+.av { display: block; flex: none; border-radius: 50%; background-size: cover; background-position: center; }
+.sizes { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 14px 22px; padding: 16px 18px; border-radius: 12px; width: fit-content; max-width: 100%; }
+.sizes.light { background: #FFFFFF; border: 1px solid #E6E1D9; }
+.sizes.dark { background: #121212; }
+.sz { display: grid; justify-items: center; gap: 6px; }
+.sz small { font: 600 11px/1 var(--sans); letter-spacing: .06em; color: #8A8178; font-variant-numeric: tabular-nums; }
+.s110 { width: 110px; height: 110px; } .s56 { width: 56px; height: 56px; } .s40 { width: 40px; height: 40px; } .s32 { width: 32px; height: 32px; }
+@media (max-width: 640px) { .prof { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- The two slogans ---------- */
+.slogans { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 20px; margin-top: 20px; }
+.slg { display: grid; gap: 16px; align-content: start; padding: 18px; background: var(--card); border: 2px solid var(--rule); border-radius: 16px; }
+.slg.is-on { border-color: var(--accent); }
+.slg-tag { justify-self: start; font: 600 11px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); background: var(--chip); padding: 6px 9px; border-radius: 999px; }
+.slg.is-on .slg-tag { color: var(--accent-ink); background: var(--accent); }
+.slg h3 { font-size: clamp(26px, 3.4vw, 32px); line-height: 1.08; }
+.slg h3 em { font: 700 1.12em/1 var(--script); font-style: normal; color: var(--accent); }
+.slg-why { color: var(--muted); font-size: 15px; }
+figure { margin: 0; display: grid; gap: 8px; align-content: start; min-width: 0; }
+figcaption { font-size: 14px; color: var(--muted); }
+figcaption b { color: var(--ink); font-weight: 600; }
+.full { position: relative; width: 100%; background-size: 100% 100%; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+.full.fb { aspect-ratio: 1640 / 720; }
+.full.yt { aspect-ratio: 2560 / 1440; }
+.g { position: absolute; pointer-events: none; }
+.g.cut { background: repeating-linear-gradient(135deg, rgba(10, 6, 4, .46) 0 6px, rgba(10, 6, 4, .28) 6px 12px); }
+.g.cut.soft { background: repeating-linear-gradient(135deg, rgba(10, 6, 4, .26) 0 6px, rgba(10, 6, 4, .12) 6px 12px); }
+.g.safe { border: 2px dashed #E0A800; box-shadow: 0 0 0 1px rgba(0, 0, 0, .35); border-radius: 2px; }
+.g.ring { border: 2px dashed #1F8FB8; border-radius: 50%; box-shadow: 0 0 0 1px rgba(255, 255, 255, .6); }
+.g-tag { position: absolute; font: 600 10px/1.2 var(--sans); color: #FFF8EE; background: rgba(12, 8, 6, .78); padding: 3px 6px; border-radius: 4px; white-space: nowrap; pointer-events: none; }
+.hide-guides .g, .hide-guides .g-tag { display: none; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 14px; font-size: 13px; color: var(--muted); }
+.legend i { display: inline-block; width: 22px; height: 12px; vertical-align: -1px; margin-right: 6px; border-radius: 2px; }
+.lg-cut { background: repeating-linear-gradient(135deg, #3A2A21 0 4px, #8B7869 4px 8px); }
+.lg-safe { border: 2px dashed #C89B00; }
+.lg-ring { border: 2px dashed #1F8FB8; border-radius: 50% !important; width: 14px !important; }
+
+/* ---------- The choice ---------- */
+.choice { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; margin-top: 18px; max-width: 900px; }
+.opt { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: var(--card); border: 2px solid var(--rule); border-radius: 12px; cursor: pointer; }
+.opt:has(input:checked) { border-color: var(--accent); background: var(--chip); }
+.opt input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--accent); flex: none; }
+.opt b { display: block; font: 400 21px/1.15 var(--serif); }
+.opt small { display: block; margin-top: 4px; font-size: 14px; color: var(--muted); }
+.pick-foot { display: grid; gap: 10px; margin-top: 18px; max-width: 760px; }
+.pick-foot label { font-weight: 600; font-size: 15px; }
+textarea { font: 15px/1.5 var(--sans); color: var(--ink); background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 10px 12px; resize: vertical; width: 100%; }
+.answer { margin: 0; padding: 14px 16px; background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--accent); border-radius: 10px; white-space: pre-wrap; overflow-wrap: anywhere; font: 15px/1.55 var(--sans); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.btn { font: 600 15px/1 var(--sans); color: var(--accent-ink); background: var(--accent); border: 0; border-radius: 999px; padding: 12px 18px; cursor: pointer; }
+.status { font-size: 14px; color: var(--muted); }
+
+/* ---------- Device mocks ---------- */
+.stage { margin-top: 20px; padding: 26px 22px; background: var(--stage); border-radius: 18px; display: grid; gap: 30px; }
+.phones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+@media (max-width: 820px) {
+  .phones { grid-template-columns: repeat(3, minmax(250px, 1fr)); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; margin-inline: -22px; padding-inline: 22px; scroll-padding-inline: 22px; }
+  .phones > figure { scroll-snap-align: start; }
+}
+.phone { width: 100%; max-width: 300px; margin-inline: auto; aspect-ratio: 9 / 17.6; overflow: hidden; border-radius: 30px; border: 7px solid #17110E; background: #FFFFFF; color: #0F0F0F; box-shadow: var(--shadow); container-type: inline-size; }
+.ph { font: 400 4.15cqw/1.35 var(--ui); height: 100%; }
+.ph-bar { display: flex; justify-content: space-between; align-items: center; height: 2.3em; padding: 0 1.4em; font-weight: 600; font-size: .95em; }
+.ph-bat { width: 1.9em; height: .9em; border: 1.5px solid currentColor; border-radius: .25em; position: relative; }
+.ph-bat::after { content: ''; position: absolute; inset: 1.5px; right: 35%; background: currentColor; border-radius: .1em; }
+.ig-top { display: flex; align-items: center; gap: .35em; padding: .3em 1.1em .7em; font-weight: 700; font-size: 1.2em; }
+.ig-top i { width: .45em; height: .45em; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translateY(-.15em); }
+.ig-head { display: flex; align-items: center; gap: 1.2em; padding: 0 1.1em; }
+.ig-av { width: 6.6em; height: 6.6em; }
+.ig-stats { display: flex; flex: 1; justify-content: space-around; text-align: center; }
+.ig-stats b { display: block; font-size: 1.15em; }
+.ig-stats span { font-size: .92em; }
+.ig-txt { padding: .7em 1.1em 0; display: grid; gap: .1em; }
+.ig-name { font-weight: 700; }
+.ig-cat { color: #737373; }
+.ig-link { color: #00376B; font-weight: 600; display: flex; gap: .35em; align-items: center; }
+.ig-link svg { width: .95em; height: .95em; flex: none; }
+.ig-btns, .fb-btns { display: grid; grid-template-columns: 1fr 1fr; gap: .45em; padding: .8em 1.1em; }
+.ig-btns span, .fb-btns span { text-align: center; font-weight: 600; padding: .5em 0; border-radius: .6em; background: #EFEFEF; }
+.ig-btns .pri { background: #0095F6; color: #FFFFFF; }
+.ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: .5em; }
+.ig-grid i { display: block; aspect-ratio: 3 / 4; background-size: cover; background-position: center; }
+.fb-cover { aspect-ratio: 16 / 9; background-size: auto 100%; background-position: center; background-repeat: no-repeat; }
+.fb-av { width: 34%; aspect-ratio: 1; height: auto; margin: -17% 0 0 4%; border: 4px solid #FFFFFF; position: relative; }
+.fb-txt { padding: .5em 1.1em 0; display: grid; gap: .25em; }
+.fb-name { font-weight: 700; font-size: 1.6em; line-height: 1.15; }
+.fb-meta { color: #65676B; }
+.fb-btns span { background: #E4E6EB; border-radius: .5em; }
+.fb-btns .pri { background: #0866FF; color: #FFFFFF; }
+.tabs { display: flex; gap: 1.2em; padding: .2em 1.1em 0; border-bottom: 1px solid #DADDE1; color: #65676B; font-weight: 600; white-space: nowrap; overflow: hidden; }
+.tabs span { padding: .6em 0; }
+.tabs .on { color: #0F0F0F; box-shadow: inset 0 -2px 0 currentColor; }
+.fb .tabs .on { color: #0866FF; }
+.post { margin-top: .5em; border-top: .45em solid #F0F2F5; padding-top: .7em; }
+.post-h { display: flex; gap: .6em; align-items: center; padding: 0 1.1em; }
+.post-h .av { width: 2.6em; height: 2.6em; }
+.post-h b { display: block; }
+.post-h span { color: #65676B; font-size: .9em; }
+.post p { padding: .5em 1.1em; }
+.post i.pic { display: block; aspect-ratio: 4 / 5; background-size: cover; background-position: center; }
+.yt-banner { margin: .6em .9em 0; aspect-ratio: 1546 / 423; border-radius: .7em; background-size: 165.6% auto; background-position: center; background-repeat: no-repeat; }
+.yt-id { display: flex; gap: .9em; align-items: center; padding: .9em .9em 0; }
+.yt-av { width: 5.4em; height: 5.4em; }
+.yt-name { font-weight: 700; font-size: 1.55em; line-height: 1.15; }
+.yt-meta { color: #606060; font-size: .92em; }
+.yt-desc { padding: .6em .9em 0; color: #606060; }
+.yt-desc b, .ytd-desc b { color: #0F0F0F; }
+.yt-links { padding: .25em .9em 0; color: #065FD4; font-weight: 600; font-size: .92em; }
+.yt-sub { display: block; margin: .8em .9em; padding: .6em 0; text-align: center; font-weight: 600; color: #FFFFFF; background: #0F0F0F; border-radius: 999px; }
+.shelf { padding: .8em .9em 0; }
+.shelf-h { font-weight: 700; font-size: 1.15em; margin-bottom: .5em; }
+.shorts { display: grid; grid-template-columns: repeat(3, 1fr); gap: .4em; }
+.shorts i { display: block; aspect-ratio: 9 / 16; border-radius: .6em; background-size: cover; background-position: center; }
+.desks { display: grid; gap: 30px; }
+.desk { background: #FFFFFF; color: #050505; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); container-type: inline-size; }
+.dk { font: 400 1.3cqw/1.35 var(--ui); }
+.fbd-cover { aspect-ratio: 820 / 312; background-size: 100% auto; background-position: center; background-repeat: no-repeat; border-radius: 0 0 .9em .9em; }
+.fbd-id { display: flex; align-items: flex-end; gap: 1.4em; padding: 0 3.2% 1.2em; }
+.fbd-av { width: 13.4%; aspect-ratio: 1; height: auto; margin-top: -4%; border: .35em solid #FFFFFF; flex: none; }
+.fbd-name { font-weight: 700; font-size: 2.6em; line-height: 1.1; }
+.fbd-meta { color: #65676B; font-weight: 600; font-size: 1.15em; }
+.fbd-txt { flex: 1; min-width: 0; padding-bottom: .4em; }
+.fbd-btns { display: flex; gap: .6em; padding-bottom: .6em; }
+.fbd-btns span { font-weight: 600; font-size: 1.1em; padding: .55em 1.2em; border-radius: .5em; background: #E4E6EB; }
+.fbd-btns .pri { background: #0866FF; color: #FFFFFF; }
+.desk .tabs { padding: 0 3.2%; font-size: 1.15em; gap: 2em; }
+.ytd-banner { margin: 1.6em 2.4% 0; aspect-ratio: 2560 / 423; border-radius: 1.2em; background-size: 100% auto; background-position: center; background-repeat: no-repeat; }
+.ytd-id { display: flex; gap: 1.8em; align-items: center; padding: 1.6em 2.4% 1.2em; }
+.ytd-av { width: 12.5%; aspect-ratio: 1; height: auto; flex: none; }
+.ytd-txt { display: grid; gap: .3em; min-width: 0; }
+.ytd-name { font-weight: 700; font-size: 3em; line-height: 1.1; }
+.ytd-meta { color: #606060; font-size: 1.1em; }
+.ytd-meta b { color: #0F0F0F; }
+.ytd-desc { color: #606060; font-size: 1.1em; }
+.ytd-links { color: #065FD4; font-weight: 600; font-size: 1.1em; }
+.ytd-sub { justify-self: start; margin-top: .5em; padding: .6em 1.3em; font-weight: 600; font-size: 1.1em; color: #FFFFFF; background: #0F0F0F; border-radius: 999px; }
+
+/* ---------- Texts, accounts, specs ---------- */
+.bios { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; margin-top: 18px; align-items: start; }
+.bios.long { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+.bio { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 16px; display: grid; gap: 10px; align-content: start; }
+.bio header { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.bio h3 { font-size: 22px; }
+.letter { font-family: var(--serif); font-style: italic; color: var(--accent); }
+.count { font: 600 12px/1 var(--sans); font-variant-numeric: tabular-nums; color: var(--ok); background: var(--ok-bg); padding: 5px 8px; border-radius: 999px; white-space: nowrap; }
+.bio-text { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 15px; }
+.bio-extra { font-size: 13px; color: var(--muted); }
+.copy { justify-self: start; font: 600 14px/1 var(--sans); color: var(--ink); background: var(--chip); border: 1px solid var(--rule); border-radius: 999px; padding: 9px 14px; cursor: pointer; }
+.tbl-wrap { overflow-x: auto; margin-top: 18px; border: 1px solid var(--rule); border-radius: 14px; background: var(--card); }
+table { border-collapse: collapse; width: 100%; min-width: 640px; }
+th, td { padding: 12px 14px; text-align: left; vertical-align: middle; border-bottom: 1px solid var(--rule); }
+tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+thead th { font: 600 12px/1.3 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+tbody th { font-weight: 600; font-size: 15px; }
+.chip { display: inline-block; font: 600 12px/1.2 var(--sans); padding: 4px 8px; border-radius: 999px; white-space: nowrap; }
+.chip.ok { color: var(--ok); background: var(--ok-bg); }
+.chip.unk { color: var(--unk); background: var(--unk-bg); }
+.handles td small { display: block; margin-top: 4px; font-size: 13px; color: var(--muted); max-width: 52ch; }
+.handles td small b { color: var(--ink); }
+.specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px; margin-top: 18px; align-items: start; }
+.spec { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 16px; display: grid; gap: 8px; align-content: start; }
+.spec h3 { font-size: 22px; }
+.spec ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 15px; }
+.spec li::marker { color: var(--accent); }
+.fine { margin-top: 26px; font-size: 13px; color: var(--muted); max-width: 80ch; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap" id="page">
+<header class="top">
+  <p class="kicker">Facebook, Instagram och YouTube</p>
+  <h1>Flocken, <em>klar att ladda upp</em></h1>
+  <p class="lede">Du valde C Flocken för profilbild, Facebook-omslag och YouTube-banner. Sista putsen: profilbilden håller nu även i 32 px, sloganen är inte längre knuten till Europa och ingen siffra syns någonstans. Omslagen finns med två slogans; välj en och kopiera svaret.</p>
+  <nav class="jump" aria-label="På sidan">
+    <a href="#profil">Profilbilden</a><a href="#slogan">Två slogans</a><a href="#valj">Välj slogan</a><a href="#vyer">Mobil och dator</a><a href="#texter">Texterna</a><a href="#namn">Konton</a><a href="#matt">Mått</a>
+    <label class="toggle" for="guides"><input type="checkbox" id="guides" checked> Visa säkra ytor</label>
+  </nav>
+</header>
+
+<h2 class="sec" id="profil">Profilbilden</h2>
+<p class="sec-note">En fågel för varje art i Birdy. Fåglarna längs kanten ritar nu konturen och under flocken ligger en svag siluett av märket, så formen håller när bilden blir liten. Ingen siffra står i bilden.</p>
+<div class="prof">
+  <figure class="prof-big"><i class="av i-av-flock" role="img" aria-label="Profilbilden: Birdys fågel byggd av en flock små fåglar"></i><figcaption><code>profile-flock.png</code> 1080 × 1080</figcaption></figure>
+  <div class="prof-sizes">
+    <div class="sizes light"><span class="sz"><i class="av s110 i-av-flock" role="img" aria-label="110 px på ljust"></i><small>110</small></span><span class="sz"><i class="av s56 i-av-flock"></i><small>56</small></span><span class="sz"><i class="av s40 i-av-flock"></i><small>40</small></span><span class="sz"><i class="av s32 i-av-flock"></i><small>32 px</small></span></div>
+    <div class="sizes dark"><span class="sz"><i class="av s110 i-av-flock" role="img" aria-label="110 px på mörkt"></i><small>110</small></span><span class="sz"><i class="av s56 i-av-flock"></i><small>56</small></span><span class="sz"><i class="av s40 i-av-flock"></i><small>40</small></span><span class="sz"><i class="av s32 i-av-flock"></i><small>32 px</small></span></div>
+  </div>
+</div>
+
+<h2 class="sec" id="slogan">Omslagen med två slogans</h2>
+<p class="sec-note">Samma flock och samma layout, bara sloganen skiljer. Flocken strömmar in nerifrån och blir till märket, och den handskrivna raden pekar på den: <i>one bird in this flock for every species in Birdy</i>.</p>
+<div class="slogans">
+  <article class="slg is-on" data-slg="know">
+    <span class="slg-tag">Förstahand</span>
+    <h3>Know the bird. <em>Keep the moment.</em></h3>
+    <p class="slg-why">Webbens egen rubrik, så sajten och kanalerna säger samma sak.</p>
+<!--{{FULLS:know}}-->
+  </article>
+  <article class="slg" data-slg="name">
+    <span class="slg-tag">Alternativ</span>
+    <h3>Every bird has a <em>name.</em></h3>
+    <p class="slg-why">Kortare och om fåglarna snarare än appen; passar en kanal där varje inlägg avslöjar ett namn.</p>
+<!--{{FULLS:name}}-->
+  </article>
+</div>
+<p class="legend"><span><i class="lg-cut"></i>beskärs (mörkare: på dator, ljusare: i mobilen)</span><span><i class="lg-safe"></i>säker yta, syns överallt</span><span><i class="lg-ring"></i>profilbilden i Facebook-mobilen, ungefär</span></p>
+
+<section aria-labelledby="valj">
+  <h2 class="sec" id="valj">Välj slogan</h2>
+  <div class="choice" role="radiogroup" aria-labelledby="valj">
+    <label class="opt" for="s-know"><input type="radio" name="slogan" id="s-know" value="know" checked><span><b>Know the bird. Keep the moment.</b><small>Förstahand, samma som webben</small></span></label>
+    <label class="opt" for="s-name"><input type="radio" name="slogan" id="s-name" value="name"><span><b>Every bird has a name.</b><small>Alternativet</small></span></label>
+  </div>
+  <div class="pick-foot">
+    <label for="pick-note">Kommentar (valfri)</label>
+    <textarea id="pick-note" rows="2" placeholder="Till exempel: något du vill ändra i omslaget"></textarea>
+    <p class="answer" id="pick-answer" aria-live="polite"></p>
+    <div class="btn-row"><button type="button" class="btn" id="pick-copy">Kopiera svaret</button><span class="status" id="pick-status" role="status"></span></div>
+  </div>
+</section>
+
+<h2 class="sec" id="vyer">I mobilen och på datorn</h2>
+<p class="sec-note">Med sloganen du har valt ovan.</p>
+<!--{{MOCKS:know}}-->
+<!--{{MOCKS:name}}-->
+
+<section aria-labelledby="texter">
+  <h2 class="sec" id="texter">Profiltexterna</h2>
+  <p class="sec-note">På engelska, som allt i kanalerna, och bara sådant som stämmer: identifiering och ljud-ID är gratis, Premium är ett tillval, appen laddar inte upp dina fynd, iPhone kommer. Inga löften om träffsäkerhet och inget som knyter Birdy till en region eller ett antal arter. Samma texter finns i <code>bios.md</code> i mappen.</p>
+  <div class="bios">
+<!--{{BIOS_SHORT}}-->
+  </div>
+  <div class="bios long">
+<!--{{BIOS_LONG}}-->
+  </div>
+</section>
+
+<section aria-labelledby="namn">
+  <h2 class="sec" id="namn">Konton och användarnamn</h2>
+  <p class="sec-note">Läget 8 oktober. Mitt förslag: <b>birdy.community</b> överallt. Det är redan webbadressen, YouTube-namnet och raden i slutet av varje video, så folk hittar Birdy under samma namn var de än ser det.</p>
+  <div class="tbl-wrap">
+    <table class="handles">
+      <thead><tr><th scope="col">Plattform</th><th scope="col">Nu</th><th scope="col">Förslag</th></tr></thead>
+      <tbody>
+        <tr>
+          <th scope="row">Facebook</th>
+          <td><span class="chip ok">Klar</span><small>Sidan <b>Birdy</b>, kategori Applikationssida, inget användarnamn än: <a href="https://www.facebook.com/profile.php?id=61595339305266">profile.php?id=61595339305266</a></small></td>
+          <td><small>Sätt användarnamnet <b>birdy.community</b> (Facebook bortser från punkter, så det räknas som birdycommunity). Säger Facebook nej, behåll nummerlänken tills vidare.</small></td>
+        </tr>
+        <tr>
+          <th scope="row">Instagram</th>
+          <td><span class="chip ok">Klar</span><small><b>@app.birdy</b>, kopplat till Facebook-sidan.</small></td>
+          <td><small>Byt till <b>@birdy.community</b> i dag, före första inlägget fredag 08.00, om namnet är ledigt (Instagram kollar det medan du skriver). Är det upptaget, behåll @app.birdy här och kör birdy.community på resten.</small></td>
+        </tr>
+        <tr>
+          <th scope="row">YouTube</th>
+          <td><span class="chip ok">Klar</span><small><b>@birdy.community</b>, din kanal.</small></td>
+          <td><small>Behåll.</small></td>
+        </tr>
+        <tr>
+          <th scope="row">TikTok</th>
+          <td><span class="chip unk">Inte skapat</span><small>@birdy.community var ledigt 8 oktober; @birdyapp är upptaget.</small></td>
+          <td><small>Registrera <b>@birdy.community</b> nu, även om kontot får vänta. Undvik birdycommunity: en kryptovaluta som heter Birdy använder det på TikTok.</small></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sec-note" style="margin-top:16px">Inläggen: allt på engelska, med fågelns svenska namn inom parentes efter det engelska och #fåglar #fågelskådning bland hashtaggarna, till exempel <i>The Eurasian Blue Tit (Blåmes) is a tit with a pale blue crown…</i></p>
+</section>
+
+<section aria-labelledby="matt">
+  <h2 class="sec" id="matt">Mått</h2>
+  <div class="specs">
+    <article class="spec">
+      <h3>Profilbild</h3>
+      <ul>
+        <li><code>profile-flock.png</code> 1080 × 1080, långt under plattformarnas gränser. Samma fil för Instagram, Facebook, YouTube och senare TikTok.</li>
+        <li>Alla beskär till en cirkel; märket ligger inom en cirkel med radien 505 px.</li>
+      </ul>
+    </article>
+    <article class="spec">
+      <h3>Facebook-omslag</h3>
+      <ul>
+        <li><code>facebook-cover-flock-know.png</code> eller <code>facebook-cover-flock-name.png</code>, 1640 × 720, PNG eftersom omslaget har text.</li>
+        <li>Datorn visar hela bredden men inte de översta och nedersta 48 px; mobilen hela höjden men inte 180 px på var sida. Texten ligger inom 1280 × 624 i mitten och utanför hörnet där profilbilden sitter i mobilen.</li>
+        <li>Ladda upp och låt omslaget ligga centrerat.</li>
+      </ul>
+    </article>
+    <article class="spec">
+      <h3>YouTube-banner</h3>
+      <ul>
+        <li><code>youtube-banner-flock-know.png</code> eller <code>youtube-banner-flock-name.png</code>, 2560 × 1440, under 1 MB (gränsen är 6 MB).</li>
+        <li>Text och logga ligger inom den säkra ytan 1546 × 423 i mitten, det enda som syns i mobilen. Datorn visar mittbandet i hela bredden, TV hela bilden.</li>
+      </ul>
+    </article>
+  </div>
+  <p class="fine">Måtten kontrollerade 8 oktober 2026 (Meta: 820 × 312 på dator och 640 × 360 i mobilen; YouTube: 2560 × 1440, säker yta 1546 × 423, max 6 MB). Inga foton i Flocken, bara Birdys eget fågelmärke, vektoriserat ur appens bild (<code>kalla/birdy-bird.svg</code>). Filerna renderas om med <code>node kalla/render.mjs</code>; riktning A och B ligger kvar som källa men renderas inte. Rutnätet i Instagram-skissen visar omslagen från veckans videor.</p>
+</section>
+</div>
+
+<script>
+'use strict';
+(function () {
+  const SLOGANS = { know: 'Know the bird. Keep the moment.', name: 'Every bird has a name.' };
+  const page = document.getElementById('page');
+  const guides = document.getElementById('guides');
+  guides.addEventListener('change', () => page.classList.toggle('hide-guides', !guides.checked));
+
+  const answer = document.getElementById('pick-answer');
+  const note = document.getElementById('pick-note');
+  function update() {
+    const s = (document.querySelector('input[name="slogan"]:checked') || {}).value || 'know';
+    document.querySelectorAll('.slg').forEach((el) => el.classList.toggle('is-on', el.dataset.slg === s));
+    document.querySelectorAll('.mockset').forEach((el) => { el.hidden = el.dataset.slogan !== s; });
+    const lines = [
+      'Sociala profiler: C Flocken',
+      `Slogan: ${SLOGANS[s]}`,
+      `Filer: profile-flock.png, facebook-cover-flock-${s}.png, youtube-banner-flock-${s}.png`,
+    ];
+    if (note.value.trim()) lines.push(`Kommentar: ${note.value.trim()}`);
+    answer.textContent = lines.join('\n');
+  }
+  document.querySelectorAll('input[name="slogan"]').forEach((i) => i.addEventListener('change', update));
+  note.addEventListener('input', update);
+  update();
+
+  function selectText(el) {
+    const r = document.createRange(); r.selectNodeContents(el);
+    const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  function copy(el, statusEl, done) {
+    const fallback = () => { selectText(el); statusEl.textContent = 'Markerat. Tryck Ctrl+C (Cmd+C på Mac) för att kopiera.'; };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(el.textContent).then(() => { statusEl.textContent = done; }, fallback);
+    } else fallback();
+  }
+  document.getElementById('pick-copy').addEventListener('click', () => copy(answer, document.getElementById('pick-status'), 'Kopierat. Klistra in svaret i chatten.'));
+  document.querySelectorAll('.copy').forEach((b) => {
+    const status = b.nextElementSibling;
+    b.addEventListener('click', () => copy(document.getElementById(b.dataset.copy), status, 'Kopierat.'));
+  });
+})();
+</script>
