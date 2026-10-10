@@ -1,92 +1,89 @@
-# Överlämning 2026-10-10 (natten till lördag)
+# Överlämning 2026-10-10 (lördag eftermiddag, allt på main)
 
-Skriven lör 10 okt 02.10 på Windows-maskinen. **Nästa session börjar här.** Chatten med Albin är på engelska, repot och Slack på svenska.
+Skriven lör 10 okt cirka 14.00 på Windows-maskinen. **Nästa session börjar här.** Chatten med Albin är på engelska, repot och Slack på svenska. Nattens version av den här filen finns i git-historiken (`OVERLAMNING-2026-10-10.md` före `e16d5d43`).
 
 ## Läget på en minut
 
-- **1.3.1 är byggd, testad och nästan inskickad.** vC130, gratis (Premium öppet för alla som i juni, brytpunkt 0). AAB:n ligger på skrivbordet: `birdy-1.3.1-vc130-PRODUKTION.aab` (496 MB, byggd 9 okt 23.03). Emulatortestet är godkänt (API 36 och API 30). Play-utkastet "130 (1.3.1)" har What's new (en-US, sv-SE) och butikssidan på alla tio språk med ny text. **Inget är inskickat.**
-- **Två saker saknas före inskicket:** (1) butiksbilderna i Flock-looken, som Albin vill ha omgjorda med bilder som visar appen som den ser ut i dag, i ultra premium; (2) AAB:n i utkastet, som Albin drar in själv (agentens filuppladdning klarar högst 10 MB).
-- **Webbgalleriet är live** sedan lör 10 okt 02.19 (Albins OK).
-- **Sociala medier** är schemalagda till 7 nov, utom YouTube 29 okt till 7 nov.
+- **Allt ligger på `main`.** Inga andra grenar lokalt eller på GitHub, inga öppna PR:er, inga worktrees, inga stashar, `C:/w/` är tom. Grenar som inte slogs ihop finns som taggar `archive/<gren>`; releasen är taggad `v1.3.1` (`ca9c5927`).
+- **1.3.1 (vC130) väntar bara på AAB:n.** Play-utkastet "130 (1.3.1)" i produktion har What's new, ny butikstext på tio språk och de nya butiksbilderna i Flock-looken (Albin: "The store looks perfect"). AAB:n `birdy-1.3.1-vc130-PRODUKTION.aab` ligger på Albins skrivbord och dras in av honom.
+- **Webben** har tre nya eller omskrivna blogginlägg sedan i dag: "See the song", "Birdy × AlbIT: en rädsla för fåglar blev en app" och omskrivna "Varför Birdy finns", plus en polerad läsvy (läslinje överst, anfang, skribentruta, två fler fältanteckningar sist). Inget inlägg får nämna "full auto", att något körs utan tillåtelse eller citera interna regler (Albin 10 okt; enhetstest `tests/unit/field-notes-copy.unit.mjs`).
+- **Sociala medier** är schemalagda till 7 nov, utom YouTube 29 okt till 7 nov, som laddas upp i kväll.
 
 ## Gör i den här ordningen
 
-### 1. Butiksbilderna i Flock-looken, ultra premium
+### 1. Skicka in 1.3.1
 
-Albin 10 okt: "Fixa flock till detta släpp, få in bilder som visar mer hur det ser ut idag, även statistiksidan och annat" och "designen ska vara ultra premium design, vi bygger något extremt stort här". Han stoppade agenten efter 01.40 för att ta resten i en ny session.
+1. Albin drar `birdy-1.3.1-vc130-PRODUKTION.aab` från skrivbordet till produktionsutkastet "130 (1.3.1)" i Play Console. Chrome-fliken står på utkastet (Produktion, Förbereda ny version); rutan "Ladda upp AAB-arkiv" tar filen. Agentens filuppladdning klarar högst 10 MB, så det här steget är hans.
+2. Agenten läser varningarna (väntat: saknade felsökningssymboler; 16 KB-kontrollen gav 15 av 15), kontrollerar versionsnamnet, What's new (en-US, sv-SE), butikssidans tio språk och bilderna, och **skickar in med 100 % utrullning** (Albins val 9 okt). En rad i #birdy-bygge.
+3. När Google har godkänt: sätt datumet som reserv i `website/src/lib/release.mjs` (`APP_1_3_LIVE_FROM = process.env.BIRDY_APP_LIVE_FROM || 'ÅÅÅÅ-MM-DD'`), kör webbgrinden, pusha och kontrollera live. Premium-sidans texter är redan skrivna så att de stämmer för gratisversionen; datumet slår på tidslinjens datum och raden "samma fågel som i appen" på startsidan.
 
-**Var:** worktree `C:/w/birdy-butik-flock`, gren `play/butiksbilder-flock` (pushad).
+### 2. YouTube 29 okt till 7 nov (i kväll)
 
-- `90b56d59`: första Flock-varianten (variant F, sex kort med 1.3.0-fångster; skärm 01 har ett tankstreck i appens rad, vilket 1.3.1 inte har). Förhandsvisning: https://claude.ai/artifact/NU19joWszL2D9DPLtewjaG
-- `5c0b3a80` (WIP): åtta egna kort i `website/tools/store-assets/1.3/copy.json` under `flock.cards` (Identifiera, Lyssna, Match, Artprofil med Tallbit, Mina arter, Säsongsstatistik med Premium, Karta med Premium, Uppslagsverk). `template.html`, `render.mjs` och `preview-flock.mjs` är påbörjade. 1 av 8 färska fångster finns: `docs/play-store/screenshots/1.3.1/sv/01-identifiera.png`.
+- Dagsgränsen släpper cirka 19.15. Ett engångsjobb i sessionen startar 19.23 om sessionen är öppen; annars gör nästa session det.
+- Videorna är omrenderade på `main` i `tools/social/out/oct29-nov7/<slug>/` (logg `C:/w/social-rerender.log`, som ska sluta med `render=0`, `covers=0`, `titlecard=0`). Kontrollera att varje video är under 10 MB innan uppladdningen.
+- Datumen följer ordningen som redan är publicerad på de andra kanalerna, inte den nya `schedule.csv`: 29 okt mute-swan, 30 eurasian-wren, 31 bohemian-waxwing, 1 nov european-goldfinch, 2 northern-raven, 3 fieldfare, 4 eurasian-bullfinch, 5 european-herring-gull, 6 yellowhammer, 7 brambling. Titel och beskrivning: `node tools/social/caption-fields.mjs <slug>` (YTTITLE, YTDESC).
+- Recept och fällor: `docs/superpowers/runbooks/2026-10-08-sociala-schemalaggning.md` (YouTube-receptet under "Kvällen 9 okt", tidszonen "(GMT+02:00) Stockholm" uttryckligen, aldrig Escape i uppladdningsdialogen).
 
-**Kvar:**
+### 3. Siffrorna varje måndag (från mån 12 okt)
 
-1. Fånga resten ur 1.3.1-bygget på emulatorn `pg-api36` (en emulator och ett Gradle-jobb åt gången, stoppa daemonerna efteråt): sv 02 till 08 och en 01 till 08, med appens språk sv-SE respektive en-US. Använd fynd med fria foton (CC0, public domain, CC BY, CC BY-SA, som galleriets skärm 12). Statistiken behöver fynd över flera månader och kartan fynd med plats. Inga privata foton eller riktiga platser i bild.
-2. Rendera båda språken och feature-grafiken. Ribban är "ultra premium": en idé per kort, lugn komposition, inga dekorationer ovanpå skärmen. Reglerna står i `copy.json`: appens egna ord i kickern, inga tankstreck, inga utropstecken, inga precisionssiffror, inget "gratis".
-3. Ny förhandsvisning som artefakt med båda språken, länken till Albin, vänta på OK.
-4. Byt bilderna i Play-utkastet (en-US och sv-SE; standardgrafiken gäller de övriga språken). Välj bilderna ur biblioteket i rätt ordning med "Knappen Välj" och spara utkastet.
+Per kanal: YouTube Studio, TikTok Studio, Meta Business Suite, Search Console, Vercel Analytics och Play Console. En rad per kanal i #birdy-marknad och i tabellen i Albins Claude Docs-dokument "Birdy: läget, varumärket och 12–24 månader framåt". Ett engångsjobb i sessionen startar mån 12 okt 09.07 om sessionen är öppen. **Öppet:** Albin frågade om körningen kan ligga i Cockpit (memory vault i Supabase) i stället; agenten erbjöd en plan, inget svar än.
 
-**Fråga i korten:** "Uppslagsverk · 839 arter" och "Europas fåglar" binder Birdy till Europa, något profilerna undvek 8 okt. Fråga Albin eller välj en formulering utan siffran.
+### 4. Nästa vecka: den betalda releasen
 
-### 2. AAB:n och inskicket
+Planen: `docs/superpowers/plans/2026-10-08-1.3.1-samlad-release.md` (uppdateringen överst och punkt 14, djuplänkar). Grindar: BirdNET:s svar, köptestet med vC129, MapTiler Flex med en ny nyckel som ersätter den låsta Default key, Resend för supporten och **brytpunkten = 1.3.1:s go-live + 48 h** (bygget stoppar utan den). Premiumbitarna: Märken 1b (och 1a om Albin säger ja), PDF 1, Pop-up 1, Intro 1, månadsprenumerationen 49 kr. Varje del får egen plan och körs med SDD i egen worktree under `C:/w/`; huvudagenten slår ihop.
 
-1. Albin drar `birdy-1.3.1-vc130-PRODUKTION.aab` från skrivbordet till produktionsutkastet "130 (1.3.1)" i Play Console (Chrome-fliken står kvar på utkastet).
-2. Agenten läser varningarna (väntat: saknade felsökningssymboler; inget om 16 KB, kontrollen gav 15 av 15), kontrollerar What's new, butikssidans tio språk och de nya bilderna, och **skickar in med 100 % utrullning** (Albins val 9 okt). En rad i #birdy-bygge.
-3. När Google har godkänt: sätt `APP_1_3_LIVE_FROM` i `website/src/lib/release.mjs` till dagen, kör grinden, slå ihop och kontrollera live.
+### 5. Artsidorna (tidigast tors 15 okt)
 
-### 3. Webbgalleriet: live
+100 av 180 arter är live. Publiceringen är pausad med `website/reports/STOP` i huvudklonen (gitignorerad; rapporterna från loopen ligger bredvid). Före återstarten: kolla Search Console (indexerat, "genomsökt men inte indexerat"). Återskapa sedan loopens worktree, som togs bort i städningen:
 
-- Albin gav OK natten till lör 10 okt ("Ok make it live"). `website/galleri` slogs ihop med `main` som `208028ef` och var live 02.19, kontrollerat på `/` och `/sv/` (tre Premium-kort, ingen sävsångare).
-- Grinden kördes på exakt den kombinationen: verify:fixtures (check-seo 68/58/56, unit, i18n 473 nycklar, inga tankstreck, palett, kontrast 33 par, förhandsbygget), accuracy, tomma hubben, astro check 0 fel, Playwright 273 (ett arbetarkrasch-fel, Windows-kod 3221225477, omkört grönt tillsammans med hela `faltbok.spec.ts` och `home.spec.ts`, 131 av 131).
-- Albin såg först den gamla versionen eftersom Vercels bygge av `b3e7ee4f` föll på "Git information retrieval failed for this deployment"; en tom commit (`cf7090a7`) byggde om förhandsvisningen.
-- Grenen `website/galleri` ligger kvar på GitHub.
+```bash
+git worktree add -B publish/main C:/w/birdy-publish origin/main
+cp -r website/reports C:/w/birdy-publish/website/      # STOP och rapporterna följer med
+cd C:/w/birdy-publish/website && npm ci
+cd ../tools/content-pipeline && uv sync
+```
 
-### 4. Sociala medier
+Ta bort STOP, publicera de två klara, sedan undantagen i våg 2 (Albins beslut i arket; säkra standardval om inget sägs: V1 tom, V2 och V4 behåll, V3 "Delvis flyttfågel, häckar här"), sedan jämn takt cirka 3 arter om dagen (`PLAYWRIGHT_CHANNEL=chrome bash scripts/publish-loop.sh N`). Våg 3 (56 arter, cirka 25 USD) när API-budgeten räcker (100 USD i månaden, oktober cirka 76 använda).
 
-- **YouTube 29 okt till 7 nov** (10 Shorts) när dagsgränsen har släppt, cirka 19.15 lör 10 okt. Titlarna kommer från `youtubeTitle` på `social/see-the-song` (`960f8328`): "Would you recognise this bird by its sound? {EN} ({SV}) #shorts". Recept och fällor: `docs/superpowers/runbooks/2026-10-08-sociala-schemalaggning.md`.
-- **Albin:** `birdy.community/clips/` i bion på Instagram, och på TikTok efter bytet till företagskonto (bara i appen).
-- **Från 8 nov:** nästa omgång får de nya hookarna och de längre bildtexterna ur Albins doc "Birdy: läget, varumärket och 12–24 månader framåt" (i hans artefaktlista).
-- Valfritt: de gamla Meta-utkasten (12 till 28 okt) kan tas bort; de publiceras inte.
+### 6. Nästa sociala serie (från 8 nov)
 
-### 5. Siffrorna varje måndag
+- **En liten förloppsmätare överst i klippen** (Albin 10 okt), byggd före nästa schemaläggning och visad för Albin i en förhandsvisning. Detaljerna står överst i runbooken.
+- Nya hookar och längre bildtexter ur Albins dokument.
+- Valfritt: byta YouTube 10 till 18 okt till flockversionerna (kräver omrendering av `week1` och `week1-reserves`).
 
-Albin 10 okt vill att agenten hämtar siffrorna per kanal varje måndag (YouTube Studio, TikTok Studio, Meta Business Suite, Search Console, Vercel Analytics, Play Console) och skriver en rad per kanal i #birdy-marknad och i tabellen i Albins doc. Första gången mån 12 okt.
+## Väntar på Albin
 
-**Öppet:** Albin frågade om körningen kan ligga utanför datorn, i Cockpit (memory vault i Supabase). Agentens svar: ja, ett veckojobb (GitHub Actions eller en Supabase-funktion på timer) som hämtar via plattformarnas API:er och skriver en rad per kanal i en tabell som Cockpit läser. YouTube, Search Console, Meta och Play är lätta att koppla; Vercels besökssiffror saknar tydligt publikt API och TikTok kräver en godkänd utvecklarapp. Agenten erbjöd en plan för Cockpit-versionen, inget svar än.
+- Dra in AAB:n i Play-utkastet.
+- Beslut: löftet i forumtexterna "alla som laddar ner innan Premium börjar kosta får Premium gratis för alltid" (kräver brytpunkten i den betalda releasen, install referrer för Android 12 och äldre, ny webbtext); Märken 1a i den betalda releasen (rekommendation: ja, ihop med 1b); Cockpit-planen; undantagsarket för våg 2 före 15 okt.
+- Köptestet med vC129 på sin telefon, MapTiler Flex, Resend-kontot, BirdNET-brevet, Slack Pro (då flyttar agenten kanaltexterna till canvas och "Väntar på Albin" till en lista).
+- Klippsidan `birdy.community/clips/` i bion på Instagram, och på TikTok efter bytet till företagskonto (bara i appen). Plattformsegendomarna TikTok och Instagram i Search Console.
+- Skicka SV/EN-adresserna till de nya blogginläggen till albit.se-sessionen: `https://birdy.community/sv/blog/birdy-x-albit/`, `https://birdy.community/blog/birdy-x-albit/`, `https://birdy.community/sv/blog/why-birdy/`, `https://birdy.community/blog/why-birdy/`.
+- Valfritt: Meta-utkasten och de röda raderna i Business Suite, Facebooks Sharing Debugger för `/` och `/sv/`.
+- iOS: sim-check, device-verify och Apple Developer-enrollment (`docs/ios-release-checklist.md`, som nu också listar tre Cursor-fixar för iOS att granska i i5).
 
-### 6. Öppna beslut för Albin
+## Städningen 10 okt (vad som hände)
 
-- **Löftet i forumtexterna** ("alla som laddar ner innan Premium börjar kosta får Premium gratis för alltid") kräver att den betalda releasen sätter brytpunkten, install referrer för Android 12 och äldre (nätverkstiden finns bara från API 33) och ny webbtext. Beslut före forumpostningen.
-- **Svenska skärmbilder per språk i Play** (i dag visar alla språk standardgrafiken).
-- **Märken 1a** i den betalda releasen (agentens rekommendation: ja, ihop med 1b).
-- **Cockpit-planen** för siffrorna (punkt 5).
+- Grenarna `release/1.3.0`, `play/butiksbilder-flock`, `social/see-the-song` och `website/blogg` slogs ihop med `main`; övriga grenar arkiverades som taggar och togs bort lokalt och på GitHub. Cursors tre iOS-PR:er (#37, #38, #41) stängdes osammanslagna och står nu i iOS-checklistan; de fyra Android-fynden (#30, #34, #39, #40) stängdes redan 5 okt, åtgärdade på eget sätt i 1.3.0.
+- Alla worktrees under `C:/w/` och tre gamla mappar i `.worktrees/` togs bort efter en kontroll att varje källfil redan fanns i git (bara `local.properties` fanns inte, som väntat). En gammal `birdy-release.apks` (1 GB, maj) togs bort ur huvudklonen.
+- **Misstag:** `git worktree remove --force C:/w/birdy-social` raderade de gitignorerade renderade videorna i `tools/social/out/`. De tio som behövs (YouTube 29 okt till 7 nov) renderades om på `main` med exakt samma slutkort som de publicerade; omrenderingen hittade och rättade att slutkortet hade fått siluettens kredit som en extra rad (`d6e7274e`). Regeln står nu i trap-katalogen i CLAUDE.md.
 
-### 7. Nästa vecka: den betalda releasen
+## Fällor
 
-Planen: `docs/superpowers/plans/2026-10-08-1.3.1-samlad-release.md` på `release/1.3.0` (uppdateringen överst och punkt 14, djuplänkar). Grindar: BirdNET:s svar, köptestet med vC129, MapTiler Flex med en ny nyckel (som ersätter den låsta Default key), brytpunkten (bygget stoppar utan den) och Resend för supporten. Premiumbitarna: Märken 1b, PDF 1, Pop-up 1, Intro 1 och månadsprenumerationen 49 kr.
-
-### 8. Artsidorna
-
-Pausade till tidigast tors 15 okt (`reports/STOP` i `C:/w/birdy-publish/website`). Före återstarten: worktreen ligger 86 commits efter `origin/main`, så uppdatera den först (när ingen loop går), kolla Search Console och följ sedan ⏸️-posten i CLAUDE.md.
-
-## Fällor från natten
-
-- **Vercel "Git information retrieval failed":** förhandsvisningen visar då förra versionen, och det syns inte på sidan. Kontrollera alltid `gh api repos/anonadrek/birdy/commits/<sha>/status` (Vercel ska vara success) innan en länk skickas. En tom commit bygger om.
-- **Chrome i bakgrunden** (fönstret skymt): klick, klistra och skriv är opålitliga och timers stryps. Använd JavaScript med inbyggda värdesättare och input-händelser, en åtgärd per anrop, och läs tillbaka.
-- **Play Console:** "Lämna sidan?" betyder osparade ändringar: välj "Stanna kvar" och spara. Bildbiblioteket väljs i ordning med "Knappen Välj" (förra gången hamnade bilderna i ordningen 02, 03, 01). Lokaliserad grafik i sv-SE-vyn var otydlig; kontrollera en-US efteråt.
-- **Filuppladdningen i Chrome-verktyget** klarar högst 10 MB totalt, så AAB:er laddar Albin upp.
-- **Klockslag och veckodagar** tas ur `date` (11 okt är en söndag).
+- **Vercel "Git information retrieval failed"** kan drabba även produktion: bygg om med `gh workflow run daily-site-build.yml --ref main` och kontrollera driftsättningen med `gh api repos/anonadrek/birdy/deployments`. Hamra inte birdy.community med curl (Vercels säkerhetskontroll svarar 403); kontrollera i Chrome.
+- **Chrome i bakgrunden** (fönstret skymt): skärmbilder tar timeout, klick och skrivning är opålitliga. Läs sidan med `javascript_tool`, en åtgärd per anrop.
+- **Play Console:** "Lämna sidan?" betyder osparade ändringar. Bildbiblioteket väljs i ordning med "Knappen Välj".
+- **Heredocs i bash tappar backslash-escapes**: skriv patchskript till en fil med Write och bygg specialtecken med `chr()`.
 
 ## Var saker ligger
 
 | Vad | Var |
 |---|---|
-| 1.3.1-koden | `C:/w/birdy-130`, `release/1.3.0` `c4d2ab49` |
-| AAB:n | skrivbordet, `birdy-1.3.1-vc130-PRODUKTION.aab` |
-| Butiksbilderna | `C:/w/birdy-butik-flock`, `play/butiksbilder-flock` `5c0b3a80` |
-| Webbgalleriet | `C:/w/birdy-galleri`, `website/galleri` `cf7090a7` |
-| Sociala verktyg | `C:/w/birdy-social`, `social/see-the-song` `960f8328` |
-| Artsidornas loop | `C:/w/birdy-publish` (pausad) |
+| Koden för 1.3.1 | `main`, tagg `v1.3.1` (`ca9c5927`) |
+| AAB:n | Albins skrivbord, `birdy-1.3.1-vc130-PRODUKTION.aab` |
 | Butikstexterna | `docs/play-store/console-paste-v1.3.1.md`, `docs/play-store/store-listing-translations-v1.3.1.md` |
+| Butiksbilderna | `docs/play-store/store-assets/1.3.1-flock/{sv,en}/`, renderare `website/tools/store-assets/1.3/` |
+| Sociala verktyg och videor | `tools/social/`, videorna i `tools/social/out/` (gitignorerat) |
+| Den betalda releasen | `docs/superpowers/plans/2026-10-08-1.3.1-samlad-release.md` |
+| Artsidornas paus | `website/reports/STOP` i huvudklonen |
+| Äldre statusposter | `docs/superpowers/status-arkiv/2026-10-10-claude-md-status.md` |
 | Föregående överlämning | `docs/superpowers/plans/OVERLAMNING-2026-10-09.md` |

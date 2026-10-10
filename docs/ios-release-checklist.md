@@ -54,7 +54,17 @@ Med i3-tempot (en fas ≈ en dag) är **TestFlight realistiskt inom ett par veck
 
 ### Parallellt Android-spår (påverkar inte iOS, men ligger på dig)
 
-- [ ] **14. Windows-passet:** vC127 emulator+Galaxy-verify → Play-upload av vC127 (fallback vC126) — beslutsträd i `docs/play-store/console-paste-v1.2.1-v1.2.2.md`
+- [x] **14. Windows-passet:** ~~vC127 emulator+Galaxy-verify → Play-upload av vC127~~ ersatt: vC127 laddades aldrig upp (Play kräver API 36 sedan 31 aug). Android-releasen är **1.3.1 (vC130)**, emulatortestad 2026-10-09 och väntar på uppladdning i Play Console (se CLAUDE.md).
+
+### Cursor-fynd för iOS att granska (stängda PR:er, arkiverade 2026-10-10)
+
+Cursors buggjakt föreslog tre iOS-fixar i september. PR:erna stängdes osammanslagna vid städningen 2026-10-10 så att bara `main` finns kvar; grenarna ligger som taggar. Granska och ta in dem i i5-passet (före första TestFlight): `git cherry-pick <sha>`, läs diffen, kör iOS-raden (`:composeApp:iosSimulatorArm64Test` + `:shared:data:iosSimulatorArm64Test` + `linkDebugFrameworkIosSimulatorArm64`) och Android-raden (486e rör `:shared:data`).
+
+- [ ] **iPad: delningsbladet kraschar** (PR #38, tagg `archive/cursor/critical-bug-management-33c1`, `27753d0d`). På iPad visas `UIActivityViewController` som popover och kastar `NSGenericException` utan `sourceView`/`sourceRect`; Dela i Inställningar och Exportera PDF i Arkivet går båda via `presentShareSheet`. Fixen ankrar popovern i nyckelfönstrets rotvy, med iosTest.
+- [ ] **Notisbehörigheten frågas aldrig vid första start** (PR #37, tagg `…-33d6`, `178463e4`). `IosPlatformNotificationsApi` säger "redan tillåtet" innan `getNotificationSettings` har svarat, så `AppScaffold` sparar `pushPermissionAsked` utan att `requestAuthorization` anropats: en envägsdörr där Dagens fågel, veckosammanfattningen och troféerna aldrig hörs och appen inte syns under iOS notisinställningar. Fixen: okänd status är falsk tills svaret kommer.
+- [ ] **Fyndfoton försvinner efter iCloud-återställning** (PR #41, tagg `…-486e`, `33cc9739`). `observation.photo_path` sparar den absoluta sökvägen med appcontainerns UUID, som byts vid återställning eller "Flytta till ny iPhone". Fixen räknar om `…/Documents/<relativ>` mot den aktuella Documents-mappen vid läsning och borttagning; Android/JVM-sökvägar oförändrade.
+
+De fyra Android-fynden från samma jakt (#30 kameran, #34 mikrofonen, #39 notiserna, #40 fejkade foto-ID) åtgärdades på eget sätt i 1.3.0 (Plan 3 Task 2b) och ligger också kvar som `archive/cursor/*`-taggar.
 
 ---
 

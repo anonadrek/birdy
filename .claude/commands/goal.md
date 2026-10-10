@@ -15,8 +15,8 @@ En vacker, privat, **on-device** fältdagbok för fågelskådare — i hela vär
 ## Var vi står nu (framsteg, 2026-10-10)
 - **v1.0–v1.2 — Norden/Europa (839 arter):** on-device foto- + ljud-ID, uppslagsverk, fältdagbok, märken, Dagens fågel, privat fynd-karta, Premium. **v1.2 live på Google Play sedan 2026-06-17.**
 - **1.3.1 (gratis, Premium öppet för alla):** byggd och emulatortestad (vC130), nya butiksbilder i Flock-looken i Play-utkastet (en-US + sv-SE), väntar på att Albin drar in AAB:n; sedan inskick med 100 % utrullning. **Den betalda releasen** (betalning, Märken 1b, PDF 1, pop-up, intro, månadspris 49 kr) kommer efter: väntar på BirdNET:s svar, köptestet, MapTiler Flex, Resend och beslutet om löftet till tidiga användare.
-- **Webben (birdy.community):** Flock-looken live i båda språken (ljus meny och ljust galleri sedan 2026-10-10), 100 av 180 artsidor live (pausat till tidigast 15 okt, sedan cirka 3 om dagen), blogg med See the song; Birdy × AlbIT och den omskrivna "Varför Birdy finns" väntar på Albins OK.
-- **Sociala kanaler:** en video om dagen schemalagd till 7 nov på Instagram, Facebook, TikTok och YouTube.
+- **Webben (birdy.community):** Flock-looken live i båda språken (ljus meny och ljust galleri sedan 2026-10-10), 100 av 180 artsidor live (pausat till tidigast 15 okt, sedan cirka 3 om dagen), bloggen med See the song, Birdy × AlbIT och den omskrivna "Varför Birdy finns" (alla live sedan 2026-10-10).
+- **Sociala kanaler:** en video om dagen schemalagd till 7 nov på Instagram, Facebook och TikTok, på YouTube till 28 okt (29 okt till 7 nov laddas upp 10 okt kväll). Nästa serie får en liten förloppsmätare överst i klippen.
 - **v2 iOS-spåret:** all kod klar från samma KMP-kodbas (i0–i4: uppslagsverk, dagbok, foto-ID, live-kamera, ljud-ID, karta, notiser, PDF). Kvar: tester på en fysisk iPhone → i5 StoreKit 2 (kräver Apple Developer-enrollment) → i6 App Store. Checklista: `docs/ios-release-checklist.md`.
 
 ## Långsiktiga mål (från planen)
