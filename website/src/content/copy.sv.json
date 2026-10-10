@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Birdy: Identifiera fåglar och spara dina fynd",
-    "description": "Identifiera 839 europeiska fågelarter med foto, kamera eller sång. Spara fynd i en privat fältdagbok och utforska fågelguiden offline. Finns för Android, kommer till iPhone.",
+    "title": "Birdy: Känn igen, samla och lär känna fåglarna",
+    "description": "Identifiera 839 europeiska fågelarter med foto, kamera eller sång och samla dem: en privat fältdagbok, en livslista och märken att förtjäna. Utforska fågelguiden offline. Finns för Android, kommer till iPhone.",
     "ogLocale": "sv_SE",
     "htmlLang": "sv"
   },
@@ -10,11 +10,11 @@
     "howItWorks": "Så funkar det",
     "app": "Appen",
     "premium": "Premium",
-    "fieldNotes": "Fältanteckningar",
+    "fieldNotes": "Blogg",
     "guide": "Uppslagsverket",
     "privacy": "Integritet",
     "faq": "Frågor",
-    "species": "Arter",
+    "species": "Möt fåglarna",
     "switchLang": "EN",
     "switchLangHref": "/",
     "getApp": "Hämta appen",
@@ -26,7 +26,7 @@
     "kicker": "Kamera, foto eller läte",
     "headline": "Känn igen fågeln.",
     "line2": "Bevara stunden.",
-    "sub": "Rikta kameran, välj ett foto eller låt fågeln sjunga. Birdy föreslår arten direkt i telefonen, och du sparar fyndet i din egen fältdagbok.",
+    "lead": "Rikta kameran, välj ett foto eller låt fågeln sjunga. Birdy föreslår arten direkt i telefonen, och varje fynd hamnar i din fältdagbok, på din livslista och närmare nästa märke.",
     "flockLabel": "En flock små fåglar, en för varje art i Birdy, som tillsammans bildar Birdys fågel. Dagens fågel, {name}, lyser i flocken."
   },
   "daily": {
@@ -137,17 +137,17 @@
     "policyLink": "Läs integritetspolicyn"
   },
   "fieldNotes": {
-    "kicker": "Fältanteckningar",
+    "kicker": "Blogg",
     "headline": "Från *fältboken.*",
     "note": "anteckningar från oss som bygger Birdy",
-    "all": "Alla fältanteckningar"
+    "all": "Alla blogginlägg"
   },
   "blog": {
-    "kicker": "Fältanteckningar",
+    "kicker": "Blogg",
     "headline": "Anteckningar *från fältet.*",
     "lead": "Om fåglarna vi möter, hur Birdy fungerar och varför den är byggd som den är.",
     "minRead": "{n} min läsning",
-    "allNotes": "Alla fältanteckningar",
+    "allNotes": "Alla blogginlägg",
     "seeHow": "Se hur Birdy fungerar",
     "endHeadline": "Ta med Birdy *ut i fält.*",
     "endSub": "Gratis att ladda ner. Inget konto. Fungerar utan täckning.",
@@ -159,8 +159,8 @@
     "authorKicker": "Skrivet av",
     "authorBio": "Grundare av AlbIT AB, som bygger hemsidor och appar åt företag. Birdy är AlbIT:s egen app.",
     "authorLink": "Mer om Albin",
-    "moreNotes": "Fler fältanteckningar",
-    "indexTitle": "Fältanteckningar: artiklar om Birdy och fåglar | Birdy",
+    "moreNotes": "Mer från bloggen",
+    "indexTitle": "Blogg: artiklar om Birdy och fåglar | Birdy",
     "indexDescription": "Läs om hur Birdy byggs, hur appen fungerar och fåglarna du kan upptäcka med den. Artiklar och guider på svenska."
   },
   "faq": {
@@ -376,7 +376,7 @@
     "descHubEmpty": "Artsidor för Sveriges och Europas vanligaste fåglar är på väg: foton, kännetecken och läten, sorterade i samma grupper som i appen Birdy.",
     "crumbLabel": "Brödsmulor",
     "crumbHome": "Birdy",
-    "crumbHub": "Arter",
+    "crumbHub": "Möt fåglarna",
     "facts": {
       "scientific": "Vetenskapligt namn",
       "family": "Familj",
@@ -546,7 +546,7 @@
     "otherLanguage": "English",
     "copyright": "© 2026 Birdy · Skapad i Sverige",
     "builtBy": "Byggd av",
-    "species": "Arter",
+    "species": "Möt fåglarna",
     "allSpecies": "Alla arter från A till Ö",
     "commonSpecies": "Vanliga arter",
     "follow": "Följ Birdy",

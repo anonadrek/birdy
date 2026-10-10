@@ -394,7 +394,7 @@ test.describe('artsidan', () => {
     await page.goto('/sv/arter/talgoxe/');
     const graph = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)['@graph'] as Record<string, any>[];
     const crumbs = graph.find((n) => n['@type'] === 'BreadcrumbList')!;
-    expect(crumbs.itemListElement.map((c: { name: string }) => c.name)).toEqual(['Birdy', 'Arter', 'Tättingar', 'Talgoxe']);
+    expect(crumbs.itemListElement.map((c: { name: string }) => c.name)).toEqual(['Birdy', 'Möt fåglarna', 'Tättingar', 'Talgoxe']);
     expect(crumbs.itemListElement[3].item).toBe('https://birdy.community/sv/arter/talgoxe/');
     const web = graph.find((n) => n['@type'] === 'WebPage')!;
     expect(web.inLanguage).toBe('sv');
@@ -575,7 +575,7 @@ test.describe('om-sidan', () => {
     const web = graph.find((n) => n['@type'] === 'WebPage')!;
     expect(web.author).toMatchObject({ '@type': 'Person', name: 'Albin Abrahamsson' });
     expect(web.publisher).toMatchObject({ '@type': 'Organization', name: 'AlbIT AB' });
-    expect(graph.find((n) => n['@type'] === 'BreadcrumbList')!.itemListElement.map((c: { name: string }) => c.name)).toEqual(['Birdy', 'Arter', 'Så gör vi artsidorna']);
+    expect(graph.find((n) => n['@type'] === 'BreadcrumbList')!.itemListElement.map((c: { name: string }) => c.name)).toEqual(['Birdy', 'Möt fåglarna', 'Så gör vi artsidorna']);
   });
 
   for (const [path, words] of [
@@ -591,10 +591,10 @@ test.describe('om-sidan', () => {
 
 test.describe('meny och sidfot för arterna', () => {
   for (const path of ['/sv/', '/sv/blog/', '/sv/arter/talgoxe/']) {
-    test(`sidfoten på ${path} har Arter och tolv vanliga arter`, async ({ page, request }) => {
+    test(`sidfoten på ${path} har Möt fåglarna och tolv vanliga arter`, async ({ page, request }) => {
       await page.goto(path);
       const footer = page.locator('footer.footer');
-      await expect(footer.locator('.fh').first()).toHaveText('Arter');
+      await expect(footer.locator('.fh').first()).toHaveText('Möt fåglarna');
       const common = footer.locator('.fpop a');
       await expect(common).toHaveCount(12);
       for (const href of await common.evaluateAll((els) => els.map((e) => e.getAttribute('href')!))) {
@@ -608,7 +608,7 @@ test.describe('meny och sidfot för arterna', () => {
   test('sidfotens grupplänkar och Alla arter leder till indexerade sidor som finns', async ({ page, request }) => {
     await page.goto('/');
     const column = page.locator('footer.footer .col').first();
-    await expect(column.locator('.fh')).toHaveText('Species');
+    await expect(column.locator('.fh')).toHaveText('Meet the birds');
     const links = column.locator('a');
     await expect(links).toHaveText(['Songbirds', 'Owls', 'All species A to Z']);
     for (const href of await links.evaluateAll((els) => els.map((e) => e.getAttribute('href')!))) {
@@ -623,18 +623,18 @@ test.describe('meny och sidfot för arterna', () => {
     await expect(page.locator('#guide a[href="/sv/arter/"]')).toBeVisible();
   });
 
-  test('mobilmenyn har Arter först', async ({ page }) => {
+  test('mobilmenyn har Möt fåglarna först', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/sv/');
     await page.locator('#site-nav .menu-toggle').click();
-    await expect(page.locator('#mobile-menu a').first()).toHaveText('Arter');
+    await expect(page.locator('#mobile-menu a').first()).toHaveText('Möt fåglarna');
   });
 
   // Task 11 adds '/sv/arter/blames-eller-talgoxe/' to this list when comparisons are turned on.
-  test('Arter är markerad i menyn under hela /sv/arter/', async ({ page }) => {
+  test('Möt fåglarna är markerad i menyn under hela /sv/arter/', async ({ page }) => {
     for (const path of ['/sv/arter/', '/sv/arter/ugglor/', '/sv/arter/talgoxe/', '/sv/arter/om-artsidorna/']) {
       await page.goto(path);
-      await expect(page.locator('#site-nav .links a[aria-current="page"]'), path).toHaveText('Arter');
+      await expect(page.locator('#site-nav .links a[aria-current="page"]'), path).toHaveText('Möt fåglarna');
     }
   });
 
