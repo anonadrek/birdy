@@ -6,7 +6,7 @@ description: "I vår nya videoserie hör du fågeln innan du ser den. En ny vide
 date: 2026-10-10
 category: Bakom Birdy
 image: ../../../assets/photos/see-the-song-flock-q25404-sv.webp
-imageAlt: "Omslaget till See the song: på persikofärgat papper bildar en flock små fåglar en blåmes bredvid orden ljud på, Hänger ofta upp och ner för att hitta mat. och Vems sång är det här?"
+imageAlt: 'Omslaget till See the song: på persikofärgat papper bildar en flock små fåglar en blåmes bredvid orden ”ljud på”, ”Hänger ofta upp och ner för att hitta mat.” och ”Vems sång är det här?”'
 ---
 
 Det är svårt att lära sig känna igen fåglar på lätet. Du hör något i ett träd, och när du väl tittar upp har fågeln tystnat.

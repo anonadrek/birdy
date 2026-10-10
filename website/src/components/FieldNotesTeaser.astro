@@ -24,7 +24,7 @@ const latest = (await getFieldNotes(locale)).slice(0, 3);
         </div>
         <a class="all" href={fieldNotesHref(locale)}>{t.fieldNotes.all}</a>
       </div>
-      <div class="cards" style={`--n:${latest.length}`}>{latest.map((note, i) => <div data-reveal style={`--rd:${i * 90}ms`}><NoteCard note={note} /></div>)}</div>
+      <div class="cards" style={`--n:${latest.length}`}>{latest.map((note, i) => <div data-reveal style={`--rd:${i * 90}ms`}><NoteCard note={note} sizes="(max-width: 760px) 100vw, 360px" /></div>)}</div>
     </div>
   </section>
 )}

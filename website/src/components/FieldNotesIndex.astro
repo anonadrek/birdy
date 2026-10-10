@@ -13,8 +13,8 @@ interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getCopy(locale);
 const [latest, ...rest] = await getFieldNotes(locale);
-// Columns the cards fill (2026-10-10): two or four in pairs, otherwise threes, so no card stands alone beside an empty column
-// while the list is short.
+// Columns for the cards under the newest (2026-10-10): pairs for two or four, threes otherwise, so a short list fills
+// its rows; a single card gets the pair's width rather than a third of the row.
 const cols = rest.length === 1 || rest.length === 2 || rest.length === 4 ? 2 : 3;
 const otherLocale: Locale = locale === 'sv' ? 'en' : 'sv';
 ---
@@ -44,7 +44,7 @@ const otherLocale: Locale = locale === 'sv' ? 'en' : 'sv';
   .bhead { position: relative; color: var(--ink); background-color: var(--peach); background-image: linear-gradient(0deg, var(--peach) 0, rgb(253 229 203 / 0) 120px), radial-gradient(130% 120% at 70% 30%, var(--peach-hi) 0%, var(--peach) 45%, var(--peach-lo) 100%); padding: 52px 0 64px; }
   .bhead .blead { color: var(--muted); font-size: 17px; line-height: 1.6; max-width: 36rem; margin: 18px 0 0; text-wrap: pretty; }
   .list { padding-bottom: 96px; }
-  .first { position: relative; z-index: 3; margin-top: 30px; }
+  .first { margin-top: 30px; }
   .grid { display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); gap: 24px; margin-top: 24px; }
   @media (max-width: 760px) {
     .bhead { padding: 28px 0 50px; }

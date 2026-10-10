@@ -7,7 +7,7 @@ date: 2026-09-24
 updated: 2026-10-10
 category: Behind Birdy
 image: ../../../assets/photos/why-birdy-flock-q25334-en.webp
-imageAlt: "On peach paper, a flock of small birds forms a European Robin next to Birdy's line Know the bird. Keep the moment."
+imageAlt: 'On peach paper, a flock of small birds forms a European Robin next to Birdy’s line “Know the bird. Keep the moment.”'
 ---
 
 Birdy did not start with a birdwatcher. I was at my girlfriend's place when birds came up, and it turned out she carried a real fear of them. Out of that conversation came the idea: if you know which bird you are looking at, and can learn something about it, it becomes a little less strange.

@@ -3,8 +3,8 @@
 // the home page and the See the song covers (tools/social/cover/flock-cover.html), drawn wide at 1600 × 840 (files at
 // twice that) so each picture works as the article's band, the card on the blog and the home page, and the share image (1200 × 630).
 //
-//   node tools/render-note-art.mjs                    every picture into src/assets/photos/
-//   node tools/render-note-art.mjs see-the-song       one picture
+//   node tools/render-note-art.mjs                    the notes' pictures into src/assets/photos/
+//   node tools/render-note-art.mjs see-the-song       one picture (a proposal only when named)
 //   node tools/render-note-art.mjs --out <dir> ...    somewhere else (previews), as PNG
 //
 // The silhouettes are the covers' own (tools/social/cover/sil, from PhyloPic, CC0). Seeded, so a run gives the same
@@ -78,14 +78,17 @@ export const PICTURES = {
       ],
     },
   },
-  // B: the robin's photo taped into the journal, a few birds of the flock on their way.
+  // B: the robin's photo taped into the journal, a few birds of the flock on their way. B and C are proposals, drawn
+  // only when named, and go once Albin has picked (the choices page of 2026-10-10).
   'why-birdy-plate': {
+    proposal: true,
     file: 'why-birdy-plate-q25334',
     polaroid: { ...ROBIN_PHOTO, x: 600, y: 92, w: 480, rot: -3.5, caption: { en: 'European Robin', sv: 'Rödhake' } },
     trail: { from: { x: 600, y: 520 }, to: { x: 140, y: 770 }, n: 70 },
   },
   // C: the photo and the flock that forms the same bird.
   'why-birdy-both': {
+    proposal: true,
     file: 'why-birdy-both-q25334',
     flock: { qid: 'Q25334', box: { x: 860, y: 60, w: 520, h: 700 }, scale: 0.82, leaveSide: 1 },
     polaroid: { ...ROBIN_PHOTO, x: 330, y: 170, w: 400, rot: -4, caption: { en: 'European Robin', sv: 'Rödhake' } },
@@ -268,7 +271,7 @@ const args = process.argv.slice(2);
 const outAt = args.indexOf('--out');
 const outDir = outAt >= 0 ? resolve(args[outAt + 1]) : null;
 const names = args.filter((a, i) => !(outAt >= 0 && (i === outAt || i === outAt + 1)));
-const which = names.length ? names : Object.keys(PICTURES);
+const which = names.length ? names : Object.keys(PICTURES).filter((name) => !PICTURES[name].proposal);
 
 /** One language's version of a picture: its own words and its own caption on the photo. */
 function inLocale(pic, locale) {
@@ -306,6 +309,7 @@ try {
         console.log(out);
       } else {
         const out = join(root, 'src/assets/photos', `${base}.webp`);
+        // A running `astro preview` keeps these files open on Windows (writes fail with "Invalid argument"): stop it first.
         await sharp(png).webp({ quality: 90 }).toFile(out);
         const meta = await sharp(out).metadata();
         console.log(`${out} ${meta.width}x${meta.height}`);

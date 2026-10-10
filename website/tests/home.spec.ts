@@ -1167,8 +1167,8 @@ test.describe('bloggen', () => {
       // The note's own Flock picture in the page's language (2026-10-10), cropped to 1200 × 630 for sharing.
       await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', new RegExp(`/_astro/why-birdy-flock-q25334-${prefix === '/sv' ? 'sv' : 'en'}[^/]*\\.jpg$`));
       const imageAlt = prefix === '/sv'
-        ? 'På persikofärgat papper bildar en flock små fåglar en rödhake bredvid Birdys rad Känn igen fågeln. Bevara stunden.'
-        : "On peach paper, a flock of small birds forms a European Robin next to Birdy's line Know the bird. Keep the moment.";
+        ? 'På persikofärgat papper bildar en flock små fåglar en rödhake bredvid Birdys rad ”Känn igen fågeln. Bevara stunden.”'
+        : 'On peach paper, a flock of small birds forms a European Robin next to Birdy’s line “Know the bird. Keep the moment.”';
       await expect(page.locator('meta[property="og:image:alt"]')).toHaveAttribute('content', imageAlt);
       const ogWidth = page.locator('meta[property="og:image:width"]');
       if (await ogWidth.count()) await expect(ogWidth).toHaveAttribute('content', '1200');
@@ -1186,20 +1186,21 @@ test.describe('bloggen', () => {
     });
   }
 
-  // The newest note is the list's big first card (FieldNotesIndex sorts by date). The home page shows the three newest
-  // side by side (Albin 2026-10-10: See the song and Why Birdy exists both on the front page), lined up at their tops
-  // and at their meta lines.
+  // The home page shows the three newest notes side by side (Albin 2026-10-10: See the song and Why Birdy exists both on
+  // the front page), in the list's own order, lined up at their tops and at their meta lines.
   test.describe('startsidans fältanteckningar', () => {
     test.use({ contextOptions: { reducedMotion: 'reduce' } });
     for (const [path, prefix] of [['/sv/', '/sv'], ['/', '']] as const) {
       test(`startsidan visar de tre senaste inläggen bredvid varandra på ${path}`, async ({ page }) => {
         await page.goto(`${prefix}/blog/`);
-        await expect(page.locator('main .first a.ncard')).toHaveAttribute('href', `${prefix}/blog/birdy-x-albit/`);
+        const newestThree = (await page.locator('main a.ncard').evaluateAll((els) => els.map((a) => a.getAttribute('href')))).slice(0, 3);
         await page.setViewportSize({ width: 1440, height: 900 });
         await page.goto(path);
         const cards = page.locator('#field-notes a.ncard');
-        expect(await cards.evaluateAll((els) => els.map((a) => a.getAttribute('href')))).toEqual(
-          ['birdy-x-albit', 'see-the-song', 'why-birdy'].map((slug) => `${prefix}/blog/${slug}/`));
+        expect(await cards.evaluateAll((els) => els.map((a) => a.getAttribute('href')))).toEqual(newestThree);
+        // Today these are the two notes Albin asked to see there, with Birdy × AlbIT.
+        expect(newestThree).toContain(`${prefix}/blog/see-the-song/`);
+        expect(newestThree).toContain(`${prefix}/blog/why-birdy/`);
         for (const card of await cards.all()) await expect(card.locator('img')).toBeVisible();
         await page.locator('#field-notes').scrollIntoViewIfNeeded();
         const tops = await cards.evaluateAll((els) => els.map((a) => Math.round(a.getBoundingClientRect().top)));
@@ -1208,6 +1209,24 @@ test.describe('bloggen', () => {
         expect(new Set(metas).size, `metaraderna ${metas}`).toBe(1);
       });
     }
+
+    // The list (2026-10-10, "more clean"): the newest note starts below the torn edge, the rest fill their columns (two
+    // for two), and the large card stacks below 1100 px so its picture is never cut in half.
+    test('bloggens lista: första kortet under revan, kolumnerna fyllda, det stora kortet staplat på smalare skärmar', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto('/blog/');
+      const head = (await page.locator('.bhead').boundingBox())!;
+      const first = (await page.locator('main .first').boundingBox())!;
+      expect(first.y).toBeGreaterThanOrEqual(head.y + head.height);
+      const rest = await page.locator('main .grid a.ncard').count();
+      const cols = await page.locator('main .grid').evaluate((g) => getComputedStyle(g).gridTemplateColumns.split(' ').length);
+      expect(cols).toBe(rest === 2 || rest === 4 || rest === 1 ? 2 : 3);
+      await page.setViewportSize({ width: 1000, height: 900 });
+      const card = (await page.locator('main .first a.ncard').boundingBox())!;
+      const img = (await page.locator('main .first .ncard-img').boundingBox())!;
+      expect(Math.abs(img.width - card.width)).toBeLessThan(2);
+      expect(Math.abs(img.width / img.height - 1600 / 840)).toBeLessThan(0.02);
+    });
   });
 
   // The note about the See the song videos (2026-10-09): one self-hosted video (no third-party player), its credit
@@ -1323,6 +1342,11 @@ test.describe('bloggen', () => {
         expect(Math.abs(plate.width / plate.height - 1600 / 840), `${path}: plattans form`).toBeLessThan(0.02);
         const title = (await page.locator('.phead h1').boundingBox())!;
         expect(title.y, `${path}: rubriken under bilden`).toBeGreaterThan(plate.y + plate.height);
+        // Nothing lies over the picture: the middle of the plate is the picture itself.
+        const hit = await page.evaluate(([x, y]) => document.elementFromPoint(x, y)?.tagName, [plate.x + plate.width / 2, plate.y + plate.height / 2]);
+        expect(hit, `${path}: över bilden`).toBe('IMG');
+        // No caption is written unless the note has one (imageCaption).
+        await expect(page.locator('.phead figcaption'), path).toHaveCount(0);
         expect(await page.evaluate(() => document.documentElement.scrollWidth), path).toBeLessThanOrEqual(width);
       }
     });

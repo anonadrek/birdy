@@ -6,7 +6,7 @@ description: "Our new video series plays a bird's sound before it shows the bird
 date: 2026-10-10
 category: Behind Birdy
 image: ../../../assets/photos/see-the-song-flock-q25404-en.webp
-imageAlt: "The See the song cover: on peach paper, a flock of small birds forms a Eurasian Blue Tit next to the words sound on, Often hangs upside down to find food. and Whose song is this?"
+imageAlt: 'The See the song cover: on peach paper, a flock of small birds forms a Eurasian Blue Tit next to the words “sound on”, “Often hangs upside down to find food.” and “Whose song is this?”'
 ---
 
 Learning birds by ear is hard. You hear something in a tree, and by the time you look up, the bird has gone quiet.

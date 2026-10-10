@@ -55,7 +55,7 @@ const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.i
     <header class="phead">
       <figure class="wrap pfig">
         <div class="aplate">
-          <Image src={image} alt={imageAlt} widths={[800, 1200, 1600, 2400]} sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1160px) calc(100vw - 88px), 1072px" style={imagePosition ? `object-position:${imagePosition}` : undefined} loading="eager" fetchpriority="high" decoding="async" />
+          <Image src={image} alt={imageAlt} widths={[800, 1200, 1600, 2400]} sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1048px) calc(100vw - 88px), 960px" style={imagePosition ? `object-position:${imagePosition}` : undefined} loading="eager" fetchpriority="high" decoding="async" />
         </div>
         {imageCaption && <figcaption class="cap">{imageCaption}</figcaption>}
       </figure>
@@ -166,7 +166,7 @@ const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.i
   /* The note's picture as a plate on the paper (2026-10-10): whole, nothing laid over it (Albin's photo rule: no tone
      over a photo, text beside or under it), at the notes' own 1600 × 840. */
   .phead { position: relative; padding-top: 28px; }
-  .pfig { margin-top: 0; margin-bottom: 0; }
+  .pfig { max-width: 1048px; margin-top: 0; margin-bottom: 0; }
   .aplate { overflow: hidden; border-radius: 22px; background: var(--peach); box-shadow: 0 0 0 1px var(--line), 0 24px 48px -26px rgba(var(--dark-rgb), .35); }
   .aplate :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 1600 / 840; object-fit: cover; }
   .cap { width: fit-content; margin: 10px 8px 0 auto; font-family: var(--font-script); font-weight: 700; font-size: 20px; line-height: 1.2; color: var(--rust); transform: rotate(-2deg); }
