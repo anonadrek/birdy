@@ -1186,7 +1186,7 @@ test.describe('bloggen', () => {
   }
 
   // The newest note is the list's big first card (FieldNotesIndex sorts by date), and the home page shows the same one.
-  for (const [path, prefix, newest] of [['/sv/', '/sv', '/sv/blog/see-the-song/'], ['/', '', '/blog/see-the-song/']] as const) {
+  for (const [path, prefix, newest] of [['/sv/', '/sv', '/sv/blog/birdy-x-albit/'], ['/', '', '/blog/birdy-x-albit/']] as const) {
     test(`startsidan visar senaste inlägget som fotokort på ${path}`, async ({ page }) => {
       await page.goto(`${prefix}/blog/`);
       const latest = page.locator('main .first a.ncard');
@@ -1267,10 +1267,13 @@ test.describe('bloggen', () => {
     const blocks = xml.match(/<url>[\s\S]*?<\/url>/g) ?? [];
     const blockFor = (url: string) => blocks.find((b) => b.includes(`<loc>${url}</loc>`));
     const postDates = [
-      ['https://birdy.community/blog/why-birdy/', '2026-09-24'],
-      ['https://birdy.community/sv/blog/why-birdy/', '2026-09-24'],
+      // A rewritten note's lastmod is its updated date (2026-10-10).
+      ['https://birdy.community/blog/why-birdy/', '2026-10-10'],
+      ['https://birdy.community/sv/blog/why-birdy/', '2026-10-10'],
       ['https://birdy.community/blog/see-the-song/', '2026-10-10'],
       ['https://birdy.community/sv/blog/see-the-song/', '2026-10-10'],
+      ['https://birdy.community/blog/birdy-x-albit/', '2026-10-10'],
+      ['https://birdy.community/sv/blog/birdy-x-albit/', '2026-10-10'],
     ] as const;
     for (const [url, date] of postDates) {
       const block = blockFor(url);
@@ -1330,10 +1333,98 @@ test.describe('bloggen', () => {
     }
   });
 
-  // The gallery wall turned light on 2026-10-10, so its kicker is the light sections' rust; the blog's band is still espresso.
-  test('listkickern är apricot på espresso och karusellkickern rost på det ljusa pappret', async ({ page }) => {
+  // "Varför Birdy finns" was rewritten on 2026-10-10: the date next to the original one, and the article's modified time.
+  for (const [prefix, label] of [['/sv', 'Uppdaterad 10 oktober 2026'], ['', 'Updated 10 October 2026']] as const) {
+    test(`ett omskrivet inlägg visar när det uppdaterades (${prefix || 'EN'})`, async ({ page }) => {
+      await page.goto(`${prefix}/blog/why-birdy/`);
+      await expect(page.locator('.ahero .ameta')).toContainText(label);
+      await expect(page.locator('meta[property="article:modified_time"]')).toHaveAttribute('content', /^2026-10-10/);
+      const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent()) ?? '{}');
+      const posting = ld['@graph'].find((n: { '@type': string }) => n['@type'] === 'BlogPosting');
+      expect(posting.datePublished).toMatch(/^2026-09-24/);
+      expect(posting.dateModified).toMatch(/^2026-10-10/);
+      await expect(page.locator('.article-prose a[href$="/blog/birdy-x-albit/"]')).toHaveCount(1);
+      await page.goto(`${prefix}/blog/see-the-song/`);
+      await expect(page.locator('meta[property="article:modified_time"]')).toHaveCount(0);
+    });
+  }
+
+  // Birdy × AlbIT (2026-10-10): the hero where the two brands meet instead of the photo, the title on the paper, the light
+  // menu from the start, and an end card for both brands.
+  for (const [prefix, title] of [['/sv', 'Birdy × AlbIT: en rädsla för fåglar blev en app'], ['', 'Birdy × AlbIT: how a fear of birds became an app']] as const) {
+    test(`inlägget Birdy × AlbIT har hjälten där varumärkena möts (${prefix || 'EN'})`, async ({ page }) => {
+      const errors = trackConsoleErrors(page);
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto(`${prefix}/blog/birdy-x-albit/`);
+      const hero = page.locator('[data-collab-hero]');
+      await expect(hero).toHaveAttribute('role', 'img');
+      expect((await hero.getAttribute('aria-label'))?.length ?? 0).toBeGreaterThan(60);
+      await expect(page.locator('.ahero')).toHaveCount(0);
+      await expect(hero.locator('svg.bxa-wide')).toBeVisible();
+      await expect(hero.locator('svg.bxa-tall')).toBeHidden();
+      // The flock: the bird defined once, used by both variants, and the AlbIT wordmark drawn in each.
+      await expect(hero.locator('#bxa-bird use')).not.toHaveCount(0);
+      await expect(hero.locator('svg.bxa-art > use[href="#bxa-bird"]')).toHaveCount(2);
+      await expect(hero.locator('svg.bxa-art image')).toHaveCount(2);
+      const wordmark = await hero.locator('svg.bxa-wide image').getAttribute('href');
+      expect(wordmark).toMatch(/\/_astro\/albit-wordmark-white[^/]*\.webp$/);
+      expect((await page.request.get(wordmark!)).status()).toBe(200);
+      await expect(page.locator('h1')).toHaveText(title);
+      await expect(page.locator('h1 .ch1-x')).toHaveText('×');
+      // The menu is the light paper bar from the start, and the browser bar the same paper.
+      await expect(page.locator('#site-nav')).toHaveClass(/nav--solid/);
+      await expect(page.locator('#site-nav')).toHaveCSS('background-color', 'rgb(246, 239, 226)');
+      await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', /^#f6efe2$/i);
+      // The logbook figure, one pull quote, the end card for both brands.
+      await expect(page.locator('.article-prose .note-facts li')).toHaveCount(6);
+      await expect(page.locator('.article-prose blockquote')).toHaveCount(1);
+      await expect(page.locator('.cend .cend-b a[href*="play.google.com"]')).toHaveCount(1);
+      await expect(page.locator('.cend .cend-a a')).toHaveAttribute('href', 'https://www.albit.se/');
+      await expect(page.locator('.cend .cend-a img')).toHaveAttribute('alt', 'AlbIT');
+      await expect(page.locator('.aend')).toHaveCount(0);
+      await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\/_astro\/birdy-x-albit[^/]*\.jpg$/);
+      expect(errors).toEqual([]);
+    });
+  }
+
+  // The polished article (2026-10-10): a reading line at the top, a drop cap on the lead, the author and two more notes.
+  test('inlägget har läslinjen, anfangen, skribenten och fler fältanteckningar', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/blog/why-birdy/');
+    const bar = page.locator('[data-read-progress]');
+    const scale = () => bar.evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).a);
+    expect(await scale()).toBe(0);
+    await page.evaluate(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' }));
+    await expect.poll(scale).toBe(1);
+    const lead = page.locator('.article-prose > p').first();
+    expect(await lead.evaluate((el) => getComputedStyle(el, '::first-letter').float)).toBe('left');
+    await expect(page.locator('.aauthor .aauthor-n')).toHaveText('Albin Abrahamsson');
+    await expect(page.locator('.aauthor a')).toHaveAttribute('href', 'https://www.albit.se/om-albin/');
+    const more = page.locator('.amore a.ncard');
+    await expect(more).toHaveCount(2);
+    expect(await more.evaluateAll((els) => els.map((a) => a.getAttribute('href')))).not.toContain('/sv/blog/why-birdy/');
+    await expect(page.locator('.aend')).toHaveCSS('background-color', 'rgb(253, 229, 203)');
+    // The collab note introduces AlbIT in its end card instead of the author box.
+    await page.goto('/sv/blog/birdy-x-albit/');
+    await expect(page.locator('.aauthor')).toHaveCount(0);
+    await expect(page.locator('.amore a.ncard')).toHaveCount(2);
+  });
+
+  test('inlägget Birdy × AlbIT byter till den höga bilden på mobilen', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/sv/blog/birdy-x-albit/');
+    const hero = page.locator('[data-collab-hero]');
+    await expect(hero.locator('svg.bxa-tall')).toBeVisible();
+    await expect(hero.locator('svg.bxa-wide')).toBeHidden();
+    const box = await hero.boundingBox();
+    expect(Math.abs(box!.height / box!.width - 1100 / 800)).toBeLessThan(0.02);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+  });
+
+  // The gallery wall and the blog's band both turned light on 2026-10-10, so both kickers are the light sections' rust.
+  test('listkickern och karusellkickern är rost på det ljusa pappret', async ({ page }) => {
     await page.goto('/sv/blog/');
-    await expect(page.locator('.bhead .kick').first()).toHaveCSS('color', 'rgb(242, 178, 122)');
+    await expect(page.locator('.bhead .kick').first()).toHaveCSS('color', 'rgb(154, 69, 38)');
 
     await page.goto('/sv/');
     await expect(page.locator('.tour-head .kick').first()).toHaveCSS('color', 'rgb(154, 69, 38)');

@@ -51,9 +51,11 @@ test.describe('espresso i stället för mossa', () => {
     }
   });
 
-  test('bloggens rubrikband är espresso', async ({ page }) => {
+  // The blog's band went light on 2026-10-10 (the site's light theme): peach paper with dark words.
+  test('bloggens rubrikband är persikopapper', async ({ page }) => {
     await page.goto('/sv/blog/');
-    await expect(page.locator('.bhead')).toHaveCSS('background-color', ESPRESSO);
+    await expect(page.locator('.bhead')).toHaveCSS('background-color', PEACH);
+    await expect(page.locator('.bhead .journal-headline')).toHaveCSS('color', INK);
   });
 });
 

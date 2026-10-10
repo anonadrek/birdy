@@ -47,10 +47,15 @@ const titleId = `nc-title-${note.id.replace(/[^a-zA-Z0-9_-]+/g, '-')}`;
   .ncard { display: grid; background: var(--card); border-radius: 18px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); transition: transform .35s var(--ease-paper), box-shadow .35s var(--ease-paper); }
   .ncard:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px var(--line), 0 18px 36px rgba(var(--dark-rgb), .12); }
   .ncard-img { position: relative; overflow: hidden; }
-  .ncard-img :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+  .ncard-img :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; transition: transform .6s var(--ease-paper); }
+  @media (hover: hover) and (pointer: fine) {
+    .ncard:hover .ncard-img :global(img) { transform: scale(1.035); }
+    .ncard:hover .ncard-title { color: var(--rust); }
+  }
+  @media (prefers-reduced-motion: reduce) { .ncard-img :global(img) { transition: none; } }
   .ncard-body { padding: 20px 20px 22px; }
   .ncard-body :global(.kick) { margin-bottom: 8px; font-size: 10px; }
-  .ncard-title { font-size: 22px; line-height: 1.1; overflow-wrap: anywhere; hyphens: auto; }
+  .ncard-title { font-size: 22px; line-height: 1.1; overflow-wrap: anywhere; hyphens: auto; transition: color .25s; }
   .ncard-desc { color: var(--muted); font-size: 15px; line-height: 1.6; margin: 14px 0 0; }
   .ncard-meta { margin: 14px 0 0; font-size: 11.5px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
   .ncard--small .ncard-img { aspect-ratio: 4 / 3; }

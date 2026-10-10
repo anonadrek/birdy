@@ -24,7 +24,8 @@ export async function getFieldNotes(locale: Locale): Promise<FieldNote[]> {
     if (!locales.has('en') || !locales.has('sv')) throw new Error(`Field note needs both EN and SV versions: ${slug}`);
   }
   return all.filter((note) => note.data.locale === locale)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    // Newest first; notes from the same day by slug, so the order never depends on the order files are read in.
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf() || a.data.slug.localeCompare(b.data.slug));
 }
 
 /** Minutes to read a note's markdown body at 200 words per minute, at least 1. HTML tags in the body (a video, say)

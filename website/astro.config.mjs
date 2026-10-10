@@ -46,6 +46,7 @@ export function parseNoteFrontmatter(text, filePath) {
   const slug = readField('slug');
   const rawDate = readField('date');
   const image = readField('image');
+  const rawUpdated = readField('updated');
   if (!slug || !rawDate) {
     throw new Error(`Field note is missing slug or date for the sitemap: ${filePath}`);
   }
@@ -54,7 +55,11 @@ export function parseNoteFrontmatter(text, filePath) {
   if (Number.isNaN(date.valueOf())) {
     throw new Error(`Field note has an invalid date for the sitemap: ${filePath} (frontmatter says ${JSON.stringify(rawDate)})`);
   }
-  return { slug, date, image };
+  const updated = rawUpdated ? new Date(/^\d{4}-\d{2}-\d{2}$/.test(rawUpdated) ? `${rawUpdated}T00:00:00Z` : rawUpdated) : undefined;
+  if (updated && Number.isNaN(updated.valueOf())) {
+    throw new Error(`Field note has an invalid updated date for the sitemap: ${filePath} (frontmatter says ${JSON.stringify(rawUpdated)})`);
+  }
+  return { slug, date, image, updated };
 }
 
 /**
@@ -80,9 +85,9 @@ const noteDates = new Map();
 for (const locale of ['en', 'sv']) {
   const dir = resolve(root, `src/content/field-notes/${locale}`);
   for (const filePath of listMarkdownFiles(dir)) {
-    const { slug, date, image } = parseNoteFrontmatter(readFileSync(filePath, 'utf8'), filePath);
+    const { slug, date, image, updated } = parseNoteFrontmatter(readFileSync(filePath, 'utf8'), filePath);
     const path = locale === 'sv' ? `/sv/blog/${slug}/` : `/blog/${slug}/`;
-    noteDates.set(path, date.toISOString());
+    noteDates.set(path, (updated ?? date).toISOString());
 
     if (image) {
       const imagePath = resolve(dirname(filePath), image);

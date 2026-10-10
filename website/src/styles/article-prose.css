@@ -1,16 +1,26 @@
-/* Field note body (spec §6): calm serif headings, a narrow readable column and a rust pull quote. */
-.article-prose { font-size: 17px; line-height: 1.75; color: #3D2C24; }
-.article-prose > p:first-child { font-size: 20px; line-height: 1.6; color: var(--ink); margin: 0 0 26px; }
-.article-prose p { margin: 0 0 18px; }
-.article-prose h2 { font-size: 30px; line-height: 1.1; letter-spacing: -.01em; color: var(--ink); margin: 44px 0 14px; }
-.article-prose h3 { font-size: 23px; line-height: 1.2; color: var(--ink); margin: 32px 0 10px; }
-.article-prose a { color: var(--rust); font-weight: 600; border-bottom: 1px solid currentColor; }
-.article-prose ul, .article-prose ol { padding-left: 1.4rem; margin: 0 0 18px; }
-.article-prose ul { list-style: disc; }
-.article-prose ol { list-style: decimal; }
-.article-prose li { margin-bottom: 6px; }
+/* Field note body (spec §6, polished 2026-10-10): a reading column set like a printed field journal. Larger text with
+   more air, a drop cap on the lead in the style of the app's species profiles, each section marked with the site's rust
+   kicker line, a pull quote between hairlines, rust links underlined at a distance and small rust markers for lists. */
+.article-prose { font-size: 18px; line-height: 1.78; color: #3A2A22; }
+.article-prose > p:first-child { font-size: 21px; line-height: 1.62; color: var(--ink); margin: 0 0 32px; }
+.article-prose > p:first-child::first-letter { float: left; margin: .1em .1em 0 -.02em; font-family: var(--font-serif); font-weight: 400; font-size: 3.6em; line-height: .78; color: var(--rust); }
+.article-prose p { margin: 0 0 20px; }
+.article-prose h2 { position: relative; font-size: 32px; line-height: 1.12; letter-spacing: -.012em; color: var(--ink); margin: 60px 0 16px; padding-top: 20px; text-wrap: balance; }
+.article-prose h2::before { content: ''; position: absolute; left: 0; top: 0; width: 28px; height: 2px; border-radius: 1px; background: var(--rust); }
+.article-prose h3 { font-size: 23px; line-height: 1.2; color: var(--ink); margin: 34px 0 10px; }
+.article-prose a { color: var(--rust); font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: rgba(154, 69, 38, .45); transition: text-decoration-color .2s; }
+.article-prose a:hover { text-decoration-color: currentColor; }
+.article-prose ul, .article-prose ol { margin: 0 0 22px; padding: 0; }
+.article-prose ul { list-style: none; }
+.article-prose ul > li { position: relative; padding-left: 26px; }
+.article-prose ul > li::before { content: ''; position: absolute; left: 3px; top: .74em; width: 7px; height: 7px; border-radius: 50%; background: var(--rust); }
+.article-prose ol { list-style: decimal; padding-left: 1.5rem; }
+.article-prose ol > li::marker { color: var(--rust); font-weight: 600; }
+.article-prose li { margin-bottom: 10px; }
 .article-prose strong { font-weight: 600; color: var(--ink); }
-.article-prose blockquote { margin: 34px 0; padding: 6px 0 6px 24px; border-left: 2px solid var(--rust); font-family: var(--font-serif); font-style: italic; font-size: 27px; line-height: 1.25; color: var(--rust-deep); }
+/* One pull quote per note: the thought the note turns on, between two hairlines, its opening mark handwritten. */
+.article-prose blockquote { position: relative; margin: 50px 0 46px; padding: 34px 0 28px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-family: var(--font-serif); font-style: italic; font-size: 30px; line-height: 1.25; letter-spacing: -.005em; color: var(--ink); text-wrap: balance; }
+.article-prose blockquote::before { content: '“'; position: absolute; left: 0; top: 0; transform: translateY(-50%); padding-right: 12px; background: var(--paper); font-family: var(--font-script); font-style: normal; font-weight: 700; font-size: 60px; line-height: .9; color: var(--rust); }
 .article-prose blockquote p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
 /* A vertical video (raw HTML in the note: <figure class="note-video">) in a narrow centred column, with its credit
    right under it in the species pages' credit style: small, muted, underlined links, one line per source. */
@@ -21,8 +31,23 @@
 .article-prose .note-video figcaption a { color: var(--muted); font-weight: 400; }
 .article-prose .note-video figcaption a:hover { color: var(--rust); }
 @media (max-width: 760px) {
-  .article-prose { font-size: 16px; }
-  .article-prose > p:first-child { font-size: 18px; }
-  .article-prose h2 { font-size: 25px; }
-  .article-prose blockquote { font-size: 23px; }
+  .article-prose { font-size: 17px; line-height: 1.72; }
+  .article-prose > p:first-child { font-size: 19px; }
+  .article-prose h2 { font-size: 26px; margin-top: 48px; }
+  .article-prose blockquote { font-size: 24px; margin: 42px 0 38px; }
+  .article-prose blockquote::before { font-size: 50px; }
+}
+
+/* The logbook in numbers (raw HTML in the note: <figure class="note-facts">, the Birdy × AlbIT note): six true figures
+   from the project's history, set like a field journal's tally. */
+.article-prose .note-facts { margin: 38px 0 34px; padding: 26px 0 18px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.article-prose .note-facts ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 24px; }
+.article-prose .note-facts li { display: flex; flex-direction: column; gap: 4px; margin: 0; padding: 0; }
+.article-prose .note-facts li::before { content: none; }
+.article-prose .note-facts b { font-family: var(--font-serif); font-weight: 400; font-size: 30px; line-height: 1.05; letter-spacing: -.01em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.article-prose .note-facts span { font-size: 13.5px; line-height: 1.4; color: var(--muted); }
+.article-prose .note-facts figcaption { margin-top: 18px; font-family: var(--font-script); font-weight: 700; font-size: 19px; color: var(--rust); transform: rotate(-1deg); transform-origin: left; }
+@media (max-width: 560px) {
+  .article-prose .note-facts ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .article-prose .note-facts b { font-size: 26px; }
 }
