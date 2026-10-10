@@ -7,6 +7,10 @@ Runbook för de 30 dagliga videorna (9 oktober till 7 november 2026, kl. 08.00 S
 - **En liten förloppsmätare överst i varje video** (Albin 2026-10-10: "en liten mätare i toppen av våra klipp där man ser hur långt det är kvar av klippet"). Byggs inför nästa schemaläggning, inte i de redan schemalagda. Den ska gå över hela den färdiga videon, alltså även titelkortet och loopen som `cover/title-card.mjs` lägger på efteråt, så den hör hemma i det sista steget (eller i stagen med den totala längden känd). Tunn och lugn i appens färger, ovanför plattformarnas egna knappar uppe till höger, och den får inte krocka med texten överst i stagen. Kontrollera i en förhandsvisning till Albin innan serien renderas.
 - YouTube 10 till 18 okt har fortfarande de gamla versionerna (utan flockomslag). Att byta dem kräver en omrendering av `week1` och `week1-reserves` (mapparna finns inte längre); valfritt.
 
+## Läget 2026-10-10 kväll: hela serien schemalagd
+
+Alla fyra kanaler har ett inlägg om dagen 08.00 till och med 7 nov. YouTube 29 okt till 7 nov laddades upp lör 10 okt kväll, klart 19.53 (Albins OK samma dag) och kontrollerades i listan Shorts: tio rader "Schemalagd", en per dag i den publicerade ordningen, inga utkast. Nästa schemaläggning gäller serien från 8 nov.
+
 ## Läget 2026-10-08 kväll
 
 | Kanal | Verktyg | Schemalagt | Kvar |
@@ -120,6 +124,16 @@ Ordningen 19 oktober till 7 november: Grågås, Ringduva, Sångsvan, Gråkråka,
 4. Datum: öppna listan och klicka dagen (`ytcp-scrollable-calendar .calendar-day` som inte är `disabled`). Tid: alternativet "08:00". Tidszon: "(GMT+02:00) Stockholm".
 5. Vakt: tiden 08:00, datumet börjar med "N okt. 2026", tidszonen Stockholm. Klicka den sista synliga Schemalägg-knappen. Bekräftelse: "Videon ställs in som" följt av schemalagd.
 6. Inga egna omslag sattes på YouTube; Shorts visar en ruta ur videon. Vill Albin byta ruta anger `note` i `schedule.csv` den bästa tidpunkten.
+
+**I skymt fönster (beprövat 10 okt kväll, tio videor utan fel):**
+
+- Direkt efter `file_upload` är dialogen inte utlagd (titelfältet har storleken 0 × 0 och `focus()` misslyckas). Ett litet `zoom`-utsnitt tvingar fram en bildruta; kontrollera sedan att `document.activeElement` är fältet innan ctrl+a och skrivandet.
+- Beskrivningen skrivs med `type` inklusive radbrytningarna; kontrollera efteråt i JS att den börjar och slutar rätt, har artlänken och sju radbrytningar.
+- Radioknappen "inte gjord för barn" (`name="VIDEO_MADE_FOR_KIDS_NOT_MFK"`), Nästa (`#next-button`) och schemapanelen (`#second-container-expand-button` i `ytcp-uploads-review`) går med JS-klick, en sekund emellan.
+- Datum: `#datepicker-trigger`, ett `zoom`, sedan dagen under rätt `.calendar-month-label` ("OKT. 2026", "NOV. 2026").
+- Tid: listan behövs inte. Fokusera `#time-of-day-container input` med JS, ctrl+a, skriv `08:00`, Tab.
+- Tidszon: `#timezone-select-button`, ett `zoom`, sedan `tp-yt-paper-item` med "(GMT+02:00) Stockholm".
+- Dela upp varje video i två batcher (texterna till och med schemapanelen, sedan datum till Schemalägg). En enda lång batch tar timeout men fortsätter i bakgrunden: läs alltid läget med JS innan något görs om.
 
 ## TikTok Studio
 
