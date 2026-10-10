@@ -6,7 +6,7 @@ Skriven lör 10 okt 02.10 på Windows-maskinen. **Nästa session börjar här.**
 
 - **1.3.1 är byggd, testad och nästan inskickad.** vC130, gratis (Premium öppet för alla som i juni, brytpunkt 0). AAB:n ligger på skrivbordet: `birdy-1.3.1-vc130-PRODUKTION.aab` (496 MB, byggd 9 okt 23.03). Emulatortestet är godkänt (API 36 och API 30). Play-utkastet "130 (1.3.1)" har What's new (en-US, sv-SE) och butikssidan på alla tio språk med ny text. **Inget är inskickat.**
 - **Två saker saknas före inskicket:** (1) butiksbilderna i Flock-looken, som Albin vill ha omgjorda med bilder som visar appen som den ser ut i dag, i ultra premium; (2) AAB:n i utkastet, som Albin drar in själv (agentens filuppladdning klarar högst 10 MB).
-- **Webbgalleriet** är klart på förhandsvisningen och väntar på Albins OK.
+- **Webbgalleriet är live** sedan lör 10 okt 02.19 (Albins OK).
 - **Sociala medier** är schemalagda till 7 nov, utom YouTube 29 okt till 7 nov.
 
 ## Gör i den här ordningen
@@ -35,11 +35,12 @@ Albin 10 okt: "Fixa flock till detta släpp, få in bilder som visar mer hur det
 2. Agenten läser varningarna (väntat: saknade felsökningssymboler; inget om 16 KB, kontrollen gav 15 av 15), kontrollerar What's new, butikssidans tio språk och de nya bilderna, och **skickar in med 100 % utrullning** (Albins val 9 okt). En rad i #birdy-bygge.
 3. När Google har godkänt: sätt `APP_1_3_LIVE_FROM` i `website/src/lib/release.mjs` till dagen, kör grinden, slå ihop och kontrollera live.
 
-### 3. Webbgalleriet
+### 3. Webbgalleriet: live
 
-- `website/galleri` `cf7090a7`, förhandsvisning https://birdy-git-website-galleri-albtab.vercel.app/sv/ (engelska på `/`). Tio kort: sävsångaren är borta, Lyssna-kortets ljudvåg rör sig (`wave-pulse`, stilla vid minskad rörelse) och tre Premium-kort ligger sist (karta, säsongsstatistik, PDF) med etiketten Premium. Kontrollerat i Chrome lör 10 okt 02.03.
-- Albin såg den gamla versionen eftersom Vercels bygge av `b3e7ee4f` föll på "Git information retrieval failed for this deployment". En tom commit (`cf7090a7`) byggde om den.
-- Efter Albins OK: slå ihop med `main` med hela grinden (verify:fixtures, Playwright, astro check) och kontrollera live med en markör som bara finns i nya versionen (`.pbadge`).
+- Albin gav OK natten till lör 10 okt ("Ok make it live"). `website/galleri` slogs ihop med `main` som `208028ef` och var live 02.19, kontrollerat på `/` och `/sv/` (tre Premium-kort, ingen sävsångare).
+- Grinden kördes på exakt den kombinationen: verify:fixtures (check-seo 68/58/56, unit, i18n 473 nycklar, inga tankstreck, palett, kontrast 33 par, förhandsbygget), accuracy, tomma hubben, astro check 0 fel, Playwright 273 (ett arbetarkrasch-fel, Windows-kod 3221225477, omkört grönt tillsammans med hela `faltbok.spec.ts` och `home.spec.ts`, 131 av 131).
+- Albin såg först den gamla versionen eftersom Vercels bygge av `b3e7ee4f` föll på "Git information retrieval failed for this deployment"; en tom commit (`cf7090a7`) byggde om förhandsvisningen.
+- Grenen `website/galleri` ligger kvar på GitHub.
 
 ### 4. Sociala medier
 
