@@ -33,13 +33,13 @@ description:
   sv: '# Ejdern
 
 
-    Ejdern är en stor och tung dykand som mäter 60–70 cm och känns igen på sin karakteristiska
-    kilformade näbb som är fjäderklädd på sidorna. Hanen i praktdräkt är mycket kontrasterande
-    med svart hjässa, övergump och buk, ljusgrön nackfläck och övrigt vitt fjäderdräkt
-    med rödrosa anstrykning på bröstet. Honan är året runt brunvattrad i nyanser från
-    gråbrun till rödbrun eller sandfärgad, med en vitkantad mörk vingspegel. På grund
-    av en komplex ruggningsstrategi bär ejdern en växlande eklipsdräkt i svart, brunt
-    och vitt.
+    Ejdern är en stor och tung dykand som mäter 60 till 70 cm och känns igen på sin
+    karakteristiska kilformade näbb som är fjäderklädd på sidorna. Hanen i praktdräkt
+    är mycket kontrasterande med svart hjässa, övergump och buk, ljusgrön nackfläck
+    och övrigt vitt fjäderdräkt med rödrosa anstrykning på bröstet. Honan är året
+    runt brunvattrad i nyanser från gråbrun till rödbrun eller sandfärgad, med en
+    vitkantad mörk vingspegel. På grund av en komplex ruggningsstrategi bär ejdern
+    en växlande eklipsdräkt i svart, brunt och vitt.
 
 
     Ejdern är anpassad för att dyka och söka föda under vattenytan. Det är en kraftfull
@@ -122,7 +122,7 @@ image_refs:
     2021.jpg
   commons_filename: Common eider (Somateria mollissima) 2021.jpg
 review_status: approved
-review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+review_notes: auto-pick OK (sjöfågel, klar identifierbar)
 generated_at: '2026-05-06T12:51:32.674510+00:00'
 sources:
   wikipedia_sv_revision: '58201430'

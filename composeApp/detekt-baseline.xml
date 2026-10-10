@@ -15,7 +15,6 @@
     <ID>CyclomaticComplexMethod:PremiumTeaserCard.kt$@Composable fun PremiumTeaserCard( title: String, subtitle: String, cornerLabel: String, ctaLabel: String, onUnlock: () -&gt; Unit, modifier: Modifier = Modifier, premiumActive: Boolean = false, isExporting: Boolean = false, exportLabel: String? = null, exportBusyLabel: String? = null, onExport: () -&gt; Unit = {}, )</ID>
     <ID>CyclomaticComplexMethod:RecalculateBadgesUseCase.kt$RecalculateBadgesUseCase$private fun rawValue( rule: BadgeRule, observations: List&lt;Observation&gt;, speciesByQid: Map&lt;SpeciesId, Species&gt;, dailyBirdMatchCount: Int = 0, ): Int</ID>
     <ID>CyclomaticComplexMethod:SettingsScreen.kt$@Composable fun SettingsScreen( viewModel: SettingsViewModel, onBack: () -&gt; Unit, onPremiumClick: () -&gt; Unit, onNavigateToAbout: () -&gt; Unit, onShowIntroAgain: () -&gt; Unit, versionName: String, onRequestLocationPermission: () -&gt; Unit = {}, )</ID>
-    <ID>CyclomaticComplexMethod:SpeciesProfileScreen.kt$@OptIn(ExperimentalResourceApi::class) @Composable private fun ProfileContent( species: Species, locale: Locale, onBack: () -&gt; Unit, onPremiumClick: () -&gt; Unit, showPremiumTeaser: Boolean, )</ID>
     <ID>CyclomaticComplexMethod:StampSeal.kt$@Suppress("LongParameterList") @Composable fun StampSeal( state: StampSealState, modifier: Modifier = Modifier, size: Dp = 88.dp, accentColor: Color = AccentCopper, filled: Boolean = true, onClick: (() -&gt; Unit)? = null, )</ID>
     <ID>DestructuringDeclarationWithTooManyEntries:ArchiveViewModel.kt$ArchiveViewModel$(q, c, s, stamped)</ID>
     <ID>EmptyFunctionBlock:AndroidLocationProvider.kt$AndroidLocationProvider.&lt;no name provided&gt;${}</ID>
@@ -44,7 +43,6 @@
     <ID>LongMethod:MatchResultViewModel.kt$MatchResultViewModel$private suspend fun resolve()</ID>
     <ID>LongMethod:MatchView.kt$@OptIn(ExperimentalResourceApi::class) @Composable internal fun MatchView( state: MatchResultUiState.Match, onSave: (String) -&gt; Unit, onCancel: () -&gt; Unit, onDismissUnlock: () -&gt; Unit, locale: Locale, zone: TimeZone, )</ID>
     <ID>LongMethod:NoBirdView.kt$@Composable internal fun NoBirdView( state: MatchResultUiState.NoBird, onRetry: () -&gt; Unit, zone: TimeZone, )</ID>
-    <ID>LongMethod:ObservationDetailScreen.kt$@Composable private fun LoadedView( state: ObservationDetailUiState.Loaded, viewModel: ObservationDetailViewModel, onBack: () -&gt; Unit, onSpeciesClick: (String) -&gt; Unit, )</ID>
     <ID>LongMethod:ObservationDetailScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable private fun NoteSection( noteText: String, onNoteChange: (String) -&gt; Unit, isDirty: Boolean, isSaving: Boolean, onSave: () -&gt; Unit, onCancel: () -&gt; Unit, )</ID>
     <ID>LongMethod:OnboardingScreen.kt$@Composable fun OnboardingScreen( state: OnboardingUiState.Visible, onPageChange: (Int) -&gt; Unit, onNameChange: (String) -&gt; Unit, onLanguageSelect: (AppLanguage) -&gt; Unit, onComplete: () -&gt; Unit, isReplay: Boolean = false, )</ID>
     <ID>LongMethod:PhotoAnalyzeHost.android.kt$@Composable actual fun PhotoAnalyzeHost( graph: AppGraph, onLoaded: (sourceJson: String, capturedAtMs: Long) -&gt; Unit, onBack: () -&gt; Unit, )</ID>
@@ -63,7 +61,6 @@
     <ID>LongMethod:ScenePhoto.kt$@Composable fun ScenePhoto( pageOffset: Float, isActive: Boolean, )</ID>
     <ID>LongMethod:ScenePrivacy.kt$@Composable fun ScenePrivacy( pageOffset: Float, isActive: Boolean, )</ID>
     <ID>LongMethod:SettingsScreen.kt$@Composable fun SettingsScreen( viewModel: SettingsViewModel, onBack: () -&gt; Unit, onPremiumClick: () -&gt; Unit, onNavigateToAbout: () -&gt; Unit, onShowIntroAgain: () -&gt; Unit, versionName: String, onRequestLocationPermission: () -&gt; Unit = {}, )</ID>
-    <ID>LongMethod:SpeciesProfileScreen.kt$@OptIn(ExperimentalResourceApi::class) @Composable private fun ProfileContent( species: Species, locale: Locale, onBack: () -&gt; Unit, onPremiumClick: () -&gt; Unit, showPremiumTeaser: Boolean, )</ID>
     <ID>LongMethod:StampSeal.kt$@Suppress("LongParameterList") @Composable fun StampSeal( state: StampSealState, modifier: Modifier = Modifier, size: Dp = 88.dp, accentColor: Color = AccentCopper, filled: Boolean = true, onClick: (() -&gt; Unit)? = null, )</ID>
     <ID>LongMethod:TrophyRoomScreen.kt$@Composable private fun LoadedTrophyRoom( state: BadgesUiState.Loaded, locale: Locale, zone: TimeZone, onHeroClick: (BadgeWithUnlock) -&gt; Unit, onStampClick: (BadgeWithUnlock) -&gt; Unit, )</ID>
     <ID>LongMethod:UnlockBottomSheet.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable fun UnlockBottomSheet( badge: Badge, unlockedAt: Instant, isCelebration: Boolean, locale: Locale, zone: TimeZone, nameRes: StringResource, descriptionRes: StringResource, onDismiss: () -&gt; Unit, stampNumber: Int? = null, nextTier: NextTier? = null, )</ID>
@@ -82,7 +79,6 @@
     <ID>LongParameterList:ListenLauncherScreen.kt$( viewModel: ListenLauncherViewModel, onCameraClick: () -&gt; Unit, onPhotoClick: () -&gt; Unit, onSettingsClick: () -&gt; Unit, onNavigateToAudioScan: () -&gt; Unit, onSpeciesProfileClick: (String) -&gt; Unit, )</ID>
     <ID>LongParameterList:MatchResultViewModel.kt$MatchResultViewModel$( private val repository: SpeciesRepository, private val observationRepo: ObservationRepository, private val saveUseCase: SaveObservationUseCase, private val catalog: BadgeCatalog, val source: ScanSource, private val capturedAtMs: Long, private val locale: Locale, private val matchOverrideReader: (() -&gt; MatchOverride?)? = null, )</ID>
     <ID>LongParameterList:MatchView.kt$( state: MatchResultUiState.Match, onSave: (String) -&gt; Unit, onCancel: () -&gt; Unit, onDismissUnlock: () -&gt; Unit, locale: Locale, zone: TimeZone, )</ID>
-    <ID>LongParameterList:NotificationPayloads.kt$NotificationPayloads$( private val prefs: UserPreferences, private val observationRepo: ObservationRepository, private val badgeRepo: BadgeRepository, private val badgeCatalog: BadgeCatalog, private val speciesByQid: suspend () -&gt; Map&lt;SpeciesId, Species&gt;, private val speciesNameFor: suspend (qid: String) -&gt; String?, private val selectDailyBird: (suspend (LocalDate) -&gt; DailyBird?)?, private val dailyBirdMatchCount: suspend () -&gt; Int, private val timeZone: TimeZone, private val clock: Clock, )</ID>
     <ID>LongParameterList:ObservationDetailScreen.kt$( noteText: String, onNoteChange: (String) -&gt; Unit, isDirty: Boolean, isSaving: Boolean, onSave: () -&gt; Unit, onCancel: () -&gt; Unit, )</ID>
     <ID>LongParameterList:OnboardingScreen.kt$( state: OnboardingUiState.Visible, onPageChange: (Int) -&gt; Unit, onNameChange: (String) -&gt; Unit, onLanguageSelect: (AppLanguage) -&gt; Unit, onComplete: () -&gt; Unit, isReplay: Boolean = false, )</ID>
     <ID>LongParameterList:PremiumTeaserCard.kt$( title: String, subtitle: String, cornerLabel: String, ctaLabel: String, onUnlock: () -&gt; Unit, modifier: Modifier = Modifier, premiumActive: Boolean = false, isExporting: Boolean = false, exportLabel: String? = null, exportBusyLabel: String? = null, onExport: () -&gt; Unit = {}, )</ID>
@@ -126,14 +122,6 @@
     <ID>MagicNumber:BodyTextWithCaveatAccents.kt$1.2f</ID>
     <ID>MagicNumber:BodyTextWithCaveatAccents.kt$1.55f</ID>
     <ID>MagicNumber:BottomNavBar.kt$50</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$14</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$19</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$20</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$255f</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$3</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$4</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$5</ID>
-    <ID>MagicNumber:CiColorMatrixVectors.kt$9</ID>
     <ID>MagicNumber:Color.kt$0x1FA8552D</ID>
     <ID>MagicNumber:Color.kt$0x66A8552D</ID>
     <ID>MagicNumber:Color.kt$0x99E8E2D2</ID>
@@ -172,7 +160,6 @@
     <ID>MagicNumber:IosSealMarker.kt$16</ID>
     <ID>MagicNumber:IosSealMarker.kt$255.0</ID>
     <ID>MagicNumber:IosSealMarker.kt$8</ID>
-    <ID>MagicNumber:IosTileFetcher.kt$IosTileFetcher$3</ID>
     <ID>MagicNumber:JournalBarChart.kt$0.62f</ID>
     <ID>MagicNumber:JournalDonutChart.kt$360f</ID>
     <ID>MagicNumber:JournalDonutChart.kt$90f</ID>
@@ -207,13 +194,6 @@
     <ID>MagicNumber:MapScreenHost.ios.kt$0.1</ID>
     <ID>MagicNumber:MapScreenHost.ios.kt$4000.0</ID>
     <ID>MagicNumber:MapScreenHost.ios.kt$48.0</ID>
-    <ID>MagicNumber:MapTileTheme.kt$MapTileTheme$0.114f</ID>
-    <ID>MagicNumber:MapTileTheme.kt$MapTileTheme$0.299f</ID>
-    <ID>MagicNumber:MapTileTheme.kt$MapTileTheme$0.587f</ID>
-    <ID>MagicNumber:MapTileTheme.kt$MapTileTheme$0xFF</ID>
-    <ID>MagicNumber:MapTileTheme.kt$MapTileTheme$16</ID>
-    <ID>MagicNumber:MapTileTheme.kt$MapTileTheme$255f</ID>
-    <ID>MagicNumber:MapTileTheme.kt$MapTileTheme$8</ID>
     <ID>MagicNumber:MapViewModel.kt$MapViewModel$5_000</ID>
     <ID>MagicNumber:MatchResultViewModel.kt$MatchResultViewModel$3</ID>
     <ID>MagicNumber:MatchView.kt$100</ID>
@@ -391,7 +371,6 @@
     <ID>MatchingDeclarationName:SettingsLauncher.android.kt$SettingsLauncherSetup</ID>
     <ID>MaxLineLength:AppGraph.kt$AppGraph$)</ID>
     <ID>MaxLineLength:BadgesScreen.kt$sub = stringResource(Res.string.badges_journal_sub, (state.totalBadges - state.unlockedCount).toString())</ID>
-    <ID>MaxLineLength:CiColorMatrixVectors.kt$fun row(i: Int)</ID>
     <ID>MaxLineLength:CropAdjustScreen.kt$CropHandle.BOTTOM_LEFT to Offset(fit.offsetX + rect.left * fit.scale, fit.offsetY + rect.bottom * fit.scale)</ID>
     <ID>MaxLineLength:CropAdjustScreen.kt$CropHandle.BOTTOM_RIGHT to Offset(fit.offsetX + rect.right * fit.scale, fit.offsetY + rect.bottom * fit.scale)</ID>
     <ID>MaxLineLength:DisambigView.kt$val confidenceLabel = stringResource(Res.string.disambig_candidate_confidence, candidate.species.scientificName, "$pct%")</ID>
@@ -404,7 +383,6 @@
     <ID>MaxLineLength:IosNotificationScheduler.kt$IosNotificationScheduler$add(ID_TROPHY, content, NotificationTimes.nextWeekly(graph.clock.now(), graph.timeZone, DayOfWeek.WEDNESDAY, 9, 0))</ID>
     <ID>MaxLineLength:IosNotificationScheduler.kt$IosNotificationScheduler$requests.orEmpty().mapNotNull { (it as? UNNotificationRequest)?.identifier }.filter { it.startsWith(prefix) }</ID>
     <ID>MaxLineLength:IosSealMarker.kt$CGContextSetShadowWithColor(ctx, CGSizeMake(0.0, s.SHADOW_DY.toDouble()), s.SHADOW_BLUR.toDouble(), shadowUiColor.CGColor)</ID>
-    <ID>MaxLineLength:IosTileFetcher.kt$IosTileFetcher$fun vec(v: FloatArray)</ID>
     <ID>MaxLineLength:LifelistScreen.kt$.</ID>
     <ID>MaxLineLength:LockedBadgeBottomSheet.kt$Text(stampText, color = AccentCopper, fontFamily = serif, fontStyle = FontStyle.Italic, fontSize = 30.sp)</ID>
     <ID>MaxLineLength:LockedBadgeBottomSheet.kt$Text(stringResource(Res.string.badge_sheet_close), color = AccentCopper, fontFamily = caveat, fontSize = 16.sp)</ID>
@@ -442,7 +420,6 @@
     <ID>ReturnCount:IosImageDecode.kt$internal fun rotate90(working: WorkingImage): WorkingImage</ID>
     <ID>ReturnCount:IosImageDecode.kt$private fun UIImage.bakeUpright(maxLongSide: Int): WorkingImage?</ID>
     <ID>ReturnCount:IosScanFramePersist.kt$internal fun encodeBgraFrameToJpeg(input: ImageInput): ByteArray?</ID>
-    <ID>ReturnCount:IosTileFetcher.kt$IosTileFetcher$private fun tinted(data: NSData): NSData?</ID>
     <ID>ReturnCount:MapScreenHost.ios.kt$BirdyMapDelegate$override fun mapView( mapView: MKMapView, viewForAnnotation: MKAnnotationProtocol, ): MKAnnotationView?</ID>
     <ID>ReturnCount:MatchOverride.kt$fun parseMatchOverride(text: String): MatchOverride?</ID>
     <ID>ReturnCount:MatchResultViewModel.kt$MatchResultViewModel$fun saveToDiary(note: String = "")</ID>

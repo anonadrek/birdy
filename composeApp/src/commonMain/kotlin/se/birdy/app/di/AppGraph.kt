@@ -253,6 +253,12 @@ class AppGraph(
 
     private val recalculateBadges = RecalculateBadgesUseCase(clock = clock, zone = timeZone)
 
+    /** Strings read outside composition (notifications, the weekly recap's stamps) in the app's language. */
+    val strings: se.birdy.app.i18n.AppStrings by lazy {
+        se.birdy.app.i18n
+            .AppStrings(defaultLocale)
+    }
+
     val effectivePremiumActive: StateFlow<Boolean> by lazy {
         premiumRepository.state
             .map { backend -> (premiumOverride ?: backend) is PremiumState.Active }
@@ -301,7 +307,7 @@ class AppGraph(
                     DailyBirdSpecies(
                         name = species.name,
                         scientificName = species.scientificName,
-                        heroImagePath = species.images.firstOrNull { it.role == "hero" }?.path,
+                        heroImage = species.images.firstOrNull { it.role == "hero" },
                     )
                 }
             },
@@ -480,6 +486,41 @@ class AppGraph(
     fun onboardingViewModel(isReplay: Boolean = false): OnboardingViewModel =
         OnboardingViewModel(prefs = userPreferences, isReplay = isReplay)
 
+    /** [week]: an ISO week key from the notification's link ("2026-W41"); null or unreadable = the current week. */
+    fun weeklyRecapViewModel(week: String? = null): se.birdy.app.ui.recap.RecapViewModel =
+        se.birdy.app.ui.recap.RecapViewModel(
+            obsRepo = observationRepository,
+            badgeRepo = badgeRepository,
+            speciesByQid = { repository.all(defaultLocale).first().associateBy { it.id } },
+            // resolveBadgeString rethrows cancellation and falls back to a readable title for a
+            // badge without strings (the old inline runCatching swallowed both).
+            stampFor =
+                se.birdy.app.ui.recap.recapStampResolver(
+                    catalog = badgeCatalog,
+                    nameFor = { id ->
+                        se.birdy.app.ui.badges.resolveBadgeString(id, strings) {
+                            se.birdy.app.ui.badges.BadgeStringMap
+                                .nameFor(id)
+                        }
+                    },
+                    descriptionFor = { id ->
+                        // No readable fallback for a description: an empty line rather than the id.
+                        runCatching {
+                            strings.get(
+                                se.birdy.app.ui.badges.BadgeStringMap
+                                    .descriptionFor(id),
+                            )
+                        }.onFailure { if (it is kotlinx.coroutines.CancellationException) throw it }
+                            .getOrDefault("")
+                    },
+                ),
+            zone = timeZone,
+            now = { clock.now() },
+            week =
+                se.birdy.app.recap
+                    .parseIsoWeekKey(week),
+        )
+
     /**
      * Factory for [AudioScanViewModel].
      *
@@ -488,22 +529,6 @@ class AppGraph(
      * from [se.birdy.android.MainActivity]; in tests construct [AudioScanViewModel]
      * directly with fake collaborators instead.
      */
-    fun weeklyRecapViewModel(): se.birdy.app.ui.recap.RecapViewModel =
-        se.birdy.app.ui.recap.RecapViewModel(
-            obsRepo = observationRepository,
-            badgeRepo = badgeRepository,
-            speciesByQid = { repository.all(defaultLocale).first().associateBy { it.id } },
-            badgeNameFor = { id ->
-                runCatching {
-                    org.jetbrains.compose.resources.getString(
-                        se.birdy.app.ui.badges.BadgeStringMap
-                            .nameFor(id),
-                    )
-                }.getOrElse { id }
-            },
-            zone = timeZone,
-        )
-
     fun audioScanViewModel(): AudioScanViewModel {
         val provider =
             audioClassifierProvider

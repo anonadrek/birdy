@@ -35,7 +35,7 @@ description:
 
     Tallbiten är en stor fink som lever i de nordligaste delarna av både Europa, Asien
     och Nordamerika. Arten kännetecknas av sitt robusta näbb och färgskillnader mellan
-    könen – hannen är mestadels rosenröd medan honan är grågul. Färgtonen varierar
+    könen: hannen är mestadels rosenröd medan honan är grågul. Färgtonen varierar
     betydligt beroende på ålder och kön, något som är gemensamt för flera finkar.
 
 
@@ -60,7 +60,7 @@ description:
 
     This species is primarily a frugivore, particularly in winter, with rowan berries
     and other small fruits forming the bulk of its diet. The pine grosbeak exhibits
-    irruptive behavior—in years when fruit crops fail, it undertakes long-distance
+    irruptive behavior: in years when fruit crops fail, it undertakes long-distance
     movements southward and downslope in search of food. These irregular eruptions
     can bring birds far beyond their typical range, making sightings unpredictable
     but exciting for observers in more southern regions.
@@ -124,7 +124,7 @@ image_refs:
     20220310 01.jpg
   commons_filename: Pinicola enucleator Kittilä 20220310 01.jpg
 review_status: approved
-review_notes: "Gråsiska — hero godkänd, klassisk vinterart i Sverige."
+review_notes: Gråsiska — hero godkänd, klassisk vinterart i Sverige.
 generated_at: '2026-05-15T19:12:40.209734+00:00'
 sources:
   wikipedia_sv_revision: '59224079'

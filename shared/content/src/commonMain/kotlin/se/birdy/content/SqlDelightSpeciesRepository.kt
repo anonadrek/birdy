@@ -10,10 +10,12 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import se.birdy.content.db.BirdyContent
+import se.birdy.content.model.PhotoCredit
 import se.birdy.content.model.Species
 import se.birdy.content.model.SpeciesImage
 import se.birdy.content.model.SpeciesSummary
 import se.birdy.content.model.SpeciesTaxonomy
+import se.birdy.content.model.SpeciesTextSource
 import se.birdy.content.search.SearchNames
 import se.birdy.content.search.SearchRanking
 import se.birdy.content.search.normalizeSearch
@@ -26,7 +28,9 @@ import se.birdy.content.search.normalizeSearch
  */
 internal const val FORMER_NAME_KIND = "former_name"
 
-@Suppress("LongMethod")
+// TooManyFunctions: the repository is the one place that reads species.db, by design; the photo
+// credits (release 1.3.0 Task 7e-2) are two more queries on the same tables.
+@Suppress("LongMethod", "TooManyFunctions")
 class SqlDelightSpeciesRepository(
     private val db: BirdyContent,
 ) : SpeciesRepository {
@@ -67,9 +71,7 @@ class SqlDelightSpeciesRepository(
                 names.firstOrNull { it.locale == locale.code }?.name
                     ?: names.firstOrNull { it.locale == Locale.EN.code }?.name
                     ?: row.scientific_name
-            val description = pickText(texts, locale, "description")
-            val migration = pickText(texts, locale, "migration")
-            val marginalia = pickText(texts, locale, "marginalia")
+            val shown = ShownTexts.pick(texts, locale, id, row.wikipedia_sv_revision, row.wikipedia_en_revision)
             val formerName = texts.formerName(locale)
 
             emit(
@@ -90,22 +92,12 @@ class SqlDelightSpeciesRepository(
                     iucnStatus = row.iucn_status,
                     regions = regions,
                     season = seasons.associate { it.month to it.status },
-                    description = description,
-                    migration = migration,
-                    marginalia = marginalia,
-                    images =
-                        images.map { img ->
-                            SpeciesImage(
-                                role = img.role,
-                                path = img.path,
-                                width = img.width.toInt(),
-                                height = img.height.toInt(),
-                                license = img.license,
-                                author = img.author,
-                                sourceUrl = img.source_url,
-                            )
-                        },
+                    description = shown.description,
+                    migration = shown.migration,
+                    marginalia = shown.marginalia,
+                    images = images.map { it.toSpeciesImage() },
                     formerName = formerName,
+                    textSources = shown.sources,
                 ),
             )
         }
@@ -279,9 +271,14 @@ class SqlDelightSpeciesRepository(
                         names.firstOrNull { it.locale == locale.code }?.name
                             ?: names.firstOrNull { it.locale == Locale.EN.code }?.name
                             ?: row.scientific_name
-                    val description = pickText(texts, locale, "description")
-                    val migration = pickText(texts, locale, "migration")
-                    val marginalia = pickText(texts, locale, "marginalia")
+                    val shown =
+                        ShownTexts.pick(
+                            texts = texts,
+                            locale = locale,
+                            speciesId = SpeciesId(row.id),
+                            svRevision = row.wikipedia_sv_revision,
+                            enRevision = row.wikipedia_en_revision,
+                        )
                     val formerName = texts.formerName(locale)
 
                     SpeciesId(row.id) to
@@ -301,24 +298,41 @@ class SqlDelightSpeciesRepository(
                             iucnStatus = row.iucn_status,
                             regions = regions,
                             season = seasons.associate { it.month to it.status },
-                            description = description,
-                            migration = migration,
-                            marginalia = marginalia,
-                            images =
-                                images.map { img ->
-                                    SpeciesImage(
-                                        role = img.role,
-                                        path = img.path,
-                                        width = img.width.toInt(),
-                                        height = img.height.toInt(),
-                                        license = img.license,
-                                        author = img.author,
-                                        sourceUrl = img.source_url,
-                                    )
-                                },
+                            description = shown.description,
+                            migration = shown.migration,
+                            marginalia = shown.marginalia,
+                            images = images.map { it.toSpeciesImage() },
                             formerName = formerName,
+                            textSources = shown.sources,
                         )
                 }.toMap()
+        }
+
+    override suspend fun photoCredits(locale: Locale): List<PhotoCredit> =
+        withContext(Dispatchers.Default) {
+            db.speciesImageQueries
+                .selectCredits(locale = locale.code)
+                .executeAsList()
+                .map { row ->
+                    PhotoCredit(
+                        speciesId = SpeciesId(row.species_id),
+                        speciesName = row.local_name ?: row.english_name ?: row.scientific_name,
+                        scientificName = row.scientific_name,
+                        role = row.role,
+                        path = row.path,
+                        license = row.license,
+                        author = row.author,
+                        commonsFileName = row.commons_filename,
+                    )
+                }
+        }
+
+    override suspend fun photoCount(): Int =
+        withContext(Dispatchers.Default) {
+            db.speciesImageQueries
+                .countAll()
+                .executeAsOne()
+                .toInt()
         }
 
     private fun summaryFor(
@@ -351,30 +365,88 @@ class SqlDelightSpeciesRepository(
             iucnStatus = sp.iucn_status,
         )
     }
+}
 
-    /**
-     * The [kind] text in [locale], cleaned by [cleanSpeciesText]. Falls back to the English text
-     * when the localized one is missing OR cleans to blank (e.g. a Swedish "no data" sentinel);
-     * a blank result makes the UI show its own localized empty-state string.
-     */
-    private fun pickText(
-        texts: List<se.birdy.content.SpeciesText>,
-        locale: Locale,
-        kind: String,
-    ): String? {
-        val localized =
-            texts
-                .firstOrNull { it.locale == locale.code && it.kind == kind }
-                ?.text
-                ?.let(::cleanSpeciesText)
-        if (!localized.isNullOrBlank()) return localized
-        val english =
-            texts
-                .firstOrNull { it.locale == Locale.EN.code && it.kind == kind }
-                ?.text
-                ?.let(::cleanSpeciesText)
-        return english ?: localized
+private fun se.birdy.content.SpeciesImage.toSpeciesImage(): SpeciesImage =
+    SpeciesImage(
+        role = role,
+        path = path,
+        width = width.toInt(),
+        height = height.toInt(),
+        license = license,
+        author = author,
+        sourceUrl = source_url,
+        commonsFileName = commons_filename,
+    )
+
+/**
+ * A species' description, migration and marginalia as the app shows them, and the Wikipedia
+ * article versions they were written from (release 1.3.0, 7i-fix A): one source per language
+ * among the texts actually shown, in the order description, migration, marginalia. A text in
+ * the English fallback credits the English article; a blank text (the UI shows its own
+ * empty-state line) credits nothing.
+ */
+private class ShownTexts(
+    val description: String?,
+    val migration: String?,
+    val marginalia: String?,
+    val sources: List<SpeciesTextSource>,
+) {
+    companion object {
+        fun pick(
+            texts: List<SpeciesText>,
+            locale: Locale,
+            speciesId: SpeciesId,
+            svRevision: String?,
+            enRevision: String?,
+        ): ShownTexts {
+            val picked = listOf("description", "migration", "marginalia").map { pickText(texts, locale, it) }
+            val sources =
+                picked
+                    .filter { !it.text.isNullOrBlank() }
+                    .map { it.language }
+                    .distinct()
+                    .map { language ->
+                        val revision =
+                            when (language) {
+                                Locale.SV -> svRevision
+                                Locale.EN -> enRevision
+                            }
+                        SpeciesTextSource(language, revision, WikipediaLinks.articleUrl(language, revision, speciesId))
+                    }
+            return ShownTexts(picked[0].text, picked[1].text, picked[2].text, sources)
+        }
     }
+}
+
+/** One text as shown, and the language it is in (English when it is the fallback). */
+private data class PickedText(
+    val text: String?,
+    val language: Locale,
+)
+
+/**
+ * The [kind] text in [locale], cleaned by [cleanSpeciesText]. Falls back to the English text
+ * when the localized one is missing OR cleans to blank (e.g. a Swedish "no data" sentinel);
+ * a blank result makes the UI show its own localized empty-state string.
+ */
+private fun pickText(
+    texts: List<SpeciesText>,
+    locale: Locale,
+    kind: String,
+): PickedText {
+    val localized =
+        texts
+            .firstOrNull { it.locale == locale.code && it.kind == kind }
+            ?.text
+            ?.let(::cleanSpeciesText)
+    if (!localized.isNullOrBlank()) return PickedText(localized, locale)
+    val english =
+        texts
+            .firstOrNull { it.locale == Locale.EN.code && it.kind == kind }
+            ?.text
+            ?.let(::cleanSpeciesText)
+    return if (english != null) PickedText(english, Locale.EN) else PickedText(localized, locale)
 }
 
 /**

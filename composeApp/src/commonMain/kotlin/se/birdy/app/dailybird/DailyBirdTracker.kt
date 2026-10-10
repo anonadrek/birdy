@@ -16,6 +16,7 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atStartOfDayIn
 import kotlinx.datetime.plus
 import kotlinx.datetime.toLocalDateTime
+import se.birdy.content.model.SpeciesImage
 import se.birdy.data.dailybird.DailyBirdHistoryRepository
 import se.birdy.datastore.UserPreferences
 import se.birdy.domain.dailybird.DailyBird
@@ -25,11 +26,14 @@ import kotlin.time.Duration.Companion.seconds
 /** Days the daily bird must be caught for the Dagens fågel-jägare badge (premium_badges.yaml). */
 const val DAILY_BIRD_HUNT_TARGET = 3
 
-/** What the daily-bird surfaces need to know about a species. */
+/**
+ * What the daily-bird surfaces need to know about a species. [heroImage] is the species' hero
+ * photo with its credit (the Identify hero credits it, legal review 7i).
+ */
 data class DailyBirdSpecies(
     val name: String,
     val scientificName: String,
-    val heroImagePath: String?,
+    val heroImage: SpeciesImage?,
 )
 
 /**
@@ -49,12 +53,15 @@ data class DailyBirdToday(
     val speciesId: String,
     val name: String,
     val scientificName: String,
-    val heroImagePath: String?,
+    val heroImage: SpeciesImage?,
     val caughtToday: Boolean,
     val daysCaught: Int,
     val huntTarget: Int = DAILY_BIRD_HUNT_TARGET,
     val showPremiumBadgeTag: Boolean = false,
-)
+) {
+    /** The hero photo's path among the bundled species images. */
+    val heroImagePath: String? get() = heroImage?.path
+}
 
 /** The Identify tab's dot: shown while today's bird exists and has not been opened today. */
 fun isDailyBirdDotVisible(
@@ -198,7 +205,7 @@ class DailyBirdTracker(
             speciesId = speciesId,
             name = info.name,
             scientificName = info.scientificName,
-            heroImagePath = info.heroImagePath,
+            heroImage = info.heroImage,
             caughtToday = history?.isMatched(date) ?: false,
             daysCaught = history?.totalMatchCount() ?: 0,
             huntTarget = DAILY_BIRD_HUNT_TARGET,

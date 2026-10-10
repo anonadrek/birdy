@@ -10,11 +10,9 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import kotlinx.coroutines.CancellationException
-import se.birdy.app.AndroidAppGraphHolder
 import se.birdy.app.R
-import se.birdy.app.notifications.AndroidNotificationPayloads
 import se.birdy.app.notifications.NotificationChannels
-import se.birdy.app.notifications.NotificationPayloads
+import se.birdy.app.notifications.withWorkerPayloads
 
 class WeeklyRecapWorker(
     context: Context,
@@ -23,15 +21,8 @@ class WeeklyRecapWorker(
     override suspend fun doWork(): Result {
         return try {
             val forceForDev = inputData.getBoolean(KEY_FORCE_FOR_DEV, false)
-            val graph = AndroidAppGraphHolder.current
             val content =
-                if (graph != null) {
-                    NotificationPayloads.from(graph).weeklyRecap(forceForDev)
-                } else {
-                    AndroidNotificationPayloads.fromContext(applicationContext) { it.weeklyRecap(forceForDev) }
-                } ?: return Result.success()
-
-            NotificationChannels.ensureCreated(applicationContext)
+                withWorkerPayloads(applicationContext) { it.weeklyRecap(forceForDev) } ?: return Result.success()
 
             val intent =
                 Intent(Intent.ACTION_VIEW, Uri.parse(content.deepLink))

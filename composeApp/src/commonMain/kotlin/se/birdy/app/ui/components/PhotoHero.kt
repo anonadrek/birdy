@@ -29,6 +29,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithCache
@@ -43,9 +44,12 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
@@ -113,6 +117,9 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
  *   header. A translucent LIGHT fill (e.g. a glass pill in `White.copy(alpha = 0.16f)`)
  *   lightens the backdrop under itself instead of darkening it, so [PhotoHeroContrastTest]'s
  *   text-scrim-alone premise doesn't cover it — such content needs its own contrast check.
+ * @param photoCredit the photo's credit (release 1.3.0 Task 7e-2), drawn right under the photo,
+ *   above the kicker, on the band. Only with [textBelowPhoto] and a photo: a credit is never
+ *   drawn over the bird, nor on a strip of scrim, so a full-bleed hero puts its credit elsewhere.
  */
 @Suppress("LongParameterList") // shared header for 5 screens (spec §4.3); the wide slot count is deliberate.
 @Composable
@@ -132,13 +139,14 @@ fun PhotoHero(
     image: (@Composable BoxScope.() -> Unit)? = null,
     topBar: (@Composable BoxScope.() -> Unit)? = null,
     bottomContent: (@Composable ColumnScope.() -> Unit)? = null,
+    photoCredit: (@Composable () -> Unit)? = null,
 ) {
     val serif = rememberDmSerifDisplay()
     val statusBarTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
-    val statusBarTracking = rememberStatusBarTracking(enabled = drawBehindStatusBar)
     // Behind the status bar the photo grows by its height, so the part below it keeps `height`.
     val photoHeight = if (drawBehindStatusBar) height + statusBarTop else height
     val photoAbove = textBelowPhoto && image != null
+    val statusBarTracking = rememberStatusBarTracking(drawBehindStatusBar, photoHeight.takeIf { textBelowPhoto })
     Box(
         modifier =
             modifier
@@ -165,8 +173,10 @@ fun PhotoHero(
                     .fillMaxWidth()
                     // Only text drawn over the photo needs the scrim; on the band it has none.
                     .drawTextFollowingScrim(enabled = image != null && !photoAbove) // before padding: see its KDoc.
-                    .padding(start = 22.dp, end = 22.dp, bottom = bottomPadding),
+                    .padding(start = 22.dp, end = 22.dp, bottom = bottomPadding)
+                    .creditReadLast(hasCredit = photoAbove && photoCredit != null),
         ) {
+            PhotoCreditSlot(photoCredit.takeIf { photoAbove }) // only under a photo, never over it
             MicroLabel(kicker, color = AccentCopperLight)
             Spacer(Modifier.height(8.dp))
             HeroTitle(title = title, titleAccent = titleAccent, serif = serif)
@@ -199,19 +209,50 @@ fun PhotoHero(
     }
 }
 
+/** With a credit, the text block is its own traversal group, so the credit drawn first is read last. */
+private fun Modifier.creditReadLast(hasCredit: Boolean): Modifier {
+    if (!hasCredit) return this
+    return semantics { isTraversalGroup = true }
+}
+
+/**
+ * The photo's credit right under the photo, above the kicker, when there is one (see [PhotoHero]).
+ * TalkBack reads it after the name and the rest of the text block: it sits first on screen, next
+ * to the photo it credits, but the species is what the screen is about.
+ */
+@Composable
+private fun PhotoCreditSlot(photoCredit: (@Composable () -> Unit)?) {
+    if (photoCredit == null) return
+    Box(Modifier.fillMaxWidth().padding(top = 4.dp).semantics { traversalIndex = 1f }) { photoCredit() }
+    Spacer(Modifier.height(8.dp))
+}
+
 /**
  * For a hero drawn behind the status bar: reports to [LocalStatusBarBackdrop] whether the photo
  * still reaches under the status bar (light icons) and returns the modifier that tracks it. The
  * state only flips at the threshold, so scrolling doesn't recompose the hero every frame.
+ *
+ * [trackedHeight]: with the text below the photo (textBelowPhoto) only the photo counts, the
+ * top [trackedHeight] of the hero (without a photo, the moss area of that height; release
+ * 1.3.0 Task 7b review). Past it the screen covers the
+ * status bar with a [StatusBarBand] in its page colour, so the icons turn dark at that same
+ * point. Null = the whole hero counts (the text sits on the photo).
  */
 @Composable
-private fun rememberStatusBarTracking(enabled: Boolean): Modifier {
+private fun rememberStatusBarTracking(
+    enabled: Boolean,
+    trackedHeight: Dp?,
+): Modifier {
     if (!enabled) return Modifier
-    val statusBarPx = WindowInsets.statusBars.getTop(LocalDensity.current).toFloat()
+    val density = LocalDensity.current
+    val statusBarPx = WindowInsets.statusBars.getTop(density).toFloat()
+    val trackedPx = trackedHeight?.let { with(density) { it.toPx() } }
     var underStatusBar by remember { mutableStateOf(true) }
     ReportStatusBarBackdrop(isDark = underStatusBar)
     return Modifier.onGloballyPositioned { coords ->
-        val under = coords.boundsInRoot().bottom > statusBarPx
+        // positionInRoot isn't clipped by a scrolling parent, unlike boundsInRoot's top.
+        val bottom = if (trackedPx != null) coords.positionInRoot().y + trackedPx else coords.boundsInRoot().bottom
+        val under = bottom > statusBarPx
         if (under != underStatusBar) underStatusBar = under
     }
 }
@@ -498,6 +539,14 @@ private fun MetaText(
 /** Extra bottom space a [PhotoHero] needs before a [PaperSheet] with the default overlap
  * follows it, e.g. `bottomPadding = PaperSheetOverlap + 18.dp`. */
 val PaperSheetOverlap = 24.dp
+
+/**
+ * Where a species photo in a [PhotoHero] is anchored when it is cropped: a little above the
+ * centre, since the bird's head is usually in the upper half. Match shrinks its photo so the
+ * save button stays in view, and a centre crop cut off the head on a 1080x1920 phone (QA
+ * 2026-10-07). The profile uses the same anchor so the two read alike.
+ */
+val SpeciesPhotoAlignment: Alignment = BiasAlignment(horizontalBias = 0f, verticalBias = -0.4f)
 
 /**
  * Paper sheet that slides up over a [PhotoHero] (24dp rounded top). Place it directly after

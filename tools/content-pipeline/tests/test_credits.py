@@ -89,9 +89,9 @@ def test_canonical_license_normalises_case_and_spacing() -> None:
         ),
         ("unknown, USFWS", "USFWS"),
         ("JJ Harrison (https://www.jjharrison.com.au/)", "JJ Harrison"),
-        ("JJ Harrison (jjharrison89@facebook.com)", "JJ Harrison"),
+        ("JJ Harrison (photographer@example.com)", "JJ Harrison"),
         (
-            "Martin Olsson (mnemo on en/sv wikipedia and commons, martin@minimum.se).",
+            "Martin Olsson (mnemo on en/sv wikipedia and commons, photographer@example.org).",
             "Martin Olsson",
         ),
         ("Julian Herzog (Website)", "Julian Herzog"),
@@ -233,3 +233,37 @@ def test_kotlin_validator_has_the_same_allow_list() -> None:
     source = KOTLIN_VALIDATOR.read_text(encoding="utf-8")
     assert _kotlin_set(source, "PUBLIC_DOMAIN_LICENSES") == PUBLIC_DOMAIN_LICENSES
     assert _kotlin_set(source, "ALLOWED_LICENSES") | PUBLIC_DOMAIN_LICENSES == ALLOWED_LICENSES
+
+
+KOTLIN_APP_LICENSES = (
+    Path(__file__).resolve().parents[3]
+    / "shared/content/src/commonMain/kotlin/se/birdy/content/PhotoLicenses.kt"
+)
+
+
+@pytest.mark.skipif(not KOTLIN_APP_LICENSES.exists(), reason="needs the Birdy repo checkout")
+def test_the_apps_licence_links_match_the_web_pipelines() -> None:
+    """The app's photo credits (release 1.3.0, Task 7e-2) link the same deeds as the web pages.
+
+    The app also links CC0's deed, which the web credits leave unlinked; public domain stays
+    unlinked in both.
+    """
+    from birdy_fetcher.web.licenses import LICENSE_URLS
+
+    source = KOTLIN_APP_LICENSES.read_text(encoding="utf-8")
+    block = re.search(r"val DEED_URLS.*?mapOf\((.*?)\n\s*\)", source, re.DOTALL)
+    assert block, "DEED_URLS not found in PhotoLicenses.kt"
+    # Keys are string literals or `const val` names in the same object (PUBLIC_DOMAIN).
+    constants = dict(re.findall(r'const val (\w+) = "([^"]+)"', source))
+    kotlin = {
+        (constants[ident] if ident else literal): (None if url == "null" else url.strip('"'))
+        for literal, ident, url in re.findall(
+            r'(?:"([^"]+)"|\b([A-Z_]+)\b) to ("[^"]+"|null)', block.group(1)
+        )
+    }
+    assert set(kotlin) == set(LICENSE_URLS)
+    for name, url in LICENSE_URLS.items():
+        if url is not None:
+            assert kotlin[name] == url, name
+    assert kotlin["Public domain"] is None
+    assert kotlin["CC0"] == "https://creativecommons.org/publicdomain/zero/1.0/"

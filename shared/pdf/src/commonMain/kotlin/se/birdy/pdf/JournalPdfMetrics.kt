@@ -5,14 +5,17 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
 /**
- * Delad geometri, palett, typstorlekar, strängar och datumformatterare för Fältdagbok-PDF:en.
- * Android ritar med android.graphics.pdf.PdfDocument ([JournalPdfLayout]), iOS med
+ * Delad geometri, palett, typstorlekar och datumformatterare för Fältdagbok-PDF:en. Android ritar
+ * med android.graphics.pdf.PdfDocument ([JournalPdfLayout]), iOS med
  * UIGraphicsPDFRenderer/CoreGraphics — BÅDA MÅSTE läsa alla värden härifrån så plattformarna
  * inte divergerar. Geometri + typstorlekar i pt (PDF-punkter), färger som ARGB Long.
  *
- * Strängarna är avsiktligt olokaliserade svenska — PDF:en är en Field Journal-artefakt (fysiskt
- * "papper"), inte lokaliserat app-UI. `_FMT`-strängarna innehåller `%s`-platshållare avsedda för
- * [fmt], inte `String.format` (Kotlin/Native saknar en gemensam `String.format`-implementation).
+ * De lokaliserade strängarna (titel, rubriker, etc.) flyttade till [JournalPdfStrings] när PDF:en
+ * fick engelska (bugg: en engelsk användares export fick svenska rubriker). Kvar här är bara det
+ * som INTE är per-språk-text: [COLOPHON] (varumärkesnamnet), [FOOTER_FMT] (bara ett sidnummer)
+ * och [ORNAMENT_GLYPH] (en glyf) — ingen av de tre är faktiskt översättningsbar
+ * text. `fmt`-hjälparen tar `%s`-platshållare, inte `String.format` (Kotlin/Native saknar en
+ * gemensam `String.format`-implementation); [JournalPdfStrings] använder samma hjälpare.
  */
 object JournalPdfMetrics {
     // ----- Geometri (pt) -----------------------------------------------------
@@ -21,6 +24,36 @@ object JournalPdfMetrics {
     const val MARGIN_X: Float = 50f
     const val MARGIN_TOP: Float = 60f
     const val MARGIN_BOTTOM: Float = 60f
+
+    /** Topparternas staplar börjar så här långt in från MARGIN_X; etiketterna står i kolumnen före. */
+    const val TOPS_BAR_OFFSET: Float = 140f
+
+    /** Luft mellan en etikett och stapeln, så att etiketten aldrig rör stapeln. */
+    const val TOPS_LABEL_GAP: Float = 8f
+
+    /** Minsta skala för en lång etikett innan den kortas med "…" ([fitLabel]). */
+    const val LABEL_MIN_SCALE: Float = 0.75f
+
+    /** Artsidans namn börjar så här långt in från MARGIN_X (efter miniatyren). */
+    const val SPECIES_TEXT_INSET: Float = 26f
+
+    /** Artsidans högra spalt (antal fynd och första datum) räknat från högermarginalen. */
+    const val SPECIES_RIGHT_COLUMN: Float = 120f
+
+    /** Märkessidans namn och beskrivning börjar så här långt in från MARGIN_X (efter stämpeln). */
+    const val BADGE_TEXT_INSET: Float = 44f
+
+    /** Märkessidans datumspalt räknat från högermarginalen. */
+    const val BADGE_DATE_COLUMN: Float = 90f
+
+    /** Luft mellan en text och nästa spalt, så att texten aldrig rör spalten (release 1.3.1 del 8). */
+    const val COLUMN_GAP: Float = 8f
+
+    /** Bredden ett artnamn och ett vetenskapligt namn får på artsidan ([fitLabel] krymper och kortar). */
+    const val SPECIES_TEXT_MAX_W: Float = PAGE_W - 2 * MARGIN_X - SPECIES_TEXT_INSET - SPECIES_RIGHT_COLUMN - COLUMN_GAP
+
+    /** Bredden ett märkes namn och beskrivning får på märkessidan. */
+    const val BADGE_TEXT_MAX_W: Float = PAGE_W - 2 * MARGIN_X - BADGE_TEXT_INSET - BADGE_DATE_COLUMN - COLUMN_GAP
 
     // ----- Palett (ARGB Long) — Field Journal "Mossa, rost & mässing" (1.3.0) -------------------
     const val COLOR_PAPER_BG: Long = 0xFFF6EFE2 // MossCreme
@@ -54,27 +87,11 @@ object JournalPdfMetrics {
     const val SECTION_EYEBROW: Float = 18f
     const val SECTION_TITLE: Float = 36f
 
-    // ----- Strängar (svenska, avsiktligt olokaliserade) ------------------------
-    const val TITLE = "Fältdagbok"
-    const val BY_FMT = "av %s"
-    const val TEASER_FMT = "%s • %s fynd"
-    const val TEASER_SPECIES_ONE = "art sedd"
-    const val TEASER_SPECIES_OTHER = "arter sedda"
-    const val STATS_EYEBROW = "Säsongens räkning"
-    const val STATS_TITLE_FMT = "%s i siffror"
-    const val STAT_SPECIES = "Arter i år"
-    const val STAT_TOTAL = "Totala fynd"
-    const val TOPS = "Topparter"
-    const val SPECIES_EYEBROW = "Arter i fält"
-    const val SPECIES_EYEBROW_PAGED_FMT = "Arter i fält (%s/%s)"
-    const val SPECIES_TITLE = "Det jag sett"
-    const val COUNT_FMT = "%s fynd"
-    const val FIRST_FMT = "Först: %s"
-    const val BADGES_EYEBROW = "Märken jag tjänat"
-    const val BADGES_TITLE = "Stämplar i marginalen"
+    // ----- Strängar som INTE är per-språk-text (se klass-KDoc) ------------------
     const val COLOPHON = "Birdy Bird Scanner"
-    const val GENERATED_FMT = "Genererad %s"
-    const val FOOTER_FMT = "— %s —"
+
+    // Bara sidnumret: inga tankstreck i det användaren läser (release 1.3.1 del 7, Albin 2026-10-08).
+    const val FOOTER_FMT = "%s"
     const val ORNAMENT_GLYPH = "❦"
 
     // ----- Formatterare ----------------------------------------------------------
@@ -107,18 +124,6 @@ object JournalPdfMetrics {
         val hh = ldt.hour.toString().padStart(2, '0')
         val mi = ldt.minute.toString().padStart(2, '0')
         return "${ldt.year}-$mm-$dd $hh:$mi"
-    }
-
-    /**
-     * Titelsidans rad, "3 arter sedda • 7 fynd". En art blir "1 art sedd" (release 1.3.0 Task 7g;
-     * förut "1 arter sedda"). "fynd" är samma ord i singular och plural.
-     */
-    fun teaser(
-        speciesSeen: Int,
-        finds: Int,
-    ): String {
-        val species = if (speciesSeen == 1) TEASER_SPECIES_ONE else TEASER_SPECIES_OTHER
-        return fmt(TEASER_FMT, "$speciesSeen $species", "$finds")
     }
 
     /** Ersätter `%s` i [pattern] med [args] i ordning. Enda platshållaren som stöds är `%s`. */

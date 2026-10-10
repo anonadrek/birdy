@@ -35,14 +35,14 @@ description:
 
     Kustlabb är en havslevande rovfågel som tillhör familjen labbar. Den har en slank,
     spetsvingad skepnad som påminner om en mörk fiskmås, och karakteriseras av snabb,
-    falklik flykt. Arten förekommer i två färgformer – en mörkare och en ljusare –
-    och är väl anpassad för livet på öppet hav.
+    falklik flykt. Arten förekommer i två färgformer (en mörkare och en ljusare) och
+    är väl anpassad för livet på öppet hav.
 
 
     Arten häckar cirkumpolärt på tundra och karga klippiga öar i norra delen av norra
     halvklotet. Under vinterhalvåret migrerar den långväga för att tillbringa tiden
     pelagiskt, framför allt på södra halvklotet. Kustlabb är känd för sitt karakteristiska
-    beteende att leva av kleptoparasitism – det vill säga att förfölja andra fåglar
+    beteende att leva av kleptoparasitism, det vill säga att förfölja andra fåglar
     som måsar och tärnor för att tvinga dem att släppa sitt byte eller spy upp det,
     vilket labben sedan fångar i flykten.
 
@@ -55,8 +55,8 @@ description:
 
     The parasitic jaeger is a seabird renowned for its aggressive feeding behaviour,
     which defines its common name. A skilled aerial pirate, it pursues other seabirds
-    relentlessly, forcing them to drop or regurgitate their freshly caught fish—a
-    hunting strategy called kleptoparasitism that becomes especially important during
+    relentlessly, forcing them to drop or regurgitate their freshly caught fish. This
+    hunting strategy, called kleptoparasitism, becomes especially important during
     migration and winter months. This dark, compact skua is built for speed and manoeuvrability,
     with pointed wings and a streamlined body that enable its characteristic hunting
     dives and chases.
@@ -125,10 +125,11 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Arctic Skua (Stercorarius parasiticus).jpg
   commons_filename: Arctic Skua (Stercorarius parasiticus).jpg
 review_status: approved
-review_notes: 'Hero = Stercorarius parasiticus (Parasitic Jaeger / Labb); allmän kustfågel under flytt.
+review_notes: 'Hero = Stercorarius parasiticus (Parasitic Jaeger / Labb); allmän kustfågel
+  under flytt.
 
-  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
-  bilder.'
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan
+  gäller tidigare bilder.'
 generated_at: '2026-05-15T21:35:07.023891+00:00'
 sources:
   wikipedia_sv_revision: '59225276'

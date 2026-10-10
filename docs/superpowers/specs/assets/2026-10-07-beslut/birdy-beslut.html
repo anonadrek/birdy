@@ -1,0 +1,260 @@
+<title>Birdy Launch Decisions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@500;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --paper: #F6EFE2;
+    --sheet: #FBF7EE;
+    --ink: #26301F;
+    --muted: #5E5A4C;
+    --rust: #9A4526;
+    --brass: #8A6420;
+    --brass-bg: #F1E2C2;
+    --moss: #1F2A19;
+    --hair: #DCCFB6;
+    --warn-bg: #F6DCCF;
+    --warn-ink: #7A2E14;
+    --good-bg: #DDE6CF;
+    --good-ink: #2E4420;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #151A12; --sheet: #1D2419; --ink: #ECE5D4; --muted: #B4AC98;
+      --rust: #E39468; --brass: #D9B266; --brass-bg: #3A3220; --moss: #0E130B;
+      --hair: #3A4232; --warn-bg: #4A2618; --warn-ink: #F4C2A8; --good-bg: #26361D; --good-ink: #CFE2B8;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #151A12; --sheet: #1D2419; --ink: #ECE5D4; --muted: #B4AC98;
+    --rust: #E39468; --brass: #D9B266; --brass-bg: #3A3220; --moss: #0E130B;
+    --hair: #3A4232; --warn-bg: #4A2618; --warn-ink: #F4C2A8; --good-bg: #26361D; --good-ink: #CFE2B8;
+    color-scheme: dark;
+  }
+  body { background: var(--paper); color: var(--ink); font: 15px/1.55 Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .wrap { max-width: 760px; margin: 0 auto; padding-inline: 18px; padding-block: 28px 56px; display: grid; gap: 34px; }
+  h1, h2 { font-family: "DM Serif Display", Georgia, serif; font-weight: 400; text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(30px, 6vw, 42px); line-height: 1.08; }
+  h1 em, h2 em { color: var(--rust); }
+  h2 { font-size: 26px; line-height: 1.15; }
+  h3 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; margin: 0; color: var(--muted); font-weight: 600; }
+  p { margin: 0; }
+  .kicker { display: flex; align-items: center; gap: 10px; color: var(--rust); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; }
+  .kicker::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+  .note { font-family: Caveat, "Comic Sans MS", cursive; font-size: 21px; line-height: 1.2; color: var(--muted); }
+  header { display: grid; gap: 12px; }
+  .lede { color: var(--muted); max-width: 62ch; }
+  section { display: grid; gap: 16px; }
+  .sheet { background: var(--sheet); border: 1px solid var(--hair); border-radius: 14px; padding: 18px; display: grid; gap: 14px; }
+  .versus { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 620px) { .versus { grid-template-columns: 1fr; } }
+  .col { display: grid; gap: 10px; align-content: start; }
+  .col header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .col .name { font-family: "DM Serif Display", Georgia, serif; font-size: 20px; }
+  .chip { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+  .chip.rec { background: var(--brass-bg); color: var(--brass); }
+  .chip.block { background: var(--warn-bg); color: var(--warn-ink); }
+  .chip.done { background: var(--good-bg); color: var(--good-ink); }
+  .quote { border-left: 2px solid var(--hair); padding-left: 12px; font-size: 14px; display: grid; gap: 6px; }
+  .quote b { font-weight: 600; color: var(--muted); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+  .miss { color: var(--warn-ink); background: var(--warn-bg); border-radius: 8px; padding: 8px 10px; font-size: 13px; }
+  .gain { color: var(--good-ink); background: var(--good-bg); border-radius: 8px; padding: 8px 10px; font-size: 13px; }
+  .table-scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--hair); }
+  th { font-weight: 600; color: var(--muted); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+  td.num, th.num { text-align: right; }
+  tr.total td { font-weight: 600; }
+  ol.decisions { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: d; }
+  ol.decisions li { counter-increment: d; display: grid; grid-template-columns: 34px 1fr; gap: 4px 12px; background: var(--sheet); border: 1px solid var(--hair); border-radius: 12px; padding: 14px; }
+  ol.decisions li::before { content: counter(d); grid-row: 1 / span 3; font-family: "DM Serif Display", Georgia, serif; font-size: 26px; line-height: 1; color: var(--rust); }
+  .q { font-weight: 600; }
+  .why { color: var(--muted); font-size: 14px; }
+  .rec-line { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; }
+  ul.hands { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  ul.hands li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: start; }
+  ul.hands li::before { content: ""; width: 14px; height: 14px; margin-top: 4px; border: 1.5px solid var(--rust); border-radius: 4px; }
+  .reply { background: var(--moss); color: #EFE8D7; border-radius: 14px; padding: 18px; display: grid; gap: 12px; }
+  .reply h2 { color: #EFE8D7; }
+  .reply code { font: 14px/1.5 ui-monospace, "Cascadia Mono", Consolas, monospace; background: rgba(255,255,255,.08); border-radius: 8px; padding: 10px 12px; display: block; white-space: pre-wrap; word-break: break-word; }
+  .reply button { justify-self: start; font: 600 14px Inter, system-ui, sans-serif; background: #F2B27A; color: #26301F; border: 0; border-radius: 999px; padding: 9px 16px; cursor: pointer; }
+  .reply button:focus-visible, a:focus-visible { outline: 2px solid #F2B27A; outline-offset: 2px; }
+  a { color: var(--rust); }
+  .small { font-size: 13px; color: var(--muted); }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="kicker">Birdy 1.3.0 · 7 October</div>
+    <h1>Your <em>decisions</em> before launch</h1>
+    <p class="lede">One launch: the app, the first species pages and the first posts on the same day. Most work runs on its own; these are the calls only you can make. Answer with the numbers at the bottom.</p>
+  </header>
+
+  <section aria-labelledby="status">
+    <div class="kicker">Status · 7 October, 19:00</div>
+    <h2 id="status">Your answers, and where <em>each</em> stands</h2>
+    <p class="lede">Work paused at 19:00 when Claude Code's session limit was reached (it resets 19:40). Everything is pushed; the handoff in the repo says where each track picks up.</p>
+    <div class="sheet table-scroll">
+      <table>
+        <thead><tr><th>#</th><th>Your answer</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>B, Opus 5.5 writes the species pages</td><td><span class="chip block">Blocked</span> Set as default; 14 species done ($9.04), then the API usage limit in Anthropic Console stopped the run. Raise it to continue (about $66 left).</td></tr>
+          <tr><td>2</td><td>Posts from Friday 9 Oct, app and ads Thursday 15 Oct</td><td><span class="chip rec">In progress</span> Early-user cutoff moved to 17 Oct 00:00 (on a branch, awaiting review). Species pages: page, about page and menu built; sitemap and SEO checks underway.</td></tr>
+          <tr><td>3</td><td>MapTiler Flex next week</td><td><span class="chip rec">In progress</span> Map without the colour filter, style taken from configuration (awaiting review). Your step: Flex, your own style and a new app key by Monday 12 Oct.</td></tr>
+          <tr><td>4</td><td>Texts under CC BY-SA 4.0</td><td><span class="chip done">Done</span> Credit with article, revision, licence and "written with AI" on every page.</td></tr>
+          <tr><td>5</td><td>BirdNET email</td><td><span class="chip done">Drafted</span> In Claude Docs: <a href="https://claude.ai/artifact/DB8bKVYQX4bmzVLPKyDjWo">BirdNET permission email</a>. You send it.</td></tr>
+          <tr><td>6</td><td>Kråka</td><td><span class="chip done">Done</span> Already called Kråka; no change.</td></tr>
+          <tr><td>7</td><td>Polish the public repo</td><td><span class="chip done">Done</span> PDF removed, Dependabot fixed, secret scan in CI, image sources, README, SECURITY.md, private notes out of CLAUDE.md. History not rewritten.</td></tr>
+          <tr><td>8</td><td>Licence screen stays</td><td><span class="chip done">Done</span></td></tr>
+          <tr><td>9</td><td>Hero robin: tool unknown</td><td><span class="chip done">Recorded</span> In the image sources list.</td></tr>
+          <tr><td>10</td><td>App-icon bird made with AI</td><td><span class="chip done">Recorded</span> Was the older flying bird (logo, splash, favicon) AI-made too?</td></tr>
+          <tr><td>11</td><td>EU trademark after launch</td><td><span class="chip done">Priced</span> 900 EUR for classes 9 and 42; about 225 EUR if EUIPO's SME Fund reopens (2026 vouchers are used up).</td></tr>
+          <tr><td>12</td><td>Speed Insights Plus off</td><td><span class="chip done">Done</span> Ends 7 Nov 2026, no renewal.</td></tr>
+          <tr><td>+</td><td>Videos may use CC BY-SA; "song" / "voice"</td><td><span class="chip rec">In progress</span> Pick a sound style: <a href="https://claude.ai/artifact/4YHJXX6zLwpKUa8r5jZhQk">Birdy Sound Styles</a>.</td></tr>
+          <tr><td>+</td><td>Support e-mail via Resend</td><td><span class="chip rec">Planned</span> Short plan before release: support@birdy.community in, automatic receipt and sorting, forwarded to you.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small">Your next steps, in order: raise the API limit in Anthropic Console → Settings → Limits; pick a sound style; create the Facebook page, Instagram business account and YouTube channel; send the BirdNET email; MapTiler Flex by Monday.</p>
+  </section>
+
+  <section aria-labelledby="model">
+    <div class="kicker">Species pages</div>
+    <h2 id="model">Which model <em>writes</em> the species pages?</h2>
+    <p>Trial on four species (Talgoxe, Bofink, Råka, Koboltmes), same sources, same checks. Below: the Swedish text from Talgoxe's page.</p>
+    <div class="sheet">
+      <div class="versus">
+        <div class="col">
+          <header><span class="name">A · Opus 5</span><span class="chip">plan default</span></header>
+          <div class="quote"><b>Lead</b>Talgoxen är en stor mes med svart huvud, vita kinder och gul undersida. Den ses oftast i öppna lövskogslandskap, blandskog och skogsbryn, och i tätare skog i gläntor.</div>
+          <div class="quote"><b>Behaviour</b>Talgoxen är hålhäckare och häckar oftast i träd, ibland i husväggar eller bergväggar, och använder gärna holkar. Kullen kan vara så stor som 18 ungar, men fem till tolv är vanligare.</div>
+          <p class="miss">Wrote 43 facts, over the limit of 30. The cut dropped every fact about food and behaviour. One false sentence on Bofink ("flest rapporter kommer från Norrbotten").</p>
+        </div>
+        <div class="col">
+          <header><span class="name">B · Opus 5.5</span><span class="chip rec">recommended</span></header>
+          <div class="quote"><b>Lead</b>Talgoxen är en stor mes med svart huvud, vita kinder och gul undersida. Den finns i hela Sverige och är en vanlig fågel i stadsparker och trädgårdar.</div>
+          <div class="quote"><b>Behaviour</b>På sommaren äter talgoxen främst insekter och spindlar som den plockar från löv, och på hösten och vintern kompletterar den med bär och frön. Vid fågelbord tar den gärna matrester, jordnötter och solrosfrön. På vintern söker den föda i meståg tillsammans med andra mesar.</div>
+          <p class="gain">Stayed within 30 facts; song, food and winter flocks are all on the page. Every claim still backed by a quote.</p>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Cost</th><th class="num">A · Opus 5</th><th class="num">B · Opus 5.5</th></tr></thead>
+          <tbody>
+            <tr><td>Per species</td><td class="num">$0.71</td><td class="num">$0.50</td></tr>
+            <tr class="total"><td>All 180 species</td><td class="num">$127</td><td class="num">$90</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small">Both variants: Sonnet 5 keeps doing the fact check (V1) and the text check. The trial cost $4.83. Before the full run I'm fixing six pipeline bugs it found (the worst would have sent you nearly every species' status to decide by hand).</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="questions">
+    <div class="kicker">Open questions</div>
+    <h2 id="questions">The <em>calls</em> only you can make</h2>
+    <ol class="decisions">
+      <li>
+        <span class="q">Species-page model: A or B?</span>
+        <span class="why">See above.</span>
+        <span class="rec-line"><span class="chip rec">Recommended</span> B, Opus 5.5</span>
+      </li>
+      <li>
+        <span class="q">Launch day</span>
+        <span class="why">The early-user cutoff is baked into the app build (vC130) as launch day + 48 h, so the day has to be fixed before that build. Today's cutoff assumes launch by 14 Oct.</span>
+        <span class="rec-line"><span class="chip rec">Recommended</span> Thursday 15 Oct (cutoff 17 Oct 00:00), if MapTiler is sorted by Friday</span>
+      </li>
+      <li>
+        <span class="q">MapTiler: upgrade to Flex ($30/month)?</span>
+        <span class="why">The Free plan forbids commercial use, and from 1.3.0 the map is sold as Premium. The terms also forbid changing map pixels, which the app's paper-colour filter does; I'd replace it with a style made in MapTiler's own editor. Flex probably also gives a separate key for the app.</span>
+        <span class="rec-line"><span class="chip block">Blocks release</span> <span class="chip rec">Recommended</span> Yes, plus custom style</span>
+      </li>
+      <li>
+        <span class="q">Species texts shared under CC BY-SA 4.0?</span>
+        <span class="why">They are model-written from Wikipedia, so they count as adaptations. The new Om text, terms and LICENSE already say so; each profile gets a source line.</span>
+        <span class="rec-line"><span class="chip rec">Recommended</span> Yes</span>
+      </li>
+      <li>
+        <span class="q">BirdNET (sound ID): ask Cornell for written permission?</span>
+        <span class="why">The model is non-commercial; sound ID stays free, which lowers the risk but doesn't remove it. I draft the email, you send it.</span>
+        <span class="rec-line"><span class="chip rec">Recommended</span> Yes, now</span>
+      </li>
+      <li>
+        <span class="q">Kråka or Svartkråka?</span>
+        <span class="why">Birdy keeps carrion crow and hooded crow (Gråkråka) as two species; most Swedes read "kråka" as the hooded crow. "Kråka" stays a search word.</span>
+        <span class="rec-line"><span class="chip rec">Recommended</span> Svartkråka</span>
+      </li>
+      <li>
+        <span class="q">Remove BirdLife Sverige's PDF (vp11.pdf) from the public repo?</span>
+        <span class="why">It has no stated licence.</span>
+        <span class="rec-line"><span class="chip rec">Recommended</span> Yes</span>
+      </li>
+      <li>
+        <span class="q">Open-source licence screen as a generated list?</span>
+        <span class="why">Already built that way (no new library, CI fails if dependencies change without regenerating). The alternative is Google's oss-licenses plugin.</span>
+        <span class="rec-line"><span class="chip done">Built</span> Keep it</span>
+      </li>
+      <li>
+        <span class="q">Which tool made the robin on the website's hero?</span>
+        <span class="why">For the image sources file. Nothing is recorded in git.</span>
+        <span class="rec-line">Your answer, or "unknown"</span>
+      </li>
+      <li>
+        <span class="q">Did you draw the app-icon bird yourself?</span>
+        <span class="why">For the image sources list.</span>
+        <span class="rec-line">Yes / no</span>
+      </li>
+      <li>
+        <span class="q">EU trademark "Birdy" (classes 9 and 42) after launch?</span>
+        <span class="why">Nothing in the registers blocks you in Sweden. A German iOS app is called "Birdy - Birdwatching Companion", which matters before the App Store.</span>
+        <span class="rec-line"><span class="chip rec">Recommended</span> Yes, after launch</span>
+      </li>
+      <li>
+        <span class="q">Speed Insights Plus on albit.se ($10/month)?</span>
+        <span class="why">It's the only paid add-on left on Vercel and belongs to the albit.se project, not Birdy. Vercel Agent is already off.</span>
+        <span class="rec-line">Keep / turn off</span>
+      </li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="hands">
+    <div class="kicker">Your hands</div>
+    <h2 id="hands">Things only you can <em>do</em></h2>
+    <div class="sheet">
+      <ul class="hands">
+        <li><span><b>MapTiler:</b> upgrade the plan and create a new key for the app (before the vC130 build).</span></li>
+        <li><span><b>Purchase test:</b> install vC129 from internal testing and buy Lifetime with the test card. "Välkommen, fältmedlem." is the gate before vC130.</span></li>
+        <li><span><b>Social accounts:</b> a Facebook page, an Instagram business account linked to it in Meta Business Suite, and a YouTube channel, all named Birdy.</span></li>
+        <li><span><b>Bank account</b> in the Play Console payments profile (last).</span></li>
+      </ul>
+      <p class="note">Everything else keeps moving without you: back arrows, names, badge card and legal fixes are merged; credits, Uppslag 1 and the species pages are in progress.</p>
+    </div>
+  </section>
+
+  <section class="reply" aria-labelledby="answer">
+    <h2 id="answer">Your reply</h2>
+    <p>Change what you disagree with and send it back in the chat.</p>
+    <code id="reply-text">1 B · 2 Thu 15 Oct · 3 yes · 4 yes · 5 yes · 6 Svartkråka · 7 yes · 8 keep · 9 ? · 10 ? · 11 yes · 12 keep</code>
+    <button type="button" id="copy">Copy reply</button>
+  </section>
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('copy');
+    var text = document.getElementById('reply-text');
+    btn.addEventListener('click', function () {
+      var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy reply'; }, 1600); };
+      var select = function () {
+        var r = document.createRange(); r.selectNodeContents(text);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = 'Selected, copy it';
+      };
+      try {
+        navigator.clipboard.writeText(text.textContent).then(done, select);
+      } catch (e) { select(); }
+    });
+  })();
+</script>

@@ -61,7 +61,33 @@ keystore/
 /keystore.properties
 
 # Local secrets — never commit (see gradle.properties.example)
+# NOTE: the root gradle.properties IS tracked (build settings, empty key slots), so this line
+# does not protect it. Put real keys in ~/.gradle/gradle.properties, never in the repo file.
 gradle.properties
+
+# Secrets and credentials in any folder — never commit
+.env
+.env.*
+!.env.example
+keystore.properties
+*.p12
+*.p8
+*.pem
+*.mobileprovision
+*.provisionprofile
+google-services.json
+GoogleService-Info.plist
+Local.xcconfig
+.xc_key
+*.secret
+secrets/
+
+# Python tool caches in any folder
+.venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
 # BirdNET labels source file — large, reproducible, not committed
 tools/birdnet_labels.txt
@@ -91,3 +117,7 @@ website/tools/store-assets/screens/
 
 # TensorFlowLiteSelectTfOps — 1,1 GB uppackat, hämtas av tools/fetch_ios_selectops.sh (SHA-pinnad)
 iosApp/Frameworks/TensorFlowLiteSelectTfOps.xcframework/
+
+# Downloads made by tools/licenses/generate.py
+tools/licenses/.cache/
+tools/licenses/__pycache__/

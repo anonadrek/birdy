@@ -8,7 +8,7 @@ taxonomy:
 names:
   sv: Balkanmes
   en: Sombre Tit
-abundance: allmän
+abundance: ovanlig
 iucn_status: LC
 season:
   jan: present
@@ -36,7 +36,7 @@ description:
     Balkanmes är en medlem av mesfågelfamiljen som förekommer i sydöstra Europa och
     sydvästra Asien. Den är anpassad till varierade habitat och återfinns i bergsskogar,
     buskmarker, olivlundar och fruktträdgårdar. Arten är något mindre utpräglad än
-    många andra mesar när det gäller ljud och beteende – den är relativt tystlåten
+    många andra mesar när det gäller ljud och beteende: den är relativt tystlåten
     och tillbakadragen jämfört med sina släktingar.
 
 
@@ -117,11 +117,11 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Κλειδωνάς στην Εορδαία.jpg
   commons_filename: Κλειδωνάς στην Εορδαία.jpg
 review_status: approved
-review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons
-  hero, no manual review checkpoint
+review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name
+  + ranked Commons hero, no manual review checkpoint
 
-  2026-10-06 (1.3.0 fotogranskning): foton bytta, se b54c332e; fotobeskrivningar ovan gäller tidigare
-  bilder.'
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se b54c332e; fotobeskrivningar ovan
+  gäller tidigare bilder.'
 generated_at: '2026-05-04T10:01:05.041302+00:00'
 sources:
   wikipedia_sv_revision: '58368879'

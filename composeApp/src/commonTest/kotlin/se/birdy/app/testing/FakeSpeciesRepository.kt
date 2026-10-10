@@ -11,6 +11,7 @@ import se.birdy.content.Locale
 import se.birdy.content.SpeciesFilter
 import se.birdy.content.SpeciesId
 import se.birdy.content.SpeciesRepository
+import se.birdy.content.model.PhotoCredit
 import se.birdy.content.model.Species
 import se.birdy.content.model.SpeciesSummary
 import se.birdy.content.model.SpeciesTaxonomy
@@ -54,6 +55,13 @@ class FakeSpeciesRepository : SpeciesRepository {
     override fun observeTotalCount(): Flow<Int> = byId.map { it.size }
 
     override suspend fun allByQid(locale: Locale): Map<SpeciesId, Species> = byId.value.filterValues { it != null }.mapValues { it.value!! }
+
+    /** What [photoCredits] returns; [photoCount] is its size. */
+    val photoCreditList = MutableStateFlow<List<PhotoCredit>>(emptyList())
+
+    override suspend fun photoCredits(locale: Locale): List<PhotoCredit> = photoCreditList.value
+
+    override suspend fun photoCount(): Int = photoCreditList.value.size
 
     companion object {
         private val allMonths =

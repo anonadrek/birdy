@@ -17,6 +17,9 @@ from .web.defaults import EFFORTS, FACTS_EFFORT, FACTS_MODEL_KEY, MODEL_KEYS, TE
 from .web.paths import WebPaths
 from .web.report import StepOutcome
 
+#: `init` exit code when BirdLife Sverige's VP11.pdf can be neither found nor downloaded.
+VP11_UNAVAILABLE_EXIT = 3
+
 
 @click.group()
 @click.version_option(__version__)
@@ -58,16 +61,23 @@ def init(resume: bool) -> None:
     # species_list import is lazy because it pulls in pdfplumber/openpyxl/aiohttp,
     # which would slow `birdy-fetcher --help` for sibling commands.
     from .species_list import cli_init
+    from .vp11_source import Vp11UnavailableError
 
     root = Path(__file__).resolve().parent.parent.parent
-    exit_code = asyncio.run(
-        cli_init(
-            sources_dir=root / "sources",
-            checklists_dir=root / "checklists",
-            out_dir=root,
-            resume=resume,
+    try:
+        exit_code = asyncio.run(
+            cli_init(
+                sources_dir=root / "sources",
+                checklists_dir=root / "checklists",
+                out_dir=root,
+                cache_dir=root / ".cache",
+                resume=resume,
+            )
         )
-    )
+    except Vp11UnavailableError as e:
+        # Exit 3: click uses 2 for usage errors and init uses 1 for mapping failures.
+        click.secho(str(e), fg="red", err=True)
+        raise click.exceptions.Exit(VP11_UNAVAILABLE_EXIT) from e
     if exit_code != 0:
         click.secho(
             "Mapping failures present — patch species_list.yaml manually then "
@@ -738,6 +748,56 @@ def web_publish(
             raise click.exceptions.Exit(1)
     elif any(o.status == "failed" for o in outcomes):
         raise click.exceptions.Exit(1)
+
+
+@main.command("app-dashes")
+@click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla arter.")
+@click.option("--model", "model_key", type=click.Choice(MODEL_KEYS), default=TEXT_MODEL_KEY)
+@click.option("--effort", type=click.Choice(EFFORTS), default="medium")
+@click.option("--checker-model", "checker_key", type=click.Choice(MODEL_KEYS), default="sonnet")
+@click.option(
+    "--max-cost",
+    type=click.FloatRange(min=0, min_open=True),
+    required=True,
+    help="Kostnadstak i USD för körningen (krävs).",
+)
+@click.option("--workers", type=click.IntRange(min=1), default=4)
+@click.option("--dry-run", is_flag=True, help="Räkna bara: inga modellanrop, inga filer skrivs.")
+def app_dashes(
+    species: tuple[str, ...],
+    model_key: str,
+    effort: str,
+    checker_key: str,
+    max_cost: float,
+    workers: int,
+    dry_run: bool,
+) -> None:
+    """Release 1.3.1 del 7: tar bort tankstreck ur arttexterna som appen visar. Kostar pengar
+    utan --dry-run."""
+    from .app_dashes_run import DashOptions, run_app_dashes
+
+    if model_key == checker_key:
+        raise click.UsageError("Skribent och kontroll måste vara olika modeller.")
+    if not dry_run:
+        _require_api_key()
+    paths = _web_paths()
+    options = DashOptions(
+        species_root=paths.species_root,
+        reports=paths.reports,
+        qids=species,
+        model_key=model_key,
+        effort=effort,
+        checker_key=checker_key,
+        max_cost=max_cost,
+        workers=workers,
+        dry_run=dry_run,
+    )
+    result = asyncio.run(run_app_dashes(options))
+    click.echo(
+        f"Klart: {len(result.outcomes)} arter, ${result.cost_usd:.2f}. Rapport: {result.report}"
+    )
+    if result.stopped_by_cost:
+        raise click.exceptions.Exit(4)
 
 
 if __name__ == "__main__":

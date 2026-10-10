@@ -6,6 +6,8 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 
+from .vp11_source import VP11_SHA256, VP11_URL, sha256_of, vp11_cache_path
+
 
 @dataclass(frozen=True)
 class Check:
@@ -44,18 +46,7 @@ def run_doctor(*, root: Path) -> DoctorReport:
         )
     )
 
-    vp11 = root / "sources" / "vp11.pdf"
-    checks.append(
-        Check(
-            name="sources/vp11.pdf",
-            ok=vp11.exists(),
-            detail=(
-                "present"
-                if vp11.exists()
-                else "download from cdn.birdlife.se (TK Västpalearktis-lista v11)"
-            ),
-        )
-    )
+    checks.append(_vp11_check(root / ".cache"))
 
     species_list = root / "species_list.yaml"
     checks.append(
@@ -80,3 +71,14 @@ def run_doctor(*, root: Path) -> DoctorReport:
     )
 
     return DoctorReport(checks=checks)
+
+
+def _vp11_check(cache_root: Path) -> Check:
+    """VP11.pdf is only needed by ``init``, which downloads it; a wrong checksum fails."""
+    path = vp11_cache_path(cache_root)
+    name = ".cache/sources/vp11.pdf"
+    if not path.exists():
+        return Check(name=name, ok=True, detail=f"not cached; `init` downloads {VP11_URL}")
+    if sha256_of(path) != VP11_SHA256:
+        return Check(name=name, ok=False, detail="wrong SHA-256; delete it and run `init`")
+    return Check(name=name, ok=True, detail="cached, SHA-256 matches")

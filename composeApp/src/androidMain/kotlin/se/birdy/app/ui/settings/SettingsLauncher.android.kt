@@ -1,10 +1,14 @@
 package se.birdy.app.ui.settings
 
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.core.content.FileProvider
 import java.io.File
+
+private const val TAG = "SettingsLauncher"
 
 object SettingsLauncherSetup {
     @Volatile private var appContext: Context? = null
@@ -22,7 +26,17 @@ private fun Context.startNewTaskActivity(intent: Intent) {
 
 actual fun openExternalUrl(url: String) {
     val ctx = SettingsLauncherSetup.context() ?: return
-    runCatching { ctx.startNewTaskActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))) }
+    try {
+        ctx.startNewTaskActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    } catch (e: ActivityNotFoundException) {
+        // Degradation must always show — state + log (house rule): no app to handle the URL
+        // (e.g. no browser) is silently harmless to the user (nothing happens), but worth
+        // knowing about rather than swallowing without a trace.
+        Log.w(TAG, "openExternalUrl: no app found to open $url", e)
+    } catch (e: SecurityException) {
+        // A misconfigured or non-exported default handler: same degradation, never a crash.
+        Log.w(TAG, "openExternalUrl: not allowed to open $url", e)
+    }
 }
 
 actual fun openMailto(
@@ -55,6 +69,14 @@ actual fun openPlayStoreListing(packageName: String) {
         val web = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName"))
         runCatching { ctx.startNewTaskActivity(web) }
     }
+}
+
+actual fun openManageSubscription(sku: String) {
+    // ctx.packageName is this build's own running application id — e.g. a debug build's
+    // ".debug"-suffixed id, not a hardcoded production package name — so the link points at
+    // whichever package is actually installed and running.
+    val packageName = SettingsLauncherSetup.context()?.packageName ?: return
+    openExternalUrl("https://play.google.com/store/account/subscriptions?sku=$sku&package=$packageName")
 }
 
 actual fun shareJournalPdf(pdfPath: String) {

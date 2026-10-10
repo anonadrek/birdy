@@ -1,5 +1,6 @@
 package se.birdy.app.ui.map
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,6 +33,8 @@ import birdy_bird_scanner.composeapp.generated.resources.map_empty
 import birdy_bird_scanner.composeapp.generated.resources.map_empty_cta
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.CardPaper
+import se.birdy.app.ui.theme.Hairline
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.paperBackground
 
@@ -78,7 +82,7 @@ fun MapScreen(
             // MapTiler + OSM require visible attribution with clickable links to both copyright
             // pages; MapTiler is credited first. See www.maptiler.com/copyright + osmfoundation.org.
             val linkStyles =
-                TextLinkStyles(style = SpanStyle(color = MarginaliaInk, textDecoration = TextDecoration.Underline))
+                TextLinkStyles(style = SpanStyle(color = MapAttributionInk, textDecoration = TextDecoration.Underline))
             val attribution =
                 buildAnnotatedString {
                     withLink(LinkAnnotation.Url("https://www.maptiler.com/copyright/", linkStyles)) {
@@ -89,11 +93,26 @@ fun MapScreen(
                         append(stringResource(Res.string.map_attribution_osm))
                     }
                 }
+            // On a solid paper chip: MapTiler's terms want the attribution always visible and
+            // readable whatever the style draws under it (QA 2026-10-07: dark ink on a near-black
+            // sea; a custom style can have dark areas too).
             Text(
                 text = attribution,
-                color = MarginaliaInk,
-                modifier = Modifier.align(Alignment.BottomStart).padding(6.dp),
+                color = MapAttributionInk,
+                style = MaterialTheme.typography.labelMedium,
+                modifier =
+                    Modifier
+                        .align(Alignment.BottomStart)
+                        .padding(8.dp)
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(MapAttributionChip)
+                        .border(1.dp, Hairline, RoundedCornerShape(6.dp))
+                        .padding(horizontal = 8.dp, vertical = 4.dp),
             )
         }
     }
 }
+
+/** The attribution's text and its chip: WCAG AA on an opaque chip, whatever the map shows under it. */
+internal val MapAttributionInk = MarginaliaInk
+internal val MapAttributionChip = CardPaper

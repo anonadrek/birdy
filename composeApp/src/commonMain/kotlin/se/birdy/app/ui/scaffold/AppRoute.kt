@@ -47,6 +47,17 @@ sealed interface AppRoute {
 
     @Serializable data object About : AppRoute
 
+    /** Release 1.3.0 Task 7e-2: every species photo's credit, from About. */
+    @Serializable data object PhotoCredits : AppRoute
+
+    /** Release 1.3.0 legal review 7i-fix B: the open-source licence list, from About. */
+    @Serializable data object OpenSourceLicenses : AppRoute
+
+    /** One entry of [OpenSourceLicenses] (its id in the generated index.json) and its full text. */
+    @Serializable data class LicenseText(
+        val entryId: String,
+    ) : AppRoute
+
     @Serializable data object OnboardingReplay : AppRoute
 
     @Serializable data object Premium : AppRoute
@@ -71,6 +82,12 @@ sealed interface AppRoute {
     /**
      * v1.2 Phase B: Weekly Recap screen. Reachable from Lifelist (Task 12),
      * Settings, and via the `birdy://recap` deep-link emitted by WeeklyRecapWorker.
+     *
+     * [week] is an ISO week key ("2026-W41") from the notification's link, so a tap after
+     * midnight opens the week the notification described (release 1.3.0 Task 7j review); null
+     * (Mina arter's card, older links) is the current week.
      */
-    @Serializable data object WeeklyRecap : AppRoute
+    @Serializable data class WeeklyRecap(
+        val week: String? = null,
+    ) : AppRoute
 }

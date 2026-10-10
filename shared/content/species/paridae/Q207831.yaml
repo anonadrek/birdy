@@ -46,10 +46,10 @@ description:
     och frön.
 
 
-    Tofsmes är känd för sitt karakteristiska läte – en väsande, raspig stämma med
-    tjattrande toner som hörs året runt. Arten är inte särskilt rädd för människor
-    och besöker gärna fågelbord under vinterhalvåret. Artens globala bestånd anses
-    vara livskraftigt och stabilt.'
+    Tofsmes är känd för sitt karakteristiska läte: en väsande, raspig stämma med tjattrande
+    toner som hörs året runt. Arten är inte särskilt rädd för människor och besöker
+    gärna fågelbord under vinterhalvåret. Artens globala bestånd anses vara livskraftigt
+    och stabilt.'
   en: '# Crested Tit
 
 
@@ -64,7 +64,7 @@ description:
     These birds favour mature pine and spruce forests where they forage methodically
     through branches and foliage, searching for insects and seeds. It is sociable
     outside the breeding season, often joining mixed feeding flocks with other tit
-    species. The call is distinctive—a sharp, trilled "chi-chi-chi" or rolling "tsirrrr"
+    species. The call is distinctive: a sharp, trilled "chi-chi-chi" or rolling "tsirrrr"
     that carries well through woodland. During breeding season, it nests in cavities
     within trees, often enlarging the holes itself.
 
@@ -130,7 +130,8 @@ image_refs:
     (3).jpg
   commons_filename: Lophophanes cristatus. Siverskiy (3).jpg
 review_status: approved
-review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons hero, no manual review checkpoint'
+review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name
+  + ranked Commons hero, no manual review checkpoint'
 generated_at: '2026-05-04T10:00:44.831280+00:00'
 sources:
   wikipedia_sv_revision: '56667392'

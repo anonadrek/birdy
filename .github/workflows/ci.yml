@@ -45,6 +45,12 @@ jobs:
       - name: Unit tests (composeApp)
         run: ./gradlew :composeApp:testDebugUnitTest --stacktrace
 
+      # Release 1.3.0 (legal review 7i-fix B): the open-source licence list in the app was made
+      # from tools/licenses/release-dependencies.txt; this fails when the release build's
+      # dependencies have changed since. Fix: python tools/licenses/generate.py, then commit.
+      - name: Licence list matches the release dependencies
+        run: ./gradlew :androidApp:verifyLicenseList --stacktrace
+
       - name: Validate species data
         run: ./gradlew :shared:content:validateSpeciesData --stacktrace
 

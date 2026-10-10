@@ -32,6 +32,16 @@ internal object StringsXml {
 
     fun english(): File = File(resourcesDir(), "values-en/strings.xml")
 
+    /** Every `strings.xml` directly under a `values` (or `values-xx`) folder inside [baseDir], if it exists. */
+    fun stringsXmlFiles(baseDir: File): List<File> =
+        (baseDir.listFiles { file -> file.isDirectory && file.name.startsWith("values") } ?: emptyArray())
+            .map { File(it, "strings.xml") }
+            .filter { it.isFile }
+            .sortedBy { it.parentFile?.name ?: it.path }
+
+    /** All compose-resources language `strings.xml` files, one per `values`/`values-xx` folder (`values/` = Swedish). */
+    fun allLanguages(): List<File> = stringsXmlFiles(resourcesDir())
+
     private fun resourcesDir(): File {
         var dir: File? = File(System.getProperty("user.dir") ?: ".").absoluteFile
         while (dir != null) {

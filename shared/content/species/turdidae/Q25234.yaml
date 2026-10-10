@@ -34,9 +34,9 @@ description:
 
 
     Koltrast är en från familjen trastar och räknas som Europas mest utbredda trast.
-    Arten kännetecknas av sitt mörka fjäderdräkt – hanarna är helt svarta med gul
-    näbbring och ögonring, medan honorna är brunaktiga. Det är en medelstor fågel
-    med smal gestalt och upprätt hållning.
+    Arten kännetecknas av sitt mörka fjäderdräkt: hanarna är helt svarta med gul näbbring
+    och ögonring, medan honorna är brunaktiga. Det är en medelstor fågel med smal
+    gestalt och upprätt hållning.
 
 
     Historiskt var koltrasten främst en skogsfågel, men sedan mitten av 1800-talet
@@ -46,7 +46,7 @@ description:
     omkring.
 
 
-    Koltrast är en aktiv och framträdande fågel med distinkt beteende – den är känd
+    Koltrast är en aktiv och framträdande fågel med distinkt beteende. Den är känd
     för att söka föda på marken genom att skrapa bland löv och vegetation. Arten är
     sedentär eller delvis flyttfågel beroende på geografisk placering.
 
@@ -59,7 +59,7 @@ description:
     The common blackbird is a true thrush found across Europe, western Asia, and North
     Africa, with introduced populations in Australia and New Zealand. Several subspecies
     exist throughout its extensive range, though some former Asian populations are
-    now classified as separate species. Migration patterns vary with latitude—some
+    now classified as separate species. Migration patterns vary with latitude: some
     populations remain year-round residents, while others migrate partially or completely
     depending on seasonal conditions.
 
@@ -128,7 +128,8 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Turdus merula 1321.jpg
   commons_filename: Turdus merula 1321.jpg
 review_status: approved
-review_notes: "Hero = Turdus merula (Common Blackbird / Koltrast); SE:s vanligaste trast i trädgårdar och skog."
+review_notes: Hero = Turdus merula (Common Blackbird / Koltrast); SE:s vanligaste
+  trast i trädgårdar och skog.
 generated_at: '2026-05-15T21:32:14.204674+00:00'
 sources:
   wikipedia_sv_revision: '59018904'

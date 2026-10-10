@@ -5,6 +5,17 @@ import se.birdy.domain.premium.PremiumState
 import se.birdy.domain.premium.PremiumTier
 
 /**
+ * The Play Console product ids Birdy sells — [YEARLY] is a subscription (base plan `yearly`),
+ * [LIFETIME] a one-time in-app product. Single source of truth for both the Android billing
+ * client ([PremiumBillingClient]) and any commonMain code that needs to name a product, e.g.
+ * Settings' "Manage subscription" link.
+ */
+object PremiumProducts {
+    const val YEARLY = "premium_yearly_v1"
+    const val LIFETIME = "premium_lifetime_v1"
+}
+
+/**
  * Thin Android Billing v8 wrapper exposed as expect/actual for KMP.
  * - Android actual: wraps com.android.billingclient.api.BillingClient
  * - iOS actual: no-op stub — `state` stays `PremiumState.Free`, `purchasesQueried` and

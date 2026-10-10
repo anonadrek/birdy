@@ -57,8 +57,8 @@ description:
 
     This is a highly vocal species, recognizable by its repeated loud "dwip" call
     that echoes through woodland habitats. It is an active, energetic bird, often
-    seen moving rapidly along tree trunks and branches, frequently descending headfirst—a
-    behavior few other birds perform with such agility. It feeds primarily on insects
+    seen moving rapidly along tree trunks and branches, frequently descending headfirst,
+    a behavior few other birds perform with such agility. It feeds primarily on insects
     and seeds, using its strong bill to extract food from bark crevices and to crack
     open nuts.
 
@@ -123,7 +123,8 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Nuthatch - Sitta europaea (50408619696).jpg
   commons_filename: Nuthatch - Sitta europaea (50408619696).jpg
 review_status: approved
-review_notes: "Hero = Sitta europaea (Eurasian Nuthatch / Nötväcka); allmän i lövskog och blandskog i hela SE."
+review_notes: Hero = Sitta europaea (Eurasian Nuthatch / Nötväcka); allmän i lövskog
+  och blandskog i hela SE.
 generated_at: '2026-05-15T21:33:44.269134+00:00'
 sources:
   wikipedia_sv_revision: '58491129'

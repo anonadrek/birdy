@@ -14,13 +14,17 @@ import org.robolectric.RuntimeEnvironment
 import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
+import se.birdy.app.i18n.AppStrings
 import se.birdy.app.testing.FakeBadgeRepository
+import se.birdy.app.testing.FakeDailyBirdHistoryRepository
 import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.testing.FakeUserPreferences
 import se.birdy.app.testing.attachComposeResourcesContext
+import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
 import se.birdy.content.model.SpeciesImage
+import se.birdy.data.dailybird.DailyBirdHistoryRepository
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.dailybird.DailyBird
 import se.birdy.domain.dailybird.SeasonTag
@@ -43,7 +47,11 @@ import kotlin.test.assertTrue
 class DailyBirdNotificationTest {
     private val context get() = RuntimeEnvironment.getApplication()
 
-    private fun payloads(): NotificationPayloads {
+    private fun payloads(
+        withPhotos: Boolean = true,
+        appLanguage: Locale = Locale.SV,
+        history: DailyBirdHistoryRepository? = null,
+    ): NotificationPayloads {
         val prefs = FakeUserPreferences()
         runBlocking { prefs.setDailyBirdPushEnabled(true) }
         val repo = FakeSpeciesRepository.withDefaults()
@@ -51,10 +59,14 @@ class DailyBirdNotificationTest {
         val withPhoto =
             greatTit.copy(
                 images =
-                    listOf(
-                        SpeciesImage("secondary", "Q25485/secondary-1.webp", 800, 600, "CC BY-SA 4.0", "A", "u"),
-                        SpeciesImage("hero", "Q25485/hero.webp", 2400, 1600, "CC BY-SA 4.0", "B", "u"),
-                    ),
+                    if (withPhotos) {
+                        listOf(
+                            SpeciesImage("secondary", "Q25485/secondary-1.webp", 800, 600, "CC BY-SA 4.0", "A", "u"),
+                            SpeciesImage("hero", "Q25485/hero.webp", 2400, 1600, "CC BY 2.0", "Derek Keats", "u"),
+                        )
+                    } else {
+                        emptyList()
+                    },
             )
         return NotificationPayloads(
             prefs = prefs,
@@ -62,11 +74,13 @@ class DailyBirdNotificationTest {
             badgeRepo = FakeBadgeRepository(),
             badgeCatalog = BadgeCatalog(version = 1, badges = emptyList()),
             speciesByQid = { mapOf(SpeciesId("Q25485") to withPhoto) },
-            speciesNameFor = { "Talgoxe" },
+            speciesNameFor = { qid -> mapOf("Q25485" to "Talgoxe", "Q25404" to "Blåmes")[qid] },
             selectDailyBird = { DailyBird("Q25485", SeasonTag.PRESENT) },
+            dailyBirdHistory = history,
             dailyBirdMatchCount = { 0 },
             timeZone = TimeZone.of("Europe/Stockholm"),
             clock = Clock.System,
+            strings = AppStrings(appLanguage),
         )
     }
 
@@ -81,6 +95,7 @@ class DailyBirdNotificationTest {
                     NotificationAction("Läs om arten", "birdy://species/Q25485"),
                     NotificationAction("Lyssna efter den", "birdy://audio"),
                 ),
+            photoCredit = "Foto: Derek Keats, CC BY 2.0",
         )
 
     @Test
@@ -92,6 +107,8 @@ class DailyBirdNotificationTest {
         assertEquals("Kan du fånga den idag? Kika, foto eller läte räknas.", c.body)
         assertEquals("birdy://species/Q25485", c.deepLink)
         assertEquals("Q25485/hero.webp", c.imagePath)
+        // Release 1.3.0 Task 7e-2: the hero photo's credit, not the secondary photo's.
+        assertEquals("Foto: Derek Keats, CC BY 2.0", c.photoCredit)
         assertEquals(
             listOf(
                 NotificationAction("Läs om arten", "birdy://species/Q25485"),
@@ -105,10 +122,91 @@ class DailyBirdNotificationTest {
     @Config(qualifiers = "+en")
     fun `the english content`() {
         attachComposeResourcesContext()
-        val c = runBlocking { payloads().dailyBird(LocalDate(2026, 10, 6)) }!!
+        val c = runBlocking { payloads(appLanguage = Locale.EN).dailyBird(LocalDate(2026, 10, 6)) }!!
         assertEquals("Bird of the day: Talgoxe", c.title)
         assertEquals("Can you catch it today? Camera, photo or call all count.", c.body)
         assertEquals(listOf("Read about it", "Listen for it"), c.actions.map { it.label })
+        assertEquals("Photo: Derek Keats, CC BY 2.0", c.photoCredit)
+    }
+
+    /**
+     * QA 2026-10-07: with Birdy in Svenska on an English phone the notification said "Bird of the
+     * day: …" with "Read about it" and "Listen for it". The content follows the app's language,
+     * whatever the phone's is, and the other way round.
+     */
+    @Test
+    @Config(qualifiers = "+en")
+    fun `the content follows the app's language on a phone in another language`() {
+        attachComposeResourcesContext()
+        val swedish = runBlocking { payloads(appLanguage = Locale.SV).dailyBird(LocalDate(2026, 10, 6)) }!!
+        assertEquals("Dagens fågel: Talgoxe", swedish.title)
+        assertEquals("Kan du fånga den idag? Kika, foto eller läte räknas.", swedish.body)
+        assertEquals(listOf("Läs om arten", "Lyssna efter den"), swedish.actions.map { it.label })
+        assertEquals("Foto: Derek Keats, CC BY 2.0", swedish.photoCredit)
+        // Reading the app's language leaves the process default alone.
+        assertEquals(
+            "en",
+            java.util.Locale
+                .getDefault()
+                .language,
+        )
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `an english app on a swedish phone gets english content`() {
+        attachComposeResourcesContext()
+        val english = runBlocking { payloads(appLanguage = Locale.EN).dailyBird(LocalDate(2026, 10, 6)) }!!
+        assertEquals("Bird of the day: Talgoxe", english.title)
+        assertEquals(listOf("Read about it", "Listen for it"), english.actions.map { it.label })
+        assertEquals(
+            "sv",
+            java.util.Locale
+                .getDefault()
+                .language,
+        )
+    }
+
+    /**
+     * The notification names the bird the app shows: the one recorded for the day (the history
+     * keeps the first bird of a day and every save is matched against it), not the selector's,
+     * which can differ on the day an update changes the selection (1.3.0 drops extinct species).
+     * Same rule as DailyBirdTracker, for the worker's fresh process and the live graph alike.
+     */
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `the recorded bird of the day wins over the selector`() {
+        attachComposeResourcesContext()
+        val date = LocalDate(2026, 10, 6)
+        val history = FakeDailyBirdHistoryRepository().apply { recorded[date] = "Q25404" }
+        val c = runBlocking { payloads(history = history).dailyBird(date) }!!
+        assertEquals("Dagens fågel: Blåmes", c.title)
+        assertEquals("birdy://species/Q25404", c.deepLink)
+        assertEquals("birdy://species/Q25404", c.actions.first().deepLink)
+        // Blåmes has no photo in this fixture: never Talgoxe's photo under Blåmes' name.
+        assertNull(c.imagePath)
+        assertNull(c.photoCredit)
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `with nothing recorded for the day the selector's bird is named`() {
+        attachComposeResourcesContext()
+        val date = LocalDate(2026, 10, 6)
+        val history = FakeDailyBirdHistoryRepository().apply { recorded[LocalDate(2026, 10, 5)] = "Q25404" }
+        val c = runBlocking { payloads(history = history).dailyBird(date) }!!
+        assertEquals("Dagens fågel: Talgoxe", c.title)
+        assertEquals("birdy://species/Q25485", c.deepLink)
+        assertNull(history.recorded[date], "the notification only reads the history, the app records the day")
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `a species without a photo gets neither a photo nor a credit`() {
+        attachComposeResourcesContext()
+        val c = runBlocking { payloads(withPhotos = false).dailyBird(LocalDate(2026, 10, 6)) }!!
+        assertNull(c.imagePath)
+        assertNull(c.photoCredit)
     }
 
     @Test
@@ -127,6 +225,11 @@ class DailyBirdNotificationTest {
             "the photo is in the expanded notification",
         )
         assertNotNull(n.getLargeIcon(), "the photo is the collapsed thumbnail")
+        // Release 1.3.0 Task 7e-2: the expanded notification credits the photo under the title.
+        assertEquals(
+            "Foto: Derek Keats, CC BY 2.0",
+            n.extras.getCharSequence(Notification.EXTRA_SUMMARY_TEXT).toString(),
+        )
 
         val contentIntent = shadowOf(n.contentIntent).savedIntent
         assertEquals(Uri.parse("birdy://species/Q25485"), contentIntent.data)
@@ -148,6 +251,7 @@ class DailyBirdNotificationTest {
         val n = DailyBirdNotification.build(context, content(), picture = null)
         assertFalse(n.extras.containsKey(Notification.EXTRA_PICTURE))
         assertNull(n.getLargeIcon())
+        assertNull(n.extras.getCharSequence(Notification.EXTRA_SUMMARY_TEXT), "no photo, so no photo credit")
         assertEquals(2, n.actions.size)
     }
 

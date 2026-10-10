@@ -35,17 +35,17 @@ description:
 
     Pilgrimen är en stor och kraftfull falk med iögonfallande utseende. Ryggen är
     mörk grå till svart medan undersidan är ljus med tät grå vattring. Det mest karakteristiska
-    draget är den skarpa ansiktsmasken med en tydlig "mustasch" – ett mörkt streck
+    draget är den skarpa ansiktsmasken med en tydlig "mustasch", ett mörkt streck
     som löper ner från ögat. Hanen är ungefär lika stor som en ringduva, medan honan
-    är något större än en kråka. Kroppslängden varierar mellan 40–50 cm och vingspannet
-    mellan 80–110 cm.
+    är något större än en kråka. Kroppslängden varierar mellan 40 och 50 cm och vingspannet
+    mellan 80 och 110 cm.
 
 
     Pilgrimen är känd för sitt spektakulära jaktbeteende. När den dykstötar mot sitt
-    byte – främst mindre fåglar – kan den nå hastigheter på över 320 km/h, vilket
-    gör den till världens snabbaste djur under dessa attackdykningar. Det är dock
-    viktigt att notera att pilgrimen inte flyger på denna hastighet under normal kryss,
-    utan endast under dessa kontrollerade dykningar.
+    byte (främst mindre fåglar) kan den nå hastigheter på över 320 km/h, vilket gör
+    den till världens snabbaste djur under dessa attackdykningar. Det är dock viktigt
+    att notera att pilgrimen inte flyger på denna hastighet under normal kryss, utan
+    endast under dessa kontrollerade dykningar.
 
 
     Arten förekommer på nästan alla kontinenter och har gjort en bemerkvär återhämtning
@@ -63,8 +63,8 @@ description:
 
 
     This species is a specialist hunter of birds in flight, which dictates much of
-    its behaviour and habitat preferences. Peregrines favour open landscapes—cliffs,
-    moorlands, and urban areas with tall buildings—where they can launch high-speed
+    its behaviour and habitat preferences. Peregrines favour open landscapes (cliffs,
+    moorlands, and urban areas with tall buildings) where they can launch high-speed
     stoops at passing prey. They are highly adaptable and have successfully colonised
     cities, nesting on buildings and bridges where abundant pigeon populations provide
     food.
@@ -118,10 +118,11 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:A Winchester Peregrine (54078783494).jpg
   commons_filename: A Winchester Peregrine (54078783494).jpg
 review_status: approved
-review_notes: 'Hero = adult Falco peregrinus (MTA New York, CC BY 2.0), klassisk fältidentifiering av
-  den adulta fågeln. Pilgrimsfalk häckar på klippor + stadshus i hela SE.
+review_notes: 'Hero = adult Falco peregrinus (MTA New York, CC BY 2.0), klassisk fältidentifiering
+  av den adulta fågeln. Pilgrimsfalk häckar på klippor + stadshus i hela SE.
 
-  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; beskrivningen ovan gäller de nya bilderna.'
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; beskrivningen ovan
+  gäller de nya bilderna.'
 generated_at: '2026-05-15T19:00:23.670861+00:00'
 sources:
   wikipedia_sv_revision: '59258079'

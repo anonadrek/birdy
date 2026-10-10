@@ -1,15 +1,19 @@
 package se.birdy.app.ui.scaffold
 
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
+import kotlinx.datetime.TimeZone
 import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.data.premium.FormattedPrices
 import se.birdy.app.data.premium.PurchaseResult
@@ -25,13 +29,18 @@ import se.birdy.app.testing.FakePremiumRepository
 import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.testing.FakeUserPreferences
 import se.birdy.app.testing.attachComposeResourcesContext
+import se.birdy.app.ui.audio.FakeStreamingRecorder
+import se.birdy.app.ui.audio.WaveformRendererApi
 import se.birdy.app.ui.theme.BirdyTheme
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesRepository
 import se.birdy.domain.badge.BadgeCatalog
+import se.birdy.domain.observation.ObservationRepository
 import se.birdy.domain.premium.PremiumState
+import se.birdy.ml.AudioClassifierMode
 import se.birdy.ml.ClassifierBootstrap
 import se.birdy.ml.ClassifierMode
+import se.birdy.ml.FakeAudioClassifier
 import se.birdy.ml.FakeBirdClassifier
 
 /**
@@ -66,6 +75,16 @@ internal fun testAppGraph(
     // Release 1.3.0 Task 7g: the encyclopedia test feeds its own search results.
     repository: SpeciesRepository = FakeSpeciesRepository(),
     defaultLocale: Locale = Locale.SV,
+    // Release 1.3.0 Task 7b: the back-button tests open finds, the weekly recap and a debug screen.
+    observationRepository: ObservationRepository = FakeObservationRepository(),
+    diagnosticsScreen: (@Composable () -> Unit)? = null,
+    // Task 7b review: fakes for the audio-ID screen, so a test can open AudioScan.
+    withAudio: Boolean = false,
+    // birdy:// links, as a notification tap delivers them (Task 7b review).
+    deepLinks: MutableSharedFlow<String>? = null,
+    // Task 7j review: the weekly recap's notification opened just after midnight.
+    clock: Clock = FakeClock(RoutingFixture.now),
+    timeZone: TimeZone = TimeZone.currentSystemDefault(),
 ): AppGraph {
     val grandfathered =
         GrandfatherPolicy.isGrandfathered(
@@ -77,7 +96,7 @@ internal fun testAppGraph(
         repository = repository,
         classifierBootstrap = classifierBootstrap,
         cameraSourceFactory = { FakeCameraSource() },
-        observationRepository = FakeObservationRepository(),
+        observationRepository = observationRepository,
         photoStorage = FakePhotoStorage(),
         badgeRepository = FakeBadgeRepository(),
         badgeCatalog = BadgeCatalog(version = 1, badges = emptyList()),
@@ -96,22 +115,54 @@ internal fun testAppGraph(
                 now = RoutingFixture.now,
             ),
         isGrandfathered = grandfathered,
-        clock = FakeClock(RoutingFixture.now),
+        clock = clock,
+        timeZone = timeZone,
         // A real Play purchase must never start from a test. AppGraph's own default would
         // mark the fake repository as purchased.
         launchPurchase = { PurchaseResult.UserCancelled },
         formattedPricesFlow = MutableStateFlow(prices),
         defaultLocale = defaultLocale,
+        diagnosticsScreen = diagnosticsScreen,
+        deepLinkFlow = deepLinks,
+        audioClassifierProvider = if (withAudio) ({ FakeAudioClassifier() to AudioClassifierMode.DEMO }) else null,
+        audioStorageDir = if (withAudio) ({ System.getProperty("java.io.tmpdir") }) else null,
+        audioRecorderFactory = if (withAudio) ({ FakeStreamingRecorder() }) else null,
+        waveformRendererFactory = if (withAudio) ({ NoWaveformRenderer }) else null,
     )
 }
 
-/** Composes the real AppScaffold inside BirdyTheme, waits until it has settled, returns its NavHostController. */
-internal fun ComposeContentTestRule.startAppScaffold(graph: AppGraph): NavHostController {
+/** Writes nothing: the audio-ID tests never get as far as saving a recording. */
+private object NoWaveformRenderer : WaveformRendererApi {
+    override suspend fun renderWaveformPng(
+        pcm: ShortArray,
+        outPath: String,
+    ): String = outPath
+
+    override suspend fun encodeOpus(
+        pcm: ShortArray,
+        outPath: String,
+    ): String? = null
+}
+
+/**
+ * Composes the real AppScaffold inside BirdyTheme, waits until it has settled, returns its
+ * NavHostController. [openUrl] records the links a test opens (null: the app's own opener).
+ */
+internal fun ComposeContentTestRule.startAppScaffold(
+    graph: AppGraph,
+    openUrl: ((String) -> Unit)? = null,
+): NavHostController {
     attachComposeResourcesContext()
     lateinit var nav: NavHostController
     setContent {
         nav = rememberNavController()
-        BirdyTheme { AppScaffold(graph = graph, navController = nav) }
+        BirdyTheme {
+            if (openUrl != null) {
+                AppScaffold(graph = graph, navController = nav, openUrl = openUrl)
+            } else {
+                AppScaffold(graph = graph, navController = nav)
+            }
+        }
     }
     waitForIdle()
     return nav

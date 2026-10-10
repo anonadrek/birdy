@@ -66,10 +66,10 @@ import birdy_bird_scanner.composeapp.generated.resources.lifelist_section_recent
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_sort_recent
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_sort_species
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_sort_stamp
+import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_finds
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_longest
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_month
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_species
-import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_stamps
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_streak
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_year
 import birdy_bird_scanner.composeapp.generated.resources.months_short_uppercase
@@ -248,7 +248,7 @@ private fun LoadedLifelist(
             }
         }.value
     val labelStat1 = stringResource(Res.string.lifelist_stat_species)
-    val labelStat2 = stringResource(Res.string.lifelist_stat_stamps)
+    val labelStat2 = stringResource(Res.string.lifelist_stat_finds)
     val labelStat3 = labelForStat3(state.stat3.kind)
     val months = stringArrayResource(Res.array.months_short_uppercase)
     val zone = remember { TimeZone.currentSystemDefault() }
@@ -377,9 +377,10 @@ private fun LoadedLifelist(
         if (showPremiumTeaser) {
             item {
                 Spacer(Modifier.height(20.dp))
-                // T12c C2: matches the "SENASTE · N STÄMPLAR" section label's own style/uppercasing
-                // above (see the recent-sort row) instead of its own one-off letter-spaced sentence
-                // case, so the two section labels on this screen read consistently.
+                // T12c C2: matches the style/uppercasing of the recent row's section label above
+                // (`lifelist_section_recent`, "SENASTE · N FYND") instead of its own one-off
+                // letter-spaced sentence case, so the two section labels on this screen read
+                // consistently.
                 SectionLabel(text = stringResource(Res.string.premium_lifelist_title))
                 Spacer(Modifier.height(8.dp))
                 LockedStatsPreview(
@@ -411,9 +412,9 @@ private fun LoadedLifelist(
 
 /**
  * T12d Minor C2: the premium-teaser and live-preview section labels each hardcoded their own
- * 24dp horizontal padding — 8dp wider than the "SENASTE · N STÄMPLAR" row above (16dp) and the
- * card below it (16dp), a visible jog between the two. Shared here so both call sites stay at
- * 16dp and can't drift apart again.
+ * 24dp horizontal padding — 8dp wider than the recent row above (`lifelist_section_recent`,
+ * "SENASTE · N FYND", 16dp) and the card below it (16dp), a visible jog between the two. Shared
+ * here so both call sites stay at 16dp and can't drift apart again.
  */
 @Composable
 private fun SectionLabel(

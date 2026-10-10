@@ -1,6 +1,7 @@
 package se.birdy.app.ui.premium
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,11 +12,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Check
+import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.premium_screen_close
 import birdy_bird_scanner.composeapp.generated.resources.premium_thanks_body
 import birdy_bird_scanner.composeapp.generated.resources.premium_thanks_continue
 import birdy_bird_scanner.composeapp.generated.resources.premium_thanks_headline
@@ -32,6 +36,7 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_thanks_signoff
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BirdyPremiumButton
+import se.birdy.app.ui.components.GlassIconButton
 import se.birdy.app.ui.components.HeadlineSegment
 import se.birdy.app.ui.components.PaperSheetOverlap
 import se.birdy.app.ui.components.PaperSheetTop
@@ -57,8 +62,34 @@ fun PremiumThankYouScreen(onClose: () -> Unit) {
     // The whole screen is dark moss, even after scroll (spec §5.2).
     ReportStatusBarBackdrop(isDark = true)
     val (plain, accent) = thanksHeadlineParts(stringResource(Res.string.premium_thanks_headline))
+    Box(modifier = Modifier.fillMaxSize().background(HeroMossDeep)) {
+        ThanksList(
+            kicker = stringResource(Res.string.premium_thanks_kicker),
+            plain = plain,
+            accent = accent,
+            onClose = onClose,
+        )
+        // The bottom bar is hidden here and "Fortsätt" is last in the list, so a close button
+        // stays in view at the top, as on the purchase screen (release 1.3.0 Task 7b). It does
+        // what "Fortsätt" does.
+        GlassIconButton(
+            icon = Icons.Outlined.Close,
+            contentDescription = stringResource(Res.string.premium_screen_close),
+            onClick = onClose,
+            modifier = Modifier.align(Alignment.TopEnd).statusBarsPadding().padding(top = 12.dp, end = 14.dp),
+        )
+    }
+}
+
+@Composable
+private fun ThanksList(
+    kicker: String,
+    plain: String,
+    accent: String?,
+    onClose: () -> Unit,
+) {
     LazyColumn(
-        modifier = Modifier.fillMaxSize().background(HeroMossDeep),
+        modifier = Modifier.fillMaxSize(),
         // The bottom bar is hidden on this screen; content must not end up under the gesture
         // bar or nav buttons, and the dark background now fills all the way down (Plan 3 Task 6).
         contentPadding =
@@ -66,7 +97,7 @@ fun PremiumThankYouScreen(onClose: () -> Unit) {
     ) {
         item {
             ThanksHero(
-                kicker = stringResource(Res.string.premium_thanks_kicker),
+                kicker = kicker,
                 plain = plain,
                 accent = accent,
             )

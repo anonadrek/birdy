@@ -36,7 +36,7 @@ description:
     Fjällripan är en hönsfågel som lever i karga arktiska och subarktiska områden
     runt världen, samt på isolerade högfjällen på sydligare breddgrader. Den har en
     stor, rundad kropp och förhållandevis litet huvud, vilket gör den lik dalripan.
-    Arten når en längd på omkring 31–35 cm beroende på underart.
+    Arten når en längd på omkring 31 till 35 cm beroende på underart.
 
 
     Fjällripan är en mästare på kamouflage. Dess fjäderdräkt skiftar säsongsvis för
@@ -81,7 +81,7 @@ migration:
     i fjällregionerna. Under hårda vintrar kan vissa individer från nordöstra populationer
     visa upp nomadisk beteende och förflytta sig söderut för att finna föda. Arten
     är närvarande året om i sitt hemområde, anpassad för det arktiska och subarktiska
-    klimatet med sin säsongsbundna fjäderdräkt – helt vit på vintern för kamouflage
+    klimatet med sin säsongsbundna fjäderdräkt: helt vit på vintern för kamouflage
     i snö och grå-brunspräcklig under växtperioden.'
   en: '# Rock Ptarmigan (Lagopus muta) in Northern Europe
 
@@ -92,8 +92,8 @@ migration:
     Northern populations may exhibit altitudinal movements, descending to lower elevations
     during particularly harsh winters, though true long-distance migration is uncommon.
     The species is well-adapted to extreme cold and snow cover, utilizing its seasonal
-    plumage changes—molting to white winter plumage and brown/grey summer plumage—as
-    camouflage throughout the year in subnival and alpine habitats.'
+    plumage changes (molting to white winter plumage and brown/grey summer plumage)
+    as camouflage throughout the year in subnival and alpine habitats.'
 image_refs:
 - role: hero
   path: Q205930/hero.webp
@@ -123,7 +123,8 @@ image_refs:
     Tsubakuro.jpg
   commons_filename: Lagopus muta japonica Mount Tsubakuro.jpg
 review_status: approved
-review_notes: "Hero = Lagopus muta (Rock Ptarmigan / Fjällripa); allmän i kalfjäll i norra SE."
+review_notes: Hero = Lagopus muta (Rock Ptarmigan / Fjällripa); allmän i kalfjäll
+  i norra SE.
 generated_at: '2026-05-15T21:06:04.618863+00:00'
 sources:
   wikipedia_sv_revision: '58510669'

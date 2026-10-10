@@ -64,7 +64,7 @@ class DailyBirdScreenshotTest {
         speciesId = "Q25403",
         name = "Sävsångare",
         scientificName = "Acrocephalus schoenobaenus",
-        heroImagePath = null,
+        heroImage = null,
         caughtToday = caughtToday,
         daysCaught = daysCaught,
         showPremiumBadgeTag = showPremiumBadgeTag,

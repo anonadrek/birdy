@@ -1,7 +1,7 @@
 # Birdy — Play Store Listing (English)
 
 ## App title
-Birdy — Bird Identify & Guide
+Birdy: Bird Identify & Guide
 
 ## Short description (max 80 chars)
 Identify birds by photo & sound. Offline field guide & private journal.
@@ -38,11 +38,11 @@ cloud accounts, no tracking, no ads. Your journal is yours.
 families, a life list up to 500 species, even a red-listed track.
 Something to come home with after a good day in the woods.
 
-**PREMIUM (optional)**
+**PREMIUM (free for now)**
 A private map of every place you've found a bird, PDF export of your
 field journal, seasonal statistics, and 7 more achievement stamps.
-One-time purchase or yearly subscription via Google Play Billing. The
-core experience, photo and bird song identification, stays free.
+Premium is free for everyone for now. The core experience, photo and
+bird song identification, stays free.
 
 **WORKS OFFLINE**
 The bird identifier model, the European birds guide, and the journal
@@ -60,12 +60,12 @@ Birdy is made by a solo developer in Sweden for field birders,
 beginners learning to identify birds, and anyone who thinks a songbird
 in a tree deserves a moment of attention.
 
-## What's new (v1.3.0)
+## What's new (v1.3.1)
 - A new look with calmer colours, bigger photos and cleaner pages.
-- Premium can now be bought in Google Play, yearly or once for life: the finds map, your journal as a PDF, season statistics and 7 extra stamps.
-- Installed Birdy before this update? You keep Premium for free as long as you have the app.
+- Change the language in the intro or in Settings, now on every Android version.
 - Sound ID listens for up to 60 seconds, stops when it is sure and shows what it hears.
-- Language choice in the intro, Android 16 support, and photo ID now works on the first try.
+- Camera fixes: photo ID works on the first try, scanned photos are saved the right way up and the camera turns off when you leave the scanner.
+- Android 16 support. Premium stays free for everyone for now.
 
 ## Keywords (for ASO copy — internal only; Google Play has no keyword field, everything indexes from title + short + long desc)
 bird id, bird identifier, bird sound identifier, bird song identifier,

@@ -1,7 +1,7 @@
 Copyright (c) 2026 AlbIT AB (org. no. 559593-7607). All rights reserved.
 
-This source code and all associated assets in this repository are proprietary
-and confidential. No license, express or implied, is granted to any person to
+This source code and all associated assets in this repository are proprietary.
+No license, express or implied, is granted to any person to
 use, copy, modify, merge, publish, distribute, sublicense, or sell copies of
 this software, in whole or in part, without the prior written permission of the
 copyright holder.
@@ -26,7 +26,7 @@ remain subject to their own licenses, including (non-exhaustively):
   - BirdNET-Lite sound model, K. Lisa Yang Center for Conservation
     Bioacoustics, Cornell Lab of Ornithology, Cornell University:
     CC BY-NC-SA 4.0
-  - DM Serif Display, Caveat: SIL Open Font License 1.1
+  - DM Serif Display, Caveat, Inter: SIL Open Font License 1.1
   - Species photos from Wikimedia Commons: CC0, public domain, CC BY or
     CC BY-SA, as recorded for each photo
   - Species selection and English names: BirdLife Sweden's taxonomic
@@ -38,18 +38,20 @@ remain subject to their own licenses, including (non-exhaustively):
 
 These third-party licenses govern their respective components and are not
 affected by the proprietary terms above. The app shows the credits for photos,
-texts, models and libraries under Settings → About.
+texts, models and libraries under Settings → About. The source and licence of
+every image, model and data file in this repository are listed in
+docs/legal/image-sources.md.
 
 Species texts (exception to the proprietary terms above)
 
-The species texts, that is the `description` and `migration` fields of the
-species files in shared/content/species/ and the same texts in the app's
-species database, are summaries that an AI model wrote from Wikipedia articles.
-They are adaptations of Wikipedia text and are licensed under the Creative
-Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0,
+The species texts, that is the `description`, `migration` and `marginalia`
+fields of the species files in shared/content/species/ and the same texts in
+the app's species database, are summaries that an AI model wrote from Wikipedia
+articles. They are adaptations of Wikipedia text and are licensed under the
+Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0,
 https://creativecommons.org/licenses/by-sa/4.0/). The Wikipedia article
-revisions they are based on are listed in the `sources` field of each species
-file.
+revisions they are based on are listed, where known, in the `sources` field of
+each species file (see shared/content/species/LICENSE.md).
 
 Species pages on the website (exception to the proprietary terms above)
 

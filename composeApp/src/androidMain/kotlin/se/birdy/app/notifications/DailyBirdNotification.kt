@@ -60,7 +60,9 @@ object DailyBirdNotification {
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
         if (picture != null) {
-            // Collapsed: the photo as a thumbnail. Expanded: the big photo, no duplicate thumbnail.
+            // Collapsed: the photo as a thumbnail with the invitation. Expanded: the big photo, no
+            // duplicate thumbnail, and the photo's credit under the title (release 1.3.0 Task 7e-2:
+            // a CC BY photo is never shown without its photographer and licence).
             builder
                 .setLargeIcon(picture.thumbnail)
                 .setStyle(
@@ -68,7 +70,7 @@ object DailyBirdNotification {
                         .BigPictureStyle()
                         .bigPicture(picture.big)
                         .bigLargeIcon(null as Bitmap?)
-                        .setSummaryText(content.body),
+                        .setSummaryText(content.photoCredit ?: content.body),
                 )
         } else {
             builder.setStyle(NotificationCompat.BigTextStyle().bigText(content.body))

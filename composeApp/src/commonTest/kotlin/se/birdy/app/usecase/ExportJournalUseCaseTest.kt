@@ -16,6 +16,7 @@ import se.birdy.domain.badge.BadgeRule
 import se.birdy.domain.badge.BadgeUnlock
 import se.birdy.pdf.JournalPdfInput
 import se.birdy.pdf.JournalPdfRenderResult
+import se.birdy.pdf.JournalPdfStrings
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -168,6 +169,50 @@ class ExportJournalUseCaseTest {
             assertEquals("name_premium_field_member", premium.single().nameLocalized)
             assertEquals("desc_premium_field_member", premium.single().descriptionLocalized)
             assertEquals(unlockedAt, premium.single().unlockedAt)
+        }
+
+    // Bug: an English user's exported PDF printed Swedish headings — the use case built the
+    // JournalPdfInput without ever looking at `locale` for the PDF's own text (only for species
+    // lookup and the byline-name mask). These lock in that `locale` now also selects the PDF's
+    // JournalPdfStrings set, so a future refactor can't silently drop that wiring again.
+    @Test
+    fun locale_sv_selects_swedish_pdf_strings() =
+        runTest {
+            val captured = mutableListOf<JournalPdfInput>()
+            val uc =
+                newUseCase(
+                    obsRepo = FakeObservationRepository.withDefaults(),
+                    speciesRepo = FakeSpeciesRepository.withDefaults(),
+                    locale = Locale.SV,
+                    render = { input, _ ->
+                        captured += input
+                        JournalPdfRenderResult.Success(1, 0L)
+                    },
+                )
+
+            uc.run()
+
+            assertEquals(JournalPdfStrings.SV, captured.single().strings)
+        }
+
+    @Test
+    fun locale_en_selects_english_pdf_strings() =
+        runTest {
+            val captured = mutableListOf<JournalPdfInput>()
+            val uc =
+                newUseCase(
+                    obsRepo = FakeObservationRepository.withDefaults(),
+                    speciesRepo = FakeSpeciesRepository.withDefaults(),
+                    locale = Locale.EN,
+                    render = { input, _ ->
+                        captured += input
+                        JournalPdfRenderResult.Success(1, 0L)
+                    },
+                )
+
+            uc.run()
+
+            assertEquals(JournalPdfStrings.EN, captured.single().strings)
         }
 
     @Test

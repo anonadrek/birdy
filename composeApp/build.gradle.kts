@@ -135,6 +135,18 @@ afterEvaluate {
 val runScreenshotTests =
     providers.gradleProperty("birdy.screenshots").map { it.isEmpty() || it.toBooleanStrict() }.getOrElse(false)
 
+// The MapTiler style the map's raster tiles come from (release 1.3.0, legal review 7i-fix G):
+// Albin's own style made in MapTiler Customize, by its id. Like MAPTILER_API_KEY it lives in
+// ~/.gradle/gradle.properties (or -P) and is never committed. Unset is legal: the app then uses
+// MapTiler's stock style (DEFAULT_MAPTILER_STYLE_ID in MapTilerUrls.kt), so it never fails the
+// build; androidApp's "Birdy release config:" line shows which style a release build has. A value
+// that isn't a bare style id (a pasted style URL, say) would break every tile, so it fails here.
+val mapTilerStyleId = providers.gradleProperty("MAPTILER_STYLE_ID").map { it.trim() }.getOrElse("")
+require(mapTilerStyleId.isEmpty() || Regex("[A-Za-z0-9_-]+").matches(mapTilerStyleId)) {
+    "MAPTILER_STYLE_ID must be the bare style id from MapTiler Cloud (letters, digits, '-', '_'), " +
+        "not a URL: got '$mapTilerStyleId'."
+}
+
 android {
     namespace = "se.birdy.app"
     compileSdk =
@@ -151,6 +163,8 @@ android {
             "MAPTILER_API_KEY",
             "\"${project.findProperty("MAPTILER_API_KEY") ?: ""}\"",
         )
+        // Empty = the stock default style, resolved in MapTilerUrls.kt (shared with iOS).
+        buildConfigField("String", "MAPTILER_STYLE_ID", "\"$mapTilerStyleId\"")
     }
     buildFeatures {
         buildConfig = true

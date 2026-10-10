@@ -42,10 +42,10 @@ description:
 
 
     Storskarven är en mästerlig dykarfågel anpassad för livet i vatten. Den skiljer
-    sig från sina släktingar – fregattfåglar, sulor och ormhalsfåglar – men delar
-    många av deras vattenöverspecialiserade egenskaper. Arten går under flera namn
-    i Svenska språket, inklusive ålkråka, havstjäder och kormoran, vilket återspeglar
-    dess långa historia i människans medvetande.'
+    sig från sina släktingar (fregattfåglar, sulor och ormhalsfåglar) men delar många
+    av deras vattenöverspecialiserade egenskaper. Arten går under flera namn i Svenska
+    språket, inklusive ålkråka, havstjäder och kormoran, vilket återspeglar dess långa
+    historia i människans medvetande.'
   en: '# Great Cormorant
 
 
@@ -65,7 +65,7 @@ description:
     Great cormorants are highly aquatic birds, spending much of their time diving
     for fish in coastal waters, estuaries, and larger inland waterways. They are often
     seen in small to large flocks, sometimes perched with wings held open to dry their
-    feathers—a characteristic behaviour among cormorants. The species is relatively
+    feathers, a characteristic behaviour among cormorants. The species is relatively
     silent but produces guttural calls at breeding colonies. It typically nests in
     colonies on cliffs, in trees near water, or on rocky outcrops, demonstrating remarkable
     adaptability to different breeding environments across its vast global range.'
@@ -121,7 +121,8 @@ image_refs:
     cormorant.jpg
   commons_filename: Phalacrocorax carbo or the great cormorant.jpg
 review_status: approved
-review_notes: "Hero = Phalacrocorax carbo (Great Cormorant / Storskarv); allmän vid kust och sjöar i SE."
+review_notes: Hero = Phalacrocorax carbo (Great Cormorant / Storskarv); allmän vid
+  kust och sjöar i SE.
 generated_at: '2026-05-15T21:36:05.615321+00:00'
 sources:
   wikipedia_sv_revision: '58850386'

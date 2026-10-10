@@ -40,7 +40,7 @@ import se.birdy.app.toNSData
 import se.birdy.app.ui.photoanalyze.uiImageFromDataOrNull
 
 /**
- * MKMapView i en UIKitView med MapTiler-tiles (duotone-tintade, se [IosTileFetcher]) via
+ * MKMapView i en UIKitView med MapTiler-tiles (oförändrade, se [IosTileFetcher]) via
  * overlayn Swift-sidan registrerar i [IosMapOverlayBridge] vid appstart — K/N kan inte
  * subklassa `MKTileOverlay` själv, se [IosTileFetcher]-KDoc för den fulla bakgrunden. Utan
  * en registrerad overlay (t.ex. Swift-registreringen saknas) degraderas kartan tyst till
@@ -54,7 +54,7 @@ import se.birdy.app.ui.photoanalyze.uiImageFromDataOrNull
  * **Rättelse (T4-review, 2026-08-17):** `addOverlay(overlay)` (utan `level`) lägger overlayn på
  * default-nivån `MKOverlayLevelAboveRoads`, som ligger UNDER Apples etikett-/POI-lager — den
  * första riskgrind-skärmdumpen visade device-lokaliserade stadsnamn/parkbadges/landsgränser
- * (Apples lager, inte vårt) rakt igenom de duotone-tintade tilesen, vilket lästes fel som
+ * (Apples lager, inte vårt) rakt igenom MapTiler-tilesen, vilket lästes fel som
  * "tile-innehåll" i förra rapportrundan. Fixat med `MKOverlayLevelAboveLabels` (ritar overlayn
  * OVANPÅ Apples lager) + `pointOfInterestFilter = excludingAll` (bälte-och-hängslen: döljer
  * POI-lagret helt, oavsett nivå).

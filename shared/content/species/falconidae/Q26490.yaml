@@ -34,9 +34,9 @@ description:
 
 
     Tornfalken är en medelstor rovfågel som tillhör familjen falkar. Det är en av
-    Europas talrikaste rovfåglar och kännetecknas av sitt karakteristiska flugbeteende
-    – det ryttlar ofta stillastående i luften över öppna landskap medan det spanar
-    efter byte.
+    Europas talrikaste rovfåglar och kännetecknas av sitt karakteristiska flygbeteende:
+    det ryttlar ofta stillastående i luften över öppna landskap medan det spanar efter
+    byte.
 
 
     Arten förekommer på kalhyggen, myrar och andra öppna ytor där det enkelt kan upptäcka
@@ -66,11 +66,11 @@ description:
 
 
     The kestrel''s call is a distinctive high-pitched, chattering series of notes,
-    particularly audible during breeding season. It nests in cavities—in cliffs, old
-    buildings, or abandoned nests of other birds—rather than constructing its own
-    nest. Though small and delicate in appearance, the kestrel is an efficient and
-    adaptable predator that has successfully maintained populations across its extensive
-    range, making it a familiar sight to many birdwatchers.'
+    particularly audible during breeding season. It nests in cavities (in cliffs,
+    old buildings, or abandoned nests of other birds) rather than constructing its
+    own nest. Though small and delicate in appearance, the kestrel is an efficient
+    and adaptable predator that has successfully maintained populations across its
+    extensive range, making it a familiar sight to many birdwatchers.'
 migration:
   sv: Tornfalk är en stannfågel och delvis trändfågel i Skandinavien. En del av populationen
     är bosatt året runt, särskilt i södra delen av utbredningsområdet, medan norr
@@ -119,11 +119,11 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:20240815 Falco tinnunculus.jpg
   commons_filename: 20240815 Falco tinnunculus.jpg
 review_status: approved
-review_notes: 'Hero = Falco tinnunculus foto, matchar art. Tornfalk vanlig SE-häckare i öppna jordbrukslandskap,
-  ofta sittande på stolpar.
+review_notes: 'Hero = Falco tinnunculus foto, matchar art. Tornfalk vanlig SE-häckare
+  i öppna jordbrukslandskap, ofta sittande på stolpar.
 
-  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan gäller tidigare
-  bilder.'
+  2026-10-06 (1.3.0 fotogranskning): foton bytta, se cc42967c; fotobeskrivningar ovan
+  gäller tidigare bilder.'
 generated_at: '2026-05-15T19:00:01.105680+00:00'
 sources:
   wikipedia_sv_revision: '59171082'

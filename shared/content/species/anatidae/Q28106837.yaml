@@ -33,10 +33,10 @@ description:
   sv: '# Bläsand
 
 
-    Bläsanden är en medelstor simand som kännetecknas av hanens karakteristiska utseende
-    – ett rödbrunt huvud med en tydlig beige blås i pannan, vilket också är källan
-    till artens namn. Honan är mer diskret färgad i gråbrunt. Det är en livlig och
-    elegant and som ofta ses i mindre eller större flockar.
+    Bläsanden är en medelstor simand som kännetecknas av hanens karakteristiska utseende:
+    ett rödbrunt huvud med en tydlig beige blås i pannan, vilket också är källan till
+    artens namn. Honan är mer diskret färgad i gråbrunt. Det är en livlig och elegant
+    and som ofta ses i mindre eller större flockar.
 
 
     Arten häckar i norr, framför allt i taigazonen i Europa och Asien, men söker också
@@ -62,8 +62,8 @@ description:
     This species favours shallow freshwater habitats, including lakes, marshes, and
     coastal lagoons, where it dabbles for aquatic vegetation and grazes on grass like
     a goose. It is highly social and often seen in flocks, particularly during migration
-    and winter. The wigeon is notably vocal, producing distinctive whistling calls—males
-    make a characteristic high-pitched "wheoo" whistle that is readily identifiable
+    and winter. The wigeon is notably vocal, producing distinctive whistling calls.
+    Males make a characteristic high-pitched "wheoo" whistle that is readily identifiable
     in the field.
 
 
@@ -128,7 +128,7 @@ image_refs:
     Finland 2021-05-03.jpg
   commons_filename: Mareca penelope female Oulu Finland 2021-05-03.jpg
 review_status: approved
-review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+review_notes: auto-pick OK (sjöfågel, klar identifierbar)
 generated_at: '2026-05-06T12:50:50.939749+00:00'
 sources:
   wikipedia_sv_revision: '59210974'

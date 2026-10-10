@@ -57,7 +57,7 @@ description:
     It is instantly recognizable by its striking black and white plumage, with an
     iridescent green back and a characteristic long, spiky crest on its head that
     gives it a unique silhouette. The bird''s name "peewit" derives from its distinctive
-    call—a sharp, repetitive "pee-wit" or "pew-it" sound that is often heard before
+    call: a sharp, repetitive "pee-wit" or "pew-it" sound that is often heard before
     the bird is seen.
 
 
@@ -124,7 +124,10 @@ image_refs:
     Zoo, Netherlands -chick-8a.jpg
   commons_filename: Vanellus vanellus -Rotterdam Zoo, Netherlands -chick-8a.jpg
 review_status: approved
-review_notes: '2026-05-08: hero shows tofsvipa i flykt mot blå himmel — diagnostisk svart-vit kroppsteckning, breda rundade vingar och tydlig tofs. Klassisk silhuett som syns över sankmarker och åkrar i hela landet. Ikonisk SE-jordbrukslandskap-art, häckar i hela Sverige men har minskat senaste decennierna.'
+review_notes: '2026-05-08: hero shows tofsvipa i flykt mot blå himmel — diagnostisk
+  svart-vit kroppsteckning, breda rundade vingar och tydlig tofs. Klassisk silhuett
+  som syns över sankmarker och åkrar i hela landet. Ikonisk SE-jordbrukslandskap-art,
+  häckar i hela Sverige men har minskat senaste decennierna.'
 generated_at: '2026-05-07T23:58:29.427112+00:00'
 sources:
   wikipedia_sv_revision: '59261719'

@@ -1,0 +1,15 @@
+# Licens för arttexterna
+
+Arttexterna i den här mappen (fälten `description`, `migration` och `marginalia` i varje YAML-fil) är sammanfattningar som en AI-modell skrev utifrån inledningen i artens artikel på svenska och engelska Wikipedia, och några är rättade för hand. De är bearbetningar av Wikipedias text och delas under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.sv). Vilka artikelversioner en art bygger på står, där de är kända, under `sources` i varje fil (`wikipedia_sv_revision`, `wikipedia_en_revision`); en version öppnas med `https://sv.wikipedia.org/w/index.php?oldid=<revision>` (eller `en.`). Där en text finns men revisionen är `null` var den hämtade sidan en förgreningssida eller en sida om en uppdelad art, inte artikeln om arten (se `review_notes`), och då länkar appen artens artikel via Wikidata. Samma texter ligger i appens artdatabas (`species.db`), och artsidan i appen länkar artikeln och licensen.
+
+Fotona (`image_refs` i varje fil, bildfilerna i `shared/content/images/`) har sina egna licenser: CC0, public domain, CC BY eller CC BY-SA, med fotograf, licens och källa på Wikimedia Commons angivna per foto. Fotona är nedskalade och omvandlade (sRGB, WebP, utan EXIF), och ett bearbetat foto under CC BY-SA delas under samma licens som originalet.
+
+Namn, taxonomi, rödlistekategorier och övriga fakta i filerna omfattas inte av CC BY-SA; varifrån de kommer står i rotens `LICENSE`. Resten av repot omfattas av licensen i rotens `LICENSE`.
+
+## License for the species texts
+
+The species texts in this folder (the `description`, `migration` and `marginalia` fields of each YAML file) are summaries that an AI model wrote from the intro of the species' article on Swedish and English Wikipedia, some of them corrected by hand. They are adaptations of Wikipedia text and are shared under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). The article revisions a species is based on are listed, where known, under `sources` in each file (`wikipedia_sv_revision`, `wikipedia_en_revision`); a revision opens at `https://en.wikipedia.org/w/index.php?oldid=<revision>` (or `sv.`). Where a text exists but its revision is `null`, the page fetched was a disambiguation or split page rather than the species' article (see `review_notes`), and the app links the species' article through Wikidata. The same texts are in the app's species database (`species.db`), and the species page in the app links the article and the license.
+
+The photos (`image_refs` in each file, the image files in `shared/content/images/`) keep their own licenses: CC0, public domain, CC BY or CC BY-SA, with the photographer, license and Wikimedia Commons source recorded for each photo. The photos are resized and converted (sRGB, WebP, without EXIF), and an adapted CC BY-SA photo is shared under the same license as the original.
+
+Names, taxonomy, red-list categories and other facts in the files are not covered by CC BY-SA; their sources are listed in the root `LICENSE`. The rest of the repository is covered by the root `LICENSE`.

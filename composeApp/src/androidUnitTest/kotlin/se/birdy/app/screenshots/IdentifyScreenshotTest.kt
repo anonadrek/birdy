@@ -49,7 +49,7 @@ class IdentifyScreenshotTest {
                                 speciesId = "Q25403",
                                 name = name,
                                 scientificName = "Acrocephalus schoenobaenus",
-                                heroImagePath = null,
+                                heroImage = null,
                                 caughtToday = caughtToday,
                                 daysCaught = daysCaught,
                                 showPremiumBadgeTag = showPremiumBadgeTag,

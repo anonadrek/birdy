@@ -8,8 +8,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assertHasClickAction
+import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.getBoundsInRoot
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.navigation.compose.NavHost
@@ -25,12 +28,15 @@ import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import se.birdy.app.dailybird.DailyBirdToday
 import se.birdy.app.testing.attachComposeResourcesContext
+import se.birdy.app.ui.listen.DAILY_BIRD_HERO_CREDIT_TAG
 import se.birdy.app.ui.listen.ListenLauncherScreen
 import se.birdy.app.ui.listen.ListenLauncherViewModel
 import se.birdy.app.ui.scaffold.AppRoute
 import se.birdy.app.ui.scaffold.BottomNavBar
 import se.birdy.app.ui.theme.BirdyTheme
+import se.birdy.content.model.SpeciesImage
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 /**
  * Release 1.3.0 Task 7d (design option B): what the Identify hero, the strip and the tab dot say
@@ -48,12 +54,13 @@ class DailyBirdSurfacesTest {
         caughtToday: Boolean = false,
         daysCaught: Int = 0,
         showPremiumBadgeTag: Boolean = false,
+        heroImage: SpeciesImage? = null,
     ) = DailyBirdToday(
         date = LocalDate(2026, 10, 6),
         speciesId = "Q25403",
         name = "Sävsångare",
         scientificName = "Acrocephalus schoenobaenus",
-        heroImagePath = null,
+        heroImage = heroImage,
         caughtToday = caughtToday,
         daysCaught = daysCaught,
         showPremiumBadgeTag = showPremiumBadgeTag,
@@ -91,16 +98,50 @@ class DailyBirdSurfacesTest {
     @Config(qualifiers = "+sv")
     fun `the hero kicker carries todays date in swedish`() {
         showHero(bird())
-        compose.onNodeWithText("DAGENS FÅGEL · TIS 6 OKT", useUnmergedTree = true).assertExists()
+        compose.onNodeWithText("DAGENS FÅGEL · TIS 6\u00A0OKT", useUnmergedTree = true).assertExists()
         compose.onNodeWithText("Acrocephalus schoenobaenus", useUnmergedTree = true).assertExists()
         compose.onNodeWithText("Här just nu", useUnmergedTree = true).assertDoesNotExist()
+    }
+
+    /**
+     * Legal review 7i: the hero shows the species photo, which is often CC BY, so the app credits
+     * it right under the photo (never over it), in the short form Match uses.
+     */
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `the hero photo is credited under the photo`() {
+        val photo =
+            SpeciesImage(
+                role = "hero",
+                path = "Q25403/hero.webp",
+                width = 2400,
+                height = 1600,
+                license = "CC BY 4.0",
+                author = "Valuer Hardy",
+                sourceUrl = "https://commons.wikimedia.org/wiki/File:Reed.jpg",
+                commonsFileName = "Reed.jpg",
+            )
+        showHero(bird(heroImage = photo))
+        val credit = compose.onNodeWithTag(DAILY_BIRD_HERO_CREDIT_TAG, useUnmergedTree = true)
+        credit.assertTextContains("Foto: Valuer Hardy", substring = true)
+        // The licence name is kept on one line with no-break spaces.
+        credit.assertTextContains("CC\u00A0BY\u00A04.0", substring = true)
+        val hero = compose.onNodeWithContentDescription("Dagens fågel", substring = true).getBoundsInRoot()
+        assertTrue(credit.getBoundsInRoot().top >= hero.bottom, "the credit starts below the photo")
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `a hero without a photo has no credit`() {
+        showHero(bird())
+        compose.onNodeWithTag(DAILY_BIRD_HERO_CREDIT_TAG, useUnmergedTree = true).assertDoesNotExist()
     }
 
     @Test
     @Config(qualifiers = "+en")
     fun `the hero kicker carries todays date in english`() {
         showHero(bird())
-        compose.onNodeWithText("BIRD OF THE DAY · TUE 6 OCT", useUnmergedTree = true).assertExists()
+        compose.onNodeWithText("BIRD OF THE DAY · TUE 6\u00A0OCT", useUnmergedTree = true).assertExists()
     }
 
     @Test

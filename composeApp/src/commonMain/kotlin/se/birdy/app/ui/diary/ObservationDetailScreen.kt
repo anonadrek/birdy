@@ -21,7 +21,6 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -89,16 +88,16 @@ import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.compose.resources.stringResource
-import se.birdy.app.ui.components.BackButton
+import se.birdy.app.ui.components.BackTopBar
 import se.birdy.app.ui.components.JournalDialog
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalLoading
+import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.components.PlateFrame
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaBorder
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.TextOnCreme
-import se.birdy.app.ui.theme.paperBackground
 import se.birdy.app.ui.theme.rememberCaveat
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -128,8 +127,21 @@ fun ObservationDetailScreen(
             }
         }
     }
-    Scaffold(snackbarHost = { SnackbarHost(snackbarHost) }) { padding ->
-        Box(modifier = Modifier.fillMaxSize().padding(padding).paperBackground()) {
+    // One paper background behind the top bar and the content (JournalScaffold), so the paper's
+    // gradient has no seam under the bar.
+    JournalScaffold(
+        snackbarHost = { SnackbarHost(snackbarHost) },
+        // Fixed above the content in every state (loading, not found, error included), at the
+        // same height as on the other pushed screens (release 1.3.0 Task 7b: it used to scroll
+        // away with the find, 24dp down).
+        topBar = {
+            BackTopBar(
+                onBack = onBack,
+                contentDescription = stringResource(Res.string.diary_detail_back),
+            )
+        },
+    ) { padding ->
+        Box(modifier = Modifier.fillMaxSize().padding(padding)) {
             when (val s = state) {
                 ObservationDetailUiState.Loading -> JournalLoading()
                 ObservationDetailUiState.NotFound ->
@@ -146,17 +158,19 @@ fun ObservationDetailScreen(
                         color = TextOnCreme,
                     )
                 is ObservationDetailUiState.Loaded ->
-                    LoadedView(s, viewModel, onBack, onSpeciesClick)
+                    LoadedView(s, viewModel, onSpeciesClick)
             }
         }
     }
 }
 
+// Already long before release 1.3.0 Task 7b, when it was baselined under a signature with onBack
+// (for the back button that now sits in the screen's fixed top bar).
+@Suppress("LongMethod")
 @Composable
 private fun LoadedView(
     state: ObservationDetailUiState.Loaded,
     viewModel: ObservationDetailViewModel,
-    onBack: () -> Unit,
     onSpeciesClick: (String) -> Unit,
 ) {
     val savedNote = state.observation.note
@@ -175,25 +189,12 @@ private fun LoadedView(
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         item {
-            Box {
-                JournalIntro(
-                    label = stringResource(Res.string.observation_journal_label, plateLabel),
-                    headline = stringResource(Res.string.profile_journal_headline, speciesName),
-                    sub = capturedSub,
-                    headlineFontSize = 32.sp,
-                    // Lämna plats överst åt den fyllda bakåtbrickan (overlay) så den
-                    // inte täcker eyebrow/rubrik. Top-only — inte topPadding (symmetrisk).
-                    modifier = Modifier.padding(top = 48.dp),
-                )
-                BackButton(
-                    onClick = onBack,
-                    contentDescription = stringResource(Res.string.diary_detail_back),
-                    modifier =
-                        Modifier
-                            .align(Alignment.TopStart)
-                            .padding(top = 24.dp, start = 12.dp),
-                )
-            }
+            JournalIntro(
+                label = stringResource(Res.string.observation_journal_label, plateLabel),
+                headline = stringResource(Res.string.profile_journal_headline, speciesName),
+                sub = capturedSub,
+                headlineFontSize = 32.sp,
+            )
         }
 
         item {

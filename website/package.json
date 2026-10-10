@@ -37,6 +37,7 @@
     "assets:og": "node tools/generate-og.mjs",
     "assets:coverage": "node tools/render-coverage-fallback.mjs",
     "assets:counties": "node scripts/build-sweden-counties.mjs",
+    "assets:store13": "node tools/store-assets/1.3/render.mjs",
     "assets:store": "npm run assets:clean && npm run assets:render && npm run assets:render:sv && npm run assets:verify && npm run assets:verify:sv"
   },
   "dependencies": {

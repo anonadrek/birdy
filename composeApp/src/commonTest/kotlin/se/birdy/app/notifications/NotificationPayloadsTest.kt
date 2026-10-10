@@ -5,9 +5,13 @@ import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
+import se.birdy.app.i18n.AppStrings
 import se.birdy.app.testing.FakeBadgeRepository
+import se.birdy.app.testing.FakeDailyBirdHistoryRepository
 import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.app.testing.FakeUserPreferences
+import se.birdy.content.Locale
+import se.birdy.data.dailybird.DailyBirdHistoryRepository
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.dailybird.DailyBird
 import se.birdy.domain.observation.Observation
@@ -36,6 +40,7 @@ class NotificationPayloadsTest {
         recapEnabled: Boolean = false,
         trophyEnabled: Boolean = false,
         selector: (suspend (LocalDate) -> DailyBird?)? = null,
+        history: DailyBirdHistoryRepository? = null,
         observationRepo: ObservationRepository = FakeObservationRepository(),
         badgeCatalog: BadgeCatalog = BadgeCatalog(version = 1, badges = emptyList()),
     ): NotificationPayloads {
@@ -51,9 +56,11 @@ class NotificationPayloadsTest {
             speciesByQid = { emptyMap() },
             speciesNameFor = { null },
             selectDailyBird = selector,
+            dailyBirdHistory = history,
             dailyBirdMatchCount = { 0 },
             timeZone = TimeZone.of("Europe/Stockholm"),
             clock = Clock.System,
+            strings = AppStrings(Locale.SV),
         )
     }
 
@@ -82,6 +89,19 @@ class NotificationPayloadsTest {
 
     @Test
     fun dailyBird_null_selector_returns_null() = runTest { assertNull(build(dailyEnabled = true, selector = null).dailyBird(date)) }
+
+    /** The pref gate comes before the history too: a disabled notification reads nothing. */
+    @Test
+    fun dailyBird_disabled_pref_reads_no_history() =
+        runTest {
+            val history = FakeDailyBirdHistoryRepository().apply { failWith = IllegalStateException("read") }
+            assertNull(build(dailyEnabled = false, history = history).dailyBird(date))
+        }
+
+    /** Nothing recorded and no selector: no bird, so no notification. */
+    @Test
+    fun dailyBird_empty_history_and_null_selector_returns_null() =
+        runTest { assertNull(build(dailyEnabled = true, history = FakeDailyBirdHistoryRepository()).dailyBird(date)) }
 
     /**
      * Mutation-killing for the gate at `weeklyRecap()`'s first line: an empty

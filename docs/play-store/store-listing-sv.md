@@ -1,7 +1,7 @@
 # Birdy — Play Store-listning (svenska)
 
 ## App-titel
-Birdy — Fågel-ID & Guide
+Birdy: Fågel-ID & Guide
 
 ## Kort beskrivning (max 80 tecken)
 Identifiera fåglar på foto & ljud. Offline fågelguide & privat fågeldagbok.
@@ -38,11 +38,11 @@ spårning, ingen reklam. Dagboken är din.
 familjer, en livslista upp till 500 arter, till och med ett
 rödlistat-spår. Något att gå hem med efter en lyckad dag i skogen.
 
-**PREMIUM (valfritt)**
+**PREMIUM (gratis tills vidare)**
 En privat karta över varje plats där du sett en fågel, PDF-export av
-fältdagboken, säsongsstatistik och 7 extra prestationsmärken. Engångsköp
-eller abonnemang via Google Play Billing. Själva kärnan, artbestämning
-på foto och fågelsång, är alltid gratis.
+fältdagboken, säsongsstatistik och 7 extra prestationsmärken. Premium
+är gratis för alla tills vidare. Själva kärnan, artbestämning på foto
+och fågelsång, är alltid gratis.
 
 **FUNGERAR OFFLINE**
 Fågel-ID-modellen, fågelguiden och dagboken finns alla på enheten.
@@ -59,12 +59,12 @@ Birdy är skapad av en solo-utvecklare i Sverige för fältornitologer,
 nybörjare som vill lära sig känna igen fåglar, och alla som tycker en
 sångfågel i ett träd förtjänar en stund av uppmärksamhet.
 
-## Nyheter (v1.3.0)
+## Nyheter (v1.3.1)
 - Nytt utseende med lugnare färger, större foton och renare sidor.
-- Premium kan nu köpas i Google Play, per år eller en gång för alltid: Fynd-kartan, fältdagboken som PDF, säsongsstatistik och 7 extra märken.
-- Installerade du Birdy före den här uppdateringen? Då behåller du Premium gratis så länge du har appen.
+- Byt språk i introt eller i Inställningar, nu på alla Android-versioner.
 - Ljud-ID lyssnar i upp till 60 sekunder, slutar när det är säkert och visar vad det hör.
-- Språkval i introt, stöd för Android 16 och foto-ID fungerar nu redan första gången.
+- Kamerafixar: foto-ID fungerar redan första gången, skannade foton sparas rättvända och kameran stängs av när du lämnar skannern.
+- Stöd för Android 16. Premium är fortsatt gratis för alla tills vidare.
 
 ## Nyckelord (för ASO-text — internt; Google Play har inget nyckelordsfält, allt indexeras från titel + kort + lång beskrivning)
 artbestämning fåglar, fågelsång igenkänning, fågelläten app, känna igen

@@ -39,6 +39,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -66,6 +67,8 @@ import se.birdy.app.ui.components.GearButton
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.hairlineBottom
+import se.birdy.app.ui.credits.PhotoCreditForm
+import se.birdy.app.ui.credits.PhotoCreditLine
 import se.birdy.app.ui.dailybird.DailyBirdHeroActions
 import se.birdy.app.ui.dailybird.DailyBirdHeroChallengeRow
 import se.birdy.app.ui.dailybird.dailyBirdDateA11yLabel
@@ -134,6 +137,19 @@ fun ListenLauncherScreen(
                     onListen = viewModel::onAudioCardTap,
                     topBar = gearOnHero,
                 )
+                // The hero photo's credit (legal review 7i): right under the photo on the paper,
+                // never over the bird. The text over the photo leaves no room for it there.
+                bird.heroImage?.let { photo ->
+                    PhotoCreditLine(
+                        image = photo,
+                        form = PhotoCreditForm.Compact,
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(start = 22.dp, end = 22.dp, top = 8.dp)
+                                .testTag(DAILY_BIRD_HERO_CREDIT_TAG),
+                    )
+                }
             } else {
                 Box(Modifier.fillMaxWidth().statusBarsPadding().padding(top = 8.dp), content = gearOnPaper)
             }
@@ -232,6 +248,9 @@ private fun DailyBirdHero(
         },
     )
 }
+
+/** The Dagens fågel hero photo's credit line, for tests. */
+internal const val DAILY_BIRD_HERO_CREDIT_TAG = "daily_bird_hero_credit"
 
 private val HeroMinHeight = 380.dp
 private val HeroGrowthPerFontScale = 230.dp

@@ -1,10 +1,12 @@
 package se.birdy.app.ui.scaffold
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -22,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination
@@ -47,6 +50,7 @@ import se.birdy.app.premium.EntryFlowDecider
 import se.birdy.app.premium.PremiumOverrideResolver
 import se.birdy.app.premium.awaitBillingAnswer
 import se.birdy.app.ui.audio.AudioScanScreenHost
+import se.birdy.app.ui.components.BackTopBar
 import se.birdy.app.ui.components.CaveatToast
 import se.birdy.app.ui.components.LocalStatusBarBackdrop
 import se.birdy.app.ui.components.PlatformNavigationBarIcons
@@ -61,6 +65,8 @@ import se.birdy.app.ui.premium.PremiumScreen
 import se.birdy.app.ui.premium.PremiumThankYouScreen
 import se.birdy.app.ui.profile.SpeciesProfileScreen
 import se.birdy.app.ui.scan.ScanScreenHost
+import se.birdy.app.ui.settings.credits.rememberUrlOpener
+import se.birdy.app.ui.settings.openExternalUrl
 import se.birdy.content.SpeciesId
 import se.birdy.domain.premium.PremiumState
 
@@ -76,6 +82,10 @@ fun AppScaffold(
     graph: AppGraph,
     // Tests pass their own controller to open a route directly (Plan 3 Task 1); the app uses the default.
     navController: NavHostController = rememberNavController(),
+    // Every link in the app's texts (the photo and text credits, About) opens through this: the
+    // browser via openExternalUrl, which catches and logs a missing or refusing handler. Tests
+    // record the urls instead.
+    openUrl: (String) -> Unit = ::openExternalUrl,
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
@@ -172,15 +182,18 @@ fun AppScaffold(
     }
     graph.deepLinkFlow?.let { flow ->
         LaunchedEffect(navController) {
+            // The link that started the app is replayed as soon as this collects, which on a cold
+            // start can be before the NavHost (inside the Scaffold's content) has set its graph, and
+            // navigate() would throw. Wait for its first entry, as the paywall check above does.
+            navController.currentBackStackEntryFlow.first()
             flow.collect { uriString ->
-                val parts = uriString.removePrefix("birdy://").split("/", limit = 2)
+                // The query (birdy://recap?week=2026-W41) is not part of the host.
+                val parts = uriString.removePrefix("birdy://").substringBefore("?").split("/", limit = 2)
                 val host = parts.getOrNull(0) ?: return@collect
-                val pathSegment = parts.getOrNull(1)?.substringBefore("?")?.takeIf { it.isNotBlank() }
+                val pathSegment = parts.getOrNull(1)?.takeIf { it.isNotBlank() }
                 when (host) {
                     // Release 1.3.0 Task 7d: the daily-bird notification's "Lyssna efter den".
-                    "audio" -> {
-                        navController.navigate(AppRoute.AudioScan) { launchSingleTop = true }
-                    }
+                    "audio" -> navController.navigateInIdentify(AppRoute.AudioScan)
                     "species" -> {
                         val qid = pathSegment ?: return@collect
                         navController.navigate(AppRoute.SpeciesProfile(qid)) {
@@ -191,7 +204,11 @@ fun AppScaffold(
                         navController.popBackStack(AppRoute.Listen, inclusive = false)
                     }
                     "recap" -> {
-                        navController.navigate(AppRoute.WeeklyRecap) { launchSingleTop = true }
+                        // The week the Sunday notification described, also when tapped after midnight.
+                        val week =
+                            se.birdy.app.notifications.BirdyDeepLinks
+                                .recapWeek(uriString)
+                        navController.navigate(AppRoute.WeeklyRecap(week = week)) { launchSingleTop = true }
                     }
                 }
             }
@@ -262,7 +279,10 @@ fun AppScaffold(
         // band under the dark Premium screens (Plan 2 final review).
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
     ) { padding ->
-        CompositionLocalProvider(LocalStatusBarBackdrop provides statusBarBackdrop) {
+        CompositionLocalProvider(
+            LocalStatusBarBackdrop provides statusBarBackdrop,
+            LocalUriHandler provides rememberUrlOpener(openUrl),
+        ) {
             NavHost(
                 navController = navController,
                 startDestination = AppRoute.Listen,
@@ -335,7 +355,10 @@ private fun NavGraphBuilder.appDestinations(
             },
         )
     }
-    composable<AppRoute.Scan> {
+    // Release 1.3.0 Task 7b: the back arrows on Scan, Photo-ID and audio ID (AudioScan) take one
+    // step back, like the system gesture (they used to jump straight to the Identify tab, so
+    // Scan → Photo-ID → arrow skipped Scan while the gesture went back to it).
+    composable<AppRoute.Scan> { entry ->
         BelowStatusBar {
             ScanScreenHost(
                 graph = graph,
@@ -343,13 +366,11 @@ private fun NavGraphBuilder.appDestinations(
                 onFrozen = { sourceJson, capturedAtMs ->
                     navController.navigate(AppRoute.MatchResult(sourceJson, capturedAtMs))
                 },
-                onBack = {
-                    navController.popBackStack(AppRoute.Listen, inclusive = false)
-                },
+                onBack = { navController.popIfTop(entry) },
             )
         }
     }
-    composable<AppRoute.PhotoAnalyze> {
+    composable<AppRoute.PhotoAnalyze> { entry ->
         BelowStatusBar {
             se.birdy.app.ui.photoanalyze.PhotoAnalyzeHost(
                 graph = graph,
@@ -358,9 +379,7 @@ private fun NavGraphBuilder.appDestinations(
                         popUpTo(AppRoute.Scan) { inclusive = false }
                     }
                 },
-                onBack = {
-                    navController.popBackStack(AppRoute.Listen, inclusive = false)
-                },
+                onBack = { navController.popIfTop(entry) },
             )
         }
     }
@@ -445,7 +464,7 @@ private fun NavGraphBuilder.appDestinations(
                 showPremiumTeaser = showPremiumTeaser,
                 livePreviewState = livePreviewState,
                 onSeasonStatsClick = { navController.navigate(AppRoute.SeasonStats) },
-                onRecapClick = { navController.navigate(AppRoute.WeeklyRecap) { launchSingleTop = true } },
+                onRecapClick = { navController.navigate(AppRoute.WeeklyRecap()) { launchSingleTop = true } },
                 dailyBird = dailyBird,
                 onDailyBirdClick = { id ->
                     navController.navigate(AppRoute.SpeciesProfile(id)) { launchSingleTop = true }
@@ -460,13 +479,7 @@ private fun NavGraphBuilder.appDestinations(
                 se.birdy.app.ui.map.MapScreen(
                     viewModel = mapVm,
                     onPinClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
-                    onIdentifyClick = {
-                        navController.navigate(AppRoute.Listen) {
-                            popUpTo(navController.graph.startDestinationId) { saveState = true }
-                            launchSingleTop = true
-                            restoreState = true
-                        }
-                    },
+                    onIdentifyClick = { navController.goToIdentify() },
                 )
             } else {
                 se.birdy.app.ui.map.MapPremiumTeaser(
@@ -520,9 +533,39 @@ private fun NavGraphBuilder.appDestinations(
     }
     composable<AppRoute.About> { entry ->
         BelowStatusBar {
-            se.birdy.app.ui.settings.AboutScreen(
-                onBack = { navController.popIfTop(entry) },
+            se.birdy.app.ui.settings.AboutRoute(
+                repository = graph.repository,
+                locale = graph.defaultLocale,
                 version = graph.versionName,
+                onBack = { navController.popIfTop(entry) },
+                onOpenPhotoCredits = { navController.navigate(AppRoute.PhotoCredits) { launchSingleTop = true } },
+                onOpenLicenses = { navController.navigate(AppRoute.OpenSourceLicenses) { launchSingleTop = true } },
+            )
+        }
+    }
+    composable<AppRoute.PhotoCredits> { entry ->
+        BelowStatusBar {
+            se.birdy.app.ui.settings.credits.PhotoCreditsRoute(
+                repository = graph.repository,
+                locale = graph.defaultLocale,
+                onBack = { navController.popIfTop(entry) },
+            )
+        }
+    }
+    composable<AppRoute.OpenSourceLicenses> { entry ->
+        BelowStatusBar {
+            se.birdy.app.ui.settings.credits.OpenSourceLicensesRoute(
+                onBack = { navController.popIfTop(entry) },
+                onOpenEntry = { id -> navController.navigate(AppRoute.LicenseText(id)) { launchSingleTop = true } },
+            )
+        }
+    }
+    composable<AppRoute.LicenseText> { entry ->
+        val route = entry.toRoute<AppRoute.LicenseText>()
+        BelowStatusBar {
+            se.birdy.app.ui.settings.credits.LicenseTextRoute(
+                entryId = route.entryId,
+                onBack = { navController.popIfTop(entry) },
             )
         }
     }
@@ -572,12 +615,16 @@ private fun NavGraphBuilder.appDestinations(
         }
     }
     graph.benchmarkScreen?.let { benchmarkContent ->
-        composable<AppRoute.DebugBenchmark> { BelowStatusBar { benchmarkContent() } }
+        composable<AppRoute.DebugBenchmark> { entry ->
+            BelowStatusBar { DebugScreen(onBack = { navController.popIfTop(entry) }, content = benchmarkContent) }
+        }
     }
     graph.diagnosticsScreen?.let { diagnosticsContent ->
-        composable<AppRoute.DebugDiagnostics> { BelowStatusBar { diagnosticsContent() } }
+        composable<AppRoute.DebugDiagnostics> { entry ->
+            BelowStatusBar { DebugScreen(onBack = { navController.popIfTop(entry) }, content = diagnosticsContent) }
+        }
     }
-    composable<AppRoute.AudioScan> {
+    composable<AppRoute.AudioScan> { entry ->
         BelowStatusBar {
             AudioScanScreenHost(
                 graph = graph,
@@ -586,9 +633,7 @@ private fun NavGraphBuilder.appDestinations(
                         popUpTo(AppRoute.Listen) { inclusive = false }
                     }
                 },
-                onBack = {
-                    navController.popBackStack(AppRoute.Listen, inclusive = false)
-                },
+                onBack = { navController.popIfTop(entry) },
             )
         }
     }
@@ -605,14 +650,16 @@ private fun NavGraphBuilder.appDestinations(
             )
         }
     }
-    composable<AppRoute.WeeklyRecap> {
+    composable<AppRoute.WeeklyRecap> { entry ->
+        val week = entry.toRoute<AppRoute.WeeklyRecap>().week
         BelowStatusBar {
             se.birdy.app.ui.recap.RecapScreen(
-                viewModel = remember(graph) { graph.weeklyRecapViewModel() },
-                onOpenCamera = {
-                    navController.navigate(AppRoute.Scan) { launchSingleTop = true }
-                },
+                // Keyed on the week: a notification for another week replaces the open recap's route.
+                viewModel = remember(graph, week) { graph.weeklyRecapViewModel(week) },
+                // On Identifiera's stack, not the recap's tab's (Task 7b review).
+                onOpenCamera = { navController.navigateInIdentify(AppRoute.Scan) },
                 onObservationClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
+                onBack = { navController.popIfTop(entry) },
             )
         }
     }
@@ -624,6 +671,18 @@ private fun NavDestination.isHeroRoute(): Boolean =
         hasRoute(AppRoute.MatchResult::class) ||
         hasRoute(AppRoute.SpeciesProfile::class) ||
         hasRoute(AppRoute.Premium::class)
+
+/** The debug-build screens (benchmark, diagnostics) under the same fixed way back as the others (Task 7b). */
+@Composable
+private fun DebugScreen(
+    onBack: () -> Unit,
+    content: @Composable () -> Unit,
+) {
+    Column(Modifier.fillMaxSize()) {
+        BackTopBar(onBack = onBack)
+        Box(Modifier.fillMaxWidth().weight(1f)) { content() }
+    }
+}
 
 /** Non-hero screens start below the status bar, each on its own, so nothing shifts during a transition. */
 @Composable

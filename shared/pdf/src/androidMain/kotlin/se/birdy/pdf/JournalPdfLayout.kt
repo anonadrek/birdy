@@ -8,10 +8,11 @@ import kotlinx.datetime.TimeZone
 
 /**
  * Layout helpers for the Field Journal PDF. A4 portrait, 595×842pt. All drawing is plain
- * [Canvas]/[Paint] over [PdfDocument]. Geometry, palette, type sizes and strings all come from
- * [JournalPdfMetrics] (commonMain) — this object is pure indirection over those values plus the
- * Android-only [Paint]/[Canvas] drawing calls, so the iOS renderer (CoreGraphics) can reproduce
- * the same layout from the same source of truth without duplicating a single literal.
+ * [Canvas]/[Paint] over [PdfDocument]. Geometry, palette and type sizes come from
+ * [JournalPdfMetrics] (commonMain) and every piece of text from [JournalPdfInput.strings] (the
+ * per-locale [JournalPdfStrings] set) — this object is pure indirection over those values plus
+ * the Android-only [Paint]/[Canvas] drawing calls, so the iOS renderer (CoreGraphics) can
+ * reproduce the same layout from the same source of truth without duplicating a single literal.
  *
  * Page composition (in order):
  *  1. Title page
@@ -42,10 +43,15 @@ internal object JournalPdfLayout {
 
         val titlePaint =
             dmSerifItalicPaint(textSize = JournalPdfMetrics.TITLE_SIZE, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)
-        canvas.drawText(JournalPdfMetrics.TITLE, JournalPdfMetrics.PAGE_W / 2f, JournalPdfMetrics.MARGIN_TOP + 150f, titlePaint)
+        canvas.drawText(
+            input.strings.title,
+            JournalPdfMetrics.PAGE_W / 2f,
+            JournalPdfMetrics.MARGIN_TOP + 150f,
+            titlePaint,
+        )
 
         val subPaint = caveatPaint(textSize = JournalPdfMetrics.TITLE_SUB, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)
-        val byline = JournalPdfMetrics.fmt(JournalPdfMetrics.BY_FMT, input.displayName)
+        val byline = JournalPdfMetrics.fmt(input.strings.byFmt, input.displayName)
         canvas.drawText(byline, JournalPdfMetrics.PAGE_W / 2f, JournalPdfMetrics.MARGIN_TOP + 188f, subPaint)
 
         val yearPaint =
@@ -56,7 +62,7 @@ internal object JournalPdfLayout {
 
         val teaserPaint = caveatPaint(textSize = JournalPdfMetrics.TITLE_TEASER, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)
         val teaserText =
-            JournalPdfMetrics.teaser(
+            input.strings.teaser(
                 speciesSeen = input.stats.speciesSeenThisYear,
                 finds = input.stats.totalObservationsThisYear,
             )
@@ -78,8 +84,8 @@ internal object JournalPdfLayout {
         val year = JournalPdfMetrics.yearOf(input.generatedAtMs, TimeZone.currentSystemDefault())
         drawSectionHeader(
             canvas,
-            eyebrow = JournalPdfMetrics.STATS_EYEBROW,
-            title = JournalPdfMetrics.fmt(JournalPdfMetrics.STATS_TITLE_FMT, "$year"),
+            eyebrow = input.strings.statsEyebrow,
+            title = JournalPdfMetrics.fmt(input.strings.statsTitleFmt, "$year"),
         )
 
         val bigNumberPaint =
@@ -90,52 +96,63 @@ internal object JournalPdfLayout {
 
         val statsY = JournalPdfMetrics.MARGIN_TOP + 200f
         canvas.drawText("${input.stats.speciesSeenThisYear}", JournalPdfMetrics.MARGIN_X + 10f, statsY, bigNumberPaint)
-        canvas.drawText(JournalPdfMetrics.STAT_SPECIES, JournalPdfMetrics.MARGIN_X + 10f, statsY + 22f, captionPaint)
+        canvas.drawText(input.strings.statSpecies, JournalPdfMetrics.MARGIN_X + 10f, statsY + 22f, captionPaint)
         canvas.drawText("${input.stats.totalObservationsThisYear}", JournalPdfMetrics.MARGIN_X + colW + 10f, statsY, bigNumberPaint)
-        canvas.drawText(JournalPdfMetrics.STAT_TOTAL, JournalPdfMetrics.MARGIN_X + colW + 10f, statsY + 22f, captionPaint)
+        canvas.drawText(input.strings.statTotal, JournalPdfMetrics.MARGIN_X + colW + 10f, statsY + 22f, captionPaint)
 
         // Top species bar chart (max 5)
-        if (input.stats.topSpecies.isNotEmpty()) {
-            val chartTop = statsY + 80f
-            val topsHeaderPaint =
-                dmSerifItalicPaint(textSize = JournalPdfMetrics.TOPS_HEADER, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)
-            canvas.drawText(JournalPdfMetrics.TOPS, JournalPdfMetrics.MARGIN_X, chartTop, topsHeaderPaint)
-
-            val barAreaX = JournalPdfMetrics.MARGIN_X + 140f
-            val barAreaW = JournalPdfMetrics.PAGE_W - barAreaX - JournalPdfMetrics.MARGIN_X
-            val rowH = 28f
-            val labelPaint =
-                caveatPaint(textSize = JournalPdfMetrics.BAR_LABEL, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)
-            val valuePaint =
-                caveatPaint(textSize = JournalPdfMetrics.BAR_VALUE, color = JournalPdfMetrics.COLOR_COPPER.toInt(), center = false)
-            val barPaint =
-                Paint().apply {
-                    color = JournalPdfMetrics.COLOR_COPPER.toInt()
-                    style = Paint.Style.FILL
-                    isAntiAlias = true
-                }
-            val barBgPaint =
-                Paint().apply {
-                    color = JournalPdfMetrics.COLOR_PAPER_EDGE.toInt()
-                    style = Paint.Style.FILL
-                    isAntiAlias = true
-                }
-            val maxCount = (input.stats.topSpecies.maxOfOrNull { it.second } ?: 1).coerceAtLeast(1)
-
-            input.stats.topSpecies.take(5).forEachIndexed { i, (name, count) ->
-                val y = chartTop + 24f + i * rowH
-                canvas.drawText(name, JournalPdfMetrics.MARGIN_X, y + 14f, labelPaint)
-                val barY = y + 6f
-                val barH = 14f
-                canvas.drawRect(barAreaX, barY, barAreaX + barAreaW, barY + barH, barBgPaint)
-                val filled = barAreaW * (count.toFloat() / maxCount)
-                canvas.drawRect(barAreaX, barY, barAreaX + filled, barY + barH, barPaint)
-                canvas.drawText("$count", barAreaX + filled + 6f, barY + 12f, valuePaint)
-            }
-        }
+        if (input.stats.topSpecies.isNotEmpty()) drawTopSpecies(canvas, input, chartTop = statsY + 80f)
 
         drawPageFooter(canvas, pageNum)
         doc.finishPage(page)
+    }
+
+    /**
+     * The stats page's top-species chart. A label longer than its column (the English "Great Spotted Woodpecker") is
+     * shrunk, then cut, by [fitLabel] so it never runs into its bar (2026-10-08).
+     */
+    private fun drawTopSpecies(
+        canvas: Canvas,
+        input: JournalPdfInput,
+        chartTop: Float,
+    ) {
+        val topsHeaderPaint =
+            dmSerifItalicPaint(textSize = JournalPdfMetrics.TOPS_HEADER, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)
+        canvas.drawText(input.strings.tops, JournalPdfMetrics.MARGIN_X, chartTop, topsHeaderPaint)
+
+        val barAreaX = JournalPdfMetrics.MARGIN_X + JournalPdfMetrics.TOPS_BAR_OFFSET
+        val barAreaW = JournalPdfMetrics.PAGE_W - barAreaX - JournalPdfMetrics.MARGIN_X
+        val labelMaxW = JournalPdfMetrics.TOPS_BAR_OFFSET - JournalPdfMetrics.TOPS_LABEL_GAP
+        val rowH = 28f
+        val labelPaint =
+            caveatPaint(textSize = JournalPdfMetrics.BAR_LABEL, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)
+        val valuePaint =
+            caveatPaint(textSize = JournalPdfMetrics.BAR_VALUE, color = JournalPdfMetrics.COLOR_COPPER.toInt(), center = false)
+        val barPaint =
+            Paint().apply {
+                color = JournalPdfMetrics.COLOR_COPPER.toInt()
+                style = Paint.Style.FILL
+                isAntiAlias = true
+            }
+        val barBgPaint =
+            Paint().apply {
+                color = JournalPdfMetrics.COLOR_PAPER_EDGE.toInt()
+                style = Paint.Style.FILL
+                isAntiAlias = true
+            }
+        val maxCount = (input.stats.topSpecies.maxOfOrNull { it.second } ?: 1).coerceAtLeast(1)
+
+        input.stats.topSpecies.take(5).forEachIndexed { i, (name, count) ->
+            val y = chartTop + 24f + i * rowH
+            val label = fitLabel(name, labelMaxW, JournalPdfMetrics.LABEL_MIN_SCALE) { labelPaint.measureText(it) }
+            canvas.drawText(label.text, JournalPdfMetrics.MARGIN_X, y + 14f, scaled(labelPaint, label.scale))
+            val barY = y + 6f
+            val barH = 14f
+            canvas.drawRect(barAreaX, barY, barAreaX + barAreaW, barY + barH, barBgPaint)
+            val filled = barAreaW * (count.toFloat() / maxCount)
+            canvas.drawRect(barAreaX, barY, barAreaX + filled, barY + barH, barPaint)
+            canvas.drawText("$count", barAreaX + filled + 6f, barY + 12f, valuePaint)
+        }
     }
 
     fun drawSpeciesPage(
@@ -152,11 +169,11 @@ internal object JournalPdfLayout {
 
         val eyebrow =
             if (totalSpeciesPages > 1) {
-                JournalPdfMetrics.fmt(JournalPdfMetrics.SPECIES_EYEBROW_PAGED_FMT, "${pageIndex + 1}", "$totalSpeciesPages")
+                JournalPdfMetrics.fmt(input.strings.speciesEyebrowPagedFmt, "${pageIndex + 1}", "$totalSpeciesPages")
             } else {
-                JournalPdfMetrics.SPECIES_EYEBROW
+                input.strings.speciesEyebrow
             }
-        drawSectionHeader(canvas, eyebrow = eyebrow, title = JournalPdfMetrics.SPECIES_TITLE)
+        drawSectionHeader(canvas, eyebrow = eyebrow, title = input.strings.speciesTitle)
 
         val rowTop = JournalPdfMetrics.MARGIN_TOP + 170f
         val rowH = 24f
@@ -187,15 +204,22 @@ internal object JournalPdfLayout {
             val thumbRect = RectF(JournalPdfMetrics.MARGIN_X, y - 12f, JournalPdfMetrics.MARGIN_X + 18f, y + 6f)
             canvas.drawRect(thumbRect, thumbPaint)
 
-            canvas.drawText(row.nameLocalized, JournalPdfMetrics.MARGIN_X + 26f, y, namePaint)
+            // Release 1.3.1 part 8: a long name shrinks, then shortens, before the count column.
+            val textX = JournalPdfMetrics.MARGIN_X + JournalPdfMetrics.SPECIES_TEXT_INSET
+            val maxW = JournalPdfMetrics.SPECIES_TEXT_MAX_W
+            val name =
+                fitLabel(row.nameLocalized, maxW, JournalPdfMetrics.LABEL_MIN_SCALE) { namePaint.measureText(it) }
+            canvas.drawText(name.text, textX, y, scaled(namePaint, name.scale))
             if (row.scientificName.isNotEmpty()) {
-                canvas.drawText(row.scientificName, JournalPdfMetrics.MARGIN_X + 26f, y + 12f, sciPaint)
+                val sci =
+                    fitLabel(row.scientificName, maxW, JournalPdfMetrics.LABEL_MIN_SCALE) { sciPaint.measureText(it) }
+                canvas.drawText(sci.text, textX, y + 12f, scaled(sciPaint, sci.scale))
             }
 
-            val countText = JournalPdfMetrics.fmt(JournalPdfMetrics.COUNT_FMT, "${row.count}")
+            val countText = input.strings.findCount(row.count)
             val firstSeenDate = JournalPdfMetrics.formatDate(row.firstSeenMs, TimeZone.currentSystemDefault())
-            val firstSeenText = JournalPdfMetrics.fmt(JournalPdfMetrics.FIRST_FMT, firstSeenDate)
-            val rightX = JournalPdfMetrics.PAGE_W - JournalPdfMetrics.MARGIN_X - 120f
+            val firstSeenText = JournalPdfMetrics.fmt(input.strings.firstFmt, firstSeenDate)
+            val rightX = JournalPdfMetrics.PAGE_W - JournalPdfMetrics.MARGIN_X - JournalPdfMetrics.SPECIES_RIGHT_COLUMN
             canvas.drawText(countText, rightX, y, countPaint)
             canvas.drawText(firstSeenText, rightX, y + 12f, datePaint)
 
@@ -216,7 +240,7 @@ internal object JournalPdfLayout {
         val canvas = page.canvas
         paintPaperBg(canvas)
 
-        drawSectionHeader(canvas, eyebrow = JournalPdfMetrics.BADGES_EYEBROW, title = JournalPdfMetrics.BADGES_TITLE)
+        drawSectionHeader(canvas, eyebrow = input.strings.badgesEyebrow, title = input.strings.badgesTitle)
 
         val rowTop = JournalPdfMetrics.MARGIN_TOP + 180f
         val rowH = 48f
@@ -236,11 +260,22 @@ internal object JournalPdfLayout {
             val y = rowTop + i * rowH
             // Stamp circle
             canvas.drawCircle(JournalPdfMetrics.MARGIN_X + 16f, y + 6f, 14f, stampPaint)
-            canvas.drawText(badge.nameLocalized, JournalPdfMetrics.MARGIN_X + 44f, y, namePaint)
-            canvas.drawText(badge.descriptionLocalized, JournalPdfMetrics.MARGIN_X + 44f, y + 16f, descPaint)
+            // Release 1.3.1 part 8: name and description shrink, then shorten, before the date column.
+            val textX = JournalPdfMetrics.MARGIN_X + JournalPdfMetrics.BADGE_TEXT_INSET
+            val maxW = JournalPdfMetrics.BADGE_TEXT_MAX_W
+            val name =
+                fitLabel(badge.nameLocalized, maxW, JournalPdfMetrics.LABEL_MIN_SCALE) { namePaint.measureText(it) }
+            canvas.drawText(name.text, textX, y, scaled(namePaint, name.scale))
+            val desc =
+                fitLabel(
+                    badge.descriptionLocalized,
+                    maxW,
+                    JournalPdfMetrics.LABEL_MIN_SCALE,
+                ) { descPaint.measureText(it) }
+            canvas.drawText(desc.text, textX, y + 16f, scaled(descPaint, desc.scale))
             canvas.drawText(
                 JournalPdfMetrics.formatDate(badge.unlockedAt.toEpochMilliseconds(), TimeZone.currentSystemDefault()),
-                JournalPdfMetrics.PAGE_W - JournalPdfMetrics.MARGIN_X - 90f,
+                JournalPdfMetrics.PAGE_W - JournalPdfMetrics.MARGIN_X - JournalPdfMetrics.BADGE_DATE_COLUMN,
                 y + 4f,
                 datePaint,
             )
@@ -268,7 +303,7 @@ internal object JournalPdfLayout {
         val genPaint = caveatPaint(textSize = JournalPdfMetrics.COLOPHON_GEN, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)
         val generatedAt = JournalPdfMetrics.formatDateTime(input.generatedAtMs, TimeZone.currentSystemDefault())
         canvas.drawText(
-            JournalPdfMetrics.fmt(JournalPdfMetrics.GENERATED_FMT, generatedAt),
+            JournalPdfMetrics.fmt(input.strings.generatedFmt, generatedAt),
             JournalPdfMetrics.PAGE_W / 2f,
             JournalPdfMetrics.PAGE_H / 2f + 28f,
             genPaint,
@@ -376,4 +411,10 @@ internal object JournalPdfLayout {
             isAntiAlias = true
             if (center) textAlign = Paint.Align.CENTER
         }
+
+    /** [paint] at [scale] of its own size; the same object when nothing needs shrinking (the usual case). */
+    private fun scaled(
+        paint: Paint,
+        scale: Float,
+    ): Paint = if (scale == 1f) paint else Paint(paint).apply { textSize = paint.textSize * scale }
 }

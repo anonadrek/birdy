@@ -52,6 +52,16 @@ internal object JournalPdfLayoutIos {
         ns.drawAtPoint(CGPointMake(originX, baselineY - font.ascender), withAttributes = attrs)
     }
 
+    /** [text]s bredd i [font], samma mått som [drawText] använder för centrering. */
+    @Suppress("CAST_NEVER_SUCCEEDS")
+    private fun textWidth(
+        text: String,
+        font: UIFont,
+    ): Double {
+        val attrs: Map<Any?, *> = mapOf(NSFontAttributeName to font)
+        return (text as NSString).sizeWithAttributes(attrs).useContents { width }
+    }
+
     private fun fillRect(
         x: Double,
         y: Double,
@@ -152,7 +162,7 @@ internal object JournalPdfLayoutIos {
             centered = true,
         )
         drawText(
-            M.TITLE,
+            input.strings.title,
             M.PAGE_W / 2.0,
             M.MARGIN_TOP + 150.0,
             IosPdfFonts.dmSerifItalic(M.TITLE_SIZE.toDouble()),
@@ -160,7 +170,7 @@ internal object JournalPdfLayoutIos {
             centered = true,
         )
         drawText(
-            M.fmt(M.BY_FMT, input.displayName),
+            M.fmt(input.strings.byFmt, input.displayName),
             M.PAGE_W / 2.0,
             M.MARGIN_TOP + 188.0,
             IosPdfFonts.caveat(M.TITLE_SUB.toDouble()),
@@ -177,7 +187,7 @@ internal object JournalPdfLayoutIos {
         )
         drawOrnamentRule(M.MARGIN_TOP + 280.0)
         drawText(
-            M.teaser(
+            input.strings.teaser(
                 speciesSeen = input.stats.speciesSeenThisYear,
                 finds = input.stats.totalObservationsThisYear,
             ),
@@ -197,10 +207,12 @@ internal object JournalPdfLayoutIos {
     ) {
         paintPaperBg()
         val year = M.yearOf(input.generatedAtMs, zone)
-        drawSectionHeader(eyebrow = M.STATS_EYEBROW, title = M.fmt(M.STATS_TITLE_FMT, "$year"))
+        drawSectionHeader(eyebrow = input.strings.statsEyebrow, title = M.fmt(input.strings.statsTitleFmt, "$year"))
 
         val colW = (M.PAGE_W - 2 * M.MARGIN_X) / 2.0
         val statsY = M.MARGIN_TOP + 200.0
+        // Delad bildtextfont för båda talen, som Androids `captionPaint`.
+        val captionFont = IosPdfFonts.caveat(M.STAT_CAPTION.toDouble())
         drawText(
             "${input.stats.speciesSeenThisYear}",
             M.MARGIN_X + 10.0,
@@ -208,7 +220,7 @@ internal object JournalPdfLayoutIos {
             IosPdfFonts.dmSerifItalic(M.STAT_NUMBER.toDouble()),
             M.COLOR_COPPER,
         )
-        drawText(M.STAT_SPECIES, M.MARGIN_X + 10.0, statsY + 22.0, IosPdfFonts.caveat(M.STAT_CAPTION.toDouble()), M.COLOR_INK)
+        drawText(input.strings.statSpecies, M.MARGIN_X + 10.0, statsY + 22.0, captionFont, M.COLOR_INK)
         drawText(
             "${input.stats.totalObservationsThisYear}",
             M.MARGIN_X + colW + 10.0,
@@ -216,31 +228,41 @@ internal object JournalPdfLayoutIos {
             IosPdfFonts.dmSerifItalic(M.STAT_NUMBER.toDouble()),
             M.COLOR_COPPER,
         )
-        drawText(M.STAT_TOTAL, M.MARGIN_X + colW + 10.0, statsY + 22.0, IosPdfFonts.caveat(M.STAT_CAPTION.toDouble()), M.COLOR_INK)
+        drawText(input.strings.statTotal, M.MARGIN_X + colW + 10.0, statsY + 22.0, captionFont, M.COLOR_INK)
 
         // Top species bar chart (max 5)
-        if (input.stats.topSpecies.isNotEmpty()) {
-            val chartTop = statsY + 80.0
-            drawText(M.TOPS, M.MARGIN_X.toDouble(), chartTop, IosPdfFonts.dmSerifItalic(M.TOPS_HEADER.toDouble()), M.COLOR_INK)
-
-            val barAreaX = M.MARGIN_X + 140.0
-            val barAreaW = M.PAGE_W - barAreaX - M.MARGIN_X
-            val rowH = 28.0
-            val maxCount = (input.stats.topSpecies.maxOfOrNull { it.second } ?: 1).coerceAtLeast(1)
-
-            input.stats.topSpecies.take(5).forEachIndexed { i, (name, count) ->
-                val y = chartTop + 24.0 + i * rowH
-                drawText(name, M.MARGIN_X.toDouble(), y + 14.0, IosPdfFonts.caveat(M.BAR_LABEL.toDouble()), M.COLOR_INK)
-                val barY = y + 6.0
-                val barH = 14.0
-                fillRect(barAreaX, barY, barAreaW, barH, M.COLOR_PAPER_EDGE)
-                val filled = barAreaW * (count.toDouble() / maxCount)
-                fillRect(barAreaX, barY, filled, barH, M.COLOR_COPPER)
-                drawText("$count", barAreaX + filled + 6.0, barY + 12.0, IosPdfFonts.caveat(M.BAR_VALUE.toDouble()), M.COLOR_COPPER)
-            }
-        }
+        if (input.stats.topSpecies.isNotEmpty()) drawTopSpecies(input, chartTop = statsY + 80.0)
 
         drawPageFooter(pageNum)
+    }
+
+    /** Androids drawTopSpecies rad för rad: en för lång etikett krymps och kortas av [fitLabel] (2026-10-08). */
+    private fun drawTopSpecies(
+        input: JournalPdfInput,
+        chartTop: Double,
+    ) {
+        val topsFont = IosPdfFonts.dmSerifItalic(M.TOPS_HEADER.toDouble())
+        drawText(input.strings.tops, M.MARGIN_X.toDouble(), chartTop, topsFont, M.COLOR_INK)
+
+        val barAreaX = M.MARGIN_X + M.TOPS_BAR_OFFSET.toDouble()
+        val barAreaW = M.PAGE_W - barAreaX - M.MARGIN_X
+        val labelMaxW = M.TOPS_BAR_OFFSET - M.TOPS_LABEL_GAP
+        val rowH = 28.0
+        val labelFont = IosPdfFonts.caveat(M.BAR_LABEL.toDouble())
+        val maxCount = (input.stats.topSpecies.maxOfOrNull { it.second } ?: 1).coerceAtLeast(1)
+
+        input.stats.topSpecies.take(5).forEachIndexed { i, (name, count) ->
+            val y = chartTop + 24.0 + i * rowH
+            val label = fitLabel(name, labelMaxW, M.LABEL_MIN_SCALE) { textWidth(it, labelFont).toFloat() }
+            val font = if (label.scale == 1f) labelFont else IosPdfFonts.caveat(M.BAR_LABEL.toDouble() * label.scale)
+            drawText(label.text, M.MARGIN_X.toDouble(), y + 14.0, font, M.COLOR_INK)
+            val barY = y + 6.0
+            val barH = 14.0
+            fillRect(barAreaX, barY, barAreaW, barH, M.COLOR_PAPER_EDGE)
+            val filled = barAreaW * (count.toDouble() / maxCount)
+            fillRect(barAreaX, barY, filled, barH, M.COLOR_COPPER)
+            drawText("$count", barAreaX + filled + 6.0, barY + 12.0, IosPdfFonts.caveat(M.BAR_VALUE.toDouble()), M.COLOR_COPPER)
+        }
     }
 
     fun drawSpeciesPage(
@@ -254,14 +276,16 @@ internal object JournalPdfLayoutIos {
         paintPaperBg()
         val eyebrow =
             if (totalSpeciesPages > 1) {
-                M.fmt(M.SPECIES_EYEBROW_PAGED_FMT, "${pageIndex + 1}", "$totalSpeciesPages")
+                M.fmt(input.strings.speciesEyebrowPagedFmt, "${pageIndex + 1}", "$totalSpeciesPages")
             } else {
-                M.SPECIES_EYEBROW
+                input.strings.speciesEyebrow
             }
-        drawSectionHeader(eyebrow = eyebrow, title = M.SPECIES_TITLE)
+        drawSectionHeader(eyebrow = eyebrow, title = input.strings.speciesTitle)
 
         val rowTop = M.MARGIN_TOP + 170.0
         val rowH = 24.0
+        val nameFont = IosPdfFonts.dmSerifItalic(M.SPECIES_NAME.toDouble())
+        val sciFont = IosPdfFonts.caveat(M.SPECIES_SCI.toDouble())
 
         rows.forEachIndexed { i, row ->
             val y = rowTop + i * rowH
@@ -269,15 +293,32 @@ internal object JournalPdfLayoutIos {
             // Thumbnail-placeholder rect: Android RectF(MARGIN_X, y-12f, MARGIN_X+18f, y+6f) → 18×18.
             fillRect(M.MARGIN_X.toDouble(), y - 12.0, 18.0, 18.0, M.COLOR_PAPER_EDGE)
 
-            drawText(row.nameLocalized, M.MARGIN_X + 26.0, y, IosPdfFonts.dmSerifItalic(M.SPECIES_NAME.toDouble()), M.COLOR_INK)
+            // Androids drawSpeciesPage: ett långt namn krymps och kortas av [fitLabel] (release 1.3.1 del 8).
+            val textX = M.MARGIN_X + M.SPECIES_TEXT_INSET.toDouble()
+            val maxW = M.SPECIES_TEXT_MAX_W
+            val name = fitLabel(row.nameLocalized, maxW, M.LABEL_MIN_SCALE) { textWidth(it, nameFont).toFloat() }
+            drawText(
+                name.text,
+                textX,
+                y,
+                if (name.scale == 1f) nameFont else IosPdfFonts.dmSerifItalic(M.SPECIES_NAME.toDouble() * name.scale),
+                M.COLOR_INK,
+            )
             if (row.scientificName.isNotEmpty()) {
-                drawText(row.scientificName, M.MARGIN_X + 26.0, y + 12.0, IosPdfFonts.caveat(M.SPECIES_SCI.toDouble()), M.COLOR_INK)
+                val sci = fitLabel(row.scientificName, maxW, M.LABEL_MIN_SCALE) { textWidth(it, sciFont).toFloat() }
+                drawText(
+                    sci.text,
+                    textX,
+                    y + 12.0,
+                    if (sci.scale == 1f) sciFont else IosPdfFonts.caveat(M.SPECIES_SCI.toDouble() * sci.scale),
+                    M.COLOR_INK,
+                )
             }
 
-            val countText = M.fmt(M.COUNT_FMT, "${row.count}")
+            val countText = input.strings.findCount(row.count)
             val firstSeenDate = M.formatDate(row.firstSeenMs, zone)
-            val firstSeenText = M.fmt(M.FIRST_FMT, firstSeenDate)
-            val rightX = M.PAGE_W - M.MARGIN_X - 120.0
+            val firstSeenText = M.fmt(input.strings.firstFmt, firstSeenDate)
+            val rightX = M.PAGE_W - M.MARGIN_X - M.SPECIES_RIGHT_COLUMN.toDouble()
             drawText(countText, rightX, y, IosPdfFonts.dmSerifItalic(M.SPECIES_COUNT.toDouble()), M.COLOR_COPPER)
             drawText(firstSeenText, rightX, y + 12.0, IosPdfFonts.caveat(M.SPECIES_DATE.toDouble()), M.COLOR_INK)
 
@@ -294,20 +335,40 @@ internal object JournalPdfLayoutIos {
         zone: TimeZone,
     ) {
         paintPaperBg()
-        drawSectionHeader(eyebrow = M.BADGES_EYEBROW, title = M.BADGES_TITLE)
+        drawSectionHeader(eyebrow = input.strings.badgesEyebrow, title = input.strings.badgesTitle)
 
         val rowTop = M.MARGIN_TOP + 180.0
         val rowH = 48.0
+        val nameFont = IosPdfFonts.dmSerifItalic(M.BADGE_NAME.toDouble())
+        val descFont = IosPdfFonts.caveat(M.BADGE_DESC.toDouble())
 
         input.unlockedPremiumBadges.take(10).forEachIndexed { i, badge ->
             val y = rowTop + i * rowH
             // Stamp circle
             strokeCircle(M.MARGIN_X + 16.0, y + 6.0, 14.0, M.COLOR_NAVY, 1.5)
-            drawText(badge.nameLocalized, M.MARGIN_X + 44.0, y, IosPdfFonts.dmSerifItalic(M.BADGE_NAME.toDouble()), M.COLOR_INK)
-            drawText(badge.descriptionLocalized, M.MARGIN_X + 44.0, y + 16.0, IosPdfFonts.caveat(M.BADGE_DESC.toDouble()), M.COLOR_INK)
+            // Androids drawBadgesPage: namn och beskrivning krymps och kortas av [fitLabel] (release 1.3.1 del 8).
+            val textX = M.MARGIN_X + M.BADGE_TEXT_INSET.toDouble()
+            val maxW = M.BADGE_TEXT_MAX_W
+            val name = fitLabel(badge.nameLocalized, maxW, M.LABEL_MIN_SCALE) { textWidth(it, nameFont).toFloat() }
+            drawText(
+                name.text,
+                textX,
+                y,
+                if (name.scale == 1f) nameFont else IosPdfFonts.dmSerifItalic(M.BADGE_NAME.toDouble() * name.scale),
+                M.COLOR_INK,
+            )
+            val desc =
+                fitLabel(badge.descriptionLocalized, maxW, M.LABEL_MIN_SCALE) { textWidth(it, descFont).toFloat() }
+            drawText(
+                desc.text,
+                textX,
+                y + 16.0,
+                if (desc.scale == 1f) descFont else IosPdfFonts.caveat(M.BADGE_DESC.toDouble() * desc.scale),
+                M.COLOR_INK,
+            )
             drawText(
                 M.formatDate(badge.unlockedAt.toEpochMilliseconds(), zone),
-                M.PAGE_W - M.MARGIN_X - 90.0,
+                M.PAGE_W - M.MARGIN_X - M.BADGE_DATE_COLUMN.toDouble(),
                 y + 4.0,
                 IosPdfFonts.caveat(M.BADGE_DATE.toDouble()),
                 M.COLOR_COPPER,
@@ -336,7 +397,7 @@ internal object JournalPdfLayoutIos {
 
         val generatedAt = M.formatDateTime(input.generatedAtMs, zone)
         drawText(
-            M.fmt(M.GENERATED_FMT, generatedAt),
+            M.fmt(input.strings.generatedFmt, generatedAt),
             M.PAGE_W / 2.0,
             M.PAGE_H / 2.0 + 28.0,
             IosPdfFonts.caveat(M.COLOPHON_GEN.toDouble()),

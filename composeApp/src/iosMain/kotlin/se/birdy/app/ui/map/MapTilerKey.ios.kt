@@ -22,4 +22,14 @@ internal object MapTilerKey {
         }
         return key
     }
+
+    /**
+     * Kartstilens id (MAPTILER_STYLE_ID i Local.xcconfig, via Info.plist), samma som Androids
+     * Gradle-egenskap. Saknas den (en odefinierad xcconfig-variabel blir en tom sträng) eller är
+     * den inget rent stil-id: MapTilers standardstil, se [mapTilerStyleId].
+     */
+    fun styleId(): String {
+        val configured = NSBundle.mainBundle.objectForInfoDictionaryKey("MAPTILER_STYLE_ID") as? String
+        return mapTilerStyleId(configured)
+    }
 }

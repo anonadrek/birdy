@@ -59,7 +59,7 @@ val flexJniLibsDir = layout.buildDirectory.dir("flex16k/jniLibs")
 // ---- Release build safety guards (Task 12a, final review of Plan 1, 2026-09-25) ----
 // vC128 (purchase-test build, uploaded to internal testing only) is built with
 // -Pbirdy.grandfatherCutoffMs=0 -Pbirdy.billingTestBuild=true so nobody is
-// grandfathered and purchases can be tested; vC129 (production) is the plain default.
+// grandfathered and purchases can be tested; vC130 (1.3.1, production) is the plain default.
 // providers.gradleProperty(name) resolves the SAME effective value whether it came
 // from -P on the command line, gradle.properties (project root or GRADLE_USER_HOME),
 // an ORG_GRADLE_PROJECT_* env var, or a -D system property — it cannot tell the
@@ -83,8 +83,8 @@ fun releaseFlagFromCommandLineOnly(name: String): String? {
     return fromCommandLine
 }
 
-val releaseVersionCode = 129
-val releaseVersionNameBase = "1.3.0"
+val releaseVersionCode = 130
+val releaseVersionNameBase = "1.3.1"
 
 // A cutoff override requires BOTH -Pbirdy.grandfatherCutoffMs=<ms> AND
 // -Pbirdy.billingTestBuild=true — the second flag exists so a cutoff override can
@@ -92,6 +92,12 @@ val releaseVersionNameBase = "1.3.0"
 // versionName suffix and must never be promoted to production.
 val cutoffOverride = releaseFlagFromCommandLineOnly("birdy.grandfatherCutoffMs")
 val billingTestBuild = releaseFlagFromCommandLineOnly("birdy.billingTestBuild") == "true"
+
+// 1.3.1 (Albin 2026-10-09): MapTiler Free allows one own key and the website uses it, so 1.3.1
+// ships with the leaked Default key, locked in MapTiler Cloud the same evening to user agents
+// containing "se.birdy." (osmdroid sends the package name, iOS sends se.birdy.ios). Rotate it
+// with the paid release once Flex is bought. Only this command-line flag lets it through.
+val leakedMapTilerKeyLocked = releaseFlagFromCommandLineOnly("birdy.leakedMapTilerKeyLocked") == "true"
 if (cutoffOverride != null && !billingTestBuild) {
     error(
         "birdy.grandfatherCutoffMs may only be set together with -Pbirdy.billingTestBuild=true " +
@@ -100,12 +106,24 @@ if (cutoffOverride != null && !billingTestBuild) {
 }
 val releaseVersionName = releaseVersionNameBase + (if (billingTestBuild) "-koptest" else "")
 
+// 1.3.1 ships FREE (Albin 2026-10-09): Premium is open for everyone, as in 1.2, and payment
+// turns on in a later release once BirdNET has answered. While Premium is open nobody is
+// grandfathered (cutoff 0), so the early-member thank-you ("before Birdy started charging")
+// never shows; GrandfatherStartup still stores every install proof for that later release.
+val premiumOpenForLaunch = true
+
 // Early-user cutoff (spec §5.1): installs before this instant keep Premium forever.
-// Default = planned go-live + 48 h = 2026-10-16T00:00 Europe/Stockholm
-// (2026-10-15T22:00:00Z), for go-live no later than 2026-10-14. Moved 2026-10-01
-// from 2026-10-02 because go-live slipped (Albin's call); move it again BEFORE
-// building vC129 if go-live slips past 2026-10-14. NEVER change it after 1.3.0 ships.
-val grandfatherCutoffMs = cutoffOverride ?: "1792101600000"
+// The release that turns payment on sets it to 1.3.1's go-live + 48 h, rounded up to
+// midnight Europe/Stockholm (the website promises Premium to everyone who "used Birdy before
+// version 1.3"), together with premiumOpenForLaunch = false. Until then it is 0 and has no
+// effect. NEVER change it after that paid release ships.
+val grandfatherCutoffMs =
+    cutoffOverride
+        ?: if (premiumOpenForLaunch) {
+            "0"
+        } else {
+            error("Set the early-user cutoff (1.3.1 go-live + 48 h) before turning payment on.")
+        }
 
 android {
     namespace = "se.birdy.android"
@@ -136,7 +154,7 @@ android {
             "\"${project.findProperty("BIRDY_PLAY_LICENSE_KEY") ?: ""}\"",
         )
         // Monetisation is live from 1.3.0 (spec 2026-09-24): no launch-period override.
-        buildConfigField("Boolean", "PREMIUM_OPEN_FOR_LAUNCH", "false")
+        buildConfigField("Boolean", "PREMIUM_OPEN_FOR_LAUNCH", "${premiumOpenForLaunch && !billingTestBuild}")
         // Cutoff/test-build override logic + the "NEVER change it after ships" rule live
         // in the "Release build safety guards" block above defaultConfig, so both this
         // block and verifyReleaseKeys/verifyProductionRelease share one computation.
@@ -183,6 +201,17 @@ android {
             )
             signingConfig = signingConfigs.getByName("release")
             buildConfigField("Boolean", "PREMIUM_DEBUG_FORCE_ACTIVE", "false")
+        }
+    }
+
+    // The in-app language picker (intro scene 0 and Settings) can choose a language
+    // other than the phone's. Play installs only the device-language config split, so
+    // on an English phone the `sv` split was missing and choosing Svenska did nothing on
+    // API 24-32 (QA 2026-10-07). Keep every language in the base APK; the sv strings
+    // are ~16 KB.
+    bundle {
+        language {
+            enableSplit = false
         }
     }
 
@@ -306,14 +335,33 @@ val verifyReleaseKeys by tasks.registering {
     inputs.property("releaseVersionName", releaseVersionName)
     inputs.property("grandfatherCutoffMs", grandfatherCutoffMs)
     inputs.property("billingTestBuild", billingTestBuild)
+    inputs.property("premiumOpenForLaunch", premiumOpenForLaunch && !billingTestBuild)
+    // The map's MapTiler style (composeApp bakes it into BuildConfig and rejects a malformed id).
+    // Not a secret; printed so the vC130 build log shows which style ships. Unset is legal (the
+    // app falls back to MapTiler's stock style), so it only warns, never fails.
+    inputs.property(
+        "mapTilerStyleId",
+        providers.gradleProperty("MAPTILER_STYLE_ID").map { it.trim() }.orElse(""),
+    )
     doLast(
         Action {
+            val mapTilerStyleId = inputs.properties["mapTilerStyleId"] as String
             logger.lifecycle(
                 "Birdy release config: versionCode=${inputs.properties["releaseVersionCode"]} " +
                     "versionName=${inputs.properties["releaseVersionName"]} " +
                     "GRANDFATHER_CUTOFF_MS=${inputs.properties["grandfatherCutoffMs"]} " +
-                    "billingTestBuild=${inputs.properties["billingTestBuild"]}",
+                    "billingTestBuild=${inputs.properties["billingTestBuild"]} " +
+                    "PREMIUM_OPEN_FOR_LAUNCH=${inputs.properties["premiumOpenForLaunch"]} " +
+                    "MAPTILER_STYLE_ID=${mapTilerStyleId.ifEmpty { "unset" }}",
             )
+            if (mapTilerStyleId.isEmpty()) {
+                logger.warn(
+                    "warning: MAPTILER_STYLE_ID is not set, so the map uses MapTiler's stock style " +
+                        "(DEFAULT_MAPTILER_STYLE_ID in composeApp's MapTilerUrls.kt), not Birdy's own " +
+                        "style. Allowed, but if the style exists, put its id in " +
+                        "~/.gradle/gradle.properties and build again.",
+                )
+            }
             val missing =
                 inputs.properties
                     .filter { (name, present) -> name.startsWith("present.") && present == false }
@@ -345,6 +393,7 @@ val verifyProductionRelease by tasks.registering {
         "Fails a PRODUCTION bundle/APK when MAPTILER_API_KEY is the key that leaked in " +
         "git history, or the release keystore isn't configured."
     inputs.property("billingTestBuild", billingTestBuild)
+    inputs.property("leakedMapTilerKeyLocked", leakedMapTilerKeyLocked)
     inputs.property(
         "mapTilerKeyIsLeaked",
         providers.gradleProperty("MAPTILER_API_KEY").orElse("").map { raw ->
@@ -366,10 +415,18 @@ val verifyProductionRelease by tasks.registering {
                 logger.lifecycle("verifyProductionRelease: skipped (billing-test build, not production).")
             } else {
                 if (inputs.properties["mapTilerKeyIsLeaked"] as Boolean) {
-                    error(
-                        "MAPTILER_API_KEY is the key that leaked in git history; create a new key " +
-                            "in MapTiler Cloud and put it in ~/.gradle/gradle.properties (spec §8.4)",
-                    )
+                    if (inputs.properties["leakedMapTilerKeyLocked"] as Boolean) {
+                        logger.warn(
+                            "verifyProductionRelease: MAPTILER_API_KEY is the leaked key, allowed because " +
+                                "it is locked to the se.birdy. user agent in MapTiler Cloud " +
+                                "(-Pbirdy.leakedMapTilerKeyLocked=true). Rotate it with the paid release.",
+                        )
+                    } else {
+                        error(
+                            "MAPTILER_API_KEY is the key that leaked in git history; create a new key " +
+                                "in MapTiler Cloud and put it in ~/.gradle/gradle.properties (spec §8.4)",
+                        )
+                    }
                 }
                 if (!(inputs.properties["keystoreConfigured"] as Boolean)) {
                     error("production bundles must be signed")
@@ -381,4 +438,72 @@ val verifyProductionRelease by tasks.registering {
 
 tasks.matching { it.name == "bundleRelease" || it.name == "assembleRelease" }.configureEach {
     dependsOn(verifyProductionRelease)
+}
+
+// ---- Open-source licence list guard (release 1.3.0, legal review 7i-fix B) ----------------
+// The licence list the app shows under Settings, About (composeApp's
+// composeResources/files/licenses/) is generated from the release build's dependencies by
+// tools/licenses/generate.py, which first runs writeReleaseDependencies. Both tasks read the
+// release runtime classpath and the core library desugaring library (desugar_jdk_libs, compiled into
+// the dex). verifyLicenseList fails when those dependencies no longer match
+// tools/licenses/release-dependencies.txt, the list the licence files were made from: it runs in CI and before every release bundle or APK, so a
+// release can never ship with a stale list. Both tasks only resolve the dependency graph.
+val writeReleaseDependencies by tasks.registering(se.birdy.build.WriteReleaseDependenciesTask::class) {
+    description = "Writes the release build's external dependencies for tools/licenses/generate.py."
+    rootComponent.set(
+        project.configurations
+            .named("releaseRuntimeClasspath")
+            .flatMap { it.incoming.resolutionResult.rootComponent },
+    )
+    desugaringRootComponent.set(
+        project.configurations
+            .named("coreLibraryDesugaring")
+            .flatMap { it.incoming.resolutionResult.rootComponent },
+    )
+    output.set(layout.buildDirectory.file("licenses/release-dependencies.txt"))
+}
+
+// The external dependencies' own files (AARs and JARs), for the notices inside them. Lenient and
+// limited to external modules: the project modules are this app's own code.
+val writeReleaseArtifacts by tasks.registering(se.birdy.build.WriteReleaseArtifactsTask::class) {
+    description = "Writes the files of the release build's external dependencies for tools/licenses/generate.py."
+    lines.addAll(
+        se.birdy.build.artifactLines(
+            project.configurations.named("releaseRuntimeClasspath").flatMap { configuration ->
+                configuration.incoming
+                    .artifactView {
+                        lenient(true)
+                        componentFilter { it is org.gradle.api.artifacts.component.ModuleComponentIdentifier }
+                    }.artifacts.resolvedArtifacts
+            },
+        ),
+    )
+    lines.addAll(
+        se.birdy.build.artifactLines(
+            project.configurations.named("coreLibraryDesugaring").flatMap { it.incoming.artifacts.resolvedArtifacts },
+        ),
+    )
+    output.set(layout.buildDirectory.file("licenses/release-artifacts.txt"))
+}
+
+val verifyLicenseList by tasks.registering(se.birdy.build.VerifyLicenseListTask::class) {
+    description = "Fails when the release dependencies changed since the app's licence list was generated."
+    group = "verification"
+    rootComponent.set(
+        project.configurations
+            .named("releaseRuntimeClasspath")
+            .flatMap { it.incoming.resolutionResult.rootComponent },
+    )
+    desugaringRootComponent.set(
+        project.configurations
+            .named("coreLibraryDesugaring")
+            .flatMap { it.incoming.resolutionResult.rootComponent },
+    )
+    committedList.set(rootProject.layout.projectDirectory.file("tools/licenses/release-dependencies.txt"))
+}
+
+tasks.named("check") { dependsOn(verifyLicenseList) }
+
+tasks.matching { it.name == "bundleRelease" || it.name == "assembleRelease" }.configureEach {
+    dependsOn(verifyLicenseList)
 }

@@ -26,6 +26,7 @@ import org.robolectric.annotation.GraphicsMode
 import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.data.premium.PurchaseResult
 import se.birdy.app.di.AppGraph
+import se.birdy.app.notifications.NotificationPayloads
 import se.birdy.app.testing.FakeBadgeRepository
 import se.birdy.app.testing.FakeCameraSource
 import se.birdy.app.testing.FakeClock
@@ -35,6 +36,7 @@ import se.birdy.app.testing.FakePhotoStorage
 import se.birdy.app.testing.FakePremiumRepository
 import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.testing.FakeUserPreferences
+import se.birdy.app.testing.attachComposeResourcesContext
 import se.birdy.app.ui.audio.FakeStreamingRecorder
 import se.birdy.app.ui.audio.WaveformRendererApi
 import se.birdy.domain.badge.BadgeCatalog
@@ -132,7 +134,7 @@ class DailyBirdRoutingTest {
     @Config(qualifiers = "+sv")
     fun `identify shows todays bird and the tab dot until the bird is opened`() {
         val nav = compose.startAppScaffold(graph())
-        compose.onNodeWithText("DAGENS FÅGEL · TIS 6 OKT", useUnmergedTree = true).assertExists()
+        compose.onNodeWithText("DAGENS FÅGEL · TIS 6\u00A0OKT", useUnmergedTree = true).assertExists()
         compose.onNode(dot).assertExists()
         assertEquals("Q25485", history.recorded[NOW_DATE], "start-up records the bird so a save can match it")
 
@@ -301,6 +303,39 @@ class DailyBirdRoutingTest {
             .onNodeWithContentDescription("Inte fångad idag. Spara ett fynd av arten idag. 0 av 3 dagar.", useUnmergedTree = true)
             .assertExists()
         compose.onNodeWithContentDescription("Premium-märke", substring = true, useUnmergedTree = true).assertDoesNotExist()
+    }
+
+    /**
+     * The 08:00 notification names the bird the app shows. On the day an update changes the
+     * selection (1.3.0 drops extinct species), the bird recorded earlier that day (Blåmes here) is
+     * what the hero shows and what a save is matched against, while the selector now says Talgoxe.
+     * The notification built from the live graph (DailyBirdWorker with the app running) used to
+     * ask the selector alone and named Talgoxe.
+     */
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `the notification from the live graph names the bird recorded for the day like the hero`() {
+        attachComposeResourcesContext()
+        runBlocking { prefs.setDailyBirdPushEnabled(true) }
+        history.recorded[NOW_DATE] = "Q25404"
+        val graph = graph()
+        compose.startAppScaffold(graph)
+        compose.onNodeWithText("Blåmes").assertExists()
+
+        val content = runBlocking { NotificationPayloads.from(graph).dailyBird(NOW_DATE) }!!
+        assertEquals("Dagens fågel: Blåmes", content.title)
+        assertEquals("birdy://species/Q25404", content.deepLink)
+        assertEquals("birdy://species/Q25404", content.actions.first().deepLink)
+    }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun `with nothing recorded yet the notification from the live graph takes the selector's bird`() {
+        attachComposeResourcesContext()
+        runBlocking { prefs.setDailyBirdPushEnabled(true) }
+        val content = runBlocking { NotificationPayloads.from(graph()).dailyBird(NOW_DATE) }!!
+        assertEquals("Dagens fågel: Talgoxe", content.title)
+        assertEquals("birdy://species/Q25485", content.deepLink)
     }
 
     private companion object {

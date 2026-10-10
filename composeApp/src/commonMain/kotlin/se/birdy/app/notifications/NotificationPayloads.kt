@@ -4,6 +4,7 @@ import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_listen_for_it
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_read_more
 import birdy_bird_scanner.composeapp.generated.resources.notification_daily_bird_body
+import birdy_bird_scanner.composeapp.generated.resources.notification_daily_bird_photo_credit
 import birdy_bird_scanner.composeapp.generated.resources.notification_daily_bird_title_fmt
 import birdy_bird_scanner.composeapp.generated.resources.notification_recap_active_body_fmt
 import birdy_bird_scanner.composeapp.generated.resources.notification_recap_active_title
@@ -17,19 +18,22 @@ import kotlinx.coroutines.flow.first
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
-import org.jetbrains.compose.resources.getPluralString
-import org.jetbrains.compose.resources.getString
 import se.birdy.app.badges.BadgeProgressItem
 import se.birdy.app.badges.RecalculateBadgesUseCase
 import se.birdy.app.badges.TrophyProgress
 import se.birdy.app.di.AppGraph
+import se.birdy.app.i18n.AppStrings
 import se.birdy.app.recap.WeeklyRecapBuilder
+import se.birdy.app.recap.toIsoString
 import se.birdy.app.ui.badges.BadgeStringMap
 import se.birdy.content.SpeciesId
 import se.birdy.content.model.Species
+import se.birdy.content.model.SpeciesImage
+import se.birdy.data.dailybird.DailyBirdHistoryRepository
 import se.birdy.datastore.UserPreferences
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeRepository
+import se.birdy.domain.badge.WeekKey
 import se.birdy.domain.dailybird.DailyBird
 import se.birdy.domain.observation.ObservationRepository
 
@@ -39,6 +43,22 @@ object BirdyDeepLinks {
 
     /** Audio ID (the Lyssna screen); added for the daily-bird notification in release 1.3.0. */
     const val AUDIO = "birdy://audio"
+
+    /**
+     * The weekly recap of [week] ("birdy://recap?week=2026-W41", release 1.3.0 Task 7j review): the
+     * Sunday notification names the week it describes, so a tap after midnight still opens that
+     * week. A link without the week (older notifications) opens the current week.
+     */
+    fun recap(week: WeekKey): String = "birdy://recap?week=${week.toIsoString()}"
+
+    /** The `week` of a recap link, or null when the link has none. */
+    fun recapWeek(uri: String): String? =
+        uri
+            .substringAfter("?", missingDelimiterValue = "")
+            .split("&")
+            .firstOrNull { it.startsWith("week=") }
+            ?.removePrefix("week=")
+            ?.takeIf { it.isNotBlank() }
 }
 
 /** A notification button: its label and the deep link it opens. */
@@ -53,7 +73,8 @@ data class NotificationAction(
  *
  * [imagePath] (relative to the bundled species images, see `speciesImageUri`) and [actions] are
  * the daily-bird notification's photo and buttons (release 1.3.0 Task 7d). Android shows them;
- * iOS still shows title and body only (a follow-up).
+ * iOS still shows title and body only (a follow-up). [photoCredit] ("Foto: Derek Keats, CC BY 2.0")
+ * goes with the photo wherever it is shown (Task 7e-2, legal review §2).
  */
 data class NotificationContent(
     val title: String,
@@ -61,6 +82,7 @@ data class NotificationContent(
     val deepLink: String,
     val imagePath: String? = null,
     val actions: List<NotificationAction> = emptyList(),
+    val photoCredit: String? = null,
 )
 
 /**
@@ -76,6 +98,7 @@ data class NotificationContent(
  * paths the workers had before this hoist (disabled toggle, no candidate, quiet
  * week with no streak risk, nothing in progress toward a badge).
  */
+@Suppress("LongParameterList") // wired by three platforms; a holder object would only move the same list
 class NotificationPayloads(
     private val prefs: UserPreferences,
     private val observationRepo: ObservationRepository,
@@ -84,9 +107,15 @@ class NotificationPayloads(
     private val speciesByQid: suspend () -> Map<SpeciesId, Species>,
     private val speciesNameFor: suspend (qid: String) -> String?,
     private val selectDailyBird: (suspend (LocalDate) -> DailyBird?)?,
+    /**
+     * The daily-bird history the app records each day's bird in (DailyBirdTracker), so the
+     * notification names the bird the app shows; see [dailyBird]. Null where there is none.
+     */
+    private val dailyBirdHistory: DailyBirdHistoryRepository?,
     private val dailyBirdMatchCount: suspend () -> Int,
     private val timeZone: TimeZone,
     private val clock: Clock,
+    internal val strings: AppStrings,
 ) {
     /**
      * 08:00 "Dagens fågel: Sävsångare". Release 1.3.0 Task 7d: the body invites a catch instead of
@@ -97,24 +126,36 @@ class NotificationPayloads(
      */
     suspend fun dailyBird(date: LocalDate): NotificationContent? {
         if (!prefs.dailyBirdPushEnabled.first()) return null
-        val selector = selectDailyBird ?: return null
-        val bird = selector(date) ?: return null
-        val displayName = speciesNameFor(bird.speciesId) ?: bird.speciesId
-        val speciesLink = BirdyDeepLinks.species(bird.speciesId)
+        val speciesId = dailyBirdSpeciesId(date) ?: return null
+        val displayName = speciesNameFor(speciesId) ?: speciesId
+        val speciesLink = BirdyDeepLinks.species(speciesId)
+        // The photo through speciesByQid, which iOS memoises.
+        val hero = heroOf(speciesByQid()[SpeciesId(speciesId)])
         return NotificationContent(
-            title = getString(Res.string.notification_daily_bird_title_fmt, displayName),
-            body = getString(Res.string.notification_daily_bird_body),
+            title = strings.get(Res.string.notification_daily_bird_title_fmt, displayName),
+            body = strings.get(Res.string.notification_daily_bird_body),
             deepLink = speciesLink,
-            // Through speciesByQid (memoised on iOS) rather than a new constructor parameter, so the
-            // three platform wirings of this class stay as they are.
-            imagePath = heroPathOf(speciesByQid()[SpeciesId(bird.speciesId)]),
+            imagePath = hero?.path,
+            photoCredit =
+                hero?.let { strings.get(Res.string.notification_daily_bird_photo_credit, it.author, it.license) },
             actions =
                 listOf(
-                    NotificationAction(getString(Res.string.daily_bird_read_more), speciesLink),
-                    NotificationAction(getString(Res.string.daily_bird_listen_for_it), BirdyDeepLinks.AUDIO),
+                    NotificationAction(strings.get(Res.string.daily_bird_read_more), speciesLink),
+                    NotificationAction(strings.get(Res.string.daily_bird_listen_for_it), BirdyDeepLinks.AUDIO),
                 ),
         )
     }
+
+    /**
+     * The bird the app shows for [date]: the one recorded in the daily-bird history, else the
+     * selector's. DailyBirdTracker records the first bird of a day and keeps it, and every save is
+     * matched against it; on the day an update changes the selection (1.3.0 drops extinct species)
+     * the selector alone could name another bird than the Identify hero. Nothing recorded yet (the
+     * app not opened today) means the selector's bird, which the app then records too (the
+     * selector is deterministic per date). Read only: recording the day stays with the tracker.
+     */
+    private suspend fun dailyBirdSpeciesId(date: LocalDate): String? =
+        dailyBirdHistory?.speciesIdForDate(date) ?: selectDailyBird?.invoke(date)?.speciesId
 
     suspend fun weeklyRecap(forceForDev: Boolean = false): NotificationContent? {
         if (!forceForDev && !prefs.weeklyRecapPushEnabled.first()) return null
@@ -124,19 +165,20 @@ class NotificationPayloads(
         return when {
             !summary.isQuiet || forceForDev ->
                 NotificationContent(
-                    title = getString(Res.string.notification_recap_active_title),
+                    title = strings.get(Res.string.notification_recap_active_title),
                     body =
                         recapNotificationBody(
+                            strings = strings,
                             finds = summary.observationCount,
                             newSpecies = summary.newSpeciesCount,
                         ),
-                    deepLink = "birdy://recap",
+                    deepLink = BirdyDeepLinks.recap(summary.week),
                 )
             summary.streakAtRisk ->
                 NotificationContent(
-                    title = getString(Res.string.notification_recap_streak_title),
-                    body = getString(Res.string.notification_recap_streak_body),
-                    deepLink = "birdy://recap",
+                    title = strings.get(Res.string.notification_recap_streak_title),
+                    body = strings.get(Res.string.notification_recap_streak_body),
+                    deepLink = BirdyDeepLinks.recap(summary.week),
                 )
             // Quiet week with no streak at risk → no push (spec §3.6)
             else -> null
@@ -171,11 +213,11 @@ class NotificationPayloads(
             summary.closest
                 ?: (if (forceForDev) items.firstOrNull { !it.unlocked } else null)
                 ?: return null
-        val closestName = getString(BadgeStringMap.nameFor(closest.badgeId))
+        val closestName = strings.get(BadgeStringMap.nameFor(closest.badgeId))
         return NotificationContent(
-            title = getString(Res.string.notification_trophy_title),
+            title = strings.get(Res.string.notification_trophy_title),
             body =
-                getString(
+                strings.get(
                     Res.string.notification_trophy_body_fmt,
                     summary.unlockedCount.toString(),
                     summary.totalCount.toString(),
@@ -202,13 +244,15 @@ class NotificationPayloads(
                         ?.name
                 },
                 selectDailyBird = graph.selectDailyBird,
+                dailyBirdHistory = graph.dailyBirdHistory,
                 dailyBirdMatchCount = { graph.dailyBirdHistory?.totalMatchCount() ?: 0 },
                 timeZone = graph.timeZone,
                 clock = graph.clock,
+                strings = graph.strings,
             )
 
-        /** The species' hero photo path, as the hero and the strips use it. */
-        fun heroPathOf(species: Species?): String? = species?.images?.firstOrNull { it.role == "hero" }?.path
+        /** The species' hero photo, as the hero and the strips use it. */
+        fun heroOf(species: Species?): SpeciesImage? = species?.images?.firstOrNull { it.role == "hero" }
     }
 }
 
@@ -217,11 +261,12 @@ class NotificationPayloads(
  * (release 1.3.0 Task 7g; the old text said "2 ny art" and "1 sightings").
  */
 internal suspend fun recapNotificationBody(
+    strings: AppStrings,
     finds: Int,
     newSpecies: Int,
 ): String =
-    getString(
+    strings.get(
         Res.string.notification_recap_active_body_fmt,
-        getPluralString(Res.plurals.recap_stats_finds, finds, finds),
-        getPluralString(Res.plurals.recap_stats_new_species, newSpecies, newSpecies),
+        strings.plural(Res.plurals.recap_stats_finds, finds, finds),
+        strings.plural(Res.plurals.recap_stats_new_species, newSpecies, newSpecies),
     )

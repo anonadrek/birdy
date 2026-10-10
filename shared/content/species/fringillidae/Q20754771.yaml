@@ -55,9 +55,9 @@ description:
 
     The redpoll is a small finch inhabiting Arctic and northern temperate regions
     across the Holarctic, where it breeds in tundra and taiga habitats. This delicate
-    passerine was historically classified into three separate species—the common or
-    mealy redpoll, the arctic or hoary redpoll, and the lesser redpoll—but is now
-    recognized as a single species within its genus.
+    passerine was historically classified into three separate species (the common
+    or mealy redpoll, the arctic or hoary redpoll, and the lesser redpoll) but is
+    now recognized as a single species within its genus.
 
 
     As a member of the finch family, the redpoll shares the typical characteristics
@@ -94,7 +94,7 @@ migration:
     and Northern Europe. Breeding populations are found in Arctic and subarctic regions,
     with movements southward in autumn varying considerably between years depending
     on food availability. Birds typically arrive in southern Scandinavia from September
-    onwards, with peak numbers occurring during winter months (November–February).
+    onwards, with peak numbers occurring during winter months (November to February).
     Some populations are resident year-round in northern areas, while others undertake
     partial migrations. Spring departure occurs gradually from February through April,
     with most birds returning to breeding grounds by May. Winter presence is closely
@@ -129,7 +129,7 @@ image_refs:
     UL 03.jpg
   commons_filename: Acanthis flammea Spinus tristis UL 03.jpg
 review_status: approved
-review_notes: "Stensparv-finkrelativ — hero godkänd."
+review_notes: Stensparv-finkrelativ — hero godkänd.
 generated_at: '2026-05-15T19:13:10.226193+00:00'
 sources:
   wikipedia_sv_revision: '58942312'

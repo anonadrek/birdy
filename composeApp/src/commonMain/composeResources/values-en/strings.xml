@@ -41,7 +41,7 @@
     <string name="a11y_stamp_number">Badge number %1$d</string>
     <string name="a11y_stamp_track">%1$d of %2$d badges earned</string>
     <string name="a11y_crop_hint">Drag the corners to crop the image</string>
-    <string name="onboarding_hero_image_cd">Birdy — the app's bird mascot</string>
+    <string name="onboarding_hero_image_cd">Birdy, the app's bird mascot</string>
 
     <!-- IUCN red-list status labels -->
     <string name="iucn_lc">Least concern</string>
@@ -79,7 +79,7 @@
     <string name="photo_pick_from_gallery">Pick from gallery</string>
     <string name="photo_take_photo">Take photo</string>
     <string name="photo_analyzing">Analyzing photo…</string>
-    <string name="photo_loaded_navigating">Done — navigating…</string>
+    <string name="photo_loaded_navigating">Done, navigating…</string>
     <string name="photo_error_too_small">The image is too small.</string>
     <string name="photo_error_decode">Could not read the image.</string>
     <string name="photo_error_classifier">The classifier failed.</string>
@@ -101,6 +101,7 @@
     <string name="match_sub_confidence">A %1$s match.</string>
     <string name="match_marginalia_first_sighting">*NEW SPECIES*</string>
     <string name="match_marginalia_repeat">SIGHT *#%1$d* · FIRST SEEN: %2$s</string>
+    <string name="match_first_seen_unknown">UNKNOWN</string>
     <string name="match_marginalia_manual_pick">your choice</string>
     <!-- Plan 6b2 T6: source-aware marginalia (photo vs audio) -->
     <string name="match_marginalia_captured_photo">captured on camera</string>
@@ -108,7 +109,7 @@
     <string name="match_stamp_caption_pending">awaiting your signature</string>
     <string name="match_save_cta">Save observation</string>
     <string name="match_cancel_cta">Cancel</string>
-    <string name="match_saved_text">Saved to the field journal — go back</string>
+    <string name="match_saved_text">Saved to the field journal, go back</string>
 
     <!-- Disambig screen (top-1 0.35–0.50) -->
     <string name="disambig_eyebrow_one">ONE CANDIDATE · NO %1$d</string>
@@ -135,7 +136,7 @@
     <string name="nobird_tip_closer_sub">~3 m usually works</string>
     <string name="nobird_tip_center_sub">Centre the frame</string>
     <string name="nobird_tip_light_sub">Avoid backlight</string>
-    <string name="nobird_top_guess_hint">the model thought it saw a *possible %1$s* (%2$s) — get closer?</string>
+    <string name="nobird_top_guess_hint">the model thought it saw a *possible %1$s* (%2$s). Get closer?</string>
     <!-- Plan 6b2 T6: NoBird audio-specific hints -->
     <string name="audio_no_bird_hint_1">try a quieter spot</string>
     <string name="audio_no_bird_hint_2">point the mic at the bird</string>
@@ -149,14 +150,14 @@
     <string name="scan_permission_denied_body">Camera is blocked. Enable in settings to scan.</string>
     <string name="scan_permission_open_settings">Open settings</string>
     <string name="scan_error_classifier_failed">Classifier failed repeatedly.</string>
-    <string name="demo_mode_banner">DEMO — model missing, fake data shown</string>
+    <string name="demo_mode_banner">DEMO: model missing, fake data shown</string>
     <!-- Plan 6a Task 10.8: DEMO banner tap → explanatory bottom-sheet -->
     <string name="demo_sheet_title">Demo mode</string>
-    <string name="demo_sheet_body">Birdy couldn't load the bird model at startup, so we're showing sample data. Restart the app to try again — or send us a report if it keeps happening.</string>
+    <string name="demo_sheet_body">Birdy couldn't load the bird model at startup, so we're showing sample data. Restart the app to try again, or send us a report if it keeps happening.</string>
     <string name="demo_sheet_close">Close</string>
     <string name="demo_sheet_report">Report</string>
     <!-- Plan 6a Task 10.9: Permission hero copy + photo-fallback -->
-    <string name="permission_hero_caveat">Birdy only sees birds — no photos are saved without your choice.</string>
+    <string name="permission_hero_caveat">Birdy only sees birds. No photos are saved without your choice.</string>
     <string name="permission_grant_cta">Allow camera</string>
     <string name="permission_denied_photo_fallback">Analyze a photo instead</string>
 
@@ -168,19 +169,19 @@
     <string name="diary_save_error_photo">Could not save the photo</string>
     <string name="diary_save_error_storage">Storage is full</string>
     <string name="diary_save_error_db">Could not save the observation</string>
-    <string name="diary_save_error_frame_unavailable">The photo is no longer available — scan again</string>
+    <string name="diary_save_error_frame_unavailable">The photo is no longer available. Scan again.</string>
     <string name="diary_saved_indicator">Saved ✓</string>
     <string name="diary_note_label">Note</string>
     <string name="diary_note_save">Save note</string>
     <string name="diary_note_cancel">Cancel</string>
     <string name="diary_note_save_success">Note saved</string>
-    <string name="diary_note_save_error">Could not save the note — try again</string>
+    <string name="diary_note_save_error">Could not save the note. Try again.</string>
     <string name="diary_delete_button">Delete</string>
     <string name="diary_delete_confirm_title">Delete observation?</string>
     <string name="diary_delete_confirm_body">This cannot be undone.</string>
     <string name="diary_delete_confirm_yes">Delete</string>
     <string name="diary_delete_confirm_no">Cancel</string>
-    <string name="diary_delete_failed">Couldn't delete — try again</string>
+    <string name="diary_delete_failed">Couldn't delete. Try again.</string>
     <string name="diary_detail_not_found">This observation no longer exists</string>
     <string name="diary_detail_unknown_species">Unknown species</string>
     <string name="diary_detail_load_error">Could not load the observation</string>
@@ -210,8 +211,8 @@
 
     <!-- ===== Plan 5b: Badges UI ===== -->
     <string name="badges_section_recently_unlocked">Recently discovered</string>
-    <string name="badges_locked_tooltip">Secret — keep birding</string>
-    <string name="badges_load_error">Could not load badges — try again</string>
+    <string name="badges_locked_tooltip">Secret, keep birding</string>
+    <string name="badges_load_error">Could not load badges. Try again.</string>
     <string name="badges_load_error_retry">Try again</string>
 
     <string name="unlock_label">New *badge*!</string>
@@ -221,7 +222,7 @@
     <!-- ===== Badge names + descriptions ===== -->
     <!-- Progression -->
     <string name="badge_name_novice">Novice</string>
-    <string name="badge_desc_novice">The foundation it all rests on — the first species you learn to know.</string>
+    <string name="badge_desc_novice">The foundation it all rests on: the first species you learn to know.</string>
     <string name="badge_name_birder_bronze">Birder</string>
     <string name="badge_desc_birder_bronze">You&#8217;re starting to see patterns, not just individual birds.</string>
     <string name="badge_name_birder_silver">Experienced birder</string>
@@ -231,51 +232,51 @@
     <string name="badge_name_weekly_streak_4">Monthly rhythm</string>
     <string name="badge_desc_weekly_streak_4">You have birded four weeks in a row.</string>
     <string name="badge_name_weekly_streak_12">Quarter-faithful</string>
-    <string name="badge_desc_weekly_streak_12">12 weeks in a row — you have a rhythm.</string>
+    <string name="badge_desc_weekly_streak_12">12 weeks in a row. You have a rhythm.</string>
     <string name="badge_name_weekly_streak_52">Year-round birder</string>
-    <string name="badge_desc_weekly_streak_52">52 weeks in a row — a full year unbroken.</string>
+    <string name="badge_desc_weekly_streak_52">52 weeks in a row, a full year unbroken.</string>
 
     <!-- Streaks monthly -->
     <string name="badge_name_monthly_streak_3">Season birder</string>
-    <string name="badge_desc_monthly_streak_3">Three months in a row — at least one obs each month.</string>
+    <string name="badge_desc_monthly_streak_3">Three months in a row, at least one obs each month.</string>
     <string name="badge_name_monthly_streak_12">All year</string>
     <string name="badge_desc_monthly_streak_12">Twelve months with at least one observation each.</string>
 
     <!-- Family -->
     <string name="badge_name_family_anatidae">Wildfowler</string>
-    <string name="badge_desc_family_anatidae">Ducks and geese — the field&#8217;s first lesson in patience.</string>
+    <string name="badge_desc_family_anatidae">Ducks and geese: the field&#8217;s first lesson in patience.</string>
     <string name="badge_name_family_paridae">Tit collector</string>
     <string name="badge_desc_family_paridae">Tits are your window into the woodland&#8217;s small birds.</string>
     <string name="badge_name_family_accipitridae">Raptor watcher</string>
     <string name="badge_desc_family_accipitridae">Raptors are read by silhouette and wingbeat, rarely up close.</string>
     <string name="badge_name_family_fringillidae">Finch collector</string>
-    <string name="badge_desc_family_fringillidae">Finches teach you to listen — the flight call gives them away.</string>
+    <string name="badge_desc_family_fringillidae">Finches teach you to listen. The flight call gives them away.</string>
     <string name="badge_name_family_scolopacidae">Wader watcher</string>
     <string name="badge_desc_family_scolopacidae">Waders separate the birder from the onlooker.</string>
     <string name="badge_name_family_strigidae">Owl watcher</string>
-    <string name="badge_desc_family_strigidae">Owls are seldom seen, more often heard — a hunt at dusk.</string>
+    <string name="badge_desc_family_strigidae">Owls are seldom seen, more often heard. A hunt at dusk.</string>
     <string name="badge_name_family_songbirds">Warbler collector</string>
-    <string name="badge_desc_family_songbirds">Warblers hide in the masses — telling them apart is real skill.</string>
+    <string name="badge_desc_family_songbirds">Warblers hide in the masses. Telling them apart is real skill.</string>
 
     <!-- DP D: new/updated badges -->
     <string name="badge_name_birder_gold">Seasoned birder</string>
     <string name="badge_desc_birder_gold">This is no longer beginner country.</string>
     <string name="badge_name_birder_legend">Master birder</string>
-    <string name="badge_desc_birder_legend">Few birders ever get this far — a life&#8217;s work.</string>
+    <string name="badge_desc_birder_legend">Few birders ever get this far. A life&#8217;s work.</string>
     <string name="badge_name_breadth_families_20">Family spanner</string>
-    <string name="badge_desc_breadth_families_20">Breadth, not just depth — you range across the whole field.</string>
+    <string name="badge_desc_breadth_families_20">Breadth, not just depth: you range across the whole field.</string>
     <string name="badge_name_breadth_families_50">Family connoisseur</string>
     <string name="badge_desc_breadth_families_50">Few birders range across so many families.</string>
     <string name="badge_name_breadth_orders_20">Order traveller</string>
-    <string name="badge_desc_breadth_orders_20">From seabirds to passerines — you cover the breadth of bird life.</string>
+    <string name="badge_desc_breadth_orders_20">From seabirds to passerines: you cover the breadth of bird life.</string>
     <string name="badge_name_redlisted_1">Red-listed</string>
     <string name="badge_desc_redlisted_1">Red-listed species are the ones birders travel for.</string>
     <string name="badge_name_redlisted_5">Rarity hunter</string>
     <string name="badge_desc_redlisted_5">Every threatened bird you see is a meeting that grows rarer.</string>
     <string name="badge_name_redlisted_15">Red-list master</string>
-    <string name="badge_desc_redlisted_15">You seek the ones at risk of vanishing — and find them.</string>
+    <string name="badge_desc_redlisted_15">You seek the ones at risk of vanishing, and find them.</string>
     <string name="badge_name_season_all_year">Year-round</string>
-    <string name="badge_desc_season_all_year">The birding year has four faces — you&#8217;ve seen them all.</string>
+    <string name="badge_desc_season_all_year">The birding year has four faces, and you&#8217;ve seen them all.</string>
     <string name="badge_name_season_faithful">Faithful companion</string>
     <string name="badge_desc_season_faithful">Following one species through the year is how you truly come to know it.</string>
     <string name="badge_name_audio_scholar">Sound birder</string>
@@ -300,7 +301,7 @@
     <!-- Onboarding v2 (Plan 2026-05-25 onboarding-scroll-story) -->
     <string name="onboarding_s1_eyebrow">BIRD ID + FIELD JOURNAL · NO 1</string>
     <string name="onboarding_s1_headline">*Birdy.*</string>
-    <string name="onboarding_s1_sub">Identify birds in the field — photo or sound, on-device, no internet.</string>
+    <string name="onboarding_s1_sub">Identify birds in the field: photo or sound, on-device, no internet.</string>
 
     <string name="onboarding_s2_eyebrow">PHOTO · NO 2</string>
     <string name="onboarding_s2_headline">*Aim*. Tap. Stamp.</string>
@@ -309,20 +310,20 @@
     <string name="onboarding_s2_species_demo">Great Tit</string>
 
     <string name="onboarding_s3_eyebrow">SOUND · NO 3</string>
-    <string name="onboarding_s3_headline">Or — *listen*.</string>
+    <string name="onboarding_s3_headline">Or *listen*.</string>
     <string name="onboarding_s3_sub">Record the song and Birdy suggests the species. Free, always.</string>
     <string name="onboarding_s3_free_pill">FREE</string>
-    <string name="onboarding_s3_species_demo">Great Tit — 94%</string>
+    <string name="onboarding_s3_species_demo">Great Tit · 94%</string>
 
     <string name="onboarding_s4_eyebrow">THE JOURNAL · NO 4</string>
-    <string name="onboarding_s4_headline">Every find — *a page*.</string>
+    <string name="onboarding_s4_headline">Every find, *a page*.</string>
     <string name="onboarding_s4_sub">Your collection grows with every bird. PDF export when you want.</string>
     <string name="onboarding_s4_marginalia">May 16 · Hyde Park</string>
     <string name="onboarding_s4_species">Common Swift</string>
 
     <string name="onboarding_s5_eyebrow">BADGES · NO 5</string>
     <string name="onboarding_s5_headline">*Earn* badges.</string>
-    <string name="onboarding_s5_sub">Life list, families, rarities — milestones worth reaching.</string>
+    <string name="onboarding_s5_sub">Life list, families, rarities: milestones worth reaching.</string>
 
     <string name="onboarding_s6_eyebrow">PRIVACY · NO 6</string>
     <string name="onboarding_s6_headline">*Stays* on your device.</string>
@@ -332,7 +333,7 @@
     <string name="onboarding_s7_headline">*Who* writes?</string>
     <string name="onboarding_s7_sub">Shown in your journal.</string>
     <string name="onboarding_s7_input_placeholder">Alex</string>
-    <string name="onboarding_s7_input_helper">Leave blank if you&#8217;d rather — we&#8217;ll call you &#8216;Field birder&#8217;.</string>
+    <string name="onboarding_s7_input_helper">Leave blank if you&#8217;d rather, and we&#8217;ll call you &#8216;Field birder&#8217;.</string>
     <string name="onboarding_s7_cta">*Begin* the journal</string>
 
     <string name="onboarding_close_replay">Close</string>
@@ -341,7 +342,7 @@
     <!-- ===== Plan 7b: ListenLauncherScreen ===== -->
     <string name="listen_journal_label">CATCH · IN THE FIELD</string>
     <string name="listen_journal_headline">Three ways to *catch.*</string>
-    <string name="listen_journal_sub">Camera, photo or call — the bird turns up in your field book.</string>
+    <string name="listen_journal_sub">Camera, photo or call: the bird turns up in your field book.</string>
     <string name="listen_card_audio_title">Listen</string>
     <string name="listen_card_audio_body">Record a song or call.</string>
     <string name="listen_card_camera_title">Look</string>
@@ -353,6 +354,7 @@
     <string name="settings_title">Settings</string>
     <string name="settings_menu_item">Settings</string>
     <string name="settings_label_name">Name</string>
+    <string name="settings_name_not_set">Not set</string>
     <string name="settings_label_language">Language</string>
     <string name="settings_label_about">About</string>
     <string name="settings_language_sv">Svenska</string>
@@ -363,6 +365,8 @@
     <string name="settings_name_dialog_cancel">Cancel</string>
     <string name="settings_language_dialog_done">Done</string>
     <string name="settings_back">Back</string>
+    <!-- The back button's label wherever a screen has no label of its own (release 1.3.0 Task 7b). -->
+    <string name="common_back">Back</string>
     <string name="menu_button">Menu</string>
 
     <!-- ===== Plan 7b: ArchiveScreen ===== -->
@@ -385,7 +389,7 @@
     <string name="archive_chip_woodpeckers">Woodpeckers</string>
     <string name="archive_chip_cranes_rails">Cranes &amp; rails</string>
     <string name="archive_chip_other">Other</string>
-    <string name="archive_sort_alpha">A–Z</string>
+    <string name="archive_sort_alpha">A to Z</string>
     <string name="archive_sort_family">Family</string>
     <string name="archive_sort_recent">Recently added</string>
     <string name="archive_sort_relevance">Relevance</string>
@@ -420,14 +424,15 @@
     <string name="lifelist_breadcrumb">LIFELIST</string>
     <string name="lifelist_headline_fallback">My collection.</string>
     <string name="lifelist_stat_species">SPECIES</string>
-    <string name="lifelist_stat_stamps">STAMPS</string>
+    <!-- The number of finds (a stamp is a badge in the trophy room; QA 2026-10-07). -->
+    <string name="lifelist_stat_finds">SIGHTINGS</string>
     <string name="lifelist_stat_streak">DAY STREAK</string>
     <string name="lifelist_stat_year">SPECIES THIS YEAR</string>
     <string name="lifelist_stat_month">SPECIES THIS MONTH</string>
     <string name="lifelist_stat_longest">LONGEST STREAK</string>
     <plurals name="lifelist_section_recent">
-        <item quantity="one">Recent · %1$d stamp</item>
-        <item quantity="other">Recent · %1$d stamps</item>
+        <item quantity="one">Recent · %1$d sighting</item>
+        <item quantity="other">Recent · %1$d sightings</item>
     </plurals>
     <string name="lifelist_sort_recent">Recent</string>
     <string name="lifelist_sort_stamp">Stamp #</string>
@@ -463,7 +468,7 @@
     <string name="lifelist_empty_caveat_cta">*Scan* first bird</string>
     <!-- Plan 6a Task 10.3: Diary empty-state redesign -->
     <string name="lifelist_empty_stamp_name">First sighting</string>
-    <string name="lifelist_empty_marginalia">Your field journal is empty — \nscan to write the first page.</string>
+    <string name="lifelist_empty_marginalia">Your field journal is empty.\nScan to write the first page.</string>
     <plurals name="lifelist_month_header">
         <item quantity="one">%1$s · %2$s entry</item>
         <item quantity="other">%1$s · %2$s entries</item>
@@ -534,7 +539,9 @@
     <string name="settings_restore_purchases_success">Purchase restored.</string>
     <string name="settings_restore_purchases_empty">Nothing to restore.</string>
     <string name="settings_restore_purchases_unavailable">Couldn’t reach Google Play. Check your connection and try again.</string>
-    <string name="settings_footer">— Birdy is a field prospectus. —</string>
+    <string name="settings_row_manage_subscription">Manage subscription</string>
+    <string name="settings_manage_subscription_caption">Cancel or change in Google Play.</string>
+    <string name="settings_footer">Birdy is a field prospectus.</string>
     <!-- Gear -->
     <string name="gear_content_description">Settings</string>
     <!-- Per-tab markers -->
@@ -634,20 +641,67 @@
 
     <!-- About screen (Plan 6a Task 13) -->
     <string name="about_eyebrow">ABOUT</string>
-    <string name="about_headline_plain_1">Birdy —</string>
+    <string name="about_headline_plain_1">Birdy:</string>
     <string name="about_headline_accent_1">a field birder’s</string>
     <string name="about_headline_plain_2">digital companion.</string>
     <string name="about_subline">A local journal for sightings.</string>
     <string name="about_version_prefix">Version</string>
     <string name="about_credits_label">CONTENT &amp; DATA</string>
-    <string name="about_credits_body">Bird data from Wikidata and Wikipedia under CC BY-SA. Photos from Wikimedia Commons. Map data © OpenStreetMap contributors, tiles © MapTiler. ML models: AIY Birds V1 (Google, photo) and BirdNET-Lite v2 (Cornell Lab of Ornithology, audio).</string>
-    <string name="about_licenses_label">OPEN SOURCE</string>
-    <string name="about_licenses_body">Kotlin, Compose Multiplatform — Apache 2.0\nSQLDelight — Apache 2.0\nCoil — Apache 2.0\nAndroidX — Apache 2.0\nkaml — Apache 2.0\nosmdroid — Apache 2.0\nTensorFlow Lite (AIY Birds V1) — Apache 2.0\nBirdNET-Lite v2 (Cornell Lab of Ornithology) — CC BY-NC-SA 4.0\nDM Serif Display Italic — SIL Open Font License 1.1\nCaveat — SIL Open Font License 1.1</string>
-    <string name="about_back">Back</string>
+    <string name="about_licenses_label">SOURCES &amp; LICENSES</string>
+    <string name="about_photos_title">Photos</string>
+    <string name="about_photos_body">%1$s species photos from Wikimedia Commons under CC0, public domain, CC BY or CC BY-SA, resized by Birdy. The photographer, license and a link to the original of every photo are under Photo credits.</string>
+    <string name="about_photos_body_uncounted">Species photos from Wikimedia Commons under CC0, public domain, CC BY or CC BY-SA, resized by Birdy. The photographer, license and a link to the original of every photo are under Photo credits.</string>
+    <string name="about_texts_title">Species texts</string>
+    <string name="about_texts_body">Summaries that the AI model Claude (Anthropic) wrote in 2026. The texts are based on Wikipedia articles in Swedish and English and are shared under CC BY-SA 4.0.</string>
+    <string name="about_names_title">Species list and names</string>
+    <string name="about_names_body">BirdLife Sweden’s taxonomic committee (the Western Palearctic list), IOC World Bird List v14.1 (F. Gill, D. Donsker &amp; P. Rasmussen, eds.; CC BY 3.0) and Wikidata (CC0). The red-list category is the species’ category on the IUCN’s global Red List, taken from Wikidata.</string>
+    <string name="about_map_title">Map</string>
+    <string name="about_map_body">Map tiles © MapTiler. Map data © OpenStreetMap contributors (ODbL).</string>
+    <string name="about_photo_id_title">Photo ID</string>
+    <string name="about_photo_id_body">AIY Birds V1, © Google, Apache License 2.0.</string>
+    <string name="about_sound_id_title">Sound ID</string>
+    <string name="about_sound_id_body">BirdNET-Lite, K. Lisa Yang Center for Conservation Bioacoustics, Cornell Lab of Ornithology, Cornell University. License CC BY-NC-SA 4.0, used unchanged. That is why sound ID is always free. Kahl et al. (2021), Ecological Informatics 61: 101236.</string>
+    <string name="about_row_photo_credits">Photo credits</string>
+    <string name="about_row_photo_credits_sub">Photographer and license for every photo</string>
+    <string name="about_row_licenses">Open-source licenses</string>
+    <string name="about_row_licenses_sub">Libraries, models and fonts</string>
+    <string name="photo_credits_title">Photo credits</string>
+    <string name="photo_credits_intro">All %1$s species photos in Birdy come from Wikimedia Commons and are resized. Tap a photo to open the original, or its license to read it.</string>
+    <string name="photo_credits_hero">Main photo</string>
+    <string name="photo_credits_numbered">Photo %1$s</string>
+    <string name="photo_credits_by">Photo: %1$s</string>
+    <string name="photo_credits_resized">resized</string>
+    <string name="photo_credits_row_description">%1$s, %2$s. Photo: %3$s. License: %4$s. Wikimedia Commons, resized.</string>
+    <string name="photo_credits_open_file">Open the original on Wikimedia Commons</string>
+    <string name="photo_credits_open_license">Open the license %1$s</string>
+    <string name="photo_credits_error">The photo credits could not be loaded.</string>
+    <string name="photo_credits_other_title">Other images</string>
+    <string name="photo_credits_use_premium">Premium screen</string>
+    <string name="photo_credits_use_model_test">Test image for the photo model</string>
+    <string name="licenses_title">Open-source licenses</string>
+    <string name="licenses_intro">Birdy is built on open-source code, models and fonts made by others. Their licenses and notices are here. Tap a row to read the text.</string>
+    <string name="licenses_section_models">Models</string>
+    <string name="licenses_section_fonts">Fonts</string>
+    <string name="licenses_section_tensorflow">TensorFlow Lite</string>
+    <string name="licenses_section_google">Google’s libraries</string>
+    <string name="licenses_section_libraries">Libraries</string>
+    <string name="licenses_row_version">Version %1$s</string>
+    <string name="licenses_entry_native">Native code in TensorFlow Lite, %1$s components</string>
+    <string name="licenses_entry_google">Open-source code in Google’s libraries</string>
+    <string name="licenses_open">Read the license</string>
+    <string name="licenses_error">The licenses could not be loaded.</string>
+    <string name="license_text_includes">Includes: %1$s</string>
+    <string name="license_text_website">Website</string>
+    <!-- Birdy's own lines before desugar_jdk_libs' licence (tools/licenses/generate.py), word for word as in the file (LicenseScreensTest). -->
+    <string name="license_preface_desugar_about">desugar_jdk_libs 2.1.5: Java library code from OpenJDK that the Android build compiles into the app, so that java.time and other Java APIs work on older Android versions. It is licensed under the GNU General Public License, version 2, with the Classpath Exception.</string>
+    <string name="license_preface_desugar_source">Source code: https://github.com/google/desugar_jdk_libs/tree/73170c345e6a762fc6a1f0301bb15218850023ef (the commit that prepared version 2.1.5, 2025-02-14)</string>
+    <string name="license_preface_desugar_text_source">Source of this text: https://raw.githubusercontent.com/google/desugar_jdk_libs/73170c345e6a762fc6a1f0301bb15218850023ef/LICENSE</string>
+    <string name="license_preface_desugar_config_about">desugar_jdk_libs_configuration 2.1.5 (the R8 project), the LICENSE in its JAR:</string>
+    <string name="license_preface_desugar_config_text_source">Source of this text: LICENSE in desugar_jdk_libs_configuration-2.1.5</string>
 
     <!-- Settings row effects (Plan 6a Task 13) -->
-    <string name="settings_share_copy">Birdy — a field birder’s digital companion. Get it on Google Play: https://play.google.com/store/apps/details?id=se.birdy.android</string>
-    <string name="settings_feedback_subject">Birdy v%1$s — feedback</string>
+    <string name="settings_share_copy">Birdy, a field birder’s digital companion. Get it on Google Play: https://play.google.com/store/apps/details?id=se.birdy.android</string>
+    <string name="settings_feedback_subject">Birdy v%1$s: feedback</string>
 
     <!-- ===== Plan 6b2 T5: Audio-scan strings ===== -->
     <string name="audio_scan_headline">*Listen* for a song</string>
@@ -655,15 +709,15 @@
     <string name="audio_scan_journal_sub">Tap to listen</string>
     <string name="audio_scan_marginalia_top">Hold your phone still and *let it sing*</string>
     <string name="audio_scan_cta_idle">Tap to listen</string>
-    <string name="audio_scan_cta_recording">Listening — tap to stop</string>
+    <string name="audio_scan_cta_recording">Listening. Tap to stop</string>
     <string name="audio_scan_analyzing">Analyzing…</string>
     <string name="audio_scan_permission_title">Listen for a song</string>
-    <string name="audio_scan_permission_body">Birdy needs your microphone to identify bird songs — audio stays only on your phone.</string>
+    <string name="audio_scan_permission_body">Birdy needs your microphone to identify bird songs. Audio stays only on your phone.</string>
     <string name="audio_scan_permission_grant">Grant permission</string>
     <string name="audio_scan_permission_open_settings">Open settings</string>
     <string name="audio_scan_recording_failed">Microphone failed to start.</string>
     <string name="audio_scan_bootstrap_failed">Audio identification could not start on this device.</string>
-    <string name="audio_scan_demo_banner">Demo mode — the real model could not load</string>
+    <string name="audio_scan_demo_banner">Demo mode: the real model could not load</string>
     <string name="audio_scan_analyze_failed">Couldn't identify the sound.</string>
     <string name="audio_scan_retry">Try again</string>
     <string name="audio_scan_mic_cd_idle">Start recording</string>
@@ -671,7 +725,7 @@
     <string name="audio_scan_mic_cd_analyzing">Analyzing</string>
     <string name="audio_scan_hearing_chip">Hearing: %1$s · %2$s</string>
     <string name="audio_scan_cancel">Cancel</string>
-    <string name="audio_scan_cta_recording_locked">Listening — stop available in %1$s s</string>
+    <string name="audio_scan_cta_recording_locked">Listening. Stop available in %1$s s</string>
     <string name="audio_noBird_hint1">Move closer to the bird.</string>
     <string name="audio_noBird_hint2">Reduce wind noise behind you.</string>
     <string name="audio_noBird_hint3">Record while the bird is actually singing.</string>
@@ -683,7 +737,7 @@
          the target is the Daily bird hunter badge. -->
     <string name="daily_bird_card_eyebrow">Bird of the day</string>
     <string name="daily_bird_kicker_fmt">Bird of the day · %1$s</string>
-    <string name="daily_bird_date_fmt">%1$s %2$d %3$s</string>
+    <string name="daily_bird_date_fmt">%1$s %2$d&#160;%3$s</string>
     <string name="daily_bird_weekday_mon">Mon</string>
     <string name="daily_bird_weekday_tue">Tue</string>
     <string name="daily_bird_weekday_wed">Wed</string>
@@ -746,17 +800,26 @@
 
     <!-- Settings — Notifications -->
     <string name="settings_section_notifications">NOTIFICATIONS</string>
-    <string name="settings_toggle_daily_bird">Bird of the day — daily reminder</string>
+    <string name="settings_toggle_daily_bird">Bird of the day, daily reminder</string>
     <string name="settings_notifications_disabled_helpline">Notifications disabled in Android system settings →</string>
 
     <!-- Notifications -->
     <string name="notification_daily_bird_title_fmt">Bird of the day: %1$s</string>
     <string name="notification_daily_bird_body">Can you catch it today? Camera, photo or call all count.</string>
+    <string name="notification_daily_bird_photo_credit">Photo: %1$s, %2$s</string>
     <string name="daily_bird_caught_today">Caught today</string>
     <string name="daily_bird_not_caught">Not caught today</string>
-    <string name="settings_toggle_trophy">Badge progress — weekly</string>
+    <string name="settings_toggle_trophy">Badge progress, weekly</string>
     <string name="notification_trophy_title">Toward your next badge</string>
     <string name="notification_trophy_body_fmt">%1$s of %2$s badges unlocked. Closest: %3$s (%4$s/%5$s).</string>
+
+    <!-- Notification channels (Settings → Apps → Birdy → Notifications) -->
+    <string name="notification_channel_daily_bird_name">Bird of the day</string>
+    <string name="notification_channel_daily_bird_description">A species to look out for, every morning.</string>
+    <string name="notification_channel_weekly_recap_name">Weekly recap</string>
+    <string name="notification_channel_weekly_recap_description">Your week in the field, Sunday evening.</string>
+    <string name="notification_channel_trophy_progress_name">Badge progress</string>
+    <string name="notification_channel_trophy_progress_description">Once a week: how close you are to your next badge.</string>
 
     <!-- Badges -->
     <string name="badge_premium_early_pilgrim_name">Early pilgrim</string>
@@ -769,19 +832,13 @@
     <string name="badge_desc_daily_bird_first">Save today’s curated bird for the first time.</string>
 
     <!-- ===== v1.2 Phase B: Weekly Recap ===== -->
-    <string name="recap_eyebrow_fmt">Field report · Week %1$s</string>
+    <string name="recap_eyebrow_fmt">Field report · Week&#160;%1$s</string>
     <string name="recap_headline_active">A week in the *field*.</string>
     <string name="recap_headline_quiet">A *quiet* week.</string>
     <plurals name="recap_summary_active_fmt">
         <item quantity="one">%1$d sighting this week.</item>
         <item quantity="other">%1$d sightings this week.</item>
     </plurals>
-    <plurals name="recap_summary_active_new">
-        <item quantity="one">%1$d sighting this week, and a new acquaintance.</item>
-        <item quantity="other">%1$d sightings this week, and a new acquaintance.</item>
-    </plurals>
-    <!-- %1$s = recap_stats_finds, %2$s = recap_stats_new_species, %3$s = recap_stats_week_streak. -->
-    <string name="recap_stats_fmt">%1$s · %2$s · %3$s</string>
     <plurals name="recap_stats_finds">
         <item quantity="one">%1$d sighting</item>
         <item quantity="other">%1$d sightings</item>
@@ -794,27 +851,73 @@
         <item quantity="one">%1$d week in a row</item>
         <item quantity="other">%1$d weeks in a row</item>
     </plurals>
-    <string name="recap_new_badge_fmt">New stamp: %1$s</string>
-    <!-- %1$s is the signed difference ("+2", "-1"); the quantity is its size. -->
-    <plurals name="recap_delta_fmt">
-        <item quantity="one">vs last week: %1$s sighting</item>
-        <item quantity="other">vs last week: %1$s sightings</item>
+    <!-- Release 1.3.0 Task 7j, "Uppslag 1": the week's dates under the headline. -->
+    <!-- %1$d = first day, %2$d = last day, %3$s = month ("5 to 11 October"). -->
+    <string name="recap_dates_one_month_fmt">%1$d to %2$d&#160;%3$s</string>
+    <!-- "28 September to 4 October". -->
+    <string name="recap_dates_two_months_fmt">%1$d&#160;%2$s to %3$d&#160;%4$s</string>
+    <!-- %1$s = recap_dates_*, %2$d = days with at least one sighting. -->
+    <plurals name="recap_sub_active">
+        <item quantity="one">%1$s. Out on %2$d&#160;day.</item>
+        <item quantity="other">%1$s. Out on %2$d&#160;days.</item>
     </plurals>
-    <string name="recap_empty_plate">The page is blank — no sightings yet.</string>
-    <string name="recap_new_species_tag">New species</string>
+    <string name="recap_sub_quiet">%1$s.</string>
+    <!-- The words under the three numbers in the header row (shown in caps). -->
+    <plurals name="recap_ledger_finds">
+        <item quantity="one">sighting</item>
+        <item quantity="other">sightings</item>
+    </plurals>
+    <plurals name="recap_ledger_new_species">
+        <item quantity="one">new species</item>
+        <item quantity="other">new species</item>
+    </plurals>
+    <plurals name="recap_ledger_weeks">
+        <item quantity="one">week in a&#160;row</item>
+        <item quantity="other">weeks in a&#160;row</item>
+    </plurals>
+    <!-- The header row read as one sentence: recap_stats_finds, recap_stats_new_species, recap_stats_week_streak. -->
+    <string name="recap_ledger_a11y_fmt">%1$s, %2$s, %3$s.</string>
+    <!-- %1$s is the signed difference ("+3", "-1"); the quantity is its size. -->
+    <plurals name="recap_delta_line">
+        <item quantity="one">%1$s sighting compared with last week</item>
+        <item quantity="other">%1$s sightings compared with last week</item>
+    </plurals>
+    <string name="recap_delta_same">As many sightings as last week</string>
+    <!-- A day in the Monday to Sunday strip, for TalkBack. %1$s = "Monday 5 October". -->
+    <plurals name="recap_day_a11y">
+        <item quantity="one">%1$s, %2$d sighting</item>
+        <item quantity="other">%1$s, %2$d sightings</item>
+    </plurals>
+    <string name="recap_day_none_a11y">%1$s, no sightings</string>
+    <string name="recap_day_future_a11y">%1$s, still to come</string>
+    <string name="recap_section_new">New on your life list</string>
+    <!-- %1$d = the species' number in the life list, %2$s = "Sat 10 Oct". -->
+    <string name="recap_new_lifelist_fmt">№&#160;%1$d on your life list · %2$s</string>
+    <!-- %1$s = species, %2$d = life-list number, %3$s = "Saturday 10 October". -->
+    <string name="recap_new_a11y_fmt">%1$s, number %2$d on your life list, first seen %3$s</string>
+    <string name="recap_new_tag">New</string>
+    <string name="recap_stamp_label">New stamp</string>
+    <!-- %1$s = stamp name, %2$d = its number, %3$s = its description. -->
+    <string name="recap_stamp_a11y_fmt">New stamp: %1$s, number %2$d. %3$s</string>
+    <string name="recap_stamp_none_label">This week's stamp</string>
+    <string name="recap_stamp_none">No new stamp this week.</string>
+    <string name="recap_section_all_fmt">All sightings · %1$d</string>
+    <!-- The grid heading for TalkBack ("All sightings, 7"). -->
+    <string name="recap_section_all_a11y_fmt">All sightings, %1$d</string>
+    <!-- A square in the grid: %1$s = species, %2$s = "Sunday 11 October". -->
+    <string name="recap_find_a11y_fmt">%1$s, %2$s</string>
     <string name="recap_quiet_encouragement">No rush. Ten minutes in the park is enough for the week's first line.</string>
     <string name="recap_streak_label">Your streak</string>
-    <string name="recap_streak_nudge_fmt">%1$s weeks running — keep it alive before Sunday ends. A great tit in the park is enough.</string>
-    <string name="recap_cta_open_camera">Open the camera →</string>
+    <string name="recap_streak_nudge_fmt">%1$s weeks running. Keep it alive before Sunday ends: a great tit in the park is enough.</string>
+    <string name="recap_cta_open_camera">Open the camera</string>
     <string name="recap_load_error">Couldn't open this week’s page. Try again later.</string>
     <string name="recap_lifelist_entry_title">This week's page</string>
-    <string name="recap_a11y_fmt">This week's page, week %1$s</string>
     <string name="notification_recap_active_title">Your week in the field</string>
     <!-- %1$s = recap_stats_finds, %2$s = recap_stats_new_species. -->
     <string name="notification_recap_active_body_fmt">%1$s, %2$s. See this week's page.</string>
     <string name="notification_recap_streak_title">Only the evening left</string>
-    <string name="notification_recap_streak_body">A great tit in the park is enough — keep your streak going.</string>
-    <string name="settings_toggle_weekly_recap">Weekly recap — Sunday evening</string>
+    <string name="notification_recap_streak_body">A great tit in the park is enough. Keep your streak going.</string>
+    <string name="settings_toggle_weekly_recap">Weekly recap, Sunday evening</string>
     <string name="settings_location_section">Location</string>
     <string name="settings_toggle_location">Save location with my finds</string>
     <string name="settings_location_caption">Stored only on your phone. Needed for the map.</string>
@@ -844,7 +947,7 @@
     <!-- DP D card: templates (pre-format numbers in Kotlin, no %%) -->
     <string name="badge_progress_counted">%1$s of %2$s %3$s</string>
     <string name="badge_next_tier_label">Next level</string>
-    <string name="badge_next_tier_value">%1$s — %2$s to go</string>
+    <string name="badge_next_tier_value">%1$s, %2$s to go</string>
     <!-- ===== Badges v2: Trophy room ===== -->
     <string name="trophy_room_intro_eyebrow">Birder profile</string>
     <string name="trophy_room_headline">Your *trophy room*.</string>
@@ -883,4 +986,14 @@
         <item quantity="other">%1$d located finds waiting on the map</item>
     </plurals>
     <string name="map_teaser_cta">Unlock with Premium</string>
+    <!-- Release 1.3.0, 7e-2 + 7i-fix A: credits on the species profile, Match and Disambig
+         (legal review §2 and §4). -->
+    <string name="photo_credits_public_domain">public domain</string>
+    <string name="profile_text_credit">The text is an AI summary of %1$s and may be shared under %2$s.</string>
+    <string name="profile_text_credit_two">The text is an AI summary of the Wikipedia articles in %1$s and %2$s and may be shared under %3$s.</string>
+    <string name="profile_text_credit_article">the Wikipedia article</string>
+    <string name="profile_text_credit_article_sv">the Swedish Wikipedia article</string>
+    <string name="profile_text_credit_article_en">the English Wikipedia article</string>
+    <string name="profile_text_credit_language_sv">Swedish</string>
+    <string name="profile_text_credit_language_en">English</string>
 </resources>

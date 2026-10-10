@@ -34,7 +34,7 @@ Skriven i slutet av sessionen 2026-10-05–07 (Windows). Läs den här filen och
 8. **7i Upphovsrätts- och juridikgenomgång** (KRÄVS): se Plan 3, avsnittet Task 7i, tio punkter; resultatet i `docs/legal/2026-10-1.3.0-genomgang.md`.
 9. **Task 8** R8-röktest (minifierat bygge) av tack-skärmen och betalväggen.
 10. **Task 9** butiksbilder i webbens look (KRÄVS; bara CC0/PD-foton; feature graphic; laddas upp med vC130, agenten fyller i Console med Albins godkännande).
-11. **Task 10** vC130 produktionsbygget: höj `releaseVersionCode` till 130, ny MapTiler-nyckel (alternativ b: Albin skapar ny nyckel i MapTiler Cloud, Default key återkallas när vC130 är live), signering, raden `Birdy release config: versionCode=130 versionName=1.3.0 GRANDFATHER_CUTOFF_MS=1792101600000 billingTestBuild=false`. **Brytpunkten 2026-10-16 00:00 flyttas FÖRE bygget om go-live inte sker senast 2026-10-14.** Ladda upp till Intern testning först; Albin kör hela testsviten på telefonen; befordra till produktion.
+11. **Task 10** vC130 produktionsbygget: höj `releaseVersionCode` till 130, ny MapTiler-nyckel (alternativ b: Albin skapar ny nyckel i MapTiler Cloud, Default key återkallas när vC130 är live), signering, raden `Birdy release config: versionCode=130 versionName=1.3.0 GRANDFATHER_CUTOFF_MS=1792188000000 billingTestBuild=false MAPTILER_STYLE_ID=<Albins egna stil-id>` (Albin lägger `MAPTILER_STYLE_ID` och den nya nyckeln i `~/.gradle/gradle.properties`; `unset` = MapTilers färdiga stil, tillåten men inte i appens färger). **Brytpunkten flyttad 2026-10-07 till 2026-10-17 00:00 för go-live torsdag 2026-10-15; flyttas igen FÖRE bygget om go-live sker senare.** Ladda upp till Intern testning först; Albin kör hela testsviten på telefonen; befordra till produktion.
 12. **Task 11** avslut: CI grön på PR #53, slutgranskning av hela release-grenen, merge till main, CLAUDE.md.
 
 **1.3.1 (direkt efter go-live, Albins val 2026-10-07 "kör allt" enligt rekommendationen):** Märken 1b (certifikatbladet med fyndet som gav märket: kräver ett nytt fält `observationId` i `BadgeUnlock`, troférummet som hyllor, stämpelslaget), PDF 1 (1.3-färgerna, riktiga foton med krediter, sida "Bildkällor"; i dag har PDF:en inga foton och rad 25 krockar med sidnumret), Pop-up 1 (Premium-ark från 5:e sparade fyndet, en gång, aldrig för tidiga användare/Premium, gemensam 14-dagarspaus för alla Premium-uppmaningar; 3:e sparade är redan Play-recensionen), Intro 1 (fem sidor, levande demo, Dagens fågel). Senare: Uppslag 2/3, Märken 2 (fältpass), PDF 2, Intro 2.
@@ -42,9 +42,44 @@ Skriven i slutet av sessionen 2026-10-05–07 (Windows). Läs den här filen och
 ### Albins beslut 2026-10-07 kväll: en gemensam lansering och Mac-överlämningen sist
 
 1. **Allt släpps i en stöt:** appen 1.3.0 (vC130) befordras till produktion samma dag som de första artsidorna publiceras på birdy.community och de första inläggen går ut på Facebook, Instagram och YouTube Shorts (tredje kanalen, schemaläggs i YouTube Studio; TikTok senare för betalda annonser). Se spec §15.1 i `2026-09-25-artsidor-design.md`.
-   - **Kopplingen till brytpunkten:** `GRANDFATHER_CUTOFF_MS` bakas in i vC130 och ska vara lanseringsdagen + 48 h. Bestäm lanseringsdagen INNAN vC130 byggs; flyttas lanseringen efter 2026-10-14 flyttas brytpunkten (i dag 2026-10-16 00:00) före bygget.
+   - **Kopplingen till brytpunkten:** `GRANDFATHER_CUTOFF_MS` bakas in i vC130 och ska vara lanseringsdagen + 48 h. Bestäm lanseringsdagen INNAN vC130 byggs; flyttas lanseringen efter torsdag 2026-10-15 flyttas brytpunkten (sedan 2026-10-07: 2026-10-17 00:00, `1792188000000`) före bygget.
    - **Artsidornas data:** sedan `main` slogs ihop med `release/1.3.0` (d96b0760) finns både de städade fotona och fas 1b-pipelinen på release-grenen, så R1/R2 och de betalda körningarna kan köras från en gren av `release/1.3.0` utan att vänta på Task 11.
 2. **Det absolut sista i releasen (efter Task 11):** städa (worktrees under `C:/w/`, sammanslagna grenar, scratch), granska iOS-spåret (i0 till i4 och vad 1.3.0 ändrat i delad kod som Macen måste ta hand om: nya `UserPreferences`-medlemmar i `NsUserDefaultsUserPreferences`, iOS-värdarna som 7b ändrade, Dagens fågel-notisen, priser från StoreKit, `PurchaseResult.Pending`), uppdatera iOS-planen (i5 StoreKit, i6 App Store) med nuvarande modell eftersom de skrevs med en äldre, och skriv en enkel överlämning för Mac-sessionen. Plan 3 Task 12.
+
+### Albins svar på beslutssidan 2026-10-07 (sent kväll)
+
+Beslutssidan: https://claude.ai/artifact/NHEcrCSEqvrhU9KrHWNX42 (uppdateras med läget när allt nedan är gjort).
+
+1. **Artsidornas modell: B, Opus 5.5** (ca 90 USD för 180 arter). Pipelinen byter standard och kör R3 igen, sedan R4, R4b, R5 (undantagsarket via Drive till Albin) och R6 för våg 1. R7 (jämförelser) väntar på sökordsplaneraren.
+2. **Datum:** de första inläggen på sociala medier **fredag 9 oktober** (artsidor måste vara live då, så fas 2 Task 10 och 12 till 16 före Task 11, jämförelsesidorna sist); **appen + annonser torsdag 15 oktober**. Brytpunkten blir **2026-10-17 00:00 Stockholm (`1792188000000`)**, ändras på release-grenen före vC130. Play granskar uppdateringar på upp till några dagar: vC130 laddas upp senast tisdag 13 oktober med styrd publicering.
+3. **MapTiler Flex:** Albin skaffar Flex nästa vecka (Flex tillåter kommersiell användning enligt prissidan). Koden byts redan nu: inget färgfilter på rutorna (villkoren §4.4 gäller alla planer), stil-id ur en Gradle-egenskap så att Albins egen stil (MapTiler Customize, samma papperstoner) kan bakas in i vC130 utan kodändring. Ny appnyckel samtidigt.
+4. **Arttexterna under CC BY-SA 4.0: ja.** Det är Wikipedias licens som kräver det för bearbetningar; risken ligger i att inte göra det. Kredit med länk till artikel och revision, licens och AI-märkning finns på varje sida.
+5. **BirdNET:** brevet till ccb-birdnet@cornell.edu ligger i Albins Claude Docs (https://claude.ai/artifact/DB8bKVYQX4bmzVLPKyDjWo); Albin skickar det själv. Ljud-ID körs på BirdNET, så frågan gäller även om ljud-ID är gratis. Plan B vid nej: Googles Perch (Apache 2.0).
+6. **Kråka:** namnet står kvar (Corvus corone heter redan Kråka i appen; ingen ändring).
+7. **Publika repot:** BirdLife Sveriges PDF bort ur trädet, säkerhetssvep av träd och historik, privata uppgifter i CLAUDE.md/AGENTS.md listas, README och `SECURITY.md` (gren `chore/1.3-repo`). Historiken skrivs inte om utan Albins uttryckliga ja (force-push, alla kloner och Macen måste klona om).
+8. **Licensskärmen:** behålls som genererad lista.
+9. **Hjälterödhaken på webben:** AI-genererad, verktyget okänt.
+10. **Appikonens fågel:** gjord med AI. (AI-bilder har svagt eller inget upphovsrättsskydd; varumärkesskyddet nedan blir viktigare.)
+11. **EU-varumärket "Birdy" (klass 9 och 42) efter lanseringen:** EUIPO:s avgift är 850 EUR för en klass + 50 EUR för den andra = 900 EUR. EUIPO:s SME Fund 2026 (75 % tillbaka, högst 700 EUR) har slut på varumärkescheckar; väntar man på nästa omgång (brukar öppna i februari) blir det ca 225 EUR. Checken måste sökas före ansökan.
+12. **Speed Insights Plus på albit.se:** avstängd 2026-10-07 (förnyas inte, finns kvar till 7 nov 2026).
+13. När allt ovan är gjort: beslutssidan uppdateras med läget, sedan CLAUDE.md och minnet så att en ny session kan ta vid.
+14. **Sociala videor (Albin 2026-10-07 sent):** share-alike tillåtet (alternativ a): CC BY-SA-foton och inspelningar får användas, och videon publiceras då under CC BY-SA 4.0 (står i bildtexten); NC och ND aldrig. 156 av 180 arter går att använda. "Whose song is this?" för tättingar, "voice" för övriga. **Ljudanimationen ska göras om** ("not satisfying"): fyra alternativ (fältguidesonagram, levande vågform, sångring, bläcknoter) renderas som korta klipp, Albin väljer. Verktyget: `tools/social/` på grenen `social/see-the-song`, förhandsvisning https://claude.ai/artifact/MhoiQXSgEVPRxvD71QKoeJ.
+
+### ⏸️ LÄGET NÄR SESSIONEN PAUSADES 2026-10-07 ca 19.00 (Claude Codes sessionsgräns, återställs 19.40) — NÄSTA SESSION BÖRJAR HÄR
+
+Alla grenar är pushade. Ledgers: `C:/w/birdy-130/.superpowers/sdd/progress.md` och `C:/w/birdy-artsidor/.superpowers/sdd/progress.md`.
+
+| Spår | Gren / worktree | Läge | Nästa steg |
+|---|---|---|---|
+| Release 1.3.0 | `release/1.3.0` @ `38b601e1`, `C:/w/birdy-130` | Sammanslaget i dag: QA-fixarna (`a10ee89d`, 9 defekter + butiksbilder 01/02/03/06), repot (`835c009c` + `38b601e1`: VP11 ur trädet, Dependabot 96–99, gitleaks i CI, `docs/legal/image-sources.md`, README, `SECURITY.md`), CLAUDE.md/AGENTS.md utan privata uppgifter. Full grind grön efter QA-sammanslagningen. | Slå ihop `feature/1.3-karta` efter granskning. |
+| Kartan, brytpunkt, notisen | `feature/1.3-karta` @ `ed3a8a9a`, `C:/w/birdy-karta` | **Ej granskad, grinden ej körd.** `f10d0dd5` brytpunkt `1792188000000` (17 okt 00:00), `c2a02874` MapTiler utan färgfilter + `MAPTILER_STYLE_ID`, `7efb777a` 08.00-notisen = appens fågel, `ed3a8a9a` städ. **Okommittade ändringar** i `MapTilerUrls.kt` + `MapTilerKey.ios.kt` (agenten avbröts mitt i). | Granska diffen, kör klart, grinden (`--no-configuration-cache`, rensa assets-mellanlagren), skärmbilder före/efter av kartan, granskning, merge. |
+| Artsidor fas 2 | `website/artsidor` @ `89d22306`, `C:/w/birdy-artsidor` | Task 1–10 ✅, 12 ✅, 13 klar (granskningen avbröts, kör om), **14 påbörjad** (`89d22306`: sitemap, SEO-regler, axe, förhandsbygget; ej klar/granskad). Väntande minors från Task 10/12-granskningen: spec §5/§13 för sticky, reservvärde 150/`--sticky-top`, "med AI" i licensstycket på om-sidan, `og:image` med `fit: contain` (ingen beskärning), "behåller högst 30 fakta". `COMPARISONS_ENABLED=false` tills Task 11. | Granska 13, gör klart 14 + minors, Task 15, 16 (publiceringsloopen), sedan 11. Slå ihop till main när 16 är klar. |
+| Artsidornas data | `data/artsidor` @ `5f97903d`, `C:/w/birdy-artdata` | **Var stoppad av API-gränsen i Anthropic Console; gränsen höjd från 10 till 100 USD/månad 2026-10-07 19.55 (agenten via Chrome, Albins tillstånd; 11,30 USD använt, 88,70 USD kredit kvar), API:t svarar igen** ("specified API usage limits … regain access on 2026-11-01"). Gjort: standard Opus 5.5 (`721862a1`), R3 om på 4 arter ($2.02), R4 faktablad för 10 arter ($2.19), vågor 40/84/56. Totalt $9.04. Klara för publicering: 0. | När Albin höjt gränsen: `web facts --max-cost 50`, `web verify --max-cost 25 --workers 2`, `web sheet --wave 1` (ladda upp till Drive), `web write --wave 1 --max-cost 40`. Uppskattat ~$66 kvar. Uppföljare: Råka har förväxlingsart på SV men inte EN. |
+| Sociala videor | `social/see-the-song` @ `62e46929` + `social/sound-options` (okommittat i `C:/w/birdy-social`) | Renderaren klar; granskning "Changes needed" (ffmpeg-fel kraschar batchen, atomisk utdata, ≤ 30 s för hela videon, licens-URL i FB/YT, ljudkredit "edited", omslaget får inte visa fågeln, birdy.community-raden upp ur Reels-överlägget + minors). Fyra ljudanimationer renderade: https://claude.ai/artifact/4YHJXX6zLwpKUa8r5jZhQk | **Albin valde C, "Song halo" (2026-10-07), med en kort paus innan arten avslöjas** (ringen stillnar, ett andetag, sedan fotot och namnet). Sedan: bygg vald stil på `social/see-the-song`, granskningsfixarna, rendera första veckan (share-alike), schemat från fre 9 okt 08.00. |
+
+**Albins steg (i ordning):** ~~(1) API-gränsen~~ (klar, 100 USD); ~~(2) ljudanimation~~ (C); (3) skapa Facebook-sida, Instagram-företagskonto kopplat till den och YouTube-kanal, alla "Birdy"; (4) skicka BirdNET-brevet (Claude Docs https://claude.ai/artifact/DB8bKVYQX4bmzVLPKyDjWo); (5) MapTiler Flex + egen stil i MapTiler Customize + ny appnyckel senast måndag 12 okt (`MAPTILER_STYLE_ID` och `MAPTILER_API_KEY` i `~/.gradle/gradle.properties`); (6) köptestet med vC129; (7) läs Googles vägledning om Play Billing-bibliotekets diagnostik i datasäkerhetsformuläret före vC130; (8) bankkontot sist. Små frågor: var den gamla flygande fågeln (logga/splash/favicon) också AI-gjord? Slå på privat sårbarhetsrapportering på GitHub? Raden "Google Play and the Google Play logo are trademarks of Google LLC." i webbens sidfot?
+
+**Nytt önskemål (Albin 2026-10-07 kväll): support via Resend.** Ta emot och automatisera kundtjänst/support för Birdy med Resend (inkommande e-post till t.ex. `support@birdy.community`, webhook till en funktion som kvitterar, sorterar och vidarebefordrar till Albin). Gör en kort spec + plan före release: DNS för birdy.community (MX/SPF/DKIM via Resend), Albins Resend-konto och nyckel (Albin skapar), var webhooken körs (Vercel-funktion i `website/`), vad som sparas (inget i onödan, integritetslöftet), byt `CONTACT_EMAIL` i `website/src/lib/links.ts` + juridiktexterna + appens Om (Pending follow-up 2 i CLAUDE.md), uppdatera integritetspolicyn om supportmejl.
 
 ## 4. Emulatorn
 
@@ -56,8 +91,8 @@ Skriven i slutet av sessionen 2026-10-05–07 (Windows). Läs den här filen och
 
 ## 5. Albins steg (blockerar release)
 
-1. **Köptestet med vC129** på sin telefon (gå med via `https://play.google.com/apps/internaltest/4701434188270894832`, installera, köp Livstid med testkortet; "Välkommen, fältmedlem." = hård grind före vC130).
-2. **Ny MapTiler-nyckel** i MapTiler Cloud före vC130-bygget.
+1. **Köptestet med vC129** på sin telefon (gå med via anmälningslänken under Play Console → Intern testning, installera, köp Livstid med testkortet; "Välkommen, fältmedlem." = hård grind före vC130).
+2. **MapTiler Flex, egen stil och ny nyckel** före vC130-bygget: skapa stilen i MapTiler Customize (appens papper och sepia), lägg dess id i `MAPTILER_STYLE_ID` och den nya nyckeln i `MAPTILER_API_KEY` i `~/.gradle/gradle.properties` (Macen: `iosApp/Local.xcconfig`).
 3. **Bankkontot** i betalningsprofilen (sist): Play Console → Inställningar → Betalningsprofil → Betalningssätt → "Lägg till betalningsmetod" (agenten öppnade sidan 2026-10-07; Albin fyller i själv).
 4. Kontrollera att inspelningstimern går i rätt takt på riktig telefon (den gick för fort på emulatorn).
 
@@ -88,3 +123,26 @@ Samma filer ligger i `docs/superpowers/specs/assets/2026-10-06-1.3-val/` på rel
 ## 9. Arbetssätt som fungerade (behåll)
 
 Subagent-driven development: en implementerare per task (Sonnet för mekaniskt, Opus för omdöme), en separat granskare efter varje task (spec, sedan kvalitet), fixvågor tills granskaren säger "Ready". Parallella spår i egna worktrees under `C:/w/` när de rör olika filer; huvudagenten slår ihop. Granskningarna fångade riktiga fel varje gång (bl.a. pamflettfotot, tyst inspelning, midnattsbuggen, publicerade sidor med strukna fakta). Förhandsvisningar som länkar innan större UI-arbete; Albin väljer de djärvare förslagen.
+
+### 🌙 Sen kväll 2026-10-07 (ny session efter sessionsgränsen)
+
+Läget står överst i `CLAUDE.md` på `main` ("LÄGET 2026-10-07 SEN KVÄLL"). Kort:
+
+| Spår | Gren | Läge | Nästa steg |
+|---|---|---|---|
+| Release 1.3.0 | `release/1.3.0` @ `a396da04` | `feature/1.3-karta` sammanslagen (brytpunkt `1792188000000`, kartan utan färgfilter, `MAPTILER_STYLE_ID`, notisen = appens fågel). | Task 9 när Albin valt variant, Task 10 vC130 när MapTiler-stilen och nyckeln finns (uppladdning senast tis 13 okt), Task 11, Task 12. |
+| Butiksbilder (Task 9) | `feature/1.3-butiksbilder` @ `526ac942` (`C:/w/birdy-butik`) | Tre varianter (A Karusellen, B Fältboken, C Espresso; rekommendation C), förhandsvisning i `docs/superpowers/specs/assets/2026-10-08-butiksbilder/`. Kartbilden tas om med Albins stil. | Albin väljer; rendera vald variant som PNG, granskning, merge. |
+| Artsidor fas 2 | `website/artsidor` (`C:/w/birdy-artsidor`) | Task 1–16 klara; Task 15–16 i granskning. | Efter godkänd granskning: in i `main`, publiceringsloopen torsdag. |
+| Artsidornas data | `data/artsidor` @ `90fec0e6` (`C:/w/birdy-artdata`) | `partial_migrant` (`d4b41275`). Våg 1: 31 av 40 klara; 9 flaggor för 8 arter i Albins Drive-ark. | Albins beslut → `web import` → `web write --wave 1`. Våg 2/3 senare (API-gränsen). |
+| Sociala videor | `social/see-the-song` @ `6d021074` (`C:/w/birdy-social`) | Stil C med paus, första veckan renderad, omgranskning "Changes needed" (logotyp över fotot, Commons-länk i FB/YT). | Fixvåg pågår, sedan schema från fre 9 okt 08.00. |
+| Support via Resend | (ingen gren än) | Sex val till Albin (artefakten QL5zLVdRhEhnYsjC813N9o). | Spec + plan efter hans svar. |
+
+### Albins tillägg 2026-10-07 ca 22.30 (före release 1.3.0)
+
+1. **Webbens bilder = butiksbilderna:** appbilderna på birdy.community (karusellen m.m.) byts till samma som i Google Play (variant C, `docs/play-store/store-assets/1.3.0/` och råskärmdumparna i `docs/play-store/screenshots/1.3.0/`).
+2. **Webben lyfts lite i design:** "Vi ska sticka ut, vi är speciella." Förhandsvisning med namngivna djärva riktningar görs på `website/1.3-premium` (`C:/w/birdy-premium`, assets i `docs/superpowers/specs/assets/2026-10-08-webb-lyft-premium/`); Albin väljer 8 okt, sedan SDD.
+3. **Egen Premium-sida** (`/sv/premium/`, `/premium/`): förklarar läget (Premium köps i Google Play från 1.3.0, alla som installerat före 17 okt 00.00 behåller Premium gratis för alltid, ljud-ID alltid gratis, ingen reklam eller spårning, iPhone på väg) och visar vad man får i dag med den nya designen.
+4. **Inspelningar som inte går att verifiera för vårt bruk stryks** i stället för att vänta på beslut (Kajans gjordes 2026-10-07, `6f077631`). Gäller även kommande vågor.
+5. **Sociala konton** (Facebook-sida, Instagram-företagskonto, YouTube-kanal, alla "Birdy"): Albin skapar dem 8 okt.
+
+Alla fem ska vara klara före lanseringen torsdag 15 oktober (webben kan gå live före appen, som förut).

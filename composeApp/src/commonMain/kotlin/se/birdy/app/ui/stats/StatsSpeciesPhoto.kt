@@ -13,6 +13,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.text.TextMeasurer
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.Dp
@@ -103,12 +104,25 @@ internal fun wordFitFontSize(
     sizes: List<TextUnit>,
     maxWidth: Dp,
 ): TextUnit? {
-    val measurer = rememberTextMeasurer()
     val maxWidthPx = with(LocalDensity.current) { maxWidth.toPx() }
+    return rememberTextMeasurer().firstSizeFittingWords(texts, style, sizes, maxWidthPx)
+}
+
+/**
+ * The measuring behind [wordFitFontSize], outside composition, for a caller that keeps the result
+ * in `remember` (the weekly recap's grid, release 1.3.0 Task 7j). Words are split at plain spaces
+ * only, so a no-break space keeps its two words together as one.
+ */
+internal fun TextMeasurer.firstSizeFittingWords(
+    texts: List<String>,
+    style: TextStyle,
+    sizes: List<TextUnit>,
+    maxWidthPx: Float,
+): TextUnit? {
     val words = texts.flatMap { it.split(' ') }.filter { it.isNotEmpty() }
     return sizes.firstOrNull { size ->
         words.all { word ->
-            measurer.measure(word, style.copy(fontSize = size), maxLines = 1, softWrap = false).size.width <= maxWidthPx
+            measure(word, style.copy(fontSize = size), maxLines = 1, softWrap = false).size.width <= maxWidthPx
         }
     }
 }
