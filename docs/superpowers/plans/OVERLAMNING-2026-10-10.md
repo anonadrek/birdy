@@ -2,6 +2,14 @@
 
 Skriven lör 10 okt cirka 14.00 på Windows-maskinen. **Nästa session börjar här.** Chatten med Albin är på engelska, repot och Slack på svenska. Nattens version av den här filen finns i git-historiken (`OVERLAMNING-2026-10-10.md` före `e16d5d43`).
 
+## Uppdatering lör 10 okt kväll (20.00)
+
+- **YouTube 29 okt till 7 nov: klart** (19.53). Alla fyra kanaler har See the song varje dag till och med 7 nov. Punkt 2 nedan är gjord.
+- **Bloggen och Premium är sammanslagna med `main`** (Albins OK: "Merge blog after and premium"), efter Albins önskan att flockkonsten alltid ska flyga ihop: alla små fåglar åt samma håll som fågeln de bildar, rödhaken speglad åt höger, de som lämnar i en båge framför huvudet, och i Premiums årsring följer fåglarna och dagens fågel ringen. Regeln står under Bestående fakta i CLAUDE.md. Valsidans val: Premium P3, Varför Birdy A.
+- **1.3.1:** fortfarande ingen app-bundle i utkastet "130 (1.3.1)" (kontrollerat två gånger i kväll). Albin har sagt ja till inskickningen ("yes ok för 1.3.1"); så fort AAB:n ligger i utkastet gör agenten punkt 1.2 nedan.
+- **Förloppsmätaren** (`social/forloppsmatare`, worktree `C:/w/birdy-social`): Albin har inte valt än. Slås ihop när han sagt OK eller beskrivit en ändring.
+- **iOS-simulator på Windows-maskinen:** går inte direkt (Simulatorn finns bara i Xcode på macOS, och Apples licens tillåter macOS bara på Apples hårdvara). Alternativen som gavs Albin: fjärrstyra Mac:en från Windows (Chrome Remote Desktop eller Skärmdelning via VNC), strömma CI:ns simulatorbygge till Chrome via Appetize.io (gratis 30 minuter i månaden, Starter 59 USD för 500 minuter; Albin skapar kontot), eller spela in sim-checken som video i CI. Kamera och ljud-ID kräver ändå en riktig iPhone.
+
 ## Läget på en minut
 
 - **Allt ligger på `main`.** Inga andra grenar lokalt eller på GitHub, inga öppna PR:er, inga worktrees, inga stashar, `C:/w/` är tom. Grenar som inte slogs ihop finns som taggar `archive/<gren>`; releasen är taggad `v1.3.1` (`ca9c5927`).
