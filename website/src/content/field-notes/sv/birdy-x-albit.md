@@ -2,7 +2,7 @@
 locale: sv
 slug: birdy-x-albit
 title: "Birdy × AlbIT: en rädsla för fåglar blev en app"
-description: "Birdy är AlbIT:s egen app. Här är berättelsen om idén, hur appen byggdes på 48 dagar, vad som sköter sig självt och målet: ett riktigt forum för alla som tycker om fåglar."
+description: "Birdy är AlbIT:s egen app. Här är berättelsen om idén, hur appen byggdes på 48 dagar och målet: ett riktigt forum för alla som tycker om fåglar."
 date: 2026-10-10
 category: Bakom Birdy
 image: ../../../assets/photos/birdy-x-albit.webp
@@ -18,7 +18,7 @@ Birdy började inte hos en fågelskådare. Jag var hemma hos min flickvän när 
 
 > Om du vet vilken fågel du ser, och kan lära dig något om den, blir den lite mindre främmande.
 
-Natten till den 30 april 2026, klockan 00.54, kom den första committen. Det var ingen kod än, bara idén, planen och reglerna. Allt skrevs efter midnatt.
+Natten till den 30 april 2026, klockan 00.54, kom den första committen. Det var ingen kod än, bara idén och planen. Allt skrevs efter midnatt.
 
 ## Två varumärken som möts
 
@@ -48,11 +48,9 @@ I juli började iPhone-appen byggas ur exakt samma kod. Kameran, foto-ID, ljud-I
 
 Birdy byggs av en person, jag, tillsammans med AI-agenter i Claude Code. Varje del börjar som en idé och en plan, byggs i små steg och granskas två gånger: först mot planen, sedan för kvalitet. Inget går ut innan testerna är gröna.
 
-Två regler har styrt arbetet. Den första skrev jag den 1 maj: ”Don't ask me for permission to run anything.” Den gav tempot. Den andra kom i juli, när en Mac började bygga iPhone-appen: allt som båda datorerna behöver veta skrivs in i projektet, varje gång.
+## Det som upprepas sköts automatiskt
 
-## Det mesta sköter sig självt
-
-Allt som går att automatisera är automatiserat. Besluten och designvalen är fortfarande mina.
+Det som upprepas varje dag sköts av automatik, med kontroller i varje steg. Besluten och designvalen är mina.
 
 - Artsidorna här på sajten skrivs ur källor som Wikipedia och Artportalen. En andra AI-modell kontrollerar varje faktum mot källan, och en sida publiceras bara när sajtens alla tester är gröna.
 - Dagens fågel byts vid midnatt, i appen och här på sajten.

@@ -36,8 +36,9 @@ const otherLocale: Locale = locale === 'sv' ? 'en' : 'sv';
 </Layout>
 
 <style>
-  .bhead { position: relative; background: var(--dark); color: var(--cream); padding: 34px 0 70px; --kick-color: var(--apricot); --jh-ink: var(--cream); --jh-accent: var(--apricot); }
-  .bhead .blead { color: rgba(255, 248, 238, .8); font-size: 16px; line-height: 1.6; max-width: 34rem; margin: 16px 0 0; text-wrap: pretty; }
+  /* The site's light peach paper, lit like the home hero (2026-10-10: no brown band), torn into the list below. */
+  .bhead { position: relative; color: var(--ink); background-color: var(--peach); background-image: linear-gradient(0deg, var(--peach) 0, rgb(253 229 203 / 0) 120px), radial-gradient(130% 120% at 70% 30%, var(--peach-hi) 0%, var(--peach) 45%, var(--peach-lo) 100%); padding: 44px 0 78px; }
+  .bhead .blead { color: var(--muted); font-size: 17px; line-height: 1.6; max-width: 36rem; margin: 18px 0 0; text-wrap: pretty; }
   .list { padding-bottom: 96px; }
   .first { position: relative; z-index: 3; margin-top: -40px; }
   .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 44px; }

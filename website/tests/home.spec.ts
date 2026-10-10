@@ -1387,6 +1387,29 @@ test.describe('bloggen', () => {
     });
   }
 
+  // The polished article (2026-10-10): a reading line at the top, a drop cap on the lead, the author and two more notes.
+  test('inlägget har läslinjen, anfangen, skribenten och fler fältanteckningar', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/blog/why-birdy/');
+    const bar = page.locator('[data-read-progress]');
+    const scale = () => bar.evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).a);
+    expect(await scale()).toBe(0);
+    await page.evaluate(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' }));
+    await expect.poll(scale).toBe(1);
+    const lead = page.locator('.article-prose > p').first();
+    expect(await lead.evaluate((el) => getComputedStyle(el, '::first-letter').float)).toBe('left');
+    await expect(page.locator('.aauthor .aauthor-n')).toHaveText('Albin Abrahamsson');
+    await expect(page.locator('.aauthor a')).toHaveAttribute('href', 'https://www.albit.se/om-albin/');
+    const more = page.locator('.amore a.ncard');
+    await expect(more).toHaveCount(2);
+    expect(await more.evaluateAll((els) => els.map((a) => a.getAttribute('href')))).not.toContain('/sv/blog/why-birdy/');
+    await expect(page.locator('.aend')).toHaveCSS('background-color', 'rgb(253, 229, 203)');
+    // The collab note introduces AlbIT in its end card instead of the author box.
+    await page.goto('/sv/blog/birdy-x-albit/');
+    await expect(page.locator('.aauthor')).toHaveCount(0);
+    await expect(page.locator('.amore a.ncard')).toHaveCount(2);
+  });
+
   test('inlägget Birdy × AlbIT byter till den höga bilden på mobilen', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/sv/blog/birdy-x-albit/');
@@ -1398,10 +1421,10 @@ test.describe('bloggen', () => {
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
   });
 
-  // The gallery wall turned light on 2026-10-10, so its kicker is the light sections' rust; the blog's band is still espresso.
-  test('listkickern är apricot på espresso och karusellkickern rost på det ljusa pappret', async ({ page }) => {
+  // The gallery wall and the blog's band both turned light on 2026-10-10, so both kickers are the light sections' rust.
+  test('listkickern och karusellkickern är rost på det ljusa pappret', async ({ page }) => {
     await page.goto('/sv/blog/');
-    await expect(page.locator('.bhead .kick').first()).toHaveCSS('color', 'rgb(242, 178, 122)');
+    await expect(page.locator('.bhead .kick').first()).toHaveCSS('color', 'rgb(154, 69, 38)');
 
     await page.goto('/sv/');
     await expect(page.locator('.tour-head .kick').first()).toHaveCSS('color', 'rgb(154, 69, 38)');

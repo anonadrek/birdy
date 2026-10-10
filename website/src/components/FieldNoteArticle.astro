@@ -9,9 +9,10 @@ import JournalHeadline from './ui/JournalHeadline.astro';
 import PlayStoreBadge from './ui/PlayStoreBadge.astro';
 import BuiltSpeciesLinks from './ui/BuiltSpeciesLinks.astro';
 import CollabHero from './CollabHero.astro';
-import { fieldNoteHref, fieldNotesHref, formatNoteDate, readingMinutes, type FieldNote } from '../lib/field-notes';
+import NoteCard from './NoteCard.astro';
+import { fieldNoteHref, fieldNotesHref, formatNoteDate, getFieldNotes, readingMinutes, type FieldNote } from '../lib/field-notes';
 import { getCopy } from '../lib/i18n';
-import { albitProductHref, ALBIT_URL } from '../lib/links';
+import { albitProductHref, ALBIT_URL, ALBIN_URL } from '../lib/links';
 import albitWordmark from '../assets/brand/albit-wordmark-white.png';
 import '../styles/article-prose.css';
 
@@ -31,6 +32,8 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
 // A rewritten note says so next to its date (2026-10-10).
 const updatedLabel = updated ? t.blog.updated.replace('{date}', formatNoteDate(updated, locale)) : null;
 // The collab title: the × between the two brands in AlbIT's gold, the rest as written.
+// Two more notes to read next, newest first (the list's own order).
+const more = (await getFieldNotes(locale)).filter((n) => n.data.slug !== note.data.slug).slice(0, 2);
 const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.indexOf('×')), title.slice(title.indexOf('×') + 1)] : [title, null];
 ---
 
@@ -38,6 +41,7 @@ const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.i
   {collab
     ? <Nav locale={locale} variant="solid" switchLangHref={otherPath} />
     : <Nav locale={locale} variant="overlay" scrim switchLangHref={otherPath} />}
+  <div class="aprog" aria-hidden="true"><span data-read-progress></span></div>
   <main id="main" tabindex="-1" class:list={{ 'is-collab': collab }}>
     {collab ? (
     <header class="chead">
@@ -66,6 +70,14 @@ const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.i
     )}
     <article class="asheet">
       <div class="article-prose"><BuiltSpeciesLinks><Content /></BuiltSpeciesLinks></div>
+      {!collab && (
+      <aside class="aauthor" aria-label={t.blog.authorKicker}>
+        <p class="aauthor-k">{t.blog.authorKicker}</p>
+        <p class="aauthor-n">Albin Abrahamsson</p>
+        <p class="aauthor-b">{t.blog.authorBio}</p>
+        <a href={ALBIN_URL}>{t.blog.authorLink}</a>
+      </aside>
+      )}
       {collab ? (
       <aside class="cend">
         <div class="cend-b">
@@ -88,6 +100,12 @@ const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.i
         <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="small" />
       </aside>
       )}
+      {more.length > 0 && (
+      <section class="amore" aria-labelledby="amore-h">
+        <h2 id="amore-h" class="amore-h">{t.blog.moreNotes}</h2>
+        <div class="amore-grid">{more.map((n) => <NoteCard note={n} headingLevel="h3" />)}</div>
+      </section>
+      )}
       <nav class="aback" aria-label={t.blog.kicker}>
         <a href={fieldNotesHref(locale)}><span aria-hidden="true">← </span>{t.blog.allNotes}</a>
         <a href={`${home}#how-it-works`}>{t.blog.seeHow}</a>
@@ -97,7 +115,38 @@ const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.i
   <Footer locale={locale} switchLangHref={otherPath} />
 </Layout>
 
+<script>
+  // The reading line (2026-10-10): how much of the article is read, from its top at the top of the window to its end at
+  // the bottom. Only transform changes, once per frame while scrolling.
+  const bar = document.querySelector<HTMLElement>('[data-read-progress]');
+  const sheet = document.querySelector<HTMLElement>('.asheet');
+  if (bar && sheet) {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const r = sheet.getBoundingClientRect();
+      const span = r.height - innerHeight;
+      const p = span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 1;
+      bar.style.transform = `scaleX(${p.toFixed(4)})`;
+    };
+    addEventListener('scroll', () => { if (!frame) frame = requestAnimationFrame(update); }, { passive: true });
+    addEventListener('resize', update);
+    update();
+  }
+</script>
+
 <style>
+  .aprog { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: 101; height: 3px; pointer-events: none; }
+  .aprog span { display: block; height: 100%; background: var(--rust); transform: scaleX(0); transform-origin: 0 50%; }
+  .aauthor { display: grid; gap: 4px; margin: 54px 0 0; padding: 26px 0 0; border-top: 1px solid var(--line); }
+  .aauthor-k { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--rust); }
+  .aauthor-n { margin: 4px 0 0; font-family: var(--font-serif); font-size: 24px; line-height: 1.15; color: var(--ink); }
+  .aauthor-b { margin: 4px 0 0; font-size: 15px; line-height: 1.6; color: var(--muted); max-width: 46ch; }
+  .aauthor a { justify-self: start; margin-top: 8px; font-size: 14px; font-weight: 600; color: var(--rust); text-decoration: underline; text-decoration-color: rgba(154, 69, 38, .45); text-underline-offset: 4px; }
+  .aauthor a:hover { text-decoration-color: currentColor; }
+  .amore { margin: 10px 0 34px; }
+  .amore-h { margin: 0 0 18px; font-size: 26px; line-height: 1.15; color: var(--ink); }
+  .amore-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
   .ahero { position: relative; min-height: 540px; display: flex; align-items: flex-end; color: var(--cream); background: var(--dark); overflow: hidden; --kick-color: var(--apricot); }
   .ahero :global(.ahero-img) { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center; }
   .ahero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(0deg, rgba(var(--dark-rgb), .96) 0%, rgba(var(--dark-rgb), .55) 45%, rgba(var(--dark-rgb), .1) 80%), linear-gradient(180deg, rgba(var(--dark-rgb), .55), transparent 120px); }
@@ -130,9 +179,9 @@ const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.i
   .ameta { margin: 10px 0 0; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255, 248, 238, .75); }
   .cap { position: absolute; z-index: 2; right: 44px; bottom: 100px; font-family: var(--font-script); font-size: 20px; color: rgba(255, 248, 238, .8); transform: rotate(-3deg); }
   .asheet { position: relative; z-index: 3; max-width: 760px; margin: -54px auto 0; background: var(--paper); border-radius: 24px 24px 0 0; padding: 52px 60px 10px; }
-  .aend { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: 52px 0 30px; padding: 30px 32px; border-radius: 18px; background: var(--dark); color: var(--cream); --jh-ink: var(--cream); --jh-accent: var(--apricot); }
-  .aend p { margin: 8px 0 0; font-size: 14px; color: rgba(255, 248, 238, .78); }
-  .aend :global(:focus-visible) { outline-color: var(--apricot); }
+  /* The light peach of the site (2026-10-10), the same as the Birdy half of the collab's end card. */
+  .aend { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: 44px 0 30px; padding: 30px 32px; border-radius: 18px; background: var(--peach); color: var(--ink); box-shadow: 0 0 0 1px var(--line); --jh-ink: var(--ink); --jh-accent: var(--rust); }
+  .aend p { margin: 8px 0 0; font-size: 14px; color: var(--muted); }
   .aback { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; font-weight: 600; color: var(--rust); padding: 22px 0 60px; border-top: 1px solid var(--line); }
   /* The collab (birdy-x-albit): the hero where the brands meet, then the title on the paper, no photo underneath. */
   .chead { position: relative; }
@@ -162,6 +211,7 @@ const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.i
     .aend { flex-direction: column; align-items: flex-start; }
     .ctitle { padding: 36px 20px 0; }
     .cend { grid-template-columns: 1fr; }
+    .amore-grid { grid-template-columns: 1fr; }
     .cend-b, .cend-a { padding: 26px 22px; }
   }
 </style>

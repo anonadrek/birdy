@@ -2,7 +2,7 @@
 locale: en
 slug: birdy-x-albit
 title: "Birdy × AlbIT: how a fear of birds became an app"
-description: "Birdy is AlbIT's own app. The story of the idea, how the app was built in 48 days, what runs on its own and the goal: a real forum for everyone who loves birds."
+description: "Birdy is AlbIT's own app. The story of the idea, how the app was built in 48 days and the goal: a real forum for everyone who loves birds."
 date: 2026-10-10
 category: Behind Birdy
 image: ../../../assets/photos/birdy-x-albit.webp
@@ -18,7 +18,7 @@ Birdy did not start with a birdwatcher. I was at my girlfriend's place when bird
 
 > If you know which bird you are looking at, and can learn something about it, it becomes a little less strange.
 
-On the night of 30 April 2026, at 00:54, the first commit went in. There was no code yet, only the idea, the plan and the rules. All of it was written after midnight.
+On the night of 30 April 2026, at 00:54, the first commit went in. There was no code yet, only the idea and the plan. All of it was written after midnight.
 
 ## Two brands that meet
 
@@ -48,11 +48,9 @@ In July the iPhone app started to be built from exactly the same code. The camer
 
 Birdy is built by one person, me, together with AI agents in Claude Code. Every part starts as an idea and a plan, is built in small steps and is reviewed twice: first against the plan, then for quality. Nothing goes out before the tests are green.
 
-Two rules have guided the work. I wrote the first on 1 May: "Don't ask me for permission to run anything." It set the pace. The second came in July, when a Mac started building the iPhone app: everything both computers need to know is written into the project, every time.
+## The routine work is automated
 
-## Most of it runs on its own
-
-Everything that can be automated is automated. The decisions and the design choices are still mine.
+The work that repeats every day is automated, with checks at every step. The decisions and the design choices are mine.
 
 - The species pages on this site are written from sources such as Wikipedia and Artportalen. A second AI model checks every fact against its source, and a page is published only when all of the site's tests are green.
 - The bird of the day changes at midnight, in the app and here on the site.
