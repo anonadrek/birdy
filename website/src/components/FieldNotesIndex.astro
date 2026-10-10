@@ -6,6 +6,7 @@ import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import DeckleEdge from './ui/DeckleEdge.astro';
 import NoteCard from './NoteCard.astro';
+import NoteFlight from './NoteFlight.astro';
 import { getFieldNotes, fieldNotesHref } from '../lib/field-notes';
 import { type Locale, getCopy } from '../lib/i18n';
 
@@ -30,10 +31,11 @@ const otherLocale: Locale = locale === 'sv' ? 'en' : 'sv';
       </div>
       <DeckleEdge color="var(--paper)" side="bottom" />
     </header>
-    <div class="wrap list">
+    <div class="wrap list" data-note-flight>
       {latest && <div class="first"><NoteCard note={latest} size="large" headingLevel="h2" priority /></div>}
       {rest.length > 0 && <div class="grid" style={`--cols:${cols}`}>{rest.map((note) => <NoteCard note={note} headingLevel="h2" />)}</div>}
     </div>
+    <NoteFlight />
   </main>
   <Footer locale={locale} switchLangHref={fieldNotesHref(otherLocale)} />
 </Layout>

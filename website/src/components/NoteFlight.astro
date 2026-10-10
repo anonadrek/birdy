@@ -1,0 +1,166 @@
+---
+// The flight between the notes' pictures (spec 2026-10-10, "Bloggen som en flygväg"): one decorative SVG layer per
+// list marked data-note-flight, drawn from src/lib/note-flight.mjs. The cards' text lies in front of the flight, so the
+// birds go behind it and come out in the next picture. Without JavaScript the cards are as before.
+import { MARK } from './hero/flock-data.mjs';
+---
+
+<svg class="nflight-defs" aria-hidden="true" focusable="false" width="0" height="0">
+  <defs><path id="nf-mark" d={MARK.path}></path></defs>
+</svg>
+
+<script>
+  import { pairFlights, at, flightCurve, birdsAlong, clearOf, birdTransform } from '../lib/note-flight.mjs';
+
+  const NS = 'http://www.w3.org/2000/svg';
+  type Rect = { x: number; y: number; w: number; h: number };
+  type Point = { x: number; y: number };
+
+  const json = <T,>(s: string | undefined): T | null => {
+    try { return s ? (JSON.parse(s) as T) : null; } catch { return null; }
+  };
+
+  const finite = (n: number) => Number.isFinite(n);
+  const isPt = (p: Point | null | undefined): p is Point => !!p && finite(p.x) && finite(p.y);
+  const isRect = (r: Rect | null | undefined): r is Rect => !!r && finite(r.x) && finite(r.y) && finite(r.w) && finite(r.h);
+
+  function rectIn(el: Element, origin: DOMRect): Rect {
+    const r = el.getBoundingClientRect();
+    return { x: r.left - origin.left, y: r.top - origin.top, w: r.width, h: r.height };
+  }
+
+  /** Whether a point drawn from the picture's own coordinates still lands inside the box that clips it. */
+  function within(p: Point, box: Rect): boolean {
+    return p.x >= box.x && p.x <= box.x + box.w && p.y >= box.y && p.y <= box.y + box.h;
+  }
+
+  /** One axis of an object position computed style, as a 0 to 1 fraction. Defaults to the centre. */
+  function posFraction(part: string | undefined): number {
+    const m = part && /^(-?[\d.]+)%$/.exec(part.trim());
+    return m ? parseFloat(m[1]) / 100 : 0.5;
+  }
+
+  /**
+   * The picture as it is actually drawn inside its box: object-fit cover (and maybe object-position) means a box
+   * whose ratio is not the notes' own 1600 by 840 (the large card's picture stretches with its row) makes the drawn
+   * picture overflow the box on one axis. exit, land and avoid are the picture's own 0 to 1 coordinates, so they
+   * belong on this rect, not the box. Falls back to the notes' own ratio while the image has not finished loading.
+   */
+  function drawnRect(box: Rect, art: HTMLElement): Rect {
+    const img = art.querySelector('img');
+    const natW = img?.naturalWidth || 0;
+    const natH = img?.naturalHeight || 0;
+    const ratio = natW > 0 && natH > 0 ? natW / natH : 1600 / 840;
+    const boxRatio = box.w / box.h;
+    let w: number;
+    let h: number;
+    if (boxRatio > ratio) { w = box.w; h = w / ratio; } else { h = box.h; w = h * ratio; }
+    let posX = 0.5;
+    let posY = 0.5;
+    if (img) {
+      const parts = getComputedStyle(img).objectPosition.split(' ');
+      posX = posFraction(parts[0]);
+      posY = posFraction(parts[1]);
+    }
+    return { x: box.x + (box.w - w) * posX, y: box.y + (box.h - h) * posY, w, h };
+  }
+
+  function draw(list: HTMLElement) {
+    list.querySelector(':scope > svg.nflight')?.remove();
+    const origin = list.getBoundingClientRect();
+    const arts = [...list.querySelectorAll<HTMLElement>('[data-flight-art]')];
+    const rects = arts.map((el) => rectIn(el, origin));
+    const drawn = arts.map((el, i) => drawnRect(rects[i], el));
+    const blockers: Rect[] = [...list.querySelectorAll('.ncard-body, .ctitle')].map((el) => rectIn(el, origin));
+    arts.forEach((el, i) => {
+      for (const a of (json<Rect[]>(el.dataset.avoid) ?? []).filter(isRect)) {
+        blockers.push({ x: drawn[i].x + a.x * drawn[i].w, y: drawn[i].y + a.y * drawn[i].h, w: a.w * drawn[i].w, h: a.h * drawn[i].h });
+      }
+    });
+
+    type Flight = { start: Point; end: Point; dir: 'up' | 'right' };
+    const flights: Flight[] = [];
+    // Too short to read as a flight at all (also covers the logo flight's own, stricter check below).
+    const tooClose = (a: Point, b: Point) => Math.hypot(b.x - a.x, b.y - a.y) < 60;
+
+    if (list.dataset.noteFlight === 'logo') {
+      // A single note: its picture's own trail rises on toward Birdy's logo and goes in under the menu bar.
+      const brand = document.querySelector('.nav .brand');
+      const nav = document.querySelector('.nav');
+      const exit = arts[0] && json<Point>(arts[0].dataset.exit);
+      if (brand && nav && isPt(exit)) {
+        const start = at(drawn[0], exit);
+        if (within(start, rects[0])) {
+          const b = rectIn(brand, origin);
+          const n = rectIn(nav, origin);
+          const end = { x: b.x + b.w / 2, y: n.y + n.h - 4 };
+          // The logo flight must read as a climb: skip when there is not at least 40px of lift above the start.
+          if (start.y - end.y >= 40 && !tooClose(start, end)) flights.push({ start, end, dir: 'up' });
+        }
+      }
+    } else {
+      for (const p of pairFlights(rects)) {
+        const exit = json<Point>(arts[p.from].dataset.exit);
+        const land = json<Point>(arts[p.to].dataset.land);
+        if (!isPt(exit) || !isPt(land)) continue;
+        const start = at(drawn[p.from], exit);
+        const end = at(drawn[p.to], land);
+        if (!within(start, rects[p.from]) || !within(end, rects[p.to])) continue;
+        if (tooClose(start, end)) continue;
+        flights.push({ start, end, dir: p.dir });
+      }
+    }
+    if (!flights.length) return;
+
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', 'nflight');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    flights.forEach((f, fi) => {
+      const g = document.createElementNS(NS, 'g');
+      g.setAttribute('class', 'nf-flight');
+      const birds = clearOf(birdsAlong(flightCurve(f.start, f.end, f.dir), { seed: 101 + fi * 7 }), blockers);
+      birds.forEach((bird, i) => {
+        const use = document.createElementNS(NS, 'use');
+        use.setAttribute('href', '#nf-mark');
+        use.setAttribute('transform', birdTransform(bird.x, bird.y, bird.size, bird.rot, bird.mirror));
+        use.setAttribute('fill', bird.colour);
+        use.setAttribute('fill-opacity', String(Math.round(bird.alpha * 100) / 100));
+        use.style.setProperty('--i', String(i));
+        g.append(use);
+      });
+      svg.append(g);
+    });
+    list.append(svg);
+  }
+
+  const lists = [...document.querySelectorAll<HTMLElement>('[data-note-flight]')];
+  let frame = 0;
+  const redraw = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(() => lists.forEach(draw)); };
+  if (lists.length) {
+    redraw();
+    document.fonts?.ready.then(redraw);
+    const ro = new ResizeObserver(redraw);
+    lists.forEach((l) => ro.observe(l));
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) if (e.isIntersecting) { e.target.classList.add('nflight-go'); io.unobserve(e.target); }
+    }, { threshold: 0.2 });
+    lists.forEach((l) => io.observe(l));
+    // Redraw once a picture finishes loading, so the drawn rect uses its real naturalWidth and naturalHeight rather
+    // than the fallback ratio (matters most for the lazy loaded cards, which have not loaded at the first redraw).
+    for (const img of document.querySelectorAll<HTMLImageElement>('[data-flight-art] img')) {
+      img.addEventListener('load', redraw, { once: true });
+    }
+  }
+</script>
+
+<style is:global>
+  .nflight-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+  [data-note-flight] { position: relative; }
+  [data-note-flight] > svg.nflight { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 1; }
+  @media (prefers-reduced-motion: no-preference) {
+    html.motion-ready [data-note-flight] > svg.nflight use { opacity: 0; }
+    html.motion-ready [data-note-flight].nflight-go > svg.nflight use { animation: nf-in .5s ease-out both; animation-delay: calc(var(--i) * 70ms); }
+  }
+  @keyframes nf-in { from { opacity: 0; } to { opacity: 1; } }
+</style>
