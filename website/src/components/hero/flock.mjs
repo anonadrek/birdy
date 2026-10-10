@@ -153,7 +153,7 @@ const r2 = (n) => Math.round(n * 100) / 100;
 const r5 = (n) => Math.round(n * 100000) / 100000;
 
 /** The SVG transform that draws MARK at a bird's place (flock units): centre (x, y), width `size`, rotated `rot` deg. */
-function markMatrix(x, y, size, rot) {
+export function markMatrix(x, y, size, rot) {
   const k = size / MARK.w;
   const a = (rot * Math.PI) / 180;
   const c = Math.cos(a) * k;

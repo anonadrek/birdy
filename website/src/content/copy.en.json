@@ -116,6 +116,7 @@
     "purchaseNote": "Premium is free for everyone for now. Buying it in Google Play comes in a later version.",
     "more": "All about Premium",
     "seal": "Premium",
+    "ringAlt": "Birdy's flock of 839 small birds flies one full circle, a year, around the brass Premium seal, with the months around it and one bird lit for today",
     "features": [
       { "title": "Finds map", "body": "See where you have seen your birds" },
       { "title": "Field journal as PDF", "body": "The whole journal, ready to save or print" },
@@ -195,7 +196,6 @@
     "seePrices": "See prices",
     "heroSeal": "Premium",
     "heroHand": "your year as a ring",
-    "heroAlt": "The season statistics in Birdy: the year's sightings as a ring, month by month",
     "situation": {
       "kicker": "Where we stand",
       "headline": "Where things stand, *honestly.*",

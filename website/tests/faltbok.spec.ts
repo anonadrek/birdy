@@ -26,9 +26,11 @@ test.describe('espresso i stället för mossa', () => {
     await expect(page.locator('[data-hero]')).toHaveCSS('background-color', PEACH);
     await expect(page.locator('#download')).toHaveCSS('background-color', ESPRESSO);
     await expect(page.locator('footer.footer')).toHaveCSS('background-color', ESPRESSO_DEEP);
+    // Premium went light on 2026-10-10 (Albin: "more inline with the site"): the hero's peach paper, lit behind the year.
+    await expect(page.locator('#premium')).toHaveCSS('background-color', PEACH);
     const prem = await page.locator('#premium').evaluate((el) => getComputedStyle(el).backgroundImage);
-    expect(prem).toContain(ESPRESSO);
-    expect(prem).toContain(ESPRESSO_DEEP);
+    expect(prem).not.toContain(ESPRESSO);
+    expect(prem).toContain('rgb(254, 235, 214)'); // --peach-hi, the light behind the year ring
     // The browser bar starts as the hero's peach (Layout's themeColor) and turns paper with the solid menu bar.
     await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', '#FDE5CB');
     await page.evaluate(() => window.scrollTo({ top: 3000, behavior: 'instant' }));
@@ -127,11 +129,11 @@ test.describe('marginalanteckningar', () => {
         await expect(el).toHaveCSS('font-family', /Caveat/);
         await expect(el).toHaveCSS('font-weight', '700');
       }
-      // Peach on the last section's wall (mockup lift-c.html), apricot on the Premium band. The hero has no margin note
-      // since 2026-10-09: nothing is written next to the flock.
+      // Peach on the last section's wall (mockup lift-c.html), rust on every light band, the Premium band too since it
+      // went light (2026-10-10). The hero has no margin note since 2026-10-09: nothing is written next to the flock.
       await expect(page.locator('[data-hero] .mnote')).toHaveCount(0);
       await expect(page.locator('#how-it-works .mnote')).toHaveCSS('color', 'rgb(154, 69, 38)');
-      await expect(page.locator('#premium .mnote')).toHaveCSS('color', 'rgb(242, 178, 122)');
+      await expect(page.locator('#premium .mnote')).toHaveCSS('color', 'rgb(154, 69, 38)');
       await expect(page.locator('#download .mnote')).toHaveCSS('color', 'rgb(253, 229, 203)');
     });
   }
@@ -203,7 +205,7 @@ test.describe('rivna papperskanter', () => {
       ['#how-it-works > .deckle path', PEACH],                // karusellen (persikopapper) → Tre sätt att fånga
       ['#guide > .deckle path', 'rgb(255, 250, 241)'],        // Fältboken → Uppslagsverket
       ['#premium > .deckle path', 'rgb(246, 239, 226)'],      // Uppslagsverket → Premium
-      ['#privacy > .deckle path', 'rgb(30, 20, 16)'],         // Premium → Integritet
+      ['#privacy > .deckle path', PEACH],                     // Premium (persikopapper sedan 2026-10-10) → Integritet
       ['#download > .deckle path', 'rgb(255, 250, 241)'],     // Frågor → Ta med Birdy
       ['footer.footer > .deckle path', 'rgb(42, 29, 23)'],    // Ta med Birdy → sidfot
     ];
@@ -211,9 +213,6 @@ test.describe('rivna papperskanter', () => {
     for (const [selector, expected] of edges) {
       await expect(page.locator(selector), selector).toHaveCSS('fill', expected);
     }
-    const sealZ = await page.locator('#premium .pseal').evaluate((el) => Number(getComputedStyle(el).zIndex));
-    const edgeZ = await page.locator('#premium .deckle').evaluate((el) => Number(getComputedStyle(el).zIndex));
-    expect(sealZ).toBeGreaterThan(edgeZ);
   });
 
   test('bloggen och juridiken', async ({ page }) => {

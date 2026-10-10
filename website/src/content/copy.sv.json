@@ -116,6 +116,7 @@
     "purchaseNote": "Premium är gratis för alla tills vidare. Köp i Google Play kommer i en senare version.",
     "more": "Allt om Premium",
     "seal": "Premium",
+    "ringAlt": "Birdys flock med 839 små fåglar flyger ett helt varv, ett år, runt Premiums mässingssigill, med månaderna runt om och en fågel tänd för i dag",
     "features": [
       { "title": "Fynd-kartan", "body": "Se var du har sett dina fåglar" },
       { "title": "Fältdagboken som PDF", "body": "Hela dagboken, redo att spara eller skriva ut" },
@@ -195,7 +196,6 @@
     "seePrices": "Se priserna",
     "heroSeal": "Premium",
     "heroHand": "ditt år som en ring",
-    "heroAlt": "Säsongsstatistiken i Birdy: årets fynd som en ring, månad för månad",
     "situation": {
       "kicker": "Läget",
       "headline": "Så ligger det till, *ärligt talat.*",

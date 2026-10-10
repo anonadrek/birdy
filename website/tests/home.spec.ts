@@ -291,16 +291,16 @@ test.describe('menyn över persikopappret', () => {
     await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', '#FDE5CB');
   });
 
-  // Over a dark first view the transparent bar keeps cream links, and the wordmark is the accent orange of the dark
-  // bands (apricot); scrolled past, it is the same light paper bar as everywhere else.
-  test('Premium-sidans meny har ljus text och ett aprikosfärgat ordmärke över sin mörka hjälte', async ({ page }) => {
+  // The Premium page's first view is the peach paper too since 2026-10-10: over it the transparent bar has dark links and
+  // the rust wordmark, the browser bar the hero's peach; scrolled past, the same light paper bar as everywhere else.
+  test('Premium-sidans meny är mörk över persikopappret, som på startsidan', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto('/sv/premium/');
     const nav = page.locator('#site-nav');
     await expect(nav).not.toHaveClass(/is-solid/);
-    await expect(nav.locator('.links a').first()).toHaveCSS('color', 'rgb(255, 248, 238)');
-    await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(242, 178, 122)');
-    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', '#2A1D17');
+    await expect(nav.locator('.links a').first()).toHaveCSS('color', 'rgb(48, 32, 25)');
+    await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(154, 69, 38)');
+    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', '#FDE5CB');
     await page.evaluate(() => window.scrollTo({ top: 3000, behavior: 'instant' }));
     await expect(nav).toHaveClass(/is-solid/);
     await expect(nav).toHaveCSS('background-color', 'rgb(246, 239, 226)');
@@ -1133,7 +1133,14 @@ test.describe('premium och integritet', () => {
       await expect(prem.locator('.feats')).not.toContainText(/ljud|sound|audio|birdnet/i);
       await expect(prem.locator('.alw')).toContainText(/ljud|sound/);
       await expect(prem.locator('.alw b')).toHaveText(freeLabel);
-      await expect(prem.locator('.pseal')).toHaveAttribute('aria-hidden', 'true');
+      // In the light since 2026-10-10: the site's peach paper, and the flock flying a year around the Premium seal.
+      await expect(prem).toHaveCSS('background-color', 'rgb(253, 229, 203)');
+      const ring = prem.locator('[data-year-flock]');
+      await expect(ring).toHaveAttribute('role', 'img');
+      await expect(ring).toHaveAttribute('aria-label', /839/);
+      expect(await ring.locator('svg use').count()).toBe(839);
+      await expect(ring.locator('.yf-months text')).toHaveCount(12);
+      await expect(ring.locator('.yseal')).toHaveAttribute('aria-hidden', 'true');
       // No prices anywhere on the page: purchases and prices are handled in the app, through Google Play.
       await expect(page.locator('main')).not.toContainText(/\d[\d\s.,]*(?:kr(?:onor)?|sek|eur|usd|:-)(?![\p{L}\p{N}])|(?<![\p{L}\p{N}])(?:kr|sek|eur|usd)\s?\d|[€$£]/iu);
       const priv = page.locator('#privacy');

@@ -1,62 +1,68 @@
 ---
+// The home page's Premium band (in the light since 2026-10-10, Albin: "more inline with the site ... make it also
+// premium"): Birdy's own peach paper, brass as Premium's detail, and the flock flying a year around the Premium seal
+// (YearFlock, direction P3). The four things are numbered like plates; the always-free line closes the band.
 import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import DeckleEdge from './ui/DeckleEdge.astro';
 import MarginNote from './ui/MarginNote.astro';
-import Icon from './ui/Icon.astro';
+import YearFlock from './premium/YearFlock.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 import { premiumHref } from '../lib/links';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getCopy(locale);
-const icons = ['map', 'pdf', 'chart', 'badge'] as const;
+const numerals = ['I', 'II', 'III', 'IV'] as const;
 ---
 
 <section id="premium" class="sec prem">
   <DeckleEdge color="var(--paper)" />
-  <span class="seal seal--brass pseal" aria-hidden="true">{t.premium.seal}</span>
   <div class="wrap grid">
-    <div data-reveal>
+    <div class="words" data-reveal>
       <Kicker text={t.premium.kicker} />
       <JournalHeadline text={t.premium.headline} level="h2" align="left" size="clamp(34px, 4.4vw, 52px)" />
       <MarginNote text={t.premium.note} />
       <p class="lead">{t.premium.lead}</p>
-      <p class="alw"><b>{t.premium.alwaysFreeLabel}</b> {t.premium.alwaysFree}</p>
-      <p class="pnote">{t.premium.purchaseNote}</p>
-      <a class="pmore" href={premiumHref(locale)} data-premium-link>{t.premium.more} <span aria-hidden="true">→</span></a>
+      <ul class="feats" role="list">
+        {t.premium.features.map((f, i) => (
+          <li class="feat"><span class="num" aria-hidden="true">{numerals[i]}</span><div><h3>{f.title}</h3><p>{f.body}</p></div></li>
+        ))}
+      </ul>
+      <div class="act">
+        <a class="pmore" href={premiumHref(locale)} data-premium-link>{t.premium.more} <span aria-hidden="true">→</span></a>
+        <p class="pnote">{t.premium.purchaseNote}</p>
+      </div>
     </div>
-    <ul class="feats" role="list">
-      {t.premium.features.map((f, i) => (
-        <li class="feat" data-reveal="slide" style={`--rd:${i * 90}ms`}>
-          <span class="fic"><Icon name={icons[i]} size={21} /></span>
-          <div><h3>{f.title}</h3><p>{f.body}</p></div>
-        </li>
-      ))}
-    </ul>
+    <div class="vis" data-reveal="scale"><YearFlock label={t.premium.ringAlt} seal={t.premium.seal} /></div>
   </div>
+  <div class="wrap"><p class="alw"><b>{t.premium.alwaysFreeLabel}</b> {t.premium.alwaysFree}</p></div>
 </section>
 
 <style>
-  .prem { position: relative; color: #F2EADC; background: linear-gradient(180deg, var(--dark) 0%, var(--dark-deep) 100%); --kick-color: var(--brass-hi); --jh-ink: var(--cream); --jh-accent: var(--brass-hi); --mn-color: var(--apricot); --lead-color: rgba(242, 234, 220, .75); }
-  .prem::before { content: ''; position: absolute; inset: 0; background: radial-gradient(60% 80% at 85% 20%, rgba(226, 192, 126, .1), transparent 60%); pointer-events: none; }
-  .prem :global(:focus-visible) { outline-color: var(--apricot); }
-  .grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; }
-  .alw { margin: 28px 0 0; padding: 16px 0; border-top: 1px solid rgba(255, 255, 255, .12); border-bottom: 1px solid rgba(255, 255, 255, .12); font-size: 14px; line-height: 1.7; color: rgba(242, 234, 220, .8); }
-  .alw b { color: var(--cream); font-weight: 600; }
-  /* alpha checked in scripts/check-contrast.mjs */
-  .pnote { font-size: 12.5px; color: rgba(242, 234, 220, .62); margin: 16px 0 0; }
-  .pmore { display: inline-flex; align-items: center; gap: 6px; margin-top: 22px; height: 46px; padding: 0 20px; border-radius: 12px; background: linear-gradient(135deg, var(--brass-hi), var(--brass)); color: var(--brass-ink); font-weight: 600; font-size: 14.5px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 8px 18px rgba(0, 0, 0, .3); transition: transform .25s var(--ease-paper); }
+  /* The home hero's peach paper, lit behind the year; it settles to plain peach at the foot so the tear into the
+     privacy band below is one colour. */
+  .prem { position: relative; color: var(--ink); background-color: var(--peach); background-image: linear-gradient(0deg, var(--peach) 0, rgb(253 229 203 / 0) 140px), radial-gradient(60% 70% at 76% 42%, var(--peach-hi) 0%, var(--peach) 55%, var(--peach-lo) 100%); --kick-color: var(--brass-deep); }
+  .grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+  .feats { list-style: none; margin: 30px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; border-top: 1px solid rgba(122, 90, 34, .28); }
+  .feat { display: flex; gap: 12px; padding: 16px 0 14px; border-bottom: 1px solid rgba(122, 90, 34, .28); }
+  .num { flex: none; width: 28px; font-family: var(--font-serif); font-style: italic; font-size: 20px; line-height: 1.1; color: var(--brass-deep); }
+  .feat h3 { font-size: 19px; line-height: 1.15; color: var(--ink); }
+  .feat p { margin: 3px 0 0; font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+  .act { display: flex; align-items: center; gap: 22px; margin-top: 28px; }
+  /* Brass with a sheen: the one brass control in the band (the Premium page's "See prices" is the same). */
+  .pmore { flex: none; display: inline-flex; align-items: center; gap: 6px; height: 48px; padding: 0 22px; border-radius: 12px; background: linear-gradient(135deg, #EDD39A, var(--brass-hi) 30%, var(--brass) 100%); color: var(--brass-ink); font-weight: 600; font-size: 14.5px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(122, 90, 34, .35), 0 1px 2px rgba(var(--dark-rgb), .12), 0 10px 22px -8px rgba(122, 90, 34, .55); transition: transform .25s var(--ease-paper); }
   .pmore:hover { transform: translateY(-2px); }
-  .feat { display: flex; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); }
-  .feat:first-child { padding-top: 4px; }
-  .fic { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(226, 192, 126, .45); color: var(--brass-hi); display: grid; place-items: center; flex: none; }
-  .feat h3 { font-size: 21px; color: var(--cream); }
-  /* alpha checked in scripts/check-contrast.mjs */
-  .feat p { margin: 3px 0 0; font-size: 13.5px; color: rgba(242, 234, 220, .66); }
-  .pseal { position: absolute; z-index: 3; right: max(9%, calc((100% - 1160px) / 2 - 20px)); top: -46px; width: 92px; height: 92px; font-size: 17px; transform: rotate(-10deg); }
-  @media (max-width: 760px) {
+  .pnote { margin: 0; max-width: 17rem; font-size: 12.5px; line-height: 1.6; color: var(--muted); }
+  .vis { position: relative; }
+  .alw { margin: 48px 0 0; padding-top: 18px; border-top: 1px dashed rgba(154, 69, 38, .3); font-size: 13.5px; line-height: 1.7; color: var(--muted); }
+  .alw b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 900px) {
     .grid { grid-template-columns: 1fr; gap: 40px; }
-    .pseal { right: 20px; top: -40px; width: 74px; height: 74px; font-size: 14px; }
+    .vis { order: -1; max-width: 420px; margin: 0 auto; width: 100%; }
+  }
+  @media (max-width: 560px) {
+    .feats { grid-template-columns: 1fr; }
+    .act { flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 </style>
