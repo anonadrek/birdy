@@ -5,10 +5,8 @@ title: "See the song: hör fågeln först, se den sedan"
 description: "I vår nya videoserie hör du fågeln innan du ser den. En ny video varje morgon i 30 dagar på Instagram, Facebook, YouTube och TikTok."
 date: 2026-10-10
 category: Bakom Birdy
-image: ../../../assets/photos/see-the-song-blames-q25404.webp
-imageAlt: "En ring av ljusa streck runt ett orange frågetecken på mörkbrun botten, från början av en video i See the song"
-imageCaption: Vems sång är det här?
-imagePosition: 65% 45%
+image: ../../../assets/photos/see-the-song-flock-q25404-sv.webp
+imageAlt: "Omslaget till See the song: på persikofärgat papper bildar en flock små fåglar en blåmes bredvid orden ljud på, Hänger ofta upp och ner för att hitta mat. och Vems sång är det här?"
 ---
 
 Det är svårt att lära sig känna igen fåglar på lätet. Du hör något i ett träd, och när du väl tittar upp har fågeln tystnat.
@@ -26,7 +24,7 @@ För fåglar som inte är tättingar, som tranan och gräsanden, frågar videon 
 Här är den första. Slå på ljudet och försök gissa innan namnet visas.
 
 <figure class="note-video">
-<video controls playsinline preload="none" width="1080" height="1920" poster="/video/see-the-song/eurasian-blue-tit.jpg" aria-label="See the song, den första videon">
+<video controls playsinline preload="none" width="1080" height="1920" poster="/video/see-the-song/eurasian-blue-tit-cover.jpg" aria-label="See the song, den första videon">
 <source src="/video/see-the-song/eurasian-blue-tit.mp4" type="video/mp4">
 <track kind="captions" src="/video/see-the-song/eurasian-blue-tit.sv.vtt" srclang="sv" label="Svenska">
 <a href="/video/see-the-song/eurasian-blue-tit.mp4">Ladda ner videon (MP4, 5 MB)</a>
@@ -34,7 +32,8 @@ Här är den första. Slå på ljudet och försök gissa innan namnet visas.
 <figcaption>
 <span>Foto: Kathy Büscher, <a href="https://creativecommons.org/licenses/by/2.0/deed.sv">CC BY 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Blaumeise_%2864%29_%2834633517080%29.jpg">Wikimedia Commons</a>, beskuren.</span>
 <span>Inspelning: Benoît Van Hecke, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.sv">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Cyanistes_caeruleus_-_Eurasian_Blue_Tit_XC538220.mp3">Wikimedia Commons</a>, bearbetad.</span>
-<span>Videon och bilden överst på sidan: Birdy, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.sv">CC BY-SA 4.0</a>.</span>
+<span>Videon: Birdy, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.sv">CC BY-SA 4.0</a>.</span>
+<span>Videons omslag och bilden överst på sidan: Birdy, med blåmesens siluett av Wouter Koch, <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.sv">CC0</a>, via <a href="https://www.phylopic.org/images/069c4833-e1ac-48e7-90d5-f7bd11000588">PhyloPic</a>.</span>
 </figcaption>
 </figure>
 

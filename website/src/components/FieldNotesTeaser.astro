@@ -9,10 +9,11 @@ import { type Locale, getCopy } from '../lib/i18n';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getCopy(locale);
-const latest = (await getFieldNotes(locale))[0];
+// The three newest notes side by side (Albin 2026-10-10: See the song and Why Birdy exists both on the front page).
+const latest = (await getFieldNotes(locale)).slice(0, 3);
 ---
 
-{latest && (
+{latest.length > 0 && (
   <section id="field-notes" class="sec notes">
     <div class="wrap">
       <div class="head" data-reveal>
@@ -23,7 +24,7 @@ const latest = (await getFieldNotes(locale))[0];
         </div>
         <a class="all" href={fieldNotesHref(locale)}>{t.fieldNotes.all}</a>
       </div>
-      <div class="card" data-reveal><NoteCard note={latest} size="large" /></div>
+      <div class="cards" style={`--n:${latest.length}`}>{latest.map((note, i) => <div data-reveal style={`--rd:${i * 90}ms`}><NoteCard note={note} /></div>)}</div>
     </div>
   </section>
 )}
@@ -32,6 +33,11 @@ const latest = (await getFieldNotes(locale))[0];
   .notes { padding-top: 0; }
   .head { display: flex; justify-content: space-between; align-items: end; gap: 30px; }
   .all { font-size: 14px; font-weight: 600; color: var(--rust); border-bottom: 1px solid currentColor; padding-bottom: 3px; white-space: nowrap; }
-  .card { margin-top: 36px; }
-  @media (max-width: 760px) { .head { flex-direction: column; align-items: flex-start; } }
+  .cards { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 22px; margin-top: 36px; }
+  .cards > div { display: grid; }
+  @media (max-width: 960px) { .cards { gap: 16px; } }
+  @media (max-width: 760px) {
+    .head { flex-direction: column; align-items: flex-start; }
+    .cards { grid-template-columns: 1fr; gap: 18px; }
+  }
 </style>

@@ -5,10 +5,8 @@ title: "See the song: hear the bird first, then meet it"
 description: "Our new video series plays a bird's sound before it shows the bird. A new video every morning for 30 days on Instagram, Facebook, YouTube and TikTok."
 date: 2026-10-10
 category: Behind Birdy
-image: ../../../assets/photos/see-the-song-blames-q25404.webp
-imageAlt: "A ring of light bars around an orange question mark on a dark brown background, from the start of a See the song video"
-imageCaption: Whose song is this?
-imagePosition: 65% 45%
+image: ../../../assets/photos/see-the-song-flock-q25404-en.webp
+imageAlt: "The See the song cover: on peach paper, a flock of small birds forms a Eurasian Blue Tit next to the words sound on, Often hangs upside down to find food. and Whose song is this?"
 ---
 
 Learning birds by ear is hard. You hear something in a tree, and by the time you look up, the bird has gone quiet.
@@ -26,7 +24,7 @@ For birds that are not songbirds, such as the Common Crane and the Mallard, the 
 Here is the first one. Turn the sound on and try to guess before the name appears.
 
 <figure class="note-video">
-<video controls playsinline preload="none" width="1080" height="1920" poster="/video/see-the-song/eurasian-blue-tit.jpg" aria-label="See the song, the first video">
+<video controls playsinline preload="none" width="1080" height="1920" poster="/video/see-the-song/eurasian-blue-tit-cover.jpg" aria-label="See the song, the first video">
 <source src="/video/see-the-song/eurasian-blue-tit.mp4" type="video/mp4">
 <track kind="captions" src="/video/see-the-song/eurasian-blue-tit.en.vtt" srclang="en" label="English">
 <a href="/video/see-the-song/eurasian-blue-tit.mp4">Download the video (MP4, 5 MB)</a>
@@ -34,7 +32,8 @@ Here is the first one. Turn the sound on and try to guess before the name appear
 <figcaption>
 <span>Photo: Kathy Büscher, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Blaumeise_%2864%29_%2834633517080%29.jpg">Wikimedia Commons</a>, cropped.</span>
 <span>Recording: Benoît Van Hecke, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Cyanistes_caeruleus_-_Eurasian_Blue_Tit_XC538220.mp3">Wikimedia Commons</a>, edited.</span>
-<span>The video and the picture at the top of this page: Birdy, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</span>
+<span>The video: Birdy, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</span>
+<span>Its cover and the picture at the top of this page: Birdy, with the blue tit's silhouette by Wouter Koch, <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>, via <a href="https://www.phylopic.org/images/069c4833-e1ac-48e7-90d5-f7bd11000588">PhyloPic</a>.</span>
 </figcaption>
 </figure>
 

@@ -37,12 +37,10 @@ const more = (await getFieldNotes(locale)).filter((n) => n.data.slug !== note.da
 const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.indexOf('×')), title.slice(title.indexOf('×') + 1)] : [title, null];
 ---
 
-<Layout locale={locale} pathname={pathname} title={`${title} | Birdy`} description={description} articleDate={date.toISOString()} articleModified={updated?.toISOString()} ogImage={share.src} ogImageAlt={imageAlt} themeColor={collab ? undefined : '#2A1D17'}>
-  {collab
-    ? <Nav locale={locale} variant="solid" switchLangHref={otherPath} />
-    : <Nav locale={locale} variant="overlay" scrim switchLangHref={otherPath} />}
+<Layout locale={locale} pathname={pathname} title={`${title} | Birdy`} description={description} articleDate={date.toISOString()} articleModified={updated?.toISOString()} ogImage={share.src} ogImageAlt={imageAlt}>
+  <Nav locale={locale} variant="solid" switchLangHref={otherPath} />
   <div class="aprog" aria-hidden="true"><span data-read-progress></span></div>
-  <main id="main" tabindex="-1" class:list={{ 'is-collab': collab }}>
+  <main id="main" tabindex="-1">
     {collab ? (
     <header class="chead">
       <CollabHero label={t.blog.collabArt} />
@@ -54,18 +52,19 @@ const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.i
       </div>
     </header>
     ) : (
-    <header class="ahero">
-      <Image class="ahero-img" src={image} alt={imageAlt} widths={[800, 1200, 1600]} sizes="100vw" style={imagePosition ? `object-position:${imagePosition}` : undefined} loading="eager" fetchpriority="high" decoding="async" />
-      <div class="wrap">
-        <div class="in">
-          <span class="nav-until" data-nav-until aria-hidden="true"></span>
-          <Kicker text={category} />
-          <h1>{title}</h1>
-          <p class="aby"><a href={albitProductHref(locale)}>{t.blog.byline}</a></p>
-          <p class="ameta"><time datetime={date.toISOString().slice(0, 10)}>{formatNoteDate(date, locale)}</time> · {minutes}{updatedLabel && <> · {updatedLabel}</>}</p>
+    <header class="phead">
+      <figure class="wrap pfig">
+        <div class="aplate">
+          <Image src={image} alt={imageAlt} widths={[800, 1200, 1600, 2400]} sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1160px) calc(100vw - 88px), 1072px" style={imagePosition ? `object-position:${imagePosition}` : undefined} loading="eager" fetchpriority="high" decoding="async" />
         </div>
+        {imageCaption && <figcaption class="cap">{imageCaption}</figcaption>}
+      </figure>
+      <div class="ctitle">
+        <Kicker text={category} center />
+        <h1 class="ch1">{title}</h1>
+        <p class="aby"><a href={albitProductHref(locale)}>{t.blog.byline}</a></p>
+        <p class="ameta"><time datetime={date.toISOString().slice(0, 10)}>{formatNoteDate(date, locale)}</time> · {minutes}{updatedLabel && <> · {updatedLabel}</>}</p>
       </div>
-      {imageCaption && <span class="cap" aria-hidden="true">{imageCaption}</span>}
     </header>
     )}
     <article class="asheet">
@@ -147,53 +146,30 @@ const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.i
   .amore { margin: 10px 0 34px; }
   .amore-h { margin: 0 0 18px; font-size: 26px; line-height: 1.15; color: var(--ink); }
   .amore-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-  .ahero { position: relative; min-height: 540px; display: flex; align-items: flex-end; color: var(--cream); background: var(--dark); overflow: hidden; --kick-color: var(--apricot); }
-  .ahero :global(.ahero-img) { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center; }
-  .ahero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(0deg, rgba(var(--dark-rgb), .96) 0%, rgba(var(--dark-rgb), .55) 45%, rgba(var(--dark-rgb), .1) 80%), linear-gradient(180deg, rgba(var(--dark-rgb), .55), transparent 120px); }
-  .ahero .wrap { position: relative; z-index: 2; width: 100%; padding-top: 124px; padding-bottom: 96px; }
-  .ahero :global(:focus-visible) { outline-color: var(--apricot); }
-  /* isolate traps .in::before's negative z-index inside .in, so the scrim sits only behind this
-     text column (never below the fixed nav or the photo's own darkening layers outside .in). */
-  .in { position: relative; isolation: isolate; max-width: 760px; margin: 0 auto; }
-  /* Soft local scrim so the kicker/title/byline/meta clear WCAG AA on any post photo, without
-     darkening the photo's upper half (the subject) or widening the existing full-bleed gradient.
-     A blurred flat rounded-rect, not a radial-gradient: filter:blur() is a pixel-level post-process
-     with no hard mathematical edge (unlike a gradient's ending-shape, which is clipped by the box the
-     moment its percentage-sized radius doesn't fully reach transparent before the box border — that
-     produced a visible rectangle around y≈200px / x≈290–1150px at 1440px in an earlier version). */
-  .in::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    inset: -24px -40px -12px;
-    border-radius: 48px;
-    background: rgba(var(--dark-rgb), .72);
-    filter: blur(36px);
-    pointer-events: none;
-  }
-  .nav-until { position: absolute; left: 0; bottom: 100%; width: 1px; height: 100vh; pointer-events: none; }
-  h1 { font-size: clamp(40px, 4.8vw, 58px); line-height: 1.02; letter-spacing: -.02em; max-width: 15ch; overflow-wrap: anywhere; hyphens: auto; }
   .aby { margin: 14px 0 0; font-size: 14px; font-weight: 600; }
-  .aby a { color: var(--cream); border-bottom: 1px solid rgba(255, 248, 238, .45); padding-bottom: 1px; }
-  .aby a:hover { border-bottom-color: var(--apricot); }
-  .ameta { margin: 10px 0 0; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255, 248, 238, .75); }
-  .cap { position: absolute; z-index: 2; right: 44px; bottom: 100px; font-family: var(--font-script); font-size: 20px; color: rgba(255, 248, 238, .8); transform: rotate(-3deg); }
-  .asheet { position: relative; z-index: 3; max-width: 760px; margin: -54px auto 0; background: var(--paper); border-radius: 24px 24px 0 0; padding: 52px 60px 10px; }
+  .ameta { margin: 10px 0 0; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .asheet { position: relative; max-width: 760px; margin: 0 auto; padding: 52px 60px 10px; }
   /* The light peach of the site (2026-10-10), the same as the Birdy half of the collab's end card. */
   .aend { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: 44px 0 30px; padding: 30px 32px; border-radius: 18px; background: var(--peach); color: var(--ink); box-shadow: 0 0 0 1px var(--line); --jh-ink: var(--ink); --jh-accent: var(--rust); }
   .aend p { margin: 8px 0 0; font-size: 14px; color: var(--muted); }
   .aback { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; font-weight: 600; color: var(--rust); padding: 22px 0 60px; border-top: 1px solid var(--line); }
-  /* The collab (birdy-x-albit): the hero where the brands meet, then the title on the paper, no photo underneath. */
+  /* The title on the paper under the picture, centred (2026-10-10: every note, the way the collab note reads). The collab
+     (birdy-x-albit) has the hero where the brands meet above it; every other note its picture as a plate. */
   .chead { position: relative; }
   .ctitle { max-width: 860px; margin: 0 auto; padding: 54px 24px 6px; text-align: center; color: var(--ink); }
   .ctitle :global(.kick) { justify-content: center; }
   .ch1 { margin: 14px auto 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; letter-spacing: -.02em; max-width: 18ch; text-wrap: balance; overflow-wrap: anywhere; hyphens: auto; }
   /* AlbIT's gold, darkened until it clears 3:1 as large text on the paper (scripts/check-contrast.mjs). */
   .ch1-x { color: var(--albit-gold-ink); padding: 0 .08em; }
-  .ctitle .aby a { color: var(--ink); border-bottom: 1px solid var(--line); }
+  .ctitle .aby a { color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 1px; }
   .ctitle .aby a:hover { border-bottom-color: var(--rust); }
-  .ctitle .ameta { color: var(--muted); }
-  .is-collab .asheet { margin-top: 0; }
+  /* The note's picture as a plate on the paper (2026-10-10): whole, nothing laid over it (Albin's photo rule: no tone
+     over a photo, text beside or under it), at the notes' own 1600 × 840. */
+  .phead { position: relative; padding-top: 28px; }
+  .pfig { margin-top: 0; margin-bottom: 0; }
+  .aplate { overflow: hidden; border-radius: 22px; background: var(--peach); box-shadow: 0 0 0 1px var(--line), 0 24px 48px -26px rgba(var(--dark-rgb), .35); }
+  .aplate :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 1600 / 840; object-fit: cover; }
+  .cap { width: fit-content; margin: 10px 8px 0 auto; font-family: var(--font-script); font-weight: 700; font-size: 20px; line-height: 1.2; color: var(--rust); transform: rotate(-2deg); }
   .cend { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); margin: 52px 0 30px; border-radius: 18px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
   .cend-b { padding: 30px 32px; background: var(--peach); --jh-ink: var(--ink); --jh-accent: var(--rust); }
   .cend-b p { margin: 8px 0 18px; font-size: 14px; color: var(--muted); }
@@ -204,12 +180,12 @@ const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.i
   .cend-a a:hover { border-bottom-color: var(--albit-gold); }
   .cend-a :global(:focus-visible) { outline-color: var(--albit-gold); }
   @media (max-width: 760px) {
-    .ahero { min-height: 470px; }
-    .ahero .wrap { padding-top: 104px; padding-bottom: 80px; }
-    .cap { display: none; }
-    .asheet { margin-top: -40px; padding: 34px 20px 6px; border-radius: 20px 20px 0 0; }
+    .asheet { padding: 34px 20px 6px; }
     .aend { flex-direction: column; align-items: flex-start; }
     .ctitle { padding: 36px 20px 0; }
+    .phead { padding-top: 16px; }
+    .aplate { border-radius: 14px; }
+    .cap { font-size: 18px; }
     .cend { grid-template-columns: 1fr; }
     .amore-grid { grid-template-columns: 1fr; }
     .cend-b, .cend-a { padding: 26px 22px; }
